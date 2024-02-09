@@ -1,7 +1,7 @@
 #
 # spec file for package gtkhotkey
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           gtkhotkey
 Version:        0.2.1
 Release:        0
 Summary:        Platform Independent Hotkey Handling for GTK+ Applications
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          Development/Libraries/X11
-Url:            http://launchpad.net/gtkhotkey/
+URL:            http://launchpad.net/gtkhotkey/
 Source:         %{name}-%{version}.tar.bz2
 # PATCH-FIX-UPSTREAM gtkhotkey-glib-2.31.patch lp#898334 dimstar@opensuse.org -- Fix build with glib 2.31
 Patch0:         gtkhotkey-glib-2.31.patch
@@ -57,8 +57,7 @@ all necessary include files and libraries needed to develop applications that
 require these.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure --disable-static

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  8 15:58:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Prepare for RPM 4.20: use autosetup.
+
+-------------------------------------------------------------------
 Mon Feb 13 10:47:20 UTC 2012 - coolo@suse.com
 
 - patch license to follow spdx.org standard
