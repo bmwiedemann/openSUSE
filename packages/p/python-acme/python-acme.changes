@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb  9 13:21:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.0:
+  * Support for Python 3.12 was added.
+  * Updates `joinpath` syntax to only use one addition per call,
+    because the multiple inputs version was causing mypy errors
+    on Python 3.10.
+  * Makes the `reconfigure` verb actually use the staging server
+    for the dry run to check the new configuration.
+
+-------------------------------------------------------------------
+Wed Feb  7 12:09:23 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Dec  7 10:27:35 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.8.0
@@ -25,24 +41,24 @@ Wed Jun  7 15:12:51 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.6.0
   * Support for Python 3.11 was added to Certbot and all of its components
-  * acme.challenges.HTTP01Response.simple_verify now accepts a timeout argument 
-    which defaults to 30 that causes the verification request to timeout after 
+  * acme.challenges.HTTP01Response.simple_verify now accepts a timeout argument
+    which defaults to 30 that causes the verification request to timeout after
     that many seconds.
-  * The default key type for new certificates is now ECDSA secp256r1 (P-256). 
+  * The default key type for new certificates is now ECDSA secp256r1 (P-256).
     It was previously RSA 2048-bit. Existing certificates are not affected.
   * acme and Certbot no longer support versions of ACME from before the RFC 8555 standard.
   * acme and Certbot no longer support the old urn:acme:error: ACME error prefix.
   * many acme classes have been removed
-  * acme.messages.Directory now only supports lookups by the exact resource name 
+  * acme.messages.Directory now only supports lookups by the exact resource name
     string in the ACME directory
   * Removed the deprecated source_address argument for acme.client.ClientNetwork.
-  * Certbot will no longer respect very long challenge polling intervals, which 
-    may be suggested by some ACME servers. Certbot will continue to wait up to 
-    90 seconds by default, or up to a total of 30 minutes if requested by the server 
+  * Certbot will no longer respect very long challenge polling intervals, which
+    may be suggested by some ACME servers. Certbot will continue to wait up to
+    90 seconds by default, or up to a total of 30 minutes if requested by the server
     via Retry-After.
   * certbot show_account now displays the ACME Account Thumbprint.
   * acme.messages.OrderResource now supports being round-tripped through JSON
-  * acme.client.ClientV2 now provides separate begin_finalization and poll_finalization 
+  * acme.client.ClientV2 now provides separate begin_finalization and poll_finalization
     methods, in addition to the existing finalize_order method.
   * Packaged tests for all Certbot components besides josepy were moved inside the _internal/tests module.
 - Drop the signature (last was acme-1.31.0.tar.gz.asc) and python-acme.keyring
@@ -59,17 +75,17 @@ Tue Oct  4 16:37:19 UTC 2022 - Michael Ströder <michael@stroeder.com>
 Wed Sep 21 17:49:37 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.30.0
-  * acme.client.ClientBase, acme.messages.Authorization.resolved_combinations, 
-    acme.messages.Authorization.combinations, acme.mixins, acme.fields.resource 
+  * acme.client.ClientBase, acme.messages.Authorization.resolved_combinations,
+    acme.messages.Authorization.combinations, acme.mixins, acme.fields.resource
     and acme.fields.Resource are deprecated and will be removed in a future release.
-  * acme.messages.OLD_ERROR_PREFIX (urn:acme:error:) is deprecated and support 
-    for the old ACME error prefix in Certbot will be removed in the next major 
+  * acme.messages.OLD_ERROR_PREFIX (urn:acme:error:) is deprecated and support
+    for the old ACME error prefix in Certbot will be removed in the next major
     release of Certbot.
-  * acme.messages.Directory.register is deprecated and will be removed in the 
-    next major release of Certbot. Furthermore, .Directory will only support 
-    lookups by the exact resource name string in the ACME directory (e.g. 
+  * acme.messages.Directory.register is deprecated and will be removed in the
+    next major release of Certbot. Furthermore, .Directory will only support
+    lookups by the exact resource name string in the ACME directory (e.g.
     directory['newOrder']).
-  * The source_address argument for acme.client.ClientNetwork is deprecated and 
+  * The source_address argument for acme.client.ClientNetwork is deprecated and
     support for it will be removed in the next major release.
 
 -------------------------------------------------------------------
@@ -91,14 +107,14 @@ Mon Jul 11 13:07:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Fri Jun 24 19:25:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.28.0:
-  * use order "status" to determine action during finalization 
+  * use order "status" to determine action during finalization
 
 -------------------------------------------------------------------
 Mon May 30 09:04:49 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Update to version 1.27.0
   * Added support for RFC8555 subproblems to our acme library.
-  * The PGP key F2871B4152AE13C49519111F447BF683AA3B26C3 was added 
+  * The PGP key F2871B4152AE13C49519111F447BF683AA3B26C3 was added
     as an additional trusted key to sign our PyPI packages
 - Refreshed python-acme.keyring
 
@@ -106,19 +122,19 @@ Mon May 30 09:04:49 UTC 2022 - Markéta Machová <mmachova@suse.com>
 Thu Apr  7 15:33:21 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Update to version 1.26.0
-  * Added show_account subcommand, which will fetch the account information from 
-    the ACME server and show the account details (account URL and, if applicable, 
+  * Added show_account subcommand, which will fetch the account information from
+    the ACME server and show the account details (account URL and, if applicable,
     email address or addresses)
   * The acme library now requires requests>=2.20.0.
   * Certbot and its acme library now require pytz>=2019.3.
   * Certbot and its acme module now depend on josepy>=1.13.0 due to better type annotation support.
-  * Previously, when Certbot was in the process of registering a new ACME account 
-    and the ACME server did not present any Terms of Service, the user was asked 
-    to agree with a non-existent Terms of Service ("None"). This bug is now fixed, 
-    so that if an ACME server does not provide any Terms of Service to agree with, 
+  * Previously, when Certbot was in the process of registering a new ACME account
+    and the ACME server did not present any Terms of Service, the user was asked
+    to agree with a non-existent Terms of Service ("None"). This bug is now fixed,
+    so that if an ACME server does not provide any Terms of Service to agree with,
     the user is not asked to agree to a non-existent Terms of Service any longer.
-  * If account registration fails, Certbot did not relay the error from the ACME 
-    server back to the user. This is now fixed: the error message from the ACME 
+  * If account registration fails, Certbot did not relay the error from the ACME
+    server back to the user. This is now fixed: the error message from the ACME
     server is now presented to the user when account registration fails.
 
 -------------------------------------------------------------------
@@ -169,7 +185,7 @@ Wed May 12 12:01:16 UTC 2021 - Markéta Machová <mmachova@suse.com>
 Wed Apr 14 15:09:01 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - update to version 1.14.0
-  * The module acme.magic_typing is deprecated and will be removed in 
+  * The module acme.magic_typing is deprecated and will be removed in
     a future release. Please use the built-in module typing instead.
 
 -------------------------------------------------------------------
@@ -177,11 +193,11 @@ Mon Mar  8 08:06:00 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - update to version 1.13.0
   * Support for Python 2 has been removed.
-  * The acme library no longer depends on the security extras from 
-    requests which was needed to support SNI in TLS requests when 
+  * The acme library no longer depends on the security extras from
+    requests which was needed to support SNI in TLS requests when
     using old versions of Python 2.
-  * When revoking a certificate by --cert-name, it is no longer 
-    necessary to specify the --server if the certificate was 
+  * When revoking a certificate by --cert-name, it is no longer
+    necessary to specify the --server if the certificate was
     obtained from a non-default ACME server.
 
 -------------------------------------------------------------------
@@ -225,9 +241,9 @@ Mon Jul 13 08:27:35 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 1.6.0
   * Support for alternative certificate chains in the acme module.
-  * Added --preferred-chain <issuer CN>. If a CA offers multiple 
-    certificate chains, it may be used to indicate to Certbot which 
-    chain should be preferred. 
+  * Added --preferred-chain <issuer CN>. If a CA offers multiple
+    certificate chains, it may be used to indicate to Certbot which
+    chain should be preferred.
 
 -------------------------------------------------------------------
 Thu Jun 11 12:06:37 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
@@ -281,7 +297,7 @@ Fri Jan  3 11:03:37 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 Thu Nov 14 12:00:47 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 0.40.1
-  * acme.standalone.BaseRequestHandlerWithLogging and acme.standalone.simple_tls_sni_01_server 
+  * acme.standalone.BaseRequestHandlerWithLogging and acme.standalone.simple_tls_sni_01_server
     have been deprecated and will be removed in a future release of the library.
 
 -------------------------------------------------------------------
@@ -335,26 +351,26 @@ Mon Mar 18 08:17:42 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.32.0
   * Certbot and its acme module now depend on josepy>=1.1.0.
-  * An ACME CA server may return a "Retry-After" HTTP header on 
-    authorization polling, as specified in the ACME protocol, to 
-    indicate when the next polling should occur. Certbot now reads 
+  * An ACME CA server may return a "Retry-After" HTTP header on
+    authorization polling, as specified in the ACME protocol, to
+    indicate when the next polling should occur. Certbot now reads
     this header if set and respect its value.
-  * The acme module avoids sending the keyAuthorization field in 
-    the JWS payload when responding to a challenge as the field is 
-    not included in the current ACME protocol. To ease the migration 
-    path for ACME CA servers, Certbot and its acme module will first 
-    try the request without the keyAuthorization field but will 
-    temporarily retry the request with the field included if a 
-    malformed error is received. This fallback will be removed in 
+  * The acme module avoids sending the keyAuthorization field in
+    the JWS payload when responding to a challenge as the field is
+    not included in the current ACME protocol. To ease the migration
+    path for ACME CA servers, Certbot and its acme module will first
+    try the request without the keyAuthorization field but will
+    temporarily retry the request with the field included if a
+    malformed error is received. This fallback will be removed in
     version 0.34.0.
 
 -------------------------------------------------------------------
 Fri Feb  8 10:27:51 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.31.0
-  * Support for initiating (but not solving end-to-end) TLS-ALPN-01 
+  * Support for initiating (but not solving end-to-end) TLS-ALPN-01
     challenges with the acme module.
-  * Fixed accessing josepy contents through acme.jose when the full 
+  * Fixed accessing josepy contents through acme.jose when the full
     acme.jose path is used.
   * Added the update_account subcommand for account management commands.
 
@@ -396,7 +412,7 @@ Sat Dec 15 07:02:55 UTC 2018 - Thomas Bechtold <tbechtold@suse.com>
 Fri Nov 16 16:48:27 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 0.28.0
-  * Use the ACMEv2 newNonce endpoint when a new nonce is needed, and 
+  * Use the ACMEv2 newNonce endpoint when a new nonce is needed, and
     newNonce is available in the directory.
   * Warn when using deprecated acme.challenges.TLSSNI01
 
@@ -404,9 +420,9 @@ Fri Nov 16 16:48:27 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
 Fri Sep 14 08:14:31 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 0.27.1
-  * acme client now raises an error when you try to create an ACME 
+  * acme client now raises an error when you try to create an ACME
     account with a key that has already been used
-  * you can now call query_registration without having to first 
+  * you can now call query_registration without having to first
     call new_account
 
 -------------------------------------------------------------------
@@ -432,7 +448,7 @@ Wed Jul  4 11:20:45 UTC 2018 - ecsos@opensuse.org
 
 - update to 0.25.1
   - No changelog from upstream
-  
+
 -------------------------------------------------------------------
 Wed Jun 13 17:48:04 UTC 2018 - ecsos@opensuse.org
 
@@ -561,7 +577,7 @@ Fri Mar  3 19:33:20 UTC 2017 - ecsos@opensuse.org
 
 - update to 0.12.0
   - No changelog provides by upstream
-  
+
 -------------------------------------------------------------------
 Wed Feb  8 23:22:26 UTC 2017 - ecsos@opensuse.org
 
@@ -671,7 +687,7 @@ Fri Jan 22 08:43:13 UTC 2016 - jweberhofer@weberhofer.at
 -------------------------------------------------------------------
 Fri Jan 15 07:30:29 UTC 2016 - jweberhofer@weberhofer.at
 
-- acme-build-on-python-older-than-2_7.patch allows building on 
+- acme-build-on-python-older-than-2_7.patch allows building on
   python version < 2.7
 
 -------------------------------------------------------------------

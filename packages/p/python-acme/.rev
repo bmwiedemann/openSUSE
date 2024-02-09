@@ -727,4 +727,41 @@
   * sync with the main certbot package</comment>
     <requestid>1132999</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>3592939a684ea62f3990a0fb77d1accb</srcmd5>
+    <version>2.9.0</version>
+    <time>1707519273</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.9.0:
+  * Support for Python 3.12 was added.
+  * Updates `joinpath` syntax to only use one addition per call,
+    because the multiple inputs version was causing mypy errors
+    on Python 3.10.
+  * Makes the `reconfigure` verb actually use the staging server
+    for the dry run to check the new configuration.
+
+- Add %{?sle15_python_module_pythons}
+
+  * acme.challenges.HTTP01Response.simple_verify now accepts a timeout argument
+    which defaults to 30 that causes the verification request to timeout after
+  * The default key type for new certificates is now ECDSA secp256r1 (P-256).
+  * acme.messages.Directory now only supports lookups by the exact resource name
+  * Certbot will no longer respect very long challenge polling intervals, which
+    may be suggested by some ACME servers. Certbot will continue to wait up to
+    90 seconds by default, or up to a total of 30 minutes if requested by the server
+  * acme.client.ClientV2 now provides separate begin_finalization and poll_finalization
+  * acme.client.ClientBase, acme.messages.Authorization.resolved_combinations,
+    acme.messages.Authorization.combinations, acme.mixins, acme.fields.resource
+  * acme.messages.OLD_ERROR_PREFIX (urn:acme:error:) is deprecated and support
+    for the old ACME error prefix in Certbot will be removed in the next major
+  * acme.messages.Directory.register is deprecated and will be removed in the
+    next major release of Certbot. Furthermore, .Directory will only support
+    lookups by the exact resource name string in the ACME directory (e.g.
+  * The source_address argument for acme.client.ClientNetwork is deprecated and
+  * use order &quot;status&quot; to determine action during finalization
+  * The PGP key F2871B4152AE13C49519111F447BF683AA3B26C3 was added
+  * Added show_account subcommand, which will fetch the account information from
+    the ACME server and show the account details (account URL and, if applicable,</comment>
+    <requestid>1145432</requestid>
+  </revision>
 </revisionlist>
