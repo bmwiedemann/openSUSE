@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  9 00:15:49 UTC 2024 - Luca Boccassi <bluca@debian.org>
+
+- New upstream version version 0.3. For a full list of changes, see
+  https://github.com/latchset/pkcs11-provider/releases/tag/v0.3
+
+-------------------------------------------------------------------
 Wed Oct 11 23:22:53 UTC 2023 - Luca Boccassi <bluca@debian.org>
 
 - Initial packaging of pkcs11-provider version 0.2

@@ -1,6 +1,7 @@
 #
 # spec file for package pkcs11-provider
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2023 Luca Boccassi <bluca@debian.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,10 +16,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define _MODULES_DIR %(pkg-config --variable=modulesdir libcrypto)
 
 Name:           pkcs11-provider
-Version:        0.2
+Version:        0.3
 Release:        0
 Summary:        OpenSSL 3 Engine for PKCS11
 License:        Apache-2.0
@@ -59,4 +61,3 @@ rm -f %{buildroot}%{_MODULES_DIR}/pkcs11.la
 %{_datadir}/doc/pkcs11-provider
 
 %changelog
-
