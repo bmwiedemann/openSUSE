@@ -1,7 +1,7 @@
 #
 # spec file for package python-watchfiles
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,8 @@ License:        MIT
 URL:            https://github.com/samuelcolvin/watchfiles
 Source0:        https://github.com/samuelcolvin/watchfiles/archive/refs/tags/v%{version}.tar.gz#/watchfiles-%{version}-gh.tar.gz
 Source1:        vendor.tar.xz
-BuildRequires:  %{python_module anyio >= 3.0.0}
+# gh#samuelcolvin/watchfiles#254
+BuildRequires:  %{python_module anyio >= 3.0.0 with %python-anyio < 4}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module maturin >= 0.14.16}
 BuildRequires:  %{python_module pip}
@@ -32,9 +33,9 @@ BuildRequires:  cargo-packaging
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-anyio >= 3.0.0
+Requires:       (python-anyio >= 3.0.0 with python-anyio < 4)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # SECTION test
 BuildRequires:  %{python_module dirty-equals}
 BuildRequires:  %{python_module pytest-mock}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  9 11:08:59 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Pin to anyio < 4: gh#samuelcolvin/watchfiles#254
+- Refresh cargo vendoring
+
+-------------------------------------------------------------------
 Sun Nov 19 15:46:50 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to 0.21.0:
