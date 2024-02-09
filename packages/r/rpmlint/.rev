@@ -4754,4 +4754,14 @@ oddjob-gpupdate isn't blocked)</comment>
 </comment>
     <requestid>1144682</requestid>
   </revision>
+  <revision rev="469" vrev="1">
+    <srcmd5>2084f1bc3ea97e4ab0e538f512cff77a</srcmd5>
+    <version>2.5.0+git20240207.4a699fe</version>
+    <time>1707519125</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.5.0+git20240207.4a699fe:
+  * sysctl-whitelist: update YAMA config (bsc#1219656)
+</comment>
+    <requestid>1145135</requestid>
+  </revision>
 </revisionlist>

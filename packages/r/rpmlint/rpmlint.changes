@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 08 08:44:12 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 2.5.0+git20240207.4a699fe:
+  * sysctl-whitelist: update YAMA config (bsc#1219656)
+
+-------------------------------------------------------------------
 Tue Feb 06 16:36:10 UTC 2024 - filippo.bonazzi@suse.com
 
 - Update to version 2.5.0+git20240206.b0eda3c:
