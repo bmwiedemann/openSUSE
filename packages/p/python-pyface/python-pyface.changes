@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb  9 12:00:01 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add missing setuptools build requirement
+- Make skip-qt4-tests.patch independent of ETS_TOOLKIT variable
+- Make sure we really don't import Pillow for testing
+
+-------------------------------------------------------------------
 Thu Dec  7 17:44:37 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Avoid non-deterministic modification of files by tests

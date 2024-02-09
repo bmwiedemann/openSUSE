@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyface
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 Name:           python-pyface
 Version:        8.0.0
 Release:        0
@@ -29,10 +28,13 @@ Source:         https://files.pythonhosted.org/packages/source/p/pyface/pyface-%
 # PATCH-FIX-OPENSUSE fix-wx-tests.patch
 Patch0:         fix-wx-tests.patch
 # PATCH-FIX-UPSTREAM skip-qt4-tests.patch gh#enthought/pyface#1252 mcepl@suse.com
-# Skip failing tests
 Patch1:         skip-qt4-tests.patch
-# gh#enthought/pyface#1255
+# gh#enthought/pyface#1255, might be pulled in by wxPython
 # BuildRequires:  %%{python_module Pillow}
+#!BuildIgnore:  python39-Pillow
+#!BuildIgnore:  python310-Pillow
+#!BuildIgnore:  python311-Pillow
+#!BuildIgnore:  python312-Pillow
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module importlib-resources >= 1.1.0}
@@ -40,6 +42,7 @@ BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module qtwebengine-qt5}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module traits >= 6.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module wxWidgets}
@@ -87,7 +90,7 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/py
 }
 
 %check
-export ETS_TOOLKIT=qt4
+export ETS_TOOLKIT=qt
 %{python_expand mkdir tester_%{$python_bin_suffix}
 pushd tester_%{$python_bin_suffix}
 cp -a %{buildroot}%{$python_sitelib} python_sitelib # copy to avoid modification of original https://github.com/enthought/pyface/issues/1254
