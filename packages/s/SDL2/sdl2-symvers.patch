@@ -36,7 +36,7 @@ Index: SDL2-2.26.0/sdl2.sym
 ===================================================================
 --- /dev/null
 +++ SDL2-2.26.0/sdl2.sym
-@@ -0,0 +1,319 @@
+@@ -0,0 +1,327 @@
 +SUSE_2.0.5 {
 +global:
 +	SDL_DequeueAudio;
@@ -356,3 +356,11 @@ Index: SDL2-2.26.0/sdl2.sym
 +	SDL_strcasestr;
 +	SDL_GetWindowSizeInPixels;
 +} SUSE_2.24.0;
++SUSE_2.28.0 {
++	SDL_GDKSuspendComplete;
++	SDL_HasWindowSurface;
++	SDL_DestroyWindowSurface;
++} SUSE_2.26.0;
++SUSE_2.30.0 {
++	SDL_GameControllerGetSteamHandle;
++} SUSE_2.28.0;
