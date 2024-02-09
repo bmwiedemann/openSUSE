@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Feb  8 14:10:04 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Upgrade to 13.14:
+  * bsc#1219679, CVE-2024-0985: Tighten security restrictions
+    within REFRESH MATERIALIZED VIEW CONCURRENTLY.
+    One step of a concurrent refresh command was run under weak
+    security restrictions. If a materialized view's owner could
+    persuade a superuser or other high-privileged user to perform a
+    concurrent refresh on that view, the view's owner could control
+    code executed with the privileges of the user running REFRESH.
+    Fix things so that all user-determined code is run as the
+    view's owner, as expected
+  * If you use GIN indexes, you may need to reindex after updating
+    to this release.
+  * LLVM 18 is now supported.
+  * https://www.postgresql.org/docs/release/13.4/
+
+-------------------------------------------------------------------
 Wed Nov  8 14:35:06 UTC 2023 - Reinhard Max <max@suse.com>
 
 - Update to 13.13:
@@ -27,7 +45,6 @@ Wed Nov  8 14:35:06 UTC 2023 - Reinhard Max <max@suse.com>
     such processes. No specific security consequences are known for
     that oversight, but it might be significant for some extensions.
   * Add support for LLVM 16 and 17
-  * https://www.postgresql.org/about/news/2749
   * https://www.postgresql.org/docs/13/release-13-13.html
 
 -------------------------------------------------------------------
