@@ -1,7 +1,7 @@
 #
 # spec file for package lzip
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2008-2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           lzip
-Version:        1.23
+Version:        1.24
 Release:        0
 Summary:        Lossless Data Compressor based on the LZMA Algorithm
 License:        GPL-2.0-or-later
@@ -48,7 +48,7 @@ pushd build/
 ../configure --prefix="%_prefix" --bindir="%_bindir" --datadir="%_datadir" \
 	--infodir="%_infodir" --mandir="%_mandir" --sysconfdir="%_sysconfdir" \
 	CC="%__cc" CFLAGS="%optflags" CXX="%__cxx" CXXFLAGS="%optflags"
-make %{?_smp_mflags}
+%make_build
 popd
 
 %install
@@ -58,7 +58,7 @@ popd
 
 %check
 pushd build/
-make %{?_smp_mflags} check
+%make_build check
 popd
 
 %post

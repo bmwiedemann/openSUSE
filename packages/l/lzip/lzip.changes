@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb  8 13:16:37 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.24
+  * Added the command-line switches --empty-error and
+    --marking-error
+  * The option -o/--output now preserves dates, permissions, and
+    ownership of the file when (de)compressing exactly one file.
+  * The option -o/--output now creates missing intermediate
+    directories when writing to a file.
+
+-------------------------------------------------------------------
 Sun Feb 13 22:32:35 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.23
