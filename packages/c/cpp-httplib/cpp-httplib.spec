@@ -1,7 +1,7 @@
 #
 # spec file for package cpp-httplib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%define sover 0.12
-%define libver 0_12
+%define sover 0.15
+%define libver 0_15
 Name:           cpp-httplib
-Version:        0.12.5
+Version:        0.15.1
 Release:        0
-Summary:        A C++11 HTTP/HTTPS library
+Summary:        A C++11 HTTP/HTTPS server and client library
 License:        MIT
 URL:            https://github.com/yhirose/cpp-httplib
 Source0:        https://codeload.github.com/yhirose/cpp-httplib/tar.gz/refs/tags/v%{version}#/%{name}-%{version}.tar.gz
@@ -30,7 +30,7 @@ BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(libbrotlienc)
-BuildRequires:  pkgconfig(openssl) >= 1.1.1
+BuildRequires:  pkgconfig(openssl) >= 3.0.0
 
 %package -n lib%{name}%{libver}
 Summary:        A C++11 HTTP/HTTPS library

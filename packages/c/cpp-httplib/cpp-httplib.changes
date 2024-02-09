@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Feb  2 17:01:44 UTC 2024 - Alexey Svistunov <svalx@svalx.net>
+
+- Update to version 0.15.1: 
+  * Malicious requests for many overlapping byte ranges of large files risk OOM #1766
+  * Add missing #include for strcasecmp #1744
+  * ThreadPool: optional limit for jobs queue (#1741)
+  * Fix #1628 (OpenSSL 1.1.1 End of Life on September 11, 2023)
+  * Fix Windows std::max macro problem #1750
+  * Fix select() return code for fd >= 1024 (#1757)
+  * Add a getter for a bearer token from a request (#1755)
+  * Support move semantics for Response::set_content() (#1764)
+  * Treat paths with embedded NUL bytes as invalid (#1765)
+  * Fix usage of rand() is not seeded and depends on seeding by parent program #1747
+  * Fix check request range and fix response Content-Range. #1694
+  * Fix: Query parameter including query delimiter ('?') not being parsed properly (#1713)
+  * Fix #1736
+  * Fix #1665
+  * Change some of status messages based on RFC 9110 (#1740)
+  * Add StatusCode enum (#1739)
+  * Fix #1738
+  * Fix #1685
+  * Fix #1724
+  * Add optional user defined header writer #1683
+  * Fix CPPHTTPLIB_ALLOW_LF_AS_LINE_TERMINATOR (#1634)
+  * Avoid a -Warray-bounds false positive in GCC 13. (#1639)
+  * Fix #1638
+  * Removed unnecessary CRLF at the end of multipart ranges data
+  * Fix #1559
+  * Use memory mapped file for static file server (#1632)
+  * Fix #1519
+  * Fix #1590 (#1630)
+  * Fix #1619
+  * Fix #1624
+  * Compiler freezes on Debian 10 (buster) with GCC 8.3.0 #1613
+  * Don't overwrite the last redirected location (#1589) # This is a breaking change.
+  * Fix #1607
+  * Add named path parameters parsing (Implements #1587) (#1608)
+  * Result: allow default constructor (#1609)
+  * Add support for zOS (#1581)
+  * Provide a CMake option to disable C++ exceptions (#1580)
+  * Load in-memory CA certificates (#1579)
+- Requires OpenSSL version to 3.0 or later
+
+-------------------------------------------------------------------
 Wed May 31 07:10:55 UTC 2023 - Alexey Svistunov <svalx@svalx.net>
 
 - Update to version 0.12.5:
