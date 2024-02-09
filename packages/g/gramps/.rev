@@ -566,4 +566,12 @@ Does it make sense to actually use &quot;Suggests:&quot;? I do not find a way to
     <comment>Version update: 5.1.5 -&gt; 5.1.6</comment>
     <requestid>1101123</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>8649f9a7a646adb180d0a6b5520ff9fc</srcmd5>
+    <version>5.1.6</version>
+    <time>1707519152</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20</comment>
+    <requestid>1145236</requestid>
+  </revision>
 </revisionlist>
