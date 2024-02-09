@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Thu Feb  8 19:58:58 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.27.1:
+  * pyproject: Include MIGRATION in sdist by @tony in #517, for
+    #508
+
+-------------------------------------------------------------------
+Thu Feb  8 19:57:35 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.27.0:
+  * Improvements
+    - QueryList: Generic fixes by @tony in #515
+      - This improves the annotations in descendant objects such
+        as:
+        - Server.sessions
+        - Session.windows
+        - Window.panes
+      - Bolster tests (ported from libvcs): doctests and pytests
+
+-------------------------------------------------------------------
+Thu Feb  8 19:48:46 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.26.0:
+  * Breaking change
+    - get_by_id() (already deprecated) keyword argument renamed
+      from id to
+    - Server.get_by_id(session_id), Session.get_by_id(window_id),
+      and Window.get_by_id(pane_id) (#514)
+  * Documentation
+    - Various docstring fixes and tweaks (#514)
+  * Development
+    - Strengthen linting (#514)
+      - Add flake8-commas (COM)
+      - Add flake8-builtins (A)
+      - Add flake8-errmsg (EM)
+  * CI
+    - Move CodeQL from advanced configuration file to GitHub's
+      default
+
+-------------------------------------------------------------------
+Mon Nov 27 05:28:27 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.25.0:
+  * Comparator fixes
+    - Fixed __eq__ for windows. by @m1guelperez in #505
+    - fix(pane,session,server): Return False if type mismatched by
+      @tony in #510
+  * Documentation
+    - ruff: Enable pydocstyle w/ numpy convention by @tony in #509
+
+-------------------------------------------------------------------
+Fri Nov 24 05:47:57 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.24.1:
+  * packaging: Remove requirements/ folder. Unused. by @tony in
+    #507
+  * pyproject: Add gp-libs to test dependency group
+
+-------------------------------------------------------------------
+Mon Nov 20 05:42:36 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.24.0:
+  * Breaking changes
+    - Drop Python 3.7 by @tony in #497
+  * Packaging
+    - packaging(pytest): Move configuration to pyproject.toml by
+      @tony in #499
+    - Poetry: 1.5.1 -> 1.6.1 (#497), 1.6.1 -> 1.7.0 (direct to
+      trunk)
+      See also:
+      https://github.com/python-poetry/poetry/blob/1.7.0/CHANGELOG.md
+    - Packaging (poetry): Fix development dependencies
+      Per Poetry's docs on managing dependencies and poetry check,
+      we had it wrong:
+      Instead of using extras, we should create these:
+      [tool.poetry.group.group-name.dependencies]
+      dev-dependency = "1.0.0"
+      Which we now do.
+  * Development
+    - Formatting: black -> ruff format by @tony in #506
+    - CI: Update action packages to fix warnings
+      - dorny/paths-filter: 2.7.0 -> 2.11.1
+      - codecov/codecov-action: 2 -> 3
+  * Full Changelog: v0.23.2...v0.24.0
+
+-------------------------------------------------------------------
 Mon Sep 11 04:53:57 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 0.23.2:
