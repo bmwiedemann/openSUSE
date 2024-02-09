@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  8 15:53:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Prepare for RPM 4.20: use autosetup.
+
+-------------------------------------------------------------------
 Thu Apr 23 18:10:24 UTC 2015 - zaitor@opensuse.org
 
 - Add net6-gnutls30.patch: Fix build with gnutls30, patch taken

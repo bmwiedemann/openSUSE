@@ -211,4 +211,12 @@
     <comment>1</comment>
     <requestid>298848</requestid>
   </revision>
+  <revision rev="31" vrev="13">
+    <srcmd5>e97bd37ff1cb112c0b5eb10c8bfd8206</srcmd5>
+    <version>1.3.14</version>
+    <time>1707519161</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20</comment>
+    <requestid>1145244</requestid>
+  </revision>
 </revisionlist>

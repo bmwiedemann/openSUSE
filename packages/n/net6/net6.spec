@@ -1,7 +1,7 @@
 #
 # spec file for package net6
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,19 +20,18 @@ Name:           net6
 Version:        1.3.14
 Release:        0
 Summary:        Network access framework for IPv4/IPv6
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
-Url:            http://gobby.0x539.de/
+URL:            http://gobby.0x539.de/
 Source:         http://releases.0x539.de/net6/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM net6-gnutls30.patch zaitor@opensuse.org -- Fix build with gnutls30, patch taken from Arch linux.
 Patch0:         net6-gnutls30.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(sigc++-2.0)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       %{name}-lang = %{version}
 
 %description
@@ -53,38 +52,31 @@ applications as it provides a TCP protocol abstraction for C++. It is
 portable to both the Windows and Unix-like platforms.
 
 %lang_package
+
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure --disable-static --with-pic
-make %{?jobs:-j%jobs}
+%make_build
 
 %install
-%makeinstall
+%make_install
 %find_lang %{name}
-%fdupes $RPM_BUILD_ROOT
-rm -f %{buildroot}%{_libdir}/*.la
+%fdupes %{buildroot}
+find %{buildroot} -type f -name "*.la" -delete -print
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
-%post
-/sbin/ldconfig
-
-%postun
-/sbin/ldconfig
+%post -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files
-%defattr (-, root, root)
-%doc AUTHORS COPYING ChangeLog NEWS README
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README
 %{_libdir}/*.so.*
 
 %files lang -f %{name}.lang
 
 %files devel
-%defattr (-, root, root)
 %{_includedir}/net6
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/*.so
