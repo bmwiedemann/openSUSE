@@ -48,7 +48,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{base_name}%{flavor_suffix}
-Version:        1.10
+Version:        1.11
 Release:        0
 License:        GPL-3.0-or-later
 Summary:        Network configuration scripts for %{csp_string}
@@ -105,6 +105,7 @@ ln -s /dev/null %{buildroot}/%{_sysconfdir}/udev/rules.d/75-persistent-net-gener
 
 %if %{with_sysconfig} == 1
 make install-netconfig-wrapper \
+  SCRIPTDIR=%{_scriptdir} \
   DESTDIR=%{buildroot} \
   NETCONFIGDIR=%{_netconfigdir}
 

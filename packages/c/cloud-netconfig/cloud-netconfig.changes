@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb  8 10:15:40 UTC 2024 - Joachim Gleissner <jgleissner@suse.com>
+
+- Update to version 1.11:
+  + Revert address metadata lookup in GCE to local lookup (bsc#1219454)
+  + Fix hang on warning log messages
+  + Check whether getting IPv4 addresses from metadata failed and abort
+    if true
+  + Only delete policy rules if they exist
+  + Skip adding/removing IPv4 ranges if metdata lookup failed
+  + Improve error handling and logging in Azure
+  + Set SCRIPTDIR when installing netconfig wrapper
+
+-------------------------------------------------------------------
 Fri Jan 19 14:20:48 UTC 2024 - Joachim Gleissner <jgleissner@suse.com>
 
 - Update to version 1.10:
