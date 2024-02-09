@@ -1,7 +1,7 @@
 #
 # spec file for package python-bqplot
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,8 @@
 #
 
 
+# https://github.com/bqplot/bqplot/issues/1639
+%define skip_python312 1
 %define         pyver 0.12.42
 %define         jupver 0.5.43
 Name:           python-bqplot

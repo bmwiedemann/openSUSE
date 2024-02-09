@@ -136,4 +136,13 @@
     @maartenbreddels in #1619</comment>
     <requestid>1134920</requestid>
   </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>79f10c3370350335c6f9cd5b83b61e43</srcmd5>
+    <version>unknown</version>
+    <time>1707519249</time>
+    <user>anag+factory</user>
+    <comment>- Don't build for python312 yet: ui-test failure of unknown reason
+  gh#bqplot/bqplot#1639</comment>
+    <requestid>1145389</requestid>
+  </revision>
 </revisionlist>
