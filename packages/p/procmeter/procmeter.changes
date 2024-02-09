@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  8 15:53:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Prepare for RPM 4.20: use autosetup.
+
+-------------------------------------------------------------------
 Wed Jul 12 08:58:23 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add procmeter-avoid-build-race.patch to make

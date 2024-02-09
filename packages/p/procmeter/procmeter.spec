@@ -1,7 +1,7 @@
 #
 # spec file for package procmeter
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,9 +58,7 @@ processor load, network load, etc.
 This package provides files needed to build modules for procmeter.
 
 %prep
-%setup -q -n procmeter3-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -n procmeter3-%{version} -p1
 
 %build
 make %{?_smp_mflags} INSTDIR=%{_prefix} CFLAGS="%{optflags}"
