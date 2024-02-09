@@ -197,4 +197,12 @@
   (jsc#SLE-21105). (forwarded request 920430 from sbrabec)</comment>
     <requestid>920554</requestid>
   </revision>
+  <revision rev="29" vrev="24">
+    <srcmd5>a5081c1ec0e460057f814b79a30512e5</srcmd5>
+    <version>0.6.2</version>
+    <time>1707519159</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20</comment>
+    <requestid>1145243</requestid>
+  </revision>
 </revisionlist>

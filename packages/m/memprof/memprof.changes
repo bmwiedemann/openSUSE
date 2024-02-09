@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  8 15:54:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Prepare for RPM 4.20: patchN -> patch -P N.
+
+-------------------------------------------------------------------
 Mon Sep 20 20:18:05 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

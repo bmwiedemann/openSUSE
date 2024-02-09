@@ -1,7 +1,7 @@
 #
 # spec file for package memprof
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,9 +49,9 @@ requirements and hunt for leaks very easily.
 
 %prep
 %setup -q
-%patch3
-%patch4 -p1
-%patch2 -p1
+%patch -P 3
+%patch -P 4 -p1
+%patch -P 2 -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing" CXXFLAGS="%{optflags} -fno-strict-aliasing"
