@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  8 19:01:58 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.2:
+  * This security release fixes GHSA-3qx3-6hxr-j2ch
+  * Update libgit2 to 1.7.2
+
+-------------------------------------------------------------------
 Thu Feb  8 06:38:00 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.18.1:
