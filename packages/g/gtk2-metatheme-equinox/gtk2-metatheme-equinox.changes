@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  8 15:59:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Prepare for RPM 4.20: patchN -> patch -P N.
+
+-------------------------------------------------------------------
 Fri Jan 13 13:07:34 UTC 2012 - vuntz@opensuse.org
 
 - Add dmz-icon-theme-cursors and faenza-icon-theme Requires to main

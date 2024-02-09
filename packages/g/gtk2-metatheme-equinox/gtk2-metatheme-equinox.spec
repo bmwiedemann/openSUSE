@@ -1,7 +1,7 @@
 #
 # spec file for package gtk2-metatheme-equinox
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define _version 1.50
 # Unfortunately, the tarballs are not properly versioned. The real
@@ -23,9 +24,9 @@ Name:           gtk2-metatheme-equinox
 Version:        1.50
 Release:        0
 Summary:        Equinox Metathemes for GTK+
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
-Url:            http://gnome-look.org/content/show.php/Equinox+GTK+Engine?content=121881
+URL:            http://gnome-look.org/content/show.php/Equinox+GTK+Engine?content=121881
 Source0:        http://gnome-look.org/CONTENT/content-files/121881-equinox-%{_version}.tar.gz
 Source1:        http://gnome-look.org/CONTENT/content-files/140449-equinox-themes-%{_version}.tar.gz
 # PATCH-FIX-UPSTREAM gtk2-metatheme-equinox-glib-2.31.patch dimstar@opensuse.org -- Fix build with glib 2.31. Sent upstream by mail (vuntz, 2011-01-05)
@@ -55,7 +56,7 @@ of the Aurora engine (version 1.40).
 %prep
 %setup -q -c %{name}-%{_version} -a1
 pushd equinox-%{_version}
-%patch1 -p1
+%patch -P 1 -p1
 for file in AUTHORS ChangeLog COPYING NEWS README; do
   chmod -x $file
 done
