@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 05 07:23:08 UTC 2024 - dcermak@suse.com
+
+- Update to version 1.14.2:
+  * [release-1.14] Bump Skopeo to v1.14.2
+  * [release-1.14] Bump c/image to v5.29.2, c/common to v0.57.3 (fixes bsc#1219563)
+
+-------------------------------------------------------------------
 Mon Jan 22 10:20:36 UTC 2024 - dcermak@suse.com
 
 - Update to version 1.14.1:
