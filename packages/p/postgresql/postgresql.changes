@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  8 12:09:14 UTC 2024 - Reinhard Max <max@suse.com>
+
+- bsc#1219340: Require fillup.
+
+-------------------------------------------------------------------
 Fri Oct 13 16:58:03 UTC 2023 - Reinhard Max <max@suse.com>
 
 - Interlock version and release of all noarch packages except for

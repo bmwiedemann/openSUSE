@@ -583,4 +583,12 @@
   the postgresql-docs.</comment>
     <requestid>1120258</requestid>
   </revision>
+  <revision rev="69" vrev="3">
+    <srcmd5>71603e36adf1810713c7bb16ab6d0f8a</srcmd5>
+    <version>16</version>
+    <time>1707519109</time>
+    <user>anag+factory</user>
+    <comment>- bsc#1219340: Require fillup.</comment>
+    <requestid>1145267</requestid>
+  </revision>
 </revisionlist>

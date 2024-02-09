@@ -131,6 +131,7 @@ BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
 %else
 Requires(postun): %insserv_prereq
+Requires(pre):    %fillup_prereq
 %endif
 
 
