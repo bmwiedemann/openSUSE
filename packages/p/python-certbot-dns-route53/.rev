@@ -327,4 +327,24 @@
     <comment>certbot version bump</comment>
     <requestid>1133011</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>1243ad8aa6629b586e8ec1a1420a26e2</srcmd5>
+    <version>2.9.0</version>
+    <time>1707519276</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.9.0:
+  * Support for Python 3.12 was added.
+  * Updates `joinpath` syntax to only use one addition per call,
+    because the multiple inputs version was causing mypy errors
+    on Python 3.10.
+  * Makes the `reconfigure` verb actually use the staging server
+    for the dry run to check the new configuration.
+
+- Add %{?sle15_python_module_pythons}
+
+  * --dns-route53-propagation-seconds is now deprecated. The Route53 plugin relies on the GetChange API to
+    determine if a DNS update is complete. The flag has never had any effect and will be removed in a future
+  * Test fix for Route53 plugin to prevent boto3 making outgoing</comment>
+    <requestid>1145440</requestid>
+  </revision>
 </revisionlist>
