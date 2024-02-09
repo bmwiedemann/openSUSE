@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package postgresql12
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define pgversion 12.16
+%define pgversion 12.18
 %define pgmajor 12
 %define buildlibs 0
 %define tarversion %{pgversion}
-%define latest_supported_llvm_ver 15
+%define latest_supported_llvm_ver 18
 
 ### CUT HERE ###
 %define pgname postgresql%pgmajor
@@ -187,7 +187,7 @@ Provides:       postgresql = %version-%release
 Provides:       postgresql-implementation = %version-%release
 Requires:       %libpq >= %version
 Requires(post): postgresql-noarch >= %pgmajor
-Requires(postun):postgresql-noarch >= %pgmajor
+Requires(postun): postgresql-noarch >= %pgmajor
 # At this point we changed the package layout on SLE and conflict with
 # older releases to get a clean cut.
 Conflicts:      postgresql-noarch < 12.0.1
@@ -277,7 +277,7 @@ Provides:       %pgname-server-devel = %version-%release
 Provides:       postgresql-server-devel = %version-%release
 Provides:       postgresql-server-devel-implementation = %version-%release
 Requires(post): postgresql-server-devel-noarch >= %pgmajor
-Requires(postun):postgresql-server-devel-noarch >= %pgmajor
+Requires(postun): postgresql-server-devel-noarch >= %pgmajor
 Requires:       %pgname-devel = %version
 Requires:       %pgname-server = %version-%release
 # Installation of postgresql??-devel is exclusive
@@ -335,10 +335,10 @@ Recommends:     %{name}-llvmjit
 Provides:       postgresql-server-implementation = %version-%release
 Requires:       %libpq >= %version
 Requires(pre):  postgresql-server-noarch >= %pgmajor
-Requires(preun):postgresql-server-noarch >= %pgmajor
-Requires(postun):postgresql-server-noarch >= %pgmajor
+Requires(preun): postgresql-server-noarch >= %pgmajor
+Requires(postun): postgresql-server-noarch >= %pgmajor
 Requires(post): postgresql-noarch >= %pgmajor
-Requires(postun):postgresql-noarch >= %pgmajor
+Requires(postun): postgresql-noarch >= %pgmajor
 
 %description server
 PostgreSQL is an advanced object-relational database management system
@@ -377,7 +377,7 @@ Requires:       %pgname-server-devel = %version
 %if %{with llvm}
 Requires:       %pgname-llvmjit = %version
 Requires(post): postgresql-llvmjit-devel-noarch >= %pgmajor
-Requires(postun):postgresql-llvmjit-devel-noarch >= %pgmajor
+Requires(postun): postgresql-llvmjit-devel-noarch >= %pgmajor
 %requires_file	%_bindir/llc
 %requires_file	%_bindir/clang
 %endif
@@ -797,11 +797,9 @@ awk -v P=%buildroot '/^(%lang|[^%])/{print P $NF}' libpq.files libecpg.files | x
 
 %post -n %pgname-%devel
 /sbin/ldconfig
-/usr/share/postgresql/install-alternatives %pgmajor
 
 %postun -n %pgname-%devel
 /sbin/ldconfig
-/usr/share/postgresql/install-alternatives %pgmajor
 
 %if %{with server_devel}
 %post server-devel

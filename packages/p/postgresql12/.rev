@@ -384,4 +384,41 @@ Upgrade to version 12.6:
     <comment>Revert last change and make the devel package independend</comment>
     <requestid>1121432</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ca983e82dffb93e72a0852f7053d29ba</srcmd5>
+    <version>12.18</version>
+    <time>1707519178</time>
+    <user>anag+factory</user>
+    <comment>- Upgrade to 12.18:
+  * bsc#1219679, CVE-2024-0985: Tighten security restrictions
+    within REFRESH MATERIALIZED VIEW CONCURRENTLY.
+    One step of a concurrent refresh command was run under weak
+    security restrictions. If a materialized view's owner could
+    persuade a superuser or other high-privileged user to perform a
+    concurrent refresh on that view, the view's owner could control
+    code executed with the privileges of the user running REFRESH.
+    Fix things so that all user-determined code is run as the
+    view's owner, as expected
+  * If you use GIN indexes, you may need to reindex after updating
+    to this release.
+  * LLVM 18 is now supported.
+  * https://www.postgresql.org/docs/release/12.18/
+
+- Update to 12.17:
+  * bsc#1216962, CVE-2023-5868: Fix handling of unknown-type
+    arguments in DISTINCT &quot;any&quot; aggregate functions. This error led
+    to a text-type value being interpreted as an unknown-type value
+    (that is, a zero-terminated string) at runtime. This could
+    result in disclosure of server memory following the text value.
+  * bsc#1216961, CVE-2023-5869: Detect integer overflow while
+    computing new array dimensions. When assigning new elements to
+    array subscripts that are outside the current array bounds, an
+    undetected integer overflow could occur in edge cases. Memory
+    stomps that are potentially exploitable for arbitrary code
+    execution are possible, and so is disclosure of server memory.
+  * bsc#1216960, CVE-2023-5870: Prevent the pg_signal_backend role
+    from signalling background workers and autovacuum processes.
+    The documentation says that pg_signal_backend cannot issue</comment>
+    <requestid>1145273</requestid>
+  </revision>
 </revisionlist>
