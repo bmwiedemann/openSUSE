@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Feb  9 19:19:21 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.20.3:
+  https://istio.io/latest/news/releases/1.20.x/announcing-1.20.3/
+  * Improved graceful termination abort logic when the Envoy
+    process terminates early. (Issue #36686)
+  * Fixed an issue where updating a service’s TargetPort does not
+    trigger an xDS push. (Issue #48580)
+  * Fixed an issue where in-cluster analysis was unnecessarily
+    performed when there’s no configuration change. (Issue #48665)
+  * Fixed an issue where the webhook generated with istioctl tag
+    set is unexpectedly removed by the installer. (Issue #47423)
+  * Fixed a bug that results in the incorrect generation of
+    configurations for pods without associated services, which
+    includes all services within the same namespace. This can
+    occasionally lead to conflicting inbound listeners error.
+  * Fixed a bug that made PeerAuthentication too restrictive in
+    ambient mode.
+  * Fixed an issue causing Istio CNI to stop functioning on
+    minimal/locked down nodes (such as no sh binary). The new logic
+    runs with no external dependencies, and will attempt to
+    continue if errors are encountered (which could be caused by
+    things like SELinux rules). In particular, this fixes running
+    Istio on Bottlerocket nodes. (Issue #48746)
+
+-------------------------------------------------------------------
 Wed Jan 10 19:23:07 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.20.2:
