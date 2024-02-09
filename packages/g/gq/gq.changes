@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  8 16:01:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Prepare for RPM 4.20: use autosetup.
+
+-------------------------------------------------------------------
 Thu Jun  4 18:56:36 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Export -fcommon to optflags, fixes build with gcc 10. Yes this is

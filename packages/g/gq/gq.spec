@@ -1,7 +1,7 @@
 #
 # spec file for package gq
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           gq
 BuildRequires:  glib2-devel
@@ -34,11 +35,11 @@ BuildRequires:  pkgconfig
 BuildRequires:  shared-mime-info
 BuildRequires:  update-desktop-files
 Summary:        An LDAP Client for GTK
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/LDAP/Clients
 Version:        1.2.3
 Release:        0
-Url:            http://gq-project.org/
+URL:            http://gq-project.org/
 Source0:        gq-%{version}.tar.bz2
 Source1:        gq-%{version}-langpack-1.tar.bz2
 # PATCH-FIX-UPSTREAM gq-fix-linking.patch vuntz@opensuse.org -- Fix linking issue, taken from git
@@ -52,9 +53,7 @@ An LDAP client for GTK.
 
 %prep
 %setup -q
-%setup -T -D -a 1
-%patch0 -p1
-%patch1 -p1
+%autosetup -T -D -a 1 -p1
 
 %build
 # needed for patch0
