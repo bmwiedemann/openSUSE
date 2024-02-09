@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  6 13:48:25 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- icd files moved to /usr/share/OpenCL/vendors with TW, not yet
+  with sle15
+
+-------------------------------------------------------------------
 Tue Jan 30 08:29:37 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 23.48.27912.11 

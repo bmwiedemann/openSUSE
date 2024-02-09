@@ -66,7 +66,7 @@ export CXXFLAGS="-Wno-error=maybe-uninitialized -Wno-error=mismatched-new-delete
 %install
 %cmake_install
 chmod +x %{buildroot}%{_libdir}/intel-opencl/libigdrcl.so
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1600
 mkdir -p %{buildroot}/%{_datadir}/OpenCL/vendors
 mv %{buildroot}/%{_sysconfdir}/OpenCL/vendors/intel.icd %{buildroot}/%{_datadir}/OpenCL/vendors/
 %endif
@@ -82,7 +82,7 @@ rm -Rf %{buildroot}%{_prefix}/lib/debug
 %{_libdir}/libze_intel_gpu.so.1.3.*
 %{_bindir}/ocloc
 %{_libdir}/intel-opencl
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1600
 %{_datadir}/OpenCL
 %{_datadir}/OpenCL/vendors
 %{_datadir}/OpenCL/vendors/intel.icd
