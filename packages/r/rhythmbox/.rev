@@ -805,4 +805,12 @@
     <comment></comment>
     <requestid>1079953</requestid>
   </revision>
+  <revision rev="104" vrev="2">
+    <srcmd5>3c0e94a8e40fd89a974bb9010c7216ca</srcmd5>
+    <version>3.4.7</version>
+    <time>1707519168</time>
+    <user>anag+factory</user>
+    <comment>- Specify proper version for libsoup dependency.</comment>
+    <requestid>1145252</requestid>
+  </revision>
 </revisionlist>

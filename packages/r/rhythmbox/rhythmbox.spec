@@ -1,7 +1,7 @@
 #
 # spec file for package rhythmbox
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,7 @@ BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpeas-1.0) >= 0.7.3
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 0.7.3
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
-BuildRequires:  pkgconfig(libsoup-3.0)
+BuildRequires:  pkgconfig(libsoup-3.0) >= 3.0.7
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.8
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(tdb)
