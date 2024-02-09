@@ -317,4 +317,27 @@
     <comment>certbot version bump</comment>
     <requestid>1133002</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>1070914002a050d0dc0fdafe73b8e5dc</srcmd5>
+    <version>2.9.0</version>
+    <time>1707519277</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.9.0:
+  * Support for Python 3.12 was added.
+  * Updates `joinpath` syntax to only use one addition per call,
+    because the multiple inputs version was causing mypy errors
+    on Python 3.10.
+  * Makes the `reconfigure` verb actually use the staging server
+    for the dry run to check the new configuration.
+
+- Add %{?sle15_python_module_pythons}
+
+  * Fixed an incompatibility in the certbot-dns-cloudflare plugin and the
+    Cloudflare library which was introduced in the Cloudflare library version
+    2.10.1. The library would raise an error if a token was specified in the
+    Certbot --dns-cloudflare-credentials file as well as the cloudflare.cfg
+  * sync with the main certbot package
+  * sync with main certbot package</comment>
+    <requestid>1145441</requestid>
+  </revision>
 </revisionlist>
