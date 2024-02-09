@@ -20,7 +20,7 @@
 # nothing provides python2-pyramid needed by python2-pyramid-mako
 %define skip_python2 1
 Name:           python-pyramid-debugtoolbar
-Version:        4.11
+Version:        4.12.1
 Release:        0
 Summary:        An interactive HTML debugger for Pyramid application development
 License:        BSD-4-Clause AND ZPL-2.1 AND MIT

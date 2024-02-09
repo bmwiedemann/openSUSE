@@ -69,4 +69,19 @@
     trailing commas.</comment>
     <requestid>1142840</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>93c947b5de7efc544da7f624aa9b8cae</srcmd5>
+    <version>4.12.1</version>
+    <time>1707519307</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.12.1:
+  * Fix a toolbar crash when loading the page and there aren't
+    any visible requests yet.
+  * Fix a concern where the toolbar may access sensitive request
+    attributes like ``request.authenticated_userid`` at times
+    outside of the supported request lifecycle.
+  * Avoid triggering DeprecationWarnings when tracking values for
+    deprecated attributes in Pyramid like ``effective_principals``.</comment>
+    <requestid>1145530</requestid>
+  </revision>
 </revisionlist>

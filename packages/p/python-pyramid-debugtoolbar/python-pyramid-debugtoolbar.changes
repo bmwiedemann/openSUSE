@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb  9 21:57:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.12.1:
+  * Fix a toolbar crash when loading the page and there aren't
+    any visible requests yet.
+  * Fix a concern where the toolbar may access sensitive request
+    attributes like ``request.authenticated_userid`` at times
+    outside of the supported request lifecycle.
+  * Avoid triggering DeprecationWarnings when tracking values for
+    deprecated attributes in Pyramid like ``effective_principals``.
+
+-------------------------------------------------------------------
 Tue Jan 30 18:03:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.11:
