@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb  9 12:55:22 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Clean the spec file and use javapackages-local >= 6
+
+-------------------------------------------------------------------
 Thu Feb  8 12:32:59 UTC 2024 - Gus Kenion <gkenion@suse.com>
 
  - Security fix [bsc#1218605, CVE-2023-51441] SSRF when untrusted

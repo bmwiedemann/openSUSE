@@ -63,8 +63,7 @@ BuildRequires:  glassfish-activation-api
 BuildRequires:  jakarta-commons-discovery
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javamail
-BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  junit
 BuildRequires:  reload4j
 BuildRequires:  servletapi5
@@ -96,8 +95,6 @@ Manual for axis
 
 %prep
 %setup -q -n %{name}-1_4
-cp %{SOURCE5} %{SOURCE6} %{SOURCE7} .
-%pom_xpath_remove pom:distributionManagement *.pom
 
 %patch0 -p1
 %patch1 -p1 -b gcc44-build
@@ -159,13 +156,13 @@ popd
 
 # POMs
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -m 644 %{SOURCE4} %{buildroot}%{_mavenpomdir}/JPP.%{name}.pom
+%{mvn_install_pom} %{SOURCE4} %{buildroot}%{_mavenpomdir}/JPP.%{name}.pom
 %add_maven_depmap JPP.%{name}.pom %{name}/axis.jar
-install -m 644 axis-ant-1.4.pom %{buildroot}%{_mavenpomdir}/JPP.%{name}-ant.pom
+%{mvn_install_pom} %{SOURCE5} %{buildroot}%{_mavenpomdir}/JPP.%{name}-ant.pom
 %add_maven_depmap JPP.%{name}-ant.pom %{name}/axis-ant.jar -a org.apache.axis:axis-ant
-install -m 644 %{name}-jaxrpc-1.4.pom %{buildroot}%{_mavenpomdir}/JPP.%{name}-jaxrpc.pom
+%{mvn_install_pom} %{SOURCE6} %{buildroot}%{_mavenpomdir}/JPP.%{name}-jaxrpc.pom
 %add_maven_depmap JPP.%{name}-jaxrpc.pom %{name}/jaxrpc.jar -a org.apache.axis:%{name}-jaxrpc
-install -m 644 %{name}-saaj-1.4.pom %{buildroot}%{_mavenpomdir}/JPP.%{name}-saaj.pom
+%{mvn_install_pom} %{SOURCE7} %{buildroot}%{_mavenpomdir}/JPP.%{name}-saaj.pom
 %add_maven_depmap JPP.%{name}-saaj.pom %{name}/saaj.jar -a org.apache.axis:%{name}-saaj
 
 %files -f .mfiles

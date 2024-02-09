@@ -299,4 +299,12 @@
     <comment>bsc#1218605, CVE-2023-51441</comment>
     <requestid>1145180</requestid>
   </revision>
+  <revision rev="41" vrev="308">
+    <srcmd5>6b796d40740e132d84675cbc0fae4621</srcmd5>
+    <version>1.4</version>
+    <time>1707519263</time>
+    <user>anag+factory</user>
+    <comment>minor cleanup</comment>
+    <requestid>1145418</requestid>
+  </revision>
 </revisionlist>
