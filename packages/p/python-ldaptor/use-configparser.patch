@@ -1,0 +1,24 @@
+From 4b44090a95fb288749ce5ec843ac7a57121de8fa Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Fri, 9 Feb 2024 11:43:49 +1100
+Subject: [PATCH] Use configparser.ConfigParser
+
+SafeconfigParser has been deprecated since Python 3.2, and was finally
+removed in 3.12, so switch to it directly.
+---
+ ldaptor/config.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ldaptor/config.py b/ldaptor/config.py
+index 1d5adcc3..3a9e9f73 100644
+--- a/ldaptor/config.py
++++ b/ldaptor/config.py
+@@ -136,7 +136,7 @@ def loadConfig(configFiles=None, reload=False):
+     """
+     global __config
+     if __config is None or reload:
+-        x = configparser.SafeConfigParser()
++        x = configparser.ConfigParser()
+ 
+         for section, options in DEFAULTS.items():
+             x.add_section(section)

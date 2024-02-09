@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  9 00:47:56 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patchuse-configparser.patch:
+  * Use non-deprecated configparser class.
+
+-------------------------------------------------------------------
 Sun Jun 11 15:31:56 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

@@ -55,4 +55,13 @@
     <comment>- Add %{?sle15_python_module_pythons}</comment>
     <requestid>1092365</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>763466152c432d1943ac38d134f7f794</srcmd5>
+    <version>21.2.0</version>
+    <time>1707519217</time>
+    <user>anag+factory</user>
+    <comment>- Add patchuse-configparser.patch:
+  * Use non-deprecated configparser class.</comment>
+    <requestid>1145314</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-ldaptor
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,12 @@ Version:        21.2.0
 Release:        0
 Summary:        A Pure-Python Twisted library for LDAP
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/twisted/ldaptor
 Source:         https://files.pythonhosted.org/packages/source/l/ldaptor/ldaptor-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM remove-infinite-tmpfile-creation.patch -- gh#twisted/ldaptor#238
 Patch1:         remove-infinite-tmpfile-creation.patch
+# PATCH-FIX-UPSTREAM gh#twisted/ldaptor#242
+Patch2:         use-configparser.patch
 BuildRequires:  %{python_module Twisted-tls}
 BuildRequires:  %{python_module passlib}
 BuildRequires:  %{python_module pip}
@@ -42,7 +43,7 @@ Requires:       python-passlib
 Requires:       python-pyparsing
 Requires:       python-zope.interface
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -93,7 +94,7 @@ end}
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/ldaptor
-%{python_sitelib}/ldaptor-%{version}*-info
+%{python_sitelib}/ldaptor-%{version}.dist-info
 %{lua:for b in rpm.expand("%{binaries}"):gmatch("%S+") do
   print(rpm.expand("%python_alternative %{_bindir}/" .. b.. "\n"))
 end}
