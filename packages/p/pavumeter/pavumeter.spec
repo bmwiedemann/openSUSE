@@ -1,7 +1,7 @@
 #
 # spec file for package pavumeter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,8 +42,7 @@ PulseAudio Volume Meter (pavumeter) is a simple GTK volume meter for
 the PulseAudio sound server.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 autoreconf -fi
