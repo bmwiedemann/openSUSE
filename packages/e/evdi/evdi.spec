@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define _dllibdir %{_libdir}/displaylink
 %define lname   libevdi1
 Name:           evdi
@@ -45,6 +46,7 @@ an application that uses the libevdi library.
 %package -n %{lname}
 Summary:        LibEVDI Library
 Group:          System/Libraries
+Requires:       evdi-kmp
 
 %description -n %{lname}
 The Extensible Virtual Display Interface (EVDI) is a Linux kernel module

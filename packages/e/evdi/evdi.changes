@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb  2 16:43:41 UTC 2024 - Joan Torres <joan.torres@suse.com>
+
+- Add evdi-kmp dependency.
+
+-------------------------------------------------------------------
 Fri Feb  2 11:38:54 UTC 2024 - Joan Torres <joan.torres@suse.com>
 
 - At %kernel_module_package add _projectcert.crt to automatically add
