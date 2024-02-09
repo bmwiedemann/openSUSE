@@ -1,7 +1,7 @@
 #
 # spec file for package kubectl-foreach
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kubectl-foreach
-Version:        0.2.1
+Version:        0.3.0
 Release:        0
 Summary:        Run kubectl commands in all/some contexts in parallel
 License:        Apache-2.0

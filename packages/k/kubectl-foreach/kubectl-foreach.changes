@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 09 19:23:04 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.3.0:
+  * upkeep
+  * Fail if --context is already in pos args (no -I)
+  * Document plugin installation
+
+-------------------------------------------------------------------
 Mon Dec  5 14:15:22 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - new package kubectl-foreach

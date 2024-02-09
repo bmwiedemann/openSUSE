@@ -7,4 +7,12 @@
     <comment>new package kubectl-foreach: Run kubectl commands in all/some contexts in parallel</comment>
     <requestid>1042351</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>00260dd5d0ba54215a5e8b2ebd9da0bd</srcmd5>
+    <version>0.3.0</version>
+    <time>1707519292</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1145515</requestid>
+  </revision>
 </revisionlist>
