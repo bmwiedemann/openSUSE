@@ -1,9 +1,9 @@
-Index: Python-3.12.0rc1/Lib/site.py
+Index: Python-3.12.2/Lib/site.py
 ===================================================================
---- Python-3.12.0rc1.orig/Lib/site.py
-+++ Python-3.12.0rc1/Lib/site.py
-@@ -76,7 +76,7 @@ import _sitebuiltins
- import io
+--- Python-3.12.2.orig/Lib/site.py
++++ Python-3.12.2/Lib/site.py
+@@ -77,7 +77,7 @@ import io
+ import stat
  
  # Prefixes for site-packages; add additional prefixes like /usr/local here
 -PREFIXES = [sys.prefix, sys.exec_prefix]

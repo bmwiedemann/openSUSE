@@ -4,10 +4,10 @@ unchanged:
  Doc/library/turtle.rst |   81 -------------------------------------------------
  1 file changed, 81 deletions(-)
 
-Index: Python-3.12.0rc1/Doc/library/turtle.rst
+Index: Python-3.12.2/Doc/library/turtle.rst
 ===================================================================
---- Python-3.12.0rc1.orig/Doc/library/turtle.rst
-+++ Python-3.12.0rc1/Doc/library/turtle.rst
+--- Python-3.12.2.orig/Doc/library/turtle.rst
++++ Python-3.12.2/Doc/library/turtle.rst
 @@ -441,7 +441,6 @@ Turtle motion
     turtle is headed.
  
