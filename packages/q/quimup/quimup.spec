@@ -17,15 +17,16 @@
 #
 
 
+%define _mainv  2.0.0
 Name:           quimup
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        A client for the music player daemon (MPD)
 # was http://www.coonsden.com
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://quimup.sourceforge.io
-Source0:        https://sourceforge.net/projects/quimup/files/Quimup%20%{version}/%{name}_%{version}_source.tar.gz
+Source0:        https://sourceforge.net/projects/quimup/files/Quimup%20%{_mainv}/Quimup-%{version}.source.tar.gz
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Gui)
@@ -44,7 +45,6 @@ playback functions are directly accessible from the system tray.
 
 %prep
 %autosetup -p1 -n Quimup
-#chmod -x COPYING changelog description FAQ.txt README
 
 %build
 %qmake6
