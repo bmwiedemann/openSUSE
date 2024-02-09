@@ -1,7 +1,7 @@
 #
 # spec file for package nsd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define zonesdir   %{configdir}/zones
 %define pidfile    %{_rundir}/nsd/nsd.pid
 Name:           nsd
-Version:        4.7.0
+Version:        4.8.0
 Release:        0
 #
 Summary:        An authoritative-only domain name server
@@ -56,6 +56,8 @@ Requires(post): findutils
 Requires(post): shadow
 Requires(pre):  coreutils
 Requires(pre):  shadow
+Provides:       group(_nsd)
+Provides:       user(_nsd)
 %{?systemd_ordering}
 
 %description

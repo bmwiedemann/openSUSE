@@ -338,4 +338,14 @@ BUG FIXES:
 - Fix build for SLE12</comment>
     <requestid>1102572</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>7fbbce2e8f4964ca122fc095228443c6</srcmd5>
+    <version>4.8.0</version>
+    <time>1707519252</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1144903 from dimstar
+
+- Provide user/group symbol for user created during pre.</comment>
+    <requestid>1145386</requestid>
+  </revision>
 </revisionlist>
