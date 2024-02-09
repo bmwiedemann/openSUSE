@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb  9 21:43:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.1:
+  * Fix the reporting of skipped tests in verbose mode on newer
+    pythons (3.12.1+), in which a skipped test is no longer
+    treated as "started". nose2 will not introduce a
+    StartTestEvent in such cases -- the fix is narrowly and
+    adjustment to the test reporter.
+  * Fix the reporting of skipped tests in verbose mode on newer
+    pythons (3.12.1+), in which a skipped test is no longer
+    treated as "started".
+  * nose2 will not introduce a StartTestEvent in such cases --
+    the fix is narrowly and adjustment to the test reporter.
+- drop support-python312.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Jan  8 05:39:22 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.14.0;

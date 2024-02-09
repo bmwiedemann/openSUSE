@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-nose2
-Version:        0.14.0
+Version:        0.14.1
 Release:        0
 Summary:        The successor to the Python testing framework nose, based on unittest
 License:        BSD-2-Clause AND Python-2.0
@@ -26,8 +26,6 @@ URL:            https://github.com/nose-devs/nose2
 Source:         https://files.pythonhosted.org/packages/source/n/nose2/nose2-%{version}.tar.gz
 # Required for testsuite. Bring on python-wheel-wheel
 Source1:        https://files.pythonhosted.org/packages/c7/c3/55076fc728723ef927521abaa1955213d094933dc36d4a2008d5101e1af5/wheel-0.42.0-py3-none-any.whl
-# PATCH-FIX-UPSTREAM Based on gh#nose-devs/nose2#593
-Patch0:         support-python312.patch
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools-wheel}
@@ -36,7 +34,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Suggests:       python-coverage
 BuildArch:      noarch
 %python_subpackages

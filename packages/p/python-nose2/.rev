@@ -123,4 +123,23 @@
   wheels.</comment>
     <requestid>1137466</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>090bebc2e0fce6ebf43cc6f5ad8d8cd6</srcmd5>
+    <version>0.14.1</version>
+    <time>1707519302</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.14.1:
+  * Fix the reporting of skipped tests in verbose mode on newer
+    pythons (3.12.1+), in which a skipped test is no longer
+    treated as &quot;started&quot;. nose2 will not introduce a
+    StartTestEvent in such cases -- the fix is narrowly and
+    adjustment to the test reporter.
+  * Fix the reporting of skipped tests in verbose mode on newer
+    pythons (3.12.1+), in which a skipped test is no longer
+    treated as &quot;started&quot;.
+  * nose2 will not introduce a StartTestEvent in such cases --
+    the fix is narrowly and adjustment to the test reporter.
+- drop support-python312.patch (upstream)</comment>
+    <requestid>1145529</requestid>
+  </revision>
 </revisionlist>
