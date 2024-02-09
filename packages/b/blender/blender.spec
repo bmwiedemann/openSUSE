@@ -97,9 +97,8 @@ Source5:        geeko.README
 Source6:        geeko_example_scene.blend
 Source7:        geeko_example_scene.README
 Source8:        %{name}-sample
-Source9:        %{name}.appdata.xml
-Source10:       SUSE-NVIDIA-GPU-rendering.txt
-Source11:       SUSE-NVIDIA-OptiX-rendering.txt
+Source9:        SUSE-NVIDIA-GPU-rendering.txt
+Source10:       SUSE-NVIDIA-OptiX-rendering.txt
 Source99:       series
 # PATCH-FIX-OPENSUSE https://developer.blender.org/D5858
 Patch0:         reproducible.patch
@@ -521,12 +520,9 @@ install -D -m 0644 %{SOURCE5} %{buildroot}%{_docdir}/%{name}/
 install -D -m 0644 %{SOURCE6} %{buildroot}%{_docdir}/%{name}/
 install -D -m 0644 %{SOURCE7} %{buildroot}%{_docdir}/%{name}/
 install -D -m 0755 %{SOURCE8} %{buildroot}%{_bindir}/
-# install appdata file
-mkdir -p %{buildroot}%{_datadir}/appdata/
-install -D -m 0644 %{SOURCE9} %{buildroot}%{_datadir}/appdata/
 # GPU and OptiX rendering texts
+install -D -m 0644 %{SOURCE9} %{buildroot}%{_docdir}/%{name}/
 install -D -m 0644 %{SOURCE10} %{buildroot}%{_docdir}/%{name}/
-install -D -m 0644 %{SOURCE11} %{buildroot}%{_docdir}/%{name}/
 
 chmod -f 0644 %{buildroot}%{_datadir}/%{name}/%{_version}/scripts/modules/console_python.py
 
@@ -567,9 +563,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_datadir}/%{name}/%{_version}/datafiles/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}*.svg
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/%{name}.appdata.xml
-%dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.%{name}.Blender.metainfo.xml
 %doc %{_docdir}/%{name}
 

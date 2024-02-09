@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 07 16:33:37 UTC 2024 - f.alexander.wilms@gmail.com
+
+- Remove downstream copy of AppStream metainfo file, since Blender
+  now installs its own version
+
+-------------------------------------------------------------------
 Sun Nov 26 06:35:53 UTC 2023 - draskmont@protonmail.com
 
 - Update to 4.0.1:

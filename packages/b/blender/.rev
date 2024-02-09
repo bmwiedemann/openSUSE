@@ -1405,4 +1405,14 @@ Enable cycles-osl in build</comment>
     <comment></comment>
     <requestid>1129634</requestid>
   </revision>
+  <revision rev="179" vrev="2">
+    <srcmd5>52ca8adfee30d233d7880831a52644ce</srcmd5>
+    <version>4.0.1</version>
+    <time>1707519136</time>
+    <user>anag+factory</user>
+    <comment>- Remove downstream copy of AppStream metainfo file, since Blender
+  now installs its own version
+</comment>
+    <requestid>1145156</requestid>
+  </revision>
 </revisionlist>
