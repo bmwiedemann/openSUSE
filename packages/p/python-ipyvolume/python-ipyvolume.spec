@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipyvolume
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,8 @@
 #
 
 
+# No bqplot for Python 3.12 yet: https://github.com/bqplot/bqplot/issues/1639
+%define skip_python312 1
 Name:           python-ipyvolume
 Version:        0.6.3
 Release:        0

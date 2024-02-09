@@ -63,4 +63,12 @@
     <comment>- Suggest primary python package -- boo#1214354</comment>
     <requestid>1104438</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>8573f9806a6c9aad0d04b43824c0e8d1</srcmd5>
+    <version>0.6.3</version>
+    <time>1707519250</time>
+    <user>anag+factory</user>
+    <comment>- Skip python3.12: No bqplot yet -- gh#bqplot/bqplot#1639</comment>
+    <requestid>1145391</requestid>
+  </revision>
 </revisionlist>
