@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb  1 21:23:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.1:
+  * Gracefully handle code which has been imported from a zipfile
+  * Allow modules using load_dotenv to be reloaded when launched
+    in a separate thread
+  * Fix file not closed after deletion, handle error in the
+    rewrite function
+  * Use pathlib.Path in tests
+  * Fix year in release date in changelog.md
+  * Use https in README links
+
+-------------------------------------------------------------------
 Sun May  7 09:14:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.0:
@@ -51,8 +64,8 @@ Mon Apr 11 10:55:56 UTC 2022 - Markéta Machová <mmachova@suse.com>
   * The default value of the encoding parameter for load_dotenv and dotenv_values is now "utf-8" instead of None
   * Add --override/--no-override option to dotenv run
   * Raise ValueError if quote_mode isn't one of always, auto or never in set_key
-  * Require Python 3.5 or a later version. Python 2 and 3.4 are no longer supported. 
-  * The stream argument of load_dotenv and dotenv_values can now be a text stream (IO[str]), 
+  * Require Python 3.5 or a later version. Python 2 and 3.4 are no longer supported.
+  * The stream argument of load_dotenv and dotenv_values can now be a text stream (IO[str]),
     which includes values like io.StringIO("foo") and open("file.env", "r")
   * Add support for Python 3.10.
   * Add encoding (Optional[str]) parameter to get_key, set_key and unset_key.
