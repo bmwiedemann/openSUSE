@@ -239,4 +239,16 @@
   * Fix tests for Python 3.9</comment>
     <requestid>1135644</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>41c883e640aba2d1253c7aa5d98ed4d2</srcmd5>
+    <version>4.9.0</version>
+    <time>1707519122</time>
+    <user>anag+factory</user>
+    <comment>- Add backport-recent-implementation-of-protocol.patch upstream patch
+  gh#python/typing_extensions@004b893ddce2
+
+  To fix the package in openSUSE:Factory:Staging:G with newer
+  python 3.12.2</comment>
+    <requestid>1145283</requestid>
+  </revision>
 </revisionlist>
