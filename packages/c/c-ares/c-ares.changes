@@ -1,4 +1,132 @@
 -------------------------------------------------------------------
+Fri Feb  9 07:35:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Ensure multibuild flavors result in different src names.
+
+-------------------------------------------------------------------
+Sat Feb  3 09:40:16 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- c-ares 1.26.0:
+  * Event Thread support. Integrators are no longer required to
+    monitor the file descriptors registered by c-ares for events
+    and call ares_process() when enabling the event thread feature
+    via ARES_OPT_EVENT_THREAD passed to ares_init_options().
+  * Added flags to are_dns_parse() to force RAW packet parsing
+  * Mark ares_fds() as deprecated
+  * Bug fixes
+- move tests into a build flavor to avoid gtest/gmock build loop
+
+-------------------------------------------------------------------
+Mon Jan  8 10:16:54 UTC 2024 - Adam Majer <adam.majer@suse.de> - 1.25
+
+- Update to version 1.25
+Changes:
+ o Rewrite ares_strsplit() as a wrapper for ares__buf_split() for memory
+   safety reasons.
+ o The ahost utility now uses ares_getaddrinfo() and returns both IPv4 and
+   IPv6 addresses by default.
+
+Bug Fixes:
+ o Tests: Live reverse lookups for Google's public DNS servers no longer
+   return results, replace with CloudFlare pubic DNS servers.
+ o Connection failures should increment the server failure count first or a
+   retry might be enqueued to the same server
+ o On systems that don't implement the ability to enumerate network interfaces
+   the stubs used the wrong prototype.
+ o Fix minor warnings and documentation typos
+ o Fix support for older GoogleTest versions
+ o getrandom() may require sys/random.h on some systems.
+ o Fix building tests with symbol hiding enabled.
+
+- 0001-Use-RPM-compiler-options.patch: dropped, obsolete
+
+-------------------------------------------------------------------
+Tue Jan  2 11:35:57 UTC 2024 - Adam Majer <adam.majer@suse.de> - 1.24
+
+- Update to version 1.24
+Features:
+  * Add support for IPv6 link-local DNS servers. Nameserver formats
+    can now accept the 0face suffix, and a new ares_get_servers_csv()
+    function was added to return servers that can contain the link-local
+    interface name.
+
+Changes:
+  * Unbundle GoogleTest for test cases. Package maintainers will now
+    need torequire GoogleTest (GMock) as a build dependency if
+    building tests. New GoogleTest versions require C++14 or later.
+  * Replace nameserver parsing code to use new memory-safe functions.
+  * Replace the sortlist parser with new memory-safe functions.
+  * Various warning fixes and dead code removal. 
+
+Bugfixes:
+ * Old Linux versions require POSIX_C_SOURCE or _GNU_SOURCE to
+   compile with thread safety support
+ * A non-responsive DNS server that caused timeouts wouldn't
+   increment thefailure count, this would lead to other servers
+   not being tried. Regression introduced in 1.22.0
+ * Some projects that depend on c-ares expect invalid parameter
+   option valuespassed into ares_init_options() to simply be
+   ignored. This behavior has been restored
+ * getrandom() can fail if the kernel doesn't support
+   the syscall, fall back to another random source
+ * ares_cancel() when performing ares_gethostbyname() or
+   ares_getaddrinfo()with AF_UNSPEC, if called after one address
+   class was returned but before the other address class, it
+   would return ARES_SUCCESS rather than ARES_ECANCELLED
+
+- disable-live-tests.patch: dropped, not needed
+
+-------------------------------------------------------------------
+Fri Dec  1 13:04:38 UTC 2023 - Adam Majer <adam.majer@suse.de> - 1.23
+
+- Update to version 1.23
+  Features:
+    Introduce optional (but on by default) thread-safety for the c-ares library. This has no API nor ABI implications.
+    resolv.conf in modern systems uses attempts and timeouts options instead of the old retrans and retry options.
+    Query caching support based on TTL of responses. Can be enabled via ares_init_options() with ARES_OPT_QUERY_CACHE. 
+  Bugfixes:
+    ares_init_options() for ARES_OPT_UDP_PORT and ARES_OPT_TCP_PORT accept theport in host byte order, but it was reading it as network byte order. Regression introduced in 1.20.0.
+    ares_init_options() for ARES_FLAG_NOSEARCH was not being honored forares_getaddrinfo() or ares_gethostbyname(). Regression introduced in 1.16.0.
+    Autotools MacOS and iOS version check was failing
+    Environment variables passed to c-ares are meant to be an override for system configuration. Regression introduced in 1.22.0.
+    Spelling fixes as detected by codespell.
+    The timeout returned by ares_timeout() was truncated to milliseconds butvalidated to microseconds which could cause a user to attempt to process timeouts prior to the timeout actually expiring.
+    CMake was not honoring CXXFLAGS passed in via the environment which couldcause compile and link errors with distribution hardening flags during packaging.
+    Fix Windows UWP and Cygwin compilation.
+    ares_set_servers_*() for legacy reasons needs to accept an empty server listand zero out all servers. This results in an inoperable channel and thus is only used in simulation testing, but we don't want to break users. Regression introduced in 1.21.0. 
+
+Changes in version 1.22.1
+  Bugfixes:
+    Fix /etc/hosts processing performance with all entries using same IPaddress. Large hosts files using the same IP address for all entries could use exponential time.
+    Fix typos in manpages
+    Fix OpenWatcom building 
+
+Changes in version 1.22.0
+  Features:
+    ares_reinit() is now implemented to re-read any system configuration and immediately apply to an existing ares channel
+    The adig command line program has been rewritten and its format now more closely matches that of BIND's dig utility
+    The new DNS message parser and writer functions have now been made public
+    RFC9460 HTTPS and SVCB records are now supported
+    RFC6698 TLSA records are now supported
+    The server list is now internally dynamic and can be changed without impacting existing queries
+    Hosts file processing is now cached until the file is detected to be changed to speed up repetitive lookups of large hosts files 
+  Changes:
+    Internally all DNS messages are now written using the new DNS writing functions
+    EDNS is now enabled by default
+    Internal cleanups in function prototypes 
+  Bugfixes:
+    Randomize retry penalties to prevent thundering herd issues when dns servers throttle requests
+    Fix Windows build error for missing if_indextoname() 
+
+-------------------------------------------------------------------
+Sat Oct 28 16:45:26 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.21.0:
+  * Replace multiple DNS hand-made parsers with new memory-safe DNS
+    message parser
+  * developer visible changes and bug fixes
+
+-------------------------------------------------------------------
 Tue Oct 10 09:31:38 UTC 2023 - Adam Majer <adam.majer@suse.de> - 1.20.1
 
 - Update to version 1.20.1

@@ -1,7 +1,8 @@
 #
-# spec file for package c-ares
+# spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +19,14 @@
 
 %define sonum   2
 %define libname libcares%{sonum}
-%if 0%{!?cmake_build:1}
-%define cmake_build make -O VERBOSE=1 %{?_smp_mflags}
+%define pkg_suffix %nil
+
+%if "@BUILD_FLAVOR@"%nil == "testsuite"%nil
+%define pkg_suffix -testsuite
 %endif
-Name:           c-ares
-Version:        1.20.1
+
+Name:           c-ares%pkg_suffix
+Version:        1.26.0
 Release:        0
 Summary:        Library for asynchronous name resolves
 License:        MIT
@@ -31,19 +35,22 @@ Source0:        https://c-ares.org/download/c-ares-%{version}.tar.gz
 Source1:        https://c-ares.org/download/c-ares-%{version}.tar.gz.asc
 Source3:        c-ares.keyring
 Source4:        baselibs.conf
-Patch0:         0001-Use-RPM-compiler-options.patch
-Patch1:         disable-live-tests.patch
+BuildRequires:  c++_compiler
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
 # Needed for getservbyport_r function to work properly.
 BuildRequires:  netcfg
 BuildRequires:  pkgconfig
+%if ("@BUILD_FLAVOR@" == "testsuite")
+BuildRequires:  gmock
+BuildRequires:  gtest
+%endif
 
 %description
 c-ares is a C library that performs DNS requests and name resolves
 asynchronously. c-ares is a fork of the library named 'ares', written
 by Greg Hudson at MIT.
 
+%if ("@BUILD_FLAVOR@" != "testsuite")
 %package        utils
 Summary:        Tools for asynchronous name resolves
 
@@ -81,31 +88,36 @@ by Greg Hudson at MIT.
 This package provides the development libraries and headers needed
 to build packages that depend on c-ares.
 
+%endif
+
 %prep
 %autosetup -p1 -n c-ares-%{version}
 
 %build
 %cmake \
-%if 0%{?suse_version} >= 1500
-    -DCARES_BUILD_TESTS:BOOL=ON \
+%if ("@BUILD_FLAVOR@" == "testsuite")
+	-DCARES_BUILD_TESTS:BOOL=ON \
 %endif
-     %nil
-
+	%{nil}
 %cmake_build
 
 %install
+%if ("@BUILD_FLAVOR@" != "testsuite")
 %cmake_install
-
-%check
-%if 0%{?suse_version} >= 1500
-pushd build
-%cmake_build -C test
-LD_LIBRARY_PATH=.%_libdir:./%_lib ./bin/arestest
 %endif
 
-%post   -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%if ("@BUILD_FLAVOR@" != "testsuite")
+%ldconfig_scriptlets -n %{libname}
+%endif
 
+%check
+%if ("@BUILD_FLAVOR@" == "testsuite")
+pushd build
+%cmake_build -C test
+LD_LIBRARY_PATH=.%{_libdir}:./%{_lib} ./bin/arestest --gtest_filter=-*.Live*
+%endif
+
+%if ("@BUILD_FLAVOR@" != "testsuite")
 %files utils
 %license LICENSE.md
 %{_bindir}/adig
@@ -124,5 +136,6 @@ LD_LIBRARY_PATH=.%_libdir:./%_lib ./bin/arestest
 %{_mandir}/man3/ares_*.3%{?ext_man}
 %{_libdir}/pkgconfig/libcares.pc
 %{_libdir}/cmake/c-ares/
+%endif
 
 %changelog

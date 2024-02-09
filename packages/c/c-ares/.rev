@@ -270,4 +270,41 @@ https://c-ares.haxx.se/changelog.html#1_17_2</comment>
   * Replace usages of sprintf with snprintf</comment>
     <requestid>1116650</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b5cdcd02be98889874a05f0141298037</srcmd5>
+    <version>1.26.0</version>
+    <time>1707519118</time>
+    <user>anag+factory</user>
+    <comment>- Ensure multibuild flavors result in different src names.
+
+- c-ares 1.26.0:
+  * Event Thread support. Integrators are no longer required to
+    monitor the file descriptors registered by c-ares for events
+    and call ares_process() when enabling the event thread feature
+    via ARES_OPT_EVENT_THREAD passed to ares_init_options().
+  * Added flags to are_dns_parse() to force RAW packet parsing
+  * Mark ares_fds() as deprecated
+  * Bug fixes
+- move tests into a build flavor to avoid gtest/gmock build loop
+
+- Update to version 1.25
+Changes:
+ o Rewrite ares_strsplit() as a wrapper for ares__buf_split() for memory
+   safety reasons.
+ o The ahost utility now uses ares_getaddrinfo() and returns both IPv4 and
+   IPv6 addresses by default.
+Bug Fixes:
+ o Tests: Live reverse lookups for Google's public DNS servers no longer
+   return results, replace with CloudFlare pubic DNS servers.
+ o Connection failures should increment the server failure count first or a
+   retry might be enqueued to the same server
+ o On systems that don't implement the ability to enumerate network interfaces
+   the stubs used the wrong prototype.
+ o Fix minor warnings and documentation typos
+ o Fix support for older GoogleTest versions
+ o getrandom() may require sys/random.h on some systems.
+ o Fix building tests with symbol hiding enabled.
+- 0001-Use-RPM-compiler-options.patch: dropped, obsolete</comment>
+    <requestid>1145395</requestid>
+  </revision>
 </revisionlist>
