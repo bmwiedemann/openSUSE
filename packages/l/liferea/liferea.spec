@@ -1,7 +1,7 @@
 #
 # spec file for package liferea
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,8 +61,7 @@ news aggregator for GTK and GNOME.
 %lang_package
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch0
+%autosetup -n %{name}-%{version} -p0
 
 %build
 %if 0%{?suse_version} >= 01550 || 0%{?sle_version} >= 150200
