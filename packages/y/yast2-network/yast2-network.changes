@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 16 10:34:01 UTC 2024 - Knut Anderssen  <kanderssen@suse.com>
+
+- Consider firmware configured interfaces as non bridgeable
+  (bsc#1218595).
+- 5.0.2
+
+-------------------------------------------------------------------
 Wed Dec 13 12:07:00 UTC 2023 - Knut Alejandro Anderssen González <kanderssen@suse.com>
 
 - Read all the driver modules from hwinfo instead of just the first
