@@ -1,7 +1,7 @@
 #
 # spec file for package gpick
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Advanced color picker writen in GTK+
 License:        BSD-3-Clause
 Group:          Productivity/Graphics/Visualization/Other
-Url:            http://www.gpick.org/
+URL:            http://www.gpick.org/
 Source0:        http://gpick.googlecode.com/files/%{name}_%{version}.tar.gz
 Source1:        copyright
 # PATCH-FIX-UPSTREAM reproducible.patch gh#thezbyg/gpick#138 bwiedemann@suse.com -- Fix reproducible builds
@@ -55,10 +55,9 @@ Gpick is a featured color picker with palette creation and modification
 tools. It is written in C++ and uses GTK+ toolkit for user interface.
 
 %lang_package
+
 %prep
-%setup -q -n %{name}_%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -n %{name}_%{version} -p1
 
 %build
 export CFLAGS="%optflags"

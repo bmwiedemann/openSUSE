@@ -131,4 +131,12 @@ summarize licenses - bulk are BSD-3-Clause (forwarded request 137821 from dimsta
     <comment>Removal of -lang recommends (forwarded request 768610 from dimstar)</comment>
     <requestid>768676</requestid>
   </revision>
+  <revision rev="18" vrev="12">
+    <srcmd5>5563d43aaf75dcce665e331061e36980</srcmd5>
+    <version>0.2.5</version>
+    <time>1707519149</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20</comment>
+    <requestid>1145234</requestid>
+  </revision>
 </revisionlist>
