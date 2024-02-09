@@ -1,0 +1,24 @@
+Index: pgadmin4-8.2/web/pgadmin/misc/__init__.py
+===================================================================
+--- pgadmin4-8.2.orig/web/pgadmin/misc/__init__.py
++++ pgadmin4-8.2/web/pgadmin/misc/__init__.py
+@@ -108,8 +108,17 @@ class MiscModule(PgAdminModule):
+         from .bgprocess import blueprint as module
+         self.submodules.append(module)
+ 
+-        from .cloud import blueprint as module
+-        self.submodules.append(module)
++        try:
++            from .cloud import blueprint as module
++            self.submodules.append(module)
++        except ModuleNotFoundError:
++            print('\n\n')
++            print('###########################################################\n')
++            print('    IMPORTANT WARNING:\n')
++            print('Cloud packages not found, if you want to enable cloud support,')
++            print('please install the pgadmin4-cloud package')
++            print('\n###########################################################\n')
++
+ 
+         from .dependencies import blueprint as module
+         self.submodules.append(module)

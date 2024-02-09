@@ -1,7 +1,7 @@
 #
 # spec file for package pgadmin4
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,10 @@
 #
 
 
-%define pythons python3
+%{?sle15_python_module_pythons}
+%if 0%{?suse_version} > 1500
+%global pythons %primary_python
+%endif
 %global python3_authlib_min_version 1.2.0
 %global python3_azure_identity_min_version 1.15
 %global python3_azure_mgmt_rdbms_min_version 10.1
@@ -55,6 +58,7 @@
 %global python3_sqlalchemy_min_version 2.0
 %global python3_sqlparse_min_version 0.3.0
 %global python3_sshtunnel_min_version 0.1.5
+%global python3_typer_min_version 0.9.0
 %global python3_user_agents_min_version 2.2
 %global python3_werkzeug_min_version 2.3
 %global python3_wtforms_min_version 3.1
@@ -64,7 +68,7 @@
 %global user_group_name pgadmin
 
 Name:           pgadmin4
-Version:        8.0
+Version:        8.2
 Release:        0
 Summary:        Management tool for PostgreSQL
 License:        PostgreSQL
@@ -75,113 +79,109 @@ Source1:        %{name}.conf.in
 Source2:        %{name}.service.in
 Source3:        %{name}.tmpfiles.d
 Source4:        %{name}.desktop
+Source5:        pgadmin-user.conf
 Source7:        %{name}.uwsgi.in
 Source8:        README.SUSE
 Source9:        README.SUSE.uwsgi.in
 Source10:       https://download.postgresql.org/pub/pgadmin/%{name}/v%{version}/source/%{name}-%{version}.tar.gz.asc
 # https://www.pgadmin.org/download/pgadmin-4-source-code/
 Source11:       %{name}.keyring
-Source12:       vendor.tar.xz
 Source13:       %{name}-desktop
+Source14:       optipng
+Source20:       package-lock.json
 Source99:       update-vendor.sh
+Source100:      node_modules.spec.inc
+%include        %{_sourcedir}/node_modules.spec.inc
 Patch0:         use-os-makedirs.patch
 Patch1:         fix-python3-crypto-call.patch
 Patch2:         support-new-azure-mgmt-rdbms.patch
 Patch5:         fix-eventlet-select_epoll.patch
+Patch6:         make-cloud-packages-optional.patch
+Patch10:        package_deps.patch
+Patch1000:      package_git_local.patch
+BuildRequires:  %{python_module Authlib >= %{python3_authlib_min_version}}
+BuildRequires:  %{python_module Flask >= %{python3_flask_min_version}}
+BuildRequires:  %{python_module Flask-Babel >= %{python3_flask_babel_min_version}}
+BuildRequires:  %{python_module Flask-Compress >= %{python3_flask_compress_min_version}}
+BuildRequires:  %{python_module Flask-Gravatar >= %{python3_flask_gravatar_min_version}}
+BuildRequires:  %{python_module Flask-Login >= %{python3_flask_login_min_version}}
+BuildRequires:  %{python_module Flask-Mail >= %{python3_flask_mail_min_version}}
+BuildRequires:  %{python_module Flask-Migrate >= %{python3_flask_migrate_min_version}}
+BuildRequires:  %{python_module Flask-Paranoid >= %{python3_flask_paranoid_min_version}}
+BuildRequires:  %{python_module Flask-SQLAlchemy >= %{python3_flask_sqlalchemy_min_version}}
+BuildRequires:  %{python_module Flask-Security-Too >= %{python3_flask_security_too_min_version}}
+BuildRequires:  %{python_module Flask-SocketIO >= %{python3_flask_socketio_min_version}}
+BuildRequires:  %{python_module Flask-WTF >= %{python3_flask_wtf_min_version}}
+BuildRequires:  %{python_module SQLAlchemy >= %{python3_sqlalchemy_min_version}}
+BuildRequires:  %{python_module WTForms >= %{python3_wtforms_min_version}}
+BuildRequires:  %{python_module Werkzeug >= %{python3_werkzeug_min_version}}
+BuildRequires:  %{python_module bcrypt >= %{python3_bcrypt_min_version}}
+BuildRequires:  %{python_module cryptography >= %{python3_cryptography_min_version}}
+BuildRequires:  %{python_module eventlet >= %{python3_eventlet_min_version}}
+BuildRequires:  %{python_module httpagentparser >= %{python3_httpagentparser_min_version}}
+BuildRequires:  %{python_module keyring >= %{python3_keyring_min_version}}
+BuildRequires:  %{python_module ldap3 >= %{python3_ldap3_min_version}}
+BuildRequires:  %{python_module passlib >= %{python3_passlib_min_version}}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module psutil >= %{python3_psutil_min_version}}
+BuildRequires:  %{python_module psycopg >= %{python3_psycopg_min_version}}
+BuildRequires:  %{python_module pyotp >= %{python3_pyotp_min_version}}
+BuildRequires:  %{python_module python-dateutil >= %{python3_python_dateutil_min_version}}
+BuildRequires:  %{python_module pytz >= %{python3_pytz_min_version}}
+BuildRequires:  %{python_module qrcode >= %{python3_qrcode_min_version}}
+BuildRequires:  %{python_module sqlparse >= %{python3_sqlparse_min_version}}
+BuildRequires:  %{python_module sshtunnel >= %{python3_sshtunnel_min_version}}
+BuildRequires:  %{python_module testscenarios}
+BuildRequires:  %{python_module typer >= %{python3_typer_min_version}}
+BuildRequires:  %{python_module urllib3 < 2}
+BuildRequires:  %{python_module user-agents >= %{python3_user_agents_min_version}}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  optipng
+BuildRequires:  local-npm-registry
+BuildRequires:  pngcrush
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-Authlib >= %{python3_authlib_min_version}
-BuildRequires:  python3-Flask >= %{python3_flask_min_version}
-BuildRequires:  python3-Flask-Babel >= %{python3_flask_babel_min_version}
-BuildRequires:  python3-Flask-Compress >= %{python3_flask_compress_min_version}
-BuildRequires:  python3-Flask-Gravatar >= %{python3_flask_gravatar_min_version}
-BuildRequires:  python3-Flask-Login >= %{python3_flask_login_min_version}
-BuildRequires:  python3-Flask-Mail >= %{python3_flask_mail_min_version}
-BuildRequires:  python3-Flask-Migrate >= %{python3_flask_migrate_min_version}
-BuildRequires:  python3-Flask-Paranoid >= %{python3_flask_paranoid_min_version}
-BuildRequires:  python3-Flask-SQLAlchemy >= %{python3_flask_sqlalchemy_min_version}
-BuildRequires:  python3-Flask-Security-Too >= %{python3_flask_security_too_min_version}
-BuildRequires:  python3-Flask-SocketIO >= %{python3_flask_socketio_min_version}
-BuildRequires:  python3-Flask-WTF >= %{python3_flask_wtf_min_version}
-BuildRequires:  python3-SQLAlchemy >= %{python3_sqlalchemy_min_version}
-BuildRequires:  python3-WTForms >= %{python3_wtforms_min_version}
-BuildRequires:  python3-Werkzeug >= %{python3_werkzeug_min_version}
-BuildRequires:  python3-azure-identity >= %{python3_azure_identity_min_version}
-BuildRequires:  python3-azure-mgmt-rdbms >= %{python3_azure_mgmt_rdbms_min_version}
-BuildRequires:  python3-azure-mgmt-resource >= %{python3_azure_mgmt_resource_min_version}
-BuildRequires:  python3-azure-mgmt-subscription >= %{python3_azure_mgmt_subscription_min_version}
-BuildRequires:  python3-bcrypt >= %{python3_bcrypt_min_version}
-BuildRequires:  python3-boto3 >= %{python3_boto3_min_version}
-BuildRequires:  python3-botocore >= %{python3_botocore_min_version}
-BuildRequires:  python3-cryptography >= %{python3_cryptography_min_version}
-BuildRequires:  python3-eventlet >= %{python3_eventlet_min_version}
-BuildRequires:  python3-google-api-python-client >= %{python3_google_api_python_client_min_version}
-BuildRequires:  python3-google-auth-oauthlib >= %{python3_google_auth_oauthlib_min_version}
-BuildRequires:  python3-httpagentparser >= %{python3_httpagentparser_min_version}
-BuildRequires:  python3-keyring >= %{python3_keyring_min_version}
-BuildRequires:  python3-ldap3 >= %{python3_ldap3_min_version}
-BuildRequires:  python3-passlib >= %{python3_passlib_min_version}
-BuildRequires:  python3-pip
-BuildRequires:  python3-psutil >= %{python3_psutil_min_version}
-BuildRequires:  python3-psycopg >= %{python3_psycopg_min_version}
-BuildRequires:  python3-pyotp >= %{python3_pyotp_min_version}
-BuildRequires:  python3-python-dateutil >= %{python3_python_dateutil_min_version}
-BuildRequires:  python3-pytz >= %{python3_pytz_min_version}
-BuildRequires:  python3-qrcode >= %{python3_qrcode_min_version}
-BuildRequires:  python3-sqlparse >= %{python3_sqlparse_min_version}
-BuildRequires:  python3-sshtunnel >= %{python3_sshtunnel_min_version}
-BuildRequires:  python3-testscenarios
-BuildRequires:  python3-urllib3 < 2
-BuildRequires:  python3-user-agents >= %{python3_user_agents_min_version}
-BuildRequires:  python3-wheel
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  yarn
-Requires:       python3 >= 3.7
-Requires:       python3-Authlib >= %{python3_authlib_min_version}
-Requires:       python3-Flask >= %{python3_flask_min_version}
-Requires:       python3-Flask-Babel >= %{python3_flask_babel_min_version}
-Requires:       python3-Flask-Compress >= %{python3_flask_compress_min_version}
-Requires:       python3-Flask-Gravatar >= %{python3_flask_gravatar_min_version}
-Requires:       python3-Flask-Login >= %{python3_flask_login_min_version}
-Requires:       python3-Flask-Mail >= %{python3_flask_mail_min_version}
-Requires:       python3-Flask-Migrate >= %{python3_flask_migrate_min_version}
-Requires:       python3-Flask-Paranoid >= %{python3_flask_paranoid_min_version}
-Requires:       python3-Flask-SQLAlchemy >= %{python3_flask_sqlalchemy_min_version}
-Requires:       python3-Flask-Security-Too >= %{python3_flask_security_too_min_version}
-Requires:       python3-Flask-SocketIO >= %{python3_flask_socketio_min_version}
-Requires:       python3-Flask-WTF >= %{python3_flask_wtf_min_version}
-Requires:       python3-SQLAlchemy >= %{python3_sqlalchemy_min_version}
-Requires:       python3-WTForms >= %{python3_wtforms_min_version}
-Requires:       python3-Werkzeug >= %{python3_werkzeug_min_version}
-Requires:       python3-azure-identity >= %{python3_azure_identity_min_version}
-Requires:       python3-azure-mgmt-rdbms >= %{python3_azure_mgmt_rdbms_min_version}
-Requires:       python3-azure-mgmt-resource >= %{python3_azure_mgmt_resource_min_version}
-Requires:       python3-azure-mgmt-subscription >= %{python3_azure_mgmt_subscription_min_version}
-Requires:       python3-bcrypt >= %{python3_bcrypt_min_version}
-Requires:       python3-boto3 >= %{python3_boto3_min_version}
-Requires:       python3-botocore >= %{python3_botocore_min_version}
-Requires:       python3-cryptography >= %{python3_cryptography_min_version}
-Requires:       python3-eventlet >= %{python3_eventlet_min_version}
-Requires:       python3-google-api-python-client >= %{python3_google_api_python_client_min_version}
-Requires:       python3-google-auth-oauthlib >= %{python3_google_auth_oauthlib_min_version}
-Requires:       python3-httpagentparser >= %{python3_httpagentparser_min_version}
-Requires:       python3-keyring >= %{python3_keyring_min_version}
-Requires:       python3-ldap3 >= %{python3_ldap3_min_version}
-Requires:       python3-passlib >= %{python3_passlib_min_version}
-Requires:       python3-psutil >= %{python3_psutil_min_version}
-Requires:       python3-psycopg >= %{python3_psycopg_min_version}
-Requires:       python3-pyotp >= %{python3_pyotp_min_version}
-Requires:       python3-python-dateutil >= %{python3_python_dateutil_min_version}
-Requires:       python3-pytz >= %{python3_pytz_min_version}
-Requires:       python3-qrcode >= %{python3_qrcode_min_version}
-Requires:       python3-sqlparse >= %{python3_sqlparse_min_version}
-Requires:       python3-sshtunnel >= %{python3_sshtunnel_min_version}
-Requires:       python3-urllib3 < 2
-Requires:       python3-user-agents >= %{python3_user_agents_min_version}
-Suggests:       python3-mod_wsgi
+BuildRequires:  sysuser-tools
+Requires:       %{python_module Authlib >= %{python3_authlib_min_version}}
+Requires:       %{python_module Flask >= %{python3_flask_min_version}}
+Requires:       %{python_module Flask-Babel >= %{python3_flask_babel_min_version}}
+Requires:       %{python_module Flask-Compress >= %{python3_flask_compress_min_version}}
+Requires:       %{python_module Flask-Gravatar >= %{python3_flask_gravatar_min_version}}
+Requires:       %{python_module Flask-Login >= %{python3_flask_login_min_version}}
+Requires:       %{python_module Flask-Mail >= %{python3_flask_mail_min_version}}
+Requires:       %{python_module Flask-Migrate >= %{python3_flask_migrate_min_version}}
+Requires:       %{python_module Flask-Paranoid >= %{python3_flask_paranoid_min_version}}
+Requires:       %{python_module Flask-SQLAlchemy >= %{python3_flask_sqlalchemy_min_version}}
+Requires:       %{python_module Flask-Security-Too >= %{python3_flask_security_too_min_version}}
+Requires:       %{python_module Flask-SocketIO >= %{python3_flask_socketio_min_version}}
+Requires:       %{python_module Flask-WTF >= %{python3_flask_wtf_min_version}}
+Requires:       %{python_module SQLAlchemy >= %{python3_sqlalchemy_min_version}}
+Requires:       %{python_module WTForms >= %{python3_wtforms_min_version}}
+Requires:       %{python_module Werkzeug >= %{python3_werkzeug_min_version}}
+Requires:       %{python_module bcrypt >= %{python3_bcrypt_min_version}}
+Requires:       %{python_module cryptography >= %{python3_cryptography_min_version}}
+Requires:       %{python_module eventlet >= %{python3_eventlet_min_version}}
+Requires:       %{python_module httpagentparser >= %{python3_httpagentparser_min_version}}
+Requires:       %{python_module keyring >= %{python3_keyring_min_version}}
+Requires:       %{python_module ldap3 >= %{python3_ldap3_min_version}}
+Requires:       %{python_module passlib >= %{python3_passlib_min_version}}
+Requires:       %{python_module psutil >= %{python3_psutil_min_version}}
+Requires:       %{python_module psycopg >= %{python3_psycopg_min_version}}
+Requires:       %{python_module pyotp >= %{python3_pyotp_min_version}}
+Requires:       %{python_module python-dateutil >= %{python3_python_dateutil_min_version}}
+Requires:       %{python_module pytz >= %{python3_pytz_min_version}}
+Requires:       %{python_module qrcode >= %{python3_qrcode_min_version}}
+Requires:       %{python_module sqlparse >= %{python3_sqlparse_min_version}}
+Requires:       %{python_module sshtunnel >= %{python3_sshtunnel_min_version}}
+Requires:       %{python_module typer >= %{python3_typer_min_version}}
+Requires:       %{python_module urllib3 < 2}
+Requires:       %{python_module user-agents >= %{python3_user_agents_min_version}}
+Requires:       system-user-pgadmin
+Requires(postun):system-user-pgadmin
+Suggests:       %{python_module mod_wsgi}
 Suggests:       %{name}-doc
+Recommends:     %{name}-cloud
 Recommends:     %{name}-desktop
 Obsoletes:      %{name}-web < %{version}
 %{?systemd_requires}
@@ -218,9 +218,9 @@ This package holds the uwsgi configuration.
 
 %package desktop
 Summary:        Desktop application for pgAdmin4
-Group:          Documentation/HTML
+Group:          Productivity/Networking/Web/Utilities
 Requires:       %{name}
-Requires:       python3-PyQt6
+Requires:       %{python_module qt5}
 
 %description desktop
 pgAdmin 4 is a rewrite of the pgAdmin3 management tool for the
@@ -234,17 +234,60 @@ Note that his script is not related to the official pgAdmin4
 runtime application and is NOT supported by the pgAdmin project
 but only provided for convenience.
 
+%package -n system-user-pgadmin
+Summary:        System user for pgadmin
+Group:          System/Base
+BuildArch:      noarch
+%sysusers_requires
+
+%description -n system-user-pgadmin
+System user for pgadmin.
+
+%package cloud
+Summary:        Cloud support for pgAdmin4
+Group:          Productivity/Networking/Web/Utilities
+%if 0%{suse_version} > 1550
+BuildRequires:  %{python_module azure-identity >= %{python3_azure_identity_min_version}}
+BuildRequires:  %{python_module azure-mgmt-rdbms >= %{python3_azure_mgmt_rdbms_min_version}}
+BuildRequires:  %{python_module azure-mgmt-resource >= %{python3_azure_mgmt_resource_min_version}}
+BuildRequires:  %{python_module azure-mgmt-subscription >= %{python3_azure_mgmt_subscription_min_version}}
+BuildRequires:  %{python_module boto3 >= %{python3_boto3_min_version}}
+BuildRequires:  %{python_module botocore >= %{python3_botocore_min_version}}
+BuildRequires:  %{python_module google-api-python-client >= %{python3_google_api_python_client_min_version}}
+BuildRequires:  %{python_module google-auth-oauthlib >= %{python3_google_auth_oauthlib_min_version}}
+%endif
+Requires:       %{name}
+Requires:       %{python_module azure-identity >= %{python3_azure_identity_min_version}}
+Requires:       %{python_module azure-mgmt-rdbms >= %{python3_azure_mgmt_rdbms_min_version}}
+Requires:       %{python_module azure-mgmt-resource >= %{python3_azure_mgmt_resource_min_version}}
+Requires:       %{python_module azure-mgmt-subscription >= %{python3_azure_mgmt_subscription_min_version}}
+Requires:       %{python_module boto3 >= %{python3_boto3_min_version}}
+Requires:       %{python_module botocore >= %{python3_botocore_min_version}}
+Requires:       %{python_module google-api-python-client >= %{python3_google_api_python_client_min_version}}
+Requires:       %{python_module google-auth-oauthlib >= %{python3_google_auth_oauthlib_min_version}}
+
+%description cloud
+pgAdmin 4 is a rewrite of the pgAdmin3 management tool for the
+PostgreSQL database.
+
+This package adds the package requirements neccesary to have cloud
+(azure/google) support in pgadmin4.
+
 %prep
 %autosetup -p1
 
-sed -e 's@PYTHONSITELIB@%{python3_sitelib}@g' <%{SOURCE1} > %{name}.conf
-sed -e 's@PYTHONDIR@%{_bindir}/python3@g' -e 's@PYTHONSITELIB@%{python3_sitelib}@g' < %{SOURCE2} > %{name}.service
-sed -e 's@PYTHONDIR@%{_bindir}/python3@g' -e 's@PYTHONSITELIB@%{python3_sitelib}@g' < %{SOURCE4} > %{name}.desktop
-sed -e 's@PYTHONSITELIB@%{python3_sitelib}@g' <%{SOURCE7} > %{name}.uwsgi
-sed -e 's@PYTHONSITELIB@%{python3_sitelib}@g' <%{SOURCE9} > README.SUSE.uwsgi
+sed -e 's@PYTHONSITELIB@%{python_sitelib}@g' <%{SOURCE1} > %{name}.conf
+%{python_expand #
+  sed -e 's@PYTHONDIR@%{expand:%__%{expand:$python}}@g' -e 's@PYTHONSITELIB@%{python_sitelib}@g' < %{SOURCE2} > %{name}.service
+}
+sed -e 's@PYTHONSITELIB@%{python_sitelib}@g' <%{SOURCE7} > %{name}.uwsgi
+sed -e 's@PYTHONSITELIB@%{python_sitelib}@g' <%{SOURCE9} > README.SUSE.uwsgi
 
 # speaklater isn't really used
 sed -i -e 's/^speaklater.*//' requirements.txt
+
+# Remove dependency on yarn version for which there's not an available package
+sed -i -z -e 's/,\n *"packageManager": "yarn@3.6.4"//' web/package.json
 
 cp %{SOURCE8} .
 cp %{SOURCE9} .
@@ -256,20 +299,20 @@ chmod -x docs/en_US/theme/pgadmin4/theme.conf
 chmod -x web/pgadmin/misc/bgprocess/process_executor.py
 chmod -x web/pgadmin/static/fonts/*.ttf
 
-# Uncompress the vendor sources
-tar xvfJ %{SOURCE12}
-# Use the system optipng, not the one built when creating the vendor package in the developer workstation
-ln -s %{_bindir}/optipng web/node_modules/optipng-bin/vendor/optipng
-
-# Do not use env as script interpreter
-find web/node_modules -type f -executable -exec sed -i -e '1{s,^#! */usr/bin/env \(node\|python3|bash\),#!%{_bindir}/\1,}' "{}" \;
-find web/pgacloud -type f -executable -exec sed -i -e '1{s,^#! */usr/bin/env \(node\|python3\),#!%{_bindir}/\1,}' "{}" \;
-
 rm web/regression/.gitignore
+pushd web
+local-npm-registry %{_sourcedir} install --legacy-peer-deps --ignore-scripts
+popd
+
+# Use the system optipng, not the one built when creating the vendor package in the developer workstation
+#mkdir -p web/node_modules/optipng-bin/vendor/
+#cp %%{SOURCE14} web/node_modules/optipng-bin/vendor/optipng
 
 %build
-make bundle
-rm -Rf web/node_modules web/yarn.lock
+pushd web
+NODE_ENV=production NODE_OPTIONS=--max-old-space-size=2048 npx eslint --no-eslintrc -c .eslintrc.js --ext .js  --ext .jsx --ext .ts --ext .tsx . && npx webpack --config webpack.config.js --progress
+rm -Rf node_modules package-lock.json yarn.lock
+popd
 
 export EVENTLET_NO_GREENDNS='yes'
 mkdir -p pip-build/pgadmin4
@@ -286,9 +329,11 @@ DEFAULT_BINARY_PATHS = {
 }
 EOF
 pushd pip-build
-python3 ../pkg/pip/setup_pip.py bdist_wheel
+%python_exec ../pkg/pip/setup_pip.py bdist_wheel
 popd
 mv -v pip-build/dist/*.whl .
+
+%sysusers_generate_pre %{SOURCE5} pgadmin pgadmin-user.conf
 
 %install
 %pyproject_install
@@ -304,7 +349,7 @@ install -m 0644 -p %{name}.conf %{buildroot}%{_sysconfdir}/apache2/conf.d/%{name
 
 # Install desktop file
 install -d %{buildroot}%{_datadir}/applications/
-install -m 0644 -p %{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
+install -m 0644 -p %{SOURCE4} %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 # Install config system for webapp
 install -d -m 0755 %{buildroot}%{_sysconfdir}/pgadmin/
@@ -318,6 +363,9 @@ install -m 0644 -p %{name}.service %{buildroot}%{_unitdir}/%{name}.service
 # ... and make a tmpfiles script to recreate it at reboot.
 mkdir -p %{buildroot}/%{_tmpfilesdir}
 install -m 0644 %{SOURCE3} %{buildroot}/%{_tmpfilesdir}/%{name}.conf
+
+mkdir -p %{buildroot}/%{_sysusersdir}
+install -m 0644 %{SOURCE5} %{buildroot}/%{_sysusersdir}/pgadmin-user.conf
 
 chmod -x %{buildroot}%{_docdir}/%{name}-docs/en_US/images/*
 mkdir -p %{buildroot}%{_sbindir}
@@ -334,20 +382,21 @@ install -m 0644 %{name}.uwsgi %{buildroot}%{_sysconfdir}/uwsgi/vassals/pgadmin4.
 install -d -m 0755 %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
 install -m 0644 web/pgadmin/static/img/logo-256.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/pgadmin4.png
 
-install -d -m 0755 %{buildroot}%{python3_sitelib}/%{name}/assets
-install -m 0644 ./runtime/assets/welcome_logo.svg %{buildroot}%{python3_sitelib}/%{name}/assets/welcome_logo.svg
+install -d -m 0755 %{buildroot}%{python_sitelib}/%{name}/assets
+install -m 0644 ./runtime/assets/welcome_logo.svg %{buildroot}%{python_sitelib}/%{name}/assets/welcome_logo.svg
 
 install -m 0755 %{SOURCE13} %{buildroot}%{_bindir}
+%{python_expand # Fix shebang path for pgadmin4-desktop
+sed -i "1s|#\!.*python.*|#\!/usr/bin/$python|" %{buildroot}%{_bindir}/pgadmin4-desktop
+}
 
-%fdupes %{buildroot}%{python3_sitelib}
+%fdupes %{buildroot}%{python_sitelib}
 
 ##%% check
 ## Requires Postgres running
-##PYTHONPATH=%%{buildroot}%%{python3_sitelib} python3 -B web/regression/runtests.py --exclude feature_tests
+##PYTHONPATH=%%{buildroot}%%{python_sitelib} python3 -B web/regression/runtests.py --exclude feature_tests
 
 %pre
-/usr/sbin/groupadd -r %{user_group_name} &>/dev/null || :
-/usr/sbin/useradd  -g %{user_group_name} -s /bin/false -r -c "%{name}" -d %{pgadmin4homedir} %{user_group_name} &>/dev/null || :
 %service_add_pre %{name}.service
 
 %post
@@ -358,21 +407,23 @@ install -m 0755 %{SOURCE13} %{buildroot}%{_bindir}
 %service_del_preun %{name}.service
 
 %postun
-chown -R %{user_group_name}:%{user_group_name} %{pgadmin4homedir}
 %service_del_postun %{name}.service
+
+%pre -n system-user-pgadmin -f pgadmin.pre
 
 %files
 %defattr(-,root,root,-)
 %doc README.md README.SUSE
 %license LICENSE
 %{_bindir}/pgadmin4
+%{_bindir}/pgadmin4-cli
 
 %dir %{_sysconfdir}/apache2
 %dir %{_sysconfdir}/apache2/conf.d
 %config(noreplace) %{_sysconfdir}/apache2/conf.d/%{name}.conf
 
-%{python3_sitelib}/%{name}
-%{python3_sitelib}/%{name}-%{version}.dist-info
+%{python_sitelib}/%{name}
+%{python_sitelib}/%{name}-%{version}.dist-info
 
 %{_unitdir}/%{name}.service
 %{_tmpfilesdir}/%{name}.conf
@@ -384,7 +435,6 @@ chown -R %{user_group_name}:%{user_group_name} %{pgadmin4homedir}
 
 %defattr(-,%{user_group_name},%{user_group_name})
 %ghost %dir %{_rundir}/%{name}
-%dir %{pgadmin4homedir}
 %dir %{pgadmin4homedir}/storage
 %attr(700,%{user_group_name},%{user_group_name}) %dir %{pgadmin4homedir}/sessions
 %dir %{_localstatedir}/log/pgadmin
@@ -406,5 +456,12 @@ chown -R %{user_group_name}:%{user_group_name} %{pgadmin4homedir}
 %{_bindir}/pgadmin4-desktop
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/256x256/apps/pgadmin4.png
+
+%files -n system-user-pgadmin
+%defattr(-,root,root,-)
+%dir %attr(0755,%{user_group_name},%{user_group_name}) %{pgadmin4homedir}
+%_sysusersdir/pgadmin-user.conf
+
+%files cloud
 
 %changelog

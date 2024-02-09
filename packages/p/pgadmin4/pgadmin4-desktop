@@ -21,10 +21,9 @@ import socket
 import time
 import sys
 import fcntl
-from threading import Thread, Timer
-from PyQt6.QtWidgets import QApplication, QSystemTrayIcon, QMenu, QSplashScreen
-from PyQt6.QtGui import QIcon, QAction, QPixmap, QImage, QPalette, QPainter
-from PyQt6.QtCore import QTimer, Qt
+from PyQt5.QtWidgets import QApplication, QSystemTrayIcon, QMenu, QSplashScreen, QAction
+from PyQt5.QtGui import QIcon, QPixmap, QImage, QPalette, QPainter
+from PyQt5.QtCore import QTimer, Qt
 
 
 class PGAdminDesktop(QApplication):
@@ -90,23 +89,11 @@ class PGAdminDesktop(QApplication):
 
         self.tray.setContextMenu(menu)
 
-    def open_pgadmin_task(self):
+    def check_if_pgadmin_is_running(self):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.settimeout(1)
         result = sock.connect_ex(('127.0.0.1',
                                   int(self.environ['PGADMIN_INT_PORT'])))
-
-        c = 0
-        while result != 0 and c < 15:
-            time.sleep(1)
-            result = sock.connect_ex(('127.0.0.1',
-                                      int(self.environ['PGADMIN_INT_PORT'])))
-            c += 1
-            dots = "." * (c % 3 + 1)
-            self.openPGAdminAction.setText("Opening pgAdmin" + dots)
-            if self.splash and not self.splash.isHidden():
-                self.splash.showMessage("Starting pgAdmin" + dots, Qt.AlignmentFlag.AlignBottom)
-
 
         if result == 0:
             if self.splash:
@@ -114,21 +101,30 @@ class PGAdminDesktop(QApplication):
             port = self.environ['PGADMIN_INT_PORT']
             key = self.environ['PGADMIN_INT_KEY']
             subprocess.run(["xdg-open", f"http://127.0.0.1:{port}/?key={key}"])
+
+            self.openPGAdminAction.setText("New Window")
+            self.openPGAdminAction.setEnabled(True)
         else:
-            error_msg = 'Timeout waiting for pgAdmin to start. Exiting...' 
-            print(error_msg)
-            self.splash.showMessage(error_msg, Qt.AlignmentFlag.AlignBottom)
-            QTimer.singleShot(10000, self.quit)
+            self.checks_for_pgadmin += 1
+            if self.checks_for_pgadmin < 15:
+                dots = "." * (self.checks_for_pgadmin % 3 + 1)
+                self.openPGAdminAction.setText("Opening pgAdmin" + dots)
+                if self.splash and not self.splash.isHidden():
+                    self.splash.showMessage("Starting pgAdmin" + dots, Qt.AlignmentFlag.AlignBottom)
+                    
+                QTimer.singleShot(1000, self.check_if_pgadmin_is_running)
+            else:
+                error_msg = 'Timeout waiting for pgAdmin to start. Exiting...' 
+                print(error_msg)
+                self.splash.showMessage(error_msg, Qt.AlignmentFlag.AlignBottom)
+                QTimer.singleShot(10000, self.quit)
 
-
-        self.openPGAdminAction.setText("New Window")
-        self.openPGAdminAction.setEnabled(True)
 
     def open_pgadmin(self):
-        self.open_pgadmin_thread = Thread(target=self.open_pgadmin_task)
         self.openPGAdminAction.setText("Opening pgAdmin...")
         self.openPGAdminAction.setEnabled(False)
-        self.open_pgadmin_thread.start()
+        self.checks_for_pgadmin = 0
+        QTimer.singleShot(1000, self.check_if_pgadmin_is_running)
 
     def cleanup(self):
         self.pgadmin_process.kill()

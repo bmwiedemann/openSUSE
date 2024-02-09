@@ -1,0 +1,20 @@
+npm/yarn issue generating ssh:// lock files
+  https://github.com/npm/cli/issues/2610
+
+
+Index: pgadmin4-8.2/web/package.json
+===================================================================
+--- pgadmin4-8.2.orig/web/package.json
++++ pgadmin4-8.2/web/package.json
+@@ -131,9 +131,9 @@
+     "rc-dock": "^3.2.9",
+     "react": "^17.0.1",
+     "react-arborist": "^3.2.0",
+-    "react-aspen": "^1.1.0",
++    "react-aspen": "^1.2.0",
+     "react-checkbox-tree": "^1.7.2",
+-    "react-data-grid": "https://github.com/pgadmin-org/react-data-grid.git#200d2f5e02de694e3e9ffbe177c279bc40240fb8",
++    "react-data-grid": "git+https://git@github.com/pgadmin-org/react-data-grid.git#200d2f5e02de694e3e9ffbe177c279bc40240fb8",
+     "react-dnd": "^16.0.1",
+     "react-dnd-html5-backend": "^16.0.1",
+     "react-dom": "^17.0.1",

@@ -1,0 +1,26 @@
+#!/usr/bin/python3
+import sys
+import shutil
+import argparse
+import subprocess
+#
+# This script replaces the actual optipng binary so a command like:
+# optipng -strip all -clobber -o 7 -out outputfile -fix -i 0  inputfile
+# which pgadmin uses during the build process, actually uses pngcrush to
+# compress png files. Note that all parameters are ignored and the
+# default pngcrush parameters are used instead.
+
+parser = argparse.ArgumentParser(prog='optipng', description='Very simple optipng layer over pngcrush')
+parser.add_argument('filename')
+parser.add_argument('-strip')
+parser.add_argument('-clobber', action='store_true')
+parser.add_argument('-out')
+parser.add_argument('-fix', action='store_true')
+parser.add_argument('-i')
+
+args = parser.parse_args()
+input_filename = args.filename
+output_filename = args.out
+
+subprocess.run(["pngcrush", input_filename, output_filename])
+
