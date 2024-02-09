@@ -1,7 +1,7 @@
 #
 # spec file for package shibboleth-sp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,6 +49,8 @@ BuildRequires:  libxml-security-c-devel >= 2.0.0
 BuildRequires:  libxmltooling-devel >= 3.1.0
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
 BuildRequires:  unixODBC-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(libsystemd)
@@ -110,8 +112,7 @@ exchange of rich attributes subject to privacy controls.
 This package includes files needed for development with Shibboleth.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 export CXXFLAGS="%{optflags} --std=c++11"
@@ -164,13 +165,17 @@ cat > %{buildroot}%{_tmpfilesdir}/%{realname}.conf <<EOF
 d /run/%{realname} 755 %{runuser} %{runuser} -
 EOF
 
+cat > %{realname}.sysusers << EOF
+u %{runuser} - "Shibboleth SP daemon" /run/%{realname} /dev/nologin
+EOF
+%sysusers_generate_pre %{realname}.sysusers %{name} %{name}.conf
+
+install -Dpm0644 %{realname}.sysusers %{buildroot}%{_sysusersdir}/%{name}.conf
+
 %check
 %make_build check
 
-%pre
-getent group %{runuser} >/dev/null || groupadd -r %{runuser}
-getent passwd %{runuser} >/dev/null || useradd -r -g %{runuser} \
-	-d  %{_localstatedir}/run/%{realname} -s /sbin/nologin -c "Shibboleth SP daemon" %{runuser}
+%pre -f %{name}.pre
 %service_add_pre shibd.service
 exit 0
 
@@ -222,6 +227,7 @@ exit 0
 %dir %{_libdir}/%{realname}
 %{_libdir}/%{realname}/*
 %{_unitdir}/shibd.service
+%{_sysusersdir}/%{name}.conf
 %attr(0750,%{runuser},%{runuser}) %dir %{_localstatedir}/log/%{realname}
 %attr(0755,%{runuser},%{runuser}) %dir %{_localstatedir}/cache/%{realname}
 %ghost %attr(0755,%{runuser},%{runuser}) %dir /run/%{realname}
