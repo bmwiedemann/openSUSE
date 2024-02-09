@@ -458,4 +458,12 @@
     <comment></comment>
     <requestid>956667</requestid>
   </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>244c5cadab59a6e727b7104dfd5d4461</srcmd5>
+    <version>3.0.5</version>
+    <time>1707519140</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20</comment>
+    <requestid>1145227</requestid>
+  </revision>
 </revisionlist>

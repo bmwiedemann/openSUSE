@@ -1,7 +1,7 @@
 #
 # spec file for package abiword
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -106,10 +106,7 @@ AbiWord is a multiplatform word processor with a GTK+ interface on the
 UNIX platform.
 
 %prep
-%setup -q
-%patch5
-%patch6
-%patch7
+%autosetup -p0
 
 %build
 # We modified plugin configuration and thus we need to regenerate the whole build system
