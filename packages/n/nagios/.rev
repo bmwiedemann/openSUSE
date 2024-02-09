@@ -195,4 +195,30 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1005468</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>a138a96b6eee3a50263c36ecffe39a8e</srcmd5>
+    <version>4.4.7</version>
+    <time>1707519298</time>
+    <user>anag+factory</user>
+    <comment>- remove some old rpmlintrc entries
+- remove old (&lt; 12.0) SUSE macros from spec file
+- nagios-dch and nagios-contrib can be noarch
+- use autopatch macro
+- set right permission and ownership for /var/log/nagios/config.err
+  even if this file is just a ghost file in RPM
+- use /run/nagios instead of /var/run/nagios for pid file
+- get rid of really old (SLE9) fix for nagios command group (was 
+  group www at that time). Since SLE10, we use and own group 
+  (nagcmd) instead. As we do not support to migrate from SLE9 to 
+  SLE11 and beyond directly, this migration should have been done 
+  long time ago already
+
+- Do not provide user/group symbols and actually stop generating
+  those users/groups alltogether. The package system-user-nagios is
+  taking care of the user setup.
+
+- provide user(nagios), group(nagios), group(wwwrun), user(nagcmd)
+  bsc#1219600</comment>
+    <requestid>1145456</requestid>
+  </revision>
 </revisionlist>

@@ -15,7 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
@@ -68,10 +67,7 @@ Patch17:        nagios-4.1.0-add_KOHANNA.conf
 # PATCH-FIX-UPSTREAM allow ppc64le builds in contrib Makefile
 Patch18:        nagios-4.4.3-enable-ppc64le.patch
 BuildRequires:  doxygen
-# yes: we still build for SLE10
-%if 0%{?suse_version} > 1020
 BuildRequires:  fdupes
-%endif
 BuildRequires:  bzip2
 BuildRequires:  freetype2-devel
 BuildRequires:  gd-devel
@@ -100,23 +96,19 @@ Requires(pre):  coreutils
 Requires(pre):  grep
 %if 0%{?suse_version} 
 Requires(pre):  %fillup_prereq
-%if 0%{?suse_version} < 01200
-Requires(pre):  %insserv_prereq
-Requires:       cron
-%endif
-Requires(pre):  shadow
 Recommends:     %{name}-www
 # this package contains shared tools with icinga
 Recommends:     monitoring-tools
 Recommends:     icinga-monitoring-tools
 Recommends:     %{name}-plugins
+Requires(pre):  system-user-nagios
 %else
 Requires(pre):  shadow-utils
 %endif
 Requires(pre):  permissions
 Requires(pre):  sed
 Requires:       mailx
-%define         nslockfile_dir /var/run/%{name}
+%define         nslockfile_dir /run/%{name}
 %define         nslockfile %nslockfile_dir/%{name}.pid
 %define         apache2_sysconfdir %{_sysconfdir}/apache2/conf.d
 # Macro that print mesages to syslog at package (un)install time
@@ -177,9 +169,7 @@ Summary:        Nagios Core web interface
 Group:          System/Monitoring
 Requires(pre):  nagios-theme-switcher
 Requires:       nagios-www >= 3.0
-%if 0%{?suse_version} >= 01210
 BuildArch:      noarch
-%endif
 
 %description theme-exfoliation
 Exfoliation is a simple makeover for the Nagios Core web interface. It consists
@@ -189,6 +179,7 @@ of two folders that overlay on a stock Nagios installation.
 Summary:        HTML and CGI files that do not call home
 Group:          System/Monitoring
 Requires:       %{name}-www = %{version}
+BuildArch:      noarch
 
 %description www-dch
 Several CGI programs are included with Nagios in order to allow you to
@@ -211,6 +202,7 @@ Note: The HTML pages use 'side' and 'main' and frame targets.
 Summary:        Files from the contrib directory
 Group:          Development/Tools/Other
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description contrib
 This package contains all the files from the contrib directory
@@ -234,6 +226,7 @@ may compile against.
 
 %prep
 %setup -q
+%if 0%{?suse_version} < 01500
 %patch3 -p1
 %patch4 -p1
 %patch11 -p1
@@ -241,6 +234,9 @@ may compile against.
 %patch16 -p1
 %patch17 -p1
 %patch18 -p1
+%else
+%autopatch -p1
+%endif
 find -name ".gitignore" | xargs rm
 # fixing permissions the dirty way....
 chmod 644 Changelog LEGAL LICENSE README.md sample-config/README sample-config/template-object/README
@@ -398,33 +394,13 @@ rm -f %{buildroot}/%{_sbindir}/new_mini_epn
 # move exfoliation theme to separate folder
 mkdir -p %{buildroot}%{_datadir}/nagios-themes/exfoliation
 mv %{buildroot}%{nagios_datadir}/{stylesheets,images} %{buildroot}%{_datadir}/nagios-themes/exfoliation/
-%if 0%{?suse_version} > 1020
 %fdupes %{buildroot}%{_datadir}/nagios-themes/exfoliation/
-%endif
 mkdir -p %{buildroot}%{nagios_datadir}/{stylesheets,images}
 cp -rf html/stylesheets/* %{buildroot}%{nagios_datadir}/stylesheets/
 cp -rf html/images/* %{buildroot}%{nagios_datadir}/images/
 
-%pre
-# Create user and group on the system if necessary
-%nagios_user_group_add
-%nagios_command_user_group_add
-# update?
-if [ ${1:-0} -gt 1 ]; then
-  # in the past, group www was used as nagios_command_group - now we use the default: nagcmd
-  if id -Gn %{nagios_user} 2>/dev/null | grep -q %{nagios_command_group} >/dev/null 2>&1 ; then
-    : # %%{nagios_user} is already in %%nagios_command_group group
-  else
-    # Add %%{nagios_user} to %%nagios_command_group.
-    %if 0%{?suse_version} > 1220
-      usermod -a -G %{nagios_command_group} %{nagios_user}
-    %else
-      groupmod -A %{nagios_user} %{nagios_command_group} 2>/dev/null
-    %endif
-    %{nnmmsg} "Added %{nagios_user} to %{nagios_command_group}"
-  fi
-fi
 %if %{with systemd}
+%pre
 %service_add_pre %{name}.service %{name}-archive.service %{name}-archive.timer
 %endif
 
@@ -492,12 +468,8 @@ if id -Gn $wwwusr 2>/dev/null | grep -q %{nagios_command_group} >/dev/null 2>&1 
     : # $wwwusr (default: %%nagios_command_user) is already in Nagios cmd group
 else
     # modify apache user, adding it to nagios_command_group
-  %if 0%{?suse_version} > 1220
     usermod -a -G %{nagios_command_group} $wwwusr
-  %else
-    groupmod -A $wwwusr %{nagios_command_group} 2>/dev/null
-  %endif
-  %{nnmmsg} "User $wwwusr added to group %{nagios_command_group} so sending commands to Nagios from the CGI is possible."
+    %{nnmmsg} "User $wwwusr added to group %{nagios_command_group} so sending commands to Nagios from the CGI is possible."
 fi
 # Update ?
 if [ ${1:-0} -eq 1 ]; then
@@ -577,7 +549,7 @@ fi
 %endif
 %config(noreplace) %{nagios_sysconfdir}/*.cfg
 %config(noreplace) %{nagios_sysconfdir}/objects/*.cfg
-%ghost %config(missingok,noreplace) %{nagios_logdir}/config.err
+%ghost %config(missingok,noreplace) %attr(0644,%{nagios_user},%{nagios_group}) %{nagios_logdir}/config.err
 # directories with special handling:
 %attr(0755,root,%{nagios_command_group})           %dir %{nagios_sysconfdir}
 %attr(0755,root,%{nagios_command_group})           %dir %{nagios_sysconfdir}/objects
