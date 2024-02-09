@@ -1,7 +1,7 @@
 #
 # spec file for package transmageddon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -54,9 +54,7 @@ having to resort to command line tools with ungainly syntaxes.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %configure

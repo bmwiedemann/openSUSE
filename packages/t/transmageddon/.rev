@@ -207,4 +207,12 @@
   (jsc#SLE-21105). (forwarded request 920443 from sbrabec)</comment>
     <requestid>920559</requestid>
   </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>e2946f075c547a494cddcc67777cf1e5</srcmd5>
+    <version>1.5</version>
+    <time>1707519166</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20</comment>
+    <requestid>1145250</requestid>
+  </revision>
 </revisionlist>
