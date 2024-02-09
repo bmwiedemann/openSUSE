@@ -1,7 +1,7 @@
 #
 # spec file for package i3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Source1:        %{name}.png
 Source2:        %{name}.keyring
 Source3:        https://i3wm.org/downloads/%{name}-%{version}.tar.xz.asc
 Patch1:         i3-desktop_file_valid.patch
+# PATCH-FIX-UPSTREAM handle-netwm-wm-type-desktop.patch - from PR 1828
+Patch2:         0001-Ignoring-desktop-windows-and-moving-them-on-the-bott.patch
 BuildRequires:  asciidoc
 BuildRequires:  flex
 BuildRequires:  gcc

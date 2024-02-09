@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  7 20:32:19 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- add 0001-Ignoring-desktop-windows-and-moving-them-on-the-bott.patch
+  treat _NET_WM_DESKTOP correctly so for example desktop wallpapers
+  are displayed correctly when using Plasma Desktop or similar software.
+
+-------------------------------------------------------------------
 Sun Oct 29 18:19:27 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.23:

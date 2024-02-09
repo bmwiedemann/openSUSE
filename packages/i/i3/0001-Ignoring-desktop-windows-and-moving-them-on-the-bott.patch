@@ -1,0 +1,52 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Andrzej Pronobis <a.pronobis@gmail.com>
+Date: Mon, 3 Aug 2015 09:40:22 -0700
+Subject: [PATCH] Ignoring desktop windows and moving them on the bottom of the
+ stack.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This is important when i3 is used together with KDE Plasma Desktop.
+
+(cherry picked from commit 39fd7e9f6fc649fb1c5a4e112e1dc62ae2bc0170)
+Signed-off-by: Björn Bidar <bjorn.bidar@thaodan.de>
+---
+ include/i3-atoms_NET_SUPPORTED.xmacro.h |  3 ++-
+ src/manage.c                            | 12 ++++++++++++
+ 2 files changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/include/i3-atoms_NET_SUPPORTED.xmacro.h b/include/i3-atoms_NET_SUPPORTED.xmacro.h
+index b491da98a6b7a5fd59a8e8bbcb179fb975d41880..cfd850e8972d4d60938088ea6b2cce7a064923bb 100644
+--- a/include/i3-atoms_NET_SUPPORTED.xmacro.h
++++ b/include/i3-atoms_NET_SUPPORTED.xmacro.h
+@@ -34,4 +34,5 @@ xmacro(_NET_DESKTOP_NAMES) \
+ xmacro(_NET_DESKTOP_VIEWPORT) \
+ xmacro(_NET_ACTIVE_WINDOW) \
+ xmacro(_NET_CLOSE_WINDOW) \
+-xmacro(_NET_MOVERESIZE_WINDOW)
++xmacro(_NET_MOVERESIZE_WINDOW) \
++xmacro(_NET_WM_WINDOW_TYPE_DESKTOP)
+diff --git a/src/manage.c b/src/manage.c
+index a7de243e2109f18240b6bc7e91edbaf974f86610..14b61d0b57c023601fb624a30b6b2a2813779d9a 100644
+--- a/src/manage.c
++++ b/src/manage.c
+@@ -245,6 +245,18 @@ void manage_window(xcb_window_t window, xcb_get_window_attributes_cookie_t cooki
+     /* Where to start searching for a container that swallows the new one? */
+     Con *search_at = croot;
+ 
++    /* Ignore DESKTOP windows and move them to the bottom of the stack. */
++    if (xcb_reply_contains_atom(type_reply, A__NET_WM_WINDOW_TYPE_DESKTOP)) {
++        LOG("Ignoring window of type desktop\n");
++        xcb_map_window(conn, window);
++        uint32_t values[] = {XCB_STACK_MODE_BELOW};
++        xcb_configure_window(conn, window, XCB_CONFIG_WINDOW_STACK_MODE, values);
++
++        FREE(state_reply);
++        FREE(type_reply);
++        goto geom_out;
++    }
++
+     if (xcb_reply_contains_atom(type_reply, A__NET_WM_WINDOW_TYPE_DOCK)) {
+         LOG("This window is of type dock\n");
+         Output *output = get_output_containing(geom->x, geom->y);

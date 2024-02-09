@@ -449,4 +449,15 @@ Please decide if this lasts to accept the sr. (forwarded request 138719 from sei
     <comment></comment>
     <requestid>1121038</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>ffa8f295260ff3d6caf8352d4eabcef3</srcmd5>
+    <version>4.23</version>
+    <time>1707519180</time>
+    <user>anag+factory</user>
+    <comment>- add 0001-Ignoring-desktop-windows-and-moving-them-on-the-bott.patch
+  treat _NET_WM_DESKTOP correctly so for example desktop wallpapers
+  are displayed correctly when using Plasma Desktop or similar software.
+</comment>
+    <requestid>1145282</requestid>
+  </revision>
 </revisionlist>
