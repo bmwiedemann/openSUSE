@@ -1,7 +1,7 @@
 #
 # spec file for package felix-gogo-parent
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           felix-gogo-parent
-Version:        4
+Version:        5
 Release:        0
 Summary:        Parent pom for Apache Felix Gogo
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://felix.apache.org/documentation/subprojects/apache-felix-gogo.html
-Source0:        http://archive.apache.org/dist/felix/gogo-parent-%{version}-source-release.tar.gz
+URL:            https://felix.apache.org/documentation/subprojects/apache-felix-gogo.html
+Source0:        https://archive.apache.org/dist/felix/gogo-parent-%{version}-source-release.tar.gz
 BuildRequires:  javapackages-local
 BuildRequires:  xmvn-resolve
 BuildRequires:  mvn(org.apache.felix:felix-parent:pom:)
