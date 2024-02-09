@@ -1,7 +1,7 @@
 #
-# spec file for package libgee
+# spec file for package libgee06
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2010 Luis Medinas, Portugal
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,25 +13,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           libgee06
 %define _name libgee
+Name:           libgee06
 Version:        0.6.6
 Release:        0
 Summary:        GObject-based library providing commonly used data structures
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
-Url:            http://live.gnome.org/Libgee
+URL:            https://live.gnome.org/Libgee
 Source:         http://download.gnome.org/sources/libgee/0.6/%{_name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE libgee-gir.patch dimstar@opensuse.org -- The typelib file should not reference libgee, but libgee.so.2. The patch is not clean for upstream, but discussion has started at bgo#667529.
 Patch0:         libgee-gir.patch
 BuildRequires:  glib2-devel
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  vala
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Libgee is a collection library providing GObject-based interfaces and
@@ -69,35 +68,28 @@ Libgee is a collection library providing GObject-based interfaces and
 classes for commonly used data structures.
 
 %prep
-%setup -q -n %{_name}-%{version}
-%patch0 -p1
+%autosetup -n %{_name}-%{version} -p1
 
 %build
 %configure --disable-static
-make %{?jobs:-j%jobs}
+%make_build
 
 %install
-%makeinstall
-rm %{buildroot}%{_libdir}/*.la
-
-%clean
-rm -rf %{buildroot}
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n libgee2 -p /sbin/ldconfig
-
 %postun -n libgee2 -p /sbin/ldconfig
 
 %files -n libgee2
-%defattr(-, root, root)
-%doc AUTHORS ChangeLog COPYING NEWS README
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README
 %{_libdir}/*.so.*
 
 %files -n typelib-1_0-Gee-1_0
-%defattr(-,root,root)
 %{_libdir}/girepository-1.0/Gee-1.0.typelib
 
 %files -n libgee06-devel
-%defattr(-, root, root)
 %{_includedir}/gee-1.0/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc

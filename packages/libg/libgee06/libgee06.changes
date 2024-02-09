@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  8 15:56:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Prepare for RPM 4.20: use autosetup.
+
+-------------------------------------------------------------------
 Tue Mar 19 14:24:56 UTC 2013 - dimstar@opensuse.org
 
 - Rename package to libgee06, in order to have libgee 0.9.x as the

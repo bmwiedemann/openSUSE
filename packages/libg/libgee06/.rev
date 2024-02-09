@@ -21,4 +21,12 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>560412e2ed4b5368b8212786013bcb1c</srcmd5>
+    <version>0.6.6</version>
+    <time>1707519157</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20</comment>
+    <requestid>1145241</requestid>
+  </revision>
 </revisionlist>
