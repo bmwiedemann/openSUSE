@@ -245,4 +245,13 @@
     MySQL 8.0.33 start showing warning when the option is used.</comment>
     <requestid>1133633</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0cbbc41ee6fb6cbcdbb6fdfcf21f6cf0</srcmd5>
+    <version>2.2.4</version>
+    <time>1707519117</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.2.4:
+  * Support ssl=True in connect().</comment>
+    <requestid>1145385</requestid>
+  </revision>
 </revisionlist>
