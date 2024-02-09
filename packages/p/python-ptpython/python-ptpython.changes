@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  9 21:58:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.26:
+  * Handle `GeneratorExit` exception when leaving the paginator.
+
+-------------------------------------------------------------------
 Wed Dec 27 13:52:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.25:

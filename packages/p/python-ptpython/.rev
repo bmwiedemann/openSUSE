@@ -110,4 +110,13 @@
     REPL.</comment>
     <requestid>1135315</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0835019c0b506fb4e3892ef647b37f0c</srcmd5>
+    <version>3.0.26</version>
+    <time>1707519308</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.26:
+  * Handle `GeneratorExit` exception when leaving the paginator.</comment>
+    <requestid>1145531</requestid>
+  </revision>
 </revisionlist>
