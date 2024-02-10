@@ -565,6 +565,12 @@ Prefer: -tomcat10-servlet-6_0-api tomcat-servlet-4_0-api
 # have choice for pkgconfig(xkbregistry) needed by libgnome-desktop-3-devel: libxkbregistry-devel libxkbregistry-devel-32bit
 Prefer: -libxkbregistry-devel-32bit
 
+# have choice for python311-anyio needed by python311-httpx: python311-anyio python311-anyio3, have choice for (python311-anyio >= 3 with python311-anyio < 5) needed by python311-httpcore: python311-anyio python311-anyio3
+Prefer: -python39-anyio3
+Prefer: -python310-anyio3
+Prefer: -python311-anyio3
+Prefer: -python312-anyio3
+
 # have choice for dbus-broker-restart-behavior = 35 needed by dbus-broker: dbus-broker-allow-restart dbus-broker-block-restart
 Prefer: -dbus-broker-allow-restart
 
@@ -1422,7 +1428,7 @@ Prefer: vala
 # in doubt, take higher versions
 Prefer: geronimo-servlet-2_4-api
 Prefer: libhdf5_hl100 -libhdf5-103-mvapich2 -libhdf5_cpp103-mvapich2 -libhdf5-103-openmpi4 -libhdf5_cpp103-openmpi4
-Prefer: libhdf5_hl200 -libhdf5-200-mvapich2 -libhdf5_cpp200-mvapich2 -libhdf5-200-openmpi4 -libhdf5_cpp200-openmpi4
+Prefer: libhdf5_hl200 -libhdf5-200-mvapich2 -libhdf5_cpp200-mvapich2 -libhdf5-200-openmpi4 -libhdf5_cpp200-openmpi4 - libhdf5-200-openmpi5 -libhdf5_cpp200-openmpi5
 Prefer: -openmpi5-libs
 Prefer: -openmpi5-config
 Prefer: fftw3-devel ImageMagick-config-7-SUSE
