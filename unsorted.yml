@@ -7689,6 +7689,9 @@ unsorted:
   - grub2-x86_64-efi-extras 
   - grub2-x86_64-xen-extras 
   - grype 
+  - gsasl 
+  - gsasl-devel 
+  - gsasl-lang 
   - gscan2pdf 
   - gscan2pdf-lang 
   - gsequencer 
@@ -8051,6 +8054,8 @@ unsorted:
   - hdf5-gnu-mvapich2-hpc-devel 
   - hdf5-gnu-openmpi4-hpc 
   - hdf5-gnu-openmpi4-hpc-devel 
+  - hdf5-gnu-openmpi5-hpc 
+  - hdf5-gnu-openmpi5-hpc-devel 
   - hdf5-hpc-examples 
   - hdf5-mvapich2 
   - hdf5-mvapich2-devel 
@@ -8058,6 +8063,9 @@ unsorted:
   - hdf5-openmpi4 
   - hdf5-openmpi4-devel 
   - hdf5-openmpi4-devel-static 
+  - hdf5-openmpi5 
+  - hdf5-openmpi5-devel 
+  - hdf5-openmpi5-devel-static 
   - hdf5_1_12_2-gnu-hpc 
   - hdf5_1_12_2-gnu-hpc-devel 
   - hdf5_1_12_2-gnu-hpc-devel-static 
@@ -8074,6 +8082,10 @@ unsorted:
   - hdf5_1_12_2-gnu-openmpi4-hpc-devel 
   - hdf5_1_12_2-gnu-openmpi4-hpc-devel-static 
   - hdf5_1_12_2-gnu-openmpi4-hpc-module 
+  - hdf5_1_12_2-gnu-openmpi5-hpc 
+  - hdf5_1_12_2-gnu-openmpi5-hpc-devel 
+  - hdf5_1_12_2-gnu-openmpi5-hpc-devel-static 
+  - hdf5_1_12_2-gnu-openmpi5-hpc-module 
   - hdf5_1_12_2-hpc-examples 
   - hdhomerun_config 
   - hdhomerun_config_gui 
@@ -9990,6 +10002,7 @@ unsorted:
   - kubesec-zsh-completion 
   - kubespy 
   - kubetap 
+  - kubetui 
   - kubeval 
   - kubevirt-container-disk 
   - kubevirt-manifests 
@@ -11840,7 +11853,7 @@ unsorted:
   - libcpluff0 
   - libcpluffxx-devel 
   - libcpluffxx0 
-  - libcpp-httplib0_12 
+  - libcpp-httplib0_15 
   - libcpprest2_10 
   - libcppunit-1_15-1 
   - libcppunit-1_15-1-32bit 
@@ -12314,7 +12327,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla41 
+  - libfilezilla42 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -12757,7 +12770,6 @@ unsorted:
   - libgrpc++1_61 
   - libgrpc1_61 
   - libgrpc38 
-  - libgsasl-devel 
   - libgsequencer0 
   - libgsettings-qt1 
   - libgsf-devel 
@@ -12920,69 +12932,87 @@ unsorted:
   - libhdf5-200 
   - libhdf5-200-mvapich2 
   - libhdf5-200-openmpi4 
+  - libhdf5-200-openmpi5 
   - libhdf5-gnu-hpc 
   - libhdf5-gnu-mpich-hpc 
   - libhdf5-gnu-mvapich2-hpc 
   - libhdf5-gnu-openmpi4-hpc 
+  - libhdf5-gnu-openmpi5-hpc 
   - libhdf5_1_12_2-gnu-hpc 
   - libhdf5_1_12_2-gnu-mpich-hpc 
   - libhdf5_1_12_2-gnu-mvapich2-hpc 
   - libhdf5_1_12_2-gnu-openmpi4-hpc 
+  - libhdf5_1_12_2-gnu-openmpi5-hpc 
   - libhdf5_cpp-gnu-hpc 
   - libhdf5_cpp-gnu-mpich-hpc 
   - libhdf5_cpp-gnu-mvapich2-hpc 
   - libhdf5_cpp-gnu-openmpi4-hpc 
+  - libhdf5_cpp-gnu-openmpi5-hpc 
   - libhdf5_cpp200 
   - libhdf5_cpp200-mvapich2 
   - libhdf5_cpp200-openmpi4 
+  - libhdf5_cpp200-openmpi5 
   - libhdf5_cpp_1_12_2-gnu-hpc 
   - libhdf5_cpp_1_12_2-gnu-mpich-hpc 
   - libhdf5_cpp_1_12_2-gnu-mvapich2-hpc 
   - libhdf5_cpp_1_12_2-gnu-openmpi4-hpc 
+  - libhdf5_cpp_1_12_2-gnu-openmpi5-hpc 
   - libhdf5_fortran-gnu-hpc 
   - libhdf5_fortran-gnu-mpich-hpc 
   - libhdf5_fortran-gnu-mvapich2-hpc 
   - libhdf5_fortran-gnu-openmpi4-hpc 
+  - libhdf5_fortran-gnu-openmpi5-hpc 
   - libhdf5_fortran200 
   - libhdf5_fortran200-mvapich2 
   - libhdf5_fortran200-openmpi4 
+  - libhdf5_fortran200-openmpi5 
   - libhdf5_fortran_1_12_2-gnu-hpc 
   - libhdf5_fortran_1_12_2-gnu-mpich-hpc 
   - libhdf5_fortran_1_12_2-gnu-mvapich2-hpc 
   - libhdf5_fortran_1_12_2-gnu-openmpi4-hpc 
+  - libhdf5_fortran_1_12_2-gnu-openmpi5-hpc 
   - libhdf5_hl-gnu-hpc 
   - libhdf5_hl-gnu-mpich-hpc 
   - libhdf5_hl-gnu-mvapich2-hpc 
   - libhdf5_hl-gnu-openmpi4-hpc 
+  - libhdf5_hl-gnu-openmpi5-hpc 
   - libhdf5_hl200 
   - libhdf5_hl200-mvapich2 
   - libhdf5_hl200-openmpi4 
+  - libhdf5_hl200-openmpi5 
   - libhdf5_hl_1_12_2-gnu-hpc 
   - libhdf5_hl_1_12_2-gnu-mpich-hpc 
   - libhdf5_hl_1_12_2-gnu-mvapich2-hpc 
   - libhdf5_hl_1_12_2-gnu-openmpi4-hpc 
+  - libhdf5_hl_1_12_2-gnu-openmpi5-hpc 
   - libhdf5_hl_cpp-gnu-hpc 
   - libhdf5_hl_cpp-gnu-mpich-hpc 
   - libhdf5_hl_cpp-gnu-mvapich2-hpc 
   - libhdf5_hl_cpp-gnu-openmpi4-hpc 
+  - libhdf5_hl_cpp-gnu-openmpi5-hpc 
   - libhdf5_hl_cpp200 
   - libhdf5_hl_cpp200-mvapich2 
   - libhdf5_hl_cpp200-openmpi4 
+  - libhdf5_hl_cpp200-openmpi5 
   - libhdf5_hl_cpp_1_12_2-gnu-hpc 
   - libhdf5_hl_cpp_1_12_2-gnu-mpich-hpc 
   - libhdf5_hl_cpp_1_12_2-gnu-mvapich2-hpc 
   - libhdf5_hl_cpp_1_12_2-gnu-openmpi4-hpc 
+  - libhdf5_hl_cpp_1_12_2-gnu-openmpi5-hpc 
   - libhdf5_hl_fortran-gnu-hpc 
   - libhdf5_hl_fortran-gnu-mpich-hpc 
   - libhdf5_hl_fortran-gnu-mvapich2-hpc 
   - libhdf5_hl_fortran-gnu-openmpi4-hpc 
+  - libhdf5_hl_fortran-gnu-openmpi5-hpc 
   - libhdf5hl_fortran200 
   - libhdf5hl_fortran200-mvapich2 
   - libhdf5hl_fortran200-openmpi4 
+  - libhdf5hl_fortran200-openmpi5 
   - libhdf5hl_fortran_1_12_2-gnu-hpc 
   - libhdf5hl_fortran_1_12_2-gnu-mpich-hpc 
   - libhdf5hl_fortran_1_12_2-gnu-mvapich2-hpc 
   - libhdf5hl_fortran_1_12_2-gnu-openmpi4-hpc 
+  - libhdf5hl_fortran_1_12_2-gnu-openmpi5-hpc 
   - libhdhomerun-devel 
   - libhdhomerun2 
   - libhealpix_cxx3 
@@ -16302,6 +16332,8 @@ unsorted:
   - libxosd2 
   - libxplayer-plparser-mini18 
   - libxplayer-plparser18 
+  - libxpp-0_2_0 
+  - libxpp-devel 
   - libxreaderdocument3 
   - libxreaderview3 
   - libxshmfence-devel 
@@ -17270,8 +17302,6 @@ unsorted:
   - mathjax-winie6-fonts 
   - mathml-dtd 
   - mathmod 
-  - mathomatic 
-  - mathomatic-devel 
   - matio-tools 
   - matomo 
   - matomo-apache 
@@ -21490,6 +21520,7 @@ unsorted:
   - pg_comparator 
   - pgaccess 
   - pgadmin4 
+  - pgadmin4-cloud 
   - pgadmin4-desktop 
   - pgadmin4-doc 
   - pgadmin4-web-uwsgi 
@@ -23050,7 +23081,6 @@ unsorted:
   - python310-Pygments 
   - python310-Pympler 
   - python310-Pyphen 
-  - python310-Pyro4 
   - python310-Pyro5 
   - python310-QDarkStyle 
   - python310-QR-Code-generator 
@@ -23188,6 +23218,7 @@ unsorted:
   - python310-antlr4-python3-runtime 
   - python310-anyascii 
   - python310-anyio 
+  - python310-anyio3 
   - python310-anyjson 
   - python310-anymarkup-core 
   - python310-anywidget 
@@ -24967,7 +24998,6 @@ unsorted:
   - python310-nwdiag 
   - python310-nxapi-plumbing 
   - python310-o2sclpy 
-  - python310-oauth2 
   - python310-oauthlib 
   - python310-objgraph 
   - python310-oci-sdk 
@@ -26725,6 +26755,7 @@ unsorted:
   - python311-ansiwrap 
   - python311-antlr4-python3-runtime 
   - python311-anyascii 
+  - python311-anyio3 
   - python311-anyjson 
   - python311-anymarkup-core 
   - python311-anywidget 
@@ -28432,7 +28463,6 @@ unsorted:
   - python311-nwdiag 
   - python311-nxapi-plumbing 
   - python311-o2sclpy 
-  - python311-oauth2 
   - python311-objgraph 
   - python311-oci-sdk 
   - python311-oct2py 
@@ -30132,6 +30162,7 @@ unsorted:
   - python312-antlr4-python3-runtime 
   - python312-anyascii 
   - python312-anyio 
+  - python312-anyio3 
   - python312-anyjson 
   - python312-anymarkup-core 
   - python312-apache-libcloud 
@@ -30143,6 +30174,7 @@ unsorted:
   - python312-appdirs 
   - python312-application 
   - python312-applicationinsights 
+  - python312-apptools 
   - python312-apsw 
   - python312-arabic-reshaper 
   - python312-archmage 
@@ -31017,6 +31049,7 @@ unsorted:
   - python312-entrypoints 
   - python312-environ-config 
   - python312-environmental-override 
+  - python312-envisage 
   - python312-enzyme 
   - python312-ephem 
   - python312-ephemeral-port-reserve 
@@ -31101,6 +31134,7 @@ unsorted:
   - python312-flit-core 
   - python312-flit-scm 
   - python312-fluent.syntax 
+  - python312-flufl.bounce 
   - python312-flufl.i18n 
   - python312-flufl.lock 
   - python312-flufl.testing 
@@ -31314,6 +31348,7 @@ unsorted:
   - python312-imageio-ffmpeg 
   - python312-imagesize 
   - python312-imbox 
+  - python312-img2pdf 
   - python312-iminuit 
   - python312-immutabledict 
   - python312-immutables 
@@ -31511,6 +31546,7 @@ unsorted:
   - python312-ldap3 
   - python312-ldapdomaindump 
   - python312-ldappool 
+  - python312-ldaptor 
   - python312-leather 
   - python312-leglight 
   - python312-lesscpy 
@@ -31812,6 +31848,7 @@ unsorted:
   - python312-oiffile 
   - python312-oktaloginwrapper 
   - python312-olefile 
+  - python312-oletools 
   - python312-olm 
   - python312-omemo-dr 
   - python312-onigurumacffi 
@@ -31922,6 +31959,7 @@ unsorted:
   - python312-patsy 
   - python312-pbkdf2 
   - python312-pbr 
+  - python312-pcodedmp 
   - python312-pdd 
   - python312-pdfminer.six 
   - python312-pdfrw 
@@ -31932,6 +31970,7 @@ unsorted:
   - python312-pefile 
   - python312-pegasus-wms.api 
   - python312-pegasus-wms.common 
+  - python312-pelican 
   - python312-pem 
   - python312-pendulum 
   - python312-pep440 
@@ -31955,6 +31994,7 @@ unsorted:
   - python312-pifpaf 
   - python312-pika 
   - python312-pika-pool 
+  - python312-pikepdf 
   - python312-pilkit 
   - python312-pingparsing 
   - python312-pip 
@@ -32083,6 +32123,7 @@ unsorted:
   - python312-pyarrow-devel 
   - python312-pyasn1 
   - python312-pyasn1-modules 
+  - python312-pyasyncore 
   - python312-pybars3 
   - python312-pybcj 
   - python312-pybeam 
@@ -32133,6 +32174,7 @@ unsorted:
   - python312-pyemd 
   - python312-pyenchant 
   - python312-pyerfa 
+  - python312-pyface 
   - python312-pyfakefs 
   - python312-pyfeyn 
   - python312-pyfiglet 
@@ -32193,6 +32235,7 @@ unsorted:
   - python312-pymediainfo 
   - python312-pymemcache 
   - python312-pymetar 
+  - python312-pymisp 
   - python312-pymol 
   - python312-pymongo 
   - python312-pymssql 
@@ -32286,6 +32329,7 @@ unsorted:
   - python312-pytest-freezegun 
   - python312-pytest-git 
   - python312-pytest-grpc 
+  - python312-pytest-helpers-namespace 
   - python312-pytest-html 
   - python312-pytest-httpbin 
   - python312-pytest-httpserver 
@@ -32319,9 +32363,12 @@ unsorted:
   - python312-pytest-reorder 
   - python312-pytest-rerunfailures 
   - python312-pytest-responsemock 
+  - python312-pytest-salt-factories 
   - python312-pytest-server-fixtures 
   - python312-pytest-services 
+  - python312-pytest-shell-utilities 
   - python312-pytest-shutil 
+  - python312-pytest-skip-markers 
   - python312-pytest-socket 
   - python312-pytest-spec 
   - python312-pytest-sphinx 
@@ -32329,6 +32376,7 @@ unsorted:
   - python312-pytest-subtests 
   - python312-pytest-sugar 
   - python312-pytest-svn 
+  - python312-pytest-system-statistics 
   - python312-pytest-testconfig 
   - python312-pytest-testinfra 
   - python312-pytest-timeout 
@@ -32633,6 +32681,7 @@ unsorted:
   - python312-service_identity 
   - python312-setproctitle 
   - python312-setuptools 
+  - python312-setuptools-declarative-requirements 
   - python312-setuptools-gettext 
   - python312-setuptools-git 
   - python312-setuptools-git-versioning 
@@ -32881,6 +32930,7 @@ unsorted:
   - python312-traceback2 
   - python312-traitlets 
   - python312-traits 
+  - python312-traitsui 
   - python312-traittypes 
   - python312-transaction 
   - python312-transip 
@@ -33009,6 +33059,7 @@ unsorted:
   - python312-wasabi 
   - python312-watchdog 
   - python312-watchdog-doc 
+  - python312-watchfiles 
   - python312-watermark 
   - python312-wcag-contrast-ratio 
   - python312-wcmatch 
@@ -33327,7 +33378,6 @@ unsorted:
   - python39-Pygments 
   - python39-Pympler 
   - python39-Pyphen 
-  - python39-Pyro4 
   - python39-Pyro5 
   - python39-QDarkStyle 
   - python39-QR-Code-generator 
@@ -33465,6 +33515,7 @@ unsorted:
   - python39-antlr4-python3-runtime 
   - python39-anyascii 
   - python39-anyio 
+  - python39-anyio3 
   - python39-anyjson 
   - python39-anymarkup-core 
   - python39-anywidget 
@@ -35239,7 +35290,6 @@ unsorted:
   - python39-nwdiag 
   - python39-nxapi-plumbing 
   - python39-o2sclpy 
-  - python39-oauth2 
   - python39-oauthlib 
   - python39-objgraph 
   - python39-oci-sdk 
@@ -39202,6 +39252,7 @@ unsorted:
   - system-user-nagios 
   - system-user-ntp 
   - system-user-osc-collab 
+  - system-user-pgadmin 
   - system-user-prometheus 
   - system-user-rustdesk 
   - system-user-transmission 

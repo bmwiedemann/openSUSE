@@ -1979,8 +1979,7 @@
     <package name="libgrlnet-0_3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgrlpls-0_3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgroupsock30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libgsasl-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="libgsasl7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="libgsasl18" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libgsf-1-114" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgsf-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgsl27" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
