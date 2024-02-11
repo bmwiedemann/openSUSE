@@ -273,4 +273,18 @@
     <comment>- Use %{_target_cpu} to determine host and build.</comment>
     <requestid>1144290</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>85b67995438aada87b1c8d1692780b12</srcmd5>
+    <version>13.2.1+git8285</version>
+    <time>1707662683</time>
+    <user>anag+factory</user>
+    <comment>- Add gcc13-sanitizer-remove-crypt-interception.patch to remove
+  crypt and crypt_r interceptors.  The crypt API change in SLE15 SP3
+  breaks them.  [bsc#1219520]
+
+- Update to gcc-13 branch head, 67ac78caf31f7cb3202177e642, git8285
+- Add gcc13-pr88345-min-func-alignment.diff to add support for
+  -fmin-function-alignment.  [bsc#1214934]</comment>
+    <requestid>1145209</requestid>
+  </revision>
 </revisionlist>

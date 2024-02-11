@@ -1,0 +1,158 @@
+From 441d0aa048a51d2e9c4f4227916d2a1a2f06b4e5 Mon Sep 17 00:00:00 2001
+From: Jan Hubicka <jh@suse.cz>
+Date: Wed, 24 Jan 2024 18:13:17 +0100
+Subject: [PATCH] Add -fmin-function-alignmnet
+To: gcc-patches@gcc.gnu.org
+
+-falign-functions is ignored in cold code, since it is an optimization intended to
+improve instruction prefetch.  In some case it is necessary to force alignment for
+all functions, so this patch adds -fmin-function-alignment for this purpose.
+
+gcc/ChangeLog:
+
+	PR middle-end/88345
+	* common.opt: (flimit-function-alignment): Reorder alphabeticaly
+	(fmin-function-alignment): New parameter.
+	* doc/invoke.texi: (-fmin-function-alignment): Document.
+	(-falign-functions,-falign-loops,-falign-labels): Mention that
+	aglinments are ignored in cold code.
+	* varasm.cc (assemble_start_function): Handle min-function-alignment.
+	* lto-streamer.h (LTO_minor_version): Bump.
+---
+ gcc/common.opt      | 10 +++++++---
+ gcc/doc/invoke.texi | 18 +++++++++++++++++-
+ gcc/lto-streamer.h  |  2 +-
+ gcc/varasm.cc       |  5 +++++
+ 4 files changed, 30 insertions(+), 5 deletions(-)
+
+diff --git a/gcc/common.opt b/gcc/common.opt
+index 862c474d3c8..5d35391b99f 100644
+--- a/gcc/common.opt
++++ b/gcc/common.opt
+@@ -1027,9 +1027,6 @@ Align the start of functions.
+ falign-functions=
+ Common RejectNegative Joined Var(str_align_functions) Optimization
+ 
+-flimit-function-alignment
+-Common Var(flag_limit_function_alignment) Optimization Init(0)
+-
+ falign-jumps
+ Common Var(flag_align_jumps) Optimization
+ Align labels which are only reached by jumping.
+@@ -2165,6 +2162,10 @@ fmessage-length=
+ Common RejectNegative Joined UInteger
+ -fmessage-length=<number>	Limit diagnostics to <number> characters per line.  0 suppresses line-wrapping.
+ 
++fmin-function-alignment=
++Common Joined RejectNegative UInteger Var(flag_min_function_alignment) Optimization
++Align the start of every function.
++
+ fmodulo-sched
+ Common Var(flag_modulo_sched) Optimization
+ Perform SMS based modulo scheduling before the first scheduling pass.
+@@ -2489,6 +2490,9 @@ starts and when the destructor finishes.
+ flifetime-dse=
+ Common Joined RejectNegative UInteger Var(flag_lifetime_dse) Optimization IntegerRange(0, 2)
+ 
++flimit-function-alignment
++Common Var(flag_limit_function_alignment) Optimization Init(0)
++
+ flive-patching
+ Common RejectNegative Alias(flive-patching=,inline-clone) Optimization
+ 
+diff --git a/gcc/doc/invoke.texi b/gcc/doc/invoke.texi
+index b777fc92755..d39cb26326c 100644
+--- a/gcc/doc/invoke.texi
++++ b/gcc/doc/invoke.texi
+@@ -531,6 +531,7 @@ Objective-C and Objective-C++ Dialects}.
+ -falign-jumps[=@var{n}[:@var{m}:[@var{n2}[:@var{m2}]]]]
+ -falign-labels[=@var{n}[:@var{m}:[@var{n2}[:@var{m2}]]]]
+ -falign-loops[=@var{n}[:@var{m}:[@var{n2}[:@var{m2}]]]]
++-fmin-function-alignment=[@var{n}]
+ -fno-allocation-dce -fallow-store-data-races
+ -fassociative-math  -fauto-profile  -fauto-profile[=@var{path}]
+ -fauto-inc-dec  -fbranch-probabilities
+@@ -13650,6 +13651,9 @@ Align the start of functions to the next power-of-two greater than or
+ equal to @var{n}, skipping up to @var{m}-1 bytes.  This ensures that at
+ least the first @var{m} bytes of the function can be fetched by the CPU
+ without crossing an @var{n}-byte alignment boundary.
++This is an optimization of code performance and alignment is ignored for
++functions considered cold.  If alignment is required for all functions,
++use @option{-fmin-function-alignment}.
+ 
+ If @var{m} is not specified, it defaults to @var{n}.
+ 
+@@ -13713,6 +13717,8 @@ Enabled at levels @option{-O2}, @option{-O3}.
+ Align loops to a power-of-two boundary.  If the loops are executed
+ many times, this makes up for any execution of the dummy padding
+ instructions.
++This is an optimization of code performance and alignment is ignored for
++loops considered cold.
+ 
+ If @option{-falign-labels} is greater than this value, then its value
+ is used instead.
+@@ -13735,6 +13741,8 @@ Enabled at levels @option{-O2}, @option{-O3}.
+ Align branch targets to a power-of-two boundary, for branch targets
+ where the targets can only be reached by jumping.  In this case,
+ no dummy operations need be executed.
++This is an optimization of code performance and alignment is ignored for
++jumps considered cold.
+ 
+ If @option{-falign-labels} is greater than this value, then its value
+ is used instead.
+@@ -13748,6 +13756,14 @@ The maximum allowed @var{n} option value is 65536.
+ 
+ Enabled at levels @option{-O2}, @option{-O3}.
+ 
++@opindex fmin-function-alignment=@var{n}
++@item -fmin-function-alignment
++Specify minimal alignment of functions to the next power-of-two greater than or
++equal to @var{n}. Unlike @option{-falign-functions} this alignment is applied
++also to all functions (even those considered cold).  The alignment is also not
++affected by @option{-flimit-function-alignment}
++
++
+ @opindex fno-allocation-dce
+ @item -fno-allocation-dce
+ Do not remove unused C++ allocations in dead code elimination.
+@@ -13844,7 +13860,7 @@ To use the link-time optimizer, @option{-flto} and optimization
+ options should be specified at compile time and during the final link.
+ It is recommended that you compile all the files participating in the
+ same link with the same options and also specify those options at
+-link time.  
++link time.
+ For example:
+ 
+ @smallexample
+diff --git a/gcc/lto-streamer.h b/gcc/lto-streamer.h
+index 75cebcd02d3..2827897cc7a 100644
+--- a/gcc/lto-streamer.h
++++ b/gcc/lto-streamer.h
+@@ -122,7 +122,7 @@ along with GCC; see the file COPYING3.  If not see
+      form followed by the data for the string.  */
+ 
+ #define LTO_major_version GCC_major_version
+-#define LTO_minor_version 1
++#define LTO_minor_version 2
+ 
+ typedef unsigned char	lto_decl_flags_t;
+ 
+diff --git a/gcc/varasm.cc b/gcc/varasm.cc
+index cd0cd88321c..5de821b63e6 100644
+--- a/gcc/varasm.cc
++++ b/gcc/varasm.cc
+@@ -1914,6 +1914,11 @@ assemble_start_function (tree decl, const char *fnname)
+ 
+   /* Tell assembler to move to target machine's alignment for functions.  */
+   align = floor_log2 (align / BITS_PER_UNIT);
++  /* Handle forced alignment.  This really ought to apply to all functions,
++     since it is used by patchable entries.  */
++  if (flag_min_function_alignment)
++    align = MAX (align, floor_log2 (flag_min_function_alignment));
++
+   if (align > 0)
+     {
+       ASM_OUTPUT_ALIGN (asm_out_file, align);
+-- 
+2.35.3
+

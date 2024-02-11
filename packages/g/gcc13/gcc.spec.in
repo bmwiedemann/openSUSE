@@ -204,7 +204,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:          https://gcc.gnu.org/
-Version: 13.2.1+git8250
+Version: 13.2.1+git8285
 Release:      1
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -387,11 +387,14 @@ Patch19:	gcc11-gdwarf-4-default.patch
 Patch20:	gcc11-amdgcn-disable-hot-cold-partitioning.patch
 Patch21:        gdcflags.patch
 Patch23:	gcc13-bsc1216664.patch
+Patch24:	gcc13-sanitizer-remove-crypt-interception.patch
 # A set of patches from the RH srpm
 Patch51:	gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
 Patch60:	gcc44-textdomain.patch
 Patch61:	gcc44-rename-info-files.patch
+# Feature backports
+Patch100:	gcc13-pr88345-min-func-alignment.diff
 
 # GCC-TESTSUITE-DELETE-BEGIN
 # SRC-COMMON-END
@@ -1353,9 +1356,11 @@ ln -s newlib-4.3.0.20230120/newlib .
 %endif
 %patch21 -p1
 %patch23 -p1
+%patch24 -p1
 %patch51
 %patch60 -p1
 %patch61 -p1
+%patch100 -p1
 
 #test patching end
 
