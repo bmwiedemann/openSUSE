@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Fri Feb 9 17:30:47 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#693
+- remove explicit dependency on libopenssl*-hmac (bsc#1219762)
+- 17.114
+
+--------------------------------------------------------------------
 Mon Feb 5 14:08:10 UTC 2024 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#689

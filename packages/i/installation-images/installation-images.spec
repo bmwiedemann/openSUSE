@@ -385,7 +385,6 @@ BuildRequires:  less
 %if %with_fips
 BuildRequires:  dracut-fips
 BuildRequires:  openssh-fips
-BuildRequires:  libopenssl1_1-hmac
 %endif
 BuildRequires:  libpcsclite1
 BuildRequires:  libyui-ncurses
@@ -670,7 +669,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.113
+Version:        17.114
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
