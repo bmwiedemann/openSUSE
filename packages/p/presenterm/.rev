@@ -110,4 +110,27 @@
   * Display first presentation load error as any other (#118).</comment>
     <requestid>1141920</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>459aa98cd92eb1d336ada56330ebe4d4</srcmd5>
+    <version>0.6.0+0</version>
+    <time>1707662727</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.6.0:
+  Breaking changes:
+  * The default configuration file and custom themes paths have been
+    changed in Windows and macOS to be compliant to where
+    those platforms store these types of files. See the configuration
+    guide to learn more.
+  New features:
+  * Add f keys, tab, and backspace as possible bindings (#188).
+  * Add support for multiline block quotes (#184).
+  * Use theme color as background on ascii-blocks mode images (#182).
+  * Blend ascii-blocks image semi-transparent borders (#185).
+  * Respect Windows/macOS config paths for configuration (#181).
+  * Allow making front matter strict parsing optional (#190).
+  Fixes:
+  * Don't add an extra line after an end slide shorthand (#187).
+  * Don't clear input state on key release event (#183).</comment>
+    <requestid>1145571</requestid>
+  </revision>
 </revisionlist>
