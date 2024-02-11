@@ -600,4 +600,13 @@
     <comment></comment>
     <requestid>1137500</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>083318b9ce3e1a17175f0ce6d4652a4d</srcmd5>
+    <version>1.4.1</version>
+    <time>1707662721</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.1:
+  * A regression is fixed in setting wallpaper with command-line.</comment>
+    <requestid>1145568</requestid>
+  </revision>
 </revisionlist>

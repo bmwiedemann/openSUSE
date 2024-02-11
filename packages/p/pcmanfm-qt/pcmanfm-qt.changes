@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 10 07:04:38 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4.1:
+  * A regression is fixed in setting wallpaper with command-line.
+
+-------------------------------------------------------------------
 Mon Jan  1 07:19:03 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Added %dir declarations for icon directories to clear
