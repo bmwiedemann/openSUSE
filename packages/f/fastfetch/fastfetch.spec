@@ -17,7 +17,7 @@
 
 
 Name:           fastfetch
-Version:        2.7.1
+Version:        2.8.0
 Release:        0
 Summary:        Neofetch-like tool written in C
 License:        MIT
@@ -33,7 +33,6 @@ BuildRequires:  vulkan-headers
 BuildRequires:  pkgconfig(ImageMagick)
 BuildRequires:  pkgconfig(chafa)
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(libpci)
 BuildRequires:  pkgconfig(libxfconf-0)
 BuildRequires:  pkgconfig(ocl-icd)
 BuildRequires:  pkgconfig(rpm)

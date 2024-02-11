@@ -245,4 +245,20 @@
     * Fix a possible segfault when detecting terminal (Terminal, Linux)</comment>
     <requestid>1143566</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a4a5be1887271b976a6588b860642c12</srcmd5>
+    <version>2.8.0</version>
+    <time>1707662714</time>
+    <user>anag+factory</user>
+    <comment>- update to version 2.8.0:
+  Features:
+    * Rewrite GPU module, drop libpci dependency (GPU, Linux)
+    * Detect marketing name of Apple Silicon CPUs for asahi linux (CPU, Linux)
+    * Add new module Camera, which prints the name and resolution of connected cameras
+Bugfixes:
+    * Fix compatibility with packages installed by flatpak (Terminal, Linux)
+    * Don't show not connected if no power adapter is found (macOS / Linux, PowerAdapter)
+    * Make format of battery status be consistent with other platforms (Linux, Battery)</comment>
+    <requestid>1145542</requestid>
+  </revision>
 </revisionlist>
