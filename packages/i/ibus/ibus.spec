@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -76,6 +76,12 @@ Patch15:        ibus-socket-name-compatibility.patch
 # PATCH-FIX-UPSTREAM ibus-ui-gtk3-restart-via-systemd.patch
 # Allow ibus-ui-gtk3 to restart ibus-daemon when it is launched by systemd
 Patch16:        ibus-ui-gtk3-restart-via-systemd.patch
+# PATCH-FIX-UPSTREAM ibus-complete-preedit-signals-for-postprocesskeyevent.patch
+# Fix dead keys on non-English keyboards for some applications (boo#1218135)
+Patch17:        ibus-complete-preedit-signals-for-postprocesskeyevent.patch
+# PATCH-FIX-UPSTREAM ibus-enginesimple-dont-commit-any-characters.patch
+# Fix dead keys on non-English keyboards for Wine (boo#1218135)
+Patch18:        ibus-enginesimple-dont-commit-any-characters.patch
 BuildRequires:  pkgconfig(dbusmenu-glib-0.4)
 BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4)
 BuildRequires:  pkgconfig(iso-codes)
@@ -236,6 +242,8 @@ cp -r %{SOURCE11} .
 %patch15 -p1
 %endif
 %patch16 -p1
+%patch17 -p1
+%patch18 -p1
 
 %build
 %configure --disable-static \

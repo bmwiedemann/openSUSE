@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb  4 08:53:08 UTC 2024 - Jean Delvare <jdelvare@suse.com>
+
+- Fix dead keys with non-English keyboard in some applications
+  (MAME, Wine) (boo#1218135)
+  ibus-complete-preedit-signals-for-postprocesskeyevent.patch
+  ibus-enginesimple-dont-commit-any-characters.patch
+
+-------------------------------------------------------------------
 Fri Jan 19 15:23:25 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use %_libexecdir as the basis of %_ibus_libexecdir (bsc#1174075)

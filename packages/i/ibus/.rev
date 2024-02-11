@@ -1121,4 +1121,15 @@ This update also contains a patch for usability improvement for 13.1. (forwarded
     <comment></comment>
     <requestid>1140121</requestid>
   </revision>
+  <revision rev="125" vrev="3">
+    <srcmd5>edd292b3fd7fbaa44d9ff3c44bacc352</srcmd5>
+    <version>1.5.29</version>
+    <time>1707662686</time>
+    <user>anag+factory</user>
+    <comment>- Fix dead keys with non-English keyboard in some applications
+  (MAME, Wine) (boo#1218135)
+  ibus-complete-preedit-signals-for-postprocesskeyevent.patch
+  ibus-enginesimple-dont-commit-any-characters.patch</comment>
+    <requestid>1145410</requestid>
+  </revision>
 </revisionlist>
