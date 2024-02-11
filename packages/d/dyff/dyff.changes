@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 11 08:22:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.7.1:
+  * Fix dash quotation issue
+  * Replace deprecated changelog setting name
+  * Use `repository` instead of `tap`
+
+-------------------------------------------------------------------
 Tue Feb 06 20:00:53 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.7.0:
