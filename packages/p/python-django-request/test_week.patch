@@ -1,0 +1,33 @@
+From 6fdd09bcd98ee9a404788ac6d464b14dcb7df50a Mon Sep 17 00:00:00 2001
+From: Mariusz Felisiak <felisiak.mariusz@gmail.com>
+Date: Mon, 8 Jan 2024 20:14:09 +0100
+Subject: [PATCH] Fixed test_week() when first Sunday of the year is on
+ January, 7th.
+
+---
+ tests/test_managers.py | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_managers.py b/tests/test_managers.py
+index 86ced41..45d390e 100644
+--- a/tests/test_managers.py
++++ b/tests/test_managers.py
+@@ -1,5 +1,7 @@
++import calendar
+ from datetime import date, timedelta
+ 
++from dateutil.relativedelta import relativedelta
+ from django.contrib.auth import get_user_model
+ from django.test import TestCase, override_settings
+ from django.utils.timezone import now
+@@ -119,7 +121,9 @@ def test_month_is_not_december(self):
+ 
+     def test_week(self):
+         # setUp
+-        january_time = now().replace(month=1, day=6)
++        january_time = now().replace(month=1, day=1)
++        # Move to the first week starting on the first Sunday of the year.
++        january_time += relativedelta(weekday=calendar.SUNDAY)
+         self.request.time = january_time
+         self.request.save()
+         # Test

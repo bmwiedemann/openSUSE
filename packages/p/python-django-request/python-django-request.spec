@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-request
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-django-request
 Version:        1.6.3
 Release:        0
@@ -27,6 +26,8 @@ Source:         https://github.com/django-request/django-request/archive/%{versi
 # gh#django-request/django-request#241
 Patch0:         set-timezone-for-day-tests.patch
 Patch1:         do-not-fail-on-day-one-of-month.patch
+# PATCH-FIX-UPSTREAM https://github.com/django-request/django-request/pull/276 Fixed test_week() when first Sunday of the year is on January, 7th.
+Patch2:         test_week.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
