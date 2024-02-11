@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb 10 12:30:29 UTC 2024 - xtexchooser@duck.com
+
+- Update to version 0.2.2:
+  * chore: release `v0.2.2`
+  * build: Add ability to disable tests require network
+  * ci: test qqmusic provider initializing
+  * fix: QQMusic::init should panic on `Err()` rather than `Ok()`
+
+-------------------------------------------------------------------
 Fri Feb 09 03:42:14 UTC 2024 - xtexchooser@duck.com
 
 - Update to version 0.2.1:

@@ -63,4 +63,18 @@ The upstream has developed for a long time and waylyrics has been stable, althou
   * chore(doc): update alternatives [ci skip]</comment>
     <requestid>1145324</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a1c65d1d9ca41007167e6247ba905081</srcmd5>
+    <version>0.2.2</version>
+    <time>1707662761</time>
+    <user>anag+factory</user>
+    <comment>Update to v0.2.2, also enable tests after PR #177 merged.
+
+- Update to version 0.2.2:
+  * chore: release `v0.2.2`
+  * build: Add ability to disable tests require network
+  * ci: test qqmusic provider initializing
+  * fix: QQMusic::init should panic on `Err()` rather than `Ok()`</comment>
+    <requestid>1145601</requestid>
+  </revision>
 </revisionlist>

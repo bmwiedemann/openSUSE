@@ -17,7 +17,7 @@
 
 
 Name:           waylyrics
-Version:        0.2.1
+Version:        0.2.2
 Release:        0
 Summary:        The furry way to show desktop lyrics
 License:        MIT
@@ -60,7 +60,8 @@ install -Dm644 "io.poly000.waylyrics.desktop" -t %{buildroot}%{_datadir}/applica
 install -Dm644 "io.poly000.waylyrics.gschema.xml" -t %{buildroot}%{_datadir}/glib-2.0/schemas/
 
 %check
-# waylyrics does not have any tests
+export WAYLYRICS_THEME_PRESETS_DIR=%{_datadir}/waylyrics/themes
+%{cargo_test} --locked --no-default-features --features mimalloc
 
 %files
 %license LICENSE
