@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Fri Feb  9 08:34:56 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.3
+  4.3.0 (2024-02-01)
+  * Dropped support for Django 4.0.
+  * Added Python 3.12 to test matrix.
+  * Removed outdated third-party panels from the list.
+  * Avoided the unnecessary work of recursively quoting SQL parameters.
+  * Postponed context process in templates panel to include lazy evaluated
+    content.
+  * Fixed template panel to avoid evaluating ``LazyObject`` when not already
+    evaluated.
+  * Added support for Django 5.0.
+  * Refactor the ``utils.get_name_from_obj`` to simulate the behavior of
+    ``django.contrib.admindocs.utils.get_view_name``.
+  * Switched from black to the `ruff formatter
+    <https://astral.sh/blog/the-ruff-formatter>`__.
+  * Changed the default position of the toolbar from top to the upper top
+    position.
+  * Added the setting, ``UPDATE_ON_FETCH`` to control whether the
+    toolbar automatically updates to the latest AJAX request or not.
+    It defaults to ``False``.
+  4.2.0 (2023-08-10)
+  * Adjusted app directories system check to allow for nested template loaders.
+  * Switched from flake8, isort and pyupgrade to `ruff
+    <https://beta.ruff.rs/>`__.
+  * Converted cookie keys to lowercase. Fixed the ``samesite`` argument to
+    ``djdt.cookie.set``.
+  * Converted ``StaticFilesPanel`` to no longer use a thread collector. Instead,
+    it collects the used static files in a ``ContextVar``.
+  * Added check ``debug_toolbar.W007`` to warn when JavaScript files are
+    resolving to the wrong content type.
+  * Fixed SQL statement recording under PostgreSQL for queries encoded as byte
+    strings.
+  * Patch the ``CursorWrapper`` class with a mixin class to support multiple
+    base wrapper classes.
+  4.1.0 (2023-05-15)
+  * Improved SQL statement formatting performance.  Additionally, fixed the
+    indentation of ``CASE`` statements and stopped simplifying ``.count()``
+    queries.
+  * Added support for the new STORAGES setting in Django 4.2 for static files.
+  * Added support for theme overrides.
+  * Reworked the cache panel instrumentation code to no longer attempt to undo
+    monkey patching of cache methods, as that turned out to be fragile in the
+    presence of other code which also monkey patches those methods.
+  * Update all timing code that used :py:func:`time.time()` to use
+    :py:func:`time.perf_counter()` instead.
+  * Made the check on ``request.META["wsgi.multiprocess"]`` optional, but
+    defaults to forcing the toolbar to render the panels on each request. This
+    is because it's likely an ASGI application that's serving the responses
+    and that's more likely to be an incompatible setup. If you find that this
+    is incorrect for you in particular, you can use the ``RENDER_PANELS``
+    setting to forcibly control this logic.
+  4.0.0 (2023-04-03)
+  * Added Django 4.2 to the CI.
+  * Dropped support for Python 3.7.
+  * Fixed PostgreSQL raw query with a tuple parameter during on explain.
+  * Use ``TOOLBAR_LANGUAGE`` setting when rendering individual panels
+    that are loaded via AJAX.
+  * Add decorator for rendering toolbar views with ``TOOLBAR_LANGUAGE``.
+  * Removed the logging panel. The panel's implementation was too complex, caused
+    memory leaks and sometimes very verbose and hard to silence output in some
+    environments (but not others). The maintainers judged that time and effort is
+    better invested elsewhere.
+  * Added support for psycopg3.
+  * When ``ENABLE_STACKTRACE_LOCALS`` is ``True``, the stack frames' locals dicts
+    will be converted to strings when the stack trace is captured rather when it
+    is rendered, so that the correct values will be displayed in the rendered
+    stack trace, as they may have changed between the time the stack trace was
+    captured and when it is rendered.
+  3.8.1 (2022-12-03)
+  * Fixed release process by re-adding twine to release dependencies. No
+    functional change.
+  3.8.0 (2022-12-03)
+  * Added protection against division by 0 in timer.js
+  * Auto-update History panel for JavaScript ``fetch`` requests.
+  * Support `HTMX boosting <https://htmx.org/docs/#boosting>`__ and
+    `Turbo <https://turbo.hotwired.dev/>`__ pages.
+  * Simplify logic for ``Panel.enabled`` property by checking cookies earlier.
+  * Include panel scripts in content when ``RENDER_PANELS`` is set to True.
+  * Create one-time mouseup listener for each mousedown when dragging the
+    handle.
+  * Update package metadata to use Hatchling.
+  * Fix highlighting on history panel so odd rows are highlighted when
+    selected.
+  * Formalize support for Python 3.11.
+  * Added ``TOOLBAR_LANGUAGE`` setting.
+  3.7.0 (2022-09-25)
+  * Added Profiling panel setting ``PROFILER_THRESHOLD_RATIO`` to give users
+    better control over how many function calls are included. A higher value
+    will include more data, but increase render time.
+  * Update Profiling panel to include try to always include user code. This
+    code is more important to developers than dependency code.
+  * Highlight the project function calls in the profiling panel.
+  * Added Profiling panel setting ``PROFILER_CAPTURE_PROJECT_CODE`` to allow
+    users to disable the inclusion of all project code. This will be useful
+    to project setups that have dependencies installed under
+    ``settings.BASE_DIR``.
+  * The toolbar's font stack now prefers system UI fonts. Tweaked paddings,
+    margins and alignments a bit in the CSS code.
+  * Only sort the session dictionary when the keys are all strings. Fixes a
+    bug that causes the toolbar to crash when non-strings are used as keys.
+
+-------------------------------------------------------------------
 Fri Jun 16 09:28:25 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Use sle15_python_module_pythons
