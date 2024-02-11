@@ -814,4 +814,23 @@ New upstream release</comment>
     <comment>Update to 4.12.4 (forwarded request 1130207 from dimstar)</comment>
     <requestid>1130318</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>69f3074e5fd10ff3b686c3c53b72d409</srcmd5>
+    <version>4.12.5</version>
+    <time>1707662687</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.12.5:
+  + GtkColumnView: Fix a crash on dispose.
+  + GtkEmojiChooser:
+    - Update to CLDR v44.
+    - Add more translations.
+  + GtkFileDialog:
+    - Return an error if no file is selected.
+    - Make closing the portal file chooser work.
+  + GtkDropDown: Fix display of the initial checkmark.
+  + GtkShortcutsWindow: Reduce the minimum width.
+  + GDK: Make the png loader safer against overflow.
+  + Wayland: Fix cursor handling with graphics tablets.</comment>
+    <requestid>1145423</requestid>
+  </revision>
 </revisionlist>

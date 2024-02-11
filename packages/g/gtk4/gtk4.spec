@@ -1,7 +1,7 @@
 #
 # spec file for package gtk4
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenebrger, Amsterdam, Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,7 +29,7 @@
 %endif
 
 Name:           gtk4
-Version:        4.12.4
+Version:        4.12.5
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
@@ -338,22 +338,7 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %{_bindir}/gtk4-query-settings
 %{_bindir}/gtk4-update-icon-cache
 %dir %{_datadir}/gtk-4.0/emoji
-%{_datadir}/gtk-4.0/emoji/da.gresource
-%{_datadir}/gtk-4.0/emoji/de.gresource
-%{_datadir}/gtk-4.0/emoji/es.gresource
-%{_datadir}/gtk-4.0/emoji/fr.gresource
-%{_datadir}/gtk-4.0/emoji/hu.gresource
-%{_datadir}/gtk-4.0/emoji/it.gresource
-%{_datadir}/gtk-4.0/emoji/ko.gresource
-%{_datadir}/gtk-4.0/emoji/lt.gresource
-%{_datadir}/gtk-4.0/emoji/ms.gresource
-%{_datadir}/gtk-4.0/emoji/nl.gresource
-%{_datadir}/gtk-4.0/emoji/pl.gresource
-%{_datadir}/gtk-4.0/emoji/pt.gresource
-%{_datadir}/gtk-4.0/emoji/ru.gresource
-%{_datadir}/gtk-4.0/emoji/sv.gresource
-%{_datadir}/gtk-4.0/emoji/uk.gresource
-%{_datadir}/gtk-4.0/emoji/zh.gresource
+%{_datadir}/gtk-4.0/emoji/*.gresource
 %{_mandir}/man1/gtk4-broadwayd.1%{?ext_man}
 %{_mandir}/man1/gtk4-launch.1%{?ext_man}
 %{_mandir}/man1/gtk4-query-settings.1%{?ext_man}
