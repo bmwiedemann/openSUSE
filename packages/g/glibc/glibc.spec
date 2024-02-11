@@ -298,9 +298,13 @@ Patch304:       glibc-resolv-mdnshint.diff
 # PATCH-FIX-OPENSUSE disable rewriting ::1 to 127.0.0.1 for /etc/hosts bnc#684534, bnc#706719
 Patch306:       glibc-fix-double-loopback.diff
 
+%if %{without snapshot}
 ###
 # Patches from upstream
 ###
+# PATCH-FIX-UPSTREAM arm: Remove wrong ldr from _dl_start_user (BZ #31339)
+Patch1000:      arm-dl-start-user.patch
+%endif
 
 ###
 # Patches awaiting upstream approval
@@ -512,31 +516,8 @@ have support for IPv6.
 %endif
 
 %prep
-%setup -n glibc-%{version} -q -a 4
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch10 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch19 -p1
-%patch20 -p1
-%patch21 -p1
+%autosetup -n glibc-%{version} -a 4 -p1
 
-%patch100 -p1
-%patch102 -p1
-%patch103 -p1
-
-%patch304 -p1
-%patch306 -p1
-
-%if %{without snapshot}
-%endif
-
-%patch2000 -p1
-
-%patch3000
 rm -f manpages/catchsegv.1
 
 %build
@@ -1008,11 +989,10 @@ rm -f %{buildroot}%{_bindir}/pldd
 rm -rf %{buildroot}%{_libdir}/audit
 
 %ifarch i686
-# Remove files from glibc-{extra,info,i18ndata}, nscd, libnsl1
+# Remove files from glibc-{extra,info,i18ndata}, nscd
 rm -rf %{buildroot}%{_infodir} %{buildroot}%{_prefix}/share/i18n
 rm -f %{buildroot}%{_bindir}/makedb %{buildroot}/var/lib/misc/Makefile
 rm -f %{buildroot}%{_sbindir}/nscd
-rm -f %{buildroot}%{slibdir}/libnsl.so.1
 %endif
 
 %ifnarch i686
@@ -1393,11 +1373,11 @@ exit 0
 /var/lib/misc/Makefile
 
 %files lang -f libc.lang
+%endif
 
 %ifarch %ix86 %alpha hppa m68k %mips32 %mips64 %sparc ppc ppc64 ppc64le x86_64 s390 s390x %arm aarch64 riscv64
 %files -n libnsl1
 %{slibdir}/libnsl.so.1
-%endif
 %endif
 
 %endif

@@ -1,7 +1,7 @@
-Index: manpages/locale.alias.5
+Index: ./manpages/locale.alias.5
 ===================================================================
---- manpages/locale.alias.5.orig
-+++ manpages/locale.alias.5
+--- ./manpages/locale.alias.5.orig
++++ ./manpages/locale.alias.5
 @@ -18,7 +18,7 @@
  .SH "NAME"
  locale.alias \- Locale name alias data base

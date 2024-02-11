@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  7 09:08:50 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Add libnsl1 to baselibs.conf (bsc#1219640)
+
+-------------------------------------------------------------------
+Tue Feb  6 08:40:15 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- arm-dl-start-user.patch: arm: Remove wrong ldr from _dl_start_user (BZ
+  #31339)
+
+-------------------------------------------------------------------
 Thu Feb  1 09:25:37 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Update to glibc 2.39

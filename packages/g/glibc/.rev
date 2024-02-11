@@ -2974,4 +2974,15 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   libio-io-vtables.patch, libio-wdo-write.patch, (forwarded request 1143408 from Andreas_Schwab)</comment>
     <requestid>1143409</requestid>
   </revision>
+  <revision rev="286" vrev="2">
+    <srcmd5>f47867467f69f10eceeb323f9c0fcf0a</srcmd5>
+    <version>2.39</version>
+    <time>1707662681</time>
+    <user>anag+factory</user>
+    <comment>- Add libnsl1 to baselibs.conf (bsc#1219640)
+
+- arm-dl-start-user.patch: arm: Remove wrong ldr from _dl_start_user (BZ
+  #31339) (forwarded request 1145071 from Andreas_Schwab)</comment>
+    <requestid>1145073</requestid>
+  </revision>
 </revisionlist>
