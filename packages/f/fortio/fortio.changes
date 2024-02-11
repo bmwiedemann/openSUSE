@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb 10 06:29:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.63.3:
+  * bumping go build, linter related changes, prep release, adding
+    a test to check coverage is working and increased (#886)
+  * Bump golang.org/x/net from 0.20.0 to 0.21.0 (#887)
+  * Bump github.com/google/uuid from 1.5.0 to 1.6.0 (#882)
+  * Bump google.golang.org/grpc from 1.60.1 to 1.61.0 (#883)
+  * Bump codecov/codecov-action from 3.1.4 to 4.0.1 (#885)
+
+-------------------------------------------------------------------
 Wed Jan 17 07:23:47 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.63.2:
