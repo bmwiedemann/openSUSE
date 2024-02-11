@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 10 15:58:02 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Use gcc12 for openSUSE Leap, fixes building
+
+-------------------------------------------------------------------
 Wed Feb  7 11:41:45 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 24.0:

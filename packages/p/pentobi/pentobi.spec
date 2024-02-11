@@ -27,7 +27,6 @@ Source:         https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar
 BuildRequires:  cmake >= 3.18
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  extra-cmake-modules
-BuildRequires:  gcc-c++
 BuildRequires:  itstool
 BuildRequires:  kio-devel
 BuildRequires:  libxslt-tools
@@ -46,6 +45,12 @@ Requires(postun): hicolor-icon-theme
 Requires(postun): update-desktop-files
 # unresolvable: nothing provides pkgconfig(Qt6WebView)
 ExclusiveArch:  x86_64 aarch64
+%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 
 %description
 Pentobi is a computer opponent for the board game Blokus with
@@ -57,6 +62,10 @@ save and load games along with comments and move variations.
 %setup -q
 
 %build
+%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+export CC="gcc-12"
+export CXX="g++-12"
+%endif
 %cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON .
 %make_jobs VERBOSE=1
 
