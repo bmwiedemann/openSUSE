@@ -1,0 +1,70 @@
+From c357cd5c21239504a445485ae003ceb2c5d4d03c Mon Sep 17 00:00:00 2001
+From: Sergey Vlasov <sergey@vlasov.me>
+Date: Thu, 8 Feb 2024 18:25:04 +0200
+Subject: [PATCH] taglib 2.0 compatibility
+
+fixes #223
+---
+ src/plugins/pluginTaglib/coverReaderTaglib.cpp | 7 ++++---
+ src/plugins/pluginTaglib/tagReaderTaglib.cpp   | 6 +++---
+ 2 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/src/plugins/pluginTaglib/coverReaderTaglib.cpp b/src/plugins/pluginTaglib/coverReaderTaglib.cpp
+index adf9bbf..398c968 100644
+--- a/src/plugins/pluginTaglib/coverReaderTaglib.cpp
++++ b/src/plugins/pluginTaglib/coverReaderTaglib.cpp
+@@ -21,6 +21,7 @@
+ #include <QString>
+ 
+ #include "tagLibFileRef.h"
++#include <attachedpictureframe.h>
+ 
+ void NCoverReaderTaglib::init()
+ {
+@@ -85,7 +86,7 @@ QList<QImage> NCoverReaderTaglib::fromApe(TagLib::APE::Tag *tag) const
+         }
+ 
+         TagLib::String fileName = map[key].toString();
+-        TagLib::ByteVector item = map[key].value();
++        TagLib::ByteVector item = map[key].binaryData();
+         images << fromTagBytes(item.mid(fileName.size() + 1));
+     }
+ 
+@@ -144,11 +145,11 @@ QList<QImage> NCoverReaderTaglib::fromMp4(TagLib::MP4::Tag *tag) const
+ {
+     QList<QImage> images;
+     TagLib::String str = "covr";
+-    if (!tag->itemListMap().contains(str)) {
++    if (!tag->itemMap().contains(str)) {
+         return images;
+     }
+ 
+-    TagLib::MP4::CoverArtList coverList = tag->itemListMap()[str].toCoverArtList();
++    TagLib::MP4::CoverArtList coverList = tag->itemMap()[str].toCoverArtList();
+     for (auto coverArt : coverList) {
+         images << fromTagBytes(coverArt.data());
+     }
+diff --git a/src/plugins/pluginTaglib/tagReaderTaglib.cpp b/src/plugins/pluginTaglib/tagReaderTaglib.cpp
+index 7509c60..d793587 100644
+--- a/src/plugins/pluginTaglib/tagReaderTaglib.cpp
++++ b/src/plugins/pluginTaglib/tagReaderTaglib.cpp
+@@ -126,13 +126,13 @@ QString NTagReaderTaglib::getTag(QChar ch) const
+             if (auto *prop = dynamic_cast<TagLib::APE::Properties *>(ap)) {
+                 return QString::number(prop->bitsPerSample());
+             } else if (auto *prop = dynamic_cast<TagLib::FLAC::Properties *>(ap)) {
+-                return QString::number(prop->sampleWidth());
++                return QString::number(prop->bitsPerSample());
+             } else if (auto *prop = dynamic_cast<TagLib::MP4::Properties *>(ap)) {
+                 return QString::number(prop->bitsPerSample());
+             } else if (auto *prop = dynamic_cast<TagLib::RIFF::AIFF::Properties *>(ap)) {
+-                return QString::number(prop->sampleWidth());
++                return QString::number(prop->bitsPerSample());
+             } else if (auto *prop = dynamic_cast<TagLib::RIFF::WAV::Properties *>(ap)) {
+-                return QString::number(prop->sampleWidth());
++                return QString::number(prop->bitsPerSample());
+             } else if (auto *prop = dynamic_cast<TagLib::TrueAudio::Properties *>(ap)) {
+                 return QString::number(prop->bitsPerSample());
+             } else if (auto *prop = dynamic_cast<TagLib::WavPack::Properties *>(ap)) {
+-- 
+2.35.3
+

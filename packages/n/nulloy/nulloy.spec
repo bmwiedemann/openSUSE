@@ -1,7 +1,7 @@
 #
 # spec file for package nulloy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,21 @@
 #
 
 
-%define rev 0.9.5
+%bcond_without vlc
+%bcond_without taglib
+
 #https://github.com/nulloy/nulloy/archive/refs/tags/0.9.5.tar.gz
 
 Name:           nulloy
-Version:        0.9.5
+Version:        0.9.7
 Release:        0
 Summary:        Music player with a Waveform Progress Bar
 License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Sound/Players
 URL:            http://nulloy.com
 Source:         https://github.com/nulloy/nulloy/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-#Patch0:         reproducible.patch
-#Patch1:         nulloy-QPainterPath-patch
+Patch0:         0001-taglib-2.0-compatibility.patch
+Patch1:         0001-playbackEngineVlc-build-fix.patch
 BuildRequires:  clang
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libQt5Gui-private-headers-devel
@@ -46,17 +48,22 @@ BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
+%if %{with vlc}
 BuildRequires:  pkgconfig(libvlc)
-BuildRequires:  pkgconfig(taglib)
-Recommends:     %{name}-gstreamer
-Recommends:     %{name}-taglib
 Recommends:     %{name}-vlc
+%endif
+%if %{with taglib}
+BuildRequires:  pkgconfig(taglib)
+Recommends:     %{name}-taglib
+%endif
+Recommends:     %{name}-gstreamer
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Nulloy is a opensource, simple and clean music player with a Waveform
 Progressbar. It is written in C++ using QT.
 
+%if %{with taglib}
 %package taglib
 Summary:        Taglib plugin for %{name}
 Group:          Productivity/Multimedia/Sound/Players
@@ -65,6 +72,7 @@ Requires:       %{name} = %{version}
 %description taglib
 This package contains the taglib plugin for %{name} - a music player
 with a Waveform Progressbar.
+%endif
 
 %package gstreamer
 Summary:        Gstreamer plugin for %{name}
@@ -76,6 +84,7 @@ Recommends:     gstreamer-plugins-good
 This package contains the gstreamer playback plugin for %{name} - a lightweight
 music player with a Waveform Progressbar.
 
+%if %{with vlc}
 %package vlc
 Summary:        VLC plugin for %{name}
 Group:          Productivity/Multimedia/Sound/Players
@@ -84,9 +93,10 @@ Requires:       %{name} = %{version}
 %description vlc
 This package contains the vlc playback plugin for %{name} - a lightweight
 music player with a Waveform Progressbar.
+%endif
 
 %prep
-%setup -qn %{name}-%{rev}
+%setup -qn %{name}-%{version}
 %autopatch -p1
 
 %build
@@ -100,9 +110,15 @@ LRELEASE=lrelease-qt5 \
 ./configure \
 	--no-update-check \
 	--prefix %{_prefix} \
+%if %{with vlc}
 	--vlc \
-	--libdir "%{_lib}" \
-	--gstreamer-tagreader
+%endif
+%if %{with taglib}
+	--gstreamer-tagreader \
+%else
+	--no-taglib \
+%endif
+	--libdir "%{_lib}"
 
 make %{?_smp_mflags}
 
@@ -114,12 +130,18 @@ LRELEASE=lrelease-qt5 \
 ./configure \
 	--no-update-check \
 	--prefix %{buildroot}%{_prefix} \
+%if %{with vlc}
 	--vlc \
-	--libdir "%{_lib}" \
-	--gstreamer-tagreader
+%endif
+%if %{with taglib}
+	--gstreamer-tagreader \
+%else
+	--no-taglib \
+%endif
+	--libdir "%{_lib}"
 
 %makeinstall
-cp -v .tmp/nulloy.svg %{buildroot}%{_datadir}/icons/hicolor/*/apps/
+#cp -v .tmp/nulloy.svg %{buildroot}%{_datadir}/icons/hicolor/*/apps/
 %suse_update_desktop_file %{name}
 
 %files
@@ -133,16 +155,20 @@ cp -v .tmp/nulloy.svg %{buildroot}%{_datadir}/icons/hicolor/*/apps/
 %dir %{_libdir}/nulloy
 %dir %{_libdir}/nulloy/plugins
 
+%if %{with taglib}
 %files taglib
 %defattr(-,root,root)
 %{_libdir}/nulloy/plugins/libplugin_taglib.so
+%endif
 
 %files gstreamer
 %defattr(-,root,root)
 %{_libdir}/nulloy/plugins/libplugin_gstreamer.so
 
+%if %{with vlc}
 %files vlc
 %defattr(-,root,root)
 %{_libdir}/nulloy/plugins/libplugin_vlc.so
+%endif
 
 %changelog

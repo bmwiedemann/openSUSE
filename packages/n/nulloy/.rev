@@ -88,4 +88,15 @@ Fixed plugin directory (problem mentioned in SR 342476).</comment>
     <comment></comment>
     <requestid>987133</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b29c7970300d39381f0b038ba19aa4ef</srcmd5>
+    <version>0.9.7</version>
+    <time>1707662763</time>
+    <user>anag+factory</user>
+    <comment>- Update to v0.9.7
+- Fix vlc plugin build failure with patch from git:
+  0001-playbackEngineVlc-build-fix.patch
+- Fix taglib plugin build with 0001-taglib-2.0-compatibility.patch</comment>
+    <requestid>1145591</requestid>
+  </revision>
 </revisionlist>

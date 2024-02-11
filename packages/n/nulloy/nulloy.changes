@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb  7 08:31:49 UTC 2024 - Dave Plater <davejplater@gmail.com>
+
+- Update to v0.9.7
+- Fix vlc plugin build failure with patch from git:
+  0001-playbackEngineVlc-build-fix.patch
+- Fix taglib plugin build with 0001-taglib-2.0-compatibility.patch
+- Upstream changes:
+  *Playback speed control
+  *Automatically saving settings and playlist in case of a crash
+  *More customizable keyboard shortcuts (Open Tag Editor,
+   Move to Trash, etc)
+  *Packaging .AppImage for Linux
+  *New "Scroll to item" playlist option
+  *Many other minor bug fixes and improvements
+
+-------------------------------------------------------------------
 Mon Jul  4 14:10:12 UTC 2022 - Dave Plater <davejplater@gmail.com>
 
 - Update to v0.9.5
