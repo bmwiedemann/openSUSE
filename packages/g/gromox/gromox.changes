@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Feb 10 11:54:03 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.24
+  * email_lib: the last byte of a MIME part was erroneously deleted
+  * emsmdb: repair garbage memory read when creating a stream on
+    a PT_STRING8 property
+  * ews: repair a potential lack of results with the ResolveNames
+    operation when searching by email address
+
+-------------------------------------------------------------------
+Mon Feb  5 20:28:40 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.23
+  * oxcmail: do not ignore IDN addresses when reading headers
+  * oxcmail: resolve a case with trashed body bytes when a line
+    began with dot
+  * exmdb: add config directive ``exmdb_contention_reject_time``
+    for configuring contention timeout
+  * exmdb: have DB_ITEM instances track which function holds them,
+    and report this upon reaching contention timeouts
+  * new command: gromox-exm2mt
+
+-------------------------------------------------------------------
+Mon Jan 29 11:19:20 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.22
+  * exmdb_client: discard connections when EOF is detected
+  * mda: resolve three cases of garbage bytes getting added to
+    messages
+  * oxcmail: drop unintended doublequotes around RFC 2047-style
+    =?..?= encoded-words
+  * oxcical: support emission of iCalendar VFREEBUSY objects
+  * nsp,ab: support name resolution of IDN addresses
+  * twostep_ruleproc: support Outlook-style public folder entryids
+    in Move/Copy rules (as opposed to GWeb-style entryids)
+
+-------------------------------------------------------------------
 Mon Jan  8 14:05:14 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.21

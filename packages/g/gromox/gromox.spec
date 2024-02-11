@@ -19,7 +19,7 @@
 %define _libexecdir %_prefix/libexec
 
 Name:           gromox
-Version:        2.21
+Version:        2.24
 Release:        0
 Summary:        Groupware server backend with RPC, IMAP,POP3, PHP-MAPI support
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later
@@ -138,9 +138,9 @@ mv "$b/%_libdir/security"/* "$b/%_pamdir/"
 # done in system-user-gromox (which exists for ease of building for multiple distros)
 rm -fv "%buildroot/%_sysusersdir/sysusers-gromox.conf"
 for i in /var/lib/gromox /var/lib/gromox/domain \
-    /var/lib/gromox/queue /var/lib/gromox/queue/clone \
+    /var/lib/gromox/queue \
     /var/lib/gromox/queue/mess /var/lib/gromox/queue/save \
-    /var/lib/gromox/queue/cache /var/lib/gromox/queue/insulation \
+    /var/lib/gromox/queue/cache \
     /var/lib/gromox/queue/timer /var/lib/gromox/user \
     /var/log/gromox; do
 	mkdir -p "$b/$i"
