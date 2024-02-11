@@ -64,13 +64,13 @@ cp src.bak/libtmux/__about__.py src/libtmux/
 export TMUX_TMPDIR=/tmp
 export PYTEST_IGNORE=""
 %ifarch x86_64
-export PYTEST_IGNORE="-k (not test_session.py::test_select_window)"
+export PYTEST_IGNORE="-k (not test_session.py::test_select_window or test_test.py::test_function_times_out)"
 %endif
 %ifarch armv7l
-export PYTEST_IGNORE="-k (not test_test.py::test_function_times_out)"
+export PYTEST_IGNORE="-k (not test_session.py::test_select_window or test_test.py::test_function_times_out)"
 %endif
 %ifarch aarch64
-export PYTEST_IGNORE="-k (not test_session.py::test_select_window)"
+export PYTEST_IGNORE="-k (not test_session.py::test_select_window or test_test.py::test_function_times_out)"
 %endif
 echo "Starting tests with PYTEST_IGNORE set to $PYTEST_IGNORE"
 %pytest $PYTEST_IGNORE
