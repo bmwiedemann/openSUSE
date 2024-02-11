@@ -406,4 +406,12 @@
     <comment>python 311 (forwarded request 1140799 from DocB)</comment>
     <requestid>1140817</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>3d12db44f63dc5b0738001654711912b</srcmd5>
+    <version>6.0.21</version>
+    <time>1707662769</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1145843</requestid>
+  </revision>
 </revisionlist>
