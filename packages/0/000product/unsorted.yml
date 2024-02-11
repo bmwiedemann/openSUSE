@@ -13983,6 +13983,7 @@ unsorted:
   - libnsfdb1 
   - libnsl-devel 
   - libnsl1 
+  - libnsl1-32bit 
   - libnss_nis2 
   - libnss_slurm2 
   - libnss_usrfiles2-32bit 
@@ -30147,6 +30148,7 @@ unsorted:
   - python312-alembic 
   - python312-allpairspy 
   - python312-alsa 
+  - python312-altair 
   - python312-altair-widgets 
   - python312-altgraph 
   - python312-amqp 
@@ -30165,6 +30167,7 @@ unsorted:
   - python312-anyio3 
   - python312-anyjson 
   - python312-anymarkup-core 
+  - python312-anywidget 
   - python312-apache-libcloud 
   - python312-apacheconfig 
   - python312-apfel 
@@ -30681,6 +30684,7 @@ unsorted:
   - python312-cchardet 
   - python312-cdflib 
   - python312-celery 
+  - python312-celery-batches 
   - python312-certbot 
   - python312-certbot-apache 
   - python312-certbot-dns-cloudflare 
@@ -30913,6 +30917,7 @@ unsorted:
   - python312-django-coverage-plugin 
   - python312-django-crispy-forms 
   - python312-django-debreach 
+  - python312-django-debug-toolbar 
   - python312-django-dj-inmemorystorage 
   - python312-django-environ 
   - python312-django-eremaea2 
@@ -30925,6 +30930,7 @@ unsorted:
   - python312-django-grappelli 
   - python312-django-gravatar2 
   - python312-django-guardian 
+  - python312-django-haystack 
   - python312-django-health-check 
   - python312-django-import-export 
   - python312-django-invitations 
@@ -30942,6 +30948,7 @@ unsorted:
   - python312-django-mptt 
   - python312-django-nine 
   - python312-django-oauth-toolkit 
+  - python312-django-oidc-provider 
   - python312-django-pandas 
   - python312-django-parler 
   - python312-django-perf-rec 
@@ -30955,6 +30962,7 @@ unsorted:
   - python312-django-qsessions 
   - python312-django-redis 
   - python312-django-registration 
+  - python312-django-request 
   - python312-django-requests-debug-toolbar 
   - python312-django-rest-framework-client 
   - python312-django-rest-framework-social-oauth2 
@@ -31134,6 +31142,7 @@ unsorted:
   - python312-flit 
   - python312-flit-core 
   - python312-flit-scm 
+  - python312-flower 
   - python312-fluent.syntax 
   - python312-flufl.bounce 
   - python312-flufl.i18n 
@@ -31472,6 +31481,7 @@ unsorted:
   - python312-jsonslicer 
   - python312-jsonxs 
   - python312-junit-xml 
+  - python312-junitxml 
   - python312-jupyter 
   - python312-jupyter-client 
   - python312-jupyter-client7 
@@ -33100,6 +33110,7 @@ unsorted:
   - python312-wxPython 
   - python312-x86-64-v3 
   - python312-xapian 
+  - python312-xapian-haystack 
   - python312-xapp 
   - python312-xarray 
   - python312-xattr 
