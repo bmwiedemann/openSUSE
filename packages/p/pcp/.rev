@@ -677,4 +677,12 @@ This is needed so that the rpm hack to update config.sub works (forwarded reques
     <comment>declare the users/groups we create in the preinstall scripts</comment>
     <requestid>1133028</requestid>
   </revision>
+  <revision rev="71" vrev="3">
+    <srcmd5>ac6f4fd9c5930109aaa4164a35c0ef01</srcmd5>
+    <version>5.3.7</version>
+    <time>1707662690</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1145499</requestid>
+  </revision>
 </revisionlist>
