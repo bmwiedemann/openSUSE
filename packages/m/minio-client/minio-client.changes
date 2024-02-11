@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 10 06:31:08 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240209T221824Z:
+  * Removing terminal whitelist for pager mechanism (#4843)
+
+-------------------------------------------------------------------
 Thu Feb 01 18:34:36 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240131T085940Z:
