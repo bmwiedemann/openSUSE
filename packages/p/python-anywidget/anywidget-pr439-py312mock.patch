@@ -1,0 +1,22 @@
+From 849495bc3fa5b5cc06a7eefaaf1ba17014192b1a Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Sat, 10 Feb 2024 16:24:16 +0100
+Subject: [PATCH] Fix mocked assert
+
+---
+ tests/test_widget.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_widget.py b/tests/test_widget.py
+index f3456354..bfc1fd92 100644
+--- a/tests/test_widget.py
++++ b/tests/test_widget.py
+@@ -134,7 +134,7 @@ def test_patched_repr_ipywidget_v8(monkeypatch: pytest.MonkeyPatch):
+     monkeypatch.setitem(sys.modules, "google.colab.output", mock)
+ 
+     w = anywidget.AnyWidget()
+-    assert mock.enable_custom_widget_manager.called_once
++    assert mock.enable_custom_widget_manager.assert_called_once
+ 
+     bundle = w._repr_mimebundle_()
+     assert bundle[0] and _WIDGET_MIME_TYPE in bundle[0]

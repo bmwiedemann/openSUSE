@@ -16,14 +16,16 @@
 #
 
 
-%define distver 0.8.1
+%define distver 0.9
 Name:           python-anywidget
-Version:        0.8.1
+Version:        0.9.0
 Release:        0
 Summary:        Custom jupyter widgets made easy
 License:        MIT
 URL:            https://github.com/manzt/anywidget
 Source:         https://files.pythonhosted.org/packages/source/a/anywidget/anywidget-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM anywidget-pr439-py312mock.patch gh#manzt/anywidget#439
+Patch0:         anywidget-pr439-py312mock.patch
 BuildRequires:  %{python_module hatch-jupyter-builder}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module jupyterlab >= 3}

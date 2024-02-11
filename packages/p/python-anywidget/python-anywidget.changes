@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Feb 10 15:00:16 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.0
+  * Require ANYWIDGET_HMR to opt-in to HMR during development
+  * Introduce front-end widget lifecycle methods (#395)
+  * Deprecation Notice: Exporting a render from the front-end
+    widget will trigger a deprecation notice in the browser
+    console. The preferred way to define a widget's front-end code
+    is now with a default object export.
+  * These methods introduce lifecycle hooks for widget developers:
+    - initialize: is executed once in the lifetime of a widget. It
+      has access to the only the model to setup non-view event
+      handlers or state to share across views.
+    - render: is executed once per view, or for each notebook
+      output cell. It has access to the model and a unique el DOM
+      element. This method should be familiar and is used to setup
+      event handlers or access state specific to that view.
+  * Fix serialization of layout trait (#426)
+- Add anywidget-pr439-py312mock.patch gh#manzt/anywidget#439
+
+-------------------------------------------------------------------
 Sun Jan 21 10:52:29 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.8.1
