@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 29 08:34:51 UTC 2024 - Klaus Kämpf <kkaempf@suse.com>
+
+- freeipmi 1.6.14
+  * Fix build issue common to non-x86 systems.
+
+- freeipmi 1.6.13
+  * Fix build issues on systems where inb/outb are declared with inline
+    assembly.
+  * Add additional sensor/event interpretations. 
+
+- freeipmi 1.6.12
+  * Use poll() over select() to avoid fd limit in openipmi driver.
+  * Fix potential portability problems on systems without cbrt().
+  * Minor documentation updates.
+
+-------------------------------------------------------------------
 Mon Jun 12 09:29:06 UTC 2023 - Klaus Kämpf <kkaempf@suse.com>
 
 - freeipmi 1.6.11

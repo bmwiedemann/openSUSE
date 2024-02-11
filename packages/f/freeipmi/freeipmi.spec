@@ -1,7 +1,7 @@
 #
 # spec file for package freeipmi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2003-2008 FreeIPMI Core Team
 #
 # All modifications and additions to the file contributed by third parties
@@ -37,7 +37,7 @@
 %{!?_initddir: %global _initddir %{_sysconfdir}/init.d}
 
 Name:           freeipmi
-Version:        1.6.11
+Version:        1.6.14
 Release:        %{release}
 URL:            http://www.gnu.org/software/freeipmi/
 Source0:        http://ftp.gnu.org/gnu/freeipmi/%{name}-%{srcversion}.tar.gz
@@ -60,7 +60,7 @@ Obsoletes:      freeipmi-ipmimonitoring < %{version}
 Provides:       freeipmi-ipmimonitoring = %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(post): info
-Requires(preun):info
+Requires(preun): info
 
 %description
 This project provides "Remote-Console" (out-of-band) and
@@ -90,7 +90,7 @@ Requires(pre):  %fillup_prereq
 Requires:       freeipmi = %{version}
 %if 0%{?fedora_version} || 0%{?centos_version} || 0%{?rhel_version} || 0%{?fedora} || 0%{?rhel}
 Requires(post): chkconfig
-Requires(preun):chkconfig
+Requires(preun): chkconfig
 %endif
 Requires:       logrotate
 
@@ -103,7 +103,7 @@ Group:          System/Management
 Requires:       freeipmi = %{version}
 %if 0%{?fedora_version} || 0%{?centos_version} || 0%{?rhel_version} || 0%{?fedora} || 0%{?rhel}
 Requires(post): chkconfig
-Requires(preun):chkconfig
+Requires(preun): chkconfig
 %endif
 %{?systemd_requires}
 
@@ -117,7 +117,7 @@ Requires:       freeipmi = %{version}
 Provides:       freeipmi:/usr/sbin/ipmiseld
 %if 0%{?fedora_version} || 0%{?centos_version} || 0%{?rhel_version} || 0%{?fedora} || 0%{?rhel}
 Requires(post): chkconfig
-Requires(preun):chkconfig
+Requires(preun): chkconfig
 %endif
 %{?systemd_requires}
 
