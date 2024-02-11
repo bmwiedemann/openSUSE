@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Feb 10 07:07:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.0:
+  * Split pkg/container up into smaller packages
+  * Mostly fix interactive interrupt signal handling
+  * Do more cleanup with --rm
+  * Continue interactive execution on exit 0
+  * go fmt
+  * update dario/mergo
+  * move runner determination to pkg/cli
+  * Make debugging melange builds less terrible
+  * fix go-build example
+  * Make it easier to find docs-repo on ci failure
+
+-------------------------------------------------------------------
 Thu Feb 08 20:06:17 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.5.10:
