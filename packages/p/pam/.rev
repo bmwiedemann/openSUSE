@@ -1232,4 +1232,13 @@
     <comment>- Enable pam_canonicalize_user.so</comment>
     <requestid>1143388</requestid>
   </revision>
+  <revision rev="136" vrev="3">
+    <srcmd5>0bf4344e447551fd37662b147ec12ea4</srcmd5>
+    <version>1.6.0</version>
+    <time>1707662703</time>
+    <user>anag+factory</user>
+    <comment>- pam.tmpfiles: Make sure the content of the /run directories get
+  removed in case of a soft-reboot</comment>
+    <requestid>1145173</requestid>
+  </revision>
 </revisionlist>
