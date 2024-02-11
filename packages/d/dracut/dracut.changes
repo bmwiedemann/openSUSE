@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 09 19:46:23 UTC 2024 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.549.gc9f63878:
+  * fix(overlayfs): split overlayfs mount in two steps (bsc#1219778)
+  * fix(dracut-init.sh): handle decompress with `--sysroot`
+  * fix(i18n): handle keymap includes with `--sysroot`
+  * fix(dracut-systemd): replace `rd.udev.log-priority` with `rd.udev.log_level`
+  * fix(i18n): handle symlinked keymap
+
+-------------------------------------------------------------------
 Mon Jan 22 12:59:48 UTC 2024 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.538.ge7a5cff9:
