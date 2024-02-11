@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Feb  9 13:00:59 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.8.2
+  * Added: Discovery endpoint response caching. Introducing OIDC_DISCOVERY_CACHE_ENABLE.
+  * Fixed: ResponseType data migration.
+  * Fixed: correctly verify PKCE secret in token endpoint.
+  0.8.1
+  * Changed: create_token and create_code are now methods on base classes to enable customization.
+  * Changed: extract "is consent skip allowed" decision from the view to the endpoint.
+  * Fixed: race condition in authorization code, parallel requests may reuse same token.
+  0.8.0
+  * Changed: now supporting latest versions of Django.
+  * Changed: drop support for Python 2 and Django lower than 3.2.
+  * Added: scope on token and introspection endpoints.
+  * Changed: Use static instead of deprecated staticfiles template tag.
+  * Fixed: example in docs for translatable scopes (ugettext).
+- drop no-longer-needed django4.patch
+- rebase python-django-oidc-provider-no-mock.patch
+
+-------------------------------------------------------------------
 Tue Nov 22 13:00:50 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python-six dependency
