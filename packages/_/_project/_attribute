@@ -10,7 +10,7 @@
   boo#1209053: '20240129'
   boo#1209728: '20240115'
   boo#1216660: '20240209'
-  boo#1217029: '20240208'
+  boo#1217029: '20240209'
   boo#1217683: '20240209'
   boo#1218131: '20240209'
   boo#1218492: '20240124'
@@ -22,7 +22,7 @@
   boo#1219139: '20240129'
   boo#1219188: '20240128'
   boo#1219242: '20240205'
-  boo#1219284: '20240206'
+  boo#1219284: '20240209'
   boo#1219384: '20240209'
   boo#1219401: '20240209'
   boo#1219481: '20240209'
@@ -70,7 +70,7 @@ source_projects_expand = devel:languages:haskell
 allowed-scm-submission-sources = devel:Factory:git-workflow:staging
 
 # devel projects are auto-maintained by devel flags of all existing packages. If a new devel project is to be introduced, it needs to be white listed until the first package entered
-devel-whitelist = systemsmanagement:opentofu devel:microos:kalpa devel:languages:python:google 
+devel-whitelist = systemsmanagement:opentofu devel:microos:kalpa devel:languages:python:google KDE:Frameworks
  
 # packagelist generator related configuration
 pkglistgen-archs = x86_64
@@ -509,9 +509,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20240209'
-published: '20240208'
-publishing: '20240208'
+    <value>failed: ''
+published: '20240209'
+publishing: '20240209'
 testing: '20240209'
 </value>
   </attribute>
