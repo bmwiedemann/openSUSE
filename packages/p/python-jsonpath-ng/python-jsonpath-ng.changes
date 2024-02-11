@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 09 14:50:00 UTC 2024 - Christian Keil <keil@dfn-cert.de>
+
+- Switch to Python 3.11 build.
+- Remove build dependency oslotest (pull request #137).
+
+-------------------------------------------------------------------
 Mon Jan 22 23:44:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.1:

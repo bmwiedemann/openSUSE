@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-jsonpath-ng
 Version:        1.6.1
 Release:        0
@@ -38,7 +39,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module ply}
 #
 BuildRequires:  %{python_module pytest}
-BuildRequires:  python3-oslotest
 # /SECTION
 %python_subpackages
 
@@ -50,7 +50,6 @@ operators and providing clear AST for metaprogramming.
 %prep
 %setup -q -n jsonpath-ng-%{version}
 sed -i '1{/^#!/d}' jsonpath_ng/bin/jsonpath.py
-cp tests/test_jsonpath_rw_ext.py /tmp
 
 %build
 %pyproject_wheel
@@ -67,13 +66,7 @@ cp tests/test_jsonpath_rw_ext.py /tmp
 %python_uninstall_alternative jsonpath_ng
 
 %check
-export PYTHONPATH=${CWD}
-%{python_expand cp /tmp/test_jsonpath_rw_ext.py tests/
-if [[ ! -d %{buildroot}%{$python_sitelib}/oslotest ]]; then
-  rm tests/test_jsonpath_rw_ext.py
-fi
-$python -m pytest
-}
+%pytest
 
 %files %{python_files}
 %license LICENSE
