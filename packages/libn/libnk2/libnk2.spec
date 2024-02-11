@@ -1,7 +1,7 @@
 #
 # spec file for package libnk2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libnk2
 %define lname	libnk2-1
-Version:        20231205
+Version:        20240210
 Release:        0
 Summary:        Library and tools to access the Outlook Nickfile (NK2) format
 License:        LGPL-3.0-or-later
@@ -32,20 +32,20 @@ BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libbfio) >= 20221025
-BuildRequires:  pkgconfig(libcdata) >= 20230108
-BuildRequires:  pkgconfig(libcerror) >= 20220101
-BuildRequires:  pkgconfig(libcfile) >= 20220106
-BuildRequires:  pkgconfig(libclocale) >= 20221218
-BuildRequires:  pkgconfig(libcnotify) >= 20220108
-BuildRequires:  pkgconfig(libcpath) >= 20220108
-BuildRequires:  pkgconfig(libcsplit) >= 20220109
-BuildRequires:  pkgconfig(libcthreads) >= 20220102
-BuildRequires:  pkgconfig(libfdatetime) >= 20220112
-BuildRequires:  pkgconfig(libfguid) >= 20220113
-BuildRequires:  pkgconfig(libfmapi) >= 20230408
-BuildRequires:  pkgconfig(libfvalue) >= 20220120
-BuildRequires:  pkgconfig(libfwnt) >= 20231124
-BuildRequires:  pkgconfig(libuna) >= 20230710
+BuildRequires:  pkgconfig(libcdata) >= 20240103
+BuildRequires:  pkgconfig(libcerror) >= 20240101
+BuildRequires:  pkgconfig(libcfile) >= 20240106
+BuildRequires:  pkgconfig(libclocale) >= 20240107
+BuildRequires:  pkgconfig(libcnotify) >= 20240108
+BuildRequires:  pkgconfig(libcpath) >= 20240109
+BuildRequires:  pkgconfig(libcsplit) >= 20240110
+BuildRequires:  pkgconfig(libcthreads) >= 20240102
+BuildRequires:  pkgconfig(libfdatetime) >= 20240115
+BuildRequires:  pkgconfig(libfguid) >= 20240116
+BuildRequires:  pkgconfig(libfmapi) >= 20240117
+BuildRequires:  pkgconfig(libfvalue) >= 20240124
+BuildRequires:  pkgconfig(libfwnt) >= 20240126
+BuildRequires:  pkgconfig(libuna) >= 20240130
 # Various notes: https://en.opensuse.org/libyal
 
 %description
