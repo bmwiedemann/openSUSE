@@ -120,4 +120,12 @@
     <comment>python 311 (forwarded request 1140810 from DocB)</comment>
     <requestid>1140828</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>03f89fbac2056f7e76ff5e558b9de223</srcmd5>
+    <version>6.0.3</version>
+    <time>1707662771</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1145845</requestid>
+  </revision>
 </revisionlist>
