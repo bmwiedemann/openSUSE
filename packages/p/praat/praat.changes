@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb  2 13:13:26 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.05:
+  * Many typos in manual.
+  * Prevented 8000 files from being read at start-up.
+  * Mac and Linux scripting: fileReadable now returns 0 if the
+    argument is a folder (as already on Windows).
+
+-------------------------------------------------------------------
 Thu Jan 11 14:16:40 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.4.04:
