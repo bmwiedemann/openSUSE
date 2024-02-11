@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb 10 23:10:10 UTC 2024 - Neal Gompa <ngompa@opensuse.org>
+
+- Update to v1.1.0
+  + Update protocol list to wayland-protocols v1.33
+  + Add XDG Foreign v1
+  + Add captions and environment info to screenshot metadata
+  + Shorten app summary
+  + Add missing interface for XDG Foreign v2
+  + Fix aura-shell protocol detection
+
+-------------------------------------------------------------------
 Tue Jan 23 10:42:01 UTC 2024 - Neal Gompa <ngompa@opensuse.org>
 
 - Use GCC 11 for SLE/Leap

@@ -46,4 +46,18 @@
     <comment>- Use GCC 11 for SLE/Leap</comment>
     <requestid>1140879</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9ec15f781d72f9573360216fae491ce4</srcmd5>
+    <version>1.1.0</version>
+    <time>1707662774</time>
+    <user>anag+factory</user>
+    <comment>- Update to v1.1.0
+  + Update protocol list to wayland-protocols v1.33
+  + Add XDG Foreign v1
+  + Add captions and environment info to screenshot metadata
+  + Shorten app summary
+  + Add missing interface for XDG Foreign v2
+  + Fix aura-shell protocol detection</comment>
+    <requestid>1145857</requestid>
+  </revision>
 </revisionlist>
