@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb 10 07:09:01 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.171.0:
+  * Add release notes for 0.171.0
+  * Add support for Ubuntu 22.04 based EKS images
+  * Announce eksctl Support Status Update
+  * Improve userdocs layout
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Sat Feb 03 08:19:57 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.170.0:
