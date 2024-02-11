@@ -1966,4 +1966,12 @@
     <comment>Several upstream bug fixes. Cleanup of %check tests in the spec file.</comment>
     <requestid>1141354</requestid>
   </revision>
+  <revision rev="249" vrev="15">
+    <srcmd5>fc246e6012dee1343429581a41692a6a</srcmd5>
+    <version>4.1.0</version>
+    <time>1707662697</time>
+    <user>anag+factory</user>
+    <comment>Handle text mode case where vm-install no longer exists on the host.</comment>
+    <requestid>1145533</requestid>
+  </revision>
 </revisionlist>

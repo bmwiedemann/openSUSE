@@ -35,6 +35,7 @@ module Yast
       Yast.import "Popup"
       Yast.import "String"
       Yast.import "Arch"
+      Yast.import "FileUtils"
 
       #===================================================================
       # Start virt-install (GUI) or vm-install if Text mode (commandline)
@@ -49,8 +50,12 @@ module Yast
       end
 
       if UI.TextMode()
-        Builtins.y2milestone("Running virt-install in text mode is not supported. Running vm-install instead in command line mode.")
-        status = UI.RunInTerminal("/usr/bin/vm-install")
+        if FileUtils.Exists("/usr/bin/vm-install")
+          Builtins.y2milestone("Running virt-install in text mode is not supported. Running vm-install instead in command line mode.")
+          status = UI.RunInTerminal("/usr/bin/vm-install")
+        else
+          Popup.Error(_("Please use the command line to execute virt-install with the appropriate options for creating a VM."))
+        end
       else
         Builtins.y2milestone("Launching virt-manager to run virt-install in GUI mode.")
         if Arch.is_xen0 == false
