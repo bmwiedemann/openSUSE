@@ -69,4 +69,12 @@
     <comment>- Relax version constraints for python-portalocker in BuildRequires and Requires (forwarded request 1085455 from glaubitz)</comment>
     <requestid>1085478</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bfcdca6142a038e842d7cf0c37eca173</srcmd5>
+    <version>1.1.0</version>
+    <time>1707662758</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1145585</requestid>
+  </revision>
 </revisionlist>

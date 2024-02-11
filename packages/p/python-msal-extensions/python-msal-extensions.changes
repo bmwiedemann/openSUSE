@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb  9 15:46:13 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.1.0
+  + Support Python 3.12 by removing dependency on distutils (#120, #123)
+  + Dropping Python 2.7 (#122)
+
+-------------------------------------------------------------------
 Mon May  8 08:29:13 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Relax version constraints for python-portalocker in BuildRequires and Requires
