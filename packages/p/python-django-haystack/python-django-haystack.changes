@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb  9 12:32:21 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream patch unittest312.patch to fix unittest asserts
+
+-------------------------------------------------------------------
 Fri Jan 12 22:25:30 UTC 2024 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Add gh-pr-1935_importlib.patch to repair DistributionNotFound

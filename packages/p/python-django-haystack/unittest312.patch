@@ -1,0 +1,82 @@
+From 3a566a50e4963bed4fb8853eca60bc894b0b7fc5 Mon Sep 17 00:00:00 2001
+From: Christian Clauss <cclauss@me.com>
+Date: Mon, 1 Jan 2024 19:53:28 +0100
+Subject: [PATCH] Fix unittest assert calls for Python 3.12
+
+---
+ test_haystack/test_managers.py |  4 ++--
+ test_haystack/test_query.py    | 20 ++++++++++----------
+ 2 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/test_haystack/test_managers.py b/test_haystack/test_managers.py
+index 3784217cd..cc600752e 100644
+--- a/test_haystack/test_managers.py
++++ b/test_haystack/test_managers.py
+@@ -242,11 +242,11 @@ def spelling_suggestion(self):
+ 
+     def test_values(self):
+         sqs = self.search_index.objects.auto_query("test").values("id")
+-        self.assert_(isinstance(sqs, ValuesSearchQuerySet))
++        self.assertIsInstance(sqs, ValuesSearchQuerySet)
+ 
+     def test_valueslist(self):
+         sqs = self.search_index.objects.auto_query("test").values_list("id")
+-        self.assert_(isinstance(sqs, ValuesListSearchQuerySet))
++        self.assertIsInstance(sqs, ValuesListSearchQuerySet)
+ 
+ 
+ class CustomManagerTestCase(TestCase):
+diff --git a/test_haystack/test_query.py b/test_haystack/test_query.py
+index ffe35c19a..f7e9a1707 100644
+--- a/test_haystack/test_query.py
++++ b/test_haystack/test_query.py
+@@ -442,7 +442,7 @@ def test_len(self):
+     def test_repr(self):
+         reset_search_queries()
+         self.assertEqual(len(connections["default"].queries), 0)
+-        self.assertRegexpMatches(
++        self.assertRegex(
+             repr(self.msqs),
+             r"^<SearchQuerySet: query=<test_haystack.mocks.MockSearchQuery object"
+             r" at 0x[0-9A-Fa-f]+>, using=None>$",
+@@ -967,18 +967,18 @@ def test_or_and(self):
+ class ValuesQuerySetTestCase(SearchQuerySetTestCase):
+     def test_values_sqs(self):
+         sqs = self.msqs.auto_query("test").values("id")
+-        self.assert_(isinstance(sqs, ValuesSearchQuerySet))
++        self.assertIsInstance(sqs, ValuesSearchQuerySet)
+ 
+         # We'll do a basic test to confirm that slicing works as expected:
+-        self.assert_(isinstance(sqs[0], dict))
+-        self.assert_(isinstance(sqs[0:5][0], dict))
++        self.assertIsInstance(sqs[0], dict)
++        self.assertIsInstance(sqs[0:5][0], dict)
+ 
+     def test_valueslist_sqs(self):
+         sqs = self.msqs.auto_query("test").values_list("id")
+ 
+-        self.assert_(isinstance(sqs, ValuesListSearchQuerySet))
+-        self.assert_(isinstance(sqs[0], (list, tuple)))
+-        self.assert_(isinstance(sqs[0:1][0], (list, tuple)))
++        self.assertIsInstance(sqs, ValuesListSearchQuerySet)
++        self.assertIsInstance(sqs[0], (list, tuple))
++        self.assertIsInstance(sqs[0:1][0], (list, tuple))
+ 
+         self.assertRaises(
+             TypeError,
+@@ -989,12 +989,12 @@ def test_valueslist_sqs(self):
+         )
+ 
+         flat_sqs = self.msqs.auto_query("test").values_list("id", flat=True)
+-        self.assert_(isinstance(sqs, ValuesListSearchQuerySet))
++        self.assertIsInstance(sqs, ValuesListSearchQuerySet)
+ 
+         # Note that this will actually be None because a mocked sqs lacks
+         # anything else:
+-        self.assert_(flat_sqs[0] is None)
+-        self.assert_(flat_sqs[0:1][0] is None)
++        self.assertIsNone(flat_sqs[0])
++        self.assertIsNone(flat_sqs[0:1][0])
+ 
+ 
+ class EmptySearchQuerySetTestCase(TestCase):
