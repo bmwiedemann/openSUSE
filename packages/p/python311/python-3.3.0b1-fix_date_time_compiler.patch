@@ -2,9 +2,11 @@
  Makefile.pre.in |    7 +++++++
  1 file changed, 7 insertions(+)
 
---- a/Makefile.pre.in
-+++ b/Makefile.pre.in
-@@ -1235,11 +1235,18 @@ Modules/getbuildinfo.o: $(PARSER_OBJS) \
+Index: Python-3.11.8/Makefile.pre.in
+===================================================================
+--- Python-3.11.8.orig/Makefile.pre.in
++++ Python-3.11.8/Makefile.pre.in
+@@ -1240,11 +1240,18 @@ Modules/getbuildinfo.o: $(PARSER_OBJS) \
  		$(DTRACE_OBJS) \
  		$(srcdir)/Modules/getbuildinfo.c
  	$(CC) -c $(PY_CORE_CFLAGS) \

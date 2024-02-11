@@ -13,8 +13,10 @@ Fedora Change: https://fedoraproject.org/wiki/Changes/Making_sudo_pip_safe
  Lib/site.py                      |    9 ++++++++-
  2 files changed, 21 insertions(+), 3 deletions(-)
 
---- a/Lib/distutils/command/install.py
-+++ b/Lib/distutils/command/install.py
+Index: Python-3.11.8/Lib/distutils/command/install.py
+===================================================================
+--- Python-3.11.8.orig/Lib/distutils/command/install.py
++++ Python-3.11.8/Lib/distutils/command/install.py
 @@ -441,8 +441,19 @@ class install(Command):
                      raise DistutilsOptionError(
                            "must not supply exec-prefix without prefix")
@@ -37,9 +39,11 @@ Fedora Change: https://fedoraproject.org/wiki/Changes/Making_sudo_pip_safe
  
              else:
                  if self.exec_prefix is None:
---- a/Lib/site.py
-+++ b/Lib/site.py
-@@ -377,8 +377,15 @@ def getsitepackages(prefixes=None):
+Index: Python-3.11.8/Lib/site.py
+===================================================================
+--- Python-3.11.8.orig/Lib/site.py
++++ Python-3.11.8/Lib/site.py
+@@ -387,8 +387,15 @@ def getsitepackages(prefixes=None):
      return sitepackages
  
  def addsitepackages(known_paths, prefixes=None):

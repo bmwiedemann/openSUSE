@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python311
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -94,7 +94,7 @@
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.11.7
+Version:        3.11.8
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -407,24 +407,24 @@ other applications.
 
 %prep
 %setup -q -n %{tarname}
-%patch02 -p1
+%patch -P 02 -p1
 
-%patch06 -p1
-%patch07 -p1
-%patch08 -p1
-%patch09 -p1
-%patch15 -p1
-%patch29 -p1
+%patch -P 06 -p1
+%patch -P 07 -p1
+%patch -P 08 -p1
+%patch -P 09 -p1
+%patch -P 15 -p1
+%patch -P 29 -p1
 %if 0%{?suse_version} <= 1500
-%patch33 -p1
+%patch -P 33 -p1
 %endif
 %if 0%{?sle_version} && 0%{?sle_version} <= 150300
-%patch34 -p1
+%patch -P 34 -p1
 %endif
-%patch35 -p1
-%patch36 -p1
-%patch39 -p1
-%patch40 -p1
+%patch -P 35 -p1
+%patch -P 36 -p1
+%patch -P 39 -p1
+%patch -P 40 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
@@ -808,7 +808,6 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %{sitedir}/idlelib
 %dir %{_sysconfdir}/idle%{python_version}
 %config %{_sysconfdir}/idle%{python_version}/*
-%doc Lib/idlelib/NEWS.txt
 %doc Lib/idlelib/README.txt
 %doc Lib/idlelib/TODO.txt
 %doc Lib/idlelib/extend.txt

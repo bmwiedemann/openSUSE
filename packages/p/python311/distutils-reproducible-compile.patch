@@ -2,8 +2,10 @@
  Lib/distutils/util.py |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
---- a/Lib/distutils/util.py
-+++ b/Lib/distutils/util.py
+Index: Python-3.11.8/Lib/distutils/util.py
+===================================================================
+--- Python-3.11.8.orig/Lib/distutils/util.py
++++ Python-3.11.8/Lib/distutils/util.py
 @@ -436,7 +436,7 @@ byte_compile(files, optimize=%r, force=%
      else:
          from py_compile import compile
