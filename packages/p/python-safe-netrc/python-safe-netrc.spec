@@ -1,7 +1,7 @@
 #
 # spec file for package python-safe-netrc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,22 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global srcname safe-netrc
 %define modname %(echo %{srcname} | tr '-' '_')
 Name:           python-safe-netrc
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Safe netrc file parser
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 URL:            https://git.ligo.org/emfollow/safe-netrc
 Source:         https://files.pythonhosted.org/packages/source/s/safe-netrc/%{srcname}-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 
@@ -41,10 +43,10 @@ class to add some custom behaviors.
 %setup -q -n %{srcname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -54,6 +56,6 @@ class to add some custom behaviors.
 %doc README.md
 %license LICENSE.md
 %{python_sitelib}/%{modname}/
-%{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/%{modname}-%{version}*.*-info/
 
 %changelog

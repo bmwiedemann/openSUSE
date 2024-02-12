@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb  5 09:26:30 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.0.1:
+  * Drop support for Python 2.6-3.6, which have reached
+    end-of-life.
+  * Add support for Python 3.9-3.11.
+  * Modernize Python packaging to configure Setuptools using
+    pyproject.toml.
+- Use pyproject_* macros to build; BuildRequires: python-pip,
+  python-setuptools_scm, and python-wheel
+- Require python-base >= 3.9 for builds.
+
+-------------------------------------------------------------------
 Sun May  1 22:49:36 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - New package.
