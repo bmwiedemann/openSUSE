@@ -1,7 +1,7 @@
 #
 # spec file for package llvm13
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,17 +69,17 @@
 # Figure out the host triple.
 %ifarch armv6hl
 # See https://build.opensuse.org/request/show/968066.
-%define host_cpu armv6kz
+%define target_cpu armv6kz
 %else
-%define host_cpu %{_host_cpu}
+%define target_cpu %{_target_cpu}
 %endif
 
 %ifarch %{arm}
-%define host_runtime gnueabihf
+%define target_runtime gnueabihf
 %else
-%define host_runtime gnu
+%define target_runtime gnu
 %endif
-%define host_triple %{host_cpu}-%{_host_vendor}-%{_host_os}-%{host_runtime}
+%define host_triple %{target_cpu}-%{_target_vendor}-%{_target_os}-%{target_runtime}
 
 %define _plv %{!?product_libs_llvm_ver:%{_sonum}}%{?product_libs_llvm_ver}
 
@@ -180,7 +180,7 @@ BuildRequires:  python3-base
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(zlib)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # llvm does not work on s390
 ExcludeArch:    s390
 %if %{with ffi}
@@ -272,7 +272,7 @@ Summary:        CLANG frontend for LLVM
 Group:          Development/Languages/C and C++
 URL:            https://clang.llvm.org/
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     clang-tools
 Recommends:     gcc
 Recommends:     glibc-devel
@@ -476,7 +476,7 @@ Summary:        Linker for Clang/LLVM
 Group:          Development/Tools/Building
 URL:            https://lld.llvm.org/
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 
 %description -n lld%{_sonum}
 LLD is a linker from the LLVM project. That is a drop-in replacement for system linkers and runs much faster than them. It also provides features that are useful for toolchain developers.
@@ -508,7 +508,7 @@ BuildRequires:  pkgconfig(panel)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(zlib)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python3-lldb%{_sonum}
 ExclusiveArch:  x86_64
 
