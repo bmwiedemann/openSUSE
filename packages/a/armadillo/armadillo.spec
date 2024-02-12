@@ -1,7 +1,7 @@
 #
 # spec file for package armadillo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define soname libarmadillo12
 Name:           armadillo
-Version:        12.6.7
+Version:        12.8.0
 Release:        0
 Summary:        C++ matrix library with interfaces to LAPACK and ATLAS
 License:        Apache-2.0
