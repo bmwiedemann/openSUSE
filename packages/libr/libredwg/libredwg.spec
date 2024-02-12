@@ -18,18 +18,20 @@
 
 %define lname	libredwg0
 Name:           libredwg
-Version:        0.12.5.6924
+Version:        0.13.2
 Release:        0
 Summary:        A library to handle DWG files
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.gnu.org/software/libredwg/
 #Git-Clone:	https://github.com/LibreDWG/libredwg/
-#Source:         https://ftp.gnu.org/pub/gnu/libredwg/%name-%version.tar.xz
-Source:         https://github.com/LibreDWG/libredwg/releases/download/%version/libredwg-%version.tar.xz
+Source:         https://ftp.gnu.org/pub/gnu/libredwg/%name-%version.tar.xz
+Source2:        https://ftp.gnu.org/pub/gnu/libredwg/%name-%version.tar.xz.sig
+#Source:         https://github.com/LibreDWG/libredwg/releases/download/%version/libredwg-%version.tar.xz
 Source3:        http://savannah.gnu.org/people/viewgpg.php?user_id=101103#/%name.keyring
 Source4:        %name-rpmlintrc
 BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(libpcre2-8)
 
 %description
 GNU LibreDWG is a C library to handle DWG files. It can replace the
@@ -40,7 +42,7 @@ Summary:        Command line utilities for handling DWG file
 Group:          Productivity/File utilities
 %if 0%{?suse_version} < 1599
 Requires(post): %install_info_prereq
-Requires(preun):%install_info_prereq
+Requires(preun): %install_info_prereq
 %endif
 # Both packages ship a %%_bindir/dwg2dxf
 Conflicts:      libdxfrw-tools
@@ -77,30 +79,28 @@ OpenDWG libraries. DWG is the native file format of AutoCAD.
 # No management of SO version despite ABI breaking changes:
 # Force-add some symvers so RPM can produce meaningful deps.
 echo 'V_%version { global: *; };' >src/sv.sym
-%configure --disable-static
+%configure --disable-static --disable-werror
 %make_build libredwg_la_LDFLAGS=-Wl,-version-script,sv.sym libredwg_la_LIBADD=-lm
 
 %install
 %make_install
 b="%buildroot"
 find "$b" -type f -name "*.la" -delete -print
-# Just examples (and also in the wrong directory)
-rm -fv "$b/usr/share/dwgadd.example" "$b/usr/share/load_dwg.py" "$b/usr/share/man/man5/dwgadd.5"*
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files tools
 %license COPYING
+%doc AUTHORS ChangeLog NEWS README TODO
 %_bindir/dwg*
 %_bindir/dxf*
-%_mandir/man?/*.1%{?ext_man}
+%_mandir/man?/*.[1-9]*
 %_infodir/LibreDWG.info*%{?ext_info}
 %_datadir/libredwg/
 
 %files devel
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README TODO
 %_includedir/*.h
 %_libdir/libredwg.so
 %_libdir/pkgconfig/libredwg.pc

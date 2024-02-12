@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb 11 11:42:48 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.13.2
+  * Added pre-R13 DWG decode support for all old DWG formats
+  * Added read support on bigendian platforms (no write)
+  * Full support for en-/decoding foreign codepages, also the MIF
+    \M=1-5xxxx format. (With and without iconv)
+  * Added WMF and PNG support to dwgbmp
+  * Added a third *int alloced arg to dwg_dynapi_handle_name()
+
+-------------------------------------------------------------------
 Tue Jan  2 13:28:11 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to tag 0.12.5.6924
