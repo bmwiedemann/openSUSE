@@ -1284,4 +1284,12 @@ I'd vote for Leap 15.0 as well... (forwarded request 604374 from wolfi323)</comm
     <comment>Switch to GCC 13 for Leap builds for packages that can't be built with the default compiler (forwarded request 1143049 from krop)</comment>
     <requestid>1143120</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>ae023160d1b2cf5e175c7efa475875a7</srcmd5>
+    <version>5.115.0</version>
+    <time>1707760254</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 5.115.0. Not built yet (forwarded request 1145147 from krop)</comment>
+    <requestid>1145643</requestid>
+  </revision>
 </revisionlist>

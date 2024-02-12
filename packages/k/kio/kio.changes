@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb  8 11:15:12 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.115.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.115.0
+- Changes since 5.114.0:
+  * KDirModel: Consider invalid roots are local fs (kde#477039)
+  * slavebase: abort mimetype emission when the worker was terminated (kde#474909, boo#1217175)
+  * KDirModel: Allow expanding network directories in file picker again (kde#479531)
+  * KCoreDirLister: updateDirectory: update parent folder if it is listed (kde#440712)
+  * copyjob: Fix implicitly skipping files when copying (kde#479082)
+
+-------------------------------------------------------------------
 Wed Jan 31 14:35:12 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Switch to the latest GCC version available in Leap for packages
