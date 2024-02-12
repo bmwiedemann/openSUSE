@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-asdf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,12 +27,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-asdf%{psuffix}
-Version:        2.15.2
+Version:        3.0.1
 Release:        0
 Summary:        Python tools to handle ASDF files
 License:        BSD-2-Clause AND BSD-3-Clause
 URL:            https://github.com/asdf-format/asdf
 Source0:        https://files.pythonhosted.org/packages/source/a/asdf/asdf-%{version}.tar.gz
+Source99:       python-asdf.rpmlintrc
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 60}
@@ -47,30 +48,24 @@ Requires:       python-asdf-unit-schemas >= 0.1
 Requires:       python-attrs >= 20.1
 Requires:       python-importlib-metadata >= 4.11.4
 Requires:       python-jmespath >= 0.6.2
-Requires:       python-jsonschema >= 4.8
 Requires:       python-numpy >= 1.22
 Requires:       python-packaging >= 19
 Requires:       python-semantic_version >= 2.8
 Recommends:     python-lz4 >= 0.10
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
-# SECTION test requirements
 %if %{with test}
+# aiohttp by fsspec[http]
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module asdf = %{version}}
-BuildRequires:  %{python_module astropy >= 5.0.4}
 BuildRequires:  %{python_module fsspec >= 2022.8.2}
-BuildRequires:  %{python_module gwcs >= 0.18.3}
 BuildRequires:  %{python_module lz4 >= 0.10}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest-doctestplus}
-BuildRequires:  %{python_module pytest-openfiles >= 0.3.1}
 BuildRequires:  %{python_module pytest-remotedata}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests}
 %endif
-# /SECTION
 %python_subpackages
 
 %description
@@ -80,11 +75,12 @@ Python implementation of the ASDF Standard.
 
 %prep
 %autosetup -p1 -n asdf-%{version}
-sed -i -e '/^#!\//, 1d' asdf/extern/RangeHTTPServer.py
-chmod a-x asdf/extern/RangeHTTPServer.py
+removeshebang="asdf/extern/RangeHTTPServer.py asdf/_jsonschema/json/bin/jsonschema_suite"
+sed -i -e '1{/^#!/d}' $removeshebang
+chmod a-x $removeshebang asdf/_tests/data/example_schema.json
 sed -i 's/\r$//' asdf/_tests/data/example_schema.json
-chmod a-x asdf/_tests/data/example_schema.json
 sed -i '/addopts/ s/--color=yes//' pyproject.toml
+find . -name .gitignore -delete
 
 %build
 %pyproject_wheel

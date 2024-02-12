@@ -247,4 +247,41 @@
   * Fix bug preventing validation of default values in</comment>
     <requestid>1114796</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f80f2cf389132ca60e1b16e4ea525b54</srcmd5>
+    <version>3.0.1</version>
+    <time>1707760318</time>
+    <user>anag+factory</user>
+    <comment>- Drop removed test dependencies: gwcs throws AsdfWarning about an
+  API change in Converter gh#asdf-format/asdf#1594
+- Fix some rpmlint
+
+- update to 3.0.1:
+  * Fix bug in asdftool diff for arrays within a list
+  * Drop support for ASDF-in-FITS.
+  * Add all_array_storage, all_array_compression and
+    all_array_compression_kwargs to asdf.config.AsdfConfig
+  * Move built-in tags to converters (except ndarray and
+    integer).
+  * Add block storage support to Converter
+  * Remove deprecated legacy extension API
+  * Fix issue opening files that don't support fileno
+  * Allow Converters to defer conversion to other Converters by
+    returning None in Converter.select_tag
+  * Remove deprecated tests.helpers
+  * Remove deprecated load_custom_schema
+  * Remove deprecated TagDefinition.schema_uri
+  * Removed deprecated AsdfFile.open and deprecated asdf.open
+    AsdfFile.write_to and AsdfFile.update kwargs
+  * Fix AsdfFile.info loading all array data
+  * Blank out AsdfFile.tree on close
+  * Move ndarray to a converter, add
+    convert_unknown_ndarray_subclasses to asdf.config.AsdfConfig,
+    move asdf.Stream to asdf.tags.core.Stream, update block
+    storage support for Converter and update internal block API
+  * Remove deprecated resolve_local_refs argument to load_schema
+  * Move IntegerType to converter and drop cache of converted
+    values.</comment>
+    <requestid>1146005</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Feb 11 18:12:12 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Drop removed test dependencies: gwcs throws AsdfWarning about an
+  API change in Converter gh#asdf-format/asdf#1594
+- Fix some rpmlint
+
+-------------------------------------------------------------------
+Sun Feb  4 10:21:15 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.1:
+  * Fix bug in asdftool diff for arrays within a list
+  * Drop support for ASDF-in-FITS.
+  * Add all_array_storage, all_array_compression and
+    all_array_compression_kwargs to asdf.config.AsdfConfig
+  * Move built-in tags to converters (except ndarray and
+    integer).
+  * Add block storage support to Converter
+  * Remove deprecated legacy extension API
+  * Fix issue opening files that don't support fileno
+  * Allow Converters to defer conversion to other Converters by
+    returning None in Converter.select_tag
+  * Remove deprecated tests.helpers
+  * Remove deprecated load_custom_schema
+  * Remove deprecated TagDefinition.schema_uri
+  * Removed deprecated AsdfFile.open and deprecated asdf.open
+    AsdfFile.write_to and AsdfFile.update kwargs
+  * Fix AsdfFile.info loading all array data
+  * Blank out AsdfFile.tree on close
+  * Move ndarray to a converter, add
+    convert_unknown_ndarray_subclasses to asdf.config.AsdfConfig,
+    move asdf.Stream to asdf.tags.core.Stream, update block
+    storage support for Converter and update internal block API
+  * Remove deprecated resolve_local_refs argument to load_schema
+  * Move IntegerType to converter and drop cache of converted
+    values.
+  * Remove legacy extension API
+  * Fix bug that left out the name of the arrays that differed
+    for asdftool diff comparisons
+
+-------------------------------------------------------------------
 Mon Oct  2 10:04:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.15.2:
