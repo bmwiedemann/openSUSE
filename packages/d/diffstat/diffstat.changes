@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 11 17:27:48 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.66:
+  + improve handling of git diff's
+  + update install-sh
+  + improve configure script checks, reducing compiler warnings
+
+-------------------------------------------------------------------
 Wed Dec  7 22:42:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.65:

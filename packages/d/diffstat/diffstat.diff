@@ -19,7 +19,7 @@ Index: makefile.in
 ===================================================================
 --- makefile.in.orig
 +++ makefile.in
-@@ -15,6 +15,7 @@ exec_prefix	= @exec_prefix@
+@@ -16,6 +16,7 @@ datarootdir	= @datarootdir@
  bindir		= @bindir@
  mandir		= @mandir@
  
@@ -27,7 +27,7 @@ Index: makefile.in
  CC		= @CC@
  LINK		= $(CC)
  INSTALL		= @INSTALL@
-@@ -26,7 +27,7 @@ CTAGS		= @CTAGS@
+@@ -28,7 +29,7 @@ CTAGS		= @CTAGS@
  ETAGS		= @ETAGS@
  
  CFLAGS		= @CFLAGS@ @EXTRA_CFLAGS@

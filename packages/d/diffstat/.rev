@@ -279,4 +279,15 @@
     &quot;diff -ru FOO/ BAR/ | diffstat -K&quot; (forwarded request 1041283 from dirkmueller)</comment>
     <requestid>1041320</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>2ef343af9084943e1e11c0798a1e77a8</srcmd5>
+    <version>1.66</version>
+    <time>1707760382</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.66:
+  + improve handling of git diff's
+  + update install-sh
+  + improve configure script checks, reducing compiler warnings (forwarded request 1145993 from amanzini)</comment>
+    <requestid>1146096</requestid>
+  </revision>
 </revisionlist>

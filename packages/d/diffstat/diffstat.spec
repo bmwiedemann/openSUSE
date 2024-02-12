@@ -1,7 +1,7 @@
 #
 # spec file for package diffstat
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           diffstat
-Version:        1.65
+Version:        1.66
 Release:        0
 Summary:        Utility That Provides Statistics Based on the Output of diff
 License:        MIT
 Group:          Productivity/Text/Utilities
-URL:            https://dickey.his.com/diffstat/diffstat.html
-Source0:        https://invisible-mirror.net/archives/diffstat/diffstat-%{version}.tgz
-Source1:        https://invisible-mirror.net/archives/diffstat/diffstat-%{version}.tgz.asc
+URL:            https://invisible-island.net/diffstat/
+Source0:        https://invisible-island.net/archives/diffstat/diffstat-%{version}.tgz
+Source1:        https://invisible-island.net/archives/diffstat/diffstat-%{version}.tgz.asc
 Source2:        %{name}.keyring
 Patch0:         %{name}.diff
 
@@ -33,8 +33,7 @@ diffstat reads the output of the diff command and displays a histogram
 of the insertions, deletions, and modifications in each file.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 %configure
