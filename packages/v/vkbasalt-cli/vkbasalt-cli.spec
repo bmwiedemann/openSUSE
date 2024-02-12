@@ -1,7 +1,7 @@
 #
-# spec file for package python-vkbasalt-cli
+# spec file for package vkbasalt-cli
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,13 +14,13 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 %global appid io.gitlab.theevilskeleton.vkbasalt_cli
 %global appname vkbasalt-cli
 %global cliname vkbasalt
 
-%define skip_python2 1
-%define skip_python39 1
-%define skip_python310 1
+%define pythons %primary_python
 
 Name:           vkbasalt-cli
 Version:        3.1.1
@@ -28,11 +28,12 @@ Release:        0
 Summary:        Command-line utility for vkBasalt
 License:        LGPL-3.0-only
 URL:            https://gitlab.com/TheEvilSkeleton/vkbasalt-cli
-Source0:        https://gitlab.com/TheEvilSkeleton/vkbasalt-cli/-/archive/v%{version}/%{appname}-v%{version}.tar.gz  
-BuildRequires:  python-rpm-macros
-BuildRequires:  python3-pip
-BuildRequires:  python3-wheel
+Source0:        https://gitlab.com/TheEvilSkeleton/vkbasalt-cli/-/archive/v%{version}/%{appname}-v%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 
 %description

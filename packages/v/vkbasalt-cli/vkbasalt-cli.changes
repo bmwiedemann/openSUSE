@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb  9 08:42:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix mix-up between python single-spec usage and hardcoded
+  python3-* BuildRequires:
+  + Set pythons to primary_python: this package is a cli tool
+    and not providing python modules.
+  + Fix BuildRequires to use python_module: limited by pythons
+    being set to primary_python, this will only pull in one flavor.
+  + Doing so allows us to keep the regular pyproject_* macros in
+    place.
+- Add python-setuptools BuildRequires: used to be dragged in
+  indirectly.
+
+-------------------------------------------------------------------
 Wed Apr 12 11:33:40 UTC 2023 - Imo Hester <vortex@z-ray.de>
 
 - Fixed binary naming
@@ -6,7 +20,7 @@ Wed Apr 12 11:33:40 UTC 2023 - Imo Hester <vortex@z-ray.de>
 -------------------------------------------------------------------
 Wed Apr 12 11:10:49 UTC 2023 - Imo Hester <vortex@z-ray.de>
 
-- Removed update-alternatives 
+- Removed update-alternatives
 
 -------------------------------------------------------------------
 Wed Apr 12 11:06:35 UTC 2023 - Imo Hester <vortex@z-ray.de>
