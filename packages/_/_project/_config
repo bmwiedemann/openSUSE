@@ -1428,7 +1428,7 @@ Prefer: vala
 # in doubt, take higher versions
 Prefer: geronimo-servlet-2_4-api
 Prefer: libhdf5_hl100 -libhdf5-103-mvapich2 -libhdf5_cpp103-mvapich2 -libhdf5-103-openmpi4 -libhdf5_cpp103-openmpi4
-Prefer: libhdf5_hl200 -libhdf5-200-mvapich2 -libhdf5_cpp200-mvapich2 -libhdf5-200-openmpi4 -libhdf5_cpp200-openmpi4 - libhdf5-200-openmpi5 -libhdf5_cpp200-openmpi5
+Prefer: libhdf5_hl200 -libhdf5-200-mvapich2 -libhdf5_cpp200-mvapich2 -libhdf5-200-openmpi4 -libhdf5_cpp200-openmpi4 -libhdf5-200-openmpi5 -libhdf5_cpp200-openmpi5
 Prefer: -openmpi5-libs
 Prefer: -openmpi5-config
 Prefer: fftw3-devel ImageMagick-config-7-SUSE
