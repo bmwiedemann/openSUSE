@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 12 08:11:04 UTC 2024 - trenn@suse.de
+
+- Update to version 5.0.6.git+14e3840:
+  * rpm: add non-arch L3CAT detection patch
+  * appqos_client: update follow-redirects version
+  * workflows: update style check
+  * License year update
+  * The maintainer name is updated
+  * appqos_client: update axios version
+  * Release 5.0.0
+  * The desc is freed in grp_free. So redundant free is removed.
+  * Update hardware support section of the README
+  * lib: update detection of non-architectural L3CAT
+
+-------------------------------------------------------------------
 Tue May 30 07:52:44 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim R/TM signs as per
