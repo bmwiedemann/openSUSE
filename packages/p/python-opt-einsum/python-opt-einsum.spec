@@ -1,7 +1,7 @@
 #
 # spec file for package python-opt-einsum
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 Name:           python-opt-einsum
 Version:        3.3.0
 Release:        0
@@ -26,9 +23,13 @@ Summary:        Optimizing numpys einsum function
 License:        MIT
 URL:            https://github.com/dgasmith/opt_einsum
 Source:         https://files.pythonhosted.org/packages/source/o/opt_einsum/opt_einsum-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM opt_einsum-pr208-configparser.patch gh#dgasmith/opt_einsum#208
+Patch0:         https://github.com/dgasmith/opt_einsum/pull/208.patch#/opt_einsum-pr208-configparser.patch
 BuildRequires:  %{python_module numpy >= 1.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 Requires:       python-numpy >= 1.7
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,13 +48,14 @@ any library which conforms to a standard API. See the
 information.
 
 %prep
-%setup -q -n opt_einsum-%{version}
+%autosetup -p1 -n opt_einsum-%{version}
+sed -i '1{/^#!/d}' opt_einsum/parser.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,6 +64,7 @@ information.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/opt_einsum
+%{python_sitelib}/opt_einsum-%{version}.dist-info
 
 %changelog

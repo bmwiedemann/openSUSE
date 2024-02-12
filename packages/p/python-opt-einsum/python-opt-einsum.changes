@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 12 13:18:40 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add opt_einsum-pr208-configparser.patch
+  * gh#dgasmith/opt_einsum#208
+- Build wheel with PEP517
+- Clean obsolete flavor skips
+- Don't catchall sitelib files
+
+-------------------------------------------------------------------
 Wed Apr 21 10:08:52 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Skip python36 build: No NumPy for python36 on TW (NEP 29)
