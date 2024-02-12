@@ -1,7 +1,7 @@
 #
 # spec file for package esbuild
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %global tag   v%{version}
 %global extractdir0 esbuild-%{version}
 Name:           esbuild
-Version:        0.19.1
+Version:        0.20.0
 Release:        0
 Summary:        A JavaScript bundler written for speed
 License:        MIT

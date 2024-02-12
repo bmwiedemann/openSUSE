@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb 11 20:23:06 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- roll 0.19.1...0.20.0
+  * compatibility with deno 1.40.0
+  * preferred extension order changed
+    - from: tsx,.ts,.jsx,.js,.css,.json
+    - to: .jsx,.js,.css,.json,.tsx,.ts
+  * see CHANGELOG.md for other changes
+
+-------------------------------------------------------------------
 Sat Aug 12 22:23:17 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
 
 - roll 0.18.12...0.19.1

@@ -55,4 +55,18 @@
 </comment>
     <requestid>1103631</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>61e3bd411d8c9ac86b958d2187c5de37</srcmd5>
+    <version>0.20.0</version>
+    <time>1707760353</time>
+    <user>anag+factory</user>
+    <comment>- roll 0.19.1...0.20.0
+  * compatibility with deno 1.40.0
+  * preferred extension order changed
+    - from: tsx,.ts,.jsx,.js,.css,.json
+    - to: .jsx,.js,.css,.json,.tsx,.ts
+  * see CHANGELOG.md for other changes
+</comment>
+    <requestid>1146016</requestid>
+  </revision>
 </revisionlist>
