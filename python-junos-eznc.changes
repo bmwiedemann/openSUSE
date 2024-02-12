@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Feb 12 11:01:26 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 2.7.0:
+  - Support added for Python 3.10 and above version.
+- 2.6.8:
+  - Introduced optional argument routing instance for fs.cp() API
+  - Introduced optional argument member_id for installation of pkg on
+    specific member id of EX-VC
+  - Changed the VlanTable field name to vlan-name and BfdSessionTable
+    field name to client-name #423
+  - Fixed the port details in StartShell to use the port from Device
+    object instead of default Port 22 #573
+  - Fixed the sw.install to use Windows file path for package copy
+    #1206
+  - Fixed the sw.install to install the vc_master after the other
+    vc_members gets installed for EX-3400 where unlink is set by
+    default #1247
+  - Removed Unused Dependency: Netaddr #1257
+  - Fixed "object": version_info(re_version) emits ValueError: invalid
+    literal for int() with base 10: '17-EVO' for EVO version
+    X50.17-EVO#1264
+- Drop python-junos-eznc-remove-nose.patch
+
+-------------------------------------------------------------------
 Thu Mar  2 07:14:57 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add python-311.patch to support python 3.11, gh#Juniper/py-junos-eznc#1236
