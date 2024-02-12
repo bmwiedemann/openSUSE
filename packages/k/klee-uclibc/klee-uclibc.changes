@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  9 11:26:13 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- generate debuginfo into the lib using -g
+- do not configure with --enable-release as "things might break" (and they do).
+
+-------------------------------------------------------------------
 Thu Dec 14 07:30:04 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 1.4

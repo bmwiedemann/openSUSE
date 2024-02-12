@@ -210,4 +210,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1134422</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>c663a4be149152ee48ac9b0efd31fede</srcmd5>
+    <version>1.4</version>
+    <time>1707760406</time>
+    <user>anag+factory</user>
+    <comment>- generate debuginfo into the lib using -g
+- do not configure with --enable-release as &quot;things might break&quot; (and they do).</comment>
+    <requestid>1146145</requestid>
+  </revision>
 </revisionlist>

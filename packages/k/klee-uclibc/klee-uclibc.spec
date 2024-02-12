@@ -1,7 +1,7 @@
 #
 # spec file for package klee-uclibc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,9 +62,10 @@ sed -i 's@UCLIBC_DOWNLOAD_PREGENERATED_LOCALE_DATA=y@@' klee-premade-configs/x86
 
 %build
 ./configure \
-	--make-llvm-lib \
-	--enable-release
-make %{?_smp_mflags} V=1 lib/libc.a
+	--make-llvm-lib
+# README.md says: "Warning things might break if you do this." about this:
+	#--enable-release
+make %{?_smp_mflags} V=1 KLEE_CFLAGS=-g lib/libc.a
 
 %install
 install -d %{buildroot}%{_libdir}/%{name}/lib/
