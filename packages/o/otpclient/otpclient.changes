@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb 12 07:53:22 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.4.1:
+  * FIX: FreeOTP+ export (thanks @hubnut)
+
+-------------------------------------------------------------------
+Sat Feb 10 15:07:04 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.4.0:
+  * NEW: CLI was completely refactored, and the options have changed.
+         Be sure to check the new options using the help command (-h)
+  * NEW: you can now specify a database when calling the CLI (#340)
+  * FIX: handling errors when path and/or password is incorrect (#336)
+  * FIX: prompt for file again, if needed (#335)
+  * FIX: prevent about dialog from hiding
+  * FIX: use system RNG as source of entropy
+
+-------------------------------------------------------------------
 Wed Feb  7 09:31:41 UTC 2024 - Pablo Herranz Ramírez <pablo.herranz@suse.com>
 
 - Update to 3.3.0:

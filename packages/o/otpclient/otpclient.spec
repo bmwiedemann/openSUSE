@@ -18,7 +18,7 @@
 
 %define uclname OTPClient
 Name:           otpclient
-Version:        3.3.0
+Version:        3.4.1
 Release:        0
 Summary:        Simple GTK+ client for managing TOTP and HOTP
 License:        GPL-3.0-or-later

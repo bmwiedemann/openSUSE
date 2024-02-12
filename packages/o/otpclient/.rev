@@ -360,4 +360,22 @@
 </comment>
     <requestid>1144895</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>6564f2adfae15f10f969c1655b75ddec</srcmd5>
+    <version>3.4.1</version>
+    <time>1707760375</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.4.1:
+  * FIX: FreeOTP+ export (thanks @hubnut)
+- Update to 3.4.0:
+  * NEW: CLI was completely refactored, and the options have changed.
+         Be sure to check the new options using the help command (-h)
+  * NEW: you can now specify a database when calling the CLI (#340)
+  * FIX: handling errors when path and/or password is incorrect (#336)
+  * FIX: prompt for file again, if needed (#335)
+  * FIX: prevent about dialog from hiding
+  * FIX: use system RNG as source of entropy
+</comment>
+    <requestid>1146089</requestid>
+  </revision>
 </revisionlist>
