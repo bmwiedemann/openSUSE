@@ -1,7 +1,7 @@
 #
 # spec file for package ocrad
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ocrad
-Version:        0.28
+Version:        0.29
 Release:        0
 Summary:        Optical Character Recognition Program
 License:        GPL-2.0-or-later
@@ -30,7 +30,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libpng-devel
 BuildRequires:  lzip
 Requires(post): info
-Requires(preun):info
+Requires(preun): info
 
 %description
 GNU Ocrad is an OCR (Optical Character Recognition) program based on a feature
