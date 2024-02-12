@@ -1,7 +1,7 @@
 #
 # spec file for package openrct2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 %ifarch x86_64
   %define lib_suffix 64
 %endif
-%define title_version 0.4.0
+%define title_version 0.4.6
 %define title_version_url %{title_version}
-%define objects_version 1.3.11
-%define openmusic_version 1.3.0
+%define objects_version 1.3.13
+%define openmusic_version 1.5
 %define opensound_version 1.0.3
-%define openrct2_version 0.4.5
+%define openrct2_version 0.4.8
 
 Name:           openrct2
 Version:        %{openrct2_version}
@@ -39,7 +39,6 @@ Source1:        https://github.com/OpenRCT2/title-sequences/archive/v%{title_ver
 Source2:        https://github.com/OpenRCT2/objects/archive/v%{objects_version}.tar.gz#/objects-%{objects_version}.tar.gz
 Source3:        https://github.com/OpenRCT2/Openmusic/releases/download/v%{openmusic_version}/openmusic.zip#/openmusic-%{openmusic_version}.zip
 Source4:        https://github.com/OpenRCT2/OpenSoundEffects/releases/download/v%{opensound_version}/opensound.zip#/opensound-%{opensound_version}.zip
-#PATCH-FIX-UPSTREAM Included in next release: https://github.com/OpenRCT2/OpenRCT2/pull/19519
 Source5:        https://raw.githubusercontent.com/OpenRCT2/OpenMusic/master/COPYING
 BuildRequires:  cmake >= 3.9
 BuildRequires:  fdupes
