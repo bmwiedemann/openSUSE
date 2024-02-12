@@ -19,10 +19,9 @@
 %global flavor @BUILD_FLAVOR@%{?nil}
 %if "%{flavor}" == "doc"
 %bcond_without doc
-%ifarch i586 %arm s390 s390x %power64 ppc
-ExclusiveArch:  do_not_build
 %endif
-%endif
+
+ExcludeArch:    i586 %arm s390 s390x %power64 ppc
 
 %if %{with doc} && (0%{?sle_version} > 0) && (150200 >= 0%{?sle_version})
 ExclusiveArch:  do_not_build
@@ -45,6 +44,14 @@ ExclusiveArch:  do_not_build
 
 # non oss packages
 %define spack_trigger_external cuda-nvcc
+
+%if  0%{?sle_version} <= 120500 && !0%{?is_opensuse}
+%define __python3 python3
+%endif
+
+%define mypyver 3
+%define mypython python%{?mypyver}
+
 Name:           spack
 Version:        0.21.1
 Release:        0
@@ -67,12 +74,13 @@ Patch7:         Fix-Spinx-configuration-to-avoid-throwing-errors.patch
 Patch8:         Set-modules-default-to-lmod.patch
 Patch9:         Add-support-for-container-building-using-a-SLE-base-container.patch
 %if %{without doc}
+BuildRequires:  %{mypython}-urllib3
 BuildRequires:  fdupes
 BuildRequires:  lua-lmod
 BuildRequires:  polkit
-BuildRequires:  python3-urllib3
 BuildRequires:  sudo
 BuildRequires:  sysuser-tools
+Requires:       %{mypython}-clingo
 Requires:       %{name}-recipes = %{version}
 Requires:       awk
 Requires:       bzip2
@@ -87,7 +95,6 @@ Requires:       libbz2-devel
 Requires:       make
 Requires:       patch
 Requires:       polkit
-Requires:       python3-clingo
 Requires:       sudo
 Requires:       tar
 Requires:       unzip
@@ -100,21 +107,18 @@ Requires:       (hwloc-devel if hwloc)
 BuildRequires:  git
 BuildRequires:  makeinfo
 # Hardcode this - there is no python2 version of this around any more.
-BuildRequires:  python3-Sphinx >= 3.4
-BuildRequires:  python3-sphinxcontrib-programoutput
+BuildRequires:  %{mypython}-Sphinx >= 3.4
+BuildRequires:  %{mypython}-sphinxcontrib-programoutput
 BuildRequires:  spack
 # html
 BuildRequires:  graphviz
 # info
 BuildRequires:  graphviz-gnome
 ## pdf
-# BuildRequires:  python3-Sphinx-latex
-Requires:       spack
+# BuildRequires:  %{mypython}-Sphinx-latex
+Recommends:     spack
 %endif
 BuildArch:      noarch
-%if  0%{?sle_version} <= 120500 && !0%{?is_opensuse}
-%define __python3 python3
-%endif
 
 %description
 Spack is a configurable Python-based HPC package manager, automating
@@ -252,9 +256,11 @@ gzip _build/texinfo/Spack.info _build/man/spack.1
 # with doc
 %endif
 cd -
-grep -rl '#! /usr/bin/env bash' . | xargs -i@ sed -i 's|#! /usr/bin/env bash|#!%{_bindir}/bash|g' @
-grep -rl '#!/bin/env sh' . | xargs -i@ sed -i 's|#!/bin/env sh|#!%{_bindir}/sh|g' @
-grep -rl '#!/usr/bin/env bash' . | xargs -i@ sed -i 's|#!/usr/bin/env bash|#!%{_bindir}/bash|g' @
+grep -rl '#! /usr/bin/env bash' . | xargs -i@ sed -i '1s|#! /usr/bin/env bash|#!%{_bindir}/bash|g' @
+grep -rl '#!/bin/env sh' . | xargs -i@ sed -i '1s|#!/bin/env sh|#!%{_bindir}/sh|g' @
+grep -rl '#!/usr/bin/env bash' . | xargs -i@ sed -i '1s|#!/usr/bin/env bash|#!%{_bindir}/bash|g' @
+grep -rl '#![[:space:]]*/usr/bin/env python' | \
+    xargs -i@ sed -i '1s|#![[:space:]]*/usr/bin/env python|#!%{_bindir}/%{mypython}|g' @
 grep -rl '/var/spack/repos' | grep -v "cmd/list.py" | \
     xargs -i@ sed -i 's|/var/spack/repos|/usr/share/spack/repos|g' @
 grep -rl "spack/" . | xargs -i@ sed -i \
@@ -335,9 +341,9 @@ modules:
       lmod: ~/spack/modules
 EOF
 
-# compile python files for python3
+# compile python files for %{mypython}
 # %%{buildroot}%%{spack_dir}/spack
-%py3_compile .
+%{expand:%{py%{?mypyver}_compile .}}
 
 # make shell scripts executeable
 find %{buildroot}%{_localstatedir}/lib/spack/ -type f -name \*.sh  -exec chmod 755 {} \;

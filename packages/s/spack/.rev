@@ -459,4 +459,13 @@
       - For Dockerhub:</comment>
     <requestid>1143572</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>e91e2a08c107780e8e6fe100a8a2b8a5</srcmd5>
+    <version>0.21.1</version>
+    <time>1707760399</time>
+    <user>anag+factory</user>
+    <comment>- Make python version used configurable.
+- Filter out more rpmlint errors. (forwarded request 1146128 from eeich)</comment>
+    <requestid>1146129</requestid>
+  </revision>
 </revisionlist>
