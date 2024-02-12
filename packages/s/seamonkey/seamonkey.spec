@@ -41,8 +41,7 @@ BuildRequires:  libwebp-devel >= 1.0.0
 %endif
 BuildRequires:  makeinfo
 BuildRequires:  memory-constraints
-BuildRequires:  python-devel
-BuildRequires:  python2-xml
+BuildRequires:  python3-base
 BuildRequires:  startup-notification-devel
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files

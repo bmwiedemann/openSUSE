@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb  8 17:35:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace python-devel and python2-xml BuildRequires with
+  python3-base: the build log already contains
+     Creating Python 3 environment
+  i.e, python2 was not used anymore (boo#1219739).
+
+-------------------------------------------------------------------
 Wed Jan 18 00:10:28 UTC 2024 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - update to SeaMonkey 2.53.18.1

@@ -231,4 +231,13 @@
     <comment></comment>
     <requestid>1139789</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>51ff6d690bd1d47d439ff46182edd10e</srcmd5>
+    <version>2.53.18.1</version>
+    <time>1707760309</time>
+    <user>anag+factory</user>
+    <comment>python3-base: the build log already contains
+  i.e, python2 was not used anymore (boo#1219739). (forwarded request 1145490 from dimstar)</comment>
+    <requestid>1146231</requestid>
+  </revision>
 </revisionlist>
