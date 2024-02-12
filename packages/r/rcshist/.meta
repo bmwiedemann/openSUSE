@@ -1,0 +1,7 @@
+<package name="rcshist" project="openSUSE:Factory">
+  <title>Display RCS change history</title>
+  <description>The rcshist utility displays the complete revision history of a set of 
+RCS files including log messages and patches.  The output is sorted in 
+reverse date order over all revisions of all files.</description>
+  <devel project="devel:tools:scm" package="rcshist"/>
+</package>

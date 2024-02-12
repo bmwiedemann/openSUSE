@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e0a886a92ba2a667e738c2b50038f5df</srcmd5>
+    <version>t20230130</version>
+    <time>1707760397</time>
+    <user>anag+factory</user>
+    <comment>As adding devel projects to the user's installation is discouraged, I'd like to forward
+this package to Factory, although the number of users will be quite limited, I guess...
+
+The rcshist utility displays the complete revision history of an RCS file.
+It is quite a common tool for RCS users.</comment>
+    <requestid>1146127</requestid>
+  </revision>
+</revisionlist>
