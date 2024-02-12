@@ -15,7 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define commit b459a4d
+
+%define commit c4e5e5e
 
 Name:           libcosmos
 Version:        0.2
@@ -27,8 +28,8 @@ URL:            https://github.com/gerstner-hub/libcosmos
 Source0:        libcosmos-%{commit}.tar.xz
 
 BuildRequires:  gcc-c++
-BuildRequires:  scons
 BuildRequires:  pkgconfig
+BuildRequires:  scons
 
 %description
 This is libcosmos, a library providing a modern C++ API for the Linux

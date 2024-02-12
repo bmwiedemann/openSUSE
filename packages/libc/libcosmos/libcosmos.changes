@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 05 08:39:59 UTC 2024 - matthias.gerstner@suse.com
+
+- Update to version c4e5e5e:
+  * SecretFile: fix compilation path where SYS_memfd_secret is not defined
+
+-------------------------------------------------------------------
 Fri Feb 02 08:38:04 UTC 2024 - matthias.gerstner@suse.com
 
 - Update to version b459a4d:
