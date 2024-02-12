@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Feb 12 11:27:38 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- update to 3.1.1:
+  * fix pushing read updates to the API
+
+-------------------------------------------------------------------
+Mon Feb 12 09:46:40 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- update to 3.1.0:
+  * Fix tag context menu actions
+  * Fix article scrolling on steam deck
+  * Fix an error toast appearing right after successful login
+  * Fix multiple instances of the image dialog spawning at the same time
+  * Fix 12h/24h time format
+  * Fix webview scrolling when zoomed via touch
+  * Local RSS: Fix duplicate feeds after exporting and reimporting an OPML file
+  * miniflux: support article enclosures
+  * Mark articles as read when opening in external browser
+  * Keep loaded articles when refreshing unread article list
+  * Update the user agent
+  * Add 'Zorin' article theme
+  * Double check if Newsflash is offline by pinging an Url
+  * Mark all read: only apply to articles that match current search term and list mode
+  * Article View: remove selectabilty preference and make content selectable by default
+  * Fetch content of a feed after adding it (if backend supports it)
+  * Show fetch and parse issues of single feeds (if backend supports it)
+  * Allow undoing mark all as read
+
+-------------------------------------------------------------------
 Fri Dec  8 21:13:16 UTC 2023 - Richard Rahl <rrahl0@proton.me>
 
 - initial packaging for openSUSE_Tumbleweed
