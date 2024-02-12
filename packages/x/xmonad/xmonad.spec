@@ -1,7 +1,7 @@
 #
 # spec file for package xmonad
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.17.2
+Version:        0.18.0
 Release:        0
 Summary:        A tiling window manager
 License:        BSD-3-Clause
