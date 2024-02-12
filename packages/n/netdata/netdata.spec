@@ -1,7 +1,7 @@
 #
 # spec file for package netdata
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -87,6 +87,8 @@ Recommends:     python311-PyMySQL
 Recommends:     python311-psycopg2
 %endif
 BuildRequires:  pkgconfig(libipmimonitoring)
+Provides:       group(%{netdata_group})
+Provides:       user(%{netdata_user})
 
 %description
 Netdata is a system for distributed real-time performance and
