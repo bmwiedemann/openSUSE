@@ -18,14 +18,14 @@
 
 
 Name:           jacktrip
-Version:        2.2.1
+Version:        2.2.2
 Release:        0
 Summary:        Multi-machine network music performance over the Internet
-License:        MIT
+License:        GPL-3.0-only AND MIT AND LGPL-3.0-only
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://github.com/jcacerec/jacktrip
 Source0:        https://github.com/jcacerec/jacktrip/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        http://www.music.mcgill.ca/~gary/rtaudio/release/rtaudio-6.0.1.tar.gz
+Source1:        https://www.music.mcgill.ca/~gary/rtaudio/release/rtaudio-6.0.1.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  help2man
 BuildRequires:  meson
@@ -72,7 +72,7 @@ mv build .build
 
 %files
 %doc README.md
-%doc %{_mandir}/man*/*
+%{_mandir}/man*/*
 %license LICENSE.md
 %{_bindir}/jacktrip
 %{_datadir}/applications/*

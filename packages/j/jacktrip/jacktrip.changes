@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb 10 15:13:31 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.2.2:
+  * Update license files and about screen for compliance
+  * Work-around for ASIO drivers that have trouble changing sample rates 
+  * Use studio's sample rate when testing audio before joining
+  * Updating latency thresholds to be more stringent
+  * Syncing up latency stats colors with updated vs-web interface
+  * Adding throttle for UDP waited too long errors
+
+- ran spec-cleaner 
+
+-------------------------------------------------------------------
 Fri Feb  2 11:48:38 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.2.1:
