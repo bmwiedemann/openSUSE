@@ -1686,4 +1686,17 @@
   * Mid: storage-mon: Functionalization of test_device call processing.</comment>
     <requestid>1126564</requestid>
   </revision>
+  <revision rev="126" vrev="2">
+    <srcmd5>81424942e71ceae7bb502e136e436aea</srcmd5>
+    <version>4.13.0+git6.ae50f94f</version>
+    <time>1707760304</time>
+    <user>anag+factory</user>
+    <comment>- Remove the deprecated perl-IO-Socket-INET6 dependency
+  * Remove the dependency on perl(IO::Socket::INET6) as it has been
+    deprecated by upstream, is no longer suitable for use and its not
+    being maintained. A compatible replacement for this package is
+    perl(IO::Socket::IP) which is shipped by the perl-base package.
+  * Add resource-agents-deprecate-INET6.patch</comment>
+    <requestid>1145977</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package resource-agents
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,6 +42,9 @@ Patch7:         0007-Request-to-add-gcp-vpc-move-route.patch
 Patch8:         nfsnotify.patch
 Patch9:         portblock.patch
 
+# PATCH-FIX-OPENSUSE: Remove deprecated perl-IO-Socket-INET6 dependency
+Patch10:        resource-agents-deprecate-INET6.patch
+
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cluster-glue-devel
@@ -81,7 +84,7 @@ Group:          Productivity/Clustering/HA
 Requires:       %{name}
 Requires:       ipvsadm
 Requires:       logrotate
-Requires:       perl-IO-Socket-INET6
+Requires:       perl-IO-Socket-IP
 Requires:       perl-MailTools
 Requires:       perl-Net-SSLeay
 Requires:       perl-Socket6
@@ -129,6 +132,7 @@ pages of individual nagios plugins.
 %patch7 -p0
 %patch8 -p0
 %patch9 -p0
+%patch10 -p1
 
 %build
 autoreconf -fvi
