@@ -1,7 +1,7 @@
 #
 # spec file for package libnsfdb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,32 +18,30 @@
 
 Name:           libnsfdb
 %define lname	libnsfdb1
-Version:        20210419
+Version:        20240211
 Release:        0
 Summary:        Library and tools to access the Notes Storage Facility format
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libnsfdb
-Source:         %name-%version.tar.xz
-Patch1:         system-libs.patch
+Source:         https://github.com/libyal/libnsfdb/releases/download/%version/libnsfdb-experimental-%version.tar.gz
+Source2:        https://github.com/libyal/libnsfdb/releases/download/%version/libnsfdb-experimental-%version.tar.gz.asc
+Source3:        %name.keyring
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.18.1
-BuildRequires:  libtool
-BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libbfio) >= 20201229
-BuildRequires:  pkgconfig(libcdata) >= 20200509
-BuildRequires:  pkgconfig(libcerror) >= 20201121
-BuildRequires:  pkgconfig(libcfile) >= 20201229
-BuildRequires:  pkgconfig(libclocale) >= 20200913
-BuildRequires:  pkgconfig(libcnotify) >= 20200913
-BuildRequires:  pkgconfig(libcpath) >= 20200913
-BuildRequires:  pkgconfig(libcsplit) >= 20200703
-BuildRequires:  pkgconfig(libcthreads) >= 20200508
-BuildRequires:  pkgconfig(libfcache) >= 20200708
-BuildRequires:  pkgconfig(libfdata) >= 20201129
-BuildRequires:  pkgconfig(libfdatetime) >= 20180910
-BuildRequires:  pkgconfig(libfvalue) >= 20210510
-BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(libbfio) >= 20221025
+BuildRequires:  pkgconfig(libcdata) >= 20240103
+BuildRequires:  pkgconfig(libcerror) >= 20240101
+BuildRequires:  pkgconfig(libcfile) >= 20240106
+BuildRequires:  pkgconfig(libclocale) >= 20240107
+BuildRequires:  pkgconfig(libcnotify) >= 20240108
+BuildRequires:  pkgconfig(libcpath) >= 20240109
+BuildRequires:  pkgconfig(libcsplit) >= 20240110
+BuildRequires:  pkgconfig(libcthreads) >= 20240102
+BuildRequires:  pkgconfig(libfcache) >= 20240112
+BuildRequires:  pkgconfig(libfdata) >= 20240114
+BuildRequires:  pkgconfig(libfdatetime) >= 20240115
+BuildRequires:  pkgconfig(libfvalue) >= 20240124
+BuildRequires:  pkgconfig(libuna) >= 20240130
 
 %description
 libnsfdb is a library to access the Notes Storage Facility (NSF)
