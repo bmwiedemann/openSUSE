@@ -624,4 +624,12 @@ Not installed by default yet as it's currently in beta.</comment>
     <comment>KDE Frameworks 5.114.0</comment>
     <requestid>1138958</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>d6248854d55cbcee9fabe8b045c5181c</srcmd5>
+    <version>5.115.0</version>
+    <time>1707760297</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 5.115.0. Not built yet (forwarded request 1145147 from krop)</comment>
+    <requestid>1145678</requestid>
+  </revision>
 </revisionlist>
