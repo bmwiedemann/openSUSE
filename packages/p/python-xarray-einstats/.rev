@@ -33,4 +33,13 @@
   * Ease running einops tutorial locally</comment>
     <requestid>1140276</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d05d0430db620b1dbd630cdc65deae72</srcmd5>
+    <version>0.7.0</version>
+    <time>1707760416</time>
+    <user>anag+factory</user>
+    <comment>- Enable again numba tests for python &gt;= 3.11
+</comment>
+    <requestid>1146166</requestid>
+  </revision>
 </revisionlist>

@@ -32,7 +32,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xarray >= 2022.9.0}
 BuildRequires:  python-rpm-macros
 # SECTION Test requires
-BuildRequires:  %{python_module numba if %python-base < 3.11}
+BuildRequires:  %{python_module numba}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest}
@@ -60,8 +60,6 @@ Stats, linear algebra and einops for xarray
 %check
 # no python-einops in TW
 ignoretests="--ignore tests/test_einops.py"
-# no python311-numba yet
-python311_ignoretests="--ignore tests/test_numba.py"
 %pytest $ignoretests ${$python_ignoretests}
 
 %files %{python_files}
