@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 12 02:38:05 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.5.1
+  * dahdi: Log context (e1inpt_ts name) when opening timeslot
+    devices
+  * DAHDI: Log hexdump of TX at level DEBUG, not ERROR
+
+-------------------------------------------------------------------
 Wed Nov  1 18:24:27 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.5.0

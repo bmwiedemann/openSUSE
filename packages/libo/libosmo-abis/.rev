@@ -144,4 +144,12 @@ fix build with ortp 0.27</comment>
     <comment>- Update to release 1.5.0</comment>
     <requestid>1121718</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>bc7e3f3908a1cb62a5aa630f6216d5b9</srcmd5>
+    <version>1.5.1</version>
+    <time>1707760369</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.5.1</comment>
+    <requestid>1146063</requestid>
+  </revision>
 </revisionlist>
