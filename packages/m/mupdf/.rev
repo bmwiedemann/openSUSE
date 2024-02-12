@@ -690,4 +690,16 @@
 </comment>
     <requestid>1140771</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>9b884d8e06505cb679656004c425589e</srcmd5>
+    <version>1.23.10</version>
+    <time>1707760388</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.23.10:
+  * Add fallback CMap to handle very broken fonts.
+  * Fix infinite loop in line dashing routine.
+  * Handle named destinations with non-ASCII characters.
+</comment>
+    <requestid>1146112</requestid>
+  </revision>
 </revisionlist>

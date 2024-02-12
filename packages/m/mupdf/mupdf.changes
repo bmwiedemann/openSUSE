@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 12 08:49:32 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.23.10:
+  * Add fallback CMap to handle very broken fonts.
+  * Fix infinite loop in line dashing routine.
+  * Handle named destinations with non-ASCII characters.
+
+-------------------------------------------------------------------
 Tue Jan 23 07:04:27 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.23.9:
