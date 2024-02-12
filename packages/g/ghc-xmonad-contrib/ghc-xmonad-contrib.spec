@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-xmonad-contrib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.17.1
+Version:        0.18.0
 Release:        0
 Summary:        Community-maintained extensions for xmonad
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
-Patch1:         https://github.com/xmonad/xmonad-contrib/commit/8cb789af39e93edb07f1eee39c87908e0d7c5ee5.patch#/fix-build-with-ghc-9.6.x.patch
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-X11-devel
 BuildRequires:  ghc-X11-prof
@@ -109,9 +107,7 @@ Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
 This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
-%autosetup -n %{pkg_name}-%{version} -p1
-cp -p %{SOURCE1} %{pkg_name}.cabal
-cabal-tweak-dep-ver mtl '< 2.3' '< 3'
+%autosetup -n %{pkg_name}-%{version}
 
 %build
 %ghc_lib_build
