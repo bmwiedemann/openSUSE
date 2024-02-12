@@ -2,7 +2,7 @@
 # spec file for package hyprland
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2022/23 Florian "sp1rit" <packaging@sp1rit.anonaddy.me>
+# Copyright (c) 2022-24 Florian "sp1rit" <packaging@sp1rit.anonaddy.me>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,12 @@
 %bcond_without devel
 
 Name:           hyprland
-Version:        0.34.0
+Version:        0.35.0
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
 URL:            https://hyprland.org/
 Source0:        %{name}-%{version}.tar.xz
-Patch1:         0001-fixed-patchd-wlroots-build.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++ >= 11
 BuildRequires:  git
@@ -92,7 +91,6 @@ build plugins for hyprland.
 
 %prep
 %autosetup -p1
-patch -p1 -d subprojects/wlroots/ < subprojects/packagefiles/wlroots-meson-build.patch
 
 %build
 %meson \
@@ -103,6 +101,7 @@ patch -p1 -d subprojects/wlroots/ < subprojects/packagefiles/wlroots-meson-build
 %meson_install --tags runtime,man%{?with_devel:,devel}
 %if %{with devel}
 rm %{buildroot}/%{_libdir}/libwlroots.a %{buildroot}/%{_libdir}/pkgconfig/wlroots.pc
+rm -rf %{buildroot}/%{_includedir}/wlr/
 %endif
 
 %files

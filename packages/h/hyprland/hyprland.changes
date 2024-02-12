@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Mon Feb 12 10:46:15 UTC 2024 - Florian <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.35.0:
+  + New hyprland release? No way. I think we got some new stuff and
+    fixes.
+    This release was brought to you by the Hyprland Corp.
+  + New features:
+    - config: Add border gradients to windowrulev2 (#4335)
+    - hyprctl: add systeminfo
+    - hyprpm: add --force for update
+    - input: add special_fallthrough
+    - keybinds: Add dispatcher for xmonad/qtile-style workspace
+      switching (#4439)
+    - master: Add more null checks for rollnext (#4343)
+    - renderer: Add new background infrastructure
+  + Fixes:
+    - dwindle: fix windows being created at incorrect position when
+      cursor is over reserved area (#4520)
+    - hyprctl: screen_shader config fixes (#4102)
+    - hyprpm: fix crash on add plugin
+    - hyprpm: fix invalid pkg-config path env in build
+    - keybinds: fix ignoremods with release
+    - keybinds: fix keys getting stuck + minor refactor and
+      optimizations to keybind handling (#4304)
+    - keybinds: fix tracking of sent key states
+    - layershell: Fix greedy mouse grab from keyboard_interactive
+      layer (#4401)
+    - main: Fix typo in std::cerr (#4359)
+    - meson: fix wlroots patch (#4324)
+    - pluginapi: fix hooks with negative rip offsets
+    - renderer: fixup misaligned fsv1 surfaces with uv
+    - subsurfaceTree: Fix nullptr crash when disconnecting a monitor
+      (#4577)
+  + Other:
+    - HookSystem: rename PAGESIZE_VAR from PAGESIZE to avoid conflict
+      (#4321)
+    - build: protocols: require wayland-protocols >= 1.32
+    - compositor: clarify common errors at launch
+    - compositor: don't close special on focus on pinned (#4533)
+    - config: variables update their value when set again (#4263)
+    - core: improve cleanup logic
+    - crashreporter: skip first possibly cut off line in log tail
+    - damage: use buffer_damage instead of effective_damage
+    - dwindle: avoid sending negative sizes to wlr
+    - events: ignore sending mouse enter to focused if a constraint
+      is active
+    - fractional: Set preferred scale on monitor config reload
+      (#4406)
+    - groupbar: Drag single window instead of destroying group
+      (#4327)
+    - groupbar: improve gradient handling (#4390)
+    - groupbar: separate gradients from title (#4444)
+    - hyprctl: move to a class and unify commands
+    - hyprpm: don't update headers if they are up-to-date, only
+      recompile
+    - hyprpm: handle failed compilations gracefully
+    - hyprpm: install headers locally (#4585)
+    - hyprpm: log verbose return of cmake and meson in update
+    - hyprpm: update global state on plugin recompile not header
+      update
+    - hyprpm: verify headersHashCompiled as well in headersValid()
+    - input: Allow disabling touchscreen input (#4517)
+    - input: allow focusSurface when locked if surfase is sessionLock
+    - input: focus window on mouse down on decoration (#4514)
+    - input: leave special on focus (#4358)
+    - input: partially revert #4401
+    - input: remove animate checks on resize limiter (#4480)
+    - input: track exclusive LSes
+    - internal: minor header cleanup
+    - issue templates: make versions spoiler'd
+    - keybinds: Refocus only if the silently moved window had the
+      focus (#4328)
+    - keybinds: avoid duplicated held keys, only use last, remove all
+    - layout: Round window pos and size on togglefloating (#4407)
+    - layout: save float props before setting fs state (#4537)
+    - layout: update rules before applying fullscreen nodes in
+      layouts
+    - make: unbreak with non-GNU ln(1) after 78f9ba9
+    - master: guard PNODE in roll*
+    - monitor: clear output state after usage
+    - monitor: don't call output_state_finish on buffer-less state
+      clears
+    - monitor: wrap usage of wlr_output_state
+    - opengl: apply box rot to projections
+    - opengl: rassert false on lost context
+    - opengl: use texBox for rendering background texture
+    - pluginapi: allow registering hyprctl commands
+    - renderer: Only force nearest neighbor when the sizes are off by
+      one or two (#4325)
+    - renderer: allow rendering multiple fullscreen windows in third
+      fs pass
+    - renderer: avoid unnecessary gpu resource deletions
+    - renderer: ignore box offsets for fullscreen windows
+    - renderer: overhaul renderModifData
+    - renderer: reset fb pointers after render pass
+    - screenshader: rename output uniform to wl_output (#4606)
+    - subsurfaceTree: update surface tree protocol feedback on map
+    - surface: avoid spam of window surfaces with scale and transform
+      events
+    - swipe: Prevent hiding current workspace when swiping (#4417)
+    - tearing-control: handle unmapped surfaces for hints
+    - wlroots: update version patches
+    - xwayland: remove delta from pos sets in configureX11
+    - xwayland: remove reportedsize set in unmanagedSetGeometry
+      (#4539)
+- The patch "0001-fixed-patchd-wlroots-build.patch" has been dropped
+  as it appears as if it isn't necessary anymore.
+
+-------------------------------------------------------------------
 Thu Jan  4 10:44:41 UTC 2024 - Florian <packaging@sp1rit.anonaddy.me>
 
 - Update to version 0.34.0:
