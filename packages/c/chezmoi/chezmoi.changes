@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 12 09:46:56 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.46.1:
+  - Features
+    * feat: Add update.apply configuration variable
+    * feat: Set CHEZMOI_SOURCE_FILE env var for scripts
+  - Fixes
+    * fix: Fix age/rage check in doctor command
+
+-------------------------------------------------------------------
 Fri Jan 26 16:55:06 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.46.0:

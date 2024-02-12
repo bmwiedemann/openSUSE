@@ -389,4 +389,18 @@
     <comment></comment>
     <requestid>1141783</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>3c3085e6faa5f28cdd4db6080b3fd58f</srcmd5>
+    <version>2.46.1</version>
+    <time>1707760394</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.46.1:
+  - Features
+    * feat: Add update.apply configuration variable
+    * feat: Set CHEZMOI_SOURCE_FILE env var for scripts
+  - Fixes
+    * fix: Fix age/rage check in doctor command
+</comment>
+    <requestid>1146115</requestid>
+  </revision>
 </revisionlist>
