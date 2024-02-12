@@ -248,4 +248,12 @@
 - Drop a Python 2 requires.</comment>
     <requestid>1110197</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>122c2693966f2dbc2e84305d2fa16f19</srcmd5>
+    <version>3.1.1</version>
+    <time>1707760425</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1146195</requestid>
+  </revision>
 </revisionlist>

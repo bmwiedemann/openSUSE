@@ -1,7 +1,7 @@
 #
 # spec file for package python-textX
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,14 +31,14 @@ BuildRequires:  python-rpm-macros
 %if 0%{?sle_version} == 150200 || 0%{?sle_version} == 150300
 BuildRequires:  python2-xml
 %endif
-Requires:       python-Arpeggio >= 1.9.0
-Requires:       python-click >= 7.0
+Requires:       python-Arpeggio >= 2.0.0
+Recommends:     python-click >= 7.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Obsoletes:      %{name}-doc
 BuildArch:      noarch
 # SECTION tests
-BuildRequires:  %{python_module Arpeggio}
+BuildRequires:  %{python_module Arpeggio >= 2.0.0}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module click >= 7.0}
 BuildRequires:  %{python_module html5lib}
