@@ -23,14 +23,15 @@ Release:        0
 Summary:        SQLAlchemy database migrations for Flask applications using Alembic
 License:        MIT
 URL:            https://github.com/miguelgrinberg/flask-migrate/
-Source:         https://files.pythonhosted.org/packages/source/F/Flask-Migrate/Flask-Migrate-%{version}.tar.gz
-# Filed as gh#miguelgrinberg/Flask-Migrate#501
-Patch0:         add-custom-template.patch
+Source:         https://github.com/miguelgrinberg/flask-migrate/archive/refs/tags/v%{version}.tar.gz#/Flask-Migrate-%{version}.tar.gz
 BuildRequires:  %{python_module Flask >= 0.9}
 BuildRequires:  %{python_module Flask-SQLAlchemy >= 1.0}
 BuildRequires:  %{python_module alembic >= 1.9.0}
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask >= 0.9
@@ -48,20 +49,19 @@ as command line arguments for Flask-Script.
 %autosetup -p1 -n Flask-Migrate-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest -v
+%pytest
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%dir %{python_sitelib}/flask_migrate
-%{python_sitelib}/flask_migrate/*
-%{python_sitelib}/Flask_Migrate-%{version}-py*.egg-info
+%{python_sitelib}/flask_migrate
+%{python_sitelib}/Flask_Migrate-%{version}.dist-info
 
 %changelog

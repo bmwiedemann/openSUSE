@@ -126,4 +126,14 @@
     <comment></comment>
     <requestid>1140406</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>13fb499e8ac4fc2deda00e58ce5a4749</srcmd5>
+    <version>4.0.5</version>
+    <time>1707760377</time>
+    <user>anag+factory</user>
+    <comment>- Switch to GitHub tarball, as it includes all test files.
+- Drop patch add-custom-template.patch, no longer needed.
+- Switch to pyroject macros.</comment>
+    <requestid>1146066</requestid>
+  </revision>
 </revisionlist>
