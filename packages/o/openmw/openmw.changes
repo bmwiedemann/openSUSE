@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb  2 13:49:24 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to git version as of Feb 2th 2024. This is needed for openmw
+  to compile with MyGUI 3.4.2
+- disabled compilation of openmw-cs (editor) as it fails  
+
+-------------------------------------------------------------------
 Thu Aug 10 18:30:45 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 0.48.0:

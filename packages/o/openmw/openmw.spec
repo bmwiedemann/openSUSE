@@ -1,8 +1,7 @@
 #
 # spec file for package openmw
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2012-2015 openSUSE_user1
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +16,32 @@
 #
 
 
+%bcond_with openmw-cs
+
+# older boost versions (<= 1.66) available on openSUSE <= 15.5 break
+# compilation because openmw uses -std=c++20 and these older boost versions
+# are not compatible with it
+# 1.69 is the first boost version that is supposed to work with C++ 20:
+%define min_boost_version 1.69
+
 Name:           openmw
-Version:        0.48.0
+Version:        0.48.0+git20240202
 Release:        0
 Summary:        Reimplementation of The Elder Scrolls III: Morrowind
 License:        GPL-3.0-only AND MIT
 Group:          Amusements/Games/RPG
 URL:            https://www.openmw.org
-Source:         %{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.bz2
 Source2:        %{name}.rpmlintrc
 BuildRequires:  MyGUI-devel >= 3.2.1
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_iostreams-devel
-BuildRequires:  libboost_program_options-devel
-BuildRequires:  libboost_regex-devel
-BuildRequires:  libboost_system-devel
+BuildRequires:  libboost_filesystem-devel >= %{min_boost_version}
+BuildRequires:  libboost_iostreams-devel >= %{min_boost_version}
+BuildRequires:  libboost_program_options-devel >= %{min_boost_version}
+BuildRequires:  libboost_regex-devel >= %{min_boost_version}
+BuildRequires:  libboost_system-devel >= %{min_boost_version}
 BuildRequires:  pkgconfig
 BuildRequires:  tinyxml-devel
 BuildRequires:  update-desktop-files
@@ -43,6 +50,8 @@ BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(bullet) >= 2.83.0
+BuildRequires:  pkgconfig(icu-i18n)
+BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
@@ -50,8 +59,6 @@ BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libunshield)
 BuildRequires:  pkgconfig(luajit)
-BuildRequires:  pkgconfig(icu-i18n)
-BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(openscenegraph) >= 3.2
 BuildRequires:  pkgconfig(openthreads) >= 3.2
@@ -67,7 +74,7 @@ BuildRequires:  gcc11-c++
 BuildRequires:  gcc-c++
 %endif
 Requires(post): desktop-file-utils
-Requires(postun):desktop-file-utils
+Requires(postun): desktop-file-utils
 
 %description
 OpenMW is a new and modern engine based on the one that runs the 2002 open-world RPG Morrowind. The engine (OpenMW) will come with its own editor (OpenCS) which will allow the user to edit or create their own games. Both OpenCS and OpenMW are written from scratch and aren’t made to support any third party programs the original Morrowind engine uses to improve its functionality.
@@ -99,7 +106,7 @@ The OpenCS is not based on the editing tool which came with the original Morrowi
  * customisable GUI
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-master
 cp 'files/data/fonts/DejaVuFontLicense.txt' ./DejaVuFontLicense.txt
 
 ## fix __DATE__ and __TIME__
@@ -119,6 +126,13 @@ export CC="gcc-11"
 export CXX="g++-11"
 %endif
 # -DBT_USE_DOUBLE_PRECISION should be discovered by cmake from bullet config, but it's not.
+
+%if %{with openmw-cs}
+%define build_open_cs "ON"
+%else
+%define build_open_cs "OFF"
+%endif
+
 %cmake \
        -DCMAKE_C_FLAGS="%{optflags} -DBT_USE_DOUBLE_PRECISION" \
        -DCMAKE_CXX_FLAGS="%{optflags} -DBT_USE_DOUBLE_PRECISION" \
@@ -131,7 +145,8 @@ export CXX="g++-11"
        -DCMAKE_CXX_VISIBILITY_PRESET=hidden \
        -DCMAKE_VISIBILITY_INLINES_HIDDEN=1 \
        -DOPENMW_USE_SYSTEM_RECASTNAVIGATION="ON" \
-       -DOPENMW_USE_SYSTEM_ICU="ON"
+       -DOPENMW_USE_SYSTEM_ICU="ON" \
+       -DBUILD_OPENCS=%{build_open_cs}
 
 %make_build
 
@@ -155,7 +170,9 @@ mv %{buildroot}/%{_datadir}/metainfo/* %{buildroot}/%{_datadir}/appdata/
 rm -Rf %{buildroot}/%{_datadir}/metainfo
 
 %suse_update_desktop_file org.openmw.launcher
-%suse_update_desktop_file org.openmw.cs
+%if %{with openmw-cs}
+%suse_update_desktop_file org.openmw-cs.launcher
+%endif
 %fdupes %{buildroot}%{_datadir}
 
 %post
@@ -171,7 +188,13 @@ rm -Rf %{buildroot}/%{_datadir}/metainfo
 %doc README.md
 %doc CHANGELOG.md
 %doc AUTHORS.md
+
+%if %{with openmw-cs}
 %doc manual/opencs/*
+%config %{_sysconfdir}/%{name}/defaults-cs.bin
+#%{_bindir}/%{name}-cs
+%endif
+
 %dir %{_datadir}/%{name}
 %dir %{_sysconfdir}/%{name}
 %{_datadir}/pixmaps/*.png
@@ -182,14 +205,12 @@ rm -Rf %{buildroot}/%{_datadir}/metainfo
 %config(noreplace) %{_sysconfdir}/%{name}/openmw.cfg
 %config(noreplace) %{_sysconfdir}/%{name}/gamecontrollerdb*.txt
 %config %{_sysconfdir}/%{name}/defaults.bin
-%config %{_sysconfdir}/%{name}/defaults-cs.bin
-%config %{_sysconfdir}/%{name}/version
+
 %{_bindir}/bsatool
 %{_bindir}/esmtool
 %{_bindir}/niftest
 %{_bindir}/%{name}
 %{_bindir}/%{name}-bulletobjecttool
-%{_bindir}/%{name}-cs
 %{_bindir}/%{name}-essimporter
 %{_bindir}/%{name}-iniimporter
 %{_bindir}/%{name}-launcher
