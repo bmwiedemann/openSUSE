@@ -1,7 +1,7 @@
 #
 # spec file for package minetest
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -102,6 +102,8 @@ Requires:       %{name}-data = %{version}
 Requires(pre):  shadow
 Recommends:     %{name}-game
 Provides:       %{name}-runtime = %{version}
+Provides:       group(%{minetestgroup})
+Provides:       user(%{minetestuser})
 %{?systemd_requires}
 
 %description -n %{name}server
