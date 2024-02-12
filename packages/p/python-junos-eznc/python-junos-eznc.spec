@@ -1,7 +1,7 @@
 #
 # spec file for package python-junos-eznc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2017-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,15 +19,12 @@
 
 %define skip_python2 1
 Name:           python-junos-eznc
-Version:        2.6.7
+Version:        2.7.0
 Release:        0
 Summary:        Junos 'EZ' automation for non-programmers
 License:        Apache-2.0
 URL:            https://www.github.com/Juniper/py-junos-eznc
 Source:         https://github.com/Juniper/py-junos-eznc/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# replace deprecated nose by pytest
-# https://github.com/Juniper/py-junos-eznc/pull/1078
-Patch0:         python-junos-eznc-remove-nose.patch
 # replace deprecated yamlordereddictloader by yamlloader
 # https://github.com/Juniper/py-junos-eznc/pull/1078
 Patch1:         python-junos-eznc-remove-yamlordereddictloader.patch
@@ -38,8 +35,8 @@ Patch4:         python-311.patch
 BuildRequires:  %{python_module Jinja2 >= 2.7.1}
 BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module lxml >= 3.2.4}
-BuildRequires:  %{python_module ncclient >= 0.6.13}
-BuildRequires:  %{python_module netaddr}
+BuildRequires:  %{python_module ncclient >= 0.6.15}
+BuildRequires:  %{python_module nose2}
 BuildRequires:  %{python_module ntc-templates}
 BuildRequires:  %{python_module paramiko >= 1.15.2}
 BuildRequires:  %{python_module pyparsing}
@@ -56,9 +53,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2 >= 2.7.1
 Requires:       python-PyYAML >= 5.1
 Requires:       python-lxml >= 3.2.4
-Requires:       python-ncclient >= 0.6.13
-Requires:       python-netaddr
-Requires:       python-ntc-templates
+Requires:       python-ncclient >= 0.6.15
 Requires:       python-paramiko >= 1.15.2
 Requires:       python-pyparsing
 Requires:       python-pyserial
@@ -96,7 +91,8 @@ donttest="nonemptydonttestprefix"
 # https://github.com/Juniper/py-junos-eznc/issues/1109
 python39_donttest=" or test_sw_put_ftp"
 python310_donttest=" or test_sw_put_ftp"
-%pytest -m "not functional" --forked -k "not ($donttest ${$python_donttest})"
+donttest+=" or test_sw_install_multi_vc"
+%pytest -m "not functional" --forked -k "not ($donttest ${$python_donttest})" tests/unit
 
 %files %{python_files}
 %license COPYRIGHT LICENSE

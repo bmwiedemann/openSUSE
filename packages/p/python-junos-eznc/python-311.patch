@@ -1,8 +1,8 @@
-Index: py-junos-eznc-2.6.7/lib/jnpr/junos/device.py
+Index: py-junos-eznc-2.7.0/lib/jnpr/junos/device.py
 ===================================================================
---- py-junos-eznc-2.6.7.orig/lib/jnpr/junos/device.py
-+++ py-junos-eznc-2.6.7/lib/jnpr/junos/device.py
-@@ -43,6 +43,11 @@ from jnpr.junos.exception import JSONLoa
+--- py-junos-eznc-2.7.0.orig/lib/jnpr/junos/device.py
++++ py-junos-eznc-2.7.0/lib/jnpr/junos/device.py
+@@ -43,6 +43,12 @@ from jnpr.junos.exception import JSONLoa
  from ncclient.operations.third_party.juniper.rpc import ExecuteRpc
  import inspect
  
@@ -11,13 +11,14 @@ Index: py-junos-eznc-2.6.7/lib/jnpr/junos/device.py
 +if not hasattr(inspect, "getargspec"):
 +    inspect.getargspec = inspect.getfullargspec
 +
- if sys.version_info.major >= 3:
++
+ if sys.version_info[0] >= 3:
      NCCLIENT_FILTER_XML = len(inspect.signature(ExecuteRpc.request).parameters) == 3
  else:
-Index: py-junos-eznc-2.6.7/lib/jnpr/junos/utils/scp.py
+Index: py-junos-eznc-2.7.0/lib/jnpr/junos/utils/scp.py
 ===================================================================
---- py-junos-eznc-2.6.7.orig/lib/jnpr/junos/utils/scp.py
-+++ py-junos-eznc-2.6.7/lib/jnpr/junos/utils/scp.py
+--- py-junos-eznc-2.7.0.orig/lib/jnpr/junos/utils/scp.py
++++ py-junos-eznc-2.7.0/lib/jnpr/junos/utils/scp.py
 @@ -1,6 +1,11 @@
  from __future__ import absolute_import
  import inspect
