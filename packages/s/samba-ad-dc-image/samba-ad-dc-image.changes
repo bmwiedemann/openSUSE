@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 12 09:32:21 UTC 2024 - kukuk@suse.com
+
+- Update to version 1707730257.1d8e0ec:
+  * samba-ad-dc: add ldb-tools to container
+
+-------------------------------------------------------------------
 Thu Oct 05 12:13:30 UTC 2023 - kukuk@suse.com
 
 - Update to version 1696506425.096c371:

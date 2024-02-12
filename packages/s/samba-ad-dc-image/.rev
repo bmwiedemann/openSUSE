@@ -15,4 +15,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1117446</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6eeac57692f60c289456b0359a290ef8</srcmd5>
+    <version>unknown</version>
+    <time>1707760391</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1707730257.1d8e0ec:
+  * samba-ad-dc: add ldb-tools to container</comment>
+    <requestid>1146110</requestid>
+  </revision>
 </revisionlist>
