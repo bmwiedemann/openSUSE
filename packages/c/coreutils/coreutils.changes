@@ -2,7 +2,7 @@
 Sun Jan 21 09:50:55 UTC 2024 - Bernhard Voelker <mail@bernhard-voelker.de>
 
 - coreutils-9.4.split-CVE-2024-0684.patch: Add upstream patch:
-  split: do not shrink hold buffer.  (CVE-2024-0684)
+  split: do not shrink hold buffer.  (CVE-2024-0684, bsc#1218982)
 - coreutils-i18n.patch: Update from Fedora to fix build on i686 on GCC14.
 
 -------------------------------------------------------------------
