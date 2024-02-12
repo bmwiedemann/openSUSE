@@ -1,0 +1,112 @@
+commit 61308993bb5d0cab094edbe25abdf7bad9946192
+Author: Atri Bhattacharya <A.Bhattacharya@uliege.be>
+Date:   Mon Feb 5 19:46:21 2024 +0530
+
+    tests: Replace SafeConfigParser with ConfigParser.
+    
+    configparser.SafeConfigParser has been deprecated since python 3.2 and
+    has been dropped entirely from python 3.12. Replace with ConfigParser.
+
+diff --git a/python2/tests/DirectSMBConnectionTests/util.py b/python2/tests/DirectSMBConnectionTests/util.py
+index 12f82af..27f785e 100644
+--- a/python2/tests/DirectSMBConnectionTests/util.py
++++ b/python2/tests/DirectSMBConnectionTests/util.py
+@@ -1,10 +1,10 @@
+ 
+ import os
+-from ConfigParser import SafeConfigParser
++from ConfigParser import ConfigParser
+ 
+ def getConnectionInfo():
+     config_filename = os.path.join(os.path.dirname(__file__), os.path.pardir, 'connection.ini')
+-    cp = SafeConfigParser()
++    cp = ConfigParser()
+     cp.read(config_filename)
+ 
+     info = {
+diff --git a/python2/tests/DirectSMBTwistedTests/util.py b/python2/tests/DirectSMBTwistedTests/util.py
+index 12f82af..27f785e 100644
+--- a/python2/tests/DirectSMBTwistedTests/util.py
++++ b/python2/tests/DirectSMBTwistedTests/util.py
+@@ -1,10 +1,10 @@
+ 
+ import os
+-from ConfigParser import SafeConfigParser
++from ConfigParser import ConfigParser
+ 
+ def getConnectionInfo():
+     config_filename = os.path.join(os.path.dirname(__file__), os.path.pardir, 'connection.ini')
+-    cp = SafeConfigParser()
++    cp = ConfigParser()
+     cp.read(config_filename)
+ 
+     info = {
+diff --git a/python2/tests/SMBConnectionTests/util.py b/python2/tests/SMBConnectionTests/util.py
+index 4f52d11..faca104 100644
+--- a/python2/tests/SMBConnectionTests/util.py
++++ b/python2/tests/SMBConnectionTests/util.py
+@@ -1,10 +1,10 @@
+ 
+ import os
+-from ConfigParser import SafeConfigParser
++from ConfigParser import ConfigParser
+ 
+ def getConnectionInfo():
+     config_filename = os.path.join(os.path.dirname(__file__), os.path.pardir, 'connection.ini')
+-    cp = SafeConfigParser()
++    cp = ConfigParser()
+     cp.read(config_filename)
+ 
+     info = {
+diff --git a/python2/tests/SMBTwistedTests/util.py b/python2/tests/SMBTwistedTests/util.py
+index 1c8fe89..1285084 100644
+--- a/python2/tests/SMBTwistedTests/util.py
++++ b/python2/tests/SMBTwistedTests/util.py
+@@ -1,10 +1,10 @@
+ 
+ import os
+-from ConfigParser import SafeConfigParser
++from ConfigParser import ConfigParser
+ 
+ def getConnectionInfo():
+     config_filename = os.path.join(os.path.dirname(__file__), os.path.pardir, 'connection.ini')
+-    cp = SafeConfigParser()
++    cp = ConfigParser()
+     cp.read(config_filename)
+ 
+     info = {
+diff --git a/python3/tests/DirectSMBConnectionTests/util.py b/python3/tests/DirectSMBConnectionTests/util.py
+index 0e1b180..005752e 100644
+--- a/python3/tests/DirectSMBConnectionTests/util.py
++++ b/python3/tests/DirectSMBConnectionTests/util.py
+@@ -1,10 +1,10 @@
+ 
+ import os
+-from configparser import SafeConfigParser
++from configparser import ConfigParser
+ 
+ def getConnectionInfo():
+     config_filename = os.path.join(os.path.dirname(__file__), os.path.pardir, 'connection.ini')
+-    cp = SafeConfigParser()
++    cp = ConfigParser()
+     cp.read(config_filename)
+ 
+     info = {
+diff --git a/python3/tests/SMBConnectionTests/util.py b/python3/tests/SMBConnectionTests/util.py
+index debf3bb..f63b92b 100644
+--- a/python3/tests/SMBConnectionTests/util.py
++++ b/python3/tests/SMBConnectionTests/util.py
+@@ -1,10 +1,10 @@
+ 
+ import os
+-from configparser import SafeConfigParser
++from configparser import ConfigParser
+ 
+ def getConnectionInfo():
+     config_filename = os.path.join(os.path.dirname(__file__), os.path.pardir, 'connection.ini')
+-    cp = SafeConfigParser()
++    cp = ConfigParser()
+     cp.read(config_filename)
+ 
+     info = {
+

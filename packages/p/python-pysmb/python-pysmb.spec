@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysmb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        Zlib
 Group:          Development/Languages/Python
 URL:            https://miketeo.net/projects/pysmb
 Source:         https://files.pythonhosted.org/packages/source/p/pysmb/pysmb-%{version}.zip
+# PATCH-FIX-UPSTREAM python-pysmb-drop-SafeConfigParser.patch gh#miketeo/pysmb#219 badshah400@gmail.com -- Replace deprecated SafeConfigParser with ConfigParser
+Patch0:         python-pysmb-drop-SafeConfigParser.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
