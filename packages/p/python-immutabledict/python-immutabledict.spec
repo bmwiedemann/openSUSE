@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-immutabledict
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ Version:        4.1.0
 Release:        0
 Summary:        Immutable wrapper around dictionaries (a fork of frozendict)
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/corenting/immutabledict
 Source:         https://files.pythonhosted.org/packages/source/i/immutabledict/immutabledict-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
@@ -72,7 +71,7 @@ The only difference is that the copy() method of immutable takes variable keywor
 
 %check
 %if %{with test}
-%pyunittest discover -v
+%pytest
 %endif
 
 %if !%{with test}
@@ -80,7 +79,7 @@ The only difference is that the copy() method of immutable takes variable keywor
 %license LICENSE
 %doc README.md
 %{python_sitelib}/%{short_name}
-%{python_sitelib}/%{short_name}-%{version}*-info
+%{python_sitelib}/%{short_name}-%{version}.dist-info
 %endif
 
 %changelog

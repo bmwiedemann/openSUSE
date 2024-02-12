@@ -55,4 +55,12 @@
   * Do not store cached hash value when pickling</comment>
     <requestid>1133665</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>2d6f2b86431c2214729af24a9c1756d6</srcmd5>
+    <version>4.1.0</version>
+    <time>1707760370</time>
+    <user>anag+factory</user>
+    <comment>- Use pytest to run the testsuite.</comment>
+    <requestid>1146083</requestid>
+  </revision>
 </revisionlist>
