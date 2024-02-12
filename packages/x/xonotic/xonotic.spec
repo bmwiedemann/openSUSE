@@ -1,7 +1,7 @@
 #
 # spec file for package xonotic
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,6 +48,8 @@ Requires:       xonotic-data = %{version}
 %if %{with systemd}
 BuildRequires:  systemd-rpm-macros
 %endif
+Provides:       group(%{name})
+Provides:       user(%{name})
 
 %description
 Fast-paced first-person shooter that works on Windows, OS X and Linux. The project is geared towards providing addictive arena shooter gameplay which is all spawned and driven by the community itself. Being a direct successor of the Nexuiz project with years of development between them, and it aims to become the best possible open-source FPS (first-person-shooter) of its kind.
