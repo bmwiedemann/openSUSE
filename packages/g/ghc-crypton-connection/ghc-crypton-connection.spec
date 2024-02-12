@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-crypton-connection
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name crypton-connection
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.3.1
+Version:        0.3.2
 Release:        0
 Summary:        Simple and easy network connections API
 License:        BSD-3-Clause

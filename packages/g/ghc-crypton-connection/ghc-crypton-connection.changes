@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb  5 07:09:15 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update crypton-connection to version 0.3.2.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/crypton-connection-0.3.2/src/CHANGELOG.md
+
+-------------------------------------------------------------------
 Tue Jun  6 05:36:29 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Add crypton-connection at version 0.3.1.
