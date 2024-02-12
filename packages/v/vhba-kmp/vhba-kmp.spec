@@ -1,7 +1,7 @@
 #
 # spec file for package vhba-kmp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           vhba-kmp
-Version:        20211218
+Version:        20240202
 Release:        0
 Summary:        Virtual SCSI Host Bus Adapter
 License:        GPL-2.0-or-later
@@ -44,7 +44,6 @@ Linux.
 
 %package KMP
 Summary:        Virtual SCSI Host Bus adapter
-Group:          System/Kernel
 
 %description KMP
 A Linux kernel module implementing a virtual SCSI Host Bus Adapter to
@@ -78,5 +77,6 @@ for flavor in %flavors_to_build; do
 		modules_install
 	popd
 done
+# udev rules are packaged in cdemu-daemon.spec instead
 
 %changelog
