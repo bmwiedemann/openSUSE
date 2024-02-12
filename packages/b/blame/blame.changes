@@ -1,0 +1,127 @@
+-------------------------------------------------------------------
+Mon Feb 12 00:15:50 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
+
+- update to version 1.4 snapshot t20240206:
+  * spelling/documentation fixes
+  * support $RCS_DIR for compatibility with cm_tools utilities.
+  * make test-suite run from the build-directory rather than the installed copy.
+- update to snapshot t20240204:
+  * modify top-level makefile to work around pmake's reordering of rules
+  * fix a build problem with lib/mktime.c on NetBSD i386
+  * modify configure script to permit building with 64-bit time_t on 32-bit system.
+  * require standard C, e.g., c89 and later for compiler
+  * reduce stricter compiler warnings
+- update to snapshot t20240201:
+  * fixes to build/work with MacOS and Solaris 10.
+- update to snapshot t20240130:
+  * build-fixes to work with c11, c23
+  * autoconf updates
+
+-------------------------------------------------------------------
+Tue Nov  8 16:56:32 UTC 2022 - Manfred Schwarb <manfred99@gmx.ch>
+
+- update to snapshot t20221108:
+  * minor cleanup of README and blame.1
+  * add VERSION file
+  * config and install-sh updates 
+
+-------------------------------------------------------------------
+Mon Oct  3 09:05:02 UTC 2022 - Manfred Schwarb <manfred99@gmx.ch>
+
+- update to snapshot t20220129:
+  * configure and makefile updates 
+
+-------------------------------------------------------------------
+Sun May  2 21:41:11 UTC 2021 - Manfred Schwarb <manfred99@gmx.ch>
+
+- as the original source location is dead, switch to the repo
+    https://github.com/ThomasDickey/rcs-blame-snapshots
+- update to version t20210207:
+  * several build and code fixes
+- remove patch format-security.patch, not needed anymore
+
+-------------------------------------------------------------------
+Tue Jun  9 15:01:55 UTC 2020 - Manfred Schwarb <manfred99@gmx.ch>
+
+- add "-fcommon" for GCC 10
+- add %licence tag in spec file.
+- some spec file cleanup
+
+-------------------------------------------------------------------
+Sun Jul 31 15:55:57 CEST 2016 - manfred99@gmx.ch
+- fix for -Werror=format-security
+  * format-security.patch
+
+-------------------------------------------------------------------
+Thu Oct 05 13:00:00 CET 2015 - manfred99@gmx.ch
+- spec-cleaner changes
+- separate changelog file
+
+-------------------------------------------------------------------
+Thu Jul 21 01:16:00 CET 2015 - manfred99@gmx.ch
+- rpm packaging for OBS
+
+-------------------------------------------------------------------
+Thu Nov 23 00:00:00 UTC 2006 - Michael Chapman <foonly@users.sourceforge.net>
+- version 1.3.1-1:
+  - Gnulib updates.
+  - Rebuilt for fc4/fc5/fc6.
+
+-------------------------------------------------------------------
+Fri Dec 02 00:00:00 UTC 2005 - Michael Chapman <foonly@users.sourceforge.net>
+- version 1.3-1:
+  - Minor bugfixes.
+
+-------------------------------------------------------------------
+Thu Jun 30 00:00:00 UTC 2005 - Michael Chapman <foonly@users.sourceforge.net>
+- version 1.2-1:
+  - Minor bugfixes.
+
+-------------------------------------------------------------------
+Thu Nov 24 00:00:00 UTC 2004 - Michael Chapman <foonly@users.sourceforge.net>
+- version 1.1-1:
+  - Rebuilt.
+
+-------------------------------------------------------------------
+Thu Nov 24 00:00:00 UTC 2004 - Michael Chapman <foonly@users.sourceforge.net>
+- version 1.0-3:
+  - Said gcc 3.4 bugs weren't actually bugs.
+
+-------------------------------------------------------------------
+Thu Nov 23 00:00:00 UTC 2004 - Michael Chapman <foonly@users.sourceforge.net>
+- version 1.0-2:
+  - Rebuild RPM with -mtune=i386 to work around gcc 3.4 bugs.
+
+-------------------------------------------------------------------
+Thu Nov 23 00:00:00 UTC 2004 - Michael Chapman <foonly@users.sourceforge.net>
+- version 1.0-1:
+  - Stable release.
+
+-------------------------------------------------------------------
+Thu Nov 20 00:00:00 UTC 2004 - Michael Chapman <foonly@users.sourceforge.net>
+- version 0.3-2:
+  - Fixed bug involving delta texts without empty last lines.
+  - Fixed --help output.
+
+-------------------------------------------------------------------
+Thu Nov 11 00:00:00 UTC 2004 - Michael Chapman <foonly@users.sourceforge.net>
+- version 0.3-1:
+  - Support for $RCSINIT environment variable.
+  - Support for -V and --version to emulate old RCS versions.
+  - Minor bugfixes.
+  - Added manpage.
+
+-------------------------------------------------------------------
+Thu Oct 21 00:00:00 UTC 2004 - Michael Chapman <foonly@users.sourceforge.net>
+- version 0.2-1:
+  - Major speed improvements.
+
+-------------------------------------------------------------------
+Tue Sep 28 00:00:00 UTC 2004 - Michael Chapman <foonly@users.sourceforge.net>
+- version 0.1-2
+  - Fixed build for old Red Hat.
+
+-------------------------------------------------------------------
+Mon Sep 27 00:00:00 UTC 2004 - Michael Chapman <foonly@users.sourceforge.net>
+- version 0.1-1:
+  - Initial RPM release.

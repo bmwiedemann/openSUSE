@@ -1,0 +1,7 @@
+<package name="blame" project="openSUSE:Factory">
+  <title>An RCS file annotator</title>
+  <description>Blame displays the last modification for each line in an RCS file.
+It is the RCS equivalent of CVS's &quot;annotate&quot; command.
+</description>
+  <devel project="devel:tools:scm" package="blame"/>
+</package>

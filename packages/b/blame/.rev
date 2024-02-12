@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>04f8ff348ceaa6f143c69de5dae67a9b</srcmd5>
+    <version>1.4+t20240206</version>
+    <time>1707760396</time>
+    <user>anag+factory</user>
+    <comment>As adding devel projects to the user's installation is discouraged, I'd like to forward
+this package to Factory, although the number of users will be quite limited, I guess...
+
+Blame is the RCS equivalent of CVS's &quot;annotate&quot; command. It is quite a common tool
+for RCS users.</comment>
+    <requestid>1146125</requestid>
+  </revision>
+</revisionlist>
