@@ -34,7 +34,7 @@
 %define qt_major_version 6
 
 Name:           telegram-desktop
-Version:        4.14.13
+Version:        4.14.15
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -221,9 +221,7 @@ The service also provides APIs to independent developers.
 
 %prep
 %setup -q -n tdesktop-%{version}-full
-%patch1 -p1
-%patch3 -p1
-%patch4 -p1
+%autopatch -p1
 mkdir ../Libraries
 
 # If not TW, unpack rnnoise source

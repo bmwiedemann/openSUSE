@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb 12 11:06:01 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Use %%autopatch to make RPM 4.19 happy
+
+-------------------------------------------------------------------
+Sat Feb 10 09:18:51 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.14.15
+  * Fix webview regression on Linux X11. (2nd attempt)
+
+- Updated to version 4.14.14
+  * Fix webview regression on Linux X11.
+
+-------------------------------------------------------------------
 Mon Feb  5 12:58:05 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Updated to version 4.14.13
