@@ -162,4 +162,12 @@ without RUNPATH on libc++.so.
 </comment>
     <requestid>1130466</requestid>
   </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>316d01b2294ae0144d7e564880e18629</srcmd5>
+    <version>15.0.7</version>
+    <time>1707760359</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1146032</requestid>
+  </revision>
 </revisionlist>
