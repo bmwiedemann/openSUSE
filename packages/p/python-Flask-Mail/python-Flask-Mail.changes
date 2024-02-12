@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Feb 11 05:34:56 UTC 2024 - John Vandenberg <jayvdb@gmail.com>
+
+- Update test syntax.
+- Skip two tests that have outdated expected results.
+
+-------------------------------------------------------------------
+Mon Jan 15 17:57:23 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Fri Dec 22 02:04:43 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject and autosetup macros.
+- Stop using greedy globs in %files.
+
+-------------------------------------------------------------------
 Mon Mar 21 09:15:18 UTC 2022 - pgajdos@suse.com
 
 - use %pyunittest rpm macro
