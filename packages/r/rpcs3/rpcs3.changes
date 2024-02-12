@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Mon Feb 05 11:06:46 UTC 2024 - i@guoyunhe.me
+
+- Update to version 0.0.30~git20240205:
+  * RPCN 1.1
+
+-------------------------------------------------------------------
+Sun Feb 04 15:48:37 UTC 2024 - i@guoyunhe.me
+
+- Update to version 0.0.30~git20240203:
+  * cellGem: Allow to use multiple controllers as fake PS-Move
+  * sceNp: fix atomic type
+  * sceNp: correct type for data attachment
+  * sceNp: don't preserve messages in sceNpBasicRecvMessageAttachment
+  * overlays: ask for user confirmation before sending an invite
+  * sceNp: implement sceNpBasicAbortGui
+  * sceNp: Implement sceNpBasicRecvMessageAttachment
+  * np: fix signed/unsigned warning
+  * overlays: add subject and body to recvmessage dialog
+  * Review fixes
+  * Add player history
+  * Qt: Show NP ID in rpcn dialogs
+  * rsx/glsl: use const for left/right
+  * rsx/glsl: Fix typo
+  * rsx: Improvements to the video out passes
+  * gl: Vectorize GL_TEMP_IMAGE_SLOT expression
+  * vk: Allow indexed lookup for sampler and IA binding points in overlay passes
+  * glsl: use fragCoord to decide interlacing
+  * glsl: use textureSize instead of height
+  * glsl: use const in for params
+  * glsl: move anaglpyh to separate functions
+  * vk/gl: add amber-blue anaglyph (ColorCode 3D)
+  * vk/gl: cleanup formatting in glsl, move some common magic numbers to variables
+  * vk/gl: add interlaced 3D mode
+  * vk/gl: add more anaglyph 3D modes
+  * vk/gl: unite video_out_calibration_pass fragment shader to new glsl
+  * gl: add missing else in calibration pass fragment shader
+  * Add update_helper.sh to VS filters
+  * overlays: clean up includes
+  * sceNp: decrease some log levels from todo to warning
+  * overlays: use timestamp for fade animations
+  * Add UI to sceNpBasicSendMessageAttachment and sceNpBasicAddFriend
+  * sceNp: silence some errors
+  * scnNp: add ppu wait before opening blocking dialogs
+  * sceNp: add more error checks
+  * overlays: remove separators from send/recv dialogs
+  * overlays: implement native sendmessage dialog
+  * overlays: implement native recvmessage dialog
+  * Name some threads
+  * rsx: Allow native UI render even when we have pending draw calls if FIFO queue is empty.
+  * Terminate RPCN connection cleanly
+  * Don't search games when the dialog is cancelled
+  * Fix sceNpCommerce2 init
+  * sceNpCommerce: add init checks
+  * sceNpCommerce2: add some error checks
+  * Fix Apple clang
+  * Arm version of trigger_write_page_fault
+  * FreeBSD workaround for libusb
+  * Return no file to TSS apis
+  * Mini sceNpCommerce2Init fix
+  * VFS: Fix some potential .back() segfaults
+  * sys_usbd: add libusb log callback
+
+-------------------------------------------------------------------
 Thu Jan 25 14:23:06 UTC 2024 - i@guoyunhe.me
 
 - Update to version 0.0.30~git20240125:

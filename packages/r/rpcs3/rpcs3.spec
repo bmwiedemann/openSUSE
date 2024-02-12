@@ -17,7 +17,7 @@
 
 
 Name:           rpcs3
-Version:        0.0.30~git20240125
+Version:        0.0.30~git20240205
 Release:        0
 Summary:        PS3 emulator/debugger
 License:        GPL-2.0-only
@@ -87,8 +87,8 @@ BuildRequires:  pkgconfig(Qt6Widgets)
 
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
-Requires(postun):hicolor-icon-theme
-Requires(postun):update-desktop-files
+Requires(postun): hicolor-icon-theme
+Requires(postun): update-desktop-files
 ExclusiveArch:  x86_64
 
 %description
