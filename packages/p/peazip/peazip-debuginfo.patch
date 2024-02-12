@@ -1,21 +1,8 @@
-Index: peazip-9.6.0.src/dev/project_peach.lpi
+Index: peazip-9.7.0.src/dev/project_pea.lpi
 ===================================================================
---- peazip-9.6.0.src.orig/dev/project_peach.lpi
-+++ peazip-9.6.0.src/dev/project_peach.lpi
-@@ -1639,7 +1639,7 @@
-     </CodeGeneration>
-     <Linking>
-       <Debugging>
--        <GenerateDebugInfo Value="False"/>
-+        <GenerateDebugInfo Value="True"/>
-       </Debugging>
-       <Options>
-         <PassLinkerOptions Value="True"/>
-Index: peazip-9.6.0.src/dev/project_pea.lpi
-===================================================================
---- peazip-9.6.0.src.orig/dev/project_pea.lpi
-+++ peazip-9.6.0.src/dev/project_pea.lpi
-@@ -552,7 +552,7 @@
+--- peazip-9.7.0.src.orig/dev/project_pea.lpi
++++ peazip-9.7.0.src/dev/project_pea.lpi
+@@ -551,7 +551,7 @@
      </CodeGeneration>
      <Linking>
        <Debugging>
@@ -24,3 +11,16 @@ Index: peazip-9.6.0.src/dev/project_pea.lpi
          <DebugInfoType Value="dsDwarf3"/>
        </Debugging>
        <Options>
+Index: peazip-9.7.0.src/dev/project_peach.lpi
+===================================================================
+--- peazip-9.7.0.src.orig/dev/project_peach.lpi
++++ peazip-9.7.0.src/dev/project_peach.lpi
+@@ -1642,7 +1642,7 @@
+     </CodeGeneration>
+     <Linking>
+       <Debugging>
+-        <GenerateDebugInfo Value="False"/>
++        <GenerateDebugInfo Value="True"/>
+       </Debugging>
+       <Options>
+         <PassLinkerOptions Value="True"/>

@@ -19,7 +19,7 @@
 %define         _peazipinstalldir %{_libdir}/peazip
 
 Name:           peazip
-Version:        9.6.0
+Version:        9.7.0
 Release:        0
 Summary:        Graphical file archiver
 License:        LGPL-3.0-only
@@ -30,13 +30,11 @@ Source1:        altconf.txt
 Source2:        https://github.com/peazip/PeaZip/releases/download/%{version}/peazip_help.pdf
 Patch0:         peazip-desktop.patch
 # PATCH-FIX-OPENSUSE peazip-build_PIE.patch -- aloisio@gmx.com
-Patch2:         peazip-build_PIE.patch
+Patch1:         peazip-build_PIE.patch
 # PATCH-FIX-OPENSUSE peazip-help_path.patch set correct path for the pdf guide -- aloisio@gmx.com
-Patch3:         peazip-help_path.patch
+Patch2:         peazip-help_path.patch
 # PATCH-FEATURE-OPENSUSE peazip-debuginfo.patch
-Patch4:         peazip-debuginfo.patch
-# PATCH-FIX-UPSTREAM peazip-lazfileutils.patch fix build with Lazarus 3.x (compatible with 2.x too)
-Patch5:         peazip-lazfileutils.patch
+Patch3:         peazip-debuginfo.patch
 BuildRequires:  arc
 BuildRequires:  brotli
 BuildRequires:  dos2unix
@@ -86,7 +84,7 @@ Group:          Productivity/Archiving/Compression
 Requires:       peazip
 %if 0%{?suse_version} < 1500
 Requires(post): update-desktop-files
-Requires(postun):update-desktop-files
+Requires(postun): update-desktop-files
 %endif
 BuildArch:      noarch
 
@@ -103,6 +101,16 @@ cp %{SOURCE2} peazip_help.pdf
 
 %build
 cd dev
+# Add additional packages to vanilla Lazarus
+lazbuild \
+	--lazarusdir=%{_libdir}/lazarus \
+%ifarch x86_64
+	--cpu=x86_64 \
+%endif
+	--widgetset=qt5 \
+        --max-process-count=1 \
+	-B --add-package metadarkstyle/metadarkstyle.lpk
+# Build Peazip
 lazbuild \
 	--lazarusdir=%{_libdir}/lazarus \
 %ifarch x86_64
