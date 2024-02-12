@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  4 16:26:32 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update random to version 1.2.1.2.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Sat Sep 30 20:57:11 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update random to version 1.2.1.1 revision 1.
