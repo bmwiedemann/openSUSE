@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Feb  8 18:22:13 UTC 2024 - Jan Baier <jbaier@suse.com>
+
+- update to 1.4:
+  * Added the config option drun-disable_prime to disable prime GPU offloading
+  * Updated meson command in readme
+  * Added wezterm to the default terminal list and moved termite to the end of the sane terminal section since it's now deprecated
+  * Updated the man pages with the new terminal order
+  * Refactor key mapping modifier logic
+  * Add return codes for custom keys
+  * on_exit_set_custom_key_return_code() now flushes stdio, this fixes #197
+  * Fixed #193. drun mode now respects Hidden
+  * Add `#expander` selector so expanded actions can be themed
+  * Rename `#expander` to `#expander-box`
+  * Added documentation for key_custom_n
+  * Fixed bug reported in https://github.com/swaywm/sway/issues/7915
+  * Fixed malloc for pre_display_exec
+  * Forgot to cleanup zombie processes
+  * Fixed closing the file handle when pre_display_exec=true
+  * Added pre_display_exec which allows pre_display_cmd to be directly executed with fork/exec instead of through the shell
+  * Fixed segfault when running non shell safe inputs with --pre-display-cmd and --allow-images
+  * Added the drun-print_desktop_file option
+  * Fixed weird tabbing behavior
+  * Fixed indentation
+  * Make sure that the first calculation of percent size is done when the window is visible
+  * Add documentation for `#expander-box`
+
+-------------------------------------------------------------------
 Thu Nov 24 16:53:16 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.3:
