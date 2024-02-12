@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Feb 04 13:50:31 UTC 2024 - i@guoyunhe.me
+
+- Update to version 1.7.5540~git20240203:
+  * DEV9: Fix HDD Response when no HDD is connected
+  * GameDB: Various fixes
+  * Qt: Add mention zso formatted roms
+  * Qt: Update Base Translation
+  * translations: Syncing Crowdin translations (#10759)
+  * GS/HW: Clear draw list when replacing with single sprite
+  * GameDB: Add MipMap to Arc the Lad games for Depth of Field
+  * GS/HW: Allow palette lookups from depth and deswizzle manual deswizzles
+  * Debugger: Adds editing register values via double click
+  * Qt/BPM: Minor icon tweaks
+  * InputRec: Stop input recording on VM shutdown
+  * Achievements: Handle fake memory map
+  * GS: Check for D3D Mapping Layers and disable Vulkan if present
+  * GS/Vulkan: Fix potential race between submit and main thread
+  * GS/Capture: Stop capture on VM shutdown
+  * ImGuiOverlays: Use white font for recording time
+  * GS/Capture: Show video timestamp instead of wall time
+  * Qt: Update Base Translation
+  * Qt: Deprecate per-game WS/NI toggles in favor of Patches
+  * USB: Fix buffer copies in EyeToy
+  * GameDB: Add mipmap full with ps2 trilinear to SWAT Global Strike Team.
+  * GameDB: Add gshwfixes to Band Hero.
+  * GSDumpReplayer: Fix UI not responded to messages when replaying dumps
+  * USB: Fix possible buffer overflow in webcam
+  * USB: Don't reset configuration when saving state
+  * USB: Audio devices don't need port numbers
+  * USB: Fix incorrect config keys for usb-headset
+  * USB: Rewrite RingBuffer class
+  * Qt: Update Base Translation
+  * Qt: Fix more compiler warnings.
+  * Counters: Move input poll to after throttle
+  * GameDB: Add Merge Targets to Shadow Hearts
+  * GS/HW: Kill old source using target if rect is outside target surface
+
+-------------------------------------------------------------------
 Fri Jan 26 12:10:01 UTC 2024 - i@guoyunhe.me
 
 - Update to version 1.7.5518~git20240126:
