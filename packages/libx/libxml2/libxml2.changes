@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 10 10:56:46 UTC 2024 - David Anes <david.anes@suse.com>
+
+- Security fix (CVE-2024-25062, bsc#1219576) use-after-free in XMLReader
+  * Added libxml2-CVE-2024-25062.patch 
+
+-------------------------------------------------------------------
 Thu Nov 16 12:44:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.11.6:

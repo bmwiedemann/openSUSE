@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package libxml2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,6 +51,9 @@ Patch3:         python312.patch
 # PATCH-FIX-UPSTREAM CVE-2023-45322 bsc#1216129
 # https://gitlab.gnome.org/GNOME/libxml2/-/commit/d39f78069dff496ec865c73aa44d7110e429bce9
 Patch4:         libxml2-CVE-2023-45322.patch
+# PATCH-FIX-UPSTREAM use-after-free in XMLReader bsc#1219576 david.anes@suse.com
+# https://gitlab.gnome.org/GNOME/libxml2/-/commit/1a66b176055d25ee635bf328c7b35b381db0b71d
+Patch5:         libxml2-CVE-2024-25062.patch
 #
 ### -- openSUSE patches range from 1000 to 1999 -- ###
 # PATCH-FIX-OPENSUSE

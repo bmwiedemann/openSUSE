@@ -1068,4 +1068,13 @@
     <comment></comment>
     <requestid>1126869</requestid>
   </revision>
+  <revision rev="123" vrev="2">
+    <srcmd5>e10af9565fb6d9de1a0e2981ee5ca43e</srcmd5>
+    <version>2.11.6</version>
+    <time>1707760166</time>
+    <user>anag+factory</user>
+    <comment>- Security fix (CVE-2024-25062, bsc#1219576) use-after-free in XMLReader
+  * Added libxml2-CVE-2024-25062.patch</comment>
+    <requestid>1145598</requestid>
+  </revision>
 </revisionlist>
