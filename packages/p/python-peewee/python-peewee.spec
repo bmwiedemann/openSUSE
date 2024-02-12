@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-peewee
-Version:        3.17.0
+Version:        3.17.1
 Release:        0
 Summary:        An expressive ORM that supports multiple SQL backends
 License:        BSD-3-Clause
@@ -40,7 +40,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(sqlite3)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -74,7 +74,7 @@ sed -i -e '1{\@^#! *%{_bindir}.*python@d}' %{buildroot}%{$python_sitearch}/pwiz.
 %license LICENSE
 %doc CHANGELOG.md README.rst TODO.rst
 %python_alternative %{_bindir}/pwiz.py
-%{python_sitearch}/peewee-%{version}*-info
+%{python_sitearch}/peewee-%{version}.dist-info
 %{python_sitearch}/peewee.py
 %{python_sitearch}/pwiz.py
 %{python_sitearch}/playhouse

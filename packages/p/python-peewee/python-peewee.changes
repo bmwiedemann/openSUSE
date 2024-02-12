@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Feb 12 02:57:29 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.17.1:
+  * Add bitwise and other helper methods to `BigBitField`, #2802.
+  * Add `add_column_default` and `drop_column_default` migrator methods for
+    specifying a server-side default value, #2803.
+  * The new `star` attribute was causing issues for users who had a field named
+    star on their models. This attribute is now renamed to `__star__`. #2796.
+  * Fix compatibility issues with 3.12 related to utcnow() deprecation.
+  * Add stricter locking on connection pool to prevent race conditions.
+  * Add adapters and converters to Sqlite to replace ones deprecated in 3.12.
+  * Fix bug in `model_to_dict()` when only aliases are present.
+  * Fix version check for Sqlite native drop column support.
+  * Do not specify a `reconnect=` argument to `ping()` if using MySQL 8.x.
+
+-------------------------------------------------------------------
 Tue Jan  9 15:18:54 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Remove unneeded BuildRequires PyMySQL and psycopg2. I checked
