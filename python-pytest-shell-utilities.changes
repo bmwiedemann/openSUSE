@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  7 09:00:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- avoid cycle with pytest-skip-markers by separating
+  test into a :test buildflavor
+- remove :test flavor for now to allow bootstrap in Tumbleweed
+
+-------------------------------------------------------------------
 Wed Jan 24 13:39:40 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

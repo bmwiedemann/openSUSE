@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-shell-utilities
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,16 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %{?sle15_python_module_pythons}
-Name:           python-pytest-shell-utilities
+Name:           python-pytest-shell-utilities%{psuffix}
 Version:        1.8.0
 Release:        0
 Summary:        Pytest plugin to simplify running shell commands against the system
@@ -26,19 +34,21 @@ URL:            https://github.com/saltstack/pytest-shell-utilities
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-shell-utilities/pytest-shell-utilities-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 50.3.2}
-BuildRequires:  %{python_module setuptools-declarative-requirements}
 BuildRequires:  %{python_module setuptools_scm >= 3.4}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
+%if %{with test}
 BuildRequires:  %{python_module attrs >= 22.1.0}
 BuildRequires:  %{python_module psutil >= 5.0.0}
 BuildRequires:  %{python_module pytest >= 7.3.0}
 BuildRequires:  %{python_module pytest-helpers-namespace}
+BuildRequires:  %{python_module pytest-shell-utilities = %{version}}
 BuildRequires:  %{python_module pytest-skip-markers}
 BuildRequires:  %{python_module pytest-subtests}
 BuildRequires:  %{python_module typing-extensions}
+%endif
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-attrs >= 22.1.0
@@ -59,17 +69,21 @@ Pytest plugin to simplify running shell commands against the system
 %build
 %pyproject_wheel
 
+%if !%{with test}
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-
-%check
-%pytest
 
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
 %license LICENSE
 %{python_sitelib}/pytestshellutils
 %{python_sitelib}/pytest_shell_utilities-%{version}*-info
+
+%else
+
+%check
+%pytest
+%endif
 
 %changelog

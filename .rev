@@ -33,4 +33,14 @@
     <comment></comment>
     <requestid>1141477</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>fed230011b70977608214b3fdffe3577</srcmd5>
+    <version>1.8.0</version>
+    <time>1707760308</time>
+    <user>anag+factory</user>
+    <comment>- avoid cycle with pytest-skip-markers by separating
+  test into a :test buildflavor
+- remove :test flavor for now to allow bootstrap in Tumbleweed</comment>
+    <requestid>1144837</requestid>
+  </revision>
 </revisionlist>
