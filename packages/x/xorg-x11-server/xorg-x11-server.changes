@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Feb 12 09:58:50 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Release 21.1.11 also covers fixes for security issue CVE-2022-46340
+  and bug numbers bsc#1205874, bsc#1217765
+
+-------------------------------------------------------------------
+Sun Feb 11 10:02:32 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Release 21.1.11 covers fixes for the following bug numbers, which
+  are not mentioned in this changelog before: bsc#1218845,
+  bsc#1218846, bsc#1216261, bsc#1216133, bsc#1216135
+
+-------------------------------------------------------------------
+Sun Feb 11 09:41:05 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Release 21.1.11 supersedes the following patches still used with
+  xorg-x11-server 21.1.4 on sle15-sp5/Leap 15.5 and not mentioned in
+  this changelog as superseded before:
+  * U_Xext-fix-invalid-event-type-mask-in-XTestSwapFakeInp.patch
+  * U_bsc1216133-mi-reset-the-PointerWindows-reference-on-screen-swit.patch
+  * U_bsc1216135-Xi-randr-fix-handling-of-PropModeAppend-Prepend.patch
+  * U_bsc1216261-0001-mi-fix-CloseScreen-initialization-order.patch
+  * U_bsc1216261-0002-fb-properly-wrap-unwrap-CloseScreen.patch
+  * U_bsc1216261-0003-dix-always-initialize-pScreen-CloseScreen.patch
+  * bsc1218582-0001-dix-allocate-enough-space-for-logical-button-maps.patch
+  * bsc1218583-0001-dix-Allocate-sufficient-xEvents-for-our-DeviceStateN.patch
+  * bsc1218583-0002-dix-fix-DeviceStateNotify-event-calculation.patch
+  * bsc1218583-0003-Xi-when-creating-a-new-ButtonClass-set-the-number-of.patch
+  * bsc1218584-0001-Xi-flush-hierarchy-events-after-adding-removing-mast.patch
+  * bsc1218585-0001-Xi-do-not-keep-linked-list-pointer-during-recursion.patch
+  * bsc1218585-0002-dix-when-disabling-a-master-float-disabled-slaved-de.patch
+  * U_bsc1218845-glx-Call-XACE-hooks-on-the-GLX-buffer.patch
+  * U_bsc1218846-ephyr-xwayland-Use-the-proper-private-key-for-cursor.patch
+
+-------------------------------------------------------------------
+Fri Feb  9 20:09:22 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- xserver sources of this release fixes segfault in Xvnc (bsc#1219311)
+
+-------------------------------------------------------------------
 Mon Jan 29 13:03:52 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - no longer (build-)require obsolete Xprint/XprintUtil 
