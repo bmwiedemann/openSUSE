@@ -1,7 +1,7 @@
 #
 # spec file for package pdfquirk
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2007-2011 Klaas Freitag <freitag@kde.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,13 +26,12 @@ Group:          Productivity/Office/Other
 URL:            https://dragotin.github.io/quirksite
 Source0:        https://github.com/dragotin/pdfquirk/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        pdfquirk_es.ts
-
 BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(Qt5Core) >= 5.5.0
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Widgets)
 Requires:       ImageMagick
 Recommends:     deskew
 Recommends:     sane-backends
@@ -48,11 +47,11 @@ cp %{SOURCE1} resources/
 
 %build
 
-%cmake
-%cmake_build
+%cmake_qt6 -DUSE_QT6=yes
+%{qt6_build}
 
 %install
-%cmake_install
+%{qt6_install}
 
 %suse_update_desktop_file -r de.volle-kraft-voraus.pdfquirk Graphics Scanning
 

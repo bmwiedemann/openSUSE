@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb 11 19:54:28 UTC 2024 - Klaas Freitag <opensuse@freisturz.de>
+
+- Build with Qt6 and proper build macros in the rpm 
+
+-------------------------------------------------------------------
 Wed Jan  5 08:21:50 UTC 2022 - Klaas Freitag <opensuse@freisturz.de>
 
 - Fix Requires: Does not need img2pdf any more, but ImageMagick 
