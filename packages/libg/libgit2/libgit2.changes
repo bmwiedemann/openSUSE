@@ -2,7 +2,7 @@
 Wed Feb  7 19:51:57 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.7.2:
-  * CVE-2024-24574: infinite loop condition given specially crafted
+  * CVE-2024-24575: infinite loop condition given specially crafted
     inputs (boo#1219664)
   * CVE-2024-24577: arbitrary code execution due to heap corruption
     in git_index_add (boo#1219660)
