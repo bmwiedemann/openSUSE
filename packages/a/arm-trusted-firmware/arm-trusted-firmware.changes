@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 12 13:39:21 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable imx8mq is it fails to build due to size constraints
+
+-------------------------------------------------------------------
 Thu Nov 23 13:19:32 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 2.10.0:
