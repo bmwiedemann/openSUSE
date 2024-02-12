@@ -1,7 +1,7 @@
 #
 # spec file for package newsflash
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,37 +15,38 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define         _lto_cflags %{nil}
 Name:           newsflash
-Version:        3.0.2
+Version:        3.1.1
 Release:        0
 Summary:        The spiritual successor to FeedReader
 License:        GPL-3.0-only
 URL:            https://gitlab.com/news-flash/news_flash_gtk
-Source0:        news_flash_gtk-%{version}.tar
+Source0:        news_flash_gtk-%{version}.tar.zst
 Source1:        vendor.tar.zst
-BuildRequires:  glib-networking
-BuildRequires:  cargo-packaging
-BuildRequires:  meson
-BuildRequires:  desktop-file-utils
-BuildRequires:  xdg-utils
-BuildRequires:  blueprint-compiler
-BuildRequires:  python3-gobject
 BuildRequires:  appstream-glib
-BuildRequires:  webkit2gtk4-devel
-BuildRequires:  sqlite3-devel
-BuildRequires:  gettext-tools
+BuildRequires:  blueprint-compiler
+BuildRequires:  cargo-packaging
+BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
+BuildRequires:  gettext-tools
+BuildRequires:  glib-networking
+BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  python3-gobject
+BuildRequires:  sqlite3-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  webkit2gtk4-devel
+BuildRequires:  xdg-utils
+BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(webkitgtk-6.0)
-BuildRequires:  pkgconfig(libxml-2.0)
 
 %description
 NewsFlash is a program designed to complement an already existing web-based RSS reader account.
