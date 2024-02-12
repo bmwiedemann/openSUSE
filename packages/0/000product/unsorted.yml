@@ -1389,6 +1389,7 @@ unsorted:
   - bladeRF 
   - bladeRF-devel 
   - bladeRF-udev 
+  - blame 
   - blanket 
   - blanket-lang 
   - blas-devel 
@@ -9259,7 +9260,6 @@ unsorted:
   - kColorPicker-Qt5-devel 
   - kColorPicker-Qt6-devel 
   - kImageAnnotator-Qt5-devel 
-  - kImageAnnotator-Qt6-0 
   - kImageAnnotator-Qt6-devel 
   - kaccounts-integration-devel 
   - kactivities-stats-devel 
@@ -13269,6 +13269,7 @@ unsorted:
   - libjxl0_9-32bit 
   - libjxrglue0 
   - libkColorPicker-Qt6-0 
+  - libkImageAnnotator-Qt6-0 
   - libkadm5clnt7 
   - libkadm5srv8 
   - libkafs0 
@@ -14320,6 +14321,7 @@ unsorted:
   - libparlatype-devel 
   - libparlatype7 
   - libparpack2-openmpi4 
+  - libparpack2-openmpi5 
   - libparquet1400 
   - libparserutils-devel 
   - libparserutils0 
@@ -14505,7 +14507,7 @@ unsorted:
   - libpplite4 
   - libpq5-32bit 
   - libpqos-devel 
-  - libpqos4 
+  - libpqos5 
   - libpqxx-6_4 
   - libpqxx-devel 
   - libprelude-devel 
@@ -18629,13 +18631,10 @@ unsorted:
   - netcomponents 
   - netcomponents-javadoc 
   - netconsole-tools 
-  - netdata 
   - netdata-plugin-apps 
   - netdata-plugin-chartsd 
-  - netdata-plugin-cups 
   - netdata-plugin-debugfs 
   - netdata-plugin-freeipmi 
-  - netdata-plugin-go 
   - netdata-plugin-nfacct 
   - netdata-plugin-perf 
   - netdata-plugin-pythond 
@@ -19839,6 +19838,7 @@ unsorted:
   - parlatype-lang 
   - parole-devel 
   - parpack-openmpi4-devel 
+  - parpack-openmpi5-devel 
   - parsec 
   - parsec-tool 
   - partclone 
@@ -26587,7 +26587,6 @@ unsorted:
   - python311-PyMeta3 
   - python311-PyMsgBox 
   - python311-PyMuPDF 
-  - python311-PyMySQL 
   - python311-PyNaCl 
   - python311-PyNamecheap 
   - python311-PyOgg 
@@ -28707,7 +28706,6 @@ unsorted:
   - python311-psycopg 
   - python311-psycopg-c 
   - python311-psycopg-pool 
-  - python311-psycopg2 
   - python311-psycopg2cffi 
   - python311-psygnal 
   - python311-ptpython 
@@ -29910,12 +29908,15 @@ unsorted:
   - python312-Flask-HTMLmin 
   - python312-Flask-HTTPAuth 
   - python312-Flask-Login 
+  - python312-Flask-Mail 
   - python312-Flask-Mailman 
+  - python312-Flask-Migrate 
   - python312-Flask-Paranoid 
   - python312-Flask-Principal 
   - python312-Flask-RESTful 
   - python312-Flask-RSTPages 
   - python312-Flask-SQLAlchemy 
+  - python312-Flask-SocketIO 
   - python312-Flask-Testing 
   - python312-Flask-WTF 
   - python312-Flask-doc 
@@ -30240,6 +30241,7 @@ unsorted:
   - python312-autoflake 
   - python312-autopage 
   - python312-autopep8 
+  - python312-autoray 
   - python312-autoupgrade-ng 
   - python312-av 
   - python312-avahi 
@@ -31482,6 +31484,7 @@ unsorted:
   - python312-jsonxs 
   - python312-junit-xml 
   - python312-junitxml 
+  - python312-junos-eznc 
   - python312-jupyter 
   - python312-jupyter-client 
   - python312-jupyter-client7 
@@ -31890,6 +31893,7 @@ unsorted:
   - python312-opentelemetry-test-utils 
   - python312-opentracing 
   - python312-openwrt-luci-rpc 
+  - python312-opt-einsum 
   - python312-orange-canvas-core 
   - python312-ordered-namespace 
   - python312-ordered-set 
@@ -32293,6 +32297,7 @@ unsorted:
   - python312-pyserial 
   - python312-pyshark 
   - python312-pyshp 
+  - python312-pysmb 
   - python312-pysmbc 
   - python312-pysndfile 
   - python312-pysnmpcrypto 
@@ -32650,6 +32655,7 @@ unsorted:
   - python312-runthis-sphinxext 
   - python312-s3transfer 
   - python312-sadisplay 
+  - python312-safe-netrc 
   - python312-sane 
   - python312-sanlock 
   - python312-sarge 
@@ -33113,6 +33119,7 @@ unsorted:
   - python312-xapian-haystack 
   - python312-xapp 
   - python312-xarray 
+  - python312-xarray-einstats 
   - python312-xattr 
   - python312-xcffib 
   - python312-xdg 
@@ -37500,6 +37507,7 @@ unsorted:
   - rclone-zsh-completion 
   - rcm 
   - rcs 
+  - rcshist 
   - rdiff 
   - rdiff-backup 
   - rdma-core-devel 
