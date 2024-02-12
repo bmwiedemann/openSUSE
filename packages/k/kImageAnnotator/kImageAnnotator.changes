@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb 11 00:59:56 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Fix build on Leap. The Qt6 packaging macros set the minimum
+  compiler version
+- Change %post/%postun to %ldconfig_scriptlets
+- Rename the library to libkImageAnnotator-Qt$ver-0 to fix
+  rpmlint errors on Leap
+
+-------------------------------------------------------------------
 Sat Feb  3 20:21:46 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Redownload tarball, the tag got force pushed
