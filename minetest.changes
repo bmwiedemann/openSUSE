@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb  3 14:58:24 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Add explicit user and group provides to minetestserver package
+  to fix installation issues
+
+-------------------------------------------------------------------
 Thu Dec 21 07:29:27 UTC 2023 - Dmitry Markov <werwolf131313@gmail.com>
 
 - Change gameid set (boo#1218223)
