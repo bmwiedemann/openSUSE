@@ -770,4 +770,18 @@ M email.patch
   * mcelog: Add second model number for Arrowlake</comment>
     <requestid>1127693</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>f4e9a55def41239b24f60a7bcc1c5396</srcmd5>
+    <version>197</version>
+    <time>1707760307</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 197:
+  * mcelog: Add kernel CONFIG message if /dev/mcelog isn't found
+  * address comments
+  * update mcelog manual
+  * add --ping option to mcelog client
+  * assign freed pointers to NULL pointer
+  * mcelog: Fix two parsing issues</comment>
+    <requestid>1146084</requestid>
+  </revision>
 </revisionlist>

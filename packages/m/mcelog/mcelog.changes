@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 12 06:23:11 UTC 2024 - trenn@suse.de
+
+- Update to version 197:
+  * mcelog: Add kernel CONFIG message if /dev/mcelog isn't found
+  * address comments
+  * update mcelog manual
+  * add --ping option to mcelog client
+  * assign freed pointers to NULL pointer
+  * mcelog: Fix two parsing issues
+
+-------------------------------------------------------------------
 Mon Nov 20 12:01:41 UTC 2023 - trenn@suse.de
 
 - Update to version 196:
