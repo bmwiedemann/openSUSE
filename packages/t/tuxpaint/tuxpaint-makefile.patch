@@ -1,7 +1,7 @@
-Index: tuxpaint-0.9.31/Makefile
+Index: tuxpaint-0.9.32/Makefile
 ===================================================================
---- tuxpaint-0.9.31.orig/Makefile
-+++ tuxpaint-0.9.31/Makefile
+--- tuxpaint-0.9.32.orig/Makefile
++++ tuxpaint-0.9.32/Makefile
 @@ -82,6 +82,7 @@ endif
  #   <HOSTROOT>/lib            Library files.
  #   <HOSTROOT>/lib/pkgconfig  *.pc files.
@@ -10,7 +10,7 @@ Index: tuxpaint-0.9.31/Makefile
  ifdef HOST
    ifdef HOSTROOT
      ifeq ($(wildcard $(HOSTROOT)/.),)
-@@ -799,9 +800,9 @@ uninstall:	uninstall-i18n
+@@ -784,9 +785,9 @@ uninstall:	uninstall-i18n
  	  xdg-desktop-menu uninstall tux4kids-tuxpaint.desktop ; \
  	  xdg-desktop-menu uninstall tux4kids-tuxpaint-fullscreen.desktop ; \
  	fi
@@ -23,7 +23,7 @@ Index: tuxpaint-0.9.31/Makefile
  
  # Install default config file:
  .PHONY: install-default-config
-@@ -999,7 +1000,7 @@ install-pkgxdg: src/tuxpaint.desktop src
+@@ -984,7 +985,7 @@ install-pkgxdg: src/tuxpaint.desktop src
  .PHONY: install-xdg
  install-xdg: src/tuxpaint.desktop src/tuxpaint-fullscreen.desktop src/org.tuxpaint.Tuxpaint.appdata.xml
  	@echo ""
@@ -32,7 +32,7 @@ Index: tuxpaint-0.9.31/Makefile
  	@if [ "x$(shell which xdg-icon-resource)" != "x" ]; then \
  	  xdg-icon-resource install --size 192 data/images/icon192x192.png tux4kids-tuxpaint ; \
  	  xdg-icon-resource install --size 128 data/images/icon128x128.png tux4kids-tuxpaint ; \
-@@ -1026,9 +1027,9 @@ install-xdg: src/tuxpaint.desktop src/tu
+@@ -1011,9 +1012,9 @@ install-xdg: src/tuxpaint.desktop src/tu
  	  xdg-desktop-menu install tux4kids-tuxpaint-fullscreen.desktop ; \
  	  rm ./tux4kids-tuxpaint-fullscreen.desktop ; \
  	fi

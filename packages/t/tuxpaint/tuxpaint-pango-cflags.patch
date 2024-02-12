@@ -1,8 +1,8 @@
-Index: tuxpaint-0.9.31/Makefile
+Index: tuxpaint-0.9.32/Makefile
 ===================================================================
---- tuxpaint-0.9.31.orig/Makefile
-+++ tuxpaint-0.9.31/Makefile
-@@ -1217,7 +1217,7 @@ tuxpaint:	obj/tuxpaint.o obj/i18n.o obj/
+--- tuxpaint-0.9.32.orig/Makefile
++++ tuxpaint-0.9.32/Makefile
+@@ -1203,7 +1203,7 @@ tuxpaint:	obj/tuxpaint.o obj/i18n.o obj/
  		$(ARCH_LIBS)
  	@echo
  	@echo "...Linking Tux Paint..."
@@ -11,7 +11,7 @@ Index: tuxpaint-0.9.31/Makefile
  		-o tuxpaint $^ \
  		$(SDL_LIBS) $(SVG_LIB) $(ARCH_LINKS) -lm
  	@$(RAD_CMD)
-@@ -1253,7 +1253,7 @@ obj/tuxpaint.o:	src/tuxpaint.c \
+@@ -1239,7 +1239,7 @@ obj/tuxpaint.o:	src/tuxpaint.c \
  		$(ARCH_HEADERS)
  	@echo
  	@echo "...Compiling Tux Paint from source..."
@@ -20,7 +20,7 @@ Index: tuxpaint-0.9.31/Makefile
  		-c src/tuxpaint.c -o obj/tuxpaint.o
  
  # Broke gperf|sed up into two steps so that it will fail properly if gperf is not installed; there's probably a more elegant solution -bjk 2009.11.20
-@@ -1300,14 +1300,14 @@ obj/fonts.o:	src/fonts.c src/fonts.h src
+@@ -1286,14 +1286,14 @@ obj/fonts.o:	src/fonts.c src/fonts.h src
  		src/get_fname.h src/debug.h
  	@echo
  	@echo "...Compiling font support..."

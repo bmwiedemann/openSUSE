@@ -18,7 +18,7 @@
 
 %define sdlver 2
 Name:           tuxpaint
-Version:        0.9.31
+Version:        0.9.32
 Release:        0
 Summary:        Drawing Program for Young Children
 License:        GPL-2.0-or-later
@@ -95,6 +95,7 @@ Requires:       pkgconfig(fribidi)
 Requires:       libpaper-devel
 Requires:       libpng-devel
 Requires:       pkgconfig(zlib)
+BuildArch:      noarch
 %if 0%{?suse_version}
 Requires:       gcc-c++
 Requires:       gettext-devel
