@@ -741,4 +741,23 @@
     before/after %u placeholder (#9162)</comment>
     <requestid>1123659</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>005d181b68d7b1e35c40bb0b4f1e21a1</srcmd5>
+    <version>1.6.6</version>
+    <time>1707860641</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.6.6
+  * Fix regression in handling LDAP search_fields configuration parameter (#9210)
+  * Enigma: Fix finding of a private key when decrypting a message using GnuPG v2.3
+  * Fix page jump menu flickering on click (#9196)
+  * Update to TinyMCE 5.10.9 security release (#9228)
+  * Fix PHP8 warnings (#9235, #9238, #9242, #9306)
+  * Fix saving other encryption settings besides enigma's (#9240)
+  * Fix unneeded php command use in installto.sh and deluser.sh scripts (#9237)
+  * Fix TinyMCE localization installation (#9266)
+  * Fix bug where trailing non-ascii characters in email addresses 
+    could have been removed in recipient input (#9257)
+  * Fix IMAP GETMETADATA command with options - RFC5464</comment>
+    <requestid>1146347</requestid>
+  </revision>
 </revisionlist>
