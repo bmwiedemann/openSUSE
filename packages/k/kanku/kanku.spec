@@ -22,7 +22,7 @@
 
 Name:           kanku
 # Version gets set by obs-service-tar_scm
-Version:        0.16.1
+Version:        0.16.2
 Release:        0
 License:        GPL-3.0-only
 Summary:        Development and continuous integration
@@ -244,9 +244,6 @@ common config and lib files used in kanku
 %exclude %dir /etc/profile.d
 %config /etc/profile.d/kanku.sh
 
-%exclude %dir %_tmpfilesdir
-%_tmpfilesdir/kanku.conf
-
 %dir /usr/lib/kanku/lib/Kanku/NotifyQueue/
 /usr/lib/kanku/lib/Kanku/NotifyQueue/*.pm
 /usr/lib/kanku/lib/Kanku/Handler/
@@ -383,6 +380,8 @@ kanku-web, kanku-scheduler and kanku-triggerd.
 %dir %attr(755, kankurun, kanku) /var/lib/kanku/db
 %dir %attr(755, kankurun, kanku) /var/cache/kanku
 %ghost %dir %attr(755, kankurun, kanku) /run/kanku
+%exclude %dir %_tmpfilesdir
+%_tmpfilesdir/kanku.conf
 
 %package web
 Summary:        WebUI for kanku

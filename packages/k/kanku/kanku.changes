@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 13 17:44:07 UTC 2024 - FSchreiner@suse.com
+
+- Update to version 0.16.2:
+  * [doc] updated changelog ver: 0.16.2
+  * [dist] updated debian files to version 0.16.2
+  * [dist] moved tmpfile conf to package kanku-common-server
+  * [dist] fixed homedir path for user kankurun
+  * [handler] CreateDomain: added template to gui_config
+  * cleanup POD in Kanku/Handler/CreateDomain
+
+-------------------------------------------------------------------
 Mon Feb 05 10:08:42 UTC 2024 - FSchreiner@suse.com
 
 - Update to version 0.16.1:

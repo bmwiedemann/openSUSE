@@ -213,4 +213,18 @@
     <comment>update to upstream version 0.16.1</comment>
     <requestid>1145212</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c270e44c2763bfb01fe8a943e4eb4467</srcmd5>
+    <version>0.16.2</version>
+    <time>1707860694</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.16.2:
+  * [doc] updated changelog ver: 0.16.2
+  * [dist] updated debian files to version 0.16.2
+  * [dist] moved tmpfile conf to package kanku-common-server
+  * [dist] fixed homedir path for user kankurun
+  * [handler] CreateDomain: added template to gui_config
+  * cleanup POD in Kanku/Handler/CreateDomain</comment>
+    <requestid>1146468</requestid>
+  </revision>
 </revisionlist>
