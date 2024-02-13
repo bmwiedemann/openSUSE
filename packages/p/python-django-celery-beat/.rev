@@ -7,4 +7,13 @@
     <comment>needed by Weblate</comment>
     <requestid>1099696</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9c968de5507452c5ba96cc36b3816b5d</srcmd5>
+    <version>2.5.0</version>
+    <time>1707860604</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-zoneinfo.patch:
+  * Use correct method for zoneinfo instances.</comment>
+    <requestid>1146299</requestid>
+  </revision>
 </revisionlist>

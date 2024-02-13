@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 13 04:32:32 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-zoneinfo.patch:
+  * Use correct method for zoneinfo instances.
+
+-------------------------------------------------------------------
 Tue Jul 18 10:20:02 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Initial packaging (v2.5.0), needed by Weblate
