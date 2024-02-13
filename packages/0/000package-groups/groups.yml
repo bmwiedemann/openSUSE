@@ -141,6 +141,7 @@ dvd:
   - rsyslog
   - syslog-service
   - dia: [locked]
+  - netdata: [locked]
   - gnuchess: [locked]
   - gnumeric: [locked]
   - marble: [locked]
