@@ -83,4 +83,14 @@
     <comment></comment>
     <requestid>1111745</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>8a7de2bddfb2c1c5315aeb6cfc19ef2c</srcmd5>
+    <version>0.13.1</version>
+    <time>1707860533</time>
+    <user>anag+factory</user>
+    <comment>- Add python312.patch gh#pyFFTW/pyFFTW#370
+- Remove shebangs from python files
+- Use fdupes to remove duplicates</comment>
+    <requestid>1146240</requestid>
+  </revision>
 </revisionlist>

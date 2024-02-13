@@ -1,0 +1,69 @@
+From b61c8be64e3c48b483558106e17fe76087134a32 Mon Sep 17 00:00:00 2001
+From: Julien Salort <julien.salort@ens-lyon.fr>
+Date: Thu, 25 Jan 2024 11:20:04 +0100
+Subject: [PATCH] Upgrade setuptools and configparser for Python 3.12
+
+---
+ pyproject.toml | 2 +-
+ setup.py       | 2 ++
+ versioneer.py  | 6 +++---
+ 3 files changed, 6 insertions(+), 4 deletions(-)
+
+Index: pyFFTW-0.13.1/pyproject.toml
+===================================================================
+--- pyFFTW-0.13.1.orig/pyproject.toml
++++ pyFFTW-0.13.1/pyproject.toml
+@@ -166,7 +166,7 @@ test-command = "pytest --import-mode=app
+ [build-system]
+ requires = [
+     "wheel",
+-    "setuptools<=59.4.0",
++    "setuptools", #<=59.4.0",
+     "Cython>=3",
+ 
+     # NumPy dependencies - to update these, sync from
+Index: pyFFTW-0.13.1/setup.py
+===================================================================
+--- pyFFTW-0.13.1.orig/setup.py
++++ pyFFTW-0.13.1/setup.py
+@@ -777,6 +777,7 @@ def setup_package():
+             'Programming Language :: Python :: 3.9',
+             'Programming Language :: Python :: 3.10',
+             'Programming Language :: Python :: 3.11',
++            'Programming Language :: Python :: 3.12',
+             'Development Status :: 4 - Beta',
+             'License :: OSI Approved :: BSD License',
+             'Operating System :: OS Independent',
+@@ -790,6 +791,7 @@ def setup_package():
+         ],
+         'cmdclass': cmdclass,
+         'python_requires': ">=3.8",
++        'py_modules': ['pyfftw'],
+     }
+ 
+     setup_args['setup_requires'] = build_requires
+Index: pyFFTW-0.13.1/versioneer.py
+===================================================================
+--- pyFFTW-0.13.1.orig/versioneer.py
++++ pyFFTW-0.13.1/versioneer.py
+@@ -339,9 +339,9 @@ def get_config_from_root(root):
+     # configparser.NoOptionError (if it lacks "VCS="). See the docstring at
+     # the top of versioneer.py for instructions on writing your setup.cfg .
+     setup_cfg = os.path.join(root, "setup.cfg")
+-    parser = configparser.SafeConfigParser()
++    parser = configparser.ConfigParser()
+     with open(setup_cfg, "r") as f:
+-        parser.readfp(f)
++        parser.read_file(f)
+     VCS = parser.get("versioneer", "VCS")  # mandatory
+ 
+     def get(parser, name):
+@@ -418,7 +418,7 @@ def run_command(commands, args, cwd=None
+     return stdout, p.returncode
+ 
+ 
+-LONG_VERSION_PY['git'] = '''
++LONG_VERSION_PY['git'] = r'''
+ # This file helps to compute a version number in source trees obtained from
+ # git-archive tarball (such as those provided by githubs download-from-tag
+ # feature). Distribution tarballs (built by setup.py sdist) and build

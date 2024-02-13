@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyFFTW
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pyFFTW/pyFFTW
 Source:         https://github.com/pyFFTW/pyFFTW/archive/v%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/pyFFTW/pyFFTW/pull/363 Cython 3 updates and test build linker flags
-Patch:          cython3.patch
+Patch0:         cython3.patch
+# PATCH-FIX-UPSTREAM python312.patch gh#pyFFTW/pyFFTW#370
+Patch1:         python312.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module devel}
@@ -69,6 +71,9 @@ repository.
 
 %prep
 %autosetup -p1 -n pyFFTW-%{version}
+# remove shebangs
+sed -i -e '/^#!\//, 1d' pyfftw/*.py
+sed -i -e '/^#!\//, 1d' pyfftw/*/*.py
 
 %build
 export CFLAGS="%{optflags}"
@@ -76,6 +81,7 @@ export CFLAGS="%{optflags}"
 
 %install
 %pyproject_install
+%python_expand %fdupes %{buildroot}/%{$python_sitearch}/pyfftw
 
 %if %{with test}
 %check
