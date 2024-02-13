@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Feb 12 19:54:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.35.0:
+  * chore: Update version.go for v0.35.0
+  * docs: update release doc
+  * chore: update CONTRIBUTORS
+  * govc: json tag camelCase fixes
+  * Add "AggregatedSnapshotCapacityInMb" to cnstype.
+  * add -json to snapshot.tree
+  * build(deps): bump nokogiri from 1.14.3 to 1.16.2 in /gen
+  * api: Sim vm config.changeVersion & config.modified
+  * build(deps): bump peter-evans/create-pull-request from 5 to 6
+  * Re-enable PC updates for indexed properties
+  * build(deps): bump andstor/file-existence-action from 2 to 3
+  * build(deps): bump peter-evans/create-or-update-comment from 3
+    to 4
+  * Add new "UsedCapacityInMb" in struct "CnsBlockBackingDetails"
+  * build(deps): bump github.com/google/uuid from 1.5.0 to 1.6.0
+  * build(deps): bump actions/cache from 3 to 4
+  * Self identify the executable making calls to vCenter
+  * api: WaitForUpdatesEx & DestroyPropertyFilter
+  * Changes to fix xml tag used for SnapshotId
+  * vcsim: Fix -method-delay option to update task states
+  * Fixes Missing Tags in AttachedTags
+  * Changes to add CNS fault CnsSnapshotCreatedFault
+  * build(deps): bump actions/upload-artifact from 3 to 4
+  * build(deps): bump github/codeql-action from 2 to 3
+  * build(deps): bump github.com/google/uuid from 1.4.0 to 1.5.0
+  * build(deps): bump chuhlomin/render-template from 1.8 to 1.9
+
+-------------------------------------------------------------------
 Sat Jan 20 18:19:33 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package govc: vSphere CLI written in go
