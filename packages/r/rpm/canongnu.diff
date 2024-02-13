@@ -1,11 +1,32 @@
---- CMakeLists.txt.orig	2023-10-13 12:38:26.953411554 +0000
-+++ CMakeLists.txt	2023-10-13 12:40:11.057239934 +0000
-@@ -144,7 +144,7 @@ function(makemacros)
+--- CMakeLists.txt.orig	2024-02-07 09:57:31.944781372 +0000
++++ CMakeLists.txt	2024-02-07 09:57:51.924739495 +0000
+@@ -138,14 +138,26 @@ function(makemacros)
+ 
+ 	list(GET db_backends 0 DB_BACKEND)
+ 
+-	set(host_cpu ${CMAKE_HOST_SYSTEM_PROCESSOR})
++	if (RPM_HOST_SYSTEM_CPU)
++	    set(host_cpu ${RPM_HOST_SYSTEM_CPU})
++	else()
++	    set(host_cpu ${CMAKE_HOST_SYSTEM_PROCESSOR})
++	endif()
+ 	string(TOLOWER ${CMAKE_HOST_SYSTEM_NAME} host_os)
+ 	set(host_vendor ${RPM_VENDOR})
+-	set(host ${host_cpu}-${host_vendor}-${host_os})
++	if (RPM_HOST_SYSTEM_ABI)
++	    set(host ${host_cpu}-${host_vendor}-${host_os}-${RPM_HOST_SYSTEM_ABI})
++	else()
++	    set(host ${host_cpu}-${host_vendor}-${host_os})
++	endif()
  
  	set(RPMCANONVENDOR ${host_vendor})
  	set(RPMCANONOS ${host_os})
 -	set(RPMCANONGNU -gnu)
-+	set(RPMCANONGNU -gnu CACHE STRING "gnu os suffix")
++	if (RPM_HOST_SYSTEM_ABI)
++	    set(RPMCANONGNU -${RPM_HOST_SYSTEM_ABI})
++	else()
++	    set(RPMCANONGNU -gnu)
++	endif()
  
  	if (ENABLE_CUTF8)
  		set(C_LOCALE "C.UTF-8")

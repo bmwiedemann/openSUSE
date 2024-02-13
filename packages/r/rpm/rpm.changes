@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Feb  9 11:34:31 CET 2024 - mls@suse.de
+
+- update to rpm-4.19.1.1
+  * don't warn about missing user/group on skipped files
+  * make user/group lookup caching thread-safe
+  * fix regression in Lua scriptlet runaway child detection
+  * restore readline support as an explicit option
+- refreshed patches:
+  * rpmqpack.diff
+- fix _host_cpu being wrong on arm and ppc
+
+-------------------------------------------------------------------
+Wed Feb  7 10:34:35 CET 2024 - mls@suse.de
+
+- fix %_host not containing the abi suffix on arm [bnc#1219627]
+  updated patch: canongnu.diff
+
+-------------------------------------------------------------------
 Fri Feb  2 15:27:57 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Need to mention the changed patches for the python-setuptools to

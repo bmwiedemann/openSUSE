@@ -57,7 +57,7 @@ Requires:       rpm-config-SUSE
 Summary:        The RPM Package Manager
 License:        GPL-2.0-or-later
 Group:          System/Packages
-Version:        4.19.1
+Version:        4.19.1.1
 Release:        0
 URL:            https://rpm.org/
 #Git-Clone:     https://github.com/rpm-software-management/rpm
@@ -242,11 +242,18 @@ export LDFLAGS="-Wl,-Bsymbolic-functions -ffunction-sections"
 export CFLAGS="-g -O0 -fno-strict-aliasing -ffunction-sections"
 %endif
 
+cpu="%{_target_cpu}"
+# convert to gnu style cpu version, see config.sub
+%ifarch ppc ppc64 ppc64le
+cpu="${cpu/#ppc/powerpc}"
+%endif
+
 mkdir _build
 cd _build
 cmake .. \
+  -DRPM_HOST_SYSTEM_CPU="$cpu" \
 %ifarch %arm
-  -DRPMCANONGNU=-gnueabi \
+  -DRPM_HOST_SYSTEM_ABI=gnueabi \
 %endif
   -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
   -DCMAKE_INSTALL_MANDIR:PATH=share/man \
@@ -260,6 +267,7 @@ cmake .. \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
   -DRPM_VENDOR=suse \
   -DWITH_ARCHIVE=OFF \
+  -DWITH_READLINE=OFF \
   -DWITH_SELINUX=ON \
   -DWITH_INTERNAL_OPENPGP=ON \
   -DENABLE_NDB=ON \

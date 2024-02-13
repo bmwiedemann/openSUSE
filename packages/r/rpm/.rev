@@ -2507,4 +2507,12 @@ See bugzilla 1167537 for the gory details.</comment>
     <comment></comment>
     <requestid>1144124</requestid>
   </revision>
+  <revision rev="313" vrev="1">
+    <srcmd5>8e940bd6d79e1a9293892d04fd5eb31d</srcmd5>
+    <version>4.19.1.1</version>
+    <time>1707860522</time>
+    <user>anag+factory</user>
+    <comment>- update to rpm-4.19.1.1</comment>
+    <requestid>1145411</requestid>
+  </revision>
 </revisionlist>
