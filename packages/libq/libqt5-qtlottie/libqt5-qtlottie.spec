@@ -111,7 +111,7 @@ rm -f %{buildroot}%{_libqt5_libdir}/lib*.la
 # The entire library is private for now, so not all files are present.
 %files -n libQt5Bodymovin-devel
 %license LICENSE.*
-%exclude %{_libqt5_includedir}/QtBodymovin/%%{so_version}
+%exclude %{_libqt5_includedir}/QtBodymovin/%{so_version}
 %{_libqt5_includedir}/QtBodymovin
 %{_libqt5_libdir}/cmake/Qt5Bodymovin
 %{_libqt5_libdir}/libQt5Bodymovin.prl
@@ -121,7 +121,7 @@ rm -f %{buildroot}%{_libqt5_libdir}/lib*.la
 
 %files -n libQt5Bodymovin-private-headers-devel
 %license LICENSE.*
-%{_libqt5_includedir}/QtBodymovin/%{so_version}
+%{_libqt5_includedir}/QtBodymovin/%{so_version}/
 %{_libqt5_archdatadir}/mkspecs/modules/qt_lib_bodymovin_private.pri
 
 %changelog

@@ -111,4 +111,12 @@
     <comment>Qt 5.15.12 (+ some .16), untested (forwarded request 1135706 from favogt)</comment>
     <requestid>1136109</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>b19f348a1e7d469f5c5b693cbb196dbc</srcmd5>
+    <version>5.15.12+kde0</version>
+    <time>1707860595</time>
+    <user>anag+factory</user>
+    <comment>- Fix subpackage %files</comment>
+    <requestid>1146291</requestid>
+  </revision>
 </revisionlist>
