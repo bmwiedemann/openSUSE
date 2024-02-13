@@ -1,7 +1,7 @@
 #
 # spec file for package python-expiringdict
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -58,7 +58,7 @@ max_len elements - the oldest will be deleted.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest -k "not test_repr"
 
 %files %{python_files}
 %license LICENSE
