@@ -17,13 +17,13 @@
 
 
 Name:           fastfetch
-Version:        2.8.0
+Version:        2.8.3
 Release:        0
-Summary:        Neofetch-like tool written in C
+Summary:        Neofetch-like tool written mostly in C
 License:        MIT
 Group:          Productivity/Text/Utilities
-URL:            https://github.com/LinusDierheimer/fastfetch
-Source:         https://github.com/LinusDierheimer/fastfetch/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/fastfetch-cli/fastfetch
+Source:         https://github.com/fastfetch-cli/fastfetch/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  Mesa-devel
 BuildRequires:  cmake
 BuildRequires:  gcc
@@ -58,7 +58,7 @@ Recommends:     zlib
 
 %description
 Fastfetch is a neofetch-like tool for fetching system information and
-displaying them in a pretty way.  It is written in pure C, with performance and
+displaying them in a pretty way.  It is written mainly in C, with performance and
 customizability in mind. Currently Linux, Android, FreeBSD,
 MacOS and Windows 7+ are supported.
 

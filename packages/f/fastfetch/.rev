@@ -261,4 +261,16 @@ Bugfixes:
     * Make format of battery status be consistent with other platforms (Linux, Battery)</comment>
     <requestid>1145542</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>386cc5fa0baa9bab82735bc04b1ada49</srcmd5>
+    <version>2.8.3</version>
+    <time>1707860569</time>
+    <user>anag+factory</user>
+    <comment>- update to version 2.8.3:
+  Bugfixes:
+    * Fix GPU name detection for AMD graphic cards (GPU, Linux / FreeBSD)
+
+  Bugfixes:</comment>
+    <requestid>1146250</requestid>
+  </revision>
 </revisionlist>
