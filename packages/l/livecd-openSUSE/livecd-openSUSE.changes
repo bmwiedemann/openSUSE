@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 12 09:50:25 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Switch to kiwi schema v7.4:
+  * Remove hybrid="true"
+  * Switch from <package replaces="..."/> to <!-- OBS-IgnorePackage: ... -->
+
+-------------------------------------------------------------------
 Wed Jan 31 15:42:51 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - list-common: Install ucode-amd explicitly, ignore ucode-intel explicitly.
