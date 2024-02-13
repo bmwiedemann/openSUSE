@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb 10 08:11:27 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- update to 0.9.4:
+  * Clarify why the symbolic icons don't go in symbolic/status
+  * Fix icons directory names
+  * Fall back to monitor 0 if no primary monitor set
+  * Add a fallback for drawing the unread notification emblem
+  * Remove redundant icon embleming code
+  * Fix opacity on notification hover
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Nov 16 08:40:08 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - relax branding requires (remove -version-release), so we can use 
