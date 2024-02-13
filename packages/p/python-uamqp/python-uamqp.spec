@@ -18,6 +18,9 @@
 
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
+# Python 3.12 is currently unsupported
+# see: https://github.com/Azure/azure-uamqp-python/issues/379
+%define skip_python312 1
 %endif
 Name:           python-uamqp
 Version:        1.6.8
@@ -27,6 +30,7 @@ License:        MIT
 URL:            https://github.com/Azure/azure-uamqp-python
 Source:         https://files.pythonhosted.org/packages/source/u/uamqp/uamqp-%{version}.tar.gz
 Patch1:         u_strip-werror.patch
+Patch2:         CVE-2024-25110.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
@@ -47,7 +51,11 @@ Suggests:       python-enum34 >= 1.0.4
 AMQP 1.0 Client Library for Python
 
 %prep
-%autosetup -p1 -n uamqp-%{version}
+%setup -n uamqp-%{version}
+%patch1 -p1
+pushd src/vendor/azure-uamqp-c
+%patch2 -p1
+popd
 
 %build
 export CFLAGS="%{optflags}"

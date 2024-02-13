@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 13 11:04:47 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add patch to fix use-after-free issue in open_get_offered_capabilities()
+  + CVE-2024-25110.patch (CVE-2024-25110, bsc#1219867)
+- Disable build on Python 3.12 which is currently unsupported
+
+-------------------------------------------------------------------
 Thu Feb  1 10:49:24 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release (CVE-2024-21646, bsc#1219409)
