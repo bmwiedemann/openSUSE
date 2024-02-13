@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-devops
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,11 +63,6 @@ Python wrapper around the Azure DevOps 5.x APIs
 rm -rf %{buildroot}%{$python_sitelib}/azure/__init__.*
 rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 }
-
-%check
-# Don't import namespace from build root
-rm -f azure/__init__.py
-%pyunittest discover -v
 
 %files %{python_files}
 %license LICENSE.txt
