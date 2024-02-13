@@ -5,7 +5,7 @@ Sat Feb 03 09:11:15 UTC 2024 - opensuse_buildservice@ojkastl.de
   * Bump to v4.9.2
   * Release notes for v4.9.2
   * Cirrus: Update operating branch
-  * [v4.9] Bump to c/common v0.57.4, buildkit v0.12.5, c/buidah v1.33.5
+  * [v4.9] Bump to c/common v0.57.4, buildkit v0.12.5, c/buidah v1.33.5 (fixes bsc#1219563)
   * Fix updated runc dep breaking pod devices cgroup
   * systests: kube with policies test: fix race
   * Remove go.mod pin of runc and update to latest
