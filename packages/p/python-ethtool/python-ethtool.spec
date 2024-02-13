@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-ethtool
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ BuildRequires:  net-tools-deprecated
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -45,6 +45,8 @@ PCI locations.
 
 %prep
 %setup -q -n %{pypi_name}-%{version}
+# No module imp in python 3.12+
+rm tests/test_scripts.py
 
 %build
 export CFLAGS="%{optflags}"

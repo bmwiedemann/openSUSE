@@ -65,4 +65,13 @@
   - pifconfig supports interfaces with no IPv4 address</comment>
     <requestid>946654</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ee3041e4f12ee4a3be548617fd5df5f2</srcmd5>
+    <version>0.15</version>
+    <time>1707860674</time>
+    <user>anag+factory</user>
+    <comment>- Remove broken tests with python 3.12+
+</comment>
+    <requestid>1146400</requestid>
+  </revision>
 </revisionlist>
