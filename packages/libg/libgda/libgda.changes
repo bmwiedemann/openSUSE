@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 13 10:19:47 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Remove the hardcoded libopenssl-1_1-devel to libopenssl-devel.
+
+-------------------------------------------------------------------
 Thu Dec 21 16:43:30 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to override build date (boo#1047218)

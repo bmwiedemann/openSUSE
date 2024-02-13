@@ -1,7 +1,7 @@
 #
 # spec file for package libgda
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,7 +51,7 @@ BuildRequires:  intltool >= 0.40.6
 BuildRequires:  itstool
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  libgcrypt-devel
-BuildRequires:  libopenssl-1_1-devel
+BuildRequires:  libopenssl-devel
 BuildRequires:  libtool
 BuildRequires:  mdbtools-devel
 BuildRequires:  meson
@@ -76,11 +76,11 @@ BuildRequires:  pkgconfig(gtksourceview-3.0)
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libgvc)
-BuildRequires:  pkgconfig(mysqlclient)
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
+BuildRequires:  pkgconfig(mysqlclient)
 BuildRequires:  pkgconfig(sqlite3)
 #!BuildIgnore:  openssl
 
