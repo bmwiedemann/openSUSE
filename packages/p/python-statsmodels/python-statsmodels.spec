@@ -25,6 +25,7 @@
 %bcond_with test
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-statsmodels%{psuffix}
 Version:        0.14.1
 Release:        0

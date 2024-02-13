@@ -148,4 +148,12 @@ Needed by python-seaborn, see request 436927</comment>
 - first package</comment>
     <requestid>1138231</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>197964aa2b7e65bac286ba5ccd6d9b9a</srcmd5>
+    <version>0.14.1</version>
+    <time>1707860590</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1146282</requestid>
+  </revision>
 </revisionlist>
