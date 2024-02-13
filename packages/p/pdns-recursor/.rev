@@ -765,4 +765,22 @@ https://doc.powerdns.com/recursor/changelog/4.4.html#change-4.4.3</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1108433</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>f55c1799bf209615fc6f1908461e789c</srcmd5>
+    <version>5.0.2</version>
+    <time>1707860537</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.0.2
+  * fixes crafted DNSSEC records in a zone can lead to a denial
+    of service in Recursor
+  https://doc.powerdns.com/recursor/security-advisories/powerdns-advisory-2024-01.html
+  (bsc#1219823, bsc#1219826, CVE-2023-50387, CVE-2023-50868)
+
+- update to 5.0.1
+  https://doc.powerdns.com/recursor/changelog/5.0.html#change-5.0.1
+  For upgrade from 4.9.x, see
+  https://doc.powerdns.com/recursor/upgrade.html#to-5-0-0-and-master
+- cargo_build_fix.patch: add cargo_build parameters to Makefile...</comment>
+    <requestid>1146434</requestid>
+  </revision>
 </revisionlist>

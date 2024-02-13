@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Feb 13 14:33:11 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- update to 5.0.2
+  * fixes crafted DNSSEC records in a zone can lead to a denial
+    of service in Recursor
+  https://doc.powerdns.com/recursor/security-advisories/powerdns-advisory-2024-01.html
+  (bsc#1219823, bsc#1219826, CVE-2023-50387, CVE-2023-50868)
+
+-------------------------------------------------------------------
+Fri Feb  9 13:30:36 UTC 2024 - Adam Majer <adam.majer@suse.de> 5.0.1
+
+- update to 5.0.1
+  https://doc.powerdns.com/recursor/changelog/5.0.html#change-5.0.1
+
+  For upgrade from 4.9.x, see
+  https://doc.powerdns.com/recursor/upgrade.html#to-5-0-0-and-master
+
+- cargo_build_fix.patch: add cargo_build parameters to Makefile...
+
+-------------------------------------------------------------------
 Fri Aug 25 10:06:27 UTC 2023 - Adam Majer <adam.majer@suse.de> 4.9.1
 
 - update to 4.9.1

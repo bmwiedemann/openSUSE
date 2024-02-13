@@ -1,0 +1,13 @@
+Index: pdns-recursor-5.0.1/settings/rust/Makefile.am
+===================================================================
+--- pdns-recursor-5.0.1.orig/settings/rust/Makefile.am
++++ pdns-recursor-5.0.1/settings/rust/Makefile.am
+@@ -11,7 +11,7 @@ EXTRA_DIST = \
+ 
+ # should actually end up in a target specific dir...
+ libsettings.a lib.rs.h: src/bridge.rs src/lib.rs src/helpers.rs Cargo.toml Cargo.lock build.rs
+-	SYSCONFDIR=$(sysconfdir) NODCACHEDIRNOD=$(localstatedir)/nod NODCACHEDIRUDR=$(localstatedir)/udr $(CARGO) build --release $(RUST_TARGET)
++	unset LIBSSH2_SYS_USE_PKG_CONFIG && CARGO_FEATURE_VENDORED=1 RUSTFLAGS=" -Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2 -C incremental=false" SYSCONFDIR=$(sysconfdir) NODCACHEDIRNOD=$(localstatedir)/nod NODCACHEDIRUDR=$(localstatedir)/udr $(CARGO) build --release --offline $(RUST_TARGET)
+ 	cp target/$(RUSTC_TARGET_ARCH)/release/libsettings.a libsettings.a
+ 	cp target/$(RUSTC_TARGET_ARCH)/cxxbridge/settings/src/lib.rs.h lib.rs.h
+ 	cp target/$(RUSTC_TARGET_ARCH)/cxxbridge/rust/cxx.h cxx.h

@@ -1,7 +1,7 @@
 #
 # spec file for package pdns-recursor
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 
 Name:           pdns-recursor
-Version:        4.9.1
+Version:        5.0.2
 Release:        0
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -55,6 +55,7 @@ BuildRequires:  lua-devel
 BuildRequires:  net-snmp-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python3
 %if 0%{?suse_version}
 PreReq:         shadow
 %else
@@ -64,6 +65,7 @@ BuildRequires:  pkgconfig(systemd)
 %if %{with systemd_separetedlibs}
 BuildRequires:  pkgconfig(libsystemd)
 %endif
+BuildRequires:  cargo-packaging
 %{?systemd_ordering}
 PreReq:         pdns-common
 
@@ -80,7 +82,9 @@ Source10:       https://downloads.powerdns.com/releases/%{name}-%{version}.tar.b
 Source11:       https://powerdns.com/powerdns-keyblock.asc#/pdns-recursor.keyring
 Source1:        pdns-recursor.init
 Source2:        recursor.conf
+Source3:        vendor.tar.zst
 Patch1:         boost_context.patch
+Patch2:         cargo_build_fix.patch
 #
 Summary:        Modern, advanced and high performance recursing/non authoritative nameserver
 License:        GPL-2.0-or-later
@@ -97,6 +101,9 @@ Authors:
 
 %prep
 %autosetup -p1
+pushd settings/rust
+tar --zstd -xf %{SOURCE3}
+popd
 
 %build
 export CXX=g++%{?compiler_ver}
@@ -112,6 +119,7 @@ ln effective_tld_names.dat effective_tld_list.dat
   --with-socketdir=%{_rundir}        \
   --with-service-user=pdns           \
   --with-service-group=pdns
+cd settings; /usr/bin/python3 generate.py
 make %{?_smp_mflags}
 
 %install
@@ -149,6 +157,7 @@ rm -rvf %{buildroot}%{_sysconfdir}/init.d/%{name}
 
 %files
 %config(noreplace)  %attr(640,root,pdns) %{_sysconfdir}/pdns/*.conf
+%{_sysconfdir}/pdns/recursor.yml-dist
 %{_sysconfdir}/pdns/recursor.conf-dist
 %if %{with systemd}
 %{_unitdir}/%{name}.service
