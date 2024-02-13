@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 13 12:46:21 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add setuptools buildrequires, distutils is not part of python-base
+  from python 3.12+
+
+-------------------------------------------------------------------
 Fri Apr 21 12:24:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

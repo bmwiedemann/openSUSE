@@ -138,4 +138,14 @@
     <comment></comment>
     <requestid>1082166</requestid>
   </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>e72f5b80096d5b18eef70d271d6b25b6</srcmd5>
+    <version>3.12.3</version>
+    <time>1707860673</time>
+    <user>anag+factory</user>
+    <comment>- Add setuptools buildrequires, distutils is not part of python-base
+  from python 3.12+
+</comment>
+    <requestid>1146398</requestid>
+  </revision>
 </revisionlist>

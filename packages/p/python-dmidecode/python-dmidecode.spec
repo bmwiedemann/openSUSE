@@ -1,7 +1,7 @@
 #
 # spec file for package python-dmidecode
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,12 +38,13 @@ Patch2:         31-version_info-v-version.patch
 #  Make the code future-proof against removal of distutils module.
 Patch3:         detect-lib-with-py3.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  libxml2-devel
 BuildRequires:  python-rpm-macros
 Requires:       python
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Obsoletes:      %{oldpython}-dmidecode <= %{version}
 Obsoletes:      python-python-dmidecode <= %{version}
 %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
