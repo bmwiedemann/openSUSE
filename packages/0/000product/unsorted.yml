@@ -18631,10 +18631,13 @@ unsorted:
   - netcomponents 
   - netcomponents-javadoc 
   - netconsole-tools 
+  - netdata 
   - netdata-plugin-apps 
   - netdata-plugin-chartsd 
+  - netdata-plugin-cups 
   - netdata-plugin-debugfs 
   - netdata-plugin-freeipmi 
+  - netdata-plugin-go 
   - netdata-plugin-nfacct 
   - netdata-plugin-perf 
   - netdata-plugin-pythond 
@@ -26587,6 +26590,7 @@ unsorted:
   - python311-PyMeta3 
   - python311-PyMsgBox 
   - python311-PyMuPDF 
+  - python311-PyMySQL 
   - python311-PyNaCl 
   - python311-PyNamecheap 
   - python311-PyOgg 
@@ -28706,6 +28710,7 @@ unsorted:
   - python311-psycopg 
   - python311-psycopg-c 
   - python311-psycopg-pool 
+  - python311-psycopg2 
   - python311-psycopg2cffi 
   - python311-psygnal 
   - python311-ptpython 

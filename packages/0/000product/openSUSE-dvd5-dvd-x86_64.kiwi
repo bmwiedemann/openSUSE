@@ -3079,9 +3079,6 @@
       <repopackage name="net-tools-lang"/>
       <repopackage name="netcat-openbsd"/>
       <repopackage name="netcfg"/>
-      <repopackage name="netdata"/>
-      <repopackage name="netdata-plugin-cups"/>
-      <repopackage name="netdata-plugin-go"/>
       <repopackage name="netpbm"/>
       <repopackage name="NetworkManager"/>
       <repopackage name="NetworkManager-applet"/>
@@ -3605,7 +3602,6 @@
       <repopackage name="python311-pip"/>
       <repopackage name="python311-ply"/>
       <repopackage name="python311-psutil"/>
-      <repopackage name="python311-psycopg2"/>
       <repopackage name="python311-ptyprocess"/>
       <repopackage name="python311-py"/>
       <repopackage name="python311-pyasn1"/>
@@ -3618,7 +3614,6 @@
       <repopackage name="python311-pygit2"/>
       <repopackage name="python311-Pygments"/>
       <repopackage name="python311-pyinotify"/>
-      <repopackage name="python311-PyMySQL"/>
       <repopackage name="python311-pyOpenSSL"/>
       <repopackage name="python311-pysmbc"/>
       <repopackage name="python311-PySocks"/>
