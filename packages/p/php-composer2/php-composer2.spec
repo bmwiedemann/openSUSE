@@ -1,7 +1,7 @@
 #
 # spec file for package php-composer2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           php-composer2
-Version:        2.6.5
+Version:        2.7.1
 Release:        0
 Summary:        Dependency Management for PHP
 License:        MIT
@@ -25,6 +25,7 @@ Group:          Development/Libraries/Other
 URL:            https://getcomposer.org/
 Source0:        https://getcomposer.org/download/%{version}/composer.phar
 Source1:        https://github.com/composer/composer/raw/%{version}/LICENSE
+BuildRequires:  php-phar
 Requires:       php >= 7.2.5
 Requires:       php-curl
 Requires:       php-json
@@ -34,7 +35,7 @@ Requires:       php-phar
 Requires:       php-zip
 Requires:       php-zlib
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       composer = %{version}
 Provides:       php-composer = %{version}
 Provides:       php7-composer = %{version}
