@@ -1,7 +1,7 @@
 #
 # spec file for package thrift
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,6 +71,7 @@ BuildRequires:  perl(Class::Accessor)
 %endif
 %if %{with python3}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 %if 0%{?suse_version} >= 1550
 # if python multiflavor is available, use it to generate subpackages

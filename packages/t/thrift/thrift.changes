@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb  9 08:30:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add python-setuptools BuildRequires: fix build.
+
+-------------------------------------------------------------------
 Fri Dec 29 14:37:20 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Update download url.
