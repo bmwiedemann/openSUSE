@@ -159,4 +159,12 @@
     <comment>Security fixes</comment>
     <requestid>1128324</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>03e3a1ee03d6bb9b5e8be0e462eab442</srcmd5>
+    <version>11.0.22.0</version>
+    <time>1707860556</time>
+    <user>anag+factory</user>
+    <comment>OpenJDK 11.0.22 with OpenJ9 0.43</comment>
+    <requestid>1146349</requestid>
+  </revision>
 </revisionlist>
