@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 12 15:01:17 UTC 2024 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Add fix_arp_collector.patch
+  Patch updates rtnetlink library to fix errors during ARP metrics
+  collection.
+
+-------------------------------------------------------------------
 Mon Nov 13 10:37:40 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 1.7.0:

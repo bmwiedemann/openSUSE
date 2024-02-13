@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-prometheus-node_exporter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2017 Silvio Moioli <moio@suse.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,10 +27,12 @@ License:        Apache-2.0
 Group:          System/Management
 URL:            https://prometheus.io/
 Source:         node_exporter-%{version}.tar.gz
-# Generated after applying 0001-Update-prometheus-client-to-1.11.1.patch
+# Generated after applying fix_arp_collector.patch
 Source1:        vendor.tar.gz
 Source2:        prometheus-node_exporter.service
 Source4:        prometheus-node_exporter.sysconfig
+# Updates rtnetlink to version 1.4.1
+Patch1:         fix_arp_collector.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-github-prometheus-promu >= 0.12.0
 BuildRequires:  golang-packaging
