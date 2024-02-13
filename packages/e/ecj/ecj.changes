@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 13 01:50:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * ecj-java8compat.patch
+    + Allow building ecj with language levels 8 (bsc#1219862)
+- Distribute the bundled javax17api.jar under maven coordinate of
+  org.eclipse:javax17api:17, so that it can be used if needed
+
+-------------------------------------------------------------------
 Mon Aug 21 11:46:03 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to eclipse 4.23 ecj (jsc#PED-2979)

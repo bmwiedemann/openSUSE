@@ -1,0 +1,168 @@
+--- ecj-old/build.xml	2022-03-08 08:19:52.000000000 +0100
++++ ecj-new/build.xml	2024-02-13 04:59:44.328387227 +0100
+@@ -25,9 +25,9 @@
+ 
+ 		<javac srcdir="${basedir}" destdir="${output}"
+ 					debuglevel="lines,source"
+-					debug="true"
+-					release="11">
+-			<compilerarg line="-Xlint:none --patch-module java.compiler=javax17api.jar"/>
++					debug="true" encoding="utf-8"
++					source="8" target="8">
++			<compilerarg line="-Xlint:none" value="-Xbootclasspath/p:javax17api.jar"/>
+ 		</javac>
+ 
+ 		<delete file="${basedir}/META-INF/MANIFEST.MF" failonerror="false"/>
+--- ecj-old/org/eclipse/jdt/internal/compiler/apt/util/EclipseFileManager.java	2022-03-08 08:19:50.000000000 +0100
++++ ecj-new/org/eclipse/jdt/internal/compiler/apt/util/EclipseFileManager.java	2024-02-13 02:40:37.158638361 +0100
+@@ -1281,7 +1281,7 @@
+ 	private Iterable<? extends File> getFiles(final Iterable<? extends Path> paths) {
+ 		if (paths == null)
+ 			return null;
+-		return () -> new Iterator<>() {
++		return () -> new Iterator<File>() {
+ 			Iterator<? extends Path> original = paths.iterator();
+ 			@Override
+ 			public boolean hasNext() {
+@@ -1296,7 +1296,7 @@
+ 	private Iterable<? extends Path> getPaths(final Iterable<? extends File> files) {
+ 		if (files == null)
+ 			return null;
+-		return () -> new Iterator<>() {
++		return () -> new Iterator<Path>() {
+ 			Iterator<? extends File> original = files.iterator();
+ 			@Override
+ 			public boolean hasNext() {
+--- ecj-old/org/eclipse/jdt/internal/compiler/lookup/SourceTypeBinding.java	2022-03-08 08:19:50.000000000 +0100
++++ ecj-new/org/eclipse/jdt/internal/compiler/lookup/SourceTypeBinding.java	2024-02-13 02:32:54.251379205 +0100
+@@ -3319,7 +3319,7 @@
+ 		}
+ 	}
+ 	// sort them in according to their own indexes
+-	Arrays.sort(bindings, new Comparator<>() {
++	Arrays.sort(bindings, new Comparator<SyntheticMethodBinding>() {
+ 		@Override
+ 		public int compare(SyntheticMethodBinding o1, SyntheticMethodBinding o2) {
+ 			return o1.index - o2.index;
+diff -urEbwB ecj-old/org/eclipse/jdt/internal/compiler/tool/EclipseCompilerImpl.java ecj-new/org/eclipse/jdt/internal/compiler/tool/EclipseCompilerImpl.java
+--- ecj-old/org/eclipse/jdt/internal/compiler/tool/EclipseCompilerImpl.java	2022-03-08 08:19:50.000000000 +0100
++++ ecj-new/org/eclipse/jdt/internal/compiler/tool/EclipseCompilerImpl.java	2024-02-13 02:38:57.913975827 +0100
+@@ -239,7 +239,7 @@
+ 				DiagnosticListener<? super JavaFileObject> diagListener = EclipseCompilerImpl.this.diagnosticListener;
+ 				Diagnostic<JavaFileObject> diagnostic = null;
+ 				if (diagListener != null) {
+-					diagnostic = new Diagnostic<>() {
++					diagnostic = new Diagnostic<JavaFileObject>() {
+ 						@Override
+ 						public String getCode() {
+ 							return Integer.toString(problemId);
+@@ -316,7 +316,7 @@
+ 				DiagnosticListener<? super JavaFileObject> diagListener = EclipseCompilerImpl.this.diagnosticListener;
+ 				Diagnostic<JavaFileObject> diagnostic = null;
+ 				if (diagListener != null) {
+-					diagnostic = new Diagnostic<>() {
++					diagnostic = new Diagnostic<JavaFileObject>() {
+ 						@Override
+ 						public String getCode() {
+ 							return Integer.toString(problemId);
+@@ -797,7 +797,7 @@
+ 			Iterator iterator = this.extraProblems.iterator(); iterator.hasNext(); ) {
+ 			final CategorizedProblem problem = (CategorizedProblem) iterator.next();
+ 			if (this.diagnosticListener != null && !isIgnored(problem)) {
+-				Diagnostic<JavaFileObject> diagnostic = new Diagnostic<>() {
++				Diagnostic<JavaFileObject> diagnostic = new Diagnostic<JavaFileObject>() {
+ 					@Override
+ 					public String getCode() {
+ 						return null;
+diff -urEbwB ecj-old/org/eclipse/jdt/internal/compiler/tool/EclipseFileManager.java ecj-new/org/eclipse/jdt/internal/compiler/tool/EclipseFileManager.java
+--- ecj-old/org/eclipse/jdt/internal/compiler/tool/EclipseFileManager.java	2022-03-08 08:19:50.000000000 +0100
++++ ecj-new/org/eclipse/jdt/internal/compiler/tool/EclipseFileManager.java	2024-02-13 02:41:33.840827055 +0100
+@@ -1310,7 +1310,7 @@
+ 	private Iterable<? extends File> getFiles(final Iterable<? extends Path> paths) {
+ 		if (paths == null)
+ 			return null;
+-		return () -> new Iterator<>() {
++		return () -> new Iterator<File>() {
+ 			Iterator<? extends Path> original = paths.iterator();
+ 			@Override
+ 			public boolean hasNext() {
+@@ -1325,7 +1325,7 @@
+ 	private Iterable<? extends Path> getPaths(final Iterable<? extends File> files) {
+ 		if (files == null)
+ 			return null;
+-		return () -> new Iterator<>() {
++		return () -> new Iterator<Path>() {
+ 			Iterator<? extends File> original = files.iterator();
+ 			@Override
+ 			public boolean hasNext() {
+--- ecj-old/org/eclipse/jdt/internal/compiler/util/Util.java	2022-03-08 08:19:52.000000000 +0100
++++ ecj-new/org/eclipse/jdt/internal/compiler/util/Util.java	2024-02-13 04:59:18.222252584 +0100
+@@ -234,6 +234,7 @@
+ 		String displayString(Object o);
+ 	}
+ 
++	private static final int DEFAULT_READING_SIZE = 8192;
+ 	private static final int DEFAULT_WRITING_SIZE = 1024;
+ 	public final static String UTF_8 = "UTF-8";	//$NON-NLS-1$
+ 	public static final String LINE_SEPARATOR = System.getProperty("line.separator"); //$NON-NLS-1$
+@@ -469,7 +470,41 @@
+ 	 * @throws IOException if a problem occurred reading the stream.
+ 	 */
+ 	public static byte[] getInputStreamAsByteArray(InputStream input) throws IOException {
+-		return input.readAllBytes(); // will have even slighly better performance as of JDK17+ see JDK-8264777
++		byte[] contents = new byte[0];
++		int contentsLength = 0;
++		int amountRead = -1;
++		do {
++			int amountRequested = Math.max(input.available(), DEFAULT_READING_SIZE);  // read at least 8K
++
++			// resize contents if needed
++			if (contentsLength + amountRequested > contents.length) {
++				System.arraycopy(
++					contents,
++					0,
++					contents = new byte[contentsLength + amountRequested],
++					0,
++					contentsLength);
++			}
++
++			// read as many bytes as possible
++			amountRead = input.read(contents, contentsLength, amountRequested);
++
++			if (amountRead > 0) {
++				// remember length of contents
++				contentsLength += amountRead;
++			}
++		} while (amountRead != -1);
++
++			// resize contents if necessary
++		if (contentsLength < contents.length) {
++			System.arraycopy(
++				contents,
++				0,
++				contents = new byte[contentsLength],
++				0,
++				contentsLength);
++		}
++		return contents;
+ 	}
+ 
+ 
+@@ -479,7 +514,16 @@
+ 	 * @throws IOException if a problem occurred reading the stream.
+ 	 */
+ 	public static byte[] readNBytes(InputStream input, int byteLength) throws IOException {
+-		return input.readNBytes(byteLength);
++		byte[] contents = new byte[byteLength];
++		int len = 0;
++		int readSize = 0;
++		while ((readSize != -1) && (len != byteLength)) {
++			// See PR 1FMS89U
++			// We record first the read size. In this case len is the actual read size.
++			len += readSize;
++			readSize = input.read(contents, len, byteLength - len);
++		}
++		return contents;
+ 	}
+ 
+ 	private static Map<String, byte[]> bomByEncoding = new HashMap<String, byte[]>();

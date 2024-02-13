@@ -1,7 +1,7 @@
 #
 # spec file for package ecj
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ Source1:        https://repo1.maven.org/maven2/org/eclipse/jdt/ecj/%{bundle_ver}
 # Extracted from https://download.eclipse.org/eclipse/downloads/drops4/%%{drop}/ecj-%%{jar_ver}.jar
 Source2:        MANIFEST.MF
 Patch0:         ecj-rpmdebuginfo.patch
+Patch1:         ecj-java8compat.patch
 BuildRequires:  ant
 BuildRequires:  java-devel >= 11
 BuildRequires:  javapackages-local >= 6
@@ -45,6 +46,7 @@ the JDT Core batch compiler.
 %prep
 %setup -q -c
 %patch0 -p1
+%patch1 -p1
 
 # Specify encoding
 sed -i -e '/compilerarg/s/Xlint:none/Xlint:none -encoding cp1252/' build.xml
@@ -59,11 +61,13 @@ cp %{SOURCE2} scripts/binary/META-INF/MANIFEST.MF
 # jar
 install -dm 0755 %{buildroot}%{_javadir}/%{name}
 install -pm 0644 ecj.jar %{buildroot}%{_javadir}/%{name}/ecj.jar
+install -pm 0644 javax17api.jar %{buildroot}%{_javadir}/%{name}/javax17api.jar
 
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
 %{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}/ecj.pom
 %add_maven_depmap %{name}/ecj.pom %{name}/ecj.jar -a "org.eclipse.jdt:core,org.eclipse.jdt.core.compiler:ecj,org.eclipse.tycho:org.eclipse.jdt.core,org.eclipse.tycho:org.eclipse.jdt.compiler.apt"
+%add_maven_depmap org.eclipse:javax17api:17 %{name}/javax17api.jar -a "org.eclipse:java9api,org.eclipse:java10api:org.eclipse:java15api"
 
 # Install the ecj wrapper script
 %jpackage_script org.eclipse.jdt.internal.compiler.batch.Main '' '' ecj ecj true

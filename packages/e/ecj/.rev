@@ -259,4 +259,12 @@
     <comment>little tiny changes fix</comment>
     <requestid>1105406</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>671f05d58512b487f2f111c7c1d3b9b9</srcmd5>
+    <version>4.23</version>
+    <time>1707860695</time>
+    <user>anag+factory</user>
+    <comment>Restore possibility to run with java 8</comment>
+    <requestid>1146470</requestid>
+  </revision>
 </revisionlist>
