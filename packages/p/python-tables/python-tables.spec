@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-tables
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,32 +18,22 @@
 
 %define psuffix %{nil}
 %global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "test-py38"
-%define psuffix -test-py38
-%define skip_python39 1
-%define skip_python310 1
-%define skip_python311 1
-%bcond_without test
-%endif
-%if "%{flavor}" == "test-py39"
-%define psuffix -test-py39
-%define skip_python38 1
-%define skip_python310 1
-%define skip_python311 1
-%bcond_without test
-%endif
 %if "%{flavor}" == "test-py310"
 %define psuffix -test-py310
-%define skip_python38 1
-%define skip_python39 1
 %define skip_python311 1
+%define skip_python312 1
 %bcond_without test
 %endif
 %if "%{flavor}" == "test-py311"
 %define psuffix -test-py311
-%define skip_python38 1
-%define skip_python39 1
 %define skip_python310 1
+%define skip_python312 1
+%bcond_without test
+%endif
+%if "%{flavor}" == "test-py312"
+%define psuffix -test-py312
+%define skip_python310 1
+%define skip_python311 1
 %bcond_without test
 %endif
 %if "%{flavor}" == ""
@@ -90,7 +80,7 @@ Requires:       python-py-cpuinfo
 # boo#1196682
 %requires_eq    hdf5
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     bzip2
 Recommends:     lzo
 %python_subpackages

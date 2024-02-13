@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  6 09:37:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- disable testing for 3.9, add 3.12 testing
+
+-------------------------------------------------------------------
 Fri Dec  1 02:23:22 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.9.2:
@@ -41,7 +46,7 @@ Fri Dec  1 02:23:22 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Mon Aug 21 00:59:03 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Pin Cython to < 3. 
+- Pin Cython to < 3.
 
 -------------------------------------------------------------------
 Fri Aug 18 10:11:42 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
@@ -150,7 +155,7 @@ Wed Feb 17 22:16:55 UTC 2021 - Ben Greiner <code@bnavigator.de>
 - Skip python36 build: python36-numpy was dropped in Tumbleweed
   due to NEP 29
 - Add tables-pr862-lowercasefdtype.patch to support NumPy 1.20
-  gh#PyTables/PyTables#862 
+  gh#PyTables/PyTables#862
 
 -------------------------------------------------------------------
 Thu Dec 24 13:47:31 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
@@ -161,7 +166,7 @@ Thu Dec 24 13:47:31 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 - add PyTables-pr810-tostring.patch in order to avoid numerous
   deprecation warnings -- gh#PyTables/PyTables#810
 - add PyTables-skip-test_vlarray.patch in order to skip failing
-  tests -- gh#PyTables/PyTables#845 
+  tests -- gh#PyTables/PyTables#845
 
 -------------------------------------------------------------------
 Tue May 19 08:03:09 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
@@ -505,66 +510,66 @@ Thu May  8 11:15:34 UTC 2014 - toddrme2178@gmail.com
     even if the problem was not real.
 - New version 3.1.0
   - New features¶
-    - Now PyTables is able to save/restore the default value 
+    - Now PyTables is able to save/restore the default value
       of EnumAtom types.
     - Implemented support for the H5FD_SPLIT driver.
-    - New quantization filter: the filter truncates floating point 
-      data to a specified precision before writing to disk. 
+    - New quantization filter: the filter truncates floating point
+      data to a specified precision before writing to disk.
       This can significantly improve the performance of compressors.
     - Added new VLArray.get_row_size() method to VLArray for querying
       the number of atoms of a VLArray row. Closes gh-24 and gh-315.
-    - The internal Blosc library has been updated to version 1.3.2. 
-      All new features introduced in the Blosc 1.3.x series, and in 
-      particular the ability to leverage different compressors within 
-      Blosc (see the Blosc Release Notes), are now available in 
+    - The internal Blosc library has been updated to version 1.3.2.
+      All new features introduced in the Blosc 1.3.x series, and in
+      particular the ability to leverage different compressors within
+      Blosc (see the Blosc Release Notes), are now available in
       PyTables via the blosc filter.
   - Improvements¶
-    - The node caching mechanism has been completely redesigned to 
-      be simpler and less dependent from specific behaviours of 
-      the __del__ method. Now PyTables is compatible with the 
+    - The node caching mechanism has been completely redesigned to
+      be simpler and less dependent from specific behaviours of
+      the __del__ method. Now PyTables is compatible with the
       forthcoming Python 3.4. Closes gh-306.
-    - PyTables no longer uses shared/cached file handlers. 
-      This change somewhat improves support for concurrent reading 
-      allowing the user to safely open the same file in different 
-      threads for reading (requires HDF5 >= 1.8.7). More details 
-      about this change can be found in the Backward incompatible 
+    - PyTables no longer uses shared/cached file handlers.
+      This change somewhat improves support for concurrent reading
+      allowing the user to safely open the same file in different
+      threads for reading (requires HDF5 >= 1.8.7). More details
+      about this change can be found in the Backward incompatible
       changes section. See also gh-130, gh-129 gh-292 and gh-216.
-    - PyTables is now able to detect and use external installations 
-      of the Blosc library (closes gh-104). If Blosc is not found in 
-      the system, and the user do not specify a custom installation 
-      directory, then it is used an internal copy of the Blosc source 
+    - PyTables is now able to detect and use external installations
+      of the Blosc library (closes gh-104). If Blosc is not found in
+      the system, and the user do not specify a custom installation
+      directory, then it is used an internal copy of the Blosc source
       code.
     - Automatically disable extended float support if a buggy version
       of HDF5 is detected (see also Issues with H5T_NATIVE_LDOUBLE).
-    - Documented an unexpected behaviour with string literals in query 
+    - Documented an unexpected behaviour with string literals in query
       conditions on Python 3 (closes gh-265)
-    - The deprecated getopt module has been dropped in favour of 
+    - The deprecated getopt module has been dropped in favour of
       argparse in all command line utilities (close gh-251)
     - Improved the installation section of the PyTables User’s Guide.
         - instructions for installing PyTables via pip have been added.
-        - added a reference to the Anaconda, Canopy and Christoph 
+        - added a reference to the Anaconda, Canopy and Christoph
           Gohlke suites (closes gh-291)
     - Enabled Travis-CI builds for Python 3.3
     - Tables.read_coordinates() now also works with boolean indices input.
     - Improved compatibility with numpy >= 1.8 (see gh-259)
     - The code of the benchmark programs (bench directory) has been updated.
-    - Fixed some warning related to non-unicode file names 
+    - Fixed some warning related to non-unicode file names
       (the Windows bytes API has been deprecated in Python 3.4)
   - Bugs fixed¶
     - Fixed detection of platforms supporting Blosc
     - Fixed a crash that occurred when one attempts to write a numpy array
       to an Atom (closes gh-209 and gh-296)
     - Prevent creation of a table with no columns.
-    - Fixed a memory leak that occured when iterating over 
+    - Fixed a memory leak that occured when iterating over
       CArray/EArray objects.
     - Make NaN types sort to the end. Closes gh-282 and gh-313
     - Fixed selection on float columns when NaNs are present.
-    - Fix computation of the buffer size for iterations on rows. 
-      The buffers size was overestimated resulting in a MemoryError 
+    - Fix computation of the buffer size for iterations on rows.
+      The buffers size was overestimated resulting in a MemoryError
       in some cases. Closes gh-316. Thamks to bbudescu.
     - Better check of file open mode. Closes gh-318.
     - The Blosc filter now works correctly together with fletcher32. Closes gh-21.
-    - Close the file handle before trying to delete the corresponding file. 
+    - Close the file handle before trying to delete the corresponding file.
       Fixes a test failure on Windows.
     - Use integer division for computing indices (fixes some warning on Windows)
 - Use external python-blosc.  The internal one builds a bad version
@@ -749,7 +754,7 @@ Thu Mar  8 12:31:53 UTC 2012 - saschpe@suse.de
 -------------------------------------------------------------------
 Sat Feb 25 21:35:21 UTC 2012 - scorot@free.fr
 
-- fix build for SLE-11 
+- fix build for SLE-11
 
 -------------------------------------------------------------------
 Fri Jan  6 17:28:34 UTC 2012 - toddrme2178@gmail.com
