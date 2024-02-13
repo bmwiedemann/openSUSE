@@ -1,6 +1,6 @@
---- a/src/java.base/share/classes/java/time/zone/TzdbZoneRulesProvider.java	Thu Jun 28 17:49:13 2018 -0700
-+++ b/src/java.base/share/classes/java/time/zone/TzdbZoneRulesProvider.java	Fri Jun 29 08:23:40 2018 +0200
-@@ -74,6 +74,7 @@
+--- a/src/java.base/share/classes/java/time/zone/TzdbZoneRulesProvider.java
++++ b/src/java.base/share/classes/java/time/zone/TzdbZoneRulesProvider.java
+@@ -74,6 +74,7 @@ import java.util.HashSet;
  import java.util.List;
  import java.util.Map;
  import java.util.NavigableMap;
@@ -8,7 +8,7 @@
  import java.util.Set;
  import java.util.TreeMap;
  import java.util.concurrent.ConcurrentHashMap;
-@@ -106,7 +107,14 @@
+@@ -106,7 +107,14 @@ final class TzdbZoneRulesProvider extends ZoneRulesProvider {
       */
      public TzdbZoneRulesProvider() {
          try {
@@ -24,7 +24,7 @@
              try (DataInputStream dis = new DataInputStream(
                       new BufferedInputStream(new FileInputStream(
                           new File(libDir, "tzdb.dat"))))) {
-@@ -117,6 +125,28 @@
+@@ -117,6 +125,28 @@ final class TzdbZoneRulesProvider extends ZoneRulesProvider {
          }
      }
  
@@ -53,9 +53,9 @@
      @Override
      protected Set<String> provideZoneIds() {
          return new HashSet<>(regionIds);
---- a/src/java.base/share/classes/sun/util/calendar/ZoneInfoFile.java	Thu Jun 28 17:49:13 2018 -0700
-+++ b/src/java.base/share/classes/sun/util/calendar/ZoneInfoFile.java	Fri Jun 29 08:23:40 2018 +0200
-@@ -45,6 +45,7 @@
+--- a/src/java.base/share/classes/sun/util/calendar/ZoneInfoFile.java
++++ b/src/java.base/share/classes/sun/util/calendar/ZoneInfoFile.java
+@@ -45,6 +45,7 @@ import java.util.HashMap;
  import java.util.List;
  import java.util.Locale;
  import java.util.Map;
@@ -63,7 +63,7 @@
  import java.util.SimpleTimeZone;
  import java.util.concurrent.ConcurrentHashMap;
  import java.util.zip.CRC32;
-@@ -251,7 +252,15 @@
+@@ -252,7 +253,15 @@ public final class ZoneInfoFile {
          AccessController.doPrivileged(new PrivilegedAction<Void>() {
              public Void run() {
                  try {
@@ -80,7 +80,7 @@
                      try (DataInputStream dis = new DataInputStream(
                               new BufferedInputStream(new FileInputStream(
                                   new File(libDir, "tzdb.dat"))))) {
-@@ -265,6 +274,28 @@
+@@ -266,6 +275,28 @@ public final class ZoneInfoFile {
          });
      }
  

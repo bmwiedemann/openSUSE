@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 12 16:18:17 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 17.0.10 with OpenJ9 0.43.0 virtual machine
+- Including Oracle January 2024 CPU changes
+  * CVE-2024-20918 (bsc#1218907), CVE-2024-20919 (bsc#1218903),
+    CVE-2024-20921 (bsc#1218905), CVE-2024-20932 (bsc#1218908),
+    CVE-2024-20945 (bsc#1218909), CVE-2024-20952 (bsc#1218911)
+  * OpenJ9 changes, see 
+    https://www.eclipse.org/openj9/docs/version0.43/
+- Modified patches:
+  * alternative-tzdb_dat.patch
+  * openj9-nogit.patch.in
+    + rediff to changed context
+
+-------------------------------------------------------------------
 Thu Nov 23 07:20:07 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to OpenJDK 17.0.9 with OpenJ9 0.41.0 virtual machine

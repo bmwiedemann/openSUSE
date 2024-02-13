@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package java-17-openj9
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,8 @@
 #
 
 
+# ugly hack to prevent spec-cleaner from changing make -> make_build
+%global make make
 %{!?aarch64:%global aarch64 aarch64 arm64 armv8}
 %global debug 0
 %global is_release 1
@@ -29,18 +31,18 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      17
 %global interimver      0
-%global updatever       9
-%global buildver        9
+%global updatever       10
+%global buildver        7
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk17/archive
-%global root_revision   3699725139c9bcbb2b83e881dac99266e080073e
-%global root_branch     v0.41.0-release
+%global root_revision   2aad089841f6f906d5953c7c0755a0de5d9ff2e0
+%global root_branch     v0.43.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    5eee6ad9d0969d938892cd186056ae66912c7a61
-%global omr_branch      v0.41.0-release
+%global omr_revision    ea8124dbc1b625da6f607b66d2b657dce90c96c4
+%global omr_branch      v0.43.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 461bf3c70bd87f1bc8422214cdb5c6c3a0ae4ff1
-%global openj9_branch   v0.41.0-release
-%global openj9_tag      openj9-0.41.0
+%global openj9_revision 2c3d78b48adf36dbbef5852b95889da5a5ce1279
+%global openj9_branch   v0.43.0-release
+%global openj9_tag      openj9-0.43.0
 # priority must be 6 digits in total
 %if 0%{?suse_version} > 1500 || 0%{?java_bootstrap}
 %global priority        2701
@@ -96,8 +98,6 @@ Source1:        %{omr_repository}/%{omr_revision}.zip
 Source2:        %{openj9_repository}/%{openj9_revision}.zip
 # Desktop files. Adapted from IcedTea.
 Source11:       jconsole.desktop.in
-# nss configuration file
-Source13:       nss.cfg
 # Ensure we aren't using the limited crypto policy
 Source14:       TestCryptoLevel.java
 # Ensure ECDSA is working
@@ -241,7 +241,7 @@ Requires(post): java-ca-certificates
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     tzdata-java8
 Obsoletes:      %{name}-accessibility
 %if 0%{?suse_version} > 1500 || 0%{?java_bootstrap}
@@ -282,7 +282,7 @@ Requires:       %{name} = %{version}-%{release}
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %if 0%{?suse_version} > 1500 || 0%{?java_bootstrap}
 # Standard JPackage devel provides.
 Provides:       java-%{javaver}-devel = %{version}
@@ -333,7 +333,7 @@ Requires:       jpackage-utils
 # Post requires update-alternatives to install javadoc alternative.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall javadoc alternative.
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if 0%{?suse_version} > 1500 || 0%{?java_bootstrap}
 # Standard JPackage javadoc provides.
@@ -441,7 +441,7 @@ bash configure \
     --disable-javac-server \
     --enable-demos
 
-make \
+%{make} \
     LOG=trace \
     %{imagestarget} docs
 
@@ -521,12 +521,9 @@ pushd %{imagesdir}
   # Install jmods
   cp -a jmods %{buildroot}%{_jvmdir}/%{sdkdir}
 
-# Install nss.cfg
-install -m 644 %{SOURCE13} %{buildroot}%{_jvmdir}/%{sdkdir}/conf/security/
-
-# Install Javadoc documentation.
-install -d -m 755 %{buildroot}%{_javadocdir}
-cp -a docs %{buildroot}%{_javadocdir}/%{sdklnk}
+  # Install Javadoc documentation.
+  install -d -m 755 %{buildroot}%{_javadocdir}
+  cp -a docs %{buildroot}%{_javadocdir}/%{sdklnk}
 
 popd
 
@@ -775,7 +772,7 @@ fi
 %{_jvmdir}/%{sdkdir}/conf/sdp/sdp.conf.template
 %{_jvmdir}/%{sdkdir}/conf/security/java.policy
 %{_jvmdir}/%{sdkdir}/conf/security/java.security
-%ifarch x86_64
+%ifnarch %{aarch64}
 %{_jvmdir}/%{sdkdir}/conf/security/nss.fips.cfg
 %endif
 %{_jvmdir}/%{sdkdir}/conf/security/policy/limited/default_local.policy
@@ -865,7 +862,6 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/*/libjvm.so
 
 %config(noreplace) %{_jvmdir}/%{sdkdir}/lib/security/blocked.certs
-%config(noreplace) %{_jvmdir}/%{sdkdir}/conf/security/nss.cfg
 %{_jvmdir}/%{sdkdir}/lib/security/default.policy
 %{_jvmdir}/%{sdkdir}/lib/security/public_suffix_list.dat
 
