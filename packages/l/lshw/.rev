@@ -333,4 +333,17 @@ factory)</comment>
   * merge github PR #98</comment>
     <requestid>1129554</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>3b2b41c70a2bae8358dfe37dd5148ab3</srcmd5>
+    <version>B.02.20</version>
+    <time>1707860671</time>
+    <user>anag+factory</user>
+    <comment>- Update to version B.02.20:
+  * update changelog
+  * update data files
+  * get rid of GTK deprecation warning
+  * get rid of some snprintf warnings
+  * Add support for 100Gbit interfaces</comment>
+    <requestid>1146397</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package lshw
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,11 +18,10 @@
 
 
 Name:           lshw
-Version:        B.02.19.2+git.20231115
+Version:        B.02.20
 Release:        0
 Summary:        HardWare LiSter
 License:        GPL-2.0-only
-Group:          Hardware/Other
 URL:            https://www.ezix.org/project/wiki/HardwareLiSter
 Source:         lshw-%{version}.tar.gz
 Source1:        lshw.desktop.in
@@ -56,8 +55,8 @@ Requires:       %{name} = %{version}-%{release}
 Requires:       hicolor-icon-theme
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
-Requires(postun):hicolor-icon-theme
-Requires(postun):update-desktop-files
+Requires(postun): hicolor-icon-theme
+Requires(postun): update-desktop-files
 
 %description gui
 lshw (Hardware Lister) is a small tool to provide detailed informaton on the

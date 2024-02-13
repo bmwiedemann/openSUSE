@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 13 12:37:05 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version B.02.20:
+  * update changelog
+  * update data files
+  * get rid of GTK deprecation warning
+  * get rid of some snprintf warnings
+  * Add support for 100Gbit interfaces
+
+-------------------------------------------------------------------
 Tue Nov 28 11:52:37 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version B.02.19.2+git.20231115:
