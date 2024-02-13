@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 13 13:18:33 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.0:
+  * Replace tui (no longer maintained) with ratatui #10
+  * Update dependencies #12
+  * Add --port option to support epmdless nodes #13
+
+-------------------------------------------------------------------
 Sun Oct 22 10:17:39 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.2.0:

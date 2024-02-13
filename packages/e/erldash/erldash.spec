@@ -1,7 +1,7 @@
 #
 # spec file for package erldash
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           erldash
-Version:        0.2.0~0
+Version:        0.3.0+0
 Release:        0
 Summary:        A simple, terminal-based Erlang dashboard
 License:        (Apache-2.0 OR MIT) AND MIT AND Apache-2.0 WITH LLVM-exception AND MPL-2.0
@@ -36,7 +36,7 @@ erldash connects to an Erlang node using the dynamic node name feature (since OT
 
 %prep
 %autosetup -a1
-mkdir .cargo
+mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
 
 %build

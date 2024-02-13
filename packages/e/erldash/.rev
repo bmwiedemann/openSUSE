@@ -60,4 +60,15 @@
   * Introduce run and replay subcommands (breaking change) #9</comment>
     <requestid>1119420</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1ee3b76d9777b7eec7f7fbccd99098a4</srcmd5>
+    <version>0.3.0+0</version>
+    <time>1707860678</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.3.0:
+  * Replace tui (no longer maintained) with ratatui #10
+  * Update dependencies #12
+  * Add --port option to support epmdless nodes #13</comment>
+    <requestid>1146402</requestid>
+  </revision>
 </revisionlist>
