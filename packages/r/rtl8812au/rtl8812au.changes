@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 30 21:11:09 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 5.13.6+git20240119.3b921c0
+
+  * fix problem in scripts related to added but not installed dkms
+    installation attempts
+  * update support for kernel 5.12
+  * Update README.md
+  * fix support for kernel 6.7
+  * update docs and scripts
+
+-------------------------------------------------------------------
 Tue Aug  1 12:04:41 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 5.13.6+git20230722.b5f4e6e
