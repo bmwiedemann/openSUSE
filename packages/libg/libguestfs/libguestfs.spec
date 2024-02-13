@@ -32,6 +32,7 @@ Source100:      mount-rootfs-and-chroot.sh
 Source101:      README
 
 # Patches
+Patch1:         use-rtc-driftfix-slew-for-x86-only.patch
 
 BuildRequires:  bison
 BuildRequires:  file-devel

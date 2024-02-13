@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  5 14:24:08 MST 2024 - carnold@suse.com
+
+- bsc#1206361 - SLES 15 SP5 Beta2 - virt-customize ssh-inject fails
+  (s390x/kvm/libvirt) (-> Server-Applications module)
+  use-rtc-driftfix-slew-for-x86-only.patch
+
+-------------------------------------------------------------------
 Thu Feb  1 04:30:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libzstd) additionaly to zstd: we need the
