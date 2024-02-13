@@ -24,14 +24,11 @@
 %endif
 %if 0%{?suse_version} > 1210
 %define has_systemd 1
-BuildRequires:  pkgconfig(systemd)
-%{?systemd_ordering}
 %else
 %define has_systemd 0
-Requires(pre):  %insserv_prereq
 %endif
 Name:           cscreen
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        Console screen
 License:        BSD-4-Clause
@@ -43,11 +40,16 @@ BuildRequires:  sudo
 Recommends:     logrotate
 Requires:       screen
 Requires:       sudo
-Requires(pre):  shadow
 Requires(postun): coreutils
 %if 0%{?has_systemd}
+BuildRequires:  pkgconfig(systemd)
+BuildRequires:  sysuser-tools
+Requires(pre):  system-user-%name = %version-%release
+%{?systemd_ordering}
 %else
 PreReq:         %fillup_prereq
+PreReq:         %insserv_prereq
+PreReq:         shadow
 %endif
 BuildArch:      noarch
 BuildRoot:      %_tmppath/%name-%version-build
@@ -55,6 +57,17 @@ BuildRoot:      %_tmppath/%name-%version-build
 %description
 This package allows to run multiple consoles in one 'screen' and
 to start the screen automatically during boot.
+
+%if 0%{?has_systemd}
+%package -n system-user-%name
+Summary:        System user %USERNAME
+Requires(pre):  group(dialout)
+Requires(pre):  group(tty)
+%?sysusers_requires
+
+%description -n system-user-%name
+System user %USERNAME
+%endif
 
 %prep
 %setup
@@ -78,6 +91,15 @@ mkdir -vp %buildroot%_tmpfilesdir
 tee %buildroot%_tmpfilesdir/%name.conf <<'_EOF_'
 d %_rundir/%name 0750 %USERNAME %GROUPNAME -
 _EOF_
+suc='system-user-%name.conf'
+tee "${suc}" <<'_EOC_'
+u %USERNAME %GROUPNAME "cscreen daemon user" %{HOMEDIR} /bin/bash
+m %USERNAME dialout
+m %USERNAME tty
+_EOC_
+mkdir -p '%buildroot%_sysusersdir'
+cp -avLt "$_" "${suc}"
+%sysusers_generate_pre "${suc}" system-user-%name
 %else
 install -Dm644 configs/cscreen.sysconfig %buildroot/%_fillupdir/sysconfig.%name
 install -Dm755 systemd/cscreen.init %buildroot/%_sysconfdir/init.d/cscreend
@@ -100,7 +122,7 @@ mkdir -pm700 %buildroot/%{HOMEDIR}/.ssh
 %pre
 %if 0%{?has_systemd}
 %service_add_pre cscreend.service
-%endif
+%else
 getent group %{GROUPNAME} >/dev/null || groupadd -r %{GROUPNAME}
 if getent group tty >/dev/null;then
     TTY_GROUP="-G tty"
@@ -114,6 +136,7 @@ fi
 getent passwd %{USERNAME} >/dev/null || \
     useradd -r -g %{GROUPNAME} -d %{HOMEDIR} -s /bin/bash \
 	    -c "cscreen daemon user" %{USERNAME} $TTY_GROUP
+%endif
 
 %post
 %if 0%{?has_systemd}
@@ -150,6 +173,12 @@ if [ -d /run/uscreens/S-cscreen ];then
 	rm -rf /run/uscreens/S-cscreen
     fi
 fi
+
+%if 0%{?has_systemd}
+%pre -n system-user-%name -f system-user-%name.pre
+%files -n system-user-%name
+%_sysusersdir/*.conf
+%endif
 
 %files -f %name.files
 %defattr(-,root,root)
