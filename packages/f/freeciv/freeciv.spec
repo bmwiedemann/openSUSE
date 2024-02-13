@@ -1,7 +1,7 @@
 #
 # spec file for package freeciv
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           freeciv
-Version:        3.0.9
+Version:        3.0.10
 Release:        0
 Summary:        Free Civilization Clone
 License:        GPL-2.0-or-later

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Feb 10 15:06:23 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- update to version 3.0.10:
+  * Generic bugfix release* Generic bugfix release
+  * Fixed nation color selection assert failures when moving from
+    pre-game to turn 1
+  * Fixed a crash when city removal left a unit stranded
+  * Fixed growing of the internal string handling buffer, fixing,
+    e.g., issues with very long lines in the savegame
+  * Fixed fc_vsnprintf() return value on Windows, fixing, e.g.,
+    issues on loading the tutorial scenario
+  * Various internal changes which should only affect developers
+  * Fixed bad memory access while loading freeciv-2.6 format
+    ruleset
+  * Miscellaneous improvements to in-game text and user
+    documentation
+  * Miscellaneous changes to developer/install/ruleset docs
+  * Updated translations
+  * see https://freeciv.fandom.com/wiki/NEWS-3.0.10
+
+-------------------------------------------------------------------
 Tue Nov 21 16:06:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to version 3.0.9:
