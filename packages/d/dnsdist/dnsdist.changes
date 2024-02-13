@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Feb  9 13:37:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Revert "provide user(dnsdist) and group(dnsdist)": the package
+  already uses sysusers-tools to create the user.
+- Actually install dnsdist.user as %{_sysusersdir}/dnsdist.conf.
+
+-------------------------------------------------------------------
+Fri Feb  9 12:41:00 UTC 2024 - Adam Majer <adam.majer@suse.de> - 1.8.3
+
+- update to 1.8.3
+  https://dnsdist.org/changelog.html#change-1.8.3
+  https://dnsdist.org/changelog.html#change-1.8.2
+
+-------------------------------------------------------------------
+Mon Feb  5 10:06:37 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- provide user(dnsdist) and group(dnsdist)
+
+-------------------------------------------------------------------
 Mon Oct 30 16:44:24 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd): configure checks for the

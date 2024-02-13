@@ -1,7 +1,7 @@
 #
 # spec file for package dnsdist
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%define home           %{_var}/lib/%{name}
 %if 0%{?suse_version}
 %bcond_without  apparmor
 %else
@@ -25,29 +26,25 @@
 # this should only be needed if we have to patch the ragel files
 # in which case it might be faster to just run it locally and put the regenerated file into the tarball
 %bcond_with     dnsdist_ragel
-
 # requires h2o http server for DoH
 %bcond_with  dnsdist_doh
-
-%if 0%{?%is_backports} || 0%{?suse_version} >= 1599
+%if 0%{?%{is_backports}} || 0%{?suse_version} >= 1599
 %bcond_without  dnsdist_re2
 %else
 %bcond_with     dnsdist_re2
 %endif
-
 %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1599
 %bcond_without  dnsdist_luajit
 %else
 %bcond_with     dnsdist_luajit
 %endif
-
 Name:           dnsdist
-Version:        1.8.1
+Version:        1.8.3
 Release:        0
-License:        GPL-2.0-only
 Summary:        A highly DNS-, DoS- and abuse-aware loadbalancer
-URL:            http://www.powerdns.com/
+License:        GPL-2.0-only
 Group:          Productivity/Networking/DNS/Servers
+URL:            https://www.powerdns.com/
 Source0:        https://downloads.powerdns.com/releases/dnsdist-%{version}.tar.bz2
 Source1:        https://downloads.powerdns.com/releases/dnsdist-%{version}.tar.bz2.sig
 Source2:        https://dnsdist.org/_static/dnsdist-keyblock.asc#/dnsdist.keyring
@@ -55,6 +52,22 @@ Source10:       dnsdist.user
 Source11:       dnsdist.lua
 Source12:       usr.sbin.dnsdist
 Source13:       local.usr.sbin.dnsdist
+BuildRequires:  gcc-c++
+BuildRequires:  libboost_headers-devel
+BuildRequires:  libedit-devel
+BuildRequires:  libfstrm-devel
+BuildRequires:  libsodium-devel
+BuildRequires:  lmdb-devel
+BuildRequires:  net-snmp-devel
+BuildRequires:  pkgconfig
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
+BuildRequires:  pkgconfig(libcap)
+BuildRequires:  pkgconfig(libnghttp2)
+BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(systemd)
+%systemd_ordering
+%sysusers_requires
 %if %{with apparmor}
 BuildRequires:  apparmor-profiles
 %endif
@@ -67,29 +80,11 @@ BuildRequires:  re2-devel
 %if %{with dnsdist_doh}
 BuildRequires:  pkgconfig(libh2o-evloop)
 %endif
-BuildRequires:  gcc-c++
-BuildRequires:  libboost_headers-devel
-BuildRequires:  libedit-devel
-BuildRequires:  libfstrm-devel
-BuildRequires:  libsodium-devel
-BuildRequires:  lmdb-devel
 %if %{with dnsdist_luajit}
 BuildRequires:  pkgconfig(luajit)
 %else
 BuildRequires:  pkgconfig(lua)
 %endif
-BuildRequires:  net-snmp-devel
-BuildRequires:  pkgconfig
-BuildRequires:  sysuser-shadow
-BuildRequires:  sysuser-tools
-BuildRequires:  pkgconfig(libcap)
-BuildRequires:  pkgconfig(libnghttp2)
-BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(systemd)
-%{systemd_ordering}
-%{sysusers_requires}
-
-%define home           %{_var}/lib/%{name}
 
 %description
 dnsdist is a highly DNS-, DoS- and abuse-aware loadbalancer. Its goal in life
@@ -100,11 +95,11 @@ dnsdist is dynamic, in the sense that its configuration can be changed at
 runtime, and that its statistics can be queried from a console-like interface.
 
 %prep
-%autosetup -p1 -n %name-%version
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 export CFLAGS="%{optflags} -Wno-error=deprecated-declarations"
-%ifarch %arm %ix86
+%ifarch %{arm} %{ix86}
 export CFLAGS="$CFLAGS -D__USE_TIME_BITS64"
 %endif
 export CXXFLAGS="$CFLAGS"
@@ -132,22 +127,24 @@ export CXXFLAGS="$CFLAGS"
   --bindir=%{_sbindir} \
   --sysconfdir=%{_sysconfdir}/%{name}/
 
-make %{?_smp_mflags}
+%make_build
 %sysusers_generate_pre %{SOURCE10} %{name}
 
 %install
-make install DESTDIR=%{buildroot} %{?_smp_mflags}
+%make_install
 #
 %if 0%{?suse_version}
   ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %endif
 %if %{with apparmor}
-install -D -m 0644 %{S:12} %{buildroot}%{_sysconfdir}/apparmor.d/usr.sbin.dnsdist
-install -D -m 0644 %{S:13} %{buildroot}%{_sysconfdir}/apparmor.d/local/usr.sbin.dnsdist
+install -D -m 0644 %{SOURCE12} %{buildroot}%{_sysconfdir}/apparmor.d/usr.sbin.dnsdist
+install -D -m 0644 %{SOURCE13} %{buildroot}%{_sysconfdir}/apparmor.d/local/usr.sbin.dnsdist
 %endif
 
 install -Dd -m 0750    %{buildroot}%{_sysconfdir}/%{name}/ %{buildroot}%{home}/
-install -m 0640 %{S:11} %{buildroot}%{_sysconfdir}/%{name}/dnsdist.conf
+install -m 0640 %{SOURCE11} %{buildroot}%{_sysconfdir}/%{name}/dnsdist.conf
+
+install -D -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/dnsdist.conf
 
 %pre -f %{name}.pre
 %service_add_pre %{name}.service %{name}@.service
@@ -164,8 +161,9 @@ install -m 0640 %{S:11} %{buildroot}%{_sysconfdir}/%{name}/dnsdist.conf
 %files
 %doc README.md
 %{_sbindir}/dnsdist
-%{_mandir}/man1/dnsdist.1*
+%{_mandir}/man1/dnsdist.1%{?ext_man}
 %{_unitdir}/%{name}*.service
+%{_sysusersdir}/dnsdist.conf
 %if 0%{?suse_version}
 %{_sbindir}/rc%{name}
 %endif

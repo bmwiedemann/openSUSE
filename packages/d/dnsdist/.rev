@@ -64,4 +64,16 @@
     <comment></comment>
     <requestid>1128351</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>141d4a68233f38e68aab14f739acc4f8</srcmd5>
+    <version>1.8.3</version>
+    <time>1707860535</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1145445 from dimstar
+
+- Revert &quot;provide user(dnsdist) and group(dnsdist)&quot;: the package
+  already uses sysusers-tools to create the user.
+- Actually install dnsdist.user as %{_sysusersdir}/dnsdist.conf.</comment>
+    <requestid>1146199</requestid>
+  </revision>
 </revisionlist>
