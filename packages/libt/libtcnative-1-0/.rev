@@ -337,4 +337,12 @@
     <comment>sync changes with sle</comment>
     <requestid>1129304</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>c9533358313dedcd3238668e4e4aa920</srcmd5>
+    <version>1.2.39</version>
+    <time>1707860686</time>
+    <user>anag+factory</user>
+    <comment>1.2.39</comment>
+    <requestid>1146440</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 13 09:05:45 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.2.39:
+  * Fix: 67061: If the insecure optionalNoCA certificate verification
+    mode is used, disable OCSP if enabled else client certificates
+    from unknown certificate authorities will be rejected.
+  * Update: Update the recommended minimum version of OpenSSL to
+    3.0.11.
+  * Change the hardcoded libopenssl-1_1-devel to libopenssl-devel
+    for distributions that have the right version
+
+-------------------------------------------------------------------
 Tue Nov 14 08:56:49 UTC 2023 - Michele Bussolotto <michele.bussolotto@suse.com>
 
 - Version update to version 1.2.38:

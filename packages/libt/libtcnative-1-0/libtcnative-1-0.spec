@@ -1,7 +1,7 @@
 #
 # spec file for package libtcnative-1-0
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 Name:           libtcnative-1-0
-Version:        1.2.38
+Version:        1.2.39
 Release:        0
 Summary:        Tomcat resources for performance, compatibility, etc
 License:        Apache-2.0
@@ -31,12 +32,16 @@ BuildRequires:  fdupes
 BuildRequires:  java-devel
 BuildRequires:  javapackages-tools
 BuildRequires:  libapr1-devel >= 1.4.3
-BuildRequires:  libopenssl-1_1-devel
 BuildRequires:  pkgconfig
 # Upstream compatibility:
 Provides:       tcnative = %{version}
 #Fedora compatibility
 Provides:       tomcat-native = %{version}
+%if 0%{?suse_version} >= 1550
+BuildRequires:  libopenssl-devel >= 3.0.11
+%else
+BuildRequires:  libopenssl-1_1-devel
+%endif
 
 %description
 The Apache Tomcat Native Library is an optional component for use
@@ -95,7 +100,7 @@ cd native
     --with-apr=%{_bindir}/apr-1-config \
     --with-java-home=%{java_home} \
     --with-java-platform=2
-make %{?_smp_mflags}
+%make_build
 
 %install
 make -C native install DESTDIR=%{buildroot}
