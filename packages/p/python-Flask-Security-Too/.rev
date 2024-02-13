@@ -298,4 +298,13 @@ This is a maintained fork of python-Flask-Security</comment>
   - use-pyqrcodeng.patch</comment>
     <requestid>1137307</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>118f4b3fa302ed8a2950dc523467bd70</srcmd5>
+    <version>5.3.3</version>
+    <time>1707860526</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-python-312.patch:
+  * Support Python 3.12 changes.</comment>
+    <requestid>1146065</requestid>
+  </revision>
 </revisionlist>

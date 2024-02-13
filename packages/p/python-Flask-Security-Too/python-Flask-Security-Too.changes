@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 12 04:11:51 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-312.patch:
+  * Support Python 3.12 changes.
+
+-------------------------------------------------------------------
 Sat Jan  6 20:55:19 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 5.3.3:
