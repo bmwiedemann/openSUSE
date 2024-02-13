@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Feb 11 20:32:19 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- update to 1.0.134
+  * scripts/debian-common: install Priority:required with buildd variant
+    for bookworm and earlier
+  * error out if chroot cannot be found in $PATH
+  * setup_devices: fall back to setup_devices_bind if setup_devices_simple
+    failed irrespective of the container
+  * Move "unshared" test from autopkgtest to salsaci pipeline
+  * Implement support for repos with modern-style arch:all support
+  * Add test for split-arch:all support
+  * add various Ubuntu/Debian codenames
+
+
+-------------------------------------------------------------------
 Tue Nov 28 03:10:22 UTC 2023 - Richard Rahl <rrahl0@proton.me>
 
 - update to 1.0.133
