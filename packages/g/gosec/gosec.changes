@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Feb 13 07:48:54 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 2.19.0:
+  * Update gosec version to v2.19.0 in the Github action
+  * Update CI to go version 1.22
+  * chore(deps): update all dependencies
+  * chore(deps): update all dependencies
+  * chore(deps): update all dependencies
+  * chore(deps): update all dependencies
+  * chore(deps): update all dependencies
+  * chore(deps): update dependency babel-standalone to v7.23.7
+  * chore(deps): update module golang.org/x/crypto to v0.17.0 [security]
+  * chore(deps): update all dependencies
+  * chore(deps): update actions/setup-go action to v5
+  * Fix lint warnings by properly formatting the files
+  * chore: Refactor Sample Code to Separate Files
+  * Update go version to 1.21.5 and 1.20.12 (#1084)
+  * chore(deps): update all dependencies (#1080)
+  * Ignore the issues from generated files when using the analysis framework (#1079)
+  * Update README with upload-sarif v2 (#1078)
+  * chore(deps): update dependency babel-standalone to v7.23.4
+
+-------------------------------------------------------------------
 Sat Nov 25 19:22:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.18.2:
