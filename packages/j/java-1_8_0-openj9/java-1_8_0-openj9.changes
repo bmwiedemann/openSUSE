@@ -1,11 +1,23 @@
 -------------------------------------------------------------------
+Mon Feb 12 16:01:06 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 8u402 build 06 with OpenJ9 0.43.0 virtual
+  machine
+- Including Oracle January 2024 CPU changes
+  * CVE-2024-20918 (bsc#1218907), CVE-2024-20919 (bsc#1218903),
+    CVE-2024-20921 (bsc#1218905), CVE-2024-20926 (bsc#1218906),
+    CVE-2024-20945 (bsc#1218909), CVE-2024-20952 (bsc#1218911)
+  * OpenJ9 changes, see 
+    https://www.eclipse.org/openj9/docs/version0.43/
+
+-------------------------------------------------------------------
 Wed Nov 22 18:19:11 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to OpenJDK 8u392 build 08 with OpenJ9 0.41.0 virtual
   machine
 - Including Oracle October 2023 CPU changes
   * CVE-2023-22067 (bsc#1216379), CVE-2023-22081 (bsc#1216374)
-- Including Openj9 0.41.0 fixes of CVE-2023-5676, bsc#1217214
+- Including OpenJ9 0.41.0 fixes of CVE-2023-5676, bsc#1217214
   * For other OpenJ9 changes, see
     https://www.eclipse.org/openj9/docs/version0.41   
 - Removed patch:

@@ -167,4 +167,12 @@
     <comment>Security fixes</comment>
     <requestid>1128326</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>13a199a13758a8f0dc3404170307c166</srcmd5>
+    <version>1.8.0.402</version>
+    <time>1707860551</time>
+    <user>anag+factory</user>
+    <comment>OpenJDK 1.8.0.b402 with OpenJ9 0.43</comment>
+    <requestid>1146348</requestid>
+  </revision>
 </revisionlist>

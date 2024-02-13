@@ -1,7 +1,7 @@
 #
 # spec file for package java-1_8_0-openj9
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,8 @@
 #
 
 
+# ugly hack to prevent spec-cleaner from changing make -> make_build
+%global make make
 %{!?aarch64:%global aarch64 aarch64 arm64 armv8}
 %global debug 0
 %global bootcycle 1
@@ -26,18 +28,18 @@
 %global abs2rel perl -e %{script}
 %global syslibdir       %{_libdir}
 # Standard JPackage naming and versioning defines.
-%global updatever       392
-%global buildver        b08
+%global updatever       402
+%global buildver        b06
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk8/archive
-%global root_revision   b73cbdd342820514352b3a14d6d58fdb4d570a45
-%global root_branch     v0.41.0-release
+%global root_revision   0fa9d9c53243b300211f1e7dabee29164552fe0b
+%global root_branch     v0.43.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    5eee6ad9d0969d938892cd186056ae66912c7a61
-%global omr_branch      v0.41.0-release
+%global omr_revision    ea8124dbc1b625da6f607b66d2b657dce90c96c4
+%global omr_branch      v0.43.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 461bf3c70bd87f1bc8422214cdb5c6c3a0ae4ff1
-%global openj9_branch   v0.41.0-release
-%global openj9_tag      openj9-0.41.0
+%global openj9_revision 2c3d78b48adf36dbbef5852b95889da5a5ce1279
+%global openj9_branch   v0.43.0-release
+%global openj9_tag      openj9-0.43.0
 # priority must be 6 digits in total
 %global priority        1801
 %global javaver         1.8.0
@@ -97,8 +99,6 @@ Source2:        %{openj9_repository}/%{openj9_revision}.zip
 # Desktop files. Adapated from IcedTea.
 Source11:       jconsole.desktop.in
 Source12:       policytool.desktop.in
-# nss configuration file
-Source13:       nss.cfg
 # Ensure we aren't using the limited crypto policy
 Source14:       TestCryptoLevel.java
 Source100:      openj9-nogit.patch.in
@@ -226,7 +226,7 @@ Requires:       jpackage-utils
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     tzdata-java8
 # Standard JPackage base provides.
 Provides:       java-%{javaver}-headless = %{version}-%{release}
@@ -264,7 +264,7 @@ Requires:       %{name} = %{version}-%{release}
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # Standard JPackage devel provides.
 Provides:       java-%{javaver}-devel = %{version}
 Provides:       java-devel = %{javaver}
@@ -305,7 +305,7 @@ Requires:       jpackage-utils
 # Post requires update-alternatives to install javadoc alternative.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall javadoc alternative.
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # Standard JPackage javadoc provides.
 Provides:       java-%{javaver}-javadoc = %{version}-%{release}
 Provides:       java-javadoc = %{version}-%{release}
@@ -365,13 +365,15 @@ rm -rvf jdk/src/share/native/sun/java2d/cmm/lcms/lcms2*
 %patch300 -p1
 
 cat %{SOURCE100} \
-    | sed "s/@OPENJ9_SHA@/%{openj9_revision}/g" \
+    | sed "s/@OPENJ9_SHA@/`expr substr '%{openj9_revision}' 1 7`/g" \
     | sed "s/@OPENJ9_BRANCH@/%{openj9_branch}/g" \
     | sed "s/@OPENJ9_TAG@/%{openj9_tag}/g" \
-    | sed "s/@OPENJ9OMR_SHA@/%{omr_revision}/g" \
-    | sed "s/@OPENJDK_SHA@/%{root_revision}/g" \
-    | sed "s/@OPENSSL_SHA@//g" \
+    | sed "s/@OPENJ9OMR_SHA@/`expr substr '%{omr_revision}' 1 7`/g" \
+    | sed "s/@OPENJDK_SHA@/`expr substr '%{root_revision}' 1 7`/g" \
     | patch -p1 -u -l
+
+sed -i -e "s/<Unknown>/`expr substr '%{omr_revision}' 1 7`/g" \
+    omr/cmake/versions.cmake
 
 # Prepare desktop files
 for file in %{SOURCE11} %{SOURCE12} ; do
@@ -421,7 +423,7 @@ bash configure \
     --with-native-debug-symbols=internal \
     --with-boot-jdk=%{_sysconfdir}/alternatives/java_sdk
 
-make \
+%{make} \
     JAVAC_FLAGS=-g \
     LOG=trace \
     DEBUG_BINARIES=true \
@@ -545,9 +547,6 @@ pushd %{imagesdir}/j2sdk-image
   cp -a sample %{buildroot}%{_jvmdir}/%{sdkdir}
 
 popd
-
-# Install nss.cfg
-install -m 644 %{SOURCE13} %{buildroot}%{_jvmdir}/%{jredir}/lib/security/
 
 # Install Javadoc documentation.
 install -d -m 755 %{buildroot}%{_javadocdir}
@@ -899,7 +898,6 @@ fi
 %config(noreplace) %{_jvmdir}/%{jredir}/lib/security/java.policy
 %config(noreplace) %{_jvmdir}/%{jredir}/lib/security/java.security
 %config(noreplace) %{_jvmdir}/%{jredir}/lib/security/blacklisted.certs
-%config(noreplace) %{_jvmdir}/%{jredir}/lib/security/nss.cfg
 %{_mandir}/man1/java-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/jjs-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/keytool-%{sdklnk}.1%{?ext_man}
@@ -915,7 +913,7 @@ fi
 %{_jvmdir}/%{jredir}/lib/security/policy/limited/local_policy.jar
 %{_jvmdir}/%{jredir}/lib/security/policy/unlimited/US_export_policy.jar
 %{_jvmdir}/%{jredir}/lib/security/policy/unlimited/local_policy.jar
-%ifarch x86_64
+%ifnarch %{aarch64}
 %{_jvmdir}/%{jredir}/lib/security/nss.fips.cfg
 %endif
 
