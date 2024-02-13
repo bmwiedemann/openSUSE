@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Feb  7 11:42:17 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.1.2
+  * Update copyright year
+  * Update tooltip when hovering over a hyperlink
+  * build: Align CFLAGS with LDADD
+  * prefs-dialog: Add missing strings to translate (#222)
+  * dropdown: Default dropdown-toggle-focus to false
+  * Add runtime guard for XfceSMClient
+  * build: Restrict XfceSMClient to X11
+  * Determine cwd on FreeBSD in a native way instead of using linprocfs
+  * window: Remove weak ref on prefs dialog in finalize()
+  * build: Get rid of #ifdef G_ENABLE_DEBUG
+  * Do not reconnect accels when closing last tab
+  * build: Lower xfce4-dev-tools requirements to stable version
+  * search-dialog: Use xfce_titled_dialog_set_default_response()
+  * Translation Updates
+- Update gxo-282.patch
+- Add gxo-299.patch
+  * backport fix for "paste unsafe text" dialog not popping up
+    (gxo#apps/xfce4-terminal#299)
+
+-------------------------------------------------------------------
 Sun Nov  5 18:12:55 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Add gxo-282.patch

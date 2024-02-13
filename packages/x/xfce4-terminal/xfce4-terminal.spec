@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-terminal
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,15 +19,17 @@
 
 %bcond_with git
 Name:           xfce4-terminal
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Terminal Emulator for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          System/X11/Terminals
 URL:            https://docs.xfce.org/apps/terminal/start
 Source0:        https://archive.xfce.org/src/apps/xfce4-terminal/1.1/%{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM: backport fix for crash on window close
+# PATCH-FIX-OPENSUSE: backport fix for crash on window close
 Patch0:         gxo-282.patch
+# PATCH-FIX-UPSTREAM: backport fix for "paste unsafe text" dialog not popping up
+Patch1:         gxo-299.patch
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
