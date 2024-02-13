@@ -2,13 +2,19 @@ diff --git a/cli/main.rs.1 b/cli/main.rs
 index 031ab07..4f3b05c 100644
 --- a/cli/main.rs.1
 +++ b/cli/main.rs
-@@ -204,9 +204,6 @@ async fn run_subcommand(flags: Flags) -> Result<i32, AnyError> {
-       let types = tsc::get_types_declaration_file_text(flags.unstable);
+@@ -202,15 +202,6 @@ async fn run_subcommand(flags: Flags) -> Result<i32, AnyError> {
+       let types = tsc::get_types_declaration_file_text();
        display::write_to_stdout_ignore_sigpipe(types.as_bytes())
      }),
+-    #[cfg(feature = "upgrade")]
 -    DenoSubcommand::Upgrade(upgrade_flags) => spawn_subcommand(async {
 -      tools::upgrade::upgrade(flags, upgrade_flags).await
 -    }),
+-    #[cfg(not(feature = "upgrade"))]
+-    DenoSubcommand::Upgrade(_) => exit_with_message(
+-      "This deno was built without the \"upgrade\" feature. Please upgrade using the installation method originally used to install Deno.",
+-      1,
+-    ),
      DenoSubcommand::Vendor(vendor_flags) => spawn_subcommand(async {
        tools::vendor::vendor(flags, vendor_flags).await
      }),
@@ -16,32 +22,48 @@ diff --git a/cli/args/flags.rs.1 b/cli/args/flags.rs
 index 72841df..1c93da1 100644
 --- a/cli/args/flags.rs.1
 +++ b/cli/args/flags.rs
-@@ -292,7 +292,6 @@ pub enum DenoSubcommand {
+@@ -281,15 +281,6 @@ pub struct TestFlags {
+   pub junit_path: Option<String>,
+ }
+ 
+-#[derive(Clone, Debug, Eq, PartialEq)]
+-pub struct UpgradeFlags {
+-  pub dry_run: bool,
+-  pub force: bool,
+-  pub canary: bool,
+-  pub version: Option<String>,
+-  pub output: Option<PathBuf>,
+-}
+-
+ #[derive(Clone, Debug, Eq, PartialEq)]
+ pub struct VendorFlags {
+   pub specifiers: Vec<String>,
+@@ -328,7 +319,6 @@ pub enum DenoSubcommand {
    Task(TaskFlags),
    Test(TestFlags),
    Types,
 -  Upgrade(UpgradeFlags),
    Vendor(VendorFlags),
+   Publish(PublishFlags),
  }
- 
-@@ -686,7 +685,7 @@ impl Flags {
+@@ -760,7 +750,7 @@ impl Flags {
          std::env::current_dir().ok()
        }
        Bundle(_) | Completions(_) | Doc(_) | Fmt(_) | Init(_) | Install(_)
 -      | Uninstall(_) | Jupyter(_) | Lsp | Lint(_) | Types | Upgrade(_)
 +      | Uninstall(_) | Jupyter(_) | Lsp | Lint(_) | Types
-       | Vendor(_) => None,
+       | Vendor(_) | Publish(_) => None,
      }
    }
-@@ -836,7 +835,6 @@ pub fn flags_from_vec(args: Vec<String>) -> clap::error::Result<Flags> {
+@@ -944,7 +934,6 @@ pub fn flags_from_vec(args: Vec<String>) -> clap::error::Result<Flags> {
        "test" => test_parse(&mut flags, &mut m),
        "types" => types_parse(&mut flags, &mut m),
        "uninstall" => uninstall_parse(&mut flags, &mut m),
 -      "upgrade" => upgrade_parse(&mut flags, &mut m),
        "vendor" => vendor_parse(&mut flags, &mut m),
+       "publish" => publish_parse(&mut flags, &mut m),
        _ => unreachable!(),
-     }
-@@ -937,7 +935,6 @@ fn clap_root() -> Command {
+@@ -1099,7 +1088,6 @@ fn clap_root() -> Command {
          .subcommand(task_subcommand())
          .subcommand(test_subcommand())
          .subcommand(types_subcommand())
@@ -49,7 +71,7 @@ index 72841df..1c93da1 100644
          .subcommand(vendor_subcommand())
      })
      .long_about(DENO_HELP)
-@@ -2037,59 +2034,6 @@ The declaration file could be saved and used for typing information.",
+@@ -2262,61 +2250,6 @@ The declaration file could be saved and used for typing information.",
      )
  }
  
@@ -69,6 +91,7 @@ index 72841df..1c93da1 100644
 -
 -  deno upgrade --output $HOME/my_deno",
 -    )
+-    .hide(cfg!(not(feature = "upgrade")))
 -    .defer(|cmd| {
 -      cmd
 -        .arg(
@@ -80,6 +103,7 @@ index 72841df..1c93da1 100644
 -          Arg::new("output")
 -            .long("output")
 -            .help("The path to output the updated version to")
+-            // todo(dsherret): remove value_parser!(PathBuf) and instead parse as string
 -            .value_parser(value_parser!(PathBuf))
 -            .value_hint(ValueHint::FilePath),
 -        )
@@ -109,7 +133,7 @@ index 72841df..1c93da1 100644
  fn vendor_subcommand() -> Command {
    Command::new("vendor")
        .about("Vendor remote modules into a local directory")
-@@ -3453,23 +3397,6 @@ fn types_parse(flags: &mut Flags, _matches: &mut ArgMatches) {
+@@ -3785,23 +3718,6 @@ fn types_parse(flags: &mut Flags, _matches: &mut ArgMatches) {
    flags.subcommand = DenoSubcommand::Types;
  }
  
@@ -133,7 +157,7 @@ index 72841df..1c93da1 100644
  fn vendor_parse(flags: &mut Flags, matches: &mut ArgMatches) {
    ca_file_arg_parse(flags, matches);
    config_args_parse(flags, matches);
-@@ -3886,25 +3813,6 @@ mod tests {
+@@ -4251,25 +4167,6 @@ mod tests {
      assert_eq!(flags2, flags);
    }
  
@@ -159,7 +183,7 @@ index 72841df..1c93da1 100644
    #[test]
    fn version() {
      let r = flags_from_vec(svec!["deno", "--version"]);
-@@ -7086,25 +6994,6 @@ mod tests {
+@@ -7509,25 +7406,6 @@ mod tests {
      );
    }
  
@@ -185,3 +209,72 @@ index 72841df..1c93da1 100644
    #[test]
    fn cache_with_cafile() {
      let r = flags_from_vec(svec![
+diff --git a/cli/tools/mod.rs.1 b/cli/tools/mod.rs
+index 4593092..3247915 100644
+--- a/cli/tools/mod.rs.1
++++ b/cli/tools/mod.rs
+@@ -17,5 +17,4 @@ pub mod repl;
+ pub mod run;
+ pub mod task;
+ pub mod test;
+-pub mod upgrade;
+ pub mod vendor;
+diff --git a/cli/standalone/binary.rs.1 b/cli/standalone/binary.rs
+index 628922b..f8bb1e2 100644
+--- a/cli/standalone/binary.rs.1
++++ b/cli/standalone/binary.rs
+@@ -429,11 +429,7 @@ impl<'a> DenoCompileBinaryWriter<'a> {
+
+     let archive_data = std::fs::read(binary_path)?;
+     let temp_dir = tempfile::TempDir::new()?;
+-    let base_binary_path = crate::tools::upgrade::unpack_into_dir(
+-      archive_data,
+-      target.contains("windows"),
+-      &temp_dir,
+-    )?;
++    let base_binary_path = "/tmp";
+     let base_binary = std::fs::read(base_binary_path)?;
+     drop(temp_dir); // delete the temp dir
+     Ok(base_binary)
+diff --git a/cli/lsp/language_server.rs.1 b/cli/lsp/language_server.rs
+index 573fb1e..158c136 100644
+--- a/cli/lsp/language_server.rs.1
++++ b/cli/lsp/language_server.rs
+@@ -119,8 +119,6 @@ use crate::npm::CliNpmResolverManagedPackageJsonInstallerOption;
+ use crate::npm::CliNpmResolverManagedSnapshotOption;
+ use crate::tools::fmt::format_file;
+ use crate::tools::fmt::format_parsed_source;
+-use crate::tools::upgrade::check_for_upgrades_for_lsp;
+-use crate::tools::upgrade::upgrade_check_enabled;
+ use crate::util::fs::remove_dir_all_if_exists;
+ use crate::util::path::is_importable_ext;
+ use crate::util::path::specifier_to_file_path;
+@@ -3335,28 +3333,6 @@ impl tower_lsp::LanguageServer for LanguageServer {
+       ls.task_queue.start(self.clone());
+     };
+ 
+-    if upgrade_check_enabled() {
+-      // spawn to avoid lsp send/sync requirement, but also just
+-      // to ensure this initialized method returns quickly
+-      spawn(async move {
+-        match check_for_upgrades_for_lsp(http_client).await {
+-          Ok(version_info) => {
+-            client.send_did_upgrade_check_notification(
+-              lsp_custom::DidUpgradeCheckNotificationParams {
+-                upgrade_available: version_info.map(|info| {
+-                  lsp_custom::UpgradeAvailable {
+-                    latest_version: info.latest_version,
+-                    is_canary: info.is_canary,
+-                  }
+-                }),
+-              },
+-            );
+-          }
+-          Err(err) => lsp_warn!("Failed to check for upgrades: {err}"),
+-        }
+-      });
+-    }
+-
+     lsp_log!("Server ready.");
+   }
+ 

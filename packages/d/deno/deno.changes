@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb  9 04:26:49 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 1.40.4:
+  * see https://deno.com/blog/v1.39
+  * see https://deno.com/blog/v1.40
+- rebase deno-disable-update-check.patch
+- rebase deno-rm-upgrade-cmd.patch
+
+-------------------------------------------------------------------
 Fri Nov 17 20:58:39 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 1.38.2:

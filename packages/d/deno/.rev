@@ -1481,4 +1481,12 @@
 </comment>
     <requestid>1127377</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>8d9a007801c34e6de691f764e073282a</srcmd5>
+    <version>1.40.4</version>
+    <time>1707860600</time>
+    <user>anag+factory</user>
+    <comment>bumped mem limit to 21GB</comment>
+    <requestid>1146293</requestid>
+  </revision>
 </revisionlist>
