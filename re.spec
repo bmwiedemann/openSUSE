@@ -16,10 +16,10 @@
 #
 
 
-%global sover   16
+%global sover   20
 %global libname lib%{name}%{sover}
 Name:           re
-Version:        3.4.0
+Version:        3.8.0
 Release:        0
 Summary:        Library for real-time communications with async I/O support
 License:        BSD-3-Clause
@@ -27,6 +27,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/baresip/re
 Source:         %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 Obsoletes:      librem4 < %{version}
