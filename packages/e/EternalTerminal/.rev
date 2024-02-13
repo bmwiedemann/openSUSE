@@ -247,4 +247,12 @@
 - Drop ET-gcc13.patch</comment>
     <requestid>1108504</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>9404bfc7dbb3beffb28a13ffab078e19</srcmd5>
+    <version>6.2.8</version>
+    <time>1707860689</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1146449</requestid>
+  </revision>
 </revisionlist>

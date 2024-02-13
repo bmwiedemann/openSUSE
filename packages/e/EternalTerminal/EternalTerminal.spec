@@ -1,7 +1,7 @@
 #
 # spec file for package EternalTerminal
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@ BuildRequires:  curl-devel
 BuildRequires:  firewall-macros
 BuildRequires:  firewalld
 BuildRequires:  gflags-devel
-BuildRequires:  libopenssl-1_1-devel
+BuildRequires:  libopenssl-devel
 BuildRequires:  libsodium-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  ninja
