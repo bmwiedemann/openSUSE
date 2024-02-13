@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Feb  6 09:07:29 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- Temporarily disable Python build because of incompatibility with Python 3.11
+  Reported upstream, will be fixed in next version.
+
+-------------------------------------------------------------------
+Mon Feb  5 12:59:00 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to version 20240122:
+ * scamper
+  * fix regression in 20240117 where trace -W 0 (probe as soon as
+    there's a response) was not accepted, despite being the default.
+    add unit test for this.
+  * for trace, improve probe and reply matching of UDP packets
+  * fix printing UDP responses to traceroute probes in scamper -O text output
+  * for trace section of scamper.1 man page, document -O const-payload,
+    and expand documentation for -O dl.
+ * python module:
+  * ship scamper release with a the C source code pre-generated for the
+    python module, so that the build process does not require a cython
+    installation.  bootstrap.pl will build the C source code unless told
+    not to via --without-cython
+  * rename ScamperPing.reply_count to ScamperPing.stop_count, as the
+    reply_count attribute meant something different on a ScamperPing
+    object than what it means with ScamperDealiasProbe, etc
+ * sc_remoted:
+  * expand sc_remoted.1 manual page with information about validating
+    scamper client TLS certificates, and how to use -M monitor-name.
+
+-------------------------------------------------------------------
 Wed Jan 17 07:35:36 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 20240117:

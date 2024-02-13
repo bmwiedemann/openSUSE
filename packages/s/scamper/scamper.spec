@@ -18,7 +18,7 @@
 
 
 Name:           scamper
-Version:        20240117
+Version:        20240122
 Release:        0
 Summary:        Parallel Internet measurement utility
 License:        GPL-2.0-only
@@ -120,7 +120,9 @@ libscamperctrl library.
 
 %build
 export PYTHON=%{_bindir}/python3
-%configure --disable-static --without-debugfile --with-pcre2 --enable-sc_hoiho --enable-sc_uptime --with-python
+# disable Python build in 20240122 because of incompatibility with Python 3.11. Reported upstream, will be fixed in next version
+%configure --disable-static --without-debugfile --with-pcre2 --enable-sc_hoiho --enable-sc_uptime
+#%%configure --disable-static --without-debugfile --with-pcre2 --enable-sc_hoiho --enable-sc_uptime --with-python
 make %{?_smp_mflags}
 
 %install
@@ -138,7 +140,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/scamper
 %{_mandir}/man1/*
 %{_mandir}/man5/*
-%{python3_sitelib}/scamper.so
+#%%{python3_sitelib}/scamper.so
 
 %files -n libscamperfile8
 %{_libdir}/libscamperfile.so.*
