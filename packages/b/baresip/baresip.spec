@@ -16,8 +16,10 @@
 #
 
 
+%global sover   12
+%global libname lib%{name}%{sover}
 Name:           baresip
-Version:        2.10.0
+Version:        3.8.0
 Release:        0
 Summary:        Modular SIP useragent
 License:        BSD-3-Clause
@@ -107,19 +109,19 @@ support.
 
 %package devel
 Summary:        Development files for the baresip library
-Requires:       libbaresip2 = %{version}-%{release}
+Requires:       %{libname} = %{version}-%{release}
 Requires:       pkgconfig
 
 %description devel
 The baresip-devel package includes header files and libraries necessary
 for developing programs which use the baresip C library.
 
-%package -n libbaresip2
+%package -n %{libname}
 Summary:        Standard library for baresip
 Provides:       %{name} = %{version}-%{release}
 Obsoletes:      %{name} < %{version}-%{release}
 
-%description -n libbaresip2
+%description -n %{libname}
 This package contains the shared library needed to run programs compiled with
 baresip
 
@@ -138,8 +140,7 @@ sed 's|/usr/local/share|%{_datadir}/|g' -i docs/examples/config
 %install
 %cmake_install
 
-%post   -n libbaresip2 -p /sbin/ldconfig
-%postun -n libbaresip2 -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files
 %license LICENSE
@@ -192,7 +193,6 @@ sed 's|/usr/local/share|%{_datadir}/|g' -i docs/examples/config
 %{_libdir}/baresip/modules/presence.so
 %{_libdir}/baresip/modules/portaudio.so
 %{_libdir}/baresip/modules/pulse.so
-%{_libdir}/baresip/modules/pulse_async.so
 %{_libdir}/baresip/modules/rtcpsummary.so
 %{_libdir}/baresip/modules/serreg.so
 %{_libdir}/baresip/modules/snapshot.so
@@ -211,8 +211,8 @@ sed 's|/usr/local/share|%{_datadir}/|g' -i docs/examples/config
 %{_includedir}/%{name}.h
 %{_libdir}/pkgconfig/lib%{name}.pc
 
-%files -n libbaresip2
-%{_libdir}/lib%{name}.so.2*
+%files -n %{libname}
+%{_libdir}/libbaresip.so.%{sover}*
 
 %files video
 %{_libdir}/baresip/modules/av1.so
