@@ -133,4 +133,15 @@
   * Don't clear input state on key release event (#183).</comment>
     <requestid>1145571</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>94dbe2cb6b44a0721e4894a0a2d747f0</srcmd5>
+    <version>0.6.1+0</version>
+    <time>1707860581</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.6.1:
+  * Don't escape symbols in block quotes (#195).
+  * Respect XDG_CONFIG_HOME when loading configuration files and
+	  custom themes (#193).</comment>
+    <requestid>1146266</requestid>
+  </revision>
 </revisionlist>

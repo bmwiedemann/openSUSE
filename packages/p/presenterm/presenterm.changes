@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 12 19:32:06 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.1:
+  * Don't escape symbols in block quotes (#195).
+  * Respect XDG_CONFIG_HOME when loading configuration files and
+	  custom themes (#193).
+
+-------------------------------------------------------------------
 Sat Feb 10 07:08:08 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.0:
