@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Feb 11 04:15:21 UTC 2024 - John Vandenberg <jayvdb@gmail.com>
+
+- Add sqlitetests.py & testutils.py
+- Update to v5.1.0
+  * Mac M1 & M2 binary builds
+- from v5.0.1
+  * bug fix for 5.0.0 that restores the ability to pass bytes objects
+    in the attrs_before parameter when connecting.
+    This is often used for Azure with a token.
+- from 5.0.0
+  * The API is backwards compatible.
+  * Dropped support for Python 2.
+
+-------------------------------------------------------------------
 Mon Apr 17 19:00:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.39:

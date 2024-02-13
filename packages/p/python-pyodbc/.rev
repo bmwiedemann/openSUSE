@@ -123,4 +123,12 @@
 - drop fix_install_location_of_pyodbc.pyi.patch (upstream)</comment>
     <requestid>1079995</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1200f964dad2a57179af179f85b37d81</srcmd5>
+    <version>5.1.0</version>
+    <time>1707860589</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1146285</requestid>
+  </revision>
 </revisionlist>

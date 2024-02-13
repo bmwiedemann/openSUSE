@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyodbc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,16 @@
 
 
 Name:           python-pyodbc
-Version:        4.0.39
+Version:        5.1.0
 Release:        0
 Summary:        Python ODBC API
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/mkleehammer/pyodbc
 Source:         https://files.pythonhosted.org/packages/source/p/pyodbc/pyodbc-%{version}.tar.gz
+Source1:        https://raw.githubusercontent.com/mkleehammer/pyodbc/master/tests/old/sqlitetests.py
+# testutils is a modified version of https://raw.githubusercontent.com/mkleehammer/pyodbc/44b620d8df1aa71926fb363b140d398bf5f2fc35/tests/testutils.py
+Source2:        testutils.py
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  gcc-c++
@@ -33,7 +36,7 @@ BuildRequires:  unixODBC-devel
 %python_subpackages
 
 %description
-pyodbc is a Python 2.x and 3.x module that allows you to use ODBC
+pyodbc is a Python 3.x module that allows you to use ODBC
 to connect to almost any database.
 
 It implements the Python Database API Specification v2.0, but
@@ -42,6 +45,7 @@ even more.
 
 %prep
 %setup -q -n pyodbc-%{version}
+cp %{SOURCE1} %{SOURCE2} .
 
 %build
 export CFLAGS="%{optflags}"
@@ -52,8 +56,8 @@ export CFLAGS="%{optflags}"
 
 %check
 export PYTHONDONTWRITEBYTECODE=1
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch} export TESTDIRSUFFIX=%{$python_bin_suffix}
-$python tests${TESTDIRSUFFIX::1}/sqlitetests.py -v "Driver=SQLITE3;Database=sqlite.db"
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}:${PWD}
+$python sqlitetests.py -v "Driver=SQLITE3;Database=sqlite.db"
 }
 
 %files %{python_files}
