@@ -1,7 +1,7 @@
 #
 # spec file for package texworks
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2007-09 by Jonathan Kew.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,37 +17,45 @@
 #
 
 
+%define __builder ninja
+%bcond_with python
 Name:           texworks
-Version:        0.6.8
+Version:        0.6.9
 Release:        0
 Summary:        TeXshop-like TeX Editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://www.tug.org/texworks/
 Source0:        https://github.com/TeXworks/texworks/archive/release-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM texworks-cmake-find-python.patch gh#TeXworks/texworks#1039 badshah400@gmail.com -- cmake has dropped support for PythonInterp and PythonLibs, use FindPython instead
+Patch0:         texworks-cmake-find-python.patch
 BuildRequires:  cmake
 BuildRequires:  dbus-1-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  hunspell-devel
 BuildRequires:  libpoppler-devel >= 0.24
-BuildRequires:  libpoppler-qt5-devel >= 0.24
+BuildRequires:  libpoppler-qt6-devel >= 0.24
 BuildRequires:  lua-devel
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
+%if %{with python}
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
+%endif
 BuildRequires:  texlive-tex-bin
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Qml)
-BuildRequires:  pkgconfig(Qt5Script)
-BuildRequires:  pkgconfig(Qt5ScriptTools)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5UiTools)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(Qt6Concurrent)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Core5Compat)
+BuildRequires:  pkgconfig(Qt6DBus)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Linguist)
+BuildRequires:  pkgconfig(Qt6Qml)
+BuildRequires:  pkgconfig(Qt6Test)
+BuildRequires:  pkgconfig(Qt6UiTools)
+BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(Qt6Xml)
 Requires:       dbus-1
 Requires:       hunspell
 Requires:       poppler-tools
@@ -88,8 +96,10 @@ This package adds lua scripting abitilies to TeXworks.
 %cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
        -DTW_BUILD_ID="openSUSE" \
        -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=%{_lib} \
+       -DQT_DEFAULT_MAJOR_VERSION=6 \
        -DWITH_LUA=ON \
-       -DWITH_PYTHON=ON \
+       -DWITH_PYTHON=%{?with_python:ON}%{!?with_python:OFF} \
+       -DBUILD_SHARED_PLUGINS:BOOL=ON \
        -DTeXworks_DIC_DIR=%{_datadir}/myspell \
        -DTeXworks_PLUGIN_DIR=%{_libdir}/%{name}
 
@@ -115,9 +125,11 @@ done
 %{_datadir}/icons/hicolor/*/apps/*.png
 %{_mandir}/man1/texworks.1%{?ext_man}
 
+%if %{with python}
 %files plugin-python
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/*PythonPlugin.so
+%endif
 
 %files plugin-lua
 %dir %{_libdir}/%{name}
