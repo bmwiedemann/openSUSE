@@ -1,7 +1,7 @@
 #
 # spec file for package python-environ-config
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Summary:        Boilerplate-free configuration with env variables
 License:        MIT
 URL:            https://github.com/hynek/environ_config
 Source:         https://files.pythonhosted.org/packages/source/e/environ-config/environ_config-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#hynek/environ-config#76
+Patch0:         support-moto-5.patch
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
@@ -46,7 +48,7 @@ BuildRequires:  %{python_module urllib3 < 2}
 Boilerplate-free configuration with env variables.
 
 %prep
-%setup -q -n environ_config-%{version}
+%autosetup -p1 -n environ_config-%{version}
 
 %build
 %pyproject_wheel

@@ -31,4 +31,13 @@
 - Stick with urllib3 &lt; 2 due to boto.</comment>
     <requestid>1089586</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>75263be919e1f24969982dd81560442c</srcmd5>
+    <version>23.2.0</version>
+    <time>1707860606</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-moto-5.patch:
+  * Support moto 5.0 changes.</comment>
+    <requestid>1146301</requestid>
+  </revision>
 </revisionlist>
