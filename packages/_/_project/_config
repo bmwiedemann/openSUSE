@@ -3599,6 +3599,8 @@ Macros:
 # The following shlibs have the latest version build from GCC 13 sources
 %product_libs_gcc_ver_libm2 13
 %product_libs_gcc_ver_libgo22 13
+%product_libs_gcc_ver_libgphobos4 13
+%product_libs_gcc_ver_libgdruntime4 13
 %gcc_version 13
 
 %ext_info .gz
