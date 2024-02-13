@@ -2,6 +2,7 @@
 # spec file for package zutils
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           zutils
-Version:        1.12
+Version:        1.13
 Release:        0
 Summary:        Collection of utilities for dealing with compressed files
 License:        GPL-2.0-or-later
@@ -28,7 +29,7 @@ Source1:        https://download.savannah.gnu.org/releases/zutils/zutils-%{versi
 Source2:        %{name}.keyring
 # PATCH-FIX-OPENSUSE zutils-1.7-noconflict.patch
 Patch1:         zutils-1.7-noconflict.patch
-BuildRequires:  gcc-c++
+BuildRequires:  c++_compiler
 BuildRequires:  lzip
 
 %description
@@ -57,7 +58,7 @@ in those utilities supporting it.
 %files
 %doc ChangeLog README
 %license COPYING
-%{_sysconfdir}/zutils.conf
+%config %{_sysconfdir}/zutils.conf
 %{_bindir}/*
 %{_infodir}/*.info%{?ext_info}
 %{_mandir}/man1/*.1%{?ext_man}

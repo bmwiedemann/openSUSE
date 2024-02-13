@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Feb 10 16:37:17 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.13:
+  * Fix detection of bzip2 files with no compressed blocks
+  * When zcat, zcmp, zdiff, or zgrep need to try compressed file
+    names, gzip (.gz) is now tried before bzip2 (.bz2).
+  * When only one compressed file is passed to zcmp or zdiff, they
+    now try to compare it with a compressed file of any of the
+    remaining formats if the corresponding uncompressed file does
+    not exist.
+  * zcmp now reports EOF on empty file like GNU cmp:
+    "zcmp: EOF on FILE which is empty".
+  * File diagnostics in zupdate have been reformatted as
+    'PROGRAM: FILE: MESSAGE'.
+
+-------------------------------------------------------------------
 Sun Jan 22 11:39:46 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.12:
