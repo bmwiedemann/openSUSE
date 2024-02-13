@@ -1,7 +1,7 @@
 #
 # spec file for package iverilog
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020-2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           iverilog
-Version:        11.0
+Version:        12.0
 Release:        0
-%define major_ver 11
+%define major_ver 12
 Summary:        Simulation and synthesis tool for IEEE-1364
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Electronics
-URL:            http://iverilog.icarus.com/
-Source:         ftp://icarus.com/pub/eda/verilog/v%{major_ver}/verilog-%{version}.tar.gz
+URL:            https://steveicarus.github.io/iverilog/
+Source:         https://altushost-swe.dl.sourceforge.net/project/iverilog/iverilog/%{version}/verilog-%{version}.tar.gz
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -64,12 +64,12 @@ make check
 
 %files
 %license COPYING
-%doc README.txt BUGS.txt QUICK_START.txt ieee1364-notes.txt
+%doc README.md BUGS.txt QUICK_START.txt ieee1364-notes.txt
 %doc swift.txt netlist.txt t-dll.txt vpi.txt tgt-fpga/fpga.txt
 %doc cadpli/cadpli.txt xilinx-hint.txt examples
-%{_mandir}/man1/*
 %{_bindir}/*
 %{_libdir}/ivl/
+%{_mandir}/man1/*
 
 %files devel
 %{_includedir}/*
