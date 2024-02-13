@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbxmpp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %endif
 %define _name   nbxmpp
 Name:           python-nbxmpp
-Version:        4.5.3
+Version:        4.5.4
 Release:        0
 Summary:        XMPP library by Gajim team
 License:        GPL-3.0-or-later

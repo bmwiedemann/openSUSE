@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 13 13:23:17 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.5.4:
+  * Add XEP-0353 namespace.
+  * Correctly discover subject change.
+  * DateTime: Be more strict with parsing.
+
+-------------------------------------------------------------------
 Sat Nov 25 14:25:50 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 2.5.3:
