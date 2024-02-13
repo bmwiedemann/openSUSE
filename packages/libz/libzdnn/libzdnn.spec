@@ -1,7 +1,7 @@
 #
 # spec file for package libzdnn
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@ the data transformation requirements of the AIU and provide wrapper
 functions for the NNPA instruction primitives.
 
 %package -n libzdnn0
-Summary:        Library interface for the IBM Cryptographic Accelerator
+Summary:        Library interface for the IBM AI Accelerator
 Group:          Development/Libraries/Other
 
 %description -n libzdnn0
