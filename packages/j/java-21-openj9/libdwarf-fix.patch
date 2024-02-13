@@ -1,0 +1,85 @@
+--- a/omr/ddr/lib/ddr-scanner/dwarf/DwarfScanner.cpp
++++ b/omr/ddr/lib/ddr-scanner/dwarf/DwarfScanner.cpp
+@@ -1497,6 +1497,13 @@ DwarfScanner::traverse_cu_in_debug_section(Symbol_IR *ir)
+ 	Dwarf_Half addressSize = 0;
+ 	Dwarf_Unsigned nextCUheader = 0;
+ 	Dwarf_Error error = NULL;
++#ifdef DW_LIBDWARF_VERSION_MAJOR
++	Dwarf_Half lengthSize = 0;
++	Dwarf_Half extensionSize = 0;
++	Dwarf_Sig8 typeSignature;
++	Dwarf_Unsigned typeOffset = 0;
++	Dwarf_Half nextCUheaderType = 0;
++#endif
+ 
+ 	/* Go over each cu header. */
+ 	while (DDR_RC_OK == rc) {
+@@ -1504,7 +1511,11 @@ DwarfScanner::traverse_cu_in_debug_section(Symbol_IR *ir)
+ 		_typeOffsetMap.clear();
+ 		_ir = &newIR;
+ 
++#ifdef DW_LIBDWARF_VERSION_MAJOR
++		int ret = dwarf_next_cu_header_d(_debug, true, &cuHeaderLength, &versionStamp, &abbrevOffset, &addressSize, &lengthSize, &extensionSize, &typeSignature, &typeOffset, &nextCUheader, &nextCUheaderType, &error);
++#else
+ 		int ret = dwarf_next_cu_header(_debug, &cuHeaderLength, &versionStamp, &abbrevOffset, &addressSize, &nextCUheader, &error);
++#endif
+ 		if (DW_DLV_ERROR == ret) {
+ 			ERRMSG("Failed to get next dwarf CU header.");
+ 			rc = DDR_RC_ERROR;
+@@ -1518,7 +1529,11 @@ DwarfScanner::traverse_cu_in_debug_section(Symbol_IR *ir)
+ 		Dwarf_Die childDie = NULL;
+ 
+ 		/* Expect the CU to have a single sibling - a DIE */
++#ifdef DW_LIBDWARF_VERSION_MAJOR
++		if (DW_DLV_ERROR == dwarf_siblingof_b(_debug, NULL, true, &cuDie, &error)) {
++#else
+ 		if (DW_DLV_ERROR == dwarf_siblingof(_debug, NULL, &cuDie, &error)) {
++#endif
+ 			ERRMSG("Getting sibling of CU: %s\n", dwarf_errmsg(error));
+ 			rc = DDR_RC_ERROR;
+ 			break;
+@@ -1617,12 +1632,20 @@ DwarfScanner::scanFile(OMRPortLibrary *portLibrary, Symbol_IR *ir, const char *f
+ 	}
+ 
+ 	if (DDR_RC_OK == rc) {
++#ifdef DW_LIBDWARF_VERSION_MAJOR
++		unsigned int groupNumber = DW_GROUPNUMBER_ANY;
++#else
+ 		Dwarf_Unsigned access = DW_DLC_READ;
++#endif
+ 		Dwarf_Handler errhand = 0;
+ 		Dwarf_Ptr errarg = NULL;
+ 		intptr_t native_fd = omrfile_convert_omrfile_fd_to_native_fd(fd);
+ 		DwarfScanner::scanFileName = filepath;
++#ifdef DW_LIBDWARF_VERSION_MAJOR
++		res = dwarf_init_b((int)native_fd, groupNumber, errhand, errarg, &_debug, &error);
++#else
+ 		res = dwarf_init((int)native_fd, access, errhand, errarg, &_debug, &error);
++#endif
+ 		if (DW_DLV_OK != res) {
+ 			ERRMSG("Failed to initialize libDwarf scanning %s: %s\nExiting...\n", filepath, dwarf_errmsg(error));
+ 			if (NULL != error) {
+@@ -1640,7 +1663,11 @@ DwarfScanner::scanFile(OMRPortLibrary *portLibrary, Symbol_IR *ir, const char *f
+ 
+ 		DEBUGPRINTF("Unloading libDwarf");
+ 
++#ifdef DW_LIBDWARF_VERSION_MAJOR
++		res = dwarf_finish(_debug);
++#else
+ 		res = dwarf_finish(_debug, &error);
++#endif
+ 		if (DW_DLV_OK != res) {
+ 			ERRMSG("Failed to Unload libDwarf: %s\nExiting...\n", dwarf_errmsg(error));
+ 			if (NULL != error) {
+@@ -1681,7 +1708,11 @@ DwarfScanner::getNextSibling(Dwarf_Die *die)
+ 	Dwarf_Error err = NULL;
+ 
+ 	/* Get the next sibling and free the previous one if successful. */
++#ifdef DW_LIBDWARF_VERSION_MAJOR
++	int ret = dwarf_siblingof_b(_debug, *die, true, &nextSibling, &err);
++#else
+ 	int ret = dwarf_siblingof(_debug, *die, &nextSibling, &err);
++#endif
+ 	if (DW_DLV_ERROR == ret) {
+ 		ERRMSG("Getting sibling of die:%s\n", dwarf_errmsg(err));
+ 	} else if (DW_DLV_OK == ret) {
