@@ -1,7 +1,7 @@
 #
 # spec file for package python-djangorestframework-camel-case
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-djangorestframework-camel-case
 Version:        1.4.2
 Release:        0
@@ -26,11 +25,13 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/vbabiy/djangorestframework-camel-case
 Source:         https://files.pythonhosted.org/packages/source/d/djangorestframework-camel-case/djangorestframework-camel-case-%{version}.tar.gz
+Source1:        https://raw.githubusercontent.com/vbabiy/djangorestframework-camel-case/master/tests.py
 BuildRequires:  %{python_module djangorestframework}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-djangorestframework
 BuildArch:      noarch
 %python_subpackages
 
@@ -39,12 +40,13 @@ Camel case JSON support for Django REST framework.
 
 %prep
 %setup -q -n djangorestframework-camel-case-%{version}
+cp %{SOURCE1} tests.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -53,6 +55,7 @@ Camel case JSON support for Django REST framework.
 %files %{python_files}
 %doc AUTHORS.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/djangorestframework_camel_case
+%{python_sitelib}/djangorestframework_camel_case-%{version}*-info
 
 %changelog

@@ -42,4 +42,14 @@
   * ORJSONRenderer #124</comment>
     <requestid>1066269</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3fef9fef45adc0b2f858e6047bf3294f</srcmd5>
+    <version>1.4.2</version>
+    <time>1707860669</time>
+    <user>anag+factory</user>
+    <comment>- Build package with %pyproject_wheel
+- Add tests.py source from github project to run tests
+- Remove no hard requirement python-djangorestframework</comment>
+    <requestid>1146395</requestid>
+  </revision>
 </revisionlist>
