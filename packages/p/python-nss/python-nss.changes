@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 12 15:24:39 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add fix-ftbfs-python3-12.patch from
+  https://bugs.debian.org/1055552 to fix FTBFS with Python 3.12
+  (bsc#1219842).
+- Update new-setuptools.patch to make setup.py more compatible
+  with the current setuptools.
+
+-------------------------------------------------------------------
 Thu Jun 22 08:19:27 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Drop sphinx .doctrees to make package build reproducible

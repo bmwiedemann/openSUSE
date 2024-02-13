@@ -1,7 +1,7 @@
 #
 # spec file for package python-nss
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,10 +34,15 @@ Patch1:         sphinx.patch
 Patch2:         new-setuptools.patch
 # PATCH-FIX-OPENSUSE Stop using six in tests
 Patch3:         remove-six.patch
+# PATCH-FIX-UPSTREAM fix-ftbfs-python3-12.patch bsc#1219842 mcepl@suse.com
+# Patch from https://bugs.debian.org/1055552
+Patch4:         fix-ftbfs-python3-12.patch
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module docutils}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  mozilla-nspr-devel
 BuildRequires:  mozilla-nss-devel
@@ -65,10 +70,10 @@ HTML Documentation and examples for %name.
 %autosetup -p1 -n python-nss-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 PYTHONPATH=%{buildroot}%{python_sitearch} python3 -m sphinx doc/sphinx/source build/sphinx/html
 rm -rf build/sphinx/html/.buildinfo build/sphinx/html/.doctrees
@@ -82,7 +87,7 @@ $python test/run_tests -i
 %license LICENSE.mpl LICENSE.lgpl LICENSE.gpl
 %doc README doc/ChangeLog
 %{python_sitearch}/nss
-%{python_sitearch}/python_nss-%{version}*info
+%{python_sitearch}/python_nss-%{version}*-info
 
 %files -n %{name}-doc
 %license LICENSE.mpl LICENSE.lgpl LICENSE.gpl

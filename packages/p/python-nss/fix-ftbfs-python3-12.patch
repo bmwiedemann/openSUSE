@@ -1,0 +1,22 @@
+Description: fix ftbfs on python3.12 
+Author: Bo YU <tsu.yubo@gmail.com>
+Bug: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1055552 
+Forwarded: no, no suitable upstream to submit this
+Last-Update: 2023-12-06
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+---
+ src/py_nspr_error.c |    2 ++
+ 1 file changed, 2 insertions(+)
+
+--- a/src/py_nspr_error.c
++++ b/src/py_nspr_error.c
+@@ -20,6 +20,8 @@
+ #include "secerr.h"
+ #include "sslerr.h"
+ 
++#define HAVE_STDARG_PROTOTYPES 1
++
+ typedef struct {
+     PyBaseExceptionObject base;
+     PyObject *error_desc;

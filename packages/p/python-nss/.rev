@@ -68,4 +68,17 @@
     <comment></comment>
     <requestid>1094650</requestid>
   </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>a9fd849f967ef6dac307b1800cc83d9e</srcmd5>
+    <version>1.0.1</version>
+    <time>1707860648</time>
+    <user>anag+factory</user>
+    <comment>- Add fix-ftbfs-python3-12.patch from
+  https://bugs.debian.org/1055552 to fix FTBFS with Python 3.12
+  (bsc#1219842).
+- Update new-setuptools.patch to make setup.py more compatible
+  with the current setuptools.
+</comment>
+    <requestid>1146357</requestid>
+  </revision>
 </revisionlist>

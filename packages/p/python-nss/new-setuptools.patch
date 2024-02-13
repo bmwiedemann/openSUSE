@@ -1,9 +1,210 @@
-Index: python-nss-1.0.1/setup.cfg
-===================================================================
---- python-nss-1.0.1.orig/setup.cfg
-+++ python-nss-1.0.1/setup.cfg
+---
+ setup.cfg |    2 
+ setup.py  |  185 +++++++++++++++++++++++++++-----------------------------------
+ 2 files changed, 84 insertions(+), 103 deletions(-)
+
+--- a/setup.cfg
++++ b/setup.cfg
 @@ -1,3 +1,3 @@
  [sdist]
  formats = bztar
 -dist-dir =
 +dist_dir =
+--- a/setup.py
++++ b/setup.py
+@@ -13,8 +13,8 @@ from distutils.spawn import find_executa
+ from distutils import log
+ from distutils.filelist import FileList
+ from distutils.util import subst_vars, change_root
+-from distutils.command.build_py import build_py as _build_py
+-from distutils.command.sdist import sdist as _sdist
++from setuptools.command.build_py import build_py as _build_py
++from setuptools.command.sdist import sdist as _sdist
+ 
+ name = 'python-nss'
+ version = "1.0.1"
+@@ -277,103 +277,84 @@ class InstallDoc(Command):
+                 self.copy_file(src_path, full_dst_path)
+ 
+ 
+-
+-#------------------------------------------------------------------------------
+-
+-def main(argv):
+-
+-    with open('README') as f:
+-        long_description = f.read()
+-
+-    debug_compile_args = ['-O0', '-g']
+-    extra_compile_args = []
+-    include_roots = []
+-
+-    for arg in argv[:]:
+-        if arg in ('--debug', ):
+-            print("compiling with debug")
+-            extra_compile_args += debug_compile_args
+-            argv.remove(arg)
+-        if arg in ('-t', '--trace'):
+-            print("compiling with trace")
+-            extra_compile_args += ['-DDEBUG']
+-            argv.remove(arg)
+-        if arg.startswith('--include-root'):
+-            include_roots.append(arg.split('--include-root=')[1])
+-            argv.remove(arg)
+-
+-    nss_include_dir  = find_include_dir(['nss3', 'nss'],   ['nss.h',  'pk11pub.h'], include_roots=include_roots)
+-    nspr_include_dir = find_include_dir(['nspr4', 'nspr'], ['nspr.h', 'prio.h'], include_roots=include_roots)
+-
+-    nss_error_extension = \
+-        Extension('nss.error',
+-                  sources            = ['src/py_nspr_error.c'],
+-                  include_dirs       = [nss_include_dir, nspr_include_dir],
+-                  depends            = ['src/py_nspr_common.h', 'src/py_nspr_error.h',
+-                                         'src/NSPRerrs.h', 'src/SSLerrs.h', 'src/SECerrs.h'],
+-                  libraries          = ['nspr4'],
+-                  extra_compile_args = extra_compile_args,
+-                  )
+-
+-    nss_io_extension = \
+-        Extension('nss.io',
+-                  sources            = ['src/py_nspr_io.c'],
+-                  include_dirs       = [nss_include_dir, nspr_include_dir],
+-                  depends            = ['src/py_nspr_common.h', 'src/py_nspr_error.h', 'src/py_nspr_io.h'],
+-                  libraries          = ['nspr4'],
+-                  extra_compile_args = extra_compile_args,
+-                  )
+-
+-    nss_nss_extension = \
+-        Extension('nss.nss',
+-                  sources            = ['src/py_nss.c'],
+-                  include_dirs       = ['src', nss_include_dir, nspr_include_dir],
+-                  depends            = ['src/py_nspr_common.h', 'src/py_nspr_error.h', 'src/py_nss.h'],
+-                  libraries          = ['nspr4', 'ssl3', 'nss3', 'smime3'],
+-                  extra_compile_args = extra_compile_args,
+-                  )
+-
+-    nss_ssl_extension = \
+-        Extension('nss.ssl',
+-                  sources            = ['src/py_ssl.c'],
+-                  include_dirs       = ['src', nss_include_dir, nspr_include_dir],
+-                  depends            = ['src/py_nspr_common.h', 'src/py_nspr_error.h', 'src/py_nspr_io.h',
+-                                        'src/py_ssl.h', 'src/py_nss.h'],
+-                  libraries          = ['nspr4', 'ssl3'],
+-                  extra_compile_args = extra_compile_args,
+-                  )
+-
+-          #bug_tracker       = 'https://bugzilla.redhat.com/buglist.cgi?submit&component=python-nss&product=Fedora&classification=Fedora'
+-          #bug_enter     = 'https://bugzilla.redhat.com/enter_bug.cgi?component=python-nss&product=Fedora&classification=Fedora',
+-    setup(name             = name,
+-          version          = version,
+-          description      = 'Python bindings for Network Security Services (NSS) and Netscape Portable Runtime (NSPR)',
+-          long_description = long_description,
+-          author           = 'John Dennis',
+-          author_email     = 'jdennis@redhat.com',
+-          maintainer       = 'John Dennis',
+-          maintainer_email = 'jdennis@redhat.com',
+-          license          = 'MPLv2.0 or GPLv2+ or LGPLv2+',
+-          platforms        = 'posix',
+-          url              = 'http://www.mozilla.org/projects/security/pki/python-nss',
+-          download_url     = '',
+-          ext_modules      = [nss_error_extension,
+-                              nss_io_extension,
+-                              nss_nss_extension,
+-                              nss_ssl_extension,
+-                             ],
+-          package_dir      = {'nss':'src'},
+-          packages         = ['nss'],
+-          cmdclass         = {'build_doc'     : BuildDoc,
+-                              'install_doc'   : InstallDoc,
+-                              'build_py'      : BuildPy,
+-                              'sdist'         : SDist,
+-                             }
+-    )
+-
+-    return 0
+-
+-#------------------------------------------------------------------------------
+-
+-if __name__ == "__main__":
+-    sys.exit(main(sys.argv))
++with open('README') as f:
++    long_description = f.read()
++debug_compile_args = ['-O0', '-g']
++extra_compile_args = []
++include_roots = []
++for arg in sys.argv[:]:
++    if arg in ('--debug', ):
++        print("compiling with debug")
++        extra_compile_args += debug_compile_args
++        sys.argv.remove(arg)
++    if arg in ('-t', '--trace'):
++        print("compiling with trace")
++        extra_compile_args += ['-DDEBUG']
++        sys.argv.remove(arg)
++    if arg.startswith('--include-root'):
++        include_roots.append(arg.split('--include-root=')[1])
++        sys.argv.remove(arg)
++nss_include_dir  = find_include_dir(['nss3', 'nss'],   ['nss.h',  'pk11pub.h'], include_roots=include_roots)
++nspr_include_dir = find_include_dir(['nspr4', 'nspr'], ['nspr.h', 'prio.h'], include_roots=include_roots)
++nss_error_extension = \
++    Extension('nss.error',
++              sources            = ['src/py_nspr_error.c'],
++              include_dirs       = [nss_include_dir, nspr_include_dir],
++              depends            = ['src/py_nspr_common.h', 'src/py_nspr_error.h',
++                                     'src/NSPRerrs.h', 'src/SSLerrs.h', 'src/SECerrs.h'],
++              libraries          = ['nspr4'],
++              extra_compile_args = extra_compile_args,
++              )
++nss_io_extension = \
++    Extension('nss.io',
++              sources            = ['src/py_nspr_io.c'],
++              include_dirs       = [nss_include_dir, nspr_include_dir],
++              depends            = ['src/py_nspr_common.h', 'src/py_nspr_error.h', 'src/py_nspr_io.h'],
++              libraries          = ['nspr4'],
++              extra_compile_args = extra_compile_args,
++              )
++nss_nss_extension = \
++    Extension('nss.nss',
++              sources            = ['src/py_nss.c'],
++              include_dirs       = ['src', nss_include_dir, nspr_include_dir],
++              depends            = ['src/py_nspr_common.h', 'src/py_nspr_error.h', 'src/py_nss.h'],
++              libraries          = ['nspr4', 'ssl3', 'nss3', 'smime3'],
++              extra_compile_args = extra_compile_args,
++              )
++nss_ssl_extension = \
++    Extension('nss.ssl',
++              sources            = ['src/py_ssl.c'],
++              include_dirs       = ['src', nss_include_dir, nspr_include_dir],
++              depends            = ['src/py_nspr_common.h', 'src/py_nspr_error.h', 'src/py_nspr_io.h',
++                                    'src/py_ssl.h', 'src/py_nss.h'],
++              libraries          = ['nspr4', 'ssl3'],
++              extra_compile_args = extra_compile_args,
++              )
++      #bug_tracker       = 'https://bugzilla.redhat.com/buglist.cgi?submit&component=python-nss&product=Fedora&classification=Fedora'
++      #bug_enter     = 'https://bugzilla.redhat.com/enter_bug.cgi?component=python-nss&product=Fedora&classification=Fedora',
++
++setup(name             = name,
++      version          = version,
++      description      = 'Python bindings for Network Security Services (NSS) and Netscape Portable Runtime (NSPR)',
++      long_description = long_description,
++      author           = 'John Dennis',
++      author_email     = 'jdennis@redhat.com',
++      maintainer       = 'John Dennis',
++      maintainer_email = 'jdennis@redhat.com',
++      license          = 'MPLv2.0 or GPLv2+ or LGPLv2+',
++      platforms        = 'posix',
++      url              = 'http://www.mozilla.org/projects/security/pki/python-nss',
++      download_url     = '',
++      ext_modules      = [nss_error_extension,
++                          nss_io_extension,
++                          nss_nss_extension,
++                          nss_ssl_extension,
++                         ],
++      package_dir      = {'nss':'src'},
++      packages         = ['nss'],
++      cmdclass         = {'build_doc'     : BuildDoc,
++                          'install_doc'   : InstallDoc,
++                          'build_py'      : BuildPy,
++                          'sdist'         : SDist,
++                         }
++)
