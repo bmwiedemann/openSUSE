@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  9 20:59:06 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Fix python312 tests by replacing long deprecated assertEquals
+- Build PEP517 style
+
+-------------------------------------------------------------------
 Tue Jan 30 15:10:26 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Fix (C) line in spec file

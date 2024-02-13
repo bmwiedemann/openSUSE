@@ -26,7 +26,9 @@ Group:          Development/Languages/Python
 URL:            https://yarg.readthedocs.org/
 Source:         https://files.pythonhosted.org/packages/source/y/yarg/yarg-%{version}.tar.gz
 Source1:        test-data-cf67924.tgz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests
@@ -42,23 +44,25 @@ A PyPI client.
 %prep
 %setup -q -n yarg-%{version}
 tar -xzf %{SOURCE1}
+# https://github.com/kura/yarg/issues/8
+sed -i -e 's/assertEquals/assertEqual/' -e 's/from mock/from unittest.mock/' tests/test_*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_expand rm -r %{buildroot}%{$python_sitelib}/tests
 
 %check
-# https://github.com/kura/yarg/issues/8
-sed -i 's:from mock:from unittest.mock:' tests/test_*.py
+
 %pyunittest discover -v
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE LICENSE-REQUESTS
-%{python_sitelib}/*
+%{python_sitelib}/yarg
+%{python_sitelib}/yarg-%{version}.dist-info
 
 %changelog
