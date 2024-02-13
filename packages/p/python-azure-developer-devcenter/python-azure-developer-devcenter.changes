@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Tue Feb 13 12:29:36 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Drop extra LICENSE.txt as upstream now ships its own
+
+-------------------------------------------------------------------
+Tue Dec 12 10:03:17 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.0.0b3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
+Thu Feb  9 09:42:30 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 1.0.0b2
