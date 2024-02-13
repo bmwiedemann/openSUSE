@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Feb 12 14:31:55 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.32.2:
+  * kitten @ load-config: Allow (re)loading kitty.conf via remote control
+  * Remote control: Allow running mappable actions via remote control
+    (kitten @ action)
+  * kitten @ send-text: Add a new option to automatically wrap the sent text
+    in bracketed paste escape codes if the program in the destination window
+    has turned on bracketed paste.
+  * Fix a single key mapping not overriding a previously defined multi-key mapping
+  * macOS: Fix kitten @ select-window leaving the keyboard in a partially
+    functional state (#7074)
+  * Graphics protocol: Improve display of images using Unicode placeholders or
+    row/column boxes by resizing them using linear instead of nearest neighbor
+    interpolation on the GPU (#7070)
+  * When matching URLs use the definition of legal characters in URLs from the
+    WHATWG spec rather than older standards (#7095)
+  * hints kitten: Respect the kitty url_excluded_characters option (#7075)
+  * macOS: Fix an abort when changing OS window chrome for a full screen window
+    via remote control or the themes kitten (#7106)
+  * Special case rendering of some more box drawing characters using shades from
+    the block of symbols for legacy computing (#7110)
+  * A new close_other_os_windows to close non active OS windows (#7113)
+
+-------------------------------------------------------------------
 Fri Jan 26 15:24:52 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
 - #gh/kovidgoyal/kitty/7026 may have fixed -fcf-protection issue for i586
