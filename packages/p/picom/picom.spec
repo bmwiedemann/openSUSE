@@ -17,15 +17,13 @@
 
 
 Name:           picom
-Version:        11.1
+Version:        11.2
 Release:        0
 Summary:        Stand-alone compositor for X11
 License:        MIT AND MPL-2.0
 Group:          System/X11/Utilities
 URL:            https://github.com/yshui/picom
 Source:         https://github.com/yshui/picom/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM picom-11.1-fix-nvidia-high-cpu-usage.patch yshuiv7@gmail.com -- Workaround a NVIDIA problem that causes high CPU usage after suspend/resume
-Patch0:         picom-11.1-fix-nvidia-high-cpu-usage.patch
 BuildRequires:  asciidoc
 BuildRequires:  c_compiler
 BuildRequires:  hicolor-icon-theme
@@ -34,6 +32,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  uthash-devel
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(egl)
+BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libconfig)
 BuildRequires:  pkgconfig(libdrm)

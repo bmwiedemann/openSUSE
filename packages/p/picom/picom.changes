@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb 13 13:23:17 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 11.2:
+  * picom now depends on libepoxy for OpenGL symbol management.
+  * Workaround a NVIDIA problem that causes high CPU usage after
+    suspend/resume.
+  * Fix occasional freezes.
+  * Fix corner-radius-rules not applying sometimes.
+  * Fix window shader not having an effect when frame opacity is
+    enabled.
+  * Fix binding root pixmap in case of depth mismatch
+    (boo#1217786).
+- Remove picom-11.1-fix-nvidia-high-cpu-usage.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Sat Feb  3 16:44:06 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 11.1 (changes since 10.2):
