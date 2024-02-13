@@ -1,7 +1,7 @@
 #
 # spec file for package python-holoviews
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without  test
 Name:           python-holoviews
-Version:        1.17.1
+Version:        1.18.2
 Release:        0
 Summary:        Composable, declarative visualizations for Python
 License:        BSD-3-Clause
@@ -26,15 +26,11 @@ Group:          Development/Languages/Python
 URL:            https://github.com/holoviz/holoviews
 Source0:        https://files.pythonhosted.org/packages/source/h/holoviews/holoviews-%{version}.tar.gz
 Source99:       python-holoviews-rpmlintrc
-#PATCH-FIX-UPSTREAM https://github.com/holoviz/holoviews/pull/5870 Support Numpy 1.25
-Patch:          numpy125.patch
-#PATCH-FIX-UPSTREAM https://github.com/holoviz/holoviews/pull/5874 support python3-only systems
-Patch:          python3-only.patch
 BuildRequires:  %{python_module colorcet}
 BuildRequires:  %{python_module numpy >= 1.0}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pandas >= 0.20}
-BuildRequires:  %{python_module panel >= 0.13.1}
+BuildRequires:  %{python_module panel >= 1.0}
 BuildRequires:  %{python_module param >= 1.12 with %python-param < 3}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyct >= 0.4.4}
@@ -51,8 +47,8 @@ Requires:       python-panel >= 0.13.1
 Requires:       python-pyviz-comms >= 0.7.4
 Requires:       (python-param >= 1.12 with python-param < 3)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
-Recommends:     python-bokeh >= 2.2
+Requires(postun): update-alternatives
+Recommends:     python-bokeh >= 3.1
 Recommends:     python-ipython >= 5.4.0
 Recommends:     python-matplotlib >= 3
 Recommends:     python-notebook
@@ -76,12 +72,12 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module bokeh}
+BuildRequires:  %{python_module contourpy}
 BuildRequires:  %{python_module dash >= 1.16}
 BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module datashader >= 0.11.1}
 BuildRequires:  %{python_module deepdiff}
 BuildRequires:  %{python_module ffmpeg-python}
-BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module ipython >= 5.4.0}
 BuildRequires:  %{python_module keyring}
 BuildRequires:  %{python_module matplotlib >= 3}
@@ -92,6 +88,7 @@ BuildRequires:  %{python_module networkx}
 BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module plotly >= 4.0}
 BuildRequires:  %{python_module pscript >= 0.7.1}
+BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rfc3986}
@@ -178,7 +175,7 @@ if [[ $(getconf LONG_BIT) -eq 32 ]]; then
     donttest+=" or (DatashaderRasterizeTests and test_rasterize_pandas_trimesh_implicit_nodes)"
 fi
 
-%pytest -n auto holoviews -k "not ($donttest)"
+%pytest -W ignore::UserWarning -n auto holoviews -k "not ($donttest)"
 %endif
 
 %post

@@ -303,4 +303,78 @@
     <comment></comment>
     <requestid>1108852</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>1dcc24d27dbde79902b0df4457f279fa</srcmd5>
+    <version>1.18.2</version>
+    <time>1707860571</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.18.2:
+  This minor release includes a number of bug fixes and documentation
+  updates, as well as compatibility updates for xarray 2023.12 and
+  Pandas 2.2.
+  * Enhancements:
+    - Update contour line calculations to use ContourPy's LineType.ChunkCombinedNan (#5985)
+    - Use sys.executable for check_output (#5983)
+    - Updates to show_versions ((#6072), (#6081))
+  * Bug fixes:
+    - Support color_key in datashade when intermediate step is an ImageStack (#5994)
+    - Fix hist on overlay (#5995)
+    - Set proper context before triggering streams (#6000)
+    - Support partial bound function (#6009)
+    - Add norm in init_artists in holoviews/plotting/mpl/raster.py (#6029)
+    - Fix linking elements that are transformed by a Compositor (#6003)
+    - Add datetime hover information for selector (#6023, (#6039))
+    - Only evaluate rx if it is an Reactive Expression ((#6014))
+    - Ensure partial methods can be used as dmap callables ((#6063))
+    - Del frame after stack level is found in deprecated ((#6085))
+  * Compatibility:
+    - Compatibility updates with xarray 2023.12 (#6026)
+    - Add extra check to detect if we are in jupyterlite (#6007)
+    - Compatibility updates with Pandas 2.2 ((#6074), (#6078))
+    - Add Comm on_open handler to initialize the server comm ((#6076))
+  * Documentation:
+    - Fix docs (#5996)
+    - Fix Param usage in the Plot and Renderers guide (#6001)
+    - Fixing URLs to bokeh project (#6005)
+    - Fix to broken urls in example gallery pages ((#6038))
+    - Replace Google Analytics with GoatCounter ((#6048))
+    - Add downloads badges ((#6088))
+  * Maintenance:
+    - Change to pytest-rerunfailures (#5984)
+    - Holoviews maintenance (#5987)
+    - Add log_cli_level = &quot;INFO&quot; to pytest (#5989)
+    - Add shell pre-commit hook (#5991)
+    - Enable Bugbear 904 (#5992)
+    - Part 1, modernize test suite (#5954)
+    - Enforce labels (#5996)
+    - Add lower pin to scipy (#6032)
+    - Skip Deploying_Bokeh_Apps.ipynb on Windows ((#6070))
+    - Fix failing Windows tests ((#6087))
+- removed numpy125.patch and python3-only.patch, not needed anymore
+- Update to 1.18.1:
+  * This release contains a small number of bug fixes and
+    compatibility updates
+  * Bug fixes:
+    - Account for overlaid elements when using subcoordinates_y (#5950)
+    - Fix groupby option for vectorized annotations (#5956)
+    - Fix and improvements to ImageStack (#5961)
+    - Do not allow partial matches when updating OverlayPlot (#5962)
+    - Always ravel array in unique_array (#5969)
+  * Compatibility:
+    - Update Stamen maps with new URL (#5967)
+    - Compatibility updates for Numpy 2.0 (#5979)
+  * Maintenance:
+    - General maintenance (#5955)
+- 1.18.0:
+  This release includes new features, improvements, and bug fixes. Among
+  these are the new elements. First is the ImageStack element allows you
+  to easily visualize a 3D array, while the VLines, HLines, VSpans, and
+  HSpans elements allow you to visualize vertical and horizontal lines
+  and spans easily. In addition, this release includes support for
+  subcoordinate systems in the y-axis and various other enhancements and
+  bug fixes. This release adds support for the newest Python 3.12 and
+  Bokeh 3.3 and drops support for Python 3.8 and Bokeh 2.
+</comment>
+    <requestid>1146086</requestid>
+  </revision>
 </revisionlist>
