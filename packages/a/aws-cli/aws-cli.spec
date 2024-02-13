@@ -1,7 +1,7 @@
 #
 # spec file for package aws-cli
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           aws-cli
-Version:        1.31.11
+Version:        1.32.31
 Release:        0
 Summary:        Amazon Web Services Command Line Interface
 License:        Apache-2.0
@@ -30,40 +30,18 @@ BuildRequires:  python-rpm-macros
 Requires:       groff
 Provides:       awscli = %{version}
 BuildArch:      noarch
-%if 0%{?suse_version} && 0%{?suse_version} > 1315
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-Requires:       python3
-Requires:       python3-PyYAML <= 6.1
-Requires:       python3-PyYAML >= 3.10
-Requires:       python3-botocore >= 1.33.11
-Requires:       python3-colorama <= 0.5.0
-Requires:       python3-colorama >= 0.2.5
-Requires:       python3-docutils < 0.21
-Requires:       python3-docutils >= 0.10
-Requires:       python3-rsa < 5.0.0
-Requires:       python3-rsa >= 3.1.2
-Requires:       python3-s3transfer < 0.9.0
-Requires:       python3-s3transfer >= 0.8.0
-Requires:       python3-six
-%else
-BuildRequires:  bash-completion
-BuildRequires:  python-devel
-BuildRequires:  python-setuptools
-Requires:       python
-Requires:       python-PyYAML <= 6.1
-Requires:       python-PyYAML >= 3.10
-Requires:       python-botocore >= 1.33.11
-Requires:       python-colorama <= 0.5.0
-Requires:       python-colorama >= 0.2.5
-Requires:       python-docutils < 0.21
-Requires:       python-docutils >= 0.10
-Requires:       python-rsa <= 4.5.0
-Requires:       python-rsa >= 3.1.2
-Requires:       python-s3transfer < 0.9.0
-Requires:       python-s3transfer >= 0.8.0
-Requires:       python-six
-%endif
+BuildRequires:  python311-devel
+BuildRequires:  python311-pip
+BuildRequires:  python311-setuptools
+BuildRequires:  python311-wheel
+Requires:       python311
+Requires:       python311-botocore >= 1.34.31
+Requires:       python311-six
+Requires:       (python311-PyYAML >= 3.10 with python311-PyYAML <= 6.1)
+Requires:       (python311-colorama >= 0.2.5 with python311-colorama <= 0.5.0)
+Requires:       (python311-docutils >= 0.10 with python311-docutils < 0.21)
+Requires:       (python311-rsa >= 3.1.2 with python311-rsa < 5.0.0)
+Requires:       (python311-s3transfer >= 0.10.0 with python311-s3transfer < 0.11.0)
 
 %description
 The AWS Command Line Interface (CLI) is a unified tool to manage AWS
@@ -75,24 +53,17 @@ from the command line and automated through scripts.
 %patch0 -p1
 sed -i 's/from botocore\.vendored //' awscli/customizations/awslambda.py
 sed -i 's/botocore\.vendored\.//' awscli/customizations/configure/__init__.py
+find . -type f | xargs grep -l '/usr/bin/env' | xargs sed -i 's/env python/python3.11/'
 
 %build
-%if 0%{?suse_version} && 0%{?suse_version} > 1315
-python3 setup.py build
-%else
-python setup.py build
-%endif
+#python3.11 setup.py build
+%python311_pyproject_wheel
 
 %install
-%if 0%{?suse_version} && 0%{?suse_version} > 1315
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot} --install-scripts=%{_bindir}
-%fdupes %{buildroot}%{python3_sitelib}
-find %{buildroot}%{python3_sitelib}/awscli/examples -type f -exec chmod 644 {} \;
-%else
-python setup.py install --prefix=%{_prefix} --root=%{buildroot} --install-scripts=%{_bindir}
-%fdupes %{buildroot}%{python_sitelib}
-find %{buildroot}%{python_sitelib}/awscli/examples -type f -exec chmod 644 {} \;
-%endif
+#python3.11 setup.py install --prefix=%{_prefix} --root=%{buildroot} --install-scripts=%{_bindir}
+%python311_pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+find %{buildroot}%{python311_sitelib}/awscli/examples -type f -exec chmod 644 {} \;
 # No DOS crap
 rm %{buildroot}/%{_bindir}/aws.cmd
 # Shell completion
@@ -103,17 +74,10 @@ install -DTm644 %{buildroot}%{_bindir}/aws_zsh_completer.sh %{buildroot}%{_sysco
 %defattr(-, root, root)
 %doc CHANGELOG.rst README.rst
 %license LICENSE.txt
-%if 0%{?suse_version} && 0%{?suse_version} > 1315
-%dir %{python3_sitelib}/awscli
-%dir %{python3_sitelib}/awscli-%{version}-py%{py3_ver}.egg-info
-%{python3_sitelib}/awscli/*
-%{python3_sitelib}/*egg-info/*
-%else
-%dir %{python_sitelib}/awscli
-%dir %{python_sitelib}/awscli-%{version}-py%{py_ver}.egg-info
-%{python_sitelib}/awscli/*
-%{python_sitelib}/*egg-info/*
-%endif
+%dir %{python311_sitelib}/awscli
+%dir %{python311_sitelib}/awscli-%{version}*-info
+%{python311_sitelib}/awscli/*
+%{python311_sitelib}/awscli-%{version}*-info/*
 %{_bindir}/aws
 %{_bindir}/aws_completer
 %exclude %{_bindir}/aws_bash_completer
