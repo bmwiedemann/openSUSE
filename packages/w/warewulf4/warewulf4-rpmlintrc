@@ -3,11 +3,18 @@
 # compute nodes
 addFilter("hidden-file-or-dir /var/lib/warewulf/overlays/,*")
 addFilter("non-executable-script /var/lib/warewulf/overlays/.*")
-# wwclient is called on a compute *before* systemd  in 
+# wwclient is called on a compute node *before* systemd in
 # order to provision the system, so it *must* be statically linked
-addFilter("statically-linked-binary /var/lib/warewulf/overlays/system/default/warewulf/bin/wwclient")
+addFilter("statically-linked-binary .*/wwclient")
+addFilter("shared-lib-without-dependency-information .*/wwclient")
 # go binaries are hard to strip
 addFilter("unstripped-binary-or-object.*")
+# Intentional - symlinks will be copied to the client
+addFilter("dangling-symlink .*/warewulf/overlays")
+# LOL. Not every changelog entry marks a version update.
+addFilter("no-version-in-last-changelog")
+# C'on, really? We have to build for multiple target version with different rpmlint settings.
+addFilter("unused-rpmlintrc-filter")
 # ignore the binary in /usr/share as this binary will to the nodes and not run on
-# the host where the rpm is installed
-addFilter("arch-dependent-file-in-usr-share")
+# the host where the rpm is installed.
+# addFilter("arch-dependent-file-in-usr-share")

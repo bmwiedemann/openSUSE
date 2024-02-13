@@ -179,4 +179,18 @@
 - removed grub-boot.patch as incorporated upstreams (forwarded request 1141266 from mslacken)</comment>
     <requestid>1141267</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>fc8627ddb78592d492b2f1728ee43484</srcmd5>
+    <version>4.5.0~rc0</version>
+    <time>1707860586</time>
+    <user>anag+factory</user>
+    <comment>- Rename: warewulf4-doc -&gt; warewulf4-man.
+- Rename: warewulf4-slurm -&gt; warewulf4-overlay-slurm
+- Set warewulf4-man and warewulf4-overlay-slurm to noarch.
+- Use bash for config-warewulf.sh
+- Improved rpmlint filters.
+
+- added vendor.tar.gz as git hash source doesn't have vendoring (forwarded request 1146236 from eeich)</comment>
+    <requestid>1146281</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Configure warewulf with the primary network of the host
 WW4CONF=/etc/warewulf/warewulf.conf
 
@@ -37,14 +37,14 @@ function is_ip_in_range() {
   # compare the octets one at a time to see if the ip address is within the range.
     if [[ ${ip_address_octets[3]} -lt ${ip_start_octets[3]} || ${ip_address_octets[3]} -gt ${ip_end_octets[3]} ]]; then
       return 1
-    fi 
+    fi
   # if we reach this point, the ip address is in the range.
   return 0
 }
 
 echo "-- WW4 CONFIGURAION $* --"
 
-# Make sure that a ip address was defined for out network so that 
+# Make sure that a ip address was defined for out network so that
 # we can configure dhcpd correctly
 IP4CIDR=`ip addr | awk '/scope global/ {print $2;exit}'`
 IP4=${IP4CIDR%/*}
@@ -85,9 +85,9 @@ fi
 if [ -e $WW4CONF ] ; then
   test -n $IP4 && sed -i 's/^ipaddr:.*/ipaddr: '$IP4'/' $WW4CONF
   test -n $IP4MASK && sed -i 's/^netmask:.*/netmask: '$IP4MASK'/' $WW4CONF
-  test -n $IP4NET && sed -i 's/^network:.*/network: '$IP4NET'/' $WW4CONF 
-  test -n $DYNSTART && sed -i 's/^  range start:.*/  range start: '$DYNSTART'/' $WW4CONF 
-  test -n $DYNEND && sed -i 's/^  range end:.*/  range end: '$DYNEND'/' $WW4CONF 
+  test -n $IP4NET && sed -i 's/^network:.*/network: '$IP4NET'/' $WW4CONF
+  test -n $DYNSTART && sed -i 's/^  range start:.*/  range start: '$DYNSTART'/' $WW4CONF
+  test -n $DYNEND && sed -i 's/^  range end:.*/  range end: '$DYNEND'/' $WW4CONF
   cat << EOF
 ipaddr: $IP4
 netmask: $IP4MASK

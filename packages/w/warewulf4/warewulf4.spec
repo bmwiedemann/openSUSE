@@ -37,6 +37,7 @@ Source10:       config-ww4.sh
 Source20:       README.dnsmasq
 Patch12:        clean-warewulf-conf.patch
 Patch15:        dnsmasq-template-move.patch
+#Conflicts:      warewulf4-slurm < %version
 
 # no firewalld in sle12
 %if 0%{?sle_version} >= 150000 || 0%{?suse_version} > 1500
@@ -91,19 +92,25 @@ Conflicts:      warewulf-provision-x86_64-initramfs
 Contains the binaries for the access of warewulf through a rest API and from
 the commandline from an external host.
 
-%package doc
-Requires:       %{name}
-Summary:        Contains the documentation for warewulf
+%package man
+Supplements:    %{name}
+Provides:       warewulf4-doc = %version
+Obsoletes:      warewulf4-doc < %version
+Summary:        Warewulf4 Man Pages
+BuildArch:      noarch
 
-%description doc
-Documention and man pages for warewulf.
+%description man
+Man pages for warewulf4.
 
-%package slurm
+%package overlay-slurm
 Summary:        Configuration template for slurm
 Requires:       %{name} = %{version}
 Requires:       slurm
+BuildArch:      noarch
+Obsoletes:      warewulf4-slurm < 4.5.0
+Provides:       warewulf4-slurm = %version
 
-%description slurm
+%description overlay-slurm
 This package install the necessary configuration files in order to run a slurm
 cluster on the configured warewulf nodes.
 
@@ -165,7 +172,6 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcwarewulfd
 mkdir -p %{buildroot}%{_datadir}/bash-completion/completions
 mv -v %{buildroot}%{_sysconfdir}/bash_completion.d/wwctl \
   %{buildroot}%{_datadir}/bash-completion/completions/wwctl
-#rm -r %{buildroot}%{_datadir}/doc/warewulf
 # copy the LICESNSE.md via %%doc
 rm -f %{buildroot}/usr/share/doc/packages/warewulf/LICENSE.md
 cp %{S:20} .
@@ -179,7 +185,7 @@ yq e '
   .["container mounts"] += {"source": "/etc/SUSEConnect", "dest": "/etc/SUSEConnect", "readonly": true} |
   .["container mounts"] += {"source": "/etc/zypp/credentials.d/SCCcredentials", "dest": "/etc/zypp/credentials.d/SCCcredentials", "readonly": true}' \
   -i %{buildroot}%{_sysconfdir}/warewulf/warewulf.conf
-#sed -i -e 's@\(^\s*\)\(.*:.*\):@\1"\2":@' %{buildroot}%{_sysconfdir}/warewulf/warewulf.conf
+#sed -i -e 's@\(^\s*\)\(.*:.*\):@\1"\2":@' %%{buildroot}%%{_sysconfdir}/warewulf/warewulf.conf
 # fix dhcp for SUSE
 mv %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/etc/dhcp/dhcpd.conf.ww %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/etc/dhcpd.conf.ww
 rmdir %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/etc/dhcp
@@ -238,7 +244,7 @@ EOF
 %{_sysusersdir}/system-user-%{name}.conf
 %{_datadir}/warewulf
 
-%files doc
+%files man
 %{_mandir}/man1/wwctl*1.gz
 %{_mandir}/man5/*conf*gz
 
@@ -261,7 +267,7 @@ EOF
 %exclude %{_localstatedir}/lib/warewulf/overlays/generic/etc/slurm
 %exclude %{_localstatedir}/lib/warewulf/overlays/generic/etc/munge
 
-%files slurm
+%files overlay-slurm
 %dir %{_localstatedir}/lib/warewulf/overlays/host/etc/slurm
 %{_localstatedir}/lib/warewulf/overlays/host/etc/slurm/slurm.conf.ww
 %dir %{_localstatedir}/lib/warewulf/overlays/generic/etc/slurm

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  7 08:55:00 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Rename: warewulf4-doc -> warewulf4-man.
+- Rename: warewulf4-slurm -> warewulf4-overlay-slurm
+- Set warewulf4-man and warewulf4-overlay-slurm to noarch.
+- Use bash for config-warewulf.sh
+- Improved rpmlint filters.
+
+-------------------------------------------------------------------
 Wed Jan 24 14:31:17 UTC 2024 - Christian Goll <cgoll@suse.com>
 
 - make only overlay dir beeing config files
@@ -7,7 +16,7 @@ Wed Jan 24 14:31:17 UTC 2024 - Christian Goll <cgoll@suse.com>
 Fri Jan 19 13:45:18 UTC 2024 - Christian Goll <cgoll@suse.com>
 
 - moved to git archive hash as source in order to be reproducible
-- added vendor.tar.gz as git hash source doesn't have vendoring 
+- added vendor.tar.gz as git hash source doesn't have vendoring
 - removed grub-boot.patch as incorporated upstreams
 
 -------------------------------------------------------------------
