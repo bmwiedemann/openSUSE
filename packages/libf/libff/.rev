@@ -7,4 +7,14 @@
     <comment>.</comment>
     <requestid>870673</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>617980e51e1df6b2e737229bb230a1dc</srcmd5>
+    <version>1.0.0</version>
+    <time>1707860666</time>
+    <user>anag+factory</user>
+    <comment>- Small spec file modernization
+
+- Remove the hardcoded libopenssl-1_1-devel to libopenssl-devel.</comment>
+    <requestid>1146386</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libff
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        1.0.0
 Release:        0
 Summary:        C++ library for Finite Fields and Elliptic Curves
 License:        MIT
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/scipr-lab/libff
 Source0:        https://github.com/scipr-lab/libff/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         00_no_bn128.patch
@@ -31,7 +30,7 @@ Patch2:         02_config_hpp.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
-BuildRequires:  libopenssl-1_1-devel
+BuildRequires:  libopenssl-devel
 
 %description
 libff is a C++ library for finite fields and elliptic curves.
@@ -65,14 +64,13 @@ rm libff/algebra/scalar_multiplication/multiexp_profile.cpp
 %cmake_build
 
 %check
-cd build
-make %{?_smp_mflags} check
+pushd build
+make check
 
 %install
 %cmake_install
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %files -n %{lname}
 %doc README.md
