@@ -1,3 +1,10 @@
+gpxsee (13.16) stable; urgency=low
+
+  * Improved vector maps rendering.
+  * Minor fixes.
+
+ -- Martin Tuma <tumic@cbox.cz>  Mon, 12 Feb 2024 23:43:37 +0100
+
 gpxsee (13.15) stable; urgency=low
 
   * Removed qt5compat dependency from Qt6 builds.
