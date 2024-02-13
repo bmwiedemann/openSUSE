@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-datashader
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,16 +38,19 @@ URL:            https://datashader.org
 Source0:        https://files.pythonhosted.org/packages/source/d/datashader/datashader-%{version}.tar.gz
 Source100:      python-datashader-rpmlintrc
 BuildRequires:  %{python_module devel >= 3.9}
+BuildRequires:  %{python_module multipledispatch}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module param}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyct}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-DataShape
 Requires:       python-Pillow
 Requires:       python-colorcet
 Requires:       python-dask-dataframe
+Requires:       python-multipledispatch
 Requires:       python-numba
 Requires:       python-numpy
 Requires:       python-pandas
@@ -57,8 +60,9 @@ Requires:       python-requests
 Requires:       python-scipy
 Requires:       python-toolz
 Requires:       python-xarray
+Requires:       python-xarray
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %if %{with test}
 BuildRequires:  %{python_module bokeh >= 3.1}
 BuildRequires:  %{python_module datashader = %{version}}
@@ -103,11 +107,11 @@ sed -i -e '/^#!\//, 1d' examples/*.py
 chmod -x examples/getting_started/2_Pipeline.ipynb
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if ! %{with test}
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/datashader
 %{python_expand %fdupes %{buildroot}%{$python_sitelib}
 chmod a-x %{buildroot}%{$python_sitelib}/datashader/examples/filetimes.py
@@ -117,7 +121,9 @@ chmod a-x %{buildroot}%{$python_sitelib}/datashader/examples/filetimes.py
 %if %{with test}
 %check
 export PYTHONPATH=examples
-%pytest datashader/tests --doctest-modules --doctest-ignore-import-errors -n auto -rsfE
+# skip known failing test with latest dask gh#holoviz/datashader#1032
+donttest="test_raster_quadmesh_autorange_reversed[dask.array]"
+%pytest datashader/tests --doctest-modules --doctest-ignore-import-errors -n auto -rsfE -k "not $donttest"
 %endif
 
 %if ! %{with test}
