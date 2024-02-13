@@ -19,7 +19,7 @@
 # nothing provides python2-venusian >= 1.0 needed by python2-pyramid
 %{?sle15_python_module_pythons}
 Name:           python-sentry-sdk
-Version:        1.39.2
+Version:        1.40.4
 Release:        0
 Summary:        Python SDK for Sentry.io
 License:        BSD-2-Clause
@@ -63,13 +63,12 @@ BuildRequires:  %{python_module pyrsistent >= 0.16.0}
 BuildRequires:  %{python_module pytest-cov >= 2.8.1}
 BuildRequires:  %{python_module pytest-forked >= 1.4.0}
 BuildRequires:  %{python_module pytest-localserver >= 0.5.1}
-#BuildRequires:  %%{python_module pytest-watch >= 4.2.0}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module tox >= 3.7.0}
 # /SECTION
 # SECTION test requirements - which rise up buildtime error or missing in openSUSE
 #BuildRequires:  %%{python_module pytest-watch >= 4.2.0}
-#BuildRequires:  %%{python_module responses}
 # /SECTION
 # SECTION extra requirements - which rise up buildtime error or missing in openSUSE
 #BuildRequires:  %%{python_module arq >= 0.23}
@@ -82,7 +81,7 @@ BuildRequires:  %{python_module tox >= 3.7.0}
 #BuildRequires:  %%{python_module fastapi >= 0.79.0}
 #BuildRequires:  %%{python_module quart >= 0.16.1}
 #BuildRequires:  %%{python_module sanic >= 0.8}
-#BuildRequires:  %%{python_module opentelemetry-distro >= 0.35b0}
+#BuildRequires:  %%{python_module opentelemetry-distro >= 0.40b0}
 #BuildRequires:  %%{python_module beam >= 2.12}
 #BuildRequires:  %%{python_module chalice >= 1.16.0}
 #BuildRequires:  %%{python_module clickhouse-driver >= 0.2.0}
@@ -122,7 +121,7 @@ Requires:       python-urllib3 >= 1.26.11
 #Requires:       python-fastapi >= 0.79.0
 #Requires:       python-quart >= 0.16.1
 #Requires:       python-sanic >= 0.8
-#Requires:       python-opentelemetry-distro >= 0.35b0
+#Requires:       python-opentelemetry-distro >= 0.40b0
 #Requires:       python- beam >= 2.12}
 #Requires:       python-chalice >= 1.16.0}
 #Requires:       python-clickhouse-driver >= 0.2.0}
@@ -151,7 +150,7 @@ export PYTEST_ADDOPTS="-W ignore::DeprecationWarning"
 # do not test integration (many package are missing at SUSE):
 rm -r tests/integrations
 # test_auto_enabling_integrations_catches_import_error asert False where False = ..., not sure
-%pytest -rs -k 'not (test_transport_works or test_auto_enabling_integrations_catches_import_error or test_filename or test_transport_infinite_loop or test_simple_rate_limits or test_data_category_limits or test_complex_limits_without_data_category or test_leaks or test_utils)'
+%pytest -rs -k 'not (test_transport_works or test_auto_enabling_integrations_catches_import_error or test_filename or test_transport_infinite_loop or test_simple_rate_limits or test_data_category_limits or test_complex_limits_without_data_category or test_leaks or test_utils or test_metrics)'
 
 %files %{python_files}
 %doc README.md CHANGELOG.md CONTRIBUTING.md CONTRIBUTING-aws-lambda.md

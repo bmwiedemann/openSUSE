@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Feb 13 11:28:05 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.40.4
+  - Only start metrics flusher thread on demand (#2727)
+  - Bump checkouts/data-schemas from aa7058c to 6121fd3 (#2724)
+- Changes from 1.40.3
+  - Turn off metrics for uWSGI (#2720)
+  - Minor improvements (#2714)
+- Changes from 1.40.2
+  - test: Fix pytest error (#2712)
+  - build(deps): bump types-protobuf from 4.24.0.4 to 4.24.0.20240129 (#2691)
+- Changes from 1.40.1
+  - Fix uWSGI workers hanging (#2694)
+  - Make metrics work with gevent (#2694)
+  - Guard against engine.url being None (#2708)
+  - Fix performance regression in sentry_sdk.utils._generate_installed_modules (#2703)
+  - Guard against Sentry initialization mid SQLAlchemy cursor (#2702)
+  - Fix yaml generation script (#2695)
+  - Fix AWS Lambda workflow (#2710)
+  - Bump codecov/codecov-action from 3 to 4 (#2706)
+  - Bump actions/cache from 3 to 4 (#2661)
+  - Bump actions/checkout from 3.1.0 to 4.1.1 (#2561)
+  - Bump github/codeql-action from 2 to 3 (#2603)
+  - Bump actions/setup-python from 4 to 5 (#2577)
+- Changes from 1.40.0
+  - Enable metrics related settings by default (#2685)
+  - Fix UnicodeDecodeError on Python 2 (#2657)
+  - Enable DB query source by default (#2629)
+  - Fix query source duration check (#2675)
+  - Reformat with black==24.1.0 (#2680)
+  - Cleaning up existing code to prepare for new Scopes API (#2611)
+  - Moved redis related tests to databases (#2674)
+  - Improve sentry_sdk.trace type hints (#2633)
+  - Bump checkouts/data-schemas from e9f7d58 to aa7058c (#2639)
+
+-------------------------------------------------------------------
 Wed Jan 10 11:46:51 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.39.2
