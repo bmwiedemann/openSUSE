@@ -343,4 +343,12 @@ update to 9.1.12</comment>
     Instant navigation breaks table of contents (9.5.5 regression)</comment>
     <requestid>1144834</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>e898dd87784beeef9c96a126530659b3</srcmd5>
+    <version>9.5.9</version>
+    <time>1707860608</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1146312</requestid>
+  </revision>
 </revisionlist>

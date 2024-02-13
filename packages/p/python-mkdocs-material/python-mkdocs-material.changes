@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 10 07:08:02 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.9:
+  * Fixed navigation pruning with tabs and sections enabled
+
+-------------------------------------------------------------------
 Wed Feb  7 08:48:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - skip build for python 3.12
