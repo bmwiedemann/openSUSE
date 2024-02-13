@@ -1,7 +1,7 @@
 #
 # spec file for package vit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base >= 3.7
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-tasklib
+BuildRequires:  python3-typing_extensions
 BuildRequires:  python3-urwid
 Requires:       python3-base >= 3.7
 Requires:       python3-tasklib
