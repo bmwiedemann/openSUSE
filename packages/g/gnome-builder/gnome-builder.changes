@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 13 12:08:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 43a7c586.patch: remove autoptr cleanup. This is not needed
+  now with recent GTK changes.
+
+-------------------------------------------------------------------
 Sun Sep 17 01:31:12 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 45.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-builder
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ Source99:       %{name}-rpmlintrc
 
 # PATCH-FIX-OPENSUSE Dirty-quick-hackfix-typelibs.patch -- Nuke away bogus typelibs dependencies
 Patch0:         Dirty-quick-hackfix-typelibs.patch
+# PATCH-FIX-UPSTREAM 43a7c586.patch -- remove autoptr cleanup; done by GTK4
+Patch1:         https://gitlab.gnome.org/GNOME/gnome-builder/-/commit/43a7c586.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
