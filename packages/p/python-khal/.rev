@@ -79,4 +79,14 @@
   * NEW Add testing for Python 3.11</comment>
     <requestid>1135465</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d2abe74eb639a6854958f37aff589401</srcmd5>
+    <version>0.11.3</version>
+    <time>1707860646</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.11.3:
+  - FIX support urwid 2.4.2
+</comment>
+    <requestid>1146356</requestid>
+  </revision>
 </revisionlist>
