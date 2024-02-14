@@ -8825,6 +8825,13 @@ unsorted:
   - java-1_8_0-openjdk-headless 
   - java-1_8_0-openjdk-javadoc 
   - java-1_8_0-openjdk-src 
+  - java-21-openj9 
+  - java-21-openj9-demo 
+  - java-21-openj9-devel 
+  - java-21-openj9-headless 
+  - java-21-openj9-javadoc 
+  - java-21-openj9-jmods 
+  - java-21-openj9-src 
   - java-21-openjdk-demo 
   - java-21-openjdk-devel 
   - java-21-openjdk-javadoc 
@@ -14885,8 +14892,8 @@ unsorted:
   - librdkafka-devel 
   - librdmacm-utils 
   - librdmacm1-32bit 
-  - libre16 
   - libre2-11 
+  - libre20 
   - libreadline-java 
   - libreadline-java-javadoc 
   - libreadline5 
@@ -20655,7 +20662,6 @@ unsorted:
   - perl-IO-Pager 
   - perl-IO-Pipely 
   - perl-IO-SessionData 
-  - perl-IO-Socket-INET6 
   - perl-IO-Socket-Multicast 
   - perl-IO-Socket-PortState 
   - perl-IO-Socket-Timeout 
@@ -23328,6 +23334,7 @@ unsorted:
   - python310-azure-agrifood-farming 
   - python310-azure-agrifood-nspkg 
   - python310-azure-ai-anomalydetector 
+  - python310-azure-ai-contentsafety 
   - python310-azure-ai-formrecognizer 
   - python310-azure-ai-language-conversations 
   - python310-azure-ai-language-nspkg 
@@ -23340,6 +23347,7 @@ unsorted:
   - python310-azure-ai-translation-nspkg 
   - python310-azure-ai-translation-text 
   - python310-azure-appconfiguration 
+  - python310-azure-appconfiguration-provider 
   - python310-azure-applicationinsights 
   - python310-azure-batch 
   - python310-azure-cognitiveservices-anomalydetector 
@@ -23383,12 +23391,15 @@ unsorted:
   - python310-azure-confidentialledger 
   - python310-azure-containerregistry 
   - python310-azure-core 
+  - python310-azure-core-experimental 
   - python310-azure-core-tracing-opencensus 
   - python310-azure-core-tracing-opentelemetry 
   - python310-azure-cosmos 
   - python310-azure-data-nspkg 
   - python310-azure-data-tables 
   - python310-azure-datalake-store 
+  - python310-azure-defender-easm 
+  - python310-azure-developer-devcenter 
   - python310-azure-developer-loadtesting 
   - python310-azure-devops 
   - python310-azure-digitaltwins-core 
@@ -23399,7 +23410,11 @@ unsorted:
   - python310-azure-eventhub-checkpointstoreblob-aio 
   - python310-azure-functions-devops-build 
   - python310-azure-graphrbac 
+  - python310-azure-healthinsights-cancerprofiling 
+  - python310-azure-healthinsights-clinicalmatching 
   - python310-azure-identity 
+  - python310-azure-identity-broker 
+  - python310-azure-iot-deviceprovisioning 
   - python310-azure-iot-deviceupdate 
   - python310-azure-iot-nspkg 
   - python310-azure-keyvault 
@@ -23478,6 +23493,7 @@ unsorted:
   - python310-azure-mgmt-deploymentmanager 
   - python310-azure-mgmt-desktopvirtualization 
   - python310-azure-mgmt-devcenter 
+  - python310-azure-mgmt-devhub 
   - python310-azure-mgmt-deviceupdate 
   - python310-azure-mgmt-devspaces 
   - python310-azure-mgmt-devtestlabs 
@@ -23499,6 +23515,7 @@ unsorted:
   - python310-azure-mgmt-graphservices 
   - python310-azure-mgmt-guestconfig 
   - python310-azure-mgmt-hanaonazure 
+  - python310-azure-mgmt-hardwaresecuritymodules 
   - python310-azure-mgmt-hdinsight 
   - python310-azure-mgmt-healthcareapis 
   - python310-azure-mgmt-hybridcompute 
@@ -23589,6 +23606,7 @@ unsorted:
   - python310-azure-mgmt-servicenetworking 
   - python310-azure-mgmt-signalr 
   - python310-azure-mgmt-sphere 
+  - python310-azure-mgmt-springappdiscovery 
   - python310-azure-mgmt-sql 
   - python310-azure-mgmt-sqlvirtualmachine 
   - python310-azure-mgmt-storage 
@@ -23616,6 +23634,7 @@ unsorted:
   - python310-azure-monitor 
   - python310-azure-monitor-ingestion 
   - python310-azure-monitor-nspkg 
+  - python310-azure-monitor-opentelemetry-exporter 
   - python310-azure-monitor-query 
   - python310-azure-multiapi-storage 
   - python310-azure-nspkg 
@@ -26857,6 +26876,7 @@ unsorted:
   - python311-azure-agrifood-farming 
   - python311-azure-agrifood-nspkg 
   - python311-azure-ai-anomalydetector 
+  - python311-azure-ai-contentsafety 
   - python311-azure-ai-formrecognizer 
   - python311-azure-ai-language-conversations 
   - python311-azure-ai-language-nspkg 
@@ -26869,6 +26889,7 @@ unsorted:
   - python311-azure-ai-translation-nspkg 
   - python311-azure-ai-translation-text 
   - python311-azure-appconfiguration 
+  - python311-azure-appconfiguration-provider 
   - python311-azure-applicationinsights 
   - python311-azure-batch 
   - python311-azure-cognitiveservices-anomalydetector 
@@ -26912,12 +26933,15 @@ unsorted:
   - python311-azure-confidentialledger 
   - python311-azure-containerregistry 
   - python311-azure-core 
+  - python311-azure-core-experimental 
   - python311-azure-core-tracing-opencensus 
   - python311-azure-core-tracing-opentelemetry 
   - python311-azure-cosmos 
   - python311-azure-data-nspkg 
   - python311-azure-data-tables 
   - python311-azure-datalake-store 
+  - python311-azure-defender-easm 
+  - python311-azure-developer-devcenter 
   - python311-azure-developer-loadtesting 
   - python311-azure-devops 
   - python311-azure-digitaltwins-core 
@@ -26928,7 +26952,11 @@ unsorted:
   - python311-azure-eventhub-checkpointstoreblob-aio 
   - python311-azure-functions-devops-build 
   - python311-azure-graphrbac 
+  - python311-azure-healthinsights-cancerprofiling 
+  - python311-azure-healthinsights-clinicalmatching 
   - python311-azure-identity 
+  - python311-azure-identity-broker 
+  - python311-azure-iot-deviceprovisioning 
   - python311-azure-iot-deviceupdate 
   - python311-azure-iot-nspkg 
   - python311-azure-keyvault 
@@ -27007,6 +27035,7 @@ unsorted:
   - python311-azure-mgmt-deploymentmanager 
   - python311-azure-mgmt-desktopvirtualization 
   - python311-azure-mgmt-devcenter 
+  - python311-azure-mgmt-devhub 
   - python311-azure-mgmt-deviceupdate 
   - python311-azure-mgmt-devspaces 
   - python311-azure-mgmt-devtestlabs 
@@ -27028,6 +27057,7 @@ unsorted:
   - python311-azure-mgmt-graphservices 
   - python311-azure-mgmt-guestconfig 
   - python311-azure-mgmt-hanaonazure 
+  - python311-azure-mgmt-hardwaresecuritymodules 
   - python311-azure-mgmt-hdinsight 
   - python311-azure-mgmt-healthcareapis 
   - python311-azure-mgmt-hybridcompute 
@@ -27118,6 +27148,7 @@ unsorted:
   - python311-azure-mgmt-servicenetworking 
   - python311-azure-mgmt-signalr 
   - python311-azure-mgmt-sphere 
+  - python311-azure-mgmt-springappdiscovery 
   - python311-azure-mgmt-sql 
   - python311-azure-mgmt-sqlvirtualmachine 
   - python311-azure-mgmt-storage 
@@ -27145,6 +27176,7 @@ unsorted:
   - python311-azure-monitor 
   - python311-azure-monitor-ingestion 
   - python311-azure-monitor-nspkg 
+  - python311-azure-monitor-opentelemetry-exporter 
   - python311-azure-monitor-query 
   - python311-azure-multiapi-storage 
   - python311-azure-nspkg 
@@ -29272,6 +29304,7 @@ unsorted:
   - python311-rope 
   - python311-rpcq 
   - python311-rply 
+  - python311-rpm-spec-language-server 
   - python311-rpmfile 
   - python311-rpy2 
   - python311-rpyc 
@@ -29903,6 +29936,7 @@ unsorted:
   - python312-Faker 
   - python312-Fiona 
   - python312-Flask 
+  - python312-Flask-Admin 
   - python312-Flask-Assets 
   - python312-Flask-Babel 
   - python312-Flask-Bootstrap 
@@ -29921,6 +29955,7 @@ unsorted:
   - python312-Flask-RESTful 
   - python312-Flask-RSTPages 
   - python312-Flask-SQLAlchemy 
+  - python312-Flask-Security-Too 
   - python312-Flask-SocketIO 
   - python312-Flask-Testing 
   - python312-Flask-WTF 
@@ -30050,6 +30085,7 @@ unsorted:
   - python312-Rtree 
   - python312-SPARQLWrapper 
   - python312-SQLAlchemy 
+  - python312-SQLAlchemy-Utils 
   - python312-SQLAlchemy1 
   - python312-Scrapy 
   - python312-SecretStorage 
@@ -30272,6 +30308,7 @@ unsorted:
   - python312-azure-agrifood-farming 
   - python312-azure-agrifood-nspkg 
   - python312-azure-ai-anomalydetector 
+  - python312-azure-ai-contentsafety 
   - python312-azure-ai-formrecognizer 
   - python312-azure-ai-language-conversations 
   - python312-azure-ai-language-nspkg 
@@ -30284,6 +30321,7 @@ unsorted:
   - python312-azure-ai-translation-nspkg 
   - python312-azure-ai-translation-text 
   - python312-azure-appconfiguration 
+  - python312-azure-appconfiguration-provider 
   - python312-azure-applicationinsights 
   - python312-azure-batch 
   - python312-azure-cognitiveservices-anomalydetector 
@@ -30327,13 +30365,17 @@ unsorted:
   - python312-azure-confidentialledger 
   - python312-azure-containerregistry 
   - python312-azure-core 
+  - python312-azure-core-experimental 
   - python312-azure-core-tracing-opencensus 
   - python312-azure-core-tracing-opentelemetry 
   - python312-azure-cosmos 
   - python312-azure-data-nspkg 
   - python312-azure-data-tables 
   - python312-azure-datalake-store 
+  - python312-azure-defender-easm 
+  - python312-azure-developer-devcenter 
   - python312-azure-developer-loadtesting 
+  - python312-azure-devops 
   - python312-azure-digitaltwins-core 
   - python312-azure-digitaltwins-nspkg 
   - python312-azure-eventgrid 
@@ -30342,7 +30384,11 @@ unsorted:
   - python312-azure-eventhub-checkpointstoreblob-aio 
   - python312-azure-functions-devops-build 
   - python312-azure-graphrbac 
+  - python312-azure-healthinsights-cancerprofiling 
+  - python312-azure-healthinsights-clinicalmatching 
   - python312-azure-identity 
+  - python312-azure-identity-broker 
+  - python312-azure-iot-deviceprovisioning 
   - python312-azure-iot-deviceupdate 
   - python312-azure-iot-nspkg 
   - python312-azure-keyvault 
@@ -30421,6 +30467,7 @@ unsorted:
   - python312-azure-mgmt-deploymentmanager 
   - python312-azure-mgmt-desktopvirtualization 
   - python312-azure-mgmt-devcenter 
+  - python312-azure-mgmt-devhub 
   - python312-azure-mgmt-deviceupdate 
   - python312-azure-mgmt-devspaces 
   - python312-azure-mgmt-devtestlabs 
@@ -30442,6 +30489,7 @@ unsorted:
   - python312-azure-mgmt-graphservices 
   - python312-azure-mgmt-guestconfig 
   - python312-azure-mgmt-hanaonazure 
+  - python312-azure-mgmt-hardwaresecuritymodules 
   - python312-azure-mgmt-hdinsight 
   - python312-azure-mgmt-healthcareapis 
   - python312-azure-mgmt-hybridcompute 
@@ -30532,6 +30580,7 @@ unsorted:
   - python312-azure-mgmt-servicenetworking 
   - python312-azure-mgmt-signalr 
   - python312-azure-mgmt-sphere 
+  - python312-azure-mgmt-springappdiscovery 
   - python312-azure-mgmt-sql 
   - python312-azure-mgmt-sqlvirtualmachine 
   - python312-azure-mgmt-storage 
@@ -30559,6 +30608,7 @@ unsorted:
   - python312-azure-monitor 
   - python312-azure-monitor-ingestion 
   - python312-azure-monitor-nspkg 
+  - python312-azure-monitor-opentelemetry-exporter 
   - python312-azure-monitor-query 
   - python312-azure-multiapi-storage 
   - python312-azure-nspkg 
@@ -30712,6 +30762,7 @@ unsorted:
   - python312-charset-normalizer 
   - python312-chartify 
   - python312-check-manifest 
+  - python312-checkdmarc 
   - python312-cheroot 
   - python312-chest 
   - python312-cinemagoer 
@@ -30996,9 +31047,11 @@ unsorted:
   - python312-django-webtest 
   - python312-django-widget-tweaks 
   - python312-djangorestframework 
+  - python312-djangorestframework-camel-case 
   - python312-djangorestframework-simplejwt 
   - python312-djet 
   - python312-dkimpy 
+  - python312-dmidecode 
   - python312-dns-lexicon 
   - python312-dnslib 
   - python312-dnspython 
@@ -31073,6 +31126,7 @@ unsorted:
   - python312-eradicate 
   - python312-et_xmlfile 
   - python312-etcd 
+  - python312-ethtool 
   - python312-evdev 
   - python312-eventlet 
   - python312-evilunit 
@@ -31086,6 +31140,7 @@ unsorted:
   - python312-exiv2 
   - python312-expandvars 
   - python312-expects 
+  - python312-expiringdict 
   - python312-exrex 
   - python312-extension-helpers 
   - python312-extras 
@@ -31188,6 +31243,7 @@ unsorted:
   - python312-gcsfs-fuse 
   - python312-gear 
   - python312-ged4py 
+  - python312-genfire 
   - python312-genson 
   - python312-genty 
   - python312-geographiclib 
@@ -31318,6 +31374,7 @@ unsorted:
   - python312-hkdf 
   - python312-hl7apy 
   - python312-holidays 
+  - python312-holoviews 
   - python312-hotdoc 
   - python312-hpack 
   - python312-hsluv 
@@ -31344,6 +31401,7 @@ unsorted:
   - python312-hupper 
   - python312-husl 
   - python312-hvac 
+  - python312-hvplot 
   - python312-hyfetch 
   - python312-hyperframe 
   - python312-hyperlink 
@@ -31388,6 +31446,7 @@ unsorted:
   - python312-iniparse 
   - python312-injector 
   - python312-installer 
+  - python312-intake 
   - python312-interrogate 
   - python312-intervals 
   - python312-intervaltree 
@@ -31524,6 +31583,7 @@ unsorted:
   - python312-keyring-keyutils 
   - python312-keyring-pass 
   - python312-keyrings.alt 
+  - python312-khal 
   - python312-khard 
   - python312-kismet-rest 
   - python312-kismetdb 
@@ -31838,6 +31898,7 @@ unsorted:
   - python312-notebook-shim 
   - python312-notify2 
   - python312-nox 
+  - python312-nss 
   - python312-ntc-templates 
   - python312-ntfy 
   - python312-ntplib 
@@ -32022,6 +32083,7 @@ unsorted:
   - python312-pip-run 
   - python312-pip-wheel 
   - python312-pipdeptree 
+  - python312-pipreqs 
   - python312-pipx 
   - python312-pkgconfig 
   - python312-pkginfo 
@@ -32125,6 +32187,7 @@ unsorted:
   - python312-py3status 
   - python312-py7zr 
   - python312-pyDOE2 
+  - python312-pyFFTW 
   - python312-pyLibravatar 
   - python312-pyModis 
   - python312-pyOCD 
@@ -32266,6 +32329,7 @@ unsorted:
   - python312-pynxos 
   - python312-pyo 
   - python312-pyocr 
+  - python312-pyodbc 
   - python312-pyosf 
   - python312-pyotp 
   - python312-pyowm 
@@ -32639,6 +32703,7 @@ unsorted:
   - python312-rpds-py 
   - python312-rply 
   - python312-rpm 
+  - python312-rpm-spec-language-server 
   - python312-rpmfile 
   - python312-rpy2 
   - python312-rpyc 
@@ -32830,6 +32895,7 @@ unsorted:
   - python312-sqlglot 
   - python312-sqlite-fts4 
   - python312-sqlite-utils 
+  - python312-sqlite3-to-mysql 
   - python312-sqlparse 
   - python312-srcinfo 
   - python312-ssdeep 
@@ -32915,6 +32981,7 @@ unsorted:
   - python312-threadpoolctl 
   - python312-three-merge 
   - python312-threevis 
+  - python312-thrift 
   - python312-tifffile 
   - python312-time-machine 
   - python312-time-travel 
@@ -33158,6 +33225,7 @@ unsorted:
   - python312-yamlloader 
   - python312-yapf 
   - python312-yappi 
+  - python312-yarg 
   - python312-yarl 
   - python312-yaspin 
   - python312-yaswfp 
@@ -33645,6 +33713,7 @@ unsorted:
   - python39-azure-agrifood-farming 
   - python39-azure-agrifood-nspkg 
   - python39-azure-ai-anomalydetector 
+  - python39-azure-ai-contentsafety 
   - python39-azure-ai-formrecognizer 
   - python39-azure-ai-language-conversations 
   - python39-azure-ai-language-nspkg 
@@ -33657,6 +33726,7 @@ unsorted:
   - python39-azure-ai-translation-nspkg 
   - python39-azure-ai-translation-text 
   - python39-azure-appconfiguration 
+  - python39-azure-appconfiguration-provider 
   - python39-azure-applicationinsights 
   - python39-azure-batch 
   - python39-azure-cognitiveservices-anomalydetector 
@@ -33700,12 +33770,15 @@ unsorted:
   - python39-azure-confidentialledger 
   - python39-azure-containerregistry 
   - python39-azure-core 
+  - python39-azure-core-experimental 
   - python39-azure-core-tracing-opencensus 
   - python39-azure-core-tracing-opentelemetry 
   - python39-azure-cosmos 
   - python39-azure-data-nspkg 
   - python39-azure-data-tables 
   - python39-azure-datalake-store 
+  - python39-azure-defender-easm 
+  - python39-azure-developer-devcenter 
   - python39-azure-developer-loadtesting 
   - python39-azure-devops 
   - python39-azure-digitaltwins-core 
@@ -33716,7 +33789,11 @@ unsorted:
   - python39-azure-eventhub-checkpointstoreblob-aio 
   - python39-azure-functions-devops-build 
   - python39-azure-graphrbac 
+  - python39-azure-healthinsights-cancerprofiling 
+  - python39-azure-healthinsights-clinicalmatching 
   - python39-azure-identity 
+  - python39-azure-identity-broker 
+  - python39-azure-iot-deviceprovisioning 
   - python39-azure-iot-deviceupdate 
   - python39-azure-iot-nspkg 
   - python39-azure-keyvault 
@@ -33795,6 +33872,7 @@ unsorted:
   - python39-azure-mgmt-deploymentmanager 
   - python39-azure-mgmt-desktopvirtualization 
   - python39-azure-mgmt-devcenter 
+  - python39-azure-mgmt-devhub 
   - python39-azure-mgmt-deviceupdate 
   - python39-azure-mgmt-devspaces 
   - python39-azure-mgmt-devtestlabs 
@@ -33816,6 +33894,7 @@ unsorted:
   - python39-azure-mgmt-graphservices 
   - python39-azure-mgmt-guestconfig 
   - python39-azure-mgmt-hanaonazure 
+  - python39-azure-mgmt-hardwaresecuritymodules 
   - python39-azure-mgmt-hdinsight 
   - python39-azure-mgmt-healthcareapis 
   - python39-azure-mgmt-hybridcompute 
@@ -33906,6 +33985,7 @@ unsorted:
   - python39-azure-mgmt-servicenetworking 
   - python39-azure-mgmt-signalr 
   - python39-azure-mgmt-sphere 
+  - python39-azure-mgmt-springappdiscovery 
   - python39-azure-mgmt-sql 
   - python39-azure-mgmt-sqlvirtualmachine 
   - python39-azure-mgmt-storage 
@@ -33933,6 +34013,7 @@ unsorted:
   - python39-azure-monitor 
   - python39-azure-monitor-ingestion 
   - python39-azure-monitor-nspkg 
+  - python39-azure-monitor-opentelemetry-exporter 
   - python39-azure-monitor-query 
   - python39-azure-multiapi-storage 
   - python39-azure-nspkg 
@@ -39265,6 +39346,7 @@ unsorted:
   - system-group-ne 
   - system-group-obsolete 
   - system-group-sudo 
+  - system-user-cscreen 
   - system-user-grafana 
   - system-user-greeter 
   - system-user-grommunio 
@@ -48333,7 +48415,6 @@ unsorted:
   - texstudio 
   - texworks 
   - texworks-plugin-lua 
-  - texworks-plugin-python 
   - tftpboot-installation-common 
   - tftpboot-installation-openSUSE-Tumbleweed-x86_64 
   - the_silver_searcher 
@@ -49491,9 +49572,9 @@ unsorted:
   - warewulf-vnfs 
   - warewulf4 
   - warewulf4-api 
-  - warewulf4-doc 
+  - warewulf4-man 
   - warewulf4-overlay 
-  - warewulf4-slurm 
+  - warewulf4-overlay-slurm 
   - warp 
   - warp-lang 
   - warpinator 
