@@ -17,7 +17,7 @@
 
 
 Name:           element-web
-Version:        1.11.57
+Version:        1.11.58
 Release:        0
 Summary:        A glossy Matrix collaboration client - web files
 License:        Apache-2.0
@@ -31,6 +31,8 @@ Patch0:         fix-webpack-oom.patch
 BuildRequires:  fdupes
 BuildRequires:  nodejs-packaging
 BuildRequires:  yarn
+BuildRequires:  rust
+BuildRequires:  cargo
 BuildArch:      noarch
 
 %description
@@ -51,7 +53,9 @@ ls -l ./npm-packages-offline-cache | head
 #sed -i -e 's|    matrix-analytics-events "github:matrix-org/matrix-analytics-events.git#[^"]*"|    matrix-analytics-events "^0.0.1"|' yarn.lock
 #sed -i -e 's|"matrix-analytics-events@github:matrix-org/matrix-analytics-events#[^"]*"|matrix-analytics-events@^0.0.1|' yarn.lock
 
-SENTRYCLI_SKIP_DOWNLOAD=1 yarn install --offline --pure-lockfile
+export SENTRYCLI_SKIP_DOWNLOAD=1
+
+yarn install --offline --pure-lockfile
 
 mkdir -p webapp
 cp %{SOURCE2} ./webapp/jitsi_external_api.min.js
