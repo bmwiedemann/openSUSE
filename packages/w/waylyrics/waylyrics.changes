@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Feb 14 07:30:13 UTC 2024 - xtexchooser@duck.com
+
+- Update to version 0.2.3:
+  * feat: add `trans` theme [ci skip]
+  * chore: release 0.2.3
+  * ci: migrate to dtolnay/rust-toolchain
+  * feat: allow to show origin lyric in above
+  * fix: set 20ms as default lyric update interval
+  * feat: set empty label explictly
+  * refactor: apply clippy fix [ci skip]
+  * chore: remove unreachable `title.unwrap_or()` call
+  * doc: restate outdated doc of `TrackMeta`
+  * doc: `lollypop`, GTK3-based local music player
+  * feat: intro `is_likely_songid` for songid verification
+  * doc: firefox via Plasma Integration [ci skip]
+  * doc: explain more fields in `Config`
+  * doc: add `osdlyrics` to alternatives [ci skip]
+  * doc: play with musicfox need position fix patch
+  * refactor: rename confusing `match_lyric` to `verify_lyric` [ci skip]
+  * test: add unit tests for QQMusic::init
+
+-------------------------------------------------------------------
 Sat Feb 10 12:30:29 UTC 2024 - xtexchooser@duck.com
 
 - Update to version 0.2.2:
