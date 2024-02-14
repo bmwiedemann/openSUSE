@@ -42,7 +42,7 @@
 %endif
 
 Name:           scap-security-guide
-Version:        0.1.71
+Version:        0.1.72
 Release:        0
 Summary:        XCCDF files for SUSE Linux and openSUSE
 License:        BSD-3-Clause
@@ -52,7 +52,6 @@ URL:            https://github.com/ComplianceAsCode/content
 Packager:       SUSE Security Team <security@suse.de>
 %endif
 Source:         https://github.com/ComplianceAsCode/content/archive/v%{version}.tar.gz
-Patch0:         ssg-fix-journald.patch
 
 # explicit require what is needed by the detection logic in the scripts
 Requires:       coreutils
@@ -191,7 +190,6 @@ Note that the included profiles are community supplied and not officially suppor
 
 %prep
 %setup -q -n content-%version
-%autopatch -p1
 
 %build
 cd build
@@ -277,6 +275,7 @@ make install DESTDIR=%buildroot
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-cs9*
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-fedora*
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-ol*
+%doc %{_datadir}/doc/scap-security-guide/guides/ssg-openeuler*
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-rh*
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-sl7*
 %dir %{_datadir}/doc/scap-security-guide/tables/
@@ -292,6 +291,7 @@ make install DESTDIR=%buildroot
 %{_datadir}/scap-security-guide/*/*cs9*
 %{_datadir}/scap-security-guide/*/*fedora*
 %{_datadir}/scap-security-guide/*/*ol*
+%{_datadir}/scap-security-guide/*/*openeuler*
 %{_datadir}/scap-security-guide/*/*rh*
 %{_datadir}/scap-security-guide/*/*sl7*
 %dir %{_datadir}/xml/scap/
@@ -301,6 +301,7 @@ make install DESTDIR=%buildroot
 %{_datadir}/xml/scap/ssg/content/*-cs9*
 %{_datadir}/xml/scap/ssg/content/*-fedora*
 %{_datadir}/xml/scap/ssg/content/*-ol*
+%{_datadir}/xml/scap/ssg/content/*-openeuler*
 %{_datadir}/xml/scap/ssg/content/*-rh*
 %{_datadir}/xml/scap/ssg/content/*-sl7*
 

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 13 16:02:47 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.72 (jsc#ECO-3319)
+  - ANSSI BP 028 profile for debian12 (#11368)
+  - Building on Windows (#11406)
+  - Control for BSI APP.4.4 (#11342)
+  - update to CIS RHEL 7 and RHEL 8 profiles aligning them with the latest benchmarks
+  - various fixes to SLE profiles
+- add openeuler to -redhat package
+- removed ssg-fix-journald.patch: fixed upstream
+
+-------------------------------------------------------------------
 Tue Dec 19 11:04:09 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - updated to 0.1.71 (jsc#ECO-3319)

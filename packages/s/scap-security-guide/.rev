@@ -382,4 +382,19 @@ Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from 
   0001-Revert-fix-aide-remediations-add-crontabs.patch upstreamed in 0.1.69</comment>
     <requestid>1137951</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>506dd0402ffa0ce32520b36a629dd120</srcmd5>
+    <version>0.1.72</version>
+    <time>1707949141</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.1.72 (jsc#ECO-3319)
+  - ANSSI BP 028 profile for debian12 (#11368)
+  - Building on Windows (#11406)
+  - Control for BSI APP.4.4 (#11342)
+  - update to CIS RHEL 7 and RHEL 8 profiles aligning them with the latest benchmarks
+  - various fixes to SLE profiles
+- add openeuler to -redhat package
+- removed ssg-fix-journald.patch: fixed upstream</comment>
+    <requestid>1146536</requestid>
+  </revision>
 </revisionlist>
