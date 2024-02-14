@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 14 06:37:43 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Enabled completions for bash, zsh and fish.
+- Created docs subpackage.
+
+-------------------------------------------------------------------
 Wed Dec 13 01:46:55 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Update to version 0.7.1:
