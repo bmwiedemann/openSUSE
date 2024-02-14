@@ -905,8 +905,9 @@
     <package name="issue-generator" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="iw" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="jack-dbus" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="java-11-openjdk" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="java-11-openjdk-headless" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="java-21-openjdk" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="java-21-openjdk-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="java-21-openjdk-headless" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="javapackages-filesystem" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="javapackages-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="jfsutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -3005,6 +3006,7 @@
     <package name="mozilla-nspr" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="mozilla-nss" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="mozilla-nss-certs" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="mozilla-nss-sysinit" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="mozilla-nss-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="mpg123-openal" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="mpt-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->

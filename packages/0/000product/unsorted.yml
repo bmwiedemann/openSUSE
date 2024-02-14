@@ -8792,8 +8792,10 @@ unsorted:
   - java-11-openj9-javadoc 
   - java-11-openj9-jmods 
   - java-11-openj9-src 
+  - java-11-openjdk 
   - java-11-openjdk-demo 
   - java-11-openjdk-devel 
+  - java-11-openjdk-headless 
   - java-11-openjdk-javadoc 
   - java-11-openjdk-jmods 
   - java-11-openjdk-src 
@@ -8833,7 +8835,6 @@ unsorted:
   - java-21-openj9-jmods 
   - java-21-openj9-src 
   - java-21-openjdk-demo 
-  - java-21-openjdk-devel 
   - java-21-openjdk-javadoc 
   - java-21-openjdk-jmods 
   - java-21-openjdk-src 
