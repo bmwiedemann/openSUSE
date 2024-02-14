@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 13 11:45:31 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to Mercurial 6.6.3
+  * tests: don't use "status" operand of dd in test-censor.t (issue6858)
+  * tests: make sha256line.py available for all tests
+  * tests: use sha256line.py instead of /dev/random in test-censor.t (issue6858)
+  * tests: fix nondeterministic test failure in test-contrib-perf.t
+  * rust-changelog: don't panic on empty file lists
+  * grep: restore usage of --include/--exclude options
+
+-------------------------------------------------------------------
 Fri Jan 12 16:23:11 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to Mercurial 6.6.2

@@ -1710,4 +1710,12 @@ As usual, a lot of patches don't make it to this list since they're more interna
   * pycompat: fix bytestr(bytes) in Python 3.11 (forwarded request 1138357 from develop7)</comment>
     <requestid>1138358</requestid>
   </revision>
+  <revision rev="193" vrev="1">
+    <srcmd5>e1146ccfe905f030f40b8beabe5de30f</srcmd5>
+    <version>6.6.3</version>
+    <time>1707949133</time>
+    <user>anag+factory</user>
+    <comment>Update to Mercurial 6.6.3 (forwarded request 1146385 from develop7)</comment>
+    <requestid>1146432</requestid>
+  </revision>
 </revisionlist>
