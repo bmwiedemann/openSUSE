@@ -6,6 +6,7 @@
     <param name="extract">dist/rpm/openQA-worker-test.spec</param>
     <param name="extract">dist/rpm/openQA-devel-test.spec</param>
     <param name="extract">dist/rpm/openQA-client-test.spec</param>
+    <param name="extract">package-lock.json</param>
     <param name="url">https://github.com/os-autoinst/openQA.git</param>
     <param name="revision">master</param>
     <param name="versionprefix">4.6</param>
@@ -19,5 +20,10 @@
   <service name="recompress" mode="buildtime">
     <param name="compression">xz</param>
     <param name="file">*.tar</param>
+  </service>
+  <service name="node_modules" mode="disabled">
+    <param name="cpio">node_modules.obscpio</param>
+    <param name="output">node_modules.spec.inc</param>
+    <param name="source-offset">1000</param>
   </service>
 </services>

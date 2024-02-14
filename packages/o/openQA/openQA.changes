@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Feb 14 15:34:05 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1707924836.ebe28324:
+  * Improve out-of-box experience with single-instance container
+  * Fix typo in installation documentation
+  * Bump codemirror from 4.13.0 to 5.58.2
+  * Remove manual installation of npm when caching assets
+  * Install npm in the container we use on CircleCI
+  * Make developer mode work in single-container setup
+  * Adapt AppArmor profile for switch to node modules
+  * Make `local-npm-registry` available in SLE-15-SP6 CI packaging check
+  * Streamline approach for selecting shell files in test targets
+  * Ensure required node modules are installed via install target
+  * Adapt code after updating DataTables from 1.10.16 to 1.10.18
+  * Exclude node modules from shell formatting checks
+  * Fix fetching fonts after providing assets via npm
+  * Install npm dependencies in the CircleCI caching step
+  * Add npm as dependency after now using it for assets
+  * Add package-lock.json for `obs-service-node_modules`
+  * Remove no longer required asset cache handling from rpm packaging
+  * Update documentation for handling JavaScript/CSS dependencies
+  * Ensure assetpack does no more remote downloads
+  * Install third-party assets via npm
+
+-------------------------------------------------------------------
 Fri Feb 09 17:18:40 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1707499101.aaa807d2:
