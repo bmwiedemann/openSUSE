@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 07 14:44:13 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240207.602b3d2:
+  * gocd: fix name of task
+  * gocd: add rebuild pipeline for ALP
+
+-------------------------------------------------------------------
+Fri Feb 02 10:41:18 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240202.2e3b614:
+  * Initial pipeline setup for Leap Micro 6.0
+
+-------------------------------------------------------------------
 Mon Jan 22 09:49:30 UTC 2024 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20240122.105eea5:
