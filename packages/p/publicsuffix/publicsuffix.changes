@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Feb 13 13:50:26 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20240212:
+  * Add cprapid.com suffix to private section (#1892)
+  * util: gTLD data autopull updates for 2024-02-08T15:13:14 UTC (#1932)
+  * Added Cyclic Software (#1737)
+  * Update public_suffix_list.dat for scw.cloud subdomains (#1740)
+  * Update public_suffix_list.dat (#1926)
+  * Add ZAP-Hosting cloud domain (#1907)
+  * Add `flutterflow.app` (#1666)
+  * Update public_suffix_list.dat (#1614)
+  * Brave Submissions to the Public Suffix List - Q4 2023 (#1872)
+  * Add pley.games (#1881)
+  * Add panel.dev (#1916)
+  * add 12CHARS to private domains (#1915)
+  * Azure updates for Microsoft Corporate Domains (#1891)
+  * Remove blog.kg from private section (#1840)
+  * AWS Submissions to the Public Suffix List - Q4 2023 (#1876)
+  * Homebase requested the addition of id.pub kin.one kin.pub (#1768)
+  * Replace run.app and a.run.app with *.run.app (#1928)
+  * Add pages.gay (#1920)
+  * Update Platform.sh domains (#1792)
+  * fix(adobe): add aem.live and aem.page domains (#1874)
+  * Update code builder domains with the canary (#1802)
+  * Add atmeta.com to PSL and consolidate Meta entries (#1736)
+  * util: gTLD data autopull updates for 2024-01-24T15:14:29 UTC (#1923)
+
+-------------------------------------------------------------------
 Wed Jan 24 13:21:39 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20240123:

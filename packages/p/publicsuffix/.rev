@@ -1394,4 +1394,35 @@ Now with build cycle removed.</comment>
   * util: gTLD data autopull updates for 2024-01-23T15:14:10 UTC (#1921)</comment>
     <requestid>1141328</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>2a4cbf7ac89cf63276b4066d7e6fdb43</srcmd5>
+    <version>20240212</version>
+    <time>1707949129</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240212:
+  * Add cprapid.com suffix to private section (#1892)
+  * util: gTLD data autopull updates for 2024-02-08T15:13:14 UTC (#1932)
+  * Added Cyclic Software (#1737)
+  * Update public_suffix_list.dat for scw.cloud subdomains (#1740)
+  * Update public_suffix_list.dat (#1926)
+  * Add ZAP-Hosting cloud domain (#1907)
+  * Add `flutterflow.app` (#1666)
+  * Update public_suffix_list.dat (#1614)
+  * Brave Submissions to the Public Suffix List - Q4 2023 (#1872)
+  * Add pley.games (#1881)
+  * Add panel.dev (#1916)
+  * add 12CHARS to private domains (#1915)
+  * Azure updates for Microsoft Corporate Domains (#1891)
+  * Remove blog.kg from private section (#1840)
+  * AWS Submissions to the Public Suffix List - Q4 2023 (#1876)
+  * Homebase requested the addition of id.pub kin.one kin.pub (#1768)
+  * Replace run.app and a.run.app with *.run.app (#1928)
+  * Add pages.gay (#1920)
+  * Update Platform.sh domains (#1792)
+  * fix(adobe): add aem.live and aem.page domains (#1874)
+  * Update code builder domains with the canary (#1802)
+  * Add atmeta.com to PSL and consolidate Meta entries (#1736)
+  * util: gTLD data autopull updates for 2024-01-24T15:14:29 UTC (#1923)</comment>
+    <requestid>1146423</requestid>
+  </revision>
 </revisionlist>
