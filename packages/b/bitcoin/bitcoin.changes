@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 14 14:16:11 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Enable LTO and test package for Leap
+- Enable sqlite3 support for wallet
+- Enable asm optimizations unconditionally
+
+-------------------------------------------------------------------
 Wed Feb  7 12:00:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Provide user/group symbol for user created during pre.

@@ -23,12 +23,6 @@
 %define name_pretty %{base_pretty}
 %define consensus 1
 %define is_base 1
-# Disable tests on Tumbleweed because of an hard to investigate error
-%if 0%{?suse_version} > 1500
-%bcond_with tests
-%else
-%bcond_without tests
-%endif
 Name:           bitcoin
 Version:        26.0
 Release:        0
@@ -67,7 +61,11 @@ BuildRequires:  pkgconfig(libzmq)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(sqlite3)
 %{?systemd_ordering}
+%if 0%{?suse_version} < 1550
+BuildRequires:  gcc12-c++
+%endif
 
 %description
 %{name_pretty} is a peer-to-peer electronic cash system
@@ -157,7 +155,6 @@ several GB of space, slowly growing.
 
 This package provides %{name}d, headless %{name} daemon.
 
-%if 0%{with tests}
 %package test
 Summary:        Automated tests for %{name} client
 Group:          Development/Libraries/Other
@@ -173,45 +170,31 @@ Full transaction history is stored locally at each client. This requires
 several GB of space, slowly growing.
 
 This package provides automated tests for %{name}-qt5 and %{name}d.
-%endif
 
 %prep
 %autosetup -p1
 
 %build
 autoreconf -fiv
-export CXXFLAGS="%{optflags} -fPIE -fPIC -fcommon"
-export CFLAGS="%{optflags} -fPIE -fPIC -fcommon"
-export LDFLAGS="-pie"
-
-# Autodetecting if assembly optimizazions for secp256k1 can be used does not
-# work well on non-x86_64 architectures, like i.e. aarch64, which results in
-# build errors. At the same time, x86_64 is the only architecture for which
-# assembly is properly supported (ARM assembly optimizations are still
-# experimental). Let's just disable asm for all the other architectures until
-# that doesn't change.
-%configure \
-%ifarch x86_64
-  --with-asm=auto \
-%else
-  --with-asm=no \
+%if 0%{?suse_version} < 1550
+export CXX=g++-12
 %endif
+%configure \
+  --with-asm=auto \
   --with-cli=yes \
   --with-daemon=yes \
   --with-gui=qt5 \
   --with-miniupnpc \
   --with-qrencode \
+  --with-sqlite=yes \
+  --enable-lto \
 %if %{consensus} == 0
   --without-libs \
-%endif
-%if 0%{without tests}
-  --disable-tests \
-  --disable-bench \
 %endif
   --disable-hardening
 %make_build
 
-%if 0%{with tests}
+%if 0%{?suse_version} >= 1550
 %check
 %make_build LC_ALL=C.UTF-8 check
 %endif
@@ -327,13 +310,11 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{name}d.conf >/dev/null 2>&1 || :
 %{_sbindir}/rc%{name}d
 %{_tmpfilesdir}/%{name}d.conf
 
-%if 0%{with tests}
 %files test
 %license COPYING
 %doc doc/README.md doc/release-notes.md
 %{_bindir}/test_%{name}
 %{_bindir}/test_%{name}-qt
 %{_bindir}/bench_%{name}
-%endif
 
 %changelog

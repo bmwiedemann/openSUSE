@@ -453,4 +453,14 @@
     <comment></comment>
     <requestid>1144943</requestid>
   </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>693b018ac0240337c21bfd09194452ba</srcmd5>
+    <version>26.0</version>
+    <time>1707949204</time>
+    <user>anag+factory</user>
+    <comment>- Enable LTO and test package for Leap
+- Enable sqlite3 support for wallet
+- Enable asm optimizations unconditionally</comment>
+    <requestid>1146595</requestid>
+  </revision>
 </revisionlist>
