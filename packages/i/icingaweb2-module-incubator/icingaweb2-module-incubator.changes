@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb  8 15:48:24 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.22.0
+  - Improved compatibility with the latest Icinga Director releases
+
+- Update to 0.21.0
+  - raised gipfl/systemd for PHP 8.2
+
+-------------------------------------------------------------------
 Fri Sep 22 13:17:14 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.20.0
