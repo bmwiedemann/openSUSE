@@ -1,0 +1,51 @@
+From 7795b90537f73971ccd547b0a078e8f0f37b3c76 Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Wed, 14 Feb 2024 12:48:01 +0100
+Subject: [PATCH 1/2] Replace mock_s3 with mock_aws (Moto 5)
+
+---
+ papermill/tests/test_s3.py | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+Index: papermill-2.5.0/papermill/tests/test_s3.py
+===================================================================
+--- papermill-2.5.0.orig/papermill/tests/test_s3.py
++++ papermill-2.5.0/papermill/tests/test_s3.py
+@@ -5,7 +5,7 @@ import pytest
+ import boto3
+ import moto
+ 
+-from moto import mock_s3
++from moto import mock_aws
+ 
+ from ..s3 import Bucket, Prefix, Key, S3
+ 
+@@ -138,7 +138,7 @@ def test_key_defaults():
+     assert k1.is_prefix is False
+ 
+ 
+-@mock_s3
++@mock_aws
+ def test_s3_defaults():
+     s1 = S3()
+     s2 = S3()
+@@ -164,8 +164,8 @@ read_from_gen = lambda g: "\n".join(g)
+ 
+ @pytest.fixture(scope="function")
+ def s3_client():
+-    mock_s3 = moto.mock_s3()
+-    mock_s3.start()
++    mock_aws = moto.mock_aws()
++    mock_aws.start()
+ 
+     client = boto3.client('s3')
+     client.create_bucket(
+@@ -180,7 +180,7 @@ def s3_client():
+         client.delete_object(Bucket=test_bucket_name, Key=test_empty_file_path)
+     except Exception:
+         pass
+-    mock_s3.stop()
++    mock_aws.stop()
+ 
+ 
+ def test_s3_read(s3_client):

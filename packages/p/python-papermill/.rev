@@ -185,4 +185,12 @@
   * Removed use of ansiwrap PR #681</comment>
     <requestid>1135502</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>5c6f033d46cca70e2b27b6de1677c0ee</srcmd5>
+    <version>2.5.0</version>
+    <time>1707949182</time>
+    <user>anag+factory</user>
+    <comment>- Add papermill-pr779-moto5.patch gh#nteract/papermill#779</comment>
+    <requestid>1146564</requestid>
+  </revision>
 </revisionlist>

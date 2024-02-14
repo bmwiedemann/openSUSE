@@ -1,7 +1,7 @@
 #
 # spec file for package python-papermill
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Summary:        Tool to parametrize and run Jupyter and nteract Notebooks
 License:        BSD-3-Clause
 URL:            https://github.com/nteract/papermill
 Source:         https://files.pythonhosted.org/packages/source/p/papermill/papermill-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM papermill-pr779-moto5.patch gh#nteract/papermill#779
+Patch0:         papermill-pr779-moto5.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -37,8 +39,11 @@ Requires:       python-nbformat >= 5.1.2
 Requires:       python-requests >= 2.21.0
 Requires:       python-tenacity >= 5.0.2
 Requires:       python-tqdm >= 4.32.2
+%if 0%{?python_version_nodots} >= 312
+Requires:       python-aiohttp
+%endif
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-azure-datalake-store >= 0.0.30
 Recommends:     python-azure-identity >= 1.3.1
 Recommends:     python-azure-storage-blob >= 12.1.0
@@ -48,6 +53,7 @@ Recommends:     python-gcsfs >= 0.2.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module aiohttp if %python-base >= 3.12}
 BuildRequires:  %{python_module azure-datalake-store >= 0.0.30}
 BuildRequires:  %{python_module azure-identity >= 1.3.1}
 BuildRequires:  %{python_module azure-storage-blob >= 12.1.0}
