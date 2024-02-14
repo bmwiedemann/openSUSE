@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 12 14:09:50 UTC 2024 - pgajdos@suse.com
+
+- baselibs for tools and devel reportedly not needed
+- modified sources
+  % baselibs.conf
+
+-------------------------------------------------------------------
+Thu Feb  8 09:29:36 UTC 2024 - pgajdos@suse.com
+
+- introduce baselibs.conf for openexr
+  https://build.opensuse.org/request/show/1144873
+- added sources
+  + baselibs.conf
+
+-------------------------------------------------------------------
 Sun Sep 17 09:08:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.19:

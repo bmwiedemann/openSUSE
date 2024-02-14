@@ -1,7 +1,7 @@
 #
 # spec file for package libdeflate
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Summary:        Library for DEFLATE/zlib/gzip compression and decompression
 License:        BSD-2-Clause
 URL:            https://github.com/ebiggers/libdeflate
 Source:         https://github.com/ebiggers/libdeflate/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  zlib-devel
 
