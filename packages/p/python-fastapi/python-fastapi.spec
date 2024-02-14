@@ -20,7 +20,7 @@
 %bcond_with ringdisabled
 %{?sle15_python_module_pythons}
 Name:           python-fastapi
-Version:        0.109.0
+Version:        0.109.1
 Release:        0
 Summary:        FastAPI framework
 License:        MIT
@@ -46,7 +46,7 @@ BuildRequires:  %{python_module PyYAML >= 5.3.1}
 BuildRequires:  %{python_module anyio >= 3.2.1}
 BuildRequires:  %{python_module dirty-equals}
 BuildRequires:  %{python_module httpx >= 0.23.0}
-BuildRequires:  %{python_module python-multipart >= 0.0.5}
+BuildRequires:  %{python_module python-multipart >= 0.0.7}
 BuildRequires:  %{python_module sqlalchemy < 2.0}
 BuildRequires:  %{python_module trio}
 %if !%{with ringdisabled}
