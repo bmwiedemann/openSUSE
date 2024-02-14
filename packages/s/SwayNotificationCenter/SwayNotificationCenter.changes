@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Feb 12 11:15:00 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 0.10.0:
+  * Allow empty name for actions
+  * Update i3status-rs Example format syntax for 0.31.0
+  * corrected misspellings of the word "notification"
+  * Added "relative-timestamps" config to switch between "25 minutes ago" and "2023-06-25T20:05:27-07"
+  * Add meson_option to build without PulseAudio Widget
+  * Add show-per-app-label for volume
+  * Fixed CC list navigation skipping a notification
+  * Simplified script and base_widget command execution
+  * Test parsing markup without any hacks before using said hacks
+  * Remove notification replace flicker
+  * Added config option to set cc exclusive zone
+  * allow 8 digits in 2fa code regex
+  * flush stdout after subscription events
+  * Add toggle button
+  * Fix togglebutton in menu dropdown
+  * Add notification hint to bypass dnd/inhibition
+  * Grouped notifications
+  * [New Dependency: sassc] Move to SCSS from regular CSS
+  * Add border-radius property to notification images
+  * Add MPRIS player background blur
+  * Bumped version requirements for libhandy and gtk-layer-shell
+  * Fix text color on light theme
+  * Add control center visibility class
+  - Style changes
+    A few style changes were made that might break some existing configs.
+    The project also moved to use SCSS.
+  - New dependencies:
+    * gvfs
+    * granite
+    * sassc
+    * gtk-layer-shell (added explicitly)
+  - Split out bash, zsh and fish shell completions into dedicated packages
+
+-------------------------------------------------------------------
 Mon May 29 14:52:47 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 0.9.0:
