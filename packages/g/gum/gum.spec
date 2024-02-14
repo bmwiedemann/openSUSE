@@ -1,7 +1,7 @@
 #
 # spec file for package gum
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,36 @@ BuildRequires:  golang(API)
 %description
 Gum leverages the power of Bubbles and Lip Gloss in your scripts and aliases.
 
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and bash-completion)
+Requires:       bash-completion
+BuildArch:      noarch
+
+%description bash-completion
+Bash command-line completion support for %{name}.
+
+%package fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and fish)
+Requires:       fish
+BuildArch:      noarch
+
+%description fish-completion
+Fish command-line completion support for %{name}.
+
+%package zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and zsh)
+Requires:       zsh
+BuildArch:      noarch
+
+%description zsh-completion
+Zsh command-line completion support for %{name}.
+
 %prep
 %setup -qa1
 
@@ -43,14 +73,33 @@ BUILDMOD="-buildmode=pie"
 export CGO_CFLAGS="%{optflags}"
 export CGO_CXXFLAGS="%{optflags}"
 export CGO_CPPFLAGS="%{optflags}"
-go build -v -x -mod=vendor $BUILDMOD -a -ldflags "-s -X main.revision=%{version}"
+go build -v -x -mod=vendor $BUILDMOD -a -ldflags "-s -X main.Version=%{version}"
 
 %install
 install -Dm755 %{name} %{buildroot}%{_bindir}/%{name}
+
+# Completions
+for sh in bash zsh fish; do
+  ./%{name} completion $sh > %{name}.${sh}
+done
+install -Dm644 %{name}.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+install -Dm644 %{name}.zsh %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
+install -Dm644 %{name}.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
 
 %files
 %{_bindir}/%{name}
 %license LICENSE
 %doc README.md
+
+%files bash-completion
+%{_datadir}/bash-completion/*
+
+%files fish-completion
+%dir %{_datadir}/fish
+%{_datadir}/fish/*
+
+%files zsh-completion
+%dir %{_datadir}/zsh
+%{_datadir}/zsh/*
 
 %changelog
