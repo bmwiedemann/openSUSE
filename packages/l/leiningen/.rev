@@ -179,4 +179,15 @@
   * Add warnings for buggy composite profiles.</comment>
     <requestid>1142156</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>45057cb4638de1b58b660b204b5f5af4</srcmd5>
+    <version>2.11.2</version>
+    <time>1707949189</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.11.2:
+  * Add :preserve-eval-meta setting to avoid project code reflection.
+  * Fix a bug where metadata on project code caused plugin
+    incompatibilities.</comment>
+    <requestid>1146583</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 14 13:50:09 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.11.2:
+  * Add :preserve-eval-meta setting to avoid project code reflection.
+  * Fix a bug where metadata on project code caused plugin
+    incompatibilities.
+
+-------------------------------------------------------------------
 Mon Jan 29 05:07:08 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.11.1:
