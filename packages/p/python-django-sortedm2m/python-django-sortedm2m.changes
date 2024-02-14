@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 13 17:21:00 UTC 2024 - Christian Keil <keil@dfn-cert.de>
+
+- Switch to Python 3.11 build.
+
+-------------------------------------------------------------------
 Sun Dec 26 13:35:30 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Use PyPI tarball instead of GitHub tarball
