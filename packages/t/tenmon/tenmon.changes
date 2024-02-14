@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 14 09:37:48 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 20240201:
+  * Fix metainfo
+  * Add thumbnail quality to settings
+  * Only degress should show negative sign
+  * Limit image info to 1024 characters
+  * Flip image according to ROWORDER
+  * Fix some edge cases when stretch
+  * Small optimization in resample
+  * Add box resize algorithm
+
+-------------------------------------------------------------------
 Tue Jan  9 10:03:23 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 20240108:

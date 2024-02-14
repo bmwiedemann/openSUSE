@@ -37,4 +37,21 @@
     <comment></comment>
     <requestid>1138060</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e0a3393e7fb35f4d8c2db3947dbce6e1</srcmd5>
+    <version>20240201</version>
+    <time>1707949161</time>
+    <user>anag+factory</user>
+    <comment>- Update to 20240201:
+  * Fix metainfo
+  * Add thumbnail quality to settings
+  * Only degress should show negative sign
+  * Limit image info to 1024 characters
+  * Flip image according to ROWORDER
+  * Fix some edge cases when stretch
+  * Small optimization in resample
+  * Add box resize algorithm
+</comment>
+    <requestid>1146532</requestid>
+  </revision>
 </revisionlist>

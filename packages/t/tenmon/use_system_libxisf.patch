@@ -12,7 +12,7 @@ Index: tenmon/CMakeLists.txt
  
  set(TENMON_SRC
      about.cpp about.h
-@@ -77,13 +76,13 @@ endif()
+@@ -78,13 +77,13 @@ endif()
  qt_add_executable(tenmon WIN32 MACOSX_BUNDLE ${tenmon_ICON} ${TENMON_SRC})
  
  find_path(FITS_INCLUDE fitsio2.h PATH_SUFFIXES cfitsio REQUIRED)
@@ -26,5 +26,5 @@ Index: tenmon/CMakeLists.txt
 -target_link_libraries(tenmon PRIVATE Qt6::Widgets Qt6::Sql Qt6::OpenGLWidgets Qt6::Qml ${GSL_LIB} ${GSLCBLAS_LIB} ${EXIF_LIB} ${FITS_LIB} ${RAW_LIB} ${WCS_LIB} XISF)
 +target_link_libraries(tenmon PRIVATE Qt6::Widgets Qt6::Sql Qt6::OpenGLWidgets Qt6::Qml ${GSL_LIB} ${GSLCBLAS_LIB} ${EXIF_LIB} ${FITS_LIB} ${RAW_LIB} ${WCS_LIB} ${LibXISF_LIBRARY})
  if(APPLE)
-     target_link_libraries(tenmon PRIVATE "-framework CoreFoundation")
+     target_link_libraries(tenmon PRIVATE Qt6::DBus "-framework CoreFoundation")
  elseif(UNIX)
