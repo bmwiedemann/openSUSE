@@ -283,4 +283,16 @@
   * thin_metadata_pack: Allow long format for input and output</comment>
     <requestid>1141250</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>04e0d70328bdf07b44204a4cb4b9fcd2</srcmd5>
+    <version>1.0.11</version>
+    <time>1707949131</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.11:
+  * Bump version nr to 1.0.11
+  * [thin/cache_check] Print suggestive hints for improving error resolution
+  * [tests] Fix a typo in command name
+  * [cache_check] Fix boundary check on the bitset for cached blocks</comment>
+    <requestid>1146425</requestid>
+  </revision>
 </revisionlist>

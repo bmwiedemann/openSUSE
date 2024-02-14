@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 13 13:57:39 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.11:
+  * Bump version nr to 1.0.11
+  * [thin/cache_check] Print suggestive hints for improving error resolution
+  * [tests] Fix a typo in command name
+  * [cache_check] Fix boundary check on the bitset for cached blocks
+
+-------------------------------------------------------------------
 Wed Jan 24 13:25:36 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.0.10:
