@@ -1,7 +1,7 @@
 #
 # spec file for package lynx
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define tarbase 2.9.0dev.10
+%define tarbase 2.9.0
 Name:           lynx
-Version:        2.9.0~dev.10
+Version:        2.9.0
 Release:        0
 Summary:        A Text-Based WWW Browser
 License:        GPL-2.0-only
@@ -45,10 +45,7 @@ based and therefore makes it possible to use WWW resources on text
 terminals.
 
 %prep
-%setup -q -n %{name}%{tarbase}
-%patch0 -p1
-%patch1 -p1
-%patch3 -p1
+%autosetup -p1 -n %{name}%{tarbase}
 
 %build
 %configure --enable-debug --with-build-cflags="%{optflags} -DNO_BUILDSTAMP" \

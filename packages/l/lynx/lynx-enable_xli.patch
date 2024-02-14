@@ -1,8 +1,8 @@
-Index: lynx2.8.9rel.1/lynx.cfg
+Index: lynx2.9.0/lynx.cfg
 ===================================================================
---- lynx2.8.9rel.1/lynx.cfg
-+++ lynx2.8.9rel.1/lynx.cfg
-@@ -2335,7 +2335,7 @@ MINIMAL_COMMENTS:TRUE
+--- lynx2.9.0.orig/lynx.cfg
++++ lynx2.9.0/lynx.cfg
+@@ -2307,7 +2307,7 @@ MINIMAL_COMMENTS:TRUE
  # XLOADIMAGE_COMMAND definition.
  # If you use xli, you may want to add the -quiet flag.
  #

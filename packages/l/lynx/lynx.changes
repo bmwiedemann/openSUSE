@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Wed Feb 14 14:21:38 UTC 2024 - pgajdos@suse.com
+
+- version update to 2.9.0
+  2024-01-15 (2.9.0)
+  * change version of OpenSSL used in Windows installers to 3.x and 1.1.1x,
+    for new/old respectively -TD
+  * fixes for UBSAN/ASAN issues with clang on Windows -GV
+  * modify install-doc rule to use relative path for symbolic links -TD
+  * add support for gopher's hURL functionality (patch by Viatrix).
+  * allow ^G interrupt to end read from a stalled connection without exiting
+    Lynx (Debian #1033423) -TD
+  * allow the ^S keymap to be disabled in the configuration file, e.g.,
+      KEYMAP:^S:UNMAPPED
+    (report by TG) -TD
+  * repair docs/OS-390.announce and docs/README.jp -TD
+  * make the test-files non-empty, to appease some packaging tools -TD
+  * check for getpwuid(), use in preference to deprecated cuserid() -TD
+  * modify curses initialization to permit ^S built-in keymap to work without
+    needing external stty changes -TD
+  * correct ifdef for LYmsec_delay() (report by Alexander Arkhipov) -TD
+  * add a NUL after "/" in the SGML parser when the next character is ">", to
+    make PRETTYSRC view display correctly (report by "Dima") -TD
+  * trim some obsolete style code for NeXT -TD
+  * improve responsiveness with respect to SIGWINCH (report by Mark Zaharov) -TD
+  * improve check for MAX_URI_SIZE -TD
+  * improve check for UTF-8 character encoding in XML Text Declaration (report by
+    Lennart Jablonka) -TD
+  * fix for decoding utf-8 in CDATA sections (patch by Hiltjo Posthuma)
+  * treat HTTP 308 permanently redirected the same as HTTP 301 permanently moved
+    (Debian #1041686).
+  * formatting fixes for manpage (Debian #1037353).
+  * change defaults in configure script to use compression -TD
+  * modify HTChunkPutb2() to avoid passing a zero-size or null pointer to
+    memcpy() -TD
+  * correct loop in fill_addrinfo() which adds sizes of struct addrinfo's found
+    in getaddrinfo() call; the 2.8.8dev.15 change did not update the pointer to
+    the struct addrinfo's (Redhat #2185402) -TD
+  * modify configure script to reduce implicit-function warnings -TD
+  * add viewport meta-tag to documentation/test files -TD
+  * update config.guess (2023-08-22), config.sub (2023-09-15)
+  * update ro.po from
+      http://translationproject.org/latest/lynx
+  2023-01-08 (2.9.0dev.12)
+  * add a rewind() call before reading existing bookmark file opened for append
+    with read/write, to ensure that the file-position is at the beginning of the
+    file (report by Klatt Volkmar) -TD
+  * improve compiler-warnings in configure script checks -TD
+  * fix a few ifdef'ing problems (prompted by discussion with Klatt Volkmar) -TD
+  * fix spelling errors found with codespell (report by Jens Schleusener) -TD
+  * update eo.po from
+      http://translationproject.org/latest/lynx
+  2022-12-28 (2.9.0dev.11)
+  * update ncurses/lynx homepage URLs to deprecate ftp -TD
+  * modify configure script to reduce implicit-function warnings (report by
+    Florian Weimer) -TD
+  * update configure script to work around regression in grep 3.8 -TD
+  * add some consistency-checks to dtd_util to make it easier to use -TD
+  * improve formatting of bookmark file, e.g., to fix warnings by tidy -TD
+  * correct workaround for asan2 report of overlapping strcpy (report by KH) -TD
+  * amend fix for Debian #738121; URL-encoded "?" in HTFile.c corresponds to an
+    actual "?" in a file path (report by TG) -TD
+  * before calling delscreen, delete the private working windows in case delwin
+    invalidates those (Debian #1015756) -TD
+  * add presentation type for xhtml, related state information to better handle
+    things such as "<script src=foo />" -Shlomi Fish, TD
+  * improve line-breaks and whitespace for Japanese characters -KH
+    + permit line breaks after any Japanese character (enabled by
+      --enable-wcwidth-support configuration and only called on last byte of
+      multibyte UTF-8 sequence)
+    + avoid adding spaces when joining lines after Japanese characters.
+  * add new "Minimal" user mode, to minimize on-screen help/status.
+    Eliminates the URL on the bottom line, the forward/backward indicator in the
+    upper left, and most status-line messages - Paul G Fox
+  * add PREVENT_KEYBOARD_WRAPAROUND symbol to userdefs.h
+    Undefing this will allow cursor to wrap from bottom to/from top, when there's
+    more content than a single page.  (It can already wrap when the content
+    already fits on a page.) - Paul G Fox
+  * modify NSL-fork to call freeaddrinfo only if getaddrinfo returns successfully
+    (patch by Rajeev V Pillai)
+  * add ".br", ".lz", ".lzip", and ".xz" to binary-suffixes list -TD
+  * changes for using brotli stream decompression -TD
+  * changes for working with SOCKS5 on Windows 10 -GV, -TD
+  * fix a few coverity and clang warnings -TD
+  * add a null-pointer check in StrAllocVsprintf() to work with existing SOCKS5
+    configuration (report/patch by Gisle Vanem).
+  * change capitalization of "Content-type" sent to the remote server to work
+    around "HeavyThing" server which does not follow RFC 2616 in treating field
+    name as case insensitive (report/patch by Sylvain Bertrand)
+  * improved several configure macros:
+    AM_WITH_NLS, CF_ADD_INCDIR, CF_BUILD_CC, CF_CHECK_EXTERN_DATA,
+    CF_DISABLE_ECHO, CF_FIX_WARNINGS, CF_MAKEFLAGS, CF_MATH_LIB,
+    CF_NCURSES_CONFIG, CF_NCURSES_LIBS, CF_PKG_CONFIG, CF_PROG_LINT,
+    CF_SIZECHANGE, CF_TRY_XOPEN_SOURCE, CF_WITH_PATH, CF_XOPEN_SOURCE
+  * update config.guess (2022-08-01), config.sub (2022-08-01)
+- modified patches
+  % lynx-charset.patch (refreshed)
+  % lynx-enable_xli.patch (refreshed)
+
+-------------------------------------------------------------------
 Sat Jan 22 12:04:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9.0~dev.10:

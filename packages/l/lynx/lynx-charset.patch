@@ -2,11 +2,11 @@
  lynx.cfg |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: lynx2.8.9rel.1/lynx.cfg
+Index: lynx2.9.0/lynx.cfg
 ===================================================================
---- lynx2.8.9rel.1/lynx.cfg	2014-02-22 20:30:46.000000000 +0000
-+++ lynx2.8.9rel.1/lynx.cfg	2014-02-22 20:30:48.000000000 +0000
-@@ -449,7 +449,7 @@ DEFAULT_INDEX_FILE:http://scout.wisc.edu
+--- lynx2.9.0.orig/lynx.cfg
++++ lynx2.9.0/lynx.cfg
+@@ -464,7 +464,7 @@ DEFAULT_INDEX_FILE:http://scout.wisc.edu
  # values and their relationship to the locale value is not.  GNU libiconv
  # happens to give useful values, but other implementations are not guaranteed
  # to do this.
