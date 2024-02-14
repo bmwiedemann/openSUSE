@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 14 18:58:55 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.7.0
+  * Add immediate methods for connected and strongly connected
+    graphs
+  * kernel: fix mem leaks for permutations allocated but not
+    freed.
+  * Added EdgeWeightedDigraph, AbsorptionExpectedSteps,
+    DigraphAbsorptionProbabilities
+
+-------------------------------------------------------------------
 Fri Sep 15 04:45:05 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.6.3
