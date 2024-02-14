@@ -1,7 +1,7 @@
 #
 # spec file for package icingaweb2-module-director
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,11 @@
 
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
+%define basedir	%{_datadir}/icingaweb2
+%define icingadirector_user icingadirector
+
 Name:           icingaweb2-module-director
-Version:        1.11.0
+Version:        1.11.1
 Release:        0
 Summary:        Config module for Icinga Web 2
 License:        GPL-2.0-or-later
@@ -29,11 +32,12 @@ Source0:        https://github.com/Icinga/%{name}/archive/v%{version}/%{name}-%{
 Source90:       README.SUSE
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
+BuildRequires:  nagios-rpm-macros
 BuildRequires:  systemd-rpm-macros
 Requires(pre):  pwdutils
 Requires:       icinga2 >= 2.8.0
 Requires:       icingaweb2 >= 2.8.0
-Requires:       icingaweb2-module-incubator >= 0.20.0
+Requires:       icingaweb2-module-incubator >= 0.22.0
 Requires:       icingaweb2-module-ipl >= 0.5.0
 Requires:       icingaweb2-module-reactbundle >= 0.9.0
 Requires:       php >= 7.3
@@ -42,12 +46,9 @@ Requires:       php-iconv
 Requires:       php-pcntl
 Requires:       php-posix
 Requires:       php-sockets
+Provides:       group(%icinga_webgroup)
+Provides:       user(%{icingadirector_user})
 %{?systemd_requires}
-
-%define basedir	%{_datadir}/icingaweb2
-%define icinga_user    icinga
-%define icinga_group   icinga
-%define icingawebgroup icingaweb2
 
 %description
 Director is an config module for icingaweb2
@@ -78,8 +79,8 @@ chmod 754 %{buildroot}%{basedir}/modules/director/contrib/linux-agent-installer/
 
 %pre
 %service_add_pre %{name}.service
-/usr/bin/getent group %{icingawebgroup} >/dev/null || /usr/sbin/groupadd -r %{icingawebgroup} ||:
-/usr/bin/getent passwd icingadirector >/dev/null || /usr/sbin/useradd -c "Icinga2 director" -s /sbin/nologin -r -d %{_localstatedir}/lib/%{name} -g %{icingawebgroup} icingadirector || :
+/usr/bin/getent group %icinga_webgroup >/dev/null || /usr/sbin/groupadd -r %icinga_webgroup ||:
+/usr/bin/getent passwd %{icingadirector_user} >/dev/null || /usr/sbin/useradd -c "Icinga2 director" -s /sbin/nologin -r -d %{_localstatedir}/lib/%{name} -g %icinga_webgroup %{icingadirector_user} || :
 
 %preun
 %service_del_preun %{name}.service
@@ -97,7 +98,7 @@ chmod 754 %{buildroot}%{basedir}/modules/director/contrib/linux-agent-installer/
 %dir %{basedir}
 %dir %{basedir}/modules
 %dir %{basedir}/modules/director
-%dir %attr(0750,icingadirector,%{icingawebgroup}) %{_localstatedir}/lib/%{name}
+%dir %attr(0750,%{icingadirector_user},%icinga_webgroup) %{_localstatedir}/lib/%{name}
 %{basedir}/modules/director/*
 %{_unitdir}/%{name}.service
 %{_sbindir}/rc%{name}
