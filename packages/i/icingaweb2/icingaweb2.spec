@@ -1,7 +1,7 @@
 #
 # spec file for package icingaweb2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,7 @@ Requires:       icingacli = %{version}
 Requires:       icingaweb2-common = %{version}
 Requires:       php-icinga = %{version}
 Requires:       (mod_php_any or php-fpm)
+Provides:       group(%icinga_command_group)
 Recommends:     icingaweb2-module-pdfexport >= 0.10
 BuildArch:      noarch
 
@@ -47,6 +48,7 @@ Lightweight and extensible web interface to tackle your monitoring challenge.
 Summary:        Common files for Icinga Web and the Icinga CLI
 PreReq:         permissions
 Requires(pre):  shadow
+Provides:       group(%icinga_webgroup)
 
 %description common
 Manages common files for Icinga Web and the Icinga CLI.
