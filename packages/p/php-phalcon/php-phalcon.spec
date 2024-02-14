@@ -19,7 +19,7 @@
 %define pkg_name    phalcon
 
 %define flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "" || (0%{?suse_version} >= 1550 && "%{flavor}" == "php7")
+%if "%{flavor}" == "" || "%{flavor}" == "php7"
 %define php_name php
 ExclusiveArch:  do-not-build
 %else
@@ -31,7 +31,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        5.6.0
+Version:        5.6.1
 Release:        0
 Summary:        PHP Extension Module
 License:        BSD-3-Clause
@@ -44,16 +44,11 @@ BuildRequires:  %{php_name}-devel
 BuildRequires:  %{php_name}-pdo
 BuildRequires:  %{php_name}-psr >= 0.7.0
 BuildRequires:  gcc
-%if "%{php_name}" == "php7"
-BuildRequires:  %{php_name} >= 7.4.1
-BuildRequires:  %{php_name}-json
-%else
-BuildRequires:  %{php_name} < 8.3
-%endif
+BuildRequires:  %{php_name} < 8.4
 Requires:       %{php_name}-mysql
 
 %description
-Phalcon is a framework for PHP7 written as a C extension.
+Phalcon is a framework for PHP8 written as a C extension.
 Zephir is a high-level language, something between C and PHP. It is
 both dynamic and static typed and it supports the features we need to
 create and maintain a project like Phalcon.

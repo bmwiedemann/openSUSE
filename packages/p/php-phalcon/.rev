@@ -109,4 +109,27 @@
     <comment></comment>
     <requestid>1141264</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d41216be69212bf6911e8c8c5b98e0e0</srcmd5>
+    <version>5.6.1</version>
+    <time>1707949143</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.6.1
+  * Changed `Phalcon\Cli\Router::setDefaultAction` and
+    `Phalcon\Cli\Router::setDefaultModule` to return the object back for a
+    fluent interface [#16328]
+  * Fixed `Phalcon\Db\Adapter\Pdo\Postgresql::describeColumns()` to return
+    the correct string back [#16371]
+  * Fixed `Phalcon/Filter/Validation::validate()` and
+    `Phalcon/Filter/Validation/ValidationInterface::validate()` to return
+    also `bool` [#16337]
+  * Fixed `Phalcon\Mvc\Model::toArray` to ignore getters when the field
+    name is `source`. [#16514]
+  * Fixed `Phalcon\Http\Request::getPut` to correctly get form encoded data
+    [#16519]
+  * Fixed deprecation warning in callables `Use of &quot;static&quot; in callables is
+    deprecated` for PHP 8.2+ [#16263]
+- Minimum required PHP version is 8.0.0</comment>
+    <requestid>1146488</requestid>
+  </revision>
 </revisionlist>

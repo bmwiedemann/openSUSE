@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Feb 13 21:38:26 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 5.6.1
+  * Changed `Phalcon\Cli\Router::setDefaultAction` and
+    `Phalcon\Cli\Router::setDefaultModule` to return the object back for a
+    fluent interface [#16328]
+  * Fixed `Phalcon\Db\Adapter\Pdo\Postgresql::describeColumns()` to return
+    the correct string back [#16371]
+  * Fixed `Phalcon/Filter/Validation::validate()` and
+    `Phalcon/Filter/Validation/ValidationInterface::validate()` to return
+    also `bool` [#16337]
+  * Fixed `Phalcon\Mvc\Model::toArray` to ignore getters when the field
+    name is `source`. [#16514]
+  * Fixed `Phalcon\Http\Request::getPut` to correctly get form encoded data
+    [#16519]
+  * Fixed deprecation warning in callables `Use of "static" in callables is
+    deprecated` for PHP 8.2+ [#16263]
+- Minimum required PHP version is 8.0.0
+
+-------------------------------------------------------------------
 Sat Jan 20 20:17:55 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 5.6.0
