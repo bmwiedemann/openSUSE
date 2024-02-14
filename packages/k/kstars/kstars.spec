@@ -39,7 +39,6 @@ BuildRequires:  Mesa-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12
-BuildRequires:  indi-devel >= 2.0.0
 BuildRequires:  libXISF-devel
 BuildRequires:  libnova-devel
 BuildRequires:  pkgconfig
@@ -73,11 +72,16 @@ BuildRequires:  cmake(StellarSolver) >= 2.2
 BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(eigen3)
 BuildRequires:  pkgconfig(gsl)
+BuildRequires:  pkgconfig(libindi) >= 2.0.0
 BuildRequires:  pkgconfig(libraw)
 BuildRequires:  pkgconfig(wcslib)
 Requires:       libqt5-qtquickcontrols
 Recommends:     /usr/bin/dbus-send
+%if 0%{?suse_version} > 1500
 Recommends:     indi
+%else
+Recommends:     libindi
+%endif
 Recommends:     xplanet
 
 %description
