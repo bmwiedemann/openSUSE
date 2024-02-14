@@ -278,4 +278,12 @@ part of summer 2013 libyal refresh for opensuse 13.1</comment>
     <comment>python 3.12 build fix</comment>
     <requestid>1144599</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>82cfdd570bdf78f2e0ae66a857153407</srcmd5>
+    <version>20240214</version>
+    <time>1707949219</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20240214</comment>
+    <requestid>1146640</requestid>
+  </revision>
 </revisionlist>
