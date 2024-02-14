@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Feb 14 10:01:46 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.11.58
+  * 🦀  🔒 **The flag to enable the Rust crypto implementation is now set to `true` by default. This means that without any additional configuration every new login will use the new cryptography implementation.**
+  * Add Element call related functionality to new room header (https://github.com/matrix-org/matrix-react-sdk/pull/12091). Contributed by @toger5.
+  * Add labs flag for Threads Activity Centre (https://github.com/matrix-org/matrix-react-sdk/pull/12137). Contributed by @florianduros.
+  * Refactor element call lobby + skip lobby (https://github.com/matrix-org/matrix-react-sdk/pull/12057). Contributed by @toger5.
+  * Hide the "Message" button in the sidebar if the CreateRooms components should not be shown (https://github.com/matrix-org/matrix-react-sdk/pull/9271). Contributed by @dhenneke.
+  * Add notification dots to thread summary icons (https://github.com/matrix-org/matrix-react-sdk/pull/12146). Contributed by @dbkr.
+  
+  ## 🐛 Bug Fixes
+  
+  * Fix logout can take ages (https://github.com/matrix-org/matrix-react-sdk/pull/12191). Contributed by @BillCarsonFr.
+  * Fix `Mark all as read` in settings (https://github.com/matrix-org/matrix-react-sdk/pull/12205). Contributed by @florianduros.
+  * Fix default thread notification of the new RoomHeader (https://github.com/matrix-org/matrix-react-sdk/pull/12194). Contributed by @florianduros.
+  * Fix display of room notification debug info (https://github.com/matrix-org/matrix-react-sdk/pull/12183). Contributed by @dbkr.
+
+-------------------------------------------------------------------
 Thu Feb  1 10:00:44 UTC 2024 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.11.57
