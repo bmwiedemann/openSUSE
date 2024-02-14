@@ -33,7 +33,6 @@ BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  rpm_macro(cmake_kf5)
 Requires:       mozilla-kde4-version = %{helper_version}
 Supplements:    packageand(MozillaFirefox:plasma5-desktop)
 Supplements:    packageand(MozillaThunderbird:plasma5-desktop)

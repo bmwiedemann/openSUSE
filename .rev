@@ -72,4 +72,13 @@
     <comment></comment>
     <requestid>1136923</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>65bea1f1cfdff75adc7d33cf19584f10</srcmd5>
+    <version>5.0.6</version>
+    <time>1707949163</time>
+    <user>anag+factory</user>
+    <comment>- Remove rpm_macro(cmake_kf5) BR, not supported on Leap and
+  extra-cmke-modules already takes care of that.</comment>
+    <requestid>1146537</requestid>
+  </revision>
 </revisionlist>
