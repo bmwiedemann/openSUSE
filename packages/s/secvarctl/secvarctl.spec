@@ -1,7 +1,7 @@
 #
 # spec file for package secvarctl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global make_parms OPENSSL=1 DEBUG=1
 Name:           secvarctl
-Version:        1.0.0~rc3+git0.6f4d730
+Version:        1.0.0+git0.73d91fa
 Release:        0
 Summary:        Suite of tools to manipulate and generate Secure Boot variables on POWER
 License:        Apache-2.0

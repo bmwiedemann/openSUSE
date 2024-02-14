@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 14 09:46:08 UTC 2024 - msuchanek@suse.com
+
+- Update to version v1.0.0 (jsc#PED-5449):
+  * guest/generate: fix multiple input/output format specifier argument parsing
+  * guest/read: fix segfault in read -c caused by empty variable name
+  * guest/verify: only print default PK in get_current_esl_data if verbose is set
+
+-------------------------------------------------------------------
 Thu Dec 14 16:03:34 UTC 2023 - msuchanek@suse.com
 
-- Update to version 1.0.0~rc3 (jsc#PED-5449):
+- Update to version 1.0.0~rc3:
   * Guest/verify: fix misbehaviour of verify and write with -p
   * Guest/generate: trustedcadb variable allow only CA certificates
   * Guest/Verify: -w option allowed when use -u with -p

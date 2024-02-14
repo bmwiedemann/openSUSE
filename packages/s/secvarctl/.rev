@@ -59,4 +59,12 @@
   * guest/generate: fix potential null reference in pk/append special case (forwarded request 1133155 from michals)</comment>
     <requestid>1133590</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>26e3a71ee152f65c289d1940d38c40f5</srcmd5>
+    <version>1.0.0+git0.73d91fa</version>
+    <time>1707949167</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1146544</requestid>
+  </revision>
 </revisionlist>
