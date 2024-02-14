@@ -18,4 +18,15 @@
     <comment></comment>
     <requestid>1085740</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>786d49e7385ee8eaa67a89637e0b8348</srcmd5>
+    <version>1.4.1</version>
+    <time>1707949144</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.1:
+  * End zend_function_entry ssh2_functions list with PHP_FE_END
+  * Remove implicit switch-case fallthrough
+  * Windows build setup with GitHub Actions</comment>
+    <requestid>1146489</requestid>
+  </revision>
 </revisionlist>
