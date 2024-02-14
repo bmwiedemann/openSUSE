@@ -47,7 +47,7 @@ including to various microprocessors (MPUs) and microcontrollers (MCUs).
 %package devel
 Summary:        FIDO Device Onboard Client SDK
 Group:          Development/Libraries/C and C++
-Requires:       libopenssl-1_1-devel
+Requires:       libopenssl-devel
 
 %description devel
 This is a production-ready implementation of the Device component defined

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 13 13:38:19 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Remove the hardcoded libopenssl-1_1-devel and replace it with
+  libopenssl-devel (bsc#1219879).
+
+-------------------------------------------------------------------
 Fri Feb  2 08:23:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build using RPM 4.19: builddir does contain the extracted
