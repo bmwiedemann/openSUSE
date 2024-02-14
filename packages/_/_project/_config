@@ -3420,7 +3420,7 @@ Macros:
 
 # END RUST STUFF
 
-# Default to Java 21
+# Default to Java 21 - !! Also adjust 000package-groups/openSUSE-release.spec.in to suggest the right version ~~
 Prefer: java-21-openjdk-devel java-21-openjdk java-21-openjdk-headless java-21-openjdk-javadoc
 Prefer: java-17-openjdk-devel java-17-openjdk java-17-openjdk-headless java-17-openjdk-javadoc
 Prefer: java-11-openjdk-devel java-11-openjdk java-11-openjdk-headless java-11-openjdk-javadoc
