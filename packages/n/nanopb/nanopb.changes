@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 14 14:22:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop generator/nanopb_generator.py2 which is the only python2
+  based script. The script's content itself mentions this is for
+  compatibility only and should not be used (boo#1219928).
+
+-------------------------------------------------------------------
 Fri Nov 17 07:31:38 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.4.8: 

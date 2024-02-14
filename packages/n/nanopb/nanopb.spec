@@ -1,7 +1,7 @@
 #
 # spec file for package nanopb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -77,6 +77,9 @@ format.
 # Install source code
 mkdir -p %{buildroot}%{src_install_dir}
 tar -xf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
+# drop the only py2 script which is only for compatibility
+rm %{buildroot}%{src_install_dir}/generator/nanopb_generator.py2
+
 find %{buildroot}%{src_install_dir} -name ".*" -exec rm -rfv \{\} +
 # Fix env-script-interpreter rpmlint error
 files=$(grep -rl '#!/usr/bin/env python' %{buildroot}%{src_install_dir}) && echo $files | xargs sed -i 's|#!/usr/bin/env python|#!%{_bindir}/python|'
