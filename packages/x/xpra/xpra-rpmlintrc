@@ -1,3 +1,11 @@
 addFilter("potential-bashisms /usr/bin/xpra_Xdummy");
 #addFilter("python-bytecode-inconsistent-mtime * *");
 addFilter('dbus-policy-allow-receive <allow receive_sender="org.xpra.Server"/> /etc/dbus-1/system.d/xpra.conf');
+addFilter('python-missing-require PyGObject');
+addFilter("python-leftover-require .*-cairo");
+addFilter("python-leftover-require .*-dbus-python");
+addFilter("python-leftover-require .*-gobject");
+#addFilter("python-leftover-require .*-gobject-Gdk");
+addFilter("python-leftover-require .*-gst");
+addFilter("python-leftover-require .*-pycups");
+addFilter("python-leftover-require .*-rencode");

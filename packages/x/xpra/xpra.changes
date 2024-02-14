@@ -1,4 +1,364 @@
 -------------------------------------------------------------------
+Wed Feb 07 19:13:44 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.0+git20240207.f845c2d5:
+  * remove debug logging
+  * #3938 ignore position hint changes when the client is showing the window
+  * silence KDE specific wm events wrongly sent by wine
+  * oops: don't shadow the 'opengl' string variable
+  * typo: instantiate the context manager
+  * silence another gtk screen dimension warning
+  * '.' in 'gtk+3.0' causes a parsing error
+  * oops, fixup e5aa9529284c0c0a379c6951d5d3fc86525824dd: swap source and dest change
+
+-------------------------------------------------------------------
+Tue Feb 06 15:24:45 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.0+git20240206.e5aa9529:
+  * gst-plugin-scanner needs to find the gstreamer dylibs
+  * '+' in 'gtk+' causes a parsing error
+  * enable write access for buffers we own
+  * bandaid for clipboard data received as a string
+  * simplify
+  * use simplified pypi source URLs
+  * numpy 1.26.4
+  * show the prefererd www directory in the warning
+  * better OpenGL probe error messages
+  * Ubuntu 22.04 ships an old version of Pillow..
+  * it seems that we can get a None value here..
+  * using a dictionary is safer and easier to read
+  * 'dirs' must contain pairs
+  * openh264 2.4.1
+  * shortcut out earlier
+  * network layer can't encode enums
+  * #4125 trigger backtraces with regular expressions
+  * cosmetic: reformat
+  * #3916 also update 'requested' attributes
+  * doh: only shortcut out if nothing has changed
+  * type hints
+  * move function where it is needed
+  * #3916 once a window has been moved, the 'initial position' should be honoured
+  * cosmetic: type hints
+  * #3542 always initialize pointer position
+  * #3542 don't validate pointer position without a window
+  * #3542 only ignore pointer data with a valid window id
+  * a window should not be focused and hidden at the same time
+  * remove 'focused' state when windows are iconified
+  * expose X11 errors and import from correct module
+  * Elaborate on "`#` in Xpra Key Bindings", and complete the documentation
+  * #4112 boolget now defaults to False
+  * #4117 the manual is no longer available on xpra.org
+  * Improve documentation for Keyboard Shortcuts
+  * #4113 use enum types with c++
+  * oops: misindentation
+  * simplify: set_icon_full can use full paths with extensions now
+  * appindicator fixes
+  * some modules can have a dot in their pip freeze name
+  * simplify
+  * cannot call about() directly from a wiget callback
+  * also log abstract socket cleanup
+  * don't show an invalid display size
+  * add tray debug logging
+  * wrong argument for tray constructor: pass menu
+  * refactoring gone wrong: compare with the string
+  * add type hints
+  * fix cosmetic warnings
+  * make it easier to test
+  * signal handlers don't return a value
+  * match add_init_thread_callback signature - never used?
+  * type hints: fixes and stronger types
+  * simplify: shotcut out and flatten
+  * move osx notifier to its own module
+  * convert to int on entry
+  * silence deprecation warning
+  * cosmetic: reformat
+  * fix socket setup failure cleanup code
+  * better validation of abstract socket paths
+  * cosmetic: reformat
+  * #4064 move gstreamer configuration to new gui
+  * cosmetic: reformat
+  * use gi_import for API versioning
+  * cosmetic: reformat
+  * #4109 / #1442: try to prevent pyvda errors from breaking things
+  * Revert "fix building with clang"
+  * #4111 revert type hint that breaks some builds
+  * #4110 fix 'flags' argument to 'PyMemoryView_FromMemory'
+  * #3514 / #3943 these env vars are now redundant
+  * #4109 catch unexpected pyvda error on import
+  * fix building with clang
+  * silence 'warning: ‘Py_UNICODE’ is deprecated'
+  * make some memoryviews as readonly
+  * cosmetic: reformat
+  * #3483 make numpy-blocking more fine-grained
+  * cosmetic: reformat
+  * #3483 make it easier to block numpy
+  * move nomodule_context to a more reusable location
+  * #3623 show adapter type
+  * cosmetic: reformat
+  * avoid escaping backslashes in win32 filenames
+  * cosmetic
+  * #4044 don't try to print a size we don't have
+  * #4044 match interface change: new argument
+  * #3987 add env toggle to force RGBA internal format
+  * try harder to reap and close fds of pinentry
+  * don't leak failing socket
+  * #4098 automatically use abstract sockets
+  * group imports
+  * cosmetic
+  * ensure each socket gets its own options object
+  * do cleanup timed out sockets
+  * also use unexpanded paths in default config
+  * don't expand XDG_RUNTIME_DIR or HOME in config files
+  * cosmetic
+  * catch missing connection objects sooner
+  * fix breakage introduced by 28adf9b8a2740aac74f5507bdf7302b73de28613
+  * move paramiko imports, type hints, cleanups
+  * fix breakage introduced in 4b50a2560ab4d8dbf9054982c2862880c393bc95
+  * #2303 the proxy server may also needs to clean ssh session files
+  * #2303 modifying os.environ is not thread safe
+  * simplify: load_session_file always returns bytes
+  * use the newer non deprecated Rsvg.render_document function
+  * cosmetic
+  * simplify
+  * remove debug logging
+  * only import the X11 bits after checking for Wayland
+  * RFB connections send a 12-byte initial packet
+  * don't use GTK xsync context manager with Wayland
+  * don't generate html annotations by default
+  * load icons via the safer 'open_only' function
+  * skip Gtk to avoid pointless deprecation warnings
+  * all protocol instances are expected to have a start_time
+  * cosmetic
+  * silence gtk deprecation warnings
+  * force text quality to 100
+  * avoid spamming the log with empty requests
+  * no need to xsync with Wayland displays
+  * don't let opengl cleanup errors hang a window
+  * MS Windows can't handle nested 'transient-for' ?
+  * handle pyvda failures more gracefully
+  * make it possible to specify 'transient-for'
+  * move run_gui to common
+  * modal windows can't have transient-for windows?
+  * more helpful message if opengl cannot be initialized
+  * gtk can fail to load webp images
+  * also locate resources dir from source directory
+  * allow 'xpra/html' as a 'text' target
+  * more readable code, try harder to return usable targets
+  * honour client specified order of clipboard preferred targets
+  * /var/www/xpra is another valid location for the html5 client
+  * fix deprecation warning
+  * continue closing other windows
+  * use correct enum type
+  * we need to check for glDeleteProgram
+  * fix linter warnings
+  * use the start_thread wrapper and name the thread
+  * enable python3.13 builds
+  * if we wait for input, we don't use the log file
+  * always import gi bindings via gi_import
+  * fix version check: don't compare strings
+  * use the correct argument type
+  * always build the latest aioquic
+  * minor linter warnings
+  * close log file on exit
+  * type hints and style fixes
+  * delay loading of ssl module
+  * remove redundant exception logging
+  * forgot to bump year, again
+  * cosmetic
+  * #3483 OpenGL may import numpy via its array modules
+  * #4098 add abstract socket support
+  * support multiple csv attributes with bind options
+  * unify socket setup code
+  * cosmetic
+  * don't wrap our own exceptions twice
+  * fix python 3.12 deprecation warnings
+  * silence more sonarqube warnings
+  * move ssl bits to their own module
+  * fix more sonarqube warnings
+  * wait for local sockets to become available
+  * try to help sonarqube
+  * use the existing toggle
+  * match expected (unused) type
+  * fix sonarqube linter warning
+  * only build cuda kernels for nvenc or nvjpeg encoder
+  * this discord invite link does not expire
+  * fixup unit test for 681a0bc2b80896e9f49b922780f4afc358c1b7f9
+  * prevent circular imports
+  * move version to gi_import
+  * #4097 controller and master are indexes
+  * #4050 oops: ignore the 'Modules' line but continue
+  * #4050 zero is a valid value we want to record, None is not
+  * #4050 add python modules from 'pip3 freeze' output
+  * #4050 add sbom from 'jhbuild list -a -r' output
+  * cosmetic
+  * cosmetic pep8 fixes
+  * #4050 record pacman data
+  * minor linter warnings
+  * missing f-strings hides the log filename
+  * prettier output: repr formatting escapes backslashes
+  * Cython 3.0.8
+  * oops: remove debug logging
+  * use the correct package name for the gi bindings
+  * document empty method overrides
+  * aioquic 0.9.25
+  * type hint was incorrect
+  * minor linter warnings
+  * use the correct type for a strict intget call
+  * use the correct type for boolget call
+  * forgot a comma
+  * more consistency
+  * remove unused assignment
+  * pypi source archive uses lowercase
+  * always use force_close_connection so errors will be caught
+  * #3889 avoid dangling connection objects
+  * pycuda 2024.1
+  * #3889 safer and cleaner socket wrapping
+  * cosmetic
+  * numpy 1.26.3
+  * pillow 10.2.0
+  * #3889 try to wrap connections again on 'invalid_header'
+  * cosmetic
+  * cosmetic
+  * cosmetic + match refactoring
+  * move more code out of core modules
+  * Fix paths to content-type, content-categories files.
+  * cosmetic
+  * #3978 prevent aioquic logging loops
+  * fixup 70f663fcca5b212bd5aaf3ed0543141737029296: forgot cython modules
+  * #3957 minor tweaks and cleanups
+  * #3957 use non-blocking select and add test tool
+  * minor linter warnings
+  * Fix passing window xid to prop_set, prop_del.
+  * X11ServerCore.__init__: enable type checking
+  * #3957 add stub record module
+  * disable the mangled scripts
+  * #4086 flake8 fixes for setup.py
+  * #4085 add more metadata
+  * doh: video_subregion must be initialized
+  * aioquic 0.9.24
+  * oops: instance now needs get_type
+  * allow systemd-run with Ubuntu >= 22
+  * fix layout, add ignore codes
+  * more readable layout
+  * now need to mock 'codec_type'
+  * #4086 flake8 fixes for 'platform' module
+  * #4086 flake8 fixes for 'server.mixins'
+  * don't compare the class, use the 'type' string instead
+  * #4086 flake8 fixes for 'server.window' module
+  * #4086 flake8 fixes for 'server.source' module
+  * #4086 flake8 fixes for 'server' module
+  * cosmetic
+  * don't call superclass twice
+  * cosmetic
+  * #4082 add 'list-clients' subcommand
+  * #4082 add 'display'
+  * cosmetic linter fixes
+  * #4082 add 'session-type'
+  * generic permission checks for hello requests
+  * #4086 flake8 fixes for 'net' module
+  * #4086 flake8 fixes for 'scripts' module
+  * doh: validation triggers warning path
+  * #4086 flake8 fixes for 'client' module (part 2)
+  * #4086 flake8 fixes for 'client' module
+  * #4086 flake8 fixes for 'gtk'
+  * #4086 flake8 fixes for 'gtk'
+  * #4086 flake8 pass for 'codecs'
+  * #4086 fix 'audio', 'clipboard' and 'keyboard'
+  * linting in dbus, gstreamer and top level modules
+  * fix pflake8 warnings in util modules
+  * fix pflake8 warnings in x11 modules
+  * fix flake8 linter warnings
+  * add pflake8 config
+  * #4085 'version' is a required attribute
+  * pyproject.toml only used for 'ruff' for now
+  * minor ruff warnings
+  * #3574 add 'control' to socket options
+  * cosmetic
+  * #4082 show 'endpoint' in client info
+  * no need to add quotes for these types
+  * exit reprobe loop as quickly as possible
+  * simplify sysconfig toggle
+  * ensure we touch the sockets early
+  * simplify: never clean sockets touched in the last minute
+  * shortcut out if client gl is not installed
+  * #2467 we can probe opengl on Wayland now
+  * use the package names
+  * expose numeric version numbers
+  * remove warning for ancient versions of paramiko
+  * workaround paramiko error with agent keys
+  * #4083 load global /etc ssh config
+  * #4083 remove 'nogssapi' workaround
+  * Cython 3.0.7
+  * setup.py: Change "Y/N" output into more readable "Yes/No"
+  * docs/Build/Dependencies.md: Add required Cython and PyGObject
+  * don't toggle features that are missing
+  * set ICCCM's WM_ICON_SIZE
+  * #4064 show configure gui from main gui
+  * split module names into a reusable function
+  * only add ping latency when delay is used
+  * make the default iconify delay configurable
+  * don't clamp the whole window to the desktop
+  * validate frame extents values
+  * try harder to close the test windows on exit
+  * force enable to validate
+  * cosmetic
+  * #4064 forgot to add the test images
+  * fix constraint calculation for max size
+  * #4064 add tool for installing and remove xpra packages
+  * generic solution to signal handling problems with Gtk
+  * signal handlers can't call Gtk.main_quit directly
+  * handle signals correctly
+  * add help text
+  * honour 'sensitive' arg
+  * MS Windows dialogs prevent access to about window
+  * Updated Debian override_dh_shlibdeps rule to move avif back to codecs-extras, as I believe was originally intended by commit f1787a07b1fe4ebb6b9b2b57309a36396c39a2cb (#2998 move avif to codecs-extras, 2023-09-20).
+  * Updated Debian control to refer to libavif16 instead of libavif15 for sid and trixie. Debian's package was renamed when its source package libavif version 1.0.1-1 was uploaded to sid on 2023-10-07, and that version migrated to testing (trixie) on 2023-10-12.
+  * silence useless depreaction warnings
+  * #4064 add exe tool for configure gui
+  * cosmetic, type hints
+  * remove cython3 package to make sure we use the pip one
+  * forgot to add the module
+  * #4064 add MacOS and MS Windows wrappers
+  * cosmetic
+  * add 'file-transfer' and 'printing' to the list
+  * #4064 move more code to common
+  * don't show a warning when parsing comments
+  * simplify using glob
+  * move socket info to where it belongs
+  * #4064 add 'features' toggle dialog
+  * cosmetic type hint and logging fixes
+  * #4064 correctly parse config files with newlines
+  * cosmetic
+  * #4064 add test images
+  * #4056 lstrip was misused
+  * #4064 opengl configure dialog
+  * cosmetic
+  * add opengl configure window stub
+  * (re)move unused distro functions
+  * missed files from 52800820f2f7c457c9ca9e256dd3bae2c0d9e1cb
+  * split utility functions away from os_util
+  * make utility functions re-usable
+  * cosmetic
+  * #3483 try harder to catch all paths that import numpy
+  * #3975 apply env settings early
+  * some items don't have callbacks
+  * warn only once
+  * Fix broken URL in docs
+  * #4055 virtual workspaces for MS Windows
+  * cosmetic
+  * type hints and fixes
+  * in case the config doesn't have a value
+
+-------------------------------------------------------------------
+Wed Nov 29 16:22:28 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 6.0+git20231129.84c22933:
+  * always strip the ImageMenuItem object from the callback arguments
+  * #4061 use indirection to remove callback arguments
+  * Enable pam functionality on Linux only
+  * Extend some LINUX cases to FREEBSD
+
+-------------------------------------------------------------------
 Tue Nov 28 15:30:34 UTC 2023 - scott.bradnick@suse.com
 
 - Update to version 6.0+git20231128.fc4b6d1f:

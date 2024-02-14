@@ -39,7 +39,7 @@
 # ----
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        6.0+git20231128.fc4b6d1f
+Version:        6.0+git20240207.f845c2d5
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -121,6 +121,7 @@ Requires:       pulseaudio-utils
 Requires:       %{python_ver}-Pillow
 Requires:       %{python_ver}-cairo
 Requires:       %{python_ver}-dbus-python
+Requires:       %{python_ver}-gobject
 Requires:       %{python_ver}-gobject-Gdk
 Requires:       %{python_ver}-gst
 #Requires:       python3-lz4
