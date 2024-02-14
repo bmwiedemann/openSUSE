@@ -74,4 +74,18 @@ https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V21.md#21.4.0
 - linker_lto_jobs.patch: refreshed</comment>
     <requestid>1137596</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>166a7e4181460e6a874705dc36650f91</srcmd5>
+    <version>21.6.1</version>
+    <time>1707949124</time>
+    <user>anag+factory</user>
+    <comment>- Update to 21.6.1:
+  * Revert &quot;stream: fix cloned webstreams not being unref'd&quot;
+- Changes in 21.6.0:
+  * New connection attempt events
+  * --allow-addons to enable addon usage when using the Permission Model.
+  * Support configurable snapshot through --build-snapshot-config flag
+- fix_ci_tests.patch: refreshed</comment>
+    <requestid>1146410</requestid>
+  </revision>
 </revisionlist>

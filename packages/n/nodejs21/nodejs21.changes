@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 12 14:51:32 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Update to 21.6.1:
+  * Revert "stream: fix cloned webstreams not being unref'd"
+
+- Changes in 21.6.0:
+  * New connection attempt events
+  * --allow-addons to enable addon usage when using the Permission Model.
+  * Support configurable snapshot through --build-snapshot-config flag
+
+- fix_ci_tests.patch: refreshed
+
+-------------------------------------------------------------------
 Mon Jan  8 15:02:53 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - Update to 21.5.0:

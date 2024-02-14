@@ -1,7 +1,7 @@
 #
 # spec file for package nodejs21
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %endif
 
 Name:           nodejs21
-Version:        21.5.0
+Version:        21.6.1
 Release:        0
 
 # Double DWZ memory limits
@@ -389,10 +389,10 @@ Provides:       bundled(simdjson) = 3.6.2
 Provides:       bundled(ada) = 2.7.4
 
 Provides:       bundled(node-@fastify/busboy) = 2.1.0
-Provides:       bundled(node-acorn) = 8.11.2
-Provides:       bundled(node-acorn-walk) = 8.2.0
+Provides:       bundled(node-acorn) = 8.11.3
+Provides:       bundled(node-acorn-walk) = 8.3.1
 Provides:       bundled(node-cjs-module-lexer) = 1.2.2
-Provides:       bundled(node-corepack) = 0.23.0
+Provides:       bundled(node-corepack) = 0.24.0
 Provides:       bundled(node-minimatch) = 9.0.3
 Provides:       bundled(node-undici) = 5.28.2
 
