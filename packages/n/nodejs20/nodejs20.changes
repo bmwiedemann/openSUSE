@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Feb 12 14:27:04 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- update to 20.11.0:
+  * esm: add import.meta.dirname and import.meta.filename
+  * fs: add c++ fast path for writeFileSync utf8
+  * module: remove useCustomLoadersIfPresent flag
+  * module: bootstrap module loaders in shadow realm
+  * src: add --disable-warning option
+  * src: create per isolate proxy env template
+  * src: make process binding data weak
+  * stream: use Array for Readable buffer
+  * stream: optimize creation
+  * test_runner: adds built in lcov reporter
+  * test_runner: add Date to the supported mock APIs
+  * test_runner, cli: add --test-timeout flag
+
+- c-ares-fixes.patch, fix_ci_tests.patch: refreshed
+
+-------------------------------------------------------------------
 Mon Jan 29 10:04:22 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - fix_ci_tests.patch: disable test_crypto_fips for openssl 3.x,

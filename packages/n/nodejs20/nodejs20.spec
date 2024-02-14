@@ -1,7 +1,7 @@
 #
 # spec file for package nodejs20
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %endif
 
 Name:           nodejs20
-Version:        20.10.0
+Version:        20.11.0
 Release:        0
 
 # Double DWZ memory limits
@@ -321,7 +321,7 @@ Provides:       bundled(icu) = 73.2
 %if ! 0%{with intree_nghttp2}
 BuildRequires:  libnghttp2-devel >= 1.41.0
 %else
-Provides:       bundled(nghttp2) = 1.57.0
+Provides:       bundled(nghttp2) = 1.58.0
 %endif
 
 %if 0%{with valgrind_tests}
@@ -382,22 +382,21 @@ BuildRequires:  pkgconfig(libbrotlidec)
 
 Provides:       bundled(llhttp) = 8.1.1
 Provides:       bundled(ngtcp2) = 0.8.1
-Provides:       bundled(base64) = 0.5.0
+Provides:       bundled(base64) = 0.5.1
 Provides:       bundled(simdutf) = 3.2.18
 
 # bundled url-ada parser, not ada
-Provides:       bundled(ada) = 2.7.2
+Provides:       bundled(ada) = 2.7.4
 
-Provides:       bundled(node-acorn) = 8.10.0
+Provides:       bundled(node-@fastify/busboy) = 2.1.0
+Provides:       bundled(node-acorn) = 8.11.2
 Provides:       bundled(node-acorn-walk) = 8.2.0
-Provides:       bundled(node-balanced-match) = 1.0.2
-Provides:       bundled(node-brace-expansion) = 2.0.1
 Provides:       bundled(node-busboy) = 1.6.0
 Provides:       bundled(node-cjs-module-lexer) = 1.2.2
-Provides:       bundled(node-corepack) = 0.22.0
+Provides:       bundled(node-corepack) = 0.23.0
 Provides:       bundled(node-minimatch) = 9.0.3
 Provides:       bundled(node-streamsearch) = 1.1.0
-Provides:       bundled(node-undici) = 5.26.4
+Provides:       bundled(node-undici) = 5.27.2
 Provides:       bundled(node-undici-types) = 5.25.1
 
 %description
@@ -427,7 +426,7 @@ Requires:       nodejs-common
 Requires:       nodejs20 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
-Provides:       npm(npm) = 10.2.3
+Provides:       npm(npm) = 10.2.4
 Provides:       npm = %{version}
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
@@ -456,8 +455,8 @@ Provides:       bundled(node-builtins) = 5.0.1
 Provides:       bundled(node-cacache) = 18.0.0
 Provides:       bundled(node-chalk) = 5.3.0
 Provides:       bundled(node-chownr) = 2.0.0
-Provides:       bundled(node-ci-info) = 3.9.0
-Provides:       bundled(node-cidr-regex) = 3.1.1
+Provides:       bundled(node-ci-info) = 4.0.0
+Provides:       bundled(node-cidr-regex) = 4.0.3
 Provides:       bundled(node-clean-stack) = 2.2.0
 Provides:       bundled(node-cli-columns) = 4.0.0
 Provides:       bundled(node-cli-table3) = 0.6.3
@@ -488,12 +487,12 @@ Provides:       bundled(node-fastest-levenshtein) = 1.0.16
 Provides:       bundled(node-foreground-child) = 3.1.1
 Provides:       bundled(node-fs-minipass) = 2.1.0
 Provides:       bundled(node-fs-minipass) = 3.0.3
-Provides:       bundled(node-function-bind) = 1.1.1
+Provides:       bundled(node-function-bind) = 1.1.2
 Provides:       bundled(node-gauge) = 5.0.1
 Provides:       bundled(node-glob) = 10.3.10
 Provides:       bundled(node-graceful-fs) = 4.2.11
-Provides:       bundled(node-has) = 1.0.3
 Provides:       bundled(node-has-unicode) = 2.0.1
+Provides:       bundled(node-hasown) = 2.0.0
 Provides:       bundled(node-hosted-git-info) = 7.0.1
 Provides:       bundled(node-http-cache-semantics) = 4.1.1
 Provides:       bundled(node-http-proxy-agent) = 7.0.0
@@ -506,9 +505,9 @@ Provides:       bundled(node-indent-string) = 4.0.0
 Provides:       bundled(node-ini) = 4.1.1
 Provides:       bundled(node-init-package-json) = 6.0.0
 Provides:       bundled(node-ip) = 2.0.0
-Provides:       bundled(node-ip-regex) = 4.3.0
-Provides:       bundled(node-is-cidr) = 4.0.2
-Provides:       bundled(node-is-core-module) = 2.13.0
+Provides:       bundled(node-ip-regex) = 5.0.0
+Provides:       bundled(node-is-cidr) = 5.0.3
+Provides:       bundled(node-is-core-module) = 2.13.1
 Provides:       bundled(node-is-fullwidth-code-point) = 3.0.0
 Provides:       bundled(node-is-lambda) = 1.0.1
 Provides:       bundled(node-isexe) = 2.0.0
@@ -521,16 +520,16 @@ Provides:       bundled(node-just-diff) = 6.0.2
 Provides:       bundled(node-just-diff-apply) = 5.5.0
 Provides:       bundled(node-libnpmaccess) = 8.0.1
 Provides:       bundled(node-libnpmdiff) = 6.0.3
-Provides:       bundled(node-libnpmexec) = 7.0.3
+Provides:       bundled(node-libnpmexec) = 7.0.4
 Provides:       bundled(node-libnpmfund) = 5.0.1
 Provides:       bundled(node-libnpmhook) = 10.0.0
 Provides:       bundled(node-libnpmorg) = 6.0.1
 Provides:       bundled(node-libnpmpack) = 6.0.3
-Provides:       bundled(node-libnpmpublish) = 9.0.1
+Provides:       bundled(node-libnpmpublish) = 9.0.2
 Provides:       bundled(node-libnpmsearch) = 7.0.0
 Provides:       bundled(node-libnpmteam) = 6.0.0
 Provides:       bundled(node-libnpmversion) = 5.0.1
-Provides:       bundled(node-lru-cache) = 10.0.1
+Provides:       bundled(node-lru-cache) = 10.0.2
 Provides:       bundled(node-lru-cache) = 6.0.0
 Provides:       bundled(node-make-fetch-happen) = 13.0.0
 Provides:       bundled(node-minimatch) = 9.0.3
@@ -589,7 +588,7 @@ Provides:       bundled(node-semver) = 7.5.4
 Provides:       bundled(node-set-blocking) = 2.0.0
 Provides:       bundled(node-shebang-command) = 2.0.0
 Provides:       bundled(node-shebang-regex) = 3.0.0
-Provides:       bundled(node-signal-exit) = 4.0.2
+Provides:       bundled(node-signal-exit) = 4.1.0
 Provides:       bundled(node-sigstore) = 2.1.0
 Provides:       bundled(node-smart-buffer) = 4.2.0
 Provides:       bundled(node-socks) = 2.7.1

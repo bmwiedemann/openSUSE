@@ -1,7 +1,7 @@
-Index: node-v20.10.0/test/parallel/test-dns-resolveany-bad-ancount.js
+Index: node-v20.11.0/test/parallel/test-dns-resolveany-bad-ancount.js
 ===================================================================
---- node-v20.10.0.orig/test/parallel/test-dns-resolveany-bad-ancount.js
-+++ node-v20.10.0/test/parallel/test-dns-resolveany-bad-ancount.js
+--- node-v20.11.0.orig/test/parallel/test-dns-resolveany-bad-ancount.js
++++ node-v20.11.0/test/parallel/test-dns-resolveany-bad-ancount.js
 @@ -7,6 +7,8 @@ const dgram = require('dgram');
  const dnsPromises = dns.promises;
  
@@ -11,7 +11,7 @@ Index: node-v20.10.0/test/parallel/test-dns-resolveany-bad-ancount.js
  
  server.on('message', common.mustCall((msg, { address, port }) => {
    const parsed = dnstools.parseDNSPacket(msg);
-@@ -18,25 +20,29 @@ server.on('message', common.mustCall((ms
+@@ -18,16 +20,20 @@ server.on('message', common.mustCall((ms
      questions: parsed.questions,
      answers: { type: 'A', address: '1.2.3.4', ttl: 123, domain },
    });
@@ -34,16 +34,13 @@ Index: node-v20.10.0/test/parallel/test-dns-resolveany-bad-ancount.js
 +  resolverPromises.resolveAny('example.org')
      .then(common.mustNotCall())
      .catch(common.expectsError({
--      code: 'EBADRESP',
-+      code: /^(?:EBADRESP|ETIMEOUT)$/,
-       syscall: 'queryAny',
+       // May return EBADRESP or ETIMEOUT
+@@ -36,7 +42,7 @@ server.bind(0, common.mustCall(async ()
        hostname: 'example.org'
      }));
  
 -  dns.resolveAny('example.org', common.mustCall((err) => {
--    assert.strictEqual(err.code, 'EBADRESP');
 +  resolver.resolveAny('example.org', common.mustCall((err) => {
-+    assert.notStrictEqual(err.code, 'SUCCESS');
+     assert.notStrictEqual(err.code, 'SUCCESS');
      assert.strictEqual(err.syscall, 'queryAny');
      assert.strictEqual(err.hostname, 'example.org');
-     const descriptor = Object.getOwnPropertyDescriptor(err, 'message');

@@ -275,4 +275,25 @@ https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V20.md#20.10.0
   to be fixed soon (bsc#1219152)</comment>
     <requestid>1142218</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>aeb80f6211851ab4cd8a86d5637eb006</srcmd5>
+    <version>20.11.0</version>
+    <time>1707949127</time>
+    <user>anag+factory</user>
+    <comment>- update to 20.11.0:
+  * esm: add import.meta.dirname and import.meta.filename
+  * fs: add c++ fast path for writeFileSync utf8
+  * module: remove useCustomLoadersIfPresent flag
+  * module: bootstrap module loaders in shadow realm
+  * src: add --disable-warning option
+  * src: create per isolate proxy env template
+  * src: make process binding data weak
+  * stream: use Array for Readable buffer
+  * stream: optimize creation
+  * test_runner: adds built in lcov reporter
+  * test_runner: add Date to the supported mock APIs
+  * test_runner, cli: add --test-timeout flag
+- c-ares-fixes.patch, fix_ci_tests.patch: refreshed</comment>
+    <requestid>1146411</requestid>
+  </revision>
 </revisionlist>
