@@ -1866,4 +1866,11 @@ Main motivation is to have the license files in MicroOS also in /usr/, not in /e
     <time>1707812709</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="262" vrev="260">
+    <srcmd5>2b38e39558a1229dcb85bc8a7fcda6cd</srcmd5>
+    <version>unknown</version>
+    <time>1707899038</time>
+    <user>dimstar_suse</user>
+    <comment>Bump the default to java-21-openjdk; this was long missed to be changed</comment>
+  </revision>
 </revisionlist>
