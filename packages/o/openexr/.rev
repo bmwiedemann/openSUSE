@@ -846,4 +846,40 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1108302</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>8c3ff8739a8e54be16ff0b7a9cb2ef7a</srcmd5>
+    <version>3.2.2</version>
+    <time>1707949136</time>
+    <user>anag+factory</user>
+    <comment>- version update to 3.2.2 [bsc#1219498]
+  * [CVE-2023-5841](https://takeonme.org/cves/CVE-2023-5841.html).
+    Note that this bug is present in the C++ API (since v3.1.0), although
+    it is in a routine that is predominantly used for development and
+    testing. It is not likely to appear in production code.
+  * OSS-fuzz [66491](https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=66491)
+    Out-of-memory in openexr_exrcorecheck_fuzzer
+  * OSS-fuzz [66489](https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=66489)
+    Null-dereference in `Imf_3_3::realloc_deepdata`
+- deleted patches
+  - openexr-CVE-2023-5841.patch (upstreamed)
+
+- version update to 3.2.1
+  ## Version 3.2.0 (August 30, 2023)
+  * Zip compression via ``libdeflate``
+  * New camdkit/camdkit-enabled standard attributes
+  * Updated SO versioning policy
+  * Python bindings &amp; PyPI wheel
+  * Miscellaneous improvements
+  ## Version 3.2.1 (September 27, 2023)
+  * Fix for linking statically against an external ``libdeflate``
+  * Fix a compile error with ``OPENEXR_VERSION_HEX``
+  * Fix various compiler warnings 
+  * Pkg-config generation is now on by default for all systems, including Windows
+- modified sources
+  % baselibs.conf
+- added patches
+  fix CVE-2023-5841 [bsc#1219498], heap-based buffer overflow in generic_unpack_deep()
+  + openexr-CVE-2023-5841.patch</comment>
+    <requestid>1146590</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package openexr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,10 @@
 %define prjname      openexr
 # perhaps you want to build against corresponding Imath build
 %define debug_build 0
-%define sonum 30
-%global so_suffix -3_1
+%define sonum 31
+%global so_suffix -3_2
 Name:           openexr
-Version:        3.1.11
+Version:        3.2.2
 Release:        0
 Summary:        Utilities for working with HDR images in OpenEXR format
 License:        BSD-3-Clause
@@ -35,6 +35,7 @@ BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Imath)
+BuildRequires:  pkgconfig(libdeflate)
 BuildRequires:  pkgconfig(zlib)
 Obsoletes:      OpenEXR <= 1.6.1
 Provides:       OpenEXR = %{version}
@@ -136,6 +137,7 @@ License:        BSD-3-Clause
 Group:          Documentation/Other
 Obsoletes:      OpenEXR-doc <= 1.6.1
 Provides:       OpenEXR-doc = %{version}
+BuildArch:      noarch
 
 %description doc
 OpenEXR is a high dynamic-range (HDR) image file format developed by
@@ -159,6 +161,16 @@ export CXXFLAGS="%{optflags} -O0"
 %cmake_install
 
 %check
+# bin tests download test data from internet
+EXCLUDE_REGEX='OpenEXR.bin'
+%ifarch ppc64le
+# bsc#1205885
+EXCLUDE_REGEX="$EXCLUDE_REGEX|testMultiTiledPartThreading"
+%endif
+%ifarch aarch64
+# https://github.com/AcademySoftwareFoundation/openexr/issues/1460
+EXCLUDE_REGEX="$EXCLUDE_REGEX|DWA[AB]Compression"
+%endif
 # test failure on LE: https://github.com/AcademySoftwareFoundation/openexr/issues/1460
 %ifnarch i586 ppc ppc64 s390 s390x
 export LD_LIBRARY_PATH="%{buildroot}/%{_libdir}"
@@ -166,18 +178,8 @@ export LD_LIBRARY_PATH="%{buildroot}/%{_libdir}"
 %if 0%{?suse_version} < 1550
 # HACK - older versions of the ctest macro do not allow passing additional parameters
 %global __ctest %{__ctest} --timeout 3600
-%ctest
-%else
-%ifarch ppc64le
-# bsc#1205885
-EXCLUDE_REGEX='testMultiTiledPartThreading'
-%endif
-%ifarch aarch64
-# https://github.com/AcademySoftwareFoundation/openexr/issues/1460
-EXCLUDE_REGEX='DWA[AB]Compression'
 %endif
 %ctest --exclude-regex "$EXCLUDE_REGEX" --timeout 3600
-%endif
 %endif
 
 %post -n libIex%{so_suffix}-%{sonum} -p /sbin/ldconfig
