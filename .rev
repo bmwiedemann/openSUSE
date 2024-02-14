@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1131012</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b90ec6610b7581a259972c8c2458a065</srcmd5>
+    <version>1.3.4</version>
+    <time>1707949148</time>
+    <user>anag+factory</user>
+    <comment>- Reflow the summary to avoid rpmlint exploding.</comment>
+    <requestid>1146495</requestid>
+  </revision>
 </revisionlist>

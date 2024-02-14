@@ -1,7 +1,7 @@
 #
 # spec file for package python-ubelt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,9 @@
 Name:           python-ubelt
 Version:        1.3.4
 Release:        0
-Summary:        A Python utility belt containing simple tools, a stdlib like feel, and extra batteries
+Summary:        Python utility belt containing simple tools
 License:        Apache-2.0
 URL:            https://github.com/Erotemic/ubelt
-#Source:         https://files.pythonhosted.org/packages/source/u/ubelt/ubelt-%{version}.tar.gz
 Source:         https://github.com/Erotemic/ubelt/archive/refs/tags/v%{version}.tar.gz#/ubelt-%{version}-gh.tar.gz
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
