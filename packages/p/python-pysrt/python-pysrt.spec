@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysrt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pysrt
 Version:        1.1.2
 Release:        0
@@ -24,15 +23,18 @@ Summary:        SubRip (.srt) subtitle parser and writer
 License:        GPL-3.0-only
 URL:            https://github.com/byroot/pysrt
 Source0:        https://files.pythonhosted.org/packages/source/p/pysrt/pysrt-%{version}.tar.gz
-BuildRequires:  %{python_module base}
+# PATCH-FIX-UPSTREAM gh#byroot/pysrt#74946098ce136a5b4b1d5766ca573e999c785686
+Patch0:         use-assertequal.patch
 BuildRequires:  %{python_module chardet}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-chardet
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -41,15 +43,15 @@ pysrt is a python library to search and download subtitles.
 It comes with an easy to use CLI suitable for direct use or cron jobs.
 
 %prep
-%setup -q -n pysrt-%{version}
+%autosetup -p1 -n pysrt-%{version}
 # Remove shebang from non-executable file
 sed -e '1d' -i pysrt/commands.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/srt
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -66,6 +68,6 @@ sed -e '1d' -i pysrt/commands.py
 %doc README.rst
 %python_alternative %{_bindir}/srt
 %{python_sitelib}/pysrt
-%{python_sitelib}/pysrt-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/pysrt-%{version}.dist-info
 
 %changelog

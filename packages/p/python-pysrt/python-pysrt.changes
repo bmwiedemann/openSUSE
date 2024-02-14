@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 14 04:41:27 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch use-assertequal.patch:
+  * Support Python 3.12 by using TestCase.assertEqual().
+- Switch to autosetup and pyproject macros.
+
+-------------------------------------------------------------------
 Tue May  5 22:18:14 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Don't use %python3_only command, but properly use alternatives.

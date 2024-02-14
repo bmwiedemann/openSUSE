@@ -39,4 +39,14 @@
     <comment>- Don't use %python3_only command, but properly use alternatives.</comment>
     <requestid>800527</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>77fd3e08c784d5c5561e3701ee931dab</srcmd5>
+    <version>1.1.2</version>
+    <time>1707949150</time>
+    <user>anag+factory</user>
+    <comment>- Add patch use-assertequal.patch:
+  * Support Python 3.12 by using TestCase.assertEqual().
+- Switch to autosetup and pyproject macros.</comment>
+    <requestid>1146498</requestid>
+  </revision>
 </revisionlist>
