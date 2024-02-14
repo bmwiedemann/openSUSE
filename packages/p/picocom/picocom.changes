@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Feb 14 16:56:45 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Reevaluate sources and add/update bundled()/License: lines.
+
+-------------------------------------------------------------------
+Sun Feb 11 13:34:56 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Change Upstream 
+  * OLD: https://github.com/npat-efault/picocom/
+  * NEW: https://gitlab.com/wsakernel/picocom/
+- Update to version 2023.04
+  https://gitlab.com/wsakernel/picocom/-/releases/2023-04
+  * bugfixes (igncr handling, history handling, memory leaks...).
+  * new parameter to add delay after sent characters.
+    (avoids overflows on the remote side when there is no flow
+    control).
+  * bash completion script.
+  * improved support for macOS and different C libraries.
+  * lots typos fixed in documentation and source code.
+- Create new subpackage for bash-completion
+
+-------------------------------------------------------------------
 Mon Feb  5 20:24:25 UTC 2018 - jengelh@inai.de
 
 - Trim rhetorics from description and compact it.

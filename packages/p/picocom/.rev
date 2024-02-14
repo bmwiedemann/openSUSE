@@ -102,4 +102,13 @@
     escape character. If given picocom will never enter command mode.</comment>
     <requestid>573277</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5abf01326c8201d764535c2f870f0710</srcmd5>
+    <version>2023.04</version>
+    <time>1707949209</time>
+    <user>anag+factory</user>
+    <comment>- Reevaluate sources and add/update bundled()/License: lines.
+- Update to version 2023.04</comment>
+    <requestid>1146619</requestid>
+  </revision>
 </revisionlist>
