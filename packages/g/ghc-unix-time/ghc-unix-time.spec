@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-unix-time
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.4.11
+Version:        0.4.12
 Release:        0
 Summary:        Unix time parser/formatter and utilities
 License:        BSD-3-Clause
