@@ -1,7 +1,7 @@
 #
 # spec file for package python-igwn-auth-utils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 %global srcname igwn-auth-utils
 Name:           python-igwn-auth-utils
-Version:        0.4.0
+Version:        1.1.0
 Release:        0
 Summary:        Auth Utils for International Gravitational-Wave Observatory Network (IGWN)
 License:        BSD-3-Clause
 URL:            https://git.ligo.org/computing/igwn-auth-utils
 Source:         https://files.pythonhosted.org/packages/source/i/%{srcname}/%{srcname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM igwn-auth-utils-mr73-utznow.patch https://git.ligo.org/computing/igwn-auth-utils/-/merge_requests/73
+Patch0:         https://git.ligo.org/computing/igwn-auth-utils/-/merge_requests/73.patch#/igwn-auth-utils-mr73-utznow.patch
+# PATCH-FIX-UPSTREAM igwn-auth-utils-mr76-mock_called_once.patch https://git.ligo.org/computing/igwn-auth-utils/-/merge_requests/76
+Patch1:         https://git.ligo.org/computing/igwn-auth-utils/-/merge_requests/76.patch#/igwn-auth-utils-mr76-mock_called_once.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.3}
 BuildRequires:  %{python_module setuptools}
@@ -58,9 +60,8 @@ This project is primarily aimed at discovering X.509 credentials and
 SciTokens for use with HTTP(S) requests to IGWN-operated services.
 
 %prep
-%setup -q -n %{srcname}-%{version}
+%autosetup -p1 -n %{srcname}-%{version}
 sed -i 's/--color=yes//' pyproject.toml
-sed -i '/"error",/ a \        "ignore:pkg_resources is deprecated as an API:DeprecationWarning",' pyproject.toml
 
 %build
 %pyproject_wheel
@@ -76,6 +77,6 @@ sed -i '/"error",/ a \        "ignore:pkg_resources is deprecated as an API:Depr
 %doc README.md
 %license LICENSE
 %{python_sitelib}/igwn_auth_utils
-%{python_sitelib}/igwn_auth_utils-%{version}*-info
+%{python_sitelib}/igwn_auth_utils-%{version}.dist-info
 
 %changelog

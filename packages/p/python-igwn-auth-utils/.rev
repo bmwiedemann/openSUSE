@@ -32,4 +32,33 @@
 - Ignore setuptools deprecation API</comment>
     <requestid>1076680</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5604cf5b92392efa19bdab637c6385c7</srcmd5>
+    <version>1.1.0</version>
+    <time>1707949176</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.1.0
+  * Support multiple scopes in is_valid_token [!70]
+- Release 1.0.2
+  * Ensure that token=False works on all requests [!67]
+- Release 1.0.1
+  * Fix bug in disabling token auth via function call [!65]
+- Release 1.0.0
+  ## Major changes
+  * Refactor requests auth handling to enable per-request token
+    discovery [!59]
+  ## Other changes:
+  * Allow disabling automatic raise_for_status for Sessions [!52]
+  * Fix keyword argument passing in requests wrappers [!56]
+  * Add issuer keyword to is_valid_token [!57]
+  * Allow deserialising token in is_valid_token [!58]
+  * Add support for Python 3.11 [!61]
+  * Workaround bug in requests 2.14 [!62]
+- Add patches for python 3.12
+  * igwn-auth-utils-mr73-utznow.patch
+    https://git.ligo.org/computing/igwn-auth-utils/-/merge_requests/73
+  * igwn-auth-utils-mr76-mock_called_once.patch
+    https://git.ligo.org/computing/igwn-auth-utils/-/merge_requests/76 (forwarded request 1146556 from bnavigator)</comment>
+    <requestid>1146557</requestid>
+  </revision>
 </revisionlist>

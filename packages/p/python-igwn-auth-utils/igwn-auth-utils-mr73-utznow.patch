@@ -1,0 +1,81 @@
+From 3d716d0faad554fb9f50fc424b8b037c7427ebfa Mon Sep 17 00:00:00 2001
+From: "duncan.macleod" <duncan.macleod@ligo.org>
+Date: Wed, 18 Oct 2023 16:45:06 +0100
+Subject: [PATCH] x509: replace usage of datetime.utcnow()
+
+`utcnow()` is deprecated in favour of `now(UTC)`.
+---
+ igwn_auth_utils/tests/test_x509.py | 12 ++++++------
+ igwn_auth_utils/x509.py            | 11 +++++++++--
+ 2 files changed, 15 insertions(+), 8 deletions(-)
+
+diff --git a/igwn_auth_utils/tests/test_x509.py b/igwn_auth_utils/tests/test_x509.py
+index 6fd2b8f..cad47a7 100644
+--- a/igwn_auth_utils/tests/test_x509.py
++++ b/igwn_auth_utils/tests/test_x509.py
+@@ -7,11 +7,8 @@
+ 
+ __author__ = "Duncan Macleod <duncan.macleod@ligo.org>"
+ 
++import datetime
+ import os
+-from datetime import (
+-    datetime,
+-    timedelta,
+-)
+ from pathlib import Path
+ from unittest import mock
+ 
+@@ -36,14 +33,17 @@ def x509cert(private_key, public_key):
+     name = x509.Name([
+         x509.NameAttribute(NameOID.COMMON_NAME, "test"),
+     ])
+-    now = datetime.utcnow()
++    try:
++        now = datetime.datetime.now(datetime.UTC)
++    except AttributeError:  # python < 3.11
++        now = datetime.datetime.utcnow()
+     return x509.CertificateBuilder(
+         issuer_name=name,
+         subject_name=name,
+         public_key=public_key,
+         serial_number=1000,
+         not_valid_before=now,
+-        not_valid_after=now + timedelta(seconds=86400),
++        not_valid_after=now + datetime.timedelta(seconds=86400),
+     ).sign(private_key, hashes.SHA256(), backend=default_backend())
+ 
+ 
+diff --git a/igwn_auth_utils/x509.py b/igwn_auth_utils/x509.py
+index d5c6a90..6292fff 100644
+--- a/igwn_auth_utils/x509.py
++++ b/igwn_auth_utils/x509.py
+@@ -2,8 +2,8 @@
+ # Copyright 2021 Cardiff University
+ # Distributed under the terms of the BSD-3-Clause license
+ 
++import datetime
+ import os
+-from datetime import datetime
+ from pathlib import Path
+ 
+ from cryptography.x509 import (
+@@ -95,7 +95,14 @@ def is_valid_certificate(cert, timeleft=600):
+ def _timeleft(cert):
+     """Returns the time remaining (in seconds) for a ``cert``
+     """
+-    return (cert.not_valid_after - datetime.utcnow()).total_seconds()
++    expiry = cert.not_valid_after
++    try:
++        now = datetime.datetime.now(datetime.UTC)
++    except AttributeError:  # python < 3.11
++        now = datetime.datetime.utcnow()
++    else:
++        expiry = expiry.astimezone(datetime.UTC)
++    return (expiry - now).total_seconds()
+ 
+ 
+ def _default_cert_path(prefix="x509up_"):
+-- 
+GitLab
+

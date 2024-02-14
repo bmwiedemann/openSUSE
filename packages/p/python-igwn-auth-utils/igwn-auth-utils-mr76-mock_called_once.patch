@@ -1,0 +1,54 @@
+From ad5bb8ce2cdcb3352400c487f4e33cf5eb85fcc7 Mon Sep 17 00:00:00 2001
+From: Duncan Macleod <duncan.macleod@ligo.org>
+Date: Tue, 13 Feb 2024 13:27:37 +0000
+Subject: [PATCH] tests: fix call to mock.called_once_with
+
+need to use builtin assert_called_once_with
+---
+ igwn_auth_utils/tests/test_requests.py | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/igwn_auth_utils/tests/test_requests.py b/igwn_auth_utils/tests/test_requests.py
+index de9428b..5de05eb 100644
+--- a/igwn_auth_utils/tests/test_requests.py
++++ b/igwn_auth_utils/tests/test_requests.py
+@@ -23,6 +23,7 @@ from requests import (
+ 
+ from .. import requests as igwn_requests
+ from ..error import IgwnAuthError
++from ..scitokens import target_audience
+ from .test_scitokens import rtoken  # noqa: F401
+ 
+ SKIP_REQUESTS_NETRC = pytest.mark.skipif(
+@@ -425,15 +426,25 @@ class TestSession:
+             assert sess.auth.audience == session_aud
+             assert sess.auth.scope == session_scope
+ 
++            audience = (
++                request_aud
++                or session_aud
++                or target_audience(
++                    "https://example.com/api",
++                    include_any=False,
++                )
++            )
++
+             # but that the request auth uses any new settings we give it
+             sess.get(
+                 "https://example.com/api",
+                 token_audience=request_aud,
+                 token_scope=request_scope,
+             )
+-            assert find_scitoken.called_once_with(
+-                audience=request_aud or session_aud,
+-                scope=request_scope or session_scope,
++            find_scitoken.assert_called_once_with(
++                audience,
++                request_scope or session_scope,
++                issuer=None,
+             )
+ 
+     @mock.patch("igwn_auth_utils.requests.find_scitoken", return_value=None)
+-- 
+GitLab
+
