@@ -1,7 +1,7 @@
 #
-# spec file for package notify-sharp
+# spec file for package notify-sharp3
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# This package installs in /usr/lib and .pc file goes to /usr/share/pkgconfig
-# Define _libexecdir for <= 1110
+
 %if 0%{?suse_version} <= 1110
 %define _libexecdir %{_prefix}/lib
 %endif
 
 Name:           notify-sharp3
 %define _name   notify-sharp
-Url:            https://www.meebey.net/projects/notify-sharp/
+URL:            https://www.meebey.net/projects/notify-sharp/
 Version:        3.0.3
 Release:        0
 License:        MIT
 Group:          Development/Libraries/Other
 Summary:        A C# client implementation for Desktop Notifications
 Source:         https://www.meebey.net/projects/notify-sharp/downloads/%{_name}-%{version}.tar.gz
-Patch:          notify-sharp-use_dbussharp_2.pc.patch
+Patch0:         notify-sharp-use_dbussharp_2.pc.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 BuildRequires:  autoconf
@@ -77,7 +76,7 @@ a short period of time.
 
 %prep
 %setup -q -n %{_name}-%{version}
-%patch -p1
+%patch0 -p1
 
 %build
 NOCONFIGURE=1 autoreconf -fi

@@ -7,4 +7,12 @@
     <comment>Introduction of notify-sharp3</comment>
     <requestid>308730</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f60f47674df7fdfffd9aa0f990d5fea5</srcmd5>
+    <version>3.0.3</version>
+    <time>1707949207</time>
+    <user>anag+factory</user>
+    <comment>Fix build with RPM 4.19: unnumbered patches are no longer supported. (forwarded request 1123809 from dimstar)</comment>
+    <requestid>1146617</requestid>
+  </revision>
 </revisionlist>
