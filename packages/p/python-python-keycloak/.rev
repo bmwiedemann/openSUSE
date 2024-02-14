@@ -15,4 +15,41 @@
     <comment></comment>
     <requestid>1042917</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fd8d44f213c40a250b6873a5ae9da3bf</srcmd5>
+    <version>3.7.0</version>
+    <time>1707949147</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.7.0:
+  * add KeycloakAdmin.get_idp()
+  * Update dynamic client using registration access token
+  * add an optional search criteria to the get_realm_roles function
+  * added KeycloakAdmin.update_client_authz_resource()
+  * Implement missing admin method create_client_authz_scope_based_permission()
+    and create_client_authz_policy()
+  * Add query to get users group method and permit pagination
+  * Changes the exchange token API
+  * do not swap realm for user_realm when logging in with a client service
+    account
+  * Fixes `Authorization.load_config` breaking if a scope based permission
+    is linked with anything other than a role based policy.
+  * Add get and delete methods for client authz resources
+  * loose requests pgk and remove urllib3 as dependency
+  * Check if _s exists in ConnectionManager before deleting it
+  * deprecation warnings in keycloak_admin.py
+  * Add UMA policy management and permission tickets
+  * add initial access token support and policy delete method
+  * Check if applyPolicies exists in the config
+  * implement cache clearing API
+  * get_group_by_path uses Keycloak API to load
+  * add Keycloak UMA client
+  * update header if token is given
+  * init KeycloakAdmin with token
+  * added default realm roles handlers
+  * fix testing create_client_authz_scopes parameters
+  * option for enabling users
+  * helping functions for disabling users
+- Add patch fix-version.patch:</comment>
+    <requestid>1146492</requestid>
+  </revision>
 </revisionlist>

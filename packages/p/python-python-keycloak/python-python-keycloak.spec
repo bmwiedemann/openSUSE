@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-python-keycloak
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,29 @@
 
 
 %global modname python-keycloak
-%define skip_python2 1
 Name:           python-%{modname}
-Version:        2.6.0
+Version:        3.7.0
 Release:        0
 Summary:        Python package providing access to the Keycloak API
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/marcospereirampj/python-keycloak
-Source:         https://files.pythonhosted.org/packages/source/p/python-keycloak/%{modname}-%{version}.tar.gz
+Source:         https://github.com/marcospereirampj/python-keycloak/archive/refs/tags/v%{version}.tar.gz#/python-keycloak-%{version}.tar.gz
+Patch0:         fix-version.patch
 BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module deprecation}
+BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module httmock}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-jose}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-deprecation
 Requires:       python-python-jose >= 1.4.0
 Requires:       python-requests >= 2.20.0
-Requires:       python-setuptools
+Requires:       python-requests-toolbelt
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,15 +57,19 @@ Python package providing access to the Keycloak API
 %fdupes %{buildroot}
 
 %check
-%pyunittest discover -v
+# Certain parts of the testsuite requiring a running keycloak service. However
+# the code is absolutely dependant on these variables being in the environment
+. tox.env
+export KEYCLOAK_HOST=localhost
+export KEYCLOAK_ADMIN KEYCLOAK_ADMIN_PASSWORD KEYCLOAK_PORT
+%pytest --ignore tests/test_keycloak_admin.py --ignore tests/test_keycloak_openid.py --ignore tests/test_keycloak_uma.py
 
 %files %{python_files}
 %doc README.md
 %doc %{python_sitelib}/CHANGELOG.md
 %doc %{python_sitelib}/CONTRIBUTING.md
-%doc %{python_sitelib}/CODEOWNERS
 %license %{python_sitelib}/LICENSE
 %{python_sitelib}/keycloak
-%{python_sitelib}/python_keycloak-%{version}*-info
+%{python_sitelib}/python_keycloak-%{version}.dist-info
 
 %changelog
