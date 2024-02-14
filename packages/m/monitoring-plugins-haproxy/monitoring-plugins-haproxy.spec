@@ -1,7 +1,7 @@
 #
 # spec file for package monitoring-plugins-haproxy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ Requires:       perl(Data::Dumper)
 Requires:       perl(File::Basename)
 Requires:       perl(HTTP::Request)
 Requires:       perl(HTTP::Status)
+Requires:       perl(LWP::Protocol::https)
 Requires:       perl(LWP::UserAgent)
 Requires:       perl(Locale::gettext)
 Requires:       perl(Nagios::Plugin)
@@ -50,6 +51,7 @@ The plugin checks HAProxy statistic url (csv) and gets UP and DOWN services.
 install -m644 %{SOURCE1} LICENSE
 
 %build
+
 #
 %install
 install -D -m755 check_haproxy.pl %{buildroot}%{nagios_plugindir}/check_haproxy.pl

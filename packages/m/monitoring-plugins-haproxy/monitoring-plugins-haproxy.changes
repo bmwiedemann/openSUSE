@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  7 12:10:28 CET 2024 - ro@suse.de
+
+- add requires for perl(LWP::Protocol::https) as the default
+  config uses https
+
+-------------------------------------------------------------------
 Thu May 20 15:01:44 UTC 2021 - lars@linux-schulserver.de - 1.2
 
 - Build require icinga2-bin and icinga2-common to get rid of owning 
