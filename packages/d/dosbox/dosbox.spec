@@ -1,7 +1,7 @@
 #
 # spec file for package dosbox
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dosbox
-Version:        0.80.1
+Version:        0.81.0
 Release:        0
 Summary:        DOS/x86 emulator to run old DOS games
 License:        GPL-2.0-or-later
@@ -30,6 +30,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  python3 >= 3.7
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(SDL2_net)
 BuildRequires:  pkgconfig(alsa)
@@ -45,7 +46,7 @@ BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(slirp) >= 4.7.0
 BuildRequires:  pkgconfig(speexdsp)
 BuildRequires:  pkgconfig(xi)
-BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(zlib-ng)
 Recommends:     fluid-soundfont-gm
 
 %description
@@ -68,12 +69,13 @@ https://github.com/dosbox-staging/dosbox-staging#readme
 %install
 %meson_install
 %fdupes %{buildroot}
+rm -r %{buildroot}%{_datadir}/licenses
 
 %check
 %meson_test
 
 %files
-%license COPYING
+%license LICENSE
 %doc AUTHORS README README.md docs/README.video THANKS
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}

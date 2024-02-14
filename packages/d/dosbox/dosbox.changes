@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 14 12:14:32 UTC 2024 - Илья Индиго <13ilya@gmail.com>
+
+- Updated to dosbox-staging 0.81.0
+  * Changed files dosbox-staging-config.patch and dosbox-staging-name.patch.
+  * Added python3 >= 3.7 and pkgconfig(zlib-ng) dependencies.
+  * https://dosbox-staging.github.io/releases/release-notes/0.81.0/
+
+-------------------------------------------------------------------
 Sat Jan  7 10:59:45 UTC 2023 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to dosbox-staging 0.80.1
@@ -6,7 +14,7 @@ Sat Jan  7 10:59:45 UTC 2023 - Илья Индиго <ilya@ilya.cf>
   * Replaced dosbox-staging-0.80.0-name.patch by dosbox-staging-name.patch.
   * Added pkgconfig(gl) dependencies.
   * Removed Provides/Obsoletes instructions for dosbox-translations subpackage.
-  * https://dosbox-staging.github.io/v0-80-1/#changes 
+  * https://dosbox-staging.github.io/releases/release-notes/0.80.1/
 
 -------------------------------------------------------------------
 Wed Jan  4 06:57:54 UTC 2023 - Илья Индиго <ilya@ilya.cf>
@@ -15,7 +23,7 @@ Wed Jan  4 06:57:54 UTC 2023 - Илья Индиго <ilya@ilya.cf>
   * Replaced dosbox-staging-0.79.1-config.patch by dosbox-staging-0.80.0-config.patch.
   * Replaced dosbox-staging-0.79.1-name.patch by dosbox-staging-0.80.0-name.patch.
   * Added pkgconfig(SDL2_image), pkgconfig(xi) dependencies.
-  * https://dosbox-staging.github.io/v0-80-0/#changes
+  * https://dosbox-staging.github.io/releases/release-notes/0.80.0/
 
 -------------------------------------------------------------------
 Mon Oct 24 07:11:24 UTC 2022 - Илья Индиго <ilya@ilya.cf>
@@ -36,8 +44,8 @@ Sat Oct 15 23:12:46 UTC 2022 - Илья Индиго <ilya@ilya.cf>
   * Removed dosbox-translations subpackage and added Provides/Obsoletes instructions.
   * Added fdupes, pkgconfig(iir), pkgconfig(slirp) dependencies.
   * Removed irrelevant instructions and enabled fluidsynth and mt32emu for Leap.
-  * https://dosbox-staging.github.io/v0-79-0/#changes
-  * https://dosbox-staging.github.io/v0-79-1/#changes
+  * https://dosbox-staging.github.io/releases/release-notes/0.79.0/
+  * https://dosbox-staging.github.io/releases/release-notes/0.79.1/
 
 -------------------------------------------------------------------
 Tue May 24 15:14:09 UTC 2022 - Илья Индиго <ilya@ilya.cf>
@@ -53,8 +61,8 @@ Sat May 21 13:23:30 UTC 2022 - Илья Индиго <ilya@ilya.cf>
   * Replaced dosbox-staging-0.77.1-name.patch by dosbox-staging-0.78.1-name.patch.
   * Added BuildRequires: pkgconfig(gmock) dependency.
   * Disabled fluidsynth and mt32emu dependency for Leap.
-  * https://dosbox-staging.github.io/v0-78-0/#changes
-  * https://dosbox-staging.github.io/v0-78-1/#changes
+  * https://dosbox-staging.github.io/releases/release-notes/0.78.0/
+  * https://dosbox-staging.github.io/releases/release-notes/0.78.1/
 
 -------------------------------------------------------------------
 Sun Oct  3 17:48:00 UTC 2021 - Илья Индиго <ilya@ilya.cf>
@@ -67,7 +75,7 @@ Sun Oct  3 17:48:00 UTC 2021 - Илья Индиго <ilya@ilya.cf>
   * Addad translations subpackage.
   * Disabled "gtest soft_limiter" test for 32-bit architectures and Leap.
   * Added support: Opus, FLAC, MT32, GM, GUS, Raw mouse input and more.
-  * https://github.com/dosbox-staging/dosbox-staging#readme
+  * https://dosbox-staging.github.io/releases/release-notes/0.77.1/
 
 -------------------------------------------------------------------
 Fri Apr  9 12:51:28 UTC 2021 - Илья Индиго <ilya@ilya.cf>

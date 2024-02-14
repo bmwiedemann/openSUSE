@@ -355,4 +355,15 @@
   * https://dosbox-staging.github.io/v0-80-1/#changes</comment>
     <requestid>1056758</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>45c51c821aebf954f248ad1959b36461</srcmd5>
+    <version>0.81.0</version>
+    <time>1707949184</time>
+    <user>anag+factory</user>
+    <comment>- Updated to dosbox-staging 0.81.0
+  * Changed files dosbox-staging-config.patch and dosbox-staging-name.patch.
+  * Added python3 &gt;= 3.7 and pkgconfig(zlib-ng) dependencies.
+  * https://dosbox-staging.github.io/releases/release-notes/0.81.0/</comment>
+    <requestid>1146567</requestid>
+  </revision>
 </revisionlist>
