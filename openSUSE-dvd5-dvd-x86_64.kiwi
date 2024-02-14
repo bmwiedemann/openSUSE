@@ -905,8 +905,9 @@
       <repopackage name="issue-generator"/>
       <repopackage name="iw"/>
       <repopackage name="jack-dbus"/>
-      <repopackage name="java-11-openjdk"/>
-      <repopackage name="java-11-openjdk-headless"/>
+      <repopackage name="java-21-openjdk"/>
+      <repopackage name="java-21-openjdk-devel"/>
+      <repopackage name="java-21-openjdk-headless"/>
       <repopackage name="javapackages-filesystem"/>
       <repopackage name="javapackages-tools"/>
       <repopackage name="jfsutils"/>
@@ -3019,6 +3020,7 @@
       <repopackage name="mozilla-nspr"/>
       <repopackage name="mozilla-nss"/>
       <repopackage name="mozilla-nss-certs"/>
+      <repopackage name="mozilla-nss-sysinit"/>
       <repopackage name="mozilla-nss-tools"/>
       <repopackage name="MozillaFirefox"/>
       <repopackage name="MozillaFirefox-branding-openSUSE"/>
