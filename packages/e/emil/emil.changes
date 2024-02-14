@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 14 16:56:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop source URLs: the original site is no longer operational
+  (one step away from package drop).
+
+-------------------------------------------------------------------
+Mon Nov  6 16:00:34 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Fri Dec  2 12:43:58 UTC 2011 - coolo@suse.com
 
 - add automake as buildrequire to avoid implicit dependency

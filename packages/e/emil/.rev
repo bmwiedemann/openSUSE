@@ -108,4 +108,13 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="17" vrev="969">
+    <srcmd5>eb30354ece4153a5f16318d0519714cc</srcmd5>
+    <version>2.1.0beta9</version>
+    <time>1707949211</time>
+    <user>anag+factory</user>
+    <comment>- Drop source URLs: the original site is no longer operational
+  (one step away from package drop). (forwarded request 1146615 from dimstar)</comment>
+    <requestid>1146620</requestid>
+  </revision>
 </revisionlist>
