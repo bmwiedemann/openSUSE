@@ -31,7 +31,8 @@ BuildRequires:  skelcd-control-openSUSE
 BuildRequires:  skelcd-openSUSE
 Suggests:       branding-openSUSE
 Suggests:       distribution-logos-openSUSE-Tumbleweed
-Suggests:       java-11-openjdk
+Suggests:       java-21-openjdk
+Suggests:       java-21-openjdk-devel
 Suggests:       mariadb
 Suggests:       mariadb-client
 Suggests:       openSUSE-build-key
