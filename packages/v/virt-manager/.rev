@@ -1974,4 +1974,12 @@
     <comment>Handle text mode case where vm-install no longer exists on the host.</comment>
     <requestid>1145533</requestid>
   </revision>
+  <revision rev="250" vrev="16">
+    <srcmd5>1e077814a00fc7df88daa558ef5682bd</srcmd5>
+    <version>4.1.0</version>
+    <time>1708027123</time>
+    <user>anag+factory</user>
+    <comment>Fixes bsc#1219791 - [virt-manager][aarch64] Error launching details: name 'log' is not defined</comment>
+    <requestid>1146269</requestid>
+  </revision>
 </revisionlist>

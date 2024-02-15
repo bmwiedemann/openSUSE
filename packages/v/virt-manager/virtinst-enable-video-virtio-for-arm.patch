@@ -157,7 +157,15 @@ Index: virt-manager-4.1.0/virtinst/devices/video.py
 ===================================================================
 --- virt-manager-4.1.0.orig/virtinst/devices/video.py
 +++ virt-manager-4.1.0/virtinst/devices/video.py
-@@ -32,8 +32,11 @@ class DeviceVideo(Device):
+@@ -6,6 +6,7 @@
+ 
+ from .device import Device
+ from ..xmlbuilder import XMLProperty
++from ..logger import log
+ 
+ 
+ class DeviceVideo(Device):
+@@ -32,8 +33,11 @@ class DeviceVideo(Device):
          if guest.os.is_pseries():
              return "vga"
          if guest.os.is_arm_machvirt():

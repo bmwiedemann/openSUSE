@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 12 10:50:32 MST 2024 - carnold@suse.com
+
+- bsc#1219791 - [virt-manager][aarch64] Error launching details:
+  name 'log' is not defined
+  virtinst-enable-video-virtio-for-arm.patch
+
+-------------------------------------------------------------------
 Fri Feb  9 14:13:18 MST 2024 - carnold@suse.com
 
 - Handle case where vm-install no longer exists on the host. This
