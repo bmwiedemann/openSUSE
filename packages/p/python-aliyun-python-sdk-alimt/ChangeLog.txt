@@ -1,0 +1,69 @@
+2023-04-11 Version: 3.2.0
+- Add image batch translate API.
+
+2021-11-15 Version: 3.1.1
+- Add Ext parameter to image translation API.
+
+2021-01-27 Version: 3.0.30
+- Add New BatchTranslate API.
+
+2021-01-27 Version: 3.0.29
+- Add New BatchTranslate API.
+
+2020-11-25 Version: 3.0.28
+- Add extension field for image translation.
+
+2020-11-20 Version: 3.0.27
+- Add a new interface for asynchronous image translation.
+
+2020-11-16 Version: 3.0.26
+- Add a new interface for asynchronous image translation.
+
+2020-10-19 Version: 3.0.25
+- Add a new interface for asynchronous image translation.
+
+2020-09-21 Version: 3.0.24
+- Interface add column wordCount.
+
+2020-09-17 Version: 3.0.23
+- GetTitleIntelligence add interface.
+
+2020-08-13 Version: 3.0.22
+- GetImageTranslate add column orc.
+
+2020-08-07 Version: 3.0.21
+- GetTitleDiagnose GetTitleGenerate GetImageTranslate supported.
+
+2020-08-07 Version: 3.0.20
+- GetTitleDiagnose GetTitleGenerate GetImageTranslate supported.
+
+2020-04-29 Version: 1.1.1
+- Support Document Translation.
+- Support Lanuage Detection.
+
+2020-03-11 Version: 1.1.0
+- Support certificate translate.
+
+2020-03-11 Version: 1.1.0
+- Support certificate translate.
+
+2020-02-27 Version: 1.0.8
+- Add translate api.
+
+2019-01-08 Version: 1.0.4
+1, Python sdk config bug fix.
+
+2018-12-27 Version: 1.0.3
+1, fix php sdk
+
+2018-11-22 Version: 1.0.2
+1, Increase the scene field
+
+2018-11-16 Version: 1.0.1
+1, update version
+
+2018-11-16 Version: 1.0.0
+1, The Machine Translation API released two versions as follows:
+2, Universal version API release
+3, E-commerce version API release
+

@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Wed May 17 10:34:59 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 3.2.0
+  + For detailed information about changes see the
+    ChangeLog.txt file provided with this package
+
+-------------------------------------------------------------------
+Fri Feb 11 08:51:00 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 3.1.1
+  + For detailed information about changes see the
+    ChangeLog.txt file provided with this package
+
+-------------------------------------------------------------------
+Wed Feb 17 15:16:11 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
+
+- Do not build for Python 2 distros 15 and higher
+
+-------------------------------------------------------------------
+Sat Feb 13 14:18:22 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 3.0.30
+  + For detailed information about changes see the
+    ChangeLog.txt file provided with this package
+- Add ChangeLog.txt from upstream git
+- Drop python-devel from BuildRequires
+- Drop obsolete Group field
+- Use LICENSE file from upstream tarball
+
+-------------------------------------------------------------------
+Mon Aug 10 15:27:51 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 3.0.21
