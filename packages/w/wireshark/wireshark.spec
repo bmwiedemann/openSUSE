@@ -28,7 +28,7 @@
 %bcond_with lz4
 %endif
 Name:           wireshark
-Version:        4.2.2
+Version:        4.2.3
 Release:        0
 Summary:        A Network Traffic Analyser
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -198,11 +198,16 @@ echo "`grep %{name}-%{version}.tar.xz %{SOURCE2} | grep SHA256 | head -n1 | cut 
 %install
 %cmake_install
 cmake --install build --component Development --prefix %{buildroot}%{_prefix}
-# removing doc files that are not needed`
-rm %{buildroot}/usr/share/doc/wireshark/COPYING
-rm %{buildroot}/usr/share/doc/wireshark/README.xml-output
-rm %{buildroot}/usr/share/doc/wireshark/pdml2html.xsl
-rm %{buildroot}/usr/share/doc/wireshark/ws.css
+
+cmakedocdir=/usr/share/doc/packages/wireshark
+if [ -d  %{buildroot}/usr/share/doc/wireshark ]; then
+   cmakedocdir=/usr/share/doc/wireshark
+fi
+# removing doc files that are not needed
+rm %{buildroot}/${cmakedocdir}/COPYING
+rm %{buildroot}/${cmakedocdir}/README.xml-output
+rm %{buildroot}/${cmakedocdir}/pdml2html.xsl
+rm %{buildroot}/${cmakedocdir}/ws.css
 
 install -d -m 0755 %{buildroot}%{_sysconfdir}
 install -d -m 0755 %{buildroot}%{_mandir}/man1/
@@ -215,7 +220,7 @@ sed -i -e 's|Exec=wireshark %f|Exec=xdg-su -c wireshark %f|g' %{buildroot}%{_dat
 %suse_update_desktop_file %{org_name}
 %suse_update_desktop_file %{org_name}-su
 
-rm -f %{buildroot}%{_datadir}/doc/wireshark/*.html
+rm -f %{buildroot}${cmakedocdir}/*.html
 
 %pre
 getent group wireshark >/dev/null || groupadd -r wireshark
