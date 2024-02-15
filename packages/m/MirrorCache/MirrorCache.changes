@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 08 10:05:38 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.071:
+  * Add rollout tracking for iso and repo projects (#451)
+  * Allow redirects in MirrorFileCheck task (#450)
+  * Add timeout for hashes import job (#449)
+  * Adjust regex for folder mirrorlist (#449)
+
+-------------------------------------------------------------------
 Thu Dec 07 09:00:51 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.070:
