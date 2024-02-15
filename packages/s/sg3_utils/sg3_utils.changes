@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 13 17:23:55 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Fix missing SCSI_MODEL and other fields for "sg_inq --export"
+  (bsc#1219874)
+
+-------------------------------------------------------------------
 Tue Jan  9 21:19:11 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Fix spurious warning for non-SCSI devices (boo#1218666)

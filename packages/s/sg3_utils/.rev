@@ -683,4 +683,13 @@ Show aggregation and make compatible with Fedora declaration (forwarded request 
     <comment>- Fix spurious warning for non-SCSI devices (boo#1218666)</comment>
     <requestid>1137906</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>12320682224d03d2b96273cea2a3c2bd</srcmd5>
+    <version>1.48+8.37ca384</version>
+    <time>1708027127</time>
+    <user>anag+factory</user>
+    <comment>- Fix missing SCSI_MODEL and other fields for &quot;sg_inq --export&quot;
+  (bsc#1219874)</comment>
+    <requestid>1146464</requestid>
+  </revision>
 </revisionlist>
