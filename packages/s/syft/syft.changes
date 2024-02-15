@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Feb 15 06:10:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.105.0:
+  * Survive indexing dead symlinks (#2645)
+  * fix considering base path when ignoring known bad unix paths
+    (#2644)
+  * test for field conventions in json schema (#2642)
+  * feat: Add Wordpress cataloger (#2218)
+  * rename binary cataloger to be more unique (#2633)
+  * fix: update runner size to use larger HD for codeql (#2641)
+  * chore(deps): update tools to latest versions (#2616)
+  * chore(deps): bump github/codeql-action from 3.24.0 to 3.24.1
+    (#2638)
+  * chore(deps): bump dawidd6/action-homebrew-bump-formula (#2639)
+  * chore(deps): bump modernc.org/sqlite from 1.29.0 to 1.29.1
+    (#2640)
+  * fix: add BOMRef to CycloneDX OS Component (#2634)
+  * chore(deps): bump github.com/saferwall/pe from 1.5.0 to 1.5.2
+    (#2629)
+  * chore(deps): bump modernc.org/sqlite from 1.28.0 to 1.29.0
+    (#2630)
+  * fix getting union reader for sif images (#2631)
+  * chore(deps): bump golang.org/x/net from 0.20.0 to 0.21.0
+    (#2607)
+  * chore(deps): bump github.com/saferwall/pe from 1.4.8 to 1.5.0
+    (#2625)
+  * fix: ensure version output to stdout (#2621)
+  * Guess go main module version based on binary contents (#2608)
+  * chore(deps): update stereoscope to
+    681f6715b0e35686d6e6f40bce109176de1ee274 (#2617)
+  * fix readme around templating options (#2612)
+  * suppress executable parsing issues (#2614)
+  * chore: update license list, cpe dictionary (#2620)
+  * chore(deps): update tools to latest versions (#2606)
+
+-------------------------------------------------------------------
 Thu Feb 08 06:37:11 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.104.0:
