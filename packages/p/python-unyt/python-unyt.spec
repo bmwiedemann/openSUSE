@@ -1,7 +1,7 @@
 #
 # spec file for package python-unyt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,29 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-unyt
-Version:        2.9.5
+Version:        3.0.1
 Release:        0
 Summary:        A package for handling numpy arrays with units
 License:        BSD-3-Clause
 URL:            https://github.com/yt-project/unyt
 Source:         https://files.pythonhosted.org/packages/source/u/unyt/unyt-%{version}.tar.gz
-BuildRequires:  %{python_module numpy >= 1.17.5}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module sympy >= 1.5}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.17.5
+# SECTION test
+BuildRequires:  %{python_module dask-array}
+BuildRequires:  %{python_module dask-diagnostics}
+BuildRequires:  %{python_module numpy >= 1.19.3}
+BuildRequires:  %{python_module packaging >= 20.9}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module sympy >= 1.7}
+# /SECTION
+Requires:       python-numpy >= 1.19.3
 Requires:       python-packaging > 20.9
-Requires:       python-sympy >= 1.5
+Requires:       python-sympy >= 1.7
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,22 +54,23 @@ priori*.
 
 %prep
 %setup -q -n unyt-%{version}
+sed -i 's/--color=yes//' pyproject.toml
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # Two old registry tests requires fixture data not provided in tarball
-%pytest unyt/tests -k 'not (test_old_registry_json or test_old_registry_multiple_load)'
+%pytest
 
 %files %{python_files}
 %doc *.rst
 %license LICENSE
 %{python_sitelib}/unyt
-%{python_sitelib}/unyt-%{version}*-info
+%{python_sitelib}/unyt-%{version}.dist-info
 
 %changelog

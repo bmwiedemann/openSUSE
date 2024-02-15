@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed Feb 14 21:33:26 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.0.1
+  * BUG: fix backward compatibility for calling np.histogram with
+    implicit range units by @neutrinoceros in #466
+  * BUG: fix an issue where array functions would raise
+    UnitConsistencyError on unyt arrays using non-default unit
+    registries by @neutrinoceros in #463
+  * TST: minimize build time in tox runs by @neutrinoceros in #426
+  * BUG: fix an issue where array functions would crash
+    (AttributeError) when passed non-ndarray array like objects
+    (e.g. Python lists) by @neutrinoceros in #464
+- Release 3.0.0
+  * This new major release of unyt fixes a number of issues and
+    adds a number of new features. Major contributions include:
+  * Support for Python 3.8 has been dropped.
+  * Support for Python 3.12 has been added.
+  * Support for NumPy <1.19.3 has been dropped.
+  * Support for SymPy <1.7 has been dropped.
+  * NEP 18 support
+  * A new unyt_dask_array class, which implements a subclass of
+    standard dask arrays with units attached, has been added (PR
+    #185). See :ref:`dask` for more details. Thank you to Chris
+    Havlin (@chrishavlin on Github) for the contribution.
+  * A number of new metric and non-metric units have been added in
+    PR #441. Thank you to John ZuHone (@jzuhone on GitHub) for the
+    contribution.
+  * A number of common values for the solar metallicity found in
+    the literature have been added as new metallicity units (PR
+    #315). See :ref:`metal_conversions` for more details. Thank you
+    to John ZuHone (@jzuhone on GitHub) for the contribution.
+  * The "liter" unit has been added (PR #305). Thank you to Nathan
+    Goldbaum (@ngoldbaum on GitHub) for the contribution.
+  * The following common systems engineering units for energy have
+    been added: MMBTU, therm, quad, and Wh (PR #294). Thank you to
+    Sam Dotson (@samgdotson on GitHub) for the contribution.
+  * The @returns decorator (documented in :ref:`checking_units`)
+    now allows dimension-checking of multiple return values (PR
+    #435). Thank you to Daniel Bates (@db434 on GitHub) for the
+    contribution.
+  * A fix for for the LaTeX representation of Planck units (PR
+    #379). Thank you to Peter Hayman (@haymanpf on GitHub) for the
+    contribution.
+  * A fix for a bug that prevented the conversion of dimensionless
+    arrays to their corresponding AstroPy Quantities (PR #437).
+    Thank you to Clément Robert (@neutrinoceros on GitHub) for the
+    contribution.
+  * A fix for a bug in subtraction of temperature quantities that
+    resulted in degC units being returned instead of delta_degC
+    units (PR #413). Thank you to Clément Robert (@neutrinoceros on
+    GitHub) for the contribution.
+  * Fixes for issues with the comparison of temperature quantities
+    (PR #408 and PR #412). Thank you to Clément Robert
+    (@neutrinoceros on GitHub) for the contribution.
+  * Support for versions of NumPy < 1.19 has been dropped in this
+    version (PR #403). Thank you to Clément Robert (@neutrinoceros
+    on GitHub) for the contribution.
+  * Support NumPy 2.0
+
+-------------------------------------------------------------------
 Wed May 31 08:21:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9.5:
