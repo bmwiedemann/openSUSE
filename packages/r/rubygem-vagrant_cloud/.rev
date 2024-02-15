@@ -90,4 +90,12 @@ _NOTE_: This release includes breaking changes and is not backwards compatible
     <comment>Build gem for all Ruby versions</comment>
     <requestid>943728</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>029c047dbd1ec9bcb0ecd1027a2f68e2</srcmd5>
+    <version>3.1.1</version>
+    <time>1708027180</time>
+    <user>anag+factory</user>
+    <comment>update to 3.1.1</comment>
+    <requestid>1145696</requestid>
+  </revision>
 </revisionlist>

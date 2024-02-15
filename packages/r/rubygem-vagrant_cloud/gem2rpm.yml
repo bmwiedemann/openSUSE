@@ -25,7 +25,8 @@
 # :post_patch:
 #   if you need to fiddle with the source dir before rebuilding the gem
 # ## used by gem2rpm
-# :sources:
+:sources:
+  - vagrant_cloud-3.1.1.gem.sha256
 # - foo.desktop
 # - bar.desktop
 # :gem_install_args: '....'

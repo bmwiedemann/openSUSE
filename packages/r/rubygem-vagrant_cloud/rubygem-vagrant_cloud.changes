@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb 10 11:35:32 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.1.1:
+  * Update path prefixing behavior on request [GH-85]
+
+- update to 3.1.0:
+  * Add support for architecture in providers [GH-82]
+
+-------------------------------------------------------------------
 Tue Jan  4 10:06:10 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - Build gem for all Ruby versions
