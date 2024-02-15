@@ -71,18 +71,14 @@ Bash command-line completion support for %{name}.
 %install
 %{cargo_install}
 
-mkdir -p %{buildroot}%{_datadir}/zsh/site-functions/
-mkdir -p %{buildroot}%{_datadir}/bash-completion/completions/
-mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d/
-
 # Zsh completion
-install -Dpm644 gen/completions/_sd %{buildroot}%{_datadir}/zsh/site-functions/
+install -Dpm644 -T gen/completions/_sd %{buildroot}%{_datadir}/zsh/site-functions/_sd
 
 # Fish completion
-install -Dpm644 gen/completions/sd.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/sd.fish
+install -Dpm644 -T gen/completions/sd.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/sd.fish
 
 # Bash completion
-install -Dpm644 gen/completions/sd.bash %{buildroot}%{_datadir}/bash-completion/completions/sd
+install -Dpm644 -T gen/completions/sd.bash %{buildroot}%{_datadir}/bash-completion/completions/sd
 
 %files
 %license LICENSE

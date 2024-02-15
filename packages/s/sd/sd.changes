@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  8 01:15:11 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Cleanup install section. No need to use mkdir when `-T` flag exists.
+
+-------------------------------------------------------------------
 Tue Feb  6 14:05:58 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 1.0.0+g0:
