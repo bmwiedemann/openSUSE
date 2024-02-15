@@ -70,6 +70,8 @@ cargo test
 %dir %{_sysconfdir}/mdevctl.d
 %dir %{_prefix}/lib/mdevctl
 %dir %{_prefix}/lib/mdevctl/scripts.d
+%dir %{_prefix}/lib/mdevctl/scripts.d/callouts
+%dir %{_prefix}/lib/mdevctl/scripts.d/notifiers
 %{_mandir}/man8/mdevctl.8%{?ext_man}
 %{_mandir}/man8/lsmdev.8%{?ext_man}
 %{_datadir}/bash-completion/completions/mdevctl

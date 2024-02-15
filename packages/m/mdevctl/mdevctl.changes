@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 12 17:54:05 UTC 2024 - James Fehlig <jfehlig@suse.com>
+
+- Add /usr/lib/mdevctl/scripts.d/{callouts,notifiers} directories
+
+-------------------------------------------------------------------
 Wed Jan 24 14:05:47 UTC 2024 - jfehlig@suse.com
 
 - Update to version 1.3.0 (jsc#PED-4981):
