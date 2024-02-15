@@ -79,7 +79,7 @@ Thu Jan  4 12:29:41 UTC 2024 - ecsos <ecsos@opensuse.org>
   - [feaLib/otlLib] Better error message when building Coverage table with missing glyph (#3286).
 - Changes from 4.43.0
   - [subset] Set up lxml XMLParser(resolve_entities=False) when parsing OT-SVG documents
-    to prevent XML External Entity (XXE) attacks (9f61271):
+    to prevent XML External Entity (XXE) attacks (9f61271, CVE-2023-45139, bsc#1218748):
     https://codeql.github.com/codeql-query-help/python/py-xxe/
   - [varLib.iup] Added workaround for a Cython bug in iup_delta_optimize
     that was leading to IUP tolerance being incorrectly initialised,
