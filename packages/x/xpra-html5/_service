@@ -10,7 +10,7 @@
       This comes from setup.py which defines
       a 'VERSION = ' based off a tag; current
       release is 'v9.0' (Tags) but master defines
-      it as '11' (per `grep -r 'VERSION =' xpra-html5`)
+      it as '12' (per `grep -r '^VERSION =' xpra-html5/setup.py`)
 
     <param name="versionrewrite-pattern">v(.*)</param>
     -->

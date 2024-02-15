@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 08 14:26:13 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 12.0+git20240208.20dddce:
+  * #282 always return a string
+  * add relative pointer coordinates, if available
+  * all supported browsers have the 'wheel' event
+  * remove unused function
+
+-------------------------------------------------------------------
 Wed Jan 31 15:43:25 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 12.0+git20240131.f67917a:
