@@ -1,7 +1,7 @@
 #
 # spec file for package pv
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           pv
-Version:        1.7.24
+Version:        1.8.5
 Release:        0
-Summary:        PipeViewer - Monitor the Progress of Data through Pipes
-License:        Artistic-2.0
+Summary:        Tool for monitor the progress of data through pipes
+License:        GPL-3.0-or-later
 Group:          System/Base
 URL:            http://ivarch.com/programs/pv.shtml
 
@@ -47,22 +47,23 @@ will be until completion.
 %autosetup -p1
 
 %build
-%configure --enable-lfs --enable-nls --disable-debugging
+%configure --enable-lfs --enable-nls --disable-debugging --docdir="%_docdir/pv"
 %make_build
 
 %install
 %make_install
 %find_lang %name
+rm %buildroot/%_docdir/pv/INSTALL
 
 %check
-%ifarch s390x
-exit 0
-%endif
+%ifnarch s390x
 %make_build test
+%endif
 
 %files -f %name.lang
-%license doc/COPYING
+%license docs/COPYING
+%_docdir/pv
 %_bindir/pv
-%_mandir/man1/pv.1%ext_man
+%_mandir/man1/pv.1*
 
 %changelog
