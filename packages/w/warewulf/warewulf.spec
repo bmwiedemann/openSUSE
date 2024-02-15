@@ -1,7 +1,7 @@
 #
 # spec file for package warewulf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -97,7 +97,9 @@ BuildRequires:  busybox-static
 %endif
 BuildRequires:  device-mapper-devel
 BuildRequires:  e2fsprogs
+%if 0%{?sle_version:1} && 0%{?sle_version} < 150400
 BuildRequires:  haveged
+%endif
 BuildRequires:  ipmitool
 %if 0%{?full_build}
 BuildRequires:  ipxe-bootimgs

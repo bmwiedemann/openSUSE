@@ -85,4 +85,14 @@
     <comment></comment>
     <requestid>1139475</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>e6036c4a3a5aa87d4294c47b5f016e25</srcmd5>
+    <version>3.8.1</version>
+    <time>1708027298</time>
+    <user>anag+factory</user>
+    <comment>- Readding provision-If-available-us-haveged-in-warewulf-initrd.patch
+  and making `BuildRequires: haveged` depend in the product version
+  building for. (forwarded request 1146872 from eeich)</comment>
+    <requestid>1146874</requestid>
+  </revision>
 </revisionlist>

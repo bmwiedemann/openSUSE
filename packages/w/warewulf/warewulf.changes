@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 15 14:19:20 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Readding provision-If-available-us-haveged-in-warewulf-initrd.patch
+  and making `BuildRequires: haveged` depend in the product version
+  building for.
+
+-------------------------------------------------------------------
+Thu Feb 15 08:18:41 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Remove build dependency on haveged (bsc#1219910)
+  Starting from Linux kernel v5.4, the Haveged inspired algorithm has
+  been included in the Linux kernel and it shouldn't be needed since v5.6
+- Remove provision-If-available-us-haveged-in-warewulf-initrd.patch
+
+-------------------------------------------------------------------
 Sun Jan  7 07:43:08 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Drop make-build-of-cpio-reproduceable.patch
