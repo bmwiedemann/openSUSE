@@ -1,66 +1,172 @@
-Index: Python-3.10.13/Doc/conf.py
-===================================================================
---- Python-3.10.13.orig/Doc/conf.py
-+++ Python-3.10.13/Doc/conf.py
-@@ -61,6 +61,11 @@ smartquotes_excludes = {
- # Avoid a warning with Sphinx >= 2.0
- master_doc = 'contents'
+---
+ Doc/c-api/bytearray.rst               |    2 
+ Doc/c-api/bytes.rst                   |    2 
+ Doc/c-api/capsule.rst                 |    2 
+ Doc/c-api/complex.rst                 |    2 
+ Doc/c-api/concrete.rst                |    6 -
+ Doc/c-api/dict.rst                    |    4 
+ Doc/c-api/exceptions.rst              |    6 -
+ Doc/c-api/file.rst                    |    2 
+ Doc/c-api/float.rst                   |    2 
+ Doc/c-api/function.rst                |    2 
+ Doc/c-api/import.rst                  |    4 
+ Doc/c-api/init.rst                    |   14 +--
+ Doc/c-api/intro.rst                   |    8 -
+ Doc/c-api/list.rst                    |    6 -
+ Doc/c-api/long.rst                    |    4 
+ Doc/c-api/mapping.rst                 |    2 
+ Doc/c-api/memoryview.rst              |    2 
+ Doc/c-api/method.rst                  |    4 
+ Doc/c-api/module.rst                  |    2 
+ Doc/c-api/none.rst                    |    2 
+ Doc/c-api/number.rst                  |   12 +-
+ Doc/c-api/object.rst                  |   12 +-
+ Doc/c-api/sequence.rst                |    4 
+ Doc/c-api/set.rst                     |    6 -
+ Doc/c-api/structures.rst              |    4 
+ Doc/c-api/tuple.rst                   |    2 
+ Doc/c-api/type.rst                    |    2 
+ Doc/c-api/typeobj.rst                 |    4 
+ Doc/conf.py                           |    5 +
+ Doc/extending/newtypes.rst            |    2 
+ Doc/library/_thread.rst               |    2 
+ Doc/library/binascii.rst              |    6 -
+ Doc/library/cmath.rst                 |    2 
+ Doc/library/copy.rst                  |    2 
+ Doc/library/copyreg.rst               |    4 
+ Doc/library/dis.rst                   |    2 
+ Doc/library/exceptions.rst            |   10 +-
+ Doc/library/fnmatch.rst               |    4 
+ Doc/library/functions.rst             |   10 +-
+ Doc/library/http.client.rst           |    2 
+ Doc/library/imp.rst                   |    2 
+ Doc/library/internet.rst              |    2 
+ Doc/library/locale.rst                |    4 
+ Doc/library/marshal.rst               |    4 
+ Doc/library/os.path.rst               |    2 
+ Doc/library/os.rst                    |    4 
+ Doc/library/pdb.rst                   |    4 
+ Doc/library/posix.rst                 |    2 
+ Doc/library/pprint.rst                |    4 
+ Doc/library/pwd.rst                   |    2 
+ Doc/library/pyexpat.rst               |    2 
+ Doc/library/runpy.rst                 |    4 
+ Doc/library/shelve.rst                |    6 -
+ Doc/library/site.rst                  |    6 -
+ Doc/library/socket.rst                |    4 
+ Doc/library/stdtypes.rst              |  146 ++++++++++++++++----------------
+ Doc/library/sys.rst                   |    2 
+ Doc/library/traceback.rst             |    2 
+ Doc/library/types.rst                 |    2 
+ Doc/reference/compound_stmts.rst      |   90 +++++++++----------
+ Doc/reference/datamodel.rst           |  154 +++++++++++++++++-----------------
+ Doc/reference/executionmodel.rst      |    2 
+ Doc/reference/expressions.rst         |  134 ++++++++++++++---------------
+ Doc/reference/simple_stmts.rst        |   74 ++++++++--------
+ Doc/reference/toplevel_components.rst |   10 +-
+ Doc/tools/extensions/pyspecific.py    |   25 +++++
+ Doc/tutorial/classes.rst              |    2 
+ Doc/tutorial/controlflow.rst          |    2 
+ Doc/tutorial/inputoutput.rst          |    6 -
+ Doc/tutorial/modules.rst              |    4 
+ Doc/tutorial/stdlib.rst               |    2 
+ 71 files changed, 457 insertions(+), 427 deletions(-)
+
+--- a/Doc/c-api/bytearray.rst
++++ b/Doc/c-api/bytearray.rst
+@@ -5,7 +5,7 @@
+ Byte Array Objects
+ ------------------
  
-+# Allow translation of index directives
-+gettext_additional_targets = [
-+    'index',
-+]
-+
- # Options for HTML output
- # -----------------------
- 
-Index: Python-3.10.13/Doc/tools/extensions/pyspecific.py
-===================================================================
---- Python-3.10.13.orig/Doc/tools/extensions/pyspecific.py
-+++ Python-3.10.13/Doc/tools/extensions/pyspecific.py
-@@ -623,6 +623,30 @@ def process_audit_events(app, doctree, f
-         node.replace_self(table)
+-.. index:: object: bytearray
++.. index:: pair: object; bytearray
  
  
-+def patch_pairindextypes(app) -> None:
-+    if app.builder.name != 'gettext':
-+        return
-+
-+    # allow translating deprecated index entries
-+    try:
-+        from sphinx.domains.python import pairindextypes
-+    except ImportError:
-+        pass
-+    else:
-+        # Sphinx checks if a 'pair' type entry on an index directive is one of
-+        # the Sphinx-translated pairindextypes values. As we intend to move
-+        # away from this, we need Sphinx to believe that these values don't
-+        # exist, by deleting them when using the gettext builder.
-+
-+        pairindextypes.pop('module', None)
-+        pairindextypes.pop('keyword', None)
-+        pairindextypes.pop('operator', None)
-+        pairindextypes.pop('object', None)
-+        pairindextypes.pop('exception', None)
-+        pairindextypes.pop('statement', None)
-+        pairindextypes.pop('builtin', None)
-+
-+
- def setup(app):
-     app.add_role('issue', issue_role)
-     app.add_role('gh', gh_issue_role)
-@@ -645,6 +669,7 @@ def setup(app):
-     app.add_directive_to_domain('py', 'awaitablemethod', PyAwaitableMethod)
-     app.add_directive_to_domain('py', 'abstractmethod', PyAbstractMethod)
-     app.add_directive('miscnews', MiscNews)
-+    app.connect('builder-inited', patch_pairindextypes)
-     app.connect('doctree-resolved', process_audit_events)
-     app.connect('env-merge-info', audit_events_merge)
-     app.connect('env-purge-doc', audit_events_purge)
-Index: Python-3.10.13/Doc/c-api/exceptions.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/exceptions.rst
-+++ Python-3.10.13/Doc/c-api/exceptions.rst
+ .. c:type:: PyByteArrayObject
+--- a/Doc/c-api/bytes.rst
++++ b/Doc/c-api/bytes.rst
+@@ -8,7 +8,7 @@ Bytes Objects
+ These functions raise :exc:`TypeError` when expecting a bytes parameter and
+ called with a non-bytes parameter.
+ 
+-.. index:: object: bytes
++.. index:: pair: object; bytes
+ 
+ 
+ .. c:type:: PyBytesObject
+--- a/Doc/c-api/capsule.rst
++++ b/Doc/c-api/capsule.rst
+@@ -5,7 +5,7 @@
+ Capsules
+ --------
+ 
+-.. index:: object: Capsule
++.. index:: pair: object; Capsule
+ 
+ Refer to :ref:`using-capsules` for more information on using these objects.
+ 
+--- a/Doc/c-api/complex.rst
++++ b/Doc/c-api/complex.rst
+@@ -5,7 +5,7 @@
+ Complex Number Objects
+ ----------------------
+ 
+-.. index:: object: complex number
++.. index:: pair: object; complex number
+ 
+ Python's complex number objects are implemented as two distinct types when
+ viewed from the C API:  one is the Python object exposed to Python programs, and
+--- a/Doc/c-api/concrete.rst
++++ b/Doc/c-api/concrete.rst
+@@ -40,7 +40,7 @@ This section describes Python type objec
+ Numeric Objects
+ ===============
+ 
+-.. index:: object: numeric
++.. index:: pair: object; numeric
+ 
+ .. toctree::
+ 
+@@ -55,7 +55,7 @@ Numeric Objects
+ Sequence Objects
+ ================
+ 
+-.. index:: object: sequence
++.. index:: pair: object; sequence
+ 
+ Generic operations on sequence objects were discussed in the previous chapter;
+ this section deals with the specific kinds of sequence objects that are
+@@ -77,7 +77,7 @@ intrinsic to the Python language.
+ Container Objects
+ =================
+ 
+-.. index:: object: mapping
++.. index:: pair: object; mapping
+ 
+ .. toctree::
+ 
+--- a/Doc/c-api/dict.rst
++++ b/Doc/c-api/dict.rst
+@@ -5,7 +5,7 @@
+ Dictionary Objects
+ ------------------
+ 
+-.. index:: object: dictionary
++.. index:: pair: object; dictionary
+ 
+ 
+ .. c:type:: PyDictObject
+@@ -154,7 +154,7 @@ Dictionary Objects
+ 
+ .. c:function:: Py_ssize_t PyDict_Size(PyObject *p)
+ 
+-   .. index:: builtin: len
++   .. index:: pair: built-in function; len
+ 
+    Return the number of items in the dictionary.  This is equivalent to
+    ``len(p)`` on a dictionary.
+--- a/Doc/c-api/exceptions.rst
++++ b/Doc/c-api/exceptions.rst
 @@ -503,7 +503,7 @@ Signal Handling
  .. c:function:: int PyErr_CheckSignals()
  
@@ -88,10 +194,61 @@ Index: Python-3.10.13/Doc/c-api/exceptions.rst
        single: KeyboardInterrupt (built-in exception)
  
     Simulate the effect of a signal arriving. The next time
-Index: Python-3.10.13/Doc/c-api/init.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/init.rst
-+++ Python-3.10.13/Doc/c-api/init.rst
+--- a/Doc/c-api/file.rst
++++ b/Doc/c-api/file.rst
+@@ -5,7 +5,7 @@
+ File Objects
+ ------------
+ 
+-.. index:: object: file
++.. index:: pair: object; file
+ 
+ These APIs are a minimal emulation of the Python 2 C API for built-in file
+ objects, which used to rely on the buffered I/O (:c:expr:`FILE*`) support
+--- a/Doc/c-api/float.rst
++++ b/Doc/c-api/float.rst
+@@ -5,7 +5,7 @@
+ Floating Point Objects
+ ----------------------
+ 
+-.. index:: object: floating point
++.. index:: pair: object; floating point
+ 
+ 
+ .. c:type:: PyFloatObject
+--- a/Doc/c-api/function.rst
++++ b/Doc/c-api/function.rst
+@@ -5,7 +5,7 @@
+ Function Objects
+ ----------------
+ 
+-.. index:: object: function
++.. index:: pair: object; function
+ 
+ There are a few functions specific to Python functions.
+ 
+--- a/Doc/c-api/import.rst
++++ b/Doc/c-api/import.rst
+@@ -41,7 +41,7 @@ Importing Modules
+ 
+ .. c:function:: PyObject* PyImport_ImportModuleEx(const char *name, PyObject *globals, PyObject *locals, PyObject *fromlist)
+ 
+-   .. index:: builtin: __import__
++   .. index:: pair: built-in function; __import__
+ 
+    Import a module.  This is best described by referring to the built-in Python
+    function :func:`__import__`.
+@@ -120,7 +120,7 @@ Importing Modules
+ 
+ .. c:function:: PyObject* PyImport_ExecCodeModule(const char *name, PyObject *co)
+ 
+-   .. index:: builtin: compile
++   .. index:: pair: built-in function; compile
+ 
+    Given a module name (possibly of the form ``package.module``) and a code object
+    read from a Python bytecode file or obtained from the built-in function
+--- a/Doc/c-api/init.rst
++++ b/Doc/c-api/init.rst
 @@ -233,9 +233,9 @@ Initializing and finalizing the interpre
        single: PyEval_InitThreads()
        single: modules (in module sys)
@@ -127,10 +284,8 @@ Index: Python-3.10.13/Doc/c-api/init.rst
        single: stdout (in module sys)
        single: stderr (in module sys)
        single: stdin (in module sys)
-Index: Python-3.10.13/Doc/c-api/intro.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/intro.rst
-+++ Python-3.10.13/Doc/c-api/intro.rst
+--- a/Doc/c-api/intro.rst
++++ b/Doc/c-api/intro.rst
 @@ -226,7 +226,7 @@ complete listing.
  Objects, Types and Reference Counts
  ===================================
@@ -153,10 +308,355 @@ Index: Python-3.10.13/Doc/c-api/intro.rst
     triple: module; search; path
     single: path (in module sys)
  
-Index: Python-3.10.13/Doc/library/_thread.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/_thread.rst
-+++ Python-3.10.13/Doc/library/_thread.rst
+--- a/Doc/c-api/list.rst
++++ b/Doc/c-api/list.rst
+@@ -5,7 +5,7 @@
+ List Objects
+ ------------
+ 
+-.. index:: object: list
++.. index:: pair: object; list
+ 
+ 
+ .. c:type:: PyListObject
+@@ -45,7 +45,7 @@ List Objects
+ 
+ .. c:function:: Py_ssize_t PyList_Size(PyObject *list)
+ 
+-   .. index:: builtin: len
++   .. index:: pair: built-in function; len
+ 
+    Return the length of the list object in *list*; this is equivalent to
+    ``len(list)`` on a list object.
+@@ -138,7 +138,7 @@ List Objects
+ 
+ .. c:function:: PyObject* PyList_AsTuple(PyObject *list)
+ 
+-   .. index:: builtin: tuple
++   .. index:: pair: built-in function; tuple
+ 
+    Return a new tuple object containing the contents of *list*; equivalent to
+    ``tuple(list)``.
+--- a/Doc/c-api/long.rst
++++ b/Doc/c-api/long.rst
+@@ -5,8 +5,8 @@
+ Integer Objects
+ ---------------
+ 
+-.. index:: object: long integer
+-           object: integer
++.. index:: pair: object; long integer
++           pair: object; integer
+ 
+ All integers are implemented as "long" integer objects of arbitrary size.
+ 
+--- a/Doc/c-api/mapping.rst
++++ b/Doc/c-api/mapping.rst
+@@ -20,7 +20,7 @@ See also :c:func:`PyObject_GetItem`, :c:
+ .. c:function:: Py_ssize_t PyMapping_Size(PyObject *o)
+                Py_ssize_t PyMapping_Length(PyObject *o)
+ 
+-   .. index:: builtin: len
++   .. index:: pair: built-in function; len
+ 
+    Returns the number of keys in object *o* on success, and ``-1`` on failure.
+    This is equivalent to the Python expression ``len(o)``.
+--- a/Doc/c-api/memoryview.rst
++++ b/Doc/c-api/memoryview.rst
+@@ -3,7 +3,7 @@
+ .. _memoryview-objects:
+ 
+ .. index::
+-   object: memoryview
++   pair: object; memoryview
+ 
+ MemoryView objects
+ ------------------
+--- a/Doc/c-api/method.rst
++++ b/Doc/c-api/method.rst
+@@ -5,7 +5,7 @@
+ Instance Method Objects
+ -----------------------
+ 
+-.. index:: object: instancemethod
++.. index:: pair: object; instancemethod
+ 
+ An instance method is a wrapper for a :c:data:`PyCFunction` and the new way
+ to bind a :c:data:`PyCFunction` to a class object. It replaces the former call
+@@ -47,7 +47,7 @@ to bind a :c:data:`PyCFunction` to a cla
+ Method Objects
+ --------------
+ 
+-.. index:: object: method
++.. index:: pair: object; method
+ 
+ Methods are bound function objects. Methods are always bound to an instance of
+ a user-defined class. Unbound methods (methods bound to a class object) are
+--- a/Doc/c-api/module.rst
++++ b/Doc/c-api/module.rst
+@@ -5,7 +5,7 @@
+ Module Objects
+ --------------
+ 
+-.. index:: object: module
++.. index:: pair: object; module
+ 
+ 
+ .. c:var:: PyTypeObject PyModule_Type
+--- a/Doc/c-api/none.rst
++++ b/Doc/c-api/none.rst
+@@ -5,7 +5,7 @@
+ The ``None`` Object
+ -------------------
+ 
+-.. index:: object: None
++.. index:: pair: object; None
+ 
+ Note that the :c:type:`PyTypeObject` for ``None`` is not directly exposed in the
+ Python/C API.  Since ``None`` is a singleton, testing for object identity (using
+--- a/Doc/c-api/number.rst
++++ b/Doc/c-api/number.rst
+@@ -64,7 +64,7 @@ Number Protocol
+ 
+ .. c:function:: PyObject* PyNumber_Divmod(PyObject *o1, PyObject *o2)
+ 
+-   .. index:: builtin: divmod
++   .. index:: pair: built-in function; divmod
+ 
+    See the built-in function :func:`divmod`. Returns ``NULL`` on failure.  This is
+    the equivalent of the Python expression ``divmod(o1, o2)``.
+@@ -72,7 +72,7 @@ Number Protocol
+ 
+ .. c:function:: PyObject* PyNumber_Power(PyObject *o1, PyObject *o2, PyObject *o3)
+ 
+-   .. index:: builtin: pow
++   .. index:: pair: built-in function; pow
+ 
+    See the built-in function :func:`pow`. Returns ``NULL`` on failure.  This is the
+    equivalent of the Python expression ``pow(o1, o2, o3)``, where *o3* is optional.
+@@ -94,7 +94,7 @@ Number Protocol
+ 
+ .. c:function:: PyObject* PyNumber_Absolute(PyObject *o)
+ 
+-   .. index:: builtin: abs
++   .. index:: pair: built-in function; abs
+ 
+    Returns the absolute value of *o*, or ``NULL`` on failure.  This is the equivalent
+    of the Python expression ``abs(o)``.
+@@ -192,7 +192,7 @@ Number Protocol
+ 
+ .. c:function:: PyObject* PyNumber_InPlacePower(PyObject *o1, PyObject *o2, PyObject *o3)
+ 
+-   .. index:: builtin: pow
++   .. index:: pair: built-in function; pow
+ 
+    See the built-in function :func:`pow`. Returns ``NULL`` on failure.  The operation
+    is done *in-place* when *o1* supports it.  This is the equivalent of the Python
+@@ -238,7 +238,7 @@ Number Protocol
+ 
+ .. c:function:: PyObject* PyNumber_Long(PyObject *o)
+ 
+-   .. index:: builtin: int
++   .. index:: pair: built-in function; int
+ 
+    Returns the *o* converted to an integer object on success, or ``NULL`` on
+    failure.  This is the equivalent of the Python expression ``int(o)``.
+@@ -246,7 +246,7 @@ Number Protocol
+ 
+ .. c:function:: PyObject* PyNumber_Float(PyObject *o)
+ 
+-   .. index:: builtin: float
++   .. index:: pair: built-in function; float
+ 
+    Returns the *o* converted to a float object on success, or ``NULL`` on failure.
+    This is the equivalent of the Python expression ``float(o)``.
+--- a/Doc/c-api/object.rst
++++ b/Doc/c-api/object.rst
+@@ -172,7 +172,7 @@ Object Protocol
+ 
+ .. c:function:: PyObject* PyObject_Repr(PyObject *o)
+ 
+-   .. index:: builtin: repr
++   .. index:: pair: built-in function; repr
+ 
+    Compute a string representation of object *o*.  Returns the string
+    representation on success, ``NULL`` on failure.  This is the equivalent of the
+@@ -184,7 +184,7 @@ Object Protocol
+ 
+ .. c:function:: PyObject* PyObject_ASCII(PyObject *o)
+ 
+-   .. index:: builtin: ascii
++   .. index:: pair: built-in function; ascii
+ 
+    As :c:func:`PyObject_Repr`, compute a string representation of object *o*, but
+    escape the non-ASCII characters in the string returned by
+@@ -209,7 +209,7 @@ Object Protocol
+ 
+ .. c:function:: PyObject* PyObject_Bytes(PyObject *o)
+ 
+-   .. index:: builtin: bytes
++   .. index:: pair: built-in function; bytes
+ 
+    Compute a bytes representation of object *o*.  ``NULL`` is returned on
+    failure and a bytes object on success.  This is equivalent to the Python
+@@ -260,7 +260,7 @@ Object Protocol
+ 
+ .. c:function:: Py_hash_t PyObject_Hash(PyObject *o)
+ 
+-   .. index:: builtin: hash
++   .. index:: pair: built-in function; hash
+ 
+    Compute and return the hash value of an object *o*.  On failure, return ``-1``.
+    This is the equivalent of the Python expression ``hash(o)``.
+@@ -294,7 +294,7 @@ Object Protocol
+ 
+ .. c:function:: PyObject* PyObject_Type(PyObject *o)
+ 
+-   .. index:: builtin: type
++   .. index:: pair: built-in function; type
+ 
+    When *o* is non-``NULL``, returns a type object corresponding to the object type
+    of object *o*. On failure, raises :exc:`SystemError` and returns ``NULL``.  This
+@@ -315,7 +315,7 @@ Object Protocol
+ .. c:function:: Py_ssize_t PyObject_Size(PyObject *o)
+                Py_ssize_t PyObject_Length(PyObject *o)
+ 
+-   .. index:: builtin: len
++   .. index:: pair: built-in function; len
+ 
+    Return the length of object *o*.  If the object *o* provides either the sequence
+    and mapping protocols, the sequence length is returned.  On error, ``-1`` is
+--- a/Doc/c-api/sequence.rst
++++ b/Doc/c-api/sequence.rst
+@@ -18,7 +18,7 @@ Sequence Protocol
+ .. c:function:: Py_ssize_t PySequence_Size(PyObject *o)
+                Py_ssize_t PySequence_Length(PyObject *o)
+ 
+-   .. index:: builtin: len
++   .. index:: pair: built-in function; len
+ 
+    Returns the number of objects in sequence *o* on success, and ``-1`` on
+    failure.  This is equivalent to the Python expression ``len(o)``.
+@@ -120,7 +120,7 @@ Sequence Protocol
+ 
+ .. c:function:: PyObject* PySequence_Tuple(PyObject *o)
+ 
+-   .. index:: builtin: tuple
++   .. index:: pair: built-in function; tuple
+ 
+    Return a tuple object with the same contents as the sequence or iterable *o*,
+    or ``NULL`` on failure.  If *o* is a tuple, a new reference will be returned,
+--- a/Doc/c-api/set.rst
++++ b/Doc/c-api/set.rst
+@@ -9,8 +9,8 @@ Set Objects
+ 
+ 
+ .. index::
+-   object: set
+-   object: frozenset
++   pair: object; set
++   pair: object; frozenset
+ 
+ This section details the public API for :class:`set` and :class:`frozenset`
+ objects.  Any functionality not listed below is best accessed using either
+@@ -107,7 +107,7 @@ or :class:`frozenset` or instances of th
+ 
+ .. c:function:: Py_ssize_t PySet_Size(PyObject *anyset)
+ 
+-   .. index:: builtin: len
++   .. index:: pair: built-in function; len
+ 
+    Return the length of a :class:`set` or :class:`frozenset` object. Equivalent to
+    ``len(anyset)``.  Raises a :exc:`PyExc_SystemError` if *anyset* is not a
+--- a/Doc/c-api/structures.rst
++++ b/Doc/c-api/structures.rst
+@@ -351,7 +351,7 @@ method.
+ 
+ .. data:: METH_CLASS
+ 
+-   .. index:: builtin: classmethod
++   .. index:: pair: built-in function; classmethod
+ 
+    The method will be passed the type object as the first parameter rather
+    than an instance of the type.  This is used to create *class methods*,
+@@ -361,7 +361,7 @@ method.
+ 
+ .. data:: METH_STATIC
+ 
+-   .. index:: builtin: staticmethod
++   .. index:: pair: built-in function; staticmethod
+ 
+    The method will be passed ``NULL`` as the first parameter rather than an
+    instance of the type.  This is used to create *static methods*, similar to
+--- a/Doc/c-api/tuple.rst
++++ b/Doc/c-api/tuple.rst
+@@ -5,7 +5,7 @@
+ Tuple Objects
+ -------------
+ 
+-.. index:: object: tuple
++.. index:: pair: object; tuple
+ 
+ 
+ .. c:type:: PyTupleObject
+--- a/Doc/c-api/type.rst
++++ b/Doc/c-api/type.rst
+@@ -5,7 +5,7 @@
+ Type Objects
+ ------------
+ 
+-.. index:: object: type
++.. index:: pair: object; type
+ 
+ 
+ .. c:type:: PyTypeObject
+--- a/Doc/c-api/typeobj.rst
++++ b/Doc/c-api/typeobj.rst
+@@ -803,7 +803,7 @@ and :c:type:`PyType_Type` effectively ac
+ 
+ .. c:member:: reprfunc PyTypeObject.tp_repr
+ 
+-   .. index:: builtin: repr
++   .. index:: pair: built-in function; repr
+ 
+    An optional pointer to a function that implements the built-in function
+    :func:`repr`.
+@@ -868,7 +868,7 @@ and :c:type:`PyType_Type` effectively ac
+ 
+ .. c:member:: hashfunc PyTypeObject.tp_hash
+ 
+-   .. index:: builtin: hash
++   .. index:: pair: built-in function; hash
+ 
+    An optional pointer to a function that implements the built-in function
+    :func:`hash`.
+--- a/Doc/conf.py
++++ b/Doc/conf.py
+@@ -61,6 +61,11 @@ smartquotes_excludes = {
+ # Avoid a warning with Sphinx >= 2.0
+ master_doc = 'contents'
+ 
++# Allow translation of index directives
++gettext_additional_targets = [
++    'index',
++]
++
+ # Options for HTML output
+ # -----------------------
+ 
+--- a/Doc/extending/newtypes.rst
++++ b/Doc/extending/newtypes.rst
+@@ -149,7 +149,7 @@ done.  This can be done using the :c:fun
+ 
+ .. index::
+    single: string; object representation
+-   builtin: repr
++   pair: built-in function; repr
+ 
+ Object Presentation
+ -------------------
+--- a/Doc/library/_thread.rst
++++ b/Doc/library/_thread.rst
 @@ -204,7 +204,7 @@ In addition to these methods, lock objec
  
  **Caveats:**
@@ -166,10 +666,23 @@ Index: Python-3.10.13/Doc/library/_thread.rst
  
  * Threads interact strangely with interrupts: the :exc:`KeyboardInterrupt`
    exception will be received by an arbitrary thread.  (When the :mod:`signal`
-Index: Python-3.10.13/Doc/library/cmath.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/cmath.rst
-+++ Python-3.10.13/Doc/library/cmath.rst
+--- a/Doc/library/binascii.rst
++++ b/Doc/library/binascii.rst
+@@ -6,9 +6,9 @@
+               representations.
+ 
+ .. index::
+-   module: uu
+-   module: base64
+-   module: binhex
++   pair: module; uu
++   pair: module; base64
++   pair: module; binhex
+ 
+ --------------
+ 
+--- a/Doc/library/cmath.rst
++++ b/Doc/library/cmath.rst
 @@ -301,7 +301,7 @@ Constants
     .. versionadded:: 3.6
  
@@ -179,10 +692,8 @@ Index: Python-3.10.13/Doc/library/cmath.rst
  
  Note that the selection of functions is similar, but not identical, to that in
  module :mod:`math`.  The reason for having two modules is that some users aren't
-Index: Python-3.10.13/Doc/library/copy.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/copy.rst
-+++ Python-3.10.13/Doc/library/copy.rst
+--- a/Doc/library/copy.rst
++++ b/Doc/library/copy.rst
 @@ -68,7 +68,7 @@ Shallow copies of dictionaries can be ma
  of lists by assigning a slice of the entire list, for example,
  ``copied_list = original_list[:]``.
@@ -192,10 +703,8 @@ Index: Python-3.10.13/Doc/library/copy.rst
  
  Classes can use the same interfaces to control copying that they use to control
  pickling.  See the description of module :mod:`pickle` for information on these
-Index: Python-3.10.13/Doc/library/copyreg.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/copyreg.rst
-+++ Python-3.10.13/Doc/library/copyreg.rst
+--- a/Doc/library/copyreg.rst
++++ b/Doc/library/copyreg.rst
 @@ -7,8 +7,8 @@
  **Source code:** :source:`Lib/copyreg.py`
  
@@ -207,10 +716,19 @@ Index: Python-3.10.13/Doc/library/copyreg.rst
  
  --------------
  
-Index: Python-3.10.13/Doc/library/exceptions.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/exceptions.rst
-+++ Python-3.10.13/Doc/library/exceptions.rst
+--- a/Doc/library/dis.rst
++++ b/Doc/library/dis.rst
+@@ -1207,7 +1207,7 @@ All of the following opcodes use their a
+ 
+ .. opcode:: BUILD_SLICE (argc)
+ 
+-   .. index:: builtin: slice
++   .. index:: pair: built-in function; slice
+ 
+    Pushes a slice object on the stack.  *argc* must be 2 or 3.  If it is 2,
+    ``slice(TOS1, TOS)`` is pushed; if it is 3, ``slice(TOS2, TOS1, TOS)`` is
+--- a/Doc/library/exceptions.rst
++++ b/Doc/library/exceptions.rst
 @@ -4,8 +4,8 @@ Built-in Exceptions
  ===================
  
@@ -249,10 +767,8 @@ Index: Python-3.10.13/Doc/library/exceptions.rst
  
     This exception is raised when a system function returns a system-related
     error, including I/O failures such as "file not found" or "disk full"
-Index: Python-3.10.13/Doc/library/fnmatch.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/fnmatch.rst
-+++ Python-3.10.13/Doc/library/fnmatch.rst
+--- a/Doc/library/fnmatch.rst
++++ b/Doc/library/fnmatch.rst
 @@ -8,7 +8,7 @@
  
  .. index:: single: filenames; wildcard expansion
@@ -271,10 +787,8 @@ Index: Python-3.10.13/Doc/library/fnmatch.rst
  
  Note that the filename separator (``'/'`` on Unix) is *not* special to this
  module.  See module :mod:`glob` for pathname expansion (:mod:`glob` uses
-Index: Python-3.10.13/Doc/library/functions.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/functions.rst
-+++ Python-3.10.13/Doc/library/functions.rst
+--- a/Doc/library/functions.rst
++++ b/Doc/library/functions.rst
 @@ -548,7 +548,7 @@ are always available.  They are listed h
        Raises an :ref:`auditing event <auditing>` ``exec`` with the code object
        as the argument. Code compilation events may also be raised.
@@ -313,10 +827,8 @@ Index: Python-3.10.13/Doc/library/functions.rst
  
     .. note::
  
-Index: Python-3.10.13/Doc/library/http.client.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/http.client.rst
-+++ Python-3.10.13/Doc/library/http.client.rst
+--- a/Doc/library/http.client.rst
++++ b/Doc/library/http.client.rst
 @@ -10,7 +10,7 @@
     pair: HTTP; protocol
     single: HTTP; http.client (standard module)
@@ -326,10 +838,19 @@ Index: Python-3.10.13/Doc/library/http.client.rst
  
  --------------
  
-Index: Python-3.10.13/Doc/library/internet.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/internet.rst
-+++ Python-3.10.13/Doc/library/internet.rst
+--- a/Doc/library/imp.rst
++++ b/Doc/library/imp.rst
+@@ -10,7 +10,7 @@
+ .. deprecated:: 3.4
+    The :mod:`imp` module is deprecated in favor of :mod:`importlib`.
+ 
+-.. index:: statement: import
++.. index:: pair: statement; import
+ 
+ --------------
+ 
+--- a/Doc/library/internet.rst
++++ b/Doc/library/internet.rst
 @@ -9,7 +9,7 @@ Internet Protocols and Support
     single: Internet
     single: World Wide Web
@@ -339,10 +860,8 @@ Index: Python-3.10.13/Doc/library/internet.rst
  
  The modules described in this chapter implement internet protocols and  support
  for related technology.  They are all implemented in Python. Most of these
-Index: Python-3.10.13/Doc/library/locale.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/locale.rst
-+++ Python-3.10.13/Doc/library/locale.rst
+--- a/Doc/library/locale.rst
++++ b/Doc/library/locale.rst
 @@ -16,7 +16,7 @@ functionality. The POSIX locale mechanis
  certain cultural issues in an application, without requiring the programmer to
  know all the specifics of each country where the software is executed.
@@ -361,10 +880,8 @@ Index: Python-3.10.13/Doc/library/locale.rst
  
     Locale category for the character type functions.  Depending on the settings of
     this category, the functions of module :mod:`string` dealing with case change
-Index: Python-3.10.13/Doc/library/marshal.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/marshal.rst
-+++ Python-3.10.13/Doc/library/marshal.rst
+--- a/Doc/library/marshal.rst
++++ b/Doc/library/marshal.rst
 @@ -15,8 +15,8 @@ undocumented on purpose; it may change b
  rarely does). [#]_
  
@@ -376,10 +893,8 @@ Index: Python-3.10.13/Doc/library/marshal.rst
  
  This is not a general "persistence" module.  For general persistence and
  transfer of Python objects through RPC calls, see the modules :mod:`pickle` and
-Index: Python-3.10.13/Doc/library/os.path.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/os.path.rst
-+++ Python-3.10.13/Doc/library/os.path.rst
+--- a/Doc/library/os.path.rst
++++ b/Doc/library/os.path.rst
 @@ -159,7 +159,7 @@ the :mod:`glob` module.)
     On Unix and Windows, return the argument with an initial component of ``~`` or
     ``~user`` replaced by that *user*'s home directory.
@@ -389,10 +904,8 @@ Index: Python-3.10.13/Doc/library/os.path.rst
  
     On Unix, an initial ``~`` is replaced by the environment variable :envvar:`HOME`
     if it is set; otherwise the current user's home directory is looked up in the
-Index: Python-3.10.13/Doc/library/os.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/os.rst
-+++ Python-3.10.13/Doc/library/os.rst
+--- a/Doc/library/os.rst
++++ b/Doc/library/os.rst
 @@ -1136,7 +1136,7 @@ or `the MSDN <https://msdn.microsoft.com
  
  .. function:: openpty()
@@ -411,10 +924,8 @@ Index: Python-3.10.13/Doc/library/os.rst
  
     Example::
  
-Index: Python-3.10.13/Doc/library/pdb.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/pdb.rst
-+++ Python-3.10.13/Doc/library/pdb.rst
+--- a/Doc/library/pdb.rst
++++ b/Doc/library/pdb.rst
 @@ -20,8 +20,8 @@ supports post-mortem debugging and can b
  
  .. index::
@@ -426,10 +937,8 @@ Index: Python-3.10.13/Doc/library/pdb.rst
  
  The debugger is extensible -- it is actually defined as the class :class:`Pdb`.
  This is currently undocumented but easily understood by reading the source.  The
-Index: Python-3.10.13/Doc/library/posix.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/posix.rst
-+++ Python-3.10.13/Doc/library/posix.rst
+--- a/Doc/library/posix.rst
++++ b/Doc/library/posix.rst
 @@ -11,7 +11,7 @@ This module provides access to operating
  standardized by the C Standard and the POSIX standard (a thinly disguised Unix
  interface).
@@ -439,10 +948,28 @@ Index: Python-3.10.13/Doc/library/posix.rst
  
  **Do not import this module directly.**  Instead, import the module :mod:`os`,
  which provides a *portable* version of this interface.  On Unix, the :mod:`os`
-Index: Python-3.10.13/Doc/library/pwd.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/pwd.rst
-+++ Python-3.10.13/Doc/library/pwd.rst
+--- a/Doc/library/pprint.rst
++++ b/Doc/library/pprint.rst
+@@ -171,7 +171,7 @@ The :mod:`pprint` module also provides s
+ 
+ .. function:: isreadable(object)
+ 
+-   .. index:: builtin: eval
++   .. index:: pair: built-in function; eval
+ 
+    Determine if the formatted representation of *object* is "readable", or can be
+    used to reconstruct the value using :func:`eval`.  This always returns ``False``
+@@ -226,7 +226,7 @@ created.
+ 
+ .. method:: PrettyPrinter.isreadable(object)
+ 
+-   .. index:: builtin: eval
++   .. index:: pair: built-in function; eval
+ 
+    Determine if the formatted representation of the object is "readable," or can be
+    used to reconstruct the value using :func:`eval`.  Note that this returns
+--- a/Doc/library/pwd.rst
++++ b/Doc/library/pwd.rst
 @@ -37,7 +37,7 @@ raised if the entry asked for cannot be
  
  .. note::
@@ -452,10 +979,8 @@ Index: Python-3.10.13/Doc/library/pwd.rst
  
     In traditional Unix the field ``pw_passwd`` usually contains a password
     encrypted with a DES derived algorithm (see module :mod:`crypt`).  However most
-Index: Python-3.10.13/Doc/library/pyexpat.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/pyexpat.rst
-+++ Python-3.10.13/Doc/library/pyexpat.rst
+--- a/Doc/library/pyexpat.rst
++++ b/Doc/library/pyexpat.rst
 @@ -33,7 +33,7 @@ can be set to handler functions.  When a
  parser, the handler functions are called for the character data and markup in
  the XML document.
@@ -465,10 +990,8 @@ Index: Python-3.10.13/Doc/library/pyexpat.rst
  
  This module uses the :mod:`pyexpat` module to provide access to the Expat
  parser.  Direct use of the :mod:`pyexpat` module is deprecated.
-Index: Python-3.10.13/Doc/library/runpy.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/runpy.rst
-+++ Python-3.10.13/Doc/library/runpy.rst
+--- a/Doc/library/runpy.rst
++++ b/Doc/library/runpy.rst
 @@ -30,7 +30,7 @@ The :mod:`runpy` module provides two fun
  .. function:: run_module(mod_name, init_globals=None, run_name=None, alter_sys=False)
  
@@ -487,10 +1010,8 @@ Index: Python-3.10.13/Doc/library/runpy.rst
  
     Execute the code at the named filesystem location and return the resulting
     module globals dictionary. As with a script name supplied to the CPython
-Index: Python-3.10.13/Doc/library/shelve.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/shelve.rst
-+++ Python-3.10.13/Doc/library/shelve.rst
+--- a/Doc/library/shelve.rst
++++ b/Doc/library/shelve.rst
 @@ -6,7 +6,7 @@
  
  **Source code:** :source:`Lib/shelve.py`
@@ -511,10 +1032,8 @@ Index: Python-3.10.13/Doc/library/shelve.rst
  
  * The choice of which database package will be used (such as :mod:`dbm.ndbm` or
    :mod:`dbm.gnu`) depends on which interface is available.  Therefore it is not
-Index: Python-3.10.13/Doc/library/site.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/site.rst
-+++ Python-3.10.13/Doc/library/site.rst
+--- a/Doc/library/site.rst
++++ b/Doc/library/site.rst
 @@ -51,7 +51,7 @@ searched for site-packages; otherwise th
  
  .. index::
@@ -542,10 +1061,8 @@ Index: Python-3.10.13/Doc/library/site.rst
  
  After this, an attempt is made to import a module named :mod:`usercustomize`,
  which can perform arbitrary user-specific customizations, if
-Index: Python-3.10.13/Doc/library/socket.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/socket.rst
-+++ Python-3.10.13/Doc/library/socket.rst
+--- a/Doc/library/socket.rst
++++ b/Doc/library/socket.rst
 @@ -16,7 +16,7 @@ all modern Unix systems, Windows, MacOS,
     Some behavior may be platform dependent, since calls are made to the operating
     system socket APIs.
@@ -564,10 +1081,8 @@ Index: Python-3.10.13/Doc/library/socket.rst
  
     Set the value of the given socket option (see the Unix manual page
     :manpage:`setsockopt(2)`).  The needed symbolic constants are defined in the
-Index: Python-3.10.13/Doc/library/stdtypes.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/stdtypes.rst
-+++ Python-3.10.13/Doc/library/stdtypes.rst
+--- a/Doc/library/stdtypes.rst
++++ b/Doc/library/stdtypes.rst
 @@ -32,8 +32,8 @@ Truth Value Testing
  ===================
  
@@ -943,10 +1458,41 @@ Index: Python-3.10.13/Doc/library/stdtypes.rst
  
  Type objects represent the various object types.  An object's type is accessed
  by the built-in function :func:`type`.  There are no special operations on
-Index: Python-3.10.13/Doc/reference/compound_stmts.rst
-===================================================================
---- Python-3.10.13.orig/Doc/reference/compound_stmts.rst
-+++ Python-3.10.13/Doc/reference/compound_stmts.rst
+--- a/Doc/library/sys.rst
++++ b/Doc/library/sys.rst
+@@ -398,7 +398,7 @@ always available.
+    an except clause."  For any stack frame, only information about the exception
+    being currently handled is accessible.
+ 
+-   .. index:: object: traceback
++   .. index:: pair: object; traceback
+ 
+    If no exception is being handled anywhere on the stack, a tuple containing
+    three ``None`` values is returned.  Otherwise, the values returned are
+--- a/Doc/library/traceback.rst
++++ b/Doc/library/traceback.rst
+@@ -14,7 +14,7 @@ interpreter when it prints a stack trace
+ stack traces under program control, such as in a "wrapper" around the
+ interpreter.
+ 
+-.. index:: object: traceback
++.. index:: pair: object; traceback
+ 
+ The module uses traceback objects --- this is the object type that is stored in
+ the :data:`sys.last_traceback` variable and returned as the third item from
+--- a/Doc/library/types.rst
++++ b/Doc/library/types.rst
+@@ -146,7 +146,7 @@ Standard names are defined for the follo
+ 
+ .. class:: CodeType(**kwargs)
+ 
+-   .. index:: builtin: compile
++   .. index:: pair: built-in function; compile
+ 
+    The type for code objects such as returned by :func:`compile`.
+ 
+--- a/Doc/reference/compound_stmts.rst
++++ b/Doc/reference/compound_stmts.rst
 @@ -84,9 +84,9 @@ The :keyword:`!if` statement
  ============================
  
@@ -1176,10 +1722,8 @@ Index: Python-3.10.13/Doc/reference/compound_stmts.rst
  .. _`async with`:
  
  The :keyword:`!async with` statement
-Index: Python-3.10.13/Doc/reference/datamodel.rst
-===================================================================
---- Python-3.10.13.orig/Doc/reference/datamodel.rst
-+++ Python-3.10.13/Doc/reference/datamodel.rst
+--- a/Doc/reference/datamodel.rst
++++ b/Doc/reference/datamodel.rst
 @@ -21,8 +21,8 @@ conformance to Von Neumann's model of a
  represented by objects.)
  
@@ -1692,10 +2236,8 @@ Index: Python-3.10.13/Doc/reference/datamodel.rst
     single: context manager
  
  Typical uses of context managers include saving and restoring various kinds of
-Index: Python-3.10.13/Doc/reference/executionmodel.rst
-===================================================================
---- Python-3.10.13.orig/Doc/reference/executionmodel.rst
-+++ Python-3.10.13/Doc/reference/executionmodel.rst
+--- a/Doc/reference/executionmodel.rst
++++ b/Doc/reference/executionmodel.rst
 @@ -151,7 +151,7 @@ to previously bound variables in the nea
  :exc:`SyntaxError` is raised at compile time if the given name does not
  exist in any enclosing function scope.
@@ -1705,91 +2247,8 @@ Index: Python-3.10.13/Doc/reference/executionmodel.rst
  
  The namespace for a module is automatically created the first time a module is
  imported.  The main module for a script is always called :mod:`__main__`.
-Index: Python-3.10.13/Doc/reference/toplevel_components.rst
-===================================================================
---- Python-3.10.13.orig/Doc/reference/toplevel_components.rst
-+++ Python-3.10.13/Doc/reference/toplevel_components.rst
-@@ -21,9 +21,9 @@ Complete Python programs
- .. index:: single: program
- 
- .. index::
--   module: sys
--   module: __main__
--   module: builtins
-+   pair: module; sys
-+   pair: module; __main__
-+   pair: module; builtins
- 
- While a language specification need not prescribe how the language interpreter
- is invoked, it is useful to have a notion of a complete Python program.  A
-@@ -38,7 +38,7 @@ the next section.
- 
- .. index::
-    single: interactive mode
--   module: __main__
-+   pair: module; __main__
- 
- The interpreter may also be invoked in interactive mode; in this case, it does
- not read and execute a complete program but reads and executes one statement
-@@ -98,7 +98,7 @@ Expression input
- ================
- 
- .. index:: single: input
--.. index:: builtin: eval
-+.. index:: pair: built-in function; eval
- 
- :func:`eval` is used for expression input.  It ignores leading whitespace. The
- string argument to :func:`eval` must have the following form:
-Index: Python-3.10.13/Doc/tutorial/inputoutput.rst
-===================================================================
---- Python-3.10.13.orig/Doc/tutorial/inputoutput.rst
-+++ Python-3.10.13/Doc/tutorial/inputoutput.rst
-@@ -285,8 +285,8 @@ Reading and Writing Files
- =========================
- 
- .. index::
--   builtin: open
--   object: file
-+   pair: built-in function; open
-+   pair: object; file
- 
- :func:`open` returns a :term:`file object`, and is most commonly used with
- two positional arguments and one keyword argument:
-@@ -466,7 +466,7 @@ Reference for a complete guide to file o
- Saving structured data with :mod:`json`
- ---------------------------------------
- 
--.. index:: module: json
-+.. index:: pair: module; json
- 
- Strings can easily be written to and read from a file.  Numbers take a bit more
- effort, since the :meth:`read` method only returns strings, which will have to
-Index: Python-3.10.13/Doc/tutorial/modules.rst
-===================================================================
---- Python-3.10.13.orig/Doc/tutorial/modules.rst
-+++ Python-3.10.13/Doc/tutorial/modules.rst
-@@ -260,7 +260,7 @@ Some tips for experts:
- Standard Modules
- ================
- 
--.. index:: module: sys
-+.. index:: pair: module; sys
- 
- Python comes with a library of standard modules, described in a separate
- document, the Python Library Reference ("Library Reference" hereafter).  Some
-@@ -341,7 +341,7 @@ Without arguments, :func:`dir` lists the
- 
- Note that it lists all types of names: variables, modules, functions, etc.
- 
--.. index:: module: builtins
-+.. index:: pair: module; builtins
- 
- :func:`dir` does not list the names of built-in functions and variables.  If you
- want a list of those, they are defined in the standard module
-Index: Python-3.10.13/Doc/reference/expressions.rst
-===================================================================
---- Python-3.10.13.orig/Doc/reference/expressions.rst
-+++ Python-3.10.13/Doc/reference/expressions.rst
+--- a/Doc/reference/expressions.rst
++++ b/Doc/reference/expressions.rst
 @@ -71,7 +71,7 @@ An identifier occurring as an atom is a
  for lexical definition and section :ref:`naming` for documentation of naming and
  binding.
@@ -2196,10 +2655,8 @@ Index: Python-3.10.13/Doc/reference/expressions.rst
  
  Except when part of a list or set display, an expression list
  containing at least one comma yields a tuple.  The length of
-Index: Python-3.10.13/Doc/reference/simple_stmts.rst
-===================================================================
---- Python-3.10.13.orig/Doc/reference/simple_stmts.rst
-+++ Python-3.10.13/Doc/reference/simple_stmts.rst
+--- a/Doc/reference/simple_stmts.rst
++++ b/Doc/reference/simple_stmts.rst
 @@ -53,8 +53,8 @@ An expression statement evaluates the ex
  expression).
  
@@ -2441,337 +2898,82 @@ Index: Python-3.10.13/Doc/reference/simple_stmts.rst
     single: , (comma); identifier list
  
  .. productionlist:: python-grammar
-Index: Python-3.10.13/Doc/c-api/bytearray.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/bytearray.rst
-+++ Python-3.10.13/Doc/c-api/bytearray.rst
-@@ -5,7 +5,7 @@
- Byte Array Objects
- ------------------
+--- a/Doc/reference/toplevel_components.rst
++++ b/Doc/reference/toplevel_components.rst
+@@ -21,9 +21,9 @@ Complete Python programs
+ .. index:: single: program
  
--.. index:: object: bytearray
-+.. index:: pair: object; bytearray
+ .. index::
+-   module: sys
+-   module: __main__
+-   module: builtins
++   pair: module; sys
++   pair: module; __main__
++   pair: module; builtins
  
+ While a language specification need not prescribe how the language interpreter
+ is invoked, it is useful to have a notion of a complete Python program.  A
+@@ -38,7 +38,7 @@ the next section.
  
- .. c:type:: PyByteArrayObject
-Index: Python-3.10.13/Doc/c-api/bytes.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/bytes.rst
-+++ Python-3.10.13/Doc/c-api/bytes.rst
-@@ -8,7 +8,7 @@ Bytes Objects
- These functions raise :exc:`TypeError` when expecting a bytes parameter and
- called with a non-bytes parameter.
+ .. index::
+    single: interactive mode
+-   module: __main__
++   pair: module; __main__
  
--.. index:: object: bytes
-+.. index:: pair: object; bytes
- 
- 
- .. c:type:: PyBytesObject
-Index: Python-3.10.13/Doc/c-api/capsule.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/capsule.rst
-+++ Python-3.10.13/Doc/c-api/capsule.rst
-@@ -5,7 +5,7 @@
- Capsules
- --------
- 
--.. index:: object: Capsule
-+.. index:: pair: object; Capsule
- 
- Refer to :ref:`using-capsules` for more information on using these objects.
- 
-Index: Python-3.10.13/Doc/c-api/complex.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/complex.rst
-+++ Python-3.10.13/Doc/c-api/complex.rst
-@@ -5,7 +5,7 @@
- Complex Number Objects
- ----------------------
- 
--.. index:: object: complex number
-+.. index:: pair: object; complex number
- 
- Python's complex number objects are implemented as two distinct types when
- viewed from the C API:  one is the Python object exposed to Python programs, and
-Index: Python-3.10.13/Doc/c-api/concrete.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/concrete.rst
-+++ Python-3.10.13/Doc/c-api/concrete.rst
-@@ -40,7 +40,7 @@ This section describes Python type objec
- Numeric Objects
- ===============
- 
--.. index:: object: numeric
-+.. index:: pair: object; numeric
- 
- .. toctree::
- 
-@@ -55,7 +55,7 @@ Numeric Objects
- Sequence Objects
+ The interpreter may also be invoked in interactive mode; in this case, it does
+ not read and execute a complete program but reads and executes one statement
+@@ -98,7 +98,7 @@ Expression input
  ================
  
--.. index:: object: sequence
-+.. index:: pair: object; sequence
+ .. index:: single: input
+-.. index:: builtin: eval
++.. index:: pair: built-in function; eval
  
- Generic operations on sequence objects were discussed in the previous chapter;
- this section deals with the specific kinds of sequence objects that are
-@@ -77,7 +77,7 @@ intrinsic to the Python language.
- Container Objects
- =================
- 
--.. index:: object: mapping
-+.. index:: pair: object; mapping
- 
- .. toctree::
- 
-Index: Python-3.10.13/Doc/c-api/dict.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/dict.rst
-+++ Python-3.10.13/Doc/c-api/dict.rst
-@@ -5,7 +5,7 @@
- Dictionary Objects
- ------------------
- 
--.. index:: object: dictionary
-+.. index:: pair: object; dictionary
+ :func:`eval` is used for expression input.  It ignores leading whitespace. The
+ string argument to :func:`eval` must have the following form:
+--- a/Doc/tools/extensions/pyspecific.py
++++ b/Doc/tools/extensions/pyspecific.py
+@@ -623,6 +623,30 @@ def process_audit_events(app, doctree, f
+         node.replace_self(table)
  
  
- .. c:type:: PyDictObject
-@@ -154,7 +154,7 @@ Dictionary Objects
- 
- .. c:function:: Py_ssize_t PyDict_Size(PyObject *p)
- 
--   .. index:: builtin: len
-+   .. index:: pair: built-in function; len
- 
-    Return the number of items in the dictionary.  This is equivalent to
-    ``len(p)`` on a dictionary.
-Index: Python-3.10.13/Doc/c-api/file.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/file.rst
-+++ Python-3.10.13/Doc/c-api/file.rst
-@@ -5,7 +5,7 @@
- File Objects
- ------------
- 
--.. index:: object: file
-+.. index:: pair: object; file
- 
- These APIs are a minimal emulation of the Python 2 C API for built-in file
- objects, which used to rely on the buffered I/O (:c:expr:`FILE*`) support
-Index: Python-3.10.13/Doc/c-api/float.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/float.rst
-+++ Python-3.10.13/Doc/c-api/float.rst
-@@ -5,7 +5,7 @@
- Floating Point Objects
- ----------------------
- 
--.. index:: object: floating point
-+.. index:: pair: object; floating point
- 
- 
- .. c:type:: PyFloatObject
-Index: Python-3.10.13/Doc/c-api/function.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/function.rst
-+++ Python-3.10.13/Doc/c-api/function.rst
-@@ -5,7 +5,7 @@
- Function Objects
- ----------------
- 
--.. index:: object: function
-+.. index:: pair: object; function
- 
- There are a few functions specific to Python functions.
- 
-Index: Python-3.10.13/Doc/c-api/list.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/list.rst
-+++ Python-3.10.13/Doc/c-api/list.rst
-@@ -5,7 +5,7 @@
- List Objects
- ------------
- 
--.. index:: object: list
-+.. index:: pair: object; list
- 
- 
- .. c:type:: PyListObject
-@@ -45,7 +45,7 @@ List Objects
- 
- .. c:function:: Py_ssize_t PyList_Size(PyObject *list)
- 
--   .. index:: builtin: len
-+   .. index:: pair: built-in function; len
- 
-    Return the length of the list object in *list*; this is equivalent to
-    ``len(list)`` on a list object.
-@@ -138,7 +138,7 @@ List Objects
- 
- .. c:function:: PyObject* PyList_AsTuple(PyObject *list)
- 
--   .. index:: builtin: tuple
-+   .. index:: pair: built-in function; tuple
- 
-    Return a new tuple object containing the contents of *list*; equivalent to
-    ``tuple(list)``.
-Index: Python-3.10.13/Doc/c-api/long.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/long.rst
-+++ Python-3.10.13/Doc/c-api/long.rst
-@@ -5,8 +5,8 @@
- Integer Objects
- ---------------
- 
--.. index:: object: long integer
--           object: integer
-+.. index:: pair: object; long integer
-+           pair: object; integer
- 
- All integers are implemented as "long" integer objects of arbitrary size.
- 
-Index: Python-3.10.13/Doc/c-api/memoryview.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/memoryview.rst
-+++ Python-3.10.13/Doc/c-api/memoryview.rst
-@@ -3,7 +3,7 @@
- .. _memoryview-objects:
- 
- .. index::
--   object: memoryview
-+   pair: object; memoryview
- 
- MemoryView objects
- ------------------
-Index: Python-3.10.13/Doc/c-api/method.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/method.rst
-+++ Python-3.10.13/Doc/c-api/method.rst
-@@ -5,7 +5,7 @@
- Instance Method Objects
- -----------------------
- 
--.. index:: object: instancemethod
-+.. index:: pair: object; instancemethod
- 
- An instance method is a wrapper for a :c:data:`PyCFunction` and the new way
- to bind a :c:data:`PyCFunction` to a class object. It replaces the former call
-@@ -47,7 +47,7 @@ to bind a :c:data:`PyCFunction` to a cla
- Method Objects
- --------------
- 
--.. index:: object: method
-+.. index:: pair: object; method
- 
- Methods are bound function objects. Methods are always bound to an instance of
- a user-defined class. Unbound methods (methods bound to a class object) are
-Index: Python-3.10.13/Doc/c-api/module.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/module.rst
-+++ Python-3.10.13/Doc/c-api/module.rst
-@@ -5,7 +5,7 @@
- Module Objects
- --------------
- 
--.. index:: object: module
-+.. index:: pair: object; module
- 
- 
- .. c:var:: PyTypeObject PyModule_Type
-Index: Python-3.10.13/Doc/c-api/none.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/none.rst
-+++ Python-3.10.13/Doc/c-api/none.rst
-@@ -5,7 +5,7 @@
- The ``None`` Object
- -------------------
- 
--.. index:: object: None
-+.. index:: pair: object; None
- 
- Note that the :c:type:`PyTypeObject` for ``None`` is not directly exposed in the
- Python/C API.  Since ``None`` is a singleton, testing for object identity (using
-Index: Python-3.10.13/Doc/c-api/set.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/set.rst
-+++ Python-3.10.13/Doc/c-api/set.rst
-@@ -9,8 +9,8 @@ Set Objects
- 
- 
- .. index::
--   object: set
--   object: frozenset
-+   pair: object; set
-+   pair: object; frozenset
- 
- This section details the public API for :class:`set` and :class:`frozenset`
- objects.  Any functionality not listed below is best accessed using either
-@@ -107,7 +107,7 @@ or :class:`frozenset` or instances of th
- 
- .. c:function:: Py_ssize_t PySet_Size(PyObject *anyset)
- 
--   .. index:: builtin: len
-+   .. index:: pair: built-in function; len
- 
-    Return the length of a :class:`set` or :class:`frozenset` object. Equivalent to
-    ``len(anyset)``.  Raises a :exc:`PyExc_SystemError` if *anyset* is not a
-Index: Python-3.10.13/Doc/c-api/tuple.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/tuple.rst
-+++ Python-3.10.13/Doc/c-api/tuple.rst
-@@ -5,7 +5,7 @@
- Tuple Objects
- -------------
- 
--.. index:: object: tuple
-+.. index:: pair: object; tuple
- 
- 
- .. c:type:: PyTupleObject
-Index: Python-3.10.13/Doc/c-api/type.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/type.rst
-+++ Python-3.10.13/Doc/c-api/type.rst
-@@ -5,7 +5,7 @@
- Type Objects
- ------------
- 
--.. index:: object: type
-+.. index:: pair: object; type
- 
- 
- .. c:type:: PyTypeObject
-Index: Python-3.10.13/Doc/library/sys.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/sys.rst
-+++ Python-3.10.13/Doc/library/sys.rst
-@@ -398,7 +398,7 @@ always available.
-    an except clause."  For any stack frame, only information about the exception
-    being currently handled is accessible.
- 
--   .. index:: object: traceback
-+   .. index:: pair: object; traceback
- 
-    If no exception is being handled anywhere on the stack, a tuple containing
-    three ``None`` values is returned.  Otherwise, the values returned are
-Index: Python-3.10.13/Doc/library/traceback.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/traceback.rst
-+++ Python-3.10.13/Doc/library/traceback.rst
-@@ -14,7 +14,7 @@ interpreter when it prints a stack trace
- stack traces under program control, such as in a "wrapper" around the
- interpreter.
- 
--.. index:: object: traceback
-+.. index:: pair: object; traceback
- 
- The module uses traceback objects --- this is the object type that is stored in
- the :data:`sys.last_traceback` variable and returned as the third item from
-Index: Python-3.10.13/Doc/tutorial/classes.rst
-===================================================================
---- Python-3.10.13.orig/Doc/tutorial/classes.rst
-+++ Python-3.10.13/Doc/tutorial/classes.rst
++def patch_pairindextypes(app) -> None:
++    if app.builder.name != 'gettext':
++        return
++
++    # allow translating deprecated index entries
++    try:
++        from sphinx.domains.python import pairindextypes
++    except ImportError:
++        pass
++    else:
++        # Sphinx checks if a 'pair' type entry on an index directive is one of
++        # the Sphinx-translated pairindextypes values. As we intend to move
++        # away from this, we need Sphinx to believe that these values don't
++        # exist, by deleting them when using the gettext builder.
++
++        pairindextypes.pop('module', None)
++        pairindextypes.pop('keyword', None)
++        pairindextypes.pop('operator', None)
++        pairindextypes.pop('object', None)
++        pairindextypes.pop('exception', None)
++        pairindextypes.pop('statement', None)
++        pairindextypes.pop('builtin', None)
++
++
+ def setup(app):
+     app.add_role('issue', issue_role)
+     app.add_role('gh', gh_issue_role)
+@@ -645,6 +669,7 @@ def setup(app):
+     app.add_directive_to_domain('py', 'awaitablemethod', PyAwaitableMethod)
+     app.add_directive_to_domain('py', 'abstractmethod', PyAbstractMethod)
+     app.add_directive('miscnews', MiscNews)
++    app.connect('builder-inited', patch_pairindextypes)
+     app.connect('doctree-resolved', process_audit_events)
+     app.connect('env-merge-info', audit_events_merge)
+     app.connect('env-purge-doc', audit_events_purge)
+--- a/Doc/tutorial/classes.rst
++++ b/Doc/tutorial/classes.rst
 @@ -344,7 +344,7 @@ list objects have methods called append,
  However, in the following discussion, we'll use the term method exclusively to
  mean methods of class instance objects, unless explicitly stated otherwise.)
@@ -2781,10 +2983,8 @@ Index: Python-3.10.13/Doc/tutorial/classes.rst
  
  Valid method names of an instance object depend on its class.  By definition,
  all attributes of a class that are function  objects define corresponding
-Index: Python-3.10.13/Doc/tutorial/controlflow.rst
-===================================================================
---- Python-3.10.13.orig/Doc/tutorial/controlflow.rst
-+++ Python-3.10.13/Doc/tutorial/controlflow.rst
+--- a/Doc/tutorial/controlflow.rst
++++ b/Doc/tutorial/controlflow.rst
 @@ -46,7 +46,7 @@ details see :ref:`tut-match`.
  ==========================
  
@@ -2794,288 +2994,50 @@ Index: Python-3.10.13/Doc/tutorial/controlflow.rst
  
  The :keyword:`for` statement in Python differs a bit from what you may be used
  to in C or Pascal.  Rather than always iterating over an arithmetic progression
-Index: Python-3.10.13/Doc/c-api/import.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/import.rst
-+++ Python-3.10.13/Doc/c-api/import.rst
-@@ -41,7 +41,7 @@ Importing Modules
- 
- .. c:function:: PyObject* PyImport_ImportModuleEx(const char *name, PyObject *globals, PyObject *locals, PyObject *fromlist)
- 
--   .. index:: builtin: __import__
-+   .. index:: pair: built-in function; __import__
- 
-    Import a module.  This is best described by referring to the built-in Python
-    function :func:`__import__`.
-@@ -120,7 +120,7 @@ Importing Modules
- 
- .. c:function:: PyObject* PyImport_ExecCodeModule(const char *name, PyObject *co)
- 
--   .. index:: builtin: compile
-+   .. index:: pair: built-in function; compile
- 
-    Given a module name (possibly of the form ``package.module``) and a code object
-    read from a Python bytecode file or obtained from the built-in function
-Index: Python-3.10.13/Doc/c-api/mapping.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/mapping.rst
-+++ Python-3.10.13/Doc/c-api/mapping.rst
-@@ -20,7 +20,7 @@ See also :c:func:`PyObject_GetItem`, :c:
- .. c:function:: Py_ssize_t PyMapping_Size(PyObject *o)
-                Py_ssize_t PyMapping_Length(PyObject *o)
- 
--   .. index:: builtin: len
-+   .. index:: pair: built-in function; len
- 
-    Returns the number of keys in object *o* on success, and ``-1`` on failure.
-    This is equivalent to the Python expression ``len(o)``.
-Index: Python-3.10.13/Doc/c-api/number.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/number.rst
-+++ Python-3.10.13/Doc/c-api/number.rst
-@@ -64,7 +64,7 @@ Number Protocol
- 
- .. c:function:: PyObject* PyNumber_Divmod(PyObject *o1, PyObject *o2)
- 
--   .. index:: builtin: divmod
-+   .. index:: pair: built-in function; divmod
- 
-    See the built-in function :func:`divmod`. Returns ``NULL`` on failure.  This is
-    the equivalent of the Python expression ``divmod(o1, o2)``.
-@@ -72,7 +72,7 @@ Number Protocol
- 
- .. c:function:: PyObject* PyNumber_Power(PyObject *o1, PyObject *o2, PyObject *o3)
- 
--   .. index:: builtin: pow
-+   .. index:: pair: built-in function; pow
- 
-    See the built-in function :func:`pow`. Returns ``NULL`` on failure.  This is the
-    equivalent of the Python expression ``pow(o1, o2, o3)``, where *o3* is optional.
-@@ -94,7 +94,7 @@ Number Protocol
- 
- .. c:function:: PyObject* PyNumber_Absolute(PyObject *o)
- 
--   .. index:: builtin: abs
-+   .. index:: pair: built-in function; abs
- 
-    Returns the absolute value of *o*, or ``NULL`` on failure.  This is the equivalent
-    of the Python expression ``abs(o)``.
-@@ -192,7 +192,7 @@ Number Protocol
- 
- .. c:function:: PyObject* PyNumber_InPlacePower(PyObject *o1, PyObject *o2, PyObject *o3)
- 
--   .. index:: builtin: pow
-+   .. index:: pair: built-in function; pow
- 
-    See the built-in function :func:`pow`. Returns ``NULL`` on failure.  The operation
-    is done *in-place* when *o1* supports it.  This is the equivalent of the Python
-@@ -238,7 +238,7 @@ Number Protocol
- 
- .. c:function:: PyObject* PyNumber_Long(PyObject *o)
- 
--   .. index:: builtin: int
-+   .. index:: pair: built-in function; int
- 
-    Returns the *o* converted to an integer object on success, or ``NULL`` on
-    failure.  This is the equivalent of the Python expression ``int(o)``.
-@@ -246,7 +246,7 @@ Number Protocol
- 
- .. c:function:: PyObject* PyNumber_Float(PyObject *o)
- 
--   .. index:: builtin: float
-+   .. index:: pair: built-in function; float
- 
-    Returns the *o* converted to a float object on success, or ``NULL`` on failure.
-    This is the equivalent of the Python expression ``float(o)``.
-Index: Python-3.10.13/Doc/c-api/object.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/object.rst
-+++ Python-3.10.13/Doc/c-api/object.rst
-@@ -172,7 +172,7 @@ Object Protocol
- 
- .. c:function:: PyObject* PyObject_Repr(PyObject *o)
- 
--   .. index:: builtin: repr
-+   .. index:: pair: built-in function; repr
- 
-    Compute a string representation of object *o*.  Returns the string
-    representation on success, ``NULL`` on failure.  This is the equivalent of the
-@@ -184,7 +184,7 @@ Object Protocol
- 
- .. c:function:: PyObject* PyObject_ASCII(PyObject *o)
- 
--   .. index:: builtin: ascii
-+   .. index:: pair: built-in function; ascii
- 
-    As :c:func:`PyObject_Repr`, compute a string representation of object *o*, but
-    escape the non-ASCII characters in the string returned by
-@@ -209,7 +209,7 @@ Object Protocol
- 
- .. c:function:: PyObject* PyObject_Bytes(PyObject *o)
- 
--   .. index:: builtin: bytes
-+   .. index:: pair: built-in function; bytes
- 
-    Compute a bytes representation of object *o*.  ``NULL`` is returned on
-    failure and a bytes object on success.  This is equivalent to the Python
-@@ -260,7 +260,7 @@ Object Protocol
- 
- .. c:function:: Py_hash_t PyObject_Hash(PyObject *o)
- 
--   .. index:: builtin: hash
-+   .. index:: pair: built-in function; hash
- 
-    Compute and return the hash value of an object *o*.  On failure, return ``-1``.
-    This is the equivalent of the Python expression ``hash(o)``.
-@@ -294,7 +294,7 @@ Object Protocol
- 
- .. c:function:: PyObject* PyObject_Type(PyObject *o)
- 
--   .. index:: builtin: type
-+   .. index:: pair: built-in function; type
- 
-    When *o* is non-``NULL``, returns a type object corresponding to the object type
-    of object *o*. On failure, raises :exc:`SystemError` and returns ``NULL``.  This
-@@ -315,7 +315,7 @@ Object Protocol
- .. c:function:: Py_ssize_t PyObject_Size(PyObject *o)
-                Py_ssize_t PyObject_Length(PyObject *o)
- 
--   .. index:: builtin: len
-+   .. index:: pair: built-in function; len
- 
-    Return the length of object *o*.  If the object *o* provides either the sequence
-    and mapping protocols, the sequence length is returned.  On error, ``-1`` is
-Index: Python-3.10.13/Doc/c-api/sequence.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/sequence.rst
-+++ Python-3.10.13/Doc/c-api/sequence.rst
-@@ -18,7 +18,7 @@ Sequence Protocol
- .. c:function:: Py_ssize_t PySequence_Size(PyObject *o)
-                Py_ssize_t PySequence_Length(PyObject *o)
- 
--   .. index:: builtin: len
-+   .. index:: pair: built-in function; len
- 
-    Returns the number of objects in sequence *o* on success, and ``-1`` on
-    failure.  This is equivalent to the Python expression ``len(o)``.
-@@ -120,7 +120,7 @@ Sequence Protocol
- 
- .. c:function:: PyObject* PySequence_Tuple(PyObject *o)
- 
--   .. index:: builtin: tuple
-+   .. index:: pair: built-in function; tuple
- 
-    Return a tuple object with the same contents as the sequence or iterable *o*,
-    or ``NULL`` on failure.  If *o* is a tuple, a new reference will be returned,
-Index: Python-3.10.13/Doc/c-api/structures.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/structures.rst
-+++ Python-3.10.13/Doc/c-api/structures.rst
-@@ -351,7 +351,7 @@ method.
- 
- .. data:: METH_CLASS
- 
--   .. index:: builtin: classmethod
-+   .. index:: pair: built-in function; classmethod
- 
-    The method will be passed the type object as the first parameter rather
-    than an instance of the type.  This is used to create *class methods*,
-@@ -361,7 +361,7 @@ method.
- 
- .. data:: METH_STATIC
- 
--   .. index:: builtin: staticmethod
-+   .. index:: pair: built-in function; staticmethod
- 
-    The method will be passed ``NULL`` as the first parameter rather than an
-    instance of the type.  This is used to create *static methods*, similar to
-Index: Python-3.10.13/Doc/c-api/typeobj.rst
-===================================================================
---- Python-3.10.13.orig/Doc/c-api/typeobj.rst
-+++ Python-3.10.13/Doc/c-api/typeobj.rst
-@@ -803,7 +803,7 @@ and :c:type:`PyType_Type` effectively ac
- 
- .. c:member:: reprfunc PyTypeObject.tp_repr
- 
--   .. index:: builtin: repr
-+   .. index:: pair: built-in function; repr
- 
-    An optional pointer to a function that implements the built-in function
-    :func:`repr`.
-@@ -868,7 +868,7 @@ and :c:type:`PyType_Type` effectively ac
- 
- .. c:member:: hashfunc PyTypeObject.tp_hash
- 
--   .. index:: builtin: hash
-+   .. index:: pair: built-in function; hash
- 
-    An optional pointer to a function that implements the built-in function
-    :func:`hash`.
-Index: Python-3.10.13/Doc/extending/newtypes.rst
-===================================================================
---- Python-3.10.13.orig/Doc/extending/newtypes.rst
-+++ Python-3.10.13/Doc/extending/newtypes.rst
-@@ -149,7 +149,7 @@ done.  This can be done using the :c:fun
+--- a/Doc/tutorial/inputoutput.rst
++++ b/Doc/tutorial/inputoutput.rst
+@@ -285,8 +285,8 @@ Reading and Writing Files
+ =========================
  
  .. index::
-    single: string; object representation
--   builtin: repr
-+   pair: built-in function; repr
+-   builtin: open
+-   object: file
++   pair: built-in function; open
++   pair: object; file
  
- Object Presentation
- -------------------
-Index: Python-3.10.13/Doc/library/dis.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/dis.rst
-+++ Python-3.10.13/Doc/library/dis.rst
-@@ -1207,7 +1207,7 @@ All of the following opcodes use their a
+ :func:`open` returns a :term:`file object`, and is most commonly used with
+ two positional arguments and one keyword argument:
+@@ -466,7 +466,7 @@ Reference for a complete guide to file o
+ Saving structured data with :mod:`json`
+ ---------------------------------------
  
- .. opcode:: BUILD_SLICE (argc)
+-.. index:: module: json
++.. index:: pair: module; json
  
--   .. index:: builtin: slice
-+   .. index:: pair: built-in function; slice
+ Strings can easily be written to and read from a file.  Numbers take a bit more
+ effort, since the :meth:`read` method only returns strings, which will have to
+--- a/Doc/tutorial/modules.rst
++++ b/Doc/tutorial/modules.rst
+@@ -260,7 +260,7 @@ Some tips for experts:
+ Standard Modules
+ ================
  
-    Pushes a slice object on the stack.  *argc* must be 2 or 3.  If it is 2,
-    ``slice(TOS1, TOS)`` is pushed; if it is 3, ``slice(TOS2, TOS1, TOS)`` is
-Index: Python-3.10.13/Doc/library/pprint.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/pprint.rst
-+++ Python-3.10.13/Doc/library/pprint.rst
-@@ -171,7 +171,7 @@ The :mod:`pprint` module also provides s
+-.. index:: module: sys
++.. index:: pair: module; sys
  
- .. function:: isreadable(object)
+ Python comes with a library of standard modules, described in a separate
+ document, the Python Library Reference ("Library Reference" hereafter).  Some
+@@ -341,7 +341,7 @@ Without arguments, :func:`dir` lists the
  
--   .. index:: builtin: eval
-+   .. index:: pair: built-in function; eval
+ Note that it lists all types of names: variables, modules, functions, etc.
  
-    Determine if the formatted representation of *object* is "readable", or can be
-    used to reconstruct the value using :func:`eval`.  This always returns ``False``
-@@ -226,7 +226,7 @@ created.
+-.. index:: module: builtins
++.. index:: pair: module; builtins
  
- .. method:: PrettyPrinter.isreadable(object)
- 
--   .. index:: builtin: eval
-+   .. index:: pair: built-in function; eval
- 
-    Determine if the formatted representation of the object is "readable," or can be
-    used to reconstruct the value using :func:`eval`.  Note that this returns
-Index: Python-3.10.13/Doc/library/types.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/types.rst
-+++ Python-3.10.13/Doc/library/types.rst
-@@ -146,7 +146,7 @@ Standard names are defined for the follo
- 
- .. class:: CodeType(**kwargs)
- 
--   .. index:: builtin: compile
-+   .. index:: pair: built-in function; compile
- 
-    The type for code objects such as returned by :func:`compile`.
- 
-Index: Python-3.10.13/Doc/tutorial/stdlib.rst
-===================================================================
---- Python-3.10.13.orig/Doc/tutorial/stdlib.rst
-+++ Python-3.10.13/Doc/tutorial/stdlib.rst
+ :func:`dir` does not list the names of built-in functions and variables.  If you
+ want a list of those, they are defined in the standard module
+--- a/Doc/tutorial/stdlib.rst
++++ b/Doc/tutorial/stdlib.rst
 @@ -24,7 +24,7 @@ Be sure to use the ``import os`` style i
  will keep :func:`os.open` from shadowing the built-in :func:`open` function which
  operates much differently.
@@ -3085,33 +3047,3 @@ Index: Python-3.10.13/Doc/tutorial/stdlib.rst
  
  The built-in :func:`dir` and :func:`help` functions are useful as interactive
  aids for working with large modules like :mod:`os`::
-Index: Python-3.10.13/Doc/library/imp.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/imp.rst
-+++ Python-3.10.13/Doc/library/imp.rst
-@@ -10,7 +10,7 @@
- .. deprecated:: 3.4
-    The :mod:`imp` module is deprecated in favor of :mod:`importlib`.
- 
--.. index:: statement: import
-+.. index:: pair: statement; import
- 
- --------------
- 
-Index: Python-3.10.13/Doc/library/binascii.rst
-===================================================================
---- Python-3.10.13.orig/Doc/library/binascii.rst
-+++ Python-3.10.13/Doc/library/binascii.rst
-@@ -6,9 +6,9 @@
-               representations.
- 
- .. index::
--   module: uu
--   module: base64
--   module: binhex
-+   pair: module; uu
-+   pair: module; base64
-+   pair: module; binhex
- 
- --------------
- 
