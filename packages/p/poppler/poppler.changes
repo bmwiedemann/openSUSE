@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Feb 14 15:41:55 UTC 2024 - pgajdos@suse.com
+
+- version update to 24.02.0
+  Release 24.02.0:
+  core:
+   * Fix reading some JBIG2 streams. Issue #1319
+   * Fix saving some annotation interior color when it's empty
+   * Make searching for fonts when adding annotations a bit faster
+   * Make sure images are compressed when adding them
+   * Small internal code cleanup
+  utils:
+   * pdfimages: return exit code 2 when error opening output files
+  Release 24.01.0:
+  core:
+   * Don't crash on certain documents on the NSS signature backend
+   * Fix infinite loop in some annotation code if there's not space for even one character
+   * Fix build on Android with generic font configuration
+   * Small internal code cleanup
+
+-------------------------------------------------------------------
 Tue Dec 26 10:12:06 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - version update to 23.12.0
