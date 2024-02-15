@@ -18,7 +18,7 @@
 %define support_libdir /usr/lib/supportconfig
 
 Name:           supportutils
-Version:        3.2.6
+Version:        3.2.7
 Release:        0
 Summary:        Support Troubleshooting Tools
 License:        GPL-2.0-only

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 14 22:46:05 UTC 2024 - jason.record@suse.com
+
+- Changes to version 3.2.7
+  + Extended scaling for performance (bsc#1214713)
+  + Corrected get_sles_ver for SLE Micro (bsc#1219241)
+  + Check nvidida-persistenced state (bsc#1219639)
+
+-------------------------------------------------------------------
 Fri Jan 19 00:05:02 UTC 2024 - jason.record@suse.com
 
 - Changes to version 3.2.6

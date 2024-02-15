@@ -330,4 +330,12 @@
     <comment>bsc#1218812 bsc#1218814 (forwarded request 1140142 from jrecord)</comment>
     <requestid>1140143</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>eda5a7023d69dfab32b7387fd525f202</srcmd5>
+    <version>3.2.7</version>
+    <time>1708027224</time>
+    <user>anag+factory</user>
+    <comment>bsc#1214713 bsc#1219241 bsc#1219639 (forwarded request 1146662 from jrecord)</comment>
+    <requestid>1146663</requestid>
+  </revision>
 </revisionlist>
