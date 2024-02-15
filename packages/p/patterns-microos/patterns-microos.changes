@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  1 21:02:58 UTC 2024 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Add "Requires: gvfs and gvfs-backends" for KDE (boo#1216667)
+
+-------------------------------------------------------------------
 Tue Jan 30 19:12:13 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add "Requires: steam-devices" for both Gnome and KDE

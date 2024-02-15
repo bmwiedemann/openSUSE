@@ -694,6 +694,10 @@ Requires:       kcm_flatpak
 # Add steam-devices for controller support
 Requires:       steam-devices
 
+# Add gvfs and gvfs-backends (boo#1216667)
+Requires:       gvfs
+Requires:       gvfs-backends
+
 %description desktop-kde
 Packages required for the openSUSE MicroOS with KDE Plasma
 
