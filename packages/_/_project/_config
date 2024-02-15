@@ -2136,6 +2136,7 @@ BuildFlags: onlybuild:libdbusmenu-qt5
 BuildFlags: onlybuild:libdc1394
 BuildFlags: onlybuild:libdca
 BuildFlags: onlybuild:libdecor
+BuildFlags: onlybuild:libdeflate
 BuildFlags: onlybuild:libdovi
 BuildFlags: onlybuild:libdrm
 BuildFlags: onlybuild:libdv
