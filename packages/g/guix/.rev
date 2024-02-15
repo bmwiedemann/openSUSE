@@ -248,4 +248,12 @@ I tested it manually and it looks fine when the SR above is in. Although upstrea
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1057078</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>27590cfb5f07b8bf67f983bf1f8439f1</srcmd5>
+    <version>1.4.0</version>
+    <time>1708027220</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1146875</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 15 11:46:20 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Modify guix-user.conf so that /etc/group is modify, otherwise guix doesn't find the users of the guixbuild group.
+
+-------------------------------------------------------------------
+Sat Feb 10 21:12:36 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Create the users and group with systemd-sysusers. It automatically gives the
+  Provides tag required for RPM 4.19.
+
+-------------------------------------------------------------------
 Mon Jan  2 13:51:22 UTC 2023 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
 
 - Enable ppc64le support 

@@ -1,7 +1,7 @@
 #
 # spec file for package guix
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2023 Jonathan Brielmaier <j.brielmaier@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -45,6 +45,7 @@ Source12:       aarch64-linux-guile-2.0.14.tar.xz
 Source13:       aarch64-linux-guile-2.0.14.tar.xz.sig
 Source20:       run_guix_daemon.sh
 Source21:       run_guix_publish.sh
+Source22:       %{name}-user.conf
 BuildRequires:  gcc-c++
 BuildRequires:  gnutls-guile
 BuildRequires:  guile-charting
@@ -62,10 +63,12 @@ BuildRequires:  libgit2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  shepherd
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(libgcrypt)
 BuildRequires:  pkgconfig(sqlite3)
+%sysusers_requires
 Requires:       gnutls-guile
 Requires:       guile
 Requires:       guile-gcrypt
@@ -100,6 +103,7 @@ cp %{SOURCE6} gnu/packages/bootstrap/armhf-linux/guile-2.0.11.tar.xz
 cp %{SOURCE12} gnu/packages/bootstrap/aarch64-linux/guile-2.0.14.tar.xz
 
 %build
+%sysusers_generate_pre %{SOURCE22} %{name} %{name}-user.conf
 export GUILE_WARN_DEPRECATED
 %configure \
 	   --disable-silent-rules \
@@ -121,14 +125,9 @@ install -m 0755 -t %{buildroot}%{_bindir} %{SOURCE20}
 install -m 0755 -t %{buildroot}%{_bindir} %{SOURCE21}
 sed -i 's@^ExecStart=.*@ExecStart=/usr/bin/run_guix_daemon.sh@' %{buildroot}%{_unitdir}/guix-daemon.service
 sed -i 's@^ExecStart=.*@ExecStart=/usr/bin/run_guix_publish.sh@' %{buildroot}%{_unitdir}/guix-publish.service
+install -D -m 0644 %{SOURCE22} %{buildroot}%{_sysusersdir}/%{name}-user.conf
 
-%pre
-%{_sbindir}/groupadd -r %{guix_builder_group} >/dev/null 2>/dev/null || :
-for i in `seq 1 5`; do
-    %{_sbindir}/useradd -r -o -g %{guix_builder_group} -G %{guix_builder_group} \
-        -u $((60+$i)) -c "Guix builder $i" -s /sbin/nologin \
-        -d %{_localstatedir}/empty guix-builder$i 2> /dev/null || :
-done
+%pre -f %{name}.pre
 %service_add_pre guix-daemon.service
 %service_add_pre guix-publish.service
 
@@ -175,5 +174,6 @@ done
 %{_unitdir}/gnu-store.mount
 %attr(755,root,root) %dir /gnu
 %attr(775,root,%{guix_builder_group}) %dir /gnu/store
+%{_sysusersdir}/%{name}-user.conf
 
 %changelog
