@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 12 16:56:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 45.3:
+  + Datetime: Fix build with -Wincompatible-pointer-types.
+  + Region: Prevent preview crash from accessing invalid pointer.
+  + Wifi: Fix build with -Wincompatible-pointer-types.
+- Drop gnome-control-center-fix-region-preview-crash.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Thu Jan  4 02:08:39 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add gnome-control-center-fix-region-preview-crash.patch:
