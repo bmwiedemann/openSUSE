@@ -64,7 +64,7 @@ Source5:        README.SUSE
 Patch0:         use-qtmake-qt5.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150500
+%if 0%{?suse_version} < 1560 && 0%{?sle_version} <= 150600
 BuildRequires:  gcc12
 BuildRequires:  gcc12-c++
 %else
@@ -165,7 +165,7 @@ mv -f tmpfile thirdparty/rtf2html/README.ru
 %limit_build -m 2000
 %endif
 
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150500
+%if 0%{?suse_version} < 1560 && 0%{?sle_version} <= 150600
 export CC=gcc-12
 export CXX=g++-12
 %endif

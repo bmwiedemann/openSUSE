@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 15 07:57:52 UTC 2024 - Cor Blom <cornelis@solcon.nl>
+
+- Update version check for Leap 15.6 so that gcc 12 is used also
+  there
+
+-------------------------------------------------------------------
 Thu Feb  1 16:54:53 UTC 2024 - Lubos Kocman <Lubos.Kocman+factory@suse.de>
 
 - Use valid SPDX tag GPL-3.0 WITH Font-exception-2.0
