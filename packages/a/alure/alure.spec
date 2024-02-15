@@ -1,7 +1,7 @@
 #
 # spec file for package alure
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ Patch2:         fix-lib-suffix.patch
 Patch3:         fix-link-flac.patch
 Patch4:         fix-FLUIDSYNTH_CFLAGS.patch
 Patch5:         fix-dumb2.patch
+Patch6:         alure-cmake-3.28.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ninja

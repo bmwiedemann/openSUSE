@@ -1,0 +1,13 @@
+Index: alure-1.2/CMakeLists.txt
+===================================================================
+--- alure-1.2.orig/CMakeLists.txt
++++ alure-1.2/CMakeLists.txt
+@@ -223,7 +223,7 @@ IF(SNDFILE)
+         SET(HAS_SNDFILE 1)
+         LINK_DIRECTORIES(${SNDFILE_LIBRARY_DIRS})
+         SET_SOURCE_FILES_PROPERTIES(src/codec_sndfile.cpp PROPERTIES
+-                                    COMPILE_FLAGS "${SNDFILE_CFLAGS}")
++                                    COMPILE_OPTIONS "${SNDFILE_CFLAGS}")
+     ELSE(SNDFILE_FOUND)
+         FIND_PACKAGE(SndFile)
+         IF(SNDFILE_FOUND)

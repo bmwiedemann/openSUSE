@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 14 15:55:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add alure-cmake-3.28.patch: Fix build using CMake 3.28: set
+  sndfile flags into COMPILE_OPTIONS (which takes a semicolon
+  separatedlist) instead of COMPILE_FLAGS (which asks for a shell
+  usable string).
+
+-------------------------------------------------------------------
 Wed Sep  7 05:16:39 UTC 2022 - munix9@googlemail.com
 
 - Change URL/Source to https://kcat.tomasu.net/alure.html
