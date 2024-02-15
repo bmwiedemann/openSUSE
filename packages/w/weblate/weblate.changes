@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Jan 25 09:04:33 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.3.1
+  * Migration notice: it is recommended to upgrade to v5.0.2 first
+  * Too many changes, see https://docs.weblate.org/en/latest/changes.html for a complete list
+  4.18.2 - 5.0.2:
+  * Markdown files support, thanks to Anders Kaplan.
+  * Category can now organize components within a project.
+  * Fluent format now has better syntax checks thanks to Henry Wilkes.
+  * Inviting users now works with all authentication methods.
+  * Docker container supports file backed secrets, see Passing secrets.
+  * Plurals handling in machine translation.
+  * XLIFF now supports displaying source string location.
+  * User API token is now hidden for privacy reasons by default.
+  * Users now have to confirm invitations to become team members.
+  * Visual diff now better understands compositing characters.
+  * Python 3.9 or newer is now required
+  * Several UI URLs have been changed to be able to handle categories.
+  * Related glossary terms lookup is now faster.
+  * Added object id to all Weblate’s REST API endpoints.
+  * Added compatibility redirects for some old URLs.
+  * pyahocorasick dependency has been replaced by ahocorasick_rs.
+  * The default value of IP_PROXY_OFFSET has been changed from 1 to -1.
+  * Translate page performance.
+  * Search now looks for categories as well.
+  5.0.2 - 5.3.1:
+  * Yandex v2 machine translation service.
+  * Automatic translations are now stored with a dedicated user as an author.
+  * Enable reviews also shows the approval percentage in object listings.
+  * Project is added to watched upon accepting an invitation.
+  * Improved accuracy of checks on plural messages.
+  * Categories are now included weblate:// repository URLs.
+  * Faster statistics updates.
+  * Better e-mail selection in user profile.
+  * Automatic fixups are now applied to suggestions as well.
+  * Use neutral colors for progress bars and translation unit states.
+  * One-click removal of project or component Notifications.
+  * Apple iOS strings exporter now produces UTF-8 encoded files.
+  * Python 3.12 is now supported
+  * OpenAI automatic suggestion service.
+  * Alibaba automatic suggestion service.
+  * Added labels API, see GET /api/projects/(string:project)/labels/.
+  * Dropped Microsoft Terminology service for automatic suggestions, as it is no longer provided by Microsoft.
+  * labels in units API now expose full label info, see GET /api/units/(int:id)/.
+- Drop merged patches:
+  * redis_config_remove_parser_class.patch
+  * pyparsing.patch
+
+-------------------------------------------------------------------
 Tue Oct 31 13:04:53 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Add build dependency on redis and openssh
