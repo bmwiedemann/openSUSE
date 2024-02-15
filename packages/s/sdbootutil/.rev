@@ -139,4 +139,12 @@
   * Add list-entries command</comment>
     <requestid>1140775</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>afa3d30a078eb2371bb501af89447efb</srcmd5>
+    <version>1+git20240214.ba81e0e</version>
+    <time>1708027134</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1146526</requestid>
+  </revision>
 </revisionlist>

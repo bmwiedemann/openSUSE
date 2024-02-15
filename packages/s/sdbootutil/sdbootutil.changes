@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 14 08:58:18 UTC 2024 - lnussel@suse.com
+
+- Update to version 1+git20240214.ba81e0e:
+  * Fix pcr-oracle use
+  * Add device when generating initrd for snapshots
+  * Use systemd-pcrlock
+  * Pre-built initrd support
+  * Add subvolumes_prefix support
+
+-------------------------------------------------------------------
 Tue Jan 23 07:46:31 UTC 2024 - lnussel@suse.com
 
 - Update to version 1+git20240122.c0d8f76:
