@@ -1,7 +1,7 @@
 #
 # spec file for package gap-fga
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           gap-fga
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        GAP: Free Group Algorithms
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            http://www.icm.tu-bs.de/ag_algebra/software/FGA/
-#Git-Clone:     https://github.com/chsievers/fga
-Source:         http://www.icm.tu-bs.de/ag_algebra/software/FGA/FGA-%version.tar.gz
+URL:            https://github.com/gap-packages/fga
+Source:         https://github.com/gap-packages/fga/releases/download/v%version/fga-%version.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
 Requires:       gap-core >= 4.8
@@ -43,7 +42,7 @@ automorphism group of a finitely generated free group and allows to
 write any such automorphism as word in these generators.
 
 %prep
-%autosetup -n fga
+%autosetup -n fga-%version
 
 %build
 
