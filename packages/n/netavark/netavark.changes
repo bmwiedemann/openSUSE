@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 13 08:43:45 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 1.10.3:
+  * v1.10.3
+  * fix netavark update to not start a new aardvark-dns
+
+-------------------------------------------------------------------
 Tue Feb  6 07:50:29 UTC 2024 - Danish Prakash <danish.prakash@suse.com>
 
 - Rely only on <major>.<minor> for aardvark-dns requires, even though

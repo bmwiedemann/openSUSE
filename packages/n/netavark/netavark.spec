@@ -19,7 +19,7 @@
 %define major_minor %((v=%{version}; echo ${v%.*}))
 
 Name:           netavark
-Version:        1.10.2
+Version:        1.10.3
 Release:        0
 Summary:        Container network stack
 License:        Apache-2.0
