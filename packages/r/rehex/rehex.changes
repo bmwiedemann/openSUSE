@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Feb 15 07:55:57 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.61.0:
+  * Permit trailing commas in template enum definitions (#216).
+  * Add overwrite/insert toggle to "Fill range" dialog (#213).
+  * Add copy/export context menu commands to strings tool (#210).
+  * Fix temporary hang in strings tool when processing large files (#217).
+  * Fix settings not being saved during application exit.
+  * Batch comments panel updates to improve responsiveness (#205).
+  * Add search field to comments panel (#204).
+  * Add bit editor tool.
+  * Add checksum tool (#219).
+  * Add options to search for floating point values.
+  * Don't reload files modified externally when requested not to.
+  * Start search when Enter is pressed in search dialog input field,
+	  or search backwards when Shift+Enter is pressed.
+  * Add "Reload automatically" toggle to "File" menu to automatically
+	  reload the file when modified externally (and not in the editor) (#222).
+  * Preserve scroll position when reloading file.
+
+-------------------------------------------------------------------
 Mon Jul 31 06:17:56 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.60.1:

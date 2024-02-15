@@ -121,4 +121,28 @@
     to access global variables defined above them (#190).</comment>
     <requestid>1101459</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b1816b816ff3cbde037a82063d3b05a6</srcmd5>
+    <version>0.61.0</version>
+    <time>1708027291</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.61.0:
+  * Permit trailing commas in template enum definitions (#216).
+  * Add overwrite/insert toggle to &quot;Fill range&quot; dialog (#213).
+  * Add copy/export context menu commands to strings tool (#210).
+  * Fix temporary hang in strings tool when processing large files (#217).
+  * Fix settings not being saved during application exit.
+  * Batch comments panel updates to improve responsiveness (#205).
+  * Add search field to comments panel (#204).
+  * Add bit editor tool.
+  * Add checksum tool (#219).
+  * Add options to search for floating point values.
+  * Don't reload files modified externally when requested not to.
+  * Start search when Enter is pressed in search dialog input field,
+	  or search backwards when Shift+Enter is pressed.
+  * Add &quot;Reload automatically&quot; toggle to &quot;File&quot; menu to automatically
+	  reload the file when modified externally (and not in the editor) (#222).
+  * Preserve scroll position when reloading file.</comment>
+    <requestid>1146850</requestid>
+  </revision>
 </revisionlist>

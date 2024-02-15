@@ -1,7 +1,7 @@
 #
 # spec file for package rehex
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rehex
-Version:        0.60.1
+Version:        0.61.0
 Release:        0
 Summary:        Reverse Engineers' Hex Editor
 License:        GPL-2.0-only
@@ -32,6 +32,7 @@ BuildRequires:  perl-Template-GD
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  zip
+BuildRequires:  pkgconfig(botan-2)
 BuildRequires:  pkgconfig(capstone)
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(lua)
