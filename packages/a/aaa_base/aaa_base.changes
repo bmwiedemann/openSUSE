@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 02 12:55:26 UTC 2024 - ro@suse.com
+
+- Update to version 84.87+git20240202.9526d46:
+  * properly shorten the variable when setting JAVA_HOME and JRE_HOME
+  * silence output of alljava
+  * Restrict ptrace with Yama LSM by default
+  * patch alljava.sh and alljava.csh, use the links from update alternatives
+
+-------------------------------------------------------------------
 Mon Oct 23 07:15:15 UTC 2023 - lnussel@suse.de
 
 - Update to version 84.87+git20231023.f347d36:

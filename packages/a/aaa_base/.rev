@@ -4095,4 +4095,16 @@
   * Remove shaky safe-rm and safe-rmdir helpers (bsc#1159103)</comment>
     <requestid>1119551</requestid>
   </revision>
+  <revision rev="495" vrev="1">
+    <srcmd5>520e1f4bb36bfcab277e462b54ef4e38</srcmd5>
+    <version>84.87+git20240202.9526d46</version>
+    <time>1708027463</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 84.87+git20240202.9526d46:
+  * properly shorten the variable when setting JAVA_HOME and JRE_HOME
+  * silence output of alljava
+  * Restrict ptrace with Yama LSM by default
+  * patch alljava.sh and alljava.csh, use the links from update alternatives</comment>
+    <requestid>1143637</requestid>
+  </revision>
 </revisionlist>
