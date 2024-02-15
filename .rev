@@ -386,4 +386,12 @@ Fix swab patch also. (forwarded request 225109 from matwey)</comment>
     <comment></comment>
     <requestid>1095424</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>bfb6dc540792588394fa483c0a980e9f</srcmd5>
+    <version>2.2.7</version>
+    <time>1708027113</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1146141</requestid>
+  </revision>
 </revisionlist>
