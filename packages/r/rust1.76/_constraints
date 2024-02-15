@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<constraints>
+  <hardware>
+    <!-- processors doesn't actually ... get you that many threads. Sigh -->
+    <!-- request number of jobs instead (6 is max on ppc/s390x) -->
+    <jobs>6</jobs>
+    <physicalmemory>
+      <size unit="G">4</size>
+    </physicalmemory>
+    <disk>
+      <!-- Needed when we may need to bundle llvm -->
+      <size unit="G">30</size>
+    </disk>
+  </hardware>
+<!-- aarch64:  X-Gene cpus are the only ones that work as there is a bug in others - select -->
+<!--  12G of ram to ensure these are what's used. -->
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+    </conditions>
+    <hardware>
+      <physicalmemory>
+        <size unit="G">12</size>
+      </physicalmemory>
+    </hardware>
+  </overwrite>
+</constraints>
