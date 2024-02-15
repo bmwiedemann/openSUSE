@@ -404,4 +404,12 @@
     <comment>- Update to release 7.20</comment>
     <requestid>1143103</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>2ba2e748265582569ace5738d3af6146</srcmd5>
+    <version>7.21</version>
+    <time>1708027115</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 7.21</comment>
+    <requestid>1146171</requestid>
+  </revision>
 </revisionlist>
