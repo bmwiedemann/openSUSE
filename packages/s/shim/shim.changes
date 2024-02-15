@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Feb 15 09:46:09 UTC 2024 - Joey Lee <jlee@suse.com>
+
+- Sometimes SLE shim signature be Microsoft updated before openSUSE shim
+  signature. When submit request on IBS for updating SLE shim, the submitreq
+  project be generated, but it always be blocked by checking the signature
+  of openSUSE shim.
+  It doesn't make sense checking openSUSE shim signature when building
+  SLE shim on SLE platform, and vice versa. So the following change adds the
+  logic to compare suffix (sles, opensuse) with distro_id (sle, opensuse).
+  When and only when hash mismatch and distro_id match with suffix, stop
+  building.
+        # compare suffix (sles, opensuse) with distro_id (sle, opensuse)
+        # when hash mismatch and distro_id match with suffix, stop building 
+- Sync the changelog between openSUSE:Factory/shim with SLE-15-SP3/shim
+    - Add CVE-2022-28737 number to "Mon Mar 27 09:26:02 UTC 2023" record
+    - Add "Thu Apr 13 05:28:10 UTC 2023" record for updating shim-install
+      for bsc#1210382.
+    - Add "Thu Apr 13 09:13:22 UTC 2023" record for changing the logic of
+      checking shim signature. 
+
+-------------------------------------------------------------------
+Wed Feb  7 08:54:52 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update shim-install to set the TPM2 SRK algorithm (bsc#1213945)
+  92d0f4305df73 Set the SRK algorithm for the TPM2 protector
+
+-------------------------------------------------------------------
 Fri Feb  2 05:57:07 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Limit the requirement of fde-tpm-helper-macros to the distro with
@@ -86,6 +113,11 @@ Sun Jan 28 09:32:32 UTC 2024 - Dennis Tseng <dennis.tseng@suse.com>
         5914984 (HEAD -> main, tag: latest-release, tag: 15.8, origin/main, origin/HEAD) Bump version to 15.8 
 
 -------------------------------------------------------------------
+Wed Jan 24 12:40:36 UTC 2024 - Ludwig Nussel <lnussel@suse.com>
+
+- Generate dbx during build so we don't include binary files in sources
+
+-------------------------------------------------------------------
 Thu Oct  5 13:19:48 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
 
 - Don't require grub so shim can still be used with systemd-boot
@@ -113,6 +145,42 @@ Mon May 15 03:28:47 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
     49e7a0d307f3  Do not use tpm_record_pcrs unless the command is in command.lst
 
 -------------------------------------------------------------------
+Thu Apr 13 09:13:22 UTC 2023 - Joey Lee <jlee@suse.com>
+
+- Sometimes SLE shim signature be Microsoft updated before openSUSE shim
+  signature. When submit request on IBS for updating SLE shim, the submitreq
+  project be generated, but it always be blocked by checking the signature
+  of openSUSE shim.
+  It doesn't make sense checking openSUSE shim signature when building
+  SLE shim on SLE platform, and vice versa. So the following change adds the
+  logic to compare suffix (sles, opensuse) with distro_id (sle, opensuse).
+  When and only when hash mismatch and distro_id match with suffix, stop
+  building.
+        # compare suffix (sles, opensuse) with distro_id (sle, opensuse)
+        # when hash mismatch and distro_id match with suffix, stop building 
+
+-------------------------------------------------------------------
+Thu Apr 13 05:28:10 UTC 2023 - Joey Lee <jlee@suse.com>
+
+- Upgrade shim-install for bsc#1210382
+  After closing Leap-gap project since Leap 15.3, openSUSE Leap direct
+  uses shim from SLE. So the ca_string is 'SUSE Linux Enterprise Secure Boot
+  CA1', not 'openSUSE Secure Boot CA1'. It causes that the update_boot=no,
+  so all files in /boot/efi/EFI/boot are not updated.
+
+  The 86b73d1 patch added the logic that using ID field in os-release for
+  checking Leap distro and set ca_string to 'SUSE Linux Enterprise Secure
+  Boot CA1'. Then /boot/efi/EFI/boot/* can also be updated.
+- https://github.com/SUSE/shim-resources (git log --oneline)
+	86b73d1 Fix that bootx64.efi is not updated on Leap
+	f2e8143 Use the long name to specify the grub2 key protector
+	7283012 cryptodisk: support TPM authorized policies
+	49e7a0d Do not use tpm_record_pcrs unless the command is in command.lst
+	26c6bd5 Have grub take a snapshot of "relevant" TPM PCRs
+	5c2c3ad Handle different cases of controlling cryptomount volumes during first stage boot
+	a5c5734 Introduce --no-grub-install option
+
+-------------------------------------------------------------------
 Mon Apr 10 05:04:33 UTC 2023 - Joey Lee <jlee@suse.com>
 
 - Removed POST_PROCESS_PE_FLAGS=-N from the build command in shim.spec to
@@ -124,7 +192,7 @@ Mon Apr 10 05:04:33 UTC 2023 - Joey Lee <jlee@suse.com>
 Mon Mar 27 09:26:02 UTC 2023 - Joey Lee <jlee@suse.com>
 
 - Updated shim signature after shim 15.7 of SLE be signed back:
-  signature-sles.x86_64.asc, signature-sles.aarch64.asc (bsc#1198458)
+  signature-sles.x86_64.asc, signature-sles.aarch64.asc (bsc#1198458, CVE-2022-28737)
 
 -------------------------------------------------------------------
 Thu Jan 12 07:00:19 UTC 2023 - Joey Lee <jlee@suse.com>
