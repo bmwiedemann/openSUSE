@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 14 05:54:01 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 4.9.3:
+  * Bump to v4.9.3
+  * Release notes for v4.9.3
+  * [v4.9] [skip-ci] packit: update fedora downstream branches
+  * @@option volume.image: be specific that -v only affects RUN
+  * Accept a config blob alongside the "changes" slice when committing
+  * container create: use ParseUserNamespace to parse a user namespace setting
+  * Bump to v4.9.3-dev
+
+-------------------------------------------------------------------
 Sat Feb 03 09:11:15 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 4.9.2:
