@@ -17,7 +17,7 @@
 
 
 Name:           atuin
-Version:        17.2.1
+Version:        18.0.1
 Release:        0
 Summary:        Magical shell history
 License:        MIT
@@ -25,7 +25,6 @@ Group:          System/Console
 URL:            https://github.com/ellie/atuin
 Source0:        https://github.com/ellie/atuin/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-Patch1:         0000-disable_update_check.patch
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  cargo-packaging
@@ -67,7 +66,8 @@ Zsh command line completion support for %{name}.
 %autosetup -a1 -p1
 
 %build
-%{cargo_build} --all-features
+# Omit feature "check-update" and disable defaults
+%{cargo_build} --no-default-features -F "client,sync,server,clipboard"
 
 for shell in "zsh" "bash" "fish"
 do
@@ -82,7 +82,7 @@ install -D -m 0644 "target/%{name}.zsh" "%{buildroot}/%{_datadir}/zsh/site-funct
 
 %files
 %license LICENSE
-%doc README.md docs/docs/* atuin/src/shell
+%doc README.md docs/* atuin/src/shell
 %{_bindir}/atuin
 
 %files bash-completion
