@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb  8 13:58:23 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix various TLS related issues including FTP over SSL
+  transmission timeouts:
+  * 0001-vtls-revert-receive-max-buffer-add-test-case.patch
+- Switch to %autosetup
+
+-------------------------------------------------------------------
 Wed Jan 31 09:11:56 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 8.6.0: [bsc#1219149, CVE-2024-0853]

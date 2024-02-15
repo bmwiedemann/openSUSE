@@ -35,6 +35,8 @@ Patch1:         dont-mess-with-rpmoptflags.patch
 Patch2:         curl-secure-getenv.patch
 #PATCH-FIX-OPENSUSE bsc#1076446 protocol redirection not supported or disabled
 Patch3:         curl-disabled-redirect-protocol-message.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         0001-vtls-revert-receive-max-buffer-add-test-case.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 Requires:       libcurl4 = %{version}
@@ -100,8 +102,7 @@ DICT, TELNET, LDAP, or FILE). The command is designed to work without
 user interaction or any kind of interactivity.
 
 %prep
-%setup -q -n curl-%{version}
-%autopatch -p1
+%autosetup -p1
 
 %build
 # curl complains if macro definition is contained in CFLAGS
