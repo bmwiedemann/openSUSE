@@ -1,0 +1,50 @@
+From 916a239f518e96c77c35a58db7f1dcc00e5fb5f0 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Fri, 9 Feb 2024 13:12:33 +0100
+Subject: [PATCH] ppc64_cpu: Clean up sysfs smt/control error handling
+
+When the kernel does not support the sysfs intercface do not report and
+arror, fall back to the old method silently.
+
+Suggested-by: Nathan Lynch<nathanl@linux.ibm.com>
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+It has been suggested to also not try the old iterface in case of
+unknown error because it's unlikely to work but that would needlessly
+complicate the code.
+---
+ src/ppc64_cpu.c | 18 ++++++++++++++----
+ 1 file changed, 14 insertions(+), 4 deletions(-)
+
+diff --git a/src/ppc64_cpu.c b/src/ppc64_cpu.c
+index c318928..759ceff 100644
+--- a/src/ppc64_cpu.c
++++ b/src/ppc64_cpu.c
+@@ -368,10 +368,20 @@ static int is_dscr_capable(void)
+ static int set_smt_control(int smt_state)
+ {
+ 	if (set_attribute(SYS_SMT_CONTROL, "%d", smt_state)) {
+-		/* Silently ignore kernel not supporting this feature */
+-		if (errno != ENODEV)
+-			perror(SYS_SMT_CONTROL);
+-		return -1;
++		switch (errno) {
++			case ENOENT:
++			/*
++			 * The kernel does not have the interface.
++			 * Try the old method.
++			 */
++				return -1;
++			case ENODEV:
++			/* Setting SMT state not supported on the system. */
++				return 0;
++			default:
++				perror(SYS_SMT_CONTROL);
++				return -1;
++		}
+ 	}
+ 	return 0;
+ }
+-- 
+2.43.0
+

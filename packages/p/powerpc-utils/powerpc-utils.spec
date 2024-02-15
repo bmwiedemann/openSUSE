@@ -17,7 +17,7 @@
 
 
 Name:           powerpc-utils
-Version:        1.3.11
+Version:        1.3.12
 Release:        0
 Summary:        Utilities for PowerPC Hardware
 License:        GPL-2.0-or-later
@@ -29,18 +29,8 @@ Patch1:         powerpc-utils-lsprop.patch
 Patch2:         ofpathname_powernv.patch
 Patch3:         fix_kexec_service_name_for_suse.patch
 Patch4:         libvirt-service-dep.patch
-Patch5:         lparstat-Fix-negative-values-seen-while-running-lpar.patch
-Patch6:         lparstat-report-mixed-SMT-state.patch
-Patch7:         lparstat-Fix-offline-threads-uninitialized-entries.patch
 Patch8:         ppc64_cpu-Support-partial-SMT-level-through-SYS-FS-s.patch
-Patch9:         powerpc-utils-scripts-ofpathname-handle-nsid-of-nvme.patch
-Patch10:        bootlist-Support-multiple-dev-paths-for-a-nvme-boot-.patch
-Patch11:        rtas_dbg-Fix-the-large-negative-values-in-rtas_dbg.patch
-Patch12:        powerpc-nvram-fix-segmentation-fault-issue-in-print-.patch
-Patch13:        powerpc-nvram-Fix-Segmentation-fault-issue-in-nvram-.patch
-Patch14:        nvram-man-page-and-help-output-are-not-in-sync.patch
-Patch15:        ppc64_cpu-info-fix-bad-report-when-non-continuous-CP.patch
-Patch16:        hcn-init-Split-services-per-connection-manager.patch
+Patch9:         ppc64_cpu-Clean-up-sysfs-smt-control-error-handling.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libnuma-devel

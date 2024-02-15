@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Feb  9 12:21:41 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- Do not print an error when the kernel does not support sysfs smt interface
+  * ppc64_cpu-Clean-up-sysfs-smt-control-error-handling.patch
+
+-------------------------------------------------------------------
+Thu Feb  8 09:43:47 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 1.3.12
+  * Add drmgr CPU DLPAR hooks
+  * Fix lsslot output (bsc#1219716 ltc#204541)
+- Drop upstreamed patches
+  * lparstat-Fix-negative-values-seen-while-running-lpar.patch
+  * lparstat-report-mixed-SMT-state.patch
+  * lparstat-Fix-offline-threads-uninitialized-entries.patch
+  * powerpc-utils-scripts-ofpathname-handle-nsid-of-nvme.patch
+  * bootlist-Support-multiple-dev-paths-for-a-nvme-boot-.patch
+  * rtas_dbg-Fix-the-large-negative-values-in-rtas_dbg.patch
+  * powerpc-nvram-fix-segmentation-fault-issue-in-print-.patch
+  * powerpc-nvram-Fix-Segmentation-fault-issue-in-nvram-.patch
+  * nvram-man-page-and-help-output-are-not-in-sync.patch
+  * ppc64_cpu-info-fix-bad-report-when-non-continuous-CP.patch
+  * hcn-init-Split-services-per-connection-manager.patch
+
+-------------------------------------------------------------------
 Mon Feb  5 15:30:16 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
 
 - Use separate hcn-init service for wicked and NM (bsc#1200731 ltc#198485)
