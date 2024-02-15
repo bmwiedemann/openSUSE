@@ -1,7 +1,7 @@
 #
 # spec file for package suitesparse
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%ifarch %{arm}
+%ifarch %{arm} aarch64
 %define _lto_cflags %{nil}
 %endif
 
@@ -29,72 +29,125 @@
 Name:           suitesparse
 Summary:        A collection of sparse matrix libraries
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
-Version:        5.13.0
+Version:        7.5.1
 Release:        0
+Group:          Development/Libraries/C and C++
 URL:            https://people.engr.tamu.edu/davis/suitesparse.html
 Source0:        https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v%{version}.tar.gz#/SuiteSparse-%{version}.tar.gz
-Source2:        %{name}-rpmlintrc
-# PATCH-FIX-OPENSUSE build_csparse_shared.patch -- Build CSparse as a shared library
-Patch1:         build_csparse_shared.patch
-Patch775418:    bnc775418-enable-SuiteSparse_time-symbol.patch
-%if 0%{?suse_version} < 1500
-BuildRequires:  gcc7
-BuildRequires:  gcc7-c++
-%else
+Source1:        https://sparse.tamu.edu/files/ssstats.csv
+
+# Add our manually written for-convenience python script that lists all other sources
+# This script is basically a modification of the runTests script
+# https://github.com/DrTimothyAldenDavis/SuiteSparse/blob/dev/Mongoose/Tests/runTests
+Source2:        list-mongoose-test-sources.py
+Source3:        README-suse-maintenance.md
+# Sources needed for tests, numbered starting from 100
+Source100:      https://sparse.tamu.edu/MM/HB/1138_bus.tar.gz
+Source101:      https://sparse.tamu.edu/MM/HB/494_bus.tar.gz
+Source102:      https://sparse.tamu.edu/MM/HB/662_bus.tar.gz
+Source103:      https://sparse.tamu.edu/MM/HB/685_bus.tar.gz
+Source104:      https://sparse.tamu.edu/MM/HB/arc130.tar.gz
+Source105:      https://sparse.tamu.edu/MM/HB/ash292.tar.gz
+Source106:      https://sparse.tamu.edu/MM/HB/ash85.tar.gz
+Source107:      https://sparse.tamu.edu/MM/HB/bcspwr01.tar.gz
+Source108:      https://sparse.tamu.edu/MM/HB/bcspwr02.tar.gz
+Source109:      https://sparse.tamu.edu/MM/HB/bcspwr03.tar.gz
+Source110:      https://sparse.tamu.edu/MM/HB/bcspwr09.tar.gz
+Source111:      https://sparse.tamu.edu/MM/HB/bcsstk17.tar.gz
+Source112:      https://sparse.tamu.edu/MM/HB/bcsstm02.tar.gz
+Source113:      https://sparse.tamu.edu/MM/HB/jagmesh7.tar.gz
+Source114:      https://sparse.tamu.edu/MM/HB/lnsp3937.tar.gz
+Source115:      https://sparse.tamu.edu/MM/HB/lshp3466.tar.gz
+Source116:      https://sparse.tamu.edu/MM/HB/sherman1.tar.gz
+Source117:      https://sparse.tamu.edu/MM/HB/sstmodel.tar.gz
+Source118:      https://sparse.tamu.edu/MM/Boeing/crystm01.tar.gz
+Source119:      https://sparse.tamu.edu/MM/Boeing/msc04515.tar.gz
+Source120:      https://sparse.tamu.edu/MM/Gset/G42.tar.gz
+Source121:      https://sparse.tamu.edu/MM/Nasa/nasa4704.tar.gz
+Source122:      https://sparse.tamu.edu/MM/Andrianov/fxm3_6.tar.gz
+Source123:      https://sparse.tamu.edu/MM/Andrianov/net25.tar.gz
+Source124:      https://sparse.tamu.edu/MM/Oberwolfach/LF10000.tar.gz
+Source125:      https://sparse.tamu.edu/MM/Pajek/Erdos992.tar.gz
+Source126:      https://sparse.tamu.edu/MM/Pajek/USpowerGrid.tar.gz
+Source127:      https://sparse.tamu.edu/MM/Pajek/yeast.tar.gz
+Source128:      https://sparse.tamu.edu/MM/Schenk_IBMNA/c-38.tar.gz
+Source129:      https://sparse.tamu.edu/MM/Schenk_IBMNA/c-43.tar.gz
+Source130:      https://sparse.tamu.edu/MM/Gleich/minnesota.tar.gz
+Source131:      https://sparse.tamu.edu/MM/Newman/netscience.tar.gz
+Source132:      https://sparse.tamu.edu/MM/AG-Monien/netz4504.tar.gz
+Source133:      https://sparse.tamu.edu/MM/DIMACS10/delaunay_n13.tar.gz
+Source134:      https://sparse.tamu.edu/MM/DIMACS10/tx2010.tar.gz
+
+# This patch is to keep our test sources since upstream has to likely update
+# their sources for tests. This is not a fix for upstream but to adapt with
+# how open build service works since it disallows network connections during
+# the build.
+Patch1:         keep-mongoose-test-sources.patch
+BuildRequires:  cmake >= 3.22
+BuildRequires:  fdupes
 BuildRequires:  gcc >= 4.9
 BuildRequires:  gcc-c++ >= 4.9
-%endif
-BuildRequires:  chrpath
-BuildRequires:  cmake >= 3.13
 BuildRequires:  gcc-fortran
 BuildRequires:  gmp-devel
 BuildRequires:  lapack-devel
 BuildRequires:  m4
+BuildRequires:  make
 BuildRequires:  memory-constraints
 BuildRequires:  metis-devel
 BuildRequires:  mpfr-devel
 BuildRequires:  tbb-devel
+BuildRequires:  valgrind
 %if %{with openblas}
 BuildRequires:  openblas-devel
+%else
+BuildRequires:  blas-devel
 %endif
-%define amdver       2.4.6
-%define btfver       1.2.6
-%define camdver      2.4.6
-%define ccolamdver   2.9.6
-%define cholmodver   3.0.14
-%define colamdver    2.9.6
-%define csparsever   3.2.0
-%define cxsparsever  3.2.0
-%define graphblasver 7.2.0
-%define kluver       1.3.9
-%define ldlver       2.2.6
-%define mongoosever  2.0.4
-%define rbiover      2.2.6
-%define slipluver    1.0.2
-%define spqrver      2.1.0
-%define umfpackver   5.7.9
-# Your need define even it's just the same as main package
-# or the %%build loop will override %%version with umfpack's version.
-%define configver    5.13.0
-%define csparsemajor %(echo "%{csparsever}" | cut -d "." -f1)
-%define amdlib       %(echo "libamd%{amdver}"                  | cut -d "." -f1)
-%define btflib       %(echo "libbtf%{btfver}"                  | cut -d "." -f1)
-%define camdlib      %(echo "libcamd%{camdver}"                | cut -d "." -f1)
-%define ccolamdlib   %(echo "libccolamd%{ccolamdver}"          | cut -d "." -f1)
-%define cholmodlib   %(echo "libcholmod%{cholmodver}"          | cut -d "." -f1)
-%define colamdlib    %(echo "libcolamd%{colamdver}"            | cut -d "." -f1)
-%define csparselib   %(echo "libcsparse%{csparsever}"          | cut -d "." -f1)
-%define cxsparselib  %(echo "libcxsparse%{cxsparsever}"        | cut -d "." -f1)
-%define graphblaslib %(echo "libgraphblas%{graphblasver}"      | cut -d "." -f1)
-%define klulib       %(echo "libklu%{kluver}"                  | cut -d "." -f1)
-%define ldllib       %(echo "libldl%{ldlver}"                  | cut -d "." -f1)
-%define mongooselib  %(echo "libmongoose%{mongoosever}"        | cut -d "." -f1)
-%define rbiolib      %(echo "librbio%{rbiover}"                | cut -d "." -f1)
-%define sliplulib    %(echo "libsliplu%{slipluver}"            | cut -d "." -f1)
-%define spqrlib      %(echo "libspqr%{spqrver}"                | cut -d "." -f1)
-%define umfpacklib   %(echo "libumfpack%{umfpackver}"          | cut -d "." -f1)
-%define configlib    %(echo "libsuitesparseconfig%{configver}" | cut -d "." -f1)
+%define amd_sover                  3
+%define btf_sover                  2
+%define camd_sover                 3
+%define ccolamd_sover              3
+%define cholmod_sover              5
+%define colamd_sover               3
+%define config_sover               7
+%define csparse_sover              4
+%define cxsparse_sover             4
+%define graphblas_sover            9
+%define klu_sover                  2
+%define ldl_sover                  3
+%define lagraph_sover              1
+%define lagraphx_sover             1
+%define paru_sover                 0
+%define mongoose_sover             3
+%define suitesparse_mongoose_sover 3
+%define rbio_sover                 4
+%define sliplu_sover               1
+%define spex_sover                 2
+%define spqr_sover                 4
+%define umfpack_sover              6
+%define klu_cholmod_sover          2
+%define amdlib                     libamd%{amd_sover}
+%define btflib                     libbtf%{btf_sover}
+%define camdlib                    libcamd%{camd_sover}
+%define ccolamdlib                 libccolamd%{ccolamd_sover}
+%define cholmodlib                 libcholmod%{cholmod_sover}
+%define colamdlib                  libcolamd%{colamd_sover}
+%define configlib                  libsuitesparseconfig%{config_sover}
+%define csparselib                 libcsparse%{csparse_sover}
+%define cxsparselib                libcxsparse%{cxsparse_sover}
+%define graphblaslib               libgraphblas%{graphblas_sover}
+%define suitesparse_mongooselib    libsuitesparse_mongoose%{suitesparse_mongoose_sover}
+%define parulib                    libparu%{paru_sover}
+%define lagraphlib                 liblagraph%{lagraph_sover}
+%define lagraphxlib                liblagraphx%{lagraphx_sover}
+%define klulib                     libklu%{klu_sover}
+%define ldllib                     libldl%{ldl_sover}
+%define mongooselib                libmongoose%{mongoose_sover}
+%define rbiolib                    librbio%{rbio_sover}
+%define spexlib                    libspex%{spex_sover}
+%define spqrlib                    libspqr%{spqr_sover}
+%define umfpacklib                 libumfpack%{umfpack_sover}
+%define klu_cholmodlib             libklu_cholmod%{klu_cholmod_sover}
+%{?suse_build_hwcaps_libs}
 
 %description
 suitesparse is a collection of libraries for computations involving sparse
@@ -104,81 +157,36 @@ matrices.
 Summary:        Development headers for SuiteSparse
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-%if 0%{?suse_version} < 1500
-Requires:       gcc7-c++
-%else
+Requires:       %{amdlib}                  = %{version}
+Requires:       %{btflib}                  = %{version}
+Requires:       %{camdlib}                 = %{version}
+Requires:       %{ccolamdlib}              = %{version}
+Requires:       %{cholmodlib}              = %{version}
+Requires:       %{colamdlib}               = %{version}
+Requires:       %{configlib}               = %{version}
+Requires:       %{configlib}               = %{version}
+Requires:       %{cxsparselib}             = %{version}
+Requires:       %{graphblaslib}            = %{version}
+Requires:       %{klu_cholmodlib}          = %{version}
+Requires:       %{klu_cholmodlib}          = %{version}
+Requires:       %{klulib}                  = %{version}
+Requires:       %{lagraphlib}              = %{version}
+Requires:       %{lagraphxlib}             = %{version}
+Requires:       %{ldllib}                  = %{version}
+Requires:       %{parulib}                 = %{version}
+Requires:       %{rbiolib}                 = %{version}
+Requires:       %{spexlib}                 = %{version}
+Requires:       %{spqrlib}                 = %{version}
+Requires:       %{suitesparse_mongooselib} = %{version}
+Requires:       %{umfpacklib}              = %{version}
 Requires:       gcc-c++ >= 4.9
-%endif
-Requires:       %{amdlib}       = %{amdver}
-Requires:       %{btflib}       = %{btfver}
-Requires:       %{camdlib}      = %{camdver}
-Requires:       %{ccolamdlib}   = %{ccolamdver}
-Requires:       %{cholmodlib}   = %{cholmodver}
-Requires:       %{colamdlib}    = %{colamdver}
-Requires:       %{configlib}    = %{configver}
-Requires:       %{configlib}    = %{version}
-Requires:       %{csparselib}   = %{csparsever}
-Requires:       %{cxsparselib}  = %{cxsparsever}
-Requires:       %{graphblaslib} = %{graphblasver}
-Requires:       %{klulib}       = %{kluver}
-Requires:       %{ldllib}       = %{ldlver}
-Requires:       %{mongooselib}  = %{mongoosever}
-Requires:       %{rbiolib}      = %{rbiover}
-Requires:       %{sliplulib}     = %{slipluver}
-Requires:       %{spqrlib}      = %{spqrver}
-Requires:       %{umfpacklib}   = %{umfpackver}
 Requires:       metis-devel
 %if %{with openblas}
 Requires:       openblas-devel
 %else
-Requires:       lapack-devel
+Requires:       blas-devel
 %endif
 Requires:       tbb-devel
-# make sure developers can find these packages
-Provides:       SuiteSparse_config         = %{version}
-Obsoletes:      SuiteSparse_config         < %{version}
-Provides:       amd-devel                  = %{amdver}
-Obsoletes:      amd-devel                  < %{amdver}
-Provides:       suitesparse-common-devel   = %{version}
-Obsoletes:      suitesparse-common-devel   < %{version}
-Provides:       umfpack-devel              = %{umfpackver}
-Obsoletes:      umfpack-devel              < %{umfpackver}
-Provides:       libamd-devel               = %{amdver}
-Obsoletes:      libamd-devel               < %{amdver}
-Provides:       libbtf-devel               = %{btfver}
-Obsoletes:      libbtf-devel               < %{btfver}
-Provides:       libcamd-devel              = %{camdver}
-Obsoletes:      libcamd-devel              < %{camdver}
-Provides:       libccolamd-devel           = %{ccolamdver}
-Obsoletes:      libccolamd-devel           < %{ccolamdver}
-Provides:       libcholmod-devel           = %{cholmodver}
-Obsoletes:      libcholmod-devel           < %{cholmodver}
-Provides:       libcolamd-devel            = %{colamdver}
-Obsoletes:      libcolamd-devel            < %{colamdver}
-Provides:       libcsparse-devel           = %{csparsever}
-Obsoletes:      libcsparse-devel           < %{csparsever}
-Provides:       libcxsparse-devel          = %{cxsparsever}
-Obsoletes:      libcxsparse-devel          < %{cxsparsever}
-Provides:       libgraphblas-devel         = %{graphblasver}
-Obsoletes:      libgraphblas-devel         < %{graphblasver}
-Provides:       libklu-devel               = %{kluver}
-Obsoletes:      libklu-devel               < %{kluver}
-Provides:       libldl-devel               = %{ldlver}
-Obsoletes:      libldl-devel               < %{ldlver}
-Provides:       libmongoose-devel          = %{mongoosever}
-Obsoletes:      libmongoose-devel          < %{mongoosever}
-Provides:       librbio-devel              = %{rbiover}
-Obsoletes:      librbio-devel              < %{rbiover}
-Provides:       libsliplu-devel            = %{slipluver}
-Obsoletes:      libsliplu-devel            < %{slipluver}
-Provides:       libspqr-devel              = %{spqrver}
-Obsoletes:      libspqr-devel              < %{spqrver}
-Provides:       libumfpack-devel           = %{umfpackver}
-Obsoletes:      libumfpack-devel           < %{umfpackver}
-Provides:       libsuitesparseconfig-devel = %{configver}
-Obsoletes:      libsuitesparseconfig-devel < %{configver}
-Provides:       UFconfig-devel             = %{configver}
-Obsoletes:      UFconfig-devel             < %{configver}
 
 %description devel
 suitesparse is a collection of libraries for computations involving
@@ -187,24 +195,10 @@ sparse matrices.
 The suitesparse-devel package contains files needed for developing
 applications which use the suitesparse libraries.
 
-%package devel-static
-Summary:        Static version of SuiteSparse libraries
-License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
-Requires:       %{name}-devel = %{version}
-
-%description devel-static
-The suitesparse-static package contains the statically linkable
-version of the suitesparse libraries.
-
 %package -n %{amdlib}
-Version:        %{amdver}
-Release:        0
 Summary:        Symmetric Approximate Minimum Degree
 License:        BSD-3-Clause
 Group:          System/Libraries
-Provides:       %(echo "libamd-%{amdver}" | tr . _) = %{version}
-Obsoletes:      %(echo "libamd-%{amdver}" | tr . _) < %{version}
 
 %description -n %{amdlib}
 AMD is a set of routines for ordering a sparse matrix prior to
@@ -220,18 +214,15 @@ AMD is part of the SuiteSparse sparse matrix suite.
 Summary:        Documentation for libamd
 License:        BSD-3-Clause
 Group:          Documentation/Other
+BuildArch:      noarch
 
 %description -n libamd-doc
 Documentation for libamd.
 
 %package -n %{btflib}
-Version:        %{btfver}
-Release:        0
 Summary:        Permutation to Block Triangular Form
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-Provides:       %(echo "libbtf-%{btfver}" | tr . _) = %{version}
-Obsoletes:      %(echo "libbtf-%{btfver}" | tr . _) < %{version}
 
 %description -n %{btflib}
 BTF permutes an unsymmetric matrix (square or rectangular) into its
@@ -241,13 +232,9 @@ Mendelsohn decomposition).
 BTF is part of the SuiteSparse sparse matrix suite.
 
 %package -n %{camdlib}
-Version:        %{camdver}
-Release:        0
 Summary:        Symmetric Approximate Minimum Degree
 License:        BSD-3-Clause
 Group:          System/Libraries
-Provides:       %(echo "libcamd-%{camdver}" | tr . _) = %{version}
-Obsoletes:      %(echo "libcamd-%{camdver}" | tr . _) < %{version}
 
 %description -n %{camdlib}
 CAMD is a set of routines for ordering a sparse matrix prior to
@@ -261,18 +248,15 @@ CAMD is part of the SuiteSparse sparse matrix suite.
 Summary:        Documentation for libcamd
 License:        BSD-3-Clause
 Group:          Documentation/Other
+BuildArch:      noarch
 
 %description -n libcamd-doc
 Documentation for libcam.
 
 %package -n %{ccolamdlib}
-Version:        %{ccolamdver}
-Release:        0
 Summary:        Constrained Column Approximate Minimum Degree
 License:        BSD-3-Clause
 Group:          System/Libraries
-Provides:       %(echo "libccolamd-%{ccolamdver}" | tr . _) = %{version}
-Obsoletes:      %(echo "libccolamd-%{ccolamdver}" | tr . _) < %{version}
 
 %description -n %{ccolamdlib}
 CCOLAMD computes an column approximate minimum degree ordering
@@ -282,13 +266,9 @@ constraints. CCOLAMD is required by the CHOLMOD package.
 CCOLAMD is part of the SuiteSparse sparse matrix suite.
 
 %package -n %{cholmodlib}
-Version:        %{cholmodver}
-Release:        0
 Summary:        Supernodal Sparse Cholesky Factorization and Update/Downdate
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          System/Libraries
-Provides:       %(echo "libcholmod-%{cholmodver}" | tr . _) = %{version}
-Obsoletes:      %(echo "libcholmod-%{cholmodver}" | tr . _) < %{version}
 #bnc746867 cholmod from suitesparse should be GPL-2.0 and/or LGPL-2.0 licensed
 
 %description -n %{cholmodlib}
@@ -311,13 +291,9 @@ direct code.
 CHOLMOD is part of the SuiteSparse sparse matrix suite.
 
 %package -n %{colamdlib}
-Version:        %{colamdver}
-Release:        0
 Summary:        Column Approximate Minimum Degree
 License:        BSD-3-Clause
 Group:          System/Libraries
-Provides:       %(echo "libcolamd-%{colamdver}" | tr . _) = %{version}
-Obsoletes:      %(echo "libcolamd-%{colamdver}" | tr . _) < %{version}
 
 %description -n %{colamdlib}
 The COLAMD column approximate minimum degree ordering algorithm
@@ -333,46 +309,10 @@ counterparts, colmmd and symmmd.
 
 COLAMD is part of the SuiteSparse sparse matrix suite.
 
-%package -n %{csparselib}
-Version:        %{csparsever}
-Release:        0
-Summary:        Instructional Sparse Matrix Package
-License:        LGPL-2.1-or-later
-Group:          System/Libraries
-Provides:       %(echo "libcsparse-%{csparsever}" | tr . _) = %{version}
-Obsoletes:      %(echo "libcsparse-%{csparsever}" | tr . _) < %{version}
-# AT version 3.1.9, this package was accidentally called libcsparsever-3_1_9
-%if "%{csparsever}" == "3.1.9"
-Obsoletes:      libcsparsever-3_1_9 = 3.1.9
-%endif
-
-%description -n %{csparselib}
-CSparse is a small yet feature-rich sparse matrix package written
-specifically for a book. The purpose of the package is to demonstrate
-a wide range of sparse matrix algorithms in as concise a code as
-possible. CSparse is about 2,200 lines long (excluding its MATLAB
-interface, demo codes, and test codes), yet it contains algorithms
-(either asympotical optimal or fast in practice) for all of the
-following functions described below. A MATLAB interface is included.
-
-Note that the LU and Cholesky factorization algorithms are not as
-fast as UMFPACK or CHOLMOD. Other functions have comparable
-performance as their MATLAB equivalents (some are faster).
-
-Documentation is very terse in the code; it is fully documented in
-the book. Some indication of how to call the C functions in CSparse
-is given by the CSparse/MATLAB/*.m help files.
-
-CSparse is part of the SuiteSparse sparse matrix suite.
-
 %package -n %{cxsparselib}
-Version:        %{cxsparsever}
-Release:        0
 Summary:        An extended version of CSparse
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-Provides:       %(echo "libcxsparse-%{cxsparsever}"   | tr . _) = %{version}
-Obsoletes:      %(echo "libcxsparse-%{cxsparsever}"   | tr . _) < %{version}
 
 %description -n %{cxsparselib}
 CXSparse is an extended version of CSparse, with support for double
@@ -381,13 +321,9 @@ or complex matrices, with int or long integers.
 CXSparse is part of the SuiteSparse sparse matrix suite.
 
 %package -n %{graphblaslib}
-Version:        %{graphblasver}
-Release:        0
 Summary:        An implementation of the GraphBLAS standard
 License:        Apache-2.0
 Group:          System/Libraries
-Provides:       %(echo "libgraphblas-%{graphblasver}" | tr . _) = %{version}
-Obsoletes:      %(echo "libgraphblas-%{graphblasver}" | tr . _) < %{version}
 
 %description -n %{graphblaslib}
 GraphBLAS is an full implementation of the GraphBLAS standard,
@@ -401,13 +337,9 @@ sparse matrix operations on a semiring.
 GraphBLAS is part of the SuiteSparse sparse matrix suite.
 
 %package -n %{klulib}
-Version:        %{kluver}
-Release:        0
 Summary:        Sparse LU Factorization, for Circuit Simulation
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-Provides:       %(echo "libklu-%{kluver}" | tr . _) = %{version}
-Obsoletes:      %(echo "libklu-%{kluver}" | tr . _) < %{version}
 
 %description -n %{klulib}
 KLU is a sparse LU factorization algorithm well-suited for use in
@@ -421,18 +353,15 @@ KLU is part of the SuiteSparse sparse matrix suite.
 Summary:        Documentation for libklu
 License:        LGPL-2.1-or-later
 Group:          Documentation/Other
+BuildArch:      noarch
 
 %description -n libklu-doc
 Documentation for libklu.
 
 %package -n %{ldllib}
-Version:        %{ldlver}
-Release:        0
 Summary:        A Simple LDL^T Factorization
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-Provides:       %(echo "libldl-%{ldlver}" | tr . _) = %{version}
-Obsoletes:      %(echo "libldl-%{ldlver}" | tr . _) < %{version}
 
 %description -n %{ldllib}
 LDL is a set of concise routines for factorizing symmetric positive-
@@ -451,41 +380,15 @@ LDL is part of the SuiteSparse sparse matrix suite.
 Summary:        Documentation for libldl
 License:        LGPL-2.1-or-later
 Group:          Documentation/Other
+BuildArch:      noarch
 
 %description -n libldl-doc
 Documentation for libldl.
 
-%package -n %{mongooselib}
-Version:        %{mongoosever}
-Release:        0
-Summary:        Graph partitioning library
-License:        GPL-3.0-only
-Group:          System/Libraries
-Provides:       %(echo "libldl-%{mongoosever}" | tr . _) = %{version}
-Obsoletes:      %(echo "libldl-%{mongoosever}" | tr . _) < %{version}
-
-%description -n %{mongooselib}
-Mongoose is a graph partitioning library. Currently, Mongoose only
-supports edge partitioning.
-
-mongoose is part of the SuiteSparse sparse matrix suite.
-
-%package -n libmongoose-doc
-Summary:        Documentation for libmongoose
-License:        GPL-3.0-only
-Group:          Documentation/Other
-
-%description -n libmongoose-doc
-Documentation for libmongoose.
-
 %package -n %{rbiolib}
-Version:        %{rbiover}
-Release:        0
 Summary:        MATLAB Toolbox for Reading/Writing Sparse Matrices
 License:        GPL-2.0-or-later
 Group:          System/Libraries
-Provides:       %(echo "librbio-%{rbiover}" | tr . _) = %{version}
-Obsoletes:      %(echo "librbio-%{rbiover}" | tr . _) < %{version}
 
 %description -n %{rbiolib}
 RBio is a MATLAB toolbox for reading/writing sparse matrices in the
@@ -495,35 +398,47 @@ Version 2.0+ is written in C.
 
 RBio is part of the SuiteSparse sparse matrix suite.
 
-%package -n %{sliplulib}
-Version:        %{slipluver}
-Release:        0
-Summary:        SLIP LU, A Sparse Left-Looking Integer Preserving LU Factorization
+%package -n %{spexlib}
+Summary:        SPEX, A SParse EXact Algebra Factorizations
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
 Group:          System/Libraries
-Provides:       %(echo "libsliplu-%{slipluver}" | tr . _) = %{version}
-Obsoletes:      %(echo "libsliplu-%{slipluver}" | tr . _) < %{version}
 
-%description -n %{sliplulib}
-SLIP LU is software package used to solve a sparse systems of linear equations
-exactly using the Sparse Left-looking Integer-Preserving LU factorization.
+%description -n %{spexlib}
+SPEX is software package used to solve a sparse systems of linear equations
+and replaces SLIP LU.
 
-SLIP LU solves a sparse system of linear equations using a given input
-matrix and right hand side vector file. This code can output the final
-solution to a user specified output file in either double precision or
-full precision rational numbers. If you intend to use SLIP LU within
-another program, refer to examples for help with this.
+SPEX Util is a software package containing utility and auxiliary functions for the
+SPEX factorizations. Additionally, SPEX Util provides a wrapper class for the GNU
+Multiple Precision Arithmetic (GMP) and GNU Multiple Precision Floating Point
+Reliable (MPFR) libraries that prevent memory leaks and improve the overall
+stability of these external libraries. SPEX Util is written in ANSI C.
 
-SLIP LU is part of the SuiteSparse sparse matrix suite.
+SPEX operates on matrices stored in any of the following 15 combinations of matrix formats and entry data-types
+
+SPEX and SPEX Utils are part of the SuiteSparse sparse matrix suite.
+
+%package -n     libspex-doc
+Summary:        SPEX, A SParse EXact Algebra Factorizations
+License:        GPL-2.0-or-later AND LGPL-3.0-or-later
+Group:          Documentation/Other
+BuildArch:      noarch
+
+%description -n libspex-doc
+Documentation for libspex.
+
+SPEX is software package used to solve a sparse systems of linear equations
+and replaces SLIP LU.
+
+SPEX Util is a software package containing utility and auxiliary functions for the
+SPEX factorizations. Additionally, SPEX Util provides a wrapper class for the GNU
+Multiple Precision Arithmetic (GMP) and GNU Multiple Precision Floating Point
+Reliable (MPFR) libraries that prevent memory leaks and improve the overall
+stability of these external libraries. SPEX Util is written in ANSI C.
 
 %package -n %{spqrlib}
-Version:        %{spqrver}
-Release:        0
 Summary:        Multifrontal Sparse QR
 License:        GPL-2.0-or-later
 Group:          System/Libraries
-Provides:       %(echo "libspqr-%{spqrver}" | tr . _) = %{version}
-Obsoletes:      %(echo "libspqr-%{spqrver}" | tr . _) < %{version}
 
 %description -n %{spqrlib}
 SuiteSparseQR is an implementation of the multifrontal sparse QR
@@ -537,13 +452,9 @@ written in C++ with user interfaces for MATLAB, C, and C++.
 SuiteSparseQR is part of the SuiteSparse sparse matrix suite.
 
 %package -n %{umfpacklib}
-Version:        %{umfpackver}
-Release:        0
 Summary:        Sparse Multifrontal LU Factorization
 License:        GPL-2.0-or-later
 Group:          System/Libraries
-Provides:       %(echo "libumfpack-%{umfpackver}" | tr . _) = %{version}
-Obsoletes:      %(echo "libumfpack-%{umfpackver}" | tr . _) < %{version}
 
 %description -n %{umfpacklib}
 UMFPACK is a set of routines for solving unsymmetric sparse linear
@@ -556,18 +467,100 @@ syllables, "Umph Pack". It is not "You Em Ef Pack".
 
 UMFPACK is part of the SuiteSparse sparse matrix suite.
 
+%package -n libumfpack-doc
+Summary:        Documentation for libumfpack
+License:        GPL-2.0-or-later
+Group:          Documentation/Other
+BuildArch:      noarch
+
+%description -n libumfpack-doc
+Documentation for libumfpack.
+
+%package -n %{klu_cholmodlib}
+Summary:        Helpers for GPU accelerated runtimes
+License:        GPL-2.0-or-later
+Group:          System/Libraries
+
+%description -n %{klu_cholmodlib}
+This package provides the helper functions for the GPU for
+SuiteSparse..
+
+KLU x CHOLMOD is part of the SuiteSparse sparse matrix suite.
+
+%package -n %{lagraphlib}
+Summary:        Community effort collection of algorithms on top of GraphBLAS
+License:        GPL-2.0-or-later
+Group:          System/Libraries
+
+%description -n %{lagraphlib}
+This package provides a collection of graph algorithms built on top of GraphBLAS.
+
+LAGraph is part of the SuiteSparse sparse matrix suite.
+
+%package -n %{lagraphxlib}
+Summary:        Community effort collection of algorithms on top of GraphBLAS
+License:        GPL-2.0-or-later
+Group:          System/Libraries
+
+%description -n %{lagraphxlib}
+This package provides an extended collection of graph algorithms built on top of GraphBLAS.
+
+LAGraphX is part of the SuiteSparse sparse matrix suite.
+
+%package -n %{suitesparse_mongooselib}
+Summary:        Graph partitioning library
+License:        GPL-3.0-only
+Group:          System/Libraries
+
+%description -n %{suitesparse_mongooselib}
+Mongoose is a graph partitioning library. Currently, Mongoose only
+supports edge partitioning.
+
+mongoose is part of the SuiteSparse sparse matrix suite.
+
+%package -n libsuitesparse_mongoose-doc
+Summary:        Documentation for libsuitesparse_mongoose
+License:        GPL-3.0-only
+Group:          Documentation/Other
+BuildArch:      noarch
+
+%description -n libsuitesparse_mongoose-doc
+Documentation for libsuitesparse_mongoose.
+
+Mongoose is a graph partitioning library. Currently, Mongoose only
+supports edge partitioning.
+
+mongoose is part of the SuiteSparse sparse matrix suite.
+
+%package -n     suitesparse_mongoose
+Summary:        Binary executable for suitesparse mongoose
+License:        GPL-3.0-only
+
+%description -n   suitesparse_mongoose
+Binary executable for suitesparse_mongoose.
+
+Mongoose is a graph partitioning library. Currently, Mongoose only
+supports edge partitioning.
+
+mongoose is part of the SuiteSparse sparse matrix suite.
+
+%package -n %{parulib}
+Summary:        Multifrontal sparse LU factorization methods
+License:        GPL-3.0-only
+Group:          System/Libraries
+
+%description -n %{parulib}
+ParU is an implementation of the multifrontal sparse LU factorization method.
+Parallelis is exploited both in the BLAS and across different frontal matrices
+using OpenMP tasking and shared-memory programming model for modern multicore
+architectures.
+
+ParU is part of the SuiteSparse sparse matrix suite.
+
 %package -n %{configlib}
-Version:        %{configver}
-Release:        0
 Summary:        Common configurations for all packages in SuiteSparse
 License:        GPL-2.0-or-later
 Group:          System/Libraries
-Provides:       libufconfig = %{configver}
-Obsoletes:      libufconfig < %{configver}
-Provides:       libUFconfig = %{configver}
-Obsoletes:      libUFconfig < %{configver}
-Provides:       %(echo "libsuitesparseconfig%{configver}" | tr . _) = %{version}
-Obsoletes:      %(echo "libsuitesparseconfig%{configver}" | tr . _) < %{version}
 
 %description -n %{configlib}
 SuiteSparse_config is required by a number of sparse matrix packages,
@@ -586,17 +579,7 @@ into a C application).
 SuiteSparse_config is part of the SuiteSparse sparse matrix suite.
 
 %prep
-%setup -q -n SuiteSparse-%{version}
-%patch1 -p1
-sed 's/^CHOLMOD_CONFIG =.*/CHOLMOD_CONFIG = -DNPARTITION/' -i SuiteSparse_config/SuiteSparse_config.mk
-%if %{without openblas}
-sed 's/-lopenblas/-lblas/' -i SuiteSparse_config/SuiteSparse_config.mk
-%endif
-
-sed -i "s:^SO_VERSION = _:SO_VERSION = %{csparsemajor}:" CSparse/Lib/Makefile
-sed -i "s:^VERSION = _:VERSION = %{csparsever}:" CSparse/Lib/Makefile
-
-cat CSparse/Lib/Makefile
+%autosetup -p1 -n SuiteSparse-%{version}
 
 mv SPQR/Doc/README.txt SPQR/Doc/README_2.txt
 
@@ -608,87 +591,85 @@ rm SPQR/Doc/algo_spqr.pdf
 rm SPQR/Doc/qrgpu_paper.pdf
 rm SPQR/Doc/spqr.pdf
 
-# bnc#775418
-%patch775418 -p1
+cp %{SOURCE1} Mongoose/Tests/
+
+%(for src in "$(seq 100 134)"; do tar xvf %{SOURCE$src} --strip-components=1 -C Mongoose/Matrix; tar xvf %{SOURCE$src} --strip-components=1 -C Mongoose/Tests/Matrix; end)
 
 %build
-%define limitbuild 1500
-%limit_build -m %{limitbuild}
-
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-%if 0%{?suse_version} < 1500
-export CC=gcc-7
-export CXX=g++-7
-%endif
+%limit_build -m 1500
 
 %if %{with openblas}
-blas_lib=-lopenblas
+export BLAS=-lopenblas
 %else
-blas_lib=-lblas
+export BLAS=-lblas
 %endif
 
+%ifarch %{arm} aarch64
+%define build_ldflags  -latomic -lm
+%else
+%define build_ldflags -lm
 # Better performance with -flto
 unset MALLOC_CHECK_
 unset MALLOC_PERTURB_
+%endif
 
-%make_jobs MY_METIS_LIB="-lmetis" LAPACK="-llapack" BLAS="$blas_lib" TBB="-ltbb" CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" go
-chrpath -d lib/*.so.*.*
-chrpath -d GraphBLAS/build/*.so
-chrpath -d GraphBLAS/build/*.so.*.*
-chrpath -d Mongoose/build/lib/*.so
-chrpath -d Mongoose/build/lib/*.so.*.*
+# GraphBlas demos: avoid writing to root dir
+export GRAPHBLAS_CACHE_PATH=$(mktemp -d GraphBlas_JIT_cache_XXX)
+#
+export CMAKE_OPTIONS='-DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
+%if %{with openblas}
+        -DBLA_VENDOR=OpenBLAS \
+%endif
+        -DCMAKE_INSTALL_BINDIR:PATH=%{_bindir} \
+        -DCMAKE_INSTALL_SBINDIR:PATH=%{_sbindir} \
+        -DCMAKE_INSTALL_LIBEXECDIR:PATH=%{_libexecdir} \
+        -DCMAKE_INSTALL_SYSCONFDIR:PATH=%{_sysconfdir} \
+        -DCMAKE_INSTALL_SHAREDSTATEDIR:PATH=%{_sharedstatedir} \
+        -DCMAKE_INSTALL_LOCALSTATEDIR:PATH=%{_localstatedir} \
+        -DCMAKE_INSTALL_RUNSTATEDIR:PATH=%{_rundir} \
+        -DCMAKE_INSTALL_LIBDIR:PATH=%{_libdir} \
+        -DCMAKE_INSTALL_INCLUDEDIR:PATH=%{_includedir} \
+        -DCMAKE_INSTALL_DATAROOTDIR:PATH=%{_datadir} \
+        -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
+        -DINCLUDE_INSTALL_DIR:PATH=%{_includedir} \
+        -DLIB_INSTALL_DIR:PATH=%{_libdir} \
+        -DSYSCONF_INSTALL_DIR:PATH=%{_sysconfdir} \
+        -DSHARE_INSTALL_PREFIX:PATH=%{_datadir} \
+        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+        -DCMAKE_C_FLAGS="${CFLAGS:-%optflags}" \
+        -DCMAKE_CXX_FLAGS="${CXXFLAGS:-%optflags}" \
+        -DCMAKE_Fortran_FLAGS="${FFLAGS:-%optflags%{?_fmoddir: -I%_fmoddir}}" \
+        -DCMAKE_EXE_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,-z,now" \
+        -DCMAKE_MODULE_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed" \
+        -DCMAKE_SHARED_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,-z,now" \
+%if "%{?_lib}" == "lib64"
+        -DLIB_SUFFIX=64 \
+%endif
+        -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
+        -DBUILD_SHARED_LIBS:BOOL=ON \
+        -DBUILD_STATIC_LIBS:BOOL=OFF \
+        -DCMAKE_COLOR_MAKEFILE:BOOL=OFF \
+        -DCMAKE_INSTALL_DO_STRIP:BOOL=OFF \
+        -DCMAKE_MODULES_INSTALL_DIR=%{_libdir}/cmake/%{name} \
+        -DSUITESPARSE_DEMOS=ON \
+        -DBUILD_TESTING=ON'
+
+export JOBS="%(echo %{?_smp_mflags} | cut -c 3-)"
+%make_build library
 
 %install
-mkdir -p %{buildroot}%{_includedir}/%{name}
-mkdir -p %{buildroot}%{_docdir}
-mkdir -p %{buildroot}%{_libdir}
+%make_install
 
-cp -Pt %{buildroot}%{_libdir} */Lib/*.a
-cp -Pt %{buildroot}%{_libdir} lib/*
-cp -Pt %{buildroot}%{_libdir} GraphBLAS/build/*.so
-cp -Pt %{buildroot}%{_libdir} GraphBLAS/build/*.so.*
-cp -Pt %{buildroot}%{_libdir} Mongoose/build/lib/*.so
-cp -Pt %{buildroot}%{_libdir} Mongoose/build/lib/*.so.*
-cp -Pt %{buildroot}%{_includedir}/%{name} include/*
-cp -Pt %{buildroot}%{_includedir}/%{name} GraphBLAS/Include/*.h
-cp -Prt %{buildroot}%{_docdir} share/doc/*
+%fdupes %{buildroot}%{_datadir}
+%fdupes %{buildroot}%{_libdir}
 
 %check
-amd_test_symbol="amd_postorder"
-btf_test_symbol="btf_order"
-camd_test_symbol="camd_postorder"
-ccolamd_test_symbol="ccolamd"
-colamd_test_symbol="colamd"
-cholmod_test_symbol="cholmod_start"
-csparse_test_symbol="cs_sqr"
-cxsparse_test_symbol="cs_di_sqr"
-klu_test_symbol="klu_solve"
-ldl_test_symbol="ldl_symbolic"
-rbio_test_symbol="RBread"
-spqr_test_symbol="SuiteSparseQR_C_symbolic"
-umfpack_test_symbol="umfpack_toc"
-
-mkdir -p linking_test
-pushd linking_test
-
-cat > linking_test.c.in << 'EOF'
-char @test_symbol@ ();
-int main ()
-{
-    return @test_symbol@ ();
-}
-EOF
-
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
-for test_library in amd btf camd ccolamd colamd cholmod csparse cxsparse klu ldl rbio spqr umfpack; do
-    cp linking_test.c.in linking_test.c
-    test_symbol=${test_library}_test_symbol
-    sed -i "s|@test_symbol@|${!test_symbol}|" linking_test.c
-    cat linking_test.c
-    gcc -o linking_test linking_test.c -L%{buildroot}%{_libdir} -l${test_library}
-done
-
-popd
+# GraphBlas demos: avoid writing to root dir
+export GRAPHBLAS_CACHE_PATH=$(mktemp -d GraphBlas_JIT_cache_XXX)
+#
+# Demos also include checks. These runs demos and their respective test suites.
+export JOBS="%(echo %{?_smp_mflags} | cut -c 3-)"
+%make_build demos
 
 %post   -n %{amdlib} -p /sbin/ldconfig
 %postun -n %{amdlib} -p /sbin/ldconfig
@@ -708,9 +689,6 @@ popd
 %post   -n %{colamdlib} -p /sbin/ldconfig
 %postun -n %{colamdlib} -p /sbin/ldconfig
 
-%post   -n %{csparselib} -p /sbin/ldconfig
-%postun -n %{csparselib} -p /sbin/ldconfig
-
 %post   -n %{cxsparselib} -p /sbin/ldconfig
 %postun -n %{cxsparselib} -p /sbin/ldconfig
 
@@ -723,14 +701,14 @@ popd
 %post   -n %{ldllib} -p /sbin/ldconfig
 %postun -n %{ldllib} -p /sbin/ldconfig
 
-%post   -n %{mongooselib} -p /sbin/ldconfig
-%postun -n %{mongooselib} -p /sbin/ldconfig
+%post   -n %{suitesparse_mongooselib} -p /sbin/ldconfig
+%postun -n %{suitesparse_mongooselib} -p /sbin/ldconfig
 
 %post   -n %{rbiolib} -p /sbin/ldconfig
 %postun -n %{rbiolib} -p /sbin/ldconfig
 
-%post   -n %{sliplulib} -p /sbin/ldconfig
-%postun -n %{sliplulib} -p /sbin/ldconfig
+%post   -n %{spexlib} -p /sbin/ldconfig
+%postun -n %{spexlib} -p /sbin/ldconfig
 
 %post   -n %{spqrlib} -p /sbin/ldconfig
 %postun -n %{spqrlib} -p /sbin/ldconfig
@@ -738,25 +716,33 @@ popd
 %post   -n %{umfpacklib} -p /sbin/ldconfig
 %postun -n %{umfpacklib} -p /sbin/ldconfig
 
+%post   -n %{lagraphlib} -p /sbin/ldconfig
+%postun -n %{lagraphlib} -p /sbin/ldconfig
+
+%post   -n %{lagraphxlib} -p /sbin/ldconfig
+%postun -n %{lagraphxlib} -p /sbin/ldconfig
+
+%post   -n %{parulib} -p /sbin/ldconfig
+%postun -n %{parulib} -p /sbin/ldconfig
+
+%post   -n %{klu_cholmodlib} -p /sbin/ldconfig
+%postun -n %{klu_cholmodlib} -p /sbin/ldconfig
+
 %post   -n %{configlib} -p /sbin/ldconfig
 %postun -n %{configlib} -p /sbin/ldconfig
 
 %files devel
 %doc ChangeLog README.md
 %license LICENSE.txt
-%{_docdir}/%{name}-%{version}
+%{_includedir}/*
+%{_libdir}/pkgconfig/*.pc
 %{_libdir}/*.so
-%{_includedir}/%{name}/
-
-%files devel-static
-%doc ChangeLog README.md
-%license LICENSE.txt
-%{_libdir}/*.a
+%{_libdir}/cmake/*
 
 %files -n %{amdlib}
 %doc AMD/README.txt
 %doc AMD/Doc/ChangeLog
-%license AMD/Doc/License.txt AMD/Doc/lesser.txt
+%license AMD/Doc/License.txt
 %{_libdir}/libamd.so.*
 
 %files -n libamd-doc
@@ -771,7 +757,7 @@ popd
 %files -n %{camdlib}
 %doc CAMD/README.txt
 %doc CAMD/Doc/ChangeLog
-%license CAMD/Doc/License.txt CAMD/Doc/lesser.txt
+%license CAMD/Doc/License.txt
 %{_libdir}/libcamd.so.*
 
 %files -n libcamd-doc
@@ -780,7 +766,7 @@ popd
 %files -n %{ccolamdlib}
 %doc CCOLAMD/README.txt
 %doc CCOLAMD/Doc/ChangeLog
-%license CCOLAMD/Doc/License.txt CCOLAMD/Doc/lesser.txt
+%license CCOLAMD/Doc/License.txt
 %{_libdir}/libccolamd.so.*
 
 %files -n %{cholmodlib}
@@ -794,14 +780,8 @@ popd
 %files -n %{colamdlib}
 %doc COLAMD/README.txt
 %doc COLAMD/Doc/ChangeLog
-%license COLAMD/Doc/License.txt COLAMD/Doc/lesser.txt
+%license COLAMD/Doc/License.txt
 %{_libdir}/libcolamd.so.*
-
-%files -n %{csparselib}
-%doc CSparse/README.txt
-%doc CSparse/Doc/ChangeLog
-%license CSparse/Doc/License.txt CSparse/Doc/lesser.txt
-%{_libdir}/libcsparse.so.*
 
 %files -n %{cxsparselib}
 %doc CXSparse/README.txt
@@ -833,13 +813,16 @@ popd
 %files -n libldl-doc
 %doc LDL/Doc/ldl_userguide.pdf
 
-%files -n %{mongooselib}
+%files -n %{suitesparse_mongooselib}
 %doc Mongoose/README.md
 %license Mongoose/Doc/License.txt
-%{_libdir}/libmongoose.so.*
+%{_libdir}/libsuitesparse_mongoose.so.*
 
-%files -n libmongoose-doc
+%files -n libsuitesparse_mongoose-doc
 %doc Mongoose/Doc/Mongoose_UserGuide.pdf
+
+%files -n  suitesparse_mongoose
+%{_bindir}/suitesparse_mongoose
 
 %files -n %{rbiolib}
 %doc RBio/README.txt
@@ -847,12 +830,15 @@ popd
 %license RBio/Doc/License.txt RBio/Doc/gpl.txt
 %{_libdir}/librbio.so.*
 
-%files -n %{sliplulib}
-%doc SLIP_LU/README.md
-%doc SLIP_LU/Doc/SLIP_LU_UserGuide.pdf
-%license SLIP_LU/License/license.txt SLIP_LU/License/GPLv2.txt
-%license SLIP_LU/License/lesserv3.txt SLIP_LU/License/CONTRIBUTOR-LICENSE.txt
-%{_libdir}/libsliplu.so.*
+%files -n %{spexlib}
+%license SPEX/LICENSE.txt
+%license SPEX/SPEX_Util/License/license.txt  SPEX/SPEX_Util/License/GPLv2.txt
+%license SPEX/SPEX_Util/License/lesserv3.txt SPEX/SPEX_Util/License/CONTRIBUTOR-LICENSE.txt
+%{_libdir}/libspex.so.*
+
+%files -n libspex-doc
+%doc SPEX/README.md
+%doc SPEX/Doc/SPEX_UserGuide.pdf
 
 %files -n %{spqrlib}
 %doc SPQR/README.txt
@@ -861,13 +847,36 @@ popd
 %{_libdir}/libspqr.so.*
 
 %files -n %{umfpacklib}
-%doc UMFPACK/README.txt
-%doc UMFPACK/Doc/UMFPACK_QuickStart.pdf UMFPACK/Doc/UMFPACK_UserGuide.pdf UMFPACK/Doc/ChangeLog
 %license UMFPACK/Doc/License.txt UMFPACK/Doc/gpl.txt
 %{_libdir}/libumfpack.so.*
 
+%files -n libumfpack-doc
+%doc UMFPACK/README.txt
+%doc UMFPACK/Doc/UMFPACK_QuickStart.pdf UMFPACK/Doc/UMFPACK_UserGuide.pdf UMFPACK/Doc/ChangeLog
+
+%files -n %{lagraphlib}
+%doc LAGraph/README.md LAGraph/Acknowledgments.txt
+%license LAGraph/LICENSE
+%{_libdir}/liblagraph.so.*
+
+%files -n %{lagraphxlib}
+%doc LAGraph/README.md LAGraph/Acknowledgments.txt
+%license LAGraph/LICENSE
+%{_libdir}/liblagraphx.so.*
+
+%files -n %{parulib}
+%doc ParU/README.md
+%license ParU/LICENSE
+%{_libdir}/libparu.so.*
+
+%files -n %{klu_cholmodlib}
+%doc KLU/README.txt
+%doc KLU/Doc/ChangeLog
+%license KLU/Doc/License.txt KLU/Doc/lesser.txt
+%{_libdir}/libklu_cholmod.so.*
+
 %files -n %{configlib}
-%doc share/doc/*/SUITESPARSECONFIG_README.txt
+%doc SuiteSparse_config/README.txt
 %license LICENSE.txt
 %{_libdir}/libsuitesparseconfig.so.*
 

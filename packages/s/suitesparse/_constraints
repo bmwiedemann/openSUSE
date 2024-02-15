@@ -3,6 +3,9 @@
   <physicalmemory>
     <size unit="G">7</size>
   </physicalmemory>
+  <disk>
+    <size unit="G">40</size>
+  </disk>
   </hardware>
   <overwrite>
     <conditions>
@@ -25,3 +28,4 @@
     </hardware>
   </overwrite>
 </constraints>
+

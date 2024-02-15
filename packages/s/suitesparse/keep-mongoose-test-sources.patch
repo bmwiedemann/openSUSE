@@ -1,0 +1,42 @@
+diff -ruN SuiteSparse-7.5.0.orig/Mongoose/CMakeLists.txt SuiteSparse-7.5.0/Mongoose/CMakeLists.txt
+--- SuiteSparse-7.5.0.orig/Mongoose/CMakeLists.txt	2024-01-15 06:06:06.714855174 +0800
++++ SuiteSparse-7.5.0/Mongoose/CMakeLists.txt	2024-01-15 06:08:20.629179796 +0800
+@@ -316,13 +316,13 @@
+             RUNTIME_OUTPUT_DIRECTORY ${TESTING_OUTPUT_PATH} )
+ 
+         add_test ( NAME Mongoose_Edge_Separator_Test
+-            COMMAND ${Python_EXECUTABLE} ${PROJECT_SOURCE_DIR}/Tests/runTests -min 1 -max 15 -t edgesep )
++            COMMAND ${Python_EXECUTABLE} ${PROJECT_SOURCE_DIR}/Tests/runTests -min 1 -max 15 -t edgesep -k )
+         add_test ( NAME Mongoose_Edge_Separator_Test_2
+-            COMMAND ${Python_EXECUTABLE} ${PROJECT_SOURCE_DIR}/Tests/runTests -t edgesep -i 21 39 191 1557 1562 353 2468 1470 1380 505 182 201 2331 760 1389 2401 2420 242 250 1530 1533 360 1437 )
++            COMMAND ${Python_EXECUTABLE} ${PROJECT_SOURCE_DIR}/Tests/runTests -t edgesep -i 21 39 191 1557 1562 353 2468 1470 1380 505 182 201 2331 760 1389 2401 2420 242 250 1530 1533 360 1437 -k )
+         add_test ( NAME Mongoose_Weighted_Edge_Separator_Test
+-            COMMAND ${Python_EXECUTABLE} ${PROJECT_SOURCE_DIR}/Tests/runTests -t edgesep -i 2624 )
++            COMMAND ${Python_EXECUTABLE} ${PROJECT_SOURCE_DIR}/Tests/runTests -t edgesep -i 2624 -k )
+         add_test ( NAME Mongoose_Target_Split_Test
+-            COMMAND ${Python_EXECUTABLE} ${PROJECT_SOURCE_DIR}/Tests/runTests -min 1 -max 15 -t edgesep -s 0.3 )
++            COMMAND ${Python_EXECUTABLE} ${PROJECT_SOURCE_DIR}/Tests/runTests -min 1 -max 15 -t edgesep -s 0.3 -k )
+ 
+         # Memory Tests
+         add_executable ( mongoose_test_memory
+@@ -338,7 +338,7 @@
+             RUNTIME_OUTPUT_DIRECTORY ${TESTING_OUTPUT_PATH} )
+ 
+         add_test ( NAME Mongoose_Memory_Test
+-            COMMAND ${Python_EXECUTABLE} ${PROJECT_SOURCE_DIR}/Tests/runTests -min 1 -max 15 -t memory )
++            COMMAND ${Python_EXECUTABLE} ${PROJECT_SOURCE_DIR}/Tests/runTests -min 1 -max 15 -t memory -k )
+ 
+         # Performance Test
+         add_executable ( mongoose_test_performance
+@@ -354,9 +354,9 @@
+             RUNTIME_OUTPUT_DIRECTORY ${TESTING_OUTPUT_PATH} )
+ 
+         add_test ( NAME Mongoose_Performance_Test
+-            COMMAND ${Python_EXECUTABLE} ${PROJECT_SOURCE_DIR}/Tests/runTests -min 1 -max 15 -t performance -p )
++            COMMAND ${Python_EXECUTABLE} ${PROJECT_SOURCE_DIR}/Tests/runTests -min 1 -max 15 -t performance -k )
+         add_test ( NAME Mongoose_Performance_Test_2
+-            COMMAND ${Python_EXECUTABLE} ${PROJECT_SOURCE_DIR}/Tests/runTests -t performance -i 21 39 1557 1562 353 2468 1470 1380 505 182 201 2331 760 1389 2401 2420 242 250 1530 1533 -p )
++            COMMAND ${Python_EXECUTABLE} ${PROJECT_SOURCE_DIR}/Tests/runTests -t performance -i 21 39 1557 1562 353 2468 1470 1380 505 182 201 2331 760 1389 2401 2420 242 250 1530 1533 -k )
+ 
+         if ( WIN32 AND BUILD_SHARED_LIBS )
+             set_tests_properties ( Mongoose_IO_Test

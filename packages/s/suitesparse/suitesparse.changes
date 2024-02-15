@@ -1,4 +1,144 @@
 -------------------------------------------------------------------
+Fri Feb  9 10:10:31 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Cleanup specfile
+  * Inform that keep-mongoose-test-sources.patch is not for upstream
+  * Inform that the python file is for convenience for fetching test
+    sources. See README-suse-maintenance.md.
+
+-------------------------------------------------------------------
+Wed Jan 24 13:39:23 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Set up cmake options just once -- during %build alone.
+- Drop usage of cmake internal macros when specifying install
+  paths.
+- CMake >= 3.22 is now required for build; this automatically
+  drops support for openSUSE < 1650 (i.e. Leap 15.x).
+- Drop conditionals for old unsupported distro versions, they
+  cannot support builds on account of the previous change anyway.
+- Drop use of '-ffat-lto-objects' when building with LTO: this is
+  only needed for static libs, not built here.
+- Only unset MALLOC_* when LTO is being used.
+- Use once consistent version for all libraries, set to source
+  tarball.
+- Drop more than five-year old Obsoletes/Provides; developers
+  should use pkgconfig based (Build)Requires or directly use
+  %{name}-devel.
+- Drop suitesparse-rpmlintrc and make -doc packages noarch.
+
+-------------------------------------------------------------------
+Tue Jan 16 11:25:21 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 7.5.1 (boo#1208165):
+  * SuiteSparse_config: bug fix to SUITESPARSE__VERCODE macro.
+  * Example 1.6.1: add tests for *__VERSION macros.
+- Changes introduced since 7.5.0:
+  * Suitesparse_config: 7.5.0, to reflect the addition of
+    GraphBLAS 9.0.0.
+  * Minor updates to build system, including bug fixes when
+    specifying a specific BLAS/LAPACK library, and configuration
+    of *.pc files.
+  * GraphBLAS 9.0.0: supporting the v2.1 C API; see
+    https://github.com/GraphBLAS/graphblas-api-c
+  * Example 1.6.0: using GraphBLAS 9.0.0 and SuiteSparse_config
+    7.5.0,
+  * Remove explicit dependencies on OpenMP, libm, GMP, and MPFR.
+  * Add programs to test the *Config.cmake of each package.
+  * All other packages (except CSparse): minor updates to build
+    system.
+  * Package versions in this release:
+    - SuiteSparse_config 7.5.0
+    - AMD 3.3.1
+    - BTF 2.3.1
+    - CAMD 3.3.1
+    - CCOLAMD 3.3.1
+    - CHOLMOD 5.1.1
+    - COLAMD 3.3.1
+    - CSparse 4.3.0 (unchanged from SuiteSparse 7.4.0)
+    - CXSparse 4.3.1
+    - Example 1.6.0
+    - GraphBLAS 9.0.0
+    - KLU 2.3.1
+    - LDL 3.3.1
+    - LAGraph 1.1.1
+    - SuiteSparse_Mongoose 3.3.1
+    - ParU 0.1.1
+    - RBio 4.3.1
+    - SPEX 2.3.1
+    - SPQR 4.3.1
+    - UMFPACK 6.3.1
+- Changes introduced since 7.4.0:
+  * Major change to build system:
+    - Includes a top-level CMakeLists.txt that builds all
+      packages.
+    - Support for pkg-config.
+  * LAGraph 1.1.0: new package: graph algorithms based on
+    GraphBLAS
+  * ParU 0.1.0: new package: parallel unsymmetric multifrontal
+    method.
+  * CHOLMOD 5.1.0: full support for sparse single precision
+    matrices, bug fixes in the GPU Module.
+  * AMD 3.3.0: minor change for CHOLMOD 5.1.0 tests
+  * CAMD 3.3.0: minor change for CHOLMOD 5.1.0 tests
+  * SuiteSparse_config 7.4.0: added wrappers for single-precision
+    BLAS/LAPACK, added SUITESPARSE_TIME macro.
+  * *_version: added methods to all package that didn't have them:
+    AMD, CAMD, COLAMD, CCOLAMD, BTF, CSparse, CXSparse, KLU, BTF,
+    RBio, SPEX, SPQR, and UMFPACK.
+- Add new subpackage suitesparse_mongoose, an executable for
+  Mongoose.
+- Specfile now runs patchelf for broken RPATHs.
+- Add keep-mongoose-test-sources.patch. This avoids test sources
+  getting deleted.
+- Remove not needed patchsets:
+  * build_csparse_shared.patch
+  * bnc775418-enable-SuiteSparse_time-symbol.patch
+- Use BLAS environment variable when choosing over -lopenblas
+  and -lblas
+- Add list-mongoose-test-sources.py: a helper script to list
+  matrix ids mentioned in the test step of the build of Mongoose's
+  CMakeLists.txt
+- Add new test tarballs for mongoose from
+  list-mongoose-test-sources.py:
+  * 1138_bus.tar.gz
+  * 494_bus.tar.gz
+  * 662_bus.tar.gz
+  * 685_bus.tar.gz
+  * arc130.tar.gz
+  * ash292.tar.gz
+  * ash85.tar.gz
+  * bcspwr01.tar.gz
+  * bcspwr02.tar.gz
+  * bcspwr03.tar.gz
+  * bcspwr09.tar.gz
+  * bcsstk17.tar.gz
+  * bcsstm02.tar.gz
+  * jagmesh7.tar.gz
+  * lnsp3937.tar.gz
+  * lshp3466.tar.gz
+  * sherman1.tar.gz
+  * sstmodel.tar.gz
+  * crystm01.tar.gz
+  * msc04515.tar.gz
+  * G42.tar.gz
+  * nasa4704.tar.gz
+  * fxm3_6.tar.gz
+  * net25.tar.gz
+  * LF10000.tar.gz
+  * Erdos992.tar.gz
+  * USpowerGrid.tar.gz
+  * yeast.tar.gz
+  * c-38.tar.gz
+  * c-43.tar.gz
+  * minnesota.tar.gz
+  * netscience.tar.gz
+  * netz4504.tar.gz
+  * delaunay_n13.tar.gz
+  * tx2010.tar.gz
+- _constraints: Increase disk size to 40G
+- Add README-suse-maintenance.md
+
+-------------------------------------------------------------------
 Wed Apr 26 15:00:16 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Adjust licenses in SPEC files (bsc#1210879)
