@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 15 09:58:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add NetworkManager-iodine-pkgconf-2.1.0.patch: Fix
+  build/installation when using pkgconf 2.1 as pkg-config
+  implementation: configure wrongly called
+  "pkg-config pkg-config --parameters", which now leads nowhere.
+- Add libtool BuildRequires and call autoreconf, as above patch
+  touches the build system.
+
+-------------------------------------------------------------------
 Fri Dec  1 13:45:15 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Rename gnome subpackage to NetworkManager-applet-iodine

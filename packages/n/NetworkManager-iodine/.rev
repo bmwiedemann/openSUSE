@@ -75,4 +75,17 @@
   - NMA subpackage: only supplement if main package is installed (forwarded request 1130474 from gmbr3)</comment>
     <requestid>1130772</requestid>
   </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>9be0de834e04cfda6a130b9b15d0e6d2</srcmd5>
+    <version>1.2.0</version>
+    <time>1708027174</time>
+    <user>anag+factory</user>
+    <comment>- Add NetworkManager-iodine-pkgconf-2.1.0.patch: Fix
+  build/installation when using pkgconf 2.1 as pkg-config
+  implementation: configure wrongly called
+  &quot;pkg-config pkg-config --parameters&quot;, which now leads nowhere.
+- Add libtool BuildRequires and call autoreconf, as above patch
+  touches the build system.</comment>
+    <requestid>1146784</requestid>
+  </revision>
 </revisionlist>

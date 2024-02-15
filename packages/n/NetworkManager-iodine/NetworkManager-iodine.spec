@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-iodine
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,9 +26,12 @@ Group:          Productivity/Networking/System
 URL:            https://honk.sigxcpu.org/piki/projects/network-manager-iodine/
 Source0:        http://download.gnome.org/sources/NetworkManager-iodine/1.2/%{name}-%{version}.tar.xz
 Source1:        system-user-nm-iodine.conf
+# PATCH-FIX-UPSTREAM NetworkManager-iodine-pkgconf-2.1.0.patch glgo#GNOME/network-manager-iodine!5
+Patch0:         NetworkManager-iodine-pkgconf-2.1.0.patch
 BuildRequires:  intltool
-BuildRequires:  sysuser-tools
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(gtk+-3.0) >= 2.91.4
 BuildRequires:  pkgconfig(libnm) >= 1.1.0
 BuildRequires:  pkgconfig(libnma) >= 1.1.0
@@ -58,9 +61,10 @@ firewalled but DNS traffic is still allowed.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+autoreconf -fiv
 %sysusers_generate_pre %{SOURCE1} %{name} %{name}.conf
 %configure \
            --disable-static \
