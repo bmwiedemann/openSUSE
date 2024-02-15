@@ -1,7 +1,7 @@
 #
 # spec file for package lttng-modules
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lttng-modules
-Version:        2.13.9
+Version:        2.13.11
 Release:        0
 Summary:        Licensing information for package lttng-modules
 License:        GPL-2.0-only AND LGPL-2.1-only AND MIT
@@ -28,8 +28,6 @@ Source1:        https://lttng.org/files/lttng-modules/%{name}-%{version}.tar.bz2
 Source2:        %{name}.keyring
 Source3:        %{name}-preamble
 Source4:        Module.supported
-# PATCH-FIX-UPSTREAM lttng-modules-2.13.9-linux-6.3.patch -- Linux 6.3 compatibility.
-Patch0:         lttng-modules-2.13.9-linux-6.3.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 ExclusiveArch:  %ix86 x86_64 armv7l aarch64 riscv64 ppc64 ppc64le
 
