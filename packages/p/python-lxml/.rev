@@ -1068,4 +1068,14 @@ Send to Staging:E.
 </comment>
     <requestid>1141530</requestid>
   </revision>
+  <revision rev="109" vrev="3">
+    <srcmd5>0d290a7b2961f90da98c0184e360ddfb</srcmd5>
+    <version>5.1.0</version>
+    <time>1708027175</time>
+    <user>anag+factory</user>
+    <comment>- Add skip-test-under-libexpat-2.6.0.patch to skip broken test with
+  expat 2.6.0, gh#python/cpython#115133
+</comment>
+    <requestid>1146785</requestid>
+  </revision>
 </revisionlist>

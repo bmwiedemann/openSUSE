@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 15 08:59:28 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add skip-test-under-libexpat-2.6.0.patch to skip broken test with
+  expat 2.6.0, gh#python/cpython#115133
+
+-------------------------------------------------------------------
 Wed Jan 24 10:53:21 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Fix build error for Leap.
