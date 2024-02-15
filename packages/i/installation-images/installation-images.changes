@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Mon Feb 12 11:00:23 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#696
+- no libcryptsetup12-hmac, libgcrypt20-hmac anymore (bsc#1219762)
+- 17.115
+
+--------------------------------------------------------------------
 Fri Feb 9 17:30:47 UTC 2024 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#693
