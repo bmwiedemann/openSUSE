@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-path
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -27,7 +27,7 @@
 %define modname path
 %{?sle15_python_module_pythons}
 Name:           python-path%{psuffix}
-Version:        16.9.0
+Version:        16.10.0
 Release:        0
 Summary:        A module wrapper for os.path
 License:        MIT

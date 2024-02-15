@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  7 20:16:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 16.10.0:
+  * Added .with_name and .with_stem.
+  * Prefer .suffix to .ext and deprecate .ext.
+
+-------------------------------------------------------------------
 Tue Jan  2 19:09:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 16.9.0:

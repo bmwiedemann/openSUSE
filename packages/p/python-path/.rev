@@ -68,4 +68,12 @@
   * In order to support &quot;multipath&quot; results, where multiple paths</comment>
     <requestid>1136260</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>16701e679b58363716cc408b579cede3</srcmd5>
+    <version>16.10.0</version>
+    <time>1708027169</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1146655</requestid>
+  </revision>
 </revisionlist>
