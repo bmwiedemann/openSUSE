@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python39
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -178,9 +178,9 @@ Patch41:        downport-Sphinx-features.patch
 # indicate the parsing error (old API), from gh#python/cpython!105127
 # Patch carries a REGRESSION (gh#python/cpython#106669), so it has been also partially REVERTED
 Patch42:        CVE-2023-27043-email-parsing-errors.patch
-# PATCH-FIX-UPSTREAM Revert-gh105127-left-tests.patch bsc#1210638 mcepl@suse.com
-# Partially revert previous patch
-Patch43:        Revert-gh105127-left-tests.patch
+# PATCH-FIX-UPSTREAM libexpat260.patch gh#python/cpython#115289
+# Fix tests for XMLPullParser with Expat 2.6.0
+Patch43:        libexpat260.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -420,32 +420,32 @@ other applications.
 
 %prep
 %setup -q -n %{tarname}
-%patch02 -p1
-%patch06 -p1
-%patch07 -p1
-%patch08 -p1
-%patch09 -p1
-%patch15 -p1
-%patch25 -p1
-%patch29 -p1
-%patch32 -p1
+%patch -P 02 -p1
+%patch -P 06 -p1
+%patch -P 07 -p1
+%patch -P 08 -p1
+%patch -P 09 -p1
+%patch -P 15 -p1
+%patch -P 25 -p1
+%patch -P 29 -p1
+%patch -P 32 -p1
 %if 0%{?sle_version} && 0%{?sle_version} <= 150300
-%patch33 -p1
-%patch34 -p1
+%patch -P 33 -p1
+%patch -P 34 -p1
 %endif
 %if %{with mpdecimal}
-%patch05 -p1
+%patch -P 05 -p1
 %endif
-%patch35 -p1
-%patch37 -p1
-%patch38 -p1
-%patch39 -p1
-%patch40 -p1
+%patch -P 35 -p1
+%patch -P 37 -p1
+%patch -P 38 -p1
+%patch -P 39 -p1
+%patch -P 40 -p1
 %if 0%{?sle_version} && 0%{?sle_version} <= 150500
-%patch41 -p1
+%patch -P 41 -p1
 %endif
-%patch42 -p1
-%patch43 -p1
+%patch -P 42 -p1
+%patch -P 43 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
