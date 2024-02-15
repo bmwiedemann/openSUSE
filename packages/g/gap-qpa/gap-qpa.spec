@@ -1,7 +1,7 @@
 #
 # spec file for package gap-qpa
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gap-qpa
-Version:        1.34
+Version:        1.35
 Release:        0
 Summary:        GAP: Quivers and Path Algebras
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Scientific/Math
 URL:            https://folk.ntnu.no/oyvinso/QPA/
 #Git-Clone:     https://github.com/gap-packages/qpa
-Source:         https://folk.ntnu.no/oyvinso/QPA/qpa-%version.tar.gz
+Source:         https://github.com/gap-packages/qpa/archive/refs/tags/v%version.tar.gz
 BuildRequires:  gap-rpm-devel
 BuildRequires:  xz
 BuildArch:      noarch
