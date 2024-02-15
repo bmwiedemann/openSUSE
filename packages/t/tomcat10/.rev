@@ -69,4 +69,12 @@
     <comment>bsc#1219530</comment>
     <requestid>1144554</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>e66d0ea528c07113effb54678d8e3975</srcmd5>
+    <version>10.1.18</version>
+    <time>1708027270</time>
+    <user>anag+factory</user>
+    <comment>post-embargo sync with SLE</comment>
+    <requestid>1146831</requestid>
+  </revision>
 </revisionlist>

@@ -593,7 +593,8 @@ getent passwd tomcat >/dev/null || %{_sbindir}/useradd -c "Apache Tomcat" \
 %post
 %service_add_post %{app_name}.service
 %{fillup_only %{app_name}}
-xsltproc  --output %{confdir}/server.xml %{confdir}/valve.xslt %{confdir}/server.xml
+chown -R tomcat:tomcat %{confdir}/server.xml
+runuser -u tomcat -g tomcat -- xsltproc --output %{confdir}/server.xml %{confdir}/valve.xslt %{confdir}/server.xml
 
 %preun
 %service_del_preun %{app_name}.service
@@ -665,17 +666,22 @@ rm -f \
     %{libdir}/\[ecj\].jar >/dev/null 2>&1
 
 %post webapps
-xsltproc --output %{tomcatappdir}/ROOT/META-INF/context.xml %{confdir}/allowLinking.xslt %{tomcatappdir}/examples/META-INF/context.xml
-if [ ! -e %{_datadir}/%{app_name}/webapps/ROOT ]; then
-    ln -sf  %{tomcatappdir}/ROOT %{_datadir}/%{app_name}/webapps/ROOT
-fi
-xsltproc --output %{tomcatappdir}/examples/META-INF/context.xml %{confdir}/allowLinking.xslt %{tomcatappdir}/examples/META-INF/context.xml
+chown -R tomcat:tomcat %{tomcatappdir}/examples/META-INF
+runuser -u tomcat -g tomcat -- xsltproc --output %{tomcatappdir}/examples/META-INF/context.xml %{confdir}/allowLinking.xslt %{tomcatappdir}/examples/META-INF/context.xml
 if [ ! -e %{_datadir}/%{app_name}/webapps/examples ]; then
     ln -sf %{tomcatappdir}/examples %{_datadir}/%{app_name}/webapps/examples
 fi
 #use the same context.xml for sample war
+mkdir -p %{tomcatappdir}/ROOT/META-INF
+chown -R tomcat:tomcat %{tomcatappdir}/ROOT/META-INF
+runuser -u tomcat -g tomcat -- xsltproc --output %{tomcatappdir}/ROOT/META-INF/context.xml %{confdir}/allowLinking.xslt %{tomcatappdir}/examples/META-INF/context.xml
+if [ ! -e %{_datadir}/%{app_name}/webapps/ROOT ]; then
+    ln -sf  %{tomcatappdir}/ROOT %{_datadir}/%{app_name}/webapps/ROOT
+fi
+#use the same context.xml for sample war
 mkdir -p %{tomcatappdir}/webapps/sample/META-INF
-xsltproc --output %{tomcatappdir}/sample/META-INF/context.xml %{confdir}/allowLinking.xslt %{tomcatappdir}/examples/META-INF/context.xml
+chown -R tomcat:tomcat %{tomcatappdir}/sample/META-INF
+runuser -u tomcat -g tomcat -- xsltproc --output %{tomcatappdir}/sample/META-INF/context.xml %{confdir}/allowLinking.xslt %{tomcatappdir}/examples/META-INF/context.xml
 if [ ! -e %{_datadir}/%{app_name}/webapps/sample ]; then
     ln -sf %{tomcatappdir}/sample  %{_datadir}/%{app_name}/webapps/sample
 fi
@@ -687,18 +693,21 @@ if [ $1 -eq 0 ]; then # uninstall only
 fi
 
 %post admin-webapps
-xsltproc --output %{tomcatappdir}/manager/META-INF/context.xml %{confdir}/allowLinking.xslt %{tomcatappdir}/manager/META-INF/context.xml
+chown -R tomcat:tomcat %{tomcatappdir}/manager/META-INF
+runuser -u tomcat -g tomcat -- xsltproc --output %{tomcatappdir}/manager/META-INF/context.xml %{confdir}/allowLinking.xslt %{tomcatappdir}/manager/META-INF/context.xml
 if [ ! -e %{_datadir}/%{app_name}/webapps/manager ]; then
     ln -sf %{tomcatappdir}/manager %{_datadir}/%{app_name}/webapps/manager
 fi
 
-xsltproc --output %{tomcatappdir}/host-manager/META-INF/context.xml %{confdir}/allowLinking.xslt %{tomcatappdir}/host-manager/META-INF/context.xml
+chown -R tomcat:tomcat %{tomcatappdir}/host-manager/META-INF
+runuser -u tomcat -g tomcat -- xsltproc --output %{tomcatappdir}/host-manager/META-INF/context.xml %{confdir}/allowLinking.xslt %{tomcatappdir}/host-manager/META-INF/context.xml
 if [ ! -e %{_datadir}/%{app_name}/webapps/host-manager ]; then
     ln -sf %{tomcatappdir}/host-manager %{_datadir}/%{app_name}/webapps/host-manager
 fi
 
 %post docs-webapp
-xsltproc --output %{tomcatappdir}/docs/META-INF/context.xml %{confdir}/allowLinking.xslt %{tomcatappdir}/docs/META-INF/context.xml
+chown -R tomcat:tomcat %{tomcatappdir}/docs/META-INF
+runuser -u tomcat -g tomcat -- xsltproc --output %{tomcatappdir}/docs/META-INF/context.xml %{confdir}/allowLinking.xslt %{tomcatappdir}/docs/META-INF/context.xml
 if [ ! -e %{_datadir}/%{app_name}/webapps/docs ]; then
     ln -sf %{tomcatappdir}/docs %{_datadir}/%{app_name}/webapps/docs
 fi
