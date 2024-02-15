@@ -316,6 +316,9 @@ unsorted:
   - Srain-lang 
   - StyLua 
   - SwayNotificationCenter 
+  - SwayNotificationCenter-bash-completion 
+  - SwayNotificationCenter-fish-completion 
+  - SwayNotificationCenter-zsh-completion 
   - ThePEG-devel 
   - TreeMaker 
   - UEFITool 
@@ -1370,6 +1373,7 @@ unsorted:
   - bison-32bit 
   - bison-lang 
   - bitcoin-qt5 
+  - bitcoin-test 
   - bitcoin-utils 
   - bitcoind 
   - bitlbee 
@@ -4111,6 +4115,7 @@ unsorted:
   - fnott-zsh-completion 
   - fntsample 
   - fntsample-lang 
+  - focus-stack 
   - focuswriter 
   - focuswriter-lang 
   - folder-color-common 
@@ -6710,7 +6715,6 @@ unsorted:
   - git-buildpackage-common 
   - git-buildpackage-doc 
   - git-buildpackage-rpm 
-  - git-bz 
   - git-cliff 
   - git-cliff-bash-completion 
   - git-cliff-fish-completion 
@@ -7963,6 +7967,9 @@ unsorted:
   - gulkan-devel 
   - gulkan0_15-0 
   - gum 
+  - gum-bash-completion 
+  - gum-fish-completion 
+  - gum-zsh-completion 
   - gummi 
   - gummi-lang 
   - gup 
@@ -10576,10 +10583,9 @@ unsorted:
   - libOpenCOLLADAStreamWriter0_3 
   - libOpenColorIO2_3 
   - libOpenEXR-3_1-30-32bit 
-  - libOpenEXRCore-3_1-30 
   - libOpenEXRCore-3_1-30-32bit 
-  - libOpenEXRUtil-3_1-30 
   - libOpenEXRUtil-3_1-30-32bit 
+  - libOpenEXRUtil-3_2-31 
   - libOpenIPMI0 
   - libOpenIPMIui1 
   - libOpenImageDenoise1 
@@ -21640,6 +21646,7 @@ unsorted:
   - picocli-javadoc 
   - picocli-shell-jline2 
   - picocom 
+  - picocom-bash-completion 
   - picojson-devel 
   - picom 
   - picom-conf 
@@ -22934,7 +22941,6 @@ unsorted:
   - python310-Cython 
   - python310-Cython0 
   - python310-DataProperty 
-  - python310-DataShape 
   - python310-DateTime 
   - python310-Delorean 
   - python310-Deprecated 
@@ -24622,7 +24628,6 @@ unsorted:
   - python310-junos-eznc 
   - python310-jupyter 
   - python310-jupyter-client 
-  - python310-jupyter-client7 
   - python310-jupyter-collaboration 
   - python310-jupyter-core 
   - python310-jupyter-events 
@@ -25615,7 +25620,6 @@ unsorted:
   - python310-pytest-testinfra 
   - python310-pytest-timeout 
   - python310-pytest-tldr 
-  - python310-pytest-toolbox 
   - python310-pytest-tornado 
   - python310-pytest-tornasync 
   - python310-pytest-translations 
@@ -26499,7 +26503,6 @@ unsorted:
   - python311-Cython 
   - python311-Cython0 
   - python311-DataProperty 
-  - python311-DataShape 
   - python311-DateTime 
   - python311-Delorean 
   - python311-Deprecated 
@@ -28117,7 +28120,6 @@ unsorted:
   - python311-junos-eznc 
   - python311-jupyter 
   - python311-jupyter-client 
-  - python311-jupyter-client7 
   - python311-jupyter-collaboration 
   - python311-jupyter-core 
   - python311-jupyter-events 
@@ -29066,7 +29068,6 @@ unsorted:
   - python311-pytest-testinfra 
   - python311-pytest-timeout 
   - python311-pytest-tldr 
-  - python311-pytest-toolbox 
   - python311-pytest-tornado 
   - python311-pytest-tornasync 
   - python311-pytest-translations 
@@ -31075,6 +31076,7 @@ unsorted:
   - python312-dpcontracts 
   - python312-dpkt 
   - python312-dqsegdb 
+  - python312-dqsegdb2 
   - python312-dragonmapper 
   - python312-drgn 
   - python312-drms 
@@ -31339,6 +31341,7 @@ unsorted:
   - python312-gunicorn 
   - python312-guzzle_sphinx_theme 
   - python312-gwcs 
+  - python312-gwdatafind 
   - python312-gwosc 
   - python312-gyp 
   - python312-h11 
@@ -31418,6 +31421,7 @@ unsorted:
   - python312-idna_ssl 
   - python312-ifaddr 
   - python312-ifconfig-parser 
+  - python312-igwn-auth-utils 
   - python312-ijson 
   - python312-imagecodecs 
   - python312-imageio 
@@ -31552,7 +31556,6 @@ unsorted:
   - python312-junos-eznc 
   - python312-jupyter 
   - python312-jupyter-client 
-  - python312-jupyter-client7 
   - python312-jupyter-collaboration 
   - python312-jupyter-core 
   - python312-jupyter-events 
@@ -32374,6 +32377,7 @@ unsorted:
   - python312-pysofaconventions 
   - python312-pysolr 
   - python312-pyspnego 
+  - python312-pysrt 
   - python312-pyssim 
   - python312-pystache 
   - python312-pytaglib 
@@ -32510,6 +32514,7 @@ unsorted:
   - python312-python-jose-cryptography 
   - python312-python-json-logger 
   - python312-python-jsonschema-objects 
+  - python312-python-keycloak 
   - python312-python-lsp-black 
   - python312-python-lsp-jsonrpc 
   - python312-python-lsp-server 
@@ -33066,6 +33071,7 @@ unsorted:
   - python312-tzlocal 
   - python312-u-msgpack-python 
   - python312-ua-parser 
+  - python312-ubelt 
   - python312-uc-micro-py 
   - python312-ufoLib2 
   - python312-ufoProcessor 
@@ -33313,7 +33319,6 @@ unsorted:
   - python39-Cython 
   - python39-Cython0 
   - python39-DataProperty 
-  - python39-DataShape 
   - python39-DateTime 
   - python39-Delorean 
   - python39-Deprecated 
@@ -34999,7 +35004,6 @@ unsorted:
   - python39-junos-eznc 
   - python39-jupyter 
   - python39-jupyter-client 
-  - python39-jupyter-client7 
   - python39-jupyter-collaboration 
   - python39-jupyter-core 
   - python39-jupyter-events 
@@ -35990,7 +35994,6 @@ unsorted:
   - python39-pytest-testinfra 
   - python39-pytest-timeout 
   - python39-pytest-tldr 
-  - python39-pytest-toolbox 
   - python39-pytest-tornado 
   - python39-pytest-tornasync 
   - python39-pytest-translations 
@@ -49373,6 +49376,10 @@ unsorted:
   - vhba-kmp-default 
   - vhostmd 
   - vhs 
+  - vhs-bash-completion 
+  - vhs-doc 
+  - vhs-fish-completion 
+  - vhs-zsh-completion 
   - vido 
   - vido-lang 
   - viewnior 
