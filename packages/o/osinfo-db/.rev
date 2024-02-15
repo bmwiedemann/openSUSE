@@ -552,4 +552,12 @@
     <comment>Update database to version 20231215</comment>
     <requestid>1137134</requestid>
   </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>551601317b678dc082428aa1c24da2c1</srcmd5>
+    <version>20231215</version>
+    <time>1708027170</time>
+    <user>anag+factory</user>
+    <comment>Add support of openSUSE Leap 15.6</comment>
+    <requestid>1146664</requestid>
+  </revision>
 </revisionlist>
