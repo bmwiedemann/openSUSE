@@ -59,7 +59,7 @@ Mon Nov 27 15:22:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Sat Nov 25 22:51:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- update to 3.9.0:
+- update to 3.9.0: (bsc#1217684, CVE-2023-49081, bsc#1217682, CVE-2023-49082)
   * Introduced ``AppKey`` for static typing support of
     ``Application`` storage.
   * Added a graceful shutdown period which allows pending tasks
@@ -349,7 +349,7 @@ Sat Dec 11 19:18:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
     checks. #6276
   * Added information on running complex applications with
     additional tasks/processes -- :user:`Dreamsorcerer`. #6278
-- Release 3.8.0 (2021-10-31)
+- Release 3.8.0 (2021-10-31) (bsc#1217174, CVE-2023-47641)
   * Features
   * Added a GunicornWebWorker feature for extending the aiohttp
     server configuration by allowing the 'wsgi' coroutine to return
