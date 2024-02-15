@@ -221,4 +221,12 @@ SPDX (forwarded request 110717 from babelworx)</comment>
     <comment>Automatic-Module-Name</comment>
     <requestid>1138301</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>8a19b5a5e756bb5dca272fb8a854ce9e</srcmd5>
+    <version>2.1.4</version>
+    <time>1708027171</time>
+    <user>anag+factory</user>
+    <comment>Fix license tag</comment>
+    <requestid>1146705</requestid>
+  </revision>
 </revisionlist>

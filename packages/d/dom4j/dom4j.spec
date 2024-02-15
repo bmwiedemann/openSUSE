@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package dom4j
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2007, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,7 @@
 Version:        2.1.4
 Release:        0
 Summary:        Open Source XML framework for Java
-License:        BSD-3-Clause
+License:        Plexus
 URL:            https://dom4j.github.io/
 Source0:        %{base_name}-%{version}.tar.xz
 Source1:        https://repo1.maven.org/maven2/org/%{base_name}/%{base_name}/%{version}/%{base_name}-%{version}.pom
