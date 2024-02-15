@@ -644,4 +644,12 @@
     <comment>- Convert to source service for easier updating. (forwarded request 1139288 from dimstar)</comment>
     <requestid>1139293</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>6e43f9fd3b96a6feb28a184005a36f5c</srcmd5>
+    <version>45.1</version>
+    <time>1708027119</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1146248</requestid>
+  </revision>
 </revisionlist>
