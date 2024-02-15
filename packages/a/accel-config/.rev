@@ -135,4 +135,16 @@
     <comment></comment>
     <requestid>1139663</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>662b325ffb4e21c55b6c6e743bc7dcaa</srcmd5>
+    <version>4.1.5</version>
+    <time>1708027290</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.1.5:
+  + Free driver_name in case of error adding wq.
+  + change op config default value because of kernel change.
+  + set read buffer allowed from 0 to 8.
+  + disable enabled devices before unloading iaa_crypto.</comment>
+    <requestid>1146848</requestid>
+  </revision>
 </revisionlist>
