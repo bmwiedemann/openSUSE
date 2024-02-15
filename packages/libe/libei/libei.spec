@@ -26,6 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/libinput/libei/
 
 Source:         https://gitlab.freedesktop.org/libinput/libei/-/archive/%version/%name-%version.tar.gz
+Source99:       baselibs.conf
 BuildRequires:  meson >= 0.57
 BuildRequires:  ninja
 BuildRequires:  protobuf-c
