@@ -2,6 +2,7 @@
 # spec file for package pkcs11-helper
 #
 # Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           pkcs11-helper
-Version:        1.29.0
+Version:        1.30.0
 Release:        0
 Summary:        Helper Library for the Use with Smart Cards and the PKCS#11 API
 License:        BSD-3-Clause AND GPL-2.0-only
@@ -27,10 +28,8 @@ Source0:        https://github.com/OpenSC/%{name}/releases/download/%{name}-%{ve
 Source2:        baselibs.conf
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-#BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(openssl)
-Requires:       libpkcs11-helper1 = %{version}
 
 %description
 pkcs11-helper allows using multiple PKCS#11 providers at the same
@@ -44,6 +43,8 @@ and card insert events:
 %package -n libpkcs11-helper1
 Summary:        Helper Library for the Use with Smart Cards and the PKCS#11 API
 Group:          System/Libraries
+# dropped empty package with 1.30.0, required by openvpn
+Provides:       %{name} = %{version}
 
 %description -n libpkcs11-helper1
 pkcs11-helper allows using multiple PKCS#11 providers at the same time,
@@ -55,8 +56,7 @@ using a simple API.
 %package devel
 Summary:        Helper Library for the Use with Smart Cards and the PKCS#11 API
 Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
-Requires:       pkgconfig(openssl)
+Requires:       libpkcs11-helper1 = %{version}
 
 %description devel
 pkcs11-helper allows using multiple PKCS#11 providers at the same time,
@@ -66,7 +66,7 @@ slot, supporting session expiration serialization and much more, all
 using a simple API.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 #autoreconf -fvi
@@ -86,20 +86,17 @@ using a simple API.
 %make_install
 cp -a AUTHORS ChangeLog THANKS %{buildroot}%{_docdir}/%{name}/
 find %{buildroot} -type f -name "*.la" -delete -print
-%fdupes %{buildroot}%{_docdir}
+# installed via macro
+find %{buildroot}%{_docdir} -type f -name "COPYING*" -delete -print
 
-%post -n libpkcs11-helper1 -p /sbin/ldconfig
-%postun -n libpkcs11-helper1 -p /sbin/ldconfig
-
-%files
-%license COPYING*
-%doc %{_docdir}/%{name}
-%exclude %{_docdir}/%{name}/api
-%{_mandir}/man8/*%{ext_man}
+%ldconfig_scriptlets -n libpkcs11-helper1
 
 %files -n libpkcs11-helper1
 %license COPYING*
 %{_libdir}/libpkcs11-helper.so.*
+%{_mandir}/man8/*%{ext_man}
+%doc %{_docdir}/%{name}
+%exclude %{_docdir}/%{name}/api
 
 %files devel
 %license COPYING*

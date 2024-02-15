@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb 11 19:01:57 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.30.0:
+  * core: add dynamic loader provider attribute
+  * openssl: support DSA in libressl-3.5.0
+  * openssl: fix openssl_ex_data_dup prototype
+- get rid of almost empty pkcs11-helper package
+
+-------------------------------------------------------------------
 Fri Oct 14 01:34:06 UTC 2022 - Jason Sikes <jsikes@suse.com>
 
 - Update to 1.29.0:
