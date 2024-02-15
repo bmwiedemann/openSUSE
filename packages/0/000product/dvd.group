@@ -352,6 +352,7 @@
     <package name="discover-backend-fwupd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="discover-backend-packagekit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="discover-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="distribution-logos-openSUSE-Aeon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="distribution-logos-openSUSE-Tumbleweed" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="distribution-logos-openSUSE-icons" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dmidecode" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1200,8 +1201,8 @@
     <package name="libGraphicsMagick3-config" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="libHX32" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libICE6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libIex-3_1-30" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libIlmThread-3_1-30" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libIex-3_2-31" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libIlmThread-3_2-31" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libImath-3_1-29" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libImlib2-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libJudy1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1403,7 +1404,8 @@
     <package name="libMagickCore-7_Q16HDRI10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libMagickWand-7_Q16HDRI10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libOSMesa8" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libOpenEXR-3_1-30" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libOpenEXR-3_2-31" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libOpenEXRCore-3_2-31" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt5Bluetooth5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libQt5Bluetooth5-imports" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libQt5Concurrent5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1755,7 +1757,7 @@
     <package name="libdebuginfod1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdecor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdecor-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libdeflate0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libdeflate0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libdeflt1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdevmapper-event1_03" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libdevmapper1_03" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
