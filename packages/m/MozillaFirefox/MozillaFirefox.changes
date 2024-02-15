@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Feb 13 21:21:15 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 122.0.1
+  https://www.mozilla.org/en-US/firefox/122.0.1/releasenotes/
+  * Fixed the Library and Sidebar context menus only displaying
+    Multi-Account Containers icons in the "Open in New Container
+    Tab" menu. (bmo#1876518)
+  * Fixed an issue when clicking the Dismiss button in
+    notification pop-ups on Windows causing a webpage in a new tab.
+    (bmo#1848801)
+  * Fixed the yaru-remix system theme not applying correctly on
+    Linux. (bmo#1877002)
+  * Fixed adding an extra new line to a rule in the Developer
+    Tools' Inspector when copying it to the clipboard.
+    (bmo#1876220)
+  * Rolled back a keyboard behavior change made to the Developer
+    Tools' Rules view when validating a property name or input with
+    the Enter key.
+    This moves the focus to the next input, as was the behavior
+    in Firefox 121. (bmo#1877457)
+
+-------------------------------------------------------------------
 Tue Jan 30 13:51:25 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Recommend libfido2-udev on codestreams that exist, in order to try
