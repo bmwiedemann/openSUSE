@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Feb 14 15:12:05 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.26
+
+- Call spec-cleaner
+- Update to 2.3.36
+  - Add a Dependabot config to auto-update GitHub action versions by @kurtmckee in #2863
+  - Bump the github-actions group with 1 update by @dependabot in #2864
+  - Add installation prefix to python-config --ldflags output by @mhaeuser in #2865
+  - Add support for miniconda3 23.11.0-1, 23.11.0-2 with py3.11, py3.10, py3.9, py3.8 by @binbjz in #2870
+  - Add micropython 1.20.0 and 1.21.0 by @cpzt in #2869
+  - Make "Automatic installer" command a copy-able code block by @ryan-williams in #2874
+  - Add PyPy 7.3.14 by @dand-oss in #2876
+  - Add graalpy-23.1.2 by @msimacek in #2884
+  - Add CPython 3.13.0a3 by @edgarrmondragon in #2885
+  - Add PyPy v7.3.15 by @edgarrmondragon in #2886
+  - Update pypy3.9-7.3.13 checksums by @ecerulm in #2887
+  - Add CPython 3.12.2 by @edgarrmondragon in #2899
+  - Add CPython 3.11.8 by @edgarrmondragon in #2898
+
+-------------------------------------------------------------------
 Tue Dec 12 11:52:05 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.35
 
 - Add further dependencies that are needed to build Python versions

@@ -1,7 +1,7 @@
 #
 # spec file for package pyenv
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,20 @@
 %define pyenv_dir      %{_libexecdir}/pyenv
 #
 Name:           pyenv
-Version:        2.3.35
+Version:        2.3.36
 Release:        0
 Summary:        Python Version Management
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pyenv/pyenv
 Source:         https://github.com/pyenv/pyenv/archive/refs/tags/v%{version}.tar.gz#/pyenv-%{version}.tar.gz
+#
+BuildRequires:  bash-completion
+BuildRequires:  fdupes
+BuildRequires:  fish
+BuildRequires:  gcc
+BuildRequires:  make
+BuildRequires:  zsh
 #
 # Additional soft build requirements.
 # Use list from https://github.com/pyenv/pyenv/wiki#suggested-build-environment
@@ -50,13 +57,6 @@ Recommends:     tk-devel
 Recommends:     xz
 Recommends:     xz-devel
 Recommends:     zlib-devel
-#
-BuildRequires:  bash-completion
-BuildRequires:  fdupes
-BuildRequires:  fish
-BuildRequires:  gcc
-BuildRequires:  make
-BuildRequires:  zsh
 
 %description
 pyenv lets the user switch between multiple versions of Python.
