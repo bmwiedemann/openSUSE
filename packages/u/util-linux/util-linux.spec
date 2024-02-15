@@ -381,6 +381,8 @@ Requires(verify):permissions
 Provides:       util-linux:%{_bindir}/mesg
 Provides:       util-linux:%{_bindir}/wall
 Provides:       util-linux:%{_bindir}/write
+# File conflict: /usr/bin/mesg /usr/bin/wall
+Conflicts:      busybox-util-linux
 
 %description -n util-linux-tty-tools
 Tools that write to TTYs that the current user does not own.

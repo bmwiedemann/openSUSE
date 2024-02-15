@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb  9 17:56:16 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
+
+- Add file conflict of util-linux-tty-tools and busybox-util-linux.
+
+-------------------------------------------------------------------
 Thu Jan 18 15:09:16 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
 
 - Minor multibuild fixes (PED-307):

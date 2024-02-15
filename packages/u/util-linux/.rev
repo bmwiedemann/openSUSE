@@ -2574,4 +2574,12 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
     <comment>- Add more verbose changes and bug references from ALP.</comment>
     <requestid>1142237</requestid>
   </revision>
+  <revision rev="283" vrev="4">
+    <srcmd5>470711136a26e23d5390e781ae4f5dfd</srcmd5>
+    <version>2.39.3</version>
+    <time>1708027208</time>
+    <user>anag+factory</user>
+    <comment>- Add file conflict of util-linux-tty-tools and busybox-util-linux. (forwarded request 1145508 from sbrabec)</comment>
+    <requestid>1145510</requestid>
+  </revision>
 </revisionlist>
