@@ -118,4 +118,20 @@
     <comment></comment>
     <requestid>1079317</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>a5fa7c73da8dd8fce3e8d7bf9f2f4d0b</srcmd5>
+    <version>1.6.1</version>
+    <time>1708027232</time>
+    <user>anag+factory</user>
+    <comment>- Switch to cargo instead of rust+cargo.
+- Update specfile
+  * remove cargo_config. now included in vendored tarball
+  * replace vendor.tar.xz with zstd compressed vendor.tar.zst
+  * remove README.packager. Now automated with obs-service-cargo
+- Update vendored dependencies.
+- Update service file
+  * replace &quot;disabled&quot; with &quot;manual&quot; as &quot;disabled&quot; is obsoleted.
+</comment>
+    <requestid>1146672</requestid>
+  </revision>
 </revisionlist>

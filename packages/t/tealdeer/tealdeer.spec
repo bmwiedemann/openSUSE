@@ -1,7 +1,7 @@
 #
 # spec file for package tealdeer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,16 +24,11 @@ License:        Apache-2.0 OR MIT
 Group:          Productivity/Other
 URL:            https://github.com/dbrgn/tealdeer
 Source0:        %{name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
-Source2:        cargo_config
-# Instructions on how to generate vendor.tar.xz
-Source3:        README.packager
+Source1:        vendor.tar.zst
+BuildRequires:  cargo
 BuildRequires:  cargo-packaging
-BuildRequires:  cmake
 BuildRequires:  libopenssl-devel
-BuildRequires:  rust
-BuildRequires:  rust-std
-BuildRequires:  zlib-devel
+BuildRequires:  zstd
 
 ExclusiveArch:  %{rust_tier1_arches}
 
@@ -72,8 +67,6 @@ Zsh command-line completion support for %{name}.
 
 %prep
 %setup -qa1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}

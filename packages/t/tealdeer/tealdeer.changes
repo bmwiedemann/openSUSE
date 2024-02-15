@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb 15 02:39:04 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Switch to cargo instead of rust+cargo.
+
+-------------------------------------------------------------------
+Thu Feb  8 00:58:01 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update specfile
+  * remove cargo_config. now included in vendored tarball
+  * replace vendor.tar.xz with zstd compressed vendor.tar.zst
+  * remove README.packager. Now automated with obs-service-cargo
+- Update vendored dependencies.
+- Update service file
+  * replace "disabled" with "manual" as "disabled" is obsoleted.
+
+-------------------------------------------------------------------
 Fri Apr 14 00:32:14 UTC 2023 - William Brown <william.brown@suse.com>
 
 - bsc#1210365 - CVE-2023-26964 - hyper,h2: stream stacking when H2 processing HTTP2 RST_STREAM frames
