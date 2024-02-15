@@ -2,11 +2,11 @@
  contrib/completion/git-completion.bash |   10 ++++++----
  1 file changed, 6 insertions(+), 4 deletions(-)
 
-Index: git-2.40.0/contrib/completion/git-completion.bash
+Index: git-2.43.1/contrib/completion/git-completion.bash
 ===================================================================
---- git-2.40.0.orig/contrib/completion/git-completion.bash
-+++ git-2.40.0/contrib/completion/git-completion.bash
-@@ -65,10 +65,12 @@
+--- git-2.43.1.orig/contrib/completion/git-completion.bash
++++ git-2.43.1/contrib/completion/git-completion.bash
+@@ -67,10 +67,12 @@
  #     case insensitively, even on systems with case sensitive file systems
  #     (e.g., completing tag name "FOO" on "git checkout f<TAB>").
  

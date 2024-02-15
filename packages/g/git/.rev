@@ -2735,4 +2735,13 @@ git 2.12.3
     <comment></comment>
     <requestid>1137864</requestid>
   </revision>
+  <revision rev="307" vrev="1">
+    <srcmd5>a48d36657d12d10540e85ae795cde5fd</srcmd5>
+    <version>2.43.1</version>
+    <time>1708027183</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.43.1:
+  * https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.43.1.txt</comment>
+    <requestid>1146242</requestid>
+  </revision>
 </revisionlist>

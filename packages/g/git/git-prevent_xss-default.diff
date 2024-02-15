@@ -12,11 +12,11 @@ Signed-off-by: Jakub Narebski <jnareb@...il.com>
  gitweb/gitweb.perl |    2 +-
  3 files changed, 8 insertions(+), 3 deletions(-)
 
-Index: git-2.11.0/git-instaweb.sh
+Index: git-2.43.1/git-instaweb.sh
 ===================================================================
---- git-2.11.0.orig/git-instaweb.sh
-+++ git-2.11.0/git-instaweb.sh
-@@ -598,6 +598,10 @@ our \$projectroot = "$(dirname "$fqgitdi
+--- git-2.43.1.orig/git-instaweb.sh
++++ git-2.43.1/git-instaweb.sh
+@@ -721,6 +721,10 @@ our \$projectroot = "$(dirname "$fqgitdi
  our \$git_temp = "$fqgitdir/gitweb/tmp";
  our \$projects_list = \$projectroot;
  
@@ -27,11 +27,11 @@ Index: git-2.11.0/git-instaweb.sh
  \$feature{'remote_heads'}{'default'} = [1];
  EOF
  }
-Index: git-2.11.0/gitweb/gitweb.perl
+Index: git-2.43.1/gitweb/gitweb.perl
 ===================================================================
---- git-2.11.0.orig/gitweb/gitweb.perl
-+++ git-2.11.0/gitweb/gitweb.perl
-@@ -190,7 +190,7 @@ our @diff_opts = ('-M'); # taken from gi
+--- git-2.43.1.orig/gitweb/gitweb.perl
++++ git-2.43.1/gitweb/gitweb.perl
+@@ -194,7 +194,7 @@ our @diff_opts = ('-M'); # taken from gi
  
  # Disables features that would allow repository owners to inject script into
  # the gitweb domain.
@@ -39,4 +39,4 @@ Index: git-2.11.0/gitweb/gitweb.perl
 +our $prevent_xss = 1;
  
  # Path to the highlight executable to use (must be the one from
- # http://www.andre-simon.de due to assumptions about parameters and output).
+ # http://andre-simon.de/zip/download.php due to assumptions about parameters and output).
