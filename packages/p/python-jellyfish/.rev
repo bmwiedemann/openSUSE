@@ -58,4 +58,27 @@
   * add manylinux wheels</comment>
     <requestid>815338</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5aace785ce26064174c3022b69f1527f</srcmd5>
+    <version>1.0.3</version>
+    <time>1708027234</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.0.3:
+  * `match_rating_codex` now raises a `ValueError` when passed non-alpha
+    characters (#200)
+  * fully remove deprecated names
+  * fully drop Python 3.7 support
+  * switch to using `ahash` for Damerau-Levenshtein for speed gains
+  * switched to using Rust implementation for all algorithms
+  * removed rarely-used `porter_stem` function, better implementations exist
+  * support for Python 3.10+
+  * handle spaces correctly in MRA algorithm
+  * fix buffer overflow in NYSIIS
+  * safer allocations from CJellyfish
+  * fix for jaro winkler (cjellyfish#8)
+- Stop using greedy globs in %files.
+- Switch to autosetup and pyproject macros.
+- Sprinkle in cargo_vendor due to including rust code.</comment>
+    <requestid>1146673</requestid>
+  </revision>
 </revisionlist>

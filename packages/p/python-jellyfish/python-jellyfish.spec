@@ -1,7 +1,7 @@
 #
 # spec file for package python-jellyfish
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-jellyfish
-Version:        0.8.2
+Version:        1.0.3
 Release:        0
 Summary:        A library for doing approximate and phonetic matching of strings
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            http://github.com/jamesturk/jellyfish
-Source:         https://files.pythonhosted.org/packages/source/j/jellyfish/jellyfish-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/j/jellyfish/jellyfish-%{version}.tar.gz
+Source1:        vendor.tar.xz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module maturin}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %python_subpackages
@@ -46,22 +48,22 @@ NYSIIS (New York State Identification and Intelligence System) and
 Match Rating Codex.
 
 %prep
-%setup -q -n jellyfish-%{version}
+%autosetup -p1 -n jellyfish-%{version} -a1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-export PYTHONDONTWRITEBYTECODE=1
-%pytest %{buildroot}%{$python_sitearch}/jellyfish/test.py
+%pytest_arch
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst
-%{python_sitearch}/*
+%doc README.md docs/*
+%{python_sitearch}/jellyfish
+%{python_sitearch}/jellyfish-%{version}.dist-info
 
 %changelog

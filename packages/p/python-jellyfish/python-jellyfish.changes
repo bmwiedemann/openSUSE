@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Feb 15 02:57:54 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.0.3:
+  * `match_rating_codex` now raises a `ValueError` when passed non-alpha
+    characters (#200)
+  * fully remove deprecated names
+  * fully drop Python 3.7 support
+  * switch to using `ahash` for Damerau-Levenshtein for speed gains
+  * switched to using Rust implementation for all algorithms
+  * removed rarely-used `porter_stem` function, better implementations exist
+  * support for Python 3.10+
+  * handle spaces correctly in MRA algorithm
+  * fix buffer overflow in NYSIIS
+  * safer allocations from CJellyfish
+  * fix for jaro winkler (cjellyfish#8)
+- Stop using greedy globs in %files.
+- Switch to autosetup and pyproject macros.
+- Sprinkle in cargo_vendor due to including rust code.
+
+-------------------------------------------------------------------
 Wed Jun 17 05:24:54 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.8.2:
