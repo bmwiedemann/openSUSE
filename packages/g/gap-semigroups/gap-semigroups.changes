@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb 14 21:37:29 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.3.5
+  * This is a minor release fixing an issue in the kernel extension
+    with some further changes for compatibility with GAP, and
+    fixing a bug in `IrredundantGeneratingSubset` which gave an
+    error for monogenic semigroups.
+
+-------------------------------------------------------------------
+Wed Jan 24 19:30:58 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.3.4
+  * Build system updates only
+
+-------------------------------------------------------------------
 Fri Jan  5 16:58:34 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.3.3
