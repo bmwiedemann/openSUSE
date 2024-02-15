@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb  5 14:40:20 UTC 2024 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to 6.6.0
+  - xfs_scrub: add missing license and copyright information
+  - xfs_db: report the device associated with each io cursor
+  - libxfs: Fix UAF in a requeued EFI
+  - xfs_io: Add new option, to exercise log2_data_unit_size in kernel fscrypt_policy_v2
+  - xfs_db: Add upport to read from external log device
+  - metadump: New metadump format
+  - xfs_quota: fix missing mount point warning
+
+-------------------------------------------------------------------
 Fri Oct 13 14:45:05 UTC 2023 - Anthony Iliopoulos <ailiop@suse.com>
 
 - update to 6.5.0

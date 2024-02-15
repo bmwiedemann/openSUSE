@@ -1,7 +1,7 @@
 #
 # spec file for package xfsprogs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 %define libname libhandle1
 Name:           xfsprogs
-Version:        6.5.0
+Version:        6.6.0
 Release:        0
 Summary:        Utilities for managing the XFS file system
 License:        GPL-2.0-or-later
@@ -108,7 +108,7 @@ on xfs filesystems.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch 0 -p1
 
 %build
 aclocal -I m4
@@ -203,11 +203,11 @@ install -m 0644 %{SOURCE4} %{buildroot}/%{_dracutmodulesdir}/95suse-xfs/
 
 %files -n xfsprogs-scrub
 %defattr(-,root,root,755)
-%dir %{_libdir}/xfsprogs/
-%{_libdir}/xfsprogs/xfs_scrub_all.cron
+%dir %{_libexecdir}/xfsprogs
+%{_prefix}/share/xfsprogs/xfs_scrub_all.cron
 %{_sbindir}/xfs_scrub_all
 %if %{with systemd}
-%{_libdir}/xfsprogs/xfs_scrub_fail
+%{_libexecdir}/xfsprogs/xfs_scrub_fail
 %{_unitdir}/xfs_scrub@.service
 %{_unitdir}/xfs_scrub_all.service
 %{_unitdir}/xfs_scrub_all.timer
