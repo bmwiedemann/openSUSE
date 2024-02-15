@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 15 10:29:07 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add upstream patch libexpat260.patch, Fix tests for XMLPullParser
+  with Expat 2.6.0, gh#python/cpython#115289
+
+-------------------------------------------------------------------
 Mon Dec 18 16:20:58 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Refresh CVE-2023-27043-email-parsing-errors.patch to

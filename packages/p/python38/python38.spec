@@ -183,6 +183,9 @@ Patch41:        99366-patch.dict-can-decorate-async.patch
 # Detect email address parsing errors and return empty tuple to
 # indicate the parsing error (old API), from gh#python/cpython!105127
 Patch42:        CVE-2023-27043-email-parsing-errors.patch
+# PATCH-FIX-UPSTREAM libexpat260.patch gh#python/cpython#115289
+# Fix tests for XMLPullParser with Expat 2.6.0
+Patch43:        libexpat260.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -426,37 +429,38 @@ other applications.
 %prep
 %setup -q -n %{tarname}
 %if "%{_lib}" == "lib64"
-%patch01 -p1
+%patch -P 01 -p1
 %endif
-%patch02 -p1
+%patch -P 02 -p1
 %if "%{_lib}" == "lib64"
-%patch03 -p1
+%patch -P 03 -p1
 %endif
 %if %{with mpdecimal}
-%patch05 -p1
+%patch -P 05 -p1
 %endif
 
-%patch06 -p1
-%patch07 -p1
-%patch08 -p1
-%patch09 -p1
-%patch15 -p1
+%patch -P 06 -p1
+%patch -P 07 -p1
+%patch -P 08 -p1
+%patch -P 09 -p1
+%patch -P 15 -p1
 %ifarch ppc ppc64 ppc64le
-%patch23 -p1
+%patch -P 23 -p1
 %endif
-%patch24 -p1
-%patch25 -p1
-%patch27 -p1
-%patch28 -p1
-%patch29 -p1
-%patch32 -p1
-%patch33 -p1
-%patch34 -p1
-%patch36 -p1
-%patch37 -p1
-%patch38 -p1
-%patch41 -p1
-%patch42 -p1
+%patch -P 24 -p1
+%patch -P 25 -p1
+%patch -P 27 -p1
+%patch -P 28 -p1
+%patch -P 29 -p1
+%patch -P 32 -p1
+%patch -P 33 -p1
+%patch -P 34 -p1
+%patch -P 36 -p1
+%patch -P 37 -p1
+%patch -P 38 -p1
+%patch -P 41 -p1
+%patch -P 42 -p1
+%patch -P 43 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
