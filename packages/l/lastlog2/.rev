@@ -76,4 +76,13 @@ There should be a rpmlint which whitelists this PAM module.</comment>
     <comment>- Fix lastlog.8 .so reference</comment>
     <requestid>1118595</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1d5a00449562247eb2b5a63d0d9b7075</srcmd5>
+    <version>1.3.0</version>
+    <time>1708027136</time>
+    <user>anag+factory</user>
+    <comment>- Version 1.3.0
+  - fix sqlite3_step error handling</comment>
+    <requestid>1146554</requestid>
+  </revision>
 </revisionlist>
