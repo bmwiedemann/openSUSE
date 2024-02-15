@@ -1000,4 +1000,15 @@
     <comment></comment>
     <requestid>1145177</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d86221496a4a6ca0c71e74dbbc74f968</srcmd5>
+    <version>3.12.2</version>
+    <time>1708027159</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1146789 from dgarcia
+
+- Add upstream patch libexpat260.patch, Fix tests for XMLPullParser
+    with Expat 2.6.0, gh#python/cpython#115288</comment>
+    <requestid>1146839</requestid>
+  </revision>
 </revisionlist>

@@ -156,6 +156,13 @@ Patch34:        skip-test_pyobject_freed_is_freed.patch
 # PATCH-FIX-SLE fix_configure_rst.patch bpo#43774 mcepl@suse.com
 # remove duplicate link targets and make documentation with old Sphinx in SLE
 Patch35:        fix_configure_rst.patch
+# PATCH-FIX-UPSTREAM CVE-2023-27043-email-parsing-errors.patch bsc#1210638 mcepl@suse.com
+# Detect email address parsing errors and return empty tuple to
+# indicate the parsing error (old API)
+Patch36:        CVE-2023-27043-email-parsing-errors.patch
+# PATCH-FIX-UPSTREAM libexpat260.patch gh#python/cpython#115288
+# Fix tests for XMLPullParser with Expat 2.6.0
+Patch37:        libexpat260.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -423,6 +430,8 @@ other applications.
 %patch -P 34 -p1
 # %%endif
 %patch -P 35 -p1
+%patch -P 36 -p1
+%patch -P 37 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
