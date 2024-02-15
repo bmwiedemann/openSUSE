@@ -630,4 +630,12 @@
     <comment>Update to 2.4 (forwarded request 1125243 from krop)</comment>
     <requestid>1126602</requestid>
   </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>cb6b9994bb2d8385c5d999fb9d2bd2ac</srcmd5>
+    <version>2.4</version>
+    <time>1708027135</time>
+    <user>anag+factory</user>
+    <comment>- Explicitly use gcc 13 on SLE.</comment>
+    <requestid>1146527</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package shared-mime-info
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,13 @@ URL:            https://gitlab.freedesktop.org/xdg/shared-mime-info
 Source0:        %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source1:        macros.shared-mime-info
 
+%define usegcc13 0%{?sle_version} && 0%{?sle_version} < 160000
+
+%if %usegcc13
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  c++_compiler
+%endif
 BuildRequires:  glib2-devel
 BuildRequires:  libxml2-devel
 # needed for xmllint
@@ -54,6 +60,10 @@ This package contains:
 %autosetup -p1
 
 %build
+%if %usegcc13
+export CC=gcc-13
+export CXX=g++-13
+%endif
 %meson
 %meson_build
 

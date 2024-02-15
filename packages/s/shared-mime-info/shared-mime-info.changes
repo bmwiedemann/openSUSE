@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 12 23:45:56 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Explicitly use gcc 13 on SLE.
+
+-------------------------------------------------------------------
 Sun Nov 12 11:19:19 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.4
