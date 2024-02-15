@@ -1,7 +1,34 @@
 -------------------------------------------------------------------
+Tue Dec  5 12:55:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.2:
+  * ENH: Add support for Python 3.12 #246
+  * ENH: Add osx universal2 and arm64 wheels
+  * ENH: Fix issue with integer overflow on 32 bit systems
+  * FIX: ``get_stats`` is no longer slowed down when profiling
+    many code sections #236
+  * FIX: skipzeros now checks for zero hits instead of zero time
+  * FIX: Fixed errors in Python 3.11 with duplicate functions.
+  * FIX: ``show_text`` now increases column sizes or switches to
+    scientific notation to maintain alignment
+  * ENH: ``show_text`` now has new options: sort and summarize
+  * ENH: Added new CLI arguments ``-srm`` to ``line_profiler`` to
+    control sorting, rich printing, and summary printing.
+  * ENH: New global ``profile`` function that can be enabled by
+    ``--profile`` or ``LINE_PROFILE=1``.
+  * ENH: New auto-profile feature in ``kernprof`` that will
+    profile all functions in specified modules.
+  * ENH: Kernprof now outputs instructions on how to view
+    results.
+  * ENH: Added readthedocs integration:
+    https://kernprof.readthedocs.io/en/latest/index.html
+- Add patch use-sys-executable-python.patch:
+  * Use sys.executable, rather than 'python'.
+
+-------------------------------------------------------------------
 Sun Aug 13 21:37:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- restrict to older Cython release 
+- restrict to older Cython release
 
 -------------------------------------------------------------------
 Sun Mar 26 19:55:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -47,7 +74,7 @@ Thu Sep 29 14:50:17 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   * FIX: #109 kernprof fails to write to stdout if stdout was replaced
   * FIX: Fixes max of an empty sequence error #118
   * Make IPython optional
-  * FIX: #100 Exception raise ZeroDivisionError 
+  * FIX: #100 Exception raise ZeroDivisionError
 
 -------------------------------------------------------------------
 Fri Jan  7 09:54:01 UTC 2022 - Ben Greiner <code@bnavigator.de>
@@ -133,23 +160,23 @@ Thu Oct  2 17:50:42 UTC 2014 - termim@gmail.com
 - Update to 1.0
     * `kernprof.py` is now installed as `kernprof`.
     * Python 3 support. Thanks to the long-suffering Mikhail Korobov for
-      being patient. 
+      being patient.
     * Dropped 2.6 as it was too annoying.
     * The `stripzeros` and `add_module` options. Thanks to Erik Tollerud
-      for contributing it. 
+      for contributing it.
     * Support for IPython cell blocks. Thanks to Michael Forbes for adding
-      this feature. 
+      this feature.
     * Better warnings when building without Cython. Thanks to David
-      Cournapeau for spotting this. 
+      Cournapeau for spotting this.
 
 -------------------------------------------------------------------
 Mon Mar 10 15:05:50 UTC 2014 - toddrme2178@gmail.com
 
 - Update to 1.0b3
     * Profile generators.
-    * Update for compatibility with newer versions of Cython. 
+    * Update for compatibility with newer versions of Cython.
       Thanks to Ondrej Certik for spotting the bug.
-    * Update IPython compatibility for 0.11+. Thanks to Yaroslav 
+    * Update IPython compatibility for 0.11+. Thanks to Yaroslav
       Halchenko and others for providing the updated imports.
 
 -------------------------------------------------------------------

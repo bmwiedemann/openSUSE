@@ -1,7 +1,7 @@
 #
 # spec file for package python-line_profiler
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,21 @@
 
 
 Name:           python-line_profiler
-Version:        4.0.3
+Version:        4.1.2
 Release:        0
 Summary:        Line-by-line profiler
 License:        BSD-3-Clause
 URL:            https://github.com/pyutils/line_profiler
 Source:         https://files.pythonhosted.org/packages/source/l/line_profiler/line_profiler-%{version}.tar.gz
-BuildRequires:  %{python_module Cython with %python-Cython < 3}
+# submitted upstream as https://github.com/pyutils/line_profiler/pull/252
+Patch1:         use-sys-executable-python.patch
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scikit-build}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module ubelt}
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -36,7 +39,7 @@ BuildRequires:  ninja
 BuildRequires:  python-rpm-macros
 Requires:       python-ipython
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -49,7 +52,7 @@ profile Python applications and scripts either with line_profiler or with the
 function-level profiling tools in the Python standard library.
 
 %prep
-%setup -q -n line_profiler-%{version}
+%autosetup -p1 -n line_profiler-%{version}
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
