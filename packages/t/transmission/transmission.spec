@@ -43,6 +43,7 @@ Source98:       transmission-user.conf
 Source99:       %{name}.rpmlintrc
 # PATCH-FEATURE-OPENSUSE harden_transmission-daemon.service.patch
 Patch0:         harden_transmission-daemon.service.patch
+BuildRequires:  alts
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -69,8 +70,7 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib) >= 1.2.3
 Requires:       %{name}-common = %{version}
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires:       alts
 Provides:       %{name}-ui = %{version}
 %if %{with ninja}
 BuildRequires:  ninja
@@ -97,10 +97,9 @@ System user for use by the transmission service
 Summary:        GTK client for the "transmission" BitTorrent client
 Group:          Productivity/Networking/Other
 Requires:       %{name}-common = %{version}
+Requires:       alts
 # For canberra-gtk-play binary
 Requires:       canberra-gtk-play
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Provides:       %{name}-ui = %{version}
 
 %description gtk
@@ -115,8 +114,7 @@ This package contains a graphical user interface to transmission.
 Summary:        Qt interface for the "transmission" BitTorrent client
 Group:          Productivity/Networking/Other
 Requires:       %{name}-common = %{version}
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires:       alts
 Provides:       %{name}-ui = %{version}
 
 %description qt
@@ -131,6 +129,7 @@ This package contains a graphical user interface to transmission.
 Summary:        Common data for the "transmission" BitTorrent client
 Group:          Productivity/Networking/Other
 Requires:       %{name}-ui = %{version}
+Requires:       alts
 BuildArch:      noarch
 
 %description common
@@ -183,70 +182,36 @@ install -v -m 0644 daemon/transmission-daemon.service \
     -D -t %{buildroot}%{_unitdir}
 mkdir -p %{buildroot}%{_localstatedir}/lib/transmission
 
-# create targets for transmission below /etc/alternatives/
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-ln -s -f %{_sysconfdir}/alternatives/transmission \
-         %{buildroot}/%{_bindir}/transmission
-ln -s -f %{_sysconfdir}/alternatives/transmission.1.gz \
-         %{buildroot}/%{_mandir}/man1/transmission.1.gz
 # fix doc
 rm -rf %{buildroot}%{_datadir}/doc/transmission
+
+# alternatives - create binary symlink
+ln -s %{_bindir}/alts %{buildroot}%{_bindir}/%{name}
+
+# alternatives - create directory
+mkdir -p %{buildroot}%{_datadir}/libalternatives/%{name}
+
+# alternatives - create 'cli' configuration file
+cat > %{buildroot}%{_datadir}/libalternatives/%{name}/5.conf <<EOF
+binary=%{_bindir}/%{name}-cli
+man=%{name}-cli.1
+EOF
+
+# alternatives - create 'gtk' configuration file
+cat > %{buildroot}%{_datadir}/libalternatives/%{name}/15.conf <<EOF
+binary=%{_bindir}/%{name}-gtk
+man=%{name}-gtk.1
+EOF
+
+# alternatives - create 'qt' configuration file
+cat > %{buildroot}%{_datadir}/libalternatives/%{name}/10.conf <<EOF
+binary=%{_bindir}/%{name}-qt
+man=%{name}-qt.1
+EOF
 
 install -D -m 0644 %{SOURCE98} %{buildroot}%{_sysusersdir}/system-user-transmission.conf
 
 %pre -n system-user-transmission -f build/transmission.pre
-
-%pre daemon
-%service_add_pre transmission-daemon.service
-
-%post daemon
-%service_add_post transmission-daemon.service
-
-%preun daemon
-%service_del_preun transmission-daemon.service
-
-%postun daemon
-%service_del_postun transmission-daemon.service
-
-%post
-update-alternatives \
-    --install %{_bindir}/transmission transmission \
-              %{_bindir}/transmission-cli 5 \
-    --slave   %{_mandir}/man1/transmission.1.gz transmission.1.gz \
-              %{_mandir}/man1/transmission-cli.1.gz
-
-%post gtk
-update-alternatives \
-    --install %{_bindir}/transmission transmission \
-              %{_bindir}/transmission-gtk 15 \
-    --slave   %{_mandir}/man1/transmission.1.gz transmission.1.gz \
-              %{_mandir}/man1/transmission-gtk.1.gz
-%desktop_database_post
-
-%post qt
-update-alternatives \
-    --install %{_bindir}/transmission transmission \
-              %{_bindir}/transmission-qt 10 \
-    --slave   %{_mandir}/man1/transmission.1.gz transmission.1.gz \
-              %{_mandir}/man1/transmission-qt.1.gz
-
-%postun
-# Note: we don't use "$1 -eq 0", to avoid issues if the package gets renamed
-if [ ! -f %{_bindir}/transmission-cli ]; then
-    update-alternatives --remove transmission %{_bindir}/transmission-cli
-fi
-
-%postun gtk
-# Note: we don't use "$1 -eq 0", to avoid issues if the package gets renamed
-if [ ! -f %{_bindir}/transmission-gtk ]; then
-    update-alternatives --remove transmission %{_bindir}/transmission-gtk
-fi
-
-%postun qt
-# Note: we don't use "$1 -eq 0", to avoid issues if the package gets renamed
-if [ ! -f %{_bindir}/transmission-qt ]; then
-    update-alternatives --remove transmission %{_bindir}/transmission-qt
-fi
 
 %files
 %doc docs/* news/* AUTHORS README.md README.openSUSE
@@ -263,13 +228,8 @@ fi
 %{_mandir}/man1/%{name}-edit.1%{?ext_man}
 %{_mandir}/man1/%{name}-remote.1%{?ext_man}
 %{_mandir}/man1/%{name}-show.1%{?ext_man}
-
-# Binary and manpage provided via update-alternatives
-%{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1%{?ext_man}
-
-%ghost %{_sysconfdir}/alternatives/%{name}
-%ghost %{_sysconfdir}/alternatives/%{name}.1.gz
+%dir %{_datadir}/libalternatives/%{name}
+%{_datadir}/libalternatives/%{name}/5.conf
 
 %files daemon
 %doc docs/* news/* AUTHORS README.md README.openSUSE
@@ -291,13 +251,8 @@ fi
 %{_mandir}/man1/%{name}-gtk.1%{?ext_man}
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/%{name}-gtk.metainfo.xml
-
-# Binary and manpage provided via update-alternatives
-%{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1%{?ext_man}
-
-%ghost %{_sysconfdir}/alternatives/%{name}
-%ghost %{_sysconfdir}/alternatives/%{name}.1.gz
+%dir %{_datadir}/libalternatives/%{name}
+%{_datadir}/libalternatives/%{name}/15.conf
 
 %files qt
 %doc docs/* news/* AUTHORS README.md README.openSUSE
@@ -307,15 +262,11 @@ fi
 %{_bindir}/%{name}-qt
 %{_datadir}/applications/%{name}-qt.desktop
 %{_mandir}/man1/%{name}-qt.1%{?ext_man}
-
-# Binary and manpage provided via update-alternatives
-%{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1%{?ext_man}
-
-%ghost %{_sysconfdir}/alternatives/%{name}
-%ghost %{_sysconfdir}/alternatives/%{name}.1.gz
+%dir %{_datadir}/libalternatives/%{name}
+%{_datadir}/libalternatives/%{name}/10.conf
 
 %files common
+%{_bindir}/%{name}
 %{_datadir}/icons/*/*/apps/%{name}*.svg
 # English translations should be generally available
 %{_datadir}/locale/en_AU/LC_MESSAGES/
