@@ -1,7 +1,7 @@
 #
 # spec file for package accountsservice
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,14 +27,18 @@ License:        GPL-3.0-or-later
 Group:          System/Daemons
 URL:            https://www.freedesktop.org/wiki/Software/AccountsService/
 Source0:        https://www.freedesktop.org/software/accountsservice/%{name}-%{version}.tar.xz
+# Patched mocklibc source to fix build with GCC 14
+Source1:        mocklibc-1.0.tar.gz
+# PATCH-FIX-UPSTREAM accountsservice-mocklib-gcc14.patch -- Fix meson checksum to accept patched tarball
+Patch0:         accountsservice-mocklib-gcc14.patch
 
-# WARNING: do not remove/significantly change patch0 without updating the relevant patch in gdm too
+# WARNING: do not remove/significantly change patch1 without updating the relevant patch in gdm too
 # PATCH-FIX-OPENSUSE accountsservice-sysconfig.patch bnc#688071 vuntz@opensuse.org -- Read/write autologin configuration from sysconfig, like gdm (see gdm-sysconfig-settings.patch) WAS PATCH-FIX-OPENSUSE
-Patch0:         accountsservice-sysconfig.patch
+Patch1:         accountsservice-sysconfig.patch
 # PATCH-FIX-OPENSUSE accountsservice-filter-suse-accounts.patch vuntz@opensuse.org -- Filter out some system users that are specific to openSUSE
-Patch1:         accountsservice-filter-suse-accounts.patch
+Patch2:         accountsservice-filter-suse-accounts.patch
 # PATCH-FIX-OPENSUSE harden_accounts-daemon.service.patch jsegitz@suse.com -- For details please see https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
-Patch2:         harden_accounts-daemon.service.patch
+Patch3:         harden_accounts-daemon.service.patch
 
 ## SLE and Leap only patches start at 1000
 # PATCH-FEATURE-SLE as-fate318433-prevent-same-account-multi-logins.patch fate#318433 cxiong@suse.com -- prevent multiple simultaneous login.
@@ -112,9 +116,12 @@ This package contains the Vala bindings for accountservice.
 
 %prep
 %setup -q
+# inject patched mocklibc tarball into package cache
+cp %{SOURCE1} subprojects/packagecache/
 %patch -P 0 -p1
 %patch -P 1 -p1
 %patch -P 2 -p1
+%patch -P 3 -p1
 
 # SLE and Leap patches start at 1000
 %if 0%{?sle_version}
