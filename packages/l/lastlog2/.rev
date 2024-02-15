@@ -85,4 +85,13 @@ There should be a rpmlint which whitelists this PAM module.</comment>
   - fix sqlite3_step error handling</comment>
     <requestid>1146554</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b290f430d9e3de6030272112a2fa7003</srcmd5>
+    <version>1.3.1</version>
+    <time>1708116559</time>
+    <user>anag+factory</user>
+    <comment>- Verson 1.3.1
+  - pam_lastlog2: improve ll2_read_entry error handling [bsc#1220000]</comment>
+    <requestid>1147104</requestid>
+  </revision>
 </revisionlist>
