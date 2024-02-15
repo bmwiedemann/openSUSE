@@ -137,4 +137,12 @@
     <comment>- Disable broken tests in s390x, bsc#1217019</comment>
     <requestid>1142263</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d919a9c79486aea18a77dcce60e2c947</srcmd5>
+    <version>1.8.1</version>
+    <time>1708027179</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1146922</requestid>
+  </revision>
 </revisionlist>

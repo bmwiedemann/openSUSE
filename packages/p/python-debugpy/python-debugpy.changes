@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb 15 16:18:57 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip attach_pid tests that fails in OBS run environment bsc#1219921
+
+-------------------------------------------------------------------
+Wed Feb 14 11:05:55 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 1.8.1:
+  - Python 3.12 is now fully supported.
+  - Fixes:
+    - Can no longer expand Numpy arrays to view elements #1408
+    - Namedtuple are not rendered in the variable browser as expected #1477
+  - Enhancements:
+    - Report sockets opened by debugpy #1337
+
+-------------------------------------------------------------------
 Mon Jan 29 12:57:18 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable broken tests in s390x, bsc#1217019

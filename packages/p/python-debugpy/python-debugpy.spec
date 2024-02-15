@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-debugpy%{psuffix}
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        An implementation of the Debug Adapter Protocol for Python
 License:        MIT
@@ -126,6 +126,11 @@ donttest="$donttest or test_attach_pid_client"
 sed -i "s/timeout=30/timeout=60/g" pytest.ini
 donttest+=" or test_attach_api or test_reattach or test_break_api or test_set_variable or test_unicode or test_debugpySystemInfo or test_debug_this_thread or test_tracing"
 %endif
+
+# Do not have numpy dependency
+donttest+=" or test_numpy"
+# Skip all attach_pid tests, it fails in OBS enviroment bsc#1219921
+donttest+=" or attach_pid"
 
 %pytest_arch -k "not ($donttest)"
 %endif
