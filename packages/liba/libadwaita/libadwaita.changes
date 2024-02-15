@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 12 15:22:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.4.3:
+  + AdwAboutWindow: Don't pre-select the first section on the Legal
+    page.
+  + AdwHeaderBar: Fix visibility after changing :show-back-button.
+  + AdwPreferencesWindow: Fix :visible-page and :visible-page-name
+    docs.
+  + AdwViewSwitcherBar: Fix a warning when empty.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Dec  2 13:28:13 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.4.2:
