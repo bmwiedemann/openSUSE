@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package webkit2gtk3
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -25,7 +25,8 @@
 ExclusiveArch:  do-not-build
 %endif
 
-%define usegcc10 0%{?sle_version} && 0%{?sle_version} <= 150400
+%define usegcc11 0%{?sle_version} && 0%{?sle_version} < 160000
+%define use_jxl !(0%{?sle_version} && 0%{?sle_version} < 160000)
 
 %if "%{flavor}" == "gtk3"
 %define _gtknamesuffix gtk3
@@ -67,8 +68,8 @@ ExclusiveArch:  do-not-build
 %define _jscver 6.0
 %define _pkgconfig_suffix gtk-4.0
 %define _usesoup2 0
-%define _wk2sover6api 6_0-4
-%define _soverlj6api 6_0-1
+%define _wk2sover6api -6_0-4
+%define _soverlj6api -6_0-1
 %endif
 
 Name:           webkit2%{_gtknamesuffix}
@@ -104,10 +105,10 @@ BuildRequires:  bubblewrap
 BuildRequires:  cmake
 BuildRequires:  enchant-devel
 BuildRequires:  flex
-%if %usegcc10
-BuildRequires:  gcc10-c++
+%if %usegcc11
+BuildRequires:  gcc11-c++
 %else
-BuildRequires:  gcc-c++ >= 8.3
+BuildRequires:  gcc-c++ >= 10.2
 %endif
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gperf >= 3.0.1
@@ -130,7 +131,7 @@ BuildRequires:  pkgconfig(fontconfig) >= 2.8.0
 BuildRequires:  pkgconfig(freetype2) >= 2.4.2
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56.4
 BuildRequires:  pkgconfig(icu-i18n)
-%if %usegcc10
+%if %usegcc11
 BuildRequires:  pkgconfig(glproto)
 %endif
 BuildRequires:  pkgconfig(gnutls) >= 3.0.0
@@ -157,7 +158,9 @@ BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(harfbuzz) >= 0.9.18
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libavif) >= 0.9.0
+%if %{use_jxl}
 BuildRequires:  pkgconfig(libjxl)
+%endif
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libsecret-1)
@@ -228,6 +231,8 @@ Requires:       bubblewrap
 %if "%{flavor}" == "gtk4"
 Requires:       libjavascriptcoregtk%{_soverlj6api} = %{version}
 Requires:       webkitgtk-%{_sonameverpkg}-injected-bundles
+# Package was wrongly named
+Obsoletes:      libwebkitgtk6_0-4 < 2.42.6
 %else
 Requires:       libjavascriptcoregtk%{_sover} = %{version}
 Requires:       webkit2gtk-%{_sonameverpkg}-injected-bundles
@@ -292,6 +297,8 @@ more.
 %package -n libjavascriptcoregtk%{_soverlj6api}
 Summary:        JavaScript Core Engine, GTK+ Port
 Group:          System/Libraries
+# Package was wrongly named
+Obsoletes:      libjavascriptcoregtk6_0-1 < 2.42.6
 
 %description -n libjavascriptcoregtk%{_soverlj6api}
 WebKit is a web content engine, derived from KHTML and KJS from KDE,
@@ -431,8 +438,6 @@ A small test browswer from webkit, useful for testing features.
 
 
 
-
-
 # Expand %%lang_package to Obsoletes its older-name counterpart
 
 %package -n WebKitGTK-%{_apiver}-lang
@@ -475,9 +480,9 @@ export PYTHON=%{_bindir}/python3
   -GNinja \
   -DCMAKE_BUILD_TYPE=Release \
   -DENABLE_DOCUMENTATION=OFF \
-%if %usegcc10
-  -DCMAKE_C_COMPILER=gcc-10 \
-  -DCMAKE_CXX_COMPILER=g++-10 \
+%if %usegcc11
+  -DCMAKE_C_COMPILER=gcc-11 \
+  -DCMAKE_CXX_COMPILER=g++-11 \
 %endif
   -DPORT=GTK \
 %if "%{flavor}" == "gtk4"
@@ -502,6 +507,13 @@ export PYTHON=%{_bindir}/python3
   -DENABLE_C_LOOP=ON \
   -DENABLE_SAMPLING_PROFILER=OFF \
   -DUSE_SYSTEM_MALLOC=ON \
+%else
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+  -DUSE_SYSTEM_MALLOC=ON \
+%endif
+%endif
+%if !%{use_jxl}
+  -DUSE_JPEGXL=OFF \
 %endif
 
 %ninja_build -j $max_link_jobs

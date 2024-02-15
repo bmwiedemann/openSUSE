@@ -1609,4 +1609,18 @@
     <comment></comment>
     <requestid>1144552</requestid>
   </revision>
+  <revision rev="187" vrev="2">
+    <srcmd5>022bf43b0b22a6bdbbd0d4edffc1410f</srcmd5>
+    <version>2.42.5</version>
+    <time>1708027176</time>
+    <user>anag+factory</user>
+    <comment>- Fix package names for v6, and obsolete old packages.
+
+- Use gcc 11 on SLE, to match what is currently used on SP4, and
+  adjust version check to include SP6. Also, use system malloc
+  there; the build currently fails without this (webkit#243535).
+- Require gcc &gt;= 10.2 to match the current cmake test.
+- Disable jpegxl on SLE; it isn't currently available there.</comment>
+    <requestid>1146861</requestid>
+  </revision>
 </revisionlist>
