@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Feb 15 09:26:15 UTC 2024 - pgajdos@suse.com
+
+- version update to 0.4.37
+  0.4.37
+  ======
+  - enable neon instructions on Apple ARM64 (Aleix Conchillo Flaqué)
+  - orcc: Fix regression, was hard-coded to use "sse" as default target (Sebastian Dröge)
+  - MMX backend fixes (L. E. Segovia, Jorge Zapata)
+  - testsuite: Build fixes for Clang (L. E. Segovia)
+  - testsuite, tools: Fix warning caused by inserting unneeded source operands (L. E. Segovia)
+  - orccompiler: call sys_icache_invalidate() to invalidate macos inst cache (Aleix Conchillo Flaqué)
+  - macOS/iOS version/target check build fixes (Aleix Conchillo Flaqué)
+  0.4.36
+  ======
+  - Only use AVX / AVX2 instructions on CPUs that support both AVX and AVX2
+    (fixes crash on machines that only support AVX) (L. E. Segovia)
+  0.4.35
+  ======
+  - Add support for AVX / AVX2 (L. E. Segovia)
+  - SSE backend improvements (L. E. Segovia)
+  - New `orf` and `andf` opcodes for bitwise AND and OR for single precision floats (Jorge Zapata)
+  - Add support for `convwf`, int16 to float conversion (Jorge Zapata)
+  - Allow backend selection through ORC_TARGET environment variable (L. E. Segovia)
+  - Documentation improvements (Jorge Zapata, L. E. Segovia, Tim-Philipp Müller)
+  - orconce: Use Win32 once implementation with MSVC (Seungha Yang, L. E. Segovia)
+  - orcc: add --binary option to output raw machine code for functions (L. E. Segovia)
+  - orcprofile: Implement Windows high-resolution timestamp for MSVC
+    to allow benchmarking on MSVC builds (L. E. Segovia)
+
+-------------------------------------------------------------------
 Wed Jun  7 13:37:52 UTC 2023 - pgajdos@suse.com
 
 - Update to version 0.4.34
