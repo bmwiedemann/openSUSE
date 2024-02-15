@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Feb 12 10:06:44 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.1.0:
+  * Add BDPluginSpec constructor and use it in plugin_specs_from_names
+  * overrides: Remove unused 'sys' import
+  * swap: Add support for checking label and UUID format
+  * fs: Add a function to check label format for F2FS
+  * fs: Add a generic function to check for fs info availability
+  * fs: Fix allowed UUID for generic mkfs with VFAT
+  * fs: Add support for getting filesystem min size for NTFS and Ext
+  * Mark NVDIMM plugin as deprecated since 3.1
+  * part: Fix potential double free when getting parttype
+  * Fix missing progress initialization in bd_crypto_luks_add_key
+  * lvm-dbus: Fix leaking error
+  * lvm-dbus: Avoid using already-freed memory
+  * utils: Add expected printf string annotation
+  * fs: Report reason for open() and ioctl() failures
+
+-------------------------------------------------------------------
 Sat Nov 11 18:11:14 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Add %{_libdir}/libbd_s390.so for s390x because missing file identitied
