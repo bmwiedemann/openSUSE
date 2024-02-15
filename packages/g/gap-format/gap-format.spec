@@ -1,7 +1,7 @@
 #
 # spec file for package gap-format
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gap-format
-Version:        1.4.3
+Version:        1.4.4
 Release:        0
 Summary:        GAP: Computation with formations of finite solvable groups
 License:        GPL-2.0-or-later
