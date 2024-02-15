@@ -560,4 +560,12 @@
     <comment>Add support of openSUSE Leap 15.6</comment>
     <requestid>1146664</requestid>
   </revision>
+  <revision rev="71" vrev="3">
+    <srcmd5>d6c5cdb804d808e1552c8cb33be7627b</srcmd5>
+    <version>20231215</version>
+    <time>1708116552</time>
+    <user>anag+factory</user>
+    <comment>Add support of SLE Micro 6.0</comment>
+    <requestid>1146962</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 15 12:51:20 MST 2024 - carnold@suse.com
+
+- Add support for SLE Micro 6.0 (jsc#PED-6305)
+  add-slem6.0-support.patch
+
+-------------------------------------------------------------------
 Wed Feb 14 15:40:21 MST 2024 - carnold@suse.com
 
 - Add support for openSUSE Leap 15.6 (jsc#PED-6305)
