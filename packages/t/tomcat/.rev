@@ -979,4 +979,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment>bsc#1219530</comment>
     <requestid>1144553</requestid>
   </revision>
+  <revision rev="103" vrev="3">
+    <srcmd5>9a5ca5df57f6a8e45e6d8c9911ebce5b</srcmd5>
+    <version>9.0.85</version>
+    <time>1708027269</time>
+    <user>anag+factory</user>
+    <comment>post-embargo sync with SLE</comment>
+    <requestid>1146829</requestid>
+  </revision>
 </revisionlist>

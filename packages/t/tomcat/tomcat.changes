@@ -4,6 +4,12 @@ Tue Feb  6 09:55:04 UTC 2024 - Michele Bussolotto <michele.bussolotto@suse.com>
 - rpm 4.19 requires dependencies on tomcat user and group (bsc#1219530)
 
 -------------------------------------------------------------------
+Fri Jan 26 12:33:23 UTC 2024 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Fixed CVEs:
+  * CVE-2024-22029: run xsltproc as tomcat group (bsc#1219208)
+
+-------------------------------------------------------------------
 Wed Jan 17 16:57:21 UTC 2024 - Michele Bussolotto <michele.bussolotto@suse.com>
 
 - Update to Tomcat 9.0.85
