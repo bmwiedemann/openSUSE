@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 15 14:23:14 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Remove the _multibuild file in order not to build unnecessary
+  parboiled:scala flavour
+
+-------------------------------------------------------------------
 Fri Oct  6 11:26:05 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.4.1

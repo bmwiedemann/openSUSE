@@ -55,4 +55,12 @@
     <comment>Bring back the scala subpackage built against the new scala</comment>
     <requestid>1117747</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>5ca19be14a0a883e8678b8195d66fcd7</srcmd5>
+    <version>1.4.1</version>
+    <time>1708027292</time>
+    <user>anag+factory</user>
+    <comment>Don't build the scala flavour</comment>
+    <requestid>1146867</requestid>
+  </revision>
 </revisionlist>
