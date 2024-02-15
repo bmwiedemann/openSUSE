@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 12 13:57:28 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable LTO on aarch64 until upstream fix the issue:
+  https://github.com/libunwind/libunwind/issues/693
+
+-------------------------------------------------------------------
 Tue Jan 30 11:33:15 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.8.0:

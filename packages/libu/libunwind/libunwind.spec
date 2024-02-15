@@ -15,6 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+# Disable LTO on aarch64
+# https://github.com/libunwind/libunwind/issues/693
+%ifarch aarch64
+%define _lto_cflags %{nil}
+%endif
 
 # Note the wrong version number from upstream
 Name:           libunwind
