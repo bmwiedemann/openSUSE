@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 13 16:40:17 UTC 2024 - Ladislav Slezák <lslezak@suse.com>
+
+- SLE HPC is not a base product anymore, it is replaced by
+  SLES + HPC module, added migration mapping (jsc#PED-7841)
+- 5.0.4
+
+-------------------------------------------------------------------
+Thu Feb  8 13:49:00 UTC 2024 - Ladislav Slezák <lslezak@suse.com>
+
+- Fixed ERB template loading in self update, if the template
+  cannot be found using a relative path then fallback to the
+  absolute path (bsc#1219174)
+- 5.0.3
+
+-------------------------------------------------------------------
 Tue Jan  9 13:39:32 UTC 2024 - Ladislav Slezák <lslezak@suse.com>
 
 - After installation disable the empty installation repository
