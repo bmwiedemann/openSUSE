@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 14 09:05:14 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- update to 2.5.1:
+  * ykpiv: cmd: ykcs11: Fix buffer size for key import.
+- add cmake-flags-upstream-issue-474.patch: 
+  proper fix for the cmake flags issue
+- remove temporary-cmake-flags-fix.patch
+
+-------------------------------------------------------------------
 Wed Feb  7 12:32:15 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - update to 2.5.0:

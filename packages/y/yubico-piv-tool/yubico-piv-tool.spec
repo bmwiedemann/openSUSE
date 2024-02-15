@@ -18,7 +18,7 @@
 
 %define sover  2
 Name:           yubico-piv-tool
-Version:        2.5.0
+Version:        2.5.1
 Release:        0
 Summary:        Yubico YubiKey NEO CCID Manager
 License:        BSD-2-Clause
@@ -28,8 +28,8 @@ Source0:        https://developers.yubico.com/yubico-piv-tool/Releases/%{name}-%
 Source1:        https://developers.yubico.com/yubico-piv-tool/Releases/%{name}-%{version}.tar.gz.sig
 Source3:        yubico-piv-tool.keyring
 Patch1:         pthread-link.patch
-# Remove the following patch once cmake/* is fixed in upstream:
-Patch2:         temporary-cmake-flags-fix.patch
+# https://github.com/Yubico/yubico-piv-tool/issues/474
+Patch2:         cmake-flags-upstream-issue-474.patch
 BuildRequires:  c++_compiler
 BuildRequires:  check-devel
 BuildRequires:  cmake
