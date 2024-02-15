@@ -4412,4 +4412,28 @@
     corresponding SIGWINCH feature is disabled.</comment>
     <requestid>1140392</requestid>
   </revision>
+  <revision rev="258" vrev="31">
+    <srcmd5>14ad733126767a6a9db6e985c376581d</srcmd5>
+    <version>unknown</version>
+    <time>1708027210</time>
+    <user>anag+factory</user>
+    <comment>- Add ncurses patch 20240210
+  + compiler-warning fixes, while investigating an optimizer bug in
+    &quot;gcc (MacPorts gcc13 13.2.0_4+stdlib_flag) 13.2.0&quot;
+    which results in only the first byte of a multibyte character being
+    printed to the screen.
+- Change order of use=vt100+4bsd and use=rxvt+pcfkeys in rxvt-basic
+  to get correct arrow keys back (boo#1219626)
+
+- Add ncurses patch 20240203
+  + minor changes to tracing and locale-checks.
+
+- Add ncurses patch 20240127
+  + amend change to z39-a (report by Sven Joachim).
+  + use xterm+nopcfkeys, vt52-basic, dec+pp, dec+sl, vt52+arrows,
+    hp+pfk+cr, klone+acs, klone+color, klone+sgr, ncr160wy50+pp
+    to trim -TD
+  + NetBSD-related fixes for x68k and wsvt52 (patch by Thomas Klausner)</comment>
+    <requestid>1146208</requestid>
+  </revision>
 </revisionlist>

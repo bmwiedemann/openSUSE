@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Feb 12 14:57:41 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20240210
+  + compiler-warning fixes, while investigating an optimizer bug in
+    "gcc (MacPorts gcc13 13.2.0_4+stdlib_flag) 13.2.0"
+    which results in only the first byte of a multibyte character being
+    printed to the screen.
+- Change order of use=vt100+4bsd and use=rxvt+pcfkeys in rxvt-basic
+  to get correct arrow keys back (boo#1219626)
+
+-------------------------------------------------------------------
+Mon Feb  5 07:29:14 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20240203
+  + minor changes to tracing and locale-checks.
+
+-------------------------------------------------------------------
+Mon Jan 29 07:33:35 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20240127
+  + amend change to z39-a (report by Sven Joachim).
+  + use xterm+nopcfkeys, vt52-basic, dec+pp, dec+sl, vt52+arrows,
+    hp+pfk+cr, klone+acs, klone+color, klone+sgr, ncr160wy50+pp
+    to trim -TD
+  + NetBSD-related fixes for x68k and wsvt52 (patch by Thomas Klausner)
+
+-------------------------------------------------------------------
 Mon Jan 22 07:20:53 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20240120
