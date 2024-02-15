@@ -2,6 +2,7 @@
 # spec file for package pcsc-tools
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           pcsc-tools
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        Smart card tools
 License:        GPL-2.0-or-later
@@ -38,7 +39,7 @@ or send commands in a friendly environment
 (text or graphical user interface).
 
 %prep
-%setup -q
+%autosetup -p1
 sed 's|#!/usr/bin/env perl|#!/usr/bin/perl|g' -i ATR_analysis.in gscriptor scriptor
 
 %build
