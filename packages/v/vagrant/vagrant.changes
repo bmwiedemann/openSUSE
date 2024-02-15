@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 12 05:43:13 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- add patch 0014-Bump-vagrant_cloud_dependency.patch to allow newer
+  vagrant_cloud versions
+
+-------------------------------------------------------------------
 Mon Jan 22 16:04:58 UTC 2024 - Илья Индиго <ilya@ilya.cf>
 
 - Added file ruby-3.3.patch for ruby 3.3 support (boo#1218951).
@@ -42,11 +48,11 @@ Sun Jun 18 10:48:43 UTC 2023 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.c
   - core: Update user error message on failed extension installs [GH-13207]
   - core: Support loading legacy providers in OpenSSL 3 [GH-13178]
   - provisioner/salt: Verify bootstrap-salt download [GH-13166]
-  
+
   BUG FIXES:
   - communicator/ssh: Remove keyboard-interactive auth method [GH-13194]
   - provisioner/salt: Fix usage on Windows guests [GH-13086]
-  
+
   VAGRANT-GO:
   - Update data layer implementation [GH-12904]
   - Update dependencies [GH-13201]
@@ -1235,7 +1241,7 @@ Fri Oct 18 06:31:22 UTC 2019 - Johannes Kastl <kastl@b1-systems.de>
 - update to 2.2.6
   - dropped patch 0013-Only-return-interfaces-where-addr-is-not-nil.patch that has been included upstream
   - set vagrant_cloud dependency to >= 2.0.3
-  
+
   FEATURES:
     core/provisioners: Introduce new Provisioner options: before and after [GH-11043]
     guest/alpine: Integrate the vagrant-alpine plugin into Vagrant core [GH-10975]
@@ -1267,7 +1273,7 @@ Fri Oct 18 06:31:22 UTC 2019 - Johannes Kastl <kastl@b1-systems.de>
     guest/suse: Update nfs & service daemon names for suse based hosts and guests [GH-11076]
     provider/docker: Determine ip address prefix workaround for docker public networks [GH-11111]
     provider/docker: Only return interfaces where addr is not nil for networks [GH-11116]
- 
+
 
 -------------------------------------------------------------------
 Wed Aug 28 11:58:06 UTC 2019 - Dan Čermák <dcermak@suse.com>
@@ -1441,7 +1447,7 @@ Mon Mar  4 14:43:17 UTC 2019 - Ana María Martínez Gómez <ammartinez@suse.com>
 -------------------------------------------------------------------
 Mon Jan 28 13:31:45 UTC 2019 - Dan Čermák <dcermak@suse.com>
 
-- Update Requires and Buildrequires to match vagrant.gemspec 
+- Update Requires and Buildrequires to match vagrant.gemspec
 
 -------------------------------------------------------------------
 Fri Jan 11 15:29:14 UTC 2019 - Dan Čermák <dcermak@suse.com>
@@ -1614,7 +1620,7 @@ Fri Nov 16 20:39:55 UTC 2018 - Johannes Kastl <kastl@b1-systems.de>
 -------------------------------------------------------------------
 Fri Nov  9 20:24:19 UTC 2018 - Johannes Kastl <kastl@b1-systems.de>
 
-- link directories from /usr/share/vagrant/ to /usr/lib64/ruby/gems/2.5.0/gems/x.y.z/, to avoid ruby errors due to patch 0007 
+- link directories from /usr/share/vagrant/ to /usr/lib64/ruby/gems/2.5.0/gems/x.y.z/, to avoid ruby errors due to patch 0007
 
 -------------------------------------------------------------------
 Fri Nov  9 20:19:31 UTC 2018 - Johannes Kastl <kastl@b1-systems.de>
@@ -1625,7 +1631,7 @@ Fri Nov  9 20:19:31 UTC 2018 - Johannes Kastl <kastl@b1-systems.de>
 -------------------------------------------------------------------
 Fri Nov  9 14:35:42 UTC 2018 - Johannes Kastl <kastl@b1-systems.de>
 
-- use patch 0007-Support-system-installed-plugins.patch on tumbleweed only, as this seems to break Leap 15.0 systems 
+- use patch 0007-Support-system-installed-plugins.patch on tumbleweed only, as this seems to break Leap 15.0 systems
 
 -------------------------------------------------------------------
 Wed Jul 11 18:38:49 UTC 2018 - opensuse_buildservice@ojkastl.de
@@ -1689,7 +1695,7 @@ Mon Jun  4 09:38:13 UTC 2018 - opensuse_buildservice@ojkastl.de
 -------------------------------------------------------------------
 Mon Jun  4 09:06:27 UTC 2018 - opensuse_buildservice@ojkastl.de
 
-- added patch 0026-remove-dependency-on-win32-file.patch 
+- added patch 0026-remove-dependency-on-win32-file.patch
 
 -------------------------------------------------------------------
 Mon Jun  4 07:36:34 UTC 2018 - opensuse_buildservice@ojkastl.de
@@ -1788,12 +1794,12 @@ Mon Jun  4 06:09:16 UTC 2018 - opensuse_buildservice@ojkastl.de
   - hosts/windows: Convert to windows path if on WSL during vbox export [GH-9518]
   - providers/virtualbox: Fix hostonly matching not respecting :name argument [GH-9302]
   - util/credential_scrubber: Ignore empty strings [GH-9472, GH-9462]
- 
+
 -------------------------------------------------------------------
 Mon Jun  4 06:03:31 UTC 2018 - opensuse_buildservice@ojkastl.de
 
 - do no longer use /usr/share/vim/current for vagrant-vim, rather use the approach used by
-  package openSUSE:Leap:15.0/vim-plugins: %{_datadir}/vim/site/plugin/ 
+  package openSUSE:Leap:15.0/vim-plugins: %{_datadir}/vim/site/plugin/
 
 -------------------------------------------------------------------
 Sun May 13 19:54:25 UTC 2018 - opensuse_buildservice@ojkastl.de
@@ -1819,7 +1825,7 @@ Thu Mar  1 21:34:53 UTC 2018 - opensuse_buildservice@ojkastl.de
 -------------------------------------------------------------------
 Wed Feb 28 06:31:45 UTC 2018 - opensuse_buildservice@ojkastl.de
 
-- update to version 2.0.2 
+- update to version 2.0.2
   -> removed patch 0001-Disable-Checkpoint.patch that has been upstreamed
   -> removed patch 0031-allow-builds-with-ruby2.5.patch
 
@@ -1869,7 +1875,7 @@ Wed Feb 28 06:31:45 UTC 2018 - opensuse_buildservice@ojkastl.de
 -------------------------------------------------------------------
 Wed Feb 28 06:31:45 UTC 2018 - opensuse_buildservice@ojkastl.de
 
-- added patch 0031-allow-builds-with-ruby2.5.patch to allow building with ruby2.5 
+- added patch 0031-allow-builds-with-ruby2.5.patch to allow building with ruby2.5
 
 -------------------------------------------------------------------
 Wed Feb 28 06:31:45 UTC 2018 - opensuse_buildservice@ojkastl.de
@@ -1980,12 +1986,12 @@ Wed Feb 28 06:31:45 UTC 2018 - opensuse_buildservice@ojkastl.de
 Tue Jan 30 08:17:11 UTC 2018 - robert.munteanu@gmail.com
 
 - No longer hardcode the ruby version, it was enough to lock down
-  the rubygem versions 
+  the rubygem versions
 
 -------------------------------------------------------------------
 Sat Jan 27 20:58:00 UTC 2018 - robert.munteanu@gmail.com
 
-- Explicitly build against ruby 2.5 for now 
+- Explicitly build against ruby 2.5 for now
 
 -------------------------------------------------------------------
 Thu Oct 26 19:42:46 UTC 2017 - tmkn@tmkn.uk
@@ -1997,7 +2003,7 @@ Thu Oct 26 19:42:46 UTC 2017 - tmkn@tmkn.uk
 Sun Oct 22 19:00:05 UTC 2017 - robert.munteanu@gmail.com
 
 - Added upstream patch 0010-virtualbox-5.2-support.patch to allow
-  running with upcoming Virtualbox 5.2 
+  running with upcoming Virtualbox 5.2
 
 -------------------------------------------------------------------
 Thu Sep 28 13:38:17 UTC 2017 - dimstar@opensuse.org
@@ -2011,26 +2017,26 @@ Thu Sep 28 13:38:17 UTC 2017 - dimstar@opensuse.org
 Tue Aug 29 12:33:50 UTC 2017 - robert.munteanu@gmail.com
 
 - Added 0024-do-not-depend-on-wdm.patch - that rubygem only works
-  on windows 
+  on windows
 
 -------------------------------------------------------------------
 Wed Aug 16 08:59:17 UTC 2017 - robert.munteanu@gmail.com
 
 - Rebase 0023-vbox-fix-package.patch for Vagrant 1.9.7
-- Fix various 'have choice for ...' errors 
+- Fix various 'have choice for ...' errors
 
 -------------------------------------------------------------------
 Sun Aug 13 19:07:06 UTC 2017 - robert.munteanu@gmail.com
 
-- add 0023-vbox-fix-package.patch ( boo#1044087 ) 
+- add 0023-vbox-fix-package.patch ( boo#1044087 )
 
 -------------------------------------------------------------------
 Tue Jul 25 18:17:14 UTC 2017 - opensuse_buildservice@ojkastl.de
 
-- renamed patch 0010-also-build-with-ruby2.4.patch to 
+- renamed patch 0010-also-build-with-ruby2.4.patch to
   0020-also-build-with-ruby2.4.patch
 - add patches for ruby2.4 compatibility
-  * added patch 
+  * added patch
     0021-Use-Integer-instead-of-Fixnum-for-Ruby-2.4-compatibi.patch
   * added patch 0022-Do-not-use-deprecated-API.patch
 
@@ -2038,9 +2044,9 @@ Tue Jul 25 18:17:14 UTC 2017 - opensuse_buildservice@ojkastl.de
 Mon Jul 24 19:51:52 UTC 2017 - opensuse_buildservice@ojkastl.de
 
 - update to version 1.9.7
-- removed patch 0005-Support-system-installed-plugins.patch that 
+- removed patch 0005-Support-system-installed-plugins.patch that
   no longer applies
-- added patch 0010-also-build-with-ruby2.4.patch that allows builds 
+- added patch 0010-also-build-with-ruby2.4.patch that allows builds
   with ruby2.4, even if vagrant states otherwise
   (https://github.com/mitchellh/vagrant/blob/master/vagrant.gemspec#L15)
 
@@ -2048,23 +2054,23 @@ Mon Jul 24 19:51:52 UTC 2017 - opensuse_buildservice@ojkastl.de
 Thu Jun 15 07:25:19 UTC 2017 - opensuse_buildservice@ojkastl.de
 
 - as rubygem-childprocess has been updated to 0.7 in d:l:r:e, which
-  does not work with vagrant, a BuildRequires for 
+  does not work with vagrant, a BuildRequires for
   rubygem-childprocess <= 0.7 has been added
 
 -------------------------------------------------------------------
 Sun May 21 16:08:12 UTC 2017 - opensuse_buildservice@ojkastl.de
 
 - update to version 1.9.5
-- removed patch 0007-Update-command.rb.patch, that has been 
+- removed patch 0007-Update-command.rb.patch, that has been
   integrated upstream
 - rebased patches to allow patching version 1.9.5 instead of 1.9.1
-- added explicit BuildRequires for rubygems needed to get vagrant 
-  to build 
+- added explicit BuildRequires for rubygems needed to get vagrant
+  to build
 
 -------------------------------------------------------------------
 Tue Mar  7 20:08:08 UTC 2017 - robert.munteanu@gmail.com
 
-- Fix build in factory - failed due to 
+- Fix build in factory - failed due to
   "have choice for rubygem(ruby:2.2.0:nokogiri)"
 
 -------------------------------------------------------------------

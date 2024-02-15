@@ -16,7 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# disable tests if you want to just run a quick build
+
 %{bcond_without tests}
 
 %global rb_build_versions %rb_default_ruby
@@ -26,7 +26,6 @@
 %global mod_name vagrant
 %global mod_full_name %{mod_name}-%{version}
 %global vim_data_dir %{_datadir}/vim/site/plugin/
-
 
 Name:           vagrant
 Version:        2.3.7
@@ -65,6 +64,7 @@ Patch10:        0010-Remove-dependency-on-grpc-tools.patch
 Patch11:        0011-Remove-vagrant-ssl-extension.patch
 Patch12:        0012-Bump-rgl-dependency-to-0.6.6.patch
 Patch13:        0013-Bump-webrick-dependency-to-1.8.0.patch
+Patch14:        0014-Bump-vagrant_cloud_dependency.patch
 
 # force only one ruby version
 # CAUTION: if you change this, then you *must* also change the sed calls which
@@ -79,13 +79,12 @@ Patch13:        0013-Bump-webrick-dependency-to-1.8.0.patch
 
 %global vagrant_plugin_name vagrant
 
-
 #===============================================================================
 # Build dependencies
 #===============================================================================
 
-BuildRequires:  %{ruby} < 3.4
 BuildRequires:  %{rubygem bundler}
+BuildRequires:  %{ruby} < 3.4
 #  s.add_dependency "bcrypt_pbkdf", "~> 1.1"
 BuildRequires:  %{rubygem bcrypt_pbkdf:1 >= 1.1 }
 #  s.add_dependency "childprocess", "~> 4.1.0"
@@ -106,7 +105,7 @@ BuildRequires:  %{rubygem listen:3 >= 3.6 }
 BuildRequires:  %{rubygem hashicorp-checkpoint:0.1 >= 0.1.5 }
 #  s.add_dependency "log4r", "~> 1.1.9", "< 1.1.11"
 BuildRequires:  %{rubygem log4r:1.1 >= 1.1.9 }
-BuildConflicts:  %{rubygem log4r:1.1 >= 1.1.11 }
+BuildConflicts: %{rubygem log4r:1.1 >= 1.1.11 }
 #  s.add_dependency "mime-types", "~> 3.3"
 BuildRequires:  %{rubygem mime-types:3 >= 3.3 }
 #  s.add_dependency "net-ftp", "~> 0.1"
@@ -134,8 +133,9 @@ BuildRequires:  %{rubygem winrm:2 >= 2.3.4 }
 BuildRequires:  %{rubygem winrm-fs:1 >= 1.3.4 }
 #  s.add_dependency "winrm-elevated", ">= 1.2.1", "< 2.0"
 BuildRequires:  %{rubygem winrm-elevated:1 >= 1.2.1 }
-#  s.add_dependency "vagrant_cloud", "~> 3.0.5"
-BuildRequires:  %{rubygem vagrant_cloud:3.0 >= 3.0.5 }
+# Patched in 0014-Bump-vagrant_cloud_dependency.patch
+#  s.add_dependency "vagrant_cloud", "~> 3.0"
+BuildRequires:  %{rubygem vagrant_cloud:3 >= 3.0.5 }
 
 # PATCHED -> removed
 #  s.add_development_dependency "grpc-tools", "~> 1.41.1"
@@ -170,10 +170,10 @@ BuildRequires:  ruby-macros >= 5
 
 # for the test
 %if %{with tests}
-BuildRequires:  openssh
-BuildRequires:  curl
-BuildRequires:  bsdtar
 BuildRequires:  %{rubygem vagrant-spec}
+BuildRequires:  bsdtar
+BuildRequires:  curl
+BuildRequires:  openssh
 %endif
 
 BuildRequires:  fdupes
@@ -230,8 +230,9 @@ Requires:       %{rubygem winrm:2 >= 2.3.4}
 Requires:       %{rubygem winrm-fs:1 >= 1.3.4}
 #  s.add_dependency "winrm-elevated", ">= 1.2.1", "< 2.0"
 Requires:       %{rubygem winrm-elevated:1 >= 1.2.1}
+# Patched in 0014-Bump-vagrant_cloud_dependency.patch
 #  s.add_dependency "vagrant_cloud", "~> 3.0.5"
-Requires:       %{rubygem vagrant_cloud:3.0 >= 3.0.5}
+Requires:       %{rubygem vagrant_cloud:3 >= 3.0.5}
 
 
 Requires:       bsdtar
@@ -368,7 +369,6 @@ mkdir -p %{buildroot}%{dirname:%{vagrant_plugin_cache}}
 mkdir -p %{buildroot}%{dirname:%{vagrant_plugin_spec}}
 mkdir -p %{buildroot}%{dirname:%{vagrant_plugin_docdir}}
 
-
 # fix shebang in %%{vagrant_dir}/bin/%%{name}
 sed -i 's|^\#\!/usr/bin/env.*|\#\!/usr/bin/ruby\.%{rb_ruby_suffix}|' \
     %{buildroot}%{vagrant_dir}/bin/%{name}
@@ -377,7 +377,6 @@ sed -i 's|^\#\!/usr/bin/env.*|\#\!/usr/bin/ruby\.%{rb_ruby_suffix}|' \
 # (aka /usr/share/vagrant/gems/bin/vagrant)
 mv %{buildroot}%{vagrant_plugin_dir}/bin/%{name}.%{rb_ruby_suffix} \
     %{buildroot}%{vagrant_plugin_dir}/bin/%{name}
-
 
 # Garbage collection
 rm -f %{buildroot}%{vagrant_dir}/test/vagrant-spec/boxes/.keep
