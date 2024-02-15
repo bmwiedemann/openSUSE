@@ -1118,4 +1118,41 @@ Adds an explicit provides line, so that &quot;zypper in jpegtran&quot; will work
     <comment>- Do not require SIMD support when it does not exist (forwarded request 1138991 from Andreas_Schwab)</comment>
     <requestid>1139079</requestid>
   </revision>
+  <revision rev="72" vrev="79">
+    <srcmd5>de3094534ad69255f5c29f2eb8aaa19b</srcmd5>
+    <version>unknown</version>
+    <time>1708027110</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.0.2
+  * Fixed a signed integer overflow in the tj3CompressFromYUV8(),
+    tj3DecodeYUV8(), tj3DecompressToYUV8(), and tj3EncodeYUV8()
+    functions, detected by the Clang and GCC undefined behavior
+    sanitizers, that could be triggered by setting the align
+    parameter to an unreasonably large value. This issue did not
+    pose a security threat, but removing the warning made it
+    easier to detect actual security issues, should they arise in
+    the future.
+  * Introduced a new parameter (TJPARAM_MAXMEMORY in the
+    TurboJPEG C API and TJ.PARAM_MAXMEMORY in the TurboJPEG Java
+    API) and a corresponding TJBench option (-maxmemory) for
+    specifying the maximum amount of memory (in megabytes) that
+    will be allocated for intermediate buffers, which are used
+    with progressive JPEG compression and decompression, optimized
+    baseline entropy coding, lossless JPEG compression, and
+    lossless transformation. The new parameter and option serve
+    the same purpose as the max_memory_to_use field in the
+    jpeg_memory_mgr struct in the libjpeg API, the JPEGMEM
+    environment variable, and the cjpeg/djpeg/jpegtran -maxmemory
+    option.
+  * Introduced a new parameter (TJPARAM_MAXPIXELS in the TurboJPEG
+    C API and TJ.PARAM_MAXPIXELS in the TurboJPEG Java API) and a
+    corresponding TJBench option (-maxpixels) for specifying the
+    maximum number of pixels that the decompression, lossless
+    transformation, and packed-pixel image loading
+    functions/methods will process.
+  * Fixed an error (&quot;Unsupported color conversion request&quot;) that
+    occurred when attempting to decompress a 3-component lossless
+    JPEG image without an Adobe APP14 marker. The decompressor (forwarded request 1144368 from mnhauke)</comment>
+    <requestid>1146098</requestid>
+  </revision>
 </revisionlist>

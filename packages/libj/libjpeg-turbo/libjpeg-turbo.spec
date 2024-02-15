@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package libjpeg-turbo
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -23,7 +23,7 @@
 
 %define asan_build 0
 %define debug_build 0
-%define srcver 3.0.1
+%define srcver 3.0.2
 %if "%{flavor}" == "libjpeg-turbo"
 %define major    8
 %define minor    3
