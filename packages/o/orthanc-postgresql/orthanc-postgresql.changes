@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Feb 14 11:12:43 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- version 6.0
+  * DB schema revision: 2
+  * The DB schema has been updated to Revision 2.  If you need to reinstall the previous
+    version of the plugin, you should run this script:
+    https://orthanc.uclouvain.be/hg/orthanc-databases/file/tip/PostgreSQL/Plugins/SQL/Downgrades/Rev2ToRev1.sql
+  * Transaction Mode:
+    Introduced a new configuration "TransactionMode" to select the transaction isolation level.
+    Allowed values: "Serializable", "ReadCommitted".
+    The "Serializable" mode was the only available value up to now.  It is still the default
+    value now.
+    The "ReadCommitted" is possible now due to rewrites of SQL queries and notably improves
+    the Orthanc ability to ingest data from multiple sources in parallel.
+  * New "EnableVerboseLogs" configuration to show SQL statements being executed.
+
+-------------------------------------------------------------------
 Tue Jul 11 13:54:11 UTC 2023 - Axel Braun <axel.braun@gmx.de>
 
 - version 5.1 
