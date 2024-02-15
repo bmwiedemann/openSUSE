@@ -258,4 +258,12 @@
     <comment>fix build with java &gt;= 20</comment>
     <requestid>1112748</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>63a3540e56f6acd2525d14915335186e</srcmd5>
+    <version>2.7.2</version>
+    <time>1708027308</time>
+    <user>anag+factory</user>
+    <comment>provide hsqldb user and group</comment>
+    <requestid>1146916</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package hsqldb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,14 @@
 
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
-%endif
-
+%{!?_fillupdir:%global _fillupdir /var/adm/fillup-templates}
 Name:           hsqldb
 Version:        2.7.2
 Release:        0
 Summary:        HyperSQL Database Engine
 License:        BSD-3-Clause
 Group:          Productivity/Databases/Servers
-URL:            http://hsqldb.org/
+URL:            https://hsqldb.org/
 Source0:        http://downloads.sourceforge.net/hsqldb/%{name}-%{version}.zip
 Source1:        hsqldb-1.8.0-standard.cfg
 Source2:        hsqldb-1.8.0-standard-server.properties
@@ -52,12 +49,14 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  javapackages-tools
 BuildRequires:  junit
+BuildRequires:  pkgconfig
 BuildRequires:  servletapi5
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(systemd)
 Requires:       java >= 1.8
 Requires:       servletapi5
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Provides:       group(hsqldb)
+Provides:       user(hsqldb)
 BuildArch:      noarch
 %systemd_requires
 
