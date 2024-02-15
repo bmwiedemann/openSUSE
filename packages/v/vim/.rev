@@ -7444,4 +7444,41 @@ always built-in because vim has direct perl dependencies anyway.
  fix indentation</comment>
     <requestid>1136291</requestid>
   </revision>
+  <revision rev="361" vrev="1">
+    <srcmd5>876c6f668c1b1e29f746b0cea8b4bba0</srcmd5>
+    <version>9.1.0111</version>
+    <time>1708027172</time>
+    <user>anag+factory</user>
+    <comment>- update to 9.1.0111:
+ *  filetype: no support for bats files
+ *  filetype: add 'Config.in' filetype detection
+ *  runtime(asciidoc): include basic ftplugin
+ *  filetype: no support for its files
+ *  runtime(vim): Update base-syntax, remove unused vimString region
+ *  runtime(vim): Update base-syntax, fix :behave highlighting
+ *  runtime(vim): update Vim Syntax generator
+ *  filetype: no support for dtso files
+ *  Visual highlight hard to read with 'termguicolors'
+ *  runtime(vim): include Vim Syntax generator
+ *  Style: typos found
+ *  Linking fails with -lto because of PERL_CFLAGS
+ *  'breakindentopt' &quot;min&quot; not correct with 'signcolumn'
+ *  settabvar() may change the last accessed tabpage
+ *  upper-case of German sharp s should be U+1E9E
+ *  Redrawing can be improved with undo and 'spell'
+ *  Not able to use diff() with 'diffexpr'
+ *  runtime(gpg): Mark dangerous use-embedded-filename with WarningMsg
+ *  CompletionChanged not triggered when new leader added without matches
+ *  'breakindent' behaves inconsistently with 'list' and splits
+ *  runtime(vim): Update syntax file 
+ *  diff() function uses 'diffexpr'
+ *  tests: test_restricted() fails
+ *  xxd: buffer-overflow when writing color output
+ *  Still a qsort() comparison function that returns result of subtraction
+ *  Compiler warning for missing type in scroll_event()
+ *  Syntax test fails when run with non C locale
+ *  Assigning wrong colors when parsing terminal OSC response
+ *  runtime(vim): Fix indent after line with literal dict</comment>
+    <requestid>1146766</requestid>
+  </revision>
 </revisionlist>

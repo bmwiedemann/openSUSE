@@ -1,136 +1,319 @@
 -------------------------------------------------------------------
+Thu Feb 15 09:35:46 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.1.0111:
+ *  filetype: no support for bats files
+ *  filetype: add 'Config.in' filetype detection
+ *  runtime(asciidoc): include basic ftplugin
+ *  filetype: no support for its files
+ *  runtime(vim): Update base-syntax, remove unused vimString region
+ *  runtime(vim): Update base-syntax, fix :behave highlighting
+ *  runtime(vim): update Vim Syntax generator
+ *  filetype: no support for dtso files
+ *  Visual highlight hard to read with 'termguicolors'
+ *  runtime(vim): include Vim Syntax generator
+ *  Style: typos found
+ *  Linking fails with -lto because of PERL_CFLAGS
+ *  'breakindentopt' "min" not correct with 'signcolumn'
+ *  settabvar() may change the last accessed tabpage
+ *  upper-case of German sharp s should be U+1E9E
+ *  Redrawing can be improved with undo and 'spell'
+ *  Not able to use diff() with 'diffexpr'
+ *  runtime(gpg): Mark dangerous use-embedded-filename with WarningMsg
+ *  CompletionChanged not triggered when new leader added without matches
+ *  'breakindent' behaves inconsistently with 'list' and splits
+ *  runtime(vim): Update syntax file 
+ *  diff() function uses 'diffexpr'
+ *  tests: test_restricted() fails
+ *  xxd: buffer-overflow when writing color output
+ *  Still a qsort() comparison function that returns result of subtraction
+ *  Compiler warning for missing type in scroll_event()
+ *  Syntax test fails when run with non C locale
+ *  Assigning wrong colors when parsing terminal OSC response
+ *  runtime(vim): Fix indent after line with literal dict
+ *  qsort() comparison functions should be transitive
+ *  TextChanged not triggered for :norm! commands
+ *  Restoring lastused_tabpage too early in do_arg_all()
+ *  Problem when scrolling using slow touchpads scroll event
+ *  X11 scroll size changes after accessing clipboard
+ *  Visual hl wrong when it ends before multibyte 'showbreak'
+ *  Redrawing can be improved when deleting lines with 'number'
+ *  Redrawing can be improved when deleting lines with 'cursorline'
+ *  runtime(doc): further improve docs about List/Blob += operator
+ *  X11 mouse-scrolling stutters
+ *  runtime(doc): Clarify list-concatenation a bit more
+ *  unexpected error for modifying final list using +=
+ *  LineNrAbove/Below highlighting wrong on wrapped lines
+ *  runtime(dosbatch): improve '::' comment highlighting
+ *  GTK3: using wrong style for pre-edit area
+ *  Unnecessary call to redraw_for_cursorline() in nv_mousescroll()
+ *  runtime(colors): color names in the v:colornames dict should be lower cased
+ *  luau config file not detected
+ *  runtime(vim): Update syntax file 
+ *  insert completion not correct when adding new leader
+ *  did_set_breakat() should be in optionstr.c
+ *  Looping over modifier_keys_table unnecessarily
+ *  Not able to build without FEAT_DIFF
+ *  translation(ca): Fixe typos in Catalan translation 
+ *  Need a diff() Vim script function
+ *  translation(ru): Updated Russian translation of messages 
+ *  runtime(vim): Update syntax file 
+ *  runtime(fortran): update syntax 
+ *  ScreenLines may not be correctly initialized, causing hang
+ *  Visual highlighting can still be improved
+ *  gcc still complains about use of uninitialized var
+ *  runtime(racket): add missing space to b:undo_indent var 
+ *  runtime(Filelist): include README_vimlogo.txt 
+ *  gcc complains about use of uninitialized var
+ *  runtime(vimlogo): Include and modernize vimlogo.svg
+ *  runtime(netrw): fixing remote file removal via ssh 
+ *  runtime(doc): correct Vim patch for Wayland support
+ *  runtime(racket): undo some indent options only when vim9script is available 
+ *  runtime(doc): Update help for Wayland support
+ *  Segfault with CompleteChanged autocommand
+ *  No Wayland support
+ *  GTK code can be improved
+ *  Internal error when :luado/perldo/pydo etc delete lines
+ *  UX of visual highlighting can be improved
+ *  runtime(netrw): Use :exec norm! <leftmouse> before :call mapping in netrw 
+ *  Recorded register cannot be translated using keytrans()
+ *  runtime(vim): Highlight string interpolation
+ *  runtime(vim): Update syntax and ftplugin files 
+ *  runtime(ant): Update syntax file 
+ *  runtime(hurl): add hurl filetype plugin
+ *  runtime(vim): Update syntax file 
+ *  runtime(doc): style fixes in vim9.txt 
+ *  No event triggered before creating a window
+ *  Cannot map Super Keys in GTK UI
+ *  wrong number of trailing spaces inserted after blockwise put
+ *  formatting long lines is slow
+ *  'linebreak' may still apply to leading whitespace
+ *  Patch 9.1.0041 causes regressions for users
+ *  runtime(mail): fix #13913 
+ *  runtime(netrw): Don't change global options 
+ *  runtime(fortran): update syntax and documentation 
+ *  Win32 Keyboard handling is sub-optimal
+ *  Make "[Command Line]" a special buffer name
+ *  Abort opening cmdwin if autocmds screw things up
+ *  issues with temp curwin/buf while cmdwin is open
+ *  runtime(c): Highlight user defined functions
+ *  :drop does not re-use empty buffer
+ *  --remote-* does not ignore `wilidignore`
+ *  runtime(doc): change "VIsual mode" to "Visual mode" in :h SafeState 
+ *  translation(hu): use correct encoding in header of hu po file 
+ *  runtime(vim): Update syntax file 
+ *  runtime(qml): Use shiftwidth() in indent plugin 
+ *  translation(it): Update Italian translation
+ *  runtime(mail): updated syntax file
+ *  runtime(doc): improve doc makefiles, add clean rule 
+ *  runtime(lang): improve makefiles, add clean rule, fix typo 
+ *  po Makefiles can be improved
+ *  runtime(tutor): simplify tutor makefiles 
+ *  runtime(sh): Add handling for ksh93 shared-state comsubs and mksh valsubs 
+ *  ml_get: invalid lnum when :s replaces visual selection
+ *  runtime(chuck): include ChucK syntax file 
+ *  runtime(go): update Go syntax file 
+ *  Missing test for Chuck Filetype
+ *  translation(sr): Update Serbian messages translation 
+ *  runtime(filetype): detect *.ck files as Chuck filetype 
+
+-------------------------------------------------------------------
+Mon Jan 22 09:39:37 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.1.0041:
+ *  xxd -i may generate incorrect C statements
+ *  man on AIX does not understand -l
+ *  add focus_follows_mouse and smart_qaps syntax keywords
+ *  remove always from `focus_follows_mouse`
+ *  minor changes to fix move cmd on windows 
+ *  issue with prompt buffer and hidden buffer
+ *  too vague errors for 'listchars'/'fillchars'
+ *  Unnecessary loop in getvcol()
+ *  Calling get_breakindent_win() repeatedly when computing virtcol
+ *  include ftplugin, syntax and indent script 
+ *  i_CTRL-] triggers InsertCharPre
+ *  Window scrolls unexpectedly when 'scrollbind' is set
+ *  Insert mode not stopped if closing prompt buffer modifies hidden buffer
+ *  update fortran syntax 
+ *  regenerate helptags, fix ci help tags job failing
+ *  Cannot use terminal alternate font
+ *  Replace non-breaking space with normal space 
+ *  Use "*" browsefilter pattern to match "All Files"
+ *  Cannot act on various terminal response codes
+ *  Check help tags for errors (duplicates, missing, etc) 
+ *  delete duplicate help tag E741 
+ *  Vim is missing a foreach() func
+ *  A few typos in tests and justify.vim
+ *  xxd: few problems with EBCDIC for z/OS (MVS)
+ *  Coverity complains about improper use of negative value
+ *  i_CTRL-R- doesn't work for multibyte chars in Replace mode
+ *  Vim9: cannot compile all methods in a class
+ *  cmdline may disappear when changing 'cmdheight'
+ *  use of #if instead of #ifdef
+ *  Decode multibyte percent-encoding filename correctly 
+ *  [security]: use-after-free in eval1_emsg()
+ *  Sync with netrw 174b 
+ *  Add initial support for Added/Removed/Changed highlight groups 
+ *  fix a few problems with the tar plugin
+ *  accept dot in completionList for Vim9 syntax 
+ *  default diff highlighting is too noisy
+ *  Improve the documentation for Vim9 classes 
+ *  i_CTRL-R- no longer works in replace mode
+ *  incorrect use of W_WINROW in edit.c
+ *  Modula2 filetype support lacking
+ *  regression with empty inner blocks introduced
+ *  Fix typos in version9.txt 
+ *  Fix typos in reltime() help. 
+ *  Update syntax file 
+ *  regexp cannot match combining chars in collection
+ *  Keymap completion is not available
+ *  Cannot easily get the list of matches
+ *  NSIS installer includes syntax testdir
+ *  can select empty inner text blocks
+ *  is*() and to*() function may be unsafe
+ *  syntax and documentation updates 
+ *  reloading colorscheme when not changing 'background'
+ *  Cannot build against Ruby 33 dynamically
+ *  a closing fold expr, may start a new fold
+ *  when closing window, wincmd p may fail
+ *  add jumpoptions to syntax file 
+ *  document that the diff filetype uses Diff hl groups
+ *  Add support for <ScriptCmd> syntax 
+ *  Add support for `syntax foldlevel` command 
+
+-------------------------------------------------------------------
 Tue Jan  2 21:15:24 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 9.1.0000
- add missing help tags
- regenerate synmenu
- proto files need update
- improve filetype detection for *.v (V/Verilog/Coq)
- Update sh syntax and add local keyword for bash 
- Update ftplugin and omni-complete 
- Update Version9.txt for release 9.1 
- Add help tags to items in version9.txt 
- Updated German translation 
- Improve Turkish documentation 
- update syntax and documentation 
- Wrong display with 'briopt=sbr' and 'nobreakindent'
- Updates to indent and syntax
- Fix folding of code blocks
- Provide sass_recommended_style option
- Updates to ftplugin and syntax
- Make diffs foldable
- Add small ftplugin
- add Hungarian translation 
- Updated Russian translation 
- remove coveralls, move runtime/lang/Make_mvc.mak 
- correct the :public example 
- adjust tutor/README.ru.utf-8.txt 
- Update Italian translations
- missing undo_ftplugin for indentkeys
- cursor wrong after { in single line buffer
- Visual not drawn with 'breakindent' when line doesn't fit
- add help tag multiple-constructors. 
- fix indentation 
- Syntax fix 
- LTCG compile error ARM64 for write_chars
- clarify behaviour of ]m and ]M motions
- Update default links 
- update ConTeXt keywords and other minor fixes 
- Add variable categories and null related documentation
- Update R runtime files and docs 
- Update Ukrainian translation 
- Coverity complains about not checking return value
- Clarify that new() is not static
- list of new/changed features in version9.txt
- updates to indent, syntax and ftplugin 
- Add loong64 arch 
- add some error codes to `:help vim9class` 
- Vim9: inconsistent :type/:class messages
- add support for matchit plugin 
- add variants of opcodes 
- Include Vim9 class features in version9.txt
- Maximum callback depth is not configurable
- Update Serbian messages translation 
- reformat and align :h ft-c-syntax 
- Update syntax file 
- Vim9: need a way to reserve future extension
- Add TODO support to syntax script 
- Vim9: missing error messages
- update helptags
- POSIX function name in exarg causes issues
- no filetype detection for execline scripts
- reg_executing() wrong for :normal with range
- Wrong cursor position when dragging out of window
- Update Serbian messages translation 
- prevent E11 on FocusGained autocommand 
- Update Japanese translation 
- updated 8th syntax 
- change dependabot prefix to "CI" 
- Update change.txt 
- Compile error with Motif UI + mouse support
- Create Changelog until v9.0.2175 
- Update Italian translations
- Update tmux syntax rules 
- Update Turkish translations 
- Compiler warning for uninitialized var
- update fortran syntax rules and doc notes
- Vim9: segfault when assigning to type
- remove deprecation warning for gdefault
- Vim9: crash when compiling for statement and non-existing type
- Vim9: compiling :defer may fail
- Updated Irish translation 
- Update Logtalk runtime files for the latest language spec 
- update Racket runtime files 
- Update colorschemes 
- The options[] array is still not sorted alphabetically
- Vim9: no support for const/final class/objects vars
- Vim9: builtin funcs may accept a non-value
- Moving tabpages on :drop may cause an endless loop
- sync runtime files with upstream 
- grammar & typo fixes
- add Tbreak command
- Vim9: not consistently using :var for declarations
- Memory leak in Configure Script when checking GTK
- Vim9: can simplify arg type checking code
- Vim9: can use type a func arg/return value
- escape curdir in BrowseUpDir 
- Vim9: type can be assigned to list/dict
- Vim9: type documentation out-dated
- Vim9: not able to use imported interfaces and classes
- Fix i386 build 
- instanceof() should use varargs as second arg
- Update syntax file, fix missing for highlight 
- screenpos() may crash with neg. column
- labeler.yml: update to v5 
- [security]: use-after-free in check_argument_type
- Vim9: incorrectly parses :def func definitions
- Vim9: can use typealias in assignment
- ft detection maybe wrong if 'fic' set for *.[CH]
- do not set b:did_ftplugin before sourcing scala ftplugin
- Fix `w:netrw_bannercnt` ref error with `netrw_fastbrowse=2` 
- fix examples in comments for JSON formatting 
- Add json formating plugin (Issue #11426) 
- Update syntax file 
- link cmdline completion to to |wildcards| and fix typos 
- Update eval.txt 
- Vim9: type not kept when assigning vars
- The option[] array is not sorted
- unlet b:filetype_in_cpp_family for cpp & squirrel
- fix typo in change.txt
- update syntax and ftplugins
- Update syntax file and syntax test 
- Sort options.txt alphabetically
- update todo items 
- sort option-list alphabetically 
- no support to build on OpenVMS
- Using type unknown for List/Dict containers
- 'breakindent' is not drawn after diff filler lines
- remove non-existent parameter in shift-command 
- Using int for errbuflen in option funcs
- [security]: use-after-free in exec_instructions()
- Vim does not detect pacman.log file
- reference 'go-!' inside os_win32.txt for !start
- Type check tests fail without the channel feature
+ *  add missing help tags
+ *  regenerate synmenu
+ *  proto files need update
+ *  improve filetype detection for *.v (V/Verilog/Coq)
+ *  Update sh syntax and add local keyword for bash 
+ *  Update ftplugin and omni-complete 
+ *  Update Version9.txt for release 9.1 
+ *  Add help tags to items in version9.txt 
+ *  Updated German translation 
+ *  Improve Turkish documentation 
+ *  update syntax and documentation 
+ *  Wrong display with 'briopt=sbr' and 'nobreakindent'
+ *  Updates to indent and syntax
+ *  Fix folding of code blocks
+ *  Provide sass_recommended_style option
+ *  Updates to ftplugin and syntax
+ *  Make diffs foldable
+ *  Add small ftplugin
+ *  add Hungarian translation 
+ *  Updated Russian translation 
+ *  remove coveralls, move runtime/lang/Make_mvc.mak 
+ *  correct the :public example 
+ *  adjust tutor/README.ru.utf-8.txt 
+ *  Update Italian translations
+ *  missing undo_ftplugin for indentkeys
+ *  cursor wrong after { in single line buffer
+ *  Visual not drawn with 'breakindent' when line doesn't fit
+ *  add help tag multiple-constructors. 
+ *  fix indentation 
+ *  Syntax fix 
+ *  LTCG compile error ARM64 for write_chars
+ *  clarify behaviour of ]m and ]M motions
+ *  Update default links 
+ *  update ConTeXt keywords and other minor fixes 
+ *  Add variable categories and null related documentation
+ *  Update R runtime files and docs 
+ *  Update Ukrainian translation 
+ *  Coverity complains about not checking return value
+ *  Clarify that new() is not static
+ *  list of new/changed features in version9.txt
+ *  updates to indent, syntax and ftplugin 
+ *  Add loong64 arch 
+ *  add some error codes to `:help vim9class` 
+ *  Vim9: inconsistent :type/:class messages
+ *  add support for matchit plugin 
+ *  add variants of opcodes 
+ *  Include Vim9 class features in version9.txt
+ *  Maximum callback depth is not configurable
+ *  Update Serbian messages translation 
+ *  reformat and align :h ft-c-syntax 
+ *  Update syntax file 
+ *  Vim9: need a way to reserve future extension
+ *  Add TODO support to syntax script 
+ *  Vim9: missing error messages
+ *  update helptags
+ *  POSIX function name in exarg causes issues
+ *  no filetype detection for execline scripts
+ *  reg_executing() wrong for :normal with range
+ *  Wrong cursor position when dragging out of window
+ *  Update Serbian messages translation 
+ *  prevent E11 on FocusGained autocommand 
+ *  Update Japanese translation 
+ *  updated 8th syntax 
+ *  change dependabot prefix to "CI" 
+ *  Update change.txt 
+ *  Compile error with Motif UI + mouse support
+ *  Create Changelog until v9.0.2175 
+ *  Update Italian translations
+ *  Update tmux syntax rules 
+ *  Update Turkish translations 
+ *  Compiler warning for uninitialized var
+ *  update fortran syntax rules and doc notes
+ *  Vim9: segfault when assigning to type
+ *  remove deprecation warning for gdefault
+ *  Vim9: crash when compiling for statement and non-existing type
+ *  Vim9: compiling :defer may fail
+ *  Updated Irish translation 
+ *  Update Logtalk runtime files for the latest language spec 
+ *  update Racket runtime files 
+ *  Update colorschemes 
+ *  The options[] array is still not sorted alphabetically
+ *  Vim9: no support for const/final class/objects vars
+ *  Vim9: builtin funcs may accept a non-value
+ *  Moving tabpages on :drop may cause an endless loop
+ *  sync runtime files with upstream 
+ *  grammar & typo fixes
+ *  add Tbreak command
+ *  Vim9: not consistently using :var for declarations
+ *  Memory leak in Configure Script when checking GTK
+ *  Vim9: can simplify arg type checking code
+ *  Vim9: can use type a func arg/return value
+ *  escape curdir in BrowseUpDir 
+ *  Vim9: type can be assigned to list/dict
+ *  Vim9: type documentation out-dated
+ *  Vim9: not able to use imported interfaces and classes
+ *  Fix i386 build 
+ *  instanceof() should use varargs as second arg
+ *  Update syntax file, fix missing for highlight 
+ *  screenpos() may crash with neg. column
+ *  labeler.yml: update to v5 
+ *  [security]: use-after-free in check_argument_type
+ *  Vim9: incorrectly parses :def func definitions
+ *  Vim9: can use typealias in assignment
+ *  ft detection maybe wrong if 'fic' set for *.[CH]
+ *  do not set b:did_ftplugin before sourcing scala ftplugin
+ *  Fix `w:netrw_bannercnt` ref error with `netrw_fastbrowse=2` 
+ *  fix examples in comments for JSON formatting 
+ *  Add json formating plugin (Issue #11426) 
+ *  Update syntax file 
+ *  link cmdline completion to to |wildcards| and fix typos 
+ *  Update eval.txt 
+ *  Vim9: type not kept when assigning vars
+ *  The option[] array is not sorted
+ *  unlet b:filetype_in_cpp_family for cpp & squirrel
+ *  fix typo in change.txt
+ *  update syntax and ftplugins
+ *  Update syntax file and syntax test 
+ *  Sort options.txt alphabetically
+ *  update todo items 
+ *  sort option-list alphabetically 
+ *  no support to build on OpenVMS
+ *  Using type unknown for List/Dict containers
+ *  'breakindent' is not drawn after diff filler lines
+ *  remove non-existent parameter in shift-command 
+ *  Using int for errbuflen in option funcs
+ *  [security]: use-after-free in exec_instructions()
+ *  Vim does not detect pacman.log file
+ *  reference 'go-!' inside os_win32.txt for !start
+ *  Type check tests fail without the channel feature
 
 -------------------------------------------------------------------
 Wed Dec 20 13:54:00 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
