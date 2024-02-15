@@ -97,4 +97,23 @@
 - Remove Python 2 leftovers.</comment>
     <requestid>1101124</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>be5aabe84c11d1d3cae23d541106fd61</srcmd5>
+    <version>1.3.0</version>
+    <time>1708027228</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.3.0:
+  * Fixing werkzeug 3 deprecated version import. Import is replaced by new
+    style version check with importlib (#573) [Ryu-CZ]
+  * Fixing flask 3.0+ compatibility of `ModuleNotFoundError: No module
+    named 'flask.scaffold'` Import error. (#567) [Ryu-CZ]
+  * Fix wrong status code and message on responses when handling
+    `HTTPExceptions` (#569) [lkk7]
+  * Python 3.12 support. [foarsitter]
+  * Fixing test as HTTP Header MIMEAccept expects quality-factor number
+    in form of `X.X` (#547) [chipndell]
+  * Drop support for python 3.7
+- Drop patch support-new-werkzeug.patch, now included upstream.</comment>
+    <requestid>1146665</requestid>
+  </revision>
 </revisionlist>

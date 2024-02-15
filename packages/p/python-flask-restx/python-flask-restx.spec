@@ -1,7 +1,7 @@
 #
 # spec file for package python-flask-restx
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,19 @@
 
 
 Name:           python-flask-restx
-Version:        1.1.0
+Version:        1.3.0
 Release:        0
 Summary:        Framework for fast, easy and documented API development with Flask
 License:        BSD-3-Clause
 URL:            https://github.com/python-restx/flask-restx
 Source:         https://github.com/python-restx/flask-restx/archive/%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#python-restx/flask-restx#552
-Patch0:         support-new-werkzeug.patch
 BuildRequires:  %{python_module Faker}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module aniso8601}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module blinker}
-BuildRequires:  %{python_module jsonschema}
+BuildRequires:  %{python_module importlib_resources}
 BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-benchmark}
@@ -48,6 +46,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Flask
 Requires:       python-Werkzeug
 Requires:       python-aniso8601
+Requires:       python-importlib_resources
 Requires:       python-jsonschema
 Requires:       python-pytz
 BuildArch:      noarch
