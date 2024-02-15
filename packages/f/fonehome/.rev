@@ -137,4 +137,12 @@ See also https://bugzilla.novell.com/show_bug.cgi?id=803028#c7</comment>
     <comment></comment>
     <requestid>1145084</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>373bce0de3d38b21b8946efeeb571e29</srcmd5>
+    <version>1.2.2</version>
+    <time>1708027302</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1146881</requestid>
+  </revision>
 </revisionlist>

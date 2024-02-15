@@ -52,8 +52,6 @@ Requires:       openssh
 Requires:       sed
 BuildArch:      noarch
 %systemd_requires
-Provides:       group(%{usergroup})
-Provides:       user(%{username})
 
 %description
 fonehome allows remote access to machines behind firewalls using SSH

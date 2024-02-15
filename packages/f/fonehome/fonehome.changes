@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  8 14:29:28 UTC 2024 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Revert previous commit; user/group only provided in sub-package
+
+-------------------------------------------------------------------
 Thu Feb  8 08:05:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Provide user/group symbol for user created during pre.
