@@ -20,7 +20,7 @@
 %define lverp 1_61
 %define src_install_dir /usr/src/%name
 Name:           grpc
-Version:        1.61.0
+Version:        1.61.1
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
@@ -124,6 +124,9 @@ This subpackage contains source code of the gRPC reference implementation.
 %prep
 %autosetup -N
 %patch -P 1 -p1
+find "." -type f -exec grep -l '/usr/bin/python' {} + |
+	xargs -r perl -i -lpe \
+	's{#! ?/usr/bin/python\S*}{#!/usr/bin/python3}g;'
 find "." -type f -exec grep -l '/usr/bin/env ' {} + |
 	xargs -r perl -i -lpe \
 	's{#! ?/usr/bin/env python\S*}{#!/usr/bin/python3}g;

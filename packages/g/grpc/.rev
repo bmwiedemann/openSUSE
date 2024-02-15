@@ -615,4 +615,12 @@ fixed in that other package, after which it will trickle down.</comment>
     <comment>- Add another missing CVE and Bugzilla reference (forwarded request 1145127 from glaubitz)</comment>
     <requestid>1145148</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>835fce159974acb4f87c3ab0938850d5</srcmd5>
+    <version>1.61.1</version>
+    <time>1708027203</time>
+    <user>anag+factory</user>
+    <comment>- Also fixup hashbang of tools/profiling/ios_bin/parse_link_map.py, (forwarded request 1146622 from dimstar)</comment>
+    <requestid>1146623</requestid>
+  </revision>
 </revisionlist>

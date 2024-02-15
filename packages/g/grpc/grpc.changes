@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb 14 16:15:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Also fixup hashbang of tools/profiling/ios_bin/parse_link_map.py,
+  which was exceptionally not using env python, but directly
+  /usr/bin/python.
+
+-------------------------------------------------------------------
+Tue Feb 13 10:18:50 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.61.1
+  * Add missing include directives so that the build with
+    newer absl works
+
+-------------------------------------------------------------------
 Wed Jan 31 19:51:15 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.61
