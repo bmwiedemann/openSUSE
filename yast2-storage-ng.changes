@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 12 15:18:51 UTC 2024 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Added new libstorage enum value UF_BCACHEFS to fix build failure
+  (bsc#1219804)
+- 5.0.5
+
+-------------------------------------------------------------------
 Thu Nov  2 13:52:11 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Encryption method TpmFde to be used by Agama (and later by YaST)
