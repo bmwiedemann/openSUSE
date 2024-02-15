@@ -383,4 +383,16 @@
   * Update libgit2 to 1.7.2</comment>
     <requestid>1145290</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>abca46ad3f0aa6f22bcc98109110558e</srcmd5>
+    <version>0.18.3+0</version>
+    <time>1708027256</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.18.3:
+  * Duplicates in shell completions
+  * Add target arch to deb PPA installation for strict apt environments
+  * Do not pre-compute MountInfo to reduce readlink calls
+  * Use #[default] attribute instead of custom impl for enums</comment>
+    <requestid>1146721</requestid>
+  </revision>
 </revisionlist>
