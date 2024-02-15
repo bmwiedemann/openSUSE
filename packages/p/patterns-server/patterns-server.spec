@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-server
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@ This particular package contains all the server related patterns
 
 
 ################################################################################
+
 %package dhcp_dns_server
 %pattern_serverfunctions
 Summary:        DHCP and DNS Server
@@ -196,8 +197,6 @@ Requires:       libvirt-daemon-driver-storage-core
 Requires:       tftp
 Requires:       pattern() = basesystem
 Recommends:     libvirt-daemon-qemu
-Recommends:     tigervnc
-Recommends:     virt-install
 %if 0%{?is_opensuse}
 Provides:       patterns-openSUSE-kvm_server = %{version}
 Obsoletes:      patterns-openSUSE-kvm_server < %{version}
@@ -205,6 +204,8 @@ Obsoletes:      patterns-openSUSE-kvm_server < %{version}
 Provides:       patterns-sles-kvm_server = %{version}
 Obsoletes:      patterns-sles-kvm_server < %{version}
 %endif
+Suggests:       tigervnc
+Suggests:       virt-install
 
 %description kvm_server
 Software to set up a server for configuring, managing, and monitoring virtual machines on a single physical machine.

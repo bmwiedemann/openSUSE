@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb  6 14:17:51 UTC 2024 - Dario Faggioli <dfaggioli@suse.com>
+
+- kvm_server pattern:
+  - stop Recommending tigervnc and virt-install as they're 100%
+    client tools. In fact, it is the kvm_tools pattern that does
+    Require them (leave them as Suggested, for now, just to leave
+    a record of them... but only temporarily).
+
+Note that this will result in a different behavior, wrt to the current
+one. I.e., anyone installing _only_ the kvm_server pattern, will
+not get those two packages automatically.
+
+-------------------------------------------------------------------
 Wed Nov 29 15:28:43 UTC 2023 - Dario Faggioli <dfaggioli@suse.com>
 
 - kvm_server pattern:
