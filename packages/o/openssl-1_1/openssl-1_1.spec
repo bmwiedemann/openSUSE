@@ -322,24 +322,24 @@ export MALLOC_PERTURB_=$(($RANDOM % 255 + 1))
 LD_LIBRARY_PATH=`pwd` make test -j1
 
 # Create the hmac files required to run the regression tests in FIPS mode
-#%{buildroot}%{_bindir}/fips_standalone_hmac \
-# libssl.so.%{maj_min} > .libssl.so.%{maj_min}.hmac
-#%{buildroot}%{_bindir}/fips_standalone_hmac \
-# libcrypto.so.%{maj_min} > .libcrypto.so.%{maj_min}.hmac
-#OPENSSL_FORCE_FIPS_MODE=1 LD_LIBRARY_PATH=`pwd` make TESTS='-test_pem \
-#		       -test_hmac -test_mdc2 -test_dh -test_dsa -test_genrsa \
-#		       -test_mp_rsa -test_enc -test_enc_more -test_passwd -test_req \
-#		       -test_verify -test_evp -test_evp_extra -test_pkey_meth_kdf \
-#		       -test_bad_dtls -test_comp -test_key_share -test_renegotiation \
-#		       -test_sslcbcpadding -test_sslcertstatus -test_sslextension \
-#		       -test_sslmessages -test_sslrecords -test_sslsessiontick \
-#		       -test_sslsigalgs -test_sslsignature -test_sslskewith0p \
-#		       -test_sslversions -test_sslvertol -test_tls13alerts \
-#		       -test_tls13cookie -test_tls13downgrade -test_tls13hrr \
-#		       -test_tls13kexmodes -test_tls13messages -test_tls13psk \
-#		       -test_tlsextms -test_ca -test_cipherlist -test_cms \
-#		       -test_dtls_mtu -test_ssl_new -test_ssl_old -test_bio_enc \
-#		       -test_sslapi -test_tls13ccs -test_ec' test -j1
+LD_LIBRARY_PATH=`pwd` %{buildroot}%{_bindir}/fips_standalone_hmac \
+ libssl.so.%{maj_min} > .libssl.so.%{maj_min}.hmac
+LD_LIBRARY_PATH=`pwd` %{buildroot}%{_bindir}/fips_standalone_hmac \
+ libcrypto.so.%{maj_min} > .libcrypto.so.%{maj_min}.hmac
+OPENSSL_FORCE_FIPS_MODE=1 LD_LIBRARY_PATH=`pwd` make TESTS='-test_pem \
+		       -test_hmac -test_mdc2 -test_dh -test_dsa -test_genrsa \
+		       -test_mp_rsa -test_enc -test_enc_more -test_passwd -test_req \
+		       -test_verify -test_evp -test_evp_extra -test_pkey_meth_kdf \
+		       -test_bad_dtls -test_comp -test_key_share -test_renegotiation \
+		       -test_sslcbcpadding -test_sslcertstatus -test_sslextension \
+		       -test_sslmessages -test_sslrecords -test_sslsessiontick \
+		       -test_sslsigalgs -test_sslsignature -test_sslskewith0p \
+		       -test_sslversions -test_sslvertol -test_tls13alerts \
+		       -test_tls13cookie -test_tls13downgrade -test_tls13hrr \
+		       -test_tls13kexmodes -test_tls13messages -test_tls13psk \
+		       -test_tlsextms -test_ca -test_cipherlist -test_cms \
+		       -test_dtls_mtu -test_ssl_new -test_ssl_old -test_bio_enc \
+		       -test_sslapi -test_tls13ccs -test_ec' test -j1
 
 # show ciphers
 gcc -o showciphers %{optflags} -I%{buildroot}%{_includedir} %{SOURCE5} -L%{buildroot}%{_libdir} -lssl -lcrypto
