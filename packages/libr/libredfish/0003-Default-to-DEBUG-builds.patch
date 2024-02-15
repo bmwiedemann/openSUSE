@@ -1,0 +1,25 @@
+From 009de604dfdd85fb7cdce1a6ca4c561e779d7e0b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Wed, 24 Jan 2024 11:44:05 +0100
+Subject: [PATCH 3/4] Default to DEBUG builds
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 80943e4..e30b358 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -24,7 +24,7 @@ if(NOT DEFINED CMAKE_INSTALL_LIBDIR)
+   set(CMAKE_INSTALL_LIBDIR lib)
+ endif()
+ 
+-set(CMAKE_C_FLAGS_DEBUG "-D_DEBUG")
++set(CMAKE_C_FLAGS "-D_DEBUG")
+ 
+ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}")
+ 
+-- 
+2.43.0
+

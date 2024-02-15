@@ -1,7 +1,7 @@
 #
 # spec file for package libredfish
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,17 @@
 
 %define 	MAJOR 1
 Name:           libredfish
-Version:        1.3.7.1+git.74758f1
+Version:        1.3.7.2+git.64ca9b4
 Release:        0%{?dist}
 Summary:        Redfish C Client Library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C
 URL:            https://github.com/DMTF/libredfish
 Source0:        libredfish-%{version}.tar.xz
-Patch1:         Make-use-of-standard-variables-for-installation.patch
-Patch2:         Add-configure_file-and-pkg-config-template.patch
-Patch3:         add_debug.patch
+Patch1:         0001-Add-configure_file-and-pkg-config-template.patch
+Patch2:         0002-Make-use-of-standard-variables-for-installation.patch
+Patch3:         0003-Default-to-DEBUG-builds.patch
+Patch4:         0004-link-with-pthread-and-crypto.patch
 BuildRequires:  cmake
 BuildRequires:  czmq
 BuildRequires:  czmq-devel

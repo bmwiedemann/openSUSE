@@ -1,0 +1,29 @@
+From 283bec1e944dcbf7b331563ab00d9296eee59e34 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Wed, 24 Jan 2024 11:47:20 +0100
+Subject: [PATCH 4/4] link with pthread and crypto
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Klaus Kämpf <kkaempf@suse.de>
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e30b358..88a9f49 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -79,6 +79,8 @@ if(OPENSSL_FOUND)
+   target_link_libraries(redfish ${OPENSSL_SSL_LIBRARY})
+ endif()
+ 
++target_link_libraries(redfish pthread)
++target_link_libraries(redfish crypto)
+ 
+ add_executable(redfishtest "${CMAKE_CURRENT_SOURCE_DIR}/examples/test.c")
+ target_link_libraries(redfishtest redfish)
+-- 
+2.43.0
+
