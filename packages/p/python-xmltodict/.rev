@@ -76,4 +76,13 @@
     <comment></comment>
     <requestid>1085816</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>c9c39a51b1e3932efd0c42b7d2f105b0</srcmd5>
+    <version>0.13.0</version>
+    <time>1708027116</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file.
+</comment>
+    <requestid>1146209</requestid>
+  </revision>
 </revisionlist>
