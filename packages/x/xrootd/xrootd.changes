@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb 15 09:43:52 UTC 2024 - pgajdos@suse.com
+
+- version update to 5.6.7
+  * [XrdCl] Fix crash at teardown when using copies with multiple
+    streams (issue #2164)
+  * [XrdSecsss] Fix buffer overrun when serializing credentials
+    (issue #2143)
+  * [XrdCl] Fix TPC initialization to take into account control
+    stream (issue #2164)
+  * [XrdPosix] Fix ordering of debug levels in pss.setop
+    DebugLevel (#2183)
+  * [XrdTpc] Properly handle creation of packet marking handles
+    when socket is not yet connected (#2179)
+  * [XrdHeaders] Install XrdSfsFAttr.hh as private header
+
+-------------------------------------------------------------------
 Thu Jan 25 16:00:54 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.6.6:
