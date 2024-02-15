@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 15 05:57:08 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.74.6:
+  * chore(deps): update Syft to v0.105.0 (#1714)
+  * chore(deps): update bootstrap tools to latest versions (#1707)
+  * test(quality): bump label dataset and images (#1712)
+  * fix: only warn missing CPEs if CPEs wanted (#1710)
+  * fix: ensure version output to stdout (#1709)
+  * chore(deps): update bootstrap tools to latest versions (#1706)
+
+-------------------------------------------------------------------
 Thu Feb 08 11:54:49 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.74.5:

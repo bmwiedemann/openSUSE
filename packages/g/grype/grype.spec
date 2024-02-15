@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           grype
-Version:        0.74.5
+Version:        0.74.6
 Release:        0
 Summary:        A vulnerability scanner for container images and filesystems
 License:        Apache-2.0
