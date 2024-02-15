@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Feb 14 12:04:28 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.8+0.gbff7dda:
+  * linux: Explicitly initialize auto-cleanup variables
+  * example: fix mi identify failed with error cntid
+  * tree: do not issue an error when subsys lookup fails during scanning
+  * types: Add controller properties CMBEBS, CMBSWTP and NSSD
+  * tests: Add sample NBFT table from Dell PowerEdge R660
+  * tests: Add sample NBFT table from Dell PowerEdge R760
+  * tests: Fix diffs output for duplicate HFI entries
+  * nbft: avoid duplicate entries in ssns->hfis
+  * nbft: Fix (struct nbft_info_subsystem_ns).num_hfis off-by-one
+  * test: read and dump sysfs tar file
+  * nvme: allow to overwrite hostnqn and hostid
+  * nvme: allow to overwrite base sysfs path
+  * json: dump the output to the user selected filedescriptor
+  * libnvme: export nvme_dump_tree
+  * fabrics: add 'concat' option
+  * mi: set correct rc and errno when crc mismatch
+  * tree: use logical block size for lba
+  * json-schema: add keyring and tls_key details (bsc#1219086)
+  * build: checkout full repo for checkpatch
+  * linux: avoid segfault in check-tls-key due to null hostnqn/subsysnqn (bsc#1219086)
+  * meson.build: fixup 'join' syntax
+  * util: Explicitly initialize auto-cleanup variables
+  * tree: Explicitly initialize auto-cleanup variables
+  * linux: Explicitly initialize auto-cleanup variables
+  * fabrics: Explicitly initialize auto-cleanup variables
+  * util: Added function to find specific UUID in UUID list.
+  * build: fix release python tag match
+- Disable new unit test which is not running stable in OSB
+  * add 0001-build-disable-sysfs-test.patch
+
+-------------------------------------------------------------------
 Wed Dec 20 10:10:56 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 1.7.1+0.g13ba383:
@@ -23,7 +57,7 @@ Tue Dec 19 13:26:50 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
   * libnvme: reshuffle nvme_generate_tls_key_identity()
   * libnvme: fixup error codes
   * libnvme: Implement 'nvme_generate_tls_key_identity()'
-  * libnvme: support NVMe TLS identities version 1
+  * libnvme: support NVMe TLS identities version 1 (bsc#1219086)
   * libnvme: Add base64 functions
   * libnvme: separate out 'gen_tls_identity' and reshuffle 'derive_nvme_keys'
   * libnvme: separate out a function 'select_hmac'
@@ -34,7 +68,7 @@ Tue Dec 19 13:26:50 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
   * fabrics: fetch smaller Discovery Log Page header
   * fabrics: avoid redundant Get Log Page on retry
   * fabrics: clear RAE for discovery log page commands
-  * json-schema: add keyring and tls_key details
+  * json-schema: add keyring and tls_key details (bsc#1219086)
   * types: add Host Behavior Support field definitions
   * mi: Cast values to u32 if shift overflows int
   * types: Cast values to u32 if shift overflows int
@@ -43,7 +77,7 @@ Tue Dec 19 13:26:50 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
   * types: add cross-namespace copy formats, status codes, ONCS bits
   * nvme: Add length field to Hkdf-Expand-Label computation
   * ioctl: use lsp arg in nvme_get_log_boot_partition
-  * fabrics: use SECTYPE to determine whether to use TLS
+  * fabrics: use SECTYPE to determine whether to use TLS (bsc#1219086)
   * fabrics: Allocate aligned payloads for id_ctrl and discovery log calls
   * linux: Allocate aligned payloads for id_ctrl and id_ns calls
   * ioctl: MSB variable-size storage/reference tags

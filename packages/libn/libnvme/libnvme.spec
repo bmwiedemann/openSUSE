@@ -1,7 +1,7 @@
 #
 # spec file for package libnvme
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,12 +21,13 @@
 %bcond_without check
 
 Name:           libnvme
-Version:        1.7.1+0.g13ba383
+Version:        1.8+0.gbff7dda
 Release:        0
 Summary:        Linux-native nvme device management library
 License:        LGPL-2.1-or-later
 URL:            https://github.com/linux-nvme/libnvme/
 Source0:        libnvme-%{version}.tar.gz
+Patch001:       0001-build-disable-sysfs-test.patch
 BuildRequires:  dbus-1-devel
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
