@@ -35,7 +35,7 @@
 %define libdmmp_version %(echo %{_libdmmp_version} | tr . _)
 
 Name:           multipath-tools
-Version:        0.9.7+93+suse.e2f2272
+Version:        0.9.8~1+82+suse.dcd98a3
 Release:        0
 Summary:        Tools to Manage Multipathed Devices with the device-mapper
 License:        GPL-2.0-only AND GPL-3.0-or-later
@@ -191,7 +191,7 @@ install -m 644 -D %{SOURCE1} %{buildroot}/usr/lib/modprobe.d/90-scsi_dh.conf
 install -m 644 %{SOURCE2} %{buildroot}%{_udevrulesdir}/00-dont-del-part-nodes.rules
 install -m 644 -D %{SOURCE3} %{buildroot}/usr/lib/dracut/dracut.conf.d/dm-parts.conf
 install -m 644 -D %{SOURCE6} %{buildroot}/usr/lib/dracut/dracut.conf.d/multipath.conf
-sed -i 's,@TMPFILESDIR@,%{_tmpfilesdir},' %{buildroot}/usr/lib/dracut/dracut.conf.d/multipath.conf
+sed -i 's,@TMPFILESDIR@,%{_tmpfilesdir},;s,@UDEVRULESDIR@,%{_udevrulesdir},' %{buildroot}/usr/lib/dracut/dracut.conf.d/multipath.conf
 
 %post -n libmpath0 -p %{run_ldconfig}
 %postun -n libmpath0 -p %{run_ldconfig}
@@ -227,6 +227,7 @@ exit 0
 %license LICENSES/GPL-3.0
 %{_udevrulesdir}/11-dm-mpath.rules
 %{_udevrulesdir}/56-multipath.rules
+%{_udevrulesdir}/99-z-dm-mpath-late.rules
 %{sbindir}/multipath
 %{sbindir}/multipathd
 %{sbindir}/multipathc

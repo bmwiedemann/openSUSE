@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Feb 15 11:00:59 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.9.8~1+82+suse.dcd98a3:
+  * Adapt package version such that it shows as a 0.9.8 prerelease
+  * Add missing udev rules file
+
+-------------------------------------------------------------------
+Wed Feb 14 20:52:13 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.9.7+148+suse.9780ae0:
+  * 11-dm-mpath.rules: Fix quoting mistake (bsc#1219142)
+
+-------------------------------------------------------------------
+Mon Feb 12 15:33:58 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.9.7+148+suse.7d9953e.obscpio
+  * This is a multipath-tools 0.9.8 pre-release
+  * fix fast_io_fail for Infinibox (bsc#1219348)
+  * Fix activation of LVM volume groups during coldplug (bsc#1219142)
+
+-------------------------------------------------------------------
+Mon Feb 12 15:09:47 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.9.7+140+suse.2d78457:
+  * This is a multipath-tools 0.9.8 pre-release
+  * Socket activation via multipathd.socket has been disabled by default
+    because it has undesirable side effects on systems without multipath.
+    Users with multipath hardware should enable multipathd.service
+  * The restorequeueing CLI command now only enables queueing if
+    disablequeueing had been sent before
+  * Avoid multipathd hang during map flush
+  * multipathd now tracks the queueing mode of maps in its internal features string
+  * Improve error messages in 'multipathd -k'
+  * Fix segfault in autoresize code (bsc#1219289)
+  * Fix missing map reloads (bsc#1219796)
+  * Documentation fixes, spelling fixes, minor code fixes
+
+-------------------------------------------------------------------
 Fri Jan  5 14:32:11 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 0.9.7+93+suse.e2f2272:
