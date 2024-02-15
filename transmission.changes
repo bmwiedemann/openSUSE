@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 14 22:12:57 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Migrate from update-alternatives to libalternatives (bsc#1219107).
+
+-------------------------------------------------------------------
 Tue Feb  6 17:58:00 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add correct creation of the transmission user/group (needed by the
