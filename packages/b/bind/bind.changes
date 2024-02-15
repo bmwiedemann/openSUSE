@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Feb 13 15:15:21 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.18.24
+  Security Fixes:
+  * Validating DNS messages containing a lot of DNSSEC signatures
+    could cause excessive CPU load, leading to a denial-of-service
+    condition. This has been fixed. (CVE-2023-50387)
+    [bsc#1219823]
+  * Preparing an NSEC3 closest encloser proof could cause excessiv
+    CPU load, leading to a denial-of-service condition. This has
+    been fixed. (CVE-2023-50868)
+    [bsc#1219826]
+  * Parsing DNS messages with many different names could cause
+    excessive CPU load. This has been fixed. (CVE-2023-4408)
+    [bsc#1219851]
+  * Specific queries could cause named to crash with an assertion
+    failure when nxdomain-redirect was enabled. This has been
+    fixed. (CVE-2023-5517)
+    [bsc#1219852]
+  * A bad interaction between DNS64 and serve-stale could cause
+    named to crash with an assertion failure, when both of these
+    features were enabled. This has been fixed. (CVE-2023-5679)
+    [bsc#1219853]
+  * Query patterns that continuously triggered cache database
+    maintenance could cause an excessive amount of memory to be
+    allocated, exceeding max-cache-size and potentially leading to
+    all available memory on the host running named being exhausted
+    This has been fixed. (CVE-2023-6516)
+    [bsc#1219854]
+  * Under certain circumstances, the DNS-over-TLS client code
+    incorrectly attempted to process more than one DNS message at a
+    time, which could cause named to crash with an assertion
+    failure. This has been fixed.
+
+  Bug Fixes:
+  * The counters exported via the statistics channel were changed
+    back to 64-bit signed values; they were being inadvertently
+    truncated to unsigned 32-bit values since BIND 9.15.0.
+
+-------------------------------------------------------------------
 Thu Jan  4 11:22:09 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to release 9.18.21
