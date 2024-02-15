@@ -1,4 +1,210 @@
 -------------------------------------------------------------------
+Wed Feb 14 20:09:38 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.0:
+  * Known Issues
+    - 2.10.0 has a major issue in application controller running in
+      HA mode. A fix will be in 2.10.1.
+  * Changes
+    - feat(controller): add sync jitter(#14241) (#16820) (#16960)
+    - feat(ui): add status panel extensions (#15780)
+    - feat: Implement Server-Side Diff (#13663)
+    - feat(ui): Show prompt when every resource requires pruning
+      (#16603)
+    - feat: PostDelete hook support (#16595)
+    - feat(security): log user when access is blocked (#16558)
+    - feat(ui): Add sourceNamespaces in Projects UI and only show
+      it if AppsInAnyNamespaceEnabled flag is set (#16249)
+    - feat(appset): Advanced Templating using templatePatch
+      (#14893)
+    - feat: Argocd notification self service (#16488)
+    - feat(cli): Added example to admin-cluster.go and
+      projectwindow.go files (#16128)
+    - feat(server): log app Spec along with event (#16416)
+    - feat(opentelemetry): ✨ support for secured OTLP endpoint and
+      headers (#15573)
+    - feat(oidc): optionally query OIDC UserInfo to gather group
+      claims (#12062)
+    - feat(app): Support app sync --dry-run --revision
+      some-revision with arbitrary revisions(#12592) (#16387)
+    - feat: add support for ALL_PROXY (#10451)
+    - feat(appset): Added 'slugify' sprig function (#15188)
+    - feat: Support for Kustomize Components (#16230)
+    - feat: add retry logic for k8s client #7692 (#16154)
+    - feat: grace period for repo errors to prevent aggressive
+      unknown sync state (#16085)
+    - feat: add examples to --help output for admin.go file
+      (#16030)
+    - feat: add examples to --help ouput for argocd_server.go file
+      (#16032)
+    - feat: Allow 'both' option for uibannerposition (#14623)
+    - feat: PKCE authentication flow for web logins #9890 (#15889)
+    - feat(cli): example for generate-allow-list (#16136)
+    - feat(cli): Add examples to --help output for get KEYID
+      (#16019)
+    - feat(cli): Add examples to --help output for "gpg_list"
+      (#16017)
+    - feat: Add examples to --help output for remaining "create
+      PROJECT ROLE-NAME" (#15983)
+    - feat(cli): Add examples to argocd proj role cli family
+      (#15875)
+    - feat(cli): add admin-app-example (#15690) (#15861)
+    - feat(cli): add project flag to avoid permission denied errors
+      on 404 (#16040)
+    - feat: expose notification secrets for request payload
+      templating (#16055)
+    - feat: make git requests configurable (#15646)
+    - feat: add write back to application informer (#15987)
+    - feat(cli): Add examples to --help output for "list PROJECT"
+      (#16033)
+    - feat(cli): Add examples to --help output for "gpg add"
+      (#16020)
+    - feat(ui): Recursive Helm Values files detection (#15935)
+      (#15936)
+    - feat: use rate limited queue (#15480)
+    - feat: Add examples to --help output for remaining "get
+      APPNAME" (#15862)
+    - feat(cli): add the repocred-list-example (#15690) (#15869)
+    - feat(cli): add the cluster-list-example (#15690) (#15866)
+    - feat: Add examples to --help output for "delete PROJECT
+      ROLE-NAME" (#15986)
+    - feat(cli): Add examples to projectwindows.go (#15860)
+    - feat(health): add iammanager.keikoproj.io/Iamrole health
+      check (#15899)
+    - feat: Add examples to --help output for "generate-spec
+      PROJECT" (#15871)
+    - feat(cli): add the repo-example (#15690) (#15865)
+    - feat(cli): Add examples to --help output for "set APPNAME"
+      (#15872)
+    - feat(cli): Add examples to --help output for "logs APPNAME"
+      (#15873)
+    - feat(cli): Add example to argocd relogin command (#15839)
+    - feat: Add examples to --help output for all "argocd proj"
+      cmds (#15824)
+    - feat(cli): Added example to --help output for bcrypt (#15838)
+    - feat(cli): Add example to --help output for app actions
+      (#15822)
+    - feat(cli): Add examples to --help output for remaining
+      "argocd account" (#15814)
+    - feat(cli): Add examples to --help output for remaining
+      "argocd repocreds" cmds (#15846)
+    - feat(cli): Add example to --help output 1 (#15782)
+    - feat(cli): Added example to --help output for context
+      (#15809)
+    - feat(ci): retry individual e2e tests (#15696)
+  * Bug fixes (47)
+    - fix(ci): correct helm checksum path (#17081) (#17083)
+    - fix(controller): fix application controller deployment
+      crashing (#16984) (#17093)
+    - fix(server): allow disabling content-type check (#16959)
+      (#16976)
+    - fix(appcontroller): Uptake fix in gitops engine which fixes
+      application sync with auto create ns and server side apply
+      (#16942) (#16963)
+    - fix: Use the cache for sharding (#15237) (#16902)
+    - fix: enforce content type header for API requests (#16860)
+      (#16877)
+    - fix(appset): Use case insensitive comparison of repo details
+      in appset webhook handler (#16503) (#16504)
+    - fix(cli): argocd admin settings resource-overrides health to
+      not ignore wildard customizations (#16461)
+    - fix(repo-server): excess git requests, short-circuit
+      GenerateManifests ref only (#16501)
+    - fix(appset): Always remove ownerReferences when appset policy
+      doesn't allow app's deletion (#12172) (#16506)
+    - fix(ui): use background delete to match k8s terminology
+      (#15579)
+    - fix: Use math.MaxInt (instead of math.MaxInt64) to fix builds
+      on 32bit platforms (#16065)
+    - fix: cert-manager.io/certificate health.lua for consistent
+      issuing (Issue #16523) (#16520)
+    - fix(doc): Fix documentation templatePatch (#16522)
+    - fix: Tooltips point in wrong direction#11935 (#12578)
+    - fix(ui): add exec check to avoid API calls (#16168)
+    - fix PerconaXtraDBCluster health (#16434)
+    - fix(controller): Address diff cache miss issues (#16458)
+    - fix(cli): pass redis compression to cluster stats and shards
+      commands (#16060) (#16421)
+    - fix: upgrade notifications-engine (#16354)
+    - fix(ui): User Info blob is too far to the right relative to
+      Applications/Settings/Documentation (#12016)
+    - fix: fixed cli admin dashboard cmd (#16430)
+    - fix(appset): use topics for Gitlab SCM Provider (#13169)
+      (#13170)
+    - fix(appset): prevent app deletion according to appset policy
+      (#12172) (#15903)
+    - fix: failing lint and unit test (#16275)
+    - fix(appset): Fix name conflict in appset controller (#16207)
+      (#16222)
+    - fix(ui): summary: fix sync options block layout (#16152)
+    - fix api docs (#16186)
+    - fix(ui): Improve apps tiles view (#16140)
+    - fix(appset): ignoreApplicationDifferences not working
+      (#15965)
+    - fix: rbac validate command can now take either namespace or
+      policy-file (#15543)
+    - fix: Add timezone to projectwindows list (#15929)
+    - fix(banzai/KafkaCluster): Update health.lua (#15962)
+    - fix(docs): proj role list example (#16074)
+    - fix: list manually provided external urls before generated
+      ones (#13296)
+    - fix: Add ENV variable to configure GRPC Keep Alive Time
+      (#15656) (#15806)
+    - fix: delete event cache deadlock test flakiness (#15964)
+    - fix(ci): unstable integration test (#15976)
+    - fix: update docs for ApplicationService.Get to reflect
+      reality (#15927)
+    - fix: Replace antonmedv/expr with expr-lang/expr (#15879)
+    - fix(notifications): Allow notifications controller to notify
+      on all namespaces (#15702)
+    - fix(cli): Do not error out with no errors (#15688)
+    - fix: codeowners syntax error (#15781)
+    - fix(appset): add option to disable SCM providers entirely
+      (#14246) (#15248)
+    - fix(applicationset): git generator ignores empty files
+      (#15661)
+    - fix(ci): misplaced config option (#15698)
+    - fix(ci): do not fail fast on e2e test failures (#15694)
+  * Documentation (39)
+    - docs(hooks): add postdelete to table (#17048) (#17051)
+    - docs(kustomize): add components yaml example (#17043)
+      (#17046)
+    - docs(argocd-cm): add timeout.reconciliation.jitter example
+      (#17044) (#17047)
+    - docs(applicationset): explain impact of empty spec in
+      templatePatch (#17042) (#17045)
+    - docs: add context to configmap example (#16763) (#16764)
+    - docs: configmap items are strings (#16737) (#16738)
+    - docs: add documentation for the argocd cluster commands
+      (#16555)
+    - docs: update telepresence quickstart link (#16616)
+    - docs: callout the need to restart pods to pickup service
+      accounts (#16610)
+    - docs: fix indentation for preserve file mode (#16598)
+    - docs(monitoring): add new ServiceMonitors for redis, dex,
+      notifications (#16534)
+    - docs: fix broken link in secret-management.md (#16588)
+    - docs: Add Kong Inc. as a user (#16582)
+    - docs: Fix minor typo in Declarative Setup (#16550)
+    - docs: fix kustomize patches example (#16353)
+    - docs: Katie as Release Champion for 2.10 and Added a column
+      for Release Approver (#16341)
+    - docs: update release doc and issue template (#16329)
+    - docs: fix upgrade instructions (#16326)
+    - docs: Add @gdsoumya to approvers in OWNERS (#16331)
+    - docs: Document ApplyOutOfSyncOnly in application spec
+      (#16282)
+    - docs: add Axians ACSP to users (#16226)
+    - docs: Ensure consistent proper case of Kubernetes (#16205)
+    - docs: Add Semgrep as a user (#16185)
+    - docs(cmp): Document ConfigManagementPlugin.spec.version more
+      clearly (#15974)
+    - docs(appset): ApplicationSets generators docs to use go
+      templates (#16109) (#16127)
+    - docs: added identity-center.md doc for AWS SSO (#15689)
+    - docs(bounty): proposal for feature to hide anno...
+
+-------------------------------------------------------------------
 Sat Feb 03 08:46:52 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.9.6:
