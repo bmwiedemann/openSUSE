@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 15 06:14:16 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.1:
+  * omit arch log key when building one arch
+  * Remove breakpoint labels
+  * Clean up apko-temp dirs
+  * Remove images even with cancelled ctx
+  * Fix context.Background use
+  * Allow substitutions in dependencies.replaces
+  * doc: add diff pr
+  * docs: add version-transform doc and other example to
+    var-transform
+
+-------------------------------------------------------------------
 Sat Feb 10 07:07:57 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.6.0:
