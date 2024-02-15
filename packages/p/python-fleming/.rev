@@ -19,4 +19,16 @@
   * Drop python 2.7</comment>
     <requestid>1010209</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>1412e136c2dfca4a2c2008437a1840b5</srcmd5>
+    <version>0.7.0</version>
+    <time>1708027230</time>
+    <user>anag+factory</user>
+    <comment>- Add patch use-assertequal.patch:
+  * Use non-deprecated assertion methods.
+- No more greedy globs in %files.
+- Switch to autosetup and pyproject macros.
+- Reflow Summary.</comment>
+    <requestid>1146667</requestid>
+  </revision>
 </revisionlist>

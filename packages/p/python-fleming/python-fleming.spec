@@ -1,7 +1,7 @@
 #
 # spec file for package python-fleming
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-fleming
 Version:        0.7.0
 Release:        0
-Summary:        Python helpers for manipulating datetime objects relative to time zones
+Summary:        Manipulate datetime objects relative to time zones
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/ambitioninc/fleming
 Source:         https://github.com/ambitioninc/fleming/archive/%{version}.tar.gz#/fleming-%{version}.tar.gz
+Patch0:         use-assertequal.patch
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil >= 2.2
@@ -43,14 +44,14 @@ BuildRequires:  %{python_module pytz >= 2013.9}
 Python helpers for manipulating datetime objects relative to time zones.
 
 %prep
-%setup -q -n fleming-%{version}
+%autosetup -p1 -n fleming-%{version}
 mv fleming/tests/ .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,6 +60,7 @@ mv fleming/tests/ .
 %files %{python_files}
 %doc README.rst docs/release_notes.rst
 %license LICENSE.rst
-%{python_sitelib}/*
+%{python_sitelib}/fleming
+%{python_sitelib}/fleming-%{version}.dist-info
 
 %changelog

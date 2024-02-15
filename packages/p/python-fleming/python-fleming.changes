@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 15 01:19:37 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch use-assertequal.patch:
+  * Use non-deprecated assertion methods.
+- No more greedy globs in %files.
+- Switch to autosetup and pyproject macros.
+- Reflow Summary.
+
+-------------------------------------------------------------------
 Wed Oct 12 03:23:44 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 0.7.0:
