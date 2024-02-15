@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 15 07:28:15 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 9.7.1:
+  CODE
+    * Added "Requires restarting PeaZip" hint missing in some controls
+    * Created SHA256.txt file containing SHA256 hash of each package in the release
+    * Fixed Options links, now always open General tab as expected
+    * Fixed restart loop switching off history checkbox, improved code against occurrence of similar issues
+    * Fixed symbol lookup error experienced in some Linux ditributions with Qt5 packages
+    * Fixed usupported compression method eoor experienced extracting source package using some unzip utilities
+  FILE MANAGER
+    * Updated translations
+
+-------------------------------------------------------------------
 Mon Feb 12 12:08:05 UTC 2024 - PragmaticLinux <info@pragmaticlinux.com>
 
 - Update to 9.7.0:

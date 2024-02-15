@@ -1152,4 +1152,22 @@
     <comment></comment>
     <requestid>1146180</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>e0696757c293e83f31cfd4e7b10f2920</srcmd5>
+    <version>9.7.1</version>
+    <time>1708027260</time>
+    <user>anag+factory</user>
+    <comment>- Update to 9.7.1:
+  CODE
+    * Added &quot;Requires restarting PeaZip&quot; hint missing in some controls
+    * Created SHA256.txt file containing SHA256 hash of each package in the release
+    * Fixed Options links, now always open General tab as expected
+    * Fixed restart loop switching off history checkbox, improved code against occurrence of similar issues
+    * Fixed symbol lookup error experienced in some Linux ditributions with Qt5 packages
+    * Fixed usupported compression method eoor experienced extracting source package using some unzip utilities
+  FILE MANAGER
+    * Updated translations
+</comment>
+    <requestid>1146720</requestid>
+  </revision>
 </revisionlist>

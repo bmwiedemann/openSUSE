@@ -19,7 +19,7 @@
 %define         _peazipinstalldir %{_libdir}/peazip
 
 Name:           peazip
-Version:        9.7.0
+Version:        9.7.1
 Release:        0
 Summary:        Graphical file archiver
 License:        LGPL-3.0-only
@@ -27,7 +27,9 @@ Group:          Productivity/Archiving/Compression
 URL:            https://peazip.github.io/
 Source0:        https://github.com/peazip/PeaZip/releases/download/%{version}/peazip-%{version}.src.zip
 Source1:        altconf.txt
-Source2:        https://github.com/peazip/PeaZip/releases/download/%{version}/peazip_help.pdf
+# For release 9.7.1 the help was not uploaded (the same as 9.7.0 though, which is the one included here)
+#Source2:        https://github.com/peazip/PeaZip/releases/download/%{version}/peazip_help.pdf
+Source2:        peazip_help.pdf
 Patch0:         peazip-desktop.patch
 # PATCH-FIX-OPENSUSE peazip-build_PIE.patch -- aloisio@gmx.com
 Patch1:         peazip-build_PIE.patch
@@ -101,6 +103,7 @@ cp %{SOURCE2} peazip_help.pdf
 
 %build
 cd dev
+lazbuild --add-package metadarkstyle/metadarkstyle.lpk
 # Add additional packages to vanilla Lazarus
 lazbuild \
 	--lazarusdir=%{_libdir}/lazarus \
