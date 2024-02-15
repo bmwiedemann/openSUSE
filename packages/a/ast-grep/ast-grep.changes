@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 15 08:05:29 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.0:
+  * Breaking change: refactor: remove unused type generic 9b13d41
+  * Breaking change: fix: update pyo3 test ff10e81
+  * fix: fix parallel thread output be230ca
+
+-------------------------------------------------------------------
 Thu Feb  1 08:01:43 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.18.1:

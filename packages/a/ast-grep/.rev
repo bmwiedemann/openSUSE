@@ -107,4 +107,15 @@
   * Breaking change: refactor: use more concise name 6a4a17c</comment>
     <requestid>1143207</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>153d326316d9cde6f3a41ecb213d4a4e</srcmd5>
+    <version>0.19.0+0</version>
+    <time>1708027267</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.19.0:
+  * Breaking change: refactor: remove unused type generic 9b13d41
+  * Breaking change: fix: update pyo3 test ff10e81
+  * fix: fix parallel thread output be230ca</comment>
+    <requestid>1146732</requestid>
+  </revision>
 </revisionlist>
