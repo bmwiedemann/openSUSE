@@ -7,4 +7,16 @@
     <comment></comment>
     <requestid>1110847</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6e141516d3f7f6b3540a766c5dc76cf9</srcmd5>
+    <version>45.0</version>
+    <time>1708027164</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 45.0:
+  + Added shortcuts to exit the dialog
+  + Fix UI in RTL environments
+  + Fix a11y initialization
+  + Updated translations.</comment>
+    <requestid>1146609</requestid>
+  </revision>
 </revisionlist>

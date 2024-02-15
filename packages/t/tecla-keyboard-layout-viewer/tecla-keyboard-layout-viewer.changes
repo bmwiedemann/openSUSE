@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 16 15:34:13 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.0:
+  + Added shortcuts to exit the dialog
+  + Fix UI in RTL environments
+  + Fix a11y initialization
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Sep  6 03:27:17 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 45.rc:
