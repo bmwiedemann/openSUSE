@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 15 07:13:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.32.6:
+  + Fix everything gone wrong with .5.
+- Changes from version 0.32.5 (stable):
+  + Fix missing scalable application icon.
+  + Fix missing icon of viewer application in overview.
+  + Fix always maximizing the viewer window.
+  + Remove internal web view for OAUTH flow.
+  + Remove "Import from Application" menu item.
+
+-------------------------------------------------------------------
 Wed Dec  6 09:42:45 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.32.4:
