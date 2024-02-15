@@ -31,11 +31,11 @@
 %bcond_with apidocs
 %bcond_with ptex
 
-%define images_ts 20221017T102353
+%define images_ts 20240205T200840
 %define so_ver 2_5
 %define major_minor_ver 2.5
 Name:           OpenImageIO
-Version:        2.5.7.0
+Version:        2.5.8.0
 Release:        0
 Summary:        Library for Reading and Writing Images
 License:        BSD-3-Clause
@@ -46,6 +46,7 @@ Source0:        https://github.com/AcademySoftwareFoundation/OpenImageIO/archive
 Source1:        oiio-images-%{images_ts}.tar.xz
 # NOTE: Please don't uncomment a build requirement unless you have submitted the package to factory and it exists
 #BuildRequires:  Field3D-devel
+Patch1:         https://github.com/AcademySoftwareFoundation/OpenImageIO/pull/4143.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  dcmtk-devel
 %if %{with apidocs}
@@ -74,7 +75,7 @@ BuildRequires:  robin-map-devel
 BuildRequires:  tbb-devel
 BuildRequires:  txt2man
 BuildRequires:  pkgconfig(OpenColorIO)
-BuildRequires:  pkgconfig(OpenEXR)
+BuildRequires:  pkgconfig(OpenEXR) >= 2.4
 %if %{with ptex}
 BuildRequires:  ptex-devel-static
 %endif

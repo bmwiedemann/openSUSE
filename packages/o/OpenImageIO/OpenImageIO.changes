@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Feb  7 23:24:15 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- we need at least OpenEXR 2.4. force this
+
+-------------------------------------------------------------------
+Wed Feb  7 22:55:57 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Upgrade the image files to 20240205T200840
+  this fixes a small license issue
+
+-------------------------------------------------------------------
+Wed Feb  7 22:37:34 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add https://github.com/AcademySoftwareFoundation/OpenImageIO/pull/4143.patch
+  Potential patch to fix the aarch64 regressions reported here:
+  https://github.com/AcademySoftwareFoundation/OpenImageIO/issues/4111
+
+  This can be dropped in the next version update.
+
+-------------------------------------------------------------------
+Thu Feb  1 22:51:30 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.5.8.0:
+  - feat(oiiotool): New --buildinfo command prints build
+    information,
+  - including version, compiler, and all library dependencies.
+    #4124
+  - feat(api): New global getattribute queries: "build:platform",
+  - "build:compiler", "build:dependencies" #4124
+  - feat(openexr): Add support for luminance-chroma OpenEXR images.
+    #4070 (by jreichel-nvidia)
+  - fix(raw): Avoid buffer overrun for flip direction cases #4100
+  - fix(iv): Assume iv display gamma 2.2 if GAMMA env variable is
+    not set #4118
+  - fix: Fixes to reduce problems identified by static analysis
+    #4113
+  - dev(simd.h): Make all-architecture matrix44::inverse() #4076
+  - dev(simd.h): Fix AVX-512 round function #4119 (by AngryLoki)
+  - build(deps): Remove Findfmt.cmake, rely on that package's
+    exported config. #4069 #4103 (by Dominik Wójt)
+  - build(deps): Account for header changes in fmt project trunk
+    #4109 #4114
+  - tests: Shuffle some tests between directories #4091
+  - tests: Fix docs test, used wrong namespace #4090
+  - docs: Fix broken IBA color management documentation #4104
+  - style: Update our formatting standard to clang-format 17.0 and
+    C++17 #4096
+
+-------------------------------------------------------------------
 Wed Jan 24 13:27:36 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 2.5.7.0:

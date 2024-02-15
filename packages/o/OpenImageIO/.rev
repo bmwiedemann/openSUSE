@@ -389,4 +389,12 @@ Updated oiio-detectplatform-others.patch to handle armv6l
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1143392</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>8872999c22536bfb66b944205512a06c</srcmd5>
+    <version>2.5.8.0</version>
+    <time>1708027235</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1146674</requestid>
+  </revision>
 </revisionlist>
