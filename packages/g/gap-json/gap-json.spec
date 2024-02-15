@@ -1,7 +1,7 @@
 #
 # spec file for package gap-json
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           gap-json
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        GAP: Package for reading and writing JSON
 License:        BSD-2-Clause
 Group:          Productivity/Scientific/Math
-URL:            http://gap-packages.github.io/json/
+URL:            https://gap-packages.github.io/json/
 #Git-Clone:     https://github.com/gap-packages/json
 Source:         https://github.com/gap-packages/json/releases/download/v%version/json-%version.tar.gz
 BuildRequires:  c++_compiler
