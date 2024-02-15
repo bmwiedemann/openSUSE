@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb 14 20:05:12 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 5.72:
+  * Security bugfixes:
+    - OpenSSL DLLs updated to version 3.2.1.
+  * Bugfixes:
+    - Fixed SSL_CTX_new() errors handling.
+    - Fixed OPENSSL_NO_PSK builds.
+    - Android build updated for NDK r23c.
+    - stunnel.nsi updated for Debian 12.
+    - Fixed tests with OpenSSL older than 1.0.2.
+  * Rebase stunnel-5.69-default-tls-version.patch
+
+-------------------------------------------------------------------
 Mon Feb  5 09:21:06 UTC 2024 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
 
 - Provide user(stunnel) for rpm 4.19 change in Factory.
