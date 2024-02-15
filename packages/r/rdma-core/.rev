@@ -647,4 +647,13 @@
     <comment></comment>
     <requestid>1140712</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>98bf363bb52a7912a0b2d2c2e754d5a5</srcmd5>
+    <version>49.1</version>
+    <time>1708027154</time>
+    <user>anag+factory</user>
+    <comment>- Add kernel-boot-do-not-load-module-unsupported-on-s390.patch
+  to prevent autoload of module not supported on s390. (bsc#1219805)</comment>
+    <requestid>1146586</requestid>
+  </revision>
 </revisionlist>

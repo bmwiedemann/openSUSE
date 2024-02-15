@@ -75,6 +75,7 @@ Source4:        rdma-core-rpmlintrc
 Source5:        gen-pandoc.sh
 Source6:        get_build.py
 Patch0:         disable-rdma-interface-renaming.patch
+Patch1:         kernel-boot-do-not-load-module-unsupported-on-s390.patch
 BuildRequires:  binutils
 BuildRequires:  cmake >= 2.8.11
 BuildRequires:  gcc
@@ -424,7 +425,11 @@ easy, object-oriented access to IB verbs.
 %setup -q -n  %{name}-%{version}%{git_ver}
 #Extract prebuilt pandoc file in the buildlib directory
 (cd buildlib && tar -xf %{S:3})
-%patch0
+%patch -P 0
+# On s390, disable autoload of unsupported modules
+%ifarch s390 s390x
+%patch -P 1
+%endif
 
 %build
 

@@ -1,0 +1,53 @@
+commit c5ab85be2f7e5ec20e1d135d23847c07ee45e23c
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Wed Feb 14 14:11:53 2024 +0100
+
+    kernel-boot: do not load module unsupported on s390
+    
+    Signed-off-by: Nicolas Morey <nmorey@suse.com>
+
+diff --git kernel-boot/modules/infiniband.conf kernel-boot/modules/infiniband.conf
+index 99526e156fff..7f75b85c9ceb 100644
+--- kernel-boot/modules/infiniband.conf
++++ kernel-boot/modules/infiniband.conf
+@@ -1,9 +1,9 @@
+ # These modules are loaded by the system if any InfiniBand device is installed
+ # InfiniBand over IP netdevice
+-ib_ipoib
++#ib_ipoib
+ 
+ # Access to fabric management SMPs and GMPs from userspace.
+-ib_umad
++#ib_umad
+ 
+ # SCSI Remote Protocol target support
+ # ib_srpt
+diff --git kernel-boot/modules/opa.conf kernel-boot/modules/opa.conf
+index b9bc9f1f0146..3f9e6658b1ef 100644
+--- kernel-boot/modules/opa.conf
++++ kernel-boot/modules/opa.conf
+@@ -1,10 +1,10 @@
+ # These modules are loaded by the system if any OmniPath Architecture device
+ # is installed
+ # Infiniband over IP netdevice
+-ib_ipoib
++#ib_ipoib
+ 
+ # Access to fabric management SMPs and GMPs from userspace.
+-ib_umad
++#ib_umad
+ 
+ # Omnipath Ethernet Virtual NIC netdevice
+ opa_vnic
+diff --git kernel-boot/modules/rdma.conf kernel-boot/modules/rdma.conf
+index 2d342dd82f7d..0ebe3b786b28 100644
+--- kernel-boot/modules/rdma.conf
++++ kernel-boot/modules/rdma.conf
+@@ -1,6 +1,6 @@
+ # These modules are loaded by the system if any RDMA devices is installed
+ # iSCSI over RDMA client support
+-ib_iser
++#ib_iser
+ 
+ # iSCSI over RDMA target support
+ # ib_isert
