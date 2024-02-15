@@ -1,7 +1,7 @@
 #
 # spec file for package plantri
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           plantri
-Version:        5.3
+Version:        5.4
 Release:        0
 Summary:        Programs for generating certain types of planar graphs
 License:        Apache-2.0
 Group:          Productivity/Scientific/Math
 URL:            https://users.cecs.anu.edu.au/~bdm/plantri/
-Source:         https://users.cecs.anu.edu.au/~bdm/plantri/plantri53.tar.gz
+Source:         https://users.cecs.anu.edu.au/~bdm/plantri/plantri54.tar.gz
+# changelog is in plantri-guide.txt appendix F
 BuildRequires:  c_compiler
 
 %description
@@ -36,7 +37,7 @@ Isomorphisms are defined with respect to the imbeddings, so in some
 cases outputs may be isomorphic as abstract graphs.
 
 %prep
-%autosetup -n plantri53
+%autosetup -n plantri54
 
 %build
 %make_build CC="%__cc" CFLAGS="%optflags"
@@ -47,5 +48,7 @@ cp -a plantri fullgen "%buildroot/%_bindir/"
 
 %files
 %_bindir/*
+%doc plantri-guide.txt
+%license LICENSE*
 
 %changelog
