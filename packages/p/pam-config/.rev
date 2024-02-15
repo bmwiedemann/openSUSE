@@ -797,4 +797,13 @@
   - Enable session and account support for kanidm and himmelblau</comment>
     <requestid>1129087</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>776e1ca827cb721b59eab083ad845fc5</srcmd5>
+    <version>2.11</version>
+    <time>1708027199</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.11
+  - pam_gnome_keyring: use options in AUTH [bsc#1219767]</comment>
+    <requestid>1146373</requestid>
+  </revision>
 </revisionlist>

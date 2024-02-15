@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 13 10:59:28 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.11
+  - pam_gnome_keyring: use options in AUTH [bsc#1219767]
+
+-------------------------------------------------------------------
 Mon Nov 27 10:01:51 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.10
