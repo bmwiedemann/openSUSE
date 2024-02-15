@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 12 23:13:07 UTC 2024 - Adam Mizerski <adam@mizerski.pl>
+
+- Reenable the Collada parser.
+- Removed patch 0001-Don-t-build-the-collada-importer-exporter-tests.patch
+- Add patch (boo#1207377, CVE-2022-45748)
+  * 0001-ColladaParser-check-values-length-5462.patch
+- Improved tests filtering
+
+-------------------------------------------------------------------
 Wed Oct  4 14:14:08 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Disable the collada importer/exporter due to a long standing

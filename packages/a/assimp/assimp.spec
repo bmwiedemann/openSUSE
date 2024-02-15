@@ -1,7 +1,7 @@
 #
 # spec file for package assimp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,8 @@ License:        BSD-3-Clause AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://www.assimp.org/
 Source0:        %{name}-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE
-Patch0:         0001-Don-t-build-the-collada-importer-exporter-tests.patch
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-ColladaParser-check-values-length-5462.patch
 BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
@@ -76,9 +76,7 @@ engine-specific format for easy and fast every-day-loading.
     -DASSIMP_IGNORE_GIT_HASH=ON \
     -DASSIMP_BUILD_ZLIB=OFF \
     -DASSIMP_WARNINGS_AS_ERRORS=OFF \
-    -DASSIMP_BUILD_ASSIMP_TOOLS=ON \
-    -DASSIMP_BUILD_COLLADA_IMPORTER=OFF \
-    -DASSIMP_BUILD_COLLADA_EXPORTER=OFF
+    -DASSIMP_BUILD_ASSIMP_TOOLS=ON
 
 %cmake_build
 
@@ -89,10 +87,44 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
 pushd build
-# utIssues.OpacityBugWhenExporting_727 test fails
+gtest_filter="-"
+
 # utVersion.aiGetVersionRevisionTest passes with git builds only
+gtest_filter="${gtest_filter}:utVersion.aiGetVersionRevisionTest"
+
 # the models-nonbsd are not in the tarball, tests depending on it are also excluded
-./bin/unit --gtest_filter="-utIssues.OpacityBugWhenExporting_727:utVersion.aiGetVersionRevisionTest:ut3DImportExport*:ut3DSImportExport*:utMD2Importer*:utMD5Importer*:utBlenderImporter*:utQ3BSPImportExport*:utXImporter.importDwarf:utDXFImporterExporter.importRifle:utPMXImporter.importTest"
+gtest_filter="${gtest_filter}:ut3DImportExport.importMarRifle"
+gtest_filter="${gtest_filter}:ut3DImportExport.importMarRifleA"
+gtest_filter="${gtest_filter}:ut3DImportExport.importMarRifleD"
+gtest_filter="${gtest_filter}:ut3DSImportExport.importCartWheel"
+gtest_filter="${gtest_filter}:ut3DSImportExport.importGranate"
+gtest_filter="${gtest_filter}:ut3DSImportExport.importJeep1"
+gtest_filter="${gtest_filter}:ut3DSImportExport.importMarRifle"
+gtest_filter="${gtest_filter}:ut3DSImportExport.importMp5Sil"
+gtest_filter="${gtest_filter}:ut3DSImportExport.importPyramob"
+gtest_filter="${gtest_filter}:utBlenderImporter.importBob"
+gtest_filter="${gtest_filter}:utBlenderImporter.importFleurOptonl"
+gtest_filter="${gtest_filter}:utDXFImporterExporter.importRifle"
+gtest_filter="${gtest_filter}:utMD2Importer.importDolphin"
+gtest_filter="${gtest_filter}:utMD2Importer.importFlag"
+gtest_filter="${gtest_filter}:utMD2Importer.importHorse"
+gtest_filter="${gtest_filter}:utMD5Importer.importBoarMan"
+gtest_filter="${gtest_filter}:utMD5Importer.importBob"
+gtest_filter="${gtest_filter}:utPMXImporter.importTest"
+gtest_filter="${gtest_filter}:utQ3BSPImportExport.importerTest"
+gtest_filter="${gtest_filter}:utXImporter.importDwarf"
+
+%ifnarch x86_64
+# tests fail, because they assume you can compare floats
+# See https://github.com/assimp/assimp/issues/4438
+gtest_filter="${gtest_filter}:AssimpAPITest_aiMatrix3x3.*"
+gtest_filter="${gtest_filter}:AssimpAPITest_aiMatrix4x4.*"
+gtest_filter="${gtest_filter}:AssimpAPITest_aiQuaternion.*"
+gtest_filter="${gtest_filter}:AssimpAPITest_aiVector2D.*"
+gtest_filter="${gtest_filter}:AssimpAPITest_aiVector3D.*"
+%endif
+
+./bin/unit --gtest_filter="${gtest_filter}"
 popd
 
 %ldconfig_scriptlets -n lib%{name}%{sover}

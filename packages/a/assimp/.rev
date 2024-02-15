@@ -208,4 +208,16 @@
   * 0001-Don-t-build-the-collada-importer-exporter-tests.patch</comment>
     <requestid>1115678</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>34aa609b9c51b8bb5c681892b6250860</srcmd5>
+    <version>5.3.1</version>
+    <time>1708027288</time>
+    <user>anag+factory</user>
+    <comment>- Reenable the Collada parser.
+- Removed patch 0001-Don-t-build-the-collada-importer-exporter-tests.patch
+- Add patch (boo#1207377, CVE-2022-45748)
+  * 0001-ColladaParser-check-values-length-5462.patch
+- Improved tests filtering</comment>
+    <requestid>1146832</requestid>
+  </revision>
 </revisionlist>
