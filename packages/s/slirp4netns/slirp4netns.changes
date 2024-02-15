@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  7 10:15:17 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.2.3:
+
+  * Fix some FD leaks (#334, thanks to @giuseppe)
+
+-------------------------------------------------------------------
 Mon Oct  2 08:28:59 UTC 2023 - pgajdos@suse.com
 
 - version update to 1.2.2
@@ -48,8 +55,8 @@ Fri Jan 08 13:26:41 UTC 2021 - rbrown@suse.com
 Tue Apr 21 14:23:25 UTC 2020 - Oliver Bengs <appleonkel@opensuse.org> - 1.0.0
 
 - Update to 1.0.0
-  * libslirp to v0.4.3: 
-    * libslirp is no longer included in slirp4netns and needs be 
+  * libslirp to v0.4.3:
+    * libslirp is no longer included in slirp4netns and needs be
       installed separately
     * --enable-sandbox is now out of experimental
     * New build dependeny: libslirp-devel >= 4.1
