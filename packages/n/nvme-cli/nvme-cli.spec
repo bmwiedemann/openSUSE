@@ -1,7 +1,7 @@
 #
 # spec file for package nvme-cli
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_without check
 
 Name:           nvme-cli
-Version:        2.7.1
+Version:        2.8
 Release:        0
 Summary:        NVM Express user space tools
 License:        GPL-2.0-only

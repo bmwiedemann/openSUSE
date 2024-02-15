@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Feb 14 12:37:16 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 2.8:
+  * nvme-print-json: append array object in json_support_log
+  * sed: Add plugin for basic SED Opal operations (jsc#PED-5061)
+  * don't include newlines in already wrapped text
+  * nvme: do not include meta data for PRACT=1 and MD=8 (version 2)
+  * create-ns: align the namespaces to 1Mib boundaries when using SI suffixes
+  * doc: Fix config-schema.json's URL
+  * plugins/solidigm: Compressing vs-internal-log log files into zip file.
+  * nbft: do not issue an error if ACPI tables are missing
+  * nbft: fixup include for libnvme
+  * doc: Fix short option name for cfg-file
+  * completions: added Solidigm plugin to autocomplete scripts
+  * nvme: Remove unused cfg argument from NVME_ARGS() macro
+  * nvme: fix directive receive identify offsets
+  * nvme-fabrics: enable option 'concat'
+  * build: Update libnvme wrap
+  * plugins/wdc: Add Debug Log Collection Support
+  * nbft: fix tcp/dhcp address fallback retry (bsc#1218873)
+  * nvme: use correct telemetry log size
+  * nvme-print: fix typo in list verbose output (bsc#1219086)
+  * nvme: print inserted tls key for check-tls-key (bsc#1219086)
+  * plugins/wdc: Plugin fixes and updates
+  * fabrics: move hostid/hostnqn warnings to verbose level (bsc#1219086)
+
+-------------------------------------------------------------------
 Thu Dec 21 15:04:58 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 2.7.1:
@@ -9,11 +36,11 @@ Tue Dec 19 13:30:18 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 2.7:
   * nvme-print-json: include vs for identify namespace
-  * nvme-print-stdout: enhance connect message
-  * fabrics: fix connect error if hostid file does not exist
-  * fabrics: fix invalid output format error during nvme connect
+  * nvme-print-stdout: enhance connect message (bsc#1219086)
+  * fabrics: fix connect error if hostid file does not exist (bsc#1219086)
+  * fabrics: fix invalid output format error during nvme connect (bsc#1219086)
   * wdc: Fix vs-smart-add-log Command for SN650 and SN655
-  * nvme: restric hmac options for gen-tls-key
+  * nvme: restric hmac options for gen-tls-key (bsc#1219086)
   * wdc: Fix UUID index fallback mechanism
   * plugins/ocp: Add OCP Telemetry String log page, Telemetry log page
   * completions: Add bash completions for telemetry string log page
@@ -141,8 +168,8 @@ Tue Dec 19 13:30:18 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
   * nvme-print-stdout: Fix to set stdout_list_item print function missed
   * plugins/solidigm: log page name extraction using nvme_log_to_string function
   * nvme-print: Added missing logpage names in nvme_log_to_string function
-  * udev-rules: rename netapp udev rule
-  * udev-rules: set ctrl_loss_tmo to -1 for ONTAP NVMe/TCP
+  * udev-rules: rename netapp udev rule (bsc#1219086)
+  * udev-rules: set ctrl_loss_tmo to -1 for ONTAP NVMe/TCP (bsc#1219086)
 - Remove upstreamed patches
   * remove 0001-fabrics-autoconnect-add-service-unit-for-connecting-.patch
   * remove 0002-fabrics-add-udev-rule-to-avoid-renaming-nbft-interfa.patch
@@ -192,7 +219,7 @@ Fri Sep 29 11:49:56 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
   * nvme: Introduce nvme_realloc function
   * nvme: Fix for fdpa reserved field printing
   * completion: add 'version' and 'help' to list
-  * udev-rule: apply round-robin iopolicy on i/o subsystems alone (bsc#1215994)
+  * udev-rule: apply round-robin iopolicy on i/o subsystems alone (bsc#1215994) (bsc#1219086)
   * nvme: Add support for the OAQD ID controller field
   * plugins/solidigm: use static log macro to calc bitmask
   * plugins/ocp: Rename FW activation history command
