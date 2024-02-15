@@ -551,4 +551,13 @@
     <comment></comment>
     <requestid>1143468</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>cb010514f761fc74349de3a91d5c60ef</srcmd5>
+    <version>4.2.1</version>
+    <time>1708027261</time>
+    <user>anag+factory</user>
+    <comment>- Update version check for Leap 15.6 so that gcc 12 is used also
+  there</comment>
+    <requestid>1146730</requestid>
+  </revision>
 </revisionlist>
