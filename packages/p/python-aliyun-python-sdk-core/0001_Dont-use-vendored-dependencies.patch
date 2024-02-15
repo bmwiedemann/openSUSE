@@ -1,0 +1,185 @@
+diff -Nru aliyun-python-sdk-core-2.13.36.orig/aliyunsdkcore/auth/composer/roa_signature_composer.py aliyun-python-sdk-core-2.13.36/aliyunsdkcore/auth/composer/roa_signature_composer.py
+--- aliyun-python-sdk-core-2.13.36.orig/aliyunsdkcore/auth/composer/roa_signature_composer.py	2022-02-07 10:10:19.000000000 +0100
++++ aliyun-python-sdk-core-2.13.36/aliyunsdkcore/auth/composer/roa_signature_composer.py	2022-02-08 14:03:49.065743168 +0100
+@@ -16,8 +16,8 @@
+ # under the License.
+ 
+ # coding=utf-8
+-from aliyunsdkcore.vendored.six import iteritems
+-from aliyunsdkcore.vendored.six.moves.urllib.parse import urlencode
++from six import iteritems
++from six.moves.urllib.parse import urlencode
+ from aliyunsdkcore.auth.algorithm import sha_hmac1 as mac1
+ from aliyunsdkcore.utils import parameter_helper as helper
+ from aliyunsdkcore.http import format_type as FormatType
+diff -Nru aliyun-python-sdk-core-2.13.36.orig/aliyunsdkcore/auth/composer/rpc_signature_composer.py aliyun-python-sdk-core-2.13.36/aliyunsdkcore/auth/composer/rpc_signature_composer.py
+--- aliyun-python-sdk-core-2.13.36.orig/aliyunsdkcore/auth/composer/rpc_signature_composer.py	2022-02-07 10:10:19.000000000 +0100
++++ aliyun-python-sdk-core-2.13.36/aliyunsdkcore/auth/composer/rpc_signature_composer.py	2022-02-08 14:03:49.069743206 +0100
+@@ -16,9 +16,9 @@
+ # under the License.
+ 
+ # coding=utf-8
+-from aliyunsdkcore.vendored.six import iteritems
+-from aliyunsdkcore.vendored.six.moves.urllib.parse import urlencode
+-from aliyunsdkcore.vendored.six.moves.urllib.request import pathname2url
++from six import iteritems
++from six.moves.urllib.parse import urlencode
++from six.moves.urllib.request import pathname2url
+ 
+ from aliyunsdkcore.auth.algorithm import sha_hmac1 as mac1
+ from aliyunsdkcore.utils import parameter_helper as helper
+diff -Nru aliyun-python-sdk-core-2.13.36.orig/aliyunsdkcore/auth/signers/ecs_ram_role_signer.py aliyun-python-sdk-core-2.13.36/aliyunsdkcore/auth/signers/ecs_ram_role_signer.py
+--- aliyun-python-sdk-core-2.13.36.orig/aliyunsdkcore/auth/signers/ecs_ram_role_signer.py	2022-02-07 10:10:19.000000000 +0100
++++ aliyun-python-sdk-core-2.13.36/aliyunsdkcore/auth/signers/ecs_ram_role_signer.py	2022-02-08 14:03:49.057743093 +0100
+@@ -23,7 +23,7 @@
+ import logging
+ import json
+ 
+-from aliyunsdkcore.vendored.six.moves.urllib.request import urlopen
++from six.moves.urllib.request import urlopen
+ from aliyunsdkcore.auth.signers.signer import Signer
+ from aliyunsdkcore.acs_exception.exceptions import ServerException
+ 
+diff -Nru aliyun-python-sdk-core-2.13.36.orig/aliyunsdkcore/auth/signers/signer.py aliyun-python-sdk-core-2.13.36/aliyunsdkcore/auth/signers/signer.py
+--- aliyun-python-sdk-core-2.13.36.orig/aliyunsdkcore/auth/signers/signer.py	2022-02-07 10:10:19.000000000 +0100
++++ aliyun-python-sdk-core-2.13.36/aliyunsdkcore/auth/signers/signer.py	2022-02-08 14:03:49.049743018 +0100
+@@ -22,7 +22,7 @@
+ 
+ from abc import ABCMeta, abstractmethod
+ 
+-from aliyunsdkcore.vendored.six import with_metaclass
++from six import with_metaclass
+ 
+ 
+ class Signer(with_metaclass(ABCMeta, object)):
+diff -Nru aliyun-python-sdk-core-2.13.36.orig/aliyunsdkcore/client.py aliyun-python-sdk-core-2.13.36/aliyunsdkcore/client.py
+--- aliyun-python-sdk-core-2.13.36.orig/aliyunsdkcore/client.py	2022-02-07 10:10:19.000000000 +0100
++++ aliyun-python-sdk-core-2.13.36/aliyunsdkcore/client.py	2022-02-08 14:04:53.930349797 +0100
+@@ -28,8 +28,8 @@
+ import sys
+ 
+ import aliyunsdkcore
+-from aliyunsdkcore.vendored.six.moves.urllib.parse import urlencode
+-from aliyunsdkcore.vendored.requests import codes
++from six.moves.urllib.parse import urlencode
++from requests import codes
+ 
+ from aliyunsdkcore.acs_exception.exceptions import ClientException
+ from aliyunsdkcore.acs_exception.exceptions import ServerException
+@@ -48,12 +48,12 @@
+ import aliyunsdkcore.utils
+ import aliyunsdkcore.utils.parameter_helper
+ import aliyunsdkcore.utils.validation
+-from aliyunsdkcore.vendored.requests.structures import CaseInsensitiveDict
+-from aliyunsdkcore.vendored.requests.structures import OrderedDict
++from requests.structures import CaseInsensitiveDict
++from requests.structures import OrderedDict
+ from aliyunsdkcore import compat
+ 
+-from aliyunsdkcore.vendored.requests import Session
+-from aliyunsdkcore.vendored.requests.adapters import HTTPAdapter
++from requests import Session
++from requests.adapters import HTTPAdapter
+ 
+ 
+ """
+@@ -207,9 +207,7 @@
+         default_agent = OrderedDict()
+         default_agent['Python'] = platform.python_version()
+         default_agent['Core'] = __import__('aliyunsdkcore').__version__
+-        default_agent['python-requests'] = __import__(
+-            'aliyunsdkcore.vendored.requests.__version__', globals(), locals(),
+-            ['vendored', 'requests', '__version__'], 0).__version__
++        default_agent['python-requests'] = __import__('requests').__version__
+ 
+         return CaseInsensitiveDict(default_agent)
+ 
+diff -Nru aliyun-python-sdk-core-2.13.36.orig/aliyunsdkcore/compat.py aliyun-python-sdk-core-2.13.36/aliyunsdkcore/compat.py
+--- aliyun-python-sdk-core-2.13.36.orig/aliyunsdkcore/compat.py	2022-02-07 10:10:19.000000000 +0100
++++ aliyun-python-sdk-core-2.13.36/aliyunsdkcore/compat.py	2022-02-08 14:05:27.974668186 +0100
+@@ -1,5 +1,5 @@
+ import sys
+-from aliyunsdkcore.vendored import six
++import six
+ 
+ if six.PY2:
+     from base64 import encodestring as b64_encode_bytes
+diff -Nru aliyun-python-sdk-core-2.13.36.orig/aliyunsdkcore/endpoint/local_config_global_endpoint_resolver.py aliyun-python-sdk-core-2.13.36/aliyunsdkcore/endpoint/local_config_global_endpoint_resolver.py
+--- aliyun-python-sdk-core-2.13.36.orig/aliyunsdkcore/endpoint/local_config_global_endpoint_resolver.py	2022-02-07 10:10:19.000000000 +0100
++++ aliyun-python-sdk-core-2.13.36/aliyunsdkcore/endpoint/local_config_global_endpoint_resolver.py	2022-02-08 14:03:48.993742495 +0100
+@@ -16,7 +16,7 @@
+ # specific language governing permissions and limitations
+ # under the License.
+ #
+-from aliyunsdkcore.vendored.six import iteritems
++from six import iteritems
+ 
+ from aliyunsdkcore.endpoint.local_config_regional_endpoint_resolver \
+     import LocalConfigRegionalEndpointResolver
+diff -Nru aliyun-python-sdk-core-2.13.36.orig/aliyunsdkcore/endpoint/local_config_regional_endpoint_resolver.py aliyun-python-sdk-core-2.13.36/aliyunsdkcore/endpoint/local_config_regional_endpoint_resolver.py
+--- aliyun-python-sdk-core-2.13.36.orig/aliyunsdkcore/endpoint/local_config_regional_endpoint_resolver.py	2022-02-07 10:10:19.000000000 +0100
++++ aliyun-python-sdk-core-2.13.36/aliyunsdkcore/endpoint/local_config_regional_endpoint_resolver.py	2022-02-08 14:03:49.017742719 +0100
+@@ -21,7 +21,7 @@
+ import json
+ 
+ import aliyunsdkcore
+-from aliyunsdkcore.vendored.six import iteritems
++from six import iteritems
+ from aliyunsdkcore.endpoint.endpoint_resolver_base import EndpointResolverBase
+ from aliyunsdkcore.endpoint.resolver_endpoint_request import ResolveEndpointRequest
+ 
+diff -Nru aliyun-python-sdk-core-2.13.36.orig/aliyunsdkcore/http/http_response.py aliyun-python-sdk-core-2.13.36/aliyunsdkcore/http/http_response.py
+--- aliyun-python-sdk-core-2.13.36.orig/aliyunsdkcore/http/http_response.py	2022-02-07 10:10:19.000000000 +0100
++++ aliyun-python-sdk-core-2.13.36/aliyunsdkcore/http/http_response.py	2022-02-08 14:03:49.029742831 +0100
+@@ -20,11 +20,11 @@
+ import os
+ import logging
+ 
+-from aliyunsdkcore.vendored.requests import Session, Request
++from requests import Session, Request
+ from aliyunsdkcore.http.http_request import HttpRequest
+ from aliyunsdkcore.http import protocol_type as PT
+ 
+-from aliyunsdkcore.vendored.requests import status_codes
++from requests import status_codes
+ 
+ logger = logging.getLogger(__name__)
+ logger.setLevel(logging.DEBUG)
+diff -Nru aliyun-python-sdk-core-2.13.36.orig/aliyunsdkcore/request.py aliyun-python-sdk-core-2.13.36/aliyunsdkcore/request.py
+--- aliyun-python-sdk-core-2.13.36.orig/aliyunsdkcore/request.py	2022-02-07 10:10:19.000000000 +0100
++++ aliyun-python-sdk-core-2.13.36/aliyunsdkcore/request.py	2022-02-08 14:03:49.081743318 +0100
+@@ -19,9 +19,9 @@
+ 
+ # coding=utf-8
+ import abc
+-from aliyunsdkcore.vendored.six import iterkeys
+-from aliyunsdkcore.vendored.six import iteritems
+-from aliyunsdkcore.vendored.six import add_metaclass
++from six import iterkeys
++from six import iteritems
++from six import add_metaclass
+ 
+ from aliyunsdkcore.http import protocol_type
+ from aliyunsdkcore.http import method_type as mt
+@@ -33,7 +33,7 @@
+ from aliyunsdkcore.acs_exception import exceptions
+ from aliyunsdkcore.acs_exception import error_code
+ from aliyunsdkcore.compat import ensure_string
+-from aliyunsdkcore.vendored.requests.structures import CaseInsensitiveDict
++from requests.structures import CaseInsensitiveDict
+ 
+ """
+ Acs request model.
+diff -Nru aliyun-python-sdk-core-2.13.36.orig/setup.py aliyun-python-sdk-core-2.13.36/setup.py
+--- aliyun-python-sdk-core-2.13.36.orig/setup.py	2022-02-07 10:10:19.000000000 +0100
++++ aliyun-python-sdk-core-2.13.36/setup.py	2022-02-08 14:05:58.058949539 +0100
+@@ -58,8 +58,7 @@
+     'url': URL,
+     'keywords': ["aliyun", "sdk", "core"],
+     'packages': find_packages(exclude=["tests*"]),
+-    'package_data': {'aliyunsdkcore': ['data/*.json', '*.pem', "vendored/*.pem"],
+-                     'aliyunsdkcore.vendored.requests.packages.certifi': ['cacert.pem']},
++    'package_data': {'aliyunsdkcore': ['data/*.json', '*.pem']},
+     'platforms': 'any',
+     'install_requires': requires,
+     'classifiers': (

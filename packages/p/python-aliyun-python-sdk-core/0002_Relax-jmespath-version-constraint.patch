@@ -1,0 +1,12 @@
+diff -Nru aliyun-python-sdk-core-2.13.36.orig/setup.py aliyun-python-sdk-core-2.13.36/setup.py
+--- aliyun-python-sdk-core-2.13.36.orig/setup.py	2022-02-07 10:10:19.000000000 +0100
++++ aliyun-python-sdk-core-2.13.36/setup.py	2023-05-17 10:23:08.501362424 +0200
+@@ -44,7 +44,7 @@
+     LONG_DESCRIPTION = fp.read()
+ 
+ requires = [
+-    "jmespath>=0.9.3,<1.0.0",
++    "jmespath>=0.9.3",
+     "cryptography>=2.6.0"
+ ]
+ 

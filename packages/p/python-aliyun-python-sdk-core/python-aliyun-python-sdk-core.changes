@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Tue Oct  3 16:09:05 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.14.0
+  + For detailed information about changes see the
+    ChangeLog.txt file provided with this package
+
+-------------------------------------------------------------------
+Wed May 17 08:45:05 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add patch to relax version constraint for python-jmespath build dependency
+  + 0002_Relax-jmespath-version-constraint.patch
+
+-------------------------------------------------------------------
+Fri Feb 11 08:51:15 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.13.36
+  + For detailed information about changes see the
+    ChangeLog.txt file provided with this package
+- Drop patches for issues fixed upstream
+  + 0001_Relax-cryptography-dependency.patch
+- Refresh and rename patches
+  + 0001_Dont-use-vendored-dependencies.patch
+
+-------------------------------------------------------------------
+Wed Feb 17 15:16:11 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
+
+- Do not build for Python 2 distros 15 and higher
+
+-------------------------------------------------------------------
+Sat Feb 13 14:19:36 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.13.30
+  + For detailed information about changes see the
+    ChangeLog.txt file provided with this package
+- Add ChangeLog.txt from upstream git
+- Add patch to relax python-crypography version dependency
+  + 0001_Relax-cryptography-dependency.patch
+- Add patch to drop vendored dependencies (bsc#1177083)
+  + 0002_Dont-use-vendored-dependencies.patch
+- Add python-cryptography to BuildRequires and Requires
+- Add python-requests BuildRequires and Requires
+- Add python-six BuildRequires and Requires
+- Drop python-pycryptodome from BuildRequires and Requires
+- Drop python-devel from BuildRequires
+- Drop obsolete Group field
+- Use LICENSE file from upstream tarball
+
+-------------------------------------------------------------------
+Mon Aug 10 15:28:42 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 2.13.25
