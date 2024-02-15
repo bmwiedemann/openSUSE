@@ -1,0 +1,8 @@
+<package name="python-apprise" project="openSUSE:Factory">
+  <title></title>
+  <description>
+https://github.com/caronc/apprise
+  </description>
+  <devel project="devel:languages:python" package="python-apprise"/>
+  <url>https://pypi.org/project/apprise/</url>
+</package>

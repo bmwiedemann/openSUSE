@@ -1,0 +1,10 @@
+--- a/test/test_plugin_glib.py
++++ b/test/test_plugin_glib.py
+@@ -31,6 +31,7 @@
+ import re
+ import sys
+ import types
++import dbus
+ from unittest.mock import Mock, call, ANY
+ 
+ import pytest
