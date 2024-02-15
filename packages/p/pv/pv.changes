@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Feb 14 14:46:34 UTC 2024 - pgajdos@suse.com
+
+- version update to 1.8.5
+  * Corrected percentage formatting so it does not jump from 2 to 3
+    characters wide at 100%.
+  * Replaced `--remote` mechanism to use a temporary file instead
+    of SysV IPC, so it can work reliably even when there are
+    multiple pv instances.
+  * feature: new `--discard` option to discard input as if writing
+    to /dev/null.
+  * feature: new `--error-skip-block` option to make `--skip-
+    errors` skip whole blocks.
+  * feature: use `posix_fadvise()` like cat(1) does, to improve
+    efficiency.
+  * security: with `--pidfile`, write to a temporary file and
+    rename it into place, to improve security.
+  * security: ignore _TMP_ / _TMPDIR_ environment variables when
+    using a terminal lock file.
+  * Only report errors about missing files when starting to
+    transfer from them, not while calculating size, and behave more
+    like cat(1) by skipping them and moving on.
+  * Auto-calculate total line count with `--line-mode` when all
+    inputs are regular files.
+  * Cope with machine suspend/resume and botched timestamps.
+  * If `--width` or `--height` were provided, do not change them
+    when the window size changes.
+  * When a file descriptor position in `--watchfd` moves backwards,
+    show the rate using the correct prefix.
+  * Rewrite terminal state save/restore so state is not
+    intermittently garbled on exit when using `--cursor`.
+  * Licensing change from Artistic 2.0 to GPLv3+.
+
+-------------------------------------------------------------------
 Thu Nov 30 11:24:57 UTC 2023 - pgajdos@suse.com
 
 - disable testsuite for s390x [bsc#1215338]

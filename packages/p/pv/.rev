@@ -194,4 +194,12 @@
   - _constraints (not needed) (forwarded request 1129976 from pgajdos)</comment>
     <requestid>1129999</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c8e65e119d2ca0e57d1c2e9e80b63e84</srcmd5>
+    <version>1.8.5</version>
+    <time>1708027204</time>
+    <user>anag+factory</user>
+    <comment>- version update to 1.8.5</comment>
+    <requestid>1146627</requestid>
+  </revision>
 </revisionlist>
