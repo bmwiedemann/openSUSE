@@ -1032,4 +1032,12 @@
     <comment>- Make lua scriplets more failsafe (boo#1219370)</comment>
     <requestid>1145198</requestid>
   </revision>
+  <revision rev="100" vrev="4">
+    <srcmd5>8ab25dc7cbfd05126055380aa74b8106</srcmd5>
+    <version>2.12.0</version>
+    <time>1708027182</time>
+    <user>anag+factory</user>
+    <comment>- Move creation of /var/cache/man into %pre scriplet (boo#1219370)</comment>
+    <requestid>1146144</requestid>
+  </revision>
 </revisionlist>

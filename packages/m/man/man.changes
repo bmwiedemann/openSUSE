@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 12 09:32:21 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Move creation of /var/cache/man into %pre scriplet (boo#1219370) 
+
+-------------------------------------------------------------------
 Thu Feb  8 10:48:51 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Make lua scriplets more failsafe (boo#1219370) 

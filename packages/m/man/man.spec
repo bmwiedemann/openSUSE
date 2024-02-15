@@ -81,9 +81,8 @@ Requires:       glibc-locale-base
 Suggests:       glibc-locale
 Requires:       groff >= 1.18
 Requires:       less
-# FIXME: use proper Requires(pre/post/preun/...)
-PreReq:         coreutils
-PreReq:         fillup
+Requires(post): %fillup_prereq
+Requires(pre):  coreutils
 Requires(pre):  group(man)
 Requires(pre):  user(man)
 Provides:       man_db
@@ -354,9 +353,16 @@ then
     esac
   done
 fi
-# Simply for systemdless containers
-getent group  man > /dev/null || groupadd -r man
-getent passwd man > /dev/null || useradd -r -g man -d %{_localstatedir}/cache/man -s /sbin/nologin -c "Manual pages viewer" man
+# With fallback for systemdless containers
+%{?tmpfiles_create:%tmpfiles_create %{_prefix}/lib/tmpfiles.d/man-db.conf}
+if test ! -d %{_localstatedir}/cache/man
+then
+  # Simply for systemdless containers
+  umask 022
+  rm -f %{_localstatedir}/cache/man
+  mkdir -p %{_localstatedir}/cache/man
+  chown -R man:man %{_localstatedir}/cache/man
+fi
 
 %post
 %{fillup_only -an cron}
@@ -386,15 +392,6 @@ getent passwd man > /dev/null || useradd -r -g man -d %{_localstatedir}/cache/ma
 %endif
 
 %posttrans
-%{?tmpfiles_create:%tmpfiles_create %{_prefix}/lib/tmpfiles.d/man-db.conf}
-if test ! -d %{_localstatedir}/cache/man
-then
-  # Simply for systemdless containers
-  umask 022
-  rm -f %{_localstatedir}/cache/man
-  mkdir -p %{_localstatedir}/cache/man
-  chown -R man:man %{_localstatedir}/cache/man
-fi
 if test ! -s %{_localstatedir}/cache/man/index.db
 then
   mandb --quiet --create || :
