@@ -1,4 +1,93 @@
 --------------------------------------------------------------------
+Thu Feb 15 15:46:00 UTC 2024 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#985
+- log locale
+- 4.5.188
+
+--------------------------------------------------------------------
+Wed Feb 14 16:41:40 UTC 2024 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#984
+- log some languange environmant variables
+- log some language environment variables
+- 4.5.187
+
+--------------------------------------------------------------------
+Sat Feb 10 05:39:04 UTC 2024 - aschnell@suse.com
+
+- Translated using Weblate (Georgian) (bsc#1149754)
+- 4.5.186
+
+--------------------------------------------------------------------
+Thu Feb 8 07:11:32 UTC 2024 - bittin@opensuse.org
+
+- Translated using Weblate (Swedish) (bsc#1149754)
+- 4.5.185
+
+--------------------------------------------------------------------
+Tue Feb 6 22:19:16 UTC 2024 - aschnell@suse.com
+
+- Translated using Weblate (Czech) (bsc#1149754)
+- 4.5.184
+
+--------------------------------------------------------------------
+Tue Feb 6 16:38:41 UTC 2024 - aschnell@suse.com
+
+- Translated using Weblate (Slovak) (bsc#1149754)
+- 4.5.183
+
+--------------------------------------------------------------------
+Tue Feb 6 16:38:40 UTC 2024 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#983
+- fixed typo
+- 4.5.182
+
+--------------------------------------------------------------------
+Tue Feb 6 11:55:11 UTC 2024 - freek@opensuse.org
+
+- Translated using Weblate (Dutch) (bsc#1149754)
+- 4.5.181
+
+--------------------------------------------------------------------
+Tue Feb 6 11:55:10 UTC 2024 - aschnell@suse.com
+
+- Translated using Weblate (Japanese) (bsc#1149754)
+
+--------------------------------------------------------------------
+Tue Feb 6 10:01:59 UTC 2024 - aschnell@suse.com
+
+- Translated using Weblate (Catalan) (bsc#1149754)
+
+--------------------------------------------------------------------
+Tue Feb 6 09:45:03 UTC 2024 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#982
+- updated pot and po files
+- 4.5.180
+
+--------------------------------------------------------------------
+Tue Jan 30 16:52:22 UTC 2024 - aschnell@suse.com
+
+- Translated using Weblate (Georgian) (bsc#1149754)
+- 4.5.179
+
+--------------------------------------------------------------------
+Mon Jan 29 14:28:07 UTC 2024 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#981
+- fix reusing volume group name (bsc#1219266)
+- 4.5.178
+
+--------------------------------------------------------------------
+Mon Jan 29 10:07:06 UTC 2024 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#980
+- added experimental support for bcachefs
+- 4.5.177
+
+--------------------------------------------------------------------
 Wed Jan 24 02:23:37 UTC 2024 - bittin@opensuse.org
 
 - Translated using Weblate (Swedish) (bsc#1149754)
