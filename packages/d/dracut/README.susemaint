@@ -325,6 +325,7 @@ PR      Commit message
 2560    feat(resume): do not attempt to install systemd-hibernate-resume@.service
 2593    fix(dracut.sh): do not add device if find_block_device returns an error
 2593    feat(dracut.sh): protect push_host_devs function
+2607    fix(dracut-util): do not call strcmp if the value argument is NULL
 2607    fix(dracut): correct regression with multiple `rd.break=` options
 2611    fix(livenet): propagate error code
 2611    fix(livenet): check also `content-length` from live image header

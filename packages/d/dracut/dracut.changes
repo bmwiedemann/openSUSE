@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 13 10:42:38 UTC 2024 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.554.g6144bf71:
+  * fix(dracut.spec): update dracut-fips requirements (bsc#1219869)
+
+-------------------------------------------------------------------
+Mon Feb 12 16:00:01 UTC 2024 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.552.g4610ef1b:
+  * fix(dracut-util): do not call `strcmp` if the `value` argument is NULL (bsc#1219841)
+
+-------------------------------------------------------------------
 Fri Feb 09 19:46:23 UTC 2024 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.549.gc9f63878:
