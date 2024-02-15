@@ -10487,8 +10487,8 @@ unsorted:
   - libIPSec_MB1 
   - libIccXML-devel 
   - libIccXML2 
-  - libIex-3_1-30-32bit 
-  - libIlmThread-3_1-30-32bit 
+  - libIex-3_2-31-32bit 
+  - libIlmThread-3_2-31-32bit 
   - libImath-3_1-29-32bit 
   - libIrrlicht1_8 
   - libKChart2 
@@ -10582,10 +10582,10 @@ unsorted:
   - libOpenCOLLADASaxFrameworkLoader0_3 
   - libOpenCOLLADAStreamWriter0_3 
   - libOpenColorIO2_3 
-  - libOpenEXR-3_1-30-32bit 
-  - libOpenEXRCore-3_1-30-32bit 
-  - libOpenEXRUtil-3_1-30-32bit 
+  - libOpenEXR-3_2-31-32bit 
+  - libOpenEXRCore-3_2-31-32bit 
   - libOpenEXRUtil-3_2-31 
+  - libOpenEXRUtil-3_2-31-32bit 
   - libOpenIPMI0 
   - libOpenIPMIui1 
   - libOpenImageDenoise1 
@@ -12034,6 +12034,7 @@ unsorted:
   - libdeepin_pw_check1 
   - libdeflate-devel 
   - libdeflate-tools 
+  - libdeflate0-32bit 
   - libdevil-tools 
   - libdevmapper-event1_03-32bit 
   - libdevmapper1_03-32bit 
