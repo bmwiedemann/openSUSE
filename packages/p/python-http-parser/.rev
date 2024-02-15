@@ -134,4 +134,16 @@
   + No changelog available</comment>
     <requestid>815337</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>898b63346dd99449d1d9f2ab0afc13ee</srcmd5>
+    <version>0.9.0</version>
+    <time>1708027230</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup and pyproject macros.
+- Stop using greedy globs in %files.
+- Actually run fdupes.
+- Add patch remove-imp-module.patch:
+  * Use importlib, not imp.</comment>
+    <requestid>1146668</requestid>
+  </revision>
 </revisionlist>
