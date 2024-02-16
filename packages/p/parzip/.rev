@@ -34,4 +34,13 @@
     <comment></comment>
     <requestid>1078586</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9263e9a333edbeb6442e60b2d4901e90</srcmd5>
+    <version>1.4.0</version>
+    <time>1708116116</time>
+    <user>anag+factory</user>
+    <comment>- Use g++11 on Leap
+</comment>
+    <requestid>1146957</requestid>
+  </revision>
 </revisionlist>
