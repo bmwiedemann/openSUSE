@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 13 14:39:45 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.35.1
+  * Revert openssl requirement change
+  * Revert "Update EFS Documentation: Clarify Current FIPS Compliance Status"
+  * Update EFS Documentation: Clarify Current FIPS Compliance Status
+  * test: Change repo urls in eol debian9 build
+  * Check private key file size to skip generation
+  * test: Fix pytest that failed since commit 3dd89ca
+  * Fix should_check_efs_utils_version scope
+  * Add warning if using old version
+  * Add 'fsap' option as EFS-only option
+
+-------------------------------------------------------------------
 Fri Mar 31 08:49:42 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.35.0
