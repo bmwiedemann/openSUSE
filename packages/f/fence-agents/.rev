@@ -1056,4 +1056,13 @@
   * fence_zvmip: fix manpage formatting</comment>
     <requestid>1140886</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>b8cb620da54ed1a89938843798fe6e5f</srcmd5>
+    <version>4.13.1+git.1707822268.4229d52f</version>
+    <time>1708116164</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.13.1+git.1707822268.4229d52f:
+  * fence_vmware_rest : monitoring is not detecting if the API user has sufficient right to manage the fence device. The call https://{api_host}/api/vcenter/vm is subject to permission checks. If the delivered list is empty the user has no rights.</comment>
+    <requestid>1147064</requestid>
+  </revision>
 </revisionlist>
