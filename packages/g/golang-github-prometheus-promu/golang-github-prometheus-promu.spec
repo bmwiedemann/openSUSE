@@ -16,6 +16,8 @@
 #
 
 
+%define shortname promu
+
 Name:           golang-github-prometheus-promu
 Version:        0.15.0
 Release:        0
@@ -23,20 +25,18 @@ Summary:        Prometheus Utility Tool
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/prometheus/promu
-Source:         promu-%{version}.tar.gz
+Source:         %{shortname}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 # PATCH-FIX-UPSTREAM Fix setting reproducible user and host during the build
 # https://github.com/prometheus/promu/pull/267
 Patch1:         0001-do_not_discover_user_host_for_reproducible_builds.patch
 # PATCH-FIX-OPENSUSE Do not pass -static to external linker by default
 Patch2:         extldflags-no-static.patch
-BuildRequires:  golang-packaging
 ExcludeArch:    s390
-%{go_provides}
 %if 0%{?rhel}
 # Fix ERROR: No build ID note found in
 %undefine _missing_build_ids_terminate_build
-BuildRequires:  golang >= 1.18
+BuildRequires:  golang >= 1.19
 %else
 BuildRequires:  golang(API) >= 1.19
 %endif
@@ -45,24 +45,24 @@ BuildRequires:  golang(API) >= 1.19
 The Prometheus Utility Tool is used by the Prometheus project to build other components.
 
 %prep
-%autosetup -a1 -p1 -n promu-%{version}
+%autosetup -a1 -p1 -n %{shortname}-%{version}
 
 %build
-%{goprep} github.com/prometheus/promu
-export VERSION=%{version}
-export CGO_ENABLED=0
-go build \
-   -mod=vendor \
-   -buildmode=pie \
-   -ldflags "-s -w -X main.version=$VERSION" \
-   -o promu ;
+%ifnarch ppc64
+export GOFLAGS="-buildmode=pie"
+%endif
+go build
+
+%check
+# execute the binary as a basic check
+./%{shortname} --help
 
 %install
-install -D -m 0755 promu "%{buildroot}/%{_bindir}/promu"
+install -D -m 0755 %{shortname} "%{buildroot}/%{_bindir}/%{shortname}"
 
 %files
 %doc README.md
 %license LICENSE
-%{_bindir}/promu
+%{_bindir}/%{shortname}
 
 %changelog

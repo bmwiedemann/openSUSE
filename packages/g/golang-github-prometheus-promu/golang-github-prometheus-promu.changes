@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Feb 10 04:51:27 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * _service change disabled to manual per osc deprecation warning:
+    WARNING: Command 'disabledrun/dr' is obsolete, please convert
+    your _service to use 'manual' and then 'manualrun/mr' instead.
+  * Define shortname corresponding to binary name when different
+    from package name. Use shortname where applicable to normalize
+    common lines across Go app packages, similar to name macro.
+  * Drop BuildRequires: golang-packaging. The original macros for
+    file movements into GOPATH are obsolete with Go modules. Macro
+    go_nostrip is no longer needed with current binutils and Go.
+  * Drop export CGO_ENABLED="0". Use the default unless there is a
+    defined requirement or benefit.
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+  * Remove ldflags -X entries for upstream import path and version.
+    This information is embedded in binaries with go1.18+ and
+    available via go version -m or runtime/debug.ReadBuildInfo().
+  * Remove ldflags -s (Omit symbol table and debug info) and -w
+    (Omit DWARF symbol table). This information is used to produce
+    separate debuginfo packages and binaries are stripped for
+    reduced size by GNU strip during RPM build.
+  * Drop go build -o arg, default binary name is pkg of main()
+  * Add basic %check to execute binary --help
+
+-------------------------------------------------------------------
 Thu Dec 14 11:51:49 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - extldflags-no-static.patch: Don't pass -extldflags -static by default
