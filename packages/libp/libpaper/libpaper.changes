@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 15 13:39:20 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update 2.1.3:
+  * This release fixes a small problem with the paperspecs(5) man page,
+    and ensures that the name of the ‘paper’ program is always set,
+    even in a non-relocatable build.
+
+-------------------------------------------------------------------
 Tue Nov 28 07:06:37 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.1.2:

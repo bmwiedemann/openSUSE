@@ -1,7 +1,7 @@
 #
 # spec file for package libpaper
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 2
 
 Name:           libpaper
-Version:        2.1.2
+Version:        2.1.3
 Release:        0
 Summary:        Enables users to indicate their preferred paper size
 License:        GPL-3.0-or-later
