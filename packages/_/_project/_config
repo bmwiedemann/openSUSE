@@ -3014,6 +3014,7 @@ BuildFlags: onlybuild:rust-bindgen
 BuildFlags: onlybuild:rust1.73
 BuildFlags: onlybuild:rust1.74
 BuildFlags: onlybuild:rust1.75
+BuildFlags: onlybuild:rust1.76
 BuildFlags: onlybuild:samba
 BuildFlags: onlybuild:sane-backends
 BuildFlags: onlybuild:sbc
