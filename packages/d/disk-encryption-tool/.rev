@@ -26,4 +26,12 @@
   * Fix setting separate crypt password (forwarded request 1134499 from lnussel)</comment>
     <requestid>1134500</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6375e260d9d6853579ec8efc8dc02f7b</srcmd5>
+    <version>1+git20240213.68c965a</version>
+    <time>1708116103</time>
+    <user>anag+factory</user>
+    <comment>missing file (forwarded request 1146882 from lnussel)</comment>
+    <requestid>1146884</requestid>
+  </revision>
 </revisionlist>
