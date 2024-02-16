@@ -14,11 +14,11 @@ properly.
  create mode 100644 src/branding/sle-micro/Makefile.am
  create mode 100644 src/branding/sle-micro/branding.css
 
-diff --git a/Makefile.am b/Makefile.am
-index fb619f3f253..ec761210a52 100644
---- a/Makefile.am
-+++ b/Makefile.am
-@@ -249,6 +249,7 @@ include src/branding/default/Makefile.am
+Index: cockpit-309/Makefile.am
+===================================================================
+--- cockpit-309.orig/Makefile.am
++++ cockpit-309/Makefile.am
+@@ -175,6 +175,7 @@ include src/branding/default/Makefile.am
  include src/branding/fedora/Makefile.am
  include src/branding/kubernetes/Makefile.am
  include src/branding/opensuse/Makefile.am
@@ -26,11 +26,10 @@ index fb619f3f253..ec761210a52 100644
  include src/branding/registry/Makefile.am
  include src/branding/rhel/Makefile.am
  include src/branding/scientific/Makefile.am
-diff --git a/src/branding/sle-micro/Makefile.am b/src/branding/sle-micro/Makefile.am
-new file mode 100644
-index 00000000000..3f4b762afa5
+Index: cockpit-309/src/branding/sle-micro/Makefile.am
+===================================================================
 --- /dev/null
-+++ b/src/branding/sle-micro/Makefile.am
++++ cockpit-309/src/branding/sle-micro/Makefile.am
 @@ -0,0 +1,11 @@
 +slemicrobrandingdir = $(datadir)/cockpit/branding/sle-micro
 +
@@ -39,15 +38,14 @@ index 00000000000..3f4b762afa5
 +	$(NULL)
 +
 +install-data-hook::
-+	$(LN_S) -f /usr/share/wallpapers/SLEdefault/contents/images/1920x1200.png $(DESTDIR)$(slemicrobrandingdir)/default-1920x1200.png
-+	$(LN_S) -f /usr/share/pixmaps/distribution-logos/square-hicolor.svg $(DESTDIR)$(slemicrobrandingdir)/square-hicolor.svg
-+	$(LN_S) -f /usr/share/pixmaps/distribution-logos/favicon.ico $(DESTDIR)$(slemicrobrandingdir)/favicon.ico
-+	$(LN_S) -f /usr/share/pixmaps/distribution-logos/apple-touch-icon.png $(DESTDIR)$(slemicrobrandingdir)/apple-touch-icon.png
-diff --git a/src/branding/sle-micro/branding.css b/src/branding/sle-micro/branding.css
-new file mode 100644
-index 00000000000..e3c7939c464
++	ln -sf /usr/share/wallpapers/SLEdefault/contents/images/1920x1200.png $(DESTDIR)$(slemicrobrandingdir)/default-1920x1200.png
++	ln -sf /usr/share/pixmaps/distribution-logos/square-hicolor.svg $(DESTDIR)$(slemicrobrandingdir)/square-hicolor.svg
++	ln -sf /usr/share/pixmaps/distribution-logos/favicon.ico $(DESTDIR)$(slemicrobrandingdir)/favicon.ico
++	ln -sf /usr/share/pixmaps/distribution-logos/apple-touch-icon.png $(DESTDIR)$(slemicrobrandingdir)/apple-touch-icon.png
+Index: cockpit-309/src/branding/sle-micro/branding.css
+===================================================================
 --- /dev/null
-+++ b/src/branding/sle-micro/branding.css
++++ cockpit-309/src/branding/sle-micro/branding.css
 @@ -0,0 +1,87 @@
 +/* Extra overrides */
 +:root {

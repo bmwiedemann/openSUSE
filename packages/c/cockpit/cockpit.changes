@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 15 12:21:55 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- suse-microos-branding.patch: fix branding for SLE Micro
+  (bsc#1219929)
+- don't clobber existing links with empty files
+
+-------------------------------------------------------------------
 Wed Jan 31 11:02:35 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - new version 309:

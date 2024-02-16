@@ -417,4 +417,14 @@
   https://cockpit-project.org/blog/cockpit-309.html</comment>
     <requestid>1142995</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>6f2bfb738a499342d0946a5577ec2af0</srcmd5>
+    <version>309</version>
+    <time>1708116095</time>
+    <user>anag+factory</user>
+    <comment>- suse-microos-branding.patch: fix branding for SLE Micro
+  (bsc#1219929)
+- don't clobber existing links with empty files</comment>
+    <requestid>1146868</requestid>
+  </revision>
 </revisionlist>
