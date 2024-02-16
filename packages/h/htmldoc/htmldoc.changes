@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 15 08:06:02 UTC 2024 - pgajdos@suse.com
+
+- version update to 1.9.18
+  * Fixed table rendering when there are missing `</tr>` (Issue #494)
+  * Fixed support for links of the form "filename.html#anchor" in PDF output
+    (Issue #514)
+  * Fixed `--header1` support for web page output (Issue #515)
+  * Fixed markdown emphasized, strong, and struck-through text (Issue 517)
+
+-------------------------------------------------------------------
 Mon Oct  2 09:06:11 UTC 2023 - pgajdos@suse.com
 
 - version update to 1.9.17

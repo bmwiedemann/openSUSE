@@ -1,7 +1,7 @@
 #
 # spec file for package htmldoc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           htmldoc
-Version:        1.9.17
+Version:        1.9.18
 Release:        0
 Summary:        HTML Processor that Generates HTML, PostScript, and PDF Files
 License:        LGPL-2.1-or-later
