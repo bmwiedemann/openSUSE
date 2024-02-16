@@ -1,8 +1,8 @@
-Index: distributed-2023.9.1/distributed/utils_test.py
+Index: distributed-2024.2.0/distributed/utils_test.py
 ===================================================================
---- distributed-2023.9.1.orig/distributed/utils_test.py
-+++ distributed-2023.9.1/distributed/utils_test.py
-@@ -1631,7 +1631,7 @@ def check_thread_leak():
+--- distributed-2024.2.0.orig/distributed/utils_test.py
++++ distributed-2024.2.0/distributed/utils_test.py
+@@ -1644,7 +1644,7 @@ def check_thread_leak():
      yield
  
      start = time()
