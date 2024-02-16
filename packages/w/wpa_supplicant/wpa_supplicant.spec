@@ -1,7 +1,7 @@
 #
 # spec file for package wpa_supplicant
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@ Patch2:         wpa_supplicant-sigusr1-changes-debuglevel.patch
 Patch3:         wpa_supplicant-alloc_size.patch
 Patch5:         wpa_supplicant-dump-certificate-as-PEM-in-debug-mode.diff
 Patch6:         dbus-Fix-property-DebugShowKeys-and-DebugTimestamp.patch
+Patch7:         CVE-2023-52160.patch
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
