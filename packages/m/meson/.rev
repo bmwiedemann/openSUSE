@@ -905,4 +905,14 @@
     <comment></comment>
     <requestid>1136898</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>ccc587124049c89c53a8b68954c27750</srcmd5>
+    <version>1.3.2</version>
+    <time>1708116446</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.3.2:
+  Changelog see: 
+  https://github.com/mesonbuild/meson/compare/1.3.1...1.3.2</comment>
+    <requestid>1146731</requestid>
+  </revision>
 </revisionlist>
