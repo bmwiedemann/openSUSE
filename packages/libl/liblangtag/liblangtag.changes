@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb 15 09:10:24 UTC 2024 - pgajdos@suse.com
+
+- version update to 0.6.7
+  0.6.6 -> 0.6.7
+  =================
+  Akira TAGOH (1):
+        Add missing header
+  0.6.5 -> 0.6.6
+  =================
+  Akira TAGOH (2):
+        Do not use variable array of bash-ism.
+        Fix more compile warnings
+- deleted patches
+  - 0001-ro-MD-ro-to-get-make-check-to-succeed.patch (upstreamed)
+
+-------------------------------------------------------------------
 Wed Aug  2 07:50:07 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Fix check-tag test failled
