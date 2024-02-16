@@ -149,4 +149,12 @@
 </comment>
     <requestid>1143385</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>2ad478f1f8d318d290c4cba7811e18e3</srcmd5>
+    <version>1.3.0+0</version>
+    <time>1708116108</time>
+    <user>anag+factory</user>
+    <comment>Leap 15.6 sync</comment>
+    <requestid>1146926</requestid>
+  </revision>
 </revisionlist>
