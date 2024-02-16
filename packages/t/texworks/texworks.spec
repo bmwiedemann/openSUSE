@@ -18,7 +18,14 @@
 
 
 %define __builder ninja
+%if 0%{?suse_version} < 1650
+# Lua plugin requires GCC >= 8 for filesystem support
+%define gcc_ver 9
+# Python plugin requires Python >= 3.8
 %bcond_with python
+%else
+%bcond_without python
+%endif
 Name:           texworks
 Version:        0.6.9
 Release:        0
@@ -28,10 +35,13 @@ Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://www.tug.org/texworks/
 Source0:        https://github.com/TeXworks/texworks/archive/release-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM texworks-cmake-find-python.patch gh#TeXworks/texworks#1039 badshah400@gmail.com -- cmake has dropped support for PythonInterp and PythonLibs, use FindPython instead
-Patch0:         texworks-cmake-find-python.patch
+Patch0:         https://github.com/TeXworks/texworks/commit/dae1586af7a218e9bbe9ce3031a97e8efcac980a.patch#/texworks-cmake-find-python.patch
+# PATCH-FIX-UPSTREAM texworks-python-plugin-buildfix.patch gh#/TeXworks/texworks#1038 badshah400@gmail.com -- Fix building the python scripting plugin
+Patch1:         https://github.com/TeXworks/texworks/commit/f8962bca2db2cae3183cad201a4726e7726caccb.patch#/texworks-python-plugin-buildfix.patch
 BuildRequires:  cmake
 BuildRequires:  dbus-1-devel
 BuildRequires:  desktop-file-utils
+BuildRequires:  gcc%{?gcc_ver}-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  hunspell-devel
 BuildRequires:  libpoppler-devel >= 0.24
@@ -93,7 +103,8 @@ This package adds lua scripting abitilies to TeXworks.
 %autosetup -p1 -n texworks-release-%{version}
 
 %build
-%cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+%cmake -DCMAKE_CXX_COMPILER=g++%{?gcc_ver:-%{gcc_ver}} \
+       -DCMAKE_INSTALL_PREFIX=%{_prefix} \
        -DTW_BUILD_ID="openSUSE" \
        -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=%{_lib} \
        -DQT_DEFAULT_MAJOR_VERSION=6 \

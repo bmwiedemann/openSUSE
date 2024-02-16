@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 15 19:27:12 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add texworks-python-plugin-buildfix.patch to fix building python
+  scripting plugin (gh#TeXworks/texworks#1038); patch taken from
+  upstream commit.
+- Refresh texworks-cmake-find-python.patch with version committed
+  upstream.
+- Enable python scripting plugin; Requires at least Python 3.8,
+  disable plugin for openSUSE < 1650.
+- Require gcc9 for openSUSE < 1650 as GCC >= 8 is required by Lua
+  scripting plugin for filesystem support.
+
+-------------------------------------------------------------------
 Mon Feb 12 10:35:26 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.6.9:
