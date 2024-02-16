@@ -170,4 +170,12 @@
   - fix: fwdb: ignore MCEdb versions where an official Intel version exists (fixes #430) (forwarded request 1108154 from msmeissn)</comment>
     <requestid>1108155</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>05b006bdeb9ee54f3bd34d484595249c</srcmd5>
+    <version>0.46</version>
+    <time>1708116176</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.44 (bsc#1189477)</comment>
+    <requestid>1147121</requestid>
+  </revision>
 </revisionlist>
