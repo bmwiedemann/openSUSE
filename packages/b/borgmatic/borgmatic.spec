@@ -1,7 +1,7 @@
 #
 # spec file for package borgmatic
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,25 @@
 
 
 Name:           borgmatic
-Version:        1.8.2
+Version:        1.8.8
 Release:        0
 Summary:        Automation tool for borgbackup
 License:        GPL-3.0-only
 Group:          Productivity/Archiving/Backup
 URL:            https://torsion.org/borgmatic/
 Source:         https://github.com/witten/borgmatic/archive/%{version}.tar.gz#/borgmatic-%{version}.tar.gz
+Source99:       %{name}.rpmlintrc
 # PATCH-FIX-OPENSUSE
 Patch1:         skip-tests.patch
-# PATCH-FIX-OPENSUSE
-Patch2:         support-python3.6.patch
 # testing requirements
 BuildRequires:  borgbackup
 # To create the manpage
 BuildRequires:  pandoc
 BuildRequires:  pkgconfig
-BuildRequires:  python3 >= 3.6
+BuildRequires:  python3 >= 3.8
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-appdirs
+BuildRequires:  python3-apprise
 BuildRequires:  python3-atomicwrites
 BuildRequires:  python3-attrs
 BuildRequires:  python3-click
@@ -64,7 +64,6 @@ Requires:       borgbackup
 Requires:       python3-colorama > 0.3.9
 Requires:       python3-jsonschema >= 3.2.0
 Requires:       python3-requests
-Requires:       python3-ruamel.yaml < 0.18.0
 Requires:       python3-ruamel.yaml > 0.15.0
 Requires:       python3-setuptools
 ExcludeArch:    %ix86
@@ -79,9 +78,7 @@ rather than having to put them all on the command-line, and handles
 common errors.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 sed -i -e "s/colorama>=0.4.1,<0.5/colorama>=0.3.9/" setup.py
 %if 0%{?suse_version} <= 1500

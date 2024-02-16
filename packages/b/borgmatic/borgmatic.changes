@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Wed Feb 14 07:20:22 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Add borgmatic.rpmlintrc
+- Rebase skip-tests.patch
+- Remove unneeded support-python3.6.patch
+- Update to 1.8.8:
+  * For the PostgreSQL hook, pass the "PGSSLMODE" environment
+    variable through to Borg when the database's configuration
+    omits the "ssl_mode" option.
+  * Allow the "--repository" flag to match across multiple
+    configuration files.
+  * Fix broken repository detection in the "rcreate" action with
+    Borg 1.4. The issue did not occur with other versions of Borg.
+  * Fix broken escaping logic in the PostgreSQL hook's
+    "pg_dump_command" option.
+  * SECURITY: Prevent additional shell injection attacks within the
+    PostgreSQL hook.
+
+- Updates from 1.8.7:
+  * Store included configuration files within each backup archive
+    in support of the "config bootstrap" action. Previously, only
+    top-level configuration files were stored.
+  * Elevate specific Borg warnings to errors or squash errors to
+    warnings.
+  * SECURITY: Prevent shell injection attacks within the PostgreSQL
+    hook, the MongoDB hook, the SQLite hook, the "borgmatic borg"
+    action, and command hook variable/constant interpolation.
+  * Fix a traceback when providing an invalid "--override" value
+    for a list option.
+
+- Updates from 1.8.6:
+  * Add an "--ssh-command" flag to the "config bootstrap"
+    action for setting a custom SSH command, as no configuration
+    is available (including the "ssh_command" option) until
+    bootstrapping completes.
+  * Fix a traceback when the "repositories" option contains both
+    strings and key/value pairs.
+  * Add configured repository labels to the JSON output for all
+    actions.
+  * The "check --force" flag now runs checks even if "check" is
+    in "skip_actions".
+  * Validate the configured action names in the "skip_actions"
+    option.
+  * Stream SQLite databases directly to Borg instead of dumping
+    to an intermediate file. When logging commands that borgmatic
+    executes, log the environment variables that borgmatic sets for
+    those commands. (But don't log their values, since they often
+    contain passwords.)
+
+- Updates from 1.8.5:
+  * Add a "skip_actions" option to skip running particular actions,
+    handy for append-only or checkless configurations.
+  * Deprecate the "disabled" value for the "checks" option in favor
+    of the new "skip_actions" option.
+  * Constants now apply to included configuration, not just the
+    file doing the includes. As a side effect of this change,
+    constants no longer apply to option names and only substitute
+    into configuration values.
+  * Add a "--match-archives" flag to the "check" action for
+    selecting the archives to check, overriding the existing
+    "archive_name_format" and "match_archives" options in
+    configuration.
+  * Only parse "--override" values as complex data types when
+    they're for options of those types.
+  * Fix environment variable interpolation within configured
+    repository paths.
+  * Add configuration constant overriding via the existing
+    "--override" flag.
+  * Upgrade ruamel.yaml dependency to support version 0.18.x.
+  * Drop support for Python 3.7, which has been end-of-lifed.
+
+- Updates from 1.8.4:
+  * Add a monitoring hook for sending backup status to a variety of
+    monitoring services via the Apprise library.
+  * When an archive filter causes no matching archives for the
+    "rlist" or "info" actions, warn the user and suggest how to
+    remove the filter.
+  * Fix a traceback when an invalid command-line flag or action
+    is used.
+  * Fix normalization of deprecated sections ("location:",
+    "storage:", "hooks:", etc.) to support empty sections without
+    erroring.
+  * Disallow the "--dry-run" flag with the "borg" action, as
+    borgmatic can't guarantee the Borg command won't have side
+    effects.
+
+- Updates from 1.8.3:
+  * BREAKING: Simplify logging logic as follows: Syslog
+    verbosity is now disabled by default, but setting the
+    "--syslog-verbosity" flag enables it regardless of
+    whether you're at an interactive console. Additionally,
+    "--log-file-verbosity" and "--monitoring-verbosity" now
+    default to 1 (info about steps borgmatic is taking) instead
+    of 0. And both syslog logging and file logging can be enabled
+    simultaneously.
+  * Add a monitoring hook for sending backup status and logs to
+    Grafana Loki.
+  * When "archive_name_format" is not set, filter archives using
+    the default archive name format.
+  * Fix error handling to log command output as one record per line
+    instead of truncating too-long output and swallowing the end of
+    some Borg error messages.
+  * Fix for borgmatic not stopping Borg immediately when the user
+    presses ctrl-C.
+
+-------------------------------------------------------------------
 Fri Sep 29 07:20:09 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.8.2:
