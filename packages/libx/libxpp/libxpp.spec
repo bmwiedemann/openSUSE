@@ -16,7 +16,7 @@
 #
 
 
-%define commit 8273a92
+%define commit d141e4c
 
 Name:           libxpp
 Version:        0.2
@@ -25,7 +25,7 @@ Summary:        An object oriented C++ wrapper for parts of the X11 API
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/gerstner-hub/libxpp
-Source0:        libxpp-%{commit}.tar.xz
+Source0:        libxpp-0.2.0+git%{commit}.tar.xz
 
 BuildRequires:  gcc-c++
 BuildRequires:  libX11-devel
@@ -41,8 +41,10 @@ server on Linux systems.
 %package -n libxpp-0_2_0
 Summary:        An object oriented C++ wrapper for parts of the X11 API
 Group:          System/Libraries
-Provides:       %{name} = %{version}
-Obsoletes:      %{name} < %{version}
+#this is the initial version of the library that is packaged, these are
+#unnecessary at the moment
+#Provides:       %{name} = %{version}
+#Obsoletes:      %{name} < %{version}
 
 %description -n libxpp-0_2_0
 A library providing an object oriented C++ API wrapper for 37 parts of the X11
@@ -53,8 +55,8 @@ The runtime library files for libxpp.
 %package devel
 Summary:        A library providing a modern C++ API for the Linux operating system
 Group:          Development/Libraries/C and C++
-Requires:       libxpp-0_2_0 = %{version}
 Requires:       libstdc++-devel
+Requires:       libxpp-0_2_0 = %{version}
 
 %description devel
 A library providing an object oriented C++ API wrapper for 37 parts of the X11
@@ -63,7 +65,7 @@ API.
 Header and development files for libxpp.
 
 %prep
-%setup -q -n libxpp-%{commit}
+%setup -q -n libxpp-0.2.0+git%{commit}
 
 %build
 scons libtype=shared use-system-pkgs=1

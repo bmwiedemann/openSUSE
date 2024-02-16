@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 16 09:45:18 UTC 2024 - matthias.gerstner@suse.com
+
+- Update to version 0.2.0+gitd141e4c:
+  * buildsystem: use single quotes throughout
+  * python files: flake8 fixes
+  * gitignore: ignore all build trees
+  * buildsystem: support not building docs
+  * SConstruct: use new helper method to pull in libcosmos
+  * XWindow: also export utf8_string getter
+  * XCursor: support defining a cursor from pixmap data
+  * Pixmap: support creating Pixmap from in-memory bitmap data
+
+-------------------------------------------------------------------
 Fri Feb 09 10:08:50 UTC 2024 - matthias.gerstner@suse.com
 
 - Update to version 8273a92:
