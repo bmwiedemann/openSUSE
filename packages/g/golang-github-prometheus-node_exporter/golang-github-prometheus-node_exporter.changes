@@ -8,12 +8,12 @@ Mon Feb 12 15:01:17 UTC 2024 - Witek Bedyk <witold.bedyk@suse.com>
 -------------------------------------------------------------------
 Mon Nov 13 10:37:40 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
-- update to 1.7.0:
+- update to 1.7.0 (jsc#PED-7893, jsc#PED-7928):
   * [FEATURE] Add ZFS freebsd per dataset stats #2753
   * [FEATURE] Add cpu vulnerabilities reporting from sysfs #2721
   * [ENHANCEMENT] Parallelize stat calls in Linux filesystem
     collector #1772
-  * [ENHANCEMENT] Add missing linkspeeds to ethtool collector 2711
+  * [ENHANCEMENT] Add missing linkspeeds to ethtool collector #2711
   * [ENHANCEMENT] Add CPU MHz as the value for node_cpu_info metric
     #2778
   * [ENHANCEMENT] Improve qdisc collector performance #2779
