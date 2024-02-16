@@ -73,4 +73,12 @@
     <comment>- Update to release 3.0</comment>
     <requestid>1135305</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>48613bed80f66c19b0fa02fbc92bb8e8</srcmd5>
+    <version>3.0.0</version>
+    <time>1708116090</time>
+    <user>anag+factory</user>
+    <comment>- fix dependency on xxd</comment>
+    <requestid>1146807</requestid>
+  </revision>
 </revisionlist>
