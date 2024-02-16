@@ -66,4 +66,14 @@
 </comment>
     <requestid>1041290</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>e642510b281bc471d6585d3e28131d36</srcmd5>
+    <version>0.25.1</version>
+    <time>1708116124</time>
+    <user>anag+factory</user>
+    <comment>- Add patch fix-assertions.patch:
+  * Fix assetion methods.
+- Switch to pyproject macros.</comment>
+    <requestid>1146988</requestid>
+  </revision>
 </revisionlist>

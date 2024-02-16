@@ -1,0 +1,33 @@
+From 66c1bf7813ae8621a71484fdcdf609734c0d8efd Mon Sep 17 00:00:00 2001
+From: sirfredrick <sirfredrick@mathbf.com>
+Date: Thu, 28 Dec 2023 13:37:36 -0800
+Subject: [PATCH] Fix test assertions
+
+assertEquals() was a deprecated alias for assertEqual() and has been
+removed in Python 3.12 See https://docs.python.org/3/whatsnew/3.12.html#id3
+---
+ test/test.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/test.py b/test/test.py
+index 1965761f..2da3d0fa 100644
+--- a/test/test.py
++++ b/test/test.py
+@@ -1086,7 +1086,7 @@ def test_from_file_clean_fail(self):
+             tmp_wav_file.flush()
+             self.assertRaises(CouldntDecodeError, AudioSegment.from_file, tmp_wav_file.name)
+             files = os.listdir(tempfile.tempdir)
+-            self.assertEquals(files, [os.path.basename(tmp_wav_file.name)])
++            self.assertEqual(files, [os.path.basename(tmp_wav_file.name)])
+ 
+         if sys.platform == 'win32':
+             os.remove(tmp_wav_file.name)
+@@ -1109,7 +1109,7 @@ def setUp(self):
+ 
+     def test_split_on_silence_complete_silence(self):
+         seg = AudioSegment.silent(5000)
+-        self.assertEquals( split_on_silence(seg), [] )
++        self.assertEqual( split_on_silence(seg), [] )
+ 
+     def test_split_on_silence_test1(self):
+         self.assertEqual(

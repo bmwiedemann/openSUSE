@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 16 03:31:40 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch fix-assertions.patch:
+  * Fix assetion methods.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Wed Dec  7 23:23:13 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add skip_libopenh264-7.patch which skips failing tests when
