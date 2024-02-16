@@ -30,6 +30,8 @@ Source2:        %{name}.keyring
 Source3:        README.SUSE
 # PATCH-FIX-OPENSUSE spice-gtk-polkit-privs.patch bnc#804184 dimstar@opensuse.org -- Set the polkit defaults to auth_admin
 Patch0:         spice-gtk-polkit-privs.patch
+# https://gitlab.freedesktop.org/spice/spice-common/-/commit/29dacb5f53f5183fb089a3fb02d081dd08bde8a1
+Patch1:         spice-gtk-no-six.patch
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  gstreamer-plugins-bad
 BuildRequires:  gstreamer-plugins-good
@@ -41,7 +43,6 @@ BuildRequires:  libtool
 BuildRequires:  meson >= 0.53
 BuildRequires:  pkgconfig
 BuildRequires:  python3-pyparsing
-BuildRequires:  python3-six
 BuildRequires:  vala
 BuildRequires:  perl(Text::CSV)
 BuildRequires:  pkgconfig(cairo) >= 1.2.0
