@@ -663,4 +663,15 @@
   % php-build-reproducible-phar.patch (refreshed)</comment>
     <requestid>1139795</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>028f5a9ce0a8265dbf169bb977be598b</srcmd5>
+    <version>8.2.16</version>
+    <time>1708116555</time>
+    <user>anag+factory</user>
+    <comment>- version update to 8.2.16
+  * This is a bug fix release.
+- modified patches
+  % php-build-reproducible-phar.patch (refreshed)</comment>
+    <requestid>1147032</requestid>
+  </revision>
 </revisionlist>

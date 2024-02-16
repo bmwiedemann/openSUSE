@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 16 07:57:56 UTC 2024 - pgajdos@suse.com
+
+- version update to 8.2.16
+  * This is a bug fix release.
+- modified patches
+  % php-build-reproducible-phar.patch (refreshed)
+
+-------------------------------------------------------------------
 Thu Jan 18 18:01:47 UTC 2024 - pgajdos@suse.com
 
 - version update to 8.2.15
