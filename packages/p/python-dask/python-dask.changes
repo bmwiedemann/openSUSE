@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Feb 14 21:23:45 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2024.2.0
+  * Deprecate Dask DataFrame implementation
+  * Improved tokenization
+  * https://docs.dask.org/en/stable/changelog.html#v2024-2-0
+- Really drop python39 from testing instead of testing it with
+  every other test flavor
+
+-------------------------------------------------------------------
+Tue Feb  6 10:29:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- drop python39 from testing
+
+-------------------------------------------------------------------
+Sun Feb  4 21:31:24 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add python312 test flavor
+
+-------------------------------------------------------------------
 Tue Jan 30 09:40:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.1.1:
