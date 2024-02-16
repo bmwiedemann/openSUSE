@@ -1,7 +1,7 @@
 #
 # spec file for package pkgconf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -40,12 +40,12 @@
 # Search path for pc files for pkgconf
 %global pkgconf_libdirs %{_libdir}/pkgconfig:%{_datadir}/pkgconfig
 
-%global somajor 3
+%global somajor 4
 %global libname lib%{name}%{somajor}
 %global devname lib%{name}-devel
 
 Name:           pkgconf
-Version:        1.8.0
+Version:        2.1.1
 Release:        0
 Summary:        Package compiler and linker metadata toolkit
 License:        ISC
@@ -54,13 +54,7 @@ URL:            http://pkgconf.org/
 Source0:        https://distfiles.dereferenced.org/%{name}/%{name}-%{version}.tar.xz
 # Simple wrapper script to offer platform versions of pkgconfig from Fedora
 Source1:        platform-pkg-config.in
-# PATCH-FIX-UPSTREAM pkgconf-CVE-2023-24056.patch bsc#1207394 CVE-2023-24056 qzhao@suse.com -- Backport commit 628b2b2baf from upstream, test for, and stop string processing, on truncation.
-Patch0:         pkgconf-CVE-2023-24056.patch
-# For regenerating autotools scripts
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  gcc
-BuildRequires:  libtool
 BuildRequires:  make
 # pkgconf uses libpkgconf internally
 Requires:       %{libname}%{?_isa} = %{version}-%{release}
@@ -135,7 +129,6 @@ the system provider of pkg-config.
 %autosetup -p1
 
 %build
-autoreconf -fiv
 %configure --disable-static \
            --with-pkg-config-dir=%{pkgconf_libdirs} \
            --with-system-includedir=%{_includedir} \
@@ -196,6 +189,7 @@ rm -rf %{buildroot}%{_mandir}/man7
 %license COPYING
 %doc README.md AUTHORS NEWS
 %{_bindir}/%{name}
+%{_bindir}/bomtool
 %{_mandir}/man1/%{name}.1*
 %{_mandir}/man5/pc.5*
 %{_mandir}/man5/%{name}-personality.5*

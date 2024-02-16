@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Feb 12 12:29:11 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.1.1:
+  * Fix --modversion with constraints
+  * Reintroduce an optimization to the dependency graph walker
+    which avoids revisiting already visited nodes
+  * Add a regression test to check that the dependency flattener is
+    working as expected
+
+-------------------------------------------------------------------
+Mon Dec 18 10:41:18 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.1.0:
+  * new solver for higher performance with complicated graphs
+  * Add --license selector to the pkgconf CLI
+  * Add flag --verbose and --solution to CLI
+  * Changes and fixes to --modversion
+  * bug fixes and developer visible changes
+- drop pkgconf-CVE-2023-24056.patch, now included
+
+-------------------------------------------------------------------
 Sun Jan 29 09:26:47 UTC 2023 - Cliff Zhao <qzhao@suse.com>
 
 - Add pkgconf-CVE-2023-24056.patch: Backport commit 628b2b2baf from
