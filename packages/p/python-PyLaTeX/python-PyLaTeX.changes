@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 16 04:11:23 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.4.2:
+  * Add `.Chapter` in ``__init__.py``
+  * Fix installation on Python 3.12
+- Drop patch skip-optional-dependencies-test.patch, no longer required.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Fri Feb 26 20:15:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Some optional dependencies not available for the python36 flavor:

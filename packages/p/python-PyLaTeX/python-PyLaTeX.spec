@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyLaTeX
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 Name:           python-PyLaTeX
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        A Python library for creating LaTeX files and snippets
 License:        MIT
 URL:            https://github.com/JelteF/PyLaTeX
 Source:         https://github.com/JelteF/PyLaTeX/archive/v%{version}.tar.gz#/PyLaTeX-%{version}.tar.gz
-# PATCH-FEATURE-OPENSUSE skip-optional-dependencies-test.patch -- skip testing optional dependencies if not available
-Patch0:         skip-optional-dependencies-test.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ordered-set
@@ -112,21 +110,19 @@ PyLaTeX is a Python library for creating and compiling LaTeX files.
 %autosetup -p1 -n PyLaTeX-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Quantities is an optional dependency that currently doesn't work
-# %%python_expand nosetests-%%{$python_bin_suffix} -v -e 'test_quantities'
 %pytest
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/pylatex
-%{python_sitelib}/*egg-info
+%{python_sitelib}/PyLaTeX-%{version}.dist-info
 
 %changelog
