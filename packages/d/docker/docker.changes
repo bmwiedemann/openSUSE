@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Feb 14 08:40:36 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- Vendor latest buildkit v0.11:
+  Add patch 0006-Vendor-in-latest-buildkit-v0.11-branch-including-CVE.patch that
+  vendors in the latest v0.11 buildkit branch including bugfixes for the following:
+  * bsc#1219438: CVE-2024-23653
+  * bsc#1219268: CVE-2024-23652
+  * bsc#1219267: CVE-2024-23651
+
+- rebase patches:
+  * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  * 0003-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+  * 0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  * 0005-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+
+- switch from %patchN to %patch -PN syntax
+- remove unused rpmlint filters and add filters to silence pointless bash & zsh
+  completion warnings
+
+-------------------------------------------------------------------
 Fri Oct 27 21:14:37 UTC 2023 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 24.0.7-ce. See upstream changelong online at

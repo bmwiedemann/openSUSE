@@ -72,6 +72,11 @@ Patch201:       0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
 Patch202:       0005-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
 # UPSTREAM: Backport of <https://github.com/docker/cli/pull/4228>.
 Patch900:       cli-0001-docs-include-required-tools-in-source-tree.patch
+# bugfix for:
+# bsc#1219438: CVE-2024-23653
+# bsc#1219268: CVE-2024-23652
+# bsc#1219267: CVE-2024-23651
+Patch901:       0006-Vendor-in-latest-buildkit-v0.11-branch-including-CVE.patch
 BuildRequires:  audit
 BuildRequires:  bash-completion
 BuildRequires:  ca-certificates
@@ -122,7 +127,7 @@ Requires:       iptables >= 1.4
 Requires:       procps
 Requires:       tar >= 1.26
 Requires:       xz >= 4.9
-%sysusers_requires
+%?sysusers_requires
 Requires(post): %fillup_prereq
 Requires(post): udev
 Requires(post): shadow
@@ -198,7 +203,7 @@ Fish command line completion support for %{name}.
 %setup -q -T -b 1 -n %{name}-cli-%{version}
 [ "%{cli_builddir}" = "$PWD" ]
 # offline manpages
-%patch900 -p1
+%patch -P900 -p1
 
 # docker
 %define docker_builddir %{_builddir}/%{name}-%{version}_%{git_version}
@@ -209,17 +214,19 @@ cp %{SOURCE130} .
 
 %if 0%{?is_opensuse} == 0
 # PATCH-SUSE: Secrets patches.
-%patch100 -p1
-%patch101 -p1
+%patch -P100 -p1
+%patch -P101 -p1
 %endif
 %if 0%{?sle_version} == 120000
 # Patches to build on SLE-12.
-%patch200 -p1
+%patch -P200 -p1
 %endif
 # bsc#1099277
-%patch201 -p1
+%patch -P201 -p1
 # Solves apparmor issues on SLE-12, but okay for newer SLE versions too.
-%patch202 -p1
+%patch -P202 -p1
+# temporary buildkit bugfixes
+%patch -P901 -p1
 
 %build
 %sysusers_generate_pre %{SOURCE160} %{name} %{name}.conf

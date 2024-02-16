@@ -1,6 +1,2 @@
-# The #! comes from upstream.
-addFilter ("^docker-bash-completion.noarch: W: sourced-script-with-shebang /etc/bash_completion.d/docker bash")
-addFilter ("^docker-zsh-completion.noarch: W: sourced-script-with-shebang /etc/zsh_completion.d/docker zsh")
-
-# -test is something that is used internally and isn't actually shipped -- it's a pseduo-source package.
-addFilter ("^docker-test.*")
+addFilter("^docker-bash-completion.noarch: (E|W): non-executable-script /usr/share/bash-completion/completions/docker")
+addFilter("^docker-zsh-completion.noarch: W: non-conffile-in-etc /etc/zsh_completion.d/_docker")
