@@ -1904,6 +1904,7 @@ unsorted:
   - cargo1.73 
   - cargo1.74 
   - cargo1.75 
+  - cargo1.76 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -9061,8 +9062,6 @@ unsorted:
   - jlfgr 
   - jline 
   - jline-javadoc 
-  - jline1 
-  - jline1-javadoc 
   - jline3 
   - jline3-builtins 
   - jline3-console 
@@ -9474,7 +9473,6 @@ unsorted:
   - kernel-vanilla-vdso 
   - kernelshark 
   - kernelshark-devel 
-  - ketchup 
   - kew 
   - kexi 
   - kexi-lang 
@@ -11597,7 +11595,7 @@ unsorted:
   - libbs2b0-32bit 
   - libbsd-ctor-static 
   - libbsd-devel 
-  - libbtf1 
+  - libbtf2 
   - libbtrfs-devel 
   - libbtrfsutil-devel 
   - libbudgie-appindexer0 
@@ -11902,7 +11900,6 @@ unsorted:
   - libcsironn0 
   - libcsnd6-6_0 
   - libcsound64-6_0 
-  - libcsparse3 
   - libcsplit-devel 
   - libcsplit1 
   - libcss-devel 
@@ -11939,7 +11936,7 @@ unsorted:
   - libcvc-devel 
   - libcvc0 
   - libcwnn0 
-  - libcxsparse3 
+  - libcxsparse4 
   - libcxx-gtk-utils-2-2_2-0 
   - libcxx-gtk-utils-2-devel 
   - libcxx-gtk-utils-3-2_2-0 
@@ -12775,7 +12772,7 @@ unsorted:
   - libgpod-doc 
   - libgrail6 
   - libgranite6 
-  - libgraphblas7 
+  - libgraphblas9 
   - libgraphene-1_0-0-32bit 
   - libgraphene-devel 
   - libgraphite2-3-32bit 
@@ -13356,7 +13353,8 @@ unsorted:
   - libklfbackend4 
   - libklftools4 
   - libklu-doc 
-  - libklu1 
+  - libklu2 
+  - libklu_cholmod2 
   - libkmahjongg-devel 
   - libkmip-devel 
   - libkmip-tools 
@@ -13400,6 +13398,8 @@ unsorted:
   - libkwnn0 
   - libkyotocabinet-devel 
   - liblab_gamut1 
+  - liblagraph1 
+  - liblagraphx1 
   - liblal20 
   - liblalburst8 
   - liblalframe14 
@@ -13442,7 +13442,7 @@ unsorted:
   - libldastoolsal7 
   - libldb-devel 
   - libldl-doc 
-  - libldl2 
+  - libldl3 
   - libldm-1_0-0-devel 
   - libleechcraft-util-db-qt5-0_6_75_1 
   - libleechcraft-util-gui-qt5-0_6_75_1 
@@ -13686,6 +13686,7 @@ unsorted:
   - libmetal0 
   - libmetalink-devel 
   - libmetis-gnu-hpc 
+  - libmetis5 
   - libmetis_5_1_0-gnu-hpc 
   - libmetrics-devel 
   - libmetrics0 
@@ -13754,8 +13755,6 @@ unsorted:
   - libmodplug1 
   - libmodsecurity3 
   - libmodulemd-devel 
-  - libmongoose-doc 
-  - libmongoose2 
   - libmono-2_0-1 
   - libmono-2_0-devel 
   - libmono-profiler-gui-thread-check0 
@@ -14341,6 +14340,7 @@ unsorted:
   - libparserutils-devel 
   - libparserutils0 
   - libpartio1 
+  - libparu0 
   - libpasswdqc0 
   - libpath_utils-devel 
   - libpcap-devel 
@@ -14502,7 +14502,7 @@ unsorted:
   - libpoppler-qt5-devel 
   - libpoppler-qt6-3 
   - libpoppler-qt6-devel 
-  - libpoppler133-32bit 
+  - libpoppler134-32bit 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -14891,7 +14891,7 @@ unsorted:
   - libraw23-32bit 
   - libraylib450 
   - librbd-devel 
-  - librbio2 
+  - librbio4 
   - librbl1 
   - librcc-devel 
   - librcc0 
@@ -15271,7 +15271,6 @@ unsorted:
   - libskk0 
   - libsl0 
   - libslang2-32bit 
-  - libsliplu1 
   - libslirp-devel 
   - libslopy7_6 
   - libslurm40 
@@ -15355,6 +15354,8 @@ unsorted:
   - libspeexdsp1-32bit 
   - libspelling-devel 
   - libspelling1-1 
+  - libspex-doc 
+  - libspex2 
   - libspf2-2 
   - libspf2-apidocs 
   - libspf2-devel 
@@ -15373,7 +15374,7 @@ unsorted:
   - libspnav0 
   - libspooles2_2 
   - libspooles2_2-openmpi 
-  - libspqr2 
+  - libspqr4 
   - libspread-sheet-widget0 
   - libsqlcipher-3_44_2-0 
   - libsqlcipher-3_44_2-0-x86-64-v3 
@@ -15453,6 +15454,8 @@ unsorted:
   - libsubtitleeditor0 
   - libsubunit0 
   - libsuil-0-0 
+  - libsuitesparse_mongoose-doc 
+  - libsuitesparse_mongoose3 
   - libsundials_arkode5 
   - libsundials_arkode5-mvapich2 
   - libsundials_arkode5-openmpi4 
@@ -15752,6 +15755,7 @@ unsorted:
   - libuhttpmock-1_0-1 
   - libulfius2_7 
   - libulockmgr1 
+  - libumfpack-doc 
   - libumockdev-preload0 
   - libumockdev0 
   - libuna-devel 
@@ -19839,8 +19843,6 @@ unsorted:
   - paraviewdata 
   - parboiled 
   - parboiled-javadoc 
-  - parboiled-scala 
-  - parboiled-scala-javadoc 
   - parcellite 
   - pari-devel 
   - pari-doc 
@@ -23218,6 +23220,8 @@ unsorted:
   - python310-akismet 
   - python310-alabaster 
   - python310-alembic 
+  - python310-aliyun-python-sdk-alimt 
+  - python310-aliyun-python-sdk-core 
   - python310-allpairspy 
   - python310-alsa 
   - python310-altair 
@@ -23249,6 +23253,7 @@ unsorted:
   - python310-appdirs 
   - python310-application 
   - python310-applicationinsights 
+  - python310-apprise 
   - python310-apptools 
   - python310-apsw 
   - python310-arabic-reshaper 
@@ -26766,6 +26771,8 @@ unsorted:
   - python311-ajsonrpc 
   - python311-akismet 
   - python311-alabaster 
+  - python311-aliyun-python-sdk-alimt 
+  - python311-aliyun-python-sdk-core 
   - python311-allpairspy 
   - python311-alsa 
   - python311-altair 
@@ -26795,6 +26802,7 @@ unsorted:
   - python311-appdirs 
   - python311-application 
   - python311-applicationinsights 
+  - python311-apprise 
   - python311-apptools 
   - python311-apsw 
   - python311-arabic-reshaper 
@@ -30191,6 +30199,8 @@ unsorted:
   - python312-akismet 
   - python312-alabaster 
   - python312-alembic 
+  - python312-aliyun-python-sdk-alimt 
+  - python312-aliyun-python-sdk-core 
   - python312-allpairspy 
   - python312-alsa 
   - python312-altair 
@@ -30222,6 +30232,7 @@ unsorted:
   - python312-appdirs 
   - python312-application 
   - python312-applicationinsights 
+  - python312-apprise 
   - python312-apptools 
   - python312-apsw 
   - python312-arabic-reshaper 
@@ -31199,8 +31210,10 @@ unsorted:
   - python312-flasgger 
   - python312-flask-jwt-extended 
   - python312-flask-oidc 
+  - python312-flask-restx 
   - python312-flatbuffers 
   - python312-flatdict 
+  - python312-fleming 
   - python312-flex 
   - python312-flexmock 
   - python312-flexx 
@@ -31390,6 +31403,7 @@ unsorted:
   - python312-htmlmin 
   - python312-httmock 
   - python312-http-ece 
+  - python312-http-parser 
   - python312-httpagentparser 
   - python312-httpbin 
   - python312-httpcore 
@@ -31516,6 +31530,7 @@ unsorted:
   - python312-jedi 
   - python312-jedihttp 
   - python312-jeepney 
+  - python312-jellyfish 
   - python312-jenkinsapi 
   - python312-jfscripts 
   - python312-jinja2-fsloader 
@@ -31699,6 +31714,7 @@ unsorted:
   - python312-ligo-lw 
   - python312-ligo-segments 
   - python312-limnoria 
+  - python312-line_profiler 
   - python312-linecache2 
   - python312-linetable 
   - python312-lineup-widget 
@@ -33090,6 +33106,7 @@ unsorted:
   - python312-unpaddedbase64 
   - python312-unsync 
   - python312-untokenize 
+  - python312-unyt 
   - python312-uproot 
   - python312-uri-template 
   - python312-uritemplate 
@@ -33596,6 +33613,8 @@ unsorted:
   - python39-akismet 
   - python39-alabaster 
   - python39-alembic 
+  - python39-aliyun-python-sdk-alimt 
+  - python39-aliyun-python-sdk-core 
   - python39-allpairspy 
   - python39-alsa 
   - python39-altair 
@@ -33627,6 +33646,7 @@ unsorted:
   - python39-appdirs 
   - python39-application 
   - python39-applicationinsights 
+  - python39-apprise 
   - python39-apptools 
   - python39-apsw 
   - python39-arabic-reshaper 
@@ -38342,6 +38362,7 @@ unsorted:
   - rust1.73 
   - rust1.74 
   - rust1.75 
+  - rust1.76 
   - rustdesk-server 
   - rustdesk-server-hbbr 
   - rustdesk-server-hbbs 
@@ -39205,7 +39226,7 @@ unsorted:
   - suil-plugin-x11-in-gtk3 
   - suil-plugin-x11-in-qt5 
   - suitesparse-devel 
-  - suitesparse-devel-static 
+  - suitesparse_mongoose 
   - sundanese-unicode-fonts 
   - sundials-devel 
   - sundials-doc 
