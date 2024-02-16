@@ -222,4 +222,26 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1103341</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e5b40b273d85db3dfc54e68ea4f7ad38</srcmd5>
+    <version>1.7.0~git2.21ba08e</version>
+    <time>1708116103</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.7.0~git2.21ba08e
+  * Allow SUSEConnect on read write transactional systems (bsc#1219425)
+
+- Update to version 1.6.0
+  * Disable EULA display for addons (bsc#1218649 and bsc#1217961)
+
+- Update to version 1.5.0
+  * Configure docker credentials for registry authentication
+  * Feature: Support usage from Agama + Cockpit for ALP Micro system registration (bsc#1218364)
+  * Add --json output option
+
+- Update to version 1.4.0
+  * Added EULA display for addons (bsc#1170267)
+  * Fix zypper argument for auto-agreeing licenses (bsc#1214781)
+  * Enable building on SLE12 SP5 (jsc#PED-3179)</comment>
+    <requestid>1146892</requestid>
+  </revision>
 </revisionlist>
