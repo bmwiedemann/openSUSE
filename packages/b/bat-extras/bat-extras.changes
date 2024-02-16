@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 15 20:07:12 UTC 2024 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 2024.02.12
+  * batman: Fix BAT_PAGER causing infinite recursion
+  * batgrep: Add support for ripgrep-all
+  * batman: Remove '-u' flag when calling sed
+  * batman: Remove dependency on col program
+  * Add Elixir mix format support
+
+-------------------------------------------------------------------
 Tue Sep 19 18:38:24 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
 
 - Update to version 2023.09.19
