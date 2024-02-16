@@ -50,4 +50,14 @@
   * drop spec files and add SPDX licenses</comment>
     <requestid>1128206</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>4dba56a7eaeb77ca1557dd2d606c017e</srcmd5>
+    <version>0.7.3</version>
+    <time>1708116173</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1146907 from pgajdos
+
+- align license tag with COPYING</comment>
+    <requestid>1147120</requestid>
+  </revision>
 </revisionlist>
