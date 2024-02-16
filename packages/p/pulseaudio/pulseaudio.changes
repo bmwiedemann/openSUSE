@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 13 07:21:51 UTC 2024 - Jannik Seiler <seil0@mosad.xyz>
+
+- Add cherry-picks to fix UCM crashes
+  * pulseaudio-replace-port-device-UCM-context-assertion-with-an-error.patch
+  * pulseaudio-check-UCM-verb-before-working-with-device-status.patch
+
+-------------------------------------------------------------------
 Thu Feb  8 11:24:48 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 17.0:

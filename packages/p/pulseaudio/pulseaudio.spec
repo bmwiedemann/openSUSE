@@ -54,6 +54,8 @@ Patch5:         qpaeq-shebang.patch
 Patch6:         pulseaudio-old-systemd-workaround.patch
 # PATCH-FIX-OPENSUSE Workaround for suse-module-tools directory
 Patch7:         pulseaudio-dump-module-Ignore-invalid-module-init-tools.patch
+Patch8:         pulseaudio-replace-port-device-UCM-context-assertion-with-an-error.patch
+Patch9:         pulseaudio-check-UCM-verb-before-working-with-device-status.patch
 BuildRequires:  alsa-devel >= 1.0.19
 BuildRequires:  bluez-devel >= 5
 BuildRequires:  fdupes
@@ -330,6 +332,8 @@ System user for PulseAudio
 %patch -P6 -p1
 %endif
 %patch -P7 -p1
+%patch -P8 -p1
+%patch -P9 -p1
 
 %build
 %meson \
