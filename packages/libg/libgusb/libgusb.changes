@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 15 13:20:14 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Explicitly require python311-packaging if python 3.11 is being
+  used. On SLE, python 3.6 is still the default, but 3.11 is used
+  by meson. Drop python3-base from BuildRequires: it is not
+  needed, since python will be pulled in by meson.
+
+-------------------------------------------------------------------
 Tue Nov  7 16:25:01 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.4.8:

@@ -1,7 +1,7 @@
 #
 # spec file for package libgusb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,9 +30,9 @@ Source99:       baselibs.conf
 Patch0:         no-pkg-resources.patch
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  python3-base
-BuildRequires:  python3-packaging
 BuildRequires:  vala
+BuildRequires:  (python3-packaging if python3-base)
+BuildRequires:  (python311-packaging if python311-base)
 BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.29
