@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 15 00:00:00 CET 2024 - dsterba@suse.cz
+
+- update to 6.7.1
+  * convert: raid-stripe-tree can be now enabled for the target filesystem
+  * mkfs:
+    * handle lifetime of open file descriptors so it does not trigger udev
+      that could miss to create the UUID symlinks in /dev
+    * update warning when CPU page size does not match sector size
+    * merge features in summary, no more distinction of incompat and runtime
+      to match the semantics of option -O
+  * fi show: fix recognizing raw device mapper paths
+  * other:
+    * documentation updates, fix links to labels in included directories
+
+-------------------------------------------------------------------
 Thu Jan 25 00:00:00 CET 2024 - dsterba@suse.cz
 
 - update to 6.7
