@@ -1,0 +1,10 @@
+--- cmake-3.28.1/Modules/FindJNI.cmake	2024-02-14 13:10:42.173018608 +0100
++++ cmake-3.28.1/Modules/FindJNI.cmake	2024-02-14 17:43:00.956527142 +0100
+@@ -344,6 +344,7 @@
+     "${dir}"
+     "${dir}/client"
+     "${dir}/server"
++    "${dir}/zero"
+     # IBM SDK, Java Technology Edition, specific paths
+     "${dir}/j9vm"
+     "${dir}/default"
