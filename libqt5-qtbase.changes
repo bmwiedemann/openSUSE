@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 16 07:44:56 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 5.15.12+kde151:
+  * Improve KTX file reading memory safety (CVE-2024-25580, boo#1219996)
+  * Revert "xcb: only set base size when it's valid"
+  * Fix potential leak of QPropertyAnimation in QLineEditIconButton
+  * QBitArray: correct inline keyword
+
+-------------------------------------------------------------------
 Wed Jan 03 08:37:54 UTC 2024 - alarrosa@suse.com
 
 - Update to version 5.15.12+kde147:

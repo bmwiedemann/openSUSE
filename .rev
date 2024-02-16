@@ -2613,4 +2613,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment></comment>
     <requestid>1136538</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>42d16a11c058276c05ba3347ef336672</srcmd5>
+    <version>5.15.12+kde151</version>
+    <time>1708116557</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147049</requestid>
+  </revision>
 </revisionlist>
