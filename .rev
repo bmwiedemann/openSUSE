@@ -550,4 +550,30 @@
   requires are generated</comment>
     <requestid>1124048</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>df3a24e46d8dd0b44fa14a5b21620700</srcmd5>
+    <version>0.13.0</version>
+    <time>1708116127</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.13.0:
+  * `b4 am` now has a `--single-message` flag that lets you process a
+    single message and ignore any other parts of a thread; this is
+    useful when there is a patch series sent as attachments to a single
+    message
+  * `--apply-cover-trailers` is now the default behaviour
+  * when patchwork integration is configured, `b4 am` will attempt to
+    retrieve the CI status of patches
+  * `b4 prep --show-info` can do a lot more now, including showing
+    information about branches that aren't currently checked out
+  * `b4 prep` gained a --cleanup option to properly archive and remove
+    old b4*prep-managed branches
+  * `b4 send` has a `--preview-to` option that lets you send a
+    pre*review of your series to your colleagues, mentors, or bosses
+  * various fixes and improvements to `b4 send` functionality
+  * b4 can now take config options on commandline, allowing to override
+    global configs via scripted invocations
+  * improvements to `b4 diff` that should make it work more reliably for
+    series without exact object matches</comment>
+    <requestid>1146990</requestid>
+  </revision>
 </revisionlist>
