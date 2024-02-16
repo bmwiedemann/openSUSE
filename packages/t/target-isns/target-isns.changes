@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Feb 07 18:50:18 UTC 2024 - lduncan@suse.com
+
+- Changed _service file to name retrieved tarball
+  differently (more accurately), and changed it to
+  point at latest upstream code, which has one new
+  commit. That commit removes the need for patch:
+  * target-isns-Replace-zero-length-arrays-with-empty-arrays.patch
+
+  This changes the name of the tarball retrieved from
+  upstream, as well.
+
+- Also, a new patch is added to update the project
+  to use newer versions of CMake, adding
+  * target-isns-handle-newer-cmake.patch
+
+- Lastly, the '%patchN -p1' macro in the SPEC file was
+  changed to '%patch -p1 1', to make OBS happy.
+
+  There should be no functional changes.
+
+-------------------------------------------------------------------
+Wed Feb  7 02:33:29 UTC 2024 - Lee Duncan <lduncan@suse.com>
+
+- Updated SPEC file to use '%patch' vs '%patchN'
+
+-------------------------------------------------------------------
 Wed Jun 03 17:06:10 UTC 2020 - lduncan@suse.com
 
 - Previous update to 0.6.8 did not work (see below), because of
