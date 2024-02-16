@@ -76,4 +76,20 @@
 - Actually install dnsdist.user as %{_sysusersdir}/dnsdist.conf.</comment>
     <requestid>1146199</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8df474532d1647af74467d31e98280ad</srcmd5>
+    <version>1.9.0</version>
+    <time>1708116177</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.9.0:
+  * Fall back to libcrypto for authenticated encryption
+  * Optimize the DoQ packet handling path
+  * DNSName: Correct len and offset types
+  * DNSName: Optimize parsing of uncompressed labels
+  * enable DNS-over-HTTPS via nghttp2 library usage
+  
+  For details, see
+  https://dnsdist.org/changelog.html#change-1.9.0</comment>
+    <requestid>1147125</requestid>
+  </revision>
 </revisionlist>
