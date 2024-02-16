@@ -1,7 +1,7 @@
 #
 # spec file for package python-yt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,20 @@
 #
 
 
-%define         skip_python2 1
-%define         skip_python36 1
-Name:           python-yt
-Version:        4.1.4
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%bcond_without test
+%define psuffix -test
+%else
+%bcond_with test
+%define psuffix %{nil}
+%endif
+
+# avoid "lto1: internal compiler error" during build
+%global _lto_cflags %{nil}
+
+Name:           python-yt%{psuffix}
+Version:        4.3.0
 Release:        0
 Summary:        An analysis and visualization toolkit for volumetric data
 License:        BSD-3-Clause
@@ -27,33 +37,42 @@ Group:          Development/Languages/Python
 URL:            https://github.com/yt-project/yt
 Source0:        https://files.pythonhosted.org/packages/source/y/yt/yt-%{version}.tar.gz
 Source100:      python-yt-rpmlintrc
-BuildRequires:  %{python_module Cython < 3}
-BuildRequires:  %{python_module numpy-devel >= 1.10.4}
+# PATCH-FIX-UPSTREAM yt-pr4727-unpin-unyt.patch gh#yt-project/yt#4727
+Patch0:         https://github.com/yt-project/yt/pull/4727.patch#/yt-pr4727-unpin-unyt.patch
+# PATCH-FIX-OPENSUSE yt-ignore-pytestdepr.patch code@bnavigator.de -- ignore a pytest deprecation warning. Upstream is still working on the nose ot pytest transition
+Patch1:         yt-ignore-pytestdepr.patch
+BuildRequires:  %{python_module Cython > 3 with %python-Cython < 3.1}
+BuildRequires:  %{python_module ewah-bool-utils-devel >= 1.0.2}
+BuildRequires:  %{python_module numpy-devel >= 1.25 with %python-numpy-devel < 2}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-Requires:       python-ipython >= 1.0
-Requires:       python-matplotlib >= 2.0.2
+Requires:       python-Pillow >= 8
+Requires:       python-cmyt >= 1.1.2
+Requires:       python-ewah-bool-utils >= 1.0.2
+Requires:       python-ipywidgets >= 8.0.0
+Requires:       python-matplotlib >= 3.5
 Requires:       python-more-itertools >= 8.4
-Requires:       python-numpy >= 1.10.4
-Requires:       python-setuptools >= 19.6
-Requires:       python-sympy >= 1.2
-Requires:       python-toml >= 0.10.2
+Requires:       python-packaging >= 20.9
+Requires:       python-tomli-w >= 0.4.0
 Requires:       python-tqdm >= 3.4.0
-Requires:       python-unyt >= 2.7.2
+Requires:       python-unyt >= 2.9.2
+Requires:       (python-numpy >= 1.19.3 with python-numpy < 2)
+Requires:       (python-tomli >= 1.2.3 if python-base < 3.11)
+Requires:       (python-typing-extensions >= 4.4.0 if python-base < 3.12)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
-Recommends:     python-bottle
-Recommends:     python-girder-client
-# SECTION test requirements
-BuildRequires:  %{python_module bottle}
-BuildRequires:  %{python_module girder-client}
-BuildRequires:  %{python_module ipython >= 1.0}
-BuildRequires:  %{python_module matplotlib >= 2.0.2}
-BuildRequires:  %{python_module sympy >= 1.2}
-# /SECTION
+Requires(postun): update-alternatives
+%if %{with test}
+BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module pytest-mpl}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module sympy}
+BuildRequires:  %{python_module yt = %{version}}
+# More optional modules for tests: scipy, pandas, h5py, xarray, glue, astropy, miniball, firefly, ...
+%endif
 %python_subpackages
 
 %description
@@ -62,33 +81,47 @@ data.  YT supports structured, variable-resolution meshes,
 unstructured meshes, and discrete or sampled data such as particles.
 
 %prep
-%setup -q -n yt-%{version}
+%autosetup -p1 -n yt-%{version}
 sed -i -e '/^#!\//, 1d' yt/utilities/lodgeit.py
 
 %build
+%if !%{with test}
 export CFLAGS="%{optflags} -freport-bug"
 %pyproject_wheel
+%endif
 
 %install
+%if !%{with test}
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/yt
-%python_clone -a %{buildroot}%{_bindir}/iyt
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+%endif
+
+%if %{with test}
+%check
+mv yt yt.src
+# incompatible API attributes
+donttest="test_default_species_fields or test_stream_species"
+%{python_expand # need to use the compiled modules in the current directory because of skips defined in pyproject.toml
+cp -r %{$python_sitearch}/yt yt
+$python -m pytest yt -k "not ($donttest)"
+rm -r yt
+}
+%endif
 
 %post
 %python_install_alternative yt
-%python_install_alternative iyt
 
 %postun
 %python_uninstall_alternative yt
-%python_uninstall_alternative iyt
 
+%if !%{with test}
 %files %{python_files}
 %doc README.md
 %license COPYING.txt
-%python_alternative %{_bindir}/iyt
 %python_alternative %{_bindir}/yt
-%{python_sitearch}/yt-%{version}*-info
+%{python_sitearch}/yt-%{version}.dist-info
 %{python_sitearch}/yt
+%endif
 
 %changelog

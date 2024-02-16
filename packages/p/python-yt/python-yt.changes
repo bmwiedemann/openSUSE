@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Wed Feb 14 20:49:08 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.3.0
+  * This is the first version with support to CPython 3.12.
+  * We've resolved all remaining compatibility issues with Cython
+    3.
+  ## New features
+  * #4449 Add support for symlog colorbars with arbitrary bases, by
+    @neutrinoceros (issue #4448)
+  * #4455 Add support for passing field keys for colors and
+    linewidth in streamline plot annotations, by @neutrinoceros
+    (issue #4454)
+  * #4527 Add QuadrilinearFieldInterpolator, by @brittonsmith
+  * #4553 Store basic software info in png metadata, by @Xarthisius
+  * #4556 Add option to include min/max limits on the color field
+    for export_sketchfab, by @evenoconnor
+  * #4658 Allow annotate_grids to force cmap to respect max_levels,
+    by @zingale
+  * #4642 + #4662 Make unused pixels actually transparent in all
+    imshow-based 2D visualisations, by @neutrinoceros (issue #4639
+    by @vdbma)
+  * #4481 Add the ability to set the transfer function label
+    fontsize, by @zingale
+  ##  Frontends
+  * #4562 Athena++ stretched grids support, by @jzuhone (issues
+    #1585 by @Yurlungur, #3389 by @smressle, #3619 by
+    @neutrinoceros and #4557 by @matthewturk)
+  * #4572 Species handling for the stream frontend, by @jzuhone
+  * #4470 + #4605 Update GIZMO frontend to handle newer GIZMO
+    versions, by @mtryan83
+  * #4424 Support for sinks in csv format for RAMSES frontend, by
+    @Lenoble-lab
+- Release 4.2.x
+  * This is the second feature release in the yt 4.x series. It
+    also comes with some important bug fixes.
+  * Some deprecations are now expired, some minor backward
+    incompatibilities are expected. Anything broken on purpose in
+    this version should correspond to a warning in yt 4.1.x,
+    anything beyond that should be considered a regression; please
+    report any unexpected breaking change.
+  ## Highlights
+  * Multiple improvements (detection, validation, uage) for EWAH
+    files (#4307, #4426)
+  * yt can now be installed with frontend specific optional
+    dependencies with pip (#4272)
+  * Plugin frontends can now seamlessly hook into yt.load() (#4285)
+  * Off-axis projections are now supported for non-SPH particle
+    (#4440)
+  ## New features
+  * #4175 Improvements to field_to_include specifications in
+    create_firefly_object, by @mtryan83 (issue #4174)
+  * #4198 + #4249 Automatically find EWAH files with increased
+    index_order2, by @jzuhone (issue #3487 by @chummels)
+  * #4205 Add upward directory lookup for local configuration file,
+    by @neutrinoceros (issue #3953)
+  * #4222 Two new features for writing FITS images, by @jzuhone
+  * #4272 Add support for installing yt with cherry-picked,
+    frontend specific optional dependencies with pip, by
+    @neutrinoceros (issue #4272)
+  * #4285 Automatically load external frontends in yt.load(), by
+    @Xarthisius
+  * #4307 Allow to store multiple bitmap indices in the
+    ewah-sidecar, by @Xarthisius
+  * #4343 Add reusable matplotlib stylesheet, by @neutrinoceros
+    (issue #4342)
+  * #4363 Add basename for loaders, by @jisuoqing
+  * #4397 Allow hint keyword for yt.load to select superclasses, by
+    @yut23
+  * #4410 Export standard deviation to pandas DataFrames and
+    AstroPy QTables, by @jzuhone
+  * #4446 Whitelist the SPH star_formation_rate field, by @jzuhone
+  * #4440 Off-axis (non-SPH) particle projections, by @jzuhone
+- Add yt-pr4727-unpin-unyt.patch gh#yt-project/yt#4727
+- Enable multibuild test flavor
+- Add yt-ignore-pytestdepr.patch
+
+-------------------------------------------------------------------
 Tue Oct 3 13:06:52 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Fix dependency on Cpython

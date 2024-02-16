@@ -1,0 +1,11 @@
+diff -ur yt-4.3.0.orig/conftest.py yt-4.3.0/conftest.py
+--- yt-4.3.0.orig/conftest.py	2024-02-14 23:52:48.222913273 +0100
++++ yt-4.3.0/conftest.py	2024-02-14 23:53:02.259984764 +0100
+@@ -92,6 +92,7 @@
+         # >>> warnings emitted by testing frameworks, or in testing contexts
+         # we still have some yield-based tests, awaiting for transition into pytest
+         "ignore::pytest.PytestCollectionWarning",
++        "ignore::pytest.PytestReturnNotNoneWarning",
+         # matplotlib warnings related to the Agg backend which is used in CI, not much we can do about it
+         "ignore:Matplotlib is currently using agg, which is a non-GUI backend, so cannot show the figure.:UserWarning",
+         r"ignore:tight_layout.+falling back to Agg renderer:UserWarning",

@@ -1,0 +1,39 @@
+From b665ed7d38d63ec98f2a1d3ab21feb0f9fe0011a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Cl=C3=A9ment=20Robert?= <cr52@protonmail.com>
+Date: Fri, 3 Nov 2023 08:29:44 +0100
+Subject: [PATCH] Backport PR #4724: DEP: fix remaining incompatibilities and
+ declare compatibility with unyt 3.0
+
+---
+ pyproject.toml | 2 +-
+ yt/testing.py  | 4 +++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 521635bd1f3..6f246cd1af3 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -53,7 +53,7 @@ dependencies = [
+     "pillow>=8.0.0",
+     "tomli-w>=0.4.0",
+     "tqdm>=3.4.0",
+-    "unyt>=2.9.2,<3.0", # see https://github.com/yt-project/yt/issues/4162
++    "unyt>=2.9.2",
+     "tomli>=1.2.3;python_version < '3.11'",
+     "typing-extensions>=4.4.0;python_version < '3.12'",
+ ]
+diff --git a/yt/testing.py b/yt/testing.py
+index f0a3b2fbcc9..201c64f0bac 100644
+--- a/yt/testing.py
++++ b/yt/testing.py
+@@ -1441,7 +1441,9 @@ def compare_dobj_selection(self, dobj):
+             # NULP should be OK.  This is mostly for stuff like Rockstar, where
+             # the f32->f64 casting happens at different places depending on
+             # which code path we use.
+-            assert_array_almost_equal_nulp(sel_pos, obj_results, 5)
++            assert_array_almost_equal_nulp(
++                np.asarray(sel_pos), np.asarray(obj_results), 5
++            )
+ 
+     def run_defaults(self):
+         """
