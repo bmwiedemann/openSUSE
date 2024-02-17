@@ -1143,7 +1143,7 @@
     <package name="libpipewire-0_3-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libpixman-1-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libpkcs11-helper1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
-    <package name="libpkgconf3" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="libpkgconf4" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libplist-2_0-4" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libpng16-16" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libpolkit-agent-1-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->

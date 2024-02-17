@@ -30041,6 +30041,7 @@ unsorted:
   - python312-PyICU 
   - python312-PyInstaller 
   - python312-PyJWT 
+  - python312-PyLaTeX 
   - python312-PyMeeus 
   - python312-PyMeta3 
   - python312-PyMsgBox 
@@ -30285,6 +30286,7 @@ unsorted:
   - python312-attr 
   - python312-attrs 
   - python312-audio-degrader 
+  - python312-audiogrep 
   - python312-audiomate 
   - python312-audioread 
   - python312-augeas 
@@ -32273,6 +32275,7 @@ unsorted:
   - python312-pydot3 
   - python312-pydotplus 
   - python312-pydrive2 
+  - python312-pydub 
   - python312-pydyf 
   - python312-pyelftools 
   - python312-pyemd 
@@ -48441,6 +48444,7 @@ unsorted:
   - texstudio 
   - texworks 
   - texworks-plugin-lua 
+  - texworks-plugin-python 
   - tftpboot-installation-common 
   - tftpboot-installation-openSUSE-Tumbleweed-x86_64 
   - the_silver_searcher 
