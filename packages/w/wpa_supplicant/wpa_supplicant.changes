@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 15 15:48:52 UTC 2024 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Add CVE-2023-52160.patch - Bypassing WiFi Authentication (bsc#1219975)
+
+-------------------------------------------------------------------
 Tue May 16 20:19:37 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Change ctrl_interface from /var/run to %_rundir (/run)

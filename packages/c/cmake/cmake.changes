@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Feb 14 16:46:22 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * cmake-zerojvm.patch
+    + fix JVM detection on JDKs with ZERO virtual machine, like
+      java-21-openjdk for armv6l
+
+-------------------------------------------------------------------
+Fri Jan 19 15:26:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- fix incorrect requires on libuv1 on non-suse distributions
+
+-------------------------------------------------------------------
+Thu Jan 18 15:00:58 UTC 2024 - Ludwig Nussel <lnussel@suse.com>
+
+- Revert "-Wl,--no-undefined" as it still breaks packages (boo#1218620)
+
+-------------------------------------------------------------------
+Wed Jan 17 19:54:04 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- macros: Set some more variables notable %{_docdir} so that GNUInstallDirs
+  works fully on openSUSE. Packages using CMAKE_INSTALL_DOCDIR fail otherwise.
+
+-------------------------------------------------------------------
 Thu Jan 11 10:21:03 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
 
 - Use new enough Sphinx on SLE (jsc#PED-7572 boo#1218125).
@@ -15,7 +39,7 @@ Wed Dec 27 12:56:45 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 - Re-add "-Wl,--no-undefined" linker flags for executables and
   regular shared libraries. Shared library targets which are used
   as plugins/modules should use `add_library(... MODULE ...), which
-  uses the "CMAKE_MODULE_LINKER_FLAGS".  
+  uses the "CMAKE_MODULE_LINKER_FLAGS".
 
 -------------------------------------------------------------------
 Thu Dec 14 21:06:23 UTC 2023 - Christoph G <foss@grueninger.de>
@@ -65,7 +89,7 @@ Wed Nov 29 21:07:37 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
     even if they are inside the top-level source directory, now
     fixed. Clients must be updated to expect relative paths under
     the top-level source directory.
-  * Fortran: Revert 3.27.0 change to module dependency scanning 
+  * Fortran: Revert 3.27.0 change to module dependency scanning
 
 -------------------------------------------------------------------
 Mon Nov 27 08:30:38 UTC 2023 - Dirk Müller <dmueller@suse.com>

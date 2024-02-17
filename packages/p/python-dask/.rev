@@ -1747,4 +1747,19 @@
     for details.</comment>
     <requestid>1142781</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>85ee722c5dad60ef67ef7b4536ea2b49</srcmd5>
+    <version>2024.2.0</version>
+    <time>1708116165</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1146758 from bnavigator
+
+- Update to 2024.2.0
+    * Deprecate Dask DataFrame implementation
+    * Improved tokenization
+    * https://docs.dask.org/en/stable/changelog.html#v2024-2-0
+  - Really drop python39 from testing instead of testing it with
+    every other test flavor</comment>
+    <requestid>1146835</requestid>
+  </revision>
 </revisionlist>

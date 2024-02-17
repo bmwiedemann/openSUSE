@@ -1,7 +1,7 @@
 #
 # spec file for package target-isns
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,10 @@ Name:           target-isns
 Summary:        Supplies iSNS support for Linux kernel target
 License:        GPL-2.0-or-later
 Group:          System/Kernel
-Version:        0.6.8
+Version:        v0.6.8+2.f9922c2be69e
 Release:        0
 Source:         %{name}-%{version}.tar.xz
-Patch1:         %{name}-Replace-zero-length-arrays-with-empty-arrays.patch
+Patch1:         %{name}-handle-newer-cmake.patch
 URL:            https://github.com/open-iscsi/target-isns
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  cmake
@@ -46,10 +46,11 @@ iSNS server.
 
 %prep
 %setup -n %{name}-%{version}
-%patch1 -p1
+%patch -p1 -P 1
 
 %build
-%cmake -DSUPPORT_SYSTEMD=ON
+%global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
+%cmake -DSUPPORT_SYSTEMD=ON -Wno-dev
 make
 
 %install
@@ -77,7 +78,8 @@ ln -sf /usr/sbin/service "%{buildroot}/usr/sbin/rc%{name}"
 %attr(0600,root,root) %config(noreplace) %{_sysconfdir}/target-isns.conf
 %{_bindir}/target-isns
 %{_sbindir}/rctarget-isns
-%doc COPYING README.md THANKS
+%license COPYING
+%doc README.md THANKS
 %doc %{_mandir}/man8/target-isns.8%{?ext_man}
 %{_unitdir}/target-isns.service
 

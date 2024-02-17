@@ -1,7 +1,7 @@
 #
 # spec file for package b4
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %global pprefix python311
 %endif
 Name:           b4
-Version:        0.12.4
+Version:        0.13.0
 Release:        0
 Summary:        Helper scripts for kernel.org patches
 License:        GPL-2.0-or-later

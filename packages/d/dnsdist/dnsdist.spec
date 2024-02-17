@@ -26,9 +26,8 @@
 # this should only be needed if we have to patch the ragel files
 # in which case it might be faster to just run it locally and put the regenerated file into the tarball
 %bcond_with     dnsdist_ragel
-# requires h2o http server for DoH
-%bcond_with  dnsdist_doh
-%if 0%{?%{is_backports}} || 0%{?suse_version} >= 1599
+
+%if 0%{?%is_backports} || 0%{?suse_version} >= 1599
 %bcond_without  dnsdist_re2
 %else
 %bcond_with     dnsdist_re2
@@ -39,7 +38,7 @@
 %bcond_with     dnsdist_luajit
 %endif
 Name:           dnsdist
-Version:        1.8.3
+Version:        1.9.0
 Release:        0
 Summary:        A highly DNS-, DoS- and abuse-aware loadbalancer
 License:        GPL-2.0-only
@@ -77,9 +76,6 @@ BuildRequires:  ragel
 %if %{with dnsdist_re2}
 BuildRequires:  re2-devel
 %endif
-%if %{with dnsdist_doh}
-BuildRequires:  pkgconfig(libh2o-evloop)
-%endif
 %if %{with dnsdist_luajit}
 BuildRequires:  pkgconfig(luajit)
 %else
@@ -110,9 +106,7 @@ export CXXFLAGS="$CFLAGS"
   --enable-systemd \
   --enable-lto \
   --enable-dnscrypt \
-%if %{with dnsdist_doh}
   --enable-dns-over-https \
-%endif
 %if %{with dnsdist_re2}
   --with-re2 \
 %endif

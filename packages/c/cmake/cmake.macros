@@ -32,6 +32,9 @@
         -DCMAKE_INSTALL_LIBDIR:PATH=%{__cmake_make_prefix_relative %{_libdir}} \\\
         -DCMAKE_INSTALL_INCLUDEDIR:PATH=%{__cmake_make_prefix_relative %{_includedir}} \\\
         -DCMAKE_INSTALL_DATAROOTDIR:PATH=%{__cmake_make_prefix_relative %{_datadir}} \\\
+        -DCMAKE_INSTALL_DOCDIR:PATH=%{__cmake_make_prefix_relative %{_docdir}/%{name}} \\\
+        -DCMAKE_INSTALL_MANDIR:PATH=%{__cmake_make_prefix_relative %{_mandir}} \\\
+        -DCMAKE_INSTALL_INFODIR:PATH=%{__cmake_make_prefix_relative %{_infodir}} \\\
         -DINCLUDE_INSTALL_DIR:PATH=%{_includedir} \\\
         -DLIB_INSTALL_DIR:PATH=%{_libdir} \\\
         -DSYSCONF_INSTALL_DIR:PATH=%{_sysconfdir} \\\
@@ -40,9 +43,9 @@
         -DCMAKE_C_FLAGS="${CFLAGS:-%optflags}" \\\
         -DCMAKE_CXX_FLAGS="${CXXFLAGS:-%optflags}" \\\
         -DCMAKE_Fortran_FLAGS="${FFLAGS:-%optflags%{?_fmoddir: -I%_fmoddir}}" \\\
-        -DCMAKE_EXE_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,--no-undefined -Wl,-z,now" \\\
+        -DCMAKE_EXE_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,-z,now" \\\
         -DCMAKE_MODULE_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed" \\\
-        -DCMAKE_SHARED_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,--no-undefined -Wl,-z,now" \\\
+        -DCMAKE_SHARED_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,-z,now" \\\
 %if "%{?_lib}" == "lib64" \
         -DLIB_SUFFIX=64 \\\
 %endif \

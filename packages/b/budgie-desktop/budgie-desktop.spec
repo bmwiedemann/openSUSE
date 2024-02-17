@@ -21,10 +21,10 @@
 %if 0%{?suse_version} < 1550
 %define _distconfdir %{_sysconfdir}
 %endif
-%if 0%{?suse_version} < 1599
-%bcond_with magpie
-%else
+%if 0%{?suse_version} >= 1600 || 0%{?sle_version} >= 150600
 %bcond_without magpie
+%else
+%bcond_with magpie
 %endif
 Name:           budgie-desktop
 Version:        10.9+2
@@ -72,10 +72,10 @@ BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libxfce4windowing-0)
-BuildRequires:  pkgconfig(upower-glib)
+BuildRequires:  pkgconfig(upower-glib) >= 1.0
 # remove old applet
 Provides:       budgie-trash-applet = 1.7.0
-Obsoletes:      budgie-trash-applet < 1.7.0
+Obsoletes:      budgie-trash-applet
 # flatpak/snap
 Requires:       xdg-desktop-portal-gtk
 # https://discuss.getsol.us/d/6970-cant-lock-my-screen/3
@@ -102,7 +102,7 @@ Requires:       libbudgie-private0 >= %{version}
 Requires:       libbudgie-appindexer0 >= %{version}
 Requires:       libbudgie-raven-plugin0 >= %{version}
 #
-Requires:       upower
+Requires:       upower >= 1.0
 Requires:       gstreamer
 Requires:       libnotify-tools
 Requires:       libcanberra-gtk3-module

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 16 10:18:29 UTC 2024 - varkoly@suse.com
+
+- Update to version 4.13.1+git.1707822268.4229d52f:
+  * fence_vmware_rest : monitoring is not detecting if the API user has sufficient right to manage the fence device. The call https://{api_host}/api/vcenter/vm is subject to permission checks. If the delivered list is empty the user has no rights.
+
+-------------------------------------------------------------------
 Tue Jan 23 10:25:01 UTC 2024 - Peter Varkoly <varkoly@suse.com>
 
 - Update fence-agents package with fence_aws and fence_ibm_powervs (jsc#PED-7701)

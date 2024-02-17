@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 15 17:51:15 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use magpie on Leap 15.6 aswell
+- Adjust upower-glib requires to minimum version
+- Unversion trash applet obsoletes (1.7.1 still has it if used
+  with older budgie)
+
+-------------------------------------------------------------------
 Thu Feb 01 12:58:19 UTC 2024 - gmbr3@opensuse.org
 
 - Update to version 10.9+2:

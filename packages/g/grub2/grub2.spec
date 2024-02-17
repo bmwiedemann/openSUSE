@@ -742,7 +742,7 @@ mkdir -p ./fonts
 cp %{_datadir}/%{name}/themes/*/*.pf2 ./fonts
 cp ./unicode.pf2 ./fonts
 %if 0%{?suse_version} > 1500
-tar -cf - ./fonts | mksquashfs - memdisk.sqsh -tar -comp xz -quiet -no-progress
+tar --sort=name -cf - ./fonts | mksquashfs - memdisk.sqsh -tar -comp xz -quiet -no-progress
 %else
 mksquashfs ./fonts memdisk.sqsh -keep-as-directory -comp xz -quiet -no-progress
 %endif

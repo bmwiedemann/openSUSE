@@ -22,7 +22,7 @@
   %define no_config 1
 %endif
 Name:           shadow
-Version:        4.14.3
+Version:        4.14.5
 Release:        0
 Summary:        Utilities to Manage User and Group Accounts
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -108,13 +108,13 @@ Development files for libsubid4.
 
 %prep
 %setup -q -a 1
-%patch0
-%patch1
-%patch2
-%patch3
-%patch4
+%patch -P 0
+%patch -P 1
+%patch -P 2
+%patch -P 3
+%patch -P 4
 %if 0%{?suse_version} < 1330
-%patch5 -p1
+%patch -P 5 -p1
 %endif
 
 iconv -f ISO88591 -t utf-8  doc/HOWTO > doc/HOWTO.utf8

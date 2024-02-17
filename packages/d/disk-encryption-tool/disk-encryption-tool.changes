@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 13 16:51:11 UTC 2024 - lnussel@suse.com
+
+- Update to version 1+git20240213.68c965a:
+  * Fix pcr-oracle detection logic
+  * Do not call dracut after encryption
+  * Use systemd-pcrlock
+  * Rename generate_key function
+  * Allow to turn off disk encryption via rd.enrypt
+  * Turn on messages again
+
+-------------------------------------------------------------------
 Thu Dec 21 15:28:58 UTC 2023 - lnussel@suse.com
 
 - Update to version 1+git20231221.d2e7fe6:

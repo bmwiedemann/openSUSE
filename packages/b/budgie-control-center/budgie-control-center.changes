@@ -5,6 +5,12 @@ Thu Feb  1 13:53:40 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
   from here - hopefully very soon
 
 -------------------------------------------------------------------
+Fri Nov 17 10:24:05 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Dependencies changed for 15.6 (boo#1217233):
+  * BR pkgconfig(krb5)
+
+-------------------------------------------------------------------
 Tue Aug 29 19:29:01 UTC 2023 - gmbr3@opensuse.org
 
 - Update to version 1.3.0+0:

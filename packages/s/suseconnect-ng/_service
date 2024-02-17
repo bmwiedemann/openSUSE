@@ -7,7 +7,7 @@
   <service name="tar_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/SUSE/connect-ng.git</param>
-    <param name="revision">ae8ba1ea979da277824e8f905114a723ae66def1</param>
+    <param name="revision">main</param>
     <param name="version">_auto_</param>
     <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
     <param name="filename">connect-ng</param>

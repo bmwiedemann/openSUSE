@@ -18,36 +18,36 @@
 
 %define psuffix %{nil}
 %global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "test-py39"
-%define psuffix -test-py39
-%define skip_python310 1
-%define skip_python311 1
-%define skip_python312 1
-%bcond_without test
-%endif
 %if "%{flavor}" == "test-py310"
 %define psuffix -test-py310
-%define skip_python39 1
 %define skip_python311 1
 %define skip_python312 1
 %bcond_without test
 %endif
 %if "%{flavor}" == "test-py311"
 %define psuffix -test-py311
-%define skip_python39 1
 %define skip_python310 1
 %define skip_python312 1
 %bcond_without test
 %endif
+%if "%{flavor}" == "test-py312"
+%define psuffix -test-py312
+%define skip_python310 1
+%define skip_python311 1
+%bcond_without test
+%endif
 %if "%{flavor}" == ""
 %bcond_with test
+%else
+# globally stop testing this one
+%define skip_python39 1
 %endif
 # use this to run tests with xdist in parallel, unfortunately fails server side
 %bcond_with paralleltests
 
 Name:           python-distributed%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2024.1.1
+Version:        2024.2.0
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
@@ -55,6 +55,8 @@ URL:            https://distributed.dask.org
 # SourceRepository: https://github.com/dask/distributed
 Source:         https://github.com/dask/distributed/archive/refs/tags/%{version}.tar.gz#/distributed-%{version}-gh.tar.gz
 Source99:       python-distributed-rpmlintrc
+# PATCH-FIX-UPSTREAM distributed-ignore-daskdepr.patch gh#dask/distributed#8504
+Patch0:         distributed-ignore-daskdepr.patch
 # PATCH-FIX-OPENSUSE distributed-ignore-off.patch -- ignore that we can't probe addresses on obs, code@bnavigator.de
 Patch3:         distributed-ignore-offline.patch
 # PATCH-FIX-OPENSUSE distributed-ignore-thread-leaks.patch -- ignore leaking threads on obs, code@bnavigator.de
@@ -167,11 +169,14 @@ donttest+=" or (test_worker and test_gather_dep_from_remote_workers_if_all_local
 donttest+=" or (test_worker and test_worker_reconnects_mid_compute)"
 donttest+=" or (test_worker_memory and test_digests)"
 donttest+=" or (test_worker_memory and test_pause_while_spilling)"
-donttest+=" or (test_computations_futures)"
+donttest+=" or test_computations_futures"
+donttest+=" or test_task_state_instance_are_garbage_collected"
 # server-side fail due to the non-network warning in a subprocess where the patched filter does not apply
 donttest+=" or (test_client and test_quiet_close_process)"
 # should return > 3, returns 3 exactly
 donttest+=" or (test_statistical_profiling_cycle)"
+# pytest7 on py312: returns len==2 instead of 1
+donttest+=" or test_computation_object_code_dask_compute"
 # flakey on 3.10
 donttest+=" or (test_client_worker)"
 if [[ $(getconf LONG_BIT) -eq 32 ]]; then

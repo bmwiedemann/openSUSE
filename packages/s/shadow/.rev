@@ -974,4 +974,29 @@
     + Avoid null pointer dereference (#904)</comment>
     <requestid>1139074</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>3c745b385f66c00ea5b8039ba1c40429</srcmd5>
+    <version>4.14.5</version>
+    <time>1708116328</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.14.5:
+  * Build system:
+     + Fix regression introduced in 4.14.4, due to a typo. chgpasswd had
+       been deleted from a Makefile variable, but it should have been
+       chpasswd.
+- Remove shadow-4.14.4-chgpasswd-typo.patch
+
+- Update to 4.14.4:
+  * Build system:
+    + Link correctly with libdl.
+    + Install pam configs for chpasswd(8) and newusers(8) when using
+      ./configure --with-libpam --disable-account-tools-setuid.
+  * libshadow:
+    + Fix build error (parameter name omitted).
+    + Fix off-by-one bug.
+    + Remove warning.
+- Add shadow-4.14.4-chgpasswd-typo.patch: to fix build. See #926
+- Update patch macro `patchN` -&gt; `patch -P N`</comment>
+    <requestid>1146473</requestid>
+  </revision>
 </revisionlist>

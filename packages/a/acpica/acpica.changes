@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Feb 12 07:01:55 UTC 2024 - Thomas Renninger <trenn@suse.de>
+
+- Update to version 20230628
+  * IASL/RHCT: Enable dumping and compiling newly added nodes
+  * RHCT: Add flags, CMO and MMU nodes
+  * MADT: Add dump and compile support for RISC-V APICs
+  * MADT: Add RISC-V external interrupt controllers
+  * Add AML_NO_OPERAND_RESOLVE flag to Timer
+  * Add a define for size of acpi_srat_generic_affinity DeviceHandle
+  * Slightly simplify an error message in acpi_ds_result_push()
+  * Add port definitions for CDAT SSLBIS
+  * Fix misspelled CDAT DSMAS define
+  * Add interrupt command to acpiexec
+  * Detect GED device and keep track of _EVT
+  * ACPICA: Modify ACPI_STATE_COMMON
+  * Manually revert after resolving conflicts PR #757 commit 32d875705c8ee8f99fd8b78dbed48633486a7640
+  * fix for conflict macro definition on zephyr interface
+  * Fix ACPI_FUNCTION_ENTRY()
+  * Revert "Fixes for ACPI_FLEX_ARRAY, to eliminate warnings on MSVC"
+  * Revert "Events: Use spaces instead of tabs to fix indentation"
+  * Add support for _DSC as per ACPI 6.5
+  * exserial.c: replace ternary operator with ACPI_MIN()
+  * ACPICA: Modify ACPI_STATE_COMMON
+  * Fix GCC 12 dangling-pointer warning
+  * build: added module name for zephyr build system
+  * Revert "Move ACPI_FUNCTION_ENTRY to function entry"
+  * Move ACPI_FUNCTION_ENTRY to function entry
+  * iASL/MADT: Add dump and compile support for LoongArch APICs
+  * iasl: check Offset before Subtable dereference
+
+-------------------------------------------------------------------
 Wed Jun 21 14:29:52 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 20230331

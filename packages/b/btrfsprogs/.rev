@@ -1377,4 +1377,12 @@ This set of changes is not suitable for direct copy to currently released produc
     <comment>- update to 6.7 (forwarded request 1141359 from dsterba)</comment>
     <requestid>1141360</requestid>
   </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>fa597d207c08abfcaaae03fb80c6fdc8</srcmd5>
+    <version>6.7.1</version>
+    <time>1708116105</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.7.1 (forwarded request 1146893 from dsterba)</comment>
+    <requestid>1146894</requestid>
+  </revision>
 </revisionlist>

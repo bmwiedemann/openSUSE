@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  5 16:08:04 UTC 2024 - pgajdos@suse.com
+
+- do not require six (https://trello.com/c/MO53MocR/143-remove-python3-six)
+- added patches
+  fix https://gitlab.freedesktop.org/spice/spice-common/-/commit/29dacb5f53f5183fb089a3fb02d081dd08bde8a1
+  + spice-gtk-no-six.patch
+
+-------------------------------------------------------------------
 Thu Jan 25 08:30:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use libphotodav-3.0 on SLE/Leap 15.6+ (boo#1219083).

@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package cmake
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,6 +63,7 @@ Source99:       README.SUSE
 Patch0:         cmake-fix-ruby-test.patch
 # Search for python interpreters from newest to oldest rather then picking up /usr/bin/python as first choice
 Patch1:         feature-suse-python-interp-search-order.patch
+Patch2:         cmake-zerojvm.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -76,14 +77,12 @@ BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(libuv) >= 1.28
-%endif
-%if "%{flavor}" == ""
-Requires:       cmake-implementation = %{version}
-%endif
-%if %{with full}
 # Needs a rebuild as libuv will otherwise abort the program with:
 # fatal error: libuv version too new: running with libuv 1.X+1 when compiled with libuv 1.X will lead to libuv failures
 %requires_eq  libuv1
+%endif
+%if "%{flavor}" == ""
+Requires:       cmake-implementation = %{version}
 %endif
 %if 0%{?suse_version} && 0%{?suse_version} <= 1500
 %define pyver 311
@@ -170,7 +169,9 @@ export CXXFLAGS="$CFLAGS"
 %endif
     --parallel=0%{jobs} \
     --verbose \
-%if 0%{?suse_version} < 1550
+%if 0%{?suse_version} > 1500
+    --system-libuv \
+%else
     --no-system-libuv \
 %endif
 %if %{with qhelp}

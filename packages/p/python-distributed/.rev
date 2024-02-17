@@ -975,4 +975,20 @@
 - update to 2024.1.0:</comment>
     <requestid>1142780</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>22b0fa53879b2f1958aa53730d28b8ee</srcmd5>
+    <version>2024.2.0</version>
+    <time>1708116166</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1146780 from bnavigator
+
+- Update to 2024.2.0
+    * Deprecate Dask DataFrame implementation
+    * Improved tokenization
+    * https://docs.dask.org/en/stable/changelog.html#v2024-2-0
+  - Add distributed-ignore-daskdepr.patch gh#dask/distributed#8504
+  - Drop python39 test flavor
+  - Fix python312 tests</comment>
+    <requestid>1146836</requestid>
+  </revision>
 </revisionlist>

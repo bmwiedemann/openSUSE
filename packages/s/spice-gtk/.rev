@@ -593,4 +593,12 @@ a new setuid binary.
     <comment></comment>
     <requestid>1141517</requestid>
   </revision>
+  <revision rev="60" vrev="4">
+    <srcmd5>c1c5ca105019ae06ba23e017dc2eac3a</srcmd5>
+    <version>0.42</version>
+    <time>1708116105</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1146895</requestid>
+  </revision>
 </revisionlist>

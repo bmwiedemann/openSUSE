@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 16 15:04:56 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- update to 1.9.0:
+  * Fall back to libcrypto for authenticated encryption
+  * Optimize the DoQ packet handling path
+  * DNSName: Correct len and offset types
+  * DNSName: Optimize parsing of uncompressed labels
+  * enable DNS-over-HTTPS via nghttp2 library usage
+  
+  For details, see
+  https://dnsdist.org/changelog.html#change-1.9.0
+
+-------------------------------------------------------------------
 Fri Feb  9 13:37:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Revert "provide user(dnsdist) and group(dnsdist)": the package

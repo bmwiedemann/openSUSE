@@ -1,8 +1,19 @@
-Index: texworks-release-0.6.9/CMakeLists.txt
-===================================================================
---- texworks-release-0.6.9.orig/CMakeLists.txt
-+++ texworks-release-0.6.9/CMakeLists.txt
-@@ -326,17 +326,14 @@ ENDIF()
+From dae1586af7a218e9bbe9ce3031a97e8efcac980a Mon Sep 17 00:00:00 2001
+From: Atri Bhattacharya <A.Bhattacharya@uliege.be>
+Date: Thu, 15 Feb 2024 20:03:50 +0100
+Subject: [PATCH] Fix finding Python with CMake >= 3.27 (fixes #1039)
+
+---
+ CMakeLists.txt                            | 38 ++++++++++++++---------
+ plugins-src/TWPythonPlugin/CMakeLists.txt |  4 +--
+ src/CMakeLists.txt                        |  4 +--
+ 3 files changed, 28 insertions(+), 18 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f245e5192..9682c3933 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -326,17 +326,27 @@ ENDIF()
  
  IF ( WITH_PYTHON )
    IF ( USE_SYSTEM_PYTHON )
@@ -23,11 +34,24 @@ Index: texworks-release-0.6.9/CMakeLists.txt
 -    # In order to find the correct version of 'PythonInterp', we need to set 'PYTHONHOME' environment variable
 -    FIND_PACKAGE(PythonInterp)
 -    FIND_PACKAGE(PythonLibs)
-+    FIND_PACKAGE(Python COMPONENTS Interpreter Development)
++    IF (CMAKE_VERSION VERSION_LESS "3.12")
++      # **NOTE**
++      # In order to find the correct version of 'PythonLibs', it seems that we need to run 'FIND_PACKAGE(PythonInterp)' firstly.
++      # In order to find the correct version of 'PythonInterp', we need to set 'PYTHONHOME' environment variable
++      FIND_PACKAGE(PythonInterp)
++      FIND_PACKAGE(PythonLibs)
++      SET(Python_INCLUDE_DIRS ${PYTHON_INCLUDE_DIRS})
++      SET(Python_LIBRARIES ${PYTHON_LIBRARIES})
++      SET(Python_VERSION ${PYTHON_VERSION_STRING})
++      SET(Python_Interpreter_FOUND ${PYTHONINTERP_FOUND})
++      SET(Python_Development_FOUND ${PYTHONLIBS_FOUND})
++    ELSE ()
++      FIND_PACKAGE(Python COMPONENTS Interpreter Development)
++    ENDIF ()
    ENDIF ()
  ENDIF()
  
-@@ -344,7 +341,7 @@ IF ( LUA_FOUND AND WITH_LUA AND NOT ${BU
+@@ -344,7 +354,7 @@ IF ( LUA_FOUND AND WITH_LUA AND NOT ${BUILD_SHARED_PLUGINS})
    ADD_DEFINITIONS(-DQT_STATICPLUGIN -DSTATIC_LUA_SCRIPTING_PLUGIN)
  ENDIF ()
  
@@ -36,7 +60,7 @@ Index: texworks-release-0.6.9/CMakeLists.txt
    ADD_DEFINITIONS(-DQT_STATICPLUGIN -DSTATIC_PYTHON_SCRIPTING_PLUGIN)
  ENDIF ()
  
-@@ -406,7 +403,7 @@ IF ( LUA_FOUND AND WITH_LUA )
+@@ -406,7 +416,7 @@ IF ( LUA_FOUND AND WITH_LUA )
    ADD_SUBDIRECTORY(${TeXworks_SOURCE_DIR}/plugins-src/TWLuaPlugin)
  ENDIF ()
  
@@ -45,7 +69,7 @@ Index: texworks-release-0.6.9/CMakeLists.txt
    ADD_SUBDIRECTORY(${TeXworks_SOURCE_DIR}/plugins-src/TWPythonPlugin)
  ENDIF ()
  
-@@ -509,7 +506,7 @@ IF ( WITH_LUA )
+@@ -509,7 +519,7 @@ IF ( WITH_LUA )
    CONFIG_VERSION("Lua" "${LUA_VERSION_STRING}")
  ENDIF()
  if (WITH_PYTHON)
@@ -54,7 +78,7 @@ Index: texworks-release-0.6.9/CMakeLists.txt
  endif()
  CONFIG_VERSION("Qt" ${QT_VERSION_MAJOR}.${QT_VERSION_MINOR}.${QT_VERSION_PATCH})
  CONFIG_VERSION("SyncTeX" "${SYNCTEX_VERSION_STRING}")
-@@ -520,7 +517,7 @@ message("  Scripting")
+@@ -520,7 +530,7 @@ message("  Scripting")
  CONFIG_YESNO("  ECMA scripting" ON)
  CONFIG_YESNO("  QtScript scripting" WITH_QTSCRIPT)
  CONFIG_YESNO("  Lua scripting plugin" LUA_FOUND)
@@ -63,10 +87,10 @@ Index: texworks-release-0.6.9/CMakeLists.txt
  message("")
  
  CONFIG_INFO("Build ID" ${TW_BUILD_ID})
-Index: texworks-release-0.6.9/plugins-src/TWPythonPlugin/CMakeLists.txt
-===================================================================
---- texworks-release-0.6.9.orig/plugins-src/TWPythonPlugin/CMakeLists.txt
-+++ texworks-release-0.6.9/plugins-src/TWPythonPlugin/CMakeLists.txt
+diff --git a/plugins-src/TWPythonPlugin/CMakeLists.txt b/plugins-src/TWPythonPlugin/CMakeLists.txt
+index 255937f17..6d99c5a68 100644
+--- a/plugins-src/TWPythonPlugin/CMakeLists.txt
++++ b/plugins-src/TWPythonPlugin/CMakeLists.txt
 @@ -37,13 +37,13 @@ if (NOT MSVC)
  	target_compile_options(TWPythonPlugin PRIVATE -Wno-old-style-cast)
  endif ()
@@ -83,10 +107,10 @@ Index: texworks-release-0.6.9/plugins-src/TWPythonPlugin/CMakeLists.txt
  IF (${BUILD_SHARED_PLUGINS})
    INSTALL(TARGETS TWPythonPlugin
      LIBRARY DESTINATION ${TeXworks_PLUGIN_DIR}
-Index: texworks-release-0.6.9/src/CMakeLists.txt
-===================================================================
---- texworks-release-0.6.9.orig/src/CMakeLists.txt
-+++ texworks-release-0.6.9/src/CMakeLists.txt
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index ba2f40351..3f91ab887 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
 @@ -207,8 +207,8 @@ IF (NOT ${BUILD_SHARED_PLUGINS})
    IF (WITH_LUA AND LUA_FOUND)
      LIST(INSERT TeXworks_LIBS 0 TWLuaPlugin ${LUA_LIBRARIES})

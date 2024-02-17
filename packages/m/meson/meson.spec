@@ -35,7 +35,7 @@
 %bcond_with     setuptools
 %bcond_without  mono
 Name:           meson%{name_ext}
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0

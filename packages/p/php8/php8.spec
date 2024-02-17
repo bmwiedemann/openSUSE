@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package php8
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -57,7 +57,7 @@
 %bcond_without	sodium
 
 Name:           %{pprefix}%{php_name}%{psuffix}
-Version:        8.2.15
+Version:        8.2.16
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 8
 License:        MIT AND PHP-3.01
@@ -279,7 +279,7 @@ Requires:       %{apache_mmn}
 Requires:       apache2-prefork
 Requires:       php = %{version}
 Requires(post): %{_sbindir}/a2enmod
-Requires(preun):%{_sbindir}/a2enmod
+Requires(preun): %{_sbindir}/a2enmod
 Provides:       mod_php_any = %{version}
 Provides:       php-sapi = %{version}
 Obsoletes:      mod_php_any < %{version}

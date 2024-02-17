@@ -6,7 +6,7 @@ Thu Feb 01 16:36:18 UTC 2024 - dcermak@suse.com
   * exec: add extra validation for submount sources (fixes CVE-2024-23651, bsc#1219267)
   * oci: fix error handling on submount calls
   * executor: recheck mount stub path within root after container run (fixes CVE-2024-23652, bsc#1219268)
-  * llbsolver: make sure interactive container API validates entitlements
+  * llbsolver: make sure interactive container API validates entitlements (fixes CVE-2024-23653, bsc#1219438)
   * gateway: pass executor with build and not access worker directly
   * pb: add extra validation to protobuf types
   * sourcepolicy: add validations for nil values

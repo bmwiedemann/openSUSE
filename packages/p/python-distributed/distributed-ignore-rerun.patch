@@ -1,8 +1,8 @@
-Index: distributed-2023.11.0/distributed/distributed.yaml
+Index: distributed-2024.2.0/distributed/distributed.yaml
 ===================================================================
---- distributed-2023.11.0.orig/distributed/distributed.yaml
-+++ distributed-2023.11.0/distributed/distributed.yaml
-@@ -290,6 +290,10 @@ distributed:
+--- distributed-2024.2.0.orig/distributed/distributed.yaml
++++ distributed-2024.2.0/distributed/distributed.yaml
+@@ -289,6 +289,10 @@ distributed:
        ignore-files:
          - runpy\.py  # `python -m pytest` (or other module) shell command
          - pytest  # `pytest` shell command

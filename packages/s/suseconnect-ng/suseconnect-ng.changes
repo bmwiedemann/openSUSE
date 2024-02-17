@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Feb 14 18:28 UTC 2024 - Felix Schnizlein <fschnizlein@suse.com>
+
+- Update to version 1.7.0~git2.21ba08e
+  * Allow SUSEConnect on read write transactional systems (bsc#1219425)
+
+-------------------------------------------------------------------
+Tue Jan 18 16:00 UTC 2024 - Thomas Schmidt <tschmidt@suse.com>
+
+- Update to version 1.6.0
+  * Disable EULA display for addons (bsc#1218649 and bsc#1217961)
+
+-------------------------------------------------------------------
+Tue Dec 22 08:57:50 UTC 2023 - Miquel Sabate Sola <msabate@suse.com>
+
+- Update to version 1.5.0
+  * Configure docker credentials for registry authentication
+  * Feature: Support usage from Agama + Cockpit for ALP Micro system registration (bsc#1218364)
+  * Add --json output option
+
+-------------------------------------------------------------------
+Tue Sep 26 08:57:50 UTC 2023 - Miquel Sabate Sola <msabate@suse.com>
+
+- Update to version 1.4.0
+  * Added EULA display for addons (bsc#1170267)
+  * Fix zypper argument for auto-agreeing licenses (bsc#1214781)
+  * Enable building on SLE12 SP5 (jsc#PED-3179)
+
+-------------------------------------------------------------------
 Thu Aug  3 12:11:07 UTC 2023 - tschmidt@suse.com
 
 - Update to version 1.3.0

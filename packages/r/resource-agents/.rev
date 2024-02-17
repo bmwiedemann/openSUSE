@@ -1699,4 +1699,21 @@
   * Add resource-agents-deprecate-INET6.patch</comment>
     <requestid>1145977</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>4b217c1f7ef7933ee602f5777170d072</srcmd5>
+    <version>4.13.0+git23.fa8a56f6</version>
+    <time>1708116558</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.13.0+git23.fa8a56f6:
+  * Don't build with -ansi by default
+  * Filesystem: add reference to wait manpage to comment
+  * Avoid false positive for VG activation
+  * configure: fix &quot;C preprocessor &quot;gcc -E&quot; fails sanity check&quot; error caused by autoconf 2.72
+  * Low: IPaddr2: Remove stray backslash
+  * storage_mon: use memset() to fix &quot;uninitialized value&quot; covscan error, as qb_ipcc_recv() will always set a message (according to honzaf)
+  * findif: also check that netmaskbits != EOS
+  * storage_mon: fix file handler out of scope leak and uninitialized values
+  * aws-vpc-move-ip/aws-vpc-route53/awseip/awsvip: add auth_type parameter and AWS Policy based authentication type</comment>
+    <requestid>1147065</requestid>
+  </revision>
 </revisionlist>

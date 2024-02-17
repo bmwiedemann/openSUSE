@@ -481,4 +481,13 @@
     <comment>Budgie 10.9</comment>
     <requestid>1143469</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>48f21fb4f4a2f18e9dd372379802260e</srcmd5>
+    <version>10.9+2</version>
+    <time>1708116110</time>
+    <user>anag+factory</user>
+    <comment>Leap 15.6 sync V3
+</comment>
+    <requestid>1146931</requestid>
+  </revision>
 </revisionlist>

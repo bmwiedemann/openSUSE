@@ -347,4 +347,17 @@
   * NativeStateMir: Remove Mir/mirclient support</comment>
     <requestid>1125862</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>bc52351b5ce4b56528d0745c72915478</srcmd5>
+    <version>20240215</version>
+    <time>1708116158</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240215:
+  * NativeStateWayland: Explicitly destroy all Wayland resources at shutdown
+  * Explicitly release GL related resources at shutdown
+  * src/meson.build: add x11 dependency to glx
+  * Fix memory leaks using smart pointers
+  * Add missing includes in scene-collection.h</comment>
+    <requestid>1147039</requestid>
+  </revision>
 </revisionlist>

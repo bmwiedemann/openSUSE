@@ -55,7 +55,7 @@ Fri Apr  1 11:42:03 UTC 2022 - Marcus Meissner <meissner@suse.com>
 -------------------------------------------------------------------
 Fri May  7 14:56:38 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
-- updated to 0.44
+- updated to 0.44 (bsc#1189477)
   - feat: add support for SRBDS related vulnerabilities
   - feat: add zstd kernel decompression (#370)
   - enh: arm: add experimental support for binary arm images

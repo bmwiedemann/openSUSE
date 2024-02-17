@@ -16,7 +16,7 @@
 #
 
 
-%define commit c4e5e5e
+%define commit 7f2b8ee
 
 Name:           libcosmos
 Version:        0.2
@@ -25,7 +25,7 @@ Summary:        A library providing a modern C++ API for the Linux operating sys
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/gerstner-hub/libcosmos
-Source0:        libcosmos-%{commit}.tar.xz
+Source0:        libcosmos-0.2.0+git%{commit}.tar.xz
 
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -59,7 +59,7 @@ A library providing a modern C++ API for the Linux operating system.
 Header and development files for libcosmos.
 
 %prep
-%setup -q -n %{name}-%{commit}
+%setup -q -n %{name}-0.2.0+git%{commit}
 
 %build
 scons libtype=shared

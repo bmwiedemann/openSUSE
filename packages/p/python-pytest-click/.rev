@@ -35,4 +35,12 @@
 - Drop mock from BuildRequires, it has always fallen back to stdlib.</comment>
     <requestid>962033</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>19c3ac55541d5e603a9b630ca7699280</srcmd5>
+    <version>1.1.0</version>
+    <time>1708116172</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1147112</requestid>
+  </revision>
 </revisionlist>

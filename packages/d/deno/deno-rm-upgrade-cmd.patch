@@ -223,11 +223,13 @@ diff --git a/cli/standalone/binary.rs.1 b/cli/standalone/binary.rs
 index 628922b..f8bb1e2 100644
 --- a/cli/standalone/binary.rs.1
 +++ b/cli/standalone/binary.rs
-@@ -429,11 +429,7 @@ impl<'a> DenoCompileBinaryWriter<'a> {
+@@ -499,13 +499,7 @@ impl<'a> DenoCompileBinaryWriter<'a> {
 
      let archive_data = std::fs::read(binary_path)?;
      let temp_dir = tempfile::TempDir::new()?;
--    let base_binary_path = crate::tools::upgrade::unpack_into_dir(
+-    let base_binary_path = unpack_into_dir(
+-      "denort",
+-      &binary_name,
 -      archive_data,
 -      target.contains("windows"),
 -      &temp_dir,

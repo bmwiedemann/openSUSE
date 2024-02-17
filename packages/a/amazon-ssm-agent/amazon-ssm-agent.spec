@@ -1,7 +1,7 @@
 #
 # spec file for package amazon-ssm-agent
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           amazon-ssm-agent
-Version:        3.2.1798.0
+Version:        3.3.40.0
 Release:        0
 Summary:        Amazon Remote System Config Management
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/aws/amazon-ssm-agent
 Source0:        https://github.com/aws/amazon-ssm-agent/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  go >= 1.15
+BuildRequires:  go >= 1.21
 BuildRequires:  pkgconfig(systemd)
 Requires:       systemd
 Provides:       bundled(golang(github.com/Microsoft/go-winio))

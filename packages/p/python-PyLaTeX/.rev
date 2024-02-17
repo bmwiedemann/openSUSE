@@ -52,4 +52,16 @@
     <comment></comment>
     <requestid>875539</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b8ce02768abfad705a5a4a5ffb0ef024</srcmd5>
+    <version>1.4.2</version>
+    <time>1708116126</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.2:
+  * Add `.Chapter` in ``__init__.py``
+  * Fix installation on Python 3.12
+- Drop patch skip-optional-dependencies-test.patch, no longer required.
+- Switch to pyproject macros.</comment>
+    <requestid>1146989</requestid>
+  </revision>
 </revisionlist>

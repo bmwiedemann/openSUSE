@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Feb 16 09:36:55 UTC 2024 - matthias.gerstner@suse.com
+
+- Update to version 0.2.0+git7f2b8ee:
+  * formatting: export another definition missing on 32-bit archs
+  * scripts: use single quotes throughout
+  * check.py: build all targets
+  * buildsystem: support disabling doc build
+  * check.py: select proper root directory for non-libcosmos projects
+  * buildsystem: use single quotes throughout
+  * buildsystem: use -fdiagnostics-color=auto instead of colorgcc wrapper
+  * python files: incorporate Flake8 findings
+  * check.py: also fun flake8 on Python files
+  * buildsystem: support including local libraries with fallback to system pkg
+  * PosixThread: fix race condition in setting m_pthread
+  * buildsystem: support configuring default library type for project
+
+-------------------------------------------------------------------
+Tue Feb 13 09:33:50 UTC 2024 - matthias.gerstner@suse.com
+
+- Update to version 0.2.0+git33d893b:
+  * buildsystem: support transparent use of local lib or system lib
+
+-------------------------------------------------------------------
 Mon Feb 05 08:39:59 UTC 2024 - matthias.gerstner@suse.com
 
 - Update to version c4e5e5e:

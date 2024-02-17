@@ -18,35 +18,35 @@
 
 %define psuffix %{nil}
 %global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "test-py39"
-%define psuffix -test-py39
-%define skip_python310 1
-%define skip_python311 1
-%define skip_python312 1
-%bcond_without test
-%endif
 %if "%{flavor}" == "test-py310"
 %define psuffix -test-py310
-%define skip_python39 1
 %define skip_python311 1
 %define skip_python312 1
 %bcond_without test
 %endif
 %if "%{flavor}" == "test-py311"
 %define psuffix -test-py311
-%define skip_python39 1
 %define skip_python310 1
 %define skip_python312 1
 %bcond_without test
 %endif
+%if "%{flavor}" == "test-py312"
+%define psuffix -test-py312
+%define skip_python310 1
+%define skip_python311 1
+%bcond_without test
+%endif
 %if "%{flavor}" == ""
 %bcond_with test
+%else
+# globally stop testing this one
+%define skip_python39 1
 %endif
 
 %{?sle15_python_module_pythons}
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2024.1.1
+Version:        2024.2.0
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
@@ -275,7 +275,6 @@ Requires:       python-pandas
 Requires:       python-hypothesis
 Requires:       python-pytest-asyncio
 # /SECTION
-Requires:       python-pre-commit
 Requires:       python-pytest
 Requires:       python-pytest-rerunfailures
 Requires:       python-pytest-timeout

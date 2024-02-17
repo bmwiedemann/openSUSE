@@ -1,0 +1,128 @@
+Index: spice-0.15.2/subprojects/spice-common/m4/spice-deps.m4
+===================================================================
+--- spice-0.15.2.orig/subprojects/spice-common/m4/spice-deps.m4
++++ spice-0.15.2/subprojects/spice-common/m4/spice-deps.m4
+@@ -153,19 +153,17 @@ AC_DEFUN([SPICE_CHECK_PYTHON_MODULES], [
+     if test "x$enable_python_checks" != "xno"; then
+         AS_IF([test -n "$PYTHON"], # already set required PYTHON version
+               [AM_PATH_PYTHON
+-               AX_PYTHON_MODULE([six], [1])
+                AX_PYTHON_MODULE([pyparsing], [1])],
+               [PYTHON=python3
+-               AX_PYTHON_MODULE([six])
+                AX_PYTHON_MODULE([pyparsing])
+-               test "$HAVE_PYMOD_SIX" = "yes" && test "$HAVE_PYMOD_PYPARSING" = "yes"],
++               test "$HAVE_PYMOD_PYPARSING" = "yes"],
+               [AM_PATH_PYTHON([3])],
+               [PYTHON=python2
+                AX_PYTHON_MODULE([six])
+                AX_PYTHON_MODULE([pyparsing])
+                test "$HAVE_PYMOD_SIX" = "yes" && test "$HAVE_PYMOD_PYPARSING" = "yes"],
+               [AM_PATH_PYTHON([2])],
+-              [AC_MSG_ERROR([Python modules six and pyparsing are required])])
++              [AC_MSG_ERROR([Python module pyparsing is required])])
+     else
+         AM_PATH_PYTHON
+     fi
+Index: spice-0.15.2/subprojects/spice-common/meson.build
+===================================================================
+--- spice-0.15.2.orig/subprojects/spice-common/meson.build
++++ spice-0.15.2/subprojects/spice-common/meson.build
+@@ -130,7 +130,7 @@ if spice_common_generate_client_code or
+   python = py_module.find_installation('python3')
+ 
+   if get_option('python-checks')
+-    foreach module : ['six', 'pyparsing']
++    foreach module : ['pyparsing']
+       message('Checking for python module @0@'.format(module))
+       cmd = run_command(python, '-c', 'import @0@'.format(module))
+       if cmd.returncode() != 0
+Index: spice-0.15.2/subprojects/spice-common/python_modules/codegen.py
+===================================================================
+--- spice-0.15.2.orig/subprojects/spice-common/python_modules/codegen.py
++++ spice-0.15.2/subprojects/spice-common/python_modules/codegen.py
+@@ -1,5 +1,4 @@
+ 
+-import six
+ from io import StringIO
+ 
+ def camel_to_underscores(s, upper = False):
+@@ -123,10 +122,7 @@ class CodeWriter:
+ 
+     def write(self, s):
+         # Ensure its a unicode string
+-        if six.PY3:
+-            s = str(s)
+-        else:
+-            s = unicode(s)
++        s = str(s)
+ 
+         if len(s) == 0:
+             return
+Index: spice-0.15.2/subprojects/spice-common/python_modules/spice_parser.py
+===================================================================
+--- spice-0.15.2.orig/subprojects/spice-common/python_modules/spice_parser.py
++++ spice-0.15.2/subprojects/spice-common/python_modules/spice_parser.py
+@@ -1,11 +1,9 @@
+-import six
+-
+ try:
+     from pyparsing import Literal, CaselessLiteral, Word, OneOrMore, ZeroOrMore, \
+             Forward, delimitedList, Group, Optional, Combine, alphas, nums, restOfLine, cStyleComment, \
+             alphanums, ParseException, ParseResults, Keyword, StringEnd, replaceWith
+ except ImportError:
+-    six.print_("Module pyparsing not found.")
++    print("Module pyparsing not found.")
+     exit(1)
+ 
+ 
+@@ -149,9 +147,9 @@ def parse(filename):
+         bnf = SPICE_BNF()
+         types = bnf.parseFile(filename)
+     except ParseException as err:
+-        six.print_(err.line, file=sys.stderr)
+-        six.print_(" "*(err.column-1) + "^", file=sys.stderr)
+-        six.print_(err, file=sys.stderr)
++        print(err.line, file=sys.stderr)
++        print(" "*(err.column-1) + "^", file=sys.stderr)
++        print(err, file=sys.stderr)
+         return None
+ 
+     for t in types:
+Index: spice-0.15.2/subprojects/spice-common/spice_codegen.py
+===================================================================
+--- spice-0.15.2.orig/subprojects/spice-common/spice_codegen.py
++++ spice-0.15.2/subprojects/spice-common/spice_codegen.py
+@@ -9,7 +9,7 @@ from python_modules import ptypes
+ from python_modules import codegen
+ from python_modules import demarshal
+ from python_modules import marshal
+-import six
++
+ 
+ def write_channel_enums(writer, channel, client, describe):
+     messages = list(filter(lambda m : m.channel == channel, \
+@@ -113,20 +113,17 @@ def write_content(dest_file, content, ke
+             f.close()
+ 
+             if content == old_content:
+-                six.print_("No changes to %s" % dest_file)
++                print("No changes to %s" % dest_file)
+                 return
+ 
+         except IOError:
+             pass
+ 
+     f = open(dest_file, 'wb')
+-    if six.PY3:
+-        f.write(bytes(content, 'UTF-8'))
+-    else:
+-        f.write(content)
++    f.write(bytes(content, 'UTF-8'))
+     f.close()
+ 
+-    six.print_("Wrote %s" % dest_file)
++    print("Wrote %s" % dest_file)
+ 
+ 
+ parser = OptionParser(usage="usage: %prog [options] <protocol_file> <destination file>")

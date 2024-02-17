@@ -1,7 +1,7 @@
 #
 # spec file for package parzip
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,11 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Compression
 URL:            https://github.com/jpakkane/parzip
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-
+%if 0%{?suse_version} > 1500
 BuildRequires:  c++_compiler
+%else
+BuildRequires:  gcc11-c++
+%endif
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(liblzma)
@@ -53,6 +56,8 @@ Does not support
 %autosetup -p1
 
 %build
+export CXX=g++
+test -x "$(type -p g++-11)" && export CXX=g++-11
 %meson
 %meson_build
 
