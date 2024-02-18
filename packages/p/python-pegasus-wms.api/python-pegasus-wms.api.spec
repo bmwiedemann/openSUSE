@@ -1,7 +1,7 @@
 #
 # spec file for package python-pegasus-wms.api
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,26 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-pegasus-wms.api
-Version:        5.0.3
+Version:        5.0.6
 Release:        0
 Summary:        Pegasus Workflow Management System Python API
 License:        Apache-2.0
 URL:            http://pegasus.isi.edu
 Source0:        pegasus-wms.api-gh-%{version}.tar.xz
 Source1:        pegasus-schema-yaml-%{version}.tar.xz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module pegasus-wms.common < 5.1}
+BuildRequires:  %{python_module pegasus-wms.common}
 BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-pegasus-wms.common < 5.1
+Requires:       python-pegasus-wms.common
 BuildArch:      noarch
 %python_subpackages
 
@@ -61,15 +61,15 @@ sed -i test/api/conftest.py \
   -e 's|"share/pegasus/schema/yaml"|"pegasus-schema-yaml-%{version}"|'
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# same output but different order in 'uses' field
-donttest="test_workflow_to_subworkflow_conversion_in_write"
+# same output but different order in 'uses' field (full name in one string is not excluded on Leap)
+donttest="test_workflow and to_subworkflow_conversion_in_write"
 %pytest -v -k "not ($donttest)"
 
 %files %{python_files}
@@ -77,6 +77,6 @@ donttest="test_workflow_to_subworkflow_conversion_in_write"
 %license LICENSE
 %dir %{python_sitelib}/Pegasus
 %{python_sitelib}/Pegasus/api
-%{python_sitelib}/pegasus_wms.api-%{version}*-info
+%{python_sitelib}/pegasus_wms.api-%{version}.dist-info
 
 %changelog

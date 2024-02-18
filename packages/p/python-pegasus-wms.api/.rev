@@ -21,4 +21,41 @@
   * New Containers exercise in the Pegasus Tutor</comment>
     <requestid>1032130</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ab31fa48a95ce10674e0b8b037926553</srcmd5>
+    <version>5.0.6</version>
+    <time>1708284193</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.0.6
+  * Improve stash integration to be osdf:// aware
+  * Handle dagman no longer inheriting user environment for the
+    dagman job
+  * Add support for Arm 64 architecture (aarch64)
+  * Enable host-wide metrics collection
+  * File dependencies between sub workflow and compute jobs broken
+  * Planner container mount point parsing breaks on . in the dir
+    name
+  * request_disk is incorrectly set to MBs instead of KBs
+  * +DAGNodeRetry for attrib=value assigment breaks on HTondor
+    10.0.x when direct submission is disabled
+  * Data management between parent compute job and a sub workflow
+    job broken
+  * Inplace cleanup broken when a sub workflow job and a parent
+    compute job has a data dependency
+- Release Notes for Pegasus 5.0.5 []Incomplete clean between ant
+  targets
+- Release Notes for Pegasus 5.0.4
+  * Support for HTCondor 10.2 series
+  * Improved sub workflow file handling
+  * pegasus-analyzer should show failing jobs
+  * pegasus-analyzer should traverse all sub workflows
+  * File dependencies for sub workflow jobs - differentiate inputs
+    for planner use and those for sub workflow
+  * update python api and json schema to expose forPlanning boolean
+    attribute with files in uses section
+  * update java wf api to support forPlanner attribute for files
+  * handle condor_submit updated way of specifying environment in
+    the .dag.condor.sub file (forwarded request 1147126 from bnavigator)</comment>
+    <requestid>1147127</requestid>
+  </revision>
 </revisionlist>
