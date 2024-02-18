@@ -1484,4 +1484,12 @@ See https://bugs.kde.org/show_bug.cgi?id=290719 (forwarded request 115750 from w
   * many bug fixes, see https://valgrind.org/docs/manual/dist.news.html</comment>
     <requestid>1128515</requestid>
   </revision>
+  <revision rev="150" vrev="2">
+    <srcmd5>47abae28f8b7ca9c05195c30643df363</srcmd5>
+    <version>3.22.0</version>
+    <time>1708284045</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1144495</requestid>
+  </revision>
 </revisionlist>

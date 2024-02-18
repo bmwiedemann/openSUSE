@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,6 +44,8 @@ Patch1:         VEX-x86-pinsrd.patch
 Patch2:         armv6-support.diff
 Patch9:         parallel-lto.patch
 Patch10:        dhat-use-datadir.patch
+# bko#478624 - Valgrind incompatibility with binutils-2.42 on x86 with new nop patterns (unhandled instruction bytes: 0x2E 0x8D 0xB4 0x26)
+Patch11:        VEX-x86-nop-pattern.patch
 BuildRequires:  automake
 BuildRequires:  pkgconfig
 %if %{suse_version} == 1600 && !0%{?is_opensuse}
