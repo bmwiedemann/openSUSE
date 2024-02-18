@@ -1,0 +1,31 @@
+IMPORTANT: Please change gcc.spec.in and then run ./pre_checkin.sh!
+Do not change gcc.spec directly!
+
+Since GCC comes with a testsuite that runs for quite a long time and
+that test suite also contains some known failures, we should run the
+testsuite of GCC whenever the compiler is changed to ensure a high
+quality compiler.
+
+The package is now split into multiple parts, gcc$VER,
+gcc$VER-testresults and libffi$VER (plus various spec files for
+cross and icecream cross compilers).  The testsuite is run from
+gcc$VER-testresults, a dummy package with the testresults, gcc$VER-testresults,
+is generated from it which contains testing logfiles and summary.
+
+Before checking in a new compiler, please do the following steps as QA
+measure to check that the new compiler does not introduce any new
+failures:
+
+- Run mbuild for all archs for at least the gcc$VER and the gcc$VER-testresults
+  subpackages
+
+- When mbuild is finished, call
+  /suse/rguenther/bin/compare-testresults.sh mbuild-directory
+  (for the gcc$VER-testresults build).
+  The output of that script should not show any failures.  If it does,
+  please fix them or discuss this with the gcc package maintainers.
+
+- Do not remove this file.
+
+Thanks,
+Your GCC packagers.

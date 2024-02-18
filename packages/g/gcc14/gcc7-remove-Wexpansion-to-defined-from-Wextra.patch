@@ -1,0 +1,13 @@
+diff --git a/gcc/c-family/c.opt b/gcc/c-family/c.opt
+index 9c0a28092fc..e2d4aa059e4 100644
+--- a/gcc/c-family/c.opt
++++ b/gcc/c-family/c.opt
+@@ -715,7 +715,7 @@ C++ ObjC++ Var(warn_exceptions) Init(1) Warning
+ Warn when an exception handler is shadowed by another handler.
+ 
+ Wexpansion-to-defined
+-C ObjC C++ ObjC++ CPP(warn_expansion_to_defined) CppReason(CPP_W_EXPANSION_TO_DEFINED) Var(cpp_warn_expansion_to_defined) Init(0) Warning EnabledBy(Wextra || Wpedantic)
++C ObjC C++ ObjC++ CPP(warn_expansion_to_defined) CppReason(CPP_W_EXPANSION_TO_DEFINED) Var(cpp_warn_expansion_to_defined) Init(0) Warning EnabledBy(Wpedantic)
+ Warn if \"defined\" is used outside #if.
+ 
+ Wextra

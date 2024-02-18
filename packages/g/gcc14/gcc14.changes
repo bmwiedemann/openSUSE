@@ -1,0 +1,181 @@
+-------------------------------------------------------------------
+Tue Feb 13 08:04:07 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Update to trunk head, 4a1cd5560b9b545eb848eb1d1e06d345fb, git8957 
+  * bumps libgphobos and libgdrundime SONAME
+- Use %patch -P N instead of %patchN
+- Refresh gcc44-rename-info-files.patch
+
+-------------------------------------------------------------------
+Wed Feb  7 12:47:27 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Update to trunk head, 5c3ba60024fedc6b3d374ebb071bcf5b3e, git8840
+- Disable epiphany cross compiler since it fails building.
+
+-------------------------------------------------------------------
+Tue Feb  6 07:43:25 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Update to trunk head, c5d34912ad576be1ef19be92f7eabde54b, git8817 
+  * bumps libgo SONAME
+
+-------------------------------------------------------------------
+Mon Feb  5 14:24:16 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Use %{_target_cpu} to determine host and build.
+
+-------------------------------------------------------------------
+Mon Jan 29 08:34:57 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Update to trunk head, b702dc980215074a06535e3aa52a766bef, git8486
+- Refresh gcc7-remove-Wexpansion-to-defined-from-Wextra.patch
+- Up requirement to llvm15 when building GCN offload compiler, needed
+  for gfx1100 support.
+- Remove obsolete gcc11-amdgcn-disable-hot-cold-partitioning.patch and
+  gcc10-amdgcn-llvm-as.patch patches.
+
+-------------------------------------------------------------------
+Mon Jan 22 09:50:35 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Update to trunk head, 86f3cbdaa6f60eaff1cdb4ab2f1a9bc796, git8330 
+- Package more risc-v headers
+- Add cross-X-newlib-devel requires to newlib cross compilers.
+  [boo#1219031]
+- Re-enable AutoReqProv for cross packages but filter files processed
+  via __requires_exclude_from and __provides_exclude_from.
+  [boo#1219031]
+
+-------------------------------------------------------------------
+Fri Jan 19 09:55:53 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Package m2rte.so plugin in the gcc14-m2 sub-package rather than
+  in gcc13-devel.  [boo#1210959]
+- Require libstdc++6-devel-gcc14 from gcc14-m2 as m2 programs
+  are linked against libstdc++6.
+- Fixup rust packaging for the rust1 to crab1 rename.
+- Build rust only for openSUSE Tumbleweed.
+
+-------------------------------------------------------------------
+Thu Jan 18 13:48:04 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Update to trunk head, a6bf09f65aed44d36acaa511e552783bfb, git8231 
+
+-------------------------------------------------------------------
+Tue Jan 16 09:42:25 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Enable cross compilers on riscv64
+
+-------------------------------------------------------------------
+Fri Jan 12 13:30:13 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Restrict general cross-compiler builds to ppc64le, x86_64, s390x
+  and aarch64 hosts.
+
+-------------------------------------------------------------------
+Fri Jan 12 09:34:37 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Update embedded newlib to 4.4.0.20231231.
+
+-------------------------------------------------------------------
+Fri Jan 12 00:19:27 UTC 2024 - Toolchain Bot <mjambor@suse.de>
+
+- Bump to 1a80e9558dd7fed1a9d22b3606489f72e4dd8c20, git7159.
+
+-------------------------------------------------------------------
+Wed Jan  3 18:16:29 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Add riscv64 to tsan_arch and lsan_arch
+
+-------------------------------------------------------------------
+Wed Jan  3 00:18:16 UTC 2024 - Toolchain Bot <mjambor@suse.de>
+
+- Bump to 152cd65bf468c378e1e06ac72e443453137034b5, git6886.
+
+-------------------------------------------------------------------
+Tue Dec  5 11:42:26 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Update libm2_sover
+
+-------------------------------------------------------------------
+Mon Dec  4 01:01:52 UTC 2023 - Toolchain Bot <mjambor@suse.de>
+
+- Bump to 833819e75a67614049ca75a3d471d45724fadf39, git6097.
+
+-------------------------------------------------------------------
+Thu Sep 28 10:01:02 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Tell qemu to use a bigger guest stack size
+
+-------------------------------------------------------------------
+Wed Sep 27 23:29:37 UTC 2023 - Toolchain Bot <mjambor@suse.de>
+
+- Bump to 1fab05a885a308c19cf42b72fd36805ddf27fdc8, git4300.
+
+-------------------------------------------------------------------
+Fri Sep  1 23:18:06 UTC 2023 - Toolchain Bot <mjambor@suse.de>
+
+- Bump to 6f06152541d62ae7c8579b7d7bf552be19e15b05, git3633.
+
+-------------------------------------------------------------------
+Fri Aug 18 14:03:36 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Raise Power architecture baseline to Power9 only for ALP (boo#1214915).
+
+-------------------------------------------------------------------
+Mon Jul 31 09:41:05 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Filter out -Werror=return-type from D compile flags
+
+-------------------------------------------------------------------
+Sun Jul 30 23:13:52 UTC 2023 - Toolchain Bot <mjambor@suse.de>
+
+- Bump to c9434ea40e20584a44a0b6fc8659ee983d5f2dd2, git2868.
+
+-------------------------------------------------------------------
+Thu May  4 10:20:16 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Remove upstreamed patch riscv-pthread.patch.
+
+-------------------------------------------------------------------
+Thu May  4 09:30:28 UTC 2023 - Toolchain Bot <mjambor@suse.de>
+
+- Bump to 93c26deab98fc80b616a1c53c324a88f61036f53, git473.
+
+-------------------------------------------------------------------
+Thu Apr 27 07:03:42 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Remove upstreamed patch riscv-atomic.patch.
+
+-------------------------------------------------------------------
+Thu Apr 27 06:00:46 UTC 2023 - Toolchain Bot <mjambor@suse.de>
+
+- Bump to 95d4c0d2e6318aef88ba0bc607dfc1ec6b7a612f, git283.
+
+-------------------------------------------------------------------
+Mon Apr 17 12:26:48 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- New package, inherits from gcc13
+- Take patches inherited from GCC 13.
+  * gcc-add-defaultsspec.diff, add the ability to provide a specs
+    file that is read by default
+  * tls-no-direct.diff, avoid direct %fs references on x86 to not
+    slow down Xen
+  * gcc43-no-unwind-tables.diff, do not produce unwind tables for
+    CRT files
+  * gcc41-ppc32-retaddr.patch, fix expansion of __builtin_return_addr
+    for ppc, just a testcase
+  * gcc44-textdomain.patch, make translation files version specific
+    and adjust textdomain to find them
+  * gcc44-rename-info-files.patch, fix cross-references in info files
+    when renaming them to be version specific
+  * gcc48-libstdc++-api-reference.patch, fix link in the installed
+    libstdc++ html documentation
+  * gcc48-remove-mpfr-2.4.0-requirement.patch, make GCC work with
+    earlier mpfr versions on old products
+  * gcc5-no-return-gcc43-workaround.patch, make build work with
+    host gcc 4.3
+  * gcc7-remove-Wexpansion-to-defined-from-Wextra.patch, removes
+    new warning from -Wextra
+  * gcc7-avoid-fixinc-error.diff
+  * gcc9-reproducible-builds-buildid-for-checksum.patch
+  * gcc9-reproducible-builds.patch
+  * gcc10-amdgcn-llvm-as.patch

@@ -1,0 +1,16 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b700a9e9d434fabab579d456d1761358</srcmd5>
+    <version>14.0.1+git8957</version>
+    <time>1708284047</time>
+    <user>anag+factory</user>
+    <comment>prjconf update is now
+
+# The following shlibs have the latest version build from GCC 13 sources
+%product_libs_gcc_ver_libm2 13
+%product_libs_gcc_ver_libgo22 13
+%product_libs_gcc_ver_libgphobos4 13
+%product_libs_gcc_ver_libgdruntime4 13</comment>
+    <requestid>1146399</requestid>
+  </revision>
+</revisionlist>
