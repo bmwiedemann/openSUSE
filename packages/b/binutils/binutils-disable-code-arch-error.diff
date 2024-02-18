@@ -1,0 +1,25 @@
+Index: binutils-2.42/gas/config/tc-i386.c
+===================================================================
+--- binutils-2.42.orig/gas/config/tc-i386.c	2024-01-29 01:00:00.000000000 +0100
++++ binutils-2.42/gas/config/tc-i386.c	2024-02-05 17:54:33.515139672 +0100
+@@ -2992,13 +2992,17 @@ set_cpu_arch (int dummy ATTRIBUTE_UNUSED
+ 	    {
+ 	      check_cpu_arch_compatible (string, cpu_arch[j].enable);
+ 
++	      /* XXX code in the wild calls 'as --64' (to generate ELF64),
++	         but then does '.arch i386' first and only then '.code32' or
++	         '.code16'.  This checking here would require swapping these
++	         two directives, so just warn for the time being.  */
+ 	      if (flag_code == CODE_64BIT && !cpu_arch[j].enable.bitfield.cpu64 )
+ 		{
+-		  as_bad (_("64bit mode not supported on `%s'."),
++		  as_warn (_("64bit mode not supported on `%s' (consider swapping .arch and .code directives)."),
+ 			  cpu_arch[j].name);
+-		  (void) restore_line_pointer (e);
++		  /*(void) restore_line_pointer (e);
+ 		  ignore_rest_of_line ();
+-		  return;
++		  return;*/
+ 		}
+ 
+ 	      if (flag_code == CODE_32BIT && !cpu_arch[j].enable.bitfield.cpui386)

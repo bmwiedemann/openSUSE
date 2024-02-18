@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon Feb  5 16:57:05 UTC 2024 - Michael Matz <matz@suse.com>
+
+- Add binutils-disable-code-arch-error.diff to demote an
+  error about swapped .arch/.code directives to a warning.
+  It happens in the wild.
+
+-------------------------------------------------------------------
+Tue Jan 30 13:52:11 UTC 2024 - Michael Matz <matz@suse.com>
+
+- Update to version 2.42:
+* Add support for many aarch64 extensions: SVE2.1, SME2.1, B16B16,
+  RASv2, LSE128, GCS, CHK, SPECRES2, LRCPC3, THE, ITE, D128, XS and
+  flags to enable them: '+fcma', '+jscvt', '+frintts', '+flagm2',
+  '+rcpc2' and '+wfxt'
+* Add experimantal support for GAS to synthesize call-frame-info for
+  some hand-written asm (--scfi=experimental) on x86-64.
+* Add support for more x86-64 extensions: APX: 32 GPRs, NDD, PUSH2/POP2,
+  PUSHP/POPP; USER_MSR, AVX10.1, PBNDKB, SM4, SM3, SHA512, AVX-VNNI-INT16.
+* Add support for more RISC-V extensions: T-Head v2.3.0, CORE-V v1.0,
+  SiFive VCIX v1.0.
+* BPF assembler: ';' separates statements now, and does not introduce
+  line comments anymore (use '#' or '//' for this).
+* x86-64 ld: Add '-z mark-plt/-z nomark-plt' to mark PLT entries with
+  dynamic tags.
+* risc-v ld: Add '--[no-]check-uleb128'.
+* New linker script directive: REVERSE, to be combined with SORT_BY_NAME
+  or SORT_BY_INIT_PRIORITY, reverses the generated order.
+* New linker options --warn-execstack-objects (warn only about execstack
+  when input object files request it), and --error-execstack plus
+  --error-rxw-segments to convert the existing warnings into errors.
+* objdump: Add -Z/--decompress to be used with -s/--full-contents to
+  decompress section contents before displaying.
+* readelf: Add --extra-sym-info to be used with --symbols (currently
+  prints section name of references section index).
+* objcopy: Add --set-section-flags for x86_64 to include
+  SHF_X86_64_LARGE.
+* s390 disassembly: add target-specific disasm option 'insndesc',
+  as in "objdump -M insndesc" to display an instruction description
+  as comment along with the disassembly.
+- Add binutils-2.42-branch.diff.gz.
+- Rebased s390-biarch.diff.
+- Adjusted binutils-revert-hlasm-insns.diff,
+  binutils-revert-plt32-in-branches.diff and binutils-revert-rela.diff
+  for upstream changes.
+- Removed binutils-2.41-branch.diff.gz, binutils-2.41.tar.bz2,
+  binutils-2.41-branch.diff.gz.
+- Removed binutils-use-less-memory.diff, binutils-old-makeinfo.diff
+  and riscv-relro.patch (all upstreamed).
+- Removed add-ulp-section.diff, we use a different mechanism
+  for live patching since a long time.
+
+-------------------------------------------------------------------
 Thu Nov  9 16:51:13 UTC 2023 - Michael Matz <matz@suse.com>
 
 - Add binutils-use-less-memory.diff to be a little nicer to 32bit

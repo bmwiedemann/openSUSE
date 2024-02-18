@@ -1,7 +1,7 @@
 #
 # spec file for package binutils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,7 +64,7 @@ BuildRequires:  zlib-devel
 %if %{suse_version} > 1500
 BuildRequires:  libzstd-devel
 %endif
-Version:        2.41
+Version:        2.42
 Release:        0
 
 # disable libalternatives for now until it's changed to not
@@ -131,7 +131,7 @@ Source:         binutils-%{version}.tar.bz2
 Source2:        binutils-%{version}.tar.bz2.sig
 Source3:        binutils.keyring
 Source4:        baselibs.conf
-Patch1:         binutils-2.41-branch.diff.gz
+Patch1:         binutils-2.42-branch.diff.gz
 Patch3:         binutils-skip-rpaths.patch
 Patch4:         s390-biarch.diff
 Patch5:         x86-64-biarch.patch
@@ -153,10 +153,7 @@ Patch41:        binutils-fix-relax.diff
 Patch42:        binutils-compat-old-behaviour.diff
 Patch43:        binutils-revert-hlasm-insns.diff
 Patch44:        binutils-revert-rela.diff
-Patch45:        binutils-old-makeinfo.diff
-Patch46:        riscv-relro.patch
-Patch47:        binutils-use-less-memory.diff
-Patch100:       add-ulp-section.diff
+Patch60:        binutils-disable-code-arch-error.diff
 Patch90:        cross-avr-nesc-as.patch
 Patch92:        cross-avr-omit_section_dynsym.patch
 Patch93:        cross-avr-size.patch
@@ -282,12 +279,7 @@ cp ld/ldgram.y ld/ldgram.y.orig
 %patch43 -p1
 %patch44 -p1
 %endif
-%if %{suse_version} < 1500
-%patch45 -p1
-%endif
-%patch46 -p1
-%patch47 -p1
-%patch100 -p1
+%patch60 -p1
 %if "%{TARGET}" == "avr"
 cp gas/config/tc-avr.h gas/config/tc-avr-nesc.h
 %patch90
@@ -369,6 +361,7 @@ cd build-dir
 	--enable-threads \
 %endif
 %if %{suse_version} <= 1320
+	CXX="g++ -std=gnu++11" \
 	--disable-x86-relax-relocations \
 	--disable-compressed-debug-sections \
 %endif
@@ -499,6 +492,11 @@ make -C gas-nesc %{?make_output_sync} %{?_smp_mflags}
 
 %check
 unset SUSE_ASNEEDED
+# newer distros set this envvar (e.g. to get deterministic archives by default)
+# but of course that breaks tests that precisely are
+# designed for checking file replacement in archives based on mtime.
+# just get rid of it for the binutils testsuite
+unset SOURCE_DATE_EPOCH
 cd build-dir
 %if 0%{?cross:1}
 make -k check CFLAGS="-O2 -g" CXXFLAGS="-O2 -g" CFLAGS_FOR_TARGET="-O2 -g" CXXFLAGS_FOR_TARGET="-O2 -g" || %{make_check_handling}
@@ -543,6 +541,7 @@ rm -rf %{buildroot}%{_prefix}/%{HOST}/bin
 mkdir -p %{buildroot}%{_prefix}/%{HOST}/bin
 ln -sf ../../bin/{ar,as,ld,nm,ranlib,strip} %{buildroot}%{_prefix}/%{HOST}/bin
 mv %{buildroot}%{_prefix}/%{HOST}/lib/ldscripts $RPM_BUILD_ROOT%{_libdir}
+rm -f $RPM_BUILD_ROOT%{_libdir}/ldscripts/stamp
 ln -sf ../../%{_lib}/ldscripts %{buildroot}%{_prefix}/%{HOST}/lib/ldscripts
 # Install header files
 make -C libiberty install_to_libdir target_header_dir=/usr/include DESTDIR=%{buildroot}

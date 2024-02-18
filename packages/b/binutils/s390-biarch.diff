@@ -1,11 +1,11 @@
 Index: ld/emulparams/elf_s390.sh
 ===================================================================
---- ld/emulparams/elf_s390.sh.orig	2019-09-09 18:48:59.000000000 +0200
-+++ ld/emulparams/elf_s390.sh	2019-09-09 18:49:02.000000000 +0200
-@@ -12,3 +12,18 @@ GENERATE_SHLIB_SCRIPT=yes
- GENERATE_PIE_SCRIPT=yes
+--- ld/emulparams/elf_s390.sh.orig	2024-01-29 01:00:00.000000000 +0100
++++ ld/emulparams/elf_s390.sh	2024-01-30 14:45:36.996853073 +0100
+@@ -13,3 +13,18 @@ GENERATE_PIE_SCRIPT=yes
  NO_SMALL_DATA=yes
  IREL_IN_PLT=
+ SYMBOL_ABI_ALIGNMENT=2
 +
 +# Treat a host that matches the target with the possible exception of "x"
 +# in the name as if it were native.

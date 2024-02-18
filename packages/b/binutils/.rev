@@ -2212,4 +2212,41 @@ libQt5WebEngine on i586.  *knockonwood*
   - XVentanaCondOps</comment>
     <requestid>1124735</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>f297efeeefca092f89618167fe0e0156</srcmd5>
+    <version>2.42</version>
+    <time>1708284043</time>
+    <user>anag+factory</user>
+    <comment>- Add binutils-disable-code-arch-error.diff to demote an
+  error about swapped .arch/.code directives to a warning.
+  It happens in the wild.
+
+- Update to version 2.42:
+* Add support for many aarch64 extensions: SVE2.1, SME2.1, B16B16,
+  RASv2, LSE128, GCS, CHK, SPECRES2, LRCPC3, THE, ITE, D128, XS and
+  flags to enable them: '+fcma', '+jscvt', '+frintts', '+flagm2',
+  '+rcpc2' and '+wfxt'
+* Add experimantal support for GAS to synthesize call-frame-info for
+  some hand-written asm (--scfi=experimental) on x86-64.
+* Add support for more x86-64 extensions: APX: 32 GPRs, NDD, PUSH2/POP2,
+  PUSHP/POPP; USER_MSR, AVX10.1, PBNDKB, SM4, SM3, SHA512, AVX-VNNI-INT16.
+* Add support for more RISC-V extensions: T-Head v2.3.0, CORE-V v1.0,
+  SiFive VCIX v1.0.
+* BPF assembler: ';' separates statements now, and does not introduce
+  line comments anymore (use '#' or '//' for this).
+* x86-64 ld: Add '-z mark-plt/-z nomark-plt' to mark PLT entries with
+  dynamic tags.
+* risc-v ld: Add '--[no-]check-uleb128'.
+* New linker script directive: REVERSE, to be combined with SORT_BY_NAME
+  or SORT_BY_INIT_PRIORITY, reverses the generated order.
+* New linker options --warn-execstack-objects (warn only about execstack
+  when input object files request it), and --error-execstack plus
+  --error-rxw-segments to convert the existing warnings into errors.
+* objdump: Add -Z/--decompress to be used with -s/--full-contents to
+  decompress section contents before displaying.
+* readelf: Add --extra-sym-info to be used with --symbols (currently
+  prints section name of references section index).
+* objcopy: Add --set-section-flags for x86_64 to include</comment>
+    <requestid>1144349</requestid>
+  </revision>
 </revisionlist>
