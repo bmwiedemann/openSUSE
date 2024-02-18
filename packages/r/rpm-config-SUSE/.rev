@@ -281,4 +281,12 @@
   * scripts: Do full ksyms dependencies on Tumbleweed (bsc#1215015)</comment>
     <requestid>1139752</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>1986dfe33c04347b6dd294ee5314fbf9</srcmd5>
+    <version>20240214</version>
+    <time>1708284134</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147122</requestid>
+  </revision>
 </revisionlist>
