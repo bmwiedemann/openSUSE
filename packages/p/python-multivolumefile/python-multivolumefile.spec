@@ -26,7 +26,6 @@ URL:            https://codeberg.org/miurahr/multivolume
 Source:         https://files.pythonhosted.org/packages/source/m/multivolumefile/multivolumefile-%{version}.tar.gz
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyannotate}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 42.0}
 BuildRequires:  %{python_module setuptools_scm >= 3.5.0}

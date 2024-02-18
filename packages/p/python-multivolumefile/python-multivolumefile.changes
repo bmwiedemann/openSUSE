@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 16 14:28:12 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Remove bogus unmaintained pyannotate test dependency
+
+-------------------------------------------------------------------
 Tue Jun 27 12:49:08 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
