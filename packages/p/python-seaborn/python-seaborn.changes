@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Feb 16 19:45:28 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.13.2
+  * This is a minor release containing internal changes that adapt
+    to upcoming deprecations in pandas.
+- Release 0.13.1
+  * This is a minor release with some bug fixes and a couple new
+    features.
+  * Added support for weighted mean estimation (with boostrap CIs)
+    in lineplot, barplot, pointplot, and objects.Est (#3580,
+    #3586).
+  * Added the extent option in objects.Plot.layout (#3552).
+  * Fixed a regression in v0.13.0 that triggered an exception when
+    working with non-numpy data types (#3516).
+  * Fixed a bug in objects.Plot so that tick labels are shown for
+    wrapped axes that aren't in the bottom-most row (#3600).
+  * Fixed a bug in catplot where a blank legend would be added when
+    hue was redundantly assigned (#3540).
+  * Fixed a bug in catplot where the edgecolor parameter was
+    ignored with kind="bar" (#3547).
+  * Fixed a bug in boxplot where an exception was raised when using
+    the matplotlib bootstrap option (#3562).
+  * Fixed a bug in lineplot where an exception was raised when hue
+    was assigned with an empty dataframe (#3569).
+  * Fixed a bug in multiple categorical plots that raised with
+    hue=None and dodge=True; this is now has no effect (#3605).
+- Release 0.13.0
+  * This is a major release with a number of important new features
+    and changes. The highlight is a major overhaul to seaborn's
+    categorical plotting functions, providing them with many new
+    capabilities and better aligning their API with the rest of the
+    library. There is also provisional support for alternate
+    dataframe libraries like polars, a new theme and display
+    configuration system for objects.Plot, and many smaller
+    bugfixes and enhancements.
+  * Major enhancements to categorical plots
+  * Support for alternate dataframe libraries
+  * Improved configuration for the objects interface
+  * For a complete description see
+    https://seaborn.pydata.org/whatsnew/v0.13.0.html
+- Drop obsolete patches
+  * inf_as_na.patch
+  * numpy-1.25.patch
+  * statsmodels-0.14.patch
+
+-------------------------------------------------------------------
 Thu Sep 14 12:40:47 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Add inf_as_na.patch to fix tests again, this time with pandas

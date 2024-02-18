@@ -1,7 +1,7 @@
 #
 # spec file for package python-seaborn
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,40 +17,34 @@
 
 
 Name:           python-seaborn
-Version:        0.12.2
+Version:        0.13.2
 Release:        0
 Summary:        Statistical data visualization for python
 License:        BSD-2-Clause AND BSD-3-Clause AND MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/mwaskom/seaborn
 Source:         https://files.pythonhosted.org/packages/source/s/seaborn/seaborn-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM numpy-1.25.patch gh#mwaskom/seaborn#3391
-Patch0:         numpy-1.25.patch
-# PATCH-FIX-UPSTREAM statsmodels-0.14.patch gh#mwaskom/seaborn#3356
-Patch1:         statsmodels-0.14.patch
-# PATCH-FIX-UPSTREAM inf_as_na.patch gh#mwaskom/seaborn#3424
-Patch2:         inf_as_na.patch
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module flit-core >= 3.2}
-BuildRequires:  %{python_module matplotlib >= 3.1}
-BuildRequires:  %{python_module numpy-devel >= 1.17}
-BuildRequires:  %{python_module pandas >= 0.25}
+BuildRequires:  %{python_module matplotlib >= 3.6.2}
+BuildRequires:  %{python_module numpy-devel >= 1.20}
+BuildRequires:  %{python_module pandas >= 1.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildConflicts: python-buildservice-tweak
-Requires:       python-matplotlib >= 3.1
-Requires:       python-numpy >= 1.17
-Requires:       python-pandas >= 0.25
+Requires:       python-matplotlib >= 3.6.2
+Requires:       python-numpy >= 1.20
+Requires:       python-pandas >= 1.2
 Recommends:     python-fastcluster
-Recommends:     python-scipy >= 1.3
-Recommends:     python-statsmodels >= 0.10
+Recommends:     python-scipy >= 1.7
+Recommends:     python-statsmodels >= 0.12
 # SECTION tests with extras
 BuildRequires:  %{python_module fastcluster}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy >= 1.3}
-BuildRequires:  %{python_module statsmodels >= 0.10}
+BuildRequires:  %{python_module scipy >= 1.7}
+BuildRequires:  %{python_module statsmodels >= 0.12}
 # /SECTION
 BuildArch:      noarch
 %python_subpackages
@@ -91,14 +85,17 @@ sed -i '1{/env python/d}' seaborn/external/appdirs.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+donttest="testeverythingexcept"
 # This fails in i586 because of int size
-donttest="test_index_alignment_between_series"
+if [ $(getconf LONG_BIT) -eq 32 ]; then
+  donttest="$donttest or test_index_alignment_between_series"
+fi
 %pytest -n auto -rfEs -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE.md licences/*
 %doc README.md
 %{python_sitelib}/seaborn
-%{python_sitelib}/seaborn-%{version}*-info
+%{python_sitelib}/seaborn-%{version}.dist-info
 
 %changelog
