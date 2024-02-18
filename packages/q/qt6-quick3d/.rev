@@ -150,4 +150,12 @@
     <comment>Qt 6.6.1 (forwarded request 1129814 from krop)</comment>
     <requestid>1130420</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4701b034f561fb81fd4f912087a3e59d</srcmd5>
+    <version>6.6.2</version>
+    <time>1708284247</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.6.2 (finally) (forwarded request 1146775 from krop)</comment>
+    <requestid>1147225</requestid>
+  </revision>
 </revisionlist>

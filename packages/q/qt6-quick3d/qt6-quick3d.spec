@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.6.1
+%define real_version 6.6.2
 %define short_version 6.6
 %define tar_name qtquick3d-everywhere-src
 %define tar_suffix %{nil}
@@ -27,15 +27,13 @@
 %endif
 #
 Name:           qt6-quick3d%{?pkg_suffix}
-Version:        6.6.1
+Version:        6.6.2
 Release:        0
 Summary:        API for creating 3D content and 3D user interfaces based on Qt Quick
 License:        GPL-3.0-or-later
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-quick3d-rpmlintrc
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Fix-some-depends-statements-in-QML-modules.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
