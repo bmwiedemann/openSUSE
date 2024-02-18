@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb 17 16:10:20 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.75
+  * Note transpose (block), instrument remapping (block), Cut Block (ALT+F3) 
+    and Copy Block (ALT+F4) had issues if you had made a block selection in 
+    the last channel/track in a pattern. 
+    Thanks to Roz for finding this and reporting it, and sorry to all the people 
+    who may have had this bug without knowing what was going on!
+
+-------------------------------------------------------------------
 Sat Dec 16 19:23:29 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.74
