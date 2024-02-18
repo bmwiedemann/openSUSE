@@ -95,4 +95,12 @@
 - Drop upstreamed 983.patch and purge-nose.patch</comment>
     <requestid>1009448</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>05fcf16f4d4adaa46f5e076180c7facf</srcmd5>
+    <version>5.2.0</version>
+    <time>1708284200</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147160</requestid>
+  </revision>
 </revisionlist>

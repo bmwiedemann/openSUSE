@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Thu Feb 15 16:13:37 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.2.0
+  ## New features
+  * Add generic Pointset and regularly spaced Grid data structures
+    in preparation for coordinate transformation and resampling
+    (#1251) (CM, reviewed by Oscar Esteban)
+  ## Enhancements
+  * Add copy method to ArrayProxy (#1255) (CM, reviewed by Paul
+    McCarthy)
+  * Permit to_xml to pass keyword arguments to tostring (#1258)
+    (CM)
+  * Allow user expansion (e.g., ~/...) in strings passed to
+    functions that accept paths (#1260) (Reinder Vos de Wael,
+    reviewed by CM)
+  * Expand CIFTI-2 brain structures to permit synonyms (#1256) (CM,
+    reviewed by Mathias Goncalves)
+  * Annotate SpatialImage as accepting affine=None argument (#1253)
+    (Blake Dewey, reviewed by CM)
+  * Warn on invalid MINC2 spacing declarations, treat as missing
+    (#1237) (Peter Suter, reviewed by CM)
+  * Refactor find_private_section for improved readability and
+    maintainability (#1228) (MB, reviewed by CM)
+  ## API changes and deprecations
+  * The nibabel.pydicom_compat module is deprecated and will be
+    removed in NiBabel 7.0. (#1280)
+  * The int_to_float and as_int functions are no longer needed to
+    work around NumPy deficiencies and have been deprecated (#1272)
+    (CM, reviewed by EL)
+- Release 5.1
+  ## Enhancements
+  * Make imagestats available with import nibabel (pr/1208) (Fabian
+    Perez, reviewed by CM)
+  * Use symmetric threshold for identifying unit quaternions on
+    qform calculations (pr/1182) (CM, reviewed by MB)
+  * Type annotations for nibabel.loadsave (pr/1213) and
+    nibabel.spatialimages.SpatialImage APIs (pr/1179),
+    nibabel.deprecated, nibabel.deprecator, nibabel.onetime and
+    nibabel.optpkg modules (pr/1188), nibabel.volumeutils
+    (pr/1189), nibabel.filename_parser and nibabel.openers
+    (pr/1197) (CM, reviewed by Zvi Baratz)
+- Release 5.0
+  ## New features
+  * SerializableImage now has to_stream() and from_stream() methods
+    to read/write streams implementing the io.IOBase interface. A
+    from_url() method enables loading images from URLs. (pr/1129)
+    (CM, reviewed by MB)
+  * TrkFile supports TRKv3, an undocumented but generally
+    compatible variant of TRKv2. (pr/1125) (CM)
+  ## Enhancements
+  * Support multiline header fields in TCKFile (pr/1175) (CM,
+    reviewed by Matt Cieslak)
+  * Make layout order an initialization parameter of ArrayProxy
+    (pr/1131) (CM, reviewed by MB)
+  * Initial support for type annotations. (pr/1115, pr/1178) (CM,
+    reviewed by Zvi Baratz)
+  ## API changes and deprecations
+  * Passing an int64 array to Nifti1Image without a header or dtype
+    argument will raise a ValueError. (pr/1173) (CM)
+  * tmpdirs.TemporaryDirectory is deprecated in favor of
+    tempfile.TemporaryDirectory. (pr/1172) (CM, reviewed by Zvi
+    Baratz)
+  * The nisext package is deprecated and will be removed in NiBabel
+    6.0. (pr/1170) (CM, reviewed by MB)
+  * Drop support for Python 3.7, Numpy < 1.19 (pr/1177) (CM)
+  * The following deprecated functions and methods will now raise
+    ExpiredDeprecationErrors
+    - nibabel.loadsave.read_img_data
+    - nibabel.dataobj_images.DataobjImage.get_data
+    - nibabel.loadsave.guessed_image_type
+    - nibabel.onetime.setattr_on_read
+    - nibabel.orientations.flip_axis
+  * Modules, classes and functions that expired at 4.0 were fully
+    removed. ExpiredDeprecationError will now be
+    AttributeError.
+
+-------------------------------------------------------------------
 Thu Oct  6 14:07:18 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Update to 4.0.2

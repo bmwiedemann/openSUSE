@@ -1,7 +1,7 @@
 #
 # spec file for package python-nibabel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,35 +16,45 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 %define binaries nib-conform nib-convert nib-dicomfs nib-diff nib-ls nib-nifti-dx nib-roi nib-stats nib-tck2trk nib-trk2tck parrec2nii
 Name:           python-nibabel
-Version:        4.0.2
+Version:        5.2.0
 Release:        0
 Summary:        Tool to access multiple neuroimaging data formats
 License:        MIT
 URL:            https://nipy.org/nibabel
+# SourceRepository: https://github.com/nipy/nibabel
 Source:         https://files.pythonhosted.org/packages/source/n/nibabel/nibabel-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools >= 30.3.0}
-BuildRequires:  %{pythons}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module hatch-vcs}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.17
+Requires:       python-numpy >= 1.20
+Requires:       python-packaging => 17
+Requires:       (python-importlib-resources >= 1.3 if python-base < 3.9)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-Pillow
-Recommends:     python-dicom >= 0.9.9
 Recommends:     python-h5py
+Recommends:     python-pydicom >= 1
 Recommends:     python-scipy
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module h5py}
-BuildRequires:  %{python_module numpy >= 1.17}
+BuildRequires:  %{python_module importlib-resources >= 1.3 if %python-base < 3.9}
+BuildRequires:  %{python_module numpy >= 1.20}
+BuildRequires:  %{python_module packaging >= 17}
+BuildRequires:  %{python_module pydicom >= 1}
+BuildRequires:  %{python_module pytest-doctestplus}
+BuildRequires:  %{python_module pytest-httpserver}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
+BuildRequires:  %{pythons}
+BuildRequires:  git-core
 # /SECTION
 %python_subpackages
 
@@ -58,44 +68,36 @@ very limited support for DICOM.
 
 %prep
 %setup -q -n nibabel-%{version}
+find nibabel -name .gitignore -delete
+sed -i '1{/^!#/d}' nibabel/cmdline/*.py
+chmod a-x nibabel/cmdline/*.py
+chmod a-x nibabel/tests/data/umass_anonymized.PAR nibabel/gifti/tests/data/gzipbase64.gii nibabel/nicom/dicomwrappers.py nibabel/nicom/tests/test_dicomwrappers.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 for b in %{binaries}; do
   %python_clone -a %{buildroot}%{_bindir}/$b
 done
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest -n auto -rsfE
 
 %post
-for b in %{binaries}; do
-  %python_install_alternative $b
-done
+%{expand:%(for b in %{binaries}; do echo "%%python_install_alternative $b"; done)}
 
 %postun
-for b in %{binaries}; do
-  %python_uninstall_alternative $b
-done
+%{expand:%(for b in %{binaries}; do echo "%%python_uninstall_alternative $b"; done)}
 
 %files %{python_files}
 %doc AUTHOR Changelog README.rst
 %license COPYING
-%python_alternative %{_bindir}/nib-conform
-%python_alternative %{_bindir}/nib-convert
-%python_alternative %{_bindir}/nib-dicomfs
-%python_alternative %{_bindir}/nib-diff
-%python_alternative %{_bindir}/nib-ls
-%python_alternative %{_bindir}/nib-nifti-dx
-%python_alternative %{_bindir}/nib-roi
-%python_alternative %{_bindir}/nib-stats
-%python_alternative %{_bindir}/nib-tck2trk
-%python_alternative %{_bindir}/nib-trk2tck
-%python_alternative %{_bindir}/parrec2nii
-%{python_sitelib}/*
+%{expand:%(for b in %{binaries}; do echo "%%python_alternative %%{_bindir}/$b"; done)}
+%{python_sitelib}/nibabel
+%{python_sitelib}/nisext
+%{python_sitelib}/nibabel-%{version}.dist-info
 
 %changelog
