@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb 17 01:51:54 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- update to 1.19.2
+  * ixed an exception when a Git repository had a broken ref
+
+- update to 1.19.1:
+  * Relaxed Python bounds
+  * Fixed some git log commands that did not include -c log.showsignature=false
+
+-------------------------------------------------------------------
 Sat Dec 16 07:27:18 UTC 2023 - Richard Rahl <rrahl0@proton.me>
 
 - initial packaging of version 1.19

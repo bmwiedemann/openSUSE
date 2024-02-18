@@ -1,7 +1,7 @@
 #
 # spec file for package python-dunamai
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,23 +15,24 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-dunamai
-Version:        1.19.0
+Version:        1.19.2
 Release:        0
 Summary:        Dynamic version generation
 License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://github.com/mtkennerly/dunamai
-Source:         https://files.pythonhosted.org/packages/source/d/dunamai/dunamai-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+Source0:        https://files.pythonhosted.org/packages/source/d/dunamai/dunamai-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1.0.0}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
-## needed for tests 
+## needed for tests
 BuildRequires:  %{python_module pytest}
 BuildRequires:  git
 %python_subpackages
