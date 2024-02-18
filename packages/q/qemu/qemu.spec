@@ -89,6 +89,7 @@ Source1:        common.inc
 Source303:      README.PACKAGING
 Source1000:     qemu-rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+## Packages we REQUIRE during build
 %if %{build_x86_firmware}
 %ifnarch %ix86 x86_64
 # We must cross-compile on non-x86*
@@ -123,23 +124,34 @@ BuildRequires:  pkgconfig(libpmem)
 %ifnarch %arm s390x
 BuildRequires:  libnuma-devel
 %endif
+%if 0%{with canokey}
+BuildRequires:  canokey-qemu-devel
+%endif
 %if 0%{?with_daxctl}
 BuildRequires:  pkgconfig(libndctl)
+%endif
+%if %{kvm_available}
+BuildRequires:  pkgconfig(udev)
 %endif
 %if 0%{?with_rbd}
 BuildRequires:  librbd-devel
 %endif
-%if 0%{with xdp}
-BuildRequires:  libxdp-devel
-%endif
-%if 0%{with canokey}
-BuildRequires:  canokey-qemu-devel
+%if 0%{with spice}
+BuildRequires:  pkgconfig(spice-protocol) >= 0.12.3
+BuildRequires:  pkgconfig(spice-server) >= 0.12.5
 %endif
 %if 0%{?with_uring}
 BuildRequires:  pkgconfig(liburing) >= %liburing_min_version
 %endif
-%if %{kvm_available}
-BuildRequires:  pkgconfig(udev)
+%if 0%{with xdp}
+BuildRequires:  libxdp-devel
+%endif
+%if 0%{?suse_version} >= 1600
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-base >= 3.8
+%else
+BuildRequires:  python311-Sphinx
+BuildRequires:  python311-base
 %endif
 BuildRequires:  Mesa-devel
 BuildRequires:  bison
@@ -162,6 +174,11 @@ BuildRequires:  multipath-tools-devel
 BuildRequires:  ninja >= 1.7
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
+BuildRequires:  rdma-core-devel
+BuildRequires:  snappy-devel
+BuildRequires:  update-desktop-files
+BuildRequires:  usbredir-devel >= 0.6
+BuildRequires:  xfsprogs-devel
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(gbm)
@@ -188,29 +205,75 @@ BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.13
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(lzo2)
 BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  pkgconfig(openssl) >= 1.0.0
 BuildRequires:  pkgconfig(pixman-1) >= 0.21.8
 BuildRequires:  pkgconfig(slirp) >= 4.2.0
-BuildRequires:  pkgconfig(spice-protocol) >= 0.12.3
-BuildRequires:  pkgconfig(spice-server) >= 0.12.5
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vdeplug)
 BuildRequires:  pkgconfig(virglrenderer) >= 0.4.1
 BuildRequires:  pkgconfig(vte-2.91)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?suse_version} >= 1600
-BuildRequires:  python3-Sphinx
-BuildRequires:  python3-base >= 3.8
-%else
-BuildRequires:  python311-Sphinx
-BuildRequires:  python311-base
-%endif
-BuildRequires:  rdma-core-devel
-BuildRequires:  snappy-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  usbredir-devel >= 0.6
-BuildRequires:  xfsprogs-devel
 %{?systemd_ordering}
+## Packages we will REQUIRE
+%if %{kvm_available}
+Requires(post): acl
+Requires(post): udev
+%endif
+Requires(post): coreutils
+Requires:       group(kvm)
+Requires:       group(qemu)
+Requires:       user(qemu)
+# Due to change in where some documentation files are, if qemu-guest-agent
+# is installed, we need to make sure we update it to our version.
+Requires:       (qemu-guest-agent = %{version} if qemu-guest-agent)
+## Packages we will RECOMMEND
+%ifarch s390x
+Recommends:     qemu-hw-s390x-virtio-gpu-ccw
+%else
+Recommends:     qemu-hw-display-qxl
+Recommends:     qemu-hw-display-virtio-gpu
+Recommends:     qemu-hw-display-virtio-gpu-pci
+Recommends:     qemu-hw-display-virtio-vga
+Recommends:     qemu-hw-usb-host
+Recommends:     qemu-hw-usb-redirect
+Recommends:     qemu-hw-usb-smartcard
+%if 0%{with spice}
+Recommends:     qemu-ui-spice-app
+%endif
+# End of "ifarch s390x"
+%endif
+%if %{kvm_available}
+Recommends:     kvm_stat
+%endif
+Recommends:     qemu-block-curl
+Recommends:     qemu-block-nfs
+Recommends:     qemu-ksm = %{version}
+Recommends:     qemu-tools
+Recommends:     qemu-ui-curses
+## Packages we will SUGGEST
+%if 0%{?with_rbd}
+Suggests:       qemu-block-rbd
+%endif
+Suggests:       qemu-accel-qtest
+Suggests:       qemu-block-dmg
+Suggests:       qemu-block-gluster
+Suggests:       qemu-block-iscsi
+Suggests:       qemu-block-ssh
+Suggests:       qemu-chardev-baum
+Suggests:       qemu-extra
+Suggests:       qemu-lang
+Suggests:       qemu-microvm
+Suggests:       qemu-skiboot
+Suggests:       qemu-vhost-user-gpu
+Suggests:       qemu-ui-gtk
+Suggests:       qemu-doc
+## Pacakges we OBSOLETE
+Obsoletes:      qemu-sgabios <= 8
+Obsoletes:      qemu-audio-oss < %{version}
+Obsoletes:      qemu-audio-sdl < %{version}
+Obsoletes:      qemu-ui-sdl < %{version}
+## What we do with the main emulator depends on the architecture we're on
 %if %{kvm_available}
 %ifarch %ix86 x86_64
 Requires:       qemu-x86
@@ -238,56 +301,8 @@ Requires:       qemu-extra
 %else
 Suggests:       qemu-extra
 %endif
-Requires(post): acl
-Requires(post): udev
-Recommends:     kvm_stat
 # End of "if kvm_available"
 %endif
-Requires:       group(kvm)
-Requires:       group(qemu)
-Requires:       user(qemu)
-Requires(post): coreutils
-%ifarch s390x
-Recommends:     qemu-hw-s390x-virtio-gpu-ccw
-%else
-# Due to change in where some documentation files are, if qemu-guest-agent
-# is installed, we need to make sure we update it to our version.
-Requires:       (qemu-guest-agent = %{version} if qemu-guest-agent)
-Recommends:     qemu-hw-display-qxl
-Recommends:     qemu-hw-display-virtio-gpu
-Recommends:     qemu-hw-display-virtio-gpu-pci
-Recommends:     qemu-hw-display-virtio-vga
-Recommends:     qemu-hw-usb-host
-Recommends:     qemu-hw-usb-redirect
-Recommends:     qemu-hw-usb-smartcard
-Recommends:     qemu-ui-spice-app
-# End of "ifarch s390x"
-%endif
-Recommends:     qemu-block-curl
-Recommends:     qemu-block-nfs
-Recommends:     qemu-ksm = %{version}
-Recommends:     qemu-tools
-Recommends:     qemu-ui-curses
-%if 0%{?with_rbd}
-Suggests:       qemu-block-rbd
-%endif
-Suggests:       qemu-accel-qtest
-Suggests:       qemu-block-dmg
-Suggests:       qemu-block-gluster
-Suggests:       qemu-block-iscsi
-Suggests:       qemu-block-ssh
-Suggests:       qemu-chardev-baum
-Suggests:       qemu-extra
-Suggests:       qemu-lang
-Suggests:       qemu-microvm
-Suggests:       qemu-skiboot
-Suggests:       qemu-vhost-user-gpu
-Suggests:       qemu-ui-gtk
-Suggests:       qemu-doc
-Obsoletes:      qemu-audio-oss < %{version}
-Obsoletes:      qemu-audio-sdl < %{version}
-Obsoletes:      qemu-sgabios <= 8
-Obsoletes:      qemu-ui-sdl < %{version}
 
 %description
 %{generic_qemu_description}
@@ -653,6 +668,7 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--enable-xen \
 	--enable-xen-pci-passthrough \
 %endif
+%endif
 %if 0%{with xdp}
 	--enable-af-xdp \
 %endif
@@ -679,7 +695,6 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 %endif
 %ifnarch %arm s390x
 	--enable-numa \
-%endif
 %endif
 %if 0%{?with_rbd}
 	--enable-rbd \
@@ -747,8 +762,10 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--enable-slirp-smbd \
 	--enable-smartcard \
 	--enable-snappy \
+%if 0%{with spice}
 	--enable-spice \
 	--enable-spice-protocol \
+%endif
 	--enable-system \
 	--enable-tcg \
 	--enable-tools \
@@ -1004,6 +1021,8 @@ cp %{rpmfilesdir}/APIC.core-count2 %{rpmfilesdir}/DSDT.core-count2 %{rpmfilesdir
 %if 0%{?qemu_user_space_build}
 # Seccomp is not supported by linux-user emulation
 echo 'int main (void) { return 0; }' > %{srcdir}/tests/unit/test-seccomp.c
+# keyctl is not yet supported by linux-user emulation
+echo 'int main (void) { return 0; }' > %{srcdir}/tests/unit/test-crypto-secret.c
 %endif
 
 # Compile the QOM test binary first, so that ...
@@ -1029,6 +1048,7 @@ make -O V=1 VERBOSE=1 -j1 check-qtest
 # enable this at a later point
 #make -O V=1 VERBOSE=1 -j1 check-report.junit.xml
 
+%if 0%{with spice}
 %package spice
 Summary:        Modules and packages for SPICE
 Group:          System/Emulators/PC
@@ -1046,6 +1066,80 @@ This meta-package brings in, as dependencies, the modules and packages
 necessary for having SPICE working for your VMs.
 
 %files spice
+
+%package audio-spice
+Summary:        Spice based audio support for QEMU
+Group:          System/Emulators/PC
+Requires:       qemu-ui-spice-core
+%{qemu_module_conflicts}
+
+%description audio-spice
+This package contains a module for Spice based audio support for QEMU.
+
+%files audio-spice
+%dir %_libdir/%name
+%_libdir/%name/audio-spice.so
+
+%package chardev-spice
+Summary:        Spice vmc and port chardev support for QEMU
+Group:          System/Emulators/PC
+Requires:       qemu-ui-spice-core
+%{qemu_module_conflicts}
+
+%description chardev-spice
+This package contains a module for Spice chardev support for QEMU.
+
+%files chardev-spice
+%dir %_datadir/%name
+%dir %_libdir/%name
+%_libdir/%name/chardev-spice.so
+
+%package ui-spice-app
+Summary:        Spice UI support for QEMU
+Group:          System/Emulators/PC
+Requires:       qemu-chardev-spice
+Requires:       qemu-ui-spice-core
+%{qemu_module_conflicts}
+
+%description ui-spice-app
+This package contains a module for doing Spice based UI for QEMU.
+
+%files ui-spice-app
+%dir %_libdir/%name
+%_libdir/%name/ui-spice-app.so
+
+%package ui-spice-core
+Summary:        Core Spice support for QEMU
+Group:          System/Emulators/PC
+Requires:       qemu-ui-opengl
+# This next Requires is only since virt-manager expects audio support
+Requires:       qemu-audio-spice
+%{qemu_module_conflicts}
+
+%description ui-spice-core
+This package contains a module with core Spice support for QEMU.
+
+%files ui-spice-core
+%dir %_datadir/%name
+%dir %_libdir/%name
+%_libdir/%name/ui-spice-core.so
+
+%package hw-display-qxl
+Summary:        QXL display support for QEMU
+Group:          System/Emulators/PC
+Requires:       qemu-ui-spice-core
+%{qemu_module_conflicts}
+
+%description hw-display-qxl
+This package contains a module for QXL display support for QEMU.
+
+%files hw-display-qxl
+%dir %_datadir/%name
+%dir %_libdir/%name
+%_libdir/%name/hw-display-qxl.so
+
+# End of "with spice"
+%endif
 
 %package headless
 Summary:        Minimum set of packages for having a functional QEMU
@@ -1276,19 +1370,6 @@ This package contains a module for JACK based audio support for QEMU.
 %dir %_libdir/%name
 %_libdir/%name/audio-jack.so
 
-%package audio-spice
-Summary:        Spice based audio support for QEMU
-Group:          System/Emulators/PC
-Requires:       qemu-ui-spice-core
-%{qemu_module_conflicts}
-
-%description audio-spice
-This package contains a module for Spice based audio support for QEMU.
-
-%files audio-spice
-%dir %_libdir/%name
-%_libdir/%name/audio-spice.so
-
 %package audio-oss
 Summary:        OSS based audio support for QEMU
 Group:          System/Emulators/PC
@@ -1404,34 +1485,6 @@ This package contains a module for baum braille chardev support for QEMU.
 %dir %_datadir/%name
 %dir %_libdir/%name
 %_libdir/%name/chardev-baum.so
-
-%package chardev-spice
-Summary:        Spice vmc and port chardev support for QEMU
-Group:          System/Emulators/PC
-Requires:       qemu-ui-spice-core
-%{qemu_module_conflicts}
-
-%description chardev-spice
-This package contains a module for Spice chardev support for QEMU.
-
-%files chardev-spice
-%dir %_datadir/%name
-%dir %_libdir/%name
-%_libdir/%name/chardev-spice.so
-
-%package hw-display-qxl
-Summary:        QXL display support for QEMU
-Group:          System/Emulators/PC
-Requires:       qemu-ui-spice-core
-%{qemu_module_conflicts}
-
-%description hw-display-qxl
-This package contains a module for QXL display support for QEMU.
-
-%files hw-display-qxl
-%dir %_datadir/%name
-%dir %_libdir/%name
-%_libdir/%name/hw-display-qxl.so
 
 %package hw-display-virtio-gpu
 Summary:        Virtio GPU display support for QEMU
@@ -1580,36 +1633,6 @@ This package contains a module for doing OpenGL based UI for QEMU.
 %dir %_libdir/%name
 %_libdir/%name/ui-egl-headless.so
 %_libdir/%name/ui-opengl.so
-
-%package ui-spice-app
-Summary:        Spice UI support for QEMU
-Group:          System/Emulators/PC
-Requires:       qemu-chardev-spice
-Requires:       qemu-ui-spice-core
-%{qemu_module_conflicts}
-
-%description ui-spice-app
-This package contains a module for doing Spice based UI for QEMU.
-
-%files ui-spice-app
-%dir %_libdir/%name
-%_libdir/%name/ui-spice-app.so
-
-%package ui-spice-core
-Summary:        Core Spice support for QEMU
-Group:          System/Emulators/PC
-Requires:       qemu-ui-opengl
-# This next Requires is only since virt-manager expects audio support
-Requires:       qemu-audio-spice
-%{qemu_module_conflicts}
-
-%description ui-spice-core
-This package contains a module with core Spice support for QEMU.
-
-%files ui-spice-core
-%dir %_datadir/%name
-%dir %_libdir/%name
-%_libdir/%name/ui-spice-core.so
 
 %package vhost-user-gpu
 Summary:        Vhost user mode virtio-gpu 2D/3D rendering backend for QEMU
@@ -1944,7 +1967,7 @@ wider support than qboot, but still focuses on quick boot up.
 %package seabios
 Summary:        x86 Legacy BIOS for QEMU
 Group:          System/Emulators/PC
-Version:        %{sbver}
+Version:        8.2.0%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -1965,7 +1988,7 @@ is the default and legacy BIOS for QEMU.
 %package vgabios
 Summary:        VGA BIOSes for QEMU
 Group:          System/Emulators/PC
-Version:        %{sbver}
+Version:        8.2.0%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -1991,7 +2014,7 @@ video card. For use with QEMU.
 %package ipxe
 Summary:        PXE ROMs for QEMU NICs
 Group:          System/Emulators/PC
-Version:        1.0.0+
+Version:        8.2.0
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0

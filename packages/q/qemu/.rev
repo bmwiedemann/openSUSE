@@ -3660,4 +3660,15 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1144426</requestid>
   </revision>
+  <revision rev="265" vrev="2">
+    <srcmd5>a2717bbb6e475c141885df29fd351d89</srcmd5>
+    <version>8.2.0</version>
+    <time>1708284047</time>
+    <user>anag+factory</user>
+    <comment>- Try to solve the qemu-kvm dependency issues on all arches
+  (see, e.g., bsc#1218684)
+  * [openSUSE][RPM] Create the legacy qemu-kvm symlink for all arches
+</comment>
+    <requestid>1147256</requestid>
+  </revision>
 </revisionlist>

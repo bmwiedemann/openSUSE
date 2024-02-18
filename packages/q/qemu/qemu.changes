@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 16 15:10:53 UTC 2024 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update the service file to use OBS-scm (by fvogt)
+- Various fixes:
+  * [openSUSE][RPM] Fix enabling features on non-x86_64
+  * [openSUSE][RPM] Disable test-crypto-secret in linux-user build
+  * [openSUSE] Update ipxe submodule reference (bsc#1219733, bsc#1219722)
+  * [openSUSE][RPM] spec: allow building without spice
+
+-------------------------------------------------------------------
 Tue Feb 06 00:58:05 UTC 2024 - dfaggioli@suse.com
 
 - Fix a build issue of OVMF caused by

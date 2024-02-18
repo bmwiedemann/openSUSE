@@ -46,6 +46,9 @@
 %bcond_with xdp
 %endif
 
+# Make it possible to build without spice (for SLE/Leap Micro)
+%bcond_without spice
+
 # We do not have the stuff needed to compile rutabaga support.
 # If/when we want to do it, we can check how it's done here:
 #  https://src.fedoraproject.org/rpms/qemu/c/deeb9357cb751df21c566fd8408936cfb034d43b?branch=rawhide
