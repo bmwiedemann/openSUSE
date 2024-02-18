@@ -416,4 +416,12 @@
     <comment>Switch to newer GCC on Leap (forwarded request 1143068 from krop)</comment>
     <requestid>1143079</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>53c440b2afb25f9956c72a8ec041365e</srcmd5>
+    <version>6.6.2</version>
+    <time>1708284227</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.6.2 (finally) (forwarded request 1146775 from krop)</comment>
+    <requestid>1147206</requestid>
+  </revision>
 </revisionlist>

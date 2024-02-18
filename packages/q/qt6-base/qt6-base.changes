@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 14 16:53:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.2
+  * https://www.qt.io/blog/qt-6.6.2-released
+- Drop patches, merged upstream:
+  * 0001-QMimeDatabase-handle-buggy-type-definitions.patch
+  * 0001-QMimeDatabase-collect-glob-patterns-from.patch
+  * 0001-HPack-fix-a-Yoda-Condition.patch
+  * 0002-HPack-fix-incorrect-integer-overflow-check.patch
+  * 0001-Http2-fix-potential-overflow-in-assemble_hpack_block.patch
+
+-------------------------------------------------------------------
 Wed Jan 31 14:51:31 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Switch to the latest GCC version available in Leap

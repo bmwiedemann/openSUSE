@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.6.1
+%define real_version 6.6.2
 %define short_version 6.6
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
@@ -30,7 +30,7 @@
 %global with_gles 1
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.6.1
+Version:        6.6.2
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 # Legal: qtpaths is BSD-3-Clause
@@ -39,11 +39,6 @@ URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
-Patch0:         0001-QMimeDatabase-handle-buggy-type-definitions.patch
-Patch1:         0001-QMimeDatabase-collect-glob-patterns-from.patch
-Patch2:         0001-HPack-fix-a-Yoda-Condition.patch
-Patch3:         0002-HPack-fix-incorrect-integer-overflow-check.patch
-Patch4:         0001-Http2-fix-potential-overflow-in-assemble_hpack_block.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       0001-Tell-the-truth-about-private-API.patch
 # No need to pollute the library dir with object files, install them in the qt6 subfolder
