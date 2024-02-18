@@ -100,4 +100,12 @@
   * Fixes #628: DBAPIProvider.init() got multiple values for argument 'database'</comment>
     <requestid>1140744</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>024dfc5cf39f513759764d5a3a26424c</srcmd5>
+    <version>0.7.17</version>
+    <time>1708284201</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147165</requestid>
+  </revision>
 </revisionlist>

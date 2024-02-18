@@ -16,6 +16,8 @@
 #
 
 
+# not compatible: https://github.com/ponyorm/pony/blob/v0.7.17/setup.py#L112
+%define skip_python312 1
 Name:           python-pony
 Version:        0.7.17
 Release:        0
