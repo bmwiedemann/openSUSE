@@ -1904,4 +1904,12 @@ See http://lists.opensuse.org/opensuse-factory/2013-01/msg00544.html for more co
     <comment></comment>
     <requestid>1130783</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>a955ab0115f98e5e8d1a7e1f55543be6</srcmd5>
+    <version>11.2.3</version>
+    <time>1708284163</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147183</requestid>
+  </revision>
 </revisionlist>

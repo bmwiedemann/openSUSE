@@ -36,3 +36,6 @@ perfschema.socket_summary_by_instance_func       : since 11.1.2 - all
 main.lock_kill                                   : since 11.1.2 - all
 main.loadxml                                     : since 11.1.2 - all
 sys_vars.tcp_nodelay                             : since 11.1.2 - all
+
+perfschema.show_aggregate                        : since 11.2.3 - all
+main.mdev375                                     : since 11.2.3 - all

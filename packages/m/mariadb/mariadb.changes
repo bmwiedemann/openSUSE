@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 14 10:40:40 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 11.2.3:
+    https://mariadb.com/kb/en/mariadb-11-2-3-release-notes/
+    https://mariadb.com/kb/en/mariadb-11-2-3-changelog/
+- Update list of skipped tests
+
+-------------------------------------------------------------------
 Mon Nov 27 13:28:45 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
 
 - Fix location of unwanted binaries (which are deleted)
