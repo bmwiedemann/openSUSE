@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 14 16:53:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.2
+  * https://www.qt.io/blog/qt-6.6.2-released
+- Drop patch, merged upstream:
+  * client-avoid-creating-decorations-in-the-render-thread.patch
+
+-------------------------------------------------------------------
 Wed Feb  7 13:49:26 UTC 2024 - Fusion Future <qydwhotmail@gmail.com>
 
 - Add patch to fix a frequent crash (kde#479302)

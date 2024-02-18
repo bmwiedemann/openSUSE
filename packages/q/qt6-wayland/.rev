@@ -232,4 +232,12 @@
   * client-avoid-creating-decorations-in-the-render-thread.patch (forwarded request 1145024 from fusionfuture)</comment>
     <requestid>1145058</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>fb1e82c6568c5c9b4e9a1415877e5de1</srcmd5>
+    <version>6.6.2</version>
+    <time>1708284261</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.6.2 (finally) (forwarded request 1146775 from krop)</comment>
+    <requestid>1147240</requestid>
+  </revision>
 </revisionlist>
