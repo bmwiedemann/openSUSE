@@ -31,7 +31,7 @@
 %endif
 
 Name:           nodejs21
-Version:        21.6.1
+Version:        21.6.2
 Release:        0
 
 # Double DWZ memory limits
@@ -298,7 +298,7 @@ BuildRequires:  openssl >= %{openssl_req_ver}
 %else
 # bundled openssl
 %if %node_version_number <= 12 && 0%{?suse_version} == 1315 && 0%{?sle_version} < 120400
-Provides:       bundled(openssl) = 3.0.12
+Provides:       bundled(openssl) = 3.0.13
 %else
 BuildRequires:  bundled_openssl_should_not_be_required
 %endif
@@ -371,10 +371,10 @@ ExclusiveArch:  not_buildable
 %endif
 
 Provides:       bundled(uvwasi) = 0.0.19
-Provides:       bundled(libuv) = 1.47.0
+Provides:       bundled(libuv) = 1.48.0
 Provides:       bundled(v8) = 11.8.172.17
 %if %{with intree_brotli}
-Provides:       bundled(brotli) = 1.0.9
+Provides:       bundled(brotli) = 1.1.0
 %else
 BuildRequires:  pkgconfig(libbrotlidec)
 %endif
@@ -383,8 +383,8 @@ BuildRequires:  pkgconfig(libbrotlidec)
 Provides:       bundled(llhttp) = 9.1.3
 Provides:       bundled(ngtcp2) = 0.8.1
 Provides:       bundled(base64) = 0.5.1
-Provides:       bundled(simdutf) = 4.0.4
-Provides:       bundled(simdjson) = 3.6.2
+Provides:       bundled(simdutf) = 4.0.8
+Provides:       bundled(simdjson) = 3.6.3
 # bundled url-ada parser, not ada
 Provides:       bundled(ada) = 2.7.4
 
@@ -394,7 +394,7 @@ Provides:       bundled(node-acorn-walk) = 8.3.1
 Provides:       bundled(node-cjs-module-lexer) = 1.2.2
 Provides:       bundled(node-corepack) = 0.24.0
 Provides:       bundled(node-minimatch) = 9.0.3
-Provides:       bundled(node-undici) = 5.28.2
+Provides:       bundled(node-undici) = 5.28.3
 
 %description
 Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js
