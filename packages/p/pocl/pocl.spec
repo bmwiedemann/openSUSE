@@ -40,7 +40,11 @@ BuildRequires:  ninja
 BuildRequires:  ocl-icd-devel
 BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} > 150500
+BuildRequires:  ((clang-devel >= 6.0.0 with clang-devel < 17) or clang15-devel)
+%else
 BuildRequires:  ((clang-devel >= 6.0.0 with clang-devel < 17) or clang16-devel)
+%endif
 BuildRequires:  pkgconfig(hwloc)
 # PPC has limited support/testing from upstream
 # s390(x) is also not supported, so use ExclusiveArch
