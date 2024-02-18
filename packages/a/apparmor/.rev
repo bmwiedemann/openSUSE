@@ -2686,4 +2686,13 @@ thanks to the upstream 926 merge. (forwarded request 1108011 from dmdiss)</comme
 - drop upstreamed apparmor-systemd-sessions.patch (forwarded request 1144684 from cboltz)</comment>
     <requestid>1144685</requestid>
   </revision>
+  <revision rev="201" vrev="2">
+    <srcmd5>f47591b8c15fad3cc52a4a9bca9f87af</srcmd5>
+    <version>3.1.7</version>
+    <time>1708284165</time>
+    <user>anag+factory</user>
+    <comment>- Add apparmor-abstractions-openssl-allow-version-specific-en.patch to
+  allow version specific engdef &amp; engines openssl paths (boo#1219571) (forwarded request 1145034 from dmdiss)</comment>
+    <requestid>1147189</requestid>
+  </revision>
 </revisionlist>

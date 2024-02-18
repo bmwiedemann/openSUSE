@@ -95,6 +95,9 @@ Patch7:         apparmor-enable-precompiled-cache.diff
 # allow dovecot-auth to execute unix_chkpwd, and add a profile for unix_chkpwd. This is needed for PAM 1.6 (boo#1219139)
 Patch9:         dovecot-unix_chkpwd.diff
 
+# abstractions/openssl: allow version specific engdef & engines paths (boo#1219571)
+Patch10:        apparmor-abstractions-openssl-allow-version-specific-en.patch
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bison
@@ -363,6 +366,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch7
 %endif
 %patch9 -p1
+%patch10 -p1
 
 %build
 export SUSE_ASNEEDED=0

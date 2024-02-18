@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  8 05:20:26 UTC 2024 - David Disseldorp <ddiss@suse.com>
+
+- Add apparmor-abstractions-openssl-allow-version-specific-en.patch to
+  allow version specific engdef & engines openssl paths (boo#1219571)
+
+-------------------------------------------------------------------
 Mon Feb  5 22:19:27 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
 
 - Update to AppArmor 3.1.7
