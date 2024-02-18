@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-asdf-transform-schemas
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,9 +44,11 @@ Requires:       python-asdf-standard >= 1.0.1
 Requires:       python-importlib_resources >= 3
 %endif
 %if %{with test}
+BuildRequires:  %{python_module asdf-astropy}
 BuildRequires:  %{python_module asdf-transform-schemas = %{version}}
 BuildRequires:  %{python_module asdf}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scipy}
 %endif
 Provides:       python-asdf_transform_schemas = %{version}-%{release}
 BuildArch:      noarch
@@ -72,7 +74,7 @@ sed -i "/addopts = '--color=yes'/d" pyproject.toml
 
 %if %{with test}
 %check
-%pytest
+%pytest -v
 %endif
 
 %if !%{with test}
