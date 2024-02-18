@@ -3,7 +3,6 @@
   <service mode="manual" name="tar_scm">
     <param name="url">https://github.com/osandov/blktests.git</param>
     <param name="scm">git</param>
-    <param name="revision">1aeff01</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">blktests</param>
     <param name="versionformat">0+%cd.%h</param>

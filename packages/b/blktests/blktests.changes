@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Feb 16 09:07:44 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0+20240213.ac3d8d0:
+  * nvme/rc: revert nvme-cli context tracking
+  * nvme/rc: do not issue errors when disconnecting when using fc transport
+  * nvme/rc: do not issue warnings on cleanup when using fc transport
+  * nvme/rc: filter out errors from cat when reading files
+  * nvme/029: fix local variable declarations
+  * nvme/046: change nvme io-passthru command option from -o to --opcode
+  * nvme: add nvme pci timeout testcase
+  * block/031: allow to run with built-in null_blk driver
+  * common/null_blk: introduce _have_null_blk_feature
+  * nvme/rc: don't print the nvme connect msg
+  * block/007: skip hybrid polling tests when kernel does not support it
+  * block/011: set default timeout to 20 minutes
+  * block/011: recover test target devices to online or live status
+  * loop/009: require --option of udevadm control command
+  * nvme/{041,042,043,044,045}: check dhchap_ctrl_secret support by nvme-fabrics
+  * nvme: do not print subsystem NQN to stdout
+  * nvme: do not print UUID to log files
+  * common/ublk: allow to run ublk test without building miniublk
+  * ublk/rc: prefer to rublk over miniublk
+  * Fix common misspellings from codespell project
+  * tests/srp: remove the unused file 015.out
+  * src/miniublk: fix logical block size setting
+  * block/002: fix TMPDIR path
+  * nvme/{rc,017,031}: replace def_file_path with _nvme_def_file_path()
+  * nvme/rc: fix rdma driver check
+- Small spec file modernisation
+
+-------------------------------------------------------------------
 Wed Oct 11 14:12:41 UTC 2023 - pcervinka@suse.com
 
 - Replace disabled mode in service file by manual mode 
