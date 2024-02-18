@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Feb 18 09:37:55 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2.4
+   * Much faster song loading/skipping.
+   * New settings: configurable colors. These are configured in the
+     kewrc file (in ~/.config/ or wherever your config files are)
+     with instructions there.
+   * New setting: hidehelp. Hides the help text on library view
+     and playlist view.
+   * New setting: hidelogo. Prints the artist name as well as the
+     song title at the top instead of a logo.
+   * Fixed an issue with shuffle that could lead to a crash.
+   * Fixed an issue where it could crash at the end of the
+     playlist.
+   * Fixed an issue where in some types of music libraries you
+     couldn't scroll all the way to the bottom.
+   * Fixed notifications not notifying on songs with spaces in
+     cover art url.
+   * Fixed sometimes not being able to switch song.
+   * Further adjustments to the visualizer.
+   * .aac and .mp4 file support.
+   * New option: -q. Quits right after playing the playlist (same
+     as --quitonstop).
+   * Improved help text.
+   * The visualizer now (finally!) works like it's supposed to for
+     all formats.
+   * Proper clean up and restore cursor when using CTRL-C to quit
+     the app.
+   * Don't refresh track view twice when skipping to the previous
+     song.
+   * Notifications of currently playing song through notify-send.
+     New setting: allowNotifications. Set to 0 to disable
+     notifications.
+   * Fixed an issue that could lead to a crash when switching
+     songs.
+   * Fixed an issue with switching opus songs that could also lead
+     to a crash.
+   * Plus other bug fixes.
+
+-------------------------------------------------------------------
 Sat Feb  3 22:41:42 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2.2.1
