@@ -1,7 +1,7 @@
 #
 # spec file for package python-photutils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-photutils
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 Summary:        An Astropy package for photometry
 License:        BSD-3-Clause
@@ -26,8 +26,8 @@ URL:            https://github.com/astropy/photutils
 Source:         https://files.pythonhosted.org/packages/source/p/photutils/photutils-%{version}.tar.gz
 BuildRequires:  %{python_module Cython >= 3 with %python-Cython < 3.1}
 BuildRequires:  %{python_module devel >= 3.9}
-BuildRequires:  %{python_module extension-helpers}
-BuildRequires:  %{python_module numpy-devel >= 1.22}
+BuildRequires:  %{python_module extension-helpers >= 1 with %python-extension-helpers < 2}
+BuildRequires:  %{python_module numpy-devel >= 1.25}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}
 BuildRequires:  %{python_module setuptools_scm >= 6.2}
@@ -35,7 +35,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-astropy >= 5.1
-Requires:       python-numpy >= 1.22
+Requires:       python-numpy >= 1.25
 Recommends:     python-Bottleneck
 Recommends:     python-Shapely
 Recommends:     python-gwcs >= 0.18

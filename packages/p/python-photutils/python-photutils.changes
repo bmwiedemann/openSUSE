@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sun Feb 18 15:10:59 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.11.0
+  ## New Features
+  ### photutils.psf
+  * An init_params table is now included in the PSFPhotometry
+    fit_results dictionary. [#1681]
+  * Added an include_localbkg keyword to the PSF photometry
+    make_model_image and make_residual_image methods. [#1691]
+  * Significantly reduced the memory usage of PSF photometry when
+    using a GriddedPSFModel PSF model. [#1679]
+  * Added a mode keyword to IterativePSFPhotometry for controlling
+    the fitting mode. [#1708]
+  ### photutils.datasets
+  * Improved the performance of make_test_psf_data when generating
+    random coordinates with a minimum separation. [#1668]
+  ### photutils.segmentation
+  * The SourceFinder npixels keyword can now be a tuple
+    corresponding to the values used for the source finder and
+    source deblender, respectively. [#1688]
+  ### photutils.utils
+  * Improved the performance of ImageDepth when generating random
+    coordinates with a minimum separation. [#1668]
+  ## Bug Fixes
+  ### photutils.psf
+  * Fixed an issue where PSF models produced by make_psf_model
+    would raise an error with PSFPhotometry if the fit did not
+    converge. [#1672]
+  * Fixed an issue where GriddedPSFModel fixed model parameters
+    were not respected when copying the model or fitting with the
+    PSF photometry classes. [#1679]
+  ## API Changes
+  ### photutils.aperture
+  * PixelAperture instances now raise an informative error message
+    when positions is input as a zip object containing Astropy
+    Quantity objects. [#1682]
+  ### photutils.psf
+  * The GridddedPSFModel string representations now include the
+    model flux, x_0, and y_0 parameters. [#1680]
+  * The PSF photometry make_model_image and make_residual_image
+    methods no longer include the local background by default. This
+    is a backwards-incompatible change. If the previous behavior is
+    desired, set include_localbkg=True. [#1703]
+  * The PSF photometry finder_results attribute is now returned as
+    a QTable instead of a list of QTable. [#1704]
+  * Deprecated the NonNormalizable custom warning class in favor of
+    AstropyUserWarning. [#1710]
+  ### photutils.segmentation
+  * The SourceCatalog get_label and get_labels methods now raise a
+    ValueError if any of the input labels are invalid. [#1694]
+
+-------------------------------------------------------------------
 Fri Nov 24 12:38:58 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.10.0

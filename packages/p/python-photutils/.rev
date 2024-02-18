@@ -540,4 +540,41 @@
     faster implementation of binary dilation. [#1638]</comment>
     <requestid>1128558</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d5a58c3ed70132601fe34c61718bdea7</srcmd5>
+    <version>1.11.0</version>
+    <time>1708284307</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.11.0
+  ## New Features
+  ### photutils.psf
+  * An init_params table is now included in the PSFPhotometry
+    fit_results dictionary. [#1681]
+  * Added an include_localbkg keyword to the PSF photometry
+    make_model_image and make_residual_image methods. [#1691]
+  * Significantly reduced the memory usage of PSF photometry when
+    using a GriddedPSFModel PSF model. [#1679]
+  * Added a mode keyword to IterativePSFPhotometry for controlling
+    the fitting mode. [#1708]
+  ### photutils.datasets
+  * Improved the performance of make_test_psf_data when generating
+    random coordinates with a minimum separation. [#1668]
+  ### photutils.segmentation
+  * The SourceFinder npixels keyword can now be a tuple
+    corresponding to the values used for the source finder and
+    source deblender, respectively. [#1688]
+  ### photutils.utils
+  * Improved the performance of ImageDepth when generating random
+    coordinates with a minimum separation. [#1668]
+  ## Bug Fixes
+  ### photutils.psf
+  * Fixed an issue where PSF models produced by make_psf_model
+    would raise an error with PSFPhotometry if the fit did not
+    converge. [#1672]
+  * Fixed an issue where GriddedPSFModel fixed model parameters
+    were not respected when copying the model or fitting with the
+    PSF photometry classes. [#1679]
+  ## API Changes</comment>
+    <requestid>1147437</requestid>
+  </revision>
 </revisionlist>
