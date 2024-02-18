@@ -987,4 +987,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment>post-embargo sync with SLE</comment>
     <requestid>1146829</requestid>
   </revision>
+  <revision rev="104" vrev="4">
+    <srcmd5>1b175157f970738cfc3c3a25fc325c36</srcmd5>
+    <version>9.0.85</version>
+    <time>1708284286</time>
+    <user>anag+factory</user>
+    <comment>Link ecj.jar into the install instead of copying it</comment>
+    <requestid>1147338</requestid>
+  </revision>
 </revisionlist>
