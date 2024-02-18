@@ -551,4 +551,24 @@
   * chore: bump branch in workflow (forwarded request 1144969 from jfkw)</comment>
     <requestid>1144970</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>bff159aff166d027c2ab94887f0d9439</srcmd5>
+    <version>3.1.0</version>
+    <time>1708284309</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.1.0:
+  * refactor: update chrome ID
+  * refactor: revert #748
+  * refactor: use `AddConfigFile`
+  * refactor: add `cfg.SearchPaths()`
+  * refactor: show var value in `ls-dirs` if set
+  * feat: add `ls-vars` command
+  * feat: add support for `VALE_STYLES_PATH`
+  * refactor: fix golangci
+  * feat: add comment syntax for switching styles (#748)
+  * refactor: `sync` should initialize `.vale-config`
+  * docs: update contributing instructions (#767)
+  * chore: revert `minAlertLevel` (forwarded request 1147452 from jfkw)</comment>
+    <requestid>1147453</requestid>
+  </revision>
 </revisionlist>

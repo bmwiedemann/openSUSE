@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Feb 18 17:03:03 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.1.0:
+  * refactor: update chrome ID
+  * refactor: revert #748
+  * refactor: use `AddConfigFile`
+  * refactor: add `cfg.SearchPaths()`
+  * refactor: show var value in `ls-dirs` if set
+  * feat: add `ls-vars` command
+  * feat: add support for `VALE_STYLES_PATH`
+  * refactor: fix golangci
+  * feat: add comment syntax for switching styles (#748)
+  * refactor: `sync` should initialize `.vale-config`
+  * docs: update contributing instructions (#767)
+  * chore: revert `minAlertLevel`
+
+-------------------------------------------------------------------
 Wed Feb 07 05:45:22 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.0.7:
