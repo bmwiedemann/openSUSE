@@ -17,7 +17,7 @@
 
 
 Name:           python-beartype
-Version:        0.17.0
+Version:        0.17.2
 Release:        0
 Summary:        Unbearably fast runtime type checking in pure Python
 License:        MIT
@@ -60,6 +60,8 @@ Unbearably fast runtime type checking in pure Python.
 
 %prep
 %autosetup -p1 -n beartype-%{version}
+# disable bogus shebang (do not remove in order to keep same line numbers for tests)
+find . -name '*.py' -exec sed -i '1{s/^#!.*$/# beartype python script/}' '{}' ';'
 
 %build
 %pyproject_wheel
@@ -69,8 +71,7 @@ Unbearably fast runtime type checking in pure Python.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Disable test_beartype_in_sphinx, broken with sphinx 6.1.3 gh#beartype/beartype#209
-%pytest -k 'not (test_doc_readme or test_sphinx or test_pep561_mypy or test_beartype_in_sphinx)'
+%pytest -k 'not (test_doc_readme or test_sphinx or test_pep561_mypy)'
 
 %files %{python_files}
 %doc README.rst

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Feb 16 12:38:14 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.17.2
+  * Beartype 0.17.2 nervously skitters about on thin ice. Cracks
+    form, yet beartype 0.17.2 fails to return to shore. "What are
+    you even doing!?", the crowd exclaims. Verily, it is best not
+    to ask questions.
+  * This Release Kinda Sucks, Huh?
+  * Alright, alright. You found us out already.
+  * Beartype 0.17.2 is an extremely minor patch release that exists
+    purely to relax the bad assumption that all Python 3.9 releases
+    unconditionally define the standard
+    typing.ForwardRef.__forward_module__ dunder attribute,
+    resolving issue #324 kindly submitted by stone-cold typonista
+    @jvesely (Jan Vesely). Although Python ≥ 3.9.18 definitively
+    defines this attribute, an unknown range of older Python 3.9
+    patch releases fail to do so.
+  * Beartype 0.17.2 resolves this by naively pretending that all
+    Python 3.9 releases fail to do so. Although kinda non-ideal,
+    it's unclear whether this attribute is even used (i.e., set to
+    a string) under Python 3.9. In fact, it's unclear whether this
+    attribute is even used anywhere, ever. It probably will be
+    under Python ≥ 3.13, but that's putting the proverbial cart
+    before the horse. Anyyyyyyway.
+  * We now return to your regularly scheduled Python hackathon.
+- Release 0.17.1
+  * Beartype 0.17.1 gently descends from the heavens on a golden
+    dragon made of rainbows. "How can this be!?", the crowd
+    exclaims. Verily, it is best not to ask questions.
+  * This patch release adds explicit support for typing.NamedTuple
+    subclasses under PEP 56
+
+-------------------------------------------------------------------
 Tue Feb  6 18:46:35 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - update to 0.17.0:
