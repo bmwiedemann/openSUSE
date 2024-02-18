@@ -17,8 +17,8 @@
 
 
 %define srcversion 6.7
-%define patchversion 6.7.4
-%define git_commit 01735a3e65287585dd830a6a3d33d909a4f9ae7f
+%define patchversion 6.7.5
+%define git_commit a3bab56f26c8c783bb4195c872ddc6b877982fa0
 %define variant %{nil}
 %define build_html 1
 %define build_pdf 0
@@ -31,9 +31,9 @@ Name:           kernel-docs
 Summary:        Kernel Documentation
 License:        GPL-2.0-only
 Group:          Documentation/Man
-Version:        6.7.4
+Version:        6.7.5
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g01735a3
+Release:        <RELEASE>.ga3bab56
 %else
 Release:        0
 %endif

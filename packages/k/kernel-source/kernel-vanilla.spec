@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.7
-%define patchversion 6.7.4
-%define git_commit 01735a3e65287585dd830a6a3d33d909a4f9ae7f
+%define patchversion 6.7.5
+%define git_commit a3bab56f26c8c783bb4195c872ddc6b877982fa0
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -113,9 +113,9 @@ Name:           kernel-vanilla
 Summary:        The Standard Kernel - without any SUSE patches
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.7.4
+Version:        6.7.5
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g01735a3
+Release:        <RELEASE>.ga3bab56
 %else
 Release:        0
 %endif
@@ -155,7 +155,7 @@ BuildRequires:  u-boot-tools
 %endif
 # Do not install p-b and dracut for the install check, the %post script is
 # able to handle this
-#!BuildIgnore: perl-Bootloader dracut distribution-release
+#!BuildIgnore: perl-Bootloader dracut distribution-release suse-kernel-rpm-scriptlets
 # Remove some packages that are installed automatically by the build system,
 # but are not needed to build the kernel
 #!BuildIgnore: autoconf automake gettext-runtime libtool cvs gettext-tools udev insserv
@@ -1022,6 +1022,31 @@ if [ %CONFIG_MODULES = y ]; then
     fi
 fi
 
+# CONFIG_GDB_SCRIPTS
+if [ -e vmlinux-gdb.py ]; then
+    DEST=%rpm_install_dir/%cpu_arch_flavor/
+    install -m 755 -d "$DEST"
+    # set sys.path to our devel.rpm scripts
+    sed 's@\(sys\.path\.insert(0, \).*@\1"%obj_install_dir/%cpu_arch_flavor/scripts/gdb/")@' vmlinux-gdb.py > "$DEST/vmlinux-gdb.py"
+
+    DEST=%rpm_install_dir/%cpu_arch_flavor/scripts/gdb/linux
+    install -m 755 -d "$DEST"
+    pushd scripts/gdb/linux/
+    for file in *.py; do
+	if test -L "$file"; then
+	    # relink against our devel.rpm sources, not of buildroot's
+	    ln -s "%src_install_dir/scripts/gdb/linux/$file" "$DEST/$file"
+	else
+	    cp -p "$file" "$DEST"
+	fi
+    done
+    popd
+
+    DEST=%{buildroot}%{_datadir}/gdb/auto-load%modules_dir
+    install -m 755 -d "$DEST"
+    ln -s %obj_install_dir/%cpu_arch_flavor/vmlinux-gdb.py "$DEST/vmlinux-gdb.py"
+fi
+
 rm -rf %{buildroot}/lib/firmware
 
 add_dirs_to_filelist() {
@@ -1035,7 +1060,7 @@ add_dirs_to_filelist() {
         # print all parents
         :a
             # skip directories owned by other packages
-            s:^%%dir (/boot|/etc|(/usr)?/lib/(modules|firmware)|/usr/src)/[^/]+$::
+            s:^%%dir (/boot|/etc|(/usr)?/lib/(modules|firmware)|/usr/share|/usr/src)/[^/]+$::
             s:/[^/]+$::p
         ta
     ' "$@" | sort -u
@@ -1068,6 +1093,10 @@ shopt -s nullglob dotglob
         echo "/$file"
 %endif
     done
+    if test -d .%{_datadir}/gdb/; then
+	find .%obj_install_dir/%cpu_arch_flavor/scripts/gdb/linux/ -name '*.py' -type l | sed -e 's/^[.]//'
+	echo "%{_datadir}/gdb/auto-load%modules_dir/vmlinux-gdb.py"
+    fi
 } | add_dirs_to_filelist >%my_builddir/kernel-devel.files
 ( cd %buildroot ; find .%obj_install_dir/%cpu_arch_flavor -type f ; ) | \
 sed -e 's/^[.]//' | grep -v -e '[.]ipa-clones$' -e '/Symbols[.]list$' -e '/ipa-clones[.]list$'| \
@@ -1218,14 +1247,14 @@ fi
 
 %pre
 %if "%build_flavor" != "zfcpdump"
-/usr/lib/module-init-tools/kernel-scriptlets/rpm-pre --name "%name" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-pre --name "%name" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 %endif
 %post
 %if "%build_flavor" != "zfcpdump"
-/usr/lib/module-init-tools/kernel-scriptlets/rpm-post --name "%name" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-post --name "%name" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
@@ -1246,7 +1275,7 @@ fi
 %endif
 %posttrans
 %if "%build_flavor" != "zfcpdump"
-/usr/lib/module-init-tools/kernel-scriptlets/rpm-posttrans --name "%name" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-posttrans --name "%name" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
@@ -1325,13 +1354,13 @@ This package contains only the base modules, required in all installs.
 
 %source_timestamp
 %pre base
-/usr/lib/module-init-tools/kernel-scriptlets/rpm-pre --name "%name-base" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-pre --name "%name-base" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %post base
-/usr/lib/module-init-tools/kernel-scriptlets/rpm-post --name "%name-base" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-post --name "%name-base" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
@@ -1349,7 +1378,7 @@ This package contains only the base modules, required in all installs.
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %posttrans base
-/usr/lib/module-init-tools/kernel-scriptlets/rpm-posttrans --name "%name-base" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-posttrans --name "%name-base" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
@@ -1392,13 +1421,13 @@ This package contains additional modules not supported by SUSE.
 %source_timestamp
 
 %pre extra
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "%name-extra" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "%name-extra" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %post extra
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "%name-extra" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "%name-extra" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
@@ -1416,7 +1445,7 @@ This package contains additional modules not supported by SUSE.
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %posttrans extra
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "%name-extra" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "%name-extra" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
@@ -1460,13 +1489,13 @@ This package contains optional modules only for openSUSE Leap.
 %source_timestamp
 
 %pre optional
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "%name-optional" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "%name-optional" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %post optional
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "%name-optional" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "%name-optional" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
@@ -1484,7 +1513,7 @@ This package contains optional modules only for openSUSE Leap.
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %posttrans optional
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "%name-optional" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "%name-optional" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
@@ -1653,13 +1682,13 @@ synchronization across multiple systems on the cluster, so all
 nodes in the cluster can access the MD devices simultaneously.
 
 %pre -n cluster-md-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "cluster-md-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "cluster-md-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %post -n cluster-md-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "cluster-md-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "cluster-md-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
@@ -1677,7 +1706,7 @@ nodes in the cluster can access the MD devices simultaneously.
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %posttrans -n cluster-md-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "cluster-md-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "cluster-md-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
@@ -1706,13 +1735,13 @@ DLM stands for Distributed Lock Manager, a means to synchronize access to
 shared resources over the cluster.
 
 %pre -n dlm-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "dlm-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "dlm-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %post -n dlm-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "dlm-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "dlm-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
@@ -1730,7 +1759,7 @@ shared resources over the cluster.
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %posttrans -n dlm-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "dlm-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "dlm-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
@@ -1759,13 +1788,13 @@ Requires:       dlm-kmp-%build_flavor = %version-%release
 GFS2 is Global Filesystem, a shared device filesystem.
 
 %pre -n gfs2-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "gfs2-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "gfs2-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %post -n gfs2-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "gfs2-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "gfs2-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
@@ -1783,7 +1812,7 @@ GFS2 is Global Filesystem, a shared device filesystem.
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %posttrans -n gfs2-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "gfs2-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "gfs2-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
@@ -1827,13 +1856,13 @@ Selftest drivers are intended to be supported only in testing and QA
 environments, they are not intended to be run on production systems.
 
 %pre -n kselftests-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "kselftests-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "kselftests-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %post -n kselftests-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "kselftests-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "kselftests-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
@@ -1851,7 +1880,7 @@ environments, they are not intended to be run on production systems.
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %posttrans -n kselftests-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "kselftests-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "kselftests-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
@@ -1881,13 +1910,13 @@ OCFS2 is the Oracle Cluster Filesystem, a filesystem for shared devices
 accessible simultaneously from multiple nodes of a cluster.
 
 %pre -n ocfs2-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "ocfs2-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "ocfs2-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %post -n ocfs2-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "ocfs2-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "ocfs2-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
@@ -1905,7 +1934,7 @@ accessible simultaneously from multiple nodes of a cluster.
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %posttrans -n ocfs2-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "ocfs2-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "ocfs2-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
@@ -1934,13 +1963,13 @@ The reiserfs file system is no longer supported in SLE15.  This package
 provides the reiserfs module for the installation system.
 
 %pre -n reiserfs-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "reiserfs-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "reiserfs-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %post -n reiserfs-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "reiserfs-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "reiserfs-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
@@ -1958,7 +1987,7 @@ provides the reiserfs module for the installation system.
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %posttrans -n reiserfs-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "reiserfs-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "reiserfs-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
