@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 16 00:15:08 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- update to 1.38.0:
+  * Improved error notification
+  * Improved notifications
+  * Prevent manga update from being scheduled while it's being updated
+
+-------------------------------------------------------------------
 Fri Feb  2 20:37:03 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - switch over to download_files to simplify packaging
