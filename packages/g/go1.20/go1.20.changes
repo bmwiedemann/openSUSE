@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  6 22:28:04 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * boo#1219988 ensure VERSION file is present in GOROOT
+    as required by go tool dist and go tool distpack
+
+-------------------------------------------------------------------
 Tue Feb  6 18:22:28 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.20.14 (released 2024-02-06) includes fixes to the crypto/x509

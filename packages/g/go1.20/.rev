@@ -292,4 +292,14 @@
   * go#65379 crypto/x509: TestIssue51759 consistently failing on gotip-darwin-amd64_10.15 LUCI builder (forwarded request 1144758 from jfkw)</comment>
     <requestid>1144759</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>a0cc539cdb1f96b148c343590f76d3c6</srcmd5>
+    <version>1.20.14</version>
+    <time>1708284179</time>
+    <user>anag+factory</user>
+    <comment>- Packaging improvements:
+  * boo#1219988 ensure VERSION file is present in GOROOT
+    as required by go tool dist and go tool distpack (forwarded request 1147331 from jfkw)</comment>
+    <requestid>1147335</requestid>
+  </revision>
 </revisionlist>
