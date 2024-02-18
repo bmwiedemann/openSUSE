@@ -1,0 +1,94 @@
+From c81e742f04195269e4c6db089da7351babaa505d Mon Sep 17 00:00:00 2001
+From: Ulf Hermann <ulf.hermann@qt.io>
+Date: Tue, 30 Jan 2024 12:00:01 +0100
+Subject: [PATCH] Link VKB and VKB.Settings into VKB.Components and VKB into
+ VKB.Styles
+
+This forces the build system to build VirtualKeyboard and
+VirtualKeyboardSettings first which makes their qmltypes available to
+subsequent build steps.
+
+Pick-to: 6.7 6.6
+Task-number: QTBUG-121643
+Change-Id: Ia0cdfe522d78c94eb87f7fd2cbaf6c2fdac954aa
+Reviewed-by: Fabian Kosmale <fabian.kosmale@qt.io>
+---
+ src/CMakeLists.txt            | 2 +-
+ src/components/CMakeLists.txt | 2 ++
+ src/settings/CMakeLists.txt   | 8 ++++----
+ src/styles/CMakeLists.txt     | 1 +
+ 4 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 1551c2b..747defa 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -4,9 +4,9 @@
+ # Generated from src.pro.
+ 
+ add_subdirectory(virtualkeyboard)
++add_subdirectory(settings)
+ add_subdirectory(components)
+ add_subdirectory(layouts)
+-add_subdirectory(settings)
+ add_subdirectory(styles)
+ add_subdirectory(plugin)
+ add_subdirectory(plugins)
+diff --git a/src/components/CMakeLists.txt b/src/components/CMakeLists.txt
+index 1ee450e..1343b6d 100644
+--- a/src/components/CMakeLists.txt
++++ b/src/components/CMakeLists.txt
+@@ -55,4 +55,6 @@ qt_internal_add_qml_module(qtvkbcomponentsplugin
+         Qt::Gui
+         Qt::Qml
+         Qt::Quick
++        Qt::VirtualKeyboard
++        Qt::VirtualKeyboardSettings
+ )
+diff --git a/src/settings/CMakeLists.txt b/src/settings/CMakeLists.txt
+index 08d5f28..9d4f37d 100644
+--- a/src/settings/CMakeLists.txt
++++ b/src/settings/CMakeLists.txt
+@@ -5,7 +5,7 @@
+ ## qtvkbsettingsplugin Plugin:
+ #####################################################################
+ 
+-qt_internal_add_qml_module(qtvkbsettingsplugin
++qt_internal_add_qml_module(VirtualKeyboardSettings
+     URI "QtQuick.VirtualKeyboard.Settings"
+     VERSION "${PROJECT_VERSION}"
+     PAST_MAJOR_VERSIONS 2 1
+@@ -28,17 +28,17 @@ qt_internal_add_qml_module(qtvkbsettingsplugin
+         Qt::VirtualKeyboardPrivate
+ )
+ 
+-qt_internal_extend_target(qtvkbsettingsplugin CONDITION QT_FEATURE_vkb_no_builtin_style
++qt_internal_extend_target(VirtualKeyboardSettings CONDITION QT_FEATURE_vkb_no_builtin_style
+     DEFINES
+         QT_VIRTUALKEYBOARD_DEFAULT_STYLE=""
+ )
+ 
+-qt_internal_extend_target(qtvkbsettingsplugin CONDITION QT_FEATURE_vkb_retro_style AND NOT QT_FEATURE_vkb_no_builtin_style
++qt_internal_extend_target(VirtualKeyboardSettings CONDITION QT_FEATURE_vkb_retro_style AND NOT QT_FEATURE_vkb_no_builtin_style
+     DEFINES
+         QT_VIRTUALKEYBOARD_DEFAULT_STYLE="retro"
+ )
+ 
+-qt_internal_extend_target(qtvkbsettingsplugin CONDITION NOT QT_FEATURE_vkb_no_builtin_style AND NOT QT_FEATURE_vkb_retro_style
++qt_internal_extend_target(VirtualKeyboardSettings CONDITION NOT QT_FEATURE_vkb_no_builtin_style AND NOT QT_FEATURE_vkb_retro_style
+     DEFINES
+         QT_VIRTUALKEYBOARD_DEFAULT_STYLE="default"
+ )
+diff --git a/src/styles/CMakeLists.txt b/src/styles/CMakeLists.txt
+index 8676e4a..ce8c779 100644
+--- a/src/styles/CMakeLists.txt
++++ b/src/styles/CMakeLists.txt
+@@ -48,4 +48,5 @@ qt_internal_add_qml_module(qtvkbstylesplugin
+         Qt::Qml
+         Qt::Quick
+         Qt::Svg
++        Qt::VirtualKeyboard
+ )
+-- 
+2.43.0
+

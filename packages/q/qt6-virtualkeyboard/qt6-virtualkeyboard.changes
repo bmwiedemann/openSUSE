@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 14 16:53:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.2
+  * https://www.qt.io/blog/qt-6.6.2-released
+- Add patch to make builds reproducible (QTBUG-121643):
+  * 0001-Link-VKB-and-VKB.Settings-into-VKB.Components-and-VK.patch
+
+-------------------------------------------------------------------
 Mon Nov 27 14:00:21 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.6.1:

@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.6.1
+%define real_version 6.6.2
 %define short_version 6.6
 %define tar_name qtvirtualkeyboard-everywhere-src
 %define tar_suffix %{nil}
@@ -27,13 +27,15 @@
 %endif
 #
 Name:           qt6-virtualkeyboard%{?pkg_suffix}
-Version:        6.6.1
+Version:        6.6.2
 Release:        0
 Summary:        Framework for writing or integrating input methods and engines for Qt 6
 License:        GPL-3.0-only
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-virtualkeyboard-rpmlintrc
+# PATCH-FIX-UPSTREAM -- make builds reproducible
+Patch0:         0001-Link-VKB-and-VKB.Settings-into-VKB.Components-and-VK.patch
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-gui-private-devel
@@ -152,6 +154,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledTcime
 %files -n libQt6VirtualKeyboard6
 %license LICENSES/*
 %{_qt6_libdir}/libQt6VirtualKeyboard.so.*
+%{_qt6_libdir}/libQt6VirtualKeyboardSettings.so.*
 
 %files -n qt6-virtualkeyboard-devel
 %{_qt6_cmakedir}/Qt6/FindCerence*.cmake
@@ -169,8 +172,18 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledTcime
 %exclude %{_qt6_includedir}/QtVirtualKeyboard/%{real_version}/
 
 %files -n qt6-virtualkeyboard-private-devel
+%{_qt6_cmakedir}/Qt6VirtualKeyboardSettings/
+%{_qt6_descriptionsdir}/VirtualKeyboardSettings.json
 %{_qt6_includedir}/QtVirtualKeyboard/%{real_version}/
+%{_qt6_includedir}/QtVirtualKeyboardSettings/
+%{_qt6_libdir}/libQt6VirtualKeyboardSettings.prl
+%{_qt6_libdir}/libQt6VirtualKeyboardSettings.so
+%{_qt6_metatypesdir}/qt6virtualkeyboardsettings_*_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_virtualkeyboardsettings.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_virtualkeyboardsettings_private.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_virtualkeyboard_private.pri
+%{_qt6_pkgconfigdir}/Qt6VirtualKeyboardSettings.pc
+
 
 ### Private only library ###
 
