@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 10 14:26:08 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update digest to version 0.0.2.1.
+  ## 0.0.2.1 — 10th Febraury 2024
+  - Make pkg-config an automatic flag: <https://github.com/TeofilC/digest/pull/21>
+
+-------------------------------------------------------------------
 Wed Dec 13 11:48:35 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update digest to version 0.0.2.0.
