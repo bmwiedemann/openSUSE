@@ -1,0 +1,239 @@
+From 123068ed865decef3b0bdfb602d037aced4dcea8 Mon Sep 17 00:00:00 2001
+From: Ulf Hermann <ulf.hermann@qt.io>
+Date: Tue, 30 Jan 2024 13:45:45 +0100
+Subject: [PATCH] QuickControls: Link the impl libraries into the base modules
+
+This forces the build system to build them before, making the qmltypes
+files available to the base modules' build steps. The linker might even
+actually link the libraries and avoid the excessivle plugin loading that
+way. To encourage that, also drop the pointless NO_PLUGIN_OPTIONAL.
+
+Task-number: QTBUG-121643
+Change-Id: Ifd9082a5927deac8c9d67edf4104338ddaa35aa5
+Reviewed-by: Fabian Kosmale <fabian.kosmale@qt.io>
+Reviewed-by: Mitch Curtis <mitch.curtis@qt.io>
+Reviewed-by: Alexey Edelev <alexey.edelev@qt.io>
+Reviewed-by: Qt CI Bot <qt_ci_bot@qt-project.org>
+(cherry picked from commit 3b01f90fa5fcb7320ce034dc9fe02279012d0b87)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+(cherry picked from commit 4920a7f763bbda4172eba8bda81aebc47986248f)
+---
+ src/quickcontrols/basic/CMakeLists.txt          | 1 +
+ src/quickcontrols/basic/impl/CMakeLists.txt     | 3 +--
+ src/quickcontrols/fusion/CMakeLists.txt         | 1 +
+ src/quickcontrols/fusion/impl/CMakeLists.txt    | 3 +--
+ src/quickcontrols/imagine/CMakeLists.txt        | 1 +
+ src/quickcontrols/imagine/impl/CMakeLists.txt   | 5 ++---
+ src/quickcontrols/ios/CMakeLists.txt            | 3 ++-
+ src/quickcontrols/ios/impl/CMakeLists.txt       | 3 +--
+ src/quickcontrols/material/CMakeLists.txt       | 1 +
+ src/quickcontrols/material/impl/CMakeLists.txt  | 3 +--
+ src/quickcontrols/universal/CMakeLists.txt      | 1 +
+ src/quickcontrols/universal/impl/CMakeLists.txt | 3 +--
+ 12 files changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/src/quickcontrols/basic/CMakeLists.txt b/src/quickcontrols/basic/CMakeLists.txt
+index 4bc75288af..dbe0d3027e 100644
+--- a/src/quickcontrols/basic/CMakeLists.txt
++++ b/src/quickcontrols/basic/CMakeLists.txt
+@@ -173,6 +173,7 @@ qt_internal_add_qml_module(qtquickcontrols2basicstyleplugin
+         Qt::CorePrivate
+         Qt::GuiPrivate
+         Qt::QmlPrivate
++        Qt::QuickControls2BasicStyleImpl
+         Qt::QuickControls2Private
+         Qt::QuickPrivate
+         Qt::QuickTemplates2Private
+diff --git a/src/quickcontrols/basic/impl/CMakeLists.txt b/src/quickcontrols/basic/impl/CMakeLists.txt
+index ec79fafdda..61801b0cda 100644
+--- a/src/quickcontrols/basic/impl/CMakeLists.txt
++++ b/src/quickcontrols/basic/impl/CMakeLists.txt
+@@ -5,12 +5,11 @@
+ ## qtquickcontrols2basicstyleimplplugin Plugin:
+ #####################################################################
+ 
+-qt_internal_add_qml_module(qtquickcontrols2basicstyleimplplugin
++qt_internal_add_qml_module(QuickControls2BasicStyleImpl
+     URI "QtQuick.Controls.Basic.impl"
+     VERSION "${PROJECT_VERSION}"
+     CLASS_NAME QtQuickControls2BasicStyleImplPlugin
+     PLUGIN_TARGET qtquickcontrols2basicstyleimplplugin
+-    NO_PLUGIN_OPTIONAL
+     SOURCES
+         qquickbasicbusyindicator.cpp qquickbasicbusyindicator_p.h
+         qquickbasicdial.cpp qquickbasicdial_p.h
+diff --git a/src/quickcontrols/fusion/CMakeLists.txt b/src/quickcontrols/fusion/CMakeLists.txt
+index 69f8f5f96d..2bb6d98a44 100644
+--- a/src/quickcontrols/fusion/CMakeLists.txt
++++ b/src/quickcontrols/fusion/CMakeLists.txt
+@@ -117,6 +117,7 @@ qt_internal_add_qml_module(qtquickcontrols2fusionstyleplugin
+         Qt::CorePrivate
+         Qt::GuiPrivate
+         Qt::QmlPrivate
++        Qt::QuickControls2FusionStyleImpl
+         Qt::QuickControls2Private
+         Qt::QuickPrivate
+         Qt::QuickTemplates2Private
+diff --git a/src/quickcontrols/fusion/impl/CMakeLists.txt b/src/quickcontrols/fusion/impl/CMakeLists.txt
+index e52f1ecc06..64ee4851fb 100644
+--- a/src/quickcontrols/fusion/impl/CMakeLists.txt
++++ b/src/quickcontrols/fusion/impl/CMakeLists.txt
+@@ -14,7 +14,7 @@ set(qml_files
+     "SwitchIndicator.qml"
+ )
+ 
+-qt_internal_add_qml_module(qtquickcontrols2fusionstyleimplplugin
++qt_internal_add_qml_module(QuickControls2FusionStyleImpl
+     URI "QtQuick.Controls.Fusion.impl"
+     VERSION "${PROJECT_VERSION}"
+     PAST_MAJOR_VERSIONS 2
+@@ -22,7 +22,6 @@ qt_internal_add_qml_module(qtquickcontrols2fusionstyleimplplugin
+     DEPENDENCIES
+         QtQuick/auto
+     PLUGIN_TARGET qtquickcontrols2fusionstyleimplplugin
+-    NO_PLUGIN_OPTIONAL
+     SOURCES
+         qquickfusionbusyindicator.cpp qquickfusionbusyindicator_p.h
+         qquickfusiondial.cpp qquickfusiondial_p.h
+diff --git a/src/quickcontrols/imagine/CMakeLists.txt b/src/quickcontrols/imagine/CMakeLists.txt
+index e4a164add2..4ef398e0fb 100644
+--- a/src/quickcontrols/imagine/CMakeLists.txt
++++ b/src/quickcontrols/imagine/CMakeLists.txt
+@@ -108,6 +108,7 @@ qt_internal_add_qml_module(qtquickcontrols2imaginestyleplugin
+         Qt::CorePrivate
+         Qt::GuiPrivate
+         Qt::QmlPrivate
++        Qt::QuickControls2ImagineStyleImpl
+         Qt::QuickControls2ImplPrivate
+         Qt::QuickControls2Private
+         Qt::QuickPrivate
+diff --git a/src/quickcontrols/imagine/impl/CMakeLists.txt b/src/quickcontrols/imagine/impl/CMakeLists.txt
+index d988a976a6..5dd12b5de5 100644
+--- a/src/quickcontrols/imagine/impl/CMakeLists.txt
++++ b/src/quickcontrols/imagine/impl/CMakeLists.txt
+@@ -9,12 +9,11 @@ set(qml_files
+     "OpacityMask.qml"
+ )
+ 
+-qt_internal_add_qml_module(qtquickcontrols2imaginestyleimplplugin
++qt_internal_add_qml_module(QuickControls2ImagineStyleImpl
+     URI "QtQuick.Controls.Imagine.impl"
+     VERSION "${PROJECT_VERSION}"
+     CLASS_NAME QtQuickControls2ImagineStyleImplPlugin
+     PLUGIN_TARGET qtquickcontrols2imaginestyleimplplugin
+-    NO_PLUGIN_OPTIONAL
+     QML_FILES
+         ${qml_files}
+     IMPORTS
+@@ -31,7 +30,7 @@ qt_internal_add_qml_module(qtquickcontrols2imaginestyleimplplugin
+         Qt::QuickTemplates2Private
+ )
+ 
+-qt_internal_add_shaders(qtquickcontrols2imaginestyleimplplugin "qtquickcontrols2imaginestyleimplplugin_shaders"
++qt_internal_add_shaders(QuickControls2ImagineStyleImpl "qtquickcontrols2imaginestyleimplplugin_shaders"
+     SILENT
+     BATCHABLE
+     PRECOMPILE
+diff --git a/src/quickcontrols/ios/CMakeLists.txt b/src/quickcontrols/ios/CMakeLists.txt
+index bb38601e8b..c4c827677a 100644
+--- a/src/quickcontrols/ios/CMakeLists.txt
++++ b/src/quickcontrols/ios/CMakeLists.txt
+@@ -79,10 +79,11 @@ qt_internal_add_qml_module(qtquickcontrols2iosstyleplugin
+         Qt::CorePrivate
+         Qt::GuiPrivate
+         Qt::QmlPrivate
++        Qt::QuickControls2IOSStyleImpl
++        Qt::QuickControls2ImplPrivate
+         Qt::QuickControls2Private
+         Qt::QuickPrivate
+         Qt::QuickTemplates2Private
+-        Qt::QuickControls2ImplPrivate
+ )
+ 
+ qt_internal_extend_target(qtquickcontrols2iosstyleplugin CONDITION APPLE AND IOS
+diff --git a/src/quickcontrols/ios/impl/CMakeLists.txt b/src/quickcontrols/ios/impl/CMakeLists.txt
+index 48727e8dcb..a19704ad11 100644
+--- a/src/quickcontrols/ios/impl/CMakeLists.txt
++++ b/src/quickcontrols/ios/impl/CMakeLists.txt
+@@ -10,11 +10,10 @@ set(qml_files
+     "DialogButtonBoxDelegate.qml"
+ )
+ 
+-qt_internal_add_qml_module(qtquickcontrols2iosstyleimplplugin
++qt_internal_add_qml_module(QuickControls2IOSStyleImpl
+     URI "QtQuick.Controls.iOS.impl"
+     VERSION "${PROJECT_VERSION}"
+     PLUGIN_TARGET qtquickcontrols2iosstyleimplplugin
+-    NO_PLUGIN_OPTIONAL
+     SOURCES
+         qquickiosstyle.cpp qquickiosstyle_p.h
+         qquickioscursorflashtimer_p.h qquickioscursorflashtimer.cpp
+diff --git a/src/quickcontrols/material/CMakeLists.txt b/src/quickcontrols/material/CMakeLists.txt
+index d6be8a7892..a52c053af6 100644
+--- a/src/quickcontrols/material/CMakeLists.txt
++++ b/src/quickcontrols/material/CMakeLists.txt
+@@ -120,6 +120,7 @@ qt_internal_add_qml_module(qtquickcontrols2materialstyleplugin
+         Qt::GuiPrivate
+         Qt::QmlPrivate
+         Qt::QuickControls2ImplPrivate
++        Qt::QuickControls2MaterialStyleImpl
+         Qt::QuickControls2Private
+         Qt::QuickPrivate
+         Qt::QuickTemplates2Private
+diff --git a/src/quickcontrols/material/impl/CMakeLists.txt b/src/quickcontrols/material/impl/CMakeLists.txt
+index abae353f44..37e074b737 100644
+--- a/src/quickcontrols/material/impl/CMakeLists.txt
++++ b/src/quickcontrols/material/impl/CMakeLists.txt
+@@ -17,7 +17,7 @@ set(qml_files
+     "SwitchIndicator.qml"
+ )
+ 
+-qt_internal_add_qml_module(qtquickcontrols2materialstyleimplplugin
++qt_internal_add_qml_module(QuickControls2MaterialStyleImpl
+     URI "QtQuick.Controls.Material.impl"
+     VERSION "${PROJECT_VERSION}"
+     PAST_MAJOR_VERSIONS 2
+@@ -25,7 +25,6 @@ qt_internal_add_qml_module(qtquickcontrols2materialstyleimplplugin
+     DEPENDENCIES
+         QtQuick/auto
+     PLUGIN_TARGET qtquickcontrols2materialstyleimplplugin
+-    NO_PLUGIN_OPTIONAL
+     SOURCES
+         qquickmaterialbusyindicator.cpp qquickmaterialbusyindicator_p.h
+         qquickmaterialplaceholdertext.cpp qquickmaterialplaceholdertext_p.h
+diff --git a/src/quickcontrols/universal/CMakeLists.txt b/src/quickcontrols/universal/CMakeLists.txt
+index 6f5dc1bb25..ee03b8595f 100644
+--- a/src/quickcontrols/universal/CMakeLists.txt
++++ b/src/quickcontrols/universal/CMakeLists.txt
+@@ -119,6 +119,7 @@ qt_internal_add_qml_module(qtquickcontrols2universalstyleplugin
+         Qt::QmlPrivate
+         Qt::QuickControls2ImplPrivate
+         Qt::QuickControls2Private
++        Qt::QuickControls2UniversalStyleImpl
+         Qt::QuickPrivate
+         Qt::QuickTemplates2Private
+ )
+diff --git a/src/quickcontrols/universal/impl/CMakeLists.txt b/src/quickcontrols/universal/impl/CMakeLists.txt
+index 078e42e217..3bbd8e5b21 100644
+--- a/src/quickcontrols/universal/impl/CMakeLists.txt
++++ b/src/quickcontrols/universal/impl/CMakeLists.txt
+@@ -11,7 +11,7 @@ set(qml_files
+     "SwitchIndicator.qml"
+ )
+ 
+-qt_internal_add_qml_module(qtquickcontrols2universalstyleimplplugin
++qt_internal_add_qml_module(QuickControls2UniversalStyleImpl
+     URI "QtQuick.Controls.Universal.impl"
+     VERSION "${PROJECT_VERSION}"
+     PAST_MAJOR_VERSIONS 2
+@@ -19,7 +19,6 @@ qt_internal_add_qml_module(qtquickcontrols2universalstyleimplplugin
+     DEPENDENCIES
+         QtQuick/auto
+     PLUGIN_TARGET qtquickcontrols2universalstyleimplplugin
+-    NO_PLUGIN_OPTIONAL
+     SOURCES
+         qquickuniversalbusyindicator.cpp qquickuniversalbusyindicator_p.h
+         qquickuniversalfocusrectangle.cpp qquickuniversalfocusrectangle_p.h
+-- 
+2.43.0
+

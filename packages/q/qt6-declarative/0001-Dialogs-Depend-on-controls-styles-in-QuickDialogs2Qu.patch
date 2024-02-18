@@ -1,0 +1,652 @@
+From 20aaab899b791aca0413255dca149275f7a01ea2 Mon Sep 17 00:00:00 2001
+From: Ulf Hermann <ulf.hermann@qt.io>
+Date: Thu, 1 Feb 2024 13:09:22 +0100
+Subject: [PATCH] Dialogs: Depend on controls styles in QuickDialogs2QuickImpl
+
+This forces them to be built before, making their qmltypes available to
+the subsequent build steps. Having the styles as linkable backing
+libraries also makes their C++ types available to qmlsc's direct mode.
+
+Task-number: QTBUG-121643
+Change-Id: I24688b325d27f16e7cc77219cf481b3b30ca52a3
+Reviewed-by: Fabian Kosmale <fabian.kosmale@qt.io>
+(cherry picked from commit 9859107081b2af18b2964d6e22e3c425ff4e7cdf)
+Reviewed-by: Mitch Curtis <mitch.curtis@qt.io>
+(cherry picked from commit b116d89a1edb77b7bb051c11e5c49188b17c5573)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+---
+ src/quickcontrols/basic/CMakeLists.txt        | 24 +++++++++++++------
+ src/quickcontrols/basic/qquickbasicstyle_p.h  |  4 ++--
+ src/quickcontrols/basic/qquickbasictheme_p.h  |  4 ++--
+ .../qtquickcontrols2basicstyleplugin.cpp      |  1 -
+ src/quickcontrols/fusion/CMakeLists.txt       | 20 ++++++++++++----
+ .../fusion/qquickfusionstyle_p.h              |  6 +++--
+ .../fusion/qquickfusiontheme_p.h              |  4 ++--
+ .../qtquickcontrols2fusionstyleplugin.cpp     |  1 -
+ src/quickcontrols/imagine/CMakeLists.txt      | 24 +++++++++++++------
+ .../imagine/qquickimaginestyle_p.h            |  3 ++-
+ .../imagine/qquickimaginetheme_p.h            |  4 ++--
+ .../qtquickcontrols2imaginestyleplugin.cpp    |  1 -
+ src/quickcontrols/material/CMakeLists.txt     | 22 ++++++++++++-----
+ .../material/qquickmaterialstyle_p.h          |  3 ++-
+ .../material/qquickmaterialtheme_p.h          |  4 ++--
+ .../qtquickcontrols2materialstyleplugin.cpp   |  2 --
+ src/quickcontrols/qquickstyleplugin_p.h       |  1 -
+ src/quickcontrols/universal/CMakeLists.txt    | 20 ++++++++++++----
+ .../universal/qquickuniversalstyle_p.h        |  3 ++-
+ .../universal/qquickuniversaltheme_p.h        |  4 ++--
+ .../qtquickcontrols2universalstyleplugin.cpp  |  1 -
+ .../quickdialogsquickimpl/CMakeLists.txt      | 24 ++++++++++++++++---
+ 22 files changed, 123 insertions(+), 57 deletions(-)
+
+diff --git a/src/quickcontrols/basic/CMakeLists.txt b/src/quickcontrols/basic/CMakeLists.txt
+index dbe0d3027e..12404f0851 100644
+--- a/src/quickcontrols/basic/CMakeLists.txt
++++ b/src/quickcontrols/basic/CMakeLists.txt
+@@ -148,7 +148,9 @@ if (QT_FEATURE_quicktemplates2_calendar)
+     )
+ endif()
+ 
+-qt_internal_add_qml_module(qtquickcontrols2basicstyleplugin
++add_subdirectory(impl)
++
++qt_internal_add_qml_module(QuickControls2Basic
+     URI "QtQuick.Controls.Basic"
+     VERSION "${PROJECT_VERSION}"
+     PAST_MAJOR_VERSIONS 2
+@@ -163,7 +165,6 @@ qt_internal_add_qml_module(qtquickcontrols2basicstyleplugin
+     SOURCES
+         qquickbasicstyle.cpp qquickbasicstyle_p.h
+         qquickbasictheme.cpp qquickbasictheme_p.h
+-        qtquickcontrols2basicstyleplugin.cpp
+     QML_FILES
+         ${qml_files}
+     DEFINES
+@@ -177,10 +178,21 @@ qt_internal_add_qml_module(qtquickcontrols2basicstyleplugin
+         Qt::QuickControls2Private
+         Qt::QuickPrivate
+         Qt::QuickTemplates2Private
++    GENERATE_CPP_EXPORTS
++)
++
++target_sources(qtquickcontrols2basicstyleplugin
++    PRIVATE
++        qtquickcontrols2basicstyleplugin.cpp
++)
++
++target_link_libraries(qtquickcontrols2basicstyleplugin
++    PRIVATE
++        Qt::QuickControls2Private
+ )
+ 
+ # Resources:
+-set(qtquickcontrols2basicstyleplugin_resource_files
++set(qtquickcontrols2basicstyle_resource_files
+     "images/arrow-indicator.png"
+     "images/arrow-indicator@2x.png"
+     "images/arrow-indicator@3x.png"
+@@ -203,14 +215,12 @@ set(qtquickcontrols2basicstyleplugin_resource_files
+     "images/drop-indicator@4x.png"
+ )
+ 
+-qt_internal_add_resource(qtquickcontrols2basicstyleplugin "qtquickcontrols2basicstyleplugin"
++qt_internal_add_resource(QuickControls2Basic "qtquickcontrols2basicstyle"
+     PREFIX
+         "/qt-project.org/imports/QtQuick/Controls/Basic"
+     FILES
+-        ${qtquickcontrols2basicstyleplugin_resource_files}
++        ${qtquickcontrols2basicstyle_resource_files}
+ )
+ 
+-add_subdirectory(impl)
+-
+ _qt_internal_add_qml_static_plugin_dependency(qtquickcontrols2basicstyleplugin
+                                               qtquickcontrols2basicstyleimplplugin)
+diff --git a/src/quickcontrols/basic/qquickbasicstyle_p.h b/src/quickcontrols/basic/qquickbasicstyle_p.h
+index f543d27e47..00d90612c8 100644
+--- a/src/quickcontrols/basic/qquickbasicstyle_p.h
++++ b/src/quickcontrols/basic/qquickbasicstyle_p.h
+@@ -18,11 +18,11 @@
+ #include <QtCore/qobject.h>
+ #include <QtGui/qcolor.h>
+ #include <QtQml/qqml.h>
+-#include <QtCore/private/qglobal_p.h>
++#include <QtQuickControls2Basic/qtquickcontrols2basicexports.h>
+ 
+ QT_BEGIN_NAMESPACE
+ 
+-class QQuickBasicStyle : public QObject
++class Q_QUICKCONTROLS2BASIC_EXPORT QQuickBasicStyle : public QObject
+ {
+     Q_OBJECT
+     Q_PROPERTY(QColor backgroundColor READ backgroundColor CONSTANT FINAL)
+diff --git a/src/quickcontrols/basic/qquickbasictheme_p.h b/src/quickcontrols/basic/qquickbasictheme_p.h
+index 710c57f074..bcedee2a12 100644
+--- a/src/quickcontrols/basic/qquickbasictheme_p.h
++++ b/src/quickcontrols/basic/qquickbasictheme_p.h
+@@ -15,13 +15,13 @@
+ // We mean it.
+ //
+ 
+-#include <QtCore/private/qglobal_p.h>
++#include <QtQuickControls2Basic/qtquickcontrols2basicexports.h>
+ 
+ QT_BEGIN_NAMESPACE
+ 
+ class QQuickTheme;
+ 
+-class QQuickBasicTheme
++class Q_QUICKCONTROLS2BASIC_EXPORT QQuickBasicTheme
+ {
+ public:
+     static void initialize(QQuickTheme *theme);
+diff --git a/src/quickcontrols/basic/qtquickcontrols2basicstyleplugin.cpp b/src/quickcontrols/basic/qtquickcontrols2basicstyleplugin.cpp
+index 57c52fff27..e2d726082b 100644
+--- a/src/quickcontrols/basic/qtquickcontrols2basicstyleplugin.cpp
++++ b/src/quickcontrols/basic/qtquickcontrols2basicstyleplugin.cpp
+@@ -5,7 +5,6 @@
+ #include "qquickbasictheme_p.h"
+ 
+ #include <QtQuickControls2/private/qquickstyleplugin_p.h>
+-#include <QtQuickTemplates2/private/qquicktheme_p.h>
+ 
+ QT_BEGIN_NAMESPACE
+ 
+diff --git a/src/quickcontrols/fusion/CMakeLists.txt b/src/quickcontrols/fusion/CMakeLists.txt
+index 2bb6d98a44..572a3cf931 100644
+--- a/src/quickcontrols/fusion/CMakeLists.txt
++++ b/src/quickcontrols/fusion/CMakeLists.txt
+@@ -92,7 +92,9 @@ set_source_files_properties(VerticalHeaderView.qml PROPERTIES
+     QT_QML_SOURCE_VERSIONS "2.15;6.0"
+ )
+ 
+-qt_internal_add_qml_module(qtquickcontrols2fusionstyleplugin
++add_subdirectory(impl)
++
++qt_internal_add_qml_module(QuickControls2Fusion
+     URI "QtQuick.Controls.Fusion"
+     VERSION "${PROJECT_VERSION}"
+     PAST_MAJOR_VERSIONS 2
+@@ -107,7 +109,6 @@ qt_internal_add_qml_module(qtquickcontrols2fusionstyleplugin
+     SOURCES
+         qquickfusionstyle.cpp qquickfusionstyle_p.h
+         qquickfusiontheme.cpp qquickfusiontheme_p.h
+-        qtquickcontrols2fusionstyleplugin.cpp
+     QML_FILES
+         ${qml_files}
+     DEFINES
+@@ -121,9 +122,20 @@ qt_internal_add_qml_module(qtquickcontrols2fusionstyleplugin
+         Qt::QuickControls2Private
+         Qt::QuickPrivate
+         Qt::QuickTemplates2Private
++    GENERATE_CPP_EXPORTS
++)
++
++target_sources(qtquickcontrols2fusionstyleplugin
++    PRIVATE
++        qtquickcontrols2fusionstyleplugin.cpp
+ )
+ 
+-qt_internal_add_resource(qtquickcontrols2fusionstyleplugin "qtquickcontrols2fusionstyle"
++target_link_libraries(qtquickcontrols2fusionstyleplugin
++    PRIVATE
++        Qt::QuickControls2Private
++)
++
++qt_internal_add_resource(QuickControls2Fusion "qtquickcontrols2fusionstyle"
+     PREFIX
+         "/qt-project.org/imports/QtQuick/Controls/Fusion"
+     FILES
+@@ -141,8 +153,6 @@ qt_internal_add_resource(qtquickcontrols2fusionstyleplugin "qtquickcontrols2fusi
+         "images/progressmask@4x.png"
+ )
+ 
+-add_subdirectory(impl)
+-
+ _qt_internal_add_qml_static_plugin_dependency(qtquickcontrols2fusionstyleplugin quickwindow)
+ _qt_internal_add_qml_static_plugin_dependency(qtquickcontrols2fusionstyleplugin
+                                               qtquickcontrols2fusionstyleimplplugin)
+diff --git a/src/quickcontrols/fusion/qquickfusionstyle_p.h b/src/quickcontrols/fusion/qquickfusionstyle_p.h
+index f31f8cfc52..47fdd77fd7 100644
+--- a/src/quickcontrols/fusion/qquickfusionstyle_p.h
++++ b/src/quickcontrols/fusion/qquickfusionstyle_p.h
+@@ -18,11 +18,13 @@
+ #include <QtCore/qobject.h>
+ #include <QtGui/qcolor.h>
+ #include <QtQml/qqml.h>
+-#include <QtQuick/private/qquickpalette_p.h>
++#include <QtQuickControls2Fusion/qtquickcontrols2fusionexports.h>
+ 
+ QT_BEGIN_NAMESPACE
+ 
+-class QQuickFusionStyle : public QObject
++class QQuickPalette;
++
++class Q_QUICKCONTROLS2FUSION_EXPORT QQuickFusionStyle : public QObject
+ {
+     Q_OBJECT
+     Q_PROPERTY(QColor lightShade READ lightShade CONSTANT FINAL)
+diff --git a/src/quickcontrols/fusion/qquickfusiontheme_p.h b/src/quickcontrols/fusion/qquickfusiontheme_p.h
+index a41c9d7315..b60521394c 100644
+--- a/src/quickcontrols/fusion/qquickfusiontheme_p.h
++++ b/src/quickcontrols/fusion/qquickfusiontheme_p.h
+@@ -15,13 +15,13 @@
+ // We mean it.
+ //
+ 
+-#include <QtCore/private/qglobal_p.h>
++#include <QtQuickControls2Fusion/qtquickcontrols2fusionexports.h>
+ 
+ QT_BEGIN_NAMESPACE
+ 
+ class QQuickTheme;
+ 
+-class QQuickFusionTheme
++class Q_QUICKCONTROLS2FUSION_EXPORT QQuickFusionTheme
+ {
+ public:
+     static void initialize(QQuickTheme *theme);
+diff --git a/src/quickcontrols/fusion/qtquickcontrols2fusionstyleplugin.cpp b/src/quickcontrols/fusion/qtquickcontrols2fusionstyleplugin.cpp
+index 532d7597ce..f61dafa478 100644
+--- a/src/quickcontrols/fusion/qtquickcontrols2fusionstyleplugin.cpp
++++ b/src/quickcontrols/fusion/qtquickcontrols2fusionstyleplugin.cpp
+@@ -6,7 +6,6 @@
+ 
+ #include <QtQml/qqml.h>
+ #include <QtQuickControls2/private/qquickstyleplugin_p.h>
+-#include <QtQuickTemplates2/private/qquicktheme_p.h>
+ 
+ QT_BEGIN_NAMESPACE
+ 
+diff --git a/src/quickcontrols/imagine/CMakeLists.txt b/src/quickcontrols/imagine/CMakeLists.txt
+index 4ef398e0fb..a029e09e82 100644
+--- a/src/quickcontrols/imagine/CMakeLists.txt
++++ b/src/quickcontrols/imagine/CMakeLists.txt
+@@ -85,7 +85,9 @@ set_source_files_properties(VerticalHeaderView.qml PROPERTIES
+     QT_QML_SOURCE_VERSIONS "2.15;6.0"
+ )
+ 
+-qt_internal_add_qml_module(qtquickcontrols2imaginestyleplugin
++add_subdirectory(impl)
++
++qt_internal_add_qml_module(QuickControls2Imagine
+     URI "QtQuick.Controls.Imagine"
+     VERSION "${PROJECT_VERSION}"
+     PAST_MAJOR_VERSIONS 2
+@@ -98,7 +100,6 @@ qt_internal_add_qml_module(qtquickcontrols2imaginestyleplugin
+     SOURCES
+         qquickimaginestyle.cpp qquickimaginestyle_p.h
+         qquickimaginetheme.cpp qquickimaginetheme_p.h
+-        qtquickcontrols2imaginestyleplugin.cpp
+     QML_FILES
+         ${qml_files}
+     DEFINES
+@@ -113,6 +114,17 @@ qt_internal_add_qml_module(qtquickcontrols2imaginestyleplugin
+         Qt::QuickControls2Private
+         Qt::QuickPrivate
+         Qt::QuickTemplates2Private
++    GENERATE_CPP_EXPORTS
++)
++
++target_sources(qtquickcontrols2imaginestyleplugin
++    PRIVATE
++        qtquickcontrols2imaginestyleplugin.cpp
++)
++
++target_link_libraries(qtquickcontrols2imaginestyleplugin
++    PRIVATE
++        Qt::QuickControls2Private
+ )
+ 
+ file(GLOB resource_glob_0 RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "images/*.png")
+@@ -126,20 +138,18 @@ foreach(file IN LISTS resource_glob_1)
+ endforeach()
+ 
+ # Resources:
+-set(qmake_qtquickcontrols2imaginestyleplugin_resource_files
++set(qmake_qtquickcontrols2imaginestyle_resource_files
+     ${resource_glob_0}
+     ${resource_glob_1}
+ )
+ 
+-qt_internal_add_resource(qtquickcontrols2imaginestyleplugin "qmake_qtquickcontrols2imaginestyleplugin"
++qt_internal_add_resource(QuickControls2Imagine "qmake_qtquickcontrols2imaginestyle"
+     PREFIX
+         "/qt-project.org/imports/QtQuick/Controls/Imagine"
+     FILES
+-        ${qmake_qtquickcontrols2imaginestyleplugin_resource_files}
++        ${qmake_qtquickcontrols2imaginestyle_resource_files}
+ )
+ 
+-add_subdirectory(impl)
+-
+ _qt_internal_add_qml_static_plugin_dependency(qtquickcontrols2imaginestyleplugin quickwindow)
+ _qt_internal_add_qml_static_plugin_dependency(qtquickcontrols2imaginestyleplugin
+                                               qtquickcontrols2imaginestyleimplplugin)
+diff --git a/src/quickcontrols/imagine/qquickimaginestyle_p.h b/src/quickcontrols/imagine/qquickimaginestyle_p.h
+index 81f17fb58c..9d8f3d983a 100644
+--- a/src/quickcontrols/imagine/qquickimaginestyle_p.h
++++ b/src/quickcontrols/imagine/qquickimaginestyle_p.h
+@@ -18,10 +18,11 @@
+ #include <QtCore/qvariant.h>
+ #include <QtQml/qqml.h>
+ #include <QtQuickControls2/qquickattachedpropertypropagator.h>
++#include <QtQuickControls2Imagine/qtquickcontrols2imagineexports.h>
+ 
+ QT_BEGIN_NAMESPACE
+ 
+-class QQuickImagineStyle : public QQuickAttachedPropertyPropagator
++class Q_QUICKCONTROLS2IMAGINE_EXPORT QQuickImagineStyle : public QQuickAttachedPropertyPropagator
+ {
+     Q_OBJECT
+     Q_PROPERTY(QString path READ path WRITE setPath RESET resetPath NOTIFY pathChanged FINAL)
+diff --git a/src/quickcontrols/imagine/qquickimaginetheme_p.h b/src/quickcontrols/imagine/qquickimaginetheme_p.h
+index 93b3063b78..522c99727b 100644
+--- a/src/quickcontrols/imagine/qquickimaginetheme_p.h
++++ b/src/quickcontrols/imagine/qquickimaginetheme_p.h
+@@ -15,13 +15,13 @@
+ // We mean it.
+ //
+ 
+-#include <QtCore/private/qglobal_p.h>
++#include <QtQuickControls2Imagine/qtquickcontrols2imagineexports.h>
+ 
+ QT_BEGIN_NAMESPACE
+ 
+ class QQuickTheme;
+ 
+-class QQuickImagineTheme
++class Q_QUICKCONTROLS2IMAGINE_EXPORT QQuickImagineTheme
+ {
+ public:
+     static void initialize(QQuickTheme *theme);
+diff --git a/src/quickcontrols/imagine/qtquickcontrols2imaginestyleplugin.cpp b/src/quickcontrols/imagine/qtquickcontrols2imaginestyleplugin.cpp
+index ddf3927562..80949ff648 100644
+--- a/src/quickcontrols/imagine/qtquickcontrols2imaginestyleplugin.cpp
++++ b/src/quickcontrols/imagine/qtquickcontrols2imaginestyleplugin.cpp
+@@ -7,7 +7,6 @@
+ #include <QtCore/qloggingcategory.h>
+ #include <QtQml/qqml.h>
+ #include <QtQuickControls2/private/qquickstyleplugin_p.h>
+-#include <QtQuickTemplates2/private/qquicktheme_p.h>
+ 
+ QT_BEGIN_NAMESPACE
+ 
+diff --git a/src/quickcontrols/material/CMakeLists.txt b/src/quickcontrols/material/CMakeLists.txt
+index a52c053af6..a427b3711c 100644
+--- a/src/quickcontrols/material/CMakeLists.txt
++++ b/src/quickcontrols/material/CMakeLists.txt
+@@ -94,7 +94,9 @@ set_source_files_properties(VerticalHeaderView.qml PROPERTIES
+     QT_QML_SOURCE_VERSIONS "2.15;6.0"
+ )
+ 
+-qt_internal_add_qml_module(qtquickcontrols2materialstyleplugin
++add_subdirectory(impl)
++
++qt_internal_add_qml_module(QuickControls2Material
+     URI "QtQuick.Controls.Material"
+     VERSION "${PROJECT_VERSION}"
+     PAST_MAJOR_VERSIONS 2
+@@ -109,7 +111,6 @@ qt_internal_add_qml_module(qtquickcontrols2materialstyleplugin
+     SOURCES
+         qquickmaterialstyle.cpp qquickmaterialstyle_p.h
+         qquickmaterialtheme.cpp qquickmaterialtheme_p.h
+-        qtquickcontrols2materialstyleplugin.cpp
+     QML_FILES
+         ${qml_files}
+     DEFINES
+@@ -124,9 +125,20 @@ qt_internal_add_qml_module(qtquickcontrols2materialstyleplugin
+         Qt::QuickControls2Private
+         Qt::QuickPrivate
+         Qt::QuickTemplates2Private
++    GENERATE_CPP_EXPORTS
++)
++
++target_sources(qtquickcontrols2materialstyleplugin
++    PRIVATE
++        qtquickcontrols2materialstyleplugin.cpp
+ )
+ 
+-qt_internal_add_resource(qtquickcontrols2materialstyleplugin "qtquickcontrols2materialstyleplugin"
++target_link_libraries(qtquickcontrols2materialstyleplugin
++    PRIVATE
++        Qt::QuickControls2Private
++)
++
++qt_internal_add_resource(QuickControls2Material "qtquickcontrols2materialstyle"
+     PREFIX
+         "/qt-project.org/imports/QtQuick/Controls/Material"
+     FILES
+@@ -144,7 +156,7 @@ qt_internal_add_resource(qtquickcontrols2materialstyleplugin "qtquickcontrols2ma
+         "images/drop-indicator@4x.png"
+ )
+ 
+-qt_internal_add_shaders(qtquickcontrols2materialstyleplugin "qtquickcontrols2materialstyleplugin_shaders"
++qt_internal_add_shaders(QuickControls2Material "qtquickcontrols2materialstyle_shaders"
+     SILENT
+     BATCHABLE
+     PRECOMPILE
+@@ -155,8 +167,6 @@ qt_internal_add_shaders(qtquickcontrols2materialstyleplugin "qtquickcontrols2mat
+         "shaders/RectangularGlow.frag"
+ )
+ 
+-add_subdirectory(impl)
+-
+ _qt_internal_add_qml_static_plugin_dependency(qtquickcontrols2materialstyleplugin quickwindow)
+ _qt_internal_add_qml_static_plugin_dependency(qtquickcontrols2materialstyleplugin
+                                               qtquickcontrols2materialstyleimplplugin)
+diff --git a/src/quickcontrols/material/qquickmaterialstyle_p.h b/src/quickcontrols/material/qquickmaterialstyle_p.h
+index 5ff27f532e..f7c2b256ba 100644
+--- a/src/quickcontrols/material/qquickmaterialstyle_p.h
++++ b/src/quickcontrols/material/qquickmaterialstyle_p.h
+@@ -18,10 +18,11 @@
+ #include <QtGui/qcolor.h>
+ #include <QtQml/qqml.h>
+ #include <QtQuickControls2/qquickattachedpropertypropagator.h>
++#include <QtQuickControls2Material/qtquickcontrols2materialexports.h>
+ 
+ QT_BEGIN_NAMESPACE
+ 
+-class QQuickMaterialStyle : public QQuickAttachedPropertyPropagator
++class Q_QUICKCONTROLS2MATERIAL_EXPORT QQuickMaterialStyle : public QQuickAttachedPropertyPropagator
+ {
+     Q_OBJECT
+     Q_PROPERTY(Theme theme READ theme WRITE setTheme RESET resetTheme NOTIFY themeChanged FINAL)
+diff --git a/src/quickcontrols/material/qquickmaterialtheme_p.h b/src/quickcontrols/material/qquickmaterialtheme_p.h
+index 893f441c86..bdaecd1a87 100644
+--- a/src/quickcontrols/material/qquickmaterialtheme_p.h
++++ b/src/quickcontrols/material/qquickmaterialtheme_p.h
+@@ -15,13 +15,13 @@
+ // We mean it.
+ //
+ 
+-#include <QtCore/private/qglobal_p.h>
++#include <QtQuickControls2Material/qtquickcontrols2materialexports.h>
+ 
+ QT_BEGIN_NAMESPACE
+ 
+ class QQuickTheme;
+ 
+-class QQuickMaterialTheme
++class Q_QUICKCONTROLS2MATERIAL_EXPORT QQuickMaterialTheme
+ {
+ public:
+     static void initialize(QQuickTheme *theme);
+diff --git a/src/quickcontrols/material/qtquickcontrols2materialstyleplugin.cpp b/src/quickcontrols/material/qtquickcontrols2materialstyleplugin.cpp
+index 10aa64b8cf..4911a3e0f2 100644
+--- a/src/quickcontrols/material/qtquickcontrols2materialstyleplugin.cpp
++++ b/src/quickcontrols/material/qtquickcontrols2materialstyleplugin.cpp
+@@ -5,8 +5,6 @@
+ #include "qquickmaterialtheme_p.h"
+ 
+ #include <QtQuickControls2/private/qquickstyleplugin_p.h>
+-#include <QtQuickControls2Impl/private/qquickpaddedrectangle_p.h>
+-#include <QtQuickTemplates2/private/qquicktheme_p.h>
+ 
+ QT_BEGIN_NAMESPACE
+ 
+diff --git a/src/quickcontrols/qquickstyleplugin_p.h b/src/quickcontrols/qquickstyleplugin_p.h
+index d0f690205c..5458892511 100644
+--- a/src/quickcontrols/qquickstyleplugin_p.h
++++ b/src/quickcontrols/qquickstyleplugin_p.h
+@@ -17,7 +17,6 @@
+ 
+ #include <QtQml/qqmlextensionplugin.h>
+ #include <QtQuickControls2/qtquickcontrols2global.h>
+-#include <QtCore/private/qglobal_p.h>
+ 
+ QT_BEGIN_NAMESPACE
+ 
+diff --git a/src/quickcontrols/universal/CMakeLists.txt b/src/quickcontrols/universal/CMakeLists.txt
+index ee03b8595f..b9ab5d9aaa 100644
+--- a/src/quickcontrols/universal/CMakeLists.txt
++++ b/src/quickcontrols/universal/CMakeLists.txt
+@@ -92,7 +92,9 @@ set_source_files_properties(VerticalHeaderView.qml PROPERTIES
+     QT_QML_SOURCE_VERSIONS "2.15;6.0"
+ )
+ 
+-qt_internal_add_qml_module(qtquickcontrols2universalstyleplugin
++add_subdirectory(impl)
++
++qt_internal_add_qml_module(QuickControls2Universal
+     URI "QtQuick.Controls.Universal"
+     VERSION "${PROJECT_VERSION}"
+     PAST_MAJOR_VERSIONS 2
+@@ -107,7 +109,6 @@ qt_internal_add_qml_module(qtquickcontrols2universalstyleplugin
+     SOURCES
+         qquickuniversalstyle.cpp qquickuniversalstyle_p.h
+         qquickuniversaltheme.cpp qquickuniversaltheme_p.h
+-        qtquickcontrols2universalstyleplugin.cpp
+     QML_FILES
+         ${qml_files}
+     DEFINES
+@@ -122,9 +123,20 @@ qt_internal_add_qml_module(qtquickcontrols2universalstyleplugin
+         Qt::QuickControls2UniversalStyleImpl
+         Qt::QuickPrivate
+         Qt::QuickTemplates2Private
++    GENERATE_CPP_EXPORTS
++)
++
++target_sources(qtquickcontrols2universalstyleplugin
++    PRIVATE
++        qtquickcontrols2universalstyleplugin.cpp
+ )
+ 
+-qt_internal_add_resource(qtquickcontrols2universalstyleplugin "qtquickcontrols2universalstyleplugin"
++target_link_libraries(qtquickcontrols2universalstyleplugin
++    PRIVATE
++        Qt::QuickControls2Private
++)
++
++qt_internal_add_resource(QuickControls2Universal "qtquickcontrols2universalstyle"
+     PREFIX
+         "/qt-project.org/imports/QtQuick/Controls/Universal"
+     FILES
+@@ -146,8 +158,6 @@ qt_internal_add_resource(qtquickcontrols2universalstyleplugin "qtquickcontrols2u
+         "images/rightarrow@4x.png"
+ )
+ 
+-add_subdirectory(impl)
+-
+ _qt_internal_add_qml_static_plugin_dependency(qtquickcontrols2universalstyleplugin quickwindow)
+ _qt_internal_add_qml_static_plugin_dependency(qtquickcontrols2universalstyleplugin
+                                               qtquickcontrols2universalstyleimplplugin)
+diff --git a/src/quickcontrols/universal/qquickuniversalstyle_p.h b/src/quickcontrols/universal/qquickuniversalstyle_p.h
+index 024fde2192..c97483a5bc 100644
+--- a/src/quickcontrols/universal/qquickuniversalstyle_p.h
++++ b/src/quickcontrols/universal/qquickuniversalstyle_p.h
+@@ -18,12 +18,13 @@
+ #include <QtGui/qcolor.h>
+ #include <QtQml/qqml.h>
+ #include <QtQuickControls2/qquickattachedpropertypropagator.h>
++#include <QtQuickControls2Universal/qtquickcontrols2universalexports.h>
+ 
+ QT_BEGIN_NAMESPACE
+ 
+ class QQuickUniversalStylePrivate;
+ 
+-class QQuickUniversalStyle : public QQuickAttachedPropertyPropagator
++class Q_QUICKCONTROLS2UNIVERSAL_EXPORT QQuickUniversalStyle : public QQuickAttachedPropertyPropagator
+ {
+     Q_OBJECT
+     Q_PROPERTY(Theme theme READ theme WRITE setTheme RESET resetTheme NOTIFY themeChanged FINAL)
+diff --git a/src/quickcontrols/universal/qquickuniversaltheme_p.h b/src/quickcontrols/universal/qquickuniversaltheme_p.h
+index 84789c5da1..77373aa6b9 100644
+--- a/src/quickcontrols/universal/qquickuniversaltheme_p.h
++++ b/src/quickcontrols/universal/qquickuniversaltheme_p.h
+@@ -15,13 +15,13 @@
+ // We mean it.
+ //
+ 
+-#include <QtCore/private/qglobal_p.h>
++#include <QtQuickControls2Universal/qtquickcontrols2universalexports.h>
+ 
+ QT_BEGIN_NAMESPACE
+ 
+ class QQuickTheme;
+ 
+-class QQuickUniversalTheme
++class Q_QUICKCONTROLS2UNIVERSAL_EXPORT QQuickUniversalTheme
+ {
+ public:
+     static void initialize(QQuickTheme *theme);
+diff --git a/src/quickcontrols/universal/qtquickcontrols2universalstyleplugin.cpp b/src/quickcontrols/universal/qtquickcontrols2universalstyleplugin.cpp
+index 683c966833..4bdb1216b6 100644
+--- a/src/quickcontrols/universal/qtquickcontrols2universalstyleplugin.cpp
++++ b/src/quickcontrols/universal/qtquickcontrols2universalstyleplugin.cpp
+@@ -5,7 +5,6 @@
+ #include "qquickuniversaltheme_p.h"
+ 
+ #include <QtQuickControls2/private/qquickstyleplugin_p.h>
+-#include <QtQuickTemplates2/private/qquicktheme_p.h>
+ 
+ QT_BEGIN_NAMESPACE
+ 
+diff --git a/src/quickdialogs/quickdialogsquickimpl/CMakeLists.txt b/src/quickdialogs/quickdialogsquickimpl/CMakeLists.txt
+index 224260f14a..ea4a176633 100644
+--- a/src/quickdialogs/quickdialogsquickimpl/CMakeLists.txt
++++ b/src/quickdialogs/quickdialogsquickimpl/CMakeLists.txt
+@@ -101,12 +101,12 @@ qt_internal_add_qml_module(QuickDialogs2QuickImpl
+         Qt::CorePrivate
+         Qt::GuiPrivate
+         Qt::QmlPrivate
+-        Qt::QuickPrivate
+-        Qt::QuickTemplates2
+-        Qt::QuickTemplates2Private
+         Qt::QuickControls2ImplPrivate
+         Qt::QuickDialogs2Utils
+         Qt::QuickDialogs2UtilsPrivate
++        Qt::QuickPrivate
++        Qt::QuickTemplates2
++        Qt::QuickTemplates2Private
+     PUBLIC_LIBRARIES
+         Qt::Core
+         Qt::Gui
+@@ -115,6 +115,24 @@ qt_internal_add_qml_module(QuickDialogs2QuickImpl
+     GENERATE_PRIVATE_CPP_EXPORTS
+ )
+ 
++add_dependencies(QuickDialogs2QuickImpl Qt::QuickControls2Basic)
++
++if(QT_FEATURE_quickcontrols2_fusion)
++    add_dependencies(QuickDialogs2QuickImpl QuickControls2Fusion)
++endif()
++
++if(QT_FEATURE_quickcontrols2_imagine)
++    add_dependencies(QuickDialogs2QuickImpl QuickControls2Imagine)
++endif()
++
++if(QT_FEATURE_quickcontrols2_material)
++    add_dependencies(QuickDialogs2QuickImpl QuickControls2Material)
++endif()
++
++if(QT_FEATURE_quickcontrols2_universal)
++    add_dependencies(QuickDialogs2QuickImpl QuickControls2Universal)
++endif()
++
+ qt_internal_extend_target(QuickDialogs2QuickImpl CONDITION QT_FEATURE_quick_listview
+     SOURCES
+         qquickfiledialogdelegate.cpp
+-- 
+2.43.0
+

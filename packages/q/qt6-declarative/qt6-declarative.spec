@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.6.1
+%define real_version 6.6.2
 %define short_version 6.6
 %define tar_name qtdeclarative-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-declarative%{?pkg_suffix}
-Version:        6.6.1
+Version:        6.6.2
 Release:        0
 Summary:        Qt 6 Declarative Libraries and tools
 License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
@@ -36,6 +36,9 @@ Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-declarative-rpmlintrc
 # PATCH-FIX-DOWNSTREAM
 Patch0:         0001-qmlimportscanner-Include-module-versions-again.patch
+# PATCH-FIX-UPSTREAM -- make build reproducible
+Patch1:         0001-QuickControls-Link-the-impl-libraries-into-the-base-.patch
+Patch2:         0001-Dialogs-Depend-on-controls-styles-in-QuickDialogs2Qu.patch
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  qt6-core-private-devel
@@ -1343,6 +1346,11 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 
 %files -n libQt6QuickControls2-6
 %{_qt6_libdir}/libQt6QuickControls2.so.*
+%{_qt6_libdir}/libQt6QuickControls2Basic.so.*
+%{_qt6_libdir}/libQt6QuickControls2Fusion.so.*
+%{_qt6_libdir}/libQt6QuickControls2Imagine.so.*
+%{_qt6_libdir}/libQt6QuickControls2Material.so.*
+%{_qt6_libdir}/libQt6QuickControls2Universal.so.*
 
 %files -n qt6-quickcontrols2-devel
 %{_qt6_cmakedir}/Qt6QuickControls2/
@@ -1356,26 +1364,129 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %exclude %{_qt6_includedir}/QtQuickControls2/%{real_version}
 
 %files -n qt6-quickcontrols2-private-devel
+%{_qt6_cmakedir}/Qt6QuickControls2Basic/
+%{_qt6_cmakedir}/Qt6QuickControls2Fusion/
+%{_qt6_cmakedir}/Qt6QuickControls2Imagine/
+%{_qt6_cmakedir}/Qt6QuickControls2Material/
+%{_qt6_cmakedir}/Qt6QuickControls2Universal/
+%{_qt6_descriptionsdir}/QuickControls2Basic.json
+%{_qt6_descriptionsdir}/QuickControls2Fusion.json
+%{_qt6_descriptionsdir}/QuickControls2Imagine.json
+%{_qt6_descriptionsdir}/QuickControls2Material.json
+%{_qt6_descriptionsdir}/QuickControls2Universal.json
 %{_qt6_includedir}/QtQuickControls2/%{real_version}/
+%{_qt6_includedir}/QtQuickControls2Basic/
+%{_qt6_includedir}/QtQuickControls2Fusion/
+%{_qt6_includedir}/QtQuickControls2Imagine/
+%{_qt6_includedir}/QtQuickControls2Material/
+%{_qt6_includedir}/QtQuickControls2Universal/
+%{_qt6_libdir}/libQt6QuickControls2Basic.prl
+%{_qt6_libdir}/libQt6QuickControls2Basic.so
+%{_qt6_libdir}/libQt6QuickControls2Fusion.prl
+%{_qt6_libdir}/libQt6QuickControls2Fusion.so
+%{_qt6_libdir}/libQt6QuickControls2Imagine.prl
+%{_qt6_libdir}/libQt6QuickControls2Imagine.so
+%{_qt6_libdir}/libQt6QuickControls2Material.prl
+%{_qt6_libdir}/libQt6QuickControls2Material.so
+%{_qt6_libdir}/libQt6QuickControls2Universal.prl
+%{_qt6_libdir}/libQt6QuickControls2Universal.so
+%{_qt6_metatypesdir}/qt6quickcontrols2basic_*_metatypes.json
+%{_qt6_metatypesdir}/qt6quickcontrols2fusion_*_metatypes.json
+%{_qt6_metatypesdir}/qt6quickcontrols2imagine_*_metatypes.json
+%{_qt6_metatypesdir}/qt6quickcontrols2material_*_metatypes.json
+%{_qt6_metatypesdir}/qt6quickcontrols2universal_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quickcontrols2_private.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_quickcontrols2basic.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_quickcontrols2basic_private.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_quickcontrols2fusion.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_quickcontrols2fusion_private.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_quickcontrols2imagine.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_quickcontrols2imagine_private.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_quickcontrols2material.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_quickcontrols2material_private.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_quickcontrols2universal.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_quickcontrols2universal_private.pri
+%{_qt6_pkgconfigdir}/Qt6QuickControls2Basic.pc
+%{_qt6_pkgconfigdir}/Qt6QuickControls2Fusion.pc
+%{_qt6_pkgconfigdir}/Qt6QuickControls2Imagine.pc
+%{_qt6_pkgconfigdir}/Qt6QuickControls2Material.pc
+%{_qt6_pkgconfigdir}/Qt6QuickControls2Universal.pc
 
 %files -n libQt6QuickControls2Impl6
+%{_qt6_libdir}/libQt6QuickControls2BasicStyleImpl.so.*
+%{_qt6_libdir}/libQt6QuickControls2FusionStyleImpl.so.*
+%{_qt6_libdir}/libQt6QuickControls2ImagineStyleImpl.so.*
 %{_qt6_libdir}/libQt6QuickControls2Impl.so.*
+%{_qt6_libdir}/libQt6QuickControls2MaterialStyleImpl.so.*
+%{_qt6_libdir}/libQt6QuickControls2UniversalStyleImpl.so.*
 
 %files -n qt6-quickcontrols2impl-devel
 %{_qt6_cmakedir}/Qt6QuickControls2Impl/
+%{_qt6_cmakedir}/Qt6QuickControls2BasicStyleImpl/
+%{_qt6_cmakedir}/Qt6QuickControls2FusionStyleImpl/
+%{_qt6_cmakedir}/Qt6QuickControls2ImagineStyleImpl/
+%{_qt6_cmakedir}/Qt6QuickControls2MaterialStyleImpl/
+%{_qt6_cmakedir}/Qt6QuickControls2UniversalStyleImpl/
+%{_qt6_descriptionsdir}/QuickControls2BasicStyleImpl.json
+%{_qt6_descriptionsdir}/QuickControls2FusionStyleImpl.json
+%{_qt6_descriptionsdir}/QuickControls2ImagineStyleImpl.json
+%{_qt6_descriptionsdir}/QuickControls2MaterialStyleImpl.json
+%{_qt6_descriptionsdir}/QuickControls2UniversalStyleImpl.json
 %{_qt6_descriptionsdir}/QuickControls2Impl.json
+%{_qt6_includedir}/QtQuickControls2BasicStyleImpl/
+%{_qt6_includedir}/QtQuickControls2FusionStyleImpl/
+%{_qt6_includedir}/QtQuickControls2ImagineStyleImpl/
 %{_qt6_includedir}/QtQuickControls2Impl/
+%{_qt6_includedir}/QtQuickControls2MaterialStyleImpl/
+%{_qt6_includedir}/QtQuickControls2UniversalStyleImpl/
+%{_qt6_libdir}/libQt6QuickControls2BasicStyleImpl.prl
+%{_qt6_libdir}/libQt6QuickControls2BasicStyleImpl.so
+%{_qt6_libdir}/libQt6QuickControls2FusionStyleImpl.prl
+%{_qt6_libdir}/libQt6QuickControls2FusionStyleImpl.so
+%{_qt6_libdir}/libQt6QuickControls2ImagineStyleImpl.prl
+%{_qt6_libdir}/libQt6QuickControls2ImagineStyleImpl.so
 %{_qt6_libdir}/libQt6QuickControls2Impl.prl
 %{_qt6_libdir}/libQt6QuickControls2Impl.so
+%{_qt6_libdir}/libQt6QuickControls2MaterialStyleImpl.prl
+%{_qt6_libdir}/libQt6QuickControls2MaterialStyleImpl.so
+%{_qt6_libdir}/libQt6QuickControls2UniversalStyleImpl.prl
+%{_qt6_libdir}/libQt6QuickControls2UniversalStyleImpl.so
+%{_qt6_metatypesdir}/qt6quickcontrols2basicstyleimpl_*_metatypes.json
+%{_qt6_metatypesdir}/qt6quickcontrols2fusionstyleimpl_*_metatypes.json
+%{_qt6_metatypesdir}/qt6quickcontrols2imaginestyleimpl_*_metatypes.json
 %{_qt6_metatypesdir}/qt6quickcontrols2impl_*.json
+%{_qt6_metatypesdir}/qt6quickcontrols2materialstyleimpl_*_metatypes.json
+%{_qt6_metatypesdir}/qt6quickcontrols2universalstyleimpl_*_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_quickcontrols2basicstyleimpl.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_quickcontrols2fusionstyleimpl.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_quickcontrols2imaginestyleimpl.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_quickcontrols2impl.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_quickcontrols2materialstyleimpl.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_quickcontrols2universalstyleimpl.pri
+%{_qt6_pkgconfigdir}/Qt6QuickControls2BasicStyleImpl.pc
+%{_qt6_pkgconfigdir}/Qt6QuickControls2FusionStyleImpl.pc
+%{_qt6_pkgconfigdir}/Qt6QuickControls2ImagineStyleImpl.pc
 %{_qt6_pkgconfigdir}/Qt6QuickControls2Impl.pc
+%{_qt6_pkgconfigdir}/Qt6QuickControls2MaterialStyleImpl.pc
+%{_qt6_pkgconfigdir}/Qt6QuickControls2UniversalStyleImpl.pc
+%exclude %{_qt6_includedir}/QtQuickControls2BasicStyleImpl/%{real_version}
+%exclude %{_qt6_includedir}/QtQuickControls2FusionStyleImpl/%{real_version}
 %exclude %{_qt6_includedir}/QtQuickControls2Impl/%{real_version}
+%exclude %{_qt6_includedir}/QtQuickControls2MaterialStyleImpl/%{real_version}
+%exclude %{_qt6_includedir}/QtQuickControls2UniversalStyleImpl/%{real_version}
 
 %files -n qt6-quickcontrols2impl-private-devel
+%{_qt6_includedir}/QtQuickControls2BasicStyleImpl/%{real_version}/
+%{_qt6_includedir}/QtQuickControls2FusionStyleImpl/%{real_version}/
 %{_qt6_includedir}/QtQuickControls2Impl/%{real_version}/
+%{_qt6_includedir}/QtQuickControls2MaterialStyleImpl/%{real_version}/
+%{_qt6_includedir}/QtQuickControls2UniversalStyleImpl/%{real_version}/
+%{_qt6_mkspecsdir}/modules/qt_lib_quickcontrols2basicstyleimpl_private.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_quickcontrols2fusionstyleimpl_private.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_quickcontrols2imaginestyleimpl_private.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_quickcontrols2impl_private.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_quickcontrols2materialstyleimpl_private.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_quickcontrols2universalstyleimpl_private.pri
 
 %files -n libQt6QuickDialogs2-6
 %{_qt6_libdir}/libQt6QuickDialogs2.so.*
