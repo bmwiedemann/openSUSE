@@ -1,7 +1,7 @@
 #
 # spec file for package python-neovim
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,33 +25,35 @@ License:        Apache-2.0
 Group:          Productivity/Text/Editors
 URL:            https://github.com/neovim/pynvim
 Source:         https://github.com/neovim/%{modname}/archive/%{version}/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module msgpack}
-BuildRequires:  %{python_module greenlet}
-BuildRequires:  neovim
-# /SECTION
 Requires:       neovim >= 0.9.0
-Requires:       %{python_module greenlet}
-Requires:       %{python_module msgpack}
+Requires:       python-greenlet
+Requires:       python-msgpack
 Provides:       python-nvim
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module greenlet}
+BuildRequires:  %{python_module msgpack}
+BuildRequires:  neovim
+# /SECTION
 %python_subpackages
 
 %description
 Library for scripting Nvim processes through its msgpack-rpc API.
 
 %prep
-%autosetup -n %{modname}-%{version}
+%autosetup -p1 -n %{modname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -60,8 +62,8 @@ Library for scripting Nvim processes through its msgpack-rpc API.
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/neovim/
-%{python_sitelib}/%{modname}/
-%{python_sitelib}/%{modname}-%{version}-*.egg-info/
+%{python_sitelib}/neovim
+%{python_sitelib}/%{modname}
+%{python_sitelib}/%{modname}-%{version}*-info
 
 %changelog

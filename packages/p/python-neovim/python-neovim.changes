@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 16 20:50:09 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- "Do not use %python_module for Requires"
+   (from https://en.opensuse.org/openSUSE:Packaging_Python#Requires,_Provides_and_similar)
+   Fixes bsc#1220005
+- Also, clean up the SPEC file a bit.
+
+-------------------------------------------------------------------
 Thu Dec 28 11:53:21 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Remove deprecated python-rpm-macro definitions
