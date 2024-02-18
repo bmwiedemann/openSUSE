@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.6.1
+%define real_version 6.6.2
 %define short_version 6.6
 %define tar_name qtwebengine-everywhere-src
 %define tar_suffix %{nil}
@@ -37,7 +37,7 @@
 %bcond_without system_tiff
 %endif
 Name:           qt6-webengine%{?pkg_suffix}
-Version:        6.6.1
+Version:        6.6.2
 Release:        0
 Summary:        Web browser engine for Qt applications
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
@@ -45,8 +45,6 @@ URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-webengine-rpmlintrc
 # Patches 0-100 are upstream patches #
-# PATCH-FIX-UPSTREAM https://codereview.qt-project.org/c/qt/qtwebengine/+/526880
-Patch0:         0001-Fix-race-condition-generating-docs.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       rtc-dont-use-h264.patch
 #
