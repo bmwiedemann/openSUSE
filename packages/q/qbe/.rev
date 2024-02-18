@@ -46,4 +46,14 @@
 </comment>
     <requestid>1140075</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5289c25577de2abd4927143978c4e212</srcmd5>
+    <version>1.2</version>
+    <time>1708284277</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2
+  * Print total number of tests run to get a better view of how much is broken.
+</comment>
+    <requestid>1147253</requestid>
+  </revision>
 </revisionlist>
