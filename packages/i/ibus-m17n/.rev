@@ -311,4 +311,13 @@
     <comment>- Use %_libexecdir as the basis of %_ibus_libexecdir (bsc#1174075)</comment>
     <requestid>1140146</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>194f54b055cd674504a4284956e77734</srcmd5>
+    <version>1.4.28</version>
+    <time>1708284190</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.28
+  * Add Russian translations</comment>
+    <requestid>1147139</requestid>
+  </revision>
 </revisionlist>

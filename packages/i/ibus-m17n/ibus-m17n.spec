@@ -17,7 +17,7 @@
 
 
 Name:           ibus-m17n
-Version:        1.4.27
+Version:        1.4.28
 Release:        0
 Summary:        The M17N engine for IBus platform
 License:        GPL-2.0-or-later
@@ -39,8 +39,7 @@ the input table maps from m17n-db.
 
 %build
 %configure --disable-static \
-           --libexecdir=%{_libexecdir}/ibus \
-           --with-gtk=3.0
+           --libexecdir=%{_libexecdir}/ibus
 %make_build
 
 %install

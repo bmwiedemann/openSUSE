@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 16 16:01:46 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 1.4.28
+  * Add Russian translations
+
+-------------------------------------------------------------------
 Sat Jan 20 15:04:05 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Use %_libexecdir as the basis of %_ibus_libexecdir (bsc#1174075)
