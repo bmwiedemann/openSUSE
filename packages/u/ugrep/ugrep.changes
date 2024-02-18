@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb 17 10:56:22 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 5.0.0:
+  * new and updated regex engine to speed up searching patterns
+    using a new heuristic DFA cut algorithm
+  * new option --exclude-fs default to exclude file systems that
+    aren't specified as search targets
+  * new option --all (-@) to search all files except hidden:
+    cancel previous file and directory search restrictions
+  * TUI regex syntax highlighting improved for --fixed-strings
+    (-F) when used with option --bool (-% and -%%)
+
+-------------------------------------------------------------------
 Wed Jan 10 17:52:11 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.5.2:
