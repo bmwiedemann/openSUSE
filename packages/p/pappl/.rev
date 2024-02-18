@@ -55,4 +55,12 @@
     <comment>- Update to release 1.4.5</comment>
     <requestid>1141791</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>718e839a482215eac8e579955f655a9e</srcmd5>
+    <version>1.4.6</version>
+    <time>1708284292</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1147340</requestid>
+  </revision>
 </revisionlist>

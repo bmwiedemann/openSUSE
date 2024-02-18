@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb 10 15:12:06 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4.6
+  * Fixed reporting of "printer-strings-languages-supported" attribute
+  * Fixed saving of "print-darkness-default" and
+    "print-speed-default" values
+  * Fixed incoming "raw" print socket support
+  * Fixed web interface support for "printer-darkness"
+
+-------------------------------------------------------------------
 Fri Jan 26 19:36:47 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.4.5
