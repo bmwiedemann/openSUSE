@@ -78,7 +78,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        4.6.1707924836.ebe28324
+Version:        4.6.1708009978.05b36bda
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -347,7 +347,7 @@ export CONTAINER_TEST=0
 export HELM_TEST=0
 # We don't want fatal warnings during package building
 export PERL_TEST_WARNINGS_ONLY_REPORT_WARNINGS=1
-make test PROVE_ARGS='-r -v' CHECKSTYLE=0 TEST_PG_PATH=%{buildroot}/DB
+make test PROVE_ARGS='-r -v t' CHECKSTYLE=0 TEST_PG_PATH=%{buildroot}/DB
 rm -rf %{buildroot}/DB
 %endif
 
