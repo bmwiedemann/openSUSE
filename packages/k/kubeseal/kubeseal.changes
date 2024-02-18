@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Feb 18 12:46:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.26.0:
+  * Add release notes for v0.26.0 (#1461)
+  * Update Go version and dependencies (#1460)
+  * Add clarity around template Secret fields (#1456)
+  * [helm] add rbac.proxier config (#1451)
+  * Bump golang.org/x/crypto from 0.18.0 to 0.19.0 (#1458)
+  * [helm chart]adding disable keyrenewperiod comment (#1455)
+  * Bump k8s.io/client-go from 0.29.0 to 0.29.1 (#1452)
+  * Implement structured logging (#1438)
+  * Bump k8s.io/code-generator from 0.29.0 to 0.29.1 (#1441)
+  * Bump k8s.io/api from 0.29.0 to 0.29.1 (#1443)
+  * Bump k8s.io/klog/v2 from 2.120.0 to 2.120.1 (#1439)
+  * Bump github.com/onsi/gomega from 1.30.0 to 1.31.1 (#1440)
+  * Release carvel package 2.14.2 (#1437)
+  * Release chart 2.14.2 (#1436)
+
+-------------------------------------------------------------------
 Sat Jan 20 17:34:44 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.25.0:
