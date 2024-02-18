@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 16 00:58:22 UTC 2024 - Michael Hamilton <michael@actrix.gen.nz>
+
+- Update to 2.0.0:
+  * Added an Ambient-Light-Level slider - one slider for adjusting brightness on all displays.
+  * Optionally use ddcutil-service for up to 10x faster DDC response times.
+  * Minor tweaks and additional icons for Presets.
+  
+-------------------------------------------------------------------
 Tue Oct 17 02:05:00 UTC 2023 - Michael Hamilton <michael@actrix.gen.nz>
 
 - Update to 1.20.0:
