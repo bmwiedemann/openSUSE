@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 14 16:53:34 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.2
+  * https://www.qt.io/blog/qt-6.6.2-released
+
+-------------------------------------------------------------------
 Wed Jan 10 18:47:55 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Fix build in SLE15 SP6 by using clang17-devel 
