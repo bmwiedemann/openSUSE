@@ -165,6 +165,9 @@ Patch39:        skip_if_buildbot-extend.patch
 # Detect email address parsing errors and return empty tuple to
 # indicate the parsing error (old API)
 Patch40:        CVE-2023-27043-email-parsing-errors.patch
+# PATCH-FIX-UPSTREAM libexpat260.patch gh#python/cpython#115289
+# Fix tests for XMLPullParser with Expat 2.6.0
+Patch41:        libexpat260.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -425,6 +428,7 @@ other applications.
 %patch -P 36 -p1
 %patch -P 39 -p1
 %patch -P 40 -p1
+%patch -P 41 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

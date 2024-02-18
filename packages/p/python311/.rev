@@ -1210,4 +1210,15 @@ C API
     <comment></comment>
     <requestid>1145179</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>0f79b579e281a83df88a376893377637</srcmd5>
+    <version>3.11.8</version>
+    <time>1708284172</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1146787 from dgarcia
+
+- Add upstream patch libexpat260.patch, Fix tests for XMLPullParser
+    with Expat 2.6.0, gh#python/cpython#115289</comment>
+    <requestid>1146838</requestid>
+  </revision>
 </revisionlist>

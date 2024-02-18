@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 15 10:29:07 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add upstream patch libexpat260.patch, Fix tests for XMLPullParser
+  with Expat 2.6.0, gh#python/cpython#115289
+
+-------------------------------------------------------------------
 Thu Feb  8 07:27:40 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 3.11.8:
