@@ -31,7 +31,7 @@
 %endif
 
 Name:           nodejs20
-Version:        20.11.0
+Version:        20.11.1
 Release:        0
 
 # Double DWZ memory limits
@@ -298,7 +298,7 @@ BuildRequires:  openssl >= %{openssl_req_ver}
 %else
 # bundled openssl
 %if %node_version_number <= 12 && 0%{?suse_version} == 1315 && 0%{?sle_version} < 120400
-Provides:       bundled(openssl) = 3.0.12
+Provides:       bundled(openssl) = 3.0.13
 %else
 BuildRequires:  bundled_openssl_should_not_be_required
 %endif
@@ -383,8 +383,8 @@ BuildRequires:  pkgconfig(libbrotlidec)
 Provides:       bundled(llhttp) = 8.1.1
 Provides:       bundled(ngtcp2) = 0.8.1
 Provides:       bundled(base64) = 0.5.1
-Provides:       bundled(simdutf) = 3.2.18
-
+Provides:       bundled(simdutf) = 4.0.4
+Provides:       bundled(simdjson) = {{nothing}}
 # bundled url-ada parser, not ada
 Provides:       bundled(ada) = 2.7.4
 
@@ -396,7 +396,7 @@ Provides:       bundled(node-cjs-module-lexer) = 1.2.2
 Provides:       bundled(node-corepack) = 0.23.0
 Provides:       bundled(node-minimatch) = 9.0.3
 Provides:       bundled(node-streamsearch) = 1.1.0
-Provides:       bundled(node-undici) = 5.27.2
+Provides:       bundled(node-undici) = 5.28.3
 Provides:       bundled(node-undici-types) = 5.25.1
 
 %description
