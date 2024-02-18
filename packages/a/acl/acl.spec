@@ -1,7 +1,7 @@
 #
 # spec file for package acl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Name:           acl
 Summary:        Commands for Manipulating POSIX Access Control Lists
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Filesystems
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 URL:            https://savannah.nongnu.org/projects/acl
 #Git-Web:	http://git.savannah.gnu.org/cgit/acl.git/
@@ -127,7 +127,7 @@ rm -rvf %buildroot/%_defaultdocdir/%name
 
 %files -f %name.lang
 %license doc/COPYING
-%doc doc/PORTING doc/extensions.txt doc/libacl.txt doc/CHANGES
+%doc doc/extensions.txt doc/libacl.txt doc/CHANGES
 %_bindir/chacl
 %_bindir/getfacl
 %_bindir/setfacl

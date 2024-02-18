@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 15 13:02:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.3.2:
+  + libobj: declare s_str directly in string_obj_tag.
+  + Use thread-safe getpwnam_r and getgrnam_r.
+  + setfacl: preserve the failed status when processing multiple
+    files.
+  + man: Document pitfall with negative permissions and user
+    namespaces.
+  + tools: mark long_options static & const.
+
+-------------------------------------------------------------------
 Fri Apr  8 13:40:20 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Disable -D_FORTIFY_SOURCE=3 for now
@@ -7,7 +19,7 @@ Fri Apr  8 13:40:20 UTC 2022 - Martin Liška <mliska@suse.cz>
 -------------------------------------------------------------------
 Sun May 16 09:19:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- modernize spec-file (move license to licensedir) 
+- modernize spec-file (move license to licensedir)
 
 -------------------------------------------------------------------
 Wed May 12 17:03:36 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
