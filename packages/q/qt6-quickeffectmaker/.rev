@@ -47,4 +47,12 @@
     <comment>Qt 6.6.1 (forwarded request 1129814 from krop)</comment>
     <requestid>1130422</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4d396bb5f4bc5aa63f3922a4f6c1a551</srcmd5>
+    <version>6.6.2</version>
+    <time>1708284250</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.6.2 (finally) (forwarded request 1146775 from krop)</comment>
+    <requestid>1147227</requestid>
+  </revision>
 </revisionlist>
