@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 16 15:45:38 UTC 2024 - kukuk@suse.com
+
+- Update to version 1708098290.fc82229:
+  * Add gawk to samba image (#11)
+  * Use the new label expansion syntax
+  * Remove debug comment
+
+-------------------------------------------------------------------
 Mon Jan 31 10:13:33 UTC 2022 - kukuk@suse.com
 
 - Update to version 1643623975.f3d4e21:

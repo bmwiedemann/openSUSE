@@ -26,4 +26,15 @@
   * Add system user nobody (used as guest account) (forwarded request 950134 from kukuk)</comment>
     <requestid>950135</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7bde9f0f3fcf0cdb536cfc75cfc9e788</srcmd5>
+    <version>unknown</version>
+    <time>1708284191</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1708098290.fc82229:
+  * Add gawk to samba image (#11)
+  * Use the new label expansion syntax
+  * Remove debug comment</comment>
+    <requestid>1147133</requestid>
+  </revision>
 </revisionlist>

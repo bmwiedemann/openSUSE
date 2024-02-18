@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 DEBUG=${DEBUG:-"0"}
 
@@ -58,7 +59,6 @@ init_smb_conf() {
   server string = $HOSTNAME
   netbios name = $HOSTNAME
   server role = standalone server
-# XXX really needed?
 ;  hosts allow = 192.168.1. 192.168.2. 127.
   security = user
   create mask = 0664
