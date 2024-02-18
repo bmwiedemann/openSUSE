@@ -1,7 +1,7 @@
 #
 # spec file for package expat
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%global unversion 2_5_0
+%global unversion 2_6_0
 Name:           expat
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        XML Parser Toolkit
 License:        MIT
@@ -29,8 +29,8 @@ Source1:        https://github.com/libexpat/libexpat/releases/download/R_%{unver
 Source2:        baselibs.conf
 Source3:        %{name}faq.html
 # https://www.gentoo.org/inside-gentoo/developers/index.html#sping
-# https://keys.gentoo.org/pks/lookup?op=get&search=0x1F9B0E909AF37285#/%{name}.keyring
-Source4:        %{name}.keyring
+# https://github.com/libexpat/libexpat/issues/537#issuecomment-1003796884
+Source4:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x3176ef7db2367f1fca4f306b1f9b0e909af37285#/expat.keyring
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -67,30 +67,35 @@ in libexpat.
 %setup -q
 
 cp %{SOURCE3} .
-rm -f examples/*.dsp
 
 %build
 %configure \
   --disable-silent-rules \
   --docdir="%{_docdir}/%{name}" \
-  --disable-static
+  --disable-static \
+  --without-docbook
+
 %if 0%{?do_profiling}
-  %make_build CFLAGS="%{optflags} %{cflags_profile_generate}"
+  %make_build CFLAGS="%{optflags} %{cflags_profile_generate}" LDFLAGS="%{optflags} %{cflags_profile_generate}"
   %make_build CFLAGS="%{optflags} %{cflags_profile_generate}" LDFLAGS="%{optflags} %{cflags_profile_generate}" check
+  # make clean removes 'docs/xmlwf.1' and breaks build system when
+  # docbook is not avaiable, so save it for later, clean and move
+  # it back again to it's original location
+  # See: https://github.com/libexpat/libexpat/issues/821
+  mv doc/xmlwf.1 .
   %make_build clean
+  mv xmlwf.1 doc/
   %make_build CFLAGS="%{optflags} %{cflags_profile_feedback}"
 %else
   %make_build CFLAGS="%{optflags}"
 %endif
 
+%check
+%make_build check
+
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-# Fix permissions error: spurious-executable-perm
-chmod 0644 examples/elements.c
-
-%check
-%make_build check
 
 %post -n libexpat1 -p /sbin/ldconfig
 %postun -n libexpat1 -p /sbin/ldconfig
@@ -98,10 +103,11 @@ chmod 0644 examples/elements.c
 %files
 %license COPYING
 %doc AUTHORS README.md expatfaq.html
-%doc doc/reference.html doc/style.css
-%doc examples/elements.c examples/outline.c examples/Makefile.am examples/Makefile.in
+%doc doc/reference.html doc/*.css
+%doc examples/*.c examples/Makefile.am examples/Makefile.in
 %doc changelog
 %{_bindir}/xmlwf
+%{_mandir}/man1/xmlwf.1%{?ext_man}
 
 %files -n libexpat1
 %{_libdir}/libexpat.so.*

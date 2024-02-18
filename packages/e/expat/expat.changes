@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Mon Feb 12 20:44:14 UTC 2024 - David Anes <david.anes@suse.com>
+
+- Update keyring automatically from keyserver during OBS service run.
+- Explicitly use --without-docbook (before it was implicit).
+- Include missing files for documentation and examples.
+- Add manpage for xmlwf, which is not available in the release tarball.
+- Clean the spec file a bit.
+
+- Update to 2.6.0: 
+  * Security fixes:
+    - CVE-2023-52425 (boo#1219559)  
+      -- Fix quadratic runtime issues with big tokens
+      that can cause denial of service, in partial where
+      dealing with compressed XML input.  Applications
+      that parsed a document in one go -- a single call to
+      functions XML_Parse or XML_ParseBuffer -- were not affected.
+      The smaller the chunks/buffers you use for parsing
+      previously, the bigger the problem prior to the fix.
+      Backporters should be careful to no omit parts of
+      pull request #789 and to include earlier pull request #771,
+      in order to not break the fix.
+    - CVE-2023-52426 (boo#1219561)
+      -- Fix billion laughs attacks for users
+      compiling *without* XML_DTD defined (which is not common).
+      Users with XML_DTD defined have been protected since
+      Expat >=2.4.0 (and that was CVE-2013-0340 back then).
+  * Bug fixes:
+    - Fix parse-size-dependent "invalid token" error for
+      external entities that start with a byte order mark
+    - Fix NULL pointer dereference in setContext via
+      XML_ExternalEntityParserCreate for compilation with
+      XML_DTD undefined
+    - Protect against closing entities out of order
+  * Other changes:
+    - Improve support for arc4random/arc4random_buf
+    - Improve buffer growth in XML_GetBuffer and XML_Parse
+    - xmlwf: Support --help and --version
+    - xmlwf: Support custom buffer size for XML_GetBuffer and read
+    - xmlwf: Improve language and URL clickability in help output
+    - examples: Add new example "element_declarations.c"
+    - Be stricter about macro XML_CONTEXT_BYTES at build time
+    - Make inclusion to expat_config.h consistent
+    - Autotools: configure.ac: Support --disable-maintainer-mode
+    - Autotools: Sync CMake templates with CMake 3.26
+    - Autotools: Make installation of shipped man page doc/xmlwf.1
+      independent of docbook2man availability
+    - Autotools|CMake: Add missing -DXML_STATIC to pkg-config file
+      section "Cflags.private" in order to fix compilation
+      against static libexpat using pkg-config on Windows
+    - Autotools|CMake: Require a C99 compiler
+      (a de-facto requirement already since Expat 2.2.2 of 2017)
+    - Autotools|CMake: Fix PACKAGE_BUGREPORT variable
+    - Autotools|CMake: Make test suite require a C++11 compiler
+    - CMake: Require CMake >=3.5.0
+    - CMake: Lowercase off_t and size_t to help a bug in Meson
+    - CMake: Sort xmlwf sources alphabetically
+    - CMake|Windows: Fix generation of DLL file version info
+    - CMake: Build tests/benchmark/benchmark.c as well for
+      a build with -DEXPAT_BUILD_TESTS=ON
+    - docs: Document the importance of isFinal + adjust tests
+      accordingly
+    - docs: Improve use of "NULL" and "null"
+    - docs: Be specific about version of XML (XML 1.0r4)
+      and version of C (C99); (XML 1.0r5 will need a sponsor.)
+    - docs: reference.html: Promote function XML_ParseBuffer more
+    - docs: reference.html: Add HTML anchors to XML_* macros
+    - docs: reference.html: Upgrade to OK.css 1.2.0
+    - docs: Fix typos
+    - docs|CI: Use HTTPS URLs instead of HTTP at various places
+    - Address compiler warnings
+    - Address clang-tidy warnings
+    - Version info bumped from 9:10:8 (libexpat*.so.1.8.10)
+      to 10:0:9 (libexpat*.so.1.9.0); see https://verbump.de/
+      for what these numbers do
+
+-------------------------------------------------------------------
 Sun Dec 11 20:35:38 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - add upstream signing key and validate source signature
