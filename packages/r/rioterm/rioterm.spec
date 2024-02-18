@@ -1,7 +1,7 @@
 #
 # spec file for package rioterm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2023 Nicolas Lorin <androw95220@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,14 @@
 
 
 Name:           rioterm
-Version:        0.0.32
+Version:        0.0.34
 Release:        0
 Summary:        A hardware-accelerated GPU terminal emulator powered by WebGPU
 License:        MIT
 URL:            https://raphamorim.io/rio/
 Source0:        rio-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Requires:       rioterm-terminfo
+#Requires:       rioterm-terminfo
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  freetype2-devel
@@ -54,12 +54,12 @@ The official terminfo for rioterm.
 
 %build
 %{cargo_build} --no-default-features --features=x11,wayland
-tic -e rio -x -o terminfo misc/rio.terminfo
+#tic -e rio -x -o terminfo misc/rio.terminfo
 
 %install
 mkdir -p "%{buildroot}%{_bindir}"
 install -D -m 0755 target/release/rio %{buildroot}%{_bindir}/rio
-install -D -m 0644 terminfo/r/rio %{buildroot}/usr/share/terminfo/r/rio
+#install -D -m 0644 terminfo/r/rio %{buildroot}/usr/share/terminfo/r/rio
 install -D -m 0644 misc/rio.desktop %{buildroot}/%{_datadir}/applications/rio.desktop
 install -D -m 0644 misc/logo.svg %{buildroot}/%{_datadir}/pixmaps/rio.svg
 
@@ -72,7 +72,7 @@ install -D -m 0644 misc/logo.svg %{buildroot}/%{_datadir}/pixmaps/rio.svg
 %{_datadir}/applications/rio.desktop
 %{_datadir}/pixmaps/rio.svg
 
-%files terminfo
-/usr/share/terminfo/r/rio
+#%files terminfo
+#/usr/share/terminfo/r/rio
 
 %changelog
