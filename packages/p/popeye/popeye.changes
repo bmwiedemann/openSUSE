@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Feb 18 12:50:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.20.0:
+  large update from 0.11.3, full changelog can be found here:
+  https://github.com/derailed/popeye/releases/tag/v0.20.0
+  * Resolved Issues
+    - #265 additional/fine grained prometheus metrics
+    - #237 Support multiple outputs at once
+    - #235 --lint level does not affect html output
+    - #232 Metrics get overridden when using the same Pushgateway
+      for multiple k8s clusters
+    - #231 wrong warning: [POP-107] No resource limits defined
+    - #230 APIs: metrics.k8s.io/v1beta1: the server is currently
+      unable to handle the request
+    - #214 [POP-1100] No pods match service selector - should not
+      be detected for ExternalName service type
+    - #213 Ingress extensions/v1beta1 deprecated (and deleted in
+      k8s v1.22) is not detected ONLY in kube-metriques namespace
+    - #212 Ingress networking.k8s.io/v1beta1 deprecated since k8s
+      v1.19 and deleted in k8s v1.22, is not detected ONLY in
+      specific namespace name as kube-metriques
+    - #209 POP-403 - PodSecurityPolicy (PSP) k8s v1.21 deprecation
+      - k8s v1.25 deletion - not detected
+    - #202 False positive on NetworkPolicy using a catch all
+      namespaceSelector
+    - #163 popeye 0.9.0 with K8S 1.21.0 bug on PodDisruptionBudget
+      - Wrong default API
+    - #125 info/error/warning messages to the metrics sent to
+      prometheus
+    - #97 Add support for explicitly sanitizing jobs to popeye
+    - #59 StatefulSet incorrectly determines apiVersio
+
+-------------------------------------------------------------------
 Sat Feb 03 08:21:26 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.11.3:
