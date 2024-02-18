@@ -438,8 +438,8 @@ pushd %{buildroot}%{_javadir}
 popd
 
 pushd output/build
-    %{_bindir}/build-jar-repository lib commons-collections \
-                                        commons-dbcp2 commons-pool2 ecj/ecj 2>&1
+    %{_bindir}/build-jar-repository -s lib commons-collections \
+                                           commons-dbcp2 commons-pool2 ecj/ecj 2>&1
     # need to use -p here with b-j-r otherwise the examples webapp fails to
     # load with a java.io.IOException
     %{_bindir}/build-jar-repository -p webapps/examples/WEB-INF/lib \
@@ -455,6 +455,8 @@ pushd %{buildroot}%{libdir}
     rm -f commons-dbcp.jar
     ln -s $(build-classpath commons-dbcp2) commons-dbcp2.jar
     ln -s $(build-classpath commons-pool2) commons-pool2.jar
+    rm ecj.jar
+    ln -s $(build-classpath ecj/ecj) ecj.jar
     ln -s $(build-classpath ecj/ecj) jasper-jdt.jar
 
     # Temporary copy the juli jar here from %%{_datadir}/java/tomcat (for maven depmap)

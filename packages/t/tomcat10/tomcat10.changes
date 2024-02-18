@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 17 14:55:36 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Link ecj.jar into the install instead of copying it
+
+-------------------------------------------------------------------
 Tue Feb  6 10:04:21 UTC 2024 - Michele Bussolotto <michele.bussolotto@suse.com>
 
 - rpm 4.19 requires dependencies on tomcat user and group (bsc#1219530)

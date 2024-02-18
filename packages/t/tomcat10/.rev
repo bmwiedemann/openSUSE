@@ -77,4 +77,12 @@
     <comment>post-embargo sync with SLE</comment>
     <requestid>1146831</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>b1f9628c4878010030cd96a110fcbfca</srcmd5>
+    <version>10.1.18</version>
+    <time>1708284287</time>
+    <user>anag+factory</user>
+    <comment>Link ecj.jar into the install instead of copying it</comment>
+    <requestid>1147339</requestid>
+  </revision>
 </revisionlist>
