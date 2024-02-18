@@ -2,6 +2,7 @@
 # spec file for package attr
 #
 # Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 %define lname	libattr1
 Name:           attr
-Version:        2.5.1
+Version:        2.5.2
 Release:        0
 Summary:        Commands for Manipulating Extended Attributes
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -26,7 +27,7 @@ Group:          System/Filesystems
 URL:            https://savannah.nongnu.org/projects/attr/
 Source:         https://download-mirror.savannah.gnu.org/releases/attr/attr-%{version}.tar.gz
 Source2:        https://download-mirror.savannah.gnu.org/releases/attr/attr-%{version}.tar.gz.sig
-Source3:        %{name}.keyring
+Source3:        https://savannah.nongnu.org/people/viewgpg.php?user_id=42032#/%{name}.keyring
 Source99:       baselibs.conf
 BuildRequires:  pkgconfig
 Conflicts:      xfsdump < 2.0.0
@@ -64,22 +65,22 @@ IRIX compatibility interface is also provided.
 %package -n libattr-devel-static
 Summary:        Static libraries for libattr development
 Group:          Development/Libraries/C and C++
+Requires:       libattr-devel = %{version}
 Provides:       libattr-devel:%{_libdir}/libattr.a
-Requires:       libattr-devel = %version
 
 %description -n libattr-devel-static
 This package contains the static library of libattr which is needed for
 staticallly linking to programs that make use of extended attributes.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %configure \
     --enable-static \
     --disable-silent-rules
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -90,27 +91,27 @@ rm -rf %{buildroot}/%{_datadir}/doc/%{name}
 %find_lang %{name}
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %files -f %{name}.lang
 %license doc/COPYING*
-%doc doc/CHANGES doc/PORTING
+%doc doc/CHANGES
 %{_mandir}/man1/*.1%{?ext_man}
 %{_bindir}/attr
 %{_bindir}/getfattr
 %{_bindir}/setfattr
 
 %files -n libattr-devel
+%license doc/COPYING*
 %{_includedir}/attr/
 %{_libdir}/pkgconfig/libattr.pc
 %{_libdir}/libattr.so
 %{_mandir}/man3/*.3%{?ext_man}
 
 %files -n libattr-devel-static
-%defattr(-,root,root)
+%license doc/COPYING*
 %{_libdir}/libattr.a
 
 %files -n %{lname}

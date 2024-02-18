@@ -336,4 +336,12 @@
 - drop 0001-attr-2.4.48-test-suite-perl.patch (upstream)</comment>
     <requestid>880540</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>75eed79c7078a8cd8d2ed9972b7ddff9</srcmd5>
+    <version>2.5.2</version>
+    <time>1708284171</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1146833</requestid>
+  </revision>
 </revisionlist>
