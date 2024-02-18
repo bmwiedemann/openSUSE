@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Feb 18 12:49:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240216T110548Z:
+  * fix example in admin replicate update (#4846)
+
+-------------------------------------------------------------------
+Sun Feb 18 12:47:21 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240214T211952Z:
+  * mirror: copy events also can mirror (#4842)
+  * fix missing space while printing profile success message
+    (#4845)
+
+-------------------------------------------------------------------
 Sat Feb 10 06:31:08 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240209T221824Z:
