@@ -204,6 +204,7 @@ Requires:       libjavascriptcoregtk%{_soverlj6api} = %{version}
 %else
 Requires:       libjavascriptcoregtk%{_sover} = %{version}
 %endif
+Requires:       libwayland-client0 >= 1.20.0
 Requires:       webkit2gtk-%{_sonameverpkg}-injected-bundles
 Requires:       xdg-dbus-proxy
 Provides:       %{_pkgname_no_slpp} = %{version}
@@ -438,8 +439,8 @@ A small test browswer from webkit, useful for testing features.
 
 
 
-# Expand %%lang_package to Obsoletes its older-name counterpart
 
+# Expand %%lang_package to Obsoletes its older-name counterpart
 %package -n WebKitGTK-%{_apiver}-lang
 Summary:        Translations for package %{name}
 Group:          System/Localization
@@ -466,7 +467,7 @@ cat /proc/meminfo
 echo "System limits:"
 ulimit -a
 if test -n "$max_link_jobs" -a "$max_link_jobs" -gt 1 ; then
-        mem_per_process=1500000
+        mem_per_process=2000000
     max_mem=$(awk '/MemTotal/ { print $2 }' /proc/meminfo)
     max_jobs="$(($max_mem / $mem_per_process))"
     test "$max_link_jobs" -gt "$max_jobs" && max_link_jobs="$max_jobs" && echo "Warning: Reducing number of link jobs to $max_jobs because of memory limits"

@@ -1623,4 +1623,12 @@
 - Disable jpegxl on SLE; it isn't currently available there.</comment>
     <requestid>1146861</requestid>
   </revision>
+  <revision rev="188" vrev="3">
+    <srcmd5>841b485cbbbb01906ef8f44e1bdfa279</srcmd5>
+    <version>2.42.5</version>
+    <time>1708284138</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147142</requestid>
+  </revision>
 </revisionlist>
