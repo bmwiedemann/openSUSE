@@ -367,6 +367,8 @@ for ext in *.{go,c,h,s,S,py,syso,bin}; do
 done
 # executable bash scripts called by go tool, etc
 find src -name "*.bash" -exec install -Dm655 \{\} %{buildroot}%{_datadir}/go/%{go_label}/\{\} \;
+# VERSION file referenced by go tool dist and go tool distpack
+find . -name VERSION -exec install -Dm655 \{\} %{buildroot}%{_datadir}/go/%{go_label}/\{\} \;
 # Trace viewer html and javascript files moved from misc/trace in
 # previous versions to src/cmd/trace/static in go1.19.
 # static contains pprof trace viewer html javascript and markdown

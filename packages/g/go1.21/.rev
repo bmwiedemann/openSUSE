@@ -199,4 +199,14 @@
   * go#65449 runtime/trace: frame pointer unwinding crash on arm64 during async preemption (forwarded request 1144736 from jfkw)</comment>
     <requestid>1144738</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>41ccd06d1a26b4efd9e9b0f5cadc2bcc</srcmd5>
+    <version>1.21.7</version>
+    <time>1708284182</time>
+    <user>anag+factory</user>
+    <comment>- Packaging improvements:
+  * boo#1219988 ensure VERSION file is present in GOROOT
+    as required by go tool dist and go tool distpack (forwarded request 1147333 from jfkw)</comment>
+    <requestid>1147336</requestid>
+  </revision>
 </revisionlist>
