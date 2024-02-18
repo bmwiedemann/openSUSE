@@ -25,16 +25,13 @@ License:        LGPL-2.1-or-later
 URL:            https://codeberg.org/miurahr/inflate64
 Source:         https://files.pythonhosted.org/packages/source/i/inflate64/inflate64-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.8}
-BuildRequires:  %{python_module importlib_metadata if %python-base < 3.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyannotate}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 45}
 BuildRequires:  %{python_module setuptools_scm >= 6.0.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       (python-importlib_metadata if python-base < 3.8)
 %python_subpackages
 
 %description
