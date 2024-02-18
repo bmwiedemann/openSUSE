@@ -1,6 +1,13 @@
 -------------------------------------------------------------------
 Tue Feb  6 22:28:04 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
+- Packaging improvements:
+  * boo#1219988 ensure VERSION file is present in GOROOT
+    as required by go tool dist and go tool distpack
+
+-------------------------------------------------------------------
+Tue Feb  6 22:28:04 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
 - go1.22 (released 2024-02-06) is a major release of Go.
   go1.22.x minor releases will be provided through February 2024.
   https://github.com/golang/go/wiki/Go-Release-Cycle

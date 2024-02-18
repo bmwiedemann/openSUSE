@@ -46,4 +46,14 @@ the go metapackage to version 1.22.</comment>
   Refs boo#1218424 go1.22 release tracking (forwarded request 1144765 from jfkw)</comment>
     <requestid>1144766</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a3f38932d32e6251ed222f602bc4b38f</srcmd5>
+    <version>1.22.0</version>
+    <time>1708284289</time>
+    <user>anag+factory</user>
+    <comment>- Packaging improvements:
+  * boo#1219988 ensure VERSION file is present in GOROOT
+    as required by go tool dist and go tool distpack (forwarded request 1147334 from jfkw)</comment>
+    <requestid>1147337</requestid>
+  </revision>
 </revisionlist>
