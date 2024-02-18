@@ -74,4 +74,13 @@
     <comment></comment>
     <requestid>1090254</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>362341811758a092b3f4f2764f93e310</srcmd5>
+    <version>2.2.0</version>
+    <time>1708284208</time>
+    <user>anag+factory</user>
+    <comment>- Add %sle15_python_module_pythons
+</comment>
+    <requestid>1147307</requestid>
+  </revision>
 </revisionlist>
