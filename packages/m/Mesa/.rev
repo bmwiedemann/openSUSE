@@ -5518,4 +5518,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   in X11:XOrg project</comment>
     <requestid>1144061</requestid>
   </revision>
+  <revision rev="495" vrev="367">
+    <srcmd5>cb1809ca28752ef590bdf13994789cea</srcmd5>
+    <version>unknown</version>
+    <time>1708284176</time>
+    <user>anag+factory</user>
+    <comment>- Update to bugfix release 23.3.6
+  --&gt; https://docs.mesa3d.org/relnotes/23.3.6.html</comment>
+    <requestid>1147250</requestid>
+  </revision>
 </revisionlist>
