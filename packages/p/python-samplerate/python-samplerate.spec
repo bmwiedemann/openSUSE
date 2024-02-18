@@ -1,7 +1,7 @@
 #
 # spec file for package python-samplerate
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,38 +16,30 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python36 1
-%bcond_without  python2
 Name:           python-samplerate
-Version:        0.1.0
+Version:        0.2.1
 Release:        0
 License:        MIT
 Summary:        Python bindings for libsamplerate
 URL:            https://github.com/tuxu/python-samplerate
 Group:          Development/Languages/Python
 Source0:        https://files.pythonhosted.org/packages/source/s/samplerate/samplerate-%{version}.tar.gz
-Source1:        https://github.com/tuxu/python-samplerate/raw/%{version}/tests/test_samplerate.py
-Source100:      python-samplerate-rpmlintrc
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pybind11-devel}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  c++_compiler
+BuildRequires:  cmake
+BuildRequires:  fdupes
+BuildRequires:  libsamplerate-devel >= 0.2.2
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module cffi >= 1.0.0}
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  libsamplerate
-%if %{with python2}
-BuildRequires:  python-enum34
-%endif
 # /SECTION
-BuildRequires:  fdupes
-Requires:       libsamplerate
-Requires:       python-cffi >= 1.0.0
 Requires:       python-numpy
-%ifpython2
-Requires:       python-enum34
-%endif
-BuildArch:      noarch
 
 %python_subpackages
 
@@ -65,28 +57,26 @@ It implements all three APIs available in libsamplerate:
   function
 
 %prep
-%setup -q -n samplerate-%{version}
-mkdir tests
-cp %{SOURCE1} tests/
-sed -i -e "s/, 'pytest-runner'//" -e "/tests_require/ d" setup.py
+%autosetup -p1 -n samplerate-%{version}
+# debundle pybind11 and libsamplerate
+# https://pybind11.readthedocs.io/en/stable/compiling.html#find-package-vs-add-subdirectory
+rm -r external
+sed -i 's/add_subdirectory(external)/find_package(pybind11 REQUIRED)/' CMakeLists.txt
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
-
-# Remove unneeded mac and windows library binaries
-%python_expand rm %{buildroot}%{$python_sitelib}/samplerate/_samplerate_data/*.*
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%pytest
+%pytest_arch
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE.rst
-%{python_sitelib}/samplerate
-%{python_sitelib}/samplerate-%{version}*-info
+%{python_sitearch}/samplerate.*.so
+%{python_sitearch}/samplerate-%{version}.dist-info
 
 %changelog

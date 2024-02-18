@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 16 15:50:56 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.2.1
+  * Replaces CFFI bindings by pybind11 bindings (#10)
+
+-------------------------------------------------------------------
 Fri Apr 23 12:00:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Skip python36 build: With NumPy 1.20, python36-numpy is no
