@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 16 19:33:21 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Use cleaner package version detection method
+
+-------------------------------------------------------------------
+Fri Feb 16 13:52:53 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Reintroduce modified dvbcut-a52.patch to build against liba52
+  0.7.x
+- Add dvbcut-autoconf269.patch
+- Have Leap also build against ffmpeg 5
+
+-------------------------------------------------------------------
 Tue Aug 22 12:56:20 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Drop dvbcut-a52.patch (build fails with a52dec 0.8.0)
