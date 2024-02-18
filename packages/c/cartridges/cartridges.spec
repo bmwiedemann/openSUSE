@@ -1,7 +1,7 @@
 #
 # spec file for package cartridges
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname   hu.kramo.Cartridges
 Name:           cartridges
-Version:        2.7.2
+Version:        2.7.3
 Release:        0
 Summary:        A GTK4 + Libadwaita game launcher 
 License:        GPL-3.0-only
