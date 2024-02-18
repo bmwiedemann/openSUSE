@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-py7zr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ License:        LGPL-2.1-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/miurahr/py7zr
 Source0:        https://files.pythonhosted.org/packages/source/p/py7zr/py7zr-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM py7zr-remove-pyannotate.patch gh#miurahr/py7zr#552
+Patch0:         https://github.com/miurahr/py7zr/pull/552.patch#/py7zr-remove-pyannotate.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 63}
@@ -46,20 +48,17 @@ Requires:       python-psutil
 Requires:       python-pycryptodomex >= 3.16.0
 Requires:       python-pyzstd >= 0.15.9
 Requires:       python-texttable
+Requires:       (python-inflate64 >= 1.0.0 with python-inflate64 < 1.1.0)
 Requires:       (python-pybcj >= 1.0.0 with python-pybcj < 1.1.0)
 Requires:       (python-pyppmd >= 1.1.0 with python-pyppmd < 1.2.0)
 %if 0%{?python_version_nodots} < 38
 Requires:       python-importlib_metadata
 %endif
-%if 0%{?python_version_nodots} > 36
-Requires:       (python-inflate64 >= 1.0.0 with python-inflate64 < 1.1.0)
-%endif
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %if %{with test}
 BuildRequires:  %{python_module py-cpuinfo}
 BuildRequires:  %{python_module py7zr = %{version}}
-BuildRequires:  %{python_module pyannotate}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-remotedata}
 BuildRequires:  %{python_module pytest-timeout}
@@ -72,7 +71,7 @@ BuildArch:      noarch
 py7zr is a library and utility to support 7zip archive compression, decompression, encryption and decryption written by Python programming language.
 
 %prep
-%setup -q -n py7zr-%{version}
+%autosetup -p1 -n py7zr-%{version}
 # remove shebangs from source
 sed -i '1{/#!/d}' py7zr/*.py
 
@@ -102,7 +101,7 @@ sed -i '1{/#!/d}' py7zr/*.py
 %license LICENSE
 %doc README.rst docs/Changelog.rst
 %{python_sitelib}/py7zr
-%{python_sitelib}/py7zr-%{version}*-info
+%{python_sitelib}/py7zr-%{version}.dist-info
 %python_alternative %{_bindir}/py7zr
 %endif
 

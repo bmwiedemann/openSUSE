@@ -1,0 +1,48 @@
+From e539448ce6a0d65371e79dc9f39b7cad59da0476 Mon Sep 17 00:00:00 2001
+From: YOKOTA Hiroshi <yokota.hgml@gmail.com>
+Date: Mon, 25 Dec 2023 21:03:19 +0900
+Subject: [PATCH] Drop pyannotate from test code
+
+pyannotate uses lib2to3 that will be drop in Python 3.13.
+So, pyannotate will be obsolete in Python 3.13.
+
+lib2to3 is deprecated in Python 3.11, and it will be removes in Python 3.13.
+See also:
+  https://docs.python.org/3.12/library/2to3.html#module-lib2to3
+---
+ tests/conftest.py | 22 ----------------------
+ 1 file changed, 22 deletions(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 34ead5ed..c398f866 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -4,28 +4,6 @@
+ 
+ import cpuinfo
+ import pytest
+-from pyannotate_runtime import collect_types
+-
+-
+-def pytest_collection_finish(session):
+-    """Handle the pytest collection finish hook: configure pyannotate.
+-    Explicitly delay importing `collect_types` until all tests have
+-    been collected.  This gives gevent a chance to monkey patch the
+-    world before importing pyannotate.
+-    """
+-    collect_types.init_types_collection()
+-
+-
+-@pytest.fixture(autouse=True)
+-def collect_types_fixture():
+-    collect_types.start()
+-    yield
+-    collect_types.stop()
+-
+-
+-def pytest_sessionfinish(session, exitstatus):
+-    os.makedirs("build/", exist_ok=True)
+-    collect_types.dump_stats("build/type_info.json")
+ 
+ 
+ def pytest_benchmark_update_json(config, benchmarks, output_json):
