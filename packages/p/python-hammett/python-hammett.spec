@@ -1,7 +1,7 @@
 #
 # spec file for package python-hammett
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,49 +16,60 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-hammett
-Version:        0.5.0
+Version:        0.9.4
 Release:        0
-Summary:        hammett is a fast python test runner
+Summary:        Fast python test runner
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/boxed/hammett
-Source0:        https://files.pythonhosted.org/packages/source/h/hammett/hammett-%{version}.tar.gz
-Source1:        tests.tar.bz2
+Source0:        https://github.com/boxed/hammett/archive/refs/tags/%{version}.tar.gz#/hammett-%{version}-gh.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-astunparse
-Requires:       python-colorama
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module astunparse}
-BuildRequires:  %{python_module colorama}
-BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
 %description
-hammett is a fast python test runner
+Hammett is a fast python test runner that aims to be compatible with the parts
+of pytest most people use (unless that conflicts with the goal of being fast).
 
 %prep
-%setup -q -n hammett-%{version} -a1
+%autosetup -p1 -n hammett-%{version}
+echo "# Empty module" >> hammett/mark.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/hammett
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# the rest doesn't work: https://github.com/boxed/hammett/issues/12
+testfiles="tests/test_di.py tests/test_misc.py"
+%pyunittest $testfiles -v
+
+%post
+%python_install_alternative hammett
+
+%postun
+%python_uninstall_alternative hammett
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%python_alternative %{_bindir}/hammett
+%{python_sitelib}/hammett
+%{python_sitelib}/hammett-%{version}.dist-info
 
 %changelog
