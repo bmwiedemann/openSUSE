@@ -1,7 +1,7 @@
 #
 # spec file for package scdoc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           scdoc
-Version:        1.11.2
+Version:        1.11.3
 Release:        0
 Summary:        A man page generator written in C99
 License:        MIT

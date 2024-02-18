@@ -179,4 +179,22 @@
 - Refresh scdoc-1.6.1-makefile.patch</comment>
     <requestid>931995</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ccfacc25831af5be2b1afd677d2c91e1</srcmd5>
+    <version>1.11.3</version>
+    <time>1708284282</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.11.3:
+  * Fix clang 15 -Wstrict-prototypes warnings
+  * Remove useless re-declarations of standard functions
+    get rid of some unused includes
+  * Use .PP for paragraph breaks
+  * scdoc(1), scdoc(5): follow conventions more closely
+  * Fix formatting of escaped backticks
+  * scdoc.5: fix capitalization of subsection headers
+  * scdoc.5: fix formatting in the preamble
+  * man: add section about SOURCE_DATE_EPOCH
+  * Emit '\e' instead of '\\'</comment>
+    <requestid>1147320</requestid>
+  </revision>
 </revisionlist>

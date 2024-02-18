@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Feb 17 11:54:13 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.11.3:
+  * Fix clang 15 -Wstrict-prototypes warnings
+  * Remove useless re-declarations of standard functions
+    get rid of some unused includes
+  * Use .PP for paragraph breaks
+  * scdoc(1), scdoc(5): follow conventions more closely
+  * Fix formatting of escaped backticks
+  * scdoc.5: fix capitalization of subsection headers
+  * scdoc.5: fix formatting in the preamble
+  * man: add section about SOURCE_DATE_EPOCH
+  * Emit '\e' instead of '\\'
+
+-------------------------------------------------------------------
 Wed Nov 17 16:07:11 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.11.2:

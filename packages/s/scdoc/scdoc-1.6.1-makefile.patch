@@ -1,8 +1,9 @@
-diff -urEbw scdoc-1.11.2/Makefile scdoc-1.11.2.new/Makefile
---- scdoc-1.11.2/Makefile	2021-11-13 09:04:45.000000000 +0100
-+++ scdoc-1.11.2.new/Makefile	2021-11-17 17:09:08.671402330 +0100
+Index: scdoc-1.11.3/Makefile
+===================================================================
+--- scdoc-1.11.3.orig/Makefile
++++ scdoc-1.11.3/Makefile
 @@ -1,7 +1,6 @@
- VERSION=1.11.2
+ VERSION=1.11.3
  CFLAGS?=-g
  MAINFLAGS:=-DVERSION='"$(VERSION)"' -Wall -Wextra -Werror -Wno-unused-parameter
 -LDFLAGS+=-static
