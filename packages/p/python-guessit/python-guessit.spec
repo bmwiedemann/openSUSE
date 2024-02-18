@@ -1,7 +1,7 @@
 #
 # spec file for package python-guessit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,9 @@
 #
 
 
-%define skip_python2 1
+%if 0%{?suse_version} > 1500
+%define with_tests 1
+%endif
 Name:           python-guessit
 Version:        3.8.0
 Release:        0
@@ -28,9 +30,11 @@ Source0:        https://files.pythonhosted.org/packages/source/g/guessit/guessit
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module babelfish >= 0.6.0}
 BuildRequires:  %{python_module importlib_resources}
+%if 0%{?with_tests}
 BuildRequires:  %{python_module pytest >= 5}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-mock >= 3.3.1}
+%endif
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module rebulk >= 3.1.0}
 BuildRequires:  %{python_module setuptools}
@@ -41,7 +45,7 @@ Requires:       python-importlib-resources
 Requires:       python-python-dateutil
 Requires:       python-rebulk >= 3.1.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -75,8 +79,10 @@ sed -i 's:.pytest-runner.::' setup.py
 %python_clone -a %{buildroot}%{_bindir}/guessit
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%if 0%{?with_tests}
 %check
 %pytest
+%endif
 
 %post
 %python_install_alternative guessit
