@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 10 13:29:43 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- Disable failing build on Python 3.12, reported upstream.
+
+-------------------------------------------------------------------
 Tue Jun 27 12:50:12 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
