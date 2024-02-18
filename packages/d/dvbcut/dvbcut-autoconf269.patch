@@ -1,0 +1,13 @@
+Index: dvbcut-deb-0.7.4/configure.ac
+===================================================================
+--- dvbcut-deb-0.7.4.orig/configure.ac
++++ dvbcut-deb-0.7.4/configure.ac
+@@ -7,7 +7,7 @@
+ AC_INIT
+ AC_CONFIG_SRCDIR([src/dvbcut.cpp])
+ 
+-AC_PREREQ([2.71])
++AC_PREREQ([2.69])
+ 
+ AC_CANONICAL_BUILD
+ 
