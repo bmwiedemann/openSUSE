@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Feb 16 16:38:30 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.94.1
+
+- Update 2.94.1
+  Fix 3-column layout #608
+
+-------------------------------------------------------------------
+Fri Feb 16 13:49:27 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.94.0
+
+- Update 2.94.0
+  Create external JSON-LD file #605
+  The structure is based on schema.org
+
+  Introduce new parameters:
+
+  * generate.json-ld.external (0=no, 1=yes)
+    Should a JSON-LD structure stored?
+  * json-ld-use-individual-authors (0=no, 1=yes)
+    Should the individual authors be used?
+  * json-ld.ext (default ".json)
+    The default extension of the JSON file
+  * json-ld-date-timezone (default "T00:00+02:00)
+    The default timezone for dates when no timezone is specified
+  * json-ld-fallback-author-name (default "SUSE Product & Solution
+    Documentation Team")
+    Default name of author when no <author> is specified
+  * json-ld-fallback-author-url (default: "https://documentation.suse.com")
+    Default URL for an author, when no <author> is specified
+  * json-ld-fallback-author-type (default "Corporation")
+    Default type of an author, when no <author> is specified
+  * json-ld-fallback-author-logo (default
+    "https://www.suse.com/assets/img/suse-white-logo-green.svg")
+    Default logo URL, when no <author> is specified
+  * json-ld-image-url (default $json-ld-fallback-author-logo)
+    Default image URL for a TechArticle
+  * stitchfile (str, default ='')
+    Absolute filename to the single stitch file that Docserv generates on startup 
+
+- Prepare structural tabs support presentation of variablelist in #606
+- JQuery to JS changes consumption in #604
+- Replaced the jQuery code with native JS in #603
+
+
+-------------------------------------------------------------------
 Tue Nov 28 10:18:57 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.93.0
 
 - Update 2.93.0
