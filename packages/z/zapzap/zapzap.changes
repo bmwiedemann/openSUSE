@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 17 11:59:21 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.2:
+  * Fixed typo in label and button: 'Lean more' changed to 'Learn more' #46
+  * feat: Proxy support #42 #53
+
+-------------------------------------------------------------------
 Tue Jan 16 07:09:39 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 5.1.3:

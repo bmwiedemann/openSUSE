@@ -22,4 +22,14 @@
   * Update de.po #40</comment>
     <requestid>1139076</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f3b7b4588e7425b864b4107e82d73da4</srcmd5>
+    <version>5.2</version>
+    <time>1708284284</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.2:
+  * Fixed typo in label and button: 'Lean more' changed to 'Learn more' #46
+  * feat: Proxy support #42 #53</comment>
+    <requestid>1147322</requestid>
+  </revision>
 </revisionlist>
