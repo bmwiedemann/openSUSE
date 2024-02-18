@@ -32,4 +32,17 @@
     <comment></comment>
     <requestid>1105272</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>50d46cab823be586f7f6b4be2acda2e1</srcmd5>
+    <version>0.7.4</version>
+    <time>1708284208</time>
+    <user>anag+factory</user>
+    <comment>- Use cleaner package version detection method
+- Reintroduce modified dvbcut-a52.patch to build against liba52
+  0.7.x
+- Add dvbcut-autoconf269.patch
+- Have Leap also build against ffmpeg 5
+</comment>
+    <requestid>1147181</requestid>
+  </revision>
 </revisionlist>
