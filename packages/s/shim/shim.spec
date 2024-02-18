@@ -283,8 +283,9 @@ install -m 755 %{SOURCE3} %{buildroot}/%{_sbindir}/
 # install SUSE certificate
 install -d %{buildroot}/%{_sysconfdir}/uefi/certs/
 for file in shim-*.der; do
+    filename=$(echo "$file" | cut -f 1 -d '.')
     fpr=$(openssl x509 -sha1 -fingerprint -inform DER -noout -in $file | cut -c 18- | cut -d ":" -f 1,2,3,4 | sed 's/://g')
-    install -m 644 $file %{buildroot}/%{_sysconfdir}/uefi/certs/${fpr}-shim.crt
+    install -m 644 $file %{buildroot}/%{_sysconfdir}/uefi/certs/${fpr}-${filename}.crt
 done
 %if %{defined shim_lib64_share_compat}
     [ "%{sysefidir}" != "/usr/lib64/efi" ] || exit 1

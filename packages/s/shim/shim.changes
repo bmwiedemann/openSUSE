@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Feb 17 07:51:01 UTC 2024 - Joey Lee <jlee@suse.com>
+
+- Modified shim.spec file to add suffix string of project to filename
+  of included certificates. e.g.
+    rpm -pql shim-15.8-lp155.6.1.x86_64.rpm
+        /etc/uefi
+        /etc/uefi/certs
+        /etc/uefi/certs/2B697CB1-shim-devel.crt
+        /etc/uefi/certs/4659838C-shim-opensuse.crt
+        /etc/uefi/certs/BCA4E38E-shim-sles.crt
+
+  The original name of crt files are:
+        /etc/uefi/certs/2B697CB1-shim.crt
+        /etc/uefi/certs/4659838C-shim.crt
+        /etc/uefi/certs/BCA4E38E-shim.crt
+
+  It can indicate the souce project of certificates.
+
+-------------------------------------------------------------------
 Thu Feb 15 09:46:09 UTC 2024 - Joey Lee <jlee@suse.com>
 
 - Sometimes SLE shim signature be Microsoft updated before openSUSE shim
