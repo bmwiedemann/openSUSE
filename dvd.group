@@ -287,6 +287,7 @@
     <package name="cpio-mt" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="cpp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cpp13" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="cpp14" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="cpupower" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="cpupower-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="cpupower-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -352,7 +353,7 @@
     <package name="discover-backend-fwupd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="discover-backend-packagekit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="discover-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="distribution-logos-openSUSE-Aeon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="distribution-logos-openSUSE-Aeon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_basis -->
     <package name="distribution-logos-openSUSE-Tumbleweed" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="distribution-logos-openSUSE-icons" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dmidecode" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -368,7 +369,6 @@
     <package name="dracut" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="dracut-transactional-update" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="drbd" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="drbd-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="drbd-utils" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="drkonqi5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="drkonqi5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -445,7 +445,6 @@
     <package name="fcitx-mozc" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="fcitx-pinyin" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="fcitx-qt5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="fcitx-qt6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="fcitx-sunpinyin" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="fcitx-table" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="fcitx-table-cn-wubi" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -509,8 +508,10 @@
     <package name="gcab" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="gcab-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="gcc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="gcc13" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="gcc13-locale" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="gcc13" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="gcc13-locale" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="gcc14" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="gcc14-locale" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="gcin" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gcin-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gcin-gtk2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -994,6 +995,7 @@
     <package name="kdoctools-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="kdump" supportstatus="unsupported"/> <!-- reason: dvd:kdump -->
     <package name="kernel-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="kernel-default-base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="kernel-default-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="kernel-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="kernel-firmware-all" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -1453,40 +1455,9 @@
     <package name="libQt6Core6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6DBus6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6Gui6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libQt6LabsAnimation6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6LabsFolderListModel6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6LabsQmlModels6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6LabsSettings6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6LabsSharedImage6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6LabsWavefrontMesh6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libQt6Network6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6OpenGL6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libQt6Qml6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6QmlCore6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6QmlLocalStorage6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6QmlModels6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6QmlWorkerScript6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6QmlXmlListModel6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6Quick6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6QuickControls2-6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6QuickControls2Impl6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6QuickDialogs2-6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6QuickDialogs2QuickImpl6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6QuickDialogs2Utils6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6QuickEffects6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6QuickLayouts6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6QuickParticles6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6QuickShapes6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6QuickTemplates2-6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6QuickTest6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6Sql6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6Test6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6WaylandClient6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6WaylandCompositor6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6WaylandEglClientHwIntegration6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6WaylandEglCompositorHwIntegration6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libQt6Widgets6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libQt6WlShellIntegration6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libQtQuick5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libSDL-1_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libSDL2-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1558,7 +1529,7 @@
     <package name="libarchive13" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libargon2-1" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libaria2-0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libasan8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="libasan8-gcc14" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libasm1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libasound2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libass9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1569,7 +1540,7 @@
     <package name="libatk-bridge-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libatkmm-1_6-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libatm1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libatomic1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libatomic1-gcc14" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libatopology2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libatspi0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libattr1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1886,9 +1857,9 @@
     <package name="libgbm1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgc1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libgcab-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libgcc_s1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libgcc_s1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libgccjit0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="libgcc_s1-gcc14" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libgcc_s1-gcc14-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libgccjit0-gcc14" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libgcin-im-client1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgck-1-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgck-2-2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1915,7 +1886,7 @@
     <package name="libgeocode-glib-2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgepub-0_7-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libgexiv2-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libgfortran5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libgfortran5-gcc14" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgif7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgimp-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgimpui-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1960,7 +1931,7 @@
     <package name="libgoa-backend-1_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgobject-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgom-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libgomp1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libgomp1-gcc14" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgooglepinyin0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgpg-error0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgpg-error0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -2076,7 +2047,7 @@
     <package name="libhogweed6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libhogweed6-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libhunspell-1_7-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libhwasan0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="libhwasan0-gcc14" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libhwy1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libhyphen0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libibus-1_0-5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2113,7 +2084,7 @@
     <package name="libisoburn1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libisofs6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libiterm1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libitm1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="libitm1-gcc14" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libiw30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libixion-0_18-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libixml11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2222,7 +2193,7 @@
     <package name="liblpsolve55-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liblqr-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblrdf2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="liblsan0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="liblsan0-gcc14" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libltdl7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liblttng-ust1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="liblua5_3-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2329,7 +2300,7 @@
     <package name="libnma-gtk4-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnma-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnma0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libnotify-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libnotify-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libnotify4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libnpth0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libnscd1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2344,7 +2315,7 @@
     <package name="libnvme-mi1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libnvme1" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="liboauth0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libobjc4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libobjc4-gcc14" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libodbc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libodfgen-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libofa0" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
@@ -2492,7 +2463,7 @@
     <package name="libqt5-qtxmlpatterns-imports" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libqt5keychain1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libqt5keychain1-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libquadmath0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libquadmath0-gcc14" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libquicktime0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libquorum5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libqxp-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2630,11 +2601,12 @@
     <package name="libsss_nss_idmap0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libstaroffice-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libstartup-notification-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libstdc++6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libstdc++6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libstdc++6-locale" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libstdc++6-pp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libstdc++6-pp-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libstdc++6-gcc14" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libstdc++6-gcc14-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libstdc++6-gcc14-locale" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libstdc++6-locale" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libstdc++6-pp-gcc14" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libstdc++6-pp-gcc14-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libstemmer1d" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libstoken1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libstorage-ng-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -2690,7 +2662,7 @@
     <package name="libtree-sitter0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libtree-sitter0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libts0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libtsan2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="libtsan2-gcc14" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libtss2-esys0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libtss2-mu0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libtss2-rc0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -2700,7 +2672,7 @@
     <package name="libtukit4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="libtumbler-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libtwolame0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libubsan1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libubsan1-gcc14" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libudev1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libudisks2-0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libudisks2-0_btrfs" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -3641,14 +3613,12 @@
     <package name="qemu-vgabios" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-x86" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qqc2-desktop-style" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="qt6-declarative-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="qt6-imageformats" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="qt6-network-tls" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="qt6-networkinformation-glib" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="qt6-networkinformation-nm" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="qt6-platformtheme-gtk3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="qt6-translations" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="qt6-wayland" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="qtdeclarative-imports-provides-qt5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="quadrapassel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="quadrapassel-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4446,8 +4416,6 @@
     <package name="virt-viewer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="virt-what" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="virtiofsd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
-    <package name="virtualbox-guest-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="virtualbox-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="vlan" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="vlc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="vlc-codec-gstreamer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -4836,5 +4804,7 @@
 </group>
 <group name="dvd.x86_64">
   <conditional name="only_x86_64"/>
-  <packagelist relationship="recommends"/>
+  <packagelist relationship="recommends">
+    <!-- virtualbox-guest-tools uninstallable: nothing provides ksym(default:drm_gem_ttm_mmap) = 1598f8a needed by virtualbox-kmp-default-7.0.14_k6.7.4_1-2.1.x86_64-->
+  </packagelist>
 </group>

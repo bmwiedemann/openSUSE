@@ -1219,7 +1219,6 @@ unsorted:
   - azure-cli-test 
   - azure-storage-cpp-devel 
   - b4 
-  - babe 
   - babelstone-han-fonts 
   - babelstone-marchen-fonts 
   - babelstone-modern-fonts 
@@ -1794,7 +1793,6 @@ unsorted:
   - caddy 
   - cadsondemak-fonts 
   - cadvisor 
-  - cage 
   - cairo-clock 
   - cairo-clock-lang 
   - cairo-devel 
@@ -2599,25 +2597,33 @@ unsorted:
   - cross-aarch64-gcc12-bootstrap 
   - cross-aarch64-gcc13 
   - cross-aarch64-gcc13-bootstrap 
+  - cross-aarch64-gcc14 
+  - cross-aarch64-gcc14-bootstrap 
   - cross-aarch64-gcc7 
   - cross-aarch64-gcc7-icecream-backend 
   - cross-aarch64-glibc-devel 
   - cross-aarch64-linux-glibc-devel 
   - cross-amdgcn-gcc12 
   - cross-amdgcn-gcc13 
+  - cross-amdgcn-gcc14 
   - cross-amdgcn-newlib12-devel 
   - cross-amdgcn-newlib13-devel 
+  - cross-amdgcn-newlib14-devel 
   - cross-arm-binutils 
   - cross-arm-gcc12 
   - cross-arm-gcc12-icecream-backend 
   - cross-arm-gcc13 
   - cross-arm-gcc13-icecream-backend 
+  - cross-arm-gcc14 
+  - cross-arm-gcc14-icecream-backend 
   - cross-arm-gcc7 
   - cross-arm-linux-glibc-devel 
   - cross-arm-none-gcc12 
   - cross-arm-none-gcc12-bootstrap 
   - cross-arm-none-gcc13 
   - cross-arm-none-gcc13-bootstrap 
+  - cross-arm-none-gcc14 
+  - cross-arm-none-gcc14-bootstrap 
   - cross-arm-none-gcc7 
   - cross-arm-none-gcc7-bootstrap 
   - cross-arm-none-newlib-devel 
@@ -2626,10 +2632,13 @@ unsorted:
   - cross-avr-gcc12-bootstrap 
   - cross-avr-gcc13 
   - cross-avr-gcc13-bootstrap 
+  - cross-avr-gcc14 
+  - cross-avr-gcc14-bootstrap 
   - cross-avr-gcc7 
   - cross-avr-gcc7-bootstrap 
   - cross-bpf-binutils 
   - cross-bpf-gcc13 
+  - cross-bpf-gcc14 
   - cross-epiphany-binutils 
   - cross-epiphany-gcc12 
   - cross-epiphany-gcc12-bootstrap 
@@ -2645,6 +2654,9 @@ unsorted:
   - cross-hppa-gcc13 
   - cross-hppa-gcc13-bootstrap 
   - cross-hppa-gcc13-icecream-backend 
+  - cross-hppa-gcc14 
+  - cross-hppa-gcc14-bootstrap 
+  - cross-hppa-gcc14-icecream-backend 
   - cross-hppa-gcc7 
   - cross-hppa-gcc7-icecream-backend 
   - cross-hppa-linux-glibc-devel 
@@ -2659,6 +2671,8 @@ unsorted:
   - cross-m68k-gcc12-icecream-backend 
   - cross-m68k-gcc13 
   - cross-m68k-gcc13-icecream-backend 
+  - cross-m68k-gcc14 
+  - cross-m68k-gcc14-icecream-backend 
   - cross-m68k-gcc7 
   - cross-m68k-gcc7-icecream-backend 
   - cross-m68k-linux-glibc-devel 
@@ -2667,14 +2681,18 @@ unsorted:
   - cross-mips-gcc12-icecream-backend 
   - cross-mips-gcc13 
   - cross-mips-gcc13-icecream-backend 
+  - cross-mips-gcc14 
+  - cross-mips-gcc14-icecream-backend 
   - cross-mips-gcc7 
   - cross-mips-gcc7-icecream-backend 
   - cross-mips-linux-glibc-devel 
   - cross-nvptx-gcc12 
   - cross-nvptx-gcc13 
+  - cross-nvptx-gcc14 
   - cross-nvptx-gcc7 
   - cross-nvptx-newlib12-devel 
   - cross-nvptx-newlib13-devel 
+  - cross-nvptx-newlib14-devel 
   - cross-nvptx-newlib7-devel 
   - cross-ppc-binutils 
   - cross-ppc64-binutils 
@@ -2682,6 +2700,8 @@ unsorted:
   - cross-ppc64-gcc12-icecream-backend 
   - cross-ppc64-gcc13 
   - cross-ppc64-gcc13-icecream-backend 
+  - cross-ppc64-gcc14 
+  - cross-ppc64-gcc14-icecream-backend 
   - cross-ppc64-gcc7 
   - cross-ppc64-gcc7-icecream-backend 
   - cross-ppc64-linux-glibc-devel 
@@ -2690,6 +2710,8 @@ unsorted:
   - cross-ppc64le-gcc12-icecream-backend 
   - cross-ppc64le-gcc13 
   - cross-ppc64le-gcc13-bootstrap 
+  - cross-ppc64le-gcc14 
+  - cross-ppc64le-gcc14-bootstrap 
   - cross-ppc64le-gcc7 
   - cross-ppc64le-gcc7-icecream-backend 
   - cross-ppc64le-glibc-devel 
@@ -2698,16 +2720,21 @@ unsorted:
   - cross-pru-gcc12 
   - cross-pru-gcc12-bootstrap 
   - cross-pru-gcc13-bootstrap 
+  - cross-pru-gcc14-bootstrap 
   - cross-pru-newlib-devel 
   - cross-riscv64-binutils 
   - cross-riscv64-elf-gcc12 
   - cross-riscv64-elf-gcc12-bootstrap 
   - cross-riscv64-elf-gcc13 
   - cross-riscv64-elf-gcc13-bootstrap 
+  - cross-riscv64-elf-gcc14 
+  - cross-riscv64-elf-gcc14-bootstrap 
   - cross-riscv64-gcc12 
   - cross-riscv64-gcc12-bootstrap 
   - cross-riscv64-gcc13 
   - cross-riscv64-gcc13-bootstrap 
+  - cross-riscv64-gcc14 
+  - cross-riscv64-gcc14-bootstrap 
   - cross-riscv64-glibc-devel 
   - cross-riscv64-linux-glibc-devel 
   - cross-riscv64-newlib-devel 
@@ -2716,6 +2743,8 @@ unsorted:
   - cross-rx-gcc12-bootstrap 
   - cross-rx-gcc13 
   - cross-rx-gcc13-bootstrap 
+  - cross-rx-gcc14 
+  - cross-rx-gcc14-bootstrap 
   - cross-rx-gcc7 
   - cross-rx-gcc7-bootstrap 
   - cross-rx-newlib-devel 
@@ -2725,6 +2754,8 @@ unsorted:
   - cross-s390x-gcc12-icecream-backend 
   - cross-s390x-gcc13 
   - cross-s390x-gcc13-bootstrap 
+  - cross-s390x-gcc14 
+  - cross-s390x-gcc14-bootstrap 
   - cross-s390x-gcc7 
   - cross-s390x-gcc7-icecream-backend 
   - cross-s390x-glibc-devel 
@@ -2732,6 +2763,7 @@ unsorted:
   - cross-sparc-binutils 
   - cross-sparc-gcc12 
   - cross-sparc-gcc13 
+  - cross-sparc-gcc14 
   - cross-sparc-gcc7 
   - cross-sparc-linux-glibc-devel 
   - cross-sparc64-binutils 
@@ -2739,11 +2771,14 @@ unsorted:
   - cross-sparc64-gcc12-icecream-backend 
   - cross-sparc64-gcc13 
   - cross-sparc64-gcc13-icecream-backend 
+  - cross-sparc64-gcc14 
+  - cross-sparc64-gcc14-icecream-backend 
   - cross-sparc64-gcc7 
   - cross-sparc64-gcc7-icecream-backend 
   - cross-sparc64-linux-glibc-devel 
   - cross-sparcv9-gcc12-icecream-backend 
   - cross-sparcv9-gcc13-icecream-backend 
+  - cross-sparcv9-gcc14-icecream-backend 
   - cross-sparcv9-gcc7-icecream-backend 
   - cross-spu-binutils 
   - cross-x86_64-linux-glibc-devel 
@@ -3298,6 +3333,7 @@ unsorted:
   - drawing 
   - drawing-lang 
   - drbd-formula 
+  - drbd-kmp-default 
   - drc 
   - drc-doc 
   - driverctl 
@@ -3810,6 +3846,7 @@ unsorted:
   - fcitx-pinyin-tools 
   - fcitx-pylogger 
   - fcitx-qt5-devel 
+  - fcitx-qt6 
   - fcitx-quwei 
   - fcitx-rime 
   - fcitx-sayura 
@@ -4596,6 +4633,28 @@ unsorted:
   - gcc13-objc 
   - gcc13-objc-32bit 
   - gcc13-testresults 
+  - gcc14-32bit 
+  - gcc14-PIE 
+  - gcc14-ada 
+  - gcc14-ada-32bit 
+  - gcc14-c++ 
+  - gcc14-c++-32bit 
+  - gcc14-d 
+  - gcc14-d-32bit 
+  - gcc14-devel 
+  - gcc14-fortran 
+  - gcc14-fortran-32bit 
+  - gcc14-go 
+  - gcc14-go-32bit 
+  - gcc14-info 
+  - gcc14-m2 
+  - gcc14-m2-32bit 
+  - gcc14-obj-c++ 
+  - gcc14-obj-c++-32bit 
+  - gcc14-objc 
+  - gcc14-objc-32bit 
+  - gcc14-rust 
+  - gcc14-testresults 
   - gcc7 
   - gcc7-32bit 
   - gcc7-ada 
@@ -10788,6 +10847,12 @@ unsorted:
   - libQt6HttpServer6 
   - libQt6HunspellInputMethod6 
   - libQt6JsonRpc6 
+  - libQt6LabsAnimation6 
+  - libQt6LabsFolderListModel6 
+  - libQt6LabsQmlModels6 
+  - libQt6LabsSettings6 
+  - libQt6LabsSharedImage6 
+  - libQt6LabsWavefrontMesh6 
   - libQt6LanguageServer6 
   - libQt6Location6 
   - libQt6Mqtt6 
@@ -10807,7 +10872,13 @@ unsorted:
   - libQt6PositioningQuick6 
   - libQt6PrintSupport6 
   - libQt6Protobuf6 
+  - libQt6Qml6 
   - libQt6QmlCompiler6 
+  - libQt6QmlCore6 
+  - libQt6QmlLocalStorage6 
+  - libQt6QmlModels6 
+  - libQt6QmlWorkerScript6 
+  - libQt6QmlXmlListModel6 
   - libQt6Quick3D6 
   - libQt6Quick3DAssetImport6 
   - libQt6Quick3DAssetUtils6 
@@ -10823,6 +10894,18 @@ unsorted:
   - libQt6Quick3DRuntimeRender6 
   - libQt6Quick3DSpatialAudio6 
   - libQt6Quick3DUtils6 
+  - libQt6Quick6 
+  - libQt6QuickControls2-6 
+  - libQt6QuickControls2Impl6 
+  - libQt6QuickDialogs2-6 
+  - libQt6QuickDialogs2QuickImpl6 
+  - libQt6QuickDialogs2Utils6 
+  - libQt6QuickEffects6 
+  - libQt6QuickLayouts6 
+  - libQt6QuickParticles6 
+  - libQt6QuickShapes6 
+  - libQt6QuickTemplates2-6 
+  - libQt6QuickTest6 
   - libQt6QuickTimeline6 
   - libQt6QuickWidgets6 
   - libQt6RemoteObjects6 
@@ -10835,13 +10918,19 @@ unsorted:
   - libQt6SerialPort6 
   - libQt6ShaderTools6 
   - libQt6SpatialAudio6 
+  - libQt6Sql6 
   - libQt6StateMachine6 
   - libQt6StateMachineQml6 
   - libQt6Svg6 
   - libQt6SvgWidgets6 
+  - libQt6Test6 
   - libQt6TextToSpeech6 
   - libQt6UiTools6 
   - libQt6VirtualKeyboard6 
+  - libQt6WaylandClient6 
+  - libQt6WaylandCompositor6 
+  - libQt6WaylandEglClientHwIntegration6 
+  - libQt6WaylandEglCompositorHwIntegration6 
   - libQt6WebChannel6 
   - libQt6WebChannelQuick6 
   - libQt6WebEngineCore6 
@@ -10850,6 +10939,7 @@ unsorted:
   - libQt6WebSockets6 
   - libQt6WebView6 
   - libQt6WebViewQuick6 
+  - libQt6WlShellIntegration6 
   - libQt6Xml6 
   - libQtAV1 
   - libQtAVWidgets1 
@@ -11082,6 +11172,8 @@ unsorted:
   - libada12-32bit 
   - libada13 
   - libada13-32bit 
+  - libada14 
+  - libada14-32bit 
   - libada7 
   - libada7-32bit 
   - libaddrxlat-devel 
@@ -11214,9 +11306,11 @@ unsorted:
   - libart_lgpl_2-2 
   - libasan4 
   - libasan4-32bit 
+  - libasan8 
   - libasan8-32bit 
   - libasan8-gcc12 
   - libasan8-gcc12-32bit 
+  - libasan8-gcc14-32bit 
   - libasm-devel 
   - libasm1-32bit 
   - libasn1-8 
@@ -11240,9 +11334,11 @@ unsorted:
   - libatk-bridge-2_0-0-32bit 
   - libatkmm-2_36-1 
   - libatlascpp-0_6-3 
+  - libatomic1 
   - libatomic1-32bit 
   - libatomic1-gcc12 
   - libatomic1-gcc12-32bit 
+  - libatomic1-gcc14-32bit 
   - libatomic1-gcc7 
   - libatomic1-gcc7-32bit 
   - libatomic_ops-devel 
@@ -12550,13 +12646,17 @@ unsorted:
   - libgbm-devel-32bit 
   - libgbm1-32bit 
   - libgcalc-2-1_0_1 
+  - libgcc_s1 
+  - libgcc_s1-32bit 
   - libgcc_s1-gcc12 
   - libgcc_s1-gcc12-32bit 
   - libgcc_s1-gcc7 
   - libgcc_s1-gcc7-32bit 
   - libgccjit-devel 
+  - libgccjit0 
   - libgccjit0-devel-gcc12 
   - libgccjit0-devel-gcc13 
+  - libgccjit0-devel-gcc14 
   - libgccjit0-gcc12 
   - libgci-1-0_0_0 
   - libgck-1-0-32bit 
@@ -12605,6 +12705,8 @@ unsorted:
   - libgdruntime3-32bit 
   - libgdruntime4 
   - libgdruntime4-32bit 
+  - libgdruntime5-gcc14 
+  - libgdruntime5-gcc14-32bit 
   - libgeany0 
   - libgecode51 
   - libgedit-amtk-devel 
@@ -12636,9 +12738,11 @@ unsorted:
   - libgflags2_2 
   - libgfortran4 
   - libgfortran4-32bit 
+  - libgfortran5 
   - libgfortran5-32bit 
   - libgfortran5-gcc12 
   - libgfortran5-gcc12-32bit 
+  - libgfortran5-gcc14-32bit 
   - libgfrpc0 
   - libgfxdr0 
   - libgiac0 
@@ -12730,11 +12834,15 @@ unsorted:
   - libgo21-32bit 
   - libgo22 
   - libgo22-32bit 
+  - libgo23-gcc14 
+  - libgo23-gcc14-32bit 
   - libgobject-2_0-0-32bit 
   - libgoffice-0_10-10 
+  - libgomp1 
   - libgomp1-32bit 
   - libgomp1-gcc12 
   - libgomp1-gcc12-32bit 
+  - libgomp1-gcc14-32bit 
   - libgomp1-gcc7 
   - libgomp1-gcc7-32bit 
   - libgoocanvas-2_0-9 
@@ -12756,6 +12864,8 @@ unsorted:
   - libgphobos3-32bit 
   - libgphobos4 
   - libgphobos4-32bit 
+  - libgphobos5-gcc14 
+  - libgphobos5-gcc14-32bit 
   - libgphoto2-6-32bit 
   - libgphoto2-devel 
   - libgphoto2-devel-32bit 
@@ -13070,6 +13180,7 @@ unsorted:
   - libhugetlbfs-devel 
   - libhugetlbfs-tests 
   - libhunspell-1_7-0-32bit 
+  - libhwasan0 
   - libhwloc15 
   - libhwy1-32bit 
   - libhx509-5 
@@ -13221,9 +13332,11 @@ unsorted:
   - libite-devel 
   - libite5 
   - libiterm-devel 
+  - libitm1 
   - libitm1-32bit 
   - libitm1-gcc12 
   - libitm1-gcc12-32bit 
+  - libitm1-gcc14-32bit 
   - libitm1-gcc7 
   - libitm1-gcc7-32bit 
   - libivykis0 
@@ -13532,6 +13645,7 @@ unsorted:
   - liblrdf-devel 
   - liblrdf2-32bit 
   - liblrs1 
+  - liblsan0 
   - liblsan0-gcc12 
   - liblsan0-gcc7 
   - liblscp-devel 
@@ -13571,14 +13685,24 @@ unsorted:
   - liblzo2-2-32bit 
   - libm2cor18 
   - libm2cor18-32bit 
+  - libm2cor19-gcc14 
+  - libm2cor19-gcc14-32bit 
   - libm2iso18 
   - libm2iso18-32bit 
+  - libm2iso19-gcc14 
+  - libm2iso19-gcc14-32bit 
   - libm2log18 
   - libm2log18-32bit 
+  - libm2log19-gcc14 
+  - libm2log19-gcc14-32bit 
   - libm2min18 
   - libm2min18-32bit 
+  - libm2min19-gcc14 
+  - libm2min19-gcc14-32bit 
   - libm2pim18 
   - libm2pim18-32bit 
+  - libm2pim19-gcc14 
+  - libm2pim19-gcc14-32bit 
   - libm4ri-0_0_20200125 
   - libm4ri-devel 
   - libm4rie-0_0_20200125 
@@ -14034,9 +14158,11 @@ unsorted:
   - liboauth-devel 
   - libobby-0_4-1 
   - libobjc2-devel 
+  - libobjc4 
   - libobjc4-32bit 
   - libobjc4-gcc12 
   - libobjc4-gcc12-32bit 
+  - libobjc4-gcc14-32bit 
   - libobjc4-gcc7 
   - libobjc4-gcc7-32bit 
   - libobjc4_6 
@@ -14831,9 +14957,11 @@ unsorted:
   - libqtcurve-utils2 
   - libqtermwidget5-1 
   - libqtolm-devel 
+  - libquadmath0 
   - libquadmath0-32bit 
   - libquadmath0-gcc12 
   - libquadmath0-gcc12-32bit 
+  - libquadmath0-gcc14-32bit 
   - libquadmath0-gcc7 
   - libquadmath0-gcc7-32bit 
   - libquazip1-qt5-1_4_0 
@@ -15407,10 +15535,14 @@ unsorted:
   - libstatgrab10 
   - libstdc++-devel 
   - libstdc++-devel-32bit 
+  - libstdc++6 
+  - libstdc++6-32bit 
   - libstdc++6-devel-gcc12 
   - libstdc++6-devel-gcc12-32bit 
   - libstdc++6-devel-gcc13 
   - libstdc++6-devel-gcc13-32bit 
+  - libstdc++6-devel-gcc14 
+  - libstdc++6-devel-gcc14-32bit 
   - libstdc++6-devel-gcc7 
   - libstdc++6-devel-gcc7-32bit 
   - libstdc++6-gcc12 
@@ -15419,6 +15551,8 @@ unsorted:
   - libstdc++6-gcc7 
   - libstdc++6-gcc7-32bit 
   - libstdc++6-gcc7-locale 
+  - libstdc++6-pp 
+  - libstdc++6-pp-32bit 
   - libstdc++6-pp-gcc12 
   - libstdc++6-pp-gcc12-32bit 
   - libstellarsolver2 
@@ -15677,6 +15811,7 @@ unsorted:
   - libtrng4-25 
   - libts0-32bit 
   - libtsan0 
+  - libtsan2 
   - libtsan2-gcc12 
   - libtsk19 
   - libtsm-devel 
@@ -15720,9 +15855,11 @@ unsorted:
   - libtwolame0-32bit 
   - libubsan0 
   - libubsan0-32bit 
+  - libubsan1 
   - libubsan1-32bit 
   - libubsan1-gcc12 
   - libubsan1-gcc12-32bit 
+  - libubsan1-gcc14-32bit 
   - libuchardet-devel 
   - libuchardet0 
   - libuchardet0-32bit 
@@ -22168,7 +22305,6 @@ unsorted:
   - pplite-devel 
   - ppp-devel 
   - ppp-modem 
-  - ppplay 
   - pprof 
   - pps-tools 
   - pps-tools-devel 
@@ -24115,7 +24251,6 @@ unsorted:
   - python310-doc-devhelp 
   - python310-docformatter 
   - python310-docker 
-  - python310-docker-compose 
   - python310-docker-pycreds 
   - python310-dockerpty 
   - python310-docopt 
@@ -27637,7 +27772,6 @@ unsorted:
   - python311-doc-devhelp 
   - python311-docformatter 
   - python311-docker 
-  - python311-docker-compose 
   - python311-docker-pycreds 
   - python311-dockerpty 
   - python311-docopt 
@@ -30752,6 +30886,7 @@ unsorted:
   - python312-casttube 
   - python312-catkin-pkg 
   - python312-cattrs 
+  - python312-cauldron-notebook 
   - python312-cbor 
   - python312-cbor2 
   - python312-cchardet 
@@ -31457,6 +31592,7 @@ unsorted:
   - python312-imreg 
   - python312-incremental 
   - python312-infinity 
+  - python312-inflate64 
   - python312-inflect 
   - python312-inflection 
   - python312-ini2toml 
@@ -31858,6 +31994,7 @@ unsorted:
   - python312-multi_key_dict 
   - python312-multidict 
   - python312-multipledispatch 
+  - python312-multivolumefile 
   - python312-munch 
   - python312-munkres 
   - python312-murmurhash 
@@ -31907,6 +32044,7 @@ unsorted:
   - python312-networkx 
   - python312-nftables 
   - python312-nh3 
+  - python312-nibabel 
   - python312-nine 
   - python312-nkdfu 
   - python312-nlopt 
@@ -32365,6 +32503,7 @@ unsorted:
   - python312-pypiserver 
   - python312-pypng 
   - python312-pyppmd 
+  - python312-pyprel 
   - python312-pyprimes 
   - python312-pyproj 
   - python312-pyproject-api 
@@ -32381,6 +32520,7 @@ unsorted:
   - python312-pyramid-debugtoolbar 
   - python312-pyramid-mako 
   - python312-pyreadstat 
+  - python312-pyroomacoustics 
   - python312-pyroute2 
   - python312-pyrsistent 
   - python312-pysaml2 
@@ -32752,6 +32892,7 @@ unsorted:
   - python312-s3transfer 
   - python312-sadisplay 
   - python312-safe-netrc 
+  - python312-samplerate 
   - python312-sane 
   - python312-sanlock 
   - python312-sarge 
@@ -32780,6 +32921,7 @@ unsorted:
   - python312-scrypt 
   - python312-scspell3k 
   - python312-sdnotify 
+  - python312-seaborn 
   - python312-securesystemslib 
   - python312-selection 
   - python312-selenium 
@@ -32811,6 +32953,7 @@ unsorted:
   - python312-shaptools 
   - python312-shellingham 
   - python312-shijian 
+  - python312-shinyutils 
   - python312-shodan 
   - python312-shortuuid 
   - python312-show-in-file-manager 
@@ -33271,6 +33414,7 @@ unsorted:
   - python312-zeroconf 
   - python312-zhon 
   - python312-zict 
+  - python312-zignal 
   - python312-zipp 
   - python312-zipstream 
   - python312-zlib-ng 
@@ -34510,7 +34654,6 @@ unsorted:
   - python39-doc-devhelp 
   - python39-docformatter 
   - python39-docker 
-  - python39-docker-compose 
   - python39-docker-pycreds 
   - python39-dockerpty 
   - python39-docopt 
@@ -37128,6 +37271,7 @@ unsorted:
   - qt6-declarative-docs-html 
   - qt6-declarative-docs-qch 
   - qt6-declarative-examples 
+  - qt6-declarative-imports 
   - qt6-declarative-private-devel 
   - qt6-declarative-tools 
   - qt6-declarativeopcua-private-devel 
@@ -37425,6 +37569,7 @@ unsorted:
   - qt6-virtualkeyboard-examples 
   - qt6-virtualkeyboard-imports 
   - qt6-virtualkeyboard-private-devel 
+  - qt6-wayland 
   - qt6-wayland-devel 
   - qt6-wayland-docs-html 
   - qt6-wayland-docs-qch 
@@ -37789,7 +37934,6 @@ unsorted:
   - rinstall 
   - rinutils-devel 
   - rioterm 
-  - rioterm-terminfo 
   - ripgrep 
   - ripgrep-bash-completion 
   - ripgrep-fish-completion 
@@ -49487,7 +49631,9 @@ unsorted:
   - virtualbox-devel 
   - virtualbox-guest-desktop-icons 
   - virtualbox-guest-source 
+  - virtualbox-guest-tools 
   - virtualbox-host-source 
+  - virtualbox-kmp-default 
   - virtualbox-qt 
   - virtualbox-vnc 
   - virtualbox-websrv 
