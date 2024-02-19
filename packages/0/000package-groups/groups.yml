@@ -46,6 +46,7 @@ common_locks:
   - clang17: [locked]
   - gnome-backgrounds: [locked]
   - gcc12: [locked]
+  - gcc14: [locked]
   - postgresql16-llvmjit: [locked]
 
 dvd:
