@@ -284,7 +284,6 @@
       <repopackage name="cpio-mt"/>
       <repopackage name="cpp"/>
       <repopackage name="cpp13"/>
-      <repopackage name="cpp14"/>
       <repopackage name="cpupower"/>
       <repopackage name="cpupower-bash-completion"/>
       <repopackage name="cpupower-lang"/>
@@ -509,8 +508,6 @@
       <repopackage name="gcc"/>
       <repopackage name="gcc13"/>
       <repopackage name="gcc13-locale"/>
-      <repopackage name="gcc14"/>
-      <repopackage name="gcc14-locale"/>
       <repopackage name="gcin"/>
       <repopackage name="gcin-branding-openSUSE"/>
       <repopackage name="gcin-gtk2"/>
@@ -1556,7 +1553,7 @@
       <repopackage name="libgcab-1_0-0"/>
       <repopackage name="libgcc_s1"/>
       <repopackage name="libgcc_s1-32bit"/>
-      <repopackage name="libgccjit0"/>
+      <repopackage name="libgccjit0-gcc13"/>
       <repopackage name="libgcin-im-client1"/>
       <repopackage name="libgck-1-0"/>
       <repopackage name="libgck-2-2"/>
