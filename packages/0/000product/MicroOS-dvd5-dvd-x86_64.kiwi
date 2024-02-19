@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20240216" schemaversion="4.1">
+<image name="OBS__MicroOS___20240218" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20240216</productvar>
+      <productvar name="VERSION">20240218</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20240216,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20240218,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20240216/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20240218/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -322,7 +322,6 @@
       <repopackage name="fcitx-mozc"/>
       <repopackage name="fcitx-pinyin"/>
       <repopackage name="fcitx-qt5"/>
-      <repopackage name="fcitx-qt6"/>
       <repopackage name="fcitx-sunpinyin"/>
       <repopackage name="fcitx-table"/>
       <repopackage name="fcitx-table-cn-wubi"/>
@@ -876,7 +875,7 @@
       <repopackage name="libatk-1_0-0"/>
       <repopackage name="libatk-bridge-2_0-0"/>
       <repopackage name="libatkmm-1_6-1"/>
-      <repopackage name="libatomic1"/>
+      <repopackage name="libatomic1-gcc14"/>
       <repopackage name="libatopology2"/>
       <repopackage name="libatspi0"/>
       <repopackage name="libattr1"/>
@@ -1103,7 +1102,7 @@
       <repopackage name="libfwupd2"/>
       <repopackage name="libgbm1"/>
       <repopackage name="libgcab-1_0-0"/>
-      <repopackage name="libgcc_s1"/>
+      <repopackage name="libgcc_s1-gcc14"/>
       <repopackage name="libgcin-im-client1"/>
       <repopackage name="libgck-1-0"/>
       <repopackage name="libgck-2-2"/>
@@ -1120,7 +1119,7 @@
       <repopackage name="libgdm1"/>
       <repopackage name="libgeocode-glib-2-0"/>
       <repopackage name="libgexiv2-2"/>
-      <repopackage name="libgfortran5"/>
+      <repopackage name="libgfortran5-gcc14"/>
       <repopackage name="libgif7"/>
       <repopackage name="libgio-2_0-0"/>
       <repopackage name="libgiomm-2_4-1"/>
@@ -1151,7 +1150,7 @@
       <repopackage name="libgoa-1_0-0"/>
       <repopackage name="libgoa-backend-1_0-1"/>
       <repopackage name="libgobject-2_0-0"/>
-      <repopackage name="libgomp1"/>
+      <repopackage name="libgomp1-gcc14"/>
       <repopackage name="libgooglepinyin0"/>
       <repopackage name="libgpg-error0"/>
       <repopackage name="libgpgme11"/>
@@ -1535,7 +1534,7 @@
       <repopackage name="libnumbertext-data"/>
       <repopackage name="libnvme-mi1"/>
       <repopackage name="libnvme1"/>
-      <repopackage name="libobjc4"/>
+      <repopackage name="libobjc4-gcc14"/>
       <repopackage name="libodfgen-0_1-1"/>
       <repopackage name="libogg0"/>
       <repopackage name="libonig5"/>
@@ -1688,42 +1687,11 @@
       <repopackage name="libQt6Core6"/>
       <repopackage name="libQt6DBus6"/>
       <repopackage name="libQt6Gui6"/>
-      <repopackage name="libQt6LabsAnimation6"/>
-      <repopackage name="libQt6LabsFolderListModel6"/>
-      <repopackage name="libQt6LabsQmlModels6"/>
-      <repopackage name="libQt6LabsSettings6"/>
-      <repopackage name="libQt6LabsSharedImage6"/>
-      <repopackage name="libQt6LabsWavefrontMesh6"/>
       <repopackage name="libQt6Network6"/>
       <repopackage name="libQt6OpenGL6"/>
-      <repopackage name="libQt6Qml6"/>
-      <repopackage name="libQt6QmlCore6"/>
-      <repopackage name="libQt6QmlLocalStorage6"/>
-      <repopackage name="libQt6QmlModels6"/>
-      <repopackage name="libQt6QmlWorkerScript6"/>
-      <repopackage name="libQt6QmlXmlListModel6"/>
-      <repopackage name="libQt6Quick6"/>
-      <repopackage name="libQt6QuickControls2-6"/>
-      <repopackage name="libQt6QuickControls2Impl6"/>
-      <repopackage name="libQt6QuickDialogs2-6"/>
-      <repopackage name="libQt6QuickDialogs2QuickImpl6"/>
-      <repopackage name="libQt6QuickDialogs2Utils6"/>
-      <repopackage name="libQt6QuickEffects6"/>
-      <repopackage name="libQt6QuickLayouts6"/>
-      <repopackage name="libQt6QuickParticles6"/>
-      <repopackage name="libQt6QuickShapes6"/>
-      <repopackage name="libQt6QuickTemplates2-6"/>
-      <repopackage name="libQt6QuickTest6"/>
-      <repopackage name="libQt6Sql6"/>
-      <repopackage name="libQt6Test6"/>
-      <repopackage name="libQt6WaylandClient6"/>
-      <repopackage name="libQt6WaylandCompositor6"/>
-      <repopackage name="libQt6WaylandEglClientHwIntegration6"/>
-      <repopackage name="libQt6WaylandEglCompositorHwIntegration6"/>
       <repopackage name="libQt6Widgets6"/>
-      <repopackage name="libQt6WlShellIntegration6"/>
       <repopackage name="libQtQuick5"/>
-      <repopackage name="libquadmath0"/>
+      <repopackage name="libquadmath0-gcc14"/>
       <repopackage name="libqxp-0_0-0"/>
       <repopackage name="libraptor2-0"/>
       <repopackage name="librasqal3"/>
@@ -1842,9 +1810,10 @@
       <repopackage name="libsss_nss_idmap0"/>
       <repopackage name="libstaroffice-0_0-0"/>
       <repopackage name="libstartup-notification-1-0"/>
-      <repopackage name="libstdc++6"/>
+      <repopackage name="libstdc++6-gcc14"/>
+      <repopackage name="libstdc++6-gcc14-locale"/>
       <repopackage name="libstdc++6-locale"/>
-      <repopackage name="libstdc++6-pp"/>
+      <repopackage name="libstdc++6-pp-gcc14"/>
       <repopackage name="libstemmer1d"/>
       <repopackage name="libstoken1"/>
       <repopackage name="libstorage-ng-lang"/>
@@ -1889,7 +1858,7 @@
       <repopackage name="libtss2-tctildr0"/>
       <repopackage name="libtukit4"/>
       <repopackage name="libtwolame0"/>
-      <repopackage name="libubsan1"/>
+      <repopackage name="libubsan1-gcc14"/>
       <repopackage name="libudev1"/>
       <repopackage name="libudisks2-0"/>
       <repopackage name="libudisks2-0_btrfs"/>
@@ -2580,14 +2549,12 @@
       <repopackage name="qca-qt5-plugins"/>
       <repopackage name="qemu-guest-agent"/>
       <repopackage name="qqc2-desktop-style"/>
-      <repopackage name="qt6-declarative-imports"/>
       <repopackage name="qt6-imageformats"/>
       <repopackage name="qt6-network-tls"/>
       <repopackage name="qt6-networkinformation-glib"/>
       <repopackage name="qt6-networkinformation-nm"/>
       <repopackage name="qt6-platformtheme-gtk3"/>
       <repopackage name="qt6-translations"/>
-      <repopackage name="qt6-wayland"/>
       <repopackage name="qtdeclarative-imports-provides-qt5"/>
       <repopackage name="read-only-root-fs"/>
       <repopackage name="readline-doc"/>
