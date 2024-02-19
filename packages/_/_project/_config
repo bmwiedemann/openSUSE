@@ -28,6 +28,16 @@ Prefer: -libtsan2-gcc12
 Prefer: -libubsan1-gcc12
 Prefer: -libubsan1-gcc12-32bit
 
+Prefer: -libgdruntime4-gcc13
+Prefer: -libgphobos4-gcc13
+Prefer: -libasan8-gcc13
+Prefer: -libasan8-gcc13-32bit
+Prefer: -libtsan2-gcc13
+Prefer: -libubsan1-gcc13
+Prefer: -libubsan1-gcc13-32bit
+Prefer: -libgfortran5-gcc13
+Prefer: -libgo22-gcc13
+
 Patterntype: rpm-md ymp
 RepoType: rpm-md:sha512:filelists-ext
 %if "%_repository" == "images"
@@ -1910,6 +1920,9 @@ BuildFlags: onlybuild:gc
 BuildFlags: onlybuild:gcab
 BuildFlags: onlybuild:gcc
 BuildFlags: onlybuild:gcc13
+BuildFlags: onlybuild:gcc13-AGGR-i586
+BuildFlags: onlybuild:gcc14-AGGR-i586
+BuildFlags: onlybuild:gcc14
 BuildFlags: onlybuild:gccmakedep
 BuildFlags: onlybuild:gcr
 BuildFlags: onlybuild:gcr3
@@ -3564,7 +3577,7 @@ Macros:
 %product_libs_llvm_ver 17
 
 # define which gcc package builds the system libraries
-%product_libs_gcc_ver 13
+%product_libs_gcc_ver 14
 # The following shlibs have latest versions built from GCC 6 sources
 %product_libs_gcc_ver_libasan3 6
 %product_libs_gcc_ver_libgo9 6
