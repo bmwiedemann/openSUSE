@@ -2529,6 +2529,7 @@ unsorted:
   - cpmono_v07-fonts 
   - cpp-httplib-devel 
   - cpp12 
+  - cpp14 
   - cpp7 
   - cppcheck 
   - cppcheck-gui 
@@ -4631,6 +4632,7 @@ unsorted:
   - gcc13-objc 
   - gcc13-objc-32bit 
   - gcc13-testresults 
+  - gcc14 
   - gcc14-32bit 
   - gcc14-PIE 
   - gcc14-ada 
@@ -4645,6 +4647,7 @@ unsorted:
   - gcc14-go 
   - gcc14-go-32bit 
   - gcc14-info 
+  - gcc14-locale 
   - gcc14-m2 
   - gcc14-m2-32bit 
   - gcc14-obj-c++ 
@@ -12620,11 +12623,11 @@ unsorted:
   - libgcc_s1-gcc7 
   - libgcc_s1-gcc7-32bit 
   - libgccjit-devel 
+  - libgccjit0 
   - libgccjit0-devel-gcc12 
   - libgccjit0-devel-gcc13 
   - libgccjit0-devel-gcc14 
   - libgccjit0-gcc12 
-  - libgccjit0-gcc13 
   - libgci-1-0_0_0 
   - libgck-1-0-32bit 
   - libgck-2-2-32bit 
