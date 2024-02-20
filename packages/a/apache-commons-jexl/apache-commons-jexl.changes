@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 10:42:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Mar 23 23:06:29 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 8

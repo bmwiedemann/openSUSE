@@ -72,9 +72,9 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n %{short_name}-%{version}-src -a1
-%patch0 -p1 -b .test
-%patch1 -p1 -b .javadoc
-%patch2 -p1
+%patch -P 0 -p1 -b .test
+%patch -P 1 -p1 -b .javadoc
+%patch -P 2 -p1
 
 # Java 1.6 contains bsf 3.0, so we don't need the dependency in the pom.xml file
 %pom_remove_dep org.apache.bsf:bsf-api
