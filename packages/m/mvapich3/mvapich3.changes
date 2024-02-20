@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Tue Feb 20 13:54:55 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to v3.0 GA
+- Cleanup spec file
+  - standard flavour has been removed and has been replaced by the ucx flavour
+  - Drop 32b arch support
+  - Disable static libraries for non-HPC build
+  - No need to pull ucx nor libfabric-devel for mvapich3-devel
+- Replace 0001-fix-control-reaches-end-of-non-void-function.patch with upstream:
+  - mpi-coll-missing-return.patch
+  - mpl-warnings-missing-return.patch
+- Add:
+  - mvapich3-s390_get_cycles.patch for s390 support
+  - pass-correct-size-to-snprintf.patch to fix potential overflows
+  - autoconf-pull-dynamic-and-not-static-libs-from-pkg-config.patch to fix
+    libfabric sub dependencies being unnecessary pulled
+  - config-replace-AC_TRY_-COMPILE-LINK-RUN.patch to replace osolete
+    autoconf macros
+
+-------------------------------------------------------------------
+Mon Aug  7 16:59:30 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop support for osbolete TrueScale (bsc#1212146)
+
+-------------------------------------------------------------------
+Wed Jul 26 13:27:31 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Tune multibuild flavours to match the new ch4 targets
+
+-------------------------------------------------------------------
+Sun Jul 23 09:25:21 UTC 2023 - Klaus Kämpf <kkaempf@suse.com>
+
+- add 0001-fix-control-reaches-end-of-non-void-function.patch
+
+-------------------------------------------------------------------
+Thu Jul 20 07:53:42 UTC 2023 - Klaus Kämpf <kkaempf@suse.com>
+
+- Initial version 3.0b

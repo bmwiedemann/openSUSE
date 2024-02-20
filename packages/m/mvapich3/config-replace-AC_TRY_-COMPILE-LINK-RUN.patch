@@ -1,0 +1,2968 @@
+commit 241a53df04b9914bc897671773c06f522ea79764
+Author: Hui Zhou <hzhou321@anl.gov>
+Date:   Sun Apr 11 14:06:22 2021 -0500
+
+    config: replace AC_TRY_{COMPILE,LINK,RUN}
+    
+    AC_TRY_{COMPILE,LINK,RUN} are obsolete, replace with AC_{COMPILE,LINK,RUN}_IFELSE.
+    
+    Format the code for better readability.
+
+diff --git confdb/aclocal_cc.m4 confdb/aclocal_cc.m4
+index 207f7ca4040e..0637353a248f 100644
+--- confdb/aclocal_cc.m4
++++ confdb/aclocal_cc.m4
+@@ -154,30 +154,28 @@ dnl Notes:
+ dnl 'action-if-unknown' is used in the case of cross-compilation.
+ dnl D*/
+ AC_DEFUN([PAC_PROG_C_UNALIGNED_DOUBLES],[
+-AC_CACHE_CHECK([whether C compiler allows unaligned doubles],
+-pac_cv_prog_c_unaligned_doubles,[
+-AC_TRY_RUN([
+-void fetch_double( v )
+-double *v;
+-{
+-*v = 1.0;
+-}
+-int main( argc, argv )
+-int argc;
+-char **argv;
+-{
+-int p[4];
+-double *p_val;
+-fetch_double( (double *)&(p[0]) );
+-p_val = (double *)&(p[0]);
+-if (*p_val != 1.0) return 1;
+-fetch_double( (double *)&(p[1]) );
+-p_val = (double *)&(p[1]);
+-if (*p_val != 1.0) return 1;
+-return 0;
+-}
+-],pac_cv_prog_c_unaligned_doubles="yes",pac_cv_prog_c_unaligned_doubles="no",
+-pac_cv_prog_c_unaligned_doubles="unknown")])
++AC_CACHE_CHECK([whether C compiler allows unaligned doubles], pac_cv_prog_c_unaligned_doubles,[
++    AC_RUN_IFELSE([AC_LANG_SOURCE([[
++        void fetch_double(double *v) {
++            *v = 1.0;
++        }
++        int main(int argc, char **argv) {
++            int p[4];
++            double *p_val;
++
++            fetch_double( (double *)&(p[0]) );
++            p_val = (double *)&(p[0]);
++            if (*p_val != 1.0) return 1;
++
++            fetch_double( (double *)&(p[1]) );
++            p_val = (double *)&(p[1]);
++            if (*p_val != 1.0) return 1;
++
++            return 0;
++        }
++    ]])],pac_cv_prog_c_unaligned_doubles="yes",pac_cv_prog_c_unaligned_doubles="no",
++    pac_cv_prog_c_unaligned_doubles="unknown")
++])
+ ifelse($1,,,if test "X$pac_cv_prog_c_unaligned_doubles" = "yes" ; then 
+ $1
+ fi)
+@@ -215,16 +213,17 @@ dnl
+ dnl D*/
+ AC_DEFUN([PAC_PROG_C_WEAK_SYMBOLS],[
+ pragma_extra_message=""
+-AC_CACHE_CHECK([for type of weak symbol alias support],
+-pac_cv_prog_c_weak_symbols,[
++AC_CACHE_CHECK([for type of weak symbol alias support], pac_cv_prog_c_weak_symbols,[
+ # Test for weak symbol support...
+ # We can't put # in the message because it causes autoconf to generate
+ # incorrect code
+-AC_TRY_LINK([
+-extern int PFoo(int);
+-#pragma weak PFoo = Foo
+-int Foo(int a) { return a; }
+-],[return PFoo(1);],has_pragma_weak=yes)
++AC_LINK_IFELSE([AC_LANG_PROGRAM([[
++    extern int PFoo(int);
++    #pragma weak PFoo = Foo
++    int Foo(int a) { return a; }
++]],[[
++    return PFoo(1);
++]])],,has_pragma_weak=yes)
+ #
+ # Some systems (Linux ia64 and ecc, for example), support weak symbols
+ # only within a single object file!  This tests that case.
+@@ -273,19 +272,23 @@ return Foo(0);}
+ fi
+ dnl
+ if test -z "$pac_cv_prog_c_weak_symbols" ; then 
+-    AC_TRY_LINK([
+-extern int PFoo(int);
+-#pragma _HP_SECONDARY_DEF Foo  PFoo
+-int Foo(int a) { return a; }
+-],[return PFoo(1);],pac_cv_prog_c_weak_symbols="pragma _HP_SECONDARY_DEF")
++    AC_LINK_IFELSE([AC_LANG_PROGRAM([[
++        extern int PFoo(int);
++        #pragma _HP_SECONDARY_DEF Foo  PFoo
++        int Foo(int a) { return a; }
++    ]],[[
++        return PFoo(1);
++    ]])],pac_cv_prog_c_weak_symbols="pragma _HP_SECONDARY_DEF")
+ fi
+ dnl
+ if test -z "$pac_cv_prog_c_weak_symbols" ; then
+-    AC_TRY_LINK([
+-extern int PFoo(int);
+-#pragma _CRI duplicate PFoo as Foo
+-int Foo(int a) { return a; }
+-],[return PFoo(1);],pac_cv_prog_c_weak_symbols="pragma _CRI duplicate x as y")
++    AC_LINK_IFELSE([AC_LANG_PROGRAM([[
++        extern int PFoo(int);
++        #pragma _CRI duplicate PFoo as Foo
++        int Foo(int a) { return a; }
++    ]],[[
++        return PFoo(1);
++    ]])],pac_cv_prog_c_weak_symbols="pragma _CRI duplicate x as y")
+ fi
+ dnl
+ if test -z "$pac_cv_prog_c_weak_symbols" ; then
+@@ -309,26 +312,27 @@ if test "$pac_cv_prog_c_weak_symbols" != "no" ; then
+         ;;
+     esac
+ fi
+-AC_CACHE_CHECK([whether __attribute__ ((weak)) allowed],
+-pac_cv_attr_weak,[
+-AC_TRY_COMPILE([int foo(int) __attribute__ ((weak));],[int a;],
+-pac_cv_attr_weak=yes,pac_cv_attr_weak=no)])
++AC_CACHE_CHECK([whether __attribute__ ((weak)) allowed], pac_cv_attr_weak,[
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[int foo(int) __attribute__ ((weak));]],[[int a;]])],
++        pac_cv_attr_weak=yes,pac_cv_attr_weak=no)
++])
+ # Note that being able to compile with weak_import doesn't mean that
+ # it works.
+-AC_CACHE_CHECK([whether __attribute__ ((weak_import)) allowed],
+-pac_cv_attr_weak_import,[
+-AC_TRY_COMPILE([int foo(int) __attribute__ ((weak_import));],[int a;],
+-pac_cv_attr_weak_import=yes,pac_cv_attr_weak_import=no)])
++AC_CACHE_CHECK([whether __attribute__ ((weak_import)) allowed], pac_cv_attr_weak_import,[
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[int foo(int) __attribute__ ((weak_import));]],[[int a;]])],
++        pac_cv_attr_weak_import=yes,pac_cv_attr_weak_import=no)
++])
+ # Check if the alias option for weak attributes is allowed
+-AC_CACHE_CHECK([whether __attribute__((weak,alias(...))) allowed],
+-pac_cv_attr_weak_alias,[
+-PAC_PUSH_FLAG([CFLAGS])
+-# force an error exit if the weak attribute isn't understood
+-CFLAGS=-Werror
+-AC_TRY_COMPILE([int __foo(int a){return 0;} int foo(int) __attribute__((weak,alias("__foo")));],[int a;],
+-pac_cv_attr_weak_alias=yes,pac_cv_attr_weak_alias=no)
+-# Restore original CFLAGS
+-PAC_POP_FLAG([CFLAGS])])
++AC_CACHE_CHECK([whether __attribute__((weak,alias(...))) allowed], pac_cv_attr_weak_alias,[
++    PAC_PUSH_FLAG([CFLAGS])
++    # force an error exit if the weak attribute isn't understood
++    CFLAGS=-Werror
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[int __foo(int a){return 0;} int foo(int) __attribute__((weak,alias("__foo")));]],[[int a;]])],
++        pac_cv_attr_weak_alias=yes,pac_cv_attr_weak_alias=no)
++    # Restore original CFLAGS
++    PAC_POP_FLAG([CFLAGS])
++])
++
+ if test "$pac_cv_attr_weak_alias" = "yes" ; then
+     AC_DEFINE(HAVE_WEAK_ATTRIBUTE,1,[Attribute style weak pragma])
+ fi
+@@ -353,7 +357,7 @@ AC_DEFUN([PAC_PROG_CC_WORKS],
+ AC_MSG_CHECKING([whether the C compiler sets its return status correctly])
+ AC_LANG_SAVE
+ AC_LANG_C
+-AC_TRY_COMPILE(,[int a = bzzzt;],notbroken=no,notbroken=yes)
++AC_COMPILE_IFELSE([AC_LANG_SOURCE([],[[int a = bzzzt;]])],notbroken=no,notbroken=yes)
+ AC_MSG_RESULT($notbroken)
+ if test "$notbroken" = "no" ; then
+     AC_MSG_ERROR([installation or configuration problem: C compiler does not
+@@ -371,30 +375,23 @@ dnl
+ dnl 
+ dnl D*/
+ AC_DEFUN([PAC_PROG_C_MULTIPLE_WEAK_SYMBOLS],[
+-AC_CACHE_CHECK([for multiple weak symbol support],
+-pac_cv_prog_c_multiple_weak_symbols,[
+-# Test for multiple weak symbol support...
+-PAC_COMPLINK_IFELSE([
+-    AC_LANG_SOURCE([
+-extern int PFoo(int);
+-extern int PFoo_(int);
+-extern int pfoo_(int);
+-#pragma weak PFoo = Foo
+-#pragma weak PFoo_ = Foo
+-#pragma weak pfoo_ = Foo
+-int Foo(int);
+-int Foo(a) { return a; }
+-    ])
+-],[
+-    AC_LANG_SOURCE([
+-extern int PFoo(int), PFoo_(int), pfoo_(int);
+-int main() {
+-return PFoo(0) + PFoo_(1) + pfoo_(2);}
+-    ])
+-],[
+-    pac_cv_prog_c_multiple_weak_symbols="yes"
+-])
+-dnl
++AC_CACHE_CHECK([for multiple weak symbol support], pac_cv_prog_c_multiple_weak_symbols,[
++    # Test for multiple weak symbol support...
++    PAC_COMPLINK_IFELSE([AC_LANG_SOURCE([[
++        extern int PFoo(int);
++        extern int PFoo_(int);
++        extern int pfoo_(int);
++        #pragma weak PFoo = Foo
++        #pragma weak PFoo_ = Foo
++        #pragma weak pfoo_ = Foo
++        int Foo(int);
++        int Foo(a) { return a; }
++    ]])],[AC_LANG_SOURCE([[
++        extern int PFoo(int), PFoo_(int), pfoo_(int);
++        int main() {
++        return PFoo(0) + PFoo_(1) + pfoo_(2);}
++    ]])],
++    [pac_cv_prog_c_multiple_weak_symbols="yes"])
+ ])
+ if test "$pac_cv_prog_c_multiple_weak_symbols" = "yes" ; then
+     ifelse([$1],,:,[$1])
+@@ -667,7 +664,7 @@ dnl return is possible.
+ AC_DEFUN([PAC_C_MAX_INTEGER_ALIGN],[
+ AC_CACHE_CHECK([for max C struct integer alignment],
+ pac_cv_c_max_integer_align,[
+-AC_TRY_RUN([
++AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #include <stdio.h>
+ #define DBG(a,b,c)
+ int main( int argc, char *argv[] )
+@@ -689,7 +686,7 @@ int main( int argc, char *argv[] )
+     int size, extent, extent2;
+ 
+     /* assume max integer alignment isn't 8 if we don't have
+-     * an eight-byte value :)
++     * an eight-byte value
+      */
+ #ifdef HAVE_LONG_LONG_INT
+     if (sizeof(int) < 8 && sizeof(long) < 8 && sizeof(long long int) < 8)
+@@ -772,7 +769,7 @@ int main( int argc, char *argv[] )
+     }
+     fclose( cf );
+     return 0;
+-}],
++}]])],
+ pac_cv_c_max_integer_align=`cat ctest.out`,
+ pac_cv_c_max_integer_align="unknown",
+ pac_cv_c_max_integer_align="$CROSS_ALIGN_STRUCT_INT")
+@@ -798,7 +795,7 @@ dnl return is possible.
+ AC_DEFUN([PAC_C_MAX_FP_ALIGN],[
+ AC_CACHE_CHECK([for max C struct floating point alignment],
+ pac_cv_c_max_fp_align,[
+-AC_TRY_RUN([
++AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #include <stdio.h>
+ #define DBG(a,b,c)
+ int main( int argc, char *argv[] )
+@@ -887,7 +884,7 @@ int main( int argc, char *argv[] )
+     }
+     fclose( cf );
+     return 0;
+-}],
++}]])],
+ pac_cv_c_max_fp_align=`cat ctest.out`,
+ pac_cv_c_max_fp_align="unknown",
+ pac_cv_c_max_fp_align="$CROSS_ALIGN_STRUCT_FP")
+@@ -912,7 +909,7 @@ dnl return is possible.
+ AC_DEFUN([PAC_C_MAX_DOUBLE_FP_ALIGN],[
+ AC_CACHE_CHECK([for max C struct alignment of structs with doubles],
+ pac_cv_c_max_double_fp_align,[
+-AC_TRY_RUN([
++AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #include <stdio.h>
+ #define DBG(a,b,c)
+ int main( int argc, char *argv[] )
+@@ -970,10 +967,10 @@ int main( int argc, char *argv[] )
+     }
+     fclose( cf );
+     return 0;
+-}],
+-pac_cv_c_max_double_fp_align=`cat ctest.out`,
+-pac_cv_c_max_double_fp_align="unknown",
+-pac_cv_c_max_double_fp_align="$CROSS_ALIGN_STRUCT_DOUBLE_FP")
++}]])],
++    pac_cv_c_max_double_fp_align=`cat ctest.out`,
++    pac_cv_c_max_double_fp_align="unknown",
++    pac_cv_c_max_double_fp_align="$CROSS_ALIGN_STRUCT_DOUBLE_FP")
+ rm -f ctest.out
+ ])
+ if test -z "$pac_cv_c_max_double_fp_align" ; then
+@@ -983,7 +980,7 @@ fi
+ AC_DEFUN([PAC_C_MAX_LONGDOUBLE_FP_ALIGN],[
+ AC_CACHE_CHECK([for max C struct floating point alignment with long doubles],
+ pac_cv_c_max_longdouble_fp_align,[
+-AC_TRY_RUN([
++AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #include <stdio.h>
+ #define DBG(a,b,c)
+ int main( int argc, char *argv[] )
+@@ -1042,7 +1039,7 @@ int main( int argc, char *argv[] )
+     }
+     fclose( cf );
+     return 0;
+-}],
++}]])],
+ pac_cv_c_max_longdouble_fp_align=`cat ctest.out`,
+ pac_cv_c_max_longdouble_fp_align="unknown",
+ pac_cv_c_max_longdouble_fp_align="$CROSS_ALIGN_STRUCT_LONGDOUBLE_FP")
+@@ -1070,7 +1067,7 @@ dnl
+ AC_DEFUN([PAC_C_DOUBLE_ALIGNMENT_EXCEPTION],[
+ AC_CACHE_CHECK([if double alignment breaks rules, find actual alignment],
+ pac_cv_c_double_alignment_exception,[
+-AC_TRY_RUN([
++AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #include <stdio.h>
+ #define DBG(a,b,c)
+ int main( int argc, char *argv[] )
+@@ -1100,7 +1097,7 @@ int main( int argc, char *argv[] )
+ 
+     fclose( cf );
+     return 0;
+-}],
++}]])],
+ pac_cv_c_double_alignment_exception=`cat ctest.out`,
+ pac_cv_c_double_alignment_exception="unknown",
+ pac_cv_c_double_alignment_exception="$CROSS_ALIGN_DOUBLE_EXCEPTION")
+@@ -1122,7 +1119,7 @@ dnl
+ AC_DEFUN([PAC_C_DOUBLE_POS_ALIGN],[
+ AC_CACHE_CHECK([if alignment of structs with doubles is based on position],
+ pac_cv_c_double_pos_align,[
+-AC_TRY_RUN([
++AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #include <stdio.h>
+ #define DBG(a,b,c)
+ int main( int argc, char *argv[] )
+@@ -1143,7 +1140,7 @@ int main( int argc, char *argv[] )
+ 
+     fclose( cf );
+     return 0;
+-}],
++}]])],
+ pac_cv_c_double_pos_align=`cat ctest.out`,
+ pac_cv_c_double_pos_align="unknown",
+ pac_cv_c_double_pos_align="$CROSS_ALIGN_DOUBLE_POS")
+@@ -1165,7 +1162,7 @@ dnl
+ AC_DEFUN([PAC_C_LLINT_POS_ALIGN],[
+ AC_CACHE_CHECK([if alignment of structs with long long ints is based on position],
+ pac_cv_c_llint_pos_align,[
+-AC_TRY_RUN([
++AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #include <stdio.h>
+ #define DBG(a,b,c)
+ int main( int argc, char *argv[] )
+@@ -1188,7 +1185,7 @@ int main( int argc, char *argv[] )
+ 
+     fclose( cf );
+     return 0;
+-}],
++}]])],
+ pac_cv_c_llint_pos_align=`cat ctest.out`,
+ pac_cv_c_llint_pos_align="unknown",
+ pac_cv_c_llint_pos_align="$CROSS_ALIGN_LLINT_POS")
+@@ -1221,11 +1218,11 @@ dnl compilers (notably clang-3.2) only produce a warning in this case.
+ dnl
+ dnl D*/
+ AC_DEFUN([PAC_FUNC_NEEDS_DECL],[
+-AC_CACHE_CHECK([whether $2 needs a declaration],
+-pac_cv_func_decl_$2,[
+-AC_TRY_COMPILE([$1
+-void (*fptr)(void) = (void(*)(void))$2;],[],
+-pac_cv_func_decl_$2=no,pac_cv_func_decl_$2=yes)])
++AC_CACHE_CHECK([whether $2 needs a declaration], pac_cv_func_decl_$2,[
++    AC_COMPILE_IFELSE([AC_LANG_SOURCE([$1
++            void (*fptr)(void) = (void(*)(void))$2;],
++        [])], pac_cv_func_decl_$2=no,pac_cv_func_decl_$2=yes)
++])
+ if test "$pac_cv_func_decl_$2" = "yes" ; then
+ changequote(<<,>>)dnl
+ define(<<PAC_FUNC_NAME>>, translit(NEEDS_$2_DECL, [a-z *], [A-Z__]))dnl
+@@ -1251,14 +1248,14 @@ dnl
+ AC_DEFUN([PAC_C_GNU_ATTRIBUTE],[
+ AC_REQUIRE([AC_PROG_CC_GNU])
+ if test "$ac_cv_prog_gcc" = "yes" ; then
+-    AC_CACHE_CHECK([whether __attribute__ allowed],
+-pac_cv_gnu_attr_pure,[
+-AC_TRY_COMPILE([int foo(int) __attribute__ ((pure));],[int a;],
+-pac_cv_gnu_attr_pure=yes,pac_cv_gnu_attr_pure=no)])
+-AC_CACHE_CHECK([whether __attribute__((format)) allowed],
+-pac_cv_gnu_attr_format,[
+-AC_TRY_COMPILE([int foo(char *,...) __attribute__ ((format(printf,1,2)));],[int a;],
+-pac_cv_gnu_attr_format=yes,pac_cv_gnu_attr_format=no)])
++    AC_CACHE_CHECK([whether __attribute__ allowed], pac_cv_gnu_attr_pure,[
++        AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[int foo(int) __attribute__ ((pure));]],[[int a;]])],
++            pac_cv_gnu_attr_pure=yes,pac_cv_gnu_attr_pure=no)
++    ])
++    AC_CACHE_CHECK([whether __attribute__((format)) allowed], pac_cv_gnu_attr_format,[
++        AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[int foo(char *,...) __attribute__ ((format(printf,1,2)));]],[[int a;]])],
++            pac_cv_gnu_attr_format=yes,pac_cv_gnu_attr_format=no)
++    ])
+     if test "$pac_cv_gnu_attr_pure" = "yes" -a "$pac_cv_gnu_attr_format" = "yes" ; then
+         AC_DEFINE(HAVE_GCC_ATTRIBUTE,1,[Define if GNU __attribute__ is supported])
+     fi
+@@ -1277,117 +1274,105 @@ fi
+ #   HAVE__FUNCTION__  (if __FUNCTION__ defined)
+ #
+ AC_DEFUN([PAC_CC_FUNCTION_NAME_SYMBOL],[
+-AC_CACHE_CHECK([whether the compiler defines __func__],
+-pac_cv_have__func__,[
+-tmp_am_cross=no
+-AC_RUN_IFELSE([
+-AC_LANG_SOURCE([
+-#include <string.h>
+-int foo(void);
+-int foo(void)
+-{
+-    return (strcmp(__func__, "foo") == 0);
+-}
+-int main(int argc, char ** argv)
+-{
+-    return (foo() ? 0 : 1);
+-}
+-])
+-], pac_cv_have__func__=yes, pac_cv_have__func__=no,tmp_am_cross=yes)
+-if test "$tmp_am_cross" = yes ; then
+-    AC_LINK_IFELSE([
+-    AC_LANG_SOURCE([
+-#include <string.h>
+-int foo(void);
+-int foo(void)
+-{
+-    return (strcmp(__func__, "foo") == 0);
+-}
+-int main(int argc, char ** argv)
+-{
+-    return (foo() ? 0 : 1);
+-}
+-    ])
+-], pac_cv_have__func__=yes, pac_cv_have__func__=no)
+-fi
++AC_CACHE_CHECK([whether the compiler defines __func__], pac_cv_have__func__,[
++    tmp_am_cross=no
++    AC_RUN_IFELSE([AC_LANG_SOURCE([[
++        #include <string.h>
++        int foo(void);
++        int foo(void)
++        {
++            return (strcmp(__func__, "foo") == 0);
++        }
++        int main(int argc, char ** argv)
++        {
++            return (foo() ? 0 : 1);
++        }
++    ]])], pac_cv_have__func__=yes, pac_cv_have__func__=no,tmp_am_cross=yes)
++
++    if test "$tmp_am_cross" = yes ; then
++        AC_LINK_IFELSE([AC_LANG_SOURCE([[
++            #include <string.h>
++            int foo(void);
++            int foo(void)
++            {
++                return (strcmp(__func__, "foo") == 0);
++            }
++            int main(int argc, char ** argv)
++            {
++                return (foo() ? 0 : 1);
++            }
++        ]])], pac_cv_have__func__=yes, pac_cv_have__func__=no)
++    fi
+ ])
+ 
+ if test "$pac_cv_have__func__" = "yes" ; then
+     AC_DEFINE(HAVE__FUNC__,,[define if the compiler defines __func__])
+ fi
+ 
+-AC_CACHE_CHECK([whether the compiler defines __FUNC__],
+-pac_cv_have_cap__func__,[
+-tmp_am_cross=no
+-AC_RUN_IFELSE([
+-AC_LANG_SOURCE([
+-#include <string.h>
+-int foo(void);
+-int foo(void)
+-{
+-    return (strcmp(__FUNC__, "foo") == 0);
+-}
+-int main(int argc, char ** argv)
+-{
+-    return (foo() ? 0 : 1);
+-}
+-])
+-], pac_cv_have_cap__func__=yes, pac_cv_have_cap__func__=no,tmp_am_cross=yes)
+-if test "$tmp_am_cross" = yes ; then
+-    AC_LINK_IFELSE([
+-    AC_LANG_SOURCE([
+-#include <string.h>
+-int foo(void);
+-int foo(void)
+-{
+-    return (strcmp(__FUNC__, "foo") == 0);
+-}
+-int main(int argc, char ** argv)
+-{
+-    return (foo() ? 0 : 1);
+-}
+-    ])
+-], pac_cv_have__func__=yes, pac_cv_have__func__=no)
+-fi
++AC_CACHE_CHECK([whether the compiler defines __FUNC__], pac_cv_have_cap__func__,[
++    tmp_am_cross=no
++    AC_RUN_IFELSE([AC_LANG_SOURCE([[
++        #include <string.h>
++        int foo(void);
++        int foo(void)
++        {
++            return (strcmp(__FUNC__, "foo") == 0);
++        }
++        int main(int argc, char ** argv)
++        {
++            return (foo() ? 0 : 1);
++        }
++    ]])], pac_cv_have_cap__func__=yes, pac_cv_have_cap__func__=no,tmp_am_cross=yes)
++
++    if test "$tmp_am_cross" = yes ; then
++        AC_LINK_IFELSE([AC_LANG_SOURCE([[
++            #include <string.h>
++            int foo(void);
++            int foo(void)
++            {
++                return (strcmp(__FUNC__, "foo") == 0);
++            }
++            int main(int argc, char ** argv)
++            {
++                return (foo() ? 0 : 1);
++            }
++        ]])], pac_cv_have__func__=yes, pac_cv_have__func__=no)
++    fi
+ ])
+ 
+ if test "$pac_cv_have_cap__func__" = "yes" ; then
+     AC_DEFINE(HAVE_CAP__FUNC__,,[define if the compiler defines __FUNC__])
+ fi
+ 
+-AC_CACHE_CHECK([whether the compiler sets __FUNCTION__],
+-pac_cv_have__function__,[
+-tmp_am_cross=no
+-AC_RUN_IFELSE([
+-AC_LANG_SOURCE([
+-#include <string.h>
+-int foo(void);
+-int foo(void)
+-{
+-    return (strcmp(__FUNCTION__, "foo") == 0);
+-}
+-int main(int argc, char ** argv)
+-{
+-    return (foo() ? 0 : 1);
+-}
+-])
+-], pac_cv_have__function__=yes, pac_cv_have__function__=no,tmp_am_cross=yes)
+-if test "$tmp_am_cross" = yes ; then
+-    AC_LINK_IFELSE([
+-    AC_LANG_SOURCE([
+-#include <string.h>
+-int foo(void);
+-int foo(void)
+-{
+-    return (strcmp(__FUNCTION__, "foo") == 0);
+-}
+-int main(int argc, char ** argv)
+-{
+-    return (foo() ? 0 : 1);
+-}
+-    ])
+-], pac_cv_have__func__=yes, pac_cv_have__func__=no)
+-fi
++AC_CACHE_CHECK([whether the compiler sets __FUNCTION__], pac_cv_have__function__,[
++    tmp_am_cross=no
++    AC_RUN_IFELSE([AC_LANG_SOURCE([[
++        #include <string.h>
++        int foo(void);
++        int foo(void)
++        {
++            return (strcmp(__FUNCTION__, "foo") == 0);
++        }
++        int main(int argc, char ** argv)
++        {
++            return (foo() ? 0 : 1);
++        }
++    ]])], pac_cv_have__function__=yes, pac_cv_have__function__=no,tmp_am_cross=yes)
++
++    if test "$tmp_am_cross" = yes ; then
++        AC_LINK_IFELSE([AC_LANG_SOURCE([[
++            #include <string.h>
++            int foo(void);
++            int foo(void)
++            {
++                return (strcmp(__FUNCTION__, "foo") == 0);
++            }
++            int main(int argc, char ** argv)
++            {
++                return (foo() ? 0 : 1);
++            }
++        ]])], pac_cv_have__func__=yes, pac_cv_have__func__=no)
++    fi
+ ])
+ 
+ if test "$pac_cv_have__function__" = "yes" ; then
+@@ -1407,7 +1392,7 @@ AC_DEFUN([PAC_STRUCT_ALIGNMENT],[
+ 	is_largest=1
+ 
+ 	# See if long double exists
+-	AC_TRY_COMPILE(,[long double a;],have_long_double=yes,have_long_double=no)
++	AC_COMPILE_IFELSE([AC_LANG_PROGRAM([],[[long double a;]])],have_long_double=yes,have_long_double=no)
+ 
+ 	# Get sizes of regular types
+ 	AC_CHECK_SIZEOF(char)
+@@ -1582,9 +1567,9 @@ AC_DEFUN([PAC_C_MACRO_VA_ARGS],[
+ AC_DEFUN([PAC_C_BUILTIN_EXPECT],[
+ AC_MSG_CHECKING([if C compiler supports __builtin_expect])
+ 
+-AC_TRY_LINK(, [
++AC_LINK_IFELSE([AC_LANG_PROGRAM([],[[
+     return __builtin_expect(1, 1) ? 1 : 0
+-], [
++]])], [
+     have_builtin_expect=yes
+     AC_MSG_RESULT([yes])
+ ], [
+@@ -1623,18 +1608,19 @@ dnl will AC_DEFINE([TLS]) to a compiler supported TLS keyword
+ dnl
+ AC_DEFUN([PAC_CC_CHECK_TLS], [
+     AC_CACHE_CHECK([for thread local storage], [pac_cv_tls], [
+-    if test -z $pac_cv_tls ; then
+-        AC_LINK_IFELSE([AC_LANG_PROGRAM([_Thread_local int foo=0;],[foo=1])],
+-            [pac_cv_tls=_Thread_local])
+-    fi
+-    if test -z $pac_cv_tls ; then
+-        AC_LINK_IFELSE( [AC_LANG_PROGRAM([__thread int foo=0;],[foo=1])],
+-            [pac_cv_tls=__thread])
+-    fi
+-    if test -z $pac_cv_tls ; then
+-        AC_LINK_IFELSE( [AC_LANG_PROGRAM([__declspec(thread) int foo=0;],[foo=1])],
+-            [pac_cv_tls="__declspec(thread)"])
+-    fi])
++        if test -z $pac_cv_tls ; then
++            AC_LINK_IFELSE([AC_LANG_PROGRAM([_Thread_local int foo=0;],[foo=1])],
++                [pac_cv_tls=_Thread_local])
++        fi
++        if test -z $pac_cv_tls ; then
++            AC_LINK_IFELSE( [AC_LANG_PROGRAM([__thread int foo=0;],[foo=1])],
++                [pac_cv_tls=__thread])
++        fi
++        if test -z $pac_cv_tls ; then
++            AC_LINK_IFELSE( [AC_LANG_PROGRAM([__declspec(thread) int foo=0;],[foo=1])],
++                [pac_cv_tls="__declspec(thread)"])
++        fi
++    ])
+     if test -z $pac_cv_tls ; then
+         AC_MSG_WARN([Compiler does not support thread local storage])
+     else
+@@ -1646,19 +1632,18 @@ dnl Test whether pointers can be aligned on a int boundary or require
+ dnl a pointer boundary.
+ AC_DEFUN([PAC_CHECK_PTR_ALIGN]), [
+     AC_MSG_CHECKING([for alignment restrictions on pointers])
+-    AC_TRY_RUN(
+-    changequote(<<,>>)
+-    struct foo { int a; void *b; };
+-    int main() {
+-        int buf[10];
+-        struct foo *p1;
+-        p1=(struct foo*)&buf[0];
+-        p1->b = (void *)0;
+-        p1=(struct foo*)&buf[1];
+-        p1->b = (void *)0;
+-        return 0;
+-    changequote([,])
+-    },pac_cv_pointers_have_int_alignment=yes,pac_cv_pointers_have_int_alignment=no,pac_cv_pointers_have_int_alignment=unknown)
++    AC_RUN_IFELSE([AC_LANG_SOURCE([[
++        struct foo { int a; void *b; };
++        int main() {
++            int buf[10];
++            struct foo *p1;
++            p1=(struct foo*)&buf[0];
++            p1->b = (void *)0;
++            p1=(struct foo*)&buf[1];
++            p1->b = (void *)0;
++            return 0;
++        }
++    ]])],pac_cv_pointers_have_int_alignment=yes,pac_cv_pointers_have_int_alignment=no,pac_cv_pointers_have_int_alignment=unknown)
+ 
+     if test "$pac_cv_pointers_have_int_alignment" != "yes" ; then
+         AC_DEFINE(NEEDS_POINTER_ALIGNMENT_ADJUST,1,[define if pointers must be aligned on pointer boundaries])
+diff --git confdb/aclocal_cxx.m4 confdb/aclocal_cxx.m4
+index 6c902af2c531..36ac86a6ef9e 100644
+--- confdb/aclocal_cxx.m4
++++ confdb/aclocal_cxx.m4
+@@ -6,12 +6,12 @@ AC_DEFUN([AX_CXX_BOOL],
+ ac_cv_cxx_bool,
+ [AC_LANG_SAVE
+  AC_LANG_CPLUSPLUS
+- AC_TRY_COMPILE([
+-int f(int  x){return 1;}
+-int f(char x){return 1;}
+-int f(bool x){return 1;}
+-],[bool b = true; return f(b);],
+- ac_cv_cxx_bool=yes, ac_cv_cxx_bool=no)
++ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++    int f(int  x){return 1;}
++    int f(char x){return 1;}
++    int f(bool x){return 1;}
++    ]],[[bool b = true; return f(b);]])],
++    ac_cv_cxx_bool=yes, ac_cv_cxx_bool=no)
+  AC_LANG_RESTORE
+ ])
+ if test "$ac_cv_cxx_bool" != yes; then
+@@ -26,8 +26,8 @@ AC_DEFUN([AX_CXX_EXCEPTIONS],
+ ac_cv_cxx_exceptions,
+ [AC_LANG_SAVE
+  AC_LANG_CPLUSPLUS
+- AC_TRY_COMPILE(,[try { throw  1; } catch (int i) { return i; }],
+- ac_cv_cxx_exceptions=yes, ac_cv_cxx_exceptions=no)
++ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([],[[try { throw  1; } catch (int i) { return i; }]])],
++    ac_cv_cxx_exceptions=yes, ac_cv_cxx_exceptions=no)
+  AC_LANG_RESTORE
+ ])
+ if test "$ac_cv_cxx_exceptions" = yes; then
+@@ -42,9 +42,12 @@ AC_DEFUN([AX_CXX_NAMESPACES],
+ ac_cv_cxx_namespaces,
+ [AC_LANG_SAVE
+  AC_LANG_CPLUSPLUS
+- AC_TRY_COMPILE([namespace Outer { namespace Inner { int i = 0; }}],
+-                [using namespace Outer::Inner; return i;],
+- ac_cv_cxx_namespaces=yes, ac_cv_cxx_namespaces=no)
++ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++    namespace Outer { namespace Inner { int i = 0; }}
++    ]],[[
++    using namespace Outer::Inner; return i;
++    ]])],
++    ac_cv_cxx_namespaces=yes, ac_cv_cxx_namespaces=no)
+  AC_LANG_RESTORE
+ ])
+ if test "$ac_cv_cxx_namespaces" = yes; then
+@@ -62,11 +65,13 @@ ac_cv_cxx_namespace_std,
+ if test "$ac_cv_cxx_namespaces" = yes ; then 
+    AC_LANG_SAVE
+    AC_LANG_CPLUSPLUS
+-   AC_TRY_COMPILE([
+-#include <iostream>
+-using namespace std;],
+-                [cout << "message\n";],
+- ac_cv_cxx_namespace_std=yes, ac_cv_cxx_namespace_std=no)
++   AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++        #include <iostream>
++        using namespace std;
++        ]],[[
++        cout << "message\n";
++        ]])],
++        ac_cv_cxx_namespace_std=yes, ac_cv_cxx_namespace_std=no)
+    AC_LANG_RESTORE
+ fi
+ ])
+diff --git confdb/aclocal_f77.m4 confdb/aclocal_f77.m4
+index f44151074604..fe4ed696e255 100644
+--- confdb/aclocal_f77.m4
++++ confdb/aclocal_f77.m4
+@@ -387,7 +387,7 @@ dnl Check whether '!' may be used to begin comments in Fortran.
+ dnl
+ dnl This macro requires a version of autoconf `after` 2.13; the 'acgeneral.m4'
+ dnl file contains an error in the handling of Fortran programs in 
+-dnl 'AC_TRY_COMPILE' (fixed in our local version).
++dnl 'AC_COMPILE_IFELSE' (fixed in our local version).
+ dnl
+ dnl D*/
+ AC_DEFUN([PAC_PROG_F77_EXCLAIM_COMMENTS],[
+diff --git confdb/ax_check_posix_regcomp.m4 confdb/ax_check_posix_regcomp.m4
+index e5ba61ce2d92..e2090e75344f 100644
+--- confdb/ax_check_posix_regcomp.m4
++++ confdb/ax_check_posix_regcomp.m4
+@@ -27,18 +27,18 @@ AU_ALIAS([AG_CHECK_POSIX_REGCOMP], [AX_CHECK_POSIX_REGCOMP])
+ AC_DEFUN([AX_CHECK_POSIX_REGCOMP],[
+     AC_MSG_CHECKING([whether POSIX compliant regcomp()/regexec()])
+     AC_CACHE_VAL([ax_cv_posix_regcomp],[
+-    AC_TRY_RUN([
+-#include <sys/types.h>
+-#include <regex.h>
+-int main() {
+-    int flags = REG_EXTENDED|REG_ICASE|REG_NEWLINE;
+-    regex_t  re;
+-    if (regcomp( &re, "^.*$", flags  ) != 0)
+-        return 1;
+-    return regcomp( &re, "yes.*|no.*", flags  );
+-}],
+-    [ax_cv_posix_regcomp=yes],[ax_cv_posix_regcomp=no],[ax_cv_posix_regcomp=no]
+-    ) # end of TRY_RUN]) # end of CACHE_VAL
++        AC_RUN_IFELSE([AC_LANG_SOURCE([[
++            #include <sys/types.h>
++            #include <regex.h>
++            int main() {
++                int flags = REG_EXTENDED|REG_ICASE|REG_NEWLINE;
++                regex_t  re;
++                if (regcomp( &re, "^.*$", flags  ) != 0)
++                    return 1;
++                return regcomp( &re, "yes.*|no.*", flags  );
++            }
++            ]])], [ax_cv_posix_regcomp=yes],[ax_cv_posix_regcomp=no],[ax_cv_posix_regcomp=no])
++    ])
+ 
+     AC_MSG_RESULT([$ax_cv_posix_regcomp])
+     if test "$ax_cv_posix_regcomp" = "yes"; then
+diff --git configure.ac configure.ac
+index 4669608bbbf2..51ddb3952c4b 100644
+--- configure.ac
++++ configure.ac
+@@ -2761,14 +2761,15 @@ if test "$enable_cxx" = "yes" ; then
+     AC_CACHE_CHECK([whether the C++ compiler $CXX can build an executable],
+     pac_cv_cxx_builds_exe,[
+  AC_LANG_PUSH([C++])
+- AC_TRY_LINK([
+-class mytest {
+-  int a;
+-public:
+-  mytest(void) : a(1) {}
+-  ~mytest(void) {}
+-};],[mytest a;],
+- pac_cv_cxx_builds_exe=yes, pac_cv_cxx_builds_exe=no)
++ AC_LINK_IFELSE([AC_LANG_PROGRAM([[
++    class mytest {
++        int a;
++      public:
++        mytest(void) : a(1) {}
++        ~mytest(void) {}
++    };
++    ]],[[mytest a;]])],
++    pac_cv_cxx_builds_exe=yes, pac_cv_cxx_builds_exe=no)
+  AC_LANG_POP([C++])
+ ])
+     if test "$pac_cv_cxx_builds_exe" != yes ; then
+@@ -2778,7 +2779,8 @@ public:
+     # The Intel icpc 10.x compiler fails with <string> if gcc 4.2 is installed.
+     AC_CACHE_CHECK([whether C++ compiler works with string],pac_cv_cxx_compiles_string,[
+     AC_LANG_PUSH([C++])
+-    AC_TRY_COMPILE([#include <string>],[return 0;],pac_cv_cxx_compiles_string=yes,pac_cv_cxx_compiles_string=no)
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <string>]],[[return 0;]])],
++        pac_cv_cxx_compiles_string=yes,pac_cv_cxx_compiles_string=no)
+     AC_LANG_POP([C++])
+ ])
+     if test "$pac_cv_cxx_compiles_string" != yes ; then
+@@ -2799,15 +2801,13 @@ public:
+     fi
+     # iostream and math are needed for examples/cxx/cxxpi.cxx
+     AC_CACHE_CHECK([whether <iostream> available],pac_cv_cxx_has_iostream,[
+-    AC_TRY_COMPILE([
+-#include <iostream>
+-],[using namespace std;],pac_cv_cxx_has_iostream=yes,pac_cv_cxx_has_iostream=no)])
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <iostream>]],[[using namespace std;]])],
++        pac_cv_cxx_has_iostream=yes,pac_cv_cxx_has_iostream=no)])
+     AX_CXX_NAMESPACE_STD
+ 
+     AC_CACHE_CHECK([whether <math> available],pac_cv_cxx_has_math,[
+-    AC_TRY_COMPILE([
+-#include <math>
+-],[using namespace std;],pac_cv_cxx_has_math=yes,pac_cv_cxx_has_math=no)])
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <math>]],[[using namespace std;]])],
++        pac_cv_cxx_has_math=yes,pac_cv_cxx_has_math=no)])
+ 
+     # GNU changed the calling conventions between minor releases (!!!)
+     # This is too hard to detect, but we should be able to detect
+@@ -2832,20 +2832,21 @@ public:
+        "$GNUCXX_VERSION" = 0 -a "$GNUCXX_MINORVERSION" = 0 ; then
+          ac_vals=""
+ 	 AC_MSG_CHECKING([for GNU g++ version])
+-         AC_TRY_RUN([#include <stdio.h>
+-int main() {
+-    int v = -1, m = -1;
+-    FILE *fp = fopen("conftest.out","w");
+-#ifdef __GNUC_MINOR__
+-    m = __GNUC_MINOR__;
+-#endif
+-#ifdef __GNUC__
+-    v = __GNUC__;
+-#endif
+-    fprintf( fp, "v=%d, m=%d\n", v, m );
+-    fclose( fp );
+-    return 0;
+-}],ac_vals=`cat conftest.out`)
++         AC_RUN_IFELSE([AC_LANG_SOURCE([[
++            #include <stdio.h>
++            int main() {
++                int v = -1, m = -1;
++                FILE *fp = fopen("conftest.out","w");
++            #ifdef __GNUC_MINOR__
++                m = __GNUC_MINOR__;
++            #endif
++            #ifdef __GNUC__
++                v = __GNUC__;
++            #endif
++                fprintf( fp, "v=%d, m=%d\n", v, m );
++                fclose( fp );
++                return 0;
++            }]])],ac_vals=`cat conftest.out`)
+          if test -n "$ac_vals" ; then
+              v=`echo "$ac_vals" | sed -e 's/v=\(.*\),.*/\1/'`
+              m=`echo "$ac_vals" | sed -e 's/.*m=\(.*\)/\1/'`
+@@ -3189,15 +3190,15 @@ You may need to specify an additional argument to your C compiler to
+ force it to allow unaligned accesses.)])
+ fi
+ # Check for __func__ (defined in C99) or __FUNCTION__ (defined in older GCC)
+-AC_CACHE_CHECK([whether $CC supports __func__],pac_cv_cc_has___func__,
+-[AC_TRY_COMPILE([],
+- [const char *cp = __func__; ],pac_cv_cc_has___func__=yes,
+-pac_cv_cc_has___func__=no)])
++AC_CACHE_CHECK([whether $CC supports __func__],pac_cv_cc_has___func__, [
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([],[[const char *cp = __func__;]])],
++        pac_cv_cc_has___func__=yes, pac_cv_cc_has___func__=no)
++])
+ if test "$pac_cv_cc_has___func__" != "yes" ; then
+-    AC_CACHE_CHECK([whether $CC supports __FUNCTION__],pac_cv_cc_has___FUNCTION__,
+-[AC_TRY_COMPILE([],
+- [const char *cp = __FUNCTION__;],pac_cv_cc_has___FUNCTION__=yes,
+-pac_cv_cc_has___FUNCTION__=no)])
++    AC_CACHE_CHECK([whether $CC supports __FUNCTION__],pac_cv_cc_has___FUNCTION__,[
++        AC_COMPILE_IFELSE([AC_LANG_PROGRAM([],[[const char *cp = __FUNCTION__;]])],
++            pac_cv_cc_has___FUNCTION__=yes, pac_cv_cc_has___FUNCTION__=no)
++    ])
+ fi
+ 
+ # ----------------------------------------------------------------------------
+@@ -3209,8 +3210,8 @@ fi
+ if test "$MPID_NO_LONG_DOUBLE" != "yes" && test "X$enable_long_double" != "Xno" ; then
+     AC_CACHE_CHECK([whether long double is supported],
+     pac_cv_have_long_double,[
+-    AC_TRY_COMPILE(,[long double a;],
+-    pac_cv_have_long_double=yes,pac_cv_have_long_double=no)])
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([],[[long double a;]])],
++        pac_cv_have_long_double=yes,pac_cv_have_long_double=no)])
+     if test "$pac_cv_have_long_double" = "yes" ; then
+         AC_DEFINE(HAVE_LONG_DOUBLE,1,[Define if long double is supported])
+     fi
+@@ -3218,8 +3219,8 @@ fi
+ if test "$MPID_NO_LONG_LONG" != "yes" ; then
+     AC_CACHE_CHECK([whether long long is supported],
+     pac_cv_have_long_long,[
+-    AC_TRY_COMPILE(,[long long a;],
+-    pac_cv_have_long_long=yes,pac_cv_have_long_long=no)])
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([],[[long long a;]])],
++        pac_cv_have_long_long=yes,pac_cv_have_long_long=no)])
+     if test "$pac_cv_have_long_long" = "yes" ; then
+         AC_DEFINE(HAVE_LONG_LONG_INT,1,[Define if long long is supported])
+     fi
+@@ -4736,13 +4737,15 @@ AC_SUBST([MPI_F77_CXX_LONG_DOUBLE_COMPLEX])
+ # therefore, they must be also be activated/deavtivated there
+ PAC_PUSH_FLAG([CFLAGS])
+ PAC_C_CHECK_COMPILER_OPTION([-Werror],[CFLAGS="$CFLAGS -Werror"])
+-AC_TRY_COMPILE([
+-typedef int TEST_Datatype;
+-#define TEST_INT ((TEST_Datatype)0x44)
+-static const TEST_Datatype test_int  __attribute__((type_tag_for_datatype(TEST,int)))  = TEST_INT;
+-void test(const void* buffer, TEST_Datatype datatype)__attribute__((pointer_with_type_tag(TEST,1,2)));],[
+-const int buf[10];
+-test(buf, TEST_INT);],ac_attr_support=yes, ac_attr_support=no)
++AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++    typedef int TEST_Datatype;
++    #define TEST_INT ((TEST_Datatype)0x44)
++    static const TEST_Datatype test_int  __attribute__((type_tag_for_datatype(TEST,int)))  = TEST_INT;
++    void test(const void* buffer, TEST_Datatype datatype)__attribute__((pointer_with_type_tag(TEST,1,2)));
++    ]],[[
++    const int buf[10];
++    test(buf, TEST_INT);
++    ]])],ac_attr_support=yes, ac_attr_support=no)
+ if test "$ac_attr_support" = yes
+ then
+     DISABLE_TAG_SUPPORT="#undef NO_TAGS_WITH_MODIFIERS"
+@@ -4770,29 +4773,29 @@ if test "$ac_cv_c_int64_t" != "no" -o -n "$INT64_T" ; then
+     fi
+     # We use the type that we're going use for int64.
+     AC_CACHE_CHECK([for alignment restrictions on $INT64_T],pac_cv_int64_t_alignment,[
+-    AC_TRY_RUN([
+-#include <sys/types.h>
+-#include <stdlib.h>
+-int main(int argc, char **argv )
+-{
+-    $INT64_T *p1, v;
+-    char    *buf_p = (char *)malloc( 64 ), *bp;
+-    bp = buf_p;
+-    /* Make bp aligned on 4, not 8 bytes */
+-    if (!( (long)bp & 0x7 ) ) bp += 4;
+-    p1 = ($INT64_T *)bp;
+-    v = -1;
+-    *p1 = v;
+-    if (!( (long)bp & 0x3 ) ) bp += 2;
+-    p1 = ($INT64_T *)bp;
+-    *p1 = 1;
+-    if (!( (long)bp & 0x1 ) ) bp += 1;
+-    p1 = ($INT64_T *)bp;
+-    *p1 = 1;
+-    return 0;
+-}
+-],pac_cv_int64_t_alignment=no,pac_cv_int64_t_alignment=yes,pac_cv_int64_t_alignment=$default_int64_t_alignment)
+-])
++        AC_RUN_IFELSE([AC_LANG_SOURCE([[
++            #include <sys/types.h>
++            #include <stdlib.h>
++            int main(int argc, char **argv )
++            {
++                $INT64_T *p1, v;
++                char    *buf_p = (char *)malloc( 64 ), *bp;
++                bp = buf_p;
++                /* Make bp aligned on 4, not 8 bytes */
++                if (!( (long)bp & 0x7 ) ) bp += 4;
++                p1 = ($INT64_T *)bp;
++                v = -1;
++                *p1 = v;
++                if (!( (long)bp & 0x3 ) ) bp += 2;
++                p1 = ($INT64_T *)bp;
++                *p1 = 1;
++                if (!( (long)bp & 0x1 ) ) bp += 1;
++                p1 = ($INT64_T *)bp;
++                *p1 = 1;
++                return 0;
++            }
++        ]])],pac_cv_int64_t_alignment=no,pac_cv_int64_t_alignment=yes,pac_cv_int64_t_alignment=$default_int64_t_alignment)
++    ])
+     if test "$pac_cv_int64_t_alignment" = "no" ; then
+          AC_DEFINE(HAVE_ANY_INT64_T_ALIGNMENT,1,[Define if int64_t works with any alignment])
+     fi
+@@ -4809,29 +4812,29 @@ if test "$ac_cv_int32_t" != "no" ; then
+     fi
+ 
+     AC_CACHE_CHECK([for alignment restrictions on int32_t],pac_cv_int32_t_alignment,[
+-    AC_TRY_RUN([
+-#include <sys/types.h>
+-#include <stdlib.h>
+-int main(int argc, char **argv )
+-{
+-    $INT32_T *p1, v;
+-    char    *buf_p = (char *)malloc( 64 ), *bp;
+-    bp = buf_p;
+-    /* Make bp aligned on 4, not 8 bytes */
+-    if (!( (long)bp & 0x7 ) ) bp += 4;
+-    p1 = ($INT32_T *)bp;
+-    v = -1;
+-    *p1 = v;
+-    if (!( (long)bp & 0x3 ) ) bp += 2;
+-    p1 = ($INT32_T *)bp;
+-    *p1 = 1;
+-    if (!( (long)bp & 0x1 ) ) bp += 1;
+-    p1 = ($INT32_T *)bp;
+-    *p1 = 1;
+-    return 0;
+-}
+-],pac_cv_int32_t_alignment=no,pac_cv_int32_t_alignment=yes,pac_cv_int32_t_alignment=$default_int32_t_alignment)
+-])
++        AC_RUN_IFELSE([AC_LANG_SOURCE([[
++            #include <sys/types.h>
++            #include <stdlib.h>
++            int main(int argc, char **argv )
++            {
++                $INT32_T *p1, v;
++                char    *buf_p = (char *)malloc( 64 ), *bp;
++                bp = buf_p;
++                /* Make bp aligned on 4, not 8 bytes */
++                if (!( (long)bp & 0x7 ) ) bp += 4;
++                p1 = ($INT32_T *)bp;
++                v = -1;
++                *p1 = v;
++                if (!( (long)bp & 0x3 ) ) bp += 2;
++                p1 = ($INT32_T *)bp;
++                *p1 = 1;
++                if (!( (long)bp & 0x1 ) ) bp += 1;
++                p1 = ($INT32_T *)bp;
++                *p1 = 1;
++                return 0;
++            }
++        ]])],pac_cv_int32_t_alignment=no,pac_cv_int32_t_alignment=yes,pac_cv_int32_t_alignment=$default_int32_t_alignment)
++    ])
+     if test "$pac_cv_int32_t_alignment" = "no" ; then
+          AC_DEFINE(HAVE_ANY_INT32_T_ALIGNMENT,1,[Define if int32_t works with any alignment])
+     fi
+@@ -4851,10 +4854,13 @@ AC_HEADER_STDC
+ # stddef.h is sometimes needed for types like wchar_t
+ AC_CHECK_HEADERS(stdlib.h stdarg.h sys/types.h string.h inttypes.h limits.h stddef.h errno.h sys/socket.h sys/time.h unistd.h endian.h assert.h sys/param.h)
+ AC_CACHE_CHECK([for sys/uio.h],ac_cv_header_sys_uio_h,[
+-AC_TRY_COMPILE([
+-#include <sys/types.h>
+-#include <sys/uio.h>
+-],[int a;],ac_cv_header_sys_uio_h=yes,ac_cv_header_sys_uio_h=no)])
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++        #include <sys/types.h>
++        #include <sys/uio.h>
++        ]],[[
++        int a;
++        ]])],ac_cv_header_sys_uio_h=yes,ac_cv_header_sys_uio_h=no)
++])
+ if test "$ac_cv_header_sys_uio_h" = yes ; then
+     AC_DEFINE(HAVE_SYS_UIO_H,1,[Define if you have the <sys/uio.h> header file.])
+ fi
+@@ -4895,31 +4901,33 @@ AC_CHECK_FUNCS([qsort])
+ # debugging routine.  We may want to withdraw this (saving the
+ # test in confdb/aclocal_cc.m4).
+ AC_CACHE_CHECK([for va_copy],pac_cv_func_va_copy,[
+-AC_TRY_LINK([
+-#include <stdarg.h>
+-void foo1( char *fmt, ... ) {
+-    va_list ap, list;
+-    va_start(ap,fmt);
+-    va_copy(list,ap);
+-    va_end(list);
+-    va_end(ap);
+-}
+-],[foo1("a test %d", 3);],pac_cv_func_va_copy=yes,pac_cv_func_va_copy=no)])
++    AC_LINK_IFELSE([AC_LANG_PROGRAM([[
++        #include <stdarg.h>
++        void foo1( char *fmt, ... ) {
++            va_list ap, list;
++            va_start(ap,fmt);
++            va_copy(list,ap);
++            va_end(list);
++            va_end(ap);
++        }
++        ]],[[foo1("a test %d", 3);]])],pac_cv_func_va_copy=yes,pac_cv_func_va_copy=no)
++])
+ 
+ if test "$pac_cv_func_va_copy" = "yes" ; then
+     AC_DEFINE(HAVE_VA_COPY,1,[Define if we have va_copy])
+ else
+     AC_CACHE_CHECK([for __va_copy],pac_cv_func___va_copy,[
+-    AC_TRY_LINK([
+-#include <stdarg.h>
+-void foo1( char *fmt, ... ) {
+-    va_list ap, list;
+-    va_start(ap,fmt);
+-    __va_copy(list,ap);
+-    va_end(list);
+-    va_end(ap);
+-}
+-],[foo1("a test %d", 3);],pac_cv_func___va_copy=yes,pac_cv_func___va_copy=no)])
++        AC_LINK_IFELSE([AC_LANG_PROGRAM([[
++            #include <stdarg.h>
++            void foo1( char *fmt, ... ) {
++                va_list ap, list;
++                va_start(ap,fmt);
++                __va_copy(list,ap);
++                va_end(list);
++                va_end(ap);
++            }
++            ]],[[foo1("a test %d", 3);]])],pac_cv_func___va_copy=yes,pac_cv_func___va_copy=no)
++    ])
+     if test "$pac_cv_func___va_copy" = "yes" ; then
+         AC_DEFINE(HAVE___VA_COPY,1,[Define if we have __va_copy])
+     fi
+@@ -5108,16 +5116,15 @@ AC_CHECK_FUNCS(sched_setaffinity sched_getaffinity bindprocessor thread_policy_s
+ if test "$ac_cv_func_sched_setaffinity" = "yes" ; then
+     # Test for the cpu process set type
+     AC_CACHE_CHECK([whether cpu_set_t available],pac_cv_have_cpu_set_t,[
+-    AC_TRY_COMPILE( [
+-#include <sched.h>],[ cpu_set_t t; ],pac_cv_have_cpu_set_t=yes,pac_cv_have_cpu_set_t=no)])
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <sched.h>]],[[cpu_set_t t;]])],
++        pac_cv_have_cpu_set_t=yes,pac_cv_have_cpu_set_t=no)])
+     if test "$pac_cv_have_cpu_set_t" = yes ; then
+         AC_DEFINE(HAVE_CPU_SET_T,1,[Define if cpu_set_t is defined in sched.h])
+ 
+ 	AC_CACHE_CHECK([whether the CPU_SET and CPU_ZERO macros are defined],
+ 	pac_cv_cpu_set_defined,[
+-        AC_TRY_LINK( [
+-#include <sched.h>],[ cpu_set_t t; CPU_ZERO(&t); CPU_SET(1,&t); ],
+-        pac_cv_cpu_set_defined=yes,pac_cv_cpu_set_defined=no)])
++        AC_LINK_IFELSE([AC_LANG_PROGRAM([[#include <sched.h>]],[[cpu_set_t t; CPU_ZERO(&t); CPU_SET(1,&t);]])],
++            pac_cv_cpu_set_defined=yes,pac_cv_cpu_set_defined=no)])
+ 	if test "$pac_cv_cpu_set_defined" = "yes" ; then
+ 	    AC_DEFINE(HAVE_CPU_SET_MACROS,1,[Define if CPU_SET and CPU_ZERO defined])
+         fi
+@@ -5126,13 +5133,16 @@ if test "$ac_cv_func_sched_setaffinity" = "yes" ; then
+     fi
+ fi
+ if test "$ac_cv_func_thread_policy_set" = yes ; then
+-    AC_CACHE_CHECK([whether thread affinity macros defined],
+-    pac_cv_have_thread_affinity_policy,[
+-    AC_TRY_COMPILE([#include <mach/thread_policy.h>],[
+-#if !defined(THREAD_AFFINITY_POLICY) || !defined(THREAD_AFFINITY_TAG_NULL)
+-    :'thread macros not defined
+-],pac_cv_have_thread_affinity_policy=yes,
+-  pac_cv_have_thread_affinity_policy=no)])
++    AC_CACHE_CHECK([whether thread affinity macros defined], pac_cv_have_thread_affinity_policy,[
++        AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++            #include <mach/thread_policy.h>
++            ]],[[
++            #if !defined(THREAD_AFFINITY_POLICY) || !defined(THREAD_AFFINITY_TAG_NULL)
++                :'thread macros not defined
++            ]])],
++            pac_cv_have_thread_affinity_policy=yes,
++            pac_cv_have_thread_affinity_policy=no)
++    ])
+     if test "$pac_cv_have_thread_affinity_policy" = yes ; then
+         AC_DEFINE(HAVE_OSX_THREAD_AFFINITY,1,[Define is the OSX thread affinity policy macros defined])
+     fi
+diff --git src/mpi/romio/configure.ac src/mpi/romio/configure.ac
+index 546c1bcf5139..47ed4ce10f64 100644
+--- src/mpi/romio/configure.ac
++++ src/mpi/romio/configure.ac
+@@ -722,23 +722,23 @@ AM_CONDITIONAL([BUILD_F77_TESTS],[test "x$NOF77" != "x1"])
+ #
+ # Check whether the MPI Offset type is compatible with struct flock
+ AC_MSG_CHECKING([whether struct flock compatible with MPI_Offset])
+-AC_TRY_COMPILE([#include <fcntl.h>],
+-[struct flock l;
+- $MPI_OFFSET_TYPE a=1;
+- l.l_start = a;
+- l.l_len   = a;
+-],pac_cv_struct_flock_and_mpi_offset=yes,pac_cv_struct_flock_and_mpi_offset=no)
++AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <fcntl.h>]],[[
++    struct flock l;
++    $MPI_OFFSET_TYPE a=1;
++    l.l_start = a;
++    l.l_len   = a;
++    ]])],pac_cv_struct_flock_and_mpi_offset=yes,pac_cv_struct_flock_and_mpi_offset=no)
+ AC_MSG_RESULT($pac_cv_struct_flock_and_mpi_offset)
+ # FIXME: We should look for struct flock64 and the F_SETLK64/F_GETLK64
+ # ADIOI_GEN_SetLock. could use these instead.
+ if test "$pac_cv_struct_flock_and_mpi_offset" = no ; then
+     AC_MSG_CHECKING([whether struct flock compatible with int])
+-    AC_TRY_COMPILE([#include <fcntl.h>],
+-[struct flock l;
+- int a=1;
+- l.l_start = a;
+- l.l_len   = a;
+-],pac_cv_struct_flock_and_int=yes,pac_cv_struct_flock_and_int=no)
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <fcntl.h>]],[[
++        struct flock l;
++        int a=1;
++        l.l_start = a;
++        l.l_len   = a;
++        ]])],pac_cv_struct_flock_and_int=yes,pac_cv_struct_flock_and_int=no)
+     AC_MSG_RESULT($pac_cv_struct_flock_and_int)
+     if test "$pac_cv_struct_flock_and_int" = yes ; then
+         AC_DEFINE(NEEDS_INT_CAST_WITH_FLOCK,1,[Define if l_start and l_len data should be cast as int])
+@@ -946,32 +946,30 @@ AM_CONDITIONAL([LUSTRE_LOCKAHEAD],[test "$lustre_lockahead" = "yes"])
+ if test -n "$file_system_xfs"; then
+     AC_DEFINE(ROMIO_XFS,1,[Define for ROMIO with XFS])
+     # Check for memalign value
+-    AC_CACHE_CHECK([for memory alignment needed for direct I/O],
+-    pac_cv_memalignval,
+-    [
+-    rm -f confmemalignval
+-    rm -f /tmp/romio_tmp.bin
+-    AC_TRY_RUN([
+-#include <stdio.h>
+-#include <unistd.h>
+-#include <fcntl.h>
+-#include <stdio.h>
+-int main(int argc, char **argv) {
+-	struct dioattr st;
+-	int fd = open("/tmp/romio_tmp.bin", O_RDWR | O_CREAT, 0644);
+-	FILE *f=fopen("confmemalignval","w");
+-	if (fd == -1) exit(1);
+-	if (!f) exit(1);
+-	fcntl(fd, F_DIOINFO, &st);
+-	fprintf( f, "%u\n", st.d_mem);
+-	exit(0);
+-	}
+-	],
+-	pac_cv_memalignval=`cat confmemalignval`,
+-	pac_cv_memalignval="unknown",pac_cv_memalignval="unknown"
+-    )
+-    rm -f confmemalignval
+-    rm -f /tmp/romio_tmp.bin
++    AC_CACHE_CHECK([for memory alignment needed for direct I/O], pac_cv_memalignval,[
++        rm -f confmemalignval
++        rm -f /tmp/romio_tmp.bin
++        AC_RUN_IFELSE([AC_LANG_SOURCE([[
++            #include <stdio.h>
++            #include <unistd.h>
++            #include <fcntl.h>
++            #include <stdio.h>
++            int main(int argc, char **argv) {
++                struct dioattr st;
++                int fd = open("/tmp/romio_tmp.bin", O_RDWR | O_CREAT, 0644);
++                FILE *f=fopen("confmemalignval","w");
++                if (fd == -1) exit(1);
++                if (!f) exit(1);
++                fcntl(fd, F_DIOINFO, &st);
++                fprintf( f, "%u\n", st.d_mem);
++                exit(0);
++            }
++            ]])],
++            pac_cv_memalignval=`cat confmemalignval`,
++            pac_cv_memalignval="unknown",pac_cv_memalignval="unknown"
++        )
++        rm -f confmemalignval
++        rm -f /tmp/romio_tmp.bin
+     ])
+     if test -n "$pac_cv_memalignval" -a "$pac_cv_memalignval" != 0 -a \
+ 	"$pac_cv_memalignval" != "unknown" ; then
+@@ -1085,24 +1083,24 @@ if test "$ac_cv_header_aio_h" = "yes" -o "$ac_cv_header_sys_aio_h" = "yes" -o "x
+     # actually use the aio_write interface).  Note that this will
+     # fail for some pre-POSIX implementations of the aio interface
+     # (an old IBM interface needs an fd argument as well)
+-    AC_TRY_RUN([
+-#include <sys/types.h>
+-#ifdef HAVE_SIGNAL_H
+-#include <signal.h>
+-#endif
+-#ifdef HAVE_AIO_H
+-#include <aio.h>
+-#endif
+-#ifdef HAVE_SYS_AIO_H
+-#include <sys/aio.h>
+-#endif
++    AC_RUN_IFELSE([AC_LANG_SOURCE([[
++        #include <sys/types.h>
++        #ifdef HAVE_SIGNAL_H
++        #include <signal.h>
++        #endif
++        #ifdef HAVE_AIO_H
++        #include <aio.h>
++        #endif
++        #ifdef HAVE_SYS_AIO_H
++        #include <sys/aio.h>
++        #endif
+ 	int main(int argc, char **argv)
+ 	{
+             struct aiocb *aiocbp;
+ 	    if (argc > 10) aio_write(aiocbp);
+ 	    return 0;
+ 	}
+-	],
++	]])],
+ 	aio_runs=yes
+ 	AC_MSG_RESULT(yes),
+ 	aio_runs=no
+@@ -1125,17 +1123,17 @@ if test "$ac_cv_header_aio_h" = "yes" -o "$ac_cv_header_sys_aio_h" = "yes" -o "x
+     # aio_read correctly
+ 
+     AC_MSG_CHECKING([for obsolete two-argument aio_write])
+-    AC_TRY_RUN([
+-#include <sys/types.h>
+-#ifdef HAVE_SIGNAL_H
+-#include <signal.h>
+-#endif
+-#ifdef HAVE_AIO_H
+-#include <aio.h>
+-#endif
+-#ifdef HAVE_SYS_AIO_H
+-#include <sys/aio.h>
+-#endif
++    AC_RUN_IFELSE([AC_LANG_SOURCE([[
++        #include <sys/types.h>
++        #ifdef HAVE_SIGNAL_H
++        #include <signal.h>
++        #endif
++        #ifdef HAVE_AIO_H
++        #include <aio.h>
++        #endif
++        #ifdef HAVE_SYS_AIO_H
++        #include <sys/aio.h>
++        #endif
+ 	int main(int argc, char **argv)
+ 	{
+ 		int fd;
+@@ -1143,7 +1141,7 @@ if test "$ac_cv_header_aio_h" = "yes" -o "$ac_cv_header_sys_aio_h" = "yes" -o "x
+ 		if (argc > 10) aio_write(fd, aiocbp);
+ 		return 0;
+ 	}
+-	],
++	]])],
+ 	aio_two_arg_write=yes
+ 	AC_MSG_RESULT(yes),
+ 	aio_two_arg_write=no
+@@ -1158,24 +1156,24 @@ if test "$ac_cv_header_aio_h" = "yes" -o "$ac_cv_header_sys_aio_h" = "yes" -o "x
+     fi
+ 
+     AC_MSG_CHECKING([for obsolete two-argument aio_suspend])
+-    AC_TRY_RUN([
+-#include <sys/types.h>
+-#ifdef HAVE_SIGNAL_H
+-#include <signal.h>
+-#endif
+-#ifdef HAVE_AIO_H
+-#include <aio.h>
+-#endif
+-#ifdef HAVE_SYS_AIO_H
+-#include <sys/aio.h>
+-#endif
++    AC_RUN_IFELSE([AC_LANG_SOURCE([[
++        #include <sys/types.h>
++        #ifdef HAVE_SIGNAL_H
++        #include <signal.h>
++        #endif
++        #ifdef HAVE_AIO_H
++        #include <aio.h>
++        #endif
++        #ifdef HAVE_SYS_AIO_H
++        #include <sys/aio.h>
++        #endif
+ 	int main(int argc, char **argv)
+ 	{
+ 		struct aiocb *aiocbp;
+ 		if (argc > 10) aio_suspend(1, &aiocbp);
+ 		return 0;
+ 	}
+-	],
++	]])],
+ 	aio_two_arg_suspend=yes
+ 	AC_MSG_RESULT(yes),
+ 	aio_two_arg_suspend=no
+@@ -1239,22 +1237,22 @@ AS_CASE([$host_os],
+ AC_CHECK_HEADERS(sys/vfs.h sys/param.h sys/mount.h sys/statvfs.h)
+ AC_CHECK_FUNCS([statfs])
+ AC_MSG_CHECKING([whether struct statfs properly defined])
+-AC_TRY_COMPILE([
+-#ifdef HAVE_SYS_VFS_H
+-#include <sys/vfs.h>
+-#endif
+-#ifdef HAVE_SYS_STATVFS_H
+-#include <sys/statvfs.h>
+-#endif
+-#ifdef HAVE_SYS_PARAM_H
+-#include <sys/param.h>
+-#endif
+-#ifdef HAVE_SYS_MOUNT_H
+-#include <sys/mount.h>
+-#endif
+-    ],[
++AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++    #ifdef HAVE_SYS_VFS_H
++    #include <sys/vfs.h>
++    #endif
++    #ifdef HAVE_SYS_STATVFS_H
++    #include <sys/statvfs.h>
++    #endif
++    #ifdef HAVE_SYS_PARAM_H
++    #include <sys/param.h>
++    #endif
++    #ifdef HAVE_SYS_MOUNT_H
++    #include <sys/mount.h>
++    #endif
++    ]],[[
+     struct statfs f;
+-    ],
++    ]])],
+     pac_cv_have_statfs=yes,pac_cv_have_statfs=no
+ )
+ AC_MSG_RESULT($pac_cv_have_statfs)
+@@ -1266,27 +1264,27 @@ if test "$pac_cv_have_statfs" = yes ; then
+     AC_DEFINE(HAVE_STRUCT_STATFS,1,[Define if struct statfs can be compiled])
+ fi
+ AC_MSG_CHECKING([for f_type member of statfs structure])
+-AC_TRY_COMPILE([
+-#ifdef HAVE_SYS_VFS_H
+-#include <sys/vfs.h>
+-#endif
+-#ifdef HAVE_SYS_STATVFS_H
+-#include <sys/statvfs.h>
+-#endif
+-#ifdef HAVE_SYS_PARAM_H
+-#include <sys/param.h>
+-#endif
+-#ifdef HAVE_SYS_MOUNT_H
+-#include <sys/mount.h>
+-#endif
+-#ifdef HAVE_STRING_H
+-#include <string.h>
+-#endif
+-    ],[
++AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++    #ifdef HAVE_SYS_VFS_H
++    #include <sys/vfs.h>
++    #endif
++    #ifdef HAVE_SYS_STATVFS_H
++    #include <sys/statvfs.h>
++    #endif
++    #ifdef HAVE_SYS_PARAM_H
++    #include <sys/param.h>
++    #endif
++    #ifdef HAVE_SYS_MOUNT_H
++    #include <sys/mount.h>
++    #endif
++    #ifdef HAVE_STRING_H
++    #include <string.h>
++    #endif
++    ]],[[
+     struct statfs f;
+     memset(&f, 0, sizeof(f));
+     f.f_type = 0;
+-    ],
++    ]])],
+     pac_cv_have_statfs_f_type=yes,
+     pac_cv_have_statfs_f_type=no
+ )
+@@ -1297,27 +1295,27 @@ fi
+ 
+ 
+ AC_MSG_CHECKING([for f_fstypename member of statfs structure])
+-AC_TRY_COMPILE([
+-#ifdef HAVE_SYS_VFS_H
+-#include <sys/vfs.h>
+-#endif
+-#ifdef HAVE_SYS_STATVFS_H
+-#include <sys/statvfs.h>
+-#endif
+-#ifdef HAVE_SYS_PARAM_H
+-#include <sys/param.h>
+-#endif
+-#ifdef HAVE_SYS_MOUNT_H
+-#include <sys/mount.h>
+-#endif
+-#ifdef HAVE_STRING_H
+-#include <string.h>
+-#endif
+-    ],[
++AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++    #ifdef HAVE_SYS_VFS_H
++    #include <sys/vfs.h>
++    #endif
++    #ifdef HAVE_SYS_STATVFS_H
++    #include <sys/statvfs.h>
++    #endif
++    #ifdef HAVE_SYS_PARAM_H
++    #include <sys/param.h>
++    #endif
++    #ifdef HAVE_SYS_MOUNT_H
++    #include <sys/mount.h>
++    #endif
++    #ifdef HAVE_STRING_H
++    #include <string.h>
++    #endif
++    ]],[[
+     struct statfs f;
+     memset(&f, 0, sizeof(f));
+     strncmp("nfs", f.f_fstypename, 3);
+-    ],
++    ]])],
+     pac_cv_have_statfs_f_fstypename=yes,
+     pac_cv_have_statfs_f_fstypename=no
+ )
+@@ -1333,21 +1331,20 @@ AC_CHECK_HEADERS(sys/stat.h sys/types.h unistd.h)
+ AC_CHECK_FUNCS(stat,
+     AC_DEFINE(HAVE_STAT, 1, Define if stat function is present)
+     AC_MSG_CHECKING([for st_fstype member of stat structure])
+-    AC_TRY_COMPILE([
+-#ifdef HAVE_SYS_TYPES_H
+-#include <sys/types.h>
+-#endif
+-#ifdef HAVE_SYS_STAT_H
+-#include <sys/stat.h>
+-#endif
+-#ifdef HAVE_UNISTD_H
+-#include <unistd.h>
+-#endif
+-	],[
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++        #ifdef HAVE_SYS_TYPES_H
++        #include <sys/types.h>
++        #endif
++        #ifdef HAVE_SYS_STAT_H
++        #include <sys/stat.h>
++        #endif
++        #ifdef HAVE_UNISTD_H
++        #include <unistd.h>
++        #endif
++	]],[[
+ 	struct stat s;
+-
+ 	s.st_fstype = NULL;
+-	],
++	]])],
+ 	AC_MSG_RESULT(yes)
+ 	AC_DEFINE(ROMIO_HAVE_STRUCT_STAT_WITH_ST_FSTYPE, 1, Define if struct stat has a st_fstype member),
+ 	AC_MSG_RESULT(no)
+@@ -1361,21 +1358,20 @@ AC_CHECK_HEADERS(sys/types.h sys/statvfs.h sys/vfs.h)
+ AC_CHECK_FUNCS(statvfs,
+     AC_DEFINE(HAVE_STATVFS, 1, Define if statvfs function is present)
+     AC_MSG_CHECKING([for f_basetype member of statvfs structure])
+-    AC_TRY_COMPILE([
+-#ifdef HAVE_SYS_TYPES_H
+-#include <sys/types.h>
+-#endif
+-#ifdef HAVE_SYS_VFS_H
+-#include <sys/vfs.h>
+-#endif
+-#ifdef HAVE_SYS_STATVFS_H
+-#include <sys/statvfs.h>
+-#endif
+-	], [[
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++        #ifdef HAVE_SYS_TYPES_H
++        #include <sys/types.h>
++        #endif
++        #ifdef HAVE_SYS_VFS_H
++        #include <sys/vfs.h>
++        #endif
++        #ifdef HAVE_SYS_STATVFS_H
++        #include <sys/statvfs.h>
++        #endif
++	]], [[
+ 	struct statvfs foo;
+-
+ 	foo.f_basetype[0] = 'a';
+-	]],
++	]])],
+ 	AC_MSG_RESULT(yes)
+ 	AC_DEFINE(ROMIO_HAVE_STRUCT_STATVFS_WITH_F_BASETYPE, 1, defined if struct statvfs has a f_basetype member),
+ 	AC_MSG_RESULT(no)
+diff --git src/mpid/ch3/channels/nemesis/subconfigure.m4 src/mpid/ch3/channels/nemesis/subconfigure.m4
+index 3cf998d4eb68..d1fbbf375e21 100644
+--- src/mpid/ch3/channels/nemesis/subconfigure.m4
++++ src/mpid/ch3/channels/nemesis/subconfigure.m4
+@@ -44,11 +44,12 @@ AC_MSG_NOTICE([RUNNING CONFIGURE FOR ch3:nemesis])
+ ##fi
+ 
+ dnl AC_CHECK_HEADER(net/if.h) fails on Solaris; extra header files needed
+-AC_TRY_COMPILE([
+-#include <sys/types.h>
+-#include <sys/socket.h>
+-#include <net/if.h>
+-],,lac_cv_header_net_if_h=yes,lac_cv_header_net_if_h=no)
++AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++    #include <sys/types.h>
++    #include <sys/socket.h>
++    #include <net/if.h>
++    ]],[])],
++    lac_cv_header_net_if_h=yes,lac_cv_header_net_if_h=no)
+ 
+ echo "checking for net/if.h... $lac_cv_header_net_if_h"
+ 
+@@ -77,12 +78,15 @@ AC_CHECK_HEADERS([ \
+ # other headers.  2.57 changes the syntax (!) of check_headers to allow 
+ # additional headers.
+ AC_CACHE_CHECK([for netinet/in.h],ac_cv_header_netinet_in_h,[
+-AC_TRY_COMPILE([#ifdef HAVE_SYS_TYPES_H
+-#include <sys/types.h>
+-#endif
+-#include <netinet/in.h>],[int a=0;],
+-    ac_cv_header_netinet_in_h=yes,
+-    ac_cv_header_netinet_in_h=no)])
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++        #ifdef HAVE_SYS_TYPES_H
++        #include <sys/types.h>
++        #endif
++        #include <netinet/in.h>
++        ]],[[int a=0;]])],
++        ac_cv_header_netinet_in_h=yes,
++        ac_cv_header_netinet_in_h=no)
++])
+ if test "$ac_cv_header_netinet_in_h" = yes ; then
+     AC_DEFINE(HAVE_NETINET_IN_H,1,[Define if netinet/in.h exists])
+ fi
+@@ -194,27 +198,30 @@ AC_DEFINE(USE_FASTBOX,1,[Define to use the fastboxes in Nemesis code])
+ 
+ # We may need this only for tcp and related netmodules
+ # Check for h_addr or h_addr_list
+-AC_CACHE_CHECK([whether struct hostent contains h_addr_list],
+-pac_cv_have_haddr_list,[
+-AC_TRY_COMPILE([
+-#include <netdb.h>],[struct hostent hp;hp.h_addr_list[0]=0;],
+-pac_cv_have_haddr_list=yes,pac_cv_have_haddr_list=no)])
++AC_CACHE_CHECK([whether struct hostent contains h_addr_list], pac_cv_have_haddr_list,[
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++        #include <netdb.h>
++        ]],[[
++        struct hostent hp;hp.h_addr_list[0]=0;
++        ]])], pac_cv_have_haddr_list=yes,pac_cv_have_haddr_list=no)
++])
+ if test "$pac_cv_have_haddr_list" = "yes" ; then
+     AC_DEFINE(HAVE_H_ADDR_LIST,1,[Define if struct hostent contains h_addr_list])
+ fi
+ 
+ # If we need the socket code, see if we can use struct ifconf
+ # sys/socket.h is needed on Solaris
+-AC_CACHE_CHECK([whether we can use struct ifconf],
+-pac_cv_have_struct_ifconf,[
+-AC_TRY_COMPILE([
+-#include <sys/types.h>
+-#ifdef HAVE_SYS_SOCKET_H
+-#include <sys/socket.h>
+-#endif
+-#include <net/if.h>
+-],[struct ifconf conftest; int s; s = sizeof(conftest);],
+-pac_cv_have_struct_ifconf=yes,pac_cv_have_struct_ifconf=no)])
++AC_CACHE_CHECK([whether we can use struct ifconf], pac_cv_have_struct_ifconf,[
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++        #include <sys/types.h>
++        #ifdef HAVE_SYS_SOCKET_H
++        #include <sys/socket.h>
++        #endif
++        #include <net/if.h>
++        ]],[[
++        struct ifconf conftest; int s; s = sizeof(conftest);
++        ]])], pac_cv_have_struct_ifconf=yes,pac_cv_have_struct_ifconf=no)
++])
+ 
+ # Intentionally not testing whether _SVID_SOURCE or _POSIX_C_SOURCE affects
+ # ifconf availability.  Making those sort of modifications at this stage
+@@ -225,16 +232,17 @@ if test "$pac_cv_have_struct_ifconf" = "yes" ; then
+     AC_DEFINE(HAVE_STRUCT_IFCONF,1,[Define if struct ifconf can be used])
+ fi
+ 
+-AC_CACHE_CHECK([whether we can use struct ifreq],
+-pac_cv_have_struct_ifreq,[
+-AC_TRY_COMPILE([
+-#include <sys/types.h>
+-#ifdef HAVE_SYS_SOCKET_H
+-#include <sys/socket.h>
+-#endif
+-#include <net/if.h>
+-],[struct ifreq conftest; int s; s = sizeof(conftest);],
+-pac_cv_have_struct_ifreq=yes,pac_cv_have_struct_ifreq=no)])
++AC_CACHE_CHECK([whether we can use struct ifreq], pac_cv_have_struct_ifreq,[
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++        #include <sys/types.h>
++        #ifdef HAVE_SYS_SOCKET_H
++        #include <sys/socket.h>
++        #endif
++        #include <net/if.h>
++        ]],[[
++        struct ifreq conftest; int s; s = sizeof(conftest);
++        ]])], pac_cv_have_struct_ifreq=yes,pac_cv_have_struct_ifreq=no)
++])
+ 
+ if test "$pac_cv_have_struct_ifreq" = "yes" ; then
+     AC_DEFINE(HAVE_STRUCT_IFREQ,1,[Define if struct ifreq can be used])
+diff --git src/mpid/ch3/channels/sock/subconfigure.m4 src/mpid/ch3/channels/sock/subconfigure.m4
+index 3ca6912bcadf..d8a8491d5d27 100644
+--- src/mpid/ch3/channels/sock/subconfigure.m4
++++ src/mpid/ch3/channels/sock/subconfigure.m4
+@@ -88,58 +88,58 @@ AC_CHECK_HEADERS([assert.h errno.h fcntl.h limits.h netdb.h netinet/in.h netinet
+ AC_CHECK_HEADERS([poll.h stdlib.h sys/param.h sys/poll.h sys/types.h sys/uio.h unistd.h])
+ 
+ AC_MSG_CHECKING([if struct poll is defined]);
+-AC_TRY_COMPILE([
+-#if defined(HAVE_POLL_H)
+-#include <poll.h>
+-#endif
+-#if defined(HAVE_SYS_POLL_H)
+-#include <sys/poll.h>
+-#endif
+-],[
+-struct pollfd pollfd;
+-pollfd.fd = -1;
+-],[
+-AC_MSG_RESULT([yes])
+-],[
+-AC_MSG_RESULT([no])
+-AC_MSG_ERROR([This device requires the poll function])
++AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++    #if defined(HAVE_POLL_H)
++    #include <poll.h>
++    #endif
++    #if defined(HAVE_SYS_POLL_H)
++    #include <sys/poll.h>
++    #endif
++    ]],[[
++    struct pollfd pollfd;
++    pollfd.fd = -1;
++    ]])],[
++    AC_MSG_RESULT([yes])
++    ],[
++    AC_MSG_RESULT([no])
++    AC_MSG_ERROR([This device requires the poll function])
+ ])
+ 
+ AC_MSG_CHECKING([if a simple program using poll() can be compiled]);
+-AC_TRY_COMPILE([
+-#if defined(HAVE_POLL_H)
+-#include <poll.h>
+-#endif
+-#if defined(HAVE_SYS_POLL_H)
+-#include <sys/poll.h>
+-#endif
+-],[
+-struct pollfd pollfds[2];
+-int n_fds;
+-pollfds[0].fd = -1;
+-pollfds[1].fd = -1;
+-n_fds = poll(pollfds, 2, -1);
+-],[
+-AC_MSG_RESULT([yes])
+-],[
+-AC_MSG_RESULT([no])
+-AC_MSG_ERROR([This device requires the poll function])
++AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++    #if defined(HAVE_POLL_H)
++    #include <poll.h>
++    #endif
++    #if defined(HAVE_SYS_POLL_H)
++    #include <sys/poll.h>
++    #endif
++    ]],[[
++    struct pollfd pollfds[2];
++    int n_fds;
++    pollfds[0].fd = -1;
++    pollfds[1].fd = -1;
++    n_fds = poll(pollfds, 2, -1);
++    ]])],[
++    AC_MSG_RESULT([yes])
++    ],[
++    AC_MSG_RESULT([no])
++    AC_MSG_ERROR([This device requires the poll function])
+ ])
+ 
+ dnl
+ dnl needed on AIX
+ dnl
+ AC_MSG_CHECKING([whether bit fields work in ip.h]);
+-AC_TRY_COMPILE([
+-#include <netinet/tcp.h>
+-],[
+-int i;
+-],[
+-AC_MSG_RESULT([yes])
+-bit_fields=yes
+-],[
+-AC_MSG_RESULT([no])
+-bit_fields=no
++AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++    #include <netinet/tcp.h>
++    ]],[[
++    int i;
++    ]])],[
++    AC_MSG_RESULT([yes])
++    bit_fields=yes
++    ],[
++    AC_MSG_RESULT([no])
++    bit_fields=no
+ ])
+ if test "$bit_fields" = "no" ; then
+      AC_MSG_RESULT([Adding -D_NO_BITFIELDS to CFLAGS])
+@@ -158,31 +158,32 @@ AC_SEARCH_LIBS([gethostbyname],[nsl])
+ 
+ # Check first for sys/socket.h .  We check not only for existence but whether
+ # it can be compiled (!), as we have seen some problems with this.
+-AC_TRY_COMPILE([
+-#include <sys/types.h>
+-#include <sys/socket.h>
+-],[int a;],ac_cv_header_sys_socket_h=yes,ac_cv_header_sys_socket_h=no)
++AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++    #include <sys/types.h>
++    #include <sys/socket.h>
++    ]],[[int a;]])],
++    ac_cv_header_sys_socket_h=yes,ac_cv_header_sys_socket_h=no)
+ if test "$ac_cv_header_sys_socket_h" = yes ; then
+     AC_DEFINE(HAVE_SYS_SOCKET_H,1,[Define if you have the <sys/socket.h> header file.])
+ fi
+ # Check for socklen_t .  If undefined, define it as int
+ # (note the conditional inclusion of sys/socket.h)
+-AC_CACHE_CHECK([whether socklen_t is defined (in sys/socket.h if present)],
+-pac_cv_have_socklen_t,[
+-AC_TRY_COMPILE([
+-#include <sys/types.h>
+-#ifdef HAVE_SYS_SOCKET_H
+-#include <sys/socket.h>
+-#endif
+-typedef struct { double a; int b; } socklen_t;],
+-[socklen_t a;a.a=1.0;],
+-[pac_cv_have_socklen_t=no],
+-[pac_cv_have_socklen_t=yes])])
++AC_CACHE_CHECK([whether socklen_t is defined (in sys/socket.h if present)], pac_cv_have_socklen_t,[
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++        #include <sys/types.h>
++        #ifdef HAVE_SYS_SOCKET_H
++        #include <sys/socket.h>
++        #endif
++        typedef struct { double a; int b; } socklen_t;
++        ]],[[socklen_t a;a.a=1.0;]])],
++        [pac_cv_have_socklen_t=no],
++        [pac_cv_have_socklen_t=yes])
++])
+ if test "X$pac_cv_have_socklen_t" = Xno ; then
+     AC_DEFINE([socklen_t],[int],[Define if socklen_t is not defined])
+ fi
+ 
+-    ])
++    ]) dnl IF BUILD_CH3_SOCK
+ ])dnl
+ dnl
+ dnl _BODY handles the former role of configure in the subsystem
+@@ -192,11 +193,11 @@ AC_MSG_NOTICE([RUNNING CONFIGURE FOR ch3:sock])
+ # code that formerly lived in configure.ac
+ 
+ dnl AC_CHECK_HEADER(net/if.h) fails on Solaris; extra header files needed
+-AC_TRY_COMPILE([
+-#include <sys/types.h>
+-#include <sys/socket.h>
+-#include <net/if.h>
+-],,lac_cv_header_net_if_h=yes,lac_cv_header_net_if_h=no)
++AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++    #include <sys/types.h>
++    #include <sys/socket.h>
++    #include <net/if.h>
++    ]],[])],lac_cv_header_net_if_h=yes,lac_cv_header_net_if_h=no)
+ 
+ # FIXME why doesn't this use the proper machinery?
+ echo "checking for net/if.h... $lac_cv_header_net_if_h"
+@@ -219,12 +220,15 @@ AC_CHECK_HEADERS(				\
+ # other headers.  2.57 changes the syntax (!) of check_headers to allow 
+ # additional headers.
+ AC_CACHE_CHECK([for netinet/in.h],ac_cv_header_netinet_in_h,[
+-AC_TRY_COMPILE([#ifdef HAVE_SYS_TYPES_H
+-#include <sys/types.h>
+-#endif
+-#include <netinet/in.h>],[int a=0;],
+-    ac_cv_header_netinet_in_h=yes,
+-    ac_cv_header_netinet_in_h=no)])
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++        #ifdef HAVE_SYS_TYPES_H
++        #include <sys/types.h>
++        #endif
++        #include <netinet/in.h>
++        ]],[[int a=0;]])],
++        ac_cv_header_netinet_in_h=yes,
++        ac_cv_header_netinet_in_h=no)
++])
+ if test "$ac_cv_header_netinet_in_h" = yes ; then
+     AC_DEFINE(HAVE_NETINET_IN_H,1,[Define if netinet/in.h exists])
+ fi
+diff --git src/mpid/ch3/util/sock/subconfigure.m4 src/mpid/ch3/util/sock/subconfigure.m4
+index 994bf6a92512..b310744690dc 100644
+--- src/mpid/ch3/util/sock/subconfigure.m4
++++ src/mpid/ch3/util/sock/subconfigure.m4
+@@ -30,31 +30,35 @@ AC_DEFUN([PAC_SUBCFG_BODY_]PAC_SUBCFG_AUTO_SUFFIX,[
+     
+     # If we need the socket code, see if we can use struct ifconf
+     # sys/socket.h is needed on Solaris
+-    AC_CACHE_CHECK([whether we can use struct ifconf],
+-    pac_cv_have_struct_ifconf,[
+-AC_TRY_COMPILE([
+-#include <sys/types.h>
+-#ifdef HAVE_SYS_SOCKET_H
+-#include <sys/socket.h>
+-#endif
+-#include <net/if.h>
+-],[struct ifconf conftest;],
+-pac_cv_have_struct_ifconf=yes,pac_cv_have_struct_ifconf=no)])
++    AC_CACHE_CHECK([whether we can use struct ifconf], pac_cv_have_struct_ifconf,[
++        AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++            #include <sys/types.h>
++            #ifdef HAVE_SYS_SOCKET_H
++            #include <sys/socket.h>
++            #endif
++            #include <net/if.h>
++            ]],[[
++            struct ifconf conftest;
++            ]])], pac_cv_have_struct_ifconf=yes,pac_cv_have_struct_ifconf=no)
++    ])
+ 
+     if test "$pac_cv_have_struct_ifconf" = "no" ; then
+         # Try again with _SVID_SOURCE
+         AC_CACHE_CHECK([whether we can use struct ifconf with _SVID_SOURCE],
+                        [pac_cv_have_struct_ifconf_with_svid],[
+-AC_TRY_COMPILE([
+-#define _SVID_SOURCE
+-#include <sys/types.h>
+-#ifdef HAVE_SYS_SOCKET_H
+-#include <sys/socket.h>
+-#endif
+-#include <net/if.h>
+-],[struct ifconf conftest;],
+-    pac_cv_have_struct_ifconf_with_svid=yes,
+-    pac_cv_have_struct_ifconf_with_svid=no)])
++            AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++                #define _SVID_SOURCE
++                #include <sys/types.h>
++                #ifdef HAVE_SYS_SOCKET_H
++                #include <sys/socket.h>
++                #endif
++                #include <net/if.h>
++                ]],[[
++                struct ifconf conftest;
++                ]])],
++                pac_cv_have_struct_ifconf_with_svid=yes,
++                pac_cv_have_struct_ifconf_with_svid=no)
++        ])
+         if test "$pac_cv_have_struct_ifconf_with_svid" = yes ; then
+             AC_DEFINE(USE_SVIDSOURCE_FOR_IFCONF,1,[Define if _SVID_SOURCE needs to be defined for struct ifconf])
+         fi
+@@ -64,17 +68,20 @@ AC_TRY_COMPILE([
+             "$pac_cv_have_struct_ifconf_with_svid" = "no" ; then
+         # Try again with undef _POSIX_C_SOURCE
+         AC_CACHE_CHECK([whether we can use struct ifconf without _POSIX_C_SOURCE],
+-pac_cv_have_struct_ifconf_without_posix,[
+-AC_TRY_COMPILE([
+-#undef _POSIX_C_SOURCE
+-#include <sys/types.h>
+-#ifdef HAVE_SYS_SOCKET_H
+-#include <sys/socket.h>
+-#endif
+-#include <net/if.h>
+-],[struct ifconf conftest;],
+-pac_cv_have_struct_ifconf_without_posix=yes,
+-pac_cv_have_struct_ifconf_without_posix=no)])
++                        pac_cv_have_struct_ifconf_without_posix,[
++            AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++                #undef _POSIX_C_SOURCE
++                #include <sys/types.h>
++                #ifdef HAVE_SYS_SOCKET_H
++                #include <sys/socket.h>
++                #endif
++                #include <net/if.h>
++                ]],[[
++                struct ifconf conftest;
++                ]])],
++                pac_cv_have_struct_ifconf_without_posix=yes,
++                pac_cv_have_struct_ifconf_without_posix=no)
++        ])
+         if test "$pac_cv_have_struct_ifconf_without_posix" = yes ; then
+             AC_DEFINE(USE_NOPOSIX_FOR_IFCONF,1,[Define if _POSIX_C_SOURCE needs to be undefined for struct ifconf])
+         fi
+diff --git src/mpl/configure.ac src/mpl/configure.ac
+index 0d24c86fa917..c212200f9388 100644
+--- src/mpl/configure.ac
++++ src/mpl/configure.ac
+@@ -311,10 +311,12 @@ if test -z "$timer_type" ; then
+ 	# do arithmetic with hrtime_t .
+         AC_CACHE_CHECK([that hrtime_t is properly defined for gethrtime],
+ 	pac_cv_hrtime_works,[
+-	AC_TRY_COMPILE([
+-#include <sys/time.h>
+-],[hrtime_t t1, t2; t1 = 1; t2 = 2; t1 = t1 + t2;],
+-pac_cv_hrtime_works=yes,pac_cv_hrtime_works=no)])
++	AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++                #include <sys/time.h>
++            ]],[[
++                hrtime_t t1, t2; t1 = 1; t2 = 2; t1 = t1 + t2;
++            ]])],
++            pac_cv_hrtime_works=yes,pac_cv_hrtime_works=no)])
+ 	# A more ambitious test would look to see if casting an 
+ 	# hrtime_t to int64_t works, and even more ambitious
+ 	# would check whether long or long long was 64 bits (or even
+@@ -363,21 +365,27 @@ case "$timer_type" in
+     # Make sure that we can use struct timespec
+     AC_CACHE_CHECK([whether struct timespec is defined in time.h],
+                     pac_cv_struct_timespec_defined,[
+-    AC_TRY_COMPILE([
+-#include <time.h>],[
+-    struct timespec t;],pac_cv_struct_timespec_defined=yes,
+-    pac_cv_struct_timespec_defined=no)
+-])
++        AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++            #include <time.h>
++            ]],[[
++            struct timespec t;
++            ]])],
++            pac_cv_struct_timespec_defined=yes,
++            pac_cv_struct_timespec_defined=no)
++    ])
+     if test "$pac_cv_struct_timespec_defined" != "yes" ; then
+         # Try again, but with -D_XOPEN_SOURCE=500 (works for AIX)
+         AC_CACHE_CHECK([whether struct timespec is defined in time.h with _XOPEN_SOURCE=500],
+                     pac_cv_struct_timespec_defined_with_xopen500,[
+-        AC_TRY_COMPILE([
+-#define _XOPEN_SOURCE 500
+-#include <time.h>],[
+-    struct timespec t;],pac_cv_struct_timespec_defined_with_xopen500=yes,
+-    pac_cv_struct_timespec_defined_with_xopen500=no)
+-])
++            AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++                #define _XOPEN_SOURCE 500
++                #include <time.h>
++                ]],[[
++                struct timespec t;
++                ]])],
++                pac_cv_struct_timespec_defined_with_xopen500=yes,
++                pac_cv_struct_timespec_defined_with_xopen500=no)
++        ])
+ 	if test "$pac_cv_struct_timespec_defined_with_xopen500" = "yes" ; then
+ 	    # We need to define _XOPEN_SOURCE=500, but we need to ensure that
+ 	    # this is done before any include files are loaded.  At
+@@ -391,19 +399,26 @@ case "$timer_type" in
+     # time.h is required (see pages 45 and 46 in the POSIX standard).
+     # See if we can compile
+     AC_CACHE_CHECK([for CLOCK_REALTIME defined in time.h],pac_cv_posix_clock_realtime,[
+-    AC_TRY_COMPILE([
+-#include <time.h>],[
+-    clockid_t cid = CLOCK_REALTIME;],pac_cv_posix_clock_realtime=yes,
+-pac_cv_posix_clock_realtime=no)])
++        AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++            #include <time.h>
++            ]],[[
++            clockid_t cid = CLOCK_REALTIME;
++            ]])],
++            pac_cv_posix_clock_realtime=yes,
++            pac_cv_posix_clock_realtime=no)
++    ])
+     if test "$pac_cv_posix_clock_realtime" = "no" ; then
+          AC_MSG_WARN([POSIX timer requires definitions in time.h])
+ 	 # Check for the definition in sys/time.h, which is where
+ 	 # OpenBSD and FreeBSD have put it by mistake
+-         AC_TRY_COMPILE([
+-#include <time.h>
+-#include <sys/time.h>],[
+-    clockid_t cid = CLOCK_REALTIME;],pac_cv_posix_clock_realtime=yes,
+-pac_cv_posix_clock_realtime=no)
++         AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++            #include <time.h>
++            #include <sys/time.h>
++            ]],[[
++            clockid_t cid = CLOCK_REALTIME;
++            ]])],
++            pac_cv_posix_clock_realtime=yes,
++            pac_cv_posix_clock_realtime=no)
+ 	if test "$pac_cv_posix_clock_realtime" = yes ; then
+ 	    AC_MSG_WARN([sys/time.h required for POSIX timer])
+ 	    AC_DEFINE(NEEDS_SYS_TIME_H,1,[Define if sys/time.h is required to get timer definitions])
+@@ -426,76 +441,73 @@ pac_cv_posix_clock_realtime=no)
+ 
+     linux86_cycle|linux86_cycle_2)
+     
+-# The following AC_TRY_RUN statements are needed because x86_64 compilers
++# The following AC_RUN_IFELSE statements are needed because x86_64 compilers
+ # usually know about rdtscp but the cpu may or may not actually implement the
+ # feature.  This is not cross-compile safe, unfortunately.  In the long run we
+ # should allow the user to override this with a configure flag.
+-    AC_CACHE_CHECK([that linux86 cycle counter is available],
+-        pac_cv_linux86_cycle,
+-            AC_TRY_RUN([
+-int main()
+-{
+-    /* rdtscp */
+-    long long var, *var_ptr=&var;
+-    __asm__ __volatile__("rdtscp; shl \$32, %%rdx; or %%rdx, %%rax" : "=a" (*var_ptr) : : "ecx", "rdx");
+-    return 0;
+-}
+-            ],pac_cv_linux86_cycle=rdtscp,
+-                AC_TRY_RUN([[
+-int main()
+-{
+-    /* cpuid 64 */
+-    long long var, *var_ptr=&var;
+-    __asm__ __volatile__("push %%rbx ; cpuid ; rdtsc ; pop %%rbx ; shl $32, %%rdx; or %%rdx, %%rax" : "=a" (*var_ptr) : : "ecx", "rdx");
+-    return 0;
+-}
+-                ]],pac_cv_linux86_cycle=cpuid_rdtsc64,
+-                    AC_TRY_RUN([[[
+-int main()
+-{
+-    /* cpuid 32 */
+-    long long var, *var_ptr=&var;
+-    __asm__ __volatile__("push %%ebx ; cpuid ; rdtsc ; pop %%ebx" : "=A" (*var_ptr) : : "ecx");
+-    return 0;
+-}
+-                    ]]],pac_cv_linux86_cycle=cpuid_rdtsc32,
+-                        AC_TRY_RUN([[[[
+-int main()
+-{
+-    /* simple */
+-    long long var, *var_ptr=&var;
+-    __asm__ __volatile__("rdtsc" : "=A" (*var_ptr));
+-    return 0;
+-}
+-                        ]]]],pac_cv_linux86_cycle=rdtsc,
+-                        pac_cv_linux86_cycle=no)
+-                    )
+-                ),
+-dnl The if-cross-compiling clause from the first AC_TRY_RUN.  Hope that if the
+-dnl compiler knows about the instruction then it's supported by the target
+-dnl platform.
+-                AC_TRY_COMPILE(,[[
+-                    long long var, *var_ptr=&var;
+-                    __asm__ __volatile__("rdtscp; shl \$32, %%rdx; or %%rdx, %%rax" : "=a" (*var_ptr) : : "ecx", "rdx");
+-                ]],pac_cv_linux86_cycle=rdtscp,
+-                    AC_TRY_COMPILE(,[[[
+-                        long long var, *var_ptr=&var;
+-                        __asm__ __volatile__("push %%rbx ; cpuid ; rdtsc ; pop %%rbx ; shl $32, %%rdx; or %%rdx, %%rax" : "=a" (*var_ptr) : : "ecx", "rdx");
+-                    ]]],pac_cv_linux86_cycle=cpuid_rdtsc64,
+-                        AC_TRY_COMPILE(,[[[[
+-                            long long var, *var_ptr=&var;
+-                            __asm__ __volatile__("push %%ebx ; cpuid ; rdtsc ; pop %%ebx" : "=A" (*var_ptr) : : "ecx");
+-                        ]]]],pac_cv_linux86_cycle=cpuid_rdtsc32,
+-                            AC_TRY_COMPILE(,[[[[[
+-                                long long var, *var_ptr=&var;
+-                                __asm__ __volatile__("rdtsc" : "=A" (*var_ptr));
+-                            ]]]]],pac_cv_linux86_cycle=rdtsc,
+-                            pac_cv_linux86_cycle=no)
+-                        )
+-                    )
+-                )
+-            )
+-    )
++    AC_CACHE_CHECK([that linux86 cycle counter is available], pac_cv_linux86_cycle, [
++        AC_RUN_IFELSE([AC_LANG_SOURCE([[
++            int main()
++            {
++                /* rdtscp */
++                long long var, *var_ptr=&var;
++                __asm__ __volatile__("rdtscp; shl \$32, %%rdx; or %%rdx, %%rax" : "=a" (*var_ptr) : : "ecx", "rdx");
++                return 0;
++            }
++            ]])],pac_cv_linux86_cycle=rdtscp,[
++        AC_RUN_IFELSE([AC_LANG_SOURCE([[
++            int main()
++            {
++                /* cpuid 64 */
++                long long var, *var_ptr=&var;
++                __asm__ __volatile__("push %%rbx ; cpuid ; rdtsc ; pop %%rbx ; shl $32, %%rdx; or %%rdx, %%rax" : "=a" (*var_ptr) : : "ecx", "rdx");
++                return 0;
++            }
++            ]])],pac_cv_linux86_cycle=cpuid_rdtsc64,[
++        AC_RUN_IFELSE([AC_LANG_SOURCE([[
++            int main()
++            {
++                /* cpuid 32 */
++                long long var, *var_ptr=&var;
++                __asm__ __volatile__("push %%ebx ; cpuid ; rdtsc ; pop %%ebx" : "=A" (*var_ptr) : : "ecx");
++                return 0;
++            }
++            ]])],pac_cv_linux86_cycle=cpuid_rdtsc32,[
++        AC_RUN_IFELSE([AC_LANG_SOURCE([[
++            int main()
++            {
++                /* simple */
++                long long var, *var_ptr=&var;
++                __asm__ __volatile__("rdtsc" : "=A" (*var_ptr));
++                return 0;
++            }
++            ]])],pac_cv_linux86_cycle=rdtsc,
++            pac_cv_linux86_cycle=no)
++        ])])], dnl closing the last 3 AC_RUN_IFELSE
++        [
++        dnl The if-cross-compiling clause from the first AC_RUN_IFELSE.  Hope that if the
++        dnl compiler knows about the instruction then it's supported by the target
++        dnl platform.
++        AC_COMPILE_IFELSE([AC_LANG_PROGRAM([],[[
++            long long var, *var_ptr=&var;
++            __asm__ __volatile__("rdtscp; shl \$32, %%rdx; or %%rdx, %%rax" : "=a" (*var_ptr) : : "ecx", "rdx");
++            ]])],pac_cv_linux86_cycle=rdtscp,[
++        AC_COMPILE_IFELSE([AC_LANG_PROGRAM([],[[
++            long long var, *var_ptr=&var;
++            __asm__ __volatile__("push %%rbx ; cpuid ; rdtsc ; pop %%rbx ; shl $32, %%rdx; or %%rdx, %%rax" : "=a" (*var_ptr) : : "ecx", "rdx");
++            ]])],pac_cv_linux86_cycle=cpuid_rdtsc64,[
++        AC_COMPILE_IFELSE([AC_LANG_PROGRAM([],[[
++            long long var, *var_ptr=&var;
++            __asm__ __volatile__("push %%ebx ; cpuid ; rdtsc ; pop %%ebx" : "=A" (*var_ptr) : : "ecx");
++            ]])],pac_cv_linux86_cycle=cpuid_rdtsc32,[
++        AC_COMPILE_IFELSE([AC_LANG_PROGRAM([],[[
++            long long var, *var_ptr=&var;
++            __asm__ __volatile__("rdtsc" : "=A" (*var_ptr));
++            ]])],pac_cv_linux86_cycle=rdtsc,
++            pac_cv_linux86_cycle=no
++        )])])]) dnl closing the 4 AC_COMPILE_IFELSE
++        ]) dnl end of first AC_RUN_IFELSE
++    ]) dnl end of AC_CACHE_CHECK
+ 
+     case "$pac_cv_linux86_cycle" in
+         "rdtscp")
+@@ -522,47 +534,45 @@ dnl platform.
+     ;;
+ 
+     gcc_ia64_cycle)
+-    AC_CACHE_CHECK([that IPF timer is available],
+-pac_cv_ia64_cycle,[
+-    AC_TRY_COMPILE(,[
+-    long var, *var_ptr=&var;
+-#ifdef __INTEL_COMPILER
+-#include "ia64regs.h"
+-    var=__getReg(_IA64_REG_AR_ITC);
+-#else
+-    __asm__ __volatile__("mov %0=ar.itc" : "=r" (var_ptr));
+-#endif
+-],pac_cv_gcc_ia64_cycle=yes,pac_cv_gcc_ia64_cycle=no)])
+-    if test "$pac_cv_gcc_ia64_cycle" != "yes" ; then
+-        AC_MSG_ERROR([IPF cycle counter is not available on this system and or with the $CC compiler])
+-     fi
+-     MPL_TIMER_TYPE="long"
+-     ;;
++        AC_CACHE_CHECK([that IPF timer is available], pac_cv_ia64_cycle,[
++            AC_COMPILE_IFELSE([AC_LANG_PROGRAM([],[[
++                long var, *var_ptr=&var;
++            #ifdef __INTEL_COMPILER
++            #include "ia64regs.h"
++                var=__getReg(_IA64_REG_AR_ITC);
++            #else
++                __asm__ __volatile__("mov %0=ar.itc" : "=r" (var_ptr));
++            #endif
++            ]])],pac_cv_gcc_ia64_cycle=yes,pac_cv_gcc_ia64_cycle=no)])
++        if test "$pac_cv_gcc_ia64_cycle" != "yes" ; then
++            AC_MSG_ERROR([IPF cycle counter is not available on this system and or with the $CC compiler])
++        fi
++        MPL_TIMER_TYPE="long"
++        ;;
+ 
+     mach_absolute_time)
+-    AC_CHECK_FUNC(mach_absolute_time,,[AC_MSG_ERROR([mach_absolute_time is not available])])
+-    AC_CHECK_FUNC(mach_timebase_info,,[AC_MSG_ERROR([mach_timebase_info is not available])])
+-    MPL_TIMER_TYPE="uint64_t"
+-    ;;
++        AC_CHECK_FUNC(mach_absolute_time,,[AC_MSG_ERROR([mach_absolute_time is not available])])
++        AC_CHECK_FUNC(mach_timebase_info,,[AC_MSG_ERROR([mach_timebase_info is not available])])
++        MPL_TIMER_TYPE="uint64_t"
++        ;;
+ 
+     ppc64_cycle)
+-    AC_CACHE_CHECK([that ppc64 timebase cycle counter is available],
+-                pac_cv_ppc64_cycle,[
+-    AC_TRY_COMPILE([
+-    ],[
+-        unsigned temp;
+-        asm volatile ("mfspr %0,%1" : "=r" (temp)        : "i" (0x10D));
+-    ],pac_cv_ppc64_cycle=yes,
+-    pac_cv_ppc64_cycle=no)
+-    ])
+-    if test "$pac_cv_ppc64_cycle" != "yes" ; then
+-        AC_MSG_ERROR([The PPC64 cycle counter is not available on this system and or with the $CC compiler])
+-    fi
+-    MPL_TIMER_TYPE="uint64_t"
+-    ;;
++        AC_CACHE_CHECK([that ppc64 timebase cycle counter is available], pac_cv_ppc64_cycle,[
++            AC_COMPILE_IFELSE([AC_LANG_PROGRAM([],[[
++                unsigned temp;
++                asm volatile ("mfspr %0,%1" : "=r" (temp)        : "i" (0x10D));
++                ]])],
++                pac_cv_ppc64_cycle=yes,
++                pac_cv_ppc64_cycle=no)
++        ])
++        if test "$pac_cv_ppc64_cycle" != "yes" ; then
++            AC_MSG_ERROR([The PPC64 cycle counter is not available on this system and or with the $CC compiler])
++        fi
++        MPL_TIMER_TYPE="uint64_t"
++        ;;
+     *)
+-    AC_MSG_ERROR([Invalid timer type $timer_type])
+-    ;;
++        AC_MSG_ERROR([Invalid timer type $timer_type])
++        ;;
+ esac
+ # Convert timer type to upper case
+ timer_type=`echo $timer_type | \
+@@ -800,16 +810,14 @@ if test "${with_thread_package}" = "pthreads" -o "${with_proc_mutex_package}" =
+   # Check for PTHREAD_MUTEX_ERRORCHECK_NP and PTHREAD_MUTEX_ERRORCHECK
+   AC_CACHE_CHECK([whether pthread.h defines PTHREAD_MUTEX_ERRORCHECK_NP],
+   pac_cv_has_pthread_mutex_errorcheck_np,[
+-  AC_TRY_COMPILE([#include <pthread.h>],
+-                 [int a=PTHREAD_MUTEX_ERRORCHECK_NP;],
++  AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <pthread.h>]],[[int a=PTHREAD_MUTEX_ERRORCHECK_NP;]])],
+                  pac_cv_has_pthread_mutex_errorcheck_np=yes,
+                  pac_cv_has_pthread_mutex_errorcheck_np=no)])
+-  AC_CACHE_CHECK([whether pthread.h defines PTHREAD_MUTEX_ERRORCHECK],
+-  pac_cv_has_pthread_mutex_errorcheck,[
+-  AC_TRY_COMPILE([#include <pthread.h>],
+-                 [int a=PTHREAD_MUTEX_ERRORCHECK;],
++  AC_CACHE_CHECK([whether pthread.h defines PTHREAD_MUTEX_ERRORCHECK], pac_cv_has_pthread_mutex_errorcheck,[
++      AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <pthread.h>]],[[int a=PTHREAD_MUTEX_ERRORCHECK;]])],
+                  pac_cv_has_pthread_mutex_errorcheck=yes,
+-                 pac_cv_has_pthread_mutex_errorcheck=no)])
++                 pac_cv_has_pthread_mutex_errorcheck=no)
++  ])
+ 
+   if test "$pac_cv_has_pthread_mutex_errorcheck" = yes ; then
+       AC_DEFINE(PTHREAD_MUTEX_ERRORCHECK_VALUE,PTHREAD_MUTEX_ERRORCHECK,
+diff --git src/pm/gforker/subconfigure.m4 src/pm/gforker/subconfigure.m4
+index ab9d70ac25ea..a5265187e255 100644
+--- src/pm/gforker/subconfigure.m4
++++ src/pm/gforker/subconfigure.m4
+@@ -61,17 +61,23 @@ AC_CHECK_FUNCS([sigaction signal sigset])
+ sigaction_ok=no
+ if test "$ac_cv_func_sigaction" = "yes" ; then
+     AC_CACHE_CHECK([for struct sigaction],pac_cv_struct_sigaction,[
+-    AC_TRY_COMPILE([#include <signal.h>],[
+-struct sigaction act; sigaddset( &act.sa_mask, SIGINT );],
+-    pac_cv_struct_sigaction="yes",pac_cv_struct_sigaction="no")])
++        AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++            #include <signal.h>
++            ]],[[
++            struct sigaction act; sigaddset( &act.sa_mask, SIGINT );
++            ]])], pac_cv_struct_sigaction="yes",pac_cv_struct_sigaction="no")
++    ])
+     if test "$pac_cv_struct_sigaction" = "no" ; then
+-        AC_CACHE_CHECK([for struct sigaction with _POSIX_SOURCE],
+-	pac_cv_struct_sigaction_needs_posix,[
+-        AC_TRY_COMPILE([#define _POSIX_SOURCE
+-#include <signal.h>],[
+-struct sigaction act; sigaddset( &act.sa_mask, SIGINT );],
+-       pac_cv_struct_sigaction_needs_posix="yes",
+-       pac_cv_struct_sigaction_needs_posix="no")])
++        AC_CACHE_CHECK([for struct sigaction with _POSIX_SOURCE], pac_cv_struct_sigaction_needs_posix,[
++            AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++                #define _POSIX_SOURCE
++                #include <signal.h>
++                ]],[[
++                struct sigaction act; sigaddset( &act.sa_mask, SIGINT );
++                ]])],
++                pac_cv_struct_sigaction_needs_posix="yes",
++                pac_cv_struct_sigaction_needs_posix="no")
++        ])
+         if test "$pac_cv_struct_sigaction_needs_posix" = "yes" ; then
+             sigaction_ok=yes
+ 	fi
+diff --git src/pm/hydra/configure.ac src/pm/hydra/configure.ac
+index 68207b4a4615..ec7829134f4e 100644
+--- src/pm/hydra/configure.ac
++++ src/pm/hydra/configure.ac
+@@ -204,26 +204,30 @@ if test "$ac_cv_func_killpg" = "yes" ; then
+    PAC_FUNC_NEEDS_DECL([#include <signal.h>],killpg)
+ fi
+ 
+-AC_TRY_LINK([
+-	#include <stdio.h>
+-	#include <sys/types.h>
+-	#include <ifaddrs.h>
+-	],
+-	[return getifaddrs(NULL);],
+-	[AC_DEFINE([HAVE_GETIFADDRS],1,[Define to '1' if getifaddrs is present and usable])])
++AC_LINK_IFELSE([AC_LANG_PROGRAM([[
++    #include <stdio.h>
++    #include <sys/types.h>
++    #include <ifaddrs.h>
++    ]],[[
++    return getifaddrs(NULL);
++    ]])],[
++    AC_DEFINE([HAVE_GETIFADDRS],1,[Define to '1' if getifaddrs is present and usable])
++])
+ 
+ # Check what we need to do about the environ extern
+-AC_CACHE_CHECK([for environ in unistd.h],pac_cv_environ_in_unistd,
+-	[AC_TRY_COMPILE([#include <unistd.h>],[char **x = environ;],
+-	pac_cv_environ_in_unistd=yes,pac_cv_environ_in_unistd=no)])
++AC_CACHE_CHECK([for environ in unistd.h],pac_cv_environ_in_unistd, [
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <unistd.h>]],[[char **x = environ;]])],
++	pac_cv_environ_in_unistd=yes,pac_cv_environ_in_unistd=no)
++])
+ if test "$pac_cv_environ_in_unistd" = "yes" ; then
+     # We have environ defined in unistd.h; we are done
+     AC_DEFINE(HAVE_EXTERN_ENVIRON,1,[Define if environ extern is available])
+ else
+     # See if we can declare it
+-    AC_CACHE_CHECK([for manually declared extern environ], pac_cv_manual_extern_environ,
+-   	[AC_TRY_LINK([#include <unistd.h>],[extern char ** environ; char **x = environ;],
+-	pac_cv_manual_extern_environ=yes,pac_cv_manual_extern_environ=no)])
++    AC_CACHE_CHECK([for manually declared extern environ], pac_cv_manual_extern_environ, [
++        AC_LINK_IFELSE([AC_LANG_PROGRAM([[#include <unistd.h>]],[[extern char ** environ; char **x = environ;]])],
++            pac_cv_manual_extern_environ=yes,pac_cv_manual_extern_environ=no)
++    ])
+     if test "$pac_cv_manual_extern_environ" = "yes" ; then
+         # We can manually declare the extern
+         AC_DEFINE(MANUAL_EXTERN_ENVIRON,1,[Define if environ decl needed])
+@@ -655,22 +659,28 @@ AC_CHECK_FUNCS(sigaction signal sigset)
+ sigaction_ok=no
+ if test "$ac_cv_func_sigaction" = "yes" ; then
+     # Make sure that the fields that we need in sigaction are defined
+-    AC_CACHE_CHECK([for struct sigaction and sa_handler],
+-    pac_cv_struct_sigaction_with_sa_handler,[
+-    AC_TRY_COMPILE([#include <signal.h>],[
+-struct sigaction act; sigaddset( &act.sa_mask, SIGINT );
+-act.sa_handler = SIG_IGN;],
+-    pac_cv_struct_sigaction_with_sa_handler=yes,
+-    pac_cv_struct_sigaction_with_sa_handler=no)])
++    AC_CACHE_CHECK([for struct sigaction and sa_handler], pac_cv_struct_sigaction_with_sa_handler,[
++        AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++            #include <signal.h>
++            ]],[[
++            struct sigaction act; sigaddset( &act.sa_mask, SIGINT );
++            act.sa_handler = SIG_IGN;
++            ]])],
++            pac_cv_struct_sigaction_with_sa_handler=yes,
++            pac_cv_struct_sigaction_with_sa_handler=no)
++    ])
+     if test "$pac_cv_struct_sigaction_with_sa_handler" = "no" ; then
+-        AC_CACHE_CHECK([for struct sigaction and sa_handler with _POSIX_SOURCE],
+-	pac_cv_struct_sigaction_with_sa_handler_needs_posix,[
+-        AC_TRY_COMPILE([#define _POSIX_SOURCE
+-#include <signal.h>],[
+-struct sigaction act; sigaddset( &act.sa_mask, SIGINT );
+-act.sa_handler = SIG_IGN;],
+-	pac_cv_struct_sigaction_with_sa_handler_needs_posix=yes,
+-	pac_cv_struct_sigaction_with_sa_handler_needs_posix=no)])
++        AC_CACHE_CHECK([for struct sigaction and sa_handler with _POSIX_SOURCE], pac_cv_struct_sigaction_with_sa_handler_needs_posix,[
++            AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++                #define _POSIX_SOURCE
++                #include <signal.h>
++                ]],[[
++                struct sigaction act; sigaddset( &act.sa_mask, SIGINT );
++                act.sa_handler = SIG_IGN;
++                ]])],
++                pac_cv_struct_sigaction_with_sa_handler_needs_posix=yes,
++                pac_cv_struct_sigaction_with_sa_handler_needs_posix=no)
++        ])
+         if test "$pac_cv_struct_sigaction_with_sa_handler_needs_posix" = "yes" ; then
+             sigaction_ok=yes
+ 	fi
+diff --git src/pm/hydra2/configure.ac src/pm/hydra2/configure.ac
+index 5e8b09bf481a..9d2504cb85b7 100644
+--- src/pm/hydra2/configure.ac
++++ src/pm/hydra2/configure.ac
+@@ -207,26 +207,30 @@ if test "$ac_cv_func_putenv" = "yes" ; then
+     PAC_FUNC_NEEDS_DECL([#include <stdlib.h>],putenv)
+ fi
+ 
+-AC_TRY_LINK([
+-	#include <stdio.h>
+-	#include <sys/types.h>
+-	#include <ifaddrs.h>
+-	],
+-	[return getifaddrs(NULL);],
+-	[AC_DEFINE([HAVE_GETIFADDRS],1,[Define to '1' if getifaddrs is present and usable])])
++AC_LINK_IFELSE([AC_LANG_PROGRAM([[
++    #include <stdio.h>
++    #include <sys/types.h>
++    #include <ifaddrs.h>
++    ]],[[
++    return getifaddrs(NULL);
++    ]])],[
++    AC_DEFINE([HAVE_GETIFADDRS],1,[Define to '1' if getifaddrs is present and usable])
++])
+ 
+ # Check what we need to do about the environ extern
+-AC_CACHE_CHECK([for environ in unistd.h],pac_cv_environ_in_unistd,
+-	[AC_TRY_COMPILE([#include <unistd.h>],[char **x = environ;],
+-	pac_cv_environ_in_unistd=yes,pac_cv_environ_in_unistd=no)])
++AC_CACHE_CHECK([for environ in unistd.h],pac_cv_environ_in_unistd, [
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <unistd.h>]],[[char **x = environ;]])],
++	pac_cv_environ_in_unistd=yes,pac_cv_environ_in_unistd=no)
++])
+ if test "$pac_cv_environ_in_unistd" = "yes" ; then
+     # We have environ defined in unistd.h; we are done
+     AC_DEFINE(HAVE_EXTERN_ENVIRON,1,[Define if environ extern is available])
+ else
+     # See if we can declare it
+-    AC_CACHE_CHECK([for manually declared extern environ], pac_cv_manual_extern_environ,
+-	[AC_TRY_LINK([#include <unistd.h>],[extern char ** environ; char **x = environ;],
+-	pac_cv_manual_extern_environ=yes,pac_cv_manual_extern_environ=no)])
++    AC_CACHE_CHECK([for manually declared extern environ], pac_cv_manual_extern_environ, [
++        AC_LINK_IFELSE([AC_LANG_PROGRAM([[#include <unistd.h>]],[[extern char ** environ; char **x = environ;]])],
++            pac_cv_manual_extern_environ=yes,pac_cv_manual_extern_environ=no)
++    ])
+     if test "$pac_cv_manual_extern_environ" = "yes" ; then
+         # We can manually declare the extern
+         AC_DEFINE(MANUAL_EXTERN_ENVIRON,1,[Define if environ decl needed])
+@@ -460,21 +464,29 @@ sigaction_ok=no
+ if test "$ac_cv_func_sigaction" = "yes" ; then
+     # Make sure that the fields that we need in sigaction are defined
+     AC_CACHE_CHECK([for struct sigaction and sa_handler],
+-    pac_cv_struct_sigaction_with_sa_handler,[
+-    AC_TRY_COMPILE([#include <signal.h>],[
+-struct sigaction act; sigaddset( &act.sa_mask, SIGINT );
+-act.sa_handler = SIG_IGN;],
+-    pac_cv_struct_sigaction_with_sa_handler=yes,
+-    pac_cv_struct_sigaction_with_sa_handler=no)])
++                    pac_cv_struct_sigaction_with_sa_handler,[
++        AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++            #include <signal.h>
++            ]],[[
++            struct sigaction act; sigaddset( &act.sa_mask, SIGINT );
++            act.sa_handler = SIG_IGN;
++            ]])],
++            pac_cv_struct_sigaction_with_sa_handler=yes,
++            pac_cv_struct_sigaction_with_sa_handler=no)
++    ])
+     if test "$pac_cv_struct_sigaction_with_sa_handler" = "no" ; then
+         AC_CACHE_CHECK([for struct sigaction and sa_handler with _POSIX_SOURCE],
+-	pac_cv_struct_sigaction_with_sa_handler_needs_posix,[
+-        AC_TRY_COMPILE([#define _POSIX_SOURCE
+-#include <signal.h>],[
+-struct sigaction act; sigaddset( &act.sa_mask, SIGINT );
+-act.sa_handler = SIG_IGN;],
+-	pac_cv_struct_sigaction_with_sa_handler_needs_posix=yes,
+-	pac_cv_struct_sigaction_with_sa_handler_needs_posix=no)])
++                        pac_cv_struct_sigaction_with_sa_handler_needs_posix,[
++            AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++                #define _POSIX_SOURCE
++                #include <signal.h>
++                ]],[[
++                struct sigaction act; sigaddset( &act.sa_mask, SIGINT );
++                act.sa_handler = SIG_IGN;
++                ]])],
++                pac_cv_struct_sigaction_with_sa_handler_needs_posix=yes,
++                pac_cv_struct_sigaction_with_sa_handler_needs_posix=no)
++        ])
+         if test "$pac_cv_struct_sigaction_with_sa_handler_needs_posix" = "yes" ; then
+             sigaction_ok=yes
+ 	fi
+diff --git src/pm/remshell/subconfigure.m4 src/pm/remshell/subconfigure.m4
+index c4ed507cdef5..ecc9dccb4a7d 100644
+--- src/pm/remshell/subconfigure.m4
++++ src/pm/remshell/subconfigure.m4
+@@ -75,17 +75,23 @@ AC_CHECK_FUNCS([sigaction signal sigset])
+ sigaction_ok=no
+ if test "$ac_cv_func_sigaction" = "yes" ; then
+     AC_CACHE_CHECK([for struct sigaction],pac_cv_struct_sigaction,[
+-    AC_TRY_COMPILE([#include <signal.h>],[
+-struct sigaction act; sigaddset( &act.sa_mask, SIGINT );],
+-    pac_cv_struct_sigaction="yes",pac_cv_struct_sigaction="no")])
++        AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++            #include <signal.h>
++            ]],[[
++            struct sigaction act; sigaddset( &act.sa_mask, SIGINT );
++            ]])], pac_cv_struct_sigaction="yes",pac_cv_struct_sigaction="no")
++    ])
+     if test "$pac_cv_struct_sigaction" = "no" ; then
+-        AC_CACHE_CHECK([for struct sigaction with _POSIX_SOURCE],
+-	pac_cv_struct_sigaction_needs_posix,[
+-        AC_TRY_COMPILE([#define _POSIX_SOURCE
+-#include <signal.h>],[
+-struct sigaction act; sigaddset( &act.sa_mask, SIGINT );],
+-       pac_cv_struct_sigaction_needs_posix="yes",
+-       pac_cv_struct_sigaction_needs_posix="no")])
++        AC_CACHE_CHECK([for struct sigaction with _POSIX_SOURCE], pac_cv_struct_sigaction_needs_posix,[
++            AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++                #define _POSIX_SOURCE
++                #include <signal.h>
++                ]],[[
++                struct sigaction act; sigaddset( &act.sa_mask, SIGINT );
++                ]])],
++                pac_cv_struct_sigaction_needs_posix="yes",
++                pac_cv_struct_sigaction_needs_posix="no")
++        ])
+         if test "$pac_cv_struct_sigaction_needs_posix" = "yes" ; then
+             sigaction_ok=yes
+ 	fi
+@@ -117,12 +123,14 @@ AC_CHECK_FUNCS([ptrace])
+ # It isn't enough to find ptrace.  We also need the ptrace 
+ # parameters, which some systems, such as IRIX, do not define.
+ if test "$ac_cv_func_ptrace" = yes ; then
+-    AC_CACHE_CHECK([for ptrace named parameters],
+-[pac_cv_has_ptrace_parms],[
+-    AC_TRY_COMPILE([
+-#include <sys/types.h>
+-#include <sys/ptrace.h>],[int i = PTRACE_CONT;],[pac_cv_has_ptrace_parms=yes],
+-[pac_cv_has_ptrace_parms=no])])
++    AC_CACHE_CHECK([for ptrace named parameters], [pac_cv_has_ptrace_parms],[
++        AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++            #include <sys/types.h>
++            #include <sys/ptrace.h>
++            ]],[[
++            int i = PTRACE_CONT;
++            ]])],[pac_cv_has_ptrace_parms=yes], [pac_cv_has_ptrace_parms=no])
++    ])
+     if test "$pac_cv_has_ptrace_parms" = "yes" ; then
+         AC_DEFINE([HAVE_PTRACE_CONT],[],[Define if ptrace parameters available])
+     fi
+diff --git src/pm/util/subconfigure.m4 src/pm/util/subconfigure.m4
+index 2bf2d73c2c05..ef756235da4b 100644
+--- src/pm/util/subconfigure.m4
++++ src/pm/util/subconfigure.m4
+@@ -31,12 +31,14 @@ if test "$enable_onsig" = "yes" ; then
+     # It isn't enough to find ptrace.  We also need the ptrace 
+     # parameters, which some systems, such as IRIX, do not define.
+     if test "$ac_cv_func_ptrace" = yes ; then
+-        AC_CACHE_CHECK([for ptrace named parameters],
+-pac_cv_has_ptrace_parms,[
+-        AC_TRY_COMPILE([
+-#include <sys/types.h>
+-#include <sys/ptrace.h>],[int i = PTRACE_CONT;],pac_cv_has_ptrace_parms=yes,
+-pac_cv_has_ptrace_parms=no)])
++        AC_CACHE_CHECK([for ptrace named parameters], pac_cv_has_ptrace_parms,[
++            AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++                #include <sys/types.h>
++                #include <sys/ptrace.h>
++                ]],[[
++                int i = PTRACE_CONT;
++                ]])],pac_cv_has_ptrace_parms=yes, pac_cv_has_ptrace_parms=no)
++        ])
+         if test "$pac_cv_has_ptrace_parms" = "yes" ; then
+             AC_DEFINE(HAVE_PTRACE_CONT,,[Define if ptrace parameters available])
+         fi
+@@ -76,15 +78,16 @@ fi
+ 
+ # Look for alternatives.  Is environ in unistd.h?
+ AC_CACHE_CHECK([for environ in unistd.h],pac_cv_has_environ_in_unistd,[
+-AC_TRY_COMPILE([#include <unistd.h>],[char **ep = environ;],
+-pac_cv_has_environ_in_unistd=yes,pac_cv_has_environ_in_unistd=no)])
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <unistd.h>]],[[char **ep = environ;]])],
++        pac_cv_has_environ_in_unistd=yes,pac_cv_has_environ_in_unistd=no)
++])
+ 
+ if test "$pac_cv_has_environ_in_unistd" != "yes" ; then
+     # Can we declare it and use it?
+-    AC_CACHE_CHECK([for extern environ in runtime],
+-    pac_cv_has_extern_environ,[
+-    AC_TRY_LINK([extern char **environ;],[char **ep = environ;],
+-    pac_cv_has_extern_environ=yes,pac_cv_has_extern_environ=no)])
++    AC_CACHE_CHECK([for extern environ in runtime], pac_cv_has_extern_environ,[
++        AC_LINK_IFELSE([AC_LANG_PROGRAM([[extern char **environ;]],[[char **ep = environ;]])],
++            pac_cv_has_extern_environ=yes,pac_cv_has_extern_environ=no)
++    ])
+     if test "$pac_cv_has_extern_environ" = "yes" ; then
+ 	AC_DEFINE(NEEDS_ENVIRON_DECL,1,[Define if environ decl needed] )
+     fi
+@@ -107,11 +110,14 @@ dnl Check for a specific header
+ AC_CHECK_HEADERS(sys/types.h signal.h sys/ptrace.h sys/uio.h unistd.h)
+ if test "$ac_cv_header_sys_uio_h" = "yes" ; then
+     # Test for iovec defined
+-    AC_CACHE_CHECK([whether struct iovec is defined in sys/uio.h],
+-    pac_cv_has_struct_iovec,[
+-    AC_TRY_COMPILE([#include <sys/types.h>
+-#include <sys/uio.h>],[struct iovec v],pac_cv_has_struct_iovec=yes,
+-pac_cv_has_struct_iovec=no)])
++    AC_CACHE_CHECK([whether struct iovec is defined in sys/uio.h], pac_cv_has_struct_iovec,[
++        AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++            #include <sys/types.h>
++            #include <sys/uio.h>
++            ]],[[
++            struct iovec v;
++            ]])], pac_cv_has_struct_iovec=yes, pac_cv_has_struct_iovec=no)
++    ])
+     if test "$pac_cv_has_struct_iovec" = "yes" ; then
+         AC_DEFINE(HAVE_IOVEC_DEFINITION,1,[Define if struct iovec defined in sys/uio.h])
+     fi
+@@ -132,20 +138,28 @@ if test "$ac_cv_func_sigaction" = "yes" ; then
+     # Make sure that the fields that we need in sigaction are defined
+     AC_CACHE_CHECK([for struct sigaction and sa_handler],
+     pac_cv_struct_sigaction_with_sa_handler,[
+-    AC_TRY_COMPILE([#include <signal.h>],[
+-struct sigaction act; sigaddset( &act.sa_mask, SIGINT );
+-act.sa_handler = SIG_IGN;],
+-    pac_cv_struct_sigaction_with_sa_handler=yes,
+-    pac_cv_struct_sigaction_with_sa_handler=no)])
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++        #include <signal.h>
++        ]],[[
++        struct sigaction act; sigaddset( &act.sa_mask, SIGINT );
++        act.sa_handler = SIG_IGN;
++        ]])],
++        pac_cv_struct_sigaction_with_sa_handler=yes,
++        pac_cv_struct_sigaction_with_sa_handler=no)
++    ])
+     if test "$pac_cv_struct_sigaction_with_sa_handler" = "no" ; then
+         AC_CACHE_CHECK([for struct sigaction and sa_handler with _POSIX_SOURCE],
+-	pac_cv_struct_sigaction_with_sa_handler_needs_posix,[
+-        AC_TRY_COMPILE([#define _POSIX_SOURCE
+-#include <signal.h>],[
+-struct sigaction act; sigaddset( &act.sa_mask, SIGINT );
+-act.sa_handler = SIG_IGN;],
+-	pac_cv_struct_sigaction_with_sa_handler_needs_posix=yes,
+-	pac_cv_struct_sigaction_with_sa_handler_needs_posix=no)])
++                       pac_cv_struct_sigaction_with_sa_handler_needs_posix,[
++            AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++                #define _POSIX_SOURCE
++                #include <signal.h>
++                ]],[[
++                struct sigaction act; sigaddset( &act.sa_mask, SIGINT );
++                act.sa_handler = SIG_IGN;
++                ]])],
++                pac_cv_struct_sigaction_with_sa_handler_needs_posix=yes,
++                pac_cv_struct_sigaction_with_sa_handler_needs_posix=no)
++        ])
+         if test "$pac_cv_struct_sigaction_with_sa_handler_needs_posix" = "yes" ; then
+             sigaction_ok=yes
+ 	fi
+@@ -197,8 +211,9 @@ else
+     # (sys/select.h is POSIX)
+     if test "$ac_cv_header_sys_select_h" = yes ; then
+         AC_CACHE_CHECK([whether FD_ZERO works],pac_cv_fdzero_works,[
+-        AC_TRY_LINK([#include <sys/select.h>],[fd_set v; FD_ZERO(&v)],
+-        pac_cv_fdzero_works=yes,pac_cv_fdzero_works=no)])
++            AC_LINK_IFELSE([AC_LANG_PROGRAM([[#include <sys/select.h>]],[[fd_set v; FD_ZERO(&v)]])],
++                pac_cv_fdzero_works=yes,pac_cv_fdzero_works=no)
++        ])
+         if test "$pac_cv_fdzero_works" != yes ; then
+             AC_MSG_ERROR([Programs with FD_ZERO cannot be linked (check your system includes)])
+ 	fi
+@@ -214,16 +229,21 @@ AC_CHECK_FUNCS([sched_setaffinity sched_getaffinity bindprocessor thread_policy_
+ if test "$ac_cv_func_sched_setaffinity" = "yes" ; then
+     # Test for the cpu process set type
+     AC_CACHE_CHECK([whether cpu_set_t available],pac_cv_have_cpu_set_t,[
+-    AC_TRY_COMPILE( [
+-#include <sched.h>],[ cpu_set_t t; ],pac_cv_have_cpu_set_t=yes,pac_cv_have_cpu_set_t=no)])
++        AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <sched.h>]],[[cpu_set_t t;]])],
++            pac_cv_have_cpu_set_t=yes,pac_cv_have_cpu_set_t=no)
++    ])
+     if test "$pac_cv_have_cpu_set_t" = yes ; then
+         AC_DEFINE(HAVE_CPU_SET_T,1,[Define if cpu_set_t is defined in sched.h])
+ 
+-	AC_CACHE_CHECK([whether the CPU_SET and CPU_ZERO macros are defined],
+-	pac_cv_cpu_set_defined,[
+-        AC_TRY_LINK( [
+-#include <sched.h>],[ cpu_set_t t; CPU_ZERO(&t); CPU_SET(1,&t); ],
+-        pac_cv_cpu_set_defined=yes,pac_cv_cpu_set_defined=no)])
++	AC_CACHE_CHECK([whether the CPU_SET and CPU_ZERO macros are defined], pac_cv_cpu_set_defined,[
++            AC_LINK_IFELSE([AC_LANG_PROGRAM([[
++                #include <sched.h>
++                ]],[[
++                cpu_set_t t;
++                CPU_ZERO(&t);
++                CPU_SET(1,&t);
++                ]])], pac_cv_cpu_set_defined=yes,pac_cv_cpu_set_defined=no)
++        ])
+ 	if test "$pac_cv_cpu_set_defined" = "yes" ; then
+ 	    AC_DEFINE(HAVE_CPU_SET_MACROS,1,[Define if CPU_SET and CPU_ZERO defined])
+         fi
+@@ -232,13 +252,14 @@ if test "$ac_cv_func_sched_setaffinity" = "yes" ; then
+     fi
+ fi
+ if test "$ac_cv_func_thread_policy_set" = yes ; then
+-    AC_CACHE_CHECK([whether thread affinity macros defined],
+-    pac_cv_have_thread_affinity_policy,[
+-    AC_TRY_COMPILE([#include <mach/thread_policy.h>],[
+-#if !defined(THREAD_AFFINITY_POLICY) || !defined(THREAD_AFFINITY_TAG_NULL)
+-    :'thread macros not defined
+-],[pac_cv_have_thread_affinity_policy=yes],
+-  [pac_cv_have_thread_affinity_policy=no])])
++    AC_CACHE_CHECK([whether thread affinity macros defined], pac_cv_have_thread_affinity_policy,[
++        AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++            #include <mach/thread_policy.h>
++            ]],[[
++            #if !defined(THREAD_AFFINITY_POLICY) || !defined(THREAD_AFFINITY_TAG_NULL)
++                :'thread macros not defined
++            ]])],[pac_cv_have_thread_affinity_policy=yes], [pac_cv_have_thread_affinity_policy=no])
++    ])
+     if test "$pac_cv_have_thread_affinity_policy" = yes ; then
+         AC_DEFINE(HAVE_OSX_THREAD_AFFINITY,1,[Define is the OSX thread affinity policy macros defined])
+     fi
+@@ -248,17 +269,17 @@ AC_CHECK_HEADERS([string.h sys/time.h time.h stdlib.h sys/socket.h wait.h errno.
+ AC_CHECK_FUNCS(time)
+ # Check for socklen_t .  
+ # (note the conditional inclusion of sys/socket.h)
+-AC_CACHE_CHECK([whether socklen_t is defined (in sys/socket.h if present)],
+-pac_cv_have_socklen_t,[
+-AC_TRY_COMPILE([
+-#include <sys/types.h>
+-#ifdef HAVE_SYS_SOCKET_H
+-#include <sys/socket.h>
+-#endif
+-typedef struct { double a; int b; } socklen_t;],
+-[socklen_t a;a.a=1.0;],
+-[pac_cv_have_socklen_t=no],
+-[pac_cv_have_socklen_t=yes])])
++AC_CACHE_CHECK([whether socklen_t is defined (in sys/socket.h if present)], pac_cv_have_socklen_t,[
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++        #include <sys/types.h>
++        #ifdef HAVE_SYS_SOCKET_H
++        #include <sys/socket.h>
++        #endif
++        typedef struct { double a; int b; } socklen_t;
++        ]],[[
++        socklen_t a;a.a=1.0;
++        ]])],[pac_cv_have_socklen_t=no],[pac_cv_have_socklen_t=yes])
++])
+ if test "$pac_cv_have_socklen_t" = yes ; then
+     AC_DEFINE([HAVE_SOCKLEN_T],1,[Define if socklen_t is available])
+ fi
+diff --git src/pmi/pmi2/simple/subconfigure.m4 src/pmi/pmi2/simple/subconfigure.m4
+index bae0cd8ba7e4..abea266f0adf 100644
+--- src/pmi/pmi2/simple/subconfigure.m4
++++ src/pmi/pmi2/simple/subconfigure.m4
+@@ -58,24 +58,25 @@ fi
+ 
+ # Check for socklen_t .  If undefined, define it as int
+ # (note the conditional inclusion of sys/socket.h)
+-AC_CACHE_CHECK([whether socklen_t is defined (in sys/socket.h if present)],
+-pac_cv_have_socklen_t,[
+-AC_TRY_COMPILE([
+-#include <sys/types.h>
+-#ifdef HAVE_SYS_SOCKET_H
+-#include <sys/socket.h>
+-#endif
+-]
+-typedef struct { double a; int b; } socklen_t;,[socklen_t a;a.a=1.0;],pac_cv_have_socklen_t=no,pac_cv_have_socklen_t=yes)])
++AC_CACHE_CHECK([whether socklen_t is defined (in sys/socket.h if present)], pac_cv_have_socklen_t,[
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++        #include <sys/types.h>
++        #ifdef HAVE_SYS_SOCKET_H
++        #include <sys/socket.h>
++        #endif
++        typedef struct { double a; int b; } socklen_t;
++        ]],[[
++        socklen_t a;a.a=1.0;
++        ]])],pac_cv_have_socklen_t=no,pac_cv_have_socklen_t=yes)
++])
+ if test "$pac_cv_have_socklen_t" = no ; then
+     AC_DEFINE(socklen_t,int,[Define if socklen_t is not defined])
+ fi
+ # Check for h_addr or h_addr_list
+-AC_CACHE_CHECK([whether struct hostent contains h_addr_list],
+-pac_cv_have_haddr_list,[
+-AC_TRY_COMPILE([
+-#include <netdb.h>],[struct hostent hp;hp.h_addr_list[0]=0;],
+-pac_cv_have_haddr_list=yes,pac_cv_have_haddr_list=no)])
++AC_CACHE_CHECK([whether struct hostent contains h_addr_list], pac_cv_have_haddr_list,[
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <netdb.h>]],[[struct hostent hp;hp.h_addr_list[0]=0;]])],
++        pac_cv_have_haddr_list=yes,pac_cv_have_haddr_list=no)
++])
+ if test "$pac_cv_have_haddr_list" = "yes" ; then
+     AC_DEFINE(HAVE_H_ADDR_LIST,1,[Define if struct hostent contains h_addr_list])
+ fi
+diff --git src/pmi/pmi2/subconfigure.m4 src/pmi/pmi2/subconfigure.m4
+index cf961d79adf0..23889eb4b69d 100644
+--- src/pmi/pmi2/subconfigure.m4
++++ src/pmi/pmi2/subconfigure.m4
+@@ -61,24 +61,25 @@ fi
+ 
+ # Check for socklen_t .  If undefined, define it as int
+ # (note the conditional inclusion of sys/socket.h)
+-AC_CACHE_CHECK([whether socklen_t is defined (in sys/socket.h if present)],
+-pac_cv_have_socklen_t,[
+-AC_TRY_COMPILE([
+-#include <sys/types.h>
+-#ifdef HAVE_SYS_SOCKET_H
+-#include <sys/socket.h>
+-#endif
+-]
+-typedef struct { double a; int b; } socklen_t;,[socklen_t a;a.a=1.0;],pac_cv_have_socklen_t=no,pac_cv_have_socklen_t=yes)])
++AC_CACHE_CHECK([whether socklen_t is defined (in sys/socket.h if present)], pac_cv_have_socklen_t,[
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++        #include <sys/types.h>
++        #ifdef HAVE_SYS_SOCKET_H
++        #include <sys/socket.h>
++        #endif
++        typedef struct { double a; int b; } socklen_t;
++        ]],[[
++        socklen_t a;a.a=1.0;
++        ]])],pac_cv_have_socklen_t=no,pac_cv_have_socklen_t=yes)
++])
+ if test "$pac_cv_have_socklen_t" = no ; then
+     AC_DEFINE(socklen_t,int,[Define if socklen_t is not defined])
+ fi
+ # Check for h_addr or h_addr_list
+-AC_CACHE_CHECK([whether struct hostent contains h_addr_list],
+-pac_cv_have_haddr_list,[
+-AC_TRY_COMPILE([
+-#include <netdb.h>],[struct hostent hp;hp.h_addr_list[0]=0;],
+-pac_cv_have_haddr_list=yes,pac_cv_have_haddr_list=no)])
++AC_CACHE_CHECK([whether struct hostent contains h_addr_list], pac_cv_have_haddr_list,[
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <netdb.h>]],[[struct hostent hp;hp.h_addr_list[0]=0;]])],
++        pac_cv_have_haddr_list=yes,pac_cv_have_haddr_list=no)
++])
+ if test "$pac_cv_have_haddr_list" = "yes" ; then
+     AC_DEFINE(HAVE_H_ADDR_LIST,1,[Define if struct hostent contains h_addr_list])
+ fi
+diff --git src/pmi/simple/subconfigure.m4 src/pmi/simple/subconfigure.m4
+index 30351791a748..ea8e55011fc6 100644
+--- src/pmi/simple/subconfigure.m4
++++ src/pmi/simple/subconfigure.m4
+@@ -55,24 +55,26 @@ fi
+ 
+ # Check for socklen_t .  If undefined, define it as int
+ # (note the conditional inclusion of sys/socket.h)
+-AC_CACHE_CHECK([whether socklen_t is defined (in sys/socket.h if present)],
+-pac_cv_have_socklen_t,[
+-AC_TRY_COMPILE([
+-#include <sys/types.h>
+-#ifdef HAVE_SYS_SOCKET_H
+-#include <sys/socket.h>
+-#endif
+-]
+-typedef struct { double a; int b; } socklen_t;,[socklen_t a;a.a=1.0;],pac_cv_have_socklen_t=no,pac_cv_have_socklen_t=yes)])
++AC_CACHE_CHECK([whether socklen_t is defined (in sys/socket.h if present)], pac_cv_have_socklen_t,[
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++        #include <sys/types.h>
++        #ifdef HAVE_SYS_SOCKET_H
++        #include <sys/socket.h>
++        #endif
++
++        typedef struct { double a; int b; } socklen_t;
++        ]],[[
++        socklen_t a;a.a=1.0;
++        ]])],pac_cv_have_socklen_t=no,pac_cv_have_socklen_t=yes)
++])
+ if test "$pac_cv_have_socklen_t" = no ; then
+     AC_DEFINE(socklen_t,int,[Define if socklen_t is not defined])
+ fi
+ # Check for h_addr or h_addr_list
+-AC_CACHE_CHECK([whether struct hostent contains h_addr_list],
+-pac_cv_have_haddr_list,[
+-AC_TRY_COMPILE([
+-#include <netdb.h>],[struct hostent hp;hp.h_addr_list[0]=0;],
+-pac_cv_have_haddr_list=yes,pac_cv_have_haddr_list=no)])
++AC_CACHE_CHECK([whether struct hostent contains h_addr_list], pac_cv_have_haddr_list,[
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <netdb.h>]],[[struct hostent hp;hp.h_addr_list[0]=0;]])],
++        pac_cv_have_haddr_list=yes,pac_cv_have_haddr_list=no)
++])
+ if test "$pac_cv_have_haddr_list" = "yes" ; then
+     AC_DEFINE(HAVE_H_ADDR_LIST,1,[Define if struct hostent contains h_addr_list])
+ fi

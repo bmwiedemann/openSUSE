@@ -1,0 +1,24 @@
+commit 1e07f003ee3733b81f2de405a525214b12b597fc
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Tue Nov 21 13:20:55 2023 +0100
+
+    mpi: coll: missing return
+    
+    Change to void to avoid:
+    src/mpi/coll/shmem/mvp_shmem_coll.c:1802:1: error: no return statement in function returning non-void [-Werror=return-type]
+    
+    Signed-off-by: Nicolas Morey <nmorey@suse.com>
+
+diff --git src/mpi/coll/shmem/mvp_shmem_coll.c src/mpi/coll/shmem/mvp_shmem_coll.c
+index 48ab6d3b1e52..5c5d071081eb 100644
+--- src/mpi/coll/shmem/mvp_shmem_coll.c
++++ src/mpi/coll/shmem/mvp_shmem_coll.c
+@@ -1765,7 +1765,7 @@ fn_fail:
+ }
+ 
+ /* Change the values set inside the array by the one define by the user */
+-static inline int tuning_runtime_init()
++static inline void tuning_runtime_init()
+ {
+     int i;
+ 

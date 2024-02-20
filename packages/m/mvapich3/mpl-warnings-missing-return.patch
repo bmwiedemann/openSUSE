@@ -1,0 +1,20 @@
+commit 39096ab6d56d4c84eb5195ed59e5575b50212d99
+Author: Hui Zhou <hzhou321@anl.gov>
+Date:   Thu Aug 13 14:28:10 2020 -0500
+
+    mpl/warnings: missing return
+    
+    warning by pgi compiler
+
+diff --git src/mpl/src/sock/mpl_sockaddr.c src/mpl/src/sock/mpl_sockaddr.c
+index c0e991c68d85..d459684e4c6a 100644
+--- src/mpl/src/sock/mpl_sockaddr.c
++++ src/mpl/src/sock/mpl_sockaddr.c
+@@ -140,6 +140,7 @@ int MPL_get_sockaddr_direct(int type, MPL_sockaddr_t * p_addr)
+         return 0;
+     } else {
+         assert(0);
++        return -1;
+     }
+ }
+ 
