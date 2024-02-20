@@ -23,9 +23,11 @@ Version:        1.0.2
 Release:        0
 Summary:        Python Client for eAPI
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/arista-eosplus/pyeapi
 Source:         https://files.pythonhosted.org/packages/source/p/pyeapi/pyeapi-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#arista-eosplus/pyeapi#292
+Patch0:         no-more-imp.patch
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module netaddr}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -51,7 +53,7 @@ implementation for working with the EOS configuration and is extensible for
 developing custom implementations.
 
 %prep
-%setup -q -n pyeapi-%{version}
+%autosetup -p1 -n pyeapi-%{version}
 
 %build
 %pyproject_wheel

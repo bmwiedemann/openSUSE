@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 19 06:06:04 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup macro.
+- Add patch no-more-imp.patch:
+  * Use importlib, rather than imp.
+
+-------------------------------------------------------------------
 Mon Jan  1 20:15:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.2:

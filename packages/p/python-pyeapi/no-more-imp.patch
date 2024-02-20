@@ -1,0 +1,33 @@
+From d6fe3ef701e25ebb599bbfeec9d30649e37c9940 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Mon, 19 Feb 2024 16:50:47 +1100
+Subject: [PATCH] Switch to importlib for realoading
+
+Since 3.7, importlib has supported a reload method, and since 3.12 has
+removed the imp module entirely, we should switch to using importlib.
+---
+ test/unit/test_client.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/unit/test_client.py b/test/unit/test_client.py
+index 3472951..0136add 100644
+--- a/test/unit/test_client.py
++++ b/test/unit/test_client.py
+@@ -32,7 +32,7 @@
+ import sys
+ import os
+ import unittest
+-import imp
++import importlib
+ 
+ sys.path.append(os.path.join(os.path.dirname(__file__), '../lib'))
+ 
+@@ -227,7 +227,7 @@ class TestClient(unittest.TestCase):
+     def setUp(self):
+         if 'EAPI_CONF' in os.environ:
+             del os.environ['EAPI_CONF']
+-        imp.reload(pyeapi.client)
++        importlib.reload(pyeapi.client)
+ 
+     def test_load_config_for_connection_with_filename(self):
+         conf = get_fixture('eapi.conf')
