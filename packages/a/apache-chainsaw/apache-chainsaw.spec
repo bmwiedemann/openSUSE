@@ -74,8 +74,7 @@ Group:          Documentation/HTML
 %{summary}.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %pom_remove_plugin :maven-source-plugin
 %pom_remove_plugin :appassembler-maven-plugin
