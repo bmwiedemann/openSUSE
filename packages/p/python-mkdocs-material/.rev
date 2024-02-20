@@ -351,4 +351,14 @@ update to 9.1.12</comment>
     <comment></comment>
     <requestid>1146312</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>768e3fe99e4efd14dd4fedb524dc6231</srcmd5>
+    <version>9.5.10</version>
+    <time>1708460042</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1147533 from ojkastl_buildservice
+
+update to 9.5.10</comment>
+    <requestid>1147603</requestid>
+  </revision>
 </revisionlist>

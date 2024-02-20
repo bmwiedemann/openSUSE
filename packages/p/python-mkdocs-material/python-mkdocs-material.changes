@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 19 09:09:26 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.10:
+  * Added Bahasa Malaysia translations
+  * Fixed #6783
+    <https://github.com/squidfunk/mkdocs-material/issues/6783>:
+    Hide continue reading link for blog posts without separators
+  * Fixed #6779
+    <https://github.com/squidfunk/mkdocs-material/issues/6779>:
+    Incorrect positioning of integrated table of contents
+
+-------------------------------------------------------------------
 Sat Feb 10 07:08:02 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.5.9:
