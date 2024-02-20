@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 19 05:11:54 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros. 
+- Stop using greedy globs in %files.
+
+-------------------------------------------------------------------
 Tue Jun 28 20:12:42 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
 
 - PyCrypto 2.x is unmaintained, obsolete, and contains security vulnerabilities.

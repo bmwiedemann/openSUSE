@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyaes
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyaes
 Version:        1.6.1
 Release:        0
 Summary:        Pure-Python Implementation of the AES block-cipher
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/ricmoo/pyaes/
 Source:         https://files.pythonhosted.org/packages/source/p/pyaes/pyaes-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycryptodome}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pycryptodome
@@ -41,10 +42,10 @@ beyond standard Python libraries. See README.md for API reference and details.
 %setup -q -n pyaes-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,6 +57,7 @@ fi
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/pyaes
+%{python_sitelib}/pyaes-%{version}.dist-info
 
 %changelog
