@@ -16,27 +16,31 @@
 #
 
 
-%define rls_cndt rc0
+%global vers 4.5.0
+%global rls_cndt rc1
+%if "0%{?rls_cndt}" != "0"
+%global rls_char ~
+%endif
 %global tftpdir /srv/tftpboot
 %global srvdir %{_sharedstatedir}
-%global githash 5b0de8ea5397ca42584335517fd4959d7ffe3da5
+#%%global githash 5b0de8ea5397ca42584335517fd4959d7ffe3da5
 
 ExclusiveArch:  x86_64 aarch64
 
 Name:           warewulf4
-Version:        4.5.0~%{?rls_cndt}
+Version:        %{vers}%{?rls_char}%{?rls_cndt}
 Release:        0
 Summary:        A suite of tools for clustering
 License:        BSD-3-Clause
 Group:          Productivity/Clustering/Computing
 URL:            https://warewulf.org
-Source0:        https://github.com/hpcng/warewulf/archive/%{githash}.tar.gz#/warewulf4-v%{version}.tar.gz
-Source1:        vendor.tar.gz
+Source0:        https://github.com/warewulf/warewulf/releases/download/v%{vers}%{?rls_cndt}/warewulf-%{vers}%{rls_cndt}.tar.gz#/warewulf4-v%{version}.tar.gz
+#Source1:        vendor.tar.gz
 Source5:        warewulf4-rpmlintrc
 Source10:       config-ww4.sh
 Source20:       README.dnsmasq
-Patch12:        clean-warewulf-conf.patch
-Patch15:        dnsmasq-template-move.patch
+#Patch12:        clean-warewulf-conf.patch
+#Patch15:        dnsmasq-template-move.patch
 #Conflicts:      warewulf4-slurm < %version
 
 # no firewalld in sle12
@@ -107,7 +111,7 @@ Summary:        Configuration template for slurm
 Requires:       %{name} = %{version}
 Requires:       slurm
 BuildArch:      noarch
-Obsoletes:      warewulf4-slurm < 4.5.0
+Obsoletes:      warewulf4-slurm < 4.4.0
 Provides:       warewulf4-slurm = %version
 
 %description overlay-slurm
@@ -115,9 +119,9 @@ This package install the necessary configuration files in order to run a slurm
 cluster on the configured warewulf nodes.
 
 %prep
-%setup -q -n warewulf-%{githash}
+%setup -q -n warewulf-%{vers}%{rls_cndt}
 %autopatch -p1
-tar xzf %{S:1}
+# tar xzf %{S:1}
 
 %build
 export OFFLINE_BUILD=1
@@ -187,8 +191,8 @@ yq e '
   -i %{buildroot}%{_sysconfdir}/warewulf/warewulf.conf
 #sed -i -e 's@\(^\s*\)\(.*:.*\):@\1"\2":@' %%{buildroot}%%{_sysconfdir}/warewulf/warewulf.conf
 # fix dhcp for SUSE
-mv %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/etc/dhcp/dhcpd.conf.ww %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/etc/dhcpd.conf.ww
-rmdir %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/etc/dhcp
+mv %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/dhcp/dhcpd.conf.ww %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/dhcpd.conf.ww
+rmdir %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/dhcp
 
 # create systemuser
 echo "u warewulf -" > system-user-%{name}.conf
@@ -198,17 +202,20 @@ install -D -m 644 system-user-%{name}.conf %{buildroot}%{_sysusersdir}/system-us
 install -D -m 755 %{S:10} %{buildroot}%{_datadir}/warewulf/scripts/config-warewulf.sh
 
 # get the slurm package ready
-mkdir -p %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/etc/slurm
-mv %{buildroot}%{_sysconfdir}/warewulf/examples/slurm.conf.ww %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/etc/slurm
-mkdir -p %{buildroot}%{_localstatedir}/lib/warewulf/overlays/generic/etc/munge
-cat >  %{buildroot}%{_localstatedir}/lib/warewulf/overlays/generic/etc/munge/munge.key.ww <<EOF
+mkdir -p %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/slurm
+mv %{buildroot}%{_sysconfdir}/warewulf/examples/slurm.conf.ww %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/slurm
+mkdir -p %{buildroot}%{_localstatedir}/lib/warewulf/overlays/generic/rootfs/etc/munge
+cat >  %{buildroot}%{_localstatedir}/lib/warewulf/overlays/generic/rootfs/etc/munge/munge.key.ww <<EOF
 {{ Include "/etc/munge/munge.key" -}}
 EOF
-chmod 600 %{buildroot}%{_localstatedir}/lib/warewulf/overlays/generic/etc/munge/munge.key.ww
-mkdir -p %{buildroot}%{_localstatedir}/lib/warewulf/overlays/generic/etc/slurm
-cat >  %{buildroot}%{_localstatedir}/lib/warewulf/overlays/generic/etc/slurm/slurm.conf.ww <<EOF
+chmod 600 %{buildroot}%{_localstatedir}/lib/warewulf/overlays/generic/rootfs/etc/munge/munge.key.ww
+mkdir -p %{buildroot}%{_localstatedir}/lib/warewulf/overlays/generic/rootfs/etc/slurm
+cat >  %{buildroot}%{_localstatedir}/lib/warewulf/overlays/generic/rootfs/etc/slurm/slurm.conf.ww <<EOF
 {{ Include "/etc/slurm/slurm.conf" }}
 EOF
+# move the other example templates for client overlays to package documentation
+mkdir -p %{buildroot}/%{_defaultdocdir}/%{name}
+mv %{buildroot}/%{_sysconfdir}/warewulf/examples %{buildroot}%{_defaultdocdir}/%{name}/example-templates
 
 %pre -f %{name}.pre
 %service_add_pre warewulfd.service
@@ -230,12 +237,12 @@ EOF
 %license LICENSE.md
 %{_datadir}/bash-completion/completions/wwctl
 %attr(0755, root, warewulf) %dir %{_sysconfdir}/warewulf
-%attr(0755, root, warewulf) %dir %{_sysconfdir}/warewulf/examples
+%attr(0755, root, warewulf) %dir %{_defaultdocdir}/%{name}/example-templates
 %config(noreplace) %{_sysconfdir}/warewulf/nodes.conf
 %config(noreplace) %{_sysconfdir}/warewulf/warewulf.conf
 %config(noreplace) %{_sysconfdir}/warewulf/grub
 %config(noreplace) %{_sysconfdir}/warewulf/ipxe
-%{_sysconfdir}/warewulf/examples
+%{_defaultdocdir}/%{name}/example-templates
 %{_prefix}/lib/firewalld/services/warewulf.xml
 %exclude %{_datadir}/warewulf/overlays
 %{_bindir}/wwctl
@@ -263,18 +270,18 @@ EOF
 %{_localstatedir}/lib/warewulf/overlays
 %dir %{_localstatedir}/lib/warewulf
 %config(noreplace) %{_localstatedir}/lib/warewulf/overlays
-%exclude %{_localstatedir}/lib/warewulf/overlays/host/etc/slurm
-%exclude %{_localstatedir}/lib/warewulf/overlays/generic/etc/slurm
-%exclude %{_localstatedir}/lib/warewulf/overlays/generic/etc/munge
+%exclude %{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/slurm
+%exclude %{_localstatedir}/lib/warewulf/overlays/generic/rootfs/etc/slurm
+%exclude %{_localstatedir}/lib/warewulf/overlays/generic/rootfs/etc/munge
 
 %files overlay-slurm
-%dir %{_localstatedir}/lib/warewulf/overlays/host/etc/slurm
-%{_localstatedir}/lib/warewulf/overlays/host/etc/slurm/slurm.conf.ww
-%dir %{_localstatedir}/lib/warewulf/overlays/generic/etc/slurm
-%{_localstatedir}/lib/warewulf/overlays/generic/etc/slurm/slurm.conf.ww
-%dir %{_localstatedir}/lib/warewulf/overlays/generic/etc/munge
-%{_localstatedir}/lib/warewulf/overlays/generic/etc/munge/munge.key.ww
-%dir %attr(0700,munge,munge) %{_localstatedir}/lib/warewulf/overlays/generic/etc/munge
-%attr(0600,munge,munge) %config(noreplace) %{_localstatedir}/lib/warewulf/overlays/generic/etc/munge/munge.key.ww
+%dir %{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/slurm
+%{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/slurm/slurm.conf.ww
+%dir %{_localstatedir}/lib/warewulf/overlays/generic/rootfs/etc/slurm
+%{_localstatedir}/lib/warewulf/overlays/generic/rootfs/etc/slurm/slurm.conf.ww
+%dir %{_localstatedir}/lib/warewulf/overlays/generic/rootfs/etc/munge
+%{_localstatedir}/lib/warewulf/overlays/generic/rootfs/etc/munge/munge.key.ww
+%dir %attr(0700,munge,munge) %{_localstatedir}/lib/warewulf/overlays/generic/rootfs/etc/munge
+%attr(0600,munge,munge) %config(noreplace) %{_localstatedir}/lib/warewulf/overlays/generic/rootfs/etc/munge/munge.key.ww
 
 %changelog

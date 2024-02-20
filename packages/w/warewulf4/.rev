@@ -193,4 +193,22 @@
 - added vendor.tar.gz as git hash source doesn't have vendoring (forwarded request 1146236 from eeich)</comment>
     <requestid>1146281</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0cfc0d54ff88d8b80936ff3ec189cc86</srcmd5>
+    <version>4.5.0~rc1</version>
+    <time>1708460079</time>
+    <user>anag+factory</user>
+    <comment>- updated to 4.5.0rc1 from upstream with following change:
+  * all overlays reside now under a `rootfs` diretory e.g.
+    the host overlays reside now under 
+    /var/lib/warewulf/host/rootfs
+    This has the advantage that the `rootfs` can be under a version
+    control, without the effect that the meta files e.g. `.git` will
+    show up in the rendered overlays
+- removed patches:
+  * clean-warewulf-conf.patch
+  * dnsmasq-template-move.patch
+  * removed vendor.tar.gz (forwarded request 1147628 from mslacken)</comment>
+    <requestid>1147658</requestid>
+  </revision>
 </revisionlist>

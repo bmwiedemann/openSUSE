@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Feb 19 15:45:20 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- updated to 4.5.0rc1 from upstream with following change:
+  * all overlays reside now under a `rootfs` diretory e.g.
+    the host overlays reside now under 
+    /var/lib/warewulf/host/rootfs
+    This has the advantage that the `rootfs` can be under a version
+    control, without the effect that the meta files e.g. `.git` will
+    show up in the rendered overlays
+- removed patches:
+  * clean-warewulf-conf.patch
+  * dnsmasq-template-move.patch
+  * removed vendor.tar.gz
+
+
+-------------------------------------------------------------------
+Mon Feb 19 11:43:45 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Move example templates for client overlays to example-templates/
+  in the package documentation.
+
+-------------------------------------------------------------------
 Wed Feb  7 08:55:00 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - Rename: warewulf4-doc -> warewulf4-man.
