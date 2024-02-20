@@ -92,4 +92,12 @@
     <comment></comment>
     <requestid>1084665</requestid>
   </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>6b38087445b1aee18eec331c4d80b06e</srcmd5>
+    <version>2.1.1</version>
+    <time>1708460153</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148114</requestid>
+  </revision>
 </revisionlist>

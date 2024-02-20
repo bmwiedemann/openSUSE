@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-metadata-generator
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -88,9 +88,9 @@ build-jar-repository -s lib %{base_name} objectweb-asm/asm objectweb-asm/asm-com
 build-jar-repository -s lib hamcrest/core xbean/xbean-reflect
 %endif
 
-%patch1 -p1
+%patch -P 1 -p1
 
-%patch1000 -p1
+%patch -P 1000 -p1
 
 cp %{SOURCE1} .
 cp %{SOURCE2} .
@@ -135,11 +135,6 @@ rm -rf plexus-%{comp_name}/src/main/resources/META-INF/maven
 %pom_remove_dep :maven-model plexus-%{comp_name}
 %pom_remove_dep :maven-plugin-api plexus-%{comp_name}
 
-%pom_remove_parent plexus-%{comp_name}
-%pom_xpath_inject "pom:project" "
-  <groupId>org.codehaus.plexus</groupId>
-  <version>%{version}</version>
-" plexus-%{comp_name}
 %pom_xpath_set "pom:project/pom:artifactId" %{name} plexus-%{comp_name}
 
 %build
@@ -158,7 +153,7 @@ install -dm 0755 %{buildroot}%{_javadir}
 install -pm 0644 plexus-%{comp_name}/target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 plexus-%{comp_name}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} plexus-%{comp_name}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}

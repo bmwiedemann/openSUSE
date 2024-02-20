@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-containers
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,12 +63,6 @@ Group:          Development/Libraries/Java
 %package container-default
 Summary:        Default Container from %{name}
 Group:          Development/Libraries/Java
-Requires:       mvn(com.google.guava:guava)
-Requires:       mvn(org.apache.xbean:xbean-reflect)
-Requires:       mvn(org.codehaus.plexus:plexus-classworlds)
-Requires:       mvn(org.codehaus.plexus:plexus-utils)
-Requires:       mvn(org.ow2.asm:asm)
-Requires:       mvn(org.ow2.asm:asm-commons)
 
 %description container-default
 %{summary}.
@@ -128,9 +122,7 @@ mkdir -p plexus-component-annotations/src/test/java
 %build
 for i in plexus-component-annotations plexus-container-default; do
   pushd ${i}
-  	%pom_remove_parent .
-	%pom_xpath_inject "pom:project" "<groupId>org.codehaus.plexus</groupId><version>%{version}</version>" .
-    ant \
+    %{ant} \
 %if %{without tests}
       -Dtest.skip=true \
 %endif
@@ -151,7 +143,7 @@ ln -sf ../%{name}/plexus-component-annotations.jar %{buildroot}%{_javadir}/plexu
 # poms
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
 for i in plexus-component-annotations plexus-container-default; do
-  install -pm 0644 ${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
+  %{mvn_install_pom} ${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
 done
 %add_maven_depmap %{name}/plexus-component-annotations.pom %{name}/plexus-component-annotations.jar -f component-annotations
 %add_maven_depmap %{name}/plexus-container-default.pom %{name}/plexus-container-default.jar -f container-default -a org.codehaus.plexus:containers-component-api
