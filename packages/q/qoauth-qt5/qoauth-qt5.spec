@@ -62,11 +62,7 @@ in the style of Qt libraries.
 This package contains files for developing applications using QOAuth.
 
 %prep
-%setup -q -n qoauth-%{version}
-%patch0 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1 -n qoauth-%{version}
 
 %build
 %qmake5
