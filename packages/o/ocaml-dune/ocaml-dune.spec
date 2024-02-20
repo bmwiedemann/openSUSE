@@ -25,7 +25,7 @@
 %define     pkg ocaml-dune
 %global  _buildshell /bin/bash
 Name:           %pkg%nsuffix
-Version:        3.13.1
+Version:        3.14.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 License:        MIT

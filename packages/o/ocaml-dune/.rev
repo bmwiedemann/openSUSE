@@ -434,4 +434,12 @@ I will submit the packages one by one once this is accepted.</comment>
   see included CHANGES.md file for details</comment>
     <requestid>1144806</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>b39ce14562daed036e4e12b3c027b177</srcmd5>
+    <version>3.14.0</version>
+    <time>1708460033</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1147594</requestid>
+  </revision>
 </revisionlist>
