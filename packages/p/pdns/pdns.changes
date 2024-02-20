@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 12 14:17:20 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Update to 4.8.4:
+  * extend the systemd startup timeout during lmdb schema migrations
+  * ixfrdist: Fix the validation of ‘max-soa-refresh’
+For details, see
+https://doc.powerdns.com/authoritative/changelog/4.8.html#change-4.8.4
+
+-------------------------------------------------------------------
 Wed Oct 18 10:59:55 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.8.3:
