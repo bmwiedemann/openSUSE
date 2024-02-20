@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-urwid
-Version:        2.5.1
+Version:        2.5.3
 Release:        0
 Summary:        A full-featured console (xterm et al.) user interface library
 License:        LGPL-2.1-or-later
@@ -29,10 +29,12 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module typing_extensions}
+BuildRequires:  %{python_module wcwidth}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-curses
+Requires:       python-wcwidth
 %python_subpackages
 
 %description

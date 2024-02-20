@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 12 17:04:58 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.5.3:
+  - Fix render regression: khal Padding widh > size
+  - Update unicode table to the version 15.1.0
+- Update to 2.5.2:
+  - Fix Windows last line: use ICH * INSERT COLS
+  - Typing: annotate text_layout and extend Text/Edit
+  - Fix incorrect TextCanvas typing
+  - RAW UTF-8 terminal: SI/SO/IBMPC_ON/IBMPC_OFF skip
+  - Unicode: use "target encoding" while transcoding for output
+
+-------------------------------------------------------------------
 Fri Feb  2 05:55:07 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.5.1:

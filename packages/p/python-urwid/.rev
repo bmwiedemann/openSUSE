@@ -233,4 +233,12 @@ Should fix problem with non-downloadable source file.</comment>
   * Fix assertion failure when string contains SO but not SI</comment>
     <requestid>1143539</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>aee3c865ef28879edd658833716474eb</srcmd5>
+    <version>2.5.3</version>
+    <time>1708460063</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1147647</requestid>
+  </revision>
 </revisionlist>
