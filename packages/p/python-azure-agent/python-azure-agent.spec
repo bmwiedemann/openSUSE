@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-agent
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Patch7:         reset-dhcp-deprovision.patch
 Patch8:         paa_12_sp5_rdma_no_ext_driver.patch
 # PATCH-FIX-UPSTREAM gh#Azure/WALinuxAgent#2741
 Patch9:         remove-mock.patch
+Patch10:        agent-micro-is-sles.patch
 BuildRequires:  dos2unix
 
 BuildRequires:  distribution-release
@@ -146,6 +147,7 @@ setup
 %patch7
 %patch8
 %patch9 -p1
+%patch10
 
 %build
 %if 0%{?suse_version} && 0%{?suse_version} > 1315
@@ -310,15 +312,19 @@ ln -s %{_sysconfdir}/waagent.conf.micro %{_sysconfdir}/waagent.conf
 %endif
 
 %files config-default
+%ghost %{_sysconfdir}/waagent.conf
 %config(noreplace) %{_sysconfdir}/waagent.conf.default
 
 %files config-server
+%ghost %{_sysconfdir}/waagent.conf
 %config(noreplace) %{_sysconfdir}/waagent.conf.server
 
 %files config-hpc
+%ghost %{_sysconfdir}/waagent.conf
 %config(noreplace) %{_sysconfdir}/waagent.conf.hpc
 
 %files config-micro
+%ghost %{_sysconfdir}/waagent.conf
 %config(noreplace) %{_sysconfdir}/waagent.conf.micro
 
 %changelog

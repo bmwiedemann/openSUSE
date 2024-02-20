@@ -1,8 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 12 18:46:08 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Recognise SLE-Micro as a SLE based distro
+  + Add agent-micro-is-sles.patch
+
+-------------------------------------------------------------------
 Mon Nov 13 17:46:41 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
 
 
-- Create sub-packages for the config
+- Create sub-packages for the config (jsc#PED-7869)
   + Remove config manipulation from image building
   + Set up a config for SLE-Micro
   + Makes deafult upstream config available
