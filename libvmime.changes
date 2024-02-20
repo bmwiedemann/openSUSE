@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 31 16:19:00 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 0.9.2+git188 (c3c6242ed)
+  * Fix emission of bugs Envelope-From to sendmail:// transports.
+  * Add parsing feedback via parsingContext
+- Drop 0001-Avoid-generating-illegal-Envelope-From-with-sendmail.patch
+  (merged)
+
+-------------------------------------------------------------------
 Mon Dec 18 03:46:09 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-Avoid-generating-illegal-Envelope-From-with-sendmail.patch

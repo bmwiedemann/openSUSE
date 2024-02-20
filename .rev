@@ -235,4 +235,12 @@
     <comment>- Add 0001-Avoid-generating-illegal-Envelope-From-with-sendmail.patch</comment>
     <requestid>1133882</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>de3e7f815e25b40729574e9d9729d783</srcmd5>
+    <version>0.9.2+g188</version>
+    <time>1708460139</time>
+    <user>anag+factory</user>
+    <comment>- Update to snapshot 0.9.2+git188 (c3c6242ed)</comment>
+    <requestid>1147996</requestid>
+  </revision>
 </revisionlist>
