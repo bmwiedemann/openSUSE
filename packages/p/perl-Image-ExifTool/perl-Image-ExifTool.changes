@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb 17 11:51:45 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 12.77:
+  * Added new Olympus CameraType and LensType value
+  * Added a new Canon Irix LensType
+  * Added the ability to delete MacOS XAttrMDItemWhereFroms
+  * Decode a few new Canon DPP tags
+  * Improved handling of XML-unfriendly characters in JSON field
+    names (fixes issue where -X option could produce invalid XML
+    when reading JSON with the -struct option)
+  * Fixed decoding of ShutterCount for Canon G5X-ii CR3 files
+
+-------------------------------------------------------------------
 Thu Feb  1 07:59:18 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 12.76:

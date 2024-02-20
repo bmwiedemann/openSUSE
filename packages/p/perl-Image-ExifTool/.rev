@@ -795,4 +795,12 @@ See https://bugzilla.opensuse.org/show_bug.cgi?id=1195398
     <comment></comment>
     <requestid>1143199</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>be979e99ce8b3cab432601ff8970e375</srcmd5>
+    <version>12.77</version>
+    <time>1708459981</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147507</requestid>
+  </revision>
 </revisionlist>
