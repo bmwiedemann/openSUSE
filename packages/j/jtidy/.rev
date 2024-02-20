@@ -149,4 +149,12 @@
     <comment>new version + change of fork</comment>
     <requestid>1105110</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>eb11fa7edf2ebe6504f7a60b4f8df8df</srcmd5>
+    <version>1.0.4</version>
+    <time>1708460028</time>
+    <user>anag+factory</user>
+    <comment>Correct license tag + cleanup</comment>
+    <requestid>1147575</requestid>
+  </revision>
 </revisionlist>

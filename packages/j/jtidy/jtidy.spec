@@ -1,7 +1,7 @@
 #
 # spec file for package jtidy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,31 +16,24 @@
 #
 
 
-%define with()          %{expand:%%{?with_%{1}:1}%%{!?with_%{1}:0}}
-%define without()       %{expand:%%{?with_%{1}:0}%%{!?with_%{1}:1}}
-%define bcond_with()    %{expand:%%{?_with_%{1}:%%global with_%{1} 1}}
-%define bcond_without() %{expand:%%{!?_without_%{1}:%%global with_%{1} 1}}
-%define _without_maven 1
-%define section free
-%bcond_with             maven
 Name:           jtidy
 Version:        1.0.4
-Epoch:          1
 Release:        0
 Summary:        HTML syntax checker and pretty printer
-License:        BSD-3-Clause
+License:        HTMLTIDY
 Group:          Development/Libraries/Java
 URL:            https://github.com/jtidy/jtidy
 Source0:        https://github.com/jtidy/jtidy/archive/refs/tags/jtidy-1.0.4.tar.gz
-Source1:        jtidy-build.xml
+Source1:        %{name}-build.xml
+Source100:      %{name}-rpmlintrc
 BuildRequires:  ant >= 1.6
 BuildRequires:  ant-junit
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  xerces-j2
-BuildRequires:  xml-commons-apis
+BuildRequires:  xml-apis
 Requires:       xerces-j2
-Requires:       xml-commons-apis
+Requires:       xml-apis
 BuildArch:      noarch
 
 %description
@@ -77,7 +70,7 @@ cp -p %{SOURCE1} build.xml
 
 %build
 mkdir -p lib
-build-jar-repository -s lib xerces-j2 xml-commons-jaxp-1.3-apis
+build-jar-repository -s lib xerces-j2 xml-apis
 %{ant} \
     package javadoc
 
@@ -89,7 +82,7 @@ install -m 644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar -a net.sf.jtidy:%{name}
 
 # javadoc
