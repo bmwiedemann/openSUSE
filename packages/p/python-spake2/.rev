@@ -24,4 +24,14 @@
     <comment></comment>
     <requestid>1112262</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c9307874a9604c2be24f14fcaa34faa9</srcmd5>
+    <version>0.8</version>
+    <time>1708460090</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-python-312.patch:
+  * Support Python 3.12 changes.
+- Switch to pyproject and autosetup macros.</comment>
+    <requestid>1147681</requestid>
+  </revision>
 </revisionlist>

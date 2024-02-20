@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 20 01:20:49 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-312.patch:
+  * Support Python 3.12 changes.
+- Switch to pyproject and autosetup macros.
+
+-------------------------------------------------------------------
 Tue Sep 19 11:12:39 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Fix missing dep on hkdf
