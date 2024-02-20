@@ -1,7 +1,7 @@
 #
 # spec file for package libvmime
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           libvmime
-%define lname	libvmime-suse5
-Version:        0.9.2.175
+%define lname	libvmime-suse6
+Version:        0.9.2+g188
 Release:        0
 Summary:        Library for working with RFC 5322, MIME messages and IMAP/POP/SMTP
 License:        GPL-3.0-or-later
@@ -29,7 +29,6 @@ URL:            http://vmime.org/
 Source:         vmime-%version.tar.xz
 Patch1:         libvmime-nodatetime.diff
 Patch2:         libvmime-soname.diff
-Patch3:         0001-Avoid-generating-illegal-Envelope-From-with-sendmail.patch
 BuildRequires:  cmake >= 2.8.3
 BuildRequires:  gcc-c++
 %if 0%{?centos_version}
@@ -136,7 +135,7 @@ mkdir -p "$b/%_datadir"
 
 %files -n %lname
 %license COPYING
-%_libdir/libvmime-suse.so.5*
+%_libdir/libvmime-suse.so.6*
 
 %files devel
 %_includedir/vmime
