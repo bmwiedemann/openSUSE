@@ -48,4 +48,12 @@
     <comment>Fix build against upcoming geronimo-specs</comment>
     <requestid>694599</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>92b6800ebadbf2bfd6282c00b3ee47cb</srcmd5>
+    <version>2.1.1</version>
+    <time>1708460126</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1147975</requestid>
+  </revision>
 </revisionlist>
