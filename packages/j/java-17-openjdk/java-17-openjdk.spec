@@ -397,32 +397,32 @@ rm -rvf src/java.desktop/share/native/liblcms/cms*
 rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %endif
 
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch8 -p1
-%patch10 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 8 -p1
+%patch -P 10 -p1
+%patch -P 12 -p1
+%patch -P 13 -p1
+%patch -P 14 -p1
 
 %if %{with_system_pcsc}
-%patch15 -p1
+%patch -P 15 -p1
 %endif
 
-%patch16 -p1
+%patch -P 16 -p1
 
-%patch20 -p1
+%patch -P 20 -p1
 
-%patch21 -p1
+%patch -P 21 -p1
 
-%patch200 -p1
+%patch -P 200 -p1
 
-%patch300 -p1
-%patch301 -p1
-%patch302 -p1
-%patch303 -p1
-%patch304 -p1
+%patch -P 300 -p1
+%patch -P 301 -p1
+%patch -P 302 -p1
+%patch -P 303 -p1
+%patch -P 304 -p1
 
 # Extract systemtap tapsets
 

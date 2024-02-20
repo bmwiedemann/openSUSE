@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:41:01 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Feb  7 14:14:46 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Recommend mozilla-nss-sysinit in order to have available the
