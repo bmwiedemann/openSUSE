@@ -363,23 +363,23 @@ rm -rvf src/java.desktop/share/native/libsplashscreen/giflib
 rm -rvf src/java.desktop/share/native/liblcms/cms*
 rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch13 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 13 -p1
 
 %if %{with_system_pcsc}
-%patch15 -p1
+%patch -P 15 -p1
 %endif
 
-%patch20 -p1
+%patch -P 20 -p1
 
-%patch31 -p1
-%patch32 -p1
+%patch -P 31 -p1
+%patch -P 32 -p1
 
-%patch302 -p1
-%patch303 -p1
+%patch -P 302 -p1
+%patch -P 303 -p1
 
 cat %{SOURCE100} \
     | sed "s/@OPENJ9_SHA@/`expr substr '%{openj9_revision}' 1 7`/g" \

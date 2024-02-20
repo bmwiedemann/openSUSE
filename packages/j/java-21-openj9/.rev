@@ -7,4 +7,12 @@
     <comment>OpenJ9 with OpenJDK 21</comment>
     <requestid>1146224</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>204539dda2f808465d3b0ce9c6f97fa9</srcmd5>
+    <version>21.0.2.0</version>
+    <time>1708460162</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148210</requestid>
+  </revision>
 </revisionlist>
