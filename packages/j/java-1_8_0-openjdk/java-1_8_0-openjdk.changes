@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:42:42 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Feb  6 12:10:43 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version jdk8u402 (icedtea-3.30.0)

@@ -408,9 +408,9 @@ this package unless you really need to.
 %prep
 %setup -q -n icedtea-%{icedtea_version}
 
-%patch1001 -p1
+%patch -P 1001 -p1
 %ifarch s390
-%patch1002 -p1
+%patch -P 1002 -p1
 %endif
 
 # Setup nss.fips.cfg
