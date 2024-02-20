@@ -5,14 +5,11 @@ Subject: [PATCH] Always link to python libraries.
 
 Change-Id: I687191431adaff55927de353db8f81dfa30ba1b1
 ---
- sources/shiboken6/cmake/ShibokenHelpers.cmake | 18 +++---------------
- 1 file changed, 3 insertions(+), 15 deletions(-)
-
 diff --git a/sources/shiboken6/cmake/ShibokenHelpers.cmake b/sources/shiboken6/cmake/ShibokenHelpers.cmake
-index 87a6762..189d7ab 100644
+index 1a46e5b..6c10c07 100644
 --- a/sources/shiboken6/cmake/ShibokenHelpers.cmake
 +++ b/sources/shiboken6/cmake/ShibokenHelpers.cmake
-@@ -310,21 +310,9 @@ macro(shiboken_compute_python_libraries)
+@@ -420,13 +420,9 @@ macro(shiboken_compute_python_libraries)
          "SHIBOKEN_COMPUTE_LIBS" "shiboken_compute_python_libraries"
          "IS_CALLED_FROM_EXPORT" "" "" ${ARGN})
  
@@ -20,23 +17,12 @@ index 87a6762..189d7ab 100644
 -        set(SHIBOKEN_PYTHON_LIBRARIES "")
 -    endif()
 -
--    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
--        if(WIN32 AND NOT SHIBOKEN_PYTHON_LIBRARIES)
--            set(SHIBOKEN_PYTHON_LIBRARIES ${PYTHON_DEBUG_LIBRARIES})
--        endif()
--    endif()
--
--    if(CMAKE_BUILD_TYPE STREQUAL "Release")
--        if(WIN32 AND NOT SHIBOKEN_PYTHON_LIBRARIES)
--            set(SHIBOKEN_PYTHON_LIBRARIES ${PYTHON_LIBRARIES})
--        endif()
+-    if(WIN32 AND NOT SHIBOKEN_PYTHON_LIBRARIES)
+-        set(SHIBOKEN_PYTHON_LIBRARIES ${Python_LIBRARIES})
 -    endif()
 +    # Always link to python libraries.
-+    message(STATUS "Linking shiboken to ${PYTHON_LIBRARIES}")
-+    set(SHIBOKEN_PYTHON_LIBRARIES ${PYTHON_LIBRARIES})
++    message(STATUS "Linking shiboken to ${Python_LIBRARIES}")
++    set(SHIBOKEN_PYTHON_LIBRARIES ${Python_LIBRARIES})
  
      # If the resulting variable
      # contains a "debug;X;optimized;Y" list like described in shiboken_check_if_limited_api,
--- 
-2.34.1
-

@@ -43,7 +43,7 @@ ExclusiveArch:  donotbuild
 %endif
 
 Name:           %{mypython}-%{pyside_flavor}
-Version:        6.6.1
+Version:        6.6.2
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-2.0-only AND GPL-3.0-only WITH Qt-GPL-exception-1.0
@@ -160,6 +160,9 @@ Python bindings for the Qt cross-platform application and UI framework
 %prep
 %autosetup -p1 -n %{tar_name}-%{version}
 
+# Restore 6.6.1 RPATH value. rpmlint will complain otherwise
+sed -i 's#${base}/../shiboken6/##' sources/pyside6/CMakeLists.txt
+
 %build
 _libsuffix=$(echo %{_lib} | cut -b4-)
 
@@ -179,7 +182,7 @@ pushd sources/%{pyside_flavor}
   -DCMAKE_C_FLAGS:STRING="" \
   -DCMAKE_CXX_FLAGS:STRING="" \
   -DCMAKE_EXE_LINKER_FLAGS:STRING="" \
-  -DPYTHON_EXECUTABLE:STRING=%{__mypython} \
+  -DPython_EXECUTABLE:STRING=%{__mypython} \
   -DNUMPY_INCLUDE_DIR:STRING=%{mypython_sitearch}/numpy/core/include \
   -DCMAKE_BUILD_RPATH_USE_ORIGIN:BOOL=ON \
 %if "%{pyside_flavor}" == "shiboken6"
@@ -236,14 +239,15 @@ ctest_exclude_regex="smart_smart_pointer"
 %define xvfb_command xvfb-run -s "-screen 0 1600x1200x16 -ac +extension GLX +render -noreset" \\
 
 %define excluded_tests 1
-# Excluded tests (last update: 2023-10-17)
+# Excluded tests (last update: 2024-02-17)
 # QtWebEngineWidgets_pyside-474-qtwebengineview fails with 'ContextResult::kTransientFailure: Failed to send GpuControl.CreateCommandBuffer'
 # QtGui_qpen_test times out
 # QtMultimediaWidgets_qmultimediawidgets aborts
 # Qt3DExtras_qt3dextras_test fails on s390x (timeout) and randomly everywhere else (exception)
 # QtPositioning_positioning fails
 # QtWidgets_qwidget_test fails randomly
-ctest_exclude_regex="QtWebEngineWidgets_pyside-474-qtwebengineview|QtGui_qpen_test|QtMultimediaWidgets_qmultimediawidgets|Qt3DExtras_qt3dextras_test|QtPositioning_positioning|pyside6-deploy_test_pyside6_deploy|QtWidgets_qwidget_test"
+# pyside6-android-deploy_test_pyside6_android_deploy
+ctest_exclude_regex="QtWebEngineWidgets_pyside-474-qtwebengineview|QtGui_qpen_test|QtMultimediaWidgets_qmultimediawidgets|Qt3DExtras_qt3dextras_test|QtPositioning_positioning|pyside6-deploy_test_pyside6_deploy|QtWidgets_qwidget_test|pyside6-android-deploy_test_pyside6_android_deploy"
 
 # Random failures on aarch64: registry_existence_test times out and QtWebEngineCore_web_engine_custom_scheme asserts
 %ifarch aarch64

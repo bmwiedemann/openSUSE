@@ -208,4 +208,12 @@
 - Use primary_python flavor for Tumbleweed (which provides python3)</comment>
     <requestid>1142581</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>5aa25e1081fe5e13eb5adf3af05531c4</srcmd5>
+    <version>6.6.2</version>
+    <time>1708460146</time>
+    <user>anag+factory</user>
+    <comment>Update to 6.6.2 (forwarded request 1147368 from krop)</comment>
+    <requestid>1148083</requestid>
+  </revision>
 </revisionlist>

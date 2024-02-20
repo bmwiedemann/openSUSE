@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 17 17:52:19 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.2. Check the installed changes-6.6.2 file for the
+  full list of changes
+- Rebase 0001-Always-link-to-python-libraries.patch
+
+-------------------------------------------------------------------
 Fri Jan 26 12:07:41 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Enable SLE15 python module for a more modern python than 3.6
@@ -7,7 +14,7 @@ Fri Jan 26 12:07:41 UTC 2024 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Thu Dec  7 10:54:43 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
-- Update to 6.6.1. Check the installed changes-6.6.0 file for the
+- Update to 6.6.1. Check the installed changes-6.6.1 file for the
   full list of changes
 - Drop patch, merged upstream:
   * 0001-Fix-QtAsyncio-install-dir.patch
