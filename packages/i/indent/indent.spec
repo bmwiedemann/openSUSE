@@ -1,7 +1,7 @@
 #
 # spec file for package indent
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=94096#/%{nam
 # PATCH-FIX-SECURITY fix-out-of-buffer-read-CVE-2023-40305.patch fix-heap-buffer-overwrite-search_brace-CVE-2023-40305 bsc#1214243 CVE-2023-40305 antonio.teixeira@suse.com -- indent: heap-based buffer overflow in search_brace() in indent.c via a crafted file
 Patch0:         fix-out-of-buffer-read-CVE-2023-40305.patch
 Patch1:         fix-heap-buffer-overwrite-search_brace-CVE-2023-40305.patch
+# CVE-2024-0911 [bsc#1219210], heap-based buffer overflow in set_buf_break()
+Patch2:         indent-CVE-2024-0911.patch
 BuildRequires:  makeinfo
 BuildRequires:  texi2html
 

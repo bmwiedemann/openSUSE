@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 16 09:57:02 UTC 2024 - pgajdos@suse.com
+
+- security update
+- added patches
+  fix CVE-2024-0911 [bsc#1219210], heap-based buffer overflow in set_buf_break()
+  + indent-CVE-2024-0911.patch
+
+-------------------------------------------------------------------
 Mon Aug 21 15:53:01 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Fix memory safety issues, bsc#1214243, CVE-2023-40305:
