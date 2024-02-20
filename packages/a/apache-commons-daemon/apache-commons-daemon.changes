@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 11:03:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Feb  6 08:04:16 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Disable LTO to avoid undefined symbols on some platforms

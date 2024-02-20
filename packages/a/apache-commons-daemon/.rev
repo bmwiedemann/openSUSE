@@ -196,4 +196,12 @@
     <comment>Fix build on arm32 architectures</comment>
     <requestid>1144485</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>2c334f97657dfd48153471ed77976f83</srcmd5>
+    <version>1.3.4</version>
+    <time>1708460125</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147972</requestid>
+  </revision>
 </revisionlist>
