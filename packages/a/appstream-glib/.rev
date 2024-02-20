@@ -846,4 +846,16 @@ to have a hook to perform appstream-util install &lt;xml&gt; &lt;iconset&gt; and
   + Updated translations. (forwarded request 1039135 from dimstar)</comment>
     <requestid>1039362</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>87c7e0d7414b35471a491e33c1387426</srcmd5>
+    <version>0.8.2</version>
+    <time>1708459951</time>
+    <user>anag+factory</user>
+    <comment>- Add asglib(swcatalog) provides: allow other packages to declare
+  that they need swcatalog support.
+
+- Add patch for interoperability with newer AppStream spec (boo#1218427):
+  * 0001-Move-from-app-info-to-swcatalog-locations.patch</comment>
+    <requestid>1145491</requestid>
+  </revision>
 </revisionlist>

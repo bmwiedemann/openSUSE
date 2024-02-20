@@ -1,7 +1,7 @@
 #
 # spec file for package appstream-glib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2014 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,8 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://people.freedesktop.org/~hughsient/appstream-glib/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        openSUSE-appstream-process
-
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Move-from-app-info-to-swcatalog-locations.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gcab >= 0.6
 BuildRequires:  gobject-introspection-devel
@@ -48,10 +49,14 @@ BuildRequires:  pkgconfig(libgcab-1.0)
 BuildRequires:  pkgconfig(rpm)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(yaml-0.1)
+# Due to patch1 only swcatalog will be populated.
+# Older libs would not find any info anymore.
+Conflicts:      libappstream4 < 0.15.2
 Requires:       gcab
 # Required in order to be able to convert .svg icons
 Requires:       gdk-pixbuf-loader-rsvg
 Requires:       pngquant >= 2.8
+Provides:       asglib(swcatalog)
 
 %description
 This library provides GObjects and helper methods to read and write

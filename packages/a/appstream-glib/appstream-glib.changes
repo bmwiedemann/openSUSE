@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb  9 12:56:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add asglib(swcatalog) provides: allow other packages to declare
+  that they need swcatalog support.
+
+-------------------------------------------------------------------
+Thu Feb  1 14:17:39 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch for interoperability with newer AppStream spec (boo#1218427):
+  * 0001-Move-from-app-info-to-swcatalog-locations.patch
+
+-------------------------------------------------------------------
 Thu Nov 17 14:14:17 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - openSUSE-appstream-process: drop --enable-hidpi parameter:

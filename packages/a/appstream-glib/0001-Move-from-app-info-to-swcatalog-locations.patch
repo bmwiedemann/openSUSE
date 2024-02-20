@@ -1,0 +1,170 @@
+From 6a537402a2e29b00f1cc5a24032b3ed13873921d Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fvogt@suse.de>
+Date: Thu, 1 Feb 2024 15:05:14 +0100
+Subject: [PATCH] Move from app-info to swcatalog locations
+
+The AppStream specification changed the location. ximion/appstream since 1.0
+only accepts the new location. To avoid having to manage two locations, switch
+to the new one entirely.
+---
+ client/as-compose.c          |  4 ++--
+ client/as-util.c             |  4 ++--
+ data/appstream-compose.xml   |  2 +-
+ libappstream-glib/as-store.c | 18 +++++++++---------
+ libappstream-glib/as-utils.c |  6 +++---
+ 5 files changed, 17 insertions(+), 17 deletions(-)
+
+diff --git a/client/as-compose.c b/client/as-compose.c
+index 6ad2564..dec8984 100644
+--- a/client/as-compose.c
++++ b/client/as-compose.c
+@@ -366,9 +366,9 @@ main (int argc, char **argv)
+ 	if (prefix == NULL)
+ 		prefix = g_strdup ("/usr");
+ 	if (output_dir == NULL)
+-		output_dir = g_build_filename (prefix, "share/app-info/xmls", NULL);
++		output_dir = g_build_filename (prefix, "share/swcatalog/xml", NULL);
+ 	if (icons_dir == NULL)
+-		icons_dir = g_build_filename (prefix, "share/app-info/icons", origin, NULL);
++		icons_dir = g_build_filename (prefix, "share/swcatalog/icons", origin, NULL);
+ 	if (origin == NULL) {
+ 		g_print ("WARNING: Metadata origin not set, using 'example'\n");
+ 		origin = g_strdup ("example");
+diff --git a/client/as-util.c b/client/as-util.c
+index 87ec1e3..10c42cc 100644
+--- a/client/as-util.c
++++ b/client/as-util.c
+@@ -1699,7 +1699,7 @@ as_util_uninstall (AsUtilPrivate *priv, gchar **values, GError **error)
+ 	destdir = g_getenv ("DESTDIR");
+ 	for (i = 0; locations[i] != NULL; i++) {
+ 		g_autofree gchar *path_xml = NULL;
+-		path_xml = g_strdup_printf ("%s%s/app-info/xmls/%s.xml.gz",
++		path_xml = g_strdup_printf ("%s%s/swcatalog/xml/%s.xml.gz",
+ 					    destdir != NULL ? destdir : "",
+ 					    locations[i], values[0]);
+ 		if (g_file_test (path_xml, G_FILE_TEST_EXISTS)) {
+@@ -1713,7 +1713,7 @@ as_util_uninstall (AsUtilPrivate *priv, gchar **values, GError **error)
+ 	/* remove icons */
+ 	for (i = 0; locations[i] != NULL; i++) {
+ 		g_autofree gchar *path_icons = NULL;
+-		path_icons = g_strdup_printf ("%s%s/app-info/icons/%s",
++		path_icons = g_strdup_printf ("%s%s/swcatalog/icons/%s",
+ 					      destdir != NULL ? destdir : "",
+ 					      locations[i], values[0]);
+ 		if (g_file_test (path_icons, G_FILE_TEST_EXISTS)) {
+diff --git a/data/appstream-compose.xml b/data/appstream-compose.xml
+index 91ce906..ea81cf5 100644
+--- a/data/appstream-compose.xml
++++ b/data/appstream-compose.xml
+@@ -46,7 +46,7 @@
+       prefix (default /usr) and a set of application names.
+       It looks for appdata, metainfo, desktop and icon files with that
+       basename in $prefix/share/[appdata|metainfo|applications|icons] and generates
+-      appstream xml files and icons in (by default) $prefix/share/app-info.
++      appstream xml files and icons in (by default) $prefix/share/swcatalog.
+     </para>
+   </refsect1>
+ 
+diff --git a/libappstream-glib/as-store.c b/libappstream-glib/as-store.c
+index 65b557c..4fcf7ef 100644
+--- a/libappstream-glib/as-store.c
++++ b/libappstream-glib/as-store.c
+@@ -1733,11 +1733,11 @@ as_store_from_root (AsStore *store,
+ 	}
+ 
+ 	/* guess the icon path after we've read the origin and then look for
+-	 * ../icons/$origin if the topdir is 'xmls', falling back to ./icons */
++	 * ../icons/$origin if the topdir is 'xml', falling back to ./icons */
+ 	if (icon_prefix != NULL) {
+ 		g_autofree gchar *topdir = NULL;
+ 		topdir = g_path_get_basename (icon_prefix);
+-		if ((g_strcmp0 (topdir, "xmls") == 0 ||
++		if ((g_strcmp0 (topdir, "xml") == 0 ||
+ 		     g_strcmp0 (topdir, "yaml") == 0)
+ 		    && origin_app_icons != NULL) {
+ 			g_autofree gchar *dirname = NULL;
+@@ -3326,7 +3326,7 @@ as_store_search_app_info (AsStore *store,
+ 			  GError **error)
+ {
+ 	AsStorePrivate *priv = GET_PRIVATE (store);
+-	const gchar *supported_kinds[] = { "yaml", "xmls", NULL };
++	const gchar *supported_kinds[] = { "yaml", "xml", NULL };
+ 	guint i;
+ 
+ 	for (i = 0; supported_kinds[i] != NULL; i++) {
+@@ -3374,7 +3374,7 @@ as_store_search_per_system (AsStore *store,
+ 		}
+ 		if ((flags & AS_STORE_LOAD_FLAG_APP_INFO_SYSTEM) > 0) {
+ 			g_autofree gchar *dest = NULL;
+-			dest = g_build_filename (data_dirs[i], "app-info", NULL);
++			dest = g_build_filename (data_dirs[i], "swcatalog", NULL);
+ 			if (!as_store_search_app_info (store, flags, AS_APP_SCOPE_SYSTEM,
+ 						       dest, cancellable, error))
+ 				return FALSE;
+@@ -3406,11 +3406,11 @@ as_store_search_per_system (AsStore *store,
+ 	if ((flags & AS_STORE_LOAD_FLAG_APP_INFO_SYSTEM) > 0) {
+ 		g_autofree gchar *dest1 = NULL;
+ 		g_autofree gchar *dest2 = NULL;
+-		dest1 = g_build_filename (LOCALSTATEDIR, "lib", "app-info", NULL);
++		dest1 = g_build_filename (LOCALSTATEDIR, "lib", "swcatalog", NULL);
+ 		if (!as_store_search_app_info (store, flags, AS_APP_SCOPE_SYSTEM, dest1,
+ 					       cancellable, error))
+ 			return FALSE;
+-		dest2 = g_build_filename (LOCALSTATEDIR, "cache", "app-info", NULL);
++		dest2 = g_build_filename (LOCALSTATEDIR, "cache", "swcatalog", NULL);
+ 		if (!as_store_search_app_info (store, flags, AS_APP_SCOPE_SYSTEM, dest2,
+ 					       cancellable, error))
+ 			return FALSE;
+@@ -3419,11 +3419,11 @@ as_store_search_per_system (AsStore *store,
+ 		if (g_strcmp0 (LOCALSTATEDIR, "/var") != 0) {
+ 			g_autofree gchar *dest3 = NULL;
+ 			g_autofree gchar *dest4 = NULL;
+-			dest3 = g_build_filename ("/var", "lib", "app-info", NULL);
++			dest3 = g_build_filename ("/var", "lib", "swcatalog", NULL);
+ 			if (!as_store_search_app_info (store, flags, AS_APP_SCOPE_SYSTEM,
+ 						       dest3, cancellable, error))
+ 				return FALSE;
+-			dest4 = g_build_filename ("/var", "cache", "app-info", NULL);
++			dest4 = g_build_filename ("/var", "cache", "swcatalog", NULL);
+ 			if (!as_store_search_app_info (store, flags, AS_APP_SCOPE_SYSTEM,
+ 						       dest4, cancellable, error))
+ 				return FALSE;
+@@ -3448,7 +3448,7 @@ as_store_search_per_user (AsStore *store,
+ 	/* AppStream */
+ 	if ((flags & AS_STORE_LOAD_FLAG_APP_INFO_USER) > 0) {
+ 		g_autofree gchar *dest = NULL;
+-		dest = g_build_filename (g_get_user_data_dir (), "app-info", NULL);
++		dest = g_build_filename (g_get_user_data_dir (), "swcatalog", NULL);
+ 		if (!as_store_search_app_info (store, flags, AS_APP_SCOPE_USER,
+ 					       dest, cancellable, error))
+ 			return FALSE;
+diff --git a/libappstream-glib/as-utils.c b/libappstream-glib/as-utils.c
+index d9b0f56..b262f24 100644
+--- a/libappstream-glib/as-utils.c
++++ b/libappstream-glib/as-utils.c
+@@ -1050,7 +1050,7 @@ as_utils_install_icon (AsUtilsLocation location,
+ 	g_autofree gchar *data = NULL;
+ 	g_autofree gchar *dir = NULL;
+ 
+-	dir = g_strdup_printf ("%s%s/app-info/icons/%s",
++	dir = g_strdup_printf ("%s%s/swcatalog/icons/%s",
+ 			       destdir,
+ 			       as_utils_location_get_prefix (location),
+ 			       origin);
+@@ -1239,11 +1239,11 @@ as_utils_install_filename (AsUtilsLocation location,
+ 	case AS_FORMAT_KIND_APPSTREAM:
+ 		if (g_strstr_len (filename, -1, ".yml.gz") != NULL) {
+ 			path = g_build_filename (as_utils_location_get_prefix (location),
+-						 "app-info", "yaml", NULL);
++						 "swcatalog", "yaml", NULL);
+ 			ret = as_utils_install_xml (filename, origin, path, destdir, error);
+ 		} else {
+ 			path = g_build_filename (as_utils_location_get_prefix (location),
+-						 "app-info", "xmls", NULL);
++						 "swcatalog", "xml", NULL);
+ 			ret = as_utils_install_xml (filename, origin, path, destdir, error);
+ 		}
+ 		break;
+-- 
+2.43.0
+
