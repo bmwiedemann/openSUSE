@@ -2,6 +2,7 @@
 # spec file for package raft
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 %define raft_sover 3
 Name:           raft
-Version:        0.18.0
+Version:        0.18.1
 Release:        0
 Summary:        Fully asynchronous C implementation of the Raft consensus protocol
 License:        LGPL-3.0-only WITH LGPL-3.0-linking-exception
@@ -81,8 +82,7 @@ autoreconf -iv
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libraft%{raft_sover} -p /sbin/ldconfig
-%postun -n libraft%{raft_sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libraft%{raft_sover}
 
 %files devel
 %license LICENSE

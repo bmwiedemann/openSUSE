@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 19 18:35:10 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- raft 0.18.1:
+  * final release of this project, will be discontinued and
+    incorporated into dqlite
+  * developer visible changes and bug fixes
+
+-------------------------------------------------------------------
 Wed Oct 18 10:56:25 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - raft 0.18.0:
