@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 11:11:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Fri Apr 22 12:07:10 UTC 2022 - pgajdos@suse.com
 
 - do not require pytest-mock for build

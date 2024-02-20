@@ -38,8 +38,7 @@ the command line.
 Directories must be visited first before they can be jumped to.
 
 %prep
-%setup -q -n %{name}-release-v%{version}
-%patch0 -p1
+%autosetup -p1 -n %{name}-release-v%{version}
 
 # Fix shebangs.
 sed -i 's/env python$/python3/' bin/%{name}
