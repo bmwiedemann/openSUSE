@@ -61,4 +61,14 @@
 </comment>
     <requestid>1109763</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d30967c383e7fc2c3a3e966c675f4ba0</srcmd5>
+    <version>0.4.12</version>
+    <time>1708460034</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1147438 from bnavigator
+
+- Add scikit-sparse-py312.patch gh#scikit-sparse/scikit-sparse#105</comment>
+    <requestid>1147597</requestid>
+  </revision>
 </revisionlist>

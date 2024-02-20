@@ -1,0 +1,43 @@
+From 60e672ee846e081658e4d74525ab5584358fefdb Mon Sep 17 00:00:00 2001
+From: Christian Glusa <caglusa@sandia.gov>
+Date: Sun, 26 Nov 2023 17:55:43 -0700
+Subject: [PATCH] remove numpy build restrictions, add Python 3.12 build to
+ github action
+
+---
+ .github/workflows/ci_test.yml | 2 +-
+ pyproject.toml                | 7 +------
+ setup.py                      | 2 +-
+ 3 files changed, 3 insertions(+), 8 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 682d8bc..bf7703e 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -25,11 +25,6 @@ requires = [
+     "setuptools>=40.8.0",
+     "wheel",
+     "Cython>=0.22",
+-    'numpy==1.13.3; python_version=="3.6"',
+-    'numpy==1.14.5; python_version=="3.7"',
+-    'numpy==1.17.3; python_version=="3.8"',
+-    'numpy==1.19.3; python_version=="3.9"',
+-    'numpy==1.23.1; python_version=="3.10"',
+-    'numpy==1.23.5; python_version=="3.11"',
++    'numpy>=1.13.3; python_version>="3.6"',
+ ]
+ build-backend = "setuptools.build_meta"
+\ No newline at end of file
+diff --git a/setup.py b/setup.py
+index f7e7af1..e7ec38b 100644
+--- a/setup.py
++++ b/setup.py
+@@ -55,7 +55,7 @@
+ 
+ setup(
+     install_requires=["numpy>=1.13.3", "scipy>=0.19"],
+-    python_requires=">=3.6, <3.12",
++    python_requires=">=3.6",
+     packages=find_packages(),
+     package_data={
+         "": ["test_data/*.mtx.gz"],

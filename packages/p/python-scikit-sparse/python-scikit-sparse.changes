@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb 18 15:19:40 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add scikit-sparse-py312.patch gh#scikit-sparse/scikit-sparse#105
+
+-------------------------------------------------------------------
 Fri Sep  8 16:56:21 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Clean up the SPEC file.
