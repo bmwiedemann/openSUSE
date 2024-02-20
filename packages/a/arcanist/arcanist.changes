@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 11:19:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Tue Dec 13 18:15:08 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Correctly replace shebangs from php to php8 after the move away

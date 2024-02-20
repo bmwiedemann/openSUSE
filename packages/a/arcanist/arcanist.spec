@@ -49,9 +49,7 @@ things.
 For more information, visit http://www.phabricator.com/docs/arcanist/
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 rm -f scripts/breakout.py
 # Remove 'arc upgrade'
