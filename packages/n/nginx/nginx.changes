@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Feb 18 16:23:59 UTC 2024 - Илья Индиго <13ilya@gmail.com>
+
+- Updated to 1.25.4
+  * Changed nginx.keyring to Sergey Kandaurov’s PGP public key.
+  * https://nginx.org/en/CHANGES
+  * Fixed segmentation fault might occur in a worker process while
+    processing a specially crafted QUIC session (CVE-2024-24989, CVE-2024-24990).
+  * Fixed connections with pending AIO operations might be closed
+    prematurely during graceful shutdown of old worker processes.
+  * Fixed socket leak alerts no longer logged when fast shutdown was
+    requested after graceful shutdown of old worker processes.
+  * Fixed socket descriptor error, a socket leak, or a segmentation fault
+    in a worker process might occur if AIO was used in a subrequest.
+  * Fixed segmentation fault might occur in a worker process if SSL
+    proxying was used along with the "image_filter" directive and errors
+    with code 415 were redirected with the "error_page" directive.
+
+-------------------------------------------------------------------
 Thu Oct 26 13:49:33 UTC 2023 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 1.25.3

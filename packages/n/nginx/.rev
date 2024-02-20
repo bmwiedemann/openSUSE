@@ -1036,4 +1036,25 @@
   * Fixed: memory leak during reconfiguration when using the PCRE2 library.</comment>
     <requestid>1120596</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>64e3703ea62f81a76a257a601297ae0c</srcmd5>
+    <version>1.25.4</version>
+    <time>1708459949</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 1.25.4
+  * Changed nginx.keyring to Sergey Kandaurov’s PGP public key.
+  * https://nginx.org/en/CHANGES
+  * Fixed segmentation fault might occur in a worker process while
+    processing a specially crafted QUIC session (CVE-2024-24989, CVE-2024-24990).
+  * Fixed connections with pending AIO operations might be closed
+    prematurely during graceful shutdown of old worker processes.
+  * Fixed socket leak alerts no longer logged when fast shutdown was
+    requested after graceful shutdown of old worker processes.
+  * Fixed socket descriptor error, a socket leak, or a segmentation fault
+    in a worker process might occur if AIO was used in a subrequest.
+  * Fixed segmentation fault might occur in a worker process if SSL
+    proxying was used along with the &quot;image_filter&quot; directive and errors
+    with code 415 were redirected with the &quot;error_page&quot; directive.</comment>
+    <requestid>1147449</requestid>
+  </revision>
 </revisionlist>
