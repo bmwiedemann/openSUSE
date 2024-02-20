@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-jxpath
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,9 +58,9 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n %{short_name}-%{version}-src
-%patch0 -p1
-%patch1
-%patch2 -p1
+%patch -P 0 -p1
+%patch -P 1
+%patch -P 2 -p1
 
 %pom_remove_parent
 

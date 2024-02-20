@@ -62,4 +62,12 @@
     <comment>Sanitize dependencies, build and add OSGi manifest entries</comment>
     <requestid>680042</requestid>
   </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>fbfea5ced7092f7f9a4ade1f2b551c9b</srcmd5>
+    <version>1.3</version>
+    <time>1708460113</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147886</requestid>
+  </revision>
 </revisionlist>
