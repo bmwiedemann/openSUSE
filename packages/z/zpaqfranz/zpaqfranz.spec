@@ -1,7 +1,7 @@
 #
 # spec file for package zpaqfranz
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           zpaqfranz
-Version:        58.11
+Version:        59.1
 Release:        0
 Summary:        A journaling, incremental, deduplicating archiver
 License:        MIT AND SUSE-Public-Domain
