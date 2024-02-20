@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Feb 18 15:19:42 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 14.3.6 (14.3.5 does not exist):
+  * Fixed a potential panic in the tsh status command. #38304
+  * Fixed locking SSO user in the setup access step of the RDS auto
+    discover flow in the web UI. #38284
+  * Optionally permit the auth server to terminate client
+    connections from unsupported versions. #38186
+  * Removed access tokens from URL parameters, preventing them from
+    being leaked to intermediary systems that may log them in
+    plaintext. #38070
+  * Added option to validate hardware key serial numbers with
+    hardware key support. #38069
+  * Forced agents to terminate Auth connections if joining fails.
+    #38004
+  * Added a tsh sessions ls command to list active sessions. #37970
+  * Improved error handling when idle desktop connections are
+    terminated. #37956
+  * Updated Go to 1.21.7. #37848
+  * Discover flow now starts two instances of DatabaseServices when
+    setting up access to Amazon RDS. #37804
+  * Fixed incorrect resizing of CLI apps in Teleport Connect on
+    Windows. #37799
+  * Fixed handling of non-registered U2F keys. #37722
+  * Fixed memory leak in tbot caused by never closing reverse
+    tunnel address resolvers. #37719
+  * Fixed app redirection loop on browser's incognito mode and 3rd
+    party cookie block. #37692
+
+-------------------------------------------------------------------
 Sat Feb  3 08:30:56 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 14.3.4:
