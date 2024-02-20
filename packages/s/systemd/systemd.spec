@@ -18,7 +18,7 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define archive_version +suse.22.g67a5ac1043
+%define archive_version +suse.28.g53e2aaaf9d
 
 %define _testsuitedir %{_systemd_util_dir}/tests
 %define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
@@ -79,7 +79,7 @@ fi \
 
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        254.8
+Version:        254.9
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -147,9 +147,10 @@ Requires(post): coreutils
 Requires(post): findutils
 Requires(post): systemd-presets-branding
 Requires(post): pam-config >= 0.79-5
-# This Recommends because some symbols of libpcre2 are dlopen()ed by journalctl
+# These weak dependencies because some features are optional and enabled at
+# runtime with the presence of the relevant libs.
 Recommends:     libpcre2-8-0
-Recommends:     libbpf0
+Recommends:     libbpf1
 %endif
 Provides:       group(systemd-journal)
 Conflicts:      filesystem < 11.5
@@ -621,7 +622,7 @@ Requires:       make
 Requires:       mtools
 Requires:       netcat
 Requires:       python3-pexpect
-Requires:       qemu-kvm
+Requires:       qemu
 Requires:       quota
 Requires:       socat
 Requires:       squashfs

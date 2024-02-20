@@ -7026,4 +7026,28 @@ handle manual pages that consist only of a .so directive such as
     029272750f resolved: actually check authenticated flag of SOA transaction (bsc#1218297 CVE-2023-7008)</comment>
     <requestid>1144939</requestid>
   </revision>
+  <revision rev="415" vrev="1">
+    <srcmd5>f940d437cee440e5be3930fb1422059b</srcmd5>
+    <version>254.9</version>
+    <time>1708459954</time>
+    <user>anag+factory</user>
+    <comment>- Import commit 53e2aaaf9d69fb1c8f6ae2c9f8a99b02d70d318f
+  53e2aaaf9d vconsole-setup: don't fail if the only found vc is already used by plymouth (bsc#1218618)
+  22c4878430 vconsole-setup: port to main-func.h boilerplate
+
+- systemd-testsuite: depend on &quot;qemu&quot; instead of &quot;qemu-kvm&quot;, the latter is
+  obsolete. (bsc#1218684)
+
+- Import commit fbf9f32eb774ba6ec54e0d5d53b36baaf3e6b146
+  fbf9f32eb7 test/test-shutdown.py: optionally display the test I/Os in a dedicated log file
+  cd012774df test-69: send SIGTERM to ask systemd-nspawn to properly stop the container
+  d883b83244 man: Document ranges for distributions config files and local config files
+
+- Import commit fa94ab006d09686cef121aaa3baa10cf5ca95e19 (merge of v254.9)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/67a5ac1043417d900bf417a884372ae14a96ef69...fa94ab006d09686cef121aaa3baa10cf5ca95e19
+
+- Update the version of libbpf dlopened by systemd (weak dependency) (bsc#1219440)</comment>
+    <requestid>1147539</requestid>
+  </revision>
 </revisionlist>

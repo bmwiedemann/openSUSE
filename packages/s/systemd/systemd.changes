@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Feb 19 08:53:31 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Import commit 53e2aaaf9d69fb1c8f6ae2c9f8a99b02d70d318f
+
+  53e2aaaf9d vconsole-setup: don't fail if the only found vc is already used by plymouth (bsc#1218618)
+  22c4878430 vconsole-setup: port to main-func.h boilerplate
+
+-------------------------------------------------------------------
+Mon Feb 19 08:27:42 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- systemd-testsuite: depend on "qemu" instead of "qemu-kvm", the latter is
+  obsolete. (bsc#1218684)
+
+-------------------------------------------------------------------
+Wed Feb 14 08:16:32 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Import commit fbf9f32eb774ba6ec54e0d5d53b36baaf3e6b146
+
+  fbf9f32eb7 test/test-shutdown.py: optionally display the test I/Os in a dedicated log file
+  cd012774df test-69: send SIGTERM to ask systemd-nspawn to properly stop the container
+  d883b83244 man: Document ranges for distributions config files and local config files
+
+-------------------------------------------------------------------
+Wed Feb 14 07:40:08 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Import commit fa94ab006d09686cef121aaa3baa10cf5ca95e19 (merge of v254.9)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/67a5ac1043417d900bf417a884372ae14a96ef69...fa94ab006d09686cef121aaa3baa10cf5ca95e19
+
+-------------------------------------------------------------------
+Tue Feb 13 14:37:28 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Update the version of libbpf dlopened by systemd (weak dependency) (bsc#1219440)
+
+-------------------------------------------------------------------
 Tue Feb  6 14:48:27 UTC 2024 - Franck Bui <fbui@suse.com>
 
 - Drop python3-pefile dependency from the experimental package. MicroOs is fond
