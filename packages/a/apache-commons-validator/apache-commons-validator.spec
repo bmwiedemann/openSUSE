@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package apache-commons-validator
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -76,9 +76,7 @@ This package contains the javadoc documentation for the Jakarta Commons
 Validator Package.
 
 %prep
-%setup -q -n %{short_name}-%{version}-src
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n %{short_name}-%{version}-src
 
 sed -i 's/\r//' LICENSE.txt
 sed -i 's/\r//' RELEASE-NOTES.txt
