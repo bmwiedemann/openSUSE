@@ -131,4 +131,12 @@ As acknowledgement is not binding this license is more akin to Apache-1.1 (forwa
     <comment>Build with source and target levels 8</comment>
     <requestid>964271</requestid>
   </revision>
+  <revision rev="19" vrev="29">
+    <srcmd5>8ff9df7e9b6304247c97b780d3f2bc18</srcmd5>
+    <version>0.9.4</version>
+    <time>1708460160</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148297</requestid>
+  </revision>
 </revisionlist>
