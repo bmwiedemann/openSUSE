@@ -62,7 +62,7 @@ Pool 2.x Package.
 %setup -q -n %{short_name}-%{version}-src
 # remove all binary libs
 find . -name "*.jar" -exec rm -f {} \;
-%patch0
+%patch -P 0
 
 %pom_remove_parent .
 %pom_xpath_inject "pom:project" "<groupId>org.apache.commons</groupId>" .
