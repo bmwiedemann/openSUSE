@@ -70,7 +70,6 @@
              packagenames="*" 
              destdir="${reporting.outputDirectory}/apidocs" 
              access="protected" 
-             old="false" 
              verbose="false" 
              encoding="iso-8859-1" 
              version="true" 

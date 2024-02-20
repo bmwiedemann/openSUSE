@@ -119,4 +119,12 @@ http://lists.opensuse.org/opensuse-factory/2014-04/msg00309.html</comment>
     <comment>fix build with java &gt;= 20</comment>
     <requestid>1112753</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>7f895f5cb8a54380b4de35cf26d7f575</srcmd5>
+    <version>1.5.0</version>
+    <time>1708460116</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147892</requestid>
+  </revision>
 </revisionlist>

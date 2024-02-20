@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-cli
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ Source2:        apache-commons-cli-rpmlintrc
 Patch0:         CLI-253-workaround.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 Provides:       jakarta-%{short_name} = %{version}-%{release}
 Obsoletes:      jakarta-%{short_name} < %{version}-%{release}
 Provides:       apache-cli = %{version}-%{release}
@@ -54,12 +54,12 @@ This package contains the API documentation for %{name}.
 %prep
 %setup -q -n %{short_name}-%{version}-src
 cp %{SOURCE1} build.xml
-%patch0 -p1
+%patch -P 0 -p1
 
 %pom_remove_parent
 
 %build
-%ant package javadoc
+%{ant} package javadoc
 
 %install
 # jars
@@ -68,7 +68,7 @@ ln -sf %{short_name}.jar %{buildroot}%{_javadir}/%{name}.jar
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}.pom
 %add_maven_depmap %{short_name}.pom %{short_name}.jar -a "org.apache.commons:%{short_name}"
 
 # javadoc
