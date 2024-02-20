@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 17:11:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Switch from %patchN to %autosetup
+
+-------------------------------------------------------------------
 Fri Apr  8 12:48:50 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 8

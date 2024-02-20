@@ -40,8 +40,7 @@ Project 2003, 2007 and 2010 files. It has Gantt charts, PERT charts,
 network diagrams and Earned Value Costing.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 #Set the file encoding for source files
