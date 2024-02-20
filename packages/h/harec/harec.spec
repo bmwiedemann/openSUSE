@@ -18,14 +18,14 @@
 
 Name:           harec
 Release:        0
-Version:        1704220143.770566a
+Version:        0.24.0
 Summary:        Bootstrap compiler for hare
 Group:          Development/Tools/Building
 URL:            https://git.sr.ht/~sircmpwn/harec
-Source0:        %{name}-%{version}.tar.zst
+Source0:        https://git.sr.ht/~sircmpwn/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        README-suse-maint.md
 BuildRequires:  make
-BuildRequires:  qbe
+BuildRequires:  qbe = 1.2
 BuildRequires:  zstd
 License:        GPL-3.0-only
 
