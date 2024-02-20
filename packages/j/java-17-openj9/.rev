@@ -87,4 +87,12 @@
     <comment>OpenJDK 17.0.10 with OpenJ9 0.43.0</comment>
     <requestid>1146351</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>a0ccebdfba01fb0ce65d762244485d9f</srcmd5>
+    <version>17.0.10.0</version>
+    <time>1708460177</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148225</requestid>
+  </revision>
 </revisionlist>

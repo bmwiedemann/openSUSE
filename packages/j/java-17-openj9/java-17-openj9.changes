@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:41:46 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Feb 12 16:18:17 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to OpenJDK 17.0.10 with OpenJ9 0.43.0 virtual machine
