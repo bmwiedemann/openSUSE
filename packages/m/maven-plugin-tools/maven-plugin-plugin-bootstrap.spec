@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package maven-plugin-plugin-bootstrap
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,8 +60,8 @@ artifact metadata and a generic help goal.
 
 %prep
 %setup -q -n %{base_name}-%{version} -a1
-%patch0 -p1
-%patch20
+%patch -P 0 -p1
+%patch -P 20
 
 %pom_remove_plugin -r :maven-enforcer-plugin
 

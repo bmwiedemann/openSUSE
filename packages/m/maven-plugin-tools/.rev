@@ -80,4 +80,12 @@
     <comment>3.9.0</comment>
     <requestid>1113344</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>6a57de92b607251325b6eae648b5483a</srcmd5>
+    <version>3.9.0</version>
+    <time>1708460149</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148109</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package maven-plugin-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@ BuildRequires:  maven-reporting-api
 BuildRequires:  maven-resolver-api
 BuildRequires:  maven-wagon-provider-api
 BuildRequires:  modello >= 2.0.0
-BuildRequires:  objectweb-asm
+BuildRequires:  objectweb-asm >= 9.5
 BuildRequires:  plexus-ant-factory
 BuildRequires:  plexus-archiver
 BuildRequires:  plexus-bsh-factory
@@ -147,7 +147,7 @@ API documentation for %{name}.
 
 %prep
 %setup -q -a1
-%patch0 -p1
+%patch -P 0 -p1
 
 %pom_remove_plugin -r :maven-enforcer-plugin
 

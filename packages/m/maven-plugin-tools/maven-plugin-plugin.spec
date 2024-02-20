@@ -1,7 +1,7 @@
 #
 # spec file for package maven-plugin-plugin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,7 +70,7 @@ API documentation for %{name}.
 
 %prep
 %setup -q -n %{base_name}-%{version}
-%patch0 -p1
+%patch -P 0 -p1
 
 %pom_remove_plugin -r :maven-enforcer-plugin
 
