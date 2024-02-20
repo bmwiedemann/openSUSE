@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:46:42 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Remove the taglib-extras build dependency, it fails to build
+  with taglib 2 and will be removed.
+- Add patch to fix build with taglib 2:
+  * 0001-Update-for-tablib-2.0-compatibility.patch
+
+-------------------------------------------------------------------
 Sat Aug 26 11:04:28 UTC 2023 - Илья Индиго <ilya@ilya.cf>
 
 - Reverted to QtMultimedia.

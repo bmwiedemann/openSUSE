@@ -24,7 +24,8 @@ License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://github.com/CDrummond/cantata/
 Source0:        https://github.com/CDrummond/cantata/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-
+# PATCH-FIX-UPSTREAM -- taglib 2.0 support https://github.com/fenuks/cantata/commit/45bac9e
+Patch0:         0001-Update-for-tablib-2.0-compatibility.patch
 BuildRequires:  fdupes
 BuildRequires:  media-player-info
 BuildRequires:  pkgconfig
@@ -49,7 +50,6 @@ BuildRequires:  pkgconfig(libmtp)
 BuildRequires:  pkgconfig(libmusicbrainz5)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(taglib)
-BuildRequires:  pkgconfig(taglib-extras)
 BuildRequires:  pkgconfig(udisks2)
 BuildRequires:  pkgconfig(zlib)
 Requires:       media-player-info
@@ -91,7 +91,10 @@ interface) is now very different to that of QtMPC. For more detailed
 information, please refer to the main README.
 
 %prep
-%autosetup
+%setup -q
+%if %{pkg_vcmp pkgconfig(taglib) >= 2.0}
+%patch -P0 -p1
+%endif
 
 %build
 %cmake -DENABLE_REMOTE_DEVICES=OFF \
