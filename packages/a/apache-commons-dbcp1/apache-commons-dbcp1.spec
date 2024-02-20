@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package apache-commons-dbcp1
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,7 @@ BuildRequires:  jdbc-stdext >= 2.0
 BuildRequires:  junit >= 3.8.1
 BuildRequires:  xerces-j2
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 Provides:       %{short_name} = %{version}-%{release}
 Obsoletes:      %{short_name} < %{version}-%{release}
 Provides:       jakarta-%{short_name} = %{version}-%{release}
@@ -74,10 +74,8 @@ testing for valid connections, PreparedStatement pooling, and other
 features.
 
 %prep
-%setup -q -n %{short_name}-%{version}-src
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n %{short_name}-%{version}-src
+
 # remove all binary libs
 find . -name "*.jar" -exec rm -f {} \;
 
