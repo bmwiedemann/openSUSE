@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-chain
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,11 +42,8 @@ BuildRequires:  commons-digester >= 1.8
 BuildRequires:  commons-logging
 BuildRequires:  fdupes
 BuildRequires:  glassfish-servlet-api
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  portlet-1.0-api
-Requires:       mvn(commons-beanutils:commons-beanutils)
-Requires:       mvn(commons-digester:commons-digester) >= 1.8
-Requires:       mvn(commons-logging:commons-logging)
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
@@ -86,10 +83,10 @@ mkdir -p target/lib
 
 sed -i 's/\r$//g;' *.txt
 
-%patch0 -p1
-%patch1
-%patch3 -p1
-%patch4 -p1
+%patch -P 0 -p1
+%patch -P 1
+%patch -P 3 -p1
+%patch -P 4 -p1
 
 # Failed tests:   testDefaut(org.apache.commons.chain.config.ConfigParserTestCase):
 # Correct command count expected:<17> but was:<19>
@@ -101,8 +98,6 @@ rm -rf src/java/org/apache/commons/chain/web/faces
 # Force servlet 3.1 apis
 %pom_xpath_set "pom:dependency[pom:groupId = 'javax.servlet' ]/pom:artifactId" javax.servlet-api
 %pom_xpath_set "pom:dependency[pom:groupId = 'javax.servlet' ]/pom:version" 3.1.0
-
-%pom_remove_parent
 
 %build
 export CLASSPATH=$(build-classpath \
@@ -127,7 +122,7 @@ install -pm 644 dist/%{short_name}-%{version}.jar %{buildroot}%{_javadir}/%{name
 ln -s %{name}.jar %{buildroot}%{_javadir}/%{short_name}.jar
 # pom
 install -d -m 0755 %{buildroot}%{_mavenpomdir}
-install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar -a org.apache.commons:%{short_name}
 # javadoc
 install -d -m 0755 %{buildroot}%{_javadocdir}/%{name}
