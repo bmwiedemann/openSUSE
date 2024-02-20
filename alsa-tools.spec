@@ -299,9 +299,9 @@ Hammerfall DSP soundcard series.
 
 %prep
 %setup -q -a 4
-%patch1 -p1
+%patch -P 1 -p1
 cp %{SOURCE3} .
-%patch101 -p1
+%patch -P 101 -p1
 
 sed -i '1s@/usr/bin/env python$@/usr/bin/python3@' hwmixvolume/hwmixvolume
 
