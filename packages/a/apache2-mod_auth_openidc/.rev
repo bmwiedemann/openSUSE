@@ -337,4 +337,15 @@ Bugfixes
     <comment></comment>
     <requestid>1130032</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>bc2a6b8009655c5b22752165dac5d25f</srcmd5>
+    <version>2.4.15.3</version>
+    <time>1708459987</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.4.15.3:
+  * for the complete list of changes, please have a look at ChangeLog
+- Fix CVE-2024-24814, DoS when `OIDCSessionType client-cookie` is set
+  and a crafted Cookie header is supplied, bsc#1219911 (forwarded request 1147162 from dspinella)</comment>
+    <requestid>1147523</requestid>
+  </revision>
 </revisionlist>

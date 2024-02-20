@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 16 16:57:57 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 2.4.15.3:
+  * for the complete list of changes, please have a look at ChangeLog
+- Fix CVE-2024-24814, DoS when `OIDCSessionType client-cookie` is set
+  and a crafted Cookie header is supplied, bsc#1219911 
+
+-------------------------------------------------------------------
 Thu Nov 30 14:41:39 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
 - update to 2.4.14.4:
