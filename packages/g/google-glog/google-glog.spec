@@ -2,6 +2,7 @@
 # spec file for package google-glog
 #
 # Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +17,17 @@
 #
 
 
-%{!?make_build:%global make_build make %{?_smp_mflags}}
+%define sover 2
 Name:           google-glog
-Version:        0.5.0
+Version:        0.7.0
 Release:        0
 Summary:        Logging library for C++
 License:        BSD-3-Clause
 Group:          System/Libraries
 URL:            https://github.com/google/glog
 Source:         https://github.com/google/glog/archive/refs/tags/v%{version}.tar.gz
-BuildRequires:  cmake
-BuildRequires:  gcc-c++
+BuildRequires:  c++_compiler
+BuildRequires:  cmake >= 3.22
 BuildRequires:  pkgconfig
 
 %description
@@ -34,46 +35,48 @@ The glog library implements application-level logging.
 This library provides logging APIs based on C++-style
 streams and various helper macros.
 
-%package -n libglog0
+%package -n libglog%{sover}
 Summary:        Logging library for C++
 Group:          System/Libraries
 
-%description -n libglog0
+%description -n libglog%{sover}
 The glog library implements application-level logging.
 This library provides logging APIs based on C++-style
 streams and various helper macros.
 
 %package -n glog-devel
-Summary:        Header files for libglog0
+Summary:        Header files for libglog%{sover}
 Group:          Development/Libraries/C and C++
-Requires:       libglog0 = %{version}
+Requires:       libglog%{sover} = %{version}
 
 %description -n glog-devel
 The glog library implements application-level logging.
 This library provides logging APIs based on C++-style
 streams and various helper macros.
 
-This package provides development files for libglog0.
+This package provides development files for libglog%{sover}.
 
 %prep
-%setup -q -n glog-%{version}
+%autosetup -p1 -n glog-%{version}
 
 %build
-%cmake -DCMAKE_INSTALL_LIBDIR:PATH=%{_lib}
-%make_build
+%cmake \
+	-DWITH_PKGCONFIG:BOOL=ON \
+	-DWITH_GFLAGS:BOOL=OFF \
+	-DWITH_GTEST:BOOL=OFF \
+	%{nil}
+%cmake_build
 
 %install
 %cmake_install
-rm -rf %{buildroot}%{_libdir}/*.{a,la}
 rm -rf %{buildroot}%{_datadir}/doc/glog-*
 
-%post -n libglog0 -p /sbin/ldconfig
-%postun -n libglog0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libglog%{sover}
 
-%files -n libglog0
+%files -n libglog%{sover}
 %license COPYING
-%{_libdir}/libglog.so.0
-%{_libdir}/libglog.so.0.5.0
+%{_libdir}/libglog.so.%{sover}
+%{_libdir}/libglog.so.%{version}
 
 %files -n glog-devel
 %license COPYING
