@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 19 13:24:23 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- update to 1.38.1:
+  * fixes a regression in Updater, where a "no new chapter" for notification
+    was sent for every manga which didn't have updates
+
+-------------------------------------------------------------------
 Fri Feb 16 00:15:08 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - update to 1.38.0:
