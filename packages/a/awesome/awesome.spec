@@ -99,7 +99,7 @@ sed -i 's/nano/vi/g' %{name}rc.lua
 sed -i 's/^\(Type=\).*$/\1XSession/' %{name}.desktop
 sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' ./utils/awesome-client
 %if 0%{?suse_version} >= 1500
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 
 %build
