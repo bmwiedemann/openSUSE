@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb 16 16:36:55 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 2.5.0+git20240215.29f50e5:
+  * dbus-services: update systemd-homed (DeactivateAllHomes method, bsc#1219916)
+  * dbus-services: whitelist plasma6-workspace fontinst service (bsc#1217186)
+  * dbus-services: whitelist powerdevil6 (bsc#1217187)
+  * dbus-services: whitelist plasma6-disks (bsc#1217185)
+  * dbus-services: whitelist plasma6-desktop kcmclock (bsc#1217184)
+  * pam-modules: whitelist pam_kwallet6 (bsc#1217183)
+  * dbus-services: whitelist libksysguard6-plugins (bsc#1217182)
+  * zypper-plugins: adjust libzypp-plugin-appdata to new content (bsc#1219873)
+  * dbus-services: whitelist kinfocenter6 (bsc#1217179)
+  * dbus-services: whitelist kf6-kauth (bsc#1217178)
+  * SUIDPermissionsCheck: support new /usr/share/permissions/packages.d dir
+
+-------------------------------------------------------------------
 Thu Feb 08 08:44:12 UTC 2024 - filippo.bonazzi@suse.com
 
 - Update to version 2.5.0+git20240207.4a699fe:
