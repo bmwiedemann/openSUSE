@@ -348,21 +348,21 @@ rm -rvf jdk/src/share/native/sun/awt/giflib
 rm -rvf jdk/src/share/native/sun/java2d/cmm/lcms/cms*
 rm -rvf jdk/src/share/native/sun/java2d/cmm/lcms/lcms2*
 
-%patch201 -p1
-%patch202 -p1
-%patch203 -p1
+%patch -P 201 -p1
+%patch -P 202 -p1
+%patch -P 203 -p1
 
-%patch210
+%patch -P 210
 
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
 
-%patch32 -p1
+%patch -P 32 -p1
 
-%patch300 -p1
+%patch -P 300 -p1
 
 cat %{SOURCE100} \
     | sed "s/@OPENJ9_SHA@/`expr substr '%{openj9_revision}' 1 7`/g" \

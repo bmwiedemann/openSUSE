@@ -175,4 +175,12 @@
     <comment>OpenJDK 1.8.0.b402 with OpenJ9 0.43</comment>
     <requestid>1146348</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>b586e87b2de9a5dfa779b30186bcf83e</srcmd5>
+    <version>1.8.0.402</version>
+    <time>1708460186</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148231</requestid>
+  </revision>
 </revisionlist>
