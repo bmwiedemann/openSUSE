@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Feb 18 17:47:17 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.24.6:
+  * use listeners to collect include metrics
+  * docs: update cli reference link
+  * docs: unify no trailing dots in docstrings and help (#11301)
+  * Use listener for file metadata
+  * fix deadlock collecting large logs
+  * chore(watch): remove old `docker cp` implementation
+  * ci(deps): bump docker/cli to v25.0.3 (#11481)
+  * pass All option to backend api.Service when length statuses is
+    not equal to zero
+  * Add OTEL specs: build, depends_on, capabilities (gpu/tpu)
+  * build(deps): bump github.com/opencontainers/image-spec
+  * feat(tracing): add project hash attr
+  * chore(load): ensure context passed to load
+  * Include all networks in ContainerCreate call if API >= 1.44
+  * bump compose-go to v2.0.0-rc.4
+  * CI: docker engine version matrix
+  * build(deps): bump github.com/docker/cli
+  * Fix load .env from project directory when project file is set
+    by COMPOSE_FILE
+
+-------------------------------------------------------------------
 Thu Feb 01 06:26:07 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.24.5:
