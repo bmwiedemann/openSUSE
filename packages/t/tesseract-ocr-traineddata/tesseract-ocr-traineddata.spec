@@ -1,7 +1,7 @@
 #
 # spec file for package tesseract-ocr-traineddata
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tesseract-ocr-traineddata
-Version:        4.1.0+git.20191030.6572757
+Version:        4.1.0+git.20231024.dd24b9d
 Release:        0
 Summary:        Tesseract Traineddata for Various Languages
 License:        Apache-2.0
@@ -41,10 +41,10 @@ The %{name}-doc package contains the documentation for %{name}.
 %package        osd
 Summary:        Orientation & Script Detection Data for tesseract
 Requires:       tesseract-ocr >= %{version}
-BuildArch:      noarch
 Provides:       tesseract-ocr-traineddata-orientation_and_script_detection = %{version}
 Obsoletes:      tesseract-ocr-traineddata-orientation_and_script_detection < 4
 Obsoletes:      tesseract-traineddata-orientation_and_script_detection <= 3.02
+BuildArch:      noarch
 
 %description    osd
 Orientation & Script Detection data for the Tesseract Open Source OCR Engine.
@@ -52,10 +52,10 @@ Orientation & Script Detection data for the Tesseract Open Source OCR Engine.
 %package        equ
 Summary:        Orientation & Script Detection Data for tesseract
 Requires:       tesseract-ocr >= %{version}
-BuildArch:      noarch
 Provides:       tesseract-ocr-traineddata-math_equation = %{version}
 Obsoletes:      tesseract-ocr-traineddata-math_equation < 4
 Obsoletes:      tesseract-traineddata-math_equation <= 3.02
+BuildArch:      noarch
 
 %description   equ
 Math equation data for the Tesseract Open Source OCR Engine.
@@ -93,7 +93,7 @@ trained models for the Tesseract Open Source OCR Engine.\
 %define script_subpkg(s:n:) \
 %define scriptname %{-s:%{-s*}}%{!-s:%{error:Script name defined}} \
 %define filename %{-n:%{-n*}}%{!-n:%{error:Package name not defined}} \
-%define pkgname %(echo %filename | tr '[:upper:]' '[:lower:]') \
+%define pkgname %(echo %{filename} | tr '[:upper:]' '[:lower:]') \
 \
 %package       script-%{pkgname}\
 Summary:       %{scriptname} script data for %{name}\

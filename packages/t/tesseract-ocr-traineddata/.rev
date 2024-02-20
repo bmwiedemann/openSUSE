@@ -60,4 +60,14 @@
  packages still using this old requires</comment>
     <requestid>1063609</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b779c62214b7fc58df38242099781463</srcmd5>
+    <version>4.1.0+git.20231024.dd24b9d</version>
+    <time>1708460000</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.1.0+git.20231024.dd24b9d:
+  * Fix obsolete pointer to wiki
+- Update _service file</comment>
+    <requestid>1147564</requestid>
+  </revision>
 </revisionlist>
