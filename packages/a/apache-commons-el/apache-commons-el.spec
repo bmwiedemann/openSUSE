@@ -56,9 +56,9 @@ Group:          Development/Libraries/Java
 
 %prep
 %setup -q -n %{short_name}-%{version}-src
-%patch0 -p1 -b .license
-%patch1 -p1
-%patch2 -p1
+%patch -P 0 -p1 -b .license
+%patch -P 1 -p1
+%patch -P 2 -p1
 
 # remove all precompiled stuff
 find . -type f -name "*.jar" -exec rm -f {} \;
