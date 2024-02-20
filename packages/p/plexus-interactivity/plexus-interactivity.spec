@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-interactivity
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@ Patch1:         %{name}-dependencies.patch
 Patch2:         %{name}-jline2.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  jline >= 2
 BuildRequires:  plexus-component-api
 BuildRequires:  plexus-utils
@@ -60,8 +60,6 @@ This package provides %{summary}.
 %package api
 Summary:        API for %{name}
 Group:          Development/Libraries/Java
-Requires:       mvn(org.codehaus.plexus:plexus-component-api)
-Requires:       mvn(org.codehaus.plexus:plexus-utils)
 
 %description api
 API module for %{name}.
@@ -69,23 +67,17 @@ API module for %{name}.
 %package jline
 Summary:        jline module for %{name}
 Group:          Development/Libraries/Java
-Requires:       plexus-interactivity-api = %{version}
-Requires:       mvn(jline:jline)
+Requires:       %{name}-api = %{version}
 
 %description jline
 jline module for %{name}.
 
 %prep
 %setup -q -n %{name}-%{namedversion} -a100
-%patch1 -p1
-%patch2 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 
 cp %{SOURCE1} .
-
-for i in api jline; do
-  %pom_xpath_inject "pom:project" "<groupId>org.codehaus.plexus</groupId>" %{name}-${i}
-  %pom_remove_parent %{name}-${i}
-done
 
 %build
 mkdir -p lib
@@ -101,7 +93,7 @@ done
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/plexus
 for i in api jline; do
-  install -pm 0644 %{name}-${i}/pom.xml %{buildroot}%{_mavenpomdir}/plexus/interactivity-${i}.pom
+  %{mvn_install_pom} %{name}-${i}/pom.xml %{buildroot}%{_mavenpomdir}/plexus/interactivity-${i}.pom
   %add_maven_depmap plexus/interactivity-${i}.pom plexus/interactivity-${i}.jar -f ${i}
 done
 # javadoc
