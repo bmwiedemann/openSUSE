@@ -79,4 +79,25 @@
     <comment>use go1.19. bsc#1203599 (forwarded request 1082513 from deneb_alpha)</comment>
     <requestid>1082526</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>447a57faa69d4b0eb1e6a954cd3dc163</srcmd5>
+    <version>0.6.0</version>
+    <time>1708460138</time>
+    <user>anag+factory</user>
+    <comment>- Packaging improvements:
+  * Drop BuildRequires: golang-packaging. The original macros for
+    file movements into GOPATH are obsolete with Go modules.
+  * Drop autosetup -n arg only needed when archive and package
+    name differ
+  * Remove goprep macro which is no longer recommended
+  * Remove gobuild macro which is no longer recommended
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS=&quot;-buildmode=pie&quot; %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+  * Remove goinstall macro which is no longer recommended
+  * Drop defattr(-,root,root) no longer needed with recent rpm (forwarded request 1148283 from jfkw)</comment>
+    <requestid>1148285</requestid>
+  </revision>
 </revisionlist>

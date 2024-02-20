@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Feb 20 13:11:33 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Drop BuildRequires: golang-packaging. The original macros for
+    file movements into GOPATH are obsolete with Go modules.
+  * Drop autosetup -n arg only needed when archive and package
+    name differ
+  * Remove goprep macro which is no longer recommended
+  * Remove gobuild macro which is no longer recommended
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+  * Remove goinstall macro which is no longer recommended
+  * Drop defattr(-,root,root) no longer needed with recent rpm
+
+-------------------------------------------------------------------
+Tue Feb 20 08:11:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require go 1.22: match what the build declares to need
+  go: go.mod requires go >= 1.22 (running go 1.21.7)
+
+-------------------------------------------------------------------
+Mon Feb 19 09:00:50 UTC 2024 - witold.bedyk@suse.com
+
+- Add update_go_version.patch
+- Update to version 0.6.0:
+  * Add support for Go v1.22.0
+  * Update dependencies to support Generics
+  * fix: run wire with -mod=mod
+  * all: update record/replay files for new version of go
+
+-------------------------------------------------------------------
 Mon Apr 24 09:50:15 UTC 2023 - Marina Latini <marina.latini@suse.com>
 
 - Always require go >= 1.19 (bsc#1203599)
