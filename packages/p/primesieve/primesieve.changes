@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 19 15:05:00 UTC 2024 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primesieve-12.0
+- New -S and --stress-test[=MODE] command-line options.
+- New --timeout=SECS option for stress testing.
+- New -R && --RiemannR command line options.
+- New --RiemannR-inverse command line option.
+- Faster Riemann R function implementation.
+- Improve command-line option handling.
+
+-------------------------------------------------------------------
 Thu Jan 11 17:30:00 UTC 2024 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primesieve-11.2
