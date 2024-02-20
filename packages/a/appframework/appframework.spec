@@ -1,7 +1,7 @@
 #
 # spec file for package appframework
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Swing Application Framework
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/Java
-Url:            https://appframework.dev.java.net/
+URL:            https://appframework.dev.java.net/
 Source0:        https://appframework.dev.java.net/downloads/AppFramework-%{version}-src.tar.bz2
 Patch0:         %{name}-%{version}-no-local-storage.diff
 Patch1:         %{name}-%{version}-openjdk.diff
@@ -52,9 +52,9 @@ small set of Java classes that simplify building desktop applications.
 %setup -q -n AppFramework-%{version}
 # remove all binary libs
 find . -name "*.jar" -exec rm -f {} \;
-%patch0 -b .sav
-%patch1 -p1 -b .sav
-%patch2 -p1 -b .sav
+%patch -P 0 -b .sav
+%patch -P 1 -p1 -b .sav
+%patch -P 2 -p1 -b .sav
 
 %build
 ant -Dlibs.swing-layout.classpath=%{_javadir}/swing-layout.jar dist
