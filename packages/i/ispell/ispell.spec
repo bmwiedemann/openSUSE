@@ -1,7 +1,7 @@
 #
 # spec file for package ispell
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -124,19 +124,29 @@ one will be the default English dictionary. A short usage description
 is given in /usr/share/doc/packages/ispell/README. The sources for this
 dictionary are included in the source package of ispell.
 
+%package     -n ispell-sq
+Summary:        Squeeze or unsqueeze a sorted word list
+Group:          Productivity/Text/Spell
+Requires:       ispell
+Provides:       ispell:%{_bindir}/sq
+
+%description -n ispell-sq
+This packages includes the tools sq and unsq which can be used to
+squeeze or unsqueeze a sorted word list for better compression.
+
 %prep
 %setup
-%patch0  -p 0 -b .dif
-%patch1  -p 0 -b .config
-%patch2  -p 0 -b .suse
-%patch3  -p 0 -b .languages
-%patch4  -p 0 -b .types
-%patch5  -p 0 -b .terminal
-%patch6  -p 0 -b .sq
-%patch7  -p 0 -b .brkgcc
-%patch8  -p 0 -b .mkdir
-%patch9  -p 0 -b .strip
-%patch10 -p 0 -b .typo
+%patch -P0  -p 0 -b .dif
+%patch -P1  -p 0 -b .config
+%patch -P2  -p 0 -b .suse
+%patch -P3  -p 0 -b .languages
+%patch -P4  -p 0 -b .types
+%patch -P5  -p 0 -b .terminal
+%patch -P6  -p 0 -b .sq
+%patch -P7  -p 0 -b .brkgcc
+%patch -P8  -p 0 -b .mkdir
+%patch -P9  -p 0 -b .strip
+%patch -P10 -p 0 -b .typo
 
 %build
   PATH=$PATH:$PWD
@@ -204,7 +214,6 @@ if test -z "$YAST_IS_RUNNING" -a -x %{_prefix}/lib/ispell/update ; then
 fi
 
 %files
-%defattr(-, root, root)
 %doc suse/LIESMICH suse/README
 %dir %{_prefix}/lib/ispell
 %{_bindir}/buildhash
@@ -213,9 +222,7 @@ fi
 %{_bindir}/ijoin
 %{_bindir}/ispell
 %{_bindir}/munchlist
-%{_bindir}/sq
 %{_bindir}/tryaffix
-%{_bindir}/unsq
 %{_prefix}/lib/ispell/ispell-emacs-menu.el
 %dir %{_prefix}/lib/ispell/emacs
 %{_prefix}/lib/ispell/emacs/english.el
@@ -231,13 +238,10 @@ fi
 %doc %{_mandir}/man1/icombine.1.gz
 %doc %{_mandir}/man1/ijoin.1.gz
 %doc %{_mandir}/man1/munchlist.1.gz
-%doc %{_mandir}/man1/sq.1.gz
 %doc %{_mandir}/man1/tryaffix.1.gz
-%doc %{_mandir}/man1/unsq.1.gz
 %doc %{_mandir}/man5/ispell.5.gz
 
 %files -n ispell-american
-%defattr(-, root, root)
 %{_prefix}/lib/ispell/american.hash
 %{_prefix}/lib/ispell/americanmed.hash
 %{_prefix}/lib/ispell/americanxlg.hash
@@ -245,11 +249,16 @@ fi
 %{_prefix}/lib/ispell/american.aff
 
 %files -n ispell-british
-%defattr(-, root, root)
 %{_prefix}/lib/ispell/british.hash
 %{_prefix}/lib/ispell/britishmed.hash
 %{_prefix}/lib/ispell/britishxlg.hash
 %{_prefix}/lib/ispell/emacs/british.el
 %{_prefix}/lib/ispell/british.aff
+
+%files -n ispell-sq
+%{_bindir}/sq
+%{_bindir}/unsq
+%doc %{_mandir}/man1/sq.1.gz
+%doc %{_mandir}/man1/unsq.1.gz
 
 %changelog
