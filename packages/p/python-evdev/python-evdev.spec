@@ -1,7 +1,7 @@
 #
 # spec file for package python-evdev
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define modname evdev
 %{?sle15_python_module_pythons}
 Name:           python-evdev
-Version:        1.6.1
+Version:        1.7.0
 Release:        0
 Summary:        Python bindings to the Linux input handling subsystem
 License:        BSD-3-Clause
@@ -28,8 +28,10 @@ URL:            https://github.com/gvalkov/python-evdev
 # Source needs to be pulled form Github as the source distribution on PyPI lacks the test directory
 Source:         https://github.com/gvalkov/python-evdev/archive/refs/tags/v%{version}.tar.gz#/python-evdev-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 61.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %python_subpackages
@@ -49,17 +51,14 @@ subsystem.
 %autosetup -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}/%{$python_sitearch}
+%python_expand rm %{buildroot}/%{$python_sitearch}/%{modname}/*.c
 
 %check
-%if 0%{?sle_version} == 150300 && 0%{?is_opensuse}
-# Work around broken pytest macro on Leap 15.3
-PYTHONPATH=dummy
-%endif
 %pytest_arch tests -k 'not test_uinput'
 
 %files %{python_files}

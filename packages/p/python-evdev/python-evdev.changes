@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 19 18:59:44 UTC 2024 - Matthias Bach <marix@marix.org> - 1.7.0
+
+- Update to 1.7.0
+  * Add the uniq address to the string representation of InputDevice.
+  * Improved method for finding the device node corresponding to a
+    uinput device
+- Adjust package build to upstream's switch to pyproject.toml.
+- Drop obsolete Leap 15.3 compatiblity handling in spec file.
+
+-------------------------------------------------------------------
 Wed Jul 12 12:35:05 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

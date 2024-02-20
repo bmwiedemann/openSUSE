@@ -127,4 +127,17 @@
     <comment></comment>
     <requestid>1098387</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>196c924c314d8aaaa55acf788003edaa</srcmd5>
+    <version>1.7.0</version>
+    <time>1708460094</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.7.0
+  * Add the uniq address to the string representation of InputDevice.
+  * Improved method for finding the device node corresponding to a
+    uinput device
+- Adjust package build to upstream's switch to pyproject.toml.
+- Drop obsolete Leap 15.3 compatiblity handling in spec file.</comment>
+    <requestid>1147703</requestid>
+  </revision>
 </revisionlist>
