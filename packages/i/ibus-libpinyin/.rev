@@ -354,4 +354,13 @@
     <comment></comment>
     <requestid>1141188</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>110d48986615e89b9ac09967aa941438</srcmd5>
+    <version>1.15.7</version>
+    <time>1708460134</time>
+    <user>anag+factory</user>
+    <comment>- Update version to 1.15.7
+  * Fix bugs (forwarded request 1147941 from hillwood)</comment>
+    <requestid>1147942</requestid>
+  </revision>
 </revisionlist>

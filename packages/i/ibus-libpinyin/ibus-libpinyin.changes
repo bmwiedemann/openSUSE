@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 12:30:29 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.15.7
+  * Fix bugs
+
+-------------------------------------------------------------------
 Tue Jan 23 12:42:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fixes for %_ibus_libexecdir moving to %_libexecdir (bsc#1174075)
