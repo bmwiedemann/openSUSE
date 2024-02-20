@@ -1,7 +1,7 @@
 #
 # spec file for package xstream
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2007, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -114,7 +114,7 @@ Parent POM for %{name}.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P 0 -p1
 find . -name "*.class" -print -delete
 find . -name "*.jar" -print -delete
 
