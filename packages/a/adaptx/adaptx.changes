@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 09:58:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Feb 22 18:51:17 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build against the log4j12 packages, use the new reload4j

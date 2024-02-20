@@ -1,7 +1,7 @@
 #
 # spec file for package adaptx
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,8 +63,8 @@ for dir in `find . -type d -name CVS`; do rm -rf $dir; done
 for j in $(find . -name "*.jar"); do
 	mv $j $j.no
 done
-%patch0
-%patch1
+%patch -P 0
+%patch -P 1
 
 %build
 perl -p -i -e 's|classic|modern|' src/build.xml
