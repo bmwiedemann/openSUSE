@@ -20,7 +20,7 @@ Name:           budgie-control-center
 Version:        1.3.0+0
 Release:        0
 Summary:        Fork of GNOME Control Center for Budgie 10
-License:        GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-3.0-or-later 
 Group:          System/GUI/Other
 URL:            https://github.com/BuddiesOfBudgie/budgie-control-center
 Source0:        %{name}-%{version}.tar.xz
