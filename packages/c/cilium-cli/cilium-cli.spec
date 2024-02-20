@@ -19,14 +19,14 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           cilium-cli
-Version:        0.15.22
+Version:        0.15.23
 Release:        0
 Summary:        CLI to install, manage & troubleshoot Kubernetes clusters running Cilium
 License:        Apache-2.0
 URL:            https://github.com/cilium/cilium-cli
 Source:         cilium-cli-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go1.21 >= 1.21.6
+BuildRequires:  go1.22
 
 %description
 CLI to install, manage and troubleshoot Kubernetes clusters running Cilium
