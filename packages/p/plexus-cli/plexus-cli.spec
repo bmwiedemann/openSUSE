@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-cli
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,14 +32,11 @@ Patch1:         0002-No-unchecked-operations.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-cli
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-containers-container-default
 BuildRequires:  plexus-utils
 BuildRequires:  xz
-Requires:       mvn(commons-cli:commons-cli)
-Requires:       mvn(org.codehaus.plexus:plexus-container-default)
-Requires:       mvn(org.codehaus.plexus:plexus-utils)
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
@@ -62,8 +59,8 @@ Javadoc for %{name}.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 cp -p %{SOURCE1} .
 cp -p %{SOURCE100} build.xml
 
@@ -88,7 +85,7 @@ install -dm 0755 %{buildroot}%{_javadir}/plexus
 install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/plexus/cli.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/plexus
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/plexus/cli.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/plexus/cli.pom
 %add_maven_depmap plexus/cli.pom plexus/cli.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}

@@ -40,4 +40,12 @@
     <comment>Do not use deprecated APIs</comment>
     <requestid>978179</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>94fd53e65a13d590e7b0fdcd226d88b7</srcmd5>
+    <version>1.6</version>
+    <time>1708460152</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148112</requestid>
+  </revision>
 </revisionlist>
