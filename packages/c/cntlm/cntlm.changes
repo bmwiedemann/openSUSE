@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 19 15:13:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Provide user(cntlm): the user is created by the pre script.
+  Advertise this capability of the package.
+
+-------------------------------------------------------------------
 Fri Aug 27 08:31:55 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s). Modified:

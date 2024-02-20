@@ -1,7 +1,7 @@
 #
 # spec file for package cntlm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2007 Scorpio IT, Deidesheim, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -42,6 +42,7 @@ Patch1:         cntlm-0.92.3-HTTP-1.1-persistent-connections-with-HTTP-1.0-clien
 Requires(pre):  grep
 Requires(pre):  pwdutils
 Requires(pre):  group(nogroup)
+Provides:       user(%{name})
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?suse_version} < 1230
 Requires(pre):  %fillup_prereq
@@ -102,7 +103,7 @@ fi
 %service_del_preun %{name}.service
 %endif
 #if [ "$1" -eq 0 ]; then
-#  %{_sbindir}/userdel %{name} 
+#  %{_sbindir}/userdel %{name}
 #fi
 
 %post
