@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 20 04:31:01 UTC 2024 - william.brown@suse.com
+
+- Add ipa-sync service
+- Update to version 1.1.0~rc16~git2.6fb4fac:
+  * List of supported features (#2499)
+
+-------------------------------------------------------------------
 Wed Feb 07 05:35:09 UTC 2024 - william.brown@suse.com
 
 - Update to version 1.1.0~rc16~git1.a917291:
