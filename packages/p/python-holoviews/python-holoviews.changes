@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb 18 15:34:16 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.18.3
+  * Fix BoundsX and BoundsY regression (#6099)
+  * Fix rasterize regression (#6102)
+  * Fix link selection for empty Layout (#6110)
+  * Don't pin notebook in conda recipe for pyviz channel (#6108)
+
+-------------------------------------------------------------------
 Tue Feb  6 11:11:06 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 1.18.2:

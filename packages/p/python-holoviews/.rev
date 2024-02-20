@@ -377,4 +377,18 @@
 </comment>
     <requestid>1146086</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>e525c27de48e0666c99940d149617fbd</srcmd5>
+    <version>1.18.3</version>
+    <time>1708460036</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1147462 from bnavigator
+
+- Update to 1.18.3
+    * Fix BoundsX and BoundsY regression (#6099)
+    * Fix rasterize regression (#6102)
+    * Fix link selection for empty Layout (#6110)
+    * Don't pin notebook in conda recipe for pyviz channel (#6108)</comment>
+    <requestid>1147598</requestid>
+  </revision>
 </revisionlist>

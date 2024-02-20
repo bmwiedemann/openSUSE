@@ -18,7 +18,7 @@
 
 %bcond_without  test
 Name:           python-holoviews
-Version:        1.18.2
+Version:        1.18.3
 Release:        0
 Summary:        Composable, declarative visualizations for Python
 License:        BSD-3-Clause
@@ -114,6 +114,7 @@ rendered automatically by one of the supported plotting libraries
 
 %prep
 %autosetup -p1 -n holoviews-%{version}
+sed -i 's/, "--color=yes"//' pyproject.toml
 
 %build
 %pyproject_wheel
@@ -132,12 +133,8 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/ho
 
 %if %{with test}
 %check
-#different size in MPL >= 3.3
-donttest="(MPLRendererTest and test_get_size)"
-# Flaky: Different matplotlib color cycles?
-donttest+=" or StatisticalCompositorTest"
-# gh#holoviz/holoviews#5517
-donttest+=" or test_py2js_funcformatter"
+# Flaky
+donttest="test_cell_opts_plot_float_division or test_cell_opts_style"
 # These fail on 32-bit -- gh#holoviz/holoviews#4778
 if [[ $(getconf LONG_BIT) -eq 32 ]]; then
     donttest+=" or (DatashaderAggregateTests and test_rasterize_regrid_and_spikes_overlay)"
