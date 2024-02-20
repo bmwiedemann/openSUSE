@@ -166,4 +166,14 @@
   * Fix an issue in look up of SRV records (via xmppsrv v0.2.6)</comment>
     <requestid>1140242</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fb849f86d402c2b84c4f66bdc95211d0</srcmd5>
+    <version>0.8.3</version>
+    <time>1708459986</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.8.3:
+  * Use a human readable file name for private Ox keys.
+  * Fix specifying a message via command line flag -m.</comment>
+    <requestid>1147512</requestid>
+  </revision>
 </revisionlist>

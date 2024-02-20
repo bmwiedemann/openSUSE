@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 19 07:38:34 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.3:
+  * Use a human readable file name for private Ox keys.
+  * Fix specifying a message via command line flag -m.
+
+-------------------------------------------------------------------
 Sun Jan 21 07:36:03 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.8.2:
