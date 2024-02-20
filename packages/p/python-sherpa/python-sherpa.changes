@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb 18 15:31:44 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip python312: Requires setuptools < 60 and distutils
+
+-------------------------------------------------------------------
 Fri Dec 15 03:54:30 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.16.0:

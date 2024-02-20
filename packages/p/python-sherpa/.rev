@@ -189,4 +189,14 @@
 - Skip a misbehaving test.</comment>
     <requestid>1133227</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>e7c34f7de8a0bc2217491d78c4cf07ce</srcmd5>
+    <version>4.16.0</version>
+    <time>1708460037</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1147463 from bnavigator
+
+- Skip python312: Requires setuptools &lt; 60 and distutils</comment>
+    <requestid>1147599</requestid>
+  </revision>
 </revisionlist>

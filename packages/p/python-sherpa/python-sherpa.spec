@@ -1,7 +1,7 @@
 #
 # spec file for package python-sherpa
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,9 @@
 #
 
 
+# requires distutils and setuptools < 60, which does not backport distutils. Unsuitable for python312
+# Track upstream progress in https://github.com/sherpa/sherpa/pull/1949
+%define skip_python312 1
 Name:           python-sherpa
 Version:        4.16.0
 Release:        0
@@ -40,6 +43,8 @@ Requires(postun):update-alternatives
 ExcludeArch:    %{ix86} %{arm}
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 5}
+# doctestplus tests don’t look ready gh#sherpa/sherpa#1719
+# BuildRequires:  %{python_module pytest-doctestplus}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest-xvfb}
 # Highly recommended by upstream when building from source
