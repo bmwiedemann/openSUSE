@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:44:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+  * Wrapper:
+    + Make collapsed java state mapped to ATK_STATE_COLLAPSED
+    + Also use dbus to detect accessibility being enabled
+
+-------------------------------------------------------------------
+Fri Feb 17 21:59:08 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 0.40.0
+
+-------------------------------------------------------------------
 Mon Mar  7 19:21:06 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
@@ -18,7 +31,7 @@ Fri Dec 11 08:36:20 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 -------------------------------------------------------------------
 Mon Nov  9 08:08:22 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
-- Update to 3.38.0
+- Update to 0.38.0
   * Build:
     + Fix 32bit build
     + Distribute manifest.txt

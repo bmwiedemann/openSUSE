@@ -1,7 +1,7 @@
 #
 # spec file for package java-atk-wrapper
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%global major_version 0.38
+%global major_version 0.40
 Name:           java-atk-wrapper
 Version:        %{major_version}.0
 Release:        0
@@ -29,8 +29,9 @@ Source1:        HOWTO
 Source2:        https://gitlab.gnome.org/GNOME/%{name}/-/raw/%{version}/autogen.sh
 Patch0:         jaw-dependencies.patch
 BuildRequires:  autoconf
+BuildRequires:  autoconf-archive
 BuildRequires:  automake
-BuildRequires:  java-devel >= 1.8
+BuildRequires:  java-devel >= 9
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  xprop
@@ -59,13 +60,13 @@ change of underlying communication mechanism.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P 0 -p1
 cp %{SOURCE1} %{SOURCE2} .
 
 %build
 chmod +x autogen.sh
 ./autogen.sh
-%configure --libdir=%{_libdir}/%{name} --disable-modular-jar
+%configure --libdir=%{_libdir}/%{name} --enable-modular-jar
 make %{?_smp_mflags}
 
 %install

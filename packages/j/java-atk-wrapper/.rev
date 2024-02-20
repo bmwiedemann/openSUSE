@@ -94,4 +94,12 @@
     <comment>Don't hardcode dependency on java 8</comment>
     <requestid>960049</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>94b4e108bb0d6983a8519b153806c4c6</srcmd5>
+    <version>0.40.0</version>
+    <time>1708460191</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148240</requestid>
+  </revision>
 </revisionlist>
