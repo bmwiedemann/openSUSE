@@ -134,4 +134,12 @@
     <comment>fix build with jdk 21</comment>
     <requestid>1120349</requestid>
   </revision>
+  <revision rev="17" vrev="9">
+    <srcmd5>1f343d7eb91ce36c8567821b1cef3f35</srcmd5>
+    <version>3.2.2</version>
+    <time>1708460118</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1147952</requestid>
+  </revision>
 </revisionlist>
