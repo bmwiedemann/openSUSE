@@ -1,7 +1,7 @@
 #
 # spec file for package oxygen-gtk2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,6 @@ Version:        1.4.6
 Release:        0
 Summary:        A Port of the KDE Oxygen Widget Theme, to GTK 2.x
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.bz2
 Source100:      baselibs.conf
@@ -80,16 +79,14 @@ behave well on other Desktop Environments.
 This package contains the Oxygen Gtk 2.x theme.
 
 %prep
-%setup -q
-%patch0
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
+
 # Switch to the oxygen-qt5 default.
 sed -i 's/^\(TabStyle=\).*$/\1TS_PLAIN/' rc/oxygenrc
 
 %build
 %cmake
+
 %cmake_build
 
 %install

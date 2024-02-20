@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 14:20:45 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Rebase fix-menu-items-look.patch
+- Switch to %autosetup
+
+-------------------------------------------------------------------
 Fri May  3 19:37:08 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Run spec-cleaner

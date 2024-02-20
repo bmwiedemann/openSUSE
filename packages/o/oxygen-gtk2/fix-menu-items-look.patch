@@ -10,11 +10,11 @@ Center text in menuitem and make it more compact, to look closer to native widge
  rc/gtkrc |    4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-Index: rc/gtkrc
-===================================================================
---- rc/gtkrc.orig
-+++ rc/gtkrc
-@@ -99,13 +99,13 @@ class "GtkMenuBar" style "oxygen-menubar
+diff --git a/rc/gtkrc b/rc/gtkrc
+index 5b9aa54..fa715dc 100644
+--- a/rc/gtkrc
++++ b/rc/gtkrc
+@@ -99,13 +99,13 @@ class "GtkMenuBar" style "oxygen-menubar"
  style "oxygen-menubaritem" = "oxygen-default"
  {
      xthickness = 3

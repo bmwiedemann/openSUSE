@@ -254,4 +254,13 @@
 - Add oxygen-gtk2-1.4.6-xul.patch to fix crashes in newmoon/palemoon</comment>
     <requestid>700492</requestid>
   </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>89bee1dcdd35246496ac0709697a515a</srcmd5>
+    <version>1.4.6</version>
+    <time>1708460144</time>
+    <user>anag+factory</user>
+    <comment>- Rebase fix-menu-items-look.patch
+- Switch to %autosetup</comment>
+    <requestid>1148085</requestid>
+  </revision>
 </revisionlist>
