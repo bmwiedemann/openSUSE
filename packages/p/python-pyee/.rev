@@ -88,4 +88,23 @@ Add missing BuildRequires</comment>
     <comment></comment>
     <requestid>1008243</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1a299d2233913993b9bc3aae666f22b5</srcmd5>
+    <version>11.1.0</version>
+    <time>1708460091</time>
+    <user>anag+factory</user>
+    <comment>- Update to 11.1.0:
+  * Support Python 3.12
+  * Require Python &gt;= 3.8
+  * Update classifiers in `pyproject.toml`
+  * Remove package.json/package-lock.json
+  * Switch from `setup.py` to `pyproject.toml` (still using setuptools)
+  * Minor type annotation bugfixes
+  * Store AsyncIO Futures in a set
+  * `EventEmitter` supports pickling
+  * Dependency on mock removed in favor of unittest.mock
+  * Drop 3.7 support
+- Switch to pyproject macros.</comment>
+    <requestid>1147686</requestid>
+  </revision>
 </revisionlist>

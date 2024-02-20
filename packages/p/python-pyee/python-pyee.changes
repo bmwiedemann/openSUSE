@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb 20 04:06:27 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 11.1.0:
+  * Support Python 3.12
+  * Require Python >= 3.8
+  * Update classifiers in `pyproject.toml`
+  * Remove package.json/package-lock.json
+  * Switch from `setup.py` to `pyproject.toml` (still using setuptools)
+  * Minor type annotation bugfixes
+  * Store AsyncIO Futures in a set
+  * `EventEmitter` supports pickling
+  * Dependency on mock removed in favor of unittest.mock
+  * Drop 3.7 support
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Wed Oct  5 00:02:22 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 2022/02/04 Version 9.0.4
