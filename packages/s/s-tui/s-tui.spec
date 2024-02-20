@@ -1,7 +1,7 @@
 #
 # spec file for package s-tui
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           s-tui
-Version:        1.1.4
+Version:        1.1.6
 Release:        0
 Summary:        Terminal based CPU stress and monitoring utility
 License:        GPL-2.0-or-later
@@ -29,6 +29,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
 ## MANUAL BEGIN
 Requires:       python3-psutil
+Requires:       python3-typing_extensions
 Requires:       python3-urwid
 Recommends:     stress-ng
 ## MANUAL END
