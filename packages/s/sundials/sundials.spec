@@ -1,7 +1,7 @@
 #
-# spec file for package sundials
+# spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -302,7 +302,23 @@ rm %{buildroot}%{my_incdir}/sundials/{NOTICE,LICENSE}
 # Send extremely verbose output to a log file instead of printing to screen to avoid build log bloat
 # Disable the sunlinsol tests which fail apparently due to minor floating pt issues
 # On 32-bit, also disable the sunmatrix tests which fail due to minor floating pt issues
-export LD_LIBRARY_PATH=%{my_libdir}
+%if %{with mpi}
+. %{my_bindir}/mpivars.sh
+
+# mavpich2 seems to have issues with CMA depending on runs!?
+# As this is for testing only, always disable it so it just works.
+export MV2_SMP_USE_CMA=0
+
+# Enable the necessary flags so it works on less than 4 cores
+if [ "$(grep 'core id' /proc/cpuinfo  | wc -l)" -lt 4 ]; then
+    # For mvapich2
+    export MV2_ENABLE_AFFINITY=0
+    # For openMPI >= 5.x
+    export PRTE_MCA_rmaps_default_mapping_policy=:oversubscribe
+    # For openMPI < 5
+    export OMPI_MCA_rmaps_base_oversubscribe=1
+fi
+%endif
 %ifarch %ix86
 %ctest --quiet --output-log test-output.log --exclude-regex "test_(sunlinsol_lapack|sunmatrix_sparse)*" || ( grep "Fail" test-output.log; exit 1 )
 %else
