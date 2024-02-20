@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Feb 20 10:43:12 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.25.2:
+  * update to latest root (gh#scikit-hep/iminuit#970).
+- Changes from version 2.25.1:
+  * improve docs for make_with_signature
+    (gh#scikit-hep/iminuit#963).
+  * Update benchmark to ROOT-6.30 (gh#scikit-hep/iminuit#967).
+  * fix LeastSquares.visualize for models that accept parameter
+    array (gh#scikit-hep/iminuit#968).
+- Changes from version 2.25.0:
+  * Some updates to the Ruff config (gh#scikit-hep/iminuit#933).
+  * Add extra config to pytest (gh#scikit-hep/iminuit#932).
+  * Cost gradient support (gh#scikit-hep/iminuit#936).
+  * Warn on errordef override (gh#scikit-hep/iminuit#937).
+  * fix: include debug info on failures
+    (gh#scikit-hep/iminuit#946).
+  * Benchmark update to ROOT 6.30 (gh#scikit-hep/iminuit#951).
+  * Fix use of removed array rules in test
+    (gh#scikit-hep/iminuit#952).
+  * Fix docstring parsing (gh#scikit-hep/iminuit#953).
+  * fix test that requires scipy and raise error on invalid value
+    for use_pdf (gh#scikit-hep/iminuit#962).
+  * Approximate CDF from PDF (gh#scikit-hep/iminuit#950).
+- Do not disable any tests, fixed upstream.
+
+-------------------------------------------------------------------
 Thu Sep  7 08:27:08 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.24.0

@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-iminuit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define modname iminuit
 %{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        2.24.0
+Version:        2.25.2
 Release:        0
 Summary:        Python bindings for MINUIT2
 License:        MIT
@@ -79,13 +79,7 @@ export CMAKE_ARGS="-DIMINUIT_EXTERNAL_PYBIND11=ON -DCMAKE_VERBOSE_MAKEFILE=ON"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# https://github.com/scikit-hep/iminuit/issues/940
-donttest="((test_bad_function or test_disp) and minimize)"
-# A tolerance issue on 32-bit
-%ifarch %ix86
-donttest+=" or test_matrix"
-%endif
-%pytest_arch -k "not ($donttest)"
+%pytest_arch
 
 %files %{python_files}
 %doc README.rst
