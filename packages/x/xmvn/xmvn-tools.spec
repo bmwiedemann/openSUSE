@@ -31,6 +31,7 @@ Patch0:         UUID.patch
 Patch1:         0001-Do-not-leave-a-stray-options-file-in-the-generated-j.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-compress
+BuildRequires:  apache-commons-io
 BuildRequires:  atinject
 BuildRequires:  beust-jcommander >= 1.82
 BuildRequires:  fdupes
@@ -106,6 +107,7 @@ Group:          Development/Tools/Building
 Requires:       %{parent}-api = %{version}
 Requires:       %{parent}-core = %{version}
 Requires:       apache-commons-compress
+Requires:       apache-commons-io
 Requires:       beust-jcommander
 Requires:       javapackages-tools
 Requires:       objectweb-asm
@@ -214,7 +216,7 @@ done
 %fdupes -s %{buildroot}%{_javadocdir}
 
 # helper scripts
-%jpackage_script org.fedoraproject.xmvn.tools.install.cli.InstallerCli "" "" %{parent}/%{parent}-install:%{parent}/%{parent}-api:%{parent}/%{parent}-core:beust-jcommander:slf4j/api:slf4j/simple:objectweb-asm/asm:commons-compress %{parent}-install
+%jpackage_script org.fedoraproject.xmvn.tools.install.cli.InstallerCli "" "" %{parent}/%{parent}-install:%{parent}/%{parent}-api:%{parent}/%{parent}-core:beust-jcommander:slf4j/api:slf4j/simple:objectweb-asm/asm:commons-compress:commons-io %{parent}-install
 %jpackage_script org.fedoraproject.xmvn.tools.resolve.ResolverCli "" "" %{parent}/%{parent}-resolve:%{parent}/%{parent}-api:%{parent}/%{parent}-core:beust-jcommander %{parent}-resolve
 %jpackage_script org.fedoraproject.xmvn.tools.subst.SubstCli "" "" %{parent}/%{parent}-subst:%{parent}/%{parent}-api:%{parent}/%{parent}-core:beust-jcommander %{parent}-subst
 

@@ -143,4 +143,12 @@
     <comment>Official PR patch</comment>
     <requestid>1142740</requestid>
   </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>08cb5f6b44bcf7cf947c11ffd015f79b</srcmd5>
+    <version>4.2.0</version>
+    <time>1708460030</time>
+    <user>anag+factory</user>
+    <comment>needed by apache-commons-compress 1.26.0</comment>
+    <requestid>1147591</requestid>
+  </revision>
 </revisionlist>

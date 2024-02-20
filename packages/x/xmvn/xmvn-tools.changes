@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 19 13:09:53 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Modify the xmvn-install script to work with new
+  apache-commons-compress
+
+-------------------------------------------------------------------
 Tue Jan 30 09:25:00 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:
