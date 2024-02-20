@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 15 13:59:22 UTC 2024 - Ladislav Slezák <lslezak@suse.com>
+
+- Install standard SLES when the AY XML profile selects SLE_HPC,
+  it has been dropped in SP6 (jsc#PED-7841)
+- 5.0.2
+
+-------------------------------------------------------------------
+Thu Feb 15 10:19:32 UTC 2024 - Michal Filka <mfilka@suse.com>
+
+- jsc#PED-6407
+  - enabled lvm_vg_reuse to be used in general/storage/proposal
+    section
+
+-------------------------------------------------------------------
 Fri Sep 22 10:25:35 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Added several LUKS-related elements to the partitioning schema
