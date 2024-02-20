@@ -7,4 +7,12 @@
     <comment>GAP CAS module</comment>
     <requestid>1134900</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e63c438cd0cce0b4d78340e7974035fd</srcmd5>
+    <version>4.10.5</version>
+    <time>1708460086</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 4.10.5</comment>
+    <requestid>1147673</requestid>
+  </revision>
 </revisionlist>
