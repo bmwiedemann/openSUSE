@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 19 13:01:31 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.0.10
+  * allow on_unknown_torrent method in the absence of active
+    torrents (new plugin feature added)
+  * add feature to async_move_storage() to not move files
+  * fix reject resume data if it contains mismatching info hashes
+  * fix clear the candidate_cache when clear peer_list
+  * fix missing python converter for dht::announce_flags_t
+- Update _service file for manualrun
+
+-------------------------------------------------------------------
 Mon May 22 08:15:28 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.0.9
