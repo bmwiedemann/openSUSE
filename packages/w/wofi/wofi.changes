@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 12 08:58:20 UTC 2024 - Jan Baier <jbaier@suse.com>
+
+- update to 1.4.1:
+  * Added wofi_exit(). This allows correct handling of custom exit status codes
+    on non-glibc systems. This function should always be used for exiting wofi
+    as libc exit() will no longer correctly handle error situations.
+  * Changed the function signature of config_get_mnemonic(). This new signature
+    uses the correct types so that the default argument promotions caused by
+    varargs is in spec.
+
+
+-------------------------------------------------------------------
 Thu Feb  8 18:22:13 UTC 2024 - Jan Baier <jbaier@suse.com>
 
 - update to 1.4:
