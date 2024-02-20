@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb 18 12:38:12 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip python312 flavor. This legacy package is not compatible with
+  Python 3.12. Makes gh#openSUSE/openSUSE-release-tools#3034 more
+  pressing.
+
+-------------------------------------------------------------------
 Fri Nov 24 18:51:23 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update python-influxdb-new-pandas.patch in order to avoid

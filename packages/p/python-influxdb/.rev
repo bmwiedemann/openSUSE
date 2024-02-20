@@ -147,4 +147,12 @@
   openSUSE-release-tools gh#openSUSE/openSUSE-release-tools#3034</comment>
     <requestid>1130190</requestid>
   </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>d2e88382a547cc01c3c6d00783f80207</srcmd5>
+    <version>5.3.1</version>
+    <time>1708459988</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147526</requestid>
+  </revision>
 </revisionlist>
