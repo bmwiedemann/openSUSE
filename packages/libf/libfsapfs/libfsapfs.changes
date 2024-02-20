@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb 18 18:41:06 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240218
+  * No user-visible changes
+
+-------------------------------------------------------------------
 Mon Feb  5 21:43:04 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Use python-setuptools for python distutils backport
