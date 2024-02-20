@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 19 10:08:34 UTC 2024 - kukuk@suse.com
+
+- Update to version 20240219.6a78d47:
+  * Update entrypoint.sh (add SMTP_TLS_WRAPPERMODE)
+
+-------------------------------------------------------------------
 Wed Aug 17 09:53:07 UTC 2022 - kukuk@suse.com
 
 - Update to version 20220817.7d0bf3a:

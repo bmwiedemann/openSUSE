@@ -96,4 +96,13 @@
     <comment></comment>
     <requestid>997514</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>ef6d30df77ca6efabfab8681ce9e4cde</srcmd5>
+    <version>1.0.0</version>
+    <time>1708459996</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240219.6a78d47:
+  * Update entrypoint.sh (add SMTP_TLS_WRAPPERMODE)</comment>
+    <requestid>1147548</requestid>
+  </revision>
 </revisionlist>
