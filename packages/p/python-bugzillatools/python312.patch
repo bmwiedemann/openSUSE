@@ -1,0 +1,102 @@
+Index: bugzillatools-0.5.5/bzlib/test_bug.py
+===================================================================
+--- bugzillatools-0.5.5.orig/bzlib/test_bug.py
++++ bugzillatools-0.5.5/bzlib/test_bug.py
+@@ -27,9 +27,9 @@ class BugTestCase(unittest.TestCase):
+         self.bz = bugzilla.Bugzilla('http://bugzilla.example.com/', 'u', 'p')
+ 
+     def test_search(self):
+-        with self.assertRaisesRegexp(TypeError, r'\bfoobar\b'):
++        with self.assertRaisesRegex(TypeError, r'\bfoobar\b'):
+             bug.Bug.search(self.bz, foobar='baz')
+-        with self.assertRaisesRegexp(TypeError, r'\bfoobar\b'):
++        with self.assertRaisesRegex(TypeError, r'\bfoobar\b'):
+             bug.Bug.search(self.bz, not_foobar='baz')
+         fields = frozenset([
+             'alias', 'assigned_to', 'component', 'creation_time', 'creator',
+Index: bugzillatools-0.5.5/bzlib/test_bugzilla.py
+===================================================================
+--- bugzillatools-0.5.5.orig/bzlib/test_bugzilla.py
++++ bugzillatools-0.5.5/bzlib/test_bugzilla.py
+@@ -86,13 +86,13 @@ class URLTestCase(unittest.TestCase):
+ 
+         # no trailing '/'
+         bz = bugzilla.Bugzilla('http://' + host, 'u', 'p')
+-        self.assertEquals(bz.server._ServerProxy__host, host)
+-        self.assertEquals(bz.server._ServerProxy__handler, '/xmlrpc.cgi')
++        self.assertEqual(bz.server._ServerProxy__host, host)
++        self.assertEqual(bz.server._ServerProxy__handler, '/xmlrpc.cgi')
+ 
+         # trailing '/'
+         bz = bugzilla.Bugzilla('http://' + host + '/', 'u', 'p')
+-        self.assertEquals(bz.server._ServerProxy__host, host)
+-        self.assertEquals(bz.server._ServerProxy__handler, '/xmlrpc.cgi')
++        self.assertEqual(bz.server._ServerProxy__host, host)
++        self.assertEqual(bz.server._ServerProxy__handler, '/xmlrpc.cgi')
+ 
+ 
+ class FromConfigTestCase(unittest.TestCase):
+@@ -120,7 +120,7 @@ class FromConfigTestCase(unittest.TestCa
+         """Test that all mandatory args are checked."""
+         mandatory_args = set(['server', 'url', 'user', 'password'])
+         for args in itertools.combinations(mandatory_args, 2):
+-            with self.assertRaisesRegexp(TypeError, '[Mm]andatory'):
++            with self.assertRaisesRegex(TypeError, '[Mm]andatory'):
+                 bugzilla.Bugzilla.from_config(
+                     self._conf,
+                     **{k: None for k in args}
+Index: bugzillatools-0.5.5/bzlib/test_ui.py
+===================================================================
+--- bugzillatools-0.5.5.orig/bzlib/test_ui.py
++++ bugzillatools-0.5.5/bzlib/test_ui.py
+@@ -24,31 +24,31 @@ class FilterTestCase(unittest.TestCase):
+ 
+     def test_filter_int(self):
+         # 'start' arg
+-        with self.assertRaisesRegexp(ui.InvalidInputError, 'value too small'):
++        with self.assertRaisesRegex(ui.InvalidInputError, 'value too small'):
+             ui.filter_int('0', start=1)
+         self.assertEqual(ui.filter_int('0', start=0), 0)
+ 
+         # 'stop' arg
+-        with self.assertRaisesRegexp(ui.InvalidInputError, 'value too large'):
++        with self.assertRaisesRegex(ui.InvalidInputError, 'value too large'):
+             ui.filter_int('2', stop=2)
+         self.assertEqual(ui.filter_int('1', stop=2), 1)
+ 
+         # bogus input
+-        with self.assertRaisesRegexp(ui.InvalidInputError, 'not an int'):
++        with self.assertRaisesRegex(ui.InvalidInputError, 'not an int'):
+             ui.filter_int('a')
+ 
+         # default
+-        with self.assertRaisesRegexp(ui.InvalidInputError, 'not an int'):
++        with self.assertRaisesRegex(ui.InvalidInputError, 'not an int'):
+             ui.filter_int('')
+         self.assertEqual(ui.filter_int('', default=100), 100)
+ 
+     def test_filter_list(self):
+         # no filter
+-        with self.assertRaisesRegexp(TypeError, r'\bfilter\b'):
++        with self.assertRaisesRegex(TypeError, r'\bfilter\b'):
+             ui.filter_list('1 2 3')
+ 
+         # duplicates
+-        with self.assertRaisesRegexp(
++        with self.assertRaisesRegex(
+             ui.InvalidInputError,
+             'duplicate values are not allowed'
+         ):
+@@ -77,10 +77,10 @@ class FilterTestCase(unittest.TestCase):
+         )
+ 
+         # min, max allowed
+-        with self.assertRaisesRegexp(ui.InvalidInputError, 'too few'):
++        with self.assertRaisesRegex(ui.InvalidInputError, 'too few'):
+             ui.filter_list('1 2 3', filter=ui.filter_int, min_allowed=4)
+         ui.filter_list('1 2 3', filter=ui.filter_int, min_allowed=3)
+-        with self.assertRaisesRegexp(ui.InvalidInputError, 'too many'):
++        with self.assertRaisesRegex(ui.InvalidInputError, 'too many'):
+             ui.filter_list('1 2 3', filter=ui.filter_int, max_allowed=2)
+         ui.filter_list('1 2 3', filter=ui.filter_int, max_allowed=3)
+ 

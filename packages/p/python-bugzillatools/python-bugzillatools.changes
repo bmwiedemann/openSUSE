@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 18:37:51 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python312.patch to fix tests with python3.12
+
+-------------------------------------------------------------------
 Tue Aug 18 22:57:57 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - We can finally use %pyunittest macro

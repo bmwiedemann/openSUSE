@@ -1,7 +1,7 @@
 #
 # spec file for package python-bugzillatools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define oldpython python
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-bugzillatools
 Version:        0.5.5
 Release:        0
@@ -31,6 +30,8 @@ Patch0:         0001-Working-on-both-2.7-and-3.4.patch
 # Some more py3k fixes
 # https://github.com/rawrgulmuffins/bugzillatools/pull/26
 Patch1:         no-bzrlib-py3k.patch
+# PATCH-FIX-OPENSUSE python312.patch
+Patch2:         python312.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

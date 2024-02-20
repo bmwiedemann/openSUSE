@@ -99,4 +99,12 @@
 </comment>
     <requestid>827696</requestid>
   </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>4d67609ba04dae510f685171d515994d</srcmd5>
+    <version>0.5.5</version>
+    <time>1708460202</time>
+    <user>anag+factory</user>
+    <comment>- Add python312.patch to fix tests with python3.12</comment>
+    <requestid>1148327</requestid>
+  </revision>
 </revisionlist>
