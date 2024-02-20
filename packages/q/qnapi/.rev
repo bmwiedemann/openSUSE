@@ -71,4 +71,13 @@
     <comment></comment>
     <requestid>620330</requestid>
   </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>f983d9390f0296bf111a75e21c9043b2</srcmd5>
+    <version>0.2.3</version>
+    <time>1708460143</time>
+    <user>anag+factory</user>
+    <comment>- Switch to %autosetup
+- Spec cleanup</comment>
+    <requestid>1148082</requestid>
+  </revision>
 </revisionlist>

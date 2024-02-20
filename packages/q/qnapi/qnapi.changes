@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 14:15:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Switch to %autosetup
+- Spec cleanup
+
+-------------------------------------------------------------------
 Fri Jun 29 12:11:31 UTC 2018 - kstreitova@suse.com
 
 - require p7zip-full for TW as 7z and 7za binaries needed by qnapi

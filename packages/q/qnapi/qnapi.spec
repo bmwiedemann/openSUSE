@@ -1,7 +1,7 @@
 #
 # spec file for package qnapi
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,16 +22,14 @@ Release:        0
 Summary:        A NapiProjekt client
 # libmaia and qt-maybe are BSD-2-Clause and BSD-3-Clause respectively
 License:        GPL-2.0-or-later AND BSD-2-Clause AND BSD-3-Clause
-Group:          Productivity/Multimedia/Other
-Summary(it):    Client NapiProjekt
-Summary(pl):    Klient NapiProjekt
-URL:            http://qnapi.github.io/
+URL:            https://qnapi.github.io/
 Source0:        https://github.com/QNapi/qnapi/releases/download/%{version}/%{name}-%{version}.tar.gz
 Patch0:         qnapi-libmaia.patch
 # PATCH-FIX-UPSTREAM qnapi-Qt511.patch
 Patch1:         qnapi-Qt511.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core) >= 5.2
 BuildRequires:  pkgconfig(Qt5Gui) >= 5.2
@@ -41,13 +39,13 @@ BuildRequires:  pkgconfig(Qt5Xml) >= 5.2
 BuildRequires:  pkgconfig(libmediainfo)
 BuildRequires:  pkgconfig(maia)
 BuildRequires:  pkgconfig(zlib)
+Recommends:     ffmpeg
 # Remove when p7zip-full is in all products
-%if 0%{suse_version} > 1500
+%if 0%{?suse_version} > 1500
 Requires:       p7zip-full
 %else
 Requires:       p7zip
 %endif
-Recommends:     ffmpeg
 
 %description
 QNapi is unofficial clone of NapiProjekt program (http://napiprojekt.pl)
@@ -65,16 +63,15 @@ napisanym w bibliotece Qt5 z myślą o użytkownikach Linuksa oraz innych
 systemów, pod które oryginalny NapiProjekt nie jest dostępny.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
+
 # Fix paths specific for openSUSE
 sed -i 's|doc.path = $${INSTALL_PREFIX}/share/doc/qnapi|doc.path = $${INSTALL_PREFIX}/share/doc/packages/qnapi|' qnapi.pro
 
 %build
 # fixes gcc6 problem with stdlib headers
 %qmake5 QMAKE_DEFAULT_INCDIRS="" %{name}.pro
-make %{?_smp_mflags}
+%make_build
 
 %install
 make INSTALL_ROOT=%{buildroot} install %{?_smp_mflags}
@@ -101,8 +98,8 @@ rm %{buildroot}%{_defaultdocdir}/%{name}/LICENSE*
 %{_datadir}/icons/*
 %{_datadir}/applications/%{name}.desktop
 %attr(644,root,root) %{_mandir}/man1/*
-%{_mandir}/it/man1/qnapi.1.gz
-%{_mandir}/pl/man1/qnapi.1.gz
+%{_mandir}/it/man1/qnapi.1%{?ext_man}
+%{_mandir}/pl/man1/qnapi.1%{?ext_man}
 %dir %{_datadir}/kde4
 %dir %{_datadir}/kde4/services
 %dir %{_datadir}/kde4/services/ServiceMenus
