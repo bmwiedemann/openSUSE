@@ -17,14 +17,13 @@
 
 
 Name:           meld
-Version:        3.22.0
+Version:        3.22.1
 Release:        0
 Summary:        Visual diff and merge tool
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
-URL:            http://meldmerge.org/
+URL:            https://meldmerge.org/
 Source0:        https://download.gnome.org/sources/meld/3.22/%{name}-%{version}.tar.xz
-
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -32,6 +31,7 @@ BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  itstool
 BuildRequires:  meson >= 0.49.0
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.48
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.0

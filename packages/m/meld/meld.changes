@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Feb 18 20:22:32 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 3.22.1:
+  + Work around layout sizing issue
+  + Fix broken search context
+  + Fix issues with pane contents swapping missing warnings and
+   incorrectly handling blank or version-controlled panes
+  + Fix go-to-line accelerator conflict with previous-conflict
+  + Fix unintended requirement on Adwaita cursors
+  + Fix incorrect cut/copy/paste sensitivity on pane change
+  + Fix multi-row selection in folder and version control view
+  + Fix missing pull/push version control icons
+  + Refresh highlighting theme when dark theme preference changes
+  + Remove filter and conflict buttons from new comparison tab
+  + Fix scroll not working in file action gutter
+  + Fix line number rendering when changing font sizes
+  + Fix overview map not redrawing on text wrap toggle
+  + Set minimum width for notebook labels
+  + Improve notebook label ellipsization
+  + Fix Meson byte-compilation support with DESTDIR
+
+-------------------------------------------------------------------
 Wed Sep  7 07:12:59 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.22.0:
