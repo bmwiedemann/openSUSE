@@ -51,9 +51,7 @@ Group:          Documentation/Other
 This package contains the API documentation for %{name}.
 
 %prep
-%setup -q -n %{short_name}-%{version}-src -a1
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n %{short_name}-%{version}-src -a1
 
 %build
 ant -Dmaven.mode.offline=true -Dmaven.test.skip=true \
