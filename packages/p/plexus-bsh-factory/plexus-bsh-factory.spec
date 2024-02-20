@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package plexus-bsh-factory
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,14 +38,10 @@ Patch2:         0001-Migrate-to-plexus-containers-container-default.patch
 BuildRequires:  ant
 BuildRequires:  bsh2
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  plexus-classworlds >= 2
 BuildRequires:  plexus-containers-container-default
 BuildRequires:  plexus-utils
-Requires:       mvn(bsh:bsh)
-Requires:       mvn(classworlds:classworlds)
-Requires:       mvn(org.codehaus.plexus:plexus-container-default)
-Requires:       mvn(org.codehaus.plexus:plexus-utils)
 BuildArch:      noarch
 
 %description
@@ -61,8 +57,8 @@ Javadoc for %{name}.
 %prep
 %setup -q -n %{name}
 
-%patch1 -b .sav
-%patch2 -p1
+%patch -P 1 -b .sav
+%patch -P 2 -p1
 cp release-pom.xml pom.xml
 cp %{SOURCE1} build.xml
 cp -p %{SOURCE3} .
@@ -80,7 +76,7 @@ install -dm 0755 %{buildroot}%{_javadir}/%{parent}
 install -pm 0644 target/%{name}-%{namedversion}.jar %{buildroot}%{_javadir}/%{parent}/%{subname}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{parent}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{parent}/%{subname}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{parent}/%{subname}.pom
 %add_maven_depmap %{parent}/%{subname}.pom %{parent}/%{subname}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
