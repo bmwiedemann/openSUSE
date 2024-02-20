@@ -17,7 +17,7 @@
 
 
 Name:           gap-semigroups
-Version:        5.3.5
+Version:        5.3.6
 Release:        0
 Summary:        GAP: Computing with Semigroups of Transformations and Partial Permutations
 License:        GPL-2.0-or-later
