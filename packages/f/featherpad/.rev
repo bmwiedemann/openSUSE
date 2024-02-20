@@ -568,4 +568,22 @@
   * Prevent window dragging from the line number strip.</comment>
     <requestid>1094770</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>e2e83b113b96391a6020bd1c4753ed99</srcmd5>
+    <version>1.5.0</version>
+    <time>1708459985</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.5.0:
+  * Removed Qt5 support. With this change, the legacy encodings are
+	  also dropped because Qt6 does not support them. If you still have
+    documents in legacy encodings, you could convert them to UTF-8
+		with a tool like iconv.
+  * Prevented the cursor position from being changed when files are
+	  dragged and dropped into the text view.
+  * Regex replacement with capturing groups is supported.
+  * Fixed a rare issue in the geometry of a warning bar that is
+	  animated during window resizing.
+  * Miscellaneous small fixes and enhancements.</comment>
+    <requestid>1147510</requestid>
+  </revision>
 </revisionlist>

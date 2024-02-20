@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 19 07:35:59 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.5.0:
+  * Removed Qt5 support. With this change, the legacy encodings are
+	  also dropped because Qt6 does not support them. If you still have
+    documents in legacy encodings, you could convert them to UTF-8
+		with a tool like iconv.
+  * Prevented the cursor position from being changed when files are
+	  dragged and dropped into the text view.
+  * Regex replacement with capturing groups is supported.
+  * Fixed a rare issue in the geometry of a warning bar that is
+	  animated during window resizing.
+  * Miscellaneous small fixes and enhancements.
+
+-------------------------------------------------------------------
 Fri Jun 23 06:12:19 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4.1:
