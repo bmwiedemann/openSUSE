@@ -118,4 +118,16 @@
   * fix: fix parallel thread output be230ca</comment>
     <requestid>1146732</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0592e9d2b926f4e1267194bbeb8a365d</srcmd5>
+    <version>0.19.1+0</version>
+    <time>1708460092</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.19.1:
+  * fix: avoid input stream when --update-all #943
+  * fix: update cargo lock 8a893e7
+  * fix(deps): update dependency @swc/core to v1.4.1 d18fd70
+  * chore(deps): update dependency @types/node to v20.11.19 40d3fa0</comment>
+    <requestid>1147699</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 20 05:56:33 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.1:
+  * fix: avoid input stream when --update-all #943
+  * fix: update cargo lock 8a893e7
+  * fix(deps): update dependency @swc/core to v1.4.1 d18fd70
+  * chore(deps): update dependency @types/node to v20.11.19 40d3fa0
+
+-------------------------------------------------------------------
 Thu Feb 15 08:05:29 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.19.0:
