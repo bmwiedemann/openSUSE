@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 17:59:18 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Spec cleanup. Switch to %autosetup
+
+-------------------------------------------------------------------
 Sun Jun 19 13:12:38 UTC 2016 - hrvoje.senjan@gmail.com
 
 - Stop BuildRequiring deprecated qtquick1 module

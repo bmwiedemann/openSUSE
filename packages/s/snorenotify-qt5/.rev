@@ -23,4 +23,13 @@
     <comment>- Stop BuildRequiring deprecated qtquick1 module</comment>
     <requestid>403487</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>22d94f7a7044c431fbc8e065880a7ddd</srcmd5>
+    <version>0.7.0</version>
+    <time>1708460201</time>
+    <user>anag+factory</user>
+    <comment>- Spec cleanup. Switch to %autosetup
+</comment>
+    <requestid>1148320</requestid>
+  </revision>
 </revisionlist>
