@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-collections
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -89,12 +89,12 @@ find . -name "*.class" -delete
 # Fix file eof
 sed -i 's/\r//' LICENSE.txt PROPOSAL.html README.txt NOTICE.txt
 
-%patch0 -p1
-%patch1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%patch -P 0 -p1
+%patch -P 1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
 
 %build
 echo "junit.jar=$(build-classpath junit)" >>build.properties
