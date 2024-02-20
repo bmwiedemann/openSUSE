@@ -92,4 +92,12 @@ ship any actual functionality. ImGui suppose to be used as sources</comment>
     <comment></comment>
     <requestid>1146644</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>14b82058a185068ca4b5dc796b00b517</srcmd5>
+    <version>1.90.3</version>
+    <time>1708460104</time>
+    <user>anag+factory</user>
+    <comment>Update to version 1.90.3. (forwarded request 1147657 from badshah400)</comment>
+    <requestid>1147786</requestid>
+  </revision>
 </revisionlist>

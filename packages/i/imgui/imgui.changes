@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Feb 19 18:51:18 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.90.3:
+  * Breaking changes:
+    - Backends: SDL2: Removed obsolete
+      ImGui_ImplSDL2_NewFrame(SDL_Window*) signature which was
+      obsoleted in 1.84. Calling ImGui_ImplSDL2_NewFrame() without
+      parameter is fine.
+    - Backends: Vulkan: Moved RenderPass parameter from
+      ImGui_ImplVulkan_Init() function to
+      ImGui_ImplVulkan_InitInfo structure. Not required when using
+      dynamic rendering (gh#ocornut/imgui#7308).
+    - Backends: Vulkan: Using dynamic rendering now require
+      filling the PipelineRenderingCreateInfo structure in
+      ImGui_ImplVulkan_InitInfo, allowing to configure
+      color/depth/stencil formats. Removed ColorAttachmentFormat
+      field previously provided for dynamic rendering.
+      (gh#ocornut/imgui#7166, gh#ocornut/imgui#6855,
+      gh#ocornut/imgui#5446, gh#ocornut/imgui#5037).
+  * Menus, Popups: Fixed menus and popups with ChildWindow flag
+    erroneously not displaying a scrollbar when contents is over
+    parent viewport size (gh#ocornut/imgui#7287,
+    gh#ocornut/imgui#7063).
+  * Backends
+    - SDL2, SDL3: Handle gamepad disconnection + fixed increasing
+      gamepad reference counter continuously.
+    - Added support for multiple simultaneous gamepads. Added
+      ImGui_ImplSDL2_SetGamepadMode() function to select whether
+      to automatically pick first available gamepad, all gamepads,
+      or specific gamepads (gh#ocornut/imgui#3884,
+      gh#ocornut/imgui#6559, gh#ocornut/imgui#6890,
+      gh#ocornut/imgui#7180).
+    - SDL3: Fixed gamepad handling (gh#ocornut/imgui#7180).
+    - SDLRenderer3: query newly added SDL_RenderViewportSet() to
+      not restore a wrong viewport if none was initially set.
+    - DirectX9: Using RGBA format when allowed by the driver to
+      avoid CPU side conversion (gh#ocornut/imgui#6575).
+  * Internals: Fixed ImFileOpen not working before context is
+    created, preventing creation of a font atlas before main
+    context creation (gh#ocornut/imgui#7314,
+    gh#ocornut/imgui#7315).
+
+-------------------------------------------------------------------
 Wed Feb 14 09:06:50 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.90.2:
