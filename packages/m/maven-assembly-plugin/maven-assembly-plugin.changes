@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 19 17:05:19 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Explicitely require commons-io:commons-io and
+  commons-codec:common-codes artifacts that are optional in
+  apache-commons-compress
+
+-------------------------------------------------------------------
 Thu Sep 14 14:00:28 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

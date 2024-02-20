@@ -47,4 +47,12 @@
     <comment>improvements for reproducibility</comment>
     <requestid>1112413</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>deaf02ef75d9c393e85430a81c238b49</srcmd5>
+    <version>3.6.0</version>
+    <time>1708460062</time>
+    <user>anag+factory</user>
+    <comment>fix build and use with the new commons-compress</comment>
+    <requestid>1147643</requestid>
+  </revision>
 </revisionlist>

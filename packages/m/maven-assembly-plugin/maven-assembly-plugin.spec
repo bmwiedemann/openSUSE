@@ -1,7 +1,7 @@
 #
 # spec file for package maven-assembly-plugin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  unzip
+BuildRequires:  mvn(commons-codec:commons-codec)
 BuildRequires:  mvn(commons-io:commons-io)
 BuildRequires:  mvn(javax.inject:javax.inject)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
@@ -68,6 +69,8 @@ This package provides %{summary}.
 %patch0 -p1
 
 %pom_remove_dep jaxen:jaxen
+%pom_add_dep commons-io:commons-io
+%pom_add_dep commons-codec:commons-codec
 
 %build
 %{mvn_build} -f -- \
