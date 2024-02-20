@@ -39,4 +39,28 @@
 </comment>
     <requestid>1041858</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d314ae55cb7bc7e026f09e876ef4eb1b</srcmd5>
+    <version>2.5.0</version>
+    <time>1708460100</time>
+    <user>anag+factory</user>
+    <comment>- Did the upstream just released different tarball with the same
+  version number? Yes, they did!
+- Rebased patches
+- Update to 2.5.0
+  * Added the column wildcard in structure expressions to allow
+    expressing 'a structure with at least ...'.
+  * Fixed the help text for functions that use nptyping types as
+    hints.
+  * Fixed the distribution of dataframe.pyi that was missing.
+  * Fixed the sdist to include tests and dependencies.
+- Fix the test suite.
+  * The -k parameter for unittests does not know negative patterns
+  * Don't test with beartype and typeguard:
+    gh#ramonhagenaars/nptyping#115
+  * Drop skip-pyright-tests.patch, delete file instead
+  * Drop skip_pandas.patch.
+</comment>
+    <requestid>1147711</requestid>
+  </revision>
 </revisionlist>
