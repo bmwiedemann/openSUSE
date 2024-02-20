@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 19 09:47:43 UTC 2024 - Maciej Borzecki <maciek.borzecki@gmail.com>
+
+- Add COPYING to %doc
+
+-------------------------------------------------------------------
 Fri Mar  4 20:09:57 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Install modprobe.conf files to %_modprobedir (bsc#1196275, jsc#SLE-20639)

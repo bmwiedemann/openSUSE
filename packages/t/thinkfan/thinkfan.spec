@@ -1,7 +1,7 @@
 #
 # spec file for package thinkfan
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -112,7 +112,7 @@ done
 
 %files
 %license COPYING
-%doc README.md examples/*
+%doc README.md examples/* COPYING
 %dir %{_modprobedir}
 %{_sbindir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}.yaml
