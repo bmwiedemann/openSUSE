@@ -1,7 +1,26 @@
 -------------------------------------------------------------------
+Tue Feb 13 12:02:55 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.3.1:
+  * Drop Django 1.11 support
+  * Update Django 2.x to 2.2 LTS
+  * Update Django 3.x to 3.2 LTS
+- update to 0.3.0:
+  * Added localization documentation
+  * Fixed choice fields to only select from available options
+  * Fix SlugField guesser to have more available options
+  * Added default hint guesser before failing for non-recognized field type
+  * Added seeder field hints to CLI command
+  * Handles relationship fields better
+  * Uniqueness on fields is respected and throws better errors
+  * Added integration test suite with bootcamp and Django CRM
+  * Moved CI to Github Actions
+  * Upgraded setup.py to remove EoL Python versions
+
+-------------------------------------------------------------------
 Tue Sep 14 06:22:59 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Switch to pytest-django from django-nose. 
+- Switch to pytest-django from django-nose.
 
 -------------------------------------------------------------------
 Thu Feb 20 08:57:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
