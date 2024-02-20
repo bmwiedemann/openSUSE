@@ -2,6 +2,7 @@
 # spec file for package dqlite
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 %define lname libdqlite0
 Name:           dqlite
-Version:        1.16.0
+Version:        1.16.2
 Release:        0
 Summary:        Distributed SQLite
 License:        LGPL-3.0-only WITH LGPL-3.0-linking-exception
@@ -30,7 +31,7 @@ BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pkgconfig(libuv) >= 1.8.0
-BuildRequires:  pkgconfig(raft) >= 0.17.1
+BuildRequires:  pkgconfig(raft) >= 0.18.1
 BuildRequires:  pkgconfig(sqlite3) >= 3.22.0
 
 %description
@@ -74,8 +75,7 @@ autoreconf -fiv
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %files devel
 %license LICENSE

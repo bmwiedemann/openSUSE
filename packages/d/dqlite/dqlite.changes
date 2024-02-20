@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 19 20:00:17 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.16.2:
+  * fix for using dqlite with SQLite versions greater than 3.45.0
+  * A more readable logging format
+  * internal improvement to how dqlite reacts to Raft state changes
+  * new dqlite_node configuration option to control snapshot
+    compression 
+
+-------------------------------------------------------------------
 Mon Nov  6 17:34:37 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 1.16.0:
