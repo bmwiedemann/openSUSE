@@ -118,4 +118,12 @@
     <comment>Build against reload4j</comment>
     <requestid>957045</requestid>
   </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>c11500b416491ba1bf994ef32ada2b75</srcmd5>
+    <version>4.3</version>
+    <time>1708460132</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148033</requestid>
+  </revision>
 </revisionlist>

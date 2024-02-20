@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 20 12:38:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rather use %setup/%autopatch: autosetup does not handle the
+  decompression of additional sources and applying patches in the
+  correct order for this package.
+
+-------------------------------------------------------------------
+Tue Feb 20 10:49:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Tue Feb 22 19:22:36 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build against the log4j12 packages, use the new reload4j

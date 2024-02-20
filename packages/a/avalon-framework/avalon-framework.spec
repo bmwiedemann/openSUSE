@@ -1,7 +1,7 @@
 #
 # spec file for package avalon-framework
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,9 +55,8 @@ Obsoletes:      %{name}-manual < %{version}-%{release}
 API documentation for %{name}.
 
 %prep
-%setup -qcT -a 0 -a 1
-%patch0 -p1
-%patch1 -p1
+%setup -cT -a 0 -a 1
+%autopatch -p1
 
 %build
 pushd %{name}-api-%{version}
