@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Mon Feb 19 17:54:28 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.123.0:
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.20.16 to 2.20.17
+  * build(deps): bump github.com/evanw/esbuild from 0.20.0 to 0.20.1
+  * Handle rebuilds when resources passed to transform.Unmarshal etc. changes
+  * Fix handling of build options for term pages
+  * Fix sample logic when adding content files in server
+  * build(deps): bump golang.org/x/tools from 0.17.0 to 0.18.0
+  * Fix handling of draft term pages
+  * releaser: Fix archive homepage and description
+  * commands: Fix --clock with the list command
+  * Don't use the same value in .Data.Term.Title as in .Title
+  * Fix server panic on i18n file change
+  * build(deps): bump golang.org/x/net from 0.20.0 to 0.21.0
+  * Fix rebuild regression on non-default content language edits
+  * Let standard library handle charset parameter to MIME types
+  * Fix i18n rebuild regression
+  * Fix rebuild with resources.Concat
+  * Add images.Dither filter
+  * markup/goldmark: Update TOC test
+  * Fix taxonomy term with backing file regression
+  * markup/goldmark: Improve TOC tests
+  * Move the duplicate page/resource filter
+  * Make HTML behave exactly like other content formats (note)
+  * docs: Regen CLI docs
+  * docs: Regenerate docshelper
+  * build(deps): bump golang.org/x/mod from 0.14.0 to 0.15.0
+  * Upgrade to Go 1.22
+  * Avoid impporting deploy from config when nodeploy tag is set
+  * Fix rebuild of changed bundled content files
+  * Fix site.Taxonomies for taxonomies with space in name
+  * commands: Remove unused memstats flag
+  * source: Remove unused Filesystem struct
+  * Filter dot files etc. in i18n
+  * commands: Revert the recent changes that allowed profiling on server rebuilds
+  * commands: Make the server flag --renderToDisk into --renderToMemory (note)
+  * build(deps): bump github.com/yuin/goldmark from 1.6.0 to 1.7.0
+  * Handle resource changes when the resources is already evicted from cache
+  * all: Rename Unmormalized => Unnormalized
+  * hugolib: Formally deprecate .Page.NextPage .Page.PrevPage
+  * hugio: Rename strigReadSeeker => stringReadSeeker
+  * resources/page: Formally deprecate .Site.LastChange
+  * Preserve file/dir name case when loading data
+  * Detect now invalid path patterns in cascade
+  * Handle build vs _build in front matter
+  * resources: Optimize reading resource Content when it's already a string
+  * Misc resource fixes/improvements
+  * tpl/tplimpl: Update embedded instagram, twitter, and vimeo shortcodes
+  * Add some more context to error
+  * build(deps): bump github.com/getkin/kin-openapi from 0.122.0 to 0.123.0
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.20.13 to 2.20.16
+  * Improve nilpointer error message
+  * Fix disabled languages regression
+  * tpl/data: Fix GetCSV deprecation message
+  * hugolib: Adjust a test case
+  * hugolib: Revert deprecation of .Page.Lang
+  * all: Deprecate .Page.Lang and .Page.File.Lang
+  * Fix failing test on Windows
+  * config/security: Add SYSTEMDRIVE to OsEnv allowlist
+  * hugolib: Add some more details to the "paginator not supported" error
+  * Run go mod tidy
+  * build(deps): bump github.com/evanw/esbuild from 0.19.12 to 0.20.0
+  * deploy: Fix CloudFront invalidation with AWS SDK2
+  * deps: Update gocloud.dev/aws
+  * Upgrade to deploy to use AWS SDK V2
+  * Improve error message when attempting to paginate from a single page template
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.48.6 to 1.50.7
+  * build(deps): bump golang.org/x/image from 0.14.0 to 0.15.0
+  * Fix build error
+  * docs: Make null booleans falsy in the docs helper
+  * Filter out duplicate content resource files
+  * docs: Regen docs helper
+  * output: Prevent setting Name directly in new output formats
+  * Create default link and image render hooks
+  * Fix recent regression .Resources.Get for resources with spaces in filename
+  * Emit a warning that can be turned off when overwriting built-in .Params values
+  * Add warnidf template function
+  * Add path, kind and lang to content front matter
+  * hugofs/glob: Fix dropped test error
+  * all: Run gofumpt -l -w .
+  * testing: Simplify some integration tests
+  * Add the [params] concept to front matter
+  * tpl/data: Deprecate data.GetJSON and data.GetCSV
+  * modules: Print required Hugo version for incompatible modules
+  * hugolib: Remove unused test image
+  * navigation: Improve menu cache
+  * testing: Rename integration_test.go to PACKAGE_integration_test.go
+  * Port some integration tests to new test setup
+  * all: Rework page store, add a dynacache, improve partial rebuilds, and some general spring cleaning
+
+-------------------------------------------------------------------
 Wed Feb 07 05:56:42 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.122.0:

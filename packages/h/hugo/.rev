@@ -922,4 +922,12 @@
   * README: Update minimum Go version to 1.20 (forwarded request 1144780 from jfkw)</comment>
     <requestid>1144781</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>5d4295fb244d1163fb7a29c912803d9e</srcmd5>
+    <version>0.123.0</version>
+    <time>1708460065</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.123.0: (forwarded request 1147649 from jfkw)</comment>
+    <requestid>1147652</requestid>
+  </revision>
 </revisionlist>
