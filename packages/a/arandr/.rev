@@ -34,4 +34,12 @@ This allows to remove desktop-data and hicolor-icon-theme buildrequires.</commen
   * Fix compatibility with Python 3.11 (by Rowan Hart) (forwarded request 1058758 from dirkmueller)</comment>
     <requestid>1058812</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>4b49de5a7a5751a7d619c8c1e2599888</srcmd5>
+    <version>0.1.11</version>
+    <time>1708460104</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147933</requestid>
+  </revision>
 </revisionlist>

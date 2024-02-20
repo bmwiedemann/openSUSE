@@ -1,7 +1,7 @@
 #
 # spec file for package arandr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 # Copyright (c) 2013,2019 B1 Systems GmbH, Vohburg, Germany <seife+obs@b1-systems.com>
 #
@@ -47,8 +47,7 @@ monitor positions are shown graphically and can be changed in a drag-and-drop
 way.
 
 %prep
-%setup -q
-%patch1
+%autosetup -p0
 
 %build
 python3 ./setup.py build
