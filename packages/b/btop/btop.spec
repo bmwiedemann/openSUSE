@@ -17,7 +17,7 @@
 
 
 Name:           btop
-Version:        1.3.0+git20240107.36842a3
+Version:        1.3.2+git20240212.fd2a2ac
 Release:        0
 Summary:        Usage and stats for processor, memory, disks, network and processes
 License:        Apache-2.0
@@ -26,11 +26,12 @@ URL:            https://github.com/aristocratos/btop
 Source:         %{name}-%{version}.tar.gz
 Patch0:         Makefile.diff
 BuildRequires:  coreutils
+BuildRequires:  cmake
 %if 0%{?suse_version} < 1550
 BuildRequires:  gcc13-c++
 %define cxxflags CXXFLAGS="%{optflags} -fPIE"
 %define cxxopt CXX="g++-13"
-%define lddopt LDCXXFLAGS="-ldl -lpthread -pie"
+%define lddopt LDCXXFLAGS="-ldl -lpthread -pie -DFMT_HEADER_ONLY"
 %else
 BuildRequires:  gcc-c++ >= 11
 %define cxxflags %{nil}
@@ -47,7 +48,7 @@ Resource monitor that shows usage and stats for processor, memory, disks, networ
 %patch0
 
 %build
-%make_build %{cxxflags} %{cxxopt} %{lddopt}
+%make_build %{cxxflags} %{cxxopt} %{lddopt} RSMI_STATIC=true
 
 %install
 %make_install %{cxxopt} %{lddopt} PREFIX=%{_prefix}

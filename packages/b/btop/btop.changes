@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Mon Feb 12 21:38:39 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding sources from 'https://github.com/rocm/rocm_smi_lib.git' to tarball
+  as 'lib/rocm_smi_lib' so GPU_SUPPORT works for NVIDIA and AMD GPUs.
+  * Personally, I've seen "GPU" listed in btop using a NVIDIA T1000
+    dGPU as well as AMD 680M aGPU. NVIDIA required proper drivers as well
+    as having nvtop and nvidia-smi working properly (if related, maybe not
+    strictly required)
+- Adding 'BuildRequires: cmake' so rocm_smi_lib produces:
+    Building ROCm SMI static library...
+    Running CMake...
+    
+    Building and linking...
+    100%-> lib/rocm_smi_lib/build/rocm_smi/librocm_smi64.a (6.2MiB)
+    ROCm SMI build complete in (03s)
+  and proper linking occurs
+
+-------------------------------------------------------------------
+Mon Feb 12 15:41:57 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.3.2+git20240212.fd2a2ac:
+  * v1.3.2 Hotfix GPU support AMD ROCm v6
+  * Fixed variable names
+  * Add check for possible librocm_smi64.so.6 and check for version 7 in the function logic
+  * fix: Can't detect librocm 6.0.x
+  * fix: Change bad link to old rocm repository
+
+-------------------------------------------------------------------
+Mon Feb 12 01:42:42 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding '-DFMT_HEADER_ONLY' for LDCXXFLAGS for Leap, otherwise builds
+  fail with "fmt::v10::basic_format_args" errors
+
+-------------------------------------------------------------------
+Sun Feb 11 18:21:04 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.3.1+git20240211.9c34ac7:
+  * v1.3.1 Bug fixes
+  * Reuse code from init, properly log warnings and move execution in to main loop
+  * collect: Share ifaddrs wrapper and use uniq_ptr-like syntax
+  * bsd: Wrap kvm_t* in a uniq_ptr and share code between BSD's
+  * cmake: Fix undefined reference to `kvm_openfiles' on BSD's
+  * Check LC_CTYPE to set UTF-8 locale
+  * fix: don't mangle memory for zombie processes
+  * Add theme based on Everforest Dark Medium palette
+  * Write newline at end of config file
+  * Fix dynamic loading of ROCm v6
+  * Fixed incorrect used and available memory for OSX
+  * Fix dependencies for Continuous Build Gpu
+  * Added continuous build for testing Gpu support
+  * Support for dynamic loading of ROCm v6
+  * Fix basic_string::_M_create exception
+  * Fix missing value in battery status tuple for openbsd
+  * Add battery power draw to battery inforamtion tuple for openbsd and set it to a constant
+  * added ctrl+r shortcut to reload config from disk
+  * SIGUSR2 signal now reloads the config
+  * -DFMT_HEADER_ONLY as a compiler flag
+  * btop now reacts to SIGUSR1 by reloading config
+  * Make BTOP_DEBUG also work for CMake
+  * CMake: Enable OpenBSD
+  * Allow the Findkvm module on all BSDs
+  * Fix abort in locale detection on OpenBSD
+  * fix: increase interface name length to 15
+  * make os compatible
+  * add freebsd support for battery power
+  * make discribtion in menu and settings clearer
+  * Only redraw battery indicator on power change if power change option is set to true
+  * add show_battery_power option to menu
+  * round wattage to second decimal
+  * remove redundant space
+  * Show wattage next to battery remaining time when wattage could be calculated
+  * add power to get_battery function output
+  * add power draw calculation for battery
+  * clean up if statement for battery percent calculation
+  * use capacity as default for battery percentage, less complicated and matches desktop percent exactly
+  * add battery percentage calculation in charge case
+  * add case of calculating the remaining battery time for current/charge
+  * Introduce charge in addition to energy for laptops that use charge instead of energy, this is done so that the units make more sense in this case
+  * Add current_now and voltage_now to battery struct and fix naming of current_now
+
+-------------------------------------------------------------------
+Mon Jan 22 16:43:07 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.3.0+git20240111.b2df503:
+  * Update README.md -> Fixed bad links
+  * Undefine FORTIFY_SOURCE before setting new value when enabled
+  * Added link to compile section
+  * Update README.md
+  * Use _FORTIFY_SOURCE=3 and put it behind a build flag
+  * Bump cmake to v1.3.0
+
+-------------------------------------------------------------------
 Sun Jan  7 23:00:47 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update for version 1.3.0+git20240107.36842a3:
