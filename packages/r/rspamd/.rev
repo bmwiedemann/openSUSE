@@ -242,4 +242,41 @@
   https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/HG2JKUIKDTWQQIQSA43A4VWHX7YKJQT3/</comment>
     <requestid>1141777</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8e9e67cbf253748dad18aac88ad9156e</srcmd5>
+    <version>3.8.2</version>
+    <time>1708460204</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.8.2
+  - [Feature] Add extraction type for from maps by @vstakhov in
+    #4794
+  - [Rework] Breaking: Do not report module as action by @moisseev
+    in #4795
+  - [Minor] Move server selection logic to common.js by @moisseev
+    in #4796
+  - [WebUI] Show pass-through module in History by @moisseev in
+    #4798
+  - [Feature] Allow to add templates to redis history prefix by
+    @vstakhov in #4801
+  - Deal with Connection and Host headers on proxying by @vstakhov
+    in #4802
+  - [Minor] configwizard: really use LOCAL_CONFDIR by @fatalbanana
+    in #4804
+  - [Fix] Resolve issue with bayes stat in rspamadm mode by
+    @vstakhov in #4805
+  - [Minor] rspamd_task API docs: fix broken link by @fatalbanana
+    in #4807
+  - [Minor] Add more returnbits to surbl configuration by
+    @fatalbanana in #4803
+  - [Feature] Support JSON logging when in syslog mode by @vstakhov
+    in #4813
+  - Fix issues with URL fragment in HTTP requests by @vstakhov in
+    #4814
+  - [Fix] Encode headers in metadata exporter by @vstakhov in #4816
+  - Improve Kaspersky AS integration by @vstakhov in #4806
+  - Allow dynamic keypairs loading in fuzzy storage by @vstakhov in
+    #4818
+  - Build tests with CTest in Cmake by @vstakhov in #4822</comment>
+    <requestid>1148323</requestid>
+  </revision>
 </revisionlist>

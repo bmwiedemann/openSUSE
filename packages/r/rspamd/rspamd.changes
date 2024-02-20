@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Feb 20 18:18:16 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.8.2
+  - [Feature] Add extraction type for from maps by @vstakhov in
+    #4794
+  - [Rework] Breaking: Do not report module as action by @moisseev
+    in #4795
+  - [Minor] Move server selection logic to common.js by @moisseev
+    in #4796
+  - [WebUI] Show pass-through module in History by @moisseev in
+    #4798
+  - [Feature] Allow to add templates to redis history prefix by
+    @vstakhov in #4801
+  - Deal with Connection and Host headers on proxying by @vstakhov
+    in #4802
+  - [Minor] configwizard: really use LOCAL_CONFDIR by @fatalbanana
+    in #4804
+  - [Fix] Resolve issue with bayes stat in rspamadm mode by
+    @vstakhov in #4805
+  - [Minor] rspamd_task API docs: fix broken link by @fatalbanana
+    in #4807
+  - [Minor] Add more returnbits to surbl configuration by
+    @fatalbanana in #4803
+  - [Feature] Support JSON logging when in syslog mode by @vstakhov
+    in #4813
+  - Fix issues with URL fragment in HTTP requests by @vstakhov in
+    #4814
+  - [Fix] Encode headers in metadata exporter by @vstakhov in #4816
+  - Improve Kaspersky AS integration by @vstakhov in #4806
+  - Allow dynamic keypairs loading in fuzzy storage by @vstakhov in
+    #4818
+  - Build tests with CTest in Cmake by @vstakhov in #4822
+
+-------------------------------------------------------------------
 Fri Jan 26 16:01:44 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Add Provides for user and group which are created in the %pre
