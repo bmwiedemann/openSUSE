@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-pysmi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@
 %bcond_with libalternatives
 %endif
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -38,11 +37,15 @@ Summary:        SNMP SMI/MIB Parser
 License:        BSD-2-Clause
 URL:            http://pysmi.sourceforge.net/
 Source:         https://files.pythonhosted.org/packages/source/p/pysmi/pysmi-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module ply}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 %if %{with test}
 BuildRequires:  %{python_module pysnmp}
+BuildRequires:  %{python_module pytest}
 %endif
 Requires:       python-ply
 %if %{with libalternatives}
@@ -50,7 +53,7 @@ BuildRequires:  alts
 Requires:       alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 BuildArch:      noarch
 %python_subpackages
@@ -65,11 +68,11 @@ Documentation: http://pysmi.sf.net
 %setup -q -n pysmi-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 mv %{buildroot}%{_bindir}/mibdump.py %{buildroot}%{_bindir}/mibdump
 mv %{buildroot}%{_bindir}/mibcopy.py %{buildroot}%{_bindir}/mibcopy
 %python_clone -a %{buildroot}%{_bindir}/mibdump
@@ -79,7 +82,7 @@ mv %{buildroot}%{_bindir}/mibcopy.py %{buildroot}%{_bindir}/mibcopy
 
 %check
 %if %{with test}
-%pyunittest -v tests
+%pytest
 %endif
 
 %if !%{with test}
@@ -96,7 +99,8 @@ mv %{buildroot}%{_bindir}/mibcopy.py %{buildroot}%{_bindir}/mibcopy
 %files %{python_files}
 %license LICENSE.rst
 %doc README.md CHANGES.rst
-%{python_sitelib}/*
+%{python_sitelib}/pysmi
+%{python_sitelib}/pysmi-%{version}.dist-info
 %python_alternative %{_bindir}/mibdump
 %python_alternative %{_bindir}/mibcopy
 %endif

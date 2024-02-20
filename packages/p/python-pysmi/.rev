@@ -63,4 +63,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>925025</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>8ad71e3179934891c41aa149f74debd2</srcmd5>
+    <version>0.3.4</version>
+    <time>1708459979</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject macros.
+- Use pytest for the testsuite.
+- No more greedy globs in %files.</comment>
+    <requestid>1147483</requestid>
+  </revision>
 </revisionlist>

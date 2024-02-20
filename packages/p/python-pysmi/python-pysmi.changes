@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 19 04:44:48 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Use pytest for the testsuite.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Wed Oct  6 07:40:43 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add multibuild to separate test phase from the build one.
