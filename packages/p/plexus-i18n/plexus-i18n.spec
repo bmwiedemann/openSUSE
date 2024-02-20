@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package plexus-i18n
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,12 +37,10 @@ Patch0:         %{name}-migration-to-component-metadata.patch
 Patch1:         %{name}-plexus-container-default-missing.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  plexus-containers-container-default
 BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
-Requires:       mvn(org.codehaus.plexus:plexus-container-default)
-Requires:       mvn(org.codehaus.plexus:plexus-utils)
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
@@ -68,18 +66,21 @@ Javadoc for %{name}.
 %prep
 %setup -q -n %{name}-%{namedver}
 cp %{SOURCE1} build.xml
-%patch0 -p1
-%patch1 -p1
-
-%pom_remove_parent .
-%pom_xpath_inject pom:project "<groupId>org.codehaus.plexus</groupId>" .
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 %build
 mkdir -p lib
-build-jar-repository -s lib plexus/utils plexus-containers/plexus-container-default
+build-jar-repository -s lib \
+    plexus/utils \
+    plexus-containers/plexus-container-default
 %if %{with tests}
-build-jar-repository -s lib guava/guava xbean/xbean-reflect plexus/classworlds
+build-jar-repository -s lib \
+    guava/guava \
+    xbean/xbean-reflect \
+    plexus/classworlds
 %endif
+
 %{ant} \
 %if %{without tests}
   -Dtest.skip=true \
@@ -92,7 +93,7 @@ install -dm 0755 %{buildroot}%{_javadir}/%{name}
 install -pm 0644 target/%{name}-%{namedver}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
 %add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
