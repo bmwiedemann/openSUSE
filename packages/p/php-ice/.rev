@@ -63,4 +63,13 @@
     <comment></comment>
     <requestid>1076688</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>a18c7093b8c80452d7df9e1f926c7f7b</srcmd5>
+    <version>1.7.0</version>
+    <time>1708460089</time>
+    <user>anag+factory</user>
+    <comment>- BuildRequires any php8 version (not version limited)
+</comment>
+    <requestid>1147676</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package php-ice
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,9 +54,7 @@ BuildRequires:  %{php_name}-pdo
 BuildRequires:  %{php_name}-tokenizer
 BuildRequires:  gcc
 BuildRequires:  re2c
-%if "%{flavor}" == "php8"
-BuildRequires:  %{php_name} < 8.3
-%else
+%if "%{flavor}" == "php7"
 BuildRequires:  %{php_name}-json
 Requires:       %{php_name}-json
 %endif
