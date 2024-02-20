@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 05 11:23:57 CET 2024 - aschnell@suse.com
+
+- follow renumbering of partitions during remove
+  (gh#openSUSE/snapper#85)
+- version 0.2.6
+
+-------------------------------------------------------------------
+Mon Jan 29 11:16:40 CET 2024 - aschnell@suse.com
+
+- experimental support for bcachefs
+
+-------------------------------------------------------------------
 Tue Jan 02 16:34:48 CET 2024 - aschnell@suse.com
 
 - speedup startup
