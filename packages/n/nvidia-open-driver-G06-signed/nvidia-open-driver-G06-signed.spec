@@ -62,7 +62,8 @@ BuildRequires:  perl-Bootloader
 BuildRequires:  pesign-obs-integration
 BuildRequires:  zstd
 %ifnarch aarch64
-%if !0%{?is_opensuse}
+# available on SLE, but not on ALP ...
+%if !0%{?is_opensuse} && !0%{?suse_version} == 1600
 BuildRequires:  kernel-syms-azure
 %endif
 %endif

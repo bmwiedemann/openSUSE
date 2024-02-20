@@ -293,4 +293,12 @@
     CUDA repository with this presigned package</comment>
     <requestid>1145160</requestid>
   </revision>
+  <revision rev="29" vrev="7">
+    <srcmd5>3248cf71d93f965c722be5439d263e6c</srcmd5>
+    <version>545.29.06</version>
+    <time>1708460059</time>
+    <user>anag+factory</user>
+    <comment>- kernel-syms-azure is not available on ALP</comment>
+    <requestid>1147634</requestid>
+  </revision>
 </revisionlist>

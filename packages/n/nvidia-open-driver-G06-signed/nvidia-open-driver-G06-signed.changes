@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 19 16:32:51 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- kernel-syms-azure is not available on ALP 
+
+-------------------------------------------------------------------
 Thu Feb  8 12:10:55 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - provide nvidia-open-driver-G06-kmp = %version (jsc#PED-7117)
