@@ -1,7 +1,7 @@
 #
 # spec file for package aelfred
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,8 +55,8 @@ Demonstrations and samples for aelfred.
 %prep
 %setup -q -c
 unzip %{name}-source.zip
-%patch0
-%patch1 -p1
+%patch -P 0
+%patch -P 1 -p1
 
 %build
 export JAVA_HOME=%{java_home}
