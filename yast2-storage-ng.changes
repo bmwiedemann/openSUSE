@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 14 09:11:06 UTC 2024 - Michal Filka <mfilka@suse.com>
+
+- jsc#PED-6407
+  - new env variable YAST_REUSE_LVM for reusing LVM in new
+    installation. It can be used as linuxrc boot param.
+- 5.0.6
+
+-------------------------------------------------------------------
 Mon Feb 12 15:18:51 UTC 2024 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Added new libstorage enum value UF_BCACHEFS to fix build failure
