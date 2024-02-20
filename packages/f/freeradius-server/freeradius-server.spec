@@ -403,7 +403,8 @@ done
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/files
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/files/*
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/preprocess
-%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/moonshot-targeted-ids/*
+%dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/moonshot-targeted-ids/*sql*
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/moonshot-targeted-ids/*sql*/*
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/realm
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/realm/freeradius-naptr-to-home-server.sh
 %dir %attr(750,root,radiusd) /etc/raddb/mods-config/sql/moonshot-targeted-ids

@@ -1011,4 +1011,14 @@ Bug Fixes
     <comment></comment>
     <requestid>1145150</requestid>
   </revision>
+  <revision rev="97" vrev="4">
+    <srcmd5>d47bcd6a417709eff73deaeb86d3a307</srcmd5>
+    <version>3.2.3</version>
+    <time>1708460157</time>
+    <user>anag+factory</user>
+    <comment>- fix directory permissions for
+  /etc/raddb/mods-config/sql/moonshot-targeted-ids/*sql*
+  (boo#1220025, accidentally discovered via boo#1220024) (forwarded request 1147358 from cboltz)</comment>
+    <requestid>1148113</requestid>
+  </revision>
 </revisionlist>
