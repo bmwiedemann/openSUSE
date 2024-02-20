@@ -119,4 +119,13 @@
     <comment></comment>
     <requestid>986370</requestid>
   </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>f1e9801378b5edddc3c13a5128917bb9</srcmd5>
+    <version>3.6</version>
+    <time>1708460045</time>
+    <user>anag+factory</user>
+    <comment>- Add correct creation of the bitlbee user/group (needed by the
+  latest RPM 4.19). (forwarded request 1144700 from mcepl)</comment>
+    <requestid>1147614</requestid>
+  </revision>
 </revisionlist>

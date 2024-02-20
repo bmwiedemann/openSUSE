@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  6 17:20:41 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add correct creation of the bitlbee user/group (needed by the
+  latest RPM 4.19).
+
+-------------------------------------------------------------------
 Tue Jun 28 20:30:09 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Remove call to %fdupes: It was breaking the build on Tumbleweed

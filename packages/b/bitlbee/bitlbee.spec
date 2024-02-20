@@ -1,7 +1,7 @@
 #
 # spec file for package bitlbee
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,18 +24,17 @@ Release:        0
 Summary:        IRC to other Chat Networks Gateway
 License:        GPL-2.0-only
 Group:          Productivity/Networking/IRC
-URL:            http://www.bitlbee.org/
+URL:            https://www.bitlbee.org/
 Source:         http://get.bitlbee.org/src/bitlbee-%{version}.tar.gz
 Source2:        %{name}.service-suse.in
+Source3:        bitlbee-user.conf
 Patch0:         harden_bitlbee.service.patch
 BuildRequires:  glibc-devel
 BuildRequires:  gnutls-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  lzo-devel
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} >= 1500
-BuildRequires:  python3-base
-%endif
+BuildRequires:  sysuser-tools
 BuildRequires:  util-linux-systemd
 BuildRequires:  w3m
 BuildRequires:  xmlto
@@ -46,6 +45,9 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib)
 Requires:       logrotate
 Requires(pre):  shadow
+%if 0%{?suse_version} >= 1500
+BuildRequires:  python3-base
+%endif
 
 %description
 BitlBee is a gateway between instant messaging and an IRC client.
@@ -68,6 +70,13 @@ will need to run.
 This package contains the user guide:
   %{_docdir}/%{name}/user-guide
 
+%package -n system-user-bitlbee
+Summary:        System user and group bitlbee
+%sysusers_requires
+
+%description -n system-user-bitlbee
+System user for use by the bitlbee service
+
 %package devel
 Summary:        IRC to other Chat Networks Gateway (Devel files)
 Group:          Development/Libraries/C and C++
@@ -81,8 +90,7 @@ will need to run.
 This package contains development files for external plugins.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 # make it verbose!
 find . -name Makefile -exec sed -i.orig 's|@$(CC)|$(CC)|;s|@$(LD)|$(LD)|' {} +
@@ -105,6 +113,7 @@ CXXFLAGS="%{optflags} -fno-strict-aliasing" \
     --pidfile="%{daemon_piddir}/%{name}.pid" \
     --config="%{_localstatedir}/lib/%{name}" \
     --ipcsocket="%{daemon_piddir}/%{name}.sock" \
+    --verbose=1 \
     --purple=1 \
     --otr=1 \
     --msn=1 \
@@ -120,7 +129,10 @@ CXXFLAGS="%{optflags} -fno-strict-aliasing" \
     --plugins=1 \
     --ssl=gnutls
 
-make %{?_smp_mflags}
+# Don't use %%make_build, it breaks everything!
+make -O -j V=1
+
+%sysusers_generate_pre %{SOURCE3} bitlbee system-user-bitlbee.conf
 
 %install
 install -d "%{buildroot}%{_mandir}/man1"
@@ -150,9 +162,11 @@ popd
 install -d "%{buildroot}%{_docdir}/%{name}/user-guide"
 cp -a doc/user-guide/*.{txt,html} "%{buildroot}%{_docdir}/%{name}/user-guide/"
 
+install -D -m 0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/system-user-bitlbee.conf
 
+
+%pre -n system-user-bitlbee -f bitlbee.pre
 %pre
-getent passwd bitlbee >/dev/null || useradd -r -U -d %{_localstatedir}/lib/%{name} -s /sbin/nologin -c "user for %{name}" bitlbee
 %service_add_pre %{name}.service
 
 %post
@@ -165,7 +179,6 @@ getent passwd bitlbee >/dev/null || useradd -r -U -d %{_localstatedir}/lib/%{nam
 %service_del_postun %{name}.service
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc %dir %{_docdir}/%{name}
 %attr(0750,root,bitlbee) %dir %{_sysconfdir}/bitlbee
 %{_unitdir}/%{name}.service
@@ -174,18 +187,19 @@ getent passwd bitlbee >/dev/null || useradd -r -U -d %{_localstatedir}/lib/%{nam
 %config(noreplace) %attr(0640,root,bitlbee) %{_sysconfdir}/bitlbee/motd.txt
 %{_sbindir}/bitlbee
 %{_datadir}/bitlbee
-%{_mandir}/man5/bitlbee.conf.5%{ext_man}
-%{_mandir}/man8/bitlbee.8%{ext_man}
+%{_mandir}/man5/bitlbee.conf.5%{?ext_man}
+%{_mandir}/man8/bitlbee.8%{?ext_man}
 %attr(0750,bitlbee,bitlbee) %dir %{_localstatedir}/lib/bitlbee
 
 %files doc
-%defattr(-,root,root)
 %doc %dir %{_docdir}/%{name}
 %{_docdir}/%{name}/user-guide
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/bitlbee/
 %{_libdir}/pkgconfig/bitlbee.pc
+
+%files -n system-user-bitlbee
+%{_sysusersdir}/system-user-bitlbee.conf
 
 %changelog
