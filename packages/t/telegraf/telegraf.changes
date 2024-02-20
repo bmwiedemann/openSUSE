@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Tue Feb 20 18:35:56 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Bump go dependency to 1.22 to follow upstream
+
+-------------------------------------------------------------------
+Tue Feb 20 18:30:59 UTC 2024 - mrueckert@suse.de
+
+- Update to version 1.29.5:
+  * Telegraf v1.29.5
+  * Update changelog for v1.29.5
+  * Update build_version.txt for v1.29.5
+  * test(inputs.procstat): Resolve flaky test when pid actually exists
+  * chore: Resolve lint issues
+  * test(processors): Fix unit-test for tracking metrics (#14844)
+  * chore(deps): Bump google.golang.org/api from 0.162.0 to 0.165.0 (#14849)
+  * chore(deps): Bump github.com/gophercloud/gophercloud from 1.7.0 to 1.9.0 (#14848)
+  * chore(deps): Bump google.golang.org/grpc from 1.61.0 to 1.61.1 (#14847)
+  * chore(deps): Bump k8s.io/client-go from 0.29.1 to 0.29.2 (#14846)
+  * chore(deps): Bump super-linter/super-linter from 6.0.0 to 6.1.1 (#14850)
+  * chore(deps): Bump github.com/DATA-DOG/go-sqlmock from 1.5.0 to 1.5.2 (#14845)
+  * fix(inputs.gnmi): Normalize path for inline origin handling (#14838)
+  * fix(processors.unpivot): Handle tracking metrics correctly (#14832)
+  * test(processors.strings): Add unit test for tracking metrics (#14831)
+  * test(processors.reverse_dns): Add unit-tests for tracking metrics (#14822)
+  * test(processors.split): Add unit-tests for tracking metrics (#14821)
+  * test(processors.topk): Add unit-test for tracking metrics (#14810)
+  * chore(deps): Bump github.com/IBM/sarama from 1.42.1 to 1.42.2 (#14820)
+  * chore(deps): Bump cloud.google.com/go/storage from 1.36.0 to 1.38.0 (#14819)
+  * chore(deps): Bump go.opentelemetry.io/collector/pdata (#14818)
+  * chore(deps): Bump github.com/miekg/dns from 1.1.57 to 1.1.58 (#14817)
+  * chore(deps): Bump github.com/jhump/protoreflect from 1.15.4 to 1.15.6 (#14816)
+  * chore: Update dependabot labels (#14807)
+  * test(processors.tag_limit): Add unit-tests for tracking metrics (#14812)
+  * test(processors.rename): Add unit-tests for tracking metrics (#14811)
+  * test(processors.s2geo): Add unit-test for tracking metrics (#14809)
+  * test(processors.scale): Add unit-test for tracking metrics (#14808)
+  * chore(deps): Bump github.com/google/uuid from 1.5.0 to 1.6.0 (#14775)
+  * chore(deps): Bump github.com/eclipse/paho.golang from 0.11.0 to 0.20.0 (#14769)
+  * test(processors.port_name): Add unit-test for tracking metrics (#14790)
+  * test(processors.aws_ec2): Add unit-test for tracking metrics (#14788)
+  * test(processors.pivot): Add unit-test for tracking metrics (#14789)
+  * test(processors.printer): Add unit-test for tracking metrics (#14791)
+  * test(inputs.syslog): Migrate unit-tests to test-cases (#14784)
+  * test(processors.noise): Add unit-test for tracking metrics (#14779)
+  * test(processors.ifname): Add unit-test for tracking metrics (#14778)
+  * test(processors.filepath): Add unit-test for tracking metrics (#14776)
+  * test(processors.override): Add unit-test for tracking metrics (#14781)
+  * chore(processors.aws_ec2): Rename processor to adhere to the standard directory structure (#14780)
+  * chore(deps): Bump cloud.google.com/go/pubsub from 1.33.0 to 1.36.1 (#14772)
+  * chore(deps): Bump github.com/klauspost/compress from 1.17.4 to 1.17.6 (#14773)
+  * chore(deps): Bump github.com/awnumar/memguard (#14774)
+  * chore(deps): Bump tj-actions/changed-files from 41 to 42 (#14771)
+  * chore(linters): Bump golangci-lint to v1.56.1 (#14759)
+  * ci: Check for updates to GitHub actions (#14761)
+  * chore(deps): Bump github.com/urfave/cli/v2 from 2.25.7 to 2.27.1 (#14765)
+  * chore(deps): Bump github.com/showwin/speedtest-go from 1.6.7 to 1.6.10 (#14766)
+  * chore(deps): Bump k8s.io/client-go from 0.29.0 to 0.29.1 (#14767)
+  * chore(deps): Bump golang.org/x/oauth2 from 0.16.0 to 0.17.0 (#14768)
+  * fix(processors.execd): Accept tracking metrics instead of dropping them (#14770)
+  * chore(common.tls): Replace unmaintained github.com/youmark/pkcs8 with go.step.sm/crypto/pemutil (#14760)
+  * docs: Fix broken link (#14762)
+  * fix(outputs.mqtt): Retry metrics for server timeout (#14752)
+  * chore: Fix readme linter not using correct Go version (#14758)
+  * chore(deps): Get rid of golang.org/x/exp and use stable versions instead (#14757)
+  * chore(inputs.csgo): Migrate plugin to new maintained version of rcon (#14756)
+  * chore(deps): Bump github.com/gwos/tcg/sdk from v0.0.0-20220621192633-df0eac0a1a4c to v8.7.2 (#14755)
+  * chore: Install go on nightly package testing (#14754)
+  * chore(linters): Bump golangci-lint to v1.56.0 (#14742)
+  * chore(deps): Use github.com/coreos/go-systemd/v22 instead of git version (#14753)
+  * test(processors.filter): Add unit-test for tracking metrics (#14747)
+  * test(processors.defaults): Add unit-test for tracking metrics (#14746)
+  * test(processors.dedup): Add unit-test for tracking metrics (#14745)
+  * chore(processors.converter): Cleanup code (#14744)
+  * fix(inputs.postgresql_extensible): Add support for bool tags (#14707)
+  * chore(deps): Bump github.com/gopcua/opcua from 0.4.0 to 0.5.3 (#14686)
+  * chore: Update to go1.22.0 (#14697)
+  * test(processors.enum): Add unit-test for tracking metrics (#14736)
+  * test(processors.regex): Add unit-test for tracking metrics (#14739)
+  * test(processors.converter): Add unit-test for tracking metrics (#14740)
+  * test(processors.date): Add unit-test for tracking metrics (#14738)
+  * test(processors.clone): Add unit-test for tracking metrics (#14737)
+  * chore(linters): replace 'fmt.Sprintf' with string addition (#14699)
+  * chore(secrets): Warn if settings look like secrets but use invalid characters (#14706)
+  * chore(linters): Replace 'fmt.Errorf' with 'errors.New' wherever possible (#14698)
+  * chore: fix timezone test case failure on macOS (#14693)
+  * chore(deps): Bump cloud.google.com/go/bigquery from 1.57.1 to 1.58.0 (#14690)
+  * fix(inputs.filecount): Respect symlink files with FollowSymLinks (#14669)
+  *  fix(inputs.kafka_consumer): Correctly setting name to msg_headers_as_tags (#14679)
+  * chore(deps): Bump github.com/cloudevents/sdk-go/v2 from 2.14.0 to 2.15.0 (#14687)
+  * chore(deps): Bump github.com/Azure/azure-event-hubs-go/v3 from 3.6.1 to 3.6.2 (#14688)
+  * chore(deps): Bump k8s.io/apimachinery from 0.29.0 to 0.29.1 (#14689)
+  * fix(inputs.snmp_trap): Enable SHA ciphers (#14665)
+  * chore: Remove tumbleweed from nightly (#14667)
+  * fix(inputs.vsphere): Use guest.guestId value if set for guest name (#14635)
+  * fix(inputs.redfish): Resolve iLO4 fan data (#14659)
+  * fix(rpm): Ensure telegraf is installed after useradd (#14654)
+
+-------------------------------------------------------------------
 Wed Jan 31 19:21:04 UTC 2024 - mrueckert@suse.de
 
 - Update to version 1.29.4:

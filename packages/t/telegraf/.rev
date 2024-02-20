@@ -281,4 +281,13 @@ devel:languages:go/telegraf r7 (forwarded request 758639 from jfkw)</comment>
     <comment></comment>
     <requestid>1143134</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>8055eb4f1ff3df07d718f49af5131a2b</srcmd5>
+    <version>1.29.5</version>
+    <time>1708460205</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.29.5:
+- Bump go dependency to 1.22 to follow upstream (forwarded request 1148326 from darix)</comment>
+    <requestid>1148331</requestid>
+  </revision>
 </revisionlist>
