@@ -39,4 +39,17 @@
     <comment></comment>
     <requestid>1058591</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1fa52815aec98ad7949e673dc1a02a31</srcmd5>
+    <version>2.8.1</version>
+    <time>1708460102</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1147537 from badshah400
+
+* Update to version 2.8.1.
+  * pyrus-cramjam is now simply cramjam; adapt to name change in spec and _service file.
+  * Drop cargo_config: Updated rust packaging services include it in vendor.tar.xz.
+  * Split out test into multibuild flavor since it takes a long time to run (about an hour).</comment>
+    <requestid>1147605</requestid>
+  </revision>
 </revisionlist>

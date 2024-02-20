@@ -1,5 +1,52 @@
 -------------------------------------------------------------------
-Fri Jan 13 11:04:41 UTC 2023 - Ben Greiner <code@bnavigator.de>
+Mon Feb 19 09:16:39 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.8.1:
+  * Experimental support for LZMA / XZ codec
+    (gh#milesgranger/cramjam#127).
+  * In libcramjam, bump zstd to 0.13.0 (to go with zstd-safe
+    7.0.0) (gh#milesgranger/cramjam#128).
+  * Bump rustix from 0.37.17 to 0.38.28 in /cramjam-python
+    (gh#milesgranger/cramjam#122).
+- Changes from version 2.8.0:
+  * Bump zstd from 1.5.0.2 to 1.5.4.0 in /cramjam-python
+    (gh#milesgranger/cramjam#108).
+  * Simpler isinstance() calls (gh#milesgranger/cramjam#111).
+  * Support Python 3.12 (gh#milesgranger/cramjam#113).
+  * Bump rustix from 0.37.18 to 0.37.25
+    (gh#milesgranger/cramjam#114).
+  * Fix docstring for lz4.compress_block_bound
+    (gh#milesgranger/cramjam#117).
+  * Use pyo3 0.20 (gh#milesgranger/cramjam#118).
+  * Make libcramjam a better libcramjam w/ C API
+    (gh#milesgranger/cramjam#119).
+  * Fix missing license file in the Python sdist and bdist/wheel
+    (gh#milesgranger/cramjam#124).
+  * Support independent mode in LZ4 compressor
+    (gh#milesgranger/cramjam#125).
+- Changes from version 2.7.0:
+  * Bump bzip2 from 0.4.3 to 0.4.4 (gh#milesgranger/cramjam#94).
+  * Refactoring, release GIL, Decompressor, remove mimalloc, etc.
+    (gh#milesgranger/cramjam#96).
+  * Accept anything with Buffer Protocol, remove numpy
+    (gh#milesgranger/cramjam#100).
+  * Refactor into workspaces: libcramjam, cramjam-python, and
+    cramjam-cli (gh#milesgranger/cramjam#101).
+  * Basic CLI improvements (gh#milesgranger/cramjam#103).
+  * Fix cramjam-cli decompress bug (gh#milesgranger/cramjam#104).
+  * Support all buffer types where c-contiguous
+    (gh#milesgranger/cramjam#105).
+  * Fixes for maturin v1 --universal2 removal
+    (gh#milesgranger/cramjam#109).
+- pyrus-cramjam is now simply cramjam; adapt to name change in
+  spec and _service file.
+- Drop cargo_config: Updated rust packaging services include it in
+  vendor.tar.xz.
+- Split out test into multibuild flavor since it takes a long time
+  to run (about an hour).
+
+-------------------------------------------------------------------
+Fr- Jan 13 11:04:41 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to v2.6.2
   * Bump pyo3, numpy and expand pyproject.toml by @milesgranger in
