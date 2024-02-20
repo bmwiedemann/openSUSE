@@ -1,7 +1,7 @@
 #
 # spec file for package ocp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           ocp
-Version:        0.2.106
+Version:        0.2.107
 Release:        0
 Summary:        Open Cubic Player for MOD/S3M/XM/IT/MIDI music files
 # Code is GPL-2.0-or-later, Graphics and animations are CC-BY-3.0
 License:        CC-BY-3.0 AND GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://stian.cubic.org/coding-ocp.php
+#Git-Clone:     https://github.com/mywave82/opencubicplayer.git
 Source0:        https://stian.cubic.org/ocp/%{name}-%{version}.tar.bz2
 Source1:        ftp://ftp.cubic.org/pub/player/gfx/opencp25image1.zip
 Source2:        ftp://ftp.cubic.org/pub/player/gfx/opencp25ani1.zip
@@ -77,7 +78,7 @@ visualizations.
 
 %prep
 %setup -q
-%patch1 -p1
+%autopatch -p1
 unzip %{SOURCE1}
 mv license.txt license-images.txt
 unzip %{SOURCE2}

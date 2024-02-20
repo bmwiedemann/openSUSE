@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Feb 19 18:42:41 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.2.107
+  libsidplayfp:
+  * Make it possible to tune parameters in real-time.
+  * Update libsidplayfp to the latest master.
+  * Plugin had an extra dirdbUnref() that should not be there.
+  adplug:
+  * Update adplug to latest master.
+  * Scrolling the channel viewer could crash the player due to read
+    of out-of-bound memory.
+  * The wrapper OPL class OCP uses had some minor problems:
+    + In OPL3 mode, if a channel was in 4-OP mode, the second half
+      would always muted.
+    + In OPL3 mode, if a channel was in 4-OP mode, you could mute
+      the second half of the channel (in addition to the problem
+      mentioned above).
+    + When a channel is going in/out of 4-OP mode, mute was not
+      consistent.
+  * Refactor and use file-caching.
+  * Add compression hint to the fie API, solid files should be
+    scanned directly.
+  * Differentiate unread (files not scanned) and files were the
+    file content turned out to be unknown. Speeds up the file
+    browser, especially if there are archives present.
+  * ISO/TOC - Audio CDs could be unable to play after being
+    looked up in the online discid-database.
+  * Update libancient filter to match upto libancient master
+    (needs matching support from host operating system for them to
+    work).
+  * Add support for *.RPG archive file from "Official Hamster
+    Republic Role Playing Game Construction Engine", and *.BAM that
+    in game data files as stored as *.1 *.2 *.3 etc.
+  * Potential hang-bug in UDF (CDROM DVD image files) parser.
+
+-------------------------------------------------------------------
 Sat Aug  5 20:17:31 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.2.106
