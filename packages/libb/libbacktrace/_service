@@ -1,0 +1,18 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="versionformat">1.0+git%cd</param>
+    <param name="url">https://github.com/ianlancetaylor/libbacktrace.git</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="exclude">.*</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="manual">
+    <param name="file">libbacktrace.spec</param>
+  </service>
+</services>

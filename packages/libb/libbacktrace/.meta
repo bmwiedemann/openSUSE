@@ -1,0 +1,8 @@
+<package name="libbacktrace" project="openSUSE:Factory">
+  <title>Backtrace C library</title>
+  <description>A C library that may be linked into a C/C++ program to produce symbolic backtraces.
+
+</description>
+  <devel project="network:cryptocurrencies" package="libbacktrace"/>
+  <url>https://github.com/ianlancetaylor/libbacktrace</url>
+</package>

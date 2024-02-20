@@ -1,0 +1,215 @@
+-------------------------------------------------------------------
+Mon Feb 19 10:20:27 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Cleanup spec file
+- Switch _service to obs_scm
+
+-------------------------------------------------------------------
+Sat Feb 17 00:33:00 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- fix description, so rpmlint doesn't complain
+
+-------------------------------------------------------------------
+Fri Dec 01 15:11:45 UTC 2023 - marec@detebe.org
+
+- Update to version 1.0_git20231130:
+  * libbacktrace: support ASLR on Windows
+  * libbacktrace: call GetModuleFileNameA on Windows
+
+-------------------------------------------------------------------
+Fri Aug 04 14:43:41 UTC 2023 - marec@detebe.org
+
+- Update to version 1.0_git20230803:
+  * [libbacktrace] fix up broken test
+
+-------------------------------------------------------------------
+Tue Aug 01 15:55:56 UTC 2023 - marec@detebe.org
+
+- Update to version 1.0_git20230731:
+  * libbacktrace: look for _pgmptr on Windows
+
+-------------------------------------------------------------------
+Wed Mar 29 16:04:21 UTC 2023 - marec@detebe.org
+
+- Update to version 1.0_git20230328:
+  * libbacktrace: minor fixes for zstd decompression
+  * libbacktrace: change PC variables from uint64_t to uintptr_t
+
+-------------------------------------------------------------------
+Sat Jan 07 16:56:05 UTC 2023 - marec@detebe.org
+
+- Update to version 1.0_git20230106:
+  * libbacktrace: don't run --build-id tests if it is not supported
+
+-------------------------------------------------------------------
+Sat Dec 17 14:00:20 UTC 2022 - marec@detebe.org
+
+- Update to version 1.0_git20221216:
+  * libbacktrace: unpack literals into output buffer
+
+-------------------------------------------------------------------
+Sat Dec 10 11:54:22 UTC 2022 - marec@detebe.org
+
+- Update to version 1.0_git20221209:
+  * libbacktrace: rewrite and simplify main zstd loop
+
+-------------------------------------------------------------------
+Fri Dec 09 17:09:45 UTC 2022 - marec@detebe.org
+
+- Update to version 1.0_git20221207:
+  * libbacktrace: support zstd decompression
+
+-------------------------------------------------------------------
+Sat Jul 09 18:13:34 UTC 2022 - marec@detebe.org
+
+- Update to version 1.0_git20220708:
+  * libbacktrace: check for sys/link.h
+
+-------------------------------------------------------------------
+Fri Jul 08 05:49:01 UTC 2022 - marec@detebe.org
+
+- Update to version 1.0_git20220707:
+  * libbacktrace: don't exit Mach-O dyld library loop on one failure
+  * libbacktrace: don't let "make clean" remove allocfail.sh
+  * libbacktrace: replace fgrep with grep in configure script
+
+-------------------------------------------------------------------
+Wed Apr 06 15:50:03 UTC 2022 - marec@detebe.org
+
+- Update to version 1.0_git20220405:
+  * libbacktrace: don't skip initial aligned byte in uncompressed block
+
+-------------------------------------------------------------------
+Thu Feb 17 18:15:37 UTC 2022 - marec@detebe.org
+
+- Update to version 1.0_git20220217:
+  * libbacktrace: gather address ranges from skeleton units
+  * libbacktrace: initialize DWARF 5 fields of unit
+  * configury: support --disable-werror
+
+-------------------------------------------------------------------
+Wed Jan 19 16:43:38 UTC 2022 - marec@detebe.org
+
+- Update to version 1.0_git20220118:
+  * configury: update to recent versions
+
+-------------------------------------------------------------------
+Sun May 30 17:23:12 UTC 2021 - marec@detebe.org
+
+- Update to version 1.0_git20210529:
+  * config/override.m4: don't require exactly autoconf 2.69
+
+-------------------------------------------------------------------
+Wed Mar 03 06:28:08 UTC 2021 - marec@detebe.org
+
+- Update to version 1.0_git20210302:
+  * libbacktrace: don't special case file 0
+  * libbacktrace: pass -1 to error callback for unrecognized DWARF
+
+-------------------------------------------------------------------
+Fri Feb 12 06:32:06 UTC 2021 - marec@detebe.org
+
+- Update to version 1.0_git20210211:
+  * libbacktrace: check for objcopy --add-gnu-debuglink using --help
+
+-------------------------------------------------------------------
+Tue Jan 19 16:20:10 UTC 2021 - marec@detebe.org
+
+- Update to version 1.0_git20210118:
+  * libbacktrace: don't fail tests if dwz fails
+  * libbacktrace: use correct directory/filename for DWARF 5
+  * Update copyright years.
+
+-------------------------------------------------------------------
+Sat Dec 05 11:06:50 UTC 2020 - marec@detebe.org
+
+- Update to version 1.0_git20201204:
+  * libbacktrace: correct buffer overflow tests
+
+-------------------------------------------------------------------
+Mon Oct 26 21:26:54 UTC 2020 - marec@detebe.org
+
+- Update to version 1.0_git20201026:
+  * libbacktrace: update README
+
+-------------------------------------------------------------------
+Sat Oct 24 16:25:59 UTC 2020 - marec@detebe.org
+
+- Update to version 1.0_git20201020:
+  * libbacktrace: use __attribute__((__fallthrough__))
+
+-------------------------------------------------------------------
+Thu Oct 01 16:10:55 UTC 2020 - marec@detebe.org
+
+- Update to version 1.0_git20200930:
+  * libbacktrace: replace Tom Sawyer with Opticks
+
+-------------------------------------------------------------------
+Tue Sep 29 05:34:38 UTC 2020 - marec@detebe.org
+
+- Update to version 1.0_git20200928:
+  * libbacktrace/ChangeLog:         PR libbacktrace/97082         * Makefile.am (check_DATA): Add mtest.dSYM if USE_DSYMUTIL.         * Makefile.in: Regenerate.
+  * libbacktrace: only run dsymutil with Mach-O
+
+-------------------------------------------------------------------
+Mon Sep 28 12:44:03 UTC 2020 - marec@detebe.org
+
+- Update to version 1.0_git20200927:
+  * libbacktrace: handle pc == low correctly
+  * libbacktrace: use ELF symbol table if no debug info available
+  * libbacktrace, Mach-O : Support PowerPC archs.
+  * libbacktrace: support MiniDebugInfo
+  * libbacktrace: don't strip leading underscore on 64-bit PE
+  * libbacktrace: fetch executable path on macOS
+  * libbacktrace: avoid ambiguous binary search
+  * libbacktrace: fix tipo in comment
+  * libbacktrace: correct memory lengths in Mach-O dsym support
+  * libbacktrace: correctly swap Mach-O 32-bit file offset
+  * libbacktrace: only match magic number at start of line
+  * libbacktrace: add Mach-O 64-bit FAT support
+  * libbacktrace: test linker support for DWARF 5
+
+-------------------------------------------------------------------
+Thu May 14 18:13:30 UTC 2020 - marec@detebe.org
+
+- Update to version 1.0_git20200513:
+  * libbacktrace: mark test_large parameter unused in ztest.c
+  * libbacktrace: treat EACCESS like ENOENT
+
+-------------------------------------------------------------------
+Mon May 11 19:08:10 UTC 2020 - marec@detebe.org
+
+- Update to version 1.0_git20200511:
+  * libbacktrace: declare getpagesize if necessary
+
+-------------------------------------------------------------------
+Sun May 10 07:44:41 UTC 2020 - marec@detebe.org
+
+- Update to version 1.0_git20200509:
+  * libbacktrace: don't crash if ELF file has no sections
+
+-------------------------------------------------------------------
+Wed Feb 19 19:16:21 UTC 2020 - marec@detebe.org
+
+- Update to version 1.0_git20200219:
+  * libbacktrace: don't free ELF strtab if error occurs after saving syminfo
+
+-------------------------------------------------------------------
+Wed Feb 19 13:28:00 UTC 2020 - marec@detebe.org
+
+- Update to version 1.0_git20200218:
+  * libbacktrace: add preliminary Mach-O support
+  * libbacktrace: always pass -g when compiling test code
+  * Update copyright years.
+  * libbacktrace: update to current libgo test file
+  * libbacktrace: support short read
+  * libbacktrace: if debug info large or split, read sections individually
+  * libbacktrace: support fetching executable name using sysctl
+  * libbacktrace: update to current version from GCC trunk
+  * config.guess, config.sub: update to latest versions
+  * config.guess, config.sub: update to current GCC versions
+
+-------------------------------------------------------------------
+Tue Feb 18 19:15:07 UTC 2020 - marec <marec@detebe.org>
+
+- initial package build
