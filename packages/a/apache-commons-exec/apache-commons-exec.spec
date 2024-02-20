@@ -49,8 +49,7 @@ Group:          Documentation/HTML
 This package contains the API documentation for %{name}.
 
 %prep
-%setup -q -n %{short_name}-%{version}-src
-%patch0 -p1
+%autosetup -p1 -n %{short_name}-%{version}-src
 
 # Fix wrong end-of-line encoding
 dos2unix LICENSE.txt NOTICE.txt RELEASE-NOTES.txt STATUS
