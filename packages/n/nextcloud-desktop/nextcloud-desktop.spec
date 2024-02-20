@@ -18,8 +18,9 @@
 
 %define soname  libnextcloudsync
 %define sover   0
+
 Name:           nextcloud-desktop
-Version:        3.11.1
+Version:        3.12.0
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
@@ -205,18 +206,16 @@ cp -a %{SOURCE1} sysctl-sync-inotify.conf
 export SOURCE_DATE_EPOCH=`date -r VERSION.cmake +"%s"`
 %cmake \
 %if 0%{?is_opensuse}
-  -DWITH_DOC=ON
+  -DWITH_DOC=ON \
+  -DCMAKE_INSTALL_DOCDIR=%{_docdir}/%{name} \
 %endif
+%{nil}
 %cmake_build
 
 %install
 %cmake_install
 
-%if 0%{?is_opensuse}
-mkdir -p %{buildroot}%{_docdir}/%{name}-doc/
-mv -f %{buildroot}%{_datadir}/doc/client/nextcloud-client/html/ \
-  %{buildroot}%{_docdir}/%{name}-doc/html/
-%else
+%if 0%{!?is_opensuse}
 # There's no Caja and Nemo in SLE.
 rm -r %{buildroot}%{_datadir}/caja-python/
 rm -r %{buildroot}%{_datadir}/nemo-python/
@@ -258,7 +257,7 @@ done
 
 %if 0%{?is_opensuse}
 %files doc
-%doc %{_docdir}/%{name}-doc/
+%doc %{_docdir}/%{name}/
 %endif
 
 %files -n %{soname}%{sover}
@@ -295,8 +294,12 @@ done
 %{_datadir}/nemo-python/extensions/__pycache__/*
 
 %files -n cloudproviders-extension-nextcloud
+# When built with libcloudproviders >= 0.3.3 the .ini file is no longer required,
+# see https://github.com/nextcloud/desktop/pull/6275
+%if 0%{?suse_version} < 1650
 %dir %{_datadir}/cloud-providers/
 %{_datadir}/cloud-providers/com.nextcloudgmbh.Nextcloud.ini
+%endif
 %{_datadir}/dbus-1/services/com.nextcloudgmbh.Nextcloud.service
 
 %files dolphin

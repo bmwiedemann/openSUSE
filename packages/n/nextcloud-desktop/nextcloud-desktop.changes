@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Sun Feb 18 17:41:51 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Set doc dir consistently after recent cmake macro changes in
+  Factory.
+
+-------------------------------------------------------------------
+Wed Feb 14 08:50:47 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.12.0:
+  * avoid modifying a placeholder (virtual files) when not needed
+    (gh#nextcloud/desktop#6212).
+  * Fix build with latest NextcloudKit, caused by search for
+    XCTest and friends (gh#nextcloud/desktop#6258).
+  * Feature: Do not allow move of external storage mounted
+    folders (gh#nextcloud/desktop#6264).
+  * Feature/client status reporting (gh#nextcloud/desktop#6247).
+  * Bugfix: Fix incorrect size of the folderbutton size and
+    scaling (gh#nextcloud/desktop#6291).
+  * Bugfix: Do not treat item type change as metadata update.
+    (gh#nextcloud/desktop#6285).
+  * ensure we do not modify a file that has been just uploaded
+    (gh#nextcloud/desktop#6297).
+  * Bugfix/missing translations in AppImage
+    (gh#nextcloud/desktop#6332).
+  * Feature/filelocking keep user lock
+    (gh#nextcloud/desktop#6347).
+  * full git path (gh#nextcloud/desktop#6360).
+  * Display terabyte again (gh#nextcloud/desktop#6286).
+  * GUI/LIBSYNC: force login flow V2 with config setting
+    (gh#nextcloud/desktop#6261).
+  * Avoid duplicate declarations with latest libcloudproviders
+    (gh#nextcloud/desktop#6275).
+  * Spell-correction for e2e_errors (gh#nextcloud/desktop#6354).
+  * Bugfix/autostart (gh#nextcloud/desktop#6342).
+  * globally enable use of the xcode hardened runtime
+    (gh#nextcloud/desktop#6378).
+  * Fix: remove failure to import legacy account notification.
+    (gh#nextcloud/desktop#6381).
+  * Feature/e2ee v2 foldersharing (gh#nextcloud/desktop#6350).
+  * partial build fix when TOKEN_AUTH_ONLY is enabled at configure
+    time (gh#nextcloud/desktop#6370).
+  * Simplify window positioning compute, more flexibly handle
+    different available geometries (gh#nextcloud/desktop#6353).
+  * Allow event processing between each XML parser run, to improve
+    GUI performance (gh#nextcloud/desktop#6392).
+  * partial move of some checks done with drone to github actions
+    (gh#nextcloud/desktop#6395).
+  * Bugfix: Random crash in LsColJob after recent changes.
+    (gh#nextcloud/desktop#6396).
+  * fix(i18n): uppercase ID (gh#nextcloud/desktop#6415).
+  * wait longer to get the contextual menu entries: may be
+    necessary (gh#nextcloud/desktop#6417).
+  * docs(conffile) Update chunk sizes to match v2 chunking PR
+    defaults (gh#nextcloud/desktop#6435).
+  * suppress deprecated warnings from openssl
+    (gh#nextcloud/desktop#6436).
+  * Fix undefined sync status reporting in tray icon
+    (gh#nextcloud/desktop#6437).
+  * Improve how the UI shows that the client is actually syncing
+    (gh#nextcloud/desktop#6438).
+  * Do not create systray notification if there are no errors.
+    (gh#nextcloud/desktop#6439).
+  * clean up some qml code for share dialog
+    (gh#nextcloud/desktop#6441).
+- Conditionalise packaging of .ini files for libcloudproviders on
+  openSUSE_version < 1650, since this is no longer required or
+  installed when built with libcloudproviders >= 0.3.3.
+
+-------------------------------------------------------------------
 Tue Jan 30 10:40:18 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.11.1:
