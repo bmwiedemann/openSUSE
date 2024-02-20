@@ -1,7 +1,7 @@
 #
 # spec file for package libzypp-plugin-appdata
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libzypp-plugin-appdata
-Version:        1.0.1+git.20230117
+Version:        1.0.1+git.20240209
 Release:        0
 Summary:        libzypp extension to handle AppStream metadata
 License:        CC0-1.0 AND MIT
@@ -26,13 +26,13 @@ URL:            https://wiki.gnome.org/Design/Apps/Software
 Source0:        openSUSE-appstream-%{version}.tar.xz
 Source99:       libzypp-plugin-appdata-rpmlintrc
 # appstream-glib >= 0.3.6 is the first to correctly to appstream-util uninstall in /var/cache
-Requires:       appstream-glib >= 0.3.6
+Requires:       (appstream-glib >= 0.3.6 with asglib(swcatalog))
 # appdata hook was introduced in libzypp 14.29.4
 Requires:       libzypp >= 14.29.4
 # AsHelper is a python program with few dependencies
 Requires:       python3-cmdln
 Requires:       python3-createrepo_c
-Requires(post): appstream-glib >= 0.3.6
+Requires(post): (appstream-glib >= 0.3.6 with asglib(swcatalog))
 # libzypp 16.13.1 was the version gaingin support for ZYPP_PLUGIN_APPDATA_FORCE_COLLECT
 Requires(post): libzypp >= 16.13.1
 Requires(post): python3-cmdln

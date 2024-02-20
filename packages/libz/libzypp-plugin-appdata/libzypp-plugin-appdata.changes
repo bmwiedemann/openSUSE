@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Feb 09 12:59:27 UTC 2024 - dimstar@opensuse.org
+
+- Update to version 1.0.1+git.20240209:
+  * Move to /var/cache/swcatalog
+  * Remove Google Plus web app
+  * make google-chrome.xml pass appstream validation
+  * Add a type=remote icon for google-chrome
+  * Use application-x-addon for codec icons
+  * Add screenshots for Chromium
+  * Wings3d apddata file merged upstream
+  * Tag the web-apps with the correct license IDs
+  * Add Telegram web app
+  * added screenshot for IQMol
+  * added screenshot for FBReader
+  * Updated Cmake screenshot to a HighDPI version
+  * Ensure all the webapps have valid icons
+  * Fix the list of webapps to be a single XML document
+  * Merge the webapps into one file
+  * Convert the codec AppData files to 0.6 format
+  * Upgrade the IBus AppData files to 0.6 format
+  * Add the licence changes for the GStreamer packages
+  * Add the GStreamer AppStream descriptions for gstreamer1-libav
+- Require appstream-glib with the asglib(swcatalog) symbol: ensure
+  we support the new location.
+
+-------------------------------------------------------------------
 Tue Jan 17 12:02:21 UTC 2023 - dimstar@opensuse.org
 
 - Update to version 1.0.1+git.20230117:
