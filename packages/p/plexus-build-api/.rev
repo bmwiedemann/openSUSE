@@ -31,4 +31,12 @@
     <comment>Fix a javadoc error</comment>
     <requestid>978181</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>ef1f71833f556bfbe1d2b8e372891d19</srcmd5>
+    <version>0.0.7</version>
+    <time>1708460151</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148111</requestid>
+  </revision>
 </revisionlist>

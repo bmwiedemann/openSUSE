@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-build-api
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,12 +31,11 @@ Patch0:         plexus-build-api-utils-3.3.0.patch
 Patch1:         plexus-build-api-javadoc.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-containers-container-default
 BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
-Requires:       mvn(org.codehaus.plexus:plexus-utils)
 BuildArch:      noarch
 
 %description
@@ -51,8 +50,8 @@ API documentation for %{name}.
 
 %prep
 %setup -q -n sonatype-sisu-build-api-f1f8849
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 cp -p %{SOURCE1} .
 cp -p %{SOURCE2} build.xml
 
@@ -70,7 +69,7 @@ install -dm 0755 %{buildroot}%{_javadir}/plexus
 install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/plexus/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/plexus
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/plexus/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/plexus/%{name}.pom
 %add_maven_depmap plexus/%{name}.pom plexus/%{name}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
