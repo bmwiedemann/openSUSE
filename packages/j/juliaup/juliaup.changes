@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Feb 19 08:44:28 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Juliaup requires git and ca-certificates
+
+-------------------------------------------------------------------
+Thu Feb 15 15:53:25 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Change BuildRequires from rust+cargo to cargo
+- Update to version 1.14.5:
+  * Update CHANGELOG
+  * Fix more StoreBroker bugs
+  * Update CHANGELOG
+  * Fix downgrade of powerhsell
+  * Try a different fix for StoreBroker bug
+  * Try a fix for StoreBroker
+  * Fix typo in CHANGELOG
+  * Update CHANGELOG
+  * Update CHANGELOG
+  * Work around a StoreBroker bug
+  * Add CHANGELOG.md
+  * Automatically generate release notes
+  * Add documentation for nightly
+  * Disable fail fast
+  * Update dependencies
+  * Fix formatting
+  * Add some basic tests
+  * Add nightly to getconfig1 api
+  * Fix a compiler warning
+  * Fix a warning
+  * Implement nightly on Linux/Mac
+  * Enable a symlink option
+  * Add nightly update available status message
+  * Format files
+  * Don't fail fast
+  * Fix status for nightly
+  * Format files
+  * Fix tests
+  * Implement update for nightly on Windows
+  * Change nightly config schema a bit
+  * Try a different strategy for nightly
+  * Update dependencies
+  * Fix logic for stripping channel selector from command line
+  * Update version db
+  * Revert "feat: support nightly channel"
+  * Add support for nightlies
+  * Some minor cleanup
+  * Make the nightly update interval configurable.
+  * Use the actual nightly's version.
+  * feat: support nightly channel
+  * Add info about the completions command to the README
+  * Add completions command
+  * Only try to upload juliainstaller artifact if relevant
+
+-------------------------------------------------------------------
 Sun Jan 14 00:32:19 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Remove improve-error-message-if-version-or-channel-is-not-installed.patch as
