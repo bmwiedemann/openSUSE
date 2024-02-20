@@ -86,12 +86,12 @@ running multiple versions of Linux or Unix.
 
 %prep
 %setup -q -n %{name}-%{upstreamver} -a 1 -a 2
-%patch1
-%patch2
-%patch3 -p1
-%patch4 -p1
-%patch6 -p1
-%patch7 -p1
+%patch -P 1
+%patch -P 2
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
 
 %build
 ./autogen
