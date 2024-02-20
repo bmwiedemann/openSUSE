@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Mon Feb 19 09:32:11 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.162.0:
+  New feature
+  * add suppress output line regex support by @yxxhero in #1329
+    see more: https://github.com/helmfile/helmfile/blob/v0.162.0/test/integration/test-cases/suppress-output-line-regex/input/helmfile.yaml.gotmpl
+
+  What's Changed
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.1 to
+    1.50.2 by @dependabot in #1309
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.2 to
+    1.50.3 by @dependabot in #1312
+  * feat: document that jsonPatches et al can be files by
+    @rsrchboy in #1313
+  * build(deps): bump github.com/goccy/go-yaml from 1.11.2 to
+    1.11.3 by @dependabot in #1314
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.3 to
+    1.50.4 by @dependabot in #1315
+  * feat: Bump helm-diff to 3.9.4 by @yxxhero in #1316
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.4 to
+    1.50.5 by @dependabot in #1318
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.5 to
+    1.50.6 by @dependabot in #1319
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.6 to
+    1.50.7 by @dependabot in #1321
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.7 to
+    1.50.8 by @dependabot in #1322
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.8 to
+    1.50.9 by @dependabot in #1323
+  * disable version check for sops while building container
+    image by @itscaro in #1320
+  * build(deps): bump github.com/helmfile/vals from 0.33.0 to
+    0.33.1 by @dependabot in #1325
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.9 to
+    1.50.10 by @dependabot in #1324
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.10 to
+    1.50.11 by @dependabot in #1328
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.11 to
+    1.50.12 by @dependabot in #1330
+  * feat: update to use go 1.22 by @chenrui333 in #1332
+  * build(deps): bump golang.org/x/term from 0.16.0 to 0.17.0
+    by @dependabot in #1334
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.12 to
+    1.50.13 by @dependabot in #1333
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.13 to
+    1.50.14 by @dependabot in #1336
+  * build(deps): bump golangci/golangci-lint-action from 3 to 4
+    by @dependabot in #1338
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.14 to
+    1.50.15 by @dependabot in #1337
+  * build(deps): bump github.com/helmfile/vals from 0.33.1 to
+    0.34.1 by @dependabot in #1339
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.15 to
+    1.50.17 by @dependabot in #1342
+  * build(deps): bump github.com/helmfile/chartify from 0.17.0 to
+    0.18.1 by @dependabot in #1341
+  * fix: use finer-grained locking when listing releases for diff
+    by @steved in #1343
+  * run deps without chart preparation by @jouve in #1011
+  * build(deps): bump k8s.io/apimachinery from 0.29.1 to 0.29.2
+    by @dependabot in #1348
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.17 to
+    1.50.18 by @dependabot in #1347
+  * build(deps): bump helm.sh/helm/v3 from 3.14.0 to 3.14.1
+    by @dependabot in #1346
+  * fix: version path issue by @yxxhero in #1344
+  * Make it clear that the plugin install prompt is a question
+    by @wallrj in #1355
+  * Update Helm version to v3.14.1 by @yxxhero in #1352
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.18 to
+    1.50.19 by @dependabot in #1357
+  * feat: add suppress output line regex support by @yxxhero
+    in #1329
+- Use go1.22 for building.
+
+-------------------------------------------------------------------
 Wed Jan 24 09:22:29 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.161.0:
