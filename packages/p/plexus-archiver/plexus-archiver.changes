@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 14:53:23 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Sep  6 07:09:33 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 4.8.0

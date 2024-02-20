@@ -40,4 +40,12 @@
     <comment>Clarify CVE and bsc#</comment>
     <requestid>1116073</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>359b0c6535cf57b2fb4d9ca41c052b7f</srcmd5>
+    <version>4.8.0</version>
+    <time>1708460154</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148128</requestid>
+  </revision>
 </revisionlist>

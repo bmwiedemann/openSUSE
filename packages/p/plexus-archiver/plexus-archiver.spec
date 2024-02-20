@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-archiver
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,7 +59,7 @@ Javadoc for %{name}.
 %setup -q -n %{name}-%{name}-%{version}
 cp %{SOURCE1} build.xml
 
-%patch0 -p1
+%patch -P 0 -p1
 %pom_remove_dep org.iq80.snappy:snappy
 rm -rf src/main/java/org/codehaus/plexus/archiver/snappy
 rm -rf src/test/java/org/codehaus/plexus/archiver/snappy
@@ -67,7 +67,7 @@ rm -f src/main/java/org/codehaus/plexus/archiver/tar/SnappyTarFile.java
 rm -f src/main/java/org/codehaus/plexus/archiver/tar/PlexusIoTarSnappyFileResourceCollection.java
 rm -r src/test/java/org/codehaus/plexus/archiver/tar/TarSnappyUnArchiverTest.java
 
-%patch1 -p1
+%patch -P 1 -p1
 %pom_remove_dep com.github.luben:zstd-jni
 rm -rf src/main/java/org/codehaus/plexus/archiver/zstd
 rm -rf src/test/java/org/codehaus/plexus/archiver/zstd
