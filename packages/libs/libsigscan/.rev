@@ -162,4 +162,12 @@ Required by recent python-dfVFS release</comment>
     <comment>python 3.12 build fix</comment>
     <requestid>1144601</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f6cb5c87597d38247621b5c6dccc0515</srcmd5>
+    <version>20240219</version>
+    <time>1708460087</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20240219</comment>
+    <requestid>1147674</requestid>
+  </revision>
 </revisionlist>
