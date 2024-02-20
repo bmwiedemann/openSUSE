@@ -1,0 +1,357 @@
+--- groovy-core-GROOVY_1_8_9/src/main/groovy/lang/MetaClassImpl.java	2023-09-26 13:31:23.326209336 +0200
++++ groovy-core-GROOVY_1_8_9/src/main/groovy/lang/MetaClassImpl.java	2023-09-26 22:32:37.407884437 +0200
+@@ -135,7 +135,7 @@
+     private Index classPropertyIndexForSuper = new MethodIndex();
+     private final SingleKeyHashMap staticPropertyIndex = new SingleKeyHashMap();
+ 
+-    private final Map<String, MetaMethod> listeners = new HashMap<String, MetaMethod>();
++    private final Map<String, MetaMethod> listeners = new TreeMap<String, MetaMethod>();
+     private FastArray constructors;
+     private final List<MetaMethod> allMethods = new ArrayList<MetaMethod>();
+     private boolean initialized;
+@@ -143,7 +143,7 @@
+     private final MetaProperty arrayLengthProperty = new MetaArrayLengthProperty();
+     private static final MetaMethod AMBIGUOUS_LISTENER_METHOD = new DummyMetaMethod();
+     private static final Object[] EMPTY_ARGUMENTS = {};
+-    private final Set<MetaMethod> newGroovyMethodsSet = new HashSet<MetaMethod>();
++    private final Set<MetaMethod> newGroovyMethodsSet = new LinkedHashSet<MetaMethod>();
+ 
+     private MetaMethod genericGetMethod;
+     private MetaMethod genericSetMethod;
+--- groovy-core-GROOVY_1_8_9/src/main/groovy/util/ProxyGenerator.java	2023-09-26 13:31:23.332876047 +0200
++++ groovy-core-GROOVY_1_8_9/src/main/groovy/util/ProxyGenerator.java	2023-09-26 22:14:38.014274779 +0200
+@@ -96,7 +96,7 @@
+     }
+ 
+     public GroovyObject instantiateAggregateFromBaseClass(Closure cl, Class clazz) {
+-        Map<String, Closure> m = new HashMap<String, Closure>();
++        Map<String, Closure> m = new TreeMap<String, Closure>();
+         m.put("*", cl);
+         return instantiateAggregateFromBaseClass(m, clazz, null);
+     }
+@@ -132,7 +132,7 @@
+     }
+ 
+     public GroovyObject instantiateAggregate(Map closureMap, List<Class> interfaces, Class clazz, Object[] constructorArgs) {
+-        Map map = new HashMap();
++        Map map = new LinkedHashMap();
+         if (closureMap != null) {
+             map = closureMap;
+         }
+@@ -181,7 +181,7 @@
+         buffer.append("    }\n");
+ 
+         // add overwriting methods
+-        Map<String, Method> selectedMethods = new HashMap<String, Method>();
++        Map<String, Method> selectedMethods = new TreeMap<String, Method>();
+         List<Method> publicAndProtectedMethods = getInheritedMethods(baseClass, new ArrayList<Method>());
+         boolean closureIndicator = map.containsKey("*");
+         for (Method method : publicAndProtectedMethods) {
+@@ -269,7 +269,7 @@
+     }
+ 
+     public GroovyObject instantiateDelegateWithBaseClass(Map closureMap, List<Class> interfaces, Object delegate, Class baseClass, String name) {
+-        Map map = new HashMap();
++        Map map = new LinkedHashMap();
+         if (closureMap != null) {
+             map = closureMap;
+         }
+--- groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/antlr/AntlrParserPlugin.java	2023-09-26 13:31:23.336209403 +0200
++++ groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/antlr/AntlrParserPlugin.java	2023-09-26 22:39:50.777395449 +0200
+@@ -42,7 +42,7 @@
+ import java.security.AccessController;
+ import java.security.PrivilegedAction;
+ import java.util.ArrayList;
+-import java.util.HashSet;
++import java.util.TreeSet;
+ import java.util.Iterator;
+ import java.util.LinkedList;
+ import java.util.List;
+@@ -2573,7 +2573,7 @@
+     private void checkDuplicateNamedParams(AST elist, List expressionList) {
+         if (expressionList.isEmpty()) return;
+ 
+-        Set<String> namedArgumentNames = new HashSet<String>();
++        Set<String> namedArgumentNames = new TreeSet<String>();
+         for (Object expression : expressionList) {
+             MapEntryExpression meExp = (MapEntryExpression) expression;
+             if (meExp.getKeyExpression() instanceof ConstantExpression) {
+--- groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/ast/ClassNode.java	2023-09-26 13:31:23.339542759 +0200
++++ groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/ast/ClassNode.java	2023-09-26 22:58:08.701195570 +0200
+@@ -406,7 +406,7 @@
+     }
+ 
+     public Set<ClassNode> getAllInterfaces () {
+-        Set<ClassNode> res = new HashSet<ClassNode>();
++        Set<ClassNode> res = new LinkedHashSet<ClassNode>();
+         getAllInterfaces(res);
+         return res;
+     }
+--- groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/ast/VariableScope.java	2023-09-26 13:31:23.339542759 +0200
++++ groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/ast/VariableScope.java	2023-09-26 20:06:22.392879780 +0200
+@@ -16,8 +16,8 @@
+ package org.codehaus.groovy.ast;
+ 
+ import java.util.Collections;
+-import java.util.HashMap;
+ import java.util.Iterator;
++import java.util.LinkedHashMap;
+ import java.util.Map;
+ 
+ /**
+@@ -107,18 +107,15 @@
+         VariableScope copy = new VariableScope();
+         copy.clazzScope = clazzScope;
+         if (declaredVariables.size() > 0) {
+-          copy.declaredVariables = new HashMap<String, Variable>();
+-          copy.declaredVariables.putAll(declaredVariables);
++          copy.declaredVariables = new LinkedHashMap<String, Variable>(declaredVariables);
+         }
+         copy.inStaticContext = inStaticContext;
+         copy.parent = parent;
+         if (referencedClassVariables.size() > 0) {
+-            copy.referencedClassVariables = new HashMap<String, Variable>();
+-            copy.referencedClassVariables.putAll(referencedClassVariables);
++            copy.referencedClassVariables = new LinkedHashMap<String, Variable>(referencedClassVariables);
+         }
+         if (referencedLocalVariables.size() > 0) {
+-            copy.referencedLocalVariables = new HashMap<String, Variable>();
+-            copy.referencedLocalVariables.putAll(referencedLocalVariables);
++            copy.referencedLocalVariables = new LinkedHashMap<String, Variable>(referencedLocalVariables);
+         }
+         copy.resolvesDynamic = resolvesDynamic;
+         return copy;
+@@ -126,7 +123,7 @@
+ 
+     public void putDeclaredVariable(Variable var) {
+         if (declaredVariables == Collections.EMPTY_MAP)
+-          declaredVariables = new HashMap<String, Variable>();
++          declaredVariables = new LinkedHashMap<String, Variable>();
+         declaredVariables.put(var.getName(), var);
+     }
+ 
+@@ -144,13 +141,13 @@
+ 
+     public void putReferencedLocalVariable(Variable var) {
+         if (referencedLocalVariables == Collections.EMPTY_MAP)
+-          referencedLocalVariables = new HashMap<String, Variable>();
++          referencedLocalVariables = new LinkedHashMap<String, Variable>();
+         referencedLocalVariables.put(var.getName(), var);
+     }
+ 
+     public void putReferencedClassVariable(Variable var) {
+         if (referencedClassVariables == Collections.EMPTY_MAP)
+-          referencedClassVariables = new HashMap<String, Variable>();
++          referencedClassVariables = new LinkedHashMap<String, Variable>();
+         referencedClassVariables.put(var.getName(), var);
+     }
+ 
+--- groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/classgen/asm/ClosureWriter.java	2023-09-26 13:31:23.342876115 +0200
++++ groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/classgen/asm/ClosureWriter.java	2023-09-26 22:27:19.219143281 +0200
+@@ -15,7 +15,7 @@
+  */
+ package org.codehaus.groovy.classgen.asm;
+ 
+-import java.util.HashMap;
++import java.util.LinkedHashMap;
+ import java.util.Iterator;
+ import java.util.List;
+ 
+@@ -54,12 +54,12 @@
+     
+     protected interface UseExistingReference {}
+ 
+-    private HashMap<Expression,ClassNode> closureClassMap;
++    private LinkedHashMap<Expression,ClassNode> closureClassMap;
+     private WriterController controller;
+     
+     public ClosureWriter(WriterController wc) {
+         this.controller = wc;
+-        closureClassMap = new HashMap<Expression,ClassNode>();
++        closureClassMap = new LinkedHashMap<Expression,ClassNode>();
+     }
+ 
+     public void writeClosure(ClosureExpression expression) {
+--- groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/classgen/asm/MopWriter.java	2023-09-26 13:31:23.342876115 +0200
++++ groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/classgen/asm/MopWriter.java	2023-09-26 22:29:22.783273049 +0200
+@@ -16,7 +16,7 @@
+ package org.codehaus.groovy.classgen.asm;
+ 
+ import java.lang.reflect.Modifier;
+-import java.util.HashMap;
++import java.util.LinkedHashMap;
+ import java.util.LinkedList;
+ import java.util.List;
+ 
+@@ -78,7 +78,7 @@
+      * @see #generateMopCalls(LinkedList, boolean)
+      */
+     private void visitMopMethodList(List methods, boolean isThis) {
+-        HashMap<MopKey, MethodNode> mops = new HashMap<MopKey, MethodNode>();
++        LinkedHashMap<MopKey, MethodNode> mops = new LinkedHashMap<MopKey, MethodNode>();
+         LinkedList<MethodNode> mopCalls = new LinkedList<MethodNode>();
+         for (Object method : methods) {
+             MethodNode mn = (MethodNode) method;
+--- groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/classgen/Verifier.java	2023-09-26 13:31:23.342876115 +0200
++++ groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/classgen/Verifier.java	2023-09-26 22:31:15.637347467 +0200
+@@ -139,7 +139,7 @@
+         for (ClassNode classNode : classNodes) {
+             interfaces.add(classNode.getName());
+         }
+-        Set<String> interfaceSet = new HashSet<String>(interfaces);
++        Set<String> interfaceSet = new TreeSet<String>(interfaces);
+         if (interfaceSet.size() != interfaces.size()) {
+             throw new RuntimeParserException("Duplicate interfaces in implements list: " + interfaces, classNode);
+         }
+@@ -832,7 +832,7 @@
+         List<Statement> staticStatements = new ArrayList<Statement>();
+         final boolean isEnum = node.isEnum();
+         List<Statement> initStmtsAfterEnumValuesInit = new ArrayList<Statement>();
+-        Set<String> explicitStaticPropsInEnum = new HashSet<String>();
++        Set<String> explicitStaticPropsInEnum = new TreeSet<String>();
+         if (isEnum) {
+             for (PropertyNode propNode : node.getProperties()) {
+                 if (!propNode.isSynthetic() && propNode.getField().isStatic()) {
+@@ -1051,12 +1051,12 @@
+     }
+ 
+     protected void addCovariantMethods(ClassNode classNode) {
+-        Map methodsToAdd = new HashMap();
+-        Map genericsSpec = new HashMap();
++        Map methodsToAdd = new LinkedHashMap();
++        Map genericsSpec = new LinkedHashMap();
+ 
+         // unimplemented abstract methods from interfaces
+-        Map abstractMethods = new HashMap();
+-        Map<String, MethodNode> allInterfaceMethods = new HashMap<String, MethodNode>();
++        Map abstractMethods = new LinkedHashMap();
++        Map<String, MethodNode> allInterfaceMethods = new TreeMap<String, MethodNode>();
+         ClassNode[] interfaces = classNode.getInterfaces();
+         for (ClassNode iface : interfaces) {
+             Map ifaceMethodsMap = iface.getDeclaredMethodsMap();
+@@ -1086,7 +1086,7 @@
+ 
+         addCovariantMethods(classNode, declaredMethods, abstractMethods, methodsToAdd, genericsSpec);
+ 
+-        Map<String, MethodNode> declaredMethodsMap = new HashMap<String, MethodNode>();
++        Map<String, MethodNode> declaredMethodsMap = new TreeMap<String, MethodNode>();
+         if (methodsToAdd.size() > 0) {
+             for (MethodNode mn : declaredMethods) {
+                 declaredMethodsMap.put(mn.getTypeDescriptor(), mn);
+@@ -1336,7 +1336,7 @@
+     }
+ 
+     private Map createGenericsSpec(ClassNode current, Map oldSpec) {
+-        Map ret = new HashMap(oldSpec);
++        Map ret = new LinkedHashMap(oldSpec);
+         // ret contains the type specs, what we now need is the type spec for the
+         // current class. To get that we first apply the type parameters to the
+         // current class and then use the type names of the current class to reset
+--- groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/runtime/ClassExtender.java	2023-09-26 13:31:23.352876182 +0200
++++ groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/runtime/ClassExtender.java	2023-09-26 22:52:18.192281834 +0200
+@@ -17,7 +17,7 @@
+ 
+ import groovy.lang.Closure;
+ 
+-import java.util.HashMap;
++import java.util.LinkedHashMap;
+ import java.util.Map;
+ 
+ 
+@@ -82,6 +82,6 @@
+     }
+ 
+     protected Map createMap() {
+-        return new HashMap();
++        return new LinkedHashMap();
+     }
+ }
+--- groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/tools/javac/JavaStubGenerator.java	2023-09-26 13:31:23.359542893 +0200
++++ groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/tools/javac/JavaStubGenerator.java	2023-09-26 22:43:10.372033609 +0200
+@@ -41,7 +41,7 @@
+ import java.io.StringWriter;
+ import java.util.ArrayList;
+ import java.util.Arrays;
+-import java.util.HashMap;
++import java.util.TreeMap;
+ import java.util.Iterator;
+ import java.util.List;
+ import java.util.Map;
+@@ -52,7 +52,7 @@
+     private File outputPath;
+     private List<String> toCompile = new ArrayList<String>();
+     private ArrayList<MethodNode> propertyMethods = new ArrayList<MethodNode>();
+-    private Map<String, MethodNode> propertyMethodsWithSigs = new HashMap<String, MethodNode>();
++    private Map<String, MethodNode> propertyMethodsWithSigs = new TreeMap<String, MethodNode>();
+     private ArrayList<ConstructorNode> constructors = new ArrayList<ConstructorNode>();
+     private ModuleNode currentModule;
+ 
+--- groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/transform/ASTTransformationVisitor.java	2023-09-26 13:31:23.362876249 +0200
++++ groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/transform/ASTTransformationVisitor.java	2023-09-26 19:55:46.378599493 +0200
+@@ -59,7 +59,7 @@
+     private Map<ASTNode, List<ASTTransformation>> transforms;
+     private Map<Class<? extends ASTTransformation>, ASTTransformation> transformInstances;
+     private static CompilationUnit compUnit;
+-    private static Set<String> globalTransformNames = new HashSet<String>();
++    private static Set<String> globalTransformNames = new LinkedHashSet<String>();
+ 
+     private ASTTransformationVisitor(CompilePhase phase) {
+         this.phase = phase;
+--- groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/transform/CategoryASTTransformation.java	2023-09-26 13:31:23.362876249 +0200
++++ groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/transform/CategoryASTTransformation.java	2023-09-26 19:55:31.251830932 +0200
+@@ -31,7 +31,7 @@
+ import groovy.lang.Reference;
+ 
+ import java.util.Arrays;
+-import java.util.HashSet;
++import java.util.LinkedHashSet;
+ import java.util.LinkedList;
+ import java.util.List;
+ import java.util.Set;
+@@ -71,7 +71,7 @@
+         ClassNode targetClass = getTargetClass(source, annotation);
+ 
+         final LinkedList<Set<String>> varStack = new LinkedList<Set<String>>();
+-        Set<String> names = new HashSet<String>();
++        Set<String> names = new LinkedHashSet<String>();
+         for (FieldNode field : parent.getFields()) {
+             names.add(field.getName());
+         }
+@@ -83,7 +83,7 @@
+             }
+ 
+             private void addVariablesToStack(Parameter[] params) {
+-                Set<String> names = new HashSet<String>();
++                Set<String> names = new LinkedHashSet<String>();
+                 names.addAll(varStack.getLast());
+                 for (Parameter param : params) {
+                     names.add(param.getName());
+@@ -107,7 +107,7 @@
+ 
+             @Override
+             public void visitBlockStatement(BlockStatement block) {
+-                Set<String> names = new HashSet<String>();
++                Set<String> names = new LinkedHashSet<String>();
+                 names.addAll(varStack.getLast());
+                 varStack.add(names);
+                 super.visitBlockStatement(block);
+--- groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/transform/DelegateASTTransformation.java	2023-09-26 13:31:23.362876249 +0200
++++ groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/transform/DelegateASTTransformation.java	2023-09-26 19:51:23.170159705 +0200
+@@ -34,7 +34,7 @@
+ import java.util.ArrayList;
+ import java.util.Arrays;
+ import java.util.Collections;
+-import java.util.HashSet;
++import java.util.LinkedHashSet;
+ import java.util.List;
+ import java.util.Set;
+ 
+@@ -111,7 +111,7 @@
+     }
+ 
+     private Set<ClassNode> getInterfacesAndSuperInterfaces(ClassNode type) {
+-        Set<ClassNode> res = new HashSet<ClassNode>();
++        Set<ClassNode> res = new LinkedHashSet<ClassNode>();
+         if (type.isInterface()) {
+             res.add(type);
+             return res;

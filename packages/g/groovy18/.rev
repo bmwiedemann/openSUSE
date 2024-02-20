@@ -63,4 +63,12 @@
     <comment>reproducibility improvements</comment>
     <requestid>1112264</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>2d697ae222e1e174574058fb317d146b</srcmd5>
+    <version>1.8.9</version>
+    <time>1708460147</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148105</requestid>
+  </revision>
 </revisionlist>

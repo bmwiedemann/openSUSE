@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 20 14:34:44 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Tue Sep 26 18:10:22 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * groovy18-reproducible-bytecode.patch
+    + backport of upstream changes to have interface methods and
+      collected variables always in the same order
+
+-------------------------------------------------------------------
 Thu Sep 14 16:34:06 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
