@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb 19 09:11:00 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.31.9:
+  * K9s/release v0.31.9 (#2543)
+  * Add moon and dawn variants (#2537)
+  * fix: issue 2175 - fallback to env names when cannot get
+    username from user.Current() (#2505)
+  * fix the --write flag (#2531)
+  * Bump golangci/golangci-lint-action from 3.7.0 to 4.0.0 (#2534)
+  * Bump helm.sh/helm/v3 from 3.14.0 to 3.14.1 (#2541)
+  * feat: allow override of plugins & hotkeys shortcuts (#2510)
+  * Add liveMigration example to plugins (#2522)
+
+-------------------------------------------------------------------
 Wed Feb 07 06:48:25 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.31.8:
