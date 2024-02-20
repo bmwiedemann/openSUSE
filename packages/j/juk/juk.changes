@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 16:00:54 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to fix build with taglib 2:
+  * 0001-Fix-build-with-taglib-2.patch
+
+-------------------------------------------------------------------
 Tue Dec  5 14:19:08 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.4

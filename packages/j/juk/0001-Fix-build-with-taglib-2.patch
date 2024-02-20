@@ -1,0 +1,41 @@
+From db3bab2c24c3d75a11ddbbe3d2d8bfc920f19299 Mon Sep 17 00:00:00 2001
+From: Antonio Rojas <arojas@archlinux.org>
+Date: Wed, 24 Jan 2024 17:40:16 +0100
+Subject: [PATCH] Fix build with taglib 2
+
+Drop unused includes that no longer exist
+
+(cherry picked from commit 5389ae860ca4c672c022cad7e51c48bc699fcba3)
+---
+ mediafiles.cpp | 1 -
+ mediafiles.h   | 2 --
+ 2 files changed, 3 deletions(-)
+
+diff --git a/mediafiles.cpp b/mediafiles.cpp
+index 8a4fc38f..086bf48d 100644
+--- a/mediafiles.cpp
++++ b/mediafiles.cpp
+@@ -29,7 +29,6 @@
+ #include <QMimeDatabase>
+ 
+ #include <taglib.h>
+-#include <taglib_config.h>
+ #include <tag.h>
+ #include <mpegfile.h>
+ #include <vorbisfile.h>
+diff --git a/mediafiles.h b/mediafiles.h
+index 81ab4b8a..41decb34 100644
+--- a/mediafiles.h
++++ b/mediafiles.h
+@@ -28,8 +28,6 @@ namespace TagLib {
+     class File;
+ }
+ 
+-#include <taglib_config.h>
+-
+ /**
+  * A namespace for file JuK's file related functions.  The goal is to hide
+  * all specific knowledge of mimetypes and file extensions here.
+-- 
+2.43.1
+

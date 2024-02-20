@@ -28,6 +28,8 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-build-with-taglib-2.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libtag-devel
 BuildRequires:  update-desktop-files
