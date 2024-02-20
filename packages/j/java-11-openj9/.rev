@@ -167,4 +167,12 @@
     <comment>OpenJDK 11.0.22 with OpenJ9 0.43</comment>
     <requestid>1146349</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>4aa52916ebdb2bb23d46399360714b4a</srcmd5>
+    <version>11.0.22.0</version>
+    <time>1708460167</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148218</requestid>
+  </revision>
 </revisionlist>
