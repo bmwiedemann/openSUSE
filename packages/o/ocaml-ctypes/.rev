@@ -56,4 +56,12 @@
   contain a dot are not considered valid anymore with dune 3.13</comment>
     <requestid>1139272</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0844b087e9269c156c2a49e7388a74d5</srcmd5>
+    <version>0.22.0</version>
+    <time>1708460032</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1147593</requestid>
+  </revision>
 </revisionlist>

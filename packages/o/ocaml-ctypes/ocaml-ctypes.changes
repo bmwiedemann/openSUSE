@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 12 12:12:12 UTC 2024 - ohering@suse.de
+
+- Update to version 0.22.0
+  see included CHANGES.md file for details
+
+-------------------------------------------------------------------
 Tue Jan 16 16:16:16 UTC 2024 - ohering@suse.de
 
 - Remove usage of dune.configurator because ocamlfind names which
