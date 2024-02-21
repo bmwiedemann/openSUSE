@@ -1,3 +1,6 @@
+ddiss: rebase atop 37fda2c ("autofs-5.1.8 - add soucre parameter to
+       module functions")
+
 ---
  Makefile.conf.in        |    3 
  daemon/lookup.c         |    4 
@@ -12,10 +15,10 @@
  samples/autofs.udisks   |   28 
  11 files changed, 3004 insertions(+), 1 deletion(-)
 
-Index: autofs-5.1.8/Makefile.conf.in
+Index: autofs-5.1.9/Makefile.conf.in
 ===================================================================
---- autofs-5.1.8.orig/Makefile.conf.in
-+++ autofs-5.1.8/Makefile.conf.in
+--- autofs-5.1.9.orig/Makefile.conf.in
++++ autofs-5.1.9/Makefile.conf.in
 @@ -46,6 +46,9 @@ KRB5_FLAGS=@KRB5_FLAGS@
  # NIS+ support: yes (1) no (0)
  NISPLUS = @HAVE_NISPLUS@
@@ -26,11 +29,11 @@ Index: autofs-5.1.8/Makefile.conf.in
  # SMBFS support: yes (1) no (0)
  SMBFS = @HAVE_SMBMOUNT@
  
-Index: autofs-5.1.8/daemon/lookup.c
+Index: autofs-5.1.9/daemon/lookup.c
 ===================================================================
---- autofs-5.1.8.orig/daemon/lookup.c
-+++ autofs-5.1.8/daemon/lookup.c
-@@ -198,6 +198,10 @@ int lookup_nss_read_master(struct master
+--- autofs-5.1.9.orig/daemon/lookup.c
++++ autofs-5.1.9/daemon/lookup.c
+@@ -200,6 +200,10 @@ int lookup_nss_read_master(struct master
  				 (name[3] == ',' || name[3] == ':')) ||
  			    (!strncmp(name, "nisplus", 7) &&
  				 (name[7] == ',' || name[7] == ':')) ||
@@ -41,10 +44,10 @@ Index: autofs-5.1.8/daemon/lookup.c
  			    (!strncmp(name, "ldap", 4) &&
  				 (name[4] == ',' || name[4] == ':')) ||
  			    (!strncmp(name, "ldaps", 5) &&
-Index: autofs-5.1.8/daemon/master_tok.l
+Index: autofs-5.1.9/daemon/master_tok.l
 ===================================================================
---- autofs-5.1.8.orig/daemon/master_tok.l
-+++ autofs-5.1.8/daemon/master_tok.l
+--- autofs-5.1.9.orig/daemon/master_tok.l
++++ autofs-5.1.9/daemon/master_tok.l
 @@ -123,7 +123,7 @@ DNNAMESTR2	([[:alnum:]_.\-]+)
  INTMAP		(-hosts|-null)
  MULTI		((multi)(,(sun|hesiod))?(:{OPTWS}|{WS}))
@@ -54,10 +57,10 @@ Index: autofs-5.1.8/daemon/master_tok.l
  
  
  OPTTOUT		(-t{OPTWS}|-t{OPTWS}={OPTWS}|--timeout{OPTWS}|--timeout{OPTWS}={OPTWS})
-Index: autofs-5.1.8/include/lookup_udisks.h
+Index: autofs-5.1.9/include/lookup_udisks.h
 ===================================================================
 --- /dev/null
-+++ autofs-5.1.8/include/lookup_udisks.h
++++ autofs-5.1.9/include/lookup_udisks.h
 @@ -0,0 +1,381 @@
 +/*
 + * loopup_udisks.h - Header file for lookup_udisks automount module
@@ -440,10 +443,10 @@ Index: autofs-5.1.8/include/lookup_udisks.h
 +} cnfxml_t;
 +
 +#endif
-Index: autofs-5.1.8/lib/parse_subs.c
+Index: autofs-5.1.9/lib/parse_subs.c
 ===================================================================
---- autofs-5.1.8.orig/lib/parse_subs.c
-+++ autofs-5.1.8/lib/parse_subs.c
+--- autofs-5.1.9.orig/lib/parse_subs.c
++++ autofs-5.1.9/lib/parse_subs.c
 @@ -98,6 +98,8 @@ static struct types map_type[] = {
  	{ "yp", 2 },
  	{ "nis", 3 },
@@ -453,10 +456,10 @@ Index: autofs-5.1.8/lib/parse_subs.c
  	{ "ldap", 4 },
  	{ "ldaps", 5 },
  	{ "hesiod", 6 },
-Index: autofs-5.1.8/man/autofs.udisks.5.in
+Index: autofs-5.1.9/man/autofs.udisks.5.in
 ===================================================================
 --- /dev/null
-+++ autofs-5.1.8/man/autofs.udisks.5.in
++++ autofs-5.1.9/man/autofs.udisks.5.in
 @@ -0,0 +1,121 @@
 +.\" t
 +.TH AUTOFS.UDISKS 5 "22 Aug 2012"
@@ -579,10 +582,10 @@ Index: autofs-5.1.8/man/autofs.udisks.5.in
 +.BR udisks\-daemon (8)
 +.SH AUTHOR
 +This manual page was written by Werner Fink <werner@suse.com>.
-Index: autofs-5.1.8/modules/Makefile
+Index: autofs-5.1.9/modules/Makefile
 ===================================================================
---- autofs-5.1.8.orig/modules/Makefile
-+++ autofs-5.1.8/modules/Makefile
+--- autofs-5.1.9.orig/modules/Makefile
++++ autofs-5.1.9/modules/Makefile
 @@ -62,6 +62,14 @@ ifeq ($(SSSD), 1)
    MODS += lookup_sss.so
  endif
@@ -609,10 +612,10 @@ Index: autofs-5.1.8/modules/Makefile
  mount_nfs.so: mount_nfs.c replicated.o
  	$(CC) $(SOLDFLAGS) $(CFLAGS) -o mount_nfs.so \
  		mount_nfs.c replicated.o $(LDFLAGS) $(LIBS) $(AUTOFS_LIB_LINK)
-Index: autofs-5.1.8/modules/lookup_multi.c
+Index: autofs-5.1.9/modules/lookup_multi.c
 ===================================================================
---- autofs-5.1.8.orig/modules/lookup_multi.c
-+++ autofs-5.1.8/modules/lookup_multi.c
+--- autofs-5.1.9.orig/modules/lookup_multi.c
++++ autofs-5.1.9/modules/lookup_multi.c
 @@ -189,6 +189,8 @@ static struct lookup_mod *nss_open_looku
  	if (!strncmp(argv[0], "file", 4) ||
  	    !strncmp(argv[0], "yp", 2) ||
@@ -622,11 +625,11 @@ Index: autofs-5.1.8/modules/lookup_multi.c
  	    !strncmp(argv[0], "nis", 3) ||
  	    !strncmp(argv[0], "ldaps", 5) ||
  	    !strncmp(argv[0], "ldap", 4) ||
-Index: autofs-5.1.8/modules/lookup_udisks.c
+Index: autofs-5.1.9/modules/lookup_udisks.c
 ===================================================================
 --- /dev/null
-+++ autofs-5.1.8/modules/lookup_udisks.c
-@@ -0,0 +1,2446 @@
++++ autofs-5.1.9/modules/lookup_udisks.c
+@@ -0,0 +1,2411 @@
 +/*
 + * lookup_udisks.c - Module for Linux automount to access removable devices
 + *                   listed by the dbus based udisks-daemon
@@ -2224,7 +2227,6 @@ Index: autofs-5.1.8/modules/lookup_udisks.c
 +int lookup_init(const char *mapfmt, int argc, const char *const *argv, void **context)
 +{
 +	struct lookup_context *restrict ctxt;
-+	const char *address;
 +	struct stat st;
 +	int ret;
 +
@@ -2644,11 +2646,10 @@ Index: autofs-5.1.8/modules/lookup_udisks.c
 +	return NSS_STATUS_UNAVAIL;
 +}
 +
-+int lookup_read_map(struct autofs_point *ap, time_t age, void *context)
++int lookup_read_map(struct autofs_point *ap, struct map_source *source, time_t age, void *context)
 +{
 +	struct lookup_context *ctxt = (struct lookup_context *)context;
-+	struct map_source *source;
-+	struct mapent_cache *mc;
++	struct mapent_cache *mc = source->mc;
 +	int ret, cur_state;
 +	list_t *ptr;
 +
@@ -2657,10 +2658,6 @@ Index: autofs-5.1.8/modules/lookup_udisks.c
 +#if defined(DEBUG) && (DEBUG > 0)
 +	ctxt->ap->logopt = LOGOPT_DEBUG;
 +#endif
-+
-+	source = ap->entry->current;
-+	ap->entry->current = NULL;
-+	master_source_current_signal(ap->entry);
 +
 +	/*
 +	 * If we don't need to create directories then there's no use
@@ -2677,8 +2674,6 @@ Index: autofs-5.1.8/modules/lookup_udisks.c
 +		logerr(MODPREFIX "size of hash array does not fit numbers of symbols");
 +		goto out;
 +	}
-+
-+	mc = source->mc;
 +
 +	pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, &cur_state);
 +	ret = enable_udisks_watchdog(context);
@@ -2750,21 +2745,16 @@ Index: autofs-5.1.8/modules/lookup_udisks.c
 +}
 +
 +static int lookup_one(struct autofs_point *ap,
++	struct map_source *source,
 +	char *key, int key_len,
 +	struct lookup_context *ctxt)
 +{
-+	struct map_source *source;
-+	struct mapent_cache *mc;
++	struct mapent_cache *mc = source->mc;
 +	time_t age = time(NULL);
 +	int ret, cur_state;
 +	entry_t *entry;
 +	list_t *ptr;
 +
-+	source = ap->entry->current;
-+	ap->entry->current = NULL;
-+	master_source_current_signal(ap->entry);
-+
-+	mc = source->mc;
 +
 +	pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, &cur_state);
 +
@@ -2803,27 +2793,18 @@ Index: autofs-5.1.8/modules/lookup_udisks.c
 +}
 +
 +static int check_map_indirect(struct autofs_point *ap,
++	struct map_source *source,
 +	char *key, int key_len,
 +	struct lookup_context *ctxt)
 +{
-+	struct map_source *source;
-+	struct mapent_cache *mc;
++	struct mapent_cache *mc = source->mc;
 +	struct mapent *me;
 +	time_t now = time(NULL);
 +	time_t t_last_read;
 +	int ret, cur_state;
 +
-+	source = ap->entry->current;
-+	ap->entry->current = NULL;
-+	master_source_current_signal(ap->entry);
-+
-+	mc = source->mc;
-+
-+	master_source_current_wait(ap->entry);
-+	ap->entry->current = source;
-+
 +	pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, &cur_state);
-+	ret = lookup_one(ap, key, key_len, ctxt);
++	ret = lookup_one(ap, source, key, key_len, ctxt);
 +	if (ret == CHE_FAIL) {
 +		pthread_setcancelstate(cur_state, NULL);
 +		return NSS_STATUS_NOTFOUND;
@@ -2926,11 +2907,10 @@ Index: autofs-5.1.8/modules/lookup_udisks.c
 +	return ret;
 +}
 +
-+int lookup_mount(struct autofs_point *ap, const char *name, int name_len, void *context)
++int lookup_mount(struct autofs_point *ap, struct map_source *source, const char *name, int name_len, void *context)
 +{
 +	struct lookup_context *ctxt = (struct lookup_context *) context;
-+	struct map_source *source;
-+	struct mapent_cache *mc;
++	struct mapent_cache *mc = source->mc;
 +	struct mapent *me;
 +	char key[KEY_MAX_LEN + 1];
 +	int key_len;
@@ -2938,12 +2918,6 @@ Index: autofs-5.1.8/modules/lookup_udisks.c
 +	char mapent_buf[MAPENT_MAX_LEN + 1];
 +	int status = 0;
 +	int ret = 1;
-+
-+	source = ap->entry->current;
-+	ap->entry->current = NULL;
-+	master_source_current_signal(ap->entry);
-+
-+	mc = source->mc;
 +
 +	debug(ap->logopt, MODPREFIX "looking up %s", name);
 +
@@ -3000,10 +2974,7 @@ Index: autofs-5.1.8/modules/lookup_udisks.c
 +		if (!lkp_key)
 +			return NSS_STATUS_UNKNOWN;
 +
-+		master_source_current_wait(ap->entry);
-+		ap->entry->current = source;
-+
-+		status = check_map_indirect(ap, lkp_key, strlen(lkp_key), ctxt);
++		status = check_map_indirect(ap, source, lkp_key, strlen(lkp_key), ctxt);
 +		free(lkp_key);
 +		if (status) {
 +			if (status == NSS_STATUS_COMPLETED)
@@ -3036,11 +3007,8 @@ Index: autofs-5.1.8/modules/lookup_udisks.c
 +	if (!mapent)
 +		return NSS_STATUS_TRYAGAIN;
 +
-+	master_source_current_wait(ap->entry);
-+	ap->entry->current = source;
-+
 +	debug(ap->logopt, MODPREFIX "%s -> %s", key, mapent);
-+	ret = ctxt->parse->parse_mount(ap, key, key_len,
++	ret = ctxt->parse->parse_mount(ap, source, key, key_len,
 +				       mapent, ctxt->parse->context);
 +	if (ret) {
 +		time_t now = time(NULL);
@@ -3073,11 +3041,11 @@ Index: autofs-5.1.8/modules/lookup_udisks.c
 +out:
 +	return ret;
 +}
-Index: autofs-5.1.8/modules/parse_sun.c
+Index: autofs-5.1.9/modules/parse_sun.c
 ===================================================================
---- autofs-5.1.8.orig/modules/parse_sun.c
-+++ autofs-5.1.8/modules/parse_sun.c
-@@ -947,6 +947,7 @@ static int validate_location(unsigned in
+--- autofs-5.1.9.orig/modules/parse_sun.c
++++ autofs-5.1.9/modules/parse_sun.c
+@@ -965,6 +965,7 @@ static int validate_location(unsigned in
  		    ((esc = strchr(ptr, '\\')) && *(esc + 1) == ':') ||
  		    !strncmp(ptr, "file:", 5) || !strncmp(ptr, "yp:", 3) ||
  		    !strncmp(ptr, "nis:", 4) || !strncmp(ptr, "nisplus:", 8) ||
@@ -3085,10 +3053,10 @@ Index: autofs-5.1.8/modules/parse_sun.c
  		    !strncmp(ptr, "ldap:", 5) || !strncmp(ptr, "ldaps:", 6) ||
  		    !strncmp(ptr, "sss:", 4) || !strncmp(ptr, "dir:", 4))
  			return 1;
-Index: autofs-5.1.8/samples/autofs.udisks
+Index: autofs-5.1.9/samples/autofs.udisks
 ===================================================================
 --- /dev/null
-+++ autofs-5.1.8/samples/autofs.udisks
++++ autofs-5.1.9/samples/autofs.udisks
 @@ -0,0 +1,28 @@
 +<?xml version="1.0" ?>
 +<!--

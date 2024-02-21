@@ -1,4 +1,130 @@
 -------------------------------------------------------------------
+Tue Feb 20 10:27:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Sat Feb 10 13:47:34 UTC 2024 - David Disseldorp <ddiss@suse.com>
+
+- update to 5.1.9 (bsc#1219508)
+  * fix kernel mount status notification.
+  * fix fedfs build flags.
+  * fix set open file limit.
+  * improve descriptor open error reporting.
+  * fix root offset error handling.
+  * fix fix root offset error handling.
+  * fix nonstrict fail handling of last offset mount.
+  * dont fail on duplicate offset entry tree add.
+  * fix loop under run in cache_get_offset_parent().
+  * bailout on rpc systemerror.
+  * fix nfsv4 only mounts should not use rpcbind.
+  * simplify cache_add() a little.
+  * fix use after free in tree_mapent_delete_offset_tree().
+  * fix memory leak in xdr_exports().
+  * avoid calling pthread_getspecific() with NULL key_thread_attempt_id.
+  * fix sysconf(3) return handling.
+  * remove nonstrict parameter from tree_mapent_umount_offsets().
+  * fix handling of incorrect return from umount_ent().
+  * dont use initgroups() at spawn.
+  * fix bashism in configure.
+  * musl: fix missing include in hash.h.
+  * musl: define fallback dummy NSS config path
+  * musl: avoid internal stat.h definitions.
+  * musl: add missing include to hash.h for _WORDSIZE.
+  * musl: add missing include to log.h for pid_t.
+  * musl: define _SWORD_TYPE.
+  * add autofs_strerror_r() helper for musl.
+  * update configure.
+  * handle innetgr() not present in musl.
+  * fix missing unlock in sasl_do_kinit_ext_cc().
+  * fix a couple of null cache locking problems.
+  * restore gcc flags after autoconf Kerberos 5 check.
+  * prepare for OpenLDAP SASL binding.
+  * let OpenLDAP handle SASL binding.
+  * configure: LDAP function checks ignore implicit declarations.
+  * improve debug logging of LDAP binds.
+  * improve debug logging of SASL binds.
+  * internal SASL logging only in debug log mode.
+  * more comprehensive verbose logging for LDAP maps.
+  * fix invalid tsv access.
+  * support SCRAM for SASL binding.
+  * ldap_sasl_interactive_bind() needs credentials for auto-detection.
+  * fix autofs regression due to positive_timeout.
+  * fix parse module instance mutex naming.
+  * serialise lookup module open and reinit.
+  * coverity fix for invalid access.
+  * fix hosts map deadlock on restart.
+  * fix deadlock with hosts map reload.
+  * fix memory leak in update_hosts_mounts().
+  * fix minus only option handling in concat_options().
+  * fix incorrect path for is_mounted() in try_remount().
+  * fix additional tsv invalid access.
+  * fix use_ignore_mount_option description.
+  * include addtional log info for mounts.
+  * fail on empty replicated host name.
+  * improve handling of ENOENT in sss setautomntent().
+  * don't immediately call function when waiting.
+  * define LDAP_DEPRECATED during LDAP configure check.
+  * fix return status of mount_autofs().
+  * don't close lookup at umount.
+  * fix deadlock in lookups.
+  * dont delay expire.
+  * make amd mapent search function name clear.
+  * rename statemachine() to signal_handler().
+  * make signal handling consistent.
+  * eliminate last remaining state_pipe usage.
+  * add function master_find_mapent_by_devid().
+  * use device id to locate autofs_point when setting log priotity.
+  * add command pipe handling functions.
+  * switch to application wide command pipe.
+  * get rid of unused field submnt_count.
+  * fix mount tree startup reconnect.
+  * fix unterminated read in handle_cmd_pipe_fifo_message().
+  * fix memory leak in sasl_do_kinit()
+  * fix fix mount tree startup reconnect.
+  * fix amd selector function matching.
+  * get rid entry thid field.
+  * continue expire immediately after submount check.
+  * eliminate realpath from mount of submount.
+  * eliminate root param from autofs mount and umount.
+  * remove redundant fstat from do_mount_direct().
+  * get rid of strlen call in handle_packet_missing_direct().
+  * remove redundant stat call in lookup_ghost().
+  * set mapent dev and ino before adding to index.
+  * change to use printf functions in amd parser.
+  * dont call umount_subtree_mounts() on parent at umount.
+  * dont take parent source lock at mount shutdown.
+  * fix possible use after free in handle_mounts_exit().
+  * make submount cleanup the same as top level mounts.
+  * add soucre parameter to module functions.
+  * add ioctlfd open helper.
+  * make open files limit configurable.
+  * use correct reference for IN6 macro call.
+  * dont probe interface that cant send packet.
+  * fix some sss error return cases.
+  * fix incorrect matching of cached wildcard key.
+  * fix expire retry looping.
+  * allow -null map in indirect maps.
+  * fix multi-mount check.
+  * fix let OpenLDAP handle SASL binding.
+  * always recreate credential cache.
+  * fix ldap_parse_page_control() check.
+  * fix typo in create_cmd_pipe_fifo().
+  * add null check in master_kill().
+  * be more careful with cmd pipe at exit.
+  * rename configure.in to configure.ac.
+  * update autoconf macros.
+  * update autoconf release.
+  * update autofs release.
+- drop autofs-5-1-3-fix-unset-tsd-group-name-handling.patch, upstream
+  as ab8ca82 ("autofs-5.1.3 - fix unset tsd group name handling")
+- drop autofs-Test-TCP-request-correctly-in-nfs_get_info.patch,
+  superseded by 80845bb ("autofs-5.1.8 - fix nfsv4 only mounts should
+  not use rpcbind")
+- rebase autofs-5.1.1-dbus-udisks-monitor.patch atop 37fda2c
+  ("autofs-5.1.8 - add soucre parameter to module functions")
+
+-------------------------------------------------------------------
 Mon Apr 17 15:21:33 UTC 2023 - Goldwyn Rodrigues <rgoldwyn@suse.com>
 
 - Add autofs-suse-manpage-remove-initdir.patch
