@@ -59,9 +59,7 @@ Utempter is a privileged helper for utmp and wtmp updates.  This
 package contains the library used by applications.
 
 %prep
-%setup -q -n lib%{name}-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n lib%{name}-%{version}
 
 %build
 make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags} -fPIC" CC="gcc" libexecdir=%{_libexecdir}
