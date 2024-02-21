@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 14:42:07 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Switch to '%patch -P'
+- Build with python 3.11 on Leap
+
+-------------------------------------------------------------------
 Wed Nov 22 09:44:27 UTC 2023 - christophe@krop.fr
 
 - Update to version 5.15.16:

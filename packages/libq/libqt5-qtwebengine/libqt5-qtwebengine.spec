@@ -20,10 +20,12 @@
 %bcond_without system_minizip
 %bcond_without pipewire
 # The default python version is too old on Leap 15
-%if 0%{?suse_version} < 1550
-%bcond_without python39
+%{?sle15_python_module_pythons}
+%if 0%{?suse_version} == 1500
+%define pyver python311
 %else
-%bcond_without python3
+# latest
+%define pyver python3
 %endif
 
 # spellchecking dictionary directory
@@ -100,16 +102,9 @@ BuildRequires:  perl-JSON
 BuildRequires:  pipewire-devel
 %endif
 BuildRequires:  pkgconfig
-%if %{with python3}
-BuildRequires:  python3
-BuildRequires:  python3-devel
-BuildRequires:  python3-xml
-%endif
-%if %{with python39}
-BuildRequires:  python39
-BuildRequires:  python39-devel
-BuildRequires:  python39-xml
-%endif
+BuildRequires:  %{pyver}
+BuildRequires:  %{pyver}-devel
+BuildRequires:  %{pyver}-xml
 BuildRequires:  re2c
 BuildRequires:  sed
 BuildRequires:  snappy-devel
@@ -292,16 +287,16 @@ Recommends:     libqt5-qtpdf-devel
 Examples for the libqt5-qtpdf module.
 
 %prep
+# Leap's rpm doesn't understand '%%autopatch -M N'  nor '%%autopatch X Y Z -p1'
 %setup -q -n %{tar_version}
-# Leap 15 doesn't understand '%%autopatch -m'
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
+%patch -P0 -p1
+%patch -P1 -p1
+%patch -P2 -p1
+%patch -P3 -p1
+%patch -P4 -p1
+%patch -P5 -p1
+%patch -P6 -p1
+%patch -P7 -p1
 
 # Replace the whole catapult folder rather than picking individual changes
 pushd src/3rdparty/chromium/third_party
@@ -312,8 +307,8 @@ popd
 
 # FFmpeg 5
 %if %{with system_ffmpeg}
-%if %{pkg_vcmp libavcodec-devel >= 5}
-%patch50 -p1
+%if %{pkg_vcmp pkgconfig(libavcodec) >= 5}
+%patch -P50 -p1
 %endif
 %endif
 
@@ -329,9 +324,9 @@ sed -i -e '/toolprefix = /d' -e 's/\${toolprefix}//g' \
 %build
 rm -r src/3rdparty/chromium/third_party/openh264/src
 
-%if %{with python39}
-sed -i 's#QMAKE_PYTHON = python3#QMAKE_PYTHON = python3.9#' mkspecs/features/functions.prf
-sed -i 's#python3#python3.9#' configure.pri
+%if "%{pyver}" == "python311"
+sed -i 's#QMAKE_PYTHON = python3#QMAKE_PYTHON = python3.11#' mkspecs/features/functions.prf
+sed -i 's#python3#python3.11#' configure.pri
 %endif
 
 %ifnarch x86_64

@@ -919,4 +919,13 @@ of the last blockers as we're still waiting for an upstream fix. (forwarded requ
     <comment></comment>
     <requestid>1128419</requestid>
   </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>965603543d8fd730763b1c4500dd14bd</srcmd5>
+    <version>5.15.16</version>
+    <time>1708534375</time>
+    <user>anag+factory</user>
+    <comment>- Switch to '%patch -P'
+- Build with python 3.11 on Leap</comment>
+    <requestid>1148328</requestid>
+  </revision>
 </revisionlist>
