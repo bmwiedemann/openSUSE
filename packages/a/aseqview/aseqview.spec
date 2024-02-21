@@ -41,9 +41,9 @@ sequencer applications.
 
 %prep
 %setup -q
-%patch0
-%patch1 -p1
-%patch2 -p1
+%patch -P 0
+%patch -P 1 -p1
+%patch -P 2 -p1
 
 %build
 autoreconf --force --install
