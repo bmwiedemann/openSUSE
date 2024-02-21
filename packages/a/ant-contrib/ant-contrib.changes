@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 10:55:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Oct 17 11:05:25 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Clean the spec file a bit

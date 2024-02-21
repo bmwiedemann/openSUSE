@@ -70,10 +70,10 @@ Api documentation for %{name}.
 %setup -q -n %{name}
 cp %{SOURCE1} %{name}-%{version}.pom
 cp %{SOURCE2} LICENSE-2.0.txt
-%patch0
-%patch1
-%patch2 -p1
-%patch3 -p1
+%patch -P 0
+%patch -P 1
+%patch -P 2 -p1
+%patch -P 3 -p1
 
 %pom_change_dep ant: org.apache.ant %{name}-%{version}.pom
 
