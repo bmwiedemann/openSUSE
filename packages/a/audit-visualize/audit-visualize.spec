@@ -37,8 +37,7 @@ The audit-visualize package contains scripts to produce flow graphs and
 bar charts from audit data.
 
 %prep
-%setup -q -n audit-visualize
-%patch0 -p1
+%autosetup -p1 -n audit-visualize
 
 %build
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 11:10:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Sun Nov 16 01:23:00 UTC 2014 - Led <ledest@gmail.com>
 
 - fix shebang in scripts that contains bash-specific options of
