@@ -18,12 +18,14 @@
 
 %define oldpython python
 Name:           python-cx_Freeze
-Version:        6.15.13
+Version:        6.15.15
 Release:        0
 Summary:        Scripts to create standalone executables from Python scripts
 License:        Python-2.0
 URL:            https://github.com/anthony-tuininga/cx_Freeze
 Source:         https://github.com/anthony-tuininga/cx_Freeze/archive/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python312.patch gh#marcelotduarte/cx_Freeze#1925
+Patch1:         python312.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module hatchling}
