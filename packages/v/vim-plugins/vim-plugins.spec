@@ -738,20 +738,20 @@ Usage:
 %prep
 %setup -q -c -n %{name} -a1 -a2 -a3 -a4 -a5 -a6 -a7 -a9 -a10 -a11 -a12 -a13 -a14 -a15 -a16 -a17 -a18 -a19 -a20 -a21 -a22 -a23 -a24 -a26 -a27 -a28 -a30 -a31 -a32 -a33 -a34 -a35 -a36 -a37 -a38 -a39 -a100 -a101 -a102 -a103 -a104
 pushd salt-vim-%{salt_version}
-%patch0 -p1
+%patch -P 0 -p1
 popd
 # ------- patch locateopen ------
 pushd LocateOpen-%locateopen_version
-%patch1
+%patch -P 1
 popd
 pushd ShowMarks7-%showmarks_version
-%patch2 -p1
+%patch -P 2 -p1
 popd
 pushd file-line-%file_line_version
-%patch3 -p1
+%patch -P 3 -p1
 popd
 pushd bats.vim-%{bats_version}
-%patch4 -p1
+%patch -P 4 -p1
 popd
 
 find tlib_vim-%{tlib_version} -type f \( -name '*.vim' -o -name '*.txt' \) -exec chmod -v 644 {} +
