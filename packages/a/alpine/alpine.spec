@@ -127,26 +127,26 @@ fi
 #
 # "Chappa" patches
 #
-%patch600 -p1
-%patch601 -p1
-%patch603 -p1
-%patch604 -p1
-%patch614 -p1
-%patch615 -p1
-%patch616 -p1
-%patch617 -p1
+%patch -P 600 -p1
+%patch -P 601 -p1
+%patch -P 603 -p1
+%patch -P 604 -p1
+%patch -P 614 -p1
+%patch -P 615 -p1
+%patch -P 616 -p1
+%patch -P 617 -p1
 #
 # SuSE patches - warning fixes, etc:
 #
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch10 -p1
-%patch20 -p1
-%patch60 -p1
-%patch61 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 10 -p1
+%patch -P 20 -p1
+%patch -P 60 -p1
+%patch -P 61 -p1
 %endif
 
 %build

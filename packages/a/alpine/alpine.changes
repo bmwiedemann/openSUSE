@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 10:39:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Sep  8 22:29:20 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Disable parallel build, fails to produce a result

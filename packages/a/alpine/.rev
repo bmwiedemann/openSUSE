@@ -474,4 +474,12 @@
     which could lead to denial of service.</comment>
     <requestid>1002258</requestid>
   </revision>
+  <revision rev="58" vrev="28">
+    <srcmd5>71e97118573f8b380dac233ff0857aa7</srcmd5>
+    <version>unknown</version>
+    <time>1708534550</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1147788 from dimstar)</comment>
+    <requestid>1147842</requestid>
+  </revision>
 </revisionlist>
