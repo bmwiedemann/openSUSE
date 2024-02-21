@@ -121,8 +121,7 @@ Group:          Documentation/HTML
 This package contains Javadoc documentation
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %pom_disable_module spring-velocity-support
 
