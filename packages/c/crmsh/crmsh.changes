@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Feb 21 04:31:29 UTC 2024 - nicholas.yang@suse.com
+
+- Update to version 4.6.0+20240221.58aa13d1:
+  * Dev: spec: Add setuptools as BuildRequires
+
+-------------------------------------------------------------------
+Wed Feb 21 03:44:40 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240221.6f7105bd:
+  * Dev: ui_configure: verify all cib objects even if there is no primitive resource configured
+
+-------------------------------------------------------------------
+Tue Feb 20 15:02:05 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240220.8a6e04b5:
+  * Dev: unittest: adjust unit tests for previous changes
+  * Fix: bootstrap: fail to join a cluster with hostname alias
+  * Dev: behave: add functional tests for previous changes
+  * Fix: bootstrap: clear stall data about ssh users left possiblely from previous setups (bsc#1219476)
+
+-------------------------------------------------------------------
+Tue Feb 20 14:14:36 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240220.9101383b:
+  * Fix: ui_node: clearstate command needs adjustment (bsc#1219831)
+
+-------------------------------------------------------------------
+Tue Feb 20 03:23:08 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240220.1ffead16:
+  * Dev: behave: Adjust functional test for previous change
+  * Fix: report: Escape special characters in pattern (bsc#1220022)
+
+-------------------------------------------------------------------
+Tue Feb 06 10:08:38 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240206.b95d3dfd:
+  * Dev: ui_configure: bundle: support podman container
+  * Dev: constants: Update the bundle help text
+  * Dev: parse: Assign meaningful id to the bundle's port-mapping and storage-mapping
+  * Dev: testcases: Adjust original regression test cases
+  * Dev: cibconfig: Hide the id of bundle port-mapping and storage-mapping
+  * Dev: cibconfig: Change the multiline format for bundle
+
+-------------------------------------------------------------------
+Mon Jan 29 01:46:29 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240129.1d89c5ba:
+  * Dev: utils: Return empty list if corosync.conf does not exist
+
+-------------------------------------------------------------------
 Fri Jan 26 07:47:11 UTC 2024 - XLiang@suse.com
 
 - Update to version 4.6.0+20240126.e227ccf6:
