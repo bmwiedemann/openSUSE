@@ -56,8 +56,7 @@ AWS C SDK Utils
 This package contains the development files.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %define __builder ninja

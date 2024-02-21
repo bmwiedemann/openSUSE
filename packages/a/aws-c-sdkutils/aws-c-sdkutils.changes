@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 11:15:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Sat Jan 27 16:41:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - fix naming to match shlib policy
