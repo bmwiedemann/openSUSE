@@ -756,4 +756,12 @@
     <comment>- fixes [bsc#1121624] CVE-2019-6129 and [bsc#1124211] CVE-2019-7317</comment>
     <requestid>1138083</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>3624de031f0fcc4b9c618b58035927cd</srcmd5>
+    <version>1.6.42</version>
+    <time>1708534311</time>
+    <user>anag+factory</user>
+    <comment>Update libpng to 1.6.42 (forwarded request 1147257 from yannboyer_dev)</comment>
+    <requestid>1147522</requestid>
+  </revision>
 </revisionlist>

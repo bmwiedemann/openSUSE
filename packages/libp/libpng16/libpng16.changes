@@ -1,3 +1,11 @@
+------------------------------------------------------------------
+Sat Feb 17 04:39:45 UTC 2024 - Yann BOYER <yann.boyer742@gmail.com>
+
+- Update to version 1.6.42:
+  * Fixed the implementation of the macro function "png_check_sig".
+   This was an API regression, introduced in libpng-1.6.41.
+   (Reported by Matthieu Darbois)
+
 -------------------------------------------------------------------
 Thu Jun 22 18:04:49 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
