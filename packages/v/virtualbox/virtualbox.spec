@@ -433,47 +433,47 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 
 %prep
 %setup -q -n VirtualBox-%{version}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
-%patch19 -p1
-%patch21 -p1
-%patch22 -p1
-%patch23 -p1
-%patch24 -p1
-%patch25 -p1
-%patch26 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
+%patch -P 8 -p1
+%patch -P 9 -p1
+%patch -P 10 -p1
+%patch -P 11 -p1
+%patch -P 12 -p1
+%patch -P 13 -p1
+%patch -P 14 -p1
+%patch -P 16 -p1
+%patch -P 17 -p1
+%patch -P 18 -p1
+%patch -P 19 -p1
+%patch -P 21 -p1
+%patch -P 22 -p1
+%patch -P 23 -p1
+%patch -P 24 -p1
+%patch -P 25 -p1
+%patch -P 26 -p1
 # Adjustments that are version dependent
-%patch27 -p1
+%patch -P 27 -p1
 # Handle the 32-bit changes needed for Qt 5.13
 %ifarch %{ix86} && 0%{?qt5ver} >= 51300
-%patch28 -p1
+%patch -P 28 -p1
 %endif
-%patch30 -p1
-%patch31 -p1
-%patch32 -p1
+%patch -P 30 -p1
+%patch -P 31 -p1
+%patch -P 32 -p1
 %if 0%{gcc_version} >= 13
-%patch36 -p1
+%patch -P 36 -p1
 %endif
-%patch37 -p1
-%patch38 -p1
-%patch39 -p1
-%patch40 -p1
-#%patch41 -p1
+%patch -P 37 -p1
+%patch -P 38 -p1
+%patch -P 39 -p1
+%patch -P 40 -p1
+#%patch -P 41 -p1
 
 ### Documents for virtualbox main package ###
 %if %{main_package}
