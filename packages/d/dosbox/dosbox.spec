@@ -31,7 +31,6 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3 >= 3.7
-BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(SDL2_net)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(fluidsynth) >= 2.3.0

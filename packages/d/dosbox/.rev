@@ -366,4 +366,12 @@
   * https://dosbox-staging.github.io/releases/release-notes/0.81.0/</comment>
     <requestid>1146567</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>c57692412a626721e605395fb4eb8ef7</srcmd5>
+    <version>0.81.0</version>
+    <time>1708534515</time>
+    <user>anag+factory</user>
+    <comment>- Changed file dosbox-staging-config.patch.</comment>
+    <requestid>1146987</requestid>
+  </revision>
 </revisionlist>

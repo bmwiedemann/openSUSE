@@ -1,6 +1,30 @@
+diff -Pdpru dosbox-staging-0.81.0.orig/src/gui/render.cpp dosbox-staging-0.81.0/src/gui/render.cpp
+--- dosbox-staging-0.81.0.orig/src/gui/render.cpp	2024-02-11 07:55:05.000000000 +0300
++++ dosbox-staging-0.81.0/src/gui/render.cpp	2024-02-16 05:29:25.250435682 +0300
+@@ -1155,7 +1155,7 @@ static void init_render_settings(Section
+ 	        "    options instead.");
+ 
+ #if C_OPENGL
+-	string_prop = secprop.Add_string("glshader", always, "crt-auto");
++	string_prop = secprop.Add_string("glshader", always, "sharp");
+ 	string_prop->Set_help(
+ 	        "Set an adaptive CRT monitor emulation shader or a regular GLSL shader in OpenGL\n"
+ 	        "output modes. Adaptive CRT shader options:\n"
+diff -Pdpru dosbox-staging-0.81.0.orig/src/gui/sdlmain.cpp dosbox-staging-0.81.0/src/gui/sdlmain.cpp
+--- dosbox-staging-0.81.0.orig/src/gui/sdlmain.cpp	2024-02-11 07:55:05.000000000 +0300
++++ dosbox-staging-0.81.0/src/gui/sdlmain.cpp	2024-02-16 05:26:04.974174717 +0300
+@@ -4308,7 +4308,7 @@ static void config_add_sdl() {
+ 	constexpr auto deprecated = Property::Changeable::Deprecated;
+ 	constexpr auto on_start = Property::Changeable::OnlyAtStart;
+ 
+-	Pbool = sdl_sec->Add_bool("fullscreen", always, false);
++	Pbool = sdl_sec->Add_bool("fullscreen", always, true);
+ 	Pbool->Set_help("Start directly in fullscreen (disabled by default).\n"
+ 	                "Run INTRO and see Special Keys for window control hotkeys.");
+ 
 diff -Pdpru dosbox-staging-0.81.0.orig/src/hardware/gus.cpp dosbox-staging-0.81.0/src/hardware/gus.cpp
 --- dosbox-staging-0.81.0.orig/src/hardware/gus.cpp	2024-02-11 07:55:05.000000000 +0300
-+++ dosbox-staging-0.81.0/src/hardware/gus.cpp	2024-02-14 14:11:33.241584577 +0300
++++ dosbox-staging-0.81.0/src/hardware/gus.cpp	2024-02-16 05:20:40.799436885 +0300
 @@ -1666,7 +1666,7 @@ void init_gus_dosbox_settings(Section_pr
  {
  	constexpr auto when_idle = Property::Changeable::WhenIdle;
@@ -12,7 +36,7 @@ diff -Pdpru dosbox-staging-0.81.0.orig/src/hardware/gus.cpp dosbox-staging-0.81.
  	        "Enable Gravis UltraSound emulation (disabled by default).\n"
 diff -Pdpru dosbox-staging-0.81.0.orig/src/midi/midi.cpp dosbox-staging-0.81.0/src/midi/midi.cpp
 --- dosbox-staging-0.81.0.orig/src/midi/midi.cpp	2024-02-11 07:55:05.000000000 +0300
-+++ dosbox-staging-0.81.0/src/midi/midi.cpp	2024-02-14 14:05:58.430221607 +0300
++++ dosbox-staging-0.81.0/src/midi/midi.cpp	2024-02-16 05:23:10.121618722 +0300
 @@ -785,7 +785,7 @@ void init_midi_dosbox_settings(Section_p
  	        "               synthesizer or physical device. This is the default behaviour.\n"
  	        "  none:        Disable MIDI output.");
@@ -24,7 +48,7 @@ diff -Pdpru dosbox-staging-0.81.0.orig/src/midi/midi.cpp dosbox-staging-0.81.0/s
  	        "This is usually the ID or name of the MIDI synthesizer you want\n"
 diff -Pdpru dosbox-staging-0.81.0.orig/src/midi/midi_fluidsynth.cpp dosbox-staging-0.81.0/src/midi/midi_fluidsynth.cpp
 --- dosbox-staging-0.81.0.orig/src/midi/midi_fluidsynth.cpp	2024-02-11 07:55:05.000000000 +0300
-+++ dosbox-staging-0.81.0/src/midi/midi_fluidsynth.cpp	2024-02-14 14:13:39.049878561 +0300
++++ dosbox-staging-0.81.0/src/midi/midi_fluidsynth.cpp	2024-02-16 05:24:16.459255114 +0300
 @@ -52,7 +52,7 @@ static void init_fluid_dosbox_settings(S
  
  	// Name 'default.sf2' picks the default SoundFont if it's installed
