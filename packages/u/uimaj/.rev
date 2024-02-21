@@ -39,4 +39,12 @@
     <comment>bsc#1217005, CVE-2023-39913</comment>
     <requestid>1129474</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>bdbfa7b9945344303760a28c7cfc7cce</srcmd5>
+    <version>3.5.0</version>
+    <time>1708534629</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1148290</requestid>
+  </revision>
 </revisionlist>

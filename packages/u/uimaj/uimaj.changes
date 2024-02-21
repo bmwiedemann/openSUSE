@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:58:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Wed Nov 22 13:23:12 UTC 2023 - Gus Kenion <gkenion@suse.com>
 
 - Update to upstream release 3.5.0 (bsc#1217005, CVE-2023-39913)

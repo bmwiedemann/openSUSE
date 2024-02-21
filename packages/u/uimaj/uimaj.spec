@@ -1,7 +1,7 @@
 #
 # spec file for package uimaj
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -90,14 +90,12 @@ BuildArch:      noarch
 This package contains javadoc for %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 # Cleanup
 find .  -name "*.jar" -delete
 find .  -name "*.bat" -delete
 find .  -name "*.class" -delete
 find .  -name "*.cmd" -delete
-
-%patch0 -p1
 
 # Build @ random fails
 %pom_remove_plugin -r :apache-rat-plugin
