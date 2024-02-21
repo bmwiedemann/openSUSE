@@ -327,4 +327,13 @@
     functions.</comment>
     <requestid>1116398</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>45c8a4db339241970495abf7e2576aea</srcmd5>
+    <version>16.00.0000</version>
+    <time>1708534725</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1148469</requestid>
+  </revision>
 </revisionlist>
