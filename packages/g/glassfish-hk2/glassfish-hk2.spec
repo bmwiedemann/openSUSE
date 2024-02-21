@@ -1,7 +1,7 @@
 #
 # spec file for package glassfish-hk2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -229,9 +229,9 @@ This package contains API documentation for %{name}.
 
 %prep
 %setup -q -n glassfish-hk2-%{version}-RELEASE
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 
 # Disable tests that intermittently fail on ARM arches
 sed -i -e '/org\.junit\.Ignore/s/\/\///' \
@@ -248,7 +248,7 @@ for mod in osgi-resource-locator dependency-verifier dependency-visualizer ; do
   %pom_add_parent "org.glassfish.hk2:hk2-parent:%{version}" $mod
 done
 
-%patch3 -p1
+%patch -P 3 -p1
 
 # Do not remove test resources
 find . -name '*.jar' ! -name "gendir.jar" -type f -print -delete

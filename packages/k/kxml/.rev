@@ -23,4 +23,12 @@
     <comment>bsc#1182284</comment>
     <requestid>967580</requestid>
   </revision>
+  <revision rev="4" vrev="20">
+    <srcmd5>8e462a3a82889b0ee853def2c82fd552</srcmd5>
+    <version>2.3.0</version>
+    <time>1708534905</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148745</requestid>
+  </revision>
 </revisionlist>

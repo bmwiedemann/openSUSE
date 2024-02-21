@@ -1,7 +1,7 @@
 #
 # spec file for package glassfish-fastinfoset
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,7 +52,7 @@ This package contains javadoc for %{name}.
 
 %prep
 %setup -q -n metro-fi-%{version}-RELEASE
-%patch0
+%patch -P 0
 
 pushd code
 

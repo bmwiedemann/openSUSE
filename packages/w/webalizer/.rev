@@ -257,4 +257,12 @@
     <comment>- use system apache rpm macros</comment>
     <requestid>852349</requestid>
   </revision>
+  <revision rev="35" vrev="27">
+    <srcmd5>8cd65b9768bf5abdd1c6466b1fdae46d</srcmd5>
+    <version>2.23</version>
+    <time>1708534765</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1148541</requestid>
+  </revision>
 </revisionlist>

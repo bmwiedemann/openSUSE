@@ -7,4 +7,13 @@
     <comment>I want to maintain grepcidr in Factory</comment>
     <requestid>834730</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0439f40818968221b15a3764d24709e9</srcmd5>
+    <version>2.0</version>
+    <time>1708534935</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1148791</requestid>
+  </revision>
 </revisionlist>

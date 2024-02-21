@@ -1,7 +1,7 @@
 #
 # spec file for package mariadb-java-client
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,7 +61,7 @@ done
 # also remove the file using the removed plugin
 rm -f src/main/java/org/mariadb/jdbc/internal/com/send/authentication/gssapi/WindowsNativeSspiAuthentication.java
 # patch the sources so that the missing file is not making trouble
-%patch0 -p1
+%patch -P 0 -p1
 
 %{mvn_file} org.mariadb.jdbc:%{name} %{name}
 %{mvn_alias} org.mariadb.jdbc:%{name} mariadb:mariadb-connector-java

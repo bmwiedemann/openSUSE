@@ -55,4 +55,13 @@
     <comment></comment>
     <requestid>914172</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f22582b3d550e75c0e03920845ca57c2</srcmd5>
+    <version>1.13</version>
+    <time>1708534929</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1148779</requestid>
+  </revision>
 </revisionlist>

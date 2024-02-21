@@ -1,7 +1,7 @@
 #
-# spec file for package eclipse-ecf-bootstrap
+# spec file for package eclipse-ecf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -127,8 +127,8 @@ Documentation and developer resources for the Eclipse Communication Framework
 find . -type f -name "*.jar" -exec rm {} \;
 find . -type f -name "*.class" -exec rm {} \;
 
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 # Extend the objectweb-asm requirements
 sed -i -e 's/org\.objectweb\.asm;version="\[5\.0\.1,8\.0\.0)"/org\.objectweb\.asm;version="\[5\.0\.1,10\.0\.0)"/g' \

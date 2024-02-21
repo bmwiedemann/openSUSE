@@ -1,7 +1,7 @@
 #
 # spec file for package postgresql-jdbc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2005, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -45,9 +45,9 @@ This package contains the API Documentation for %{name}.
 
 %prep
 %setup -q -n postgresql-%{version}-jdbc-src
-%patch1 -p1
-%patch2 -p1
-%patch3 -p2
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p2
 
 # Build parent POMs in the same Maven call.
 %pom_xpath_remove "pom:plugin[pom:artifactId = 'maven-shade-plugin']"

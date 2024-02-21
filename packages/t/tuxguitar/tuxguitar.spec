@@ -106,14 +106,14 @@ find . -name "*.sf2" -print -delete
 find . -name "*.jar" -print -delete
 find . -name "*.so" -print -delete
 
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
 
 # In source archive, all modules have an attribute "VERSION" set to "SNAPSHOT"
 # this attribute is set during build/delivery
@@ -123,17 +123,17 @@ find . \( -name "*.xml" -or -name "*.gradle"  -or -name "*.properties" -or -name
 # Also set the version in the "Help - About" dialog
 sed -i "s/static final String RELEASE_NAME =.*/static final String RELEASE_NAME = (TGApplication.NAME + \" %{version}\");/" desktop/TuxGuitar/src/org/herac/tuxguitar/app/view/dialog/about/TGAboutDialog.java
 
-%patch10 -p1
+%patch -P 10 -p1
 %if 0%{?suse_version} <= 1500
-%patch11 -p1
+%patch -P 11 -p1
 %endif
 %if 0%{?suse_version} < 1500
-%patch12 -p1
+%patch -P 12 -p1
 %endif
 
-%patch20 -p1
-%patch21 -p1
-%patch22 -p1
+%patch -P 20 -p1
+%patch -P 21 -p1
+%patch -P 22 -p1
 
 %pom_xpath_remove "pom:profile[pom:id[text()='platform-windows-all']]" desktop/pom.xml
 %pom_xpath_remove "pom:profile[pom:id[text()='platform-macos-cocoa-64']]" desktop/pom.xml

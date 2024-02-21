@@ -66,7 +66,7 @@ This package provides %{summary}.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P 0 -p1
 
 %pom_remove_dep jaxen:jaxen
 %pom_add_dep commons-io:commons-io

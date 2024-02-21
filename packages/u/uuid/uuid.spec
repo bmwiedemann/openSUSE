@@ -219,11 +219,11 @@ This package contains the Perl bindings for OSSP uuid.
 
 %prep
 %setup
-%patch0
-%patch1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%patch -P 0
+%patch -P 1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
 
 %build
 export CXXFLAGS="%{optflags} -fno-strict-aliasing"

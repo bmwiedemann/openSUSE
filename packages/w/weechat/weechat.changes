@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Tue Feb  6 07:47:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.2.1:
+  + irc: fix random date displayed when a received message contains
+    tags but no "time".
+- Changes from version 4.2.0:
+  + core:
+    - add variable "opening" in buffer, do not send buffer signals
+      when the buffer is opening.
+    - store microseconds in buffer lines.
+    - evaluate expressions even when the suffix is missing ("}" by
+      default).
+    - add syntax highlighting in evaluation of expressions with
+      raw_hl:string and hl:string, add option
+      weechat.color.eval_syntax_colors.
+    - add option search_history in command /input, add key Ctrl+r
+      to search in commands history, add key context "histsearch".
+    - add option weechat.look.buffer_search_history.
+    - add key Ctrl+o to send command found and insert next one in
+      input.
+    - add buffer variables "text_search_direction",
+      "text_search_history" and "text_search_ptr_history".
+    - move key Ctrl+r to Ctrl+s.
+    - move key Ctrl+s, Ctrl+u to Alt+Shift+U.
+    - display only version with command /version, add options -o
+      and -ol in command /upgrade.
+    - add number of processes in command /sys waitpid.
+  + core, alias, trigger: allow wildcard in commands /bar, /item,
+    /proxy, /alias and /trigger.
+  + api: add functions util_strftimeval, util_parse_time,
+    printf_datetime_tags, printf_y_datetime_tags.
+  + api:
+    - add argument "date_usec" in hook_print callback.
+    - api: add property "type" in function buffer_get_string.
+    - api: add info "mouse".
+  + buflist: jump to previous/next buffer displayed in buflist item
+    with ctrl+wheel up/down on a buflist item.
+  + irc:
+    - add option irc.look.display_host_wallops.
+    - add server option "anti_flood" (now in milliseconds), remove
+      server options "anti_flood_prio_{high|low}".
+    - add option irc.look.list_buffer.
+    - change default value of server option "tls_priorities" to
+      NORMAL.
+    - add support of RGB colors in messages, add option
+      irc.color.term_remap.
+    - add tags "nick_xxx" and "host_xxx" in all messages, including
+      self and server messages.
+    - add option irc.look.ignore_tag_messages.
+  + relay: change default value of option
+    relay.network.tls_priorities to NORMAL.
+  + trigger: change format of variables ${tg_date} from "%Y-%m-%d
+    %H:%M:%S" to "%FT%T.%f".
+  + trigger: rename local variable "trigger_filter" to "filter" on
+    monitor buffer.
+  + ruby: add detection of Ruby 3.3.
+- Changes from version 4.1.3:
+  + core: fix crash on plugin reload when using musl libc.
+  + core: fix infinite loop in display when the chat area is too
+    small.
+  + irc: check if arguments are not NULL in some infos.
+  + irc: fix info "irc_is_message_ignored".
+  + irc: fix display of self messages when the message split fails
+    due to inconsistent max lengths sent by the server in message
+    005.
+
+-------------------------------------------------------------------
 Sun Dec 10 08:46:11 UTC 2023 - Wang Jun <badboywj@gmail.com>
 
 - Update to version 4.1.2

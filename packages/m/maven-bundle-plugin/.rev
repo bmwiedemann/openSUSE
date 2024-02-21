@@ -7,4 +7,12 @@
     <comment>Rename package + upgrade to 5.1.9</comment>
     <requestid>1108792</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ede0cf71716fc3e659090f778e36f4d6</srcmd5>
+    <version>5.1.9</version>
+    <time>1708534815</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148605</requestid>
+  </revision>
 </revisionlist>

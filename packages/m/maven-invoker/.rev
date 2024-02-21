@@ -39,4 +39,12 @@
     <comment>appease darix</comment>
     <requestid>990811</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>78c7301077a4184b6dbce7c8d03b282d</srcmd5>
+    <version>3.1.0</version>
+    <time>1708534907</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148756</requestid>
+  </revision>
 </revisionlist>

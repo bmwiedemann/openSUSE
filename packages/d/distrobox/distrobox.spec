@@ -24,6 +24,7 @@ License:        GPL-3.0-only
 URL:            https://github.com/89luca89/distrobox
 Source:         https://github.com/89luca89/distrobox/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        distrobox.conf
+Patch0:         0001-Fix-systemd-init-container-startup-1069.patch
 # Default to distrobox-enter when just distrobox is used
 Requires:       %{_bindir}/basename
 Requires:       %{_bindir}/find

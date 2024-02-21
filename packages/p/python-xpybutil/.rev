@@ -31,4 +31,13 @@
 - Refresh python-xpybutil-0.0.5-remove-selftest.patch</comment>
     <requestid>717443</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>00e3dd8969b5b94310ec12e8f90d1199</srcmd5>
+    <version>0.0.6</version>
+    <time>1708534854</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1148487</requestid>
+  </revision>
 </revisionlist>

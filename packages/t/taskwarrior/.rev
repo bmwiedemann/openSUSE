@@ -210,4 +210,13 @@
     <comment></comment>
     <requestid>971905</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>d4835f183f8a2ce19e8f2f4cec6b37b9</srcmd5>
+    <version>2.6.2</version>
+    <time>1708534917</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1148767</requestid>
+  </revision>
 </revisionlist>

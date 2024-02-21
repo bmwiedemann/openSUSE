@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 10:54:18 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sat Nov  5 11:50:14 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build only the -common part, since we do not need other parts

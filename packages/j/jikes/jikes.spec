@@ -1,7 +1,7 @@
 #
 # spec file for package jikes
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 Name:           jikes
 Version:        1.22
 Release:        0
 Summary:        IBM Java Compiler
 License:        IPL-1.0
 Group:          Development/Languages/Java
-Url:            http://jikes.sourceforge.net/
+URL:            https://jikes.sourceforge.net/
 Source0:        %{name}-%{version}.tar.bz2
 Patch0:         %{name}-%{version}-uninitialized-variables.patch
 Patch1:         %{name}-%{version}-strict_aliasing.patch
@@ -61,8 +62,8 @@ Note that you must set CLASSPATH correctly to use jikes.
 
 %prep
 %setup -q
-%patch0
-%patch1
+%patch -P 0
+%patch -P 1
 cp -v  doc/license.htm license.html
 
 %build
@@ -73,7 +74,7 @@ CXXFLAGS="%{optflags}" \
            --prefix=%{_prefix} \
            --infodir=%{_infodir} \
            --sysconfdir=%{_sysconfdir}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -81,8 +82,9 @@ make %{?_smp_mflags}
 rm %{buildroot}/%{_datadir}/doc/%{name}-%{version}/license.htm
 
 %files
-%doc AUTHORS COPYING ChangeLog NEWS README TODO doc/license.htm
-%{_mandir}/man1/jikes.1%{ext_man}
+%license COPYING doc/license.htm
+%doc AUTHORS ChangeLog NEWS README TODO
+%{_mandir}/man1/jikes.1%{?ext_man}
 %{_includedir}/*
 %{_bindir}/jikes
 

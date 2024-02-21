@@ -31,4 +31,14 @@
     <comment></comment>
     <requestid>1142886</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>fd2ef4ff2a90778cd22e7ae18b828e35</srcmd5>
+    <version>0.9.0</version>
+    <time>1708534921</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+- Disable tests: not working on OBS</comment>
+    <requestid>1148776</requestid>
+  </revision>
 </revisionlist>

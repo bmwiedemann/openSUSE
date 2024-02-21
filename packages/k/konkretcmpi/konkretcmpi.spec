@@ -1,7 +1,7 @@
 #
 # spec file for package konkretcmpi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -134,24 +134,24 @@ This package contains python binding for konkretcmpi.
 %setup -n konkretcmpi-%{version}
 %if 0%{?suse_version} > 0
 %if 0%{?suse_version} < 1320
-%patch6 -p1
+%patch -P 6 -p1
 %if 0%{?suse_version} < 1020
-%patch7 -p1
+%patch -P 7 -p1
 %endif
 %endif
 %endif
 %if 0%{?rhel_version} > 0 && 0%{?rhel_version} < 700
-%patch6 -p1
+%patch -P 6 -p1
 %endif
 %if 0%{?centos_version} > 0 && 0%{?centos_version} < 700
-%patch6 -p1
+%patch -P 6 -p1
 %endif
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch8 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 8 -p1
 
 %build
 rm -rf build

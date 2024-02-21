@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 10:43:40 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Oct 30 15:45:09 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Do not force Java 11 to build on i586

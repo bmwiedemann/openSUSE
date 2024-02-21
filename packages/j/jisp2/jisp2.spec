@@ -1,7 +1,7 @@
 #
 # spec file for package jisp2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 Name:           jisp2
 Version:        2.5.1
 Release:        0
@@ -34,7 +35,6 @@ Requires:       javapackages-tools
 Requires(post): update-alternatives
 Requires(pre):  update-alternatives
 Provides:       hibernate_in_process_cache
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -59,15 +59,15 @@ serialized objects stored in files.
 
 %prep
 %setup -q -n jisp-%{version}
-%patch0 -p1
+%patch -P 0 -p1
 sed -i -e 's/\r$//g' svfl.txt
-%patch1 -b .java-cflags
+%patch -P 1 -b .java-cflags
 
 %build
 export CLASSPATH=
-make JAVAC_FLAGS=" -target 1.8 -source 1.8" %{?_smp_mflags}
-make jars %{?_smp_mflags}
-make docs %{?_smp_mflags}
+%make_build JAVAC_FLAGS=" -target 1.8 -source 1.8"
+%make_build jars
+%make_build docs
 
 %install
 # jars

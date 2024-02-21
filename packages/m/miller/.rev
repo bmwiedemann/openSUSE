@@ -277,4 +277,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1142882</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>d4297419e7e23c3c3198c0ae70a8ade4</srcmd5>
+    <version>6.11.0+git20240123.6f24fb39</version>
+    <time>1708534920</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN.</comment>
+    <requestid>1148774</requestid>
+  </revision>
 </revisionlist>

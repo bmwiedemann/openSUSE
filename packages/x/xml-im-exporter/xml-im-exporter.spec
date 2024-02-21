@@ -59,8 +59,8 @@ find . -name "*.jar" | xargs rm
 #done
 # wrong end of line encoding
 sed -i -e 's/.$//' *.txt doc/javadoc/stylesheet.css doc/javadoc/package-list
-%patch0 -b .sav
-%patch1 -p1
+%patch -P 0 -b .sav
+%patch -P 1 -p1
 
 %build
 export CLASSPATH=

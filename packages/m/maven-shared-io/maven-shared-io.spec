@@ -1,7 +1,7 @@
 #
 # spec file for package maven-shared-io
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,7 +51,7 @@ API documentation for %{name}.
 %prep
 %setup -q
 cp %{SOURCE1} build.xml
-%patch0 -p1
+%patch -P 0 -p1
 
 %pom_add_dep org.codehaus.plexus:plexus-container-default::provided
 

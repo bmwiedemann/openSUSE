@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package ongres-stringprep
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,7 +63,7 @@ This package contains a codegenerator for %{name}
 
 %prep
 %setup -n %{upstream_name}-%{upstream_version}
-%patch0 -p1
+%patch -P 0 -p1
 find \( -name '*.jar' -o -name '*.class' \) -delete
 
 %pom_remove_dep :velocity-tools codegenerator

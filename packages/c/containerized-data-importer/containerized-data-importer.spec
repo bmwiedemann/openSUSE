@@ -30,7 +30,7 @@
 %endif
 
 Name:           containerized-data-importer
-Version:        1.58.0
+Version:        1.58.1
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0

@@ -47,4 +47,12 @@
     <comment>trying to fix broken build of openjfx8 on some architectures</comment>
     <requestid>978703</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>36f13a00a8ea5532d726e9cecaade7cb</srcmd5>
+    <version>1.0~alpha11</version>
+    <time>1708534820</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148610</requestid>
+  </revision>
 </revisionlist>

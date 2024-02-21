@@ -39,4 +39,12 @@
     <comment>Fix build with bouncycastle 1.75+</comment>
     <requestid>1118821</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>6c70c9f872de729b49c28eb3cc471ed6</srcmd5>
+    <version>5.5.13.3</version>
+    <time>1708534793</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148577</requestid>
+  </revision>
 </revisionlist>

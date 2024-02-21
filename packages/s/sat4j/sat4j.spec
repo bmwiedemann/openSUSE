@@ -1,7 +1,7 @@
 #
 # spec file for package sat4j
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,8 +43,8 @@ without worrying about the details.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 %pom_xpath_remove "pom:dependency[pom:type[text()='test-jar']]" org.sat4j.pb
 

@@ -1,7 +1,7 @@
 #
 # spec file for package jdeparser
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020 Stasiek Michalski <stasiek@michalski.cc>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -48,7 +48,7 @@ This package contains the API documentation for %{name}.
 %prep
 %setup -q -n jdeparser2-%{namedversion}
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 
 %build

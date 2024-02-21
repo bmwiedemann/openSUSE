@@ -1,7 +1,7 @@
 #
 # spec file for package maven-native
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,7 +80,7 @@ This package contains javadoc for %{name}.
 
 %prep
 %setup -q -n %{name}-%{namedversion}
-%patch0 -p1
+%patch -P 0 -p1
 
 for d in LICENSE ; do
   iconv -f iso8859-1 -t utf-8 $d.txt > $d.txt.conv && mv -f $d.txt.conv $d.txt

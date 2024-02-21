@@ -39,4 +39,12 @@
     <comment>fix JNI calls</comment>
     <requestid>983621</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>c3a84fae0ed8d496d5012e2cb5f329f3</srcmd5>
+    <version>4.9.0</version>
+    <time>1708534778</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148562</requestid>
+  </revision>
 </revisionlist>

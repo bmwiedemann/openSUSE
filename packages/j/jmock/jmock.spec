@@ -1,7 +1,7 @@
 #
 # spec file for package jmock
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,9 @@ Summary:        Test Java code using mock objects
 License:        BSD-3-Clause
 Group:          Development/Libraries/Java
 URL:            http://jmock.codehaus.org/license.html
-Source0:        jmock-1.2.0.tar.gz
-# svn export http://svn.codehaus.org/jmock/tags/1.2.0/ jmock-1.2.0
-Source1:        jmock-1.2.0.pom
-Source2:        jmock-cglib-1.2.0.pom
+Source0:        %{name}-%{version}.tar.xz
+Source1:        https://repo1.maven.org/maven2/%{name}/%{name}/%{version}/%{name}-%{version}.pom
+Source2:        https://repo1.maven.org/maven2/jmock/%{name}-cglib/%{version}/%{name}-cglib-%{version}.pom
 Patch0:         jmock-1.2.0-AssertMo.patch
 Patch1:         jmock-1.2.0-build_xml.patch
 BuildRequires:  ant >= 1.6
@@ -36,11 +35,7 @@ BuildRequires:  cglib-nohook >= 2.1.3
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
 BuildRequires:  junit >= 3.8.1
-BuildRequires:  objectweb-asm >= 5
-Requires:       cglib >= 2.1.3
-Requires:       objectweb-asm >= 5
 BuildArch:      noarch
 
 %description
@@ -90,15 +85,15 @@ jMock is a library for testing Java code using mock objects. Mock
 %prep
 %setup -q
 find . -name "*.jar" | xargs rm
-%patch0
-%patch1
+%patch -P 0
+%patch -P 1
 
 # needs net.sf.cglib.asm. classes fron dropped cglib-nohook
 rm -rf src/test src/atest
 
 %build
 export OPT_JAR_LIST="ant/ant-junit junit"
-export CLASSPATH=`pwd`/build/classes:$(build-classpath objectweb-asm cglib)
+export CLASSPATH=`pwd`/build/classes:$(build-classpath cglib)
 ant \
     -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
     -Dbuild.sysclasspath=only \
@@ -114,11 +109,12 @@ install -pm 644 build/%{name}-tests-%{version}.jar \
 
 # poms
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 %{SOURCE1} \
+%{mvn_install_pom} %{SOURCE1} \
     %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
-#install -pm 644 %{SOURCE2} \
-#    $RPM_BUILD_ROOT%{_datadir}/maven2/poms/JPP.%{name}-cglib.pom
-%add_maven_depmap
+%add_maven_depmap JPP-%{name}.pom %{name}.jar
+%{mvn_install_pom} %{SOURCE2} \
+    %{buildroot}%{_mavenpomdir}/JPP-%{name}-cglib.pom
+%add_maven_depmap JPP-%{name}-cglib.pom %{name}-cglib.jar
 
 #
 install -dm 755 %{buildroot}%{_javadocdir}/%{name}
@@ -127,12 +123,12 @@ cp -pr build/javadoc-%{version}/* %{buildroot}%{_javadocdir}/%{name}
 #
 install -dm 755 %{buildroot}%{_datadir}/%{name}-%{version}
 cp -pr examples/* %{buildroot}%{_datadir}/%{name}-%{version}
+%fdupes -s %{buildroot}%{_datadir}/%{name}-%{version}
 
-%files
-%doc LICENSE.txt overview.html
-%{_javadir}/*.jar
-%{_mavenpomdir}/*
-%{_datadir}/maven-metadata/%{name}.xml*
+%files -f .mfiles
+%license LICENSE.txt
+%doc overview.html
+%{_javadir}/%{name}-tests.jar
 
 %files javadoc
 %{_javadocdir}/%{name}

@@ -1,7 +1,7 @@
 #
 # spec file for package jemmy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2010, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -41,7 +41,7 @@ Patch0:         jemmy-nosource.patch
 BuildRequires:  ant >= 1.6.5
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 Requires:       java >= 1.8
 Requires:       javapackages-tools
 BuildArch:      noarch
@@ -65,7 +65,7 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P 0 -p1
 find . -type f -name '*.jar' | xargs -t rm
 echo "Please, visit https://jemmy.dev.java.net for more info about Jemmy." > README.txt
 
@@ -78,7 +78,7 @@ mkdir -p %{buildroot}%{_javadir}
 cp -a %{target_jar} %{buildroot}%{_javadir}/%{name}.jar
 
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -m 644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
+%{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
 %add_maven_depmap
 
 # javadoc

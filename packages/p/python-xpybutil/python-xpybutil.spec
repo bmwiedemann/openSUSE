@@ -1,7 +1,7 @@
 #
 # spec file for package python-xpybutil
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -39,8 +39,7 @@ BuildArch:      noarch
 xpybutil is an abstraction over the X Python Binding (xpyb). It exists because xpyb is a very low level library that communicates with X.
 
 %prep
-%setup -q -n xpybutil-%{version}
-%patch0 -p1
+%autosetup -p1 -n xpybutil-%{version}
 
 %build
 %python_build

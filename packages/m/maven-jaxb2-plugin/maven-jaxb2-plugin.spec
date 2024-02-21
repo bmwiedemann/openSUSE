@@ -1,7 +1,7 @@
 #
 # spec file for package maven-jaxb2-plugin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,8 +72,8 @@ The API documentation of %{name}.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 # use glassfish-jaxb = 2.0.5
 %pom_disable_module plugin-2.0

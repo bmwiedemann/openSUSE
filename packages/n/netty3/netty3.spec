@@ -1,7 +1,7 @@
 #
 # spec file for package netty3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -121,16 +121,16 @@ rm -r src/main/java/org/jboss/netty/util/internal/jzlib
 %pom_add_dep com.jcraft:jzlib
 sed -i s/org.jboss.netty.util.internal.jzlib/com.jcraft.jzlib/ \
     $(find src/main/java/org/jboss/netty/handler/codec -name \*.java | sort -u)
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 # Reimplement the OpenJdkSelfSignedCertGenerator class
 # so that it does not use removed classes. This adds the
 # bouncycastle dependency
-%patch2 -p1
+%patch -P 2 -p1
 %pom_add_dep org.bouncycastle:bcprov-jdk16
 
-%patch3 -p1
+%patch -P 3 -p1
 
 # adapting to excluded dep
 rm -v src/main/java/org/jboss/netty/handler/ssl/JettyNpnSslEngine.java

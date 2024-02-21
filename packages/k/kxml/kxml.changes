@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 14:28:34 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Apr  7 17:26:43 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Fetch the sources using https instead of http protocol

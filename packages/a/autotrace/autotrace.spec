@@ -79,11 +79,11 @@ platform using GCC.
 
 %prep
 %setup -q
-%patch0
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%patch -P 0
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -fno-tree-sra"

@@ -144,4 +144,12 @@ previous spec file license made no sense (forwarded request 157911 from babelwor
     <comment>Build with source and target levels 8</comment>
     <requestid>964002</requestid>
   </revision>
+  <revision rev="20" vrev="27">
+    <srcmd5>cd65e2b4b99d3e611a7a1bf45b849c20</srcmd5>
+    <version>2.3.0.0</version>
+    <time>1708534859</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148665</requestid>
+  </revision>
 </revisionlist>

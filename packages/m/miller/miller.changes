@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 15:18:43 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Jan 23 22:59:57 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 6.11.0+git20240123.6f24fb39:

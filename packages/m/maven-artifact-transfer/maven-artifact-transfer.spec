@@ -1,7 +1,7 @@
 #
 # spec file for package maven-artifact-transfer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,9 +69,9 @@ This package provides %{summary}.
 %prep
 %setup -q
 cp %{SOURCE1} build.xml
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 
 %pom_remove_plugin :maven-shade-plugin
 %pom_remove_plugin :apache-rat-plugin

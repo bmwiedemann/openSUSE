@@ -145,4 +145,12 @@ uncritical open source license is not acceptable (forwarded request 111121 from 
     <comment>Fix build with jdk 17</comment>
     <requestid>964353</requestid>
   </revision>
+  <revision rev="21" vrev="31">
+    <srcmd5>7d6e57ec3e89aaee6bc4102da8f46980</srcmd5>
+    <version>1.2.0</version>
+    <time>1708534877</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148701</requestid>
+  </revision>
 </revisionlist>

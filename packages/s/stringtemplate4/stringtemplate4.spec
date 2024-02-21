@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package stringtemplate4
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,7 +66,7 @@ This package contains javadoc for %{name}.
 %prep
 %setup -q -n %{base_name}-%{version}
 %if %{with bootstrap}
-%patch0
+%patch -P 0
 %pom_remove_plugin :antlr3-maven-plugin
 %endif
 

@@ -1,7 +1,7 @@
 #
 # spec file for package eclipse-swt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -99,13 +99,13 @@ tar --strip-components=1 -xf %{SOURCE1}
 
 cp %{SOURCE10} build.xml
 
-%patch4 -p1
-%patch5
-%patch33 -p1
-%patch35 -p1
-%patch37 -p1
-%patch38 -p1
-%patch39 -p1
+%patch -P 4 -p1
+%patch -P 5
+%patch -P 33 -p1
+%patch -P 35 -p1
+%patch -P 37 -p1
+%patch -P 38 -p1
+%patch -P 39 -p1
 
 # This part generates secondary fragments using primary fragments
 utils/ensure_arch.sh eclipse.platform.swt.binaries/bundles x86 arm

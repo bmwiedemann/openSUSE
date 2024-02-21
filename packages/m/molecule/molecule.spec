@@ -39,13 +39,14 @@
 
 %bcond_without test
 Name:           molecule
-Version:        6.0.3
+Version:        24.2.0
 Release:        0
 Summary:        Aids in the development and testing of Ansible roles
 License:        MIT
 URL:            https://github.com/ansible-community/molecule
 Source:         https://files.pythonhosted.org/packages/source/m/molecule/molecule-%{version}.tar.gz
 BuildRequires:  python-rpm-macros
+BuildRequires:  %{ansible_python}-base >= 3.10
 BuildRequires:  %{ansible_python}-pip
 BuildRequires:  %{ansible_python}-setuptools
 BuildRequires:  %{ansible_python}-wheel

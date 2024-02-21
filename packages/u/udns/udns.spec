@@ -52,8 +52,7 @@ This package contains header files and documentation needed for writing
 or compiling programs that use UDNS.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 # not an autotools configure

@@ -2,7 +2,7 @@
 #
 # spec file for package etckeeper
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2014 Mitsutoshi NAKANO <bkbin005@rinku.zaq.ne.jp>
 # Copyright (c) 2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
@@ -139,9 +139,7 @@ Requires:       etckeeper = %{version}-%{release}
 zsh command line completion support for %{name}.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 find -type f -name ".gitignore" -delete

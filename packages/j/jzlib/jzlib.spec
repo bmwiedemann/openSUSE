@@ -1,7 +1,7 @@
 #
 # spec file for package jzlib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ Patch0:         jzlib-javadoc-fixes.patch
 BuildRequires:  ant >= 1.6
 BuildRequires:  fdupes
 BuildRequires:  java-devel
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -57,7 +57,7 @@ Group:          Documentation/HTML
 
 %prep
 %setup -q
-%patch0
+%patch -P 0
 cp %{SOURCE1} build.xml
 
 # bnc#500524
@@ -73,7 +73,8 @@ install -Dpm 644 target/%{name}-%{version}.jar \
   %{buildroot}%{_javadir}/%{name}.jar
 
 # pom
-install -Dpm 644 pom.xml \
+install -dm 755 %{buildroot}%{_mavenpomdir}
+%{mvn_install_pom} pom.xml \
   %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 

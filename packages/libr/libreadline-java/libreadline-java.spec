@@ -1,7 +1,7 @@
 #
 # spec file for package libreadline-java
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%global make make
 Name:           libreadline-java
 Version:        0.8.3
 Release:        0
@@ -53,17 +54,17 @@ wrapper. This package contains the javadoc documentation for it.
 
 %prep
 %setup -q
-%patch0
-%patch1
-%patch3 -p1
+%patch -P 0
+%patch -P 1
+%patch -P 3 -p1
 find . -name "*.jar" -exec rm -f {} \;
 sed -i 's|@LIBDIR@|%{_libdir}|' src/org/gnu/readline/Readline.java
 
 %build
 export JAVA_HOME=%{java_home}
 export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
-make CFLAGS="%{optflags} -fPIC -DPOSIX" T_LIBS=JavaEditline -j1
-make apidoc -j1
+%make CFLAGS="%{optflags} -fPIC -DPOSIX" T_LIBS=JavaEditline -j1
+%make apidoc -j1
 
 # fix debuginfo package
 rm -f org test

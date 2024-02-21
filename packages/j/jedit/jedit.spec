@@ -1,7 +1,7 @@
 #
 # spec file for package jedit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Programmer's Text Editor Written in Java
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
-URL:            http://www.jedit.org/
+URL:            https://www.jedit.org/
 Source0:        http://download.sourceforge.net/jedit/jedit%{version}source.tar.bz2
 Source1:        icons.tar
 Source2:        %{name}.desktop
@@ -83,8 +83,8 @@ Javadoc for %{summary}.
 
 %prep
 %setup -q -D -n jEdit -b 1 -a 4 -a 5
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 find . -name '*jar' -delete
 
@@ -126,14 +126,14 @@ touch lib/default-plugins/HACK
 export CLASSPATH=$(build-classpath apache-commons-logging)
 # Run the build
 # XXX: there's NPE on build-docs, but who care about html docs those times, right?
-%ant -Divy.done=true build docs-javadoc
+%{ant} -Divy.done=true build docs-javadoc
 cp -r doc/* build/doc/
 
 # plugins-build hardcodes the jedit.jar path - so to make it happy
 ln -s build/jedit.jar
 
 pushd QuickNotepad
-%ant
+%{ant}
 popd
 mv QuickNotepad.jar build/jars
 rm build/jars/HACK
@@ -186,7 +186,7 @@ install %{name} %{buildroot}%{_bindir}
 %{_javadir}/%{name}.jar
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
-%{_mandir}/man1/%{name}.1*
+%{_mandir}/man1/%{name}.1%{?ext_man}
 %{_datadir}/icons/hicolor/
 %exclude %{_datadir}/%{name}/doc
 

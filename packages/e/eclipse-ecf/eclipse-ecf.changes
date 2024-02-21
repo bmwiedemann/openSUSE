@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 10:41:40 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Mar 29 13:59:57 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Force building with Java 11, since tycho is not knowing about any

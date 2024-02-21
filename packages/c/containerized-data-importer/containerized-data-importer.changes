@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 21 12:29:50 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.58.1
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.58.1
+
+-------------------------------------------------------------------
 Wed Jan  3 09:54:01 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Set ExclusiveArch conditionally depending on the distro

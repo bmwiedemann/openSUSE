@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 10:49:02 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Sep 19 17:09:29 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 8.11.2

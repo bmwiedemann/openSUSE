@@ -63,4 +63,12 @@
     <comment>fix build with java 21</comment>
     <requestid>1120324</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>aa2d6f55f0981f80a6efeedccf6c5769</srcmd5>
+    <version>4.20</version>
+    <time>1708534849</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148639</requestid>
+  </revision>
 </revisionlist>

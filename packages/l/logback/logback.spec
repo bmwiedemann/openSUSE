@@ -1,7 +1,7 @@
 #
 # spec file for package logback
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -86,8 +86,8 @@ chmod -x README.md LICENSE.txt
 find . -type f -exec chmod -x {} \;
 chmod +x %{name}-examples/src/main/resources/setClasspath.sh
 
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 %pom_remove_plugin :maven-source-plugin
 %pom_remove_plugin :findbugs-maven-plugin

@@ -1,7 +1,7 @@
 #
 # spec file for package jboss-logging-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020 Stasiek Michalski <stasiek@michalski.cc>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -46,7 +46,7 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-%{namedversion}
-%patch0 -p1
+%patch -P 0 -p1
 
 %pom_remove_dep -r org.jboss.forge.roaster:
 rm processor/src/test/java/org/jboss/logging/processor/generated/GeneratedSourceAnalysisTest.java

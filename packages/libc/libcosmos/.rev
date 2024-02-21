@@ -38,4 +38,15 @@
   * buildsystem: support transparent use of local lib or system lib</comment>
     <requestid>1147055</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>8c3b0444fe4433ec71edd179eacbe161</srcmd5>
+    <version>0.2</version>
+    <time>1708534874</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.2.0+gitff219ee:
+  * ILogger: support a prefix() to be added to each log message
+  * ILogger: use more robust way to detect std::cout and std::cerr
+  * trivial: SocketAddress: remove superfluous slash in comment</comment>
+    <requestid>1148686</requestid>
+  </revision>
 </revisionlist>

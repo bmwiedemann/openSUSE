@@ -1,7 +1,7 @@
 #
 # spec file for package twups
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,22 +19,22 @@
 Name:           twups
 Version:        git20200908
 Release:        0
-Summary:	Tumbleweed Update Scrutinizer
+Summary:        Tumbleweed Update Scrutinizer
 License:        GPL-3.0-or-later
 URL:            https://codeberg.org/ProgrammerPolymathic/twups
 Source:         %{name}-%{version}.tar.gz
-Patch0:		install.patch
+Patch0:         install.patch
 Requires:       curl
 Requires:       tumbleweed-cli
+BuildArch:      noarch
 
 %description
 Fetches snapshot scores from Boombatower and can prompt for update based on stability ratings. Searching the snapshot database is also allowed with regex support.
 
 %prep
-%setup -q
+%autosetup -p0
 sed -i -e '/#!\/usr\/bin\/env bash/d' twups-completion.bash
 sed -i 's/#!\/usr\/bin\/env bash/#!\/usr\/bin\/bash/g' twups
-%patch0 -p0
 
 %build
 
@@ -49,6 +49,4 @@ sed -i 's/#!\/usr\/bin\/env bash/#!\/usr\/bin\/bash/g' twups
 %dir %{_datadir}/bash_completion/completions
 %{_datadir}/bash_completion/completions/twups-completion.bash
 
-
 %changelog
-

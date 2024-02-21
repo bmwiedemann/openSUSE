@@ -1,7 +1,7 @@
 #
 # spec file for package maven-invoker
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ Patch1:         %{name}-MSHARED-279.patch
 BuildRequires:  ant
 BuildRequires:  atinject
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  maven-shared-utils >= 3.3.3
 BuildRequires:  sisu-inject
 BuildRequires:  unzip
@@ -60,7 +60,7 @@ API documentation for %{name}.
 %setup -q
 sed -i 's/\r$//' src/main/java/org/apache/maven/shared/invoker/MavenCommandLineBuilder.java
 cp %{SOURCE1} build.xml
-%patch1 -p1
+%patch -P 1 -p1
 %pom_change_dep javax.inject:javax.inject:1  org.eclipse.sisu:org.eclipse.sisu.inject
 
 %pom_remove_parent .
@@ -77,7 +77,7 @@ install -dm 0755 %{buildroot}%{_javadir}/%{name}
 install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
 %add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}

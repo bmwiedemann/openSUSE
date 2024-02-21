@@ -157,4 +157,12 @@
     <comment>Cleanup + broken link</comment>
     <requestid>1138308</requestid>
   </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>7616c1fc331e9114a8e31c5f1c00f351</srcmd5>
+    <version>1.1.4c</version>
+    <time>1708534850</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148643</requestid>
+  </revision>
 </revisionlist>

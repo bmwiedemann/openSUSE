@@ -16,7 +16,7 @@
 #
 
 
-%define commit 7f2b8ee
+%define commit ff219ee
 
 Name:           libcosmos
 Version:        0.2

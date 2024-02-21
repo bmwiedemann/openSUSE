@@ -31,4 +31,14 @@
     <comment></comment>
     <requestid>897239</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c0e60dc824fd34667ab617b39e903297</srcmd5>
+    <version>1.1.4</version>
+    <time>1708534909</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.1.4:
+  * Full list of changes:
+    https://github.com/mozman/ezdxf/compare/v0.16.3...v1.1.4</comment>
+    <requestid>1148749</requestid>
+  </revision>
 </revisionlist>

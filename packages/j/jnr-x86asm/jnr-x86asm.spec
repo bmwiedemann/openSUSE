@@ -1,7 +1,7 @@
 #
 # spec file for package jnr-x86asm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,7 @@ Javadoc for %{name}.
 
 %prep
 %setup -q
-%patch0
+%patch -P 0
 cp %{SOURCE1} .
 %{mvn_file} : %{cluster}/%{name}
 

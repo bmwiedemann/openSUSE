@@ -240,4 +240,12 @@
     <comment>0.8.3</comment>
     <requestid>976418</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>e171abd4df4bd861d8571ea59d8eed04</srcmd5>
+    <version>0.8.3</version>
+    <time>1708534906</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148748</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package a2ps
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,7 +59,7 @@ Requires:       sed
 Requires:       w3m
 Requires:       wdiff
 Requires(post): %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
+Requires(preun): %{install_info_prereq}
 Suggests:       ImageMagick
 Suggests:       acroread
 Suggests:       gv
@@ -106,15 +106,15 @@ Latin encodings are supported.
 %prep
 %setup -q -n a2ps-4.15.5
 touch -r configure.ac .ref
-%patch2  -p1
-%patch3  -p1
-%patch6  -p1 -b .incld
-%patch8   -b .base
-%patch9   -b .utf8
-%patch10  -b .types
-%patch13 -p1 -b .p13
-%patch17 -p1 -b .p17
-%patch0   -b .p0
+%patch -P 2  -p1
+%patch -P 3  -p1
+%patch -P 6  -p1 -b .incld
+%patch -P 8   -b .base
+%patch -P 9   -b .utf8
+%patch -P 10  -b .types
+%patch -P 13 -p1 -b .p13
+%patch -P 17 -p1 -b .p17
+%patch -P 0   -b .p0
 cp -f %{SOURCE3} po/ko.po
 find -type f | grep -vE '(parseppd|parsessh).y' | xargs \
 sed -ri 's/59 Temple Place(,| -) Suite 330/51 Franklin Street, Fifth Floor/;s/02111-1307/02110-1301/'

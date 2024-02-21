@@ -1,7 +1,7 @@
 #
 # spec file for package powermock
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -159,9 +159,9 @@ This package contains the API documentation for %{name}.
 %prep
 %setup -q -n %{name}-%{name}-%{version}
 
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 
 # bundled sources of various libraries
 rm -r modules/module-impl/agent

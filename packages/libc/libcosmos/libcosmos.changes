@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 21 11:06:40 UTC 2024 - matthias.gerstner@suse.com
+
+- Update to version 0.2.0+gitff219ee:
+  * ILogger: support a prefix() to be added to each log message
+  * ILogger: use more robust way to detect std::cout and std::cerr
+  * trivial: SocketAddress: remove superfluous slash in comment
+
+-------------------------------------------------------------------
 Fri Feb 16 09:36:55 UTC 2024 - matthias.gerstner@suse.com
 
 - Update to version 0.2.0+git7f2b8ee:

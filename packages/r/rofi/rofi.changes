@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 21 09:46:53 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Mon Oct 31 08:29:10 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add rofi-launcher provides to allow coexistence with

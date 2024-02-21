@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 21 11:20:16 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1708514407.3d50af15:
+  * docs: Mention openqa-label-all in documentation
+  * Improve details in monitor/schedule CLI commands
+  * Split monitoring of jobs via `openqa-cli` into a separate command
+
+-------------------------------------------------------------------
 Fri Feb 16 21:02:45 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1708009978.05b36bda:

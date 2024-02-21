@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 13:51:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Jun 12 11:12:00 UTC 2018 - sor.alexei@meowr.ru
 
 - Add qsyncthingtray-fix-qt-cmake.patch: Fix Qt 5.11 CMake

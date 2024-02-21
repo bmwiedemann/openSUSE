@@ -55,4 +55,12 @@
     <comment>fix build and use with the new commons-compress</comment>
     <requestid>1147643</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>81e71d5df11588d1feb6a0198165c756</srcmd5>
+    <version>3.6.0</version>
+    <time>1708534814</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148604</requestid>
+  </revision>
 </revisionlist>

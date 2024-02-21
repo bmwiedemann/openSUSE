@@ -1,6 +1,7 @@
 #
 # spec file for package enchive
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -35,9 +36,7 @@ GnuPG or encrypted filesystems.
 Files are secured with ChaCha20, Curve25519, and HMAC-SHA256.
 
 %prep
-%setup -q
-%patch0 -p1
-
+%autosetup -p1
 
 %build
 export CFLAGS='%{optflags}'

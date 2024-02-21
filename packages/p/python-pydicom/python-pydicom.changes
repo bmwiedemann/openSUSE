@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 19 10:16:16 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Skip TestPillowHandler_JPEG2K also on riscv64
+
+-------------------------------------------------------------------
 Thu Jan 25 17:55:25 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.4.4

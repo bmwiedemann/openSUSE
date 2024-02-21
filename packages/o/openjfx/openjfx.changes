@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 10:52:38 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Jan 19 18:05:10 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream tag 17.0.10+2 (January 2024 CPU)

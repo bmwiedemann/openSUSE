@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 21 15:25:41 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+- Disable tests: not working on OBS
+
+-------------------------------------------------------------------
 Wed Jan 31 00:55:57 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Added fix-test-string.patch and re-enabled test.

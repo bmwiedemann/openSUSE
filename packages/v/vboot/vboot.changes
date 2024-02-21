@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 13:14:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Nov  4 05:57:46 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded BuildRequires on python 2.

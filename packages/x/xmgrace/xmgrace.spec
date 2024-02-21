@@ -1,7 +1,7 @@
 #
 # spec file for package xmgrace
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,10 +61,10 @@ For further information consult the main package.
 
 %prep
 %setup -q -n grace-%{version}
-%patch0
-%patch1
-%patch2
-%patch3 -p1
+%patch -P 0
+%patch -P 1
+%patch -P 2
+%patch -P 3 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

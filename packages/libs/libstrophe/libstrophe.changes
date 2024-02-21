@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 21 14:13:16 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.1:
+  * Fix SCRAM-*-PLUS SASL mechanisms with OpenSSL and TLS < v1.3 (40f2452)
+  * Only signal "stream negotiation success" once (1cf09b1)
+  * Fix sock_connect() not looping over all DNS records returned
+    if no sockopt_cb is set (5edc480)
+  * Replace usage of EBADFD, it's not in POSIX (#235)
+
+-------------------------------------------------------------------
 Thu Feb  1 08:52:03 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.13.0:

@@ -1,7 +1,7 @@
 #
-# spec file for package eclipse-emf-bootstrap
+# spec file for package eclipse-emf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -124,8 +124,8 @@ Documentation and developer resources for the Eclipse Modeling Framework
 mv org.eclipse.emf-%{emf_tag}/ org.eclipse.emf/
 mv org.eclipse.xsd-%{xsd_tag}/ org.eclipse.xsd/
 
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 pushd org.eclipse.emf
 

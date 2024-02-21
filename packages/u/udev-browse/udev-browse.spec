@@ -41,9 +41,7 @@ This provides a little bit simpler access to the device tree
 
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 make udev-browse

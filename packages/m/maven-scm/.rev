@@ -63,4 +63,12 @@
     <comment>Do not force java 11 on i586</comment>
     <requestid>1121228</requestid>
   </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>ff40f7af5c29c8ed118cfcd84710e529</srcmd5>
+    <version>1.12.0</version>
+    <time>1708534822</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148613</requestid>
+  </revision>
 </revisionlist>

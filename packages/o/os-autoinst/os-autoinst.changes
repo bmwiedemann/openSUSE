@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 20 09:30:59 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1708421450.e14a9fb:
+  * ci: Install npm dependencies in fullstack test
+  * Require Module::CPANfile
+  * Fix the develop cpanfile target
+  * Adapt usage of tools/update-deps
+  * Implement basic cleanup for caching of Git repositories
+  * Ensure Git URL variables are pointing to actual remote despite caching
+
+-------------------------------------------------------------------
 Tue Feb 06 21:21:24 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1707254476.2e0bf52:

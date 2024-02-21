@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 10:56:08 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Jan 12 11:37:59 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Clean up the spec file and cater for broken URLs

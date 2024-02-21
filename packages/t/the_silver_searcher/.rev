@@ -122,4 +122,14 @@ any directory.</comment>
     <comment></comment>
     <requestid>982033</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>1c5ce9c04a68ee75bfc2300938f89328</srcmd5>
+    <version>2.2.0</version>
+    <time>1708534913</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+- Remove obsolete version check for BR</comment>
+    <requestid>1148763</requestid>
+  </revision>
 </revisionlist>

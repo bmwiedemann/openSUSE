@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 16:01:14 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu May 19 09:23:18 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - switched urls to https

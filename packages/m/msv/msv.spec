@@ -1,7 +1,7 @@
 #
 # spec file for package msv
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -128,7 +128,7 @@ Requires:       msv-xsdlib
 %pom_remove_plugin :maven-javadoc-plugin
 
 # Apply patches
-%patch1 -p1
+%patch -P 1 -p1
 # Needed becuase of patch
 %pom_add_dep xml-resolver:xml-resolver
 

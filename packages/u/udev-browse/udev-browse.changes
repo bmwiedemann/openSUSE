@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:42:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Apr  7 11:01:57 UTC 2015 - dimstar@opensuse.org
 
 - Add udev-browse-ListStore.patch: Fix ambiguous reference to

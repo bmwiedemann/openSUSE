@@ -111,8 +111,8 @@ Requires:       %{name} = %{version}-%{release}
 
 %prep
 %setup -q -n %{jfx_dir}
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 #prep for javafx.graphics
 cp -a modules/javafx.graphics/src/jslc/antlr modules/javafx.graphics/src/main/antlr3

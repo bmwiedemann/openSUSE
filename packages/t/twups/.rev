@@ -7,4 +7,13 @@
     <comment>New package see https://lists.opensuse.org/opensuse-factory/2020-09/msg00187.html</comment>
     <requestid>836557</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6d6ac434211a44ee7c56050abbd85b35</srcmd5>
+    <version>git20200908</version>
+    <time>1708534911</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1148755</requestid>
+  </revision>
 </revisionlist>

@@ -63,4 +63,12 @@
     <comment>Don't build the scala flavour</comment>
     <requestid>1146867</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>a20d210bc9a22db1466e5850fc520e42</srcmd5>
+    <version>1.4.1</version>
+    <time>1708534834</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148626</requestid>
+  </revision>
 </revisionlist>

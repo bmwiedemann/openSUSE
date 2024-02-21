@@ -1,7 +1,7 @@
 #
 # spec file for package maven-remote-resources-plugin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -74,7 +74,7 @@ API documentation for %{name}.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P 0 -p1
 
 %build
 %{mvn_build} \

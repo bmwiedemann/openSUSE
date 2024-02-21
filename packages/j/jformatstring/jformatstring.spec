@@ -1,7 +1,7 @@
 #
 # spec file for package jformatstring
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,13 +25,13 @@ License:        GPL-2.0-only
 Group:          Development/Libraries/Java
 URL:            https://jformatstring.dev.java.net/
 Source0:        http://cdn-fastly.deb.debian.org/debian/pool/main/j/jformatstring/jformatstring_%{version}.orig.tar.gz
-Source1:        http://search.maven.org/remotecontent?filepath=com/google/code/findbugs/jFormatString/3.0.0/jFormatString-3.0.0.pom
-Source2:        http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+Source1:        https://repo1.maven.org/maven2/com/google/code/findbugs/jFormatString/3.0.0/jFormatString-3.0.0.pom
+Source2:        https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt
 Patch0:         jformatstring-build.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 Provides:       jFormatString = %{version}-%{release}
 Obsoletes:      jFormatString < %{version}-%{release}
 BuildArch:      noarch
@@ -62,7 +62,7 @@ Javadoc for %{name}.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P 0 -p1
 mkdir -p lib
 cp %{SOURCE2} LICENSE
 
@@ -81,7 +81,7 @@ ln -s %{name}.jar %{buildroot}%{_javadir}/jFormatString.jar
 ln -s jFormatString.jar %{buildroot}%{_javadir}/jFormatString-%{version}.jar
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 # javadoc
 mkdir -p %{buildroot}%{_javadocdir}

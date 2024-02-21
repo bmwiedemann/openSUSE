@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 10:47:38 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Sep 19 11:03:37 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Do not require maven-javadoc-plugin that we don't use

@@ -65,8 +65,8 @@ Features:
  * A toggle for monochrome icon.
 
 %prep
-%setup -q -n %{_name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{_name}-%{version}
+
 cp %{SOURCE1} %{name}.desktop
 cp %{SOURCE2} %{name}.appdata.xml
 sed -i 's|%{_prefix}/local|%{_prefix}|g' includes/platforms/linux/posixUtils.hpp

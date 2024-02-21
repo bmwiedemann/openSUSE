@@ -1,7 +1,7 @@
 #
 # spec file for package jflex-maven-plugin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,7 +53,7 @@ cp %{SOURCE1} parent.xml
 cp %{SOURCE2} LICENSE.md
 %pom_xpath_set pom:parent/pom:relativePath parent.xml
 
-%patch0 -p2
+%patch -P 0 -p2
 
 %pom_remove_plugin :maven-enforcer-plugin
 
@@ -63,7 +63,6 @@ cp %{SOURCE2} LICENSE.md
 %pom_xpath_remove "pom:plugin[pom:artifactId='cup-maven-plugin']" parent.xml
 %pom_xpath_remove "pom:plugin[pom:artifactId='maven-shade-plugin']" parent.xml
 %pom_xpath_remove "pom:plugin[pom:artifactId='jacoco-maven-plugin']" parent.xml
-
 
 %build
 %{mvn_build} -f -- -Dsource=8

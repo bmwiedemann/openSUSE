@@ -18,7 +18,7 @@
 
 %define c_lib   libstrophe0
 Name:           libstrophe
-Version:        0.13.0
+Version:        0.13.1
 Release:        0
 Summary:        A XMPP library for C
 License:        GPL-3.0-or-later OR MIT

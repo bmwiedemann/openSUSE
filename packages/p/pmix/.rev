@@ -208,4 +208,12 @@
   (CVE-2023-41915, bsc#1215190). (forwarded request 1110641 from eeich)</comment>
     <requestid>1110642</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>900359d0ad15e992191542a7acfaa204</srcmd5>
+    <version>3.2.5</version>
+    <time>1708534895</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1148733</requestid>
+  </revision>
 </revisionlist>

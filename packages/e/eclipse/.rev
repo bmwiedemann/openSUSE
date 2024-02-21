@@ -175,4 +175,12 @@
     <comment>Reproducible timestamp in xml files</comment>
     <requestid>1112366</requestid>
   </revision>
+  <revision rev="23" vrev="12">
+    <srcmd5>841842efb2071befdca02836480bf212</srcmd5>
+    <version>4.15</version>
+    <time>1708534770</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148558</requestid>
+  </revision>
 </revisionlist>

@@ -267,4 +267,12 @@
     <comment>8.11.2</comment>
     <requestid>1112364</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>120926eb23a2881a33c5e7f791f1cb01</srcmd5>
+    <version>8.11.2</version>
+    <time>1708534809</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148599</requestid>
+  </revision>
 </revisionlist>

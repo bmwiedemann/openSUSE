@@ -45,8 +45,7 @@ Also included is 'wseventmgr', a CLI utility for event management over
 the WS-Management protocol.
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 %configure --disable-more-warnings

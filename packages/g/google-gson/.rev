@@ -63,4 +63,12 @@
     <comment>Reproducible builds improvement</comment>
     <requestid>1109953</requestid>
   </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>ab51f18205afc26d119217455622b214</srcmd5>
+    <version>2.8.9</version>
+    <time>1708534790</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148574</requestid>
+  </revision>
 </revisionlist>

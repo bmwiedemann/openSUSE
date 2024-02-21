@@ -1,6 +1,7 @@
 #
 # spec file for package json-table
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,8 +13,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           json-table
 Version:        4.3.3
@@ -32,8 +34,7 @@ values (or CSV) to stdout. A simple stack-based programming language
 is used to extract values from the JSON input for printing.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 export CFLAGS='%{optflags}'

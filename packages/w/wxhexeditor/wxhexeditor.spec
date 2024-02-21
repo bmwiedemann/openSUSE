@@ -71,11 +71,11 @@ Features:
 %prep
 %setup -q -n %{_name}-%{version}
 rm -rf mhash
-%patch0 -p0
-%patch1 -p0
-%patch2
-%patch3 -p1
-%patch4 -p1
+%patch -P 0 -p0
+%patch -P 1 -p0
+%patch -P 2
+%patch -P 3 -p1
+%patch -P 4 -p1
 chmod -x docs/*
 cp -v udis86/LICENSE LICENSE-udis86
 cp -v docs/GPL.txt .

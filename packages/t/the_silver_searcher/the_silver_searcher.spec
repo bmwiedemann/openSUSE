@@ -1,7 +1,7 @@
 #
 # spec file for package the_silver_searcher
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,22 +30,15 @@ Source4:        %{name}.changes
 # PATCH-FIX-UPSTREAM the_silver_searcher-2.2.0-portabilityfixes.patch gh#ggreer/the_silver_searcher#1377 -- Fix multiple global symbols definitions
 Patch0:         the_silver_searcher-2.2.0-portabilityfixes.patch
 BuildRequires:  pkgconfig >= 0.9.0
-%if 0%{?suse_version} > 1110
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(zlib)
-%else
-BuildRequires:  pcre-devel
-BuildRequires:  xz-devel
-BuildRequires:  zlib-devel
-%endif
 
 %description
 A code searching tool similar to ack, with a focus on speed.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure

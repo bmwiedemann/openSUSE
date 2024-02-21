@@ -103,4 +103,12 @@
     <comment>Explicit requires</comment>
     <requestid>1112263</requestid>
   </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>9d7093664cbfa6624b296325bae6580c</srcmd5>
+    <version>1.6.0</version>
+    <time>1708534847</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148637</requestid>
+  </revision>
 </revisionlist>

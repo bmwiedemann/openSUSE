@@ -40,10 +40,10 @@ A C++ library for handling UTF-8 encoded strings.
 %prep
 %setup -q
 %if 0%{?suse_version} < 1320
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 %if 0%{?suse_version} < 1550
-%patch1 -p1
+%patch -P 1 -p1
 %endif
 
 %build

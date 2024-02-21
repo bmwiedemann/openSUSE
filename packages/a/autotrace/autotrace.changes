@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 10:45:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Nov  8 22:31:34 UTC 2022 - Jason Sikes <jsikes@suse.com>
 
 - Added CVE-2022-32323.patch

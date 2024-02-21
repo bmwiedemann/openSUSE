@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 14:36:44 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon May  9 14:32:42 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Version bump to release 0.8.3:

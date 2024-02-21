@@ -1,7 +1,7 @@
 #
 # spec file for package maven-scm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2005, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -77,8 +77,8 @@ Javadoc for %{name}.
 %prep
 %setup -q
 
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 # Remove unnecessary animal sniffer
 %pom_remove_plugin org.codehaus.mojo:animal-sniffer-maven-plugin

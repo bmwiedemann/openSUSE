@@ -99,7 +99,7 @@ This subpackage contains the Apache configuration files
 
 %prep
 %setup -q -n %{name}
-%patch1 -p1
+%patch -P 1 -p1
 install -m644 %{SOURCE4} README.SUSE
 # remove unwanted files
 find . -type f "(" -name .htaccess -o -name .travis.sh -o -name .gitkeep ")" -delete

@@ -83,7 +83,7 @@ skips="$skips or test_get_testdata_files_hash_match"
 skips="$skips or test_get_testdata_files_hash_mismatch"
 skips="$skips or test_get_testdata_files_external_ignore_hash"
 
-if [ "$RPM_ARCH" = "ppc64le" -o "$RPM_ARCH" = "aarch64" ]; then
+if [ "$RPM_ARCH" = "ppc64le" -o "$RPM_ARCH" = "aarch64" -o "$RPM_ARCH" = "riscv64" ]; then
   skips="$skips or TestPillowHandler_JPEG2K"
 fi
 if [ $(getconf LONG_BIT) -eq 32 ]; then

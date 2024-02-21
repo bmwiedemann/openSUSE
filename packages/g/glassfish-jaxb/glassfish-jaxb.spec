@@ -1,7 +1,7 @@
 #
 # spec file for package glassfish-jaxb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -209,8 +209,8 @@ This package contains the API documentation for %{name}.
 %prep
 %setup -q -n jaxb-v2-%{version}
 
-%patch0
-%patch1 -p1
+%patch -P 0
+%patch -P 1 -p1
 
 pushd jaxb-ri
 

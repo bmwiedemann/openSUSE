@@ -64,9 +64,7 @@ BuildArch:      noarch
 The official zsh completion script for %{name}.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 

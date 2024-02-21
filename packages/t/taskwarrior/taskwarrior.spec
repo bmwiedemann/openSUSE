@@ -1,7 +1,7 @@
 #
 # spec file for package taskwarrior
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,8 +52,7 @@ Taskwarrior is a very active project involving people around the globe - check
 often for updates.
 
 %prep
-%setup -q -n task-%{version}
-%patch0 -p1
+%autosetup -p1 -n task-%{version}
 
 # replace __TIME__/__DATE__ with values from source code tarball
 DATE=$(/bin/date -r "%{SOURCE0}" | awk '{print $2" "$3" "$6}')

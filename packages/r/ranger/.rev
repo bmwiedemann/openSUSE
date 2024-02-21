@@ -196,4 +196,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1084467</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>7a49565e0d2c0653ba7619e148671f01</srcmd5>
+    <version>1.9.3+git20230416.478d5b6</version>
+    <time>1708534918</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1148768</requestid>
+  </revision>
 </revisionlist>

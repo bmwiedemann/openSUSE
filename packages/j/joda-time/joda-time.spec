@@ -1,7 +1,7 @@
 #
 # spec file for package joda-time
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ Patch0:         joda-time-fix-tests.patch
 BuildRequires:  ant
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  joda-convert
 BuildArch:      noarch
 
@@ -54,7 +54,7 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P 0 -p1
 dos2unix LICENSE.txt NOTICE.txt RELEASE-NOTES.txt
 cp %{SOURCE100} build.xml
 
@@ -64,12 +64,6 @@ find . -name '*.jar' -exec rm -f '{}' \;
 # replace internal tzdata
 rm -f src/main/java/org/joda/time/tz/src/*
 tar -xzf %{SOURCE1} -C src/main/java/org/joda/time/tz/src/
-
-%pom_remove_plugin :maven-enforcer-plugin
-
-%pom_xpath_set pom:project/pom:properties/pom:maven.compiler.source "1.6"
-%pom_xpath_set pom:project/pom:properties/pom:maven.compiler.target "1.6"
-%pom_xpath_set pom:project/pom:properties/pom:maven.compiler.compilerVersion "1.6"
 
 %build
 %{ant} \
@@ -84,7 +78,7 @@ install -d -m 755 %{buildroot}%{_javadir}
 install -m 644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 # poms
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -m 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}

@@ -1,6 +1,7 @@
 #
 # spec file for package grepcidr
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -35,8 +36,7 @@ specifications, of arbitrary mask lengths, can be specified both on the
 command line or loaded from a file.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 export CFLAGS='%{optflags}'

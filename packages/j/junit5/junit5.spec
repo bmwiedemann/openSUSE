@@ -1,7 +1,7 @@
 #
 # spec file for package junit5
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -93,7 +93,7 @@ JUnit 5 User Guide.
 
 %prep
 %setup -q -n %{name}-r%{version}
-%patch0 -p1
+%patch -P 0 -p1
 find -name \*.jar -delete
 
 cp -p %{SOURCE100} pom.xml

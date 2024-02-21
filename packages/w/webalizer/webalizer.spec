@@ -86,14 +86,14 @@ world set.
 
 %prep
 %setup -q -n %{name}-%{version}-%{editlvl} -a 1
-%patch0
-%patch1
-%patch3
-%patch4
-%patch5
-%patch6
-%patch7
-%patch8 -p1
+%patch -P 0
+%patch -P 1
+%patch -P 3
+%patch -P 4
+%patch -P 5
+%patch -P 6
+%patch -P 7
+%patch -P 8 -p1
 %{__cp} -a %{S:2} .
 
 %build

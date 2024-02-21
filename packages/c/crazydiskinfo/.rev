@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>770791</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>dc2332a2af3c420c7e2d60b5d01933f9</srcmd5>
+    <version>1.1.0</version>
+    <time>1708534933</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1148787</requestid>
+  </revision>
 </revisionlist>

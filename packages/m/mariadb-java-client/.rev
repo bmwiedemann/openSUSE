@@ -23,4 +23,12 @@
     <comment>Do not require maven-javadoc-plugin that we don't use</comment>
     <requestid>1112238</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e1f287a94e4a081498d0dc6bad9c849d</srcmd5>
+    <version>2.4.3</version>
+    <time>1708534812</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148601</requestid>
+  </revision>
 </revisionlist>

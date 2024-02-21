@@ -1,7 +1,7 @@
 #
 # spec file for package maven-shared-utils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ BuildRequires:  ant
 BuildRequires:  apache-commons-io
 BuildRequires:  fdupes
 BuildRequires:  jansi
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsr-305
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-containers-container-default
@@ -66,12 +66,7 @@ API documentation for %{name}.
 %setup -q
 cp %{SOURCE1} build.xml
 
-%patch0 -p1
-
-%pom_remove_plugin org.codehaus.mojo:findbugs-maven-plugin
-
-%pom_remove_parent .
-%pom_xpath_inject pom:project "<groupId>org.apache.maven.shared</groupId>" .
+%patch -P 0 -p1
 
 %build
 mkdir -p lib
@@ -95,7 +90,7 @@ install -dm 0755 %{buildroot}%{_javadir}/%{name}
 install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
 %add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}

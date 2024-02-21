@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:16:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Nov 16 20:12:32 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Add wxhexeditor-appdata.patch for https://en.opensuse.org/openSUSE:AppStore

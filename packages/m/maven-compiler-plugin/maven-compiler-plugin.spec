@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package maven-compiler-plugin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ Summary:        Maven Compiler Plugin
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/plugins/maven-compiler-plugin
-Source0:        https://dlcdn.apache.org/maven/plugins/%{base_name}-%{version}-source-release.zip
+Source0:        https://archive.apache.org/dist/maven/plugins/%{base_name}-%{version}-source-release.zip
 Source1:        %{base_name}-build.xml
 Patch0:         %{base_name}-bootstrap-resources.patch
 BuildRequires:  javapackages-local
@@ -86,7 +86,7 @@ API documentation for %{name}.
 %setup -q -n %{base_name}-%{version}
 %if %{with bootstrap}
 cp %{SOURCE1} build.xml
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 
 %pom_remove_dep :::test

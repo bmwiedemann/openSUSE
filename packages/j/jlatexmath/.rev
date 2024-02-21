@@ -39,4 +39,12 @@ http://lists.opensuse.org/opensuse-factory/2014-04/msg00309.html</comment>
     <comment>Build with source and target levels 8</comment>
     <requestid>964030</requestid>
   </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>14e6ec7961c1c19c3c834eba5363d658</srcmd5>
+    <version>1.0.3</version>
+    <time>1708534875</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148692</requestid>
+  </revision>
 </revisionlist>

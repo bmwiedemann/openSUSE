@@ -1,7 +1,7 @@
 #
 # spec file for package pmix
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,13 @@
 #
 
 Name:           pmix
-Version:        3.2.3
+Version:        3.2.5
 Release:        0
 Summary:        Process Management Interface for MPI
 License:        BSD-3-Clause
 Group:          Development/Libraries/Parallel
 URL:            https://pmix.org/
 Source0:        https://github.com/openpmix/openpmix/archive/v%{version}.tar.gz#/openpmix-%{version}.tar.gz
-Patch0:         Fix-a-potential-vulnerability-which-allows-chown-on-user-created-links.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes

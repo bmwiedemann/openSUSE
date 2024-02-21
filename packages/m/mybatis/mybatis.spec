@@ -1,7 +1,7 @@
 #
 # spec file for package mybatis
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -73,7 +73,7 @@ This package contains javadoc for %{name}.
 %setup -q -n %{name}-3-%{name}-%{version}
 
 %pom_change_dep ognl:ognl org.apache.commons:commons-ognl:4.0-SNAPSHOT
-%patch0 -p1
+%patch -P 0 -p1
 
 %pom_remove_plugin :maven-pdf-plugin
 %pom_remove_plugin :maven-shade-plugin

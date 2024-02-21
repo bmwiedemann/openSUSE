@@ -1,7 +1,7 @@
 #
 # spec file for package os-maven-plugin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,7 @@ This package provides %{summary}.
 %prep
 %setup -q -n %{name}-%{name}-%{version}
 
-%patch0 -p1
+%patch -P 0 -p1
 
 # Remove Eclipse plugin
 %pom_remove_dep org.eclipse:ui

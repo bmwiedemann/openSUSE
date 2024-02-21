@@ -100,4 +100,12 @@
     <comment>Make jikes installable again</comment>
     <requestid>537481</requestid>
   </revision>
+  <revision rev="16" vrev="161">
+    <srcmd5>af50b27e89060790f2cf0df5f9568c06</srcmd5>
+    <version>1.22</version>
+    <time>1708534862</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148704</requestid>
+  </revision>
 </revisionlist>

@@ -76,7 +76,7 @@ This package contains javadoc for %{base_name}.
 
 %prep
 %setup -q -n %{base_name}-%{version} -a1
-%patch0 -p1
+%patch -P 0 -p1
 
 cp %{SOURCE2} %{base_name}-core/pom.xml
 cp %{SOURCE3} %{base_name}-java/pom.xml

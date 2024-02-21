@@ -1,7 +1,7 @@
 #
 # spec file for package adns
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,10 +59,7 @@ Libadns-devel includes the header file and static library to develop
 programs with libads support.
 
 %prep
-%setup -q
-%patch0
-%patch1
-%patch2
+%autosetup -p0
 cp %{SOURCE3} .
 
 %build

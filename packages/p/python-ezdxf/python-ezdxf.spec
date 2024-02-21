@@ -1,7 +1,7 @@
 #
 # spec file for package python-ezdxf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,8 @@
 
 
 %define packagename ezdxf
-%define skip_python2 1
-%define skip_python36 1
-%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-ezdxf
-Version:        0.16.3
+Version:        1.1.4
 Release:        0
 Summary:        Python package for manipulating DXF drawings
 License:        MIT
@@ -36,19 +33,21 @@ BuildRequires:  python-rpm-macros
 # /SECTION
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module geomdl}
-BuildRequires:  %{python_module pytest-xvfb}
-# /SECTION
-# SECTION optional runtime requirements
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module qt5}
 # /SECTION
 BuildRequires:  %{python_module pyparsing >= 2.0.1}
+BuildRequires:  %{python_module fonttools}
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module typing_extensions}
+Requires:       python-fonttools
+Requires:       python-numpy
 Requires:       python-pyparsing >= 2.0.1
+Requires:       python-typing_extensions
 Recommends:     python-matplotlib
 Recommends:     python-qt5
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -56,8 +55,7 @@ A Python package to create and modify DXF drawings, independent from the
 DXF version.
 
 %prep
-%setup -q -n %{packagename}-%{version}
-# remove unused script interpreter line
+%autosetup -p1 -n %{packagename}-%{version}
 sed -i '1 {/env python/ d}' src/ezdxf/addons/drawing/qtviewer.py
 
 %build

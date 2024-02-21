@@ -1,7 +1,7 @@
 #
 # spec file for package stringtemplate
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,9 +55,9 @@ API documentation for package %{name}.
 
 %prep
 %setup -q
-%patch0
-%patch1 -p1
-%patch2 -p1
+%patch -P 0
+%patch -P 1 -p1
+%patch -P 2 -p1
 
 %build
 rm -rf lib target

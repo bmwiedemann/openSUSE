@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 21 15:41:15 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Mon Dec  2 19:51:44 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.5

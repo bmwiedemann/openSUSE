@@ -46,7 +46,7 @@ well with pipes and can feed "tail -f".
 %prep
 %setup -q -a 1
 %if "%{_arch}" != "ppc64"
-%patch0
+%patch -P 0
 %endif
 # Not sure if this is still required
 #%%ifarch %%ix86

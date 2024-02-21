@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Feb  8 18:00:55 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.2.0 (new naming scheme upstream):
+  * Major Changes
+    - Set Python 3.10 as minimum version (#4099) @cristianonicolai
+  * Minor Changes
+    - Adding molecule template based on driver.name (#4126)
+      @mrbrandao
+  * Bugfixes
+    - Fix background color on matrix command (#4133) @ssbarnea
+    - Fix python interpreter for scenario init (#4111) @dobbi84
+    - Drivers command now display more information (#4112)
+      @ssbarnea
+    - Fix indents in Getting Started example playbook (#4104)
+      @akira6592
+    - Restructure documentation (#4102) @ssbarnea
+
+-------------------------------------------------------------------
 Wed Dec 13 14:40:56 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.0.3:

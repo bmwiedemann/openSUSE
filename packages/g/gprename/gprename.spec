@@ -1,7 +1,7 @@
 #
 # spec file for package gprename
 #
-# Copyright (c) 2022 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,9 +22,9 @@ Name:           gprename
 Version:        5.0.%{upstr_ver}
 Release:        0
 Summary:        A GTK3 batch renamer for files and directories
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/File utilities
-Url:            https://gprename.sourceforge.net
+URL:            https://gprename.sourceforge.net
 
 Source0:        http://kent.dl.sourceforge.net/project/gprename/gprename/%{upstr_ver}/gprename-%{upstr_ver}.tar.bz2
 # PATCH-FIX-OPENSUSE to prevent
@@ -42,9 +42,9 @@ Patch1:         desktop_icon.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  update-desktop-files
 Requires:       perl-Gtk3
+Requires:       perl-Pango
 Requires:       perl-gettext
 Requires:       perl-libintl-perl
-Requires:       perl-Pango
 Recommends:     %{name}-lang
 BuildArch:      noarch
 
@@ -54,8 +54,7 @@ GPRename is a complete GTK3/perl batch renamer for files and directories.
 %lang_package
 
 %prep
-%setup -q -n %{name}-%{upstr_ver}
-%patch1
+%autosetup -p0 -n %{name}-%{upstr_ver}
 chmod -x *.TXT
 
 %build

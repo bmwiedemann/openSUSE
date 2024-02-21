@@ -55,4 +55,12 @@
     <comment>sync changes with sle</comment>
     <requestid>979135</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>e46a22fb2aacd469052f444f529dc93f</srcmd5>
+    <version>1.7.0</version>
+    <time>1708534821</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148612</requestid>
+  </revision>
 </revisionlist>

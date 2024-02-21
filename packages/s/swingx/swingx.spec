@@ -1,7 +1,7 @@
 #
 # spec file for package swingx
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,12 +57,12 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-%{real_version}
-%patch0 -p1
-%patch1
-%patch2
-%patch3
-%patch4
-%patch5 -p1
+%patch -P 0 -p1
+%patch -P 1
+%patch -P 2
+%patch -P 3
+%patch -P 4
+%patch -P 5 -p1
 
 %pom_disable_module %{name}-testsupport
 

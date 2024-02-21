@@ -1,7 +1,7 @@
 #
 # spec file for package grc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,8 +34,7 @@ Generic Colouriser is yet another colouriser for beautifying your
 logfiles or commands output.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 # Nothing to build.

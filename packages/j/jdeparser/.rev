@@ -7,4 +7,12 @@
     <comment>Initial package</comment>
     <requestid>793992</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0ee6f9be82a5905fe758174d2bcaf53c</srcmd5>
+    <version>2.0.3</version>
+    <time>1708534800</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148583</requestid>
+  </revision>
 </revisionlist>

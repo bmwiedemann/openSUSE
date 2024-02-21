@@ -1,7 +1,7 @@
 #
 # spec file for package jeuclid
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        MathML rendering solution
 # LGPL-2.1 is for the FreeHEP component only (see LICENSE.FreeHEP)
 License:        Apache-2.0 AND LGPL-2.1-only
 Group:          Development/Libraries/Java
-URL:            http://jeuclid.sourceforge.net/index.html
+URL:            https://jeuclid.sourceforge.net/index.html
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-parent-%{version}-src.zip
 #fedora specific build script based on debian
 Source1:        build.xml
@@ -160,12 +160,12 @@ mv NOTICE.unix NOTICE
 mkdir lib
 build-jar-repository -s -p lib jcip-annotations commons-logging xmlgraphics-commons batik-all xmlgraphics-fop.jar commons-cli commons-lang3 xml-apis
 
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
 
 find -name '*.jar' -o -name '*.class' -exec rm -f '{}' \;
 

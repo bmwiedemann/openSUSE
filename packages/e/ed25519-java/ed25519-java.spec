@@ -1,7 +1,7 @@
 #
 # spec file for package ed25519-java
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,8 +52,8 @@ This package contains javadoc for %{name}.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 # Unwanted tasks
 %pom_remove_plugin :maven-gpg-plugin

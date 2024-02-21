@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 10:54:51 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Feb  2 20:17:45 UTC 2024 - guiv42 <guiv42@tuta.io>
 
 - Updated to new upstream release 1.6.1

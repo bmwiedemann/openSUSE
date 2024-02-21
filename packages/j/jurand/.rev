@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>1133084</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>126621929869b0429aefef90e55d23de</srcmd5>
+    <version>1.3.2</version>
+    <time>1708534887</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148725</requestid>
+  </revision>
 </revisionlist>

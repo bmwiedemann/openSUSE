@@ -1,7 +1,7 @@
 #
 # spec file for package jctools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,8 +69,8 @@ This package contains javadoc for %{name}.
 
 %prep
 %setup -q -n %{srcname}-%{version}
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 # set correct version in all pom.xml files
 %pom_xpath_set pom:project/pom:version %{version}

@@ -1,7 +1,7 @@
 #
 # spec file for package kryo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,7 +53,7 @@ This package contains javadoc for %{name}.
 
 %prep
 %setup -q
-%patch0 -p1 -E
+%patch -P 0 -p1 -E
 
 # Do not use shaded reflectasm
 %pom_disable_module pom-shaded.xml

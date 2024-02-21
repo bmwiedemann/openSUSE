@@ -1,7 +1,7 @@
 #
 # spec file for package xmorph
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,8 +46,8 @@ BuildRequires:  pkgconfig(xaw7)
 BuildRequires:  pkgconfig(xt)
 Requires(post): %{install_info_prereq}
 Requires(post): update-desktop-files
-Requires(postun):update-desktop-files
-Requires(preun):%{install_info_prereq}
+Requires(postun): update-desktop-files
+Requires(preun): %{install_info_prereq}
 
 %description
 This morphing program reads two images in Targa format and computes the
@@ -70,12 +70,12 @@ to develop applications that require these.
 %prep
 %setup -q
 cat %{SOURCE2} >>acinclude.m4
-%patch1
-%patch2
-%patch3
-%patch4
-%patch5 -p1
-%patch6 -p1
+%patch -P 1
+%patch -P 2
+%patch -P 3
+%patch -P 4
+%patch -P 5 -p1
+%patch -P 6 -p1
 
 %build
 autoreconf -fiv

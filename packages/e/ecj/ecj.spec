@@ -45,8 +45,8 @@ the JDT Core batch compiler.
 
 %prep
 %setup -q -c
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 # Specify encoding
 sed -i -e '/compilerarg/s/Xlint:none/Xlint:none -encoding cp1252/' build.xml

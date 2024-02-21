@@ -34,8 +34,7 @@ Timewarrior is a command line time tracking application, which allows you to
 record time spent on activities.
 
 %prep
-%setup -q -n timew-%{version}
-%patch0 -p1
+%autosetup -p1 -n timew-%{version}
 
 %build
 %cmake \

@@ -1,7 +1,7 @@
 #
 # spec file for package javacc-maven-plugin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,7 @@ API documentation for %{name}.
 
 %prep
 %setup -q
-%patch0 -b .sav
+%patch -P 0 -b .sav
 cp -p %{SOURCE1} .
 
 # migrate to maven 3

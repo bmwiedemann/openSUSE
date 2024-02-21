@@ -1,7 +1,7 @@
 #
-# spec file for package eclipse-bootstrap
+# spec file for package eclipse
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -502,37 +502,37 @@ tar --strip-components=1 -xf %{SOURCE0}
 # Extract linuxtools/eclipse-build sources
 tar --strip-components=1 -xf %{SOURCE1}
 
-%patch0
-%patch1
-%patch2 -p1
-%patch4 -p1
-%patch5
-%patch6 -p1
-%patch12
-%patch13 -p1
-%patch14
-%patch15
-%patch17 -p1
-%patch18
-%patch19
-%patch20
+%patch -P 0
+%patch -P 1
+%patch -P 2 -p1
+%patch -P 4 -p1
+%patch -P 5
+%patch -P 6 -p1
+%patch -P 12
+%patch -P 13 -p1
+%patch -P 14
+%patch -P 15
+%patch -P 17 -p1
+%patch -P 18
+%patch -P 19
+%patch -P 20
 %if ! %{use_wayland}
-%patch21
+%patch -P 21
 %endif
-%patch22
-%patch23 -p1
-%patch24 -p1
-%patch25
-%patch26 -p1
-%patch27
+%patch -P 22
+%patch -P 23 -p1
+%patch -P 24 -p1
+%patch -P 25
+%patch -P 26 -p1
+%patch -P 27
 
-%patch31 -p1
-%patch32 -p1
-%patch33 -p1
-%patch34 -p1
-%patch35 -p1
-%patch36 -p1
-%patch37 -p1
+%patch -P 31 -p1
+%patch -P 32 -p1
+%patch -P 33 -p1
+%patch -P 34 -p1
+%patch -P 35 -p1
+%patch -P 36 -p1
+%patch -P 37 -p1
 
 # Extend the objectweb-asm requirements
 sed -i -e 's/org\.objectweb\.asm\.tree;bundle-version="\[6\.0\.0,8\.0\.0)"/org\.objectweb\.asm\.tree;bundle-version="\[6\.0\.0,10\.0\.0)"/g' \

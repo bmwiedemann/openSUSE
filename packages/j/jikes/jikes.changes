@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 12:12:25 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Oct 30 08:50:22 UTC 2017 - fstrba@suse.com
 
 - With removal of java-1_5_0-gcj-compat, jikes became uninstallable

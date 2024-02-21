@@ -151,4 +151,12 @@
     <comment>Distribute as maven artifact</comment>
     <requestid>1089455</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>845aa3fc252cdcaa2f2463a52b4fba2d</srcmd5>
+    <version>2.3.5</version>
+    <time>1708534837</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148630</requestid>
+  </revision>
 </revisionlist>

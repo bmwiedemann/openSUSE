@@ -180,4 +180,12 @@
     <comment></comment>
     <requestid>899906</requestid>
   </revision>
+  <revision rev="27" vrev="251">
+    <srcmd5>0ef69973d0d900e15f5f5e0adcce6f19</srcmd5>
+    <version>20060817</version>
+    <time>1708534925</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN.</comment>
+    <requestid>1148794</requestid>
+  </revision>
 </revisionlist>

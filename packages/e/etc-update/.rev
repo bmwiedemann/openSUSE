@@ -53,4 +53,13 @@
   * etc-update-opensuse.patch</comment>
     <requestid>602474</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>4cfacc20161181e074459ac79ed15a59</srcmd5>
+    <version>2.3.31</version>
+    <time>1708534932</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1148786</requestid>
+  </revision>
 </revisionlist>

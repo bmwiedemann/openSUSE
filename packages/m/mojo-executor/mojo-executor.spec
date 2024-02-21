@@ -1,7 +1,7 @@
 #
 # spec file for package mojo-executor
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,7 +51,7 @@ API documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-%{name}-parent-%{version}
-%patch0 -p1
+%patch -P 0 -p1
 cp %{SOURCE1} .
 %pom_disable_module %{name}-maven-plugin
 %pom_remove_plugin :jacoco-maven-plugin

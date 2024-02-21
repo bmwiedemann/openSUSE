@@ -23,4 +23,12 @@
     <comment>reproducible</comment>
     <requestid>1110262</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>9027ad5770ef8acd03465f323d02b4fe</srcmd5>
+    <version>0.3.0</version>
+    <time>1708534781</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148564</requestid>
+  </revision>
 </revisionlist>

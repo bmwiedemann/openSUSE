@@ -1,7 +1,7 @@
 #
 # spec file for package codemodel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,7 +50,7 @@ This package contains the API documentation for %{name}.
 
 # Unpack and patch the original source:
 %setup -q -n jaxb-%{name}-%{name}-project-2.6
-%patch0 -p1
+%patch -P 0 -p1
 
 %pom_xpath_set "pom:build/pom:plugins/pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:configuration/pom:source" 1.8
 %pom_xpath_set "pom:build/pom:plugins/pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:configuration/pom:target" 1.8

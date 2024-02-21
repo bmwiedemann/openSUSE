@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 15:55:10 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Jun  7 11:54:24 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop --with-pic (no effect with --disable-static)

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:37:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sat Nov  9 19:06:03 UTC 2013 - jengelh@inai.de
 
 - Set RPM group names for shlib packages

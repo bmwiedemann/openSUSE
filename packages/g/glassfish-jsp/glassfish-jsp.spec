@@ -1,7 +1,7 @@
 #
 # spec file for package glassfish-jsp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,9 +68,9 @@ Group:          Documentation/HTML
 
 %prep
 %setup -q -n %{artifactId}-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 
 %pom_add_dep org.eclipse.jdt:core::provided
 %pom_add_dep org.apache.ant:ant::provided

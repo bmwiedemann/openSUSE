@@ -39,4 +39,12 @@
     <comment>This works with java 8 too</comment>
     <requestid>1064158</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>04ef656c15e7fafbd3e6436ccf1bd8c5</srcmd5>
+    <version>3.0.0</version>
+    <time>1708534782</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148565</requestid>
+  </revision>
 </revisionlist>

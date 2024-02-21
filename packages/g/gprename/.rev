@@ -40,4 +40,13 @@ PS Factory provides x64 build. Others are disabled in order to save atm work. (f
     <comment></comment>
     <requestid>1005988</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>fa402966ecf16989ea3933cd364d4506</srcmd5>
+    <version>5.0.20220807</version>
+    <time>1708534931</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1148785</requestid>
+  </revision>
 </revisionlist>

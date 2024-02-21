@@ -15,4 +15,12 @@
     <comment>Fix build against plexus-languages &gt;= 1.0</comment>
     <requestid>750604</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>dd0441d81a69d7bf65e326dc985c79f0</srcmd5>
+    <version>3.0.0~alpha1</version>
+    <time>1708534819</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148609</requestid>
+  </revision>
 </revisionlist>

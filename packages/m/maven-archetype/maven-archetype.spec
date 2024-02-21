@@ -1,7 +1,7 @@
 #
 # spec file for package maven-archetype
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -130,8 +130,8 @@ Summary:        Maven Plugin for using archetypes
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 %pom_change_dep ant:ant-antlr org.apache.ant:ant-antlr archetype-common
 %pom_change_dep org.sonatype.aether: org.eclipse.aether: archetype-common
 

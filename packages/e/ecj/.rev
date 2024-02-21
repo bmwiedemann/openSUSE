@@ -267,4 +267,12 @@
     <comment>Restore possibility to run with java 8</comment>
     <requestid>1146470</requestid>
   </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>167da9f2bda177bc261f1f9687ce32c2</srcmd5>
+    <version>4.23</version>
+    <time>1708534769</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148557</requestid>
+  </revision>
 </revisionlist>

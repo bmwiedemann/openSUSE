@@ -50,7 +50,7 @@ This package contains javadoc for %{name}.
 
 %prep
 %setup -q -n %{bundle}-%{version}
-%patch0 -p1
+%patch -P 0 -p1
 
 # All these OSGi deps are provided in the compendium jar
 %pom_add_dep org.osgi:osgi.cmpn:7.0.0:provided

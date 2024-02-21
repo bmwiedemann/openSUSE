@@ -25,7 +25,7 @@ License:        GPL-2.0+
 Group:          System/X11/Terminals
 Url:            https://www.vanheusden.com/multitail/
 Source:         https://www.vanheusden.com/multitail/%{name}-%{version}.tgz
-Patch3:         multitail-fix_missing_proto_do_check_for_mail.patch
+Patch0:         multitail-fix_missing_proto_do_check_for_mail.patch
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 
@@ -46,8 +46,7 @@ viewing the output of external software, MultiTail can mimic the
 functionality of tools like 'watch' and such.
 
 %prep
-%setup -q
-%patch3
+%autosetup -p0
 
 sed -i 's/\.new//g' Makefile
 sed -i 's|%{_sysconfdir}/%{name}|%{_datadir}/%{name}|g' "%{name}.conf"

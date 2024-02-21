@@ -46,9 +46,7 @@ issuance. The protocol also provides facilities for other
 certificate management functions, such as certificate revocation.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Feb 18 10:12:27 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 3.2.5:
+  * fix for CVE-2023-41915: Do not follow links when doing "chown"
+
+- Update to 3.2.4:
+  * Must spawn something in tests
+  * direct: ptl/base: retry recv when it encounter EAGAIN or EWOULDBLOCK
+  * direct: Make abort on component not found optional
+
+- dropped patch Fix-a-potential-vulnerability-which-allows-chown-on-user-created-links.patch
+  as already included in upstream
+
+-------------------------------------------------------------------
 Tue Sep 12 14:04:10 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Fix a potential vulnerability where a `chown` may follow a
