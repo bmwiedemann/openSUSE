@@ -221,4 +221,12 @@
     <comment>Conditionally allow building with standalone Pack200 implementation</comment>
     <requestid>1142746</requestid>
   </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>89c2d00f184231f1a02ab60b333caf26</srcmd5>
+    <version>2.5.2</version>
+    <time>1708534328</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147962</requestid>
+  </revision>
 </revisionlist>

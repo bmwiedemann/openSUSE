@@ -81,8 +81,8 @@ JavaDoc documentation for %{name}
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 cp %{SOURCE2} pom.xml
 
@@ -125,7 +125,7 @@ rm src/java/org/apache/ivy/plugins/resolver/SshResolver.java
 
 %if %{with pack200}
 %pom_add_dep io.pack200:pack200:14:provided
-%patch2 -p1
+%patch -P 2 -p1
 %endif
 
 %build
