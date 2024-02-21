@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 21 07:41:23 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+- Update source URL
+
+-------------------------------------------------------------------
 Tue Dec  6 16:12:10 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.14:

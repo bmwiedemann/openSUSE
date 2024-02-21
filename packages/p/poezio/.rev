@@ -65,4 +65,14 @@
   * Ensure launch.sh can be use outside the repository (Thanks kaliko)</comment>
     <requestid>1040755</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b1b021d5e6d1cafa2d0131e7619f24f2</srcmd5>
+    <version>0.14</version>
+    <time>1708534690</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+- Update source URL</comment>
+    <requestid>1148423</requestid>
+  </revision>
 </revisionlist>
