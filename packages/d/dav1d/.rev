@@ -269,4 +269,14 @@
     <comment></comment>
     <requestid>1146649</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>3c9386b69db37701e5f946aa3db6f923</srcmd5>
+    <version>1.4.0</version>
+    <time>1708534569</time>
+    <user>anag+factory</user>
+    <comment>Fix bsc reference (bsc#1220104 is the same CVE, but related to gstreamer-plugins-rs)
+
+    sizes (bsc#1220105, CVE-2024-1580) (forwarded request 1148679 from alarrosa)</comment>
+    <requestid>1148724</requestid>
+  </revision>
 </revisionlist>

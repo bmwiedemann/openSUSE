@@ -10,7 +10,7 @@ Wed Feb 14 20:10:15 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
   * RISC-V optimizations for itx
   * Misc improvements in threading and in reducing binary size
   * Fix potential integer overflow with extremely large frame
-    sizes
+    sizes (bsc#1220105, CVE-2024-1580)
 
 -------------------------------------------------------------------
 Wed Oct  4 04:17:53 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
