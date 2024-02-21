@@ -47,4 +47,12 @@
     <comment>Fix build with jdk 21</comment>
     <requestid>1120555</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>9ecb97e841a5778e4e03869cec8fd063</srcmd5>
+    <version>5.8.2</version>
+    <time>1708534806</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148595</requestid>
+  </revision>
 </revisionlist>
