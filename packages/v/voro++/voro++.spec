@@ -69,8 +69,7 @@ centroid, number of faces) can be used to analyze a system of particles.
 This package contains development headers and libraries for voro++.
 
 %prep
-%setup -q
-%patch0 -p0
+%autosetup -p0
 
 %build
 %{cmake} -DCMAKE_INSTALL_PREFIX=%{_prefix} \
