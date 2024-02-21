@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 10:44:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Feb 12 13:39:21 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable imx8mq is it fails to build due to size constraints

@@ -206,9 +206,9 @@ echo "%{mv_ddr_ver}" > mv-ddr-marvell-%{mv_ddr_ver}/branch.txt
 pushd mv-ddr-marvell-%{mv_ddr_ver}
 %if %{suse_version} > 1550
 # Workaround for GCC12 bug - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105523
-%patch100 -p1
+%patch -P 100 -p1
 %endif
-%patch101 -p1
+%patch -P 101 -p1
 popd
 %else
 %if "%{platform}" == ""
@@ -224,12 +224,12 @@ echo "%{a3700_utils_ver}" >  branch.txt
 %if "%{platform}" != ""
 install -D -m 0755 %{_bindir}/TBB wtptp/linux/tbb_linux
 %endif
-%patch150 -p1
+%patch -P 150 -p1
 popd
 %endif
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 %if %{suse_version} <= 1500
 # GCC7 does not support -mbranch-protection option
 sed -i -e "s/TF_CFLAGS_aarch64	+=	-mbranch-protection=none//" plat/xilinx/zynqmp/platform.mk
