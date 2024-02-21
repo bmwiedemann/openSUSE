@@ -45,8 +45,8 @@ because the destination is smaller than the source. A few features:
 * data recovery of damaged archives with 64 Kbyte grannularity
 
 %prep
-%setup -q -c
-%patch0 -p1
+%autosetup -p1 -c
+
 cp %{SOURCE1} .
 
 %build

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 13:51:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Sun Jan 26 12:42:48 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Make profile guided optimization deterministic (boo#1040589)
