@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 20 11:12:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
+Mon Feb 19 15:27:03 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.16
+  * Fix a bunch of places we forget to aws_raise_error() by @graebm in (#229)
+- from version 0.7.15
+  * Make Partial Creds a Transient Error by @waahm7 in (#226)
+
+-------------------------------------------------------------------
 Sat Jan 27 16:37:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - fix packaging shlib naming

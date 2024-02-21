@@ -1,7 +1,7 @@
 #
 # spec file for package aws-c-auth
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define library_pkg 1_0_0
 %define library_soversion 1
 Name:           aws-c-auth
-Version:        0.7.14
+Version:        0.7.16
 Release:        0
 Summary:        AWS C99 library implementation of AWS client-side authentication
 License:        Apache-2.0
@@ -72,8 +72,7 @@ standard credentials providers and signing.
 This package contains the development files.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %define __builder ninja
