@@ -51,11 +51,7 @@ help when merging two VBR MP3s together with a merging tool and then
 needing a newly-calculated VBR null frame.
 
 %prep
-%setup -q -n "vbrfixc-%{version}"
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1 -n "vbrfixc-%{version}"
 
 %build
 %configure
