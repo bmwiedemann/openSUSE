@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package apache-commons-logging
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2007, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -57,11 +57,7 @@ the two, and to allow a developer to not tie himself to a particular
 logging implementation.
 
 %prep
-%setup -q -n %{short_name}-%{version}-src
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1 -n %{short_name}-%{version}-src
 
 sed -i 's/\r//' RELEASE-NOTES.txt LICENSE.txt
 
