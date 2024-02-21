@@ -387,14 +387,14 @@ find -name \*.jar -print -delete
 
 # When bootstrapping, we don't have junit
 %if %{with bootstrap}
-%patch0 -p1
+%patch -P 0 -p1
 %endif
-%patch1
-%patch2 -p1
-%patch3 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
+%patch -P 1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
 
 # clean jar files
 find . -name "*.jar" -print -delete

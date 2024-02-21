@@ -832,4 +832,12 @@ SPDX format (note that it should CDDL-1.1 if the (c) owner and license steward i
     <comment></comment>
     <requestid>1141954</requestid>
   </revision>
+  <revision rev="94" vrev="4">
+    <srcmd5>ddf356d53295da10efd09bddc0550035</srcmd5>
+    <version>1.10.14</version>
+    <time>1708534336</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148032</requestid>
+  </revision>
 </revisionlist>

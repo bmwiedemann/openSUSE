@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 13:32:02 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Jan 26 20:37:50 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Add forgotten univocity-parsers to
