@@ -1,7 +1,7 @@
 #
 # spec file for package aws-c-cal
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define library_version 1.0.0
 %define library_soversion 0unstable
 Name:           aws-c-cal
-Version:        0.6.9
+Version:        0.6.10
 Release:        0
 Summary:        AWS C99 wrapper for cryptography primitives
 License:        Apache-2.0
@@ -60,9 +60,7 @@ AWS Crypto Abstraction Layer, a C99 wrapper for cryptography primitives.
 This package contains the development files.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %define __builder ninja

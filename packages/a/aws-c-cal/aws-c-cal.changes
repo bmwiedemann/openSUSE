@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 20 11:13:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
+Mon Feb 19 14:49:09 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.10
+  * Update bot permissions by @jmklix in (#172)
+  * Fix a bunch of places we forget to aws_raise_error() by @graebm in (#176)
+  * Consistently use lowercase for Windows libraries by @giordano in (#161)
+  * Allows cmake to force crypto linkage. by @sbiscigl in (#175)
+
+-------------------------------------------------------------------
 Tue Nov 21 10:27:12 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.6.9
