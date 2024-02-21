@@ -87,4 +87,12 @@
   * ecs-anywhere-install: allow sandboxed apt installations (forwarded request 901560 from glaubitz)</comment>
     <requestid>901562</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>4e4fe96434d9d5e8205dbd495fd05a6a</srcmd5>
+    <version>1.53.0</version>
+    <time>1708534560</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147929</requestid>
+  </revision>
 </revisionlist>
