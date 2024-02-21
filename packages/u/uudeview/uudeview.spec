@@ -42,8 +42,8 @@ uuencode utilities.
 
 %prep
 %setup -q 
-%patch0
-%patch1 -p2
+%patch -P 0
+%patch -P 1 -p2
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
