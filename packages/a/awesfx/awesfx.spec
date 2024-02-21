@@ -40,10 +40,7 @@ The AWESFX package includes utility programs for controlling the
 wavetable function on SB AWE32/64 and Emu10k1 sound cards.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
