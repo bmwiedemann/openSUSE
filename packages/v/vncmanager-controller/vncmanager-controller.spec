@@ -55,7 +55,7 @@ This is configuration application to configure sharing and security from inside 
 %prep
 %setup
 %if 0%{?suse_version} >= 1550
-%patch1 -p1
+%patch -P 1 -p1
 %endif
 
 %build

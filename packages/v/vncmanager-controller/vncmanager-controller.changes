@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 13:30:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Aug 28 12:46:32 UTC 2023 - Joan Torres <joan.torres@suse.com>
 
 - Use obs_scm targeting the new github repo at

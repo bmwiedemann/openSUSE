@@ -99,4 +99,12 @@ Session manager for VNC. It listens on VNC port and spawns Xvnc processes for in
 </comment>
     <requestid>1107814</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>267290cd8db1454b0843f622d7e3d67b</srcmd5>
+    <version>1.0.2</version>
+    <time>1708534579</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1148041</requestid>
+  </revision>
 </revisionlist>
