@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 21 06:30:43 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.5.0:
+  * Add new jpgxl backend
+  * Added -W and -H arguments to configure initial dimensions
+  * Fix utf8 in window titles
+  * Fix some animated gifs showing as still images
+  * Fix several crashes
+  * Fixed new build warnings
+  * Limit libnsgif to <1.0.0 to fix build
+  * Update mime types
+
+-------------------------------------------------------------------
 Thu Jan 19 01:59:20 UTC 2023 - llyyr <llyyr.public@gmail.com>
 
 - Update to 4.4.0:

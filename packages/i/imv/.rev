@@ -60,4 +60,20 @@
     <comment></comment>
     <requestid>1059489</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9504d0b9b98c5d3788667b1cc3cab981</srcmd5>
+    <version>4.5.0</version>
+    <time>1708534668</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.5.0:
+  * Add new jpgxl backend
+  * Added -W and -H arguments to configure initial dimensions
+  * Fix utf8 in window titles
+  * Fix some animated gifs showing as still images
+  * Fix several crashes
+  * Fixed new build warnings
+  * Limit libnsgif to &lt;1.0.0 to fix build
+  * Update mime types</comment>
+    <requestid>1148402</requestid>
+  </revision>
 </revisionlist>
