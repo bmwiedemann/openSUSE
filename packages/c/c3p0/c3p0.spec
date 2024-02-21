@@ -1,7 +1,7 @@
 #
 # spec file for package c3p0
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2008, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -44,10 +44,10 @@ BuildRequires:  xmvn-tools
 Requires:       mchange-commons = %{mchange_commons_version}
 %if 0%{?rhel}
 Requires(post): chkconfig
-Requires(postun):chkconfig
+Requires(postun): chkconfig
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 Provides:       hibernate_jdbc_cache
 BuildArch:      noarch
@@ -67,7 +67,7 @@ Javadoc documentation for c3p0.
 
 %prep
 %setup -q -n %{name}-%{version}.src
-%patch1 -p1
+%patch -P 1 -p1
 %{mvn_file} :c3p0 %{name}/%{name} %{name}
 
 %build

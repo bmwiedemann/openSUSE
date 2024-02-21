@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 08:35:16 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue May  3 19:03:18 UTC 2022 - Stefan Bluhm <stefan.bluhm@clacee.eu>
 
 - Added additional class alias.
