@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package adios2
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -125,9 +125,7 @@ This package contains all files needed to create projects that use the
 %{?mpi_flavor}%{!?mpi_flavor:serial} version of ADIOS2.
 
 %prep
-%setup -q -n ADIOS2-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n ADIOS2-%{version}
 bindir=%{_bindir} sed -i "1c #!${bindir}/python3" \
       source/utils/bp4dbg/bp4dbg.py \
       source/utils/bp5dbg/bp5dbg.py \
