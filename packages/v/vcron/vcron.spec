@@ -1,7 +1,7 @@
 #
 # spec file for package vcron
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,9 +44,7 @@ Authors:
     Daniel Roche <dan@lectra.com>
 
 %prep
-%setup -n usr
-%patch0 -p1
-%patch1 -p1
+%autosetup -n usr -p1
 
 %build
 
