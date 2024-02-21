@@ -49,8 +49,7 @@ keyboards and a pedal board. abcm2ps introduces many extensions to the ABC
 language that make it suitable for classical music.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 mv config.h.in config.h.sed
 sed "s/\/\/#define A4_FORMAT/#define A4_FORMAT/" config.h.sed > config.h.in
 

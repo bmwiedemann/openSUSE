@@ -286,4 +286,12 @@
   * fix: bad measure numbers when many voices after %%setbarnb</comment>
     <requestid>1137489</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>9e35ce33fc6f584c6deadfafaa933946</srcmd5>
+    <version>8.14.15</version>
+    <time>1708534531</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147756</requestid>
+  </revision>
 </revisionlist>
