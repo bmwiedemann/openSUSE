@@ -96,4 +96,12 @@
     <comment>A little fix that has meaning for sle</comment>
     <requestid>1141668</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>89f80033c0b97aa3a1f3ba8be3b0398d</srcmd5>
+    <version>3.6.0</version>
+    <time>1708534662</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148395</requestid>
+  </revision>
 </revisionlist>

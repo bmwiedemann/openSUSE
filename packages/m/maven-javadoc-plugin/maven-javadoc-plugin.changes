@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 06:00:34 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Jan 26 08:10:17 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Require maven-parent >= 40. The maven build will fail with

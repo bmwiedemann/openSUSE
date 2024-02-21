@@ -123,10 +123,10 @@ API documentation for %{name}.
 %setup -q -n %{base_name}-%{version}
 %if %{with bootstrap}
 cp %{SOURCE1} build.xml
-%patch0 -p1
+%patch -P 0 -p1
 %endif
-%patch1 -p1
-%patch2 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 
 %pom_xpath_remove pom:project/pom:parent/pom:relativePath
 %pom_remove_dep :::test:
