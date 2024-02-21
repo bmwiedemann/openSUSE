@@ -1,7 +1,7 @@
 #
 # spec file for package jakarta-taglibs-standard
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Open Source Implementation of the JSP Standard Tag Library
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://tomcat.apache.org/taglibs/
+URL:            https://tomcat.apache.org/taglibs/
 Source0:        http://archive.apache.org/dist/jakarta/taglibs/standard/source/%{name}-%{version}-src.tar.gz
 Patch0:         %{name}-%{version}-build.patch
 Patch1:         %{name}-java6-compatibility.patch
@@ -54,11 +54,11 @@ This package contains the javadoc documentation for Jakarta Taglibs.
 
 %prep
 %setup -q -n %{name}-%{version}-src
-%patch0
-%patch1 -b .sav1
-%patch2 -b .sav2
-%patch3 -p1
-%patch4 -p1
+%patch -P 0
+%patch -P 1 -b .sav1
+%patch -P 2 -b .sav2
+%patch -P 3 -p1
+%patch -P 4 -p1
 
 cat > build.properties <<EOBP
 build.dir=build
