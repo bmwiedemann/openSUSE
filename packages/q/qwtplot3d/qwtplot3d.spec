@@ -61,8 +61,7 @@ QwtPlot3D is a feature-rich Qt/OpenGL-based C++ programming library.
 It provides essentially a bunch of 3D widgets for programmers.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake -DSELECT_QT=Qt5 \
