@@ -54,9 +54,7 @@ Group:          Documentation/HTML
 This package contains the API documentation for %{name}.
 
 %prep
-%setup -q -n %{base_name}-%{name}-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n %{base_name}-%{name}-%{version}
 
 %pom_remove_dep relaxngDatatype:relaxngDatatype
 %pom_remove_dep net.java.dev.msv:
