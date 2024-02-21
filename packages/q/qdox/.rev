@@ -220,4 +220,12 @@
     <comment>fix build with java &gt;= 20</comment>
     <requestid>1112746</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>3339601491da1e0f0528748d67f99011</srcmd5>
+    <version>2.0.3</version>
+    <time>1708534337</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1148044</requestid>
+  </revision>
 </revisionlist>

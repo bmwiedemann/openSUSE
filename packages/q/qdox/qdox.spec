@@ -50,7 +50,7 @@ API docs for %{name}.
 %prep
 %setup -q
 cp %{SOURCE1} build.xml
-%patch0 -p1
+%patch -P 0 -p1
 find -name *.jar -delete
 find -name *.class -delete
 rm -rf bootstrap
