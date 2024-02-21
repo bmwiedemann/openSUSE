@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package apache-commons-io
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define base_name  io
 %define short_name commons-%{base_name}
 Name:           apache-%{short_name}
-Version:        2.14.0
+Version:        2.15.1
 Release:        0
 Summary:        Utilities to assist with developing IO functionality
 License:        Apache-2.0
@@ -66,7 +66,7 @@ install -p -m 0644 target/%{short_name}-%{version}.jar \
 ln -sf %{short_name}.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-%mvn_install_pom pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}.pom
 %add_maven_depmap %{short_name}.pom %{short_name}.jar -a "org.apache.commons:commons-io"
 # javadoc
 install -d -m 755 %{buildroot}%{_javadocdir}/%{name}

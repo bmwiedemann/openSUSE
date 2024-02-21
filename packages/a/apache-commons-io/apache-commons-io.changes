@@ -1,4 +1,152 @@
 -------------------------------------------------------------------
+Mon Feb 19 14:58:13 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.15.1
+  * Fixed Bugs:
+    + Fix wrong issue id in change log
+    + Add test for FileChannels.contentEquals()
+    + Fix FileChannels.contentEquals()
+    + Fix some Javadoc issues in LineIterator and IOUtils
+    + Simplify FileAlterationObserver internal processing
+    + Avoid NullPointerException in RegexFileFilter
+      .RegexFileFilter(Pattern)
+    + Avoid NullPointerException in RegexFileFilter
+      .accept(Path, BasicFileAttributes)
+    + Fix SpotBugs error: Class org.apache.commons.io.filefilter
+      .RegexFileFilter defines non-transient non-serializable
+      instance field pathToString [org.apache.commons.io.filefilter
+      .RegexFileFilter] In RegexFileFilter.java SE_BAD_FIELD
+    + Fix SpotBugs error: Class org.apache.commons.io.filefilter
+      .DelegateFileFilter defines non-transient non-serializable
+      instance field fileFilter [org.apache.commons.io.filefilter
+      .DelegateFileFilter] In DelegateFileFilter.java SE_BAD_FIELD
+    + Fix SpotBugs error: Class org.apache.commons.io.filefilter
+      .DelegateFileFilter defines non-transient non-serializable
+      instance field fileNameFilter [org.apache.commons.io
+      .filefilter.DelegateFileFilter] In DelegateFileFilter.java
+      SE_BAD_FIELD
+    + Fix SpotBugs error: org.apache.commons.io.function.IOStream$1
+      .next() cannot throw NoSuchElementException [org.apache
+      .commons.io.function.IOStream$1] At IOStream.java:[line 98]
+      IT_NO_SUCH_ELEMENT
+    + Fix SpotBugs error: org.apache.commons.io.monitor
+      .FileAlterationMonitor.getObservers() may expose internal
+      representation by returning FileAlterationMonitor.observers
+      [org.apache.commons.io.monitor.FileAlterationMonitor] At
+      FileAlterationMonitor.java:[line 124] EI_EXPOSE_REP
+    + Fix SpotBugs error: Class org.apache.commons.io.monitor
+      .FileAlterationObserver defines non-transient non-serializable
+      instance field fileFilter [org.apache.commons.io.monitor
+      .FileAlterationObserver] In FileAlterationObserver.java
+      SE_BAD_FIELD
+    + Fix SpotBugs error: Class org.apache.commons.io.monitor
+      .FileAlterationObserver defines non-transient non-serializable
+      instance field listeners [org.apache.commons.io.monitor
+      .FileAlterationObserver] In FileAlterationObserver.java
+      SE_BAD_FIELD
+    + Fix SpotBugs error: org.apache.commons.io.FileCleaningTracker
+      .getDeleteFailures() may expose internal representation by
+      returning FileCleaningTracker.deleteFailures [org.apache
+      .commons.io.FileCleaningTracker] At
+      FileCleaningTracker.java:[line 218] EI_EXPOSE_REP
+    + Fix SpotBugs error: org.apache.commons.io.IOExceptionList
+      .getCauseList() may expose internal representation by
+      returning IOExceptionList.causeList [org.apache.commons.io
+      .IOExceptionList] At IOExceptionList.java:[line 118]
+      EI_EXPOSE_REP
+    + Fix SpotBugs error: org.apache.commons.io.IOExceptionList
+      .getCauseList(Class) may expose internal representation by
+      returning IOExceptionList.causeList [org.apache.commons.io
+      .IOExceptionList] At IOExceptionList.java:[line 129]
+      EI_EXPOSE_REP
+    + Fix SpotBugs error: org.apache.commons.io.file
+      .AccumulatorPathVisitor.getDirList() may expose internal
+      representation by returning AccumulatorPathVisitor.dirList
+      [org.apache.commons.io.file.AccumulatorPathVisitor] At
+      AccumulatorPathVisitor.java:[line 179] EI_EXPOSE_REP
+    + Fix SpotBugs error: org.apache.commons.io.file
+      .AccumulatorPathVisitor.getFileList() may expose internal
+      representation by returning AccumulatorPathVisitor.fileList
+      [org.apache.commons.io.file.AccumulatorPathVisitor] At
+      AccumulatorPathVisitor.java:[line 188] EI_EXPOSE_REP
+    + Fix SpotBugs error: org.apache.commons.io.input
+      .ObservableInputStream.getObservers() may expose internal
+      representation by returning ObservableInputStream.observers
+      [org.apache.commons.io.input.ObservableInputStream] At
+      ObservableInputStream.java:[line 187] EI_EXPOSE_REP
+    + Fix SpotBugs error: Exception thrown in class org.apache
+      .commons.io.input.UnsynchronizedByteArrayInputStream at new
+      org.apache.commons.io.input
+      .UnsynchronizedByteArrayInputStream(byte[], int) will leave
+      the constructor. The object under construction remains
+      partially initialized and may be vulnerable to Finalizer
+      attacks. [org.apache.commons.io.input
+      .UnsynchronizedByteArrayInputStream, org.apache.commons.io
+      .input.UnsynchronizedByteArrayInputStream] At
+      UnsynchronizedByteArrayInputStream.java:[line 202]
+      CT_CONSTRUCTOR_THROW
+    + Fix SpotBugs error: Exception thrown in class org.apache
+      .commons.io.input.UnsynchronizedByteArrayInputStream at new
+      org.apache.commons.io.input
+      .UnsynchronizedByteArrayInputStream(byte[], int, int) will
+      leave the constructor. The object under construction remains
+      partially initialized and may be vulnerable to Finalizer
+      attacks. [org.apache.commons.io.input
+      .UnsynchronizedByteArrayInputStream, org.apache.commons.io
+      .input.UnsynchronizedByteArrayInputStream] At
+      UnsynchronizedByteArrayInputStream.java:[line 223]
+      CT_CONSTRUCTOR_THROW
+- Upgrade to 2.15.0
+  * New features:
+    + Add org.apache.commons.io.channels.FileChannels
+    + Add RandomAccessFiles#contentEquals(RandomAccessFile,
+      RandomAccessFile)
+    + Add RandomAccessFiles#reset(RandomAccessFile)
+    + Add PathUtilsContentEqualsBenchmark
+    + Add org.apache.commons.io.StreamIterator
+    + Add MessageDigestInputStream and deprecate
+      MessageDigestCalculatingInputStream
+  * Fixed Bugs:
+    + IO-815: XmlStreamReader encoding match RE is too strict
+    + IO-810: Javadoc in FileUtils does not reflect code for thrown
+      exceptions
+    + IO-812: Javadoc should mention closing Streams based on file
+      resources
+    + IO-811: In tests, Files.walk() direct and indirect callers
+      fail to close the returned Stream
+    + IO-811: FileUtils.listFiles(File, String[], boolean) fails to
+      close its internal Stream
+    + IO-811: FileUtils.iterateFiles(File, String[], boolean) fails
+      to close its internal Stream
+    + IO-811: StreamIterator fails to close its internal Stream
+    + IO-814: Don't throw UncheckedIOException
+    + IO-414: Don't write a BOM on every (or any) line
+    + IO-814: RandomAccessFileMode.create(Path) provides a better
+      NullPointerException message
+    + Improve performance of PathUtils.fileContentEquals(Path, Path,
+      LinkOption[], OpenOption[]) by about 60%, see
+      PathUtilsContentEqualsBenchmark
+    + Improve performance of PathUtils.fileContentEquals(Path, Path)
+      by about 60%, see PathUtilsContentEqualsBenchmark
+    + Improve performance of FileUtils.contentEquals(File, File) by
+      about 60%, see PathUtilsContentEqualsBenchmark
+    + Remove unused test code
+    + [Javadoc] IOUtils#contentEquals does not throw
+      NullPointerException
+    + Fix CodeQL warnings in UnsynchronizedBufferedInputStream:
+      Implicit narrowing conversion in compound assignment
+    + MessageDigestCalculatingInputStream
+      .MessageDigestMaintainingObserver
+      .MessageDigestMaintainingObserver(MessageDigest) now throws a
+      NullPointerException if the MessageDigest is null
+    + MessageDigestCalculatingInputStream
+      .MessageDigestCalculatingInputStream(InputStream,
+      MessageDigest) now throws a NullPointerException if the
+      MessageDigest is null
+    + IO-816: UnsynchronizedBufferedInputStream.read(byte[], int,
+      int) does not use buffer
+
+-------------------------------------------------------------------
 Wed Oct 25 16:53:57 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source and target levels 8
