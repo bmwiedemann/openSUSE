@@ -1,7 +1,7 @@
 #
 # spec file for package adlmidi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@ Name:           adlmidi
 Version:        1.2.6.2
 Release:        0
 Summary:        A MIDI player that uses OPL3 emulation
-License:        GPL-3.0-only AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND GPL-3.0-only
 URL:            https://bisqwit.iki.fi/source/adlmidi.html
 #Git-Clone:     https://github.com/bisqwit/adlmidi.git
 Source:         https://bisqwit.iki.fi/src/arch/%{name}-%{version}.tar.bz2
@@ -36,8 +36,7 @@ AdlMIDI is a commandline program that plays MIDI files using software
 OPL3 emulation (FM synthesis).
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 sed -i 's|-march=native||' Makefile
 
 %build
