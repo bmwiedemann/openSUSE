@@ -68,11 +68,11 @@ completion and history. Additional features:
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1 -b .lib64
-%patch2
-%patch3
-%patch4 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1 -b .lib64
+%patch -P 2
+%patch -P 3
+%patch -P 4 -p1
 
 %build
 export CFLAGS="%{optflags}"
