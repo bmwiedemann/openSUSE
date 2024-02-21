@@ -1,7 +1,7 @@
 #
 # spec file for package aqute-bnd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -86,11 +86,11 @@ mkdir -p lib
 build-jar-repository -s lib \
   slf4j/api slf4j/simple osgi-annotation osgi-core osgi-compendium ant jline
 
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
 
 # the commands pull in more dependencies than we want (felix-resolver, jetty)
 rm biz.aQute.bnd/src/aQute/bnd/main/{ExportReportCommand,MbrCommand,RemoteCommand,ReporterLogger,ResolveCommand,Shell}.java

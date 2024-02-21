@@ -80,4 +80,12 @@
     <comment>6.3.1</comment>
     <requestid>1112225</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>7962878d8dabba837b9360953a756eb8</srcmd5>
+    <version>6.3.1</version>
+    <time>1708534575</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148030</requestid>
+  </revision>
 </revisionlist>

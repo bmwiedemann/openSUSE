@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 13:31:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Sep 18 05:23:18 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to aqute-bnd 6.3.1
