@@ -46,9 +46,8 @@ This package contains the development files for the Oauth2 plugin for the Single
 Sign On Framework.
 
 %prep
-%setup -q -n signon-plugin-oauth2-VERSION_%{version}
+%autosetup -p1 -n signon-plugin-oauth2-VERSION_%{version}
 
-%patch0 -p1 -b .multilib
 sed -i 's|@LIB@|%{_lib}|g' src/signon-oauth2plugin.pc src/src.pro
 
 %build

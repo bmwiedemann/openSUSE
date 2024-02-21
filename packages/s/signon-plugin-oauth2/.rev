@@ -47,4 +47,12 @@
     <comment>- Update to version 0.25 (forwarded request 894436 from susnux)</comment>
     <requestid>894536</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a0d672bc41f2e3921b912e59cf5e232d</srcmd5>
+    <version>0.25</version>
+    <time>1708534339</time>
+    <user>anag+factory</user>
+    <comment>- Switch to %autosetup</comment>
+    <requestid>1148075</requestid>
+  </revision>
 </revisionlist>
