@@ -1,7 +1,7 @@
 #
 # spec file for package unison
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 
 %define     pkg unison
 Name:           %pkg%nsuffix
-Version:        2.53.3
+Version:        2.53.4
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        File synchronization tool
@@ -35,16 +35,15 @@ URL:            https://github.com/bcpierce00/unison
 Source0:        %pkg-%version.tar.xz
 Source1:        %pkg.desktop
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
-BuildRequires:  ocaml-rpm-macros >= 20230101
+BuildRequires:  ocaml-rpm-macros >= 20231101
 %if "%build_flavor" == "doc"
 %if 0%?suse_version > 1500 || 0%?sle_version > 150300
 BuildRequires:  hevea
 BuildRequires:  lynx
 %endif
-BuildRequires:  texlive-dvips
-BuildRequires:  texlive-latex
+BuildRequires:  texlive-collection-latex
+BuildRequires:  texlive-metafont
 %else
-BuildRequires:  ocaml-dune >= 2.3
 BuildRequires:  ocamlfind(lablgtk3)
 BuildRequires:  pkgconfig(ncursesw)
 %if 0%{?suse_version} > 0
@@ -79,32 +78,25 @@ replica to the other.
 
 %build
 %if "%build_flavor" == "doc"
-%make_build docs -j1
+%make_build docs
 ls -lart doc man
 %else
-dune_release_pkgs='unison,unison-gui,unison-fsmonitor'
-%ocaml_dune_setup
-%ocaml_dune_build
+%make_build PREFIX=%_prefix
 %endif
 
 %install
 %if "%build_flavor" == "doc"
-mkdir -vp %buildroot%_mandir/man1
-cp -avt %buildroot%_mandir/man1 man/%pkg.1
-echo '%%_mandir/man1/unison.*' > files
+echo '%%dir %_defaultdocdir/%pkg' > files
 for ext in html pdf
 do
   test -f doc/unison-manual.$ext || continue
   mkdir -vp %buildroot%_defaultdocdir/%pkg
   cp doc/unison-manual.$ext %buildroot%_defaultdocdir/%pkg
-  echo '%%dir %_defaultdocdir/%pkg' >> files
   echo "%%doc %_defaultdocdir/%pkg/unison-manual.$ext" >> files
 done
 %else
 echo '%%doc src/COPYING' > files
-%ocaml_dune_install
-%ocaml_create_file_list
-rm -rfv %buildroot%ocaml_standard_library
+%make_install PREFIX=%_prefix
 
 mv %buildroot%_bindir/%name %buildroot%_bindir/%name-text
 mv %buildroot%_bindir/%name-gui %buildroot%_bindir/%name
@@ -123,10 +115,10 @@ install -m 644 -D %{SOURCE1} %buildroot/%_datadir/applications/%name.desktop
 %_datadir/pixmaps/*
 %_bindir/%name
 %_bindir/%name-fsmonitor
+%_mandir/man1/*
 
 %files text
 %defattr(-,root,root,-)
-%doc src/COPYING
 %_bindir/%name-text
 %endif
 

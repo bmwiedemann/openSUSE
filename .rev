@@ -359,4 +359,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1098854</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>787a87264c00e0527c326fc42795ab69</srcmd5>
+    <version>2.53.4</version>
+    <time>1708534643</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.53.4
+  * Preferences &quot;force&quot;, &quot;prefer&quot; and related &quot;partial&quot; preferences now
+    work slightly differently with values &quot;newer&quot; and &quot;older&quot;. Previously,
+    if mtimes in both replicas were equal then always the second root
+    propagated to the first root (possibly reverting user changes). It
+    is now made explicit that &quot;newer&quot; and &quot;older&quot; only work when mtimes
+    are different.
+  * Bugfixes, minor improvements, cleanups.</comment>
+    <requestid>1148334</requestid>
+  </revision>
 </revisionlist>

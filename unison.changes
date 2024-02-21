@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 20 20:20:20 UTC 2024 - ohering@suse.de
+
+- Update to version 2.53.4
+  * Preferences "force", "prefer" and related "partial" preferences now
+    work slightly differently with values "newer" and "older". Previously,
+    if mtimes in both replicas were equal then always the second root
+    propagated to the first root (possibly reverting user changes). It
+    is now made explicit that "newer" and "older" only work when mtimes
+    are different.
+  * Bugfixes, minor improvements, cleanups.
+
+-------------------------------------------------------------------
 Fri Jul  7 07:07:07 UTC 2023 - ohering@suse.de
 
 - Provide a docs package with man, html and PDF files.
