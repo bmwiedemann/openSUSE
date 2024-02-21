@@ -1,7 +1,7 @@
 #
 # spec file for package gnu-crypto
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,13 @@ Release:        0
 Summary:        GNU Crypto
 License:        GPL-2.0-or-later
 Group:          Development/Languages/Java
-Url:            http://www.gnu.org/software/gnu-crypto/
+URL:            https://www.gnu.org/software/gnu-crypto/
 Source:         ftp://ftp.gnu.org/gnu/%{name}/releases/%{name}-%{version}.tar.bz2
 Patch0:         sasl-functions.patch
 BuildRequires:  ant
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  unzip
 Provides:       jce
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -39,7 +38,7 @@ end-users.
 
 %prep
 %setup -q
-%patch0
+%patch -P 0
 
 %build
 export CLASSPATH=$(build-classpath glibj)
@@ -50,7 +49,6 @@ mkdir -p %{buildroot}/%{_javadir}
 cp lib/*.jar %{buildroot}/%{_javadir}
 
 %files
-%defattr(-,root,root)
 %{_javadir}/*
 
 %changelog
