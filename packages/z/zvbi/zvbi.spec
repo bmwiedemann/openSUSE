@@ -92,8 +92,7 @@ sliced VBI data, and to interpret the data of several popular services.
 %lang_package
 
 %prep
-%setup -q
-%patch10 -p1
+%autosetup -p1
 
 %build
 ACLOCAL="aclocal -I m4" autoreconf -fi
