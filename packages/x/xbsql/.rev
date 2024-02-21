@@ -157,4 +157,13 @@
     <comment></comment>
     <requestid>914170</requestid>
   </revision>
+  <revision rev="24" vrev="261">
+    <srcmd5>01150d9e797be3223f8d586e77b427b3</srcmd5>
+    <version>0.11</version>
+    <time>1708534724</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN.
+- Move license from %doc to %license</comment>
+    <requestid>1148473</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 21 09:16:45 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+- Move license from %doc to %license
+
+-------------------------------------------------------------------
 Mon Aug 23 10:13:17 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove --with-pic which has no effect with --disable-static.

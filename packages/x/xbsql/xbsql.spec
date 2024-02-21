@@ -1,7 +1,7 @@
 #
 # spec file for package xbsql
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,9 +69,9 @@ This package contains development files
 
 %prep
 %setup -q
-%patch0
-%patch1
-%patch2 -p1
+%patch -P 0
+%patch -P 1
+%patch -P 2 -p1
 
 %build
 autoreconf -fi
@@ -94,11 +94,11 @@ mv %{buildroot}%{_bindir}/xql %{buildroot}%{_bindir}/XQL
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{lib_name} -p /sbin/ldconfig
-
 %postun -n %{lib_name} -p /sbin/ldconfig
 
 %files
-%doc AUTHORS TODO COPYING README doc
+%license COPYING
+%doc AUTHORS TODO README doc
 %{_bindir}/*
 
 %files -n %{lib_name}
