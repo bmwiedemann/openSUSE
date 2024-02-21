@@ -1,7 +1,7 @@
 #
 # spec file for package acpid
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,8 +44,7 @@ executes programs to handle the event. The start script loads all
 needed modules.
 
 %prep
-%setup -q
-%patch1
+%autosetup
 
 cp -p %{SOURCE3} %{SOURCE5} %{SOURCE6} %{SOURCE7} %{SOURCE9} %{SOURCE10} %{SOURCE11} .
 # libexecdir is different in factory that in 15.x

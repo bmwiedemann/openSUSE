@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 09:59:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Sun Apr  9 10:14:44 UTC 2023 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - do not ship thinkpad_handler script or config, it's broken since
