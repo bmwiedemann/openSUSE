@@ -609,4 +609,13 @@
   * A regression is fixed in setting wallpaper with command-line.</comment>
     <requestid>1145568</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>7681751b27c4c7c00e992dd3a4aa993f</srcmd5>
+    <version>1.4.1</version>
+    <time>1708534684</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1148409</requestid>
+  </revision>
 </revisionlist>

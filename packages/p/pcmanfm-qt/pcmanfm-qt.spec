@@ -54,8 +54,7 @@ PCManFM-Qt is the Qt port of the LXDE file manager PCManFM
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake -DPULL_TRANSLATIONS=No
