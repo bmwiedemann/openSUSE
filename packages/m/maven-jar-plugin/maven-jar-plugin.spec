@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package maven-jar-plugin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -85,9 +85,9 @@ API documentation for %{name}.
 %setup -q -n %{base_name}-%{version}
 %if %{with bootstrap}
 cp %{SOURCE1} build.xml
-%patch0 -p1
+%patch -P 0 -p1
 %endif
-%patch1 -p1
+%patch -P 1 -p1
 
 # Remove all dependencies with scope test, since a raw xmvn does not hide them
 %pom_remove_dep -r :::test:
