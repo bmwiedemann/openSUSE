@@ -35,7 +35,7 @@
 %bcond_with    asciidoctor
 %endif
 Name:           git
-Version:        2.43.1
+Version:        2.43.2
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
@@ -539,7 +539,8 @@ fi
 %dir %{_sysconfdir}/apache2/conf.d/
 %config(noreplace) %{_sysconfdir}/apache2/conf.d/gitweb.conf
 %{_datadir}/gitweb
-%{_sysconfdir}/apparmor.d
+%dir %{_sysconfdir}/apparmor.d
+%config(noreplace) %{_sysconfdir}/apparmor.d/usr.share.git-web.gitweb.cgi
 %{gitexecdir}//git-instaweb
 %{gitexecdir}//git-web--browse
 %{_mandir}/man1/*web*1%{?ext_man}

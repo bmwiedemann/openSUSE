@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Feb 20 09:56:30 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Do not replace apparmor configuration, fixes bsc#1216545
+
+-------------------------------------------------------------------
+Thu Feb 15 16:57:56 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.43.2:
+  * https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.43.2.txt
+  * Update to a new feature recently added, "git show-ref --exists".
+  * Rename detection logic ignored the final line of a file if it
+    is an incomplete line.
+  * "git diff --no-rename A B" did not disable rename detection but
+    did not trigger an error from the command line parser.
+  * "git diff --no-index file1 file2" segfaulted while invoking the
+    external diff driver, which has been corrected.
+  * A failed "git tag -s" did not necessarily result in an error
+    depending on the crypto backend, which has been corrected.
+  * "git stash" sometimes was silent even when it failed due to
+    unwritable index file, which has been corrected.
+  * Recent conversion to allow more than 0/1 in GIT_FLUSH broke the
+    mechanism by flipping what yes/no means by mistake, which has
+    been corrected.
+
+-------------------------------------------------------------------
 Mon Feb 12 16:59:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.43.1:
