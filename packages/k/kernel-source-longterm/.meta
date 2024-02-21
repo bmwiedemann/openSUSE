@@ -1,0 +1,5 @@
+<package name="kernel-source-longterm" project="openSUSE:Factory">
+  <title>kernel-source-longterm</title>
+  <description></description>
+  <devel project="Kernel:slowroll" package="kernel-source-longterm"/>
+</package>
