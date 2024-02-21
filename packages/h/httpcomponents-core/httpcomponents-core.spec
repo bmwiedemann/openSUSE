@@ -1,7 +1,7 @@
 #
 # spec file for package httpcomponents-core
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ Source1:        %{name}-build.tar.xz
 Patch0:         %{name}-java8compat.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
@@ -65,7 +65,7 @@ Group:          Development/Libraries/Java
 %prep
 %setup -q -a1
 
-%patch0 -p1
+%patch -P 0 -p1
 
 # Random test failures on ARM -- 100 ms sleep is not eneough on this
 # very performant arch, lets make it 2 s
@@ -101,19 +101,6 @@ for module in httpcore httpcore-nio; do
         </plugin>" $module
 done
 
-for module in httpcore httpcore-nio; do
-    %pom_xpath_inject "pom:project" "
-	  <groupId>org.apache.httpcomponents</groupId>
-	  <version>%{version}</version>" $module
-	%pom_remove_parent $module
-	# adds version "any" if none is specified
-	%pom_change_dep ::::: ::::: $module
-done
-
-# install JARs to httpcomponents/ for compatibility reasons
-# several other packages expect to find the JARs there
-%{mvn_file} ":{*}" httpcomponents/@1
-
 %build
 mkdir -p lib
 %if %{with tests}
@@ -134,7 +121,7 @@ done
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/httpcomponents
 for module in httpcore httpcore-nio; do
-  install -pm 0644 ${module}/pom.xml %{buildroot}%{_mavenpomdir}/httpcomponents/${module}.pom
+  %{mvn_install_pom} ${module}/pom.xml %{buildroot}%{_mavenpomdir}/httpcomponents/${module}.pom
   %add_maven_depmap httpcomponents/${module}.pom httpcomponents/${module}.jar
 done
 # javadoc
