@@ -1,7 +1,7 @@
 #
 # spec file for package python-mailmanclient
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,6 @@ Patch0:         mailmanclient-skip-httpx-tests.patch
 BuildRequires:  %{python_module falcon}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-services}
-BuildRequires:  %{python_module pytest-vcr}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  mailman3 >= 3.3.5
@@ -55,6 +54,8 @@ Python bindings for Mailman REST API.
 
 %prep
 %autosetup -n mailmanclient-%{version} -p1
+# get rid of six
+sed -i 's/six.moves.urllib_error/urllib.error/' src/mailmanclient/tests/test_domain.py src/mailmanclient/tests/test_unicode.py
 
 %build
 export LC_ALL=C.UTF-8
