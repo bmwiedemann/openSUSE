@@ -1,0 +1,5 @@
+<package name="ddcutil-service" project="openSUSE:Factory">
+  <title>D-Bus service for libddcutil VESA DDC Monitor Virtual Control Panel library</title>
+  <description>ddcutil-service is D-Bus service wrapper for libddcutil which implements the VESA DDC Monitor Control Command Set.  In general, most things that can be controlled using a monitor's on-screen display can be controlled by this service.</description>
+  <devel project="hardware" package="ddcutil-service"/>
+</package>
