@@ -55,4 +55,15 @@
     <comment></comment>
     <requestid>1146530</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>236671a5c136e11f85316e941c5c98bb</srcmd5>
+    <version>0.9.4</version>
+    <time>1708534681</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.9.4:
+  * zsh: improved Space-Tab completions
+
+- Update to 0.9.3:</comment>
+    <requestid>1148400</requestid>
+  </revision>
 </revisionlist>
