@@ -62,9 +62,7 @@ App::Ack is a grep-like tool tailored to working with large trees of source
 code.
 
 %prep
-%setup -q -n %{name}-v%{version}
-%patch1 -p1
-%patch3 -p1
+%autosetup -p1 -n %{name}-v%{version}
 
 %build
 perl Makefile.PL

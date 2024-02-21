@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 09:58:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Wed Mar  1 20:32:18 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - ack 3.7.0
