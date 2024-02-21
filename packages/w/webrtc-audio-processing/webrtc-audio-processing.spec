@@ -133,13 +133,13 @@ WebRTC implements the W3C's proposal for video conferencing on the web.
 %prep
 %autosetup -p1 -N
 sed -i 's/\r$//' AUTHORS
-%patch0 -p1
-#%%patch1 -p1
-#%%patch2 -p1
-%patch3 -p1
-%patch100 -p1
-%patch101 -p1
-%patch102 -p1
+%patch -P 0 -p1
+#%%patch -P 1 -p1
+#%%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 100 -p1
+%patch -P 101 -p1
+%patch -P 102 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

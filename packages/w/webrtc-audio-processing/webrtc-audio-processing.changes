@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:14:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Oct 30 16:42:04 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - ExcludeArch s390, s390x and ppc64 since big endian support is
