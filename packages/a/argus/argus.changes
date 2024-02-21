@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 10:14:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Jan 25 10:42:26 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Replace wrong libnsl build require with correct libtirpc one

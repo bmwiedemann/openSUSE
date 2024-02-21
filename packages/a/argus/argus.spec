@@ -1,7 +1,7 @@
 #
 # spec file for package argus
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,11 +55,11 @@ Daemon for Argus network monitoring tool.
 
 %prep
 %setup -q -n argus-%{version}
-%patch1 -p1
+%patch -P 1 -p1
 cp %{SOURCE3} .
 cp %{SOURCE4} man/man8/
-%patch2 -p1
-%patch3 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 
 %build
 #autoreconf -fiv
