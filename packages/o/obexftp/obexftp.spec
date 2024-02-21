@@ -1,7 +1,7 @@
 #
 # spec file for package obexftp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://triq.net/obexftp
 Source:         https://sourceforge.net/projects/openobex/files/obexftp/%{version}/obexftp-%{version}-Source.tar.gz
-Patch1:         obexftp-0.24-fix-absurd-install-path.patch
-Patch2:         obexftp-0.24-move_to_python3.patch
+Patch0:         obexftp-0.24-fix-absurd-install-path.patch
+Patch1:         obexftp-0.24-move_to_python3.patch
 BuildRequires:  asciidoc
 BuildRequires:  bluez-devel
 BuildRequires:  cmake
@@ -58,8 +58,8 @@ Files needed for software development using obexftp.
 
 %prep
 %setup -q -n %{name}-%{version}-Source
-%patch1 -p1
-%patch2
+%patch -P 0 -p1
+%patch -P 1
 
 chmod -x AUTHORS Doxyfile ChangeLog NEWS README THANKS TODO examples/README_obexftpbackup
 

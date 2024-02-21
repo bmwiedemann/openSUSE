@@ -215,4 +215,12 @@
 - remove obexftp-pkgconfig_requires.patch : upstream</comment>
     <requestid>826917</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>984f8afe8f7d175349090addcd6a8241</srcmd5>
+    <version>0.24.2</version>
+    <time>1708534721</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN.</comment>
+    <requestid>1148479</requestid>
+  </revision>
 </revisionlist>
