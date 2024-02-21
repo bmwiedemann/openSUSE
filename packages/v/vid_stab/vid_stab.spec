@@ -51,8 +51,7 @@ Requires:       libvidstab%{soname} = %{version}
 Development (headers and libraries) files for libvidstab%{soname}.
 
 %prep
-%setup -q -n vid.stab-%{version}
-%patch0 -p1
+%autosetup -p1 -n vid.stab-%{version}
 
 %build
 %cmake \

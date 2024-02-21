@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 13:27:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Jul 17 12:40:22 UTC 2018 - schwab@suse.de
 
 - Ensure reproducible build by overriding build-time SSE probing
