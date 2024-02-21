@@ -1,7 +1,7 @@
 #
 # spec file for package argus-client
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Client for Network Monitoring Tool
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Diagnostic
-Url:            http://www.qosient.com/argus/
+URL:            http://www.qosient.com/argus/
 Source:         http://qosient.com/argus/src/%{name2}-%{version}.tar.gz
 Patch1:         %{name2}-3.0.6-overflow.patch
 Patch2:         %{name2}-3.0.8-fclose.patch
@@ -42,9 +42,9 @@ Client for Argus network monitoring tool.
 
 %prep
 %setup -q -n %{name2}-%{version}
-%patch1
-%patch2
-%patch3 -p1
+%patch -P 1
+%patch -P 2
+%patch -P 3 -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"

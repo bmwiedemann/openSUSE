@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 10:28:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sat Jun  8 04:46:29 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add argus-client-fix-build.patch to properly fail build on errors
