@@ -71,4 +71,12 @@
     <comment>Explicitely require maven-javadoc-plugin</comment>
     <requestid>1112228</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>c748c049524eb97d256a8b3d782b84df</srcmd5>
+    <version>1.11.3</version>
+    <time>1708534555</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147897</requestid>
+  </revision>
 </revisionlist>

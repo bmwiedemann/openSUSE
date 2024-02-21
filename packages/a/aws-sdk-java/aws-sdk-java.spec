@@ -672,8 +672,7 @@ Group:          Development/Libraries/Java
 This package contains javadoc for %{name}.
 
 %prep
-%setup -q -n %{name}-%{githash}
-%patch0 -p1
+%autosetup -p1 -n %{name}-%{githash}
 
 # Remove deprecated httpclient annotations
 sed -i '/NotThreadSafe/d' \
