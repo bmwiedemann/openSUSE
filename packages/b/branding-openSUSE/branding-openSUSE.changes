@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 15 09:27:32 UTC 2024 - Frederic Crozat <fcrozat@suse.com>
+
+- Remove update-alternatives usage, we don't have dynamic
+  wallpapers anymore which were using that (bsc#1219919).
+
+-------------------------------------------------------------------
 Mon Sep 25 15:59:45 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Enable grub2-branding on ppc64le. patterns-microos-base has

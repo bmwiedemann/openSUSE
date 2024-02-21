@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019 Stasiek Michalski <hellcp@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -65,8 +65,6 @@ a trigger for installation of correct vendor brand packages.
 %package -n wallpaper-branding-%{theme_name}
 Summary:        %{theme_name} %{theme_version_clean} default wallpapers
 License:        BSD-3-Clause
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 Conflicts:      wallpaper-branding
 Provides:       wallpaper-branding = %{version}
 BuildArch:      noarch
@@ -208,6 +206,9 @@ for i in %{buildroot}%{_datadir}/wallpapers/*.desktop; do
     %suse_update_desktop_file "$i"
 done
 
+# no longer uses alternative
+ln -s -f %{theme_name}-default-static.xml %{buildroot}%{_datadir}/wallpapers/%{theme_name}-default.xml
+
 %fdupes -s %{buildroot}%{_datadir}/wallpapers/
 %fdupes -s %{buildroot}%{_datadir}/YaST2/theme/current/wizard/
 
@@ -218,14 +219,10 @@ rm -rf %{buildroot}%{_datadir}/grub2
 %endif
 
 %post -n wallpaper-branding-%{theme_name}
-update-alternatives --install %{_datadir}/wallpapers/openSUSE-default.xml openSUSE-default.xml %{_datadir}/wallpapers/openSUSE-default-static.xml 5
-
-%postun -n wallpaper-branding-%{theme_name}
-# Note: we don't use "$1 -eq 0", to avoid issues if the package gets renamed
-if [ ! -f %{_datadir}/wallpapers/openSUSE-default-static.xml ]; then
-  update-alternatives --remove openSUSE-default.xml %{_datadir}/wallpapers/openSUSE-default-static.xml
+# remove alternative leftover
+if [ $1 -gt 1 ]; then
+	[ -r /etc/alternatives/%{theme_name}-default.xml ] && rm -f /etc/alternatives/%{theme_name}-default.xml || true
 fi
-
 %if 0%{?grub2} > 0
 %post -n grub2-branding-%{theme_name}
 %{_datadir}/grub2/themes/%{theme_name}/activate-theme
@@ -261,13 +258,10 @@ gfxboot --update-theme %{theme_name}
 
 %files -n wallpaper-branding-%{theme_name}
 %license LICENSE
-%ghost %{_sysconfdir}/alternatives/openSUSE-default.xml
 %{_datadir}/wallpapers/openSUSE-default.xml
 %dir %{_datadir}/gnome-background-properties/
 %{_datadir}/gnome-background-properties/wallpaper-branding-openSUSE.xml
 %{_datadir}/wallpapers/
-# File from dynamic-wallpaper-branding-openSUSE:
-%exclude %{_datadir}/wallpapers/openSUSE-default-dynamic.xml
 
 %files -n yast2-qt-branding-%{theme_name}
 %dir %{_datadir}/YaST2
