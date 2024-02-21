@@ -1,7 +1,7 @@
 #
 # spec file for package zerobranestudio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,7 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%if 0%{suse_version} < 1550
+
+%if 0%{?suse_version} < 1550
 %define lua_version 5.1
 %define lua_version_nodots 51
 %else
@@ -27,7 +28,7 @@ Release:        0
 Summary:        Lightweight Lua IDE
 License:        MIT
 Group:          Development/Tools/IDE
-URL:            http://studio.zerobrane.com/
+URL:            https://studio.zerobrane.com/
 Source:         https://github.com/pkulchenko/ZeroBraneStudio/archive/%{version}.tar.gz
 # PATCH-FIX-OPENSUSE use system Lua
 Patch0:         zbstudio.patch
@@ -36,34 +37,34 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  lua%{lua_version_nodots}-devel
 BuildRequires:  lua%{lua_version_nodots}-bit32
 BuildRequires:  lua%{lua_version_nodots}-copas
+BuildRequires:  lua%{lua_version_nodots}-devel
 BuildRequires:  lua%{lua_version_nodots}-lpeg
 BuildRequires:  lua%{lua_version_nodots}-luafilesystem
 BuildRequires:  lua%{lua_version_nodots}-luasec
-%if 0%{suse_version} < 1550
-BuildRequires:  lua%{lua_version_nodots}-luasocket
-%else
-BuildRequires:  luasocket
-%endif
 BuildRequires:  wxlua-devel
+# Yes, we have to include this explicit Require
 Requires:       libwxlua
 Requires:       lua%{lua_version_nodots}-copas
 Requires:       lua%{lua_version_nodots}-lpeg
-BuildRequires:  lua%{lua_version_nodots}-bit32
 Requires:       lua%{lua_version_nodots}-luafilesystem
 Requires:       lua%{lua_version_nodots}-luasec
-%if 0%{suse_version} < 1550
-Requires:       lua%{lua_version_nodots}-luasocket
-%else
-Requires:       luasocket
-%endif
 Requires:       Lua(API) = %{lua_version}
 Recommends:     luajit
 Provides:       zbstudio
 Provides:       zerobrane-studio
 BuildArch:      noarch
+%if 0%{?suse_version} < 1550
+BuildRequires:  lua%{lua_version_nodots}-luasocket
+%else
+BuildRequires:  luasocket
+%endif
+%if 0%{?suse_version} < 1550
+Requires:       lua%{lua_version_nodots}-luasocket
+%else
+Requires:       luasocket
+%endif
 
 %description
 ZeroBrane Studio is a lightweight cross-platform Lua IDE with code completion,
@@ -73,21 +74,21 @@ Marmalade Quick, Cocos2d-x, GSL-shell, Adobe Lightroom, OpenResty/Nginx and
 others). It originated from the Estrela Editor.
 
 %prep
-%setup -q -n ZeroBraneStudio-%{version}
-%patch0 -p1
+%autosetup -p1 -n ZeroBraneStudio-%{version}
 
 # remove pre-built binaries
 rm -rf bin zbstudio/ZeroBraneStudio.app zbstudio.exe
 
 %build
 cd build
-cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-      -DLUA_EXECUTABLE=%{_bindir}/lua%{lua_version}
-
-make %{?_smp_mflags}
+%cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DLUA_EXECUTABLE=%{_bindir}/lua%{lua_version}
+%cmake_build
 
 %install
+( cd build
 %cmake_install
+)
 
 cat >> %{buildroot}%{_datadir}/zbstudio/cfg/user.lua <<EOF
 path.lua = '%{_bindir}/lua%{lua_version}'
@@ -106,8 +107,8 @@ rm -rf %{buildroot}%{_datadir}/doc
 %fdupes %{buildroot}%{_prefix}
 
 %files
-%defattr(-,root,root)
-%doc CHANGELOG.md LICENSE README.md
+%license LICENSE
+%doc CHANGELOG.md README.md
 %{_bindir}/zbstudio
 %{_datadir}/zbstudio
 %{_datadir}/icons/hicolor/*/apps/*

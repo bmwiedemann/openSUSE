@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 20 20:48:16 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up SPEC file.
+
+-------------------------------------------------------------------
+Tue Feb 20 12:08:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Sun Jul 11 16:14:16 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Re-add accidentally removed dependency

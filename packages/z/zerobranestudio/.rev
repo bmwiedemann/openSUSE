@@ -47,4 +47,15 @@
     <comment></comment>
     <requestid>906667</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>e3982389eed888b3f75decb1db2e3b93</srcmd5>
+    <version>1.90</version>
+    <time>1708534644</time>
+    <user>anag+factory</user>
+    <comment>- Clean up SPEC file.
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+</comment>
+    <requestid>1148346</requestid>
+  </revision>
 </revisionlist>
