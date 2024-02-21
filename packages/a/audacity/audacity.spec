@@ -1,7 +1,7 @@
 #
 # spec file for package audacity
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -124,12 +124,12 @@ physical memory size can be edited.
 
 %prep
 %setup -q -n %{name}-Audacity-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 
 %ifarch x86_64 aarch64
-%patch3 -p1
+%patch -P 3 -p1
 %endif
 
 cp -f %{SOURCE1} LICENSE_NYQUIST.txt
@@ -142,8 +142,8 @@ touch include/RevisionIdent.h
 %if %{with vst}
 tar xf %{SOURCE3} --strip-components=1 --one-top-level=vst3sdk
 
-%patch94 -p1 -d vst3sdk
-%patch95 -p1 -d vst3sdk
+%patch -P 94 -p1 -d vst3sdk
+%patch -P 95 -p1 -d vst3sdk
 %endif
 
 %build

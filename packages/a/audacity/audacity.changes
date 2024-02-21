@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 10:26:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Nov 17 02:33:37 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to 3.4.2
