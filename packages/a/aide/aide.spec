@@ -1,7 +1,7 @@
 #
 # spec file for package aide
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,10 +62,7 @@ BuildArch:      noarch
 Simple AIDE test script for externalized testing.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv
