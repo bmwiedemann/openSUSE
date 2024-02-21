@@ -1,7 +1,7 @@
 #
 # spec file for package jcifs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -90,14 +90,12 @@ find -name '*.jar' -delete
 # failed to build
 rm examples/GetLocalGroupsMap.java
 rm examples/SmbShell.java
-%patch0 -p1
+%patch -P 0 -p1
 sed -i "s|1.5|1.8|" build.xml
 cp -p %{SOURCE1} pom.xml
 sed -i "s|<version>1.3.17|<version>%{version}|" pom.xml
-%pom_remove_plugin :maven-gpg-plugin
 
-%pom_xpath_set "pom:dependency[pom:groupId = 'javax.servlet']/pom:version" 3.1.0
-%pom_xpath_set "pom:dependency[pom:groupId = 'javax.servlet']/pom:artifactId" javax.servlet-api
+%pom_change_dep javax.servlet: :javax.servlet-api:3.1.0
 
 %build
 export CLASSPATH=$(build-classpath glassfish-servlet-api)
@@ -113,7 +111,7 @@ install -p -m 644 %{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}-%{versi
 (cd %{buildroot}%{_javadir} && for jar in *-%{version}*; do ln -sf ${jar} ${jar/-%{version}/}; done)
 # pom
 mkdir -p %{buildroot}%{_mavenpomdir}
-install -p -m 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}-%{version}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}-%{version}.pom
 %add_maven_depmap %{name}-%{version}.pom %{name}-%{version}.jar -a "org.samba.jcifs:jcifs"
 
 # javadoc
