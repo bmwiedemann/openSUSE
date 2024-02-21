@@ -19,4 +19,21 @@
   * Updated Bilibili bangumi extractor due to an API change #1291</comment>
     <requestid>1123508</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>84242e2987309b2852912e9373907e0b</srcmd5>
+    <version>0.23.0</version>
+    <time>1708534681</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.23.0:
+  * Update douyinData types.go #1299
+  * Update README.md #1302
+  * Add --audio-only flag #1304
+  * Bilibili Festival #1315
+  * Solve bilibili download playlist when LUX will skip files
+    with same names #1316
+  * With the -items parameter, the serial number of the video
+    should be the serial number of the entire collection, not
+    the first one downloaded. #1317</comment>
+    <requestid>1148404</requestid>
+  </revision>
 </revisionlist>
