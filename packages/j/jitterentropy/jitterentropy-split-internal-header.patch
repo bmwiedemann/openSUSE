@@ -1,0 +1,41 @@
+Index: jitterentropy-library-3.4.0/jitterentropy.h
+===================================================================
+--- jitterentropy-library-3.4.0.orig/jitterentropy.h
++++ jitterentropy-library-3.4.0/jitterentropy.h
+@@ -42,6 +42,10 @@
+ #ifndef _JITTERENTROPY_H
+ #define _JITTERENTROPY_H
+ 
++#include <unistd.h>
++#include <errno.h>
++#include <stdint.h>
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif
+@@ -98,11 +102,13 @@ extern "C" {
+  * Jitter RNG State Definition Section
+  ***************************************************************************/
+ 
++#ifdef __JITTERENTROPY_INTERNAL
+ #if defined(_MSC_VER)
+ #include "arch/jitterentropy-base-windows.h"
+ #else
+ #include "jitterentropy-base-user.h"
+ #endif
++#endif
+ 
+ #define SHA3_256_SIZE_DIGEST_BITS	256
+ #define SHA3_256_SIZE_DIGEST		(SHA3_256_SIZE_DIGEST_BITS >> 3)
+Index: jitterentropy-library-3.4.0/Makefile
+===================================================================
+--- jitterentropy-library-3.4.0.orig/Makefile
++++ jitterentropy-library-3.4.0/Makefile
+@@ -9,6 +9,7 @@ LDFLAGS +=-Wl,-z,relro,-z,now -lpthread
+ 
+ # Enable internal timer support
+ CFLAGS += -DJENT_CONF_ENABLE_INTERNAL_TIMER
++CFLAGS += -D__JITTERENTROPY_INTERNAL
+ 
+ GCCVERSIONFORMAT := $(shell echo `$(CC) -dumpversion | sed 's/\./\n/g' | wc -l`)
+ ifeq "$(GCCVERSIONFORMAT)" "3"

@@ -15,6 +15,18 @@ Wed Mar 22 11:17:59 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
   * Add jitterentropy-fix-a-stack-corruption-on-s390x.patch
 
 -------------------------------------------------------------------
+Thu Jan 26 10:59:09 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- jitterentropy-with-debug.patch: build with debuginfo (bsc#1207789)
+
+-------------------------------------------------------------------
+Tue Sep 13 12:34:39 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- jitterentropy-split-internal-header.patch: 
+  Hide the non-GNUC constructs that are library internal from the 
+  exported header. (bsc#1202870)
+
+-------------------------------------------------------------------
 Mon Sep 12 07:04:35 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 3.4.1

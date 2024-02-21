@@ -1,7 +1,7 @@
 #
 # spec file for package jitterentropy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 
@@ -28,6 +29,8 @@ Source0:        https://github.com/smuellerDD/jitterentropy-library/archive/refs
 Source1:        baselibs.conf
 #PATCH-FIX-UPSTREAM github.com/smuellerDD/jitterentropy-library/commit/7bf9f85
 Patch0:         jitterentropy-fix-a-stack-corruption-on-s390x.patch
+Patch1:         jitterentropy-split-internal-header.patch
+Patch2:         jitterentropy-with-debug.patch
 
 %description
 The Jitter RNG provides a noise source using the CPU execution

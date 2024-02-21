@@ -1,0 +1,24 @@
+Index: jitterentropy-library-3.4.0/Makefile
+===================================================================
+--- jitterentropy-library-3.4.0.orig/Makefile
++++ jitterentropy-library-3.4.0/Makefile
+@@ -4,8 +4,8 @@ CC ?= gcc
+ #Hardening
+ ENABLE_STACK_PROTECTOR ?= 1
+ CFLAGS ?= -fwrapv --param ssp-buffer-size=4 -fvisibility=hidden -fPIE -Wcast-align -Wmissing-field-initializers -Wshadow -Wswitch-enum
+-CFLAGS +=-Wextra -Wall -pedantic -fPIC -O0 -fwrapv -Wconversion
+-LDFLAGS +=-Wl,-z,relro,-z,now -lpthread
++CFLAGS +=-Wextra -Wall -pedantic -fPIC -O0 -fwrapv -Wconversion -g
++LDFLAGS +=-Wl,-z,relro,-z,now -lpthread -g
+ 
+ # Enable internal timer support
+ CFLAGS += -DJENT_CONF_ENABLE_INTERNAL_TIMER
+@@ -35,7 +35,7 @@ LIBDIR := lib
+ INCDIR := include
+ SRCDIR := src
+ 
+-INSTALL_STRIP ?= install -s
++INSTALL_STRIP ?= install
+ 
+ NAME := jitterentropy
+ LIBMAJOR=$(shell cat $(SRCDIR)/jitterentropy-base.c | grep define | grep MAJVERSION | awk '{print $$3}')
