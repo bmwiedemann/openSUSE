@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Feb 19 11:09:35 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 26.4.17:
+  - "Zero-level" certification keys are implemented. Currently there are 3 levels
+  of resource keys: schema, table, row, yet one common resource used by every
+  writeset, a node. The key is added by default to every writeset with the default
+  type WSREP_KEY_SHARED. Now, node-wide operations can be performed with the same
+  semantics as regular transactions. 
+  - Non-SYNCED nodes are not counted when calculating commit cut - maximum seqno
+  that is no longer needed in certification index; situations may arise when group
+  commit cut is applied before all preceding events are committed on a non-SYNCED
+  node, now drain all monitors to ensure that preceding events are committed.
+  - Stability of node joining process for gmcast improved when new nodes are
+  connecting concurrently as nodes previously may arrive at a different conclusion
+  on which nodes will be blocked, however now, connections are explicitly allowed
+  from all nodes which may be accepted as members in the next view.
+  - Stability of node joining process for EVS improved by dropping EVS join
+  messages without own identified in joining state, to avoid starting membership
+  protocol before at least one of the existing nodes has seen at least one join
+  message from a joiner. 
+  - Improve "Failed to report last committed" warning to make it more accurate and
+  user-friendly.
+- Update to 26.4.16:
+  - Removed out-of-order certification for BF aborted transactions.
+  - Better error handling when the socket is closed, also cleaned up excessive
+  debug logging. 
+- Update to 26.4.15:
+  - an assertion is relaxed when Galera is configured with commit order disabled
+  - in certificate index preload, an assertion in handle_ist_trx_preload() fails
+  if the first handled IST preload write set has failed certification, and
+  incrementing the index position caused the certificate index to end up with the
+  wrong position; now fixed by appending dummy writeset sequence numbers into
+  Certification::trx_map_
+  - ASAN reported memory leak if gcs is closed after becoming joined but before
+  reaching synced
+
+-------------------------------------------------------------------
 Thu May  4 13:43:00 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 26.4.14:

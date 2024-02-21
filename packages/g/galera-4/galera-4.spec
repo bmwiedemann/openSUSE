@@ -1,7 +1,7 @@
 #
 # spec file for package galera-4
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,14 +25,14 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           galera-4
-Version:        26.4.14
+Version:        26.4.17
 Release:        0
 Summary:        Galera: a synchronous multi-master wsrep provider (replication engine)
 License:        GPL-2.0-only
 Group:          Productivity/Databases/Tools
 URL:            https://galeracluster.com/
-Source:         https://releases.galeracluster.com/galera-4.12/source/%{name}-%{version}.tar.gz
-Source1:        https://releases.galeracluster.com/galera-4.12/source/%{name}-%{version}.tar.gz.asc
+Source:         https://releases.galeracluster.com/galera-4/source/%{name}-%{version}.tar.gz
+Source1:        https://releases.galeracluster.com/galera-4/source/%{name}-%{version}.tar.gz.asc
 Source2:        garb-user.conf
 Patch0:         galera-3-25.3.10_fix_startup_scripts.patch
 Patch2:         fix-cmake-install.patch
