@@ -219,7 +219,7 @@ ZamGEQ31X2 - Stereo 31 band graphic equalizer plugin
 %setup -q
 
 %if 0%{?suse_version} < 1600
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 
 %build
