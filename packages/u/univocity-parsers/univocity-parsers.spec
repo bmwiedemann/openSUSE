@@ -47,7 +47,7 @@ API documentation for %{name}.
 %prep
 %setup -q
 cp %{SOURCE1} build.xml
-%patch0 -p1
+%patch -P 0 -p1
 
 # Tests require univocity-output-tester, which is not packaged yet.
 %{ant} jar javadoc
