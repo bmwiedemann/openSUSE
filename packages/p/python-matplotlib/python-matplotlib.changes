@@ -1078,7 +1078,7 @@ Wed Sep 19 01:44:55 UTC 2018 - Todd R <toddrme2178@gmail.com>
   * Figure has an ~.figure.Figure.add_artist method
   * math directive renamed to mathmpl
 - Python 2 support was dropped upstream, so disable it in the spec
-  file and drop python2-specific parts.
+  file and drop python2-specific parts (bsc#1184340, bsc#1198319)
 - Enable wx backend for python 3, since python 3 is now supported
   by wxPython upstream.
 
