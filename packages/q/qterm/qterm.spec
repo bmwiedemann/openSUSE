@@ -46,8 +46,7 @@ BuildRequires:  pkgconfig(openssl)
 QTerm is a full featured BBS client written in Qt.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake -DQT5=YES
