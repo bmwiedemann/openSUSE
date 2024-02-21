@@ -59,16 +59,16 @@ through the parallel port.
 %prep
 %setup -n %{name}-%{upstream_version}
 %if %{use_fastpoll}
-%patch1 -p1
+%patch -P 1 -p1
 %else
-%patch2 -p1
+%patch -P 2 -p1
 %endif
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
+%patch -P 8 -p1
 
 %build
 touch README

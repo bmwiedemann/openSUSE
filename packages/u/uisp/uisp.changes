@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:41:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Mar  7 17:53:05 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Add code for safe modprobe.d migration
