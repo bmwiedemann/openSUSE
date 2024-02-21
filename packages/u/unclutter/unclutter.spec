@@ -1,7 +1,7 @@
 #
 # spec file for package unclutter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,54 +16,41 @@
 #
 
 
-URL:            http://www.ibiblio.org/pub/X11/contrib/utilities/
-
 Name:           unclutter
-BuildRequires:  imake
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xext)
 Version:        8
 Release:        0
-Provides:       unclutt = %{version}
-Obsoletes:      unclutt < %{version}
 Summary:        Remove the idle cursor image from the screen
 License:        SUSE-Public-Domain
 Group:          System/X11/Utilities
+URL:            https://www.ibiblio.org/pub/X11/contrib/utilities/
 Source:         %{name}-%{version}.tar.bz2
 Patch0:         %{name}-%{version}-return.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  imake
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xext)
+Provides:       unclutt = %{version}
+Obsoletes:      unclutt < %{version}
 
 %description
 Unclutterer removes the cursor image from the screen so that it does
 not obstruct the area you are looking at after it has not moved for a
 given period of time.
 
-
-
-Authors:
---------
-    Mark M Martin <mmm@cetia.fr>
-    Andreas Stolcke <stolcke@ICSI.Berkeley.EDU>
-
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 xmkmf
-make
+%make_build
 
 %install
-make install DESTDIR=${RPM_BUILD_ROOT}
-make install.man DESTDIR=${RPM_BUILD_ROOT}
-
-%clean
-rm -rf ${RPM_BUILD_ROOT}
+%make_install
+make install.man DESTDIR=%{buildroot}
 
 %files
-%defattr(-,root,root)
 %doc README
 %{_bindir}/*
-%doc %{_mandir}/*/*
+%{_mandir}/*/*
 
 %changelog
