@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 13:26:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Oct 20 11:05:02 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 
 - Fix buffer overflow vulnerability during the conversion of wav

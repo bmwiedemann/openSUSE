@@ -50,8 +50,8 @@ vcut (which allows you to cut up Vorbis files).
 
 %prep
 %setup -q
-%patch1
-%patch2 -p1
+%patch -P 1
+%patch -P 2 -p1
 
 %build
 # Because of patch vorbis-tools-cflags.diff regenerate build system
