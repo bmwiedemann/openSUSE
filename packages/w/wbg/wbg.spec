@@ -51,10 +51,7 @@ It takes a single argument, the image filename, which is displayed
 scaled-to-fit on all monitors.
 
 %prep
-%setup -n %name
-%patch1 -p1
-%patch4 -p1
-%patch5 -p1
+%autosetup -n %name -p1
 
 %build
 export CFLAGS="%{optflags}"
