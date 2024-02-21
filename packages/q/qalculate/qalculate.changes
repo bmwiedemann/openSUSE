@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Feb 14 15:18:07 UTC 2024 - Petr Gajdos <pgajdos@suse.com>
+
+- update to v4.9.0:
+  * Support for specifying a fixed denominator for display of
+    fractions (e.g. "0.3 ft ➞ 1/8 ≈ (3 + 5/8) in")
+  * Return gcd of numerators divided by lcm of denominators in
+    gcd() with non-integer rational numbers, and vice versa for
+    lcm()
+  * Add units for mean Gregorian and tropical years
+  * Ignore underscore in number
+  * Replace defunct exchange rates source and fix bitcoin
+    exchange rate
+  * Fix asin(x)=a, acos(x)=a, and atan(x)=a, when a contains an
+    angle unit and default angle unit is set
+  * Fix output of value converted to unit expression with
+    numerical multiplier in denominator, e.g. "➞ L/(100 km)"
+  * Fix segfault when trying to solve
+    "(xsqrt(x)-ysqrt(y))/(sqrt(x)-sqrt(y))=x+sqrt(x*y)+y"
+  * Fix parsing of case insensitive object name ending with
+    Unicode character when followed by another Unicode character
+    in expression, e.g. "микрометр"
+  * Add history command, listing expression history
+  * Display all exponents 0-9 using Unicode superscript
+    characters if these are the only exponents in the expression
+
+-------------------------------------------------------------------
 Mon Oct  2 07:26:26 UTC 2023 - pgajdos@suse.com
 
 - version update to 4.8.1
