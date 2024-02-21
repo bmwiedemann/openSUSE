@@ -1,7 +1,7 @@
 #
 # spec file for package xmlgraphics-commons
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2008, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,9 +32,7 @@ BuildRequires:  commons-io >= 1.1
 BuildRequires:  commons-logging
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
-Requires:       mvn(commons-io:commons-io) >= 1.1
-Requires:       mvn(commons-logging:commons-logging)
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -55,8 +53,8 @@ Javadoc for package %{name}.
 
 %prep
 %setup -q %{name}-%{version}
-%patch0
-%patch1 -p1
+%patch -P 0
+%patch -P 1 -p1
 find . -name "*.jar" | xargs rm
 
 %build
@@ -69,7 +67,8 @@ ant -Djavac.source=1.8 -Djavac.target=1.8 package javadocs
 install -Dpm 644 build/%{name}-%{version}.jar \
   %{buildroot}%{_javadir}/%{name}.jar
 # pom
-install -Dpm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+install -dm 0755 %{buildroot}%{_mavenpomdir}
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 
 mkdir -p %{buildroot}%{_javadocdir}/%{name}
