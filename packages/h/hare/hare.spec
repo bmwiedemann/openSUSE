@@ -19,25 +19,26 @@
 %bcond_without  test
 Name:           hare
 Release:        0
-Version:        1705636831.933763ed
+Version:        0.24.0
 Summary:        Hare system programming language
 Group:          Development/Tools/Building
 License:        MPL-2.0
 URL:            https://harelang.org
-Source0:        %{name}-%{version}.tar.zst
+Source0:        https://git.sr.ht/~sircmpwn/hare/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Source2:        README-suse-maint.md
 BuildRequires:  binutils
 BuildRequires:  gcc
-# Always be specific on harec version
-BuildRequires:  harec = 1704220143.770566a
+# Hare and the HareC compiler should have the same version
+BuildRequires:  harec = %{version}
 BuildRequires:  make
 BuildRequires:  qbe
 BuildRequires:  scdoc
 BuildRequires:  timezone
 BuildRequires:  zstd
-Requires:       harec
-Requires:       qbe
+Requires:       harec = %{version}
+# Hare requires QBE 1.2 like HareC does
+Requires:       qbe = 1.2
 Requires:       timezone
 
 %description
