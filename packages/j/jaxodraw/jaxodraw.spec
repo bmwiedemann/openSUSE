@@ -1,7 +1,7 @@
 #
 # spec file for package jaxodraw
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Summary:        A Java-based GUI for drawing Feynman diagrams
 # The xslt files in the manual are Apache-2.0 licensed, GPL-2.0+ for everything else
 License:        Apache-2.0 AND GPL-2.0-or-later
 Group:          Productivity/Scientific/Physics
-URL:            http://jaxodraw.sourceforge.net
+URL:            https://jaxodraw.sourceforge.net
 Source0:        http://download.sourceforge.net/%{name}/%{name}-%{major}-%{minor}-src.tar.gz
 Source1:        http://sourceforge.net/projects/jaxodraw/files/installer_files/installer-2.0-1.tar.gz
 Source2:        http://downloads.sourceforge.net/%{name}/axodraw4j_2008_11_19.tar.gz
@@ -82,9 +82,9 @@ Requires:       %{name} = %{version}
 Requires:       texlive-pst-tools
 Requires:       tex(latex)
 Requires(post): coreutils
-Requires(posttrans):texlive
-Requires(postun):coreutils
-Requires(postun):texlive
+Requires(posttrans): texlive
+Requires(postun): coreutils
+Requires(postun): texlive
 Requires(pre):  texlive
 
 %description latex
@@ -96,7 +96,7 @@ compile LaTeX files generated with jaxodraw.
 
 %prep
 %setup -q -n %{name}-%{major}-%{minor} -a 1 -a 2
-%patch0 -p1
+%patch -P 0 -p1
 find -name '*.jar' -o -name '*.class' -exec rm -f '{}' \;
 
 # REMOVE UNNECESSARY-FOR-BUILD DIR WITH POTENTIAL LICENSING ISSUES
