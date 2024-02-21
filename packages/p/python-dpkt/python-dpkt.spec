@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15allpythons}
 Name:           python-dpkt
 Version:        1.9.7.2
 Release:        0

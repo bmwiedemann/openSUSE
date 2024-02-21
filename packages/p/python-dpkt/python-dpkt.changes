@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 19 13:27:00 UTC 2024 - Christian Keil <keil@dfn-cert.de>
+
+- Add Python 3.11 build.
+
+-------------------------------------------------------------------
 Fri Oct  8 06:53:28 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update skip-BE-tests.patch so that it actually fixes things,

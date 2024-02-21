@@ -135,4 +135,14 @@
 </comment>
     <requestid>924285</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>5eff747b8d7487e06f6c48e307b7dfed</srcmd5>
+    <version>1.9.7.2</version>
+    <time>1708534521</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1147585 from kairu
+
+- Add Python 3.11 build.</comment>
+    <requestid>1147607</requestid>
+  </revision>
 </revisionlist>
