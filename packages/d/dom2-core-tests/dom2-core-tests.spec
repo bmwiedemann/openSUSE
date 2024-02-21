@@ -1,7 +1,7 @@
 #
 # spec file for package dom2-core-tests
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        DOM Conformance Test Suite
 License:        W3C
 Group:          Development/Libraries/Java
-Url:            http://www.w3.org/DOM/Test/
+URL:            http://www.w3.org/DOM/Test/
 Source0:        http://www.w3.org/2004/04/dom2-core-tests-20040405.jar
 Source1:        LICENSE.html
 Patch0:         dom2-core-tests-build_xml.patch
@@ -47,7 +47,7 @@ ensure stability and correctness.
 %setup -q -c
 rm -rf junit
 find . -name "*.class" -exec rm {} \;
-%patch0 -b .orig
+%patch -P 0 -b .orig
 cp %{SOURCE1} .
 # not compatible with junit 4
 rm -rf org/w3c/domts/JUnitRunner.java

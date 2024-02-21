@@ -137,4 +137,12 @@ SPDX (forwarded request 110716 from babelworx)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>620786</requestid>
   </revision>
+  <revision rev="20" vrev="31">
+    <srcmd5>4d67646b5593fb130941db4241087f8b</srcmd5>
+    <version>0.0.1</version>
+    <time>1708534703</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148456</requestid>
+  </revision>
 </revisionlist>
