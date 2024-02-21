@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:15:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Oct 30 17:51:57 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Refresh a75344b646227c9d7f12d90af4a35a902e940dca.patch from
