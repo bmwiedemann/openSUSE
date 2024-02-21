@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 19 14:54:52 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.13
+  * cJSON update to 1.7.17 by @graebm in (#1081)
+  * Add more generic AVX feature detection as well as flags for if
+    avx512 intrinsics are available. by @JonathanHenson in (#1041)
+  * chore: Relax stale issue timings by @kellertk in (#1085)
+  * Use _Exit() on test failure, to avoid LeakSanitizer spam by @graebm in (#1088)
+  * Fix a bunch of places we forget to aws_raise_error() by @graebm in (#1089)
+  * Consistently use lowercase for Windows libraries
+    and header files by @giordano in (#1058)
+
+-------------------------------------------------------------------
 Wed Jan  3 13:09:21 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.12
