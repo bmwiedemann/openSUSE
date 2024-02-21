@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 10:53:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Sep 25 09:22:43 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Remove dependency on maven2

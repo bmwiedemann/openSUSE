@@ -144,7 +144,7 @@ perl -pi -e 's#\\>#>#g' tool/resources/org/antlr/v4/tool/templates/unicodedata.s
 
 # Temporary solution to a proble of code too big when generated with newer ICU4J versions
 %pom_remove_plugin :string-template-maven-plugin tool
-%patch0
+%patch -P 0
 
 # Missing test deps: org.seleniumhq.selenium:selenium-java
 %pom_disable_module runtime-testsuite
