@@ -137,10 +137,10 @@ applications to be developed according to a true MVC model.
 %prep
 %setup -q
 cp %{SOURCE1} pom.xml
-%patch0 -b .sav0
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch -P 0 -b .sav0
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 
 find . -name '*.jar' -print -delete
 find . -name '*.class' -print -delete

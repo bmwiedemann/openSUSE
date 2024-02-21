@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 13:16:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Sep 27 04:36:41 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reduce considerably the dependencies graph
