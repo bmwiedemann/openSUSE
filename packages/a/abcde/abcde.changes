@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 09:55:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Nov  4 20:46:16 UTC 2020 - Martin Wilck <mwilck@suse.com>
 
 - Fix dependency on perl(WebService::MusicBrainz) to work with
