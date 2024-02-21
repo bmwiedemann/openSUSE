@@ -178,4 +178,14 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="27" vrev="16">
+    <srcmd5>ea667352e5417e01e23863c018be4597</srcmd5>
+    <version>0.4.6</version>
+    <time>1708534727</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+- Clean spec file</comment>
+    <requestid>1148501</requestid>
+  </revision>
 </revisionlist>

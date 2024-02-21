@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 21 09:52:56 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+- Clean spec file
+
+-------------------------------------------------------------------
 Tue Nov 19 18:36:07 CET 2013 - ro@suse.de
 
 - obex-data-server-openobex_EnumerateInterfaces.patch:
