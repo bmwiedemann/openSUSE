@@ -148,4 +148,12 @@ http://lists.opensuse.org/opensuse-factory/2014-04/msg00309.html</comment>
     <comment>Remove dependency of findbugs</comment>
     <requestid>1113818</requestid>
   </revision>
+  <revision rev="17" vrev="11">
+    <srcmd5>d6786651507520290c6eae033972db4b</srcmd5>
+    <version>2.3.2</version>
+    <time>1708534707</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148465</requestid>
+  </revision>
 </revisionlist>

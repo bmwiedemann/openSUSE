@@ -1,7 +1,7 @@
 #
 # spec file for package gluegen2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -81,18 +81,7 @@ This package contains gluegen source code needed to build packages.
 cp -pr ../%{jcppsrc_name}/src ./jcpp/
 rm -rf src/java/net/highteq/nativetaglet/
 
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
+%autopatch -p1
 
 # Fix wrong-script-end-of-line-encoding
 rm make/scripts/*.bat

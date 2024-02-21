@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 21 09:06:30 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %autopatch instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Wed Feb 21 09:05:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Sep 27 08:01:16 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Remove dependency on findbugs
