@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 21:11:39 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
+
+- convert lrzsz-po.patch to -p1, same as the other patches
+- use autosetup to prepare for rpm 4.20
+
+-------------------------------------------------------------------
 Tue Jul  9 20:10:36 UTC 2019 - Benoît Monin <benoit.monin@gmx.fr>
 
 - add lrzsz-0.12.21rc-drop-po-intl.patch (bsc#1181571):

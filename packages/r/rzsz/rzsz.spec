@@ -1,7 +1,7 @@
 #
 # spec file for package rzsz
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,16 +44,7 @@ rzsz allows you to use "sz filename" to send a file to your local
 system.
 
 %prep
-%setup -q -n lrzsz-%{realver}
-%patch1
-%patch2 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
+%autosetup -n lrzsz-%{realver} -p1
 
 # Missing file
 >> config.rpath

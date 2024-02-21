@@ -1,7 +1,7 @@
-Index: po/de.po
+Index: b/po/de.po
 ===================================================================
---- po/de.po.orig
-+++ po/de.po
+--- a/po/de.po
++++ b/po/de.po
 @@ -254,7 +254,7 @@ msgstr "Keine Bestätigung für Übertragun
  #: src/lsz.c:1361
  #, c-format
