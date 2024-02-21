@@ -424,4 +424,12 @@ The spec file changes were made by obs-service-format_spec_file... (forwarded re
     <comment></comment>
     <requestid>1137594</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>d8e7f32a9d3ddd99fb01178b107530c4</srcmd5>
+    <version>3.1.0</version>
+    <time>1708534471</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147932</requestid>
+  </revision>
 </revisionlist>

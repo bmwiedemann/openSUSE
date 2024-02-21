@@ -86,7 +86,7 @@ This package contains the Argyll color management system documentation.
 %prep
 %setup -q -n %{tarname}_V%{version} -a3
 cd ajam-2.5.2-1.3.3
-%patch1 -p1 -b .include
+%patch -P 1 -p1 -b .include
 cd ..
 
 # remove unused source code

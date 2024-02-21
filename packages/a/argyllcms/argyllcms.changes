@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 10:51:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Dec  4 20:48:48 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - update to 3.1.0:
