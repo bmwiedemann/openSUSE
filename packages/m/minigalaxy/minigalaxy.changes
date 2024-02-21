@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 21 08:59:49 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Sat Jan 20 16:49:53 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 1.2.6: 

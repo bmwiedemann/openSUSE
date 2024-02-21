@@ -37,8 +37,7 @@ BuildArch:      noarch
 A GOG client for Linux that lets you download and play your GOG Linux games.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %python3_build
