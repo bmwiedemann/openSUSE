@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 10:16:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Feb  8 05:20:26 UTC 2024 - David Disseldorp <ddiss@suse.com>
 
 - Add apparmor-abstractions-openssl-allow-version-specific-en.patch to

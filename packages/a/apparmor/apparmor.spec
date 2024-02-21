@@ -356,17 +356,17 @@ SubDomain.
 # very loose profile that doesn't even match the apache2 binary path in openSUSE. Move it away instead of confusing people (boo#872984)
 mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/profiles/extras/
 
-%patch1
-%patch2
-%patch3 -p1
-%patch4
-%patch5
-%patch6
+%patch -P 1
+%patch -P 2
+%patch -P 3 -p1
+%patch -P 4
+%patch -P 5
+%patch -P 6
 %if %{with precompiled_cache}
-%patch7
+%patch -P 7
 %endif
-%patch9 -p1
-%patch10 -p1
+%patch -P 9 -p1
+%patch -P 10 -p1
 
 %build
 export SUSE_ASNEEDED=0

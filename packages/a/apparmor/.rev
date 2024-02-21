@@ -2695,4 +2695,12 @@ thanks to the upstream 926 merge. (forwarded request 1108011 from dmdiss)</comme
   allow version specific engdef &amp; engines openssl paths (boo#1219571) (forwarded request 1145034 from dmdiss)</comment>
     <requestid>1147189</requestid>
   </revision>
+  <revision rev="202" vrev="3">
+    <srcmd5>5abc78e166a7d6132aa99d5698083b65</srcmd5>
+    <version>3.1.7</version>
+    <time>1708534487</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1147750 from dimstar)</comment>
+    <requestid>1147947</requestid>
+  </revision>
 </revisionlist>
