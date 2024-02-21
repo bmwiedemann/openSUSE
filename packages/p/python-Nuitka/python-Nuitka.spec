@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-Nuitka
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,7 +14,6 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == ""
@@ -32,62 +31,95 @@
 %bcond_with     test_qt6
 %endif
 
+# https://github.com/Nuitka/Nuitka/blob/main/nuitka/PythonVersions.py#L51
+# Python 3.12 not yet supported
+%define skip_python312 1
+
 # Can't test for substrings server-side, so spell everything out.
 # Keep this in sync with the multi-python build set!
-%if 0%{suse_version} < 1550
-
-%if "%{flavor}" == "clang-test-py39"
-ExclusiveArch:  do-not-build
-%endif
-%if "%{flavor}" == "clang-test-py310"
-ExclusiveArch:  do-not-build
-%endif
-%if "%{flavor}" == "clang-test-py311"
-ExclusiveArch:  do-not-build
-%endif
-%if "%{flavor}" == "gcc-test-py39"
-ExclusiveArch:  do-not-build
-%endif
-%if "%{flavor}" == "gcc-test-py310"
-ExclusiveArch:  do-not-build
-%endif
-%if "%{flavor}" == "gcc-test-py311"
-ExclusiveArch:  do-not-build
-%endif
-
+%if "%{flavor}" == "clang-test-py3" && "%pythons" == "python3"
+%bcond_without  test_clang
+%bcond_with     test_gcc
+%bcond_without  test_py3
 %else
-
+%bcond_with test_py3
+%endif
 %if "%{flavor}" == "clang-test-py39"
 %bcond_without  test_clang
 %bcond_with     test_gcc
-%define pythons python39
+%bcond_without  test_py39
+%else
+%bcond_with test_py39
 %endif
 %if "%{flavor}" == "clang-test-py310"
 %bcond_without  test_clang
 %bcond_with     test_gcc
-%define pythons python310
+%bcond_without  test_py310
+%else
+%bcond_with test_py310
 %endif
 %if "%{flavor}" == "clang-test-py311"
 %bcond_without  test_clang
 %bcond_with     test_gcc
-%define pythons python311
+%bcond_without  test_py311
+%else
+%bcond_with test_py311
+%endif
+%if "%{flavor}" == "clang-test-py312"
+%bcond_without  test_clang
+%bcond_with     test_gcc
+%bcond_without  test_py312
+%else
+%bcond_with test_py312
+%endif
+%if "%{flavor}" == "gcc-test-py3" && "%pythons" == "python3"
+%bcond_with     test_clang
+%bcond_without  test_gcc
+%bcond_without  test_py3
+%else
+%bcond_with test_py3
 %endif
 %if "%{flavor}" == "gcc-test-py39"
 %bcond_with     test_clang
 %bcond_without  test_gcc
-%define pythons python39
+%bcond_without  test_py39
+%else
+%bcond_with test_py39
 %endif
 %if "%{flavor}" == "gcc-test-py310"
 %bcond_with     test_clang
 %bcond_without  test_gcc
-%define pythons python310
+%bcond_without  test_py310
+%else
+%bcond_with test_py310
 %endif
 %if "%{flavor}" == "gcc-test-py311"
 %bcond_with     test_clang
 %bcond_without  test_gcc
-%define pythons python311
+%bcond_without  test_py311
+%else
+%bcond_with test_py311
 %endif
-
+%if "%{flavor}" == "gcc-test-py312"
+%bcond_with     test_clang
+%bcond_without  test_gcc
+%bcond_without  test_py312
+%else
+%bcond_with test_py312
+%endif
+%if "%{flavor}" != ""
+%{?!with_test_py39:%define skip_python39 1}
+%{?!with_test_py310:%define skip_python310 1}
+%{?!with_test_py311:%define skip_python311 1}
+%{?!with_test_py312:%define skip_python312 1}
+%if 0%{?suse_version} <= 1500
+%{?!with_test_py3:%define skip_python3 1}
+%endif
+# Skip all empty test flavors: The obs server-side interpreter cannot use lua or rpm shrink, last one is for sle15_python_module_pythons if enabled here or inherited from project
+%if "%pythons" == "" || "%pythons" == " " || "%pythons" == "  " || "%pythons" == "   " || "%pythons" == "    " || ( "%pythons" == "python311" && %{without test_py311} )
+ExclusiveArch:  donotbuild
+%define python_module() %flavor-not-enabled-in-buildset-for-suse-%{?suse_version}
+%endif
 %endif
 
 Name:           python-Nuitka%{?psuffix}
@@ -120,7 +152,7 @@ Requires:       python-ordered-set
 Requires:       python-zstandard
 Requires:       scons
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     ccache
 Recommends:     chrpath
 Recommends:     clang
@@ -148,9 +180,12 @@ BuildRequires:  %{python_module glob2}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module idna}
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module opengl-accelerate}
 BuildRequires:  %{python_module opengl}
 BuildRequires:  %{python_module ordered-set}
+BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module passlib}
 BuildRequires:  %{python_module pendulum}
 BuildRequires:  %{python_module pmw}
@@ -172,10 +207,6 @@ BuildRequires:  patchelf
 BuildRequires:  strace
 BuildRequires:  tk
 BuildRequires:  xvfb-run
-BuildRequires:  %{python_module gtk if (%python-base with python-base)}
-BuildRequires:  %{python_module matplotlib if (%python-base without python36-base)}
-BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
-BuildRequires:  %{python_module pandas if (%python-base without python36-base)}
 %if %{with test_qt6}
 %if 0%{?suse_version} > 1500
 # Leap doesnt have PySide6, and it has old naming on Tumbleweed
@@ -317,8 +348,8 @@ rm -r /tmp/* ||:
 
 # clang without debug
 
-# On Leap python2.7 and python3, OpenGL tests fail OOM
-if [[ "$python" == "python2" || "$python" == "python3" ]]; then
+# On Leap python 3.6, OpenGL tests fail OOM
+if [[ "$python" == "python3" ]]; then
   mv tests/standalone/OpenGLUsing.py /tmp
 fi
 
