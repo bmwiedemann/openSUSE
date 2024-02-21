@@ -160,4 +160,12 @@ directly included.&quot; (forwarded request 99495 from rudi_m)</comment>
     <comment>- switch to https urls</comment>
     <requestid>987438</requestid>
   </revision>
+  <revision rev="22" vrev="26">
+    <srcmd5>f4b833b905eaa55b408d44ace5600aef</srcmd5>
+    <version>0.4.2</version>
+    <time>1708534613</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1148165 from dimstar)</comment>
+    <requestid>1148198</requestid>
+  </revision>
 </revisionlist>
