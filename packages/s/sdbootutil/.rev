@@ -147,4 +147,13 @@
     <comment></comment>
     <requestid>1146526</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5f57af3fb4c74fc412585491ed781a86</srcmd5>
+    <version>1+git20240215.cb7e392</version>
+    <time>1708534349</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1+git20240215.cb7e392:
+  * Add --no-random-seed argument</comment>
+    <requestid>1148172</requestid>
+  </revision>
 </revisionlist>
