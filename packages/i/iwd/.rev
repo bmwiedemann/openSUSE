@@ -410,4 +410,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1141631</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>8f0447d93ef513dcef7ec4a7532f3542</srcmd5>
+    <version>2.14</version>
+    <time>1708534559</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.14
+  * Fix issue with accepting PTK 4/4 after receiving PTK 2/4.
+  * Fix issue with frequency limit for quick scans.
+  * Fix issue with limiting DHCPv4 attempts. (forwarded request 1147317 from alois)</comment>
+    <requestid>1147787</requestid>
+  </revision>
 </revisionlist>

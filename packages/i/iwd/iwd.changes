@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 17 09:45:20 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.14
+  * Fix issue with accepting PTK 4/4 after receiving PTK 2/4.
+  * Fix issue with frequency limit for quick scans.
+  * Fix issue with limiting DHCPv4 attempts.
+
+-------------------------------------------------------------------
 Fri Jan 19 00:49:04 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.13 [boo#1218410]
