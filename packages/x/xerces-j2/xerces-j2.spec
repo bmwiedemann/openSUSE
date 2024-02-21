@@ -1,7 +1,7 @@
 #
 # spec file for package xerces-j2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,17 +39,16 @@ BuildRequires:  ant
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  xalan-j2 >= 2.7.1
 BuildRequires:  xml-commons-apis >= 1.4.01
 BuildRequires:  xml-commons-resolver >= 1.2
-#!BuildIgnore:  xerces-j2 osgi(org.apache.xerces) jaxp_parser_impl
+#!BuildIgnore:  jaxp_parser_impl
+#!BuildIgnore:  osgi(org.apache.xerces)
+#!BuildIgnore:  xerces-j2
 # Explicit javapackages-tools requires since scripts use
 # /usr/share/java-utils/java-functions
 Requires:       javapackages-tools
-Requires:       xalan-j2 >= 2.7.1
-Requires:       xml-commons-apis >= 1.4.01
-Requires:       xml-commons-resolver >= 1.2
 Provides:       %{name}-scripts = %{version}-%{release}
 Provides:       jaxp_parser_impl = 1.4
 Obsoletes:      %{name}-scripts < %{version}-%{release}
@@ -88,8 +87,8 @@ Requires:       %{name} = %{version}-%{release}
 find "(" -name "*.class" -o -name "*.jar" ")" -delete
 find -type f -exec dos2unix {} \;
 
-%patch0 -p1
-%patch1
+%patch -P 0 -p1
+%patch -P 1
 
 %build
 mkdir -p tools
@@ -113,7 +112,7 @@ install -pm 644 build/xercesImpl.jar %{buildroot}%{_javadir}/%{name}.jar
 
 # pom
 install -dm 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 %{SOURCE5} %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} %{SOURCE5} %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar -a xerces:xerces,xerces:xmlParserAPIs,apache:xerces-j2
 
 # javadoc
