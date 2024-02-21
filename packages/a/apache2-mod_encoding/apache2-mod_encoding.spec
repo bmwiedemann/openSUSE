@@ -61,7 +61,7 @@ Development and header files for libiconv_hook1
 
 %prep
 %setup -q -n mod_encoding-%{snapshot}
-%patch0  -b .apache220
+%patch -P 0  -b .apache220
 
 # strip away annoying ^M
 find . -type f|xargs file|grep 'CRLF'|cut -d: -f1|xargs perl -p -i -e 's/\r//'
