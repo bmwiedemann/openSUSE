@@ -1,7 +1,7 @@
 #
 # spec file for package aws-c-compression
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define library_version 1.0.0
 %define library_soversion 1_0_0
 Name:           aws-c-compression
-Version:        0.2.17
+Version:        0.2.18
 Release:        0
 Summary:        C99 implementation of Huffman encoding/decoding
 License:        Apache-2.0

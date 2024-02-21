@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 19 15:49:52 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.18
+  * Add github templates and bots by @jmklix in (#61)
+  * Fix compiler warning by @graebm in (#62)
+  * Added workflow for handling answerable discussions
+    by @yasminetalby in (#65)
+  * BUILDER_VERSION: v0.9.55 by @graebm in (#66)
+
+-------------------------------------------------------------------
 Wed Jun 14 11:41:01 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.2.17
