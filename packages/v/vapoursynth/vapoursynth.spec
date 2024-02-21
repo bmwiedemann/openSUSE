@@ -108,9 +108,9 @@ VapourSynth.
 
 %prep
 %setup -q -n %{name}-R%{version}
-%patch0 -p1
+%patch -P 0 -p1
 %if 0%{?suse_version} <= 1500
-%patch1 -p1 -R
+%patch -P 1 -p1 -R
 %endif
 
 %build

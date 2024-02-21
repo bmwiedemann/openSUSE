@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 13:13:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Dec  4 04:05:56 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Upstream supports Cython 0.29 and 3, stop special casing it. 
