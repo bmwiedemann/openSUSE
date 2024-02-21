@@ -41,10 +41,7 @@ that was stored on it. This tool is designed to make sure secure
 data that is erased from a hard drive is unrecoverable.
 
 %prep
-%setup -q
-%patch0
-%patch1
-%patch2
+%autosetup -p0
 
 %build
 autoreconf -fi

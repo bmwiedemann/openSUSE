@@ -172,4 +172,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment>- spec-cleaner (switch to https:// urls)</comment>
     <requestid>860200</requestid>
   </revision>
+  <revision rev="22" vrev="19">
+    <srcmd5>66254f184bc2ea91c55a5584d61050b0</srcmd5>
+    <version>2.3.1</version>
+    <time>1708534610</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1148182 from dimstar)</comment>
+    <requestid>1148196</requestid>
+  </revision>
 </revisionlist>
