@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 05:47:05 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.2.1:
+  * Fix a build problem for the DJGPP/MS-DOS environment (#372).
+
+-------------------------------------------------------------------
 Tue Feb  6 07:05:20 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.2.0:

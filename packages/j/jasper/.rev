@@ -345,4 +345,13 @@
     since the use of strtok is problematic in multithreading contexts.</comment>
     <requestid>1144460</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ba6e2b359ea6abfc61291e13ab464e1c</srcmd5>
+    <version>4.2.1</version>
+    <time>1708534323</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.2.1:
+  * Fix a build problem for the DJGPP/MS-DOS environment (#372).</comment>
+    <requestid>1147689</requestid>
+  </revision>
 </revisionlist>
