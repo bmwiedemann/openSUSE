@@ -72,11 +72,7 @@ This package contains header files and development libraries needed to
 develop programs using the antlr3c library.
 
 %prep
-%setup -q -n lib%{name}-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1 -n lib%{name}-%{version}
 
 %build
 autoreconf -fiv

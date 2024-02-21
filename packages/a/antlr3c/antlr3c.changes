@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 10:54:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Thu Jun 16 07:23:25 UTC 2016 - jslaby@suse.com
 
 - port patches from home:jirislaby:statica
