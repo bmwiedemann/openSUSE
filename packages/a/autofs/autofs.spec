@@ -1,7 +1,7 @@
 #
 # spec file for package autofs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %define with_sssd 0
 %endif
 Name:           autofs
-Version:        5.1.8
+Version:        5.1.9
 Release:        0
 Summary:        A Kernel-Based Automounter
 License:        GPL-2.0-or-later
@@ -55,11 +55,8 @@ Patch101:       autofs-5.1.1-debuginfo-fix.patch
 Patch102:       autofs-5.1.1-dbus-udisks-monitor.patch
 # PATCH-FIX-OPENSUSE autofs-use-libldap_r-instead-of-libldap-for-thread-safety.patch [bsc#955477]
 Patch104:       autofs-use-libldap_r-instead-of-libldap-for-thread-safety.patch
-# PATCH-FIX-OPENSUSE autofs-5-1-3-fix-unset-tsd-group-name-handling.patch
-Patch105:       autofs-5-1-3-fix-unset-tsd-group-name-handling.patch
 # bsc#1175238 - Use /usr/etc/nsswitch.conf if /etc/nsswitch.conf is not available
 Patch106:       autofs-nsswitch-usr-etc.patch
-Patch107:       autofs-Test-TCP-request-correctly-in-nfs_get_info.patch
 # bsc#1207881 - Obsolete and incorrect manual page details for autofs(8)
 Patch108:       autofs-suse-manpage-remove-initdir.patch
 BuildRequires:  autoconf
@@ -106,14 +103,12 @@ cp %{SOURCE3} .
 cp %{SOURCE4} .
 cp %{SOURCE5} .
 #
-%patch100 -p1
-%patch101 -p1
-%patch102 -p1
-%patch104 -p1
-%patch105 -p1
-%patch106 -p1
-%patch107 -p1
-%patch108 -p1
+%patch -P 100 -p1
+%patch -P 101 -p1
+%patch -P 102 -p1
+%patch -P 104 -p1
+%patch -P 106 -p1
+%patch -P 108 -p1
 
 %build
 autoreconf -fiv
