@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>962743</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b6bf83579a770f1254a19936fa872abe</srcmd5>
+    <version>2.0.10</version>
+    <time>1708534709</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148707</requestid>
+  </revision>
 </revisionlist>

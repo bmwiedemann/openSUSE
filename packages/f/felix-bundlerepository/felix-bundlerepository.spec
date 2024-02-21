@@ -1,7 +1,7 @@
 #
 # spec file for package felix-bundlerepository
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,16 +33,11 @@ BuildRequires:  felix-gogo-runtime
 BuildRequires:  felix-osgi-obr
 BuildRequires:  felix-shell
 BuildRequires:  felix-utils
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  kxml
 BuildRequires:  osgi-compendium
 BuildRequires:  osgi-core
 BuildRequires:  xpp3
-Requires:       mvn(net.sf.kxml:kxml2)
-Requires:       mvn(org.apache.felix:org.apache.felix.utils)
-Requires:       mvn(org.osgi:osgi.cmpn)
-Requires:       mvn(org.osgi:osgi.core)
-Requires:       mvn(xpp3:xpp3)
 BuildArch:      noarch
 
 %description
@@ -57,8 +52,8 @@ This package contains the API documentation for %{name}.
 %prep
 %setup -q -n %{bundle}-%{version}
 cp %{SOURCE1} build.xml
-%patch1 -p1
-%patch2 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 
 %pom_remove_plugin :maven-source-plugin
 
@@ -76,9 +71,6 @@ cp %{SOURCE1} build.xml
 %pom_remove_dep :org.osgi.compendium
 %pom_add_dep org.osgi:osgi.cmpn
 
-%pom_remove_parent
-%pom_xpath_inject pom:project "<groupId>org.apache.felix</groupId>"
-
 %build
 mkdir -p lib
 build-jar-repository -s lib osgi-core osgi-compendium xpp3 kxml felix
@@ -91,7 +83,7 @@ install -m 644 target/%{bundle}-%{version}.jar %{buildroot}%{_javadir}/felix/%{b
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}/felix
-install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/felix/%{bundle}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/felix/%{bundle}.pom
 %add_maven_depmap felix/%{bundle}.pom felix/%{bundle}.jar
 
 # javadoc
