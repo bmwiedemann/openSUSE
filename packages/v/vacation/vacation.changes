@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 21 08:29:08 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Install german manual page as well 
+
+-------------------------------------------------------------------
+Tue Feb 20 13:11:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Nov  7 22:06:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - spec file cleanups

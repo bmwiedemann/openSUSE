@@ -177,4 +177,14 @@ for enhanced user privacy (forwarded request 1029683 from bmwiedemann)</comment>
 - doc relocation</comment>
     <requestid>1124124</requestid>
   </revision>
+  <revision rev="24" vrev="15">
+    <srcmd5>b65d6381dabcc65243766d8226a5a268</srcmd5>
+    <version>1.2.7.1</version>
+    <time>1708534503</time>
+    <user>anag+factory</user>
+    <comment>- Install german manual page as well 
+
+- Use %patch -P N instead of deprecated %patchN.</comment>
+    <requestid>1148448</requestid>
+  </revision>
 </revisionlist>

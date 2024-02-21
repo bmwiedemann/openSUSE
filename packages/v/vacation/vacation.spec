@@ -1,7 +1,7 @@
 #
 # spec file for package vacation
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,9 @@ Patch5:         vacation-%{version}-junkfilter.diff
 Patch6:         vacation-1.2.7.1-nogecos.patch
 BuildRequires:  gdbm-devel
 
+%define add_optflags(a:f:t:p:w:W:d:g:O:A:C:D:E:H:i:M:n:P:U:u:l:s:X:B:I:L:b:V:m:x:c:S:E:o:v:) \
+%global optflags %{optflags} %{**}
+
 %description
 This program answers your e-mail when you are lying on the beach.
 
@@ -41,15 +44,16 @@ Documentation: man vacation
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch3 -p1
-%patch4
-%patch5
-%patch6 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 3 -p1
+%patch -P 4
+%patch -P 5
+%patch -P 6 -p1
 
 %build
 chmod -R u+w,g+r,o+r .
+%add_optflags -Werror=format-security
 %make_build clobber
 %make_build
 
@@ -59,6 +63,7 @@ make install MANDIR=%{buildroot}%{_mandir}/man BINDIR=%{buildroot}%{_bindir}
 rm -f %{buildroot}%{_mandir}/man5/forward.5
 echo '.so man5/aliases.5' > %{buildroot}%{_mandir}/man5/forward.5
 chmod 0444 %{buildroot}%{_mandir}/man5/forward.5
+install -D -m 444 vacation-de.man %{buildroot}%{_mandir}/de/man1/vacation.1
 
 %files
 %license COPYING
@@ -68,5 +73,6 @@ chmod 0444 %{buildroot}%{_mandir}/man5/forward.5
 %{_mandir}/man1/vacation.1%{?ext_man}
 %{_mandir}/man1/vaclook.1%{?ext_man}
 %{_mandir}/man5/forward.5%{?ext_man}
+%{_mandir}/de/man1/vacation.1%{?ext_man}
 
 %changelog
