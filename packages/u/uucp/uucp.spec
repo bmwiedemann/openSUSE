@@ -109,25 +109,25 @@ service units.
 
 %prep
 %setup -q
-%patch1 -p0 -b .cont
-%patch2 -p0 -b .grad
-%patch3 -p0 -b .cu
-%patch4 -p0 -b .locking
-%patch0 -p0 -b .p0
-%patch5 -p1 -b .p5
-%patch6 -p1 -b .p6
-%patch7 -p1 -b .p7
-%patch8 -p0 -b .p8
-%patch9 -p1 -b .p9
-%patch10 -p1 -b .p10
-%patch11 -p0 -b .p11
-%patch12 -p0 -b .p12
-%patch13 -p0 -b .p13
-%patch14 -p0 -b .p14
-%patch15 -p0 -b .p15
-%patch16 -p0 -b .p16
-%patch17 -p0 -b .p17
-%patch18 -p0 -b .p18
+%patch -P 1 -p0 -b .cont
+%patch -P 2 -p0 -b .grad
+%patch -P 3 -p0 -b .cu
+%patch -P 4 -p0 -b .locking
+%patch -P 0 -p0 -b .p0
+%patch -P 5 -p1 -b .p5
+%patch -P 6 -p1 -b .p6
+%patch -P 7 -p1 -b .p7
+%patch -P 8 -p0 -b .p8
+%patch -P 9 -p1 -b .p9
+%patch -P 10 -p1 -b .p10
+%patch -P 11 -p0 -b .p11
+%patch -P 12 -p0 -b .p12
+%patch -P 13 -p0 -b .p13
+%patch -P 14 -p0 -b .p14
+%patch -P 15 -p0 -b .p15
+%patch -P 16 -p0 -b .p16
+%patch -P 17 -p0 -b .p17
+%patch -P 18 -p0 -b .p18
 
 %build
 autoreconf -fvi

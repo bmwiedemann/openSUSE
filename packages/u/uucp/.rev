@@ -67,4 +67,12 @@
     An alternative is to set it to the empty string.</comment>
     <requestid>1128547</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>492e6b64e3b644c255d4db25783542b4</srcmd5>
+    <version>1.07</version>
+    <time>1708534694</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1148206 from dimstar)</comment>
+    <requestid>1148426</requestid>
+  </revision>
 </revisionlist>
