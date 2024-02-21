@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 21 09:28:04 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240221
+  * Documentation updates
+  * New block stream validation checks
+
+-------------------------------------------------------------------
 Mon Feb  5 21:43:04 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Use python-setuptools for python distutils backport
