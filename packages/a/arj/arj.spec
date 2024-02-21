@@ -1,7 +1,7 @@
 #
 # spec file for package arj
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,13 +45,7 @@ This open implementation is produced by the namesake, but otherwise
 unaffiliated, ARJ Software Russia.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%autosetup -p1
 
 for i in debian/patches/00*.patch; do
   patch -p1 < $i
