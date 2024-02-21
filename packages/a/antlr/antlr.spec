@@ -1,7 +1,7 @@
 #
 # spec file for package antlr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -115,12 +115,12 @@ find . -name "*.jar" -exec rm -f {} \;
 find . -name "*.exe" -exec rm -f {} \;
 find . -name "*.dll" -exec rm -f {} \;
 find . -name Makefile.in | xargs chmod 0644
-%patch0
+%patch -P 0
 cp -p %{SOURCE1} build.xml
 #Fix the source so that it compiles with GCC 4.5
-%patch1 -p1
+%patch -P 1 -p1
 #Ensure that the manuals are installed in the correct openSUSE docpath
-%patch2
+%patch -P 2
 # check for license problematic files:
 find | grep "\(ShowString.java$\|StreamConverter.java$\)" && exit 42 || :
 
