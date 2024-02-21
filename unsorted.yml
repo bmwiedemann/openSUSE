@@ -8735,6 +8735,7 @@ unsorted:
   - ispell-slovak 
   - ispell-slovene 
   - ispell-spanish 
+  - ispell-sq 
   - ispell-swedish 
   - istack-commons 
   - istack-commons-buildtools 
@@ -10252,6 +10253,7 @@ unsorted:
   - lcdf-typetools 
   - lcms2 
   - lcov 
+  - lcov-example 
   - lcurse 
   - ld10k1 
   - ld10k1-devel 
@@ -10865,7 +10867,6 @@ unsorted:
   - libQt6PdfWidgets6 
   - libQt6Positioning6 
   - libQt6PositioningQuick6 
-  - libQt6PrintSupport6 
   - libQt6Protobuf6 
   - libQt6QmlCompiler6 
   - libQt6Quick3D6 
@@ -10897,7 +10898,6 @@ unsorted:
   - libQt6SpatialAudio6 
   - libQt6StateMachine6 
   - libQt6StateMachineQml6 
-  - libQt6Svg6 
   - libQt6SvgWidgets6 
   - libQt6TextToSpeech6 
   - libQt6UiTools6 
@@ -11405,6 +11405,8 @@ unsorted:
   - libb2-devel 
   - libb64 
   - libb64-devel 
+  - libbacktrace-devel 
+  - libbacktrace0 
   - libbamf3-2 
   - libbandicoot1 
   - libbaresip2 
@@ -12750,7 +12752,7 @@ unsorted:
   - libglib-testing-0-0 
   - libglib-testing-devel 
   - libglibmm-2_4-1-32bit 
-  - libglog0 
+  - libglog2 
   - libgloox18 
   - libglpk40 
   - libglslang14-32bit 
@@ -14640,7 +14642,7 @@ unsorted:
   - libprimecount-devel 
   - libprimecount7 
   - libprimesieve-devel 
-  - libprimesieve11 
+  - libprimesieve12 
   - libprofiler0 
   - libproj25 
   - libprotobuf-c-devel 
@@ -16056,7 +16058,7 @@ unsorted:
   - libvmem-devel 
   - libvmem1 
   - libvmime-devel 
-  - libvmime-suse5 
+  - libvmime-suse6 
   - libvmmalloc-devel 
   - libvmmalloc1 
   - libvmtools-devel 
@@ -18425,6 +18427,30 @@ unsorted:
   - mvapich2_2_3_7-gnu-hpc-devel-static 
   - mvapich2_2_3_7-gnu-hpc-doc 
   - mvapich2_2_3_7-gnu-hpc-macros-devel 
+  - mvapich3-ofi 
+  - mvapich3-ofi-devel 
+  - mvapich3-ofi-doc 
+  - mvapich3-ofi-gnu-hpc 
+  - mvapich3-ofi-gnu-hpc-devel 
+  - mvapich3-ofi-gnu-hpc-doc 
+  - mvapich3-ofi-gnu-hpc-macros-devel 
+  - mvapich3-ofi_3_0-gnu-hpc 
+  - mvapich3-ofi_3_0-gnu-hpc-devel 
+  - mvapich3-ofi_3_0-gnu-hpc-devel-static 
+  - mvapich3-ofi_3_0-gnu-hpc-doc 
+  - mvapich3-ofi_3_0-gnu-hpc-macros-devel 
+  - mvapich3-ucx 
+  - mvapich3-ucx-devel 
+  - mvapich3-ucx-doc 
+  - mvapich3-ucx-gnu-hpc 
+  - mvapich3-ucx-gnu-hpc-devel 
+  - mvapich3-ucx-gnu-hpc-doc 
+  - mvapich3-ucx-gnu-hpc-macros-devel 
+  - mvapich3-ucx_3_0-gnu-hpc 
+  - mvapich3-ucx_3_0-gnu-hpc-devel 
+  - mvapich3-ucx_3_0-gnu-hpc-devel-static 
+  - mvapich3-ucx_3_0-gnu-hpc-doc 
+  - mvapich3-ucx_3_0-gnu-hpc-macros-devel 
   - mwic 
   - mxml-devel 
   - mxml-doc 
@@ -23434,7 +23460,6 @@ unsorted:
   - python310-avro 
   - python310-awkward 
   - python310-awkward-cpp 
-  - python310-awpa 
   - python310-aws-sam-translator 
   - python310-aws-xray-sdk 
   - python310-aws-xray-sdk-Django 
@@ -26975,7 +27000,6 @@ unsorted:
   - python311-avro 
   - python311-awkward 
   - python311-awkward-cpp 
-  - python311-awpa 
   - python311-aws-sam-translator 
   - python311-aws-xray-sdk 
   - python311-aws-xray-sdk-Django 
@@ -30216,6 +30240,7 @@ unsorted:
   - python312-Sphinx-latex 
   - python312-StrEnum 
   - python312-TagStats 
+  - python312-Telethon 
   - python312-Tempita 
   - python312-TermRecord 
   - python312-Transplant 
@@ -30833,6 +30858,7 @@ unsorted:
   - python312-bsddb3-devel 
   - python312-bson 
   - python312-bugzilla 
+  - python312-bugzillatools 
   - python312-build 
   - python312-buttplug 
   - python312-bytecode 
@@ -31151,6 +31177,7 @@ unsorted:
   - python312-django-reversion 
   - python312-django-rosetta 
   - python312-django-rq 
+  - python312-django-seed 
   - python312-django-sekizai 
   - python312-django-settings-toml 
   - python312-django-silk 
@@ -31247,6 +31274,7 @@ unsorted:
   - python312-ephemeral-port-reserve 
   - python312-epubmerge 
   - python312-eradicate 
+  - python312-esptool 
   - python312-et_xmlfile 
   - python312-etcd 
   - python312-ethtool 
@@ -31799,6 +31827,7 @@ unsorted:
   - python312-libphdi 
   - python312-libqcow 
   - python312-libregf 
+  - python312-librosa 
   - python312-librouteros 
   - python312-libsass 
   - python312-libscca 
@@ -31974,6 +32003,7 @@ unsorted:
   - python312-mutatorMath 
   - python312-mutt-ics 
   - python312-mwclient 
+  - python312-mycli 
   - python312-mygpoclient 
   - python312-mypy 
   - python312-mypy-protobuf 
@@ -31982,6 +32012,10 @@ unsorted:
   - python312-mysql-to-sqlite3 
   - python312-mysqlclient 
   - python312-myst-parser 
+  - python312-napalm 
+  - python312-napalm-asa 
+  - python312-napalm-digineo-procurve 
+  - python312-napalm-procurve 
   - python312-natsort 
   - python312-nautilus 
   - python312-nautilus-devel 
@@ -32030,6 +32064,7 @@ unsorted:
   - python312-notebook-shim 
   - python312-notify2 
   - python312-nox 
+  - python312-nptyping 
   - python312-nss 
   - python312-ntc-templates 
   - python312-ntfy 
@@ -32331,6 +32366,7 @@ unsorted:
   - python312-pyUSID 
   - python312-pyVows 
   - python312-pyacoustid 
+  - python312-pyaes 
   - python312-pyahocorasick 
   - python312-pyalsaaudio 
   - python312-pyaml 
@@ -32386,6 +32422,8 @@ unsorted:
   - python312-pydrive2 
   - python312-pydub 
   - python312-pydyf 
+  - python312-pyeapi 
+  - python312-pyee 
   - python312-pyelftools 
   - python312-pyemd 
   - python312-pyenchant 
@@ -32503,7 +32541,9 @@ unsorted:
   - python312-pyshp 
   - python312-pysmb 
   - python312-pysmbc 
+  - python312-pysmi 
   - python312-pysndfile 
+  - python312-pysnmp 
   - python312-pysnmpcrypto 
   - python312-pysofaconventions 
   - python312-pysolr 
@@ -32879,6 +32919,7 @@ unsorted:
   - python312-scikit-hep-testdata 
   - python312-scikit-image 
   - python312-scikit-learn 
+  - python312-scikit-sparse 
   - python312-scikit-umfpack 
   - python312-scipy 
   - python312-scipy-gnu-hpc 
@@ -32972,6 +33013,7 @@ unsorted:
   - python312-soupsieve 
   - python312-sox 
   - python312-soxr 
+  - python312-spake2 
   - python312-spark_parser 
   - python312-sparse 
   - python312-speaklater 
@@ -33838,7 +33880,6 @@ unsorted:
   - python39-avro 
   - python39-awkward 
   - python39-awkward-cpp 
-  - python39-awpa 
   - python39-aws-sam-translator 
   - python39-aws-xray-sdk 
   - python39-aws-xray-sdk-Django 
@@ -37353,7 +37394,6 @@ unsorted:
   - qt6-positioning-private-devel 
   - qt6-positioningquick-devel 
   - qt6-positioningquick-private-devel 
-  - qt6-printsupport-cups 
   - qt6-printsupport-devel 
   - qt6-printsupport-private-devel 
   - qt6-protobuf-devel 
@@ -39488,6 +39528,7 @@ unsorted:
   - system-group-ne 
   - system-group-obsolete 
   - system-group-sudo 
+  - system-user-bitlbee 
   - system-user-cscreen 
   - system-user-grafana 
   - system-user-greeter 
