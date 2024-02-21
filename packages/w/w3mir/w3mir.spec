@@ -53,8 +53,7 @@ for CD-ROM burning and the handling of some rare problems when
 mirroring.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 perl Makefile.PL

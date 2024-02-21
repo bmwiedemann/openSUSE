@@ -108,4 +108,12 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="17" vrev="683">
+    <srcmd5>904018edbdf75cb77a3fc752ee474d10</srcmd5>
+    <version>1.0.10</version>
+    <time>1708534615</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1148157 from dimstar)</comment>
+    <requestid>1148197</requestid>
+  </revision>
 </revisionlist>
