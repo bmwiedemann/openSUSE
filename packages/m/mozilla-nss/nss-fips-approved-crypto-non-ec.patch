@@ -369,7 +369,7 @@ Index: nss/lib/softoken/pkcs11c.c
 ===================================================================
 --- nss.orig/lib/softoken/pkcs11c.c
 +++ nss/lib/softoken/pkcs11c.c
-@@ -4821,6 +4821,9 @@ NSC_GenerateKey(CK_SESSION_HANDLE hSessi
+@@ -4823,6 +4823,9 @@ NSC_GenerateKey(CK_SESSION_HANDLE hSessi
          goto loser;
      }
  
@@ -379,7 +379,7 @@ Index: nss/lib/softoken/pkcs11c.c
      /*
       * handle the base object stuff
       */
-@@ -4835,6 +4838,7 @@ NSC_GenerateKey(CK_SESSION_HANDLE hSessi
+@@ -4837,6 +4840,7 @@ NSC_GenerateKey(CK_SESSION_HANDLE hSessi
      if (crv == CKR_OK) {
          *phKey = key->handle;
      }
@@ -387,7 +387,7 @@ Index: nss/lib/softoken/pkcs11c.c
  loser:
      PORT_Memset(buf, 0, sizeof buf);
      sftk_FreeObject(key);
-@@ -5751,11 +5755,11 @@ NSC_GenerateKeyPair(CK_SESSION_HANDLE hS
+@@ -5808,11 +5812,11 @@ NSC_GenerateKeyPair(CK_SESSION_HANDLE hS
       * created and linked.
       */
      crv = sftk_handleObject(publicKey, session);
@@ -400,7 +400,7 @@ Index: nss/lib/softoken/pkcs11c.c
          return crv;
      }
      if (sftk_isTrue(privateKey, CKA_SENSITIVE)) {
-@@ -5799,13 +5803,19 @@ NSC_GenerateKeyPair(CK_SESSION_HANDLE hS
+@@ -5856,13 +5860,19 @@ NSC_GenerateKeyPair(CK_SESSION_HANDLE hS
          sftk_FreeObject(publicKey);
          NSC_DestroyObject(hSession, privateKey->handle);
          sftk_FreeObject(privateKey);
@@ -420,7 +420,7 @@ Index: nss/lib/softoken/pkcs11c.c
  
      return CKR_OK;
  }
-@@ -7510,7 +7520,7 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
+@@ -7568,7 +7578,7 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
              } else {
                  /* now allocate the hash contexts */
                  md5 = MD5_NewContext();
@@ -429,7 +429,7 @@ Index: nss/lib/softoken/pkcs11c.c
                      PORT_Memset(crsrdata, 0, sizeof crsrdata);
                      crv = CKR_HOST_MEMORY;
                      break;
-@@ -7899,6 +7909,7 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
+@@ -7957,6 +7967,7 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
                  PORT_Assert(i <= sizeof key_block);
              }
  
@@ -737,7 +737,7 @@ Index: nss/lib/softoken/pkcs11.c
 ===================================================================
 --- nss.orig/lib/softoken/pkcs11.c
 +++ nss/lib/softoken/pkcs11.c
-@@ -557,17 +557,17 @@ static const struct mechanismList mechan
+@@ -570,17 +570,17 @@ static const struct mechanismList mechan
      { CKM_TLS_MASTER_KEY_DERIVE, { 48, 48, CKF_DERIVE }, PR_FALSE },
      { CKM_TLS12_MASTER_KEY_DERIVE, { 48, 48, CKF_DERIVE }, PR_FALSE },
      { CKM_NSS_TLS_MASTER_KEY_DERIVE_SHA256,

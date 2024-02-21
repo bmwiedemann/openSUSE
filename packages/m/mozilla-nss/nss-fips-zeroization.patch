@@ -107,7 +107,7 @@ Index: nss/lib/freebl/ec.c
 ===================================================================
 --- nss.orig/lib/freebl/ec.c
 +++ nss/lib/freebl/ec.c
-@@ -1049,7 +1049,7 @@ ECDSA_VerifyDigest(ECPublicKey *key, con
+@@ -1121,7 +1121,7 @@ ECDSA_VerifyDigest(ECPublicKey *key, con
      mp_int n;
      SECItem pointC = { siBuffer, NULL, 0 };
      int slen;       /* length in bytes of a half signature (r or s) */

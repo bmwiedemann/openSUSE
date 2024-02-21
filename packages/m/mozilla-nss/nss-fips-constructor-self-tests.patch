@@ -42,7 +42,7 @@ Index: nss/lib/freebl/blapi.h
 ===================================================================
 --- nss.orig/lib/freebl/blapi.h
 +++ nss/lib/freebl/blapi.h
-@@ -1859,17 +1859,17 @@ extern void BL_Unload(void);
+@@ -1860,17 +1860,17 @@ extern void BL_Unload(void);
  /**************************************************************************
   *  Verify a given Shared library signature                               *
   **************************************************************************/
@@ -63,9 +63,9 @@ Index: nss/lib/freebl/blapi.h
  
  /*********************************************************************/
  extern const SECHashObject *HASH_GetRawHashObject(HASH_HashType hashType);
-@@ -1896,6 +1896,9 @@ extern int EC_GetPointSize(const ECParam
+@@ -1921,6 +1921,9 @@ extern SECStatus Kyber_Encapsulate(Kyber
   */
- extern int EC_GetScalarSize(const ECParams *params);
+ extern SECStatus Kyber_Decapsulate(KyberParams params, const SECItem *privKey, const SECItem *ciphertext, SECItem *secret);
  
 +/* Unconditionally run the integrity check. */
 +extern void BL_FIPSRepeatIntegrityCheck(void);
@@ -484,33 +484,7 @@ Index: nss/lib/freebl/fipsfreebl.c
  /*
   * different platforms have different ways of calling and initial entry point
   * when the dll/.so is loaded. Most platforms support either a posix pragma
-@@ -1998,9 +2005,8 @@ freebl_fips_RNG_PowerUpSelfTest(void)
-         0x0a, 0x26, 0x21, 0xd0, 0x19, 0xcb, 0x86, 0x73,
-         0x10, 0x1f, 0x60, 0xd7
-     };
--
-     SECStatus rng_status = SECSuccess;
--    PRUint8 DSAX[FIPS_DSA_SUBPRIME_LENGTH];
-+    PRUint8 DSAX[DSA1_SUBPRIME_LEN];
- 
-     /*******************************************/
-     /*   Run the SP 800-90 Health tests        */
-@@ -2014,13 +2020,12 @@ freebl_fips_RNG_PowerUpSelfTest(void)
-     /*******************************************/
-     /* Generate DSAX fow given Q.              */
-     /*******************************************/
--
-     rng_status = FIPS186Change_ReduceModQForDSA(GENX, Q, DSAX);
- 
-     /* Verify DSAX to perform the RNG integrity check */
-     if ((rng_status != SECSuccess) ||
-         (PORT_Memcmp(DSAX, rng_known_DSAX,
--                     (FIPS_DSA_SUBPRIME_LENGTH)) != 0)) {
-+                     (DSA1_SUBPRIME_LEN)) != 0)) {
-         PORT_SetError(SEC_ERROR_LIBRARY_FAILURE);
-         return SECFailure;
-     }
-@@ -2028,17 +2033,19 @@ freebl_fips_RNG_PowerUpSelfTest(void)
+@@ -1807,17 +1814,19 @@ freebl_fips_RNG_PowerUpSelfTest(void)
      return (SECSuccess);
  }
  
@@ -531,7 +505,7 @@ Index: nss/lib/freebl/fipsfreebl.c
  
  #define DO_FREEBL 1
  #define DO_REST 2
-@@ -2156,11 +2163,13 @@ static PRBool self_tests_ran = PR_FALSE;
+@@ -1929,11 +1938,13 @@ static PRBool self_tests_ran = PR_FALSE;
  static PRBool self_tests_freebl_success = PR_FALSE;
  static PRBool self_tests_success = PR_FALSE;
  
@@ -546,7 +520,7 @@ Index: nss/lib/freebl/fipsfreebl.c
  {
      SECStatus rv;
      /* if the freebl self tests didn't run, there is something wrong with
-@@ -2173,7 +2182,7 @@ BL_POSTRan(PRBool freebl_only)
+@@ -1946,7 +1957,7 @@ BL_POSTRan(PRBool freebl_only)
          return PR_TRUE;
      }
      /* if we only care about the freebl tests, we are good */
@@ -555,7 +529,7 @@ Index: nss/lib/freebl/fipsfreebl.c
          return PR_TRUE;
      }
      /* run the rest of the self tests */
-@@ -2192,32 +2201,16 @@ BL_POSTRan(PRBool freebl_only)
+@@ -1965,32 +1976,16 @@ BL_POSTRan(PRBool freebl_only)
      return PR_TRUE;
  }
  
@@ -593,7 +567,7 @@ Index: nss/lib/freebl/fipsfreebl.c
      self_tests_freebl_ran = PR_TRUE; /* we are running the tests */
  
      if (!freebl_only) {
-@@ -2229,20 +2222,55 @@ bl_startup_tests(void)
+@@ -2002,20 +1997,55 @@ bl_startup_tests(void)
      /* always run the post tests */
      rv = freebl_fipsPowerUpSelfTest(freebl_only ? DO_FREEBL : DO_FREEBL | DO_REST);
      if (rv != SECSuccess) {
@@ -651,7 +625,7 @@ Index: nss/lib/freebl/fipsfreebl.c
  }
  
  /*
-@@ -2251,19 +2279,12 @@ bl_startup_tests(void)
+@@ -2024,19 +2054,12 @@ bl_startup_tests(void)
   * power on selftest failed.
   */
  SECStatus
@@ -673,7 +647,7 @@ Index: nss/lib/freebl/fipsfreebl.c
      if (rerun) {
          /* reset the flags */
          self_tests_freebl_ran = PR_FALSE;
-@@ -2277,10 +2298,104 @@ BL_FIPSEntryOK(PRBool freebl_only, PRBoo
+@@ -2050,10 +2073,104 @@ BL_FIPSEntryOK(PRBool freebl_only, PRBoo
          return SECSuccess;
      }
      /* standalone freebl can initialize */
@@ -865,7 +839,7 @@ Index: nss/lib/freebl/loader.h
  
      /* Version 3.013 came to here */
  
-@@ -912,6 +912,9 @@ struct FREEBLVectorStr {
+@@ -920,6 +920,9 @@ struct FREEBLVectorStr {
  
      /* Add new function pointers at the end of this struct and bump
       * FREEBL_VERSION at the beginning of this file. */
@@ -879,7 +853,7 @@ Index: nss/lib/freebl/manifest.mn
 ===================================================================
 --- nss.orig/lib/freebl/manifest.mn
 +++ nss/lib/freebl/manifest.mn
-@@ -97,6 +97,7 @@ PRIVATE_EXPORTS = \
+@@ -102,6 +102,7 @@ PRIVATE_EXPORTS = \
  	ecl.h \
  	ecl-curve.h \
  	eclt.h \
@@ -887,7 +861,7 @@ Index: nss/lib/freebl/manifest.mn
  	$(NULL)
  
  MPI_HDRS = mpi-config.h mpi.h mpi-priv.h mplogic.h mpprime.h logtab.h mp_gf2m.h
-@@ -189,6 +190,7 @@ ALL_HDRS =  \
+@@ -197,6 +198,7 @@ ALL_HDRS =  \
  	shsign.h \
  	vis_proto.h \
  	seed.h \
@@ -1628,7 +1602,7 @@ Index: nss/lib/softoken/manifest.mn
  	$(NULL)
  
  PRIVATE_EXPORTS = \
-@@ -55,6 +56,7 @@ CSRCS = \
+@@ -56,6 +57,7 @@ CSRCS = \
  	softkver.c  \
  	tlsprf.c   \
  	jpakesftk.c \
@@ -1654,10 +1628,10 @@ Index: nss/lib/freebl/ldvector.c
 ===================================================================
 --- nss.orig/lib/freebl/ldvector.c
 +++ nss/lib/freebl/ldvector.c
-@@ -432,6 +432,8 @@ static const struct FREEBLVectorStr vect
-     SHAKE_256_Hash,
+@@ -438,6 +438,8 @@ static const struct FREEBLVectorStr vect
+     Kyber_Decapsulate,
  
-     /* End of version 3.026 */
+     /* End of version 3.027 */
 +    /* SUSE patch: Goes last */
 +    BL_FIPSRepeatIntegrityCheck
  };
