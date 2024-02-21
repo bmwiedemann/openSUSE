@@ -143,4 +143,12 @@
     <comment>clean up</comment>
     <requestid>897996</requestid>
   </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>39fc85f25eeaa5bc0641068680fe451b</srcmd5>
+    <version>1.4</version>
+    <time>1708534728</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148483</requestid>
+  </revision>
 </revisionlist>

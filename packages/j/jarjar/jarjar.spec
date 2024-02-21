@@ -1,7 +1,7 @@
 #
 # spec file for package jarjar
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,7 @@ Requires:       gnu-regexp
 Requires:       objectweb-anttask
 Requires:       objectweb-asm >= 5
 Requires(post): javapackages-tools
-Requires(postun):javapackages-tools
+Requires(postun): javapackages-tools
 BuildArch:      noarch
 
 %description
@@ -66,17 +66,12 @@ another library.
 
 %prep
 %setup -q
-%patch0
-%patch1 -p1
+%patch -P 0
+%patch -P 1 -p1
 # remove all binary libs
 rm -f lib/*.jar
 # maven plugin
 find . -name JarJarMojo.java -delete
-
-cp %{SOURCE1} %{name}.pom
-%pom_xpath_remove pom:project/pom:distributionManagement %{name}.pom
-cp %{SOURCE2} %{name}-util.pom
-%pom_xpath_remove pom:project/pom:distributionManagement %{name}-util.pom
 
 %build
 pushd lib
@@ -99,9 +94,9 @@ install -m 644 dist/%{name}-util-%{version}.jar \
 
 # poms
 mkdir -p %{buildroot}/%{_mavenpomdir}
-install -pD -T -m 644 %{name}.pom \
+%{mvn_install_pom} %{SOURCE1} \
   %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
-install -pD -T -m 644 %{name}-util.pom \
+%{mvn_install_pom} %{SOURCE2} \
   %{buildroot}%{_mavenpomdir}/JPP-%{name}-util.pom
 
 # depmaps
