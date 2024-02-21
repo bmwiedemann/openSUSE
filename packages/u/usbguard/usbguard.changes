@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:58:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Mar 28 08:25:34 UTC 2023 - Robert Frohl <rfrohl@suse.com>
 
 - Fix build failure with gcc13, add build_gcc13.patch.

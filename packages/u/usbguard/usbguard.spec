@@ -95,9 +95,7 @@ The %{name}-tools package contains optional tools from the USBGuard
 software framework.
 
 %prep
-%setup -q -n usbguard-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n usbguard-%{version}
 
 %build
 %if 0%{?suse_version} == 1500
