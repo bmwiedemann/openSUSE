@@ -354,7 +354,6 @@ then
   done
 fi
 # With fallback for systemdless containers
-%{?tmpfiles_create:%tmpfiles_create %{_prefix}/lib/tmpfiles.d/man-db.conf}
 if test ! -d %{_localstatedir}/cache/man
 then
   # Simply for systemdless containers

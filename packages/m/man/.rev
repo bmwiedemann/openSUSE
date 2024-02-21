@@ -1040,4 +1040,12 @@
     <comment>- Move creation of /var/cache/man into %pre scriplet (boo#1219370)</comment>
     <requestid>1146144</requestid>
   </revision>
+  <revision rev="101" vrev="5">
+    <srcmd5>e7ae1f4d1ae7f7bd0554bdd02df3e31c</srcmd5>
+    <version>2.12.0</version>
+    <time>1708534311</time>
+    <user>anag+factory</user>
+    <comment>- We don't need anymore systemd-tmpfiles (boo#1219370#c13)</comment>
+    <requestid>1147518</requestid>
+  </revision>
 </revisionlist>
