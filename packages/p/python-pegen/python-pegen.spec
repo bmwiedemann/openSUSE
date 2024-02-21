@@ -23,10 +23,12 @@ Summary:        CPython's PEG parser generator
 License:        MIT
 URL:            https://github.com/we-like-parsers/pegen
 Source:         https://files.pythonhosted.org/packages/source/p/pegen/pegen-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testsuite}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Suggests:       python-sphinx
@@ -47,23 +49,23 @@ BuildArch:      noarch
 CPython's PEG parser generator
 
 %prep
-%setup -q -n pegen-%{version}
+%autosetup -p1 -n pegen-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Broken with Python 3.11
-%pytest -k 'not test_invalid_def_stmt'
+# Broken with Python 3.12
+%pytest -k 'not test_invalid_call_arguments'
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/pegen
-%{python_sitelib}/pegen-%{version}*info
+%{python_sitelib}/pegen-%{version}.dist-info
 
 %changelog

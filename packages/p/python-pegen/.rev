@@ -22,4 +22,13 @@
 - Initial release of 0.2.0</comment>
     <requestid>1136287</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>0fe9ad63457a66094754ff8002751b88</srcmd5>
+    <version>0.3.0</version>
+    <time>1708534667</time>
+    <user>anag+factory</user>
+    <comment>- Skip a truculent test.
+- Switch to pyproject macros.</comment>
+    <requestid>1148381</requestid>
+  </revision>
 </revisionlist>
