@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 10:49:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Fri Jun 12 09:56:23 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix building with gcc10

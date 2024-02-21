@@ -36,8 +36,7 @@ tested with V9999 and V9750TD models and may work with other cards as
 well.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -fcommon"
