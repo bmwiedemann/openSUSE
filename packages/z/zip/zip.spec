@@ -48,17 +48,17 @@ PKZIP(tm) 2.04g (Phil Katz ZIP) for MS-DOS systems.
 
 %prep
 %setup -q -n zip%{file_version}
-%patch2
-%patch3
-%patch4
-%patch5
-%patch6
-%patch7
-%patch8
-%patch9
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
+%patch -P 2
+%patch -P 3
+%patch -P 4
+%patch -P 5
+%patch -P 6
+%patch -P 7
+%patch -P 8
+%patch -P 9
+%patch -P 10 -p1
+%patch -P 11 -p1
+%patch -P 12 -p1
 
 %build
 # Remove FORTIFY_SOURCE=3 for bsc#1200712

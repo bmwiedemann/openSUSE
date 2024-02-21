@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 12:09:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Jun 21 14:35:28 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Remove FORTIFY_SOURCE=3 as it triggers a buffer overflow,
