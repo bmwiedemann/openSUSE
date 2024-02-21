@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package maven-doxia-sitetools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -89,7 +89,7 @@ API documentation for %{name}.
 
 %prep
 %setup -q -n doxia-%{subproj}-%{version} -a1
-%patch1 -p1
+%patch -P 1 -p1
 
 # migrate to maven 3
 %pom_xpath_set //pom:mavenVersion 3.8.6 doxia-integration-tools
@@ -102,9 +102,6 @@ API documentation for %{name}.
 %pom_remove_plugin org.codehaus.mojo:clirr-maven-plugin
 %pom_remove_dep net.sourceforge.htmlunit:htmlunit doxia-site-renderer/pom.xml
 %pom_remove_dep -r :velocity-tools
-
-%pom_xpath_inject "pom:plugin[pom:artifactId[text()='modello-maven-plugin']]/pom:configuration" \
-    "<useJava5>true</useJava5>" doxia-decoration-model
 
 rm -rf $(find -type d -name itext)
 %pom_remove_dep -r :doxia-module-itext
