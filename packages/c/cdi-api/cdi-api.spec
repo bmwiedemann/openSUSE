@@ -1,7 +1,7 @@
 #
 # spec file for package cdi-api
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,10 +29,8 @@ Patch0:         0001-Remove-dependency-on-glassfish-el.patch
 BuildRequires:  ant
 BuildRequires:  atinject
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  jboss-interceptors-1.2-api
-Requires:       mvn(javax.inject:javax.inject)
-Requires:       mvn(org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.2_spec)
 BuildArch:      noarch
 
 %description
@@ -53,7 +51,6 @@ cp %{SOURCE1} api/build.xml
 # Use newer version of interceptors API
 %pom_change_dep "jakarta.interceptor:jakarta.interceptor-api" "org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.2_spec" api
 
-%pom_remove_parent api
 %pom_remove_dep :jakarta.el-api api
 
 %build
@@ -72,7 +69,7 @@ ln -sf ../%{name}/%{name}.jar %{buildroot}%{_javadir}/javax.enterprise.inject/%{
 
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 api/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%{mvn_install_pom} api/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
 %add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar -a "javax.enterprise:cdi-api"
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
