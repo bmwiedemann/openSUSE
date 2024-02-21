@@ -150,4 +150,12 @@ now with fixed empty debuginfo extraction</comment>
   adding one for it.</comment>
     <requestid>1129689</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8bc482dbee89e3f4b8203c2cfd9d8585</srcmd5>
+    <version>0.15.0</version>
+    <time>1708534380</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147370</requestid>
+  </revision>
 </revisionlist>

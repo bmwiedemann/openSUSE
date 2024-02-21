@@ -1,3 +1,6 @@
 # SECTION This is a package that compiles code, the runtime requires devel packages
 addFilter('devel-file-in-non-devel-package .*/site-packages/pythran/.*')
 addFilter('devel-dependency .*')
+addFilter('python-leftover-require python.*-numpy-devel')
+# these are "default" headers for packages
+addFilter('hidden-file-or-dir .*/\.hpp')

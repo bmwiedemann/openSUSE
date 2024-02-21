@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Feb 17 19:56:24 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Yet another fix of the python39 test skip
+
+-------------------------------------------------------------------
+Wed Feb  7 13:53:21 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Fix python312 tests: Force linking to openblas with custom
+  pythranrc
+- Remove test skips no longer needed
+- Make test flavors future proof: Don't fail on empty buildset
+- Skip python39 for all test flavors: The test-py39 multibuild has
+  already been removed but it is still in the build set, so don't
+  test it in the other multibuilds.
+- Debundle xsimd
+
+-------------------------------------------------------------------
+Tue Feb  6 11:05:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15.0:
+  * Use pyproject.toml to store setup and build configuration
+  * Upgrade xsimd to a48ab430d4b84ecd5449180ee1c6d2eed67c4191
+  * Improve detection of non-overlapping memory area during gexpr
+    assignment
+  * Support python 3.12
+  * Support list.clear
+  * Improve detection of methods uses as functions
+
+-------------------------------------------------------------------
+Tue Feb  6 09:05:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- drop python39 from testing, add python312
+
+-------------------------------------------------------------------
 Wed Nov 29 04:27:01 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Prepare for Python 3.12, by skipping it for the other test flavors, and
