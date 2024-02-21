@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 09:56:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Tue Dec 27 22:58:29 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Fix SourceURL

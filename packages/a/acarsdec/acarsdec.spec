@@ -1,7 +1,7 @@
 #
 # spec file for package acarsdec
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2017-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -40,8 +40,7 @@ A multi-channels acars decoder with built-in rtl_sdr front end.
 It comes with a database backend : acarsserv to store receved acars messages.
 
 %prep
-%setup -q -n %{srcname}
-%patch0 -p1
+%autosetup -n %{srcname} -p1
 
 %build
 %cmake \
