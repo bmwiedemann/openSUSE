@@ -82,7 +82,7 @@ URL:            https://www.qemu.org/
 Summary:        Machine emulator and virtualizer
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        8.2.0
+Version:        8.2.1
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
@@ -268,10 +268,15 @@ Suggests:       qemu-skiboot
 Suggests:       qemu-vhost-user-gpu
 Suggests:       qemu-ui-gtk
 Suggests:       qemu-doc
-## Pacakges we OBSOLETE
-Obsoletes:      qemu-sgabios <= 8
+## Packages we PROVIDE
+Provides:       kvm = %{version}
+Provides:       qemu-kvm = %{version}
+## Pacakges we OBSOLETE (and CONFLICT)
+Obsoletes:      kvm <= %{version}
 Obsoletes:      qemu-audio-oss < %{version}
 Obsoletes:      qemu-audio-sdl < %{version}
+Obsoletes:      qemu-kvm <= %{version}
+Obsoletes:      qemu-sgabios <= 8
 Obsoletes:      qemu-ui-sdl < %{version}
 ## What we do with the main emulator depends on the architecture we're on
 %if %{kvm_available}
@@ -310,6 +315,18 @@ Suggests:       qemu-extra
 This package acts as an umbrella package to the other QEMU sub-packages.
 
 %files
+%if %{kvm_available}
+%ifarch s390x
+%{_prefix}/lib/modules-load.d/kvm.conf
+%endif
+/usr/lib/udev/rules.d/80-kvm.rules
+# End of "if kvm_available"
+%endif
+%if %{legacy_qemu_kvm}
+%doc %_docdir/qemu-kvm
+%_mandir/man1/qemu-kvm.1.gz
+%endif
+%_bindir/qemu-kvm
 %dir %_datadir/icons/hicolor
 %dir %_datadir/icons/hicolor/*/
 %dir %_datadir/icons/hicolor/*/apps
@@ -320,12 +337,6 @@ This package acts as an umbrella package to the other QEMU sub-packages.
 %dir %_sysconfdir/%name/firmware
 %dir /usr/lib/supportconfig
 %dir /usr/lib/supportconfig/plugins
-%if %{kvm_available}
-%ifarch s390x
-%{_prefix}/lib/modules-load.d/kvm.conf
-%endif
-/usr/lib/udev/rules.d/80-kvm.rules
-%endif
 %_datadir/applications/qemu.desktop
 %_datadir/icons/hicolor/16x16/apps/qemu.png
 %_datadir/icons/hicolor/24x24/apps/qemu.png
@@ -919,16 +930,21 @@ install -D -m 0644 %{rpmfilesdir}/qemu-kvm.1.gz %{buildroot}%_mandir/man1/qemu-k
 install -d %{buildroot}%_docdir/qemu-kvm
 # FIXME: Why do we onlly generate the HTML for the legacy package documentation?
 %ifarch s390x
-ln -s qemu-system-s390x %{buildroot}%_bindir/qemu-kvm
 ln -s ../qemu-s390x/supported.txt %{buildroot}%_docdir/qemu-kvm/kvm-supported.txt
 rst2html --exit-status=2 %{buildroot}%_docdir/qemu-s390x/supported.txt %{buildroot}%_docdir/qemu-kvm/kvm-supported.html
 %else
-ln -s qemu-system-x86_64 %{buildroot}%_bindir/qemu-kvm
 ln -s ../qemu-x86/supported.txt %{buildroot}%_docdir/qemu-kvm/kvm-supported.txt
 rst2html --exit-status=2 %{buildroot}%_docdir/qemu-x86/supported.txt %{buildroot}%_docdir/qemu-kvm/kvm-supported.html
 # End of "ifarch s390x"
 %endif
 # End of "if legacy_qemu_kvm"
+%endif
+
+%ifarch aarch64 %arm %ix86 ppc ppc64 ppc64le riscv64 s390x x86_64
+%ifarch ppc64le
+%define qemu_arch ppc64
+%endif
+ln -s qemu-system-%{qemu_arch} %{buildroot}%_bindir/qemu-kvm
 %endif
 
 %if %{kvm_available}
@@ -1070,7 +1086,7 @@ necessary for having SPICE working for your VMs.
 %package audio-spice
 Summary:        Spice based audio support for QEMU
 Group:          System/Emulators/PC
-Requires:       qemu-ui-spice-core
+Requires:       qemu-ui-spice-core = %{version}-%{release}
 %{qemu_module_conflicts}
 
 %description audio-spice
@@ -1083,7 +1099,7 @@ This package contains a module for Spice based audio support for QEMU.
 %package chardev-spice
 Summary:        Spice vmc and port chardev support for QEMU
 Group:          System/Emulators/PC
-Requires:       qemu-ui-spice-core
+Requires:       qemu-ui-spice-core = %{version}-%{release}
 %{qemu_module_conflicts}
 
 %description chardev-spice
@@ -1097,8 +1113,8 @@ This package contains a module for Spice chardev support for QEMU.
 %package ui-spice-app
 Summary:        Spice UI support for QEMU
 Group:          System/Emulators/PC
-Requires:       qemu-chardev-spice
-Requires:       qemu-ui-spice-core
+Requires:       qemu-chardev-spice = %{version}-%{release}
+Requires:       qemu-ui-spice-core = %{version}-%{release}
 %{qemu_module_conflicts}
 
 %description ui-spice-app
@@ -1113,7 +1129,7 @@ Summary:        Core Spice support for QEMU
 Group:          System/Emulators/PC
 Requires:       qemu-ui-opengl
 # This next Requires is only since virt-manager expects audio support
-Requires:       qemu-audio-spice
+Requires:       qemu-audio-spice = %{version}-%{release}
 %{qemu_module_conflicts}
 
 %description ui-spice-core
@@ -1127,7 +1143,7 @@ This package contains a module with core Spice support for QEMU.
 %package hw-display-qxl
 Summary:        QXL display support for QEMU
 Group:          System/Emulators/PC
-Requires:       qemu-ui-spice-core
+Requires:       qemu-ui-spice-core = %{version}-%{release}
 %{qemu_module_conflicts}
 
 %description hw-display-qxl
@@ -1150,9 +1166,6 @@ Requires:       qemu-block-nfs
 Requires:       qemu-img
 %if %{has_virtiofsd}
 Requires:       virtiofsd
-%endif
-%if %{legacy_qemu_kvm}
-Requires:       qemu-kvm
 %endif
 Recommends:     qemu-tools
 
@@ -1489,6 +1502,12 @@ This package contains a module for baum braille chardev support for QEMU.
 %package hw-display-virtio-gpu
 Summary:        Virtio GPU display support for QEMU
 Group:          System/Emulators/PC
+# Make sure that VGA is pretty much always there. Technically, this isn't
+# really necessary (and/or, should be dealt with in other places) but it
+# makes it easier to deal with strange situation where, e.g., GRUB is
+# configured to work only with a graphical terminal (see bsc#1219164),
+# and the hw-display-virtio-vga package is small enough, anyway.
+Requires:       qemu-hw-display-virtio-vga = %{version}-%{release}
 %{qemu_module_conflicts}
 
 %description hw-display-virtio-gpu
@@ -1502,7 +1521,7 @@ This package contains a module for Virtio GPU display support for QEMU.
 %package hw-display-virtio-gpu-pci
 Summary:        Virtio-gpu pci device for QEMU
 Group:          System/Emulators/PC
-Requires:       qemu-hw-display-virtio-gpu
+Requires:       qemu-hw-display-virtio-gpu = %{version}-%{release}
 %{qemu_module_conflicts}
 
 %description hw-display-virtio-gpu-pci
@@ -1531,7 +1550,7 @@ This package contains a module providing the virtio vga device for QEMU.
 %package hw-s390x-virtio-gpu-ccw
 Summary:        S390x virtio-gpu ccw device for QEMU
 Group:          System/Emulators/PC
-Requires:       qemu-hw-display-virtio-gpu
+Requires:       qemu-hw-display-virtio-gpu = %{version}-%{release}
 %{qemu_module_conflicts}
 
 %description hw-s390x-virtio-gpu-ccw
@@ -1877,34 +1896,6 @@ for QEMU.
 # End of "if with_rbd"
 %endif
 
-%if %{legacy_qemu_kvm}
-%package kvm
-Summary:        Wrapper to enable KVM acceleration under QEMU
-Group:          System/Emulators/PC
-%ifarch %ix86 x86_64
-Requires:       qemu-x86 = %{version}
-%endif
-%ifarch s390x
-Requires:       qemu-s390x = %{version}
-%endif
-Provides:       kvm = %{version}
-Obsoletes:      kvm < %{version}
-
-%description kvm
-%{generic_qemu_description}
-
-This package provides a symlink to the main QEMU emulator used for KVM
-virtualization. The symlink is named qemu-kvm, which causes the QEMU program
-to enable the KVM accelerator, due to the name reference ending with 'kvm'.
-This package is an artifact of the early origins of QEMU, and is deprecated.
-
-%files kvm
-%_bindir/qemu-kvm
-%doc %_docdir/qemu-kvm
-%_mandir/man1/qemu-kvm.1.gz
-# End of "if legacy_qemu_kvm"
-%endif
-
 %if %{build_ppc_firmware}
 %package SLOF
 Summary:        Slimline Open Firmware - SLOF
@@ -1967,7 +1958,7 @@ wider support than qboot, but still focuses on quick boot up.
 %package seabios
 Summary:        x86 Legacy BIOS for QEMU
 Group:          System/Emulators/PC
-Version:        8.2.0%{sbver}
+Version:        8.2.1%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -1988,7 +1979,7 @@ is the default and legacy BIOS for QEMU.
 %package vgabios
 Summary:        VGA BIOSes for QEMU
 Group:          System/Emulators/PC
-Version:        8.2.0%{sbver}
+Version:        8.2.1%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -2014,7 +2005,7 @@ video card. For use with QEMU.
 %package ipxe
 Summary:        PXE ROMs for QEMU NICs
 Group:          System/Emulators/PC
-Version:        8.2.0
+Version:        8.2.1
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0

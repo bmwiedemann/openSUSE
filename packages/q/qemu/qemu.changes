@@ -1,9 +1,99 @@
 -------------------------------------------------------------------
-Fri Feb 16 15:10:53 UTC 2024 - Dario Faggioli <dfaggioli@suse.com>
+Mon Feb 19 17:11:41 UTC 2024 - dfaggioli@suse.com
+
+Update to latest stable version (8.2.1)
+- Downstream changes:
+  * [openSUSE][RPM]: Install the VGA module "more often" (bsc#1219164)
+  * [openSUSE][RPM] Fix handling of qemu-kvm legacy package for RISCV
+  * [openSUSE][RPM] factor common definitions between qemu and qemu-linux-user spec files
+- Upstream backports:
+  * target/arm: Fix incorrect aa64_tidcp1 feature check
+  * target/arm: Fix A64 scalar SQSHRN and SQRSHRN
+  * target/xtensa: fix OOB TLB entry access
+  * qtest: bump aspeed_smc-test timeout to 6 minutes
+  * monitor: only run coroutine commands in qemu_aio_context
+  * iotests: port 141 to Python for reliable QMP testing
+  * iotests: add filter_qmp_generated_node_ids()
+  * block/blklogwrites: Fix a bug when logging "write zeroes" operations.
+  * virtio-net: correctly copy vnet header when flushing TX (bsc#1218484, CVE-2023-6693)
+  * tcg/arm: Fix SIGILL in tcg_out_qemu_st_direct
+  * linux-user/riscv: Adjust vdso signal frame cfa offsets
+  * linux-user: Fixed cpu restore with pc 0 on SIGBUS
+  * block/io: clear BDRV_BLOCK_RECURSE flag after recursing in bdrv_co_block_status
+  * coroutine-ucontext: Save fake stack for pooled coroutine
+  * tcg/s390x: Fix encoding of VRIc, VRSa, VRSc insns
+  * accel/tcg: Revert mapping of PCREL translation block to multiple virtual addresses
+  * acpi/tests/avocado/bits: wait for 200 seconds for SHUTDOWN event from bits VM
+  * s390x/pci: drive ISM reset from subsystem reset
+  * s390x/pci: refresh fh before disabling aif
+  * s390x/pci: avoid double enable/disable of aif
+  * hw/scsi/esp-pci: set DMA_STAT_BCMBLT when BLAST command issued
+  * hw/scsi/esp-pci: synchronise setting of DMA_STAT_DONE with ESP completion interrupt
+  * hw/scsi/esp-pci: generate PCI interrupt from separate ESP and PCI sources
+  * hw/scsi/esp-pci: use correct address register for PCI DMA transfers
+  * migration/rdma: define htonll/ntohll only if not predefined
+  * hw/pflash: implement update buffer for block writes
+  * hw/pflash: use ldn_{be,le}_p and stn_{be,le}_p
+  * hw/pflash: refactor pflash_data_write()
+  * backends/cryptodev: Do not ignore throttle/backends Errors
+  * target/i386: pcrel: store low bits of physical address in data[0]
+  * target/i386: fix incorrect EIP in PC-relative translation blocks
+  * target/i386: Do not re-compute new pc with CF_PCREL
+  * load_elf: fix iterator's type for elf file processing
+  * target/hppa: Update SeaBIOS-hppa to version 15
+  * target/hppa: Fix IOR and ISR on error in probe
+  * target/hppa: Fix IOR and ISR on unaligned access trap
+  * target/hppa: Export function hppa_set_ior_and_isr()
+  * target/hppa: Avoid accessing %gr0 when raising exception
+  * hw/hppa: Move software power button address back into PDC
+  * target/hppa: Fix PDC address translation on PA2.0 with PSW.W=0
+  * hw/pci-host/astro: Add missing astro & elroy registers for NetBSD
+  * hw/hppa/machine: Disable default devices with --nodefaults option
+  * hw/hppa/machine: Allow up to 3840 MB total memory
+  * readthodocs: fully specify a build environment
+  * .gitlab-ci.d/buildtest.yml: Work around htags bug when environment is large
+  * target/s390x: Fix LAE setting a wrong access register
+  * tests/qtest/virtio-ccw: Fix device presence checking
+  * tests/acpi: disallow tests/data/acpi/virt/SSDT.memhp changes
+  * tests/acpi: update expected data files
+  * edk2: update binaries to git snapshot
+  * edk2: update build config, set PcdUninstallMemAttrProtocol = TRUE.
+  * edk2: update to git snapshot
+  * tests/acpi: allow tests/data/acpi/virt/SSDT.memhp changes
+  * util: fix build with musl libc on ppc64le
+  * tcg/ppc: Use new registers for LQ destination
+  * hw/intc/arm_gicv3_cpuif: handle LPIs in in the list registers
+  * hw/vfio: fix iteration over global VFIODevice list
+  * vfio/container: Replace basename with g_path_get_basename
+  * edu: fix DMA range upper bound check
+  * hw/net: cadence_gem: Fix MDIO_OP_xxx values
+  * audio/audio.c: remove trailing newline in error_setg
+  * chardev/char.c: fix "abstract device type" error message
+  * target/riscv: Fix mcycle/minstret increment behavior
+  * hw/net/can/sja1000: fix bug for single acceptance filter and standard frame
+  * target/i386: the sgx_epc_get_section stub is reachable
+  * configure: use a native non-cross compiler for linux-user
+  * include/ui/rect.h: fix qemu_rect_init() mis-assignment
+  * target/riscv/kvm: do not use non-portable strerrorname_np()
+  * iotests: Basic tests for internal snapshots
+  * vl: Improve error message for conflicting -incoming and -loadvm
+  * block: Fix crash when loading snapshot on inactive node
+- Fixes:
+  * bsc#1218484 (CVE-2023-6693)
+
+-------------------------------------------------------------------
+Sat Feb 17 02:12:55 UTC 2024 - dfaggioli@suse.com
+
+- Try to solve the qemu-kvm dependency issues on all arches
+  (see, e.g., bsc#1218684)
+  * [openSUSE][RPM] Create the legacy qemu-kvm symlink for all arches
+
+-------------------------------------------------------------------
+Fri Feb 16 15:10:53 UTC 2024 - dfaggioli@suse.com
 
 - Update the service file to use OBS-scm (by fvogt)
 - Various fixes:
-  * [openSUSE][RPM] Fix enabling features on non-x86_64
+  * [openSUSE][RPM] Fix enabling features on non-x86_64 (bsc#1220011, bsc#1219818)
   * [openSUSE][RPM] Disable test-crypto-secret in linux-user build
   * [openSUSE] Update ipxe submodule reference (bsc#1219733, bsc#1219722)
   * [openSUSE][RPM] spec: allow building without spice

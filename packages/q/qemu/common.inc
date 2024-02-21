@@ -65,6 +65,34 @@
 %define _lto_cflags %{nil}
 %endif
 
+%ifarch aarch64
+%define qemu_arch aarch64
+%endif
+%ifarch %arm
+%define qemu_arch arm
+%endif
+%ifarch %ix86
+%define qemu_arch i386
+%endif
+%ifarch ppc64
+%define qemu_arch ppc64
+%endif
+%ifarch ppc
+%define qemu_arch ppc
+%endif
+%ifarch ppc64le
+%define qemu_arch ppc64le
+%endif
+%ifarch riscv64
+%define qemu_arch riscv64
+%endif
+%ifarch s390x
+%define qemu_arch s390x
+%endif
+%ifarch x86_64
+%define qemu_arch x86_64
+%endif
+
 %define generic_qemu_description \
 QEMU provides full machine emulation and cross architecture usage. It closely\
 integrates with KVM and Xen virtualization, allowing for excellent performance.\
