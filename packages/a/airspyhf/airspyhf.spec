@@ -1,7 +1,7 @@
 #
 # spec file for package airspyhf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -61,8 +61,7 @@ Requires:       %{libname} = %{version}
 Library headers for Airspy HF+ driver.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 # HACK: set udev group to airspyhf
 sed -i "s/plugdev/airspyhf/g" tools/52-airspyhf.rules
@@ -84,6 +83,7 @@ mv %{buildroot}%{_sysconfdir}/udev/rules.d/52-airspyhf.rules %{buildroot}%{_udev
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun  -n %{libname} -p /sbin/ldconfig
+
 %pre udev
 getent group %{airspyhf_group} >/dev/null || groupadd -r %{airspyhf_group}
 
