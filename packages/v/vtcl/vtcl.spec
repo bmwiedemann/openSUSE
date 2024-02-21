@@ -47,9 +47,7 @@ Authors:
     Stewart Allen <stewart@neuron.com>
 
 %prep
-%setup -q
-%patch0
-%patch1
+%autosetup -p0
 
 %build
 #
