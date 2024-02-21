@@ -16,4 +16,12 @@
   by the aspell library [bsc#1177523]</comment>
     <requestid>841265</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2b4a0e5c7f24db95443a2f12147265ee</srcmd5>
+    <version>unknown</version>
+    <time>1708534582</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1147844 from dimstar)</comment>
+    <requestid>1148068</requestid>
+  </revision>
 </revisionlist>

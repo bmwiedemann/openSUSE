@@ -1150,7 +1150,7 @@ A Zulu (isiZulu) dictionary for the aspell spell checker.
 find -name "*~" -type f | xargs -r rm -v
 #
 mv aspell-cs-20040614-1/doc/README.orig aspell-cs-20040614-1/doc/README.cs
-#%%patch0
+#%%patch -P 0
 # Fix "wrong-file-end-of-line-encoding" rpmlint warning
 sed -i 's/\r$//' aspell-ia-*/doc/README_ia.txt
 sed -i 's/\r$//' aspell-it-*/doc/README.txt
