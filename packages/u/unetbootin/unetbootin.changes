@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:43:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Jun 22 01:51:01 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Ignore %desktop_database_post, %desktop_database_postun, 

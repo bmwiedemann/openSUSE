@@ -64,9 +64,9 @@ or replace the existing OS entirely.
 
 %prep
 %setup -q -c -n %{name}
-%patch0 -p1
-%patch1 -p1
-%patch2
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2
 # rpmlint: wrong-file-end-of-line-encoding
 sed -i 's/\r$//' README.TXT
 
