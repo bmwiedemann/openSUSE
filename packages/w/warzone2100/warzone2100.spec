@@ -1,7 +1,7 @@
 #
 # spec file for package warzone2100
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -124,6 +124,7 @@ find .  -name '*.cpp' | xargs sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g"
 %endif
         -DBUILD_SHARED_LIBS=OFF \
         -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_DOCDIR=%{_docdir}/%{name} \
         -DWZ_DISTRIBUTOR="openSUSE" \
         -DWZ_ENABLE_WARNINGS_AS_ERRORS=OFF \
         -DWZ_APPSTREAM_ID=warzone2100
@@ -141,24 +142,15 @@ mv %{buildroot}%{_datadir}/icons/warzone2100.png %{buildroot}%{_datadir}/icons/h
 rm -rf  %{buildroot}%{_includedir}/fmt  %{buildroot}%{_libdir}/libfmt.a %{buildroot}%{_libdir}/cmake/fmt %{buildroot}/%{_libdir}/pkgconfig/fmt.pc
 rmdir -v %{buildroot}%{_libdir}/cmake %{buildroot}/%{_libdir}/pkgconfig
 
-# remove redundant files
-rm %{buildroot}%{_datadir}/doc/%{name}/AUTHORS
-rm %{buildroot}%{_datadir}/doc/%{name}/ChangeLog
-rm %{buildroot}%{_datadir}/doc/%{name}/COPYING
-rm %{buildroot}%{_datadir}/doc/%{name}/COPYING.NONGPL
-rm %{buildroot}%{_datadir}/doc/%{name}/COPYING.README
-rm %{buildroot}%{_datadir}/doc/%{name}/README.md
-
 %fdupes %{buildroot}%{_datadir}
 
 %files -f %{name}.lang
 %license COPYING COPYING.NONGPL COPYING.README
-%doc AUTHORS ChangeLog README.md
+%doc %{_docdir}/%{name}
 %{_bindir}/*
 %{_datadir}/applications/*
 %{_datadir}/metainfo/warzone2100.metainfo.xml
 %{_datadir}/icons/hicolor/*/apps/warzone2100.png
-%{_datadir}/doc/%{name}
 %{_mandir}/man6/%{name}.6.*
 
 %files data
