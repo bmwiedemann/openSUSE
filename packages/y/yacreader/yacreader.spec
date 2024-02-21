@@ -55,7 +55,7 @@ A cross platform comic reader and library manager.
 %prep
 %setup -q -a 1 -a 2
 mv unarr-%{unarr_version} compressed_archive/unarr/unarr-master
-%patch1 -p1
+%patch -P 1 -p1
 mv p7zip_%{p7zip_version} compressed_archive/libp7zip
 
 %build
