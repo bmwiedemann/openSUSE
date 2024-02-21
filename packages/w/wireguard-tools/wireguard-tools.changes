@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:21:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Fri Oct 20 13:16:54 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Update WireGuard.keyring with latest copy from upstream.

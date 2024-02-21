@@ -47,8 +47,8 @@ WireGuard kernel module.  Currently, it provides only a single tool:
 wg: set and retrieve configuration of WireGuard interfaces
 
 %prep
-%setup -q -n wireguard-tools-%{version}
-%patch1 -p1
+%autosetup -p1 -n wireguard-tools-%{version}
+
 ## HACK: Fixing wg-quick's DNS= directive with a hatchet
 contrib/dns-hatchet/apply.sh
 
