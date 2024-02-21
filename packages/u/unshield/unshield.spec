@@ -58,8 +58,7 @@ documentation for %{libname}. If you like to develop programs using %{libname},
 you will need to install %{name}-devel.
 
 %prep
-%setup -q
-%patch1 -p0
+%autosetup -p0
 
 %build
 %cmake
