@@ -1,0 +1,164 @@
+From 8959b9d97b00f791ffe02b5e3ec3fdf6bff25838 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Tue, 12 Dec 2023 15:34:18 +0800
+Subject: [PATCH 2/2] ofdisk: add early_log support
+
+The command ofdisk_early_msg can be used to review debug message logged
+before output console is initialized.
+
+For eg:
+
+  grub> ofdisk_early_msg
+  /vdevice/v-scsi@71000002/disk@8000000000000000 is canonical
+  /vdevice/v-scsi@71000002/disk@8000000000000000
+
+  /vdevice/v-scsi@71000002 is parent of
+  /vdevice/v-scsi@71000002/disk@80000000
+  00000000
+
+  the boot device type vscsi is used for root device discovery, others excluded
+
+We can use it in conjunction with the $ofdisk_boot_type variable to get
+better understanding the boot device information.
+
+  grub> echo $ofdisk_boot_type
+  boot: /vdevice/v-scsi@71000002 type: vscsi is_nvmeof? 0
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/disk/ieee1275/ofdisk.c | 75 +++++++++++++++++++++++++++++---
+ 1 file changed, 70 insertions(+), 5 deletions(-)
+
+--- a/grub-core/disk/ieee1275/ofdisk.c
++++ b/grub-core/disk/ieee1275/ofdisk.c
+@@ -25,6 +25,7 @@
+ #include <grub/i18n.h>
+ #include <grub/time.h>
+ #include <grub/env.h>
++#include <grub/command.h>
+ 
+ #define RETRY_DEFAULT_TIMEOUT 15
+ 
+@@ -60,6 +61,9 @@
+ #define OFDISK_HASH_SZ	8
+ static struct ofdisk_hash_ent *ofdisk_hash[OFDISK_HASH_SZ];
+ 
++static void early_log (const char *fmt, ...);
++static void print_early_log (void);
++
+ static int
+ ofdisk_hash_fn (const char *devpath)
+ {
+@@ -1132,10 +1136,10 @@
+       return NULL;
+     }
+   else
+-    grub_dprintf ("ofdisk", "%s is canonical %s\n", bootpath, canon);
++    early_log ("%s is canonical %s\n", bootpath, canon);
+ 
+   parent = get_parent_devname (canon, is_nvmeof);
+-  grub_dprintf ("ofdisk", "%s is parent of %s\n", parent, canon);
++  early_log ("%s is parent of %s\n", parent, canon);
+ 
+   grub_free (canon);
+   return parent;
+@@ -1179,9 +1183,9 @@
+       boot_parent = get_boot_device_parent (bootpath, &is_boot_nvmeof);
+       boot_type =  grub_ieee1275_get_device_type (boot_parent);
+       if (boot_type)
+-	grub_dprintf ("ofdisk", "the boot device type %s is used for root device discovery, others excluded\n", boot_type);
++	early_log ("the boot device type %s is used for root device discovery, others excluded\n", boot_type);
+       else
+-	grub_dprintf ("ofdisk", "unknown boot device type, will use all devices to discover root and may be slow\n");
++	early_log ("unknown boot device type, will use all devices to discover root and may be slow\n");
+     }
+   grub_free (type);
+   grub_free (bootpath);
+@@ -1205,7 +1209,7 @@
+   static char *ret;
+ 
+   if (!ret)
+-    ret = grub_xasprintf("boot: %s type: %s is_nvmeof: %d",
++    ret = grub_xasprintf("boot: %s type: %s is_nvmeof? %d",
+ 	      boot_parent,
+ 	      boot_type ? : "unknown",
+ 	      is_boot_nvmeof);
+@@ -1221,6 +1225,17 @@
+   return NULL;
+ }
+ 
++static grub_err_t
++grub_cmd_early_msg (struct grub_command *cmd __attribute__ ((unused)),
++		   int argc __attribute__ ((unused)),
++		   char *argv[] __attribute__ ((unused)))
++{
++  print_early_log ();
++  return 0;
++}
++
++static grub_command_t cmd_early_msg;
++
+ void
+ grub_ofdisk_init (void)
+ {
+@@ -1230,6 +1245,9 @@
+   grub_register_variable_hook ("ofdisk_boot_type", grub_env_get_boot_type,
+                                grub_env_set_boot_type );
+ 
++  cmd_early_msg =
++    grub_register_command ("ofdisk_early_msg", grub_cmd_early_msg,
++			   0, N_("Show early boot message in ofdisk."));
+   grub_disk_dev_register (&grub_ofdisk_dev);
+ }
+ 
+@@ -1278,3 +1296,50 @@
+ 
+   return 0;
+ }
++
++struct ofdisk_early_msg
++{
++  struct ofdisk_early_msg *next;
++  char *msg;
++};
++
++static struct ofdisk_early_msg *early_msg_head;
++static struct ofdisk_early_msg **early_msg_last = &early_msg_head;
++
++static void
++early_log (const char *fmt, ...)
++{
++  struct ofdisk_early_msg *n;
++  va_list args;
++
++  grub_error_push ();
++  n = grub_malloc (sizeof (*n));
++  if (!n)
++    {
++      grub_errno = 0;
++      grub_error_pop ();
++      return;
++    }
++  n->next = 0;
++
++  va_start (args, fmt);
++  n->msg = grub_xvasprintf (fmt, args);
++  va_end (args);
++
++  *early_msg_last = n;
++  early_msg_last = &n->next;
++
++  grub_errno = 0;
++  grub_error_pop ();
++}
++
++static void
++print_early_log (void)
++{
++  struct ofdisk_early_msg *cur;
++
++  if (!early_msg_head)
++    grub_printf ("no early log is available\n");
++  for (cur = early_msg_head; cur; cur = cur->next)
++    grub_printf ("%s\n", cur->msg);
++}

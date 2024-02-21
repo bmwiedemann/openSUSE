@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 17 06:59:55 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Fix PowerPC grub loads 5 to 10 minutes slower on SLE-15-SP5 compared to
+  SLE-15-SP2 (bsc#1217102)
+  * add 0001-ofdisk-enhance-boot-time-by-focusing-on-boot-disk-re.patch
+  * add 0002-ofdisk-add-early_log-support.patch
+
+-------------------------------------------------------------------
 Wed Feb  7 18:33:58 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Sort tar file order for reproducible builds

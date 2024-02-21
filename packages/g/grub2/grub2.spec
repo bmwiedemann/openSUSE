@@ -390,6 +390,8 @@ Patch196:       fix_no_extra_deps_in_release_tarball.patch
 Patch197:       0001-fs-xfs-always-verify-the-total-number-of-entries-is-.patch
 Patch198:       0001-loader-arm64-efi-linux-Remove-magic-number-header-fi.patch
 Patch199:       0001-squash-ieee1275-ofpath-enable-NVMeoF-logical-device-.patch
+Patch200:       0001-ofdisk-enhance-boot-time-by-focusing-on-boot-disk-re.patch
+Patch201:       0002-ofdisk-add-early_log-support.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
