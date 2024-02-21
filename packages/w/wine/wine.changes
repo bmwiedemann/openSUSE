@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb 10 13:28:09 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 9.2 release
+  - Mono engine updated to version 9.0.0.
+  - A number of system tray fixes.
+  - Exception handling improvements on ARM platforms.
+  - Various bug fixes.
+- update staging to 9.2 release
+
+-------------------------------------------------------------------
 Fri Feb  2 09:42:56 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - fixed directory usage to build withh rpm 4.19

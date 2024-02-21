@@ -5060,4 +5060,17 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 9.1 release</comment>
     <requestid>1144135</requestid>
   </revision>
+  <revision rev="432" vrev="1">
+    <srcmd5>15c0e85e31e5494254adc2d5984f6cd4</srcmd5>
+    <version>9.2</version>
+    <time>1708534713</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 9.2 release
+  - Mono engine updated to version 9.0.0.
+  - A number of system tray fixes.
+  - Exception handling improvements on ARM platforms.
+  - Various bug fixes.
+- update staging to 9.2 release</comment>
+    <requestid>1148468</requestid>
+  </revision>
 </revisionlist>
