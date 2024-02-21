@@ -1,0 +1,409 @@
+From 7ab5a433c9fcc8cd56f8f9f7657b32282cb00ee8 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Fri, 6 Oct 2023 16:24:54 +0800
+Subject: [PATCH 1/3] Set the RSA key size automatically
+
+This commit utilizes the new pcr-oracle command, rsa-test, to detect the
+highest RSA key size supported by the TPM chip and then uses the key
+size for the TPM SRK and the private sign key.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ share/grub2   |  1 +
+ share/tpm     | 53 ++++++++++++++++++++++++++++++++++++++++++++++++---
+ sysconfig.fde |  4 ++++
+ 3 files changed, 55 insertions(+), 3 deletions(-)
+
+diff --git a/share/grub2 b/share/grub2
+index aacd20c..97c8d86 100644
+--- a/share/grub2
++++ b/share/grub2
+@@ -82,6 +82,7 @@ function grub_update_early_config {
+ 
+     grub_set_control GRUB_ENABLE_CRYPTODISK "y"
+     grub_set_control GRUB_TPM2_SEALED_KEY "$sealed_key_file"
++    grub_set_control GRUB_TPM2_SRK_ALG "RSA${FDE_RSA_KEY_SIZE}"
+ 
+     # Do not clear the password implicitly; require fdectl or
+     # jeos firstboot to do so explicitly.
+diff --git a/share/tpm b/share/tpm
+index 0cc507a..0396e7e 100644
+--- a/share/tpm
++++ b/share/tpm
+@@ -42,13 +42,47 @@ function tpm_present_and_working {
+     return 0
+ }
+ 
++function tpm_set_rsa_key_size {
++
++    # Check if pcr-oracle supports rsa-test
++    # If pcr-oracle prints "Unknown action", fall back to default.
++    if pcr-oracle rsa-test 2>&1 | grep -q "Unknown action"; then
++	fde_set_variable FDE_RSA_KEY_SIZE "2048"
++	return 0
++    fi
++
++    # Find the highest supported RSA key size
++    sizes_to_test="4096 3072 2048"
++
++    for size in ${sizes_to_test}; do
++	if pcr-oracle --rsa-bits ${size} rsa-test > /dev/null 2>&1; then
++	    fde_set_variable FDE_RSA_KEY_SIZE "${size}"
++	    return 0
++	fi
++    done
++
++    fde_trace "Failed to find a valid RSA key size"
++    return 1
++}
++
+ function tpm_seal_key {
+ 
+     secret=$1
+     sealed_secret=$2
+ 
++    tpm_set_rsa_key_size
++    if [ $? -ne 0 ]; then
++	return 1
++    fi
++
++    opt_rsa_bits=
++    if [ -n "${FDE_RSA_KEY_SIZE}" -a ${FDE_RSA_KEY_SIZE} -ne 2048 ]; then
++	opt_rsa_bits="--rsa-bits ${FDE_RSA_KEY_SIZE}"
++    fi
++
+     echo "Sealing secret against PCR policy covering $FDE_SEAL_PCR_LIST" >&2
+-    pcr-oracle --input "$secret" --output "$sealed_secret" \
++    pcr-oracle ${opt_rsa_bits} \
++			--input "$secret" --output "$sealed_secret" \
+ 			--key-format tpm2.0 \
+ 			--algorithm "$FDE_SEAL_PCR_BANK" \
+ 			--from eventlog \
+@@ -97,17 +131,22 @@ function tpm_test {
+     return $result
+ }
+ 
+-
+ function tpm_seal_secret {
+ 
+     secret="$1"
+     sealed_secret="$2"
+     authorized_policy="$3"
+ 
++    opt_rsa_bits=
++    if [ -n "${FDE_RSA_KEY_SIZE}" -a ${FDE_RSA_KEY_SIZE} -ne 2048 ]; then
++	opt_rsa_bits="--rsa-bits ${FDE_RSA_KEY_SIZE}"
++    fi
++
+     # If we are expected to use an authorized policy, seal the secret
+     # against that, using pcr-oracle rather than the tpm2 tools
+     if [ -n "$authorized_policy" ]; then
+-	pcr-oracle --authorized-policy "$authorized_policy" \
++	pcr-oracle ${opt_rsa_bits} \
++			--authorized-policy "$authorized_policy" \
+ 			--key-format tpm2.0 \
+ 			--input $secret \
+ 			--output $sealed_secret \
+@@ -157,6 +196,14 @@ function tpm_create_authorized_policy {
+     extra_opts=
+     if [ ! -f "$secret_key" ]; then
+ 	extra_opts="--rsa-generate-key"
++
++	tpm_set_rsa_key_size
++        if [ $? -ne 0 ]; then
++	    return 1
++	fi
++	if [ -n "${FDE_RSA_KEY_SIZE}" -a ${FDE_RSA_KEY_SIZE} -ne 2048 ]; then
++	    extra_opts="${extra_opts} --rsa-bits ${FDE_RSA_KEY_SIZE}"
++	fi
+     fi
+ 
+     pcr-oracle $extra_opts \
+diff --git a/sysconfig.fde b/sysconfig.fde
+index a3435fe..f3ee38b 100644
+--- a/sysconfig.fde
++++ b/sysconfig.fde
+@@ -36,3 +36,7 @@ FDE_DEVS=""
+ # the bootloader update
+ # Set to yes/no
+ FDE_TPM_AUTO_UPDATE="yes"
++
++# The RSA key size to be used for SRK and the private sign key
++# NOTE: Do not touch this variable. It's updated by fdectl automatically.
++FDE_RSA_KEY_SIZE="2048"
+-- 
+2.35.3
+
+
+From bee71824675721ae73ce770c0e846f0aba48b441 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Fri, 3 Nov 2023 15:04:00 +0800
+Subject: [PATCH 2/3] Detect the RSA sizes supported by the bootloader
+
+The bootloader may not support the SRK algorithm other than RSA2048.
+Use the bootloader specific function to detect the supported RSA sizes.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ share/grub2        | 19 +++++++++++++++++++
+ share/systemd-boot |  8 ++++++++
+ share/tpm          |  2 +-
+ 3 files changed, 28 insertions(+), 1 deletion(-)
+
+diff --git a/share/grub2 b/share/grub2
+index 97c8d86..cde7680 100644
+--- a/share/grub2
++++ b/share/grub2
+@@ -33,6 +33,7 @@ alias bootloader_commit_config=grub_commit_config
+ alias bootloader_get_keyslots=grub_get_keyslots
+ alias bootloader_remove_keyslots=grub_remove_keyslots
+ alias bootloader_wipe=grub_wipe
++alias bootloader_rsa_sizes=grub_rsa_sizes
+ 
+ ##################################################################
+ # Edit a variable in /etc/default/grub
+@@ -224,3 +225,21 @@ function grub_wipe {
+ 
+     grub_remove_keyslots ${luks_dev}
+ }
++
++function grub_rsa_sizes {
++
++    # Check if the shim-install script supports the SRK algorithm selection.
++    if ! grep -q "GRUB_TPM2_SRK_ALG" "/usr/sbin/shim-install"; then
++	echo "2048"
++	return 0
++    fi
++
++    # Check if grub2 supports the RSA4096 SRK.
++    if grub2-protect --help | grep -q "RSA4096"; then
++	echo "4096 3072 2048"
++	return 0
++    fi
++
++    # TPM 2.0 should at least support RSA2048.
++    echo "2048"
++}
+diff --git a/share/systemd-boot b/share/systemd-boot
+index a9475a7..27cb088 100644
+--- a/share/systemd-boot
++++ b/share/systemd-boot
+@@ -36,6 +36,7 @@ alias bootloader_commit_config=systemd_commit_config
+ alias bootloader_get_keyslots=systemd_get_keyslots
+ alias bootloader_remove_keyslots=systemd_remove_keyslots
+ alias bootloader_wipe=systemd_wipe
++alias bootloader_rsa_sizes=systemd_rsa_sizes
+ 
+ 
+ function not_implemented {
+@@ -175,3 +176,10 @@ function systemd_wipe {
+ 
+     not_implemented
+ }
++
++##################################################################
++# This function lists all the supported RSA key sizes for SRK.
++##################################################################
++function systemd_rsa_sizes {
++    echo "2048"
++}
+diff --git a/share/tpm b/share/tpm
+index 0396e7e..00a0016 100644
+--- a/share/tpm
++++ b/share/tpm
+@@ -52,7 +52,7 @@ function tpm_set_rsa_key_size {
+     fi
+ 
+     # Find the highest supported RSA key size
+-    sizes_to_test="4096 3072 2048"
++    sizes_to_test=$(bootloader_rsa_sizes)
+ 
+     for size in ${sizes_to_test}; do
+ 	if pcr-oracle --rsa-bits ${size} rsa-test > /dev/null 2>&1; then
+-- 
+2.35.3
+
+
+From 8912fa960fcecd218b05df45dae471180ebac156 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Wed, 22 Nov 2023 15:35:26 +0800
+Subject: [PATCH 3/3] Refactor the RSA key size code to make it more flexible
+
+Originally, FDE_RSA_KEY_SIZE was updated automatically and used as a
+global variable for both tpm and grub2 scripts. However, there may be a
+case that the user has to stick to a specific RSA key size due to some
+bug or defect. This commit refactors the RSA key size code to make
+FDE_RSA_KEY_SIZE empty by default and honor the user setting if the size
+is specified.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ share/grub2   |  5 ++--
+ share/tpm     | 79 ++++++++++++++++++++++++++++++---------------------
+ sysconfig.fde |  5 ++--
+ 3 files changed, 52 insertions(+), 37 deletions(-)
+
+diff --git a/share/grub2 b/share/grub2
+index cde7680..95d4b15 100644
+--- a/share/grub2
++++ b/share/grub2
+@@ -79,11 +79,12 @@ function grub_get_fde_password {
+ ##################################################################
+ function grub_update_early_config {
+ 
+-    sealed_key_file="$1"
++    local sealed_key_file="$1"
++    local rsa_key_size=$(tpm_get_rsa_key_size)
+ 
+     grub_set_control GRUB_ENABLE_CRYPTODISK "y"
+     grub_set_control GRUB_TPM2_SEALED_KEY "$sealed_key_file"
+-    grub_set_control GRUB_TPM2_SRK_ALG "RSA${FDE_RSA_KEY_SIZE}"
++    grub_set_control GRUB_TPM2_SRK_ALG "RSA${rsa_key_size}"
+ 
+     # Do not clear the password implicitly; require fdectl or
+     # jeos firstboot to do so explicitly.
+diff --git a/share/tpm b/share/tpm
+index 00a0016..43747e7 100644
+--- a/share/tpm
++++ b/share/tpm
+@@ -42,13 +42,28 @@ function tpm_present_and_working {
+     return 0
+ }
+ 
+-function tpm_set_rsa_key_size {
++function tpm_get_rsa_key_size {
++
++    declare -g __fde_rsa_key_size
++
++    if [ -n "$__fde_rsa_key_size" ]; then
++	echo "$__fde_rsa_key_size"
++	return
++    fi
++
++    if [ -n "$FDE_RSA_KEY_SIZE" ]; then
++	# TODO validate $FDE_RSA_KEY_SIZE
++	__fde_rsa_key_size="${FDE_RSA_KEY_SIZE}"
++	echo "$__fde_rsa_key_size"
++	return
++    fi
+ 
+     # Check if pcr-oracle supports rsa-test
+     # If pcr-oracle prints "Unknown action", fall back to default.
+     if pcr-oracle rsa-test 2>&1 | grep -q "Unknown action"; then
+-	fde_set_variable FDE_RSA_KEY_SIZE "2048"
+-	return 0
++	__fde_rsa_key_size="2048"
++	echo "$__fde_rsa_key_size"
++	return
+     fi
+ 
+     # Find the highest supported RSA key size
+@@ -56,28 +71,27 @@ function tpm_set_rsa_key_size {
+ 
+     for size in ${sizes_to_test}; do
+ 	if pcr-oracle --rsa-bits ${size} rsa-test > /dev/null 2>&1; then
+-	    fde_set_variable FDE_RSA_KEY_SIZE "${size}"
+-	    return 0
++	    __fde_rsa_key_size="${size}"
++	    echo "$__fde_rsa_key_size"
++	    return
+ 	fi
+     done
+ 
+-    fde_trace "Failed to find a valid RSA key size"
+-    return 1
++    fde_trace "Failed to find a valid RSA key size. Fall back to 2048"
++    __fde_rsa_key_size="2048"
++    echo "$__fde_rsa_key_size"
+ }
+ 
+ function tpm_seal_key {
+ 
+-    secret=$1
+-    sealed_secret=$2
++    local secret=$1
++    local sealed_secret=$2
+ 
+-    tpm_set_rsa_key_size
+-    if [ $? -ne 0 ]; then
+-	return 1
+-    fi
++    local opt_rsa_bits=
++    local rsa_size=$(tpm_get_rsa_key_size)
+ 
+-    opt_rsa_bits=
+-    if [ -n "${FDE_RSA_KEY_SIZE}" -a ${FDE_RSA_KEY_SIZE} -ne 2048 ]; then
+-	opt_rsa_bits="--rsa-bits ${FDE_RSA_KEY_SIZE}"
++    if [ -n "$rsa_size" -a "$rsa_size" -ne 2048 ]; then
++	opt_rsa_bits="--rsa-bits ${rsa_size}"
+     fi
+ 
+     echo "Sealing secret against PCR policy covering $FDE_SEAL_PCR_LIST" >&2
+@@ -133,13 +147,15 @@ function tpm_test {
+ 
+ function tpm_seal_secret {
+ 
+-    secret="$1"
+-    sealed_secret="$2"
+-    authorized_policy="$3"
++    local secret="$1"
++    local sealed_secret="$2"
++    local authorized_policy="$3"
++
++    local opt_rsa_bits=
++    local rsa_size=$(tpm_get_rsa_key_size)
+ 
+-    opt_rsa_bits=
+-    if [ -n "${FDE_RSA_KEY_SIZE}" -a ${FDE_RSA_KEY_SIZE} -ne 2048 ]; then
+-	opt_rsa_bits="--rsa-bits ${FDE_RSA_KEY_SIZE}"
++    if [ -n "$rsa_size" -a "$rsa_size" -ne 2048 ]; then
++	opt_rsa_bits="--rsa-bits ${rsa_size}"
+     fi
+ 
+     # If we are expected to use an authorized policy, seal the secret
+@@ -188,21 +204,18 @@ function tpm_set_authorized_policy_paths {
+ 
+ function tpm_create_authorized_policy {
+ 
+-    secret_key="$1"
+-    output_policy="$2"
+-    public_key="$3"
++    local secret_key="$1"
++    local output_policy="$2"
++    local public_key="$3"
+ 
+     # Generate the private key if it does not exist
+-    extra_opts=
++    local extra_opts=
+     if [ ! -f "$secret_key" ]; then
+-	extra_opts="--rsa-generate-key"
++	local rsa_size=$(tpm_get_rsa_key_size)
+ 
+-	tpm_set_rsa_key_size
+-        if [ $? -ne 0 ]; then
+-	    return 1
+-	fi
+-	if [ -n "${FDE_RSA_KEY_SIZE}" -a ${FDE_RSA_KEY_SIZE} -ne 2048 ]; then
+-	    extra_opts="${extra_opts} --rsa-bits ${FDE_RSA_KEY_SIZE}"
++	extra_opts="--rsa-generate-key"
++	if [ -n "$rsa_size" -a "$rsa_size" -ne 2048 ]; then
++	    extra_opts="${extra_opts} --rsa-bits ${rsa_size}"
+ 	fi
+     fi
+ 
+diff --git a/sysconfig.fde b/sysconfig.fde
+index f3ee38b..741f5b4 100644
+--- a/sysconfig.fde
++++ b/sysconfig.fde
+@@ -38,5 +38,6 @@ FDE_DEVS=""
+ FDE_TPM_AUTO_UPDATE="yes"
+ 
+ # The RSA key size to be used for SRK and the private sign key
+-# NOTE: Do not touch this variable. It's updated by fdectl automatically.
+-FDE_RSA_KEY_SIZE="2048"
++# Expected values: 2048, 3072, 4096, or just leave it empty to let fdectl
++# to determine the size at runtime
++FDE_RSA_KEY_SIZE=""
+-- 
+2.35.3
+

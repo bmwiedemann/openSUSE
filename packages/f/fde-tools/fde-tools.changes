@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 19 06:34:27 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fde-tools-bsc1213945-set-rsa-key-size.patch to set
+  the highest supported RSA key size (bsc#1213945)
+
+-------------------------------------------------------------------
 Mon Nov  6 16:02:01 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer

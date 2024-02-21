@@ -1,7 +1,7 @@
 #
 # spec file for package fde-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://github.com/openSUSE/fde-tools
 Source:         https://github.com/openSUSE/%{name}/releases/download/%{version}/%{name}-%{version}.tar.bz2
 Source1:        fde-tools.service
 Patch0:         fde-tools-firstboot-alp-snapshot.patch
+Patch1:         fde-tools-bsc1213945-set-rsa-key-size.patch
 BuildRequires:  help2man
 BuildRequires:  pkgconfig(libcryptsetup)
 BuildRequires:  pkgconfig(libfido2)
