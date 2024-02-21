@@ -23,7 +23,7 @@
 %endif
 
 Name:           jeos-firstboot
-Version:        1.3.0.3
+Version:        1.3.0.6
 Release:        0
 Summary:        Simple text based JeOS first boot wizard
 License:        MIT
