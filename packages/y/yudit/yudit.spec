@@ -49,11 +49,11 @@ languages.
 
 %prep
 %setup -q
-%patch1 -p1 -b .properties
-%patch2 -p1 -b .setlocale
-%patch3 -p1 -b .print-preview
-%patch7
-%patch9 -p1 -b .catch-bad_alloc-exceptions
+%patch -P 1 -p1 -b .properties
+%patch -P 2 -p1 -b .setlocale
+%patch -P 3 -p1 -b .print-preview
+%patch -P 7
+%patch -P 9 -p1 -b .catch-bad_alloc-exceptions
 for i in doc/HOWTO-baybayin.txt COPYING.TXT README.TXT doc/HOWTO-devanagari.txt doc/bidi/yudit.css doc/HOWTO-syntax.txt doc/notinstalled/cl.help
 do
     dos2unix $i
