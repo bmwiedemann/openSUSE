@@ -1,7 +1,7 @@
 #
 # spec file for package xml-commons-resolver
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Resolver subproject of xml-commons
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://xerces.apache.org/xml-commons/components/resolver/
+URL:            https://xerces.apache.org/xml-commons/components/resolver/
 Source0:        http://www.apache.org/dist/xerces/xml-commons/%{name}-%{version}.tar.gz
 Source5:        %{name}-pom.xml
 Source6:        %{name}-resolver.1
@@ -35,8 +35,10 @@ Patch1:         %{name}-1.2-osgi.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
-#!BuildIgnore:  xerces-j2 xml-apis xml-resolver
+BuildRequires:  javapackages-local >= 6
+#!BuildIgnore:  xerces-j2
+#!BuildIgnore:  xml-apis
+#!BuildIgnore:  xml-resolver
 # Explicit javapackages-tools requires since scripts use
 # /usr/share/java-utils/java-functions
 Requires:       javapackages-tools
@@ -66,8 +68,8 @@ Javadoc for %{name}.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 cp %{SOURCE5} pom.xml
 
@@ -93,7 +95,7 @@ popd
 
 # pom
 install -d -m 0755 %{buildroot}%{_mavenpomdir}
-install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 
 # javadoc

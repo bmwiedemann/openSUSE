@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 14:32:33 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Mar 18 16:29:44 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source/target levels 8
