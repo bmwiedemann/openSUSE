@@ -1,7 +1,7 @@
 #
 # spec file for package aws-c-common
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define library_version 1.0.0
 %define library_soversion 1
 Name:           aws-c-common
-Version:        0.9.12
+Version:        0.9.13
 Release:        0
 Summary:        Core C99 package for AWS SDK for C
 License:        Apache-2.0
