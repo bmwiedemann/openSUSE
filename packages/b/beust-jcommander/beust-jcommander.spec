@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package beust-jcommander
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,14 +51,12 @@ This package contains the %{summary}.
 
 %prep
 %setup -q -n %{short_name}-%{version}
-%patch0 -p1
+%patch -P 0 -p1
 
 chmod -x license.txt
 cp -p %{SOURCE1} pom.xml
 cp -p %{SOURCE2} build.xml
 sed -i 's/@VERSION@/%{version}/g' pom.xml build.xml
-
-%pom_remove_parent .
 
 %build
 %{ant} jar javadoc
@@ -71,7 +69,7 @@ install -m 644 target/%{short_name}-%{version}.jar \
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 
 # javadoc
