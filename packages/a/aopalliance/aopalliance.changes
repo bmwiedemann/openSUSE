@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 11:03:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue May 16 20:33:41 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Register artifact by coordinates, since an artifact without

@@ -52,7 +52,7 @@ This package contains the API documentation for %{name}.
 %prep
 %setup -q -n %{name}
 # Inject OSGi manifest required by Eclipse.
-%patch0 -p1
+%patch -P 0 -p1
 
 %build
 export CLASSPATH=
