@@ -1,7 +1,7 @@
 #
 # spec file for package extra166y
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,10 @@ Release:        0
 Summary:        Concurrency JSR-166 - Collections supporting parallel operations
 License:        SUSE-Public-Domain
 Group:          Development/Libraries/Java
-URL:            http://gee.cs.oswego.edu/dl/concurrency-interest
+URL:            https://gee.cs.oswego.edu/dl/concurrency-interest
 # generate-tarball.spec
 Source0:        jsr166-%{version}.tar.xz
-Source1:        http://central.maven.org/maven2/org/codehaus/jsr166-mirror/%{name}/%{version}/%{name}-%{version}.pom
+Source1:        https://repo1.maven.org/maven2/org/codehaus/jsr166-mirror/%{name}/%{version}/%{name}-%{version}.pom
 Source2:        extra166y-OSGi.bnd
 Source100:      generate-tarball.sh
 Patch0:         extra166y-osgi-manifest.patch
@@ -52,7 +52,7 @@ This package contains javadoc for %{name}.
 
 %prep
 %setup -q -n jsr166
-%patch0
+%patch -P 0
 
 # Use JVM jsr166
 for s in $(find . -name "*.java");do

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 08:58:23 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Sep 11 08:44:10 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: Do not create timestamps with bnd tools
