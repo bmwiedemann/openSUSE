@@ -1,7 +1,7 @@
 #
 # spec file for package profanity
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,7 @@ Summary:        Console-based XMPP client
 Group:          Productivity/Networking/Instant Messenger
 Requires:       profanity = %{version}
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 Provides:       profanity-binary = %{version}-%{release}
 
 %description mini
@@ -72,7 +72,7 @@ Summary:        Console-based XMPP client
 Group:          Productivity/Networking/Instant Messenger
 Requires:       profanity = %{version}
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 Provides:       profanity-binary = %{version}-%{release}
 
 %description standard
@@ -85,11 +85,7 @@ Including:
  * Tray icon
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 sed -i -e "s/python-config/python3-config/g" configure
 
 %build

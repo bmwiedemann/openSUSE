@@ -616,4 +616,13 @@
   Fix crash upon /plugins install while disconnected</comment>
     <requestid>1111435</requestid>
   </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>41fe384e023e161ddb8ddcc77ae0da18</srcmd5>
+    <version>0.14.0</version>
+    <time>1708534689</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1148416</requestid>
+  </revision>
 </revisionlist>
