@@ -50,8 +50,7 @@ appear in Windows again using the Web Service Discovery method. This is benefici
 for devices running Samba, like NAS or file sharing servers on your local network.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 %sysusers_generate_pre %{SOURCE6} %{name} %{name}-user.conf

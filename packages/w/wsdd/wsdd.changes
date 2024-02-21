@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:12:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Wed Oct 18 15:36:03 UTC 2023 - Herbert Graeber <herbert@graeber-clan.de>
 
 - Leap 15.6 has no python 3.10 anymore, use 3.11 instead
