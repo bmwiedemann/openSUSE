@@ -1,7 +1,7 @@
 #
 # spec file for package slf4j
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -36,13 +36,11 @@ BuildRequires:  apache-commons-lang3
 BuildRequires:  apache-commons-logging
 BuildRequires:  cal10n
 BuildRequires:  java-devel >= 1.5.0
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  javassist >= 3.4
 BuildRequires:  reload4j
-Requires:       cal10n
-Requires:       java
 # this is ugly hack, which creates package which requires the same,
-# however slf4j is not splitted between -api and -impl, but pom files are modeled as it was
+# however slf4j is not splitted between -api and -impl, but pom files are modeled as if it was
 Provides:       osgi(slf4j.api)
 BuildArch:      noarch
 
@@ -75,7 +73,6 @@ Manual for %{name}.
 %package jdk14
 Summary:        SLF4J JDK14 Binding
 Group:          Development/Libraries/Java
-Requires:       mvn(org.slf4j:slf4j-api) = %{version}
 
 %description jdk14
 SLF4J JDK14 Binding.
@@ -83,8 +80,6 @@ SLF4J JDK14 Binding.
 %package reload4j
 Summary:        SLF4J LOG4J-12 Binding
 Group:          Development/Libraries/Java
-Requires:       mvn(ch.qos.reload4j:reload4j)
-Requires:       mvn(org.slf4j:slf4j-api) = %{version}
 Provides:       %{name}-log4j12 = %{version}
 Obsoletes:      %{name}-log4j12 < %{version}
 
@@ -94,8 +89,6 @@ SLF4J LOG4J-12 Binding.
 %package jcl
 Summary:        SLF4J JCL Binding
 Group:          Development/Libraries/Java
-Requires:       mvn(commons-logging:commons-logging)
-Requires:       mvn(org.slf4j:slf4j-api) = %{version}
 
 %description jcl
 SLF4J JCL Binding.
@@ -103,7 +96,6 @@ SLF4J JCL Binding.
 %package ext
 Summary:        SLF4J Extensions Module
 Group:          Development/Libraries/Java
-Requires:       mvn(org.slf4j:slf4j-api) = %{version}
 
 %description ext
 Extensions to the SLF4J API.
@@ -111,7 +103,6 @@ Extensions to the SLF4J API.
 %package -n jcl-over-slf4j
 Summary:        JCL 1.1.1 implemented over SLF4J
 Group:          Development/Libraries/Java
-Requires:       mvn(org.slf4j:slf4j-api) = %{version}
 
 %description -n jcl-over-slf4j
 JCL 1.1.1 implemented over SLF4J.
@@ -119,7 +110,6 @@ JCL 1.1.1 implemented over SLF4J.
 %package -n log4j-over-slf4j
 Summary:        Log4j implemented over SLF4J
 Group:          Development/Libraries/Java
-Requires:       mvn(org.slf4j:slf4j-api) = %{version}
 
 %description -n log4j-over-slf4j
 Log4j implemented over SLF4J.
@@ -127,7 +117,6 @@ Log4j implemented over SLF4J.
 %package -n jul-to-slf4j
 Summary:        JUL to SLF4J bridge
 Group:          Development/Libraries/Java
-Requires:       mvn(org.slf4j:slf4j-api) = %{version}
 
 %description -n jul-to-slf4j
 JUL to SLF4J bridge.
@@ -141,9 +130,9 @@ SLF4J Source JARs.
 
 %prep
 %setup -q -a2
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 find . -name "*.jar" | xargs rm
 cp -p %{SOURCE1} APACHE-LICENSE
 
@@ -172,8 +161,6 @@ done
 # # optional one.
 # # Reported upstream: http://bugzilla.slf4j.org/show_bug.cgi?id=283
 sed -i "/Import-Package/s/$/;resolution:=optional/" slf4j-api/src/main/resources/META-INF/MANIFEST.MF
-
-%pom_change_dep -r -f ::::: :::::
 
 %build
 export CLASSPATH=$(build-classpath reload4j \
@@ -233,19 +220,11 @@ done
 install -d -m 755 %{buildroot}%{_mavenpomdir}/%{name}
 
 for i in api ext jcl jdk14 reload4j nop simple; do
-  %pom_remove_parent slf4j-${i}
-  %pom_xpath_inject "pom:project" "
-    <groupId>org.slf4j</groupId>
-    <version>%{version}</version>" slf4j-${i}
-  install -pm 644 slf4j-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
+  %{mvn_install_pom} slf4j-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
 done
 
 for i in jcl-over-slf4j jul-to-slf4j log4j-over-slf4j; do
-  %pom_remove_parent ${i}
-  %pom_xpath_inject "pom:project" "
-    <groupId>org.slf4j</groupId>
-    <version>%{version}</version>" ${i}
-  install -pm 644 ${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
+  %{mvn_install_pom} ${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
 done
 
 for i in api nop simple; do

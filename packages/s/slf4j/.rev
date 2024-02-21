@@ -257,4 +257,12 @@
     <comment>Remove unnecessary dependencies</comment>
     <requestid>1090639</requestid>
   </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>61e0775f94357d1b65994a7caa478f2b</srcmd5>
+    <version>1.7.36</version>
+    <time>1708534340</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148099</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 14:29:19 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue May 30 16:41:16 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Do not require junit and ant-junit, since we don't run tests
