@@ -49,10 +49,10 @@ libyasm.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1
-%patch2 -p1
-%patch3 -p1
+%patch -P 0 -p1
+%patch -P 1
+%patch -P 2 -p1
+%patch -P 3 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

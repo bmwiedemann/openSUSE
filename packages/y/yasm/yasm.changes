@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 13:02:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sat Nov  5 17:18:41 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
 
 - Modify yasm to support .note.gnu.property note section
