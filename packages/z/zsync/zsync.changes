@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 12:11:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Mon Nov  4 08:44:15 UTC 2019 - munix9@googlemail.com
 
 - fix build on tumbleweed

@@ -39,8 +39,7 @@ needed. It also works with gzip files, and content on the server can be
 compressed to further reduce download times.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 %configure
