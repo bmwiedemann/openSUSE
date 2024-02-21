@@ -58,8 +58,7 @@ aes192 aes256 Perfect Forward Secrecy: nopfs dh1 dh2 dh5
 It runs entirely in userspace and uses the TUN/TAP driver for access.
 
 %prep
-%setup -q -n %{name}
-%patch1 -p1
+%autosetup -p1 -n %{name}
 
 %build
 export CFLAGS="%{optflags}"
