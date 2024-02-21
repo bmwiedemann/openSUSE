@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 17 09:52:24 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.62
+  * Add support for cleanup functions and macros.
+  * Add support for setting DHCP max attempts.
+
+-------------------------------------------------------------------
 Wed Dec 27 10:56:08 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.61
