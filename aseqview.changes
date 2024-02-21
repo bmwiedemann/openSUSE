@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 10:50:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sun Jun 13 10:39:56 CEST 2021 - tiwai@suse.de
 
 - Fix segfault at piano widget creation with the recent gtk2
