@@ -1,7 +1,7 @@
 #
 # spec file for package base64coder
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Name:           base64coder
 Version:        %{short_ver}
 Release:        0
 Summary:        Base64 encoder/decoder Java library
-License:        EPL-1.0 OR EPL-2.0 OR LGPL-2.1-or-later OR GPL-2.0-or-later OR Apache-2.0 OR BSD-2-Clause
+License:        Apache-2.0 OR EPL-1.0 OR EPL-2.0 OR LGPL-2.1-or-later OR GPL-2.0-or-later OR BSD-2-Clause
 Group:          Development/Libraries/Java
 URL:            http://www.source-code.biz/%{name}/java/
 Source0:        http://repo2.maven.org/maven2/biz/source_code/%{name}/%{long_ver}/%{name}-%{long_ver}-distribution.zip
@@ -35,7 +35,7 @@ Patch2:         %{name}-manifest.patch
 BuildRequires:  ant
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  unzip
 BuildArch:      noarch
 
@@ -55,12 +55,10 @@ This package contains %{summary}.
 
 %prep
 %setup -q -n %{name}-%{long_ver}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 dos2unix README.txt CHANGES.txt
-
-%pom_remove_parent .
 
 %build
 %{ant} -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 buildAll
@@ -71,7 +69,7 @@ install -dm 0755 %{buildroot}%{_javadir}
 install -pm 0644 target/%{name}.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 # javadoc
 install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
