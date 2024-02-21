@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 20 12:25:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build: use autosetup -p0. autosetup alone does not imply -p0
+
+-------------------------------------------------------------------
+Tue Feb 20 10:05:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Thu Oct 17 13:00:57 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Remove obsolete Groups tag (fate#326485)

@@ -1,7 +1,7 @@
 #
 # spec file for package alac
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Version:        0.0+git.20160511
 Release:        0
 Summary:        Apple Lossless Audio Codec
 License:        Apache-2.0
-Url:            https://macosforge.github.io/alac/
+URL:            https://macosforge.github.io/alac/
 Source:         %{name}-%{version}.tar.xz
 Patch1:         libalac-makefile.patch
 Patch2:         alac-endian.patch
@@ -64,9 +64,7 @@ information.  A decoded ALAC stream is bit-for-bit identical to the original
 uncompressed audio file.
 
 %prep
-%setup -q
-%patch1
-%patch2
+%autosetup -p0
 
 %build
 for d in codec convert-utility; do
