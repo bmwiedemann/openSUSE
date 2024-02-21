@@ -43,9 +43,8 @@ Summary:        Javadoc for %{name}
 This package contains javadoc for %{name}.
 
 %prep
-%setup -q
+%autosetup -p0
 
-%patch0
 sed -i "s|<version>@VERSION@</version>|<version>%{version}</version>|" core/pom.xml
 
 %build

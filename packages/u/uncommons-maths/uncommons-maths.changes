@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 16:02:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Sat Sep  9 14:57:28 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
