@@ -87,8 +87,7 @@ and furthest-site Voronoi diagram.
 This package contains the header files and static lib for Qhull's C++ interface.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 # Needed for static lib libqhullcpp.a
