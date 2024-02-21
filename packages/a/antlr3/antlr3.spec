@@ -125,15 +125,15 @@ BuildArch:      noarch
 %prep
 %setup -q -n antlr3-%{antlr_version}
 %if %{with bootstrap}
-%patch100
+%patch -P 100
 %pom_remove_plugin :antlr3-maven-plugin tool
 %endif
 
 sed -i "s,\${buildNumber},`date -u -d@${SOURCE_DATE_EPOCH:-$(date +%%s)}`," tool/src/main/resources/org/antlr/antlr.properties
-%patch0 -p1
-%patch1
-%patch2 -p1
-%patch3 -p1
+%patch -P 0 -p1
+%patch -P 1
+%patch -P 2 -p1
+%patch -P 3 -p1
 
 # remove pre-built artifacts
 find -type f -a -name *.jar -delete
