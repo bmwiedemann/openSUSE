@@ -426,4 +426,12 @@
 - Rediff remaining patches (forwarded request 1110336 from Andreas_Schwab)</comment>
     <requestid>1110337</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>8de4d150d19ba5426249e03afe0ebe6d</srcmd5>
+    <version>0.7.91+git20230705.8eabf68</version>
+    <time>1708534379</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup (forwarded request 1148659 from Andreas_Schwab)</comment>
+    <requestid>1148660</requestid>
+  </revision>
 </revisionlist>

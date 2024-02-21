@@ -1,7 +1,7 @@
 #
 # spec file for package ltrace
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,13 +54,7 @@ This is still a work in progress, so, for example, the tracking to
 child processes may fail or some things may not work as expected.
 
 %prep
-%setup -q
-%patch3 -p1
-%patch5
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
+%autosetup -p1
 
 %build
 ./autogen.sh

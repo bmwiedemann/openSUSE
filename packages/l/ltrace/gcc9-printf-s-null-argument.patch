@@ -1,7 +1,7 @@
-Index: output.c
+Index: ./output.c
 ===================================================================
---- output.c.orig
-+++ output.c
+--- ./output.c.orig
++++ ./output.c
 @@ -659,7 +659,7 @@ frame_callback (Dwfl_Frame *state, void
  
  	/* This mimics the output produced by libunwind below.  */
