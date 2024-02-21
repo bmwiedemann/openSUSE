@@ -286,4 +286,12 @@
     <comment>reproducible-timestamps</comment>
     <requestid>1117051</requestid>
   </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>f8338b09c47e0d28fe27196937913447</srcmd5>
+    <version>1.8.8</version>
+    <time>1708534715</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148467</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package icedtea-web
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags} V=1}
 %define javadir     %{_jvmdir}/java
 %define jredir      %{_jvmdir}/jre
 %define javaplugin  libjavaplugin.so.%{_arch}
@@ -55,7 +56,7 @@ Requires:       java >= 1.8
 Requires:       rhino
 Requires:       tagsoup
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Suggests:       %{name}-javadoc
 Obsoletes:      java-1_6_0-openjdk-plugin < %{version}-%{release}
 Obsoletes:      java-1_7_0-openjdk-plugin < %{version}-%{release}
@@ -87,9 +88,9 @@ and plugin implementation.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 
 rm -rf netx/net/sourceforge/jnlp/NetxPanel.java netx/sun
 
@@ -111,7 +112,7 @@ export bashcompdir=%{_datadir}/bash-completion/completions
     --program-suffix=%{binsuffix} \
     --with-pkgversion=suse-%{release}-%{_arch}
 
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
