@@ -28,9 +28,7 @@ urlview presents a menu of all URLs from a given text file (e.g., a
 mail). The user may then view the information located on those URLs.
 
 %prep
-%setup -q
-%patch0
-%patch1
+%autosetup -p0
 
 %__rm -rf regex/
 
