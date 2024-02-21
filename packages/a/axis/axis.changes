@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 10:32:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Feb  9 12:55:22 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Clean the spec file and use javapackages-local >= 6
