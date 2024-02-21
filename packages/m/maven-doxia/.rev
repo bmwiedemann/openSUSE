@@ -82,4 +82,12 @@
     <comment>remove dependency on old apache-commons-lang</comment>
     <requestid>1113754</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>5e91f94c766e7d0aa55990b973a7c9d4</srcmd5>
+    <version>1.12.0</version>
+    <time>1708534660</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148383</requestid>
+  </revision>
 </revisionlist>
