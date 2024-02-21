@@ -86,11 +86,7 @@ Wqy-zenhei-font configuration tool, use it to set the preference of zenhei-font
 %endif
 
 %prep
-%setup -q -n wqy-zenhei
-%patch0
-%patch1
-%patch2
-%patch3
+%autosetup -p0 -n wqy-zenhei
 
 %build
 # Do nothing for build
