@@ -56,11 +56,11 @@ This package provides utilities for using the EFS file systems.
 
 %prep
 %setup -n efs-utils-%{version}
-%patch0 -p1
+%patch -P 0 -p1
 find . -name "*.py" -exec sed -i 's/env python3/python3/' {} +
-%patch1 -p1
-%patch2
-%patch3 -p1
+%patch -P 1 -p1
+%patch -P 2
+%patch -P 3 -p1
 
 %build
 # No build required
