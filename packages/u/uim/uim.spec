@@ -111,10 +111,10 @@ Contains Qt5 input module plugin for uim
 
 %prep
 %setup -q
-%patch2 -p1
-%patch3 -p0
-%patch4 -p0
-%patch5 -p1
+%patch -P 2 -p1
+%patch -P 3 -p0
+%patch -P 4 -p0
+%patch -P 5 -p1
 cp emacs/README README.emacs
 iconv -f euc-jp -t utf-8 < emacs/README.ja > README.ja.emacs
 
