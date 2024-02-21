@@ -63,8 +63,8 @@ This package provides %{name}.
 %setup -q
 
 # Avoid optional dep on tomcat native APR library
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 rm -rf sshd-core/src/main/java/org/apache/sshd/agent/unix
 %pom_remove_dep -r tomcat:tomcat-apr

@@ -55,4 +55,12 @@
     <comment>CVE-2023-48795, bsc#1218189</comment>
     <requestid>1140070</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9633a43f7a7bef5185c5fa34b3edb9cf</srcmd5>
+    <version>2.12.0</version>
+    <time>1708534557</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147902</requestid>
+  </revision>
 </revisionlist>
