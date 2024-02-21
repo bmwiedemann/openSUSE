@@ -1,7 +1,7 @@
 #
 # spec file for package dstat
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,12 +56,9 @@ indicates in what magnitude and unit the output is displayed. Less
 confusion, less mistakes.
 
 %prep
-%setup -q
+%autosetup -p1
 # replace env by python
 sed -i 's/#!\/usr\/bin\/env python/#!\/usr\/bin\/python3/' dstat
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
 
