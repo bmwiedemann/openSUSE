@@ -1,7 +1,7 @@
 #
 # spec file for package newsboat
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,8 +59,7 @@ text terminals.
 %lang_package
 
 %prep
-%setup -qa3
-%patch0 -p1
+%autosetup -a3 -p1
 mkdir cargo-home
 install -Dm644 %{SOURCE4} .cargo/config
 sed -i 's/#!\/usr\/bin\/env perl/#!\/usr\/bin\/perl/' ./contrib/pinboard.pl

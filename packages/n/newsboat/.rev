@@ -1044,4 +1044,13 @@ run -osc service localrun format_spec_file to fix copyright
     News (#2573)</comment>
     <requestid>1135148</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>693b54dec2c4ae0c8cb7c50acdcba32b</srcmd5>
+    <version>2.34</version>
+    <time>1708534692</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1148427</requestid>
+  </revision>
 </revisionlist>
