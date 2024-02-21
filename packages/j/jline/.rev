@@ -194,4 +194,12 @@
     <comment>maven 3.8.5 / jansi 2.4.0 and fixes for building with them</comment>
     <requestid>977563</requestid>
   </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>e639c576d8592447e6072b0781be5e3c</srcmd5>
+    <version>2.14.6</version>
+    <time>1708534345</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148108</requestid>
+  </revision>
 </revisionlist>

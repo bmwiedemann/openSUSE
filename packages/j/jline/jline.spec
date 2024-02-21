@@ -1,7 +1,7 @@
 #
 # spec file for package jline
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,6 @@ BuildRequires:  fdupes
 BuildRequires:  jansi
 BuildRequires:  javapackages-local
 #!BuildIgnore:  ant-antlr
-Requires:       mvn(org.fusesource.jansi:jansi)
 BuildArch:      noarch
 
 %description
@@ -50,8 +49,8 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n jline2-jline-%{version}
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 %pom_change_dep org.fusesource.jansi:jansi org.fusesource.jansi:jansi:1.12
 cp %{SOURCE1} build.xml
 mkdir -p lib
