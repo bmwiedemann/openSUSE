@@ -39,4 +39,12 @@
     <comment>Remove dependency on asm3</comment>
     <requestid>963731</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ee2965da1b6a9c700a9f5870fbaee928</srcmd5>
+    <version>1.26.0</version>
+    <time>1708534331</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148035</requestid>
+  </revision>
 </revisionlist>

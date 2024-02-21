@@ -9,7 +9,7 @@
   <property file="build.properties"/>
 
   <property name="build.name" value="commons-compress"/>
-  <property name="build.version" value="1.21"/>
+  <property name="build.version" value="1.26.0"/>
   <property name="build.finalName" value="${build.name}-${build.version}"/>
   <property name="build.dir" value="target"/>
   <property name="build.javadocDir" value="${build.dir}/site/apidocs"/>
@@ -24,7 +24,8 @@
   <property name="commons.osgi.private" value=""/>
   <property name="commons.osgi.symbolicName" value="org.apache.commons.compress"/>
 
-  <property name="compiler.source" value="1.8"/>
+  <property name="compiler.release" value="8"/>
+  <property name="compiler.source" value="1.${compiler.release}"/>
   <property name="compiler.target" value="${compiler.source}"/>
 
 
@@ -60,6 +61,7 @@
            optimize="false" 
            deprecation="true" 
            target="${compiler.target}" 
+           release="${compiler.release}"
            verbose="false" 
            fork="false" 
            source="${compiler.source}">
