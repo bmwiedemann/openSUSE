@@ -63,4 +63,12 @@
     <comment>Fips related fixes</comment>
     <requestid>1144979</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>925ff3f469bdc4c2a880085146066d2b</srcmd5>
+    <version>21.0.2.0</version>
+    <time>1708534352</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148208</requestid>
+  </revision>
 </revisionlist>
