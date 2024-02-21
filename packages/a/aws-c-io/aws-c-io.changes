@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 20 11:14:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
+Mon Feb 19 14:42:56 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.14.4
+  * Fix a bunch of places we forget to aws_raise_error() by @graebm in (#622)
+  * Consistently use lowercase for Windows libraries by @giordano in (#603)
+  * Use Public Domain PKCS#11 headers, to avoid OASIS license by @graebm in (#623)
+
+-------------------------------------------------------------------
 Wed Feb  7 11:53:10 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.14.3
