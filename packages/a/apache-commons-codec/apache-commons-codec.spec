@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-codec
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2010, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,9 +19,8 @@
 
 %define base_name  codec
 %define short_name commons-%{base_name}
-%bcond_with tests
 Name:           apache-commons-codec
-Version:        1.16.0
+Version:        1.16.1
 Release:        0
 Summary:        Apache Commons Codec Package
 License:        Apache-2.0
@@ -44,13 +43,6 @@ Obsoletes:      jakarta-%{short_name} < %{version}
 Provides:       %{short_name} = %{version}
 Obsoletes:      %{short_name} < %{version}
 BuildArch:      noarch
-%if %{with tests}
-BuildRequires:  ant-junit >= 1.7
-BuildRequires:  apache-commons-lang3
-BuildRequires:  hamcrest-core
-BuildRequires:  junit
-BuildRequires:  mozilla-nss
-%endif
 
 %description
 Commons Codec is an attempt to provide definitive implementations of
@@ -79,14 +71,7 @@ dos2unix RELEASE-NOTES*.txt LICENSE.txt NOTICE.txt
 
 %build
 mkdir -p lib
-%if %{with tests}
-build-jar-repository -s lib junit4 hamcrest/core commons-lang3
-%endif
-ant \
-%if %{without tests}
-  -Dtest.skip=true \
-%endif
-  -Dcompiler.source=1.8 -Dcompiler.target=1.8 \
+%{ant} \
   jar javadoc
 
 %install

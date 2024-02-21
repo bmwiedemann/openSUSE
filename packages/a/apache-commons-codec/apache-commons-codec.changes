@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Feb 19 17:47:30 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 1.16.1:
+  * New features:
+    + Add Maven property project.build.outputTimestamp for build
+      reproducibility
+  * Fixed Bugs:
+    + CODEC-295: Test clean ups
+    + CODEC-295: Correct error in Base64 Javadoc
+    + CODEC-295: Add minimum Java version in changes.xml
+    + CODEC-310: Documentation update for the
+      org.apache.commons.codec.digest.* package
+    + Precompile regular expression in UnixCrypt.crypt(byte[],
+      String)
+    + CODEC-315: Fix possible IndexOutOfBoundException in
+      PhoneticEngine.encode method
+    + CODEC-313: Fix possible ArrayIndexOutOfBoundsException in
+      QuotedPrintableCodec.encodeQuotedPrintable() method
+    + CODEC-312: Fix possible StringIndexOutOfBoundException in
+      MatchRatingApproachEncoder.encode() method
+    + CODEC-311: Fix possible ArrayIndexOutOfBoundException in
+      RefinedSoundex.getMappingCode()
+    + CODEC-314: Fix possible IndexOutOfBoundsException in
+      PercentCodec.insertAlwaysEncodeChars() method
+    + Deprecate UnixCrypt 0-argument constructor
+    + Deprecate Md5Crypt 0-argument constructor
+    + Deprecate Crypt 0-argument constructor
+    + Deprecate StringUtils 0-argument constructor
+    + Deprecate Resources 0-argument constructor
+    + Deprecate Charsets 0-argument constructor
+    + Deprecate CharEncoding 0-argument constructor
+
+-------------------------------------------------------------------
 Wed Oct 18 11:30:31 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to 1.16.0: 
