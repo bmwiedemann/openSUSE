@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 10:19:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Oct 27 10:39:27 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 
 - Security fix [bsc#945190, CVE-2015-5262]
