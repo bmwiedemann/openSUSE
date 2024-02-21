@@ -164,4 +164,13 @@
 - Add nwg-launchers-readme.patch: we already ship the readme</comment>
     <requestid>1031035</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>63952b3d636908077654df532a6b7eda</srcmd5>
+    <version>0.7.1.1</version>
+    <time>1708534729</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1148499</requestid>
+  </revision>
 </revisionlist>
