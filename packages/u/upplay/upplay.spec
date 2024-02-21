@@ -42,8 +42,7 @@ upplay is a Qt5-based audio Control Point for browsing and playing music
 managed by your UPnP/DLNA media servers to your UPnP/DLNA/OpenHome players (renderers).
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 %qmake5 QMAKE_POST_LINK='$(STRIP) $(TARGET)'
