@@ -67,8 +67,7 @@ account, supports AccurateRip, and can rip certain hidden tracks.
 Whipper was forked from the Morituri project, after Morituri development halted.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 echo "Version: %{version}" > PKG-INFO

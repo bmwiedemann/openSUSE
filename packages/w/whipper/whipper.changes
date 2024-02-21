@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:20:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Sat Nov  6 17:17:17 UTC 2021 - olaf@aepfle.de
 
 - Package README.md instead of dead symlink README
