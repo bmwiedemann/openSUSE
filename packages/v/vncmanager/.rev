@@ -135,4 +135,12 @@ Session manager for VNC. It listens on VNC port and spawns Xvnc processes for in
     <comment></comment>
     <requestid>1076736</requestid>
   </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>26153520355fd95ffd7cd9394b3c20e2</srcmd5>
+    <version>1.0.2</version>
+    <time>1708534578</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1148039</requestid>
+  </revision>
 </revisionlist>

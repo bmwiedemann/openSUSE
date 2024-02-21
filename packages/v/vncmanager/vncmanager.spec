@@ -79,19 +79,7 @@ Session manager for VNC. It listens on VNC port and spawns Xvnc processes for in
 %service_del_postun vncmanager.service
 
 %prep
-%setup
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
+%autosetup -p1
 
 %build
 %cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_VERBOSE_MAKEFILE=ON
