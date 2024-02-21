@@ -1,7 +1,7 @@
 #
 # spec file for package aws-c-http
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define library_version 1.0.0
 %define library_soversion 1_0_0
 Name:           aws-c-http
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        C99 implementation of the HTTP/1.1 and HTTP/2 specifications
 License:        Apache-2.0
@@ -62,8 +62,7 @@ C99 implementation of the HTTP/1.1 and HTTP/2 specifications.
 This package contains the development files.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %define __builder ninja

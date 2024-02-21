@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 20 11:14:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
+Mon Feb 19 15:24:29 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.1
+  * Minor GitHub workflow changes by @kellertk in (#461)
+  * Fix a bunch of places we forget to aws_raise_error() by @graebm in (#462)
+  * API to query http server listener endpoint by @bretambrose in (#463)
+
+-------------------------------------------------------------------
 Wed Jan  3 13:25:59 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.0
