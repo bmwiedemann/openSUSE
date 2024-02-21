@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 12:09:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Thu Jan 10 00:21:26 UTC 2013 - jengelh@inai.de
 
 - Use more robust make install call. Wrap description at 70 cols.

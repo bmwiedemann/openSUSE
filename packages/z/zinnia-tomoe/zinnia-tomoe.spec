@@ -36,8 +36,7 @@ zinnia provides hand recognization model to Zinnia. This model
 supports Japanese and simplified Chinese.
 
 %prep
-%setup -q -n zinnia-tomoe-%{version}-%{date}
-%patch0 -p1
+%autosetup -p1 -n zinnia-tomoe-%{version}-%{date}
 
 %build
 %configure
