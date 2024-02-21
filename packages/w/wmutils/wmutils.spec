@@ -38,9 +38,7 @@ wmutils's core is a set of tools for manipulating X11 windows.
 Each tool only has one purpose.
 
 %prep
-%setup -q -n core-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n core-%{version}
 
 %build
 make %{?_smp_mflags}
