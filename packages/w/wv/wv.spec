@@ -67,14 +67,14 @@ Header files for wv.
 
 %prep
 %setup -q
-%patch0
-%patch5
-%patch9 -p1
-%patch10 -p1
+%patch -P 0
+%patch -P 5
+%patch -P 9 -p1
+%patch -P 10 -p1
 %if 0%{?suse_version} > 1230
-%patch11 -p1
+%patch -P 11 -p1
 %endif
-%patch12 -p1
+%patch -P 12 -p1
 
 %build
 autoreconf -f -i --verbose
