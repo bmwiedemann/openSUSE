@@ -134,4 +134,12 @@ privileges and the file did not have any effect. (boo#1125425)</comment>
     <comment></comment>
     <requestid>1115918</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0b8fe506f7beed01697bb41f495ae551</srcmd5>
+    <version>0.9.7</version>
+    <time>1708534313</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147547</requestid>
+  </revision>
 </revisionlist>

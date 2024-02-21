@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 19 10:04:58 UTC 2024 - Robert Frohl <rfrohl@suse.com>
+
+- update to 0.9.7:
+  * Add a 'nopcie' security level since some devices report nopcie when Thunderbolt
+    is disabled through BIOS setting.
+  * Markdown lint styling is used for documents.
+
+-------------------------------------------------------------------
 Tue Oct  3 07:09:54 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
-- update to 0.9.5:
+- update to 0.9.6:
   * Compiler warnings and log messages for the domain not found were fixed.
 
 -------------------------------------------------------------------
