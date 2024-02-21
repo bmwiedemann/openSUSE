@@ -1,7 +1,7 @@
 #
 # spec file for package httpcomponents-client
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,12 +33,9 @@ BuildRequires:  apache-commons-codec
 BuildRequires:  apache-commons-logging
 BuildRequires:  fdupes
 BuildRequires:  httpcomponents-core
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  publicsuffix
 Requires:       publicsuffix
-Requires:       mvn(commons-codec:commons-codec)
-Requires:       mvn(commons-logging:commons-logging)
-Requires:       mvn(org.apache.httpcomponents:httpcore)
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
@@ -74,8 +71,8 @@ Group:          Documentation/HTML
 
 %prep
 %setup -q -a1
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 # Remove optional build deps not available in openSUSE
 %pom_disable_module httpclient-osgi
@@ -166,15 +163,6 @@ rm -r httpclient-cache/src/*/java/org/apache/http/impl/client/cache/memcached
 rm -r httpclient-cache/src/*/java/org/apache/http/impl/client/cache/ehcache
 %pom_remove_dep :ehcache-core httpclient-cache
 
-for module in fluent-hc httpclient httpclient-cache httpmime; do
-    %pom_xpath_inject "pom:project" "
-	  <groupId>org.apache.httpcomponents</groupId>
-	  <version>%{version}</version>" $module
-	%pom_remove_parent $module
-	# adds version "any" if none is specified
-	%pom_change_dep ::::: ::::: $module
-done
-
 %build
 mkdir -p lib
 build-jar-repository -s lib httpcomponents/httpcore commons-logging commons-codec
@@ -196,10 +184,10 @@ done
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/httpcomponents
 for module in fluent-hc httpclient httpmime; do
-  install -pm 0644 ${module}/pom.xml %{buildroot}%{_mavenpomdir}/httpcomponents/${module}.pom
+  %{mvn_install_pom} ${module}/pom.xml %{buildroot}%{_mavenpomdir}/httpcomponents/${module}.pom
   %add_maven_depmap httpcomponents/${module}.pom httpcomponents/${module}.jar
 done
-install -pm 0644 httpclient-cache/pom.xml %{buildroot}%{_mavenpomdir}/httpcomponents/httpclient-cache.pom
+%{mvn_install_pom} httpclient-cache/pom.xml %{buildroot}%{_mavenpomdir}/httpcomponents/httpclient-cache.pom
 %add_maven_depmap httpcomponents/httpclient-cache.pom httpcomponents/httpclient-cache.jar -f cache
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
