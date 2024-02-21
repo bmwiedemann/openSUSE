@@ -1,0 +1,30 @@
+Index: mailman-3.3.9/setup.py
+===================================================================
+--- mailman-3.3.9.orig/setup.py
++++ mailman-3.3.9/setup.py
+@@ -119,8 +119,8 @@ case second 'm'.  Any other spelling is
+         'dnspython>=1.14.0',
+         'falcon>=3.0.0',
+         'flufl.bounce>=4.0',
+-        'flufl.i18n>=3.2',
+-        'flufl.lock>=5.1',
++        'flufl-i18n>=3.2',
++        'flufl_lock>=5.1',
+         'gunicorn',
+         'lazr.config',
+         'python-dateutil>=2.0',
+Index: mailman-3.3.9/src/mailman.egg-info/requires.txt
+===================================================================
+--- mailman-3.3.9.orig/src/mailman.egg-info/requires.txt
++++ mailman-3.3.9/src/mailman.egg-info/requires.txt
+@@ -7,8 +7,8 @@ click>=8.0.0
+ dnspython>=1.14.0
+ falcon>=3.0.0
+ flufl.bounce>=4.0
+-flufl.i18n>=3.2
+-flufl.lock>=5.1
++flufl-i18n>=3.2
++flufl_lock>=5.1
+ gunicorn
+ lazr.config
+ python-dateutil>=2.0

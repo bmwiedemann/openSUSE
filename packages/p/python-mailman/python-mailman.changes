@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 15 10:53:34 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Adapt to new RPM 4.19 and properly create mailman user/group (boo#1219674)
+- Build on Python 3.12 for the Factory
+
+-------------------------------------------------------------------
+Tue Jan 23 09:56:40 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add patch find-flufl.patch to fix the tests with recent flufl.*
+- Don't require importlib-resources on new Pythons, they are already 
+  a part of a standard library
+
+-------------------------------------------------------------------
 Mon Nov  6 00:27:43 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - make it easier to notice to keep buildrequires and runtime

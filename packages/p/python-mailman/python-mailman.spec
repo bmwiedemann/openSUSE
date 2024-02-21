@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-mailman
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# keep in sync with setup.py
+
 %global aiosmtpd_min_version 1.4.3
 # normally it would be 1.6.2,!=1.7.0 but to avoid super comlex constructs in the spec file ... lets go with the version that we have in TW
 %global alembic_min_version 1.12
@@ -31,8 +31,6 @@
 %global sqlalchemy_min_version 1.4.0
 %global zope_interface_min_version 5.0
 
-%define mailman_user     mailman
-%define mailman_group    mailman
 %define mailman_name     mailman
 %define mailman_homedir  %{_localstatedir}/lib/%{mailman_name}
 %define mailman_logdir   %{_localstatedir}/log/%{mailman_name}
@@ -49,9 +47,14 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
-# Newest python supported by mailman is Python 3.11
+%if 0%{?suse_version} >= 1600
+# Newest python supported by mailman is Python 3.12, but we have just Python 3.11 in SLE
 # See https://gitlab.com/mailman/mailman/-/blob/master/src/mailman/docs/NEWS.rst
+%define pythons python312
+%define mypython python312
+%define mypython_sitelib %{python312_sitelib}
+%else
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
 %define pythons python311
 %define mypython python311
 %define mypython_sitelib %{python311_sitelib}
@@ -60,6 +63,7 @@
 %define pythons python3
 %define mypython python3
 %define mypython_sitelib %{python3_sitelib}
+%endif
 %endif
 Name:           python-mailman%{psuffix}
 Version:        3.3.9
@@ -74,6 +78,7 @@ Source10:       mailman.cfg
 Source11:       mailman.service
 Source12:       mailman-tmpfiles.conf
 Source13:       mailman.logrotate
+Source14:       mailman-user.conf
 #
 Source20:       mailman-digests.service
 Source21:       mailman-digests.timer
@@ -86,9 +91,14 @@ Source31:       python-mailman.rpmlintrc
 Source100:      https://gitlab.com/mailman/mailman/-/raw/master/src/mailman/testing/ssl_test_cert.crt
 Source101:      https://gitlab.com/mailman/mailman/-/raw/master/src/mailman/testing/ssl_test_key.key
 #
+# PATCH-FIX-OPENSUSE mmachova@suse.com based on upstream merge request https://gitlab.com/mailman/mailman/-/merge_requests/1123
+# it won't be needed with new releases of flufl.lock and flufl.i18n, because the issue was fixed in pdm upstream https://github.com/pdm-project/pdm/pull/2057
+Patch0:         find-flufl.patch
+#
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  sysuser-tools
 %if 0%{?suse_version} >= 1550
 # use the real python3 primary for rpm pythondistdeps.py
 BuildRequires:  python3-packaging
@@ -119,13 +129,11 @@ Requires:       %{mypython}-flufl.bounce >= %{flufl_bounce_min_version}
 Requires:       %{mypython}-flufl.i18n >= %{flufl_i18n_min_version}
 Requires:       %{mypython}-flufl.lock >= %{flufl_lock_min_version}
 Requires:       %{mypython}-gunicorn
-Requires:       %{mypython}-importlib-resources >= 1.1.0
 Requires:       %{mypython}-lazr.config
 Requires:       %{mypython}-passlib
 Requires:       %{mypython}-psycopg2
 Requires:       %{mypython}-python-dateutil >= %{python_dateutil_min_version}
 Requires:       %{mypython}-requests
-Requires:       %{mypython}-setuptools
 Requires:       %{mypython}-zope.component
 Requires:       %{mypython}-zope.configuration
 Requires:       %{mypython}-zope.event
@@ -133,10 +141,13 @@ Requires:       %{mypython}-zope.interface >= %{zope_interface_min_version}
 Requires:       logrotate
 Requires(pre):  /usr/sbin/groupadd
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       mailman = %{version}
 %if "%{expand:%%%{mypython}_provides}" == "python3"
 Provides:       python3-mailman = %{version}-%{release}
+%endif
+%if 0%{?suse_version} < 1550
+Requires:       %{mypython}-importlib-resources >= 1.1.0
 %endif
 Obsoletes:      python3-mailman < %{version}-%{release}
 # help in replacing any previously installed multiflavor package back to the unprefixed package
@@ -145,6 +156,13 @@ Obsoletes:      %{mypython}-mailman < %{version}-%{release}
 
 %description -n mailman3
 Mailman is a mailing list manager from the GNU project.
+
+%package -n system-user-%{mailman_name}
+Summary:        System user and group mailman
+%sysusers_requires
+
+%description -n system-user-%{mailman_name}
+System user for use by the mailman client.
 
 %prep
 %autosetup -p1 -n mailman-%{version}
@@ -168,6 +186,8 @@ sed '/importlib_resources/d' -i src/mailman.egg-info/requires.txt setup.py
 %endif
 %python_build
 ./generate_mo.sh
+
+%sysusers_generate_pre %{SOURCE14} mailman system-user-%{mailman_name}.conf
 
 %install
 %if !%{with test}
@@ -203,6 +223,8 @@ install -m 0640 %{SOURCE10} %{buildroot}%{_sysconfdir}/%{mailman_name}.cfg
 install -m 0644 %{SOURCE11} %{buildroot}%{_unitdir}/%{mailman_name}.service
 install -m 0644 %{SOURCE12} %{buildroot}%{_tmpfilesdir}/%{mailman_name}.conf
 
+install -D -m 0644 %{SOURCE14} %{buildroot}%{_sysusersdir}/system-user-%{mailman_name}.conf
+
 install -m 0644 %{SOURCE20} %{buildroot}%{_unitdir}/%{mailman_name}-digests.service
 install -m 0644 %{SOURCE21} %{buildroot}%{_unitdir}/%{mailman_name}-digests.timer
 install -m 0644 %{SOURCE22} %{buildroot}%{_unitdir}/%{mailman_name}-notify.service
@@ -230,22 +252,18 @@ rm src/mailman/mta/tests/test_aliases.py
 rm src/mailman/core/tests/test_logging.py
 # PermissionError: [Errno 13] Permission denied: '/usr/bin/master'
 rm src/mailman/commands/tests/test_cli_control.py
-# https://gitlab.com/mailman/mailman/issues/654
-rm src/mailman/commands/tests/test_cli_create.py
 # do not use well known ports 9024 and 9025
 sed -i "s:\(902\):4\1:" src/mailman/testing/testing.cfg
+# https://gitlab.com/mailman/mailman/-/issues/1125
+rm src/mailman/handlers/tests/test_avoid_duplicates.py
 #
 %python_exec -m nose2 -v
 %endif
 
 %if !%{with test}
+%pre -n system-user-%{mailman_name} -f mailman.pre
+
 %pre -n mailman3
-getent group %{mailman_group} >/dev/null || \
-    %{_sbindir}/groupadd -r %{mailman_group}
-getent passwd %{mailman_user} >/dev/null || \
-    %{_sbindir}/useradd -r -g %{mailman_group} -s /sbin/nologin \
-    -c "mailman daemon user" -d %{mailman_homedir} %{mailman_user}
-%{_sbindir}/usermod -g %{mailman_group} %{mailman_user} >/dev/null
 %service_add_pre %{mailman_services}
 %if 0%{?suse_version} > 1500
 # Prepare for migration to /usr/etc; save any old .rpmsave
@@ -301,6 +319,9 @@ done
 %ghost %dir %{mailman_rundir}
 %ghost %dir %{_rundir}/lock
 %ghost %dir %{mailman_lockdir}
+
+%files -n system-user-%{mailman_name}
+%{_sysusersdir}/system-user-%{mailman_name}.conf
 %endif
 
 %changelog
