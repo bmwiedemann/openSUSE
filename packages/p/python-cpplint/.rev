@@ -104,4 +104,14 @@
 </comment>
     <requestid>1078255</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f8663e95c45d1302373b7eab55b97705</srcmd5>
+    <version>1.6.1</version>
+    <time>1708534640</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream patches to support python 3.12
+  - deprecated-unittest-aliases.patch, gh#cpplint/cpplint#182
+  - python312.patch, gh#cpplint/cpplint#243</comment>
+    <requestid>1148332</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-cpplint
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,13 +25,17 @@ URL:            https://github.com/cpplint/cpplint
 Source:         https://files.pythonhosted.org/packages/source/c/cpplint/cpplint-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM drop-sre-compile.patch gh#cpplint/cpplint#214
 Patch0:         drop-sre-compile.patch
+# PATCH-FIX-UPSTREAM python312.patch gh#cpplint/cpplint#243
+Patch1:         python312.patch
+# PATCH-FIX-UPSTREAM deprecated-unittest-aliases.patch gh#cpplint/cpplint#182
+Patch2:         deprecated-unittest-aliases.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testfixtures}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

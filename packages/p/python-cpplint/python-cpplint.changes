@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 20 19:11:15 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add upstream patches to support python 3.12
+  - deprecated-unittest-aliases.patch, gh#cpplint/cpplint#182
+  - python312.patch, gh#cpplint/cpplint#243
+
+-------------------------------------------------------------------
 Mon Apr 10 12:03:48 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add drop-sre-compile.patch upstream patch to fix issues with
