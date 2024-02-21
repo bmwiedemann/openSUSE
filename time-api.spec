@@ -1,7 +1,7 @@
 #
 # spec file for package time-api
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,7 +48,7 @@ This package contains javadoc for %{name}.
 # Use system libraries
 sed -i 's|src="${maven.ibiblio.url}/@{group}/@{artifact}/@{version}/@{artifact}-@{version}@{variant}.jar"|src="file://%{_datadir}/java/@{artifact}.jar"|' build.xml
 
-%patch0
+%patch -P 0
 
 cp -p %{SOURCE1} pom.xml
 sed -i "s|@VERSION@|%{version}|" pom.xml

@@ -23,4 +23,12 @@
     <comment>Allow building with jdk &gt;= 9</comment>
     <requestid>752798</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>34bd7195f2bf5a8615a749cb67e6cf53</srcmd5>
+    <version>0.6.4</version>
+    <time>1708534842</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148635</requestid>
+  </revision>
 </revisionlist>
