@@ -585,4 +585,12 @@
     + FOP-3072: Empty link url gives NPE</comment>
     <requestid>1061912</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>9fdbe4da34f03a192fb9c38ee81457c0</srcmd5>
+    <version>2.8</version>
+    <time>1708534330</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148006</requestid>
+  </revision>
 </revisionlist>

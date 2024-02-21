@@ -1,7 +1,7 @@
 #
 # spec file for package xmlgraphics-fop
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2008, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,7 @@ Summary:        Formatter for Printing XSLT Processed XML Files
 License:        Apache-2.0
 Group:          Productivity/Publishing/XML
 URL:            https://xmlgraphics.apache.org/fop/
-Source0:        https://dlcdn.apache.org/xmlgraphics/fop/source/fop-%{version}-src.tar.gz
+Source0:        https://archive.apache.org/dist/xmlgraphics/fop/source/fop-%{version}-src.tar.gz
 Source1:        https://download.sourceforge.net/project/offo/offo-hyphenation/2.2/offo-hyphenation.zip
 #FIX-OPENSUSE: add xmlgraphics-commons to classpath
 Source2:        %{name}.script
@@ -60,18 +60,6 @@ BuildRequires:  xmlgraphics-commons >= 2.6
 #!BuildIgnore:  saxon
 Requires:       java >= 1.8
 Requires:       xml-commons-apis
-Requires:       mvn(com.thoughtworks.qdox:qdox) >= 2.0
-Requires:       mvn(commons-io:commons-io)
-Requires:       mvn(commons-logging:commons-logging)
-Requires:       mvn(javax.servlet:servlet-api)
-Requires:       mvn(org.apache.pdfbox:fontbox) >= 2.0.0
-Requires:       mvn(org.apache.xmlgraphics:batik-anim) >= 1.14
-Requires:       mvn(org.apache.xmlgraphics:batik-awt-util) >= 1.14
-Requires:       mvn(org.apache.xmlgraphics:batik-bridge) >= 1.14
-Requires:       mvn(org.apache.xmlgraphics:batik-extension) >= 1.14
-Requires:       mvn(org.apache.xmlgraphics:batik-gvt) >= 1.14
-Requires:       mvn(org.apache.xmlgraphics:batik-transcoder) >= 1.14
-Requires:       mvn(org.apache.xmlgraphics:xmlgraphics-commons)
 Provides:       %{bname} = %{version}-%{release}
 Obsoletes:      %{bname} < %{version}-%{release}
 Provides:       fo-formatter = %{version}-%{release}
@@ -88,22 +76,18 @@ representation), Print, AWT, MIF, and TXT.
 %setup -q -n %{bname}-%{version} -a1
 ln -t fop/hyph offo-hyphenation/hyph/*.xml
 find -name "*.jar" | xargs -t rm
-%patch1 -p1 -b .cli
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
+%patch -P 1 -p1 -b .cli
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
 
 # Replace keyword "VERSION" in XML files with the real one:
 for x in %{SOURCE10} %{SOURCE11} %{SOURCE12}; do
  sed -i "s=@VERSION@=%{version}=" $x
 done
-
-# Building with ant, so the parent is pointless
-%pom_remove_parent fop
-%pom_xpath_inject pom:project "<version>%{version}</version>" fop
 
 # When building with ant, the fop.jar is an all-in jar,
 # so adapt the dependencies accordingly
@@ -162,7 +146,7 @@ install -m 644 fop/build/%{bname}-sandbox.jar %{buildroot}%{_javadir}/%{name}-sa
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 fop/pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
+%{mvn_install_pom} fop/pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
 %add_maven_depmap
 
 # script
