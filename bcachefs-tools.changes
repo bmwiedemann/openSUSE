@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 21 04:55:00 UTC 2024 - David Disseldorp <ddiss@suse.de>
+
+- Update to release v1.6.3
+  * use the kernel fsck implementation if the kernel version is a better
+    match for the filesystem on disk than the -tools version
+  * fix building with old gcc
+  * fix big endian build
+  * collect kernel fsck return code
+  * various other fixes
+
+-------------------------------------------------------------------
 Mon Jan 29 06:55:58 UTC 2024 - David Disseldorp <ddiss@suse.de>
 
 - Build with rust functionality enabled [boo#1219158]

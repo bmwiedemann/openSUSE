@@ -49,4 +49,12 @@
   * Validate upstream source signature (forwarded request 1142783 from ddiss)</comment>
     <requestid>1142786</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>89e055bedec841752f422fb3c734fb33</srcmd5>
+    <version>1.6.3</version>
+    <time>1708534894</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1148730</requestid>
+  </revision>
 </revisionlist>
