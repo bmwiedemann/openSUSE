@@ -139,8 +139,8 @@ Amazon EC2.
 
 %prep
 %setup -q -n %{name}-%{version}-1
-%patch0 -p1
-%patch1
+%patch -P 0 -p1
+%patch -P 1
 
 %build
 export GO111MODULE="auto"
