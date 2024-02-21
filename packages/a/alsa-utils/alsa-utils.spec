@@ -84,9 +84,9 @@ and test audio before and after PM state changes.
 
 %prep
 %setup -q
-%patch100 -p1
+%patch -P 100 -p1
 %if 0%{?do_autoreconf}
-%patch101 -p1
+%patch -P 101 -p1
 # fix stupid automake's automatic action
 sed -i -e's/EXTRA_DIST= config.rpath /EXTRA_DIST=/' Makefile.am
 %endif

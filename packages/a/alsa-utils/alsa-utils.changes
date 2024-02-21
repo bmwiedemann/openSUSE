@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 10:58:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Feb  2 14:55:32 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
 - Update to alsa-utils 1.2.11:
