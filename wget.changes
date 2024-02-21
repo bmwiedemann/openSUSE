@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:19:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Jun 12 08:34:23 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update wget-libproxy.patch: ensure to properly use libproxy
