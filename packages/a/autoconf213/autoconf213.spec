@@ -1,7 +1,7 @@
 #
 # spec file for package autoconf213
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           autoconf213
-Url:            http://www.gnu.org/software/autoconf
+URL:            http://www.gnu.org/software/autoconf
 BuildRequires:  m4 >= 1.1
 Requires:       gawk
 Requires:       m4 >= 1.1
@@ -61,19 +61,7 @@ be configuring software with an autoconf-generated script; autoconf is
 only required for the generation of the scripts, not their use.
 
 %prep
-%setup -n autoconf-%{version} -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
+%autosetup -n autoconf-%{version} -p1
 mv autoconf.texi autoconf213.texi
 rm -f autoconf.info
 
