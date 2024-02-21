@@ -1,7 +1,7 @@
 #
 # spec file for package easymock
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,9 +66,9 @@ Javadoc for %{name}.
 %prep
 %setup -q -n %{name}-%{name}-%{version} -a2
 
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 
 %pom_remove_plugin :maven-license-plugin
 %pom_remove_plugin :maven-timestamp-plugin

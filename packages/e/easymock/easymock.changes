@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 08:45:22 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Apr  9 08:18:23 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Summarize description.
