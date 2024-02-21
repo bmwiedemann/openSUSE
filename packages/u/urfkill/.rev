@@ -155,4 +155,12 @@ logind (bnc#853492) (forwarded request 212963 from gary_lin)</comment>
     <comment>- https url</comment>
     <requestid>969499</requestid>
   </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>cb55e7ac8cb84f51d1196efd3cad4908</srcmd5>
+    <version>0.5.0</version>
+    <time>1708534619</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1148237 from dimstar)</comment>
+    <requestid>1148253</requestid>
+  </revision>
 </revisionlist>

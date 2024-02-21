@@ -82,8 +82,7 @@ the GLib thread abstraction and main loop.
 http://freedesktop.org/wiki/Software/urfkill
 
 %prep
-%setup -n %{name}-%{name}-%{version} -q
-%patch0 -p1
+%autosetup -n %{name}-%{name}-%{version} -p1
 
 %build
 NOCONFIGURE=1 ./autogen.sh
