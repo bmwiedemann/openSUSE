@@ -280,4 +280,12 @@ regression introduced by the last update. See bsc#1152803 for details.
   harden_vhostmd.service.patch</comment>
     <requestid>945374</requestid>
   </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>c49f09456a95088932ef01eafb67a97d</srcmd5>
+    <version>1.1</version>
+    <time>1708534612</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1148202</requestid>
+  </revision>
 </revisionlist>
