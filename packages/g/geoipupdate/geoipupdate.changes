@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Feb 21 08:11:49 UTC 2024 - valentin.lefebvre@suse.com
+
+- Update to version 6.1.0:
+  * Update indirect dependencies
+  * Bump golang.org/x/sync from 0.5.0 to 0.6.0
+  * Bump github/codeql-action from 2 to 3
+  * Bump actions/setup-go from 4 to 5
+  * Bump golang.org/x/sync from 0.4.0 to 0.5.0
+  * Resync golangci-lint config and fix several small issues
+  * Update changelog after fixing #262
+  * Trim white spaces when reading from secret files
+  * Bump golang.org/x/sync from 0.3.0 to 0.4.0
+  * Set API client version to the same as the binary version
+  * Use https URLs
+  * Bump actions/checkout from 3 to 4
+  * Update Go version in go.mod
+
+-------------------------------------------------------------------
 Thu Aug 24 08:03:51 UTC 2023 - valentin.lefebvre@suse.com
 
 - Update to 6.0.0:
