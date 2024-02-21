@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-session
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,7 @@ BuildRequires:  pkgconfig(lxqt) >= %{version}
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Requires:       qtxdg-tools
 Recommends:     %{name}-lang
 Obsoletes:      lxqt-common <= 0.12.0
@@ -62,9 +62,7 @@ use when a user logs out and to restart them the next time the user logs in.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 # Changing LXQt into X-LXQt in desktop files to be freedesktop compliant and shut rpmlint warnings
 #find -name '*desktop.in*' -exec sed -ri 's/(LXQt;)/X-\1/' {} +
 

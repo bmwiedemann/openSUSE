@@ -1373,4 +1373,13 @@ comply with openSUSE policy
     <comment></comment>
     <requestid>1123550</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>bfac68edbd3ecaeb0341b793f9f0d6cf</srcmd5>
+    <version>1.4.0</version>
+    <time>1708534685</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+   %patchN.</comment>
+    <requestid>1148411</requestid>
+  </revision>
 </revisionlist>
