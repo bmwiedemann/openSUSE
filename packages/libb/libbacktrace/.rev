@@ -7,4 +7,13 @@
     <comment>new package</comment>
     <requestid>1147552</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>82f3965aa8e86d9c38bce4ef57c0d569</srcmd5>
+    <version>1.0+git20231130</version>
+    <time>1708534687</time>
+    <user>anag+factory</user>
+    <comment>- Use system libunwind
+- Run internal testsuite during build</comment>
+    <requestid>1148425</requestid>
+  </revision>
 </revisionlist>

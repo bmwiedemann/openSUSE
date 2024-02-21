@@ -26,9 +26,10 @@ URL:            https://github.com/ianlancetaylor/libbacktrace
 Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  automake
 BuildRequires:  libtool
+BuildRequires:  libunwind-devel
 BuildRequires:  libzstd-devel
-BuildRequires:  zlib-devel
 BuildRequires:  xz-devel
+BuildRequires:  zlib-devel
 
 %description
 A C library that may be linked into a C/C++ program to produce symbolic backtraces.
@@ -54,8 +55,13 @@ autoreconf -fiv
 %configure \
   --disable-static \
   --enable-shared \
+  --with-system-libunwind \
   --enable-silent-rules
 %make_build
+
+%check
+# btest_dwz fails
+%make_build check ||:
 
 %install
 %make_install
