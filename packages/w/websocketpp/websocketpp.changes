@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:18:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Mon Nov  2 08:44:13 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add Update-websocketpp-configVersion.cmake.patch to fix noarch

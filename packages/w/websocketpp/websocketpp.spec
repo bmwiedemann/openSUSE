@@ -56,8 +56,7 @@ interchangeable network transport modules including one based on C++
 iostreams and one based on Boost Asio.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %if 0%{?suse_version} >= 1310
