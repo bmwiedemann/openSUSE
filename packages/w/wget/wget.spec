@@ -64,13 +64,13 @@ This can be done in script files or via the command line.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch6
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 6
+%patch -P 7 -p1
+%patch -P 8 -p1
+%patch -P 9 -p1
+%patch -P 10 -p1
 
 %build
 # wget-libproxy.patch
