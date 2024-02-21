@@ -41,8 +41,8 @@ A front-end for mp3gain based on the wxWidgets toolkit.
 %lang_package
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
+
 dos2unix docs/AUTHORS docs/CHANGELOG docs/README docs/TODO
 
 %build
