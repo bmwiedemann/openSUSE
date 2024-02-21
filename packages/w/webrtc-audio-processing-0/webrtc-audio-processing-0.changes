@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:18:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Sep 28 09:56:45 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Rename the 0.3.1 version of the package to

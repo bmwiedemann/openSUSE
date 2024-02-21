@@ -9,4 +9,12 @@ packages in Factory (dino and baresip at least) which
 don't work with webrtc-audio-processing 1.x</comment>
     <requestid>1114291</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7ef98d5d4d8385fb3fd05dfd4863db85</srcmd5>
+    <version>0.3.1</version>
+    <time>1708534638</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1148306</requestid>
+  </revision>
 </revisionlist>

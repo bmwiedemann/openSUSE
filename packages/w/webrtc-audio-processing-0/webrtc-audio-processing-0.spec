@@ -103,10 +103,10 @@ that haven't be updated yet to the newer 1.x version.
 %setup -q -T -c "%{name}-%{version}"
 xz --decompress --stdout "%{SOURCE0}" | tar xf - --strip-components=1
 sed -i 's/\r$//' AUTHORS
-%patch1 -p1
-%patch2 -p1
-%patch100
-%patch101
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 100
+%patch -P 101
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
