@@ -25,4 +25,13 @@
   * Fix flickering screen while loading feeds</comment>
     <requestid>890906</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>fe3927425472c850f7cb4626dd413e45</srcmd5>
+    <version>0.1.5</version>
+    <time>1708534691</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1148424</requestid>
+  </revision>
 </revisionlist>
