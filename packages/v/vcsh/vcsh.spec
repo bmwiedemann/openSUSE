@@ -51,8 +51,7 @@ BuildArch:      noarch
 zsh command line completion support for %{name}.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 
