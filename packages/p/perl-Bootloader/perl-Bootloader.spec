@@ -25,10 +25,9 @@
 %{!?_distconfdir:%global _distconfdir /etc}
 
 Name:           perl-Bootloader
-Version:        1.11
+Version:        1.12
 Release:        0
 Requires:       coreutils
-Requires:       perl-base = %{perl_version}
 Obsoletes:      perl-Bootloader-YAML < %{version}
 Conflicts:      kexec-tools < 2.0.26.0
 Summary:        Tool for boot loader configuration
@@ -37,9 +36,7 @@ Group:          System/Boot
 URL:            https://github.com/openSUSE/perl-bootloader
 Source:         %{name}-%{version}.tar.xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  perl
 BuildRequires:  rubygem(asciidoctor)
-#!BuildIgnore: mdadm e2fsprogs limal-bootloader
 
 %description
 Shell script wrapper for configuring various boot loaders.
