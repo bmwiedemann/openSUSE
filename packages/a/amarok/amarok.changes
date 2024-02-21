@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:51:16 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Remove the taglib-extras dependency, it fails to build with
+  taglib 2 and will be dropped.
+- Add patch to support taglib 2:
+  * 0001-Use-non-deprecated-TagLib-functions-fix-build-with-T.patch
+
+-------------------------------------------------------------------
 Sat Apr 08 11:25:21 UTC 2023 - fabian@ritter-vogt.de
 
 - Switch from tar_scm to obs_scm

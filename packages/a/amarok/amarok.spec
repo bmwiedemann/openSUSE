@@ -29,6 +29,8 @@ Patch1:         flac_mimetype_bnc671581.diff
 Patch2:         disable-web-plugins-by-default.patch
 # PATCH-FIX-OPENSUSE
 Patch3:         0001-Work-around-QTBUG-75797-for-openQA.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         0001-Use-non-deprecated-TagLib-functions-fix-build-with-T.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf-devel
@@ -95,12 +97,10 @@ BuildRequires:  pkgconfig(libofa)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(taglib)
-BuildRequires:  pkgconfig(taglib-extras)
 BuildRequires:  pkgconfig(zlib)
 # needed by the context view
 Requires:       kirigami2
 Requires:       libqt5-qtquickcontrols2
-Requires:       libtag-extras1 >= 1.0
 Recommends:     moodbar
 Recommends:     (gstreamer-plugins-ugly if phonon4qt5-backend-gstreamer)
 

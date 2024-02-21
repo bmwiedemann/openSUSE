@@ -1258,4 +1258,15 @@ https://git.reviewboard.kde.org/r/104878/ (forwarded request 116659 from StefanB
     (boo#1210220)</comment>
     <requestid>1078010</requestid>
   </revision>
+  <revision rev="137" vrev="2">
+    <srcmd5>0577681675c1ed2ef69509d3386c9a6e</srcmd5>
+    <version>2.9.75git.20230408T114133~7098c192a6</version>
+    <time>1708534367</time>
+    <user>anag+factory</user>
+    <comment>- Remove the taglib-extras dependency, it fails to build with
+  taglib 2 and will be dropped.
+- Add patch to support taglib 2:
+  * 0001-Use-non-deprecated-TagLib-functions-fix-build-with-T.patch</comment>
+    <requestid>1148291</requestid>
+  </revision>
 </revisionlist>
