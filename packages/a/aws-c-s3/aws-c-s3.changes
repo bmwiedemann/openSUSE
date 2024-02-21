@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 20 11:15:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
+Mon Feb 19 15:35:46 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.5.1
+  * Fix a bunch of places we forget to aws_raise_error() by @graebm in (#405)
+
+-------------------------------------------------------------------
 Sun Jan 28 16:45:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add conflicts with libs3-tools
