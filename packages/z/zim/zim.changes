@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 20 11:27:30 UTC 2024 - pgajdos@suse.com
+
+- use python macros to build and install
+- by the way, it will remove dependency on /usr/bin/python3 using
+  [bsc#1212476]
+  * https://en.opensuse.org/openSUSE:Packaging_Python#Dependency_on_/usr/bin/python3
+
+-------------------------------------------------------------------
 Mon Jul 10 13:01:56 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 0.75.2:

@@ -1,7 +1,7 @@
 #
 # spec file for package zim
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Matthias Propst.
 #
 # All modifications and additions to the file contributed by third parties
@@ -61,10 +61,10 @@ version control.
 %setup -q
 
 %build
-python3 setup.py build
+%python3_build
 
 %install
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%python3_install
 
 %suse_update_desktop_file %{name}
 # remove ubuntu-specific icons
