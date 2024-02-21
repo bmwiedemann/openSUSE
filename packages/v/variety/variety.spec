@@ -72,9 +72,7 @@ Apart from displaying images from local folders, several different online source
 can be used to fetch wallpapers according to user-specified criteria.
 
 %prep
-%setup -q -n %{name}-%{version} -a 2
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n %{name}-%{version} -a 2
 
 %build
 %{python3_build}
