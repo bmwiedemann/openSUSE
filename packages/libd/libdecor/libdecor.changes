@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 15 06:32:48 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Remove the -devel package from baselibs.conf
+
+-------------------------------------------------------------------
 Wed Sep 27 19:42:00 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.2.0:
