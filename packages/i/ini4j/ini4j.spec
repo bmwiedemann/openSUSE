@@ -1,7 +1,7 @@
 #
 # spec file for package ini4j
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,7 +53,7 @@ Summary:        Java API for handling Windows ini file format
 Group:          Development/Libraries/Java
 Requires(post): /bin/ln
 Requires(post): /bin/rm
-Requires(postun):/bin/rm
+Requires(postun): /bin/rm
 
 %description javadoc
 The [ini4j] is a simple Java API for handling configuration files in
@@ -70,7 +70,7 @@ cp %{SOURCE2} build.xml
 mkdir -p src%{_sysconfdir}
 cp %{SOURCE3} src%{_sysconfdir}/buildinfo.properties
 
-%patch0 -p1
+%patch -P 0 -p1
 
 %build
 ant -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 build
@@ -83,7 +83,7 @@ install -m 644 dist/%{name}.jar %{buildroot}%{_javadir}/%{name}.jar
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -m 644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 
 # javadoc
