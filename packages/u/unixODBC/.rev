@@ -411,4 +411,12 @@
 - Update unixODC-etc-location.patch</comment>
     <requestid>1102884</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>ac12a38efba5ee4666a58255698f85be</srcmd5>
+    <version>2.3.12</version>
+    <time>1708534366</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1148252</requestid>
+  </revision>
 </revisionlist>
