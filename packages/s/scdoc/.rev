@@ -197,4 +197,13 @@
   * Emit '\e' instead of '\\'</comment>
     <requestid>1147320</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>e8eed95b1837df14567a4de67bfa60eb</srcmd5>
+    <version>1.11.3</version>
+    <time>1708534720</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1148481</requestid>
+  </revision>
 </revisionlist>

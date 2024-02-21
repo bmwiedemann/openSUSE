@@ -35,8 +35,7 @@ BuildRequires:  make
 scdoc is a man page generator written for POSIX systems written in C99.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %make_build PREFIX=%{_prefix}
