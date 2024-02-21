@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DBD-ODBC
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,9 +44,8 @@ BuildRequires:  unixODBC-devel
 ODBC Driver for DBI
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{version}
 find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
-%patch0 -p0
 # MANUAL BEGIN
 for file in README.af README.unicode; do
   perl -p -i -e "s|\r\n|\n|" "$file"
