@@ -39,4 +39,12 @@
     <comment>make work with jdk 21 and deprecated SecurityManager</comment>
     <requestid>1120551</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>89b3ce0c6a3385c8eeb48f7ceb2aa8b3</srcmd5>
+    <version>2.2</version>
+    <time>1708534569</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147969</requestid>
+  </revision>
 </revisionlist>

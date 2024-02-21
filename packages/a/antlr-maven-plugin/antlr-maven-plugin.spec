@@ -63,11 +63,11 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q
-%patch0 -p1 -b .modello
-%patch2 -b .sink
-%patch3 -p1 -b .fixnpe
-%patch4 -p1
-%patch5 -p1
+%patch -P 0 -p1 -b .modello
+%patch -P 2 -b .sink
+%patch -P 3 -p1 -b .fixnpe
+%patch -P 4 -p1
+%patch -P 5 -p1
 
 %pom_change_dep :maven-project :maven-core:3.9.3
 
