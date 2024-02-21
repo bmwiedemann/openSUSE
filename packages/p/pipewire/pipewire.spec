@@ -74,7 +74,11 @@ Source99:       baselibs.conf
 Patch0:         reduce-meson-dependency.patch
 
 BuildRequires:  docutils
-BuildRequires:  doxygen
+%if 0%{suse_version} > 1500
+BuildRequires:  doxygen >= 1.9.7
+%else
+BuildRequires:  doxygen-1_10
+%endif
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 %if 0%{?suse_version} <= 1500
@@ -190,7 +194,7 @@ This package provides the PipeWire shared library.
 Summary:        PipeWire libjack replacement libraries
 Group:          Development/Libraries/C and C++
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %description libjack-%{apiver_str}
 PipeWire is a server and user space API to deal with multimedia pipelines.
@@ -345,6 +349,7 @@ Requires:       %{libpipewire} >= %{version}-%{release}
 Requires:       %{name} >= %{version}-%{release}
 Requires:       pulseaudio-utils
 Recommends:     pipewire-alsa
+Conflicts:      pipewire-modules < 1.0.0
 Conflicts:      pulseaudio
 # Virtual Provides to support swapping between PipeWire-PA and PA
 Conflicts:      pulseaudio-daemon

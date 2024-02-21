@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb 21 06:48:22 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Force using doxygen-1_10 in SLE where the default doxygen is too
+  old and generates broken docs (boo#1217886)
+
+-------------------------------------------------------------------
+Tue Feb 20 17:44:12 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add a conflict in -pulseaudio with
+  pipewire-modules-%{apiver} < 1.0.0 since the
+  libpipewire-module-protocol-pulse.so module was included in
+  -modules before 1.0.0 so we should avoid a file conflict.
+
+-------------------------------------------------------------------
 Sat Feb  3 16:44:06 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.0.3:
