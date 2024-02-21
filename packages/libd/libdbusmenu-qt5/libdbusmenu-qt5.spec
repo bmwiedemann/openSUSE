@@ -30,11 +30,9 @@ Source:         https://github.com/unity8-team/%{rname}/archive/%{version}-0ubun
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM noqDebug-qWarnings.patch -- libdbusmenu uses it's own qDebug's and qWarnings,
 # which are useless, and annoy users, so this patch just disables them in release mode
-Patch1:         noqDebug-qWarnings.patch
-# PATCH-FIX-UPSTREAM full_include_dir.patch -- CMake 2.8.12 creates a fatal error on relative include dirs for a target. silence that policy
-Patch2:         full_include_dir.patch
+Patch0:         noqDebug-qWarnings.patch
 #Needed for DISABLE_FIND_PACKAGE
-BuildRequires:  cmake >= 2.8.6
+BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -70,11 +68,7 @@ Requires:       pkgconfig(Qt5Core)
 This package contains development files for libdbusmenu-qt5.
 
 %prep
-%setup -q -n %{rname}-%{version_}-0ubuntu1
-%patch1 -p1
-%if 0%{?suse_version} <= 1310
-%patch2 -p1
-%endif
+%autosetup -p1 -n %{rname}-%{version_}-0ubuntu1
 
 # Remove build time references so build-compare can do its work
 sed -i "s/HTML_TIMESTAMP         = YES/HTML_TIMESTAMP         = NO/" Doxyfile.in
@@ -105,9 +99,8 @@ install -pm 0644 COPYING NEWS README %{buildroot}%{_docdir}/libdbusmenu-qt5-deve
 
 %fdupes -s %{buildroot}%{_docdir}/libdbusmenu-qt5-devel/
 
-%post -n libdbusmenu-qt5-2 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libdbusmenu-qt5-2
 
-%postun -n libdbusmenu-qt5-2 -p /sbin/ldconfig
 
 %files -n libdbusmenu-qt5-2
 %defattr(-,root,root,-)

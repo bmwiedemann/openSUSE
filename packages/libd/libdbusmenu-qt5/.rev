@@ -77,4 +77,14 @@
     <comment></comment>
     <requestid>833992</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1589e1fd47647fec557f2b2fe6831045</srcmd5>
+    <version>0.9.3+16.04.20160218</version>
+    <time>1708534374</time>
+    <user>anag+factory</user>
+    <comment>- Switch to %autosetup
+- Drop obsolete patch:
+  * full_include_dir.patch</comment>
+    <requestid>1148314</requestid>
+  </revision>
 </revisionlist>
