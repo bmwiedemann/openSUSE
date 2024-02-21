@@ -1,7 +1,7 @@
 #
 # spec file for package tcpdump
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ URL:            https://www.tcpdump.org/
 Source:         https://www.tcpdump.org/release/%{name}-%{version}.tar.gz
 Source1:        tcpdump-qeth
 Source2:        https://www.tcpdump.org/release/%{name}-%{version}.tar.gz.sig
-Source3:        https://www.tcpdump.org/tcpdump-workers.asc#/%{name}.keyring
+Source3:        https://www.tcpdump.org/release/signing-key-RSA-E089DEF1D9C15D0D.asc#/%{name}.keyring
 BuildRequires:  libpcap-devel >= %{min_libpcap_version}
 BuildRequires:  libsmi-devel
 BuildRequires:  openssl-devel
