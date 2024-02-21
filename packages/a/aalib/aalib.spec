@@ -1,7 +1,7 @@
 #
 # spec file for package aalib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -88,22 +88,22 @@ Files needed for developing software that uses AAlib.
 
 %prep
 %setup -q -a 1 -b 2
-%patch1
-%patch3
-%patch10
-%patch11
-%patch12
-%patch13 -p1
+%patch -P 1
+%patch -P 3
+%patch -P 10
+%patch -P 11
+%patch -P 12
+%patch -P 13 -p1
 cd aavga-1.0
-%patch2
+%patch -P 2
 cd ../../aview-*
-%patch4
-%patch7
-%patch8
+%patch -P 4
+%patch -P 7
+%patch -P 8
 cd ..
-%patch5
-%patch6
-%patch9
+%patch -P 5
+%patch -P 6
+%patch -P 9
 
 %build
 %{?suse_update_config}

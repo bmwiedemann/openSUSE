@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 09:55:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Nov 15 13:53:57 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Homepage link http://aa-project.sourceforge.net/ is a permanent

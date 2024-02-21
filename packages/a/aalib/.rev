@@ -246,4 +246,12 @@
     <comment></comment>
     <requestid>1035878</requestid>
   </revision>
+  <revision rev="35" vrev="514">
+    <srcmd5>6735229c2e349bb5bd8f84dfd922b4ed</srcmd5>
+    <version>1.4.0</version>
+    <time>1708534381</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN. (forwarded request 1147720 from dimstar)</comment>
+    <requestid>1147785</requestid>
+  </revision>
 </revisionlist>
