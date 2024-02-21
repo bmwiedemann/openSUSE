@@ -61,4 +61,13 @@ The initial package only contains %apparmor_reload to (re)load a profile.</comme
     <comment>No longer suppress stderr (forwarded request 1090655 from crameleon)</comment>
     <requestid>1092694</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>c9f66b804392091cc1e41ce3788eff59</srcmd5>
+    <version>1.0</version>
+    <time>1708534481</time>
+    <user>anag+factory</user>
+    <comment>- Update macro to detect when installing in chroot
+  (transactional-update) and avoid calling apparmor_parser. (forwarded request 1147928 from fcrozat)</comment>
+    <requestid>1147946</requestid>
+  </revision>
 </revisionlist>

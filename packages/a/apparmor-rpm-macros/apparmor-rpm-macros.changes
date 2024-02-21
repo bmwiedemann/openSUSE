@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 12:15:28 UTC 2024 - Frederic Crozat <fcrozat@suse.com>
+
+- Update macro to detect when installing in chroot
+  (transactional-update) and avoid calling apparmor_parser.
+
+-------------------------------------------------------------------
 Sat Jun  3 14:30:51 UTC 2023 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - No longer suppress stderr
