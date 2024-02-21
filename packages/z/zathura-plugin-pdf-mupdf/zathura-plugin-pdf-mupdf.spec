@@ -54,9 +54,7 @@ Provides:       zathura-pdf-mupdf-plugin
 Zathura-plugin-MupDF extends the document viewing support of Zathura to PDF, EPUB and OpenXPS with the help of MuPDF rendering engine.
 
 %prep
-%setup -q -n %{realname}-%{version}
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n %{realname}-%{version}
 
 %build
 export CFLAGS="%{optflags}"
