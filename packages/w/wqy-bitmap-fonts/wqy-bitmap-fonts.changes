@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:24:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sat Apr 29 16:45:33 UTC 2017 - bwiedemann@suse.com
 
 - call gzip -n to make build fully reproducible

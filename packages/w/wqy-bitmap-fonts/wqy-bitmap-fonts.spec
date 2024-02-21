@@ -44,7 +44,7 @@ Ideograph (U4E00 - U9FA5) glyphs at four different sizes
 %prep
 %setup -n wqy-bitmapfont
 sed -i "s/equal/qual/" 85-wqy-bitmapsong.conf
-%patch0 -p1
+%patch -P 0 -p1
 
 %build
 
