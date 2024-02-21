@@ -75,9 +75,9 @@ AIFF or FLAC.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P 0 -p1
 %ifnarch x86_64
-%patch1 -p1
+%patch -P 1 -p1
 %endif
 
 %build
