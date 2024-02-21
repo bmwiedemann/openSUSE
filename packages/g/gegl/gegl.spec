@@ -1,7 +1,7 @@
 #
 # spec file for package gegl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,6 @@ BuildRequires:  asciidoc
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection-devel >= 1.32.0
 BuildRequires:  gtk-doc
-BuildRequires:  libSDL2-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libspiro-devel
 BuildRequires:  libstdc++-devel
@@ -82,6 +81,7 @@ BuildRequires:  pkgconfig(pango) >= 1.38.0
 BuildRequires:  pkgconfig(pangocairo) >= 1.38.0
 BuildRequires:  pkgconfig(poppler-glib) >= 0.71.0
 BuildRequires:  pkgconfig(pygobject-3.0)
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vapigen) >= 0.20.0
 # since version 0.3.5, we no longer provide an orig-addon package, as ffmpeg/libav
 # exists in Tumbleweed and we use it to build

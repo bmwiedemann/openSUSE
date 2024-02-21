@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 20 10:19:01 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Replace BuildRequires libSDL2-devel with pkgconfig(sdl2) which
+  fixes building in SLE where both libSDL2-devel and a newer
+  SDL2-devel packages are available.
+
+-------------------------------------------------------------------
 Mon Jun 26 14:21:34 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.4.46:
