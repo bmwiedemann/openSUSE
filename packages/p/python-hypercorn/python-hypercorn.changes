@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Thu Jan 25 11:08:52 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update requirements
+- Skip Pythons <3.11 in order to avoid immature taskgroup backport
+
+-------------------------------------------------------------------
+Fri Jan 12 23:06:27 UTC 2024 - vivid <absolutely.vivid@fastmail.org>
+
+- Create package from upstream version 0.16.0
