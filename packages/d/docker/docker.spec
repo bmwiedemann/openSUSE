@@ -31,9 +31,9 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define real_version 24.0.7
-%define git_version 311b9ff0aa93
-%define git_commit_epoch 1698306665
+%define real_version 25.0.3
+%define git_version f417435e5
+%define git_commit_epoch 1706746344
 
 Name:           docker
 Version:        %{real_version}_ce
@@ -72,11 +72,6 @@ Patch201:       0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
 Patch202:       0005-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
 # UPSTREAM: Backport of <https://github.com/docker/cli/pull/4228>.
 Patch900:       cli-0001-docs-include-required-tools-in-source-tree.patch
-# bugfix for:
-# bsc#1219438: CVE-2024-23653
-# bsc#1219268: CVE-2024-23652
-# bsc#1219267: CVE-2024-23651
-Patch901:       0006-Vendor-in-latest-buildkit-v0.11-branch-including-CVE.patch
 BuildRequires:  audit
 BuildRequires:  bash-completion
 BuildRequires:  ca-certificates
@@ -225,8 +220,6 @@ cp %{SOURCE130} .
 %patch -P201 -p1
 # Solves apparmor issues on SLE-12, but okay for newer SLE versions too.
 %patch -P202 -p1
-# temporary buildkit bugfixes
-%patch -P901 -p1
 
 %build
 %sysusers_generate_pre %{SOURCE160} %{name} %{name}.conf

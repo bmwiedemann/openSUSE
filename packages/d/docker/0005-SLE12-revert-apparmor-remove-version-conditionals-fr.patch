@@ -1,7 +1,7 @@
-From e4c2b3e6b168e815ec7248aea696afe807153cb6 Mon Sep 17 00:00:00 2001
+From 079e8a9eefc639772d8849cea26727ea0918a74b Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Wed, 11 Oct 2023 21:19:12 +1100
-Subject: [PATCH 5/6] SLE12: revert "apparmor: remove version-conditionals from
+Subject: [PATCH 5/5] SLE12: revert "apparmor: remove version-conditionals from
  template"
 
 This reverts the following commits:
@@ -17,15 +17,16 @@ apparmor_parser version is quite old.
 
 Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
 ---
- contrib/apparmor/main.go      | 16 ++++++++++++++--
- contrib/apparmor/template.go  | 16 ++++++++++++++++
- pkg/aaparser/aaparser.go      |  2 --
- profiles/apparmor/apparmor.go | 14 ++++++++++++--
- profiles/apparmor/template.go |  4 ++++
- 5 files changed, 46 insertions(+), 6 deletions(-)
+ contrib/apparmor/main.go      | 16 ++++++-
+ contrib/apparmor/template.go  | 16 +++++++
+ pkg/aaparser/aaparser.go      | 86 +++++++++++++++++++++++++++++++++++
+ profiles/apparmor/apparmor.go | 16 ++++++-
+ profiles/apparmor/template.go |  4 ++
+ 5 files changed, 134 insertions(+), 4 deletions(-)
+ create mode 100644 pkg/aaparser/aaparser.go
 
 diff --git a/contrib/apparmor/main.go b/contrib/apparmor/main.go
-index d67890d265..f4a2978b86 100644
+index 899d8378ed..93f98cbd20 100644
 --- a/contrib/apparmor/main.go
 +++ b/contrib/apparmor/main.go
 @@ -6,9 +6,13 @@ import (
@@ -156,24 +157,107 @@ index 58afcbe845..e6d0b6d37c 100644
      /lib/** rm,
      /usr/bin/xz rm,
 diff --git a/pkg/aaparser/aaparser.go b/pkg/aaparser/aaparser.go
-index 3d7c2c5a97..2b5a2605f9 100644
---- a/pkg/aaparser/aaparser.go
+new file mode 100644
+index 0000000000..89b48b2dba
+--- /dev/null
 +++ b/pkg/aaparser/aaparser.go
-@@ -13,8 +13,6 @@ const (
- )
- 
- // GetVersion returns the major and minor version of apparmor_parser.
--//
--// Deprecated: no longer used, and will be removed in the next release.
- func GetVersion() (int, error) {
- 	output, err := cmd("", "--version")
- 	if err != nil {
+@@ -0,0 +1,86 @@
++// Package aaparser is a convenience package interacting with `apparmor_parser`.
++package aaparser // import "github.com/docker/docker/pkg/aaparser"
++
++import (
++	"fmt"
++	"os/exec"
++	"strconv"
++	"strings"
++)
++
++const (
++	binary = "apparmor_parser"
++)
++
++// GetVersion returns the major and minor version of apparmor_parser.
++func GetVersion() (int, error) {
++	output, err := cmd("", "--version")
++	if err != nil {
++		return -1, err
++	}
++
++	return parseVersion(output)
++}
++
++// cmd runs `apparmor_parser` with the passed arguments.
++func cmd(dir string, arg ...string) (string, error) {
++	c := exec.Command(binary, arg...)
++	c.Dir = dir
++
++	output, err := c.CombinedOutput()
++	if err != nil {
++		return "", fmt.Errorf("running `%s %s` failed with output: %s\nerror: %v", c.Path, strings.Join(c.Args, " "), output, err)
++	}
++
++	return string(output), nil
++}
++
++// parseVersion takes the output from `apparmor_parser --version` and returns
++// a representation of the {major, minor, patch} version as a single number of
++// the form MMmmPPP {major, minor, patch}.
++func parseVersion(output string) (int, error) {
++	// output is in the form of the following:
++	// AppArmor parser version 2.9.1
++	// Copyright (C) 1999-2008 Novell Inc.
++	// Copyright 2009-2012 Canonical Ltd.
++
++	lines := strings.SplitN(output, "\n", 2)
++	words := strings.Split(lines[0], " ")
++	version := words[len(words)-1]
++
++	// trim "-beta1" suffix from version="3.0.0-beta1" if exists
++	version = strings.SplitN(version, "-", 2)[0]
++	// also trim "~..." suffix used historically (https://gitlab.com/apparmor/apparmor/-/commit/bca67d3d27d219d11ce8c9cc70612bd637f88c10)
++	version = strings.SplitN(version, "~", 2)[0]
++
++	// split by major minor version
++	v := strings.Split(version, ".")
++	if len(v) == 0 || len(v) > 3 {
++		return -1, fmt.Errorf("parsing version failed for output: `%s`", output)
++	}
++
++	// Default the versions to 0.
++	var majorVersion, minorVersion, patchLevel int
++
++	majorVersion, err := strconv.Atoi(v[0])
++	if err != nil {
++		return -1, err
++	}
++
++	if len(v) > 1 {
++		minorVersion, err = strconv.Atoi(v[1])
++		if err != nil {
++			return -1, err
++		}
++	}
++	if len(v) > 2 {
++		patchLevel, err = strconv.Atoi(v[2])
++		if err != nil {
++			return -1, err
++		}
++	}
++
++	// major*10^5 + minor*10^3 + patch*10^0
++	numericVersion := majorVersion*1e5 + minorVersion*1e3 + patchLevel
++	return numericVersion, nil
++}
 diff --git a/profiles/apparmor/apparmor.go b/profiles/apparmor/apparmor.go
-index d0f2361605..b3566b2f73 100644
+index 1edfc53002..0d23b940bd 100644
 --- a/profiles/apparmor/apparmor.go
 +++ b/profiles/apparmor/apparmor.go
-@@ -14,8 +14,10 @@ import (
- 	"github.com/docker/docker/pkg/aaparser"
+@@ -11,10 +11,14 @@ import (
+ 	"path"
+ 	"strings"
+ 	"text/template"
++
++	"github.com/docker/docker/pkg/aaparser"
  )
  
 -// profileDirectory is the file store for apparmor profiles and macros.
@@ -185,7 +269,7 @@ index d0f2361605..b3566b2f73 100644
  
  // profileData holds information about the given profile for generation.
  type profileData struct {
-@@ -27,6 +29,8 @@ type profileData struct {
+@@ -26,6 +30,8 @@ type profileData struct {
  	Imports []string
  	// InnerImports defines the apparmor functions to import in the profile.
  	InnerImports []string
@@ -194,7 +278,7 @@ index d0f2361605..b3566b2f73 100644
  }
  
  // generateDefault creates an apparmor profile from ProfileData.
-@@ -46,6 +50,12 @@ func (p *profileData) generateDefault(out io.Writer) error {
+@@ -45,6 +51,12 @@ func (p *profileData) generateDefault(out io.Writer) error {
  		p.InnerImports = append(p.InnerImports, "#include <abstractions/base>")
  	}
  
@@ -208,10 +292,10 @@ index d0f2361605..b3566b2f73 100644
  }
  
 diff --git a/profiles/apparmor/template.go b/profiles/apparmor/template.go
-index 9f207e2014..626e5f6789 100644
+index cf8c34ce8a..4ebd647e14 100644
 --- a/profiles/apparmor/template.go
 +++ b/profiles/apparmor/template.go
-@@ -24,12 +24,14 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
+@@ -23,12 +23,14 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
    capability,
    file,
    umount,
@@ -226,7 +310,7 @@ index 9f207e2014..626e5f6789 100644
  
    deny @{PROC}/* w,   # deny write for all files directly in /proc (not in a subdir)
    # deny write to files not in /proc/<number>/** or /proc/sys/**
-@@ -50,7 +52,9 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
+@@ -49,7 +51,9 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
    deny /sys/devices/virtual/powercap/** rwklx,
    deny /sys/kernel/security/** rwklx,
  
@@ -237,5 +321,5 @@ index 9f207e2014..626e5f6789 100644
  }
  `
 -- 
-2.43.0
+2.39.0
 

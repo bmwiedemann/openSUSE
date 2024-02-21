@@ -1,7 +1,7 @@
-From a309d7e57c351a5f81a0cf9a342205ab790f60ba Mon Sep 17 00:00:00 2001
+From 99fb19fd177d211063394a56348ecd9987fd17aa Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Fri, 29 Jun 2018 17:59:30 +1000
-Subject: [PATCH 4/6] bsc1073877: apparmor: clobber docker-default profile on
+Subject: [PATCH 4/5] bsc1073877: apparmor: clobber docker-default profile on
  start
 
 In the process of making docker-default reloading far less expensive,
@@ -22,10 +22,10 @@ Signed-off-by: Aleksa Sarai <asarai@suse.de>
  3 files changed, 17 insertions(+), 6 deletions(-)
 
 diff --git a/daemon/apparmor_default.go b/daemon/apparmor_default.go
-index 6376001613..5fde21a4af 100644
+index 81e10b6cbe..e695667a19 100644
 --- a/daemon/apparmor_default.go
 +++ b/daemon/apparmor_default.go
-@@ -24,6 +24,15 @@ func DefaultApparmorProfile() string {
+@@ -23,6 +23,15 @@ func DefaultApparmorProfile() string {
  	return ""
  }
  
@@ -41,7 +41,7 @@ index 6376001613..5fde21a4af 100644
  func ensureDefaultAppArmorProfile() error {
  	if apparmor.HostSupports() {
  		loaded, err := aaprofile.IsLoaded(defaultAppArmorProfile)
-@@ -37,10 +46,7 @@ func ensureDefaultAppArmorProfile() error {
+@@ -36,10 +45,7 @@ func ensureDefaultAppArmorProfile() error {
  		}
  
  		// Load the profile.
@@ -54,10 +54,10 @@ index 6376001613..5fde21a4af 100644
  	return nil
  }
 diff --git a/daemon/apparmor_default_unsupported.go b/daemon/apparmor_default_unsupported.go
-index e3dc18b32b..9c77230562 100644
+index be4938f5b6..2b326fea58 100644
 --- a/daemon/apparmor_default_unsupported.go
 +++ b/daemon/apparmor_default_unsupported.go
-@@ -3,6 +3,10 @@
+@@ -2,6 +2,10 @@
  
  package daemon // import "github.com/docker/docker/daemon"
  
@@ -69,11 +69,11 @@ index e3dc18b32b..9c77230562 100644
  	return nil
  }
 diff --git a/daemon/daemon.go b/daemon/daemon.go
-index 4d76c57988..15c95b50c4 100644
+index 05b933ca86..cced9c9a8d 100644
 --- a/daemon/daemon.go
 +++ b/daemon/daemon.go
-@@ -839,8 +839,9 @@ func NewDaemon(ctx context.Context, config *config.Config, pluginStore *plugin.S
- 		logrus.Warnf("Failed to configure golang's threads limit: %v", err)
+@@ -900,8 +900,9 @@ func NewDaemon(ctx context.Context, config *config.Config, pluginStore *plugin.S
+ 		log.G(ctx).Warnf("Failed to configure golang's threads limit: %v", err)
  	}
  
 -	// ensureDefaultAppArmorProfile does nothing if apparmor is disabled
@@ -81,9 +81,9 @@ index 4d76c57988..15c95b50c4 100644
 +	// Make sure we clobber any pre-existing docker-default profile to ensure
 +	// that upgrades to the profile actually work smoothly.
 +	if err := clobberDefaultAppArmorProfile(); err != nil {
- 		logrus.Errorf(err.Error())
+ 		log.G(ctx).Errorf(err.Error())
  	}
  
 -- 
-2.43.0
+2.39.0
 

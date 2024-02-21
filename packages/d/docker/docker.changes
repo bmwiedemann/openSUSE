@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Feb 17 12:56:22 UTC 2024 - Danish Prakash <danish.prakash@suse.com>
+
+- Update to Docker 25.0.3-ce. See upstream changelong online at
+  <https://docs.docker.com/engine/release-notes/25.0/#2503>
+- Fixes:
+  * bsc#1219267 - CVE-2024-23651
+  * bsc#1219268 - CVE-2024-23652
+  * bsc#1219438 - CVE-2024-23653
+- Rebase patches:
+  * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  * 0003-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+  * 0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  * 0005-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+  * cli-0001-docs-include-required-tools-in-source-tree.patch
+- Remove upstreamed patches:
+  - 0006-Vendor-in-latest-buildkit-v0.11-branch-including-CVE.patch
+
+-------------------------------------------------------------------
 Wed Feb 14 08:40:36 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - Vendor latest buildkit v0.11:
