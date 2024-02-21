@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 08:33:05 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Jun  3 00:19:00 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - DEPRECATED: JRuby no longer maintains org.jruby.util.ByteList as

@@ -1,7 +1,7 @@
 #
 # spec file for package bytelist
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -41,7 +41,7 @@ A small java library for manipulating lists of bytes.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
-%patch0 -p1
+%patch -P 0 -p1
 
 find -name '*.class' -delete
 find -name '*.jar' -delete
