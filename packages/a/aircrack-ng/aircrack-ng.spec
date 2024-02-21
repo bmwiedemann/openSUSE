@@ -1,7 +1,7 @@
 #
 # spec file for package aircrack-ng
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,8 +67,7 @@ BuildArch:      noarch
 Development files for %{name}.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 find patches/ -type f -exec sed -i 's|\r||g' {} +
 cp "%{SOURCE1}" .
 # Force python3 interpreter
