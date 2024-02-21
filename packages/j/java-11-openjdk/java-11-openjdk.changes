@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:39:23 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Jan 18 11:44:48 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream tag jdk-11.0.22+7 (January 2024 CPU)

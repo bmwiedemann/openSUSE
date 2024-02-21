@@ -543,4 +543,12 @@
     <comment>January 2024 CPU</comment>
     <requestid>1139696</requestid>
   </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>7517fcd1635756e18430533e95ede47b</srcmd5>
+    <version>11.0.22.0</version>
+    <time>1708534356</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148214</requestid>
+  </revision>
 </revisionlist>

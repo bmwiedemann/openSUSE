@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package java-11-openjdk
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -347,9 +347,9 @@ Requires:       jpackage-utils
 Requires:       mozilla-nss
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
-Requires(posttrans):java-ca-certificates
+Requires(posttrans): java-ca-certificates
 # Postun requires update-alternatives to uninstall tool update-alternatives.
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     tzdata-java8
 Obsoletes:      %{name}-accessibility
 %if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
@@ -387,7 +387,7 @@ Requires:       %{name} = %{version}-%{release}
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 # Standard JPackage devel provides.
 Provides:       java-%{javaver}-devel = %{version}
@@ -447,7 +447,7 @@ Requires:       jpackage-utils
 # Post requires update-alternatives to install javadoc alternative.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall javadoc alternative.
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 # Standard JPackage javadoc provides.
@@ -484,49 +484,49 @@ rm -rvf src/java.desktop/share/native/libsplashscreen/giflib
 rm -rvf src/java.desktop/share/native/liblcms/cms*
 rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch8 -p1
-%patch10 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 8 -p1
+%patch -P 10 -p1
+%patch -P 12 -p1
+%patch -P 13 -p1
+%patch -P 14 -p1
 
 %if %{with_system_pcsc}
-%patch15 -p1
+%patch -P 15 -p1
 %endif
 
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
+%patch -P 16 -p1
+%patch -P 17 -p1
+%patch -P 18 -p1
 
-%patch19 -p1
+%patch -P 19 -p1
 
-%patch20 -p1
+%patch -P 20 -p1
 
-%patch21 -p1
+%patch -P 21 -p1
 
-%patch30 -p1
+%patch -P 30 -p1
 
 # s390 build fixes
 
 %ifarch s390
-%patch100 -p1
-%patch101 -p1
+%patch -P 100 -p1
+%patch -P 101 -p1
 %endif
 
-%patch200 -p1
+%patch -P 200 -p1
 
 %ifarch %{arm6}
-%patch201
+%patch -P 201
 %endif
 
-%patch302 -p1
-%patch303 -p1
+%patch -P 302 -p1
+%patch -P 303 -p1
 
-%patch500
-%patch501
+%patch -P 500
+%patch -P 501
 
 # Extract systemtap tapsets
 
