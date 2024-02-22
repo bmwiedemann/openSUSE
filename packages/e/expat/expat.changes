@@ -1,10 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 20 12:21:17 UTC 2024 - David Anes <david.anes@suse.com>
+
+- Fix handling of xmlwf.1 to avoid workarounds in specfile:
+  * Added libxml2-fix-xmlwf.1-handling.patch 
+
+- Call buildconf.sh to avoid (future) issues with expat_config.h.in
+
+-------------------------------------------------------------------
 Mon Feb 12 20:44:14 UTC 2024 - David Anes <david.anes@suse.com>
 
 - Update keyring automatically from keyserver during OBS service run.
 - Explicitly use --without-docbook (before it was implicit).
 - Include missing files for documentation and examples.
-- Add manpage for xmlwf, which is not available in the release tarball.
+- Add manpage for xmlwf, which is now available in the released tarball.
 - Clean the spec file a bit.
 
 - Update to 2.6.0: 
