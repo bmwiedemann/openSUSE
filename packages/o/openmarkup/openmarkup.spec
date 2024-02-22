@@ -1,7 +1,7 @@
 #
 # spec file for package openmarkup
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -82,7 +82,7 @@ information embedded in the object descriptions.
 cp %{SOURCE1} %{SOURCE2} .
 # wrong end of line encoding
 sed -i -e 's/.$//' doc/javadoc/stylesheet.css doc/javadoc/package-list Copyright.txt LICENSE.txt
-%patch0 -p1
+%patch -P 0 -p1
 
 %build
 ant \
