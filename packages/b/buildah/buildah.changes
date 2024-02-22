@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 12:59:44 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Allow to disable apparmor support (ALP supports only SELinux) 
+
+-------------------------------------------------------------------
 Thu Dec 14 07:42:07 UTC 2023 - danish.prakash@suse.com
 
 - Drop 0001-set-makefile-target-entrypoint.gz-as-.PHONY-on-non-x.patch

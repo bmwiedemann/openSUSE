@@ -634,4 +634,12 @@
     <comment></comment>
     <requestid>1132992</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>3978092f3c26d9c1fee1e7ddac8b0f0c</srcmd5>
+    <version>1.34.0</version>
+    <time>1708632049</time>
+    <user>anag+factory</user>
+    <comment>- Allow to disable apparmor support (ALP supports only SELinux) (forwarded request 1149361 from kukuk)</comment>
+    <requestid>1149365</requestid>
+  </revision>
 </revisionlist>

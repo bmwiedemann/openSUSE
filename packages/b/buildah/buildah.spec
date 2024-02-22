@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
+%bcond_without  apparmor
 
 %define project github.com/containers/buildah
 Name:           buildah
@@ -33,7 +34,9 @@ BuildRequires:  git
 BuildRequires:  glib2-devel-static
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
+%if %{with apparmor}
 BuildRequires:  libapparmor-devel
+%endif
 BuildRequires:  libassuan-devel >= 2.5.2
 BuildRequires:  libbtrfs-devel
 BuildRequires:  libgpgme-devel
