@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Jan 31 03:55:26 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.45.1.0
+  * Features
+    ~ sqlite
+      + upgrade to sqlite 3.45.1 (8a47fb0)
+  * Fixes
+    ~ jdbc
+      + support CTE and REPLACE syntax with
+        Statement#getGeneratedKeys (2cf1b26)
+  * Build
+    ~ deps
+      + bump org.graalvm.sdk:nativeimage from 23.1.1 to 23.1.2
+        (a84e560)
+    ~ deps-dev
+      + bump org.assertj:assertj-core from 3.25.1 to 3.25.2
+        (2e336d9)
+      + bump org.mockito:mockito-core from 5.9.0 to 5.10.0
+        (0eb6cb8)
+
+-------------------------------------------------------------------
+Fri Jan 19 04:03:52 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.45.0.0
+  * Features
+    ~ jdbc
+      + reintroduce improved support for Statement#getGeneratedKeys
+        (f7d49f6)
+    ~ sqlite
+      + upgrade to sqlite 3.45.0 (961e6c1)
+  * Build
+    ~ build-native
+      + migrate upload/download to v4 syntax (02d0371)
+    ~ deps
+      + bump surefire.version from 3.2.3 to 3.2.5 (e37b720)
+      + bump org.apache.maven.plugins:maven-compiler-plugin
+        (5520295)
+      + bump org.jreleaser:jreleaser-maven-plugin (1cb9462)
+      + bump actions/download-artifact from 3 to 4 (47c2b52)
+      + bump org.apache.maven.plugins:maven-compiler-plugin
+        (f094bff)
+      + bump surefire.version from 3.2.2 to 3.2.3 (585d0d0)
+      + bump actions/upload-artifact from 3 to 4 (d58b364)
+      + bump org.apache.maven.plugins:maven-javadoc-plugin
+        (1f57928)
+      + bump actions/setup-java from 3 to 4 (0874939)
+    ~ deps-dev
+      + bump org.mockito:mockito-core from 5.8.0 to 5.9.0 (93cd00c)
+      + bump org.assertj:assertj-core from 3.24.2 to 3.25.1
+        (688fa0c)
+      + bump org.mockito:mockito-core from 5.7.0 to 5.8.0 (7d44a45)
+      + bump ch.qos.logback:logback-classic (16216ac)
+      + bump com.tngtech.archunit:archunit-junit5 (e8d6c7a)
+    ~ unscoped
+      + add 2024 folder for amalgamation download (2da5480)
+
+-------------------------------------------------------------------
 Mon Nov 27 16:41:54 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v3.44.1.0
