@@ -1,7 +1,7 @@
 #
 # spec file for package bsf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Bean Scripting Framework
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://commons.apache.org/bsf/
+URL:            https://commons.apache.org/bsf/
 Source0:        http://www.apache.org/dist/commons/bsf/source/%{name}-src-%{version}.tar.gz
 Source1:        bsf-pom.xml
 Source1000:     http://www.apache.org/dist/commons/bsf/source/%{name}-src-%{version}.tar.gz.asc
@@ -33,11 +33,10 @@ BuildRequires:  ant
 BuildRequires:  apache-commons-logging
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  rhino
 BuildRequires:  xalan-j2
 #!BuildIgnore:  jline1
-Requires:       mvn(commons-logging:commons-logging)
 BuildArch:      noarch
 
 %description
@@ -83,8 +82,8 @@ Framework.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 find -name \*.jar -delete
 
 %build
@@ -99,7 +98,8 @@ install -m 644 build/lib/%{name}.jar \
             %{buildroot}%{_javadir}/%{name}.jar
 
 # pom and depmap frag
-install -DTm 644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
+install -d -m 755 %{buildroot}%{_mavenpomdir}
+%{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
 %add_maven_depmap JPP-%{name}.pom %{name}.jar -a "org.apache.bsf:%{name}"
 
 # javadoc

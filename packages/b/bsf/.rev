@@ -253,4 +253,12 @@
     <comment>jline -&gt; jline1</comment>
     <requestid>761735</requestid>
   </revision>
+  <revision rev="33" vrev="18">
+    <srcmd5>a04fe6cbd2e80d2a0c7089d63c52573d</srcmd5>
+    <version>2.4.0</version>
+    <time>1708631727</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148459</requestid>
+  </revision>
 </revisionlist>

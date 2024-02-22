@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 08:27:05 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Jan  8 07:30:23 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - BuildIgnore jline1 instead of jline, since the dependency of
