@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Feb 21 17:54:16 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.8.0:
+  * Bump the actions group with 1 update
+  * Bump the actions group with 5 updates
+  * chore(goreleaser): fix name_template
+  * chore(goreleaser): fix the deprecation warning
+  * chore(goreleaser): fix the deprecation warning
+  * Bumping go version to v1.21
+  * Add dependabot contribution to prevent immediate PRs
+  * Add dependabot
+  * fix: reorder arguments calling NewClientSet (#118)
+  * FIX PR #98 -- advanced node taint querying (#113)
+  * refactor: Add option struct to optimize parameter transfer
+    (#112)
+  * Add flags for user and group impersonation
+  * FIX PR #93 (#110)
+  * Updating dependencies
+  * chore(deps): upgrade cobra to 1.7.0 to fix zsh autocompletion
+    sourcing
+  * Update README to include --no-taint
+  * Fix goreleaser
+  * Add a flag to exclude tainted nodes
+  * update golang
+
+-------------------------------------------------------------------
 Wed Sep 20 05:11:38 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - rework %prep section, trim Summary

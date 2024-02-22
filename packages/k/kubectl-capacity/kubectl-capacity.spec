@@ -1,7 +1,7 @@
 #
 # spec file for package kubectl-capacity
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kubectl-capacity
-Version:        0.7.4
+Version:        0.8.0
 Release:        0
 Summary:        Show resource requests, limits, and utilization in a Kubernetes cluster
 License:        Apache-2.0

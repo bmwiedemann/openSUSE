@@ -7,4 +7,12 @@
     <comment>new package kubectl-capacity: CLI that provides an overview of the resource requests, limits, and utilization in a Kubernetes cluster</comment>
     <requestid>1112415</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>857211f203f9e2e73416df27383373d9</srcmd5>
+    <version>0.8.0</version>
+    <time>1708631860</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1148863</requestid>
+  </revision>
 </revisionlist>
