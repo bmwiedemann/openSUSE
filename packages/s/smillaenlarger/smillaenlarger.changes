@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 07:00:02 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Sun Nov 11 10:52:36 UTC 2018 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - 0.9.0+git.2017.11.21:

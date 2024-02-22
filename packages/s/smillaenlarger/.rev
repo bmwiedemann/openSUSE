@@ -32,4 +32,13 @@ NB! SLE_11_SP2 i586 is succeeded, also other SLE will be if libjpeg issue is fix
     <comment></comment>
     <requestid>648283</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c808c89f46a2a5e47952115c0bd7a4ba</srcmd5>
+    <version>0.9.0+git.2017.11.21</version>
+    <time>1708631927</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1148990</requestid>
+  </revision>
 </revisionlist>
