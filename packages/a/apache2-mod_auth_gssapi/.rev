@@ -31,4 +31,12 @@
     <comment>update to 1.6.5; changed upstream to https://github.com/gssapi/mod_auth_gssapi, as https://github.com/modauthgssapi/mod_auth_gssapi has no releases, no activity and looks fishy (forwarded request 1099032 from ojkastl_buildservice)</comment>
     <requestid>1105260</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9519b95e37c0b48378336412c6e1bcf5</srcmd5>
+    <version>1.6.5</version>
+    <time>1708631947</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1147823 from dimstar)</comment>
+    <requestid>1149074</requestid>
+  </revision>
 </revisionlist>

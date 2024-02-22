@@ -59,8 +59,7 @@ mod_auth_kerb. Its aim is to use only GSSAPI calls and be
 as much as possible agnostic of the actual mechanism used.
 
 %prep
-%setup -q -n mod_auth_gssapi-%{version}
-%patch0 -p1
+%autosetup -p1 -n mod_auth_gssapi-%{version}
 
 %build
 export APACHE="%{_sbindir}/httpd"
