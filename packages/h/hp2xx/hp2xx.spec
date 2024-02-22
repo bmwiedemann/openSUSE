@@ -49,10 +49,10 @@ of popular graphics formats, both vector and raster.
 
 %prep
 %setup -q
-%patch0 -p1 -b .fix
-%patch1 -p1
-%patch2
-%patch3 -p1
+%patch -P 0 -p1 -b .fix
+%patch -P 1 -p1
+%patch -P 2
+%patch -P 3 -p1
 
 %build
 make %{?_smp_mflags} CC="gcc" OPTFLAGS="%{optflags}" LFLAGS="-L/usr/X11R6/%{_lib}"
