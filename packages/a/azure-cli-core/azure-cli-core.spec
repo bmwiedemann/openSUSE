@@ -73,8 +73,7 @@ BuildArch:      noarch
 Microsoft Azure CLI Core Module
 
 %prep
-%setup -q -n azure-cli-core-%{version}
-%patch0 -p1
+%autosetup -p1 -n azure-cli-core-%{version}
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-cli-core-%{version}
