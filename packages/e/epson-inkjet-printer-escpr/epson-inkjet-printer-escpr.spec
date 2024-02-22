@@ -64,8 +64,7 @@ installed package see the PPD files in this directory:
 %{_datadir}/cups/model/manufacturer-PPDs/epson-inkjet-printer-escpr
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 # Specify location of CUPS filter and ppd files explicitly.
