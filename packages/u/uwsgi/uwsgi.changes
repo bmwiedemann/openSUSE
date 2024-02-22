@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:39:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Sat Jan  6 23:23:03 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.0.23

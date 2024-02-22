@@ -440,13 +440,8 @@ This package contains support for PHP version 7.
 %endif
 
 %prep
-%setup -q -n uwsgi-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%autosetup -p1 -n uwsgi-%{version}
+
 # Generate a config that builds all plugins except for examples and stuff we
 # can't satisfy the requirements for or are just broken
 excluded_plugins=""
