@@ -16,18 +16,16 @@
 #
 
 
-%define ver 3.1.9
+%define ver 3.1.10
 %define so_name lib%{name}-%(echo %{ver} | tr '.' '_')
 Name:           Rivet
 Version:        %{ver}
 Release:        0
 Summary:        A toolkit for validation of Monte Carlo event generators
-License:        GPL-2.0-only and Apache-2.0 and MPL-2.0 and LPPL-1.3a and BSL-1.0
+License:        Apache-2.0 AND GPL-2.0-only AND MPL-2.0 AND LPPL-1.3a AND BSL-1.0
 URL:            https://rivet.hepforge.org/
 Source:         https://www.hepforge.org/archive/rivet/%{name}-%{version}.tar.gz
 Patch0:         sover.diff
-# PATCH-FIX-UPSTREAM
-Patch1:         https://gitlab.com/hepcedar/rivet/-/commit/da703f9af71300a16116466ecfc8f9b4800b8988.patch#/fix_HepMC_327_compat.patch
 BuildRequires:  HepMC-devel >= 3.2
 BuildRequires:  YODA-devel >= 1.8.0
 BuildRequires:  bash-completion
@@ -177,7 +175,11 @@ echo "%{_libdir}/%{name}" > %{buildroot}%{_sysconfdir}/ld.so.conf.d/%{name}-plug
 chmod -x %{buildroot}%{_datadir}/Rivet/ALICE_2012_I1126966.info \
          %{buildroot}%{_datadir}/Rivet/ALICE_2014_I1243865.info \
          %{buildroot}%{_datadir}/Rivet/STAR_2017_I1510593.{info,plot} \
-         %{buildroot}%{_datadir}/Rivet/ATLAS_2019_I1772071.{cc,plot}
+         %{buildroot}%{_datadir}/Rivet/ATLAS_2019_I1772071.{cc,plot} \
+         %{buildroot}%{_datadir}/Rivet/ATLAS_2022_I2152933.cc \
+         %{buildroot}%{_datadir}/Rivet/ATLAS_2022_I2152933.info \
+         %{buildroot}%{_datadir}/Rivet/ATLAS_2022_I2152933.plot \
+         %{buildroot}%{_datadir}/Rivet/ATLAS_2023_I2628732.info
 
 mkdir -p %{buildroot}%{_datadir}/bash-completion/completions
 mv %{buildroot}/etc/bash_completion.d/rivet-completion %{buildroot}%{_datadir}/bash-completion/completions/

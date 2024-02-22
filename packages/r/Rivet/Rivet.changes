@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 19 12:33:40 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.10:
+	* Add CMS_2023_I2703254: ttbb in lepton+jets at 13 TeV
+- Drop fix_HepMC_327_compat.patch: upstreamed.
+
+-------------------------------------------------------------------
 Sat Jan  6 10:06:00 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 3.1.9:
