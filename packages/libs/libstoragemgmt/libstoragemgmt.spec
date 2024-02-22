@@ -1,7 +1,7 @@
 #
 # spec file for package libstoragemgmt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/libstorage/libstoragemgmt
 Source0:        https://github.com/libstorage/libstoragemgmt/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        system-user-libstoragemgmt.conf
-Patch1:         move_to_run.patch
+Patch0:         move_to_run.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libconfig-devel
@@ -145,7 +145,7 @@ Summary:        Files for SMI-S generic array support for %{name}
 Group:          Development/Languages/Python
 Requires:       python3-%{name} = %{version}
 Requires(post): python3-%{name} = %{version}
-Requires(postun):python3-%{name} = %{version}
+Requires(postun): python3-%{name} = %{version}
 BuildArch:      noarch
 %if 0%{python3}
 Requires:       python3-pywbem
@@ -162,7 +162,7 @@ Summary:        Files for targetd array support for %{name}
 Group:          Development/Languages/Python
 Requires:       python3-%{name} = %{version}
 Requires(post): python3-%{name} = %{version}
-Requires(postun):python3-%{name} = %{version}
+Requires(postun): python3-%{name} = %{version}
 BuildArch:      noarch
 
 %description    targetd-plugin
@@ -182,7 +182,7 @@ Summary:        Files for LSI MegaRAID support for %{name}
 Group:          Development/Languages/Python
 Requires:       python3-%{name} = %{version}
 Requires(post): python3-%{name} = %{version}
-Requires(postun):python3-%{name} = %{version}
+Requires(postun): python3-%{name} = %{version}
 BuildArch:      noarch
 
 %description    megaraid-plugin
@@ -194,7 +194,7 @@ Summary:        Files for HP SmartArray support for %{name}
 Group:          Development/Languages/Python
 Requires:       python3-%{name} = %{version}
 Requires(post): python3-%{name} = %{version}
-Requires(postun):python3-%{name} = %{version}
+Requires(postun): python3-%{name} = %{version}
 BuildArch:      noarch
 
 %description    hpsa-plugin
@@ -207,7 +207,7 @@ Group:          Development/Languages/Python
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       python3-%{name} = %{version}
 Requires(post): python3-%{name} = %{version}
-Requires(postun):python3-%{name} = %{version}
+Requires(postun): python3-%{name} = %{version}
 
 %description    nfs-plugin
 The %{name}-nfs-plugin package contains the plugin for nfs based storage.
@@ -217,7 +217,7 @@ Summary:        Files for HP local pseudo support for %{name}
 Group:          Development/Languages/Python
 Requires:       python3-%{name} = %{version}
 Requires(post): python3-%{name} = %{version}
-Requires(postun):python3-%{name} = %{version}
+Requires(postun): python3-%{name} = %{version}
 BuildArch:      noarch
 
 %description    local-plugin
@@ -229,7 +229,7 @@ Summary:        Files for Microsemi storage support for %{name}
 Group:          Development/Languages/Python
 Requires:       python3-%{name} = %{version}
 Requires(post): python3-%{name} = %{version}
-Requires(postun):python3-%{name} = %{version}
+Requires(postun): python3-%{name} = %{version}
 BuildArch:      noarch
 
 %description    arcconf-plugin
@@ -237,8 +237,7 @@ The %{name}-arcconf-plugin package contains the plugin for Microsemi
 storage.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 # Needed for patch0

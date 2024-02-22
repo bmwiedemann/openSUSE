@@ -333,4 +333,13 @@
   * Fips correction #528</comment>
     <requestid>1079977</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>31099a7b8d43f51d381d5d9934ba07fe</srcmd5>
+    <version>1.9.8</version>
+    <time>1708631735</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1148500</requestid>
+  </revision>
 </revisionlist>
