@@ -1,7 +1,7 @@
 #
 # spec file for package bsh2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2008, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -37,7 +37,7 @@ BuildRequires:  fdupes
 BuildRequires:  glassfish-servlet-api
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javacc
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 Requires:       bsf
 Requires:       javapackages-tools
 BuildArch:      noarch
@@ -90,9 +90,9 @@ Scripting for Java (BeanShell Version 2.x) (demo and samples).
 
 %prep
 %setup -q -n beanshell-%{version}
-%patch3 -p1
-%patch1001 -p1
-%patch1002 -p1
+%patch -P 3 -p1
+%patch -P 1001 -p1
+%patch -P 1002 -p1
 
 sed -i 's,org.apache.xalan.xslt.extensions.Redirect,http://xml.apache.org/xalan/redirect,' docs/manual/xsl/*.xsl
 
@@ -111,7 +111,7 @@ done
 
 # poms
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -m 644 pom.xml \
+%{mvn_install_pom} pom.xml \
     %{buildroot}%{_mavenpomdir}/JPP.%{name}-bsh.pom
 %add_maven_depmap JPP.%{name}-bsh.pom %{name}/bsh.jar -a org.beanshell:%{name},bsh:bsh,bsh:bsh-bsf,org.beanshell:bsh
 
