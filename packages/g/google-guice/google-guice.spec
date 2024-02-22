@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package google-guice
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ BuildRequires:  glassfish-servlet-api
 BuildRequires:  google-errorprone-annotations
 BuildRequires:  guava
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsr-305
 BuildRequires:  objectweb-asm
 Provides:       %{short_name}-multibindings = %{version}
@@ -168,20 +168,6 @@ This package provides %{summary}.
 %pom_disable_module spring extensions
 %pom_disable_module testlib extensions
 
-%pom_change_dep -r -f ::::: :::::
-
-%pom_remove_parent core
-%pom_xpath_inject pom:project "
-  <groupId>com.google.inject</groupId>
-  <version>%{version}</version>" core
-
-for mdl in assistedinject dagger-adapter grapher jmx jndi persist servlet spring struts2 testlib throwingproviders; do
-  %pom_remove_parent extensions/${mdl}
-  %pom_xpath_inject pom:project "
-  <groupId>com.google.inject.extensions</groupId>
-  <version>%{version}</version>" extensions/${mdl}
-done
-
 %build
 mkdir -p lib
 build-jar-repository -s lib \
@@ -219,27 +205,27 @@ install -pm 0644 extensions/grapher/target/guice-grapher-%{version}.jar \
 
 # poms
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{short_name}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}/guice-parent.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}/guice-parent.pom
 %add_maven_depmap %{short_name}/guice-parent.pom -f parent
-install -pm 0644 bom/pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}/guice-bom.pom
+%{mvn_install_pom} bom/pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}/guice-bom.pom
 %add_maven_depmap %{short_name}/guice-bom.pom -f bom
-install -pm 0644 extensions/pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}/extensions-parent.pom
+%{mvn_install_pom} extensions/pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}/extensions-parent.pom
 %add_maven_depmap %{short_name}/extensions-parent.pom -a org.sonatype.sisu.inject:extensions-parent -f extensions
 
-install -pm 0644 core/pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}/%{name}.pom
+%{mvn_install_pom} core/pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}/%{name}.pom
 %add_maven_depmap %{short_name}/%{name}.pom %{short_name}/%{name}.jar -a "org.sonatype.sisu:sisu-guice,com.google.inject:guice::no_aop:,org.sonatype.sisu:sisu-guice::no_aop:"
 
-install -pm 0644 extensions/jmx/pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}/guice-jmx.pom
+%{mvn_install_pom} extensions/jmx/pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}/guice-jmx.pom
 %add_maven_depmap %{short_name}/guice-jmx.pom %{short_name}/guice-jmx.jar -a org.sonatype.sisu.inject:guice-jmx -f jmx
-install -pm 0644 extensions/assistedinject/pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}/guice-assistedinject.pom
+%{mvn_install_pom} extensions/assistedinject/pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}/guice-assistedinject.pom
 %add_maven_depmap %{short_name}/guice-assistedinject.pom %{short_name}/guice-assistedinject.jar -a org.sonatype.sisu.inject:guice-assistedinject -f assistedinject
-install -pm 0644 extensions/throwingproviders/pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}/guice-throwingproviders.pom
+%{mvn_install_pom} extensions/throwingproviders/pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}/guice-throwingproviders.pom
 %add_maven_depmap %{short_name}/guice-throwingproviders.pom %{short_name}/guice-throwingproviders.jar -a org.sonatype.sisu.inject:guice-throwingproviders -f throwingproviders
-install -pm 0644 extensions/servlet/pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}/guice-servlet.pom
+%{mvn_install_pom} extensions/servlet/pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}/guice-servlet.pom
 %add_maven_depmap %{short_name}/guice-servlet.pom %{short_name}/guice-servlet.jar -a org.sonatype.sisu.inject:guice-servlet -f servlet
-install -pm 0644 extensions/jndi/pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}/guice-jndi.pom
+%{mvn_install_pom} extensions/jndi/pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}/guice-jndi.pom
 %add_maven_depmap %{short_name}/guice-jndi.pom %{short_name}/guice-jndi.jar -a org.sonatype.sisu.inject:guice-jndi -f jndi
-install -pm 0644 extensions/grapher/pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}/guice-grapher.pom
+%{mvn_install_pom} extensions/grapher/pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}/guice-grapher.pom
 %add_maven_depmap %{short_name}/guice-grapher.pom %{short_name}/guice-grapher.jar -a org.sonatype.sisu.inject:guice-grapher -f grapher
 
 # javadoc
