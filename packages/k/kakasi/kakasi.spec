@@ -64,8 +64,8 @@ Obsoletes:      kakasidi < %{version}
 The base dictionary of KAKASI
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
+
 # w: version-control-internal-file
 rm -rf doc/CVS
 # non-linux-readme
