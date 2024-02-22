@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Feb 21 17:55:20 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.1:
+  * helm: add arkade chart bump to bump chart versions
+  * feat: support tilt since 0.33.15
+
+-------------------------------------------------------------------
+Tue Feb 20 20:54:46 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.0:
+  * Add oci extract command
+  * Bump github.com/google/go-containerregistry from 0.17.0 to
+    0.19.0
+  * add support of cloud-hypervisor and ch-remote binary
+  * Fix arkade get for kail on darwin&arm64
+  * Bump golang.org/x/crypto from 0.17.0 to 0.18.0
+  * Use Go 1.21 for e2e checker
+  * Limit builds for same SHA
+  * Move to Go 1.21 for builds and minimum version
+
+-------------------------------------------------------------------
 Thu Feb 01 19:53:25 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.10.20:
