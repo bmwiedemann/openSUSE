@@ -1,7 +1,7 @@
 #
 # spec file for package mtx
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           mtx
 Version:        1.3.12
 Release:        0
 Summary:        A Program for Controlling the Robotic Mechanism in DDS Auto Loaders
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Hardware/Other
-Url:            https://sourceforge.net/projects/mtx/
+URL:            https://sourceforge.net/projects/mtx/
 Source:         http://downloads.sourceforge.net/project/%{name}/%{name}-stable/%{version}/%{name}-%{version}.tar.gz
 Patch0:         %{name}-1.3.12-param_h.patch
 Patch2:         %{name}-1.3.12-autoconf.patch
@@ -37,10 +37,10 @@ libraries.
 
 %prep
 %setup -q
-%patch0
-%patch2
-%patch3
-%patch4 -p2
+%patch -P 0
+%patch -P 2
+%patch -P 3
+%patch -P 4 -p2
 
 %build
 autoreconf -fvi
