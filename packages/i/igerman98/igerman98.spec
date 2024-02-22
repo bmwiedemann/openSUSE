@@ -90,8 +90,7 @@ description is given in %{_docdir}/ispell/README of the
 package ispell.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 

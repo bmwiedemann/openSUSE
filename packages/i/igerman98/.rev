@@ -231,4 +231,12 @@
     <comment>- remove aspell dictionaries [bsc#1052951] (forwarded request 516072 from pgajdos)</comment>
     <requestid>516073</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>9116ff14a0dcded62ce5cd99c48a5bc7</srcmd5>
+    <version>20161207</version>
+    <time>1708632127</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1149443 from dimstar)</comment>
+    <requestid>1149590</requestid>
+  </revision>
 </revisionlist>
