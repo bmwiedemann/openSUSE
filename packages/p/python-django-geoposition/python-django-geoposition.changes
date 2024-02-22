@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 04:31:32 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Sun Dec 26 11:25:13 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Use django-codemod to fix Django 4 support
