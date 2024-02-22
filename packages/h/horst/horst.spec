@@ -41,8 +41,8 @@ deep packet inspection and has features for ad-hoc (IBSS) mode and
 mesh networks.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
+
 if [ -z "$SOURCE_DATE_EPOCH" ]; then
 # Remove build time references so build-compare can do its work
 FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y')
