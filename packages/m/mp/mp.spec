@@ -106,8 +106,7 @@ Features
     * It helps you abandon vi, emacs and other six-legged freaks definitely.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags}"
