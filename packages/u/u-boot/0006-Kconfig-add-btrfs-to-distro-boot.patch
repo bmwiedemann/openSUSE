@@ -13,7 +13,7 @@ Signed-off-by: Matthias Brugger <mbrugger@suse.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/boot/Kconfig b/boot/Kconfig
-index fbc49c5bca..be576696c4 100644
+index fbc49c5bca4..be576696c44 100644
 --- a/boot/Kconfig
 +++ b/boot/Kconfig
 @@ -815,6 +815,7 @@ config DISTRO_DEFAULTS

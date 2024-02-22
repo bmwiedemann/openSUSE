@@ -1,6 +1,6 @@
-From b3cc55f71a99a60030ad611685dff7b8ed332791 Mon Sep 17 00:00:00 2001
+From d08b7a6b3ce8a6e28199338127999746a7701470 Mon Sep 17 00:00:00 2001
 From: "Ivan T. Ivanov" <iivanov@suse.de>
-Date: Fri, 15 Dec 2023 10:17:14 +0100
+Date: Tue, 23 Jan 2024 10:07:55 +0200
 Subject: [PATCH] rpi5: Use devicetree to retrieve board revision
 
 Firmware on RPi5 return error on board revision query
@@ -13,13 +13,17 @@ revision.
 		linux,serial = <0x6cf44e80 0x3c533ede>;
 	};
 
+Reviewed-by: Matthias Brugger <mbrugger@suse.com>
+Tested-by: Jens Maus <mail@jens-maus.de>
+Tested by: Darko Alavanja <darko.alavanja@konsulko.com>
 Signed-off-by: Ivan T. Ivanov <iivanov@suse.de>
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
 ---
  board/raspberrypi/rpi/rpi.c | 22 +++++++++++++++++++---
  1 file changed, 19 insertions(+), 3 deletions(-)
 
 diff --git a/board/raspberrypi/rpi/rpi.c b/board/raspberrypi/rpi/rpi.c
-index cd823ad746..2851ebc985 100644
+index cd823ad7465..2851ebc9853 100644
 --- a/board/raspberrypi/rpi/rpi.c
 +++ b/board/raspberrypi/rpi/rpi.c
 @@ -171,6 +171,11 @@ static const struct rpi_model rpi_models_new_scheme[] = {

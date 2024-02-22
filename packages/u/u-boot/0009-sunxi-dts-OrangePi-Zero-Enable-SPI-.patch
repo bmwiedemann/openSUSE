@@ -13,7 +13,7 @@ Signed-off-by: Matthias Brugger <mbrugger@suse.com>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/arch/arm/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/dts/sun8i-h2-plus-orangepi-zero.dts
-index c3660f72d9..80c1e66b38 100644
+index c3660f72d9e..80c1e66b38c 100644
 --- a/arch/arm/dts/sun8i-h2-plus-orangepi-zero.dts
 +++ b/arch/arm/dts/sun8i-h2-plus-orangepi-zero.dts
 @@ -164,8 +164,8 @@

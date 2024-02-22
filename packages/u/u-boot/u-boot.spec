@@ -250,10 +250,10 @@ Patch0016:      0016-cmd-boot-add-brom-cmd-to-reboot-to-.patch
 Patch0017:      0017-rpi5-add-initial-memory-map-for-bcm.patch
 Patch0018:      0018-rpi5-Use-devicetree-as-alternative-.patch
 Patch0019:      0019-rpi5-Use-devicetree-to-retrieve-boa.patch
-Patch0020:      0020-bcm2835-brcm-bcm2708-fb-device-is-u.patch
+Patch0020:      0020-bcm2835-Dynamically-calculate-bytes.patch
 Patch0021:      0021-mmc-bcmstb-Add-support-for-bcm2712-.patch
 Patch0022:      0022-configs-rpi_arm64-enable-SDHCI-BCMS.patch
-Patch0023:      0023-pci-pcie-brcmstb-Add-bcm2712-PCIe-c.patch
+Patch0023:      0023-configs-rpi_arm64-build-position-in.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison

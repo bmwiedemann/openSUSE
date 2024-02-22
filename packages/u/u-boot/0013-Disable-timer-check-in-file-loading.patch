@@ -25,7 +25,7 @@ Signed-off-by: Matthias Brugger <mbrugger@suse.com>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/lib/efi_loader/efi_disk.c b/lib/efi_loader/efi_disk.c
-index f0d76113b0..314af7e202 100644
+index f0d76113b00..314af7e2022 100644
 --- a/lib/efi_loader/efi_disk.c
 +++ b/lib/efi_loader/efi_disk.c
 @@ -19,6 +19,7 @@

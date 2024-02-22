@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 14 10:09:59 UTC 2024 - Matthias Brugger <mbrugger@suse.com>
+
+Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2024.01
+* Patches dropped:
+  0020-bcm2835-brcm-bcm2708-fb-device-is-u.patch
+  0023-pci-pcie-brcmstb-Add-bcm2712-PCIe-c.patch
+* Patches added:
+  0020-bcm2835-Dynamically-calculate-bytes.patch
+  0023-configs-rpi_arm64-build-position-in.patch
+
+-------------------------------------------------------------------
 Fri Jan 12 12:37:19 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Install u-boot-spl.bin.normal.out for StarFive Visionfive2
