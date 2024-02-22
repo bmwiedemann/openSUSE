@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 21 16:38:46 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 4.0.0:
+  * Dropped support for end-of-life Python 3.7.
+    Support PyPy 3.9
+  * Replace deprecated locked_cached_property decorator with
+    cached_property.
+- Drop patch which is now included in 4.0.0 (which replaces
+  deprecated locked_cached_property decorator):
+  * support-flask-2.4.patch
+
+-------------------------------------------------------------------
 Thu Nov 30 13:24:16 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add %{?sle15_python_module_pythons}

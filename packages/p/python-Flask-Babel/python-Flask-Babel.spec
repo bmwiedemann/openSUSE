@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Babel
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2014 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,14 +19,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Flask-Babel
-Version:        3.1.0
+Version:        4.0.0
 Release:        0
 Summary:        i18n and l10n support for Flask
 License:        BSD-3-Clause
 URL:            https://github.com/python-babel/flask-babel
 Source:         https://github.com/python-babel/flask-babel/archive/refs/tags/v%{version}.tar.gz#/Flask-Babel-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#python-babel/flask-babel#230
-Patch0:         support-flask-2.4.patch
 BuildRequires:  %{python_module Babel >= 2.12}
 BuildRequires:  %{python_module Flask >= 2.0}
 BuildRequires:  %{python_module Jinja2 >= 3.1}
