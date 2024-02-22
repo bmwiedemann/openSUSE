@@ -84,4 +84,12 @@
 - Fix missing dependency on lua-macros (boo#1205612)</comment>
     <requestid>1061054</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>e07a9095d2658cfb6935846e4adc85a4</srcmd5>
+    <version>1.0.93</version>
+    <time>1708631989</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN.</comment>
+    <requestid>1149138</requestid>
+  </revision>
 </revisionlist>

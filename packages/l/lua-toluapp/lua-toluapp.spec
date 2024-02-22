@@ -1,7 +1,7 @@
 #
 # spec file for package lua-toluapp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,9 +48,9 @@ Patch4:         toluapp-scons-py3.patch
 Patch5:         scons-0.98.1-Options-deprecated.patch
 #PATCH-FIX-OPENSUSE mlin@suse.com - scons env.Copy() has been deprecated, use env.Clone() instead if needed
 Patch6:         toluapp-fix-deprecared-env-copy.patch
-BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-devel
 BuildRequires:  gcc-c++
+BuildRequires:  lua-macros
 BuildRequires:  pkgconfig
 BuildRequires:  scons >= 2.3.0
 %lua_provides
@@ -100,14 +100,14 @@ This package provides development headers for tolua++.
 
 %prep
 %setup -q -n toluapp-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
 %if "%{flavor}" != "lua51"
-%patch3 -p1
+%patch -P 3 -p1
 %endif
 sed -i "s/@SUFFIX@/%{lua_version}/" SConstruct
 
@@ -149,9 +149,9 @@ libdir=%{_libdir}
 sharedlibdir=%{_libdir}
 includedir=%{_includedir}
 
-Name: tolua++
+Name:           tolua++
 Description: C/C++ with Lua Integration Tool
-Version: %{version}
+Version:        %{version}
 
 Libs: -ltolua++-%{lua_version}
 Cflags: -I%{_includedir}
@@ -167,6 +167,7 @@ ln -sf %{_sysconfdir}/alternatives/tolua++ %{buildroot}%{_bindir}/tolua++
 
 %post -n libtolua++-%{lua_suffix}-1 -p /sbin/ldconfig
 %postun -n libtolua++-%{lua_suffix}-1 -p /sbin/ldconfig
+
 %post -n toluapp-%{lua_version}
 /sbin/ldconfig
 %{_sbindir}/update-alternatives --install %{_bindir}/tolua++ tolua++ %{_bindir}/toluapp-%{lua_version} %{lua_value}
