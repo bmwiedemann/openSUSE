@@ -1,7 +1,7 @@
 #
 # spec file for package gnu-getopt
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,12 @@ Release:        0
 Summary:        Java getopt Implementation
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Java
-URL:            http://www.urbanophile.com/arenn/hacking/download.html
+URL:            https://www.urbanophile.com/arenn/hacking/download.html
 Source0:        http://www.urbanophile.com/arenn/hacking/getopt/java-getopt-%{version}.tar.gz
 Patch0:         %{name}-java8compat.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -52,7 +51,7 @@ classes.
 
 %prep
 %setup -q -c
-%patch0
+%patch -P 0
 mv gnu/getopt/buildx.xml build.xml
 
 %build
@@ -70,7 +69,8 @@ cp -a build/api/* %{buildroot}%{_javadocdir}/%{name}
 
 %files
 %defattr(0644,root,root,0755)
-%doc gnu/getopt/COPYING.LIB gnu/getopt/README
+%license gnu/getopt/COPYING.LIB
+%doc gnu/getopt/README
 %{_javadir}/*
 
 %files javadoc
