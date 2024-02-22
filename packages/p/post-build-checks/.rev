@@ -997,4 +997,13 @@ Marcus
   * Add abuild to trusted group without using usermod</comment>
     <requestid>1123797</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>6771f0d82fe60bfeba3ead3e9dd5d7b5</srcmd5>
+    <version>84.87+git20240215.a1dbe5c</version>
+    <time>1708631772</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 84.87+git20240215.a1dbe5c:
+  * Set SOURCE_DATE_EPOCH (2nd try)</comment>
+    <requestid>1146859</requestid>
+  </revision>
 </revisionlist>
