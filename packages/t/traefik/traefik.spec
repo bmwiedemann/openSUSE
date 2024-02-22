@@ -1,7 +1,7 @@
 #
 # spec file for package traefik
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,7 @@ Pointing Traefik at your orchestrator should be the only configuration step you 
 tar -xf %{SOURCE1}
 
 # unpack webui
-tar -xf %{SOURCE4}
+tar -xf %{SOURCE4} -C webui --strip-components=2
 
 # see script/generate
 go generate
@@ -66,9 +66,9 @@ build_date=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +"%%Y%%m%%d")
 CGO_ENABLED=0 GOGC=off go build \
   -buildmode=pie \
   -mod=vendor \
-  -ldflags "-X github.com/traefik/traefik/v3/pkg/version.Version=%{version} \
-            -X github.com/traefik/traefik/v3/pkg/version.Codename='' \
-            -X github.com/traefik/traefik/v3/pkg/version.BuildDate=${build_date}" \
+  -ldflags "-X github.com/traefik/traefik/v2/pkg/version.Version=%{version} \
+            -X github.com/traefik/traefik/v2/pkg/version.Codename='' \
+            -X github.com/traefik/traefik/v2/pkg/version.BuildDate=${build_date}" \
   -installsuffix nocgo \
   -o traefik \
   ./cmd/traefik
