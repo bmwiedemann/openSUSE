@@ -1,7 +1,7 @@
 #
 # spec file for package libregraphapi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,9 @@ License:        Apache-2.0
 URL:            https://github.com/owncloud/libre-graph-api-cpp-qt-client
 Source:         https://github.com/owncloud/libre-graph-api-cpp-qt-client/archive/v%{version}.tar.gz#/libre-graph-api-cpp-qt-client-%{version}.tar.gz
 BuildRequires:  cmake
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6Network)
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -53,12 +53,12 @@ This package contains development files for libregraphapi.
 
 %build
 cd client
-%cmake -DBUILD_SHARED_LIBS=ON
-%cmake_build
+%cmake_qt6 -DBUILD_SHARED_LIBS=ON
+%qt6_build
 
 %install
 cd client
-%cmake_install
+%qt6_install
 
 %ldconfig_scriptlets -n libLibreGraphAPI%{sover}
 

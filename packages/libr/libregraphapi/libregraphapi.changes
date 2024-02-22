@@ -1,8 +1,25 @@
 -------------------------------------------------------------------
+Sun Feb 11 19:31:21 UTC 2024 - Klaas Freitag <opensuse@freisturz.de>
+
+- remove unneeded build requires for compilers 
+
+-------------------------------------------------------------------
+Sun Feb 11 19:25:54 UTC 2024 - Klaas Freitag <opensuse@freisturz.de>
+
+- use qt6 build macros as suggested by reviewer 
+
+-------------------------------------------------------------------
+Sun Jan 14 11:55:39 UTC 2024 - Klaas Freitag <opensuse@freisturz.de>
+
+- Disabled multibuild, only Qt6 build for efficiency. oC is the 
+  only consumer and is switching to Qt6
+
+-------------------------------------------------------------------
 Fri May 12 07:56:33 UTC 2023 - Klaas Freitag <opensuse@freisturz.de>
 
 - Update to version 1.0.4
-  Removed patch 0001-cmake_fixes.patch - changes went upstream 
+  * Removed patch 0001-cmake_fixes.patch - changes went upstream 
+  * Enabled multibuild for Qt5 and Qt6
 
 -------------------------------------------------------------------
 Thu Feb 23 09:58:24 UTC 2023 - Christophe Marin <christophe@krop.fr>
