@@ -77,7 +77,7 @@ mkdir html-4.01
 (cd html-4.01 && tar zxf $RPM_SOURCE_DIR/html401.tgz)
 cp -p %{SOURCE7} .
 %{INSTALL_DATA} %{SOURCE8} README.SUSE
-%patch0 -p1
+%patch -P 0 -p1
 find . -type f | xargs chmod 644
 find . -type d | xargs chmod 755
 
