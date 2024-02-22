@@ -443,4 +443,13 @@ reviewed ok
 - update courier-authlib.keyring with new signing key</comment>
     <requestid>1143022</requestid>
   </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>13b37a75a1dd6e5825d402a584f67053</srcmd5>
+    <version>0.72.1</version>
+    <time>1708631793</time>
+    <user>anag+factory</user>
+    <comment>- Change to %autosetup as RPM 4.20 will no longer support %patchN
+</comment>
+    <requestid>1148815</requestid>
+  </revision>
 </revisionlist>

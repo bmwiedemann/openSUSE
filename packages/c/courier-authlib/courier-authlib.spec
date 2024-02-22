@@ -41,7 +41,7 @@ BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel >= 9.1
-BuildRequires:  pkgconfig(libidn2)
+BuildRequires:  pkgconfig(libidn2) >= 2.0.5
 BuildRequires:  pkgconfig(systemd)
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 BuildRequires:  postgresql-server-devel
@@ -128,8 +128,7 @@ library. Install this package in order to be able to authenticate using
 SQLite.
 
 %prep
-%setup -q
-%patch0
+%autosetup
 
 %build
 export CFLAGS="%{optflags} -DLDAP_DEPRECATED=1"
@@ -142,7 +141,7 @@ export CFLAGS="%{optflags} -DLDAP_DEPRECATED=1"
 	--enable-unicode \
 	--with-authdaemonvar=%{_rundir}/%{name} \
 	--host=%{_host} --build=%{_build} --target=%{_target_platform}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
