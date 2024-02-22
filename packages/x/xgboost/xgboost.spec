@@ -1,7 +1,7 @@
 #
 # spec file for package xgboost
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,15 +37,13 @@ BuildRequires:  ant
 BuildRequires:  apache-commons-logging
 BuildRequires:  cmake >= 3.5
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  kryo
 BuildRequires:  objenesis
 BuildRequires:  python3
 BuildRequires:  scala
 BuildRequires:  scala-ant
 BuildRequires:  typesafe-config
-BuildRequires:  xmvn-install
-BuildRequires:  xmvn-resolve
 %if 0%{?suse_version} <= 1500
 BuildRequires:  gcc8-c++ >= 8.1
 %else
@@ -68,17 +66,14 @@ BuildArch:      noarch
 %setup -q
 cp %{SOURCE1} jvm-packages/%{artifactId}/build.xml
 %ifarch s390x ppc64
-%patch0
+%patch -P 0
 %endif
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 %pom_xpath_set pom:project/pom:properties/pom:scala.version %{scala_version} jvm-packages
 %pom_xpath_set pom:project/pom:properties/pom:scala.binary.version %{scala_short_version} jvm-packages
 %pom_remove_dep ":scala-collection-compat_\${scala.binary.version}" jvm-packages/%{artifactId}
-
-%{mvn_alias} :{*}_{*} :@1
-%{mvn_package} :xgboost-jvm __noinstall
 
 %build
 pushd jvm-packages

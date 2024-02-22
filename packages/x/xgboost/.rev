@@ -39,4 +39,12 @@
     <comment>Upgrading the scala stack</comment>
     <requestid>1117471</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4d06828cf43133c25265a380c59085f1</srcmd5>
+    <version>2.0.0</version>
+    <time>1708631896</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148922</requestid>
+  </revision>
 </revisionlist>
