@@ -1,0 +1,29 @@
+From e0a8b84f68993fccbe70c4fb1cd8402fa7371147 Mon Sep 17 00:00:00 2001
+From: Jan Zerebecki <jan.suse@zerebecki.de>
+Date: Thu, 15 Feb 2024 07:58:44 +0100
+Subject: [PATCH 2/3] log build time if it is set from SOURCE_DATE_EPOCH
+
+---
+ build/build.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/build/build.c b/build/build.c
+index f2cf98c8b..2693d80b3 100644
+--- a/build/build.c
++++ b/build/build.c
+@@ -35,8 +35,11 @@ static rpm_time_t getBuildTime(void)
+         epoch = strtol(srcdate, &endptr, 10);
+         if (srcdate == endptr || *endptr || errno != 0)
+             rpmlog(RPMLOG_ERR, _("unable to parse SOURCE_DATE_EPOCH\n"));
+-        else
++        else {
+             buildTime = (uint32_t) epoch;
++	    rpmlog(RPMLOG_NOTICE, _("using %s with value %ld as build time\n"),
++		"SOURCE_DATE_EPOCH", buildTime);
++	}
+     } else
+         buildTime = (uint32_t) time(NULL);
+ 
+-- 
+2.30.2
+

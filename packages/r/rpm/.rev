@@ -2515,4 +2515,19 @@ See bugzilla 1167537 for the gory details.</comment>
     <comment>- update to rpm-4.19.1.1</comment>
     <requestid>1145411</requestid>
   </revision>
+  <revision rev="314" vrev="2">
+    <srcmd5>b888911ad2c07d280f572e25b52fa791</srcmd5>
+    <version>4.19.1.1</version>
+    <time>1708631771</time>
+    <user>anag+factory</user>
+    <comment>Changed this how you suggested.
+
+- Add patches to enable reproducible builds by default (bsc#1148824). For
+  upstream versions see:
+  https://github.com/rpm-software-management/rpm/pull/2880
+  0001-Add-option-to-set-mtime-of-files-in-rpms.patch
+  0002-log-build-time-if-it-is-set-from-SOURCE_DATE_EPOCH.patch
+  0003-Error-out-on-a-missing-changelog-date.patch (forwarded request 1146788 from jzerebecki)</comment>
+    <requestid>1146851</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 15 10:14:07 UTC 2024 - Jan Zerebecki <jan.suse@zerebecki.de>
+
+- Add patches to enable reproducible builds by default (bsc#1148824). For
+  upstream versions see:
+  https://github.com/rpm-software-management/rpm/pull/2880
+  0001-Add-option-to-set-mtime-of-files-in-rpms.patch
+  0002-log-build-time-if-it-is-set-from-SOURCE_DATE_EPOCH.patch
+  0003-Error-out-on-a-missing-changelog-date.patch
+
+-------------------------------------------------------------------
 Fri Feb  9 11:34:31 CET 2024 - mls@suse.de
 
 - update to rpm-4.19.1.1

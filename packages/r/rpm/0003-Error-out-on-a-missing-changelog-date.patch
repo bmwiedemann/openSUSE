@@ -1,0 +1,30 @@
+From 973f94bafea8e641ed747d3c420ea1bc2e1cb37f Mon Sep 17 00:00:00 2001
+From: Jan Zerebecki <jan.suse@zerebecki.de>
+Date: Thu, 15 Feb 2024 08:03:05 +0100
+Subject: [PATCH 3/3] Error out on a missing changelog date
+
+if it is needed as the source for SOURCE_DATE_EPOCH, instead of only
+logging a warning.
+---
+ build/build.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/build/build.c b/build/build.c
+index 2693d80b3..ce7bc8b88 100644
+--- a/build/build.c
++++ b/build/build.c
+@@ -344,8 +344,10 @@ static rpmRC buildSpec(rpmts ts, BTA_t buildArgs, rpmSpec spec, int what)
+ 	    setenv("SOURCE_DATE_EPOCH", sdestr, 0);
+ 	    rpmtdFreeData(&td);
+ 	} else {
+-	    rpmlog(RPMLOG_WARNING, _("source_date_epoch_from_changelog set but "
++	    rpmlog(RPMLOG_ERR, _("source_date_epoch_from_changelog set but "
+ 	        "%%changelog is missing\n"));
++	    rc = RPMRC_FAIL;
++	    goto exit;
+ 	}
+     }
+ 
+-- 
+2.30.2
+

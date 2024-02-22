@@ -113,6 +113,9 @@ Patch135:       selinux_transactional_update.patch
 Patch136:       rpmsort_reverse.diff
 Patch138:       canongnu.diff
 Patch139:       cmake_python_version.diff
+Patch140:       0001-Add-option-to-set-mtime-of-files-in-rpms.patch
+Patch141:       0002-log-build-time-if-it-is-set-from-SOURCE_DATE_EPOCH.patch
+Patch142:       0003-Error-out-on-a-missing-changelog-date.patch
 Patch6464:      auto-config-update-aarch64-ppc64le.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #
@@ -227,6 +230,7 @@ rm -rf sqlite
 %patch -P 122 -P 123
 %patch -P 131          -P 133 -P 134 -P 135 -P 136        -P 138
 %patch -P 139
+%patch -P 140 -P 141 -P 142 -p1
 
 %ifarch aarch64 ppc64le riscv64
 %patch6464
