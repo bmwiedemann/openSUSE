@@ -1,7 +1,7 @@
 #
 # spec file for package jing-trang
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -122,9 +122,9 @@ cp %{SOURCE2} trang.pom
 cp %{SOURCE10} .
 mv gcj/{trang,jing}.1 .
 
-%patch0 -p1
-%patch2 -p1
-%patch3 -p1
+%patch -P 0 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 rm -f \
   mod/schematron/src/main/com/thaiopensource/validate/schematron/OldSaxonSchemaReaderFactory.java
 sed -i -e 's/\r//g' lib/isorelax.copying.txt

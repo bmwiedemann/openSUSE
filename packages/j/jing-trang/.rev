@@ -71,4 +71,12 @@
     <comment>build with saxon10 instead of saxon9</comment>
     <requestid>1105118</requestid>
   </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>2af20faf4ecbdeacf5e2a76275db039d</srcmd5>
+    <version>20220510</version>
+    <time>1708631758</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148590</requestid>
+  </revision>
 </revisionlist>
