@@ -1,7 +1,7 @@
 #
 # spec file for package nanoxml
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2005, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -79,8 +79,8 @@ Java documentation for %{name}.
 
 %prep
 %setup -q -n NanoXML-%{version}
-%patch0
-%patch1
+%patch -P 0
+%patch -P 1
 cp %{SOURCE1} package-list
 find . -name "*.jar" -delete
 
