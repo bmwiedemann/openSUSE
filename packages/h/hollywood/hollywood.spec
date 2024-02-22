@@ -86,8 +86,7 @@ This utility will split the console into a multiple panes of news
 and statistics, like any good computer screen on Wall Street.
 
 %prep
-%setup -q
-%patch0 -p0
+%autosetup -p0
 
 %build
 
