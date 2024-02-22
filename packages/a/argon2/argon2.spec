@@ -77,8 +77,7 @@ password hashing function that won the Password Hashing Competition
 (PHC) in 2015.
 
 %prep
-%setup -n phc-winner-argon2-%version
-%patch1 -p1
+%autosetup -n phc-winner-argon2-%version -p1
 
 %build
 %make
