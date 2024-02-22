@@ -2,6 +2,7 @@
 # spec file for package tmux
 #
 # Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           tmux
-Version:        3.3a
+Version:        3.4
 Release:        0
 Summary:        Terminal multiplexer
 License:        ISC AND BSD-3-Clause AND BSD-2-Clause
@@ -27,16 +28,11 @@ Source0:        https://github.com/tmux/tmux/releases/download/%{version}/%{name
 Source1:        bash_completion_tmux.sh
 # PATCH-FIX-OPENSUSE crrodriguez@opensuse.org -- Use /run/tmux instead of /tmp as the default socket path, this add some robustness against accidental deletion via systemd-tmpfiles-clean, tmpwatch, or similar
 Patch0:         tmux-socket-path.patch
-# CVE-2022-47016 [bsc#1207393], Null pointer dereference in window.c
-Patch1:         tmux-CVE-2022-47016.patch
-# new ncurses secure interface fix
-Patch2:         ncurses.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
+BuildRequires:  bison
 BuildRequires:  pkgconfig
 BuildRequires:  utempter-devel
-BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libevent) >= 2.0
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(ncurses)
 %{?systemd_ordering}
 
@@ -57,8 +53,11 @@ to (display and accept keyboard input from) multiple clients.
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-autoreconf
-%configure --disable-utf8proc --with-TERM=screen-256color --enable-systemd
+%configure \
+	--with-TERM=screen-256color \
+	--enable-systemd \
+	--enable-sixel \
+	%{nil}
 %make_build
 
 %install

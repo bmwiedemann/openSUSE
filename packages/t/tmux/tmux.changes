@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 16 20:31:59 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- tmux 3.4
+  * Improve handling of newer Unicode combined characters
+  * Add basic support for SIXEL images
+  * Add support for spawning panes in separate cgroups with systemd
+  * Add support for OSC 8 hyperlinks.
+  * Expanded configuration options
+  * Improved detection and support of terminal options
+  * Tweaks to UI and behavior
+- drop patches:
+  * ncurses.patch
+  * tmux-CVE-2022-47016.patch
+
+-------------------------------------------------------------------
 Tue May  2 15:37:28 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - add ncurses.patch for compactibility with new ncurses 
