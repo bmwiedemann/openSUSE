@@ -54,10 +54,10 @@ GUI.
 
 %prep
 %setup -q
-%patch0
-%patch1
-%patch3
-%patch4 -p1
+%patch -P 0
+%patch -P 1
+%patch -P 3
+%patch -P 4 -p1
 
 %build
 autoreconf -fi

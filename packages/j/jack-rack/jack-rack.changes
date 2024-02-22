@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 08:08:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Apr 18 10:37:27 UTC 2023 - Max Lin <mlin@suse.com>
 
 - Porting ecarack to python3 (boo#1210581)
