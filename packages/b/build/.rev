@@ -1722,4 +1722,23 @@ Changes:
 - SLE 15 SP6 config</comment>
     <requestid>1138097</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>20f2db26cb6c4fbb5f4e3cf8e0d0fc6a</srcmd5>
+    <version>20240221</version>
+    <time>1708631774</time>
+    <user>anag+factory</user>
+    <comment>- ProductCompose: multiple improvements
+- Add buildflags:define_specfile support
+- Fix copy-in of git subdirectory sources
+- pbuild: Speed up XML parsing
+- pubild: product compose support
+- generate_sbom: add help option
+- podman: enforce runtime=runc
+- Implement direct conflicts from the distro config
+- changelog2spec: fix time zone handling
+- Do not unmount /proc/sys/fs/binfmt_misc before runnint the check scripts
+- spec file cleanup
+- documentation updates</comment>
+    <requestid>1148764</requestid>
+  </revision>
 </revisionlist>
