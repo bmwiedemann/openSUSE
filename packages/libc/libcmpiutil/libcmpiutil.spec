@@ -1,7 +1,7 @@
 #
 # spec file for package libcmpiutil
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -81,11 +81,11 @@ standardizing method dispatch and argument checking.
 
 %prep
 %setup -q
-%patch1 -p1
+%patch -P 1 -p1
 %ifarch %arm
-%patch2 -p1
+%patch -P 2 -p1
 %endif
-%patch3 -p1
+%patch -P 3 -p1
 chmod -x *.c *.y *.h *.l
 
 %build

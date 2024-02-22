@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 10:09:07 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Jun 23 12:32:10 UTC 2022 - Klaus Kämpf <kkaempf@suse.com>
 
 - adapt to latest autotools
