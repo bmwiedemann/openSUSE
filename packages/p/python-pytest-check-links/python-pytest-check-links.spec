@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-check-links
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_with test
 %{?sle15_python_module_pythons}
 Name:           python-pytest-check-links
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        Pytest plugin for checking links in files
 License:        BSD-3-Clause
@@ -36,7 +36,7 @@ Requires:       python-html5lib
 Requires:       python-pytest >= 2.8
 Requires:       python-requests
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-jupyter_nbconvert
 Recommends:     python-jupyter_nbformat
 BuildArch:      noarch

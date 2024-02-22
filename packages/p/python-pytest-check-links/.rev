@@ -93,4 +93,18 @@
   * Add more linting #100</comment>
     <requestid>1100441</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>317ea50fede9a82837691a52f66b4660</srcmd5>
+    <version>0.9.1</version>
+    <time>1708631993</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.1:
+  * Update for new version of requests-cache #127 (@blink1073)
+  * Update ruff config #122 (@blink1073)
+  * Clean up lint handling #119 (@blink1073)
+  * Adopt ruff format #118 (@blink1073)
+  * chore: update pre-commit hooks #117 (@pre-commit-ci)
+  * Ignore __main__ for coverage #116 (@blink1073)</comment>
+    <requestid>1149145</requestid>
+  </revision>
 </revisionlist>
