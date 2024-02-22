@@ -38,10 +38,10 @@ for different packet sizes for each end of the link.
 
 %prep
 %setup
-%patch0
-%patch1
-%patch2
-%patch3 -p1
+%patch -P 0
+%patch -P 1
+%patch -P 2
+%patch -P 3 -p1
 
 %build
 make CC="%__cc" CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing" %{?_smp_mflags}

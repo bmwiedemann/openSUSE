@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 10:10:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon May 14 07:14:21 UTC 2018 - adam.majer@suse.de
 
 - Don't install using trusted group (bnc#1092157)
