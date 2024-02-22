@@ -65,8 +65,7 @@ heavily recommended.
 Find server maps in /usr/share/bzflag/maps.
 
 %prep
-%setup -q -a 3
-%patch0 -p1
+%autosetup -p1 -a 3
 cp %{SOURCE2} .
 cp %{SOURCE7} .
 
