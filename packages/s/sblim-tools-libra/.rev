@@ -126,4 +126,13 @@ No indication of IPL or CPL licenses in the package (forwarded request 159919 fr
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>842120</requestid>
   </revision>
+  <revision rev="19" vrev="21">
+    <srcmd5>443cc3d565fa8272462e1568273c1b75</srcmd5>
+    <version>1.0</version>
+    <time>1708631994</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN.
+- Remove %clean section</comment>
+    <requestid>1149147</requestid>
+  </revision>
 </revisionlist>

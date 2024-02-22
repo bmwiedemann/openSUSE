@@ -1,7 +1,7 @@
 #
 # spec file for package sblim-tools-libra
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,8 +31,8 @@ Group:          System/Libraries
 %define debug_package_requires libRaTools0 = %{version}-%{release}
 
 %description
-The tools-libra package provides common functionality required by 
-the task-specific resource access layers of wbem-smt tasks such as 
+The tools-libra package provides common functionality required by
+the task-specific resource access layers of wbem-smt tasks such as
 cmpi-dns and cmpi-samba.
 
 %package -n libRaTools0
@@ -41,10 +41,9 @@ Summary:        SBLIM Common Resource Access Library for WBEM-SMT tasks
 Group:          System/Libraries
 
 %description -n %libname
-The tools-libra package provides common functionality required by 
-the task-specific resource access layers of wbem-smt tasks such as 
+The tools-libra package provides common functionality required by
+the task-specific resource access layers of wbem-smt tasks such as
 cmpi-dns and cmpi-samba.
-
 
 %package devel
 Summary:        Development files for libRaTools
@@ -53,25 +52,22 @@ Provides:       libRaTools-devel = %version
 Requires:       %libname = %{version}
 
 %description devel
-The tools-libra package provides common functionality required by 
-the task-specific resource access layers of the wbem-smt tasks such as 
+The tools-libra package provides common functionality required by
+the task-specific resource access layers of the wbem-smt tasks such as
 cmpi-dns and cmpi-samba.
-This package includes the header files and link libraries for dependent 
+This package includes the header files and link libraries for dependent
 provider packages.
 
 %prep
 %setup -q
-%patch0
-%patch1 -p1
+%patch -P 0
+%patch -P 1 -p1
 
 %build
 autoreconf -fi
 %configure \
 	--disable-static \
 make
-
-%clean
-rm -rf %buildroot
 
 %install
 %if 0%{?suse_version}
@@ -86,7 +82,7 @@ rm %buildroot/%{_libdir}/*.la
 %postun -n %libname -p /sbin/ldconfig
 
 %files -n %libname
-%defattr(-,root,root) 
+%defattr(-,root,root)
 %{_libdir}/libRaTools.so.*
 
 %files devel
