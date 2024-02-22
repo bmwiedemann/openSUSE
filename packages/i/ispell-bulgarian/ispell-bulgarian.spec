@@ -38,8 +38,7 @@ A short usage description for ispell is given in
 sources for this dictionary are included in the package dicts.
 
 %prep
-%setup -q -n ispell-bg-%{version}
-%patch0
+%autosetup -p0 -n ispell-bg-%{version}
 
 %build
 make %{?_smp_mflags}

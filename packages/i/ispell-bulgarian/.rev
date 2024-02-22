@@ -119,4 +119,12 @@
   * About 200 new words</comment>
     <requestid>477416</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>878334b3d230918ddf79244d89f68f0f</srcmd5>
+    <version>4.2</version>
+    <time>1708632090</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1149462 from dimstar)</comment>
+    <requestid>1149527</requestid>
+  </revision>
 </revisionlist>
