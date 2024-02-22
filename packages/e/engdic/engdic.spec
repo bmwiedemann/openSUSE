@@ -37,7 +37,7 @@ Little Korean <-> English dictionary.
 %prep
 %setup
 gunzip data/*.gz
-%patch0 -p 1
+%patch -P 0 -p 1
 
 %build
 for i in data/*.dic
