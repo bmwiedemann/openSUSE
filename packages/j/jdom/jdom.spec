@@ -1,7 +1,7 @@
 #
 # spec file for package jdom
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,10 +57,10 @@ Demonstrations and samples for %{name}.
 
 %prep
 %setup -q -n %{name}
-%patch0
-%patch1
-%patch2 -p1
-%patch10 -p1
+%patch -P 0
+%patch -P 1
+%patch -P 2 -p1
+%patch -P 10 -p1
 # remove all binary libs
 find . -name "*.jar" -exec rm -f {} \;
 find . -name "*.class" -exec rm -f {} \;

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 10:46:24 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Aug 24 10:16:57 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Build only the jdom package and drop xom, jaxen and xom into
@@ -9,9 +14,9 @@ Thu Aug 24 10:16:57 UTC 2023 - Fridrich Strba <fstrba@suse.com>
     + not needed with the current package
 - Added patches:
   * CVE-2021-33813.patch
-    + fix CVE-2021-33813: An XXE issue in SAXBuilder in JDOM
-      through 2.0.6 allows attackers to cause a denial of service
-      via a crafted HTTP request.
+    + fix bsc#1187446, CVE-2021-33813: An XXE issue in SAXBuilder
+      in JDOM through 2.0.6 allows attackers to cause a denial of
+      service via a crafted HTTP request.
   * jdom-crosslink.patch
     + do not link to javadocs on web
   * no-jaxen.patch
