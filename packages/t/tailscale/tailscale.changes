@@ -1,0 +1,175 @@
+-------------------------------------------------------------------
+Tue Feb 20 22:10:41 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Add disable-auto-update.patch to prevent auto updates and instead
+  ask users to use Zypper to update manually
+
+-------------------------------------------------------------------
+Tue Feb 20 14:52:46 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- change to the non deprecated manualrun
+
+-------------------------------------------------------------------
+Fri Feb 16 14:38:14 UTC 2024 - alexandre.vicenzi@suse.com
+
+- Spec cleanup
+  * Use tar_scm to avoid commit hashes in the spec
+  * Use tailscale build scripts
+  * Drop ProtectClock fix for Leap, DeviceAllow fixes it
+- Add build-verbose.patch to get go flags into build log
+- Enable PrivateDevices but allow access to /dev/net/tun in tailscaled.service
+
+-------------------------------------------------------------------
+Fri Feb 16 00:50:26 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- update to 1.60.0:
+  * minimum go version 1.22
+  * authentication: present users with a valid login page when
+    attempting to login even after leaving device unattended for several days
+  * networking: mute noisy peer mtu discovery errors
+  * networking: expose gVisor metrics in debug mode
+  * port mapper: support legacy "urn:dslforum-org" port mapping services
+  * port mapper: fix crash when no support mapping services found
+  * ssh: log warning when unable to find SSH host keys
+  * serve: improve error message when running as non-root
+  * Detect when Tailscale is running on Digital Ocean and automatically
+    use Digital Ocean's DNS resolvers
+  * enable app connectors to install routes for domains that resolve to CNAME
+    records
+  * support pre-configured routes from control server
+  * add new read-only mode
+  * tailscale status command: fix output formatting Tailnet
+    includes location-based exit nodes
+  * a new ProxyClass custom resource that allows to provide custom
+    configuration for cluster resources that the operator creates
+  * ACL tags for the operator can now be configured via Helm chart values
+  * routing to Ingress backends that require an exact path without a slash
+
+-------------------------------------------------------------------
+Wed Feb  7 14:52:53 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- make rpm not overwrite /etc/default/taiscaled
+- defattr everything to root
+
+-------------------------------------------------------------------
+Sat Feb  3 11:18:05 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- no stripping of binaries
+- add commitID to binaries for upstream
+- add directory for saved configs
+
+-------------------------------------------------------------------
+Tue Jan 23 23:54:36 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- switch services to manual
+- update to version 1.58.2:
+  * Fixed: [App connectors][app-connectors] have improved scheduling 
+    and merging of route changes under some conditions
+  * Fixed: Crash when performing UPnP portmapping on older routers
+    with no supported portmapping services
+
+-------------------------------------------------------------------
+Fri Jan 19 08:06:27 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- update to version 1.58.0:
+  * portmap: check the epoch from NAT-PMP & PCP, establish new portmapping if it changes
+  * portmap: better handle multiple interfaces
+  * portmap: handle multiple UPnP discovery responses
+  * increase the number of 4via6 site IDs from 256 to 65,536
+  * taildrop: allow category Z unicode characters
+  * increased binary size with 1.56 is resolved in 1.58
+  * Reduce home DERP flapping when there's still an active connection
+  * device web ui: fixed issue when accessing shared devices
+  * device web ui: fixed login issue when accessed over https
+
+-------------------------------------------------------------------
+Wed Jan 10 02:17:57 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- fix an issue with Leap, where ProtectClock prevents to connect to
+  /dev/net/tun
+
+-------------------------------------------------------------------
+Fri Dec 15 21:22:39 UTC 2023 - Richard Rahl <rrahl0@proton.me>
+
+- update to version 1.56.1:
+  * Fixed: Web interface redirects to the correct self IP known by source peer
+  * Fixed: Usage of slices.Compact from app connector domains list
+
+-------------------------------------------------------------------
+Fri Dec 15 13:48:28 UTC 2023 - Richard Rahl <rrahl0@proton.me>
+
+- fix version output to what upstream expects
+
+-------------------------------------------------------------------
+Wed Dec 13 22:08:30 UTC 2023 - rrahl0@proton.me
+
+- Update to version 1.56.0:
+  * improve responsiveness under load, especially with bidirectional traffic
+  * improve UPnP portmapping
+  * add tailscale whois subcommand to observe metadata associated with a Tailscale IP
+  * include tailnet name and profile ID in tailscale switch --list to disambiguate
+    profiles with common login names
+  * improve tailscale web interface for configuring some device settings such as exit nodes,
+    subnet routers, and Tailscale SSH
+  * improve containerboot to symlink its socket file if possible,
+    making the tailscale CLI work without --socket=/tmp/tailscale.sock
+  * add support in Kubernetes operator cluster egress for referring to a tailnet service
+    by its MagicDNS name
+
+
+- Update to version 1.54.1:
+  * no relevant updates to the linux version
+
+-------------------------------------------------------------------
+Fri Nov 24 21:59:11 UTC 2023 - Richard Rahl <rrahl0@proton.me>
+
+- tailscale couldn't connect to /dev/net/tun
+
+-------------------------------------------------------------------
+Thu Nov 23 06:51:24 UTC 2023 - rrahl0@proton.me
+
+- Update to version 1.54.0:
+  * improve throughput substantially for UDP packets over TUN device with recent Linux kernels
+
+
+- Update to version 1.52.1:
+  * no linux improvements
+
+- Update to version 1.52.0:
+  * tailscale set command flag --auto-update is added to opt in to automatic client updates
+  * tailscale serve and tailscale funnel commands are updated for improved usability
+  * tailscale update command for manual updates is now in beta
+  * Taildrop file transfer displays a progress meter
+  * nftables auto-detection is improved when TS_DEBUG_FIREWALL_MODE=auto is used
+  * DNS detection of NetworkManager with configured but absent systemd-resolved
+  * Taildrop now resumes file transfers after partial transfers are interrupted
+  * tailscale up command displays a message about client updates when newer versions are available
+  * tailscale status command displays a message about client updates when newer versions are available
+  * tailscale cert command renews in the background. The current certificate only displays if it has expired.
+
+-------------------------------------------------------------------
+Mon Oct 02 23:51:03 UTC 2023 - rrahl0@proton.me
+
+- Update to version 1.50.1:
+  * fix bug where serve config could get wiped
+  * Funnel support for tsnet apps
+  * fix potential crash with UPnP
+
+-------------------------------------------------------------------
+Sat Sep 30 19:38:50 UTC 2023 - rrahl0@proton.me
+
+- Update to version 1.50.0:
+  * Update tailscale{,d} licenses
+  * Update Quad9 addresses and references
+  * Adds support for Wikimedia DNS using DNS-over-HTTPS
+
+- Update to version 1.48.1:
+  * no relevant updates
+
+- Update to version 1.48.2:
+  * Improvements to Mullvad exit nodes
+
+-------------------------------------------------------------------
+Fri Aug 18 15:56:24 UTC 2023 - Richard Rahl <rrahl0@proton.me>
+
+- Initial revision

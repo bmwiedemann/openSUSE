@@ -1,0 +1,89 @@
+#
+# spec file for package tailscale
+#
+# Copyright (c) 2024 SUSE LLC
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+Name:           tailscale
+Version:        1.60.0
+Release:        0
+Summary:        The easiest, most secure way to use WireGuard and 2FA
+License:        BSD-3-Clause
+Group:          Productivity/Networking/Security
+URL:            https://github.com/tailscale/tailscale
+Source:         %{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
+Source2:        tailscaled.service
+Source3:        tailscaled.defaults
+Patch1:         build-verbose.patch
+Patch2:         disable-auto-update.patch
+BuildRequires:  git
+BuildRequires:  golang(API) = 1.22
+BuildRequires:  golang-packaging
+ExcludeArch:    i586
+%{?systemd_requires}
+
+%description
+Tailscale is a modern VPN built on top of Wireguard. It works like an overlay
+network between the computers of your networks using NAT traversal.
+
+%prep
+%autosetup -a1 -p1
+
+%build
+%ifnarch ppc64
+export GOFLAGS="-buildmode=pie"
+%endif
+export CGO_ENABLED=0
+
+./build_dist.sh ./cmd/tailscale
+./build_dist.sh ./cmd/tailscaled
+
+%install
+mkdir -p %{buildroot}%{_sharedstatedir}/%{name}
+
+install -D -p -m 0755 %{name} %{buildroot}%{_bindir}/%{name}
+install -D -p -m 0755 %{name}d %{buildroot}%{_sbindir}/%{name}d
+
+# service
+install -D -p -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}d.service
+ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}d
+
+# defaults
+install -D -p -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/default/%{name}d
+
+%pre
+%service_add_pre %{name}d.service
+
+%post
+%service_add_post %{name}d.service
+
+%preun
+%service_del_preun %{name}d.service
+
+%postun
+%service_del_postun %{name}d.service
+
+%files
+%license LICENSE PATENTS
+%doc README.md SECURITY.md
+%config(noreplace) %{_sysconfdir}/default/%{name}d
+%dir %{_sharedstatedir}/%{name}
+%{_bindir}/%{name}
+%{_sbindir}/%{name}d
+%{_unitdir}/%{name}d.service
+%{_sbindir}/rc%{name}d
+
+%changelog

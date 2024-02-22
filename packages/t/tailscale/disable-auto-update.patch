@@ -1,0 +1,28 @@
+diff --git a/clientupdate/clientupdate.go b/clientupdate/clientupdate.go
+index 1c01fc68..8d456f3b 100644
+--- a/clientupdate/clientupdate.go
++++ b/clientupdate/clientupdate.go
+@@ -201,6 +201,10 @@ func (up *Updater) getUpdateFunction() (fn updateFunction, canAutoUpdate bool) {
+ 			// The distro.Debian switch case above should catch most apt-based
+ 			// systems, but add this fallback just in case.
+ 			return up.updateDebLike, true
++		case haveExecutable("zypper"):
++			// Zypper must come before dfn/yum as SUSE-based distros can have both alongside zypper.
++			// This should catch both transactional (Micro) and non-transactional (Leap/Tumbleweed/SLES/SLED).
++			return up.updateSUSE, false
+ 		case haveExecutable("dnf"):
+ 			return up.updateFedoraLike("dnf"), true
+ 		case haveExecutable("yum"):
+@@ -522,6 +526,12 @@ func (up *Updater) updateArchLike() error {
+ you can use "pacman --sync --refresh --sysupgrade" or "pacman -Syu" to upgrade the system, including Tailscale.`)
+ }
+ 
++func (up *Updater) updateSUSE() error {
++	// SUSE-based distros should update manually.
++	// The package can come from official Tailscale repos or not and the system can be transactional or not.
++	return errors.New(`Use Zypper or transactional-update (on applicable systems) to update Tailscale on openSUSE or SUSE Linux Enterprise installations.`)
++}
++
+ const yumRepoConfigFile = "/etc/yum.repos.d/tailscale.repo"
+ 
+ // updateFedoraLike updates tailscale on any distros in the Fedora family,

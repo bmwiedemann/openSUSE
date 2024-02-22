@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/tailscale/tailscale.git</param>
+              <param name="changesrevision">f4e3ee53ea4605d400df2ef6b6005b026661f96b</param></service></servicedata>

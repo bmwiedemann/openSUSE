@@ -1,0 +1,13 @@
+diff --git a/build_dist.sh b/build_dist.sh
+index 0c757c26..9639d596 100755
+--- a/build_dist.sh
++++ b/build_dist.sh
+@@ -9,7 +9,7 @@
+ # this script, or executing equivalent commands in your
+ # distro-specific build system.
+ 
+-set -eu
++set -eux
+ 
+ go="go"
+ if [ -n "${TS_USE_TOOLCHAIN:-}" ]; then

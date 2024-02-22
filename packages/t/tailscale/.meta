@@ -1,0 +1,6 @@
+<package name="tailscale" project="openSUSE:Factory">
+  <title>tailscale</title>
+  <description>The easiest, most secure way to use WireGuard and 2FA.</description>
+  <devel project="network:vpn" package="tailscale"/>
+  <url>https://github.com/tailscale/tailscale</url>
+</package>
