@@ -1400,4 +1400,12 @@
     <comment></comment>
     <requestid>1058660</requestid>
   </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>7df45098e8f66ff3b73a0189b1cfa82f</srcmd5>
+    <version>2.7.2</version>
+    <time>1708631998</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN.</comment>
+    <requestid>1149159</requestid>
+  </revision>
 </revisionlist>
