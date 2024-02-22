@@ -1,0 +1,21 @@
+--- org.eclipse.tycho-tycho-1.6.0/tycho-surefire/org.eclipse.tycho.surefire.osgibooter/src/main/java/org/eclipse/tycho/surefire/osgibooter/OsgiSurefireBooter.java	2024-02-22 08:27:09.040344970 +0100
++++ org.eclipse.tycho-tycho-1.6.0/tycho-surefire/org.eclipse.tycho.surefire.osgibooter/src/main/java/org/eclipse/tycho/surefire/osgibooter/OsgiSurefireBooter.java	2024-02-22 08:42:48.709870381 +0100
+@@ -27,6 +27,7 @@
+ 
+ import org.apache.maven.plugin.surefire.StartupReportConfiguration;
+ import org.apache.maven.plugin.surefire.log.api.PrintStreamLogger;
++import org.apache.maven.plugin.surefire.report.ConsoleReporter;
+ import org.apache.maven.plugin.surefire.report.DefaultReporterFactory;
+ import org.apache.maven.surefire.booter.BooterConstants;
+ import org.apache.maven.surefire.booter.ClassLoaderConfiguration;
+@@ -104,8 +105,8 @@
+                 extractProviderProperties(testProps), null, false, Collections.<CommandLineOption> emptyList(),
+                 skipAfterFailureCount, Shutdown.DEFAULT, 30);
+         StartupReportConfiguration startupReportConfig = new StartupReportConfiguration(useFile, printSummary,
+-                StartupReportConfiguration.PLAIN_REPORT_FORMAT, redirectTestOutputToFile, disableXmlReport, reportsDir,
+-                trimStackTrace, null, new File(reportsDir, "TESTHASH"), false, rerunFailingTestsCount, XSD, null);
++                ConsoleReporter.PLAIN, redirectTestOutputToFile, disableXmlReport, reportsDir,
++                trimStackTrace, null, new File(reportsDir, "TESTHASH"), false, rerunFailingTestsCount, XSD, null, false);
+         ReporterFactory reporterFactory = new DefaultReporterFactory(startupReportConfig,
+                 new PrintStreamLogger(startupReportConfig.getOriginalSystemOut()));
+         // API indicates we should use testClassLoader below but surefire also tries 

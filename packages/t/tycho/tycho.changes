@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 22 07:57:05 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * tycho-surefire.patch
+    + fix build against maven-surefire >= 2.22.1
+
+-------------------------------------------------------------------
 Wed Feb 21 10:55:05 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

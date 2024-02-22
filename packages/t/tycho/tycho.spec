@@ -68,6 +68,7 @@ Patch8:         plexus-lookup-fix.patch
 Patch9:         tycho-plexus-compiler-2.13.patch
 Patch10:        tycho-sourcetarget.patch
 Patch11:        tycho-getTimestamp.patch
+Patch12:        tycho-surefire.patch
 Patch100:       fedoraproject-p2-bootstrap-fix.patch
 BuildRequires:  bash
 BuildRequires:  fdupes
@@ -90,7 +91,7 @@ BuildRequires:  mvn(org.apache.maven.plugins:maven-dependency-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-install-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-source-plugin)
-BuildRequires:  mvn(org.apache.maven.surefire:maven-surefire-common)
+BuildRequires:  mvn(org.apache.maven.surefire:maven-surefire-common) >= 2.22.1
 BuildRequires:  mvn(org.apache.maven.surefire:surefire-api)
 BuildRequires:  mvn(org.apache.maven.surefire:surefire-junit3)
 BuildRequires:  mvn(org.apache.maven.surefire:surefire-testng-utils)
@@ -218,6 +219,7 @@ mv fedoraproject-p2-%{fp_p2_git_tag} fedoraproject-p2
 %patch -P 9 -p1
 %patch -P 10 -p1
 %patch -P 11 -p1
+%patch -P 12 -p1
 %patch -P 100
 
 # Unneeded for RPM builds

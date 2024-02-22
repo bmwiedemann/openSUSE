@@ -111,4 +111,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148637</requestid>
   </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>39749635dbbe990ce774a8ae420f16c6</srcmd5>
+    <version>1.6.0</version>
+    <time>1708632002</time>
+    <user>anag+factory</user>
+    <comment>fix build with surefire 2.22.2</comment>
+    <requestid>1149202</requestid>
+  </revision>
 </revisionlist>
