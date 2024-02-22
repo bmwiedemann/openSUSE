@@ -1,7 +1,7 @@
 #
 # spec file for package distrobox
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ Requires:       (%{_bindir}/podman or %{_bindir}/docker)
 # Idea would be: if bash completion is already there, let's have it. If
 # not, let's "only" recommend it...
 Requires:       (%{name}-bash-completion if bash-completion)
+# For distrobox-exec to work properly, we need flatpak helper services (bsc#1220037)
+Requires:       flatpak
 BuildRequires:  ImageMagick
 BuildRequires:  hicolor-icon-theme
 BuildArch:      noarch
