@@ -1,7 +1,7 @@
 #
 # spec file for package maven-plugin-testing
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Maven Plugin Testing
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://maven.apache.org/plugin-testing/
+URL:            https://maven.apache.org/plugin-testing/
 Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugin-testing/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.tar.xz
 Patch0:         0001-Port-to-plexus-utils-3.0.21.patch
@@ -95,9 +95,9 @@ Framework to test Maven Plugins with Easymock objects.
 %prep
 %setup -q -a1
 
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 
 %pom_remove_plugin :maven-enforcer-plugin
 %pom_remove_plugin :maven-site-plugin
@@ -109,7 +109,7 @@ rm maven-plugin-testing-tools/src/test/java/org/apache/maven/shared/test/plugin/
 
 %{mvn_alias} : org.apache.maven.shared:
 
-%mvn_package :{*} @1
+%{mvn_package} :{*} @1
 
 %build
 mkdir -p lib
@@ -149,11 +149,11 @@ build-jar-repository -s lib \
 	-Dtest.skip=true \
 	package javadoc
 
-%mvn_artifact pom.xml
+%{mvn_artifact} pom.xml
 mkdir -p target/site/apidocs
 for i in maven-plugin-testing-harness maven-plugin-testing-tools maven-test-tools; do
   cp -r ${i}/target/site/apidocs target/site/apidocs/${i}
-  %mvn_artifact ${i}/pom.xml ${i}/target/${i}-%{version}.jar
+  %{mvn_artifact} ${i}/pom.xml ${i}/target/${i}-%{version}.jar
 done
 
 %install
