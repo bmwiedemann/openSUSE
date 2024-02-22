@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 07:23:57 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Aug 20 20:29:12 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.6.68:

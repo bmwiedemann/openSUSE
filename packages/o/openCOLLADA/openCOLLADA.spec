@@ -1,7 +1,7 @@
 #
 # spec file for package openCOLLADA
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -203,10 +203,10 @@ XML validator for COLLADA files, based on the COLLADASaxFrameworkLoader.
 
 %prep
 %setup -q -n %{upname}-%{version}
-%patch0 -p0 -b .cmake
-%patch1 -p0 -b .includes
-%patch4
-%patch5
+%patch -P 0 -p0 -b .cmake
+%patch -P 1 -p0 -b .includes
+%patch -P 4
+%patch -P 5
 
 # Remove unused bundled libraries
 rm -rf Externals/{Cg,expat,lib3ds,LibXML,MayaDataModel,pcre,zlib,zziplib}

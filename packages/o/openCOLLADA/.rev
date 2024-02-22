@@ -236,4 +236,12 @@
     <comment></comment>
     <requestid>828343</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>58087bfcf6bce056a33b40da87442e57</srcmd5>
+    <version>1.6.68</version>
+    <time>1708631933</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN.</comment>
+    <requestid>1149001</requestid>
+  </revision>
 </revisionlist>
