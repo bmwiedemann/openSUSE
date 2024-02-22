@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb 21 21:02:49 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 27.3.3
+  * CSS style -webkit-app-region: drag; has no effect in full screen mode.
+  * Fixed an issue where crashes in node::Environment destruction
+    potentially wouldn't be propagated to the NodeService exit handler.
+  * Fixed an issue where zoom level settings did not persist per-session for webviews.
+  * Security fixes (bsc#1219661):
+    + heap buffer overflow in Skia (CVE-2024-1283)
+    + use after free in Mojo (CVE-2024-1284)
+- Fix Angle being incorrectly built without swiftshader support.
+- Leap 15.6: use system spirv and avif, disable harfbuzz-replace-{chromium-scoped-type,HbScopedPointer}.patch
+  
+-------------------------------------------------------------------
 Wed Feb  7 15:46:36 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 27.3.2

@@ -106,48 +106,31 @@ BuildArch:      i686
 
 
 %bcond_without system_nghttp2
-
-
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700
-%bcond_without system_avif
-%else
-%bcond_with system_avif
-%endif
-
-
 %bcond_without system_crc32c
 %bcond_without system_dav1d
 %bcond_without system_highway
 %bcond_without system_nvctrl
 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora}
-%bcond_without system_spirv
-%else
-%bcond_with system_spirv
-%endif
-
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora}
-%bcond_without harfbuzz_5
-%bcond_without link_vulkan
-%bcond_without ffmpeg_5
-%else
-%bcond_with harfbuzz_5
-%bcond_with link_vulkan
-%bcond_with ffmpeg_5
-%endif
-
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora} >= 38
-%bcond_without system_aom
-%bcond_without system_vpx
-%else
-%bcond_with system_aom
-%bcond_with system_vpx
-%endif
-
 %if 0%{?suse_version} || 0%{?fedora} >= 39
 %bcond_without icu_73
 %else
 %bcond_with icu_73
+%endif
+
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora}
+%bcond_without system_aom
+%bcond_without system_spirv
+%bcond_without harfbuzz_5
+%else
+%bcond_with system_aom
+%bcond_with system_spirv
+%bcond_with harfbuzz_5
+%endif
+
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora} >= 40
+%bcond_without system_avif
+%else
+%bcond_with system_avif
 %endif
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600
@@ -156,22 +139,33 @@ BuildArch:      i686
 %bcond_with system_yuv
 %endif
 
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora}
+%bcond_without link_vulkan
+%bcond_without ffmpeg_5
+%bcond_without system_vpx
+%else
+%bcond_with link_vulkan
+%bcond_with ffmpeg_5
+%bcond_with system_vpx
+%endif
+
+
+
+
+
 
 %if 0%{?fedora}
 %bcond_without system_llhttp
 %bcond_without llhttp_8
 %bcond_without system_histogram
+%bcond_without system_simdutf
 %else
 %bcond_with system_llhttp
 %bcond_with llhttp_8
 %bcond_with system_histogram
-%endif
-
-%if 0%{?fedora} >= 38
-%bcond_without system_simdutf
-%else
 %bcond_with system_simdutf
 %endif
+
 
 %if 0%{?fedora} >= 40
 %bcond_without system_vma
@@ -215,10 +209,7 @@ BuildArch:      i686
 %define AVFORMAT_VER 6.0.1
 %define RPMFUSION_VER 6.0.1-2
 %endif
-%if 0%{?fedora} >= 37 && 0%{?fedora} < 38
-%define AVFORMAT_VER 5.1.4
-%define RPMFUSION_VER 5.1.4-1
-%endif
+
 
 # We always ship the following bundled libraries as part of Electron despite a system version being available in either openSUSE or Fedora:
 # Name         | Path in tarball                   | Reason
@@ -236,7 +227,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        27.3.2
+Version:        27.3.3
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
@@ -1171,6 +1162,7 @@ myconf_gn+=' angle_enable_abseil=true'
 myconf_gn+=' v8_use_libm_trig_functions=true'
 #yet another is_clang
 myconf_gn+=' rtc_enable_avx2=true'
+myconf_gn+=' angle_enable_swiftshader=true'
 
 
 
