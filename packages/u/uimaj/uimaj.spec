@@ -91,6 +91,8 @@ This package contains javadoc for %{name}.
 
 %prep
 %autosetup -p1
+
+# The empty line above must be maintained for autosetup to work on sle12
 # Cleanup
 find .  -name "*.jar" -delete
 find .  -name "*.bat" -delete

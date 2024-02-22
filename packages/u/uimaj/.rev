@@ -47,4 +47,12 @@
     <comment></comment>
     <requestid>1148290</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>4f82f37923325beef116be397740740c</srcmd5>
+    <version>3.5.0</version>
+    <time>1708632064</time>
+    <user>anag+factory</user>
+    <comment>Fix build with SLE12</comment>
+    <requestid>1149419</requestid>
+  </revision>
 </revisionlist>
