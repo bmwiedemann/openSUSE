@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 21 18:53:31 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 8.10.2:
+  * Fix bug in auto_readahead_size that combined with
+    IndexType::kBinarySearchWithFirstKey + fails or iterator lands
+    at a wrong key
+
+-------------------------------------------------------------------
 Thu Jan 11 19:45:23 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 8.10.0:
