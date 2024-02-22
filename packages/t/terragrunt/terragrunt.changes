@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb 20 20:50:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.55.4:
+  * Reference to dependency inputs (#2945)
+
+-------------------------------------------------------------------
+Tue Feb 20 20:48:53 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.55.3:
+  * Improved identification of remote state changes (#2939)
+
+-------------------------------------------------------------------
+Wed Feb 14 20:08:14 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.55.2:
+  * Improved handling of disabled modules (#2938)
+
+-------------------------------------------------------------------
 Tue Feb 06 07:28:52 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.55.1:
