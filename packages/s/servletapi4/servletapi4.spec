@@ -1,7 +1,7 @@
 #
 # spec file for package servletapi4
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,9 @@ Release:        0
 Summary:        Java servlet and JSP implementation classes
 License:        Apache-1.1
 Group:          Development/Libraries/Java
-URL:            http://jakarta.apache.org/tomcat/
+URL:            https://jakarta.apache.org/tomcat/
 Source:         %{full_name}-4-src.tar.gz
 Patch160:       java160_build.patch
-BuildRequires:  ant
 BuildRequires:  ant >= 1.2
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
@@ -38,7 +37,6 @@ Obsoletes:      servlet22 < %{version}
 Obsoletes:      servlet4 < %{version}
 Provides:       servlet22 = %{version}
 Provides:       servlet4 = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -56,7 +54,7 @@ contains the javadoc documentation for the Java Servlet and JSP APIs.
 
 %prep
 %setup -q -n %{full_name}-4-src
-%patch160 -p1
+%patch -P 160 -p1
 
 %build
 ant dist -Dservletapi.build=build -Dservletapi.dist=dist
@@ -82,14 +80,13 @@ if [ "$1" = "0" ]; then
 fi
 
 %files
-%defattr(-,root,root)
-%doc LICENSE README.txt
+%license LICENSE
+%doc README.txt
 %{_javadir}/*
 %{_javadir}/servlet.jar
 %ghost %{_sysconfdir}/alternatives/servlet.jar
 
 %files javadoc
-%defattr(-,root,root)
 %{_javadocdir}/%{name}
 
 %changelog
