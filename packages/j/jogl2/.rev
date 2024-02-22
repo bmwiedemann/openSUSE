@@ -122,4 +122,12 @@ Depends on SR#545523 to fully fix ARM compilation.</comment>
     <comment>Build with source and target levels 8</comment>
     <requestid>964044</requestid>
   </revision>
+  <revision rev="16" vrev="12">
+    <srcmd5>1318d904bdcc6d0196e5c9f482d6c20d</srcmd5>
+    <version>2.3.2</version>
+    <time>1708631898</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148929</requestid>
+  </revision>
 </revisionlist>
