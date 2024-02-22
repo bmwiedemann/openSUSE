@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 12:40:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Fri Jul 16 16:54:27 CEST 2021 - tiwai@suse.de
 
 - Add gtk3 port (partly borrowed from Fedora package):

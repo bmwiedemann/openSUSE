@@ -39,11 +39,7 @@ Provides:       locale(anthy:ja)
 A graphical tool to edit the personal dictionary for Anthy.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1
 
 %build
 libtoolize --force
