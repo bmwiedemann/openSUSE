@@ -550,7 +550,7 @@ Thu Feb  2 15:51:06 UTC 2023 - Michael Gorse <mgorse@suse.com>
   + Fix the build with USE_GTK4 enabled.
   + Fix several crashes and rendering issues.
   + Security fixes: CVE-2023-23517, CVE-2023-23518, CVE-2022-42826,
-    CVE_2022-32919, CVE-2022-46705, CVE-2022-46725.
+    CVE-2022-32919, CVE-2022-46705, CVE-2022-46725.
 
 -------------------------------------------------------------------
 Fri Jan 27 15:09:41 UTC 2023 - Michael Gorse <mgorse@suse.com>
