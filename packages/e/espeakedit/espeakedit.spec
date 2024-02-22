@@ -46,11 +46,7 @@ eSpeak is a software speech synthesizer for English, and some other languages.
 eSpeakEdit provides a User Interface to edit the eSpeak voices.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch -P 3 -p1
-%patch4 -p1
+%autosetup -p1
 # Build against portaudio v19 (see ReadMe)
 cp -f src/portaudio19.h src/portaudio.h
 

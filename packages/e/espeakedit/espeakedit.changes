@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 11:43:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Aug  1 10:13:06 UTC 2017 - i@marguerite.su
 
 - FTBFS with GCC-7: espeakedit-gcc7-destbufferoverflow.patch
