@@ -89,4 +89,13 @@
   - Fix missing dependency on lua-macros (boo#1205612)</comment>
     <requestid>1061046</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>db52fbc92431f904b33be270835eaf07</srcmd5>
+    <version>3.1.0</version>
+    <time>1708631990</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1149141</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package lua-luasocket
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,8 +66,7 @@ BuildArch:      noarch
 This subpackage contains documentation for %{flavor}-%{mod_name}.
 
 %prep
-%setup -q -n %{mod_name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{mod_name}-%{version}
 
 %build
 %{_bindir}/iconv -f ISO8859-1 -t UTF8 LICENSE >LICENSE.UTF8
