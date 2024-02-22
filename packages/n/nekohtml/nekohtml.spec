@@ -1,7 +1,7 @@
 #
 # spec file for package nekohtml
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,16 +30,12 @@ Patch1:         0001-Jar-paths.patch
 # Add proper attributes to MANIFEST.MF file so bundle can be used by other OSGI bundles.
 Patch2:         0002-Add-OSGi-attributes.patch
 BuildRequires:  ant
-BuildRequires:  bcel
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  xerces-j2 >= 2.7.1
-BuildRequires:  xml-apis
-Requires:       bcel
 Requires:       javapackages-tools
 Requires:       xerces-j2 >= 2.7.1
-Requires:       xml-apis
 BuildArch:      noarch
 
 %description
@@ -72,8 +68,8 @@ Demonstrations and samples for %{name}.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 
 find -name "*.jar" -delete
 sed -i 's/\r$//g' *.txt doc/*.html
@@ -83,7 +79,7 @@ rm data/meta/test-meta-encoding3.html
 
 %build
 mkdir -p lib
-build-jar-repository -p -s lib bcel xerces-j2 xml-apis
+build-jar-repository -p -s lib xerces-j2
 %{ant} \
     -Dcompile.source=1.8 -Dcompile.target=1.8 \
     -Djar.file=%{name}.jar \
@@ -103,7 +99,7 @@ install -pm 0644 %{name}-xni.jar %{buildroot}%{_javadir}/%{name}-xni.jar
 install -pm 0644 %{name}-samples.jar %{buildroot}%{_javadir}/%{name}-samples.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar -a %{name}:%{name}
 %add_maven_depmap net.sourceforge.%{name}:%{name}-xni:%{version} %{name}-xni.jar
 %add_maven_depmap net.sourceforge.%{name}:%{name}-samples:%{version} %{name}-samples.jar -f demo

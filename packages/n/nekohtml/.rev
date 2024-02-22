@@ -23,4 +23,12 @@
     <comment>bsc#1198739, CVE-2022-28366, bsc#1198404, CVE-2022-24839</comment>
     <requestid>972549</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>124ded93a13e7a344a3b9e8e20b49b1b</srcmd5>
+    <version>1.9.22.noko2</version>
+    <time>1708631876</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148891</requestid>
+  </revision>
 </revisionlist>

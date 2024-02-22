@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 21:28:39 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Apr 25 07:38:49 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Use the security patched fork at
