@@ -1,7 +1,7 @@
 #
 # spec file for package schemaspy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 Archie L. Cobbs.
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Tool for analyzing and graphing database schemas
 License:        LGPL-2.1-only
 Group:          Productivity/Databases/Tools
-URL:            http://schemaspy.sourceforge.net/
+URL:            https://schemaspy.sourceforge.net/
 Source0:        schemaSpy_%{version}.source.jar
 Source1:        schemaspy.1
 # PATCH-FIX-OPENSUSE driver-location.patch
@@ -56,7 +56,7 @@ all of the vendor-specific SQL is optional.
 
 %prep
 %setup -q -c
-%patch0 -p1
+%patch -P 0 -p1
 
 %build
 mkdir classes
