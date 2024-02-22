@@ -388,9 +388,7 @@ This package contains development documentation for Hypre.
 %endif
 
 %prep
-%setup -q -n %{pname}-%{version}
-%patch0 -p0
-%patch1 -p0
+%autosetup -p0 -n %{pname}-%{version}
 
 %if %{without hpc}
 cat > %{_sourcedir}/baselibs.conf  <<EOF

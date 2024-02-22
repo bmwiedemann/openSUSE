@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 07:54:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Mon Oct 23 19:11:08 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Disable HPC flavors on i586
