@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 11:35:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Feb  2 16:43:41 UTC 2024 - Joan Torres <joan.torres@suse.com>
 
 - Add evdi-kmp dependency.
