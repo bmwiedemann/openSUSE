@@ -288,3 +288,6 @@ fi
 %{_prefix}/lib/issue.d/90-openSUSE.conf
 
 %changelog
+* Mon Feb 19 2024 Dominique Leuenberger <dimstar@opensuse.org>
+- No information provided here - we needed a dated entry for
+  RPM/reproducible builds
