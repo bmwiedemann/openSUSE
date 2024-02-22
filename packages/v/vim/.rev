@@ -7481,4 +7481,12 @@ always built-in because vim has direct perl dependencies anyway.
  *  runtime(vim): Fix indent after line with literal dict</comment>
     <requestid>1146766</requestid>
   </revision>
+  <revision rev="362" vrev="2">
+    <srcmd5>5ad5fa43cf919704810faae1c59c1f35</srcmd5>
+    <version>9.1.0111</version>
+    <time>1708631765</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1148648</requestid>
+  </revision>
 </revisionlist>

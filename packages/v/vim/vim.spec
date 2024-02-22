@@ -210,23 +210,23 @@ a hex dump back to its original binary form.
 %prep
 %setup -q -n %{name}-%{pkg_version}.%{patchlevel}
 
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
+%patch -P 8 -p1
+%patch -P 9 -p1
+%patch -P 10 -p1
+%patch -P 11 -p1
 cp %{SOURCE23} runtime/syntax/apparmor.vim
-%patch15 -p1
-%patch18 -p1
-%patch21 -p1
-%patch22 -p1
-%patch100 -p1
-%patch101 -p1
-%patch104 -p1
+%patch -P 15 -p1
+%patch -P 18 -p1
+%patch -P 21 -p1
+%patch -P 22 -p1
+%patch -P 100 -p1
+%patch -P 101 -p1
+%patch -P 104 -p1
 cp %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE8} %{SOURCE10} .
 
 %build
