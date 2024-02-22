@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 22:08:29 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Sep 28 08:27:37 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Fix too restrictive permissions on aggregated

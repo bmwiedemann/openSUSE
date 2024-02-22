@@ -39,4 +39,12 @@
     <comment>small little tiny fix</comment>
     <requestid>1114037</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>7139f78d89fa95ef1dc643a2fbd01a4f</srcmd5>
+    <version>4.8</version>
+    <time>1708631884</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148911</requestid>
+  </revision>
 </revisionlist>
