@@ -86,4 +86,12 @@ This is my first submit request to factory, so sorry if I somehow messed up the 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>859632</requestid>
   </revision>
+  <revision rev="12" vrev="146">
+    <srcmd5>520ae679f1fa81cfa93ca7258a399f33</srcmd5>
+    <version>1.0.1</version>
+    <time>1708631932</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN.</comment>
+    <requestid>1148999</requestid>
+  </revision>
 </revisionlist>

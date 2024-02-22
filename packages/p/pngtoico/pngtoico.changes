@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 07:21:48 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Dec 24 18:00:20 UTC 2020 - Matthias Bach <marix@marix.org>
 
 - Modernise spec file

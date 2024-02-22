@@ -1,7 +1,7 @@
 #
 # spec file for package pngtoico
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,8 +37,8 @@ ICO format. Supports transparency.
 
 %prep
 %setup -q
-%patch0
-%patch1 -p1
+%patch -P 0
+%patch -P 1 -p1
 
 %build
 %make_build CFLAGS="%{optflags}"
