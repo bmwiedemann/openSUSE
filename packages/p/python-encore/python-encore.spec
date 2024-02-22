@@ -1,7 +1,7 @@
 #
 # spec file for package python-encore
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,6 +64,9 @@ Packages:
 
 %prep
 %setup -q -n encore-%{version}
+# port tests to python312
+sed -i 's/assertEquals/assertEqual/' encore/storage/tests/*.py
+sed -i 's/\\\*/*/g' encore/concurrent/futures/enhanced_thread_pool_executor.py
 
 %build
 %python_build
