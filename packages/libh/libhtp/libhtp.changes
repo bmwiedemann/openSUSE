@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 19 07:31:20 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to version 0.5.46
+  * tx: configurable number of maximum transactions
+  * htp: offers possibility to remove transactions
+  * headers: limit the size of folded headers
+  * request: be more liberal about transfer-encoding value
+  * request: continue processing even with invalid headers
+  * http0.9: process headers if there are non-space characters
+  * htp_util: fix spelling issue
+  * src: fix -Wshorten-64-to-32 warnings
+  * uri: normalization removes trailing spaces
+  * CVE-2024-23837 - Critical severity
+
+-------------------------------------------------------------------
 Thu Jul 27 08:56:06 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Update to version 0.5.45
