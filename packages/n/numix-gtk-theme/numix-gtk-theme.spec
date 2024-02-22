@@ -79,9 +79,7 @@ elements. It supports MATE, GNOME, Xfce, and Openbox.
 This package contains the GTK+3 theme.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %make_build
