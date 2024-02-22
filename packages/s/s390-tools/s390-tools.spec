@@ -152,6 +152,7 @@ Patch909:       s390-tools-sles12-fdasd-skip-partition-check-and-BLKRRPART-ioctl
 Patch910:       s390-tools-sles15sp1-11-zdev-Do-not-call-zipl-on-initrd-update.patch
 Patch911:       s390-tools-sles15sp5-remove-no-pie-link-arguments.patch
 Patch912:       s390-tools-ALP-zdev-live.patch
+Patch913:       s390-tools-sles15sp6-kdump-initrd-59-zfcp-compat-rules.patch
 ###
 
 BuildRequires:  curl-devel
@@ -198,6 +199,9 @@ Requires(post): permissions
 Requires(pre):  shadow
 Recommends:     blktrace
 Provides:       s390utils:/sbin/dasdfmt
+Provides:       group(cpacfstats)
+Provides:       group(ts-shell)
+Provides:       group(zkeyadm)
 ExclusiveArch:  s390x x86_64
 
 %description

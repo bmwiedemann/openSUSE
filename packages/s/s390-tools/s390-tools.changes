@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 21 17:02:55 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied a patch for kdump initrd (bsc#1219471) 
+  * s390-tools-sles15sp6-kdump-initrd-59-zfcp-compat-rules.patch
+
+-------------------------------------------------------------------
+Wed Feb 21 11:12:33 CET 2024 - ro@suse.de
+
+- Provide groups as required by RPM 4.19 
+
+-------------------------------------------------------------------
 Wed Feb  7 07:55:51 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade s390-tools to version 2.31 (jsc#PED-3275, jsc#PED-3223) 
