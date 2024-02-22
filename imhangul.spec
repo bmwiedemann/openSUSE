@@ -39,8 +39,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 GTK+-2.0 Hangul input modules.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 NOCONFIGURE=1 ./autogen.sh
