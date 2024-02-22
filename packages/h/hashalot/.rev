@@ -44,4 +44,12 @@
     <comment>- use https url</comment>
     <requestid>972906</requestid>
   </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>599c72b230191b3af233009e8732b94c</srcmd5>
+    <version>0.3</version>
+    <time>1708631970</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1149014 from dimstar)</comment>
+    <requestid>1149090</requestid>
+  </revision>
 </revisionlist>

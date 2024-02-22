@@ -49,14 +49,7 @@ Supported hashes:
 * sha512
 
 %prep
-%setup -q
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
