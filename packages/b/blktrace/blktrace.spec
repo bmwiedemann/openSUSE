@@ -56,8 +56,7 @@ valuable for diagnosing and fixing performance or application problems
 relating to block layer io.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 make CFLAGS="%{optflags}" all %{?with_docs: docs} -j1
