@@ -81,4 +81,12 @@
     <comment>Cleanup unnecessary dependencies</comment>
     <requestid>1110345</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>16d2656955388ca1877745dd83f2bad3</srcmd5>
+    <version>2.1.2</version>
+    <time>1708631889</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148914</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package modello-maven-plugin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -79,8 +79,8 @@ API documentation for %{name}.
 
 %prep
 %setup -q -n %{parent}-%{version}
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 cp -p %{SOURCE1} LICENSE
 
 %pom_remove_plugin :maven-site-plugin

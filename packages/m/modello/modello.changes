@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 22:14:06 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Sep 11 16:10:44 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Cleanup unnecessary dependencies
