@@ -324,8 +324,8 @@ Provides Nano syntax highlighting for icinga2.
 # use absolute shebang instead of env on SUSE distributions
 %if "%{_vendor}" == "suse"
 find . -type f -name '*.sh' -exec sed -i -e 's|\/usr\/bin\/env bash|\/bin\/bash|g' {} \;
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 %endif
 
 %build
