@@ -62,9 +62,8 @@ which are based on human speech recordings.
 
 %prep
 # Probably a mistake from upstream
-%setup -q -n %{name}-%{version}-source
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n %{name}-%{version}-source
+
 # Don't use the included binary voice dictionaries; we compile these from
 # source
 %{__rm} espeak-data/*_dict
