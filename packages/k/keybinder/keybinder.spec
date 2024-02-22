@@ -130,8 +130,8 @@ This package provides the GObject Introspection bindings for libkeybinder0.
 # End of compatibility cruft
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
+
 cp -a %{SOURCE1} examples
 find examples/ \( -name '*.py' -o -name '*.lua' \) -print -exec sh -c '
 ed -s "$1" 2>/dev/null <<\EOF
