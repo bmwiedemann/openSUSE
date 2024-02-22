@@ -1,7 +1,7 @@
 #
 # spec file for package sblim-cmpi-devel
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -79,9 +79,9 @@ installed.
 %setup -T -b 0 -n %{name}-%{version}
 %if 0%{?suse_version} || 0%{?mandriva_version}
 # adapt docdir
-%patch0
+%patch -P 0
 %endif
-%patch1 -p1
+%patch -P 1 -p1
 
 cp %{_sourcedir}/Doxyfile %{_builddir}/%{name}-%{version}/
 mkdir %{_builddir}/%{name}-%{version}/autodocs
