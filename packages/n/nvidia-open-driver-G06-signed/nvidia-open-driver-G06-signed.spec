@@ -95,10 +95,8 @@ This package provides the open-source NVIDIA kernel module driver
 for GeForce RTX 2000 series and newer GPUs.
 
 %prep
-%setup -q -n open-gpu-kernel-modules-%{version}
-%patch0 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1 -n open-gpu-kernel-modules-%{version}
+
 set -- *
 mkdir source
 mv "$@" source/

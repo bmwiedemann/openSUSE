@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 22 15:48:50 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- remove conflicts to nvidia-open-driver-G06-kmp, since it's now
+  provided instead (OMG!); add obsoletes to it as well to make
+  sure it gets replaced (bsc#1220196)
+
+-------------------------------------------------------------------
+Thu Feb 22 14:02:19 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Mon Feb 19 16:32:51 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - kernel-syms-azure is not available on ALP 

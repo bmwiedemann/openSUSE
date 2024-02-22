@@ -301,4 +301,17 @@
     <comment>- kernel-syms-azure is not available on ALP</comment>
     <requestid>1147634</requestid>
   </revision>
+  <revision rev="30" vrev="8">
+    <srcmd5>44c15fd457ee0a30ef3dd3f1d1756e67</srcmd5>
+    <version>545.29.06</version>
+    <time>1708632096</time>
+    <user>anag+factory</user>
+    <comment>- remove conflicts to nvidia-open-driver-G06-kmp, since it's now
+  provided instead (OMG!); add obsoletes to it as well to make
+  sure it gets replaced (bsc#1220196)
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN</comment>
+    <requestid>1149574</requestid>
+  </revision>
 </revisionlist>
