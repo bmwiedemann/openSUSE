@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 11:01:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Nov 25 08:57:52 UTC 2020 - pgajdos@suse.com
 
 - use /usr/sbin/apxs for build, not -prefork

@@ -55,8 +55,8 @@ See %{_sysconfdir}/apache2/conf.d/mod_fcgid.conf and
 
 %prep
 %setup -q -n mod_fcgid-%{version}
-%patch0
-%patch1 -p1
+%patch -P 0
+%patch -P 1 -p1
 
 %build
 APXS="%{apache_apxs}" ./configure.apxs

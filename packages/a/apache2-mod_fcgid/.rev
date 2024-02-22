@@ -246,4 +246,12 @@
     <comment>- use /usr/sbin/apxs for build, not -prefork</comment>
     <requestid>851859</requestid>
   </revision>
+  <revision rev="33" vrev="12">
+    <srcmd5>1fc3bd58d81914fbb55bce47c72abfa2</srcmd5>
+    <version>2.3.9</version>
+    <time>1708631948</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1147826 from dimstar)</comment>
+    <requestid>1149078</requestid>
+  </revision>
 </revisionlist>
