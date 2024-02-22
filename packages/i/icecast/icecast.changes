@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 13:36:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Thu Feb  8 08:04:00 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Provide user/group symbol for user created during pre.

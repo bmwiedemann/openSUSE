@@ -66,11 +66,7 @@ This package contains the upstream HTML documentation and the sample
 configuration files from upstream.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch3 -p1
-%patch100 -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv
