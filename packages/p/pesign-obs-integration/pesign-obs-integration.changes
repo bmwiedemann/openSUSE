@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 16 13:05:01 UTC 2024 - jlee@suse.com
+
+- Update to version 10.2+git20240216.1e15ef4:
+  * Create changes file for reproducible build
+  * Add support for authenticated uefi variables
+  * Allow to dump the pkcs7 signed data as well
+  * Add -N option to add a NULL param to the digest algo definitions
+  * Add -C option to include certificates in the PKCS7 signature
+  * spec.in: fix rpmlint warnings
+
+-------------------------------------------------------------------
 Thu Jun 22 13:11:39 UTC 2023 - Joey Lee <jlee@suse.com>
 
 - Modify pesign-obs-integration.changes, add bsc#1211849 to changelog.
