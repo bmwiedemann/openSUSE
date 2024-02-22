@@ -213,4 +213,12 @@
 - remove obsolete nrpe-rpmlintrc</comment>
     <requestid>1145416</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>46c62d08a96cbd57d6ea2a20d23724b3</srcmd5>
+    <version>4.1.0</version>
+    <time>1708632109</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149543</requestid>
+  </revision>
 </revisionlist>

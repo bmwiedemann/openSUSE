@@ -145,10 +145,10 @@ execution on the remote host for its own output and return code.
 %autosetup -N
 
 %if 0%{?suse_version} < 01500
-%patch1 -p1
-%patch2 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 %if %{with reproducable}
-%patch3 -p1
+%patch -P 3 -p1
 install -m644 %{SOURCE14} include/dh.h
 %endif
 %else

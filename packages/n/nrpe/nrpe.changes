@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 14:07:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Feb  6 15:54:05 UTC 2024 - Lars Vogdt <lars@linux-schulserver.de>
 
 - update to 4.1.0
