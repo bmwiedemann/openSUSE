@@ -66,9 +66,7 @@ Features included:
 * Reshaping the Symbols toolbar and Templates toolbar
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 sed -i 's/\r$//' LICENSE README
 
 %build
