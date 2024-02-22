@@ -308,4 +308,12 @@ Apologies for the delay in fixing it. (forwarded request 212315 from dimstar)</c
     <comment>- Add additional desktopfile for root. (forwarded request 1045825 from ecsos)</comment>
     <requestid>1045927</requestid>
   </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>27bb9bc1b268be8dced8f1ce1ceae1a1</srcmd5>
+    <version>0.9.20</version>
+    <time>1708632035</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1149273 from dimstar)</comment>
+    <requestid>1149304</requestid>
+  </revision>
 </revisionlist>

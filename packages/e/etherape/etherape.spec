@@ -52,8 +52,7 @@ show and can read traffic from a file as well as live from the network.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure
