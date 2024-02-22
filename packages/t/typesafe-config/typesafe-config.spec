@@ -1,7 +1,7 @@
 #
 # spec file for package typesafe-config
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,12 +28,11 @@ Source1:        https://repo1.maven.org/maven2/com/typesafe/config/%{version}/co
 Patch0:         fix-doc-lint.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
+BuildArch:      noarch
 %if 0%{?rhel} >= 9
 BuildRequires:  xmvn-tools
 %endif
-
-BuildArch:      noarch
 
 %description
 Configuration library for JVM languages.
@@ -47,7 +46,7 @@ This package contains javadoc for %{name}.
 
 %prep
 %setup -q -n config-%{version}
-%patch0 -p1
+%patch -P 0 -p1
 
 %build
 pushd config
@@ -72,7 +71,7 @@ javadoc -d target/api \
 
 popd
 cp %{SOURCE1} .
-%mvn_artifact config-%{version}.pom config/target/config.jar
+%{mvn_artifact} config-%{version}.pom config/target/config.jar
 
 %install
 %if 0%{?rhel}
@@ -83,7 +82,7 @@ install -d -m 755 %{buildroot}%{_javadir}
 install -pm 644 config/target/config.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 %endif
 
