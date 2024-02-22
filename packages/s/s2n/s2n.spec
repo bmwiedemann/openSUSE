@@ -1,7 +1,7 @@
 #
 # spec file for package s2n
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define library_version 1.0.0
 %define library_soversion 0unstable
 Name:           s2n
-Version:        1.4.3
+Version:        1.4.4
 Release:        0
 Summary:        AWS implementation of the TLS/SSL protocols
 License:        Apache-2.0

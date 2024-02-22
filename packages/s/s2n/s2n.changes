@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Feb 21 13:13:22 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.4.4
+  * allows cmake to force crypto linkage (#4383)
+  * refactor: consolidate record wiping (#4412)
+  * build: make CMake test flags more consistent with make (#4392)
+  * style(bindings): address new clippy lint (#4411)
+  * refactor: generalize cert sig preference handling (#4379)
+  * feat: More client hello getters (#4380)
+  * fix: only initialize default tls 1.3 config in tests (#4302)
+  * Check fd status before using urandom (#4352)
+  * utils: add map iteration iterator (#4377)
+  * chore(bindings): release (#4388)
+  * chore(bindings): bump aws-lc-sys (#4393)
+  * s2n-tls-tokio: use s2n_shutdown_send instead of s2n_shutdown (#4374)
+  * enforce result checking for blob and mem (#4389)
+
+-------------------------------------------------------------------
 Wed Feb  7 11:42:55 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.4.3
