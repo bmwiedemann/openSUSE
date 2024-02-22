@@ -44,9 +44,7 @@ Provides:       bundled(lzma)
 ECWolf is a port of the Wolfenstein 3D engine based of Wolf4SDL.
 
 %prep
-%setup -q -n %{name}-%{version}-src
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n %{name}-%{version}-src
 # remove bundled libs
 rm -Rf deps/{bzip2,zlib,jpeg-6b,SDL,SDL_mixer,SDL_net,textscreen}
 sed -e 's|/usr/local/share/games/wolf3d|%{_datadir}/wolf3d|g' -i docs/ecwolf.6
