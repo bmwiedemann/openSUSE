@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-menu
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +20,7 @@ Name:           xdg-menu
 Version:        0.2
 Release:        0
 Summary:        XDG Menus for WindowMaker and other Window Managers
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/GUI/Other
 Source0:        %{name}.tar.bz2
 Patch0:         %{name}-xfce4.patch
@@ -51,16 +51,16 @@ used by WindowMaker and other window managers.
 
 %prep
 %setup -q -n xdg-menu
-%patch0
-%patch1 -p1
-%patch2
-%patch3
-%patch4
-%patch5
-%patch6
-%patch7
-%patch8
-%patch9
+%patch -P 0
+%patch -P 1 -p1
+%patch -P 2
+%patch -P 3
+%patch -P 4
+%patch -P 5
+%patch -P 6
+%patch -P 7
+%patch -P 8
+%patch -P 9
 
 %build
 

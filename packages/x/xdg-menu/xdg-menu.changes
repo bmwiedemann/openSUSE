@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 09:44:51 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Dec 17 20:38:49 UTC 2014 - dimstar@opensuse.org
 
 - On openSUSE > 13.2, xterm has been split into xterm-bin for the

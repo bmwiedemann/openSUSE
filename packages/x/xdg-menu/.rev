@@ -154,4 +154,12 @@
     <user>dimstar_suse</user>
     <comment>  so conditionally require xterm-bin.</comment>
   </revision>
+  <revision rev="24" vrev="219">
+    <srcmd5>5e1c72ff1e78f494b059da8153332767</srcmd5>
+    <version>0.2</version>
+    <time>1708631734</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN.</comment>
+    <requestid>1148493</requestid>
+  </revision>
 </revisionlist>
