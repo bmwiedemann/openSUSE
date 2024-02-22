@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package boost
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -172,7 +172,7 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %endif
 
 # Python NumPy library is only available on Leap 42.1 OpenSUSE onward
-# and is not availble in SLE
+# and is not available in SLE
 %if 0%{?suse_version} >= 1330 || 0%{?is_opensuse}
 %bcond_without python_numpy
 %else
@@ -385,7 +385,7 @@ Requires:       %{package_name}
 
 %description -n %{package_name}-python3
 This package contains the Boost.MPI Python 3.x serialization
-inteface.
+interface.
 %endif
 
 %package     -n boost%{library_version}-jam
@@ -812,7 +812,7 @@ Requires:       boost-license%{library_version}
 
 %description -n libboost_mpi_python-py3-%{library_version}
 This package contains the Boost.MPI Python 3.x serialization
-inteface.
+interface.
 
 %package     -n libboost_mpi_python-py3-%{library_version}-devel
 Summary:        Development library for Boost.MPI Python 3.x serialization
@@ -1240,20 +1240,20 @@ tasks.
 %setup -q -n boost_%{library_version} -b 3
 #everything in the tarball has the executable flag set ...
 find -type f ! \( -name \*.sh -o -name \*.py -o -name \*.pl \) -exec chmod -x {} +
-%patch1 -p1
-%patch2
-%patch4
-%patch5
-%patch6 -p1
-%patch7
-%patch9 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
-%patch20 -p1
-%patch21 -p1
-%patch22 -p2
+%patch -P 1 -p1
+%patch -P 2
+%patch -P 4
+%patch -P 5
+%patch -P 6 -p1
+%patch -P 7
+%patch -P 9 -p1
+%patch -P 15 -p1
+%patch -P 16 -p1
+%patch -P 17 -p1
+%patch -P 18 -p1
+%patch -P 20 -p1
+%patch -P 21 -p1
+%patch -P 22 -p2
 
 %build
 find . -type f -exec chmod u+w {} +

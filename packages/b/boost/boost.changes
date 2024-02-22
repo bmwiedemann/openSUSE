@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 09:18:53 CET 2024 - aschnell@suse.com
+
+- avoid obsolete rpm syntax
+
+-------------------------------------------------------------------
 Thu Dec 14 08:43:05 CET 2023 - aschnell@suse.com
 
 - update to 1.84.0
@@ -394,7 +399,8 @@ Fri Apr 12 11:48:21 UTC 2019 - Adam Majer <adam.majer@suse.de>
   For detailed changes see
   https://www.boost.org/users/history/version_1_70_0.html
 
-- 0001-beast-fix-moved-from-executor.patch: upstream patch to fix regresion
+- 0001-beast-fix-moved-from-executor.patch: upstream patch to fix
+  regression
 - boost-rpmoptflags-only.patch: refresh but don't disable all extra
   warnings
 - dynamic_linking.patch: refreshed
@@ -1478,14 +1484,12 @@ Thu Aug 26 10:55:59 CEST 2010 - pth@suse.de
  http://www.boost.org/users/news/version_1_43_0 and
  http://www.boost.org/users/news/version_1_44_0.
 
-
 -------------------------------------------------------------------
 Fri Jul  9 13:17:57 CEST 2010 - pth@suse.de
 
 - Rename patch to be identical to the one checked in for 11.3.
   The patch adds an explicite specialization to the call to prevent
   unwanted temporary instantiations.
-
 
 -------------------------------------------------------------------
 Fri Jul  9 09:34:03 UTC 2010 - lnussel@suse.de
@@ -1920,7 +1924,7 @@ Fri Oct 31 12:40:57 CET 2008 - pth@suse.de
 - Disable deletion of full-name symlinks in boost.spec.in.
 - Make boost-devel directly require all library subpackages.
 - boost.rpm isn't needed, even for updates, so don't build it and
-  remove the README file needeed only for this package.
+  remove the README file needed only for this package.
 - Make debug package require all library subpackages.
 - Add pre_checkin.sh to ensure that boost.spec is regenerated
   at check-in time.
@@ -2282,7 +2286,7 @@ Thu Aug  9 15:16:09 CEST 2007 - pth@suse.de
             added.
 
           o Member function get_value_or(alternative_value) added.
-          o Incompatbility bug with mpl::apply<> fixed.
+          o Incompatibility bug with mpl::apply<> fixed.
           o Converting assignment bug with uninitialized lvalues fixed.
 
     * Parameter Library:
@@ -2341,7 +2345,7 @@ Thu Aug  9 15:16:09 CEST 2007 - pth@suse.de
           o lexicographical_compare
           o join
           o New comparison predicates is_less, is_not_greater.
-          o Negative indexes support (like Perl) in various algorihtms
+          o Negative indexes support (like Perl) in various algorithms
             (*_head/tail, *_nth).
 
     * Wave Library:
