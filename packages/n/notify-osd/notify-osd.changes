@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 14:03:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sat Feb 22 15:48:43 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.9.35~bzr20191129:
