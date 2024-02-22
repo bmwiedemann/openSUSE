@@ -84,9 +84,7 @@ system indicators.
 This package contains the development files for Ido.
 
 %prep
-%setup -q -c
-%patch0 -p1
-%patch1 -p1
+%autosetup -c -p1
 
 %build
 NOCONFIGURE=1 gnome-autogen.sh
