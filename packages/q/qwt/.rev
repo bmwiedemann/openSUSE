@@ -156,4 +156,14 @@ SPDX format (or choose from list linked at license.opensuse.org) (forwarded requ
     <comment></comment>
     <requestid>729936</requestid>
   </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>1627a64b75a6c20bdf815792237cc915</srcmd5>
+    <version>5.2.3_qt5+git20181129.2819734</version>
+    <time>1708631780</time>
+    <user>anag+factory</user>
+    <comment>- Rename generically named man file &quot;deprecated&quot; to  &quot;qwt-deprecated&quot;.
+- Use %autosetup macro. Allows to eliminate the usage of deprecated %patchN
+</comment>
+    <requestid>1148819</requestid>
+  </revision>
 </revisionlist>

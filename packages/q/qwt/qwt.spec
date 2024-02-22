@@ -1,7 +1,7 @@
 #
 # spec file for package qwt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -79,8 +79,6 @@ designer tool.
 Summary:        Development documentation for Qwt
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
-# Both provide deprecated(3) man page
-Conflicts:      libftdi1-devel
 Provides:       libqwt5-devel-doc = %{version}
 Obsoletes:      libqwt5-devel-doc < %{version}
 
@@ -89,8 +87,7 @@ This package contains the development documentation of the Qwt widgets
 as is it created by doxygen.
 
 %prep
-%setup -q -n qwt-%{version}
-%patch0 -p1
+%autosetup -p1 -n qwt-%{version}
 
 # qmake is so fun...
 sed -i 's|headers.path   = \$\$\[QT_INSTALL_HEADERS\]/qwt5-qt5|headers.path   = %{_libqt5_includedir}/qwt5|' qwtconfig.pri
@@ -106,6 +103,9 @@ make %{?_smp_mflags}
 
 %install
 %qmake5_install
+
+# Rename generically named man file
+mv %{buildroot}%{_mandir}/man3/deprecated.3 %{buildroot}%{_mandir}/man3/%{name}-deprecated.3
 
 %fdupes -s %{buildroot}
 
