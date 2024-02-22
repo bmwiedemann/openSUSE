@@ -1,7 +1,7 @@
 #
 # spec file for package gexif
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,8 +42,7 @@ within JPEG images created by some digital cameras.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf -f -i
@@ -64,13 +63,11 @@ cp %{SOURCE1} $RPM_BUILD_ROOT%{_datadir}/pixmaps/
 %suse_update_desktop_file -c %{name} "GExif" "EXIF Tag Viewer" %{name} gexif Graphics Photograph
 %endif
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %files
 %defattr(-,root,root)
+%license COPYING
 # NEWS README are empty
-%doc AUTHORS COPYING ChangeLog
+%doc AUTHORS ChangeLog
 %{_bindir}/gexif
 %{_datadir}/applications/*.desktop
 %{_datadir}/pixmaps/*.png
