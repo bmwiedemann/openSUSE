@@ -17,14 +17,14 @@
 #
 
 
-%define raft_sover 3
+%define raft_sover 0
 Name:           raft
-Version:        0.18.1
+Version:        0.22.0
 Release:        0
-Summary:        Fully asynchronous C implementation of the Raft consensus protocol
+Summary:        Asynchronous C implementation of the Raft consensus protocol
 License:        LGPL-3.0-only WITH LGPL-3.0-linking-exception
-URL:            https://github.com/canonical/raft
-Source:         https://github.com/canonical/raft/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/cowsql/raft
+Source:         https://github.com/cowsql/raft/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -33,49 +33,49 @@ BuildRequires:  pkgconfig(liblz4) >= 1.7.1
 BuildRequires:  pkgconfig(libuv) >= 1.18.0
 
 %description
-This library is a fully asynchronous C implementation of the Raft consensus protocol.
+This library is a asynchronous C implementation of the Raft consensus protocol.
+It implements the core Raft algorithm logic, and various drivers are provided
+that implement actual network communication and persistent data storage.
 
-It implements the core Raft algorithm logic and a pluggable interface defining I/O for
-networking and persistent storage. The algorithm supports leadership election,
-log replication, log compaction, and  membership changes.
-
-A stock implementation of the I/O interface based on libuv is included.
+The library supports asynchronous or non-blocking I/O engines (such as libuv and
+io_uring), although it can be used in threaded or blocking contexts as well.
 
 %package -n libraft%{raft_sover}
-Summary:        Library implementing the Raft consensus protocol
+Summary:        Asynchronous C implementation of the Raft consensus protocol
 
 %description -n libraft%{raft_sover}
-This library is a fully asynchronous C implementation of the Raft consensus protocol.
+This library is a asynchronous C implementation of the Raft consensus protocol.
+It implements the core Raft algorithm logic, and various drivers are provided
+that implement actual network communication and persistent data storage.
 
-It implements the core Raft algorithm logic and a pluggable interface defining I/O for
-networking and persistent storage. The algorithm supports leadership election,
-log replication, log compaction, and  membership changes.
+The library supports asynchronous or non-blocking I/O engines (such as libuv and
+io_uring), although it can be used in threaded or blocking contexts as well.
 
-A stock implementation of the I/O interface based on libuv is included.
+This package contains the shared library.
 
 %package devel
-Summary:        Development files for the Raft library implementation of the consensus protocol
+Summary:        Development files for %{name}
 Requires:       libraft%{raft_sover} = %{version}
-Requires:       pkgconfig(libuv) >= 1.18.0
 
 %description devel
-This library is a fully asynchronous C implementation of the Raft consensus protocol.
+This library is a asynchronous C implementation of the Raft consensus protocol.
+It implements the core Raft algorithm logic, and various drivers are provided
+that implement actual network communication and persistent data storage.
 
-It implements the core Raft algorithm logic and a pluggable interface defining I/O for
-networking and persistent storage. The algorithm supports leadership election,
-log replication, log compaction, and  membership changes.
+The library supports asynchronous or non-blocking I/O engines (such as libuv and
+io_uring), although it can be used in threaded or blocking contexts as well.
+This library is a fully asynchronous C implementation of the Raft consensus protocol.
 
 This package contains the files necessary for developing and building applications
 using the library.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-autoreconf -iv
+autoreconf -fiv
 %configure \
 	--disable-static
-
 %make_build
 
 %install

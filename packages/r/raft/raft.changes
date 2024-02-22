@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 20 21:17:16 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- raft 0.22.0 - new upstream https://github.com/cowsql/raft
+  This version is is a drop-in replacement of canonical/raft up to
+  0.18.0
+- contains improvements to the raft implementation in the
+  replication and leader election code, a legacy shim for the v1
+  API (disabled), test improvements and developer visible changes
+
+-------------------------------------------------------------------
 Mon Feb 19 18:35:10 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - raft 0.18.1:

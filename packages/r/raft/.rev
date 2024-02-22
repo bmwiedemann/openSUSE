@@ -175,4 +175,13 @@
     <comment>raft 0.18.1</comment>
     <requestid>1147705</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b142efa0d75edf575e34c38881ef0f39</srcmd5>
+    <version>0.22.0</version>
+    <time>1708631904</time>
+    <user>anag+factory</user>
+    <comment>raft 0.22.0 - new upstream fork https://github.com/cowsql/raft
+drop-in replacement of canonical/raft, no longer used by dqlite but will be used by cowsql</comment>
+    <requestid>1149173</requestid>
+  </revision>
 </revisionlist>
