@@ -34,8 +34,7 @@ by the HostAP kernel module. In particular, it contains a utility to
 query and flash firmware of Prism2 adapters.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 CFLAGS="%{optflags}" CC="gcc" make %{?_smp_mflags}
