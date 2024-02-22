@@ -623,4 +623,12 @@ fixed in that other package, after which it will trickle down.</comment>
     <comment>- Also fixup hashbang of tools/profiling/ios_bin/parse_link_map.py, (forwarded request 1146622 from dimstar)</comment>
     <requestid>1146623</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>4a6e9794cbcae59b60f29e5f211020b8</srcmd5>
+    <version>1.62.0</version>
+    <time>1708631736</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.62</comment>
+    <requestid>1148502</requestid>
+  </revision>
 </revisionlist>
