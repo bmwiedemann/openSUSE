@@ -1,7 +1,7 @@
 #
 # spec file for package obantoo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        German Online Banking Library
 License:        LGPL-3.0-only
 Group:          Development/Languages/Java
-URL:            http://obantoo.sourceforge.net/
+URL:            https://obantoo.sourceforge.net/
 Source0:        %{name}-%{version}.tar.gz
 Patch0:         %{name}-classpath.patch
 Patch1:         %{name}-no-hard-source-target.patch
@@ -39,8 +39,8 @@ A library of tools for German online banking implementing SEPA, IBAN/BIC, DETAUS
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 find . -name \*.jar -print -delete
 build-jar-repository -s lib itextpdf junit glassfish-jaxb-api
 

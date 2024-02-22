@@ -31,4 +31,12 @@
     <comment>Standalone JavaEE inconditionally</comment>
     <requestid>965951</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>7bef75ebd290e5902cdeb4ea1137afa3</srcmd5>
+    <version>2.1.12</version>
+    <time>1708631873</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148882</requestid>
+  </revision>
 </revisionlist>
