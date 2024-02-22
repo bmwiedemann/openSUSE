@@ -19,7 +19,7 @@
 
 %define lname libdqlite0
 Name:           dqlite
-Version:        1.16.2
+Version:        1.16.3
 Release:        0
 Summary:        Distributed SQLite
 License:        LGPL-3.0-only WITH LGPL-3.0-linking-exception
@@ -30,8 +30,8 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.9.0
+BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libuv) >= 1.8.0
-BuildRequires:  pkgconfig(raft) >= 0.18.1
 BuildRequires:  pkgconfig(sqlite3) >= 3.22.0
 
 %description
@@ -68,7 +68,9 @@ applications using the library.
 %build
 autoreconf -fiv
 %configure \
-  --disable-static
+	--disable-static \
+	--enable-build-raft \
+	%{nil}
 %make_build
 
 %install

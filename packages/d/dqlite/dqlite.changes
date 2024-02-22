@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 21 22:24:05 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.16.3:
+  * canonical/raft is now a private implementation detail of dqlite
+    canonical/raft will no longer be updated, replaced by
+    cowsql/raft fork
+  * Fix many cases of arithmetic on void pointers
+
+-------------------------------------------------------------------
 Mon Feb 19 20:00:17 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.16.2:
