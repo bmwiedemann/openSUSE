@@ -7,4 +7,12 @@
     <comment>irqstat is a simple and yet quite effective python script for both online monitoring and offline parsing of the content of the special file /proc/interrupts, especially on large NUMA servers</comment>
     <requestid>880775</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>47eb2e7d43868d1945875724d2192fb7</srcmd5>
+    <version>1.0.0+git4cd6854</version>
+    <time>1708632125</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149577</requestid>
+  </revision>
 </revisionlist>

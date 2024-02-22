@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 13:44:48 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Mar 23 17:08:16 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
 
 - Added fix-python3-and-unbuffered-io.patch

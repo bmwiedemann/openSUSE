@@ -33,9 +33,7 @@ BuildArch:      noarch
 A better way to watch /proc/interrupts, designed for NUMA systems with many processors.
 
 %prep
-%setup -q -n irqstat-%{version}
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n irqstat-%{version}
 
 %build
 
