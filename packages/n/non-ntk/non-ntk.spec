@@ -76,9 +76,7 @@ Requires:       %{name}-devel
 %{summary}, an interactive GUI designer for %{name}.
 
 %prep
-%setup -q -n ntk-%{version}
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n ntk-%{version}
 
 sed -i -e "s|append_value('C\(.*\)FLAGS', CFLAGS|append_value('C\1FLAGS','%{optflags}'.split(' ')|" \
  wscript
