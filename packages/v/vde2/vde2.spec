@@ -169,9 +169,7 @@ Provides:       libvdesnmp0-devel = %{version}-%{release}
 This package contains VDE SNMP header files.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 autoreconf -fvi

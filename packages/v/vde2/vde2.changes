@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 13:16:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Jan 23 14:31:28 UTC 2018 - tchvatal@suse.com
 
 - Drop python2 from the buildrequirements
