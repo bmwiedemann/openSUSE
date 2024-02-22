@@ -26,4 +26,12 @@ with or without executable stack.
     <comment></comment>
     <requestid>1100571</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b852996d97f07343bed9375e8e8b687d</srcmd5>
+    <version>0.5.0</version>
+    <time>1708632034</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1149263 from dimstar)</comment>
+    <requestid>1149303</requestid>
+  </revision>
 </revisionlist>
