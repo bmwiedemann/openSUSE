@@ -50,9 +50,7 @@ This project provide tools to manipulate firmware for Built-in iSight
 found on Apple machine since iMac G5 iSight
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi

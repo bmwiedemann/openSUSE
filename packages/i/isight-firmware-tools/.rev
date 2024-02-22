@@ -91,4 +91,12 @@ This package doesn't include the firmware itself, it includes a firmware extract
     <comment>1</comment>
     <requestid>294301</requestid>
   </revision>
+  <revision rev="13" vrev="18">
+    <srcmd5>0d21e9de6abb448dc77e2c4f089598c0</srcmd5>
+    <version>1.6</version>
+    <time>1708632080</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149477</requestid>
+  </revision>
 </revisionlist>
