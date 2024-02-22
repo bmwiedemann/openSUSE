@@ -72,8 +72,7 @@ This package contains the development files for irssi. It allows to
 compile plugins for the irssi package.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %meson \

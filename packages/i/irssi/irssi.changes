@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 13:46:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Mon Jan 29 14:39:45 UTC 2024 - Ailin Nemui <ailin.nemui@gmail.com>
 
 - add perl-again.patch, workaround for Perl bug that breaks the
