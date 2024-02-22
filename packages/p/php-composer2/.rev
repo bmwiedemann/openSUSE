@@ -334,4 +334,12 @@
   * Fixed bump command not bumping packages required with a v prefix (#11764)</comment>
     <requestid>1146367</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>f30bb19a9977949f7744b00aabfae4b7</srcmd5>
+    <version>2.7.1</version>
+    <time>1708631965</time>
+    <user>anag+factory</user>
+    <comment>- Updated composer2.phar to match upstreams sha256 1ffd0be3f27e237b1ae47f9e8f29f96ac7f50a0bd9eef4f88cdbe94dd04bfff0 (forwarded request 1148935 from comrad)</comment>
+    <requestid>1149085</requestid>
+  </revision>
 </revisionlist>
