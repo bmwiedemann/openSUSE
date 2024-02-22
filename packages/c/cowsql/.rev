@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7dccce81b9e1363121d67a9ab2b5ac23</srcmd5>
+    <version>1.15.4</version>
+    <time>1708631906</time>
+    <user>anag+factory</user>
+    <comment>Fork of dqlite, needs new raft (cowsql/raft) from SR#1149173
+</comment>
+    <requestid>1149187</requestid>
+  </revision>
+</revisionlist>
