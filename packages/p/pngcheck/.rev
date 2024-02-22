@@ -97,4 +97,13 @@
   *               lab&quot;)</comment>
     <requestid>940245</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>08811344626decdcabc09ec4b8bf3a27</srcmd5>
+    <version>3.0.3</version>
+    <time>1708631932</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1149000</requestid>
+  </revision>
 </revisionlist>

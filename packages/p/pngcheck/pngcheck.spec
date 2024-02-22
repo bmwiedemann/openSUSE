@@ -1,7 +1,7 @@
 #
 # spec file for package pngcheck
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,8 +40,7 @@ ORDR). This is a command-line program with batch capabilities (e.g.,
 ``pngcheck *.png'').
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 make %{?_smp_mflags} -f Makefile.unx
