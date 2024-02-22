@@ -103,4 +103,12 @@
     <comment>Build with source and target levels 8</comment>
     <requestid>964135</requestid>
   </revision>
+  <revision rev="16" vrev="27">
+    <srcmd5>2ec151bea2a0f303e2c78104589bc3ac</srcmd5>
+    <version>1.2</version>
+    <time>1708631805</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148822</requestid>
+  </revision>
 </revisionlist>

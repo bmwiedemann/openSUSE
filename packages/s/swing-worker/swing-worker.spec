@@ -1,7 +1,7 @@
 #
 # spec file for package swing-worker
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,8 +62,8 @@ SwingWorker included into Java 1.6.
 
 %prep
 %setup -q -c %{name}-%{version}
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 # remove all third party jars
 find . -iname '*.jar' | xargs rm -rf
 cp %{SOURCE1} .
