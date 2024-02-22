@@ -147,8 +147,8 @@ once, if at all. The rest is done by logrotate / cron.)
 
 %prep
 %setup -q -n exim-%{version}
-%patch0
-%patch1 -p1
+%patch -P 0
+%patch -P 1 -p1
 # build with fPIE/pie on SUSE 10.0 or newer, or on any other platform
 %if %{?suse_version:%suse_version}%{?!suse_version:99999} > 930
 fPIE="-fPIE"
