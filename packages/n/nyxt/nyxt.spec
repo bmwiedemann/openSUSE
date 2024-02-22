@@ -20,7 +20,7 @@
 # and possibly prone to security issues.
 %bcond_with webextensions
 Name:           nyxt
-Version:        3.11.2
+Version:        3.11.3
 Release:        0
 Summary:        Keyboard-oriented, Common Lisp extensible web-browser
 License:        BSD-3-Clause
@@ -51,8 +51,7 @@ It has familiar key-bindings (Emacs, VI, CUA), is fully configurable and
 extensible in Lisp, and has powerful features for productive professionals.
 
 %prep
-%setup -q -c nyxt-%{version}
-%patch0 -p1
+%autosetup -p1 -c nyxt-%{version}
 
 %build
 %if %{with webextensions}

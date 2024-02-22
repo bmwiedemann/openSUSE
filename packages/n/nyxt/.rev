@@ -136,4 +136,15 @@ These issues are now fixed with a patch, hence this new submission.</comment>
 Update to version 3.11.2</comment>
     <requestid>1144423</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3ca4c728bac9d0b531de93b14d41b839</srcmd5>
+    <version>3.11.3</version>
+    <time>1708632093</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.11.3
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+</comment>
+    <requestid>1149537</requestid>
+  </revision>
 </revisionlist>
