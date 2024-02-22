@@ -1,7 +1,7 @@
 #
 # spec file for package spice-parent
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,9 @@ Release:        0
 Summary:        Sonatype Spice Components
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://github.com/sonatype/oss-parents
-Source0:        http://repo1.maven.org/maven2/org/sonatype/spice/%{name}/%{version}/%{name}-%{version}.pom
-Source1:        http://apache.org/licenses/LICENSE-2.0.txt
+URL:            https://github.com/sonatype/oss-parents
+Source0:        https://repo1.maven.org/maven2/org/sonatype/spice/%{name}/%{version}/%{name}-%{version}.pom
+Source1:        https://apache.org/licenses/LICENSE-2.0.txt
 Patch0:         pom.patch
 BuildRequires:  forge-parent
 BuildRequires:  javapackages-local
@@ -41,7 +41,7 @@ cp -p %{SOURCE0} pom.xml
 cp -p %{SOURCE1} .
 
 #Remove plexus-javadoc
-%patch0
+%patch -P 0
 
 %pom_xpath_remove pom:project/pom:parent/pom:relativePath
 
