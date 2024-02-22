@@ -134,4 +134,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>774741</requestid>
   </revision>
+  <revision rev="20" vrev="30">
+    <srcmd5>f489c4972a7222fdf410151c59c71120</srcmd5>
+    <version>0.6</version>
+    <time>1708631948</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1147824 from dimstar)</comment>
+    <requestid>1149075</requestid>
+  </revision>
 </revisionlist>

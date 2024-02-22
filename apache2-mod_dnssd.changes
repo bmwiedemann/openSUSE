@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 11:00:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Sun Feb  9 20:39:40 UTC 2020 - pgajdos@suse.com
 
 - removing %apache_test_* macros, do not test module just by
