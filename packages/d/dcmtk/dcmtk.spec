@@ -30,6 +30,7 @@ BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  kf5-filesystem
 BuildRequires:  libtiff-devel
 BuildRequires:  pkgconfig
 BuildRequires:  tcpd-devel
@@ -68,23 +69,23 @@ parts the DICOM standard.
 %autosetup -p1
 
 %build
-%cmake \
+%{cmake_kf5 -d build -- \
  -DBUILD_SHARED_LIBS=ON \
  -DDCMTK_WITH_XML=ON \
  -DDCMTK_WITH_OPENSSL=ON \
  -DDCMTK_WITH_SNDFILE=ON \
- -DDCMTK_WITH_ZLIB=ON
+ -DDCMTK_WITH_ZLIB=ON}
 
 %cmake_build
 
 %install
-%cmake_install
+%kf5_makeinstall -C build
 
 # Remove zero-length file (fix rpmlint warning)
 rm %{buildroot}%{_datadir}/dcmtk-%{version}/wlistdb/OFFIS/lockfile
 
 # Move doc files from /usr/share/doc/dcmtk-<version> to /usr/share/doc/packages/dcmtk/
-mkdir %{buildroot}%{_docdir}
+mkdir -p %{buildroot}%{_docdir}
 mv %{buildroot}%{_datadir}/doc/%{name}-%{version} %{buildroot}%{_docdir}/dcmtk
 
 # Install README file to documentation

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 11:09:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Use the KDE cmake macros that are guaranteed to not break
+  Leap builds.
+
+-------------------------------------------------------------------
 Thu Feb  1 14:20:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.6.8

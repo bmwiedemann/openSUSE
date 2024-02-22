@@ -245,4 +245,13 @@
     <comment>Update to 3.6.8</comment>
     <requestid>1143428</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>dac00e7fdba1987dffe71c750b4e1b47</srcmd5>
+    <version>3.6.8</version>
+    <time>1708632067</time>
+    <user>anag+factory</user>
+    <comment>- Use the KDE cmake macros that are guaranteed to not break
+  Leap builds.</comment>
+    <requestid>1149572</requestid>
+  </revision>
 </revisionlist>
