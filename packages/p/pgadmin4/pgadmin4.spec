@@ -26,11 +26,11 @@
 %global python3_azure_mgmt_resource_min_version 23.0.1
 %global python3_azure_mgmt_subscription_min_version 3.1.1
 %global python3_bcrypt_min_version 4.0
-%global python3_boto3_min_version 1.26
+%global python3_boto3_min_version 1.33
 %global python3_botocore_min_version 1.31
 %global python3_cryptography_min_version 41.0
 %global python3_eventlet_min_version 0.33.3
-%global python3_flask_babel_min_version 3.1.0
+%global python3_flask_babel_min_version 4.0.0
 %global python3_flask_compress_min_version 1.4.0
 %global python3_flask_gravatar_min_version 0.5.0
 %global python3_flask_login_min_version 0.4.1
@@ -68,7 +68,7 @@
 %global user_group_name pgadmin
 
 Name:           pgadmin4
-Version:        8.2
+Version:        8.3
 Release:        0
 Summary:        Management tool for PostgreSQL
 License:        PostgreSQL
@@ -185,6 +185,7 @@ Recommends:     %{name}-cloud
 Recommends:     %{name}-desktop
 Obsoletes:      %{name}-web < %{version}
 %{?systemd_requires}
+ExcludeArch:    s390x
 BuildArch:      noarch
 
 %description

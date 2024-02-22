@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Feb 21 16:21:52 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- ExcludeArch: s390x
+
+-------------------------------------------------------------------
+Mon Feb 19 13:59:59 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 8.3:
+  * Supported Database Servers
+    - PostgreSQL: 12, 13, 14, 15, and 16
+    - EDB Advanced Server: 12, 13, 14, 15, and 16
+  * Bundled PostgreSQL Utilities
+    - psql, pg_dump, pg_dumpall, pg_restore: 16.0
+  * New features
+    - Allow drag-n-drop columns collection tree node as comma
+      separated columns.
+    - Added support to rename columns in Views.
+    - Added BYPASSRLS|NOBYPASSRLS option while creating a Role.
+    - Added support for column storage syntax while creating table.
+    - Use COOKIE_DEFAULT_PATH or SCRIPT_NAME in session cookie
+      path.
+    - Added configurable parameter to enable support for
+      PasswordExecCommand in server mode.
+  * Bug fixes
+    - Fixed an issue where format sql was messing up operator.
+      Included many other feature changes, more details here
+    - Fixed an issue where formatting inserts empty lines in
+      specific case.
+    - Add support for selecting a schema in the backup database
+      dialog with no tables, mviews, views or foreign tables.
+    - Fixed a UI border issue on the dependencies tab for columns
+      with icon.
+    - Fixed an issue where multiple errors were showing if user
+      does not have connect privileges.
+    - Fixed an issue where group membership information was
+      displayed incorrectly.
+    - Ensure that the correct SQL is generated when changing the
+      column data type to "char".
+    - Fixed an issue pgAdmin fails to launch due to inconsistent
+      PATH variable name on windows.
+    - Fix a backend server error when creating a named restore
+      point.
+    - Fix wrong default for FORCE_LOWER in the FLASK_GRAVATAR
+      module.
+
+-------------------------------------------------------------------
 Fri Feb  9 09:31:20 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add node_modules.spec.inc as Source to satisfy factory-auto.
