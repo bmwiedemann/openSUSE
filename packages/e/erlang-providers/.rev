@@ -7,4 +7,13 @@
     <comment>submitting for dmueller. dependency of sonic-pi</comment>
     <requestid>1067995</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ad5dc8f2bfb82bf042ce104afc74a44c</srcmd5>
+    <version>1.8.1</version>
+    <time>1708631968</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1149100</requestid>
+  </revision>
 </revisionlist>

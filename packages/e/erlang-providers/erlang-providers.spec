@@ -1,7 +1,7 @@
 #
 # spec file for package erlang-providers
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,8 +37,7 @@ Requires:       erlang-getopt
 An Erlang providers library.
 
 %prep
-%setup -q -n %{app_name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{app_name}-%{version}
 
 %build
 %rebar compile
