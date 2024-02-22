@@ -40,8 +40,7 @@ Requires:       apache2
 This module allows you to query MaxMind DB files from Apache 2.2+ using the libmaxminddb library.
 
 %prep
-%setup -q -n %{modname}-%{version}
-%patch1 -p1
+%autosetup -p1 -n %{modname}-%{version}
 # This config file is used for loading the module without
 # enabling any databases which are not available on OBS
 echo "MaxMindDBEnable On" > test-enable-module.conf

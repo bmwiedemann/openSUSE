@@ -32,4 +32,12 @@
   https://github.com/maxmind/mod_maxminddb/releases/tag/1.2.0 (forwarded request 787616 from darix)</comment>
     <requestid>787707</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>de94ee56c590edfc1e46966ab5709470</srcmd5>
+    <version>1.2.0</version>
+    <time>1708631949</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1147827 from dimstar)</comment>
+    <requestid>1149080</requestid>
+  </revision>
 </revisionlist>
