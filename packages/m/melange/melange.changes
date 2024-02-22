@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 20 20:40:47 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.2:
+  * Add --package-append flag to build
+  * apply package substitutions in
+    test.emvironment.contents.packages
+  * change docker runner labels
+  * label containers created by docker runner for easier external
+    management
+  * Add a --trace flag to melange build
+  * Add dagger runner
+
+-------------------------------------------------------------------
 Thu Feb 15 06:14:16 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.6.1:
