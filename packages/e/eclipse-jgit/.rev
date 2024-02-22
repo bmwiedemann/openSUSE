@@ -127,4 +127,12 @@
     <comment>prepare build against apache-sshd 2.12+ that will have security fixes</comment>
     <requestid>1138347</requestid>
   </revision>
+  <revision rev="17" vrev="12">
+    <srcmd5>bc68357935c592148c3f4cd4ce40ca71</srcmd5>
+    <version>5.11.0</version>
+    <time>1708631880</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148900</requestid>
+  </revision>
 </revisionlist>

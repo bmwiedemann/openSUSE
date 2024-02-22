@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 21:55:25 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Jan 12 15:25:10 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:
