@@ -1,7 +1,7 @@
 #
 # spec file for package zathura
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -102,6 +102,10 @@ export CFLAGS="%{optflags}"
 %meson_build
 
 %check
+%if 0%{?qemu_user_space_build}
+# qemu does not implement seccomp
+echo 'int main() { return 77; }' > tests/test_session.c
+%endif
 %meson_test
 
 %install
