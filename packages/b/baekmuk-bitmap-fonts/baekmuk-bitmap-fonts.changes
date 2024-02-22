@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 10:05:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sat Apr 23 00:19:36 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to upstream version 2.2

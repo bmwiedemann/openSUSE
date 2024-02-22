@@ -58,9 +58,9 @@ version).
 %prep
 %setup -q -c -a 1
 pushd baekmuk-bdf-%{version}
-%patch0 -p0
-%patch1 -p0
-%patch2 -p1
+%patch -P 0 -p0
+%patch -P 1 -p0
+%patch -P 2 -p1
 popd
 
 %build
