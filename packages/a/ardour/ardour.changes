@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed Feb 21 09:33:51 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 8.4.0. Check https://ardour.org/whatsnew.html for the
+  full list of changes
+  Improvements and Bug Fixes:
+  * Mixer interaction fixes (interaction consistent use of
+    button press and release).
+  * Lots of miscellaneous color and drawing tweaks.
+  * AAF import now (mostly) functional. This is still somewhat
+    experimental, but we would welcome feedback..
+  * Add metadata to session property editor so that search
+    "works" there.
+  * Dummy Backend: allow testing with some prime buffersizes.
+  * Region groups: do not group multiple takes on a single track.
+  * Add a tooltip to describe ops on the pianoroll header,
+    incl note select.
+  * Don't show plugin preset UI for plugins without controls.
+  * New "adwaita" color theme (based on the GNOME Adwaita
+    desktop theme).
+  * Don't show automation of hidden plugins.
+  * Set default MIDI CC values to be more in line with MIDI specs.
+  * MIDI notes that were already on/down when recording starts
+    are now captured.
+  Control Surfaces and Devices:
+  * Allow control surfaces to keep editing plugin parameters
+    when an unrelated plugin is removed.
+  * Adjusted Akai MIDIMix mapping to make solo function as
+    described in original user manual provided by manufacturer.
+  * Add Lexicon MPX100 midnam file.
+  * Add Yamaha SY85 midnam file.
+  * Add Donner DMK25 spacline MIDI interface map file.
+  * Add a minimalistic Arturia MiniLab 3 map.
+  * FaderPort 8: only use visible channelstrip plugins.
+  Bug Fixes:
+  * Fix sensitivity of macOS global menu at application start.
+  * Fix snap to triplet (still no builtin triplet drawing, sadly).
+  * MIDI Legatize operation should now function correctly..
+  * Escape cue cd-text like toc.
+  * Fix crash when using Ripple with a RegionMoveDrag.
+  * Allow to use ardour --gdb on newer Linux distros (fixes an
+    issue with the way these systems build gdb).
+  * Update bundled gdb for windows debug builds.
+  * Fix gtk-critical message when monitor section is not present.
+  * Fix gdk livelock on Windows when compiled with recent mingw/gcc.
+  * Explicitly catch some errors when handling illegal file name
+    characters.
+  * Do not attempt to save automation data for non-automatable
+    parameters.
+  * Fix "Ignored automation data for non-automatable parameter".
+  * Fix crash (or stuck solo) when removing tracks.
+  * Fix crash when session-load fails while creating Routes.
+  * Fix erasing events in MIDIBuffer (removing the last event
+    marked the whole buffer empty).
+  * Fix crash when replicating an LV2 plugin with a different I/O
+    configuration.
+  * Fix ffmpeg-5+ encoding drop-frame framerates.
+  * Fix ACE Compressor inplace processing (when using stereo
+    compressor on mono track)
+
+-------------------------------------------------------------------
 Fri Dec 22 09:12:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 8.2.0. See https://ardour.org/whatsnew.html for the

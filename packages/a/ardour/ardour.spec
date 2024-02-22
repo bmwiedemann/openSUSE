@@ -18,7 +18,7 @@
 
 %define dirbase ardour8
 Name:           ardour
-Version:        8.2.0
+Version:        8.4.0
 Release:        0
 Summary:        Multichannel Digital Audio Workstation
 # Legal: Ardour is a mix of GPL-2.0-or-later, [L]GPL-3.0-or-later and a couple copyleft
@@ -149,6 +149,7 @@ sed -i 's#/usr/local/lib/vst3:/usr/lib/vst3#/usr/local/lib64/vst3:/usr/local/lib
 sed -i 's#/usr/local/lib/vst:/usr/lib/vst#/usr/local/lib64/vst:/usr/local/lib/vst:/usr/lib64/vst:/usr/lib/vst#' libs/ardour/search_paths.cc
 %endif
 
+# --no-ytk allows using the system gtk2
 %build
 ./waf configure \
    --prefix=%{_prefix} \
@@ -158,12 +159,13 @@ sed -i 's#/usr/local/lib/vst:/usr/lib/vst#/usr/local/lib64/vst:/usr/local/lib/vs
    --docdir=%{_docdir} \
    --docs \
    --internal-shared-libs \
-   --with-backends=jack,alsa,dummy,pulseaudio \
+   --with-backends=jack,alsa,pulseaudio \
    --lv2dir=%{_libdir}/%{dirbase}/LV2 \
    --freedesktop \
    --noconfirm \
    --no-phone-home \
-   --optimize
+   --optimize \
+   --no-ytk
 
 ./waf i18n
 ./waf %{?_smp_mflags}
@@ -188,7 +190,6 @@ rm -r %{buildroot}%{_datadir}/appdata
 %doc doc README
 %dir %{_sysconfdir}/%{dirbase}
 %config(noreplace) %{_sysconfdir}/%{dirbase}/*
-%{_bindir}/ardour8-new_aaf_session
 %{_bindir}/%{dirbase}
 %{_bindir}/%{dirbase}-copy-mixer
 %{_bindir}/%{dirbase}-export
