@@ -1,7 +1,7 @@
 #
 # spec file for package matthewlib-java
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%global make make
 %define orig_name libmatthew-java
 Name:           matthewlib-java
 Version:        0.8
@@ -79,12 +80,12 @@ A collection of Java libraries: - Unix Sockets Library This is a
 
 %prep
 %setup -q -n %{orig_name}-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 
 %build
-make \
+%make \
     CFLAGS='%{optflags} -fpic -std=c99' \
     LIBDIR='%{_libdir}' \
     LD='gcc' \
