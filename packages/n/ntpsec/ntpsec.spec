@@ -119,11 +119,11 @@ sed -i -e 's:#!%{_bindir}/env python:#!%{_bindir}/python3:' \
 # there is no actual reason for 3.18 gpsd version
 sed -i -e 's:, condition="ver >= num(3, 18)"::' \
     pylib/wscript
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
 
 %build
 %global _lto_cflags %{nil}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 14:01:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sat Nov 25 22:33:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.2a (bsc#1214024, CVE-2023-4012):
