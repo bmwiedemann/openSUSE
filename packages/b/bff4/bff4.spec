@@ -1,7 +1,7 @@
 #
 # spec file for package bff4
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,7 +21,6 @@ Version:        1
 Release:        0
 Summary:        Fast Brainfuck interpreter
 License:        SUSE-Public-Domain
-Group:          Development/Languages/Other
 Url:            http://mazonka.com/brainf/
 Source0:        %{name}.c
 # bnc#761551
@@ -41,7 +40,7 @@ Oleg Mazonka 4.12.06  http://mazonka.com/
 
 %prep
 cp %{SOURCE0} %{SOURCE1} .
-%patch0
+%patch -P 0
 
 %build
 gcc %{name}.c -o %{name} %{optflags}

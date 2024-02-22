@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 22 10:10:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Thu Oct 17 14:34:32 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Tue Jun 19 12:31:02 UTC 2012 - adam@mizerski.pl
 
 - added license-clarification.txt (bnc#761551) and updated
