@@ -30,4 +30,14 @@
   * Linting: Replace flake8, isort, and friends with ruff</comment>
     <requestid>1133211</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6d204a32c555356d676eaddd131aafa3</srcmd5>
+    <version>4.0.2</version>
+    <time>1708631992</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0.2:
+  * Make `get_all()` generic over the futures' type.
+  * Format with `ruff format` instead of `black`.</comment>
+    <requestid>1149140</requestid>
+  </revision>
 </revisionlist>

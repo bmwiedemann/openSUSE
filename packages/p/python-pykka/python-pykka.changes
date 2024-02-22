@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 22 09:56:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.2:
+  * Make `get_all()` generic over the futures' type.
+  * Format with `ruff format` instead of `black`.
+
+-------------------------------------------------------------------
 Thu Dec 14 21:40:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.1:
