@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 15 15:49:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.6.6:
+  + Maintenance release to fix most urgent issues in LibSass.
+  + for openSUSE defacto only a version number change, as the
+    upstream fix mainly contains the now obsolete patch:
+    - libsass-CVE-2022-43357,CVE-2022-43358,CVE-2022-26592.patch
+
+-------------------------------------------------------------------
 Fri Dec 15 09:40:23 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - security update:
