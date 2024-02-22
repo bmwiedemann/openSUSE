@@ -32,8 +32,7 @@ The hackbench test is a benchmark for measuring the performance,
 overhead, and scalability of the Linux scheduler.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 cc %{optflags} hackbench.c -o hackbench
