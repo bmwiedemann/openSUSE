@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-health-check
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 Name:           python-django-health-check
 Version:        3.16.5
 Release:        0
@@ -31,11 +28,13 @@ Patch0:         python-django-health-check-no-mock.patch
 BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module celery}
 BuildRequires:  %{python_module django-codemod}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 1.11
@@ -49,8 +48,7 @@ behavior is detected.
 Services checked include databases, caches, queue servers, celery processes, etc.
 
 %prep
-%setup -q -n django-health-check-%{version}
-%patch0 -p1
+%autosetup -p1 -n django-health-check-%{version}
 # setuptools-scm fails for GitHub archives
 sed -i 's/use_scm_version=True/version="%{version}"/' setup.py
 
@@ -65,10 +63,10 @@ sed -i -e '/sphinx/d;/pytest-runner/d;/--cov[-=]/d' setup.cfg
 djcodemod run --removed-in 4.0 tests/testapp/urls.py health_check/urls.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand # https://github.com/KristianOellegaard/django-health-check/issues/268
 rm -rf %{buildroot}%{$python_sitelib}/tests/
 if [[ -f %{buildroot}%{$python_sitelib}/health_check/templates/health_check/index.html ]]; then false; fi
@@ -90,6 +88,7 @@ export DJANGO_SETTINGS_MODULE=tests.testapp.settings
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*health[-_]check*/
+%{python_sitelib}/health_check
+%{python_sitelib}/django_health_check-%{version}.dist-info
 
 %changelog
