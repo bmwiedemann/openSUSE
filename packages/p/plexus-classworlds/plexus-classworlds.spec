@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package plexus-classworlds
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ Source0:        https://github.com/codehaus-plexus/%{name}/archive/%{name}-%{ver
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 Obsoletes:      %{short_name} < %{version}-%{release}
 Provides:       %{short_name} = %{version}-%{release}
 BuildArch:      noarch
@@ -67,12 +67,6 @@ ln -s $(build-classpath commons-logging) target/test-lib/commons-logging-1.0.3.j
 ln -s $(build-classpath xml-apis) target/test-lib/xml-apis-1.3.02.jar
 %endif
 
-%pom_remove_plugin :maven-enforcer-plugin
-%pom_remove_plugin :maven-dependency-plugin
-
-%pom_remove_parent .
-%pom_xpath_inject "pom:project" "<groupId>org.codehaus.plexus</groupId>" .
-
 %build
 %{ant} \
 %if %{without tests}
@@ -88,7 +82,7 @@ ln -sf %{name}.jar %{buildroot}%{_javadir}/%{short_name}.jar
 ln -sf ../%{name}.jar %{buildroot}%{_javadir}/plexus/%{short_name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar -a %{short_name}:%{short_name}
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
