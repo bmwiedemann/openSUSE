@@ -459,4 +459,12 @@ Otherwise, &quot;modsign-verify&quot; will be missing.
     <comment></comment>
     <requestid>1094706</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>b4f064fdc7c4bfee9f588e19047abca4</srcmd5>
+    <version>10.2+git20240216.1e15ef4</version>
+    <time>1708631773</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147093</requestid>
+  </revision>
 </revisionlist>
