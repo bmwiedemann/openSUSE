@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Feb 21 09:47:50 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+- Use %python3_pyproject_wheel instead of %pyproject_wheel
+
+-------------------------------------------------------------------
+Mon Sep 25 05:26:27 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.4.1:
+  * Fixed: Error when .config/flashfocus exists but no config file present
+  * Fixed: Multiple sigints required to terminate flashfocus on sway
+  * Update to use ruff and pre-commit
+  * Modernize type hints
+
+-------------------------------------------------------------------
+Mon Sep 25 05:26:21 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.4.0:
+  * Updated: Drop support for python 3.6 and 3.7
+  * Updated: PEP 517 build system
+- Remove flashfocus-2.0.3-no-i3ipc.patch
+- Add flashfocus-2.4.0-no-i3ipc.patch
+
+-------------------------------------------------------------------
 Mon Oct 24 10:31:09 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.3.1:

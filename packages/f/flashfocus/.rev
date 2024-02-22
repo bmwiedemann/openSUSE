@@ -222,4 +222,26 @@
   * Not user facing: #79 Fixed a bunch of mypy warnings</comment>
     <requestid>1030844</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>865c66f00303473c5c8a99b230077644</srcmd5>
+    <version>2.4.1</version>
+    <time>1708632017</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+- Use %python3_pyproject_wheel instead of %pyproject_wheel
+
+- Update to 2.4.1:
+  * Fixed: Error when .config/flashfocus exists but no config file present
+  * Fixed: Multiple sigints required to terminate flashfocus on sway
+  * Update to use ruff and pre-commit
+  * Modernize type hints
+
+- Update to 2.4.0:
+  * Updated: Drop support for python 3.6 and 3.7
+  * Updated: PEP 517 build system
+- Remove flashfocus-2.0.3-no-i3ipc.patch
+- Add flashfocus-2.4.0-no-i3ipc.patch</comment>
+    <requestid>1149225</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package flashfocus
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,23 @@
 
 
 Name:           flashfocus
-Version:        2.3.1
+Version:        2.4.1
 Release:        0
 Summary:        Focus animations for tiling window managers
 License:        MIT
 Group:          System/X11/Utilities
 URL:            https://github.com/fennerm/flashfocus
 Source:         https://github.com/fennerm/flashfocus/archive/v%{version}.tar.gz
-Patch0:         flashfocus-2.0.3-no-i3ipc.patch
+Patch0:         flashfocus-2.4.0-no-i3ipc.patch
 BuildRequires:  fdupes
 BuildRequires:  libffi-devel
 BuildRequires:  libxcb-devel
-BuildRequires:  python3
+BuildRequires:  python3 >= 3.8
+BuildRequires:  python3-pip
+BuildRequires:  python3-pip-wheel
 BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 Requires:       python3-PyYAML >= 5.1
 Requires:       python3-cffi
 Requires:       python3-click
@@ -44,15 +47,14 @@ BuildArch:      noarch
 Focus animations for tiling window managers. Compatible with all X based window managers.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 sed -i "s/#!\/usr\/bin\/env bash/#!\/bin\/bash/" bin/nc_flash_window
 
 %build
-python3 setup.py build
+%python3_pyproject_wheel
 
 %install
-python3 setup.py install --prefix=%{_prefix} --optimize=2 --root=%{buildroot}
+%python3_pyproject_install
 %fdupes -s %{buildroot}
 
 %files
