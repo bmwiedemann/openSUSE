@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 07:53:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Fri May 12 07:00:53 UTC 2017 - werner@suse.de
 
 - Add patch html2ps-1.0b5-opt.diff

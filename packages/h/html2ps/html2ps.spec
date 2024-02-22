@@ -59,9 +59,7 @@ many of the HTML 4.0 features.	From the home page
 * Automatic hyphenation and text justification can be selected.
 
 %prep
-%setup
-%patch0
-%patch1
+%autosetup -p0
 
 %build
 
