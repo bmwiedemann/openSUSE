@@ -1,0 +1,65 @@
+From 25e84a9917fc8c2f1c7d2976e946c5e5a22b3589 Mon Sep 17 00:00:00 2001
+From: Thomas Bertschinger <tahbertschinger@gmail.com>
+Date: Tue, 20 Feb 2024 20:24:20 -0700
+Subject: [PATCH] rust: use libc::Ioctl type for ioctl() request argument
+
+The second argument to ioctl() can be defined as a different type by
+different libc implementations, and can be a different size on different
+architectures depending on what type it is defined as. For example,
+glibc defines it as `unsigned long` which may have a different size on
+32-bit vs. 64-bit architectures, and musl libc defines it as `int`.
+
+The Rust libc crate exposes a type `libc::Ioctl` which is defined as the
+appropriate integer type for the given libc implementation. Using this
+type for the request argument to `libc::ioctl()` ensures code will
+compile correctly regardless of architecture and libc implementation.
+
+Also, because ioctl request numbers are defined to be 32 bits
+(regardless of the fact that `unsigned long` might sometimes take 64
+bits on some architectures), this patch changes the Rust representation
+of the bcachefs ioctl numbers to u32 instead of u64.
+
+Signed-off-by: Thomas Bertschinger <tahbertschinger@gmail.com>
+Signed-off-by: Kent Overstreet <kent.overstreet@linux.dev>
+---
+ bch_bindgen/src/libbcachefs_wrapper.h | 4 ++--
+ src/wrappers/handle.rs                | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/bch_bindgen/src/libbcachefs_wrapper.h b/bch_bindgen/src/libbcachefs_wrapper.h
+index bc4658fb..128592c3 100644
+--- a/bch_bindgen/src/libbcachefs_wrapper.h
++++ b/bch_bindgen/src/libbcachefs_wrapper.h
+@@ -33,5 +33,5 @@ MARK_FIX_753(blk_mode_t, BLK_OPEN_READ);
+ MARK_FIX_753(blk_mode_t, BLK_OPEN_WRITE);
+ MARK_FIX_753(blk_mode_t, BLK_OPEN_EXCL);
+ 
+-MARK_FIX_753(__u64, BCH_IOCTL_SUBVOLUME_CREATE);
+-MARK_FIX_753(__u64, BCH_IOCTL_SUBVOLUME_DESTROY);
++MARK_FIX_753(__u32, BCH_IOCTL_SUBVOLUME_CREATE);
++MARK_FIX_753(__u32, BCH_IOCTL_SUBVOLUME_DESTROY);
+diff --git a/src/wrappers/handle.rs b/src/wrappers/handle.rs
+index 48148a8f..60bdedb7 100644
+--- a/src/wrappers/handle.rs
++++ b/src/wrappers/handle.rs
+@@ -22,7 +22,7 @@ impl BcachefsHandle {
+ 
+ /// I/O control commands that can be sent to a bcachefs filesystem
+ /// Those are non-exhaustive 
+-#[repr(u64)]
++#[repr(u32)]
+ #[non_exhaustive]
+ pub enum BcachefsIoctl {
+     SubvolumeCreate = BCH_IOCTL_SUBVOLUME_CREATE,
+@@ -47,7 +47,7 @@ impl BcachefsHandle {
+     /// Type-safe [`libc::ioctl`] for bcachefs filesystems
+     pub fn ioctl(&self, request: BcachefsIoctl, payload: &BcachefsIoctlPayload) -> Result<(), Errno> {
+         let payload_ptr: *const libc::c_void = payload.into();
+-        let ret = unsafe { libc::ioctl(self.inner.ioctl_fd, request as u64, payload_ptr) };
++        let ret = unsafe { libc::ioctl(self.inner.ioctl_fd, request as libc::Ioctl, payload_ptr) };
+ 
+         if ret == -1 {
+             Err(errno::errno())
+-- 
+2.43.1
+
