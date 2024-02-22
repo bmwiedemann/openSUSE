@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 20 20:51:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.3.5:
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.29.1 to
+    0.29.2 (#207)
+  * feat: add clusterrole support (#198)
+  * docs: Update readme to reflect current state (#204)
+  * Added CONTRIBUTING.md (#203)
+  * Feat: added support for unused DaemonSets (#199)
+
+-------------------------------------------------------------------
 Fri Feb 09 19:18:00 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.3.4:
