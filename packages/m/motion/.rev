@@ -226,4 +226,13 @@
     <comment>- provide user(motion) and group(motion) (forwarded request 1144146 from msmeissn)</comment>
     <requestid>1144147</requestid>
   </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>d96e03098747062028a07ed36bdb315f</srcmd5>
+    <version>4.5.1</version>
+    <time>1708631934</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1149003</requestid>
+  </revision>
 </revisionlist>

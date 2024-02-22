@@ -58,8 +58,7 @@ with a rather small footprint. This version is built with ffmpeg support but
 without MySQL and PostgreSQL support.
 
 %prep
-%setup -q -n motion-release-%version
-%patch0 -p1
+%autosetup -p1 -n motion-release-%version
 
 %build
 export LIBS="-lwebp"
