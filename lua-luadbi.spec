@@ -1,7 +1,7 @@
 #
 # spec file for package lua-luadbi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,8 +54,7 @@ with native database drivers. But openSUSE version doesn't build with DB2 and
 Oracle.
 
 %prep
-%setup -q -n luadbi-%{version}
-%patch0 -p1
+%autosetup -p1 -n luadbi-%{version}
 
 sed -i \
     -e 's:-g -pedantic -Wall -O2:%{optflags} -fPIC -I%{lua_incdir}:g' \
