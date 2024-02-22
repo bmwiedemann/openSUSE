@@ -73,4 +73,12 @@
     <comment>- Update edk2 to 202311</comment>
     <requestid>1138158</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a994e5839adbc9093c8b55cddd41a4a5</srcmd5>
+    <version>202311</version>
+    <time>1708631748</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1148538</requestid>
+  </revision>
 </revisionlist>

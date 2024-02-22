@@ -69,7 +69,7 @@ BuildRequires:  acpica
 %endif
 BuildRequires:  bc
 BuildRequires:  dos2unix
-%if "%{platform}" == "Armada80x0McBin"
+%if "%{platform}" == "Armada80x0McBin" || "%{platform}" == "SG2042"
 BuildRequires:  dtc
 %endif
 BuildRequires:  gcc
@@ -79,7 +79,11 @@ BuildRequires:  python3
 BuildRequires:  unzip
 %if "%{platform}" == ""
 ExclusiveArch:  do_not_build
+%elif "%{platform}" == "SG2042"
+%define ARCH RISCV64
+ExclusiveArch:  riscv64
 %else
+%define ARCH AARCH64
 ExclusiveArch:  aarch64
 %endif
 
@@ -143,9 +147,12 @@ DSC_PATH="edk2-platforms/Platform/SoftIron/Overdrive1000Board/Overdrive1000Board
 %if "%{platform}" == "SbsaQemu"
 DSC_PATH="edk2-platforms/Platform/Qemu/SbsaQemu/SbsaQemu.dsc"
 %endif
-BUILD_OPTIONS="-a AARCH64 -p $DSC_PATH -b %{build_mode} -t GCC5 %{?jobs:-n %jobs}"
+%if "%{platform}" == "SG2042"
+DSC_PATH="edk2-platforms/Platform/Sophgo/SG2042_EVB_Board/SG2042.dsc"
+%endif
+BUILD_OPTIONS="-a %{ARCH} -p $DSC_PATH -b %{build_mode} -t GCC5 %{?jobs:-n %jobs}"
 # BaseTools does not support parallel builds, so no -jN here
-ARCH=AARCH64 make -C BaseTools BUILD_CC=gcc BUILD_CXX=g++ BUILD_AS=gcc
+ARCH=%{ARCH} make -C BaseTools BUILD_CC=gcc BUILD_CXX=g++ BUILD_AS=gcc
 
 . ./edksetup.sh
 
@@ -188,6 +195,10 @@ install -D -m 0644 edk2-non-osi/Platform/Hisilicon/HiKey960/lpm3.img %{buildroot
 %if "%{platform}" == "SbsaQemu"
 %define fd_file SBSA_FLASH[01].fd
 truncate -s 256M %{outdir}/FV/%{fd_file}
+%endif
+%if "%{platform}" == "SG2042"
+%define outdir Build/SG2042_EVB/%{build_mode}_GCC5
+%define fd_file SG2042.fd
 %endif
 
 find %{outdir} -name *.fd
