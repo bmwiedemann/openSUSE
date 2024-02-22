@@ -67,16 +67,16 @@ framebuffer に展開しています。
 
 %prep
 %setup -q
-%patch0 -p1 -b .conf
-%patch2 -p1 -b .remove_sticky
-%patch3 -p1 -b .userspace
-%patch4 -p1 -b .infinite_loop
-%patch5 -p1 -b .remove_warn
-%patch6 -p1 -b .nmap_newkernel
-%patch7 -p1 -b .hang_onexit
-%patch8 -p1 -b .pagemask
-%patch9 -p1 -b .utid_with_refresh
-%patch10 -p1
+%patch -P 0 -p1 -b .conf
+%patch -P 2 -p1 -b .remove_sticky
+%patch -P 3 -p1 -b .userspace
+%patch -P 4 -p1 -b .infinite_loop
+%patch -P 5 -p1 -b .remove_warn
+%patch -P 6 -p1 -b .nmap_newkernel
+%patch -P 7 -p1 -b .hang_onexit
+%patch -P 8 -p1 -b .pagemask
+%patch -P 9 -p1 -b .utid_with_refresh
+%patch -P 10 -p1
 cp %{SOURCE1} .
 cp %{SOURCE2} .
 
