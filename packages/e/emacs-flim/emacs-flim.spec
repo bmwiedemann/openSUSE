@@ -40,8 +40,7 @@ BuildArch:      noarch
 For coding and decoding MIME messages.
 
 %prep
-%setup -q -n flim-%{version}
-%patch0
+%autosetup -p0 -n flim-%{version}
 
 %build
 make %{?_smp_mflags} EMACS=emacs \

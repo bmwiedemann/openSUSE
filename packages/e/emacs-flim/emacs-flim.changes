@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 11:38:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Sat Jan 20 02:27:35 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use %patch0 to fix compilation with rpm-4.19
