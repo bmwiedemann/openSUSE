@@ -1,7 +1,7 @@
 #
 # spec file for package xmlgraphics-batik
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2008, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -147,9 +147,9 @@ Demonstrations and samples for %{name}.
 find -name '*.class' -delete
 find -name '*.jar' -delete
 
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 
 cp -p %{SOURCE7} batik-svgrasterizer/src/main/resources/org/apache/batik/apps/rasterizer/resources/rasterizer.policy
 cp -p %{SOURCE7} batik-svgbrowser/src/main/resources/org/apache/batik/apps/svgbrowser/resources/svgbrowser.policy

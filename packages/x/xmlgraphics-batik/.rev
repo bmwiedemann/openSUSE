@@ -345,4 +345,12 @@
     <comment>Fix build with java 21</comment>
     <requestid>1120326</requestid>
   </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>b613b32276ffd647d3ff5143f0e4263f</srcmd5>
+    <version>1.15</version>
+    <time>1708631763</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148641</requestid>
+  </revision>
 </revisionlist>
