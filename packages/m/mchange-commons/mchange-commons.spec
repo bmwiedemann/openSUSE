@@ -1,7 +1,7 @@
 #
 # spec file for package mchange-commons
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,7 +50,7 @@ Group:          Documentation/HTML
 
 %prep
 %setup -q -n %{git_tag}
-%patch0 -p1
+%patch -P 0 -p1
 
 find -name '*.class' -delete
 find -name '*.jar' -delete
@@ -85,7 +85,7 @@ install -d -m 755 %{buildroot}%{_javadir}/%{name}
 install -pm 644 target/%{git_tag}.jar %{buildroot}%{_javadir}/%{name}/mchange-commons-java.jar
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 644 target/%{git_tag}.pom %{buildroot}%{_mavenpomdir}/%{name}/mchange-commons-java.pom
+%{mvn_install_pom} target/%{git_tag}.pom %{buildroot}%{_mavenpomdir}/%{name}/mchange-commons-java.pom
 %add_maven_depmap %{name}/mchange-commons-java.pom %{name}/mchange-commons-java.jar
 %endif
 
@@ -98,6 +98,7 @@ cp -a target/api %{buildroot}%{_javadocdir}/%{name}
 
 %files -f .mfiles
 %license LICENSE*
+
 %if ! 0%{?rhel} >= 9
 %files javadoc
 %license LICENSE*
