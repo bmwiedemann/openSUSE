@@ -149,4 +149,12 @@ SPDX format (forwarded request 94655 from babelworx)</comment>
     <comment>- Modernise spec file</comment>
     <requestid>666260</requestid>
   </revision>
+  <revision rev="22" vrev="284">
+    <srcmd5>fd049254436b77b27d562b5381402054</srcmd5>
+    <version>0.5.2</version>
+    <time>1708631735</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN.</comment>
+    <requestid>1148494</requestid>
+  </revision>
 </revisionlist>
