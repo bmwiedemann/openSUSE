@@ -7,4 +7,12 @@
     <comment>new package for staging:M</comment>
     <requestid>1105584</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6dc9b4e0d1375a932cee4f52d62c8cff</srcmd5>
+    <version>1.3.9</version>
+    <time>1708631765</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148642</requestid>
+  </revision>
 </revisionlist>
