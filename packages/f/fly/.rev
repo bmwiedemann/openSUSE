@@ -133,4 +133,13 @@ SPDX format (or next best alternative from the spreadsheet linked at license.ope
 </comment>
     <requestid>586464</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>c9b22240b56e8f603b535f7271413c40</srcmd5>
+    <version>2.0.1</version>
+    <time>1708631955</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1149077</requestid>
+  </revision>
 </revisionlist>
