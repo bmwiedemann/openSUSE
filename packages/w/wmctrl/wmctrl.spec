@@ -1,7 +1,7 @@
 #
 # spec file for package wmctrl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,19 @@
 
 
 Name:           wmctrl
-BuildRequires:  automake
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xmu)
 Version:        1.07
 Release:        0
-URL:            http://sweb.cz/tripie/utils/wmctrl/
 Summary:        Command line tool to interact with an EWMH/NetWM compatible X Window Manager
 License:        GPL-2.0-or-later
 Group:          System/X11/Utilities
-Source:         %name-%version.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            http://sweb.cz/tripie/utils/wmctrl/
+Source:         %{name}-%{version}.tar.bz2
 Patch0:         wmctrl_1.07-6.diff.bz2
+BuildRequires:  automake
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xmu)
 
 %description
 Wmctrl provides command line access to almost all the features defined
@@ -46,32 +46,22 @@ response to some event.
 Please note that wmctrl only works with window managers which implement
 this specification.
 
-
-
-Authors:
---------
-    Tomas Styblo <tripie@cpan.org>
-
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 ls -lha .
 autoreconf -fi
 %configure
-%{__make} %{?jobs:-j%jobs}
+%make_build
 
 %install
-make DESTDIR=$RPM_BUILD_ROOT install
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+%make_install
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog NEWS README
-%_bindir/*
-%_mandir/man1/wmctrl.1.gz
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README
+%{_bindir}/*
+%{_mandir}/man1/wmctrl.1%{?ext_man}
 
 %changelog
