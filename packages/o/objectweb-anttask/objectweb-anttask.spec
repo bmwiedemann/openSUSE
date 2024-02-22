@@ -1,7 +1,7 @@
 #
 # spec file for package objectweb-anttask
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,8 +39,8 @@ ObjectWeb Ant task
 
 %prep
 %setup -q -c -n %{name}
-%patch1
-%patch2 -p1
+%patch -P 1
+%patch -P 2 -p1
 find . -name "*.class" -exec rm {} \;
 find . -name "*.jar" -exec rm {} \;
 
