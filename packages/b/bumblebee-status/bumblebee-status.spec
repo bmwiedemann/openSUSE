@@ -671,9 +671,7 @@ BuildArch:      noarch
 Displays info about zpools present on the system.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 # Remove hashbang from modules
 sed -i '1{/^#!/d}' bumblebee_status/modules/contrib/{network_traffic,playerctl,spaceapi}.py
 

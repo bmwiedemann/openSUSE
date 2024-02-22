@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 10:31:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Thu Aug 18 00:05:45 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Sync ExcludeArch %ix86 with deadbeef: deadbeef is not being
