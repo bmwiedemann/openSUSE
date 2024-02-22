@@ -42,13 +42,7 @@ BB is a high quality audio-visual demonstration for your text terminal.
 systems and DOS.
 
 %prep
-%setup -q -n %{name}-1.3.0
-%patch0
-%patch1
-%patch2
-%patch3
-%patch4
-%patch5
+%autosetup -p0 -n %{name}-1.3.0
 
 %build
 autoreconf -fiv
