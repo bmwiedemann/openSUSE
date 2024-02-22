@@ -122,12 +122,12 @@ pushd llvm-project/llvm/projects
 mkdir opencl-clang llvm-spirv
 tar -xzf %{_sourcedir}/intel-opencl-clang.tar.gz -C opencl-clang --strip-components=1
 pushd opencl-clang
-%patch0 -p1
+%patch -P 0 -p1
 popd
 tar -xzf %{_sourcedir}/spirv-llvm-translator.tar.gz -C llvm-spirv --strip-components=1
 pushd llvm-spirv
 %if 0%{?suse_version} > 1506
-%patch1 -p1
+%patch -P 1 -p1
 %endif
 popd
 popd
