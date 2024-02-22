@@ -112,4 +112,12 @@
 - Refresh spec file. (forwarded request 1005293 from 1Antoine1)</comment>
     <requestid>1005683</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>dc75039eef309f694a8b80f550b0ac00</srcmd5>
+    <version>1.0.2</version>
+    <time>1708632075</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1149021 from dimstar)</comment>
+    <requestid>1149416</requestid>
+  </revision>
 </revisionlist>

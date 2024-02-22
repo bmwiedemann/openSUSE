@@ -121,8 +121,8 @@ This package contains a standalone local hedgewars server.
 
 %prep
 %setup -q -n %{name}-src-%{version}
-%patch0 -p0
-%patch1 -p1
+%patch -P 0 -p0
+%patch -P 1 -p1
 
 %build
 # CMAKE_POLICY_DEFAULT_CMP0083=NEW - apply POSITION_INDEPENDENT_CODE also to "-pie", since CMake 3.14
