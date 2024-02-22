@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 13:44:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Dec  1 16:47:01 UTC 2020 - pgajdos@suse.com
 
 - use system apache rpm macros

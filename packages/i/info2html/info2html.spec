@@ -50,7 +50,7 @@ Authors:
 
 %prep
 %setup -n info2html-2.0 -a 2
-%patch0 -b .p0
+%patch -P 0 -b .p0
 
 %build
 
