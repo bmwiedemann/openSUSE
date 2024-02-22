@@ -41,8 +41,7 @@ blind user wants to use a screenreader without a braille display the
 grabbed keys can be used to trigger special screenreader functions
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 make CFLAGS="%{optflags} -D_POSIX_C_SOURCE=2 -D_BSD_SOURCE" LIB_CFLAGS="%{optflags} -D_POSIX_C_SOURCE=2 -D_BSD_SOURCE -fPIC" CC="%{__cc}" LD="%{__cc}"
