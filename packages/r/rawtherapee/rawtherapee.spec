@@ -1,7 +1,7 @@
 #
 # spec file for package rawtherapee
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2022 Marcin Bajor
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,15 +24,13 @@
 %define liblcms2_name lcms2
 %endif
 Name:           rawtherapee
-Version:        5.9
+Version:        5.10
 Release:        3%{?dist}
 Summary:        Cross-platform raw image processing program
 License:        GPL-3.0-only
 Group:          Productivity/Graphics/Other
 URL:            https://rawtherapee.com
 Source0:        https://rawtherapee.com/shared/source/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM - Fix build with gcc13 - https://github.com/Beep6581/RawTherapee/pull/6670
-Patch1:         6670.patch
 BuildRequires:  cmake
 BuildRequires:  fftw3-devel
 BuildRequires:  glib2-devel
@@ -44,6 +42,7 @@ BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(exiv2) >= 0.24
 BuildRequires:  pkgconfig(glibmm-2.4)
 BuildRequires:  pkgconfig(gtkmm-2.4)
 Requires:       %{liblcms2_name} >= 2.6
@@ -133,7 +132,7 @@ BuildRequires:  libexpat-devel
 BuildRequires:  liblcms2-devel >= 2.6
 BuildRequires:  update-desktop-files
 Requires(post): desktop-file-utils
-Requires(postun):desktop-file-utils
+Requires(postun): desktop-file-utils
 %else
 BuildRequires:  desktop-file-utils
 BuildRequires:  expat-devel
@@ -154,8 +153,7 @@ Latest stable build from "releases" branch.
 %endif
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 test -x "$(type -p gcc-4.9)" && export CC=gcc-4.9
