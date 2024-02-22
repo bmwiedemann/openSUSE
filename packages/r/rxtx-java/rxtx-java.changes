@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 20:57:37 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Sep 13 04:33:43 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Instruct bnd tools not to include non-reproducible headers in
