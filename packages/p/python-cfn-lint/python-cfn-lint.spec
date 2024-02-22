@@ -1,7 +1,7 @@
 #
 # spec file for package python-cfn-lint
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cfn-lint
-Version:        0.83.4
+Version:        0.85.1
 Release:        0
 Summary:        Tool to checks cloudformation for practices and behaviour
 License:        MIT
@@ -42,7 +42,7 @@ Requires:       python-sarif-om >= 1.0.4
 Requires:       python-sympy >= 1.0.0
 Requires:       (python-jsonschema > 3.0 with python-jsonschema < 5)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-pydot
 Provides:       cfn-lint = %{version}
 Obsoletes:      cfn-lint < %{version}
