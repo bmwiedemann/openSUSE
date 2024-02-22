@@ -351,4 +351,41 @@
   * fix(deps): update module github.com/mattn/go-sqlite3 to v1.14.22 (#2417) (forwarded request 1146478 from ph03nix)</comment>
     <requestid>1146666</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fcf20d589d9dea95624fc6fe638cdc9b</srcmd5>
+    <version>3.68.0</version>
+    <time>1708631909</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.68.0:
+  * Identify some canary tokens without detonation (#2500)
+  * fix(deps): update module go.uber.org/zap to v1.27.0 (#2498)
+  * fix(deps): update module github.com/snowflakedb/gosnowflake to v1.8.0 (#2497)
+  * fix(deps): update module github.com/couchbase/gocb/v2 to v2.7.2 (#2493)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.50.22 (#2492)
+  * fix(deps): update module github.com/launchdarkly/go-server-sdk/v6 to v7 (#2490)
+  * Add Display method to SourceUnit and Kind member to the CommonSourceUnit (#2450)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.50.21 (#2489)
+  * fix(deps): update module github.com/hashicorp/golang-lru to v2 (#2486)
+  * concurrency uint8 to int (#2488)
+  * use read full (#2474)
+  * [chore] - upgrade lru cache version (#2487)
+  * fix(deps): update module github.com/azuread/microsoft-authentication-library-for-go to v1.2.2 (#2484)
+  * fix(deps): update module github.com/hashicorp/golang-lru to v2 (#2483)
+  * fix(deps): update module github.com/hashicorp/golang-lru to v0.6.0 (#2482)
+  * fix(deps): update module github.com/hashicorp/golang-lru to v2 (#2481)
+  * fix(deps): update module google.golang.org/api to v0.165.0 (#2480)
+  * fix(deps): update module go.mongodb.org/mongo-driver to v1.14.0 (#2479)
+  * fix(deps): update module github.com/hashicorp/golang-lru to v0.6.0 (#2478)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.50.20 (#2477)
+  * fix(deps): update module github.com/hashicorp/golang-lru to v2 (#2462)
+  * move clenaup outside the engine (#2475)
+  * tighten keyword match (#2473)
+  * [chore] Increase TestMaxDiffSize timeout (#2472)
+  * add lazy quantifier to prefixregex (#2466)
+  * [cleanup] - Extract buffer logic (#2409)
+  * update gitlab proto (#2469)
+  * add missing prefixregex (#2468)
+  * Remove some noisy / less useful detectors (#2467) (forwarded request 1149088 from ph03nix)</comment>
+    <requestid>1149580</requestid>
+  </revision>
 </revisionlist>
