@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 08:33:37 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Fix tests on Python 3.12
+
+-------------------------------------------------------------------
 Thu Aug  3 11:02:39 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add cpp17.patch to build in newer version of absl

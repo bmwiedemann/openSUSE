@@ -1,7 +1,7 @@
 #
 # spec file for package python-fb-re2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,8 @@ Python wrapper for Google's RE2
 
 %prep
 %autosetup -p1 -n pyre2-%{version}
+# fix tests on py312
+sed -i 's/assertRaisesRegexp/assertRaisesRegex/g' tests/test_match.py
 
 %build
 export CFLAGS="%{optflags}"
