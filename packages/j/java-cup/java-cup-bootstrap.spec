@@ -1,7 +1,7 @@
 #
 # spec file for package java-cup-bootstrap
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ Release:        0
 Summary:        LALR Parser Generator in Java
 License:        HPND
 Group:          Development/Libraries/Java
-URL:            http://www2.cs.tum.edu/projects/cup/
+URL:            https://www2.cs.tum.edu/projects/cup/
 Source0:        %{real_name}-%{git_hash}.tar.xz
 Source1:        %{real_name}-generated-files.tar.xz
 Source100:      java-cup-nogit.patch.in
@@ -94,13 +94,13 @@ java-cup is a LALR Parser Generator in Java. With v0.11, you can: *
 %prep
 %setup -q -n %{real_name}-%{git_hash}
 cat %{SOURCE100} | sed 's#@GIT_HASH@#%{git_hash}#g' | sed 's#@GIT_DATE@#%{git_date}#g' | patch -p1 -u -l
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 %if %{with bootstrap}
 %setup -q -T -D -a 1 -n %{real_name}-%{git_hash}
-%patch2 -p1
+%patch -P 2 -p1
 %else
-%patch3 -p1
+%patch -P 3 -p1
 %endif
 find . -name '*.jar' -print -delete
 mkdir -p target/classes

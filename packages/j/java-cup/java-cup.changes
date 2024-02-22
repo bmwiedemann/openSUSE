@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 09:34:39 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu May  4 13:47:27 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Add _multibuild to define additional spec files as additional
