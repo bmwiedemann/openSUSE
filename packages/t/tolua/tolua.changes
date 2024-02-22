@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 09:49:11 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Tue Aug 23 14:18:35 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Make tolua-5.2.0-shared.patch more useful

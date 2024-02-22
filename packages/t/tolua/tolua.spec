@@ -1,7 +1,7 @@
 #
 # spec file for package tolua
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,9 +22,9 @@ Name:           tolua
 Version:        5.2.4
 Release:        0
 Summary:        Greatly simplifies the integration of C/C++ code with Lua
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Libraries/Other
-Url:            http://www.tecgraf.puc-rio.br/~celes/tolua/
+URL:            http://www.tecgraf.puc-rio.br/~celes/tolua/
 Source:         http://www.tecgraf.puc-rio.br/~celes/tolua/tolua-%{version}.tar.gz
 Patch0:         %{name}-5.2.0-optflags.patch
 Patch1:         %{name}-5.2.0-shared.patch
@@ -63,9 +63,7 @@ This package contains all necessary include files and libraries
 needed to develop applications that require these.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 # no jobserver
