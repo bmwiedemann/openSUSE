@@ -84,13 +84,13 @@ Authors:
 %lang_package
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 %if %{new_polkit}
-%patch3 -p1
+%patch -P 3 -p1
 %endif
 %if %{use_gtk3}
-%patch4 -p1
+%patch -P 4 -p1
 %endif
 
 %if %use_upower
