@@ -418,20 +418,7 @@ other applications.
 
 %prep
 %setup -q -n %{tarname}
-%patch -P 07 -p1
-%patch -P 08 -p1
-%patch -P 09 -p1
-%patch -P 15 -p1
-%patch -P 29 -p1
-# %%if 0%%{?suse_version} <= 1500
-%patch -P 33 -p1
-# %%endif
-# %%if 0%%{?sle_version} && 0%%{?sle_version} <= 150300
-%patch -P 34 -p1
-# %%endif
-%patch -P 35 -p1
-%patch -P 36 -p1
-%patch -P 37 -p1
+%autopatch -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
@@ -820,7 +807,6 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %dir %{_datadir}/icons/hicolor/32x32
 %dir %{_datadir}/icons/hicolor/48x48
 %dir %{_datadir}/icons/hicolor/*/apps
-%attr(755, root, root) %{_bindir}/idle%{python_version}
 # endif for if general
 %endif
 

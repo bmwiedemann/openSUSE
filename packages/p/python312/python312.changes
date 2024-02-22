@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 20 18:12:05 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch to %%autopatch. Let’s try it as an experiment, and if we
+  need conditional patch, we should put condition inside of it.
+- Remove double definition of /usr/bin/idle%%{version} in
+  %%files.
+
+-------------------------------------------------------------------
 Thu Feb 15 10:29:07 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add upstream patch libexpat260.patch, Fix tests for XMLPullParser

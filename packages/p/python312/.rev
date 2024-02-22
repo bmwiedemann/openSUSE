@@ -1011,4 +1011,16 @@
     with Expat 2.6.0, gh#python/cpython#115288</comment>
     <requestid>1146839</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>b2791eee2ab4b7e36cc3290a0812860d</srcmd5>
+    <version>3.12.2</version>
+    <time>1708631726</time>
+    <user>anag+factory</user>
+    <comment>- Switch to %%autopatch. Let’s try it as an experiment, and if we
+  need conditional patch, we should put condition inside of it.
+- Remove double definition of /usr/bin/idle%%{version} in
+  %%files.
+</comment>
+    <requestid>1148455</requestid>
+  </revision>
 </revisionlist>
