@@ -71,6 +71,9 @@ install -Dm0644 completions/_dust %{buildroot}/%{_datadir}/zsh/site-functions/_%
 install -Dm0644 completions/dust.bash %{buildroot}/%{_datadir}/bash-completion/completions/%{name}
 install -Dm0644 completions/dust.fish %{buildroot}/%{_datadir}/fish/completions/%{name}.fish
 
+%check
+%{cargo_test}
+
 %files
 %{_bindir}/%{name}
 %license LICENSE
