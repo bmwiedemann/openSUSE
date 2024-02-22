@@ -54,11 +54,9 @@ C++ and Go as programing languages. It also has a support for Android and iOS
 as mobile operating systems.
 
 %prep
-%setup -q -c
+%autosetup -p0 -c
 # Remove executable permissions
 chmod 0644 AUTHORS CHANGELOG.md CONTRIBUTORS LICENSE
-
-%patch0 -p0
 
 cp %{SOURCE2} .
 
