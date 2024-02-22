@@ -40,8 +40,7 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 A simple morse tutor using the Koch method.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake
