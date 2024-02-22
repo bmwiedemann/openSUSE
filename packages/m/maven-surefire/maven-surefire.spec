@@ -1,7 +1,7 @@
 #
 # spec file for package maven-surefire
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,15 @@
 
 
 Name:           maven-surefire
-Version:        2.22.0
+Version:        2.22.2
 Release:        0
 Summary:        Test framework project
 License:        Apache-2.0 AND CPL-1.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/surefire/
-# ./generate-tarball.sh
-Source0:        %{name}-%{version}.tar.gz
-# Remove bundled binaries which cannot be easily verified for licensing
-Source1:        generate-tarball.sh
-Source2:        http://junit.sourceforge.net/cpl-v10.html
+Source0:        %{name}-%{version}.tar.xz
+Source1:        https://www.apache.org/licenses/LICENSE-2.0.txt
+Source2:        https://www.eclipse.org/legal/cpl-v10.html
 Source10:       %{name}-build.tar.xz
 Patch0:         0001-Maven-3.patch
 Patch1:         0002-Port-to-current-doxia.patch
@@ -131,14 +129,14 @@ Group:          Documentation/HTML
 Javadoc for %{name}.
 
 %prep
-%setup -q -n surefire-%{version} -a10
-cp -p %{SOURCE2} .
+%setup -q -a10
+cp -p %{SOURCE1} %{SOURCE2} .
 
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch10 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 10 -p1
 
 # Disable strict doclint
 sed -i /-Xdoclint:all/d pom.xml
@@ -148,10 +146,6 @@ sed -i /-Xdoclint:all/d pom.xml
 %pom_disable_module surefire-junit-platform surefire-providers
 
 %pom_remove_dep -r org.apache.maven.surefire:surefire-shadefire
-
-# Help plugin is needed only to evaluate effective Maven settings.
-# For building RPM package default settings will suffice.
-%pom_remove_plugin :maven-help-plugin surefire-setup-integration-tests
 
 # QA plugin useful only for upstream
 %pom_remove_plugin -r :jacoco-maven-plugin
@@ -261,7 +255,7 @@ done
 
 %files -f .mfiles
 %doc README.md
-%license LICENSE NOTICE cpl-v10.html
+%license LICENSE-2.0.txt cpl-v10.html
 
 %files plugin-bootstrap -f .mfiles-surefire-plugin
 
@@ -276,6 +270,6 @@ done
 %files -n maven-failsafe-plugin-bootstrap -f .mfiles-failsafe-plugin
 
 %files javadoc -f .mfiles-javadoc
-%license LICENSE NOTICE cpl-v10.html
+%license LICENSE-2.0.txt cpl-v10.html
 
 %changelog

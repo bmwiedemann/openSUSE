@@ -99,7 +99,7 @@
 --- a/pom.xml
 +++ b/pom.xml
 @@ -91,7 +91,7 @@
-     <mavenPluginPluginVersion>3.5</mavenPluginPluginVersion>
+     <!-- <shadedVersion>2.12.4</shadedVersion> commented out due to https://issues.apache.org/jira/browse/MRELEASE-799 -->
      <commonsLang3Version>3.5</commonsLang3Version>
      <commonsIoVersion>2.5</commonsIoVersion>
 -    <mavenSharedUtilsVersion>0.9</mavenSharedUtilsVersion>

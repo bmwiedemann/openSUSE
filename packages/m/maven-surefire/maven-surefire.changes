@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu Feb 22 07:58:37 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.22.2
+  * Bugs:
+    + SUREFIRE-1614: JUnit Runner that writes to System.out
+      corrupts Surefire’s STDOUT when using JUnit’s Vintage Engine
+- Upgrade to 2.22.1
+  * Bugs:
+    + SUREFIRE-1532: MIME type for javascript is now officially
+      application/javascript
+    + SUREFIRE-1535: Surefire unable to run testng suites in
+      parallel
+    + SUREFIRE-1538: Git considers PNG files as changed although
+      there is no change
+    + SUREFIRE-1550: The surefire XSD published on maven site lacks
+      of some rerun element
+    + SUREFIRE-1559: XML Report elements rerunError, rerunFailure,
+      flakyFailure, flakyError should contain element stackTrace and
+      should not be simpleContent.
+    + SUREFIRE-1561: Logs in Parallel Tests are mixed up when
+      forkMode=never or forkCount=0
+    + SUREFIRE-1564: Can’t override platform version through
+      project/plugin dependencies
+    + SUREFIRE-1579: Forks mixed up characters in standard output
+  * Improvements:
+    + SUREFIRE-1552: Nil element “failureMessage” in
+      failsafe-summary.xml should have self closed tag
+    + SUREFIRE-1554: Fix old test resources TEST-*.xml in favor of
+      continuing with SUREFIRE-1550
+    + SUREFIRE-1555: Elapsed time in XML Report should satisfy
+      pattern in XSD.
+    + SUREFIRE-1562: Support Java 11
+    + SUREFIRE-1565: Surefire should support parameterized
+      reportsDirectory
+  * Tasks:
+    + SUREFIRE-1569: m-invoker-p:3.1.0 attempts to resolve
+      maven-surefire-common:jar:2.22.1-SNAPSHOT from remote repo
+      'apache.snapshots'
+    + SUREFIRE-1578: Remove obsolete module
+      surefire-setup-integration-tests
+  * Dependency upgrades:
+    + SUREFIRE-1540: Upgrade maven-plugins parent to version 32
+    + SUREFIRE-1571: Upgrade maven-plugins parent to version 33
+- Fetch sources using source service to avoid bundling binaries in
+  sources
+- Fix broken links in the spec file
+- Modified patch:
+  * 0004-Port-to-current-maven-shared-utils.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
 Fri May  5 08:30:46 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Add _multibuild to define 2nd spec file as additional flavor.
