@@ -229,4 +229,12 @@ as for the header file and lib, it's always been packaged into the bridge-utils 
     <comment></comment>
     <requestid>897095</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>e1ba91a47e8344d7f5d88b92fb129bfd</srcmd5>
+    <version>1.7.1</version>
+    <time>1708632028</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149288</requestid>
+  </revision>
 </revisionlist>

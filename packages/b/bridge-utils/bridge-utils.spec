@@ -47,10 +47,7 @@ Requires:       %{name} = %{version}
 The %{name} devel package contains files needed for development.
 
 %prep
-%setup -q
-%patch0
-%patch1
-%patch2
+%autosetup -p0
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
