@@ -1,7 +1,7 @@
 #
 # spec file for package sblim-cmpi-base
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,9 +22,8 @@ Release:        0
 Summary:        SBLIM Base Instrumentation
 License:        EPL-1.0
 Group:          System/Management
-Url:            http://sblim.wiki.sourceforge.net/
+URL:            http://sblim.wiki.sourceforge.net/
 Source0:        http://prdownloads.sourceforge.net/sblim/%{name}-%{version}.tar.bz2
-Source1:        sblim-cmpi-base-rpmlintrc
 # PATCH-FEATURE-OPENSUSE sblim-cmpi-base-%{version}-methods-enable.patch [ bnc#470670 ] mhrusecky@suse.cz -- Enables methods by default
 Patch0:         sblim-cmpi-base-1.6.2-methods-enable.patch
 Patch2:         sblim-cmpi-base-1.6.4-fix-bashisms.patch
@@ -55,15 +54,16 @@ Summary:        SBLIM Base Instrumentation (test suite)
 Group:          System/Management
 Requires:       %{name} = %{version}
 Requires:       sblim-testsuite
+BuildArch:      noarch
 
 %description testsuite
 Test suite for the Standards Based Linux Instrumentation Base Providers
 
 %prep
 %setup -q -T -b 0
-%patch0
-%patch2 -p1
-%patch3 -p1
+%patch -P 0
+%patch -P 2 -p1
+%patch -P 3 -p1
 
 %build
 autoreconf -fi

@@ -103,4 +103,16 @@
     <comment></comment>
     <requestid>726409</requestid>
   </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>e910aa6f4c769ad63b016f7da4519e28</srcmd5>
+    <version>1.6.4</version>
+    <time>1708631997</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN.
+- Remove sblim-cmpi-base-rpmlintrc
+- Set testsuite subpackage to noarch
+
+- Use %patch -P N instead of deprecated %patchN.</comment>
+    <requestid>1149153</requestid>
+  </revision>
 </revisionlist>
