@@ -1,7 +1,7 @@
 #
 # spec file for package python-autobahn
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,6 @@
 %bcond_without nvx_support
 %endif
 
-%{?!python_module:%define python_module() python-%{**} %{!?skip_python3:python3-%{**}}}
-%define skip_python2 1
 Name:           python-autobahn
 Version:        23.6.2
 Release:        0
@@ -44,6 +42,7 @@ BuildRequires:  %{python_module flatbuffers >= 22.12.6}
 BuildRequires:  %{python_module hyperlink >= 21.0.0}
 BuildRequires:  %{python_module msgpack >= 1.0.2}
 BuildRequires:  %{python_module passlib >= 1.7.4}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module py-ubjson >= 0.16.1}
 BuildRequires:  %{python_module pyOpenSSL >= 20.0.1}
 BuildRequires:  %{python_module pytest >= 2.8.6}
@@ -54,6 +53,7 @@ BuildRequires:  %{python_module service_identity >= 18.1.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module txaio >= 21.2.1}
 BuildRequires:  %{python_module ujson >= 4.0.2}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module wsaccel >= 0.6.3}
 BuildRequires:  %{python_module zope.interface >= 5.2.0}
 BuildRequires:  fdupes
@@ -77,7 +77,7 @@ Requires:       python-ujson >= 4.0.2
 Requires:       python-wsaccel >= 0.6.3
 Requires:       python-zope.interface >= 5.2.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -85,9 +85,7 @@ WebSocket allows bidirectional real-time messaging on the Web and WAMP adds
 asynchronous Remote Procedure Calls and Publish & Subscribe on top of WebSocket.
 
 %prep
-%setup -q -n autobahn-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n autobahn-%{version}
 
 # this test relies too much on rng that can behave randomly in obs
 rm autobahn/test/test_rng.py
@@ -97,13 +95,13 @@ rm autobahn/test/test_rng.py
 export AUTOBAHN_USE_NVX=true
 %endif
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
 %if %{with nvx_support}
 export AUTOBAHN_USE_NVX=true
 %endif
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/wamp
 %python_clone -a %{buildroot}%{_bindir}/xbrnetwork
 %python_clone -a %{buildroot}%{_bindir}/xbrnetwork-ui
@@ -128,7 +126,10 @@ export PY_IGNORE_IMPORTMISMATCH=1
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitearch}/*
+%{python_sitearch}/_nvx_utf8validator.abi3.so
+%{python_sitearch}/autobahn
+%{python_sitearch}/twisted
+%{python_sitearch}/autobahn-%{version}.dist-info
 %python_alternative %{_bindir}/wamp
 %python_alternative %{_bindir}/xbrnetwork
 %python_alternative %{_bindir}/xbrnetwork-ui

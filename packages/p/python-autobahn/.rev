@@ -366,4 +366,13 @@
     * new: expand EIP712AuthorityCertificate; more tests</comment>
     <requestid>1095236</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>562a74c5fc2aca32f4088c25d15c35f2</srcmd5>
+    <version>23.6.2</version>
+    <time>1708631912</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1148956</requestid>
+  </revision>
 </revisionlist>
