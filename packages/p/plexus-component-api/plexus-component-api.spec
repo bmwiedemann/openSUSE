@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-component-api
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,10 +32,9 @@ Source0:        %{name}-%{project_version}.tar.xz
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.6
-BuildRequires:  javapackages-local
+BuildRequires:  java-devel >= 1.8
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  plexus-classworlds
-Requires:       mvn(org.codehaus.plexus:plexus-classworlds)
 BuildArch:      noarch
 
 %description
@@ -52,10 +51,6 @@ API documentation for %{name}.
 %setup -q -n %{name}-%{project_version}
 cp %{SOURCE1} build.xml
 
-%pom_remove_parent
-
-%pom_xpath_inject "pom:project" "<groupId>org.codehaus.plexus</groupId>"
-
 %build
 mkdir -p lib
 build-jar-repository -s lib plexus/classworlds
@@ -67,7 +62,7 @@ install -dm 0755 %{buildroot}%{_javadir}/%{name}
 install -pm 0644 target/%{name}-%{project_version}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%mvn_install_pom pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
 %add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
