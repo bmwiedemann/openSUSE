@@ -37,9 +37,7 @@ deficient as to the kind of and length of information that they can store.
 This is a tool for editing ID3-V2 tags in Linux.
 
 %prep
-%setup -q
-%patch0
-%patch1
+%autosetup -p0
 
 %build
 rm -f id3v2 create_map core *.o
