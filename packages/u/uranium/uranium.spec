@@ -63,8 +63,7 @@ Provides:       qt5qmlimport(UM.1) = %{UM_1_minor}
 A Python framework for building Desktop applications.
 
 %prep
-%setup -q -n Uranium-%sversion
-%patch1 -p1
+%autosetup -p1 -n Uranium-%sversion
 
 # Sanity check
 UM_1_LARGEST_MINOR=$(\

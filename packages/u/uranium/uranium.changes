@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 16:02:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Jun 21 15:56:30 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use versioned python dist provides to enforce a consistent set
