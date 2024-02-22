@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Feb 22 05:01:04 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.4.0:
+  * Add support for `Python 3.11`
+  * Add support for `Python 3.12`
+  * Drop support for `Python 3.7`
+  * Add support for `Django 4.2`
+  * Add support for `Django 5.0`
+  * Remove ``SaveSignalHandlingModel``. This model used a modified copy of
+    the internal Django method `Model.save_base()` and had not been updated
+    for upstream bug fixes changes since its addition.
+  * Add Swedish translation
+  * Use proper column name instead of attname
+  * Fix ValueError when calling prefetch_related for tracked ForeignKey fields
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Wed Jan  4 14:46:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.1:

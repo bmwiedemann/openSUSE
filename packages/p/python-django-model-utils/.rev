@@ -179,4 +179,25 @@
   * Confirm support for `Django 4.1`</comment>
     <requestid>1055879</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>75c3cdeee492e49d1ff92a56e2c59a86</srcmd5>
+    <version>4.4.0</version>
+    <time>1708631925</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.4.0:
+  * Add support for `Python 3.11`
+  * Add support for `Python 3.12`
+  * Drop support for `Python 3.7`
+  * Add support for `Django 4.2`
+  * Add support for `Django 5.0`
+  * Remove ``SaveSignalHandlingModel``. This model used a modified copy of
+    the internal Django method `Model.save_base()` and had not been updated
+    for upstream bug fixes changes since its addition.
+  * Add Swedish translation
+  * Use proper column name instead of attname
+  * Fix ValueError when calling prefetch_related for tracked ForeignKey fields
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1148962</requestid>
+  </revision>
 </revisionlist>

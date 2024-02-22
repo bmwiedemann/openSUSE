@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-model-utils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,22 @@
 #
 
 
-%define skip_python2 1
-%define skip_python36 1
 Name:           python-django-model-utils
-Version:        4.3.1
+Version:        4.4.0
 Release:        0
 Summary:        Django model mixins and utilities
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/jazzband/django-model-utils
 Source:         https://files.pythonhosted.org/packages/source/d/django-model-utils/django-model-utils-%{version}.tar.gz
 # Upstreamed to https://github.com/jazzband/django-model-utils/pull/516
 Patch0:         use-sqlite.patch
 BuildRequires:  %{python_module Django >= 2.0}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module freezegun}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 Requires:       python-Django >= 2.0
 BuildArch:      noarch
@@ -42,14 +41,13 @@ BuildArch:      noarch
 Django model mixins and utilities.
 
 %prep
-%setup -q -n django-model-utils-%{version}
-%patch0 -p1
+%autosetup -p1 -n django-model-utils-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,6 +59,7 @@ export SQLITE=1
 %files %{python_files}
 %license LICENSE.txt
 %doc AUTHORS.rst CHANGES.rst README.rst
-%{python_sitelib}/*
+%{python_sitelib}/model_utils
+%{python_sitelib}/django_model_utils-%{version}.dist-info
 
 %changelog
