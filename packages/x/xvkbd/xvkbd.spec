@@ -1,7 +1,7 @@
 #
 # spec file for package xvkbd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,8 +41,7 @@ which provides a facility to enter characters onto other clients
 (software) by clicking on an on-screen keyboard.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 # Remove build time references so build-compare can do its work
 FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y')
