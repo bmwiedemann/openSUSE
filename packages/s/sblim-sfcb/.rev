@@ -656,4 +656,13 @@ Bugs fixed:
     <comment></comment>
     <requestid>1109264</requestid>
   </revision>
+  <revision rev="64" vrev="17">
+    <srcmd5>56edc8db901c9a558a65e2e5a8c55271</srcmd5>
+    <version>1.4.9</version>
+    <time>1708632009</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup / %autopatch macro. Allows to eliminate the usage
+  of deprecated %patchN.</comment>
+    <requestid>1149195</requestid>
+  </revision>
 </revisionlist>
