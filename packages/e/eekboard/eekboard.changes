@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 11:36:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Sep 21 07:31:09 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add port-to-python3.patch:

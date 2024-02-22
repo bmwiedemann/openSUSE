@@ -54,4 +54,12 @@
 - Remove unneeded BuildRequires on python and python-devel (forwarded request 920540 from StevenK)</comment>
     <requestid>921106</requestid>
   </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>b3e4d01c872337d9b9834ba8bfb3f576</srcmd5>
+    <version>1.0.8</version>
+    <time>1708632041</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149353</requestid>
+  </revision>
 </revisionlist>

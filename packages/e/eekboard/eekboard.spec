@@ -75,8 +75,7 @@ Requires:       %{name} = %{version}
 The eekboard-devel package contains the header files.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 # ./autogen.sh
