@@ -89,22 +89,22 @@ id3lib, a software library for ID3v1 and ID3v2 tag manipulation.
 
 %prep
 %setup -q
-%patch1
-%patch2
-%patch3
-%patch4 -p1
-%patch5 -p1
-%patch6
-%patch7
-%patch8
-%patch9
-%patch10
-%patch11
-%patch12
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
+%patch -P 1
+%patch -P 2
+%patch -P 3
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 6
+%patch -P 7
+%patch -P 8
+%patch -P 9
+%patch -P 10
+%patch -P 11
+%patch -P 12
+%patch -P 13 -p1
+%patch -P 14 -p1
+%patch -P 15 -p1
+%patch -P 16 -p1
 for i in doc/id3v2.3.0{.txt,.html}; do
   dos2unix $i
 done
