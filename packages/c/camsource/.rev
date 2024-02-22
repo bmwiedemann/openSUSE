@@ -201,4 +201,16 @@ The more cleanest fix for bnc#714439 is proposed.
 - camsource-v4l-conf-video_window-overwrite.patch (forwarded request 772215 from dmair)</comment>
     <requestid>772316</requestid>
   </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>12b0a5f09fb374a90ff6661d5709dbec</srcmd5>
+    <version>0.7.1</version>
+    <time>1708631955</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+- Remove obsolete version check for 1210
+- Make devel subpackage noarch
+- Use %license</comment>
+    <requestid>1149064</requestid>
+  </revision>
 </revisionlist>

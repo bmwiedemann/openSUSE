@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 22 08:11:55 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+- Remove obsolete version check for 1210
+- Make devel subpackage noarch
+- Use %license
+
+-------------------------------------------------------------------
 Fri Feb  7 21:07:50 UTC 2020 - David Mair <dmair@suse.com>
 
 - The camsource v4l1 module has logic errors opening the video
