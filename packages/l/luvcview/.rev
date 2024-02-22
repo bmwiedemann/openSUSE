@@ -119,4 +119,14 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="18" vrev="28">
+    <srcmd5>93dcd19ee87714dda09c75dce50ab8c4</srcmd5>
+    <version>20070512</version>
+    <time>1708631936</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN.
+- Remove %clean section
+- Remove old 0%{?suse_version} &gt;= 1210 condition</comment>
+    <requestid>1149006</requestid>
+  </revision>
 </revisionlist>

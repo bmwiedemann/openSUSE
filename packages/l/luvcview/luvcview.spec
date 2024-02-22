@@ -1,7 +1,7 @@
 #
 # spec file for package luvcview
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-
 Name:           luvcview
-BuildRequires:  SDL-devel SDL_image-devel
-%if 0%{?suse_version} >= 1210
+BuildRequires:  SDL-devel
+BuildRequires:  SDL_image-devel
 BuildRequires:  libv4l-devel >= 0.8.4
-%endif
-AutoReqProv:    on
 Group:          Productivity/Multimedia/Video/Players
 Summary:        Simple V4L2 application using sdl
 Version:        20070512
-Release:        15
+Release:        0
 Source:         %name-%version.src.tar.gz
-Url:            http://mxhaard.free.fr/spca50x/Investigation/uvc/  
-License:        GPL-2.0+
+URL:            http://mxhaard.free.fr/spca50x/Investigation/uvc/
+License:        GPL-2.0-or-later
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Patch1:         luvcview-add-COPYING.patch
 Patch2:         luvcview-memory-leaks.patch
@@ -42,16 +39,14 @@ luvcview is a simple V4L2 application using sdl
 
 Authors:
 --------
-    Laurent Pinchart  
-    Michel Xhaard  
+    Laurent Pinchart
+    Michel Xhaard
 
 %prep
 %setup -n luvcview-%version
-%patch1 -p1
-%patch2
-%if 0%{?suse_version} >= 1210
-%patch3 -p1
-%endif
+%patch -P 1 -p1
+%patch -P 2
+%patch -P 3 -p1
 
 %build
 make
@@ -59,9 +54,6 @@ make
 %install
 %{__mkdir_p} %{buildroot}%{_bindir}
 %{__install} -s -m 755 luvcview %{buildroot}%{_bindir}
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)

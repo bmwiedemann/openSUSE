@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 22 07:39:01 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+- Remove %clean section
+- Remove old 0%{?suse_version} >= 1210 condition
+
+-------------------------------------------------------------------
 Thu Jul  7 10:30:12 UTC 2011 - idonmez@novell.com
 
 - Add luvcview-v4l-2.6.38.patch: use new v4l interface 
