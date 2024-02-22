@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_security2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define tarballname   modsecurity-%{version}
 %define usrsharedir %{_datadir}/%{name}
 Name:           apache2-mod_security2
-Version:        2.9.4
+Version:        2.9.7
 Release:        0
 Summary:        Web Application Firewall for apache httpd
 License:        Apache-2.0
@@ -64,10 +64,10 @@ applications from known and unknown attacks.
 %setup -q -n %{tarballname}
 %setup -q -D -T -a 1 -n %{tarballname}
 mv -v SpiderLabs* rules
-%patch0
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch -P 0
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 
 %build
 aclocal
@@ -96,13 +96,11 @@ rm -rf %{buildroot}/%{usrsharedir}/rules/util
 rm -rf %{buildroot}/%{usrsharedir}/rules/lua
 rm -f %{buildroot}/%{usrsharedir}/rules/READM*
 rm -f %{buildroot}/%{usrsharedir}/rules/INSTALL %{buildroot}/%{usrsharedir}/rules/CHANGELOG
-mv %{buildroot}/%{usrsharedir}/rules/modsecurity_crs_10_setup.conf.example \
-  %{buildroot}/%{usrsharedir}/rules/modsecurity_crs_10_setup.conf
 
 # Temporarily disable test suite as there are some failures that need to be solved
-#%check
-#make test
-#make test-regression
+%check
+make test
+# make test-regression
 
 %files
 %{apache_libexecdir}/%{modname}.so

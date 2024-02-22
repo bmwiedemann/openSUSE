@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Feb 20 11:02:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Sat Jul 15 17:09:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.7:
+  * Fix: FILES_TMP_CONTENT may sometimes lack complete content
+  * Support configurable limit on number of arguments processed
+  * Silence compiler warning about discarded const
+  * Support for JIT option for PCRE2
+  * Use uid for user if apr_uid_name_get() fails
+  * Fix: handle error with SecConnReadStateLimit configuration
+  * Only check for pcre2 install if required
+  * Adjustment of previous fix for log messages
+  * Mark apache error log messages as from mod_security2
+  * Use pkg-config to find libxml2 first
+  * Support for PCRE2 in mlogc
+  * Support for PCRE2
+  * Adjust parser activation rules in modsecurity.conf-
+    recommended
+  * Multipart parsing fixes and new MULTIPART_PART_HEADERS
+    collection
+  * Limit rsub null termination to where necessary
+  * IIS: Update dependencies for next planned release
+  * XML parser cleanup: NULL duplicate pointer
+  * Properly cleanup XML parser contexts upon completion
+  * Fix memory leak in streams
+  * Fix: negative usec on log line when data type long is 32b
+  * mlogc log-line parsing fails due to enhanced timestamp
+  * Allow no-key, single-value JSON body
+  * Set SecStatusEngine Off in modsecurity.conf-recommended
+  * Fix memory leak that occurs on JSON parsing error
+  * Multipart names/filenames may include single quote if double-
+    quote enclosed
+  * Add SecRequestBodyJsonDepthLimit to modsecurity.conf-
+    recommended
+  * IIS: Update dependencies for Windows build as of v2.9.5
+  * Support configurable limit on depth of JSON parsing
+
+-------------------------------------------------------------------
 Mon Jul 19 09:37:45 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 2.9.4:

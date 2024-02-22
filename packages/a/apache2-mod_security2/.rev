@@ -261,4 +261,12 @@ Many of the files in the rules/ subdirectory are GPL-2.0 licensed (forwarded req
     <comment></comment>
     <requestid>907289</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>62a51de824bb6509149c181002430f8a</srcmd5>
+    <version>2.9.7</version>
+    <time>1708631950</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1147828 from dimstar)</comment>
+    <requestid>1149082</requestid>
+  </revision>
 </revisionlist>
