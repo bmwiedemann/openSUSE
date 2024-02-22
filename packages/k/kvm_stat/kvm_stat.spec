@@ -75,20 +75,20 @@ There is no reason to install this package.
 
 # Patches present upstream, since 5.7
 %if "%(echo `echo -e "%{version}\\n5.7.0" | sort -V | head -n1 2> /dev/null`)" != "5.7.0"
-%patch01 -p1
-%patch02 -p1
-%patch03 -p1
-%patch04 -p1
+%patch -P 01 -p1
+%patch -P 02 -p1
+%patch -P 03 -p1
+%patch -P 04 -p1
 %endif
 # Patches present upstream, since 5.8
 %if "%(echo `echo -e "%{version}\\n5.8.0" | sort -V | head -n1 2> /dev/null`)" != "5.8.0"
-%patch05 -p1
-%patch06 -p1
-%patch07 -p1
-%patch08 -p1
+%patch -P 05 -p1
+%patch -P 06 -p1
+%patch -P 07 -p1
+%patch -P 08 -p1
 %endif
 %if %{pkg_vcmp kernel-source < 6.1}
-%patch09 -p1
+%patch -P 09 -p1
 %endif
 
 %build

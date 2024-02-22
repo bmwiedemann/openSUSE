@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 12:42:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Dec 30 11:39:21 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Apply tools-kvm_stat-fix-attack-vector-with-user-controlle.patch
