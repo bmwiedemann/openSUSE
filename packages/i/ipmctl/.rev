@@ -123,4 +123,12 @@ build-infrastructure (at least for now).</comment>
     <comment></comment>
     <requestid>1034508</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>fcb2f01919be0d0f787c4c993cdb906f</srcmd5>
+    <version>03.00.00.0468</version>
+    <time>1708632111</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1149454 from dimstar)</comment>
+    <requestid>1149553</requestid>
+  </revision>
 </revisionlist>

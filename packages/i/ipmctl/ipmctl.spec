@@ -89,8 +89,7 @@ Obsoletes:      ixpdimm_sw-devel < 01.00.00.3000
 API for development of Intel Optane persistent memory management utilities.
 
 %prep
-%setup -q -n %{name}-%{version}%{vgit}
-%patch1 -p1
+%autosetup -p1 -n %{name}-%{version}%{vgit}
 
 perl -pi.00 -e '
   s[(CMAKE_INSTALL_)DATAROOT(DIR\})/ipmctl][${1}SYSCONF${2}];
