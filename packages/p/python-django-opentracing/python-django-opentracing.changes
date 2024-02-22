@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 15:33:05 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add py312.patch to work with new configparser.
+
+-------------------------------------------------------------------
 Wed Oct  5 04:12:44 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Add dj41.patch for Django 4.1 compatibility

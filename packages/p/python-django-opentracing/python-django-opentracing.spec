@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-opentracing
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-opentracing
 Version:        1.1.0
 Release:        0
@@ -26,6 +25,8 @@ URL:            https://github.com/opentracing-contrib/python-django/
 Source:         https://github.com/opentracing-contrib/python-django/archive/%{version}.tar.gz#/django_opentracing-%{version}.tar.gz
 # c.f. https://github.com/opentracing-contrib/python-django/issues/71
 Patch0:         dj41.patch
+# PATCH-FIX-OPENSUSE py312.patch Adapt to new configparser
+Patch1:         py312.patch
 BuildRequires:  %{python_module django-codemod}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
@@ -45,8 +46,7 @@ BuildArch:      noarch
 OpenTracing support for Django applications.
 
 %prep
-%setup -q -n python-django-%{version}
-%patch0 -p1
+%autosetup -p1 -n python-django-%{version}
 djcodemod run --removed-in 4.0 tests/test_site/urls.py
 sed -i 's/import mock/from unittest import mock as mock/' tests/test_site/test_middleware.py
 
