@@ -1,7 +1,7 @@
 #
 # spec file for package sisu
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,7 @@ BuildRequires:  fdupes
 BuildRequires:  glassfish-annotation-api
 BuildRequires:  google-guice
 BuildRequires:  guice-servlet
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  junit
 BuildRequires:  osgi-core
 BuildRequires:  plexus-classworlds
@@ -94,18 +94,16 @@ tar xf %{SOURCE2}
 cp %{SOURCE100} sisu-inject/pom.xml
 cp %{SOURCE101} sisu-plexus/pom.xml
 
-%patch0
-%patch1
-%patch2
-%patch3
-%patch4 -p1
+%patch -P 0
+%patch -P 1
+%patch -P 2
+%patch -P 3
+%patch -P 4 -p1
 
 %pom_remove_dep :servlet-api sisu-inject
 
 for i in inject plexus; do
   %pom_xpath_set -r /pom:project/pom:version %{version} %{name}-${i}
-  %pom_remove_dep :::provided: %{name}-${i}
-  %pom_xpath_remove pom:project/pom:build %{name}-${i}
 done
 %pom_change_dep :org.eclipse.sisu.inject org.eclipse.sisu:org.eclipse.sisu.inject:%{version} %{name}-plexus
 
@@ -134,9 +132,9 @@ install -pm 0644 %{name}-plexus/target/org.eclipse.sisu.plexus-%{version}.jar %{
 
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 %{name}-inject/pom.xml %{buildroot}%{_mavenpomdir}/org.eclipse.sisu.inject.pom
+%mvn_install_pom %{name}-inject/pom.xml %{buildroot}%{_mavenpomdir}/org.eclipse.sisu.inject.pom
 %add_maven_depmap org.eclipse.sisu.inject.pom org.eclipse.sisu.inject.jar -f inject
-install -pm 0644 %{name}-plexus/pom.xml %{buildroot}%{_mavenpomdir}/org.eclipse.sisu.plexus.pom
+%mvn_install_pom %{name}-plexus/pom.xml %{buildroot}%{_mavenpomdir}/org.eclipse.sisu.plexus.pom
 %add_maven_depmap org.eclipse.sisu.plexus.pom org.eclipse.sisu.plexus.jar -f plexus -a org.sonatype.sisu:sisu-inject-plexus
 
 # javadoc

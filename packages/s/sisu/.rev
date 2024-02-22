@@ -39,4 +39,12 @@
     <comment>reproducible index</comment>
     <requestid>1109043</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>5150b5f0444ae1ff20bde9d48a6a0883</srcmd5>
+    <version>0.3.5</version>
+    <time>1708631807</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148827</requestid>
+  </revision>
 </revisionlist>
