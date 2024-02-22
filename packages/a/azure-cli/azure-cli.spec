@@ -279,7 +279,7 @@ Microsoft Azure CLI 2.0 Command Line Utilities
 touch %{_sourcedir}/%{short_name}
 %else
 %setup -q -n azure-cli-%{version}
-%patch1 -p1
+%patch -P 1 -p1
 %endif
 
 %build

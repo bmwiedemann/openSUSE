@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 11:17:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Feb  7 09:49:12 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
