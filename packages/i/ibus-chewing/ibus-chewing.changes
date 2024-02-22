@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 13:33:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Sat Jan 20 14:55:08 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fixes for %_ibus_libexecdir moving to %_libexecdir (bsc#1174075)

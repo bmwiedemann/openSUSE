@@ -44,8 +44,7 @@ libchewing.
 新酷音輸入法
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 %cmake -DLIBEXEC_DIR=%{_ibus_libexecdir}
