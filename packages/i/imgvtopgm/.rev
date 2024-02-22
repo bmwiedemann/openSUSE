@@ -121,4 +121,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>979322</requestid>
   </revision>
+  <revision rev="19" vrev="701">
+    <srcmd5>313932f24abafef5e5cd6d2621c207c4</srcmd5>
+    <version>2.0</version>
+    <time>1708631944</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN.
+- Use %license</comment>
+    <requestid>1149050</requestid>
+  </revision>
 </revisionlist>

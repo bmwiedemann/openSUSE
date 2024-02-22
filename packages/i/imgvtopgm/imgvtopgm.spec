@@ -1,7 +1,7 @@
 #
 # spec file for package imgvtopgm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,8 +43,8 @@ you should look at TinyViewer (http://www.righto.com/pilot/tv.html).
 
 %prep
 %setup -qn %name-%version.orig
-%patch0
-%patch1 -p1
+%patch -P 0
+%patch -P 1 -p1
 
 %build
 %configure
@@ -55,7 +55,8 @@ make %{?_smp_mflags}
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS  CREDITS  INSTALL  NEWS Pilot16 COPYING  ChangeLog  Pilot README
+%license COPYING
+%doc AUTHORS  CREDITS  INSTALL  NEWS Pilot16 ChangeLog  Pilot README
 %doc samples/
 %_bindir/*
 %_mandir/man1/*.1*
