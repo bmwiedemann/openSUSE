@@ -71,14 +71,14 @@ cp %{SOURCE1} build.xml
 %pom_remove_dep com.kohlschutter.junixsocket:
 rm -f \
     src/main/java/com/jcraft/jsch/JUnixSocketFactory.java
-%patch0 -p1
+%patch -P 0 -p1
 
 # Do not depend on log4j
 %pom_remove_dep org.apache.logging.log4j:
 rm -f \
     src/main/java/com/jcraft/jsch/Log4j2Logger.java \
     src/test/java/com/jcraft/jsch/Log4j2LoggerTest.java
-%patch1 -p1
+%patch -P 1 -p1
 
 %build
 mkdir -p lib

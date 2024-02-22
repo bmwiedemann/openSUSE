@@ -201,4 +201,12 @@
     <comment>bsc#1218134, CVE-2023-48795</comment>
     <requestid>1138302</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>d45eab4fc6dc41f145a6a3b94e413903</srcmd5>
+    <version>0.2.15</version>
+    <time>1708631760</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148594</requestid>
+  </revision>
 </revisionlist>
