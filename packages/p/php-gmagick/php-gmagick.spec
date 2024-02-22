@@ -1,7 +1,7 @@
 #
 # spec file for package php-gmagick
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,11 +57,7 @@ PHP extension to create, modify and obtain meta information of images using
 the GraphicsMagick API
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
-%if 0%{?suse_version} > 1500
-%patch1
-%endif
-%patch2 -p1
+%autosetup -p1 -n %{pkg_name}-%{version}
 
 %build
 export CFLAGS="%{optflags} -fvisibility=hidden %(GraphicsMagick-config --cflags)"

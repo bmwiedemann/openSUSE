@@ -23,4 +23,15 @@
     <comment>- Remove php7 build for Tumbleweed (PHP 7.4 has reached EOL)</comment>
     <requestid>1041992</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>fa19c7479e599065d664371b0b733f70</srcmd5>
+    <version>2.0.6RC1</version>
+    <time>1708631859</time>
+    <user>anag+factory</user>
+    <comment>- Change to %autosetup as RPM 4.20 will no longer support %patchN
+- Ignore flaky test in all builds
+  % ignore-test-GraphicsMagick-1.3.36.patch
+</comment>
+    <requestid>1148860</requestid>
+  </revision>
 </revisionlist>
