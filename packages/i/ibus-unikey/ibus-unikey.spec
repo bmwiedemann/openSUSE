@@ -39,8 +39,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 A Vietnamese engine for IBus input platform that uses Unikey.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure --libexecdir=%{_ibus_libexecdir}
