@@ -42,8 +42,7 @@ For anonymous web surfing we hardly recommend Firefox or Iceweasel
 together with the JonDoFox profile.
 
 %prep
-%setup -q -n %{name}_linux
-%patch0
+%autosetup -p0 -n %{name}_linux
 
 %build
 
