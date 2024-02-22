@@ -1,7 +1,7 @@
 #
 # spec file for package testng
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,12 +34,10 @@ BuildRequires:  beust-jcommander
 BuildRequires:  bsh2
 BuildRequires:  fdupes
 BuildRequires:  google-guice
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsr-305
 BuildRequires:  junit
 BuildRequires:  snakeyaml
-Requires:       mvn(com.beust:jcommander)
-Requires:       mvn(org.yaml:snakeyaml)
 BuildArch:      noarch
 
 %description
@@ -58,9 +56,9 @@ This package contains the API documentation for %{name}.
 %prep
 %setup -q
 
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 
 sed 's/@VERSION@/%{version}/' %{SOURCE1} > pom.xml
 cp %{SOURCE2} build.xml
@@ -69,17 +67,9 @@ cp %{SOURCE2} build.xml
 find ! -path "*/test/*" -name *.jar -print -delete
 find -name *.class -delete
 
-# these are unnecessary
-%pom_remove_plugin :maven-gpg-plugin .
-%pom_remove_plugin :maven-source-plugin .
-%pom_remove_plugin :maven-javadoc-plugin .
-
 sed -i -e 's/DEV-SNAPSHOT/%{version}/' src/main/java/org/testng/internal/Version.java
 
 cp -p ./src/main/java/*.dtd.html ./src/main/resources/.
-
-# jdk15 classifier is used by some other packages
-%{mvn_alias} : :::jdk15:
 
 %build
 mkdir -p lib
@@ -93,7 +83,7 @@ install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.j
 
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar -a org.testng:testng::jdk15:
 
 # javadoc
