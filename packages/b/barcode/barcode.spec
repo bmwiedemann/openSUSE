@@ -1,7 +1,7 @@
 #
 # spec file for package barcode
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,9 +56,9 @@ Encapsulated PostScript format.
 
 %prep
 %setup -q
-%patch2
-%patch5
-%patch6 -p1
+%patch -P 2
+%patch -P 5
+%patch -P 6 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
