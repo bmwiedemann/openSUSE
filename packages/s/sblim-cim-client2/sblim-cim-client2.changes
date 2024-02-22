@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 10:11:01 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Nov  3 19:05:37 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Build with any java-devel >= 1.8

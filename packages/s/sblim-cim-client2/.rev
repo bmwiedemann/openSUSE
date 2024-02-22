@@ -303,4 +303,12 @@ FATE#315790: Update SBLIM JSR48 CIM Client to latest version (sblim-cim-client2)
     <comment></comment>
     <requestid>1123500</requestid>
   </revision>
+  <revision rev="31" vrev="9">
+    <srcmd5>d303c53fc15922cf63f3e3b748efb4db</srcmd5>
+    <version>2.2.5</version>
+    <time>1708631999</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN.</comment>
+    <requestid>1149162</requestid>
+  </revision>
 </revisionlist>

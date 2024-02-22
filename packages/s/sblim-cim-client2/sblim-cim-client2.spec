@@ -1,7 +1,7 @@
 #
 # spec file for package sblim-cim-client2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,7 +69,7 @@ Manual and sample code for sblim-cim-client2.
 dos2unix COPYING NEWS README ChangeLog sblim-cim-client2.properties sblim-slp-client2.properties
 find -type f \( -name "*.java" \) -exec dos2unix {} +
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 1.8}%{!?pkg_vcmp:0}
-%patch1 -p1
+%patch -P 1 -p1
 %endif
 
 %build
