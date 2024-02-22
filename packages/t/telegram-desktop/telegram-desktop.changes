@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 19 08:11:28 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.15.0
+  * Stories from groups.
+  * Group appearance settings.
+  * Group emoji pack.
+  * Boost groups to unlock features.
+
+- Updated to version 4.14.16
+  * Boost groups.
+
+-------------------------------------------------------------------
 Mon Feb 12 11:06:01 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Use %%autopatch to make RPM 4.19 happy
