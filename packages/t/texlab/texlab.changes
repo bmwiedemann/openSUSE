@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 15 15:47:41 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update specfile:
+  * replace rust+cargo with cargo
+- Update to version 5.12.3:
+  * Fix completing includes in conjunction with \graphicspath
+
+-------------------------------------------------------------------
 Sun Jan 21 05:38:33 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 5.12.2:
