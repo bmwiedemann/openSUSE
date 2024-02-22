@@ -42,8 +42,7 @@ Moonscript. It has a minimalistic UI, driven mainly using the
 keyboard.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 find . -name '*.rb' -exec sed -i "s/#! \/usr\/bin\/env ruby/#!\/usr\/bin\/ruby/" {} +
 
 %build
