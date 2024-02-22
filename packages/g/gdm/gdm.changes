@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 21 10:51:12 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Drop gdm-disable-wayland-on-mgag200-chipsets.patch: fixed
+  upstream since version 43.0.
+
+-------------------------------------------------------------------
 Tue Jan 23 07:58:15 UTC 2024 - Yifan Jiang <yfjiang@suse.com>
 
 - Make Patch0 only applies on s390 and s390x.
