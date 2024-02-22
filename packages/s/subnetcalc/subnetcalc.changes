@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 22 06:28:06 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.4.1:
+  * Fix for output to stderr instead of stdout for 6to4 address 
+  * Update metadata and code clean-up
+  * Format IPv4-embedded IPv6 addresses
+  * Test script fix
+
+-------------------------------------------------------------------
 Tue Jan  9 15:06:11 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.4.23:
