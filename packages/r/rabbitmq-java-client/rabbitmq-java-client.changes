@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 21:01:39 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Oct 17 09:03:55 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Port the python2.7 code to build with python3. [bsc#1185940]

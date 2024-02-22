@@ -1,7 +1,7 @@
 #
 # spec file for package rabbitmq-java-client
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,8 +43,8 @@ The RabbitMQ Java client library allows Java code to interface to AMQP servers.
 %prep
 %setup -q -a1
 ln -s rabbitmq-codegen-%{version} codegen
-%patch0
-%patch1 -p1
+%patch -P 0
+%patch -P 1 -p1
 find . -name *.jar | xargs rm -f
 # Java source and target
 sed -i -e 's#1\.6#1\.8#g' build.properties
