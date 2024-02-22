@@ -1,7 +1,7 @@
 #
 # spec file for package scantailor
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,9 +56,8 @@ adding/removing borders and others. It takes raw scans, and outputs
 pages ready to be printed or assembled into a PDF or DJVU file.
 
 %prep
-%setup -q -a 1 -n %{name}-advanced-%{version}
+%autosetup -p1 -a 1 -n %{name}-advanced-%{version}
 cp -p resources/icons/{COPYING,COPYING.icons}
-%patch0 -p1
 
 %build
 %cmake
