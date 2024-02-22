@@ -39,8 +39,7 @@ Using bibview, entries in several BiB databases can be moved,
 manipulated, created, and searched.
 
 %prep
-%setup
-%patch0
+%autosetup -p0
 
 %build
     xmkmf -a
