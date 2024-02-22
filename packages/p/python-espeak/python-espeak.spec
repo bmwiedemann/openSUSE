@@ -1,7 +1,7 @@
 #
 # spec file for package python-espeak
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,11 +13,11 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%{!?python_sitearch: %global python_sitearch %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
+%{!?python_sitearch: %global python_sitearch %(python -c "from setuptools.sysconfig import get_python_lib; print(get_python_lib(1))")}
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-espeak
 Version:        0.5
@@ -28,6 +28,7 @@ Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-espeak
 Source0:        https://launchpad.net/python-espeak/trunk/0.5/+download/python-espeak-0.5.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  espeak-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -39,6 +40,7 @@ Python bindings for the eSpeak speech synthesizer.
 
 %prep
 %setup -q
+sed -i 's/distutils.core/setuptools/' setup.py
 
 %build
 export CFLAGS="%{optflags}"
