@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 13:23:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Jan 30 21:03:43 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - Fix location of ftpusers in /usr/lib/pam.d/vsftpd (boo#1219362)
