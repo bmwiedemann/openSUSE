@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 14 20:03:33 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.25.2:
+  * fix: backport to 2.25.x (#4180)
+  * [Backport release-2.25] Fix panic in `okteto up` when using
+    remote deploy (#4178)
+  * fix: e2e tests (#4165) (#4166)
+
+-------------------------------------------------------------------
 Tue Jan 30 14:22:29 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.25.1:
