@@ -1,7 +1,7 @@
 #
 # spec file for package povray
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,9 +68,9 @@ This package contains the Povray documentation.
 
 %prep
 %setup -q
-%patch1
-%patch2
-%patch5 -p1
+%patch -P 1
+%patch -P 2
+%patch -P 5 -p1
 
 # remove inline copies of shared libraries
 rm -rf libraries
