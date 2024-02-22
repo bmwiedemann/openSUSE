@@ -30,8 +30,7 @@ Bonnie is a popular performance benchmark that targets various aspects
 of Unix file systems.
 
 %prep
-%setup -q -n %{name}
-%patch0
+%autosetup -p0 -n %{name}
 
 %build
 make SYSFLAGS="%{optflags}" %{?_smp_mflags}
