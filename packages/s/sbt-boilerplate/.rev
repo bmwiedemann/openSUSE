@@ -7,4 +7,12 @@
     <comment>New package needed to upgrade scala stack</comment>
     <requestid>1117475</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>866bee33a27f6a2929366463255079fe</srcmd5>
+    <version>0.6.1</version>
+    <time>1708631863</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148873</requestid>
+  </revision>
 </revisionlist>
