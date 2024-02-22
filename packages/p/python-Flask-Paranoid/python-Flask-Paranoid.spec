@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Paranoid
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,6 @@ Release:        0
 License:        MIT
 Summary:        Flask user session protection
 URL:            http://github.com/miguelgrinberg/flask-paranoid/
-Group:          Development/Languages/Python
 # Pypi sources don't include tests
 #Source:         https://files.pythonhosted.org/packages/source/F/Flask-Paranoid/Flask-Paranoid-%%{version}.tar.gz
 Source:         https://github.com/miguelgrinberg/flask-paranoid/archive/refs/tags/v%{version}.tar.gz
@@ -33,6 +32,7 @@ Patch0:         fix-ParanoidTests-fail.patch
 BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Test requirements
@@ -52,15 +52,14 @@ The extension generates a "paranoid" token according to the IP address and user
 agent when a client connects to the flask application.
 
 %prep
-%setup -q -n flask-paranoid-%{version}
-%patch0 -p1
+%autosetup -p1 -n flask-paranoid-%{version}
 cp %{SOURCE99} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -72,6 +71,7 @@ cp %{SOURCE99} .
 
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/flask_paranoid
+%{python_sitelib}/Flask_Paranoid-%{version}.dist-info
 
 %changelog
