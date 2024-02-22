@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 20 18:19:12 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add patch waflib_python312.patch to support python3.12
+  gh#aubio/aubio#394, https://gitlab.com/ita1024/waf/-/commit/d2060dfd8af4edb5824153ff24e207b39ecd67a2
+- Fix fdupes call for all python flavors
+- Remove shebang from non executable scripts
+- More specific %python_sitearch in files
+
+-------------------------------------------------------------------
 Wed Apr 21 03:03:19 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not build for Python 3.6, due to no NumPy.

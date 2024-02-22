@@ -1,7 +1,7 @@
 #
 # spec file for package python-aubio
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python36 1
 Name:           python-aubio
 Version:        0.4.9
@@ -26,6 +25,9 @@ License:        GPL-3.0-or-later
 URL:            http://aubio.org/
 Source:         http://aubio.org/pub/aubio-%{version}.tar.bz2
 Source1:        http://aubio.org/pub/aubio-%{version}.tar.bz2.asc
+# PATCH-FIX-UPSTREAM waflib_python312.patch gh#aubio/aubio#394
+# https://gitlab.com/ita1024/waf/-/commit/d2060dfd8af4edb5824153ff24e207b39ecd67a2
+Patch1:         waflib_python312.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pytest}
@@ -34,7 +36,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -45,16 +47,20 @@ aubio is a library to label music and sounds. It listens to audio signals and at
 Its features include segmenting a sound file before each of its attacks, performing pitch detection, tapping the beat and producing midi streams from live audio.
 
 %prep
-%setup -q -n aubio-%{version}
+%autosetup -p 1 -n aubio-%{version}
 
 %build
 %python_build
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}/%{python_sitearch}
+%python_expand %fdupes %{buildroot}/%{$python_sitearch}
 %python_clone -a %{buildroot}/%{_bindir}/aubio
 %python_clone -a %{buildroot}/%{_bindir}/aubiocut
+
+%{python_expand # Remove shebang from non executable scripts
+find %{buildroot}/%{$python_sitearch} -type f -name "*.py" -exec sed -i "1{/#!.*python/d}" {} \;
+}
 
 %check
 # the two tests fail on 32bit due to precision issue
@@ -71,6 +77,7 @@ Its features include segmenting a sound file before each of its attacks, perform
 %doc README.md ChangeLog AUTHORS
 %python_alternative %{_bindir}/aubio
 %python_alternative %{_bindir}/aubiocut
-%{python_sitearch}/*
+%{python_sitearch}/aubio
+%{python_sitearch}/aubio-%{version}*-info
 
 %changelog
