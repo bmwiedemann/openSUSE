@@ -1,8 +1,8 @@
 #
 # spec file for package trurl
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2023, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2023-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           trurl
-Version:        0.9
+Version:        0.10
 Release:        0
 Summary:        Command line tool for URL parsing and manipulation
 License:        MIT

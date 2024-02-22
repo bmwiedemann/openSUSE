@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 21 21:20:22 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.10
+  Changes:
+  * add --replace
+  Bugfixes:
+  * fixed buffer overflows on %00 use
+  * enable more C compiler warnings and fix them
+
+-------------------------------------------------------------------
 Tue Oct 31 17:51:46 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.9
