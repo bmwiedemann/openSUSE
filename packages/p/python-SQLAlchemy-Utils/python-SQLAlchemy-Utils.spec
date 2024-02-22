@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-SQLAlchemy-Utils
 Version:        0.41.1
 Release:        0

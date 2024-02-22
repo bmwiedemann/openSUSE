@@ -353,4 +353,12 @@
   SQLAlchemy&gt;=2.0.22, gh#kvesteri/sqlalchemy-utils#725</comment>
     <requestid>1139684</requestid>
   </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>1b493afc45d938ee966b7d70730b5ab9</srcmd5>
+    <version>0.41.1</version>
+    <time>1708632027</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149286</requestid>
+  </revision>
 </revisionlist>
