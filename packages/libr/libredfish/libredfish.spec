@@ -36,8 +36,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  libcurl-devel
 BuildRequires:  libczmq4
 BuildRequires:  libjansson-devel
-BuildRequires:  libopenssl-1_1-devel
-BuildRequires:  libopenssl1_1
+BuildRequires:  libopenssl-devel
+BuildRequires:  libopenssl3
 BuildRequires:  readline-devel
 Requires:       readline
 
