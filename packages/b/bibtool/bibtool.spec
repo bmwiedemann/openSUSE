@@ -38,7 +38,7 @@ BibTeX files which goes beyond the possibilities - and intentions - of BibTeX.
 
 %prep
 %setup -q -n BibTool
-# %patch1 -p1
+# %patch -P 1 -p1
 
 %build
 %configure

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 10:12:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN (all patches
+  disabled, scripted change).
+
+-------------------------------------------------------------------
 Mon Jan 29 11:01:39 UTC 2024 - jun wang <jgwang@suse.com>
 
 - Update to version 2.68 
