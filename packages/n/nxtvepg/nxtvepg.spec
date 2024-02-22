@@ -51,9 +51,7 @@ Currently, Nextview EPG is transmitted by: * In Germany and Austria:
 * In Turkey: TRT-1 (coverage: 17 networks)
 
 %prep
-%setup -q
-%patch1
-%patch2
+%autosetup -p0
 
 %build
 export	CFLAGS="%{optflags}"
