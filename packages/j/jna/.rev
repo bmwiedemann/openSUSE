@@ -47,4 +47,12 @@
     <comment>Force java 8 compatibility when building with JDK &lt;= 21</comment>
     <requestid>1141014</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>a98913711516358f093e7f8a142ae90e</srcmd5>
+    <version>5.13.0</version>
+    <time>1708631768</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148720</requestid>
+  </revision>
 </revisionlist>

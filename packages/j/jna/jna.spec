@@ -24,7 +24,7 @@ Summary:        Pure Java access to native libraries
 License:        Apache-2.0 OR LGPL-2.1-or-later
 Group:          Development/Libraries/Java
 URL:            https://github.com/twall/jna
-Source0:        https://github.com/twall/%{name}/archive/%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Source1000:     %{name}-rpmlintrc
 Patch0:         jna-build.patch
 Patch1:         jna-callback.patch
@@ -35,12 +35,12 @@ BuildRequires:  ant
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 9
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  libX11-devel
 BuildRequires:  libXt-devel
 BuildRequires:  libffi-devel
 BuildRequires:  objectweb-asm
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 Requires:       java >= 1.8
 Provides:       jna-native = %{version}-%{release}
 Obsoletes:      jna-native < %{version}-%{release}
@@ -76,18 +76,14 @@ This package contains the javadocs for %{name}.
 
 %prep
 %setup -q
-# Cleanup the dist tarball
-find . -name '*jar' | xargs rm
-rm -rf dist
-dos2unix OTHERS
-# Then apply patches
-%patch0 -p1 -b .orig
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+
+%patch -P 0 -p1 -b .orig
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 
 %if 0%{?suse_version} < 1550
-%patch4 -p1
+%patch -P 4 -p1
 %endif
 
 sed -i 's|@LIBDIR@|%{_libdir}/%{name}|' src/com/sun/jna/Native.java
@@ -124,9 +120,9 @@ install -p -m 644 ./contrib/platform/dist/jna-platform-jpms.jar %{buildroot}%{_j
 ln -sf ../%{name}-platform.jar %{buildroot}%{_javadir}/%{name}/%{name}-platform.jar
 
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -p -m 644 build/pom-jna.xml %{buildroot}/%{_mavenpomdir}/%{name}.pom
-install -p -m 644 build/pom-jna-platform.xml %{buildroot}/%{_mavenpomdir}/%{name}-platform.pom
+%{mvn_install_pom} build/pom-jna.xml %{buildroot}/%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar -a net.java.dev.jna:jna-jpms
+%{mvn_install_pom} build/pom-jna-platform.xml %{buildroot}/%{_mavenpomdir}/%{name}-platform.pom
 %add_maven_depmap %{name}-platform.pom %{name}-platform.jar -a net.java.dev.jna:platform,net.java.dev.jna:jna-platform-jpms -f contrib
 
 install -d -m 755 %{buildroot}%{_javadocdir}/%{name}

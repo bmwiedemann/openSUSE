@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 21 13:35:16 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+- Fetch sources using source service in order to avoid binary files
+  in the tarball
+
+-------------------------------------------------------------------
 Tue Jan 23 15:33:23 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:
