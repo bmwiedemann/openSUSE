@@ -52,8 +52,7 @@ It should not be used except for rebuilding other packages,
 thus it should never be installed on end users' systems.
 
 %prep
-%setup -q -n kit
-%patch0 -p1
+%autosetup -p1 -n kit
 
 %build
 # nothing to do, precompiled by design

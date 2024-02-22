@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 12:38:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Fri Apr 21 07:57:22 UTC 2023 - Max Lin <mlin@suse.com>
 
 - Port runant.py to python3
