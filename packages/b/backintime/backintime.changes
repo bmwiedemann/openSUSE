@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 10:05:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sun Jan  7 23:31:02 UTC 2024 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Add backintime-python_location.patch to manually specify python and allow build on Leap 15.5
