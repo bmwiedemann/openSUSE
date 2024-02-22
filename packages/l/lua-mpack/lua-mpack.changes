@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 09:55:44 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Wed Jan 25 11:52:07 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix missing dependency on lua-macros (boo#1205612)

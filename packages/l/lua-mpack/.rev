@@ -43,4 +43,13 @@
   - Opencode %make_build to prevent build failure when not defined.</comment>
     <requestid>1061050</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>9a3ec22688b8bde1c8ea7cf937abd4d2</srcmd5>
+    <version>1.0.6</version>
+    <time>1708631989</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1149139</requestid>
+  </revision>
 </revisionlist>

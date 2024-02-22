@@ -1,7 +1,7 @@
 #
 # spec file for package lua-mpack
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,10 +34,10 @@ Source1:        https://github.com/libmpack/libmpack/archive/%{libmpack_version}
 Patch0:         lua51-mpack-fix-gcc7.patch
 # PATCH-FIX-UPSTREAM lua51-mpack-fix-compilation.patch gh#libmpack/libmpack-lua#2 -- Fix compilation error when using `USE_SYSTEM_LUA=1`.
 Patch1:         lua51-mpack-fix-compilation.patch
-BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-devel
 BuildRequires:  gcc
 BuildRequires:  libtool
+BuildRequires:  lua-macros
 Requires:       %{flavor}
 %lua_provides
 %if "%{flavor}" == ""
@@ -52,9 +52,7 @@ mpack is a binary serialization/RPC library that implements both the msgpack
 and msgpack-rpc specifications.
 
 %prep
-%setup -q -n libmpack-lua-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n libmpack-lua-%{version}
 
 # Extract the libmpack source to the right directory.
 mkdir -p mpack-src
