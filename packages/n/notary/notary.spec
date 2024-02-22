@@ -39,8 +39,7 @@ The Notary project comprises a server and a client for running and
 interacting with trusted collections.
 
 %prep
-%setup -q -n %{name}-%{version} -a 1
-%patch0 -p1
+%autosetup -p1 -n %{name}-%{version} -a 1
 
 %build
 %goprep %{goipath}
