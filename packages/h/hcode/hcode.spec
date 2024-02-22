@@ -33,8 +33,8 @@ Hangul code conversion utilities (hcode, hdcode).
 %prep
 %setup -q -n hcode2.1-mailpatch3
 cp -f %{SOURCE1} .
-%patch1 -p1 -b .ksc5601
-%patch2 -p1
+%patch -P 1 -p1 -b .ksc5601
+%patch -P 2 -p1
 
 %build
 %make_build CFLAGS="%{optflags}"
