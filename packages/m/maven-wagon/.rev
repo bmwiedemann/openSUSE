@@ -31,4 +31,12 @@
     <comment>3.5.3</comment>
     <requestid>1084300</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>249e581049002a9708e1ef558c073fcd</srcmd5>
+    <version>3.5.3</version>
+    <time>1708631888</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148913</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package maven-wagon
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ BuildRequires:  apache-commons-net
 BuildRequires:  fdupes
 BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsch
 BuildRequires:  jsch-agent-proxy-connector-factory
 BuildRequires:  jsch-agent-proxy-jsch
@@ -57,7 +57,6 @@ following providers:
 %package provider-api
 Summary:        The provider-api module for %{name}
 Group:          Development/Libraries/Java
-Requires:       mvn(org.codehaus.plexus:plexus-utils)
 
 %description provider-api
 The provider-api module for %{name}.
@@ -65,8 +64,6 @@ The provider-api module for %{name}.
 %package file
 Summary:        The file module for %{name}
 Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.maven.wagon:wagon-provider-api) = %{version}
-Requires:       mvn(org.codehaus.plexus:plexus-utils)
 
 %description file
 The file module for %{name}.
@@ -74,10 +71,6 @@ The file module for %{name}.
 %package ftp
 Summary:        The ftp module for %{name}
 Group:          Development/Libraries/Java
-Requires:       mvn(commons-io:commons-io)
-Requires:       mvn(commons-net:commons-net)
-Requires:       mvn(org.apache.maven.wagon:wagon-provider-api) = %{version}
-Requires:       mvn(org.slf4j:slf4j-api)
 
 %description ftp
 The ftp module for %{name}.
@@ -85,12 +78,6 @@ The ftp module for %{name}.
 %package http
 Summary:        The http module for %{name}
 Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.httpcomponents:httpclient)
-Requires:       mvn(org.apache.httpcomponents:httpcore)
-Requires:       mvn(org.apache.maven.wagon:wagon-http-shared) = %{version}
-Requires:       mvn(org.apache.maven.wagon:wagon-provider-api) = %{version}
-Requires:       mvn(org.codehaus.plexus:plexus-utils)
-Requires:       mvn(org.slf4j:jcl-over-slf4j)
 
 %description http
 The http module for %{name}.
@@ -98,12 +85,6 @@ The http module for %{name}.
 %package http-shared
 Summary:        The http-shared module for %{name}
 Group:          Development/Libraries/Java
-Requires:       mvn(commons-io:commons-io)
-Requires:       mvn(org.apache.httpcomponents:httpclient)
-Requires:       mvn(org.apache.httpcomponents:httpcore)
-Requires:       mvn(org.apache.maven.wagon:wagon-provider-api) = %{version}
-Requires:       mvn(org.jsoup:jsoup)
-Requires:       mvn(org.slf4j:slf4j-api)
 
 %description http-shared
 The http-shared module for %{name}.
@@ -111,10 +92,6 @@ The http-shared module for %{name}.
 %package http-lightweight
 Summary:        The http-lightweight module for %{name}
 Group:          Development/Libraries/Java
-Requires:       mvn(commons-io:commons-io)
-Requires:       mvn(org.apache.maven.wagon:wagon-http-shared) = %{version}
-Requires:       mvn(org.apache.maven.wagon:wagon-provider-api) = %{version}
-Requires:       mvn(org.codehaus.plexus:plexus-utils)
 
 %description http-lightweight
 The http-lightweight module for %{name}.
@@ -122,9 +99,6 @@ The http-lightweight module for %{name}.
 %package ssh-common
 Summary:        The ssh-common module for %{name}
 Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.maven.wagon:wagon-provider-api) = %{version}
-Requires:       mvn(org.codehaus.plexus:plexus-interactivity-api)
-Requires:       mvn(org.codehaus.plexus:plexus-utils)
 
 %description ssh-common
 The ssh-common module for %{name}
@@ -132,13 +106,6 @@ The ssh-common module for %{name}
 %package ssh
 Summary:        The ssh module for %{name}
 Group:          Development/Libraries/Java
-Requires:       mvn(com.jcraft:jsch)
-Requires:       mvn(com.jcraft:jsch.agentproxy.connector-factory)
-Requires:       mvn(com.jcraft:jsch.agentproxy.jsch)
-Requires:       mvn(org.apache.maven.wagon:wagon-provider-api) = %{version}
-Requires:       mvn(org.apache.maven.wagon:wagon-ssh-common) = %{version}
-Requires:       mvn(org.codehaus.plexus:plexus-interactivity-api)
-Requires:       mvn(org.codehaus.plexus:plexus-utils)
 
 %description ssh
 The ssh module for %{name}
@@ -146,9 +113,6 @@ The ssh module for %{name}
 %package ssh-external
 Summary:        The ssh-external module for %{name}
 Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.maven.wagon:wagon-provider-api) = %{version}
-Requires:       mvn(org.apache.maven.wagon:wagon-ssh-common) = %{version}
-Requires:       mvn(org.codehaus.plexus:plexus-utils)
 
 %description ssh-external
 The ssh-external module for %{name}
@@ -179,19 +143,6 @@ Javadoc for %{name}.
 
 %pom_disable_module wagon-scm wagon-providers
 
-for i in file ftp http http-shared http-lightweight ssh-common ssh ssh-external; do
-  %pom_remove_parent wagon-providers/wagon-${i}
-  %pom_xpath_inject "pom:project" "
-    <groupId>org.apache.maven.wagon</groupId>
-	<version>%{version}</version>" wagon-providers/wagon-${i}
-done
-%pom_remove_parent wagon-provider-api
-%pom_xpath_inject "pom:project" "
-  <groupId>org.apache.maven.wagon</groupId>
-  <version>%{version}</version>" wagon-provider-api
-
-%pom_change_dep -r -f ::::: :::::
-
 %build
 mkdir -p lib
 build-jar-repository -s lib \
@@ -211,10 +162,10 @@ for i in file ftp http http-shared http-lightweight ssh-common ssh ssh-external;
 done
 # poms
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 wagon-provider-api/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/provider-api.pom
+%{mvn_install_pom} wagon-provider-api/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/provider-api.pom
 %add_maven_depmap %{name}/provider-api.pom %{name}/provider-api.jar -f provider-api
 for i in file ftp http http-shared http-lightweight ssh-common ssh ssh-external; do
-  install -pm 0644 wagon-providers/wagon-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
+  %{mvn_install_pom} wagon-providers/wagon-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
   if [ x${i} = xhttp ]; then
     # Maven requires Wagon HTTP with classifier "shaded"
     %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar -a org.apache.maven.wagon:wagon-http::shaded: -f ${i}
