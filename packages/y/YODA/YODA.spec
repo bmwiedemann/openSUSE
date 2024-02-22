@@ -1,7 +1,7 @@
 #
 # spec file for package YODA
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define ver 1.9.9
+%define ver 1.9.10
 %define so_name lib%{name}-%(echo %{ver} | tr '.' '_')
 Name:           YODA
 Version:        %{ver}
