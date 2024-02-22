@@ -47,4 +47,12 @@
     <comment></comment>
     <requestid>978586</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>8f1f97e3c4b5193023dcc02bbf7895ff</srcmd5>
+    <version>0.9.2</version>
+    <time>1708632016</time>
+    <user>anag+factory</user>
+    <comment>- also use modern python stack on SLE15</comment>
+    <requestid>1149227</requestid>
+  </revision>
 </revisionlist>
