@@ -39,4 +39,18 @@
     <comment></comment>
     <requestid>933734</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0b745f09904ba0913081916144b6937d</srcmd5>
+    <version>3.6.0</version>
+    <time>1708632007</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.6.0:
+  See:
+  * https://graphics.pixar.com/opensubdiv/docs/release_35.html
+  * https://graphics.pixar.com/opensubdiv/docs/release_36.html
+- Drop OpenSubdiv-pr1234-tbb2021.patch
+
+- Use %patch -P N instead of deprecated %patchN.</comment>
+    <requestid>1149192</requestid>
+  </revision>
 </revisionlist>

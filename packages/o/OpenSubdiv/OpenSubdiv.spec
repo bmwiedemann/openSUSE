@@ -1,7 +1,7 @@
 #
 # spec file for package OpenSubdiv
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019-2020 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,11 +17,10 @@
 #
 
 
-%define pkgver 3_4_4
+%define pkgver 3_6_0
 %define libname libosdCPU%{pkgver}
-
 Name:           OpenSubdiv
-Version:        3.4.4
+Version:        3.6.0
 Release:        0
 Summary:        Subdivision surface evaluation library
 License:        Apache-2.0
@@ -29,8 +28,6 @@ Group:          Productivity/Graphics/Visualization/Raytracers
 URL:            https://graphics.pixar.com/opensubdiv/docs/intro.html
 Source:         https://github.com/PixarAnimationStudios/%{name}/archive/v%{pkgver}.tar.gz#/%{name}-%{pkgver}.tar.gz
 Patch0:         remove-rpath-fiddling.diff
-# PATCH-FIX-UPSTREAM OpenSubdiv-pr1234-tbb2021.patch -- support oneTBB 2021 gh#PixarAnimationStudios/OpenSubdiv#1234
-Patch1:         https://github.com/PixarAnimationStudios/OpenSubdiv/pull/1234.patch#/OpenSubdiv-pr1234-tbb2021.patch
 BuildRequires:  cmake >= 2.8.6
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -74,9 +71,8 @@ libraries for %{name}. If you would like to develop programs using %{name},
 you will need to install %{name}-devel.
 
 %prep
-%setup -q -n %{name}-%{pkgver}
-%patch0 -p0
-%patch1 -p1
+%autosetup -p0 -n %{name}-%{pkgver}
+
 # work around linking glitch
 sed -i 's/${PLATFORM_GPU_LIBRARIES}/${PLATFORM_GPU_LIBRARIES} ${CMAKE_DL_LIBS}/' opensubdiv/CMakeLists.txt
 
@@ -98,8 +94,8 @@ sseflags='-msse -msse2'
     -DNO_TUTORIALS=1 \
     -DNO_REGRESSION=1 \
     -DNO_EXAMPLES=1 \
-    -DGLEW_LOCATION=/usr \
-    -DGLFW_LOCATION=/usr \
+    -DGLEW_LOCATION=%{_prefix} \
+    -DGLFW_LOCATION=%{_prefix} \
     -DOpenGL_GL_PREFERENCE=GLVND
 
 %cmake_build
@@ -107,7 +103,6 @@ sseflags='-msse -msse2'
 %install
 %cmake_install
 # remove unused build artefact
-rm %{buildroot}%{_bindir}/stringify
 rm %{buildroot}%{_libdir}/*.a
 
 %post -n %{libname} -p /sbin/ldconfig
@@ -121,5 +116,10 @@ rm %{buildroot}%{_libdir}/*.a
 %files devel
 %{_includedir}/opensubdiv
 %{_libdir}/*.so
+%dir %{_libdir}/cmake/OpenSubdiv/
+%{_libdir}/cmake/OpenSubdiv/OpenSubdivConfig.cmake
+%{_libdir}/cmake/OpenSubdiv/OpenSubdivConfigVersion.cmake
+%{_libdir}/cmake/OpenSubdiv/OpenSubdivTargets-relwithdebinfo.cmake
+%{_libdir}/cmake/OpenSubdiv/OpenSubdivTargets.cmake
 
 %changelog
