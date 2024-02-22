@@ -1,5 +1,0 @@
-<package name="taglib-extras" project="openSUSE:Factory">
-  <title>Extra plugins for TagLib</title>
-  <description>Unofficial TagLib file type plugins maintained by the Amarok project</description>
-  <devel project="KDE:Extra" package="taglib-extras"/>
-</package>
