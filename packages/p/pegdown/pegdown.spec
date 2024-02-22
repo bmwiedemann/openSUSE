@@ -1,7 +1,7 @@
 #
 # spec file for package pegdown
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,16 +22,16 @@ Release:        0
 Summary:        Java library for Markdown processing
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://pegdown.org
+URL:            https://pegdown.org
 Source0:        https://github.com/sirthias/pegdown/archive/%{version}.tar.gz
 # Newer release use sbt builder
-Source1:        http://repo1.maven.org/maven2/org/pegdown/pegdown/%{version}/pegdown-%{version}.pom
+Source1:        https://repo1.maven.org/maven2/org/pegdown/pegdown/%{version}/pegdown-%{version}.pom
 Source2:        %{name}-build.xml
 # Forwarded upstream: https://github.com/sirthias/pegdown/pull/130
 Patch0:         %{name}-rhbz1096735.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  parboiled
 Requires:       mvn(org.parboiled:parboiled-java)
 BuildArch:      noarch
@@ -51,7 +51,7 @@ This package contains javadoc for %{name}.
 %setup -q
 find . -name "*.class" -delete
 find . -name "*.jar" -delete
-%patch0 -p1
+%patch -P 0 -p1
 
 cp %{SOURCE1} pom.xml
 cp %{SOURCE2} build.xml
@@ -72,7 +72,7 @@ install -dm 0755 %{buildroot}%{_javadir}
 install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
