@@ -45,4 +45,14 @@ Difference to 360232: Fixed build.</comment>
     <comment></comment>
     <requestid>758148</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>025968fd41a09464b53aafc575c9d6c4</srcmd5>
+    <version>0.9.1+git20150408.a0edf58</version>
+    <time>1708631988</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+- Use %license</comment>
+    <requestid>1149137</requestid>
+  </revision>
 </revisionlist>

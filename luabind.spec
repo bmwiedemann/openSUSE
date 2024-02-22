@@ -1,7 +1,7 @@
 #
 # spec file for package luabind
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Lua C++ bindings
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/rpavlik/luabind
+URL:            https://github.com/rpavlik/luabind
 Source:         %{name}-%{version}.tar.xz
 Patch0:         fix-cmake-lib-version.patch
 Patch1:         install-pkgconfig.patch
@@ -64,9 +64,7 @@ It has the ability to expose functions and classes, written in C++, to Lua.
 This package contains the library.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 # Parallel build settings ...
@@ -107,7 +105,7 @@ make -j$limit_jobs
 %{_libdir}/lib%{name}.so
 
 %files -n lib%{name}%{sover}
-%doc LICENSE
+%license LICENSE
 %{_libdir}/lib%{name}.so.*
 
 %changelog
