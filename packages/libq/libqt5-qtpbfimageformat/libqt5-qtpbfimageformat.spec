@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtpbfimageformat
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,11 +24,11 @@ Name:           qt5-qtpbfimageformat
 Name:           libqt5-qtpbfimageformat
 %endif
 Version:        3.0
-Release:        1
+Release:        0
 Summary:        Qt 5 PBF Image Format Plugin
 License:        LGPL-3.0-only
 Group:          Development/Libraries/X11
-Url:            https://github.com/tumic0/QtPBFImagePlugin
+URL:            https://github.com/tumic0/QtPBFImagePlugin
 Source0:        https://github.com/tumic0/QtPBFImagePlugin/archive/%{version}/QtPBFImagePlugin-%{version}.tar.gz
 Patch0:         pkgconfig.patch
 
@@ -42,12 +42,12 @@ BuildRequires:  zlib-devel
 %else
 %if 0%{?fedora_version} || 0%{?centos_version} >= 800
 BuildRequires:  qt5-qtbase
-BuildRequires:  qt5-qtbase-gui
 BuildRequires:  qt5-qtbase-devel
+BuildRequires:  qt5-qtbase-gui
 BuildRequires:  zlib-devel
 %if 0%{?centos_version} >= 800
-BuildRequires:  protobuf-devel
 BuildRequires:  gdb-headless
+BuildRequires:  protobuf-devel
 %else
 BuildRequires:  protobuf-lite-devel
 %endif
@@ -69,8 +69,7 @@ BuildRequires:  libzlib-devel
 Qt image plugin for displaying Mapbox vector tiles.
 
 %prep
-%setup -q -n QtPBFImagePlugin-%{version}
-%patch0
+%autosetup -p0 -n QtPBFImagePlugin-%{version}
 
 %build
 %if 0%{?suse_version}
