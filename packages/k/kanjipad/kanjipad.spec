@@ -48,8 +48,7 @@ pronunciation-based input methods often fail for rarely used
 characters.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 make PREFIX=/usr OPTIMIZE="$RPM_OPT_FLAGS"
