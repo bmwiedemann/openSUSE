@@ -45,7 +45,7 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n cdi-%{version}
-%patch0 -p1
+%patch -P 0 -p1
 cp %{SOURCE1} api/build.xml
 
 # Use newer version of interceptors API
