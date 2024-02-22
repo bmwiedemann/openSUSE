@@ -36,8 +36,7 @@ idle time exceeding given limits, runaway processes and other system
 hogs. Almost everything can be easily configured.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 make CFLAGS="%{optflags}" CC="cc" %{?_smp_mflags}

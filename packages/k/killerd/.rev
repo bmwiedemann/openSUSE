@@ -132,4 +132,12 @@
     <comment>Added hardening to systemd service(s) (bsc#1181400).</comment>
     <requestid>952678</requestid>
   </revision>
+  <revision rev="20" vrev="127">
+    <srcmd5>b294945ac6d995b75332be28b9792467</srcmd5>
+    <version>1.1</version>
+    <time>1708632048</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149364</requestid>
+  </revision>
 </revisionlist>
