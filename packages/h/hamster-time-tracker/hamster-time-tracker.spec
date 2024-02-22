@@ -1,7 +1,7 @@
 #
 # spec file for package hamster-time-tracker
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -170,9 +170,9 @@ Requires:       python3-pyxdg
 %if 0%{?suse_version} < 1330
 # see https://en.opensuse.org/openSUSE:Packaging_Conventions_RPM_Macros
 Requires(post): update-desktop-files
-Requires(postun):update-desktop-files
+Requires(postun): update-desktop-files
 Requires(post): gtk3-tools
-Requires(postun):gtk3-tools
+Requires(postun): gtk3-tools
 %endif
 
 Recommends:     %{name}-lang
@@ -193,95 +193,95 @@ is spent during the day on activities that are set up.
 %prep
 %setup -q -n hamster-time-tracker-%{version} -a1
 
-%patch1 -p1
-%patch2 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 %if 0%{?suse_version} < 1550
-%patch3 -p1
+%patch -P 3 -p1
 %endif
 
 %if %{with extension}
 cd hamster-shell-extension-%{ext_version}
-%patch101 -p1
-%patch102 -p1
-%patch103 -p1
-%patch104 -p1
-%patch105 -p1
-%patch106 -p1
-%patch107 -p1
+%patch -P 101 -p1
+%patch -P 102 -p1
+%patch -P 103 -p1
+%patch -P 104 -p1
+%patch -P 105 -p1
+%patch -P 106 -p1
+%patch -P 107 -p1
 # SLE15-SP2 / Leap 15.2:
 # GNOME 3.34 support for shell extension
 # https://github.com/projecthamster/hamster-shell-extension/pull/316
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
-%patch108 -p1
-%patch109 -p1
-%patch110 -p1
-%patch111 -p1
-%patch112 -p1
-%patch113 -p1
-%patch114 -p1
-%patch115 -p1
-%patch116 -p1
-%patch117 -p1
-%patch118 -p1
-%patch119 -p1
-%patch120 -p1
-%patch121 -p1
-%patch122 -p1
-%patch123 -p1
-%patch124 -p1
+%patch -P 108 -p1
+%patch -P 109 -p1
+%patch -P 110 -p1
+%patch -P 111 -p1
+%patch -P 112 -p1
+%patch -P 113 -p1
+%patch -P 114 -p1
+%patch -P 115 -p1
+%patch -P 116 -p1
+%patch -P 117 -p1
+%patch -P 118 -p1
+%patch -P 119 -p1
+%patch -P 120 -p1
+%patch -P 121 -p1
+%patch -P 122 -p1
+%patch -P 123 -p1
+%patch -P 124 -p1
 # TW / 15.4: GNOME 41+ support
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
-%patch125 -p1
-%patch126 -p1
-%patch127 -p1
-%patch128 -p1
-%patch129 -p1
-%patch130 -p1
-%patch131 -p1
-%patch132 -p1
-%patch134 -p1
-%patch135 -p1
-%patch136 -p1
-%patch137 -p1
-%patch138 -p1
-%patch139 -p1
-%patch140 -p1
-%patch141 -p1
-%patch142 -p1
-%patch143 -p1
-%patch144 -p1
-%patch145 -p1
-%patch146 -p1
-%patch147 -p1
-%patch148 -p1
-%patch149 -p1
-%patch150 -p1
-%patch151 -p1
-%patch152 -p1
-%patch153 -p1
-%patch154 -p1
-%patch155 -p1
-%patch156 -p1
-%patch157 -p1
-%patch158 -p1
-%patch159 -p1
-%patch160 -p1
-%patch161 -p1
+%patch -P 125 -p1
+%patch -P 126 -p1
+%patch -P 127 -p1
+%patch -P 128 -p1
+%patch -P 129 -p1
+%patch -P 130 -p1
+%patch -P 131 -p1
+%patch -P 132 -p1
+%patch -P 134 -p1
+%patch -P 135 -p1
+%patch -P 136 -p1
+%patch -P 137 -p1
+%patch -P 138 -p1
+%patch -P 139 -p1
+%patch -P 140 -p1
+%patch -P 141 -p1
+%patch -P 142 -p1
+%patch -P 143 -p1
+%patch -P 144 -p1
+%patch -P 145 -p1
+%patch -P 146 -p1
+%patch -P 147 -p1
+%patch -P 148 -p1
+%patch -P 149 -p1
+%patch -P 150 -p1
+%patch -P 151 -p1
+%patch -P 152 -p1
+%patch -P 153 -p1
+%patch -P 154 -p1
+%patch -P 155 -p1
+%patch -P 156 -p1
+%patch -P 157 -p1
+%patch -P 158 -p1
+%patch -P 159 -p1
+%patch -P 160 -p1
+%patch -P 161 -p1
 %endif
 %if 0%{?suse_version} >= 1600
 # TW: GNOME 45 support
-%patch162 -p1
-%patch163 -p1
-%patch164 -p1
-%patch165 -p1
-%patch166 -p1
-%patch167 -p1
-%patch168 -p1
-%patch169 -p1
-%patch170 -p1
-%patch171 -p1
-%patch172 -p1
-%patch173 -p1
+%patch -P 162 -p1
+%patch -P 163 -p1
+%patch -P 164 -p1
+%patch -P 165 -p1
+%patch -P 166 -p1
+%patch -P 167 -p1
+%patch -P 168 -p1
+%patch -P 169 -p1
+%patch -P 170 -p1
+%patch -P 171 -p1
+%patch -P 172 -p1
+%patch -P 173 -p1
 
 %endif # suse_version >= 1600
 %endif # sle_version >= 150400
