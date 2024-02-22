@@ -44,8 +44,8 @@ interface to many of these features, but not everything.
 for i in *.MASTER; do
 	cp $i ${i%%.MASTER}
 done
-%patch0
-%patch1
+%patch -P 0
+%patch -P 1
 
 %build
 echo 'auto_mkindex ./lib *.tcl' | tclsh

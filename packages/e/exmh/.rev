@@ -145,4 +145,12 @@
   to exmh-conf.patch (bsc#967510).</comment>
     <requestid>404001</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>6680b4df34b3c1137e222a806461997f</srcmd5>
+    <version>2.8.0</version>
+    <time>1708632063</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149386</requestid>
+  </revision>
 </revisionlist>

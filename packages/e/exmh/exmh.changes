@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 11:43:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Feb 22 10:58:16 UTC 2016 - max@suse.com
 
 - Fix the version information in exmh-2.7-conf.patch and rename it
