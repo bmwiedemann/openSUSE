@@ -126,4 +126,11 @@
     <comment></comment>
     <requestid>1146457</requestid>
   </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>667bdd978d2cb714ba755e14e5761b3a</srcmd5>
+    <version>20210330</version>
+    <time>1708582715</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not recommend mailman: pulls a 2nd python stack.</comment>
+  </revision>
 </revisionlist>

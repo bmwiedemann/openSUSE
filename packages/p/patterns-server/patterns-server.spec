@@ -309,7 +309,6 @@ Recommends:     amavisd-new
 Recommends:     clamav
 Recommends:     cyrus-imapd
 Recommends:     inn
-Recommends:     mailman
 Recommends:     spamassassin
 %if 0%{?is_opensuse}
 Provides:       patterns-openSUSE-mail_server = %{version}
