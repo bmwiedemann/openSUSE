@@ -37,8 +37,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 This package contains the hungarian ispell dictionary.
 
 %prep
-%setup -q -n magyarispell-%{version}
-%patch0
+%autosetup -p0 -n magyarispell-%{version}
 
 %build
 make %{?_smp_mflags} ispell
