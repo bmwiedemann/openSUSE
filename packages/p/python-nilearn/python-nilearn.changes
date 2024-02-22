@@ -1,4 +1,210 @@
 -------------------------------------------------------------------
+Tue Feb 20 19:57:05 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.10.3
+  ## Highlights
+  * API Allow passing arguments to first_level_from_bids to build
+    first level models that include specific set of confounds by
+    relying on the strategies from load_confounds (#4103 by Rémi
+    Gau).
+  * Support passing t and F contrasts to compute_contrast that that
+    have fewer columns than the number of estimated parameters.
+    Remaining columns are padded with zero (#4067 by Rémi Gau).
+  * NiftiSpheresMasker now has generate_report method (#3102 by
+    Yasmin Mzayek and Nicolas Gensollen).
+  * Update the CompCor strategy in load_confounds and
+    load_confounds_strategy to support fmriprep 21.x series and
+    above. (#3285 by Hao-Ting Wang).
+  * Allow setting vmin in plot_glass_brain and plot_stat_map (#3993
+    by Michelle Wang).
+  * When plotting thresholded statistical maps with a colorbar, the
+    threshold value(s) will now be displayed as tick labels on the
+    colorbar (##2833 by Nicolas Gensollen).
+  * Combine GLM examples plot_fixed_effect and plot_fiac_analysis
+    into a a single example plot_two_runs_model (#3191 by Taylor
+    Salo and Rémi Gau).
+  ## New
+  * The temp_file_lifetime parameter of interactive plots’
+    open_in_browser method is deprecated and has no effect (#4180
+    by Jerome Dockes)..
+  ## Fixes
+  * MultiNiftiMasker can now call generate_report which will
+    generate a report for the first subject in the list of subjects
+    (#4001 by Yasmin Mzayek).
+  * Make sure that all atlases and datasets fetchers return a
+    description (#4215 Rémi Gau).
+  * Update the CompCor strategy in load_confounds and
+    load_confounds_strategy to support fmriprep 21.x series and
+    above. (#3285 by Hao-Ting Wang).
+  * Fix SimpleRegressionResults to accommodate for the lack of a
+    model attribute (#4071 Rémi Gau)
+  * clean_img can now use kwargs clean__sample_mask argument to
+    correctly reshape the nifti image to the dimensions of the mask
+    in the output (#4051 by Mia Zwally).
+  * Fix plotting of an image with color bar when maximum value is
+    exactly zero (#4204 by Rémi Gau).
+  * Code Fix PSC normalisation method applied by standardize_signal
+    in signal (#4116 by Hao-Ting Wang and Yasmin Mzayek).
+  * Fixed inheritance of decoder classes to keep compatibility with
+    scikit-learn>v1.3 (#4188 by Yasmin Mzayek).
+  * Make sure that all the fetchers for atlas and func from
+    nilearn.datasets return a sklearn.utils.Bunch. Add new behavior
+    to fetch_language_localizer_demo_dataset to return output as
+    Bunch. This behavior will become the default in version 0.13.0
+    (#4233 by Rémi Gau).
+  ## Enhancements
+  * NiftiSpheresMasker now has generate_report method (#3102 by
+    Yasmin Mzayek and Nicolas Gensollen).
+  * Allow passing Pandas Series of image filenames to
+    SecondLevelModel (#4070 by Rémi Gau).
+  * Allow passing arguments to first_level_from_bids to build first
+    level models that include specific set of confounds by relying
+    on the strategies from load_confounds (#4103 by Rémi Gau).
+  * Support passing t and F contrasts to compute_contrast that that
+    have fewer columns than the number of estimated parameters.
+    Remaining columns are padded with zero (#4067 by Rémi Gau).
+  * Multi-subject maskers’ generate_report method no longer fails
+    with 5D data but instead shows report of first subject. User
+    can index input list to show report for different subjects
+    (#3935 by Yasmin Mzayek).
+  * Allow global_signal parameter in load_confounds_strategy in
+    denoise_strategy='compcor' (#4225 by Hao-Ting Wang).
+  * Add two_sided option for binarize_img (#4121 by Steven
+    Meisler).
+  * generate_report now uses appropriate cut coordinates when
+    functional image is provided (#4099 by Yasmin Mzayek and
+    Nicolas Gensollen).
+  * Mention the classification type (all-vs-one) in Decoding of a
+    dataset after GLM fit for signal extraction (#4122 by Tamer
+    Gezici).
+  * Add backslash to homogenize Parcellations
+- Release 0.10.2
+  ## Higlights
+  * Volume plotting functions like plotting.plot_img now have an
+    optional radiological parameter, defaulting to False. If True,
+    this will invert the x-axis and L and R annotations to confirm
+    to radiological conventional view..
+  * Update Decoder objects to use the more efficient
+    LogisticRegressionCV.
+  * Add LassoCV as a new estimator option for Decoder objects
+  * Add vmin and symmetric_cbar arguments to
+    nilearn.plotting.plot_img_on_surf.
+  * Improve contrasts allowing fixed effects on F contrasts
+  * New experimental surface API to facilitate working with surface
+    data in downstream surface-based analyses. We provide this API
+    as a nilearn.experimental.surface module as it is still
+    incomplete and subject to change without a deprecation cycle..
+  ## NEW
+  * Volume plotting functions like plotting.plot_img now have an
+    optional radiological parameter, defaulting to False. If True,
+    this will invert the x-axis and L and R annotations to confirm
+    to radiological conventional view..
+  * New experimental surface API to facilitate working with surface
+    data in downstream surface-based analyses. We provide this API
+    as a nilearn.experimental.surface module as it is still
+    incomplete and subject to change without a deprecation cycle..
+  ## Fixes
+  * Fix bug in method transform_imgs of
+    maskers.MultiNiftiMapsMasker and maskers.MultiNiftiLabelsMasker
+    that would raise an error if a list of sample_mask was
+    specified to fit_transform.
+  * Fix bug in nilearn.plotting.surf_plotting._plot_surf_matplotlib
+    that would make vertices transparent when saving in PDF or SVG
+    format.
+  * Fix bug that would prevent using symmetric_cmap=True or the
+    avg_method argument with plotting.plot_surf_roi.
+  * Fixes a bug that would lead to an error when loading a
+    fsaverage surface while relying on numpy >= 1.24.x.
+  * Fix bug that would prevent loading the confounds of a gifti
+    file in actual fmriprep datasets.
+  * Fix bug that prevented using dataframes as input for second
+    level GLM when computing contrasts.
+  * Fix bug in glm.first_level.first_level_from_bids that returned
+    no confound files if the corresponding bold files contained
+    derivatives BIDS entities.
+  * Fix bug in glm.first_level.first_level_from_bids that would
+    throw a warning about slice_time_ref not being provided even
+    when it was.
+  * Fix bug where the cv_params_ attribute of fitter Decoder
+    objects sometimes had missing entries if grid_param is a
+    sequence of dicts with different keys.
+  * Make the nilearn.interfaces.fmriprep.load_confounds confounds
+    file selection more generic.
+  * Change default figure sizes to prevent titles from overlapping
+    figure content
+  * Relax the nilearn.interfaces.fmriprep.load_confounds confounds
+    selection on cosine as not all confound files contained the
+    variables.
+  * Fix pathlib.Path not being counted as Niimg-like object in
+    image.new_img_like.
+  * Fix fit_transform behavior to match when fit method is passed
+    image data
+  * Allow using both vmin and threshold with "plotly" engine to be
+    consistent with "matplotlib" behavior
+  * Set edgecolors to be the same as facecolors in
+    plotting.plot_surf_contours so that ROI contours are rendered
+    clearly
+  * Refactor deprecation of behavior of
+    datasets.fetch_atlas_craddock_2012,
+    datasets.fetch_atlas_smith_2009 and
+    datasets.fetch_atlas_basc_multiscale_2015 fetchers including
+    using API consistent maps key
+  ## Enhancements
+  * Add cross-reference links to type definitions in public surface
+    functions.
+  * Update Decoder objects to use the more efficient
+    LogisticRegressionCV.
+  * Throw warning in glm.first_level.first_level_from_bids when
+    using event.tsv files with no trial type column.
+  * Make return key names in the description file of destrieux
+    surface consistent with datasets.fetch_atlas_surf_destrieux.
+  * Add LassoCV as a new estimator option for Decoder objects
+  * Add vmin and symmetric_cbar arguments to
+    nilearn.plotting.plot_img_on_surf.
+  * Improve generate_report method of maskers by allowing users to
+    pass a cmap argument for plotting image
+  * Improve contrasts allowing fixed effects on F contrasts
+  ## Changes
+  * Validate the content of events files before plotting them.
+  * nilearn.glm.first_level.experimental_paradigm.check_events will
+    now throw a warning if some events have a 0 second duration and
+    will throw an error if an event has NaN onset or duration.
+  * Removed old files and test code from deprecated datasets COBRE
+    and NYU resting state.
+  * PEP8 and isort compliance extended to the whole nilearn
+    codebase..
+  * Finish applying black formatting to most of the codebase..
+  * Empty region signals resulting from applying mask_img in
+    maskers.NiftiLabelsMasker will no longer be kept in release
+    0.15. Meanwhile, use keep_masked_labels parameter when
+    initializing the maskers.NiftiLabelsMasker object to
+    enable/disable this behavior..
+  * Empty region signals resulting from applying mask_img in
+    maskers.NiftiMapsMasker will no longer be kept in release 0.15.
+    Meanwhile, use keep_masked_maps parameter when initializing the
+    maskers.NiftiMapsMasker object to enable/disable this
+    behavior..
+  * Removed mention of license in "header".
+  * Configure plots in example gallery for better rendering
+  * Make one_mesh_info and full_brain_info into private functions
+    _one_mesh_info and _full_brain_info
+  * Refactor error raising tests using context managers
+  * Added warning to deprecate darkness in
+    surf_plotting._compute_facecolors_matplotlib and
+    html_surface._get_vertexcolor
+  * Replace skipped doctests with default code-blocks
+  * Move the ~nilearn.plotting.html_surface._mix_colormaps to cm.py
+    in nilearn.plotting
+  * Remove deprecation decorator from ~nilearn.glm.regression
+  * Expose standardize in plotting.plot_carpet and
+    connectome.ConnectivityMeasure to handle "zscore" deprecation.
+  * Example
+    :ref:sphx_glr_auto_examples_01_plotting_plot_prob_atlas.py is
+    shortened to speed up build time
+- Drop numpy-1.25.patch
+- Drop warning-based-sklearn-version.patch
+
+-------------------------------------------------------------------
 Thu Aug 10 09:12:46 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add numpy-1.25.patch, upstream patch gh#nilearn/nilearn#3746
@@ -8,17 +214,17 @@ Thu Aug 10 09:12:46 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 Tue Jun 27 10:58:39 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.10.1
-  * New function load_sample_motor_activation_image to load example 
+  * New function load_sample_motor_activation_image to load example
     contrast map
-  * fsaverage meshes accessed through fetch_surf_fsaverage now come 
+  * fsaverage meshes accessed through fetch_surf_fsaverage now come
     with flat maps for all resolutions
-  * Improve how first_level_from_bids handles fetching slice timing 
-    metadata and add additional input validation. In release 0.12 
+  * Improve how first_level_from_bids handles fetching slice timing
+    metadata and add additional input validation. In release 0.12
     the default slice_time_ref will be None instead of 0
   * Fixes several bugs in first_level_from_bids.
-  * Add correct “zscore_sample” strategy to signal._standardize 
+  * Add correct “zscore_sample” strategy to signal._standardize
     which will replace the default “zscore” strategy in release 0.13
-  * Moved packaging from setup.py and setuptools build backend to 
+  * Moved packaging from setup.py and setuptools build backend to
     pyproject.toml and hatchling backend.
   * Restore resample_img compatibility with all nibabel.spatialimages.SpatialImage objects
 
@@ -149,26 +355,26 @@ Tue Jul 12 14:02:31 UTC 2022 - Markéta Machová <mmachova@suse.com>
 - Update to 0.9.1
   * Python 3.6 is deprecated and will be removed in release 0.10
   * Nibabel 2.x is no longer supported
-  * Surface plotting functions can now produce interactive plots 
+  * Surface plotting functions can now produce interactive plots
     with Plotly
-  * New module nilearn.interfaces to implement loading and saving 
+  * New module nilearn.interfaces to implement loading and saving
     utilities with various interfaces
-  * New functions load_confounds and load_confounds_strategy to 
+  * New functions load_confounds and load_confounds_strategy to
     load confound variables easily from fMRIPrep outputs
-  * New class HierarchicalKMeans which yields more balanced 
-    clusters than KMeans. It is also callable through Parcellations 
+  * New class HierarchicalKMeans which yields more balanced
+    clusters than KMeans. It is also callable through Parcellations
     using method=hierarchical_kmeans
-  * Masker objects like NiftiMasker now belong to the new module 
-    nilearn.maskers. The old import style, through the module 
+  * Masker objects like NiftiMasker now belong to the new module
+    nilearn.maskers. The old import style, through the module
     input_data, still works but has been deprecated
-  * Class NiftiMapsMasker can now generate HTML reports in the same 
+  * Class NiftiMapsMasker can now generate HTML reports in the same
     way as NiftiMasker and NiftiLabelsMasker
   * The contributing documentation and maintenance pages were improved
   * many more changes, see upstream changelog
 - Add upstream patch fix-test-decoder.patch
 - Delete upstreamed patches:
-  * nilearn-pr3136-pythoncall.patch 
-  * nilearn-pr3094-py310.patch 
+  * nilearn-pr3136-pythoncall.patch
+  * nilearn-pr3094-py310.patch
 
 -------------------------------------------------------------------
 Thu Jan 20 21:17:06 UTC 2022 - Ben Greiner <code@bnavigator.de>
@@ -199,7 +405,7 @@ Thu Jan 20 21:17:06 UTC 2022 - Ben Greiner <code@bnavigator.de>
     attributes {area, curv, sphere, thick}_{left, right} for all
     fsaverage resolutions.
   * nilearn.glm.first_level.run_glm now allows auto regressive
-    noise models of order greater than one. 
+    noise models of order greater than one.
   * Support for Nibabel 2.x is deprecated and will be removed in
     the 0.9 release.
 - Add nilearn-pr3094-py310.patch -- gh#nilearn/nilearn#3094
@@ -211,12 +417,12 @@ Thu Jan 20 21:17:06 UTC 2022 - Ben Greiner <code@bnavigator.de>
 Fri Apr  9 11:54:35 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.7.1
-  * New atlas fetcher nilearn.datasets.fetch_atlas_difumo to download 
-    Dictionaries of Functional Modes, or “DiFuMo”, that can serve as 
+  * New atlas fetcher nilearn.datasets.fetch_atlas_difumo to download
+    Dictionaries of Functional Modes, or “DiFuMo”, that can serve as
     atlases to extract functional signals with different dimensionalities.
-  * nilearn.decoding.Decoder and nilearn.decoding.DecoderRegressor is now 
+  * nilearn.decoding.Decoder and nilearn.decoding.DecoderRegressor is now
     implemented with random predictions to estimate a chance level.
-  * Some functions are now implemented with new display mode Mosaic. That 
+  * Some functions are now implemented with new display mode Mosaic. That
     implies plotting 3D maps in multiple columns and rows in a single axes.
 - Drop nilearn-fix-aarch64.patch
 
@@ -240,8 +446,8 @@ Mon Nov 16 08:30:47 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 - Drop upstreamed patches:
   * fix-test_save_cmap.patch
   * update-numpy-warning.patch
-- Disable 'test_clean_confounds' and 'test_reorder_img_mirror ' 
-  until we have a fix. See: 
+- Disable 'test_clean_confounds' and 'test_reorder_img_mirror '
+  until we have a fix. See:
     https://github.com/nilearn/nilearn/issues/2608
     https://github.com/nilearn/nilearn/issues/2610
 

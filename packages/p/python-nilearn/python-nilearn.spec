@@ -1,7 +1,7 @@
 #
 # spec file for package python-nilearn
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,45 +16,48 @@
 #
 
 
+# Run tests in parallel with pytest-xdist. On by default.
+%bcond_without pytest_xdist
 Name:           python-nilearn
-Version:        0.10.1
+Version:        0.10.3
 Release:        0
 Summary:        Statistical learning tool for neuroimaging
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/nilearn/nilearn
 Source:         https://files.pythonhosted.org/packages/source/n/nilearn/nilearn-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM numpy-1.25.patch gh#nilearn/nilearn#3746
-Patch0:         numpy-1.25.patch
-# PATCH-FIX-UPSTREAM warning-based-sklearn-version.patch gh#nilearn/nilearn#3763
-Patch1:         warning-based-sklearn-version.patch
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-joblib >= 1.0.0
-Requires:       python-matplotlib >= 3.3.0
-Requires:       python-nibabel >= 3.2.0
+Requires:       python-lxml
+Requires:       python-nibabel >= 4.0
 Requires:       python-numpy >= 1.19
 Requires:       python-packaging
 Requires:       python-pandas >= 1.1.5
-Requires:       python-requests >= 2
+Requires:       python-requests >= 2.25.0
 Requires:       python-scikit-learn >= 1.0.0
-Requires:       python-scipy >= 1.6.0
+Requires:       python-scipy >= 1.8.0
+Recommends:     python-matplotlib >= 3.3
+Recommends:     python-plotly
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module joblib >= 1.0.0}
-BuildRequires:  %{python_module matplotlib >= 3.3.0}
-BuildRequires:  %{python_module nibabel >= 3.2.0}
+BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module nibabel >= 4.0}
 BuildRequires:  %{python_module numpy >= 1.19}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pandas >= 1.1.5}
+%{?with_pytest_xdist:BuildRequires:  %{python_module pytest-xdist}}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests >= 2}
+BuildRequires:  %{python_module requests >= 2.25.0}
+BuildRequires:  %{python_module rich}
+BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module scikit-learn >= 1.0.0}
-BuildRequires:  %{python_module scipy >= 1.6.0}
+BuildRequires:  %{python_module scipy >= 1.8.0}
 # /SECTION
 %python_subpackages
 
@@ -64,8 +67,9 @@ NeuroImaging data.
 
 %prep
 %autosetup -p1 -n nilearn-%{version}
-chmod -x nilearn/datasets/tests/data/localizer_index.json
+chmod -x nilearn/datasets/tests/data/localizer_index.json nilearn/plotting/glass_brain_files/plot_align_svg.py
 sed -i '1{/env python/d}' nilearn/glm/tests/test_utils.py nilearn/plotting/glass_brain_files/plot_align_svg.py
+chmod +x nilearn/externals/install_tempita.sh
 
 %build
 %pyproject_wheel
@@ -77,29 +81,26 @@ sed -i '1{/env python/d}' nilearn/glm/tests/test_utils.py nilearn/plotting/glass
 %check
 # Test try to build the doc and run examples...
 rm -rf doc/ examples/
-# sporadic race condition in pytest-xdist
-donttest="test_with_globbing_patterns_with_single_subject"
-# sporadic unknown failure (on all architectures): https://github.com/nilearn/nilearn/issues/2607
-donttest+=" or test_check_niimg_wildcard"
 # https://github.com/nilearn/nilearn/issues/2608
-donttest+=" or test_clean_confounds"
-# https://github.com/nilearn/nilearn/issues/2610
-donttest+=" or test_reorder_img_mirror"
-# ppc64 https://github.com/nilearn/nilearn/issues/3363
+donttest="test_clean_confounds"
+# ppc64 https://github.com/nilearn/nilearn/issues/3363 https://github.com/nilearn/nilearn/issues/3232
 donttest+=" or (test_load_confounds and test_nilearn_standardize)"
-# x86_64 https://github.com/nilearn/nilearn/issues/3382
+# x86_64 https://github.com/nilearn/nilearn/issues/3382, last tested 2024-02-21 with nilearn 0.10.3, still failing
 donttest+=" or test_tfce_smoke"
 donttest+=" or test_load_uniform_ball_cloud"
 
+# unresolvable documentation package requirement docstring_parser
+ignorefiles="--ignore maint_tools/check_glossary_term.py"
+
 if [[ $(getconf LONG_BIT) -eq 64 ]]; then
-    # this is a noarch rpm package but the pure python code is only intended for 64-bit architectures
-%pytest -k "not ($donttest)"
+# this is a noarch rpm package but the pure python code is only intended for 64-bit architectures
+%pytest %{?with_pytest_xdist:-n auto} -k "not ($donttest)" $ignorefiles && rm -r nilearn_cache
 fi
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst
 %license LICENSE
 %{python_sitelib}/nilearn
-%{python_sitelib}/nilearn-%{version}*-info
+%{python_sitelib}/nilearn-%{version}.dist-info
 
 %changelog
