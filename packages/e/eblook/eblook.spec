@@ -1,7 +1,7 @@
 #
 # spec file for package eblook
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           eblook
 Version:        1.6.1
 Release:        0
 Summary:        Command Line Tool for Searching Electronic Dictionaries
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Office/Dictionary
-Url:            http://openlab.ring.gr.jp/lookup/eblook/
+URL:            http://openlab.ring.gr.jp/lookup/eblook/
 # original source: http://openlab.ring.gr.jp/edict/eblook/dist/eblook-1.5.1.tar.gz
 Source0:        http://openlab.ring.gr.jp/edict/eblook/dist/eblook-%{version}.tar.bz2
 Patch0:         eblook-strcpy.patch
@@ -61,10 +61,7 @@ lookup.el is already included as a package in recent versions of
 XEmacs.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p2
-%patch2 -p1
+%autosetup -p1
 
 %build
 # update config.{guess,sub}

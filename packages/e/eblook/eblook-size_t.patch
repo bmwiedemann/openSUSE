@@ -1,6 +1,6 @@
 diff -u ../eblook-1.6.1.orig/codeconv.c ../eblook-1.6.1/codeconv.c
---- ../eblook-1.6.1.orig/codeconv.c	2003-03-08 23:29:47.000000000 +0900
-+++ ../eblook-1.6.1/codeconv.c	2010-08-15 08:33:21.218750000 +0900
+--- eblook-1.6.1.orig/codeconv.c	2003-03-08 23:29:47.000000000 +0900
++++ eblook-1.6.1/codeconv.c	2010-08-15 08:33:21.218750000 +0900
 @@ -564,7 +564,7 @@
  char *
  xfgets(str, size, fp)
@@ -112,8 +112,8 @@ diff -u ../eblook-1.6.1.orig/codeconv.c ../eblook-1.6.1/codeconv.c
  	    (*out_len)--;
  	    count++;
 diff -u ../eblook-1.6.1.orig/codeconv.h ../eblook-1.6.1/codeconv.h
---- ../eblook-1.6.1.orig/codeconv.h	2003-03-08 23:29:47.000000000 +0900
-+++ ../eblook-1.6.1/codeconv.h	2010-08-14 18:44:09.390625000 +0900
+--- eblook-1.6.1.orig/codeconv.h	2003-03-08 23:29:47.000000000 +0900
++++ eblook-1.6.1/codeconv.h	2010-08-14 18:44:09.390625000 +0900
 @@ -50,7 +50,7 @@
  extern int xprintf PROTO((const char *fmt, ...));
  extern int xfputs PROTO((const char *str, FILE *fp));
@@ -124,8 +124,8 @@ diff -u ../eblook-1.6.1.orig/codeconv.h ../eblook-1.6.1/codeconv.h
  extern char *euc_to_jis PROTO((char *jis, const char *euc, int len));
  extern char *jis_to_euc PROTO((char *euc, const char *jis, int len));
 diff -u ../eblook-1.6.1.orig/eblook.c ../eblook-1.6.1/eblook.c
---- ../eblook-1.6.1.orig/eblook.c	2004-06-18 01:09:01.000000000 +0900
-+++ ../eblook-1.6.1/eblook.c	2010-08-14 18:50:40.406250000 +0900
+--- eblook-1.6.1.orig/eblook.c	2004-06-18 01:09:01.000000000 +0900
++++ eblook-1.6.1/eblook.c	2010-08-14 18:50:40.406250000 +0900
 @@ -133,7 +133,7 @@
  int pclose_pager (FILE *);
  #endif
