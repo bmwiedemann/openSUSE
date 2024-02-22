@@ -26,4 +26,12 @@
     <comment>- Repair grammar and neutrality in the description.</comment>
     <requestid>533587</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e571dc5bf46ac3d8b65ff38487e4cc58</srcmd5>
+    <version>2.6</version>
+    <time>1708631977</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1149015 from dimstar)</comment>
+    <requestid>1149108</requestid>
+  </revision>
 </revisionlist>

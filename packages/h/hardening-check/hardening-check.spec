@@ -49,8 +49,7 @@ This includes checks for PIE executables, stack protection, source
 fortification, read-only relocations and immediate binding.
 
 %prep
-%setup -q -n hardening-wrapper
-%patch0 -p1
+%autosetup -p1 -n hardening-wrapper
 
 %build
 # this is to silence make errors but it doesn't influence our package, because
