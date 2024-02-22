@@ -301,4 +301,12 @@
     <comment>units 2.22 (forwarded request 1045323 from AndreasStieger)</comment>
     <requestid>1046142</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b2cc4b23d256e2744a187c2e56431062</srcmd5>
+    <version>2.23</version>
+    <time>1708631952</time>
+    <user>anag+factory</user>
+    <comment>units 2.23 (forwarded request 1147648 from AndreasStieger)</comment>
+    <requestid>1149063</requestid>
+  </revision>
 </revisionlist>

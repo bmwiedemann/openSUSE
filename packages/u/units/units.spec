@@ -2,6 +2,7 @@
 # spec file for package units
 #
 # Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 %bcond_without	units_cur
 Name:           units
-Version:        2.22
+Version:        2.23
 Release:        0
 Summary:        Conversion Utility
 License:        GPL-3.0-or-later
@@ -64,6 +65,7 @@ ln -fsv ../../..%{_sharedstatedir}/units/currency.units %{buildroot}%{_datadir}/
 %{_datadir}/units
 %dir %{_localstatedir}/lib/units
 %{_localstatedir}/lib/units/currency.units
+%{_localstatedir}/lib/units/cpi.units
 %doc NEWS README
 %{_infodir}/units.info%{?ext_info}
 %{_mandir}/man1/units.1%{?ext_man}

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Feb 19 17:14:59 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- units 2.23:
+  * molarvolume changed to have dimensions of m^3/mol for
+    consistency with NIST
+  * Corrected erroneous definitions of moondist_min and
+    moondist_max
+  * Added atomic masses for all isotopes of all elements in
+    elements.units
+  * Added US Consumer Price index in cpi.units, which is updated
+    monthly by units_cur.  Inflation calculations are possible with
+    dollars_in() or inflation_since() and other related nonlinear
+    units
+  * Made exchangerate-api the default currency server
+  * Adjusted US survey units to use the international foot by
+   default due to deprecation of the US survey foot
+  * abs() function works on units with dimensions, like -27 degrees.
+  * Support unicode operators for division and multiplication
+  * Ignore QUIT signal, which is sent by Ctrl-Backslash and Ctrl-4.  
+  * Suppress repeated unit values in display of unit definitions
+  * Unit reductions that take more than 1000 steps now give a
+    "circular reference" error.
+  * More detailed reporting from the --check (-c) option.    
+  * Fixed bug in positioning pointer to errors in input when the
+    input has leading spaces.
+  * Fixed parser memory leak with numbers too large or small for
+    type double.
+  * Allow multiple divisions in expressions that start with "/",
+    e.g. "/m/s"
+
+-------------------------------------------------------------------
 Sun Dec 25 19:58:53 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - units 2.22:
