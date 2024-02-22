@@ -57,8 +57,7 @@ This package contains configuration examples for jconvolver, a convolution
 engine for JACK.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 CXXFLAGS="%{optflags}" make -C source %{?_smp_mflags}
