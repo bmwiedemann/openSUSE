@@ -45,6 +45,7 @@ GOverlay is a graphical UI to manage Vulkan/OpenGL overlays.
 
 %prep
 %autosetup -p1
+chmod -x LICENSE README.md
 
 %build
 %{set_build_flags}
@@ -59,8 +60,8 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 desktop-file-validate %{buildroot}%{_datadir}/applications/io.github.benjamimgois.%{name}.desktop
 
 %files
-%attr(644, -, -) %license LICENSE
-%attr(644, -, -) %doc README.md
+%license LICENSE
+%doc README.md
 %{_bindir}/%{name}
 %{_libdir}/%{name}
 %{_datadir}/applications/*.desktop

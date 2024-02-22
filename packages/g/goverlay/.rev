@@ -112,4 +112,14 @@ This package depend on mangohud, so I think mangohud should be accept first.</co
     <comment></comment>
     <requestid>1138981</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>0a9b4584676d11375218a39a6439e7f6</srcmd5>
+    <version>1.0</version>
+    <time>1708632092</time>
+    <user>anag+factory</user>
+    <comment>- Do not use %attr(644,-,-) %license: this happens to also create
+  the relevant directories with mode 644, i.e not accessible.
+  Rather remove the spurious exec bits from the files during prep. (forwarded request 1149279 from dimstar)</comment>
+    <requestid>1149526</requestid>
+  </revision>
 </revisionlist>

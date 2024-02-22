@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 22 11:54:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not use %attr(644,-,-) %license: this happens to also create
+  the relevant directories with mode 644, i.e not accessible.
+  Rather remove the spurious exec bits from the files during prep.
+
+-------------------------------------------------------------------
 Mon Jan  8 15:07:20 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 1.0:
