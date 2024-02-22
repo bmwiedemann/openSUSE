@@ -93,8 +93,8 @@ SGML and XML DTDs for the W3C Markup Validator.
 
 %prep
 %setup -q -n %{pkgname}-%{version} -a 1 -a 2
-%patch0
-%patch1 -p1
+%patch -P 0
+%patch -P 1 -p1
 mv %{pkgname}-%{version}/htdocs/sgml-lib .
 rm -r %{pkgname}-%{version}/
 
