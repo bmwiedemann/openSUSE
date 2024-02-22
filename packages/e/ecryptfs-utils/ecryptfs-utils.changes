@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 22 11:29:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+- Rebase ecryptfs-utils-openssl11.patch: make it apply with patch
+  -p1 like all the others.
+
+-------------------------------------------------------------------
 Tue Dec 27 10:35:17 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

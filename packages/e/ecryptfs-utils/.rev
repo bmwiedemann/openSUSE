@@ -428,4 +428,15 @@
     <comment>Replace transitional %usrmerged macro with regular version check (boo#1206798) (forwarded request 1053710 from lnussel)</comment>
     <requestid>1055977</requestid>
   </revision>
+  <revision rev="56" vrev="8">
+    <srcmd5>af607da64a95480e360cce547070ced9</srcmd5>
+    <version>111</version>
+    <time>1708632036</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+- Rebase ecryptfs-utils-openssl11.patch: make it apply with patch
+  -p1 like all the others.</comment>
+    <requestid>1149389</requestid>
+  </revision>
 </revisionlist>

@@ -1,6 +1,6 @@
 === modified file 'src/key_mod/ecryptfs_key_mod_openssl.c'
---- src/key_mod/ecryptfs_key_mod_openssl.c	2013-10-25 19:45:09 +0000
-+++ src/key_mod/ecryptfs_key_mod_openssl.c	2017-06-02 18:27:28 +0000
+--- a/src/key_mod/ecryptfs_key_mod_openssl.c	2013-10-25 19:45:09 +0000
++++ a/src/key_mod/ecryptfs_key_mod_openssl.c	2017-06-02 18:27:28 +0000
 @@ -41,6 +41,7 @@
  #include <stdlib.h>
  #include <unistd.h>
@@ -81,8 +81,8 @@
  	ENGINE_load_builtin_engines();
 
 === modified file 'src/key_mod/ecryptfs_key_mod_pkcs11_helper.c'
---- src/key_mod/ecryptfs_key_mod_pkcs11_helper.c	2013-10-25 19:45:09 +0000
-+++ src/key_mod/ecryptfs_key_mod_pkcs11_helper.c	2017-06-02 18:27:28 +0000
+--- a/src/key_mod/ecryptfs_key_mod_pkcs11_helper.c	2013-10-25 19:45:09 +0000
++++ a/src/key_mod/ecryptfs_key_mod_pkcs11_helper.c	2017-06-02 18:27:28 +0000
 @@ -41,6 +41,7 @@
  #include <errno.h>
  #include <stdlib.h>
