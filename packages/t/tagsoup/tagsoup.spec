@@ -1,7 +1,7 @@
 #
 # spec file for package tagsoup
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2005, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,22 +26,17 @@ Group:          Productivity/Publishing/XML
 URL:            http://home.ccil.org/~cowan/XML/tagsoup/
 #Source0:        http://home.ccil.org/~cowan/XML/tagsoup/tagsoup-1.2.1-src.zip
 Source0:        tagsoup-1.2.1-src.zip
-Source1:        http://repo1.maven.org/maven2/org/ccil/cowan/tagsoup/%{name}/%{version}/%{name}-%{version}.pom
+Source1:        https://repo1.maven.org/maven2/org/ccil/cowan/tagsoup/%{name}/%{version}/%{name}-%{version}.pom
 Patch0:         tagsoup-1.2.1-man.patch
 Patch1:         tagsoup-1.2.1-jdk9.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  unzip
 BuildRequires:  xalan-j2
 Requires:       javapackages-tools
 BuildArch:      noarch
-%if 0%{?suse_version} < 1500
-BuildConflicts: java >= 9
-BuildConflicts: java-devel >= 9
-BuildConflicts: java-headless >= 9
-%endif
 
 %description
 TagSoup is a SAX-compliant parser written in Java that, instead of
@@ -58,8 +53,8 @@ Javadoc package for %{name}.
 
 %prep
 %setup -q
-%patch0
-%patch1 -p1
+%patch -P 0
+%patch -P 1 -p1
 
 find . -name '*.class' -delete
 find . -name "*.jar" -delete
@@ -80,7 +75,7 @@ install -m 644 dist/lib/%{name}-%{version}.jar \
   %{buildroot}%{_javadir}/%{name}.jar
 # pom
 mkdir -p %{buildroot}%{_mavenpomdir}
-install -pm 644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
+%{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
 %add_maven_depmap
 # javadoc
 mkdir -p %{buildroot}%{_javadocdir}/%{name}
