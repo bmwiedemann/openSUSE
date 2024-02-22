@@ -167,4 +167,15 @@
     <comment></comment>
     <requestid>395074</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>20d32821ac83f124448c8ddc5139b526</srcmd5>
+    <version>1.6.3</version>
+    <time>1708631994</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+- Remove old SLE10 conditional
+- Remove clean section</comment>
+    <requestid>1149146</requestid>
+  </revision>
 </revisionlist>

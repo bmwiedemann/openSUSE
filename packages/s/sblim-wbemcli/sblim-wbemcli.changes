@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 22 09:59:27 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+- Remove old SLE10 conditional
+- Remove clean section
+
+-------------------------------------------------------------------
 Thu May 12 15:07:14 UTC 2016 - mvetter@suse.com
 
 - Requested by fate#319145

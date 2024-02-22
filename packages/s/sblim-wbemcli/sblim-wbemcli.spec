@@ -1,7 +1,7 @@
 #
 # spec file for package sblim-wbemcli
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           sblim-wbemcli
-%if 0%{?suse_version} > 1010
 BuildRequires:  binutils-devel
-%else
-# SLE_10
-BuildRequires:  binutils
-%endif
 BuildRequires:  curl-devel
 BuildRequires:  gcc-c++
 Version:        1.6.3
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Url:            http://sblim.wiki.sourceforge.net/
+URL:            http://sblim.wiki.sourceforge.net/
 Source:         http://prdownloads.sourceforge.net/sblim/%{name}-%{version}.tar.bz2
 Patch0:         sblim-wbemcli-allow-tls.patch
 Summary:        SBLIM WBEM Command Line Interface
@@ -47,8 +42,7 @@ Authors:
     SBLIM Project <http://www-124.ibm.com/sblim/>
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 sed -i 's|wbemcli/samples|wbemcli/examples|' man/wbemcli.1.pre.in
 sed -i 's|wbemcli/samples|wbemcli/examples|' man/wbemcli.1
@@ -60,9 +54,6 @@ make %{?jobs:-j %jobs}
 %install
 %makeinstall
 mv "samples" "examples"
-
-%clean
-%{__rm} -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
