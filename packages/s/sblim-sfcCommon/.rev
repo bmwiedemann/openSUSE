@@ -14,4 +14,15 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>6853e2ae2ea74b1a96fa6e834f10a132</srcmd5>
+    <version>1.0.1</version>
+    <time>1708632001</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+- Remove sblim-sfcCommon-rpmlintrc
+- Use license</comment>
+    <requestid>1149171</requestid>
+  </revision>
 </revisionlist>

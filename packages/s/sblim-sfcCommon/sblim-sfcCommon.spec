@@ -1,7 +1,7 @@
 #
-# spec file for package sblim-sfcCommon (Version 1.0.1)
+# spec file for package sblim-sfcCommon
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# norootforbuild
 
 Name:           sblim-sfcCommon
-BuildRequires:  gcc-c++ sblim-cmpi-devel
+BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-Url:            http://sourceforge.net/projects/sblim
+BuildRequires:  sblim-cmpi-devel
+URL:            http://sourceforge.net/projects/sblim
 License:        EPL-1.0
 Group:          System/Libraries
 
 Version:        1.0.1
-Release:        1
+Release:        0
 Summary:        Library of utility functions shared between sfcb and sfcc
 Source:         %{name}-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Patch1:         type-punned-pointer.patch
 
 %description
-This package provides a common library for functions 
+This package provides a common library for functions
 shared between sfcb and sfcc.
 
 
@@ -43,7 +43,7 @@ Summary:        Library of utility functions shared between sfcb and sfcc
 Group:          System/Libraries
 
 %description -n %libname
-This package provides a common library for functions 
+This package provides a common library for functions
 shared between sfcb and sfcc.
 
 %package devel
@@ -52,12 +52,12 @@ Summary:        Library of utility functions shared between sfcb and sfcc
 Group:          Development/Libraries/C and C++
 Requires:       sblim-cmpi-devel
 %if 0%{?fedora_version} || 0%{?centos_version} || 0%{?rhel_version} || 0%{?fedora} || 0%{?rhel}
-Requires:  pkgconfig
+Requires:       pkgconfig
 %else
 %if 0%{?suse_version} < 920
-Requires:  pkgconfig
+Requires:       pkgconfig
 %else
-Requires:  pkg-config
+Requires:       pkg-config
 %endif
 %endif
 Requires:       %libname = %{version}-%{release}
@@ -67,8 +67,7 @@ This package provides development files to compile and link against
 libsblim-sfccommon.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS"
@@ -86,7 +85,7 @@ make
 %files -n %libname
 %defattr(-, root, root, -)
 %{_libdir}/lib*.so.*
-%doc COPYING
+%license COPYING
 %doc AUTHORS
 %doc NEWS
 

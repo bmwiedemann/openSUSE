@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 22 10:12:23 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+- Remove sblim-sfcCommon-rpmlintrc
+- Use license
+
+-------------------------------------------------------------------
 Thu Dec 19 10:52:29 UTC 2013 - kkaempf@suse.com
 
 - Adapt to upstream name and shared library policies.
