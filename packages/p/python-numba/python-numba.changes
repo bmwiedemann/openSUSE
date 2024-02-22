@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 21 15:35:47 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Simplify test flavor logic
+- Prepare for python39 flavor drop: Exclude build in empty test
+  flavors
+- Don't test on 32bit-platforms
+
+-------------------------------------------------------------------
 Sat Feb  3 07:04:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.59.0

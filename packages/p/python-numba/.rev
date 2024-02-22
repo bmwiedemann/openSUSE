@@ -420,4 +420,12 @@ Python2 support was turned off by accident.  I don't go out of my way to support
     - the ndarray allocators, empty, ones and zeros, accepting a</comment>
     <requestid>1143960</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>c2bb69682408dc2d5c437c220110b51f</srcmd5>
+    <version>0.59.0</version>
+    <time>1708631964</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149089</requestid>
+  </revision>
 </revisionlist>

@@ -21,41 +21,39 @@
 %define min_numpy_ver 1.22
 %define max_numpy_ver 1.27
 
+%{?sle15_python_module_pythons}
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == ""
 %define psuffix %{nil}
 %bcond_with test
-%endif
-%if "%{flavor}" == "test-py39"
-%define psuffix -test-py39
-%define skip_python310 1
-%define skip_python311 1
-%define skip_python312 1
+# Supported Platforms: https://numba.pydata.org/numba-doc/dev/user/installing.html#compatibility
+ExclusiveArch:  x86_64 %ix86 ppc64le %arm aarch64
+%else
 %bcond_without test
-%endif
-%if "%{flavor}" == "test-py310"
-%define psuffix -test-py310
+%define psuffix -%{flavor}
+%if "%{flavor}" != "test-py39"
 %define skip_python39 1
-%define skip_python311 1
-%define skip_python312 1
-%bcond_without test
 %endif
-%if "%{flavor}" == "test-py311"
-%define psuffix -test-py311
-%define skip_python39 1
+%if "%{flavor}" != "test-py310"
 %define skip_python310 1
-%define skip_python312 1
-%bcond_without test
 %endif
-%if "%{flavor}" == "test-py312"
-%define psuffix -test-py312
-%define skip_python39 1
-%define skip_python310 1
+%if "%{flavor}" != "test-py311"
 %define skip_python311 1
-%bcond_without test
+%endif
+%if "%{flavor}" != "test-py312"
+%define skip_python312 1
+%endif
+# The obs server-side interpreter cannot use lua or rpm shrink
+%if "%pythons" == "" || "%pythons" == " " || "%pythons" == "  " || "%pythons" == "   " || "%pythons" == "    " || ( "%pythons" == "python311" && 0%{?skip_python311} )
+ExclusiveArch:  donotbuild
+%define python_module() %flavor-not-enabled-in-buildset-for-suse-%{?suse_version}
+%else
+# Tests fail on ppc64 big endian, not resolvable on s390x, wrong types on 32-bit. See also above compatibility list for building
+ExcludeArch:  s390x ppc64 %ix86 %arm 
+%endif
 %endif
 
-%{?sle15_python_module_pythons}
 Name:           python-numba%{?psuffix}
 Version:        0.59.0
 Release:        0
@@ -98,9 +96,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy >= 1.0}
 BuildRequires:  %{python_module tbb}
 %endif
-# Tests fail on ppc64 big endian, not resolvable on s390x
-# Supported Platforms: https://numba.pydata.org/numba-doc/dev/user/installing.html#compatibility
-ExclusiveArch:  x86_64 %ix86 ppc64le %arm aarch64
 %python_subpackages
 
 %description
