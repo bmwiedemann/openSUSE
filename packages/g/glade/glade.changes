@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 22:31:53 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Add glade-python3.patch for SLE. Pass python3 to the meson
+  python module, to avoid pulling in python 3.11.
+
+-------------------------------------------------------------------
 Wed Sep 21 07:14:05 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Disable webkitgtk catalog support, as it pulls in soup2. Disable

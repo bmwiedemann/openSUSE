@@ -1,7 +1,7 @@
 #
 # spec file for package glade
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ License:        GPL-2.0-or-later
 Group:          Development/Tools/GUI Builders
 URL:            https://glade.gnome.org/
 Source0:        https://download.gnome.org/sources/glade/3.40/%{name}-%{version}.tar.xz
+# PATCH-FIX-SLE glade-python3.patch mgorse@suse.com -- explicitly use python3.
+Patch0:         glade-python3.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
@@ -97,7 +99,10 @@ This package contains the documentation for Glade.
 %lang_package
 
 %prep
-%autosetup -p1
+%setup -q
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+%patch -P 0 -p1
+%endif
 
 %build
 %meson \
