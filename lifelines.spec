@@ -1,7 +1,7 @@
 #
 # spec file for package lifelines
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           lifelines
-%global commit      3ad4571
-%global longcommit  3ad457132c47fde69545d6647d5804c573764631
+%global commit      4f417309
+%global longcommit  4f417309c1f1c188f5c67b099b4686ab8ff572ff
 Version:        3.1.1+%{commit}
 Release:        0
 Summary:        The Lifelines Genealogy Program
@@ -31,8 +31,6 @@ Source1:        %{name}-rpmlintrc
 Patch0:         lifelines-%{commit}.dif
 # PATCH-FIX-SUSE avoid memory leak as well as no initialized array
 Patch1:         lifelines-%{commit}-array.dif
-# PATCH-FIX-UPSTREAM https://github.com/lifelines/lifelines/pull/389
-Patch2:         reproducible.patch
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  dblatex
@@ -41,6 +39,7 @@ BuildRequires:  dos2unix
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng
 BuildRequires:  libxslt-devel
+BuildRequires:  lynx
 BuildRequires:  ncurses-devel
 BuildRequires:  perl-XML-DOM
 BuildRequires:  perl-XML-Parser
@@ -73,9 +72,8 @@ system but requires knowledge in the ll format.
 %prep
 %setup -q -c -T -n %{name}-%{commit}
 tar -x  --strip-components=1 -z -f %{SOURCE0}
-%patch0 -p0 -b .p0
-%patch1 -p0 -b .p1
-%patch2 -p1 -b .p2
+%patch -P0 -p0 -b .p0
+%patch -P1 -p0 -b .p1
 
 %build
 CFLAGS="%{optflags} -fno-strict-aliasing -pipe $(pkg-config ncursesw --cflags) $(getconf LFS_CFLAGS)"
