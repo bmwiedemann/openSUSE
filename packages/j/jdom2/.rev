@@ -39,4 +39,12 @@
     <comment>Reduce drastically the dependencies</comment>
     <requestid>1108066</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>25a8a299aef09e94145ce40465ae9eea</srcmd5>
+    <version>2.0.6.1</version>
+    <time>1708631768</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148663</requestid>
+  </revision>
 </revisionlist>

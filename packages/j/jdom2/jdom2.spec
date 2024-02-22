@@ -1,7 +1,7 @@
 #
 # spec file for package jdom2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ BuildRequires:  ant
 BuildRequires:  ant-junit
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -51,7 +51,7 @@ This package contains javadoc for %{name}.
 %prep
 %setup -q -n jdom-%{version}
 
-%patch0 -p1
+%patch -P 0 -p1
 
 sed -i 's/\r//' LICENSE.txt
 
@@ -72,7 +72,7 @@ install -dm 0755 %{buildroot}%{_javadir}/%{name}
 install -pm 0644 build/package/jdom-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 build/maven/core/%{name}-%{version}.pom %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%{mvn_install_pom} build/maven/core/%{name}-%{version}.pom %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
 %add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
