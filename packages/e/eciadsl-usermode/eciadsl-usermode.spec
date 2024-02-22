@@ -38,9 +38,7 @@ It is not a kernel module. It is a user-mode program that handles the
 modem. A kernel module is under development.
 
 %prep
-%setup -q -T -b 0 -a 1
-%patch1
-%patch2
+%autosetup -p0 -T -b 0 -a 1
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS -D_GNU_SOURCE"
