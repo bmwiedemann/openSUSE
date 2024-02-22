@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 15:27:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire rubygem(asciidoctor) instead of %{rubygem
+  asciidoctor}: only require a single version of asciidoctor.
+
+-------------------------------------------------------------------
 Wed Feb 21 14:56:45 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -25,9 +25,9 @@ Group:          Productivity/Office/Organizers
 URL:            https://timewarrior.net/
 Source:         https://github.com/GothenburgBitFactory/timewarrior/releases/download/v%{version}/timew-%{version}.tar.gz
 Patch0:         timewarrior-build-compare.patch
-BuildRequires:  %{rubygem asciidoctor}
 BuildRequires:  cmake >= 2.8
 BuildRequires:  gcc-c++ >= 6.1
+BuildRequires:  rubygem(asciidoctor)
 
 %description
 Timewarrior is a command line time tracking application, which allows you to
