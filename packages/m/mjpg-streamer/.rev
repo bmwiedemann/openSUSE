@@ -23,4 +23,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1074637</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4cd001a224834aaf36f001336271ffcc</srcmd5>
+    <version>1.0.0</version>
+    <time>1708631935</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1149004</requestid>
+  </revision>
 </revisionlist>

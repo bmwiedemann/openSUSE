@@ -1,7 +1,7 @@
 #
 # spec file for package mjpg-streamer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,9 +53,7 @@ Enable the service by specifing the video device via
 The number reflects /dev/videoX and listening port 808X.
 
 %prep
-%setup -q -n %{name}-%version/mjpg-streamer-experimental
-%patch1 -p2
-%patch2 -p2
+%autosetup -p2 -n %{name}-%version/mjpg-streamer-experimental
 
 %build
 mkdir build
