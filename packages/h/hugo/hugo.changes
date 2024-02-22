@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Feb 22 16:57:32 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.123.2:
+  * Fix it so not all bundled resources are removed when one translation is drafted
+  * commands/mod: Ignore invalid module path
+  * Fix regression on handling of overlapping file mounts
+  * Sitemap should not use list.xml
+  * Fix rebuild when adding a bundle with space in name
+  * Fix relative import issue in libsass/dart sass
+  * Fix relref regression with trailing slash
+
+-------------------------------------------------------------------
+Thu Feb 22 16:55:54 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.123.1:
+  * tpl/tplimpl: Resolve fragments in link render hook
+  * Fix rebuilding of pages without default content language
+  * Fix dart sass import regression
+  * Fall back to original name in Resources.GetMatch/Match
+  * Fix robots.txt using the built-in template regression
+
+-------------------------------------------------------------------
 Mon Feb 19 17:54:28 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.123.0:

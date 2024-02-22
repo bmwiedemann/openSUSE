@@ -930,4 +930,26 @@
     <comment>- Update to version 0.123.0: (forwarded request 1147649 from jfkw)</comment>
     <requestid>1147652</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>6a088c4ba3cdbcd7b4622b53ea5c6f68</srcmd5>
+    <version>0.123.2</version>
+    <time>1708632145</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.123.2:
+  * Fix it so not all bundled resources are removed when one translation is drafted
+  * commands/mod: Ignore invalid module path
+  * Fix regression on handling of overlapping file mounts
+  * Sitemap should not use list.xml
+  * Fix rebuild when adding a bundle with space in name
+  * Fix relative import issue in libsass/dart sass
+  * Fix relref regression with trailing slash
+
+- Update to version 0.123.1:
+  * tpl/tplimpl: Resolve fragments in link render hook
+  * Fix rebuilding of pages without default content language
+  * Fix dart sass import regression
+  * Fall back to original name in Resources.GetMatch/Match
+  * Fix robots.txt using the built-in template regression (forwarded request 1149613 from jfkw)</comment>
+    <requestid>1149614</requestid>
+  </revision>
 </revisionlist>
