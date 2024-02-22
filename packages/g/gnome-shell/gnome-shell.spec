@@ -129,6 +129,8 @@ Requires:       gnome-settings-daemon
 # "High Contrast" in accessibility status icon
 Requires:       gnome-themes-accessibility
 Requires:       gsettings-desktop-schemas
+# ScreenSaver needs this.
+Requires:       gjs >= 1.71.1
 Requires:       mutter >= %{mutter_req}
 Requires:       typelib(Soup) = 3.0
 Recommends:     %{name}-calendar

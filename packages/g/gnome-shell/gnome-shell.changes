@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 10:03:05 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add gjs Requires, because ScreenSaver DBus daemon is a gjs
+  script. (bsc#1219359)
+
+-------------------------------------------------------------------
 Mon Jan 22 02:31:04 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Adapt to version 45.3(bsc#1216072):

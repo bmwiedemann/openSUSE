@@ -2246,4 +2246,12 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   + Rebase gnome-shell-fate324570-Make-GDM-background-image-configurable.patch (forwarded request 1140749 from xiaoguang_wang)</comment>
     <requestid>1140890</requestid>
   </revision>
+  <revision rev="250" vrev="3">
+    <srcmd5>461f1ed57635c01e0e381a805c2c20c7</srcmd5>
+    <version>45.3</version>
+    <time>1708631722</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1148449</requestid>
+  </revision>
 </revisionlist>
