@@ -1,7 +1,7 @@
 #
 # spec file for package dnf-plugins-extras
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,7 +32,7 @@
 %bcond_without tests
 
 Name:           dnf-plugins-extras
-Version:        4.0.17
+Version:        4.1.2
 Release:        0
 Summary:        Extras Plugins for DNF
 License:        GPL-2.0-or-later
@@ -130,34 +130,6 @@ Obsoletes:      python2-dnf-plugin-snapper < 4.0.1
 %description -n python3-dnf-plugin-snapper
 Snapper Plugin for DNF, Python 3 version. Creates snapshot every transaction.
 
-%package -n python3-dnf-plugin-system-upgrade
-Summary:        System Upgrade Plugin for DNF
-Group:          System/Packages
-BuildRequires:  python3-systemd
-BuildRequires:  systemd-rpm-macros
-Requires:       python3-%{name}-common = %{version}-%{release}
-Requires:       python3-systemd
-Requires:       systemd
-Conflicts:      python2-dnf-plugin-system-upgrade < %{version}-%{release}
-Provides:       %{name}-system-upgrade = %{version}-%{release}
-Provides:       dnf-plugin-system-upgrade = %{version}-%{release}
-Provides:       python3-%{name}-system-upgrade = %{version}-%{release}
-Provides:       system-upgrade = %{version}-%{release}
-Provides:       dnf-command(offline-distrosync)
-Provides:       dnf-command(offline-upgrade)
-Provides:       dnf-command(system-upgrade)
-Obsoletes:      dnf-plugin-system-upgrade < 0.10
-Obsoletes:      fedup < 0.9.4
-Obsoletes:      python3-%{name}-system-upgrade < %{dnf_plugins_extra_obsolete}
-# Python 2 version is no longer available
-Obsoletes:      python2-%{name}-system-upgrade < 4.0.1
-Obsoletes:      python2-dnf-plugin-system-upgrade < 4.0.1
-%{?systemd_requires}
-
-%description -n python3-dnf-plugin-system-upgrade
-System Upgrade Plugin for DNF, Python 3 version. Enables offline system upgrades
-using the "dnf system-upgrade" command.
-
 %if %{with tracer}
 %package -n python3-dnf-plugin-tracer
 Summary:        Tracer Plugin for DNF
@@ -219,15 +191,6 @@ pushd build
   %make_install
 popd
 
-mkdir -p %{buildroot}%{_unitdir}/system-update.target.wants/
-pushd %{buildroot}%{_unitdir}/system-update.target.wants/
-  ln -sr ../dnf-system-upgrade.service
-popd
-
-# Link dnf-offline-{upgrade,distrosync}.8 to dnf-system-upgrade.8
-echo ".so man8/dnf-system-upgrade.8" > %{buildroot}%{_mandir}/man8/dnf-offline-upgrade.8
-echo ".so man8/dnf-system-upgrade.8" > %{buildroot}%{_mandir}/man8/dnf-offline-distrosync.8
-
 %find_lang %{name}
 
 %if ! %{with tracer}
@@ -264,22 +227,11 @@ pytest-%{python3_version} -v -s tests/
 %{_mandir}/man8/dnf-rpmconf.*
 
 %files -n python3-dnf-plugin-snapper
+%config(noreplace) %{_sysconfdir}/dnf/plugins/snapper.conf
 %{python3_sitelib}/dnf-plugins/snapper.*
 %dir %{python3_sitelib}/dnf-plugins/__pycache__
 %{python3_sitelib}/dnf-plugins/__pycache__/snapper.*
 %{_mandir}/man8/dnf-snapper.*
-
-%files -n python3-dnf-plugin-system-upgrade
-%{_unitdir}/dnf-system-upgrade.service
-%{_unitdir}/dnf-system-upgrade-cleanup.service
-%dir %{_unitdir}/system-update.target.wants
-%{_unitdir}/system-update.target.wants/dnf-system-upgrade.service
-%{python3_sitelib}/dnf-plugins/system_upgrade.py
-%dir %{python3_sitelib}/dnf-plugins/__pycache__
-%{python3_sitelib}/dnf-plugins/__pycache__/system_upgrade.*
-%{_mandir}/man8/dnf-system-upgrade.*
-%{_mandir}/man8/dnf-offline-upgrade.*
-%{_mandir}/man8/dnf-offline-distrosync.*
 
 %if %{with tracer}
 %files -n python3-dnf-plugin-tracer

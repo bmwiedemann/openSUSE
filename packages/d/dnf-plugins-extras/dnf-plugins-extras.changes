@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 22 10:24:23 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 4.1.2:
+  - snapper: Add support for specifying snapper config name by @quytelda in #208
+  - rpmconf: Implement unattended config option by @mstefany in #191
+- 4.1.1:
+  - Update translations
+  - Adapt tests to RPM 4.19
+- 4.1.0:
+  - Move system-upgrade plugin to core (RhBug:2054235)
+
+-------------------------------------------------------------------
 Fri Feb 24 15:38:14 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - Precompile python bytecode (boo#1208151)
 
