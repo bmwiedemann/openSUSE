@@ -991,4 +991,13 @@
 - Convert to source service for easier updating. (forwarded request 1139368 from dimstar)</comment>
     <requestid>1139369</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>70a88686e9a47723db1f753e90f7de00</srcmd5>
+    <version>3.12.5</version>
+    <time>1708631783</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.12.5:
+  + Add to catalog: show the next image only when in viewer mode. (forwarded request 1147646 from dimstar)</comment>
+    <requestid>1148751</requestid>
+  </revision>
 </revisionlist>
