@@ -42,8 +42,7 @@ one or more listeners can access the stream.  With this layout, this
 source client can be situated remotely from the icecast server.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf --force --install
