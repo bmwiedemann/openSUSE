@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 10:15:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Thu Jul 20 10:57:04 UTC 2017 - bwiedemann@suse.com
 
 - Use plain files instead of .pak file to fix build-compare (boo#1041090)

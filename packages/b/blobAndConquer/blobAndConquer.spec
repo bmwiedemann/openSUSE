@@ -52,8 +52,7 @@ without Galdov the aliens are still extremely well organised...
 They're Ready. Will You Be?
 
 %prep
-%setup -q -a 1
-%patch0
+%autosetup -p0 -a 1
 mv makefile Makefile
 
 # Fix paths, add -lX11, remove docs install via files,
