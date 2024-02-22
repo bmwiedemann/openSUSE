@@ -7,4 +7,12 @@
     <comment>readd to factory</comment>
     <requestid>1132066</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>134a5a5f5e4b8ed8b12654ddceec37bc</srcmd5>
+    <version>1.0.3</version>
+    <time>1708632050</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1149313 from dimstar)</comment>
+    <requestid>1149367</requestid>
+  </revision>
 </revisionlist>

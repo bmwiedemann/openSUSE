@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 12:43:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Dec  7 10:56:22 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - krb5-appl-fix-build.patch: make build with current ncurses.
