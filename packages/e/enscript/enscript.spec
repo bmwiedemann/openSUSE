@@ -67,15 +67,15 @@ latin encodings are supported with the help of a wrapper script. ~ ~
 
 %prep
 %setup -q
-%patch1 -p0 -b .perl
-%patch2 -p0 -b .shell
-%patch3 -p1
-%patch4 -p0 -b .euro
-%patch5 -p0 -b .paper
-%patch6 -p0 -b .mailto
-%patch7 -p0 -b .happ
-%patch8 -p0 -b .nowarns
-%patch9 -p0 -b .gs
+%patch -P 1 -p0 -b .perl
+%patch -P 2 -p0 -b .shell
+%patch -P 3 -p1
+%patch -P 4 -p0 -b .euro
+%patch -P 5 -p0 -b .paper
+%patch -P 6 -p0 -b .mailto
+%patch -P 7 -p0 -b .happ
+%patch -P 8 -p0 -b .nowarns
+%patch -P 9 -p0 -b .gs
 
 %build
   CFLAGS="%{optflags} -DPROTOTYPES -D_GNU_SOURCE -funroll-loops -Wall -fno-strict-aliasing -pipe -fstack-protector"

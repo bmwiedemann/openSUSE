@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 11:32:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Feb  7 10:22:43 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - For iconv glibc-locale should be installed 
