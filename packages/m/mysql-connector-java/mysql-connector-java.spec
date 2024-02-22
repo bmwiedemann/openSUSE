@@ -1,7 +1,7 @@
 #
 # spec file for package mysql-connector-java
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,7 @@ BuildRequires:  apache-commons-logging
 BuildRequires:  geronimo-jta-1_1-api
 BuildRequires:  git
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  javassist >= 3.28.0
 BuildRequires:  junit
 BuildRequires:  protobuf-java >= 3.9.2
@@ -79,9 +79,9 @@ set that supports the capabilities of MySQL.
 
 %prep
 %setup -q -n mysql-connector-j-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 
 %if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150200
 # ship protobuf generated files compatible with protobuf 3.9.2
@@ -136,7 +136,7 @@ rm -rf %{buildroot}%{new_name}-%{version}/docs/release-test-output
 install -d -m 755 %{buildroot}%{_mavenpomdir}
 
 # Install the Maven build information as new name
-%mvn_install_pom build/%{new_name}-%{version}-SNAPSHOT/pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{new_name}.pom
+%{mvn_install_pom} build/%{new_name}-%{version}-SNAPSHOT/pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{new_name}.pom
 sed -i 's/-SNAPSHOT//' %{buildroot}%{_mavenpomdir}/JPP-%{new_name}.pom
 %add_maven_depmap JPP-%{new_name}.pom %{new_name}.jar -a com.mysql:%{name}
 
