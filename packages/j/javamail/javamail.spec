@@ -1,7 +1,7 @@
 #
 # spec file for package javamail
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,9 +30,8 @@ BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  glassfish-activation-api
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  perl-XML-XPath
-Requires:       mvn(javax.activation:activation)
 # Adapted from the classpathx-mail (and JPackage glassfish-javamail) Provides.
 Provides:       javamail-monolithic = %{version}-%{release}
 Provides:       javax.mail
@@ -51,9 +50,7 @@ Group:          Documentation/HTML
 
 %prep
 %setup -q -n %{name}-%{git_tag}
-%patch0 -p1
-
-%pom_change_dep -r -f ::::: :::::
+%patch -P 0 -p1
 
 add_dep() {
     %pom_xpath_inject pom:project "<dependencies/>" ${2}
@@ -82,10 +79,6 @@ rm mail/src/test/java/com/sun/mail/imap/IMAPIdleUntaggedResponseTest.java
 rm mail/src/test/java/com/sun/mail/smtp/SMTPWriteTimeoutTest.java
 
 %pom_remove_parent .
-for i in mail mailapi mailapijar smtp imap gimap pop3 dsn; do
-  %pom_remove_parent ${i};
-  %pom_xpath_inject pom:project "<version>%{version}</version>" ${i}
-done
 
 %build
 %{ant} -Djavac.source=1.8 -Djavac.target=1.8 \
@@ -115,20 +108,20 @@ ln -sf ../%{name}/javax.mail.jar %{buildroot}%{_javadir}/javax.mail/
 
 # poms
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/$(get_name pom.xml).pom
+%mvn_install_pom pom.xml %{buildroot}%{_mavenpomdir}/%{name}/$(get_name pom.xml).pom
 pompart=%{name}/$(get_name pom.xml).pom
 %add_maven_depmap ${pompart}
 for i in mailapijar smtp imap gimap pop3 dsn; do
-  install -pm 0644 ${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/$(get_name ${i}/pom.xml).pom
+  %mvn_install_pom ${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/$(get_name ${i}/pom.xml).pom
   pompart=%{name}/$(get_name ${i}/pom.xml).pom
   jarpart=%{name}/$(get_name ${i}/pom.xml).jar
   %add_maven_depmap ${pompart} ${jarpart}
 done
-install -pm 0644 mail/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/$(get_name mail/pom.xml).pom
+%mvn_install_pom mail/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/$(get_name mail/pom.xml).pom
 pompart=%{name}/$(get_name mail/pom.xml).pom
 jarpart=%{name}/$(get_name mail/pom.xml).jar
 %add_maven_depmap ${pompart} ${jarpart} -a javax.mail:mail,org.eclipse.jetty.orbit:javax.mail.glassfish,com.sun.mail:jakarta.mail
-install -pm 0644 mailapi/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/$(get_name mailapi/pom.xml).pom
+%mvn_install_pom mailapi/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/$(get_name mailapi/pom.xml).pom
 pompart=%{name}/$(get_name mailapi/pom.xml).pom
 jarpart=%{name}/$(get_name mailapi/pom.xml).jar
 %add_maven_depmap ${pompart} ${jarpart} -a javax.mail:mailapi

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 10:45:55 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Apr 29 12:22:31 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Add alias to com.sun.mail:jakarta.mail needed by ant-javamail
