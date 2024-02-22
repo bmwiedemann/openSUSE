@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 22 15:56:08 UTC 2024 - schubi@suse.com
+
+- Update to version 0.0.8:
+  * Do not overwrite higher bootlevel in already existing
+    reboot-needed.
+  * Fix typo in level name soft-reboot
+  * De-denglishify README.md a bit
+
+-------------------------------------------------------------------
 Tue Feb 06 09:26:07 UTC 2024 - schubi@suse.com
 
 - Update to version 0.0.7:
