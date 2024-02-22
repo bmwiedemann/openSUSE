@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 22 06:14:57 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.0.12:
+  * Improved the Chinese translation
+  * Fix N+1 queries while rendering the ``recover_list.html`` template
+  * Fix ``get_deleted``
+  * Speed up ``get_deleted``
+  * Fix handling case of missing object in admin revert
+  * Handling case of missing object in admin revert
+- Switch to pyproject and autosetup macros.
+- Refresh only-sqlite-test-db.patch
+
+-------------------------------------------------------------------
 Sat Jan  7 16:58:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.4:

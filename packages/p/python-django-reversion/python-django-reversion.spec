@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-reversion
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-django-reversion
-Version:        5.0.4
+Version:        5.0.12
 Release:        0
 Summary:        A Django extension that provides version control for model instances
 License:        BSD-3-Clause
@@ -28,8 +26,10 @@ Source:         https://files.pythonhosted.org/packages/source/d/django-reversio
 Patch0:         only-sqlite-test-db.patch
 BuildRequires:  %{python_module Django > 2.0}
 BuildRequires:  %{python_module base > 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django > 2.0
@@ -47,17 +47,16 @@ version control for model instances.
 -  Simple admin integration.
 
 %prep
-%setup -q -n django-reversion-%{version}
 # Tests need running PGSQL and MYSQL
 # https://github.com/etianen/django-reversion/issues/902
-%patch0 -p1
+%autosetup -p1 -n django-reversion-%{version}
 sed -i 's/databases = {"default", .*"postgres"}/databases = {"default"}/' tests/test_app/tests/test_*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -68,6 +67,7 @@ export DJANGO_SETTINGS_MODULE=test_project.settings
 %files %{python_files}
 %doc README.rst CHANGELOG.rst
 %license LICENSE
-%{python_sitelib}/*reversion*/
+%{python_sitelib}/reversion
+%{python_sitelib}/django_reversion-%{version}.dist-info
 
 %changelog

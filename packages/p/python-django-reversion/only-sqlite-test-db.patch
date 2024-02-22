@@ -4,10 +4,10 @@ Date:   Tue Dec 28 09:52:48 2021 +0800
 
     Remove mysql and postgres databases
 
-diff --git a/tests/test_project/settings.py b/tests/test_project/settings.py
-index dc346d9..f07e648 100644
---- a/tests/test_project/settings.py
-+++ b/tests/test_project/settings.py
+Index: django-reversion-5.0.12/tests/test_project/settings.py
+===================================================================
+--- django-reversion-5.0.12.orig/tests/test_project/settings.py
++++ django-reversion-5.0.12/tests/test_project/settings.py
 @@ -81,20 +81,6 @@ DATABASES = {
          "ENGINE": "django.db.backends.sqlite3",
          "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
@@ -28,4 +28,4 @@ index dc346d9..f07e648 100644
 -    },
  }
  
- 
+ DEFAULT_AUTO_FIELD = "django.db.models.AutoField"

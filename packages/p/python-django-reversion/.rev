@@ -160,4 +160,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1058386</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>83a8830a2dacb13148078617ad7c578c</srcmd5>
+    <version>5.0.12</version>
+    <time>1708631926</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.0.12:
+  * Improved the Chinese translation
+  * Fix N+1 queries while rendering the ``recover_list.html`` template
+  * Fix ``get_deleted``
+  * Speed up ``get_deleted``
+  * Fix handling case of missing object in admin revert
+  * Handling case of missing object in admin revert
+- Switch to pyproject and autosetup macros.
+- Refresh only-sqlite-test-db.patch</comment>
+    <requestid>1148986</requestid>
+  </revision>
 </revisionlist>
