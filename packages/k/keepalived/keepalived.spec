@@ -96,10 +96,8 @@ Keepalived frameworks can be used independently or all together to provide
 resilient infrastructures.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 chmod 644 doc/samples/*
-%patch1 -p1
 
 %build
 export STRIP=true
