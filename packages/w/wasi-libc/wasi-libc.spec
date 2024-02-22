@@ -35,9 +35,7 @@ BuildArch:      noarch
 WASI libc allows cross platform binaries to be created and executed on a variety of platforms
 
 %prep
-%setup -q -n wasi-libc-wasi-sdk-%{version}
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n wasi-libc-wasi-sdk-%{version}
 
 %build
 export CC=clang
