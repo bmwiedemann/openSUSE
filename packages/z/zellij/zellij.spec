@@ -30,8 +30,8 @@ URL:            https://github.com/zellij-org/zellij
 Source0:        https://github.com/zellij-org/zellij/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Source2:        README.suse-maint.md
+BuildRequires:  cargo
 BuildRequires:  cargo-packaging
-BuildRequires:  rust+cargo
 BuildRequires:  zstd
 %if 0%{?suse_version} > 1500
 BuildRequires:  mandown
