@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 21 11:23:44 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20240221.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20240221
+  * Add mruby-3.3.0 by @hasumikin in #2348
+  * Add JRuby 9.3.14.0 and 9.4.6.0 by @headius in #2350
+
+-------------------------------------------------------------------
 Fri Jan 19 18:15:27 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20240119.
