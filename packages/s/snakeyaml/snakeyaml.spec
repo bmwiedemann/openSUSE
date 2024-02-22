@@ -1,7 +1,7 @@
 #
 # spec file for package snakeyaml
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,8 +41,7 @@ BuildRequires:  ant
 BuildRequires:  apache-commons-codec
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
-Requires:       mvn(commons-codec:commons-codec)
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
@@ -79,9 +78,9 @@ This package contains %{summary}.
 %prep
 %setup -q -n %{name}-%{name}-%{vertag}
 cp %{SOURCE1} build.xml
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 
 %pom_remove_plugin :cobertura-maven-plugin
 %pom_remove_plugin :maven-changes-plugin
@@ -158,7 +157,7 @@ install -dm 0755 %{buildroot}%{_javadir}
 install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
 %add_maven_depmap JPP-%{name}.pom %{name}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
