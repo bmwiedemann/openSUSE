@@ -1,7 +1,7 @@
 #
 # spec file for package macrofusion
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,8 +43,7 @@ MacroFusion is a fork of EnfuseGui of Chez Gholyo and has been
 rebranded to avoid conflict with another EnfuseGui (for MacOS).
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 sed -e '/Exec/s/macrofusion/macrofusion\.py/' \
     -i %{name}.desktop
 # fixes the shebang line
