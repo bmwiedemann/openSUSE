@@ -160,4 +160,12 @@
     <comment></comment>
     <requestid>1147894</requestid>
   </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>aab16f5ffe8c01d5391335d85e8e7f99</srcmd5>
+    <version>1.9.4</version>
+    <time>1708631928</time>
+    <user>anag+factory</user>
+    <comment>Fix build with SLE12</comment>
+    <requestid>1148996</requestid>
+  </revision>
 </revisionlist>

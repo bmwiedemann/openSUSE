@@ -60,6 +60,8 @@ BeanUtils Package.
 
 %prep
 %autosetup -p1 -n %{short_name}-%{version}-src
+
+# The previous empty line needs to be maintained for sle12 compatibility
 sed -i 's/\r//' *.txt
 # bug in ant build
 touch README.txt

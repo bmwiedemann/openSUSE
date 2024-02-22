@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 07:14:51 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with SLE12
+
+-------------------------------------------------------------------
 Tue Feb 20 10:24:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
