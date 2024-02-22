@@ -1,7 +1,7 @@
 #
 # spec file for package native-platform
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 Name:           native-platform
 Version:        0.14
 Release:        0
@@ -57,12 +58,12 @@ BuildArch:      noarch
 This package contains javadoc for %{name}.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 find .  -name "*.jar" -delete
 find .  -name "*.class" -delete
 
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 cp -p %{SOURCE4} Makefile
 
@@ -77,7 +78,7 @@ mv src/shared/cpp/* src/main/cpp
 CFLAGS="${CFLAGS:-%{optflags}}" ; export CFLAGS ;
 CPPFLAGS="${CPPFLAGS:-%{optflags}}" ; export CPPFLAGS ;
 CXXFLAGS="${CXXFLAGS:-%{optflags}}" ; export CXXFLAGS ;
-make %{?_smp_mflags} JAVA_HOME=%{_jvmdir}/java
+%make_build JAVA_HOME=%{_jvmdir}/java
 
 %{mvn_artifact} net.rubygrapefruit:%{name}:%{version} build/%{name}.jar
 %{mvn_file} : %{name}
