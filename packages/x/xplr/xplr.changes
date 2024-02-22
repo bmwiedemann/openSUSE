@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 15 02:41:41 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- We need to always switch to newer versions so we use `cargo` instead of `rust+cargo`
+
+-------------------------------------------------------------------
 Tue Jan 30 06:17:05 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 0.21.5:

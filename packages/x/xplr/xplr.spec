@@ -27,9 +27,9 @@ Source0:        https://github.com/sayanarijit/xplr/archive/refs/tags/v%{version
 Source1:        vendor.tar.zst
 Source2:        https://github.com/sayanarijit/xplr/releases/download/v%{version}/source.tar.gz.asc#/v%{version}.tar.gz.asc#/%{name}-%{version}.tar.gz.asc
 Source4:        https://arijitbasu.in/gpg.txt#/%{name}.keyring
+BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  rust+cargo
 BuildRequires:  zstd
 
 %description
