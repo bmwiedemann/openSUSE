@@ -1,7 +1,7 @@
 #
 # spec file for package isorelax
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,12 +23,12 @@ Release:        0
 Summary:        Public interfaces useful for applications to support RELAX Core
 License:        Apache-2.0 AND MIT
 Group:          Development/Libraries/Java
-URL:            http://iso-relax.sourceforge.net/
+URL:            https://iso-relax.sourceforge.net/
 Source0:        %{name}.%{cvsversion}.zip
 Source1:        %{name}-build.xml
 Source2:        isorelax-maven-project.xml
 Source3:        isorelax-maven-project.xsd
-Source4:        http://repo2.maven.org/maven2/%{name}/%{name}/20030108/%{name}-20030108.pom
+Source4:        https://repo1.maven.org/maven2/%{name}/%{name}/20030108/%{name}-20030108.pom
 Patch0:         isorelax-java5-compatibility.patch
 BuildRequires:  ant
 BuildRequires:  java-devel
@@ -61,7 +61,7 @@ cp %{SOURCE3} test
 chmod -R go=u-w *
 find . -name "*.jar" -exec rm -f {} \;
 rm -rf src/jp/gr/xml/relax/swift
-%patch0 -b .sav0
+%patch -P 0 -b .sav0
 
 %build
 export CLASSPATH=$(build-classpath \
@@ -74,21 +74,13 @@ ant -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
 %install
 # jars
 install -d -m 755 %{buildroot}%{_javadir}
-install -m 644 %{name}.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}*; do ln -sf ${jar} `echo $jar| sed  "s|-%{version}||g"`; done)
+install -m 644 %{name}.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -m 644 %{SOURCE4} %{buildroot}%{_mavenpomdir}/%{name}-%{version}.pom
-%add_maven_depmap %{name}-%{version}.pom %{name}-%{version}.jar
+%{mvn_install_pom} %{SOURCE4} %{buildroot}%{_mavenpomdir}/%{name}.pom
+%add_maven_depmap %{name}.pom %{name}.jar
 
-%files
+%files -f .mfiles
 %license COPYING.txt
-%{_javadir}/*
-%{_mavenpomdir}/*
-%if %{defined _maven_repository}
-%{_mavendepmapfragdir}/%{name}
-%else
-%{_datadir}/maven-metadata/%{name}.xml*
-%endif
 
 %changelog
