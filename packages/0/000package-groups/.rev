@@ -1894,4 +1894,10 @@ Main motivation is to have the license files in MicroOS also in /usr/, not in /e
     <comment>Add dated changelog entry to the *-release.spec.in for RPM/reproducible build</comment>
     <requestid>1149142</requestid>
   </revision>
+  <revision rev="266" vrev="264">
+    <srcmd5>4867118cf7b91412fb0b3d6c0fb9b642</srcmd5>
+    <version>unknown</version>
+    <time>1708634868</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>
