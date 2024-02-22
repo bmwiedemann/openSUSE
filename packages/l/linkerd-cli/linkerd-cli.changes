@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Feb 20 20:27:50 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.14.10:
+  * This stable release back-ports bugfixes and improvements from
+    recent edge releases.
+    - Introduced support for arbitrary labels in the podMonitors
+      field in the control plane Helm chart (thanks @jseiser!)
+      (#11222; fixes #11175)
+    - Added a prometheusUrl field for the heartbeat job in the
+      control plane Helm chart (thanks @david972!) (#11343; fixes
+      #11342)
+    - Updated the Destination controller to return INVALID_ARGUMENT
+      status codes properly when a ServiceProfile is requested for
+      a service that does not exist. (#11980)
+    - Reduced the load on the Destination controller by only
+      processing Server updates on workloads affected by the Server
+      (#12017)
+    - Changed how updates to a Server selector are handled in the
+      destination service. When a Server that marks a port as
+      opaque no longer selects a resource, the resource's
+      opaqueness will reverted to default settings (#12031; fixes
+      #11995)
+    - Fixed a race condition in the destination service that could
+      cause panics under very specific conditions (#12022; fixes
+      #12010)
+    - Fixed an issue where inbound policy could be incorrect after
+      certain policy resources are deleted (#12088)
+
+-------------------------------------------------------------------
 Sat Jan 20 17:04:27 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.14.9:
