@@ -87,16 +87,16 @@ the dynamic DNS services offered at:
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3
-%patch4
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3
+%patch -P 4
 mv configure.in configure.ac
-%patch5
-%patch6
-%patch7
-%patch8
+%patch -P 5
+%patch -P 6
+%patch -P 7
+%patch -P 8
 rm acconfig.h
 
 %build
