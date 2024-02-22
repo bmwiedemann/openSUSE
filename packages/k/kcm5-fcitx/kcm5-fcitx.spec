@@ -92,8 +92,7 @@ BuildArch:      noarch
 This package provides systemsettings5 icons for fcitx in plasma5-workspace.
 
 %prep
-%setup -q -n kcm-fcitx-%{version}
-%patch0 -p1
+%autosetup -p1 -n kcm-fcitx-%{version}
 
 %build
 %cmake_kf5 -d build
