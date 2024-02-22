@@ -7,4 +7,13 @@
     <comment>for dmueller</comment>
     <requestid>1068177</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>75a431d08d36b79c6cdf24220cbd8f58</srcmd5>
+    <version>3.18.0</version>
+    <time>1708631966</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1149094</requestid>
+  </revision>
 </revisionlist>

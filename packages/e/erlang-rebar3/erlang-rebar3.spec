@@ -1,7 +1,7 @@
 #
 # spec file for package erlang-rebar3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -77,9 +77,7 @@ BuildArch:      noarch
 The official zsh completion script for rebar3.
 
 %prep
-%setup -q -n rebar3-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n rebar3-%{version}
 
 %build
 EBIN_PATHS=$(x1=(%{erlang_libdir}/*/ebin); x2=(${x1[*]#*rebar*}); IFS=":"; echo "${x2[*]}")
