@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package plexus-ant-factory
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2005, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -40,14 +40,10 @@ Source2:        %{name}-build.xml
 Source100:      plexus-ant-factory_license_and_copyright.txt
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-containers-container-default
 BuildRequires:  plexus-utils
-Requires:       mvn(org.apache.ant:ant)
-Requires:       mvn(org.apache.ant:ant-launcher)
-Requires:       mvn(org.codehaus.plexus:plexus-container-default)
-Requires:       mvn(org.codehaus.plexus:plexus-utils)
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
@@ -68,9 +64,6 @@ Javadoc for %{name}.
 cp %{SOURCE1} LICENSE
 cp %{SOURCE2} build.xml
 
-%pom_remove_parent .
-%pom_xpath_inject "pom:project" "<groupId>org.codehaus.plexus</groupId>" .
-
 %build
 mkdir -p lib
 
@@ -90,7 +83,7 @@ install -dm 0755 %{buildroot}%{_javadir}/%{parent}
 install -pm 0644 target/%{name}-%{namedversion}.jar %{buildroot}%{_javadir}/%{parent}/%{subname}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{parent}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{parent}/%{subname}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{parent}/%{subname}.pom
 %add_maven_depmap %{parent}/%{subname}.pom %{parent}/%{subname}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
