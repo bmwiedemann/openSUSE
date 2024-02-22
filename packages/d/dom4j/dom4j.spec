@@ -80,7 +80,7 @@ Javadoc for %{base_name}.
 %prep
 %setup -q -n %{base_name}-%{version}
 %if %{with bootstrap}
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 
 cp %{SOURCE1} pom.xml

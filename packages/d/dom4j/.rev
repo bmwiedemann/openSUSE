@@ -229,4 +229,12 @@ SPDX (forwarded request 110717 from babelworx)</comment>
     <comment>Fix license tag</comment>
     <requestid>1146705</requestid>
   </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>c734f869c76dacf1c0fbf9484f1b5542</srcmd5>
+    <version>2.1.4</version>
+    <time>1708631756</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148556</requestid>
+  </revision>
 </revisionlist>
