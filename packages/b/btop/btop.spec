@@ -44,8 +44,7 @@ BuildRequires:  sed
 Resource monitor that shows usage and stats for processor, memory, disks, network and processes. C++ version and continuation of bashtop and bpytop.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 %make_build %{cxxflags} %{cxxopt} %{lddopt} RSMI_STATIC=true

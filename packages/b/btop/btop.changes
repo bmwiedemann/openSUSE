@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 10:21:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Mon Feb 12 21:38:39 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adding sources from 'https://github.com/rocm/rocm_smi_lib.git' to tarball
