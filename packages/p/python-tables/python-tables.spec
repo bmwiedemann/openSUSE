@@ -16,28 +16,31 @@
 #
 
 
-%define psuffix %{nil}
+%{?sle15_python_module_pythons}
 %global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "test-py310"
-%define psuffix -test-py310
-%define skip_python311 1
-%define skip_python312 1
-%bcond_without test
-%endif
-%if "%{flavor}" == "test-py311"
-%define psuffix -test-py311
-%define skip_python310 1
-%define skip_python312 1
-%bcond_without test
-%endif
-%if "%{flavor}" == "test-py312"
-%define psuffix -test-py312
-%define skip_python310 1
-%define skip_python311 1
-%bcond_without test
-%endif
 %if "%{flavor}" == ""
+%define psuffix %{nil}
 %bcond_with test
+%else
+%define psuffix -%{flavor}
+%bcond_without test
+%if "%{flavor}" != "test-py39"
+%define skip_python39 1
+%endif
+%if "%{flavor}" != "test-py310"
+%define skip_python310 1
+%endif
+%if "%{flavor}" != "test-py311"
+%define skip_python311 1
+%endif
+%if "%{flavor}" != "test-py312"
+%define skip_python312 1
+%endif
+# Skip all empty test flavors: The obs server-side interpreter cannot use lua or rpm shrink, last one is for sle15_python_module_pythons
+%if "%pythons" == "" || "%pythons" == " " || "%pythons" == "  " || "%pythons" == "   " || "%pythons" == "    " || ( "%pythons" == "python311" && 0%{?skip_python311} )
+ExclusiveArch:  donotbuild
+%define python_module() %flavor-not-enabled-in-buildset-for-suse-%{?suse_version}
+%endif
 %endif
 
 Name:           python-tables%{psuffix}

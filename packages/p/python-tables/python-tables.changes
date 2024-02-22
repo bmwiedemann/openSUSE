@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:17:07 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Reenable test flavor for Python 3.9 instead of actually testing
+  it with every other test flavor. Will now automatically be
+  excluded when globally dropped and can be removed at a later
+  time.
+- Enable sle15_python_module_pythons for the sake of multiflavor
+  simplicity (still unresolvable for now)
+
+-------------------------------------------------------------------
 Tue Feb  6 09:37:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - disable testing for 3.9, add 3.12 testing
