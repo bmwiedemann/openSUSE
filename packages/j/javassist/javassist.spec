@@ -1,7 +1,7 @@
 #
 # spec file for package javassist
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2005, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -78,9 +78,9 @@ Tutorial for javassist.
 %prep
 %setup -q -n %{name}-%{tar_version}
 %if %{!?pkg_vcmp:1}%{?pkg_vcmp:%pkg_vcmp java-devel < 9}
-%patch0 -p1
+%patch -P 0 -p1
 %endif
-%patch1 -p1
+%patch -P 1 -p1
 find . -name "*.jar" -print -delete
 
 %build
@@ -93,7 +93,7 @@ cp -p %{name}.jar %{buildroot}/%{_javadir}/%{name}.jar
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
 %add_maven_depmap JPP-%{name}.pom %{name}.jar -a javassist:javassist
 
 # demo

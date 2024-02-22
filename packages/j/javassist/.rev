@@ -169,4 +169,12 @@ This is a dual license so the operator is ^or^ not ^and^ (forwarded request 1579
     <comment>Clean up the spec to allow building on sle12-sp1</comment>
     <requestid>1091132</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>bdfcd0133c6f17d4f3be3818f1acaaf8</srcmd5>
+    <version>3.29.2</version>
+    <time>1708631733</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148491</requestid>
+  </revision>
 </revisionlist>
