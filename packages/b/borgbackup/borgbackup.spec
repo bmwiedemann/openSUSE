@@ -185,7 +185,7 @@ This package contains the fish completion script for borgbackup.
 %prep
 %setup -q
 %if ! %{with borg_guzzle}
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 
 %ifnarch %ix86 %arm

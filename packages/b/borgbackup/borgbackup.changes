@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 10:34:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sat Jan 13 15:14:55 UTC 2024 - Andreas Prittwitz <m4ng4n@gmx.de>
 
 - Update to version 1.2.7
