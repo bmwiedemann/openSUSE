@@ -71,4 +71,12 @@
     <comment>bsc#1212401</comment>
     <requestid>1093336</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>96f685be81d3158aa0478dd18235d61f</srcmd5>
+    <version>32.0.1</version>
+    <time>1708631883</time>
+    <user>anag+factory</user>
+    <comment>cleanup</comment>
+    <requestid>1148908</requestid>
+  </revision>
 </revisionlist>

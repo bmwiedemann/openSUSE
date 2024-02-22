@@ -1,7 +1,7 @@
 #
 # spec file for package guava
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,10 +30,9 @@ BuildRequires:  checker-qual
 BuildRequires:  fdupes
 BuildRequires:  google-errorprone-annotations
 BuildRequires:  j2objc-annotations
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsr-305
 BuildRequires:  junit
-Requires:       mvn(com.google.code.findbugs:jsr305)
 BuildArch:      noarch
 
 %description
@@ -54,7 +53,6 @@ API documentation for %{name}.
 %package testlib
 Summary:        The guava-testlib artifact
 Group:          Development/Libraries/Java
-Requires:       mvn(junit:junit)
 
 %description testlib
 guava-testlib provides additional functionality for conveninent unit testing
@@ -76,18 +74,9 @@ find . -name '*.jar' -delete
 %pom_remove_dep -r :listenablefuture
 %pom_remove_dep -r :failureaccess
 
-for mod in guava guava-testlib futures/failureaccess; do
-  %pom_remove_parent ${mod}
-  %pom_xpath_inject pom:project '
-    <groupId>com.google.guava</groupId>
-    <version>%{version}</version>' ${mod}
-done
-
 %pom_change_dep -r :error_prone_annotations :::provided
 %pom_change_dep -r :j2objc-annotations :::provided
 %pom_change_dep -r org.checkerframework: :::provided
-
-%pom_change_dep -r -f :::: ::::
 
 %build
 mkdir -p lib
@@ -102,12 +91,12 @@ install -pm 0644 %{name}-testlib/target/%{name}-testlib-%{version}*.jar %{buildr
 
 # poms
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 %{name}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%{mvn_install_pom} %{name}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
 %add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
 # We integrated this artifact in our main package
-install -pm 0644 futures/failureaccess/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/failureaccess.pom
+%{mvn_install_pom} futures/failureaccess/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/failureaccess.pom
 %add_maven_depmap %{name}/failureaccess.pom %{name}/%{name}.jar
-install -pm 0644 %{name}-testlib/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-testlib.pom
+%{mvn_install_pom} %{name}-testlib/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-testlib.pom
 %add_maven_depmap %{name}/%{name}-testlib.pom %{name}/%{name}-testlib.jar -f %{name}-testlib
 
 # javadoc
