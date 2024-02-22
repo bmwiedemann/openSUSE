@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package gpgme
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -32,6 +32,14 @@
 %bcond_with python3
 %bcond_without qt6
 %endif
+
+%if 0%{suse_version} >= 1550 || "%{?pythons}" == "python311"
+%bcond_without replace_distutils
+%else
+# Keep deprecated distutils for Python 3.6 on 15.x
+%bcond_with replace_distutils
+%endif
+
 Name:           gpgme%{psuffix}
 Version:        1.23.2
 Release:        0
@@ -60,10 +68,12 @@ BuildRequires:  pkgconfig
 BuildRequires:  swig
 %if %{with python3}
 BuildRequires:  %{python_module devel}
+BuildRequires:  python-rpm-macros
+%if %{with replace_distutils}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 62.4}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  python-rpm-macros
+%endif
 %endif
 %if %{with qt}
 BuildRequires:  pkgconfig(Qt5Core)
@@ -245,7 +255,15 @@ management.
 This package contains the bindings to use the library in Qt 6 C++ applications.
 
 %prep
-%autosetup -p1 -n gpgme-%{version}
+%autosetup -N -n gpgme-%{version}
+%if %{with replace_distutils}
+%patch -p1 -P1 -P2
+%endif
+%if 0%{suse_version} > 1500
+# Note: rpm in 15.x does not know about the autopatch -m flag.
+# Need to apply every additional patch explicitly, if any.
+%autopatch -p1 -m3
+%endif
 
 %build
 ./autogen.sh
@@ -268,6 +286,9 @@ export CXX=g++-12 CC=gcc-12 CPP=cpp-12
 %endif
 %endif
 
+%define _configure ../configure
+mkdir build
+pushd build
 %configure \
 	--disable-silent-rules \
 	--disable-static \
@@ -275,8 +296,10 @@ export CXX=g++-12 CC=gcc-12 CPP=cpp-12
 	--enable-languages="${languages}" \
 	--enable-build-timestamp="${build_timestamp}"
 %make_build
+popd
 
 %install
+pushd build
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 chmod -x %{buildroot}%{_libdir}/cmake/Gpgmepp/*.cmake
@@ -290,6 +313,7 @@ rm -r %{buildroot}%{_libdir}/cmake/Gpgmepp
 rm -r %{buildroot}%{_libdir}/libgpgme*
 rm -r %{buildroot}%{_libdir}/pkgconfig/gpgme*
 %endif
+popd
 
 %check
 GPGME_DEBUG=2:mygpgme.log %make_build check skip=%{?qt_skip:%{qt_skip}} || cat $(find -name mygpgme.log -type f)
@@ -347,7 +371,7 @@ GPGME_DEBUG=2:mygpgme.log %make_build check skip=%{?qt_skip:%{qt_skip}} || cat $
 %files %{python_files gpg}
 %license COPYING COPYING.LESSER LICENSES
 %{python_sitearch}/gpg
-%{python_sitearch}/gpg-%{version}.dist-info
+%{python_sitearch}/gpg-%{version}*-info
 %endif
 
 %if %{with qt}

@@ -1,110 +1,31 @@
-diff --git a/lang/python/Makefile.am b/lang/python/Makefile.am
-index 68b98e8e..a8dd8948 100644
---- a/lang/python/Makefile.am
-+++ b/lang/python/Makefile.am
-@@ -34,8 +34,8 @@ SUBDIRS = . ${tests} examples doc src
- .PHONY: prepare
- prepare: copystamp
- 
--# For VPATH builds we need to copy some files because Python's
--# distutils are not VPATH-aware.
-+# For VPATH builds we need to copy some files because Python
-+# is not VPATH-aware.
- copystamp:
- 	ln -sf "$(top_srcdir)/src/data.h" .
- 	ln -sf "$(top_builddir)/conf/config.h" .
-@@ -48,7 +48,7 @@ all-local: copystamp
- 	  CFLAGS="$(CFLAGS)" \
- 	  srcdir="$(srcdir)" \
- 	  top_builddir="$(top_builddir)" \
--	    $$PYTHON setup.py build --verbose --build-base="$$(basename "$${PYTHON}")-gpg" ; \
-+	    $$PYTHON -m pip --verbose install --no-index --no-build-isolation --root="$$(basename "$${PYTHON}")-gpg" ${srcdir} ; \
- 	done
- 
- python$(PYTHON_VERSION)-gpg/dist/gpg-$(VERSION).tar.gz.asc: copystamp
-@@ -57,8 +57,7 @@ python$(PYTHON_VERSION)-gpg/dist/gpg-$(VERSION).tar.gz.asc: copystamp
- 	CFLAGS="$(CFLAGS)" \
- 	srcdir="$(srcdir)" \
- 	top_builddir="$(top_builddir)" \
--	  $(PYTHON) setup.py sdist --verbose --dist-dir=python$(PYTHON_VERSION)-gpg-dist \
--		--manifest=python$(PYTHON_VERSION)-gpg-dist/MANIFEST
-+	  $(PYTHON) -m build --sdist --outdir=python$(PYTHON_VERSION)-gpg-dist
- 	gpgbin=gpgconf --list-components | grep OpenPGP | sed -e 's/gpg:OpenPGP://g'
- 	$(gpgbin) --detach-sign --armor python$(PYTHON_VERSION)-gpg-dist/gpg-$(VERSION).tar.gz
- 
-@@ -92,17 +91,16 @@ install-exec-local:
- 	  CFLAGS="$(CFLAGS)" \
- 	  srcdir="$(srcdir)" \
- 	  top_builddir="$(top_builddir)" \
--	  $$PYTHON setup.py \
--	  build \
--	  --build-base="$$(basename "$${PYTHON}")-gpg" \
-+	  $$PYTHON -m pip --verbose \
- 	  install \
-+	  --no-index --no-build-isolation \
- 	  --prefix "$(DESTDIR)$(prefix)" \
--	  --verbose ; \
-+	  ${srcdir} ; \
- 	done
- 
- uninstall-local:
- 	set -x; GV=$$(echo $(VERSION) | tr - _); for PYTHON in $(PYTHONS); do \
- 	  PLATLIB="$(prefix)/$$("$${PYTHON}" -c 'import sysconfig, os; print(os.path.relpath(sysconfig.get_path("platlib", scheme="posix_prefix"), sysconfig.get_config_var("prefix")))')" ; \
- 	  rm -rf -- "$(DESTDIR)$${PLATLIB}/gpg" \
--		"$(DESTDIR)$${PLATLIB}"/gpg-$$GV-py*.egg-info ; \
-+		"$(DESTDIR)$${PLATLIB}"/gpg-$$GV.dist-info ; \
- 	done
-diff --git a/lang/python/doc/src/gpgme-python-howto.org b/lang/python/doc/src/gpgme-python-howto.org
-index b4367872..c40e2249 100644
---- a/lang/python/doc/src/gpgme-python-howto.org
-+++ b/lang/python/doc/src/gpgme-python-howto.org
-@@ -2945,7 +2945,7 @@ Save that into a file called =keycount.pyx= and then create a
- =setup.py= file which contains this:
- 
- #+BEGIN_SRC python -i
--from distutils.core import setup
-+from setuptools import setup
- from Cython.Build import cythonize
- 
- setup(
-diff --git a/lang/python/examples/howto/advanced/cython/setup.py b/lang/python/examples/howto/advanced/cython/setup.py
-index f8dce034..849639e2 100644
---- a/lang/python/examples/howto/advanced/cython/setup.py
-+++ b/lang/python/examples/howto/advanced/cython/setup.py
-@@ -1,4 +1,4 @@
--from distutils.core import setup
-+from setuptools import setup
- from Cython.Build import cythonize
- 
- setup(
-diff --git a/lang/python/setup.py.in b/lang/python/setup.py.in
-index 6f36861d..ab8905fc 100755
---- a/lang/python/setup.py.in
-+++ b/lang/python/setup.py.in
-@@ -18,8 +18,8 @@
- #    License along with this library; if not, write to the Free Software
- #    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA
- 
--from distutils.core import setup, Extension
--from distutils.command.build import build
-+from setuptools import setup, Extension
-+from setuptools.command.build import build
- 
- import glob
- import os
-@@ -225,9 +225,8 @@ class BuildExtFirstHack(build):
-         build.run(self)
- 
- 
--py3 = [] if sys.version_info.major < 3 else ['-py3']
- swig_sources = []
--swig_opts = ['-threads'] + py3 + extra_swig_opts
-+swig_opts = ['-threads'] + extra_swig_opts
- swige = Extension(
-     'gpg._gpgme',
-     sources=swig_sources,
+From e3ae88267f03b435ec7d9e80ae1e2891e1f118e6 Mon Sep 17 00:00:00 2001
+From: Ingo Klöcker <dev@ingo-kloecker.de>
+Date: Tue, 16 Jan 2024 09:53:39 +0100
+Subject: build: Update Python autoconf macro
+
+* configure.ac: Call AX_PYTHON_DEVEL with new "optional" argument.
+* m4/ax_python_devel.m4: Replace with current version from the autoconf
+archive.
+--
+
+The new "optional" argument allows us to leave out one of our custom
+changes.
+
+diff --git a/configure.ac b/configure.ac
+index 9d551813..0e0b9d97 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -607,7 +607,7 @@ if test "$found_py" = "1"; then
+ 	    unset am_cv_python_pythondir
+ 	    unset am_cv_python_pyexecdir
+ 	    AM_PATH_PYTHON(mym4pythonver, [
+-		AX_PYTHON_DEVEL
++		AX_PYTHON_DEVEL([], [true])
+ 		if test "$PYTHON_VERSION"; then
+ 			PYTHONS="$(echo $PYTHONS $PYTHON)"
+ 			PYTHON_VERSIONS="$(echo $PYTHON_VERSIONS $PYTHON_VERSION)"
 diff --git a/m4/ax_python_devel.m4 b/m4/ax_python_devel.m4
-index 55f0cfff..b18c5973 100644
+index 55f0cfff..1f480db6 100644
 --- a/m4/ax_python_devel.m4
 +++ b/m4/ax_python_devel.m4
 @@ -1,10 +1,10 @@
@@ -380,7 +301,7 @@ index 55f0cfff..b18c5973 100644
  e = get_config_var('VERSION')
  if e is not None:
  	print(e)
-@@ -190,7 +269,7 @@ EOD`
+@@ -190,23 +269,20 @@ EOD`
  				ac_python_version=$PYTHON_VERSION
  			else
  				ac_python_version=`$PYTHON -c "import sys; \
@@ -389,7 +310,16 @@ index 55f0cfff..b18c5973 100644
  			fi
  		fi
  
-@@ -205,8 +284,8 @@ EOD`
+ 		# Make the versioning information available to the compiler
+-
+-		# JW: We don't need it and it interferes with the hack
+-		# to detect multiple Pyhton versions
+-		#AC_DEFINE_UNQUOTED([HAVE_PYTHON], ["$ac_python_version"],
+-                #                  [If available, contains the Python version number currently in use.])
++		AC_DEFINE_UNQUOTED([HAVE_PYTHON], ["$ac_python_version"],
++                                   [If available, contains the Python version number currently in use.])
+ 
+ 		# First, the library directory:
  		ac_python_libdir=`cat<<EOD | $PYTHON -
  
  # There should be only one
@@ -400,7 +330,7 @@ index 55f0cfff..b18c5973 100644
  if e is not None:
  	print (e)
  EOD`
-@@ -214,8 +293,8 @@ EOD`
+@@ -214,8 +290,8 @@ EOD`
  		# Now, for the library:
  		ac_python_library=`cat<<EOD | $PYTHON -
  
@@ -411,7 +341,7 @@ index 55f0cfff..b18c5973 100644
  if 'LDVERSION' in c:
  	print ('python'+c[['LDVERSION']])
  else:
-@@ -230,97 +309,163 @@ EOD`
+@@ -230,94 +306,160 @@ EOD`
  		then
  			# use the official shared library
  			ac_python_library=`echo "$ac_python_library" | sed "s/^lib//"`
@@ -632,21 +562,234 @@ index 55f0cfff..b18c5973 100644
  	fi
  
  	#
+From cc1f2b5acb8484edf0a722dcccac435687576a44 Mon Sep 17 00:00:00 2001
+From: Ingo Klöcker <dev@ingo-kloecker.de>
+Date: Tue, 16 Jan 2024 09:58:33 +0100
+Subject: build: Re-add still needed custom changes to Python autoconf macro
+
+* m4/ax_python_devel.m4: Do not emit 'HAVE_PYTHON'.
+--
+
+This reapplies the changes made with 5189c08 that are still needed for
+detecting multiple Python versions.
+
+diff --git a/m4/ax_python_devel.m4 b/m4/ax_python_devel.m4
+index 1f480db6..8116028a 100644
+--- a/m4/ax_python_devel.m4
++++ b/m4/ax_python_devel.m4
+@@ -274,8 +274,11 @@ EOD`
+ 		fi
+ 
+ 		# Make the versioning information available to the compiler
+-		AC_DEFINE_UNQUOTED([HAVE_PYTHON], ["$ac_python_version"],
+-                                   [If available, contains the Python version number currently in use.])
++
++		# JW: We don't need it and it interferes with the hack
++		# to detect multiple Python versions
++		#AC_DEFINE_UNQUOTED([HAVE_PYTHON], ["$ac_python_version"],
++		#                   [If available, contains the Python version number currently in use.])
+ 
+ 		# First, the library directory:
+ 		ac_python_libdir=`cat<<EOD | $PYTHON -
+diff --git a/lang/python/Makefile.am b/lang/python/Makefile.am
+index 68b98e8e..d601b075 100644
+--- a/lang/python/Makefile.am
++++ b/lang/python/Makefile.am
+@@ -34,40 +34,40 @@ SUBDIRS = . ${tests} examples doc src
+ .PHONY: prepare
+ prepare: copystamp
+ 
+-# For VPATH builds we need to copy some files because Python's
+-# distutils are not VPATH-aware.
++# For VPATH builds we need to copy some files because Python
++# is not VPATH-aware.
+ copystamp:
+ 	ln -sf "$(top_srcdir)/src/data.h" .
+ 	ln -sf "$(top_builddir)/conf/config.h" .
+ 	ln -sf "$(srcdir)/src" gpg
+ 	touch $@
+ 
+-all-local: copystamp
++all-local: wheels
++
++wheels: copystamp
+ 	set -e ; for PYTHON in $(PYTHONS); do \
+ 	  CPP="$(CPP)" \
+ 	  CFLAGS="$(CFLAGS)" \
+ 	  srcdir="$(srcdir)" \
+ 	  top_builddir="$(top_builddir)" \
+-	    $$PYTHON setup.py build --verbose --build-base="$$(basename "$${PYTHON}")-gpg" ; \
++	    $$PYTHON -m pip wheel --no-deps --no-build-isolation --progress-bar off --disable-pip-version-check --wheel-dir ./wheels . ; \
+ 	done
+ 
+-python$(PYTHON_VERSION)-gpg/dist/gpg-$(VERSION).tar.gz.asc: copystamp
+-	$(MKDIR_P) python$(PYTHON_VERSION)-gpg-dist
++dist/gpg-$(VERSION).tar.gz.asc: copystamp
+ 	CPP="$(CPP)" \
+ 	CFLAGS="$(CFLAGS)" \
+ 	srcdir="$(srcdir)" \
+ 	top_builddir="$(top_builddir)" \
+-	  $(PYTHON) setup.py sdist --verbose --dist-dir=python$(PYTHON_VERSION)-gpg-dist \
+-		--manifest=python$(PYTHON_VERSION)-gpg-dist/MANIFEST
++	  $(PYTHON) -m build --sdist --no-isolation .
+ 	gpgbin=gpgconf --list-components | grep OpenPGP | sed -e 's/gpg:OpenPGP://g'
+-	$(gpgbin) --detach-sign --armor python$(PYTHON_VERSION)-gpg-dist/gpg-$(VERSION).tar.gz
++	$(gpgbin) --detach-sign --armor dist/gpg-$(VERSION).tar.gz
+ 
+ .PHONY: sdist
+-sdist:	python$(PYTHON_VERSION)-gpg/dist/gpg-$(VERSION).tar.gz.asc
++sdist:	dist/gpg-$(VERSION).tar.gz.asc
+ 
+ .PHONY: upload
+-upload: python$(PYTHON_VERSION)-gpg-dist/gpg-$(VERSION).tar.gz \
+-        python$(PYTHON_VERSION)-gpg-dist/gpg-$(VERSION).tar.gz.asc
++upload: dist/gpg-$(VERSION).tar.gz \
++        dist/gpg-$(VERSION).tar.gz.asc
+ 	twine upload $^
+ 
+ CLEANFILES = copystamp \
+@@ -75,34 +75,27 @@ CLEANFILES = copystamp \
+ 	data.h \
+ 	gpg
+ 
+-# Remove the rest.
+-#
+-# 'make distclean' clears the write bit, breaking rm -rf.  Fix the
+-# permissions.
+ clean-local:
+-	rm -rf -- build
+-	for PYTHON in $(PYTHONS); do \
+-	  find "$$(basename "$${PYTHON}")-gpg" -type d ! -perm -200 -exec chmod u+w {} ';' ; \
+-	  rm -rf -- "$$(basename "$${PYTHON}")-gpg" ; \
+-	done
++	rm -rf -- build wheels dist gpg.egg-info
+ 
+-install-exec-local:
++# Python 2 pip won't install the wheel if the egg-info is present
++install-exec-local: wheels
++	rm -rf -- gpg.egg-info ; \
+ 	set -e ; for PYTHON in $(PYTHONS); do \
+ 	  CPP="$(CPP)" \
+ 	  CFLAGS="$(CFLAGS)" \
+ 	  srcdir="$(srcdir)" \
+ 	  top_builddir="$(top_builddir)" \
+-	  $$PYTHON setup.py \
+-	  build \
+-	  --build-base="$$(basename "$${PYTHON}")-gpg" \
+-	  install \
+-	  --prefix "$(DESTDIR)$(prefix)" \
+-	  --verbose ; \
++	  $$PYTHON -m pip install \
++	    --no-index --find-links ./wheels \
++	    --prefix "$(DESTDIR)$(prefix)" \
++	    --verbose \
++	    gpg ; \
+ 	done
+ 
+ uninstall-local:
+ 	set -x; GV=$$(echo $(VERSION) | tr - _); for PYTHON in $(PYTHONS); do \
+ 	  PLATLIB="$(prefix)/$$("$${PYTHON}" -c 'import sysconfig, os; print(os.path.relpath(sysconfig.get_path("platlib", scheme="posix_prefix"), sysconfig.get_config_var("prefix")))')" ; \
+ 	  rm -rf -- "$(DESTDIR)$${PLATLIB}/gpg" \
+-		"$(DESTDIR)$${PLATLIB}"/gpg-$$GV-py*.egg-info ; \
++		"$(DESTDIR)$${PLATLIB}"/gpg-$$GV.dist-info ; \
+ 	done
+diff --git a/lang/python/doc/src/gpgme-python-howto.org b/lang/python/doc/src/gpgme-python-howto.org
+index b4367872..c40e2249 100644
+--- a/lang/python/doc/src/gpgme-python-howto.org
++++ b/lang/python/doc/src/gpgme-python-howto.org
+@@ -2945,7 +2945,7 @@ Save that into a file called =keycount.pyx= and then create a
+ =setup.py= file which contains this:
+ 
+ #+BEGIN_SRC python -i
+-from distutils.core import setup
++from setuptools import setup
+ from Cython.Build import cythonize
+ 
+ setup(
+diff --git a/lang/python/examples/howto/advanced/cython/setup.py b/lang/python/examples/howto/advanced/cython/setup.py
+index f8dce034..849639e2 100644
+--- a/lang/python/examples/howto/advanced/cython/setup.py
++++ b/lang/python/examples/howto/advanced/cython/setup.py
+@@ -1,4 +1,4 @@
+-from distutils.core import setup
++from setuptools import setup
+ from Cython.Build import cythonize
+ 
+ setup(
+diff --git a/lang/python/setup.py.in b/lang/python/setup.py.in
+index 6f36861d..7b64ba7b 100755
+--- a/lang/python/setup.py.in
++++ b/lang/python/setup.py.in
+@@ -18,8 +18,12 @@
+ #    License along with this library; if not, write to the Free Software
+ #    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA
+ 
+-from distutils.core import setup, Extension
+-from distutils.command.build import build
++try:
++    from setuptools import setup, Extension
++    from setuptools.command.build import build
++except ImportError:
++    from distutils.core import setup, Extension
++    from distutils.command.build import build
+ 
+ import glob
+ import os
+@@ -225,9 +229,8 @@ class BuildExtFirstHack(build):
+         build.run(self)
+ 
+ 
+-py3 = [] if sys.version_info.major < 3 else ['-py3']
+ swig_sources = []
+-swig_opts = ['-threads'] + py3 + extra_swig_opts
++swig_opts = ['-threads'] + extra_swig_opts
+ swige = Extension(
+     'gpg._gpgme',
+     sources=swig_sources,
+@@ -282,10 +285,12 @@ GPGME and these bindings is available here:
+         'Programming Language :: Python :: 2',
+         'Programming Language :: Python :: 2.7',
+         'Programming Language :: Python :: 3',
+-        'Programming Language :: Python :: 3.4',
+-        'Programming Language :: Python :: 3.5',
+         'Programming Language :: Python :: 3.6',
+-        'Programming Language :: Python :: 3.7',
++        'Programming Language :: Python :: 3.8',
++        'Programming Language :: Python :: 3.9',
++        'Programming Language :: Python :: 3.10',
++        'Programming Language :: Python :: 3.11',
++        'Programming Language :: Python :: 3.12',
+         'Operating System :: POSIX',
+         'Operating System :: Microsoft :: Windows',
+         'Topic :: Communications :: Email',
+diff --git a/m4/ax_python_devel.m4 b/m4/ax_python_devel.m4
+index 8116028a..e3bedcbb 100644
+--- a/m4/ax_python_devel.m4
++++ b/m4/ax_python_devel.m4
+@@ -468,4 +468,4 @@ print(sitedir)"`
+ 	#
  	# all done!
  	#
 -])
 +])
 \ No newline at end of file
 diff --git a/m4/python.m4 b/m4/python.m4
-index 4b9483c0..440891a8 100644
+index 4b9483c0..e741511d 100644
 --- a/m4/python.m4
 +++ b/m4/python.m4
-@@ -41,7 +41,7 @@ AC_DEFUN([AM_PATH_PYTHON],
+@@ -36,12 +36,12 @@
+ # numbers and dots only.
+ AC_DEFUN([AM_PATH_PYTHON],
+  [
+-  dnl Find a Python interpreter.  Python versions prior to 2.7 are not
+-  dnl supported. Python 3.0 through to Python 3.3 are also not supported.
++  dnl Find a Python interpreter.  Python versions prior to 3.8 are
++  dnl end-of-life and not supported, with the exception of 2.7 and 3.6
    m4_define_default([_AM_PYTHON_INTERPRETER_LIST],
  [python2 python2.7 dnl
   python dnl
 - python3 python3.10 python3.9 python3.8 python3.7 python3.6 python3.5 python3.4
-+ python3 python3.12 python3.11 python3.10 python3.9 python3.8 python3.7 python3.6 python3.5 python3.4
++ python3 python3.12 python3.11 python3.10 python3.9 python3.8 python3.6
   ])
  
    AC_ARG_VAR([PYTHON], [the Python interpreter])

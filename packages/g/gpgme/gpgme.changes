@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb 17 11:20:39 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update gpgme-D545-obsolete-distutils.patch with upstream's
+  changes (but use pip instead of python-build for wheel building)
+- Change from in-place build to out-of-place build in order to
+  reflect upstream's build setup (See D545)
+- Don't replace distutils in 15.X
+
+-------------------------------------------------------------------
 Sat Jan  6 12:43:19 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Python 3.12 has dropped distutils
