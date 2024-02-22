@@ -60,8 +60,8 @@ ZZipLib.
 
 %prep
 %setup -q
-%patch0
-%patch8 -p1
+%patch -P 0
+%patch -P 8 -p1
 # do not bother with html docs saving us python2 dependency
 sed -i -e 's:docs ::g' Makefile.am
 
