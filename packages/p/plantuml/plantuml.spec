@@ -58,7 +58,7 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P 0 -p1
 cp %{SOURCE1} %{name}
 cp %{SOURCE10} .
 
@@ -67,13 +67,13 @@ ant
 
 # build javadoc
 export CLASSPATH=$(build-classpath ant):plantuml.jar
-%javadoc -source 1.8 -encoding UTF-8 -Xdoclint:none -d javadoc $(find src -name "*.java") -windowtitle "PlantUML %{version}"
+%{javadoc} -source 1.8 -encoding UTF-8 -Xdoclint:none -d javadoc $(find src -name "*.java") -windowtitle "PlantUML %{version}"
 
 %install
 # Set jar location
-%mvn_file net.sourceforge.%{name}:%{name} %{name}
+%{mvn_file} net.sourceforge.%{name}:%{name} %{name}
 # Configure maven depmap
-%mvn_artifact net.sourceforge.%{name}:%{name}:%{version} %{name}.jar
+%{mvn_artifact} net.sourceforge.%{name}:%{name}:%{version} %{name}.jar
 %mvn_install -J javadoc
 
 install -m 755 -d %{buildroot}%{_bindir}/
