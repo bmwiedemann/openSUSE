@@ -1,7 +1,7 @@
 #
 # spec file for package himmelblau
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           himmelblau
-Version:        0.1.1+git.10.4aa76b7
+Version:        0.2.0+git.4.904b915
 Release:        0
 Summary:        Interoperability suite for Microsoft Azure AD and Intune
 License:        MPL-2.0
@@ -26,12 +26,12 @@ Source:         %{name}-%{version}.tar.bz2
 Source1:        vendor.tar.zst
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
+BuildRequires:  clang-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  pam-devel
-BuildRequires:  python3-devel >= 3.7
 BuildRequires:  sqlite3-devel
+BuildRequires:  tpm2-0-tss-devel
 ExclusiveArch:  %{rust_tier1_arches}
-Requires:       python3-msal
 Recommends:     nss-himmelblau
 Recommends:     pam-himmelblau
 

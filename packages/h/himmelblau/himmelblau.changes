@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Feb 20 21:07:56 UTC 2024 - dmulder@suse.com
+
+- Update to version 0.2.0+git.4.904b915:
+  * Update to latest msal
+  * Version 0.2.0
+  * Himmelblau now authenticates only to configured domains
+  * Remove reference to python-msal dep in README
+  * Use the external MSAL crate for auth
+  * Rename msal in prep for external msal crate
+  * msal: Remove python msal bindings
+  * msal: Rust msal
+  * Point Cargo.toml to new project home
+  * config: Write domain join to server specific config
+  * idprovider: Invalidate cached user if PRT req fails
+  * idprovider: Pass the keystore to the auth function
+  * Update daemon from kanidm
+  * test: Add a pause to ensure tasks daemon sees himmelblau
+  * Update kanidm submodule
+  * config: Include domain sections in configured domains
+  * msal: Add acquire_token_by_refresh_token
+  * enrollment: Authentication fixes
+  * tests: Create the hsm-pin directory
+  * idprovider: Add domain join debug
+  * cargo: Use relative paths and remove most symlinks
+  * idprovider: Allow group search when device is authenticated
+  * msal: Move the application reqs from misc to msal::application
+  * msal: Move user reqs from misc to msal::user
+  * Remove duplicates from allow_groups during enrollment
+  * Remove device enrollment from TODO
+  * Implement Device enrollment
+  * enrollment: Add the nonce service request
+  * enrollment: Add enrollment service discovery
+  * Implement ConfidentialClientApplication for enrollment
+  * daemon: Fix inverted logic on cache dir check
+  * nss: Use upstream nss package
+  * idprovider: Provider auth needs to point to just the host
+  * config: Consistently use the config file provided to the daemon
+  * cargo: Use relative paths and remove most symlinks
+  * clippy: Add kanidm's clippy config
+  * config: Only check for tenant_id, authority, graph if necessary
+  * Update README.md
+  * Update version to 0.1.2
+  * config: Fix typos in the config file
+  * Make most params to acquire_token_interactive optional
+  * Config can take defaults
+  * cli: Add missing cli opt file
+  * cli: Improve aad-tool options and interface
+  * Update README.md
+  * tests: Fix tasks daemon name typo
+  * Remove MFA from TODO
+
+-------------------------------------------------------------------
 Fri Dec 22 18:07:18 UTC 2023 - dmulder@suse.com
 
 - Update to version 0.1.1+git.10.4aa76b7:
