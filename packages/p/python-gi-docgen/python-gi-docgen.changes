@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 18:20:41 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Require python3-tomli if python3-base is on v3.6 (ie, SLE 15).
+
+-------------------------------------------------------------------
 Sat Nov 25 20:05:02 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2023.3:

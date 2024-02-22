@@ -1,7 +1,7 @@
 #
 # spec file for package python-gi-docgen
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,6 +49,7 @@ Requires:       python3-Pygments
 Requires:       python3-packaging
 Requires:       python3-typogrify
 Requires:       (python3-tomli if ((python310-base with python3-base) or (python39-base with python3-base)))
+Requires:       (python3-tomli if python3-base < 3.7)
 
 Obsoletes:      python38-gi-docgen < %{version}
 BuildArch:      noarch

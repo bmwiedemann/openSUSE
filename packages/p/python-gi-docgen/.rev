@@ -93,4 +93,12 @@
     <comment>New upstream release (forwarded request 1128804 from iznogood)</comment>
     <requestid>1129050</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>66bf113dfc0ad0e681cab67e23f93d7e</srcmd5>
+    <version>2023.3</version>
+    <time>1708631724</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1148451</requestid>
+  </revision>
 </revisionlist>
