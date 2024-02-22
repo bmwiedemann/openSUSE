@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Feb 22 17:12:13 UTC 2024 - Klaas Freitag <opensuse@freisturz.de>
+
+- Add runtime dep for qt6-sql-sqlite, fix depends to qt6 version
+  Valuable feedback from review :-)
+
+-------------------------------------------------------------------
+Tue Feb 20 16:11:02 UTC 2024 - Klaas Freitag <opensuse@freisturz.de>
+
+- cleaned the spec file again, choose the correct qt6 based utility
+  packages. 
+
+-------------------------------------------------------------------
+Sun Feb 11 19:55:41 UTC 2024 - Klaas Freitag <opensuse@freisturz.de>
+
+- use qt6 install macro 
+
+-------------------------------------------------------------------
+Sun Feb 11 19:16:37 UTC 2024 - Klaas Freitag <opensuse@freisturz.de>
+
+- spec-cleaner cleaned file 
+
+-------------------------------------------------------------------
+Sun Feb 11 19:13:15 UTC 2024 - Klaas Freitag <opensuse@freisturz.de>
+
+- Remove obsolete branding option and add dep on icons package 
+
+-------------------------------------------------------------------
+Sun Jan 14 13:11:34 UTC 2024 - Klaas Freitag <opensuse@freisturz.de>
+
+- Split off icons package as that is required by the shell integs
+  Cleaned remaining qt5 dependencies 
+
+-------------------------------------------------------------------
+Sun Dec 31 15:57:16 UTC 2023 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to version 5.2.1:
+  * Lots of bugfixes and changes, too much changes to mention here, 
+    please refer to for details:
+    https://github.com/owncloud/client/blob/master/CHANGELOG.md
+  * Built with Qt6
+  * Split off packages for the desktop shell integrations 
+
+-------------------------------------------------------------------
 Fri Dec 15 22:03:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Require extra-cmake-modules at build time

@@ -1,7 +1,7 @@
 <services>
   <service mode="manual" name="obs_scm">
     <param name="filename">ownCloud_os</param>
-    <param name="revision">v4.2.0</param>
+    <param name="revision">v5.2.1</param>
     <param name="scm">git</param>
     <param name="url">https://github.com/owncloud/client.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
@@ -9,7 +9,6 @@
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <!-- exclude some files due to license issues, see https://github.com/owncloud/client/issues/6005 -->
-    <param name="exclude">*src/3rdparty/libcrashreporter-qt*</param>
     <param name="exclude">*shell_integration/windows*</param>
     <param name="exclude">*shell_integration/MacOSX*</param>
   </service>
