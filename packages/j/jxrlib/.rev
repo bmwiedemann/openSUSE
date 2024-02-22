@@ -32,4 +32,12 @@
   build baselibs for libjxrglue0 (bsc#1183052)</comment>
     <requestid>877692</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>656d914bfdec26f44e5e21708a4ee6d7</srcmd5>
+    <version>1.1</version>
+    <time>1708631956</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149079</requestid>
+  </revision>
 </revisionlist>

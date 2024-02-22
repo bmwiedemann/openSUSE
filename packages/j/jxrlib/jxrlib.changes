@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 08:11:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Mar  5 13:47:54 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - added correct requires for the 32bit libs (bsc#1183053), also 

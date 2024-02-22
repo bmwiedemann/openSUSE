@@ -77,7 +77,7 @@ for file in `find . -type f -name '*.c' -or -name '*.h' -or -name '*.txt'`; do
   touch -r $file $file.new && mv $file.new $file
 done
 
-%patch0 -p1
+%patch -P 0 -p1
 
 # Remove shipped binaries
 rm -rf bin
