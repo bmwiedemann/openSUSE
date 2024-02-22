@@ -1,7 +1,7 @@
 #
 # spec file for package mockito
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,14 +39,10 @@ BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  hamcrest
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  junit
 BuildRequires:  objenesis
 BuildRequires:  unzip
-Requires:       cglib
-Requires:       hamcrest
-Requires:       junit
-Requires:       objenesis
 BuildArch:      noarch
 
 %description
@@ -63,12 +59,12 @@ This package contains the API documentation for %{name}.
 %prep
 %setup -q
 dos2unix `find -name *.java`
-%patch0
-%patch1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%patch -P 0
+%patch -P 1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
 
 %pom_add_dep net.sf.cglib:cglib:3.1 maven/mockito-core.pom
 find . -name "*.java" -exec sed -i "s|org\.%{name}\.cglib|net\.sf\.cglib|g" {} +
@@ -92,16 +88,13 @@ bnd wrap \
  target/%{name}-core-%{version}.jar
 mv target/%{name}-core-%{version}.bar target/%{name}-core-%{version}.jar
 
-%{mvn_artifact} target/%{name}-core.pom target/%{name}-core-%{version}.jar
-%{mvn_alias} org.%{name}:%{name}-core org.%{name}:%{name}-all
-
 %install
 # jar
 install -dm 0755 %{buildroot}%{_javadir}/%{name}
 install -pm 0644 target/%{name}-core-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}-core.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 target/%{name}-core.pom %{buildroot}%{_mavenpomdir}/%{name}/%{name}-core.pom
+%{mvn_install_pom} target/%{name}-core.pom %{buildroot}%{_mavenpomdir}/%{name}/%{name}-core.pom
 %add_maven_depmap %{name}/%{name}-core.pom %{name}/%{name}-core.jar -a org.%{name}:%{name}-all
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
