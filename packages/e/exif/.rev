@@ -178,4 +178,13 @@
   - 0001-second-fix-for-https-github.com-libexif-exif-issues-.patch (forwarded request 818936 from msmeissn)</comment>
     <requestid>818937</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>c7c1f1f93d3226ea2e40590facd21f61</srcmd5>
+    <version>0.6.22</version>
+    <time>1708631943</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1149018</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package exif
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,10 +36,8 @@ Exif is a small command line utility to show and change EXIF
 information hidden in JPEG files. It demonstrate the power of libexif
 library.
 
-%prep 
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%prep
+%autosetup -p1
 
 %build
 %configure

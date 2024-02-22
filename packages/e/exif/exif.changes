@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 07:49:37 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Mon Jul  6 07:42:44 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - fixed an endiannes issue that broke exif -i option on big endian.
