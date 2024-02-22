@@ -1,7 +1,7 @@
 #
 # spec file for package objenesis
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,12 +33,12 @@ Release:        0
 Summary:        A library for instantiating Java objects
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://objenesis.org/
-Source0:        https://github.com/easymock/%{name}/archive/%{version}.tar.gz
+URL:            https://objenesis.org/
+Source0:        https://github.com/easymock/%{name}/archive/refs/tags/%{version}.tar.gz
 Patch0:         objenesis-javadoc.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -71,20 +71,10 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P 0 -p1
 
 # Enable generation of pom.properties (rhbz#1017850)
 %pom_xpath_remove pom:addMavenDescriptor
-
-%pom_remove_plugin :maven-timestamp-plugin
-%pom_xpath_remove "pom:dependency[pom:scope='test']" tck
-
-%pom_xpath_remove pom:build/pom:extensions
-
-for i in main tck; do
-  %pom_remove_parent ${i}
-  %pom_xpath_inject "pom:project" "<groupId>org.objenesis</groupId><version>%{version}</version>" ${i}
-done
 
 %build
 mkdir -p main/build/classes
@@ -136,8 +126,8 @@ install -m 0644 %{name}-tck-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{nam
 
 # poms
 install -dm 755 %{buildroot}%{_mavenpomdir}/%{name}
-install -m 0644 main/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
-install -m 0644 tck/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-tck.pom
+%{mvn_install_pom} main/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%{mvn_install_pom} tck/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-tck.pom
 %add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
 %add_maven_depmap %{name}/%{name}-tck.pom %{name}/%{name}-tck.jar
 
