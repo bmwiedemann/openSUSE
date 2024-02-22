@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 21 17:52:02 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+- Fetch the sources from gitlab mirror since the original link
+  does not work any more
+
+-------------------------------------------------------------------
 Wed Mar 23 11:29:54 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 8

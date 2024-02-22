@@ -1,7 +1,7 @@
 #
 # spec file for package scirenderer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,8 @@ Release:        0
 Summary:        A Java rendering library based on JoGL
 License:        CECILL-2.0
 Group:          Development/Libraries/Java
-URL:            https://forge.scilab.org/index.php/p/scirenderer
-Source0:        http://forge.scilab.org/index.php/p/scirenderer/downloads/get/%{name}-%{version}.tar.gz
+URL:            https://gitlab.com/scilab/forge/scirenderer
+Source0:        %{name}-%{version}.tar.xz
 Patch0:         %{name}-0000-jogl2.0.2.patch
 # PATCH-FIX-UPSTREAM scirenderer-fix-compilation-with-jogl-2.3.patch badshah400@gmail.com -- Fix compilation with jogl 2.3.x
 Patch1:         scirenderer-fix-compilation-with-jogl-2.3.patch
@@ -55,10 +55,10 @@ This package contains the documentation for SciRenderer.
 %prep
 %setup -q
 
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 
 # Update path according to the openSUSE
 tee scirenderer-libs.properties << EOF
