@@ -38,8 +38,7 @@ times agree with each other within a certain limit. The first host in
 the largest group is picked as the best host.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 %make_build
