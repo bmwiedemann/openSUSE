@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 10:02:58 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Sat Nov 15 23:39:00 UTC 2014 - Led <ledest@gmail.com>
 
 - fix bashisms in run.sh script

@@ -30,4 +30,13 @@
   sblim-testsuite-1.3.0-fix-bashisms.patch</comment>
     <requestid>548563</requestid>
   </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>03d4d274a79788a419229d02fe6820c3</srcmd5>
+    <version>1.3.0</version>
+    <time>1708631995</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1149148</requestid>
+  </revision>
 </revisionlist>

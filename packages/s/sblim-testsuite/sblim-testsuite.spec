@@ -1,7 +1,7 @@
 #
 # spec file for package sblim-testsuite
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@ Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       sblim-wbemcli
 BuildArch:      noarch
-Url:            http://sblim.wiki.sourceforge.net/
+URL:            http://sblim.wiki.sourceforge.net/
 Source0:        http://prdownloads.sourceforge.net/sblim/%{name}-%{version}.tar.bz2
 Patch0:         %{name}-1.3.0-fix-bashisms.patch
 Summary:        SBLIM Testsuite
@@ -41,8 +41,7 @@ Authors:
     SBLIM Project
 
 %prep
-%setup
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure
@@ -57,7 +56,7 @@ make DESTDIR=$RPM_BUILD_ROOT install
 %endif
 
 %files
-%defattr(-,root,root) 
+%defattr(-,root,root)
 %if 0%{?fedora_version} || 0%{?centos_version} || 0%{?rhel_version} || 0%{?fedora} || 0%{?rhel}
 %doc %{_datadir}/doc/%{name}-%{version}
 %else
