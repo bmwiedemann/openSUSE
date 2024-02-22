@@ -1,7 +1,7 @@
 #
 # spec file for package netcomponents
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,8 +71,8 @@ This package contains the javadoc documentation for netcomponents.
 
 %prep
 %setup -q -n NetComponents-%{version}
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 %build
 ant \
