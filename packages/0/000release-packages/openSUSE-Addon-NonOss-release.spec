@@ -1,7 +1,7 @@
 #
-# spec file for package openSUSE-Addon-NonOss-release (Version 20240222)
+# spec file for package openSUSE-Addon-NonOss-release.spec
 #
-# Copyright (c) 2024 openSUSE.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
 
 Name:           openSUSE-Addon-NonOss-release
 %define         product openSUSE-Addon-NonOss
-Summary:        openSUSE NonOSS Addon%{?betaversion: %{betaversion}}
 Version:        20240222
 #!BcntSyncTag: openSUSE-Addon-NonOss
 Release:        0
+Summary:        openSUSE NonOSS Addon 
 License:        BSD-3-Clause
 Group:          System/Fhs
-%global debug_package %{nil}
-
 Provides:       %name-%version
 Provides:       product() = openSUSE%2DAddon%2DNonOss
 Provides:       product(openSUSE-Addon-NonOss) = 20240222-0
@@ -30,18 +31,15 @@ Provides:       product-label() = non%20oss%20addon
 Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Aopensuse%2Daddon%2Dnonoss%3A20240222
 
 
-AutoReqProv:    on
 
 %description
 non oss repo and cd
 
 
 
-
 %prep
 
 %build
-
 
 %install
 mkdir -p %{buildroot}%{_sysconfdir}/products.d
@@ -127,6 +125,9 @@ EOF
 %files
 %defattr(644,root,root,755)
 %dir %{_sysconfdir}/products.d
-%{_sysconfdir}/products.d/*.prod
+%{_sysconfdir}/products.d/*
 
 %changelog
+* Mon Feb 19 2024 Dominique Leuenberger <dimstar@opensuse.org>
+- No information provided here - we needed a dated entry for
+  RPM/reproducible builds
