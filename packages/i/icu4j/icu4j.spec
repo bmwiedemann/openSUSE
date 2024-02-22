@@ -1,7 +1,7 @@
 #
 # spec file for package icu4j
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2007, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -39,7 +39,7 @@ Patch4:         icu4j-detectjava21.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -82,11 +82,11 @@ API documentation for %{name}.
 
 %prep
 %setup -q -c
-%patch0 -p1
-%patch1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%patch -P 0 -p1
+%patch -P 1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
 
 sed -i 's/\r//' APIChangeReport.html
 sed -i 's/\r//' readme.html
@@ -119,7 +119,7 @@ rm main/tests/charset/src/com/ibm/icu/dev/test/charset/TestConversion.java
 rm main/tests/translit/src/com/ibm/icu/dev/test/translit/TransliteratorDisorderedMarksTest.java
 
 %build
-%ant \
+%{ant} \
     -Djavac.source=1.8 -Djavac.target=1.8 \
 	-Ddoclint.option='-Xdoclint:none' \
 	-Dicu4j.api.doc.jdk.link= \
@@ -145,7 +145,7 @@ cp -pr doc/* %{buildroot}%{_javadocdir}/%{name}
 install -d -m 755 %{buildroot}%{_mavenpomdir}
 for jar in icu4j icu4j-charset icu4j-localespi ; do
   sed -i -e 's/@POMVERSION@/%{version}/' maven/$jar/pom.xml
-  cp maven/$jar/pom.xml %{buildroot}%{_mavenpomdir}/JPP-$jar.pom
+  %{mvn_install_pom} maven/$jar/pom.xml %{buildroot}%{_mavenpomdir}/JPP-$jar.pom
 done
 %add_maven_depmap JPP-icu4j.pom icu4j.jar
 %add_maven_depmap JPP-icu4j-charset.pom icu4j-charset.jar -f charset

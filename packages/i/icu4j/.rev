@@ -195,4 +195,12 @@
     <comment>fix build with java &gt;= 20</comment>
     <requestid>1112745</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>3d2c835790beb0ecfee2b9b761ab7d55</srcmd5>
+    <version>73.1</version>
+    <time>1708631728</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148470</requestid>
+  </revision>
 </revisionlist>
