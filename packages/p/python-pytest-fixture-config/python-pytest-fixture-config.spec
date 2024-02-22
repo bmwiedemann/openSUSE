@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-fixture-config
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,14 @@ Version:        1.7.0
 Release:        0
 Summary:        Fixture configuration utils for pytest
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/manahl/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-fixture-config/pytest-fixture-config-%{version}.tar.gz
 # https://github.com/man-group/pytest-plugins/issues/209
 Patch0:         python-pytest-fixture-config-no-six.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools-git}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest
@@ -40,14 +40,13 @@ BuildArch:      noarch
 Fixture configuration utilities for pytest
 
 %prep
-%setup -q -n pytest-fixture-config-%{version}
-%patch0 -p1
+%autosetup -p1 -n pytest-fixture-config-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,6 +55,8 @@ Fixture configuration utilities for pytest
 %files %{python_files}
 %doc README.md CHANGES.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_fixture_config.py
+%pycache_only %{python_sitelib}/__pycache__/pytest_fixture_config*.py*
+%{python_sitelib}/pytest_fixture_config-%{version}.dist-info
 
 %changelog
