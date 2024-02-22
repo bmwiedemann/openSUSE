@@ -52,8 +52,7 @@ HivelyTracker offers the following features over AHX:
  * A more feature rich editor
 
 %prep
-%setup -q -n %{name}-%{realver}
-%patch0 -p1
+%autosetup -p1 -n %{name}-%{realver}
 
 %build
 %make_build -C sdl -f Makefile.linux
