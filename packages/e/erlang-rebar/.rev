@@ -86,4 +86,16 @@ get fixes from the devel prj into Factory; maybe someday, somebody cares
 for the test suite again (forwarded request 1136835 from dimstar)</comment>
     <requestid>1137529</requestid>
   </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>ac34edffb72ebcd6d00730d64cfeac61</srcmd5>
+    <version>2.6.4+git20180201.b6d3094</version>
+    <time>1708631967</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1149099</requestid>
+  </revision>
 </revisionlist>

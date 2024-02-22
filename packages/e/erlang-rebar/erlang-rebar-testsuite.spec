@@ -84,12 +84,7 @@ rebar is an Erlang build tool that makes it easy to compile and
 test Erlang applications, port drivers and releases.
 
 %prep
-%setup -q -n rebar-%{version}
-%patch2 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
+%autosetup -p1 -n rebar-%{version}
 
 %build
 export REBAR_DEPS_PREFER_LIBS=1
