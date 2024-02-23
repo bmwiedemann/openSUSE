@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 16:40:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- busybox-udhcpc conflicts with udhcp.
+
+-------------------------------------------------------------------
 Fri Dec  8 14:12:35 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add new sub-package for udhcpc

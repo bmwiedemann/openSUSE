@@ -1,7 +1,7 @@
 #
 # spec file for package busybox-links
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -174,7 +174,7 @@ This package contains the symlinks to replace attr with busybox.
 Summary:        Busybox sh, ash and hush
 Requires:       busybox = %{version}
 Requires(post): busybox
-Requires(preun):busybox
+Requires(preun): busybox
 Provides:       alternative(sh)
 Conflicts:      alternative(sh)
 Obsoletes:      busybox-ash < %{version}
@@ -597,6 +597,7 @@ This package contains the symlinks to provide policycoreutils with busybox.
 %package -n busybox-udhcpc
 Summary:        Busybox applets providing udhcp client
 Requires:       busybox = %{version}
+Conflicts:      udhcp
 
 %description -n busybox-udhcpc
 This package contains the symlinks to provide the udhcp clients with busybox.
