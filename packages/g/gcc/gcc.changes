@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 14 09:27:54 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Add gcc-build flavor for building ALP packages, but disabled for
+  openSUSE.
+
+-------------------------------------------------------------------
+Tue Feb 13 14:46:11 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Support building suffixed packages, but only allow installing one
+  variant at the same time.
+- Remove obsolete obsoletes.
+
+-------------------------------------------------------------------
 Thu Jan 19 11:30:13 UTC 2023 - Richard Biener <rguenther@suse.com>
 
 - Switch gcc to default 13.

@@ -1,7 +1,7 @@
 #
-# spec file for package gcc
+# spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,19 @@
 #
 
 
-Name:           gcc
+%define flavor @BUILD_FLAVOR@%{nil}
+
+%if "%{flavor}" == "build"
+%define gccsuffix -build
+%define gcc_version 13
+%define gcc_suffix 13
+%else
+%define gccsuffix %{nil}
+%define gcc_version 13
+%define gcc_suffix 13
+%endif
+
+Name:           gcc%{gccsuffix}
 %define separate_bi32 0
 %define separate_bi64 0
 %if 0%{!?disable_32bit:1}
@@ -29,7 +41,7 @@ Name:           gcc
 %endif
 # Ada currently fails to build on a few platforms, enable it only
 # on those that work
-# Note that AdaCore only supports %ix86, x86_64 and ia64
+# Note that AdaCore only supports %%ix86, x86_64 and ia64
 %ifarch %ix86 x86_64 ppc ppc64 ppc64le s390 s390x ia64 aarch64 riscv64
 %define build_ada 1
 %else
@@ -43,19 +55,13 @@ Name:           gcc
 %endif
 %define libgccjit_sover 0
 URL:            http://gcc.gnu.org/
-%define gcc_version 13
-%define gcc_suffix 13
-Version:        13
+Version:        %{gcc_version}
 Release:        0
 Summary:        The system GNU C Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 Provides:       c_compiler
-Obsoletes:      gcc-ar
-Obsoletes:      gcc-mudflap
-Obsoletes:      gcc-nm
-Obsoletes:      gcc-ranlib
-Requires:       cpp
+Requires:       cpp%{gccsuffix}
 Requires:       gcc%{gcc_version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc%{gcc_version}
@@ -69,67 +75,82 @@ BuildRequires:  gcc%{gcc_version}-ada
 BuildRequires:  gcc%{gcc_version}-d
 %endif
 Source:         cpp
+%if "%{gccsuffix}" != "" && 0%{?is_opensuse}
+ExclusiveArch:  do-not-build
+%endif
 
-%description
+%description -n gcc%{gccsuffix}
 The system GNU C Compiler.
 
-%package -n gcc-32bit
+%package -n gcc%{gccsuffix}-32bit
 Summary:        The system GNU C Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
-Requires:       gcc = %{version}
 Requires:       gcc%{gcc_version}-32bit
+Requires:       gcc%{gccsuffix} = %{version}
 
-%description -n gcc-32bit
+%description -n gcc%{gccsuffix}-32bit
 The system GNU C Compiler.
 
-%package -n gcc-64bit
+%package -n gcc%{gccsuffix}-64bit
 Summary:        The system GNU C Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
-Requires:       gcc = %{version}
 Requires:       gcc%{gcc_version}-64bit
+Requires:       gcc%{gccsuffix} = %{version}
 
-%description -n gcc-64bit
+%description -n gcc%{gccsuffix}-64bit
 The system GNU C Compiler.
 
-%package -n cpp
+%package -n cpp%{gccsuffix}
 Summary:        The system GNU Preprocessor
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 Requires:       cpp%{gcc_version}
+# Only one of the symlink packages can be installed at the same time
+Provides:       cpp = %{version}-%{release}
+Conflicts:      cpp
 
-%description -n cpp
+%description -n cpp%{gccsuffix}
 The system GNU Preprocessor.
 
-%package -n gcc-devel
+%package -n gcc%{gccsuffix}-devel
 Summary:        The system GNU C Compiler Plugin development files
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
-Requires:       gcc = %{version}
 Requires:       gcc%{gcc_version}-devel
+Requires:       gcc%{gccsuffix} = %{version}
 
-%description -n gcc-devel
+%description -n gcc%{gccsuffix}-devel
 The system GNU C Compiler Plugin development files.
 
-%package -n gcc-locale
+%package -n gcc%{gccsuffix}-locale
 Summary:        The system GNU Compiler locale files
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 Requires:       gcc%{gcc_version}-locale
 
-%description -n gcc-locale
+%description -n gcc%{gccsuffix}-locale
 The system GNU Compiler locale files.
 
-%package -n gcc-info
+%package -n gcc%{gccsuffix}-info
 Summary:        The system GNU Compiler documentation
 License:        GFDL-1.2-only
 Group:          Development/Languages/C and C++
 PreReq:         %{install_info_prereq}
 PreReq:         gcc%{gcc_version}-info
 
-%description -n gcc-info
+%description -n gcc%{gccsuffix}-info
 The system GNU Compiler documentation.
+
+
+
+
+
+
+
+
+
 
 
 
@@ -137,14 +158,14 @@ The system GNU Compiler documentation.
 
 # install / update the entries
 
-%post -n gcc-info
+%post -n gcc%{gccsuffix}-info
 %install_info --info-dir=%{_infodir} --name=cpp --description='The GNU C preprocessor.' %{_infodir}/cpp.info.gz
 %install_info --info-dir=%{_infodir} --name=gcc --description='The GNU Compiler Collection.' %{_infodir}/gcc.info.gz
 %install_info --info-dir=%{_infodir} --name=g++ --description='The GNU C++ compiler.' %{_infodir}/gcc.info.gz
 %install_info --info-dir=%{_infodir} --name=gfortran --description='The GNU Fortran compiler.' %{_infodir}/gfortran.info.gz
 
 # if we uninstall, clean the entries
-%preun -n gcc-info
+%preun -n gcc%{gccsuffix}-info
 if [ "$1" -eq "0" ] ; then
   %install_info --delete --info-dir=%{_infodir} --name=cpp %{_infodir}/cpp.info.gz
   %install_info --delete --info-dir=%{_infodir} --name=gcc %{_infodir}/gcc.info.gz
@@ -152,254 +173,254 @@ if [ "$1" -eq "0" ] ; then
   %install_info --delete --info-dir=%{_infodir} --name=gfortran %{_infodir}/gfortran.info.gz
 fi
 
-%package -n gcc-c++
+%package -n gcc%{gccsuffix}-c++
 Summary:        The system GNU C++ Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 Provides:       c++_compiler
-Requires:       gcc = %{version}
 Requires:       gcc%{gcc_version}-c++
+Requires:       gcc%{gccsuffix} = %{version}
 
-%description -n gcc-c++
+%description -n gcc%{gccsuffix}-c++
 The system GNU C++ Compiler.
 
-%package -n gcc-c++-32bit
+%package -n gcc%{gccsuffix}-c++-32bit
 Summary:        The system GNU C++ Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 Requires:       gcc%{gcc_version}-c++-32bit
-Requires:       gcc-32bit = %{version}
-Requires:       gcc-c++ = %{version}
+Requires:       gcc%{gccsuffix}-32bit = %{version}
+Requires:       gcc%{gccsuffix}-c++ = %{version}
 
-%description -n gcc-c++-32bit
+%description -n gcc%{gccsuffix}-c++-32bit
 The system GNU C++ Compiler 32 bit support.
 
-%package -n gcc-c++-64bit
+%package -n gcc%{gccsuffix}-c++-64bit
 Summary:        The system GNU C++ Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 Requires:       gcc%{gcc_version}-c++-64bit
-Requires:       gcc-64bit = %{version}
-Requires:       gcc-c++ = %{version}
+Requires:       gcc%{gccsuffix}-64bit = %{version}
+Requires:       gcc%{gccsuffix}-c++ = %{version}
 
-%description -n gcc-c++-64bit
+%description -n gcc%{gccsuffix}-c++-64bit
 The system GNU C++ Compiler 64 bit support.
 
-%package -n libstdc++-devel
+%package -n libstdc++%{gccsuffix}-devel
 Summary:        The system GNU C++ development files
 License:        GPL-3.0-only WITH GCC-exception-3.1
 Group:          System/Libraries
 Requires:       libstdc++6-devel-gcc%{gcc_version}
 
-%description -n libstdc++-devel
+%description -n libstdc++%{gccsuffix}-devel
 The system GNU C++ development files.
 
-%package -n libstdc++-devel-32bit
+%package -n libstdc++%{gccsuffix}-devel-32bit
 Summary:        The system GNU C++ 32bit development files
 License:        GPL-3.0-only WITH GCC-exception-3.1
 Group:          System/Libraries
-Requires:       libstdc++-devel
+Requires:       libstdc++%{gccsuffix}-devel
 Requires:       libstdc++6-devel-gcc%{gcc_version}-32bit
 
-%description -n libstdc++-devel-32bit
+%description -n libstdc++%{gccsuffix}-devel-32bit
 The system GNU C++ 32bit development files.
 
-%package -n libstdc++-devel-64bit
+%package -n libstdc++%{gccsuffix}-devel-64bit
 Summary:        The system GNU C++ 64bit development files
 License:        GPL-3.0-only WITH GCC-exception-3.1
 Group:          System/Libraries
-Requires:       libstdc++-devel
+Requires:       libstdc++%{gccsuffix}-devel
 Requires:       libstdc++6-devel-gcc%{gcc_version}-64bit
 
-%description -n libstdc++-devel-64bit
+%description -n libstdc++%{gccsuffix}-devel-64bit
 The system GNU C++ 64bit development files.
 
-%package -n gcc-fortran
+%package -n gcc%{gccsuffix}-fortran
 Summary:        The system GNU Fortran Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Fortran
-Requires:       gcc = %{version}
 Requires:       gcc%{gcc_version}-fortran
+Requires:       gcc%{gccsuffix} = %{version}
 
-%description -n gcc-fortran
+%description -n gcc%{gccsuffix}-fortran
 The system GNU Fortran Compiler.
 
-%package -n gcc-fortran-32bit
+%package -n gcc%{gccsuffix}-fortran-32bit
 Summary:        The system GNU Fortran Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Fortran
 Requires:       gcc%{gcc_version}-fortran-32bit
-Requires:       gcc-fortran = %{version}
+Requires:       gcc%{gccsuffix}-fortran = %{version}
 
-%description -n gcc-fortran-32bit
+%description -n gcc%{gccsuffix}-fortran-32bit
 The system GNU Fortran Compiler 32 bit support.
 
-%package -n gcc-fortran-64bit
+%package -n gcc%{gccsuffix}-fortran-64bit
 Summary:        The system GNU Fortran Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Fortran
 Requires:       gcc%{gcc_version}-fortran-64bit
-Requires:       gcc-fortran = %{version}
+Requires:       gcc%{gccsuffix}-fortran = %{version}
 
-%description -n gcc-fortran-64bit
+%description -n gcc%{gccsuffix}-fortran-64bit
 The system GNU Fortran Compiler 64 bit support.
 
-%package -n gcc-objc
+%package -n gcc%{gccsuffix}-objc
 Summary:        The system GNU Objective C Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Other
-Requires:       gcc = %{version}
 Requires:       gcc%{gcc_version}-objc
+Requires:       gcc%{gccsuffix} = %{version}
 %ifarch ppc64
-Obsoletes:      gcc-objc-64bit
+Obsoletes:      gcc%{gccsuffix}-objc-64bit
 %endif
 
-%description -n gcc-objc
+%description -n gcc%{gccsuffix}-objc
 The system GNU Objective C Compiler.
 
-%package -n gcc-objc-32bit
+%package -n gcc%{gccsuffix}-objc-32bit
 Summary:        The system GNU Objective C Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Other
 Requires:       gcc%{gcc_version}-objc-32bit
-Requires:       gcc-objc = %{version}
+Requires:       gcc%{gccsuffix}-objc = %{version}
 
-%description -n gcc-objc-32bit
+%description -n gcc%{gccsuffix}-objc-32bit
 The system GNU Objective C Compiler 32 bit support.
 
-%package -n gcc-objc-64bit
+%package -n gcc%{gccsuffix}-objc-64bit
 Summary:        The system GNU Objective C Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Other
 Requires:       gcc%{gcc_version}-objc-64bit
-Requires:       gcc-objc = %{version}
+Requires:       gcc%{gccsuffix}-objc = %{version}
 
-%description -n gcc-objc-64bit
+%description -n gcc%{gccsuffix}-objc-64bit
 The system GNU Objective C Compiler 64 bit support.
 
-%package -n gcc-obj-c++
+%package -n gcc%{gccsuffix}-obj-c++
 Summary:        The system GNU Objective C++ Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Other
 Requires:       gcc%{gcc_version}-obj-c++
-Requires:       gcc-objc = %{version}
+Requires:       gcc%{gccsuffix}-objc = %{version}
 
-%description -n gcc-obj-c++
+%description -n gcc%{gccsuffix}-obj-c++
 The system GNU Objective C++ Compiler.
 
-%package -n gcc-PIE
+%package -n gcc%{gccsuffix}-PIE
 Summary:        A default configuration to build all binaries in PIE mode
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Other
 Requires:       gcc%{gcc_version}-PIE
 
-%description -n gcc-PIE
+%description -n gcc%{gccsuffix}-PIE
 This package contains a configuration file (spec) that changes the
 compilers default setting to build all ELF binaries in the Position
 Independend Executable (PIE) variant. This enables better address
 space randomization (ASLR).
 
-%package -n gcc-ada
+%package -n gcc%{gccsuffix}-ada
 Summary:        The system GNU Ada Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
-Requires:       gcc = %{version}
 Requires:       gcc%{gcc_version}-ada
+Requires:       gcc%{gccsuffix} = %{version}
 
-%description -n gcc-ada
+%description -n gcc%{gccsuffix}-ada
 The system GNU Ada Compiler.
 
-%package -n gcc-ada-32bit
+%package -n gcc%{gccsuffix}-ada-32bit
 Summary:        The system GNU Ada Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 Requires:       gcc%{gcc_version}-ada-32bit
-Requires:       gcc-ada = %{version}
+Requires:       gcc%{gccsuffix}-ada = %{version}
 
-%description -n gcc-ada-32bit
+%description -n gcc%{gccsuffix}-ada-32bit
 The system GNU Ada Compiler 32 bit support.
 
-%package -n gcc-ada-64bit
+%package -n gcc%{gccsuffix}-ada-64bit
 Summary:        The system GNU Ada Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 Requires:       gcc%{gcc_version}-ada-64bit
-Requires:       gcc-ada = %{version}
+Requires:       gcc%{gccsuffix}-ada = %{version}
 
-%description -n gcc-ada-64bit
+%description -n gcc%{gccsuffix}-ada-64bit
 The system GNU Ada Compiler 64 bit support.
 
-%package -n gcc-go
+%package -n gcc%{gccsuffix}-go
 Summary:        The system GNU Go Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
-Requires:       gcc = %{version}
 Requires:       gcc%{gcc_version}-go
+Requires:       gcc%{gccsuffix} = %{version}
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 
-%description -n gcc-go
+%description -n gcc%{gccsuffix}-go
 The system GNU Go Compiler.
 
-%package -n gcc-go-32bit
+%package -n gcc%{gccsuffix}-go-32bit
 Summary:        The system GNU Go Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 Requires:       gcc%{gcc_version}-go-32bit
-Requires:       gcc-go = %{version}
+Requires:       gcc%{gccsuffix}-go = %{version}
 
-%description -n gcc-go-32bit
+%description -n gcc%{gccsuffix}-go-32bit
 The system GNU Go Compiler 32bit support.
 
-%package -n gcc-go-64bit
+%package -n gcc%{gccsuffix}-go-64bit
 Summary:        The system GNU Go Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 Requires:       gcc%{gcc_version}-go-64bit
-Requires:       gcc-go = %{version}
+Requires:       gcc%{gccsuffix}-go = %{version}
 
-%description -n gcc-go-64bit
+%description -n gcc%{gccsuffix}-go-64bit
 The system GNU Go Compiler 64bit support.
 
-%package -n gcc-d
+%package -n gcc%{gccsuffix}-d
 Summary:        The system GNU D Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
-Requires:       gcc = %{version}
 Requires:       gcc%{gcc_version}-d
+Requires:       gcc%{gccsuffix} = %{version}
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 
-%description -n gcc-d
+%description -n gcc%{gccsuffix}-d
 The system GNU D Compiler.
 
-%package -n gcc-d-32bit
+%package -n gcc%{gccsuffix}-d-32bit
 Summary:        The system GNU D Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 Requires:       gcc%{gcc_version}-d-32bit
-Requires:       gcc-d = %{version}
+Requires:       gcc%{gccsuffix}-d = %{version}
 
-%description -n gcc-d-32bit
+%description -n gcc%{gccsuffix}-d-32bit
 The system GNU D Compiler 32bit support.
 
-%package -n gcc-d-64bit
+%package -n gcc%{gccsuffix}-d-64bit
 Summary:        The system GNU D Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 Requires:       gcc%{gcc_version}-d-64bit
-Requires:       gcc-d = %{version}
+Requires:       gcc%{gccsuffix}-d = %{version}
 
-%description -n gcc-d-64bit
+%description -n gcc%{gccsuffix}-d-64bit
 The system GNU D Compiler 64bit support.
 
-%package -n libgccjit-devel
+%package -n libgccjit%{gccsuffix}-devel
 Summary:        Support for embedding GCC inside programs and libraries
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 Requires:       libgccjit%{libgccjit_sover}-devel-gcc%{gcc_version}
 
-%description -n libgccjit-devel
+%description -n libgccjit%{gccsuffix}-devel
 Package contains header files and documentation for GCC JIT front-end.
 
 %prep
@@ -469,7 +490,7 @@ ln -sf gcc-%{gcc_suffix}.1.gz $RPM_BUILD_ROOT%{_mandir}/man1/cc.1.gz
 mkdir -p $RPM_BUILD_ROOT%{_libdir}/bfd-plugins
 ln -s `gcc-%{gcc_suffix} -print-file-name=liblto_plugin.so` $RPM_BUILD_ROOT%{_libdir}/bfd-plugins/liblto_plugin.so
 
-%post -n gcc-go
+%post -n gcc%{gccsuffix}-go
 # we don't want a BuildRequires on gccN-go but otherwise the install
 # step of the build fails, so simply skip the script when gccN-go isn't there
 if [ -f %{_bindir}/go-%{gcc_suffix} ] ; then
@@ -478,12 +499,12 @@ update-alternatives \
   --slave %{_bindir}/gofmt gofmt %{_bindir}/gofmt-%{gcc_suffix}
 fi
 
-%postun -n gcc-go
+%postun -n gcc%{gccsuffix}-go
 if [ $1 -eq 0 ] ; then
   update-alternatives --remove go %{_bindir}/go-%{gcc_suffix}
 fi
 
-%files
+%files -n gcc%{gccsuffix}
 %defattr(-,root,root)
 %{_prefix}/bin/gcc
 %{_prefix}/bin/cc
@@ -503,7 +524,7 @@ fi
 %doc %{_mandir}/man1/gcov-tool.1.gz
 %doc %{_mandir}/man1/lto-dump.1.gz
 
-%files -n cpp
+%files -n cpp%{gccsuffix}
 %defattr(-,root,root)
 %if 0%{?suse_version} < 1550
 /lib/cpp
@@ -515,47 +536,47 @@ fi
 
 # Plugins are only enabled for Tumbleweed
 %if 0%{!?sle_version:1}
-%files -n gcc-devel
+%files -n gcc%{gccsuffix}-devel
 %defattr(-,root,root)
 # empty - only for the dependency
 %endif
 
-%files -n gcc-c++
+%files -n gcc%{gccsuffix}-c++
 %defattr(-,root,root)
 %{_prefix}/bin/g++
 %{_prefix}/bin/c++
 %doc %{_mandir}/man1/g++.1.gz
 %doc %{_mandir}/man1/c++.1.gz
 
-%files -n gcc-fortran
+%files -n gcc%{gccsuffix}-fortran
 %defattr(-,root,root)
 %{_prefix}/bin/gfortran
 %doc %{_mandir}/man1/gfortran.1.gz
 
-%files -n gcc-objc
+%files -n gcc%{gccsuffix}-objc
 %defattr(-,root,root)
 # empty - only for the dependency
 
-%files -n gcc-obj-c++
+%files -n gcc%{gccsuffix}-obj-c++
 %defattr(-,root,root)
 # empty - only for the dependency
 
-%files -n gcc-PIE
+%files -n gcc%{gccsuffix}-PIE
 %defattr(-,root,root)
 # empty - only for the dependency
 
-%files -n gcc-locale
+%files -n gcc%{gccsuffix}-locale
 %defattr(-,root,root)
 # empty - only for the dependency
 
-%files -n gcc-info
+%files -n gcc%{gccsuffix}-info
 %defattr(-,root,root)
 %{_infodir}/cpp.info.gz
 %{_infodir}/gcc.info.gz
 %{_infodir}/gfortran.info.gz
 
 %if %{build_ada}
-%files -n gcc-ada
+%files -n gcc%{gccsuffix}-ada
 %defattr(-,root,root)
 %{_prefix}/bin/gnat
 %{_prefix}/bin/gnatbind
@@ -569,11 +590,11 @@ fi
 %{_prefix}/bin/gnatprep
 %endif
 
-%files -n libstdc++-devel
+%files -n libstdc++%{gccsuffix}-devel
 %defattr(-,root,root)
 # empty - only for the dependency
 
-%files -n gcc-go
+%files -n gcc%{gccsuffix}-go
 %defattr(-,root,root)
 %{_bindir}/gccgo
 %{_bindir}/go
@@ -583,7 +604,7 @@ fi
 %doc %{_mandir}/man1/gccgo.1.gz
 
 %if %{build_d}
-%files -n gcc-d
+%files -n gcc%{gccsuffix}-d
 %defattr(-,root,root)
 %{_bindir}/gdc
 %doc %{_mandir}/man1/gdc.1.gz
@@ -591,83 +612,83 @@ fi
 
 %if %{separate_bi32}
 
-%files -n gcc-32bit
+%files -n gcc%{gccsuffix}-32bit
 %defattr(-,root,root)
 # empty - only for the dependency
 
-%files -n gcc-c++-32bit
+%files -n gcc%{gccsuffix}-c++-32bit
 %defattr(-,root,root)
 # empty - only for the dependency
 
-%files -n libstdc++-devel-32bit
+%files -n libstdc++%{gccsuffix}-devel-32bit
 %defattr(-,root,root)
 # empty - only for the dependency
 
-%files -n gcc-fortran-32bit
+%files -n gcc%{gccsuffix}-fortran-32bit
 %defattr(-,root,root)
 # empty - only for the dependency
 
-%files -n gcc-objc-32bit
+%files -n gcc%{gccsuffix}-objc-32bit
 %defattr(-,root,root)
 # empty - only for the dependency
 
 %if %{build_ada}
-%files -n gcc-ada-32bit
+%files -n gcc%{gccsuffix}-ada-32bit
 %defattr(-,root,root)
 # empty - only for the dependency
 %endif
 
-%files -n gcc-go-32bit
+%files -n gcc%{gccsuffix}-go-32bit
 %defattr(-,root,root)
 # empty - only for the dependency
 
 %if %{build_d}
-%files -n gcc-d-32bit
+%files -n gcc%{gccsuffix}-d-32bit
 %defattr(-,root,root)
 # empty - only for the dependency
 %endif
 %endif
 %if %{separate_bi64}
 
-%files -n gcc-64bit
+%files -n gcc%{gccsuffix}-64bit
 %defattr(-,root,root)
 # empty - only for the dependency
 
-%files -n gcc-c++-64bit
+%files -n gcc%{gccsuffix}-c++-64bit
 %defattr(-,root,root)
 # empty - only for the dependency
 
-%files -n libstdc++-devel-64bit
+%files -n libstdc++%{gccsuffix}-devel-64bit
 %defattr(-,root,root)
 # empty - only for the dependency
 
-%files -n gcc-fortran-64bit
+%files -n gcc%{gccsuffix}-fortran-64bit
 %defattr(-,root,root)
 # empty - only for the dependency
 
-%files -n gcc-objc-64bit
+%files -n gcc%{gccsuffix}-objc-64bit
 %defattr(-,root,root)
 # empty - only for the dependency
 
 %if %{build_ada}
-%files -n gcc-ada-64bit
+%files -n gcc%{gccsuffix}-ada-64bit
 %defattr(-,root,root)
 # empty - only for the dependency
 %endif
 
-%files -n gcc-go-64bit
+%files -n gcc%{gccsuffix}-go-64bit
 %defattr(-,root,root)
 # empty - only for the dependency
 
 %if %{build_d}
-%files -n gcc-d-64bit
+%files -n gcc%{gccsuffix}-d-64bit
 %defattr(-,root,root)
 # empty - only for the dependency
 %endif
 
 %endif
 
-%files -n libgccjit-devel
+%files -n libgccjit%{gccsuffix}-devel
 %defattr(-,root,root)
 # empty - only for the dependency
 

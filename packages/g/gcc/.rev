@@ -627,4 +627,17 @@ from GCC 6).
     <comment>- Switch gcc to default 13.</comment>
     <requestid>1059897</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>512dd8902886bb3c5305acf2c9a2a978</srcmd5>
+    <version>13</version>
+    <time>1708702808</time>
+    <user>anag+factory</user>
+    <comment>- Add gcc-build flavor for building ALP packages, but disabled for
+  openSUSE.
+
+- Support building suffixed packages, but only allow installing one
+  variant at the same time.
+- Remove obsolete obsoletes.</comment>
+    <requestid>1149282</requestid>
+  </revision>
 </revisionlist>
