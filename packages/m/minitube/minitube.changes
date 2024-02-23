@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 23 09:34:54 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Fri Feb  4 17:23:14 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Fix building on openSUSE Leap 15.4: instead pkgconfig(Qt5Script)

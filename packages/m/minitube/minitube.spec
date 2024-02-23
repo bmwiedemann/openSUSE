@@ -59,9 +59,7 @@ it strives to create a new TV-like experience.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 # Remove build time references so build-compare can do its work
 FAKE_BUILDDATE="$(LC_ALL=C date -u -d "@${SOURCE_DATE_EPOCH}" '+%%b %%e %%Y')"
