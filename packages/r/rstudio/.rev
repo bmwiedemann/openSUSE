@@ -249,4 +249,12 @@ Rebase patches:
   * remove-panmirror.patch (forwarded request 1130496 from aaronpuchert)</comment>
     <requestid>1130699</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>89d43522f0dd9dfe64e111d7794aeec8</srcmd5>
+    <version>2023.09.1+494</version>
+    <time>1708703218</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1149890 from dimstar)</comment>
+    <requestid>1149925</requestid>
+  </revision>
 </revisionlist>

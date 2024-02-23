@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 23 11:41:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- USe %autosetup: all supported openSUSE versions support this by
+  now.
+
+-------------------------------------------------------------------
 Sat Dec  2 16:23:00 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - New upstream release 2023.09.1+494.

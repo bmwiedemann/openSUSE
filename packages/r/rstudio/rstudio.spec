@@ -1,7 +1,7 @@
 #
 # spec file for package rstudio
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -284,21 +284,7 @@ on a server has a number of benefits, including:
   supporting libraries
 
 %prep
-%if 0%{?sle_version} == 150200
 %autosetup -p1 -n %{name}-%{rstudio_version_major}.%{rstudio_version_minor}.%{rstudio_version_patch}-%{rstudio_version_suffix}
-%else
-%autosetup -N -n %{name}-%{rstudio_version_major}.%{rstudio_version_minor}.%{rstudio_version_patch}-%{rstudio_version_suffix}
-# autopatch is broken in Leap 15.3… (boo#1189495)
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch9 -p1
-%patch100 -p1
-%endif
 
 # use system libraries when available
 rm -r \
