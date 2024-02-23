@@ -56,7 +56,6 @@ Utilities and example programs for use with XDP
 %package -n %{libname}
 Group:          System/Libraries
 Summary:        XDP helper library
-Requires:       kernel-devel
 
 %description -n %{libname}
 The libxdp package contains the libxdp library for managing XDP programs,
