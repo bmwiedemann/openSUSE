@@ -1,7 +1,7 @@
 #
 # spec file for package monitoring-plugins-sentry3
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           monitoring-plugins-sentry3
 Version:        2012
 Release:        0
 Summary:        Monitor Servertech devices that use the Sentry3 MIB
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Monitoring
-Url:            http://www.linuxhomenetworking.com/
+URL:            http://www.linuxhomenetworking.com/
 Requires:       perl(Nagios::Plugin) >= 0.36
 Requires:       perl(Net::SNMP)
 Source0:        check_sentry3
@@ -44,14 +44,14 @@ It checks the following:
 2) Environmental humidity (Auto-detects all sensors)
 3) Input power (Auto-detects all input feeds)
 
-
 %prep
 %setup -q -T -c %{name}
 install -m755 %{SOURCE0} .
-%patch0 -p0
+%patch -P 0 -p0
 install -m644 %{SOURCE2} .
 
 %build
+
 #
 %install
 install -Dm755 check_sentry3 %{buildroot}/%{nagios_plugindir}/check_sentry3

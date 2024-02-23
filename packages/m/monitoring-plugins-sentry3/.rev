@@ -15,4 +15,12 @@
     <comment>- use complete options for rrdtool (lower-limit instead of lower, etc)</comment>
     <requestid>507793</requestid>
   </revision>
+  <revision rev="3" vrev="102">
+    <srcmd5>c9b3462e905ee479febabd8a3bc0f54a</srcmd5>
+    <version>2012</version>
+    <time>1708703173</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149734</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 23 08:36:14 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Jul  3 11:54:36 UTC 2017 - lars@linux-schulserver.de
 
 - use complete options for rrdtool (lower-limit instead of lower, etc)
