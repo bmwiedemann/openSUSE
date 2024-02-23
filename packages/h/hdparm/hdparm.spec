@@ -41,11 +41,11 @@ driver and IDE drives.
 
 %prep
 %setup -q
-%patch1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%patch -P 1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
 
 %build
 %make_build CFLAGS="%{optflags} -Wall -Wstrict-prototypes" LDFLAGS= CC="gcc"
