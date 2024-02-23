@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 23 10:36:04 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- re-enable build of -azure kernel flavor; syntax check was wrong 
+
+-------------------------------------------------------------------
 Thu Feb 22 15:48:50 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - remove conflicts to nvidia-open-driver-G06-kmp, since it's now

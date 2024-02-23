@@ -314,4 +314,12 @@
   %patchN</comment>
     <requestid>1149574</requestid>
   </revision>
+  <revision rev="31" vrev="9">
+    <srcmd5>48497b11f0eecf9622fe70b732fca276</srcmd5>
+    <version>545.29.06</version>
+    <time>1708703192</time>
+    <user>anag+factory</user>
+    <comment>- re-enable build of -azure kernel flavor; syntax check was wrong</comment>
+    <requestid>1149804</requestid>
+  </revision>
 </revisionlist>

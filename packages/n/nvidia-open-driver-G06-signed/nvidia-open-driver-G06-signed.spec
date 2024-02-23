@@ -63,7 +63,7 @@ BuildRequires:  pesign-obs-integration
 BuildRequires:  zstd
 %ifnarch aarch64
 # available on SLE, but not on ALP ...
-%if !0%{?is_opensuse} && !0%{?suse_version} == 1600
+%if !0%{?is_opensuse} && 0%{?suse_version} < 1600
 BuildRequires:  kernel-syms-azure
 %endif
 %endif
