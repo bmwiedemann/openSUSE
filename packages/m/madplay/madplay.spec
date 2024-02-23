@@ -51,8 +51,7 @@ determine whether a listener can discern a difference between two subjects
 under test, denoted A and B.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure \
