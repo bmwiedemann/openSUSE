@@ -3757,4 +3757,20 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
   * bsc#1218484 (CVE-2023-6693)</comment>
     <requestid>1147915</requestid>
   </revision>
+  <revision rev="267" vrev="2">
+    <srcmd5>1b682e00e4008ed76df31b4f167eabbc</srcmd5>
+    <version>8.2.1</version>
+    <time>1708702905</time>
+    <user>anag+factory</user>
+    <comment>- Just &quot;prettify&quot; the spec files a little:
+  * [openSUSE][RPM] Cosmetic fixes to spec files (copyright, sorting, etc)
+- Patchqueue shrinking and  bugfixing (actually, more of a temporary
+  workaround, until a proper solution is found upstream):
+  * [openSUSE] roms/seabios: revert some upstream commits that
+    break a lot of use-cases
+  * [openSUSE] roms/seabios: Drop an old (and no longer necessary)
+    downstream patch (bsc#1219977)
+</comment>
+    <requestid>1149630</requestid>
+  </revision>
 </revisionlist>

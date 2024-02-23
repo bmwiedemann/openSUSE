@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb 21 15:52:39 UTC 2024 - dfaggioli@suse.com
+
+- Just "prettify" the spec files a little:
+  * [openSUSE][RPM] Cosmetic fixes to spec files (copyright, sorting, etc)
+
+-------------------------------------------------------------------
+Wed Feb 21 14:57:14 UTC 2024 - dfaggioli@suse.com
+
+- Patchqueue shrinking and  bugfixing (actually, more of a temporary
+  workaround, until a proper solution is found upstream):
+  * [openSUSE] roms/seabios: revert some upstream commits that
+    break a lot of use-cases
+  * [openSUSE] roms/seabios: Drop an old (and no longer necessary)
+    downstream patch (bsc#1219977)
+
+-------------------------------------------------------------------
 Mon Feb 19 17:11:41 UTC 2024 - dfaggioli@suse.com
 
 Update to latest stable version (8.2.1)
