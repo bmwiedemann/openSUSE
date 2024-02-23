@@ -32,4 +32,37 @@
     <comment></comment>
     <requestid>976574</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>22b8f86ea91a01eebfbef7b57d3f6bdb</srcmd5>
+    <version>0.10.0</version>
+    <time>1708703147</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.10.0:
+  * Add support to use a permanent Token.
+  * Fix bug using BaseFacade
+  * Fix bug using old Facade instead of BaseFacade
+  * Add isort and Black as formatter
+  * Add static BaseFacade class to allow access to API class and BaseMain
+    options
+  * Remove support for Python 3.8.
+  * Add set of `raw_*` methods that do not process results.
+  * Migrated to Python 3.10, Python 2 is not supported anymore
+  * Resource class methods respect additional `**kwargs` and `extra_headers`
+    parameters and pass them on to the underlying `requests` methods
+  * Fix to support `http://` schema in the server url
+  * Add USE_DASHES option to automatically replace underscores (&quot;_&quot;) with
+    dashes (&quot;-&quot;)
+  * Allow `delete()` method to accept optional `payload`
+  * Fix BaseMain Login method
+  * Add base_main helper
+  * Add method to be able to support resource names with &quot;-&quot; in the name
+  * Support Login based on usernames or email keys
+  * Drop support for Python 2. Test on v3.8 and v3.9
+  * Remove dependency on unitest2
+- Switch to autosetup and pyproject macros.
+- Drop patch python-django-rest-framework-client-no-unittest2.patch, no longer
+  required.
+- Refresh python-django-rest-framework-client-no-mock.patch</comment>
+    <requestid>1149659</requestid>
+  </revision>
 </revisionlist>
