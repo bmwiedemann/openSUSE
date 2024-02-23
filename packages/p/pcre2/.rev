@@ -246,4 +246,12 @@ Not source compatible. Installable in parallel with all packages.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1044235</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>260e1257882ba990ad57ad22b0a637f2</srcmd5>
+    <version>10.43</version>
+    <time>1708703087</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1148531</requestid>
+  </revision>
 </revisionlist>
