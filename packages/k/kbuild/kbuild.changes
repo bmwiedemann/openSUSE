@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 12:41:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Sep  1 10:40:11 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Add byacc to BuildRequires fixes problems with bison 3.7 (bsc#1175268)

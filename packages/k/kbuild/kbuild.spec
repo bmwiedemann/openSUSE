@@ -57,15 +57,15 @@ The goals of the kBuild framework:
 
 %prep
 %setup -q
-%patch0
-%patch2
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch13 -p1
+%patch -P 0
+%patch -P 2
+%patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
+%patch -P 8 -p1
+%patch -P 9 -p1
+%patch -P 10 -p1
+%patch -P 13 -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
