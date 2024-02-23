@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-cryptography
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,27 +27,26 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-cryptography%{psuffix}
-Version:        41.0.7
+Version:        42.0.4
 Release:        0
 Summary:        Python library which exposes cryptographic recipes and primitives
 License:        Apache-2.0 OR BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://cryptography.io/en/latest/
 Source0:        https://files.pythonhosted.org/packages/source/c/cryptography/cryptography-%{version}.tar.gz
-# use `osc service disabledrun` to regenerate
+# use `osc service manualrun` to regenerate
 Source2:        vendor.tar.zst
-# use `osc service disabledrun` to regenerate
-Source3:        cargo_config
 Source4:        python-cryptography.keyring
-Patch2:         skip_openssl_memleak_test.patch
 # PATCH-FEATURE-OPENSUSE no-pytest_benchmark.patch mcepl@suse.com
 # We don't need no benchmarking and coverage measurement
 Patch4:         no-pytest_benchmark.patch
 BuildRequires:  %{python_module cffi >= 1.12}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module exceptiongroup}
-BuildRequires:  %{python_module setuptools-rust}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools-rust >= 1.7.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  cargo >= 1.56.0
 BuildRequires:  fdupes
 BuildRequires:  libopenssl-devel
@@ -60,6 +59,7 @@ BuildRequires:  pkgconfig(libffi)
 Requires:       python
 %requires_eq    python-cffi
 %if %{with test}
+BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module cryptography >= %{version}}
 BuildRequires:  %{python_module cryptography-vectors = %{version}}
 BuildRequires:  %{python_module hypothesis >= 1.11.4}
@@ -85,7 +85,6 @@ functions.
 
 %prep
 %autosetup -a2 -p1 -n cryptography-%{version}
-cp %{SOURCE3} .cargo/config
 rm -v src/rust/Cargo.lock
 
 %build
@@ -93,7 +92,7 @@ rm -v src/rust/Cargo.lock
 %global _lto_cflags %{nil}
 export RUSTFLAGS=%{rustflags}
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
@@ -102,13 +101,20 @@ export RUSTFLAGS=%{rustflags}
 # see https://github.com/pyca/cryptography/issues/1463
 find . -name .keep -print -delete
 
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %endif
 
 %if %{with test}
 %check
 # won't work for cryptography
+# fails with OverflowError on 32bit platform
+%ifarch %ix86 %arm ppc
+rm -v tests/hazmat/primitives/test_aead.py
+# imports test_aead so we need to remove also these
+rm -v tests/wycheproof/test_aes.py
+rm -v tests/wycheproof/test_chacha20poly1305.py
+%endif
 %pytest_arch -n auto --ignore-glob=vendor/*
 %endif
 
@@ -117,7 +123,7 @@ find . -name .keep -print -delete
 %license LICENSE LICENSE.APACHE LICENSE.BSD
 %doc CONTRIBUTING.rst CHANGELOG.rst README.rst
 %{python_sitearch}/cryptography
-%{python_sitearch}/cryptography-%{version}*-info
+%{python_sitearch}/cryptography-%{version}.dist-info
 %endif
 
 %changelog
