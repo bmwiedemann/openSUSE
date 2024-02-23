@@ -156,8 +156,8 @@ RRDtool. To see a real example of Munin in action, take a peek at
 cp %{SOURCE1} .
 unzip %{SOURCE12}
 unzip %{SOURCE13}
-%patch1 -p1
-%patch2 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 
 %build
 %__make HOSTNAME=yourhostname

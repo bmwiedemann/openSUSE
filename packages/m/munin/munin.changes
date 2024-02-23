@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 12:03:55 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Jan 22 10:33:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Provide user(munin) and group(munin): the user and group are
