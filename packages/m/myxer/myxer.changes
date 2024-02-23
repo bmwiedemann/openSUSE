@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 23 06:56:17 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Sep 21 14:42:22 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - tarballs incorrectly with suffix .xz were not compressed, actually

@@ -1,7 +1,7 @@
 #
 # spec file for package myxer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,7 @@ A hello world with a number of the day printer.
 %prep
 %setup -q
 %setup -qa1
-%patch1 -p1
+%patch -P 1 -p1
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
 cp %{SOURCE3} .
