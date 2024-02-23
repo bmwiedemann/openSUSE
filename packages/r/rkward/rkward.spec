@@ -89,9 +89,7 @@ des outils statistiques commerciaux. L'objectif à long terme est de voir son
 intégration dans les suites bureautiques.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build

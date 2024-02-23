@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 23 11:48:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Fri Jan  5 10:51:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add extra-cmake-module BuildRequires: This used to be dragged in

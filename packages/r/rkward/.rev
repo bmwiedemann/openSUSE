@@ -497,4 +497,12 @@
     <comment>Mention the patch in the changelog, so that the diff can actualy be forwarded to Factory (and the package be built) (forwarded request 1141001 from dimstar)</comment>
     <requestid>1141006</requestid>
   </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>ce805d278146c9c4f8e90d873d13fae0</srcmd5>
+    <version>0.7.5</version>
+    <time>1708703217</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1149861 from dimstar)</comment>
+    <requestid>1149924</requestid>
+  </revision>
 </revisionlist>
