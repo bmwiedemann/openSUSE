@@ -1,7 +1,7 @@
 #
 # spec file for package emptyepsilon
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,9 +54,9 @@ Each officer fills a unique role: Captain, Helms, Weapons, Relay, Science, and E
 %setup -q -a1 -n EmptyEpsilon-EE-%{version}
 find -name .gitignore | xargs rm
 pushd SeriousProton-EE-%{version}
-%patch0 -p1
+%patch -P 0 -p1
 popd
-%patch1 -p1
+%patch -P 1 -p1
 
 # extract bundled dependencies
 mkdir -p SeriousProton/externals/basis
@@ -73,7 +73,7 @@ ln -s ../externals
 popd
 
 %build
-%if 0%{?sle_version:1}
+%if 0%{?sle_version}
 # if sle_version is defined, this is not tumbleweed
 export CC=gcc-10
 export CXX=g++-10
@@ -83,6 +83,9 @@ export CXX=g++-10
  -DCPACK_PACKAGE_VERSION_MAJOR="$(echo %{version} | cut -d. -f1)" \
  -DCPACK_PACKAGE_VERSION_MINOR="$(echo %{version} | cut -d. -f2)" \
  -DCPACK_PACKAGE_VERSION_PATCH="$(echo %{version} | cut -d. -f3)" \
+%if 0%{?sle_version}
+ -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
+%endif
  -DOpenGL_GL_PREFERENCE=GLVND
 %cmake_build -j 8
 
@@ -92,7 +95,7 @@ export CXX=g++-10
 %files
 %doc README.md
 %{_bindir}/EmptyEpsilon
-%{_datadir}/doc/EmptyEpsilon/
+%{_docdir}/emptyepsilon/
 %{_datadir}/emptyepsilon/
 %{_datadir}/applications/EmptyEpsilon.desktop
 %{_datadir}/icons/hicolor/1024x1024/apps/EmptyEpsilon.png

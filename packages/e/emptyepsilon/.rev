@@ -7,4 +7,13 @@
     <comment>New Package</comment>
     <requestid>1132498</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>79336cef4595ec06eaa24046dc0f6880</srcmd5>
+    <version>2023.06.17</version>
+    <time>1708703108</time>
+    <user>anag+factory</user>
+    <comment>- Use same doc dir for all versions
+- Use %patch -P N instead of deprecated %patchN.</comment>
+    <requestid>1149592</requestid>
+  </revision>
 </revisionlist>

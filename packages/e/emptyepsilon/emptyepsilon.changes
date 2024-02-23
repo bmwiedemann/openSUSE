@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 22 14:32:53 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Use same doc dir for all versions
+
+-------------------------------------------------------------------
+Thu Feb 22 11:41:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Sep 26 15:15:35 UTC 2023 - Dominik Heidler <dheidler@suse.de>
 
 - Version 2023.06.17
