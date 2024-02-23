@@ -1,7 +1,7 @@
-Index: unix/vncserver/vncserver.in
+Index: tigervnc-1.13.1/unix/vncserver/vncserver.in
 ===================================================================
---- unix/vncserver/vncserver.in.orig
-+++ unix/vncserver/vncserver.in
+--- tigervnc-1.13.1.orig/unix/vncserver/vncserver.in
++++ tigervnc-1.13.1/unix/vncserver/vncserver.in
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env perl
 +#!/usr/bin/perl
