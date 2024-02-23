@@ -2518,6 +2518,7 @@ unsorted:
   - courier-unicode-devel 
   - courier-unicode-doc 
   - cowsay 
+  - cowsql-devel 
   - coxeter 
   - cozette-fonts 
   - cozy 
@@ -10928,7 +10929,7 @@ unsorted:
   - libQuotientQt6-0_8 
   - libRaTools0 
   - libRecast1 
-  - libRivet-3_1_9 
+  - libRivet-3_1_10 
   - libSDL-1_2-0-32bit 
   - libSDL2-2_0-0-32bit 
   - libSDL2_Pango4 
@@ -11115,7 +11116,7 @@ unsorted:
   - libXxf86vm-devel 
   - libXxf86vm-devel-32bit 
   - libXxf86vm1-32bit 
-  - libYODA-1_9_9 
+  - libYODA-1_9_10 
   - libZXing3-32bit 
   - liba2ps1 
   - liba52-0-32bit 
@@ -11933,6 +11934,7 @@ unsorted:
   - libcotp-devel 
   - libcotp3 
   - libcourier-unicode8 
+  - libcowsql0 
   - libcpath-devel 
   - libcpath1 
   - libcpg4-32bit 
@@ -12867,9 +12869,9 @@ unsorted:
   - libgravatar-devel 
   - libgromacs9 
   - libgromacs_mpi9 
-  - libgrpc++1_61 
-  - libgrpc1_61 
-  - libgrpc38 
+  - libgrpc++1_62 
+  - libgrpc1_62 
+  - libgrpc39 
   - libgsequencer0 
   - libgsettings-qt1 
   - libgsf-devel 
@@ -14313,7 +14315,7 @@ unsorted:
   - libortools9 
   - libortools_flatzinc9 
   - libortp15 
-  - libosdCPU3_4_4 
+  - libosdCPU3_6_0 
   - libosg2vsg-devel 
   - libosg2vsg0 
   - libosinfo-devel 
@@ -14975,7 +14977,7 @@ unsorted:
   - libradcli5 
   - librados-devel 
   - libradospp-devel 
-  - libraft3 
+  - libraft0 
   - libraptor-devel 
   - libraptor2-0-32bit 
   - libraqm-devel 
@@ -15245,7 +15247,7 @@ unsorted:
   - libsamplerate0-32bit 
   - libsane1-32bit 
   - libsanlock1 
-  - libsass-3_6_5-1 
+  - libsass-3_6_6-1 
   - libsass-devel 
   - libsbc1-32bit 
   - libsblim-cmpiutil1 
@@ -15652,7 +15654,6 @@ unsorted:
   - libtachyon-0_99_5 
   - libtag-devel 
   - libtag-doc 
-  - libtag-extras1 
   - libtag1-32bit 
   - libtag_c0-32bit 
   - libtaginfo-devel 
@@ -15904,7 +15905,7 @@ unsorted:
   - libunwind-setjmp0 
   - libunwind-setjmp0-32bit 
   - libunwind8-32bit 
-  - libupb38 
+  - libupb39 
   - libupm1 
   - libupnp-devel 
   - libupnpp-devel 
@@ -19834,11 +19835,8 @@ unsorted:
   - owasp-modsecurity-crs 
   - owasp-modsecurity-crs-apache2 
   - owncloud-client 
-  - owncloud-client-caja 
-  - owncloud-client-dolphin 
-  - owncloud-client-nautilus 
-  - owncloud-client-nemo 
   - owncloud-dolphin 
+  - owncloud-icons 
   - owntone 
   - oxygen5 
   - oxygen5-cursors 
@@ -22836,7 +22834,6 @@ unsorted:
   - python3-dnf-plugin-show-leaves 
   - python3-dnf-plugin-showvars 
   - python3-dnf-plugin-snapper 
-  - python3-dnf-plugin-system-upgrade 
   - python3-dnf-plugin-torproxy 
   - python3-dnf-plugin-versionlock 
   - python3-dnf-plugins-core 
@@ -30423,6 +30420,7 @@ unsorted:
   - python312-atspi 
   - python312-attr 
   - python312-attrs 
+  - python312-aubio 
   - python312-audio-degrader 
   - python312-audiogrep 
   - python312-audiomate 
@@ -31166,6 +31164,7 @@ unsorted:
   - python312-django-nine 
   - python312-django-oauth-toolkit 
   - python312-django-oidc-provider 
+  - python312-django-opentracing 
   - python312-django-pandas 
   - python312-django-parler 
   - python312-django-perf-rec 
@@ -31275,6 +31274,7 @@ unsorted:
   - python312-emoji 
   - python312-empy 
   - python312-enaml 
+  - python312-encore 
   - python312-enrich 
   - python312-entrypoint2 
   - python312-entrypoints 
@@ -31286,6 +31286,7 @@ unsorted:
   - python312-ephemeral-port-reserve 
   - python312-epubmerge 
   - python312-eradicate 
+  - python312-espeak 
   - python312-esptool 
   - python312-et_xmlfile 
   - python312-etcd 
@@ -31326,6 +31327,7 @@ unsorted:
   - python312-fastparquet 
   - python312-fastremap 
   - python312-fasttext 
+  - python312-fb-re2 
   - python312-feedgen 
   - python312-feedgenerator 
   - python312-feedparser 
@@ -32065,6 +32067,7 @@ unsorted:
   - python312-nftables 
   - python312-nh3 
   - python312-nibabel 
+  - python312-nilearn 
   - python312-nine 
   - python312-nkdfu 
   - python312-nlopt 
@@ -32114,6 +32117,8 @@ unsorted:
   - python312-olm 
   - python312-omemo-dr 
   - python312-onigurumacffi 
+  - python312-onnx 
+  - python312-onnxconverter-common 
   - python312-opcodes 
   - python312-openTSNE 
   - python312-openai 
@@ -32682,6 +32687,7 @@ unsorted:
   - python312-python-crfsuite 
   - python312-python-crontab 
   - python312-python-daemon 
+  - python312-python-datamatrix 
   - python312-python-dateutil 
   - python312-python-dbusmock 
   - python312-python-debian 
@@ -32717,6 +32723,8 @@ unsorted:
   - python312-python-pam 
   - python312-python-poppler 
   - python312-python-prctl 
+  - python312-python-pseudorandom 
+  - python312-python-qdatamatrix 
   - python312-python-qpid-proton 
   - python312-python-qprogedit 
   - python312-python-rapidjson 
@@ -39599,11 +39607,11 @@ unsorted:
   - tack 
   - tagbanwa-fonts 
   - taglib 
-  - taglib-extras-devel 
   - tagsoup 
   - tagsoup-javadoc 
   - tai-heritage-pro-fonts 
   - taigo 
+  - tailscale 
   - taisei 
   - taisei-data 
   - tali 
