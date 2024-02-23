@@ -51,8 +51,7 @@ message authentication code) values for files.  The names and interfaces are
 meant to mimic the sha*sum tools provided by the coreutils package.
 
 %prep
-%setup -q
-%patch1 -p0
+%autosetup -p0
 
 %build
 %configure --enable-sum-directory=%{_libdir}/%{name}
