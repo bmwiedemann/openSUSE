@@ -1,7 +1,7 @@
 #
 # spec file for package mp3gain
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -42,8 +42,7 @@ lossless. There is no quality lost in the change because the program
 adjusts the mp3 file directly, without decoding and re-encoding.
 
 %prep
-%setup -q -c %{name}-%{version}
-%patch0 -p2
+%autosetup -p2 -c %{name}-%{version}
 
 %build
 export CFLAGS="%{optflags}"
