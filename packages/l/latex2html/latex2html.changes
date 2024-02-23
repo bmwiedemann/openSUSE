@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 14 13:50:10 UTC 2024 - pgajdos@suse.com
+
+- version update to 2024
+  * "make clean" removes manual.pdf
+    https://bugs.debian.org/1046413
+- modified patches
+  % latex2html-share-dir.diff (refreshed)
+
+-------------------------------------------------------------------
 Fri Jul 21 07:43:38 UTC 2023 - pgajdos@suse.com
 
 - version update to 2023.2

@@ -2,7 +2,7 @@ Index: config/config.pl
 ===================================================================
 --- config/config.pl.orig
 +++ config/config.pl
-@@ -1918,7 +1918,7 @@ else {
+@@ -2020,7 +2020,7 @@ else {
      $newcfg{'SHLIBDIR'} = $newcfg{'PREFIX'};
    }
    else {
@@ -11,4 +11,3 @@ Index: config/config.pl
    }
  }
  add_drive_letter($newcfg{'SHLIBDIR'});
-
