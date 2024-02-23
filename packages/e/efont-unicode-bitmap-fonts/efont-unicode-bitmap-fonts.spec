@@ -51,10 +51,10 @@ Unicode fonts developed by /efont/ openlab. This font package includes
 
 %prep
 %setup -q -n efont-unicode-bdf-0.4.2-src
-%patch0
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch -P 0
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 iconv -f ISO-8859-1 -t UTF-8 < README.etl-unicode > README.etl-unicode.tmp
 mv README.etl-unicode.tmp README.etl-unicode
 for i in README.shinonome README.naga10

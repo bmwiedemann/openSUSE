@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 11:37:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Nov 21 18:54:57 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix use of deprecated one-based array index, removed in perl 5.30.
