@@ -91,4 +91,14 @@
   * cargo: Afterburn release 5.4.1</comment>
     <requestid>1080942</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>bc795fd9ec3da47e966b23665f124a9f</srcmd5>
+    <version>5.4.1</version>
+    <time>1708703189</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1147736 from dimstar
+
+Prepare for RPM 4.20</comment>
+    <requestid>1149784</requestid>
+  </revision>
 </revisionlist>

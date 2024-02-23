@@ -1,7 +1,7 @@
 #
 # spec file for package afterburn
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,9 +54,9 @@ to run in the initramfs on boot.
 
 %prep
 %autosetup -N -a1
-%patch1 -p1
-%patch2 -p0
-%patch3 -p0
+%patch -P 1 -p1
+%patch -P 2 -p0
+%patch -P 3 -p0
 
 mkdir .cargo
 cp %{SOURCE2} .cargo/config

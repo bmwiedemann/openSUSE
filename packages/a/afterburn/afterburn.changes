@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 10:03:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Apr 20 11:02:18 UTC 2023 - miika.alikirri@suse.com
 
 - Update to version 5.4.1:
