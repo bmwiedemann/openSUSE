@@ -1,7 +1,7 @@
 #
 # spec file for package mutt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -82,7 +82,7 @@ BuildRequires:  python3-setuptools
 BuildRequires:  smtp_daemon
 %endif
 Requires:       glibc-locale
-Requires:       smtp_daemon
+Suggests:       smtp_daemon
 Requires(post): %{_bindir}/cat
 Requires(post): %{_bindir}/mkdir
 Requires(postun):%{_bindir}/rm
@@ -159,19 +159,19 @@ Provides translations to the package mutt.
 
 %prep
 %setup -q -n mutt-%{version}
-%patch0  -b .p0
-%patch2  -b .pgpewrap
-%patch3  -b .sendgroupreplyto
-%patch4  -b .wrapcolumn
-%patch7  -b .opennfs
-%patch11  -b .listreply
-%patch12  -b .pgp_verbose_mtime
-%patch15  -b .widechar.sidebar
-%patch16  -b .crlf
-%patch18  -b .mailcap
-%patch19  -b .cvw2014.9116
-%patch20  -b .imap
-%patch21  -b .quit
+%patch -P 0  -b .p0
+%patch -P 2  -b .pgpewrap
+%patch -P 3  -b .sendgroupreplyto
+%patch -P 4  -b .wrapcolumn
+%patch -P 7  -b .opennfs
+%patch -P 11  -b .listreply
+%patch -P 12  -b .pgp_verbose_mtime
+%patch -P 15  -b .widechar.sidebar
+%patch -P 16  -b .crlf
+%patch -P 18  -b .mailcap
+%patch -P 19  -b .cvw2014.9116
+%patch -P 20  -b .imap
+%patch -P 21  -b .quit
 
 cp %{SOURCE2} .
 
@@ -287,7 +287,8 @@ install -D -m 644 %{SOURCE9} %{buildroot}%{_datadir}/%{name}/mailcap
 rm -vf %{buildroot}%{_docdir}/%{name}/manual.txt
 install -D -m 644 doc/manual.txt.gz %{buildroot}%{_docdir}/%{name}/
 
-sed -rn '/Command formats for gpg/,$p' %{SOURCE5} >> %{buildroot}%{_sysconfdir}/Muttrc
+mv  %{buildroot}%{_sysconfdir}/Muttrc %{buildroot}%{_datadir}/%{name}/Muttrc
+sed -rn '/Command formats for gpg/,$p' %{SOURCE5} >> %{buildroot}%{_datadir}/%{name}/Muttrc
 
 %if 0%{?suse_version}
 %suse_update_desktop_file mutt
@@ -335,7 +336,6 @@ rm -f %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-notify
 
 %files
 %config(noreplace) %{_sysconfdir}/skel/.muttrc
-%config(noreplace) %{_sysconfdir}/Muttrc
 %{_bindir}/mutt
 %{_bindir}/pgpewrap
 %{_bindir}/mutt_pgpring
@@ -353,6 +353,7 @@ rm -f %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-notify
 %{_datadir}/mutt/mailcap
 %dir %doc %{_docdir}/%{name}/
 %doc %{_docdir}/%{name}/manual.txt.gz
+%{_datadir}/%{name}/Muttrc
 %if 0%{suse_version} >= 1500
 %{_docdir}/%{name}/mutt_oauth2.py
 %{_docdir}/%{name}/mutt_oauth2.py.README

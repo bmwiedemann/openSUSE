@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 23 09:10:55 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Tue Feb 20 09:53:45 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Only suggest smtp daemon at runtime.  Nevertheless if not
+  installed user will face a a warning.
+- Move /etc/Muttrc to /usr/share/mutt/Muttrc
+
+-------------------------------------------------------------------
 Mon Oct  9 07:41:57 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Require a smtp daemon at build and runtime to work around

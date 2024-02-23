@@ -1449,4 +1449,12 @@ with a run of spec-cleaner (forwarded request 826781 from AndreasStieger)</comme
   missing system /var/mail/ directory (boo#1216035)</comment>
     <requestid>1116386</requestid>
   </revision>
+  <revision rev="117" vrev="4">
+    <srcmd5>1f7bc9238ce4e096126f76a21ed1e303</srcmd5>
+    <version>2.2.12</version>
+    <time>1708703183</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN. (forwarded request 1149751 from pgajdos)</comment>
+    <requestid>1149763</requestid>
+  </revision>
 </revisionlist>
