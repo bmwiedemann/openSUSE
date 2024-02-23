@@ -294,4 +294,12 @@
     <comment>Security fix CVE-2024-23301 bsc#1218728 for rear (forwarded request 1140363 from jsmeix)</comment>
     <requestid>1140364</requestid>
   </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>1789a832ea80f477f98d4b99115d903c</srcmd5>
+    <version>2.7</version>
+    <time>1708703205</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149895</requestid>
+  </revision>
 </revisionlist>

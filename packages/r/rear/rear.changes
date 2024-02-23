@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 23 11:52:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Jan 22 07:10:11 UTC 2024 - Johannes Meixner <jsmeix@suse.com>
 
 - GRUB_RESCUE_initrd.patch fixes CVE-2024-23301

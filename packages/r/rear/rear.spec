@@ -297,7 +297,7 @@ for details see the GNU General Public License.
 # "ReaR creates world-readable initrd with GRUB_RESCUE=Y"
 # https://github.com/rear/rear/issues/3122
 # https://bugzilla.suse.com/show_bug.cgi?id=1218728
-%patch100
+%patch -P 100
 # Add a specific os.conf to not depend on LSB dependencies
 # (otherwise it calls "lsb_release" in /usr/share/rear/lib/config-functions.sh)
 # for the suse_version values see the listings at
