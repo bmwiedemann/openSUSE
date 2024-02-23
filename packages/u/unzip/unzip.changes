@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 15:26:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Sep 26 09:17:32 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Build unzip-rcc using multibuild and update unzip-rcc.spec file

@@ -1,7 +1,7 @@
 #
 # spec file for package unzip
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,7 +66,7 @@ Patch24:        CVE-2022-0530.patch
 # PATCH-FIX-UPSTREAM danilo.spinella@suse.com CVE-2022-0529 bsc#1196180
 Patch25:        CVE-2022-0529.patch
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     %{_name}-doc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -91,30 +91,30 @@ functionality. This version can also extract encrypted archives.
 
 %prep
 %setup -q -n %{_name}%{fileversion}
-%patch0
-%patch1
-%patch3
-%patch4
-%patch5
-%patch8
+%patch -P 0
+%patch -P 1
+%patch -P 3
+%patch -P 4
+%patch -P 5
+%patch -P 8
 %if %{with rcc}
-%patch10
+%patch -P 10
 %endif
-%patch11
-%patch12
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
-%patch19 -p0
-%patch20 -p1
-%patch21 -p1
-%patch22 -p1
-%patch23 -p1
-%patch24 -p1
-%patch25 -p1
+%patch -P 11
+%patch -P 12
+%patch -P 13 -p1
+%patch -P 14 -p1
+%patch -P 15 -p1
+%patch -P 16 -p1
+%patch -P 17 -p1
+%patch -P 18 -p1
+%patch -P 19 -p0
+%patch -P 20 -p1
+%patch -P 21 -p1
+%patch -P 22 -p1
+%patch -P 23 -p1
+%patch -P 24 -p1
+%patch -P 25 -p1
 
 %build
 export RPM_OPT_FLAGS="%{optflags} \
