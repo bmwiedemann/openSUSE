@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-doc-utils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -113,6 +113,7 @@ export LANG=C.UTF-8
 %find_lang gnome-doc-make %{?no_lang_C} %{name}.lang
 %find_lang gnome-doc-xslt %{?no_lang_C} %{name}.lang
 %fdupes %{buildroot}/%{_prefix}
+%python3_fix_shebang
 
 %files
 %license COPYING

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 13:28:34 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Mon Jan 17 21:07:51 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Add python-rpm-macros to BuildRequires (boo#1194754).
