@@ -1,7 +1,7 @@
 #
 # spec file for package hamcrest
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,14 +33,14 @@ Patch0:         0001-Fix-build-with-OpenJDK-11.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
-%if %{with tests}
-BuildRequires:  ant-junit
-%endif
+BuildRequires:  javapackages-local >= 6
 Provides:       %{name}-core = %{version}
 Obsoletes:      %{name}-core < %{version}
 Obsoletes:      %{name}-demo < %{version}
 BuildArch:      noarch
+%if %{with tests}
+BuildRequires:  ant-junit
+%endif
 
 %description
 Provides a library of matcher objects (also known as constraints or
@@ -56,14 +56,14 @@ Group:          Documentation/HTML
 Javadoc for %{name}.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 cp %{SOURCE1} build.xml
 cp %{SOURCE3} %{SOURCE4} .
 
-%patch0 -p2
+%patch -P 0 -p2
 
 %build
-%ant \
+%{ant} \
 %if %{without tests}
     -Dtest.skip=true \
 %endif
@@ -79,7 +79,7 @@ ln -sf %{name}.jar %{buildroot}%{_javadir}/%{name}/library.jar
 
 # poms
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 %{SOURCE2} %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%{mvn_install_pom} %{SOURCE2} %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
 %add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar -a "org.hamcrest:hamcrest-all,org.hamcrest:hamcrest-core,org.hamcrest:hamcrest-library"
 
 # javadoc
