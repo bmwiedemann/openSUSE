@@ -26,10 +26,10 @@ URL:            https://github.com/ianlancetaylor/libbacktrace
 Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  automake
 BuildRequires:  libtool
-BuildRequires:  libunwind-devel
-BuildRequires:  libzstd-devel
-BuildRequires:  xz-devel
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(libunwind)
+BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 A C library that may be linked into a C/C++ program to produce symbolic backtraces.
