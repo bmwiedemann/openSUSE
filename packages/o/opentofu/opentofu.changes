@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 23 07:51:17 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.6.2:
+  * Prepare 1.6.2 update (#1296)
+  * Backports: Problem referencing output from test run in local
+    variables block (#1254) (#1293)
+  * Backport: Add Community Supported Architectures Section to
+    Install Docs -… (#1257)
+  * Backport of Resolve more inconsistencies in 32-bit systems
+    (#1214) (#1226)
+  * Backport: Fix typo in standalone-install.sh (#1186) (#1187)
+
+-------------------------------------------------------------------
 Fri Jan 26 19:42:57 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.6.1:
