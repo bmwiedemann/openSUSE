@@ -189,4 +189,12 @@
   - bc-1.06-dc_ibase.patch (upstreamed)</comment>
     <requestid>841945</requestid>
   </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>faa3379b71a33cad804368ce372a43b2</srcmd5>
+    <version>1.07.1</version>
+    <time>1708703096</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1149154 from dimstar)</comment>
+    <requestid>1149164</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 10:08:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Thu Oct 15 14:20:20 UTC 2020 - pgajdos@suse.com
 
 - fix [bsc#1177579] -- wrong clamping of hexadecimal digits in dc

@@ -56,8 +56,7 @@ the next operator is read in, which "pops" its arguments off the stack
 and "pushes" its results back onto the stack.
 
 %prep
-%setup -q
-%patch2 -p1
+%autosetup -p1
 
 %build
 %configure \
