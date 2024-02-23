@@ -42,12 +42,12 @@ WordStar keybindings used in Borland's development environment.
 
 %prep
 %setup -q
-%patch2
-%patch3
-%patch7
-%patch8
-%patch10
-%patch12 -p1
+%patch -P 2
+%patch -P 3
+%patch -P 7
+%patch -P 8
+%patch -P 10
+%patch -P 12 -p1
 
 %build
 autoreconf -fiv
