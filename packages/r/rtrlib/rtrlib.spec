@@ -79,8 +79,7 @@ This is the API documentation of the RTRlib, a C implementation of
 the RPKI/Router Protocol client.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 CFLAGS="%{optflags} -Wno-return-type"
