@@ -2,6 +2,7 @@
 # spec file for package pcre2
 #
 # Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 Name:           pcre2
-Version:        10.42
+Version:        10.43
 Release:        0
 Summary:        A library for Perl-compatible regular expressions
 License:        BSD-3-Clause
@@ -207,14 +208,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 export LANG=POSIX
 %make_build check -j1
 
-%post -n libpcre2-8-0 -p /sbin/ldconfig
-%postun -n libpcre2-8-0 -p /sbin/ldconfig
-%post -n libpcre2-16-0 -p /sbin/ldconfig
-%postun -n libpcre2-16-0 -p /sbin/ldconfig
-%post -n libpcre2-32-0 -p /sbin/ldconfig
-%postun -n libpcre2-32-0 -p /sbin/ldconfig
-%post -n libpcre2-posix3 -p /sbin/ldconfig
-%postun -n libpcre2-posix3 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libpcre2-8-0
+%ldconfig_scriptlets -n libpcre2-16-0
+%ldconfig_scriptlets -n libpcre2-32-0
+%ldconfig_scriptlets -n libpcre2-posix3
 
 %files -n libpcre2-8-0
 %license COPYING LICENCE
@@ -259,6 +256,7 @@ export LANG=POSIX
 %{_mandir}/man3/*%{ext_man}
 
 %files devel-static
+%license LICENCE
 %{_libdir}/*.a
 
 %changelog
