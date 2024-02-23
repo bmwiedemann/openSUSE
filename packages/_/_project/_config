@@ -3350,10 +3350,12 @@ Macros:
 %rb_build_versions      ruby33 ruby32
 :Macros
 
+%if "%{_project}" != "openSUSE:Factory:Staging:G"
 # ruby 3.2 macros still around
 Macros:
 %_with_ruby32               1
 :Macros
+%endif
 
 %define _with_ruby32        1
 
