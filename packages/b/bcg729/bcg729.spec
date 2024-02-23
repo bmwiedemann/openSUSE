@@ -52,8 +52,7 @@ This package includes the files necessary for compiling and linking
 application which will use libbcg729.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake \

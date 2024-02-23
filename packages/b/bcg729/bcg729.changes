@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 10:09:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Feb  1 16:24:29 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - fixed license tag
