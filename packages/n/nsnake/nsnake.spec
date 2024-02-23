@@ -42,9 +42,7 @@ Here are some features:
 - Lots of possible game modes, with scores saved for eac
 
 %prep
-%setup -q -n nSnake-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n nSnake-%{version}
 
 %build
 make %{?_smp_mflags}
