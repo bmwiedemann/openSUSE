@@ -75,9 +75,7 @@ Group:          Documentation/HTML
 The %{name}-doc package provides documentation for the %{name} library.
 
 %prep
-%setup -q
-%patch0
-%patch1
+%autosetup -p0
 
 # Disable -O3 optimization for unit tests
 sed -i 's| -O3||g' configure

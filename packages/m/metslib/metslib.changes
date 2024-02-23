@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 23 10:11:52 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Jun  8 20:42:29 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Fix building against GCC 11 by explicitly passing -std=c++14.
