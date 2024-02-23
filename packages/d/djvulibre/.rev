@@ -393,4 +393,13 @@
   + djvulibre-CVE-2021-46312.patch</comment>
     <requestid>1107914</requestid>
   </revision>
+  <revision rev="46" vrev="7">
+    <srcmd5>1af0df436830eae96525e2efbd5dc8cc</srcmd5>
+    <version>3.5.28</version>
+    <time>1708702848</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1149022</requestid>
+  </revision>
 </revisionlist>

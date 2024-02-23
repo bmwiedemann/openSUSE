@@ -1,7 +1,7 @@
 #
 # spec file for package djvulibre
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -92,14 +92,7 @@ software platform for distributing documents and images.
 This package contains the documentation.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+%autosetup -p1
 
 %build
 # configure script missing; generate using autogen.sh
