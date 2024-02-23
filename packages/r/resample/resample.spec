@@ -36,8 +36,7 @@ it can be used to convert the sampling rate from 48 kHz (used by DAT
 machines) to 44.1 kHz (the standard sampling rate for Compact Discs).
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure
