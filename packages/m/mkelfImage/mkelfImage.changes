@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 23 09:27:11 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Oct 19 10:36:48 UTC 2017 - mpluskal@suse.com
 
 - Cleanup spec file with spec-clener

@@ -40,8 +40,8 @@ made when necessary. This is useful for systems running LinuxBIOS.
 
 %prep
 %setup -q
-%patch0
-%patch1 -p1
+%patch -P 0
+%patch -P 1 -p1
 
 %build
 autoreconf -fiv
