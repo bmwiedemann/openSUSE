@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Feb 22 17:19:18 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- update to 42.0.4:
+  * Update test vectors to match python-cryptography 42.0.4
+
+-------------------------------------------------------------------
+Wed Jan 31 17:22:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 42.0.2:
+  * Update test vectors to match python-cryptography 42.0.2
+
+-------------------------------------------------------------------
+Mon Jan 29 13:59:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 42.0.1:
+  * Update test vectors to match python-cryptography 42.0.1
+
+-------------------------------------------------------------------
 Tue Jan  2 20:48:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - require setuptools

@@ -309,4 +309,19 @@
     <comment>- require setuptools</comment>
     <requestid>1136272</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>adbf060481339322daac267c4c9209a1</srcmd5>
+    <version>42.0.4</version>
+    <time>1708702900</time>
+    <user>anag+factory</user>
+    <comment>- update to 42.0.4:
+  * Update test vectors to match python-cryptography 42.0.4
+
+- update to 42.0.2:
+  * Update test vectors to match python-cryptography 42.0.2
+
+- update to 42.0.1:
+  * Update test vectors to match python-cryptography 42.0.1</comment>
+    <requestid>1149624</requestid>
+  </revision>
 </revisionlist>
