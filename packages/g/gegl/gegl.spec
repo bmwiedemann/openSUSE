@@ -26,7 +26,7 @@
 %bcond_with gegl_docs
 
 Name:           gegl
-Version:        0.4.46
+Version:        0.4.48
 Release:        0
 Summary:        Generic Graphics Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -45,6 +45,9 @@ BuildRequires:  libspiro-devel
 BuildRequires:  libstdc++-devel
 BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
+%if %{with gegl_docs}
+BuildRequires:  python3-gi-docgen
+%endif
 BuildRequires:  ruby
 BuildRequires:  suitesparse-devel
 BuildRequires:  (pkgconfig(babl) or pkgconfig(babl-0.1))
@@ -172,9 +175,11 @@ export LD_PRELOAD="/usr/lib64/libgomp.so.1"
 	-Dworkshop=true \
 	-Djasper=disabled \
 %if %{with gegl_docs}
-	-Ddocs=true \
+  -Ddocs=true \
+	-Dgi-docgen=enabled \
 %else
-	-Ddocs=false \
+  -Ddocs=false \
+	-Dgi-docgen=disabled \
 %endif
 	%{nil}
 %meson_build
@@ -229,7 +234,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files doc
 %doc AUTHORS docs/ChangeLog NEWS
 %if %{with gegl_docs}
-%doc %{_datadir}/gtk-doc/html/gegl/
+%doc %{_datadir}/gegl-0.4/
 %endif
 
 %files -n %{name}-0_4-lang -f %{name}-0.4.lang

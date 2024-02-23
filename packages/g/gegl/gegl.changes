@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Feb 22 01:59:19 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.4.48:
+  + Core:
+    - GeglColor extended with GBytes API, and space aware accesors
+      for RGB and CMYK. Better runtime handling of mismatched GEGL
+      ops in graphs.
+  + Build:
+    - Use gi-docgen
+    - Updated vendored libraries
+    - ctx has been updated from upstream.
+  + Operations:
+    - dropshadow: Fix shrinking with negative-grow radius.
+    - mantiuk: opt out of OpenMP when building with clang.
+    - voroni: fix crash.
+    - shuffle-search: in progress (in workshop, not built by
+      default) brute-force dither optimizer.
+- prepare gi-docgen documentation. disabled for now.
+
+-------------------------------------------------------------------
 Tue Feb 20 10:19:01 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Replace BuildRequires libSDL2-devel with pkgconfig(sdl2) which
