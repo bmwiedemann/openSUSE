@@ -58,4 +58,12 @@
     <comment></comment>
     <requestid>1097118</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>976e1866c2d7f439b8ff77ca4249951b</srcmd5>
+    <version>1.7</version>
+    <time>1708703148</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup and pyproject macros.</comment>
+    <requestid>1149667</requestid>
+  </revision>
 </revisionlist>

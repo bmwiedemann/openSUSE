@@ -1,7 +1,7 @@
 #
 # spec file for package python-verboselogs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,12 @@ Version:        1.7
 Release:        0
 Summary:        Verbose logging level for Python's logging module
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/xolox/python-verboselogs
 Source:         https://files.pythonhosted.org/packages/source/v/verboselogs/verboselogs-%{version}.tar.gz
 Patch0:         verboselogs-pylint2.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-pylint
@@ -49,14 +50,13 @@ VERBOSE_, NOTICE_, and SPAM_:
 It is currently tested on Python 2.6, 2.7, 3.4, 3.5 and PyPy.
 
 %prep
-%setup -q -n verboselogs-%{version}
-%patch0 -p1
+%autosetup -p1 -n verboselogs-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -68,6 +68,6 @@ sed -i 's:import mock:from unittest import mock:' verboselogs/tests.py
 %doc README.rst
 %license LICENSE.txt
 %{python_sitelib}/verboselogs
-%{python_sitelib}/verboselogs-%{version}-py*.egg-info
+%{python_sitelib}/verboselogs-%{version}.dist-info
 
 %changelog
