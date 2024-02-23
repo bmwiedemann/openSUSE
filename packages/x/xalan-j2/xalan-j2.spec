@@ -1,7 +1,7 @@
 #
 # spec file for package xalan-j2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,7 @@ BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  java-cup-bootstrap
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  jlex
 BuildRequires:  regexp
 BuildRequires:  servletapi5
@@ -55,7 +55,7 @@ BuildRequires:  xml-commons-apis-bootstrap
 #!BuildIgnore:  xml-commons-resolver
 Requires:       jaxp_parser_impl
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       jaxp_transform_impl
 BuildArch:      noarch
 
@@ -109,10 +109,10 @@ This package contains demonstration and sample files for Xalan.
 
 %prep
 %setup -q -n xalan-j_%{cvs_version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 # Remove all binary libs, except ones needed to build docs and N/A elsewhere.
 for j in $(find . -name "*.jar"); do
         mv $j $j.no
@@ -120,9 +120,6 @@ done
 mv tools/xalan2jdoc.jar.no tools/xalan2jdoc.jar
 mv tools/xalan2jtaglet.jar.no tools/xalan2jtaglet.jar
 dos2unix KEYS LICENSE.txt NOTICE.txt xdocs/sources/xsltc/README.xsltc xdocs/sources/xsltc/README.xslt
-
-cp %{SOURCE1} xalan.pom
-cp %{SOURCE2} serializer.pom
 
 %build
 if [ ! -e "$JAVA_HOME" ] ; then export JAVA_HOME="%{java_home}" ; fi
@@ -168,11 +165,11 @@ install -p -m 644 build/serializer.jar \
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -p -m 644 xalan.pom %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
-install -p -m 644 serializer.pom %{buildroot}%{_mavenpomdir}/%{name}-serializer.pom
+%{mvn_install_pom} %{SOURCE2} %{buildroot}%{_mavenpomdir}/%{name}-serializer.pom
 %add_maven_depmap %{name}-serializer.pom %{name}-serializer.jar
-install -p -m 644 %{SOURCE3}  %{buildroot}%{_mavenpomdir}/xsltc.pom
+%{mvn_install_pom} %{SOURCE3}  %{buildroot}%{_mavenpomdir}/xsltc.pom
 %add_maven_depmap xsltc.pom xsltc.jar -f xsltc
 
 # demo
