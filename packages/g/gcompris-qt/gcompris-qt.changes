@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Feb 21 19:59:40 UTC 2024 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 4.0:
+  + add translations for 3 more languages: Bulgarian, Galician and
+    Swahili.
+  + contains 190 activities, including 8 new ones:
+    "Grammar classes" is an activity to learn to identify words
+    grammatical classes, one class at a time.
+    "Grammar analysis" is similar to the previous one, but with
+    several classes requested for each sentence.
+    "Calcudoku" is an arithmetic game where the goal is to fill a
+    grid with numbers according to specific rules.
+    With "Guess 24", using the 4 given numbers and the operators,
+    find the number 24!
+    In "Frieze", reproduce and complete the different friezes.
+    "Read a graduated line" is an activity where you need to find
+    a value represented on a graduated line.
+    In "Use a graduated line", place the given value on the
+    graduated line.
+    In "Adjacent numbers", learn which numbers come before or after
+    the given sequence.
+  + It contains bug fixes and graphics improvements on multiple
+    activities.
+  + One major milestone has been reached with this version: after
+    almost 9 years of work, the task of reworking all the graphics
+    to fit the guidelines has been completed!
+
+-------------------------------------------------------------------
 Tue Sep 19 20:03:03 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Update license according to legalreview
@@ -8,7 +36,7 @@ Thu Jun 15 07:19:22 UTC 2023 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to bugfix release 3.3:
   + adds translations for 2 more languages: Arabic and Esperanto.
-  + bug fixes on multiple activities "Path encoding", 
+  + bug fixes on multiple activities "Path encoding",
     "Letter in word", "Ballcatch" and "Piano composition".
   + improvements of keyboard handling (shortcuts, focus...).
   + contains new graphics and improvements on "Photo hunter".
