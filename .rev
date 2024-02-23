@@ -995,4 +995,37 @@
      was done in version 9).</comment>
     <requestid>1129081</requestid>
   </revision>
+  <revision rev="101" vrev="5">
+    <srcmd5>ed37e452358816e660ad255ae490b69a</srcmd5>
+    <version>1.13.1</version>
+    <time>1708702815</time>
+    <user>anag+factory</user>
+    <comment>- Set the URL at Source0.
+- patches have been renamed 
+  * u_build_libXvnc_as_separate_library.patch --&gt; 
+    u_tigervnc-Build-libXvnc-as-separate-library.patch
+ * n_vncserver.patch --&gt;
+   n_tigervnc-Vncserver.patch
+ * n_correct_path_in_desktop_file.patch --&gt;
+   n_tigervnc-Correct-path-in-desktop-file.patch
+ * n_tigervnc-date-time.patch --&gt;
+   n_tigervnc-Date-time.patch
+ * u_change-button-layout-in-ServerDialog.patch --&gt;
+   u_tigervnc-Change-button-layout-in-ServerDialog.patch   
+ * n_dont_sign_java_client.patch --&gt;
+   n_tigervnc-Dont-sign-java-client.patch 
+ * u_tigervnc-add-autoaccept-parameter.patch --&gt;
+   u_tigervnc-Add-autoaccept-parameter.patch
+ * u_tigervnc-ignore-epipe-on-write.patch
+   u_tigervnc-Ignore-epipe-on-write.patch
+- Cleanup specfile
+  * Use the same format for all the patches.
+  * Use autosetup to apply all the patches with -p1.
+  * Clean number of sources.
+- buildrequire xorg-x11-server-source/-sdk &gt;= 21.1.11 and trigger
+  rebuild with newer xorg-x11-server-source package (bsc#1219311,
+  bsc#1219205)
+</comment>
+    <requestid>1148477</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package tigervnc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,32 +35,32 @@ Summary:        An implementation of VNC
 License:        GPL-2.0-only AND MIT
 Group:          System/X11/Servers/XF86_4
 URL:            https://tigervnc.org/
-Source1:        https://github.com/TigerVNC/tigervnc/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source4:        10-libvnc.conf
-Source5:        vnc-server.susefirewall
-Source6:        vnc-httpd.susefirewall
-Source7:        vnc.reg
-Source8:        vncpasswd.arg
-Source9:        vnc.pam
-Source10:       with-vnc-key.sh
-Source11:       index.vnc
-Source12:       x11vnc
-Source13:       xvnc@.service.in
-Source14:       xvnc.socket
-Source16:       xvnc-novnc.socket
-Source17:       tigervnc.firewalld
-Source18:       tigervnc-https.firewalld
-Source19:       xvnc.target
-Source21:       xvnc-novnc.service.in
-Source22:       vnc.sysusers
-Patch1:         u_tigervnc-ignore-epipe-on-write.patch
-Patch2:         u_build_libXvnc_as_separate_library.patch
-Patch3:         u_tigervnc-add-autoaccept-parameter.patch
-Patch4:         u_change-button-layout-in-ServerDialog.patch
-Patch5:         n_tigervnc-date-time.patch
-Patch6:         n_correct_path_in_desktop_file.patch
-Patch7:         n_vncserver.patch
-Patch8:         n_dont_sign_java_client.patch
+Source0:        https://github.com/TigerVNC/tigervnc/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        10-libvnc.conf
+Source2:        vnc-server.susefirewall
+Source3:        vnc-httpd.susefirewall
+Source4:        vnc.reg
+Source5:        vncpasswd.arg
+Source6:        vnc.pam
+Source7:        with-vnc-key.sh
+Source8:        index.vnc
+Source9:        x11vnc
+Source10:       xvnc@.service.in
+Source11:       xvnc.socket
+Source12:       xvnc-novnc.socket
+Source13:       tigervnc.firewalld
+Source14:       tigervnc-https.firewalld
+Source15:       xvnc.target
+Source16:       xvnc-novnc.service.in
+Source17:       vnc.sysusers
+Patch1:         u_tigervnc-Ignore-epipe-on-write.patch
+Patch2:         u_tigervnc-Build-libXvnc-as-separate-library.patch
+Patch3:         u_tigervnc-Add-autoaccept-parameter.patch
+Patch4:         u_tigervnc-Change-button-layout-in-ServerDialog.patch
+Patch5:         n_tigervnc-Date-time.patch
+Patch6:         n_tigervnc-Correct-path-in-desktop-file.patch
+Patch7:         n_tigervnc-Vncserver.patch
+Patch8:         n_tigervnc-Dont-sign-java-client.patch
 Provides:       tightvnc = 1.5.0
 Obsoletes:      tightvnc < 1.5.0
 Provides:       vnc
@@ -74,8 +74,8 @@ BuildRequires:  jpackage-utils
 BuildRequires:  libjpeg-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libtool
-BuildRequires:  xorg-x11-server-sdk >= 21.1.0
-BuildRequires:  xorg-x11-server-source >= 21.1.0
+BuildRequires:  xorg-x11-server-sdk >= 21.1.11
+BuildRequires:  xorg-x11-server-source >= 21.1.11
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xproto)
@@ -132,7 +132,7 @@ BuildRequires:  pkgconfig(xtrans) >= 1.2.2
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} >= 1315
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 
 %description
@@ -235,15 +235,7 @@ This is a wrapper that looks like x11vnc, but starts x0vncserver instead.
 It maps common x11vnc arguments to x0vncserver arguments.
 
 %prep
-%setup -T -b1 -q -n tigervnc-%{version}
-%patch1 -p0
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p0
-%patch8 -p0
+%autosetup -p1
 
 cp -r %{_prefix}/src/xserver/* unix/xserver/
 pushd unix/xserver
@@ -251,11 +243,11 @@ patch -p1 < ../xserver21.1.1.patch
 popd
 
 %build
-%sysusers_generate_pre %{SOURCE22} xorg-x11-Xvnc vnc.conf
+%sysusers_generate_pre %{SOURCE17} xorg-x11-Xvnc vnc.conf
 export CXXFLAGS="%optflags"
 export CFLAGS="%optflags"
-sed "s|@LIBEXECDIR@|%{_libexecdir}|g" %{SOURCE13} > xvnc@.service
-sed "s|@LIBEXECDIR@|%{_libexecdir}|g" %{SOURCE21} > xvnc-novnc.service
+sed "s|@LIBEXECDIR@|%{_libexecdir}|g" %{SOURCE10} > xvnc@.service
+sed "s|@LIBEXECDIR@|%{_libexecdir}|g" %{SOURCE16} > xvnc-novnc.service
 # Build all tigervnc
 cmake -DCMAKE_VERBOSE_MAKEFILE=ON \
   -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
@@ -309,25 +301,25 @@ install -m755 VncViewer.jar %{buildroot}%{_datadir}/vnc/classes
 popd
 
 %ifnarch s390x
-install -D -m 644 %{SOURCE4} %{buildroot}%{_datadir}/X11/xorg.conf.d/10-libvnc.conf
+install -D -m 644 %{SOURCE1} %{buildroot}%{_datadir}/X11/xorg.conf.d/10-libvnc.conf
 %endif
 
 %if %{use_firewalld}
-install -D -m 644 %{SOURCE17} %{buildroot}%{_prefix}/lib/firewalld/services/tigervnc.xml
-install -D -m 644 %{SOURCE18} %{buildroot}%{_prefix}/lib/firewalld/services/tigervnc-https.xml
+install -D -m 644 %{SOURCE13} %{buildroot}%{_prefix}/lib/firewalld/services/tigervnc.xml
+install -D -m 644 %{SOURCE14} %{buildroot}%{_prefix}/lib/firewalld/services/tigervnc-https.xml
 %else
-install -D -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/vnc-server
-install -D -m 644 %{SOURCE6} %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/vnc-httpd
+install -D -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/vnc-server
+install -D -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/vnc-httpd
 %endif
 
 # only package as %%doc (boo#1173045)
-cp %{SOURCE7} .
-install -D -m 755 %{SOURCE8} %{buildroot}%{_bindir}/vncpasswd.arg
-install -D -m 644 %{SOURCE9} %{buildroot}%{_pam_vendordir}/vnc
+cp %{SOURCE4} .
+install -D -m 755 %{SOURCE5} %{buildroot}%{_bindir}/vncpasswd.arg
+install -D -m 644 %{SOURCE6} %{buildroot}%{_pam_vendordir}/vnc
 %if 0%{?suse_version} >= 1550
 mv %{buildroot}%{_sysconfdir}/pam.d/tigervnc %{buildroot}%{_pam_vendordir}
 %endif
-install -D -m 644 %{SOURCE11} %{buildroot}%{_datadir}/vnc/classes
+install -D -m 644 %{SOURCE8} %{buildroot}%{_datadir}/vnc/classes
 %if 0%{?suse_version} >= 1315
 ln -s -f %{_sysconfdir}/alternatives/vncviewer %{buildroot}%{_bindir}/vncviewer
 ln -s -f %{_sysconfdir}/alternatives/vncviewer.1.gz %{buildroot}%{_mandir}/man1/vncviewer.1.gz
@@ -340,17 +332,17 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcxvnc-novnc
 mkdir -p %{buildroot}%{_sysconfdir}/vnc
 
 mkdir -p %{buildroot}%{_libexecdir}/vnc
-install -D -m 755 %{SOURCE10} %{buildroot}%{_libexecdir}/vnc
+install -D -m 755 %{SOURCE7} %{buildroot}%{_libexecdir}/vnc
 
-install -D -m 755 %{SOURCE12} %{buildroot}%{_bindir}/x11vnc
+install -D -m 755 %{SOURCE9} %{buildroot}%{_bindir}/x11vnc
 
 install -D xvnc@.service -m 0444 %{buildroot}%{_unitdir}/xvnc@.service
-install -D %{SOURCE14} -m 0444 %{buildroot}%{_unitdir}/xvnc.socket
-install -D %{SOURCE16} -m 0444 %{buildroot}%{_unitdir}/xvnc-novnc.socket
-install -D %{SOURCE19} -m 0444 %{buildroot}%{_unitdir}/xvnc.target
+install -D %{SOURCE11} -m 0444 %{buildroot}%{_unitdir}/xvnc.socket
+install -D %{SOURCE12} -m 0444 %{buildroot}%{_unitdir}/xvnc-novnc.socket
+install -D %{SOURCE15} -m 0444 %{buildroot}%{_unitdir}/xvnc.target
 install -D xvnc-novnc.service -m 0444 %{buildroot}%{_unitdir}/xvnc-novnc.service
 
-install -Dm0644 %{SOURCE22} %{buildroot}%{_sysusersdir}/vnc.conf
+install -Dm0644 %{SOURCE17} %{buildroot}%{_sysusersdir}/vnc.conf
 
 rm -rf %{buildroot}%{_datadir}/doc/tigervnc*
 

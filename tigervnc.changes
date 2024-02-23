@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Feb 21 09:15:27 UTC 2024 - Joan Torres <joan.torres@suse.com>
+
+- Set the URL at Source0.
+
+-------------------------------------------------------------------
+Tue Feb 20 16:12:44 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- patches have been renamed 
+  * u_build_libXvnc_as_separate_library.patch --> 
+    u_tigervnc-Build-libXvnc-as-separate-library.patch
+ * n_vncserver.patch -->
+   n_tigervnc-Vncserver.patch
+ * n_correct_path_in_desktop_file.patch -->
+   n_tigervnc-Correct-path-in-desktop-file.patch
+ * n_tigervnc-date-time.patch -->
+   n_tigervnc-Date-time.patch
+ * u_change-button-layout-in-ServerDialog.patch -->
+   u_tigervnc-Change-button-layout-in-ServerDialog.patch   
+ * n_dont_sign_java_client.patch -->
+   n_tigervnc-Dont-sign-java-client.patch 
+ * u_tigervnc-add-autoaccept-parameter.patch -->
+   u_tigervnc-Add-autoaccept-parameter.patch
+ * u_tigervnc-ignore-epipe-on-write.patch
+   u_tigervnc-Ignore-epipe-on-write.patch
+
+-------------------------------------------------------------------
+Tue Feb 20 10:16:54 UTC 2024 - Joan Torres <joan.torres@suse.com>
+
+- Cleanup specfile
+  * Use the same format for all the patches.
+  * Use autosetup to apply all the patches with -p1.
+  * Clean number of sources.
+
+-------------------------------------------------------------------
+Mon Feb 19 12:49:39 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- buildrequire xorg-x11-server-source/-sdk >= 21.1.11 and trigger
+  rebuild with newer xorg-x11-server-source package (bsc#1219311,
+  bsc#1219205)
+
+-------------------------------------------------------------------
 Tue Nov 21 15:10:39 UTC 2023 - Joan Torres <joan.torres@suse.com>
 
 - introduced n_dont_sign_java_client.patch and changed

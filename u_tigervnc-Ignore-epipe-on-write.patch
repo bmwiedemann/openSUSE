@@ -5,10 +5,10 @@ References: bnc#864676
 
 If the VNC server closes connection after our last read and before this write, we will report error message about EPIPE.
 This situation is no error, however, we should quit normally same as when we find out that connection was closed during read.
-Index: common/rdr/FdOutStream.cxx
+Index: tigervnc-1.13.1/common/rdr/FdOutStream.cxx
 ===================================================================
---- common/rdr/FdOutStream.cxx.orig
-+++ common/rdr/FdOutStream.cxx
+--- tigervnc-1.13.1.orig/common/rdr/FdOutStream.cxx
++++ tigervnc-1.13.1/common/rdr/FdOutStream.cxx
 @@ -128,8 +128,12 @@ size_t FdOutStream::writeFd(const void*
  #endif
    } while (n < 0 && (errno == EINTR));
