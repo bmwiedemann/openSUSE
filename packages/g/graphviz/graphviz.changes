@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 07:45:53 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+- Update graphviz-rpmlintrc
+
+-------------------------------------------------------------------
 Tue Nov 28 10:23:46 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Require bitstream-vera-fonts for correct .png rendering by doxygen+dot

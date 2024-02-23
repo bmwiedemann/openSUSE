@@ -815,4 +815,13 @@
     <comment></comment>
     <requestid>1130719</requestid>
   </revision>
+  <revision rev="100" vrev="8">
+    <srcmd5>c1839243e0a12a5f72c107bc42422dcb</srcmd5>
+    <version>2.49.3</version>
+    <time>1708702845</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN.
+- Update graphviz-rpmlintrc</comment>
+    <requestid>1149009</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package graphviz
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -406,14 +406,14 @@ programs that use the graphviz libraries including man3 pages.
 %prep
 #autosetup breaks graphviz-addons
 %setup -q -n %{mname}-%{version}
-%patch0
-%patch1
-%patch2
-%patch3
-%patch4
-%patch5 -p1
-%patch6
-%patch7 -p1
+%patch -P 0
+%patch -P 1
+%patch -P 2
+%patch -P 3
+%patch -P 4
+%patch -P 5 -p1
+%patch -P 6
+%patch -P 7 -p1
 
 # pkg-config returns 0 (TRUE) when guile-2.2 is present
 if pkg-config --atleast-version=2.2 guile-2.2; then
