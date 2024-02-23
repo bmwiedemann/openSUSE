@@ -392,6 +392,7 @@ Patch198:       0001-loader-arm64-efi-linux-Remove-magic-number-header-fi.patch
 Patch199:       0001-squash-ieee1275-ofpath-enable-NVMeoF-logical-device-.patch
 Patch200:       0001-ofdisk-enhance-boot-time-by-focusing-on-boot-disk-re.patch
 Patch201:       0002-ofdisk-add-early_log-support.patch
+Patch202:       0001-disk-Optimize-disk-iteration-by-moving-memdisk-to-th.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140

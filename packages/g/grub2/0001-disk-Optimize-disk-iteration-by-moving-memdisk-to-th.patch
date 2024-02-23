@@ -1,0 +1,37 @@
+From 5846e14a4dbf0c73969a32625d841e4f842ccdea Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Wed, 31 Jan 2024 18:44:27 +0800
+Subject: [PATCH] disk: Optimize disk iteration by moving memdisk to the end
+
+When performing file or UUID-based searches, prioritize returning
+operating system disk devices over the memdisk. The memdisk, typically
+used for internal grub data, is moved to the last position in the search
+order. This improves search efficiency and prevents potential unexpected
+results.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ include/grub/disk.h | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/include/grub/disk.h b/include/grub/disk.h
+index bf0958885..f4fd7a00f 100644
+--- a/include/grub/disk.h
++++ b/include/grub/disk.h
+@@ -244,7 +244,12 @@ grub_disk_dev_iterate (grub_disk_dev_iterate_hook_t hook, void *hook_data)
+ 
+   for (pull = 0; pull < GRUB_DISK_PULL_MAX; pull++)
+     for (p = grub_disk_dev_list; p; p = p->next)
+-      if (p->disk_iterate && (p->disk_iterate) (hook, hook_data, pull))
++      if (p->id != GRUB_DISK_DEVICE_MEMDISK_ID && p->disk_iterate && (p->disk_iterate) (hook, hook_data, pull))
++	return 1;
++
++  for (pull = 0; pull < GRUB_DISK_PULL_MAX; pull++)
++    for (p = grub_disk_dev_list; p; p = p->next)
++      if (p->id == GRUB_DISK_DEVICE_MEMDISK_ID && p->disk_iterate && (p->disk_iterate) (hook, hook_data, pull))
+ 	return 1;
+ 
+   return 0;
+-- 
+2.43.0
+

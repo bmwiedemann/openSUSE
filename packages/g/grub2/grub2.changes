@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 22 04:19:21 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Fix grub.xen memdisk script doesn't look for /boot/grub/grub.cfg
+  (bsc#1219248) (bsc#1181762) 
+  * grub2-xen-pv-firmware.cfg
+  * 0001-disk-Optimize-disk-iteration-by-moving-memdisk-to-th.patch
+
+-------------------------------------------------------------------
 Sat Feb 17 06:59:55 UTC 2024 - Michael Chang <mchang@suse.com>
 
 - Fix PowerPC grub loads 5 to 10 minutes slower on SLE-15-SP5 compared to
