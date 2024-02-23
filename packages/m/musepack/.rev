@@ -32,4 +32,12 @@
   from some arrays which should not have them (boo#1176374). (forwarded request 834337 from mgorse)</comment>
     <requestid>835236</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>218e6ac8f798607851f3f6a57238444c</srcmd5>
+    <version>r475</version>
+    <time>1708702875</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149349</requestid>
+  </revision>
 </revisionlist>

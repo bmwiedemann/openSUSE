@@ -1,7 +1,7 @@
 #
 # spec file for package musepack
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 Asterios Dramis <asterios.dramis@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -72,9 +72,9 @@ been developed.
 
 %prep
 %setup -q -n %{name}_src_%{version}
-%patch0
-%patch1
-%patch2 -p1
+%patch -P 0
+%patch -P 1
+%patch -P 2 -p1
 
 %build
 # Fix rpmlint warning "version-control-internal-file"

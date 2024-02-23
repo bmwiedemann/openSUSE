@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 11:51:15 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Sep 14 15:40:02 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Add libmpcdec-fastmath-no-const.patch: remove const declarations
