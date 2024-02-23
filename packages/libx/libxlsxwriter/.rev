@@ -7,4 +7,12 @@
     <comment>Removal of static libraries should hopefully bring this in line with Factory standards.</comment>
     <requestid>1098729</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e28f4132248333313f2b5f4e159edcac</srcmd5>
+    <version>1.1.5</version>
+    <time>1708703150</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149676</requestid>
+  </revision>
 </revisionlist>

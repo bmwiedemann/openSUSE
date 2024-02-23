@@ -1,7 +1,7 @@
 #
 # spec file for package libxlsxwriter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define libname libxlsxwriter5
 
 Name:           libxlsxwriter
@@ -25,9 +26,14 @@ License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/jmcnamara/libxlsxwriter
 Source:         https://github.com/jmcnamara/libxlsxwriter/archive/refs/tags/RELEASE_%{version}.tar.gz
+# PATCH-FIX-UPSTREAM findminizip.patch -- Upstream patches around to fix detection of minizip
+Patch0:         find_minizip.patch
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  make
+BuildRequires:  pkgconfig(minizip)
 BuildRequires:  pkgconfig(zlib)
+# Tests
+BuildRequires:  python3-pytest
 
 %description
 A C library for creating Excel XLSX files.
@@ -52,15 +58,19 @@ Libxlsxwriter is a C library for creating Excel XLSX files.
 This package holds the development files.
 
 %prep
-%autosetup -p1 -n libxlsxwriter-RELEASE_%{version}
+%autosetup -p1 -n %{name}-RELEASE_%{version}
 
 %build
-%make_build
+%cmake -DUSE_SYSTEM_MINIZIP=ON -DBUILD_TESTS=ON
+%cmake_build
 
 %install
-sed -i 's/PREFIX)\/lib/PREFIX)\/lib64/' Makefile
-%make_install PREFIX="%{_prefix}"
-rm %{buildroot}%{_libdir}/libxlsxwriter.a
+%cmake_install
+
+%check
+%ifnarch s390x
+%ctest
+%endif
 
 %post   -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig

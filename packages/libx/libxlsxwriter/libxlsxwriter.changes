@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 23 01:52:43 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Add find_minizip.patch -- upstream patches to fix usage of system
+  libraries.
+- Switch to cmake, fixing 32bit builds.
+
+-------------------------------------------------------------------
 Fri Jul 14 19:14:48 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Remove statically linked library
