@@ -77,4 +77,12 @@
     (#295) (#347) (#364) - thanks scop, OrBin, jtaylor100,</comment>
     <requestid>1069322</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>2ac83e91e0e78a2e1daa5c62dfe3518c</srcmd5>
+    <version>0.18.0</version>
+    <time>1708703184</time>
+    <user>anag+factory</user>
+    <comment>Fix missing setuptools dependency</comment>
+    <requestid>1149776</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package gitlint
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://github.com/jorisroovers/%{name}
 Source:         https://pypi.io/packages/source/g/%{name}-core/%{name}-core-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -34,7 +35,7 @@ Requires:       python-arrow >= 1
 Requires:       python-click >= 8
 Requires:       python-sh >= 1.13.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
