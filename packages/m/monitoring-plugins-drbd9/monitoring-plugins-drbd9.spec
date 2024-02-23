@@ -44,9 +44,7 @@ The following DRBD kernel modules and DRBD Utilities are supported:
 * DRBD 9.0.x with drbd-utils 8.9.6
 
 %prep
-%setup -q -n nagios_check_drbd9-%{version} 
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n nagios_check_drbd9-%{version} 
 chmod -x *
 
 %build

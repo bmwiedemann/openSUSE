@@ -7,4 +7,12 @@
     <comment>New monitoring plugin to monitor a DRBD(9) device</comment>
     <requestid>455270</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4582d8ba1ed0a442cf96e7aaa35d5359</srcmd5>
+    <version>0.1</version>
+    <time>1708703179</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149741</requestid>
+  </revision>
 </revisionlist>
