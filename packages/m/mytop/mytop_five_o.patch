@@ -1,6 +1,8 @@
---- mytop	2003-08-04 10:31:14.000000000 -0700
-+++ mytop.bak	2006-12-08 22:14:08.000000000 -0800
-@@ -252,18 +252,21 @@
+Index: mytop-1.6/mytop
+===================================================================
+--- mytop-1.6.orig/mytop
++++ mytop-1.6/mytop
+@@ -262,18 +262,21 @@ ReadMode($RM_RESET) unless $config{batch
  
  ## Get static data
  
@@ -15,7 +17,7 @@
 +if ($db_version =~ /^5/)
 +{
 +	$global = 'global';
-+}		
++}
 +
 +my @variables = Hashes("show $global variables");
  
@@ -29,7 +31,7 @@
      if ($_->{Variable_name} eq "have_query_cache")
      {
          if ($_->{Value} eq 'YES')
-@@ -669,7 +672,7 @@
+@@ -710,7 +713,7 @@ sub GetData()
      ##
      if ($config{header})
      {

@@ -1,6 +1,8 @@
---- mytop-1.6/mytop.orig	2007-02-17 05:57:46.000000000 +0100
-+++ mytop-1.6/mytop	2012-07-09 16:05:42.000000000 +0200
-@@ -153,9 +153,9 @@
+Index: mytop-1.6/mytop
+===================================================================
+--- mytop-1.6.orig/mytop
++++ mytop-1.6/mytop
+@@ -153,9 +153,9 @@ GetOptions(
      "idle|i"              => \$config{idle},
      "resolve|r"           => \$config{resolve},
      "prompt!"             => \$config{prompt},
@@ -12,7 +14,7 @@
  );
  
  ## User may have put the port with the host.
-@@ -1766,6 +1766,33 @@
+@@ -1769,6 +1769,33 @@ with hostnames but toggling this option.
  
  Default: noresolve
  

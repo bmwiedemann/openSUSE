@@ -1,7 +1,7 @@
 #
 # spec file for package mytop
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,23 +20,19 @@ Name:           mytop
 Version:        1.6
 Release:        0
 Summary:        A top Clone for MySQL
-License:        GPL-2.0+
-Group:          Productivity/Databases/Tools
-Url:            http://jeremy.zawodny.com/mysql/mytop/
+License:        GPL-2.0-or-later
+URL:            https://jeremy.zawodny.com/mysql/mytop/
 Source:         http://jeremy.zawodny.com/mysql/mytop/mytop-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM mytop_five_o.patch -- makes it work with mysql 5.0
-Patch1:         http://ebergen.net/patches/mytop_five_o.patch
+Patch1:         mytop_five_o.patch
 # PATCH-FIX-UPSTREAM mytop_option-and-doc.patch [bnc#716439] cwh@suse.de -- fixed starting failure and documentation
 Patch2:         mytop_option-and-doc.patch
 Requires:       perl = %{perl_version}
 Requires:       perl-DBD-mysql
 Requires:       perl-DBI
 Requires:       perl-TermReadKey
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-%if %{undefined suse_version}
 BuildRequires:  perl-macros
-%endif
 
 %description
 mytop is a console-based (non-GUI) tool for monitoring the threads and
@@ -47,29 +43,22 @@ overall performance of MySQL 3.22.x, 3.23.x, and 4.x servers.
 - If you install Time::HiRes, get good real-time queries/second stats.
 
 %prep
-%setup -q -n mytop-%{version}
-%patch1
-%patch2 -p1
+%autosetup -p1
 
 %build
 perl Makefile.PL
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} test
+%make_build test
 
 %install
 make DESTDIR=%{buildroot} install_vendor
 %perl_process_packlist
 
 %files
-%defattr(-,root,root,-)
 %doc Changes
-%{_mandir}/man?/mytop.1.gz
+%{_mandir}/man?/mytop.1%{?ext_man}
 %{_bindir}/mytop
-%if 0%{?suse_version} < 1140
-%{perl_vendorarch}/auto/mytop
-%{_localstatedir}/adm/perl-modules/%{name}
-%endif
 
 %changelog

@@ -147,4 +147,16 @@
     <comment>1</comment>
     <requestid>298398</requestid>
   </revision>
+  <revision rev="22" vrev="105">
+    <srcmd5>740269b06e586445522ac2e1a15a2ba7</srcmd5>
+    <version>1.6</version>
+    <time>1708703165</time>
+    <user>anag+factory</user>
+    <comment>- Modernise spec file
+- Do not use url for patch mytop_five_o.patch as its no longer
+  accessible
+
+- Use %patch -P N instead of deprecated %patchN.</comment>
+    <requestid>1149716</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 23 08:37:24 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernise spec file
+- Do not use url for patch mytop_five_o.patch as its no longer
+  accessible
+
+-------------------------------------------------------------------
+Thu Feb 22 11:35:04 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Apr 21 16:15:16 UTC 2015 - mpluskal@suse.com
 
 - Use url for source
