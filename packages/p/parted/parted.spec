@@ -127,34 +127,7 @@ to develop applications that require these.
 %lang_package
 
 %prep
-%setup -a 4
-%patch1 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
-%patch19 -p1
-%patch21 -p1
-%patch22 -p1
-%patch23 -p1
-%patch24 -p1
-%patch26 -p1
-%patch29 -p1
-%patch31 -p1
-%patch32 -p1
-%patch33 -p1
-%patch34 -p1
-%patch36 -p1
-%patch37 -p1
-%patch100 -p1
-%patch156 -p1
-%patch157 -p1
-%patch158 -p1
-%patch200 -p1
+%autosetup -a 4 -p1
 
 %build
 export CFLAGS="%{optflags} `ncursesw6-config --cflags`"
