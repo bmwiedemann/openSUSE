@@ -75,24 +75,27 @@ Development files for %{name} including headers and libraries
 %autosetup -p1 -n kColorPicker-%{version}
 
 %build
-%cmake \
+%define opts -DBUILD_TESTS=TRUE -DBUILD_EXAMPLE=FALSE
 %if %{qtver} == 6
-    -DBUILD_WITH_QT6=TRUE \
+    %cmake_qt6 -DBUILD_WITH_QT6=TRUE -DBUILD_SHARED_LIBS=TRUE %{opts}
+    %qt6_build
+%else
+    %cmake %{opts}
+    %cmake_build
 %endif
-    -DBUILD_TESTS=TRUE \
-    -DBUILD_EXAMPLE=FALSE
-
-%make_jobs
 
 %install
-%cmake_install
+%if %{qtver} == 6
+    %qt6_install
+%else
+    %cmake_install
+%endif
 
 %check
 export QT_QPA_PLATFORM=offscreen
 %ctest
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %license LICENSE

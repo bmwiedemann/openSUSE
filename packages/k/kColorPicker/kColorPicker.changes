@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb 11 00:45:49 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Fix build on Leap. The Qt6 packaging macros set the minimum
+  compiler version
+- Change %post/%postun to %ldconfig_scriptlets
+
+-------------------------------------------------------------------
 Tue Jan 16 17:14:48 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 0.3.0:
