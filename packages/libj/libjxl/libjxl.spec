@@ -1,5 +1,5 @@
 #
-# spec file for package libjxl-gtk
+# spec file for package libjxl
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -16,7 +16,7 @@
 #
 
 
-%define lname   libjxl0_9
+%define lname   libjxl0_10
 %if "@BUILD_FLAVOR@" == "gtk"
 Name:           libjxl-gtk
 %bcond_without gtk
@@ -24,7 +24,7 @@ Name:           libjxl-gtk
 Name:           libjxl
 %bcond_with gtk
 %endif
-Version:        0.9.2
+Version:        0.10.0
 Release:        0
 Summary:        JPEG XL reference implementation
 License:        BSD-3-Clause
@@ -167,7 +167,6 @@ rm -Rf "$b/%_libdir"/libjxl* "$b/%_bindir" "$b/%_includedir" "$b/%_libdir/pkgcon
 %files -n jxl-thumbnailer
 %dir %_datadir/thumbnailers
 %_datadir/thumbnailers/*.thumbnailer
-%_datadir/mime/packages/*.xml
 
 %endif
 
