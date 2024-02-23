@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 23 08:46:20 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Feb  4 19:20:32 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary.

@@ -40,7 +40,7 @@ Nagios plugin to monitor APC Smart-UPSes using apcupsd.
 %prep
 %setup -q -T -c %{name}
 install -m755 %{SOURCE0} .
-%patch1 -p1
+%patch -P 1 -p1
 
 %build
 #
