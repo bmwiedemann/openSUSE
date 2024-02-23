@@ -99,15 +99,15 @@ for patch in ../readline-%{rl_vers}-patches/*; do
     echo Patch $patch
     patch -s -p$level < $patch
 done
-%patch21 -p2 -b .zerotty
-%patch22 -p2 -b .wrap
-%patch23 -p2 -b .conf
-%patch24 -p2 -b .metamode
-#%patch25 -p2 -b .endpw
-%patch31 -p2 -b .tmp
-%patch27 -p0 -b .xm
-%patch30 -p0 -b .destdir
-%patch20 -p0 -b .0
+%patch -P 21 -p2 -b .zerotty
+%patch -P 22 -p2 -b .wrap
+%patch -P 23 -p2 -b .conf
+%patch -P 24 -p2 -b .metamode
+#%patch -P 25 -p2 -b .endpw
+%patch -P 31 -p2 -b .tmp
+%patch -P 27 -p0 -b .xm
+%patch -P 30 -p0 -b .destdir
+%patch -P 20 -p0 -b .0
 
 %build
   LANG=POSIX
