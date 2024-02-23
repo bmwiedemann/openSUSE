@@ -1,7 +1,7 @@
 #
 # spec file for package potrace
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,8 +66,7 @@ image is not "jaggy" like a bitmap, but smooth. It can then be rendered
 at any resolution.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 %define warn_flags -Wall -Wstrict-prototypes -Wpointer-arith -Wformat-security
