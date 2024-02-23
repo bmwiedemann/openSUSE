@@ -1,7 +1,7 @@
 #
 # spec file for package jlex
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,8 @@ Release:        0
 Summary:        A Lexical Analyzer Generator for Java
 License:        BSD-3-Clause
 Group:          Development/Libraries/Java
-URL:            http://www.cs.princeton.edu/~appel/modern/java/JLex/
-Source0:        http://www.cs.princeton.edu/~appel/modern/java/JLex/Archive/1.2.5/Main.java
+URL:            https://www.cs.princeton.edu/~appel/modern/java/JLex/
+Source0:        https://www.cs.princeton.edu/~appel/modern/java/JLex/Archive/1.2.5/Main.java
 Source1:        %{name}-%{version}.build.xml
 Patch0:         %{name}-%{version}.static.patch
 BuildRequires:  ant
@@ -44,7 +44,9 @@ JLex is a lexical analyzer generator for Java.
 %prep
 %setup -q -c -T
 cp %{SOURCE0} .
-%patch0
+%patch -P 0
+# assert is keyword since 1.4
+sed -i "s/assert/ASSERT/g" Main.java
 cp %{SOURCE1} build.xml
 
 %build

@@ -5,10 +5,6 @@
   See below for copyright notice, license, and disclaimer.
   New releases from http://www.cs.princeton.edu/~appel/modern/java/JLex/
 
-  Version 1.2.6, 2/7/03, [C. Scott Ananian]
-   Renamed 'assert' function 'ASSERT' to accomodate Java 1.4's new keyword.
-   Fixed a bug which certain forms of comment in the JLex directives section
-     (which are not allowed) to be incorrectly parsed as macro definitions.
   Version 1.2.5, 7/25/99-5/16/00, [C. Scott Ananian]
    Stomped on one more 8-bit character bug.  Should work now (really!).
    Added unicode support, including unicode escape sequences.
@@ -477,8 +473,8 @@ class CEmit
       {
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(null != spec);
-	    CUtility.ASSERT(null != outstream);
+	    CUtility.assert(null != spec);
+	    CUtility.assert(null != outstream);
 	  }
 
 	m_spec = spec;
@@ -501,8 +497,8 @@ class CEmit
 	  
 	  if (CUtility.DEBUG)
 	    {
-	      CUtility.ASSERT(null != m_spec);
-	      CUtility.ASSERT(null != m_outstream);
+	      CUtility.assert(null != m_spec);
+	      CUtility.assert(null != m_outstream);
 	    }*/
 	  
 	  /*m_outstream.println("import java.lang.String;");
@@ -609,8 +605,8 @@ class CEmit
 	  
 	  if (CUtility.DEBUG)
 	    {
-	      CUtility.ASSERT(null != m_spec);
-	      CUtility.ASSERT(null != m_outstream);
+	      CUtility.assert(null != m_spec);
+	      CUtility.assert(null != m_outstream);
 	    }
 	  
 	  if (CUtility.OLD_DEBUG) {
@@ -638,8 +634,8 @@ class CEmit
 	{
 	  if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(null != m_spec);
-	    CUtility.ASSERT(null != m_outstream);
+	    CUtility.assert(null != m_spec);
+	    CUtility.assert(null != m_outstream);
 	  }
 	  
 	  /* Constants */
@@ -826,7 +822,7 @@ class CEmit
 	      
 	      if (CUtility.DEBUG)
 		{
-		  CUtility.ASSERT(null != state);
+		  CUtility.assert(null != state);
 		}
 	      
 	      m_outstream.println("\tprivate final int " 
@@ -865,8 +861,8 @@ class CEmit
       {
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(null != m_spec);
-	    CUtility.ASSERT(null != m_outstream);
+	    CUtility.assert(null != m_spec);
+	    CUtility.assert(null != m_outstream);
 	  }
 
 	/* Function: yy_do_eof */
@@ -1126,8 +1122,8 @@ class CEmit
       {
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(null != m_spec);
-	    CUtility.ASSERT(null != m_outstream);
+	    CUtility.assert(null != m_spec);
+	    CUtility.assert(null != m_outstream);
 	  }
 
 	m_outstream.println();
@@ -1165,8 +1161,8 @@ class CEmit
 
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(null != m_spec);
-	    CUtility.ASSERT(null != m_outstream);
+	    CUtility.assert(null != m_spec);
+	    CUtility.assert(null != m_outstream);
 	  }
 
 	m_outstream.println("\tprivate int yy_acpt[] = {");
@@ -1234,7 +1230,7 @@ class CEmit
 	int[][] yy_nxt = new int[size][];
 	for (elem=0; elem<size; elem++) {
 	    dtrans = (CDTrans) m_spec.m_dtrans_vector.elementAt(elem);
-	    CUtility.ASSERT(dtrans.m_dtrans.length==m_spec.m_dtrans_ncols);
+	    CUtility.assert(dtrans.m_dtrans.length==m_spec.m_dtrans_ncols);
 	    yy_nxt[elem] = dtrans.m_dtrans;
 	}
 	m_outstream.print
@@ -1341,8 +1337,8 @@ class CEmit
 	{
 	  if (CUtility.DEBUG)
 	    {
-	      CUtility.ASSERT(null != m_spec);
-	      CUtility.ASSERT(null != m_outstream);
+	      CUtility.assert(null != m_spec);
+	      CUtility.assert(null != m_outstream);
 	    }
 	  
 	  emit_table();
@@ -1564,7 +1560,7 @@ class CEmit
 	  
 	  if (CUtility.DEBUG)
 	    {
-	      CUtility.ASSERT(m_spec.m_accept_vector.size() 
+	      CUtility.assert(m_spec.m_accept_vector.size() 
 			      == m_spec.m_anchor_array.length);
 	    }
 
@@ -1599,8 +1595,8 @@ class CEmit
       {
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(null != m_spec);
-	    CUtility.ASSERT(null != m_outstream);
+	    CUtility.assert(null != m_spec);
+	    CUtility.assert(null != m_outstream);
 	  }
 
 	m_outstream.println("}");
@@ -1686,9 +1682,9 @@ class CMakeNfa
       {
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(null != input);
-	    CUtility.ASSERT(null != lexGen);
-	    CUtility.ASSERT(null != spec);
+	    CUtility.assert(null != input);
+	    CUtility.assert(null != lexGen);
+	    CUtility.assert(null != spec);
 	  }
 
 	m_input = input;
@@ -1707,7 +1703,7 @@ class CMakeNfa
      CSpec spec
      )
 	{
-	  CUtility.ASSERT(CSpec.NUM_PSEUDO==2);
+	  CUtility.assert(CSpec.NUM_PSEUDO==2);
 	  spec.BOL = spec.m_dtrans_ncols++;
 	  spec.EOF = spec.m_dtrans_ncols++;
 	}
@@ -1981,7 +1977,7 @@ class CMakeNfa
 
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(null != pair);
+	    CUtility.assert(null != pair);
 	  }
 
 	e2_pair = CAlloc.newCNfaPair();
@@ -2029,7 +2025,7 @@ class CMakeNfa
 
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(null != pair);
+	    CUtility.assert(null != pair);
 	  }
 	
 	e2_pair = CAlloc.newCNfaPair();
@@ -2443,7 +2439,7 @@ class CMinimize
       {
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(null != spec);
+	    CUtility.assert(null != spec);
 	  }
 
 	m_spec = spec;
@@ -2632,7 +2628,7 @@ class CMinimize
 	      {
 		for (i = 0; i < reduced_ncols; ++i)
 		  {
-		    CUtility.ASSERT(-1 != m_spec.m_col_map[i]);
+		    CUtility.assert(-1 != m_spec.m_col_map[i]);
 		  }
 	      }
 
@@ -2651,8 +2647,8 @@ class CMinimize
 
 	    if (CUtility.DEBUG)
 	      {
-		CUtility.ASSERT(false == set.get(i));
-		CUtility.ASSERT(-1 == m_spec.m_col_map[i]);
+		CUtility.assert(false == set.get(i));
+		CUtility.assert(-1 == m_spec.m_col_map[i]);
 	      }
 
 	    set.set(i);
@@ -2683,7 +2679,7 @@ class CMinimize
 		
 		if (CUtility.DEBUG)
 		  {
-		    CUtility.ASSERT(j <= i);
+		    CUtility.assert(j <= i);
 		  }
 		
 		if (j == i)
@@ -2700,7 +2696,7 @@ class CMinimize
 
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(k == reduced_ncols);
+	    CUtility.assert(k == reduced_ncols);
 	  }
 
 	/* Allocate row map. */
@@ -2718,7 +2714,7 @@ class CMinimize
 	      {
 		for (i = 0; i < reduced_nrows; ++i)
 		  {
-		    CUtility.ASSERT(-1 != m_spec.m_row_map[i]);
+		    CUtility.assert(-1 != m_spec.m_row_map[i]);
 		  }
 	      }
 
@@ -2737,8 +2733,8 @@ class CMinimize
 
 	    if (CUtility.DEBUG)
 	      {
-		CUtility.ASSERT(false == set.get(i));
-		CUtility.ASSERT(-1 == m_spec.m_row_map[i]);
+		CUtility.assert(false == set.get(i));
+		CUtility.assert(-1 == m_spec.m_row_map[i]);
 	      }
 
 	    set.set(i);
@@ -2769,7 +2765,7 @@ class CMinimize
 		
 		if (CUtility.DEBUG)
 		  {
-		    CUtility.ASSERT(j <= i);
+		    CUtility.assert(j <= i);
 		  }
 		
 		if (j == i)
@@ -2785,7 +2781,7 @@ class CMinimize
 	if (CUtility.DEBUG)
 	  {
 	    /*System.out.println("k = " + k + "\nreduced_nrows = " + reduced_nrows + "");*/
-	    CUtility.ASSERT(k == reduced_nrows);
+	    CUtility.assert(k == reduced_nrows);
 	  }
       }
 
@@ -2869,7 +2865,7 @@ class CMinimize
 
 	    if (CUtility.DEBUG)
 	      {
-		CUtility.ASSERT(m_group.size() == group_count);
+		CUtility.assert(m_group.size() == group_count);
 	      }
 
 	    for (i = 0; i < group_count; ++i)
@@ -2902,7 +2898,7 @@ class CMinimize
 			  {
 			    if (CUtility.DEBUG)
 			      {
-				CUtility.ASSERT(dtrans_group.elementAt(j) == next);
+				CUtility.assert(dtrans_group.elementAt(j) == next);
 			      }
 			    
 			    dtrans_group.removeElementAt(j);
@@ -2919,21 +2915,21 @@ class CMinimize
 
 			    if (CUtility.DEBUG)
 			      {
-				CUtility.ASSERT(m_group.contains(new_group)
+				CUtility.assert(m_group.contains(new_group)
 						== true);
-				CUtility.ASSERT(m_group.contains(dtrans_group)
+				CUtility.assert(m_group.contains(dtrans_group)
 						== true);
-				CUtility.ASSERT(dtrans_group.contains(first)
+				CUtility.assert(dtrans_group.contains(first)
 						== true);
-				CUtility.ASSERT(dtrans_group.contains(next)
+				CUtility.assert(dtrans_group.contains(next)
 						== false);
-				CUtility.ASSERT(new_group.contains(first)
+				CUtility.assert(new_group.contains(first)
 						== false);
-				CUtility.ASSERT(new_group.contains(next)
+				CUtility.assert(new_group.contains(next)
 						== true);
-				CUtility.ASSERT(dtrans_group.size() == group_size);
-				CUtility.ASSERT(i == m_ingroup[first.m_label]);
-				CUtility.ASSERT((m_group.size() - 1) 
+				CUtility.assert(dtrans_group.size() == group_size);
+				CUtility.assert(i == m_ingroup[first.m_label]);
+				CUtility.assert((m_group.size() - 1) 
 						== m_ingroup[next.m_label]);
 			      }
 
@@ -2988,9 +2984,9 @@ class CMinimize
 
 	    if (CUtility.DEBUG)
 	      {
-		CUtility.ASSERT(i == dtrans.m_label);
-		CUtility.ASSERT(false == group_found);
-		CUtility.ASSERT(group_count == m_group.size());
+		CUtility.assert(i == dtrans.m_label);
+		CUtility.assert(false == group_found);
+		CUtility.assert(group_count == m_group.size());
 	      }
 	    
 	    for (j = 0; j < group_count; ++j)
@@ -2999,8 +2995,8 @@ class CMinimize
 		
 		if (CUtility.DEBUG)
 		  {
-		    CUtility.ASSERT(false == group_found);
-		    CUtility.ASSERT(0 < dtrans_group.size());
+		    CUtility.assert(false == group_found);
+		    CUtility.assert(0 < dtrans_group.size());
 		  }
 
 		first = (CDTrans) dtrans_group.elementAt(0);
@@ -3012,12 +3008,12 @@ class CMinimize
 		    int s;
 
 		    s = dtrans_group.size();
-		    CUtility.ASSERT(0 < s);
+		    CUtility.assert(0 < s);
 
 		    for (k = 1; k < s; ++k)
 		      {
 			check = (CDTrans) dtrans_group.elementAt(k);
-			CUtility.ASSERT(check.m_accept == first.m_accept);
+			CUtility.assert(check.m_accept == first.m_accept);
 		      }
 		  }
 
@@ -3029,7 +3025,7 @@ class CMinimize
 		    
 		    if (CUtility.DEBUG)
 		      {
-			CUtility.ASSERT(j == m_ingroup[dtrans.m_label]);
+			CUtility.assert(j == m_ingroup[dtrans.m_label]);
 		      }
 
 		    break;
@@ -3262,7 +3258,7 @@ class CNfa2Dfa
 		
 		if (CUtility.DEBUG)
 		  {
-		    CUtility.ASSERT(false == dfa.m_mark);
+		    CUtility.assert(false == dfa.m_mark);
 		  }
 
 		/* Get first unmarked node, then mark it. */
@@ -3278,8 +3274,8 @@ class CNfa2Dfa
 		  {
 		    if (CUtility.DEBUG)
 		      {
-			CUtility.ASSERT(0 <= i);
-			CUtility.ASSERT(m_spec.m_dtrans_ncols > i);
+			CUtility.assert(0 <= i);
+			CUtility.assert(m_spec.m_dtrans_ncols > i);
 		      }
 		    
 		    /* Create new dfa set by attempting character transition. */
@@ -3291,7 +3287,7 @@ class CNfa2Dfa
 		    
 		    if (CUtility.DEBUG)
 		      {
-			CUtility.ASSERT((null == bunch.m_nfa_set 
+			CUtility.assert((null == bunch.m_nfa_set 
 					 && null == bunch.m_nfa_bit)
 					|| (null != bunch.m_nfa_set 
 					    && null != bunch.m_nfa_bit));
@@ -3314,7 +3310,7 @@ class CNfa2Dfa
 		    
 		    if (CUtility.DEBUG)
 		      {
-			CUtility.ASSERT(nextstate < m_spec.m_dfa_states.size());
+			CUtility.assert(nextstate < m_spec.m_dfa_states.size());
 		      }
 		    
 		    dtrans.m_dtrans[i] = nextstate;
@@ -3322,7 +3318,7 @@ class CNfa2Dfa
 		
 		if (CUtility.DEBUG)
 		  {
-		    CUtility.ASSERT(m_spec.m_dtrans_vector.size() == dfa.m_label);
+		    CUtility.assert(m_spec.m_dtrans_vector.size() == dfa.m_label);
 		  }
 		
 		m_spec.m_dtrans_vector.addElement(dtrans);
@@ -3375,9 +3371,9 @@ class CNfa2Dfa
 	/* Debug checks. */
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(null != bunch);
-	    CUtility.ASSERT(null != bunch.m_nfa_set);
-	    CUtility.ASSERT(null != bunch.m_nfa_bit);
+	    CUtility.assert(null != bunch);
+	    CUtility.assert(null != bunch.m_nfa_set);
+	    CUtility.assert(null != bunch.m_nfa_bit);
 	  }
 
 	bunch.m_accept = null;
@@ -3393,7 +3389,7 @@ class CNfa2Dfa
 	    
 	    if (CUtility.DEBUG)
 	      {
-		CUtility.ASSERT(bunch.m_nfa_bit.get(state.m_label));
+		CUtility.assert(bunch.m_nfa_bit.get(state.m_label));
 	      }
 
 	    nfa_stack.push(state);
@@ -3434,8 +3430,8 @@ class CNfa2Dfa
 
 		if (CUtility.DEBUG)
 		  {
-		    CUtility.ASSERT(null != bunch.m_accept);
-		    CUtility.ASSERT(CSpec.NONE == bunch.m_anchor
+		    CUtility.assert(null != bunch.m_accept);
+		    CUtility.assert(CSpec.NONE == bunch.m_anchor
 				    || 0 != (bunch.m_anchor & CSpec.END)
 				    || 0 != (bunch.m_anchor & CSpec.START));
 		  }
@@ -3449,7 +3445,7 @@ class CNfa2Dfa
 		      {
 			if (CUtility.DEBUG)
 			  {
-			    CUtility.ASSERT(false == bunch.m_nfa_bit.get(state.m_next.m_label));
+			    CUtility.assert(false == bunch.m_nfa_bit.get(state.m_next.m_label));
 			  }
 			
 			bunch.m_nfa_bit.set(state.m_next.m_label);
@@ -3464,7 +3460,7 @@ class CNfa2Dfa
 		      {
 			if (CUtility.DEBUG)
 			  {
-			    CUtility.ASSERT(false == bunch.m_nfa_bit.get(state.m_next2.m_label));
+			    CUtility.assert(false == bunch.m_nfa_bit.get(state.m_next2.m_label));
 			  }
 			
 			bunch.m_nfa_bit.set(state.m_next2.m_label);
@@ -3515,7 +3511,7 @@ class CNfa2Dfa
 		  {
 		    if (CUtility.DEBUG)
 		      {
-			CUtility.ASSERT(null == bunch.m_nfa_bit);
+			CUtility.assert(null == bunch.m_nfa_bit);
 		      }
 		    
 		    bunch.m_nfa_set = new Vector();
@@ -3536,7 +3532,7 @@ class CNfa2Dfa
 	  {
 	    if (CUtility.DEBUG)
 	      {
-		CUtility.ASSERT(null != bunch.m_nfa_bit);
+		CUtility.assert(null != bunch.m_nfa_bit);
 	      }
 	    
 	    sortStates(bunch.m_nfa_set);
@@ -3664,9 +3660,9 @@ class CNfa2Dfa
 	
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(null != bunch.m_nfa_set);
-	    CUtility.ASSERT(null != bunch.m_nfa_bit);
-	    CUtility.ASSERT(null != bunch.m_accept 
+	    CUtility.assert(null != bunch.m_nfa_set);
+	    CUtility.assert(null != bunch.m_nfa_bit);
+	    CUtility.assert(null != bunch.m_accept 
 			    || CSpec.NONE == bunch.m_anchor);
 	  }
 
@@ -4084,7 +4080,7 @@ class CInput
       {
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(null != input);
+	    CUtility.assert(null != input);
 	  }
 
 	/* Initialize input stream. */
@@ -4239,10 +4235,10 @@ class CUtility
       }
 
   /********************************************************
-    Function: ASSERT
+    Function: assert
     Description: Debugging routine.
     *******************************************************/
-  static void ASSERT
+  static void assert
     (
      boolean expr
      )
@@ -4930,12 +4926,12 @@ class CLexGen
 
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(null != this);
-	    CUtility.ASSERT(null != m_outstream);
-	    CUtility.ASSERT(null != m_input);
-	    CUtility.ASSERT(null != m_tokens);
-	    CUtility.ASSERT(null != m_spec);
-	    CUtility.ASSERT(m_init_flag);
+	    CUtility.assert(null != this);
+	    CUtility.assert(null != m_outstream);
+	    CUtility.assert(null != m_input);
+	    CUtility.assert(null != m_tokens);
+	    CUtility.assert(null != m_spec);
+	    CUtility.assert(m_init_flag);
 	  }
 
 	/*m_emit.emit_imports(m_spec,m_outstream);*/
@@ -5004,11 +5000,11 @@ class CLexGen
 
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(null != this);
-	    CUtility.ASSERT(null != m_outstream);
-	    CUtility.ASSERT(null != m_input);
-	    CUtility.ASSERT(null != m_tokens);
-	    CUtility.ASSERT(null != m_spec);
+	    CUtility.assert(null != this);
+	    CUtility.assert(null != m_outstream);
+	    CUtility.assert(null != m_input);
+	    CUtility.assert(null != m_tokens);
+	    CUtility.assert(null != m_spec);
 	  }
 
 	if (m_input.m_eof_reached)
@@ -5109,7 +5105,7 @@ class CLexGen
       {
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(INIT_CODE == specified 
+	    CUtility.assert(INIT_CODE == specified 
 			    || CLASS_CODE == specified
 			    || EOF_CODE == specified
 			    || EOF_VALUE_CODE == specified
@@ -5423,11 +5419,11 @@ class CLexGen
 	  
 	  if (CUtility.DEBUG)
 	    {
-	      CUtility.ASSERT(null != this);
-	      CUtility.ASSERT(null != m_outstream);
-	      CUtility.ASSERT(null != m_input);
-	      CUtility.ASSERT(null != m_tokens);
-	      CUtility.ASSERT(null != m_spec);
+	      CUtility.assert(null != this);
+	      CUtility.assert(null != m_outstream);
+	      CUtility.assert(null != m_input);
+	      CUtility.assert(null != m_tokens);
+	      CUtility.assert(null != m_spec);
 	    }
 
 	  if (m_input.m_eof_reached)
@@ -5873,11 +5869,11 @@ class CLexGen
 
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(null != this);
-	    CUtility.ASSERT(null != m_outstream);
-	    CUtility.ASSERT(null != m_input);
-	    CUtility.ASSERT(null != m_tokens);
-	    CUtility.ASSERT(null != m_spec);
+	    CUtility.assert(null != this);
+	    CUtility.assert(null != m_outstream);
+	    CUtility.assert(null != m_input);
+	    CUtility.assert(null != m_tokens);
+	    CUtility.assert(null != m_spec);
 	  }
 
 	/* UNDONE: Need to handle states preceding rules. */
@@ -5895,7 +5891,7 @@ class CLexGen
 
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(END_OF_INPUT == m_spec.m_current_token);
+	    CUtility.assert(END_OF_INPUT == m_spec.m_current_token);
 	  }
 
 	if (m_spec.m_verbose)
@@ -6072,8 +6068,8 @@ class CLexGen
 
 	    if (CUtility.DEBUG)
 	      {
-		CUtility.ASSERT(null != state);
-		CUtility.ASSERT(null != index);
+		CUtility.assert(null != state);
+		CUtility.assert(null != index);
 	      }
 
 	    System.out.println("State \"" + state 
@@ -6124,11 +6120,11 @@ class CLexGen
 	
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(null != this);
-	    CUtility.ASSERT(null != m_outstream);
-	    CUtility.ASSERT(null != m_input);
-	    CUtility.ASSERT(null != m_tokens);
-	    CUtility.ASSERT(null != m_spec);
+	    CUtility.assert(null != this);
+	    CUtility.assert(null != m_outstream);
+	    CUtility.assert(null != m_input);
+	    CUtility.assert(null != m_tokens);
+	    CUtility.assert(null != m_spec);
 	  }
 
 	states = null;
@@ -6276,11 +6272,11 @@ class CLexGen
 
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(null != this);
-	    CUtility.ASSERT(null != m_outstream);
-	    CUtility.ASSERT(null != m_input);
-	    CUtility.ASSERT(null != m_tokens);
-	    CUtility.ASSERT(null != m_spec);
+	    CUtility.assert(null != this);
+	    CUtility.assert(null != m_outstream);
+	    CUtility.assert(null != m_input);
+	    CUtility.assert(null != m_tokens);
+	    CUtility.assert(null != m_spec);
 	  }
 
 	/* Check for macro. */
@@ -6323,7 +6319,7 @@ class CLexGen
 	/* Debug checks. */
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(0 < count_name);
+	    CUtility.assert(0 < count_name);
 	  }
 
 	/* Retrieve macro definition. */
@@ -6350,7 +6346,7 @@ class CLexGen
 
 	    if (CUtility.DEBUG)
 	      {
-		CUtility.ASSERT(rep_elem < replace.length);
+		CUtility.assert(rep_elem < replace.length);
 	      }
 	  }
 	
@@ -6417,11 +6413,11 @@ class CLexGen
 
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(null != this);
-	    CUtility.ASSERT(null != m_outstream);
-	    CUtility.ASSERT(null != m_input);
-	    CUtility.ASSERT(null != m_tokens);
-	    CUtility.ASSERT(null != m_spec);
+	    CUtility.assert(null != this);
+	    CUtility.assert(null != m_outstream);
+	    CUtility.assert(null != m_input);
+	    CUtility.assert(null != m_tokens);
+	    CUtility.assert(null != m_spec);
 	  }
 
 	/* Macro declarations are of the following form:
@@ -6482,8 +6478,6 @@ class CLexGen
 		CError.parse_error(CError.E_MACDEF,m_input.m_line_number);
 	      }
 	  }
-	else /* macro definition without = */
-		CError.parse_error(CError.E_MACDEF,m_input.m_line_number);
 
 	/* Skip white space between name and definition. */
 	while (CUtility.isspace(m_input.m_line[elem]))
@@ -6545,9 +6539,9 @@ class CLexGen
 	/* Debug checks. */
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(0 < count_def);
-	    CUtility.ASSERT(0 < count_name);
-	    CUtility.ASSERT(null != m_spec.m_macros);
+	    CUtility.assert(0 < count_def);
+	    CUtility.assert(0 < count_name);
+	    CUtility.assert(null != m_spec.m_macros);
 	  }
 
 	if (CUtility.OLD_DEBUG)
@@ -6583,11 +6577,11 @@ class CLexGen
 
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(null != this);
-	    CUtility.ASSERT(null != m_outstream);
-	    CUtility.ASSERT(null != m_input);
-	    CUtility.ASSERT(null != m_tokens);
-	    CUtility.ASSERT(null != m_spec);
+	    CUtility.assert(null != this);
+	    CUtility.assert(null != m_outstream);
+	    CUtility.assert(null != m_input);
+	    CUtility.assert(null != m_tokens);
+	    CUtility.assert(null != m_spec);
 	  }
 
 	/* EOF found? */
@@ -6599,11 +6593,11 @@ class CLexGen
 	/* Debug checks. */
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT('%' == m_input.m_line[0]);
-	    CUtility.ASSERT('s' == m_input.m_line[1]);
-	    CUtility.ASSERT(m_input.m_line_index <= m_input.m_line_read);
-	    CUtility.ASSERT(0 <= m_input.m_line_index);
-	    CUtility.ASSERT(0 <= m_input.m_line_read);
+	    CUtility.assert('%' == m_input.m_line[0]);
+	    CUtility.assert('s' == m_input.m_line[1]);
+	    CUtility.assert(m_input.m_line_index <= m_input.m_line_read);
+	    CUtility.assert(0 <= m_input.m_line_index);
+	    CUtility.assert(0 <= m_input.m_line_read);
 	  }
 
 	/* Blank line?  No states? */
@@ -6686,9 +6680,9 @@ class CLexGen
 	/* Debug checks. */
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(m_input.m_line_index < m_input.m_line_read);
-	    CUtility.ASSERT(0 < m_input.m_line_read);
-	    CUtility.ASSERT(0 <= m_input.m_line_index);
+	    CUtility.assert(m_input.m_line_index < m_input.m_line_read);
+	    CUtility.assert(0 < m_input.m_line_read);
+	    CUtility.assert(0 <= m_input.m_line_index);
 	  }
 
 	if ('\\' != m_input.m_line[m_input.m_line_index])
@@ -6796,11 +6790,11 @@ class CLexGen
 
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(null != this);
-	    CUtility.ASSERT(null != m_outstream);
-	    CUtility.ASSERT(null != m_input);
-	    CUtility.ASSERT(null != m_tokens);
-	    CUtility.ASSERT(null != m_spec);
+	    CUtility.assert(null != this);
+	    CUtility.assert(null != m_outstream);
+	    CUtility.assert(null != m_input);
+	    CUtility.assert(null != m_tokens);
+	    CUtility.assert(null != m_spec);
 	  }
 
 	/* Get a new line, if needed. */
@@ -6919,7 +6913,7 @@ class CLexGen
 
 	if (CUtility.DEBUG)
 	  {
-	    CUtility.ASSERT(null != accept);
+	    CUtility.assert(null != accept);
 	  }
 
 	if (CUtility.DESCENT_DEBUG)
@@ -6947,7 +6941,7 @@ class CLexGen
 	/*if (m_input.m_line_index > m_input.m_line_read) {
 	  System.out.println("m_input.m_line_index = " + m_input.m_line_index);
 	  System.out.println("m_input.m_line_read = " + m_input.m_line_read);
-	  CUtility.ASSERT(m_input.m_line_index <= m_input.m_line_read);
+	  CUtility.assert(m_input.m_line_index <= m_input.m_line_read);
 	}*/
 
 	if (m_input.m_eof_reached)
@@ -7007,7 +7001,7 @@ class CLexGen
 	  }
 	
 	if (CUtility.DEBUG) {
-	  CUtility.ASSERT(m_input.m_line_index <= m_input.m_line_read);
+	  CUtility.assert(m_input.m_line_index <= m_input.m_line_read);
 	}
 
 	while (true)
@@ -7048,7 +7042,7 @@ class CLexGen
 	if (m_input.m_line_index > m_input.m_line_read) {
 	  System.out.println("m_input.m_line_index = " + m_input.m_line_index);
 	  System.out.println("m_input.m_line_read = " + m_input.m_line_read);
-	  CUtility.ASSERT(m_input.m_line_index <= m_input.m_line_read);
+	  CUtility.assert(m_input.m_line_index <= m_input.m_line_read);
 	}
 
 	/* Look for backslash, and corresponding 
@@ -7159,8 +7153,8 @@ class CLexGen
 
 	    if (CUtility.DEBUG)
 	      {
-		CUtility.ASSERT(null != name);
-		CUtility.ASSERT(null != def);
+		CUtility.assert(null != name);
+		CUtility.assert(null != def);
 	      }
 
 	    System.out.println("Macro name \"" + name 
@@ -7178,8 +7172,8 @@ class CLexGen
 
 	    if (CUtility.DEBUG)
 	      {
-		CUtility.ASSERT(null != state);
-		CUtility.ASSERT(null != index);
+		CUtility.assert(null != state);
+		CUtility.assert(null != index);
 	      }
 
 	    System.out.println("State \"" + state 
@@ -7197,7 +7191,7 @@ class CLexGen
 	  {
 	    if (CUtility.DEBUG)
 	      {
-		CUtility.ASSERT(m_spec.m_count_lines);
+		CUtility.assert(m_spec.m_count_lines);
 	      }
 
 	    System.out.println("Character counting is on.");
@@ -7213,7 +7207,7 @@ class CLexGen
 	  {
 	    if (CUtility.DEBUG)
 	      {
-		CUtility.ASSERT(m_spec.m_count_lines);
+		CUtility.assert(m_spec.m_count_lines);
 	      }
 
 	    System.out.println("Line counting is on.");
@@ -7326,8 +7320,8 @@ class CLexGen
 
 	    if (CUtility.DEBUG)
 	      {
-		CUtility.ASSERT(null != state);
-		CUtility.ASSERT(null != index);
+		CUtility.assert(null != state);
+		CUtility.assert(null != index);
 	      }
 
 	    System.out.println("State \"" + state 
@@ -7504,12 +7498,12 @@ final class SparseBitSet implements Cloneable {
 	    bits = nbits;
 	    offs = noffs;
 	}
-	CUtility.ASSERT(size<bits.length);
+	CUtility.assert(size<bits.length);
 	insert_block(idx, bnum);
     }
     private void insert_block(int idx, int bnum) {
-	CUtility.ASSERT(idx<=size);
-	CUtility.ASSERT(idx==size || offs[idx]!=bnum);
+	CUtility.assert(idx<=size);
+	CUtility.assert(idx==size || offs[idx]!=bnum);
 	System.arraycopy(bits, idx, bits, idx+1, size-idx);
 	System.arraycopy(offs, idx, offs, idx+1, size-idx);
 	offs[idx]=bnum;
@@ -7524,7 +7518,7 @@ final class SparseBitSet implements Cloneable {
 	    else if (bnum>offs[p]) l=p+1;
 	    else return p;
 	}
-	CUtility.ASSERT(l==r);
+	CUtility.assert(l==r);
 	return l; // index at which the bnum *should* be, if it's not.
     }
 	    
@@ -7767,49 +7761,49 @@ final class SparseBitSet implements Cloneable {
 	final int ITER = 500;
 	final int RANGE= 65536;
 	SparseBitSet a = new SparseBitSet();
-	CUtility.ASSERT(!a.get(0) && !a.get(1));
-	CUtility.ASSERT(!a.get(123329));
-	a.set(0); CUtility.ASSERT(a.get(0) && !a.get(1));
-	a.set(1); CUtility.ASSERT(a.get(0) && a.get(1));
+	CUtility.assert(!a.get(0) && !a.get(1));
+	CUtility.assert(!a.get(123329));
+	a.set(0); CUtility.assert(a.get(0) && !a.get(1));
+	a.set(1); CUtility.assert(a.get(0) && a.get(1));
 	a.clearAll();
-	CUtility.ASSERT(!a.get(0) && !a.get(1));
+	CUtility.assert(!a.get(0) && !a.get(1));
 	java.util.Random r = new java.util.Random();
 	java.util.Vector v = new java.util.Vector();
 	for (int n=0; n<ITER; n++) {
 	    int rr = ((r.nextInt()>>>1) % RANGE) << 1;
 	    a.set(rr); v.addElement(new Integer(rr));
 	    // check that all the numbers are there.
-	    CUtility.ASSERT(a.get(rr) && !a.get(rr+1) && !a.get(rr-1));
+	    CUtility.assert(a.get(rr) && !a.get(rr+1) && !a.get(rr-1));
 	    for (int i=0; i<v.size(); i++)
-		CUtility.ASSERT(a.get(((Integer)v.elementAt(i)).intValue()));
+		CUtility.assert(a.get(((Integer)v.elementAt(i)).intValue()));
 	}
 	SparseBitSet b = (SparseBitSet) a.clone();
-	CUtility.ASSERT(a.equals(b) && b.equals(a));
+	CUtility.assert(a.equals(b) && b.equals(a));
 	for (int n=0; n<ITER/2; n++) {
 	    int rr = (r.nextInt()>>>1) % v.size();
 	    int m = ((Integer)v.elementAt(rr)).intValue();
 	    b.clear(m); v.removeElementAt(rr);
 	    // check that numbers are removed properly.
-	    CUtility.ASSERT(!b.get(m));
+	    CUtility.assert(!b.get(m));
 	}
-	CUtility.ASSERT(!a.equals(b));
+	CUtility.assert(!a.equals(b));
 	SparseBitSet c = (SparseBitSet) a.clone();
 	SparseBitSet d = (SparseBitSet) a.clone();
 	c.and(a);
-	CUtility.ASSERT(c.equals(a) && a.equals(c));
+	CUtility.assert(c.equals(a) && a.equals(c));
 	c.xor(a);
-	CUtility.ASSERT(!c.equals(a) && c.size()==0);
+	CUtility.assert(!c.equals(a) && c.size()==0);
 	d.or(b);
-	CUtility.ASSERT(d.equals(a) && !b.equals(d));
+	CUtility.assert(d.equals(a) && !b.equals(d));
 	d.and(b);
-	CUtility.ASSERT(!d.equals(a) && b.equals(d));
+	CUtility.assert(!d.equals(a) && b.equals(d));
 	d.xor(a);
-	CUtility.ASSERT(!d.equals(a) && !b.equals(d));
+	CUtility.assert(!d.equals(a) && !b.equals(d));
 	c.or(d); c.or(b);
-	CUtility.ASSERT(c.equals(a) && a.equals(c));
+	CUtility.assert(c.equals(a) && a.equals(c));
 	c = (SparseBitSet) d.clone();
 	c.and(b);
-	CUtility.ASSERT(c.size()==0);
+	CUtility.assert(c.size()==0);
 	System.out.println("Success.");
     }
 }
