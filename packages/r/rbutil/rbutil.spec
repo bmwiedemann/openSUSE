@@ -48,9 +48,7 @@ Requires(postun): update-desktop-files
 Firmware manager for Rockbox MP3 players.
 
 %prep
-%setup -q -n RockboxUtility-v%{version}
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n RockboxUtility-v%{version}
 
 %build
 cd rbutil/rbutilqt
