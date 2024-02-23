@@ -1,7 +1,7 @@
 #
 # spec file for package apg
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,10 +22,9 @@ Release:        0
 Summary:        Tool Set for Random Password Generation
 License:        BSD-3-Clause
 Group:          Productivity/Security
-Url:            http://www.adel.nursat.kz/apg/
+URL:            http://www.adel.nursat.kz/apg/
 Source0:        http://www.adel.nursat.kz/apg/download/apg-%{version}.tar.gz
 Patch1:         apg-do_not_install_as_root.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 APG (Automated Password Generator) is a tool set for generating random
@@ -34,11 +33,10 @@ and prints them to standard output. A networked client/server following RFC972
 is also provided.
 
 %prep
-%setup -q
-%patch1
+%autosetup -p0
 
 %build
-make %{?_smp_mflags} \
+%make_build \
     CC="gcc" \
     FLAGS="%{optflags} -Wall" \
     CS_LIBS="-lnsl" \
@@ -61,12 +59,12 @@ make %{?_smp_mflags} \
     install
 
 %files
-%defattr(-,root,root)
-%doc CHANGES COPYING README THANKS TODO
+%license COPYING
+%doc CHANGES README THANKS TODO
 %doc doc/APG_TIPS doc/*.txt
 %{_bindir}/apg
 %{_bindir}/apgbfm
-%{_mandir}/man1/apg.1%{ext_man}
-%{_mandir}/man1/apgbfm.1%{ext_man}
+%{_mandir}/man1/apg.1%{?ext_man}
+%{_mandir}/man1/apgbfm.1%{?ext_man}
 
 %changelog

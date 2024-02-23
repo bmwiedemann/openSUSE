@@ -7,4 +7,12 @@
     <comment>Upstream host had a temporary problem, download works again now. Both files have the same checksum</comment>
     <requestid>447886</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dc5a0172457018d65d9e7f274b1742ce</srcmd5>
+    <version>2.2.3</version>
+    <time>1708703164</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149712</requestid>
+  </revision>
 </revisionlist>
