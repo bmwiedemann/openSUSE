@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 07:56:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Thu Mar  9 07:04:33 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Add upstream patch gcc13-fix.patch in order to support GCC 13.

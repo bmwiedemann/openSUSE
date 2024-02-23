@@ -57,9 +57,7 @@ Requires:       hfst-ospell = %{version}-%{release}
 Development headers and libraries for hfst-ospell
 
 %prep
-%setup -q -n %{_name}-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
 # disable libxml++ as upstream requires version 2.6
