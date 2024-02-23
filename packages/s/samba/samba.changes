@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Feb 20 09:58:03 UTC 2024 - Noel Power <nopower@suse.com>
+
+- Update to 4.19.5
+  * Windows 2016 fails to restore previous version of a file from
+    a shadow_copy2 snapshot; (bso#13688).
+  * Symlinks on AIX are broken in 4.19 (and a few version before
+    that); (bso#15549).
+  * Fake directory create times has no effect; (bso#12421).
+  * ctime mixed up with mtime by smbd; (bso#15550).
+  * samba-gpupdate --rsop fails if machine is not in a site;
+    (bso#15548).
+  * gpupdate: The root cert import when NDES is not available is
+    broken; (bso#15557).
+  * samba-gpupdate should print a useful message if cepces-submit
+    can't be found; (bso#15552).
+  * samba-gpupdate logging doesn't work; (bso#15558).
+  * smbpasswd reset permissions only if not 0600; (bso#15555).
+
+-------------------------------------------------------------------
 Fri Jan  10 12:01:49 UTC 2024 - Noel Power <nopower@suse.com>
 
 - Remove -x from bash shebang update-apparmor-samba-profile;
