@@ -154,6 +154,8 @@ Discovery, DHT, µTP, PEX and magnet links.
 
 %prep
 %autosetup -p1
+# We can't just pass -DINSTALL_DOC=OFF to cmake, as this also disables the man pages
+sed -i 's/if(INSTALL_DOC)/if(FALSE)/' CMakeLists.txt
 cp %{SOURCE1} .
 
 %build
