@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Feb 16 15:50:41 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU ed 1.20.1:
+  * New command-line options '+line', '+/RE', and '+?RE' have been
+    implemented to set the current line to the line number
+    specified or to the first or last line matching the regular
+    expression 'RE'.
+  * File names containing control characters 1 to 31 are now
+    rejected unless they are allowed with the command-line option
+    '--unsafe-names'.
+  * File names containing control characters 1 to 31 are now
+    printed using octal escape sequences.
+  * Ed now rejects file names ending with a slash.
+  * Intervening commands that don't set the modified flag no longer
+    make a second 'e' or 'q' command fail with a 'buffer modified'
+    warning.
+  * Tilde expansion is now performed on file names supplied to
+    commands; if a file name starts with '~/', the tilde (~) is
+    expanded to the contents of the variable HOME.
+  * Ed now warns the first time that a command modifies a buffer
+    loaded from a read-only file.
+  * It has been documented that 'e' creates an empty buffer if
+    file does not exist.
+  * It has been documented that 'f' sets the default filename,
+    whether or not its argument names an existing file.
+  * The description of the exit status has been improved in
+    '--help' and in the manual.
+
+-------------------------------------------------------------------
 Sun Jan 21 07:46:14 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.20:
