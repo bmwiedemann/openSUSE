@@ -48,9 +48,7 @@ plugins over the years that I've used for this - check_ram for Solaris,
 check_mem for Linux, and there's also check_mem.pl.
 
 %prep
-%setup -q -n check_mem
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n check_mem
 
 %build
 
