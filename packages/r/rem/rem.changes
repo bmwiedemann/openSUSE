@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Feb 23 10:18:53 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 2.12.0:
+  * cmake: increment required version by @cspiel1 in #122
+  * aubuf/ajb: reset reference timestamp if skew is too high by @cspiel1 in #119
+  * ci: rename ccheck to lint by @alfredh in #124
+  * Use Ninja as CMake generator by @alfredh in #123
+  * use RE_ARRAY_SIZE by @alfredh in #125
+  * fix doxygen warnings by @alfredh in #126
+  * bump version numbers to 2.12.0 by @alfredh in #127
+- Bump soname PROJECT_SOVERSION from 5 to 6
+
+-------------------------------------------------------------------
+Fri Feb 02 10:07:28 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 2.11.0:
+  * auframe: add struct auframe id field by @sreimers in #112
+  * aumix: add aumix_debug function by @sreimers in #113
+  * Makefile remove by @alfredh in #111
+  * aumix: add soft clipping by @sreimers in #114
+  * ci: fix re cmake build by @sreimers in #115
+  * aumix: use auframe and add optional record handler by @sreimers in #116
+  * aubuf: add AUBUF_FILE mode by @cspiel1 in #117
+  * vidmix: fix VIDEO_TIMEBASE by @sreimers in #118
+- Bump soname PROJECT_SOVERSION from 4 to 5.
+
+-------------------------------------------------------------------
 Fri Dec 30 20:13:54 UTC 2022 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to release 2.10.0 

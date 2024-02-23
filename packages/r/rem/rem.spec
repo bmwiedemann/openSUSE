@@ -1,7 +1,7 @@
 #
 # spec file for package rem
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%global sover   4
+%global sover   6
 %global libname lib%{name}%{sover}
 Name:           rem
-Version:        2.10.0
+Version:        2.12.0
 Release:        0
 Summary:        Audio and Video processing media library
 License:        BSD-3-Clause
@@ -27,6 +27,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/baresip/rem
 Source:         %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libre) >= 2.4.0
