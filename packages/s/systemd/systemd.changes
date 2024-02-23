@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Feb 22 09:47:41 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Import commit 31f1148f75a1155d3eb37fd1a450096d669ec65b
+
+  31f1148f75 seccomp: include `fchmodat2` in `@file-system` (bsc#1219766)
+  001f349c57 service: Demote log level of NotifyAccess= messages to debug (bsc#1210113 jsc#PED-6214) 
+
+-------------------------------------------------------------------
+Tue Feb 20 12:22:42 UTC 2024 - Daan De Meyer <daan.j.demeyer@gmail.com>
+
+- Add a new %upstream macro to support building from upstream sources. This
+  will allow upstream to build systemd rpms using the opensuse systemd packaging
+  specs. These rpms will be built and used in upstream's mkosi based hacking and
+  testing environment to test changes and in the future to run integration tests
+  as well. By building the rpms using the opensuse packaging specs, the idea is
+  to catch more issues ahead of time as the mkosi environment will behave more
+  like a regular opensuse system.
+- Add new %version_override and %version_release macros to allow overriding the
+  version and release of the rpm respectively.
+
+-------------------------------------------------------------------
 Mon Feb 19 08:53:31 UTC 2024 - Franck Bui <fbui@suse.com>
 
 - Import commit 53e2aaaf9d69fb1c8f6ae2c9f8a99b02d70d318f

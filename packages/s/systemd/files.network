@@ -31,7 +31,11 @@
 %{_systemd_util_dir}/network/80-container-vb.network
 %{_systemd_util_dir}/network/80-container-ve.network
 %{_systemd_util_dir}/network/80-container-vz.network
+%if %{with upstream}
+%{_systemd_util_dir}/network/89-ethernet.network.example
+%else
 %{_systemd_util_dir}/network/80-ethernet.network.example
+%endif
 %{_systemd_util_dir}/network/80-vm-vt.network
 %{_systemd_util_dir}/network/80-wifi-adhoc.network
 %{_systemd_util_dir}/network/80-wifi-ap.network.example

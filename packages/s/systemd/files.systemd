@@ -209,8 +209,8 @@
 %{_libdir}/libnss_myhostname.so.2
 %{_libdir}/libnss_systemd.so.2
 %endif
-%{_libdir}/systemd/libsystemd-core-254.so
-%{_libdir}/systemd/libsystemd-shared-254.so
+%{_libdir}/systemd/libsystemd-core-*.so
+%{_libdir}/systemd/libsystemd-shared-*.so
 %if %{without bootstrap}
 %{_mandir}/man1/busctl.1.gz
 %{_mandir}/man1/hostnamectl.1.gz

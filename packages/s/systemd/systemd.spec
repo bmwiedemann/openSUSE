@@ -18,7 +18,18 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define archive_version +suse.28.g53e2aaaf9d
+%define archive_version +suse.30.g31f1148f75
+
+%if 0%{?version_override}
+%define systemd_major      %version_override
+%define systemd_minor      %{nil}
+%else
+%define systemd_major      254
+%define systemd_minor      9
+%endif
+
+%define systemd_version    %{systemd_major}%{?systemd_minor:.%{systemd_minor}}
+%define systemd_release    %{?release_override}%{!?release_override:0}
 
 %define _testsuitedir %{_systemd_util_dir}/tests
 %define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
@@ -58,6 +69,8 @@
 %bcond_without  testsuite
 %endif
 
+%bcond_with upstream
+
 # The following features are kept to ease migrations toward SLE. Their default
 # value is independent of the build flavor.
 %bcond_without  filetriggers
@@ -79,8 +92,10 @@ fi \
 
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        254.9
-Release:        0
+# Allow users to specify the version and release when building the rpm by
+# setting the %%version_override and %%release_override macros.
+Version:        %systemd_version
+Release:        %systemd_release
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -215,6 +230,8 @@ Patch4:         0002-rc-local-fix-ordering-startup-for-etc-init.d-boot.lo.patch
 Patch5:         0008-sysv-generator-translate-Required-Start-into-a-Wants.patch
 %endif
 
+%if %{without upstream}
+
 # Patches listed below are put in quarantine. Normally all changes must go to
 # upstream first and then are cherry-picked in the SUSE git repository. But for
 # very few cases, some stuff might be broken in upstream and need to be fixed or
@@ -231,6 +248,8 @@ Patch5007:      5007-test-Convert-rlimit-test-to-subtest-of-generic-limit.patch
 Patch5008:      5008-test-Add-effective-cgroup-limits-testing.patch
 Patch5009:      5009-cgroup-Restrict-effective-limits-with-global-resourc.patch
 Patch5010:      5010-cgroup-Rename-effective-limits-internal-table.patch
+
+%endif
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
@@ -356,6 +375,15 @@ Conflicts:      util-linux < 2.16
 %if %{with bootstrap}
 Conflicts:      udev
 Provides:       udev = %{version}-%{release}
+%endif
+%if %{with upstream}
+BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(libarchive)
+BuildRequires:  pkgconfig(xencontrol)
+BuildRequires:  pkgconfig(xkbcommon)
+Recommends:     libarchive13
+Recommends:     libxkbcommon0
 %endif
 
 %description -n udev%{?mini}
@@ -722,7 +750,7 @@ export CFLAGS="%{optflags} -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
 
 %meson \
         -Dmode=release \
-        -Dversion-tag=%{version}%{archive_version} \
+        -Dversion-tag=%{version}%[%{without upstream}?"%{archive_version}":""] \
         -Ddocdir=%{_docdir}/systemd \
 %if %{with split_usr}
         -Drootprefix=/usr \
@@ -799,7 +827,7 @@ export CFLAGS="%{optflags} -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
         -Dsbat-distro-url="%{?sbat_distro_url}" \
         \
         -Dsbat-distro-pkgname="%{name}" \
-        -Dsbat-distro-version="%{version}-%{release}" \
+        -Dsbat-distro-version="%{version}%[%{without upstream}?"-%{release}":""]" \
         \
         -Ddefault-dnssec=no \
         -Ddns-servers='' \
@@ -1387,13 +1415,13 @@ fi
 %defattr(-,root,root)
 %license LICENSE.LGPL2.1
 %{_libdir}/libsystemd.so.0
-%{_libdir}/libsystemd.so.0.37.0
+%{_libdir}/libsystemd.so.0.*.0
 
 %files -n libudev%{?mini}1
 %defattr(-,root,root)
 %license LICENSE.LGPL2.1
 %{_libdir}/libudev.so.1
-%{_libdir}/libudev.so.1.7.7
+%{_libdir}/libudev.so.1.7.*
 
 %if %{with coredump}
 %files coredump

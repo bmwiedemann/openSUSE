@@ -32,7 +32,11 @@
 %{_mandir}/man8/systemd-pcrmachine.service.8.gz
 %{_mandir}/man8/systemd-pcrphase-initrd.service.8.gz
 %{_mandir}/man8/systemd-pcrphase-sysinit.service.8.gz
+%if %{with upstream}
+%{_mandir}/man8/systemd-pcrextend.8.gz
+%else
 %{_mandir}/man8/systemd-pcrphase.8.gz
+%endif
 %{_mandir}/man8/systemd-pcrphase.service.8.gz
 %endif
 %{_mandir}/man8/systemd-repart.8.gz
@@ -53,7 +57,11 @@
 %endif
 %{_systemd_util_dir}/systemd-oomd
 %if %{with sd_boot}
+%if %{with upstream}
+%{_systemd_util_dir}/systemd-pcrextend
+%else
 %{_systemd_util_dir}/systemd-pcrphase
+%endif
 %endif
 %{_systemd_util_dir}/systemd-sysupdate
 %{_systemd_util_dir}/systemd-userwork
