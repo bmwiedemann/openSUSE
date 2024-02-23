@@ -460,4 +460,12 @@
   kernel&lt;-&gt;daemon interface</comment>
     <requestid>828201</requestid>
   </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>b45228828dcde22a00de06359a92255f</srcmd5>
+    <version>8</version>
+    <time>1708702870</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1149030 from dimstar)</comment>
+    <requestid>1149224</requestid>
+  </revision>
 </revisionlist>

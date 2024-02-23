@@ -59,7 +59,7 @@ cp -vL %{S:9} %{hv_kvp_daemon}.h
 cp -vL %{S:10} .
 cp -vL %{S:12} %{hv_vss_daemon}.c
 cp -vL %{S:14} %{hv_fcopy_daemon}.c
-%patch0 -p1
+%patch -P 0 -p1
 mv `basename %{S:10}` %{hv_kvp_daemon}.c
 
 %build

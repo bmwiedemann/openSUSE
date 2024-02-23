@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 07:56:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Aug 20 12:12:12 UTC 2020 - ohering@suse.de
 
 - Allow daemon restart again (bsc#1116957)
