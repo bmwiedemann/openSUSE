@@ -56,4 +56,13 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>37c29687d2cb6195a9109a298adcafd7</srcmd5>
+    <version>1.02</version>
+    <time>1708703214</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN (forwarded request 1149858 from pgajdos)</comment>
+    <requestid>1149920</requestid>
+  </revision>
 </revisionlist>

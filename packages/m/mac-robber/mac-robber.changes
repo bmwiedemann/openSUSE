@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 23 11:46:06 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Wed Aug 17 16:17:27 CEST 2011 - pth@suse.de
 
 - No need to remove buildroot in install section.

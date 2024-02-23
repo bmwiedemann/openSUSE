@@ -37,8 +37,7 @@ with The Sleuth Kit to create a timeline of file activity for mounted
 file systems.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 make %{?_smp_mflags} GCC_OPT="%{optflags}"
