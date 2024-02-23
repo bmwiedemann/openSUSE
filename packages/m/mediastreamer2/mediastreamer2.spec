@@ -126,12 +126,12 @@ develop programs using the mediastreamer2 library.
 
 %prep
 %autosetup -N
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 if pkg-config --atleast-version 59.37.100 libavcodec; then
-%patch2 -p1
+%patch -P 2 -p1
 fi
-%patch3 -p1
+%patch -P 3 -p1
 
 %build
 export CFLAGS="%(echo %{optflags}) -fcommon -Wno-implicit-function-declaration"
