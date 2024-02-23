@@ -204,8 +204,8 @@ Group:          System/X11/Fonts
 Type1 fonts from the GNU intlfonts package.
 
 %prep
-%setup -n intlfonts-1.2.1 -b 0 -a 3
-%patch0
+%autosetup -p0 -n intlfonts-1.2.1 -b 0 -a 3
+
 bunzip2 -c $RPM_SOURCE_DIR/gulim24.bdf.bz2 > gulim24.bdf
 
 #
