@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 03:02:23 UTC 2024 - Caleb Crane <caleb.crane@suse.com>
+
+- Spec: Adjust libvirt/virtiofsd interop config file to handle differences in
+  the definition of libexecdir macro on SLE and Tumbleweed (bsc#1219772)
+
+-------------------------------------------------------------------
 Tue Jan 30 17:09:25 UTC 2024 - caleb.crane@suse.com
 
 - Fix CVE-2023-50711: vmm-sys-util: out of bounds memory accesses (bsc#1218502, bsc#1218500)
@@ -15,7 +21,7 @@ Tue Jan 30 17:09:25 UTC 2024 - caleb.crane@suse.com
 -------------------------------------------------------------------
 Thu Aug 31 20:28:08 UTC 2023 - Caleb Crane <caleb.crane@suse.com>
 
-- Update to upstream version v1.7.2 (jsc#4980)
+- Update to upstream version v1.7.2 (jsc#PED-4980)
   - Add supplementary group extension support
   - Prevent EPERM failures with O_NOATIME
   - Fix cache timeouts

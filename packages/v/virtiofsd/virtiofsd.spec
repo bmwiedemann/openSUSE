@@ -19,13 +19,14 @@
 Name:           virtiofsd
 Version:        1.10.1
 Release:        0
-Summary:        vhost-user virtio-fs device backend written in Rust
+Summary:        A vhost-user virtio-fs device backend written in Rust
 Group:          Development/Libraries/Rust
 License:        Apache-2.0
 URL:            https://gitlab.com/virtio-fs/virtiofsd
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
+Source3:        50-virtiofsd.json
 BuildRequires:  cargo-packaging
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libseccomp-devel
@@ -33,27 +34,33 @@ Conflicts:      qemu-tools < 8
 ExcludeArch:    %ix86 %arm
 
 %description
-vhost-user virtio-fs device backend written in Rust
+A vhost-user virtio-fs device backend written in Rust
+
+%define _virtiofsd_dir %{_libexecdir}/%{name}
 
 %prep
 %autosetup -a1
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
+# Adjust libvirt/virtiofsd interop config file to handle differences in
+# the definition of libexecdir macro on SLE and Tumbleweed (bsc#1219772)
+sed -i 's#@@LIBEXECDIR@@#%{_virtiofsd_dir}#' %{SOURCE3}
 
 %build
 %{cargo_build}
 
 %install
-mkdir -p %{buildroot}%{_libexecdir}
-install -D -p -m 0755 %{_builddir}/%{name}-%{version}/target/release/virtiofsd %{buildroot}%{_libexecdir}/virtiofsd
-install -D -p -m 0644 %{_builddir}/%{name}-%{version}/50-virtiofsd.json %{buildroot}%{_datadir}/qemu/vhost-user/50-virtiofsd.json
+mkdir -p %{buildroot}%{_virtiofsd_dir}
+install -D -p -m 0755 %{_builddir}/%{name}-%{version}/target/release/virtiofsd %{buildroot}%{_virtiofsd_dir}/virtiofsd
+install -D -p -m 0644 %{SOURCE3} %{buildroot}%{_datadir}/qemu/vhost-user/50-virtiofsd.json
 
 %check
 %{cargo_test}
 
 %files
 %doc README.md
-%{_libexecdir}/virtiofsd
+%dir %{_virtiofsd_dir}
+%{_virtiofsd_dir}/virtiofsd
 %dir %{_datadir}/qemu
 %dir %{_datadir}/qemu/vhost-user
 %{_datadir}/qemu/vhost-user/50-virtiofsd.json

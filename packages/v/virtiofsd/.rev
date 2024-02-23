@@ -48,4 +48,14 @@ Use macros to exclude 32-bit archs</comment>
 - Spec: switch back to greedy cargo updates of vendored dependencies</comment>
     <requestid>1142838</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>95f01eb07555dfbd870ff352224b6dba</srcmd5>
+    <version>1.10.1</version>
+    <time>1708702834</time>
+    <user>anag+factory</user>
+    <comment>- Spec: Adjust libvirt/virtiofsd interop config file to handle differences in
+  the definition of libexecdir macro on SLE and Tumbleweed (bsc#1219772)
+- Misc: Fix jira reference for build service scripts</comment>
+    <requestid>1148951</requestid>
+  </revision>
 </revisionlist>
