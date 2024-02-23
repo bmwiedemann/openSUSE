@@ -1,7 +1,7 @@
 #
 # spec file for package jflex
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -97,7 +97,7 @@ rm -rf src/generated
 %setup -q -T -D -a 1 -n jflex-%{version}
 cp %{SOURCE2} build.xml
 mkdir -p lib
-%patch0 -p1
+%patch -P 0 -p1
 build-jar-repository -s lib java-cup-runtime glassfish-annotation-api
 %else
 %{mvn_file} : %{name} JFlex
