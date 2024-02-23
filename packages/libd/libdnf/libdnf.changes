@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 15 08:42:33 UTC 2024 - pgajdos@suse.com
+
+- version update to 0.73.0
+  * Major changes:
+  * filelists metadata not loaded by default
+  * deltarpm disabled by default
+  * New features:
+  * conf: Introduce new optional_metadata_types option to load
+    filelists on demand
+  * goal: Method for detecting file dependency problems
+
+-------------------------------------------------------------------
 Sat Nov  4 18:35:26 UTC 2023 - Neal Gompa <ngompa@opensuse.org>
 
 - Update to 0.72.0

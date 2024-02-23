@@ -658,4 +658,12 @@
   + Add patch: libdnf-0.72.0-with-static-libsolvext.patch</comment>
     <requestid>1123354</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>8a267458f4c79c2c11492b02107262b2</srcmd5>
+    <version>0.73.0</version>
+    <time>1708702868</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149215</requestid>
+  </revision>
 </revisionlist>
