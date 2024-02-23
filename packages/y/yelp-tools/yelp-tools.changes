@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 22 14:15:50 UTC 2024 - pgajdos@suse.com
+
+- %python3_fix_shebang do not need to be %ifdef'ed
+
+-------------------------------------------------------------------
+Thu Feb 22 12:06:02 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Mon Oct 31 08:37:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.1:
