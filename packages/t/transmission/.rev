@@ -1076,4 +1076,16 @@
     <comment></comment>
     <requestid>1146718</requestid>
   </revision>
+  <revision rev="105" vrev="5">
+    <srcmd5>07aaf38755aa3df173732e72374b737f</srcmd5>
+    <version>4.0.5</version>
+    <time>1708703161</time>
+    <user>anag+factory</user>
+    <comment>- Fix build with recent cmake macro change (DOCDIR): do not install
+  the documentation using cmake, as we already do so using %doc.
+  Change if(INSTALL_DOC) to if(FALSE) in CMakeLists.txt. The more
+  obvious option of passing -DINSTALL_DOC=OFF is ot viable, as that
+  also disables installing the man pages.</comment>
+    <requestid>1149978</requestid>
+  </revision>
 </revisionlist>
