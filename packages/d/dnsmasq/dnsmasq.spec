@@ -1,7 +1,7 @@
 #
 # spec file for package dnsmasq
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %bcond_with tftp_user_package
 %endif
 Name:           dnsmasq
-Version:        2.89
+Version:        2.90
 Release:        0
 Summary:        DNS Forwarder and DHCP Server
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -35,7 +35,6 @@ Source4:        dnsmasq.service
 Source5:        rc.dnsmasq-suse
 Source6:        system-user-dnsmasq.conf
 Patch0:         dnsmasq-groups.patch
-Patch1:         dnsmasq-CVE-2023-28450.patch
 BuildRequires:  dbus-1-devel
 BuildRequires:  dos2unix
 BuildRequires:  libidn2-devel

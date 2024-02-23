@@ -1,6 +1,6 @@
 --- src/dnsmasq.c.orig
 +++ src/dnsmasq.c
-@@ -731,11 +731,10 @@ int main (int argc, char **argv)
+@@ -728,11 +728,10 @@ int main (int argc, char **argv)
    if (!option_bool(OPT_DEBUG) && getuid() == 0)   
      {
        int bad_capabilities = 0;
