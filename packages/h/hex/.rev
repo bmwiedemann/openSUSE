@@ -124,4 +124,12 @@
     <comment>- fixed url and source links, explain why not 1.8 until now</comment>
     <requestid>557966</requestid>
   </revision>
+  <revision rev="19" vrev="282">
+    <srcmd5>ff2456228e95c9a11065fa1143dbff1c</srcmd5>
+    <version>1.4</version>
+    <time>1708702852</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1149028 from dimstar)</comment>
+    <requestid>1149087</requestid>
+  </revision>
 </revisionlist>

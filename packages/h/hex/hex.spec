@@ -34,8 +34,7 @@ A hex dumper that does CP/M and EBCDIC formatting and has
 internationalization support.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 make %{?_smp_mflags} clean
