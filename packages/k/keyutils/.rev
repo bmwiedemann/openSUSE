@@ -363,4 +363,12 @@
 See https://kernel.googlesource.com/pub/scm/linux/kernel/git/dhowells/keyutils/+/f9c7b4e4437ae9dae455b3e9760df397571c29d7 (forwarded request 1073943 from dimstar)</comment>
     <requestid>1073948</requestid>
   </revision>
+  <revision rev="44" vrev="7">
+    <srcmd5>0b337b2ced0d6e7d54a0d1afe0c5c7f3</srcmd5>
+    <version>1.6.3</version>
+    <time>1708702877</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1149338 from dimstar)</comment>
+    <requestid>1149368</requestid>
+  </revision>
 </revisionlist>

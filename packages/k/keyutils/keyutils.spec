@@ -68,10 +68,10 @@ This package provides headers and libraries for building key utilities.
 
 %prep
 %setup -q
-%patch1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%patch -P 1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
 
 %build
 %make_build NO_ARLIB=1 CFLAGS="%{optflags}" CC="gcc"
