@@ -38,17 +38,10 @@ Tails a given file anywhere on your X Window System root window with a
 transparent background. It is customizable with regards to font, color,
 and more.
 
-
-
-Authors:
---------
-    Mike Baker <mjbaker@mtu.edu>
-    Marc Lehmann <pcg@goof.com>
-
 %prep
 %setup
-%patch0 -p1 -b .default-fontset
-%patch1 -p1 -b .shade
+%patch -P 0 -p1 -b .default-fontset
+%patch -P 1 -p1 -b .shade
 
 %build
 xmkmf -a
