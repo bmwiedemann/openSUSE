@@ -1,7 +1,7 @@
 #
 # spec file for package apfel
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  swig
 Requires:       python-LHAPDF
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -127,6 +127,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 sed -Ei "1{s|#\!\s*%{_bindir}/env bash|#\!/bin/bash|}" %{buildroot}%{_bindir}/apfel-config
 
 # REMOVE INSTALLED README, INSTALL IT USING %%doc INSTEAD
+rm -fr %{buildroot}%{_docdir}/%{name}/README
 rm -fr %{buildroot}%{_datadir}/doc/apfel/README
 rm -fr %{buildroot}%{_datadir}/apfel/README
 
