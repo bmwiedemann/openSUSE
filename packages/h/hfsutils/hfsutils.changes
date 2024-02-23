@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 07:49:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Mar 31 10:09:55 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
 
 - Define hfs_error_path in hcopy.c, hfssh.c and hfswish.c,
