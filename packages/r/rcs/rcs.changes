@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 23 11:51:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Mar 28 19:53:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use https for urls 
