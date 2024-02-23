@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Fri Feb 23 08:44:18 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 17.1.3
+  * Activated task had chance to lose activation if it's on other desktop, with multi-desktop taskbar
+- Update to 17.1.2
+  * Fixed multi-taskbar size distrubution (border width was not counted)
+  * Scale was not counted sometimes
+  * Updated russian translation
+- Update to 17.1.1
+  * Report XShm status on start
+  * Prints X11 errors when they occur
+  * Long versions for some command line options
+  * Extended help text
+  * Small optimizations
+  * Reduced load from events spam with shrinking on
+  * tint2-send: Stdin daemon mode
+  * Fixed widgets redraw after they were hidden
+  * Fixed panel flicker if mouse was over during panel start
+  * Current desktop was set to first instead of current, on start
+  * Tray subwindow had no PID set, which broke cyrrent owner PID report by
+  * Desktop launcher parsing is now more freedesktop-compliant
+  * Fixed some X11 errors
+  * Fixed some memory leaks
+- Update to 17.1
+  * Added option "rounded_corners" to disable rounding for separate corners
+  * Added option to use continuous executor process as command sink for its own action commands
+  * "tput clear" command in executors is possible without "-T" option (TERM is set to better value than "dumb")
+  * Enhanced API documentation comment style to look more like documentation right in code (resemble doxygen output)
+  * tint2conf: spacing option for buttons and executors, enable negative spacing for task icon and text
+  * Small optimizations
+  * Found few regressions, possibly introduced between versions 17.0.2 and 17.0.3
+  * GTK2 was still listed among current dependencies in few places
+  * snprintf sometimes could overwrite terminating null in fixed buffers, resulting to unpredictable possible crashes
+  * Last possible artifacts in area / tooltip draw (try thick border lines with rounding)
+  * Task icon placing did not use spacing in centered mode, resulting to half of spacing moved to padding
+  * tint2conf
+    + Colors had channel values decremented when saved to config and used wrong required precision
+    + Background image in the editor looked different than on the panel
+- Update to 17.0.3
+  * Added command to refresh executors (issue #747) (Arash Rohani)
+  * Tooltip: live update, remove truncation by hardcoded value, don't wrap multiline text
+  * Never activate battery support without enabled battery applet
+  * Color tinting: try to preserve perceived lightness
+  * tint2conf: Don't auto-start theme editor with empty TINT2_CONFIG variable
+  * tint2conf: More convenient editor switcher sidebar with independed scrolling
+  * tint2conf: Colors, saved to config, use minimum required length (3, 6 or 12 hexdigits)
+  * Various optimizations and little cleanup
+  * Manual: Executor examples use 'stdbuf -oL' and continuous processes in more places
+  * Interpret negative "execp_continuous" value as false (0)
+  * init_timer: Did not ensure resulting name null-terminated, introducing indirect bug (possible security issue)
+  * Border radius was not confined by widget size, breaking shape in some cases (e.g. tray without icons)
+  * Fixed output format for time in logs - could easily take form of 0:0:0s instead of expected 0:00:00s
+  * Fixed subtle artifacts, resulting from incorrect border & background stiching
+  * Applet size and content position with negative icon<->text distance
+  * Fix parsing for color hexstrings with other format, than #FFFFFF (e.g. 1 or 4 hexdigits per channel)
+  * tint2conf: Theme context menu did not follow right-clicked theme if it was not selected before
+  * tint2conf: Delay opening theme context menu
+  * tint2conf: Much faster editor start due to optimized themes loading (bug #792)
+- changed repo from https://gitlab.com/o9000/tint2 after end-of-life announce
+
+
+-------------------------------------------------------------------
 Thu Mar  3 08:37:38 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Dont recommend lang package

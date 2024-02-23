@@ -1,7 +1,7 @@
 #
 # spec file for package tint2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           tint2
-Version:        17.0.2
+Version:        17.1.3
 Release:        0
 Summary:        A lightweight X11 desktop panel and task manager
 License:        GPL-2.0-only
 Group:          System/X11/Utilities
-URL:            https://gitlab.com/o9000/tint2
-Source0:        https://gitlab.com/o9000/%{name}/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
+URL:            https://gitlab.com/nick87720z/tint2
+Source0:        https://gitlab.com/nick87720z/%{name}/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
 Source1:        tint2conf.1
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
@@ -52,7 +52,7 @@ specifically made for Openbox3 but should also work with other window managers.
 %lang_package
 
 %prep
-%setup -q -n %{name}-v%{version}
+%autosetup -n %{name}-v%{version}
 
 %build
 %cmake -DCMAKE_INSTALL_DOCDIR=%{_defaultdocdir}/%{name}
@@ -62,7 +62,7 @@ specifically made for Openbox3 but should also work with other window managers.
 %cmake_install
 
 # create tint2 config directory
-mkdir -p %{buildroot}%{_sysconfdir}/skel/.config/tint2/
+#mkdir -p %{buildroot}%{_sysconfdir}/skel/.config/tint2/
 
 desktop-file-install	\
 	--set-key=NoDisplay  --set-value=true	\
@@ -84,11 +84,12 @@ install -m 0644 %{SOURCE1} %{buildroot}/%{_mandir}/man1/
 %license COPYING
 %doc AUTHORS CONTRIBUTING.md ChangeLog README.md
 %doc %{_defaultdocdir}/tint2/
-%dir %{_sysconfdir}/skel/.config/
+#%dir %{_sysconfdir}/skel/.config/
 %dir %{_sysconfdir}/xdg/tint2
 %config(noreplace) %{_sysconfdir}/xdg/tint2/tint2rc
-%{_sysconfdir}/skel/.config/tint2/
+#%{_sysconfdir}/skel/.config/tint2/
 %{_bindir}/tint2
+%{_bindir}/tint2-send
 %{_bindir}/tint2conf
 %{_datadir}/tint2/
 %{_datadir}/applications/tint2conf.desktop
