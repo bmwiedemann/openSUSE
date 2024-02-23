@@ -1,0 +1,5 @@
+<package name="extension-manager" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Utilities" package="extension-manager"/>
+</package>
