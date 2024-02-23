@@ -41,15 +41,8 @@ translating to a different output encoding.
 
 Bug reports should be sent to richard@cogsci.ed.ac.uk.
 
-
-
-Authors:
---------
-    Richard Tobin <richard@cogsci.ed.ac.uk>
-
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 mv Makefile Makefile.orig
@@ -64,8 +57,8 @@ mv Makefile Makefile.orig
 %{__install} -m644 rxp.1 %{buildroot}%{_mandir}/man1
 
 %files
-%defattr(-, root, root)
-%doc COPYRIGHT COPYING Manual Threads
+%license COPYRIGHT COPYING
+%doc Manual Threads
 %{_bindir}/*
 %doc %{_mandir}/man1/*
 
