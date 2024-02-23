@@ -1,7 +1,7 @@
 #
 # spec file for package gd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -83,10 +83,7 @@ useful in World Wide Web applications, where PNG and JPEG are two of
 the formats accepted for inline images by most browsers.
 
 %prep
-%setup -q -n %{prjname}-%{version}
-%patch1
-%patch2
-%patch3
+%autosetup -p0 -n %{prjname}-%{version}
 chmod 644 COPYING
 
 %build

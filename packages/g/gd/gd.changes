@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 08:15:24 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Tue Feb 28 15:04:29 UTC 2023 - pgajdos@suse.com
 
 - add %bcond for avif

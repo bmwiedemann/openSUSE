@@ -558,4 +558,13 @@
 - fix dejavu fonts package name in BR</comment>
     <requestid>1068214</requestid>
   </revision>
+  <revision rev="59" vrev="4">
+    <srcmd5>82aebfe6ff18e58c32d1a1ed0703cc7a</srcmd5>
+    <version>2.3.3</version>
+    <time>1708702850</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1149072</requestid>
+  </revision>
 </revisionlist>
