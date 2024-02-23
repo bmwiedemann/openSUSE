@@ -158,8 +158,7 @@ BuildArch:      noarch
 Provides translations for the %{name} package.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure  %{?with_sbcl:--enable-sbcl} \
