@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 21 15:10:54 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+- Move license to %license section
+
+-------------------------------------------------------------------
 Sun Aug  2 17:24:37 UTC 2015 - mpluskal@suse.com
 
 - Cleanup spec file with spec-cleaner
