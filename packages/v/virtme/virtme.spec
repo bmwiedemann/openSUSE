@@ -1,7 +1,7 @@
 #
 # spec file for package virtme
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,11 @@
 #
 
 
-%define pythons python3
-%define skip_python39 1
-%define skip_python310 1
-%{?sle15_python_module_pythons}
+%if 0%{?suse_version} >= 1600
+%global pythons python3
+%else
+%global pythons python311
+%endif
 Name:           virtme
 Version:        1.18
 Release:        0
@@ -28,9 +29,11 @@ License:        GPL-2.0-only
 Group:          Development/Tools/Other
 URL:            https://github.com/arighi/virtme-ng
 Source0:        https://github.com/arighi/virtme-ng/archive/v%{version}.tar.gz#/%{name}-ng-%{version}.tar.gz
-BuildRequires:  %{python_module argcomplete}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{pythons}-argcomplete
+BuildRequires:  %{pythons}-setuptools
 BuildRequires:  python-rpm-macros
+Requires:       %{pythons}-argcomplete
+Requires:       %{pythons}-setuptools
 Requires:       busybox-static
 Requires:       qemu
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} <= 150500

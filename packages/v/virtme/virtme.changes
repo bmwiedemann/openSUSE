@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 23 13:04:18 UTC 2024 - Marcos de Souza <mpdesouza@suse.com>
+
+- Fix python version checking
+
+-------------------------------------------------------------------
+Thu Feb 22 13:23:47 UTC 2024 - Marcos de Souza <mpdesouza@suse.com>
+
+- Requires setuptools and argcomplete, instead of just require it for building
+
+-------------------------------------------------------------------
 Wed Dec 13 09:36:30 UTC 2023 - Robert Frohl <rfrohl@suse.com>
 
 - Require qemu-tools instead virtiofsd for older SLE/Leap versions 
