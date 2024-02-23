@@ -51,9 +51,7 @@ WARN/CRITICAl result if not.It can run on nagios server, or on remote server
 via NRPE.
 
 %prep
-%setup -q -n check_mailstat_plugin_v%{version}
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n check_mailstat_plugin_v%{version}
 sed -i "s|||g" README.txt
 install -m0644 %{SOURCE3} .
 
