@@ -153,6 +153,7 @@ liquidio:	liquidio	LICENCE.cavium_liquidio
 nitrox:		platform	LICENCE.cavium
 i915:		i915		LICENSE.i915
 nouveau:	nvidia		LICENCE.nvidia
+xe:		i915		LICENSE.xe
 wilc1000:	network		LICENSE.atmel
 hfi1:		intel		LICENSE.hfi1_firmware
 knav_qmss_queue: ti		LICENCE.ti-keystone
@@ -169,6 +170,7 @@ mt7921:		mediatek	LICENCE.mediatek
 mt7922:		mediatek	LICENCE.mediatek
 mt7925:		mediatek	LICENCE.mediatek
 mt7988:		mediatek	LICENCE.mediatek
+mt7996e:	mediatek	LICENCE.mediatek
 nfp:		nfp		LICENCE.Netronome
 wil6210:	atheros		LICENSE.QualcommAtheros_ath10k
 venus:		media		LICENSE.qcom qcom/NOTICE.txt
@@ -199,3 +201,7 @@ qcom-sm8550:	sound		LICENCE.linaro
 qcom-sm8650:	sound		LICENCE.linaro
 ti-tas2781:	sound		GPL-2 GPL-3
 ti-tas2563:	sound		GPL-2 GPL-3
+Mont-TSSE:	platform	LICENSE.montage
+panthor:	platform	LICENCE.mali_csffw
+
+

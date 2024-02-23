@@ -21,11 +21,11 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20240201
+%define version_unconverted 20240220
 # Force bzip2 instead of lzma compression (bsc#1176981)
 %define _binary_payload w9.bzdio
 Name:           kernel-firmware
-Version:        20240201
+Version:        20240220
 Release:        0
 Summary:        Linux kernel firmware files
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
@@ -1718,6 +1718,9 @@ Supplements:    modalias(pci:v00008086d00005A5Asv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00005A5Csv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00005A84sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00005A85sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d00006420sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d000064A0sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d000064B0sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00007D40sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00007D45sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00007D55sv*sd*bc03sc*i*)
@@ -3092,6 +3095,10 @@ Supplements:    modalias(pci:v000014C3d00007663sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007922sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007925sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007961sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000014C3d00007990sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000014C3d00007991sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000014C3d00007992sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000014C3d0000799Asv*sd*bc*sc*i*)
 Supplements:    modalias(sdio:c*v037Ad7663*)
 Supplements:    modalias(sdio:c*v037Ad7668*)
 Supplements:    modalias(sdio:c*v037Ad7901*)
@@ -5333,6 +5340,7 @@ Supplements:    modalias(pci:v000010ECd00002502sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010ECd00002600sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010ECd00003000sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010ECd00008125sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000010ECd00008126sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010ECd00008129sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010ECd00008136sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010ECd00008161sv*sd*bc*sc*i*)
@@ -6541,14 +6549,14 @@ various USB WiFi / Ethernet drivers.
 
 %prep
 %setup -q -n kernel-firmware-%{version}
-%patch1 -p1
+%patch -P 1 -p1
 # additional firmwares
 cat %{SOURCE1} >> WHENCE
 cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .
 
 %if 0%{?suse_version} < 1599
 # revive old iwlwifi firmware for compatibility (bsc#1209681)
-%patch200 -p1
+%patch -P 200 -p1
 cp %{SOURCE200} .
 cp %{SOURCE201} .
 cp %{SOURCE202} .

@@ -138,14 +138,14 @@ all files that have been provided by kernel-firmware package.
 
 %prep
 %setup -q -n kernel-firmware-%{version}
-%patch1 -p1
+%patch -P 1 -p1
 # additional firmwares
 cat %{SOURCE1} >> WHENCE
 cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .
 
 %if 0%{?suse_version} < 1599
 # revive old iwlwifi firmware for compatibility (bsc#1209681)
-%patch200 -p1
+%patch -P 200 -p1
 cp %{SOURCE200} .
 cp %{SOURCE201} .
 cp %{SOURCE202} .

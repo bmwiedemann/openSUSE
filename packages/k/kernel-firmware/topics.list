@@ -158,6 +158,7 @@ liquidio:	liquidio
 nitrox:		platform	n5pf
 i915:		i915
 nouveau:	nvidia		nouveau
+xe:		i915
 wilc1000:	network
 hfi1:		intel
 knav_qmss_queue: ti
@@ -177,6 +178,7 @@ mt7921:		mediatek	mt7921e mt7921s mt7921u
 mt7922:		mediatek	mt7921e mt7921s mt7921u
 mt7925:		mediatek	mt7925e mt7925u
 mt7988:		mediatek
+mt7996e:	mediatek
 nfp:		nfp
 wil6210:	atheros
 venus:		media
@@ -209,4 +211,6 @@ qcom-sm8550:	sound		snd-soc-sc8280xp
 qcom-sm8650:	sound		snd-soc-sc8280xp
 ti-tas2781:	sound		snd-hda-scodec-tas2781-i2c
 ti-tas2563:	sound		snd-hda-scodec-tas2781-i2c
+Mont-TSSE:	platform
+panthor:	platform
 ast:		platform
