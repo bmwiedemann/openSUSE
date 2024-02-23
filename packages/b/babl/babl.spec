@@ -19,7 +19,7 @@
 %define debug_package_requires libbabl-0_1-0 = %{version}-%{release}
 
 Name:           babl
-Version:        0.1.106
+Version:        0.1.108
 Release:        0
 Summary:        Dynamic Pixel Format Translation Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -78,6 +78,7 @@ babl is a dynamic, any to any, pixel format translation library.
 
 %build
 %meson \
+  -Dgi-docgen=disabled \
 	%{nil}
 %meson_build
 
