@@ -45,8 +45,7 @@ This version 1.x is based on ipmitool and can only monitor threshold based
 sensors.
 
 %prep
-%setup -q -n check_ipmi_sensor_v%{version}
-%patch0 -p1
+%autosetup -p1 -n check_ipmi_sensor_v%{version}
 
 %build
 
