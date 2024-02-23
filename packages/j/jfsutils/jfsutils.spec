@@ -51,11 +51,7 @@ from the JFS fsck workspace into a file o xpeek--shell-type JFS file
 system editor
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1
 
 %build
 sed -i -e 's@^\./"@\." @' fsck/jfs_fsck.8 \
