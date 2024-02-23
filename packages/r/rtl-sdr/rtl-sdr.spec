@@ -65,8 +65,7 @@ Requires:       %{libname} = %{version}
 Library headers for rtl-sdr driver.
 
 %prep
-%setup -q  -n librtlsdr-%{version}
-%patch0 -p1
+%autosetup -p1 -n librtlsdr-%{version}
 
 %build
 %cmake \
