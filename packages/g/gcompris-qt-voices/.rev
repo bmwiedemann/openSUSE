@@ -171,4 +171,13 @@ please place in same staging as gcompris-qt
 </comment>
     <requestid>1096493</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1b1eeaa073719f2d596e194af390e30b</srcmd5>
+    <version>4.0~20240221</version>
+    <time>1708703119</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.0~20240221 for gcompris-qt 4.0
+</comment>
+    <requestid>1149783</requestid>
+  </revision>
 </revisionlist>
