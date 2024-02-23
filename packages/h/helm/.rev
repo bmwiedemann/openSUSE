@@ -671,4 +671,16 @@ See changelog in:
       3.22.11</comment>
     <requestid>1139987</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>0cfc0c1516b822ebbbd6e51504dea962</srcmd5>
+    <version>3.14.2</version>
+    <time>1708703188</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.14.2 (bsc#1220207, CVE-2024-26147):
+  * Fix for uninitialized variable in yaml parsing
+
+- Update to version 3.14.1:
+  * validation fix</comment>
+    <requestid>1149779</requestid>
+  </revision>
 </revisionlist>

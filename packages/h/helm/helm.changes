@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 23 10:02:12 UTC 2024 - dmueller@suse.com
+
+- Update to version 3.14.2 (bsc#1220207, CVE-2024-26147):
+  * Fix for uninitialized variable in yaml parsing
+
+-------------------------------------------------------------------
+Thu Feb 15 05:57:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.14.1:
+  * validation fix
+
+-------------------------------------------------------------------
 Fri Jan 19 15:51:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - determine git commit hash automatically
