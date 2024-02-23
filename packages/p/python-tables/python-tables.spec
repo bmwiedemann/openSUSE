@@ -36,8 +36,8 @@
 %if "%{flavor}" != "test-py312"
 %define skip_python312 1
 %endif
-# Skip all empty test flavors: The obs server-side interpreter cannot use lua or rpm shrink, last one is for sle15_python_module_pythons
-%if "%pythons" == "" || "%pythons" == " " || "%pythons" == "  " || "%pythons" == "   " || "%pythons" == "    " || ( "%pythons" == "python311" && 0%{?skip_python311} )
+# Skip all empty test flavors: last one is for sle15_python_module_pythons
+%if "%{shrink:%pythons}" == "" || ( "%pythons" == "python311" && 0%{?skip_python311} )
 ExclusiveArch:  donotbuild
 %define python_module() %flavor-not-enabled-in-buildset-for-suse-%{?suse_version}
 %endif

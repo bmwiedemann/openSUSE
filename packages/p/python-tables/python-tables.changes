@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 23 12:25:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use newly supported shrink{} on OBS to exclude python flavors
+  will all python versions skipped.
+
+-------------------------------------------------------------------
 Tue Feb 20 15:17:07 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Reenable test flavor for Python 3.9 instead of actually testing
