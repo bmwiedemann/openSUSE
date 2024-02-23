@@ -1,7 +1,7 @@
 #
 # spec file for package bibletime
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012-2014 Lars Vogdt
 #
 # All modifications and additions to the file contributed by third parties
@@ -74,6 +74,9 @@ write own notes, save, print etc.).
 
 %build
 %cmake \
+%if 0%{?suse_version} < 1600
+  -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
+%endif
   -DCMAKE_BUILD_TYPE=Release \
   -DBT_DOCBOOK_XSL_HTML_CHUNK_XSL=%{_datadir}/xml/docbook/stylesheet/nwalsh/current/html/chunk.xsl \
   -DBT_DOCBOOK_XSL_PDF_DOCBOOK_XSL=%{_datadir}/xml/docbook/stylesheet/nwalsh/current/fo/docbook.xsl
@@ -94,8 +97,8 @@ write own notes, save, print etc.).
 %{_datadir}/applications/info.%{name}.BibleTime.desktop
 %dir %{_datadir}/bibletime
 %{_datadir}/bibletime/*
-%dir %{_datadir}/doc/bibletime
-%{_datadir}/doc/bibletime/*
+%dir %{_docdir}/bibletime
+%{_docdir}/bibletime/*
 %{_datadir}/metainfo/info.bibletime.BibleTime.metainfo.xml
 
 %changelog
