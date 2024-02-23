@@ -87,6 +87,9 @@ rm -rf src/lib/hash/sha*
 # Install dictionary generation script
 mkdir -p %{buildroot}%{_libexecdir}
 install -p contrib/gen_xml_dictionary %{buildroot}%{_libexecdir}/zck_gen_xml_dictionary
+%if %{suse_version} >= 1600
+%python3_fix_shebang_path %{buildroot}%{_libexecdir}/*
+%endif
 
 %check
 %meson_test
