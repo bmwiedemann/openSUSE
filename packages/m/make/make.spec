@@ -1,7 +1,7 @@
 #
 # spec file for package make
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,10 +39,10 @@ The GNU make command with extensive documentation.
 %lang_package
 
 %prep
-%setup -q
-if [ %{_lib} = lib64 ]; then
-%patch64 -p1
-fi
+%autosetup -N
+%if "%{_lib}" == "lib64"
+%patch -P 64 -p1
+%endif
 
 %build
 %configure

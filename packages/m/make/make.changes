@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 10:16:21 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Use %patch -P
+
+-------------------------------------------------------------------
 Thu Apr  6 11:04:19 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Update license tag, tarball contains GPL-3.0-or-later code.

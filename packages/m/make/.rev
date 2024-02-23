@@ -460,4 +460,12 @@ now with changed patch tag, even though the patch might be accepted by upstream 
     <comment>- Update license tag, tarball contains GPL-3.0-or-later code. (forwarded request 1077715 from fcrozat)</comment>
     <requestid>1077717</requestid>
   </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>01cdf4f730d18c0f48062a2e3e8128f6</srcmd5>
+    <version>4.4.1</version>
+    <time>1708703092</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P (forwarded request 1148549 from Andreas_Schwab)</comment>
+    <requestid>1148550</requestid>
+  </revision>
 </revisionlist>
