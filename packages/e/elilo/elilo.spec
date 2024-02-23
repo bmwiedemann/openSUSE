@@ -65,18 +65,8 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 The EFI Linux boot loader.
 
 %prep
-%setup -q -n %{name}-%{version}-source
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
+%autosetup -p1 -n %{name}-%{version}-source
+
 # work around b0rked 'Str'-ops in newer 'gnu-efi' ... :-(
 find . -type f -name '*.[ch]' -print0 | xargs -0rn 1 \
   perl -pi -e 's{Str(Chr|n(X?Cpy|Cat))}{eliloStr$1}g'
