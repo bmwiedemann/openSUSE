@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 23 08:37:18 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Thu Apr 22 12:25:03 UTC 2021 - Lars Vogdt <lars@linux-schulserver.de>
 
 - include abstractions/bash in apparmor profile - otherwise 

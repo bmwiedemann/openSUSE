@@ -55,9 +55,7 @@ sar OK| DEV=sda tps=0.00 rd_sec/s=0.00 wr_sec/s=0.00 avgrq-sz=0.00
 
 
 %prep
-%setup -q -n nickanderson-check-sar-perf-4878d0c
-%patch0 -p0
-%patch1 -p0
+%autosetup -p0 -n nickanderson-check-sar-perf-4878d0c
 
 %build
 
