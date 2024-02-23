@@ -1,7 +1,7 @@
 #
 # spec file for package dcraw
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,14 +62,14 @@ Command line tools for raw digital photo decoding and processing.
 %prep
 %setup -q -n %{name}
 cp -a %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} .
-%patch0
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
+%patch -P 0
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing -fstack-protector-all"

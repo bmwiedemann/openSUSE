@@ -297,4 +297,12 @@ Use option (b) from dcraw.c (forwarded request 111328 from babelworx)</comment>
     <comment></comment>
     <requestid>1102675</requestid>
   </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>00b27b96520c9077ddc942397bc1659f</srcmd5>
+    <version>9.28.0</version>
+    <time>1708702848</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN.</comment>
+    <requestid>1149029</requestid>
+  </revision>
 </revisionlist>
