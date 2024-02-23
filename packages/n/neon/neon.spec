@@ -68,9 +68,9 @@ neon is an HTTP and WebDAV client library with a C interface.
 
 %prep
 %setup -q
-%patch0
+%patch -P 0
 %ifarch ppc64le ppc64
-%patch1
+%patch -P 1
 %endif
 
 %build

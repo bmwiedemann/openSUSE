@@ -477,4 +477,12 @@
   * Fixes for Windows MSYS2/MinGW build, including cross-build</comment>
     <requestid>1061800</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>237a3abe2806dceb21c147b14aa3bb92</srcmd5>
+    <version>0.32.5</version>
+    <time>1708702895</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1149481 from dimstar)</comment>
+    <requestid>1149531</requestid>
+  </revision>
 </revisionlist>
