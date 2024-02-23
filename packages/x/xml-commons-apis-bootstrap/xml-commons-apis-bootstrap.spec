@@ -2,7 +2,7 @@
 #
 # spec file for package xml-commons-apis-bootstrap
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Release:        0
 Summary:        Common code for XML projects - bootstrapping package
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://xml.apache.org/commons/
+URL:            https://xml.apache.org/commons/
 # svn export http://svn.apache.org/repos/asf/xml/commons/tags/xml-commons-1_0_b2/
 Source0:        xml-commons-1.0.b2.tar.bz2
 # svn export http://svn.apache.org/repos/asf/xml/commons/tags/xml-commons-resolver-1_1_b1/
@@ -52,7 +52,7 @@ INSTALL ... THIS IS JUST FOR PACKAGING & BOOTSTRAPPING JAVA PURPOSES!!
 %package -n xml-commons-which-bootstrap
 Summary:        Which subproject of xml-commons
 Group:          Development/Libraries/Java
-URL:            http://xml.apache.org/commons/
+URL:            https://xml.apache.org/commons/
 
 %description -n xml-commons-which-bootstrap
 This is xml-which from the java-bootrapping-tools package. DO NOT
@@ -61,7 +61,7 @@ INSTALL ... THIS IS JUST FOR PACKAGING & BOOTSTRAPPING JAVA PURPOSES!!
 %package -n xml-commons-resolver-bootstrap
 Summary:        Resolver subproject of xml-commons
 Group:          Development/Libraries/Java
-URL:            http://xml.apache.org/commons/
+URL:            https://xml.apache.org/commons/
 Provides:       xml-resolver
 
 %description -n xml-commons-resolver-bootstrap
@@ -74,9 +74,9 @@ INSTALL ... THIS IS JUST FOR PACKAGING & BOOTSTRAPPING JAVA PURPOSES!!
 %setup -q -T -D -a 0
 %setup -q -T -D -a 3
 
-%patch1 -b .sav
-%patch2 -b .sav
-%patch3 -b .sav
+%patch -P 1 -b .sav
+%patch -P 2 -b .sav
+%patch -P 3 -b .sav
 
 %build
 #>>> some useful functions ... used throughout bootstrap packages
