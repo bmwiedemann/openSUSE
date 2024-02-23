@@ -138,7 +138,7 @@ This package contains %{_name} build with the libdb backend.
 %prep
 %setup -q -n %{_name}-%{version}
 %if 0%{?suse_version} > 1320
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 
 %build

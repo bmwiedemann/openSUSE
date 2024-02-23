@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 10:25:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Nov  4 14:13:48 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Convert to _multibuild: with RPM 4.16, we can no longer use
