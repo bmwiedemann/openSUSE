@@ -214,4 +214,14 @@
 - Prepare support for openmpi5</comment>
     <requestid>1119876</requestid>
   </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>8e57efad0a9015fcc77953a9a7333ac1</srcmd5>
+    <version>5.3.5</version>
+    <time>1708703238</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+</comment>
+    <requestid>1149964</requestid>
+  </revision>
 </revisionlist>

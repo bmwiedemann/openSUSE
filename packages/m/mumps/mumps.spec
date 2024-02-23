@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package mumps
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -515,8 +515,7 @@ matlab and scilab extensions are provided in /usr/share/doc/packages/mumps.
 %endif
 
 %prep
-%setup -q -n %{PNAME}_%{version}
-#%%patch1 -p1
+%autosetup -n %{PNAME}_%{version}
 
 %build
 
