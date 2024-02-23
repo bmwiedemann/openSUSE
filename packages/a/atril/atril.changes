@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 10:48:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Tue Jan  1 07:42:35 UTC 2024 - Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
 
 - Fix CVE-2023-51698: comics: Use libarchive to unpack documents.
