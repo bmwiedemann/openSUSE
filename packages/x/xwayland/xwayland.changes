@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 15 17:13:03 UTC 2024 - Joan Torres <joan.torres@suse.com>
+
+- Don't provide xorg-x11-server-source
+  * xwayland sources are not meant for a generic server.
+  * https://github.com/TigerVNC/tigervnc/issues/1728
+
+-------------------------------------------------------------------
+Thu Feb 15 10:41:13 UTC 2024 - Joan Torres <joan.torres@suse.com>
+
+- Provide xorg-x11-server-source from xwayland
+  * xwayland will be more updated than xorg-x11-server, so the server sources 
+    will be more updated too if are provided by xwayland.
+  * Fixes bsc#1219892.
+
+-------------------------------------------------------------------
 Wed Jan 17 10:20:50 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - This release contains also the following patches mentioned in

@@ -437,4 +437,12 @@
   * U_bsc1217766-randr-avoid-integer-truncation-in-length-check-of-Pr.patch</comment>
     <requestid>1139423</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>9a63fb2c661e825226dac3305ed4ef7c</srcmd5>
+    <version>23.2.4</version>
+    <time>1708702883</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1149619</requestid>
+  </revision>
 </revisionlist>
