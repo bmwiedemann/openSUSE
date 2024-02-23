@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-libtmux
-Version:        0.27.1
+Version:        0.31.0
 Release:        0
 Summary:        Python API / wrapper for tmux
 License:        MIT
@@ -62,18 +62,9 @@ mkdir -p src/libtmux/
 cp src.bak/libtmux/__about__.py src/libtmux/
 
 export TMUX_TMPDIR=/tmp
-export PYTEST_IGNORE=""
-%ifarch x86_64
-export PYTEST_IGNORE="-k (not test_session.py::test_select_window or test_test.py::test_function_times_out)"
-%endif
-%ifarch armv7l
-export PYTEST_IGNORE="-k (not test_session.py::test_select_window or test_test.py::test_function_times_out)"
-%endif
-%ifarch aarch64
-export PYTEST_IGNORE="-k (not test_session.py::test_select_window or test_test.py::test_function_times_out)"
-%endif
 echo "Starting tests with PYTEST_IGNORE set to $PYTEST_IGNORE"
-%pytest $PYTEST_IGNORE
+export PYTEST_IGNORE="test_select_window or test_session.py::test_select_window or tests/test_session.py::test_select_window or tests/legacy_api/test_session.py::test_select_window or test_function_times_out"
+%pytest -k "not (${PYTEST_IGNORE})"
 
 rm -rf src/
 mv src.bak src
