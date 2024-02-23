@@ -97,9 +97,7 @@ Requires:       git
 Meta package for ruby-build dependencies to build PicoRuby.
 
 %prep
-%setup -q
-
-%patch0 -p1
+%autosetup -p1
 
 %build
 
