@@ -1,7 +1,7 @@
 #
 # spec file for package bladeRF
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013-2015 Wojciech Kazubski, wk@ire.pw.edu.pl
 #
 # All modifications and additions to the file contributed by third parties
@@ -86,8 +86,7 @@ Libraries and header files for developing applications that want to make
 use of libbladerf.
 
 %prep
-%setup -q -n %{name}-%{release_name}
-%patch0 -p1
+%autosetup -p1 -n %{name}-%{release_name}
 ls
 pushd thirdparty/analogdevicesinc/no-OS
 tar -xJf %{SOURCE1}
@@ -103,16 +102,13 @@ cd host
 %if 0%{?use_syslog}
   -DENABLE_LIBBLADERF_SYSLOG=ON \
 %endif
+  -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/lib%{name} \
   -DBUILD_DOCUMENTATION=ON
 %cmake_build
 
 %install
 cd host
 %cmake_install
-
-#move docs
-mkdir -p %{buildroot}%{_docdir}
-mv %{buildroot}/%{_datadir}/doc/libbladeRF %{buildroot}%{_docdir}
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun  -n %{libname} -p /sbin/ldconfig

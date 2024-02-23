@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 23 11:25:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Align path for document installation between openSUSE versions.
+
+-------------------------------------------------------------------
+Thu Feb 22 10:25:17 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Mon Feb 13 21:53:41 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2023.02
