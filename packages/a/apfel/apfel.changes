@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 23 09:14:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove README in one possible location where cmake
+  would potentially install it to.
+
+-------------------------------------------------------------------
 Thu Dec 28 13:37:17 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.1.1:
