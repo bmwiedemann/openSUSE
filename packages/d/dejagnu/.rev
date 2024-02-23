@@ -242,4 +242,12 @@
     <comment>- testsuite-legacy.patch: support deprecated legacy uses of dejagnu (forwarded request 903260 from Andreas_Schwab)</comment>
     <requestid>903261</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>3851aace0aaad2a6f64907cd6b9a0072</srcmd5>
+    <version>1.6.3</version>
+    <time>1708703095</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup</comment>
+    <requestid>1148705</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package dejagnu
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,8 +65,7 @@ Running tests requires two things: the testing framework and the test
 suites themselves.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 # 49078@debbugs.gnu.org: bug in Expect 5.45.4 triggers a testsuite failure
