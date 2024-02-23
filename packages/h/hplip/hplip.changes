@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 07:51:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Jan  3 16:11:11 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Update to hplip 3.23.12

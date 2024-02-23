@@ -308,29 +308,29 @@ This sub-package is only required by developers.
 # Be quiet when unpacking:
 %setup -q
 # Patch101 change-udev-rules.diff changes the udev rules file 56-hpmud.rules
-%patch101 -p1 -b .change-udev-rules.orig
+%patch -P 101 -p1 -b .change-udev-rules.orig
 # Patch106 disable_hp-upgrade.patch disables hp-upgrade/upgrade.py for security reasons,
 # see https://bugzilla.novell.com/show_bug.cgi?id=853405
 # To upgrade HPLIP an openSUSE software package manager like YaST or zypper should be used.
-%patch106 -p1 -b .disable_hp-upgrade.orig
-%patch107 -p1 -b .udev_rules_dir.orig
+%patch -P 106 -p1 -b .disable_hp-upgrade.orig
+%patch -P 107 -p1 -b .udev_rules_dir.orig
 # Patch108 add_missing_includes_and_define_GNU_SOURCE.patch adds missing '#include <...>'
 # and missing '#define _GNU_SOURCE' see https://bugs.launchpad.net/hplip/+bug/1456590
-%patch108 -p1 -b .add_missing_includes_and_define_GNU_SOURCE.orig
-%patch110 -p1 -b .boo1094141
-%patch112 -p1
-%patch300 -p1 -b .pcardext-python3
-%patch301 -p1 -b .misc-headers
-%patch302 -p1 -b .hp_ipp_missing_prototypes
-%patch304 -p1
-%patch305 -p1
-%patch306 -p1
-%patch400 -p1
-%patch401 -p1
-%patch402 -p1
-%patch403 -p1
-%patch404 -p1
-%patch500 -p1
+%patch -P 108 -p1 -b .add_missing_includes_and_define_GNU_SOURCE.orig
+%patch -P 110 -p1 -b .boo1094141
+%patch -P 112 -p1
+%patch -P 300 -p1 -b .pcardext-python3
+%patch -P 301 -p1 -b .misc-headers
+%patch -P 302 -p1 -b .hp_ipp_missing_prototypes
+%patch -P 304 -p1
+%patch -P 305 -p1
+%patch -P 306 -p1
+%patch -P 400 -p1
+%patch -P 401 -p1
+%patch -P 402 -p1
+%patch -P 403 -p1
+%patch -P 404 -p1
+%patch -P 500 -p1
 # replace "env" shebang and "/usr/bin/python" with real executable
 find . -name '*.py' -o -name pstotiff | \
     xargs -n 1 sed -i '1s,^#!\(%{_bindir}/env python\|%{_bindir}/python\),#!%{pyexe},'
