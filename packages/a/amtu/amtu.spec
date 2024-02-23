@@ -41,8 +41,7 @@ http://www.radium.csc.mil/tpep/library/protection_profiles/CAPP-1.d.pdf
 .
 
 %prep
-%setup -q amtu
-%patch0 -p1
+%autosetup -p1 amtu
 
 %build
 CFLAGS="$RPM_OPT_FLAGS -D_GNU_SOURCE -Wall -pipe -fcommon"

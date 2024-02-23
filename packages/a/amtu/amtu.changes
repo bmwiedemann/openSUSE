@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 10:59:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Thu May 19 13:32:22 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use https:// url (http:// redirects to it anyway).
