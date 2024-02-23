@@ -58,10 +58,10 @@ Header files for the libepub library
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2
-%patch3 -p1
-%patch4 -p1
+%patch -P 1 -p1
+%patch -P 2
+%patch -P 3 -p1
+%patch -P 4 -p1
 
 %build
 %cmake

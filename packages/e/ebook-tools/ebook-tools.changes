@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 11:27:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sun Apr 23 03:21:07 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix a crash when an itemref in the spine has no idref,
