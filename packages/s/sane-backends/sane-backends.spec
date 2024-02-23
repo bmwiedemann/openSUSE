@@ -1,7 +1,7 @@
 #
 # spec file for package sane-backends
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -153,6 +153,7 @@ Group:          Hardware/Scanner
 Requires:       %{libname} = %{version}
 # When sane-backends is already installed, try to install also sane-backends-autoconfig if available:
 Supplements:    sane-backends
+BuildArch:      noarch
 
 %description autoconfig
 USB scanner autoconfiguration happens via udev.
@@ -187,11 +188,10 @@ Conflicts:      %{name} < %{version}
 Saned allows access to locally attached scanners over the network.
 
 %prep
-%setup -q
 # Patch100... is SUSE specific stuff:
 # Patch102 adapt_epkowa.desc_for_yast2-scanner.patch adapts epkowa.desc for yast2-scanner
 # see https://bugzilla.opensuse.org/show_bug.cgi?id=788756#c14
-%patch102
+%autosetup -p0
 
 # Remove hpoj.desc completely to avoid confusion with its successor hpaio.desc
 # because since openSUSE 10.3 the package hp-officeJet (for hpoj.desc) is dropped.

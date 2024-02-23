@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 22 07:14:09 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+- Add BuildArch noarch to autoconfig subpackage
+
+-------------------------------------------------------------------
 Fri Apr  7 18:15:29 UTC 2023 - Javier Llorente <javier@opensuse.org>
 
 - Updated to sane-backends version 1.2.1

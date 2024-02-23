@@ -770,4 +770,14 @@ The LICENSE file in the sane-backends packages explains the licensing of the pac
     <comment></comment>
     <requestid>1078578</requestid>
   </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>ca44a025d5b51b46df9a924e0cb0d123</srcmd5>
+    <version>1.2.1</version>
+    <time>1708702841</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+- Add BuildArch noarch to autoconfig subpackage</comment>
+    <requestid>1148995</requestid>
+  </revision>
 </revisionlist>
