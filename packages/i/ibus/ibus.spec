@@ -222,10 +222,10 @@ This package contains ibus im module for use by gtk4.
 
 %prep
 %setup -q -n %{_name}-%{version}-rc2
-%patch4 -p1
-%patch8 -p1
+%patch -P 4 -p1
+%patch -P 8 -p1
 %if 0%{?sle_version} < 150200 && 0%{?suse_version} <=1500
-%patch9 -p1
+%patch -P 9 -p1
 %endif
 
 cp -r %{SOURCE2} .
@@ -235,15 +235,15 @@ sed -i 1i"SYS_LIB=%{_lib}" xim.d-ibus-121
 cp -r %{SOURCE10} .
 cp -r %{SOURCE11} .
 
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
+%patch -P 10 -p1
+%patch -P 11 -p1
+%patch -P 12 -p1
 %if 0%{?suse_version} <= 1500
-%patch15 -p1
+%patch -P 15 -p1
 %endif
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
+%patch -P 16 -p1
+%patch -P 17 -p1
+%patch -P 18 -p1
 
 %build
 %configure --disable-static \

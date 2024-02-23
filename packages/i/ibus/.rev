@@ -1132,4 +1132,12 @@ This update also contains a patch for usability improvement for 13.1. (forwarded
   ibus-enginesimple-dont-commit-any-characters.patch</comment>
     <requestid>1145410</requestid>
   </revision>
+  <revision rev="126" vrev="4">
+    <srcmd5>f4274e05190ad15fe1565b27b7079e06</srcmd5>
+    <version>1.5.29</version>
+    <time>1708702892</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149432</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 13:34:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sun Feb  4 08:53:08 UTC 2024 - Jean Delvare <jdelvare@suse.com>
 
 - Fix dead keys with non-English keyboard in some applications
