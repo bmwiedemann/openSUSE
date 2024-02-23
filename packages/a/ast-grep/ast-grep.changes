@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 23 05:55:03 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.2:
+  * fix: improve expando char replacement #883
+  * feat(napi): add support for napi linux x64 musl c4d7902
+  * fix: fix wrong spacing matching 0e8b4f0
+  * Update README.md 9636a1a
+
+-------------------------------------------------------------------
 Tue Feb 20 05:56:33 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.19.1:

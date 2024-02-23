@@ -130,4 +130,16 @@
   * chore(deps): update dependency @types/node to v20.11.19 40d3fa0</comment>
     <requestid>1147699</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f325ed624f93c9348c0e522210beffd6</srcmd5>
+    <version>0.19.2+0</version>
+    <time>1708703155</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.19.2:
+  * fix: improve expando char replacement #883
+  * feat(napi): add support for napi linux x64 musl c4d7902
+  * fix: fix wrong spacing matching 0e8b4f0
+  * Update README.md 9636a1a</comment>
+    <requestid>1149684</requestid>
+  </revision>
 </revisionlist>
