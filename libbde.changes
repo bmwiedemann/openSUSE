@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 23 09:35:05 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240223
+  * No user-visible changes
+
+-------------------------------------------------------------------
 Sun Feb  4 09:41:06 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Use python-setuptools for python distutils backport
