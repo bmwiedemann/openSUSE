@@ -1,7 +1,22 @@
 -------------------------------------------------------------------
+Thu Feb 22 11:07:23 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 8.13.30:
+  * Update alternate formatting data, phone metadata, geocoding
+    data, carrier data
+  * Updated / refreshed time zone meta data.
+  * New geocoding data
+- Add patch submitted to upstream at gh#google/libphonenumber#3394
+  to fix building with protobuf 3.25.1:
+  * 0001-Add-support-to-protobuf-3.25.1.patch
+- Add patch submitted in gh#sergiomb2/libphonenumber#1 by
+  Fabian Vogt:
+  * 0002-Avoid-intermediate-proto-object-library.patch
+
+-------------------------------------------------------------------
 Sun Oct 22 13:41:15 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- Update to version 8.13.28:
+- Update to version 8.13.23:
   * Updated phone metadata, carrier data, geocoding data, short
     number metadata for a number of region and calling codes
 - drop 0001-Build-with-C-17.patch now upstream

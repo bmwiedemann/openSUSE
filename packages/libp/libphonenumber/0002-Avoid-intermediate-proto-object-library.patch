@@ -1,0 +1,66 @@
+From 2f5789eeff639f0a533a898b729221076fe32334 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fvogt@suse.de>
+Date: Thu, 22 Feb 2024 13:51:45 +0100
+Subject: [PATCH] Avoid intermediate proto-object library
+
+The use of proto-object breaks building shared libs and it doesn't make
+sense to install it. Instead of TARGET, use generate_protobuf with OUT_VAR.
+---
+ cpp/CMakeLists.txt | 21 ++++-----------------
+ 1 file changed, 4 insertions(+), 17 deletions(-)
+
+diff --git a/cpp/CMakeLists.txt b/cpp/CMakeLists.txt
+index e07679636..f37b29242 100644
+--- a/cpp/CMakeLists.txt
++++ b/cpp/CMakeLists.txt
+@@ -250,13 +250,10 @@ if (${Protobuf_VERSION} VERSION_LESS "3.21.0.0")
+     DEPENDS ${PROTO_FILES}
+   )
+ else ()
+-  set (PROTOBUF_OUTPUT "")
+-  add_library (proto-objects OBJECT ${PROTO_FILES})
+-  target_link_libraries (proto-objects PUBLIC protobuf::libprotobuf)
+   set (PROTO_BINARY_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
+-  target_include_directories (proto-objects PUBLIC "$<BUILD_INTERFACE:${PROTO_BINARY_DIR}>")
+   protobuf_generate (
+-      TARGET proto-objects
++      PROTOS ${PROTO_FILES}
++      OUT_VAR PROTOBUF_OUTPUT
+       IMPORT_DIRS "${RESOURCES_DIR}"
+       PROTOC_OUT_DIR "${PROTO_BINARY_DIR}/phonenumbers"
+   )
+@@ -303,9 +300,7 @@ set (
+   "src/phonenumbers/utf/unilib.cc"
+ )
+ 
+-if (${Protobuf_VERSION} VERSION_LESS "3.21.0.0")
+-  list (APPEND SOURCES ${PROTOBUF_OUTPUT})
+-endif ()
++list (APPEND SOURCES ${PROTOBUF_OUTPUT})
+ 
+ if (BUILD_GEOCODER)
+   set (
+@@ -474,10 +469,6 @@ if (APPLE)
+   list (APPEND LIBRARY_DEPS ${COREFOUNDATION_LIB} ${FOUNDATION_LIB})
+ endif ()
+ 
+-if (${Protobuf_VERSION} VERSION_GREATER_EQUAL "3.21.0.0")
+-  list (APPEND LIBRARY_DEPS proto-objects)
+-endif ()
+-
+ #----------------------------------------------------------------
+ # Build libraries
+ #----------------------------------------------------------------
+@@ -629,11 +620,7 @@ endif()
+ # Install built libraries
+ #----------------------------------------------------------------
+ 
+-if (${Protobuf_VERSION} VERSION_GREATER_EQUAL "3.21.0.0")
+-  set (BUILT_LIBS proto-objects)
+-else ()
+-  set (BUILT_LIBS)
+-endif ()
++set (BUILT_LIBS)
+ set(targets_export_name "${PROJECT_NAME}-targets")
+ 
+ if (BUILD_STATIC_LIB)

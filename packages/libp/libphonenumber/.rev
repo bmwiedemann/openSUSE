@@ -48,4 +48,24 @@
     <comment>libphonenumber 8.13.28 (forwarded request 1119441 from AndreasStieger)</comment>
     <requestid>1119880</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1d160e228909587885ad6bdddbc15df9</srcmd5>
+    <version>8.13.30</version>
+    <time>1708702886</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 8.13.30:
+  * Update alternate formatting data, phone metadata, geocoding
+    data, carrier data
+  * Updated / refreshed time zone meta data.
+  * New geocoding data
+- Add patch submitted to upstream at gh#google/libphonenumber#3394
+  to fix building with protobuf 3.25.1:
+  * 0001-Add-support-to-protobuf-3.25.1.patch
+- Add patch submitted in gh#sergiomb2/libphonenumber#1 by
+  Fabian Vogt:
+  * 0002-Avoid-intermediate-proto-object-library.patch
+
+- Update to version 8.13.23: (forwarded request 1149395 from alarrosa)</comment>
+    <requestid>1149426</requestid>
+  </revision>
 </revisionlist>
