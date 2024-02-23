@@ -216,15 +216,15 @@ Development files for the com_err error message display library. Static librarie
 %prep
 %setup -q -n e2fsprogs-%{version}
 # libcom_err patches
-%patch3 -p1
-%patch4
-%patch5
+%patch -P 3 -p1
+%patch -P 4
+%patch -P 5
 cp %{SOURCE2} .
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
+%patch -P 8 -p1
+%patch -P 9 -p1
+%patch -P 10 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
