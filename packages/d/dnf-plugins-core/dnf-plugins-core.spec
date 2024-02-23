@@ -1,7 +1,7 @@
 #
 # spec file for package dnf-plugins-core
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -56,7 +56,7 @@
 #global prerel rc1
 
 Name:           dnf-plugins-core
-Version:        4.3.1
+Version:        4.4.4
 Release:        0
 Summary:        Core Plugins for DNF
 License:        GPL-2.0-or-later
@@ -91,6 +91,7 @@ Provides:       dnf-command(repodiff)
 Provides:       dnf-command(repograph)
 Provides:       dnf-command(repomanage)
 Provides:       dnf-command(reposync)
+Provides:       dnf-command(system-upgrade)
 
 # Plugins shift from extras to core
 Provides:       dnf-plugins-extras-debug = %{version}-%{release}
@@ -109,6 +110,7 @@ Provides:       dnf-plugin-repoclosure = %{version}-%{release}
 Provides:       dnf-plugin-repograph = %{version}-%{release}
 Provides:       dnf-plugin-repomanage = %{version}-%{release}
 Provides:       dnf-plugin-reposync = %{version}-%{release}
+Provides:       dnf-plugin-system-upgrade = %{version}-%{release}
 
 Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
 
@@ -126,20 +128,26 @@ BuildRequires:  python3-dbus-python
 BuildRequires:  python3-devel
 BuildRequires:  python3-dnf >= %{dnf_lowest_compatible}
 BuildRequires:  python3-pytest
+BuildRequires:  python3-systemd
+BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 Requires:       python3-dateutil
 Requires:       python3-dbus-python
 Requires:       python3-distro
 Requires:       python3-dnf >= %{dnf_lowest_compatible}
 Requires:       python3-hawkey >= %{hawkey_version}
+Requires:       python3-systemd
 
 Conflicts:      %{name} <= 0.1.5
 # let the both python plugin versions be updated simultaneously
 Conflicts:      python3-%{name} < %{version}-%{release}
 Conflicts:      python2-%{name} < %{version}-%{release}
+Provides:       python3-dnf-plugin-system-upgrade = %{version}-%{release}
 Provides:       python3-dnf-plugins-extras-debug = %{version}-%{release}
 Provides:       python3-dnf-plugins-extras-repoclosure = %{version}-%{release}
 Provides:       python3-dnf-plugins-extras-repograph = %{version}-%{release}
 Provides:       python3-dnf-plugins-extras-repomanage = %{version}-%{release}
+Obsoletes:      python3-dnf-plugin-system-upgrade < %{dnf_plugins_extra}
 Obsoletes:      python3-dnf-plugins-extras-debug < %{dnf_plugins_extra}
 Obsoletes:      python3-dnf-plugins-extras-repoclosure < %{dnf_plugins_extra}
 Obsoletes:      python3-dnf-plugins-extras-repograph < %{dnf_plugins_extra}
@@ -353,6 +361,11 @@ rm -rf %{buildroot}%{_sysconfdir}/dnf/plugins/copr.conf
 %python_compileall
 %fdupes %{buildroot}%{python3_sitelib}
 
+mkdir -p %{buildroot}%{_unitdir}/system-update.target.wants/
+pushd %{buildroot}%{_unitdir}/system-update.target.wants/
+  ln -sr ../dnf-system-upgrade.service
+popd
+
 %if %{with tests}
 %check
 export PYTHONDONTWRITEBYTECODE=1
@@ -383,6 +396,7 @@ export PYTHONPATH=./plugins
 %{_mandir}/man8/dnf-repograph.*
 %{_mandir}/man8/dnf-repomanage.*
 %{_mandir}/man8/dnf-reposync.*
+%{_mandir}/man8/dnf-system-upgrade.*
 %{_mandir}/man8/dnf-repodiff.*
 %dir %{_sysconfdir}/dnf/protected.d
 %dir %{_var}/cache/dnf
@@ -428,9 +442,15 @@ export PYTHONPATH=./plugins
 %{python3_sitelib}/dnf-plugins/__pycache__/repomanage.*
 %{python3_sitelib}/dnf-plugins/reposync.py
 %{python3_sitelib}/dnf-plugins/__pycache__/reposync.*
+%{python3_sitelib}/dnf-plugins/system_upgrade.py
+%{python3_sitelib}/dnf-plugins/__pycache__/system_upgrade.*
 %{python3_sitelib}/dnf-plugins/repodiff.py
 %{python3_sitelib}/dnf-plugins/__pycache__/repodiff.*
 %{python3_sitelib}/dnfpluginscore/
+%{_unitdir}/dnf-system-upgrade.service
+%{_unitdir}/dnf-system-upgrade-cleanup.service
+%dir %{_unitdir}/system-update.target.wants/
+%{_unitdir}/system-update.target.wants/dnf-system-upgrade.service
 
 %files -n %{yum_utils_subpackage_name}
 %{_libexecdir}/dnf-utils

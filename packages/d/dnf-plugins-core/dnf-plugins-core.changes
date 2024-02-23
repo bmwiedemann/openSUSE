@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Feb  6 10:54:17 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 4.4.4
+  * needs-restarting: Add microcode_ctl to a reboot list
+- includes changes from 4.4.3
+  * needs-restarting: Avoid issue with garbage smaps chars (RhBug:2212953)
+  * needs-restarting: Add kernel-core to reboot list
+  * Update translations
+- includes changes from 4.4.2
+  * Fix systemd dependencies when using --poweroff option in system-upgrade plugin (RhBug:2211844)
+  * Fixed copr.vendor.conf not loading
+  * "dnf copr enable" on "Asahi Fedora Linux Remix" guesses epel..x86_64
+  * system-upgrade: change http to https in unit file
+- includes changes from 4.4.1
+  * reposync: Implement --safe-write-path option (RhBug:1898089)
+  * needs-restarting: Catch exception when no systemd unit exists for pid (RhBug:2122587)
+  * post-transaction-actions: Fix ConfigParser.substitute call
+  * builddep: Avoid using obsolete RPM API
+  * yum-utils: Only depend on python3-dnf, not dnf
+- includes changes from 4.4.0
+  * system-upgrade: Move from extras to core (RhBug:2054235)
+  * system-upgrade: Add --poweroff option to reboot
+  * copr: Switch to reading a copr.vendor.conf file to determine a vendor ID
+  * config-manager: Allow to specify the "main" section
+  * system-upgrade: Add support for security filters in offline-upgrade (RhBug:1939975)
+  * needs-restarting: Fix boot time derivation for systems with no rtc (RhBug:2137935)
+  * download: Skip downloading weak deps when install_weak_deps=False
+  * reposync: Documentation update (RhBug:2132383, 2182004)
+
+-------------------------------------------------------------------
 Fri Feb 24 15:38:14 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - Precompile python bytecode (boo#1208151)
 
