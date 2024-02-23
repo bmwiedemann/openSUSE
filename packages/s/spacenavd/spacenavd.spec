@@ -1,7 +1,7 @@
 #
 # spec file for package spacenavd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2009,2011,2013 Herbert Graeber
 #
 # All modifications and additions to the file contributed by third parties
@@ -62,9 +62,7 @@ compatible with the original 3dxsrv daemon, and works perfectly with
 any program that was written for the 3Dconnexion driver.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 %configure
