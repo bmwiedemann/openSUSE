@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 22:02:16 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Clean the spec file and simplify it a bit
+
+-------------------------------------------------------------------
 Sun Apr 10 19:13:12 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Assure that every dependency has a version, or at least "any"

@@ -40,4 +40,12 @@
     <comment>Assure that every dependency in the pom file has a version information</comment>
     <requestid>969207</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>88900972e56e61f950df7ba22ca323de</srcmd5>
+    <version>2.4.0</version>
+    <time>1708702831</time>
+    <user>anag+factory</user>
+    <comment>cleanup</comment>
+    <requestid>1148904</requestid>
+  </revision>
 </revisionlist>

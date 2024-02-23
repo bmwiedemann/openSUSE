@@ -1,7 +1,7 @@
 #
 # spec file for package glassfish-jaxb-api
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,9 +31,8 @@ BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  glassfish-activation-api
 BuildRequires:  java-devel >= 9
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  unzip
-Requires:       mvn(javax.activation:javax.activation-api)
 BuildArch:      noarch
 
 %description
@@ -62,18 +61,6 @@ cp %{SOURCE1} jaxb-api/build.xml
 %pom_remove_plugin :cobertura-maven-plugin jaxb-api
 %pom_remove_plugin :maven-dependency-plugin jaxb-api
 
-%pom_remove_parent jaxb-api
-%pom_xpath_inject pom:project "
-  <groupId>javax.xml.bind</groupId>
-  <version>%{version}</version>" jaxb-api
-
-%pom_xpath_inject "pom:plugin[pom:artifactId = 'maven-javadoc-plugin']/pom:configuration" "
-    <sourceFileExcludes>
-        <exclude>module-info.java</exclude>
-    </sourceFileExcludes>" jaxb-api
-
-%pom_change_dep ::::: ::::: jaxb-api
-
 %build
 pushd jaxb-api
 mkdir -p lib
@@ -88,7 +75,7 @@ install -m 644 %{bundle}/target/%{bundle}-%{version}.jar %{buildroot}%{_javadir}
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 %{bundle}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} %{bundle}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 
 # javadoc
