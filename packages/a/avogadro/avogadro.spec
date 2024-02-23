@@ -1,7 +1,7 @@
 #
 # spec file for package avogadro
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,6 @@ BuildRequires:  cmake(AvogadroLibs) >= 1.98.0
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(eigen3)
-Recommends:     %{name}-lang
 
 %lang_package
 
@@ -58,6 +57,8 @@ ln -s avogadro-i18n-%{i18n_rev} ../avogadro-i18n
 
 %install
 %cmake_install
+# remove docs insyalled by cmake - we package them as %doc directly
+rm -rf %{buildroot}%{_docdir}/%{name}
 rm -rfv %{buildroot}%{_datadir}/doc/AvogadroApp
 %fdupes %{buildroot}%{_datadir}
 

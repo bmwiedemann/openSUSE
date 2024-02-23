@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 23 09:22:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove documentation installed by cmake: we package those files
+  using %doc.
+- Do not recommend -lang package: the package already has relevant
+  supplements in place.
+
+-------------------------------------------------------------------
 Wed Dec  6 11:12:52 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.98.1:
