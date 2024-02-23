@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 22 20:15:53 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.8.9:
+  + Features:
+    - Only redraw when needed on windows (less cpu/gpu usage)
+    - App Id is now available for wayland
+    
+-------------------------------------------------------------------
 Tue Feb 20 19:48:00 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.8.8:
