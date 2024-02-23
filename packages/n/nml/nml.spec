@@ -40,8 +40,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 A tool to compile nml files to grf or nfo files, making newgrf coding easier.
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 make
