@@ -1008,7 +1008,7 @@
     <package name="libjq1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libjson-c5" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libjson-glib-1_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
-    <package name="libjxl0_9" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="libjxl0_10" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libkeyutils1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libkmod2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libksba8" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
