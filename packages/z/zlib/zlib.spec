@@ -135,16 +135,16 @@ It should exit 0
 
 %prep
 %setup -q
-%patch1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
+%patch -P 1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
+%patch -P 8
+%patch -P 10 -p1
+%patch -P 11 -p1
+%patch -P 12 -p1
 cp %{SOURCE4} .
 
 %build

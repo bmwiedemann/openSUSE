@@ -770,4 +770,12 @@ Passed the spec file through spec cleaner (forwarded request 116645 from worldci
     <comment></comment>
     <requestid>1119079</requestid>
   </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>ea6e549d6b45b2e4b9ffe35362ddc2fe</srcmd5>
+    <version>1.3</version>
+    <time>1708703084</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1148528</requestid>
+  </revision>
 </revisionlist>
