@@ -27,6 +27,8 @@ URL:            https://github.com/okirch/pcr-oracle
 Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM fix_efi_measure.patch gh#okirch/pcr-oracle!47
 Patch0:         fix_efi_measure.patch
+# PATCH-FIX-UPSTREAM fix_loader_conf.patch gh#okirch/pcr-oracle!50
+Patch1:         fix_loader_conf.patch
 BuildRequires:  libopenssl-devel >= 0.9.8
 BuildRequires:  tpm2-0-tss-devel >= 2.4.0
 Requires:       libtss2-tcti-device0

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 18:16:53 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add fix_loader_conf.patch to measure the systemd-boot loader.conf file
+
+-------------------------------------------------------------------
 Fri Jan 12 07:28:55 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add fix_efi_measure.patch to fix the measurement of EFI binaries
