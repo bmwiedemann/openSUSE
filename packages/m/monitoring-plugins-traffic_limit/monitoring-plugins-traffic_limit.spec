@@ -1,7 +1,7 @@
 #
 # spec file for package monitoring-plugins-traffic_limit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Checks the traffic on any interface
 License:        BSD-4-Clause
 Group:          System/Monitoring
-Url:            http://exchange.nagios.org/directory/Plugins/Network-Connections%2C-Stats-and-Bandwidth/check_traffic_limit/details
+URL:            http://exchange.nagios.org/directory/Plugins/Network-Connections%2C-Stats-and-Bandwidth/check_traffic_limit/details
 Source0:        https://github.com/localguru/check_traffic_limit/archive/0.4.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/localguru/check_traffic_limit/pull/1
 Patch1:         b337c024130437d217d6be53ba58cd0238311200.patch
@@ -45,8 +45,7 @@ Example:
 ./check_traffic_limit -i eth0 -w 10000 -c 12000 -p d
 
 %prep
-%setup -q -n check_traffic_limit-0.4
-%patch1 -p1
+%autosetup -p1 -n check_traffic_limit-0.4
 
 %build
 sed -i s/Nagios::/Monitoring::/ check_traffic_limit
