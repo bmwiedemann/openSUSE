@@ -52,9 +52,9 @@ list modules on the Rsync server.
 %prep
 %setup -q -T -c %name
 install -m644 %{SOURCE0} .
-%patch1 -p0
-%patch2 -p0
-%patch3 -p0
+%patch -P 1 -p0
+%patch -P 2 -p0
+%patch -P 3 -p0
 
 %build
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 23 08:38:17 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Dec  1 17:28:14 CET 2022 - ro@suse.de
 
 - add patch monitoring-plugins-rsync-option_binary.patch
