@@ -120,8 +120,7 @@ This package contains the symlinks, headers and object files needed to
 compile and link programs which use Racket.
 
 %prep
-%setup -q
-%patch0 -p0
+%autosetup -p0
 
 cp -p %{SOURCE2} src/
 
