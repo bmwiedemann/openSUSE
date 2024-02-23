@@ -518,6 +518,10 @@ mkdir -p %{buildroot}/usr/src/xserver
 xargs cp --parents --target-directory=%{buildroot}/usr/src/xserver < source-file-list
 # unneeded python2 script; simply remove it (boo#1179591)
 rm -f %{buildroot}/usr/src/xserver/config/fdi2iclass.py
+# fix permissions for tigervnc build later (needed since latest autoconf)
+chmod 0755 %{buildroot}/usr/src/xserver/config.guess
+chmod 0755 %{buildroot}/usr/src/xserver/config.sub
+chmod 0755 %{buildroot}/usr/src/xserver/install-sh
 
 %post
 %tmpfiles_create xkb.conf

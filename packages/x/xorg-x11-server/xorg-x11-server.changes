@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Feb 20 20:36:19 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- fix permissions of files in xorg-x11-server-source for tigervnc
+  build later (needed since latest autoconf)
+
+-------------------------------------------------------------------
+Thu Feb 15 17:08:16 UTC 2024 - Joan Torres <joan.torres@suse.com>
+
+- Provide again xorg-x11-server-source
+  * xwayland sources are not meant for a generic server.
+  * https://github.com/TigerVNC/tigervnc/issues/1728
+
+-------------------------------------------------------------------
+Thu Feb 15 10:46:29 UTC 2024 - Joan Torres <joan.torres@suse.com>
+
+- Stop providing xorg-x11-server-source from xorg-x11-server
+  * Now the sources are provided by xwayland because it is more updated.
+  * Fixes bsc#1219892.
+
+-------------------------------------------------------------------
 Mon Feb 12 09:58:50 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Release 21.1.11 also covers fixes for security issue CVE-2022-46340

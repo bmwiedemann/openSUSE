@@ -4053,4 +4053,21 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
 - xserver sources of this release fixes segfault in Xvnc (bsc#1219311)</comment>
     <requestid>1146120</requestid>
   </revision>
+  <revision rev="427" vrev="4">
+    <srcmd5>4a50bbcf23139a906f569d297f4d09a0</srcmd5>
+    <version>21.1.11</version>
+    <time>1708702813</time>
+    <user>anag+factory</user>
+    <comment>- fix permissions of files in xorg-x11-server-source for tigervnc
+  build later (needed since latest autoconf)
+
+- Provide again xorg-x11-server-source
+  * xwayland sources are not meant for a generic server.
+  * https://github.com/TigerVNC/tigervnc/issues/1728
+
+- Stop providing xorg-x11-server-source from xorg-x11-server
+  * Now the sources are provided by xwayland because it is more updated.
+  * Fixes bsc#1219892.</comment>
+    <requestid>1148344</requestid>
+  </revision>
 </revisionlist>
