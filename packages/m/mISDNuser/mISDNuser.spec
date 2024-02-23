@@ -65,7 +65,7 @@ This package contain the CAPI 2.0 module for mISDN.
 %prep
 %setup
 %if 0%{?suse_version} > 1500
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 
 %build

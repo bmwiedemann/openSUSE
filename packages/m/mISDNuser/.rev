@@ -161,4 +161,12 @@ Semicolon is ambiguous. Use ^and^ or ^or^ depending on the interaction (forwarde
     <comment>- Build with support for CAPI</comment>
     <requestid>969257</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>a86ba07a24bf19e0abb487a61dee2ab7</srcmd5>
+    <version>2.1.0+2.0.22+git6</version>
+    <time>1708703187</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN. (forwarded request 1149765 from pgajdos)</comment>
+    <requestid>1149774</requestid>
+  </revision>
 </revisionlist>

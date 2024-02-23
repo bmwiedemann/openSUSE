@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 23 09:32:13 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sun Apr 10 16:58:43 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Build with support for CAPI
