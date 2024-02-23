@@ -55,4 +55,14 @@
     <comment></comment>
     <requestid>1142327</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>190bb28f2ab8f54e5d4e17c61fa774cd</srcmd5>
+    <version>2.3.5</version>
+    <time>1708703146</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup, pyproject and pytest macros.
+- No more greedy globs in %files.
+- Do not ship docs configuration as a 'docs' module.</comment>
+    <requestid>1149660</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydocumentdb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
@@ -29,7 +28,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-documentdb-python
 Source:         https://files.pythonhosted.org/packages/source/p/pydocumentdb/pydocumentdb-%{version}.tar.gz
 Patch0:         p_disable-changelog-parsing.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 2.10.0
@@ -48,22 +49,24 @@ This is the Microsoft Azure Cosmos DB Python SDK.
 This package has been tested with Python 2.7, 3.3, 3.4 and 3.5.
 
 %prep
-%setup -q -n pydocumentdb-%{version}
-%patch0 -p1
+%autosetup -p1 -n pydocumentdb-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+# Do not ship docs configuration as a module
+%python_expand rm -r %{buildroot}%{$python_sitelib}/doc
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand py.test-%{$python_version}
+%pytest
 
 %files %{python_files}
 %license LICENSE.txt
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/pydocumentdb
+%{python_sitelib}/pydocumentdb-%{version}.dist-info
 
 %changelog
