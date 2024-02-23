@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Feb 16 07:15:09 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.8.0. Check CHANGELOG.md for the full list of changes
+  + New features:
+    * Support for writing option bytes on STM32F0/F1/F3
+    * Initial support for STM32 L5 & U5 devices and minor changes
+    * Added chip-IDs for STM32G0B0/G0B1/G0C1/G050/G051/G061
+    * Added option byte info for STM32F411XX
+    * Expanded and revised list of chips
+    * STM32H72X/3X: Added full access to all device memory
+    * Erase addr size / section of the flash memory with st-flash 
+    * Added support for STM32L4Q5 
+    * Added writing and reading for STM32WL option bytes
+    * Added parametres option_base, option_size for F401xD_xE 
+    * Added support for option bytes to F1xx_XLD
+    * Added option byte address for L4Rx devices
+    * Added udev-rule rule for the STLink v3 MINIE programmer
+    * Added support for STM32C0x1 devices
+    * First Implementation of the OTP Read/Write function
+  + Updates & changes:
+    * code and documentation refactoring
+    * Ability to flash F7 devices when in dual-bank mode 
+    * Improved chipid checks and printouts
+    * End of support for macOS
+  + Fixes:
+    * Fixed some flashing issues on STM32L0
+    * Fixed clearance of the H7 dual bank flag
+    * Fixed get_stm32l0_flash_base address for STM32L152RE
+    * Fixed segfault if chip was not found in chip config files
+    * Corrected flash_pagesize to use hex format
+    * Fixed flash regs addr for STM32L152RET6 in common_flash.c 
+    * Fixed flash, dbgmcu and rcc registers for STM32L1 
+    * Fixed incorrect SRAM size for L496x and L4A6x 
+    * Fixed support for STM32U5 chips 
+    * [STM32G0B1]: Erase fails starting page 64
+    * Notification "unknown option -- u" in tool st-util 
+    * Do not crash when the STLink chip returns a voltage factor of zero
+
+  + This release drops support for macOS and some older operating systems.
+
+-------------------------------------------------------------------
 Fri Mar  4 20:07:21 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Install modprobe.conf files to %_modprobedir (bsc#1196275, jsc#SLE-20639) 

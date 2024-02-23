@@ -1,7 +1,7 @@
 #
 # spec file for package stlink
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define         sover 1
 
 Name:           stlink
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        STM32 discovery line linux programmer
 License:        BSD-3-Clause
@@ -33,11 +33,11 @@ Group:          Development/Tools/Debuggers
 URL:            https://github.com/stlink-org/stlink/
 Source0:        https://github.com/stlink-org/stlink/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
-BuildRequires:  gtk3-devel
+BuildRequires:  gtk3-devel >= 3.22.30
 BuildRequires:  pkg-config
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.22
 BuildRequires:  pkgconfig(udev)
 Requires:       udev
 
@@ -104,7 +104,7 @@ done
 %postun -n libstlink%{sover} -p /sbin/ldconfig
 
 %files
-%doc README.md CHANGELOG.md doc/devices_boards.md doc/tutorial.md doc/flashloaders.md
+%doc README.md CHANGELOG.md doc/supported_devices.md doc/tutorial.md doc/flashloaders.md
 %license LICENSE.md
 %{_bindir}/st-*
 %{_udevrulesdir}/49-stlink*
