@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 23 08:39:26 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sat Jan 16 13:55:40 UTC 2021 - lars@linux-schulserver.de
 
 - add nrpe configuration snipplet
