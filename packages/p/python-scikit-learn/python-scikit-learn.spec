@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-scikit-learn
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,46 +16,50 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "test-py39"
-%define psuffix -test-py39
-%define skip_python310 1
-%define skip_python311 1
-%bcond_without test
-%endif
-%if "%{flavor}" == "test-py310"
-%define psuffix -test-py310
-%define skip_python39 1
-%define skip_python311 1
-%bcond_without test
-%endif
-%if "%{flavor}" == "test-py311"
-%define psuffix -test-py311
-%define skip_python39 1
-%define skip_python310 1
-%bcond_without test
-%endif
 %if "%{flavor}" == ""
 %define psuffix %{nil}
 %bcond_with test
+%else
+%define psuffix -%{flavor}
+%bcond_without test
+%if "%{flavor}" != "test-py39"
+%define skip_python39 1
 %endif
+%if "%{flavor}" != "test-py310"
+%define skip_python310 1
+%endif
+%if "%{flavor}" != "test-py311"
+%define skip_python311 1
+%endif
+%if "%{flavor}" != "test-py312"
+%define skip_python312 1
+%endif
+# Skip all empty test flavors: The obs server-side interpreter cannot use lua or rpm shrink, last one is for sle15_python_module_pythons
+%if "%pythons" == "" || "%pythons" == " " || "%pythons" == "  " || "%pythons" == "   " || "%pythons" == "    " || ( "%pythons" == "python311" && 0%{?skip_python311} )
+ExclusiveArch:  donotbuild
+%define python_module() %flavor-not-enabled-in-buildset-for-suse-%{?suse_version}
+%endif
+%endif
+# optionally test with extra packages
 %bcond_with extratest
 # enable pytest color output for local debugging: osc --with pytestcolor
 %bcond_with pytestcolor
-%{?sle15_python_module_pythons}
+
 Name:           python-scikit-learn%{psuffix}
-Version:        1.3.2
+Version:        1.4.1.post1
 Release:        0
 Summary:        Python modules for machine learning and data mining
 License:        BSD-3-Clause
 URL:            https://scikit-learn.org/
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-learn/scikit-learn-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 0.29.24}
+BuildRequires:  %{python_module Cython >= 3.0.8}
 BuildRequires:  %{python_module devel >= 3.8}
-BuildRequires:  %{python_module joblib >= 1.1.1}
-BuildRequires:  %{python_module numpy-devel >= 1.17.3}
+BuildRequires:  %{python_module joblib >= 1.2.0}
+BuildRequires:  %{python_module numpy-devel >= 1.17.3 with %python-numpy-devel < 2}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module scipy >= 1.3.2}
+BuildRequires:  %{python_module scipy >= 1.6.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module threadpoolctl >= 2.0.0}
 BuildRequires:  %{python_module wheel}
@@ -65,12 +69,11 @@ BuildRequires:  gcc-fortran
 BuildRequires:  openblas-devel
 BuildRequires:  python-rpm-macros
 # Check sklearn/_min_dependencies.py for dependencies
-Requires:       python-joblib >= 1.0.0
-Requires:       python-numpy >= 1.17.3
-Requires:       python-scipy >= 1.3.2
+Requires:       python-joblib >= 1.2.0
+Requires:       python-scipy >= 1.6.0
 Requires:       python-threadpoolctl >= 2.0.0
-Requires:       python-xml
-Suggests:       python-matplotlib >= 3.1.3
+Requires:       (python-numpy >= 1.19.5 with python-numpy < 2)
+Suggests:       python-matplotlib >= 3.3.4
 Suggests:       python-pandas
 Suggests:       python-seaborn
 Provides:       python-sklearn = %{version}-%{release}
@@ -79,14 +82,14 @@ Provides:       sklearn = %{version}-%{release}
 %endif
 # SECTION test requirements
 %if %{with test}
-BuildRequires:  %{python_module pytest >= 5.3.1}
+BuildRequires:  %{python_module pytest >= 7.1.2}
 BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module scikit-learn = %{version}}
 %if %{with extratest}
-BuildRequires:  %{python_module matplotlib >= 3.1.3}
-BuildRequires:  %{python_module pandas >= 1.0.5}
-BuildRequires:  %{python_module scikit-image >= 0.16.2}
+BuildRequires:  %{python_module matplotlib >= 3.3.4}
+BuildRequires:  %{python_module pandas >= 1.1.5}
+BuildRequires:  %{python_module scikit-image >= 0.17.2}
 %endif
 %endif
 # /SECTION
@@ -120,8 +123,7 @@ export CFLAGS="%{optflags}"
 mkdir test_dir
 pushd test_dir
 export SKLEARN_SKIP_NETWORK_TESTS=1
-# fails with scipy 1.10 gh#scikit-learn/scikit-learn#25403
-NO_TESTS="test_spectral_embedding_two_components"
+NO_TESTS="testeverythingifnotmatch"
 %ifarch %{ix86} %{arm}
 # Precision-related errors on 32 bit
 # https://github.com/scikit-learn/scikit-learn/issues/19230
