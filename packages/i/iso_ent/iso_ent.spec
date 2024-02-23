@@ -47,7 +47,7 @@ Character entity sets for ISO 8879:1986.
 unzip -aq $RPM_SOURCE_DIR/%{ke_pkg}
 cp -p $RPM_SOURCE_DIR/ISOgrk5.gz .
 gunzip ISOgrk5.gz
-%patch0 -p1
+%patch -P 0 -p1
 
 %build
 
