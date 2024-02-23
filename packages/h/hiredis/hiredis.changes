@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 07:57:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Sat Oct 28 16:26:02 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - hiredis 1.2.0:

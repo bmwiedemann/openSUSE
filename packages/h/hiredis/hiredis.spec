@@ -52,8 +52,7 @@ Shared library for %{name}. The %{name}-example and
 %{name}-test are in %{name} package.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 %make_build \
