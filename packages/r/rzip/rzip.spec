@@ -34,8 +34,7 @@ which can sometimes allow rzip to produce much better compression
 ratios than other programs.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure

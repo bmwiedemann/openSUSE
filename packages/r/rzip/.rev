@@ -122,4 +122,12 @@
 - Install license</comment>
     <requestid>681753</requestid>
   </revision>
+  <revision rev="19" vrev="150">
+    <srcmd5>3b9c8e70224802767d99d1f9012927fb</srcmd5>
+    <version>2.1</version>
+    <time>1708703216</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1149876 from dimstar)</comment>
+    <requestid>1149923</requestid>
+  </revision>
 </revisionlist>
