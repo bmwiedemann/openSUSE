@@ -1,0 +1,64 @@
+From af514e5f6d1d0233a251a3ae17f7cb8d9ba8e36b Mon Sep 17 00:00:00 2001
+From: Nelson Chu <nelson@rivosinc.com>
+Date: Mon, 29 Jan 2024 21:17:41 +0800
+Subject: [PATCH] RISC-V: Don't generate branch/jump relocation if symbol is
+ local when no-relax.
+
+Refer to commit, dff565fcca8137954d6ad571ef39f6aec5c0429c.  Theoretically,
+assembler don't need to generate the pc-relative relocation and the refered
+local .L symbol when relaxation is disabled.  The above commit improved the
+pcrel_hi/pcrel_lo relocations, and this commit improves branch and jump
+relocations.
+
+Passed the gcc/binutils regressions of riscv-gnu-toolchain.
+
+gas/
+	* config/tc-riscv.c (md_apply_fix): Raise fixP->fx_done for all
+	branch and jump relocations when -mno-relax.
+---
+ gas/config/tc-riscv.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/gas/config/tc-riscv.c b/gas/config/tc-riscv.c
+index a4161420128..cbead954f09 100644
+--- a/gas/config/tc-riscv.c
++++ b/gas/config/tc-riscv.c
+@@ -4390,6 +4390,8 @@ md_apply_fix (fixS *fixP, valueT *valP, segT seg ATTRIBUTE_UNUSED)
+ 	  bfd_vma target = S_GET_VALUE (fixP->fx_addsy) + *valP;
+ 	  bfd_vma delta = target - md_pcrel_from (fixP);
+ 	  bfd_putl32 (bfd_getl32 (buf) | ENCODE_JTYPE_IMM (delta), buf);
++	  if (!riscv_opts.relax && S_IS_LOCAL (fixP->fx_addsy))
++	    fixP->fx_done = 1;
+ 	}
+       break;
+ 
+@@ -4400,6 +4402,8 @@ md_apply_fix (fixS *fixP, valueT *valP, segT seg ATTRIBUTE_UNUSED)
+ 	  bfd_vma target = S_GET_VALUE (fixP->fx_addsy) + *valP;
+ 	  bfd_vma delta = target - md_pcrel_from (fixP);
+ 	  bfd_putl32 (bfd_getl32 (buf) | ENCODE_BTYPE_IMM (delta), buf);
++	  if (!riscv_opts.relax && S_IS_LOCAL (fixP->fx_addsy))
++	    fixP->fx_done = 1;
+ 	}
+       break;
+ 
+@@ -4410,6 +4414,8 @@ md_apply_fix (fixS *fixP, valueT *valP, segT seg ATTRIBUTE_UNUSED)
+ 	  bfd_vma target = S_GET_VALUE (fixP->fx_addsy) + *valP;
+ 	  bfd_vma delta = target - md_pcrel_from (fixP);
+ 	  bfd_putl16 (bfd_getl16 (buf) | ENCODE_CBTYPE_IMM (delta), buf);
++	  if (!riscv_opts.relax && S_IS_LOCAL (fixP->fx_addsy))
++	    fixP->fx_done = 1;
+ 	}
+       break;
+ 
+@@ -4420,6 +4426,8 @@ md_apply_fix (fixS *fixP, valueT *valP, segT seg ATTRIBUTE_UNUSED)
+ 	  bfd_vma target = S_GET_VALUE (fixP->fx_addsy) + *valP;
+ 	  bfd_vma delta = target - md_pcrel_from (fixP);
+ 	  bfd_putl16 (bfd_getl16 (buf) | ENCODE_CJTYPE_IMM (delta), buf);
++	  if (!riscv_opts.relax && S_IS_LOCAL (fixP->fx_addsy))
++	    fixP->fx_done = 1;
+ 	}
+       break;
+ 
+-- 
+2.43.2
+

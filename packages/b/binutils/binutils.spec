@@ -154,6 +154,7 @@ Patch42:        binutils-compat-old-behaviour.diff
 Patch43:        binutils-revert-hlasm-insns.diff
 Patch44:        binutils-revert-rela.diff
 Patch60:        binutils-disable-code-arch-error.diff
+Patch61:        riscv-no-relax.patch
 Patch90:        cross-avr-nesc-as.patch
 Patch92:        cross-avr-omit_section_dynsym.patch
 Patch93:        cross-avr-size.patch
@@ -280,6 +281,7 @@ cp ld/ldgram.y ld/ldgram.y.orig
 %patch44 -p1
 %endif
 %patch60 -p1
+%patch61 -p1
 %if "%{TARGET}" == "avr"
 cp gas/config/tc-avr.h gas/config/tc-avr-nesc.h
 %patch90

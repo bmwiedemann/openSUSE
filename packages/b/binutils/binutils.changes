@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 21 09:56:08 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- riscv-no-relax.patch: RISC-V: Don't generate branch/jump relocation if
+  symbol is local when no-relax
+
+-------------------------------------------------------------------
 Mon Feb  5 16:57:05 UTC 2024 - Michael Matz <matz@suse.com>
 
 - Add binutils-disable-code-arch-error.diff to demote an

@@ -2249,4 +2249,13 @@ libQt5WebEngine on i586.  *knockonwood*
 * objcopy: Add --set-section-flags for x86_64 to include</comment>
     <requestid>1144349</requestid>
   </revision>
+  <revision rev="169" vrev="2">
+    <srcmd5>915baf1b3520b72ed6e853532833e9e6</srcmd5>
+    <version>2.42</version>
+    <time>1708702810</time>
+    <user>anag+factory</user>
+    <comment>- riscv-no-relax.patch: RISC-V: Don't generate branch/jump relocation if
+  symbol is local when no-relax (forwarded request 1148803 from Andreas_Schwab)</comment>
+    <requestid>1148804</requestid>
+  </revision>
 </revisionlist>
