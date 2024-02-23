@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 21 13:55:54 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Sep 21 07:53:02 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Let ant build with --release 8 if the compiler knows that option.

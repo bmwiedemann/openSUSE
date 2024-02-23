@@ -1,7 +1,7 @@
 #
 # spec file for package junit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,7 @@ BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  hamcrest >= 1.3
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
-Requires:       mvn(org.hamcrest:hamcrest-core)
+BuildRequires:  javapackages-local >= 6
 Provides:       %{name}-demo = %{version}-%{release}
 Obsoletes:      %{name}-demo < %{version}-%{release}
 Provides:       %{name}4-demo = %{version}-%{release}
@@ -65,7 +64,7 @@ Documentation for %{name}.
 %prep
 %setup -q -n %{name}4-r%{version}
 %if %{?pkg_vcmp:%pkg_vcmp hamcrest >= 2.0}%{!?pkg_vcmp:0}
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 cp %{SOURCE1} .
 
@@ -90,7 +89,7 @@ ln -sf %{_javadir}/%{name}.jar %{buildroot}%{_javadir}/%{name}4.jar
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -m 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 
 # javadoc
