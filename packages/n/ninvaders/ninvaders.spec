@@ -34,9 +34,7 @@ BuildRequires:  ncurses-devel
 A Space Invaders type game with text-only graphics.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -fcommon"
