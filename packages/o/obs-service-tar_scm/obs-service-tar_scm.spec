@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package obs-service-tar_scm
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -16,7 +16,7 @@
 #
 
 
-%if 0%{?fedora_version}%{?rhel}%{?amzn}
+%if 0%{?fedora_version}%{?rhel}
 %define _pkg_base %nil
 %else
 %define _pkg_base -base
@@ -40,7 +40,7 @@
 ExclusiveArch:  skip-build
 %endif
 
-%if 0%{?suse_version} >= 1315 || 0%{?fedora_version} >= 29 || 0%{?rhel} >= 8 || 0%{?amzn}
+%if 0%{?suse_version} >= 1315 || 0%{?fedora_version} >= 29 || 0%{?rhel} >= 8
 %bcond_without python3
 %else
 %bcond_with    python3
@@ -71,14 +71,14 @@ ExclusiveArch:  skip-build
 %endif
 %endif
 
-%if 0%{?fedora_version} || 0%{?rhel} || 0%{?amzn}
-%if 0%{?fedora_version} >= 29 || 0%{?rhel} >= 8 || 0%{?amzn}
+%if 0%{?fedora_version} || 0%{?rhel}
+%if 0%{?fedora_version} >= 29 || 0%{?rhel} >= 8
 %define pyyaml_package %{use_python}-PyYAML
 %else
 %define pyyaml_package PyYAML
 %endif
 
-%if 0%{?fedora_version} >= 24 || 0%{?rhel} >= 8 || 0%{?amzn}
+%if 0%{?fedora_version} >= 24 || 0%{?rhel} >= 8
 %define locale_package glibc-langpack-en
 %else
 %define locale_package glibc-common
@@ -119,8 +119,8 @@ Recommends:     %{use_python}-keyrings.alt                      \
 
 %define pkg_name obs-service-tar_scm
 Name:           %{pkg_name}%{nsuffix}
-%define version_unconverted 0.10.41
-Version:        0.10.41
+%define version_unconverted 0.10.43
+Version:        0.10.43
 Release:        0
 Summary:        An OBS source service: create tar ball from svn/git/hg
 License:        GPL-2.0-or-later

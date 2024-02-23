@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 21 10:47:59 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- Update to version 0.10.43:
+  * Allow to use "tar" service also standalone.
+
+-------------------------------------------------------------------
 Wed Jan 17 14:42:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add support for AL2023
