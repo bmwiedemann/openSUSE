@@ -33,4 +33,12 @@
   + added monitoring-plugins-bind_-_use_path_tmp.patch</comment>
     <requestid>890401</requestid>
   </revision>
+  <revision rev="5" vrev="105">
+    <srcmd5>f77d6e1d98991145361b935c1c0b91be</srcmd5>
+    <version>1.3</version>
+    <time>1708703253</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149974</requestid>
+  </revision>
 </revisionlist>

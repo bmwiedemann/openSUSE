@@ -50,8 +50,8 @@ terms of the GPLv2 (or later).
 %prep
 %setup -cT
 install -m 0644 %{SOURCE0} ./check_bind.sh
-%patch0 -p0
-%patch1 -p0
+%patch -P 0 -p0
+%patch -P 1 -p0
 
 %build
 
