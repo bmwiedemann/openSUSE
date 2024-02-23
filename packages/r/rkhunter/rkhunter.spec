@@ -76,8 +76,8 @@ rootkits, backdoors, and local exploits by running tests like:
 
 %prep
 %setup -q
-%patch0 -p0
-%patch1 -p1
+%patch -P 0 -p0
+%patch -P 1 -p1
 
 %build
 sed -e 's/\${MYDIR}\/lib/\%{_prefix}\/share/;' files/rkhunter >files/rkhunter.new

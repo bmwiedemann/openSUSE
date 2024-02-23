@@ -248,4 +248,12 @@ This package needs to be relased for oS 13.2 etc. See bnc#930331
     <comment></comment>
     <requestid>1035891</requestid>
   </revision>
+  <revision rev="31" vrev="9">
+    <srcmd5>fba63f43724cb9f1ea56ffc55396a85a</srcmd5>
+    <version>1.4.6</version>
+    <time>1708703208</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149901</requestid>
+  </revision>
 </revisionlist>
