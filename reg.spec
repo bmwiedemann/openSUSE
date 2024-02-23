@@ -37,8 +37,7 @@ container registry including vulnerability reports and can generate a
 static website for a registry.
 
 %prep
-%setup -q
-%patch0 -p0
+%autosetup -p0
 
 %build
 make build GITCOMMIT=4a4d0e5d108ca9558879bdf1aba94d09e921cf1e
