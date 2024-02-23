@@ -43,13 +43,13 @@ algorithms.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 %ifarch x86_64
-%patch2 -p1
+%patch -P 2 -p1
 %endif
 %ifarch %{ix86}
-%patch3 -p1
+%patch -P 3 -p1
 %endif
 
 %build

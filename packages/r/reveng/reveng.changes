@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 23 11:44:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Aug 31 19:03:41 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.5
