@@ -39,4 +39,13 @@
   * crash fixes</comment>
     <requestid>1144804</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ffcbc95783a097cbefb76bb5f4452809</srcmd5>
+    <version>0.3.4</version>
+    <time>1708703198</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.3.4
+  - support basic iso generation, not for bootable images yet</comment>
+    <requestid>1149811</requestid>
+  </revision>
 </revisionlist>

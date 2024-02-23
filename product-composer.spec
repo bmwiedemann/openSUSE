@@ -17,7 +17,7 @@
 
 
 Name:           product-composer
-Version:        0.3.3
+Version:        0.3.4
 Release:        0
 Summary:        Product Composer
 License:        GPL-2.0-or-later
@@ -36,6 +36,7 @@ Requires:       build
 Requires:       createrepo
 Requires:       inst-source-utils
 Requires:       instsource-susedata
+Requires:       mkisofs
 BuildArch:      noarch
 
 %description
