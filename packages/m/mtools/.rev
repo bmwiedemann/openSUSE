@@ -571,4 +571,12 @@ mtools is GPL-3.0+ licensed, not GPL-2.0+ (forwarded request 126894 from babelwo
     <comment>mtools 4.0.43 (forwarded request 1074259 from AndreasStieger)</comment>
     <requestid>1074589</requestid>
   </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>c1dcc141c711ad8ca738e6b19d83a988</srcmd5>
+    <version>4.0.43</version>
+    <time>1708702884</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. (forwarded request 1149387 from pgajdos)</comment>
+    <requestid>1149388</requestid>
+  </revision>
 </revisionlist>
