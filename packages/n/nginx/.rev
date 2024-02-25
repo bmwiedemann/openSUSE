@@ -1057,4 +1057,12 @@
     with code 415 were redirected with the &quot;error_page&quot; directive.</comment>
     <requestid>1147449</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>be8f493e01d11a0b44989724918bba8d</srcmd5>
+    <version>1.25.4</version>
+    <time>1708866283</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN.</comment>
+    <requestid>1149661</requestid>
+  </revision>
 </revisionlist>

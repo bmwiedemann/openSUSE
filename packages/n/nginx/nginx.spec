@@ -99,11 +99,11 @@ The source of %{name} [engine x] HTTP server and IMAP/POP3 proxy server.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2
-%patch3
-%patch4 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2
+%patch -P 3
+%patch -P 4 -p1
 
 perl -pi -e 's|\r\n|\n|g' contrib/geo2nginx.pl
 # we just use lib here because nginx loads them relative to _prefix
