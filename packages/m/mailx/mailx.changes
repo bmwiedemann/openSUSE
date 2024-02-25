@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 23 11:30:48 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Dec  6 12:02:04 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
 - Moving /etc/mailrc to /usr/etc/mail.rc

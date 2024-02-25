@@ -85,23 +85,23 @@ minor enhancements like the ability to set a "From:" address.
 
 %prep
 %setup -q -n mailx-%{version}
-%patch1 -p0 -b .path
-%patch2 -p0 -b .rplyto
-%patch3 -p0 -b .ttychr
-%patch4 -p0 -b .toaddr
-%patch5 -p0 -b .mime
-%patch6 -p0 -b .ssl
-%patch7 -p0 -b .par
-%patch8 -p0 -b .ipv6
-%patch9 -p1 -b .0001
-%patch10 -p1 -b .0002
-%patch11 -p1 -b .0003
-%patch12 -p1 -b .0004
-%patch13 -p0 -b .ssl11f
-%patch14 -p1 -b .sendmail
-%patch15 -p0 -b .systemd
-%patch0 -p1 -b .0
-%patch16 -p1 -b .usretc
+%patch -P 1 -p0 -b .path
+%patch -P 2 -p0 -b .rplyto
+%patch -P 3 -p0 -b .ttychr
+%patch -P 4 -p0 -b .toaddr
+%patch -P 5 -p0 -b .mime
+%patch -P 6 -p0 -b .ssl
+%patch -P 7 -p0 -b .par
+%patch -P 8 -p0 -b .ipv6
+%patch -P 9 -p1 -b .0001
+%patch -P 10 -p1 -b .0002
+%patch -P 11 -p1 -b .0003
+%patch -P 12 -p1 -b .0004
+%patch -P 13 -p0 -b .ssl11f
+%patch -P 14 -p1 -b .sendmail
+%patch -P 15 -p0 -b .systemd
+%patch -P 0 -p1 -b .0
+%patch -P 16 -p1 -b .usretc
 
 %build
     CC=gcc

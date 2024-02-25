@@ -424,4 +424,12 @@ See COPYING. Fedora also uses this license designation (forwarded request 178463
   * Add patch mailx-usr-etc.patch</comment>
     <requestid>1132451</requestid>
   </revision>
+  <revision rev="50" vrev="38">
+    <srcmd5>95ac7b019c807fbd5c87b749f45bb39d</srcmd5>
+    <version>12.5</version>
+    <time>1708866291</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN. (forwarded request 1149835 from pgajdos)</comment>
+    <requestid>1149859</requestid>
+  </revision>
 </revisionlist>
