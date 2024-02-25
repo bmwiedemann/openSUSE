@@ -161,8 +161,6 @@ install -m 0644 mate-*.png %{buildroot}%{_datadir}/pixmaps/
 install -Dm 0644 mate_defaults.conf %{buildroot}%{_sysconfdir}/mate_defaults.conf
 install -Dm 0644 zz-mate-session-openSUSE-branding.gschema.override \
   %{buildroot}%{_datadir}/glib-2.0/schemas/20_zz-mate-session-openSUSE-branding.gschema.override
-# Remove unwanted menu file.
-rm -f %{buildroot}%{_sysconfdir}/xdg/menus/mate-{settings,preferences-categories}.menu
 
 %post -n mate-desktop-gschemas-branding-openSUSE
 %glib2_gsettings_schema_post
@@ -193,6 +191,8 @@ rm -f %{buildroot}%{_sysconfdir}/xdg/menus/mate-{settings,preferences-categories
 %files -n mate-menus-branding-openSUSE
 %defattr(-,root,root)
 %config %{_sysconfdir}/xdg/menus/mate-applications.menu
+%config %{_sysconfdir}/xdg/menus/mate-preferences-categories.menu
+%config %{_sysconfdir}/xdg/menus/mate-settings.menu
 
 %files -n mate-panel-branding-openSUSE
 %defattr(-,root,root)
