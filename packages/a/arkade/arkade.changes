@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb 24 12:57:55 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.2:
+  * Aliases for OCI
+  * Correct help message
+  * Fix croc file pattern & e2e test
+  * Remove misc log file
+
+-------------------------------------------------------------------
 Wed Feb 21 17:55:20 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.11.1:
