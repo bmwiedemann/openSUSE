@@ -18,7 +18,7 @@
 
 
 Name:           gama
-Version:        2.28
+Version:        2.29
 Release:        0
 Summary:        Adjustment of geodetic networks
 License:        GPL-3.0-or-later

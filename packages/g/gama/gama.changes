@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 24 18:08:54 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.29:
+  * New helper program compare-xyz used in testsuite
+  * Helper programs other than the main programs gama-local and
+    gama-g3 were assigned their own minon versions
+
+-------------------------------------------------------------------
 Sun Jan 14 11:21:21 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.28:
