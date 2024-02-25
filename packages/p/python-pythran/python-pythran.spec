@@ -40,8 +40,7 @@
 # global stop testing even when it is still in buildset (otherwise every test flavor would also test this one)
 %define skip_python39 1
 # do nothing in a test flavor that is still around but has nothing in buildset anymore
-# (The obs server-side interpreter cannot use lua or rpm shrink)
-%if "%{pythons}" == "" || "%{pythons}" == " " || "%{pythons}" == "  " || "%{pythons}" == "   " || "%{pythons}" == "    "
+%if "%{shrink:%{pythons}}" == ""
 ExclusiveArch:  donotbuild
 %define python_module() %flavor-not-enabled-in-buildset
 %else

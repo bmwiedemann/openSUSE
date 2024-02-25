@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 23 12:24:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use newly supported shrink{} on OBS to exclude python flavors
+  will all python versions skipped.
+
+-------------------------------------------------------------------
 Sat Feb 17 19:56:24 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Yet another fix of the python39 test skip
