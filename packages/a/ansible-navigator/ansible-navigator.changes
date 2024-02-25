@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Sat Feb 24 17:09:01 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.2.0:
+  * Minor Changes
+    - Update creator-ee to 0.22.0 (#1656) @shatakshiiii
+  * Bugfixes
+    - Update cmdline description (#1657) @shatakshiiii
+- update to 3.6.0:
+  * Minor Changes
+    - Update creator-ee to 0.21.0 (#1650) @shatakshiiii
+  * Bugfixes
+    - Address DTZ rule (#1626) @shatakshiiii
+- update to 3.5.0:
+  * Minor Changes
+    - Update creator-ee to 0.20.0 (#1567) @shatakshiiii
+  * Bugfixes
+    - Expand env variable mentioned in the pull arguments (--pa)
+      (#1590) @shatakshiiii
+    - Add tests for lint, without an EE (#1574) @shatakshiiii
+    - Include documentation URL in JSON Schema (#1596) @ssbarnea
+- update to 3.4.2:
+  * Bugfixes
+    - Change the python_exec path to /usr/bin/python3 (#1587)
+      @shatakshiiii
+    - Fix image introspect for PythonPackages (#1585) @shatakshiiii
+- update to 3.4.1:
+  * Bugfixes
+    - Add EE Getting started references to docs (#1576)
+      @Andersson007
+    - Remove the introspect script from image_manager directory
+      (#1561) @shatakshiiii
+    - Fix image introspect for long python metadata (#1555)
+      @shatakshiiii
+    - Fix logging dependencies (#1554) @shatakshiiii
+- update to 3.4.0:
+  * Minor Changes
+    - Update creator-ee version to 0.18.0 (#1542) @shatakshiiii
+  * Bugfixes
+    - Fix collections in stdout mode (#1526) @shatakshiiii
+- update to 3.3.1:
+  * Bugfixes
+    - Set user to root with podman (#1539) @cidrblock
+    - Fix building of dynamic configuration section (#1538)
+      @ssbarnea
+    - Display sidecar plugin in the collections list (#1531)
+      @shatakshiiii
+- update to 3.3.0:
+  * Minor Changes
+    - Update ansible-builder version (#1530) @shatakshiiii
+    - Test sidecar filter plugin doc (#1522) @shatakshiiii
+  * Bugfixes
+    - Add support for all plugin_types (#1515) @shatakshiiii
+    - Include only major version inside schema generation (#1513)
+      @shatakshiiii
+
+-------------------------------------------------------------------
+Sat Feb 24 15:11:53 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- switch to Github tarball created by OBS service
+
+-------------------------------------------------------------------
 Wed May 31 07:26:55 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - fix wrong tarball by redownloading

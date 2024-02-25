@@ -1,4 +1,15 @@
 <services>
-  <service name="download_files" mode="disabled">
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/ansible/ansible-navigator</param>
+    <param name="scm">git</param>
+    <param name="revision">v24.2.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="package-meta">yes</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
   </service>
 </services>

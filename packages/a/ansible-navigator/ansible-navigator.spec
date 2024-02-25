@@ -1,7 +1,7 @@
 #
 # spec file for package ansible-navigator
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,12 +38,12 @@
 %endif
 
 Name:           ansible-navigator
-Version:        3.2.0
+Version:        24.2.0
 Release:        0
 Summary:        A text-based user interface (TUI) for Ansible
 License:        Apache-2.0
 URL:            https://github.com/ansible/ansible-navigator
-Source:         https://github.com/ansible/ansible-navigator/archive/refs/tags/v%{version}.tar.gz#/ansible-navigator-%{version}.tar.gz
+Source:         ansible-navigator-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  %{ansible_python}-base >= 3.9
 BuildRequires:  %{ansible_python}-pip
@@ -53,31 +53,33 @@ BuildRequires:  %{ansible_python}-wheel
 BuildRequires:  python-rpm-macros
 # https://github.com/ansible/ansible-navigator/blob/main/requirements.txt
 BuildRequires:  ansible-core >= 2.14.3
-BuildRequires:  ansible-builder >= 1.2.0
-BuildRequires:  ansible-runner >= 2.3.2
 BuildRequires:  %{ansible_python}-Jinja2
 BuildRequires:  %{ansible_python}-PyYAML
 BuildRequires:  %{ansible_python}-jsonschema
 BuildRequires:  %{ansible_python}-onigurumacffi >= 1.1.0
 BuildRequires:  %{ansible_python}-pytzdata
 BuildRequires:  %{ansible_python}-requirements-parser
+BuildRequires:  ansible-builder >= 3.0.0
+BuildRequires:  ansible-runner >= 2.3.2
 # SECTION test requirements
 # https://github.com/ansible/ansible-navigator/blob/main/test/requirements.txt
 BuildRequires:  %{ansible_python}-pytest
 BuildRequires:  %{ansible_python}-libtmux
 BuildRequires:  tmux
 # /SECTION
+BuildRequires:  git-core
 BuildRequires:  fdupes
-Requires:       ansible-core >= 2.14.3
-Requires:       ansible-builder >= 1.2.0
-Requires:       ansible-runner >= 2.3.2
-Requires:       (podman or docker)
 Requires:       %{ansible_python}-Jinja2
 Requires:       %{ansible_python}-PyYAML
 Requires:       %{ansible_python}-curses
 Requires:       %{ansible_python}-jsonschema
 Requires:       %{ansible_python}-onigurumacffi >= 1.1.0
 Requires:       %{ansible_python}-pytzdata
+Requires:       ansible-builder >= 3.0.0
+Requires:       ansible-core >= 2.14.3
+Requires:       ansible-lint >= 6.19.0
+Requires:       ansible-runner >= 2.3.2
+Requires:       (podman or docker)
 Suggests:       %{ansible_python}-importlib-metadata
 Suggests:       %{ansible_python}-mkdocs-ansible >= 0.1.2
 Suggests:       %{ansible_python}-darglint
