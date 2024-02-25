@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 16:00:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Sep 27 05:49:05 UTC 2022 - Adrian Schröter <adrian@suse.de>
 
 - switch to exclusive buildarch x86_64

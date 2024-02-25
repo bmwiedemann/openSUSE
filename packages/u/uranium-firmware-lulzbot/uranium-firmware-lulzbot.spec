@@ -35,8 +35,7 @@ BuildRequires:  cross-avr-gcc7
 Matching firmware for cura-lulzbot
 
 %prep
-%setup -q -n marlin-%version
-%patch1 -p1
+%autosetup -p1 -n marlin-%version
 
 %build
 # -s seems not to work

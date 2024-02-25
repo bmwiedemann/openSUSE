@@ -61,4 +61,12 @@
     <comment>I am surprised that BuildArch: noarch and ExclusiveArch are actually working together</comment>
     <requestid>1006356</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>8b134f46642198b3001b7bee502ee433</srcmd5>
+    <version>1.1.9.34_5f9c029d1</version>
+    <time>1708866914</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1150311</requestid>
+  </revision>
 </revisionlist>
