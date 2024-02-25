@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 23 11:56:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Fri Jun 23 11:30:20 UTC 2023 - Jean Delvare <jdelvare@suse.com>
 
 - rtkit-daemon: Don't log debug messages by default (bsc#1206745).
