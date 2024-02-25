@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Feb 24 13:08:34 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.0.1:
+  * Wrap variable in double quotes by @Akasurde in #537
+  * definition.rst: Add link to Galaxy requirements file format;
+    add example of specifying collection version by @Andersson007
+    in #549
+  * Docs: mention a few base images as examples, using a free one
+    as the default by @felixfontein in #544
+  * Update to the builder documentation by @acozine in #552
+  * Document PKGMGR_PRESERVE_CACHE by @Akasurde in #558
+  * Added scenarios for version 3 by @Akasurde in #538
+  * Docs: Using prepend_base by @Akasurde in #563
+  * collection_metadata: improve documentation by @Andersson007 in
+    #551
+  * Improve CLI usage docs by @Andersson007 in #559
+  * Fix container policy for version 3 by @Shrews in #654
+
+-------------------------------------------------------------------
 Fri May 19 05:38:45 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - fix version by BuildRequire for setuptools_scm instead of

@@ -1,7 +1,7 @@
 #
 # spec file for package ansible-builder
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@
 %endif
 
 Name:           ansible-builder
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        An Ansible execution environment builder
 License:        Apache-2.0
@@ -56,6 +56,7 @@ BuildRequires:  python-rpm-macros
 # https://github.com/ansible/ansible-builder/blob/devel/requirements.txt
 BuildRequires:  %{ansible_python}-PyYAML
 BuildRequires:  %{ansible_python}-bindep
+BuildRequires:  %{ansible_python}-filelock
 BuildRequires:  %{ansible_python}-jsonschema
 BuildRequires:  %{ansible_python}-pbr
 BuildRequires:  %{ansible_python}-requirements-parser
