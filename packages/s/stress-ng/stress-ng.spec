@@ -17,6 +17,8 @@
 #
 
 
+%bcond_without  apparmor
+
 Name:           stress-ng
 Version:        0.17.04
 Release:        0
@@ -27,7 +29,9 @@ URL:            https://github.com/ColinIanKing/stress-ng
 Source:         https://github.com/ColinIanKing/stress-ng/archive/refs/tags/V%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  keyutils-devel
 BuildRequires:  libaio-devel
+%if %{with apparmor}
 BuildRequires:  libapparmor-devel
+%endif
 BuildRequires:  libattr-devel
 BuildRequires:  libbsd-devel
 BuildRequires:  libcap-devel
