@@ -70,11 +70,11 @@ fast and reliable adaptive random search.
 
 %prep
 %setup -q
-%patch0
-%patch2 -p1
-%patch3 -p1
+%patch -P 0
+%patch -P 2 -p1
+%patch -P 3 -p1
 %if 0%{?suse_version} >= 1315
-%patch4 -p1
+%patch -P 4 -p1
 %endif
 find . -type f -print0|xargs -0 chmod -x
 sed -i 's/\r//' readme.txt license.gpl src/changelog.txt
