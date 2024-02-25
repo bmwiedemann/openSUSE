@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb 24 13:06:48 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 550.54.14
+  * Added vGPU Host and vGPU Guest support. For vGPU Host, please
+    refer to the README.vgpu packaged in the vGPU Host Package for
+    more details.
+- supersedes the following patches:
+  * 0001-Don-t-override-INSTALL_MOD_DIR.patch
+  * kernel-6.7.patch
+
+-------------------------------------------------------------------
 Fri Feb 23 10:36:04 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - re-enable build of -azure kernel flavor; syntax check was wrong 

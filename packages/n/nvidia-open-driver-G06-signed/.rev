@@ -322,4 +322,18 @@
     <comment>- re-enable build of -azure kernel flavor; syntax check was wrong</comment>
     <requestid>1149804</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>a948a3f9bbc426c2093021af2de072ad</srcmd5>
+    <version>550.54.14</version>
+    <time>1708866421</time>
+    <user>anag+factory</user>
+    <comment>- Update to 550.54.14
+  * Added vGPU Host and vGPU Guest support. For vGPU Host, please
+    refer to the README.vgpu packaged in the vGPU Host Package for
+    more details.
+- supersedes the following patches:
+  * 0001-Don-t-override-INSTALL_MOD_DIR.patch
+  * kernel-6.7.patch</comment>
+    <requestid>1150149</requestid>
+  </revision>
 </revisionlist>
