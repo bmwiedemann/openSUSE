@@ -47,11 +47,8 @@ At least one transceiver package must also be installed for
 interfacing with the hardware.
 
 %prep
-%setup -q -n %{name}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1 -n %{name}
+
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
 DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
 TIME="\"$(date -d "${modified}" "+%%R")\""
