@@ -12,7 +12,7 @@ See https://reproducible-builds.org/ for why this is good.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/scripts/generate_flag_qrc.py b/scripts/generate_flag_qrc.py
-index c1c5447674e..d13f2a9af86 100755
+index c1c5447674..d13f2a9af8 100755
 --- a/scripts/generate_flag_qrc.py
 +++ b/scripts/generate_flag_qrc.py
 @@ -39,7 +39,7 @@ def main():
