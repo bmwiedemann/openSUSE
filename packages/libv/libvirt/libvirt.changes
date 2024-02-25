@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 22 22:11:36 UTC 2024 - James Fehlig <jfehlig@suse.com>
+
+- Add SLE virtiofsd path to apparmor profiles
+  bsc#1219772
+
+-------------------------------------------------------------------
+Wed Feb 21 23:02:31 UTC 2024 - James Fehlig <jfehlig@suse.com>
+
+- Fix return value when libnetcontrol fails to initialize
+  boo#1219986
+
+-------------------------------------------------------------------
 Thu Jan 25 13:01:34 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - Replace temporary build fix with upstream equivalent

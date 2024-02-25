@@ -4533,4 +4533,16 @@ bsc#1216656</comment>
   bsc#1218823</comment>
     <requestid>1141532</requestid>
   </revision>
+  <revision rev="392" vrev="3">
+    <srcmd5>efcea2a10c532b79d26f9d82f320207a</srcmd5>
+    <version>10.0.0</version>
+    <time>1708866281</time>
+    <user>anag+factory</user>
+    <comment>- Add SLE virtiofsd path to apparmor profiles
+  bsc#1219772
+
+- Fix return value when libnetcontrol fails to initialize
+  boo#1219986</comment>
+    <requestid>1149655</requestid>
+  </revision>
 </revisionlist>
