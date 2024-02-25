@@ -58,8 +58,7 @@ ImageJ can be extended via Java plugins, and has a built-in editor and
 compiler.
 
 %prep
-%setup -q -n source
-%patch0 -p1
+%autosetup -p1 -n source
 
 %build
 %{ant} -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 build
