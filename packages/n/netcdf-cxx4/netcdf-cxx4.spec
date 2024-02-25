@@ -162,7 +162,7 @@ Libraries to build statically linked applications with NetCDF.
 %prep
 %setup -q -n %{pname}-%{version}
 %ifarch ppc ppc64 s390 s390x
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 
 %build
