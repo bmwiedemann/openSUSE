@@ -17,8 +17,8 @@
 
 
 %define srcversion 6.6
-%define patchversion 6.6.17
-%define git_commit 3e5b219e834c2731f503657cd93ddc2091dd706e
+%define patchversion 6.6.18
+%define git_commit d196440022fe20ea32acaf31214950f0585fc4a0
 %define variant -longterm%{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -31,9 +31,9 @@
 %endif
 
 Name:           kernel-source-longterm
-Version:        6.6.17
+Version:        6.6.18
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g3e5b219
+Release:        <RELEASE>.gd196440
 %else
 Release:        0
 %endif
@@ -190,7 +190,7 @@ Group:          Development/Sources
 Provides:       kernel-subpackage-macros
 
 %description -n kernel-macros
-This package provides the rpm macros and templates for Kernel Module Pakcages
+This package provides the rpm macros and templates for Kernel Module Packages
 
 %source_timestamp
 
