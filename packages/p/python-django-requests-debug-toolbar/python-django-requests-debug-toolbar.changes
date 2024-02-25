@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 23 23:46:03 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Update to version 0.0.7
+  0.0.7:
+  * Recognize json-variants in content-type header
+  0.0.6:
+  * Replace ThreadCollector with ContextVar
+
+-------------------------------------------------------------------
 Sun Jun 25 08:15:46 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 0.0.5

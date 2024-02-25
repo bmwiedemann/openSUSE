@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-requests-debug-toolbar
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-requests-debug-toolbar
-Version:        0.0.5
+Version:        0.0.7
 Release:        0
 Summary:        A Django Debug Toolbar panel for Requests
 License:        MIT
 URL:            https://github.com/marceltschoppch/django-requests-debug-toolbar
-Source:         https://files.pythonhosted.org/packages/de/15/82c597cc0d7017323a09d2dac5ad0a2818ab278140a063ac0a329690fd6c/django-requests-debug-toolbar-0.0.5.tar.gz
+Source:         https://files.pythonhosted.org/packages/b9/99/ef0d65a8126ca4d426d070b582290552995cd1e1e2b19e98d962be233561/django-requests-debug-toolbar-0.0.7.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
