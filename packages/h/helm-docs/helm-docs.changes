@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sat Feb 24 13:39:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.13.0:
+  * Release v1.13.0
+  * chore: adds git-cliff configuration, generates historical
+    changelog and adds a release script
+  * fix: Solves #217 where helm-docs would segfault due in charts
+    with certain comment format
+  * feat: update to use go1.22
+  * license: update to use spdx id
+  * Update Alpine to v3.19
+  * fix: Correct the name of the GitHub repository in the README
+    fixes issue #208
+  * chore: updates generated chart documentation for version
+    v1.12.0
+
+-------------------------------------------------------------------
+Thu Dec 21 17:10:25 UTC 2023 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.12.0:
+  * conform to MD022
+  * Change example section chart to new templates
+  * Add some comments about parsing of key comments
+  * Sectioned values are default if provied
+  * Factor out sorting value rows and add dedicated default section
+  * Update README.md with pre-commit usage examples
+  * Update .pre-commit-hooks.yaml
+  * Put the creation and sorting of sectioned Value Rows in its own
+  * functions
+  * Add Tests for section feature
+  * Give an example of how to use sections
+  * Add possibility to generate subsectioned Values Tables
+  * Pin container version to tagged release v1.11.0
+  * Add containerized pre-commit hook
+  * Copy NotationType in Nil Values
+  * fix(README): change the way helm-docs is installed
+  * Fix filename
+  * Adds AsMap to iterate over .Files.Glob
+
+-------------------------------------------------------------------
+Tue Oct 10 16:14:02 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.11.3:
+  * hotfix: changing back artifacts name
+  * fix: correct contributing link referent in pr template
+  * fix: changed to always get the latest version on the helm docs
+    pre commit
+  * Bump all available dependencies to latest.
+
+-------------------------------------------------------------------
 Wed Sep 20 05:57:13 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.11.2:
