@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Feb 25 10:55:01 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240224T013320Z:
+  * fix: emtpy progrese_bar and add change the color style white
+    into green after upload success. (#4857)
+  * Do not validate deployment id from license if nil uuid (#4856)
+  * fix: add showLastProgressBar (#4855)
+  * add help menu to put command when no parameters are present
+    (#4852)
+  * add mc get (#4847)
+  * fix: add error message to mc put (#4849)
+  * Enable --expire-all-object-versions (#4840)
+  * feat: add put action (#4839)
+
+-------------------------------------------------------------------
 Sun Feb 18 12:49:41 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240216T110548Z:
