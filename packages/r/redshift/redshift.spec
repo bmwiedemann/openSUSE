@@ -67,8 +67,7 @@ Requires:       python3-gobject
 A graphical user interface for the redshift tool that integrates into Gtk+ and GNOME.
 
 %prep
-%setup -q
-%patch0 -p0
+%autosetup -p0
 
 %build
 %configure \

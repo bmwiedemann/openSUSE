@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 23 11:54:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Mon Dec 14 15:34:00 UTC 2020 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - redshift-gtk require python-pyxdg, not incompatible python-xdg (boo#1179328)
