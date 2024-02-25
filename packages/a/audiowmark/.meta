@@ -1,0 +1,10 @@
+<package name="audiowmark" project="openSUSE:Factory">
+  <title>Audio watermarking</title>
+  <description>audiowmark is an open source solution for watermarking audio files. It is is
+designed to be robust, fast, secure, and to produce a a watermark is not audible
+for most users.
+
+</description>
+  <devel project="multimedia:apps" package="audiowmark"/>
+  <url>https://uplex.de/audiowmark/</url>
+</package>
