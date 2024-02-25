@@ -49,8 +49,7 @@ NOTE: To play Blake Stone with bstone you need the original game files
 You need to start the game from within the folder with these files.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake
