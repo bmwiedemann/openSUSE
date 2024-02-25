@@ -1,7 +1,7 @@
 #
 # spec file for package python-modern-colorthief
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-modern-colorthief
 Version:        0.1.2
@@ -23,12 +24,12 @@ Summary:        Colorthief reimagined
 License:        MIT
 URL:            https://github.com/baseplate-admin/modern_colorthief
 Source:         https://files.pythonhosted.org/packages/source/m/modern-colorthief/modern_colorthief-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
-BuildRequires:  %{python_module Pillow}
 BuildRequires:  fdupes
-Requires:       python3-Pillow
+BuildRequires:  python-rpm-macros
+Requires:       python-Pillow
 BuildArch:      noarch
 %python_subpackages
 
