@@ -20,13 +20,13 @@
 # Required for runtime dispatch, not yet packaged
 %bcond_with xsimd
 
-%define sonum   1400
+%define sonum   1500
 # See git submodule /testing pointing to the correct revision
-%define arrow_testing_commit 47f7b56b25683202c1fd957668e13f2abafc0f12
+%define arrow_testing_commit ad82a736c170e97b7c8c035ebd8a801c17eec170
 # See git submodule /cpp/submodules/parquet-testing pointing to the correct revision
-%define parquet_testing_commit b2e7cc755159196e3a068c8594f7acbaecfdaaac
+%define parquet_testing_commit d69d979223e883faef9dc6fe3cf573087243c28a
 Name:           apache-arrow
-Version:        14.0.2
+Version:        15.0.1
 Release:        0
 Summary:        A development platform for in-memory data
 License:        Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause AND MIT
@@ -60,7 +60,7 @@ BuildRequires:  pkgconfig(libbrotlicommon) >= 1.0.7
 BuildRequires:  pkgconfig(libbrotlidec) >= 1.0.7
 BuildRequires:  pkgconfig(libbrotlienc) >= 1.0.7
 BuildRequires:  pkgconfig(libcares) >= 1.15.0
-BuildRequires:  pkgconfig(libglog) >= 0.3.5
+#BuildRequires:  pkgconfig(libglog) >= 0.3.5
 BuildRequires:  pkgconfig(liblz4) >= 1.8.3
 BuildRequires:  pkgconfig(libopenssl)
 BuildRequires:  pkgconfig(liburiparser) >= 0.9.3
@@ -282,7 +282,7 @@ pushd cpp
    -DARROW_JSON:BOOL=ON \
    -DARROW_ORC:BOOL=OFF \
    -DARROW_PARQUET:BOOL=ON \
-   -DARROW_USE_GLOG:BOOL=ON \
+   -DARROW_USE_GLOG:BOOL=OFF \
    -DARROW_USE_OPENSSL:BOOL=ON \
    -DARROW_WITH_BACKTRACE:BOOL=ON \
    -DARROW_WITH_BROTLI:BOOL=ON \

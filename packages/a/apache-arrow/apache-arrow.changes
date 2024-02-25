@@ -1,4 +1,250 @@
 -------------------------------------------------------------------
+Fri Feb 23 17:35:45 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 15.0.1
+  ## Bug Fixes
+  * [C++] "iso_calendar" kernel returns incorrect results for array
+    length > 32 (#39360)
+  * [C++] Explicit error in ExecBatchBuilder when appending var
+    length data exceeds offset limit (int32 max) (#39383)
+  * [C++][Parquet] Pass memory pool to decoders (#39526)
+  * [C++][Parquet] Validate page sizes before truncating to int32
+    (#39528)
+  * [C++] Fix tail-word access cross buffer boundary in
+    `CompareBinaryColumnToRow` (#39606)
+  * [C++] Fix the issue of ExecBatchBuilder when appending
+    consecutive tail rows with the same id may exceed buffer
+    boundary (for fixed size types) (#39585)
+  * [Release] Update platform tags for macOS wheels to macosx_10_15
+    (#39657)
+  * [C++][FlightRPC] Fix nullptr dereference in PollInfo (#39711)
+  * [C++] Fix tail-byte access cross buffer boundary in key hash
+    avx2 (#39800)
+  * [C++][Acero] Fix AsOfJoin with differently ordered schemas than
+    the output (#39804)
+  * [C++] Expression ExecuteScalarExpression execute empty args
+    function with a wrong result (#39908)
+  * [C++] Strip extension metadata when importing a registered
+    extension (#39866)
+  * [C#] Restore support for .NET 4.6.2 (#40008)
+  * [C++] Fix out-of-line data size calculation in
+    BinaryViewBuilder::AppendArraySlice (#39994)
+  * [C++][CI][Parquet] Fixing parquet column_writer_test building
+    (#40175)
+  ## New Features and Improvements
+  * [C++] PollFlightInfo does not follow rule of 5
+  * [C++] Fix filter and take kernel for month_day_nano intervals
+    (#39795)
+  * [C++] Thirdparty: Bump zlib to 1.3.1 (#39877)
+  * [C++] Add missing "#include <algorithm>" (#40010)
+- Release 15.0.0
+  ## Bug Fixes
+  * [C++] Bring back case_when tests for union types (#39308)
+  * [C++] Fix the issue of ExecBatchBuilder when appending
+    consecutive tail rows with the same id may exceed buffer
+    boundary (#39234)
+  * [C++][Python] Add a no-op kernel for
+    dictionary_encode(dictionary) (#38349)
+  * [C++] Use the latest tagged version of flatbuffers (#38192)
+  * [C++] Don't use MSVC_VERSION to determin
+    -fms-compatibility-version (#36595)
+  * [C++] Optimize hash kernels for Dictionary ChunkedArrays
+    (#38394)
+  * [C++][Gandiva] Avoid registering exported functions multiple
+    times in gandiva (#37752)
+  * [C++][Acero] Fix race condition caused by straggling input in
+    the as-of-join node (#37839)
+  * [C++][Parquet] add more closed file checks for
+    ParquetFileWriter (#38390)
+  * [C++][FlightRPC] Add missing app_metadata arguments (#38231)
+  * [C++][Parquet] Fix Valgrind memory leak in
+    arrow-dataset-file-parquet-encryption-test (#38306)
+  * [C++][Parquet] Don't initialize OpenSSL explicitly with OpenSSL
+    1.1 (#38379)
+  * [C++] Re-generate flatbuffers C++ for Skyhook (#38405)
+  * [C++] Avoid passing null pointer to LZ4 frame decompressor
+    (#39125)
+  * [C++] Add missing explicit size_t cast for i386 (#38557)
+  * [C++] Fix: add TestingEqualOptions for gtest functions.
+    (#38642)
+  * [C++][Gandiva] Use arrow io util to replace
+    std::filesystem::path in gandiva (#38698)
+  * [C++] Protect against PREALLOCATE preprocessor defined on macOS
+    (#38760)
+  * [C++] Check variadic buffer counts in bounds (#38740)
+  * [C++][FS][Azure] Do nothing for CreateDir("/container", true)
+    (#38783)
+  * Fix TestArrowReaderAdHoc.ReadFloat16Files to use new
+    uncompressed files (#38825)
+  * [C++] S3FileSystem export s3 sdk config
+    "use_virtual_addressing" to arrow::fs::S3Options (#38858)
+  * [C++][Gandiva] Fix Gandiva to_date function's validation for
+    supress errors parameter (#38987)
+  * [C++][Parquet] Fix spelling (#38959)
+  * [C++] Fix spelling (acero) (#38961)
+  * [C++] Fix spelling (compute) (#38965)
+  * [C++] Fix spelling (util) (#38967)
+  * [C++] Fix spelling (dataset) (#38969)
+  * [C++] Fix spelling (filesystem) (#38972)
+  * [C++] Fix spelling (#38978)
+  * [C++] Fix spelling (#38980)
+  * [C++][Acero] union node output batches should be unordered
+    (#39046)
+  * [C++][CI] Fix Valgrind failures (#39127)
+  * [C++] Remove needless system Protobuf dependency with
+    -DARROW_HDFS=ON (#39137)
+  * [C++][Compute] Fix negative duration division (#39158)
+  * [C++] Add missing data copy in StreamDecoder::Consume(data)
+    (#39164)
+  * [C++] Remove compiler warnings with -Wconversion
+    -Wno-sign-conversion in public headers (#39186)
+  * [C++][Benchmarking] Remove hardcoded min times (#39307)
+  * [C++] Don't use "if constexpr" in lambda (#39334)
+  * [C++] Disable -Werror=attributes for Azure SDK's identity.hpp
+    (#39448)
+  * [C++] Fix compile warning (#39389)
+  * [CI][JS] Force node 20 on JS build on arm64 to fix build issues
+    (#39499)
+  * [C++] Disable parallelism for jemalloc external project
+    (#39522)
+  * [C++][Parquet] Fix crash in test_parquet_dataset_lazy_filtering
+    (#39632)
+  * [C++] Disable parallelism for all `make`-based externalProjects
+    when CMake >= 3.28 is used
+  ##  New Features and Improvements
+  * [C++][JSON] Change the max rows to Unlimited(int_32) (#38582)
+  * [C++][Python] Add "Z" to the end of timestamp print string when
+    tz defined (#39272)
+  * [C++][Python] DLPack implementation for Arrow Arrays (producer)
+    (#38472)
+  * [C++] Diffing of Run-End Encoded arrays (#35003)
+  * [C++][Python][R] Allow users to adjust S3 log level by
+    environment variable (#38267)
+  * [C++][Format] Implementation of the LIST_VIEW and
+    LARGE_LIST_VIEW array formats (#35345)
+  * [C++] Use Cast() instead of CastTo() for Scalar in test
+    (#39044)
+  * [C++][Python][Parquet] Implement Float16 logical type (#36073)
+  * [C++] Add Utf8View and BinaryView to the c ABI (#38443)
+  * [C++][Parquet] Add api to get RecordReader from RowGroupReader
+    (#37003)
+  * [C++] Expose a span converter for Buffer and ArraySpan (#38027)
+  * [C++] Add A Dictionary Compaction Function For DictionaryArray
+    (#37418)
+  * [C++] Add arrow::ipc::StreamDecoder::Reset() (#37970)
+  * [C++] Implement file reads for Azure filesystem (#38269)
+  * [C++][Integration] Add C++ Utf8View implementation (#37792)
+  * [C++][Gandiva] Add external function registry support (#38116)
+  * [C++][Gandiva] Migrate LLVM JIT engine from MCJIT to ORC
+    v2/LLJIT (#39098)
+  * [C++] Feature: support concatenate recordbatches. (#37896)
+  * [C++] Add support for specifying custom Array opening and
+    closing delimiters to arrow::PrettyPrintDelimiters (#38187)
+  * [R] Allow code() to return package name prefix. (#38144)
+  * [C++][Benchmark] Add non-stream Codec Compression/Decompression
+    (#38067)
+  * [C++][Parquet] Change DictEncoder dtor checking to warning log
+    (#38118)
+  * [C++][Parquet] Support reading parquet files with multiple gzip
+    members (#38272)
+  * [C++][Parquet] check the decompressed page size same as size in
+    page header (#38327)
+  * [C++][Azure] Use properties for input stream metadata (#38524)
+  * [C++][FS][Azure] Implement file writes (#38780)
+  * [C++] Implement GetFileInfo for a single file in Azure
+    filesystem (#38505)
+  * [C++][CMake] Use transitive dependency for system GoogleTest
+    (#38340)
+  * [C++][Parquet] Use new encrypted files for page index
+    encryption test (#38347)
+  * Add validation logic for offsets and values to
+    arrow.array.ListArray.fromArrays (#38531)
+  * [C++][Acero] Create a sorted merge node (#38380)
+  * [C++][Benchmark] Adding benchmark for LZ4/Snappy Compression
+    (#38453)
+  * [C++] Support LogicalNullCount for DictionaryArray (#38681)
+  * [C++][Parquet] Faster scalar BYTE_STREAM_SPLIT (#38529)
+  * [C++][Gandiva] Support registering external C functions
+    (#38632)
+  * [C++] Implement GetFileInfo(selector) for Azure filesystem
+    (#39009)
+  * [C++][FS][Azure] Implement CreateDir() (#38708)
+  * [C++][FS][Azure] Implement DeleteDir() (#38793)
+  * [C++][FS][Azure] Implement DeleteDirContents() (#38888)
+  * [C++] : Implement AzureFileSystem::DeleteRootDirContents
+    (#39151)
+  * [C++][FS][Azure] Implement CopyFile() (#39058)
+  * [C++][Go][Parquet] Add tests for reading Float16 files in
+    parquet-testing (#38753)
+  * [C++][FS][Azure] Rename AzurePath to AzureLocation (#38773)
+  * [C++] Implement directory semantics even when the storage
+    account doesn't support HNS (#39361)
+  * [C++][Parquet] Update parquet.thrift to sync with 2.10.0
+    (#38815)
+  * [C++] Replace "#ifdef ARROW_WITH_GZIP" in dataset test to
+    ARROW_WITH_ZLIB (#38853)
+  * [C++][Parquet] Using length to optimize bloom filter read
+    (#38863)
+  * [C++][Parquet] Minor: making parquet TypedComparator operation
+    as const method (#38875)
+  * [C++] DatasetWriter release rows_in_flight_throttle when
+    allocate writing failed (#38885)
+  * [C++][Parquet] Move EstimatedBufferedValueBytes from
+    TypedColumnWriter to ColumnWriter (#39055)
+  * [C++] Stop installing internal bpacking_simd* headers (#38908)
+  * [C++][Gandiva] Refactor function holder to return arrow Result
+    (#38873)
+  * [C++] Use Cast() instead of CastTo() for Dictionary Scalar in
+    test (#39362)
+  * [C++] Use Cast() instead of CastTo() for Timestamp Scalar in
+    test (#39060)
+  * [C++] Use Cast() instead of CastTo() for List Scalar in test
+    (#39353)
+  * [C++][Parquet] Support row group filtering for nested paths for
+    struct fields (#39065)
+  * [C++] Refactor the Azure FS tests and filesystem class
+    instantiation (#39207)
+  * [C++][Parquet] Optimize FLBA record reader (#39124)
+  * Create module info compiler plugin (#39135)
+  * [C++] : Try to make Buffer::device_type_ non-optional (#39150)
+  * [C++][Parquet] Remove deprecated AppendRowGroup(int64_t
+    num_rows) (#39209)
+  * [C++][Parquet] Avoid WriteRecordBatch from produce zero-sized
+    RowGroup (#39211)
+  * [C++] Support binary to fixed_size_binary cast (#39236)
+  * [C++][Azure][FS] Add default credential auth configuration
+    (#39263)
+  * [C++] Don't install bundled Azure SDK for C++ with CMake 3.28+
+    (#39269)
+  * [C++][FS] : Remove the AzureBackend enum and add more flexible
+    connection options (#39293)
+  * [C++][FS] : Inform caller of container not-existing when
+    checking for HNS support (#39298)
+  * [C++][FS][Azure] Add workload identity auth configuration
+    (#39319)
+  * [C++][FS][Azure] Add managed identity auth configuration
+    (#39321)
+  * [C++] Forward arguments to ExceptionToStatus all the way to
+    Status::FromArgs (#39323)
+  * [C++] Flaky DatasetWriterTestFixture.MaxRowsOneWriteBackpresure
+    test (#39379)
+  * [C++] Add ForceCachedHierarchicalNamespaceSupport to help with
+    testing (#39340)
+  * [C++][FS][Azure] Add client secret auth configuration (#39346)
+  * [C++] Reduce function.h includes (#39312)
+  * [C++] Use Cast() instead of CastTo() for Parquet (#39364)
+  * [C++][Parquet] Vectorize decode plain on FLBA (#39414)
+  * [C++][Parquet] Style: Using arrow::Buffer data_as api rather
+    than reinterpret_cast (#39420)
+  * [C++][ORC] Upgrade ORC to 1.9.2 (#39431)
+  * [C++] Use default Azure credentials implicitly and support
+    anonymous credentials explicitly (#39450)
+  * [C++][Parquet] Allow reading dictionary without reading data
+    via ByteArrayDictionaryRecordReader (#39153)
+- Disable logging until compatibility with glog is restored
+  gh#apache/arrow#40181
+
+-------------------------------------------------------------------
 Mon Jan 15 20:38:45 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 14.0.2
