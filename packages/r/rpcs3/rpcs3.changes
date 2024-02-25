@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Fri Feb 23 11:39:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
+Wed Feb 21 11:25:54 UTC 2024 - i@guoyunhe.me
+
+- Update to version 0.0.30~git20240220:
+  * Qt: add Q_OBJECT macro to midi_creator
+  * Qt: localize default pad names
+  * vk: Move driver properties to properties section from features section
+  * Qt 6.6.2
+  * PPU LLVM: Relax MSELF entry name constraints
+  * SPU Analyzer: forgive invalid code, use interpreter
+  * PPU LLVM: Do not use possible duplicates in MSELF
+  * Add debug info to ENOMEMs
+  * Fixup lv2_file::file_view::read() regression
+  * Add debug info to sys_fs_lseek
+  * PPU LLVM: Add more MSELF file checks
+  * Fix lv2_file::file_view::size()
+  * ELF.h: Avoid using seek operations
+  * sys_prx/overlay: Add some debugging steps
+  * raw_mouse: adjust relative mouse position if the window size changed
+  * rsx/vk: Fix WCB/Blit flush deadlock
+  * vk: Implement fast RSX release if there is no pending GPU work
+  * Crypto\EDATA: Optimize decrypt_block to avoid an allocation
+  * Fix lv2_file::file_view::read_at
+  * EDATA: Add more logging
+  * Add logging for cellFsSdataOpenByFd
+  * Fix EDATADecrypter::ReadData
+  * Savestates/sys_fs: Save NPDRM decryption key
+  * Add <optional> to RB3MidiDrums.h
+  * raw_mouse: center cursors on init
+  * sys_usbd: silence warning
+  * overlays: fix raw mouse debug overlay pos type
+  * input: implement raw_mouse_handler
+  * overlays: use signed short for position to allow negative positions
+  * Add limited support for midi drums w/ rockband 3 (#15054)
+  * Revert FM(a*re_accurate) shortcut to relaxed
+  * Fixes full fm(a, re_accurate) pattern
+  * Improve re_accurate
+  * Disable updates for local build
+  * vk: Silence compiler warning
+  * Update skylander_dialog.cpp
+  * overlays: localize sendmessage confirmation
+  * Thread.cpp: Explicitly state difference type in thread_ctrl::wait_for_accurate
+  * Fixup HW thread switch delay condition for performance
+  * Improve cpu_flag::yield handling
+  * PPU/LV2: Implement HW threads switching delay when signaling higher priority threads
+  * vk: Don't panic on encountering the exotic mesa drivers
+  * vk: Emit a strong warning if dozen is detected as the currently loaded driver.
+  * vk: Make more features "optional"
+  * vk: Improve driver detection for dozen and lavapipe
+  * rsx: Lower some performance warnings to trace to reduce log spam
+  * Buildfiles improvements
+  * Stop including x86 intrinsics in other architectures
+  * Don't include x64 options when building arm64
+  * Update CMake requirements in BUILDING.md
+  * Fix linux build
+  * vk: Improve compute->compute barrier before detiling
+  * vk: Tighten some memory bounds checks
+  * rsx/vk: Fix GPU tile encoding
+  * rsx: Fix cpu detiler
+  * rsx: Provide tile alignment utility (align to 64 * pitch blocks)
+  * rsx/vk: Redefine the (de)tiler config interface
+  * Avoid modifying any memory on SYS_NET_EINTR cases
+  * Restrict file creation in /dev_hdd0
+  * SPU LLVM: Allow swapped FMA and multiplications args in match context
+  * Update libpng to 1.6.42
+  * Add various SPU patterns
+  * Accurate FI
+  * Update submodules
+  * Crypto/unedat.cpp: remove extract_all_data
+  * Crypto/PKG installer: Fix potential RAM shortage when extracing EDAT files
+  * Crypto/sys_fs: Fix potential RAM shortage in NPDRM decryption
+  * Crypto/sys_fs: Remove some seek operations
+  * Add sceNpPlus to registered modules
+
+-------------------------------------------------------------------
 Mon Feb 05 11:06:46 UTC 2024 - i@guoyunhe.me
 
 - Update to version 0.0.30~git20240205:

@@ -17,7 +17,7 @@
 
 
 Name:           rpcs3
-Version:        0.0.30~git20240205
+Version:        0.0.30~git20240220
 Release:        0
 Summary:        PS3 emulator/debugger
 License:        GPL-2.0-only
@@ -95,9 +95,7 @@ ExclusiveArch:  x86_64
 An open-source PlayStation 3 emulator/debugger written in C++.
 
 %prep
-%setup -q -a 1
-%patch1 -p 1
-%patch2 -p 1
+%autosetup -p1 -a 1
 
 #Generate Version Strings
 GIT_VERSION=$(echo %{version} | sed 's|.*git|git~|g')
