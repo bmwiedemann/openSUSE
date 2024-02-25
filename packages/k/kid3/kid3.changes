@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Feb 24 12:31:47 UTC 2024 - enzokiel@kabelmail.de
+
+- Update to version 3.9.5
+  * New:
+    + Keyboard shortcuts for play toolbar.
+    + Option "Audio output" in "User Actions" settings tab.
+    + Support WebP format for pictures.
+  * Improved:
+    + Clicking again on 1 star makes star rating disappear.
+    + Support '\|' to escape string list separators.
+  * Fixed:
+    + Support multiple values in APE text items.
+    + Building with TagLib 2.0.
+    + Building from macOS with arm64.
+    + Building snap packages.
+
+-------------------------------------------------------------------
 Thu Dec 28 16:22:51 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Require extra-cmake-modules at build time
