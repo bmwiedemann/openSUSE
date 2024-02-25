@@ -184,8 +184,8 @@ implementations: UNIX mailbox, Maildir, MH, POP3, IMAP4, even SMTP.
 
 %prep
 %setup -q
-%patch0
-%patch2
+%patch -P 0
+%patch -P 2
 set -- %(rpm -q --queryformat '%%{VERSION}' guile-devel | sed -r 's@\.@ @g')
 (cat > guile.list)<<-EOF
 	%dir %{_datadir}/guile/site/$1.$2/
@@ -200,7 +200,7 @@ else
  mv libmu_scm libmu_scm-guile-2.2
  mv include/mailutils/guile.h include/mailutils/guile-2.2.h
  tar xfJ %{SOURCE1}
-%patch3 -b .p3
+%patch -P 3 -b .p3
   autoreconf -fiv
 fi
 #

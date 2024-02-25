@@ -293,4 +293,12 @@
   * wordwrap streams: fix handling of overflowing lines (forwarded request 1085238 from dirkmueller)</comment>
     <requestid>1085972</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>f03c54095f68a3220a0093a7c6b327f2</srcmd5>
+    <version>3.16</version>
+    <time>1708866305</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN. (forwarded request 1149929 from pgajdos)</comment>
+    <requestid>1149943</requestid>
+  </revision>
 </revisionlist>
