@@ -40,8 +40,7 @@ testing firewall, IDS, and IPS, and troubleshooting various network
 problems.
 
 %prep
-%setup -q -n %{name}-linux-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{name}-linux-%{version}
 
 %build
 export CFLAGS="%{optflags}"
