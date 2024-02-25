@@ -56,11 +56,8 @@ Examples are in /usr/lib/rasmol.
 %define _xorg7_mandir %_mandir
 
 %prep
-%setup -n RasMol_2.7.4.2_23Mar08 -a2
-%patch1
-%patch2
-%patch3
-%patch4
+%autosetup -p0 -n RasMol_2.7.4.2_23Mar08 -a2
+
 cp %{S:1} .
 # it is needed to remove some links in tarball
 ## these thing were done manualy when repacking the 2.7.4 tarball
