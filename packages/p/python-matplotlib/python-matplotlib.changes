@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 23 07:40:01 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Disable nbagg and wx plugin on Leap15/SLE15
+  * Leap 15 doesn't have IPython stack with python 3.11 build
+  * python-wxPython with python 3.11 supported needs wxWidgets
+    version >= 3.2.0 as the minimal requirement which Leap15/SLE15
+    don't have that
+
+-------------------------------------------------------------------
 Tue Jan 23 17:01:35 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - force 'swrast' ("llvmpipe") Mesa/OpenGL driver to be used by

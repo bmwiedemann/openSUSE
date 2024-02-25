@@ -88,12 +88,16 @@ BuildRequires:  %{python_module matplotlib = %{version}}
 BuildRequires:  %{python_module matplotlib-cairo = %{version}}
 BuildRequires:  %{python_module matplotlib-gtk3 = %{version}}
 BuildRequires:  %{python_module matplotlib-gtk4 = %{version}}
+%if 0%{?suse_version} > 1500
 BuildRequires:  %{python_module matplotlib-nbagg = %{version}}
+%endif
 BuildRequires:  %{python_module matplotlib-qt5 = %{version}}
 BuildRequires:  %{python_module matplotlib-testdata = %{version}}
 BuildRequires:  %{python_module matplotlib-tk = %{version}}
 BuildRequires:  %{python_module matplotlib-web = %{version}}
+%if 0%{?suse_version} > 1500
 BuildRequires:  %{python_module matplotlib-wx = %{version}}
+%endif
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest-xvfb}
@@ -110,7 +114,7 @@ BuildRequires:  %{python_module cairo >= 1.14.0}
 BuildRequires:  %{python_module cairocffi >= 0.8}
 # /SECTION cairo
 # SECTION nbagg backend tests
-%if !%{with ringdisabled}
+%if !%{with ringdisabled} && 0%{?suse_version} > 1500
 BuildRequires:  %{python_module nbconvert}
 BuildRequires:  %{python_module nbformat}
 %endif
@@ -175,6 +179,7 @@ Requires:       python-gobject-cairo
 This package provides code common for the GTK3 and GTK4 backends
 for the %{name} plotting package
 
+%if 0%{?suse_version} > 1500
 %package        nbagg
 Summary:        Jupyter nbagg backend for %{name}
 Requires:       %{name} = %{version}
@@ -183,6 +188,7 @@ Requires:       python-ipykernel
 %description    nbagg
 This package includes the Jupyter notebook backend
 for the %{name} plotting package
+%endif
 
 %package        latex
 Summary:        Allow rendering latex in %{name}
@@ -264,6 +270,7 @@ Requires:       python-tornado
 This package includes the browser-based webagg backend
 for the %{name} plotting package
 
+%if 0%{?suse_version} > 1500
 %package        wx
 Summary:        WxWidgets backend for %{name}
 Requires:       %{name} = %{version}
@@ -272,6 +279,7 @@ Requires:       python-wxPython >= 4
 %description    wx
 This package includes the wxWidgets-based wxagg backend
 for %{name} plotting package
+%endif
 
 %prep
 %autosetup -p1 -n matplotlib-%{version}
@@ -453,11 +461,13 @@ $python -m pytest --pyargs matplotlib.tests \
 %{python_sitearch}/matplotlib/backends/_backend_gtk.py
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/_backend_gtk.*.py*
 
+%if 0%{?suse_version} > 1500
 %files %{python_files nbagg}
 %license LICENSE/
 %license doc/users/project/license.rst
 %{python_sitearch}/matplotlib/backends/backend_nbagg.py*
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_nbagg.*.py*
+%endif
 
 %files %{python_files qt}
 %license LICENSE/
@@ -503,6 +513,7 @@ $python -m pytest --pyargs matplotlib.tests \
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_webagg.*.py*
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_webagg_core.*.py*
 
+%if 0%{?suse_version} > 1500
 %files %{python_files wx}
 %license LICENSE/
 %license doc/users/project/license.rst
@@ -512,6 +523,7 @@ $python -m pytest --pyargs matplotlib.tests \
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_wx.*.py*
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_wxagg.*.py*
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_wxcairo.*.py*
+%endif
 %endif
 
 %changelog
