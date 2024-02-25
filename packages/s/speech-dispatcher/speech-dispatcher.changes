@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Feb 22 20:43:22 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.12.0~rc2:
+  * Add openjtalk module.
+  * Fix splitting long UTF-8 sequences.
+  * Update CLDR to version 44 and symbols from NVDA.
+  * Add spd_fd function to C api.
+
+-------------------------------------------------------------------
+Thu Feb 22 07:52:51 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use _multibuild to build also a python311 flavor in SLE15
+  (jsc#PED-68)
+- Rename the python3-speechd package to %{primary_python}-speechd
+  in TW/ALP so that it follows the python package naming policy.
+- Fix %_datadir which is now included in the main speech-dispatcher
+  package instead of in -configure.
+- Only provide python3-speechd from python311-speechd in TW/ALP,
+  otherwise the python 3.11 flavor might be selected instead of
+  the real python3-speechd package in SLE15.
+- Only require python-speechd for the -configure package. The base
+  package does not require it to be installed.
+
+-------------------------------------------------------------------
+Tue Feb 13 09:20:06 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.12.0~rc1:
+  * Add socket activation
+  * libspeechd: Simplify buffer management.
+  * Add language and variant parameters to "list voice" command.
+- Add pkgconfig(libsystemd) to BuildRequires.
+
+-------------------------------------------------------------------
 Sun Jan 14 17:31:18 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Have speech-dispatcher-module espeak supplement libespeak-ng1,

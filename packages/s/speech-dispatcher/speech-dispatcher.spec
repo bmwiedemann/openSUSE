@@ -16,6 +16,7 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
 %if 0%{?suse_version} >= 1500
 %define espeak     espeak-ng
 %define espeakdev  espeak-ng-devel
@@ -26,12 +27,27 @@
 %define espeak_lib espeak
 %endif
 %if 0%{?suse_version} > 1500
-%define _python python3
-%else
-%define _python python311
+%define _python %{primary_python}
+%if "%{flavor}" == "python311"
+ExclusiveArch:  do-not-build
 %endif
+%else
+%if "%{flavor}" == "python311"
+%{?sle15_python_module_pythons}
+%define _python python311
+%define python_sitearch %{?python_sitearch:%python311_sitearch}
+%else
+%define _python python3
+%define python_sitearch %{?python_sitearch:%python3_sitearch}
+%endif
+%endif
+
+%if "%{flavor}" == ""
 Name:           speech-dispatcher
-Version:        0.11.5
+%else
+Name:           speech-dispatcher-%{_python}
+%endif
+Version:        0.12.0~rc2
 Release:        0
 # FIXME missing backends: festival lite, ibmeci (ibm tts), dumbtts/ivona, nas
 # The API and bindings are LGPL-2.1-or-later, other parts are
@@ -40,7 +56,7 @@ Summary:        Device independent layer for speech synthesis
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Daemons
 URL:            https://devel.freebsoft.org/speechd
-Source0:        https://github.com/brailcom/speechd/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/brailcom/speechd/releases/download/0.12.0-rc2/speech-dispatcher-0.12.0-rc2.tar.gz
 Patch0:         harden_speech-dispatcherd.service.patch
 # Logrotate file taken from Debian
 Source2:        speech-dispatcher.logrotate
@@ -58,8 +74,8 @@ BuildRequires:  libsndfile-devel
 BuildRequires:  libtool
 BuildRequires:  makeinfo
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
-Requires:       %{_python}-speechd
 # FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         %{install_info_prereq}
 Suggests:       festival
@@ -87,6 +103,7 @@ Summary:        Configuration tool for Speech Dispatcher
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Daemons
 Requires:       %{_python}-pyxdg
+Requires:       %{_python}-speechd
 Requires:       %{name} = %{version}
 Enhances:       %{name}
 
@@ -161,9 +178,11 @@ tricky aspects of the speech subsystem.
 Summary:        Device independent layer for speech synthesis - Python Bindings
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Python
-Requires:       %{name} >= %{version}
+Requires:       speech-dispatcher >= %{version}
+%if 0%{?suse_version} > 1500
 Provides:       python3-speechd = %{version}
 Obsoletes:      python3-speechd < %{version}
+%endif
 
 %description -n %{_python}-speechd
 The goal of Speech Dispatcher project is to provide a high-level device
@@ -176,17 +195,18 @@ devices directly nor to handle concurrent access, sound output and other
 tricky aspects of the speech subsystem.
 
 %prep
-%setup -q
-# dummy module must almost never be dissabled
+%autosetup -p1 -n speech-dispatcher-0.12.0-rc2
+# dummy module must almost never be disabled
 sed -i "s/#AddModule \"dummy\"/AddModule \"dummy\"/" -i config/speechd.conf
 # you must enable at least one module (except dummy), otherwise it will load
 # all available modules and may cause huge cpu usage!
 sed -i "s/#AddModule \"%{espeak}\"/AddModule \"%{espeak}\"/" -i config/speechd.conf
-%patch0 -p1
+
+sed -i '1{\,^#!%{_bindir}/env python,d}' src/api/python/speechd/_test.py
 
 %build
 %global optflags %{optflags} -fcommon
-%if 0%{?suse_version} <= 1500
+%if "%{flavor}" == "python311"
 export PYTHON=/usr/bin/python3.11
 %endif
 %configure --disable-static \
@@ -198,11 +218,18 @@ export PYTHON=/usr/bin/python3.11
         --without-kali \
         --with-ibmtts=no \
         --with-voxin=no
+%if "%{flavor}" == "python311"
+cd src/api/python/speechd
+%endif
 %make_build
 
 %install
+%if "%{flavor}" == "python311"
+cd src/api/python/speechd
+%endif
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
+%if "%{flavor}" == ""
 mkdir -p %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcspeech-dispatcherd
 # Create log dir. 0700 since the logs can contain user information.
@@ -224,14 +251,15 @@ rm -f %{buildroot}%{_sysconfdir}/speech-dispatcher/modules/ibmtts.conf
 test -d %{buildroot}%{_infodir}/dir && rm %{buildroot}%{_infodir}/dir
 %find_lang %{name}
 # rpmlint
-sed -i -e 's|/usr/bin/env python3|/usr/bin/%{_python}|g' %{buildroot}%{_bindir}/spd-conf
+%{python_expand # Fix shebang path
+sed -i "1s|#\!.*python.*|#\!/usr/bin/$python|" %{buildroot}%{_bindir}/spd-conf
+}
+%endif
 
 # Deduplicate python bytecode
-%if 0%{?suse_version} > 1500
-%fdupes %{buildroot}%{python3_sitearch}/speechd*
-%else
-%fdupes %{buildroot}%{python311_sitearch}/speechd*
-%endif
+%fdupes %{buildroot}%{python_sitearch}/speechd*
+# Deduplicate locale files
+%fdupes %{buildroot}%{_datadir}/speech-dispatcher/locale
 
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
@@ -269,6 +297,7 @@ done
 
 %postun -n libspeechd2 -p /sbin/ldconfig
 
+%if "%{flavor}" == ""
 %files -f %{name}.lang
 %doc AUTHORS ANNOUNCE NEWS README.md
 %license COPYING.LGPL COPYING.GPL-2 COPYING.GPL-3
@@ -290,6 +319,7 @@ done
 %{_libexecdir}/speech-dispatcher-modules/sd_dummy
 %{_libexecdir}/speech-dispatcher-modules/sd_festival
 %{_libexecdir}/speech-dispatcher-modules/sd_generic
+%{_libexecdir}/speech-dispatcher-modules/sd_openjtalk
 %{_infodir}/%{name}*.info.gz
 %{_infodir}/spd-say.info.gz
 %{_infodir}/ssip.info.gz
@@ -302,16 +332,14 @@ done
 %endif
 # systemd service file
 %{_unitdir}/speech-dispatcherd.service
+%{_userunitdir}/speech-dispatcher.service
+%{_userunitdir}/speech-dispatcher.socket
 %{_sbindir}/rcspeech-dispatcherd
+%{_datadir}/speech-dispatcher/
 
 %files configure
 %{_bindir}/spd-conf
-%if 0%{?suse_version} > 1500
-%{python3_sitearch}/speechd_config/
-%else
-%{python311_sitearch}/speechd_config/
-%endif
-%{_datadir}/speech-dispatcher/
+%{python_sitearch}/speechd_config/
 
 %files module-espeak
 %config(noreplace) %{_sysconfdir}/speech-dispatcher/modules/espeak.conf
@@ -325,12 +353,10 @@ done
 %{_includedir}/%{name}/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/%{name}.pc
+%endif
 
 %files -n %{_python}-speechd
-%if 0%{?suse_version} > 1500
-%{python3_sitearch}/speechd/
-%else
-%{python311_sitearch}/speechd/
-%endif
+%{python_sitearch}/speechd/
+%pycache_only %{python_sitearch}/speechd/__pycache__
 
 %changelog

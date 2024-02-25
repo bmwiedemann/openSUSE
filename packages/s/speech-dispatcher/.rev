@@ -363,4 +363,16 @@ Now as requested only for Leap (forwarded request 1096175 from ecsos)</comment>
   used or needed and that might not be installed. (forwarded request 1138694 from mgorse)</comment>
     <requestid>1138695</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>11b7b2cee6c2f349c1c28538ad27f72e</srcmd5>
+    <version>0.12.0~rc2</version>
+    <time>1708866280</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.12.0~rc2:
+  * Add openjtalk module.
+  * Fix splitting long UTF-8 sequences.
+  * Update CLDR to version 44 and symbols from NVDA.
+  * Add spd_fd function to C api. (forwarded request 1149646 from mgorse)</comment>
+    <requestid>1149647</requestid>
+  </revision>
 </revisionlist>
