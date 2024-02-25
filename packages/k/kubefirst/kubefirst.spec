@@ -1,7 +1,7 @@
 #
 # spec file for package kubefirst
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kubefirst
-Version:        2.3.7
+Version:        2.3.8
 Release:        0
 Summary:        CLI for the KubeFirst GitOps Infrastructure & Application Delivery Platform
 License:        MIT

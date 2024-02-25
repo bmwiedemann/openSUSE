@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Feb 24 09:11:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.3.8:
+  * chore: bump launch version v2.3.8 (#2100)
+  * chore: bump launch version rc76 (#2099)
+  * feat: post install catalog apps (#2090)
+  * feat: SKIP_ARGOCD_LAUNCH env var set to true will suppress
+    argocd launch when development (#2080)
+  * fix: support ngrok authtoken (#2074)
+  * feat: logs (#2069)
+  * chore: update licence years to include 2024 (#2063)
+  * ci: remove a non-working UX project automation workflow (#2059)
+  * ci: using the right token for
+    srggrs/assign-one-project-github-action (#2056)
+  * ci: fix the project URL for
+    srggrs/assign-one-project-github-action (#2054)
+  * ci: update assign-one-project-github-action version + fix token
+    name (#2051)
+  * ci: add a workflow to automatically add UX issues into the
+    project (#2048)
+  * refactor: updated the console 0 destroy message for clarity
+    (#1986)
+  * chore: make installation type for marketplace generic for bug
+    report (#1980)
+  * feat: subdomain flag for cloudflare (#1976)
+  * fix: add quouta command to the bubbletea blacklist (#1967)
+
+-------------------------------------------------------------------
 Thu Dec 14 10:53:15 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.3.7:
