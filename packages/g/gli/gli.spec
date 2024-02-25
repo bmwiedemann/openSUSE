@@ -1,7 +1,7 @@
 #
 # spec file for package gli
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,8 +80,7 @@ This package provides the documentation for GLI library.
 
 %prep
 %setup -q
-%patch1
-%patch2 -p1
+%autopatch -p1
 
 %build
 %if 0%{?suse_version} < 1500
