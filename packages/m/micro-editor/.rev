@@ -843,4 +843,12 @@
 - Initial version 1.4 (forwarded request 1117580 from illuusio)</comment>
     <requestid>1117802</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>0a1973143813c0b7ad1f3b093a01b6a8</srcmd5>
+    <version>2.0.12</version>
+    <time>1708866330</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN. (forwarded request 1149773 from pgajdos)</comment>
+    <requestid>1149991</requestid>
+  </revision>
 </revisionlist>

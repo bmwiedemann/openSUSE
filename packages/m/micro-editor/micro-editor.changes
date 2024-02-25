@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 23 09:48:35 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Oct 06 06:42:23 UTC 2023 - tuukka.pasanen@ilmi.fi
 
 - Update to version 2.0.12:

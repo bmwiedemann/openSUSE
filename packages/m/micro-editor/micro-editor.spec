@@ -47,7 +47,7 @@ or because you need to (over ssh).
 %prep
 %setup -q -n micro-%{version}
 %setup -q -T -D -a 1 -n micro-%{version}
-%patch0 -p1
+%patch -P 0 -p1
 
 %build
 
