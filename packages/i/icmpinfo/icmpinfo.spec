@@ -33,8 +33,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 A tool for looking at the ICMP messages received on the running host.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 make CFLAGS="-D_GNU_SOURCE -fvisibility=hidden %{optflags}" %{?_smp_mflags}
