@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 11:19:29 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream patch flask3.patch to fix build with Flask 3
+
+-------------------------------------------------------------------
 Thu Dec  7 17:54:50 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Add demock.patch which removes dependency on the external

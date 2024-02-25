@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-OpenTracing
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Source:         https://files.pythonhosted.org/packages/source/F/Flask-OpenTraci
 # PATCH-FIX-UPSTREAM demock.patch gh#opentracing-contrib/python-flask#58 mcepl@suse.com
 # Remove dependency on mock
 Patch0:         demock.patch
+# PATCH-FIX-UPSTREAM flask3.patch gh#opentracing-contrib/python-flask#60 Updates for compatibility with Flask 3.0 and recent Python versions
+Patch1:         flask3.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -36,6 +38,7 @@ Requires:       python-opentracing >= 2.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Flask}
+BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module opentracing >= 2.0}
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -60,8 +63,7 @@ sed -i -e '/--cov/d' setup.cfg
 }
 
 %check
-# gh#opentracing-contrib/python-flask#57 for TestTracingStartSpanCallback
-%pytest -k 'not (test_span_tags or TestTracingStartSpanCallback)'
+%pytest
 
 %files %{python_files}
 %doc README.rst
