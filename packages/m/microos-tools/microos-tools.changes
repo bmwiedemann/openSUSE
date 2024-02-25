@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 23 11:59:42 UTC 2024 - fvogt@suse.com
+
+- Update to version 2.21+git12:
+  * 98selinux-microos: Avoid "/sysroot-selinux: not mounted" on new util-linux
+- Switch _service to use mode="manual" instead of "disabled"
+
+-------------------------------------------------------------------
 Tue Feb 06 17:19:47 UTC 2024 - iforster@suse.com
 
 - Update to version 2.21+git11:

@@ -321,4 +321,14 @@
 </comment>
     <requestid>1144696</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e87b2c983e0c62d0a99d16fea441592f</srcmd5>
+    <version>2.21+git12</version>
+    <time>1708866292</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.21+git12:
+  * 98selinux-microos: Avoid &quot;/sysroot-selinux: not mounted&quot; on new util-linux
+- Switch _service to use mode=&quot;manual&quot; instead of &quot;disabled&quot;</comment>
+    <requestid>1149889</requestid>
+  </revision>
 </revisionlist>
