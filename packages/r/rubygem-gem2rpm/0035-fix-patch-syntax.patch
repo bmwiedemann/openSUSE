@@ -1,0 +1,13 @@
+Index: gem2rpm-0.10.1/templates/opensuse.spec.erb
+===================================================================
+--- gem2rpm-0.10.1.orig/templates/opensuse.spec.erb
++++ gem2rpm-0.10.1/templates/opensuse.spec.erb
+@@ -141,7 +141,7 @@ PreReq:         update-alternatives
+ <% unless config[:patches].nil? or config[:patches].empty? -%>
+ %gem_unpack
+ <% config[:patches].each_with_index do |patch, i| -%>
+-%patch<%= i %> <%= patch[1] if patch[1] %>
++%patch -P <%= i %> <%= patch[1] if patch[1] %>
+ <% end -%>
+ <% if config[:post_patch] -%>
+ # MANUAL

@@ -363,4 +363,15 @@ A    0033-Use-File.exist-instead-of-File.exists-which-was-remo.patch
 - enable building for ruby 3.3</comment>
     <requestid>1135076</requestid>
   </revision>
+  <revision rev="34" vrev="23">
+    <srcmd5>0cd52d1a47b8f0bc1a9edf88677a6ce7</srcmd5>
+    <version>0.10.1</version>
+    <time>1708866318</time>
+    <user>anag+factory</user>
+    <comment>- Added 0034-plugin-dir.patch
+  - also own the new gem plugin dir
+- Added 0035-fix-patch-syntax.patch:
+  Fix patch syntax for the upcoming rpm 4.20</comment>
+    <requestid>1149961</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 23 13:07:37 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Added 0034-plugin-dir.patch
+  - also own the new gem plugin dir
+- Added 0035-fix-patch-syntax.patch:
+  Fix patch syntax for the upcoming rpm 4.20
+
+-------------------------------------------------------------------
 Mon Dec 25 07:15:47 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update the ruby ABI version in the 3.3.0 paths to the final

@@ -29,7 +29,9 @@
 %bcond_with     ruby24
 %endif
 %bcond_with     ruby25
+%if ! (0%{?suse_version} == 1550)
 %bcond_with     ruby26
+%endif
 %bcond_with     ruby27
 %bcond_with     ruby30
 %bcond_with     ruby31
@@ -91,6 +93,8 @@ Patch30:        0030-gem_package.spec.erb-sync-with-ruby-common.patch
 Patch31:        0031-use-template-opensuse-on-openSUSE-Tumbleweed-where-e.patch
 Patch32:        0032-Replace-no-rdoc-no-ri-with-no-document.patch
 Patch33:        0033-Use-File.exist-instead-of-File.exists-which-was-remo.patch
+Patch34:        0034-plugin-dir.patch
+Patch35:        0035-fix-patch-syntax.patch
 Patch128:       template_loader.patch
 Summary:        Generate rpm specfiles from gems
 License:        GPL-2.0-or-later
@@ -104,40 +108,7 @@ The spec file tries to follow the gem as closely as possible
 
 %prep
 %gem_unpack
-%patch01 -p1
-%patch02 -p1
-%patch03 -p1
-%patch04 -p1
-%patch05 -p1
-%patch06 -p1
-%patch07 -p1
-%patch08 -p1
-%patch09 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
-%patch19 -p1
-%patch20 -p1
-%patch21 -p1
-%patch22 -p1
-%patch23 -p1
-%patch24 -p1
-%patch25 -p1
-%patch26 -p1
-%patch27 -p1
-%patch28 -p1
-%patch29 -p1
-%patch30 -p1
-%patch31 -p1
-%patch32 -p1
-%patch33 -p1
-%patch128 -p1
+%autopatch -p1
 
 %build
 perl -p -i -e 's|("templates/opensuse.spec.erb".freeze)|$1, "templates/gem_packages.spec.erb".freeze|g' *gemspec
