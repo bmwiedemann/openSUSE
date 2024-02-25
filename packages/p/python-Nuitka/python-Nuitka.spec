@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == ""
 %bcond_with     test_clang
@@ -115,8 +116,8 @@
 %if 0%{?suse_version} <= 1500
 %{?!with_test_py3:%define skip_python3 1}
 %endif
-# Skip all empty test flavors: The obs server-side interpreter cannot use lua or rpm shrink, last one is for sle15_python_module_pythons if enabled here or inherited from project
-%if "%pythons" == "" || "%pythons" == " " || "%pythons" == "  " || "%pythons" == "   " || "%pythons" == "    " || ( "%pythons" == "python311" && %{without test_py311} )
+# Skip all empty test flavors: last one is for sle15_python_module_pythons if enabled here or inherited from project
+%if "%{shrink:%{pythons}}" == "" || ( "%pythons" == "python311" && %{without test_py311} )
 ExclusiveArch:  donotbuild
 %define python_module() %flavor-not-enabled-in-buildset-for-suse-%{?suse_version}
 %endif

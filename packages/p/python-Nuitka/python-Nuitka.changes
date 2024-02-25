@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 23 14:46:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix typo in previous change (missing {).
+
+-------------------------------------------------------------------
+Fri Feb 23 12:21:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use newly supported shrink{} on OBS to exclude python flavors
+  will all python versions skipped.
+
+-------------------------------------------------------------------
 Tue Feb 20 13:11:31 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Prepare for python312 test flavor, but disable flavor completely
