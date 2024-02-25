@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 23 10:17:53 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Thu Jul 23 16:31:17 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Add build support for gcc10 to HPC build (bsc#1174439). 

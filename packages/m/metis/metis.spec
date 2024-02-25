@@ -198,10 +198,7 @@ graph files you can use to test Metis.
 
 %prep
 %{?with_hpc: %hpc_debug}
-%setup -q -n %{pname}-%{version}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1 -n %{pname}-%{version}
 
 # set width (32 or 64 bits) of the elementary data type, see Install.txt
 sed -i 's|#define IDXTYPEWIDTH 32|#define IDXTYPEWIDTH %{__isa_bits}|' include/metis.h
