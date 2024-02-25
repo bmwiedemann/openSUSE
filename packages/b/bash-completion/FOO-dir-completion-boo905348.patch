@@ -1,28 +1,28 @@
 ---
- bash_completion |   47 ++++++++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 46 insertions(+), 1 deletion(-)
+ bash-completion-2.12.0/bash_completion |   38 +++++++++++++++++++++++++++++++++
+ bash-completion-2.12.0/completions/cd  |   11 ++++++++-
+ 2 files changed, 48 insertions(+), 1 deletion(-)
 
-Index: bash-completion-2.11/bash_completion
-===================================================================
---- bash-completion-2.11.orig/bash_completion
-+++ bash-completion-2.11/bash_completion
-@@ -566,6 +566,7 @@ _filedir()
-     local IFS=$'\n'
- 
-     _tilde "${cur-}" || return
-+    _dollar "$cur" || return
+--- bash-completion-2.12.0/bash_completion
++++ bash-completion-2.12.0/bash_completion	2024-02-23 07:34:25.733559088 +0000
+@@ -1102,6 +1102,7 @@ _comp_quote_compgen()
+ _comp_compgen_filedir()
+ {
+     _comp_compgen_tilde && return
++    _comp_compgen_dollar "$cur" || return
  
      local -a toks
-     local reset arg=${1-}
-@@ -1044,6 +1045,42 @@ _tilde()
-     return $result
+     local _arg=${1-}
+@@ -1775,6 +1776,43 @@ _comp_compgen_tilde()
+     return 1
  }
  
-+# Perform dollar ($) completion
++# Perform dollar ($ or backtick) completion
 +# @return  True (0) if completion needs further processing,
-+#          False (> 0) if dollar is followed by a valid username, completions
-+#          are put in COMPREPLY and no further processing is necessary.
-+_dollar()
++#          False (> 0) if dollar or backtick is for commands, also if dollar
++#          is used for variables, completions are put in COMPREPLY and noq
++#          further processing is necessary.
++_comp_compgen_dollar()
 +{
 +    local s=""
 +    local -i glob=0
@@ -54,24 +54,26 @@ Index: bash-completion-2.11/bash_completion
 +    return ${#COMPREPLY[@]}
 +}
 +
- # Expand variable starting with tilde (~)
+ # Expand string starting with tilde (~)
  # We want to expand ~foo/... to /home/foo/... to avoid problems when
  # word-to-complete starting with a tilde is fed to commands and ending up
-@@ -1810,7 +1847,16 @@ complete -F _known_hosts traceroute trac
- _cd()
+--- bash-completion-2.12.0/completions/cd
++++ bash-completion-2.12.0/completions/cd	2024-02-23 07:45:00.565836867 +0000
+@@ -5,7 +5,16 @@
+ _comp_cmd_cd()
  {
-     local cur prev words cword
--    _init_completion || return
-+    _init_completion || {
+     local cur prev words cword comp_args
+-    _comp_initialize -- "$@" || return
++    _comp_initialize -- "$@" || {
 +        if [[ ${#COMPREPLY[@]} -eq 1 ]]; then
 +            local i=${COMPREPLY[0]}
 +            if [[ "$i" == "$cur" && $i != "*/" ]]; then
-+                _dollar "$i" || return
++                _comp_compgen_dollar "$i" || return
 +                COMPREPLY[0]="${i%%/}/"
 +            fi
 +        fi
 +        return
 +    }
  
-     local IFS=$'\n' i j k
- 
+     if [[ $cur == -* ]]; then
+         _comp_compgen_help -c help "$1"

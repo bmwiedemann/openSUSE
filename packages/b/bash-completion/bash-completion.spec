@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 
 %global _name   bash-completion
 Name:           %{_name}%{?nsuffix}
-Version:        2.11
+Version:        2.12.0
 Release:        0
 %if %{build_core}
 Summary:        Programmable Completion for Bash
@@ -64,21 +64,15 @@ Patch9:         rm-completion-smart-boo958462.patch
 Patch10:        backticks-bsc963140.patch
 # PATCH-FIX-SUSE boo#1090515
 Patch11:        bash-completion-2.7-unRAR-remove.patch
-# PATCH-FIX-SUSE boo#1167952
-Patch12:        bash-completion-fix-missing-directory-completion-with-filename-pattern.patch
 # PATCH-FIX-SUSE boo#1190929
 Patch13:        boo1190929-9af4afd0.patch
 # PATCH-FIX-SUSE boo#1199724
 Patch14:        bsc1199724-modules.patch
-# PATCH-FIX-UPSTREAM bsc#1200791
-Patch15:        fix-curl-help-completion-bsc1200791.patch
-# PATCH-FIX-SUSE -- avoid broken quotes ands escapes
-Patch16:        fix_quote_readline_by_ref.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildArch:      noarch
 %if %{build_doc}
-BuildRequires:  asciidoc
+BuildRequires:  cmark
 BuildRequires:  libxslt-tools
 %endif
 %if %{build_core}
@@ -114,7 +108,10 @@ autoreconf -fiv
 %if %{build_doc}
 pushd doc
     mkdir html
-    a2x -D html -d book -f xhtml --asciidoc-opts="--unsafe" main.txt
+    for md in *.md
+    do
+        cmark $md --to html > html/${md%%.md}.html
+    done
 popd
 %endif
 
@@ -161,6 +158,8 @@ install -m 0644 README.md  %{buildroot}%{_defaultdocdir}/%{_name}/README
 %{_defaultdocdir}/%{_name}/html/
 %else
 %license COPYING
+%dir %{_sysconfdir}/bash_completion.d/
+%{_sysconfdir}/bash_completion.d/000_bash_completion_compat.bash
 %{_datadir}/bash-completion
 %config %{_sysconfdir}/profile.d/bash_completion.sh
 

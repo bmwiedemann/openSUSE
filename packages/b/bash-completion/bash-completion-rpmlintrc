@@ -1,1 +1,1 @@
-addFilter("bash-completion.noarch: E: devel-file-in-non-devel-package .* /usr/share/pkgconfig/bash-completion.pc")
+addFilter("E:.*filelist-forbidden-bashcomp-userdirs.*/etc/bash_completion.d/000_bash_completion_compat.bash")

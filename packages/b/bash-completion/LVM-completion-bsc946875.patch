@@ -24,69 +24,73 @@ Reviewed-by: Lidong Zhong <lzhong@suse.com>
 
 Index: bash-completion-2.11/completions/lvm
 ===================================================================
---- bash-completion-2.11.orig/completions/lvm
-+++ bash-completion-2.11/completions/lvm
-@@ -6,27 +6,41 @@ _lvm_filedir()
-     _filedir
+---
+ bash-completion-2.12.0/completions/lvm |   26 ++++++++++++++++++++------
+ 1 file changed, 20 insertions(+), 6 deletions(-)
+
+--- bash-completion-2.12.0/completions/lvm
++++ bash-completion-2.12.0/completions/lvm	2024-02-23 08:05:52.542682924 +0000
+@@ -5,27 +5,41 @@ _comp_cmd_lvm__filedir()
+     _comp_compgen -c "${cur:-/dev/}" filedir
  }
  
-+_lvm_verbose()
++_comp_cmd_lvm__verbose()
 +{
 +    local silent=$(sed -n -e "s|^[ \t]*silent[ \t]*=[ \t]*\([01]\)|\1|p" /etc/lvm/lvm.conf)
 +    test ${silent:-0} -eq 1
 +}
 +
- _lvm_volumegroups()
+ _comp_cmd_lvm__volumegroups()
  {
--    COMPREPLY=($(compgen -W "$(vgscan 2>/dev/null |
+-    _comp_compgen_split -- "$(vgscan 2>/dev/null |
 +    local verbose
-+    _lvm_verbose && verbose=-v
-+    COMPREPLY=( $(compgen -W "$( vgscan $verbose 2>/dev/null | \
-         command sed -n -e 's|.*Found.*"\(.*\)".*$|\1|p')" -- "$cur"))
++    _comp_cmd_lvm__verbose && verbose=-v
++    _comp_compgen_split -- "$(vgscan $verbose 2>/dev/null |
+         command sed -n -e 's|.*Found.*"\(.*\)".*$|\1|p')"
  }
  
- _lvm_physicalvolumes_all()
+ _comp_cmd_lvm__physicalvolumes_all()
  {
--    COMPREPLY=($(compgen -W "$(pvscan 2>/dev/null |
+-    _comp_compgen_split -- "$(pvscan 2>/dev/null |
 +    local verbose
-+    _lvm_verbose && verbose=-v
-+    COMPREPLY=( $(compgen -W "$( pvscan $verbose 2>/dev/null | \
-         command sed -n -e 's|^.*PV \([^ ]*\) .*|\1|p')" -- "$cur"))
++    _comp_cmd_lvm__verbose && verbose=-v
++    _comp_compgen_split -- "$(pvscan $verbose 2>/dev/null |
+         command sed -n -e 's|^.*PV \([^ ]*\) .*|\1|p')"
  }
  
- _lvm_physicalvolumes()
+ _comp_cmd_lvm__physicalvolumes()
  {
--    COMPREPLY=($(compgen -W "$(pvscan 2>/dev/null |
+-    _comp_compgen_split -- "$(pvscan 2>/dev/null |
 +    local verbose
-+    _lvm_verbose && verbose=-v
-+    COMPREPLY=( $(compgen -W "$( pvscan $verbose 2>/dev/null | \
-         command sed -n -e 's|^.*PV \(.*\) VG.*$|\1|p')" -- "$cur"))
++    _comp_cmd_lvm__verbose && verbose=-v
++    _comp_compgen_split -- "$(pvscan $verbose 2>/dev/null |
+         command sed -n -e 's|^.*PV \(.*\) VG.*$|\1|p')"
  }
  
- _lvm_logicalvolumes()
+ _comp_cmd_lvm__logicalvolumes()
  {
--    COMPREPLY=($(compgen -W "$(lvscan 2>/dev/null |
+-    _comp_compgen_split -- "$(lvscan 2>/dev/null |
 +    local verbose
-+    _lvm_verbose && verbose=-v
-+    COMPREPLY=( $(compgen -W "$( lvscan $verbose 2>/dev/null | \
-         command sed -n -e "s|^.*'\(.*\)'.*$|\1|p")" -- "$cur"))
++    _comp_cmd_lvm__verbose && verbose=-v
++    _comp_compgen_split -- "$(lvscan $verbose 2>/dev/null |
+         command sed -n -e "s|^.*'\(.*\)'.*$|\1|p")"
      if [[ $cur == /dev/mapper/* ]]; then
-         _filedir
-@@ -387,7 +401,7 @@ _vgreduce()
-         if ((args == 0)); then
-             _lvm_volumegroups
+         _comp_compgen -a filedir
+@@ -403,7 +417,7 @@ _comp_cmd_vgreduce()
+         if ((REPLY == 0)); then
+             _comp_cmd_lvm__volumegroups
          else
--            _lvm_physicalvolumes
-+            _lvm_physicalvolumes_all
+-            _comp_cmd_lvm__physicalvolumes
++            _comp_cmd_lvm__physicalvolumes_all
          fi
      fi
  } &&
-@@ -701,7 +715,7 @@ _lvcreate()
-         if ((args == 0)); then
-             _lvm_volumegroups
+@@ -735,7 +749,7 @@ _comp_cmd_lvcreate()
+         if ((REPLY == 0)); then
+             _comp_cmd_lvm__volumegroups
          else
--            _lvm_physicalvolumes
-+            _lvm_physicalvolumes_all
+-            _comp_cmd_lvm__physicalvolumes
++            _comp_cmd_lvm__physicalvolumes_all
          fi
      fi
  } &&

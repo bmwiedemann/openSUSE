@@ -1,12 +1,10 @@
 ---
- bash-completion-2.7/bash_completion |   20 ++++++++++++++------
+ bash-completion-2.12.0/bash_completion |   20 ++++++++++++++------
  1 file changed, 14 insertions(+), 6 deletions(-)
 
-Index: bash-completion-2.11/bash_completion
-===================================================================
---- bash-completion-2.11.orig/bash_completion
-+++ bash-completion-2.11/bash_completion
-@@ -1059,13 +1059,21 @@ _dollar()
+--- bash-completion-2.12.0/bash_completion
++++ bash-completion-2.12.0/bash_completion	2024-02-23 08:14:51.140697234 +0000
+@@ -1791,13 +1791,21 @@ _comp_compgen_dollar()
      [[ "$COMP_LINE" == cd* ]] && s="/"
  
      case "$1" in
@@ -32,7 +30,7 @@ Index: bash-completion-2.11/bash_completion
          ;;
      \$\{*)
          COMPREPLY=($(compgen -v -P '${' -S "}$s" -- ${1#??})) ;;
-@@ -1078,8 +1086,8 @@ _dollar()
+@@ -1810,8 +1818,8 @@ _comp_compgen_dollar()
  
      if ((${#COMPREPLY[@]} > 0)) ; then
          ((${#COMPREPLY[@]} == 1)) && eval COMPREPLY=\(${COMPREPLY[@]}\)
