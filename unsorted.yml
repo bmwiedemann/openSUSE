@@ -1040,6 +1040,7 @@ unsorted:
   - audiofile 
   - audiofile-devel 
   - audiofile-doc 
+  - audiowmark 
   - audit-audispd-plugins 
   - audit-devel 
   - audit-devel-32bit 
@@ -11284,9 +11285,9 @@ unsorted:
   - libarmnnTfLiteParser24-opencl 
   - libarpack2 
   - libarprec0 
-  - libarrow1400 
-  - libarrow_acero1400 
-  - libarrow_dataset1400 
+  - libarrow1500 
+  - libarrow_acero1500 
+  - libarrow_dataset1500 
   - libart_lgpl-devel 
   - libart_lgpl_2-2 
   - libasan4 
@@ -14451,7 +14452,7 @@ unsorted:
   - libparlatype7 
   - libparpack2-openmpi4 
   - libparpack2-openmpi5 
-  - libparquet1400 
+  - libparquet1500 
   - libparserutils-devel 
   - libparserutils0 
   - libpartio1 
@@ -19759,6 +19760,7 @@ unsorted:
   - os-autoinst 
   - os-autoinst-devel 
   - os-autoinst-distri-opensuse-deps 
+  - os-autoinst-ipmi-deps 
   - os-autoinst-openvswitch 
   - os-autoinst-qemu-kvm 
   - os-autoinst-qemu-x86 
@@ -24638,7 +24640,6 @@ unsorted:
   - python310-identify 
   - python310-idle 
   - python310-idna 
-  - python310-idna_ssl 
   - python310-ifaddr 
   - python310-ifconfig-parser 
   - python310-igwn-auth-utils 
@@ -28142,7 +28143,6 @@ unsorted:
   - python311-icoextract 
   - python311-identify 
   - python311-idle 
-  - python311-idna_ssl 
   - python311-ifaddr 
   - python311-ifconfig-parser 
   - python311-igwn-auth-utils 
@@ -30106,6 +30106,7 @@ unsorted:
   - python312-Flask-Mail 
   - python312-Flask-Mailman 
   - python312-Flask-Migrate 
+  - python312-Flask-OpenTracing 
   - python312-Flask-Paranoid 
   - python312-Flask-Principal 
   - python312-Flask-RESTful 
@@ -31595,7 +31596,6 @@ unsorted:
   - python312-identify 
   - python312-idle 
   - python312-idna 
-  - python312-idna_ssl 
   - python312-ifaddr 
   - python312-ifconfig-parser 
   - python312-igwn-auth-utils 
@@ -35073,7 +35073,6 @@ unsorted:
   - python39-identify 
   - python39-idle 
   - python39-idna 
-  - python39-idna_ssl 
   - python39-ifaddr 
   - python39-ifconfig-parser 
   - python39-igwn-auth-utils 
@@ -49453,6 +49452,7 @@ unsorted:
   - wayland-protocols-devel 
   - waylock 
   - waylyrics 
+  - waylyrics-lang 
   - waynergy 
   - waynergy-kde 
   - waypipe 

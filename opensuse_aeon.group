@@ -1631,7 +1631,6 @@
     <package name="python3-ldb" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="python3-louis" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="python3-policycoreutils" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
-    <package name="python3-speechd" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="python3-talloc" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="python3-tdb" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="python3-tevent" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
@@ -1668,6 +1667,7 @@
     <package name="python311-semanage" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="python311-setools" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="python311-setuptools" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="python311-speechd" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="python311-urllib3" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="qemu-guest-agent" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="qt6-declarative-imports" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
