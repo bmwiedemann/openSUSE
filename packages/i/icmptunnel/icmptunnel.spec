@@ -31,8 +31,7 @@ Patch0:         icmptunnel-obey-cflags.patch
 This program transparently tunnels IP traffic through ICMP echo and reply packets.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags}"
