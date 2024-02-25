@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Feb 14 19:59:04 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.5.5:
+  Note: There is no official release for v1.5.4, the next release
+  version available after v1.5.3 is v1.5.5.
+  * What's Changed
+    - Introduced v1.27.10-rancher1-1 and v1.26.13-rancher1-1
+    - Updated containerd to v1.6.27 and runc to v1.1.12 #3495
+  * Kubernetes Versions
+    - Each version of RKE has a specific list of supported
+      Kubernetes versions. If you want to use a different version
+      than listed below, you will need to update Kubernetes using
+      the system images option in your cluster.yml.
+      - Kubernetes version
+        - v1.27.10-rancher1-1 (Default)
+        - v1.26.13-rancher1-1
+        - v1.25.16-rancher2-2
+    - Experimental Kubernetes version
+      - N/A
+
+-------------------------------------------------------------------
 Tue Jan 23 18:03:06 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.5.3:
