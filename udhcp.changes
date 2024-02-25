@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:40:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Dec 27 13:23:13 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)
