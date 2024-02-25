@@ -110,9 +110,7 @@ C or C++ to MariaDB and MySQL databases.
 This package holds the development files.
 
 %prep
-%setup -q -n %{name}-%{version}-src
-%patch1 -p1
-%patch4 -p1
+%autosetup -p1 -n %{name}-%{version}-src
 
 %build
 # plugin types seems to require no aliasing assumptions
