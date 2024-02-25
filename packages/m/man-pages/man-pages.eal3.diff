@@ -1,5 +1,5 @@
---- BUILD/man-pages-1.69/man2/getcwd.2
-+++ BUILD/man-pages-1.69/man2/getcwd.2
+--- a/man2/getcwd.2
++++ b/man2/getcwd.2
 @@ -0,0 +1,85 @@
 +.\" (c) 1993 by Thomas Koenig (ig25@rz.uni-karlsruhe.de)
 +.\" (c) 2003 by International Business Machines Corportion
@@ -185,16 +185,16 @@
 +.BR sigwait (3),
 +.BR signal (7),
 +.BR sigqueue (2)
---- BUILD/man-pages-1.69/man2/rt_sigreturn.2
-+++ BUILD/man-pages-1.69/man2/rt_sigreturn.2
+--- a/man2/rt_sigreturn.2
++++ b/man2/rt_sigreturn.2
 @@ -0,0 +1 @@
 +.so man2/sigreturn.2
---- BUILD/man-pages-1.69/man2/rt_sigsuspend.2
-+++ BUILD/man-pages-1.69/man2/rt_sigsuspend.2
+--- a/man2/rt_sigsuspend.2
++++ b/man2/rt_sigsuspend.2
 @@ -0,0 +1 @@
 +.so man2/sigaction.2
---- BUILD/man-pages-1.69/man2/rt_sigtimedwait.2
-+++ BUILD/man-pages-1.69/man2/rt_sigtimedwait.2
+--- a/man2/rt_sigtimedwait.2
++++ b/man2/rt_sigtimedwait.2
 @@ -0,0 +1,113 @@
 +.\" Copyright (c) 2002 Michael kerrisk <mtk16@ext.canterbury.ac.nz>
 +.\"

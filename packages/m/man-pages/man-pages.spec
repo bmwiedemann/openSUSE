@@ -48,10 +48,7 @@ etc. (e.g., nroff, ascii); and Section 8, system administration (intro
 only).
 
 %prep
-%setup -q
-%patch0 -p2
-%patch1
-%patch2 -p1
+%autosetup -p1
 find -name "*.orig" | xargs rm -fv
 
 %build
