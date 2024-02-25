@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb 24 08:57:43 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.6.5:
+  Changelog for Talos 1.6.5 is here:
+  https://github.com/siderolabs/talos/releases/tag/v1.6.5
+  Apparently no changes regarding the CLI
+- BuildRequire go1.22
+
+-------------------------------------------------------------------
 Thu Feb  1 18:50:46 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to 1.6.4:
