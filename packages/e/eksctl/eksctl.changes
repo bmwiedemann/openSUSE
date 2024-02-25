@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Feb 24 09:19:56 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.172.0:
+  * Remove slackToken
+  * Remove unused slack token
+  * Add integ test without build target
+  * Revert misdeleted checkout step for publishing release
+  * Add release notes for 0.172.0
+  * Revert removing RetryMetricsHeader in presigned requests
+  * Update build image go version to 1.21
+  * Update build image manifest, tag file and workflows
+  * Update actions dependencies
+  * Replace all deprecated sets.String with generic sets.Set
+  * Bump k8s dependencies to v0.29
+  * Update go dependencies
+  * Update schema for new AMI family
+  * Update userdocs dependencies
+  * Bump actions/cache from 3.3.2 to 4.0.0
+  * Disable slack notifications
+  * Extract common steps setting up build environment from
+    workflows
+  * Fix checks for updated addon versions
+  * Changed the error to more understandable when the region code
+    isn't set
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Sat Feb 10 07:09:01 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.171.0:
