@@ -41,8 +41,7 @@ support, in order to cross non-multicast-aware routers.  The tunnels are
 virtual point-to-point, IP-IP tunnel, links between a pair of mrouted routers.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv
