@@ -273,4 +273,22 @@ Bugfixes:
   Bugfixes:</comment>
     <requestid>1146250</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b177edfbb8f9311f26e10ffef192bcba</srcmd5>
+    <version>2.8.5</version>
+    <time>1708866337</time>
+    <user>anag+factory</user>
+    <comment>- update to version 2.8.5:
+  Bugfixes:
+    * Fix segfault if we fail to find Vendor ID in lscpu (CPU, Linux)
+    * Fix multi-device bcachefs filesystem compatibility (Disk, Linux)
+  Features:
+    * Support --color-block-width and --color-block-range (Colors)
+    * Support --diskio-detect-total to show total bytes read/written (DiskIO)
+    * Support --netio-detect-total to show total bytes received/sent (NetIO)
+    * Support --packages-disabled to disable specified package manager (Packages)
+    * Support --display-order to sort multiple displays in a specific order (Display)
+    * Support --display-compact-type original-with-refresh-rate to show refresh rates in compact / oneline mode (Display)</comment>
+    <requestid>1150004</requestid>
+  </revision>
 </revisionlist>
