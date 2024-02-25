@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb 24 19:54:53 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.8.10:
+  + Bug Fixes:
+    - prevent zoom from being stuck at extreme levels
+    - Blurry text/UI is now rendered crisp
+  + Features:
+    - Allow piping image data to oculante on the command line
+  + Chore:
+    - rename release artifacts
+    
+-------------------------------------------------------------------
 Thu Feb 22 20:15:53 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.8.9:
