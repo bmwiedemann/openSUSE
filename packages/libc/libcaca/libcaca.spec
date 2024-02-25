@@ -1,7 +1,7 @@
 #
 # spec file for package libcaca
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,18 +25,18 @@ Group:          Development/Languages/C and C++
 URL:            http://caca.zoy.org
 Source0:        https://github.com/cacalabs/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-Patch1:         libcaca-0.99-texbuild.patch
-Patch2:         libcaca-X11_test.patch
-Patch4:         libcaca-ruby_am_cflags.patch
-Patch5:         libcaca-ruby_vendor_install.patch
-Patch7:         libcaca-0.99.beta16-missing-GLU.patch
-Patch9:         caca-no-build-date.patch
-Patch10:        libcaca-ncurses6.patch
-Patch13:        Bug1143286_libcaca_configure_ac_chg_for_lto.patch
-Patch99:        bsc1184751-add-space-for-NUL-byte.patch
+Patch:          libcaca-X11_test.patch
+Patch:          libcaca-ruby_am_cflags.patch
+Patch:          libcaca-ruby_vendor_install.patch
+Patch:          libcaca-0.99.beta16-missing-GLU.patch
+Patch:          caca-no-build-date.patch
+Patch:          libcaca-0.99-texbuild.patch
+Patch:          libcaca-ncurses6.patch
+Patch:          Bug1143286_libcaca_configure_ac_chg_for_lto.patch
+Patch:          bsc1184751-add-space-for-NUL-byte.patch
 # PATCH-FIX-UPSTREAM correctly-handle-zero-width-or-height-images.patch bsc#1197028
-Patch100:       bsc1197028-correctly-handle-zero-width-or-height-images.patch
-Patch101:       libcaca-autoconf-2.69.patch
+Patch:          bsc1197028-correctly-handle-zero-width-or-height-images.patch
+Patch:          libcaca-autoconf-2.69.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
@@ -131,18 +131,7 @@ that shows the libcaca rendering features such as line and ellipses
 drawing, triangle filling and sprite blitting.
 
 %prep
-%setup -q
-%patch2
-%patch4
-%patch5
-%patch7
-%patch9
-%patch1
-%patch10 -p1
-%patch13 -p1
-%patch99 -p1
-%patch100 -p1
-%patch101 -p1
+%autosetup -p1
 RUBY="ruby-`echo %{rb_ver} | sed 's|\.[^\.]*$||'`"
 find . -type f -exec sed -i "s|ruby-1.9|$RUBY|" \{\} \;
 pushd python

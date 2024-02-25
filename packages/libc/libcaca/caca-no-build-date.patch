@@ -5,8 +5,8 @@
 
 Index: src/cacaclock.c
 ===================================================================
---- src/cacaclock.c.orig
-+++ src/cacaclock.c
+--- libcaca/src/cacaclock.c
++++ libcaca-new/src/cacaclock.c
 @@ -40,14 +40,14 @@ static void version(void)
  {
      printf(
@@ -26,8 +26,8 @@ Index: src/cacaclock.c
  
 Index: src/img2txt.c
 ===================================================================
---- src/img2txt.c.orig
-+++ src/img2txt.c
+--- libcaca/src/img2txt.c
++++ libcaca-new/src/img2txt.c
 @@ -67,14 +67,14 @@ static void version(void)
  {
      printf(

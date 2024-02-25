@@ -1,7 +1,7 @@
 Index: doc/doxygen.cfg.in
 ===================================================================
---- doc/doxygen.cfg.in.orig
-+++ doc/doxygen.cfg.in
+--- libcaca/doc/doxygen.cfg.in
++++ libcaca-new/doc/doxygen.cfg.in
 @@ -1891,7 +1891,7 @@ USE_PDFLATEX           = YES
  # The default value is: NO.
  # This tag requires that the tag GENERATE_LATEX is set to YES.

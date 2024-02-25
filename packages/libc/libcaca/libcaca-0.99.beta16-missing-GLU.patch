@@ -1,7 +1,7 @@
 Index: caca/Makefile.am
 ===================================================================
---- caca/Makefile.am.orig
-+++ caca/Makefile.am
+--- libcaca/caca/Makefile.am
++++ libcaca-new/caca/Makefile.am
 @@ -58,7 +58,7 @@ libcaca_la_DEPENDENCIES = \
  	$(NULL)
  libcaca_la_CPPFLAGS = $(AM_CPPFLAGS) @CACA_CFLAGS@ -D__LIBCACA__

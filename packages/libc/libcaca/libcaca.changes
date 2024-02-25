@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 23 08:48:14 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Use %autosetup, prepare for RPM 4.20.
+  * Rewrote patches so that they are applied uniformly via %autosetup.
+  * Correctly reorder the patches in specfile declaration.
+
+-------------------------------------------------------------------
 Mon Nov 14 15:32:39 UTC 2022 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - add patch [libcaca-autoconf-2.69.patch]

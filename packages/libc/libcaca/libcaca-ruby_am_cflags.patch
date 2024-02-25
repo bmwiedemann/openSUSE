@@ -1,7 +1,7 @@
 Index: ruby/Makefile.am
 ===================================================================
---- ruby/Makefile.am.orig
-+++ ruby/Makefile.am
+--- libcaca/ruby/Makefile.am
++++ libcaca-new/ruby/Makefile.am
 @@ -12,7 +12,7 @@ TESTS = test
  endif
  endif

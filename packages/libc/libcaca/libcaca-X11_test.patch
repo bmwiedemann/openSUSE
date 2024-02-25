@@ -1,7 +1,7 @@
 Index: configure.ac
 ===================================================================
---- configure.ac.orig
-+++ configure.ac
+--- libcaca/configure.ac
++++ libcaca-new/configure.ac
 @@ -225,7 +225,7 @@ if test "${enable_x11}" != "no"; then
    AC_CHECK_LIB(X11, XOpenDisplay,
     [ac_cv_my_have_x11="yes"

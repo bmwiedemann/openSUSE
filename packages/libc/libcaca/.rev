@@ -416,4 +416,12 @@ SPDX format (choose from http://www.spdx.org/licenses or the list linked at lice
   * Bug1120502-add_cast_to_prevent_overflow.patch</comment>
     <requestid>1036244</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>342cf1778e79b7a0d62b4164cdaaf19c</srcmd5>
+    <version>0.99.beta20</version>
+    <time>1708866322</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149995</requestid>
+  </revision>
 </revisionlist>
