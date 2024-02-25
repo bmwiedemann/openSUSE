@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb 24 09:01:37 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.4:
+  * Fix the yaml file so that it actually gets parsed properly.
+  * Propagate SourceDateEpoch from Build
+
+-------------------------------------------------------------------
+Sat Feb 24 08:57:02 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.3:
+  * Don't write APK to temp file during signing
+
+-------------------------------------------------------------------
 Tue Feb 20 20:40:47 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.6.2:
