@@ -1,7 +1,7 @@
 #
 # spec file for package python-poetry-dynamic-versioning
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,26 +15,27 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
-Name:             python-poetry-dynamic-versioning
-Version:          1.2.0
-Release:          0
-Summary:          Plugin for Poetry to enable dynamic versioning based on VCS tags
-License:          MIT
-Group:            Development/Libraries/Python
-URL:              https://github.com/mtkennerly/poetry-dynamic-versioning
-Source:           https://files.pythonhosted.org/packages/source/p/poetry-dynamic-versioning/poetry_dynamic_versioning-%{version}.tar.gz
-BuildRequires:    python-rpm-macros
-BuildRequires:    %{python_module devel}
-BuildRequires:    %{python_module pip}
-BuildRequires:    %{python_module poetry-core >= 1.2.0}
-BuildRequires:    fdupes
-Requires:         python3-dunamai
-Requires:         python3-Jinja2
-Requires:         python3-tomlkit
-Requires(post):   update-alternatives
+Name:           python-poetry-dynamic-versioning
+Version:        1.2.0
+Release:        0
+Summary:        Plugin for Poetry to enable dynamic versioning based on VCS tags
+License:        MIT
+Group:          Development/Libraries/Python
+URL:            https://github.com/mtkennerly/poetry-dynamic-versioning
+Source:         https://files.pythonhosted.org/packages/source/p/poetry-dynamic-versioning/poetry_dynamic_versioning-%{version}.tar.gz
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core >= 1.2.0}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-Jinja2
+Requires:       python-dunamai
+Requires:       python-tomlkit
+Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:        noarch
+BuildArch:      noarch
 
 %python_subpackages
 
