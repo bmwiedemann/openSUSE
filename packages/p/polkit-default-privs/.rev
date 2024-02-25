@@ -2142,4 +2142,14 @@ for 12.3</comment>
     <comment></comment>
     <requestid>1145072</requestid>
   </revision>
+  <revision rev="232" vrev="1">
+    <srcmd5>cde26d4281ed584a5b0d866611d77f14</srcmd5>
+    <version>1550+20240223.b0857d7</version>
+    <time>1708866315</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1550+20240223.b0857d7:
+  * profiles: add new tuned actions (bsc#1220081)
+</comment>
+    <requestid>1149948</requestid>
+  </revision>
 </revisionlist>
