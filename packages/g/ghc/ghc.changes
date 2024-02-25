@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Feb 24 23:50:25 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.6.4
+ * Fix a code generator bug on AArch64 platforms resulting in invalid conditional jumps .
+ * Fix a simplifier bug that may cause segfaults and core lint failures due to incorrect handling of join points .
+ * Ensure unconstrained instance dictionaries get IPE info .
+ * Fix a bug where we could silently truncate 64 bit values to 32 bit on 32 bit architectures.
+ * Fix a GHCi bug where a failure in the :add command would cause the process to exit .
+ * Fix a bug causing suboptimal error messages for certain invalid cyclic module graphs with hs-boot files .
+ * Fix a bug causing compiler panics with certain package databases involving unusable units and module reexports
+ * Fix some memory leaks in GHCi that manifest on reloads
+ * Fix a bug leading to some template haskell splices failing on being reloaded into GHCi due to not clearing the interactive context properly .
+ * Fix a type checker crash on certain programs involving implicitly scoped type variables .
+ * Fix a bug where certain warning flags were not recognised .
+ * Fix an incorrect assertion in the simplifier .
+ * Align objects in the data section properly when using the LLVM backend .
+ * Ensure concurrent thunk update is sound .
+ * Ensure the listAllBlocks function takes the non-moving heap into account .
+ * Ensure the non-moving GC is not running when pausing
+ * Fix some non-moving loops and bugs on Windows and LLP64 platforms
+ * Fix a bug where certain programs could have incorrect async exception masking .
+ * Ensure we respect maximum event length and don’t overflow into program memory .
+ * Ensure we use the right linker flags on AArch64 darwin
+ * Fix a bug where -DNOSMP wasn’t being passed to the C compiler even if the target doesn’t support SMP .
+ * Ensure we use the right otool and install_name_tool on Darwin .
+ * Fix a bug in ghc-bignum where usage of bigNatIsPowerOf2 might result in out of bounds access . 
+
+-------------------------------------------------------------------
 Wed Nov 15 15:23:59 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - drop ghc-9.6.3-src.tar.xz.sig 

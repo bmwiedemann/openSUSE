@@ -16,8 +16,8 @@
 #
 
 
-%define full_version 9.6.3
-%define short_version 9.6.3
+%define full_version 9.6.4
+%define short_version 9.6.4
 
 %ifnarch s390x
 %define with_libnuma 1
@@ -73,7 +73,7 @@
 %global ghc_llvm_archs s390x riscv64
 %global ghc_unregisterized_arches noarch
 
-%global base_ver 4.18.1.0
+%global base_ver 4.18.2.0
 %global ghc_compact_ver 0.1.0.0
 %global hpc_ver 0.6.2.0
 %global hsc2hs_ver 0.68.8
@@ -244,15 +244,15 @@ This package provides the User Guide and Haddock manual.
 #!ForceMultiversion
 %ghc_lib_subpackage -d Cabal-3.10.1.0
 %ghc_lib_subpackage -d Cabal-syntax-3.10.1.0
-%ghc_lib_subpackage -d array-0.5.5.0
+%ghc_lib_subpackage -d array-0.5.6.0
 %ghc_lib_subpackage -d -c gmp-devel,libffi-devel,libdw-devel,libelf-devel%{libnuma_dep} base-%{base_ver}
 %ghc_lib_subpackage -d binary-0.8.9.1
-%ghc_lib_subpackage -d bytestring-0.11.5.2
+%ghc_lib_subpackage -d bytestring-0.11.5.3
 %ghc_lib_subpackage -d containers-0.6.7
 %ghc_lib_subpackage -d deepseq-1.4.8.1
 %ghc_lib_subpackage -d directory-1.3.8.1
 %ghc_lib_subpackage -d exceptions-0.10.7
-%ghc_lib_subpackage -d filepath-1.4.100.4
+%ghc_lib_subpackage -d filepath-1.4.200.1
 %ghc_lib_subpackage -d -x ghc-%{ghc_version_override}
 %ghc_lib_subpackage -d -x ghc-boot-%{ghc_version_override}
 %ghc_lib_subpackage -d ghc-boot-th-%{ghc_version_override}
@@ -272,7 +272,7 @@ This package provides the User Guide and Haddock manual.
 %ghc_lib_subpackage -d text-2.0.2
 %ghc_lib_subpackage -d time-1.12.2
 %ghc_lib_subpackage -d transformers-0.6.1.0
-%ghc_lib_subpackage -d unix-2.8.1.0
+%ghc_lib_subpackage -d unix-2.8.4.0
 %ghc_lib_subpackage -d xhtml-3000.2.2.1
 
 %global version %{ghc_version_override}
