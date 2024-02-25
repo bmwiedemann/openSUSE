@@ -1437,4 +1437,12 @@ self, run_tests_report, expected_parse_results=None, msg=None)
 - do primary/all split only for tumbleweed (similar to flit-core)</comment>
     <requestid>1130338</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>e7a5dbc3b34c0fad90cf38c031c62105</srcmd5>
+    <version>3.1.1</version>
+    <time>1708866293</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149912</requestid>
+  </revision>
 </revisionlist>
