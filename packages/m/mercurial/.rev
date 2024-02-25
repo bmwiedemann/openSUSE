@@ -1718,4 +1718,12 @@ As usual, a lot of patches don't make it to this list since they're more interna
     <comment>Update to Mercurial 6.6.3 (forwarded request 1146385 from develop7)</comment>
     <requestid>1146432</requestid>
   </revision>
+  <revision rev="194" vrev="2">
+    <srcmd5>f827a50b5ae147151f223310bdcb1dff</srcmd5>
+    <version>6.6.3</version>
+    <time>1708866287</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149824</requestid>
+  </revision>
 </revisionlist>

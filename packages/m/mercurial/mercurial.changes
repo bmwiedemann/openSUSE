@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 23 10:18:41 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Feb 13 11:45:31 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to Mercurial 6.6.3

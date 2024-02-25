@@ -82,11 +82,11 @@ This package contains its tests.
 
 %prep
 %setup -q
-%patch0
+%patch -P 0
 %if 0%{?suse_version} && 0%{?suse_version} <= 1110
-%patch1
+%patch -P 1
 %endif
-%patch2 -p1
+%patch -P 2 -p1
 
 sed -i -e '1s@env @@' contrib/hgk
 
