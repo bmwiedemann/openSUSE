@@ -59,9 +59,9 @@ released by Realtek to build on recent kernels.
 %setup -q
 sed -i '/EXTRA_CFLAGS += -O2/d' Makefile
 sed -i '/EXTRA_LDFLAGS += --strip-debug/d' Makefile
-%patch0 -p0
+%patch -P 0 -p0
 %if 0%{?sle_version} == 150300
-%patch1 -p0
+%patch -P 1 -p0
 %endif
 
 set -- *
