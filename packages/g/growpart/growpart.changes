@@ -21,6 +21,7 @@ Sat Nov 25 22:28:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * test-growpart: fix logic error resulting in test failure.
 - fix URL (development moved to GitHub)
 - use fully qualified urls for source validation
+- drop licenseGPLv3.patch (upstream)
 
 -------------------------------------------------------------------
 Wed Aug  2 12:12:05 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
