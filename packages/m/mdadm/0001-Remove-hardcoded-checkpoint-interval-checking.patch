@@ -1,0 +1,68 @@
+From aec3b907de48be54106600a1ecb69d1231f4801d Mon Sep 17 00:00:00 2001
+From: Mateusz Kusiak <mateusz.kusiak@intel.com>
+Date: Thu, 18 Jan 2024 11:30:15 +0100
+Subject: [PATCH 1/5] Remove hardcoded checkpoint interval checking
+Git-commit: aec3b907de48be54106600a1ecb69d1231f4801d
+Patch-mainline: mdadm-4.3+
+References: jsc#PED-7542
+
+Mdmon assumes that kernel marks checkpoint every 1/16 of the volume size
+and that the checkpoints are equal in size. This is not true, kernel may
+mark checkpoints more frequently depending on several factors, including
+sync speed. This results in checkpoints reported by mdadm --examine
+falling behind the one reported by kernel.
+
+Remove hardcoded checkpoint interval checking.
+
+Signed-off-by: Mateusz Kusiak <mateusz.kusiak@intel.com>
+Signed-off-by: Mariusz Tkaczyk <mariusz.tkaczyk@linux.intel.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ monitor.c | 22 ++++++----------------
+ 1 file changed, 6 insertions(+), 16 deletions(-)
+
+diff --git a/monitor.c b/monitor.c
+index 4acec67..b8d9e88 100644
+--- a/monitor.c
++++ b/monitor.c
+@@ -564,22 +564,10 @@ static int read_and_act(struct active_array *a, fd_set *fds)
+ 		}
+ 	}
+ 
+-	/* Check for recovery checkpoint notifications.  We need to be a
+-	 * minimum distance away from the last checkpoint to prevent
+-	 * over checkpointing.  Note reshape checkpointing is handled
+-	 * in the second branch.
++	/* Handle reshape checkpointing
+ 	 */
+-	if (sync_completed > a->last_checkpoint &&
+-	    sync_completed - a->last_checkpoint > a->info.component_size >> 4 &&
+-	    a->curr_action > reshape) {
+-		/* A (non-reshape) sync_action has reached a checkpoint.
+-		 * Record the updated position in the metadata
+-		 */
+-		a->last_checkpoint = sync_completed;
+-		a->container->ss->set_array_state(a, a->curr_state <= clean);
+-	} else if ((a->curr_action == idle && a->prev_action == reshape) ||
+-		   (a->curr_action == reshape &&
+-		    sync_completed > a->last_checkpoint)) {
++	if ((a->curr_action == idle && a->prev_action == reshape) ||
++	    (a->curr_action == reshape && sync_completed > a->last_checkpoint)) {
+ 		/* Reshape has progressed or completed so we need to
+ 		 * update the array state - and possibly the array size
+ 		 */
+@@ -607,8 +595,10 @@ static int read_and_act(struct active_array *a, fd_set *fds)
+ 		a->last_checkpoint = sync_completed;
+ 	}
+ 
+-	if (sync_completed > a->last_checkpoint)
++	if (sync_completed > a->last_checkpoint) {
+ 		a->last_checkpoint = sync_completed;
++		a->container->ss->set_array_state(a, a->curr_state <= clean);
++	}
+ 
+ 	if (sync_completed >= a->info.component_size)
+ 		a->last_checkpoint = 0;
+-- 
+2.35.3
+

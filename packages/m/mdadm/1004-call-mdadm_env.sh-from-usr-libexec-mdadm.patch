@@ -15,32 +15,32 @@ Signed-off-by: Coly Li <colyli@suse.de>
  Makefile | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: mdadm-4.2/systemd/mdcheck_continue.service
+Index: mdadm-4.3/systemd/mdcheck_continue.service
 ===================================================================
---- mdadm-4.2.orig/systemd/mdcheck_continue.service
-+++ mdadm-4.2/systemd/mdcheck_continue.service
-@@ -14,5 +14,5 @@ Documentation=man:mdadm(8)
+--- mdadm-4.3.orig/systemd/mdcheck_continue.service
++++ mdadm-4.3/systemd/mdcheck_continue.service
+@@ -13,4 +13,6 @@ Documentation=man:mdadm(8)
+ [Service]
  Type=oneshot
  Environment="MDADM_CHECK_DURATION=6 hours"
- EnvironmentFile=-/run/sysconfig/mdadm
--ExecStartPre=-/usr/lib/mdadm/mdadm_env.sh
++EnvironmentFile=-/run/sysconfig/mdadm
 +ExecStartPre=-/usr/libexec/mdadm/mdadm_env.sh
  ExecStart=/usr/share/mdadm/mdcheck --continue --duration ${MDADM_CHECK_DURATION}
-Index: mdadm-4.2/systemd/mdcheck_start.service
+Index: mdadm-4.3/systemd/mdcheck_start.service
 ===================================================================
---- mdadm-4.2.orig/systemd/mdcheck_start.service
-+++ mdadm-4.2/systemd/mdcheck_start.service
-@@ -14,5 +14,5 @@ Documentation=man:mdadm(8)
+--- mdadm-4.3.orig/systemd/mdcheck_start.service
++++ mdadm-4.3/systemd/mdcheck_start.service
+@@ -13,4 +13,6 @@ Documentation=man:mdadm(8)
+ [Service]
  Type=oneshot
  Environment="MDADM_CHECK_DURATION=6 hours"
- EnvironmentFile=-/run/sysconfig/mdadm
--ExecStartPre=-/usr/lib/mdadm/mdadm_env.sh
++EnvironmentFile=-/run/sysconfig/mdadm
 +ExecStartPre=-/usr/libexec/mdadm/mdadm_env.sh
  ExecStart=/usr/share/mdadm/mdcheck --duration ${MDADM_CHECK_DURATION}
-Index: mdadm-4.2/systemd/mdmonitor-oneshot.service
+Index: mdadm-4.3/systemd/mdmonitor-oneshot.service
 ===================================================================
---- mdadm-4.2.orig/systemd/mdmonitor-oneshot.service
-+++ mdadm-4.2/systemd/mdmonitor-oneshot.service
+--- mdadm-4.3.orig/systemd/mdmonitor-oneshot.service
++++ mdadm-4.3/systemd/mdmonitor-oneshot.service
 @@ -12,5 +12,5 @@ Documentation=man:mdadm(8)
  [Service]
  Environment=MDADM_MONITOR_ARGS=--scan
@@ -48,10 +48,10 @@ Index: mdadm-4.2/systemd/mdmonitor-oneshot.service
 -ExecStartPre=-/usr/lib/mdadm/mdadm_env.sh
 +ExecStartPre=-/usr/libexec/mdadm/mdadm_env.sh
  ExecStart=BINDIR/mdadm --monitor --oneshot $MDADM_MONITOR_ARGS
-Index: mdadm-4.2/systemd/mdmonitor.service
+Index: mdadm-4.3/systemd/mdmonitor.service
 ===================================================================
---- mdadm-4.2.orig/systemd/mdmonitor.service
-+++ mdadm-4.2/systemd/mdmonitor.service
+--- mdadm-4.3.orig/systemd/mdmonitor.service
++++ mdadm-4.3/systemd/mdmonitor.service
 @@ -13,5 +13,5 @@ Documentation=man:mdadm(8)
  [Service]
  Environment=  MDADM_MONITOR_ARGS=--scan

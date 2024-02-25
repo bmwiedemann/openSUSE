@@ -1,0 +1,60 @@
+From 37eeae381a8ed07a1fabb64184fe45d95a861496 Mon Sep 17 00:00:00 2001
+From: Mateusz Kusiak <mateusz.kusiak@intel.com>
+Date: Thu, 18 Jan 2024 11:30:19 +0100
+Subject: [PATCH 5/5] Add understanding output section in man
+Git-commit: 37eeae381a8ed07a1fabb64184fe45d95a861496
+Patch-mainline: mdadm-4.3+
+References: jsc#PED-7542
+
+Add new section in man for explaining mdadm outputs.
+Describe checkpoint entry.
+
+Signed-off-by: Mateusz Kusiak <mateusz.kusiak@intel.com>
+Signed-off-by: Mariusz Tkaczyk <mariusz.tkaczyk@linux.intel.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ mdadm.8.in | 21 ++++++++++++++++++++-
+ 1 file changed, 20 insertions(+), 1 deletion(-)
+
+diff --git a/mdadm.8.in b/mdadm.8.in
+index 96a4a08..9ba6682 100644
+--- a/mdadm.8.in
++++ b/mdadm.8.in
+@@ -3179,7 +3179,7 @@ environment.  This can be useful for testing or for disaster
+ recovery.  You should be aware that interoperability may be
+ compromised by setting this value.
+ 
+-These change can also be suppressed by adding 
++These change can also be suppressed by adding
+ .B mdadm.imsm.test=1
+ to the kernel command line. This makes it easy to test IMSM
+ code in a virtual machine that doesn't have IMSM virtual hardware.
+@@ -3454,6 +3454,25 @@ is any string.  These names are supported by
+ since version 3.3 provided they are enabled in
+ .IR mdadm.conf .
+ 
++.SH UNDERSTANDING OUTPUT
++
++.TP
++EXAMINE
++
++.TP
++.B checkpoint
++Checkpoint value is reported when array is performing some action including
++resync, recovery or reshape. Checkpoints allow resuming action from certain
++point if it was interrupted.
++
++Checkpoint is reported as combination of two values: current migration unit
++and number of blocks per unit. By multiplying those values and dividing by
++array size checkpoint progress percentage can be obtained in relation to
++current progress reported in /proc/mdstat. Checkpoint is also related to (and
++sometimes based on) sysfs entry sync_completed but depending on action units
++may differ. Even if units are the same, it should not be expected that
++checkpoint and sync_completed will be exact match nor updated simultaneously.
++
+ .SH NOTE
+ .I mdadm
+ was previously known as
+-- 
+2.35.3
+

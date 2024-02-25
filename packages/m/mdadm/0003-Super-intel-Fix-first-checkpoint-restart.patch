@@ -1,0 +1,51 @@
+From fdb7e802f4cf64d067c3abaafa35056e2bc1ed43 Mon Sep 17 00:00:00 2001
+From: Mateusz Kusiak <mateusz.kusiak@intel.com>
+Date: Thu, 18 Jan 2024 11:30:17 +0100
+Subject: [PATCH 3/5] Super-intel: Fix first checkpoint restart
+Git-commit: fdb7e802f4cf64d067c3abaafa35056e2bc1ed43
+Patch-mainline: mdadm-4.3+
+References: jsc#PED-7542
+
+When imsm based array is stopped after reaching first checkpoint and
+then assembled, first checkpoint is reported as 0.
+
+This behaviour is valid only for initial checkpoint, if the array was
+stopped while performing some action.
+
+Last checkpoint value is not taken from metadata but always starts
+with 0 and it's incremented when sync_completed in sysfs changes.
+
+In simplification, read_and_act() is responsible for checkpoint updates
+and is executed each time sysfs checkpoint update happens. For first
+checkpoint it is executed twice and due to marking checkpoint before
+triggering any action on the array, it is impossible to read
+sync_completed from sysfs in just two iterations.
+
+The workaround to this is not marking any checkpoint for first
+sysfs checkpoint after RAID assembly, to preserve checkpoint value
+stored in metadata.
+
+Signed-off-by: Mateusz Kusiak <mateusz.kusiak@intel.com>
+Signed-off-by: Mariusz Tkaczyk <mariusz.tkaczyk@linux.intel.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ super-intel.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/super-intel.c b/super-intel.c
+index dbea235..e61f3f6 100644
+--- a/super-intel.c
++++ b/super-intel.c
+@@ -8771,6 +8771,9 @@ static int imsm_set_array_state(struct active_array *a, int consistent)
+ 		super->updates_pending++;
+ 	}
+ 
++	if (a->prev_action == idle)
++		goto skip_mark_checkpoint;
++
+ mark_checkpoint:
+ 	/* skip checkpointing for general migration,
+ 	 * it is controlled in mdadm
+-- 
+2.35.3
+
