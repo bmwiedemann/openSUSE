@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 20 07:42:45 UTC 2024 - Stefan Schubert <schubi@suse.com>
+
+- Proposal: Trying to take the bootloader which has been defined in
+  the product description file (entry globals/prefered_bootloader)
+  (jsc#PED-1906)
+- 5.0.5
+
+-------------------------------------------------------------------
 Thu Jan 25 11:18:12 UTC 2024 - Knut Anderssen <kanderssen@suse.com>
 
 - Persist s390 cio_ignore kernel argument always when given 
