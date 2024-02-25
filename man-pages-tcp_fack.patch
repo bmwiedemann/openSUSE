@@ -1,7 +1,8 @@
-diff -Nur man-pages-6.02/man7/tcp.7 new/man7/tcp.7
---- man-pages-6.02/man7/tcp.7	2022-12-22 20:25:12.000000000 +0100
-+++ new/man7/tcp.7	2022-12-28 00:46:39.396907119 +0100
-@@ -491,9 +491,31 @@
+Index: man-pages-6.05.01/man7/tcp.7
+===================================================================
+--- man-pages-6.05.01.orig/man7/tcp.7
++++ man-pages-6.05.01/man7/tcp.7
+@@ -486,9 +486,31 @@ When enabled, outgoing ECN-setup SYNs th
  normal SYN retransmission timeout will be resent with CWR and
  ECE cleared.
  .TP

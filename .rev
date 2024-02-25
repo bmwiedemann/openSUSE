@@ -2052,4 +2052,12 @@
   package any more. (forwarded request 1137719 from ailiopoulos)</comment>
     <requestid>1138338</requestid>
   </revision>
+  <revision rev="153" vrev="3">
+    <srcmd5>c6c0bbac0ea575ff2dd38edcb06dbc6b</srcmd5>
+    <version>6.05.01</version>
+    <time>1708866288</time>
+    <user>anag+factory</user>
+    <comment>- use %autosetup macro (forwarded request 1149825 from pgajdos)</comment>
+    <requestid>1149826</requestid>
+  </revision>
 </revisionlist>

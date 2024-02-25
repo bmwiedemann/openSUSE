@@ -1,8 +1,8 @@
-Index: man3/getaddrinfo.3
+Index: man-pages-6.05.01/man3/getaddrinfo.3
 ===================================================================
---- man3/getaddrinfo.3.orig
-+++ man3/getaddrinfo.3
-@@ -818,6 +818,7 @@ main(int argc, char *argv[])
+--- man-pages-6.05.01.orig/man3/getaddrinfo.3
++++ man-pages-6.05.01/man3/getaddrinfo.3
+@@ -847,6 +847,7 @@ main(int argc, char *argv[])
  .BR getaddrinfo_a (3),
  .BR gethostbyname (3),
  .BR getnameinfo (3),
