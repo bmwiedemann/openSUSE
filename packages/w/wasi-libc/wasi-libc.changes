@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 22 21:05:54 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version (wasi-sdk-)21.
+  * Compatibility with Clang 18.
+  * Add shared library support.
+- Drop obsolete ignore-fpclass-macros.patch.
+
+-------------------------------------------------------------------
 Tue Feb 20 15:16:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

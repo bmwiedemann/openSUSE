@@ -1,7 +1,7 @@
 #
 # spec file for package wasi-libc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wasi-libc
-Version:        20
+Version:        21
 Release:        0
 Summary:        WASI libc implementation for WebAssembly
 # FIXME: Select a correct license from https://github.com/openSUSE/spec-cleaner#spdx-licenses
@@ -26,7 +26,6 @@ URL:            https://github.com/WebAssembly/wasi-libc
 Source:         https://github.com/WebAssembly/wasi-libc/archive/refs/tags/wasi-sdk-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        wasi-libc-rpmlintrc
 Patch1:         workaround-broken-makefile.patch
-Patch2:         ignore-fpclass-macros.patch
 BuildRequires:  clang > 10
 BuildRequires:  llvm > 10
 BuildArch:      noarch
