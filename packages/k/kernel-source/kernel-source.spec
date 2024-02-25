@@ -17,8 +17,8 @@
 
 
 %define srcversion 6.7
-%define patchversion 6.7.5
-%define git_commit a3bab56f26c8c783bb4195c872ddc6b877982fa0
+%define patchversion 6.7.6
+%define git_commit b9dc7c6bd504ffa68f293710ddbb3d2d3b978e0e
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -31,9 +31,9 @@
 %endif
 
 Name:           kernel-source
-Version:        6.7.5
+Version:        6.7.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ga3bab56
+Release:        <RELEASE>.gb9dc7c6
 %else
 Release:        0
 %endif

@@ -16,7 +16,7 @@
 #
 
 
-%define git_commit a3bab56f26c8c783bb4195c872ddc6b877982fa0
+%define git_commit b9dc7c6bd504ffa68f293710ddbb3d2d3b978e0e
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -25,10 +25,10 @@ Name:           kernel-syms
 Summary:        Kernel Symbol Versions (modversions)
 License:        GPL-2.0-only
 Group:          Development/Sources
-Version:        6.7.5
+Version:        6.7.6
 %if %using_buildservice
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ga3bab56
+Release:        <RELEASE>.gb9dc7c6
 %else
 Release:        0
 %endif

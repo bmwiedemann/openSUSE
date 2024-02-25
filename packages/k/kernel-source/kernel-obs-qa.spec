@@ -17,7 +17,7 @@
 # needsrootforbuild
 
 
-%define patchversion 6.7.5
+%define patchversion 6.7.6
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -36,9 +36,9 @@ ExclusiveArch:  do_not_build
 Summary:        Basic QA tests for the kernel
 License:        GPL-2.0-only
 Group:          SLES
-Version:        6.7.5
+Version:        6.7.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ga3bab56
+Release:        <RELEASE>.gb9dc7c6
 %else
 Release:        0
 %endif
