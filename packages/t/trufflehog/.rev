@@ -388,4 +388,19 @@
   * Remove some noisy / less useful detectors (#2467) (forwarded request 1149088 from ph03nix)</comment>
     <requestid>1149580</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2ce2899a1f04b7d7036316ff7664d1e5</srcmd5>
+    <version>3.68.1</version>
+    <time>1708866476</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.68.1:
+  * Clean up some detectors (#2501)
+  * Gitlab scan targets (#2470)
+  * Tell git to ignore directory ownership (fixes #2495) (#2496)
+  * Identify some canary tokens without detonation (#2500)
+  * fix(deps): update module go.uber.org/zap to v1.27.0 (#2498)
+  * fix(deps): update module github.com/snowflakedb/gosnowflake to v1.8.0 (#2497)
+  * fix(deps): update module github.com/couchbase/gocb/v2 to v2.7.2 (#2493) (forwarded request 1150085 from ph03nix)</comment>
+    <requestid>1150161</requestid>
+  </revision>
 </revisionlist>

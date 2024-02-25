@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb 24 08:18:37 UTC 2024 - felix.niederwanger@suse.com
+
+- Update to version 3.68.1:
+  * Clean up some detectors (#2501)
+  * Gitlab scan targets (#2470)
+  * Tell git to ignore directory ownership (fixes #2495) (#2496)
+  * Identify some canary tokens without detonation (#2500)
+  * fix(deps): update module go.uber.org/zap to v1.27.0 (#2498)
+  * fix(deps): update module github.com/snowflakedb/gosnowflake to v1.8.0 (#2497)
+  * fix(deps): update module github.com/couchbase/gocb/v2 to v2.7.2 (#2493)
+
+-------------------------------------------------------------------
 Thu Feb 22 07:47:17 UTC 2024 - felix.niederwanger@suse.de
 
 - Update to version 3.68.0:
