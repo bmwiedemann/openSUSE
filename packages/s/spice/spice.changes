@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb  5 15:55:27 UTC 2024 - pgajdos@suse.com
+
+- do not require six
+  https://trello.com/c/MO53MocR/143-remove-python3-six
+- added patches
+  https://gitlab.freedesktop.org/spice/spice-common/-/commit/29dacb5f53f5183fb089a3fb02d081dd08bde8a1
+  + spice-no-six.patch
+
+-------------------------------------------------------------------
 Wed May 31 13:57:56 MDT 2023 - carnold@suse.com
 
 - Update to v0.15.2 release

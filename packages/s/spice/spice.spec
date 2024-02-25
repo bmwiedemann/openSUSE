@@ -1,7 +1,7 @@
 #
 # spec file for package spice
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,12 +32,13 @@ Source:         https://www.spice-space.org/download/releases/spice-server/%{nam
 Source1:        https://www.spice-space.org/download/releases/spice-server/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
 Source99:       %{name}.rpmlintrc
+# https://gitlab.freedesktop.org/spice/spice-common/-/commit/29dacb5f53f5183fb089a3fb02d081dd08bde8a1
+Patch0:         spice-no-six.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-pyparsing
-BuildRequires:  python3-six
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.38
 BuildRequires:  pkgconfig(gstreamer-1.0)
@@ -94,7 +95,7 @@ The SPICE server is used to expose a remote machine's display
 and devices.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
