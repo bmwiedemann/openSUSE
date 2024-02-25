@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 08:10:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Thu May 28 12:17:46 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - run spec-cleaner 

@@ -76,9 +76,7 @@ BuildArch:      noarch
 This package contains documentation about Judy library and examples.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %configure \
