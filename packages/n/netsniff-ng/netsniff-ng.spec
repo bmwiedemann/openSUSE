@@ -66,8 +66,7 @@ The netsniff-ng toolkit consists of the following utilities:
 * astraceroute, an autonomous system (AS) trace route utility
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 export NACL_LIB=sodium
