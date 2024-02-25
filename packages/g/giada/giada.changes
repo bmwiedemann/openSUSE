@@ -1,4 +1,139 @@
 -------------------------------------------------------------------
+Sun Feb 25 10:30:19 UTC 2024 - edogawa@aon.at
+
+- Update to version 1.0.0:
+  * Extras: fix icon path in .desktop file
+  * Extras: change logo size to a supported resolution
+  * Update Changelog
+  * Editors: fix zoom with mousewheel
+  * Action Editor: mousewheel zoom now works only when Ctrl is pressed
+  * Sample Editor: mousewheel zoom now works only when Ctrl is pressed
+  * Fixup typo
+  * Update Changelog
+  * send MIDI data through armed channels to the outside world (#498)
+  * Make m::rendering::sendMidiToOut() function public
+  * Prevent invalid Sample Editor state when opening the Sample Editor window without closing it first
+  * Remove commented-out code
+  * Fixup README.md
+  * Update README.md file with bullet points from the main website
+  * Update Changelog
+  * Change Configuration window title and its main menu entry to 'Settings'
+  * Formatting
+  * Fix main menu on macOS
+  * Fix Record-on-signal mode not deactivated after recording actions
+  * Fix Record-on-signal mode not deactivated after recording audio (#678)
+  * Fix inability to quit record-on-signal mode also when recording actions
+  * Fix inability to quit record-on-signal mode (#677)
+  * Fix grid not showing up correctly in Sample Editor (#679)
+  * Use signed int for audio device also in Conf
+  * Add some more comments
+  * DRY some KernelAudio methods
+  * Let KernelAudio pick a default audio device if not specified (i.e. the first time Giada is run) (#669)"
+  * Use signed int type for audio device ID
+  * Remove wrong comment
+  * Let RtAudio pick the API automatically if RtAudio::Api == UNSPECIFIED
+  * Fixup for commit bab6ba68ce9ba092a9e855cef236260aa93eaa2c: a call to resampler.last() was missing, causing a glitch (and test failure)
+  * Update mcl-audio-buffer dep
+  * Simplify sample rendering mechanism on REWIND render mode
+  * Include json::parse() in try-catch block
+  * Fix cloned channels not being added to columns
+  * Don't load Wave twice in sample channel during serialization (#680)
+  * Simplify SampleChannel::setWave() logic
+  * Improve log message
+  * Fix log messages names in waveFactory
+  * rendering::onSampleEnd_ always return 'false' for 'shouldLoop' by default
+  * Recursive buffer rendering implementation (#538)
+  * Prevent assertion in geTabMidi when input or output devices are not found
+  * Refactor: add SampleChannel::isAnyNonLoopingSingleMode() utility method
+  * Refactor: add SampleChannel::isAnyLoopOnceMode() utility method
+  * Refresh Preview Channel properties when reloading the sample
+  * Remove old Range class, use geompp::Range instead
+  * Update copyright date
+  * Fix wrong channel being added when copying a sample range to new channel
+  * Add tests for wfx::paste() in waveFx test case
+  * Fix assertion during paste operation in Sample Editor
+  * DRY code in wfx::paste()
+  * Refresh Preview Channel properties on cut, trim and paste in Sample Editor
+  * Print extra Channel info in Channel::debug()
+  * Add m::Channel::debug() method
+  * Add utils::toString(ChannelType) function
+  * Always reset channel's internal volume on manual triggering
+  * Fix some test cases names
+  * Optimize audio preview rendering: enable it only when Sample Editor is open
+  * Move some Sample Editor-related methods from ChannelsApi to SampleEditorApi
+  * Remove unnecessary namespace prefix
+  * Update info in comment
+  * Add TODO comment
+  * Store and load column layout in Patch
+  * Fix version comparison algorithm in Patch::Version, add tests for it
+  * Remove position and columnId from Channel in model
+  * Move some v::Model-related functions to v::Model class
+  * Re-enable column resizing
+  * Remove Column ID, use index instead
+  * Move add and remove columns functions to c::channel
+  * Move Channels' layout storage to v::Model (part 1, no storage, m::Model still dirty)
+  * Pass c::channel::Data by const reference to geColumn::addChannel()
+  * Return geColumn reference from geKeyboard::addColumn() method
+  * Update comment
+  * Pass Model::Column object to Keyboard::addColumn() method
+  * Add u::vector::findIfSafe() function
+  * Allow non-const containers to u::vector::findIf() function
+  * [Linux] Prettify metainfo.xml file
+  * [Linux] Update metainfo.xml file
+  * [Linux] Remove duplicated .desktop file generation (#591)
+  * Change geEnvelopePoint position and color in Velocity Editor
+  * Print 'Velocity' in Sample Action Editor's Velocity widget
+  * Disable compilation of geEnvelopeEditor and envelope-related functions
+  * Show only MidiEvent::CHANNEL_NOTE_ON types in Velocity Editor
+  * Record Sample actions with max velocity by default
+  * Play Sample actions with velocity taken into account
+  * Move Channel's internal volume to ChannelShared object
+  * Add Velocity Editor widget to Sample Channel Action Editor
+  * Type deduction when mapping values in geVelocityEditor
+  * Draw envelope points as circles
+  * Tidy up debug messages in MidiDispatcher
+  * Use float-based velocity value everywhere
+  * Add more velocity-related tests to midiEvent test case
+  * Remove unused global constant
+  * Velocity and velocityFloat values are now kept in sync in MidiEvent class
+  * Const-correctness in geVelocityEditor
+  * Const-correctness in geSampleAction
+  * Simplify draw logic in geSampleAction
+  * Use compact nested namespace
+  * Remove unused imports by geVelocityEditor
+  * Remove unused forward declaration
+  * Bump version to 1.0.0
+  * Fix resizer bar height in geKeyboard
+  * Store column layout configuration when adding new colums
+  * Sort geColumn's menu items
+  * Fix LangMap label name and text
+  * Remove 'add column' button
+  * Always keep at least one column in geKeyboard
+  * Make geKeyboard::addColumn() method public
+  * Better enum name
+  * Tidy up geLiquidScroll::addWidget() method
+  * Mark geLiquidScroll::add() methods as deleted
+  * Update FLTK to latest master commit
+  * Set geKeyboard painting clip based on its viewport bounds
+  * Show scrollbars in geKeyboard only if necessary
+  * geScroll::getViewportBounds() now takes into account the scrollbars visibility
+  * Print beat numbers on Sequencer
+  * Simplify drawing logic of Sequencer's cursor
+  * Change 'Config' label name in Main Menu to something more meaningful
+  * Optimize some imports
+  * Remove unused widget geMainIO
+  * Tidy up margins and sizes in Main Window
+  * Main Window I/O redesign
+  * New geMainInput and geMainOutput widgets (still unused)
+  * Add more LangMap labels
+  * Add new graphic icon for Stream Linker button
+  * Pull out geLed class from geMidiActivity
+  * Add support for vertical audio meters
+  * Remove useless parameters from geSoundMeter's constructor
+  * Main Menu redesign with macOS support
+  * Add new LangMap entry
+
+-------------------------------------------------------------------
 Sat Dec 23 09:24:37 UTC 2023 - edogawa@aon.at
 
 - Update to version 0.26.1:
