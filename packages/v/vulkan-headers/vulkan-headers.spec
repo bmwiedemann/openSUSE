@@ -58,6 +58,10 @@ to make use of Vulkan.
 
 %install
 %cmake_install
+%if %{suse_version} >= 1600
+%python3_fix_shebang_path %{buildroot}%{_datadir}/vulkan/registry/*
+%python3_fix_shebang_path %{buildroot}%{_datadir}/vulkan/registry/spec_tools/*
+%endif
 
 %files
 %license LICENSE.md

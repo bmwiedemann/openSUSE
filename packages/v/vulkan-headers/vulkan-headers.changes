@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 23 14:08:29 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang_path macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Thu Jan 18 19:13:54 UTC 2024 - Nicolas FORMICHELLA <stigpro@outlook.fr>
 
 - Update to release SDK-1.3.275.0

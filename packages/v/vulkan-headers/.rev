@@ -375,4 +375,13 @@
     <comment>- Update to release SDK-1.3.275.0</comment>
     <requestid>1139937</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>ee4ed1315f4ae02bf56e20071ce5f85b</srcmd5>
+    <version>1.3.275.0</version>
+    <time>1708866320</time>
+    <user>anag+factory</user>
+    <comment>- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang_path macro, [bsc#1212476] (forwarded request 1149970 from pgajdos)</comment>
+    <requestid>1149982</requestid>
+  </revision>
 </revisionlist>
