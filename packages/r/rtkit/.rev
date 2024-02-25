@@ -288,4 +288,12 @@
     <comment>rtkit-daemon: Don't log debug messages by default (bsc#1206745). (forwarded request 1094971 from jdelvare)</comment>
     <requestid>1095333</requestid>
   </revision>
+  <revision rev="34" vrev="6">
+    <srcmd5>b8d8de3f778da7832ff4129d93db393a</srcmd5>
+    <version>0.13</version>
+    <time>1708866295</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1149883 from dimstar)</comment>
+    <requestid>1149918</requestid>
+  </revision>
 </revisionlist>

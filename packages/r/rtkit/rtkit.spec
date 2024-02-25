@@ -51,9 +51,7 @@ request. It is intended to be used as a secure mechanism to allow real-time
 scheduling to be used by normal user processes.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %sysusers_generate_pre %{SOURCE1} rtkit rtkit.conf
