@@ -1,7 +1,7 @@
 #
 # spec file for package wsdd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ Source7:        ws-discovery-udp.xml
 %endif
 Patch1:         %{name}-shebang.patch
 BuildRequires:  firewall-macros
+BuildRequires:  python-rpm-macros
 BuildRequires:  sysuser-tools
 Requires(post): %fillup_prereq
 Supplements:    samba
@@ -81,6 +82,7 @@ mkdir -p %{buildroot}/run/wsdd
 mkdir -p %{buildroot}%{_localstatedir}/lib/wsdd
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 0644 %{SOURCE6} %{buildroot}%{_sysusersdir}/
+%python3_fix_shebang
 
 %pre -f %{name}.pre
 %service_add_pre wsdd.service
