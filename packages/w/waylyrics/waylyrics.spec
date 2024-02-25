@@ -17,7 +17,7 @@
 
 
 Name:           waylyrics
-Version:        0.2.3
+Version:        0.2.11
 Release:        0
 Summary:        The furry way to show desktop lyrics
 License:        MIT
@@ -27,6 +27,7 @@ Source1:        vendor.tar.zst
 BuildRequires:  cargo >= 1.73.0
 BuildRequires:  cargo-packaging
 BuildRequires:  dbus-1-devel
+BuildRequires:  gettext
 BuildRequires:  gtk4-devel
 BuildRequires:  libgraphene-devel
 BuildRequires:  mimalloc-devel
@@ -40,6 +41,8 @@ BuildRequires:  openssl-devel
 
 %description
 The furry way to show desktop lyrics, and simple universal desktop lyrics made with GTK4 and love.
+
+%lang_package
 
 %prep
 %autosetup -a1 -p0
@@ -59,6 +62,17 @@ cp -r themes %{buildroot}%{_datadir}/waylyrics/
 install -Dm644 "io.poly000.waylyrics.desktop" -t %{buildroot}%{_datadir}/applications/
 install -Dm644 "io.poly000.waylyrics.gschema.xml" -t %{buildroot}%{_datadir}/glib-2.0/schemas/
 
+# Locale files
+(
+    cd locales
+    for po in $(find . -type f -name '*.po')
+    do
+        mkdir -p %{buildroot}%{_datadir}"/locale/${po#/*}" 
+        msgfmt -o %{buildroot}%{_datadir}"/locale/${po%.po}.mo" ${po}
+    done
+)
+%find_lang %{name} %{name}.lang
+
 %check
 export WAYLYRICS_THEME_PRESETS_DIR=%{_datadir}/waylyrics/themes
 %{cargo_test} --locked --no-default-features --features mimalloc
@@ -70,5 +84,7 @@ export WAYLYRICS_THEME_PRESETS_DIR=%{_datadir}/waylyrics/themes
 %{_datadir}/waylyrics/
 %{_datadir}/applications/io.poly000.waylyrics.desktop
 %{_datadir}/glib-2.0/schemas/io.poly000.waylyrics.gschema.xml
+
+%files lang -f %{name}.lang
 
 %changelog

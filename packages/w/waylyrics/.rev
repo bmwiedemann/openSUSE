@@ -102,4 +102,41 @@ The upstream has developed for a long time and waylyrics has been stable, althou
   * test: add unit tests for QQMusic::init</comment>
     <requestid>1146600</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ab4a1309845708dd85f13c213f81a1f0</srcmd5>
+    <version>0.2.11</version>
+    <time>1708866402</time>
+    <user>anag+factory</user>
+    <comment>- Package language files
+- Update to version 0.2.11:
+  * fix: show_both mode place origin to above if no translation
+  * docs(changelog): update changelog
+  * enhance: switch-passthrough in tray-icon without restart
+  * docs(readme): remove dead `flutter-netease-music`
+  * fix: hsl color format
+  * docs(changelog): update changelog
+  * chore: release v0.2.11
+  * fix: use hsla for transparent window background
+  * refactor: use `clone!` macro rather than calling upgrade/downgrade manually
+  * perf: store default MainContext
+  * chore: bump dependencies
+  * fix: restart in tray-icon set click-through
+  * ci: disable changelog on tag due to shitty failure [ci skip]
+  * docs(changelog): update changelog
+  * chore: release v0.2.10
+  * refactor: move logic-related fields to Window::new
+  * revert: &quot;feat: (optional) select labels by translation/origin&quot;
+  * feat: (optional) select labels by translation/origin
+  * feat(theme): new style
+  * style(theme): format CSS with Prettier and Stylelint
+  * feat: set mouse click-through in GSettings
+  * feat: split popover menu to UI section and Play section
+  * feat: set lyric-display-mode in GSettings
+  * refactor: cleanup `set_lyric_with_mode` [ci skip]
+  * docs(changelog): update changelog
+  * chore: release v0.2.9
+  * i18n: translate lyric align
+  * feat!: set lyric align mode on run time</comment>
+    <requestid>1150119</requestid>
+  </revision>
 </revisionlist>

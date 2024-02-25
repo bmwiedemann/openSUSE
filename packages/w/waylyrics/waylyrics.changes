@@ -1,4 +1,119 @@
 -------------------------------------------------------------------
+Sat Feb 24 11:04:49 UTC 2024 - xtexchooser@duck.com
+
+- Package language files
+- Update to version 0.2.11:
+  * fix: show_both mode place origin to above if no translation
+  * docs(changelog): update changelog
+  * enhance: switch-passthrough in tray-icon without restart
+  * docs(readme): remove dead `flutter-netease-music`
+  * fix: hsl color format
+  * docs(changelog): update changelog
+  * chore: release v0.2.11
+  * fix: use hsla for transparent window background
+  * refactor: use `clone!` macro rather than calling upgrade/downgrade manually
+  * perf: store default MainContext
+  * chore: bump dependencies
+  * fix: restart in tray-icon set click-through
+  * ci: disable changelog on tag due to shitty failure [ci skip]
+  * docs(changelog): update changelog
+  * chore: release v0.2.10
+  * refactor: move logic-related fields to Window::new
+  * revert: "feat: (optional) select labels by translation/origin"
+  * feat: (optional) select labels by translation/origin
+  * feat(theme): new style
+  * style(theme): format CSS with Prettier and Stylelint
+  * feat: set mouse click-through in GSettings
+  * feat: split popover menu to UI section and Play section
+  * feat: set lyric-display-mode in GSettings
+  * refactor: cleanup `set_lyric_with_mode` [ci skip]
+  * docs(changelog): update changelog
+  * chore: release v0.2.9
+  * i18n: translate lyric align
+  * feat!: set lyric align mode on run time
+  * chore: clean up theme comments
+  * chore: remove invalid github template
+  * i18n: translate display_mode
+  * feat: show icons on tray-icon menu
+  * feat: only show set-lyric button when avaliable
+  * i18n: translate length to 时长
+  * docs(changelog): update changelog
+  * ci: fix changelog ci skipped unexpectedly
+  * chore: release v0.2.8
+  * build(rpm): package with i18n files
+  * fix: incomplete i18n in menu
+  * docs(build): add gettext to dependencies
+  * i18n: add translation for Simplefied Chinese
+  * feat: i18n support
+  * style: package_name as a constant [ci-skip]
+  * build: make global theme presets optional
+  * chore: remove unnessacary use of Arc<dyn LyricProvider>
+  * ci: do not flood commit logs
+  * docs(changelog): update changelog
+  * build(rpm): add icon
+  * docs(changelog): update changelog
+  * docs(readme): update readme
+  * docs(changelog): update changelog
+  * feat: show tooltip for search entries
+  * docs(changelog): update changelog
+  * ci: update changelog on each commit
+  * feat: sort search result by fuzzy-match weight
+  * refactor: skip fuzzy-match in it's block
+  * docs(changelog): update changelog
+  * fix: changelog CI need write permission
+  * ci: generate changelogs for master
+  * chore: release v0.2.7
+  * enhance: migrate to better dice-coefficient lib
+  * feat: skip fuzzy-match if we got only title in metadata
+  * log: log detailed likelihood with trace-level
+  * feat: fuzzy-match lyrics with Sorensen-Dice coefficient
+  * enhance: remove unnessacary global variable for PlayerId's
+  * feat: restart waylyrics in tray-icon
+  * chore: release v0.2.6
+  * fix: missing feature gate for re-export in sync
+  * feat: optionally start tray-icon service
+  * feat(tray-icon): PlayAction control
+  * feat: initial tray-icon support
+  * todo: impl real tray-icon functions
+  * feat: set lyric display mode in run time
+  * refactor: remove repeated function prefix
+  * chore: release v0.2.5
+  * fix: repeated docs appends to commented config.toml
+  * docs(config): lyric-align accepts CamelCase value
+  * fix: append comments with `documented`
+  * refactor: move config.rs to config/
+  * feat: generate comments for config
+  * build: add optional ksni dep
+  * fix: remove `hide_label_on_empty_text = false` support
+  * fix: do not hide below label in set_lyric
+  * refactor: move search_window to crate::app
+  * fix: remove `hide_label_on_empty_text = false` support
+  * fix: do not hide below label in set_lyric
+  * refactor: move search_window to crate::app
+  * chore: release 0.2.4
+  * fix: do not show lyric on `Stopped` status
+  * feat: hide default text on idle
+  * feat: set unsupported reason on below label
+  * build: rename feature to 'action-event' rather than tray-icon
+  * log: log reveiced action event
+  * build: make tray-icon feature optional
+  * fix: re-export play-action channel
+  * fix: should re-export PlayAction
+  * feat: invoke ui actions with mpsc::channel
+  * refactor: rename to play_action
+  * refactor: move UI-related actions to crate::app::actions
+  * refactor: rename AppAction to PlayAction
+  * style: remove unused Downgrade import
+  * feat: invoke app actions with mpsc::channel
+  * chore(dep): migrate to gtk4-rs 0.8.0
+  * docs(readme): waybar supports all wlroots-based compositors
+  * other(logo): white shade for text and logo
+  * other(logo): make logo not so shining in dark background [ci skip]
+  * docs(readme): move chat banners to center block [ci skip]
+  * docs(readme): add logo and intro video [ci skip]
+  * docs(contribute): introduce Conventional Commit [ci skip]
+
+-------------------------------------------------------------------
 Wed Feb 14 07:30:13 UTC 2024 - xtexchooser@duck.com
 
 - Update to version 0.2.3:
