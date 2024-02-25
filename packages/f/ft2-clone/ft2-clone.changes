@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb 23 21:04:00 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.76
+  * The 16-point sinc resampling interpolator has been upgraded to
+    32-point for better sound quality in the tracker (if you have
+    selected "Sinc (32 point)"). This interpolator is so good that
+    a lot of old XM tunes will sound muddy because of lo-fi samples
+    I recommend that you experiment with the choice of
+    interpolators. "Cubic spline" is a good choice if you listen
+    to a wide variety of XMs, while "Sinc (32 point)" is the best
+    option if you create your own tunes using hi-fi samples, or if
+    you mostly listen to XMs with hi-fi samples (or if you can
+    accept a muddy/filtered sound from lo-fi samples).
+  * Removed text fading from "about screen" (more is less)
+
+-------------------------------------------------------------------
 Sat Feb 17 16:10:20 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.75
