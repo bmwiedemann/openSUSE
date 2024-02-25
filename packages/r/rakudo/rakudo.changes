@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 23 11:31:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Sun Oct  2 12:45:42 UTC 2022 - Stefan Seifert <nine@detonation.org>
 
 - Final fix for module packaging issues. This follows upstream in completely

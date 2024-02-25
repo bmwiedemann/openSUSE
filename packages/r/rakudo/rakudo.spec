@@ -47,9 +47,7 @@ BuildRequires:  libffi-devel
 The most mature, production-ready implementation of the Raku language.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 perl Configure.pl --prefix="%{_prefix}"
