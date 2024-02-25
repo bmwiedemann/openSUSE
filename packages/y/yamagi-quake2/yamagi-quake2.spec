@@ -49,8 +49,7 @@ screen size, compatibility with most mods, optional support for
 retexturing packs and HUD scaling.
 
 %prep
-%setup -q -n quake2-%{version}
-%patch0 -p1
+%autosetup -p1 -n quake2-%{version}
 
 %build
 export SOURCE_DATE_EPOCH=$(date +%s -r CHANGELOG)
