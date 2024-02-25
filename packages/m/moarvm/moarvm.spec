@@ -68,8 +68,7 @@ Requires:       pkgconfig(libzstd)
 MoarVM (Metamodel On A Runtime) development headers.
 
 %prep
-%setup -q -n MoarVM-%{mvrel}
-%patch0 -p1
+%autosetup -p1 -n MoarVM-%{mvrel}
 
 %build
 extra_config_args=

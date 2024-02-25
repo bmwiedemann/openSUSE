@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 23 09:26:23 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Sat Oct  1 10:14:14 CEST 2022 - nine@detonation.org
 
 - update to version 2022.07
