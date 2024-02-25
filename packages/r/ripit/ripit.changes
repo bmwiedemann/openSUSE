@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Feb 23 17:02:43 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Drop hard-dependency on perl(MP3::Tag) which doesn't exist on TW;
+  at least it'd allow package rebuilds again on TW
+
+-------------------------------------------------------------------
+Fri Feb 23 11:49:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
+Fri Mar  5 11:50:59 UTC 2021 - lars@linux-schulserver.de - 3.9.90
+
+- require perl(MP3::Tag)
+
+-------------------------------------------------------------------
 Mon Feb  5 09:00:33 UTC 2018 - lars@linux-schulserver.de
 
 - use wikipedia URL, as the original domain is no longer valid

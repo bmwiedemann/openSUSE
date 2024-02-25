@@ -1,7 +1,7 @@
 #
 # spec file for package ripit
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,9 +23,9 @@ Release:        0
 Summary:        Perl Script to Create .ogg or .mp3 Files from an Audio CD
 # This is not the real tarball version but as it's still in beta, we could have troubles
 # to update to 4.0 final so just give it a lower version
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/CD/Grabbers
-Url:            https://en.wikipedia.org/wiki/Ripit
+URL:            https://en.wikipedia.org/wiki/Ripit
 Source:         http://www.suwald.com/ripit/%{name}-%{real_version}.tar.gz
 Patch0:         %{name}-3.9.0-ogg.patch
 Patch1:         %{name}-4.0.0-undefined_variables.patch
@@ -34,6 +34,7 @@ Requires:       cdparanoia
 Requires:       perl-CDDB_get
 Requires:       perl-libwww-perl
 Requires:       vorbis-tools
+# Requires:       perl(MP3::Tag)
 BuildArch:      noarch
 
 %description
@@ -41,10 +42,7 @@ This Perl script makes it easy to create MP3 files from an audio CD. It
 tries to find the artist and song titles with the help of CDDB.
 
 %prep
-%setup -q -n %{name}-%{real_version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n %{name}-%{real_version}
 
 %build
 

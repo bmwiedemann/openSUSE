@@ -139,4 +139,18 @@
     <comment></comment>
     <requestid>576468</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>8eaff023e1c79ce63140ba9969876701</srcmd5>
+    <version>3.9.90</version>
+    <time>1708866336</time>
+    <user>anag+factory</user>
+    <comment>- Drop hard-dependency on perl(MP3::Tag) which doesn't exist on TW;
+  at least it'd allow package rebuilds again on TW
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+- require perl(MP3::Tag)</comment>
+    <requestid>1149997</requestid>
+  </revision>
 </revisionlist>
