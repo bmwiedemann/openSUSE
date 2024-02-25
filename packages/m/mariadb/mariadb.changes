@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 23 11:14:44 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Feb 14 10:40:40 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 11.2.3:

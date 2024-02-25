@@ -353,20 +353,20 @@ PAM module.
 %setup -q
 # Remove JAR files from the tarball (used for testing from the source)
 find . -name "*.jar" -type f -exec rm --verbose -f {} \;
-%patch1
-%patch4
-%patch6 -p1
-%patch7 -p1
+%patch -P 1
+%patch -P 4
+%patch -P 6 -p1
+%patch -P 7 -p1
 %if 0%{?suse_version} > 1500
 %ifarch s390x ppc64 ppc64le
-%patch9
+%patch -P 9
 %endif
 %endif
 # usrmerge has only been applied to TW
 %if 0%{?suse_version} > 1500
-%patch10 -p1
+%patch -P 10 -p1
 %endif
-%patch11 -p1
+%patch -P 11 -p1
 
 cp %{_sourcedir}/suse-test-run .
 
