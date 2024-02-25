@@ -1,7 +1,7 @@
 #
 # spec file for package python-distro
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,6 @@ Version:        1.9.0
 Release:        0
 Summary:        Linux Distribution - a Linux OS platform information API
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/nir0s/distro
 Source:         https://files.pythonhosted.org/packages/source/d/distro/distro-%{version}.tar.gz
 Patch0:         assert_locale.patch
@@ -33,7 +32,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test
 %if %{with test}
@@ -48,10 +47,9 @@ distro (for: Linux Distribution) provides information about the Linux distributi
 It is a renewed alternative implementation for Python's original platform.linux_distribution function, but it also provides much more functionality which isn't necessarily Python bound like a command-line interface.
 
 %prep
-%setup -q -n distro-%{version}
+%autosetup -p1 -n distro-%{version}
 # remove shebang. Has been added by upstream intentionally: https://github.com/python-distro/distro/commit/8032f16a1082ff72471c13ff665f3ad9c929f3b0
 sed -i '1{/\/usr\/bin\/env python/d;}' src/distro/distro.py
-%patch0 -p1
 
 %build
 %pyproject_wheel
@@ -77,7 +75,7 @@ export LANG=C.UTF-8
 %doc CHANGELOG.md README.md
 %python_alternative %{_bindir}/distro
 %{python_sitelib}/distro
-%{python_sitelib}/distro-%{version}*-info
+%{python_sitelib}/distro-%{version}.dist-info
 %%license LICENSE
 
 %changelog

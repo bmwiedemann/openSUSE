@@ -224,4 +224,12 @@
 - Enable tests properly (this is pytest, not unittest),</comment>
     <requestid>1135231</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>e8fae0a3ef0e16c3c7dac92a749f3273</srcmd5>
+    <version>1.9.0</version>
+    <time>1708866283</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup macro.</comment>
+    <requestid>1149664</requestid>
+  </revision>
 </revisionlist>
