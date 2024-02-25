@@ -44,8 +44,7 @@ relying on Linux "proxy_ndp".
 The daemon is partially compliant with (experimental) RFC4389. 
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 export CXXFLAGS='%{optflags}'
