@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 17:30:24 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Use autosetup to prepare for RPM 4.20. 
+
+-------------------------------------------------------------------
 Wed Feb  7 13:11:15 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - pam.tmpfiles: Make sure the content of the /run directories get

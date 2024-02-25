@@ -1241,4 +1241,12 @@
   removed in case of a soft-reboot</comment>
     <requestid>1145173</requestid>
   </revision>
+  <revision rev="137" vrev="4">
+    <srcmd5>871b6fcdf66d43acc82c2ba74ed6b916</srcmd5>
+    <version>1.6.0</version>
+    <time>1708866279</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149714</requestid>
+  </revision>
 </revisionlist>

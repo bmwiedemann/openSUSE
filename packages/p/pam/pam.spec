@@ -213,13 +213,8 @@ This package contains header files and static libraries used for
 building both PAM-aware applications and modules for use with PAM.
 
 %prep
-%setup -q -n Linux-PAM-%{version}
+%autosetup -p1 -n Linux-PAM-%{version}
 cp -a %{SOURCE12} .
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
 
 %build
 bash ./pam-login_defs-check.sh
