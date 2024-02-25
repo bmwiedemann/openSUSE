@@ -1,5 +1,15 @@
 -------------------------------------------------------------------
-Sat Feb 03 09:38:45 UTC 2024 - uncomfy+openbuildservice@uncomfyhalomacro.pl
+Sat Feb 24 10:06:28 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 20240203.110809.5046fc22:
+  * Revert "text cursor glyph renders at native cell size"
+  * docs and missing bit of #4535 #4523
+  * Mention the -e aliases explicitly in the help
+  * Always start a new process on "wezterm -e $CMD"
+  * add `wezterm start --new-tab` and `wezterm connect --new-tab`
+
+-------------------------------------------------------------------
+Sat Feb 03 09:38:45 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 20240128.202157.1e552d76+git29:
   * plumb a couple more window title invalidations through to gui

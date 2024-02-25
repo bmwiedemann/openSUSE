@@ -951,4 +951,18 @@
 </comment>
     <requestid>1143790</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>ec2fff8b35d4a037a5fcbe298fd61e55</srcmd5>
+    <version>20240203.110809.5046fc22</version>
+    <time>1708866424</time>
+    <user>anag+factory</user>
+    <comment>
+- Update to version 20240203.110809.5046fc22:
+  * Revert &quot;text cursor glyph renders at native cell size&quot;
+  * docs and missing bit of #4535 #4523
+  * Mention the -e aliases explicitly in the help
+  * Always start a new process on &quot;wezterm -e $CMD&quot;
+  * add `wezterm start --new-tab` and `wezterm connect --new-tab`</comment>
+    <requestid>1150120</requestid>
+  </revision>
 </revisionlist>
