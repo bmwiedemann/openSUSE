@@ -50,8 +50,7 @@ information gathered by Ansible with custom data. For each host it also shows
 the groups, host variables, custom variables and machine-local facts.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 echo %{version} > ./src/ansiblecmdb/data/VERSION
 sed -i -e '/^#!\//, 1d' src/ansible-cmdb.py
 sed -i 's|#!%{_bindir}/env python|#!%{_bindir}/python3|g' \
