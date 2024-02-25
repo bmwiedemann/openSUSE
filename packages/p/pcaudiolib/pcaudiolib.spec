@@ -1,7 +1,7 @@
 #
 # spec file for package pcaudiolib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,7 +50,7 @@ Requires:       libpcaudio%{sover} = %{version}
 The Portable C Audio Library (pcaudiolib) provides a C API to different audio devices.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 ./autogen.sh

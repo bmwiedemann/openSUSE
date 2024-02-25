@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 24 05:05:38 UTC 2024 - Jason Craig <os@jacraig.com>
+
+- Use %autosetup in %prep section.
+
+-------------------------------------------------------------------
 Wed May  4 09:14:39 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.2

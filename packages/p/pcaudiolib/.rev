@@ -33,4 +33,13 @@
     <comment></comment>
     <requestid>974989</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>2b8ebc74e04fc27d8d725de54c5d5ce2</srcmd5>
+    <version>1.2</version>
+    <time>1708866323</time>
+    <user>anag+factory</user>
+    <comment>Use %autosetup in %prep section
+</comment>
+    <requestid>1150061</requestid>
+  </revision>
 </revisionlist>
