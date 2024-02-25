@@ -52,12 +52,12 @@ and a lot other nice features (and extensions for programmers).
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5
-%patch6 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5
+%patch -P 6 -p1
 
 %build
 make -j1 RPM_OPT_FLAGS="%{optflags}" linux

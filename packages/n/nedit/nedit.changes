@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 13:58:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Jun 29 05:31:30 UTC 2017 - bwiedemann@suse.com
 
 - Extend nedit-5.6_builddate_fix.patch to fix dates in nedit.doc
