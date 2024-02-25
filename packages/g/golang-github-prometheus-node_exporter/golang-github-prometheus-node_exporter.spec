@@ -33,6 +33,8 @@ Source2:        prometheus-node_exporter.service
 Source4:        prometheus-node_exporter.sysconfig
 # Updates rtnetlink to version 1.4.1
 Patch1:         fix_arp_collector.patch
+# https://github.com/prometheus/node_exporter/pull/2923
+Patch2:         add_device_error_label.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-github-prometheus-promu >= 0.12.0
 BuildRequires:  golang-packaging
@@ -53,7 +55,7 @@ ExcludeArch:    s390
 Prometheus exporter for hardware and OS metrics exposed by *NIX kernels, written in Go with pluggable metric collectors.
 
 %prep
-%autosetup -a1 -n node_exporter-%{version}
+%autosetup -a1 -p1 -n node_exporter-%{version}
 
 %build
 %goprep github.com/prometheus/node_exporter
