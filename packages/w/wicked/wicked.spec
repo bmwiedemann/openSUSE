@@ -18,7 +18,7 @@
 
 %define		release_prefix  %{?snapshot:%{snapshot}}%{!?snapshot:0}
 Name:           wicked
-Version:        0.6.73
+Version:        0.6.74
 Release:        %{release_prefix}.0.0
 Summary:        Network configuration infrastructure
 License:        GPL-2.0-or-later
@@ -26,15 +26,6 @@ Group:          System/Management
 URL:            https://github.com/openSUSE/wicked
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        wicked-rpmlintrc
-Patch1:         0001-fix_arp_notify_loop_and_burst_sending.patch
-Patch2:         0002-system-updater-Parse-updater-format-from-XML-configu.patch
-Patch3:         0003-rtnl-pass-ifname-in-newaddr-parsing-and-logging.patch
-Patch4:         0004-rtnl-parse-peer-address-on-non-ptp-interfaces.patch
-Patch5:         0005-duid-fix-comment-for-v6time.patch
-Patch6:         0006-dhcp6-omit-the-SO_REUSEPORT-option-bsc-1215692.patch
-Patch7:         0007-Fix-ifstatus-exit-code-for-NI_WICKED_ST_NO_CARRIER-s.patch
-Patch8:         0008-ifcheck-fix-config-changed-check-bsc-1218926.patch
-Patch9:         0009-ifreload-VLAN-changes-require-device-deletion-bsc-12.patch
 #
 # Upstream First - openSUSE Build Service Policy:
 #
@@ -51,7 +42,7 @@ BuildRequires:  libtool
 BuildRequires:  make
 %if %{with wicked_devel}
 # libwicked-%%{version}.so shlib package compatible match for wicked-devel
-Provides:       libwicked-0_6_73 = %{version}-%{release}
+Provides:       libwicked-0_6_74 = %{version}-%{release}
 %endif
 # uninstall obsolete libwicked-0-6 (libwicked-0.so.6, wicked < 0.6.60)
 Provides:       libwicked-0-6 = %{version}
@@ -164,7 +155,7 @@ Summary:        Network configuration infrastructure - Development files
 Group:          Development/Libraries/C and C++
 Requires:       dbus-1-devel
 Requires:       libnl3-devel
-Requires:       libwicked-0_6_73 = %{version}-%{release}
+Requires:       libwicked-0_6_74 = %{version}-%{release}
 
 %description devel
 Wicked is a network configuration infrastructure incorporating a number

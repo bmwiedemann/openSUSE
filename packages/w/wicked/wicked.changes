@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Feb 23 16:06:09 UTC 2024 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- update to version 0.6.74 
+  + team: add new options like link_watch_policy (jsc#PED-7183)
+  + Fix memory leaks in dbus variant destroy and fsm free (gh#openSUSE/wicked#1001)
+  + xpath: allow underscore in node identifier (gh#openSUSE/wicked#999)
+  + vxlan: don't format unknown rtnl attrs (bsc#1219751)
+- removed patches included in the source archive:
+  [- 0009-ifreload-VLAN-changes-require-device-deletion-bsc-12.patch]
+  [- 0008-ifcheck-fix-config-changed-check-bsc-1218926.patch]
+  [- 0007-Fix-ifstatus-exit-code-for-NI_WICKED_ST_NO_CARRIER-s.patch]
+  [- 0006-dhcp6-omit-the-SO_REUSEPORT-option-bsc-1215692.patch]
+  [- 0005-duid-fix-comment-for-v6time.patch]
+  [- 0004-rtnl-parse-peer-address-on-non-ptp-interfaces.patch]
+  [- 0003-rtnl-pass-ifname-in-newaddr-parsing-and-logging.patch]
+  [- 0002-system-updater-Parse-updater-format-from-XML-configu.patch]
+  [- 0001-fix_arp_notify_loop_and_burst_sending.patch]  
+
+-------------------------------------------------------------------
 Thu Feb  1 08:58:28 UTC 2024 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - ifreload: VLAN changes require device deletion (bsc#1218927) 
