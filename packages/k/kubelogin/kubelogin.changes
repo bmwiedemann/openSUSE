@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Feb 24 08:57:26 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.1.1:
+  * prepare for v0.1.1 release (#421)
+  * Add PoP token support for ROPC flow (#412)
+  * [StepSecurity] Apply security best practices (#404)
+  * Adds Azure Developer CLI (azd) as a new login method (#398)
+  * Bump golang.org/x/crypto from 0.17.0 to 0.18.0 (#392)
+  * Bump github.com/AzureAD/microsoft-authentication-library-for-go
+    (#391)
+  * Changes in correlation with new GH Action Permission Changes.
+    (#400)
+  * Default branch is now main. (#390)
+
+-------------------------------------------------------------------
 Sun Jan 07 17:50:50 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.1.0:
@@ -195,4 +210,4 @@ Mon Dec 12 12:46:56 UTC 2022 - rombert@apache.org
 -------------------------------------------------------------------
 Tue Jul 12 14:59:44 UTC 2022 - Robert Munteanu <rombert@apache.org>
 
-- Initial packaging of version 0.0.14 
+- Initial packaging of version 0.0.14
