@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 11:09:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Sun Jun 19 12:39:00 UTC 2016 - jengelh@inai.de
 
 - Fixup shared library package name and groups
