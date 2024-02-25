@@ -130,16 +130,18 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING
 %doc ChangeLog README
 %dir %{_sysconfdir}/xdg/menus/
-%config %{_sysconfdir}/xdg/menus/mate-settings.menu
-%config %{_sysconfdir}/xdg/menus/mate-preferences-categories.menu
 # Files from branding-upstream.
 %exclude %{_sysconfdir}/xdg/menus/mate-applications.menu
+%exclude %{_sysconfdir}/xdg/menus/mate-preferences-categories.menu
+%exclude %{_sysconfdir}/xdg/menus/mate-settings.menu
 %dir %{_datadir}/mate/desktop-directories/
 %{_datadir}/mate/desktop-directories/mate-*.directory
 %dir %{_datadir}/mate/
 
 %files branding-upstream
 %config %{_sysconfdir}/xdg/menus/mate-applications.menu
+%config %{_sysconfdir}/xdg/menus/mate-preferences-categories.menu
+%config %{_sysconfdir}/xdg/menus/mate-settings.menu
 
 %files -n %{typelib}
 %{_libdir}/girepository-1.0/MateMenu-2.0.typelib

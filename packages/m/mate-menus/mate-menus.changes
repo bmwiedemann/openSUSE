@@ -8,6 +8,12 @@ Mon May 15 18:48:33 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 - Disable the collection menu entry.
 
 -------------------------------------------------------------------
+Fri Jun 30 13:38:42 UTC 2022 - Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+
+- Move mate-settings.menu and mate-preferences-categories.menu into
+  mate-menus-branding-upstream sub-package.
+
+-------------------------------------------------------------------
 Fri Aug 20 13:12:45 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update summaries.
