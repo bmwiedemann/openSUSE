@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 23 12:20:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use newly supported shrink{} on OBS to exclude python flavors
+  will all python versions skipped.
+
+-------------------------------------------------------------------
 Thu Sep  7 10:50:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.9.0:

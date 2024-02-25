@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-flit-core
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,8 +29,7 @@
 %if "%{flavor}" == ""
 %define pprefix python
 %{expand:%%define skip_%{primary_python} 1}
-# ... unless the build set is empty. (We can't use shrink server-side and any skips here or on project level may have left spaces)
-%if "%{pythons}" == "" || "%{pythons}" == " " || "%{pythons}" == "  " || "%{pythons}" == "   " || "%{pythons}" == "    "
+%if "%{shrink:%{pythons}}" == ""
 # Exclude for local osc build: unresolvable
 %define python_module() empty-python-buildset
 # Exclude for obs server
