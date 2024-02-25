@@ -40,8 +40,7 @@ up the tunnel parameters, the Potential Router List, sends periodic
 router solicitations and tries to detect link changes.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
