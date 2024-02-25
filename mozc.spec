@@ -220,10 +220,10 @@ character-palette tools.
 # extract fcitx-mozc
 %if %{with_fcitx4} || %{with_fcitx5}
 tar xvf %{SOURCE20}
-%patch20 -p1
+%patch -P 20 -p1
 %endif
 
-%patch1 -p1
+%patch -P 1 -p1
 
 cp %{SOURCE1} .
 
@@ -242,9 +242,9 @@ tar xvf %{SOURCE7} -C abseil-cpp --strip-components 1
 cd ../..
 
 %if %{with_fcitx5}
-%patch9 -p1
+%patch -P 9 -p1
 %endif
-%patch10 -p1
+%patch -P 10 -p1
 
 # fix installation, library and header path
 sed -e 's|@libdir@|%{_libdir}|g' %{SOURCE4} > ibus-setup-mozc-jp.desktop
