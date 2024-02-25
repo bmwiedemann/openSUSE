@@ -952,4 +952,20 @@
   * Fix robots.txt using the built-in template regression (forwarded request 1149613 from jfkw)</comment>
     <requestid>1149614</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>ef28186c48c69ae8752518cf85af2eb3</srcmd5>
+    <version>0.123.3</version>
+    <time>1708866370</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.123.3:
+  * cache/dynacache: Reset ticker in case one cache eviction takes some time
+  * Revert &quot;cache/dynacache: Prevent multiple concurrent resizes&quot;
+  * cache/dynacache: Prevent multiple concurrent resizes
+  * Speed up GetPage
+  * hugolib: Fix a .Page.GetPage from bundle case
+  * resources: Skip the image golden tests when running locally
+  * js: Support JSX and JSXImportSourceOptions
+  * hugolib: Add capitalizeListTitles config option (forwarded request 1150052 from jfkw)</comment>
+    <requestid>1150057</requestid>
+  </revision>
 </revisionlist>

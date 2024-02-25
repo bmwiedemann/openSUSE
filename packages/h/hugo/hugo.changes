@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 23 19:04:37 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.123.3:
+  * cache/dynacache: Reset ticker in case one cache eviction takes some time
+  * Revert "cache/dynacache: Prevent multiple concurrent resizes"
+  * cache/dynacache: Prevent multiple concurrent resizes
+  * Speed up GetPage
+  * hugolib: Fix a .Page.GetPage from bundle case
+  * resources: Skip the image golden tests when running locally
+  * js: Support JSX and JSXImportSourceOptions
+  * hugolib: Add capitalizeListTitles config option
+
+-------------------------------------------------------------------
 Thu Feb 22 16:57:32 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.123.2:
