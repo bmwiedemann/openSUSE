@@ -236,6 +236,7 @@ Requires:       %{shlib} = %{version}
 Requires:       cgns-devel
 Requires:       cmake >= 3.4
 Requires:       double-conversion-devel
+%{?with_fmt:Requires:       fmt-devel}
 Requires:       gcc-c++
 %{?with_gl2ps:Requires:       gl2ps-devel}
 Requires:       hdf5-devel
@@ -249,6 +250,7 @@ Requires:       python3-%{name} = %{version}
 Requires:       utfcpp-devel
 %{?with_mpi:Requires:       %{mpi_flavor}}
 %{?with_mpi:Requires:       %{mpi_flavor}-devel}
+%{?with_fast_float:Requires:       cmake(FastFloat)}
 Requires:       cmake(Verdict)
 Requires:       cmake(nlohmann_json)
 Requires:       pkgconfig(Qt5Core)
@@ -395,16 +397,16 @@ languages.
 
 %prep
 %setup -n VTK-%{version}
-%patch1 -p1
-%patch2 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 %if %{with gles}
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
+%patch -P 7 -p1
+%patch -P 8 -p1
+%patch -P 9 -p1
+%patch -P 10 -p1
 %endif
-%patch17 -p1
-%patch18 -p1
+%patch -P 17 -p1
+%patch -P 18 -p1
 
 # Replace relative path ../../../../VTKData with %%{_datadir}/vtkdata
 # otherwise it will break on symlinks.

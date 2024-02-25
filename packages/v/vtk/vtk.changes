@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 20 13:26:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Sun Dec 31 19:55:50 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add fmt and FastFloat dependencies to devel subpackage
+
+-------------------------------------------------------------------
 Thu Dec 28 05:28:42 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 9.3.0, see:
