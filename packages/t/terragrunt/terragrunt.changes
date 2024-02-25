@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Feb 24 09:09:56 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.55.9:
+  * Fix data race accessing shared slice from goroutines in
+    dependency computation. (#2942)
+  * Recommending pre-release as a way to mitigate the risk of
+    failed releases (#2964)
+  * Test for tracking that no errors are printed in HCL files
+    parsing (#2947)
+
+-------------------------------------------------------------------
+Sat Feb 24 09:00:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.55.8:
+  * Fixing typo in the log message when using catalog (#2960)
+
+-------------------------------------------------------------------
+Sat Feb 24 08:57:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.55.7:
+  * Update go version to 1.21.7 to fix CVEs (#2951)
+- BuildRequire go1.21.7 or higher
+
+-------------------------------------------------------------------
+Sat Feb 24 08:54:54 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.55.6:
+  * Fix nested dependency parsing (#2957)
+
+-------------------------------------------------------------------
+Sat Feb 24 08:52:59 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.55.5:
+  * Add support for OpenTelemetry (#2921)
+
+-------------------------------------------------------------------
 Tue Feb 20 20:50:49 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.55.4:
