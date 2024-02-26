@@ -37,8 +37,8 @@ Requires:       psgml
 An Emacs mode to edit XSL files.
 
 %prep
-%setup -q
-%patch1 -p 1
+%autosetup -p1
+
 cp %{S:10} .
 cp %{S:1} xslide-README.openSUSE
 
