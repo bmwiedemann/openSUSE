@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rack-protection
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,11 @@
 #
 
 Name:           rubygem-rack-protection
-Version:        3.1.0
+Version:        4.0.0
 Release:        0
 %define mod_name rack-protection
 %define mod_full_name %{mod_name}-%{version}
-BuildRequires:  %{ruby >= 2.6.0}
+BuildRequires:  %{ruby >= 2.7.8}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://sinatrarb.com/protection/
