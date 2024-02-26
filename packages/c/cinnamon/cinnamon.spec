@@ -171,13 +171,8 @@ This package provides upstream defaults for settings stored with
 GSettings and applications used by the MIME system.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch7 -p1
-%patch8 -p1
+%autosetup -p1
+
 cp -a %{SOURCE1} .
 
 for file in files%{_datadir}/%{name}/%{name}-settings/bin/*.py files%{_datadir}/%{name}/%{name}-looking-glass/*.py \

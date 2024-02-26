@@ -813,4 +813,12 @@
   * Replace misc/util.js polyfills with js natives...</comment>
     <requestid>1130395</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>2e99f31afc88e237f06ad44f1c987b1f</srcmd5>
+    <version>6.0.0</version>
+    <time>1708973224</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151323</requestid>
+  </revision>
 </revisionlist>
