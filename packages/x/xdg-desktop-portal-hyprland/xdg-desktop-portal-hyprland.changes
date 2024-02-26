@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Feb 25 11:22:11 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Cleanup specfile
+  * remove meson as build requirement.
+
+-------------------------------------------------------------------
+Sat Feb 24 09:42:58 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Add fix-systemd-service-file-install-path.patch
+
+-------------------------------------------------------------------
+Sat Feb 24 08:59:07 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Cleanup specfile
+  * we remove sources for hyprland-protocols and hyprlang. They are now separate packages
+
+-------------------------------------------------------------------
+Fri Feb 23 23:28:31 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 1.3.1:
+  * Add hyprlang as new subproject dependency
+  * Screencopy: Fixed restore tokens with multiple relaunches
+  * Screencopy: Fixed paused -> resume state handling
+- Update specfile:
+  * Meson and makefile has been obsoleted by CMake. Only
+    exception is for hyprland-protocols.
+
+-------------------------------------------------------------------
 Tue Nov 28 00:24:32 UTC 2023 - malcolmlewis@opensuse.org
 
 - Update to version 1.2.5:

@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-desktop-portal-hyprland
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,18 @@
 #
 
 
-%define _protocol_version 0.2
 Name:           xdg-desktop-portal-hyprland
-Version:        1.2.5
+Version:        1.3.1
 Release:        0
 Summary:        Extended xdg-desktop-portal backend for Hyprland
 License:        MIT
 Group:          System/Libraries
 URL:            https://github.com/hyprwm/xdg-desktop-portal-hyprland
 Source0:        https://github.com/hyprwm/xdg-desktop-portal-hyprland/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        https://github.com/hyprwm/hyprland-protocols/archive/refs/tags/v%{_protocol_version}.tar.gz#/hyprland-protocols-%{_protocol_version}.tar.gz
+Patch1:         fix-systemd-service-file-install-path.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  meson
+BuildRequires:  hyprland-protocols-devel
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-base-devel
 BuildRequires:  qt6-wayland
@@ -37,6 +36,7 @@ BuildRequires:  qt6-waylandclient-devel
 BuildRequires:  qt6-waylandclient-private-devel
 BuildRequires:  scdoc >= 1.9.7
 BuildRequires:  pkgconfig(gbm) >= 21.3
+BuildRequires:  pkgconfig(hyprlang)
 BuildRequires:  pkgconfig(inih)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.109
 BuildRequires:  pkgconfig(libjpeg)
@@ -56,47 +56,21 @@ Recommends:     pipewire >= 0.3.41
 # Required since the picker uses qt wayland.
 # Not a strict requirement as the portal will fallback to slurp
 Recommends:     qt6-wayland
-
 Requires:       xdg-desktop-portal
 
 %description
 A fork of xdg-desktop-portal backend for wlroots for Hyprland. It supports
 other wlroots-based Wayland compositors too with some limitations.
 
-%package -n hyprland-protocols-devel
-Summary:        Development files for Hyprland protocols
-Group:          Development/Libraries/Other
-Version:        0.2
-BuildArch:      noarch
-Provides:       hyprland-protocols-devel = %{_protocol_version}
-
-%description -n hyprland-protocols-devel
-Wayland protocol extensions for interacting or modifying Hyprland.
-
 %prep
 %autosetup -p1
 
-# Needed for this portal to work.
-tar xvf %{SOURCE1} -C subprojects/hyprland-protocols --strip-components=1
-
 %build
-# We need to build hyprland protocols so it can be installed.
-pushd subprojects/hyprland-protocols
-%meson
-%meson_build
-popd
-
-%meson
-%meson_build
+%cmake
+%cmake_build
 
 %install
-
-# Install the protocols
-pushd subprojects/hyprland-protocols
-%meson_install
-popd
-
-%meson_install
+%cmake_install
 
 %pre
 %systemd_user_pre %{name}.service
@@ -121,11 +95,5 @@ popd
 %{_datadir}/dbus-1/services/org.freedesktop.impl.portal.desktop.hyprland.service
 %{_datadir}/xdg-desktop-portal/portals/hyprland.portal
 %{_userunitdir}/%{name}.service
-
-%files -n hyprland-protocols-devel
-%{_datadir}/pkgconfig/hyprland-protocols.pc
-%dir %{_datadir}/hyprland-protocols
-%dir %{_datadir}/hyprland-protocols/protocols
-%{_datadir}/hyprland-protocols/protocols/*
 
 %changelog
