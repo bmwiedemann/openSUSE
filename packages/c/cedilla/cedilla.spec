@@ -63,8 +63,8 @@ number of techniques:
 
 %prep
 %setup -q
-%patch0 -p 1 -b .destdir
-%patch1 -p1
+%patch -P 0 -p 1 -b .destdir
+%patch -P 1 -p1
 
 %build
 ./compile-cedilla

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 10:34:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Mar 28 22:50:20 UTC 2016 - dvaleev@suse.com
 
 - ExcludeArch POWER64 architecture, no clisp available
