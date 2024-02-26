@@ -34,9 +34,9 @@ Usage: csindex -z il2 file.idx Creates file.ind - a sorted index file.
 Uses the ISO 8859-2 encoding.
 
 %prep
-%setup
+%autosetup -p0
+
 install -m 644 %{SOURCE1} .
-%patch0
 
 %build
 make CC="gcc $RPM_OPT_FLAGS" %{?_smp_mflags}
