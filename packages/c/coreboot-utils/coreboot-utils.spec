@@ -41,11 +41,7 @@ coreboot is a Free Software project aimed at replacing the proprietary BIOS
 used to develop and configure systems with coreboot.
 
 %prep
-%setup -q -n coreboot-%{version}
-%if 0%{?suse_version} > 1320
-%patch1 -p1
-%patch3 -p1
-%endif
+%autosetup -p1 -n coreboot-%{version}
 
 # Upstream messed the timespamps in the tarball
 # Fix these for the 4.19 tarball
