@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb 25 18:48:01 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240225
+  * Added notification functions
+
+-------------------------------------------------------------------
+Sun Feb 25 12:37:40 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240224
+  * Added support for record entry name and stream value types
+
+-------------------------------------------------------------------
 Mon Feb  5 21:43:04 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Use python-setuptools for python distutils backport

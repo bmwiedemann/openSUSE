@@ -91,4 +91,12 @@ Required to allow builds to complete.</comment>
     <comment>python 3.12 build fix</comment>
     <requestid>1144583</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>15dda48eaf03d4714393f8a57af6d38a</srcmd5>
+    <version>20240225</version>
+    <time>1708973089</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20240225</comment>
+    <requestid>1150504</requestid>
+  </revision>
 </revisionlist>
