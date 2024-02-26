@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:01:11 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Fri Jun 11 11:51:31 UTC 2021 - Georg Pfuetzenreuter <mail@georg-pfuetzenreuter.net>
 
 - Adjusted Group.
