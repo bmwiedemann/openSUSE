@@ -59,7 +59,7 @@ This is a Python implementation of Macaroons.
 
 %prep
 %setup -q -n pymacaroons-%{version}
-%patch0 -p1
+%patch -P 0 -p1
 # requires too old hypothesis
 rm -f tests/property_tests/macaroon_property_tests.py
 

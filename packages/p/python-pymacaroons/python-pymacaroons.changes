@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 09:05:17 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Adjustments patch macro for rpm 4.20.
+
+-------------------------------------------------------------------
 Sun Jun 11 13:19:56 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
