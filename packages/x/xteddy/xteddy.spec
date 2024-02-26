@@ -47,15 +47,9 @@ tucked away in the file system until you need him next time).
 
 That's it. But he's cute.
 
-
-
-Authors:
---------
-    Stefan Gustavson <stefang@isy.liu.se>
-
 %prep
-%setup -q
-%patch0
+%autosetup -p0
+
 sed -i s,/usr/games,/usr/bin, xtoys
 
 %build
