@@ -54,8 +54,7 @@ applications that want to make use of xtrx_lms7002m.
 
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake \
