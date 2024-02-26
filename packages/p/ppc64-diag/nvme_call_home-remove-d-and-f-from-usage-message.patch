@@ -1,0 +1,29 @@
+From 316d2baf5dba0d00447a3ac49f2f95339dbdf5cd Mon Sep 17 00:00:00 2001
+From: Greg Joyce <gjoyce@linux.vnet.ibm.com>
+Date: Wed, 15 Nov 2023 11:28:05 -0600
+Subject: [PATCH] nvme_call_home: remove -d and -f from usage message
+
+The -d and -f weren't removed from the first line of the
+usage message.
+
+Signed-off-by: Greg Joyce <gjoyce@linux.vnet.ibm.com>
+---
+ diags/diag_nvme.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/diags/diag_nvme.c b/diags/diag_nvme.c
+index 00efec212056..164afe1cadd6 100644
+--- a/diags/diag_nvme.c
++++ b/diags/diag_nvme.c
+@@ -989,7 +989,7 @@ extern int open_nvme(char *dev_path) {
+ }
+ 
+ static void print_usage(char *command) {
+-	printf("Usage: %s [-h] [-d <file>] [-f <file>] [<nvme_devices>]\n"
++	printf("Usage: %s [-h] [<nvme_devices>]\n"
+ 		"\t-h or --help: print this help message\n"
+ 		"\t<nvme_devices>: the NVMe devices on which to operate, for\n"
+ 		"\t                  example nvme0; if not specified, all detected\n"
+-- 
+2.43.2
+

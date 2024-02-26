@@ -1,0 +1,149 @@
+From 11cb2a44a59b63bdc23c94e386c4e2f43ea7eb61 Mon Sep 17 00:00:00 2001
+From: Greg Joyce <gjoyce@linux.vnet.ibm.com>
+Date: Fri, 22 Sep 2023 15:19:34 -0500
+Subject: [PATCH] nvme_call_home: remove -d and -f as visible options
+
+The dump(-d) and file(-f) options have been removed as option in usage
+and also in the man page. The options are for internal test only and
+should not have been exposed. Also added some helpful status messages.
+
+Signed-off-by: Greg Joyce <gjoyce@linux.vnet.ibm.com>
+---
+ diags/diag_nvme.c     | 23 ++++++++++++++-------
+ diags/man/diag_nvme.8 | 48 +++----------------------------------------
+ 2 files changed, 19 insertions(+), 52 deletions(-)
+
+diff --git a/diags/diag_nvme.c b/diags/diag_nvme.c
+index 2a78034ecfd9..df191f2d1ac8 100644
+--- a/diags/diag_nvme.c
++++ b/diags/diag_nvme.c
+@@ -165,6 +165,11 @@ int main(int argc, char *argv[]) {
+ 		optind++;
+ 	}
+ 
++	if (rc == 0)
++		fprintf(stdout, "Command completed successfully\n");
++	else
++		fprintf(stderr, "Command failed, exiting with rc %d\n", rc);
++
+ 	return rc;
+ }
+ 
+@@ -310,6 +315,7 @@ extern int dump_smart_data(char *device_name, char *dump_path) {
+ 	int fd, rc;
+ 	FILE *fp;
+ 	struct nvme_smart_log_page smart_log = { 0 };
++	char ans;
+ 
+ 	/* Read SMART data from device */
+ 	snprintf(dev_path,sizeof(dev_path), "/dev/%s", device_name);
+@@ -331,8 +337,16 @@ extern int dump_smart_data(char *device_name, char *dump_path) {
+ 	}
+ 	fp = fopen(dump_path, "wx");
+ 	if (fp == NULL) {
+-		fprintf(stderr, "%s open failed: %s\n", dump_path, strerror(errno));
+-		return -1;
++		if (errno == EEXIST) {
++			fprintf(stdout, "File %s exists. Overwrite (y/n)? ", dump_path);
++			rc = scanf("%c", &ans);
++			if (ans == 'y' || ans == 'Y')
++				fp = fopen(dump_path, "w");
++		}
++		if (fp == NULL) {
++			fprintf(stderr, "%s open failed: %s\n", dump_path, strerror(errno));
++			return -1;
++		}
+ 	}
+ 	write_smart_file(fp, &smart_log);
+ 	fclose(fp);
+@@ -974,11 +988,6 @@ extern int open_nvme(char *dev_path) {
+ static void print_usage(char *command) {
+ 	printf("Usage: %s [-h] [-d <file>] [-f <file>] [<nvme_devices>]\n"
+ 		"\t-h or --help: print this help message\n"
+-		"\t-d or --dump: dump SMART data to the specified path and file name <file>\n"
+-		"\t                  one <nvme_device> is expected with this option\n"
+-		"\t-f or --file: use SMART data from the specified path and file name <file>\n"
+-		"\t                  instead of device, one <nvme_device> is expected with\n"
+-		"\t                  this option\n"
+ 		"\t<nvme_devices>: the NVMe devices on which to operate, for\n"
+ 		"\t                  example nvme0; if not specified, all detected\n"
+ 		"\t                  nvme devices will be diagnosed\n", command);
+diff --git a/diags/man/diag_nvme.8 b/diags/man/diag_nvme.8
+index 45567ac26bfc..c023ed6719eb 100644
+--- a/diags/man/diag_nvme.8
++++ b/diags/man/diag_nvme.8
+@@ -1,7 +1,7 @@
+ .\"
+-.\" Copyright (C) 2022 IBM Corporation
++.\" Copyright (C) 2022, 2023 IBM Corporation
+ .\"
+-.TH "DIAG_NVME" "8" "June 2022" "Linux" "PowerLinux Diagnostic Tools"
++.TH "DIAG_NVME" "8" "September 2023" "Linux" "PowerLinux Diagnostic Tools"
+ .hy
+ .SH NAME
+ .PP
+@@ -12,7 +12,7 @@ diag_nvme \- diagnose NVMe devices
+ .PD 0
+ .P
+ .PD
+-\f[B]diag_nvme\f[] [\-d <\f[I]file\f[]>] [\-f <\f[I]file\f[]>]
++\f[B]diag_nvme\f[]
+ <\f[B]nvme\f[]\f[I]n\f[]>
+ .PD 0
+ .P
+@@ -29,52 +29,10 @@ go through the diagnostics procedure.
+ The user can control which events will be reported through the
+ configuration file \f[I]/etc/ppc64\-diag/diag_nvme.config\f[]
+ .SH OPTIONS
+-.TP
+-.B \f[B]\-d\f[], \f[B]--dump\f[] \f[I]file\f[]
+-Dump SMART data to the specified path and file name \f[I]file\f[].
+-The SMART data is extracted from an NVMe device, so specifying one is
+-mandatory if this option is selected.
+-File created is in a simple key=value format.
+-.RS
+-.RE
+-.TP
+-.B \f[B]\-f\f[], \f[B]--file\f[] \f[I]file\f[]
+-This option usage is for testing only.
+-Use SMART data from the specified path and file name \f[I]file\f[]
+-instead of device, one NVMe is mandatory if this option is selected.
+-The expected format of the file is a simple key=value that is the same
+-one provided with the \-d / --dump option.
+-If \f[I]file\f[] is missing from the filesystem it will be treated as a
+-failure to retrieve SMART data and an event will be reported.
+-.RS
+-.RE
+-.TP
+-.B \f[B]\-h\f[], \f[B]--help\f[]
+-Print a help message and exit
+-.RS
+-.RE
+-.SH EXAMPLES
+-.TP
+-.B \f[B]diag_nvme\f[]
+-Run diagnostics in all NVMe devices detected in the system.
+-.RS
+-.RE
+-.TP
+ .B \f[B]diag_nvme nvme0 nvme1\f[]
+ Run diagnostics only in nvme0 and nvme1 devices.
+ .RS
+ .RE
+-.TP
+-.B \f[B]diag_nvme \-d smart.txt nvme0\f[]
+-Dump SMART data from nvme0 into file smart.txt.
+-.RS
+-.RE
+-.TP
+-.B \f[B]diag_nvme \-f smart.txt nvme0\f[]
+-Read SMART data from file smart.txt and use it as health information for
+-diagnostics of device nvme0.
+-.RS
+-.RE
+ .SH REPORTING BUGS
+ .PP
+ Patches and issues may be submitted at
+-- 
+2.43.2
+

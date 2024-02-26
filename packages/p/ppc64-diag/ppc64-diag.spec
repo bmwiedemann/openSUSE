@@ -1,7 +1,7 @@
 #
 # spec file for package ppc64-diag
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,10 @@ Patch2:         rtas_errd-Handle-multiple-platform-dumps.patch
 Patch3:         0001-ppc64-diag-Move-trim_trail_space-function-to-common-.patch
 Patch4:         0002-ppc64-diag-lp_diag-Utilize-trim_trail_space-function.patch
 Patch5:         0003-ppc64-diag-lp_diag-Enable-light-path-diagnostics-for.patch
+Patch6:         nvme_call_home-remove-d-and-f-as-visible-options.patch
+Patch7:         nvme_call_home-remove-d-and-f-from-usage-message.patch
+Patch8:         diag_nvme-improvements-to-status-and-err-messages.patch
+Patch9:         diags-diag_nvme-call_home-command-fails-on-nvmf-driv.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 26 14:22:42 UTC 2024 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix NVMe diagnostics support with nvmf drive (bsc#1220345 ltc#205706).
+  * nvme_call_home-remove-d-and-f-as-visible-options.patch
+  * nvme_call_home-remove-d-and-f-from-usage-message.patch
+  * diag_nvme-improvements-to-status-and-err-messages.patch
+  * diags-diag_nvme-call_home-command-fails-on-nvmf-driv.patch
+
+-------------------------------------------------------------------
 Fri Nov 17 18:18:03 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Migrate from cron to systemd timers.

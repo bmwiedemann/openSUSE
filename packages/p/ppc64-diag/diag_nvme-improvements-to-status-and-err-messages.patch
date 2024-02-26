@@ -1,0 +1,42 @@
+From 3ad587d20868f154bb7ab972ee7812add1380d7a Mon Sep 17 00:00:00 2001
+From: Greg Joyce <gjoyce@linux.vnet.ibm.com>
+Date: Wed, 11 Oct 2023 12:10:40 -0500
+Subject: [PATCH] diag_nvme: improvements to status and err messages
+
+Signed-off-by: Greg Joyce <gjoyce@linux.vnet.ibm.com>
+---
+ diags/diag_nvme.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/diags/diag_nvme.c b/diags/diag_nvme.c
+index df191f2d1ac8..00efec212056 100644
+--- a/diags/diag_nvme.c
++++ b/diags/diag_nvme.c
+@@ -166,9 +166,9 @@ int main(int argc, char *argv[]) {
+ 	}
+ 
+ 	if (rc == 0)
+-		fprintf(stdout, "Command completed successfully\n");
++		fprintf(stdout, "NVMe diag command completed successfully\n");
+ 	else
+-		fprintf(stderr, "Command failed, exiting with rc %d\n", rc);
++		fprintf(stderr, "NVMe diag command failed with rc %d\n", rc);
+ 
+ 	return rc;
+ }
+@@ -724,8 +724,11 @@ extern int get_smart_file(char *file_path, struct nvme_smart_log_page *log) {
+ 	int num_elements = 0;
+ 	struct dictionary dict[MAX_DICT_ELEMENTS];
+ 
+-	if ((num_elements = read_file_dict(file_path, dict, MAX_DICT_ELEMENTS)) < 0)
++	if ((num_elements = read_file_dict(file_path, dict, MAX_DICT_ELEMENTS)) < 0) {
++		fprintf(stderr, "read_file_dict failed: %s, rc % d\n",
++				file_path, num_elements);
+ 		return num_elements;
++	}
+ 	return set_smart_log_field(log, dict, num_elements);
+ }
+ 
+-- 
+2.43.2
+

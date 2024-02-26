@@ -1,0 +1,76 @@
+From db0c6d7974d7f8909878384d77ec02457759d6df Mon Sep 17 00:00:00 2001
+From: Nilay Shroff <nilay@linux.ibm.com>
+Date: Tue, 16 Jan 2024 13:55:03 +0530
+Subject: [PATCH] diags/diag_nvme: call_home command fails on nvmf drive
+
+The diag_nvme command needs to retrieve the VPD log page from NVMe for
+filling in the product data while generating the call-home event.
+However, call-home feature is supported for directly attached NVMe
+module. In the current diag_nvme implementation, if user doesn't
+provide NVMe device name for diagnostics then it(diag_nvme)  loops
+through each NVMe moudle (directly connected to the system/LPAR as
+well as discovered over fabrics) and attempt retrieving the SMART log
+page as well as VPD page.  Unfortunately, diag_nvme fails to retrieve
+the VPD page for NVMe connected over fabrics and that causes the
+diag_nvme to print "not-so-nice" failure messages on console.
+
+Henec fixed the diag_nvme code so that for call-home event reporting,
+it skips the NVMe which is connected over fabrics and prints a
+"nice-message" informing the user that it's skipping diagnosting for
+NVMe module connected over fabrics.  In a nutshell, with this fix now
+diag_nvme would only diagnose the NVMe module which is directtly
+attached (over PCIe) to the system.
+
+Signed-off-by: Nilay Shroff <nilay@linux.ibm.com>
+---
+ diags/diag_nvme.c | 31 +++++++++++++++++++++++++++++++
+ 1 file changed, 31 insertions(+)
+
+diff --git a/diags/diag_nvme.c b/diags/diag_nvme.c
+index c1c0a20ddf14..e86786ccdccd 100644
+--- a/diags/diag_nvme.c
++++ b/diags/diag_nvme.c
+@@ -375,9 +375,40 @@ static int diagnose_nvme(char *device_name, struct notify *notify, char *file_pa
+ 	char endurance_s[sizeof(vpd.endurance) + 1], capacity_s[sizeof(vpd.capacity)+1];
+         uint64_t event_id;
+ 	uint8_t severity;
++	FILE *fp;
++	char tr_file_path[PATH_MAX];
+ 	uint32_t raw_data_len = 0;
+ 	unsigned char *raw_data = NULL;
+ 
++	/*
++	 * Skip diag test if NVMe is connected over fabric
++	 */
++	snprintf(tr_file_path, sizeof(tr_file_path),
++			NVME_SYS_PATH"/%s/%s", device_name, "transport");
++	fp = fopen(tr_file_path, "r");
++	if (fp) {
++		char buf[12];
++		int n = fread(buf, 1, sizeof(buf), fp);
++
++		if (n) {
++			/*
++			 * If NVMe transport is anything but pcie then skip the diag test
++			 */
++			if (strncmp(buf, "pcie", 4) != 0) {
++				fprintf(stdout, "Skipping diagnostics for nvmf : %s\n",
++						device_name);
++				fclose(fp);
++				return 0;
++			}
++		}
++		fclose(fp);
++	} else {
++		fprintf(stderr, "Skipping diagnostics for %s:\n"
++				"Unable to find the nvme transport type\n",
++				device_name);
++		return -1;
++	}
++
+ 	tmp_rc = regex_controller(controller_name, device_name);
+ 	if (tmp_rc != 0)
+ 		return -1;
+-- 
+2.43.2
+
