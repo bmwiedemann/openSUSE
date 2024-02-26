@@ -204,71 +204,71 @@ if test -d share ; then
     find share/ -type d -a -empty | xargs -r rm -vrf
     find share/ -type d -a -empty | xargs -r rm -vrf
 fi
-%patch0
-%patch62
-%patch1
+%patch -P 0
+%patch -P 62
+%patch -P 1
 %ifarch %arm
-%patch2
+%patch -P 2
 %endif
-%patch3
-%patch4
-%patch5
-%patch6
-%patch7
-%patch8
-%patch9
-%patch10
-%patch11
-%patch12
-%patch13
+%patch -P 3
+%patch -P 4
+%patch -P 5
+%patch -P 6
+%patch -P 7
+%patch -P 8
+%patch -P 9
+%patch -P 10
+%patch -P 11
+%patch -P 12
+%patch -P 13
 %ifarch ia64
-%patch14
+%patch -P 14
 %endif
-%patch15
-%patch16
-%patch17
-%patch18
-%patch19
-%patch20
-%patch21
-%patch22
-%patch23
-%patch24
-%patch27
-%patch28
-%patch29
-%patch30
-%patch31
-%patch32
-%patch33
-%patch34
-%patch35
-%patch36
-%patch37
-%patch38
-%patch39
-%patch40
-%patch41
-%patch42
+%patch -P 15
+%patch -P 16
+%patch -P 17
+%patch -P 18
+%patch -P 19
+%patch -P 20
+%patch -P 21
+%patch -P 22
+%patch -P 23
+%patch -P 24
+%patch -P 27
+%patch -P 28
+%patch -P 29
+%patch -P 30
+%patch -P 31
+%patch -P 32
+%patch -P 33
+%patch -P 34
+%patch -P 35
+%patch -P 36
+%patch -P 37
+%patch -P 38
+%patch -P 39
+%patch -P 40
+%patch -P 41
+%patch -P 42
 %if 0%{?ksh_no_vfork}
-%patch43
+%patch -P 43
 %endif
-%patch44
-%patch45
-%patch46
-%patch47
-%patch48
-%patch49
-%patch50
-%patch51
-%patch52
-%patch53
-%patch54
-%patch55
-%patch56
-%patch57
+%patch -P 44
+%patch -P 45
+%patch -P 46
+%patch -P 47
+%patch -P 48
+%patch -P 49
+%patch -P 50
+%patch -P 51
+%patch -P 52
+%patch -P 53
+%patch -P 54
+%patch -P 55
+%patch -P 56
+%patch -P 57
 
-%patch63 -p 1
+%patch -P 63 -p 1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
