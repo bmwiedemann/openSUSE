@@ -56,8 +56,8 @@ OpenShot Video Editor is a non-linear video editor. It can create and
 edit videos and movies using many video, audio, and image formats.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
+
 sed -e 's|pixmaps|icons/hicolor/scalable/apps|' \
     -e '/lib.mime.packages/d' \
     -i setup.py
