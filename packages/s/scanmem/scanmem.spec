@@ -38,8 +38,7 @@ times. After several scans of the process, scanmem isolates the position of
 the variable and allows you to modify its value.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv
