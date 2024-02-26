@@ -16,92 +16,138 @@
 #
 
 
-# Currently not available on 15.4 / 15.5
-%if 0%{?suse_version} > 1500
-%bcond_without omemo
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == ""
+ExclusiveArch:  do_not_build
+%endif
+%if "%{flavor}" == "qt5"
+%define qt5 1
+%define pkg_suffix -qt5
+%define lib_suffix Qt5
+%endif
+%if "%{flavor}" == "qt6"
+%define qt6 1
+%define pkg_suffix -qt6
+%define lib_suffix Qt6
 %endif
 %define sover 4
-Name:           libqxmpp
+Name:           libqxmpp%{?pkg_suffix}
 Version:        1.6.0
 Release:        0
 Summary:        Qt XMPP Library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/qxmpp-project/qxmpp/
-Source0:        https://github.com/qxmpp-project/qxmpp/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake >= 3.7
+Source0:        https://github.com/qxmpp-project/qxmpp/archive/v%{version}.tar.gz#/libqxmpp-%{version}.tar.gz
+BuildRequires:  cmake
+%if 0%{?qt5}
 BuildRequires:  doxygen
 BuildRequires:  fdupes
+%endif
 # c++-17 is required
-%if 0%{?suse_version} == 1500
-BuildRequires:  gcc10-c++
+%if 0%{?suse_version} < 1550
+BuildRequires:  gcc13-c++
 %endif
 BuildRequires:  pkgconfig
+%if 0%{?qt5}
 BuildRequires:  cmake(Qca-qt5)
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Xml)
-BuildRequires:  pkgconfig(gstreamer-1.0)
-%if %{with omemo}
-BuildRequires:  pkgconfig(libomemo-c)
+%else
+BuildRequires:  cmake(Qca-qt6)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Core5Compat)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6Test)
+BuildRequires:  cmake(Qt6Xml)
 %endif
+BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(libomemo-c)
 
 %description
 QXmpp is a cross-platform C++ XMPP client library based on Qt and C++.
 
-%package -n %{name}%{sover}
+%package -n libQXmpp%{lib_suffix}-%{sover}
 Summary:        Qt XMPP Library
 Group:          System/Libraries
 Provides:       libqxmpp-qt5-0 = %{version}
 Obsoletes:      libqxmpp-qt5-0 < %{version}
+# Renamed in the 1.5.4 release
+%if 0%{?qt5}
+Provides:       libqxmpp4 = %{version}
+Obsoletes:      libqxmpp4 < %{version}
+%endif
 
-%description -n %{name}%{sover}
+%description -n libQXmpp%{lib_suffix}-%{sover}
 QXmpp is a cross-platform C++ XMPP client library based on Qt and C++.
 
-%package -n %{name}-devel
+%package -n libQXmpp%{lib_suffix}-devel
 Summary:        Qxmpp Development Files
 Group:          Development/Libraries/C and C++
-Requires:       %{name}%{sover} = %{version}
+Requires:       libQXmpp%{lib_suffix}-%{sover} = %{version}
+Requires:       libqxmpp-devel = %{version}
 Requires:       pkgconfig(gstreamer-1.0)
+%if 0%{?qt5}
 Provides:       libqxmpp-qt5-devel = %{version}
 Obsoletes:      libqxmpp-qt5-devel < %{version}
+%endif
 
-%description -n %{name}-devel
+%description -n libQXmpp%{lib_suffix}-devel
 Development package for qxmpp.
 
-%package doc
+%if 0%{?qt5}
+# Backward compatibility module, it can be used for both Qt5 and Qt6 variants
+%package -n libqxmpp-devel
+Summary:        Compatibility helper for libqxmpp
+Requires:       (libQXmppQt5-devel = %{version} if libQt5Core-devel)
+Requires:       (libQXmppQt6-devel = %{version} if qt6-core-devel)
+
+%description -n libqxmpp-devel
+This package provides a backward compatibility helper for CMake users.
+If 'QT_VERSION_MAJOR' is not set in the dependent package, the CMake module
+will try to determine the needed QXmpp variant based on which Qt version was
+already found by CMake.
+
+# No need to build it twice
+%package -n libqxmpp-doc
 Summary:        Qxmpp library documentation
 Group:          Documentation/HTML
 BuildArch:      noarch
 
-%description doc
+%description -n libqxmpp-doc
 This packages provides documentation of Qxmpp library API.
+%endif
 
 %prep
-%setup -q -n qxmpp-%{version}
+%autosetup -p1 -n qxmpp-%{version}
 
 %build
-%if 0%{?suse_version} <= 1500
-  export CXX=g++-10
+%if 0%{?suse_version} < 1550
+  export CXX=g++-13
 %endif
 
+# Due to the cmake maintainers bad idea, CMAKE_INSTALL_DOCDIR has to be redefined
 %cmake \
   -DWITH_GSTREAMER=ON \
+%if 0%{?qt5}
+  -DCMAKE_INSTALL_DOCDIR=%{_datadir}/doc/qxmpp \
   -DBUILD_DOCUMENTATION=ON \
-  -DBUILD_EXAMPLES=ON \
-  -DBUILD_TESTS=ON \
-%if %{with omemo}
-  -DBUILD_OMEMO=ON \
 %endif
+  -DBUILD_TESTS=ON \
+  -DBUILD_OMEMO=ON
 
 %cmake_build
 
 %install
 %cmake_install
 
+%if 0%{?qt5}
 %fdupes %{buildroot}%{_datadir}/doc/qxmpp/
+%endif
 
 %check
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
@@ -109,29 +155,31 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 # Exclude tests needing a network connection
 %{ctest --exclude-regex "tst_(qxmppcallmanager|qxmppiceconnection|qxmppserver|qxmpptransfermanager|qxmppuploadrequestmanager)"}
 
-%ldconfig_scriptlets -n %{name}%{sover}
+%ldconfig_scriptlets -n libQXmpp%{lib_suffix}-%{sover}
 
-%files -n %{name}%{sover}
+%files -n libQXmpp%{lib_suffix}-%{sover}
 %license LICENSES/*
 %doc AUTHORS CHANGELOG.md README.md
-%{_libdir}/libQXmppQt5.so.*
-%if %{with omemo}
-%{_libdir}/libQXmppOmemoQt5.so.*
-%endif
+%{_libdir}/libQXmpp%{lib_suffix}.so.*
+%{_libdir}/libQXmppOmemo%{lib_suffix}.so.*
 
-%files -n %{name}-devel
-%{_includedir}/QXmppQt5/
-%{_libdir}/libQXmppQt5.so
-%{_libdir}/cmake/QXmpp/
-%{_libdir}/cmake/QXmppQt5/
+%files -n libQXmpp%{lib_suffix}-devel
+%{_includedir}/QXmpp%{lib_suffix}/
+%{_libdir}/libQXmpp%{lib_suffix}.so
+%{_libdir}/libQXmppOmemo%{lib_suffix}.so
+%{_libdir}/cmake/QXmpp%{lib_suffix}/
+%{_libdir}/cmake/QXmppOmemo%{lib_suffix}/
+%{_libdir}/pkgconfig/QXmpp%{lib_suffix}.pc
+%if 0%{?qt5}
 %{_libdir}/pkgconfig/qxmpp.pc
-%{_libdir}/pkgconfig/QXmppQt5.pc
-%if %{with omemo}
-%{_libdir}/libQXmppOmemoQt5.so
-%{_libdir}/cmake/QXmppOmemoQt5/
 %endif
 
-%files doc
+%if 0%{?qt5}
+%files -n libqxmpp-devel
+%{_libdir}/cmake/QXmpp/
+
+%files -n libqxmpp-doc
 %{_datadir}/doc/qxmpp/
+%endif
 
 %changelog

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb  8 10:22:03 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add build flavors to have both Qt5 and Qt6 variants available.
+  The KDE CI and future packages require a qt6-based libqxmpp
+- Enable the onemo build dependency on Leap 15.5/15.6
+- Switch to the latest GCC version available in Leap for packages
+  that can't build with the default compiler
+
+-------------------------------------------------------------------
 Wed Feb  7 05:49:14 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.6.0:
