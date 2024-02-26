@@ -199,11 +199,11 @@ Kubernetes client tools common files
 
 %prep
 %setup -q -n kubernetes-%{version}
-%patch2 -p1
-%patch3 -p1
-%patch4 -p0
-%patch5 -p1
-%patch6 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p0
+%patch -P 5 -p1
+%patch -P 6 -p1
 
 %build
 # This is fixing bug bsc#1065972

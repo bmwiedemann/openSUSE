@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 12:45:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Jan 10 17:43:49 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add kubernetes-sort-custom-column-print-flags.patch
