@@ -59,8 +59,7 @@ This can be changed by clicking on the "Actions" menu (see below for
 more details).
 
 %prep
-%setup
-%patch0
+%autosetup -p0
 
 %build
 xmkmf -a
