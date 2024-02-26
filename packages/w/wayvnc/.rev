@@ -119,4 +119,21 @@
   * Too strict authentication related config parameter sanitation</comment>
     <requestid>1123504</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>53f3f69b7a3437f343dea94afbe2ab34</srcmd5>
+    <version>0.8.0</version>
+    <time>1708973133</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.8.0:
+  Highlights:
+  * Transient seats via the new ext-transient-seat-v1 protocol. These
+    are not implemented in any compositor yet, but will hopefully
+    be a part of sway 0.10
+  * Automatic server-side resizing of headless outputs, by courtesy of Consolatis
+  * Detached mode, which allows wayvnc to attach to and detach from a running compositor
+  Bugfixes:
+  * A crash when trying to attach to a non-wlroots compositor has been fixed.
+    Attaching fails, but it doesn't crash.</comment>
+    <requestid>1150571</requestid>
+  </revision>
 </revisionlist>

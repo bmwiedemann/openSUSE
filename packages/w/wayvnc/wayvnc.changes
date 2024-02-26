@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb 26 07:16:34 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.0:
+  Highlights:
+  * Transient seats via the new ext-transient-seat-v1 protocol. These
+    are not implemented in any compositor yet, but will hopefully
+    be a part of sway 0.10
+  * Automatic server-side resizing of headless outputs, by courtesy of Consolatis
+  * Detached mode, which allows wayvnc to attach to and detach from a running compositor
+  Bugfixes:
+  * A crash when trying to attach to a non-wlroots compositor has been fixed.
+    Attaching fails, but it doesn't crash.
+
+-------------------------------------------------------------------
 Mon Nov  6 08:01:17 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.7.2:
