@@ -81,7 +81,7 @@ This package provides example files for Charliecloud.
 %prep
 %setup -q
 %if "%{_lib}" == "lib64"
-%patch0 -p 1
+%patch -P 0 -p 1
 %endif
 
 %build
