@@ -84,11 +84,11 @@ and libraries needed to build termcap based applications.
 
 %prep
 %setup -q -b 1
-%patch0 -p0
-%patch2 -p1 -b .setuid
-%patch3 -p1 -b .tc
+%patch -P 0 -p0
+%patch -P 2 -p1 -b .setuid
+%patch -P 3 -p1 -b .tc
 cd ../curses-bsd4.4
-%patch1 -p0
+%patch -P 1 -p0
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

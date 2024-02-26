@@ -212,4 +212,12 @@ zu finden ... nur eine wesentlich Ã¤ltere Version.</comment>
 - New RPM API change ... now no %patch anymore only %patch0</comment>
     <requestid>1119231</requestid>
   </revision>
+  <revision rev="29" vrev="1049">
+    <srcmd5>e4746d9b6161a4e81070147952d222c5</srcmd5>
+    <version>unknown</version>
+    <time>1708973260</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN. (forwarded request 1151376 from pgajdos)</comment>
+    <requestid>1151474</requestid>
+  </revision>
 </revisionlist>

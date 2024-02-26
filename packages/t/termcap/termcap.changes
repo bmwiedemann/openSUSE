@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:35:10 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Oct 20 12:16:55 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Create a devel-static sub packages for static libs as well 
