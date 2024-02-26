@@ -50,8 +50,8 @@ If the archive is corrupt, you just loose the current file, not
 the whole archive.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
+
 cp -p %{SOURCE1} .
 
 %build
