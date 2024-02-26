@@ -44,8 +44,7 @@ You will find the documentation in the following directory
 
 
 %prep
-%setup -n Xterminal-%{version}
-%patch0 -p1
+%autosetup -p1 -n Xterminal-%{version}
 
 %build
     make -f Makefile.Linux compile
