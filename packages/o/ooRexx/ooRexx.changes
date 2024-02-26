@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:39:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Oct 15 18:39:48 UTC 2021 - Erico Mendonca <erico.mendonca@suse.com>
 
 - bsc#1191085: re-adding rc* service sbin links with macros.

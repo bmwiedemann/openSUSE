@@ -195,4 +195,12 @@ Thus, the -fpermissive flag needs to be added.
 </comment>
     <requestid>925540</requestid>
   </revision>
+  <revision rev="24" vrev="19">
+    <srcmd5>cef2b97f055b9ea021b708a8c5dd1e10</srcmd5>
+    <version>4.2.0</version>
+    <time>1708973235</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151413</requestid>
+  </revision>
 </revisionlist>
