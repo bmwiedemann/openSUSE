@@ -1,7 +1,7 @@
 #
 # spec file for package freecell-solver
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,10 +33,10 @@ BuildRequires:  gmp-devel
 BuildRequires:  gperf
 BuildRequires:  perl-Template-Toolkit
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  cmake(Rinutils)
 BuildRequires:  perl(Moo)
 BuildRequires:  perl(Path::Tiny)
+BuildRequires:  pkgconfig(glib-2.0)
 Requires:       python3-pysol-cards
 Requires:       python3-random2
 Requires:       python3-six
@@ -79,11 +79,13 @@ Development package for the libfreecell-solver library
 %autosetup -p1
 
 %build
-%cmake -DBUILD_STATIC_LIBRARY=OFF \
+%cmake -DBUILD_STATIC_LIBRARY:BOOL=FALSE \
+       -DCMAKE_INSTALL_DOCDIR:STRING=%{_datadir}/doc/freecell-solver \
 %if %{without tests}
-       -DFCS_WITH_TEST_SUITE=OFF -D_PYTHON3="_PYTHON3-NOTFOUND" \
+       -DFCS_WITH_TEST_SUITE:BOOL=FALSE -D_PYTHON3=_PYTHON3-NOTFOUND \
 %endif
-       -DFCS_AVOID_TCMALLOC=ON
+       -DFCS_AVOID_TCMALLOC:BOOL=TRUE
+
 %cmake_build
 
 %if %{with tests}
@@ -96,13 +98,12 @@ Development package for the libfreecell-solver library
 
 # Fix the rpmlint warnings
 rm -v %{buildroot}%{_datadir}/doc/freecell-solver/INSTALL
-sed -i 's#%{_bindir}/env python3#%{_bindir}/python3#' %{buildroot}%{_bindir}/*.py
-sed -i 's#%{_bindir}/env python3#%{_bindir}/python3#' %{buildroot}%{_bindir}/gen-multiple-pysol-layouts
+sed -i 's#%{_bindir}/env python3$#%{_bindir}/python3#' %{buildroot}%{_bindir}/*.py
+sed -i 's#%{_bindir}/env python3$#%{_bindir}/python3#' %{buildroot}%{_bindir}/gen-multiple-pysol-layouts
 sed -i '/^#!\/bin/d' %{buildroot}%{_datadir}/freecell-solver/presets/*.sh
 %fdupes -s %{buildroot}%{_mandir}
 
-%post   -n %{libname}%{soversion} -p /sbin/ldconfig
-%postun -n %{libname}%{soversion} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}%{soversion}
 
 %files -n %{libname}%{soversion}
 %license COPYING.asciidoc

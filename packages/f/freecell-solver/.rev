@@ -87,4 +87,13 @@
     <comment>Update to 6.8.0</comment>
     <requestid>1039188</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>b67f0bff8bc421d5354dda7aed93919b</srcmd5>
+    <version>6.8.0</version>
+    <time>1708973161</time>
+    <user>anag+factory</user>
+    <comment>- Set CMAKE_INSTALL_DOCDIR to work around incompatible changes
+  added to macros.cmake.</comment>
+    <requestid>1150782</requestid>
+  </revision>
 </revisionlist>

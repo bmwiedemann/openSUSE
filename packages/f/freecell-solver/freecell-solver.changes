@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 09:00:33 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Set CMAKE_INSTALL_DOCDIR to work around incompatible changes
+  added to macros.cmake.
+
+-------------------------------------------------------------------
 Wed Nov 30 18:59:04 UTC 2022 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.0
