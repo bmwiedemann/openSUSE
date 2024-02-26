@@ -52,8 +52,7 @@ BuildArch:      noarch
 This package contains the documentation for %{name}.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %meson \
