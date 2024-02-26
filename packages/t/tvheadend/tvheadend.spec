@@ -67,10 +67,7 @@ day-to-day operations, such as searching the electronic program guide
 (EPG) and for scheduling recordings.
 
 %prep
-%setup -q
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autosetup  -p1
 
 sed -e "s/-u \([^ ]*\) -g \([^ ]*\)/-u %{htsuser} -g %{htsgroup}/" -i rpm/%{name}.sysconfig
 sed -e '/^TVH_ARGS/cTVH_ARGS="-C"' -i debian/%{name}.default
