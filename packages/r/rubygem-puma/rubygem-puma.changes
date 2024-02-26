@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jan 29 14:23:04 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- 6.4.1:
+
+* Bugfixes
+  * DSL#warn_if_in_single_mode - fixup when workers set via CLI ([#3256])
+  * Fix `idle-timeout` not working in cluster mode ([#3235], [#3228], [#3282], [#3283])
+  * Fix worker 0 timing out during phased restart ([#3225], [#2786])
+  * context_builder.rb - require openssl if verify_mode != 'none' ([#3179])
+  * Make puma cluster process suitable as PID 1 ([#3255])
+  * Improve Puma::NullIO consistency with real IO ([#3276])
+  * extconf.rb - fixup to detect openssl info in Ruby build ([#3271], [#3266])
+  * MiniSSL.java - set serialVersionUID, fix RaiseException deprecation ([#3270])
+  * dsl.rb - fix warn_if_in_single_mode when WEB_CONCURRENCY is set ([#3265], [#3264])
+
+* Maintenance
+  * LOTS of test refactoring to make tests more stable and easier to write - thanks to @MSP-Greg!
+  * Fix bug in tests re: TestPuma::HOST4 ([#3254])
+  * Dockerfile for minimal repros: use Ruby 3.2, expect bundler installed ([#3245])
+  * fix define_method calls, use Symbol parameter instead of String ([#3293])
+
+* Docs
+  * README.md - add the puma-acme plugin ([#3301])
+  * Remove `--keep-file-descriptors` flag from systemd docs ([#3248])
+  * Note symlink mechanism in restart documentation for hot restart ([#3298])
+
+
+
+-------------------------------------------------------------------
 Sat Nov  4 00:13:18 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 6.4.0
