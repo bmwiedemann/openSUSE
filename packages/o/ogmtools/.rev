@@ -123,4 +123,12 @@
     <comment>- fix build against gcc 11</comment>
     <requestid>898978</requestid>
   </revision>
+  <revision rev="19" vrev="169">
+    <srcmd5>decf535cfadce6f72fad332384217042</srcmd5>
+    <version>1.5</version>
+    <time>1708974157</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1151402 from dimstar)</comment>
+    <requestid>1151578</requestid>
+  </revision>
 </revisionlist>

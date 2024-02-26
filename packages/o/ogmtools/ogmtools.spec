@@ -36,8 +36,7 @@ These tools allow information about (ogminfo), extraction from
 media streams.	OGM stands for OGG media streams.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 autoreconf -fiv
