@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb 26 04:01:36 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to 0.1.6
+  * pool-buffer: Fix type conversion issues
+  * Check the return value of pipe
+  * pool-buffer: Reduce struct padding
+- Updates from 0.1.5:
+  * Fix build failure when compiling in release
+  * Implement clipboard paste support
+- Updates from 0.1.4:
+  * pango: Remove unused format specifier
+  * Render after reading stdin
+  * Drop render_frame on surface_enter
+  * Fix crash when some line contains %
+  * readme: Tweak wording
+
+-------------------------------------------------------------------
 Fri Mar 17 14:14:03 UTC 2023 - llyyr <llyyr.public@gmail.com>
 
 - Update to 0.1.3
