@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 08:09:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Fri Feb 24 15:35:17 UTC 2023 - Wolfgang Engel <wolfgang.engel@suse.com>
 
 - Add patch add_list-persisted_command-ec102481.patch:

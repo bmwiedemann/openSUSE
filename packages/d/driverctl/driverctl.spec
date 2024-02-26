@@ -51,8 +51,7 @@ created by driverctl are persistent across system reboots
 by default.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %make_build
