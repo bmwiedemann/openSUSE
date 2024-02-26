@@ -76,7 +76,7 @@ See the website http://volle-kraft-voraus.de for more information.
 %prep
 %setup -q
 %if %{with qpdfview}
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 
 %build
