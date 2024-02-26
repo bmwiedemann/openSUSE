@@ -37,10 +37,7 @@ effort is invested adding annotations to programs, LCLint can perform
 stronger checks than can be done by any standard lint.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 %configure
