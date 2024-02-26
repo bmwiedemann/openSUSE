@@ -56,8 +56,7 @@ BuildArch:      noarch
 A few extra fonts from SGI, very readable.
 
 %prep
-%setup -q -n %{upstream_name}
-%patch0 -p1
+%autosetup -p1 -n %{upstream_name}
 
 %build
 xmkmf
