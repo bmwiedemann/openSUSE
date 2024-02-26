@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 14:09:26 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Oct 20 10:27:04 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Drop support for openmpi[123] (jsc#PED-7111)

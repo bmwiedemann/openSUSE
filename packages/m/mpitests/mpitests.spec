@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package mpitests
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -139,8 +139,8 @@ Set of popular MPI benchmarks: IMB v%{imb_ver} OSU benchmarks ver %{osu_ver}
 %prep
 %setup -c -q
 %setup -T -D -a 1 -q
-%patch1 -p0
-%patch2 -p0
+%patch -P 1 -p0
+%patch -P 2 -p0
 
 %if "%{flavor}" != ""
 %build
