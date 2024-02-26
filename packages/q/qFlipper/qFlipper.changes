@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 24 15:14:47 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Remove non-fatally failing execution of setup_rules.sh. The actual
+  udev rules are installed by qmake from installer-assets/udev/
+  * gh#flipperdevices/qFlipper#215
+
+-------------------------------------------------------------------
 Wed Dec 20 12:51:35 UTC 2023 - msuchanek@suse.com
 
 - Update to version 1.3.3:

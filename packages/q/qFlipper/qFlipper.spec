@@ -1,7 +1,7 @@
 #
 # spec file for package qFlipper
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,7 +70,8 @@ Summary:        Application for updating Flipper Zero firmware - udev rules
 BuildArch:      noarch
 
 %description base
-Application for updating Flipper Zero firmware - udev rules
+Application for updating Flipper Zero firmware - udev rules.
+The user must be in the dialout group.
 
 %prep
 %setup -q
@@ -80,7 +81,6 @@ githash=$(echo %{version} | tr '.' ' ' | rev | cut -d' ' -f1 | rev)
 sed -i -e "s|^[ \t]*GIT_VERSION = .*|GIT_VERSION = $gitver|" qflipper_common.pri
 sed -i -e "s|^[ \t]*GIT_COMMIT = .*|GIT_COMMIT = $githash|" qflipper_common.pri
 sed -i -e "s|^[ \t]*GIT_TIMESTAMP = .*|GIT_TIMESTAMP = $gitdate|" qflipper_common.pri
-sed -i -e "s|^RULES_DIR=.*|RULES_DIR=\\\${PREFIX}%{_udevrulesdir}|" setup_rules.sh
 
 %build
 %qmake5 qFlipper.pro -spec linux-g++ CONFIG+=qtquickcompiler DEFINES+=DISABLE_APPLICATION_UPDATES
@@ -89,7 +89,6 @@ sed -i -e "s|^RULES_DIR=.*|RULES_DIR=\\\${PREFIX}%{_udevrulesdir}|" setup_rules.
 
 %install
 %qmake5_install
-echo i | PREFIX=%{buildroot} sh setup_rules.sh
 
 %files
 %license LICENSE
@@ -104,7 +103,7 @@ echo i | PREFIX=%{buildroot} sh setup_rules.sh
 %{_bindir}/qFlipper-cli
 
 %files base
-%{_prefix}/lib/udev/rules.d/42-flipperzero.rules
+%{_udevrulesdir}/42-flipperzero.rules
 
 %files libflipperproto
 %dir %{_prefix}/lib/qFlipper
