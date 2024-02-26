@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:45:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Jan 29 09:56:45 UTC 2024 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
 
 - update to openafs-1.8.11~pre1 
