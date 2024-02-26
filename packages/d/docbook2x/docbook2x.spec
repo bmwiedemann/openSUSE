@@ -69,7 +69,7 @@ A new tool based on Perl modules.
 %prep
 %setup -q -n docbook2X-%{version}
 cp %{S:1} README.SUSE
-%patch0 -p 1
+%patch -P 0 -p 1
 
 %build
 autoreconf --force --install
