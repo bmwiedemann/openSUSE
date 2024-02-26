@@ -36,8 +36,7 @@ Each task has a title and description, a deadline and scheduled date as well
 as categories and priorities.
 
 %prep
-%setup -q
-%patch1
+%autosetup -p0
 
 %build
 %configure
