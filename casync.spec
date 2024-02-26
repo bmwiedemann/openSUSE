@@ -53,8 +53,7 @@ original data. When the original data is modified, only the new chunks
 have to be transferred during an update.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %meson
