@@ -1,7 +1,7 @@
 #
 # spec file for package python-HyperKitty
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %bcond_without testsuite
 
@@ -40,6 +41,7 @@
 %global webapps_dir /srv/www/webapps
 
 %global hyperkitty_pkgname   HyperKitty
+%global lowname              hyperkitty
 
 %global hyperkitty_basedir   %{webapps_dir}/mailman/hyperkitty
 %global hyperkitty_localedir %{hyperkitty_basedir}/locale
@@ -52,19 +54,19 @@
 
 %global hyperkitty_services hyperkitty-qcluster.service hyperkitty-runjob-daily.service hyperkitty-runjob-daily.timer hyperkitty-runjob-hourly.service hyperkitty-runjob-hourly.timer hyperkitty-runjob-minutely.service hyperkitty-runjob-minutely.timer hyperkitty-runjob-monthly.service hyperkitty-runjob-monthly.timer hyperkitty-runjob-quarter-hourly.service hyperkitty-runjob-quarter-hourly.timer hyperkitty-runjob-weekly.service hyperkitty-runjob-weekly.timer hyperkitty-runjob-yearly.service hyperkitty-runjob-yearly.timer
 
-# keep in sync with python-mailman-web/python-postorious
+# keep in sync with python-mailman/python-mailman-web/python-postorious
 %if 0%{?suse_version} >= 1550
-# Newest python supported by mailman is Python 3.11
-%define pythons python311
-%define mypython python311
-%define __mypython %{__python311}
-%define mypython_sitelib %{python311_sitelib}
+# Newest python supported by mailman is Python 3.12 (?)
+%define pythons python312
+%define mypython python312
+%define __mypython %{__python312}
+%define mypython_sitelib %{python312_sitelib}
 %else
 %{?sle15_python_module_pythons}
-%define pythons python311
-%define mypython python311
-%define __mypython %{__python311}
-%define mypython_sitelib %{python311_sitelib}
+%define pythons python312
+%define mypython python312
+%define __mypython %{__python312}
+%define mypython_sitelib %{python312_sitelib}
 %endif
 
 Name:           python-HyperKitty
@@ -93,13 +95,13 @@ Patch0:         hyperkitty-settings.patch
 Patch2:         mistune3.patch
 #
 # PATCH-FIX-UPSTREAM gl-mr300-add-opengraph-metadata.patch gl#mailman/hyperkitty#300
-Patch98:         gl-mr300-add-opengraph-metadata.patch
+Patch98:        gl-mr300-add-opengraph-metadata.patch
 # PATCH-FIX-UPSTREAM gl-mr470-introduce-feed-filtering.patch gl#mailman/hyperkitty#470
-Patch99:         gl-mr470-introduce-feed-filtering.patch
+Patch99:        gl-mr470-introduce-feed-filtering.patch
 #
 BuildRequires:  %{python_module Django >= %{django_min_version} with %python-Django < %{django_max_version}}
-BuildRequires:  %{python_module django-compressor >= %{django_compressor_min_version}}
 BuildRequires:  %{python_module Whoosh}
+BuildRequires:  %{python_module django-compressor >= %{django_compressor_min_version}}
 BuildRequires:  %{python_module django-debug-toolbar >= 2.2}
 BuildRequires:  %{python_module django-extensions >= %{django_extensions_min_version}}
 BuildRequires:  %{python_module django-gravatar2 >= %{django_gravatar2_min_version}}
@@ -154,7 +156,7 @@ Requires:       %{mypython}-django-haystack >= 2.8.0
 Requires:       %{mypython}-django-mailman3 >= %{django_mailman3_min_version}
 Requires:       %{mypython}-django-q >= %{django_q_min_version}
 Requires:       %{mypython}-djangorestframework >= %{djangorestframework_min_version}
-Requires:       %{mypython}-flufl.lock >= %{flufl_lock_min_version} 
+Requires:       %{mypython}-flufl.lock >= %{flufl_lock_min_version}
 Requires:       %{mypython}-mailmanclient >= %{mailmanclient_min_version}
 Requires:       %{mypython}-mistune >= %{mistune_min_version}
 Requires:       %{mypython}-networkx >= %{networkx_min_version}
@@ -181,8 +183,7 @@ Requires:       %{hyperkitty_pkgname}
 Requires:       acl
 Requires:       openssl
 Requires:       sudo
-Requires(pre):  /usr/sbin/groupadd
-Requires(pre):  /usr/sbin/useradd
+Requires:       system-user-%{lowname}
 
 %description -n %{hyperkitty_pkgname}-web
 A web user interface for GNU Mailman.
@@ -203,6 +204,15 @@ A web user interface for GNU Mailman.
 
 This package holds the uwsgi configuration.
 
+%package -n system-user-%{lowname}
+Summary:        System user for HyperKitty
+BuildArch:      noarch
+BuildRequires:  sysuser-tools
+%sysusers_requires
+
+%description -n system-user-%{lowname}
+System user for HyperKitty.
+
 %prep
 %setup -n HyperKitty-%{version}
 cp %{SOURCE30} .
@@ -212,6 +222,10 @@ touch settings_local.py
 rsync -a example_project/* build_static_files
 
 %autopatch -p1
+
+tee > %{lowname}.sysuser <<EOF
+u %{lowname} - "HyperKitty" %{hyperkitty_basedir} -
+EOF
 
 %build
 sed -i 's|^#!/usr/bin/env.*|#!%{__mypython}|' \
@@ -225,6 +239,8 @@ sed -i 's|python3|%{mypython}|' %{SOURCE12}
 export PYTHONPATH=$(pwd)
 %python_exec build_static_files/manage.py collectstatic --clear --noinput
 %python_exec build_static_files/manage.py compress --force
+
+%sysusers_generate_pre %{lowname}.sysuser %{lowname}
 
 %install
 install -d -m 0750 \
@@ -275,7 +291,7 @@ ln -svf %{hyperkitty_etcdir}/settings_local.py \
 
 # Manage script
 install -d -m 0755 %{buildroot}%{_sbindir}
-install -m 0750 %{SOURCE10} %{buildroot}%{_sbindir}/hyperkitty-manage
+install -m 0755 %{SOURCE10} %{buildroot}%{_sbindir}/hyperkitty-manage
 
 install -d -m 0755 %{buildroot}%{_sysconfdir}/uwsgi/vassals
 install -m 0644 %{SOURCE12} %{buildroot}%{_sysconfdir}/uwsgi/vassals/hyperkitty.ini
@@ -315,6 +331,8 @@ for job in \
     sed -i "s#@HYPERKITTY_RUNJOB@#${hyperkitty_runjob_name}#g" %{buildroot}%{_unitdir}/hyperkitty-runjob-${job}.timer
 done
 
+install -Dm644 %{lowname}.sysuser %{buildroot}%{_sysusersdir}/%{lowname}.conf
+
 %if %{with testuite}
 %check
 export PYTHONPATH="$(pwd)"
@@ -323,10 +341,9 @@ export LANG=C.UTF-8
 %endif
 
 %pre -n %{hyperkitty_pkgname}-web
-/usr/sbin/groupadd -r hyperkitty  || :
-/usr/sbin/useradd  -g hyperkitty -s /bin/false -r -c "HyperKitty" -d %{hyperkitty_basedir} hyperkitty  || :
-
 %service_add_pre %{hyperkitty_services}
+
+%pre -n system-user-%{lowname} -f %{lowname}.pre
 
 %post -n %{hyperkitty_pkgname}-web
 # We need a SECRET_KEY for manage to work
@@ -400,5 +417,8 @@ fi
 %dir %{_sysconfdir}/uwsgi
 %dir %{_sysconfdir}/uwsgi/vassals
 %config (noreplace) %{_sysconfdir}/uwsgi/vassals/hyperkitty.ini
+
+%files -n system-user-%{lowname}
+%{_sysusersdir}/%{lowname}.conf
 
 %changelog
