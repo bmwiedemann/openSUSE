@@ -8,4 +8,18 @@
 - add chntpw_1.0-1.diff.gz all patches from debian, fixes build and runtime bugs</comment>
     <requestid>560906</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>25391bbeb36833668770b43d3d9753f3</srcmd5>
+    <version>1.0</version>
+    <time>1708973209</time>
+    <user>anag+factory</user>
+    <comment>- Fix URL to debian diff file
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+- Remove obsolete Groups tag (fate#326485)
+- initial package for version 140201
+- add chntpw_1.0-1.diff.gz all patches from debian, fixes build and runtime bugs
+</comment>
+    <requestid>1151243</requestid>
+  </revision>
 </revisionlist>

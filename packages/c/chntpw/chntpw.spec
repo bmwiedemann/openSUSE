@@ -1,7 +1,7 @@
 #
 # spec file for package chntpw
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define         dateversion 140201
 Name:           chntpw
 Version:        1.0
 Release:        0
 Summary:        Offline NT Password and Registry Editor
-License:        GPL-2.0 and LGPL-2.1
-Group:          System/Management
-Url:            http://pogostick.net/~pnh/ntpasswd/
+License:        GPL-2.0-only AND LGPL-2.1-only
+URL:            http://pogostick.net/~pnh/ntpasswd/
 Source:         http://pogostick.net/~pnh/ntpasswd/chntpw-source-%{dateversion}.zip
 # PATCH-FIX-UPSTREAM chntpw_1.0-1.diff.gz -- use all patches from debian, fixes build and runtime bugs
-Patch0:         http://http.debian.net/debian/pool/main/c/chntpw/chntpw_%{version}-1.diff.gz
+Patch0:         http://http.debian.net/debian/pool/main/c/chntpw/chntpw_%{version}-1.1.diff.gz
 BuildRequires:  libgcrypt-devel
 BuildRequires:  unzip
 
@@ -35,11 +35,11 @@ Supports all Windows from NT3.5 to Win8.1, also 64 bit and also the Server versi
 You do not need to know the old password to set a new one.
 It works offline, that is, you have to shutdown your computer and boot off a CD or USB disk to do the password reset.
 Will detect and offer to unlock locked or disabled out user accounts.
-There is also a registry editor and other registry utilities that works under linux/unix, and can be used for other things than password editing. 
+There is also a registry editor and other registry utilities that works under linux/unix, and can be used for other things than password editing.
 
 %prep
-%setup -qn %{name}-%{dateversion}
-%patch0 -p1
+%autosetup -p1 -n %{name}-%{dateversion}
+
 while read line; do
     [ "${line#\#}"x = "${line}x" ] && echo "Applying patch $line" && /usr/bin/patch --no-backup-if-mismatch -p1 --fuzz=0 < "debian/patches/$line"
 done < debian/patches/series
@@ -67,4 +67,3 @@ install -Dm 644 debian/%{name}.8 %{buildroot}%{_mandir}/man8/%{name}.8
 %{_mandir}/man8/%{name}.8%{ext_man}
 
 %changelog
-
