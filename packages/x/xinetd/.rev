@@ -381,4 +381,12 @@ Use this license from license.opensuse.org until upstream SPDX accepts xinetd in
   * Various tiny tweaks from pullrequests</comment>
     <requestid>627054</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>4927da02f0faee9a7cb1ded707c61d40</srcmd5>
+    <version>2.3.15.4</version>
+    <time>1708973365</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1151316 from dimstar)</comment>
+    <requestid>1151773</requestid>
+  </revision>
 </revisionlist>

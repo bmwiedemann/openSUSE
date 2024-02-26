@@ -50,8 +50,7 @@ functionality:
 - Clear configuration file
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 # README.SUSE and logrotate
 cp %{SOURCE1} %{SOURCE2} .
