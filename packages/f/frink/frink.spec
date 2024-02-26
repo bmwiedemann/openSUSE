@@ -37,8 +37,7 @@ See /usr/share/doc/packages/frink/README and the output of "frink -h"
 for details.
 
 %prep
-%setup -q -n %{name}-2.3.1
-%patch0
+%autosetup -p0 -n %{name}-2.3.1
 
 %build
 autoreconf -i --force
