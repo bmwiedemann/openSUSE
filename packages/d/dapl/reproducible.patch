@@ -17,10 +17,10 @@ Date:   Fri Jul 14 17:53:30 2017 +0200
     
     Signed-off-by: Bernhard M. Wiedemann <bwiedemann@suse.de>
 
-diff --git a/Makefile.am b/Makefile.am
+diff --git Makefile.am Makefile.am
 index 483ba90..91def97 100755
---- a/Makefile.am
-+++ b/Makefile.am
+--- Makefile.am
++++ Makefile.am
 @@ -48,7 +48,7 @@ AM_CFLAGS = -g -Wall -D_GNU_SOURCE -DDAT_CONF="\"$(sysconfdir)/dat.conf\""
  endif
  

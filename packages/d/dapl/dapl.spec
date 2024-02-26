@@ -131,15 +131,7 @@ Conflicts:      dapl-utils
 Test suite to validate the uDAPL library APIs.
 
 %prep
-%setup -q -n dapl-%{version}
-%patch1
-%patch5
-%patch6
-%patch7
-%patch12
-%patch13
-%patch14
-%patch15 -p1
+%autosetup -p0 -n dapl-%{version}
 
 %build
 %if %suse_version == 1110
