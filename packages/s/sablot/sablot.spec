@@ -49,10 +49,7 @@ Obsoletes:      sablotd
 Header files and libraries needed for sablot development.
 
 %prep
-%setup -q -n Sablot-%{version}
-%patch0
-%patch1
-%patch2
+%autosetup -p0 -n Sablot-%{version}
 
 %build
 chmod 644 README
