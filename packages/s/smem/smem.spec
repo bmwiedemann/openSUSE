@@ -42,8 +42,8 @@ instead measures each application's "fair share" of each shared area to give
 a realistic measure.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
+
 sed -i 's|%{_bindir}/env python|%{_bindir}/python3|g' smem
 
 %build
