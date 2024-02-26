@@ -234,77 +234,77 @@ testing framework and utilities.
 
 %prep
 %setup -q -n %{_rname}-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch9 -p1
-%patch10 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
-%patch19 -p1
-%patch26 -p1
-%patch33 -p1
-%patch34 -p1
-%patch35 -p1
-%patch37 -p1
-%patch38 -p1
-%patch41 -p1
-%patch50 -p1
-%patch51 -p1
-%patch53 -p1
-%patch54 -p1
-%patch55 -p1
-%patch56 -p1
-%patch57 -p1
-%patch58 -p1
-%patch59 -p1
-%patch61 -p1
-%patch63 -p1
-%patch70 -p1
-%patch71 -p1
-%patch73 -p1
-%patch74 -p1
-%patch75 -p1
-%patch76 -p1
-%patch77 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
+%patch -P 9 -p1
+%patch -P 10 -p1
+%patch -P 13 -p1
+%patch -P 14 -p1
+%patch -P 15 -p1
+%patch -P 16 -p1
+%patch -P 17 -p1
+%patch -P 18 -p1
+%patch -P 19 -p1
+%patch -P 26 -p1
+%patch -P 33 -p1
+%patch -P 34 -p1
+%patch -P 35 -p1
+%patch -P 37 -p1
+%patch -P 38 -p1
+%patch -P 41 -p1
+%patch -P 50 -p1
+%patch -P 51 -p1
+%patch -P 53 -p1
+%patch -P 54 -p1
+%patch -P 55 -p1
+%patch -P 56 -p1
+%patch -P 57 -p1
+%patch -P 58 -p1
+%patch -P 59 -p1
+%patch -P 61 -p1
+%patch -P 63 -p1
+%patch -P 70 -p1
+%patch -P 71 -p1
+%patch -P 73 -p1
+%patch -P 74 -p1
+%patch -P 75 -p1
+%patch -P 76 -p1
+%patch -P 77 -p1
 # we don't have FIPS_crypto_threadid_set_callback
-%patch78 -R -p1
-%patch79 -p1
-%patch80 -p1
-%patch81 -p1
-%patch82 -p1
-%patch83 -p1
-%patch84 -p1
-%patch85 -p1
-%patch86 -p1
-%patch87 -p1
-%patch88 -p1
-%patch89 -p1
-%patch90 -p1
-%patch91 -p1
-%patch92 -p1
-%patch93 -p1
-%patch94 -p1
-%patch95 -p1
-%patch96 -p1
-%patch97 -p1
-%patch98 -p1
-%patch99 -p1
-%patch100 -p1
-%patch101 -p1
-%patch102 -p1
-%patch103 -p1
-%patch104 -p1
-%patch105 -p1
+%patch -P 78 -R -p1
+%patch -P 79 -p1
+%patch -P 80 -p1
+%patch -P 81 -p1
+%patch -P 82 -p1
+%patch -P 83 -p1
+%patch -P 84 -p1
+%patch -P 85 -p1
+%patch -P 86 -p1
+%patch -P 87 -p1
+%patch -P 88 -p1
+%patch -P 89 -p1
+%patch -P 90 -p1
+%patch -P 91 -p1
+%patch -P 92 -p1
+%patch -P 93 -p1
+%patch -P 94 -p1
+%patch -P 95 -p1
+%patch -P 96 -p1
+%patch -P 97 -p1
+%patch -P 98 -p1
+%patch -P 99 -p1
+%patch -P 100 -p1
+%patch -P 101 -p1
+%patch -P 102 -p1
+%patch -P 103 -p1
+%patch -P 104 -p1
+%patch -P 105 -p1
 
 # clean up patching leftovers
 find . -name '*.orig' -delete
@@ -318,7 +318,7 @@ cp -aR * ../steam/
 
 # apply steam patches
 pushd ../steam > /dev/null
-%patch150 -p1
+%patch -P 150 -p1
 popd > /dev/null
 
 # create copy to build compat .so.10 library
@@ -327,7 +327,7 @@ cp -aR * ../compat/
 
 # apply compat patches
 pushd ../compat > /dev/null
-%patch200 -p1
+%patch -P 200 -p1
 sed -i -e "s/-Wl,--version-script=openssl.ld/-Wl,--default-symver,--version-script=openssl.ld/" Configure
 popd > /dev/null
 

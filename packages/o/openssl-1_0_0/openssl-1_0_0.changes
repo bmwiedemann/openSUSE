@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:37:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Jan 30 14:15:25 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Security fix: [bsc#1219243, CVE-2024-0727]
