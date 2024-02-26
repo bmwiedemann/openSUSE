@@ -39,8 +39,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Tomoe Input Method Engine for SCIM
 
 %prep
-%setup -q
-%patch3 -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv
