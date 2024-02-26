@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb 26 16:32:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- restrict to new python stack in sle15
+
+-------------------------------------------------------------------
+Mon Feb 26 12:27:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.4:
+  * Provide `__version__` of the package so it can be easily
+    checked when installed on the system.
+  * Fix an issue of clashing with the _coverage_.
+  * Packaging has been modernized.
+
+-------------------------------------------------------------------
 Mon Jul 17 07:00:01 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove BuildRequires on setuptools_scm_git_archive.
@@ -12,7 +26,7 @@ Mon Jun 20 06:04:36 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 - Update to 0.8.2:
   * default decorator if not given
   * guess output decorator class
-  * class shortcut decorators 
+  * class shortcut decorators
   * python tuple support as base type
   * Fix a performance issue when detecting cassettes following the old
     naming format.

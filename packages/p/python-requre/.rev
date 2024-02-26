@@ -39,4 +39,20 @@
 - Stop using greedy globs in %files.</comment>
     <requestid>1099033</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>587c167629162558d96eabef3cc2ed45</srcmd5>
+    <version>0.8.4</version>
+    <time>1708973226</time>
+    <user>anag+factory</user>
+    <comment>- restrict to new python stack in sle15
+
+- update to 0.8.4:
+  * Provide `__version__` of the package so it can be easily
+    checked when installed on the system.
+  * Fix an issue of clashing with the _coverage_.
+  * Packaging has been modernized.
+
+  * class shortcut decorators</comment>
+    <requestid>1151858</requestid>
+  </revision>
 </revisionlist>

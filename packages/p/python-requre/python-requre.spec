@@ -1,7 +1,7 @@
 #
 # spec file for package python-requre
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-requre
-Version:        0.8.2
+Version:        0.8.4
 Release:        0
 Summary:        Python libray for storing and using objects for testing
 License:        MIT
 URL:            https://github.com/packit-service/requre
 Source:         https://files.pythonhosted.org/packages/source/r/requre/requre-%{version}.tar.gz
+BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -35,7 +35,7 @@ Requires:       python-click
 Requires:       python-requests
 Suggests:       python-pytest
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
@@ -52,11 +52,6 @@ various objects and use stored data for testing.
 
 %prep
 %setup -q -n requre-%{version}
-sed -i '1{/#!/d}' requre/requre_patch.py
-
-# https://github.com/packit/requre/issues/131
-sed -i 's/not network_connection_avalilable()/False/' tests/*.py
-
 # Remove cyclic dependency with ogr
 rm tests/test_E2E_ogr.py
 
