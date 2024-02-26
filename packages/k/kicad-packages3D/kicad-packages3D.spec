@@ -16,15 +16,15 @@
 #
 
 
-# 7.0.x are bugfix versions, do not require users to upgrade symbols/footprints/packages
-%define compatversion 7.0.0
+# 8.0.x are bugfix versions, do not require users to upgrade symbols/footprints/packages
+%define compatversion 8.0.0
 
 # LZMA compression is too slow and causes frequent build failures
 # due to timeouts
 %define _binary_payload w5T.xzdio
 
 Name:           kicad-packages3D
-Version:        7.0.10
+Version:        8.0.0
 Release:        0
 Summary:        3D model libraries for rendering and MCAD integration
 # License is CC-BY-SA-4.0 but there is an exception
