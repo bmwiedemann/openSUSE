@@ -63,11 +63,11 @@ sing chords, scales, dictation and remember rhythmic patterns.
 
 %prep
 %setup -q
-%patch0
-%patch1
-%patch2
-%patch3 -p1
-%patch4 -p1
+%patch -P 0
+%patch -P 1
+%patch -P 2
+%patch -P 3 -p1
+%patch -P 4 -p1
 
 for i in `grep -rl "/usr/bin/env python "`;do $(chmod 0755 ${i} ; sed -i '1s/^#!.*/#!\/usr\/bin\/python3 /' ${i}) ;done
 for i in `grep -rl "!/usr/bin/python"`;do $(chmod 0755 ${i} ; sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i}) ;done
