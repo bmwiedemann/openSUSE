@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 10:53:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Feb 19 15:13:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Provide user(cntlm): the user is created by the pre script.
