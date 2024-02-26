@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-pry-doc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-pry-doc
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 %define mod_name pry-doc
 %define mod_full_name %{mod_name}-%{version}
