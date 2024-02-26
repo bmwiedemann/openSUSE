@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 10:54:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon May 23 12:51:43 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - clFFT-fix-aarm64.patch: also needed for riscv64

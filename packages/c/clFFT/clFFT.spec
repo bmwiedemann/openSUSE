@@ -112,12 +112,12 @@ This subpackage provides shared libStatTimer library
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P 0 -p1
 %ifarch aarch64 riscv64
-%patch1 -p1
+%patch -P 1 -p1
 %endif
 %if 0%{?suse_version} >= 1550
-%patch2 -p1
+%patch -P 2 -p1
 %endif
 
 %build
