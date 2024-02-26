@@ -38,8 +38,7 @@ This package contains miscellaneous scripts for X, like xon, a script
 to start an X program on a remote machine.
 
 %prep
-%setup -q -n %{_name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
 %configure

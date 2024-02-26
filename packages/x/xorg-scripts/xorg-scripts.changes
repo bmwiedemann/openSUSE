@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:23:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Tue Feb 11 18:13:30 UTC 2014 - eich@suse.com
 
 - u_Add-ssh-support-to-xon.patch
