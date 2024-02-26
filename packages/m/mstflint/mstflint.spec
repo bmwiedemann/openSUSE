@@ -1,7 +1,7 @@
 #
 # spec file for package mstflint
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,11 +49,7 @@ package. For a full documentation of the MFT package, please refer to
 the downloads page at the Mellanox web site.
 
 %prep
-%setup -q
-%patch1
-%patch4
-%patch5
-%patch6
+%autosetup -p0
 
 %build
 ./autogen.sh

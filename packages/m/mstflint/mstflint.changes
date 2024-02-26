@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 13:26:27 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Sep 28 13:48:49 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to 4.25.0
