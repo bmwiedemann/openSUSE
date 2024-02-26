@@ -36,8 +36,7 @@ ibsim provides simulation of infiniband fabric for using with OFA
 OpenSM, diagnostic and management tools.
 
 %prep
-%setup -q -n  %{name}-%{version}%{git_ver}
-%patch1
+%autosetup -p0 -n  %{name}-%{version}%{git_ver}
 
 %build
 export CFLAGS="%{optflags}"

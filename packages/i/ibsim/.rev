@@ -128,4 +128,12 @@
     <comment></comment>
     <requestid>1100649</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>cd79c5980d7d8010dca91191ebc7306f</srcmd5>
+    <version>0.12</version>
+    <time>1708973253</time>
+    <user>anag+factory</user>
+    <comment>Fixup previous messup (forwarded request 1149405 from dimstar)</comment>
+    <requestid>1151449</requestid>
+  </revision>
 </revisionlist>
