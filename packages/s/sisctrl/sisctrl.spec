@@ -51,8 +51,7 @@ Utility to set some display properties during server runtime.
 %define _xorglibdir %(pkg-config --variable prefix x11 || echo /usr/X11R6)/%{_lib}
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 autoreconf -fi
