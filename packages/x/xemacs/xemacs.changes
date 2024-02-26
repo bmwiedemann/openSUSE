@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:05:17 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Dec 27 03:37:32 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.de>
 
 - Add reproducible.patch to make ,elc files deterministic

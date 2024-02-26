@@ -184,35 +184,35 @@ echo Use xft, requires X11, Xft, Xrender, freetype, and fontconfig support.
 echo Use xfs, that is XFontSet support for internationalized menubar.
 %endif
 %setup -q
-%patch3 -p1
-%patch18 -p0 -b .xevent
-%patch20 -p1
-%patch23 -p1
-%patch27 -p1 -b .lvl3
-%patch28 -p1 -b .movemail
-%patch32 -p1
-%patch33 -p1
-%patch39 -p0
-%patch43 -p1
-%patch45 -p0
-%patch50 -p1
+%patch -P 3 -p1
+%patch -P 18 -p0 -b .xevent
+%patch -P 20 -p1
+%patch -P 23 -p1
+%patch -P 27 -p1 -b .lvl3
+%patch -P 28 -p1 -b .movemail
+%patch -P 32 -p1
+%patch -P 33 -p1
+%patch -P 39 -p0
+%patch -P 43 -p1
+%patch -P 45 -p0
+%patch -P 50 -p1
 %if ! %enable_xfs
-%patch51 -p0
-%patch52 -p0
+%patch -P 51 -p0
+%patch -P 52 -p0
 %endif
-%patch53 -p0
-%patch54 -p0
-%patch56 -p1
-%patch292811 -p1
-%patch301352 -p1
-%patch57 -p0
-%patch58 -p0
-%patch59 -p1
-%patch60 -p0
-%patch61 -p0
-%patch62 -p0
-%patch63 -p0
-%patch0 -p1
+%patch -P 53 -p0
+%patch -P 54 -p0
+%patch -P 56 -p1
+%patch -P 292811 -p1
+%patch -P 301352 -p1
+%patch -P 57 -p0
+%patch -P 58 -p0
+%patch -P 59 -p1
+%patch -P 60 -p0
+%patch -P 61 -p0
+%patch -P 62 -p0
+%patch -P 63 -p0
+%patch -P 0 -p1
 find lisp/ etc/ -name '*.elc' | xargs -r rm -f
 find . -name CVS -type d | xargs rm -rf
 find . -name .cvsignore -type f | xargs rm -f
@@ -230,8 +230,8 @@ exit 1
 %endif
 %endif
 %endif
-%patch64 -p1
-%patch65 -p1
+%patch -P 64 -p1
+%patch -P 65 -p1
 
 %build
   cflags ()
