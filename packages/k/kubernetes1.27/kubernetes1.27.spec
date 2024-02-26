@@ -22,7 +22,7 @@
 %define baseversionminus1 1.26
 
 Name:           kubernetes%{baseversion}
-Version:        1.27.10
+Version:        1.27.11
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -51,12 +51,12 @@ Patch4:         kubeadm-opensuse-flexvolume.patch
 Patch5:         revert-coredns-image-renaming.patch
 BuildRequires:  fdupes
 BuildRequires:  git
-#BuildRequires:  go >= 1.20.13
+#BuildRequires:  go >= 1.21.7
 BuildRequires:  go-go-md2man
 BuildRequires:  golang-packaging
 BuildRequires:  rsync
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  golang(API) = 1.20
+BuildRequires:  golang(API) = 1.21
 BuildRequires:  golang(github.com/jteeuwen/go-bindata)
 ExcludeArch:    %{ix86} s390 ppc64
 
@@ -66,6 +66,7 @@ management of containerized applications.
 
 It groups containers that make up an application into logical units
 for management and discovery.
+
 
 
 
@@ -214,10 +215,10 @@ Fish command line completion support for %{name}-client.
 
 %prep
 %setup -q -n kubernetes-%{version}
-%patch2 -p1
-%patch3 -p1
-%patch4 -p0
-%patch5 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p0
+%patch -P 5 -p1
 
 %build
 # This is fixing bug bsc#1065972
