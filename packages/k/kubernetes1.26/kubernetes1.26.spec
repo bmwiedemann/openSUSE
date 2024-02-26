@@ -22,7 +22,7 @@
 %define baseversionminus1 1.25
 
 Name:           kubernetes%{baseversion}
-Version:        1.26.13
+Version:        1.26.14
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -49,14 +49,16 @@ Patch3:         opensuse-version-checks.patch
 Patch4:         kubeadm-opensuse-flexvolume.patch
 # Patch to revert renaming of coredns image location to match how it's done on download.opensuse.org
 Patch5:         revert-coredns-image-renaming.patch
+# Patch to advance autoscaling v2 as the preferred API version, to fix bsc#1219964, CVE-2024-0793
+Patch6:         autoscaling-advance-v2-as-the-preferred-API-version.patch
 BuildRequires:  fdupes
 BuildRequires:  git
-#BuildRequires:  go >= 1.20.13
+#BuildRequires:  go >= 1.21.7
 BuildRequires:  go-go-md2man
 BuildRequires:  golang-packaging
 BuildRequires:  rsync
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  golang(API) = 1.20
+BuildRequires:  golang(API) = 1.21
 BuildRequires:  golang(github.com/jteeuwen/go-bindata)
 ExcludeArch:    %{ix86} s390 ppc64
 
@@ -66,6 +68,7 @@ management of containerized applications.
 
 It groups containers that make up an application into logical units
 for management and discovery.
+
 
 
 
@@ -222,10 +225,11 @@ Fish command line completion support for %{name}-client.
 
 %prep
 %setup -q -n kubernetes-%{version}
-%patch2 -p1
-%patch3 -p1
-%patch4 -p0
-%patch5 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p0
+%patch -P 5 -p1
+%patch -P 6 -p1
 
 %build
 # This is fixing bug bsc#1065972

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Feb 26 08:34:46 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- add new patch to advance autoscaling v2 as the preferred API version, to fix bsc#1219964, CVE-2024-0793
+ * autoscaling-advance-v2-as-the-preferred-API-version.patch 
+
+-------------------------------------------------------------------
+Mon Feb 26 08:33:49 UTC 2024 - priyanka.saggu@suse.com
+
+- Update to version 1.26.14:
+  * [go] Bump images, dependencies and versions to go 1.21.7 / distroless-iptables to v0.4.5
+  * Add processStartTime in metrics/slis
+  * If a pvc has an empty storageclass name, don't try to assign a default StorageClass to it.
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  golang(API) = 1.21`
+
+-------------------------------------------------------------------
+Thu Feb 22 12:44:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Jan 24 14:36:14 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update .spec file to remove go version build requirements:
