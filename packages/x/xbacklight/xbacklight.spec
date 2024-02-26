@@ -49,7 +49,7 @@ same way.
 %prep
 %setup -q
 %if 0%{?suse_version} < 1220
-%patch0
+%patch -P 0
 %endif
 
 %build
