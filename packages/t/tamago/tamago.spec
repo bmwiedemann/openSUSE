@@ -1,7 +1,7 @@
 #
 # spec file for package tamago
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,8 +59,8 @@ It is completely written in Emacs Lisp and can use the backends FreeWnn
 
 %prep
 %setup -q -n %{tsunagiName}-%{version}
-%patch0 -p1
-%patch1
+%patch -P 0 -p1
+%patch -P 1
 
 cp -p $RPM_SOURCE_DIR/suse-start.el .
 #cp -p $RPM_SOURCE_DIR/egg-canna.el.bz2 . # deleted 2013-08-27 .

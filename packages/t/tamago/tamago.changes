@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 10:26:00 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Aug 29 20:34:04 UTC 2022 - antoine.belvire@opensuse.org
 
 - Add tamago-5.0.7.1-make-coding-system.patch: Fix build with Emacs
