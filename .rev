@@ -138,4 +138,12 @@ and a version update</comment>
   Required by RPM 4.19. (forwarded request 1144890 from dimstar)</comment>
     <requestid>1144912</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>c0c080138ca7d3361580419467b5d26d</srcmd5>
+    <version>28.9</version>
+    <time>1708974158</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1151450 from dimstar)</comment>
+    <requestid>1151579</requestid>
+  </revision>
 </revisionlist>

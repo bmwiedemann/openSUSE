@@ -103,8 +103,7 @@ by iTunes and friends to share/stream media libraries over the network.
 owntone is a complete rewrite of mt-daapd (Firefly Media Server).
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%optflags -fcommon"
