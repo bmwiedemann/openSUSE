@@ -46,14 +46,11 @@ Squidview uses this text log file for all operations.
 It does not generate its own database for tasks
 
 %prep
-%setup -q
-%patch0
-%patch1
-%patch2
-mv configure.in configure.ac
-autoreconf -fiv
+%autosetup -p0
 
 %build
+mv configure.in configure.ac
+autoreconf -fiv
 %configure
 make VERBOSE=1 %{?_smp_mflags}
 
