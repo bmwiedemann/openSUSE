@@ -48,8 +48,7 @@ This package provides miscellaneous documentation for the X Window
 System that doesn't better fit into other packages.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
