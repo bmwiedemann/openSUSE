@@ -43,9 +43,7 @@ Group:          Development/Libraries/C and C++
 This package provides the header needed to use the RDS socket API.
 
 %prep
-%setup -q
-%patch0
-%patch1
+%autosetup -p0
 
 %build
 export CFLAGS="%{optflags} -Iinclude"
