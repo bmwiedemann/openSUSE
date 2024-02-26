@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:30:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Mon Oct 16 07:09:08 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - New RPM API change ... now no %patch anymore only %patch0 

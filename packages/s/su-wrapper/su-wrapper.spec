@@ -40,17 +40,8 @@ current situation (the later entries have precedence).
 
 For more information, read /usr/share/doc/packages/su-wrapper/README.
 
-
-
-Authors:
---------
-    Enrico Weigelt <weigelt@nibiru.thur.de>
-    Werner Fink <werner@suse.de>
-
 %prep
-%setup
-%patch0 -p0
-%patch1 -p0
+%autosetup -p0
 
 %build
   pushd src
