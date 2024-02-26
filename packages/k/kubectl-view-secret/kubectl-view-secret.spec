@@ -1,7 +1,7 @@
 #
 # spec file for package kubectl-view-secret
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,14 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kubectl-view-secret
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        Kubernetes CLI plugin to decode Kubernetes secrets
 License:        MIT
 URL:            https://github.com/elsesiy/kubectl-view-secret
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.20
+BuildRequires:  go >= 1.22
 
 %description
 This plugin allows for easy secret decoding. Useful if you want to see what's inside of a secret without always go through the following:

@@ -7,4 +7,12 @@
     <comment>Kubernetes CLI plugin to decode Kubernetes secrets</comment>
     <requestid>1134506</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4a783c602e8e03b9509e596ab7506b45</srcmd5>
+    <version>0.12.0</version>
+    <time>1708973134</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1150579</requestid>
+  </revision>
 </revisionlist>
