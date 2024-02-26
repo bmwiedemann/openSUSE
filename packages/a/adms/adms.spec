@@ -1,7 +1,7 @@
 #
 # spec file for package adms
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        An automatic device model synthesizer
 License:        GPL-3.0-only
 Group:          Productivity/Scientific/Electronics
-URL:            https://sourceforge.net/projects/mot-adms/
+URL:            https://github.com/Qucs/ADMS
 Source0:        https://github.com/Qucs/ADMS/archive/release-%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE adms-no-build-time.patch -- remove build time from binary
 Patch1:         adms-no-build-time.patch
@@ -62,8 +62,7 @@ This package contains all include files, libraries and configuration
 files needed to develop programs that use adms.
 
 %prep
-%setup -q -n ADMS-release-%{version}
-%patch1 -p1
+%autosetup -p1 -n ADMS-release-%{version}
 
 %build
 ./bootstrap.sh
