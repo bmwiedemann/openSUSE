@@ -60,7 +60,7 @@ pairs.
 %prep
 %setup -q
 %if 0%{?suse_version} < 1505
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 
 # Avoid "Unknown key name 'XXX' in section 'Service', ignoring." warnings from systemd on older releases
