@@ -37,17 +37,11 @@ Group:          System/I18n/Japanese
 %description
 UIM Input Method Engine for SCIM.
 
-
-
-Authors:
---------
-    James Su <suzhe@tsinghua.org.cn>
-
 %prep
 %setup -q
-#%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+#%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 
 %build
 libtoolize --force
