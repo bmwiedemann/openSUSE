@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:03:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Oct 18 11:00:58 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade to version 4.3ga4 (jsc#PED-3355)

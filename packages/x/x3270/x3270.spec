@@ -108,9 +108,9 @@ x026 is a fun toy which emulates an x026 puncher.
 # -q uietly -c reate -name all3270
 # -a fter changing into all3270, expand sources
 %setup -q -n suite3270-%{version} -a1
-%patch0
-%patch100
-%patch102
+%patch -P 0
+%patch -P 100
+%patch -P 102
 
 find . -name ".gitignore" -delete
 
