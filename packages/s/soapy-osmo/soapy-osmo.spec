@@ -95,8 +95,7 @@ A Soapy module that supports FreeSRP devices within the Soapy API.
 %endif
 
 %prep
-%setup -q -n SoapyOsmo-%{name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n SoapyOsmo-%{name}-%{version}
 
 %build
 %cmake

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:41:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Fri Aug 27 11:06:11 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Make build with support for FreeSRP optional and disable it
