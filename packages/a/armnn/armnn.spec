@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package armnn
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -373,12 +373,12 @@ This package contains the libarmnnOnnxParser library from armnn.
 %prep
 %setup -q -n armnn-%{version}
 %if %{with armnn_extra_tests}
-%patch200 -p1
-%patch201 -p1
-%patch202 -p1
-%patch203 -p1
-%patch204 -p1
-%patch205 -p1
+%patch -P 200 -p1
+%patch -P 201 -p1
+%patch -P 202 -p1
+%patch -P 203 -p1
+%patch -P 204 -p1
+%patch -P 205 -p1
 # Add Boost log as downstream extra test requires it
 sed -i 's/ find_package(Boost 1.59 REQUIRED COMPONENTS unit_test_framework)/find_package(Boost 1.59 REQUIRED COMPONENTS unit_test_framework filesystem system log program_options)/' ./cmake/GlobalConfig.cmake
 %endif
