@@ -65,11 +65,7 @@ also provides various other enhancements, and may be necessary to use
 the DVI (digital) output on the G550 (and other cards).
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch4 -p1
-%patch5 -p1
+%autosetup -p1
 
 %build
 %configure
