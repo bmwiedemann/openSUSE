@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 23 07:42:42 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue May  4 15:06:22 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Add Replace-deprecated-MPI_Errhandler_set-with-newer-MPI_Comm_set_errhandler.patch
