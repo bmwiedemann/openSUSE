@@ -37,7 +37,7 @@ ciphers of the SSL service.
 %prep
 %setup -q
 %if %{defined fedora}
-%patch1 -p1
+%patch -P 1 -p1
 %endif
 
 %build
