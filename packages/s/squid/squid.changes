@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:37:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Dec 28 22:12:14 UTC 2023 - Sean Lewis <seanlew@opensuse.org>
 
 - update to 6.6:

@@ -106,13 +106,13 @@ accelerator.
 %prep
 %setup -q
 cp %{SOURCE10} .
-%patch3 -p1
+%patch -P 3 -p1
 
 # upstream patches after RELEASE
 perl -p -i -e 's|%{_prefix}/local/bin/perl|%{_bindir}/perl|' `find -name "*.pl"`
-%patch1 -p1
+%patch -P 1 -p1
 %if 0%{?suse_version} < 1500
-%patch2 -p1
+%patch -P 2 -p1
 %endif
 
 %build
