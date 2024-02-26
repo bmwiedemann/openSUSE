@@ -62,8 +62,7 @@ This package is intended to run on the system the sdr device is
 connected to.
 
 %prep
-%setup -q -n SoapyRemote-%{name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n SoapyRemote-%{name}-%{version}
 
 %build
 %cmake
