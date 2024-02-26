@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>779346</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>50ce8be2c1a7186490ba46ae14d4e429</srcmd5>
+    <version>2020.01</version>
+    <time>1708973259</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1151405 from dimstar)</comment>
+    <requestid>1151430</requestid>
+  </revision>
 </revisionlist>

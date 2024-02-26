@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:45:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Wed Feb 26 09:55:52 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to %cmake_build macro as %make_jobs is ambiguous and leads

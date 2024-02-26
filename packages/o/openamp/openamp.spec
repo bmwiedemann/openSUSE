@@ -91,9 +91,7 @@ This package contains all necessary include files and libraries needed
 to develop applications that require these.
 
 %prep
-%setup -q -n open-amp-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n open-amp-%{version}
 
 %build
 # Remove '-Wl,--no-undefined' from linker flags and build example apps
