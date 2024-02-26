@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 9.2
-Version:        9.2
+%define realver 9.3
+Version:        9.3
 Release:        0
 
 %if "%{flavor}" != ""
@@ -156,10 +156,10 @@ Source7:        baselibs.conf
 Source8:        wine-rpmlintrc
 # SUSE specific patches
 # - currently none, but add them here
-Recommends:     wine-gecko >= 2.47.3
-Conflicts:      wine-gecko < 2.47.3
-Recommends:     wine-mono >= 8.1.0
-Conflicts:      wine-mono < 8.1.0
+Recommends:     wine-gecko >= 2.47.4
+Conflicts:      wine-gecko < 2.47.4
+Recommends:     wine-mono >= 9.0.0
+Conflicts:      wine-mono < 9.0.0
 # not packaged in distro...
 Recommends:     wine-mono
 Recommends:     alsa-plugins
@@ -174,7 +174,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 9.2
+%define staging_version 9.3
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel

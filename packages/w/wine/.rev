@@ -5073,4 +5073,19 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 9.2 release</comment>
     <requestid>1148468</requestid>
   </revision>
+  <revision rev="433" vrev="1">
+    <srcmd5>e9c70ca73c434d48c19bce2c94e3bb4d</srcmd5>
+    <version>9.3</version>
+    <time>1708973287</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 9.3 release
+  - Improvements to Internet Proxy support.
+  - New HID pointer device driver.
+  - Timezone database update.
+  - More exception fixes on ARM platforms.
+  - Various bug fixes.
+- update staging to 9.3 release
+- correct conflicts/recommends for mono and gecko</comment>
+    <requestid>1151632</requestid>
+  </revision>
 </revisionlist>
