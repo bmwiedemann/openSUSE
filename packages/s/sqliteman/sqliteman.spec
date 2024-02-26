@@ -44,8 +44,8 @@ Requires:       libQt5Sql5-sqlite
 Sqliteman is a graphical frontend for querying and editing SQLite3 databases.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
+
 rm -rf %{name}/qscintilla2
 
 %build
