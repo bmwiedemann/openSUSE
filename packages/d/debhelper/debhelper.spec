@@ -50,12 +50,12 @@ as part of their build process.
 %prep
 %setup -q -n %{name}-debian-%{version}
 
-%patch0 -p1
+%patch -P 0 -p1
 %if 0%{?suse_version} && 0%{?suse_version} < 1130
-%patch1 -p1
+%patch -P 1 -p1
 %endif
 %if 0%{?sle_version} == 150500
-%patch2 -p0
+%patch -P 2 -p0
 %endif
 
 %build
