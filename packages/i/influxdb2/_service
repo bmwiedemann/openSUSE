@@ -1,0 +1,23 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="url">https://github.com/influxdata/influxdb.git</param>
+		<param name="scm">git</param>
+		<param name="revision">v2.7.1</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="changesgenerate">disable</param>
+		<param name="versionrewrite-pattern">v(.*)</param>
+		<param name="filename">influxdb2</param>
+	</service>
+	<service name="set_version" mode="disabled">
+		<param name="basename">influxdb</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">gz</param>
+	</service>
+	<service name="go_modules" mode="disabled" />
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar.gz</param>
+		<param name="compression">xz</param>
+	</service>
+</services>

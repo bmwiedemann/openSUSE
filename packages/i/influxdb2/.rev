@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5d3fe540b73612386e75c244d59bf243</srcmd5>
+    <version>2.7.1</version>
+    <time>1708973024</time>
+    <user>anag+factory</user>
+    <comment>next level after legacy influxdb v1.
+
+At some point software needs to migrate to this one. (See e.g. https://github.com/openSUSE/openSUSE-release-tools/issues/3034)</comment>
+    <requestid>1147436</requestid>
+  </revision>
+</revisionlist>
