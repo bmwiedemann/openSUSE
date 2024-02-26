@@ -174,4 +174,12 @@
     <comment>add tvtime-1.0.11-sysmacros.diff to build with current glibc (forwarded request 678406 from seife)</comment>
     <requestid>678407</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>98c13d012891d7b3d96065bc81f2c4f0</srcmd5>
+    <version>1.0.11</version>
+    <time>1708973407</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151849</requestid>
+  </revision>
 </revisionlist>

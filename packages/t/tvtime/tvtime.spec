@@ -50,8 +50,7 @@ displays it on a computer monitor or projector.  Unlike other
 television applications, tvtime focuses on high visual quality.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 #autoreconf -i -f
