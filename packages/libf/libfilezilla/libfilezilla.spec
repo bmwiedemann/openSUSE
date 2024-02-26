@@ -96,7 +96,7 @@ Provides translations for the "%{name}" package.
 
 %prep
 %setup -q
-%patch0
+%patch -P 0
 
 %build
 %if 0%{?suse_version} <= 1500
