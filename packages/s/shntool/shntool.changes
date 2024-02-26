@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:23:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Fri May 18 16:03:06 UTC 2018 - jengelh@inai.de
 
 - Remove reference to unspecific external section.

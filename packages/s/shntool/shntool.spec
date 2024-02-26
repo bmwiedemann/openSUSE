@@ -39,8 +39,7 @@ shntool has native support for .wav files. Working with other
 lossless audio formats requires appropriate helper programs.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure
