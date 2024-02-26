@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 23 12:04:59 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Aug  7 10:02:30 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add mozjs78-python-3.11.patch: Fix build with python 3.11.
