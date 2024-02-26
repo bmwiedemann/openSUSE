@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:33:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Apr 26 11:14:45 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Resolve rpmlint report "libsphinxbase1.x86_64: E:
