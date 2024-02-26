@@ -50,7 +50,7 @@ applications that use %name.
 %prep
 %setup -q -n %name-%name-0.2.1-2
 %setup -D -T -b 1 -q -n %name-%name-0.2.1-2
-%patch0 -p1
+%patch -P 0 -p1
 patch -p1 debian/patches/288834_FTBFS_unrecognized_command_line_option_-Wmulticharacter.patch
 patch -p1 debian/patches/doc___ccze.1.in.patch
 patch -p1 debian/patches/fix_capitalization_typo.patch
