@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Feb 21 12:01:33 UTC 2024 - i@guoyunhe.me
+
+- Update to version 1.7.5571~git20240221:
+  * Debugger: Migrates Memory Search tab to it's own widget
+  * Core: Correctly identify TOOL and Namco 246/256 bios (#10836)
+  * GameDB: Jak TLF Fixes
+  * GameDB: Add PCRTCOverscan to Crash Twinsanity (PAL)
+  * ImGuiManager: Defer scale updates
+  * 3rdparty/libchdr: Rebase to upstream 2a1119c
+  * PAD: Update to latest controller database.
+  * UI: Update SW Renderer Threads Tooltip
+  * GitHub: Update macOS versions on issue templates
+  * GS/Vulkan: Use fbfetch flag for subpass dependency
+  * GSBlock: Add Zen 4 to comment
+  * Misc: Rename Disable Depth Emulation
+  * Interpreter: Comment cleanup
+  * R5900: Comment cleanup
+  * GameDB: Various fixes
+  * PAD: Update to latest controller database.
+  * UI: Remove option to disable per-game settings
+  * GS: Fix crop scaling for software and bilinear (sharp)
+  * RAchievements: Fix off by one error in scratchpad reads
+  * GameDB: NTSC-J Overhaul
+  * OSD: Add icon for Slow-Mo
+  * Memcard: Fix incorrect order of directory/filename path components for _pcsx2_meta_directory files
+  * Memory cards:  Update error message
+  * Qt: Update Base Translation
+  * GameDB: Add Autoflush to X2: Wolverine
+  * GS/HW: Only allow tex is fb on alpha if draw is recursive
+  * Qt: Revert to old icon
+  * Qt: Translation Fixes
+  * Debugger: Create check for successful QString conversion in MemoryViewerWidget.cpp
+  * Qt: Default to No for exit Memcard abort msgbox
+  * FS: Fix cover text truncation
+  * PAD: Update to latest controller database.
+  * GS: Move input recording shutdown to VMManager
+  * deps: Fix prefix for libbacktrace on Linux
+  * Qt: Increase controller settings window height
+  * SDLInputSource: Expose IOKit/MFI toggles
+  * deps: Bump to SDL2 2.30.0
+  * GameDB: Add patch for Samurai Warriors 2 - Xtreme legends
+  * GameDB: Various fixes
+  * GS/Vulkan: Fix incorrect memory order arg
+
+-------------------------------------------------------------------
 Sun Feb 04 13:50:31 UTC 2024 - i@guoyunhe.me
 
 - Update to version 1.7.5540~git20240203:
