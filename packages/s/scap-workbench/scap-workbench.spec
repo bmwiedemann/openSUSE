@@ -67,8 +67,7 @@ Group:          Documentation/HTML
 This package provides HTML documentation for scap-workbench.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %if 0%{?cmake}
