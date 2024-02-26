@@ -58,9 +58,7 @@ NEON/VFP code for dealing with uncached framebuffer reads, automatic backing
 store management for faster window moves).
 
 %prep
-%setup -q -n xf86-video-fbturbo-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n xf86-video-fbturbo-%{version}
 
 %build
 autoreconf -fi

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:11:19 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Fri Nov 12 13:41:41 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - n_xorg-server-21.1.patch
