@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan 29 14:29:16 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## 4.2.1
+
+* Support systems who use `#include <experimental/filesystem>` over `#include<filesystem>`. See [#197](https://github.com/jasonroelofs/rice/issues/197) and [#201](https://github.com/jasonroelofs/rice/pull/201)
+
+## 4.2
+
+* Support Ruby 3.3.0.
+* Split Object.call to an explicit Object.call_kw for calling methods expecting keyword arguments.
+* Previously, if a wrapper used `keepAlive` on an argument or return value that was itself a Rice type, calling said method would segfault. We've now added an explicit exception to be thrown in this case, prevending the segfault and providing guidance on what was wrong and how to fix it. See [#193](https://github.com/jasonroelofs/rice/pull/193) and [#194](https://github.com/jasonroelofs/rice/pull/194)
+* Fix wrapping of std::shared_ptr to properly take default arguments into account.
+
+
+-------------------------------------------------------------------
 Fri Nov  3 07:56:06 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - ## 4.1
