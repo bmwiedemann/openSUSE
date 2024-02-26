@@ -44,11 +44,7 @@ dd_rhelp intelligently controls dd_rescue to first copy all blocks from areas
 that work and only then tries to approach the bad spots from both sides.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1
 
 %build
 
