@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-beren
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019-2024 Dr. Axel Braun <DocB@opensuse.org>
@@ -17,8 +17,7 @@
 #
 
 
-%{?sle15allpythons}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 %define modname beren
 Name:           python-%{modname}
 Version:        0.7.1
