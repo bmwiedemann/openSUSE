@@ -80,13 +80,13 @@ This package contains additional documentation for the stunnel program.
 
 %prep
 %setup -q -n stunnel-%{version}
-%patch1 -p1
+%patch -P 1 -p1
 chmod -x %{_builddir}/stunnel-%{version}/tools/ca.*
 chmod -x %{_builddir}/stunnel-%{version}/tools/importCA.*
-%patch2 -p1
+%patch -P 2 -p1
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
-%patch3 -p1
-%patch4 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
 %endif
 
 %build
