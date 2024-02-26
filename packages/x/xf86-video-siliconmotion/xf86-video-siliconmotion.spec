@@ -51,8 +51,7 @@ framebuffer depths: 8, 16, and 24. All visual types are supported for
 depth 8, and TrueColor visuals are supported for the other depths.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure
