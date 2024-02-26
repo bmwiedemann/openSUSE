@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Jan 29 14:08:13 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- 2.0.1:
+
+## What's Changed
+
+* Ensure update only runs when there are outdated packages by @dhh 
+
+**Full Changelog**: https://github.com/rails/importmap-rails/compare/v2.0.0...v2.0.1
+
+2.0.0:
+
+## What's Changed
+
+This major release includes two potentially backwards-incompatible changes:
+
+* The compatibility shim is no longer included, since [all major browsers now natively support import maps](https://caniuse.com/import-maps). But if you need to support old browsers, like Safari 15, Firefox 75, Chrome 88, you should continue using the 1.x series of this gem.
+* Preloading is now the default. So if you have pins that you intend to lazy load, you need to specifically call `preload: false` as part of the pin.
+
+All changes:
+
+* Drop the bundled shim by @dhh in https://github.com/rails/importmap-rails/pull/216
+* Pinning should just always download by @dhh in https://github.com/rails/importmap-rails/pull/217
+* Preload all by default by @dhh in https://github.com/rails/importmap-rails/pull/218
+* Update Impoortmaps::Command#puts_table to be markdown compatible by @faqndo97 in https://github.com/rails/importmap-rails/pull/222
+* bin/importmap update by @botandrose in https://github.com/rails/importmap-rails/pull/214
+
+**Full Changelog**: https://github.com/rails/importmap-rails/compare/v1.2.3...v2.0.0
+
+
+
+-------------------------------------------------------------------
 Fri Nov  3 07:39:21 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - 1.2.3:
