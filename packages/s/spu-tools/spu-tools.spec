@@ -43,8 +43,7 @@ The spu-tools package contains user space tools for Cell/B.E.
 SPU contexts.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 make CFLAGS="$RPM_OPT_FLAGS -fgnu89-inline" CC="%__cc" %{?_smp_mflags}
