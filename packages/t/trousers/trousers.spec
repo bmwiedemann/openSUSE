@@ -1,7 +1,7 @@
 #
 # spec file for package trousers
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -81,8 +81,7 @@ The package needs the /dev/tpm device file to be present on your
 system. It is a character device file major 10 minor 224, 0600 tss:tss.
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{name}-%{version}
 
 %build
     CC=gcc
