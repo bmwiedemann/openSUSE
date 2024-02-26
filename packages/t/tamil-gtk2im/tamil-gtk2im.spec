@@ -1,7 +1,7 @@
 #
 # spec file for package tamil-gtk2im
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,11 +50,11 @@ Authors:
 %prep
 %setup -q -n tamilgtk2im-src-%{version}
 cp %{SOURCE1} .
-%patch0
+%patch -P 0
 %ifarch x86_64 riscv64 ppc64 ppc64le aarch64
-%patch1
+%patch -P 1
 %endif
-%patch2
+%patch -P 2
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS"
