@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:19:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Fri Oct 31 23:42:48 UTC 2014 - crrodriguez@opensuse.org
 
 - Deprecate use of xorg-x11-devel metapackage, switch 
