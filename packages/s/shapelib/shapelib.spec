@@ -68,9 +68,7 @@ associated attribute file (.dbf).
 This package contains the dynamic link library for shapelib project.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 # Fix rpmlint warning "wrong-file-end-of-line-encoding"
 sed -i 's/\r$//' contrib/doc/shpsort.txt

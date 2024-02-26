@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:16:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Mon Feb 21 11:01:12 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - fix CVE-2022-0699, patch c75b9281a5b9452d92e1682bdfe6019a13ed819f.diff
