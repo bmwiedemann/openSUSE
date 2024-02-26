@@ -38,8 +38,8 @@ font. The ROM sound font GeneralUser 1.1 only works with SB AWE
 soundcards. It is General MIDI compatible.
 
 %prep
-%setup -q -c
-%patch0 -p 1
+%autosetup -p1 -c
+
 mv doc/README.SuSE doc/README.SUSE
 mv doc/README.SuSE.de doc/README.SUSE.de
 
