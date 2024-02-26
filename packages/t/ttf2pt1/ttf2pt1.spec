@@ -40,11 +40,7 @@ Type Fonts (as used by MS Wind*ws) to be converted to Postscript Type 1
 fonts, so they can be used in X11 and Ghostscript.
 
 %prep
-%setup -q -a 1
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1 -a 1
 
 %build
 make %{?_smp_mflags} CFLAGS_SYS="%{optflags} -fno-strict-aliasing"
