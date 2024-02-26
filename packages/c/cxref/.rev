@@ -15,4 +15,12 @@
     <comment>Fix build in factory by adding the new float types</comment>
     <requestid>521895</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c7402e8425bd478b82f7ec778d527063</srcmd5>
+    <version>1.6e</version>
+    <time>1708973321</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151702</requestid>
+  </revision>
 </revisionlist>

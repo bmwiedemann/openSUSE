@@ -84,8 +84,8 @@ program.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1
+%patch -P 0 -p1
+%patch -P 1
 
 %build
 export CFLAGS="%{optflags}"
