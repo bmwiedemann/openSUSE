@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:24:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Mon Nov 13 16:03:33 UTC 2017 - dimstar@opensuse.org
 
 - Rename README.SuSE to README.SUSE, adhering to the correct

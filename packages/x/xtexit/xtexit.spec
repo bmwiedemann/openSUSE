@@ -56,9 +56,7 @@ If this package is installed, it will be automatically integrated into
 the sample user fvwm menu.
 
 %prep
-%setup -q -n xtexit
-%patch0
-%patch1
+%autosetup -p0 -n xtexit
 
 %build
 xmkmf -a
