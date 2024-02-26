@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 26 16:53:40 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Clean up some obsolete specfile directives
+
+-------------------------------------------------------------------
+Mon Feb 26 16:02:37 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sat Jan 13 14:35:07 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - Switch to wheel and %{?sle15_python_module_pythons}

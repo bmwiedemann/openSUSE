@@ -120,4 +120,14 @@
     <comment>python 311 (forwarded request 1140804 from DocB)</comment>
     <requestid>1140823</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>05c3dac874fb0bff2610bdcba8667925</srcmd5>
+    <version>6.0.3</version>
+    <time>1708973386</time>
+    <user>anag+factory</user>
+    <comment>- Clean up some obsolete specfile directives
+- Use %patch -P N instead of deprecated %patchN.
+</comment>
+    <requestid>1151870</requestid>
+  </revision>
 </revisionlist>

@@ -49,19 +49,10 @@ BuildRequires:  %{mypython}-wheel
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-generators
 BuildRequires:  python-rpm-macros
-
+Requires:       %{mypython}-pycountry
 Requires:       proteus
-# Leap uses an older pycountry
-%if 0%{?suse_version} <= 1500
-Requires:       %{mypython}-pycountry
-%else
-Requires:       %{mypython}-pycountry
-%endif
 Requires:       trytond
-
 BuildArch:      noarch
-
-%description
 
 %description
 The country module defines the concepts of country and subdivision in
@@ -71,14 +62,9 @@ module.
 
 %prep
 %setup -q
-
-echo %{?suse_version}
-
 # TW uses newer pycountry
 %if 0%{?suse_version} > 1500
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%patch -P 0 -P 1 -P 2 -p1
 %endif
 
 %build
