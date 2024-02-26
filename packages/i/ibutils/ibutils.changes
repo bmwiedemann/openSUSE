@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 13:36:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Sep 14 07:31:40 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Unify changelog with SLE15

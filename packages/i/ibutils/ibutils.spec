@@ -115,14 +115,14 @@ This package contains shared libraries for the IB utils.
 
 %prep
 %setup -q -n ibutils-%upstream_ver
-%patch1
-%patch2
-%patch4
-%patch5
-%patch6
-%patch7
-%patch8
-%patch9 -p1
+%patch -P 1
+%patch -P 2
+%patch -P 4
+%patch -P 5
+%patch -P 6
+%patch -P 7
+%patch -P 8
+%patch -P 9 -p1
 
 %build
 autoreconf -fi
