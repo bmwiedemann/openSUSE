@@ -2180,4 +2180,12 @@ Will serve as maintenance sr for Leap + Factory submission (forwarded request 36
     <comment></comment>
     <requestid>1093287</requestid>
   </revision>
+  <revision rev="125" vrev="6">
+    <srcmd5>66e577ae825d5c2ce99a9a3d39e80490</srcmd5>
+    <version>5.2.8</version>
+    <time>1708973314</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151680</requestid>
+  </revision>
 </revisionlist>

@@ -183,21 +183,21 @@ This package contains the core libraries for Shorewall.
 find . \( -name shorewall*.conf -or -name shorewall*.conf.annotated \) -exec sed -i "s,GEOIPDIR=%{_datadir}/xt_geoip/LE,GEOIPDIR=%{_datadir}/xt_geoip,g" {} \;
 #PATCH-FIX-OPENSUSUSE for fillup
 pushd %{name}-init-%{version}
-%patch1 -p1
+%patch -P 1 -p1
 popd
 pushd %{name}-%{version}
-%patch2 -p1
-%patch4 -p1
+%patch -P 2 -p1
+%patch -P 4 -p1
 popd
 pushd %{name}6-%{version}
-%patch2 -p1
-%patch4 -p1
+%patch -P 2 -p1
+%patch -P 4 -p1
 popd
 pushd %{name}-lite-%{version}
-%patch3 -p1
+%patch -P 3 -p1
 popd
 pushd %{name}6-lite-%{version}
-%patch3 -p1
+%patch -P 3 -p1
 popd
 
 chmod -x %{name}-docs-html-%{version}/images/*.png
