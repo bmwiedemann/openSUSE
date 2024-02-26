@@ -54,11 +54,7 @@ The %{name} contains Intel Omni-Path fabric management applications. This
 Fabric Executive, and some fabric management tools.
 
 %prep
-%setup -q -n  %{name}-%{version}%{git_ver}
-%patch1
-%patch2
-%patch3
-%patch5
+%autosetup -p0 -n  %{name}-%{version}%{git_ver}
 
 %build
 export RPM_OPT_FLAGS
