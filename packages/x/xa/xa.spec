@@ -40,8 +40,7 @@ Other tools in the xa package are:
  * uncpk    - a c64 cpk archive manager.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %make_build
