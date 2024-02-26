@@ -74,11 +74,11 @@ saver until a password is entered.
 %prep
 %setup -q
 chmod -x README docs/Revisions
-%patch1
-%patch3
-%patch7
-%patch9 -p1
-%patch10 -p1
+%patch -P 1
+%patch -P 3
+%patch -P 7
+%patch -P 9 -p1
+%patch -P 10 -p1
 
 %build
 aclocal
