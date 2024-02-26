@@ -34,4 +34,12 @@
   * WindowRec::backStorage has been removed from dix of xserver 21.1</comment>
     <requestid>931145</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>671d31660c4c1ad363e6a7b55251c402</srcmd5>
+    <version>0.4.0</version>
+    <time>1708973296</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151670</requestid>
+  </revision>
 </revisionlist>

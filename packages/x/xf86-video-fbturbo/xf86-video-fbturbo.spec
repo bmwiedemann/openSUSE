@@ -55,9 +55,7 @@ NEON/VFP code for dealing with uncached framebuffer reads, automatic backing
 store management for faster window moves).
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %configure
