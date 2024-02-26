@@ -1,7 +1,7 @@
 Index: src/tools/tools86.c
 ===================================================================
---- src/tools/tools86.c.orig	2007-05-04 07:59:48.000000000 +0200
-+++ src/tools/tools86.c	2008-10-09 02:23:10.000000000 +0200
+--- a/src/tools/tools86.c.orig	2007-05-04 07:59:48.000000000 +0200
++++ b/src/tools/tools86.c	2008-10-09 02:23:10.000000000 +0200
 @@ -170,7 +170,7 @@ static int change_aout(char *objfile, in
      return errno;
    }
@@ -13,8 +13,8 @@ Index: src/tools/tools86.c
    }
 Index: src/plugin/translate/Makefile
 ===================================================================
---- src/plugin/translate/Makefile.orig	2007-05-04 07:59:48.000000000 +0200
-+++ src/plugin/translate/Makefile	2008-10-09 02:48:45.000000000 +0200
+--- a/src/plugin/translate/Makefile.orig	2007-05-04 07:59:48.000000000 +0200
++++ b/src/plugin/translate/Makefile	2008-10-09 02:48:45.000000000 +0200
 @@ -37,10 +37,10 @@ clean::
  include $(REALTOPDIR)/src/Makefile.common
  

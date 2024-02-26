@@ -53,12 +53,7 @@ emulates most of the chip devices (for example: timer, interrupt, and
 keyboard controller).
 
 %prep
-%setup -q -n %{name}-1.4.0.1
-%patch1
-%patch2 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+%autosetup -p1 -n %{name}-1.4.0.1
 
 %build
 %global _lto_cflags %{_lto_cflags} -flto-partition=one
