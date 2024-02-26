@@ -89,9 +89,7 @@ scim-tables input method module.
 %lang_package
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n %{name}-%{name}-%{version}
 
 %build
 ./bootstrap
