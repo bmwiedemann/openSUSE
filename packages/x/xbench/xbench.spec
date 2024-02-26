@@ -48,11 +48,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 A benchmark for X11.
 
 %prep
-%setup -q
-%patch0
-%patch1
-%patch2
-%patch3
+%autosetup -p0
 
 %build
 xmkmf -a
