@@ -77,10 +77,7 @@ project aims to help C++ developers connect to and interact with services.
 Development files.
 
 %prep
-%setup -q -n cpprestsdk-%{version}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1 -n cpprestsdk-%{version}
 
 %build
 %cmake \
