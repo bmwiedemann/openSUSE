@@ -92,12 +92,8 @@ Synergy lets a user control more than one computer with a single mouse and
 keyboard.
 
 %prep
-%setup -q -n %{synergy}-%{version}-stable
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch11 -p1
-%patch14 -p1
+%autosetup -p1 -n %{synergy}-%{version}-stable
+
 cp %{SOURCE2} .
 
 %build
