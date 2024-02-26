@@ -51,9 +51,8 @@ Whenever you move or iconify a window, the exposed orthopteras again
 scamper for cover.
 
 %prep
-%setup -q -n xroach
-%patch0
-%patch1
+%autosetup -p0 -n xroach
+
 cp %{S:1} %{S:2} .
 
 %build
