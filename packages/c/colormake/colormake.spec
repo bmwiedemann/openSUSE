@@ -38,11 +38,8 @@ A simple wrapper for making the output from make easier to read
 It was inspired by Micheal T. Babcock's excellent logcolorize program.
 
 %prep
-%setup -q -n Colormake-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1 -n Colormake-%{version}
+
 sed -i -e 's# make # %{_bindir}/make #g' \
     -e 's#colormake.pl#%{perl_vendorlib}/colormake.pl#g' colormake
 

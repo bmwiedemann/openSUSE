@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 10:55:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Mon Jul 28 12:00:15 UTC 2014 - tampakrap@opensuse.org
 
 - Replace custom %perldir with already defined %perl_vendorlib
