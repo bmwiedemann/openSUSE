@@ -40,8 +40,7 @@ or graphics files, you may elect to ignore the tags. Multimedia files often are
 a good target for deduplication.
 
 %prep
-%setup -q -n %{name}-%{mainversion}-%{subversion}
-%patch0 -p1
+%autosetup -p1 -n %{name}-%{mainversion}-%{subversion}
 
 %build
 make CFLAGS='%{optflags} -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DFLAVOUR="\"d\"" -DHASHSUM=0 -std=gnu99' clean freedup symharden ChangeLog
