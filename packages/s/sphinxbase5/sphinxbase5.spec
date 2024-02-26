@@ -86,8 +86,7 @@ CMU Sphinx toolkit is a speech recognition tool and has a number of packages for
 different tasks and applications.
 
 %prep
-%setup -q -n sphinxbase-%{version}
-%patch0
+%autosetup -p0 -n sphinxbase-%{version}
 
 %build
 ./autogen.sh
