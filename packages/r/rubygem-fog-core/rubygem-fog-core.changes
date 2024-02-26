@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan 29 14:00:54 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- 2.4.0 01/03/2024
+==========================================================
+
+- fixes for caching/restoring collection attributes
+- add explicit CRUD methods to models, make returns more consistent
+- add filter_attributes method
+- allow cache loading with aliases
+- update rubocop config and apply styles/fixes
+- fix minitest compatibility
+- remove coveralls
+- fixes for method delegation for ruby 3.x
+- update ruby versions in test matrix
+
+
+-------------------------------------------------------------------
 Thu Apr 28 05:29:52 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.3.0
