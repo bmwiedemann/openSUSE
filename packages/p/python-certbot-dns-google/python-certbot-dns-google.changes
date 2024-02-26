@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb  9 13:21:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.0:
+  * Support for Python 3.12 was added.
+  * Updates `joinpath` syntax to only use one addition per call,
+    because the multiple inputs version was causing mypy errors
+    on Python 3.10.
+  * Makes the `reconfigure` verb actually use the staging server
+    for the dry run to check the new configuration.
+
+-------------------------------------------------------------------
+Wed Feb  7 12:42:03 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Dec  7 10:46:21 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - update to version 2.8.0
@@ -24,14 +40,14 @@ Wed Jun  7 16:05:32 UTC 2023 - Markéta Machová <mmachova@suse.com>
   * All Certbot components now require pytest to run tests.
   * Packaged tests for all Certbot components besides josepy were moved inside the _internal/tests module.
   * There is now a new Other annotated challenge object to allow plugins to support entirely novel challenges.
-  * --dns-google-project optionally allows for specifying the project that the DNS zone(s) reside in, which 
-    allows for Certbot usage in scenarios where the auth credentials reside in a different project to the zone(s) 
+  * --dns-google-project optionally allows for specifying the project that the DNS zone(s) reside in, which
+    allows for Certbot usage in scenarios where the auth credentials reside in a different project to the zone(s)
     that are being managed.
-  * certbot-dns-google now loads credentials using the standard Application Default Credentials strategy, rather 
-    than explicitly requiring the Google Compute metadata server to be present if a service account is not provided 
+  * certbot-dns-google now loads credentials using the standard Application Default Credentials strategy, rather
+    than explicitly requiring the Google Compute metadata server to be present if a service account is not provided
     using --dns-google-credentials.
-  * --dns-google-credentials now supports additional types of file-based credential, such as 
-    External Account Credentials created by Workload Identity Federation. All file-based credentials implemented 
+  * --dns-google-credentials now supports additional types of file-based credential, such as
+    External Account Credentials created by Workload Identity Federation. All file-based credentials implemented
     by the Google Auth library are supported.
   * certbot-dns-google no longer requires deprecated oauth2client library.
   * Certbot no longer depends on zope.
@@ -213,7 +229,7 @@ Fri Jan  3 12:42:38 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 Thu Nov 14 11:57:38 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 0.40.1
-  * Updated certbot-dns-google to depend on newer versions of 
+  * Updated certbot-dns-google to depend on newer versions of
     google-api-python-client and oauth2client.
 
 -------------------------------------------------------------------
