@@ -310,6 +310,7 @@ keeplibs=(
     third_party/wayland-protocols/unstable #unknown origin. not in wayland-protocol-devel or elsewhere
     third_party/wuffs #not in any distro
     third_party/x11proto #derived code, not vendored dep
+    third_party/zlib/contrib/minizip #https://bugzilla.redhat.com/show_bug.cgi?id=2240599 https://github.com/zlib-ng/minizip-ng/issues/447
     third_party/zlib/google #derived code, not vendored dep
     third_party/zxcvbn-cpp #not in any distro, also heavily patched
     url/third_party/mozilla #derived code, not vendored dep

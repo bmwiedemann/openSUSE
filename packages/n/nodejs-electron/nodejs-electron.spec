@@ -111,6 +111,14 @@ BuildArch:      i686
 %bcond_without system_highway
 %bcond_without system_nvctrl
 
+%if 0%{?suse_version} || 0%{?fedora} < 40
+%bcond_without system_minizip
+%define AndZlib %{nil}
+%else
+%bcond_with system_minizip
+%define AndZlib %{quote: AND Zlib}
+%endif
+
 %if 0%{?suse_version} || 0%{?fedora} >= 39
 %bcond_without icu_73
 %else
@@ -230,7 +238,7 @@ Name:           nodejs-electron
 Version:        27.3.3
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
-License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
+License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11%{AndZlib}
 Group:          Development/Languages/NodeJS
 URL:            https://github.com/electron/electron
 Source0:        %{mod_name}-%{version}.tar.zst
@@ -352,6 +360,11 @@ Patch2042:      brotli-remove-shared-dictionary.patch
 Patch2044:      computed_style_base-nbsp.patch
 Patch2045:      libxml-2.12-xmlCtxtGetLastError-const.patch
 Patch2046:      chromium-118-sigtrap_system_ffmpeg.patch
+%if %{with system_minizip}
+Source2047:     bundled-minizip.patch
+%else
+Patch2047:      bundled-minizip.patch
+%endif
 
 # PATCHES that should be submitted upstream verbatim or near-verbatim
 Patch3016:      chromium-98-EnumTable-crash.patch
@@ -388,6 +401,8 @@ Patch3224:      autofill_i18n_parsing_expressions-constexpr.patch
 Patch3225:      simple_font_data-freetype-include.patch
 Patch3226:      perfetto-numeric_storage-double_t.patch
 Patch3227:      policy_templates-deterministic.patch
+Patch3228:      quiche-missing-absl-includes.patch
+Patch3229:      text_break_iterator-icu74-breakAllLineBreakClassTable-should-be-consistent.patch
 
 
 %if %{with clang}
@@ -474,6 +489,9 @@ BuildRequires:  python%{PYVER}-jinja2 >= 3.0.2
 BuildRequires:  python3-mako
 BuildRequires:  python%{PYVER}-ply
 BuildRequires:  python%{PYVER}-PyYAML >= 6
+%if 0%{?fedora}
+BuildRequires:  (python3-setuptools if python3 >= 3.12)
+%endif
 BuildRequires:  python%{PYVER}-six
 %if %{with system_simdutf}
 BuildRequires:  simdutf-devel >= 3
@@ -568,6 +586,10 @@ BuildRequires:  pkgconfig(libavutil) >= 57
 #requires av_stream_get_first_dts, see rhbz#2240127
 BuildRequires:  libavformat-free-devel >= %AVFORMAT_VER
 Requires: (ffmpeg-libs%{_isa} >= %RPMFUSION_VER or libavformat-free%{_isa} >= %AVFORMAT_VER)
+# have choice for libvpl.so.2()(64bit) needed by libavcodec-free: libvpl oneVPL
+%ifarch x86_64 %x86_64
+BuildRequires:  oneVPL
+%endif
 %endif
 %else
 BuildRequires:  pkgconfig(libavcodec)
@@ -610,14 +632,12 @@ BuildRequires:  pkgconfig(libxxhash)
 # needs I410ToI420
 BuildRequires:  pkgconfig(libyuv) >= 1855
 %endif
+%if %{with system_minizip}
 %if 0%{?fedora}
-%if 0%{?fedora} >= 40
-BuildRequires:  minizip-ng-compat-devel
-%else
 BuildRequires:  minizip-compat-devel
-%endif
 %else
 BuildRequires:  pkgconfig(minizip)
+%endif
 %endif
 BuildRequires:  pkgconfig(nspr) >= 4.9.5
 BuildRequires:  pkgconfig(nss) >= 3.26
@@ -1026,6 +1046,10 @@ gn_system_libraries+=( dav1d )
 %if %{with system_highway}
 find third_party/highway -type f ! -name "*.gn" -a ! -name "*.gni" -delete
 gn_system_libraries+=( highway )
+%endif
+
+%if %{with system_minizip}
+find third_party/zlib/contrib -type f ! -name "*.gn" -a ! -name "*.gni" -delete
 %endif
 
 

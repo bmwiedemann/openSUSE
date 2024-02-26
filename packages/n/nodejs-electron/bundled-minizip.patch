@@ -1,0 +1,43 @@
+--- src/build/linux/unbundle/zlib.gn.orig	2024-02-21 20:06:19.015040200 +0000
++++ src/build/linux/unbundle/zlib.gn	2024-02-23 18:40:02.635135600 +0000
+@@ -23,21 +23,27 @@ source_set("zlib") {
+   public_configs = [ ":system_zlib" ]
+ }
+ 
+-shim_headers("minizip_shim") {
+-  root_path = "contrib"
+-  headers = [
+-    "minizip/crypt.h",
+-    "minizip/ioapi.h",
+-    "minizip/iowin32.h",
+-    "minizip/mztools.h",
+-    "minizip/unzip.h",
+-    "minizip/zip.h",
++static_library("minizip") {
++  include_dirs = [
++    ".",
++    "//third_party/zlib",
+   ]
+-}
+ 
+-source_set("minizip") {
+-  deps = [ ":minizip_shim" ]
+-  libs = [ "minizip" ]
++  sources = [
++    "contrib/minizip/ioapi.c",
++    "contrib/minizip/ioapi.h",
++    "contrib/minizip/unzip.c",
++    "contrib/minizip/unzip.h",
++    "contrib/minizip/zip.c",
++    "contrib/minizip/zip.h",
++  ]
++
++  deps = [ ":zlib" ]
++
++  configs -= [ "//build/config/compiler:chromium_code" ]
++  configs += [ "//build/config/compiler:no_chromium_code" ]
++
++  public_configs = [ ":zlib_config" ]
+ }
+ 
+ static_library("zip") {

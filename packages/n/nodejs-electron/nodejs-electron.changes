@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb 24 18:24:19 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Bundle minizip on Fedora 40 due to the system version not including necessary headers
+  (rh#2240599 gh#zlib-ng/minizip-ng#447)
+  * add bundled-minizip.patch
+- Add backported patches to fix ftbfs with new abseil and icu:
+  * quiche-missing-absl-includes.patch
+  * text_break_iterator-icu74-breakAllLineBreakClassTable-should-be-consistent.patch
+
+-------------------------------------------------------------------
 Wed Feb 21 21:02:49 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 27.3.3
