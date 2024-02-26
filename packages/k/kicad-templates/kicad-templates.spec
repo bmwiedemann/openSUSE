@@ -16,11 +16,11 @@
 #
 
 
-# 7.0.x are bugfix versions, do not require users to upgrade symbols/footprints/packages
-%define compatversion 7.0.0
+# 8.0.x are bugfix versions, do not require users to upgrade symbols/footprints/packages
+%define compatversion 8.0.0
 
 Name:           kicad-templates
-Version:        7.0.10
+Version:        8.0.0
 Release:        0
 Summary:        Project templates for KiCad
 # License is CC-BY-SA-4.0 but there is an exception
