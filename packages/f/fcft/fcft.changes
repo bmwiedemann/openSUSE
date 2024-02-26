@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 26 17:40:58 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 3.1.8:
+  * Fixed setting font size to do it in points instead of pixels so that
+    it works with fractional pixel sizes.
+
+-------------------------------------------------------------------
 Fri Dec 15 08:45:01 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 3.1.7:

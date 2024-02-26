@@ -216,4 +216,14 @@
   * Fixed infinite loop on certain invalid fontfeatures values.</comment>
     <requestid>1133265</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5f2e7c8ecb134acb1d0e55f5ac5c5365</srcmd5>
+    <version>3.1.8</version>
+    <time>1708973434</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.1.8:
+  * Fixed setting font size to do it in points instead of pixels so that
+    it works with fractional pixel sizes.</comment>
+    <requestid>1151907</requestid>
+  </revision>
 </revisionlist>
