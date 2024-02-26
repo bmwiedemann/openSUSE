@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 26 09:54:57 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- add new patch to advance autoscaling v2 as the preferred API version, to fix bsc#1219964, CVE-2024-0793
+ * autoscaling-advance-v2-as-the-preferred-API-version.patch  
+
+-------------------------------------------------------------------
+Thu Feb 22 12:45:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Jan  3 10:00:14 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add kubernetes-trimpath.patch for reproducible builds (boo#1062303)

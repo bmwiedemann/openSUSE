@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,6 +51,8 @@ Patch4:         kubeadm-opensuse-flexvolume.patch
 Patch5:         revert-coredns-image-renaming.patch
 # Patch to fix reproducible builds https://github.com/kubernetes/kubernetes/issues/110928
 Patch6:         kubernetes-trimpath.patch
+# Patch to advance autoscaling v2 as the preferred API version, to fix bsc#1219964, CVE-2024-0793
+Patch7:         autoscaling-advance-v2-as-the-preferred-API-version.patch
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  go >= 1.20.7
@@ -80,8 +82,8 @@ for management and discovery.
 
 
 
-# packages to build containerized control plane
 
+# packages to build containerized control plane
 %package apiserver
 Summary:        Kubernetes apiserver for container image
 Group:          System/Management
@@ -221,11 +223,12 @@ Fish command line completion support for %{name}-client.
 
 %prep
 %setup -q -n kubernetes-%{version}
-%patch2 -p1
-%patch3 -p1
-%patch4 -p0
-%patch5 -p1
-%patch6 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p0
+%patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
 
 %build
 # This is fixing bug bsc#1065972
