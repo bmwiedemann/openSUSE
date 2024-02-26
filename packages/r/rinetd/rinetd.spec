@@ -59,10 +59,7 @@ socket.
 
 
 %prep
-%setup
-%patch0
-%patch1
-%patch2
+%autosetup -p0
 
 %build
 make CFLAGS="$CFLAGS $RPM_OPT_FLAGS -DLINUX -fno-strict-aliasing"
