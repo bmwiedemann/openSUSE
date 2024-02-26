@@ -33,7 +33,6 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
-BuildRequires:  %{python_module flake8 >= 2.4.0}
 BuildRequires:  %{python_module isort >= 4.2.2}
 BuildRequires:  %{python_module pytest >= 2.2.3}
 %endif

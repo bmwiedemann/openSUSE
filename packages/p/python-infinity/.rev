@@ -44,4 +44,12 @@
     <comment>- also use modern python on sle15</comment>
     <requestid>1149226</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>274df2b2cbe9a148d4109d5c1ad9d8c0</srcmd5>
+    <version>1.5</version>
+    <time>1708973228</time>
+    <user>anag+factory</user>
+    <comment>- remove unneded flake8 dependency</comment>
+    <requestid>1151342</requestid>
+  </revision>
 </revisionlist>

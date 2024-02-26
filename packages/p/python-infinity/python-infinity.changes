@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:24:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- remove unneded flake8 dependency
+
+-------------------------------------------------------------------
 Thu Feb 22 11:15:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - also use modern python on sle15
