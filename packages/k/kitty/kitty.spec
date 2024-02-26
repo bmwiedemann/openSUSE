@@ -103,9 +103,7 @@ Summary:        The shell-integation file(s) for the Kitty terminal
 shell-integration [bash,fish,zsh] file(s) for the Kitty terminal; this package can be installed on its own to provide file(s) instead of the full kitty package on remote systems.
 
 %prep
-#%%autosetup -p1 -a 1
-%setup -a 1
-%patch0
+%autosetup -p0 -a 1
 
 %if 0%{?suse_version} > 1500
 find . -type f -exec sed -i 's@#!/usr/bin/env python3$@#!%{_bindir}/python3@' {} +
