@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 26 11:07:39 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- add new patch to advance autoscaling v2 as the preferred API version, to fix bsc#1219964, CVE-2024-0793
+ * autoscaling-advance-v2-as-the-preferred-API-version.patch 
+
+-------------------------------------------------------------------
+Thu Feb 22 12:45:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Jan 10 17:45:07 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add kubernetes-sort-custom-column-print-flags.patch for reproducible builds
