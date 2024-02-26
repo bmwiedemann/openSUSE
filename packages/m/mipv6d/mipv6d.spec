@@ -49,8 +49,8 @@ development team and THANKS for complete listing of contributors.
 
 %prep
 %setup -q -n mipv6-2.0.2-umip-0.4
-%patch1 -p0
-%patch2 -p1
+%patch -P 1 -p0
+%patch -P 2 -p1
 
 %build
 aclocal
