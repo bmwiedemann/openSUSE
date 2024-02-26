@@ -43,8 +43,7 @@ which can then be pasted into another application or identify an
 arbitrary character by pasting it into ucm.
 
 %prep
-%setup -q
-%patch0 -p 1
+%autosetup -p1
 head -n 20 ucm.c > License
 
 %build
