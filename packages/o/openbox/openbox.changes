@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:41:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Sat May 12 01:01:48 UTC 2023 - spartanj@gmail.com
 
 - Add openbox-3.6.1-glib-2.76.patch. Fixes random crashes with glib >= 2.76.

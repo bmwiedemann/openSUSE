@@ -1,7 +1,7 @@
 #
 # spec file for package openbox
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -119,10 +119,9 @@ Requires:       pkgconfig(x11)
 Development Includes and static libraries for openbox.
 
 %prep
-%setup -q
+%autosetup -p1
+
 cp %{S:1} ./README.SUSE
-%patch1 -p1
-%patch2 -p1
 mv po/no.po po/nb.po
 mv po/no.gmo po/nb.gmo
 %__perl -p -i -e 's/^no$/nb/' po/LINGUAS
