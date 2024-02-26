@@ -337,4 +337,12 @@
     <comment>certbot version bump</comment>
     <requestid>1133010</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>29eec73fa324e34e47d28d6423ec5aeb</srcmd5>
+    <version>2.9.0</version>
+    <time>1708973021</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1147111</requestid>
+  </revision>
 </revisionlist>
