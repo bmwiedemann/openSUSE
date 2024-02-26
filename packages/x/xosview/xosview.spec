@@ -62,12 +62,12 @@ and, if desired, netpacket statistics in a graphical manner.
 
 %prep
 %setup -q
-%patch10  -b .appdef
-%patch11  -b .diskstat
-%patch12  -b .lmst
-%patch13  -b .coretemp
-%patch14  -b .cpupkg
-%patch0   -b .p0
+%patch -P 10  -b .appdef
+%patch -P 11  -b .diskstat
+%patch -P 12  -b .lmst
+%patch -P 13  -b .coretemp
+%patch -P 14  -b .cpupkg
+%patch -P 0   -b .p0
 
 %build
   OPTFLAGS="%{optflags}"

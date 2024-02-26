@@ -457,4 +457,12 @@ the other licenses are consolidated into the GPL license of the derived binary (
   * Avoid crash on disabled cores in a second CPU package</comment>
     <requestid>1099191</requestid>
   </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>5947f10ee9221fcc24ef20e4cd64051c</srcmd5>
+    <version>1.24</version>
+    <time>1708973400</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151871</requestid>
+  </revision>
 </revisionlist>
