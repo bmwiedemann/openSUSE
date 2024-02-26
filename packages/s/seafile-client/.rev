@@ -154,4 +154,20 @@
 </comment>
     <requestid>1096514</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8371511a5a5c63bf0b6eebf7343e1a2a</srcmd5>
+    <version>9.0.4</version>
+    <time>1708973323</time>
+    <user>anag+factory</user>
+    <comment>- Update to 9.0.4:
+  * Add sync error SYNC_ERROR_ID_CHECKOUT_FILE by @feiniks in #1479
+  * Add block missing sync error by @feiniks in #1480
+  * Upgrade to Qt 6.5.2 by @rumtid in #1482
+  * Update i18n by @rumtid in #1486
+  * Fix compatible issues on Qt6 framework by @rumtid in #1487
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+</comment>
+    <requestid>1151706</requestid>
+  </revision>
 </revisionlist>

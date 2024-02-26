@@ -1,7 +1,7 @@
 #
 # spec file for package seafile-client
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           seafile-client
-Version:        9.0.3
+Version:        9.0.4
 Release:        0
 Summary:        Cloud storage client
 License:        GPL-3.0-only
@@ -65,9 +65,7 @@ called libraries, and each library can be synced separately. A library can also 
 Seafile also allows users to create groups and easily sharing files into groups.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -fPIE -pie"
