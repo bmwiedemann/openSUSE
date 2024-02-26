@@ -69,9 +69,9 @@ PlayOnLinux brings a cost-free, accessible and efficient solution to this proble
 
 %prep
 %setup -q -n %{_sname}-%{_sversion}
-%patch0 -p1
-%patch9 -p1
-%patch10 -p1
+%patch -P 0 -p1
+%patch -P 9 -p1
+%patch -P 10 -p1
 # rpmlint
 find . -type f -exec sed -i -e 's|\/usr\/bin\/env python|\/usr\/bin\/python|g' {} \;
 find . -type f -exec sed -i -e 's|\/usr\/bin\/env bash|\/bin\/bash|g' {} \;

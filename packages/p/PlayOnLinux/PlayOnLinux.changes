@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 09:12:20 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Adjustments patch macro for rpm 4.20.
+
+-------------------------------------------------------------------
 Wed Jun  8 18:54:27 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Remove required python2 package dbus-1-python from spec.
