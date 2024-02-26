@@ -68,9 +68,7 @@ Requires:       eth-basic-tools
 Contains tools for managing fabric on a management node.
 
 %prep
-%setup -q -n  %{name}-%{version}%{git_ver}
-%patch1
-%patch2
+%autosetup -p0 -n  %{name}-%{version}%{git_ver}
 
 %build
 export RPM_OPT_FLAGS="$RPM_OPT_FLAGS -Wno-address-of-packed-member"
