@@ -82,9 +82,9 @@ container platform designed to be simple, fast, and secure.
 
 %prep
 # Extract the source
-%setup  -q -n %{name}-%{version}
+%autosetup  -p1 -n %{name}-%{version}
+
 cp %{S:1} .
-%patch1 -p1
 
 %build
 # Setup an empty GOPATH for the build

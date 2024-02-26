@@ -17,4 +17,12 @@
   discontinued. (forwarded request 1031910 from eeich)</comment>
     <requestid>1031912</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>52162a7698e3600a8ac8cb046406d4fe</srcmd5>
+    <version>3.10.2</version>
+    <time>1708973275</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1151539 from dimstar)</comment>
+    <requestid>1151587</requestid>
+  </revision>
 </revisionlist>
