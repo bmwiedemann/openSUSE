@@ -50,8 +50,8 @@ Manu Gupta
 Michal Hrusecky
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
+
 %if 0%{?suse_version} < 1230
 # No libyui pkg-config before 12.3
 sed -i 's|${LIBYUI_INCLUDE_DIR}|/usr/include/YaST2\ /usr/include/YaST2/yui|' src/CMakeLists.txt
