@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 26 16:06:49 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Sat Feb  3 19:07:35 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- Version 6.0.35 - Bugfix Release
+
+-------------------------------------------------------------------
 Sat Jan 13 14:10:33 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - Switch to wheel and %{?sle15_python_module_pythons}- 

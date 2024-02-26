@@ -30,7 +30,7 @@
 
 
 Name:           tryton
-Version:        %{majorver}.33
+Version:        %{majorver}.35
 Release:        0
 Summary:        The client of the Tryton application platform
 License:        GPL-3.0-or-later
@@ -79,9 +79,7 @@ It is the core base of an Open Source ERP.
 It provides modularity, scalability and security.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 #shebag ersetzen
 find . -iname "bin/tryton" -exec sed -i "s/env python/%{mypython}/" '{}' \;
