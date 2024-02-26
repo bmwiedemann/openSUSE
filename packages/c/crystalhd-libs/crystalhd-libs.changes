@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 10:59:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Tue Sep 28 12:41:13 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - Use %_firmwaredir (boo#1029961, crystalhd-firmwaredir.patch)

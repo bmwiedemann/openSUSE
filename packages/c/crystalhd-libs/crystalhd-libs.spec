@@ -66,9 +66,8 @@ Group:          Hardware/Other
 Firmwares for the Broadcom Crystal HD video decoders.
 
 %prep
-%setup -n crystalhd-libs
-%patch0
-%patch1
+%autosetup -p0 -n crystalhd-libs
+
 cp %{SOURCE1} .
 cp %{SOURCE2} .
 

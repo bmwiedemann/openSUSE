@@ -117,4 +117,12 @@ Use SUSE-Firmware to describe firmware which can be freely distributed in non-mo
     <comment></comment>
     <requestid>922405</requestid>
   </revision>
+  <revision rev="16" vrev="17">
+    <srcmd5>c1f15ee6751b363b15ea796b200b1cdb</srcmd5>
+    <version>3.6.5</version>
+    <time>1708973202</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151240</requestid>
+  </revision>
 </revisionlist>
