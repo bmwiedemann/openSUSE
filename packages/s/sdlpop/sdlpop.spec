@@ -44,8 +44,8 @@ Run the prince executable in a path were the original
 game data files are located.
 
 %prep
-%setup -q -n SDLPoP-%{version}
-%patch0 -p1
+%autosetup -p1 -n SDLPoP-%{version}
+
 sed -i 's/\r$//' doc/*.txt
 
 %build
