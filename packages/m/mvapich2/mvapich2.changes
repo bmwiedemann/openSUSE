@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 11:49:03 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Oct 26 10:42:07 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Add mvapich2-openpa-add-memory-barriers.patch to fix testsuite issue

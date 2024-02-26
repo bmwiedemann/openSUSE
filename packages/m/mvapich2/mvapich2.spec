@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package mvapich2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -347,18 +347,18 @@ is based on MPICH2 and MVICH. This package contains the static libraries
 
 %{?with_hpc:%hpc_debug}
 %setup -q -n mvapich2-%{version}%{?rc_ver}
-%patch0
-%patch2
-%patch3
-%patch4
-%patch5 -p1
-%patch6
-%patch7
+%patch -P 0
+%patch -P 2
+%patch -P 3
+%patch -P 4
+%patch -P 5 -p1
+%patch -P 6
+%patch -P 7
 
 # Only apply these patches on Armv7
 %ifarch armv7hl
-%patch50 -p1
-%patch51
+%patch -P 50 -p1
+%patch -P 51
 %endif
 cp /usr/share/automake*/config.* .
 
