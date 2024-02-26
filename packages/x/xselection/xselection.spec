@@ -56,11 +56,7 @@ Help can be found by reading the man page with
 man xselection
 
 %prep
-%setup -q
-%patch0
-%patch1
-%patch2
-%patch3
+%autosetup -p0
 
 %build
 xmkmf -a
