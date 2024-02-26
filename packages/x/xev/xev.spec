@@ -45,8 +45,7 @@ debugging and development tool, and should not be needed in normal
 usage.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure
