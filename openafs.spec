@@ -318,7 +318,7 @@ done
 
 %setup -q -n openafs-%{upstream_version} -T -b 0 -b 1
 %if 0%{?sle_version} == 150600
-%patch99 -p1
+%patch -P 99 -p1
 %endif
 
 ./regen.sh
