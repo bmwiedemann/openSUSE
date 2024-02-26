@@ -69,10 +69,10 @@ Authors:
 
 %prep
 %setup -n mgdiff-1.0 -q
-%patch1
-%patch0
-%patch2 -p1
-%patch3
+%patch -P 1
+%patch -P 0
+%patch -P 2 -p1
+%patch -P 3
 xmkmf -a
 %if 0%{?suse_version} >= 1320
 sed -ri 's/-D_BSD_SOURCE[[:space:]]+-D_SVID_SOURCE/-D_DEFAULT_SOURCE/' Makefile
