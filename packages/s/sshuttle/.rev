@@ -196,4 +196,12 @@ Doesn't require admin. Works with Linux and MacOS. Supports DNS tunneling.</comm
 - fixed outdated licence string</comment>
     <requestid>1112896</requestid>
   </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>6cd0a4efe900b5a4c6a783a203c02bb5</srcmd5>
+    <version>1.1.1</version>
+    <time>1708973381</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151828</requestid>
+  </revision>
 </revisionlist>

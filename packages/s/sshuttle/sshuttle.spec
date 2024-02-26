@@ -59,8 +59,7 @@ sshuttle is a program that solves the following case:
   TCP-over-TCP, which has terrible performance.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 (
