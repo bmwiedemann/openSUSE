@@ -1,6 +1,8 @@
---- bin/storeBackup.pl	2014-04-24 06:47:17.000000000 +0200
-+++ bin/storeBackup_new.pl	2015-12-05 10:13:56.775693955 +0100
-@@ -2677,6 +2677,8 @@
+Index: bin/storeBackup.pl
+===================================================================
+--- bin/storeBackup.pl.orig
++++ bin/storeBackup.pl
+@@ -2805,6 +2805,8 @@ if ($@)
  	unless exists $suppressWarning{'use_DB_File'};
  }
  
@@ -9,7 +11,7 @@
  # OS-Typ feststellen, um ARG_MAX zu setzen
  # Default wird vorsichtshalber auf 4 KB gesetzt!
  {
-@@ -2728,6 +2730,48 @@
+@@ -2856,6 +2858,48 @@ $prLog->print('-kind' => 'I',
  	      '-str' => ["preserve Perms is not set"])
      if $preservePerms eq 'no';
  
@@ -58,9 +60,9 @@
  #
  # initialise include, exclude and checkBlocks rules
  #
-@@ -3238,45 +3282,7 @@
-     $exTypes{$et} = 0;         # this is a flag and and also a counter
- }
+@@ -3385,45 +3429,7 @@ $ENV{'STBU_logFile'} = $logFile;
+ $ENV{'STBU_logInBackupDir'} = $logInBackupDir;
+ $ENV{'logInBackupDirFileName'} = $logInBackupDirFileName;
  
 -#
 -# precommand ausführen

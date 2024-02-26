@@ -1,7 +1,7 @@
 #
 # spec file for package storeBackup
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,13 @@
 
 
 Name:           storeBackup
-Version:        3.5
+Version:        3.5.2
 Release:        0
 Summary:        A disk-to-disk backup tool for Linux
 License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Backup
-Source0:        storeBackup-%{version}.tar.bz2
+URL:            http://storebackup.org/
+Source0:        https://download.savannah.nongnu.org/releases/storebackup/storeBackup-%{version}.tar.bz2
 Source1:        storeBackup-%{version}.config.default
 Source2:        storeBackup-README.SUSE
 Source3:        storeBackup.service
@@ -34,9 +35,6 @@ Patch0:         earlier_execute_precommand.patch
 Patch1:         fix-rpmlint-env-script-interpreter.patch
 # PATCH-FIX-UPSTREAM fix-tmp-lock-file-race-condition.patch CVE-2020-7040 bsc#1156767
 Patch2:         fix-tmp-lock-file-race-condition.patch
-URL:            http://storebackup.org/
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildArch:      noarch
 BuildRequires:  systemd-rpm-macros
 Requires:       bzip2
 Requires:       e2fsprogs
@@ -44,6 +42,7 @@ Requires:       fileutils
 Requires:       sh-utils
 Requires:       textutils
 Requires:       which
+BuildArch:      noarch
 
 %description
 storeBackup is a disk-to-disk backup tool. The backuped files can be
@@ -55,18 +54,18 @@ specific time can be deleted without affecting the other existing
 backups.
 
 Before you can start using storeBackup, please carefully read
-        /usr/share/doc/packages/storeBackup/README.1ST
+        %{_docdir}/storeBackup/README.1ST
 and create an appropriate configuration file
-        /etc/storebackup.d/storebackup.config
+        %{_sysconfdir}/storebackup.d/storebackup.config
 using
-        /usr/share/doc/packages/storeBackup/storebackup.config.default
+        %{_docdir}/storeBackup/storebackup.config.default
 as a template.
 
 %prep
-%setup -n storeBackup
-%patch0 -p 0
-%patch1 -p 1
-%patch2 -p 1
+%setup -q -n storeBackup
+%patch -P 0 -p 0
+%patch -P 1 -p 1
+%patch -P 2 -p 1
 
 %build
 # make
@@ -74,41 +73,41 @@ as a template.
 %install
 #
 install		-d	%{buildroot}					\
-			%{buildroot}/usr/lib/storeBackup/			\
-			%{buildroot}/usr/bin/				\
-			%{buildroot}/usr/share/doc/packages/storeBackup/	\
-			%{buildroot}/etc/storebackup.d/			\
+			%{buildroot}%{_prefix}/lib/storeBackup/			\
+			%{buildroot}%{_bindir}/				\
+			%{buildroot}%{_docdir}/storeBackup/	\
+			%{buildroot}%{_sysconfdir}/storebackup.d/			\
 			%{buildroot}%{_sbindir}/			\
 			%{buildroot}/%{_unitdir}/				\
 			%{buildroot}/%{_mandir}/man1
 #
-cp -a %{S:1}								./doc/storebackup.config.default
-cp -a %{S:2}								./doc/README.SUSE
+cp -a %{SOURCE1}								./doc/storebackup.config.default
+cp -a %{SOURCE2}								./doc/README.SUSE
 cp -a _ATTENTION_ correct.sh						./doc/
-cp -aRpv bin/ lib/							%{buildroot}/usr/lib/storeBackup/
-ln -sf /usr/lib/storeBackup/bin/storeBackup.pl				%{buildroot}/usr/bin/storeBackup.pl
-ln -sf /usr/lib/storeBackup/bin/storeBackup.pl				%{buildroot}/usr/bin/storeBackup
-ln -sf /usr/lib/storeBackup/bin/storeBackupCheckBackup.pl		%{buildroot}/usr/bin/storeBackupCheckBackup.pl
-ln -sf /usr/lib/storeBackup/bin/storeBackupCheckSource.pl		%{buildroot}/usr/bin/storeBackupCheckSource.pl
-ln -sf /usr/lib/storeBackup/bin/storeBackupConvertBackup.pl		%{buildroot}/usr/bin/storeBackupConvertBackup.pl
-ln -sf /usr/lib/storeBackup/bin/storeBackupDel.pl			%{buildroot}/usr/bin/storeBackupDel.pl
-ln -sf /usr/lib/storeBackup/bin/storeBackupMergeIsolatedBackup.pl	%{buildroot}/usr/bin/storeBackupMergeIsolatedBackup.pl
-ln -sf /usr/lib/storeBackup/bin/storeBackupMount.pl			%{buildroot}/usr/bin/storeBackupMount.pl
-ln -sf /usr/lib/storeBackup/bin/storeBackupRecover.pl			%{buildroot}/usr/bin/storeBackupRecover.pl
-ln -sf /usr/lib/storeBackup/bin/storeBackupReplicationWizard.pl		%{buildroot}/usr/bin/storeBackupReplicationWizard.pl
-ln -sf /usr/lib/storeBackup/bin/storeBackupSearch.pl			%{buildroot}/usr/bin/storeBackupSearch.pl
-ln -sf /usr/lib/storeBackup/bin/storeBackupSetupIsolatedMode.pl		%{buildroot}/usr/bin/storeBackupSetupIsolatedMode.pl
-ln -sf /usr/lib/storeBackup/bin/storeBackupUpdateBackup.pl		%{buildroot}/usr/bin/storeBackupUpdateBackup.pl
-ln -sf /usr/lib/storeBackup/bin/storeBackupVersions.pl			%{buildroot}/usr/bin/storeBackupVersions.pl
-ln -sf /usr/lib/storeBackup/bin/storeBackupls.pl			%{buildroot}/usr/bin/storeBackupls.pl
-ln -sf /usr/lib/storeBackup/bin/storeBackup_du.pl			%{buildroot}/usr/bin/storeBackup_du.pl
+cp -aRpv bin/ lib/							%{buildroot}%{_prefix}/lib/storeBackup/
+ln -sf %{_prefix}/lib/storeBackup/bin/storeBackup.pl				%{buildroot}%{_bindir}/storeBackup.pl
+ln -sf %{_prefix}/lib/storeBackup/bin/storeBackup.pl				%{buildroot}%{_bindir}/storeBackup
+ln -sf %{_prefix}/lib/storeBackup/bin/storeBackupCheckBackup.pl		%{buildroot}%{_bindir}/storeBackupCheckBackup.pl
+ln -sf %{_prefix}/lib/storeBackup/bin/storeBackupCheckSource.pl		%{buildroot}%{_bindir}/storeBackupCheckSource.pl
+ln -sf %{_prefix}/lib/storeBackup/bin/storeBackupConvertBackup.pl		%{buildroot}%{_bindir}/storeBackupConvertBackup.pl
+ln -sf %{_prefix}/lib/storeBackup/bin/storeBackupDel.pl			%{buildroot}%{_bindir}/storeBackupDel.pl
+ln -sf %{_prefix}/lib/storeBackup/bin/storeBackupMergeIsolatedBackup.pl	%{buildroot}%{_bindir}/storeBackupMergeIsolatedBackup.pl
+ln -sf %{_prefix}/lib/storeBackup/bin/storeBackupMount.pl			%{buildroot}%{_bindir}/storeBackupMount.pl
+ln -sf %{_prefix}/lib/storeBackup/bin/storeBackupRecover.pl			%{buildroot}%{_bindir}/storeBackupRecover.pl
+ln -sf %{_prefix}/lib/storeBackup/bin/storeBackupReplicationWizard.pl		%{buildroot}%{_bindir}/storeBackupReplicationWizard.pl
+ln -sf %{_prefix}/lib/storeBackup/bin/storeBackupSearch.pl			%{buildroot}%{_bindir}/storeBackupSearch.pl
+ln -sf %{_prefix}/lib/storeBackup/bin/storeBackupSetupIsolatedMode.pl		%{buildroot}%{_bindir}/storeBackupSetupIsolatedMode.pl
+ln -sf %{_prefix}/lib/storeBackup/bin/storeBackupUpdateBackup.pl		%{buildroot}%{_bindir}/storeBackupUpdateBackup.pl
+ln -sf %{_prefix}/lib/storeBackup/bin/storeBackupVersions.pl			%{buildroot}%{_bindir}/storeBackupVersions.pl
+ln -sf %{_prefix}/lib/storeBackup/bin/storeBackupls.pl			%{buildroot}%{_bindir}/storeBackupls.pl
+ln -sf %{_prefix}/lib/storeBackup/bin/storeBackup_du.pl			%{buildroot}%{_bindir}/storeBackup_du.pl
 #
 install -m 644 man/man1/*.1 %{buildroot}/%{_mandir}/man1
 ln -sf storeBackup.pl.1 %{buildroot}/%{_mandir}/man1/storeBackup.1
-install -m 644 %{S:3} %{buildroot}/%{_unitdir}/%{name}.service
-install -m 644 %{S:4} %{buildroot}/%{_unitdir}/%{name}.timer
+install -m 644 %{SOURCE3} %{buildroot}/%{_unitdir}/%{name}.service
+install -m 644 %{SOURCE4} %{buildroot}/%{_unitdir}/%{name}.timer
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
-install -m 755 %{S:5} %{buildroot}/%{_prefix}/lib/%{name}/%{name}-run-all
+install -m 755 %{SOURCE5} %{buildroot}/%{_prefix}/lib/%{name}/%{name}-run-all
 %{?suse_check}
 
 %pre
@@ -124,14 +123,12 @@ install -m 755 %{S:5} %{buildroot}/%{_prefix}/lib/%{name}/%{name}-run-all
 %service_del_postun %{name}.service %{name}.timer
 
 %files
-%defattr(-,root,root)
 %doc doc/*
-%doc %{_mandir}/man1/*.1.gz
+%{_mandir}/man1/*.1%{?ext_man}
 # ChangeLog LICENSE README.1ST _ATTENTION_ README storebackup.config.default README.SUSE
-/usr/lib/storeBackup/
-%dir /etc/storebackup.d/
-# %attr(755, root, root) %config(noreplace) /etc/storebackup.d/storebackup.config
-%attr(755, root, root) /usr/bin/*
+%{_prefix}/lib/storeBackup/
+%dir %{_sysconfdir}/storebackup.d/
+%attr(755, root, root) %{_bindir}/*
 %{_sbindir}/rc%{name}
 %{_unitdir}/%{name}.service
 %{_unitdir}/%{name}.timer

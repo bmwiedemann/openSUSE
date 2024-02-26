@@ -11,7 +11,7 @@ Index: storeBackup/lib/fileDir.pl
  use Fcntl ':mode';
  use POSIX;
  use Cwd 'abs_path';
-@@ -482,7 +482,7 @@ sub checkLockFile
+@@ -493,7 +493,7 @@ sub checkLockFile
  		  '-str' => ["creating lock file <$lockFile>"]);
  
      &::checkDelSymLink($lockFile, $prLog, 0x01);

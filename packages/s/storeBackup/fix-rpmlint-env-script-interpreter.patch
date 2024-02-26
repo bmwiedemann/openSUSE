@@ -7,7 +7,7 @@ Index: storeBackup/bin/linkToDirs.pl
 +#!/usr/bin/perl
  
  #
- #   Copyright (C) Dr. Heinz-Josef Claes (2012-2014)
+ #   Copyright (C) Dr. Heinz-Josef Claes (2012-2022)
 Index: storeBackup/bin/llt
 ===================================================================
 --- storeBackup.orig/bin/llt
@@ -17,7 +17,7 @@ Index: storeBackup/bin/llt
 +#!/usr/bin/perl
  
  #
- #   Copyright (C) Heinz-Josef Claes (2000-2013)
+ #   Copyright (C) Heinz-Josef Claes (2000-2022)
 Index: storeBackup/bin/multiTail.pl
 ===================================================================
 --- storeBackup.orig/bin/multiTail.pl
@@ -27,7 +27,7 @@ Index: storeBackup/bin/multiTail.pl
 +#!/usr/bin/perl
  
  #
- #   Copyright (C) Heinz-Josef Claes (2000-2014)
+ #   Copyright (C) Heinz-Josef Claes (2000-2022)
 Index: storeBackup/bin/storeBackup.pl
 ===================================================================
 --- storeBackup.orig/bin/storeBackup.pl
@@ -37,7 +37,7 @@ Index: storeBackup/bin/storeBackup.pl
 +#!/usr/bin/perl
  
  #
- #   Copyright (C) Dr. Heinz-Josef Claes (2001-2014)
+ #   Copyright (C) Dr. Heinz-Josef Claes (2001-2022)
 Index: storeBackup/bin/storeBackupCheckBackup.pl
 ===================================================================
 --- storeBackup.orig/bin/storeBackupCheckBackup.pl
@@ -47,7 +47,7 @@ Index: storeBackup/bin/storeBackupCheckBackup.pl
 +#!/usr/bin/perl
  
  #
- #   Copyright (C) Dr. Heinz-Josef Claes (2008-2014)
+ #   Copyright (C) Dr. Heinz-Josef Claes (2008-2022)
 Index: storeBackup/bin/storeBackupCheckSource.pl
 ===================================================================
 --- storeBackup.orig/bin/storeBackupCheckSource.pl
@@ -57,7 +57,7 @@ Index: storeBackup/bin/storeBackupCheckSource.pl
 +#!/usr/bin/perl
  
  #
- #   Copyright (C) Dr. Heinz-Josef Claes (2012-2014)
+ #   Copyright (C) Dr. Heinz-Josef Claes (2012-2022)
 Index: storeBackup/bin/storeBackupConvertBackup.pl
 ===================================================================
 --- storeBackup.orig/bin/storeBackupConvertBackup.pl
@@ -67,7 +67,7 @@ Index: storeBackup/bin/storeBackupConvertBackup.pl
 +#!/usr/bin/perl
  
  #
- #   Copyright (C) Dr. Heinz-Josef Claes (2002-2014)
+ #   Copyright (C) Dr. Heinz-Josef Claes (2002-2022)
 Index: storeBackup/bin/storeBackupDel.pl
 ===================================================================
 --- storeBackup.orig/bin/storeBackupDel.pl
@@ -77,7 +77,7 @@ Index: storeBackup/bin/storeBackupDel.pl
 +#!/usr/bin/perl
  
  #
- #   Copyright (C) Dr. Heinz-Josef Claes (2003-2014)
+ #   Copyright (C) Dr. Heinz-Josef Claes (2003-2022)
 Index: storeBackup/bin/storeBackupMergeIsolatedBackup.pl
 ===================================================================
 --- storeBackup.orig/bin/storeBackupMergeIsolatedBackup.pl
@@ -87,7 +87,7 @@ Index: storeBackup/bin/storeBackupMergeIsolatedBackup.pl
 +#!/usr/bin/perl
  
  #
- #   Copyright (C) Dr. Heinz-Josef Claes (2012-2014)
+ #   Copyright (C) Dr. Heinz-Josef Claes (2012-2022)
 Index: storeBackup/bin/storeBackupMount.pl
 ===================================================================
 --- storeBackup.orig/bin/storeBackupMount.pl
@@ -97,7 +97,7 @@ Index: storeBackup/bin/storeBackupMount.pl
 +#!/usr/bin/perl
  
  #
- #   Copyright (C) Dr. Heinz-Josef Claes (2004-2014)
+ #   Copyright (C) Dr. Heinz-Josef Claes (2004-2022)
 Index: storeBackup/bin/storeBackupRecover.pl
 ===================================================================
 --- storeBackup.orig/bin/storeBackupRecover.pl
@@ -107,7 +107,7 @@ Index: storeBackup/bin/storeBackupRecover.pl
 +#!/usr/bin/perl
  
  #
- #   Copyright (C) Dr. Heinz-Josef Claes (2002-2014)
+ #   Copyright (C) Dr. Heinz-Josef Claes (2002-2022)
 Index: storeBackup/bin/storeBackupReplicationWizard.pl
 ===================================================================
 --- storeBackup.orig/bin/storeBackupReplicationWizard.pl
@@ -117,7 +117,7 @@ Index: storeBackup/bin/storeBackupReplicationWizard.pl
 +#!/usr/bin/perl
  
  #
- #   Copyright (C) Dr. Heinz-Josef Claes (2012-2014)
+ #   Copyright (C) Dr. Heinz-Josef Claes (2012-2022)
 Index: storeBackup/bin/storeBackupSearch.pl
 ===================================================================
 --- storeBackup.orig/bin/storeBackupSearch.pl
@@ -127,7 +127,7 @@ Index: storeBackup/bin/storeBackupSearch.pl
 +#!/usr/bin/perl
  
  #
- #   Copyright (C) Dr. Heinz-Josef Claes (2008-2014)
+ #   Copyright (C) Dr. Heinz-Josef Claes (2008-2022)
 Index: storeBackup/bin/storeBackupSetupIsolatedMode.pl
 ===================================================================
 --- storeBackup.orig/bin/storeBackupSetupIsolatedMode.pl
@@ -137,7 +137,7 @@ Index: storeBackup/bin/storeBackupSetupIsolatedMode.pl
 +#!/usr/bin/perl
  
  #
- #   Copyright (C) Dr. Heinz-Josef Claes (2012-2014)
+ #   Copyright (C) Dr. Heinz-Josef Claes (2012-2022)
 Index: storeBackup/bin/storeBackupUpdateBackup.pl
 ===================================================================
 --- storeBackup.orig/bin/storeBackupUpdateBackup.pl
@@ -147,7 +147,7 @@ Index: storeBackup/bin/storeBackupUpdateBackup.pl
 +#!/usr/bin/perl
  
  #
- #   Copyright (C) Dr. Heinz-Josef Claes (2008-2014)
+ #   Copyright (C) Dr. Heinz-Josef Claes (2008-202)
 Index: storeBackup/bin/storeBackupVersions.pl
 ===================================================================
 --- storeBackup.orig/bin/storeBackupVersions.pl
@@ -157,7 +157,7 @@ Index: storeBackup/bin/storeBackupVersions.pl
 +#!/usr/bin/perl
  
  #
- #   Copyright (C) Dr. Heinz-Josef Claes (2002-2014)
+ #   Copyright (C) Dr. Heinz-Josef Claes (2002-2022)
 Index: storeBackup/bin/storeBackup_du.pl
 ===================================================================
 --- storeBackup.orig/bin/storeBackup_du.pl
@@ -167,7 +167,7 @@ Index: storeBackup/bin/storeBackup_du.pl
 +#!/usr/bin/perl
  
  #
- #   Copyright (C) Heinz-Josef Claes (2002-2014)
+ #   Copyright (C) Heinz-Josef Claes (2002-2022)
 Index: storeBackup/bin/storeBackupls.pl
 ===================================================================
 --- storeBackup.orig/bin/storeBackupls.pl
@@ -177,7 +177,7 @@ Index: storeBackup/bin/storeBackupls.pl
 +#!/usr/bin/perl
  
  #
- #   Copyright (C) Dr. Heinz-Josef Claes (2002-2014)
+ #   Copyright (C) Dr. Heinz-Josef Claes (2002-2022)
 Index: storeBackup/lib/stbuLog.pl
 ===================================================================
 --- storeBackup.orig/lib/stbuLog.pl
@@ -187,4 +187,4 @@ Index: storeBackup/lib/stbuLog.pl
 +#!/usr/bin/perl
  
  #
- #   Copyright (C) Heinz-Josef Claes (2012-2014)
+ #   Copyright (C) Heinz-Josef Claes (2012-2022)

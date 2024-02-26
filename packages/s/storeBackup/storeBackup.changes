@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sun Feb 25 16:20:09 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 3.5.2
+        storeBackup.pl
+        - option --maxHardLinks was not configurable in the
+          configuration file
+        - pipe buffering was changed to new needs since
+          about kernel 5.13 (relevant only if you backup devices)
+
+        storeBackupRecover.pl
+        - restoring of devices (eg. sda) didn't work because of
+          bug in option checkDevicesDir0 in storeBackup.pl when
+          using more than one directory level like "Devs/Sticks"
+
+        storeBackupUpdateBackup.pl
+        - added log file entry about number of WARNINGs and
+          ERRORs happend (like at storeBackup.pl)
+- update to 3.5.1
+        storeBackup.pl
+        - linkToRecent didn't work when used for the very first time
+          in a series
+        - added option suppressInfo with key readCheckSums
+        - changed the order of execution:
+          write backup -> sync -> write 'finished' -> write linkToRecent
+          -> delete old backups -> start postcommand
+
+        storeBackupMergeIsolatedBackup.pl
+        - added option --move
+
+        storeBackupSearch.pl
+        - option 'backupDir' didn't work (normally not needed)
+
+        lib/fileDir.pl
+        - more detailed error messages when copying of a file does
+          not succeed
+
+        lib/checkParam2.pl
+        - overwriting settings from config file via commandline didn't
+          work for options with parameters
+
+        storeBackup.pl, storeBackupUpdateBackup.pl, linkToDirs.pl
+        - added option --maxHardLinks
+
+- run spec-cleaner and fixed deprecated %patchN
+
+
+-------------------------------------------------------------------
 Thu Jul  8 07:54:56 UTC 2021 - danilo.spinella@suse.com
 
 - Improve config detection for storeBackup-run-all script
