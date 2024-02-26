@@ -101,10 +101,8 @@ database engine. Tryton provides modularity, scalability and
 security.
 
 %prep
-%setup -q
+%autosetup -p1
 cp %{SOURCE1} .
-
-%patch0 -p1
 
 #shebag ersetzen
 find . -iname "bin/trytond*" -exec sed -i "s/python3 /%{mypython} /" '{}' \;
