@@ -92,11 +92,11 @@ This package contains the header files for Dante.
 
 %prep
 %setup -q
-%patch2
-%patch3
-%patch4
-%patch5 -p1
-%patch6 -p1
+%patch -P 2
+%patch -P 3
+%patch -P 4
+%patch -P 5 -p1
+%patch -P 6 -p1
 
 %build
 DANTELIBC=`find /%{_lib}/ -maxdepth 1 -iname "libc.so.*"`
