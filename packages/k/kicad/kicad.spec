@@ -16,12 +16,12 @@
 #
 
 
-# According to upstream, kicad 7.x.y can be used with the footprint and
-# symbol libraries from version 7.0.0
-%define compatversion 7.0.0
+# According to upstream, kicad 8.x.y can be used with the footprint and
+# symbol libraries from version 8.0.0
+%define compatversion 8.0.0
 Name:           kicad
-Version:        7.0.10
-%define file_version 7.0.10
+Version:        8.0.0
+%define file_version 8.0.0
 Release:        0
 Summary:        EDA software suite for the creation of schematics and PCB
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later
@@ -38,13 +38,10 @@ BuildRequires:  gcc-c++ >= 8
 BuildRequires:  gcc11-PIE
 BuildRequires:  gcc11-c++ >= 8
 %endif
-BuildConflicts: libicu65_1-ledata
-BuildConflicts: libicu-suse65_1
-# BuildConflicts: libwebkit2gtk-4_0-37
-
 BuildRequires:  gettext
 BuildRequires:  glm-devel >= 0.9.8
 BuildRequires:  libboost_filesystem-devel-impl
+BuildRequires:  libboost_locale-devel-impl
 BuildRequires:  libboost_system-devel-impl >= 1.71
 BuildRequires:  libboost_test-devel-impl
 BuildRequires:  libngspice-devel
@@ -55,17 +52,23 @@ BuildRequires:  python3-pybind11-devel
 BuildRequires:  python3-wxPython
 BuildRequires:  swig >= 3
 BuildRequires:  update-desktop-files
-BuildRequires:  wxGTK3-devel >= 3
+BuildRequires:  wxGTK3-devel >= 3.2.4
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libgit2)
+BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(odbc)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(python3) >= 3.6
 BuildRequires:  pkgconfig(zlib)
 # Fix directory owner
 BuildRequires:  hicolor-icon-theme
+# Test requirements
+BuildRequires:  python3-pytest
+BuildRequires:  python3-CairoSVG
+
 # Dlopen'ed simulator library
 Requires:       libngspice0
 # The help function gives an error without the doc package
@@ -167,11 +170,11 @@ export CXX=g++-11 CC=gcc-11
 %suse_update_desktop_file -r org.kicad.pcbnew "Education;Engineering"
 %endif
 
-# Link to library libkicad_3dsg.so.2.0.0 has no use
-rm -rf %{buildroot}%{_libdir}/libkicad_3dsg.so
+# Remove development symlinks, pointless without any headers etc.
+rm %{buildroot}%{_libdir}/libki{cad_3dsg,common,gal}.so
 
 # https://gitlab.com/kicad/code/kicad/-/issues/9944
-rm -rf %{buildroot}%{_libdir}/libkicad*.a
+find %{buildroot}%{_libdir} -iname \*.a -print -delete
 
 # Fix executable bits for scripts executed directly from kicad
 chmod -x %{buildroot}%{_datadir}/kicad/scripting/*/*.py
@@ -182,20 +185,25 @@ chmod -x %{buildroot}%{_datadir}/kicad/scripting/*/*.py
 %find_lang %{name}
 
 %check
-%ifarch aarch64
-# aarch64: https://sourceforge.net/p/ngspice/bugs/622/
-%ctest --exclude-regex qa_eeschema
-%ctest --tests-regex qa_eeschema || true
+./build/kicad/kicad-cli version
+%ctest --exclude-regex 'qa_spice|qa_cli|qa_common|qa_pcbnew'
+
+%ifnarch %{ix86} aarch64
+%ctest --tests-regex 'qa_spice|qa_cli|qa_common|qa_pcbnew'
 %endif
+
+%ifarch aarch64
+%ctest --tests-regex 'qa_cli|qa_common|qa_pcbnew'
+# aarch64: https://sourceforge.net/p/ngspice/bugs/622/
+%ctest --tests-regex 'qa_spice' || true
+%endif
+
 %ifarch %{ix86}
 # common fails during a WX color conversion, 0xb2 != 0xb3 -> minor, ignore
 # eeschema: https://gitlab.com/kicad/code/kicad/-/issues/10149
 # pcbnew fails during Eagle import, e.g. stroke width 14999 != 15000 -> minor
-%ctest --exclude-regex 'qa_common|qa_eeschema|qa_pcbnew'
-%ctest --tests-regex 'qa_common|qa_eeschema|qa_pcbnew' || true
-%endif
-%ifnarch %{ix86} aarch64
-%ctest
+%ctest --tests-regex 'qa_spice' || true
+%ctest --tests-regex 'qa_cli|qa_common|qa_pcbnew' || true
 %endif
 
 %post   -p /sbin/ldconfig
@@ -206,6 +214,7 @@ chmod -x %{buildroot}%{_datadir}/kicad/scripting/*/*.py
 %license LICENSE.*
 %{_bindir}/*
 %{_libdir}/kicad/
+%{_libdir}/libki*.so.*
 %{_datadir}/kicad/
 %{python3_sitearch}/*
 %{_datadir}/metainfo/org.kicad.kicad.metainfo.xml
@@ -213,7 +222,6 @@ chmod -x %{buildroot}%{_datadir}/kicad/scripting/*/*.py
 %{_datadir}/mime/packages/kicad-*.xml
 %{_datadir}/icons/hicolor/*/mimetypes/application-x-*
 %{_datadir}/icons/hicolor/*/apps/*.*
-%{_libdir}/libkicad_3dsg.so.2.0.0
 
 %files lang -f %{name}.lang
 
