@@ -57,7 +57,7 @@ OsmoSDR is a software-based small form factor Software Defined Radio project.
 
 %prep
 %setup -q -n %{name}-%{version}/software/libosmosdr/
-%patch0 -p3
+%patch -P 0 -p3
 
 %build
 %cmake

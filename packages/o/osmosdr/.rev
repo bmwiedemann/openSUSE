@@ -7,4 +7,12 @@
     <comment>I want to maintain osmosdr in Factory</comment>
     <requestid>542213</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dff6908b8341371ebd7bc3c896fdaf85</srcmd5>
+    <version>0.1+git.20151211</version>
+    <time>1708973268</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151498</requestid>
+  </revision>
 </revisionlist>
