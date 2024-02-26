@@ -41,9 +41,7 @@ generates a database, controlled by a configuration file, of all
 files, their checksums, etc. and it reports changes.
 
 %prep
-%setup -q -n tripwire-open-source-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n tripwire-open-source-%{version}
 cp %{S:2} .
 autoreconf -f -i
 

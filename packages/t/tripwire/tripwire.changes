@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 15:52:29 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Mon Aug  2 05:17:38 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 2.4.3.7
 
 - fix build with gcc11
