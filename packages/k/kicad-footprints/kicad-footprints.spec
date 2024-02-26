@@ -16,12 +16,12 @@
 #
 
 
-# 7.0.x are bugfix versions, do not require users to upgrade symbols/footprints/packages
-%define compatversion 7.0.0
+# 8.0.x are bugfix versions, do not require users to upgrade symbols/footprints/packages
+%define compatversion 8.0.0
 
 Name:           kicad-footprints
-Version:        7.0.10
-%define file_version 7.0.10
+Version:        8.0.0
+%define file_version 8.0.0
 Release:        0
 Summary:        Footprint library for KiCad
 # License is CC-BY-SA-4.0 but there is an exception
