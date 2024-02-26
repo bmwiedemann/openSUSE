@@ -7,7 +7,7 @@ Fri Feb 23 10:02:12 UTC 2024 - dmueller@suse.com
 -------------------------------------------------------------------
 Thu Feb 15 05:57:30 UTC 2024 - opensuse_buildservice@ojkastl.de
 
-- Update to version 3.14.1:
+- Update to version 3.14.1 (bsc#1219969, CVE-2024-25620):
   * validation fix
 
 -------------------------------------------------------------------

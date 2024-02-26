@@ -683,4 +683,12 @@ See changelog in:
   * validation fix</comment>
     <requestid>1149779</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>4a135381e6bbd1ddecdcfc9c29c9a89c</srcmd5>
+    <version>3.14.2</version>
+    <time>1708973165</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.14.1 (bsc#1219969, CVE-2024-25620):</comment>
+    <requestid>1150030</requestid>
+  </revision>
 </revisionlist>
