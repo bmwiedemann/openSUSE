@@ -39,15 +39,8 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Small tool to ask the user for one or more responses (e.g., from batch
 files).
 
-
-
-Authors:
---------
-    Barry Brachman <brachman@cs.ubc.ca>
-
 %prep
-%setup -n xprompt-28sep91
-%patch0
+%autosetup -p0 -n xprompt-28sep91
 
 %build
 xmkmf -a
