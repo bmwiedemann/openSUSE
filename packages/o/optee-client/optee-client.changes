@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb 26 14:39:59 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 4.1.0
+- Add libseteec0 and libteeacl0
+- Drop upstream patch:
+  * optee-client-fix-lib.patch
+
+-------------------------------------------------------------------
+Mon Feb 26 12:50:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Thu Jun 25 11:59:17 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 3.9.0
