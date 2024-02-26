@@ -1,7 +1,7 @@
 #
 # spec file for package tei-roma
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,10 +51,7 @@ TEI schema or DTD.  It uses xsltproc, trang, and Perl.
 %define xml_mod_style_prod_ver_dir %{xml_mod_style_prod_dir}/%{version}
 
 %prep
-%setup -q
-# unzip -q -a %{SOURCE0}
-%patch0 -p 1
-%patch1 -p1
+%autosetup -p1
 /bin/chmod -Rf a+rX,g-w,o-w .
 
 %build
