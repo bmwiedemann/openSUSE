@@ -3005,6 +3005,7 @@ unsorted:
   - decentxml-javadoc 
   - decibels 
   - decibels-lang 
+  - decker 
   - deco 
   - deepin-account-faces 
   - deepin-api 
@@ -6983,6 +6984,8 @@ unsorted:
   - gmp-devel-32bit 
   - gmp-ecm 
   - gmp-ecm-devel 
+  - gmrun 
+  - gmrun-lang 
   - gmsh 
   - gmsh-demos 
   - gmsh-devel 
@@ -8377,6 +8380,7 @@ unsorted:
   - hyprland 
   - hyprland-devel 
   - hyprland-protocols-devel 
+  - hyprlang-devel 
   - hyprpaper 
   - hyprshot 
   - i18nspector 
@@ -8574,6 +8578,8 @@ unsorted:
   - infinoted 
   - influxdb 
   - influxdb-devel 
+  - influxdb2 
+  - influxdb2-devel 
   - info2html 
   - infos-creator-rpm 
   - ini4j 
@@ -10709,6 +10715,10 @@ unsorted:
   - libQCoro6Quick0 
   - libQCoro6WebSockets0 
   - libQMatrixClient0_5_3 
+  - libQXmppQt5-4 
+  - libQXmppQt5-devel 
+  - libQXmppQt6-4 
+  - libQXmppQt6-devel 
   - libQgpsmm30 
   - libQt53DAnimation-devel 
   - libQt53DAnimation5 
@@ -13177,6 +13187,7 @@ unsorted:
   - libhydrogen-core-1_2_3 
   - libhydrogen-core-devel 
   - libhyphen0-32bit 
+  - libhyprlang1 
   - libi2c0 
   - libi2c0-devel 
   - libibdm1 
@@ -13405,8 +13416,8 @@ unsorted:
   - libkdegames-devel 
   - libkdepim-devel 
   - libkdevplatform512 
-  - libkdsingleapplication 
-  - libkdsingleapplication-qt6 
+  - libkdsingleapplication-qt6-1_1 
+  - libkdsingleapplication1_1 
   - libkdsoap-qt6-2 
   - libkdsoap-server-qt6-2 
   - libkdsoap-server2 
@@ -14977,7 +14988,6 @@ unsorted:
   - libqxmledit-0_9_17-0 
   - libqxmpp-devel 
   - libqxmpp-doc 
-  - libqxmpp4 
   - libqxp-devel 
   - libqxp-doc 
   - libqxp-tools 
@@ -15335,6 +15345,7 @@ unsorted:
   - libserializer-javadoc 
   - libserialport-devel 
   - libserialport0 
+  - libseteec0 
   - libsexpp0 
   - libsfcUtil0 
   - libsfml2-2_6 
@@ -15696,6 +15707,7 @@ unsorted:
   - libteam5 
   - libteamdctl0 
   - libtecla_r1 
+  - libteeacl0 
   - libteec1 
   - libtelepathy-farstream3 
   - libtemplate_glib-1_0-0 
@@ -24737,7 +24749,6 @@ unsorted:
   - python310-jdatetime 
   - python310-jdcal 
   - python310-jedi 
-  - python310-jedihttp 
   - python310-jeepney 
   - python310-jellyfish 
   - python310-jenkinsapi 
@@ -28234,7 +28245,6 @@ unsorted:
   - python311-jdatetime 
   - python311-jdcal 
   - python311-jedi 
-  - python311-jedihttp 
   - python311-jeepney 
   - python311-jellyfish 
   - python311-jenkinsapi 
@@ -31691,7 +31701,6 @@ unsorted:
   - python312-jdatetime 
   - python312-jdcal 
   - python312-jedi 
-  - python312-jedihttp 
   - python312-jeepney 
   - python312-jellyfish 
   - python312-jenkinsapi 
@@ -35170,7 +35179,6 @@ unsorted:
   - python39-jdatetime 
   - python39-jdcal 
   - python39-jedi 
-  - python39-jedihttp 
   - python39-jeepney 
   - python39-jellyfish 
   - python39-jenkinsapi 
@@ -39194,6 +39202,7 @@ unsorted:
   - system-user-greeter 
   - system-user-grommunio 
   - system-user-gromox 
+  - system-user-hyperkitty 
   - system-user-kankurun 
   - system-user-libvirt-dbus 
   - system-user-loki 
