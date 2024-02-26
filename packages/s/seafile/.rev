@@ -155,4 +155,19 @@
 </comment>
     <requestid>1096512</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0fba639c33a95dcd23777ae0117c0adf</srcmd5>
+    <version>9.0.4</version>
+    <time>1708973324</time>
+    <user>anag+factory</user>
+    <comment>- Update to 9.0.4:
+  * Add a file-level error when failed to checkout file by @feiniks in #2692
+  * Add option to build websockets by @feiniks in #2693
+  * Add block missing sync error by @feiniks in #2694
+  * Only record a file-level error,don't send notification by @feiniks in #2701
+  * Upgrade to Qt 6.5.2 by @rumtid in #2695
+  * Add compile linux websockets macro by @feiniks in #2703
+</comment>
+    <requestid>1151707</requestid>
+  </revision>
 </revisionlist>

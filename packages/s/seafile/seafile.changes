@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:56:25 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 9.0.4:
+  * Add a file-level error when failed to checkout file by @feiniks in #2692
+  * Add option to build websockets by @feiniks in #2693
+  * Add block missing sync error by @feiniks in #2694
+  * Only record a file-level error,don't send notification by @feiniks in #2701
+  * Upgrade to Qt 6.5.2 by @rumtid in #2695
+  * Add compile linux websockets macro by @feiniks in #2703
+
+-------------------------------------------------------------------
 Mon Jul  3 08:49:49 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 9.0.3 (no changelog).
