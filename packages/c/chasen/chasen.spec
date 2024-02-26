@@ -117,8 +117,8 @@ ChaSen Perl Module
 
 %prep
 %setup -q
-%patch1
-%patch2 -p1
+%patch -P 1
+%patch -P 2 -p1
 
 %build
 autoreconf --force --install

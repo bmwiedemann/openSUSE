@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 10:38:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Aug 11 16:02:57 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop --with-pic, as it has no effect with --disable-static.
