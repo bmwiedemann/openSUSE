@@ -120,7 +120,7 @@ With Sonic Visualiser you can:
 %prep
 %setup -q
 %if 0%{?BUILD_ORIG}
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 
 # required with capnproto 0.7.0
