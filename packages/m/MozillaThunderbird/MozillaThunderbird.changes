@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Mon Feb 19 22:01:04 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 115.8.0
+  MFSA 2024-07 (bsc#1220048)
+  * CVE-2024-1546 (bmo#1843752)
+    Out-of-bounds memory read in networking channels
+  * CVE-2024-1547 (bmo#1877879)
+    Alert dialog could have been spoofed on another site
+  * CVE-2024-1548 (bmo#1832627)
+    Fullscreen Notification could have been hidden by select
+    element
+  * CVE-2024-1549 (bmo#1833814)
+    Custom cursor could obscure the permission dialog
+  * CVE-2024-1550 (bmo#1860065)
+    Mouse cursor re-positioned unexpectedly could have led to
+    unintended permission grants
+  * CVE-2024-1551 (bmo#1864385)
+    Multipart HTTP Responses would accept the Set-Cookie header
+    in response parts
+  * CVE-2024-1552 (bmo#1874502)
+    Incorrect code generation on 32-bit ARM devices
+  * CVE-2024-1553 (bmo#1855686, bmo#1867982, bmo#1871498,
+    bmo#1872296, bmo#1873521, bmo#1873577, bmo#1873597,
+    bmo#1873866, bmo#1874080, bmo#1874740, bmo#1875795,
+    bmo#1875906, bmo#1876425, bmo#1878211, bmo#1878286)
+    Memory safety bugs fixed in Firefox 123, Firefox ESR 115.8,
+    and Thunderbird 115.8
+  * new: Added option to show packet dump when OpenPGP fails to
+    decrypt (bmo#1874504)
+  * fixed: Thunderbird slowed down significantly when opening
+    email files (.eml) (bmo#1863957)
+  * fixed: Inbox view intermittently reverted to default view
+    after moving or deleting messages (bmo#1725127)
+  * fixed: Size of collapsed folders in folder pane did not
+    include size of subfolders (bmo#1870641)
+  * fixed: Hovering over folder does not always expand subfolders
+    (bmo#1873101)
+  * fixed: Switching to thread pane of a folder using keyboard
+    navigation did not focus top message (bmo#1869557)
+  * fixed: Clicking "Sent unsent messages" in Outbox context menu
+    while in offline mode did not prompt user to go online
+    (bmo#1873487)
+  * fixed: Mail tab-specific Unified Toolbar buttons received
+    focus incorrectly (bmo#1872239)
+  * fixed: Quick Filter settings did not persist when Quick
+    Filter bar was turned off (bmo#1850266)
+  * fixed: Quick Filters were unusually slow (bmo#1849650)
+  * fixed: OpenPGP Key Manager filtering did not work
+    (bmo#1873655)
+  * fixed: OpenPGP sometimes attempted to decrypt message with
+    incorrect key (bmo#1865620)
+  * fixed: Autoconfig failed on servers that did not support
+    OAuth2 (bmo#1869122)
+  * fixed: Opening different attachments with the same name in
+    different messages could cause attachment files to become
+    conflated (bmo#1873023)
+  * fixed: Overflowed attachment list could not be scrolled
+    (bmo#1871343)
+  * fixed: Passwords disappeared from password manager list after
+    applying and clearing filters (bmo#1874646)
+  * fixed: Cookies in cookie manager list disappeared after
+    applying and then clearing filters (bmo#1876733)
+
+-------------------------------------------------------------------
 Sun Jan 21 09:10:11 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 115.7.0
