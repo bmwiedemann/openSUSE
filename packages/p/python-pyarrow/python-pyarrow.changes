@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Fri Feb 23 17:35:37 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 15.0.1
+  ## Bug Fixes
+  * [Python] Fix race condition in _pandas_api#_check_import
+    (#39314)
+  * [Python] Avoid leaking references to Numpy dtypes (#39636)
+  * [Release] Update platform tags for macOS wheels to macosx_10_15
+    (#39657)
+  * [Python][CI] Fix test failures with latest/nightly pandas
+    (#39760)
+  * [C#] Restore support for .NET 4.6.2 (#40008)
+  * [Python] Make capsule name check more lenient (#39977)
+  * [Python][FlightRPC] Release GIL in GeneratorStream (#40005)
+  ## New Features and Improvements
+  * [Python] Remove the use of pytest-lazy-fixture (#39850)
+  * [Python][CI] Pin moto<5 for dask integration tests (#39881)
+  * [Python] Fix tests for pandas with CoW / nightly integration
+    tests (#40000)
+- Release 15.0.0
+  ## Bug Fixes
+  * [C++][Python] Add a no-op kernel for
+    dictionary_encode(dictionary) (#38349)
+  * [Python] Fix S3FileSystem equals None segfault (#39276)
+  * Fix TestArrowReaderAdHoc.ReadFloat16Files to use new
+    uncompressed files (#38825)
+  * [Python] Fix spelling (#38945)
+  * [CI][Python] Update pandas tests failing on pandas nightly CI
+    build (#39498)
+  * [CI][JS] Force node 20 on JS build on arm64 to fix build issues
+    (#39499)
+  ##  New Features and Improvements
+  * [C++][Python] Add "Z" to the end of timestamp print string when
+    tz defined (#39272)
+  * [Python] Remove the legacy ParquetDataset custom python-based
+    implementation (#39112)
+  * [Python] add Table.to/from_struct_array (#38520)
+  * [C++][Python] DLPack implementation for Arrow Arrays (producer)
+    (#38472)
+  * [Python] FixedSizeListArray.from_arrays supports mask parameter
+    (#39396)
+  * [C++][Python][R] Allow users to adjust S3 log level by
+    environment variable (#38267)
+  * [Python] Expose Parquet sorting metadata (#37665)
+  * [C++][Python][Parquet] Implement Float16 logical type (#36073)
+  * [Python] Make CacheOptions configurable from Python (#36627)
+  * [Python][Parquet] Parquet Support write and validate Page CRC
+    (#38360)
+  * [Python][Dataset] Expose file size to python dataset (#37868)
+  * [R] Allow code() to return package name prefix. (#38144)
+  * [Python] Remove usage of pandas internals DatetimeTZBlock
+    (#38321)
+  * Add validation logic for offsets and values to
+    arrow.array.ListArray.fromArrays (#38531)
+  * [Python][Compute] Describe strptime format semantics (#38665)
+  * [Python] Remove dead code in _reconstruct_block (#38714)
+  * [Python] Fix append mode for cython 2 (#39027)
+  * [Python] Add append mode for pyarrow.OsFile (#38820)
+  * [Python] Extract libparquet requirements out of
+    libarrow_python.so to new libarrow_python_parquet_encryption.so
+    (#39316)
+  * Create module info compiler plugin (#39135)
+  * [Python] RecordBatchReader.from_stream constructor for objects
+    implementing the Arrow PyCapsule protocol (#39218)
+  * [Python] Pass in type to MapType.from_arrays (#39516)
+  * [Python][CI] Skip failing dask tests: test_describe_empty and
+    test_view (#39534)
+  * [Python] NumPy 2.0 compat: remove usage of np.core (#39535)
+  * [Packaging][Python] Add a numpy<2 pin to the install
+    requirements for the 15.x release branch (#39538)
+
+-------------------------------------------------------------------
 Mon Jan 15 20:42:25 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 14.0.2

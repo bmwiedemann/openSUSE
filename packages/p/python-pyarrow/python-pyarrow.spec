@@ -19,16 +19,16 @@
 %bcond_with xsimd
 %define plainpython python
 Name:           python-pyarrow
-Version:        14.0.2
+Version:        15.0.1
 Release:        0
 Summary:        Python library for Apache Arrow
 License:        Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause AND MIT
 URL:            https://arrow.apache.org/
 Source0:        https://github.com/apache/arrow/archive/apache-arrow-%{version}.tar.gz
 Source99:       python-pyarrow.rpmlintrc
-BuildRequires:  %{python_module Cython >= 0.29.31 with %python-Cython < 3}
+BuildRequires:  %{python_module Cython >= 0.29.31}
 BuildRequires:  %{python_module devel >= 3.8}
-BuildRequires:  %{python_module numpy-devel >= 1.16.6}
+BuildRequires:  %{python_module numpy-devel >= 1.16.6 with %python-numpy-devel < 2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -50,7 +50,7 @@ BuildRequires:  cmake(re2)
 BuildRequires:  pkgconfig(bzip2) >= 1.0.8
 BuildRequires:  pkgconfig(gmock) >= 1.10
 BuildRequires:  pkgconfig(gtest) >= 1.10
-Requires:       python-numpy >= 1.16.6
+Requires:       (python-numpy >= 1.16.6 with python-numpy < 2)
 # SECTION test requirements
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pandas}
@@ -123,10 +123,8 @@ pushd python
 popd
 
 %check
-# Unexpected additional warning
-donttest="test_env_var"
 # flaky
-donttest="$donttest or test_total_bytes_allocated"
+donttest="test_total_bytes_allocated"
 %ifarch %{ix86} %{arm32}
 # tests conversion to 64bit datatypes
 donttest="$donttest or test_conversion"
