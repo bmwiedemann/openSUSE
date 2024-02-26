@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb 25 20:17:46 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.8.11:
+  + Bug Fixes:
+    - Prevent app from hanging if not image in stdin
+    
+-------------------------------------------------------------------
 Sat Feb 24 19:54:53 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.8.10:

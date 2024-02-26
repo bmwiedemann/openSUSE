@@ -17,7 +17,7 @@
 
 
 Name:           oculante
-Version:        0.8.10
+Version:        0.8.11
 Release:        0
 Summary:        A minimalistic crossplatform image viewer written in rust
 License:        MIT
