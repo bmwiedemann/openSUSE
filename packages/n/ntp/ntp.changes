@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 14:01:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Jun  7 09:12:40 UTC 2023 - Reinhard Max <max@suse.com>
 
 - Update to 4.2.8p17:

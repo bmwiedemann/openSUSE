@@ -129,21 +129,21 @@ There are currently two tools:
 %setup -q
 # unpack ntp-faq
 tar -x -C html -j -f %{SOURCE10}
-%patch1
+%patch -P 1
 # copy README.SUSE
 cp %{SOURCE12} .
-%patch10 -p1
-%patch11 -p1
-%patch15
-%patch16
-%patch18
-%patch23
-%patch27
-%patch29
-%patch30
-%patch33
-%patch34 -p1
-%patch35
+%patch -P 10 -p1
+%patch -P 11 -p1
+%patch -P 15
+%patch -P 16
+%patch -P 18
+%patch -P 23
+%patch -P 27
+%patch -P 29
+%patch -P 30
+%patch -P 33
+%patch -P 34 -p1
+%patch -P 35
 
 # fix DOS line breaks
 sed -i 's/\r//g' html/scripts/{footer.txt,style.css}
