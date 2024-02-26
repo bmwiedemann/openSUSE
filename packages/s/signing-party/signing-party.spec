@@ -81,8 +81,7 @@ and allows her to select the keys for importing into the GnuPG
 keyring.
 
 %prep
-%setup -q -n signing-party-%{version}
-%patch1 -p1
+%autosetup -p1 -n signing-party-%{version}
 
 %build
 %if 0%{?suse_version} > 1320

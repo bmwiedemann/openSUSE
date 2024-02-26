@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:23:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Sat May 15 08:53:33 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - signing-party 2.11:
