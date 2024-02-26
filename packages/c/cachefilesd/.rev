@@ -180,4 +180,12 @@
   - remove fix-cpu-spin.patch (solved differently upstream)</comment>
     <requestid>827024</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>c0ca467340f12bfa943d02e8fdffa144</srcmd5>
+    <version>0.10.10</version>
+    <time>1708973193</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151221</requestid>
+  </revision>
 </revisionlist>
