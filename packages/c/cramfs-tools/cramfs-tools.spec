@@ -35,8 +35,7 @@ directory, as well as checking a constructed CramFs image and
 extracting its contents.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%optflags"
