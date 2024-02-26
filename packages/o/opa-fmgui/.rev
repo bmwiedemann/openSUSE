@@ -80,4 +80,12 @@
     <comment></comment>
     <requestid>1121653</requestid>
   </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>4d733d73e7efb18c3f2f7c43c660df44</srcmd5>
+    <version>10.1.0.0.115</version>
+    <time>1708973246</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1151383 from dimstar)</comment>
+    <requestid>1151440</requestid>
+  </revision>
 </revisionlist>

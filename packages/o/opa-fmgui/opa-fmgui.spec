@@ -91,10 +91,10 @@ script fmgui.
 
 %prep
 %setup -q -n %{name}-%{version}%{git_ver}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3
 
 %build
 mkdir -p lib
