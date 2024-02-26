@@ -153,28 +153,28 @@ Authors:
 
 %prep
 %setup -q
-%patch1   -p1 -b .keywords
+%patch -P 1   -p1 -b .keywords
 find -name '*.pl' -o -name file-newer | \
   xargs -r sed -ri '1 {s@(^#[[:blank:]]*\!)(.*/perl5?)@\1/usr/bin/perl@p}'
 chmod -R u+rw,g+r,o+r .
-%patch2   -p1 -b .packages
-%patch3   -p1 -b .app-defaults
-%patch4   -p1 -b .apel
-%patch5   -p1 -b .edict-utf-8
-%patch6   -p1 -b .diff-mode
-%patch7   -p1 -b .gnus-utf-8
-%patch11  -p1 -b .psprint
-#%patch15 -p1 -b .comint
-%patch17  -p1 -b .awk
-%patch18  -p1 -b .dinbrief
-%patch19  -p1 -b .disable-skk
-%patch24  -p1 -b .texi-coding
-%patch28  -p1 -b .texi-patch
-%patch32  -p1 -b .cookie
-%patch34  -p1 -b .mode-local
+%patch -P 2   -p1 -b .packages
+%patch -P 3   -p1 -b .app-defaults
+%patch -P 4   -p1 -b .apel
+%patch -P 5   -p1 -b .edict-utf-8
+%patch -P 6   -p1 -b .diff-mode
+%patch -P 7   -p1 -b .gnus-utf-8
+%patch -P 11  -p1 -b .psprint
+#%patch -P 15 -p1 -b .comint
+%patch -P 17  -p1 -b .awk
+%patch -P 18  -p1 -b .dinbrief
+%patch -P 19  -p1 -b .disable-skk
+%patch -P 24  -p1 -b .texi-coding
+%patch -P 28  -p1 -b .texi-patch
+%patch -P 32  -p1 -b .cookie
+%patch -P 34  -p1 -b .mode-local
 # PATCH-FIX-SUSE boo#857207 -- xemacs tramp ssh completion returns "Wrong type argument: symbolp, ..."
-%patch35  -p1 -b .tramp
-%patch36 -p1
+%patch -P 35  -p1 -b .tramp
+%patch -P 36 -p1
 rm -vf xemacs-packages/tramp/texi/tramp.texi.tramp
 chmod 755 %{S:3}
 %{S:3}

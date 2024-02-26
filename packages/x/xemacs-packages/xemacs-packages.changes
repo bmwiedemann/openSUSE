@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:05:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Oct 20 15:38:06 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to drop build date (boo#1047218)
