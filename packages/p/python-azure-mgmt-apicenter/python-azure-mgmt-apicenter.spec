@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-apicenter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,20 +15,19 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define realversion 1.0.0b1
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-apicenter
-Version:        1.0.0~b1
+Version:        1.0.0
 Release:        0
 Summary:        Microsoft Azure Apicenter Management Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-apicenter/azure-mgmt-apicenter-%{realversion}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-apicenter/azure-mgmt-apicenter-%{version}.tar.gz
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -43,7 +42,6 @@ Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-isodate < 1.0.0
 Requires:       python-isodate >= 0.6.1
-Requires:       (python-typing_extensions >= 4.3.0 if python-base < 3.8)
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
@@ -56,10 +54,10 @@ This is the Microsoft Azure Apicenter Management Client Library.
 This package has been tested with Python 3.7+.
 
 %prep
-%setup -q -n azure-mgmt-apicenter-%{realversion}
+%setup -q -n azure-mgmt-apicenter-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-apicenter-%{realversion}
+install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-apicenter-%{version}
 %python_build
 
 %install
