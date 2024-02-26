@@ -568,4 +568,34 @@ changes since last time:
     <comment></comment>
     <requestid>1118321</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>4f430dda0eb1e7cd2c503915ba62a2af</srcmd5>
+    <version>1.9</version>
+    <time>1708973120</time>
+    <user>anag+factory</user>
+    <comment>- Specfile cleanup:
+  * remove deprecated and obsoleted RPM symbol/macros
+  * Provides should have version
+- Add contrib files: sway-1.9-contrib.tar.gz
+- Update specfile to accommodate new contrib files and contrib sub-package.
+- Update to version 1.9
+  * All of the enhancements from wlroots 0.17, including support for
+    the new content-type-v1, xwayland-shell-v1, wp-fractional-scale-v1,
+    security-context-v1 and cursor-shape-v1 protocols
+  * Improved xdg-activation-v1 support with workspace tracking and multi-seat
+  * The rendering code has been ported to the new wlroots rendering API,
+    yielding better performance
+  * A new config option to disable primary selection
+  * A new input commands to set libinput's rotation angle and scroll button lock
+  * Tablet tool buttons can now be used for floating mode resize
+  * The IPC output event is now supported
+  * Add support for layer-shell's on-demand keyboard interactivity
+  * Default menu is now wmenu
+  * KDE idle protocol is obsoleted for the standard idle-notify-v1 protocol
+- Remove dee032d0a0ecd958c902b88302dc59703d703c7f.patch. Patch is included in version 1.9.
+- Set wlroots version requirement to &gt;= 0.17.0
+- Update description on specfile. Sway has long since matured as a full-fledge compositor.
+</comment>
+    <requestid>1150537</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package sway
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sway
-Version:        1.8.1
+Version:        1.9
 Release:        0
 Summary:        Window manager for Wayland compatible with i3
 License:        MIT
@@ -27,9 +27,7 @@ Source0:        https://github.com/swaywm/sway/releases/download/%{version}/%{na
 Source1:        https://github.com/swaywm/sway/releases/download/%{version}/%{name}-%{version}.tar.gz.sig
 Source2:        https://emersion.fr/.well-known/openpgpkey/hu/dj3498u4hyyarh35rkjfnghbjxug6b19#/%{name}.keyring
 Source3:        sway-portals.conf
-# PATCH-FIX-UPSTREAM dee032d0a0ecd958c902b88302dc59703d703c7f.patch -- ipc: add LIBINPUT_CONFIG_ACCEL_PROFILE_CUSTOM entry
-Patch0:         https://github.com/swaywm/sway/commit/dee032d0a0ecd958c902b88302dc59703d703c7f.patch
-
+Source4:        https://github.com/OctopusET/sway-contrib/archive/refs/tags/%{version}-contrib.0.tar.gz#/sway-contrib-%{version}.tar.gz
 BuildRequires:  gcc-c++
 #BuildRequires:  libxslt-tools
 BuildRequires:  libevdev-devel
@@ -53,10 +51,12 @@ BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
 BuildRequires:  pkgconfig(wayland-server) >= 1.21.0
-BuildRequires:  pkgconfig(wlroots) >= 0.16.0
-BuildConflicts: pkgconfig(wlroots) >= 0.17.0
+BuildConflicts: pkgconfig(wlroots) <= 0.16.0
+BuildRequires:  fdupes
+BuildRequires:  pkgconfig(wlroots) >= 0.17.0
 BuildRequires:  pkgconfig(xkbcommon)
-Requires:       %{name}-branding
+# RPMLINT requires to have a version
+Requires:       %{name}-branding = %{version}
 %if 0%{?suse_version}
 # I definitely recommend Xwayland
 Recommends:     xorg-x11-server-wayland
@@ -69,15 +69,16 @@ Recommends:     xdg-desktop-portal-wlr
 Recommends:     xdg-desktop-portal-gtk
 
 %description
-"SirCmpwn's Wayland window manager" is a work in progress i3-compatible window
-manager for Wayland.
+Sway is a tiling Wayland compositor and a drop-in replacement for the i3
+window manager for X11. It works with your existing i3 configuration and
+supports most of i3's features, plus a few extras.
 
 %package branding-upstream
 Summary:        Upstream branding of %{name}
 Group:          System/GUI/Other
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and branding-upstream)
-Conflicts:      otherproviders(%{name}-branding)
+Conflicts:      %{name}-branding
 Provides:       %{name}-branding = %{version}
 BuildArch:      noarch
 #BRAND: /etc/sway/config contains upstream config and brand
@@ -96,6 +97,7 @@ Requires:       jq
 Requires:       slurp
 Requires:       sway
 Requires:       wl-clipboard
+BuildArch:      noarch
 
 %description contrib
 Contributed scripts from %{name} package.
@@ -118,9 +120,13 @@ Displays warning and error messages in %{name}.
 
 %prep
 %autosetup -p1
-for script in contrib/autoname-workspaces.py contrib/inactive-windows-transparency.py ; do
-  sed -i1 's,#!/usr/bin/python$,#!/usr/bin/python3,' $script
-done
+mkdir -p contrib
+tar xvf %{SOURCE4} --strip-components=1 -C contrib/
+pushd contrib
+find -name "*.py" -execdir sed -i 's,#!/usr/bin/env python$,#!/usr/bin/python3,' {} \;
+find -name "*.py" -execdir sed -i 's,#!/usr/bin/env python3$,#!/usr/bin/python3,' {} \;
+find -name "*.py" -execdir sed -i 's,#!/usr/bin/python$,#!/usr/bin/python3,' {} \;
+popd
 
 %build
 export CFLAGS="%{optflags}"
@@ -138,13 +144,18 @@ export CFLAGS="%{optflags}"
 # contrib
 install -Dpm 0644 -t %{buildroot}%{_mandir}/man1 contrib/*.1
 install -Dpm 0755 -t %{buildroot}%{_bindir} contrib/grimshot
-install -Dpm 0755 contrib/autoname-workspaces.py \
-    %{buildroot}%{_bindir}/autoname-workspaces
-install -Dpm 0755 contrib/inactive-windows-transparency.py \
-    %{buildroot}%{_bindir}/inactive-windows-transparency
+
+# Move over other contrib files to /usr/share/sway/contrib folder
+install -Dpm 0644 -t %{buildroot}%{_datadir}/%{name}/contrib contrib/*
+install -Dpm 0755 -t %{buildroot}%{_datadir}/%{name}/contrib contrib/*.py
+install -Dpm 0644 -t %{buildroot}%{_datadir}/%{name}/contrib contrib/firefox-focus-monitor.py
+# Remove it since it's installed in /usr/bin
+rm -v %{buildroot}%{_datadir}/%{name}/contrib/grimshot
 
 # XDP >= 0.18.0 requires a portal for the environment and onwards
 install -Dpm 0644 -t %{buildroot}%{_datadir}/xdg-desktop-portal/ %{SOURCE3}
+
+%fdupes %{buildroot}%{_prefix}
 
 %files
 %license LICENSE
@@ -178,9 +189,10 @@ install -Dpm 0644 -t %{buildroot}%{_datadir}/xdg-desktop-portal/ %{SOURCE3}
 %files contrib
 %license LICENSE
 %{_bindir}/grimshot
-%{_bindir}/inactive-windows-transparency
-%{_bindir}/autoname-workspaces
 %{_mandir}/man1/grimshot*
+%dir %{_datadir}/sway
+%dir %{_datadir}/sway/contrib
+%{_datadir}/sway/contrib/*
 
 %files -n swaybar
 %{_bindir}/swaybar
