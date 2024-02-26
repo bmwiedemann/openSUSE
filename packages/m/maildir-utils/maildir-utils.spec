@@ -1,7 +1,7 @@
 #
 # spec file for package maildir-utils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           maildir-utils
-Version:        1.10.8
+Version:        1.12.0
 Release:        0
 Summary:        Maildir indexer and searcher
 License:        GPL-3.0-or-later
@@ -44,7 +44,7 @@ Group:          Productivity/Networking/Email/Clients
 BuildArch:      noarch
 Requires:       %{name} = %{version}
 Requires(post): %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
+Requires(preun): %{install_info_prereq}
 
 %description -n mu4e
 mu4e is an emacs-based e-mail client. It is based on the mu e-mail indexer/searcher.
@@ -66,11 +66,11 @@ mu4e is an emacs-based e-mail client. It is based on the mu e-mail indexer/searc
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/mu4e.info.gz
 
 %files
-%doc ChangeLog README.org
+%doc README.org
+%doc %{_datadir}/doc/mu/NEWS.org
 %license COPYING
 %dir %{_datadir}/doc/mu
 %{_bindir}/mu
-%{_datadir}/doc/mu/NEWS.org
 %{_mandir}/man?/*%{ext_man}
 
 %files -n mu4e

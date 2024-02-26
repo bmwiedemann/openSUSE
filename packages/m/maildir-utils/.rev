@@ -695,4 +695,21 @@
     frameworks)</comment>
     <requestid>1125110</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>b1cc8857683fb46b43d87c0576900686</srcmd5>
+    <version>1.12.0</version>
+    <time>1708973128</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.12.0:
+  * Significant speedups in both mu and mu4e
+  * Reworked message composition, closer to its Gnus origins which
+	  adds many of its features
+  * Overhauled the query parser; squashing a number of bugs/limitations,
+	  incl. dealing with CJK messages
+  * Experimental folding of message threads
+  * Better and faster indexing of HTML messages
+  * Experimental search by (human) language wit CLD2
+	* For details see NEWS.org file</comment>
+    <requestid>1150565</requestid>
+  </revision>
 </revisionlist>
