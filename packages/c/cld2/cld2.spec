@@ -1,7 +1,7 @@
 #
 # spec file for package cld2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,8 +60,7 @@ on groups of four letters. Also tables for 160+ language versions.
 This subpackage contains the headers for cld2.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 cp %{SOURCE2} .
 cp %{SOURCE3} .
 
@@ -87,11 +86,7 @@ export CXXFLAGS="%{optflags} -std=c++98"
 %{_libdir}/libcld2_full.so.*
 
 %files devel
-%if 0%{?suse_version} < 1500
-%doc LICENSE
-%else
 %license LICENSE
-%endif
 %doc docs/*
 %{_includedir}/%{name}
 %{_libdir}/libcld2.so

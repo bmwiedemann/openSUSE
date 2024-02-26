@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 26 06:56:12 UTC 2024 - Matthias Fehring <buschmann23@opensuse.org> - 20150820
+
+- cleanup spec file
+
+-------------------------------------------------------------------
+Mon Feb 26 06:53:30 UTC 2024 - Matthias Fehring <buschmann23@opensuse.org> - 20150820
+
+- use autosetup in prep section
+
+-------------------------------------------------------------------
 Tue Mar 23 15:08:29 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
 
 - include GNUInstallDirs into CMakeLists.txt and use CMAKE_INSTALL_FULL_LIBDIR
