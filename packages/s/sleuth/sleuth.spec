@@ -43,8 +43,7 @@ so that the people upset with their zones being buggy can simply look
 up what is exactly going wrong and how to fix it.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %make_build
