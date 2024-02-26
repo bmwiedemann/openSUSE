@@ -73,8 +73,7 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q -n %{name}-src-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{name}-src-%{version}
 
 %build
 %cmake
