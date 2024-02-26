@@ -37,8 +37,8 @@ Quaternion class with overloaded operators.
 This is part of Octave-Forge project.
 
 %prep
-%setup -q -c %{name}-%{version}
-%patch0
+%autosetup -p0 -c %{name}-%{version}
+
 %octave_pkg_src
 
 %build
