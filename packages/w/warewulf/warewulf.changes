@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:13:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Feb 15 14:19:20 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - Readding provision-If-available-us-haveged-in-warewulf-initrd.patch
