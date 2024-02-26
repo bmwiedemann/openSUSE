@@ -1,6 +1,7 @@
 #
 # spec file for package tcpser
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,8 +13,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           tcpser
 Version:        1.0rc12+git.20191116
@@ -42,8 +44,7 @@ The author also fixed the bug with being unable to connect to real
 telnet servers.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 sed -i 's/\r$//' CHANGES
 
 %build

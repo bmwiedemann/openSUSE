@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 11:56:05 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Mon Jan  6 19:48:04 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version tcpser-1.0rc12+git.20191116
