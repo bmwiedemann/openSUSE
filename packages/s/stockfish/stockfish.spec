@@ -1,7 +1,7 @@
 #
 # spec file for package stockfish
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,17 @@
 
 
 # See evaluate.h > EvalFileDefaultName
-%define nnuenet nn-ad9b42354671.nnue
+%define nnuenetS nn-baff1ede1f90.nnue
+%define nnuenetB nn-b1a57edbea57.nnue
 Name:           stockfish
-Version:        15.1
+Version:        16.1
 Release:        0
 Summary:        Chess engine
 License:        GPL-3.0-or-later
 URL:            https://stockfishchess.org
 Source0:        https://github.com/official-stockfish/Stockfish/archive/sf_%{version}.tar.gz#/Stockfish-sf_%{version}.tar.gz
-Source1:        https://tests.stockfishchess.org/api/nn/%{nnuenet}
+Source1:        https://tests.stockfishchess.org/api/nn/%{nnuenetS}
+Source2:        https://tests.stockfishchess.org/api/nn/%{nnuenetB}
 # steal some documentation from ubuntu
 Source10:       %{name}-interface.txt
 Source11:       %{name}.6-20091204230329-yljoyxocuxhxg1ot-76/%{name}.6
@@ -51,10 +53,9 @@ order to be used comfortably. Read the documentation for your GUI of choice for
 information about how to use Stockfish with your GUI.
 
 %prep
-%setup -q -n Stockfish-sf_%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n Stockfish-sf_%{version}
 cp %{SOURCE1} src/
+cp %{SOURCE2} src/
 cp -p %{SOURCE10} %{SOURCE11} .
 
 dos2unix %{name}-interface.txt

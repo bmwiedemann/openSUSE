@@ -135,4 +135,25 @@
   Source. Because not available anymore.</comment>
     <requestid>1040725</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ff531475ee69c392f409318f45d2f1f8</srcmd5>
+    <version>16.1</version>
+    <time>1708973230</time>
+    <user>anag+factory</user>
+    <comment>- Update to 16.1:
+  * In our testing against its predecessor, Stockfish 16.1 shows a
+    notable improvement in performance, with an Elo gain of up to
+    27 points and winning over 2 times more game pairs than it loses.
+  * Updated neural network architecture: The neural network architecture
+    has undergone two updates and is currently in its 8th version.
+  * Removal of handcrafted evaluation (HCE): This release marks the
+    removal of the traditional handcrafted evaluation and the transition
+    to a fully neural network-based approach.
+  * Dual NNUE: For the first time, Stockfish includes a secondary neural
+    network, used to quickly evaluate positions that are easily decided.
+  * Use NNUE and UCI_AnalyseMode have been removed as they no longer had
+    any effect. SlowMover has also been removed in favor of Move Overhead.
+- Use %autosetup macro. Allows to eliminate the usage of deprecated PatchN.</comment>
+    <requestid>1151318</requestid>
+  </revision>
 </revisionlist>
