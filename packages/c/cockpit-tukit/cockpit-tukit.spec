@@ -46,8 +46,8 @@ Requires:       tukitd
 Cockpit module for Transactional Update
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{name}-%{version}
+
 rm -f package-lock.json
 rm -rf node_modules
 local-npm-registry %{_sourcedir} install --with=dev || ( find ~/.npm/_logs -name '*-debug.log' -print0 | xargs -0 cat; false)
