@@ -1,7 +1,7 @@
 #
 # spec file for package yacreader
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019 Xu Zhao (i@xuzhao.net).
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define unarr_version 569ffdb
 %define p7zip_version 16.02
 Name:           yacreader
-Version:        9.13.1
+Version:        9.14.2
 Release:        0
 Summary:        The best way for reading your comics
 License:        GPL-3.0-or-later

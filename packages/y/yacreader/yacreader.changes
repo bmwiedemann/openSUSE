@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 21 20:28:47 UTC 2024 - Xu Zhao <i@xuzhao.net>
+
+- Update to 9.14.2.2402143
+  * Fix columns in the search results.
+  * Fix type not being propagated to new folders from their parents.
+  * Improve and fix comic file size format.
+- Version 9.14.1
+  * Add setting to disable scroll animations and scroll smoothing.
+  * Fix missing translation when opening YACReader from
+    YACReaderLibrary.
+
+-------------------------------------------------------------------
 Tue Feb 20 13:00:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
