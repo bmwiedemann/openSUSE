@@ -33,9 +33,7 @@ controlling exclusive access to a SCSI device that is shared between
 more than one SCSI host adapter.
 
 %prep
-%setup -q -c
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -c
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags}"
