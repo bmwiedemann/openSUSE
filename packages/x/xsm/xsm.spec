@@ -53,8 +53,7 @@ you log back in to the system, you can load a specific session, and you can
 delete sessions you no longer want to keep.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
