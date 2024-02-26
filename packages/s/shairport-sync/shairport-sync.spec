@@ -72,10 +72,9 @@ Shairport Sync runs on Linux, FreeBSD and OpenBSD. It does not support AirPlay
 video or photo streaming.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
+
 cp %{SOURCE2} .
-%patch1 -p1
 
 %build
 autoreconf -i -f
