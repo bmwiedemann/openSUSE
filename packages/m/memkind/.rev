@@ -257,4 +257,13 @@ numbers.
     <comment></comment>
     <requestid>1035882</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>9b2898058e67a07d05459a8024aaa84a</srcmd5>
+    <version>1.14.0</version>
+    <time>1708973358</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN (forwarded request 1149794 from pgajdos)</comment>
+    <requestid>1151768</requestid>
+  </revision>
 </revisionlist>

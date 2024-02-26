@@ -84,9 +84,7 @@ Requires:       libmemkind0 = %{version}-%{release}
 Header files for building applications with libmemkind.
 
 %prep
-%setup -q -n memkind-%{version}
-%patch0
-%patch1
+%autosetup -p0 -n memkind-%{version}
 
 %build
 
