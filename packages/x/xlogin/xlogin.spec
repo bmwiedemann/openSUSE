@@ -42,16 +42,10 @@ magic key (cookie) of the display to the remote host.
 The script xtelnet starts a local xterm with a telnet session on the
 remote host.
 
-
-
-Authors:
---------
-    Werner Fink <werner@suse.de>
-
 %prep
 %setup
-%patch0
-%patch1 -p1
+%patch -P 0
+%patch -P 1 -p1
   xmkmf
 
 %build

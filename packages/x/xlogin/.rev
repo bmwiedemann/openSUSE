@@ -115,4 +115,12 @@
     <comment></comment>
     <requestid>1124028</requestid>
   </revision>
+  <revision rev="18" vrev="223">
+    <srcmd5>aedc996e42e3ea22490ac87d832b0347</srcmd5>
+    <version>0.2</version>
+    <time>1708973265</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1151326 from dimstar)</comment>
+    <requestid>1151470</requestid>
+  </revision>
 </revisionlist>
