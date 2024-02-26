@@ -82,7 +82,7 @@ Authors:
 %define xml_tei_style_dir %{xml_tei_dir}/stylesheet
 
 %prep
-%setup -q -n TEI_P4
+%autosetup -p1 -n TEI_P4
 chmod -R a+rX,g-w,o-w,u+w .
 find -type d | xargs chmod 755
 # %patch0 -p 1

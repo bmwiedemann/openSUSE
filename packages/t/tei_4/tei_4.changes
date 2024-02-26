@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:30:20 UTC 2024 - pgajdos@suse.com
+
+- use %autosetup
+
+-------------------------------------------------------------------
 Thu Dec 24 13:01:40 UTC 2009 - aj@suse.de
 
 - Only remove file from catalog if it disappeared.
