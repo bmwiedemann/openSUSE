@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:40:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Fri Nov  3 21:50:15 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
 
 - opa-fastfabric: migrate from cron to systemd timers.

@@ -125,10 +125,7 @@ Requires:       opa-fastfabric
 Tools for parsing information from provided snapshot files and issuing packets to program.
 
 %prep
-%setup -q -n  %{name}-%{version}%{git_ver}
-%patch1
-%patch2
-%patch3
+%autosetup -p0 -n  %{name}-%{version}%{git_ver}
 
 %build
 export RPM_OPT_FLAGS="$RPM_OPT_FLAGS -Wno-address-of-packed-member"
