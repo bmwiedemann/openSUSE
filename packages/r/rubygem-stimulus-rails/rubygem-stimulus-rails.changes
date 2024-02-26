@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jan 29 14:40:11 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- 1.3.3:
+
+## What's Changed
+
+* Fix syntax error in stimulus_with_node.rb by @euxx in https://github.com/hotwired/stimulus-rails/pull/134
+
+**Full Changelog**: https://github.com/hotwired/stimulus-rails/compare/v1.3.2...v1.3.3
+
+1.3.2:
+
+## What's Changed
+
+* Support for dasherized controller filenames by @adrienpoly in https://github.com/hotwired/stimulus-rails/pull/126
+* Describe the two options under stimulus:manifest so they can be found in a rails -T listing (closes #128) by @walterdavis in https://github.com/hotwired/stimulus-rails/pull/129
+* Fix duplicate controllers in manifest on update by @nachiket87 in https://github.com/hotwired/stimulus-rails/pull/132
+* Rely on import map-rails using preload by default by @dhh 
+* Improve Bun support by @rubys in https://github.com/hotwired/stimulus-rails/pull/127
+
+**Full Changelog**: https://github.com/hotwired/stimulus-rails/compare/v1.3.0...v1.3.2
+
+
+
+-------------------------------------------------------------------
 Tue Nov 14 18:41:00 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - 1.3.0:
