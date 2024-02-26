@@ -62,13 +62,7 @@ track of the changes each patch makes. Patches can be applied,
 un-applied, refreshed, and more.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch81 -p1
-%patch82 -p1
-%patch83 -p1
-%patch84 -p1
+%autosetup -p1
 
 %build
 # --with-rpmbuild=/usr/lib/rpm/rpmb:

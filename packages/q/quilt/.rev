@@ -587,4 +587,12 @@ patches/vrss.patch (forwarded request 226944 from jdelvare)</comment>
     <comment>Document the fact that &quot;quilt setup&quot; does not support arbitrary %prep sections and some adjustments to the spec file may be  needed (boo#1203791).</comment>
     <requestid>1008647</requestid>
   </revision>
+  <revision rev="76" vrev="4">
+    <srcmd5>d1d71ddb407cebeadd28260013f65b55</srcmd5>
+    <version>0.67</version>
+    <time>1708973405</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151866</requestid>
+  </revision>
 </revisionlist>

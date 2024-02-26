@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 14:05:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Thu Oct  6 16:57:34 UTC 2022 - Jean Delvare <jdelvare@suse.com>
 
 - setup-document-the-limitation-of-spec-file-support.patch:
