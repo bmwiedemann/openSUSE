@@ -1,0 +1,6 @@
+<package name="gmrun" project="openSUSE:Factory">
+  <title>a simple gtk-based command runner dialog with auto-complete</title>
+  <description>gmrun is a smaller lightweight substitute for grun or gnome-run</description>
+  <devel project="X11:Utilities" package="gmrun"/>
+  <url>https://github.com/rtyler/gmrun</url>
+</package>
