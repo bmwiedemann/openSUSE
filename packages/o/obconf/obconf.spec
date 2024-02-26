@@ -45,17 +45,8 @@ This is the official application from the Openbox developers to
 configure the Openbox window manager. It is not needed, but highly
 recommended when installing Openbox.
 
-
-
-Authors:
---------
-    Ben Jansens <ben@openbox.org>
-    Tim Riley <tr@slackzone.org>
-
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 mv po/no.po po/nb.po

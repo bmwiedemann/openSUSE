@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:31:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Sat Jan 10 17:39:41 UTC 2015 - trcs@gmx.com
 
 - added obconf-2.0.4-Spanish-translation-update.patch
