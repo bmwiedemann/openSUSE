@@ -153,11 +153,11 @@ that want to make use of libclamav.
 
 %prep
 %setup -q
-%patch1
-%patch5
-%patch6
-%patch12
-%patch14 -p1
+%patch -P 1
+%patch -P 5
+%patch -P 6
+%patch -P 12
+%patch -P 14 -p1
 chmod -x docs/html/images/flamegraph.svg
 
 %build
