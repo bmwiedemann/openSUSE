@@ -40,8 +40,8 @@ provides a solid basis for translating most texinfo documentation.
 %prep
 %setup -q
 zcat %{S:1} | patch --fuzz=%{_default_patch_fuzz} --suffix=.Bader
-%patch1 -p0
-%patch2 -p1
+%patch -P 1 -p0
+%patch -P 2 -p1
 
 %build
 RPM_OPT_FLAGS="${RPM_OPT_FLAGS} -std=c89 -D_GNU_SOURCE"

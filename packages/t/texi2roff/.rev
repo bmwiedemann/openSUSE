@@ -24,4 +24,12 @@
     <comment>- Move http to https</comment>
     <requestid>1004969</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c3fccf1a9973f03bf173ecf58e320ef9</srcmd5>
+    <version>2.0</version>
+    <time>1708973356</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN. (forwarded request 1151760 from pgajdos)</comment>
+    <requestid>1151764</requestid>
+  </revision>
 </revisionlist>
