@@ -98,8 +98,7 @@ Requires:       %{name} = %{version}
 This package contains the TURN development headers.
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch0
+%autosetup -p0 -n %{name}-%{version}
 
 %build
 %sysusers_generate_pre %{SOURCE4} %{name}
