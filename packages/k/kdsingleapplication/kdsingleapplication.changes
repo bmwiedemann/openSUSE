@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 16 10:33:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.1.0
+  * Add option making session ID part of the socket name optional
+  * Fix dynamic library versioning
+- Update the library package name
+
+-------------------------------------------------------------------
 Fri Oct  6 07:09:09 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Init kdsingleapplication

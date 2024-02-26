@@ -21,9 +21,12 @@
 %if "%{flavor}" == "qt6"
 %define qt6 1
 %define pkg_suffix -qt6
+%define sover -1_1
+%else
+%define sover 1_1
 %endif
 Name:           kdsingleapplication%{?pkg_suffix}
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Helper class for single-instance policy applications
 License:        MIT
@@ -46,15 +49,18 @@ BuildRequires:  cmake(Qt5Widgets)
 %description
 KDSingleApplication is a helper class for single-instance policy applications.
 
-%package -n libkdsingleapplication%{?pkg_suffix}
+%package -n libkdsingleapplication%{?pkg_suffix}%{sover}
 Summary:        Helper class for single-instance policy applications
+# kdsingleapplication 1.0.0 wasn't versioned
+Provides:       libkdsingleapplication%{?pkg_suffix} = 1.0.0
+Obsoletes:      libkdsingleapplication%{?pkg_suffix} <= 1.0.0
 
-%description -n libkdsingleapplication%{?pkg_suffix}
+%description -n libkdsingleapplication%{?pkg_suffix}%{sover}
 KDSingleApplication is a helper class for single-instance policy applications.
 
 %package devel
 Summary:        Development files for libkdsingleapplication%{?pkg_suffix}
-Requires:       libkdsingleapplication%{?pkg_suffix} = %{version}
+Requires:       libkdsingleapplication%{?pkg_suffix}%{sover} = %{version}
 %if 0%{?qt6}
 Requires:       cmake(Qt6Network)
 Requires:       cmake(Qt6Widgets)
@@ -95,16 +101,17 @@ rm -r %{buildroot}%{_datadir}/doc
 %check
 %ctest
 
-%ldconfig_scriptlets -n libkdsingleapplication%{?pkg_suffix}
+%ldconfig_scriptlets -n libkdsingleapplication%{?pkg_suffix}%{sover}
 
-%files -n libkdsingleapplication%{?pkg_suffix}
+%files -n libkdsingleapplication%{?pkg_suffix}%{sover}
 %license LICENSES/*
 %doc README.md
-%{_libdir}/libkdsingleapplication%{?pkg_suffix}.so
+%{_libdir}/libkdsingleapplication%{?pkg_suffix}.so.*
 
 %files devel
 %{_includedir}/kdsingleapplication%{?pkg_suffix}/
 %{_libdir}/cmake/KDSingleApplication%{?pkg_suffix}/
+%{_libdir}/libkdsingleapplication%{?pkg_suffix}.so
 %if 0%{?qt6}
 %{_qt6_mkspecsdir}/modules/qt_KDSingleApplication.pri
 %else
