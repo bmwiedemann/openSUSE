@@ -39,11 +39,10 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Chewing IM engine for SCIM platform.
 
 %prep
-%setup -q
-%patch0 -p1
-NOCONFIGURE=1 ./autogen.sh
+%autosetup -p1
 
 %build
+NOCONFIGURE=1 ./autogen.sh
 CXXFLAGS="%{optflags}" \
 %configure \
     --disable-static \
