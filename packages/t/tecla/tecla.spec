@@ -1,7 +1,7 @@
 #
 # spec file for package tecla
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,7 @@ Release:        0
 Summary:        Interactive command line editing library
 License:        X11
 Group:          Development/Libraries/C and C++
-Url:            http://www.astro.caltech.edu/~mcs/tecla/
+URL:            http://www.astro.caltech.edu/~mcs/tecla/
 Source:         http://www.astro.caltech.edu/~mcs/tecla/libtecla-%{version}.tar.gz
 Patch0:         libtecla_add-destdir.patch
 Patch1:         libtecla-makefiles-rules-no-rpath.diff
@@ -69,11 +69,7 @@ The tecla library provides programs with interactive command line
 editing facilities, similar to those of the tcsh shell.
 
 %prep
-%setup -q -n libtecla
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1 -n libtecla
 
 %build
 autoconf # patch3
