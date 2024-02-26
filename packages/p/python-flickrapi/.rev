@@ -154,4 +154,14 @@
 </comment>
     <requestid>1030330</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>e99e4c2b69b0fc700833de4a8fa34f30</srcmd5>
+    <version>2.4.0</version>
+    <time>1708973122</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup and pyproject macros.
+- Refresh python-flickrapi-no-python2.patch to not pull in poetry.
+- No more greedy globs in %files.</comment>
+    <requestid>1150543</requestid>
+  </revision>
 </revisionlist>

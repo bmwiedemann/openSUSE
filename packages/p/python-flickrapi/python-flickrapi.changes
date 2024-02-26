@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 26 05:00:14 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- Refresh python-flickrapi-no-python2.patch to not pull in poetry.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Fri Oct 21 06:56:11 UTC 2022 - pgajdos@suse.com
 
 - do not require six
