@@ -41,4 +41,14 @@ This GIMP plugin works like the Content Aware tool in PS</comment>
 </comment>
     <requestid>1139898</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d47d07b264424cd9f6f751e56e9a9cc0</srcmd5>
+    <version>2.0.3~git.20240203</version>
+    <time>1708973138</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.0.3~git.20240203:
+  * Add check if plugin-resynthesizer is defined.
+</comment>
+    <requestid>1150594</requestid>
+  </revision>
 </revisionlist>
