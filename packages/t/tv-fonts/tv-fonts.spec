@@ -44,8 +44,7 @@ applications:  large fonts frequently used in on-screen displays,
 teletext font, and more.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 make CFLAGS="$RPM_OPT_FLAGS"
