@@ -71,11 +71,11 @@ This package contains development files for xclass library.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2
-%patch3
-%patch4 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2
+%patch -P 3
+%patch -P 4 -p1
 cp /usr/share/autoconf/build-aux/config.{guess,sub} .
 
 %build
