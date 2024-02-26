@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb 24 17:35:38 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.5.3:
+  * Fixed an issue causing bowtie2's memory usage to increase over
+    time.
+  * Fixed an issue causing bowtie2 to crash when processing empty
+    FASTQ records.
+  * Fixed an issue that would cause bowtie2 to erroneously treat
+    -f and -F as mutually exclusive.
+  * Add optional support for libsais to bowtie2-build for faster
+    index building.
+ 
+-------------------------------------------------------------------
 Thu Oct 19 12:32:32 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.5.2:
