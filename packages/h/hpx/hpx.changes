@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 07:59:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Wed Mar 29 10:48:35 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Add Add-missing-header-for-std-intmax_t.patch for GCC13 support

@@ -72,8 +72,7 @@ This package contains libraries for the hpx package.
 
 %prep
 %define _lto_cflags %{nil}
-%setup -q
-%patch1
+%autosetup -p0
 
 %build
 %ifarch aarch64 %{arm}
