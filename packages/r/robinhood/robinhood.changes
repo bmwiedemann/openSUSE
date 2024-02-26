@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 23 11:42:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Apr 12 14:34:45 UTC 2023 - Christian Goll <cgoll@suse.com>
 
 - removed errors on warnings from gcc12

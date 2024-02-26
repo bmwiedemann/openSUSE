@@ -103,14 +103,14 @@ Tests and examples for the robinhood policy engine.
 
 %prep
 %setup -q -n %{name}-%{githash}
-%patch1
+%patch -P 1
 # the macro {installdir_www} is not known in the patch
 sed -i 's,WWWROOT,%{installdir_www}robinhood,g' web_gui/robinhood.conf
-%patch2
-%patch3
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+%patch -P 2
+%patch -P 3
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
 # remove spurious executeable bits
 find ./doc/templates -type f -executable -exec chmod 644 {} +
 
