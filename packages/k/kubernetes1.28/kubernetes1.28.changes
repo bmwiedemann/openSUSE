@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Feb 26 08:54:27 UTC 2024 - priyanka.saggu@suse.com
+
+- Update to version 1.28.7:
+  * [go] Bump images, dependencies and versions to go 1.21.7 / setcap/debian-base to bookworm-v1.0.1 and distroless-iptables to v0.4.5
+  * Add processStartTime in metrics/slis
+  * Revert "kubeadm: fix a bug where the uploaded kubelet configuration in kube-system/kubelet-config ConfigMap does not respect user patch"
+  * kubeadm: better checks if the node is CP during "upgrade node"
+  * If a pvc has an empty storageclass name, don't try to assign a default StorageClass to it.
+  * Drop PendingChanges methods from change trackers, move into UpdateResults
+  * Squash some unnecessarily-chained methods in the change trackers
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  golang(API) = 1.21`
+
+-------------------------------------------------------------------
+Thu Feb 22 12:43:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Jan 24 10:47:23 UTC 2024 - priyanka.saggu@suse.com
 
 - Update .spec file to remove go version build requirements:
