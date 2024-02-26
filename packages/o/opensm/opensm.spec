@@ -93,8 +93,7 @@ Requires:       libosmvendor%{lib_osmvendor_major} = %{version}
 Symlinks for the dynamic libraries and header files for OpenSM.
 
 %prep
-%setup -q -n  %{name}-%{version}%{git_ver}
-%patch1
+%autosetup -p0 -n  %{name}-%{version}%{git_ver}
 
 cp %{S:1} %{S:2} %{S:3} .
 FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y')
