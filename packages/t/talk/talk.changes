@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 10:14:36 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Jul 26 10:50:30 UTC 2019 - matthias.gerstner@suse.com
 
 - removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by

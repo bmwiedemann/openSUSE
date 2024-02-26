@@ -145,4 +145,12 @@
     <comment></comment>
     <requestid>718845</requestid>
   </revision>
+  <revision rev="22" vrev="722">
+    <srcmd5>7ee76d600eb2ababb39c6140d2182260</srcmd5>
+    <version>0.17</version>
+    <time>1708973185</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN. (forwarded request 1150808 from pgajdos)</comment>
+    <requestid>1151117</requestid>
+  </revision>
 </revisionlist>

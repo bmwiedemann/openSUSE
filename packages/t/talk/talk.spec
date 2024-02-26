@@ -1,7 +1,7 @@
 #
 # spec file for package talk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Talk Client for Chatting with Another User
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Talk/Clients
-Url:            ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/
+URL:            ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/
 Source:         netkit-ntalk-%{version}.tar.bz2
 Source4:        ntalk.service
 Source5:        ntalk.socket
@@ -63,14 +63,14 @@ which copies lines from one terminal to the terminal of another user.
 
 %prep
 %setup -q -n netkit-ntalk-%{version}
-%patch0
-%patch1 -p1 -b .mb
-%patch2 -p1
-%patch3
-%patch4
-%patch5
-%patch6
-%patch7 -p1
+%patch -P 0
+%patch -P 1 -p1 -b .mb
+%patch -P 2 -p1
+%patch -P 3
+%patch -P 4
+%patch -P 5
+%patch -P 6
+%patch -P 7 -p1
 
 %build
 # Not autotools configure macro
