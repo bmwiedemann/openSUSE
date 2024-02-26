@@ -282,8 +282,8 @@ into ebooks for convenient reading.
 
 %prep
 %setup -q -a5 -a6
-%patch2 -p1
-%patch3 -p1 -b .no-update
+%patch -P 2 -p1
+%patch -P 3 -p1 -b .no-update
 
 # dos2unix newline conversion
 sed -i 's/\r//' src/calibre/web/feeds/recipes/*
