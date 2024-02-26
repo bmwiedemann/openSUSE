@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:37:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Mon Aug  6 20:29:42 UTC 2018 - bwiedemann@suse.com
 
 - Add splint-3.1.2-no-uname.patch to drop build hostname from package
