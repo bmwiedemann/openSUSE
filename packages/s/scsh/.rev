@@ -61,4 +61,12 @@
   'No such file or directory'</comment>
     <requestid>1058227</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>9e0d16e9adea5ba71bc2c731dbc30a4b</srcmd5>
+    <version>0.7+git114432435e4eadd54334df6b37fcae505079b49f</version>
+    <time>1708973319</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1151530 from dimstar)</comment>
+    <requestid>1151696</requestid>
+  </revision>
 </revisionlist>

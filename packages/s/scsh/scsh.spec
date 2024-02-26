@@ -92,7 +92,7 @@ Scheme.
 rm -rvf rx/
 tar xf %{S:1}
 ln -sf rx-%{rxcommit} rx
-%patch0 -p0
+%patch -P 0 -p0
 
 %build
 autoreconf

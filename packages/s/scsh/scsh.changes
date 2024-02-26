@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:21:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Jan 13 12:34:26 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Require scheme48-vm as otjherwise scsh reports
