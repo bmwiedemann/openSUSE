@@ -38,8 +38,7 @@ For details see %{_docdir}/cups-pdf/README
 and http://en.opensuse.org/SDB:Printing_to_PDF
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 cd src
