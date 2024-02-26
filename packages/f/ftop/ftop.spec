@@ -45,10 +45,7 @@ display is possible through a wide assortment of options. As with top, the
 items are displayed in order from most to least active.
 
 %prep
-%setup -q
-%patch1
-%patch2
-%patch3
+%autosetup -p0
 
 %build
 autoreconf -vfi
