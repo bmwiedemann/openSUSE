@@ -22,7 +22,7 @@
 %define baseversionminus1 1.28
 
 Name:           kubernetes%{baseversion}
-Version:        1.29.1
+Version:        1.29.2
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -51,7 +51,7 @@ Patch4:         kubeadm-opensuse-flexvolume.patch
 Patch5:         revert-coredns-image-renaming.patch
 BuildRequires:  fdupes
 BuildRequires:  git
-BuildRequires:  go >= 1.21.6
+BuildRequires:  go >= 1.21.7
 BuildRequires:  go-go-md2man
 BuildRequires:  golang-packaging
 BuildRequires:  rsync
@@ -73,8 +73,9 @@ for management and discovery.
 
 
 
-# packages to build containerized control plane
 
+
+# packages to build containerized control plane
 %package apiserver
 Summary:        Kubernetes apiserver for container image
 Group:          System/Management
@@ -214,10 +215,10 @@ Fish command line completion support for %{name}-client.
 
 %prep
 %setup -q -n kubernetes-%{version}
-%patch2 -p1
-%patch3 -p1
-%patch4 -p0
-%patch5 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p0
+%patch -P 5 -p1
 
 %build
 # This is fixing bug bsc#1065972

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Feb 26 09:02:38 UTC 2024 - priyanka.saggu@suse.com
+
+- Update to version 1.29.2:
+  * [go] Bump images, dependencies and versions to go 1.21.7 / setcap/debian-base to bookworm-v1.0.1 and distroless-iptables to v0.4.5
+  * Revert "kubeadm: fix a bug where the uploaded kubelet configuration in kube-system/kubelet-config ConfigMap does not respect user patch"
+  * kubeadm: better checks if the node is CP during "upgrade node"
+  * test: remove unnecessary skip healthz check from test
+  * bugfix: dont skip reconcile for unchanged policy if last sync failed
+  * Add processStartTime in metrics/slis
+  * Fix deprecated version for pod_scheduling_duration_seconds
+  * flag PersistentVolumeLastPhaseTransitionTime field as beta
+  * If a pvc has an empty storageclass name, don't try to assign a default StorageClass to it.
+  * Fix kubeadm init regression
+  * Drop PendingChanges methods from change trackers, move into UpdateResults
+  * Squash some unnecessarily-chained methods in the change trackers
+
+-------------------------------------------------------------------
+Thu Feb 22 12:43:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Jan 23 10:07:17 UTC 2024 - priyanka.saggu@suse.com
 
 - Update to version 1.29.1:
