@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 09:59:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Mon Oct 23 11:36:32 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Drop support for obsolete openmpi[123]

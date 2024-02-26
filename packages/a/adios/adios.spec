@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package adios
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -348,9 +348,7 @@ that use the %{flavor} version of ADIOS.
 %{?with_hpc:%{hpc_master_package -L devel-static}}
 
 %prep
-%setup -q -n %{pname}-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n %{pname}-%{version}
 
 %build
 %{?with_hpc:%hpc_setup}
