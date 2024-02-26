@@ -121,4 +121,13 @@
     <comment></comment>
     <requestid>1058299</requestid>
   </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>26257ec68854e02333e913538a74709d</srcmd5>
+    <version>2.12</version>
+    <time>1708973237</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN (forwarded request 1149468 from pgajdos)</comment>
+    <requestid>1151408</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package mrsh
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -91,11 +91,7 @@ Conflicts:      otherproviders(rsh-server)
 This package provides rsh server compatibility for mrlogind/mrshd
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1 -n %{name}-%{version}
 cp %{S:1} .
 
 %build
