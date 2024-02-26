@@ -57,11 +57,8 @@ received by rmail/UUCP) through SpamAssassin, a highly customizable spam
 filter. A milter-compatible MTA such as Sendmail or Postfix is required.
 
 %prep
-%setup -q
-%patch1
-%patch2
-%patch3
-%patch4
+%autosetup -p0
+
 cp %{SOURCE1} .
 cp %{SOURCE6} .
 
