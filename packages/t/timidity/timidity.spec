@@ -72,11 +72,11 @@ data.
 
 %prep
 %setup -q -n TiMidity++-%{version} -a 1
-%patch2 -p1
-%patch100
-%patch101
-%patch200 -p1
-%patch201 -p1
+%patch -P 2 -p1
+%patch -P 100
+%patch -P 101
+%patch -P 200 -p1
+%patch -P 201 -p1
 for f in ./utils/bitset.c ./utils/bitset.h ./utils/nkflib.c; do
 	iconv -f EUC-JISX0213 -t UTF-8 $f > $f.utf8 && mv $f.utf8 $f
 done
