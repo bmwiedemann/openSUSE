@@ -1,0 +1,33 @@
+diff -uNr Decker-1.37.orig/scripts/install.sh Decker-1.37/scripts/install.sh
+--- Decker-1.37.orig/scripts/install.sh	2024-01-14 15:54:31.335306242 +0000
++++ Decker-1.37/scripts/install.sh	2024-01-14 16:14:59.344400590 +0000
+@@ -1,8 +1,8 @@
+ #!/usr/bin/env bash
+ # install lilt, decker and lil support resources
+ 
+-DESTDIR=""
+-PREFIX="/usr/local"
++DESTDIR=${DESTDIR:=""}
++PREFIX=${PREFIX:="/usr/local"}
+ INSTALLDIR="${DESTDIR}${PREFIX}/bin/"
+ 
+ # install binaries
+@@ -11,14 +11,16 @@
+ fi
+ if [ -f "./c/build/lilt" ]; then
+ 	echo "copying lilt to ${INSTALLDIR}..."
+-	sudo cp ./c/build/lilt "${INSTALLDIR}lilt"
++	mkdir -p "${INSTALLDIR}"
++	install -C ./c/build/lilt "${INSTALLDIR}lilt"
+ fi
+ if [[ ! -f "./c/build/decker" ]]; then
+ 	echo "skipping decker. no binary found. build first with 'make decker'"
+ fi
+ if [ -f "./c/build/decker" ]; then
+ 	echo "copying decker to ${INSTALLDIR}..."
+-	sudo cp ./c/build/decker "${INSTALLDIR}decker"
++	mkdir -p "${INSTALLDIR}"
++	install -C ./c/build/decker "${INSTALLDIR}decker"
+ fi
+ 
+ # install syntax profiles

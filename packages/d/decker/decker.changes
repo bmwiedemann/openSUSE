@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Sun Jan 14 16:34:57 UTC 2024 - vivid <absolutely.vivid@fastmail.org>
+
+- Create package at upstream version 1.37
+
+* more weekly challenge puzzles
+* correct a regression introduced in the last attempt at fixing event plumbing
+* simplify and improve the consistency of the cursor info overlay
+* correct prettyprinting floating-point numbers very close to whole integers
+* add an 'underpaint' mode that applies to all drawing tools. Underpainting leaves any instances of pattern 1 intact; this is ideal for coloring lineart, among other things
+* simplifying weekly challenge 247.2 by using the window[] helper function
