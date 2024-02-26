@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 09:45:34 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Adjustments patch macro for rpm 4.20.
+
+-------------------------------------------------------------------
 Fri May  5 07:46:47 UTC 2023 - <chris@computersalat.de>
 
 - fix deps for subpkg apache

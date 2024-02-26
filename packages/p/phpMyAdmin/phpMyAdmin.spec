@@ -118,8 +118,8 @@ This subpackage contains the Apache configuration files
 ## rpmlint:
 # wrong-file-end-of-line-encoding
 perl -p -i -e 's|\r\n|\n|' examples/config.manyhosts.inc.php
-%patch0
-%patch1
+%patch -P 0
+%patch -P 1
 
 # clean up
 find . -name .github -type d -prune -exec rm -r {} \;
