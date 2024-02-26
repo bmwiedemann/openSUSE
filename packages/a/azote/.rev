@@ -238,4 +238,13 @@
   * Documentation updated</comment>
     <requestid>1141919</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5ea01c226f7b2c2486152a8f1607d81d</srcmd5>
+    <version>1.12.5</version>
+    <time>1708973131</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.12.5:
+  * Fixed silent crash on file extension in uppercase.</comment>
+    <requestid>1150567</requestid>
+  </revision>
 </revisionlist>

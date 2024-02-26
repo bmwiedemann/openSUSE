@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 07:08:01 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.12.5:
+  * Fixed silent crash on file extension in uppercase.
+
+-------------------------------------------------------------------
 Sat Jan 27 06:37:27 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.12.4:
