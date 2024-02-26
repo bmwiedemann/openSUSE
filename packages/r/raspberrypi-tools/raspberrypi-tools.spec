@@ -45,8 +45,7 @@ PSCI EL3 monitor for Raspberry Pi4. Monitor is used to workaround
 CVE-2017-5715 and CVE-2018-3639 for Cortex-A72 CPU used in BCM2711.
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{name}-%{version}
 
 %build armstubs
 export CC8=gcc
