@@ -66,10 +66,7 @@ scim-sunpinyin is a wrapper around SunPinyin which enables user to use
 SunPinyin with scim framework.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 
 %build
 scons --prefix=/usr --libdir=%{_libdir}
