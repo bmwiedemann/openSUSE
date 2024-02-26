@@ -290,4 +290,12 @@ devel:languages:go/telegraf r7 (forwarded request 758639 from jfkw)</comment>
 - Bump go dependency to 1.22 to follow upstream (forwarded request 1148326 from darix)</comment>
     <requestid>1148331</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>ac39fe0486bebddb703a5adb345a5030</srcmd5>
+    <version>1.29.5</version>
+    <time>1708973403</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN. (forwarded request 1151367 from pgajdos)</comment>
+    <requestid>1151867</requestid>
+  </revision>
 </revisionlist>
