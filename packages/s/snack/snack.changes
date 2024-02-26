@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:36:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Jun 17 06:34:39 UTC 2021 - Reinhard Max <max@suse.com>
 
 - Disable the Python binding, because it only supports Python 2.
