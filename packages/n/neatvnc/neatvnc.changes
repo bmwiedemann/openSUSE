@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb 26 07:10:51 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.0:
+  Highlights:
+  * The colour map pixel format as described in RFC 6143 has been
+    implemented. Before, the client would just get disconnected if
+    they requested it. Now they get a map that emulates RGB332.
+  * Momentary interception of log messages. The user can now set a
+    thread-local log hander and then set it back to the default.
+  * Philip Zabel made the code more consistent with the style guide.
+  Breaking Changes:
+  * nvnc_client_get_hostname has been replaced with nvnc_client_get_address
+  Bugfixes:
+  * Apple's Diffie-Hellman authentication (security type 30) has been fixed.
+  * A new client connection no longer causes a DNS lookup.
+
+-------------------------------------------------------------------
 Sat Feb  3 06:40:46 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.7.2:
