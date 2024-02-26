@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb 25 07:41:33 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 8.0.0:
+  See https://www.kicad.org/blog/2024/02/KiCad-8.0.0-Release/ for details
+
+-------------------------------------------------------------------
+Thu Feb 22 12:49:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Mon Jan  1 07:29:52 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 7.0.10:

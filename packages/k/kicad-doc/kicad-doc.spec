@@ -36,7 +36,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 Name:           kicad-doc%{?pkg_suffix}
-Version:        7.0.10
+Version:        8.0.0
 Release:        0
 Summary:        Documentation and tutorials for KiCad
 License:        CC-BY-SA-3.0 AND GPL-3.0-or-later
@@ -196,8 +196,7 @@ Requires:       %{name}-en = %{version}
 This package contains Chinese documentation and tutorials for KiCad
 
 %prep
-%setup -q -n %{sname}-%{version}
-%patch0
+%autosetup -p0 -n %{sname}-%{version}
 
 # asciidoc errors out if the `[code]` style is used with an unknown language
 # https://gitlab.com/kicad/services/kicad-doc/-/issues/851
