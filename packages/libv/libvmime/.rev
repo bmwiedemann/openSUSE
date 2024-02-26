@@ -243,4 +243,12 @@
     <comment>- Update to snapshot 0.9.2+git188 (c3c6242ed)</comment>
     <requestid>1147996</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>2abd9a4de916a93a8e097da4f239accf</srcmd5>
+    <version>0.9.2+g188</version>
+    <time>1708973118</time>
+    <user>anag+factory</user>
+    <comment>- Reinstate %optflags</comment>
+    <requestid>1150529</requestid>
+  </revision>
 </revisionlist>

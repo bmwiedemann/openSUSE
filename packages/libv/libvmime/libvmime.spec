@@ -31,7 +31,7 @@ Patch1:         libvmime-nodatetime.diff
 Patch2:         libvmime-soname.diff
 BuildRequires:  cmake >= 2.8.3
 BuildRequires:  gcc-c++
-%if 0%{?centos_version}
+%if 0%{?rhel} || 0%{?fedora_version}
 BuildRequires:  gnutls-devel
 %else
 BuildRequires:  libgnutls-devel
@@ -112,10 +112,10 @@ popd
 	-DVMIME_HAVE_TLS_SUPPORT:BOOL=ON \
 	-DVMIME_BUILD_STATIC_LIBRARY:BOOL=OFF \
 	-DCMAKE_BUILD_TYPE:STRING="RelWithDebInfo" \
-	-DCMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING="$cf" \
-	-DCMAKE_CXX_FLAGS:STRING="%{?redhat_version:-fPIC} %{?almalinux_version:-fPIC}" \
-	-DCMAKE_C_FLAGS_RELWITHDEBINFO:STRING="$cf" \
-	-DCMAKE_C_FLAGS:STRING="%{?redhat_version:-fPIC} %{?almalinux_version:-fPIC}" \
+	-DCMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING="%optflags" \
+	-DCMAKE_CXX_FLAGS:STRING="%optflags" \
+	-DCMAKE_C_FLAGS_RELWITHDEBINFO:STRING="%optflags" \
+	-DCMAKE_C_FLAGS:STRING="%optflags" \
 	-DVMIME_BUILD_DOCUMENTATION:BOOL=OFF
 %cmake_build
 
@@ -127,8 +127,6 @@ cp -a doc/book/book.pdf "$b/%_docdir/%name/"
 %endif
 %cmake_install
 find "$b" -type f -name "*.la" -delete
-mkdir -p "$b/%_datadir"
-#mv "$b/%_prefix/cmake" "$b/%_datadir/"
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
