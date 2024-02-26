@@ -1,8 +1,8 @@
 #
 # spec file for package sdbus-cpp
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2021 Luca Boccassi <bluca@debian.org>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2021-2024 Luca Boccassi <bluca@debian.org>
 # Copyright (c) 2020-2021 RedHat Inc.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 
 %global version_major 1
-%global version_minor 4
+%global version_minor 5
 %global version_micro 0
 
 Name:           sdbus-cpp

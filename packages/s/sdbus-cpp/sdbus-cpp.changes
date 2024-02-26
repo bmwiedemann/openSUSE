@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+* Mon Feb 26 11:58:42 UTC 2024 - Luca Boccassi <bluca@debian.org>
+
+- Update to new version 1.5.0:
+  - Improve handling of exceptions from callback handlers
+  - Add support for async registration of matches
+  - Correctly add libsystemd dependency to pkgconfi
+  - Fix request name signal handling issue
+  - Add INSTALL_TESTS CMake option
+  - Minor UnixFd cleanups
+  - Additional little fixes and updates in code, build system, CI, and documentation
+
+-------------------------------------------------------------------
 * Wed Oct 11 12:08:24 UTC 2023 - Luca Boccassi <bluca@debian.org>
 
 - Update to new version 1.4.0:
