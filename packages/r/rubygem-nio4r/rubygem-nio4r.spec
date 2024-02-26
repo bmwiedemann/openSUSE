@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-nio4r
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-nio4r
-Version:        2.6.1
+Version:        2.7.0
 Release:        0
 %define mod_name nio4r
 %define mod_full_name %{mod_name}-%{version}
@@ -42,7 +42,7 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-nio4r-rpmlintrc
 Source2:        gem2rpm.yml
 Summary:        New IO for Ruby
-License:        MIT
+License:        (BSD-2-Clause OR GPL-2.0-or-later) AND MIT
 
 %description
 Cross-platform asynchronous I/O primitives for scalable network clients and

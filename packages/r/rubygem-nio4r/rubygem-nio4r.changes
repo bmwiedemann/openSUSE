@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan 29 14:16:46 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## 2.6.2
+
+* Convert NIO objects to TypedData API.
+
+## 2.6.1
+
+* Don't update `io` which is subsequently stored. Retain the original.
+
+## 2.6.0
+
+* Fix conversion loses int precision.
+* Avoid direct access to IO internals.
+* Resolve issue loading both nio and nio4r gems.
+
+
+-------------------------------------------------------------------
 Tue Nov 28 08:13:33 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - New upstream release 2.6.1, see bundled changes.md
