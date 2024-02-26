@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  9 12:01:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11.1:
+  * Add google-auth as a direct dependency
+
+-------------------------------------------------------------------
 Sun Feb  4 10:16:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.11.0:

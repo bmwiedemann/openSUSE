@@ -16,4 +16,13 @@
   * Allow users to explicitly configure universe domain</comment>
     <requestid>1143979</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5ac4b4cfa2e0c40cadf54606faf68cc9</srcmd5>
+    <version>1.11.1</version>
+    <time>1708973266</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.11.1:
+  * Add google-auth as a direct dependency</comment>
+    <requestid>1151463</requestid>
+  </revision>
 </revisionlist>
