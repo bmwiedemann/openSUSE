@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 16:11:30 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patch
+
+-------------------------------------------------------------------
 Wed Nov 16 18:19:10 UTC 2022 - Denys Kondratenko <stdden@opensuse.org>
 
 - Update to 0.8.0

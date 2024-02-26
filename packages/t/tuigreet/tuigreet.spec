@@ -34,8 +34,7 @@ Recommends:     greetd
 Console UI greeter (using tui-rs)
 
 %prep
-%setup -qa1
-%patch0 -p1
+%autosetup -p1 -a1
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
