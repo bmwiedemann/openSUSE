@@ -50,7 +50,7 @@ cp -p %{SOURCE2} .
 %setup -q
 # needed to apply patch
 dos2unix build.xml
-%patch0 -p1
+%patch -P 0 -p1
 dos2unix src/LICENSE.txt
 find -name "*.png" | while read a; do
     optipng -quiet -o 5 "$a" || optipng -quiet -o 5 -fix "$a"

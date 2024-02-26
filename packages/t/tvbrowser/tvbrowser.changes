@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 16:15:18 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Jan  4 18:42:21 UTC 2023 - thod_@gmx.de
 
 - update to version 4.2.7
