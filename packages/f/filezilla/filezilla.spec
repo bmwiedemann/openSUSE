@@ -92,9 +92,7 @@ This are development files for filezilla.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
