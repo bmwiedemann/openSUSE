@@ -38,8 +38,7 @@ time. You can use this to automatically start up a screen locker in case you
 tend to forget to do so manually before having a coffee break.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 xmkmf -a

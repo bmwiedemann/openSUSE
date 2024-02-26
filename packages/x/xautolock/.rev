@@ -15,4 +15,12 @@
     <comment>- xautolock-fixbuild.patch: fix build on factory, boo#1003289</comment>
     <requestid>434099</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e10edb906dc77b5bf80289b2314fa5d9</srcmd5>
+    <version>2.2</version>
+    <time>1708973292</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151648</requestid>
+  </revision>
 </revisionlist>

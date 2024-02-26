@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:05:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Mon Oct 10 10:06:32 UTC 2016 - meissner@suse.com
 
 - xautolock-fixbuild.patch: fix build on factory, boo#1003289
