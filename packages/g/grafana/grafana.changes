@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Feb 20 17:13:47 UTC 2024 - witold.bedyk@suse.com
+
+- Update to version 10.1.7:
+  * [SECURITY] CVE-2023-6152: Add email verification when updating
+    user email (bsc#1219912)
+  * [FEATURE] DashboardSchema: Add options to VariableModel
+  * [BUGFIX] Annotations: Split cleanup into separate queries and
+    deletes to avoid deadlocks on MySQL
+
+- Update to version 10.1.6:
+  * [FEATURE] Alerting: Attempt to retry retryable errors
+  * [FEATURE] Azure: Add support for Workload Identity
+    authentication
+  * [BUGFIX] Alerting: Fix deleting rules in a folder with matching
+    UID in another organization
+  * [BUGFIX] Alerting: Make shareable alert rule link work if rule
+    name contains forward slashes
+  * [BUGFIX] Loki: Cache extracted labels to avoid too many sample
+    requests in code editor
+  * [BUGFIX] DataSourcePicker: Disable autocomplete for the search
+    input
+  * [BUGFIX] Plugins: Refresh plugin info after installation
+  * [BUGFIX] LDAP: FIX Enable users on successfull login
+  * [BUGFIX] Loki: Fix filters not being added with multiple
+    expressions and parsers
+
+-------------------------------------------------------------------
 Mon Oct 16 13:04:16 UTC 2023 - daniel@molkentin.de
 
 - Update to version 10.1.5:

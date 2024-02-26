@@ -22,7 +22,7 @@
 %endif
 
 Name:           grafana
-Version:        10.1.5
+Version:        10.1.7
 Release:        0
 Summary:        The open-source platform for monitoring and observability
 License:        AGPL-3.0-only
@@ -40,7 +40,7 @@ BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  golang-packaging
 BuildRequires:  wire
-BuildRequires:  golang(API) >= 1.19
+BuildRequires:  golang(API) >= 1.21
 Requires(post): %fillup_prereq
 Requires:       group(grafana)
 Requires:       user(grafana)
