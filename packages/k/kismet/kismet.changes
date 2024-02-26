@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 12:46:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Oct  9 08:23:13 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - add the sysuser pre section to %package common.

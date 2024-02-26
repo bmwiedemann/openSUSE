@@ -612,4 +612,12 @@ better packaging for distros, and various other quirks.
     <comment>- add the sysuser pre section to %package common.</comment>
     <requestid>1116402</requestid>
   </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>e6b0e84e247271c558fe52599145001a</srcmd5>
+    <version>2023_07_R1</version>
+    <time>1708973379</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151829</requestid>
+  </revision>
 </revisionlist>

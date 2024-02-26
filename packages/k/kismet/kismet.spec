@@ -321,14 +321,14 @@ want to make use of kismet.
 
 %prep
 %setup -q -n kismet-kismet-%{realver}
-%patch0 -p1
+%patch -P 0 -p1
 # HACK: Add python DESTDIR support for python stuff
 find . -type f -name "Makefile*" -exec sed -i 's|setup.py install|setup.py install --root=$(DESTDIR)|g' {} \;
 # Fix wrong-script-end-of-line-encoding
 sed -i 's/\r$//' http_data/css/layout.css
 # rpmlint will complain about missing shebangs otherwise
 chmod a-x http_data/css/*.css
-%patch1 -p1
+%patch -P 1 -p1
 
 %build
 %limit_build -m 2500
