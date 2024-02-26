@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-json_pure
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,21 +24,19 @@
 #
 
 Name:           rubygem-json_pure
-Version:        2.6.3
+Version:        2.7.1
 Release:        0
 %define mod_name json_pure
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.3}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
-URL:            http://flori.github.com/json
+URL:            https://flori.github.io/json
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        JSON Implementation for Ruby
 License:        Ruby
-Group:          Development/Languages/Ruby
 
 %description
 This is a JSON implementation in pure Ruby.

@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Mon Jan 29 14:10:24 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- 2.7.1:
+
+## What's Changed
+
+### Improved
+* [DOC] RDoc for additions by @BurdetteLamar in https://github.com/flori/json/pull/557
+
+### Fixed 
+* JSON.dump: handle unenclosed hashes regression by @casperisfine in https://github.com/flori/json/pull/554
+* Overload kwargs in JSON.dump by @k0kubun in https://github.com/flori/json/pull/556
+* Fix JSON.dump overload combination by @tompng in https://github.com/flori/json/pull/558
+
+
+### Misc
+* Remove needless encodings by @hsbt in https://github.com/flori/json/pull/559
+* Unify versions by @hsbt in https://github.com/flori/json/pull/560
+
+## New Contributors
+* @k0kubun made their first contribution in https://github.com/flori/json/pull/556
+* @tompng made their first contribution in https://github.com/flori/json/pull/558
+
+**Full Changelog**: https://github.com/flori/json/compare/v2.7.0...v2.7.1
+
+2.7.0:
+
+## What's Changed
+
+### Improved
+
+* Perf. improvements to Hash#to_json in pure implementation generator. by @vipulnsward in https://github.com/flori/json/pull/203
+* Remove unnecessary initialization of create_id in JSON.parse() by @Watson1978 in https://github.com/flori/json/pull/454
+
+### Added 
+
+* Call `super` in `included` hook by @paracycle in https://github.com/flori/json/pull/486
+* Rename escape_slash in script_safe and also escape E+2028 and E+2029 by @casperisfine in https://github.com/flori/json/pull/525
+* Add a `strict` option to Generator by @casperisfine in https://github.com/flori/json/pull/519
+
+### Fixed
+
+* Fix homepage url in gemspec by @unasuke in https://github.com/flori/json/pull/508
+* Fix dead link to Ragel in README by @okuramasafumi in https://github.com/flori/json/pull/509
+* [DOC] Fix yet another dead link to Ragel by @nobu in https://github.com/flori/json/pull/510
+* Fix "unexpected token" offset for Infinity by @jhawthorn in https://github.com/flori/json/pull/507
+* Use ruby_xfree to free buffers by @casperisfine in https://github.com/flori/json/pull/518
+
+### Compatibility changes
+
+* JRuby requires a minimum of Java 8 by @headius in https://github.com/flori/json/pull/516
+* Rename JSON::ParseError to JSON:ParserError by @dalizard in https://github.com/flori/json/pull/530
+* Removed code for Ruby 1.8 by @hsbt in https://github.com/flori/json/pull/540
+* alias_method is private on Ruby 2.3 and 2.4 by @hsbt in https://github.com/flori/json/pull/541
+* remove_method of Module is private at Ruby 2.3 and 2.4 by @hsbt in https://github.com/flori/json/pull/544
+* [jruby] avoid using deprecated BigDecimal.new by @kares in https://github.com/flori/json/pull/546
+* Always indent even if empty by @headius in https://github.com/flori/json/pull/517
+
+### Misc
+* Update CI matrix by @hsbt in https://github.com/flori/json/pull/521
+* Add missing changelog entries for 1.8.5 and 1.8.6 by @r7kamura in https://github.com/flori/json/pull/520
+* Actions workflow - Add new OS's, Ruby 3.1, Ruby master, Windows by @MSP-Greg in https://github.com/flori/json/pull/491
+* Skip unsupported test on JRuby by @nobu in https://github.com/flori/json/pull/532
+* Skip BigDecimal tests when it's missing to load by @hsbt in https://github.com/flori/json/pull/533
+* Simplify by @nobu in https://github.com/flori/json/pull/531
+* Load extension ('json/ext') consistently in test_ext by @aeroastro in https://github.com/flori/json/pull/536
+* Use test-unit-ruby-core gem by @hsbt in https://github.com/flori/json/pull/539
+* [CI] Add Windows mswin job by @MSP-Greg in https://github.com/flori/json/pull/545
+* Exclude truffleruby-head from Actions by @hsbt in https://github.com/flori/json/pull/551
+* tests/ractor_test.rb: make assert_separately available by @lucaskanashiro in https://github.com/flori/json/pull/506
+* Added changes for 2.7.0 and restore entries to 2.6.3 and 2.6.2 by @hsbt in https://github.com/flori/json/pull/552
+
+## New Contributors
+* @unasuke made their first contribution in https://github.com/flori/json/pull/508
+* @okuramasafumi made their first contribution in https://github.com/flori/json/pull/509
+* @r7kamura made their first contribution in https://github.com/flori/json/pull/520
+* @MSP-Greg made their first contribution in https://github.com/flori/json/pull/491
+* @paracycle made their first contribution in https://github.com/flori/json/pull/486
+* @dalizard made their first contribution in https://github.com/flori/json/pull/530
+* @aeroastro made their first contribution in https://github.com/flori/json/pull/536
+* @jhawthorn made their first contribution in https://github.com/flori/json/pull/507
+* @lucaskanashiro made their first contribution in https://github.com/flori/json/pull/506
+* @Watson1978 made their first contribution in https://github.com/flori/json/pull/454
+
+**Full Changelog**: https://github.com/flori/json/compare/v2.6.3...v2.7.0
+
+
+
+-------------------------------------------------------------------
 Wed Dec  7 11:24:16 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.6.3
