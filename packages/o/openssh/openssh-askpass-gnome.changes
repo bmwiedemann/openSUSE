@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb 25 18:26:23 UTC 2024 - Hans Petter Jansson <hpj@suse.com>
+
+- Update to openssh 9.6p1:
+  * No changes for askpass, see main package changelog for
+    details.
+
+-------------------------------------------------------------------
 Fri Jul 21 05:13:56 UTC 2023 - Simon Lees <sflees@suse.de>
 
 - Update to openssh 9.3p2

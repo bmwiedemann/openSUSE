@@ -1,4 +1,223 @@
 -------------------------------------------------------------------
+Sun Feb 25 18:26:23 UTC 2024 - Hans Petter Jansson <hpj@suse.com>
+
+- Update to openssh 9.6p1:
+  = Security
+  * ssh(1), sshd(8): implement protocol extensions to thwart the
+    so-called "Terrapin attack" discovered by Fabian Bäumer, Marcus
+    Brinkmann and Jörg Schwenk. This attack allows a MITM to effect a
+    limited break of the integrity of the early encrypted SSH transport
+    protocol by sending extra messages prior to the commencement of
+    encryption, and deleting an equal number of consecutive messages
+    immediately after encryption starts. A peer SSH client/server
+    would not be able to detect that messages were deleted.
+  * ssh-agent(1): when adding PKCS#11-hosted private keys while
+    specifying destination constraints, if the PKCS#11 token returned
+    multiple keys then only the first key had the constraints applied.
+    Use of regular private keys, FIDO tokens and unconstrained keys
+    are unaffected.
+  * ssh(1): if an invalid user or hostname that contained shell
+    metacharacters was passed to ssh(1), and a ProxyCommand,
+    LocalCommand directive or "match exec" predicate referenced the
+    user or hostname via %u, %h or similar expansion token, then
+    an attacker who could supply arbitrary user/hostnames to ssh(1)
+    could potentially perform command injection depending on what
+    quoting was present in the user-supplied ssh_config(5) directive.
+
+  = Potentially incompatible changes
+  * ssh(1), sshd(8): the RFC4254 connection/channels protocol provides
+    a TCP-like window mechanism that limits the amount of data that
+    can be sent without acceptance from the peer. In cases where this
+    limit was exceeded by a non-conforming peer SSH implementation,
+    ssh(1)/sshd(8) previously discarded the extra data. From OpenSSH
+    9.6, ssh(1)/sshd(8) will now terminate the connection if a peer
+    exceeds the window limit by more than a small grace factor. This
+    change should have no effect of SSH implementations that follow
+    the specification.
+
+  = New features
+  * ssh(1): add a %j token that expands to the configured ProxyJump
+    hostname (or the empty string if this option is not being used)
+    that can be used in a number of ssh_config(5) keywords. bz3610
+  * ssh(1): add ChannelTimeout support to the client, mirroring the
+    same option in the server and allowing ssh(1) to terminate
+    quiescent channels.
+  * ssh(1), sshd(8), ssh-add(1), ssh-keygen(1): add support for
+    reading ED25519 private keys in PEM PKCS8 format. Previously
+    only the OpenSSH private key format was supported.
+  * ssh(1), sshd(8): introduce a protocol extension to allow
+    renegotiation of acceptable signature algorithms for public key
+    authentication after the server has learned the username being
+    used for authentication. This allows varying sshd_config(5)
+    PubkeyAcceptedAlgorithms in a "Match user" block.
+  * ssh-add(1), ssh-agent(1): add an agent protocol extension to allow
+    specifying certificates when loading PKCS#11 keys. This allows the
+    use of certificates backed by PKCS#11 private keys in all OpenSSH
+    tools that support ssh-agent(1). Previously only ssh(1) supported
+    this use-case.
+
+  = Bugfixes
+  * ssh(1): when deciding whether to enable the keystroke timing
+    obfuscation, enable it only if a channel with a TTY is active.
+  * ssh(1): switch mainloop from poll(3) to ppoll(3) and mask signals
+    before checking flags set in signal handler. Avoids potential
+    race condition between signaling ssh to exit and polling. bz3531
+  * ssh(1): when connecting to a destination with both the
+    AddressFamily and CanonicalizeHostname directives in use,
+    the AddressFamily directive could be ignored. bz5326
+  * sftp(1): correct handling of the limits@openssh.com option when
+    the server returned an unexpected message.
+  * A number of fixes to the PuTTY and Dropbear regress/integration
+    tests.
+  * ssh(1): release GSS OIDs only at end of authentication, avoiding
+    unnecessary init/cleanup cycles. bz2982
+  * ssh_config(5): mention "none" is a valid argument to IdentityFile
+    in the manual. bz3080
+  * scp(1): improved debugging for paths from the server rejected for
+    not matching the client's glob(3) pattern in old SCP/RCP protocol
+    mode.
+  * ssh-agent(1): refuse signing operations on destination-constrained
+    keys if a previous session-bind operation has failed. This may
+    prevent a fail-open situation in future if a user uses a mismatched
+    ssh(1) client and ssh-agent(1) where the client supports a key type
+    that the agent does not support.
+
+- Update to openssh 9.5p1:
+  = Potentially incompatible changes
+  * ssh-keygen(1): generate Ed25519 keys by default. Ed25519 public keys
+    are very convenient due to their small size. Ed25519 keys are
+    specified in RFC 8709 and OpenSSH has supported them since version 6.5
+    (January 2014).
+  * sshd(8): the Subsystem directive now accurately preserves quoting of
+    subsystem commands and arguments. This may change behaviour for exotic
+    configurations, but the most common subsystem configuration
+    (sftp-server) is unlikely to be affected.
+
+  = New features
+  * ssh(1): add keystroke timing obfuscation to the client. This attempts
+    to hide inter-keystroke timings by sending interactive traffic at
+    fixed intervals (default: every 20ms) when there is only a small
+    amount of data being sent. It also sends fake "chaff" keystrokes for
+    a random interval after the last real keystroke. These are
+    controlled by a new ssh_config ObscureKeystrokeTiming keyword.
+  * ssh(1), sshd(8): Introduce a transport-level ping facility. This adds
+    a pair of SSH transport protocol messages SSH2_MSG_PING/PONG to
+    implement a ping capability. These messages use numbers in the "local
+    extensions" number space and are advertised using a "ping@openssh.com"
+    ext-info message with a string version number of "0".
+  * sshd(8): allow override of Subsystem directives in sshd Match blocks.
+
+  = Bugfixes
+  * scp(1): fix scp in SFTP mode recursive upload and download of
+    directories that contain symlinks to other directories. In scp mode,
+    the links would be followed, but in SFTP mode they were not. bz3611
+  * ssh-keygen(1): handle cr+lf (instead of just cr) line endings in
+    sshsig signature files.
+  * ssh(1): interactive mode for ControlPersist sessions if they
+    originally requested a tty.
+  * sshd(8): make PerSourceMaxStartups first-match-wins
+  * sshd(8): limit artificial login delay to a reasonable maximum (5s)
+    and don't delay at all for the "none" authentication mechanism.
+    bz3602
+  * sshd(8): Log errors in kex_exchange_identification() with level
+    verbose instead of error to reduce preauth log spam. All of those
+    get logged with a more generic error message by sshpkt_fatal().
+  * sshd(8): correct math for ClientAliveInterval that caused the probes
+    to be sent less frequently than configured.
+  * ssh(1): fix regression in OpenSSH 9.4 (mux.c r1.99) that caused
+    multiplexed sessions to ignore SIGINT under some circumstances.
+
+- Update to openssh 9.4p1:
+  = Potentially incompatible changes
+  * This release removes support for older versions of libcrypto.
+    OpenSSH now requires LibreSSL >= 3.1.0 or OpenSSL >= 1.1.1.
+    Note that these versions are already deprecated by their upstream
+    vendors.
+  * ssh-agent(1): PKCS#11 modules must now be specified by their full
+    paths. Previously dlopen(3) could search for them in system
+    library directories.
+
+  = New features
+  * ssh(1): allow forwarding Unix Domain sockets via ssh -W.
+  * ssh(1): add support for configuration tags to ssh(1).
+    This adds a ssh_config(5) "Tag" directive and corresponding
+    "Match tag" predicate that may be used to select blocks of
+    configuration similar to the pf.conf(5) keywords of the same
+    name.
+  * ssh(1): add a "match localnetwork" predicate. This allows matching
+    on the addresses of available network interfaces and may be used to
+    vary the effective client configuration based on network location.
+  * ssh(1), sshd(8), ssh-keygen(1): infrastructure support for KRL
+    extensions.  This defines wire formats for optional KRL extensions
+    and implements parsing of the new submessages. No actual extensions
+    are supported at this point.
+  * sshd(8): AuthorizedPrincipalsCommand and AuthorizedKeysCommand now
+    accept two additional %-expansion sequences: %D which expands to
+    the routing domain of the connected session and %C which expands
+    to the addresses and port numbers for the source and destination
+    of the connection.
+  * ssh-keygen(1): increase the default work factor (rounds) for the
+    bcrypt KDF used to derive symmetric encryption keys for passphrase
+    protected key files by 50%.
+
+  = Bugfixes
+  * ssh-agent(1): improve isolation between loaded PKCS#11 modules
+    by running separate ssh-pkcs11-helpers for each loaded provider.
+  * ssh(1): make -f (fork after authentication) work correctly with
+    multiplexed connections, including ControlPersist. bz3589 bz3589
+  * ssh(1): make ConnectTimeout apply to multiplexing sockets and not
+    just to network connections.
+  * ssh-agent(1), ssh(1): improve defences against invalid PKCS#11
+    modules being loaded by checking that the requested module
+    contains the required symbol before loading it.
+  * sshd(8): fix AuthorizedPrincipalsCommand when AuthorizedKeysCommand
+    appears before it in sshd_config. Since OpenSSH 8.7 the
+    AuthorizedPrincipalsCommand directive was incorrectly ignored in
+    this situation. bz3574
+  * sshd(8), ssh(1), ssh-keygen(1): remove vestigal support for KRL
+    signatures When the KRL format was originally defined, it included
+    support for signing of KRL objects. However, the code to sign KRLs
+    and verify KRL signatues was never completed in OpenSSH. This
+    release removes the partially-implemented code to verify KRLs.
+    All OpenSSH tools now ignore KRL_SECTION_SIGNATURE sections in
+    KRL files.
+  * All: fix a number of memory leaks and unreachable/harmless integer
+    overflows.
+  * ssh-agent(1), ssh(1): don't truncate strings logged from PKCS#11
+    modules; GHPR406
+  * sshd(8), ssh(1): better validate CASignatureAlgorithms in
+    ssh_config and sshd_config. Previously this directive would accept
+    certificate algorithm names, but these were unusable in practice as
+    OpenSSH does not support CA chains. bz3577
+  * ssh(1): make `ssh -Q CASignatureAlgorithms` only list signature
+    algorithms that are valid for CA signing. Previous behaviour was
+    to list all signing algorithms, including certificate algorithms.
+  * ssh-keyscan(1): gracefully handle systems where rlimits or the
+    maximum number of open files is larger than INT_MAX; bz3581
+  * ssh-keygen(1): fix "no comment" not showing on when running
+    `ssh-keygen -l` on multiple keys where one has a comment and other
+    following keys do not. bz3580
+  * scp(1), sftp(1): adjust ftruncate() logic to handle servers that
+    reorder requests. Previously, if the server reordered requests then
+    the resultant file would be erroneously truncated.
+  * ssh(1): don't incorrectly disable hostname canonicalization when
+    CanonicalizeHostname=yes and ProxyJump was expicitly set to
+    "none". bz3567
+  * scp(1): when copying local->remote, check that the source file
+    exists before opening an SFTP connection to the server. Based on
+    GHPR#370
+
+- Dropped patches:
+  * cb4ed12f.patch - implemented upstream.
+  * openssh-cve-2023-48795.patch - implemented upstream.
+
+- Rebased patches:
+  * openssh-6.6p1-selinux-contexts.patch
+  * openssh-7.7p1-fips.patch
+  * openssh-7.8p1-role-mls.patch
+  * openssh-8.0p1-gssapi-keyex.patch
+
+-------------------------------------------------------------------
 Tue Dec 19 01:42:55 UTC 2023 - Hans Petter Jansson <hpj@suse.com>
 
 - Added openssh-cve-2023-48795.patch (bsc#1217950, CVE-2023-48795).

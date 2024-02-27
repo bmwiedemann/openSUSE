@@ -1715,4 +1715,41 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
     <comment>Added openssh-cve-2023-48795.patch (forwarded request 1133932 from hpjansson)</comment>
     <requestid>1133933</requestid>
   </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>f793e41158efbf91a9de8e2e7a9a07fd</srcmd5>
+    <version>9.6p1</version>
+    <time>1709070192</time>
+    <user>anag+factory</user>
+    <comment>- Update to openssh 9.6p1:
+  * No changes for askpass, see main package changelog for
+    details.
+
+- Update to openssh 9.6p1:
+  = Security
+  * ssh(1), sshd(8): implement protocol extensions to thwart the
+    so-called &quot;Terrapin attack&quot; discovered by Fabian Bäumer, Marcus
+    Brinkmann and Jörg Schwenk. This attack allows a MITM to effect a
+    limited break of the integrity of the early encrypted SSH transport
+    protocol by sending extra messages prior to the commencement of
+    encryption, and deleting an equal number of consecutive messages
+    immediately after encryption starts. A peer SSH client/server
+    would not be able to detect that messages were deleted.
+  * ssh-agent(1): when adding PKCS#11-hosted private keys while
+    specifying destination constraints, if the PKCS#11 token returned
+    multiple keys then only the first key had the constraints applied.
+    Use of regular private keys, FIDO tokens and unconstrained keys
+    are unaffected.
+  * ssh(1): if an invalid user or hostname that contained shell
+    metacharacters was passed to ssh(1), and a ProxyCommand,
+    LocalCommand directive or &quot;match exec&quot; predicate referenced the
+    user or hostname via %u, %h or similar expansion token, then
+    an attacker who could supply arbitrary user/hostnames to ssh(1)
+    could potentially perform command injection depending on what
+    quoting was present in the user-supplied ssh_config(5) directive.
+  = Potentially incompatible changes
+  * ssh(1), sshd(8): the RFC4254 connection/channels protocol provides
+    a TCP-like window mechanism that limits the amount of data that
+    can be sent without acceptance from the peer. In cases where this (forwarded request 1150500 from hpjansson)</comment>
+    <requestid>1150501</requestid>
+  </revision>
 </revisionlist>

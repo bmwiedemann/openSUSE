@@ -37,7 +37,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           openssh
-Version:        9.3p2
+Version:        9.6p1
 Release:        0
 Summary:        Secure Shell Client and Server (Remote Login Program)
 License:        BSD-2-Clause AND MIT
@@ -116,15 +116,12 @@ Patch49:        openssh-do-not-send-empty-message.patch
 Patch50:        openssh-openssl-3.patch
 Patch51:        wtmpdb.patch
 Patch52:        logind_set_tty.patch
-# PATCH-FIx-UPSTREAM cb4ed12f.patch -- Fix build with zlib 1.3
-Patch53:        https://github.com/openssh/openssh-portable/commit/cb4ed12f.patch
 Patch100:       fix-missing-lz.patch
 Patch102:       openssh-7.8p1-role-mls.patch
 Patch103:       openssh-6.6p1-privsep-selinux.patch
 Patch104:       openssh-6.6p1-keycat.patch
 Patch105:       openssh-6.6.1p1-selinux-contexts.patch
 Patch106:       openssh-7.6p1-cleanup-selinux.patch
-Patch107:       openssh-cve-2023-48795.patch
 BuildRequires:  audit-devel
 BuildRequires:  automake
 BuildRequires:  groff

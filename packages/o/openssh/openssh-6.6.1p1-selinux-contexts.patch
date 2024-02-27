@@ -1,7 +1,7 @@
-Index: openssh-9.3p2/openbsd-compat/port-linux-sshd.c
+Index: openssh-9.6p1/openbsd-compat/port-linux-sshd.c
 ===================================================================
---- openssh-9.3p2.orig/openbsd-compat/port-linux-sshd.c
-+++ openssh-9.3p2/openbsd-compat/port-linux-sshd.c
+--- openssh-9.6p1.orig/openbsd-compat/port-linux-sshd.c
++++ openssh-9.6p1/openbsd-compat/port-linux-sshd.c
 @@ -33,6 +33,7 @@
  #include "misc.h"      /* servconf.h needs misc.h for struct ForwardOptions */
  #include "servconf.h"
@@ -92,23 +92,10 @@ Index: openssh-9.3p2/openbsd-compat/port-linux-sshd.c
  #endif
  #endif
  
-Index: openssh-9.3p2/openbsd-compat/port-linux.c
+Index: openssh-9.6p1/openbsd-compat/port-linux.h
 ===================================================================
---- openssh-9.3p2.orig/openbsd-compat/port-linux.c
-+++ openssh-9.3p2/openbsd-compat/port-linux.c
-@@ -182,7 +182,7 @@ ssh_selinux_change_context(const char *n
- 	strlcpy(newctx + len, newname, newlen - len);
- 	if ((cx = index(cx + 1, ':')))
- 		strlcat(newctx, cx, newlen);
--	debug3("%s: setting context from '%s' to '%s'", __func__,
-+	debug_f("setting context from '%s' to '%s'",
- 	    oldctx, newctx);
- 	if (setcon(newctx) < 0)
- 		do_log2(log_level, "%s: setcon %s from %s failed with %s",
-Index: openssh-9.3p2/openbsd-compat/port-linux.h
-===================================================================
---- openssh-9.3p2.orig/openbsd-compat/port-linux.h
-+++ openssh-9.3p2/openbsd-compat/port-linux.h
+--- openssh-9.6p1.orig/openbsd-compat/port-linux.h
++++ openssh-9.6p1/openbsd-compat/port-linux.h
 @@ -27,6 +27,7 @@ int sshd_selinux_enabled(void);
  void sshd_selinux_copy_context(void);
  void sshd_selinux_setup_exec_context(char *);
@@ -117,10 +104,10 @@ Index: openssh-9.3p2/openbsd-compat/port-linux.h
  #endif
  
  #ifdef LINUX_OOM_ADJUST
-Index: openssh-9.3p2/sshd.c
+Index: openssh-9.6p1/sshd.c
 ===================================================================
---- openssh-9.3p2.orig/sshd.c
-+++ openssh-9.3p2/sshd.c
+--- openssh-9.6p1.orig/sshd.c
++++ openssh-9.6p1/sshd.c
 @@ -511,7 +511,7 @@ privsep_preauth_child(struct ssh *ssh)
  	demote_sensitive_data(ssh);
  
