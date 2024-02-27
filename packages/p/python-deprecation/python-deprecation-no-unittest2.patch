@@ -1,41 +1,30 @@
-Index: deprecation-2.1.0/tests/test_deprecation.py
-===================================================================
---- deprecation-2.1.0.orig/tests/test_deprecation.py	2020-04-20 16:14:19.000000000 +0200
-+++ deprecation-2.1.0/tests/test_deprecation.py	2020-06-01 13:51:55.484939683 +0200
-@@ -12,14 +12,16 @@
+From e13e23068cb8d653a02a434a159e8b0b7226ffd6 Mon Sep 17 00:00:00 2001
+From: Jonathan Ringer <jonringer117@gmail.com>
+Date: Tue, 11 Jan 2022 14:23:03 -0800
+Subject: [PATCH] Make unittest optional for python3.5+
+
+---
+ docs-requirements.txt     | 2 +-
+ test-requirements.txt     | 2 +-
+ tests/test_deprecation.py | 7 ++++++-
+ tox.ini                   | 2 +-
+ 4 files changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/tests/test_deprecation.py b/tests/test_deprecation.py
+index 0fd29b3..14e9510 100644
+--- a/tests/test_deprecation.py
++++ b/tests/test_deprecation.py
+@@ -12,7 +12,12 @@
  
  # As we unfortunately support Python 2.7, it lacks TestCase.subTest which
  # is in 3.4+ or in unittest2
 -import unittest2
-+import unittest
-+if not hasattr(unittest.TestCase, "subTest"):
-+    import unittest2 as unittest
++try:
++    import unittest2
++except ImportError:
++    import unittest
++    unittest2 = unittest
++
  import warnings
  
  import deprecation
- from datetime import date
- 
- 
--class Test_deprecated(unittest2.TestCase):
-+class Test_deprecated(unittest.TestCase):
- 
-     def test_args_set_on_base_class(self):
-         args = (1, 2, 3, 4)
-@@ -230,7 +232,7 @@ class Test_deprecated(unittest2.TestCase
-             self.assertEqual(sot.method(), ret_val)
- 
- 
--class Test_fail_if_not_removed(unittest2.TestCase):
-+class Test_fail_if_not_removed(unittest.TestCase):
- 
-     @deprecation.deprecated(deprecated_in="1.0", current_version="2.0")
-     def _deprecated_method(self):
-@@ -259,7 +261,7 @@ class Test_fail_if_not_removed(unittest2
-         except AssertionError:
-             self.fail("A DeprecatedWarning shouldn't cause a failure")
- 
--    @unittest2.expectedFailure
-+    @unittest.expectedFailure
-     @deprecation.fail_if_not_removed
-     def test_literal_UnsupportedWarning(self):
-         self._unsupported_method()

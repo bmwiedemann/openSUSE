@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 27 03:49:53 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Replace python-deprecation-no-unittest2.patch with a different upstream
+  patch.
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Fri Nov 10 16:42:46 CET 2023 - marec@detebe.org
 - update python build instruction
 

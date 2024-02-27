@@ -60,4 +60,15 @@
     <comment></comment>
     <requestid>1125178</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>c84a31ee230dbfcd15e5e01175738daa</srcmd5>
+    <version>2.1.0</version>
+    <time>1709070486</time>
+    <user>anag+factory</user>
+    <comment>- Replace python-deprecation-no-unittest2.patch with a different upstream
+  patch.
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1151994</requestid>
+  </revision>
 </revisionlist>
