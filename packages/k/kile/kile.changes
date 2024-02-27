@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 26 21:53:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Replace okular-devel BuildRequires with 'cmake(Okular5)'
+
+-------------------------------------------------------------------
+Thu Aug 27 09:41:06 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
 Thu Nov 14 09:04:53 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Use cmake() style BuildRequires when possible.

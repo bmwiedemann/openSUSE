@@ -497,4 +497,14 @@ Thi should also go to 12.2 IMHO. Please tell me if you will forward this or if I
     <comment>Require okular at runtime</comment>
     <requestid>748571</requestid>
   </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>6bb808b590c2997046afa8c5154204c2</srcmd5>
+    <version>2.9.93</version>
+    <time>1709070473</time>
+    <user>anag+factory</user>
+    <comment>- Replace okular-devel BuildRequires with 'cmake(Okular5)'
+
+- Replace %make_jobs with %cmake_build.</comment>
+    <requestid>1151966</requestid>
+  </revision>
 </revisionlist>

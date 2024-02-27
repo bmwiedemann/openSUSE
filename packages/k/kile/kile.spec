@@ -1,7 +1,7 @@
 #
 # spec file for package kile
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2009 Johannes Engel <jcnengel@googlemail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,7 +28,6 @@ URL:            http://kile.sourceforge.net/
 Source:         https://downloads.sourceforge.net/project/kile/unstable/kile-3.0b3/kile-%{version}.tar.bz2
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  okular-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)
@@ -46,6 +45,7 @@ BuildRequires:  cmake(KF5Parts)
 BuildRequires:  cmake(KF5TextEditor)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Okular5)
 BuildRequires:  cmake(Qt5Core) >= 5.7
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Script)
@@ -109,7 +109,7 @@ The main features are:
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
