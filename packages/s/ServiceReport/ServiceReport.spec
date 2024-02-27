@@ -1,7 +1,7 @@
 #
 # spec file for package ServiceReport
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 # By default python 3 is used to build the package.
 %define python python3
 Name:           ServiceReport
-Version:        2.2.3+git1.55a13db1c256
+Version:        2.2.4+git0.f1a5383
 Release:        0
 Summary:        A tool to validate and repair First Failure Data Capture (FFDC) configuration
 License:        GPL-2.0-only

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 27 14:56:44 UTC 2024 - msuchanek@suse.com
+
+- Update to version 2.2.4 (bsc#1220410 ltc#204408)
+  * ServiceReport v2.2.4 release
+  * [kdump] update /etc/sysconfig/kdump config processing
+  * [kdump] customize initrd dump component check for SLES
+  * [fadump] update initrd validation check
+  * [kdump] restrict lsinitrd command to fetch only modules
+
+-------------------------------------------------------------------
 Tue Nov  7 10:05:32 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer
