@@ -1528,4 +1528,12 @@ So just for consistency. (forwarded request 875922 from lnussel)</comment>
     for SysVinit reboot (not installed at all)</comment>
     <requestid>1104680</requestid>
   </revision>
+  <revision rev="183" vrev="2">
+    <srcmd5>4479836277ba535a427ab3d6adaaf1bd</srcmd5>
+    <version>3.08</version>
+    <time>1709070296</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1151549 from dimstar)</comment>
+    <requestid>1151698</requestid>
+  </revision>
 </revisionlist>

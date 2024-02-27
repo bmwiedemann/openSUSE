@@ -85,9 +85,9 @@ rm -rf killproc-%{KPVER}
 rm -rf startpar-%{START} startpar
 ln -sf startpar startpar-%{START}
 %setup -n %{name}-%{SIVER} -q -b 1 -b 2
-%patch2  -p0 -b .suse
-%patch9  -p0 -b .no-kill
-%patch0
+%patch -P 2  -p0 -b .suse
+%patch -P 9  -p0 -b .no-kill
+%patch -P 0
 pushd doc
   mkdir killproc
 popd
@@ -95,7 +95,7 @@ pushd ../killproc-%{KPVER}
 ln -t../%{name}-%{SIVER}/doc/killproc README.md
 popd
 pushd ../startpar-%{START}
-%patch50
+%patch -P 50
 popd
 %_fixowner .
 %_fixgroup .
