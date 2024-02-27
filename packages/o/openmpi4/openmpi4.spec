@@ -412,9 +412,7 @@ echo with HPC
 %if %{without hpc}
 echo without HPC
 %endif
-%setup -q -n  openmpi-%{version}%{git_ver}
-%patch1
-%patch2
+%autosetup -p0 -n  openmpi-%{version}%{git_ver}
 
 %if %{without hpc}
 cat > %{_sourcedir}/baselibs.conf  <<EOF

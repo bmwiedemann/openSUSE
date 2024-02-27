@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:47:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Tue Oct 10 09:44:40 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Drop %vers macro so that the Version tag can be parsed more easily
