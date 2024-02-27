@@ -1,6 +1,6 @@
 --- test/unit/util.c.orig
 +++ test/unit/util.c
-@@ -561,7 +561,7 @@ test_unit(void)
+@@ -602,7 +602,7 @@ test_unit(void)
  #else
    TEST_CHECK(tspec.tv_sec_high == htonl(TV_NOHIGHSEC));
  #endif
