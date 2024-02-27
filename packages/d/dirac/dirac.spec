@@ -27,8 +27,12 @@ Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.
 Source1:        baselibs.conf
 Patch0:         0001-Fix-uninitialised-memory-read-that-causes-the-encode.patch
 Patch1:         %{name}-%{version}-gcc45.patch
-BuildRequires:  fdupes
+%if 0%{?suse_version} > 1315
 BuildRequires:  gcc-c++
+%else
+BuildRequires:  gcc7-c++
+%endif
+BuildRequires:  fdupes
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cppunit)
@@ -98,13 +102,18 @@ set for the encoder to work, such as block sizes and temporal
 prediction structures, which must otherwise be set by hand.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
+
 # Code is not mature enough for -Werror (unused results)
 sed -i 's/-Werror//' configure.ac
 
 %build
+test -x "$(type -p gcc)" && export CC=$_
+test -x "$(type -p g++)" && export CXX=$_
+test -x "$(type -p gcc-7)" && export CC=$_
+test -x "$(type -p g++-7)" && export CXX=$_
+test -x "$(type -p gcc-8)" && export CC=$_
+test -x "$(type -p g++-8)" && export CXX=$_
 ACLOCAL="aclocal -I m4" autoreconf -fvi
 %configure \
 	--disable-silent-rules \
