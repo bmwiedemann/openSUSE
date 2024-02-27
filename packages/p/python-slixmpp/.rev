@@ -81,4 +81,19 @@
     <comment></comment>
     <requestid>1040751</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7b194387cdc8073330fafe934dd64934</srcmd5>
+    <version>1.8.5</version>
+    <time>1709070485</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.8.5:
+  * Fix connection to Snikket instances (pep., mathieui)
+  * Performance fix for XEP-0115 queries
+  * New documentation listing projects using slixmpp (genghis)
+  * Bugfix and improvements (nicoco, mostly)
+- Switch to autosetup and pyproject macros.
+- Drop patch slixmpp-fix-legacyauth.patch, no longer required.
+- Update Source URL.</comment>
+    <requestid>1151993</requestid>
+  </revision>
 </revisionlist>

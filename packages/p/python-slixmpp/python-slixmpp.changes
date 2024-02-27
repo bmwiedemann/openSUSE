@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 27 03:29:02 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.8.5:
+  * Fix connection to Snikket instances (pep., mathieui)
+  * Performance fix for XEP-0115 queries
+  * New documentation listing projects using slixmpp (genghis)
+  * Bugfix and improvements (nicoco, mostly)
+- Switch to autosetup and pyproject macros.
+- Drop patch slixmpp-fix-legacyauth.patch, no longer required.
+- Update Source URL.
+
+-------------------------------------------------------------------
 Tue Dec  6 15:35:51 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - bsc#1205433 Update to 1.8.3:
