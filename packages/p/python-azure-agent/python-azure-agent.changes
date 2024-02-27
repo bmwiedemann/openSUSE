@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 20 20:07:51 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Do not force wicked dependency for networking, allow NM in SLE Micro 5.5
+  and for ALP based products
+- Change patch syntax in preparetion for RPM 4.20
+
+-------------------------------------------------------------------
 Mon Feb 12 18:46:08 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Recognise SLE-Micro as a SLE based distro

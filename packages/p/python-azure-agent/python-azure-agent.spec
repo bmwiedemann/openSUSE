@@ -53,7 +53,9 @@ Requires:       openssl
 Requires:       pwdutils
 Requires:       systemd
 Requires:       sysvinit-tools
+%if 0%{?suse_version} && 0%{?suse_version} <= 1500
 Requires:       wicked
+%endif
 %if 0%{?suse_version} && 0%{?suse_version} > 1315
 Requires:       python3-distro
 Requires:       python3-pyasn1
@@ -140,14 +142,14 @@ setup
 
 %prep
 %setup -qn WALinuxAgent-%{version}
-%patch1
+%patch -P 1
 %if 0%{?suse_version} && 0%{?suse_version} > 1315 && 0%{?sle_version}
-%patch6
+%patch -P 6
 %endif
-%patch7
-%patch8
-%patch9 -p1
-%patch10
+%patch -P 7
+%patch -P 8
+%patch -P 9 -p1
+%patch -P 10
 
 %build
 %if 0%{?suse_version} && 0%{?suse_version} > 1315
