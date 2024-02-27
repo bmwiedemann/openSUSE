@@ -53,8 +53,7 @@ Requires:       %{name}-devel = %{version}
 This package provides the static libraries for fastjet-contrib to link against.
 
 %prep
-%setup -q -n fjcontrib-%{version}
-%patch0 -p1
+%autosetup -p1 -n fjcontrib-%{version}
 
 %build
 # %%configure does not work as a few of the args passed to it isn't recognised by the configure script
