@@ -42,8 +42,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 fcitx-kkc is a Japanese KKC IME Wrapper for Fcitx.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 mkdir -p build
