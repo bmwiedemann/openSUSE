@@ -152,4 +152,12 @@ preparation for submit to SUSE. Remove %defattr(-,root,root,-) in %files</commen
 - replace binutils-gold requires by recommends for aarch64 on SLE. (bsc#1170826) (forwarded request 834205 from jfkw)</comment>
     <requestid>834214</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>0652e85367ec2ebedcdb1f14dc93a98b</srcmd5>
+    <version>1.13.15</version>
+    <time>1709070568</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1152221 from dimstar)</comment>
+    <requestid>1152293</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:31:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sun Sep 12 02:45:39 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Use go_api instead of version for update-alternatives priority

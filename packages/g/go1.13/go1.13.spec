@@ -221,18 +221,18 @@ Go runtime race detector libraries. Install this package if you wish to use the
 %ifarch %{tsan_arch}
 # compiler-rt
 %setup -q -T -b 100 -n compiler-rt-g%{tsan_commit}
-%patch11 -p1
+%patch -P 11 -p1
 %endif
 # go
 %setup -q -n go
-%patch5 -p1
-%patch12 -p1
+%patch -P 5 -p1
+%patch -P 12 -p1
 %if %{with gccgo}
 %if 0%{?gcc_go_version} == 6
-%patch8 -p1
+%patch -P 8 -p1
 %endif
 %if 0%{?gcc_go_version} == 7
-%patch9 -p1
+%patch -P 9 -p1
 %endif
 %endif
 
