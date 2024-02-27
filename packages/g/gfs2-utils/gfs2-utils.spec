@@ -52,11 +52,7 @@ checking, modifying, and correcting any inconsistencies in GFS2
 file systems.
 
 %prep
-%setup -q
-
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 
 %build
 #NOCONFIGURE=1
