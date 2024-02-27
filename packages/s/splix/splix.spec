@@ -77,9 +77,8 @@ Language) printers. Some Samsung, Xerox and Dell printers use that
 language.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
+
 cp %SOURCE2 .
 mv -v *.ppd ppd/
 
