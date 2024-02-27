@@ -7,4 +7,12 @@
     <comment>Build problem from https://build.opensuse.org/request/show/905917 has been fixed, we can reenable fluxbox again.</comment>
     <requestid>909754</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>76c161c7a65d418d52d1d6d79a9ea9fc</srcmd5>
+    <version>1.3.7</version>
+    <time>1709070387</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1150759</requestid>
+  </revision>
 </revisionlist>

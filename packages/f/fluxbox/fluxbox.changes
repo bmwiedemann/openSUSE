@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 08:20:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sat Jul  3 00:38:14 UTC 2021 - Fernando Mattioli <mattioli.fernando@gmail.com>
 
 - Add gcc11.patch: replaces ordered pointer comparison with equality comparison.

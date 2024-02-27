@@ -75,8 +75,8 @@ This package provides the upstream bundle of styles.
 
 %prep
 %setup -q -a 2
-%patch1
-%patch2 -p1
+%patch -P 1
+%patch -P 2 -p1
 
 %build
 export RPM_OPT_FLAGS="%{optflags} -fno-strict-aliasing -Wno-unused"
