@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 23 12:16:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use newly supported shrink{} on OBS to exclude python flavors
+  when all python versions are skipped.
+
+-------------------------------------------------------------------
 Mon Jan 15 16:29:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Enable python312 as valid multibuild flavor.
