@@ -42,8 +42,7 @@ Keep in mind that these internet to SMS gateways may not tolerate and
 may even forbid their use via scripts.
 
 %prep
-%setup -a 1
-%patch1
+%autosetup -p0 -a 1
 
 %build
 %{?suse_update_config:%{suse_update_config -f . skyutils-2.4}}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:40:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Sun Nov 27 14:53:40 UTC 2011 - jengelh@medozas.de
 
 - Remove redundant/unwanted tags/section (cf. specfile guidelines)
