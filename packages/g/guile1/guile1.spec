@@ -155,16 +155,16 @@ contains the files necessary to link against the guile libraries.
 
 %prep
 %setup -q -n guile-%{version}
-%patch1
-%patch2
-%patch3
-%patch5
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11
+%patch -P 1
+%patch -P 2
+%patch -P 3
+%patch -P 5
+%patch -P 6 -p1
+%patch -P 7 -p1
+%patch -P 8 -p1
+%patch -P 9 -p1
+%patch -P 10 -p1
+%patch -P 11
 # guile-1.8.1: The code is not so good for -Werror (unused results of write()).
 sed -i s/-Werror// configure.in configure
 

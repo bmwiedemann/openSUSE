@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:09:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Jun  8 12:03:54 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Fix build with gcc10 by removing optimization from the build flags
