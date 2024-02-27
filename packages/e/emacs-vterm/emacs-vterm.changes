@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Mon Feb 26 23:49:52 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Depend on emacs-devel to make sure Emacs packaging macros are installed when not building with emacs-eln
+
+-------------------------------------------------------------------
+Mon Feb 26 16:36:49 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Update to version 696.c3a3a23:
+  * add example to use another font for vterm buffer
+  * Differentiate foreground and background colors
+  * Add separate faces for bright ANSI colors
+  * Don't allow moving cursor below the last prompt via mouse
+  * Allow to find beginning and end of line from a specific point
+  * Fix vterm--remove-fake-newlines when in an empty buffer
+  * Remove fake newlines in copy mode
+  * init is_invalidated in Fvterm_new
+  * add LDFLAGS to statically link libvterm
+  * Use same shell as TRAMP on remotes.
+
+-------------------------------------------------------------------
+Mon Feb 2 18:18:00 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Initial packaging for openSUSE
+
