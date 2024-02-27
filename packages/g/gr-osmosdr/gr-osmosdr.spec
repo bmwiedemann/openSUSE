@@ -123,8 +123,8 @@ Documentation for gr-osmosdr module for GNU Radio.
 
 %if 0%{with_sdrplay}
 tar -xzf %{SOURCE1}
-%patch2 -p 1
-%patch7 -p 1
+%patch -P 2 -p 1
+%patch -P 7 -p 1
 %endif
 
 %build

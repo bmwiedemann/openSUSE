@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:18:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sun Apr 30 08:28:22 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Rename python plugin to python3
