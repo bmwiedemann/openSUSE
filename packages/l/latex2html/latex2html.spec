@@ -77,7 +77,7 @@ This subpackage contains the documentation for the Latex2HTML converter.
 export LATEX2HTMLDIR=$(pwd)
 cd docs
 make L2H="../latex2html -nouse_pdftex -test_mode" html
-find manual -name "*.old" -delete
+find manual \( -name "*.old" -o -name "*.log" -o -name "*.aux" -o -name WARNINGS \) -delete
 
 %install
 %make_install

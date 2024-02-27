@@ -476,4 +476,13 @@ A    latex2html-share-dir.diff</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1148726</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>350467b83db4f137d20dae9b1554b22a</srcmd5>
+    <version>2024</version>
+    <time>1709070241</time>
+    <user>anag+factory</user>
+    <comment>Remove .log files during build
+for reproducible packages even with --nocheck (forwarded request 1150775 from bmwiedemann)</comment>
+    <requestid>1151123</requestid>
+  </revision>
 </revisionlist>
