@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 08:18:48 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sun Sep 17 06:00:04 UTC 2023 - Yasuhiko Kamata <belphegor@belbel.or.jp>
 
 - Replace Requires(pre): "%{_sbindir}/{groupadd,useradd}" with

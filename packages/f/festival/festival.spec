@@ -87,21 +87,21 @@ Files needed for developing software that uses Festival.
 
 %prep
 %setup -q -b 1 -b 2 -b 3 -b 4 -b 7 -n %{name}
-%patch2 -p1
-%patch3 -p1
-%patch4
-%patch7
-%patch8
-%patch9 -p1
-%patch10 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4
+%patch -P 7
+%patch -P 8
+%patch -P 9 -p1
+%patch -P 10 -p1
 cd ../speech_tools
-%patch11 -p1
-%patch12
-%patch17 -p1
-%patch18 -p1
-%patch19 -p1
+%patch -P 11 -p1
+%patch -P 12
+%patch -P 17 -p1
+%patch -P 18 -p1
+%patch -P 19 -p1
 cd ../festival
-%patch20 -p1
+%patch -P 20 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

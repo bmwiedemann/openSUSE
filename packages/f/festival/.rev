@@ -305,4 +305,12 @@ into sibling directories. (forwarded request 163507 from Andreas_Schwab)</commen
     <comment></comment>
     <requestid>1111716</requestid>
   </revision>
+  <revision rev="42" vrev="10">
+    <srcmd5>503c50d1f16d107f64b5514fa6009755</srcmd5>
+    <version>2.5.0</version>
+    <time>1709070399</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1150772</requestid>
+  </revision>
 </revisionlist>
