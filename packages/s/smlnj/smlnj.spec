@@ -45,7 +45,7 @@ mkdir base
 cd base
 tar -xzf ../runtime.tgz
 tar -xzf ../MLRISC.tgz
-%patch1
+%patch -P 1
 
 %build
 # remove reference to remote d/l

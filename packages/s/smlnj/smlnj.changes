@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:39:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Aug 14 03:42:10 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 110.99.4:
