@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 08:04:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Fri May  5 11:19:38 UTC 2017 - guillaume@opensuse.org
 
 - Add fix_usage_on_64_bits.patch to fix boo#1032032

@@ -35,8 +35,7 @@ devmem2 0x48004B48 w 0x2 - write value 0x2 to addr 0x48004B48
 devmem2 0x50000014 - read value from addr 0x50000014
 
 %prep
-%setup -q
-%patch1
+%autosetup -p0
 
 %build
 cc %{optflags} devmem2.c -o devmem2
