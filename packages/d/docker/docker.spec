@@ -16,6 +16,7 @@
 #
 # nodebuginfo
 
+%bcond_without  apparmor
 
 # Where important update information will be stored, such that an administrator
 # is guaranteed to see the relevant warning.
@@ -77,7 +78,9 @@ BuildRequires:  bash-completion
 BuildRequires:  ca-certificates
 BuildRequires:  device-mapper-devel >= 1.2.68
 BuildRequires:  fdupes
+%if %{with apparmor}
 BuildRequires:  libapparmor-devel
+%endif
 BuildRequires:  libbtrfs-devel >= 3.8
 BuildRequires:  libseccomp-devel >= 2.2
 BuildRequires:  libtool
@@ -90,6 +93,7 @@ BuildRequires:  go-go-md2man
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  sysuser-tools
 BuildRequires:  golang(API) = 1.20
+%if %{with apparmor}
 %if 0%{?sle_version} >= 150000
 # This conditional only works on rpm>=4.13, which SLE 12 doesn't have. But we
 # don't need to support Docker+selinux for SLE 12 anyway.
@@ -102,6 +106,9 @@ Requires:       (apparmor-parser or container-selinux)
 Recommends:     apparmor-parser
 %else
 Requires:       apparmor-parser
+%endif
+%else
+Requires:       container-selinux
 %endif
 Requires:       ca-certificates-mozilla
 # The docker-proxy binary used to be in a separate package. We obsolete it,

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 14:13:42 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Allow to disable apparmor support (ALP supports only SELinux)
+
+-------------------------------------------------------------------
 Wed Feb 17 12:56:22 UTC 2024 - Danish Prakash <danish.prakash@suse.com>
 
 - Update to Docker 25.0.3-ce. See upstream changelong online at
