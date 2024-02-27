@@ -19,7 +19,7 @@
 %define srcname scikit-hep-testdata
 %define modname %( echo %{srcname} | tr '-' '_' )
 Name:           python-scikit-hep-testdata
-Version:        0.4.37
+Version:        0.4.38
 Release:        0
 Summary:        Example HEP files for testing and demonstrating
 License:        BSD-3-Clause
@@ -46,7 +46,7 @@ Requires:       python-importlib-resources >= 1.3
 %endif
 Requires:       scikit-hep-testdata-files = %{version}
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
