@@ -170,4 +170,14 @@
 </comment>
     <requestid>1151707</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>2fe4517d39652bee2df58dd620724d59</srcmd5>
+    <version>9.0.4</version>
+    <time>1709070529</time>
+    <user>anag+factory</user>
+    <comment>- The -devel package must require the library package (Requires:
+  libseafile0 = %{version}); otherwise we install a dangling
+  symlink.</comment>
+    <requestid>1152115</requestid>
+  </revision>
 </revisionlist>
