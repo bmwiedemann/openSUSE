@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 08:34:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Tue Oct 25 11:20:14 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Enable build on riscv64

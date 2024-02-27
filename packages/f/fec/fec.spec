@@ -61,9 +61,7 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libfec.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %cmake
