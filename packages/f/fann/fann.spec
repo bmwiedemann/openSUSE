@@ -68,8 +68,8 @@ and sparsely connected networks.
 This subpackage contains the headers for FANN.
 
 %prep
-%setup -q -n FANN-%{version}-Source
-%patch0 -p1
+%autosetup -p1 -n FANN-%{version}-Source
+
 perl -pi -e "s| -L[^ ']*||g" *.pc.*
 sed -i 's/\r//g' COPYING.txt
 
