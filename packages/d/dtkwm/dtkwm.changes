@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 08:10:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Thu Jun 25 15:30:07 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update dtk api version to 5.0.0 

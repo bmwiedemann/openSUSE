@@ -41,4 +41,12 @@
     <comment>- Update dtk api version to 5.0.0 (forwarded request 875859 from hillwood)</comment>
     <requestid>875860</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>2186ef9b92c2589f9cf1bb45b76a2a32</srcmd5>
+    <version>2.0.12</version>
+    <time>1709070557</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1152259</requestid>
+  </revision>
 </revisionlist>

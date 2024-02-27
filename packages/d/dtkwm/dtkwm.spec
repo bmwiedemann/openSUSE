@@ -65,8 +65,7 @@ Requires:       lib%{name}%{sover} = %{version}-%{release}
 Header files and libraries for %{name}.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %qmake5 PREFIX=%{_prefix} \
