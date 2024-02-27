@@ -21,7 +21,7 @@
 %global sover   12
 %global libname %{name}%{sover}
 Name:           libmicrohttpd
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Small Embeddable HTTP Server Library
 # Some internal tests are licenced as GPL-3.0+ - they are only used in
