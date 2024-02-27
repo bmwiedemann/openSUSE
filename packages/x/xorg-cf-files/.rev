@@ -138,4 +138,12 @@
 - refreshed u_xorg-cf-files-D_DEFAULT_SOURCE.patch</comment>
     <requestid>1067082</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>c964651c763d9996bd781a3415f0754b</srcmd5>
+    <version>1.0.8</version>
+    <time>1709070291</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151692</requestid>
+  </revision>
 </revisionlist>

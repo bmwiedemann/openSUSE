@@ -51,8 +51,7 @@ converted.
 %define _configdir %{_datadir}/X11/config
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 cat > host.def << EOF
 #define ConfigDir %_configdir
