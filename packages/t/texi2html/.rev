@@ -40,4 +40,12 @@
 - Add texi2html-5.0.tar.bz2.sig and texi2html.keyring</comment>
     <requestid>1004968</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>dcf088c1c331915b915471af0cec48c0</srcmd5>
+    <version>5.0</version>
+    <time>1709070261</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN. (forwarded request 1151464 from pgajdos)</comment>
+    <requestid>1151475</requestid>
+  </revision>
 </revisionlist>

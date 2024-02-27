@@ -54,9 +54,9 @@ output not specified in the Texinfo input file to be specified.
 
 %prep
 %setup -q
-%patch1
-%patch2 -p0 -b .random
-%patch3 -p1
+%patch -P 1
+%patch -P 2 -p0 -b .random
+%patch -P 3 -p1
 
 # Avoid regenerated translations.pl as this becomes broken
 mkdir i18n

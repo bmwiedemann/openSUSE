@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:59:16 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Sep 20 12:54:07 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Move http to https
