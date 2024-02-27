@@ -47,10 +47,8 @@ stylesheets.  As a processor it depends on xsltproc and as a formatter
 for print output it makes use of passivetex.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
+
 cp %{SOURCE10} .
 rm -f xmlif/xmlif.c
 
