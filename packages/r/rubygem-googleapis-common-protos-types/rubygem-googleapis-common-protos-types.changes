@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 29 14:04:34 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- ### 1.11.0 (2023-12-04)
+
+#### Features
+
+* Automated update of googleapis-common-protos-types ([#217](https://github.com/googleapis/common-protos-ruby/issues/217))
+
+
+-------------------------------------------------------------------
 Tue Nov 14 15:04:06 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - ### 1.10.0 (2023-11-06)
