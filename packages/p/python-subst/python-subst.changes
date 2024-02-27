@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 27 01:35:04 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Correct URL.
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+- Add patch fix-assertions.patch, fix regex assertion methods.
+
+-------------------------------------------------------------------
 Wed Jan 13 12:44:17 UTC 2021 - pgajdos@suse.com
 
 - use %pytest macro

@@ -1,7 +1,7 @@
 #
 # spec file for package python-subst
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-subst
 Version:        0.4.0
 Release:        0
 Summary:        Utility to replace one string into another in given list of files
 License:        MIT
-Group:          Development/Languages/Python
-URL:            http://mysz.github.io/subst/
+URL:            https://github.com/msztolcman/subst
 Source:         https://files.pythonhosted.org/packages/source/s/subst/subst-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/msztolcman/subst/master/LICENSE
+Patch0:         fix-assertions.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -39,20 +40,17 @@ BuildArch:      noarch
 `subst` is simple utility to replace one string into another in given list of files.
 
 %prep
-%setup -q -n subst-%{version}
+%autosetup -p1 -n subst-%{version}
 cp %{SOURCE1} .
-
 sed -i '/argparse/d' setup.py
-
 sed -i '1{/^#!/d}' subst.py
-
 touch test/__init__.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/subst
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -70,6 +68,8 @@ export PYTHONPATH=${PWD}/test
 %license LICENSE
 %doc README.rst
 %python_alternative %{_bindir}/subst
-%{python_sitelib}/*
+%{python_sitelib}/subst.py
+%pycache_only %{python_sitelib}/__pycache__/subst.*.py*
+%{python_sitelib}/subst-%{version}.dist-info
 
 %changelog

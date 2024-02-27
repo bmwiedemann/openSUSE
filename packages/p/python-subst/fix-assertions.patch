@@ -1,0 +1,37 @@
+Index: subst-0.4.0/test/test_parse_args_eval_replacement.py
+===================================================================
+--- subst-0.4.0.orig/test/test_parse_args_eval_replacement.py
++++ subst-0.4.0/test/test_parse_args_eval_replacement.py
+@@ -28,8 +28,8 @@ class TestParseArgsEvalReplacement(unitt
+         if IS_PY2:
+             self.assertRaisesRegexp(TypeError, r'takes exactly 1 argument', result)
+         else:
+-            self.assertRaisesRegexp(TypeError, r'missing 1 required positional argument', result)
+-        self.assertRaisesRegexp(NameError, r"'asd' is not defined", lambda: result('a'))
++            self.assertRaisesRegex(TypeError, r'missing 1 required positional argument', result)
++        self.assertRaisesRegex(NameError, r"'asd' is not defined", lambda: result('a'))
+ 
+     def test_invalid_code_syntax_error(self):
+         code = 'in = 3'
+@@ -40,7 +40,7 @@ class TestParseArgsEvalReplacement(unitt
+         if IS_PY2:
+             self.assertRaisesRegexp(TypeError, r'takes exactly 1 argument', result)
+         else:
+-            self.assertRaisesRegexp(TypeError, r'missing 1 required positional argument', result)
++            self.assertRaisesRegex(TypeError, r'missing 1 required positional argument', result)
+         self.assertRaises(SyntaxError, lambda: result('a'))
+ 
+     def test_function_simple_match(self):
+Index: subst-0.4.0/test/test_show_version.py
+===================================================================
+--- subst-0.4.0.orig/test/test_show_version.py
++++ subst-0.4.0/test/test_show_version.py
+@@ -25,7 +25,7 @@ class TestShowVersion(unittest.TestCase)
+         data = sys.stdout.getvalue()
+         sys.stdout = old_stdout
+ 
+-        self.assertRegexpMatches(data, ': version %s' % re.escape(subst.__version__))
++        self.assertRegex(data, ': version %s' % re.escape(subst.__version__))
+ 
+ if __name__ == '__main__':
+     unittest.main()

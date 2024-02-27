@@ -23,4 +23,15 @@
     <comment></comment>
     <requestid>862897</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>330562940861f4e52119dd2aeefedfe6</srcmd5>
+    <version>0.4.0</version>
+    <time>1709070483</time>
+    <user>anag+factory</user>
+    <comment>- Correct URL.
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+- Add patch fix-assertions.patch, fix regex assertion methods.</comment>
+    <requestid>1151987</requestid>
+  </revision>
 </revisionlist>
