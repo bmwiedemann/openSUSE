@@ -37,9 +37,8 @@ unlinks and fsyncs that make it good for simulating mail servers and other
 setups.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
+
 cp %{SOURCE1} .
 
 %build
