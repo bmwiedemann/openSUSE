@@ -448,4 +448,12 @@
   + Drop rpmlintrc file. (forwarded request 1129614 from dimstar)</comment>
     <requestid>1129643</requestid>
   </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>c02ce64f1ee6839d42ffaab71be56a89</srcmd5>
+    <version>017</version>
+    <time>1709070240</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151112</requestid>
+  </revision>
 </revisionlist>

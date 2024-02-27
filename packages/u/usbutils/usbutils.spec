@@ -1,7 +1,7 @@
 #
 # spec file for package usbutils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  libusb-1_0-devel >= 1.0.14
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libudev) >= 196
 Requires:       hwdata
 
@@ -58,6 +59,7 @@ autoreconf -fiv
 
 %install
 %make_install
+%python3_fix_shebang
 
 %files
 %doc NEWS
