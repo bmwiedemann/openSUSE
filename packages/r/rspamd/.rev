@@ -279,4 +279,19 @@
   - Build tests with CTest in Cmake by @vstakhov in #4822</comment>
     <requestid>1148323</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>fb71d9485dbd5fdeeb98fe14d2a59d33</srcmd5>
+    <version>3.8.4</version>
+    <time>1709070335</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.8.4
+  - [Fix] Allow different template expansion parameters by
+    @vstakhov in #4830
+
+- Update to 3.8.3
+  - This release includes a fix for a regression in redis_history
+    which caused history to be recorded to a misnamed key. No other
+    changes were introduced in this release</comment>
+    <requestid>1151217</requestid>
+  </revision>
 </revisionlist>

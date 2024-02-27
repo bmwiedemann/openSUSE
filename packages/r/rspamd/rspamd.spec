@@ -56,7 +56,7 @@
 %endif
 
 Name:           rspamd
-Version:        3.8.2
+Version:        3.8.4
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0
