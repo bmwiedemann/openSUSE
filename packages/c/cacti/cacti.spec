@@ -114,8 +114,7 @@ well.
 This package contains the HTML documentation for Cacti.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 #delete some files
 find . -type f -name "*\.orig" -exec rm {} \;

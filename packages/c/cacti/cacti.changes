@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 10:31:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Sun Dec 24 13:03:26 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti 1.2.26:

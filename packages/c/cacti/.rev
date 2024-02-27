@@ -426,4 +426,12 @@ CVE-2023-51448 boo#1218381
 </comment>
     <requestid>1134986</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>90a3ccb0760ab1e3b865f5cccdf1361a</srcmd5>
+    <version>1.2.26</version>
+    <time>1709070422</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1150931</requestid>
+  </revision>
 </revisionlist>
