@@ -1,0 +1,572 @@
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/build/build.properties jameica-V_2_10_4_BUILD_487/build/build.properties
+--- jameica-V_2_10_4_BUILD_487.orig/build/build.properties	2024-02-25 22:09:43.983653045 +0100
++++ jameica-V_2_10_4_BUILD_487/build/build.properties	2024-02-25 22:16:16.661117289 +0100
+@@ -30,7 +30,7 @@
+                                   lib/de_willuhn_util/de_willuhn_util.jar \
+                                   lib/jakarta_commons/commons-cli-1.3.1.jar \
+                                   lib/jakarta_commons/commons-collections-3.2.2.jar \
+-                                  lib/jakarta_commons/commons-lang-2.6.jar \
++                                  lib/jakarta_commons/commons-lang3-3.9.jar \
+                                   lib/jakarta_commons/commons-logging-1.2.jar \
+                                   lib/mozilla_rhino/rhino-1.7.14.jar \
+                                   lib/mozilla_rhino/rhino-engine-1.7.14.jar \
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/.classpath jameica-V_2_10_4_BUILD_487/.classpath
+--- jameica-V_2_10_4_BUILD_487.orig/.classpath	2024-02-25 22:09:43.983653045 +0100
++++ jameica-V_2_10_4_BUILD_487/.classpath	2024-02-25 22:19:21.518168578 +0100
+@@ -16,7 +16,7 @@
+ 	<classpathentry kind="lib" path="lib/splash.jar"/>
+ 	<classpathentry exported="true" kind="lib" path="lib/paperclips/net.sf.paperclips_1.0.4.jar" sourcepath="lib.src/paperclips/net.sf.paperclips_1.0.4.src.zip"/>
+ 	<classpathentry exported="true" kind="lib" path="lib/paperclips/net.sf.paperclips.ui_1.0.4.jar" sourcepath="lib.src/paperclips/net.sf.paperclips_1.0.4.src.zip"/>
+-	<classpathentry exported="true" kind="lib" path="lib/jakarta_commons/commons-lang-2.6.jar" sourcepath="/home/willuhn/.m2/repository/commons-lang/commons-lang/2.6/commons-lang-2.6-sources.jar"/>
++	<classpathentry exported="true" kind="lib" path="lib/jakarta_commons/commons-lang3-3.9.jar"/>
+ 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+ 	<classpathentry exported="true" kind="lib" path="lib/bouncycastle/bcpkix-jdk18on-1.72.jar"/>
+ 	<classpathentry exported="true" kind="lib" path="lib/bouncycastle/bcprov-jdk18on-1.72.jar"/>
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/attachment/Context.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/attachment/Context.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/attachment/Context.java	2024-02-25 22:09:43.963653006 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/attachment/Context.java	2024-02-25 22:12:03.213926280 +0100
+@@ -12,8 +12,8 @@
+ 
+ import java.io.Serializable;
+ 
+-import org.apache.commons.lang.builder.EqualsBuilder;
+-import org.apache.commons.lang.builder.HashCodeBuilder;
++import org.apache.commons.lang3.builder.EqualsBuilder;
++import org.apache.commons.lang3.builder.HashCodeBuilder;
+ 
+ /**
+  * Context des Attachments.
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/attachment/storage/StorageProviderLocal.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/attachment/storage/StorageProviderLocal.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/attachment/storage/StorageProviderLocal.java	2024-02-25 22:09:43.966986346 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/attachment/storage/StorageProviderLocal.java	2024-02-25 22:12:03.213926280 +0100
+@@ -21,7 +21,7 @@
+ import java.util.LinkedList;
+ import java.util.List;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ 
+ import de.willuhn.annotation.Lifecycle;
+ import de.willuhn.annotation.Lifecycle.Type;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/attachment/storage/StorageProviderMessagingService.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/attachment/storage/StorageProviderMessagingService.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/attachment/storage/StorageProviderMessagingService.java	2024-02-25 22:09:43.966986346 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/attachment/storage/StorageProviderMessagingService.java	2024-02-25 22:12:03.213926280 +0100
+@@ -20,7 +20,7 @@
+ 
+ import javax.annotation.Resource;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ 
+ import de.willuhn.annotation.Lifecycle;
+ import de.willuhn.annotation.Lifecycle.Type;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/bookmark/BookmarkSearchProvider.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/bookmark/BookmarkSearchProvider.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/bookmark/BookmarkSearchProvider.java	2024-02-25 22:09:43.966986346 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/bookmark/BookmarkSearchProvider.java	2024-02-25 22:12:03.213926280 +0100
+@@ -16,7 +16,7 @@
+ 
+ import javax.annotation.Resource;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ 
+ import de.willuhn.jameica.gui.internal.action.BookmarkOpen;
+ import de.willuhn.jameica.search.Result;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/bookmark/BookmarkService.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/bookmark/BookmarkService.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/bookmark/BookmarkService.java	2024-02-25 22:09:43.966986346 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/bookmark/BookmarkService.java	2024-02-25 22:12:03.213926280 +0100
+@@ -16,8 +16,8 @@
+ 
+ import javax.annotation.Resource;
+ 
+-import org.apache.commons.lang.StringUtils;
+-import org.apache.commons.lang.builder.EqualsBuilder;
++import org.apache.commons.lang3.StringUtils;
++import org.apache.commons.lang3.builder.EqualsBuilder;
+ 
+ import de.willuhn.annotation.Lifecycle;
+ import de.willuhn.annotation.Lifecycle.Type;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/bookmark/Context.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/bookmark/Context.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/bookmark/Context.java	2024-02-25 22:09:43.966986346 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/bookmark/Context.java	2024-02-25 22:12:03.213926280 +0100
+@@ -12,8 +12,8 @@
+ 
+ import java.io.Serializable;
+ 
+-import org.apache.commons.lang.builder.EqualsBuilder;
+-import org.apache.commons.lang.builder.HashCodeBuilder;
++import org.apache.commons.lang3.builder.EqualsBuilder;
++import org.apache.commons.lang3.builder.HashCodeBuilder;
+ 
+ /**
+  * Optionaler Context des Bookmark.
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/bookmark/ContextSerializer.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/bookmark/ContextSerializer.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/bookmark/ContextSerializer.java	2024-02-25 22:09:43.966986346 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/bookmark/ContextSerializer.java	2024-02-25 22:12:03.213926280 +0100
+@@ -12,7 +12,7 @@
+ 
+ import java.rmi.RemoteException;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ 
+ import de.willuhn.annotation.Lifecycle;
+ import de.willuhn.annotation.Lifecycle.Type;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/dialogs/AbstractCertificateDialog.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/dialogs/AbstractCertificateDialog.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/dialogs/AbstractCertificateDialog.java	2024-02-25 22:09:43.966986346 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/dialogs/AbstractCertificateDialog.java	2024-02-25 22:12:03.207259600 +0100
+@@ -21,7 +21,7 @@
+ import java.util.LinkedList;
+ import java.util.List;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ import org.eclipse.swt.SWT;
+ import org.eclipse.swt.widgets.Composite;
+ import org.eclipse.swt.widgets.Event;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/dialogs/TextDialog.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/dialogs/TextDialog.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/dialogs/TextDialog.java	2024-02-25 22:09:43.966986346 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/dialogs/TextDialog.java	2024-02-25 22:12:03.207259600 +0100
+@@ -9,7 +9,7 @@
+  **********************************************************************/
+ package de.willuhn.jameica.gui.dialogs;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ import org.eclipse.swt.SWT;
+ import org.eclipse.swt.widgets.Composite;
+ 
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/GUI.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/GUI.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/GUI.java	2024-02-25 22:09:43.966986346 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/GUI.java	2024-02-25 22:12:03.213926280 +0100
+@@ -19,7 +19,7 @@
+ import java.util.Objects;
+ import java.util.Stack;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ import org.eclipse.swt.SWT;
+ import org.eclipse.swt.custom.BusyIndicator;
+ import org.eclipse.swt.custom.SashForm;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/input/DateInput.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/input/DateInput.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/input/DateInput.java	2024-02-25 22:09:43.966986346 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/input/DateInput.java	2024-02-25 22:12:03.207259600 +0100
+@@ -16,7 +16,7 @@
+ import java.util.HashMap;
+ import java.util.Map;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ import org.eclipse.swt.events.FocusAdapter;
+ import org.eclipse.swt.events.FocusEvent;
+ import org.eclipse.swt.widgets.Composite;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/input/DecimalInput.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/input/DecimalInput.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/input/DecimalInput.java	2024-02-25 22:09:43.966986346 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/input/DecimalInput.java	2024-02-25 22:12:03.207259600 +0100
+@@ -13,7 +13,7 @@
+ import java.text.DecimalFormat;
+ import java.text.DecimalFormatSymbols;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ import org.eclipse.swt.SWT;
+ import org.eclipse.swt.widgets.Control;
+ import org.eclipse.swt.widgets.Event;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/input/ShortcutInput.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/input/ShortcutInput.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/input/ShortcutInput.java	2024-02-25 22:09:43.966986346 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/input/ShortcutInput.java	2024-02-25 22:12:03.207259600 +0100
+@@ -10,7 +10,7 @@
+ 
+ package de.willuhn.jameica.gui.input;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ import org.eclipse.jface.bindings.keys.KeyStroke;
+ import org.eclipse.swt.SWT;
+ import org.eclipse.swt.events.DisposeEvent;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/internal/controller/BackupControl.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/internal/controller/BackupControl.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/internal/controller/BackupControl.java	2024-02-25 22:09:43.970319686 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/internal/controller/BackupControl.java	2024-02-25 22:12:03.210592940 +0100
+@@ -13,7 +13,7 @@
+ import java.io.File;
+ import java.rmi.RemoteException;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ import org.eclipse.swt.SWT;
+ import org.eclipse.swt.widgets.Event;
+ import org.eclipse.swt.widgets.FileDialog;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/internal/dialogs/About.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/internal/dialogs/About.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/internal/dialogs/About.java	2024-02-25 22:09:43.970319686 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/internal/dialogs/About.java	2024-02-25 22:12:03.207259600 +0100
+@@ -9,7 +9,7 @@
+  **********************************************************************/
+ package de.willuhn.jameica.gui.internal.dialogs;
+ 
+-import org.apache.commons.lang.StringEscapeUtils;
++import org.apache.commons.lang3.StringEscapeUtils;
+ import org.eclipse.swt.SWT;
+ import org.eclipse.swt.widgets.Composite;
+ import org.eclipse.swt.widgets.Label;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/internal/dialogs/AppointmentProviderDialog.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/internal/dialogs/AppointmentProviderDialog.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/internal/dialogs/AppointmentProviderDialog.java	2024-02-25 22:09:43.970319686 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/internal/dialogs/AppointmentProviderDialog.java	2024-02-25 22:12:03.207259600 +0100
+@@ -15,7 +15,7 @@
+ import java.util.Comparator;
+ import java.util.List;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ import org.eclipse.swt.SWT;
+ import org.eclipse.swt.widgets.Composite;
+ import org.eclipse.swt.widgets.TableItem;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/internal/dialogs/ChooseBoxesDialog.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/internal/dialogs/ChooseBoxesDialog.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/internal/dialogs/ChooseBoxesDialog.java	2024-02-25 22:09:43.970319686 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/internal/dialogs/ChooseBoxesDialog.java	2024-02-25 22:12:03.210592940 +0100
+@@ -13,7 +13,7 @@
+ import java.rmi.RemoteException;
+ import java.util.List;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ import org.eclipse.swt.SWT;
+ import org.eclipse.swt.widgets.Composite;
+ import org.eclipse.swt.widgets.Control;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/internal/dialogs/ReminderAppointmentDialog.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/internal/dialogs/ReminderAppointmentDialog.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/internal/dialogs/ReminderAppointmentDialog.java	2024-02-25 22:09:43.970319686 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/internal/dialogs/ReminderAppointmentDialog.java	2024-02-25 22:12:03.207259600 +0100
+@@ -12,7 +12,7 @@
+ 
+ import java.util.Calendar;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ import org.eclipse.swt.SWT;
+ import org.eclipse.swt.layout.GridData;
+ import org.eclipse.swt.widgets.Composite;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/internal/parts/BookmarkTreePart.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/internal/parts/BookmarkTreePart.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/internal/parts/BookmarkTreePart.java	2024-02-25 22:09:43.970319686 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/internal/parts/BookmarkTreePart.java	2024-02-25 22:12:03.210592940 +0100
+@@ -21,7 +21,7 @@
+ import java.util.List;
+ import java.util.Map;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ import org.eclipse.swt.widgets.TreeItem;
+ 
+ import de.willuhn.jameica.bookmark.Bookmark;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/internal/parts/LogoPart.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/internal/parts/LogoPart.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/internal/parts/LogoPart.java	2024-02-25 22:09:43.970319686 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/internal/parts/LogoPart.java	2024-02-25 22:12:03.210592940 +0100
+@@ -10,7 +10,7 @@
+ 
+ package de.willuhn.jameica.gui.internal.parts;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ import org.eclipse.swt.SWT;
+ import org.eclipse.swt.graphics.Image;
+ import org.eclipse.swt.layout.GridData;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/internal/parts/PanelButtonBookmark.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/internal/parts/PanelButtonBookmark.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/internal/parts/PanelButtonBookmark.java	2024-02-25 22:09:43.970319686 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/internal/parts/PanelButtonBookmark.java	2024-02-25 22:12:03.210592940 +0100
+@@ -10,7 +10,7 @@
+ 
+ package de.willuhn.jameica.gui.internal.parts;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ import org.eclipse.swt.events.DisposeEvent;
+ import org.eclipse.swt.events.DisposeListener;
+ import org.eclipse.swt.widgets.Control;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/internal/parts/SearchPart.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/internal/parts/SearchPart.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/internal/parts/SearchPart.java	2024-02-25 22:09:43.970319686 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/internal/parts/SearchPart.java	2024-02-25 22:12:03.210592940 +0100
+@@ -13,7 +13,7 @@
+ import java.rmi.RemoteException;
+ import java.util.List;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ import org.eclipse.jface.bindings.keys.KeyStroke;
+ import org.eclipse.swt.SWT;
+ import org.eclipse.swt.widgets.Composite;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/parts/AbstractTablePart.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/parts/AbstractTablePart.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/parts/AbstractTablePart.java	2024-02-25 22:09:43.970319686 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/parts/AbstractTablePart.java	2024-02-25 22:12:03.210592940 +0100
+@@ -17,7 +17,7 @@
+ import java.util.List;
+ import java.util.Map;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ import org.eclipse.swt.widgets.Listener;
+ 
+ import de.willuhn.datasource.BeanUtil;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/parts/PanelButton.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/parts/PanelButton.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/parts/PanelButton.java	2024-02-25 22:09:43.970319686 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/parts/PanelButton.java	2024-02-25 22:12:03.210592940 +0100
+@@ -12,7 +12,7 @@
+ 
+ import java.rmi.RemoteException;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ import org.eclipse.swt.SWT;
+ import org.eclipse.swt.events.MouseAdapter;
+ import org.eclipse.swt.events.MouseEvent;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/util/SWTUtil.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/util/SWTUtil.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/gui/util/SWTUtil.java	2024-02-25 22:09:43.970319686 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/gui/util/SWTUtil.java	2024-02-25 22:12:03.210592940 +0100
+@@ -15,7 +15,7 @@
+ import java.io.InputStream;
+ import java.util.concurrent.atomic.AtomicInteger;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ import org.eclipse.jface.bindings.keys.KeyStroke;
+ import org.eclipse.swt.SWT;
+ import org.eclipse.swt.events.PaintEvent;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/messaging/AddScriptMessageConsumer.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/messaging/AddScriptMessageConsumer.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/messaging/AddScriptMessageConsumer.java	2024-02-25 22:09:43.970319686 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/messaging/AddScriptMessageConsumer.java	2024-02-25 22:12:03.213926280 +0100
+@@ -12,7 +12,7 @@
+ 
+ import java.io.File;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ 
+ import de.willuhn.jameica.services.ScriptingService;
+ import de.willuhn.jameica.system.Application;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/messaging/ManifestMessageConsumer.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/messaging/ManifestMessageConsumer.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/messaging/ManifestMessageConsumer.java	2024-02-25 22:09:43.973653026 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/messaging/ManifestMessageConsumer.java	2024-02-25 22:12:03.213926280 +0100
+@@ -13,7 +13,7 @@
+ import java.util.LinkedList;
+ import java.util.List;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ 
+ import de.willuhn.jameica.plugin.ConsumerDescriptor;
+ import de.willuhn.jameica.plugin.Manifest;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/messaging/MessageBus.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/messaging/MessageBus.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/messaging/MessageBus.java	2024-02-25 22:09:43.973653026 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/messaging/MessageBus.java	2024-02-25 22:12:03.213926280 +0100
+@@ -10,7 +10,7 @@
+ 
+ package de.willuhn.jameica.messaging;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ 
+ import de.willuhn.jameica.system.Application;
+ 
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/messaging/PopupMessageConsumer.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/messaging/PopupMessageConsumer.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/messaging/PopupMessageConsumer.java	2024-02-25 22:09:43.973653026 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/messaging/PopupMessageConsumer.java	2024-02-25 22:12:03.213926280 +0100
+@@ -10,7 +10,7 @@
+ 
+ package de.willuhn.jameica.messaging;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ 
+ import de.willuhn.jameica.gui.GUI;
+ import de.willuhn.jameica.gui.util.Popup;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/messaging/RemoveScriptMessageConsumer.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/messaging/RemoveScriptMessageConsumer.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/messaging/RemoveScriptMessageConsumer.java	2024-02-25 22:09:43.973653026 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/messaging/RemoveScriptMessageConsumer.java	2024-02-25 22:12:03.213926280 +0100
+@@ -12,7 +12,7 @@
+ 
+ import java.io.File;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ 
+ import de.willuhn.jameica.services.ScriptingService;
+ import de.willuhn.jameica.system.Application;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/plugin/Version.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/plugin/Version.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/plugin/Version.java	2024-02-25 22:09:43.973653026 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/plugin/Version.java	2024-02-25 22:12:03.207259600 +0100
+@@ -15,7 +15,7 @@
+ import java.util.Arrays;
+ import java.util.List;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ 
+ import de.willuhn.logging.Logger;
+ 
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/reminder/AbstractReminderStorageProvider.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/reminder/AbstractReminderStorageProvider.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/reminder/AbstractReminderStorageProvider.java	2024-02-25 22:09:43.973653026 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/reminder/AbstractReminderStorageProvider.java	2024-02-25 22:12:03.213926280 +0100
+@@ -16,7 +16,7 @@
+ import java.util.Map;
+ import java.util.UUID;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ 
+ /**
+  * Abstrakte Basis-Implementierung fuer einen Storage-Provider.
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/reminder/ReminderStorageProviderWallet.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/reminder/ReminderStorageProviderWallet.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/reminder/ReminderStorageProviderWallet.java	2024-02-25 22:09:43.973653026 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/reminder/ReminderStorageProviderWallet.java	2024-02-25 22:12:03.213926280 +0100
+@@ -10,7 +10,7 @@
+ 
+ package de.willuhn.jameica.reminder;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ 
+ import de.willuhn.annotation.Lifecycle;
+ import de.willuhn.annotation.Lifecycle.Type;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/security/crypto/AbstractPasswordBasedEngine.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/security/crypto/AbstractPasswordBasedEngine.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/security/crypto/AbstractPasswordBasedEngine.java	2024-02-25 22:09:43.973653026 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/security/crypto/AbstractPasswordBasedEngine.java	2024-02-25 22:12:03.213926280 +0100
+@@ -20,7 +20,7 @@
+ import javax.crypto.CipherInputStream;
+ import javax.crypto.CipherOutputStream;
+ 
+-import org.apache.commons.lang.RandomStringUtils;
++import org.apache.commons.lang3.RandomStringUtils;
+ 
+ import de.willuhn.io.IOUtil;
+ import de.willuhn.jameica.security.Wallet;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/services/inject/InjectHandlerReceive.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/services/inject/InjectHandlerReceive.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/services/inject/InjectHandlerReceive.java	2024-02-25 22:09:43.973653026 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/services/inject/InjectHandlerReceive.java	2024-02-25 22:12:03.213926280 +0100
+@@ -15,7 +15,7 @@
+ import java.lang.reflect.AccessibleObject;
+ import java.lang.reflect.Method;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ 
+ import de.willuhn.annotation.Inject;
+ import de.willuhn.annotation.Injector;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/services/ReminderService.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/services/ReminderService.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/services/ReminderService.java	2024-02-25 22:09:43.973653026 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/services/ReminderService.java	2024-02-25 22:12:03.213926280 +0100
+@@ -18,7 +18,7 @@
+ import java.util.Timer;
+ import java.util.TimerTask;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ 
+ import de.willuhn.boot.BootLoader;
+ import de.willuhn.boot.Bootable;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/services/RepositoryService.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/services/RepositoryService.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/services/RepositoryService.java	2024-02-25 22:09:43.973653026 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/services/RepositoryService.java	2024-02-25 22:12:03.213926280 +0100
+@@ -28,8 +28,8 @@
+ import java.util.List;
+ import java.util.Map;
+ 
+-import org.apache.commons.lang.ObjectUtils;
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.ObjectUtils;
++import org.apache.commons.lang3.StringUtils;
+ 
+ import de.willuhn.boot.BootLoader;
+ import de.willuhn.boot.Bootable;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/services/SecurityManagerService.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/services/SecurityManagerService.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/services/SecurityManagerService.java	2024-02-25 22:09:43.973653026 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/services/SecurityManagerService.java	2024-02-25 22:12:03.213926280 +0100
+@@ -13,7 +13,7 @@
+ import java.util.Arrays;
+ import java.util.List;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ 
+ import de.willuhn.boot.BootLoader;
+ import de.willuhn.boot.Bootable;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/services/UpdateService.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/services/UpdateService.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/services/UpdateService.java	2024-02-25 22:09:43.973653026 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/services/UpdateService.java	2024-02-25 22:12:03.213926280 +0100
+@@ -25,7 +25,7 @@
+ import java.util.TimerTask;
+ import java.util.TreeMap;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ 
+ import de.willuhn.boot.BootLoader;
+ import de.willuhn.boot.Bootable;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/system/AbstractApplicationCallback.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/system/AbstractApplicationCallback.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/system/AbstractApplicationCallback.java	2024-02-25 22:09:43.973653026 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/system/AbstractApplicationCallback.java	2024-02-25 22:12:03.213926280 +0100
+@@ -14,7 +14,7 @@
+ 
+ import javax.security.cert.X509Certificate;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ 
+ import de.willuhn.jameica.messaging.QueryMessage;
+ import de.willuhn.jameica.security.Certificate;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/system/ApplicationCallbackConsole.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/system/ApplicationCallbackConsole.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/system/ApplicationCallbackConsole.java	2024-02-25 22:09:43.973653026 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/system/ApplicationCallbackConsole.java	2024-02-25 22:12:03.213926280 +0100
+@@ -21,7 +21,7 @@
+ import java.text.DateFormat;
+ import java.text.MessageFormat;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ 
+ import de.willuhn.jameica.messaging.CheckTrustMessage;
+ import de.willuhn.jameica.messaging.QueryMessage;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/system/Config.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/system/Config.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/system/Config.java	2024-02-25 22:09:43.976986365 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/system/Config.java	2024-02-25 22:12:03.213926280 +0100
+@@ -17,7 +17,7 @@
+ import java.util.Locale;
+ import java.util.ResourceBundle;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ 
+ import de.willuhn.logging.Level;
+ import de.willuhn.logging.Logger;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/transport/HttpTransport.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/transport/HttpTransport.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/transport/HttpTransport.java	2024-02-25 22:09:43.976986365 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/transport/HttpTransport.java	2024-02-25 22:12:03.213926280 +0100
+@@ -21,7 +21,7 @@
+ import java.util.ArrayList;
+ import java.util.List;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ 
+ import de.willuhn.annotation.Lifecycle;
+ import de.willuhn.annotation.Lifecycle.Type;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/update/RepositorySearchResult.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/update/RepositorySearchResult.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/update/RepositorySearchResult.java	2024-02-25 22:09:43.976986365 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/update/RepositorySearchResult.java	2024-02-25 22:12:03.213926280 +0100
+@@ -18,7 +18,7 @@
+ import java.util.Map;
+ import java.util.TreeMap;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ 
+ import de.willuhn.logging.Logger;
+ import de.willuhn.util.ApplicationException;
+diff -urEbwb jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/update/ResolverResult.java jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/update/ResolverResult.java
+--- jameica-V_2_10_4_BUILD_487.orig/src/de/willuhn/jameica/update/ResolverResult.java	2024-02-25 22:09:43.976986365 +0100
++++ jameica-V_2_10_4_BUILD_487/src/de/willuhn/jameica/update/ResolverResult.java	2024-02-25 22:12:03.213926280 +0100
+@@ -13,7 +13,7 @@
+ import java.util.ArrayList;
+ import java.util.List;
+ 
+-import org.apache.commons.lang.ObjectUtils;
++import org.apache.commons.lang3.ObjectUtils;
+ 
+ import de.willuhn.jameica.plugin.Dependency;
+ import de.willuhn.jameica.plugin.Version;

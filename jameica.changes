@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Feb 25 21:47:42 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jameica-port-to-commons-lang3.patch
+    + port jameica to use apache-commons-lang3 instead of the old
+      apache-commons-lang
+- Unbundle the jakarta_commons jars
+
+-------------------------------------------------------------------
+Sun Feb 25 20:57:01 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- The unbundled velocity-1.7 depends on apache-commons-lang3 (bsc#1220289)
+
+-------------------------------------------------------------------
 Sun Apr 16 10:05:24 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.10.4

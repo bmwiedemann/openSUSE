@@ -103,4 +103,12 @@
     <comment></comment>
     <requestid>1079751</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>0c9594fbd082546a21d434c65b6530b4</srcmd5>
+    <version>2.10.4</version>
+    <time>1709070590</time>
+    <user>anag+factory</user>
+    <comment>port to apache-commons-lang3</comment>
+    <requestid>1152327</requestid>
+  </revision>
 </revisionlist>
