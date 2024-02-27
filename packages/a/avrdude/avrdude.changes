@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:30:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN (all patches
+  currently commented out).
+
+-------------------------------------------------------------------
 Wed Oct 11 14:39:53 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Adjust PKGBUILD to also reference version 7.2. Source download

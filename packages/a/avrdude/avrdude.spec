@@ -72,8 +72,8 @@ This package contains development files for %{name}.
 %prep
 %setup -q
 # avrdude-5.11-no-builddate.diff
-# %patch0 -p1
-# %patch1
+# %patch -P 0 -p1
+# %patch -P 1
 #touch lexer.l
 
 %build
