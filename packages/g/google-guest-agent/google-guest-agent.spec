@@ -49,10 +49,8 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Google Cloud Guest Agent
 
 %prep
-%setup -q -n %{repo}-%{version}
-%setup -q -D -T -a 1 -n %{repo}-%{version}
-%patch0 -p1
-%patch1 -p1
+%setup -n %{repo}-%{version} -a1
+%patch -P 0 -P 1 -p1
 
 %build
 %goprep %{import_path}

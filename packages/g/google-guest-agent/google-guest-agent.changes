@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 27 13:23:01 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- No need for double %setup.
+
+-------------------------------------------------------------------
+Tue Feb 27 11:13:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Jan  4 11:32:21 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20231214.00
