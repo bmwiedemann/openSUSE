@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:53:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Fri Nov 19 11:25:52 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to new upstream release 1.4.0

@@ -132,10 +132,7 @@ between different telecommunication associations for developing new
 generations of mobile phone networks. (post-2G/GSM)
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 echo "%{version}" >.tarball-version
