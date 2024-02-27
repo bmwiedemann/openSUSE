@@ -378,4 +378,15 @@
     <comment>Update to 4.2.1</comment>
     <requestid>1133759</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>b2cba71d60ed2e157ae481d804fb0dfd</srcmd5>
+    <version>4.2.1</version>
+    <time>1709071019</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+- Pin mbedtls-devel version to be lower than 3 for Leap builds, too.</comment>
+    <requestid>1152488</requestid>
+  </revision>
 </revisionlist>
