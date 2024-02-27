@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 27 13:29:40 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Fix cryptography deprecation sent to duncan.macleod@ligo.org
+  igwn-auth-utils-cryptography-utc-deprecation.patch
+
+-------------------------------------------------------------------
 Wed Feb 14 11:14:43 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.1.0

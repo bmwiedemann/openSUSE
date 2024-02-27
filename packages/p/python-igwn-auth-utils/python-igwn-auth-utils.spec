@@ -28,6 +28,8 @@ Source:         https://files.pythonhosted.org/packages/source/i/%{srcname}/%{sr
 Patch0:         https://git.ligo.org/computing/igwn-auth-utils/-/merge_requests/73.patch#/igwn-auth-utils-mr73-utznow.patch
 # PATCH-FIX-UPSTREAM igwn-auth-utils-mr76-mock_called_once.patch https://git.ligo.org/computing/igwn-auth-utils/-/merge_requests/76
 Patch1:         https://git.ligo.org/computing/igwn-auth-utils/-/merge_requests/76.patch#/igwn-auth-utils-mr76-mock_called_once.patch
+# PATCH-FIX-UPSTREAM igwn-auth-utils-cryptography-utc-deprecation.patch sent to duncan.macleod@ligo.org
+Patch2:         igwn-auth-utils-cryptography-utc-deprecation.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.3}
 BuildRequires:  %{python_module setuptools}
