@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-wxPython
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -71,8 +71,7 @@ ExclusiveArch:  donotbuild
 %endif
 %endif
 %endif
-# The obs server-side interpreter cannot use lua or rpm shrink
-%if "%pythons" == "" || "%pythons" == " " || "%pythons" == "  " || "%pythons" == "   " || "%pythons" == "    "
+%if "%{shrink:%pythons}" == ""
 ExclusiveArch:  donotbuild
 %define python_module() %flavor-not-enabled-in-buildset-for-suse-%{?suse_version}
 %else
@@ -147,7 +146,7 @@ Requires:       %{pprefix}-Pillow
 Requires:       %{pprefix}-numpy
 Requires:       %{pprefix}-six
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Conflicts:      %{pprefix}-wxWidgets
 Provides:       %{pprefix}-wxWidgets = %{version}
 %if "%{python_provides}" != ""
