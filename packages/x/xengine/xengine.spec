@@ -48,9 +48,7 @@ Xengine displays a reciprocating engine in a window and is a benchmark
 for X.
 
 %prep
-%setup -q
-%patch0
-%patch1
+%autosetup -p0
 
 %build
 xmkmf -a
