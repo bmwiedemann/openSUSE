@@ -59,8 +59,7 @@ visuals are supported for the other depths with the exception of the
 Riva128 which only supports TrueColor in the higher depths.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
