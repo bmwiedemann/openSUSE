@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 11:29:31 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Wed Feb 21 09:15:27 UTC 2024 - Joan Torres <joan.torres@suse.com>
 
 - Set the URL at Source0.

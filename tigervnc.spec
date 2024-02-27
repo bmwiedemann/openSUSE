@@ -347,6 +347,7 @@ install -Dm0644 %{SOURCE17} %{buildroot}%{_sysusersdir}/vnc.conf
 rm -rf %{buildroot}%{_datadir}/doc/tigervnc*
 
 %find_lang '%{name}'
+%python3_fix_shebang
 
 %post
 %if 0%{?suse_version} >= 1315
