@@ -99,17 +99,7 @@ device over the network to another machine. Think of it as networked
 raid 1. It is a building block for setting up clusters.
 
 %prep
-%setup -q
-%patch0001 -p1
-%patch0002 -p1
-%patch0003 -p1
-%patch1001 -p1
-%patch1002 -p1
-%patch1003 -p1
-%patch1004 -p1
-%patch1005 -p1
-%patch1006 -p1
-%patch1099 -p1
+%autosetup -p1
 
 %build
 export WANT_DRBD_REPRODUCIBLE_BUILD=1
