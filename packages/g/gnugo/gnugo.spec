@@ -40,9 +40,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Chinese ancient board game.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -fcommon"
