@@ -41,9 +41,7 @@ This occurs each time you start a login shell. To get this feature just
 uncomment the respective lines in the user's .profile.
 
 %prep
-%setup -q -n %{name}-mod-%{name}-mod-%{version}/fortune-mod
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n %{name}-mod-%{name}-mod-%{version}/fortune-mod
 
 %build
 %cmake
