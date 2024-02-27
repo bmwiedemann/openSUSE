@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:09:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Mon Oct 17 12:15:56 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - xf86-input-vmmouse 13.2.0:

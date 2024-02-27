@@ -60,9 +60,7 @@ available mouse types and interfaces. USB mice are only supported on
 some OSs, and the level of support for PS/2 mice depends on the OS.
 
 %prep
-%setup -q
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi

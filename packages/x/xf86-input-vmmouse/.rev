@@ -230,4 +230,12 @@
   * Add NetBSD/amd64 support for iopl calls.</comment>
     <requestid>1012104</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>b76320d1a29661c3834594f39e562a06</srcmd5>
+    <version>13.2.0</version>
+    <time>1709070279</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151667</requestid>
+  </revision>
 </revisionlist>
