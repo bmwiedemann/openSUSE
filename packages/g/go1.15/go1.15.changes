@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:32:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Aug  5 21:03:30 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.15.15 (released 2021-08-05) includes a security fix to the

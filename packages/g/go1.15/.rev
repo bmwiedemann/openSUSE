@@ -305,4 +305,12 @@
   * go#46857 runtime: ppc64x binaries randomly segfault on linux 5.13rc6 (forwarded request 910388 from jfkw)</comment>
     <requestid>910390</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>2cf8f9cf3745d77fe1947ac10c10c4a7</srcmd5>
+    <version>1.15.15</version>
+    <time>1709070571</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1152224 from dimstar)</comment>
+    <requestid>1152295</requestid>
+  </revision>
 </revisionlist>
