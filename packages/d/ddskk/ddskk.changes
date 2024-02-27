@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 08:01:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Mon Mar  2 17:24:07 UTC 2020 - Xu Zhao <i@xuzhao.net>
 
 - Update to skkdic 20200228

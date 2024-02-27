@@ -96,9 +96,8 @@ URL:            http://openlab.ring.gr.jp/skk/dic.html
 optional, additional dictionaries for SKK
 
 %prep
-%setup -q -n ddskk-ddskk-16.2_Warabitai
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1 -n ddskk-ddskk-16.2_Warabitai
+
 tar --strip-components=1 --xz -xf %{S:100} -C dic
 cp dic/zipcode/SKK-JISYO.* dic/
 
