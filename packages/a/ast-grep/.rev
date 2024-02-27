@@ -142,4 +142,15 @@
   * Update README.md 9636a1a</comment>
     <requestid>1149684</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2fa0b6bc2413b13fc132764f45ee85ac</srcmd5>
+    <version>0.19.3+0</version>
+    <time>1709070340</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.19.3:
+  * fix(deps): update dependency @swc/core to v1.4.2 67450cb
+  * refactor: move rewriters to SerializableRuleConfig d98c062
+  * fix(deps): update rust crate inquire to 0.7.0 86ec845</comment>
+    <requestid>1150575</requestid>
+  </revision>
 </revisionlist>

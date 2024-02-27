@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 26 07:20:23 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.3:
+  * fix(deps): update dependency @swc/core to v1.4.2 67450cb
+  * refactor: move rewriters to SerializableRuleConfig d98c062
+  * fix(deps): update rust crate inquire to 0.7.0 86ec845
+
+-------------------------------------------------------------------
 Fri Feb 23 05:55:03 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.19.2:
