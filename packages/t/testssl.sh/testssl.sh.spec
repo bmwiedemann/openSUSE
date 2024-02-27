@@ -40,8 +40,7 @@ any port for the support of TLS/SSL ciphers, protocols as well as some
 cryptographic flaws.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 %if 0%{?suse_version} > 1500
 sed -i 's|#!/usr/bin/env bash|#!/usr/bin/bash|g' testssl.sh
 %else
