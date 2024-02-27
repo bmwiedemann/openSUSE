@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Mon Jan 29 13:47:55 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Update to version 23.11.03
+  * slurmrestd - Reject single http query with multiple path
+    requests.
+  * Fix launching Singularity v4.x containers with
+    `srun --container` by setting .process.terminal to true in
+    generated `config.json` when step has pseudoterminal (`--pty`)
+    requested.
+  * Fix loading in `dyanmic/cloud` node jobs after `net_cred`
+    expired.
+  * Fix cgroup null path error on `slurmd/slurmstepd` tear down.
+  * `data_parser/v0.0.40` - Prevent failure if accounting is
+    disabled, instead issue a warning if needed data from the
+    database can not be retrieved.
+  * `openapi/slurmctld` - Prevent failure if accounting is disabled.
+  * Prevent `slurmscriptd` processing delays from blocking other
+    threads in `slurmctld` while trying to launch various scripts.
+    This is additional work for a fix in 23.02.6.
+  * Fix memory leak when receiving alias addrs from controller.
+  * `scontrol` - Accept `scontrol token lifespan=infinite` to
+    create tokens that effectively do not expire.
+  * Avoid errors when Slurmdb accounting disabled when `--json` or
+    `--yaml` is invoked with CLI commands and `slurmrestd`. Add
+    warnings when query would have populated data from Slurmdb
+    instead of errors.
+  * Fix `slurmctld` memory leak when running job with
+    `--tres-per-task=gres:shard:#`
+  * Fix backfill trying to start jobs outside of backfill window.
+  * Fix oversubscription on partitions with `PreemptMode=OFF`.
+  * Preserve node reason on power up if the node is downed
+    or drained.
+  * `data_parser/v0.0.40` - Avoid aborting when invoking a not
+    implemented parser.
+  * `data_parser/v0.0.40` - Fix how nice values are parsed for job
+    submissions.
+  * `data_parser/v0.0.40` - Fix regression where parsing error did
+    not result in invalid request being rejected.
+  * Fix segfault in front-end node registration.
+  * Prevent jobs using none typed gpus from being killed by the
+    controller after a reconfig or restart.
+  * Fix deadlock situation in the dbd when adding associations.
+  * Update default values of text/blob columns when updating from
+    old mysql versions in more situations.  This improves a
+    previous fix to handle an uncommon case when upgrading
+    mysql/mariadb.
+  * Fix rpmbuild in openSUSE/SLES due to incorrect mariadb
+    dependency.
+  * When upgrading the slurmdbd to 23.11, avoid generating a query
+    to update the association table that is larger than
+    `max_allowed_packet` which would result in an upgrade failure.
+  * Fix rare deadlock when a dynamic node registers at the same
+    time that a once per minute background task occurs.
+  * `data_parser/v0.0.40` - Fix enumerated strings in OpenAPI
+    specification not have type field specified.
+  * Improve `scontrol show job -d` information of used shared
+    gres (`shard/mps`) topology.
+  * accounting_storage/mysql - Fix usage query to use new lineage
+    column instead of lft/rgt.
+  * `slurmrestd` - Improve handling of missing parsers when
+    content plugins expect parsers not loaded.
+  * `slurmrestd` - Correct parsing of StepIds when querying jobs.
+  * `slurmrestd` - Improve error from parsing failures of lists.
+  * `slurmrestd` - Improve parsing of singular values for lists.
+  * `accounting_storage/mysql` - Fix `PrivateData=User` when
+    listing associations.
+  * Disable sorting of dynamic nodes to avoid issues when
+    restarting with heterogenous jobs that cause jobs to abort on
+    restart.
+  * Don't allow deletion of non-dynamic nodes.
+  * `accounting_storage/mysql` - Fix issue adding partition based
+    associations.
+  * Respect non-"slurm" settings for `I_MPI_HYDRA_BOOTSTRAP` and
+    `HYDRA_BOOTSTRAP` and avoid injecting the `--external-launcher`
+    option which will cause `mpirun/mpiexec` to fail with an
+    unexpected argument error.
+  * Fix bug where scontrol hold would change node count for jobs
+    with implicitly defined node counts.
+  * `data_parser/v0.0.40` - Fix regression of support for "hold"
+    in job description.
+  * Avoid sending KILL RPCs to unresolvable `POWERING_UP` and
+    `POWERED_DOWN` nodes.
+  * `data_parser/v0.0.38` - Fix several potential NULL
+    dereferences that could cause slurmrestd to crash.
+  * Add `--gres-flags=one-task-per-sharing`. Do not allow different
+    tasks in to be allocated shared gres from the same sharing gres.
+  * Add `SelectTypeParameters=ENFORCE_BINDING_GRES` and
+    `ONE_TASK_PER_SHARING_GRES`.
+    This gives default behavior for a job's `--gres-flags`.
+  * Alter the networking code to try connecting to the backup
+    controllers if the DNS lookup for the primary `SlurmctldHost`
+    fails.
+  * Alter the name resolution to only log at `verbose()` in client
+    commands on failures. This allows for HA setups where the DNS
+    entries are withdrawn for some `SlurmctldHost` entries without
+    flooding the user with errors.
+  * Prevent `slurmscriptd` PID leaks when running `slurmctld` in
+    foreground mode.
+  * Open all `slurmctld` listening ports at startup, and persist
+    throughout.
+    This also changes the backup `slurmctld` process to open the
+    `SlurmctldPort` range, instead of only the first.
+  * Fix backup `slurmctld` shutting down instead of resuming
+    standby duty if it took control.
+  * Fix race condition that delayed the primary `slurmctld`
+    resuming when taking control from a backup controller.
+  * `srun` - Ensure processed messages are meant for this job in
+    case of a rapidly-reused TCP port.
+  * `srun` - Prevent step launch failure while waiting for step
+    allocation if a stray message is received.
+  * Fix backup `slurmctld` to be able to respond to configless
+    config file requests correctly.
+  * Fix `slurmctld` crashing when recovering from a failed
+    reconfigure.
+  * Fix `slurmscriptd` operation after recovering from a failed
+    reconfigure.
+- Make sure `-std=gnu99` is added to CFLAGS on SLE-12.
+- Use %%autopatch.
+
+-------------------------------------------------------------------
 Fri Jan 12 11:08:01 UTC 2024 - Christian Goll <cgoll@suse.com>
 
 - Update to 23.11.1 with following major improvements and fixing

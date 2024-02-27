@@ -19,7 +19,7 @@
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
 %define so_version 40
 # Make sure to update `upgrades` as well!
-%define ver 23.11.1
+%define ver 23.11.3
 %define _ver _23_11
 %define dl_ver %{ver}
 # so-version is 0 and seems to be stable
@@ -120,7 +120,7 @@ Conflicts:      %{*} }
 %endif
 
 %if 0%{?suse_version} >= 1500
-%undefine have_hdf5
+%define have_hdf5 1
 %define have_boolean_deps 1
 %define have_lz4 1
 %define have_firewalld 1
@@ -623,11 +623,7 @@ Do not run test suite and file bug reports for each failed test!
 
 %prep
 %setup -q -n %{pname}-%{dl_ver}
-%patch0 -p1
-%patch2 -p1
-%patch10 -p1
-%patch14 -p1
-%patch15 -p1
+%autopatch -p1
 
 %if 0%{?python_ver} < 3
 # Workaround for wrongly flagged python3 to keep SLE-11-SP4 building
@@ -648,6 +644,9 @@ export SUSE_ZNOW=0
 
 autoreconf
 [ -e $(pwd)/mybin ] && PATH=$(pwd)/mybin:$PATH
+%if 0%{?suse_version} < 1500
+export CFLAGS="-std=gnu99 %optflags"
+%endif
 %configure --enable-shared \
            --disable-static \
            --without-rpath \
