@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:31:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Feb  2 07:36:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - remove trailing EOF escape that confuses posix shell (bsc#1195391) 

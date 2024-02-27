@@ -177,31 +177,31 @@ Go runtime race detector libraries. Install this package if you wish to use the
 %ifarch %{tsan_arch}
 # compiler-rt
 %setup -q -T -b 100 -n compiler-rt-g%{tsan_commit}
-%patch100 -p1
-%patch101 -p1
-%patch102 -p1
+%patch -P 100 -p1
+%patch -P 101 -p1
+%patch -P 102 -p1
 %endif
 # go
 %setup -q -n go
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
 %if %{with_gccgo}
 %if 0%{?suse_version} == 1315
 # SLE12 or Leap 42.x
-%patch8 -p1
+%patch -P 8 -p1
 %else
 %if 0%{?suse_version} == 1500
 # SLE15 or Leap 15.x
 %ifarch %arm
-%patch10 -p1
+%patch -P 10 -p1
 %else
-%patch9 -p1
+%patch -P 9 -p1
 %endif
 %else
-%patch11 -p1
+%patch -P 11 -p1
 %endif
 %endif
 %endif

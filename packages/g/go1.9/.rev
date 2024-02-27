@@ -147,4 +147,12 @@
     <comment>- remove trailing EOF escape that confuses posix shell (bsc#1195391) (forwarded request 950666 from dirkmueller)</comment>
     <requestid>950667</requestid>
   </revision>
+  <revision rev="17" vrev="13">
+    <srcmd5>b8b07aa5f29ca12e08f7eb5ce8ecc26f</srcmd5>
+    <version>1.9.7</version>
+    <time>1709070575</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1152222 from dimstar)</comment>
+    <requestid>1152300</requestid>
+  </revision>
 </revisionlist>
