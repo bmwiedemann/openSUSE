@@ -222,12 +222,12 @@ cd mozilla
 
 cp %{SOURCE12} GNUmakefile
 
-%patch1 -p1
-%patch2 -p2
-%patch3 -p1
-%patch4 -p0
-%patch5 -p1
-%patch6 -p1
+%patch -P 1 -p1
+%patch -P 2 -p2
+%patch -P 3 -p1
+%patch -P 4 -p0
+%patch -P 5 -p1
+%patch -P 6 -p1
 
 cat << EOF > .mozconfig
 mk_add_options MOZILLA_OFFICIAL=1

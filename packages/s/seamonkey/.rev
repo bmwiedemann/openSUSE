@@ -240,4 +240,12 @@
   i.e, python2 was not used anymore (boo#1219739). (forwarded request 1145490 from dimstar)</comment>
     <requestid>1146231</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>471fab14399e7ca9695b47fae3371eb5</srcmd5>
+    <version>2.53.18.1</version>
+    <time>1709070460</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151938</requestid>
+  </revision>
 </revisionlist>
