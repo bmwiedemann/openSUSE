@@ -160,4 +160,12 @@
 - refreshed xrandr-print-outputs-per-provider.patch</comment>
     <requestid>1040097</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>d0c14725c981eb7216ff1bf4e30dae6f</srcmd5>
+    <version>1.5.2</version>
+    <time>1709070291</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151688</requestid>
+  </revision>
 </revisionlist>

@@ -44,8 +44,7 @@ Xrandr is used to set the size, orientation and/or reflection of
 the outputs for a screen. It can also set the screen size.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 %configure
