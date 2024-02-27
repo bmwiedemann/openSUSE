@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:10:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Mar 15 16:02:18 UTC 2018 - crrodriguez@opensuse.org
 
 - remove xorg-x11-devel from buildrequires 

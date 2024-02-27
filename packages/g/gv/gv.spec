@@ -81,10 +81,10 @@ Authors:
 %prep
 %setup
 echo >> src/Makefile.am
-%patch1 -p0 -b .one
-%patch2 -p0 -b .two
-%patch3 -p0 -b .zio
-%patch4 -p0 -b .ue
+%patch -P 1 -p0 -b .one
+%patch -P 2 -p0 -b .two
+%patch -P 3 -p0 -b .zio
+%patch -P 4 -p0 -b .ue
 
 %build
 autoreconf -fis
