@@ -42,8 +42,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 fcitx-skk is an input method engine for Fcitx, which uses libskk as its backend.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 mkdir -p build
