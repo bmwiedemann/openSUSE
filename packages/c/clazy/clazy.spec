@@ -17,7 +17,7 @@
 
 
 Name:           clazy
-Version:        1.11git.20230920T205027~2965bc3
+Version:        1.11git.20240225T163906~f353355
 Release:        0
 Summary:        Qt oriented code checker based on the Clang framework
 License:        LGPL-2.0-or-later
@@ -25,8 +25,12 @@ Group:          Development/Tools/Other
 URL:            https://www.kdab.com/clazy-video/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:  clang
-BuildRequires:  clang-devel >= 8.0
+BuildRequires:  clang-devel >= 11.0
 BuildRequires:  cmake >= 3.7
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc13-c++
+BuildRequires:  gcc13-PIE
+%endif
 BuildRequires:  libstdc++-devel
 %requires_eq    clang%{_llvm_sonum}
 
@@ -41,7 +45,11 @@ allocations to misusage of API, including fix-its for automatic refactoring.
 %build
 %define _lto_cflags %{nil}
 
-%cmake
+%if 0%{?suse_version} == 1500
+export CXX=g++-13
+%endif
+
+%cmake -DCMAKE_INSTALL_DOCDIR=%{_datadir}/doc/clazy
 
 %cmake_build
 
@@ -51,7 +59,7 @@ allocations to misusage of API, including fix-its for automatic refactoring.
 sed -i 's#%{_bindir}/env sh$#/bin/sh#' %{buildroot}%{_bindir}/clazy
 
 %files
-%license COPYING-LGPL2.txt
+%license LICENSES/*
 %doc %{_datadir}/doc/clazy
 %doc README.md HOWTO Changelog
 %{_bindir}/clazy

@@ -1,4 +1,256 @@
 -------------------------------------------------------------------
+Mon Feb 26 08:37:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add a _constraints file for PowerPC. It needs more memory
+  for Leap builds
+
+-------------------------------------------------------------------
+Sun Feb 25 15:39:31 UTC 2024 - christophe@krop.fr
+
+- Update to version 1.11git.20240225T163906~f353355:
+  * Fix build with older CMake versions
+  * connect-non-signal: Fix not finding method from PMF connect
+    when signal is declared in variable
+  * Remove Qt4 compatibility mode and last remaining check
+  * qstring-incasesensitive-allocation: Make initializer list
+    usage slightly more consistent
+  * qstring-incasesensitive-allocation: Remove unneeded FWD in
+    C++ file
+  * Clean up some further unneeded includes
+  * qstring-ref: Simplify initializer usage
+  * Do not include SourceCompatibilityHelpers in checkbase.h file
+  * qrequiredresults-candidated: Move helper method to single file
+  * Remove clazy::DiagnosticFix compat helper
+  * Remove some no longer needed version checks
+  * Remove clazy::getLocStart and clazy::getLocEnd helpers
+  * Remove clazy::isFinal compat helper
+  * Remove compat ifdef in clazy::hasUnusedResultAttr
+  * Remove clazy::getImmediateExpansionRange compat code
+  * Make std::regex and std::filesyste support mandatory
+  * Bump clang/llvm requirements to 11.0
+  * qgetenv: Add note in case qEnvironmentVariableIntValue
+    fixit allows for base autodetection
+  * qgetenv: Do not include base parameter when it is a nullptr
+  * qgetenv: Limit scope to variables to if-statement if possible
+  * qgetenv: Fix wrong fixit being provided for
+    qEnvironmentVariableIntValue, ignore wontfix case
+  * Avoid unneeded std::string -> char* conversion and back
+  * adapt usage of CXXMethodDecl::isPure for LLVM>=18
+  * Add SPDX info for fully-qualified-moc-types tests
+  * fully-qualified-moc-types: Fix fixit for pointer/reference type
+    return values
+  * fully-qualified-moc-types: Remove fixit snippet from message,
+    add fixit test
+  * fully-qualified-moc-types: Provide fixit for slot/invokable
+    return types and improve warning range
+  * fully-qualified-moc-types: Provide fixit for slot arguments
+    and improve source range for warning
+  * fully-qualified-moc-types: Deduplicate logic for creating
+    template string
+  * fully-qualified-moc-types: Fix templates not being resolved
+    recursively
+  * fully-qualified-moc-types: Show issues of current implementation
+    in testcase
+  * Add fixit for QFileInfo::exists
+  * Fix false positive in qdatetime-utc
+  * Fix unused variable warning in range-loop-detach
+  * Remove warning and promise of a rewrite, that ship has sailed
+  * qstring-allocations: turn s == "" into s.isEmpty()
+  * empty-qstringliteral: Be more precise about non-null string creation,
+    mention QString() possibility
+  * empty-qstringliteral: Make check work with Qt6 and ignore files from
+    QML plugins
+  * wrong-qglobalstatic: Make check work properly with Qt6
+  * Make clazy tests run with Qt5 and Qt6, run as part of ctest
+  * run_tests.py: Do not add qmake header paths twice
+  * no-module-include: Fix test compilation with Qt6, ignore internal
+    include of QtQmlIntegrationDepends file
+  * Remove compat code for specifying only one major version for test
+  * reserve-candidate: Fix operator call expressions being counted as
+    compex expressons in Qt6
+  * connect-3arg-lambda: Fix message for QMenu and adapt check/test for Qt6
+  * connect-non-signal: Fix compilation with Qt6 and enable tests
+  * qt6-qhash-signature: Enable tests or Qt6
+  * old-style-connect: Make tests work with Qt6
+  * run_tests: Use Qt6 libraries for linking and adapt to state machine
+    being own lib in Qt6
+  * old-style-connect: Adapt to QMenu::addAction being an alias to
+    QWidget::addAction
+  * Add clazy-standalone test to generated ClazyTests and fix running it
+  * thread-with-slots: Enable test for Qt6
+  * use-chrono-in-qtimer: Remove unneeded explicit setting of Qt
+    major versions
+  * qdatetime-utc: Fix porting in fixit from QDateTime::toTime_t to
+    undeprecated method
+  * qdatetime-utc: Rework docs to include more examples, some practical
+    benchmark-results and reference the fixits
+  * qdatetime-utc: Extend check to also cover toSecsSinceEpoc
+  * qdatetime-utc: Warn when QDateTime::currentDateTimeUtc().toMSecsSinceEpoch()
+    is used
+  * qdatetime-utc: Use QDateTime::currentMSecsSinceEpoch which is again
+    significantly faster
+  * qdatetime-utc: Add explanitory note to warning explaining why one
+    should use replacement
+  * qdatetime-utc: Also take QDateTime::toMSecsSinceEpoch into
+    consideration and make test pass with Qt6
+  * use-static-qregularexpression: Make check and tests work properly
+    with Qt6
+  * unused-result: Silence false positive in Qt headers
+  * function-args-by-ref: Prefer emitting warning for non-trivial
+    copying rather than size
+  * Mark docs with CC-BY-SA-4.0 license
+  * qcolor-from-literal: Update documentation to includes more prescise
+    checks and fixits
+  * qcolor-from-literal: Slightly adjust messages for invalid patterns
+  * range-loop-detach: Update docuentation with C+17 specific fixit
+  * detaching-temporary: Adjust tests for changed Qt6 semantics
+  * QtUtils: Avoid transient includes, de-inline some not critical
+    functions, move code when used only once
+  * Clean up a bunch of unused includes
+  * qstring-allocations: Fix checks/fixits not working with Qt6
+  * Fix parsing Q_PROPERTY declarations with spaces
+  * connect-not-normalized: Clean up comments about code apparently not
+    having worked 6 years ago
+  * const-signal-or-slot: Enable test for Qt6
+  * fully-qualified-moc-types: Remove explicit major version value
+  * qstring-arg: Enable relevant tests for Qt6, avoid ambiguity
+  * container-anti-pattern: Emit warning for QVector::toList even with
+    Qt6 alias
+  * lambda-unique-connection: Fix duplicate object key in config
+  * qdeleteall: Fix test for Qt6 and make even Qt5 messages more proper
+  * qdeleteall: Fix false positive/Qt6 compile error
+  * connect-not-normalized: Fix Q_ARG/Q_RETURN_ARG checks in Qt6
+  * Fix dumping of AST due to mismatching arguments
+  * detaching-member: Make test work with Qt6
+  * qcolor-from-literal: Report invalid patterns as warning
+  * range-loop-detach: Fix QList check and proper output for Qt6
+  * range-loop-detach: Improve presentation of fixit in compiler output
+  * range-loop-detach: Use std::as_const for C++17
+  * Utilize better clang-format results with trailing comma in more places
+  * fully-qualified-moc-types: Create string manually instead of
+    using overcomplicated clang APIs
+  * fully-qualified-moc-types: Clarify comments
+  * fully-qualified-moc-types: Fix issues with typedefs as generic
+    parameters
+  * fully-qualified-moc-types: Fix issues with LLVM17
+  * fully-qualified-moc-types: Fix Qt5 issues with varadic template args
+  * fully-qualified-moc-types: Fix warnings in case typedefs are used
+  * Try to improve checks for generics
+  * QtUtils: Make trivial nullptr checks more concise
+  * fully-qualified-moc-types: Do not warn for QStringList in Qt6
+  * fully-qualified-mock-types: Make test run with Qt6
+  * fully-qualified-moc-types: Ignore QDBusPendingReply statements
+  * Don't report iterator conversion for mutating container member functions
+  * run_tests.py: Add missing flags also for clazy-standalone
+  * run_tests.py: Clean up concatenation of test command args
+  * Only add Qt module includes when needed
+  * Do not add no-module-include specific flag to all tests
+  * Add qcolor-from-literal check for Qt6 QColor::fromString method
+  * strict-iterators: Also check QJsonObject iterators
+  * QtUtils: Document java style iterators list
+  * detaching-temporary: Add config for QJsonObject
+  * Enable Qt6 by default, except for currently failing tests
+  * qt6-header-fixes can only build with Qt5
+  * Fix lambda-unique-connection for Qt6
+  * Don't run clang-apply-replacements if the test was completely skipped
+  * Add support for running tests with Qt5 and/or Qt6
+  * Adjust indentation of license textx in generate.py
+  * Mark some trivial files with CC0-1.0 license
+  * Remove old COPYING-LGPL2.txt file
+  * Replace Author tags with SPDX-FileContributor
+  * Add license info to recently touched files of mine
+  * Fix broken license info for BSD-2 licenses
+  * Re-run licensedigger with prettyheader option
+  * Remove unneeded statements about files being part of clazy
+  * Require tests to pass on all platforms
+  * Fix strict-iterators with llvm17
+  * Fix LLVM bug tracker URL
+  * Make lamba-unique-connection's tests closer to reality
+  * Fix returning-data-from-temporary (with clang 17)
+  * Disable c++17 for qt6-qlatin1stringchar-to-u for now.
+  * Run all tests with C++14 and with C++17
+  * qt6-qlatin1stringchar-to-u: cleanups
+  * Remove .uncrustify file
+  * No longer recommend editing Checks.h file directly
+  * Rename generated files and add note
+  * Add qcolor-from-literal fixit to checks.json
+  * dev-scripts/generate.py: Format file after generating it
+  * Move setup of CXX standard cmake variables before try_compile statements
+  * Speed up subsequent cmake runs
+  * Optimize checks for filesystem in tests
+  * Minor: avoid printing empty lines for nothing
+  * Fix use-static-qregularexpression with C++17
+  * Adapt qstring-allocations to C++17's eliding of constructor calls
+  * Adapt the user-literal-for-QLatin1String case to C++17
+  * Adapt container-anti-pattern to C++17 (Q_FOREACH is very different then)
+  * Adapt detaching-member to the C++17 AST
+  * Switch to C++17 in preparation for Qt6 support
+  * run_tests.py: Do not report clang/clazy-standalone command twice
+  * run_tests.py: Clean up some unused expressions
+  * Silence all cppcheck warnings for tests
+  * use-static-qregularexpression: Fix issues when running against
+    llvm 17
+  * fully-qualified-mock-types: Resolve fully qualified name based on
+    underlying record
+  * heap-allocated-small-trivial-type: Provide LangOptions context for
+    string conversion
+  * function-args-by-value: Specify LangOptions and adjust values
+  * qt6-deprecated-api-fixes: Adjust param checks for QDate replacements
+  * qt6-deprecated-api-fixes: Adjust helper to check function args directly
+  * qt6-deprecated-api-fixes: Create helper for checking QString param type
+  * qt6-deprecated-api-fixes: Simplify replacementForQSignalMapper and use
+    consistent getAsString params
+  * qt6-deprecated-api-fixes: Provide LangOptions for more calls
+  * detaching-member: Compare record declaration names instead of
+    pretty-printed version
+  * qt6-deprecated-api-fixes: Provide LangOptions and slim down string
+    comparisons
+  * qstring-comparison-to-implicit-char: Provide explicit LangOptions
+    for string conversion
+  * Avoid doing string checks for class in Qt6QLatin1StringCharToU
+  * Make sure function-args-by-ref works the same as in later llvm version
+  * Add -fno-diagnostics-show-line-numbers flag for clang >= 17
+  * Remove linux-qt6 for now since we don't run tests there
+  * Remove reserve-candidates test that has been failing and is obsolete
+  * run_tests: Fix missing space resulting in weird compile/linking errors
+  * Use ClazyPlugin and clazy-standalone from builddir in ctest
+  * Update test genertion to use utility-cmake macro
+  * Add CLAZYPLUGIN_CXX env variable to tests
+  * strict-iterators: Remove unused compat header
+  * unused-non-trivial-variable: Also warn for unused QJsonValue
+  * unused-non-trivial-variable: Silence warning for unused QScopeGuard
+  * readme, add missing doc for no-module-include check
+  * readme, remove pre-built binaries link as kdab does not provide
+    them anymore
+  * Fix (gcc) warning about code doing if (uint < 0)
+  * Download SPDX licenses
+  * Add dep5 file containing license info for tests
+  * Improve qcolor-from-literal warning for QRgba64 value, extend test
+  * Update tests and improve fixit
+  * Add fixit for QColor
+  * use-static-qregularexpression: Also add testcase for QString::mid
+  * Fix false positive for static regex in case QString::arg is used
+    in variable
+  * Fix false positives for static-qregularxpression check
+  * Convert license headers to SPDX identifiers
+  * use-chrono-in-qtimer: fix author info in license header
+  * function-args-by-value: Add trailing commas
+  * RuleOfBase: Use better formatting with trailing comma
+  * unused-non-trivial-variable: Improve formatting
+  * Revert "Fix clazy-fully-qualified-moc-types check for ActionReply"
+  * Revert "Added a comment explaining the KAuth special case"
+  * Improve qenums documentation
+  * no-module-include.cpp: Fix warning about assigning m_modulesList
+    in constructor body, make it const
+  * no-module-include: Add a test for qdbusxml2cpp generated files
+  * Add NetworkAuth module include check
+  * Avoid warnings for QtDBus include in autogenerated files
+  * TemporaryIterator: Fix compile error with gcc
+  * NoModuleInclude: Properly format list
+  * Reduce false-positives in `isempty-vs-count` check
+- Fix build on factory
+
+-------------------------------------------------------------------
 Fri Sep 29 13:14:32 UTC 2023 - christophe@krop.fr
 
 - Update to version 1.11git.20230920T205027~2965bc3:
