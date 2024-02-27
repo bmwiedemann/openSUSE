@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 21 04:24:54 UTC 2024 - ming li <mli@suse.com>
+
+- update to 2024.0:
+  * Add stateless multicast packet format support
+  * bugs squashed: Fix various length checks in tcpdump-like subcommand 
+
+-------------------------------------------------------------------
 Sat Nov 25 18:51:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.3:
