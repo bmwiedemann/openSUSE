@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 27 10:23:39 UTC 2024 - Daniel Donisa <daniel.donisa@suse.com>
+
+- update to version 2.2.8.1
+  * Fixed ReDoS in Accept header parsing [CVE-2024-26146]
+  * Fixed ReDoS in Content Type header parsing [CVE-2024-25126]
+  * Reject Range headers which are too large [CVE-2024-26141]
+
+-------------------------------------------------------------------
 Tue Aug  1 08:03:18 UTC 2023 - Jacob Michalskie <jacob.michalskie@suse.com>
 
 - update to version 2.2.8
