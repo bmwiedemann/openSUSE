@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:09:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Fri Mar 12 21:58:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - refresh spec file (move licenes) 

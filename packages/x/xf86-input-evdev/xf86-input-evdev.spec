@@ -67,9 +67,7 @@ therefore supports all input devices that the kernel knows about,
 including most mice, keyboards, tablets and touchscreens.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 # Once u_01-Add-a-kiosk-mode-for-touch-screens.patch is removed this is no longer needed
