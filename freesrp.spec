@@ -67,9 +67,7 @@ Group:          Hardware/Other
 Udev rules for FreeSRP SDR hardware
 
 %prep
-%setup -q -n libfreesrp-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n libfreesrp-%{version}
 
 %build
 export CXXFLAGS='%{optflags} -Wno-return-type'
