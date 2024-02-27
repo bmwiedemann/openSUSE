@@ -62,10 +62,10 @@ This package uses an 'f77' script that hides the C translation process from the 
 
 mkdir libf2c
 unzip -qq %{SOURCE1} -d libf2c
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 
 # Set library soversion
 sed -i "s/@SOVER@/%{sover}/" libf2c/makefile.u

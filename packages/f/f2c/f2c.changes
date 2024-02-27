@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 08:16:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Jul 18 07:50:08 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - riscv-no-fpu-excp.patch: RISC-V does not support any FPU exceptions
