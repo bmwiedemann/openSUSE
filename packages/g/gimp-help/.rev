@@ -367,4 +367,12 @@ Nobody knows why gimpmode would even be needed... (forwarded request 151527 from
   (bsc#1197717). (forwarded request 970196 from mgorse)</comment>
     <requestid>972595</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>cd010d26c9dacb790525abff777efff9</srcmd5>
+    <version>2.10.0</version>
+    <time>1709070561</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1152144 from dimstar)</comment>
+    <requestid>1152252</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:00:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Thu Apr 14 14:47:53 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Update _constraints: this requires more than 4gb of disk space

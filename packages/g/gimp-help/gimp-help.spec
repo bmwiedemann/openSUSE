@@ -306,8 +306,8 @@ browser, external Web browser and HTML renderers, and human eyeballs.
 This package provides Chinese data for gimp-help.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
+
 find . -iname \*.py -exec sed -i -e '1 s@env python.\?@python3@' '{}' \;
 
 %build
