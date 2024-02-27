@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Tue Feb 27 08:33:15 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Edit description, answer _what_ the package is and use nominal
+  phrase. (https://en.opensuse.org/openSUSE:Package_description_guidelines)
+
+-------------------------------------------------------------------
+Fri Feb 23 21:13:53 UTC 2024 - Loren Burkholder <computersemiexpert@outlook.com>
+
+- Added the Ollama package
+- Included a systemd service

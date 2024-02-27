@@ -1,0 +1,30 @@
+diff -rub ollama-0.1.27/llm/generate/gen_linux.sh ollama-0.1.27-patched/llm/generate/gen_linux.sh
+--- ollama-0.1.27/llm/generate/gen_linux.sh	2024-02-22 23:41:43.000000000 +0100
++++ ollama-0.1.27-patched/llm/generate/gen_linux.sh	2024-02-25 03:16:43.566940450 +0100
+@@ -48,7 +48,7 @@
+         export CUDACXX=$(command -v nvcc)
+     fi
+ fi
+-COMMON_CMAKE_DEFS="-DCMAKE_POSITION_INDEPENDENT_CODE=on -DLLAMA_NATIVE=off -DLLAMA_AVX=on -DLLAMA_AVX2=off -DLLAMA_AVX512=off -DLLAMA_FMA=off -DLLAMA_F16C=off"
++COMMON_CMAKE_DEFS="-DCMAKE_POSITION_INDEPENDENT_CODE=on -DLLAMA_LTO=on -DCMAKE_BUILD_TYPE=Release -DLLAMA_NATIVE=off -DLLAMA_AVX=on -DLLAMA_AVX2=off -DLLAMA_AVX512=off -DLLAMA_FMA=off -DLLAMA_F16C=off"
+ source $(dirname $0)/gen_common.sh
+ init_vars
+ git_module_setup
+@@ -59,7 +59,7 @@
+     # llama.cpp, and we'll build only 1 CPU variant in that case as the default.
+     if [ -n "${OLLAMA_CUSTOM_CPU_DEFS}" ]; then
+         echo "OLLAMA_CUSTOM_CPU_DEFS=\"${OLLAMA_CUSTOM_CPU_DEFS}\""
+-        CMAKE_DEFS="${OLLAMA_CUSTOM_CPU_DEFS} -DCMAKE_POSITION_INDEPENDENT_CODE=on ${CMAKE_DEFS}"
++        CMAKE_DEFS="${OLLAMA_CUSTOM_CPU_DEFS} -DCMAKE_POSITION_INDEPENDENT_CODE=on -DLLAMA_LTO=on -DCMAKE_BUILD_TYPE=Release ${CMAKE_DEFS}"
+         BUILD_DIR="${LLAMACPP_DIR}/build/linux/${ARCH}/cpu"
+         echo "Building custom CPU"
+         build
+@@ -75,7 +75,7 @@
+         # -DLLAMA_AVX512_VBMI -- 2018 Intel Cannon Lake
+         # -DLLAMA_AVX512_VNNI -- 2021 Intel Alder Lake
+ 
+-        COMMON_CPU_DEFS="-DCMAKE_POSITION_INDEPENDENT_CODE=on -DLLAMA_NATIVE=off"
++        COMMON_CPU_DEFS="-DCMAKE_POSITION_INDEPENDENT_CODE=on -DLLAMA_LTO=on -DCMAKE_BUILD_TYPE=Release -DLLAMA_NATIVE=off"
+         if [ -z "${OLLAMA_CPU_TARGET}" -o "${OLLAMA_CPU_TARGET}" = "cpu" ]; then
+             #
+             # CPU first for the default library, set up as lowest common denominator for maximum compatibility (including Rosetta)

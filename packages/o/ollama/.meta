@@ -1,0 +1,8 @@
+<package name="ollama" project="openSUSE:Factory">
+  <title>Get up and running with Llama 2, Mistral, Gemma, and other large language models.</title>
+  <description>Get up and running with Llama 2, Mistral, Gemma, and other large language models.
+
+You can find a list of models available for use at https://ollama.com/library.</description>
+  <devel project="science:machinelearning" package="ollama"/>
+  <url>https://ollama.com</url>
+</package>
