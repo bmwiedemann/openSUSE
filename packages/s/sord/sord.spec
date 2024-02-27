@@ -62,8 +62,7 @@ Development files for libsord.
 Sord is a lightweight C library for storing RDF data in memory.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %{meson} -Ddocs=enabled -Dtests=enabled
