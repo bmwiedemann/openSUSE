@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 08:34:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Thu Jan 27 19:28:40 UTC 2022 - Lee Duncan <lduncan@suse.com>
 
 - Added upstream commit to fix gcc12 warning/errors:
