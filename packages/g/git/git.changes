@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Feb 25 08:07:01 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.44.0:
+  * "git checkout -B <branch>" now longer allows switching to a
+    branch that is in use on another worktree. The users need to
+    use "--ignore-other-worktrees" option.
+  * Faster server-side rebases with git replay
+  * Faster pack generation with multi-pack reuse
+  * rebase auto-squashing now works in non-interactive mode
+  * pathspec now understands attr, e.g. ':(attr:~binary) for
+    selecting non-binaries, or builtin_objectmode for selecting
+    items by file mode or other properties
+  * Many other cli UI and internal improvements and extensions
+
+-------------------------------------------------------------------
 Tue Feb 20 09:56:30 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Do not replace apparmor configuration, fixes bsc#1216545
