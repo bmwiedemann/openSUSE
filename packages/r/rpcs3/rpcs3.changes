@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Feb 25 07:26:21 UTC 2024 - i@guoyunhe.me
+
+- Update to version 0.0.30~git20240224:
+  * Fix Apple Clang build
+  * Block Rosetta on macOS 14.0, 14.1, and 14.2 (#15237)
+  * improves sig_ctx handling, sys_net logging and fixes udpp2p protocol (#15235)
+  * gui/input: only init and quit SDL once for all instances
+  * gui/input; fix log message delta type
+  * gui/input: include Carbon.h on apple
+  * gui/input: let pad handlers know whether they are part of emulation
+  * gui/input: implement pad navigation for maxOs
+  * gui/input: use uinput for linux in gui_pad_thread
+  * gui/input: add gui input with native events
+  * sceNpBasicSendMessage fix
+
+-------------------------------------------------------------------
 Fri Feb 23 11:39:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

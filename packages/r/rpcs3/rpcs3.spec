@@ -17,7 +17,7 @@
 
 
 Name:           rpcs3
-Version:        0.0.30~git20240220
+Version:        0.0.30~git20240224
 Release:        0
 Summary:        PS3 emulator/debugger
 License:        GPL-2.0-only
@@ -116,7 +116,7 @@ echo "// This is a generated file.
 ## llvm intel-ittapi workarounds
 
 # Work around git revision issues
-sed -i -e 's:FATAL_ERROR:WARNING:g' llvm/lib/ExecutionEngine/IntelJITEvents/CMakeLists.txt
+#sed -i -e 's:FATAL_ERROR:WARNING:g' llvm/lib/ExecutionEngine/IntelJITEvents/CMakeLists.txt
 
 # Fix paths
 mv intel-ittapi ittapi && mkdir intel-ittapi && mv ittapi intel-ittapi/

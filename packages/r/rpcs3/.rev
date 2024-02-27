@@ -503,4 +503,24 @@
     <comment></comment>
     <requestid>1150152</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c8cba64486910625a0dbc4142d65c6b4</srcmd5>
+    <version>0.0.30~git20240224</version>
+    <time>1709070434</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.0.30~git20240224:
+  * Fix Apple Clang build
+  * Block Rosetta on macOS 14.0, 14.1, and 14.2 (#15237)
+  * improves sig_ctx handling, sys_net logging and fixes udpp2p protocol (#15235)
+  * gui/input: only init and quit SDL once for all instances
+  * gui/input; fix log message delta type
+  * gui/input: include Carbon.h on apple
+  * gui/input: let pad handlers know whether they are part of emulation
+  * gui/input: implement pad navigation for maxOs
+  * gui/input: use uinput for linux in gui_pad_thread
+  * gui/input: add gui input with native events
+  * sceNpBasicSendMessage fix
+</comment>
+    <requestid>1151568</requestid>
+  </revision>
 </revisionlist>
