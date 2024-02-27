@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 26 05:57:42 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.0.0:
+  * Changed:
+    + Broken parsing caused by `pyparsing` updates fixed.
+    + Reorganized package/module structure.
+    + Reorganized exception hierarchy.
+  * Deprecated:
+    + Test suite option `--no-check`.
+  * Removed:
+    + Drop support for Python 2 and Python < 3.7.
+- Drop patch pydot-skip-test.patch, no longer required.
+- Switch to autosetup and pyproject macros.
+
+-------------------------------------------------------------------
 Tue Jun 13 11:09:47 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
