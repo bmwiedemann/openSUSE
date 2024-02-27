@@ -540,4 +540,12 @@ Docker 17.07.0_ce update. This SR is in conjunction with:
     <comment>Enable manpage generation (forwarded request 1138822 from dancermak)</comment>
     <requestid>1141549</requestid>
   </revision>
+  <revision rev="65" vrev="4">
+    <srcmd5>fd8672ba7f0bd09d3a01ce38ca0bfcff</srcmd5>
+    <version>1.7.10</version>
+    <time>1709070251</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151211</requestid>
+  </revision>
 </revisionlist>

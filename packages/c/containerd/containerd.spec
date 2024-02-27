@@ -100,9 +100,9 @@ reference the following Go import paths: github.com/containerd/containerd
 %prep
 %setup -q -n %{name}-%{version}_%{git_short}
 %if 0%{?sle_version} == 120000
-%patch1 -p1
+%patch -P 1 -p1
 %endif
-%patch2 -p1
+%patch -P 2 -p1
 
 %build
 %goprep %{import_path}
