@@ -58,8 +58,8 @@ Authors:
 
 %prep
 %setup -q -n SpecTcl
-#%patch0
-#%patch1
+#%patch -P 0
+#%patch -P 1
 
 %build
 
