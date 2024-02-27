@@ -40,4 +40,15 @@
     <comment>Update to 3.5.3</comment>
     <requestid>1114563</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>da56b3ac42fe1e01501bc4ea1ce7fc0d</srcmd5>
+    <version>3.5.3</version>
+    <time>1709071021</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+- Pin mbedtls-devel version to be lower than 3 for Leap builds, too.</comment>
+    <requestid>1152489</requestid>
+  </revision>
 </revisionlist>

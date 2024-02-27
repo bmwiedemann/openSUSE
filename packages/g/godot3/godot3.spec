@@ -104,7 +104,7 @@ BuildRequires:  pkgconfig(zlib)
 BuildRequires:  libminiupnpc-devel
 BuildRequires:  pkgconfig(libwslay)
 %if 0%{?sle_version} >= 150200
-BuildRequires:  mbedtls-devel
+BuildRequires:  mbedtls-devel < 3
 %endif
 %endif
 %endif
@@ -249,11 +249,7 @@ Bash command line completion support for %{name}, %{name}-headless,
 %{name}-runner and %{name}-server. %{version_text}
 
 %prep
-%setup -q -n %{original_name}-%{version}-stable
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1 -n %{original_name}-%{version}-stable
 
 cp thirdparty/README.md thirdparty_README.md
 
