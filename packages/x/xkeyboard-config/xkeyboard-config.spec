@@ -48,8 +48,7 @@ make keyboards more accessible to people with physical impairments.
 %lang_package
 
 %prep
-%setup -q
-%patch109 -p1
+%autosetup -p1
 
 %build
 %{meson} \

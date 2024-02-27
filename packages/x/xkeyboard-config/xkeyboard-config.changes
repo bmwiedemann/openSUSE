@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:23:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Wed Nov 22 12:33:07 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - the current source supersedes old sle15-sp5 patches (see
