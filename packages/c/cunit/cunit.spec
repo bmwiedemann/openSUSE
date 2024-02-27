@@ -75,9 +75,7 @@ CUnit is a unit testing framework for C.
 This package installs the CUnit shared library.
 
 %prep
-%setup -q -n %{_name}-%{_version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n %{_name}-%{_version}
 
 chmod -x AUTHORS ChangeLog COPYING NEWS README TODO doc/*.html doc/*.css
 
