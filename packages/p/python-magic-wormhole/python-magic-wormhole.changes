@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 24 10:17:09 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Build as PEP517 wheel
+- Replace old vendored versioneer for python 3.12 support
+  gh#magic-wormhole/magic-wormhole#507
+
+-------------------------------------------------------------------
 Tue Sep 19 10:58:25 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.13.0

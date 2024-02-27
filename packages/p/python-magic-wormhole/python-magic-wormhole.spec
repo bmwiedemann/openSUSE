@@ -1,7 +1,7 @@
 #
 # spec file for package python-magic-wormhole
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,12 +35,15 @@ BuildRequires:  %{python_module humanize}
 BuildRequires:  %{python_module magic-wormhole-mailbox-server}
 BuildRequires:  %{python_module magic-wormhole-transit-relay}
 BuildRequires:  %{python_module noiseprotocol}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module spake2 >= 0.8}
 BuildRequires:  %{python_module tqdm >= 4.13.0}
 BuildRequires:  %{python_module txtorcon >= 18.0.2}
+BuildRequires:  %{python_module versioneer}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -73,12 +76,15 @@ the code, which must then be typed into the receiving machine.
 
 %prep
 %setup -q -n %{modname}-%{version}
+# replace vendored old versioneer by system version with python 3.12 support
+# gh#magic-wormhole/magic-wormhole#507
+rm versioneer.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/wormhole
 
@@ -96,6 +102,6 @@ the code, which must then be typed into the receiving machine.
 %doc NEWS.md README.md
 %python_alternative %{_bindir}/wormhole
 %{python_sitelib}/wormhole
-%{python_sitelib}/magic_wormhole-%{version}*-info
+%{python_sitelib}/magic_wormhole-%{version}.dist-info
 
 %changelog
