@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 16 10:00:13 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.5.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Drop extra LICENSE.txt as upstream now ships its own
+
+-------------------------------------------------------------------
 Fri Dec  1 09:21:42 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
