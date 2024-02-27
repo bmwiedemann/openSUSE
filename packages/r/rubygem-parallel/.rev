@@ -75,4 +75,12 @@ See related SR https://build.opensuse.org/request/show/615279</comment>
     <comment></comment>
     <requestid>1126278</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>41511a391f3087932055edd478b140be</srcmd5>
+    <version>1.24.0</version>
+    <time>1709070305</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1151734</requestid>
+  </revision>
 </revisionlist>
