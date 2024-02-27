@@ -65,8 +65,7 @@ This package contains the header files and developer
 docs for gsettings-qt.
 
 %prep
-%setup -q -n %{name}-v%{version}
-%patch0 -p1
+%autosetup -p1 -n %{name}-v%{version}
 
 %build
 %qmake5 DEFINES+=QT_NO_DEBUG_OUTPUT \
