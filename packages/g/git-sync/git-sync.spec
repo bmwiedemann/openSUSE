@@ -35,8 +35,7 @@ This script synchronizes, almost automatically, "tracking" repositories
 where a nice history is not as crucial as having one at all.
 
 %prep
-%setup
-%patch0 -p1
+%autosetup -p1
 
 %build
 
