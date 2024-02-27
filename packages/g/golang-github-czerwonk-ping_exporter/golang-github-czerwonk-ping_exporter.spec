@@ -41,7 +41,7 @@ for Prometheus consumption.
 %prep
 %setup -q -n %{name}-%{version}
 %setup -q -n %{name}-%{version} -T -D -a 1
-%patch0 -p1
+%patch -P 0 -p1
 
 %build
 %{goprep} github.com/czerwonk/ping_exporter

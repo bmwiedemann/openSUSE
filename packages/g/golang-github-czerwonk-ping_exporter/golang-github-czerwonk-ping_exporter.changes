@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:12:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue May 10 15:54:40 UTC 2022 - Jordi Massaguer <jmassaguerpla@suse.com>
 
 - Exclude s390 
