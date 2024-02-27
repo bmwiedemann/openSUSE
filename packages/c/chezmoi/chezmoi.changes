@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Feb 26 16:56:34 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.47.0:
+  - Features
+    * feat: 1Password Secrets Automation Support
+  - Fixes
+    * fix: Ensure default mode is set
+    * fix: Fix marshaling of severities
+    * fix: Fix marshaling of autobools
+    * fix: Fix marshaling of absolute paths
+    * fix: Fix --keep-going flag for unmanaged command
+    * fix: Don't leak internal default sentinel values in template data
+    * fix: Fix panic when merging unmanaged file
+    * fix: Don't attempt to add entries in external_ directories
+    * fix: Use uname -o to detect Android in install script
+    * fix: Move documentation of --output flag to correct section
+    * fix: Prioritize $HOME when Cygwin or msys2 is detected
+  - Documentation updates
+    * docs: Fix type of .chezmoi.kernel and .chezmoi.osRelease variables
+    * docs: Update docs on auto applying changes on edit in VIM
+    * docs: Document config vars for command-specific flags
+    * docs: Cross link "See REF" in config variables doc
+
+-------------------------------------------------------------------
 Mon Feb 12 09:46:56 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.46.1:
