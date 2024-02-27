@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-google-protobuf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,20 +24,20 @@
 #
 
 Name:           rubygem-google-protobuf
-Version:        3.25.1
+Version:        3.25.2
 Release:        0
 %define mod_name google-protobuf
 %define mod_full_name %{mod_name}-%{version}
-BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{rubydevel >= 2.7}
 BuildRequires:  %{rubygem gem2rpm}
-Url:            https://developers.google.com/protocol-buffers
+BuildRequires:  ruby-macros >= 5
+URL:            https://developers.google.com/protocol-buffers
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-google-protobuf-rpmlintrc
 Source2:        gem2rpm.yml
 # MANUAL
-Patch0:  do-not-wrap.patch
-Patch1:  0001-ruby-return-0-from-shared_convert.c-shared_message.c.patch
+Patch0:         do-not-wrap.patch
+Patch1:         0001-ruby-return-0-from-shared_convert.c-shared_message.c.patch
 # /MANUAL
 Summary:        Protocol Buffers
 License:        BSD-3-Clause
@@ -65,7 +65,6 @@ find %{buildroot}/%{_libdir}/ruby/gems/ \( -name '*.c' -o -name '*.h' -o -name '
 # add the executable bit back to all scripts
 find %{buildroot}/%{_libdir}/ruby/gems/ \( -name 'well_known_types.rb' -o -name 'descriptor_dsl.rb' -o -name 'extconf.rb' \) -print0 | xargs -r0 chmod +x
 # /MANUAL
-
 
 %gem_packages
 

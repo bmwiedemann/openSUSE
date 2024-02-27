@@ -72,4 +72,12 @@
     <comment>New upstream release 3.25.1</comment>
     <requestid>1127657</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>eb0a8300dfc92fcd5da3bd59812d1b85</srcmd5>
+    <version>3.25.2</version>
+    <time>1709070300</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1151718</requestid>
+  </revision>
 </revisionlist>
