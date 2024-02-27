@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 20 17:28:48 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to upstream version 0.10:
+  * All previously SUSE_specific patches included
+  * tlshd: Reorganize tlshd.conf
+    - get rid of [main]
+    - add [debug] and move the debug-related options there
+    - move the "keyrings" option to [authenticate]
+  * tlshd: add 'delay' configuration parameter
+  * tlshd: Add .conf option to specify trust store
+  * Bug fixes and cleanups
+
+-------------------------------------------------------------------
 Wed Jan 17 11:56:19 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Spec file:

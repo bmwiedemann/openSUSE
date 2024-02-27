@@ -1,7 +1,7 @@
 #
 # spec file for package ktls-utils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           ktls-utils
-Version:        0.9+4.g01b3018
+Version:        0.10
 Release:        0
 Summary:        Agent for performing handshakes for kernel TLS sockets
 License:        GPL-2.0-only
@@ -25,9 +26,9 @@ URL:            https://github.com/oracle/ktls-utils
 Source:         ktls-utils-%{version}.tar
 BuildRequires:  autoconf
 BuildRequires:  libtool
+BuildRequires:  pkgconfig(glib-2.0) >= 2.6
 BuildRequires:  pkgconfig(gnutls) >= 3.3.0
 BuildRequires:  pkgconfig(libkeyutils)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.6
 BuildRequires:  pkgconfig(libnl-3.0) >= 3.1
 BuildRequires:  pkgconfig(systemd)
 
