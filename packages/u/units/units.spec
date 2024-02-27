@@ -1,7 +1,7 @@
 #
 # spec file for package units
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -55,6 +55,7 @@ export LDFLAGS="-pie"
 %install
 %make_install
 ln -fsv ../../..%{_sharedstatedir}/units/currency.units %{buildroot}%{_datadir}/units
+%python3_fix_shebang
 
 %check
 %make_build check

@@ -309,4 +309,13 @@
     <comment>units 2.23 (forwarded request 1147648 from AndreasStieger)</comment>
     <requestid>1149063</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>4ecd0def365c4ba740bf843f519f2d92</srcmd5>
+    <version>2.23</version>
+    <time>1709070402</time>
+    <user>anag+factory</user>
+    <comment>- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]</comment>
+    <requestid>1150776</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 09:28:29 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Mon Feb 19 17:14:59 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - units 2.23:
