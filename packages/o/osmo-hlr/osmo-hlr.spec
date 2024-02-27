@@ -109,8 +109,7 @@ that want to connect services (SIP, SMS,...) to the current location of a
 subscriber.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 echo "%{version}" >.tarball-version
