@@ -54,9 +54,7 @@ Simple-obfs is a simple obfusacting tool, designed as plugin server of shadowsoc
 This package provides Documents for it.
 
 %prep
-%setup -a1 -q
-%patch1 -p1
-%patch2 -p1
+%autosetup -a1 -p1
 
 %build
 rmdir libcork
