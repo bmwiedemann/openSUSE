@@ -47,10 +47,7 @@ Compatible keyboards:
   GPRO
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 %make_build
