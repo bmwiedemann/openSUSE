@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:25:59 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- c-ares 1.27.0
+  Security:
+  * Moderate. CVE-2024-25629. Reading malformatted /etc/resolv.conf,
+    /etc/nsswitch.conf or the HOSTALIASES file could result in a crash.
+    GHSA-mg26-v6qh-x48q (CVE-2024-25629, bsc#1220279)
+
+  Features:
+  * New function ares_queue_active_queries() to retrieve number of in-flight
+    queries. PR #712
+  * New function ares_queue_wait_empty() to wait for the number of in-flight
+    queries to reach zero. PR #710
+  * New ARES_FLAG_NO_DEFLT_SVR for ares_init_options() to return a failure if
+    no DNS servers can be found rather than attempting to use 127.0.0.1. This
+    also introduces a new ares status code of ARES_ENOSERVER. PR #713
+
+  Changes:
+  * EDNS Packet size should be 1232 as per DNS Flag Day. PR #705
+
+  Bugfixes:
+  * Fix warning due to ignoring return code of write(). PR #709
+  * CMake: don't override target output locations if not top-level. Issue #708
+  * Fix building c-ares without thread support. PR #700
+
+-------------------------------------------------------------------
 Fri Feb  9 07:35:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Ensure multibuild flavors result in different src names.
