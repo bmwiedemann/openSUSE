@@ -75,11 +75,7 @@ A library to establish instant messaging connections to the IBM
 Sametime IM server.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 touch configwrap && chmod a+x configwrap
 
 %build
