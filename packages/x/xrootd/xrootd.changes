@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Feb 24 13:45:16 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.6.8:
+  * [XrdCl] Only claim to be TLS capable if TLS initialization
+    succeeds (gh#xrootd/xrootd#2020).
+  * [XrdCl] Only consider an endpoint TLS-enabled if the
+    connection is encrypted
+  * [XrdCl] Remove duplicates from URL list to avoid undefined
+    behavior
+  * [XrdHttpTPC] Fix infinite loop when scitags packet marking is
+    enabled (gh#xrootd/xrootd#2192).
+  * [XrdPosix,XrdSecztn] Fix build on FreeBSD
+    (gh#xrootd/xrootd#2090).
+  * [XrdTls] Fix automatic renewal of server certificate with
+    OpenSSL>=1.1 (gh#xrootd/xrootd#1678).
+
+-------------------------------------------------------------------
 Thu Feb 15 09:43:52 UTC 2024 - pgajdos@suse.com
 
 - version update to 5.6.7
