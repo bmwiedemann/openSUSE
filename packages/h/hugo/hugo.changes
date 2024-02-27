@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 27 05:43:17 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.123.4:
+  * Fix cascade-pattern-with-extension for cascade in site config
+  * build(deps): bump github.com/spf13/fsync from 0.10.0 to 0.10.1
+  * Fix term template lookup when its backed by a content file
+  * resource: Revert the normalization of Resource.Name
+  * Fix panic for disableKinds page for content resources
+  * tocss: Fix the import resolving from absolute to relative assets paths
+  * Maek Resoyrce.Key as (mostly) internal
+  * config/allconfig: Fix typo
+
+-------------------------------------------------------------------
 Fri Feb 23 19:04:37 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.123.3:
