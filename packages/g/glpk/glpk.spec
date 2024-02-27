@@ -76,8 +76,7 @@ is a set of routines written in ANSI C and organized in the form of a
 callable library.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
