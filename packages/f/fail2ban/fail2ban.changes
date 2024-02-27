@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 08:17:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Jun  5 16:36:47 UTC 2023 - Lars Vogdt <lars@linux-schulserver.de>
 
 - use nagios-rpm-macros to define the libexecdir for SUSE distributions

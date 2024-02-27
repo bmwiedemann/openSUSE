@@ -130,16 +130,16 @@ install -m644 %{SOURCE8} config/paths-opensuse.conf
 # Use openSUSE paths
 sed -i -e 's/^before = paths-.*/before = paths-opensuse.conf/' config/jail.conf
 
-%patch100 -p1
-%patch101 -p1
+%patch -P 100 -p1
+%patch -P 101 -p1
 %if 0%{?suse_version} < 1310
-%patch200 -p1
+%patch -P 200 -p1
 %endif
-%patch201 -p1
+%patch -P 201 -p1
 %if !0%{?suse_version} > 1500
-%patch300 -p1
+%patch -P 300 -p1
 %endif
-%patch301 -p1
+%patch -P 301 -p1
 
 rm 	config/paths-arch.conf \
 	config/paths-debian.conf \
