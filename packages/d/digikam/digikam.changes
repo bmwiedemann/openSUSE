@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 22:17:07 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Drop the KDE PIM build dependencies until digikam starts using Qt6
+
+-------------------------------------------------------------------
 Mon Jan 15 14:52:32 UTC 2024 - Wolfgang Bauer <wbauer1@a1.net>
 
 - Update to 8.2.0:

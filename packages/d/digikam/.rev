@@ -1901,4 +1901,12 @@ General : Update internal Libraw to snapshot 202110
     <comment></comment>
     <requestid>1139399</requestid>
   </revision>
+  <revision rev="220" vrev="2">
+    <srcmd5>4d7ad1180ef19f23c7cafc1e886021e9</srcmd5>
+    <version>8.2.0</version>
+    <time>1709070478</time>
+    <user>anag+factory</user>
+    <comment>- Drop the KDE PIM build dependencies until digikam starts using Qt6</comment>
+    <requestid>1151973</requestid>
+  </revision>
 </revisionlist>

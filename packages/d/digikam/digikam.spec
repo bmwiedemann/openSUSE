@@ -35,9 +35,6 @@ Patch0:         0001-Look-for-each-akonadi-component-separately.patch
 # QtWebEngine is not available on ppc and zSystems
 ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{riscv}
 BuildRequires:  QtAV-devel >= 1.12
-# Don't use the CMake target names for these two dependencies
-BuildRequires:  akonadi-contact-devel
-BuildRequires:  akonadi-server-devel
 BuildRequires:  bison
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
@@ -171,17 +168,8 @@ The main digikam libraries that are being shared between showfoto and digikam
 %prep
 %autosetup -p1
 
-%if %{pkg_vcmp akonadi-contact-devel >= 23.03.80}
-# Digikam doesn't look explicitly for akonadi-server but relies on AkonadiContact dependencies
-sed -i 's#KF${QT_VERSION_MAJOR}::AkonadiCore#KPim${QT_VERSION_MAJOR}::AkonadiCore#' core/utilities/extrasupport/addressbook/CMakeLists.txt
-%endif
-# Compatibility CMake files were removed in PIM packages after 23.08.0
-%if %{pkg_vcmp akonadi-contact-devel >= 23.08.0}
-sed -i 's#KF${QT_VERSION_MAJOR}\([:]*Akonadi\)#KPim${QT_VERSION_MAJOR}\1#' core/{CMakeLists.txt,utilities/extrasupport/{addressbook/,}CMakeLists.txt,app/DigikamCoreTarget.cmake,cmake/rules/RulesKDEFramework.cmake}
-%endif
-
 %build
-%{cmake_kf5 -d build -- -DENABLE_APPSTYLES=ON -DENABLE_MEDIAPLAYER=ON -DENABLE_KFILEMETADATASUPPORT=ON -DENABLE_AKONADICONTACTSUPPORT=ON \
+%{cmake_kf5 -d build -- -DENABLE_APPSTYLES=ON -DENABLE_MEDIAPLAYER=ON -DENABLE_KFILEMETADATASUPPORT=ON -DENABLE_AKONADICONTACTSUPPORT=OFF \
 -DSSE3_FOUND=OFF -DSSSE3_FOUND=OFF -DSSE4_1_FOUND=OFF -DSSE4_2_FOUND=OFF \
 %ifarch x86_64 %{?x86_64}
 -DSSE2_FOUND=ON
