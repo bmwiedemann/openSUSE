@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 27 13:35:02 UTC 2024 - pgajdos@suse.com
+
+- version update to 3.0.9.1
+  * Fixed ReDoS in Accept header parsing [CVE-2024-26146][bsc#1220248]
+  * Fixed ReDoS in Content Type header parsing [CVE-2024-25126][bsc#1220239]
+  * Reject Range headers which are too large [CVE-2024-26141][bsc#1220242]
+  * Fix content-length calcuation in Rack:Response#write #2150
+
+-------------------------------------------------------------------
 Tue Nov 14 15:25:36 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - 3.0.8:
