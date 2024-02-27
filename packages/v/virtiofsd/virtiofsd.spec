@@ -16,6 +16,11 @@
 #
 
 
+%define _virtiofsd_dir %{_libexecdir}
+%if 0%{?suse_version} <= 1500
+   %define _virtiofsd_dir %{_libdir}/%{name}
+%endif
+
 Name:           virtiofsd
 Version:        1.10.1
 Release:        0
@@ -35,8 +40,6 @@ ExcludeArch:    %ix86 %arm
 
 %description
 A vhost-user virtio-fs device backend written in Rust
-
-%define _virtiofsd_dir %{_libexecdir}/%{name}
 
 %prep
 %autosetup -a1

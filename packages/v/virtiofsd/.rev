@@ -58,4 +58,12 @@ Use macros to exclude 32-bit archs</comment>
 - Misc: Fix jira reference for build service scripts</comment>
     <requestid>1148951</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>6014ab61e68d550d392918fe40ee2422</srcmd5>
+    <version>1.10.1</version>
+    <time>1709070310</time>
+    <user>anag+factory</user>
+    <comment>- Spec: We don't want /usr/libexec to be namespaced like it is with /usr/lib (bsc#1220304)</comment>
+    <requestid>1151775</requestid>
+  </revision>
 </revisionlist>

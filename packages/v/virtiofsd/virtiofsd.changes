@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 14:16:30 UTC 2024 - Caleb Crane <caleb.crane@suse.com>
+
+- Spec: We don't want /usr/libexec to be namespaced like it is with /usr/lib (bsc#1220304)
+
+-------------------------------------------------------------------
 Thu Feb 22 03:02:23 UTC 2024 - Caleb Crane <caleb.crane@suse.com>
 
 - Spec: Adjust libvirt/virtiofsd interop config file to handle differences in
