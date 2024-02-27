@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 27 15:20:40 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add missing runtime requirement typing_extensions
+
+-------------------------------------------------------------------
 Mon Feb 12 17:04:58 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 2.5.3:

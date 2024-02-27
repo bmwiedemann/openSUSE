@@ -241,4 +241,13 @@ Should fix problem with non-downloadable source file.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1147647</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>2a3e6e72ce54aa349229a07b90e4f131</srcmd5>
+    <version>2.5.3</version>
+    <time>1709070584</time>
+    <user>anag+factory</user>
+    <comment>- Add missing runtime requirement typing_extensions
+</comment>
+    <requestid>1152321</requestid>
+  </revision>
 </revisionlist>

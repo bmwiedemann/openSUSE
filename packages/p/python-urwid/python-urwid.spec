@@ -35,6 +35,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-curses
 Requires:       python-wcwidth
+Requires:       python-typing_extensions
 %python_subpackages
 
 %description
