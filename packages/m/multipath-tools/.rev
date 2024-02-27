@@ -1928,4 +1928,13 @@ by an upstream reviewed commit. (forwarded request 1109432 from mwilck)</comment
   * Documentation fixes, spelling fixes, minor code fixes</comment>
     <requestid>1146796</requestid>
   </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>2eab773f9f88287499ceeb85d9c51de9</srcmd5>
+    <version>0.9.8+83+suse.bcae610</version>
+    <time>1709070329</time>
+    <user>anag+factory</user>
+    <comment>- Remove libmpathpersist-example-old.c, which has been obsolete
+  since multipath-tools 0.8.6. (forwarded request 1152109 from mwilck)</comment>
+    <requestid>1152111</requestid>
+  </revision>
 </revisionlist>

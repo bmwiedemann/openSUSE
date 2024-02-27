@@ -35,7 +35,7 @@
 %define libdmmp_version %(echo %{_libdmmp_version} | tr . _)
 
 Name:           multipath-tools
-Version:        0.9.8~1+82+suse.dcd98a3
+Version:        0.9.8+83+suse.bcae610
 Release:        0
 Summary:        Tools to Manage Multipathed Devices with the device-mapper
 License:        GPL-2.0-only AND GPL-3.0-or-later
@@ -49,7 +49,6 @@ Source2:        dont-del-part-nodes.rules
 # Dracut conf file to make sure 11-dm-parts.rules is included in initrd
 Source3:        dm-parts.conf
 Source4:        libmpathpersist-example.c
-Source5:        libmpathpersist-example-old.c
 Source6:        multipath-dracut.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
@@ -163,7 +162,6 @@ This package provides development files and documentation for libdmmp.
 %prep
 %setup -q -n multipath-tools-%{version}
 cp %{SOURCE4} .
-cp %{SOURCE5} .
 %autopatch -p1
 
 %build
@@ -223,6 +221,7 @@ exit 0
 
 %files
 %doc README.md
+%doc NEWS.md
 %license LICENSES/GPL-2.0
 %license LICENSES/GPL-3.0
 %{_udevrulesdir}/11-dm-mpath.rules
@@ -274,7 +273,6 @@ exit 0
 /usr/include/mpath_valid.h
 %{_mandir}/man3/mpath_persistent_*
 %doc libmpathpersist-example.c
-%doc libmpathpersist-example-old.c
 
 %files -n kpartx
 %license LICENSES/GPL-2.0

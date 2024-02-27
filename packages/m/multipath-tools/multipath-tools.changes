@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 27 10:12:35 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Remove libmpathpersist-example-old.c, which has been obsolete
+  since multipath-tools 0.8.6.
+
+-------------------------------------------------------------------
+Mon Feb 26 11:57:03 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.9.8+83+suse.bcae610 (bsc#1220374)
+  * multipath-tools: added NEWS.md
+
+-------------------------------------------------------------------
 Thu Feb 15 11:00:59 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 0.9.8~1+82+suse.dcd98a3:
