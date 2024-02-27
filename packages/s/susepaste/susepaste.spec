@@ -51,9 +51,9 @@ You can paste screenshot of the window or whole desktop.
 
 %prep
 %setup -q -n susepaste-script-%{version}
-%patch0 -p2
-%patch1 -p1
-%patch2 -p2
+%patch -P 0 -p2
+%patch -P 1 -p1
+%patch -P 2 -p2
 mv gpl-3.0.txt COPYING
 
 %build
