@@ -44,8 +44,7 @@ Fcitx-chewing is a Chewing(新酷音) Wrapper for Fcitx.
 Chewing is a set of free intelligent Chinese Phonetic IME.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 mkdir -pv build
