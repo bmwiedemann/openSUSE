@@ -80,16 +80,16 @@ This package contains the LaTeX generator (sgml2latex) from sgmltool.
 
 %prep
 %setup -q -n sgml-tools-%{version} -a1
-%patch0
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5
-%patch6 -p1
-%patch7 -p1
-%patch8
-%patch9
+%patch -P 0
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5
+%patch -P 6 -p1
+%patch -P 7 -p1
+%patch -P 8
+%patch -P 9
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"

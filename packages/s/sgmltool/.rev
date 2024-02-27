@@ -185,4 +185,12 @@
   * remove long obsolete distro support</comment>
     <requestid>734041</requestid>
   </revision>
+  <revision rev="24" vrev="1078">
+    <srcmd5>4a5c31fd87870b443ce102753c9f5014</srcmd5>
+    <version>1.0.9</version>
+    <time>1709070270</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151601</requestid>
+  </revision>
 </revisionlist>
