@@ -94,9 +94,9 @@ This package provides demo application showing usage of the library.
 
 %prep
 %setup -q
-%patch1
-%patch2
-%patch3 -p1
+%patch -P 1
+%patch -P 2
+%patch -P 3 -p1
 
 %build
 export CC=gcc
