@@ -1,7 +1,7 @@
 #
 # spec file for package docbook_5
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,7 +52,7 @@ BuildRequires:  unzip
 BuildRequires:  xmlstarlet
 Requires:       sgml-skel >= 0.7
 Requires(post): sgml-skel >= 0.7
-Requires(postun):sgml-skel >= 0.7
+Requires(postun): sgml-skel >= 0.7
 BuildArch:      noarch
 
 %description
@@ -87,24 +87,16 @@ The documentation for the DocBook 5.x specification (%{schemaversions})
 %define xml_sysconf_dir        %{_sysconfdir}/xml
 
 %prep
-%setup -q -n %{name} -c -T
+%setup -Tcqn %{name} -a3 -a4 -a500 -a510 -a520
 sed -i 's_@VERSION@_%{realversion}_g' %{SOURCE1}
 # Copy catalog, README, and Makefile
 cp -p %{SOURCE1} %{SOURCE2} %{SOURCE6} .
 
-# Unpack the sources:
-tar -xf %{SOURCE500}
-tar -xf %{SOURCE510}
-unzip %{SOURCE520}
-# Unpack the documentation:
-tar -xf %{SOURCE3}
-tar -xf %{SOURCE4}
-
-chmod -R a+rX,g-w,o-w .
-find . -type f | xargs chmod a-x
+find . -type d -exec chmod a+rx {} +
+find . -type f -exec chmod u+w,a+r {} +
 
 # Patching
-%patch501
+%patch -P 501
 
 %build
 # Nothing to build

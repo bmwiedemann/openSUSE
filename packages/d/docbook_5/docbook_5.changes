@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 26 18:42:00 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Shorten %prep code, utilize everything %setup has to offer.
+- Avoid piping to xargs when that is not necessary.
+
+-------------------------------------------------------------------
+Mon Feb 26 07:50:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Mar  3 06:54:34 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 5.2CR5
 
 Only spec file changes

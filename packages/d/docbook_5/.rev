@@ -309,4 +309,12 @@ See any of the files in the docs/ subdirectory (section on notices and ip toward
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1070731</requestid>
   </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>8c4ce43c4183299f9246570af80ad408</srcmd5>
+    <version>5.2cr5</version>
+    <time>1709070312</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1152026</requestid>
+  </revision>
 </revisionlist>
