@@ -39,7 +39,7 @@ GN is a meta-build system that generates build files for Ninja.
 %prep
 %setup -q
 %if 0%{?suse_version} > 1550
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 
 %build
