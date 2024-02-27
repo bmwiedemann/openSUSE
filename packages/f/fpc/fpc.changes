@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 08:20:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Apr 29 09:29:06 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix build of doc with latest LaTex on Tumbleweed:

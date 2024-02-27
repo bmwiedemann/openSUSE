@@ -157,13 +157,13 @@ documentation or automatical-code generation purposes.
 
 %prep
 %setup -q -n fpcbuild-%{version}
-%patch1 -p0
-%patch4 -p1
+%patch -P 1 -p0
+%patch -P 4 -p1
 %if 0%{?suse_version} > 1500
-%patch5 -p1
+%patch -P 5 -p1
 %endif
-%patch6 -p1
-%patch7 -p0
+%patch -P 6 -p1
+%patch -P 7 -p0
 
 %if %{with bootstrap}
 %if "%{flavor}" == ""
