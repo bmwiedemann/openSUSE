@@ -349,54 +349,54 @@ This package contains patched sources of X.Org Server.
 sh %{SOURCE92} --verify . %{SOURCE91}
 
 %if 0%{?suse_version} < 1315
-%patch1
+%patch -P 1
 %endif
-%patch2 -p1
-%patch3 -p0
-%patch4 -p0
-%patch5 -p1
-%patch6 -p0
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
+%patch -P 2 -p1
+%patch -P 3 -p0
+%patch -P 4 -p0
+%patch -P 5 -p1
+%patch -P 6 -p0
+%patch -P 7 -p1
+%patch -P 8 -p1
+%patch -P 9 -p1
+%patch -P 10 -p1
+%patch -P 11 -p1
+%patch -P 12 -p1
 #
-%patch100 -p1
-#%patch101 -p1
-%patch104 -p1
-%patch117 -p1
-%patch160 -p1
-%patch208 -p1
-%patch209 -p1
+%patch -P 100 -p1
+#%patch -P 101 -p1
+%patch -P 104 -p1
+%patch -P 117 -p1
+%patch -P 160 -p1
+%patch -P 208 -p1
+%patch -P 209 -p1
 ### not applicable anymore
-#%patch210 -p1
-%patch215 -p1
+#%patch -P 210 -p1
+%patch -P 215 -p1
 ### apparently supersed by upstream
 ###  commit 078277e4d92f05a90c4715d61b89b9d9d38d68ea
 ###  Author: Dave Airlie <airlied@redhat.com>
 ###  Date:   Fri Aug 17 09:49:24 2012 +1000
 ###
 ###    xf86: autobind GPUs to the screen
-#%patch1000 -p1
+#%patch -P 1000 -p1
 
 ### disabled for now
-#%patch1162 -p1
+#%patch -P 1162 -p1
 ### disabled for now
-#%patch1211 -p1
+#%patch -P 1211 -p1
 ### patch222 might not be applicable anymore
-#%patch1222 -p1
-%patch1401 -p1
-%patch1503 -p1
-%patch1900 -p1
-%patch1910 -p1
-%patch1920 -p1
-%patch1921 -p1
-%patch1930 -p1
-%patch1960 -p1
+#%patch -P 1222 -p1
+%patch -P 1401 -p1
+%patch -P 1503 -p1
+%patch -P 1900 -p1
+%patch -P 1910 -p1
+%patch -P 1920 -p1
+%patch -P 1921 -p1
+%patch -P 1930 -p1
+%patch -P 1960 -p1
 
-%patch1218176 -p1
+%patch -P 1218176 -p1
 
 %build
 # We have some -z now related errors during X default startup (boo#1197994):

@@ -4070,4 +4070,12 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   * Fixes bsc#1219892.</comment>
     <requestid>1148344</requestid>
   </revision>
+  <revision rev="428" vrev="5">
+    <srcmd5>b9f4c65586c0a7e969aa1d4a430a9812</srcmd5>
+    <version>21.1.11</version>
+    <time>1709070287</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151681</requestid>
+  </revision>
 </revisionlist>

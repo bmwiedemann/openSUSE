@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:16:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Feb 20 20:36:19 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - fix permissions of files in xorg-x11-server-source for tigervnc
