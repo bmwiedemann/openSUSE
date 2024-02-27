@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 29 14:16:08 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- === 7.2.1 rc1
+
+  * feat: allow load of certkey from string [#926]
+  * fix: fix for  Socket#recv returning nil on ruby 3.3.0 [#928]
+
+
+-------------------------------------------------------------------
 Fri Nov  3 07:47:49 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - === 7.2.0
