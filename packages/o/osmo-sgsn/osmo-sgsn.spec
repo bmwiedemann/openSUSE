@@ -73,9 +73,7 @@ The purpose of the Gb proxy is to aggregate the Gb links of multiple
 BSS's and present them in one Gb link to the SGSN.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 echo "%{version}" >.tarball-version
