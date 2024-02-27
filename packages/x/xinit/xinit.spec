@@ -1,7 +1,7 @@
 #
 # spec file for package xinit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,12 +67,12 @@ terminate.
 %if 0%{?UsrEtcMove}
 sed -i 's+%{_sysconfdir}/X11+%{_libexecdir}+' %{PATCH0}
 %endif
-%patch0
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch -P 0
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 ### patch is applied later in %install section
-#%patch5 -p0
+#%patch -P 5 -p0
 # needed for patch0
 autoreconf -fi
 

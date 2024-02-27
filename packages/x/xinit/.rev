@@ -327,4 +327,12 @@
 - refreshed xinit-suse.patch</comment>
     <requestid>1040091</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>062fc02f88c1a722fc40ead1f2c855e4</srcmd5>
+    <version>1.4.2</version>
+    <time>1709070288</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151682</requestid>
+  </revision>
 </revisionlist>
