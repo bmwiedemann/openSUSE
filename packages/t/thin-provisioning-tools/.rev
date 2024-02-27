@@ -295,4 +295,18 @@
   * [cache_check] Fix boundary check on the bitset for cached blocks</comment>
     <requestid>1146425</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>475b3ac4086129897cb444a1cf23109b</srcmd5>
+    <version>1.0.12</version>
+    <time>1709070328</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.12:
+  * [thin_dump] Do not print error messages on BrokenPipe (EPIPE)
+  * Bump version to 1.0.12
+  * [build] Update dependencies
+  * [commands] Fix version string compatibility issue with LVM
+  * [thin_dump] Do not print error messages on BrokenPipe (EPIPE)
+  * [build] Update license to SPDX identifier</comment>
+    <requestid>1151911</requestid>
+  </revision>
 </revisionlist>

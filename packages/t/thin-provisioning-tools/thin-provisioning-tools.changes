@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 26 18:02:16 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.12:
+  * [thin_dump] Do not print error messages on BrokenPipe (EPIPE)
+  * Bump version to 1.0.12
+  * [build] Update dependencies
+  * [commands] Fix version string compatibility issue with LVM
+  * [thin_dump] Do not print error messages on BrokenPipe (EPIPE)
+  * [build] Update license to SPDX identifier
+
+-------------------------------------------------------------------
 Tue Feb 13 13:57:39 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.0.11:
