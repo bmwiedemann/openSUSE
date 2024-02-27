@@ -53,6 +53,8 @@ Patch2:         vlc-lua-5.3.patch
 Patch4:         fix-build-with-fdk-2.0.patch
 # PATCH-FIX-UPSTREAM -- Backport libplacebo v5 compatibility patch to vlc v3
 Patch5:         vlc-libplacebo-5.patch
+# PATCH-FIX-UPSTREAM vlc-taglib-2.0.patch dimstar@opensuse.org -- Fix build against taglib 2.0
+Patch6:         vlc-taglib-2.0.patch
 # PATCH-FEATURE-OPENSUSE vlc-projectM-qt5.patch -- Build against projectM-qt5; openSUSE provides projectM as -qt and -qt5 variant
 Patch100:       vlc-projectM-qt5.patch
 # PATCH-FIX-UPSTREAM -- Use OpenCV C++ API
@@ -395,25 +397,26 @@ OpenCV based video filters and a face detection example.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch4 -p1
+%patch -P 1 -p1
+%patch -P 4 -p1
+%patch -P 6 -p1
 %if 0%{?suse_version} > 1320 && 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
-%patch100 -p1
+%patch -P 100 -p1
 %endif
-%patch103 -p1
+%patch -P 103 -p1
 
 # a52_init() < 0.8.0 doesn't take any arguments
 if pkg-config --max-version 0.8 liba52; then
-%patch0 -p1
+%patch -P 0 -p1
 fi
 
 ### And LUA 5.3.1 has some more API changes
 if pkg-config --atleast-version 5.3.1 lua; then
-%patch2 -p1
+%patch -P 2 -p1
 fi
 
 if pkg-config --atleast-version 5 libplacebo; then
-%patch5 -p1
+%patch -P 5 -p1
 fi
 
 # We do not rely on contrib but make use of system libraries

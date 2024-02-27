@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 27 08:39:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add vlc-taglib-2.0.patch: Fix build against taglib 2.0 (based on
+  upstream commit ec29dfca, d2663d6c, ac59d0ba, c404fdb2).
+
+-------------------------------------------------------------------
+Tue Feb 20 13:26:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Feb  2 09:50:53 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - drop support for libmfx, which is no longer supported upstream
