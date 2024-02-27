@@ -73,9 +73,7 @@ concept of critical points from calculus), which provides the means to
 construct optimized databases for particular applications.
 
 %prep
-%setup -q -n %{lname}-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n %{lname}-%{version}
 
 %build
 %configure --disable-static
