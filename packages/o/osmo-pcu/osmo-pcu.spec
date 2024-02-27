@@ -43,8 +43,7 @@ BuildRequires:  pkgconfig(libosmovty) >= 1.6.0
 Osmocom PCU code (RLC/MAC/PCU) for OpenBTS and OsmoBTS.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 echo "%{version}" >.tarball-version
