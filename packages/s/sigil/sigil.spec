@@ -120,7 +120,7 @@ specification and create a hierarchical Table of Contents.
 
 %prep
 %setup -q -n Sigil-%{version}
-%patch0 -p1
+%patch -P 0 -p1
 cp -v %{SOURCE1} .
 cp -v %{SOURCE2} .
 # rpmlint
