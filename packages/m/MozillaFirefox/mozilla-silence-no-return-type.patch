@@ -1,5 +1,5 @@
 # HG changeset patch
-# Parent  f5fd2bbd77ef4b6554a7180c9c4768e64aca3b2a
+# Parent  d1908d68e16e148fcc012caac881a03417eccc7e
 
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 --- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
@@ -505,13 +505,13 @@ diff --git a/third_party/libwebrtc/api/video/video_frame_buffer.cc b/third_party
 diff --git a/third_party/libwebrtc/api/video_codecs/video_codec.cc b/third_party/libwebrtc/api/video_codecs/video_codec.cc
 --- a/third_party/libwebrtc/api/video_codecs/video_codec.cc
 +++ b/third_party/libwebrtc/api/video_codecs/video_codec.cc
-@@ -113,16 +113,17 @@ const char* CodecTypeToPayloadString(Vid
-     case kVideoCodecH264:
-       return kPayloadNameH264;
+@@ -126,16 +126,17 @@ const char* CodecTypeToPayloadString(Vid
      case kVideoCodecMultiplex:
        return kPayloadNameMultiplex;
      case kVideoCodecGeneric:
        return kPayloadNameGeneric;
+     case kVideoCodecH265:
+       return kPayloadNameH265;
    }
    RTC_CHECK_NOTREACHED();
 +  return "";
@@ -641,12 +641,12 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
 diff --git a/third_party/libwebrtc/call/rtp_payload_params.cc b/third_party/libwebrtc/call/rtp_payload_params.cc
 --- a/third_party/libwebrtc/call/rtp_payload_params.cc
 +++ b/third_party/libwebrtc/call/rtp_payload_params.cc
-@@ -400,17 +400,17 @@ absl::optional<FrameDependencyStructure>
-       }
+@@ -405,17 +405,17 @@ absl::optional<FrameDependencyStructure>
        return structure;
      }
      case VideoCodecType::kVideoCodecAV1:
      case VideoCodecType::kVideoCodecH264:
+     case VideoCodecType::kVideoCodecH265:
      case VideoCodecType::kVideoCodecMultiplex:
        return absl::nullopt;
    }
@@ -920,10 +920,10 @@ diff --git a/third_party/libwebrtc/modules/pacing/bitrate_prober.cc b/third_part
 diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
 --- a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
 +++ b/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
-@@ -33,11 +33,12 @@ std::unique_ptr<VideoRtpDepacketizer> Cr
-       return std::make_unique<VideoRtpDepacketizerVp9>();
-     case kVideoCodecAV1:
-       return std::make_unique<VideoRtpDepacketizerAv1>();
+@@ -36,11 +36,12 @@ std::unique_ptr<VideoRtpDepacketizer> Cr
+     case kVideoCodecH265:
+       // TODO(bugs.webrtc.org/13485): Implement VideoRtpDepacketizerH265.
+       return nullptr;
      case kVideoCodecGeneric:
      case kVideoCodecMultiplex:
        return std::make_unique<VideoRtpDepacketizerGeneric>();
