@@ -1,0 +1,12 @@
+diff -ur a/DMZ-Black/index.theme b/DMZ-Black/index.theme
+--- a/DMZ-Black/index.theme
++++ b/DMZ-Black/index.theme
+@@ -16,7 +16,7 @@
+ Name[et]=DMZ (Must)
+ Name[eu]=DMZ (Beltza)
+ Name[fi]=DMZ (Musta)
+-Name[fr]=DMZ (Noir )
++Name[fr]=DMZ (Noir)
+ Name[ga]=DMZ (Dubh)
+ Name[gl]=DMZ (Negro)
+ Name[gu]=DMZ (કાળો)

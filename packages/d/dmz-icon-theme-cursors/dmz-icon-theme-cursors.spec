@@ -1,7 +1,7 @@
 #
 # spec file for package dmz-icon-theme-cursors
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019-2024 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,16 @@
 
 
 Name:           dmz-icon-theme-cursors
-Version:        11.3.0
+Version:        11.4.0
 Release:        0
 # As documented on http://packages.debian.org/changelogs/pool/main/d/dmz-cursor-theme/dmz-cursor-theme_0.4.3/dmz-cursor-theme.copyright
 Summary:        DMZ Cursor Theme
 License:        CC-BY-SA-3.0
 Group:          System/GUI/GNOME
-Source:         dmz-cursor-theme_0.4.4.tar.gz
+URL:            https://packages.debian.org/sid/gnome/dmz-cursor-theme
+Source0:        http://deb.debian.org/debian/pool/main/d/dmz-cursor-theme/dmz-cursor-theme_0.4.5.1.tar.xz
 Patch0:         fix-for-plasma.patch
+Patch1:         dmz-cursor-themes-name.patch
 Requires:       hicolor-icon-theme
 BuildRequires:  xcursorgen
 Provides:       icon-theme-dmz-cursors = %{version}
@@ -36,8 +38,7 @@ BuildArch:      noarch
 This package contains the DMZ cursor theme for X.
 
 %prep
-%setup -q -n dmz-cursor-theme-0.4.4
-%patch0 -p1
+%autosetup -p1 -n dmz-cursor-theme-0.4.5.1
 
 %build
 for i in Black White; do

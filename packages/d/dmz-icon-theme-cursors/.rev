@@ -96,4 +96,16 @@
     <comment></comment>
     <requestid>743440</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>295a87a7a4c4e48de2b97000642c4cc7</srcmd5>
+    <version>11.4.0</version>
+    <time>1709070231</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+- New upstream release in Debian (0.4.5.1)
+  * Adds dmz-cursor-themes-name.patch
+</comment>
+    <requestid>1150767</requestid>
+  </revision>
 </revisionlist>
