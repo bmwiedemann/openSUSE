@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 13:54:00 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Allow to disable apparmor support (ALP supports only SELinux) 
+
+-------------------------------------------------------------------
 Wed Feb 14 05:54:01 UTC 2024 - danish.prakash@suse.com
 
 - Update to version 4.9.3:

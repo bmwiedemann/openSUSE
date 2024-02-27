@@ -18,6 +18,9 @@
 
 %{!?_user_tmpfilesdir: %global _user_tmpfilesdir %{_datadir}/user-tmpfiles.d}
 %define project        github.com/containers/podman
+
+%bcond_without  apparmor
+
 Name:           podman
 Version:        4.9.3
 Release:        0
@@ -35,7 +38,9 @@ BuildRequires:  glib2-devel-static
 BuildRequires:  glibc-devel-static
 BuildRequires:  go-go-md2man
 BuildRequires:  golang-packaging
+%if %{with apparmor}
 BuildRequires:  libapparmor-devel
+%endif
 BuildRequires:  libassuan-devel
 BuildRequires:  libbtrfs-devel
 BuildRequires:  libcontainers-common
@@ -47,8 +52,10 @@ BuildRequires:  golang(API) >= 1.21
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
+%if %{with apparmor}
 Recommends:     apparmor-abstractions
 Recommends:     apparmor-parser
+%endif
 # requirement for `podman machine`
 Recommends:     gvisor-tap-vsock
 Requires:       catatonit >= 0.1.7
