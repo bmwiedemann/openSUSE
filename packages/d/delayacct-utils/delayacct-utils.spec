@@ -46,8 +46,8 @@ kernel-default is rebuilt in OBS.
 There is no reason to install this package.
 
 %prep
-%setup -q -n %{name}
-%patch0 -p1
+%autosetup -p1 -n %{name}
+
 mkdir -p linux
 %if 0%{?suse_version} <= 1220
 cp %{_prefix}/src/linux/include/linux/taskstats.h linux/taskstats.h

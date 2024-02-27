@@ -184,4 +184,12 @@ not sure if this will work with Factory's rebuild magic (forwarded request 69060
 - spec cleaning (forwarded request 967869 from dirkmueller)</comment>
     <requestid>968238</requestid>
   </revision>
+  <revision rev="27" vrev="32">
+    <srcmd5>4089a88ac95983dda390fa84c0c6572e</srcmd5>
+    <version>MACRO</version>
+    <time>1709070344</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1150634 from dimstar)</comment>
+    <requestid>1150686</requestid>
+  </revision>
 </revisionlist>
