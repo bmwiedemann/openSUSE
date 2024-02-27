@@ -1,7 +1,7 @@
 #
 # spec file for package butane
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021 Neal Gompa.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           butane
-Version:        0.18.0
+Version:        0.20.0
 Release:        0
 Summary:        Tool to generate Ignition configs from Butane Configs
 Group:          System/Management
@@ -26,7 +26,7 @@ License:        Apache-2.0
 URL:            https://github.com/coreos/butane
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
-BuildRequires:  golang(API) >= 1.18
+BuildRequires:  golang(API) >= 1.20
 
 # Upgrade from old fcct/ignition-config-transpiler
 Obsoletes:      ignition-config-transpiler < %{version}-%{release}
@@ -38,14 +38,13 @@ Butane translates human-readable Butane Configs into machine-readable
 Ignition configs for provisioning operating systems that use Ignition.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 go build -mod=vendor -buildmode=pie -ldflags "-X github.com/coreos/butane/internal/version.Raw=%{version}" -a -v -x -o ./butane internal/main.go
 
 %install
-install -d -p %{buildroot}%{_bindir}
-install -p -m 0755 ./butane %{buildroot}%{_bindir}
+install -D -p -m 0755 butane %{buildroot}%{_bindir}/butane
 ln -s butane %{buildroot}%{_bindir}/ignition-config-transpiler
 ln -s butane %{buildroot}%{_bindir}/fcct
 
