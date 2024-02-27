@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:19:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Mon Mar  2 15:02:56 UTC 2015 - sfalken@opensuse.org
 
 - Added Categories and GenericName to .desktop to clear

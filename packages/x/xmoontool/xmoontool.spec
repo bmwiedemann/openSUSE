@@ -45,11 +45,7 @@ last...
 Hint: The option -c makes it also work with color ;-)
 
 %prep
-%setup -q -n xmoontool-22sep94
-%patch0
-%patch1
-%patch2
-%patch3
+%autosetup -p0 -n xmoontool-22sep94
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags} -I%{_prefix}/include" XLIBDIR=%{_libdir}
