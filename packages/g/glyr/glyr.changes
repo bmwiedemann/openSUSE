@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:03:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Apr 30 02:44:25 UTC 2021 - andreas@andreasvoegele.com
 
 - Use %cmake_build and %license macros.
