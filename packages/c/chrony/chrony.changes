@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 26 10:33:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Mon Jan 15 14:12:31 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Update to version 4.5:
+  * Add support for AES-GCM-SIV in GnuTLS
+  * Add support for corrections from PTP transparent clocks
+  * Add support for systemd socket activation
+  * Fix presend in interleaved mode
+  * Fix reloading of modified sources from sourcedir
+
+-------------------------------------------------------------------
 Fri Sep  1 14:05:34 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Use make quickcheck instead of make check to avoid >1h build

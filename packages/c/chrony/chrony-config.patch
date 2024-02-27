@@ -1,14 +1,12 @@
-Index: chrony-4.0/examples/chrony.conf.example3
-===================================================================
---- chrony-4.0.orig/examples/chrony.conf.example3
-+++ chrony-4.0/examples/chrony.conf.example3
+--- examples/chrony.conf.example3.orig
++++ examples/chrony.conf.example3
 @@ -27,12 +27,38 @@
  # you can access at http://support.ntp.org/bin/view/Servers/WebHome or
  # you can use servers from the pool.ntp.org project.
  
--! server foo.example.net iburst
--! server bar.example.net iburst
--! server baz.example.net iburst
+-! server ntp1.example.net iburst
+-! server ntp2.example.net iburst
+-! server ntp3.example.net iburst
 -
  ! pool pool.ntp.org iburst
   

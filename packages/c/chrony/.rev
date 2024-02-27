@@ -430,4 +430,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1115592</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>bd14241091052d17264023dca9e98338</srcmd5>
+    <version>4.5</version>
+    <time>1709070262</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN.
+
+- Update to version 4.5:
+  * Add support for AES-GCM-SIV in GnuTLS
+  * Add support for corrections from PTP transparent clocks
+  * Add support for systemd socket activation
+  * Fix presend in interleaved mode
+  * Fix reloading of modified sources from sourcedir</comment>
+    <requestid>1151495</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package chrony
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@
 %bcond_without testsuite
 
 %define _systemdutildir %(pkg-config --variable systemdutildir systemd)
-%global clknetsim_ver ef2a7a9
+%global clknetsim_ver 5d1dc05
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
@@ -41,7 +41,7 @@
 %define chrony_helper %{_libexecdir}/chrony/helper
 %define chrony_rundir %{_rundir}/%{name}
 Name:           chrony
-Version:        4.4
+Version:        4.5
 Release:        0
 Summary:        System Clock Synchronization Client and Server
 License:        GPL-2.0-only
@@ -136,7 +136,7 @@ Conflicts:      %name-pool
 Requires:       %name = %version
 BuildArch:      noarch
 Supplements:    (chrony and branding-SLE)
-Removepathpostfixes:.suse
+Removepathpostfixes: .suse
 
 %description pool-suse
 This package configures chrony to use the SUSE NTP server pool by
@@ -151,7 +151,7 @@ Conflicts:      %name-pool
 Requires:       %name = %version
 BuildArch:      noarch
 Supplements:    (chrony and branding-openSUSE)
-Removepathpostfixes:.opensuse
+Removepathpostfixes: .opensuse
 
 %description pool-openSUSE
 This package configures chrony to use the openSUSE NTP server pool by
@@ -164,7 +164,7 @@ Provides:       %name-pool = %version
 Conflicts:      %name-pool
 Requires:       %name = %version
 BuildArch:      noarch
-Removepathpostfixes:.empty
+Removepathpostfixes: .empty
 
 %description pool-empty
 This package provides an empty /etc/chrony.d/pool.conf file for
@@ -175,12 +175,12 @@ e.g. because the servers will be set via DHCP.
 
 %prep
 %setup -q -a 10
-%patch0 -p1
-%patch1
-%patch2 -p1
-%patch3
-%patch7
-%patch8
+%patch -P 0
+%patch -P 1
+%patch -P 2 -p1
+%patch -P 3
+%patch -P 7
+%patch -P 8
 
 # Remove pool statements from the default /etc/chrony.conf. They will
 # be provided by branding packages in /etc/chrony.d/pool.conf .
