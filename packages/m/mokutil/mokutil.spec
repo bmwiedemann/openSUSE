@@ -42,7 +42,7 @@ keys (MOK) stored in the database of shim.
 %prep
 %setup -q
 %if 0%{?suse_version} <= 1500
-%patch1 -p1
+%patch -P 1 -p1
 %endif
 
 %build

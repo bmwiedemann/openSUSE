@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 23 09:19:54 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Sep 19 08:10:49 UTC 2023 - Joey Lee <jlee@suse.com>
 
 - Sync change log to prepare for sending mokutil 0.6.0 to SLE15-SP6
