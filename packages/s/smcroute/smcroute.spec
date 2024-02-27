@@ -48,7 +48,7 @@ using different multicast routing tables.
 %prep
 %setup -q
 sed -i 's|@DOCDIR@|%{_docdir}/smcroute/|g' smcroute.service.in
-%patch0 -p1
+%patch -P 0 -p1
 
 # remove file not used by Linux with incompatible Apple license
 rm src/ip_mroute.h
