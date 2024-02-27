@@ -52,8 +52,7 @@ Camlp5 is a preprocessor-pretty-printer of OCaml, parsing a source file and prin
 This package contains the development files.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %ifarch ppc64
