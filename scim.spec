@@ -116,8 +116,8 @@ This package contains SCIM im module for qt4
 %lang_package
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
+
 UTF_8_LOCALES=$(locale -a | grep utf8 | perl -p -e "s/utf8/UTF-8/; s/\n/,/; " | perl -p -e "s/,$//")
 perl -pi -e "s/\/SupportedUnicodeLocales =.*/\/SupportedUnicodeLocales = $UTF_8_LOCALES/"  configs/global
 # hack to fix incompatibility of gtk-query-immodules-2.0 (bnc#845860)
