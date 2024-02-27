@@ -18,7 +18,7 @@
 
 %define project github.com/coredns/coredns
 Name:           coredns
-Version:        1.11.1
+Version:        1.11.2
 Release:        0
 Summary:        DNS server written in Go
 License:        Apache-2.0
@@ -29,7 +29,6 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source10:       Corefile
 Source11:       coredns.service
-Patch0:         fix-CVE-2024-0874.patch
 BuildRequires:  fdupes
 BuildRequires:  golang(API) >= 1.20
 

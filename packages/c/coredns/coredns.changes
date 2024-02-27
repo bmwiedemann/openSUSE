@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb 27 06:52:31 UTC 2024 - andrea.manzini@suse.com
+
+- Update to version 1.11.2:
+  * bump dependencies
+  * rewrite: fix multi request concurrency issue in cname rewrite  (#6407)
+  * plugin/tls: respect the path specified by root plugin (#6138)
+  * plugin/auto: warn when auto is unable to read elements of the directory tree (#6333)
+  * fix: make the codeowners link relative (#6397)
+  * plugin/etcd: the etcd client adds the DialKeepAliveTime parameter (#6351)
+  * plugin/cache: key cache on Checking Disabled (CD) bit (#6354)
+  * Use the correct root domain name in the proxy plugin's TestHealthX tests (#6395)
+  * Add PITS Global Data Recovery Services as an adopter (#6304)
+  * Handle UDP responses that overflow with TC bit with test case (#6277)
+  * plugin/rewrite: add rcode as a rewrite option (#6204)
+
+- Dropped patch fix-CVE-2024-0874.patch as already included in upstream
+
+-------------------------------------------------------------------
 Thu Jan 25 11:05:35 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Added patch fix-CVE-2024-0874.patch to fix CVE-2024-0874: coredns: CD bit response is cached and served later
