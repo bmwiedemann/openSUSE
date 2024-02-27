@@ -48,8 +48,7 @@ been registered with IANA. However, they are widely used and the project's aim i
 to support these important, but unofficial MIME types.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure --disable-static \
