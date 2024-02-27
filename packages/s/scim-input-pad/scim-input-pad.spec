@@ -1,4 +1,4 @@
-#
+#	
 # spec file for package scim-input-pad
 #
 # Copyright (c) 2023 SUSE LLC
@@ -40,11 +40,10 @@ BuildRequires:  gtk3-devel
 An onscreen input pad to easily input symbols
 
 %prep
-%setup -q
-%patch0 -p1
-./bootstrap
+%autosetup -p1
 
 %build
+./bootstrap
 CXXFLAGS="%{optflags}" \
 %configure --with-pic \
 	   --disable-static \
