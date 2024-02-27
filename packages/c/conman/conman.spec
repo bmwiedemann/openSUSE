@@ -97,8 +97,7 @@ Its features include:
   - broadcasting client output to multiple consoles
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
-%patch1 -p1
+%autosetup -p1 -n %{name}-%{name}-%{version}
 
 %build
 ./bootstrap
