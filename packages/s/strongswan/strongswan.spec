@@ -218,12 +218,12 @@ and the load testing plugin for IKEv2 daemon.
 
 %prep
 %setup -q -n %{name}-%{upstream_version}
-%patch2 -p1
-%patch5 -p1
+%patch -P 2 -p1
+%patch -P 5 -p1
 sed -e 's|@libexecdir@|%_libexecdir|g'    \
      < %{_sourcedir}/strongswan.init.in \
      > strongswan.init
-%patch6 -p1
+%patch -P 6 -p1
 
 %build
 CFLAGS="%{optflags} -W -Wall -Wno-pointer-sign -Wno-strict-aliasing -Wno-unused-parameter"
