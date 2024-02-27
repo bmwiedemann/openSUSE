@@ -403,4 +403,22 @@
   * fix(deps): update module github.com/couchbase/gocb/v2 to v2.7.2 (#2493) (forwarded request 1150085 from ph03nix)</comment>
     <requestid>1150161</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>fa06ab825a539771f9bb53c967fa6066</srcmd5>
+    <version>3.68.2</version>
+    <time>1709070576</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.68.2:
+  * fix(deps): update module google.golang.org/api to v0.167.0 (#2512)
+  * fix(deps): update module github.com/xanzy/go-gitlab to v0.98.0 (#2511)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.50.25 (#2509)
+  * fix(deps): update golang.org/x/exp digest to 814bf88 (#2508)
+  * fix(deps): update module github.com/golang-jwt/jwt/v4 to v5 (#2455)
+  * fix(deps): update module github.com/google/go-github/v57 to v59 (#2464)
+  * fix prefix check when returning early (#2503)
+  * Clean up some detectors (#2501)
+  * Gitlab scan targets (#2470)
+  * Tell git to ignore directory ownership (fixes #2495) (#2496) (forwarded request 1152031 from ph03nix)</comment>
+    <requestid>1152301</requestid>
+  </revision>
 </revisionlist>
