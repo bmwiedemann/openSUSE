@@ -35,8 +35,7 @@ A console based wireshark like protocol analyzer.
 It is using libwireshark for the protocol dissection.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 make %{?_smp_mflags}
