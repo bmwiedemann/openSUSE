@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:37:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Fri Aug 13 15:13:00 UTC 2021 - Sébastien Poher <sogal@opensuse.org>
 
 - Make surfraw independent from htdig (remove woffle subpackage)

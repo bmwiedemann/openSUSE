@@ -67,9 +67,8 @@ Surfraw OpenSearch provides opensearch support.
 %endif
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
+
 chmod a+x elvi/phpdoc
 
 %build
