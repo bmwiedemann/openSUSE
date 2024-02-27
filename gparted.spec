@@ -1,7 +1,7 @@
 #
 # spec file for package gparted
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           gparted
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Gnome Partition Editor
 License:        GPL-2.0-only
 Group:          System/Filesystems
-URL:            http://gparted.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/project/gparted/gparted/gparted-%{version}/%{name}-%{version}.tar.gz
-Source1:        http://downloads.sourceforge.net/project/gparted/gparted/gparted-%{version}/%{name}-%{version}.tar.gz.sig
+URL:            https://gparted.sourceforge.net/
+Source0:        https://downloads.sourceforge.net/project/gparted/gparted/gparted-%{version}/%{name}-%{version}.tar.gz
+Source1:        https://downloads.sourceforge.net/project/gparted/gparted/gparted-%{version}/%{name}-%{version}.tar.gz.sig
 Source98:       %{name}.policy
 Source99:       %{name}.keyring
 BuildRequires:  polkit-devel
@@ -105,8 +105,8 @@ rm %{buildroot}%{_datadir}/polkit-1/actions/org.gnome.%{name}.policy
 %{_bindir}/%{name}
 %{_libexecdir}/%{name}bin
 %{_mandir}/man8/%{name}.8%{?ext_man}
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/%{name}.appdata.xml
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*x*/apps/%{name}.png
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
