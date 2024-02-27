@@ -1473,4 +1473,12 @@
   * MINOR: h3: check connection error during sending</comment>
     <requestid>1141253</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>b9a0512bd190ce49bf13b3a5086c8371</srcmd5>
+    <version>2.9.6+git0.9eafce5dc</version>
+    <time>1709070467</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.9.6+git0.9eafce5dc:</comment>
+    <requestid>1151945</requestid>
+  </revision>
 </revisionlist>

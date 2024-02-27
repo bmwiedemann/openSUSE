@@ -1,7 +1,7 @@
 #
 # spec file for package haproxy
 #
-# Copyright (c) 2019 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 
 %bcond_with quic
 %if 0%{?suse_version} >= 1230
@@ -46,12 +46,14 @@
 
 %if 0%{?suse_version} >= 1500
 %bcond_without sysusers
+%bcond_without tmpfiles
 %else
 %bcond_with sysusers
+%bcond_with tmpfiles
 %endif
 
 Name:           haproxy
-Version:        2.9.3+git0.de3ab549a
+Version:        2.9.6+git0.9eafce5dc
 Release:        0
 #
 #
@@ -96,9 +98,11 @@ Source2:        usr.sbin.haproxy.apparmor
 Source3:        local.usr.sbin.haproxy.apparmor
 Source4:        haproxy.cfg
 Source5:        haproxy-user.conf
+Source6:        haproxy-tmpfiles.conf
 Patch1:         haproxy-1.6.0_config_haproxy_user.patch
 Patch2:         haproxy-1.6.0-makefile_lib.patch
 Patch3:         haproxy-1.6.0-sec-options.patch
+Patch4:         haproxy-service.patch
 #
 Source98:       series
 Source99:       haproxy-rpmlintrc
@@ -195,6 +199,9 @@ ln -sf /sbin/service   %{buildroot}%{_sbindir}/rc%{pkg_name}
 %if %{with sysusers}
 install -D -m 644 %{SOURCE5} %{buildroot}%{_sysusersdir}/haproxy-user.conf
 %endif
+%if %{with tmpfiles}
+install -D -m 644 %{SOURCE6} %{buildroot}%{_tmpfilesdir}/%{name}.conf
+%endif
 %else
 install -D -m 0755 %{S:1}                      %{buildroot}%{_sysconfdir}/init.d/%{pkg_name}
 ln -fs %{_sysconfdir}/init.d/%{pkg_name} %{buildroot}%{_sbindir}/rc%{pkg_name}
@@ -223,6 +230,11 @@ rm examples/*init*
 %post
 %if %{with apparmor} && %{with apparmor_reload}
 %apparmor_reload /etc/apparmor.d/usr.sbin.haproxy
+%endif
+%if %{with systemd}
+%if %{with tmpfiles}
+%tmpfiles_create %{_tmpfilesdir}/%{name}.conf
+%endif
 %endif
 %service_add_post %{pkg_name}.service
 
@@ -267,6 +279,10 @@ getent passwd %{pkg_name} >/dev/null || \
 %{_unitdir}/%{pkg_name}.service
 %if %{with sysusers}
 %{_sysusersdir}/haproxy-user.conf
+%endif
+%if %{with tmpfiles}
+%{_tmpfilesdir}/%{name}.conf
+%dir %ghost %{_rundir}/%{name}
 %endif
 %else
 %config(noreplace) %{_sysconfdir}/init.d/%{pkg_name}

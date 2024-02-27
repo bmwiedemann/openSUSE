@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Mon Feb 26 19:55:05 UTC 2024 - mrueckert@suse.de
+
+- Update to version 2.9.6+git0.9eafce5dc:
+  * [RELEASE] Released version 2.9.6
+  * BUG/MAJOR: ssl/ocsp: crash with ocsp when old process exit or using ocsp CLI
+  * BUG/MAJOR: promex: fix crash on deleted server
+
+-------------------------------------------------------------------
+Mon Feb 26 19:54:49 UTC 2024 - mrueckert@suse.de
+
+- Update to version 2.9.5+git0.260dbb8a6:
+  * [RELEASE] Released version 2.9.5
+  * BUG/MEDIUM: mux-h2: Don't report error on SE for closed H2 streams
+  * BUG/MEDIUM: mux-h2: Don't report error on SE if error is only pending on H2C
+  * BUG/MEDIUM: mux-h2: Only Report H2C error on read error if demux buffer is empty
+  * BUG/MEDIUM: mux-h2: Switch pending error to error if demux buffer is empty
+  * MINOR: muxes/applet: Simplify checks on options to disable zero-copy forwarding
+  * BUG/MAJOR: stconn: Check support for zero-copy forwarding on both sides
+  * MINOR: muxes: Announce support for zero-copy forwarding on consumer side
+  * MINOR: stconn: Add SE flag to announce zero-copy forwarding on consumer side
+  * MINOR: stconn: Rename SE_FL_MAY_FASTFWD and reorder bitfield
+  * CLEANUP: stconn: Move SE flags set by app layer at the end of the bitfield
+  * BUG/MEDIUM: stconn: Don't check pending shutdown to wake an applet up
+  * BUG/MEDIUM: stconn: Allow expiration update when READ/WRITE event is pending
+  * MINOR: quic: Add a counter for reordered packets
+  * MINOR: quic: Dynamic packet reordering threshold
+  * MINOR: quic: Update K CUBIC calculation (RFC 9438)
+  * BUG/MEDIUM: quic: Wrong K CUBIC calculation.
+  * BUG/MEDIUM: ssl: Fix crash when calling "update ssl ocsp-response" when an update is ongoing
+  * BUG/MEDIUM: pool: fix rare risk of deadlock in pool_flush()
+  * BUILD: address a few remaining calloc(size, n) cases
+  * CI: Update to actions/cache@v4
+  * BUG/MEDIUM: cli: fix once for all the problem of missing trailing LFs
+  * BUG/MINOR: vars/cli: fix missing LF after "get var" output
+  * DOC: internal: update missing data types in peers-v2.0.txt
+  * DOC: config: fix misplaced "bytes_{in,out}"
+  * DOC: config: fix typos for "bytes_{in,out}"
+  * DOC: config: fix misplaced "txn.conn_retries"
+  * DOC: install: recommend pcre2
+  * REGTESTS: ssl: Add OCSP related tests
+  * REGTESTS: ssl: Fix empty line in cli command input
+  * BUG/MINOR: ssl: Reenable ocsp auto-update after an "add ssl crt-list"
+  * BUG/MINOR: ssl: Destroy ckch instances before the store during deinit
+  * BUG/MEDIUM: ocsp: Separate refcount per instance and per store
+  * MINOR: ssl: Use OCSP_CERTID instead of ckch_store in ckch_store_build_certid
+  * BUG/MINOR: ssl: Clear the ckch instance when deleting a crt-list line
+  * BUG/MINOR: ssl: Duplicate ocsp update mode when dup'ing ckch
+  * MINOR: debug: make BUG_ON() catch build errors even without DEBUG_STRICT
+  * BUILD: debug: remove leftover parentheses in ABORT_NOW()
+  * MINOR: debug: make ABORT_NOW() store the caller's line number when using abort
+  * MINOR: debug: make sure calls to ha_crash_now() are never merged
+  * MINOR: compiler: add a new DO_NOT_FOLD() macro to prevent code folding
+  * MINOR: quic: Stop using 1024th of a second.
+  * BUG/MINOR: quic: fix possible integer wrap around in cubic window calculation
+  * CLEANUP: quic: Code clarifications for QUIC CUBIC (RFC 9438)
+  * BUG/MINOR: ssl: Fix error message after ssl_sock_load_ocsp call
+  * BUILD: quic: Variable name typo inside a BUG_ON().
+  * BUG/MINOR: quic: Wrong ack ranges handling when reaching the limit.
+  * BUG/MINOR: diag: run the final diags before quitting when using -c
+  * BUG/MINOR: diag: always show the version before dumping a diag warning
+
+-------------------------------------------------------------------
+Mon Feb 26 19:54:25 UTC 2024 - mrueckert@suse.de
+
+- Update to version 2.9.4+git0.4e071ad92:
+  * [RELEASE] Released version 2.9.4
+  * BUG/MEDIUM: h1: always reject the NUL character in header values
+  * BUG/MINOR: h1-htx: properly initialize the err_pos field
+  * DOC: httpclient: add dedicated httpclient section
+  * BUG/MEDIUM: h1: Don't support LF only to mark the end of a chunk size
+  * BUG/MINOR: h1: Don't support LF only at the end of chunks
+  * BUG/MEDIUM: quic: fix crash on invalid qc_stream_buf_free() BUG_ON
+  * BUG/MEDIUM: qpack: allow 6xx..9xx status codes
+  * BUG/MEDIUM: h3: do not crash on invalid response status code
+  * MINOR: h3: add traces for stream sending function
+  * BUG/MAJOR: ssl_sock: Always clear retry flags in read/write functions
+  * DOC: configuration: clarify http-request wait-for-body
+  * BUG/MEDIUM: quic: remove unsent data from qc_stream_desc buf
+  * MINOR: quic: extract qc_stream_buf free in a dedicated function
+  * MINOR: quic: Stop hardcoding a scale shifting value (CUBIC_BETA_SCALE_FACTOR_SHIFT)
+  * CLEANUP: quic: Remove unused CUBIC_BETA_SCALE_FACTOR_SHIFT macro.
+  * BUG/MINOR: quic: newreno QUIC congestion control algorithm no more available
+  * BUG/MEDIUM: cache: Fix crash when deleting secondary entry
+  * BUG/MINOR: hlua: fix uninitialized var in hlua_core_get_var()
+  * BUG/MINOR: jwt: fix jwt_verify crash on 32-bit archs
+  * BUG/MEDIUM: cli: some err/warn msg dumps add LR into CSV output on stat's CLI
+  * MINOR: mux-h2/traces: add a missing trace on connection WU with negative inc
+  * BUG/MEDIUM: mux-h2: refine connection vs stream error on headers
+  * DOC: configuration: fix set-dst in actions keywords matrix
+  * BUG/MINOR: h3: fix checking on NULL Tx buffer
+
+-------------------------------------------------------------------
+Sun Feb  4 22:52:43 UTC 2024 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Set /run/haproxy as the default PID file and socket location
+  Adds haproxy-service.patch
+- Allow custom stats socket names
+
+-------------------------------------------------------------------
 Wed Jan 24 13:40:54 UTC 2024 - varkoly@suse.com
 
 - Update to version 2.9.3+git0.de3ab549a:
