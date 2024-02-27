@@ -1,7 +1,7 @@
 #
 # spec file for package jameica
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,10 +27,13 @@ License:        Apache-2.0 AND GPL-2.0-only AND LGPL-2.0-only AND CPL-1.0 AND Zl
 Group:          Productivity/Office/Finance
 URL:            http://www.willuhn.de/products/jameica/
 Source:         https://github.com/willuhn/jameica/archive/%{_tag}.tar.gz
-BuildArch:      noarch
+Patch0:         jameica-port-to-commons-lang3.patch
 BuildRequires:  ant
+BuildRequires:  apache-commons-cli
+BuildRequires:  apache-commons-collections
+BuildRequires:  apache-commons-lang3
+BuildRequires:  apache-commons-logging
 BuildRequires:  dos2unix
-#BuildRequires:  eclipse-swt
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 11
 BuildRequires:  jpackage-utils
@@ -39,7 +42,10 @@ BuildRequires:  paperclips = 1.0.4
 BuildRequires:  swtcalendar
 BuildRequires:  velocity = 1.7
 BuildRequires:  xml-apis
-#Requires:       eclipse-swt
+Requires:       apache-commons-cli
+Requires:       apache-commons-collections
+Requires:       apache-commons-lang3
+Requires:       apache-commons-logging
 Requires:       java >= 11
 Requires:       nanoxml = 2.2.3
 Requires:       paperclips = 1.0.4
@@ -68,6 +74,7 @@ mode (no GUI for servers) and logging.
 Summary:        SDK for the Jameica framework
 Group:          Development/Languages/Java
 Requires:       jameica
+BuildArch:      noarch
 
 %description devel
 Source code required to build and develop Jameica plugins.
@@ -75,12 +82,14 @@ Source code required to build and develop Jameica plugins.
 %package javadoc
 Summary:        Javadoc for %{name}
 Group:          Documentation/HTML
+BuildArch:      noarch
 
 %description javadoc
 Developer documentation for Jameica.
 
 %prep
 %setup -q -n %{name}-%{_tag}
+%patch -P 0 -p1
 # rpmlint
 find . -type f -name '*.txt' -exec chmod -x {} \;
 find . -type f -name '*.html' -exec chmod -x {} \;
@@ -111,9 +120,14 @@ ln -sf %{_javadir}/net.sf.paperclips_1.0.4.jar lib/paperclips/net.sf.paperclips_
 rm -rf lib/swtcalendar/*
 ln -sf %{_javadir}/swtcalendar.jar lib/swtcalendar/swtcalendar.jar
 
-# unbundle Velocity
+# unbundle Velocity and apache/jakarta commons
 rm -rf lib/velocity/*
 ln -sf %{_javadir}/velocity.jar lib/velocity/velocity-1.7.jar
+rm lib/jakarta_commons/*
+ln -sf %{_javadir}/commons-cli.jar lib/jakarta_commons/commons-cli-1.3.1.jar
+ln -sf %{_javadir}/commons-collections.jar lib/jakarta_commons/commons-collections-3.2.2.jar
+ln -sf %{_javadir}/commons-lang3.jar lib/jakarta_commons/commons-lang3-3.9.jar
+ln -sf %{_javadir}/commons-logging.jar lib/jakarta_commons/commons-logging-1.2.jar
 
 # unbundle eclipse-swt
 ##rm -fr lib/swt/linux*/swt.jar
