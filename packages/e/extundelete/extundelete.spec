@@ -41,8 +41,7 @@ try to have a good backup system in place, or at least put one in place after
 recovering your files!
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 # Be verbose
