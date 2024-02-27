@@ -40,8 +40,7 @@ shows things like the largest files, the newest files, and core files.
 It can be run from cron or as a daemon.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 %configure
