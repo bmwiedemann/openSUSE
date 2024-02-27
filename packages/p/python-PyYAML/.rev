@@ -288,4 +288,13 @@
 - increase file-descriptor-count for ppc to make tests happy</comment>
     <requestid>1112345</requestid>
   </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>1172e6c1b273ec78b98d51b58ae93db3</srcmd5>
+    <version>6.0.1</version>
+    <time>1709070209</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject and autosetup macros.
+- Drop patch setuptools.patch, we can now cope.</comment>
+    <requestid>1150539</requestid>
+  </revision>
 </revisionlist>

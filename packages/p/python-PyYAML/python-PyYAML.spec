@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyYAML
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,10 @@ Summary:        YAML parser and emitter for Python
 License:        MIT
 URL:            https://github.com/yaml/pyyaml
 Source:         https://files.pythonhosted.org/packages/source/P/PyYAML/PyYAML-%{version}.tar.gz
-Patch0:         setuptools.patch
 BuildRequires:  %{python_module Cython with %python-Cython < 3}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  libyaml-devel
 BuildRequires:  python-rpm-macros
@@ -46,17 +47,16 @@ PyYAML is applicable for a broad range of tasks from complex
 configuration files to object serialization and persistance.
 
 %prep
-%setup -q -n PyYAML-%{version}
-%patch0 -p1
+%autosetup -p1 -n PyYAML-%{version}
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 # Fix example permissions.
 find examples/ -type f | xargs chmod a-x
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -71,6 +71,6 @@ ulimit -Sn 2048
 %doc CHANGES README.md examples/
 %{python_sitearch}/yaml
 %{python_sitearch}/_yaml
-%{python_sitearch}/PyYAML-%{version}*-info
+%{python_sitearch}/PyYAML-%{version}.dist-info
 
 %changelog

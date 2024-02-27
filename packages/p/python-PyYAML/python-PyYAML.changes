@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 03:18:33 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject and autosetup macros.
+- Drop patch setuptools.patch, we can now cope.
+
+-------------------------------------------------------------------
 Tue Sep 19 16:25:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - cleanup
