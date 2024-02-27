@@ -34,8 +34,7 @@ Statserial displays a table of the signals on a standard 9-pin or
 It can be useful for debugging problems with serial ports or modems.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 cc %{optflags} -o statserial statserial.c -lncurses -ltinfo
