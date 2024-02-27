@@ -93,7 +93,7 @@ Firmware required to run the %{platform}
 %prep
 %setup -q -n edk2-edk2-stable%{archive_version} -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7
 pushd edk2-platforms-%{edk2_platforms_version}
-%patch999 -p1
+%patch -P 999 -p1
 popd
 
 # Fix path of the brotli submodules

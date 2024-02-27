@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 11:35:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Feb 20 16:27:06 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Add SG2042 platform
