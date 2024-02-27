@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 26 15:46:09 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.21.1:
+  * v6.21.1
+  * Update CHANGELOG.md.
+  * Fix segfault in HTTP API rebind
+  * Cleanup.
+  * Fixed Zephyr mining (OpenCL)
+  * Code style cleanup.
+  * add support for townforge (monero fork using randomx)
+  * v6.21.1-dev
+
+-------------------------------------------------------------------
 Mon Dec 18 13:42:32 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.21.0:

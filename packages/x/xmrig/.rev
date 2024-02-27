@@ -630,4 +630,20 @@
   * v6.20.1-dev</comment>
     <requestid>1133864</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>9c5afc1655f7e910b1b2ffc3d3774040</srcmd5>
+    <version>6.21.1</version>
+    <time>1709070439</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 6.21.1:
+  * v6.21.1
+  * Update CHANGELOG.md.
+  * Fix segfault in HTTP API rebind
+  * Cleanup.
+  * Fixed Zephyr mining (OpenCL)
+  * Code style cleanup.
+  * add support for townforge (monero fork using randomx)
+  * v6.21.1-dev</comment>
+    <requestid>1151815</requestid>
+  </revision>
 </revisionlist>
