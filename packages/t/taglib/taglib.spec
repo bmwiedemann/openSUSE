@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %bcond_with tests
 %endif
 Name:           taglib%{psuffix}
-Version:        1.13.1
+Version:        2.0
 Release:        0
 Summary:        Audio Meta-Data Library
 License:        LGPL-2.1-or-later AND MPL-1.1
@@ -36,15 +36,17 @@ URL:            https://taglib.github.io/
 Source0:        https://taglib.github.io/releases/taglib-%{version}.tar.gz
 Source1:        %{sname}.desktop
 Source100:      baselibs.conf
+Patch1:         taglib-utf8cpp-include.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+BuildRequires:  cmake(utf8cpp)
 BuildRequires:  pkgconfig(zlib)
 # NOTE: The tagreader and writer executables give different results when built with
 # an earlier taglib-1.8-ds-rusxmms patch. See bnc#814814
-Requires:       libtag1 >= %{version}-%{release}
-Requires:       libtag_c0 >= %{version}-%{release}
+Requires:       libtag2 >= %{version}-%{release}
+Requires:       libtag_c2 >= %{version}-%{release}
 %if %{with tests}
 BuildRequires:  doxygen
 BuildRequires:  ghostscript-fonts-std
@@ -62,25 +64,25 @@ TrueAudio, WAV, AIFF, MP4 and ASF files.
 This package contains built examples which manipulate tags from the
 command line.
 
-%package -n libtag1
+%package -n libtag2
 Summary:        Audio Meta-Data Library
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 Conflicts:      taglib <= 1.6.3
 
-%description -n libtag1
+%description -n libtag2
 TagLib is a library for reading and editing the meta-data of several popular
 audio formats. Currently it supports both ID3v1 and ID3v2 for MP3 files, Ogg
 Vorbis comments and ID3 tags and Vorbis comments in FLAC, MPC, Speex, WavPack
 TrueAudio, WAV, AIFF, MP4 and ASF files.
 
-%package -n libtag_c0
+%package -n libtag_c2
 Summary:        Audio Meta-Data Library
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 Conflicts:      taglib <= 1.6.3
 
-%description -n libtag_c0
+%description -n libtag_c2
 TagLib is a library for reading and editing the meta-data of several popular
 audio formats. Currently it supports both ID3v1 and ID3v2 for MP3 files, Ogg
 Vorbis comments and ID3 tags and Vorbis comments in FLAC, MPC, Speex, WavPack
@@ -91,8 +93,8 @@ Summary:        Development files for taglib
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Requires:       libstdc++-devel
-Requires:       libtag1 >= %{version}-%{release}
-Requires:       libtag_c0 >= %{version}-%{release}
+Requires:       libtag2 >= %{version}-%{release}
+Requires:       libtag_c2 >= %{version}-%{release}
 Requires:       zlib-devel
 # taglib-devel was last used in openSUSE 11.4 (taglib-devel-1.6.2)
 # The last taglib-devel used was version 1.6.3 from multimedia:libs.
@@ -113,12 +115,11 @@ This package contains the taglib API Documentation in HTML format.
 
 %prep
 %setup -q -n %{sname}-%{version}
+%patch1 -p1
 
 %build
 # The testing needs static libs too
 %cmake \
-  -DWITH_ASF:BOOL=ON \
-  -DWITH_MP4:BOOL=ON \
   -DCMAKE_SKIP_BUILD_RPATH=ON \
 %if %{with tests}
   -DBUILD_TESTS:BOOL=ON \
@@ -161,35 +162,37 @@ install -m755 build/examples/{framelist,strip-id3v1,tagreader,tagreader_c,tagwri
 %endif
 
 %if !%{with tests}
-%post -n libtag1 -p /sbin/ldconfig
-%postun -n libtag1 -p /sbin/ldconfig
-%post -n libtag_c0 -p /sbin/ldconfig
-%postun -n libtag_c0 -p /sbin/ldconfig
+%post -n libtag2 -p /sbin/ldconfig
+%postun -n libtag2 -p /sbin/ldconfig
+%post -n libtag_c2 -p /sbin/ldconfig
+%postun -n libtag_c2 -p /sbin/ldconfig
 
 %files
 %license COPYING.LGPL COPYING.MPL
 %{_bindir}/*
 %exclude %{_bindir}/taglib-config
 
-%files -n libtag1
+%files -n libtag2
 %license COPYING.LGPL COPYING.MPL
-%{_libdir}/libtag.so.1
-%{_libdir}/libtag.so.1.*
+%{_libdir}/libtag.so.2
+%{_libdir}/libtag.so.2.*
 
-%files -n libtag_c0
+%files -n libtag_c2
 %license COPYING.LGPL COPYING.MPL
-%{_libdir}/libtag_c.so.0
-%{_libdir}/libtag_c.so.0.*
+%{_libdir}/libtag_c.so.2
+%{_libdir}/libtag_c.so.2.*
 
 %files -n libtag-devel
 %{_bindir}/taglib-config
 %{_includedir}/taglib/
 %{_libdir}/libtag*.so
 %{_libdir}/pkgconfig/*.pc
+%dir %{_libdir}/cmake/taglib
+%{_libdir}/cmake/taglib/*.cmake
 %else
 
 %files -n libtag-doc
-%doc AUTHORS NEWS examples
+%doc AUTHORS CHANGELOG.md examples
 %{_docdir}/libtag-doc/html
 %{_datadir}/susehelp/
 %endif

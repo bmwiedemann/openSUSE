@@ -1,0 +1,13 @@
+diff --git a/taglib/toolkit/tstring.cpp b/taglib/toolkit/tstring.cpp
+index f19a675..04181e5 100644
+--- a/taglib/toolkit/tstring.cpp
++++ b/taglib/toolkit/tstring.cpp
+@@ -28,7 +28,7 @@
+ #include <cerrno>
+ #include <climits>
+ #include <iostream>
+-#include <utf8.h>
++#include <utf8cpp/utf8.h>
+ 
+ #include "tdebug.h"
+ #include "tstringlist.h"
