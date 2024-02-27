@@ -132,7 +132,6 @@ The GnuTLS library provides a secure layer over a reliable transport
 layer. Currently the GnuTLS library implements the proposed standards
 of the IETF's TLS working group.
 
-%if %{with dane}
 %package -n libgnutls-dane%{gnutls_dane_sover}
 Summary:        DANE support for the GNU Transport Layer Security Library
 License:        LGPL-2.1-or-later
@@ -142,7 +141,6 @@ Group:          System/Libraries
 The GnuTLS project aims to develop a library that provides a secure
 layer over a reliable transport layer.
 This package contains the "DANE" part of gnutls.
-%endif
 
 %package -n libgnutlsxx%{gnutlsxx_sover}
 Summary:        C++ API for the GNU Transport Layer Security Library
@@ -172,7 +170,6 @@ Requires:       crypto-policies
 %description -n libgnutls-devel
 Files needed for software development using gnutls.
 
-%if %{with dane}
 %package -n libgnutls-dane-devel
 Summary:        Development package for GnuTLS DANE component
 License:        LGPL-2.1-or-later
@@ -181,7 +178,14 @@ Requires:       libgnutls-dane%{gnutls_dane_sover} = %{version}
 
 %description -n libgnutls-dane-devel
 Files needed for software development using gnutls.
-%endif
+
+%package -n libgnutls-devel-doc
+Summary:        Manual and Info pages for libgnutls
+License:        LGPL-2.1-or-later
+BuildArch:      noarch
+
+%description -n libgnutls-devel-doc
+Manpages (troff) and GNU Info pages for libgnutls.
 
 %package -n libgnutlsxx-devel
 Summary:        Development package for the GnuTLS C++ API
@@ -298,12 +302,8 @@ GNUTLS_FORCE_FIPS_MODE=1 make check %{?_smp_mflags} GNUTLS_SYSTEM_PRIORITY_FILE=
 
 %post -n libgnutls%{gnutls_sover} -p /sbin/ldconfig
 %postun -n libgnutls%{gnutls_sover} -p /sbin/ldconfig
-
-%if %{with dane}
 %post -n libgnutls-dane%{gnutls_dane_sover} -p /sbin/ldconfig
 %postun -n libgnutls-dane%{gnutls_dane_sover} -p /sbin/ldconfig
-%endif
-
 %post -n libgnutlsxx%{gnutlsxx_sover} -p /sbin/ldconfig
 %postun -n libgnutlsxx%{gnutlsxx_sover} -p /sbin/ldconfig
 
@@ -365,9 +365,11 @@ GNUTLS_FORCE_FIPS_MODE=1 make check %{?_smp_mflags} GNUTLS_SYSTEM_PRIORITY_FILE=
 %{_includedir}/%{name}/urls.h
 %{_libdir}/libgnutls.so
 %{_libdir}/pkgconfig/gnutls.pc
+
+%files -n libgnutls-devel-doc
 %{_mandir}/man3/*
 %{_infodir}/*%{ext_info}
-%doc %{_docdir}/libgnutls-devel
+%{_docdir}/libgnutls-devel
 
 %if %{with dane}
 %files -n libgnutls-dane-devel

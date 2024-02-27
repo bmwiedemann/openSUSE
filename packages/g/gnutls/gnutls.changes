@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 21 18:04:48 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove some if..endif that do not affect any result
+- Split documentation (some 1100 files) to separate subpackage
+
+-------------------------------------------------------------------
 Wed Jan 17 08:41:07 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 3.8.3:
