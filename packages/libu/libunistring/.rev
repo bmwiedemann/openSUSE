@@ -265,4 +265,12 @@ other affected packages to make sure the copies are refreshed.
     <comment>- Run testsuite also under qemu emulation (forwarded request 1107882 from Andreas_Schwab)</comment>
     <requestid>1107905</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>03267989d36899b960a74a8bf2c31499</srcmd5>
+    <version>1.2</version>
+    <time>1709070222</time>
+    <user>anag+factory</user>
+    <comment>libunistring 1.2 (forwarded request 1150171 from AndreasStieger)</comment>
+    <requestid>1150732</requestid>
+  </revision>
 </revisionlist>

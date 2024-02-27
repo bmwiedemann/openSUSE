@@ -2,6 +2,7 @@
 # spec file for package libunistring
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 %define sover	5
 Name:           libunistring
-Version:        1.1
+Version:        1.2
 Release:        0
 Summary:        GNU Unicode string library
 License:        GPL-3.0-or-later OR LGPL-3.0-or-later
@@ -78,6 +79,8 @@ sed -i 's:50000:50:g' tests/test-malloca.c
 # do not run tests in parallel, it stucks randomly
 %make_build check #
 
+%ldconfig_scriptlets -n %{name}%{sover}
+
 %files -n %{name}%{sover}
 %license COPYING*
 %{_libdir}/libunistring.so.%{sover}{,.*}
@@ -89,8 +92,5 @@ sed -i 's:50000:50:g' tests/test-malloca.c
 %{_libdir}/libunistring.so
 %{_includedir}/unistring
 %{_includedir}/*.h
-
-%post -n %{name}%{sover} -p /sbin/ldconfig
-%postun -n %{name}%{sover} -p /sbin/ldconfig
 
 %changelog

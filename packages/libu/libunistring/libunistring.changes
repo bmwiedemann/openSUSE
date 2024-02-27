@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb 24 18:03:12 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.2:
+  * Support Unicode 15.1.0
+  * Improve UTF-8 decoder Unicode Standard compliance
+  * The *printf functions no longer support the %n directive, for
+    security reasons. 
+  * Fixed a bug in the *printf functions: In the %U, %lU, %llU
+    directives, a negative width given as an argument did not
+    trigger left-justification.
+  * The functions u16_strstr and u32_strstr now operate in worst-case linear time.
+  * Useful API function extensions
+
+-------------------------------------------------------------------
 Mon Aug 28 10:48:12 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Run testsuite also under qemu emulation
