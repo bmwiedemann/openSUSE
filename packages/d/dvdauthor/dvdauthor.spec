@@ -57,9 +57,7 @@ the necessary DVD-Video VOB packets. These can be generated with
 FFmpeg, or by by passing `-f 8` to `mplex`.
 
 %prep
-%setup -q
-%patch0
-%patch1 -p1
+%autosetup -p1
 
 %build
 %if 1 == 0

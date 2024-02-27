@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 07:53:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Sun Apr 19 21:09:27 CEST 2020 - tiwai@suse.de
 
 - Revert to ImageMagick from GraphicsMagick due to the spumux error

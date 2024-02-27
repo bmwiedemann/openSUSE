@@ -1,7 +1,7 @@
 Index: src/compat.h
 ===================================================================
---- src/compat.h.orig
-+++ src/compat.h
+--- a/src/compat.h.orig
++++ b/src/compat.h
 @@ -146,12 +146,14 @@ int strtosigned
      program on error. */
  
