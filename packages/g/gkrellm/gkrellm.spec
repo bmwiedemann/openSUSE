@@ -106,9 +106,7 @@ Files needed to build plugins for gkrellm2
 
 %lang_package
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 cd src
