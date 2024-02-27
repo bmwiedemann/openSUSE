@@ -36,8 +36,7 @@ SLIB is a portable Scheme library providing compatibility and utility
 functions for all standard Scheme implementations.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 
