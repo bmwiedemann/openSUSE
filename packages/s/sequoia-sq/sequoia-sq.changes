@@ -1,0 +1,121 @@
+-------------------------------------------------------------------
+Mon Feb 26 17:33:40 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
+Thu Feb 22 14:21:54 UTC 2024 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Add conflict with ispell-sq
+
+-------------------------------------------------------------------
+Thu Feb 22 14:20:51 UTC 2024 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Add shell completions
+
+-------------------------------------------------------------------
+Tue Feb 20 18:56:34 UTC 2024 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Add man pages and doc files
+
+-------------------------------------------------------------------
+Thu Feb 15 09:48:08 UTC 2024 - felix.niederwanger@suse.de
+
+- Use the sequoia-sq repository instead of the old sequoia with tags therein
+- Add sqlite dependency
+- Remove cargo_config
+- Update to version 0.33.0:
+  * Release 0.33.0.
+  * Allow updating textwrap to 0.16.
+  * Bump all dependencies.
+  * Improve build and installation instructions.
+  * Update NEWS.
+  * Fix markup.
+  * Update h2 to fix RUSTSEC-2024-0003.
+  * Implement sq version, drop --version, move output-version there.
+  * Add sq toolbox, move the armor and packet subcommands there.
+  * Move sq import and export to sq cert.
+
+-------------------------------------------------------------------
+Thu Feb 15 09:46:33 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 0.33.0:
+  * Release 0.33.0.
+  * Allow updating textwrap to 0.16.
+  * Bump all dependencies.
+  * Improve build and installation instructions.
+  * Update NEWS.
+  * Fix markup.
+  * Update h2 to fix RUSTSEC-2024-0003.
+  * Implement sq version, drop --version, move output-version there.
+  * Add sq toolbox, move the armor and packet subcommands there.
+  * Move sq import and export to sq cert.
+
+-------------------------------------------------------------------
+Thu Feb  8 13:55:05 UTC 2024 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Disable update of vendored dependencies due to build errors
+
+-------------------------------------------------------------------
+Thu Feb  8 07:44:14 UTC 2024 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update licence (GPLv2-only)
+
+-------------------------------------------------------------------
+Wed Feb  7 15:29:37 UTC 2024 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update the service file:
+  * Change version schema to not include the git commit
+  * Remove unnecessary cargo audit
+  * Use obscpio as storage format
+
+-------------------------------------------------------------------
+Wed Feb 07 15:21:31 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 0.28.0~git0.82eb0d7:
+  * sq: Release 0.28.0.
+  * sq: Fix usage generation.
+  * sq: Avoid deprecated chrono interfaces.
+  * sq: Update manpages.
+  * sq: Fix features.
+  * openpgp: Add streaming decryptor tests using passwords.
+  * openpgp: Fix salt generation in impl Arbitrary for S2K.
+  * openpgp: Enable test.
+  * openpgp: Fix documentation.
+  * openpgp: Don't check subpacket area length when parsing.
+
+-------------------------------------------------------------------
+Wed Jul 27 11:04:08 UTC 2022 - adam@mizerski.pl
+
+- Update to version 0.27.0~git0.fd8912e4:
+  * sq: Release 0.27.0.
+  * sq: allow choosing output format and version via the environment
+  * sq: update subplot to test JSON output for 'sq keyring list' works
+  * sq: add JSON output for 'sq keyring list'
+  * sq: add dependency on serde and serde-json
+  * sq: add global options --output-format and --output-version
+  * sq: add data types for output format and version of output format
+  * sq: Update manpages.
+  * net: Release 0.25.0.
+  * sq: Implement 'key userid strip'.
+
+-------------------------------------------------------------------
+Sat Apr 23 10:11:47 UTC 2022 - adam@mizerski.pl
+
+- Update to version 0.26.0~git0.103faed4:
+  * sq: Release 0.26.0.
+  * openpgp: Open NEWS entry for 1.9.0.
+  * openpgp: Release 1.8.0.
+  * openpgp: Disable doctest if padding is not available.
+  * openpgp: Fix test.
+  * openpgp: Fix warnings when building without compression features.
+  * openpgp: Fix test failure if compression features are disabled.
+  * openpgp: Improve documentation regarding certificate expiry.
+  * sq: fix requirement for bad signature to be _no_ output
+  * sq: Make test more robust.
+
+-------------------------------------------------------------------
+Tue Dec 14 09:10:26 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Initial packaging of version 0.25.0
+

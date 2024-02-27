@@ -1,0 +1,6 @@
+<package name="sequoia-sq" project="openSUSE:Factory">
+  <title>sequoia-sq</title>
+  <description> Command-line frontends for Sequoia</description>
+  <devel project="security" package="sequoia-sq"/>
+  <url>https://gitlab.com/sequoia-pgp/sequoia-sq</url>
+</package>
