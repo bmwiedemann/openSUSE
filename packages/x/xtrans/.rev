@@ -169,4 +169,12 @@ Solaris and the illumos family - OS'es from SCO, AT&amp;T's Unix Systems Group,
 Novell, and NCR are no longer supported.</comment>
     <requestid>1091972</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>2d0803bdc74af8422000a0c5a86f14ed</srcmd5>
+    <version>1.5.0</version>
+    <time>1709070289</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151684</requestid>
+  </revision>
 </revisionlist>

@@ -45,9 +45,9 @@ libX11, libICE, the X font server, and related components.
 
 %prep
 %setup -q
-%patch0
-%patch1 -p1 -R
-%patch2 -p1
+%patch -P 0
+%patch -P 1 -p1 -R
+%patch -P 2 -p1
 
 %build
 %configure --docdir=%{_docdir}/xtrans
