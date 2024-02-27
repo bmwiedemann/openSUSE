@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jan  1 07:58:35 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 42:
+  * KLU matrix solver has been added to the venerable Sparse 1.3
+  * Verilog-A device models (copiled by OpenVAF) now support
+    small signal noise simulation.
+  * Digital C coded circuit blocks may be read by the
+    code model d_process.
+  * Verilog (digital) circuits, compiled with Verilator,
+    may be read into ngspice by new code model d_cosim.
+  * For additional new features see the included NEWS file.
+- Update to version 41:
+  * Analog node changes in VCD file output.
+  * Read Touchstone file for S parameter simulation.
+  * Completely renewed XSPICE d_osc code model.
+  * Updates to commands setscale, compose, eprvcd, iplot, and
+    listing.
+  * Option FREQ for E and G sources.
+  * New dot command .libsave.
+
+-------------------------------------------------------------------
 Wed Apr  5 12:40:01 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 40:
