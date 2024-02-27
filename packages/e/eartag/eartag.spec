@@ -1,7 +1,7 @@
 #
 # spec file for package eartag
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,27 @@
 
 
 Name:           eartag
-Version:        0.5.1
+Version:        0.6.0
 Release:        0
 Summary:        Edit audio file tags
 License:        X11-distribute-modifications-variant
 URL:            https://gitlab.gnome.org/World/eartag
-Source:         %{name}-%{version}.tar
+Source:         %{name}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  meson
-BuildRequires:  pkgconfig(libadwaita-1)
-BuildRequires:  gtk4-devel
-BuildRequires:  python3-gobject
 BuildRequires:  python3-Pillow
+BuildRequires:  python3-gobject
 BuildRequires:  python3-mutagen
-BuildRequires:  python3-python-magic
 BuildRequires:  python3-pyacoustid
-Requires:       python3-python-magic
-Requires:       python3-pyacoustid
-Requires:       python3-mutagen
-Requires:       python3-gobject
+BuildRequires:  python3-python-magic
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libadwaita-1)
+Requires:       chromaprint-fpcalc
 Requires:       python3-Pillow
+Requires:       python3-gobject
+Requires:       python3-mutagen
+Requires:       python3-pyacoustid
+Requires:       python3-python-magic
 
 %description
 Ear Tag is a simple audio file tag editor. It is primarily geared towards making quick edits or bulk-editing tracks in albums/EPs.

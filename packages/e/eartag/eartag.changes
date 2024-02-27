@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb 23 06:45:56 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- add chromaprint-fpcalc as dependency for identifying songs
+- update to 0.6.0:
+  * Tags to insert can be picked from a list,
+    and inserted tags are highlighted with a color
+  * The preview field also gains syntax highlighting,
+    as well as a way to select the file to preview
+  * A new "Move to folder" option has been added
+  * new feature "Extract Tags from Filename"
+  * Undo all changes in selected files feature
+  * Remove tags from selected files feature
+
+-------------------------------------------------------------------
 Thu Nov 30 12:50:41 UTC 2023 - Richard Rahl <rrahl0@proton.me>
 
 - initial packaging of version 0.5.1 for openSUSE Tumbleweed
