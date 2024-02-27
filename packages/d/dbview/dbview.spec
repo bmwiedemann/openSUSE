@@ -34,8 +34,7 @@ dbview is a little tool that displays dBase III and IV files. You can
 also use it to convert your old .dbf files for further use with Unix.
 
 %prep
-%setup -q
-%patch1
+%autosetup -p0
 
 %build
 make CFLAGS="%{optflags}" %{?_smp_mflags}
