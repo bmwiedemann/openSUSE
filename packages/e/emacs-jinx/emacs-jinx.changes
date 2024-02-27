@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb 26 21:13:55 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Depend on emacs-devel to make sure Emacs packaging macros are installed when not building with emacs-eln
+
+-------------------------------------------------------------------
+Mon Feb 26 17:34:45 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Update to version 1.3:
+  * jinx-mode: hack-local-variables - ignore mode variables
+  * README: List packages needed on OpenSUSE
+  * Fix interaction bug with the newest version of AUCTeX, where the major mode
+    got changed unexpectedly.
+  * No need to use hashed symbol as argument for derived-mode-p
+  * Fix deadlock on macOS during Jinx startup (Fix #91, #113)
+  * Revert "Simplify rescheduling"
+  * timer-activate-when-idle: Pass DONT-WAIT=t
+
+-------------------------------------------------------------------
 Wed Jan 31 08:37:20 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Rebase patches and remove those no longer required

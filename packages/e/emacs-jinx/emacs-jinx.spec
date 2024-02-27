@@ -20,7 +20,7 @@
 %global _name    jinx
 
 Name:           emacs-%{_name}
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        Enchanted Spell Checker for Emacs
 License:        GPL-3.0-or-later
@@ -32,6 +32,7 @@ Patch1:         0001-Only-export-necessary-symbols.-Fixes-105.patch
 # PATCH-FEATURE-UPSTREAM install targets PR 102
 Patch2:         0002-Add-makefile-to-build-and-install-jinx.patch
 BuildRequires:  emacs-compat
+BuildRequires:  emacs-devel
 BuildRequires:  emacs-nox
 BuildRequires:  make
 BuildRequires:  pkgconfig(enchant-2)
@@ -52,7 +53,7 @@ Jinx is a fast just-in-time spell-checker for Emacs.
 %make_install DYNMODDRIR=%{_emacs_archsitelispdir}
 
 %files
-%doc README.org
+%doc README.org CHANGELOG.org
 %license LICENSE
 %{_emacs_sitelispdir}/%{_name}.el*
 %{_emacs_sitelispdir}/%{_name}-autoloads.el

@@ -56,7 +56,7 @@ index ee534cd522bc121a64ecc431bb345498b48a6993..0e2901e476c06e15de404f2d9a7f2941
          return 1; // Require Emacs binary compatibility
      emacs_env* env = runtime->get_environment(runtime);
 diff --git a/jinx.el b/jinx.el
-index 363725f0f7e6ae81e111b35ed2e22f4d2cf845ef..d5bdec406c9c2b66169f798225cd997a739ae456 100644
+index 095ff372b65e5f3743e1dc1a944e8ea2eac8495b..66d901b29b4c50b2e2174b3bbcf0e32e57e714f6 100644
 --- a/jinx.el
 +++ b/jinx.el
 @@ -583,7 +583,7 @@ If CHECK is non-nil, always check first."
