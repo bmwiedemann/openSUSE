@@ -71,8 +71,8 @@ Makeobj is a easy to use software used to compile .dat files and .png pictures
 to simutrans .pak files.
 
 %prep
-%setup -q -c -n simutrans
-%patch0 -p1
+%autosetup -p1 -c -n simutrans
+
 cp %{SOURCE1} .
 # files with the wrong line-endings, which give a rpmlint warning:
 dos2unix simutrans/*.txt

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:23:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Mon Jan 31 17:06:51 UTC 2022 - Michiel van der Wulp <michiel.vanderwulp@gmail.com> - 123-0-1
 
 - update to version 123.0.1
