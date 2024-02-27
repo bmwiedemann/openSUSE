@@ -34,8 +34,7 @@ ExclusiveArch:  %{ix86} x86_64 aarch64 %{arm}
 The collection of tools for UEFI secure boot (userspace tools only)
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 #make_build
