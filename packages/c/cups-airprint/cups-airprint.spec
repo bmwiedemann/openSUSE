@@ -68,9 +68,9 @@ AirPrint work; please follow the instructions in:
 %setup -q -c -T
 cp %{SOURCE0} %{SOURCE10} %{SOURCE11} .
 cp %{SOURCE21} %{SOURCE22} %{SOURCE23} .
-%patch0
-%patch1 -p1
-%patch2 -p1
+%patch -P 0
+%patch -P 1 -p1
+%patch -P 2 -p1
 
 %build
 

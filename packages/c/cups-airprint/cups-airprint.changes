@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 10:51:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sun May 17 15:14:05 UTC 2020 - Olav Reinert <seroton10@gmail.com>
 
 - python3.patch: Port script to python3
