@@ -34,8 +34,7 @@ lab of Windows load generators to run. It is now considered a de facto
 standard for generating load on the Linux VFS.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 %configure --datadir="%{_datadir}/dbench"

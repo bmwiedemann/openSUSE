@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 07:57:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Fri Nov  7 00:00:00 CET 2014 - dsterba@suse.cz
 
 - remove ctcs2-glue subpackage
