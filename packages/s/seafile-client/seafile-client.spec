@@ -31,7 +31,6 @@ BuildRequires:  automake
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
-BuildRequires:  libseafile0 = %{version}
 BuildRequires:  libsearpc-devel
 BuildRequires:  libtool
 BuildRequires:  openssl-devel

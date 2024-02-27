@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 26 14:25:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not BuildRequire libseafile0: requring seafile-devel is
+  sufficient and this devel package is responsible to bring the
+  required libraries.
+
+-------------------------------------------------------------------
 Mon Feb 26 13:57:27 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 9.0.4:
