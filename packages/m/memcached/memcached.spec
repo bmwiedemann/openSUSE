@@ -25,6 +25,13 @@
 %else
 %bcond_with    tls
 %endif
+%if 0%{?suse_version} >= 1500
+%bcond_without sysusers
+%bcond_without tmpfiles
+%else
+%bcond_with    sysusers
+%bcond_with    tmpfiles
+%endif
 Name:           memcached
 Version:        1.6.23
 Release:        0
@@ -34,9 +41,9 @@ Group:          Productivity/Networking/Other
 URL:            https://memcached.org/
 Source:         https://www.memcached.org/files/%{name}-%{version}.tar.gz
 Source2:        %{name}.sysconfig
-Source3:        memcached-rpmlintrc
 Source4:        memcached.service
-Source5:        system-user-memcached.conf
+Source5:        %{name}-sysusers.conf
+Source6:        %{name}-tmpfiles.conf
 Patch0:         harden_memcached.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -52,7 +59,7 @@ BuildRequires:  perl
 BuildRequires:  perl-IO-Socket-SSL
 BuildRequires:  perl-Net-SSLeay
 %endif
-%if 0%{?suse_version} >= 1500
+%if %{with sysusers}
 BuildRequires:  sysuser-tools
 %sysusers_requires
 %else
@@ -102,8 +109,8 @@ autoreconf -fi
   %endif
 
 %make_build
-%if 0%{?suse_version} >= 1500
-%sysusers_generate_pre %{SOURCE5} memcached system-user-memcached.conf
+%if %{with sysusers}
+%sysusers_generate_pre %{SOURCE5} %{name} %{name}-user.conf
 %endif
 
 %install
@@ -114,15 +121,17 @@ install -D  -m 0644 %{SOURCE2} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 install -d -m 755 %{buildroot}%{_sbindir}
 ln -s  	%{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 install -D  -m 0644 %{SOURCE4} %{buildroot}%{_unitdir}/%{name}.service
-%if 0%{?suse_version} >= 1500
-mkdir -p %{buildroot}%{_sysusersdir}
-install -m 0644 %{SOURCE5} %{buildroot}%{_sysusersdir}/
+%if %{with sysusers}
+install -D -m 0644 %{SOURCE5} %{buildroot}%{_sysusersdir}/%{name}-user.conf
+%endif
+%if %{with tmpfiles}
+install -D -m 0644 %{SOURCE6} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 %endif
 
 %check
 %make_build test
 
-%if 0%{?suse_version} >= 1500
+%if %{with sysusers}
 %pre -f memcached.pre
 %else
 
@@ -138,6 +147,9 @@ getent passwd %{name} >/dev/null || \
 %post
 %service_add_post %{name}.service
 %fillup_only %{name}
+%if %{with tmpfiles}
+%tmpfiles_create %{_tmpfilesdir}/%{name}.conf
+%endif
 
 %preun
 %service_del_preun %{name}.service
@@ -155,8 +167,12 @@ getent passwd %{name} >/dev/null || \
 %{_unitdir}/%{name}.service
 %{_fillupdir}/sysconfig.%{name}
 %dir %attr(751,root,root) %{_localstatedir}/lib/%{name}
-%if 0%{?suse_version} >= 1500
-%{_sysusersdir}/system-user-memcached.conf
+%if %{with sysusers}
+%{_sysusersdir}/%{name}-user.conf
+%endif
+%if %{with tmpfiles}
+%{_tmpfilesdir}/%{name}.conf
+%dir %ghost %{_rundir}/%{name}
 %endif
 
 %files devel

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 19 01:06:31 UTC 2024 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Drop obsolete rpmlint filter
+
+-------------------------------------------------------------------
+Mon Feb 19 00:10:25 UTC 2024 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Create /run/memcached as a location for sockets
+- Use conditionals for sysusers/tmpfiles
+
+-------------------------------------------------------------------
 Mon Jan 29 14:22:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.23:

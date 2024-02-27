@@ -591,4 +591,12 @@ bsc#1007869) (CVE-2016-8706)</comment>
       issue 111</comment>
     <requestid>1142602</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>86c271ccc231f284e70f000778245acd</srcmd5>
+    <version>1.6.23</version>
+    <time>1709070244</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151132</requestid>
+  </revision>
 </revisionlist>
