@@ -116,8 +116,7 @@ Requires:       %{name} = %{version}
 This package provides the header file to build external plugins.
 
 %prep
-%setup -q
-%patch1
+%autosetup -p0
 
 sed -e "s|\" __DATE__|$(date '+%%b %%e %%Y' -r version.m4)\"|g" \
     -i src/openvpn/options.c
