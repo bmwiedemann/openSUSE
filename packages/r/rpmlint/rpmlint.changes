@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Feb 26 16:42:21 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 2.5.0+git20240226.8b18627:
+  * dbus-services: whitelist kde-inotify-survey with KDE6 changes (bsc#1217191)
+  * dbus-services whitelist: adjust kde6 digests after fix in kauth6 (bsc#1220215)
+  * CI: Reenable mageia-cauldron in packit
+  * test: Add tests to check non-standard-dir-perm
+  * SpecCheck: Add patch-macro-old-format check
+  * BinariesCheck: do not mark as binary eBPF ELF files
+  * change pyproject ruff config to toplevel
+  * SystemIstallCheck: Allow %service_del_postun_without_restart macro usage
+  * test: Lazy load mock packages
+  * test: Improve name of mock packages
+  * Fix the errors and suggestions to the flake8 command
+  * Clean all tests file
+  * config: Do not filter python-leftover-require for fedora
+  * Fix misspelled variable: ENGLISH_ENVIROMENT to ENGLISH_ENVIRONMENT
+  * Clean tests file
+
+-------------------------------------------------------------------
 Fri Feb 16 16:36:55 UTC 2024 - filippo.bonazzi@suse.com
 
 - Update to version 2.5.0+git20240215.29f50e5:
