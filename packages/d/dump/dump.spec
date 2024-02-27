@@ -68,9 +68,9 @@ restoring files from a backup), tar (an archiving program) and cpio.
 %prep
 %setup -q
 cp %{SOURCE1} rmt/
-%patch0 -p1
-%patch1 -p1
-%patch3
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 3
 
 %build
 autoreconf -fiv
