@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:45:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Tue Apr 17 14:59:52 UTC 2018 - guillaume.gardet@opensuse.org
 
 - Add upstream_add_armv8.patch and update spec to fix build for aarch64

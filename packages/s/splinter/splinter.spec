@@ -86,8 +86,7 @@ approximation, regression and data smoothing.
 This package provides the python bindings for %{name}.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake \
