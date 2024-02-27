@@ -62,18 +62,19 @@ Source57:       nrpe-check_users
 Source58:       nrpe-check_zombie_procs
 Source59:       nrpe-check_mysql
 Source60:       nrpe-check_ups
+# PATCH-FIX-UPSTREAM Quote the options comming in from users (path names might contain whitespaces)
+Patch1:         %{name}-2.3.5-check_log_-_quoting.patch
 # PATH-FIX-openSUSE - do not use/run chown in Makefile: we use RPM for this
-Patch6:         %{name}-2.3.3-root-plugins-Makefile_-_no_chown.patch
+Patch6:         %{name}-2.3.5-plugins-root-Makefile_-_no_chown.patch
 # PATCH-FIX-UPSTREAM see https://bugzilla.redhat.com/512559
-Patch121:       %{name}-2.3.3-wrong_percent_in_check_swap.patch
+Patch121:       %{name}-2.3.5-check_swap_wrong_percent.patch
 # PATCH-FIX-UPSTREAM - return ntp offset absolute (as positive value) in performance data since warn and crit are also positive values 
-Patch122:       %{name}-2.3.3-check_ntp_perf_absolute.patch
+Patch122:       %{name}-2.3.5-check_ntp_perf_absolute.patch
 # PATCH-FIX-UPSTREAM - see https://github.com/monitoring-plugins/monitoring-plugins/pull/1322
-Patch125:       monitoring-plugins-2.3.3-check_ssh.patch
-Patch126:       monitoring-plugins-2.3.3-check_ssh.t_-_improve_testing.patch
-Patch128:       monitoring-plugins-2.3.3-check_disk_on_btrfs.patch
-# PATCH-FIX-UPSTREAM - see https://github.com/monitoring-plugins/monitoring-plugins/pull/1774
-Patch129:       monitoring-plugins-2.3.3-check_by_ssh.patch
+Patch125:       %{name}-2.3.5-check_ssh.patch
+Patch126:       %{name}-2.3.5-check_ssh.t_-_improve_testing.patch
+# PATCH-FIX-UPSTREAM - see https://github.com/monitoring-plugins/monitoring-plugins/pull/1862
+Patch130:       %{name}-2.3.5-check_http-proxy.patch
 BuildRequires:  bind-utils
 BuildRequires:  dhcp-devel
 BuildRequires:  fping
@@ -81,8 +82,6 @@ BuildRequires:  fping
 PreReq:         permissions
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  autoconf
-BuildRequires:  automake
 %if 0%{?suse_version} > 1599
 BuildRequires:  coreutils-systemd
 %endif
@@ -95,7 +94,13 @@ BuildRequires:  nagios-rpm-macros
 BuildRequires:  net-snmp-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  openssh
+%if 0%{?suse_version} == 1315
+# force OpenSSL 1.1 on SLE 12, and avoid old pgsql which wants 1.0
+BuildRequires:  libopenssl-1_1-devel
+BuildConflicts: postgresql10-devel
+%else
 BuildRequires:  openssl-devel
+%endif
 %if 0%{?fedora_version} ||  0%{?rhel_version} || 0%{?centos_version}
 BuildRequires:  net-snmp-perl
 BuildRequires:  net-snmp-utils
@@ -124,6 +129,10 @@ BuildRequires:  heimdal-devel
 %endif
 %else
 BuildRequires:  krb5-devel
+%endif
+%if 0%{?suse_version} > 1315
+BuildRequires:  libcurl-devel
+BuildRequires:  uriparser-devel
 %endif
 # recommend the old, included checks to allow an easy update - but
 # also allow users to deselect some of the new sub-packages
@@ -230,6 +239,7 @@ Recommends:     %{name}-clamav
 Recommends:     %{name}-cluster
 Recommends:     %{name}-contentage
 Recommends:     %{name}-cups
+Recommends:     %{name}-curl
 Recommends:     %{name}-dbi-mysql
 Recommends:     %{name}-dbi-pgsql
 Recommends:     %{name}-dbi-sqlite3
@@ -379,6 +389,23 @@ Obsoletes:      nagios-plugins-common <= 1.5
 %description common
 This package includes the libraries (scripts) that are included by many
 of the standard checks.
+
+%if 0%{?suse_version} > 1315
+%package curl
+Summary:        Test the HTTP service on the specified host, via libcurl
+Group:          System/Monitoring
+Provides:       nagios-plugins-curl = %{version}
+Obsoletes:      nagios-plugins-curl <= 1.5
+
+%description curl
+This plugin tests the HTTP service on the specified host. It can test
+normal (http) and secure (https) servers, follow redirects, search for
+strings and regular expressions, check connection times, and report on
+certificate expiration times.
+
+It makes use of libcurl to do so. It tries to be as compatible to check_http
+as possible.
+%endif
 
 %package dbi
 Summary:        Check databases using DBI
@@ -758,10 +785,13 @@ Requires:       perl(FindBin)
 Requires:       perl
 
 %description mssql
-This plugin runs a query against a MS-SQL server or Sybase server and returns
-the first row. It returns an error if no responses are running. Row is passed
-to perfdata	in semicolon delimited format.
-A simple sql statement like \"select getdate()\" verifies server responsiveness.
+Runs a query against a Microsoft SQL or Sybase server and returns the first
+row; returns an error if no responses are found.  The row is passed to perfdata
+in semicolon-delimited format.
+A simple sql statement like "select getdate()" verifies server responsiveness.
+
+This plugin is written in Perl and requires DBD::Sybase, which in turn needs
+freetds.  Those may require additional repositories.
 %endif
 
 %package mysql
@@ -1144,23 +1174,21 @@ with the libdbi driver for $extension.
 EOF
 done
 
-%patch6 -p1
+%patch -P 1 -p1
+%patch -P 6 -p1
 # Debian patches
-%patch121 -p1
-%patch122 -p1
+%patch -P 121 -p1
+%patch -P 122 -p1
 # Github patches
-%patch125 -p1
-%patch126 -p1
-%patch128 -p1
-%patch129 -p1
-find -type f -exec chmod 644 {} +
+%patch -P 125 -p1
+%patch -P 126 -p1
+%patch -P 130 -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing -DLDAP_DEPRECATED"
-gettextize -f --no-changelog
-autoreconf -fi
-chmod a+x NP-VERSION-GEN
-chmod +x configure # needed as configure script is not executable in 1.5..
+# Translations were (temporarily?) removed upstream:
+#   https://github.com/monitoring-plugins/monitoring-plugins/pull/1947
+#gettextize -f --no-changelog
 %configure \
 	--enable-static=no \
 	--enable-extra-opts \
@@ -1169,16 +1197,12 @@ chmod +x configure # needed as configure script is not executable in 1.5..
 	--with-apt-get-command=%{apt_get_command} \
 	--with-cgiurl=/nagios/cgi-bin \
 	--with-fping-command=%{_sbindir}/fping \
-    --with-fping6-command=%{_sbindir}/fping6 \
+	--with-fping6-command=%{_sbindir}/fping6 \
 	--with-ipv6 \
-	--with-ntpq-command=%{_sbindir}/ntpq \
-	--with-ntpdc-command=%{_sbindir}/ntpdc \
-	--with-ntpdate-command=%{_sbindir}/ntpdate \
 	--with-openssl=%{_prefix} \
 	--with-perl=%{_bindir}/perl \
 	--with-pgsql=%{_prefix} \
 	--with-ping6-command='/bin/ping6 -n -U -w %d -c %d %s' \
-	--with-proc-loadavg=/proc/loadavg \
 	--with-ps-command="/bin/ps axwo 'stat uid pid ppid vsz rss pcpu etime comm args'" \
 	--with-ps-format='%s %d %d %d %d %d %f %s %s %n' \
 	--with-ps-cols=10 \
@@ -1380,6 +1404,13 @@ fi
 %{nagios_plugindir}/utils.sh
 %attr(0644,root,root) %{nagios_plugindir}/utils.pm
 
+%if 0%{?suse_version} > 1315
+%files curl
+%defattr(0755,root,root)
+%dir %{nagios_plugindir}
+%{nagios_plugindir}/check_curl
+%endif
+
 %files dbi
 %defattr(-,root,root)
 %dir %{nagios_plugindir}
@@ -1533,7 +1564,6 @@ fi
 %defattr(0755,root,root)
 %dir %{nagios_plugindir}
 %{nagios_plugindir}/check_mrtgtraf
-
 
 %if %{with mssql}
 %files mssql

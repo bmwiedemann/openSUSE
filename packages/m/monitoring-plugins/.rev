@@ -340,4 +340,41 @@ New patches:
     <comment></comment>
     <requestid>1144267</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>c375870fb301dbdd49ac31fc755d7b02</srcmd5>
+    <version>2.3.5</version>
+    <time>1709070586</time>
+    <user>anag+factory</user>
+    <comment>- naming the renamed patches exactly, to make factory-auto happy:
+  + monitoring-plugins-2.3.3-wrong_percent_in_check_swap.patch to
+    monitoring-plugins-2.3.5-check_swap_wrong_percent.patch
+  + monitoring-plugins-2.3.3-check_ssh.patch to
+    monitoring-plugins-2.3.5-check_ssh.patch
+  + monitoring-plugins-2.3.3-check_ssh.t_-_improve_testing.patch to
+    monitoring-plugins-2.3.5-check_ssh.t_-_improve_testing.patch
+  + monitoring-plugins-2.3.3-check_ntp_perf_absolute.patch to
+    monitoring-plugins-2.3.5-check_ntp_perf_absolute.patch
+  + monitoring-plugins-2.3.3-root-plugins-Makefile_-_no_chown.patch to
+    monitoring-plugins-2.3.5-plugins-root-Makefile_-_no_chown.patch
+  + monitoring-plugins-2.3.3-check_log_-_quoting.patch to
+    monitoring-plugins-2.3.5-check_log_-_quoting.patch
+  + monitoring-plugins-2.3.3-check_http-proxy.patch to
+    monitoring-plugins-2.3.5-check_http-proxy.patch
+
+- Use %patch -P N instead of deprecated %patchN.
+
+- enable check_curl by BuildRequiring its dependencies 
+- restore patches not yet applied upstream (and rename to 2.3.5):
+  + monitoring-plugins-2.3.3-check_log_-_quoting.patch
+  + monitoring-plugins-2.3.3-check_http-proxy.patch
+- drop upstreamed patches:
+  + monitoring-plugins-2.3.3-check_by_ssh.patch (GitHub #1774)
+  + monitoring-plugins-2.3.3-check_disk_on_btrfs.patch (GH #1388)
+  - GitHub issues for patches upstreamed on 2023-12-05:
+    + monitoring-plugins-2.3.3-check_snmp.arrayaddress.patch (GH #1870)
+    + monitoring-plugins-2.3.3-mariadb_102_build_fix.patch (GH #1522)
+    + monitoring-plugins-2.3.3-check_dhcp_-_detect_rogue_dhcp_servers.patch (GH #1906)
+    + monitoring-plugins-2.3.3-check_icmp.patch (GH #1807)</comment>
+    <requestid>1152323</requestid>
+  </revision>
 </revisionlist>
