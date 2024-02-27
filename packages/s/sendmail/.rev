@@ -1270,4 +1270,12 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
     to override the default.  The file name can be</comment>
     <requestid>1144171</requestid>
   </revision>
+  <revision rev="123" vrev="2">
+    <srcmd5>dcdca911eeff98b2914aff2048f80da6</srcmd5>
+    <version>8.18.1</version>
+    <time>1709070292</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1151482 from dimstar)</comment>
+    <requestid>1151694</requestid>
+  </revision>
 </revisionlist>

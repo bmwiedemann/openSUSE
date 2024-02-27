@@ -245,11 +245,11 @@ processed mail on to the MTA (e.g. sendmail).
 
 %prep
 %setup -n sendmail-%{version}
-%patch1 -p0 -b .select
-%patch4 -p0 -b .m4head
-%patch5 -p1 -b .fdmilt
-%patch0 -p0 -b .p0
-%patch8 -p1 -b .reproducible
+%patch -P 1 -p0 -b .select
+%patch -P 4 -p0 -b .m4head
+%patch -P 5 -p1 -b .fdmilt
+%patch -P 0 -p0 -b .p0
+%patch -P 8 -p1 -b .reproducible
     tar --strip-components=1 -xf %{S:1}
     set -f
     cat <<-EOF > file-list
