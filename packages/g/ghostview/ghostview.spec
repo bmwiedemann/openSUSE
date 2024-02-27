@@ -49,9 +49,7 @@ Ghostview offers an X11 GUI for viewing PostScript files. This is an
 X11 interface to ghostscript.
 
 %prep
-%setup -q
-%patch0
-%patch1
+%autosetup -p0
 
 %build
 xmkmf -a
