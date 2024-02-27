@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb 26 07:41:36 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2.4.1
+   * Improved album cover color mode. Press 'i' to try this.
+   * To accelerate startup times, there is now a library cache.
+     This feature is optional and can be enabled in the settings
+     file (kewrc). If the library loading process is slow, you'll
+     be prompted to consider using the cache.
+   * You can now press 'u' to update the library in case you've
+     added or removed songs.
+   * Faster "kew all". It now bases its playlist on the library
+     instead of scanning everything a second time.
+   * Fixed when running the special playlist with "kew .", the app
+     sometimes became unresponsive when adding / deleting.
+   * Code refactoring and cleanup.
+
+-------------------------------------------------------------------
 Sun Feb 18 09:37:55 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2.4
