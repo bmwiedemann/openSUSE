@@ -45,10 +45,10 @@ Gregorian calendar replaced the earlier Julian calendar.
 
 %prep
 %setup -q
-%patch0
-%patch1
-%patch2 -p1
-%patch3 -p1
+%patch -P 0
+%patch -P 1
+%patch -P 2 -p1
+%patch -P 3 -p1
 
 %build
 %configure

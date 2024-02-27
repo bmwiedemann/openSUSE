@@ -218,4 +218,12 @@
 Not sure whether that's the correct approach to set it like this though. (forwarded request 991823 from stroeder)</comment>
     <requestid>992583</requestid>
   </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>3e60ea7bc4ecc26c6e992637cd25bf00</srcmd5>
+    <version>4.1</version>
+    <time>1709070552</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1152136 from dimstar)</comment>
+    <requestid>1152251</requestid>
+  </revision>
 </revisionlist>

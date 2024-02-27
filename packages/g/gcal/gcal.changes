@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 27 10:58:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sat Jul 30 16:53:17 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - use -D_FORTIFY_SOURCE=2 to fix crashes
