@@ -57,8 +57,7 @@ readable by the Android client, as well as to the .fwknoprc format
 readable by the command line client.
 
 %prep
-%setup -q -n %{name}
-%patch0 -p1
+%autosetup -p1 -n %{name}
 
 %build
 %cmake
