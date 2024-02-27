@@ -57,9 +57,7 @@ Requires:       lib%{name}%{sover} = %{version}-%{release}
 The deepin-turbo-devel package contains the header files for deepin-turbo.
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 %cmake
