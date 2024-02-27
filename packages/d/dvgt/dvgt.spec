@@ -36,8 +36,7 @@ like Tektronics or the good old XTerm. dvgt tries to fit the conditions
 of the DVI files, therefore output on text terminals is not legible.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 RPM_OPT_FLAGS="-std=gnu89 %{optflags} -fno-strict-aliasing -funsigned-char"
