@@ -382,4 +382,12 @@
 - supersedes U_Use-DRM_CAP_CURSOR_WIDTH-HEIGHT-if-possible.patch</comment>
     <requestid>1067832</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>9e87c885c4c75230c7eb59dc485dbe92</srcmd5>
+    <version>23.0.0</version>
+    <time>1709070281</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151669</requestid>
+  </revision>
 </revisionlist>

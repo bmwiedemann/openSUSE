@@ -62,8 +62,7 @@ amdgpu is an Xorg driver for AMD video cards.
 Its autodetects whether your hardware has a CI or newer AMD Graphics Card
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 # We have some -z now related errors during X default startup (boo#1197994):
