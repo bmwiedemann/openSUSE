@@ -56,10 +56,10 @@ This package provides documentation and help files for %{name}.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1
-%patch2 -p1
-%patch3 -p1
+%patch -P 0 -p1
+%patch -P 1
+%patch -P 2 -p1
+%patch -P 3 -p1
 
 %build
 make %{?_smp_mflags}

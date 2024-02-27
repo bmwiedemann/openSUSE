@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:00:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Sep 14 20:36:00 UTC 2016 - robert.munteanu@gmail.com
 
 - Added 0004-fix-deprecation-warnings.patch, fixes deprecation 
