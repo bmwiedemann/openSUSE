@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 25 21:49:34 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * hibiscus-port-to-commons-lang3.patch
+    + port hibiscus to use apache-commons-lang3 instead of the old
+      apache/jakarta-commons-lang
+
+-------------------------------------------------------------------
 Wed Oct 19 14:25:00 UTC 2022 - <postix@posteo.eu>
 
 - update to version 2.10.8

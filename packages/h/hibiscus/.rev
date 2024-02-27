@@ -136,4 +136,12 @@
     <comment>2.10.8</comment>
     <requestid>1037030</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>235933dea2cd7acc89f5e143b1874a08</srcmd5>
+    <version>2.10.8</version>
+    <time>1709070593</time>
+    <user>anag+factory</user>
+    <comment>port to apache-commons-lang3</comment>
+    <requestid>1152328</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package hibiscus
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Group:          Productivity/Office/Finance
 URL:            https://www.willuhn.de/products/hibiscus/
 Source:         https://github.com/willuhn/hibiscus/archive/refs/tags/%{tag}.tar.gz
 Source2:        hibiscus-rpmlintrc
+Patch0:         hibiscus-port-to-commons-lang3.patch
 BuildRequires:  ant
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -58,6 +59,7 @@ Supported file formats include MT940, DTAUS, CSV, Moneyplex and PDF/HTML.
 
 %prep
 %setup -q -n %{name}-%{tag}
+%patch -P 0 -p1
 
 # Remove Windows and Mac libraries
 rm -rf lib/hbci4java-card-*
