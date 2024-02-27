@@ -1,7 +1,7 @@
 #
 # spec file for package tinyobjloader
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2018-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -58,8 +58,7 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of tinyobjloader.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake \
@@ -68,7 +67,7 @@ applications that want to make use of tinyobjloader.
 
 %install
 %cmake_install
-rm -f %{buildroot}/%{_datadir}/doc/tinyobjloader/LICENSE
+rm -f %{buildroot}/%{_datadir}/doc/packages/tinyobjloader/LICENSE
 
 %post   -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
