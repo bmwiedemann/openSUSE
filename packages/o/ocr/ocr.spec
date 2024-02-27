@@ -192,8 +192,7 @@ Examples for ocr packages.
 
 %prep
 
-%setup -q -n ocr-OCRv%{version}
-%patch0 -p1
+%autosetup -p1 -n ocr-OCRv%{version}
 
 %build
 cd ocr/build

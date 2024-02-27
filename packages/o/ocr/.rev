@@ -59,4 +59,12 @@
 - Prepare support for openmpi5</comment>
     <requestid>1119888</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>12b5f89a557f429b2207470e6438002e</srcmd5>
+    <version>1.0.1</version>
+    <time>1709070431</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151401</requestid>
+  </revision>
 </revisionlist>
