@@ -171,11 +171,11 @@ This tool is part of the FreeType project
 %prep
 
 %setup -q -n freetype-%{freetype_version} -b 1
-%patch308961 -p 1
+%patch -P 308961 -p 1
 pushd ../ft2demos-%{version}
-%patch201 -p1
+%patch -P 201 -p1
 popd
-%patch202 -p1
+%patch -P 202 -p1
 
 %build
 export CFLAGS="%{optflags} -std=gnu99 -D_GNU_SOURCE $(getconf LFS_CFLAGS)"
