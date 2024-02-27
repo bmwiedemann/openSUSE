@@ -142,12 +142,12 @@ common sanlock lockspace.
 
 %prep
 %setup -q -n %{pname}-%{version}
-%patch100
-%patch101
-%patch102 -p1
-%patch103 -p1
-%patch104 -p1
-%patch105 -p1
+%patch -P 100
+%patch -P 101
+%patch -P 102 -p1
+%patch -P 103 -p1
+%patch -P 104 -p1
+%patch -P 105 -p1
 
 %build
 %if ! %{with python}

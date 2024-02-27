@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:04:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Jan 29 10:25:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add user()/group() provides for rpm 4.19

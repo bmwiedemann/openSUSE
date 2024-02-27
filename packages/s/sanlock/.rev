@@ -279,4 +279,12 @@ corruption of the VM's disk image.  See FATE#306399.</comment>
 - initial package based on package from openstack</comment>
     <requestid>1142220</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>9ae97129c1fbd432a55a41736352d257</srcmd5>
+    <version>3.8.5</version>
+    <time>1709070327</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151906</requestid>
+  </revision>
 </revisionlist>
