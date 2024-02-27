@@ -49,9 +49,7 @@ This is a libzhuyin wrapper for fcitx.
 
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:%{_libdir}/libzhuyin-1.1.1/pkgconfig
