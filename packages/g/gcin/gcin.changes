@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 27 10:54:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Tue Feb 23 06:09:46 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Fix the build failure due to the comparison of bare words
