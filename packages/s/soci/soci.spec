@@ -216,8 +216,7 @@ development tools necessary for compiling and linking applications
 which will use soci with unixODBC.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 sed -i 's/-Werror //' cmake/SociConfig.cmake
 

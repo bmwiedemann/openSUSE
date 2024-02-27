@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:39:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Sun Aug 14 12:21:42 UTC 2022 - thod_@gmx.de
 
 - Add packages to be able to build on Fedora
