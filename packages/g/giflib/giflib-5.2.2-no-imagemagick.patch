@@ -1,0 +1,11 @@
+--- giflib-5.2.2/doc/Makefile	2024-02-27 10:46:39.708678468 +0100
++++ giflib-5.2.2/doc/Makefile	2024-02-27 10:47:13.905410961 +0100
+@@ -43,7 +43,7 @@
+ 
+ # Logo image file for HTML docs
+ giflib-logo.gif: ../pic/gifgrid.gif
+-	convert $^ -resize 50x50 $@
++	cp $^ $@
+ 
+ # Philosophical choice: the website gets the internal manual pages
+ allhtml: $(XMLALL:.xml=.html) giflib-logo.gif

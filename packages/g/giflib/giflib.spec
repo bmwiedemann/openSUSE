@@ -1,7 +1,7 @@
 #
 # spec file for package giflib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,18 @@
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 %define lname   libgif7
 Name:           giflib
-Version:        5.2.1
+Version:        5.2.2
 Release:        0
 Summary:        A Library for Working with GIF Images
 License:        MIT
 URL:            https://giflib.sourceforge.net/
 Source:         https://downloads.sf.net/giflib/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
+Patch0:         giflib-5.2.2-no-imagemagick.patch
 Patch1:         PIE.patch
 Patch2:         reproducible.patch
+Patch3:         0001-Clean-up-memory-better-at-end-of-run-CVE-2021-40633.patch
+BuildRequires:  fdupes
 BuildRequires:  libtool >= 2
 
 %description
@@ -66,8 +69,17 @@ export CFLAGS="%{optflags}"
 
 %install
 %make_install PREFIX="%{_prefix}" LIBDIR="%{_libdir}"
+find %{buildroot}%{_mandir} -name *.xml* -print -delete
 find %{buildroot} -type f -name "*.la" -delete -print
 find doc -name "Makefile*" -print -delete
+
+# Install the manpages
+mkdir -p %{buildroot}%{_mandir}/man1
+for i in doc/*.1; do
+  install -pm 0644 ${i} %{buildroot}%{_mandir}/man1/
+done
+
+%fdupes -s doc
 
 # Drop static library
 rm -f %{buildroot}%{_libdir}/libgif.a

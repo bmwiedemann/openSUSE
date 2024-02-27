@@ -1,5 +1,3 @@
-Index: a/Makefile
-===================================================================
 --- a/Makefile
 +++ b/Makefile
 @@ -8,7 +8,7 @@
@@ -11,11 +9,11 @@ Index: a/Makefile
  
  SHELL = /bin/sh
  TAR = tar
-@@ -64,6 +64,7 @@ LDLIBS=libgif.a -lm
- all: libgif.so libgif.a libutil.so libutil.a $(UTILS)
+@@ -93,6 +93,7 @@
  	$(MAKE) -C doc
- 
+ endif
+
 +$(UTILS):: LDFLAGS += -pie
  $(UTILS):: libgif.a libutil.a
  
- libgif.so: $(OBJECTS) $(HEADERS)
+ $(LIBGIFSO): $(OBJECTS) $(HEADERS)

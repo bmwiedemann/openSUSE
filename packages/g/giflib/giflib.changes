@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Feb 26 11:29:46 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 5.2.2
+  * Fixes for CVE-2023-48161 (bsc#1217390), CVE-2022-28506
+    (bsc#1198880)
+  * Address SF issue #138 Documentation for obsolete utilities still
+    installed
+  * Address SF issue #139: Typo in "LZW image data" page
+    ("110_2 = 4_10")
+  * Address SF issue #140: Typo in "LZW image data" page ("LWZ")
+  * Address SF issue #141: Typo in "Bits and bytes" page ("filed")
+  * Note as already fixed SF issue #143: cannot compile under mingw
+  * Address SF issue #144: giflib-5.2.1 cannot be build on windows
+    and other platforms using c89
+  * Address SF issue #145: Remove manual pages installation for
+    binaries that are not installed too
+  * Address SF issue #146: [PATCH] Limit installed man pages to
+    binaries, move giflib to section 7
+  * Address SF issue #147 [PATCH] Fixes to doc/whatsinagif/ content
+  * Address SF issue #148: heap Out of Bound Read in gif2rgb.c:298
+    DumpScreen2RGB
+  * Declared no-info on SF issue #150: There is a denial of service
+    vulnerability in GIFLIB 5.2.1
+  * Declared Won't-fix on SF issue 149: Out of source builds no
+    longer possible
+  * Address SF issue #151: A heap-buffer-overflow in gif2rgb.c:294:45
+  * Address SF issue #152: Fix some typos on the html documentation
+    and man pages
+  * Address SF issue #153: Fix segmentation faults due to non
+    correct checking for args
+  * Address SF issue #154: Recover the giffilter manual page
+  * Address SF issue #155: Add gifsponge docs
+  * Address SF issue #157: An OutofMemory-Exception or Memory Leak
+    in gif2rgb
+  * Address SF issue #158: There is a null pointer problem in
+    gif2rgb
+  * Address SF issue #159 A heap-buffer-overflow in GIFLIB5.2.1
+    DumpScreen2RGB() in gif2rgb.c:298:45
+  * Address SF issue #163: detected memory leaks in
+    openbsd_reallocarray giflib/openbsd-reallocarray.c
+  * Address SF issue #164: detected memory leaks in GifMakeMapObject
+    giflib/gifalloc.c
+  * Address SF issue #166: a read zero page leads segment fault in
+    getarg.c and memory leaks in gif2rgb.c and gifmalloc.c
+  * Address SF issue #167: Heap-Buffer Overflow during Image Saving
+    in DumpScreen2RGB Function at Line 321 of gif2rgb.c
+- Added patch:
+  * giflib-5.2.2-no-imagemagick.patch
+    + do not use ImageMagick to resize one gif file. It creates a
+      build cycle.
+  * 0001-Clean-up-memory-better-at-end-of-run-CVE-2021-40633.patch
+    + upstream fix for CVE-2021-40633 (bsc#1200551)
+- Modified patches:
+  * PIE.patch
+  * reproducible.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
 Sat Aug 12 21:30:14 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Define make_build for distributions which do not define them in
@@ -21,7 +79,8 @@ Wed Apr 14 11:32:49 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
   * PIE.patch
-    + build path independent objects
+    + build path independent objects and inherit CFLAGS from the
+      build system (bsc#1184123)
 
 -------------------------------------------------------------------
 Fri Jul 10 21:23:35 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
@@ -49,7 +108,7 @@ Fri Jul 10 21:23:35 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
   * Address SF bug #129: The latest version of giflib cannot be build on windows.
   * Address SF bug #126: Cannot compile giflib using c89
 - Changes in version 5.1.8
-  * Address SF bug #119: MemorySanitizer: FPE on unknown address
+  * Address SF bug #119: MemorySanitizer: FPE on unknown address (CVE-2019-15133 bsc#1146299)
   * Address SF bug #125: 5.1.7: xmlto is still required for tarball
   * Address SF bug #124: 5.1.7: ar invocation is not crosscompile compatible
   * Address SF bug #122: 5.1.7 installs manpages to wrong directory
@@ -62,14 +121,14 @@ Fri Jul 10 21:23:35 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 - Changes in version 5.1.5
   * Fix SF bug #114: Null dereferences in main() of gifclrmp
   * Fix SF bug #113: Heap Buffer Overflow-2 in function DGifDecompressLine()
-    in cgif.c.  This had been assigned (CVE-2018-11490).
+    in cgif.c.  This had been assigned (CVE-2018-11490 bsc#1094832).
   * Fix SF bug #111: segmentation fault in PrintCodeBlock
   * Fix SF bug #109: Segmentation fault of giftool reading a crafted file
   * Fix SF bug #107: Floating point exception in giftext utility
   * Fix SF bug #105: heap buffer overflow in DumpScreen2RGB in gif2rgb.c:317
   * Fix SF bug #104: Ineffective bounds check in DGifSlurp
   * Fix SF bug #103: GIFLIB 5.1.4: DGifSlurp fails on empty comment
-  * Fix SF bug #87: Heap buffer overflow in 5.1.2 (gif2rgb).
+  * Fix SF bug #87: Heap buffer overflow in 5.1.2 (gif2rgb). (CVE-2016-3977 bsc#974847)
   * The horrible old autoconf build system has been removed with extreme prejudice. 
     You now build this simply by running "make" from the top-level directory.
 - Run spec-cleaner
