@@ -72,11 +72,11 @@ framework (package 'openjade').
 # -n %%{name}-1.3.2-rc2
 cp %{SOURCE1} dsssl
 cp %{SOURCE2} README.SUSE
-%patch1 -p1
-%patch2 -p1
-%patch3
-%patch4
-%patch5
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3
+%patch -P 4
+%patch -P 5
 
 %build
 # export CXXFLAGS='-O'
