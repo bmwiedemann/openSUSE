@@ -134,8 +134,7 @@ supports hardware accelerated 3D via the Direct Rendering Infrastructure
 the 830M and later.
 
 %prep
-%setup -q -n %{name}-%{_version}
-%patch0 -p1
+%autosetup -p1 -n %{name}-%{_version}
 
 %build
 # We have some -z now related errors during X default startup (boo#1197994):
