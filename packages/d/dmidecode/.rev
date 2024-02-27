@@ -455,4 +455,12 @@ Partial support for SMBIOS 3.3.0:
     <comment>Fix a regression which prevents root from using the --from-dump option after the latest security fixes. No big deal in practice as you aren't supposed to do that anyway.</comment>
     <requestid>1083252</requestid>
   </revision>
+  <revision rev="47" vrev="4">
+    <srcmd5>35a6c9d1f699b714898907ce5d5e955b</srcmd5>
+    <version>3.5</version>
+    <time>1709070318</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151864</requestid>
+  </revision>
 </revisionlist>

@@ -51,10 +51,7 @@ trusted. Dmidecode does not scan your hardware, it only reports what
 the BIOS told it to.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 
 %build
 CFLAGS="%{optflags}" make %{?_smp_mflags}
