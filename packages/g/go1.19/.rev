@@ -382,4 +382,12 @@
   * Reformat adjacent commment in spec file (forwarded request 1109611 from jfkw)</comment>
     <requestid>1109620</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>787284171dcdb7869180f4b25301d769</srcmd5>
+    <version>1.19.13</version>
+    <time>1709070573</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1152225 from dimstar)</comment>
+    <requestid>1152299</requestid>
+  </revision>
 </revisionlist>

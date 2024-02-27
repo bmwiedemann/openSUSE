@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:32:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Sep  6 15:08:50 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.19.13 (released 2023-09-06) includes fixes to the go command,
