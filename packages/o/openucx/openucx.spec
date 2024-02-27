@@ -137,9 +137,9 @@ hardware.
 %prep
 %setup -qn ucx-%version
 %ifarch s390x
-%patch1
+%patch -P 1
 %endif
-%patch2
+%patch -P 2
 
 %build
 autoreconf -fi
