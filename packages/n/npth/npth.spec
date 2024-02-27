@@ -1,7 +1,7 @@
 #
 # spec file for package npth
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,18 @@
 
 %define lname	libnpth0
 Name:           npth
-Version:        1.6
+Version:        1.7
 Release:        0
 Summary:        GNU Portable Threads library
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://gnupg.org/
+URL:            https://gnupg.org/software/npth/
 #Git-Clone:	git://git.gnupg.org/npth
 #DL-URL:        ftp://ftp.gnupg.org/gcrypt/npth/
 Source:         ftp://ftp.gnupg.org/gcrypt/npth/%name-%version.tar.bz2
 Source2:        ftp://ftp.gnupg.org/gcrypt/npth/%name-%version.tar.bz2.sig
 # https://www.gnupg.org/signature_key.html
-Source4:        %name.keyring
+Source4:        https://gnupg.org/signature_key.asc#/%name.keyring
 Source99:       %name.changes
 
 %description
@@ -79,14 +79,14 @@ find "%buildroot" -type f -name "*.la" -delete -print
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%_libdir/libnpth.so.0*
+%_libdir/libnpth.so.*
 
 %files devel
 %license COPYING.LIB
-%doc AUTHORS NEWS ChangeLog README
-%_bindir/npth-config
-%_includedir/npth.h
+%doc AUTHORS ChangeLog NEWS README
 %_libdir/libnpth.so
-%_datadir/aclocal/
+%_libdir/pkgconfig/*
+%_includedir/*
+%_datadir/aclocal/*
 
 %changelog

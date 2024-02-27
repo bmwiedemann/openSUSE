@@ -133,4 +133,12 @@
     <comment>- Remove old specfile constructs and doubleshipping of docs.</comment>
     <requestid>832097</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>160a151f34b3dd78285f12c783ac3b54</srcmd5>
+    <version>1.7</version>
+    <time>1709070257</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.7:</comment>
+    <requestid>1151350</requestid>
+  </revision>
 </revisionlist>

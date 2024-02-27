@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Feb 26 11:09:05 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.7:
+  * The npth-config command is not installed by default, because it is
+    now replaced by use of pkg-config/gpgrt-config with npth.pc.
+    Supply --enable-install-npth-config configure option, if needed.
+  * Support for legacy systems w/o pthread_rwlock_t support.  [T4306]
+  * New functions npth_poll and npth_ppoll for Unix.  [T5748]
+  * Fixes to improve support for 64 bit Windows.
+  * Fix declaration conflict using newer mingw versions.  [T5889]
+  * Fix build problems on Solaris 11.  [T4491]
+  * Fix detecting of the pthread library.  [rPTH6629a4b801]
+  * Clean up handling of unsafe semaphores on AIX.  [T6947]
+  * Link without -flat_namespace to support macOS 11.  [T5610]
+  * Release-info: https://dev.gnupg.org/T7010
+  * Update spec file
+  * Update upstream npth.keyring
+
+-------------------------------------------------------------------
 Fri Sep  4 12:28:41 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove old specfile constructs and doubleshipping of docs.
