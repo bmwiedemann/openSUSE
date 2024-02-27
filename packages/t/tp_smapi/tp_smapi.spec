@@ -42,8 +42,7 @@ It also includes an improved version of the HDAPS driver. The underlying hardwar
 and direct access to the embedded controller.
 
 %prep
-%setup -n tp_smapi-%{version}
-%patch0 -p2
+%autosetup -p2 -n tp_smapi-%{version}
 set -- *
 mkdir source
 mv "$@" source/
