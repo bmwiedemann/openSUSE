@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-public_suffix
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-public_suffix
-Version:        5.0.3
+Version:        5.0.4
 Release:        0
 %define mod_name public_suffix
 %define mod_full_name %{mod_name}-%{version}

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 29 14:22:46 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## 5.0.4
+
+### Changed
+
+- Reduced .gem file size (GH-259). [Thanks @ybiquitous]
+- Updated definitions.
+
+
+-------------------------------------------------------------------
 Fri Nov  3 07:50:35 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - ## 5.0.3
