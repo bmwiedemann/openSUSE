@@ -87,8 +87,7 @@ Conflicts:      filesystem < 84
 Firmware data files for Sound Open Firmware (SOF) drivers.
 
 %prep
-%setup -q -n sof-bin-%{version}
-%patch1 -p1
+%autosetup -p1 -n sof-bin-%{version}
 
 %build
 
