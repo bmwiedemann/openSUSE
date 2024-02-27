@@ -1,6 +1,6 @@
---- build/build.xml.sav	2007-08-25 16:17:48.000000000 +0200
-+++ build/build.xml	2007-08-25 16:18:14.000000000 +0200
-@@ -139,7 +139,9 @@
+--- build/build.xml	2024-02-25 20:09:56.345990216 +0100
++++ build/build.xml	2024-02-25 21:25:06.651720006 +0100
+@@ -141,7 +141,9 @@
    <!-- sets up the build environment (classpath and libs)                  -->
    <!-- =================================================================== -->
    <target name="build-prepare">
@@ -10,3 +10,11 @@
  
      <!-- Build classpath -->
      <path id="velocity.build.classpath">
+@@ -255,6 +257,7 @@
+       encoding="UTF-8"
+       debug="${debug}"
+       target="${javac.target}"
++      release="${javac.release}"
+       source="${javac.source}"
+       deprecation="${deprecation}"
+       optimize="${optimize}"

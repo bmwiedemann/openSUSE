@@ -218,4 +218,12 @@
     <comment></comment>
     <requestid>1148036</requestid>
   </revision>
+  <revision rev="29" vrev="14">
+    <srcmd5>44b1aae7cf84229938522da12e667b9e</srcmd5>
+    <version>1.7</version>
+    <time>1709070596</time>
+    <user>anag+factory</user>
+    <comment>Some compatibility cleanup</comment>
+    <requestid>1152439</requestid>
+  </revision>
 </revisionlist>

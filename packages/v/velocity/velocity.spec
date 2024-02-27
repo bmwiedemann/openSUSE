@@ -1,7 +1,7 @@
 #
 # spec file for package velocity
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -137,10 +137,14 @@ applications to be developed according to a true MVC model.
 %prep
 %setup -q
 cp %{SOURCE1} pom.xml
-%patch -P 0 -b .sav0
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 3 -p1
+%patch0 -b .sav0
+%patch1 -p1
+
+# Use apache-commons-lang3
+%pom_change_dep commons-lang:commons-lang org.apache.commons:commons-lang3:3.9
+%patch2 -p1
+
+%patch3 -p1
 
 find . -name '*.jar' -print -delete
 find . -name '*.class' -print -delete
@@ -169,7 +173,7 @@ build-jar-repository -s -p bin/lib commons-collections commons-lang3
 export CLASSPATH=$(build-classpath commons-collections commons-lang3)
 
 ant \
-  -Djavac.source=1.8 -Djavac.target=1.8 \
+  -Djavac.source=1.8 -Djavac.target=1.8 -Djavac.release=8 \
   -buildfile build/build.xml \
   jar javadocs
 

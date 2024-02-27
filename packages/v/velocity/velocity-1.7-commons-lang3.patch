@@ -1,20 +1,5 @@
---- velocity-1.7/pom.xml	2023-09-27 00:55:09.936941022 +0200
-+++ velocity-1.7/pom.xml	2023-09-27 00:55:44.023830711 +0200
-@@ -148,9 +148,9 @@
-       <version>3.2.1</version>
-     </dependency>
-     <dependency>
--      <groupId>commons-lang</groupId>
--      <artifactId>commons-lang</artifactId>
--      <version>2.4</version>
-+      <groupId>org.apache.commons</groupId>
-+      <artifactId>commons-lang3</artifactId>
-+      <version>3.9</version>
-     </dependency>
-     <dependency>
-       <groupId>oro</groupId>
---- velocity-1.7/src/java/org/apache/velocity/app/event/implement/EscapeHtmlReference.java	2023-09-27 00:55:09.973607930 +0200
-+++ velocity-1.7/src/java/org/apache/velocity/app/event/implement/EscapeHtmlReference.java	2023-09-27 00:55:44.023830711 +0200
+--- velocity-1.7/src/java/org/apache/velocity/app/event/implement/EscapeHtmlReference.java	2024-02-25 20:09:56.325990176 +0100
++++ velocity-1.7/src/java/org/apache/velocity/app/event/implement/EscapeHtmlReference.java	2024-02-25 20:10:38.639408321 +0100
 @@ -19,7 +19,7 @@
   * under the License.    
   */
@@ -33,8 +18,8 @@
      }
  
      /**
---- velocity-1.7/src/java/org/apache/velocity/app/event/implement/EscapeJavaScriptReference.java	2023-09-27 00:55:09.973607930 +0200
-+++ velocity-1.7/src/java/org/apache/velocity/app/event/implement/EscapeJavaScriptReference.java	2023-09-27 00:55:44.023830711 +0200
+--- velocity-1.7/src/java/org/apache/velocity/app/event/implement/EscapeJavaScriptReference.java	2024-02-25 20:09:56.325990176 +0100
++++ velocity-1.7/src/java/org/apache/velocity/app/event/implement/EscapeJavaScriptReference.java	2024-02-25 20:10:38.639408321 +0100
 @@ -19,7 +19,7 @@
   * under the License.    
   */
@@ -53,29 +38,29 @@
      }
  
      /**
---- velocity-1.7/src/java/org/apache/velocity/app/event/implement/EscapeSqlReference.java	2023-09-27 00:55:09.973607930 +0200
-+++ velocity-1.7/src/java/org/apache/velocity/app/event/implement/EscapeSqlReference.java	2023-09-27 00:55:44.023830711 +0200
-@@ -19,7 +19,7 @@
+--- velocity-1.7/src/java/org/apache/velocity/app/event/implement/EscapeSqlReference.java	2024-02-25 20:09:56.325990176 +0100
++++ velocity-1.7/src/java/org/apache/velocity/app/event/implement/EscapeSqlReference.java	2024-02-25 20:10:38.642741661 +0100
+@@ -19,8 +19,6 @@
   * under the License.    
   */
  
 -import org.apache.commons.lang.StringEscapeUtils;
-+import org.apache.commons.lang3.StringUtils;
- 
+-
  /**
   * Escapes the characters in a String to be suitable to pass to an SQL query.
-@@ -39,7 +39,8 @@
+  * @see <a href="http://jakarta.apache.org/commons/lang/api/org/apache/commons/lang/StringEscapeUtils.html#escapeSql(java.lang.String)">StringEscapeUtils</a>
+@@ -39,7 +37,8 @@
       */
      protected String escape(Object text)
      {
 -        return StringEscapeUtils.escapeSql(text.toString());
 +        // See https://commons.apache.org/proper/commons-lang/javadocs/api-2.6/org/apache/commons/lang/StringEscapeUtils.html#escapeSql(java.lang.String)
-+        return StringUtils.replace(text.toString(), "'", "''");
++        return text.toString().replaceAll("'", "''");
      }
  
      /**
---- velocity-1.7/src/java/org/apache/velocity/app/event/implement/EscapeXmlReference.java	2023-09-27 00:55:09.973607930 +0200
-+++ velocity-1.7/src/java/org/apache/velocity/app/event/implement/EscapeXmlReference.java	2023-09-27 00:55:44.023830711 +0200
+--- velocity-1.7/src/java/org/apache/velocity/app/event/implement/EscapeXmlReference.java	2024-02-25 20:09:56.325990176 +0100
++++ velocity-1.7/src/java/org/apache/velocity/app/event/implement/EscapeXmlReference.java	2024-02-25 20:14:52.949919458 +0100
 @@ -19,7 +19,7 @@
   * under the License.    
   */
@@ -85,30 +70,55 @@
  
  /**
   * Escape all XML entities.
---- velocity-1.7/src/java/org/apache/velocity/runtime/directive/Block.java	2023-09-27 00:55:09.976941285 +0200
-+++ velocity-1.7/src/java/org/apache/velocity/runtime/directive/Block.java	2023-09-27 00:55:44.023830711 +0200
-@@ -23,7 +23,7 @@
+@@ -39,7 +39,7 @@
+      */
+     protected String escape(Object text)
+     {
+-        return StringEscapeUtils.escapeXml(text.toString());
++        return StringEscapeUtils.escapeXml10(text.toString());
+     }
+ 
+     /**
+--- velocity-1.7/src/java/org/apache/velocity/runtime/directive/Block.java	2024-02-25 20:09:56.325990176 +0100
++++ velocity-1.7/src/java/org/apache/velocity/runtime/directive/Block.java	2024-02-25 20:19:30.850478725 +0100
+@@ -23,7 +23,6 @@
  import java.io.StringWriter;
  import java.io.Writer;
  
 -import org.apache.commons.lang.text.StrBuilder;
-+import org.apache.commons.lang3.text.StrBuilder;
  import org.apache.velocity.context.InternalContextAdapter;
  import org.apache.velocity.exception.TemplateInitException;
  import org.apache.velocity.runtime.Renderable;
---- velocity-1.7/src/java/org/apache/velocity/runtime/directive/RuntimeMacro.java	2023-09-27 00:55:09.976941285 +0200
-+++ velocity-1.7/src/java/org/apache/velocity/runtime/directive/RuntimeMacro.java	2023-09-27 00:55:44.027164066 +0200
-@@ -23,7 +23,7 @@
+@@ -110,7 +109,7 @@
+      */
+     protected String id(InternalContextAdapter context)
+     {
+-        StrBuilder str = new StrBuilder(100)
++        StringBuilder str = new StringBuilder(100)
+             .append("block $").append(key);
+         if (!context.getCurrentTemplateName().equals(getTemplateName()))
+         {
+--- velocity-1.7/src/java/org/apache/velocity/runtime/directive/RuntimeMacro.java	2024-02-25 20:09:56.325990176 +0100
++++ velocity-1.7/src/java/org/apache/velocity/runtime/directive/RuntimeMacro.java	2024-02-25 20:59:50.755384801 +0100
+@@ -23,7 +23,6 @@
  import java.io.Writer;
  import java.util.List;
  
 -import org.apache.commons.lang.text.StrBuilder;
-+import org.apache.commons.lang3.text.StrBuilder;
  import org.apache.velocity.context.InternalContextAdapter;
  import org.apache.velocity.exception.MethodInvocationException;
  import org.apache.velocity.exception.ParseErrorException;
---- velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/ASTDirective.java	2023-09-27 00:55:09.976941285 +0200
-+++ velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/ASTDirective.java	2023-09-27 00:55:44.027164066 +0200
+@@ -184,7 +183,7 @@
+     {
+         if (literal == null)
+         {
+-            StrBuilder buffer = new StrBuilder();
++            StringBuilder buffer = new StringBuilder();
+             Token t = node.getFirstToken();
+ 
+             while (t != null && t != node.getLastToken())
+--- velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/ASTDirective.java	2024-02-25 20:09:56.329323516 +0100
++++ velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/ASTDirective.java	2024-02-25 20:10:38.642741661 +0100
 @@ -22,7 +22,7 @@
  import java.io.IOException;
  import java.io.Writer;
@@ -118,8 +128,8 @@
  import org.apache.velocity.context.InternalContextAdapter;
  import org.apache.velocity.exception.MethodInvocationException;
  import org.apache.velocity.exception.ParseErrorException;
---- velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/ASTMethod.java	2023-09-27 00:55:09.980274640 +0200
-+++ velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/ASTMethod.java	2023-09-27 00:55:44.027164066 +0200
+--- velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/ASTMethod.java	2024-02-25 20:09:56.329323516 +0100
++++ velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/ASTMethod.java	2024-02-25 20:10:38.642741661 +0100
 @@ -21,8 +21,8 @@
  
  import java.lang.reflect.InvocationTargetException;
@@ -131,30 +141,97 @@
  import org.apache.velocity.app.event.EventHandlerUtil;
  import org.apache.velocity.context.InternalContextAdapter;
  import org.apache.velocity.exception.MethodInvocationException;
---- velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/ASTStringLiteral.java	2023-09-27 00:55:09.980274640 +0200
-+++ velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/ASTStringLiteral.java	2023-09-27 00:55:44.027164066 +0200
-@@ -21,7 +21,7 @@
+--- velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/ASTStringLiteral.java	2024-02-25 20:09:56.329323516 +0100
++++ velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/ASTStringLiteral.java	2024-02-25 21:05:38.532745163 +0100
+@@ -21,7 +21,6 @@
  import java.io.StringReader;
  import java.io.StringWriter;
  
 -import org.apache.commons.lang.text.StrBuilder;
-+import org.apache.commons.lang3.text.StrBuilder;
  import org.apache.velocity.context.InternalContextAdapter;
  import org.apache.velocity.exception.TemplateInitException;
  import org.apache.velocity.exception.VelocityException;
---- velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/NodeUtils.java	2023-09-27 00:55:09.980274640 +0200
-+++ velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/NodeUtils.java	2023-09-27 00:55:44.027164066 +0200
-@@ -19,7 +19,7 @@
+@@ -227,14 +226,13 @@
+      */     
+     private String replaceQuotes(String s, char literalQuoteChar)
+     {
+-        if( (literalQuoteChar == '"' && s.indexOf("\"") == -1) ||
+-            (literalQuoteChar == '\'' && s.indexOf("'") == -1) )
++        if( (literalQuoteChar == '"' && !s.contains("\"")) ||
++            (literalQuoteChar == '\'' && !s.contains("'")) )
+         {
+             return s;
+         }
+     
+-        StrBuilder result = new StrBuilder(s.length());
+-        char prev = ' ';
++        StringBuilder result = new StringBuilder(s.length());
+         for(int i = 0, is = s.length(); i < is; i++)
+         {
+             char c = s.charAt(i);
+@@ -264,7 +262,7 @@
+         int u = string.indexOf("\\u");
+         if (u < 0) return string;
+ 
+-        StrBuilder result = new StrBuilder();
++        StringBuilder result = new StringBuilder();
+         
+         int lastCopied = 0;
+ 
+--- velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/NodeUtils.java	2024-02-25 20:09:56.329323516 +0100
++++ velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/NodeUtils.java	2024-02-25 21:11:08.083396305 +0100
+@@ -19,7 +19,6 @@
   * under the License.    
   */
  
 -import org.apache.commons.lang.text.StrBuilder;
-+import org.apache.commons.lang3.text.StrBuilder;
  import org.apache.velocity.context.Context;
  import org.apache.velocity.exception.MethodInvocationException;
  import org.apache.velocity.runtime.parser.ParserConstants;
---- velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/PropertyExecutor.java	2023-09-27 00:55:09.980274640 +0200
-+++ velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/PropertyExecutor.java	2023-09-27 00:55:44.027164066 +0200
+@@ -55,11 +54,11 @@
+      * special tokens, this is simply a way to
+      * extract them.
+      * @param t the Token
+-     * @return StrBuilder with the special tokens.
++     * @return StringBuilder with the special tokens.
+      */
+-    public static StrBuilder getSpecialText(Token t)
++    public static StringBuilder getSpecialText(Token t)
+     {
+-        StrBuilder sb = new StrBuilder();
++        StringBuilder sb = new StringBuilder();
+ 
+         Token tmp_t = t.specialToken;
+ 
+@@ -153,7 +152,7 @@
+         }
+         else 
+         {
+-            StrBuilder special = getSpecialText(t);
++            StringBuilder special = getSpecialText(t);
+             if (special.length() > 0)
+             {
+                 return special.append(t.image).toString();
+@@ -187,7 +186,7 @@
+         if( argStr.indexOf('$') == -1 )
+             return argStr;
+         
+-        StrBuilder argBuf = new StrBuilder();
++        StringBuilder argBuf = new StringBuilder();
+ 
+         for (int cIdx = 0, is = argStr.length(); cIdx < is;)
+         {
+@@ -195,7 +194,7 @@
+             
+             if( ch == '$' )
+             {
+-                StrBuilder nameBuf = new StrBuilder();
++                StringBuilder nameBuf = new StringBuilder();
+                 for (++cIdx ; cIdx < is; ++cIdx)
+                 {
+                     ch = argStr.charAt(cIdx);
+--- velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/PropertyExecutor.java	2024-02-25 20:09:56.329323516 +0100
++++ velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/PropertyExecutor.java	2024-02-25 20:10:38.646075001 +0100
 @@ -21,7 +21,7 @@
  
  import java.lang.reflect.InvocationTargetException;
@@ -164,56 +241,90 @@
  import org.apache.velocity.exception.VelocityException;
  import org.apache.velocity.runtime.RuntimeLogger;
  import org.apache.velocity.runtime.log.Log;
---- velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/SetPropertyExecutor.java	2023-09-27 00:55:09.980274640 +0200
-+++ velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/SetPropertyExecutor.java	2023-09-27 00:55:44.030497422 +0200
-@@ -21,8 +21,8 @@
+--- velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/SetPropertyExecutor.java	2024-02-25 20:09:56.329323516 +0100
++++ velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/SetPropertyExecutor.java	2024-02-25 21:13:00.260284591 +0100
+@@ -21,8 +21,7 @@
  
  import java.lang.reflect.InvocationTargetException;
  
 -import org.apache.commons.lang.StringUtils;
 -import org.apache.commons.lang.text.StrBuilder;
 +import org.apache.commons.lang3.StringUtils;
-+import org.apache.commons.lang3.text.StrBuilder;
  import org.apache.velocity.exception.VelocityException;
  import org.apache.velocity.runtime.log.Log;
  import org.apache.velocity.util.introspection.Introspector;
---- velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/SimpleNode.java	2023-09-27 00:55:09.980274640 +0200
-+++ velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/SimpleNode.java	2023-09-27 00:55:44.030497422 +0200
-@@ -22,8 +22,8 @@
+@@ -81,7 +80,7 @@
+ 
+         try
+         {
+-            StrBuilder sb = new StrBuilder("set");
++            StringBuilder sb = new StringBuilder("set");
+             sb.append(property);
+ 
+             setMethod(introspector.getMethod(clazz, sb.toString(), params));
+--- velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/SimpleNode.java	2024-02-25 20:09:56.329323516 +0100
++++ velocity-1.7/src/java/org/apache/velocity/runtime/parser/node/SimpleNode.java	2024-02-25 21:14:08.087085246 +0100
+@@ -22,8 +22,7 @@
  import java.io.IOException;
  import java.io.Writer;
  
 -import org.apache.commons.lang.builder.ToStringBuilder;
 -import org.apache.commons.lang.text.StrBuilder;
 +import org.apache.commons.lang3.builder.ToStringBuilder;
-+import org.apache.commons.lang3.text.StrBuilder;
  import org.apache.velocity.context.InternalContextAdapter;
  import org.apache.velocity.exception.MethodInvocationException;
  import org.apache.velocity.exception.ParseErrorException;
---- velocity-1.7/src/java/org/apache/velocity/runtime/parser/Parser.java	2023-09-27 00:55:09.976941285 +0200
-+++ velocity-1.7/src/java/org/apache/velocity/runtime/parser/Parser.java	2023-09-27 00:55:44.027164066 +0200
-@@ -10,7 +10,7 @@
+@@ -280,7 +279,7 @@
+         }
+ 
+         Token t = first;
+-        StrBuilder sb = new StrBuilder(NodeUtils.tokenLiteral(t));
++        StringBuilder sb = new StringBuilder(NodeUtils.tokenLiteral(t));
+         while (t != last)
+         {
+             t = t.next;
+@@ -414,7 +413,7 @@
+      */
+     public String toString()
+     {
+-        StrBuilder tokens = new StrBuilder();
++        StringBuilder tokens = new StringBuilder();
+         
+         for (Token t = getFirstToken(); t != null; )
+         {
+--- velocity-1.7/src/java/org/apache/velocity/runtime/parser/Parser.java	2024-02-25 20:09:56.329323516 +0100
++++ velocity-1.7/src/java/org/apache/velocity/runtime/parser/Parser.java	2024-02-25 21:14:59.367186560 +0100
+@@ -10,7 +10,6 @@
  import org.apache.velocity.runtime.directive.Macro;
  import org.apache.velocity.runtime.directive.MacroParseException;
  import org.apache.velocity.util.StringUtils;
 -import org.apache.commons.lang.text.StrBuilder;
-+import org.apache.commons.lang3.text.StrBuilder;
  import org.apache.velocity.runtime.RuntimeConstants;
  
  /**
---- velocity-1.7/src/java/org/apache/velocity/runtime/parser/ParserTokenManager.java	2023-09-27 00:55:09.976941285 +0200
-+++ velocity-1.7/src/java/org/apache/velocity/runtime/parser/ParserTokenManager.java	2023-09-27 00:55:44.027164066 +0200
-@@ -9,7 +9,7 @@
+--- velocity-1.7/src/java/org/apache/velocity/runtime/parser/ParserTokenManager.java	2024-02-25 20:09:56.329323516 +0100
++++ velocity-1.7/src/java/org/apache/velocity/runtime/parser/ParserTokenManager.java	2024-02-25 21:15:47.777282210 +0100
+@@ -9,7 +9,6 @@
  import org.apache.velocity.runtime.directive.Macro;
  import org.apache.velocity.runtime.directive.MacroParseException;
  import org.apache.velocity.util.StringUtils;
 -import org.apache.commons.lang.text.StrBuilder;
-+import org.apache.commons.lang3.text.StrBuilder;
  import org.apache.velocity.runtime.RuntimeConstants;
  
  /** Token Manager. */
---- velocity-1.7/src/java/org/apache/velocity/runtime/resource/loader/ClasspathResourceLoader.java	2023-09-27 00:55:09.980274640 +0200
-+++ velocity-1.7/src/java/org/apache/velocity/runtime/resource/loader/ClasspathResourceLoader.java	2023-09-27 00:55:44.030497422 +0200
+@@ -5158,8 +5157,8 @@
+ protected CharStream input_stream;
+ private final int[] jjrounds = new int[105];
+ private final int[] jjstateSet = new int[210];
+-private final StrBuilder jjimage = new StrBuilder();
+-private StrBuilder image = jjimage;
++private final StringBuilder jjimage = new StringBuilder();
++private StringBuilder image = jjimage;
+ private int jjimageLen;
+ private int lengthOfMatch;
+ protected char curChar;
+--- velocity-1.7/src/java/org/apache/velocity/runtime/resource/loader/ClasspathResourceLoader.java	2024-02-25 20:09:56.329323516 +0100
++++ velocity-1.7/src/java/org/apache/velocity/runtime/resource/loader/ClasspathResourceLoader.java	2024-02-25 20:10:38.646075001 +0100
 @@ -22,7 +22,7 @@
  import java.io.InputStream;
  
@@ -223,8 +334,8 @@
  import org.apache.velocity.exception.ResourceNotFoundException;
  import org.apache.velocity.runtime.resource.Resource;
  import org.apache.velocity.util.ClassUtils;
---- velocity-1.7/src/java/org/apache/velocity/runtime/resource/loader/DataSourceResourceLoader.java	2023-09-27 00:55:09.980274640 +0200
-+++ velocity-1.7/src/java/org/apache/velocity/runtime/resource/loader/DataSourceResourceLoader.java	2023-09-27 00:55:44.030497422 +0200
+--- velocity-1.7/src/java/org/apache/velocity/runtime/resource/loader/DataSourceResourceLoader.java	2024-02-25 20:09:56.329323516 +0100
++++ velocity-1.7/src/java/org/apache/velocity/runtime/resource/loader/DataSourceResourceLoader.java	2024-02-25 20:10:38.646075001 +0100
 @@ -218,7 +218,7 @@
      public synchronized InputStream getResourceStream(final String name)
          throws ResourceNotFoundException
@@ -234,8 +345,8 @@
          {
              throw new ResourceNotFoundException("DataSourceResourceLoader: Template name was empty or null");
          }
---- velocity-1.7/src/java/org/apache/velocity/runtime/resource/loader/FileResourceLoader.java	2023-09-27 00:55:09.980274640 +0200
-+++ velocity-1.7/src/java/org/apache/velocity/runtime/resource/loader/FileResourceLoader.java	2023-09-27 00:55:44.030497422 +0200
+--- velocity-1.7/src/java/org/apache/velocity/runtime/resource/loader/FileResourceLoader.java	2024-02-25 20:09:56.329323516 +0100
++++ velocity-1.7/src/java/org/apache/velocity/runtime/resource/loader/FileResourceLoader.java	2024-02-25 20:10:38.646075001 +0100
 @@ -118,7 +118,7 @@
          /*
           * Make sure we have a valid templateName.
@@ -245,8 +356,8 @@
          {
              /*
               * If we don't get a properly formed templateName then
---- velocity-1.7/src/java/org/apache/velocity/runtime/resource/loader/JarResourceLoader.java	2023-09-27 00:55:09.980274640 +0200
-+++ velocity-1.7/src/java/org/apache/velocity/runtime/resource/loader/JarResourceLoader.java	2023-09-27 00:55:44.030497422 +0200
+--- velocity-1.7/src/java/org/apache/velocity/runtime/resource/loader/JarResourceLoader.java	2024-02-25 20:09:56.329323516 +0100
++++ velocity-1.7/src/java/org/apache/velocity/runtime/resource/loader/JarResourceLoader.java	2024-02-25 20:10:38.646075001 +0100
 @@ -195,7 +195,7 @@
      {
          InputStream results = null;
@@ -256,8 +367,8 @@
          {
              throw new ResourceNotFoundException("Need to have a resource!");
          }
---- velocity-1.7/src/java/org/apache/velocity/runtime/resource/loader/StringResourceLoader.java	2023-09-27 00:55:09.980274640 +0200
-+++ velocity-1.7/src/java/org/apache/velocity/runtime/resource/loader/StringResourceLoader.java	2023-09-27 00:55:44.030497422 +0200
+--- velocity-1.7/src/java/org/apache/velocity/runtime/resource/loader/StringResourceLoader.java	2024-02-25 20:09:56.329323516 +0100
++++ velocity-1.7/src/java/org/apache/velocity/runtime/resource/loader/StringResourceLoader.java	2024-02-25 20:10:38.646075001 +0100
 @@ -26,7 +26,7 @@
  import java.io.InputStream;
  import java.io.UnsupportedEncodingException;
@@ -267,8 +378,8 @@
  import org.apache.velocity.exception.ResourceNotFoundException;
  import org.apache.velocity.exception.VelocityException;
  import org.apache.velocity.runtime.resource.Resource;
---- velocity-1.7/src/java/org/apache/velocity/runtime/resource/loader/URLResourceLoader.java	2023-09-27 00:55:09.980274640 +0200
-+++ velocity-1.7/src/java/org/apache/velocity/runtime/resource/loader/URLResourceLoader.java	2023-09-27 00:55:44.030497422 +0200
+--- velocity-1.7/src/java/org/apache/velocity/runtime/resource/loader/URLResourceLoader.java	2024-02-25 20:09:56.329323516 +0100
++++ velocity-1.7/src/java/org/apache/velocity/runtime/resource/loader/URLResourceLoader.java	2024-02-25 20:10:38.646075001 +0100
 @@ -26,7 +26,7 @@
  import java.net.URLConnection;
  import java.util.HashMap;
@@ -278,8 +389,8 @@
  import org.apache.velocity.exception.VelocityException;
  import org.apache.velocity.exception.ResourceNotFoundException;
  import org.apache.velocity.runtime.resource.Resource;
---- velocity-1.7/src/java/org/apache/velocity/runtime/resource/ResourceManagerImpl.java	2023-09-27 00:55:09.980274640 +0200
-+++ velocity-1.7/src/java/org/apache/velocity/runtime/resource/ResourceManagerImpl.java	2023-09-27 00:55:44.030497422 +0200
+--- velocity-1.7/src/java/org/apache/velocity/runtime/resource/ResourceManagerImpl.java	2024-02-25 20:09:56.329323516 +0100
++++ velocity-1.7/src/java/org/apache/velocity/runtime/resource/ResourceManagerImpl.java	2024-02-25 20:10:38.646075001 +0100
 @@ -158,7 +158,7 @@
  
          Object cacheObject = null;
@@ -298,19 +409,27 @@
              {
                  log.warn("Declared encoding for template '" +
                               resource.getName() +
---- velocity-1.7/src/java/org/apache/velocity/runtime/RuntimeInstance.java	2023-09-27 00:55:09.976941285 +0200
-+++ velocity-1.7/src/java/org/apache/velocity/runtime/RuntimeInstance.java	2023-09-27 00:55:44.023830711 +0200
-@@ -32,7 +32,7 @@
+--- velocity-1.7/src/java/org/apache/velocity/runtime/RuntimeInstance.java	2024-02-25 20:09:56.329323516 +0100
++++ velocity-1.7/src/java/org/apache/velocity/runtime/RuntimeInstance.java	2024-02-25 21:17:20.747465879 +0100
+@@ -32,7 +32,6 @@
  import java.util.Properties;
  
  import org.apache.commons.collections.ExtendedProperties;
 -import org.apache.commons.lang.text.StrBuilder;
-+import org.apache.commons.lang3.text.StrBuilder;
  import org.apache.velocity.Template;
  import org.apache.velocity.app.event.EventCartridge;
  import org.apache.velocity.app.event.EventHandler;
---- velocity-1.7/src/java/org/apache/velocity/runtime/VelocimacroFactory.java	2023-09-27 00:55:09.976941285 +0200
-+++ velocity-1.7/src/java/org/apache/velocity/runtime/VelocimacroFactory.java	2023-09-27 00:55:44.023830711 +0200
+@@ -1469,7 +1468,7 @@
+         }
+ 
+         /* now just create the VM call, and use evaluate */
+-        StrBuilder template = new StrBuilder("#");
++        StringBuilder template = new StringBuilder("#");
+         template.append(vmName);
+         template.append("(");
+         for( int i = 0; i < params.length; i++)
+--- velocity-1.7/src/java/org/apache/velocity/runtime/VelocimacroFactory.java	2024-02-25 20:09:56.332656856 +0100
++++ velocity-1.7/src/java/org/apache/velocity/runtime/VelocimacroFactory.java	2024-02-25 20:10:38.646075001 +0100
 @@ -26,7 +26,7 @@
  import java.util.Vector;
  import java.util.ArrayList;
@@ -320,19 +439,36 @@
  import org.apache.velocity.Template;
  import org.apache.velocity.exception.VelocityException;
  import org.apache.velocity.runtime.directive.Directive;
---- velocity-1.7/src/java/org/apache/velocity/util/introspection/ClassMap.java	2023-09-27 00:55:09.980274640 +0200
-+++ velocity-1.7/src/java/org/apache/velocity/util/introspection/ClassMap.java	2023-09-27 00:55:44.030497422 +0200
-@@ -23,7 +23,7 @@
+--- velocity-1.7/src/java/org/apache/velocity/util/introspection/ClassMap.java	2024-02-25 20:09:56.332656856 +0100
++++ velocity-1.7/src/java/org/apache/velocity/util/introspection/ClassMap.java	2024-02-25 21:20:43.131199017 +0100
+@@ -23,7 +23,6 @@
  import java.lang.reflect.Modifier;
  import java.util.HashMap;
  import java.util.Map;
 -import org.apache.commons.lang.text.StrBuilder;
-+import org.apache.commons.lang3.text.StrBuilder;
  import org.apache.velocity.runtime.log.Log;
  import org.apache.velocity.util.MapFactory;
  
---- velocity-1.7/src/test/org/apache/velocity/io/UnicodeInputStreamTestCase.java	2023-09-27 00:55:09.983607995 +0200
-+++ velocity-1.7/src/test/org/apache/velocity/io/UnicodeInputStreamTestCase.java	2023-09-27 00:55:44.030497422 +0200
+@@ -314,7 +313,7 @@
+                 return method.getName();
+             }
+ 
+-            StrBuilder methodKey = new StrBuilder((args+1)*16).append(method.getName());
++            StringBuilder methodKey = new StringBuilder((args+1)*16).append(method.getName());
+ 
+             for (int j = 0; j < args; j++)
+             {
+@@ -349,7 +348,7 @@
+                 return method;
+             }
+ 
+-            StrBuilder methodKey = new StrBuilder((args+1)*16).append(method);
++            StringBuilder methodKey = new StringBuilder((args+1)*16).append(method);
+ 
+             for (int j = 0; j < args; j++)
+             {
+--- velocity-1.7/src/test/org/apache/velocity/io/UnicodeInputStreamTestCase.java	2024-02-25 20:09:56.332656856 +0100
++++ velocity-1.7/src/test/org/apache/velocity/io/UnicodeInputStreamTestCase.java	2024-02-25 20:10:38.649408341 +0100
 @@ -27,7 +27,7 @@
  import junit.framework.TestCase;
  import junit.framework.TestSuite;
@@ -342,8 +478,8 @@
  
  
  /**
---- velocity-1.7/src/test/org/apache/velocity/test/BaseTestCase.java	2023-09-27 00:55:09.983607995 +0200
-+++ velocity-1.7/src/test/org/apache/velocity/test/BaseTestCase.java	2023-09-27 00:55:44.030497422 +0200
+--- velocity-1.7/src/test/org/apache/velocity/test/BaseTestCase.java	2024-02-25 20:09:56.335990196 +0100
++++ velocity-1.7/src/test/org/apache/velocity/test/BaseTestCase.java	2024-02-25 20:10:38.649408341 +0100
 @@ -353,7 +353,7 @@
                  buf.append(baseFile.getPath());
              }
@@ -353,8 +489,8 @@
              {
                  buf.append('.').append(ext);
              }
---- velocity-1.7/src/test/org/apache/velocity/test/MethodCacheKeyTestCase.java	2023-09-27 00:55:09.983607995 +0200
-+++ velocity-1.7/src/test/org/apache/velocity/test/MethodCacheKeyTestCase.java	2023-09-27 00:55:44.030497422 +0200
+--- velocity-1.7/src/test/org/apache/velocity/test/MethodCacheKeyTestCase.java	2024-02-25 20:09:56.335990196 +0100
++++ velocity-1.7/src/test/org/apache/velocity/test/MethodCacheKeyTestCase.java	2024-02-25 20:10:38.649408341 +0100
 @@ -21,7 +21,7 @@
  
  import junit.framework.TestCase;

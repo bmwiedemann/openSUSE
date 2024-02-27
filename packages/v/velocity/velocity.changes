@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 27 15:50:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patches:
+  * velocity-1.7-commons-lang3.patch
+    + Use Java 8+ APIs instead of commons-lang3 ones whenever it is
+      possible, i.e. StringBuilder instead of StrBuilder
+  * velocity-build_xml.patch
+    + In order to achieve Java 8 API compatibility, specify release
+      8 in ant build whenever it is possible
+
+-------------------------------------------------------------------
 Tue Feb 20 13:16:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
