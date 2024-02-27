@@ -38,8 +38,8 @@ This script detects what options to pass to Compiz to get it
 started, and start a default plugin and possibly window decorator.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
+
 cp -f %{SOURCE2} Compiz.desktop
 cp -f %{SOURCE3} config.skel
 
