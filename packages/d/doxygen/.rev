@@ -1166,4 +1166,12 @@
   + reproducible.patch</comment>
     <requestid>1140578</requestid>
   </revision>
+  <revision rev="99" vrev="3">
+    <srcmd5>076349683dad2ca48e59a35c91ccf4aa</srcmd5>
+    <version>1.10.0</version>
+    <time>1709070223</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1150589 from dimstar)</comment>
+    <requestid>1150740</requestid>
+  </revision>
 </revisionlist>

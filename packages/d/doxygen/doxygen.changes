@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 07:48:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Jan 22 11:06:03 UTC 2024 - pgajdos@suse.com
 
 - reintroduce useful reproducible.patch

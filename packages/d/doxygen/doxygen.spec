@@ -63,13 +63,13 @@ language VHDL.
 %prep
 %setup -q
 # Leap 15 and SLE don't accept '%%autopatch -M'
-%patch1 -p1
+%patch -P 1 -p1
 %if %{with libclang}
 %if 0%{?sle_version} == 150100 || (0%{?sle_version} == 150200 && !0%{?is_opensuse})
-%patch2 -p1
+%patch -P 2 -p1
 %endif
 %endif
-%patch3 -p1
+%patch -P 3 -p1
 
 %build
 %cmake \
