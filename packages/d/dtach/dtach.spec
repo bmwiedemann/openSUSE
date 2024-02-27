@@ -38,8 +38,7 @@ screen -x) is available, different terminal types or even sizes are not
 handled.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure

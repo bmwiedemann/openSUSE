@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 08:06:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Fri Jan 28 11:56:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use versionrewrite to properly set spec file version
