@@ -1,7 +1,7 @@
 #
 # spec file for package gopls
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gopls
-Version:        0.14.2
+Version:        0.15.0
 Release:        0
 Summary:        Go LSP protocol language server
 License:        Apache-2.0 AND MIT AND BSD-3-Clause
@@ -44,9 +44,10 @@ mv vendor %{name}
 %build
 # Change to subdir, see comment in prep phase
 cd %{name}
-go build \
-   -mod=vendor \
-   -buildmode=pie \
+%ifnarch ppc64
+export GOFLAGS="-buildmode=pie"
+%endif
+go build
 
 %check
 # Account for subdir, see comment in prep phase

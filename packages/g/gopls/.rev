@@ -79,4 +79,18 @@
   * gopls: upgrade x/telemetry and account for new mode logic (forwarded request 1127178 from jfkw)</comment>
     <requestid>1127191</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>634710f7106d8c79dca63e16a23c2a21</srcmd5>
+    <version>0.15.0</version>
+    <time>1709070475</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.15.0:
+- Packaging improvements:
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS=&quot;-buildmode=pie&quot; %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable (forwarded request 1151968 from jfkw)</comment>
+    <requestid>1151969</requestid>
+  </revision>
 </revisionlist>

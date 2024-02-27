@@ -1,4 +1,311 @@
 -------------------------------------------------------------------
+Mon Feb 26 21:39:43 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.15.0:
+  * gopls: update go.mod for v0.15.0-pre.5
+  * gopls/internal/cache: don't create Views for vendored modules
+  * gopls/internal/cache: fix two bugs related to workspace packages
+  * gopls/internal/settings: default "includeReplaceInWorkspace" to false
+  * gopls: update go.mod for v0.15.0-pre.4
+  * gopls/internal/server: disambiguate diagnostics by OS,ARCH
+  * gopls: update go.mod for v0.15.0-pre.3
+  * gopls/internal/test/integration: slightly more ergonomic FolderSettings
+  * gopls/internal/server: fix two bugs related to dynamic configuration
+  * gopls/internal/golang: close open file
+  * gopls: update x/telemetry dependency to fix crash
+  * gopls: record that v0.15 will be the last to support go1.18
+  * gopls/internal/settings: add a hidden option to disable zero config
+  * gopls/internal/golang: add resolve support for inline refactorings
+  * gopls/internal/cache: treat local replaces as workspace modules
+  * gopls/internal/cache: check views on any on-disk change to go.mod files
+  * gopls: update telemetry
+  * gopls/internal/cache: fix crash in analysis
+  * gopls/internal/utils/immutable: remove unused Map.Keys
+  * gopls/semantic: elide zero-length tokens
+  * gopls/doc: audit for types.Alias safety
+  * gopls: update go.mod for v0.15.0-pre.2
+  * gopls/internal/cache: prime goimports cache asynchronously
+  * gopls/internal/cache: share goimports state for GOMODCACHE
+  * gopls/internal/test/integration/bench: improve completion benchmarks
+  * gopls/internal/test/marker: skip on LUCI solaris builders
+  * gopls/internal/test/integration: add a test for an inner go.work file
+  * gopls/internal/settings: deprecate "allowModfileModifications"
+  * gopls/internal/cache: remove findWorkspaceModFile
+  * gopls/internal/cache: detect and reinit on workspace vendor changes
+  * gopls/internal/golang: add missing check for nil funcBody
+  * gopls/internal/golang: move Go semantic tokens out of server
+  * gopls: remove unused parameters
+  * gopls/internal/cache: add assertions for export data inconsistency
+  * gopls/internal/cache: support workspace vendoring
+  * gopls/internal/golang: downgrade bug.Reportf for missing builtin
+  * gopls/internal/cache: allow command-line-package >1 CompileGoFiles
+  * gopls/internal/cache/metadata: assert graph is acyclic
+  * gopls/internal/golang: hover: show embedded fields
+  * gopls/internal/lsp/source: highlight returns correctly
+  * gopls: enable crashmonitor for unexpected crashes
+  * gopls: update third party dependencies
+  * gopls/internal/test/marker: reject "module testdata"
+  * gopls/internal/analysis/undeclaredname: improve fix name
+  * gopls/internal/test/marker/testdata: move test to correct location
+  * gopls/internal/cache/imports: simplify importsState invalidation
+  * gopls/internal/golang: hover: show type's methods after doc comment
+  * gopls: update x/telemetry dependency
+  * gopls/internal/test/integration/bench: fix broken benchmarks
+  * gopls/internal/cache: memoize the view filter func
+  * gopls/internal/cache: skip TestZeroConfigAlgorithm on wasm
+  * gopls/doc/emacs.md: explain how to organize imports automatically
+  * gopls/internal/golang: don't bug.Report repaired ASTs in hover
+  * gopls/internal/test: await quiescence in TestInconsistentVendoring
+  * gopls/doc: s/source/golang/ in the SVG file
+  * gopls: manual tweaks after the lsp/ -> . rename
+  * gopls/internal/protocol/command: move from ../lsp
+  * gopls/internal/protocol: move out of lsp/
+  * gopls/internal/cache: move out of lsp/
+  * gopls/internal/golang: move from lsp/source
+  * gopls/internal/lsprpc: move out of lsp/
+  * gopls: use relative watched file patterns if supported
+  * gopls/internal/progress: simplify API
+  * gopls/internal/progress: move from lsp/
+  * gopls/internal/telemetry/cmd/stacks: include client name in report
+  * gopls/internal/lsp/lsprpc: radically reduce API
+  * gopls/doc: add Helix editor documentation for gopls
+  * gopls/internal/test/integration: add regtest for hover crash
+  * gopls/internal/lsp/cache: clean up public API
+  * gopls/internal/lsp/cache: don't report a bug for standalone test files
+  * gopls/internal/lsp/source: address problems detected by staticcheck
+  * gopls/internal/test/marker: re-enable some tests
+  * gopls: consolidate analyzers, eliminating "convenience" analyzers
+  * gopls/internal/lsp/cache: allow versions of form "go1.2.3"
+  * gopls/internal/lsp/cache: fix bug reports from toGobDiagnostics
+  * gopls/internal/lsp/source: move Go CodeActions logic from server
+  * gopls/internal/lsp/source: show promoted methods in hover
+  * gopls/doc/design: rewrite the architecture overview
+  * gopls/internal/version: amend the year in a recent copyright header
+  * gopls/internal/lsp/source: factor edit conversion utils
+  * gopls/internal/server: analyze widest packages for open files
+  * gopls: add a main.version variable to override the version at linktime
+  * gopls/internal/lsp/source/completion: infer parameter types
+  * gopls/internal/lsp/source: fix Fix titles
+  * gopls/internal/test/marker: fix test breakage due to semantic conflict
+  * gopls/internal/analysis/unusedparams: eliminate false positives
+  * gopls/internal/lsp/protocol: fix TestURIFromPath on windows
+  * gopls/internal/test/marker: update skip comment for addgowork.txt
+  * gopls/internal/server: simplify DiagnoseFiles to avoid a race
+  * gopls/internal/test/integration: fix flakiness of TestResolveImportCycle
+  * gopls/internal/lsp/protocol: deliver log messages in order
+  * gopls/internal/test/marker: skip on solaris-amd64-oraclerel
+  * gopls: simplify gopls command configuration
+  * gopls/internal/test/marker: regenerate golden data
+  * gopls/internal/lsp/source/stub: trim version suffix from module path
+  * gopls/internal/lsp/cache: (re-)ensure clean shutdown
+  * gopls/internal/lsp/source/completion: support postfix completion (iferr,
+  * gopls/internal/lsp/source: add receiver name to stubbed methods
+  * gopls/internal/test: skip marker tests on darwin builders if -short
+  * gopls: update go.mod for v0.15.0-pre.1
+  * all: update codereview.cfg for gopls-release-branch.0.15
+  * gopls/internal/lsp/cache: address additional comments from CL 553095
+  * gopls/internal/cmd: factor three loops in fix subcommand
+  * gopls/internal/lsp/cache: simplify critical errors
+  * gopls/internal/lsp/cache: don't scan for modules when defining a view
+  * gopls/internal/lsp/cache: remove validBuildConfiguration
+  * gopls/stub: support for method generation with same name but different receiver
+  * gopls/internal/lsp/source/completion: complete return snippet
+  * gopls/internal/lsp/cache: add dynamic build tag support
+  * gopls/internal/lsp/source: simplify SuggestedFix plumbing
+  * gopls/internal/server: simplify fileOf (née beginFileRequest)
+  * gopls/internal/lsp/cache: add support for checking views from tests
+  * gopls/internal/lsp/cache: associate env with folders, not views
+  * gopls/internal/lsp/cache: finish integrating the zero-config algorithm
+  * gopls/internal/lsp/cache: don't preserve sequence IDs in updated views
+  * gopls/internal/lsp/cache: switch to new bestViewForURI logic
+  * gopls/internal/lsp/cache: add views for unused modules in selectViews
+  * gopls/internal/work: fix crash during go.work completion
+  * gopls/internal/lsp/cache: add the zero-config algorithm, and a unit test
+  * gopls/internal/lsp/cache: simplify view definitions
+  * gopls/internal/lsp/cache: reconcile view modes and workspace packages
+  * gopls/internal: remove myers diff implementation from gopls
+  * gopls/internal: remove old diff
+  * gopls/internal/server: print stderr in go mod vendor error message
+  * gopls/internal/server: rewrite the server diagnostic tracking
+  * gopls/internal/lsp/cache: do not block View.Shutdown on Snapshot work
+  * gopls/internal/lsp/cache: allow "" or "null" Diagnostics.Data
+  * gopls: remove dead types and fields
+  * gopls/internal/lsp/protocol: request.params is optional
+  * gopls/internal/lsp/source: rename: update the doc link associated with the object
+  * gopls/internal/test: set GOPACKAGESDRIVER=off for new marker tests
+  * gopls/internal/test/marker: minor clean up of marker test doc
+  * gopls/internal/lsp/source: hovering over broken packages is not an error
+  * gopls/internal/analysis/fillstruct: don't panic with invalid fields
+  * gopls/internal/util/goversion: warn about EOL for Go 1.18
+  * gopls/internal/settings: remove MemoryMode option
+  * gopls/protocol: Allow AnnotatedTextEdits
+  * gopls/internal/analysis/stubmethods: fix OOB panic in fromValueSpec
+  * gopls/internal/lsp/protocol: report panics in RPC goroutines
+  * gopls/internal: don't bug.Report when given an invalid position
+  * gopls/internal/lsp/source: forgive inliner failures in ill-typed code
+  * gopls/internal/lsp/source: improve method hover
+  * gopls/internal/server: tidy imports, fix build
+  * gopls/internal/lsp/protocol: eliminate NonstandardRequest
+  * gopls/internal/analysis: improve analyzer docs
+  * gopls/internal/lsp/source: add test for rename spurious shadowing
+  * Revert "gopls/internal/server: rewrite the server diagnostic tracking"
+  * gopls/doc: add a note updating the original design doc
+  * gopls/internal/server: rewrite the server diagnostic tracking
+  * gopls/internal/lsp/cache: move gc_details toggle state to the snapshot
+  * gopls/internal/cmd: remove gopls.run_vulncheck example
+  * gopls/internal/lsp/cache/parsego: clamp positions when fixing statements
+  * gopls/internal/lsp/protocol/generate: restore indentation
+  * gopls/internal/cmd: add 'execute' command
+  * gopls/internal/test/marker: move ExitIfSmallMachine back to TestMain
+  * gopls/internal/lsp/source/completion: support more postfix completion for map and slice (len, for, forr)
+  * gopls/internal/server: simplify snapshot diagnostics
+  * gopls/internal/lsp/server: simplify logic for diagnosing changed files
+  * gopls/internal/test: move the tests
+  * gopls/internal/lsp: remove lsp path segment
+  * gopls/internal/util: more renamings
+  * gopls/internal/analysis: rename lsp/analysis -> analysis
+  * gopls: move marker tests to internal/test/marker
+  * gopls/internal/server: superficial clean up of diagnostics
+  * gopls/internal/lsp: delete dead code
+  * gopls/protocol/generate: files to generate lsp stubs
+  * gopls: update lsp stubs
+  * gopls/internal/util: move lru,frob,bug,{ast,types,path}util here
+  * gopls/internal/server: rename from lsp
+  * gopls/internal/lsp/cache/metadata: rename Metadata to Package
+  * gopls/internal/regtest: avoid file segments ending in a period
+  * gopls/internal/lsp/cache: move ignoreFilter onto View
+  * gopls/internal/lsp: remove analysisMode, and other unused params
+  * gopls/internal/lsp: cleanups to view logic
+  * gopls: remove unnecessary conversions
+  * gopls/internal/lsp/source: fix hover for objects in unsafe
+  * gopls/internal/lsp: invert the import between cache and source
+  * gopls/internal/lsp/source: eliminate AnalyzerErrorKind
+  * gopls/internal/lsp/cache: clean up more references to the source package
+  * gopls/internal/lsp/source/typerefs: move to ../cache/typerefs
+  * gopls/internal/lsp/source/methodsets: move to ../cache/methodsets
+  * gopls/internal/lsp/source/xrefs: move to ../cache/xrefs
+  * gopls/internal/lsp/cache: move parsing types / algorithm to parsego
+  * gopls/internal/lsp/cache: split metadata related types into a package
+  * gopls/internal/lsp/cache: move load diagnostics to packageHandle
+  * gopls/internal/telemetry/cmd/stacks: skip gopls@devel
+  * gopls/internal/lsp: factor showMessage calls
+  * gopls: enable telemetry uploading only with 'serve'
+  * gopls/internal/lsp/protocol: reject non-'file' scheme DocumentURIs
+  * gopls/internal/lsp/source/extract: don't assume Scope.Pos
+  * gopls/internal/lsp/source: move NodeContains into the astutil pkg
+  * gopls/internal/lsp/cache: clean up unnecessary type checking indirection
+  * gopls/internal/lsp/cache: don't rebuild filters for each modcache dir
+  * gopls/internal/lsp/cache: move quick-fix bundling logic to the cache pkg
+  * gopls/internal/cmd/help_test.go: document
+  * gopls/internal/lsp/source: stubmethods: fix out-of-bounds index
+  * gopls/internal/lsp/source: move edit logic into the protocol package
+  * gopls/internal/lsp/cache: move SuggestedFixFromCommand into cache
+  * gopls/internal/lsp/source: extract InDir to a new pathutil package
+  * gopls/internal/lsp/cache: simplify named error values
+  * gopls/internal/lsp/cache: use local aliases for all source objects
+  * gopls/internal/lsp/cache: avoid problematic use of goCommandInvocation
+  * gopls/internal/lsp/cache: remove workspaceMode
+  * gopls: remove the "tempModFile" setting
+  * gopls/internal/lsp: simplify mod update commands
+  * gopls: simplify the Snapshot and View interfaces
+  * gopls/internal/lsp/cache: export Snapshot
+  * gopls/internal/lsp/source: remove View.Snapshot
+  * gopls: remove the "chattyDiagnostics" setting
+  * gopls: remove the LiteralCompletions option
+  * gopls/internal/lsp/cache: move go.work parsing into the view
+  * Revert "gopls/internal/lsp/source: fix rename spurious shadowing error"
+  * gopls/internal/lsp: eliminate server code generation
+  * gopls/internal/lsp/source: fix rename spurious shadowing error
+  * gopls/test: eliminate, by moving tests to more appropriate places
+  * gopls: move settings to a settings package
+  * gopls: move file-related types to a 'file' package
+  * gopls/internal/lsp/source: make source.Analyzer pure configuration
+  * gopls/internal/lsp/source: fix panic in definition(error.Error)
+  * gopls/internal/lsp: remove redundant conversions
+  * gopls/internal/lsp/fake: inline fake.toURI away
+  * gopls/internal/lsp/protocol: delete $GOROOT hack in URIFromPath
+  * gopls/internal/lsp/protocol: rename URI.Filename -> Path
+  * gopls/internal/lsp/protocol: inline .SpanURI() away
+  * gopls/internal/lsp/protocol: inline URIFromSpanURI away
+  * gopls/internal/lsp/span: inline URI away
+  * gopls/internal/span: inline URIFromPath away
+  * gopls/internal/telemetry/cmd/stacks: create GH issues from telemetry
+  * gopls/internal/cmd: remove "span" import, make Span private
+  * gopls/internal/span: identify span.URI and protocol.DocumentURI
+  * gopls/internal/lsp: add code action for conversion between raw and interpreted string
+  * gopls/internal/lsp/cache: rename workspaceInformation to viewDefinition
+  * gopls/internal/lsp/cache: remove unused Session.ModifyFiles
+  * gopls/internal/lsp/cache: move upgrades and vulns onto the snapshot
+  * gopls/internal/lsp/cache: exclusively use persistent data in snapshot
+  * Revert "gopls/internal/lsp/cache: remove baseCtx from the View"
+  * all: add versions.InitFileVersions to gopls where needed
+  * gopls: remove ineffectual skips
+  * gopls/internal/span: delete SameExistingFile
+  * gopls/internal/lsp/protocol: include docs for {,Document}URI
+  * gopls/internal/cmd: move span.{Span,Point} to cmd
+  * gopls: upgrade x/telemetry and account for new mode logic
+  * gopls/internal/lsp/cache: avoid span.Parse{,InDir}
+  * gopls/internal/goversion: split out of lsp (server) package
+  * gopls/internal/lsp: tweak docs
+  * gopls/internal/lsp/cmd: move to ../cmd
+  * gopls/internal/lsp: move semantic token helpers to protocol pkg
+  * gopls/internal/lsp: unexport Server
+  * gopls/internal/lsp: restore Server.semanticTokens{Full,Range}
+  * gopls/internal/lsp/source: fix panic on T(x) conversion
+  * gopls/internal/lsp/regtest: minor clean up of marker.go
+  * gopls/internal/lsp: unify semanticTokens{Full,Range}
+  * gopls/internal/regtest/marker: port remaining marker tests
+  * gopls/internal/regtest/marker: port the selectionrange markers
+  * gopls/internal/regtest/marker: clean up some random packages
+  * gopls/internal/lsp/tests: remove AddImport support
+  * gopls/internal/regtest/marker: port the semantic tokens tests
+  * gopls/internal/regtest/marker: port the inlay hint tests
+  * gopls/internal/regtest/marker: port remaining rename tests
+  * gopls/internal/regtest/marker: trim redundant header from golden diffs
+  * gopls/internal/regtest/marker: use diffs for rename tests
+  * gopls/internal/regtest/marker: porting remaining suggestedfix tests
+  * gopls/internal/lsp/cmd: add codelens subcommand
+  * gopls/internal/regtest/marker: use line-based myers diff implementation
+  * gopls/internal/regtest/marker: port the stub tests
+  * gopls/internal/regtest/marker: port the invertifcondition tests
+  * gopls/internal/lsp/mod: clarify inlayhint comment
+  * gopls/internal/regtest/marker: porting extract tests
+  * gopls/internal/regtest/marker: use golden diffs for suggested fixes
+  * gopls/internal/lsp/source: fix signatureHelp with pointer receivers
+  * gopls/internal/lsp/cache: remove baseCtx from the View
+  * gopls/internal/lsp/cache: remove forceReloadMetadata from clone
+  * gopls/internal/lsp/cache: pass workspace information into createView
+  * gopls/internal/lsp/cache: isolate getWorkspaceInformation from Session
+  * gopls/internal/lsp/source: enable nilness Analyzer in gopls
+  * gopls: remove dead code
+  * gopls/internal/lsp/cache: allow duplicate analyzer names
+  * gopls/internal/regtest/marker: port half of the suggestedfix markers
+  * gopls/internal/lsp/cache: move 'contains' from snapshot to view
+  * gopls/internal/lsp/cache: make options immutable on the View
+  * gopls/internal/regtest/marker: port remaining rank and snippet tests
+  * gopls/internal/regtest/marker: port remaining completion tests
+  * gopls/internal/regtest/marker: port rank and func_rank tests
+  * gopls/internal/regtest/marker: port builtin/keyword completion tests
+  * gopls/internal/regtest/marker: port five arbitrary completion tests
+  * gopls/internal/regtest/marker: port all prepare markers
+  * gopls/internal/lsp: add OnSave diagnostics
+  * gopls/internal/lsp/cmd: add GOPACKAGESDRIVER to stat
+  * gopls/internal/regtest/marker: port the links marker
+  * gopls/internal/regtest/marker: port case sensitive completion tests
+  * gopls/internal/regtest/marker: port all deep and fuzzy completion tests
+  * gopls/internal/regtest/marker: port statements completion tests
+  * gopls/internal/regtest/marker: port remaining @signature markers
+  * gopls/internal/lsp: fix code action panic on params of external funcs
+  * gopls/internal/lsp/source: remove unused parameters (cleanup)
+  * gopls/internal/lsp: add semantic highlighting for go: directives
+- Packaging improvements:
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+
+-------------------------------------------------------------------
 Thu Nov 16 19:45:10 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.14.2:
