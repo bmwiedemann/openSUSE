@@ -72,10 +72,10 @@ programs using the CMU-Cambridge Language Model Toolkit.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2
-%patch3
-%patch4
+%patch -P 1 -p1
+%patch -P 2
+%patch -P 3
+%patch -P 4
 
 %build
 %configure
