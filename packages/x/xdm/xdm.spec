@@ -100,10 +100,10 @@ the system wide DM default set in %{_sysconfdir}/sysconfig/displaymanager.
 %setup -q
 cp %{SOURCE2} .
 pushd xdm
-%patch1 -p1
+%patch -P 1 -p1
 popd
 # reverse apply (boo#1130321)
-%patch3 -p1 -R
+%patch -P 3 -p1 -R
 
 %build
 # needed for patch0
