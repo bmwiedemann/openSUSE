@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 26 10:49:23 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.6.6:
+ * Fix a possible wrong error return from the DER builder. [T6992]
+ * Release-info: https://dev.gnupg.org/T7009
+ * Update upstream libksba.keyring
+
+-------------------------------------------------------------------
 Fri Nov 17 09:41:33 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.6.5:
