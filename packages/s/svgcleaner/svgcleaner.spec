@@ -59,7 +59,7 @@ This package provides a Qt graphical user interface to svgcleaner.
 %prep
 %setup -q
 %setup -q -a 1
-%patch0 -p1
+%patch -P 0 -p1
 %setup -q -D -T -a 2
 mkdir cargo-home
 cat >cargo-home/config <<EOF
