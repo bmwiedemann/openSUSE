@@ -122,28 +122,28 @@ scripts for SysV and the service unit files for systemd.
 
 %prep
 %setup -q -n sysklogd-1.5.1
-%patch1   -b .dgram
-%patch2   -b .sparc
-%patch3   -b .forw
-%patch5   -b .ipv6
-%patch6   -b .klogd24
-%patch7   -b .large
-%patch8   -b .dns
-%patch9   -b .reopen
-%patch12  -b .klsize
-%patch13  -b .usock
-%patch14  -b .shprio
-%patch18  -b .sleep
-%patch19  -b .signal
-%patch20  -b .clear
-%patch21  -b .nofortify
-%patch22  -b .sysmap
-%patch23  -b .reload
-%patch24  -b .sd
-%patch25  -b .sd2
-%patch26  -b .sd3
-%patch28  -b .cve20143634
-%patch0 -b .p0
+%patch -P 1   -b .dgram
+%patch -P 2   -b .sparc
+%patch -P 3   -b .forw
+%patch -P 5   -b .ipv6
+%patch -P 6   -b .klogd24
+%patch -P 7   -b .large
+%patch -P 8   -b .dns
+%patch -P 9   -b .reopen
+%patch -P 12  -b .klsize
+%patch -P 13  -b .usock
+%patch -P 14  -b .shprio
+%patch -P 18  -b .sleep
+%patch -P 19  -b .signal
+%patch -P 20  -b .clear
+%patch -P 21  -b .nofortify
+%patch -P 22  -b .sysmap
+%patch -P 23  -b .reload
+%patch -P 24  -b .sd
+%patch -P 25  -b .sd2
+%patch -P 26  -b .sd3
+%patch -P 28  -b .cve20143634
+%patch -P 0 -b .p0
 
 %build
 %ifarch s390 s390x

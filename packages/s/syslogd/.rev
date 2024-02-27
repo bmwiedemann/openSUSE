@@ -877,4 +877,12 @@
     <comment>Replace transitional %usrmerged macro with regular version check (boo#1206798) (forwarded request 1055741 from lnussel)</comment>
     <requestid>1057023</requestid>
   </revision>
+  <revision rev="104" vrev="803">
+    <srcmd5>1eb50ad047a48cbf0497f7edf676025a</srcmd5>
+    <version>unknown</version>
+    <time>1709070295</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1151548 from dimstar)</comment>
+    <requestid>1151697</requestid>
+  </revision>
 </revisionlist>
