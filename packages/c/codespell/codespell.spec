@@ -43,8 +43,8 @@ codespell fixes common misspellings in text files. It primarily checks
 misspelled words in source code, but it can be used with other files as well.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
+
 # remove everything coverage-related
 sed -i '/\-cov/ d' pyproject.toml
 
