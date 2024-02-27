@@ -55,8 +55,8 @@ were rewritten for dc3dd.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
+
 # fix end-of-line encoding
 sed -i 's/\r$//' *.txt
 sed -i 's/\r$//' ChangeLog
