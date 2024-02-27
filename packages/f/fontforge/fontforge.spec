@@ -91,9 +91,7 @@ This subpackage contains all necessary include files and libraries needed
 to develop applications that use FontForge libraries.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch5 -p1
+%autosetup -p1
 
 %build
 %cmake \
