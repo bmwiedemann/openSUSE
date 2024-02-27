@@ -46,9 +46,7 @@ This package provides the sedutil-cli and linuxpba binaries, but not
 the PBA image itself.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
