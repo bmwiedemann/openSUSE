@@ -144,4 +144,12 @@
   * Replace xf86PciInfo.h with our own pci ids</comment>
     <requestid>991536</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>5f41a2fb4626cc19e310a6dbc742b1f6</srcmd5>
+    <version>2.1.22</version>
+    <time>1709070285</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151676</requestid>
+  </revision>
 </revisionlist>
