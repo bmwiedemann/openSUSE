@@ -42,13 +42,13 @@ browse through C source code files for specified elements of code.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2
-%patch3
-%patch4 -p1
-%patch5
-%patch6 -p1
-%patch7 -p1
+%patch -P 1 -p1
+%patch -P 2
+%patch -P 3
+%patch -P 4 -p1
+%patch -P 5
+%patch -P 6 -p1
+%patch -P 7 -p1
 
 %build
 %configure
