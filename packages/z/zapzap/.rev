@@ -32,4 +32,14 @@
   * feat: Proxy support #42 #53</comment>
     <requestid>1147322</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fce6fd46b56c3bf07b81594deb43458a</srcmd5>
+    <version>5.2.1</version>
+    <time>1709070339</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.2.1:
+  * Update translation file es.po for the new proxy configuration tab #55
+  * Update de.po #58</comment>
+    <requestid>1150576</requestid>
+  </revision>
 </revisionlist>
