@@ -141,9 +141,9 @@ unzip -q -a %{SOURCE451} -d docbook-xml-4.5
 unzip -q -a %{SOURCE452} -d docbook-rng-4.5
 unzip -q -a %{SOURCE453} -d docbook-xsd-4.5
 
-%patch1 -p 1 -p 0
-%patch2 -p 1
-%patch3 -p 1
+%patch -P 1 -p 1 -p 0
+%patch -P 2 -p 1
+%patch -P 3 -p 1
 
 # CATALOG.* files
 cp %{SOURCE3} %{SOURCE7} %{SOURCE8} %{SOURCE414} %{SOURCE424} %{SOURCE434} %{SOURCE444} %{SOURCE454} .
