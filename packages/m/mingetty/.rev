@@ -207,4 +207,13 @@
     <comment>Replace transitional %usrmerged macro with regular version check (boo#1206798) (forwarded request 1055713 from lnussel)</comment>
     <requestid>1057029</requestid>
   </revision>
+  <revision rev="30" vrev="25">
+    <srcmd5>68618192eca46f412c5ea64914feabf7</srcmd5>
+    <version>1.0.8s</version>
+    <time>1709070308</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN (forwarded request 1149772 from pgajdos)</comment>
+    <requestid>1151762</requestid>
+  </revision>
 </revisionlist>

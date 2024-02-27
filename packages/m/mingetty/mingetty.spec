@@ -34,8 +34,7 @@ use on virtual consoles only. Mingetty is not suitable for serial lines
 (you should use the mgetty program for this purpose).
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 %ifarch s390 s390x
