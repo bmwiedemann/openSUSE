@@ -40,8 +40,7 @@ The xauth program is used to edit and display the authorization
 information used in connecting to the X server.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 %configure
