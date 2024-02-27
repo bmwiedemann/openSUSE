@@ -56,4 +56,13 @@ the go metapackage to version 1.22.</comment>
     as required by go tool dist and go tool distpack (forwarded request 1147334 from jfkw)</comment>
     <requestid>1147337</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>352e58026e7854ce650e586e06a65d02</srcmd5>
+    <version>1.22.0</version>
+    <time>1709070487</time>
+    <user>anag+factory</user>
+    <comment>- Packaging improvements:
+  * Use %patch -P N instead of deprecated %patchN (forwarded request 1152003 from jfkw)</comment>
+    <requestid>1152006</requestid>
+  </revision>
 </revisionlist>

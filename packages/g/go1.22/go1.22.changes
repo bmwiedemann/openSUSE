@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 27 05:45:13 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Use %patch -P N instead of deprecated %patchN
+
+-------------------------------------------------------------------
 Tue Feb  6 22:28:04 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:
