@@ -44,9 +44,7 @@ Osmocom tools to help with pcap tracing.
 Run osmo_pcap_client locally and send traces to a different system.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 echo "%{version}" >.tarball-version
