@@ -167,4 +167,12 @@
     <comment>Do not force java 11 on i586</comment>
     <requestid>1121238</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a905641f0c9782d4bf8917fdf4c7312c</srcmd5>
+    <version>9.4.54</version>
+    <time>1709070555</time>
+    <user>anag+factory</user>
+    <comment>CVE-2024-22201, bsc#1220437</comment>
+    <requestid>1152265</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 27 12:27:27 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 9.4.54.v20240208
+  * Security fixes
+    + CVE-2024-22201, bsc#1220437: HTTP/2 connection not closed
+      after idle timeout when TCP congested
+  * Other changes
+    + #1256 DoSFilter leaks USER_AUTH entries
+    + #11389 Strip default ports on ws/wss scheme uris too
+
+-------------------------------------------------------------------
 Mon Oct 30 16:17:21 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Do not force Java 11 to build on i586
