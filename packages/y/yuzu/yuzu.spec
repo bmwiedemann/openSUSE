@@ -19,7 +19,7 @@
 
 %define __builder ninja
 Name:           yuzu
-Version:        0.1696
+Version:        0.1725
 Release:        0
 Summary:        Nintendo Switch emulator/debugger
 License:        GPL-3.0-or-later
@@ -89,7 +89,7 @@ BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libswscale)
 
-ExclusiveArch:  x86_64
+ExclusiveArch:  x86_64 aarch64
 
 %description
 yuzu is an open source Nintendo Switch emulator/debugger.
@@ -111,11 +111,17 @@ src/common/scm_rev.cpp.in
 # Fix "too many open files" error
 ulimit -n 2048
 
+# Qt built with gles on aarch64, isn't compatible with opengl.
 %cmake \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_C_COMPILER=clang \
         -DCMAKE_CXX_COMPILER=clang++ \
+%ifarch x86_64
         -DCMAKE_CXX_FLAGS="-march=x86-64-v2" \
+%endif
+%ifarch aarch64
+        -DCMAKE_CXX_FLAGS="-march=armv8-a" \
+%endif
         -DENABLE_QT_TRANSLATION=ON \
         -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
         -DUSE_DISCORD_PRESENCE=ON \
@@ -129,6 +135,9 @@ ulimit -n 2048
         -DYUZU_USE_FASTER_LD=ON \
         -DYUZU_USE_QT_MULTIMEDIA=ON \
         -DYUZU_USE_QT_WEB_ENGINE=ON \
+%ifarch aarch64
+        -DENABLE_OPENGL=OFF \
+%endif
         -DYUZU_TESTS=OFF
 
 %cmake_build

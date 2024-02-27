@@ -1,4 +1,371 @@
 -------------------------------------------------------------------
+Sun Feb 25 00:44:29 UTC 2024 - pousaduarte@gmail.com
+
+- Update to version 0.1725:
+  * "Merge Tagged PR 12173"
+  * "Merge Tagged PR 12749"
+  * "Merge Tagged PR 13081"
+  * service: audio: Add missing logging properties of SetHeadphoneOutputLevelMode
+  * service: btdrv: Add EnableRadio for Qlaunch
+  * service: friend: Add GetFriendCount, GetNewlyFriendCount, GetReceivedFriendRequestCount, GetPlayHistoryStatistics, GetReceivedFriendInvitationCountCache for QLaunch
+  * service: hid: Add IsAnyCustomButtonConfigEnabled for QLaunch
+  * service: lbl: Add SaveCurrentSetting, LoadCurrentSetting and IsAutoBrightnessControlSupported for QLaunch
+  * service: nfc: Implement SetNfcEnabled
+  * service: npns: Add ListenTo and GetReceiveEvent for QLaunch
+  * service: set: Add default eula setting
+  * common/ring_buffer: Include <limits> header
+  * android: Play vibrations asynchronously
+  * fs: fix argument order
+  * ci: fix mac build
+  * fs: add ISaveDataTransferProhibiter, stub FindSaveDataWithFilter
+  * vi: workaround conductor includes
+  * oboe_sink: handle temporary stream creation failure
+  * audio: fix released buffer bounds check
+  * yuzu: Fix shortcut error message
+  * audio: add NotifyHeadphoneVolumeWarningDisplayedEvent
+  * pctl: rewrite IParentalControlService
+  * pctl: rewrite IParentalControlServiceFactory
+  * pctl: move IParentalControlServiceFactory
+  * pctl: move IParentalControlService
+  * pctl: move types and results
+  * psc: stub overlay notification channel
+  * psc: rewrite IPmService
+  * psc: move IPmControl, IPmModule, IPmService
+  * olsc: rewrite IOlscServiceForSystemService
+  * olsc: add IRemoteStorageController
+  * olsc: add IDaemonController
+  * olsc: rewrite ITransferTaskListController
+  * olsc: rewrite INativeHandleHolder
+  * olsc: rewrite IOlscServiceForApplication
+  * olsc: move INativeHandleHolder, IOlscServiceForApplication, IOlscServiceForSystemService, ITransferTaskListController
+  * fs: add missing mutex header for member (#13106)
+  * android: Connect controllers with supported styles
+  * android: Add additional check for hasMapping
+  * android: Enable all controller styles on emulation shutdown
+  * audio: format
+  * audio: rewrite IHardwareOpusDecoder
+  * audio: rewrite IAudioDevice
+  * audio: rewrite IHardwareOpusDecoderManager
+  * audio: rewrite IAudioRenderer
+  * audio: rewrite IAudioRendererManager
+  * audio: split IHardwarweOpusDecoder, move IHardwareOpusDecoderManager
+  * audio: split IAudioDevice, IAudioRenderer, move IAudioRendererManager
+  * audio: move IFinalOutputRecorderManager{,ForApplet}
+  * audio: rewrite IAudioOutManager
+  * audio: rewrite IAudioOut
+  * audio: rewrite IAudioInManager
+  * audio: rewrite IAudioIn
+  * android: Fix extra stick setting default values
+  * ns: fix alignment of uid type
+  * android: Expose device name setting
+  * android: Add StringInputSetting settings item
+  * vi: ignore shared buffer destruction failure on termination
+  * vi: remove superfluous locking in shared buffer manager
+  * nvnflinger/vi: don't recreate buffer queue on open/close
+  * Import keys from filesystem. (#13056)
+  * android: Have input overlay follow player 1 style index (#13085)
+  * android: Fix broken clear button check
+  * android: Fix overlay visibility reset (#13083)
+  * android: Show done button when configuring input overlay (#13082)
+  * Address review comments pt. 2
+  * Address review comments
+  * fs: Refactor to use cmif serialization
+  * fs: Add FileSystemAccessor classes
+  * Address review comments
+  * fs: Add and use fs_save_data_types.h
+  * fsp: Migrate remaining interfaces to cmif serialization
+  * fsp-srv: Migrate to use cmif serialization
+  * fsp: Move IMultiCommitManager to a seperate file
+  * fsp: Move ISaveDataInfoReader to a seperate file
+  * scope_exit: Make constexpr
+  * core/CMakeLists: Sort alphabetically
+  * shader_recompiler: throw on missing geometry streams in geometry shaders
+  * ns: address review comments
+  * vulkan_device: don't use fixed cap for memory limits
+  * am: account for offset in transfer memory storage
+  * core: hid: Remove driver errors from log
+  * nvnflinger: check for layers before compose
+  * android: Flip AB/XY for xbox controllers during auto-mapping
+  * ns: rewrite IQueryService
+  * ns: rewrite IServiceGetterInterface
+  * ns: rewrite IApplicationManagerInterface
+  * ns: move IDevelopInterface
+  * ns: rewrite ISystemUpdateInterface
+  * ns: move ISystemUpdateControl
+  * ns: rewrite IVulnerabilityManagerInterface
+  * ns: rewrite IReadOnlyApplicationControlDataInterface
+  * ns: rewrite IReadOnlyApplicationRecordInterface
+  * ns: add IDynamicRightsInterface
+  * ns: rewrite IDownloadTaskInterface
+  * ns: rewrite IDocumentInterface
+  * ns: rewrite IContentManagementInterface
+  * ns: move IFactoryResetInterface
+  * ns: move IECommerceInterface
+  * ns: move IApplicationVersionInterface
+  * ns: move IAccountProxyInterface
+  * ns: rewrite IPlatformServiceManager
+  * ns: rename results header
+  * android: Map touches to touchscreen
+  * android: Show cancel button for the content install notice
+  * android: Only do first startup automapping if nothing has been mapped
+  * service: Change unique_ptr to make_unique in GetCacheStorageMax
+  * file_sys: Formatting changes and use unique_ptr in GetCacheStorageMax
+  * file_sys: Fix nacp field cache_storage_max_index datatype
+  * android: Create lifecycle utility to simplify common StateFlow operations
+  * service: Add proper GetCacheStorageMax implementation to IApplicationFunctions
+  * android: Use extension functions for view visibility and text marquee
+  * android: Move CoreErrorDialogFragment to its own file
+  * Add check for corrupted firmware files after install.
+  * dmnt: cheats: Fix valid address range
+  * fsp: Add FlushAccessLogOnSdCard stub
+  * service: Add GetCacheStorageMax stub to IApplicationFunctions
+  * service: vi: Implement ListDisplayMode
+  * vi: manage resources independently of nvnflinger and refactor
+  * vi: move shared buffer management from nvnflinger
+  * nvnflinger: convert to process
+  * am: unify display layer management
+  * service: audio: Rewrite IAudioController to new IPC
+  * >.> spelling
+  * cleanup by clang-format.
+  * Improve behavior when one or more firmware files can't be deleted.
+  * service: btm: Implement function needed by QLaunch
+  * android: Input mapping
+  * Close reference to TimeZoneBinary on game close
+  * Implement In-app firmware installation.
+  * hid_core: Prevent crash if we try to iterate through empty color devices list
+  * hid_core: Use dedicated "port" for android's input overlay
+  * config: Reset per-game profile name on load if empty
+  * android: Allow SettingsItems to use String or StringRes
+  * service: erpt: Implement SubmitContext
+  * service: caps: Implement GetAlbumFIleList
+  * service: btm: Migrate service to new IPC
+  * service: am: Fix GetMainAppletAvailableUsers for user creation
+  * service: am: Add QLaunch launcher
+  * shader_recompiler: fix non-const offset for arrayed image types
+  * Revert "shader_recompiler: use only ConstOffset for OpImageFetch"
+  * kernel: add and enable system suspend type
+  * buffer_cache: use mapped range with large vertex buffer size
+  * device_memory_manager: skip unregistered interfaces on invalidate
+  * texture_cache: tweak iteration tracking change
+  * texture_cache: avoid overestimation of ASTC texture sizes
+  * caches: make critical reclamation less eager and possible in more cases
+
+-------------------------------------------------------------------
+Sun Feb 18 00:35:59 UTC 2024 - pousaduarte@gmail.com
+
+- Update to version 0.1717:
+  * "Merge Tagged PR 12173"
+  * "Merge Tagged PR 12749"
+  * "Merge Tagged PR 13000"
+  * "Merge Tagged PR 13017"
+  * "Merge Tagged PR 13026"
+  * service: set: Migrate ISystemSettingsServer to new IPC
+  * vi: rewrite IApplicationDisplayService
+  * vi: rewrite ISystemDisplayService
+  * vi: rewrite IManagerDisplayService
+  * vi: rewrite IHOSBinderDriver
+  * vi: rewrite IApplicationRootService, IManagerRootService, ISystemRootService
+  * vi: split into implementation files
+  * vi: extract types
+  * service: set: Migrate ISettingsServer to new interface
+  * android: Prevent user from dismissing mod/cheat notice
+  * android: Show cancel option for delete addons dialog
+  * android: Swap ok and close default strings for MessageDialogFragment
+  * android: Add screen vertical alignment setting
+  * android: Expose FSR sharpness slider
+  * android: Swap confirmation buttons for delete save data dialog
+  * android: Extend MessageDialogFragment to support a negative action and button titles
+  * am: move out omm interfaces to new module
+  * am: rewrite IApplicationCreator
+  * am: add IApplicationAccessor
+  * am: rewrite ILockAccessor
+  * am: rewrite IWindowController
+  * am: rewrite IStorage
+  * am: rewrite IStorageAccessor, ITransferStorageAccessor
+  * am: rewrite ISelfController
+  * am: rewrite IProcessWindingController
+  * am: rewrite ILibraryAppletSelfAccessor
+  * am: rewrite ILibraryAppletCreator
+  * am: rewrite ILibraryAppletAccessor
+  * am: rewrite IHomeMenuFunctions
+  * am: rewrite IGlobalStateController, add ICradleFirmwareUpdater
+  * am: rewrite IDisplayController
+  * am: move IDebugFunctions
+  * am: rewrite ICommonStateGetter
+  * am: rewrite IApplicationFunctions
+  * am: rewrite IAppletCommonFunctions
+  * am: rewrite IAudioController
+  * am: rewrite ISystemAppletProxy
+  * am: rewrite ILibraryAppletProxy
+  * am: rewrite IApplicationProxy
+  * am: rewrite appletAE, appletOE
+  * service: news: Stub remaining functions
+  * yuzu: Allow non npad hotkeys and disable controller navigation requirement
+  * service: ldn: Migrate and refractor service to new IPC
+  * config: Always delete control settings in ClearControlPlayerValues
+  * tzdb_to_nx: Update to latest
+  * externals: Update dynarmic to 6.6.3
+  * am: use applet program loading for tested versions
+  * host_shaders: add vendor workaround for adreno drivers
+  * Texture Cache: Fix untracking on GPU remap
+  * service: bcat: Address review issues
+  * service: bcat: Implement news interfaces
+  * service: bcat: Migrate and refractor service to new IPC
+  * am: fix focus states and display of indirect keyboard
+  * am: stub SetMediaPlaybackState for self controller
+  * general: add default configurations for applet mode
+  * gpu: dependency-inject scaling/antialiasing filter state for capture layers
+  * nvnflinger/gpu: implement applet capture
+  * nvnflinger/gpu: implement blending
+  * nvservices: unmap only on last container free
+  * video_core: defensively program around unmapped device pointers
+  * core: fix multiprocess with nce
+  * shared_translation: Add tooltips for general settings
+  * glue: use multi wait API
+  * server_manager: use multi wait API
+  * service: add os types and multi wait API
+  * shared_translation: Add tooltips for advanced graphics and system settings
+  * shared_translation: Add tooltips for core and graphics settings
+
+-------------------------------------------------------------------
+Sun Feb 11 00:34:40 UTC 2024 - pousaduarte@gmail.com
+
+- Update to version 0.1709:
+  * "Merge Tagged PR 12173"
+  * "Merge Tagged PR 12749"
+  * "Merge Tagged PR 12756"
+  * "Merge Tagged PR 12955"
+  * Fix multiplayer player count color in dark themes | Temp fix until #12744: Add green color for counts > 0 and < max_players - 1 (#12930)
+  * android: Use utility function for applying view margins
+  * android: Add thermal throttling overlay
+  * android: Remove foreground service
+  * service: Fix OutLargeData attributes
+  * service: hid: Free npad applet resource
+  * android: Fix regex for git version
+  * android: Run OnEmulationStarted frontend callback in another thread
+  * common: fs: Expand android macros
+  * android: Move JNI setup and helpers to common
+  * service: hid: Migrate hidbus to new interface
+  * SMMU: Ensure the backing address range matches the current
+  * ipc: additional fixes
+  * yuzu: Make controller keys easier to assign
+  * dmnt: cheat: Invalidate cache on memory writes
+  * web_backend: Fix compilation
+  * service: hid: Migrate hid debug service to new interface
+  * service: irs: Migrate service to new interface
+  * service: hid: Add multiprocess support to six axis input
+  * service: hid: Ensure aruid data is initialized
+  * Common: Rename SplitRangeSet to OverlapRangeSet
+  * dmnt: cheat: Add pause and resume support
+  * yuzu: Fully hide linux tab
+  * typed_address: test values are unsigned
+  * dmnt: cheats: Silence memory errors
+  * shader_recompiler: use only ConstOffset for OpImageFetch
+  * .tx/config: Use language mappings for android "tx pull"
+  * Buffer Cache: Refactor to use Range sets instead
+  * gdb: fix load/save of fp values in a32
+  * dmnt: cheats: Update cheat vm to latest version
+  * NVDRV: Refactor HeapMapper to use RangeSets
+  * Common: Introduce Range Sets
+  * VideoCore: Move Slot Vector to Common
+  * citra_qt/configure_ui: Show country of language in the combobox
+  * ci: android: Play store publishing setup
+  * web_backend: Sync with Citra implementation
+  * nvnflinger: release buffers before presentation sleep
+  * Fix firmware timezone boot load check.
+  * service: fs: Skip non user id folders
+  * cmif_serialization: enforce const for references
+  * service: hid: Multiple fixes
+  * MemoryManager: Reduce the page table size based on last big page address.
+  * Persist filters in multiplayer public lobby list
+  * Color player counts in the multiplayer public lobby list
+  * Add hotkeys for multiplayer actions
+
+-------------------------------------------------------------------
+Sun Feb 04 00:34:24 UTC 2024 - pousaduarte@gmail.com
+
+- Update to version 0.1702:
+  * "Merge Tagged PR 12173"
+  * "Merge Tagged PR 12749"
+  * cmake: use vulkan-headers config file
+  * Clang Fix
+  * Add Samsung Proprietary Driver ID to Reorder Pass
+  * service: use const references for input raw data
+  * Update translations (2024-02-01)
+  * SwBlitter: Fix Pitch linear reading/writting
+  * hardware_composer: implement speed limit extensions
+  * nvnflinger/gpu: implement layer stack composition
+  * renderer_opengl: implement layer stack composition
+  * renderer_vulkan: implement layer stack composition
+  * renderer_opengl: split up blit screen resources into antialias and window adapt passes
+  * renderer_opengl: move out ownership of FSR resources
+  * renderer_vulkan: convert FSR to graphics pipeline
+  * renderer_opengl: move out FSR shader source construction
+  * renderer_opengl: split out FXAA
+  * renderer_opengl: split out SMAA
+  * renderer_vulkan: split up blit screen resources into separate antialias and window adapt passes
+  * renderer_vulkan: isolate FXAA from blit screen
+  * renderer_opengl: isolate core presentation code
+  * video_core: consistently account for resolution scaling when rendering
+  * video_core: simplify accelerated surface fetch and crop handling between APIs
+  * aoc: fix DLC listing (#12867)
+  * ci: bump mac to macos-14
+  * Device Memory Manager: ensure raster protection only within mapped device addresses.
+  * DeviceMemory: Make counter types configurable
+  * NVDRV: Join the heaper optimization blocks
+  * smmu: use new range mutex construction for protecting counters
+  * Texture Cache: make sparse texture table per channel
+  * settings: Allow audio sink, input, and output to be set per game
+  * Remove a few hacks for clock setups, which seem to no longer be needed, but fix network clock to local clock on every boot. Also fix some logging strings.
+  * am: push storage from error applet with non-zero size
+  * cmif_serialization: fix LargeData types
+  * service: hid: Implement GetPlayerLedPattern accurately
+  * internal_network: only poll for accept on blocking sockets
+  * Update sockets.h
+  * Update src/core/hle/service/sockets/sockets.h
+  * cmif_serialization: fix out layout calculation
+  * service: capsrv: Migrate to new IPC
+  * cmake: prefer system oaknut library
+  * am: stop emulation when all applets are closed
+  * core: support offline web applet
+  * am: return AppletDataBroker and use for frontend applets
+  * am: rework IStorage for transfer storage
+  * am: migrate global state to per-applet state structure
+  * am: retrieve main applet creation info from frontend
+  * am: re-namespace frontend applets to frontend directory
+  * am: add new datatypes for per-applet state
+  * service: split am into components
+  * Update sockets_translate.cpp
+  * Update sockets.h
+  * Update sockets_translate.cpp
+  * service: mii: Set arguments as const
+  * notif: rewrite for new IPC
+  * android: Don't show delete button for system driver
+  * fix build for gcc 11
+  * service: am: Focus state changed goes last
+  * service: hid: Implement home, capture and sleep buttons
+  * service: hid: Restore active aruid
+  * service: hid: Fully implement touch resource
+  * configure_graphics: Avoid crash when vsync_mode_combobox is empty (occurs when renderer backend is Null)
+  * Use the input process handle to get the correct application's memory
+  * externals/dynarmic: Update to 6.6.1
+  * externals/oaknut: Update to 2.0.1
+  * service: set: Increase settings version
+  * service: set: Implement more Qlaunch Settings
+  * android: Disable focus on loading card
+  * android: Show system driver information
+  * kernel: clear pinned waiter list on unpin
+  * atomic_ops: Fix MSVC
+  * atomic_ops: Remove volatile qualifier
+  * atomic_ops: Reduce code duplication with templates
+  * Move time services to new IPC. Add some fixes/improvements to usage with the new IPC
+  * service: mii: Migrate service to new interface
+  * Simplify VkResult lookup
+  * Add Vulkan-Utility-Libraries dependency
+  * yuzu: Add per-game linux gamemode configuration
+  * fix linux config values not saved
+
+-------------------------------------------------------------------
 Sun Jan 28 15:25:22 UTC 2024 - i@guoyunhe.me
 
 - Update to version 0.1696:
