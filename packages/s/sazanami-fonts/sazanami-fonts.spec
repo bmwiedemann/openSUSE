@@ -41,8 +41,7 @@ BuildArch:      noarch
 This package contains Japanese "Sazanami" TrueType fonts.
 
 %prep
-%setup -n sazanami-%{version}
-%patch0 -p1
+%autosetup -p1 -n sazanami-%{version}
 
 %build
 # Copy U+3231 from Sazanami Gothic into Sazanami Mincho
