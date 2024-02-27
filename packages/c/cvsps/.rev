@@ -190,4 +190,12 @@
   supported. (forwarded request 1123523 from dimstar)</comment>
     <requestid>1123535</requestid>
   </revision>
+  <revision rev="24" vrev="184">
+    <srcmd5>d39d5058d23bff8d4eea59304ecabee8</srcmd5>
+    <version>2.1</version>
+    <time>1709070253</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1151195 from dimstar)</comment>
+    <requestid>1151252</requestid>
+  </revision>
 </revisionlist>

@@ -53,7 +53,7 @@ for patch in $(cat fixes/series); do
     patch -p1 < fixes/$patch
 done
 cp %{SOURCE1} %{SOURCE2} %{SOURCE4} .
-%patch0 -p1
+%patch -P 0 -p1
 
 %build
 export CFLAGS="%{optflags}"
