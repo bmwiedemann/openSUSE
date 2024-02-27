@@ -62,8 +62,7 @@ This package contains the files needed to compile programs that use the
 SpeeX library.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 %configure \
