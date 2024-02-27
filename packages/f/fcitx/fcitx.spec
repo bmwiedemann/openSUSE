@@ -335,10 +335,7 @@ Fcitx dark skin.
 You can either use this package for download from kde-look.org using knewstaff in fcitx-config-kde4.
 
 %prep
-%setup -q
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1
 
 %build
 mkdir build

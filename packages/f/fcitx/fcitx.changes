@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 08:41:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Thu Aug 24 09:38:18 UTC 2023 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - add remote-module-use-safe-directory-for-socket-API-sock.patch: use a safe
