@@ -42,9 +42,7 @@ and workgroups are accessible at once from a single filesystem mount,
 making network browsing just as easy as it is on Windows.
 
 %prep
-%setup
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
