@@ -32,8 +32,7 @@ Requires:       fzf
 This is a TUI-based launcher menu made with bash and the amazing fzf. Despite its name, it does not depend on the Sway window manager can be used with just about any WM.
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch0
+%autosetup -p0 -n %{name}-%{version}
 
 %build
 

@@ -25,4 +25,14 @@
 Update to version 1.7.0</comment>
     <requestid>1112362</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>34f2170a85c65d63dda446683ee2acda</srcmd5>
+    <version>1.7.0</version>
+    <time>1709070456</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1151624 from dimstar
+
+Prepare for RPM 4.20</comment>
+    <requestid>1151948</requestid>
+  </revision>
 </revisionlist>
