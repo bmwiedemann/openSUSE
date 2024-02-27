@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 27 10:57:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Nov  7 12:55:14 UTC 2011 - pgajdos@suse.com
 
 - "BSD 3-Clause" to "BSD-3-Clause"

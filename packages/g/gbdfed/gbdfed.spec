@@ -47,9 +47,9 @@ fonts.
 %prep
 %setup -q
 install -m 644 %{SOURCE2} .
-%patch0
-%patch1
-%patch2 -p1
+%patch -P 0
+%patch -P 1
+%patch -P 2 -p1
 
 %build
 %configure
