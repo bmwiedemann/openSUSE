@@ -219,4 +219,12 @@
     <comment>- Require /usr/sbin/groupadd explicitly</comment>
     <requestid>1118393</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>ac90d1036d948e0d9c6a586b954b3b02</srcmd5>
+    <version>0.7.1</version>
+    <time>1709070550</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1152276</requestid>
+  </revision>
 </revisionlist>

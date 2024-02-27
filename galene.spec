@@ -1,7 +1,7 @@
 #
 # spec file for package galene
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,8 @@ BuildRequires:  fdupes
 BuildRequires:  filesystem
 BuildRequires:  go >= 1.16
 BuildRequires:  systemd-rpm-macros
+Provides:       group(galene)
+Provides:       user(galene)
 Requires:       fdupes
 Requires:       filesystem
 Requires(pre):  %fillup_prereq
@@ -55,8 +57,7 @@ Galène is a videoconferencing server implemented in Go which can be
 deployed with moderate server resources.
 
 %prep
-%setup -qa1
-%patch1 -p1
+%autosetup -p1 -a1
 
 %build
 %ifarch ppc64

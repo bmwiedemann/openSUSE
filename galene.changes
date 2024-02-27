@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 27 12:36:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Provide user()/group() tag as required by RPM 4.19. The
+  user/group are generated in the pre script.
+
+-------------------------------------------------------------------
+Tue Feb 27 10:51:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Fri Oct 13 22:48:49 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Require /usr/sbin/groupadd explicitly
