@@ -59,8 +59,8 @@ It is very fast and takes less than twice the amount of time as regular SHA-1.
 
 %prep
 %setup -q -n %{name}-stable-v%{version}
-%patch0 -p1
-%patch1
+%patch -P 0 -p1
+%patch -P 1
 
 %build
 export TARGETCFLAGS="%{optflags}"

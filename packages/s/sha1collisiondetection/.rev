@@ -40,4 +40,12 @@
     <comment>fix endianess problems</comment>
     <requestid>571492</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>e8c6e678e4d771f053dbaadd1a25c6d0</srcmd5>
+    <version>1.0.3</version>
+    <time>1709070266</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151543</requestid>
+  </revision>
 </revisionlist>

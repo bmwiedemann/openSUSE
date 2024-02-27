@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:08:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Jan 31 17:48:45 CET 2018 - ro@suse.de
 
 - cleaner solution for the endian detection issue:
