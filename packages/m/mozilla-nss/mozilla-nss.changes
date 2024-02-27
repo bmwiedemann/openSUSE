@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 23 11:55:45 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Feb 20 09:27:23 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.97

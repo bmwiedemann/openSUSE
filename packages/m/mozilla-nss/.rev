@@ -3150,4 +3150,12 @@
   * bmo#1871219 - Wrap CC shell commands in gyp expansions</comment>
     <requestid>1147963</requestid>
   </revision>
+  <revision rev="214" vrev="2">
+    <srcmd5>e9b7fe72cda673e8fb7069d36c0b38dd</srcmd5>
+    <version>3.97</version>
+    <time>1709070194</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1150519</requestid>
+  </revision>
 </revisionlist>
