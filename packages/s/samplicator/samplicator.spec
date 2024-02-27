@@ -40,8 +40,7 @@ receiver, which will then only receive one in N of the received packets.
 Optional spoofing is also supported.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv
