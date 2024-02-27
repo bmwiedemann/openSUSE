@@ -62,8 +62,7 @@ fcitx-config GTK based configure tool for fcitx.
 KDE Version see fcitx-config-kde4 or kcm-fcitx.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake
