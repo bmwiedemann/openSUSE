@@ -19,20 +19,22 @@
 %{?sle15_python_module_pythons}
 %global modname uproot
 Name:           python-uproot
-Version:        5.2.1
+Version:        5.3.1
 Release:        0
 Summary:        ROOT I/O in pure Python and Numpy
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            https://github.com/scikit-hep/uproot4
+URL:            https://github.com/scikit-hep/uproot5
 Source0:        https://files.pythonhosted.org/packages/source/u/uproot/uproot-%{version}.tar.gz
 BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-cramjam
 Requires:       python-numpy >= 1.13.1
 Requires:       python-packaging
 Recommends:     python-awkward
@@ -48,6 +50,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module RangeHTTPServer}
 BuildRequires:  %{python_module awkward}
+BuildRequires:  %{python_module cramjam}
 BuildRequires:  %{python_module lz4}
 BuildRequires:  %{python_module numpy >= 1.13.1}
 BuildRequires:  %{python_module packaging}
@@ -55,7 +58,7 @@ BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module scikit-hep-testdata >= 0.4.35}
+BuildRequires:  %{python_module scikit-hep-testdata >= 0.4.38}
 BuildRequires:  %{python_module xxhash}
 BuildRequires:  %{python_module boost-histogram >= 0.13 if (%python-base without python2-base)}
 # /SECTION
@@ -87,9 +90,10 @@ if [ $(getconf LONG_BIT) -eq 32 ]; then
 # pandas tests assume 64bit types
 skiptests32="(test_jagged_pandas or test_pandas_vector_TLorentzVector or test_iterate_pandas_2 or test_function_iterate_pandas_2 or test_0430)"
 fi
+# Skip test_decompression_executor_for_dask until we have dask-awkward packaged
 export HOME=$PWD
 export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
-%pytest "${skip_network_tests[@]} ${skiptests32}"
+%pytest "${skip_network_tests[@]} ${skiptests32} and not test_decompression_executor_for_dask"
 
 %files %{python_files}
 %doc README.md

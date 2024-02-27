@@ -1,11 +1,37 @@
 -------------------------------------------------------------------
+Sat Feb 24 13:36:52 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.3.1:
+  * Loosen the version constraint on cramjam
+- Changes from version 5.3.0:
+  * feat: use cramjam for lzma, lz4, and zstd, opt-in use of isal
+    for zlib (gh#scikit-hep/uproot5#1090).
+  * feat: expose decompression_executor and
+    interpretation_executor in uproot dask
+    (gh#scikit-hep/uproot5#1120).
+  * fix: missing '_fh' and '_file' attributes after unpickling
+    (gh#scikit-hep/uproot5#1118).
+  * fix: fix dask_write docs (gh#scikit-hep/uproot5#1122).
+  * fix: attempt to concatenate numpy and awkward arrays
+    (gh#scikit-hep/uproot5#1114).
+  * fix: test suite creates files not in tmp_path
+    (gh#scikit-hep/uproot5#1123).
+  * fix: allow colon in key names (gh#scikit-hep/uproot5#1127).
+  * fix: allow writing generic UHI-compatible histograms
+    (gh#scikit-hep/uproot5#1128).
+- New dependencies:
+  * BuildRequires: python-hatch_vcs.
+  * (Build)Requires: python-cramjam.
+- Update URL tag.
+
+-------------------------------------------------------------------
 Mon Jan 15 05:21:29 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.2.1:
   * feat: supply a pre-calculated base form to avoid file opening
-    [gh#scikit-hep/uproot#1077].
-  * test: xrootd server fixture [gh#scikit-hep/uproot#1076].
-  * test: fsspec cache [gh#scikit-hep/uproot#1075].
+    [gh#scikit-hep/uproot5#1077].
+  * test: xrootd server fixture [gh#scikit-hep/uproot5#1076].
+  * test: fsspec cache [gh#scikit-hep/uproot5#1075].
 - pytest: Use -k to skip over network based tests as "-m network"
   was no longer working.
 - New BuildRequires: python-RangeHTTPServer.
@@ -15,13 +41,13 @@ Fri Oct 13 00:34:49 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.0.13:
   * feat: add TLeafC - string - writing support
-    [gh#scikit-hep/uproot#940].
+    [gh#scikit-hep/uproot5#940].
   * feat: adding a very basic FSSpecSource
-    [gh#scikit-hep/uproot#967].
+    [gh#scikit-hep/uproot5#967].
   * fix: inverted axes for variances of 2D weighted histograms
-    when transformed to hist [gh#scikit-hep/uproot#965].
+    when transformed to hist [gh#scikit-hep/uproot5#965].
   * fix: pull out .data from NumpyArray
-    [gh#scikit-hep/uproot#985].
+    [gh#scikit-hep/uproot5#985].
 - Delete a test file that causes import errors because python-hist
   is not packaged for the distro.
 
@@ -30,28 +56,28 @@ Sun Oct  8 01:05:02 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.0.12:
   * fix: changelog script ignores releases past 5.0.0rc2
-    [gh#scikit-hep/uproot#935].
-  * fix: clamp start and stop [gh#scikit-hep/uproot#941].
+    [gh#scikit-hep/uproot5#935].
+  * fix: clamp start and stop [gh#scikit-hep/uproot5#941].
   * fix: get package import messages up-to-date
-    [gh#scikit-hep/uproot#947].
+    [gh#scikit-hep/uproot5#947].
   * fix: tests were failing because dask_awkward.lib.testutils
-    needs pyarrow [gh#scikit-hep/uproot#957].
+    needs pyarrow [gh#scikit-hep/uproot5#957].
   * fix: add minimimal emscripten support via non-HTTP sources
-    [gh#scikit-hep/uproot#956].
+    [gh#scikit-hep/uproot5#956].
   * fix: remove pyarrow import as a dependence coming from
-    dask-awkward in tests [gh#scikit-hep/uproot#961].
+    dask-awkward in tests [gh#scikit-hep/uproot5#961].
 
 -------------------------------------------------------------------
 Sun Sep 17 16:00:00 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.0.11:
-  * Support reading from S3 [gh#scikit-hep/uproot#916].
+  * Support reading from S3 [gh#scikit-hep/uproot5#916].
   * fix: pandas and double nested vectors issue 885
-    [gh#scikit-hep/uproot#912].
+    [gh#scikit-hep/uproot5#912].
   * fix: don't assume Uproot is in global scope in TPython::Eval
-    [gh#scikit-hep/uproot#927].
+    [gh#scikit-hep/uproot5#927].
   * fix: expressions failing in pandas issue 922
-    [gh#scikit-hep/uproot#930].
+    [gh#scikit-hep/uproot5#930].
 
 -------------------------------------------------------------------
 Mon Jul  3 13:47:02 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
