@@ -59,9 +59,9 @@ You may think of it as some kind of tar or rsync with versioned storage.
 
 %prep
 %setup -q
-%patch1
-%patch2
-%patch3 -p1
+%patch -P 1
+%patch -P 2
+%patch -P 3 -p1
 
 %build
 export CFLAGS="%{optflags} $(pkg-config --includes apr-1)"
