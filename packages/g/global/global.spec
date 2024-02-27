@@ -50,9 +50,7 @@ easily. It is useful to hack a large project containing many
 subdirectories or many main() functions like MH, X, or Linux kernel.
 
 %prep
-%setup -q
-%patch0
-%patch1
+%autosetup -p0
 
 %build
 autoreconf -fiv

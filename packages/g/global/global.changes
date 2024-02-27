@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:02:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Tue Nov 21 21:15:09 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 6.6.11:
