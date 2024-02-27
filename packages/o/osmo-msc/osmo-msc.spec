@@ -67,8 +67,7 @@ towards a HLR, but the much simpler Osmocom GSUP protocol, which can
 be translated to MAP if needed.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 echo "%{version}" >.tarball-version
