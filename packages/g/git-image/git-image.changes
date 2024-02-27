@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 14:59:04 UTC 2024 - Tan Néau <tan.neau@suse.com>
+
+- Add openssh-client to allow to clone git repos over ssh
+
+-------------------------------------------------------------------
 Wed Jan 17 14:29:14 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - Add initial README stub
