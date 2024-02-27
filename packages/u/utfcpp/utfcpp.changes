@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 21 14:07:20 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.0.5:
+  * cmake fixes
+- drop no-cpp17-tests.patch
+- drop old-cmake.patch
+- add utfcpp-4.0.5-cmake-location.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 15:59:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -2,6 +2,7 @@
 # spec file for package utfcpp
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +18,16 @@
 
 
 Name:           utfcpp
-Version:        3.2.3
+Version:        4.0.5
 Release:        0
 Summary:        A library for handling UTF-8 encoded strings
 License:        BSL-1.0
 URL:            https://github.com/nemtrif/utfcpp
 Source:         %{name}-%{version}.tar.xz
-Patch0:         no-cpp17-tests.patch
-Patch1:         old-cmake.patch
-BuildRequires:  cmake >= 3.5
-BuildRequires:  gcc-c++
+Patch0:         utfcpp-4.0.5-cmake-location.patch
+BuildRequires:  c++_compiler
+BuildRequires:  cmake >= 3.14
+BuildArch:      noarch
 
 %description
 A C++ library for handling UTF-8 encoded strings.
@@ -38,35 +39,22 @@ Summary:        A library for handling UTF-8 encoded strings
 A C++ library for handling UTF-8 encoded strings.
 
 %prep
-%setup -q
-%if 0%{?suse_version} < 1320
-%patch -P 0 -p1
-%endif
-%if 0%{?suse_version} < 1550
-%patch -P 1 -p1
-%endif
+%autosetup -p1
 
 %build
 %cmake
+%cmake_build
 
 %install
 %cmake_install
 
 %check
-make -C build test
+%ctest
 
 %files devel
 %license LICENSE
 %doc README.md
-%dir %{_includedir}/utf8cpp
-%{_includedir}/utf8cpp/utf8.h
-%dir %{_includedir}/utf8cpp/utf8
-%{_includedir}/utf8cpp/utf8/checked.h
-%{_includedir}/utf8cpp/utf8/core.h
-%{_includedir}/utf8cpp/utf8/cpp11.h
-%{_includedir}/utf8cpp/utf8/cpp17.h
-%{_includedir}/utf8cpp/utf8/unchecked.h
-%dir %{_libdir}/cmake/utf8cpp
-%{_libdir}/cmake/utf8cpp/utf8cpp*.cmake
+%{_includedir}/utf8cpp
+%{_datadir}/cmake/utf8cpp
 
 %changelog
