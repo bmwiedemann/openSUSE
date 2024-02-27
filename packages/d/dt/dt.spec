@@ -38,8 +38,7 @@ statisics and other test parameters before exiting.  Since verification
 of data is performed, dt can be thought of as a generic diagnostic tool.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 CFLAGS=$(pkg-config --cflags uuid)
