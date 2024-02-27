@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:25:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Jun 15 12:14:46 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Refresh patch to fix build on aarch64:
