@@ -44,8 +44,7 @@ This package contains diod, a multi-threaded, user space file server
 that speaks 9P2000.L protocol.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv
