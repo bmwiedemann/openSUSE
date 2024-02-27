@@ -56,9 +56,7 @@ managers can also use it to handle large volumes of translation files
 easily and without much hassle.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 sed -i -e '1{\,^#!/usr/bin/env python,d}' txclib/cmdline.py
 
 %build

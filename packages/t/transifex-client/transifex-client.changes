@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 15:46:22 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Mon Jun 26 15:12:45 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire python3-six: used to be pulled in by other
