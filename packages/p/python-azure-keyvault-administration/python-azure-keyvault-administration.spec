@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-keyvault-administration
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,18 @@
 #
 
 
-%define realversion 4.4.0b2
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-keyvault-administration
-Version:        4.4.0~b2
+Version:        4.4.0
 Release:        0
 Summary:        Microsoft Azure Key Vault Administration Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-keyvault-administration/azure-keyvault-administration-%{realversion}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure-keyvault-administration/azure-keyvault-administration-%{version}.tar.gz
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-keyvault-nspkg >= 1.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -39,7 +37,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.24.0
+Requires:       python-azure-core >= 1.29.5
 Requires:       python-azure-keyvault-nspkg >= 1.0.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-isodate >= 0.6.1
@@ -60,10 +58,10 @@ management (azure-keyvault-secrets) - securely store and control access to token
 passwords, administration, API keys, and other secrets.
 
 %prep
-%setup -q -n azure-keyvault-administration-%{realversion}
+%setup -q -n azure-keyvault-administration-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-keyvault-administration-%{realversion}
+install -m 644 %{SOURCE1} %{_builddir}/azure-keyvault-administration-%{version}
 %python_build
 
 %install
