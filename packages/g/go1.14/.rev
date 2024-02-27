@@ -249,4 +249,12 @@ preparation for submit to SUSE. Remove %defattr(-,root,root,-) in %files</commen
   * go#42586 net/http: race in http2Transport (forwarded request 869615 from jfkw)</comment>
     <requestid>869617</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>90a695151e4a3c4e92ce323f5dfe5947</srcmd5>
+    <version>1.14.15</version>
+    <time>1709070570</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1152223 from dimstar)</comment>
+    <requestid>1152294</requestid>
+  </revision>
 </revisionlist>

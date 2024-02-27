@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:32:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Feb  5 02:41:52 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.14.15 (released 2021-02-04) includes fixes to the compiler,
