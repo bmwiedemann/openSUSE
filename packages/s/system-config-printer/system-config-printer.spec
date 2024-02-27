@@ -1,7 +1,7 @@
 #
 # spec file for package system-config-printer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -173,6 +173,7 @@ cp -a %{_datadir}/icons/%{_iconlocation}/scalable/devices/printer.svg %{buildroo
 %suse_update_desktop_file -r system-config-printer GTK System HardwareSettings
 %fdupes %{buildroot}/%{py_sitedir}
 %find_lang %{name} %{?no_lang_C}
+%python3_fix_shebang_path %{buildroot}%{_prefix}/lib/udev/udev-add-printer
 
 %files
 %license COPYING

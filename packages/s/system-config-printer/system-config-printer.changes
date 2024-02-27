@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 11:13:34 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang_path macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Mon Nov 27 14:30:35 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup -p1 instead of multiple %patch lines. Allows us to
