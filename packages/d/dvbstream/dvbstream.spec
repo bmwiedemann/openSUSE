@@ -37,8 +37,8 @@ DVB cards without a hardware MPEG decoder.
 %prep
 %setup -q -n dvbstream-cvs
 rm -rf TELNET/CVS
-%patch0
-%patch1 -p1
+%patch -P 0
+%patch -P 1 -p1
 
 %build
 make %{?_smp_mflags}
