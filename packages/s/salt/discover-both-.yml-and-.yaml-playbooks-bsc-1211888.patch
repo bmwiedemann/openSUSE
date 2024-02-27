@@ -1,0 +1,188 @@
+From 05fbd376090c5d7f997c510db0abb62be54d6d40 Mon Sep 17 00:00:00 2001
+From: Johannes Hahn <johannes.hahn@suse.com>
+Date: Tue, 20 Feb 2024 15:38:08 +0100
+Subject: [PATCH] Discover both *.yml and *.yaml playbooks (bsc#1211888)
+
+Allow for 'playbook_extension' to be either a string or a tuple and
+change the default behavior to discover both.
+---
+ changelog/66048.changed.md                    |  1 +
+ salt/modules/ansiblegate.py                   | 46 +++++++++----------
+ .../pytests/unit/modules/test_ansiblegate.py  |  3 ++
+ .../example_playbooks/playbook1.yaml          |  5 ++
+ 4 files changed, 30 insertions(+), 25 deletions(-)
+ create mode 100644 changelog/66048.changed.md
+ create mode 100644 tests/unit/files/playbooks/example_playbooks/playbook1.yaml
+
+diff --git a/changelog/66048.changed.md b/changelog/66048.changed.md
+new file mode 100644
+index 0000000000..b042e0d313
+--- /dev/null
++++ b/changelog/66048.changed.md
+@@ -0,0 +1 @@
++Ansiblegate discover_playbooks was changed to find playbooks as either *.yml or *.yaml files
+diff --git a/salt/modules/ansiblegate.py b/salt/modules/ansiblegate.py
+index 2f60a7444f..920c374e5a 100644
+--- a/salt/modules/ansiblegate.py
++++ b/salt/modules/ansiblegate.py
+@@ -111,7 +111,7 @@ def __virtual__():
+     if proc.returncode != 0:
+         return (
+             False,
+-            "Failed to get the listing of ansible modules:\n{}".format(proc.stderr),
++            f"Failed to get the listing of ansible modules:\n{proc.stderr}",
+         )
+ 
+     module_funcs = dir(sys.modules[__name__])
+@@ -240,7 +240,7 @@ def call(module, *args, **kwargs):
+         _kwargs = {k: v for (k, v) in kwargs.items() if not k.startswith("__pub")}
+ 
+     for key, value in _kwargs.items():
+-        module_args.append("{}={}".format(key, salt.utils.json.dumps(value)))
++        module_args.append(f"{key}={salt.utils.json.dumps(value)}")
+ 
+     with NamedTemporaryFile(mode="w") as inventory:
+ 
+@@ -367,15 +367,15 @@ def playbooks(
+     if diff:
+         command.append("--diff")
+     if isinstance(extra_vars, dict):
+-        command.append("--extra-vars='{}'".format(json.dumps(extra_vars)))
++        command.append(f"--extra-vars='{json.dumps(extra_vars)}'")
+     elif isinstance(extra_vars, str) and extra_vars.startswith("@"):
+-        command.append("--extra-vars={}".format(extra_vars))
++        command.append(f"--extra-vars={extra_vars}")
+     if flush_cache:
+         command.append("--flush-cache")
+     if inventory:
+-        command.append("--inventory={}".format(inventory))
++        command.append(f"--inventory={inventory}")
+     if limit:
+-        command.append("--limit={}".format(limit))
++        command.append(f"--limit={limit}")
+     if list_hosts:
+         command.append("--list-hosts")
+     if list_tags:
+@@ -383,25 +383,25 @@ def playbooks(
+     if list_tasks:
+         command.append("--list-tasks")
+     if module_path:
+-        command.append("--module-path={}".format(module_path))
++        command.append(f"--module-path={module_path}")
+     if skip_tags:
+-        command.append("--skip-tags={}".format(skip_tags))
++        command.append(f"--skip-tags={skip_tags}")
+     if start_at_task:
+-        command.append("--start-at-task={}".format(start_at_task))
++        command.append(f"--start-at-task={start_at_task}")
+     if syntax_check:
+         command.append("--syntax-check")
+     if tags:
+-        command.append("--tags={}".format(tags))
++        command.append(f"--tags={tags}")
+     if playbook_kwargs:
+         for key, value in playbook_kwargs.items():
+             key = key.replace("_", "-")
+             if value is True:
+-                command.append("--{}".format(key))
++                command.append(f"--{key}")
+             elif isinstance(value, str):
+-                command.append("--{}={}".format(key, value))
++                command.append(f"--{key}={value}")
+             elif isinstance(value, dict):
+-                command.append("--{}={}".format(key, json.dumps(value)))
+-    command.append("--forks={}".format(forks))
++                command.append(f"--{key}={json.dumps(value)}")
++    command.append(f"--forks={forks}")
+     cmd_kwargs = {
+         "env": {
+             "ANSIBLE_STDOUT_CALLBACK": "json",
+@@ -502,7 +502,7 @@ def discover_playbooks(
+         List of paths to discover playbooks from.
+ 
+     :param playbook_extension:
+-        File extension of playbooks file to search for. Default: "yml"
++        File extension(s) of playbook files to search for, can be a string or tuple of strings. Default: (".yml", ".yaml")
+ 
+     :param hosts_filename:
+         Filename of custom playbook inventory to search for. Default: "hosts"
+@@ -533,19 +533,17 @@ def discover_playbooks(
+         )
+ 
+     if not playbook_extension:
+-        playbook_extension = "yml"
++        playbook_extension = (".yml", ".yaml")
+     if not hosts_filename:
+         hosts_filename = "hosts"
+ 
+     if path:
+         if not os.path.isabs(path):
+             raise CommandExecutionError(
+-                "The given path is not an absolute path: {}".format(path)
++                f"The given path is not an absolute path: {path}"
+             )
+         if not os.path.isdir(path):
+-            raise CommandExecutionError(
+-                "The given path is not a directory: {}".format(path)
+-            )
++            raise CommandExecutionError(f"The given path is not a directory: {path}")
+         return {
+             path: _explore_path(path, playbook_extension, hosts_filename, syntax_check)
+         }
+@@ -573,7 +571,7 @@ def _explore_path(path, playbook_extension, hosts_filename, syntax_check):
+         # Check files in the given path
+         for _f in os.listdir(path):
+             _path = os.path.join(path, _f)
+-            if os.path.isfile(_path) and _path.endswith("." + playbook_extension):
++            if os.path.isfile(_path) and _path.endswith(playbook_extension):
+                 ret[_f] = {"fullpath": _path}
+                 # Check for custom inventory file
+                 if os.path.isfile(os.path.join(path, hosts_filename)):
+@@ -584,9 +582,7 @@ def _explore_path(path, playbook_extension, hosts_filename, syntax_check):
+                 # Check files in the 1st level of subdirectories
+                 for _f2 in os.listdir(_path):
+                     _path2 = os.path.join(_path, _f2)
+-                    if os.path.isfile(_path2) and _path2.endswith(
+-                        "." + playbook_extension
+-                    ):
++                    if os.path.isfile(_path2) and _path2.endswith(playbook_extension):
+                         ret[os.path.join(_f, _f2)] = {"fullpath": _path2}
+                         # Check for custom inventory file
+                         if os.path.isfile(os.path.join(_path, hosts_filename)):
+@@ -599,7 +595,7 @@ def _explore_path(path, playbook_extension, hosts_filename, syntax_check):
+                             )
+     except Exception as exc:
+         raise CommandExecutionError(
+-            "There was an exception while discovering playbooks: {}".format(exc)
++            f"There was an exception while discovering playbooks: {exc}"
+         )
+ 
+     # Run syntax check validation
+diff --git a/tests/pytests/unit/modules/test_ansiblegate.py b/tests/pytests/unit/modules/test_ansiblegate.py
+index 6201809c22..272da721bf 100644
+--- a/tests/pytests/unit/modules/test_ansiblegate.py
++++ b/tests/pytests/unit/modules/test_ansiblegate.py
+@@ -198,6 +198,9 @@ def test_ansible_discover_playbooks_single_path():
+     assert ret[playbooks_dir]["playbook1.yml"] == {
+         "fullpath": os.path.join(playbooks_dir, "playbook1.yml")
+     }
++    assert ret[playbooks_dir]["playbook1.yaml"] == {
++        "fullpath": os.path.join(playbooks_dir, "playbook1.yaml")
++    }
+     assert ret[playbooks_dir]["example-playbook2/site.yml"] == {
+         "fullpath": os.path.join(playbooks_dir, "example-playbook2/site.yml"),
+         "custom_inventory": os.path.join(playbooks_dir, "example-playbook2/hosts"),
+diff --git a/tests/unit/files/playbooks/example_playbooks/playbook1.yaml b/tests/unit/files/playbooks/example_playbooks/playbook1.yaml
+new file mode 100644
+index 0000000000..e258a101e1
+--- /dev/null
++++ b/tests/unit/files/playbooks/example_playbooks/playbook1.yaml
+@@ -0,0 +1,5 @@
++---
++- hosts: all
++  gather_facts: false
++  tasks:
++    - ping:
+-- 
+2.43.1
+

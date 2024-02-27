@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Feb 26 10:43:37 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix problematic tests and allow smooth tests executions on containers
+
+- Added:
+  * fix-problematic-tests-and-allow-smooth-tests-executi.patch 
+
+-------------------------------------------------------------------
+Wed Feb 21 12:21:03 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Discover Ansible playbook files as "*.yml" or "*.yaml" files (bsc#1211888)
+
+- Added:
+  * discover-both-.yml-and-.yaml-playbooks-bsc-1211888.patch
+
+-------------------------------------------------------------------
+Tue Feb 20 12:58:58 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Extend dependencies for python3-salt-testsuite and python3-salt packages
+- Improve Salt and testsuite packages multibuild
+
+-------------------------------------------------------------------
+Thu Feb  8 12:17:39 UTC 2024 - Yeray Gutiérrez Cedrés <yeray.gutierrez@suse.com>
+
+- Enable multibuilld and create test flavor
+- Additionally we require python-mock just for older Python versions.
+
+-------------------------------------------------------------------
+Mon Feb  5 09:55:33 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Remove python-boto dependency for the python3-salt-testsuite package for Tumbleweed
+- Rename salt-tests to python3-salt-testsuite
+
+-------------------------------------------------------------------
 Thu Feb  1 12:19:06 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Prevent directory traversal when creating syndic cache directory

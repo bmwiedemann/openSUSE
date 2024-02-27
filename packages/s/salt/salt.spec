@@ -16,6 +16,13 @@
 #
 %global debug_package %{nil}
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "testsuite"
+%define psuffix -test
+%else
+%define psuffix %{nil}
+%endif
+
 %if 0%{?suse_version} > 1210 || 0%{?rhel} >= 7 || 0%{?fedora} >=28
 %bcond_without systemd
 %else
@@ -31,11 +38,10 @@
 %bcond_with    fish_completion
 %bcond_with    zsh_completion
 %endif
-%bcond_with    test
 %bcond_without docs
 %bcond_with    builddocs
 
-Name:           salt
+Name:           salt%{psuffix}
 Version:        3006.0
 Release:        0
 Summary:        A parallel remote execution system
@@ -343,6 +349,10 @@ Patch97:        fixed-keyerror-in-logs-when-running-a-state-that-fai.patch
 Patch98:        improve-pip-target-override-condition-with-venv_pip_.patch
 # PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/65819
 Patch99:        allow-kwargs-for-fileserver-roots-update-bsc-1218482.patch
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/66048
+Patch100:       discover-both-.yml-and-.yaml-playbooks-bsc-1211888.patch
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/66130
+Patch101:       fix-problematic-tests-and-allow-smooth-tests-executi.patch
 
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
@@ -424,6 +434,8 @@ malleable. Salt accomplishes this via its ability to handle larger loads of
 information, and not just dozens, but hundreds or even thousands of individual
 servers, handle them quickly and through a simple and manageable interface.
 
+%if "%{flavor}" != "testsuite"
+
 %package -n python3-salt
 Summary:        python3 library for salt
 Group:          System/Management
@@ -464,7 +476,7 @@ BuildRequires:  python3-packaging
 # requirements/zeromq.txt
 %if %{with test}
 BuildRequires:  python3-boto >= 2.32.1
-BuildRequires:  python3-mock
+BuildRequires:  %{python3-mock if %python-base < 3.8}
 BuildRequires:  python3-moto >= 0.3.6
 BuildRequires:  python3-pip
 BuildRequires:  python3-salt-testing >= 2015.2.16
@@ -532,6 +544,12 @@ Suggests:       python3-Mako
 Recommends:     python3-netaddr
 Recommends:     python3-pyinotify
 %endif
+
+# Required by Salt modules
+Requires:       iputils
+Requires:       sudo
+Requires:       file
+Requires:       man
 
 Provides:       bundled(python3-tornado) = 4.5.3
 
@@ -701,13 +719,6 @@ Requires(pre):  %fillup_prereq
 Salt ssh is a master running without zmq.
 it enables the management of minions over a ssh connection.
 
-%package tests
-Summary:        Unit and integration tests for Salt
-Requires:       %{name} = %{version}-%{release}
-
-%description tests
-Collections of unit and integration tests for Salt
-
 %if %{with bash_completion}
 %package bash-completion
 Summary:        Bash Completion for %{name}
@@ -774,6 +785,51 @@ For transactional systems, like MicroOS, Salt can operate
 transparently if the executor "transactional-update" is registered in
 list of active executors.  This package add the configuration file.
 
+%endif
+
+%if "%{flavor}" == "testsuite"
+
+%package -n python3-salt-testsuite
+Summary:        Unit and integration tests for Salt
+
+%if 0%{?rhel} == 8
+BuildRequires:  platform-python
+%else
+BuildRequires:  python3
+%endif
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
+
+Requires:       salt = %{version}
+Requires:       python3-CherryPy
+Requires:       python3-Genshi
+Requires:       python3-Mako
+%if !0%{?suse_version} > 1600 || 0%{?centos}
+Requires:       python3-boto
+%endif
+Requires:       python3-boto3
+Requires:       python3-docker
+%if 0%{?suse_version} < 1600
+Requires:       python3-mock
+%endif
+Requires:       python3-pygit2
+Requires:       python3-pytest >= 7.0.1
+Requires:       python3-pytest-httpserver
+Requires:       python3-pytest-salt-factories >= 1.0.0~rc21
+Requires:       python3-pytest-subtests
+Requires:       python3-testinfra
+Requires:       python3-yamllint
+Requires:       python3-pip
+Requires:       docker
+Requires:       openssh
+Requires:       git
+
+Obsoletes:      %{name}-tests
+
+%description -n python3-salt-testsuite
+Collection of unit, functional, and integration tests for %{name}.
+
+%endif
 
 %prep
 %setup -q -n salt-%{version}-suse
@@ -783,6 +839,8 @@ cp %{S:6} .
 %autopatch -p1
 
 %build
+%if "%{flavor}" != "testsuite"
+
 # Putting /usr/bin at the front of $PATH is needed for RHEL/RES 7. Without this
 # change, the RPM will require /bin/python, which is not provided by any package
 # on RHEL/RES 7.
@@ -805,7 +863,11 @@ popd
 cd doc && make html && rm _build/html/.buildinfo && rm _build/html/_images/proxy_minions.png && cd _build/html && chmod -R -x+X *
 %endif
 
+%endif
+
 %install
+%if "%{flavor}" != "testsuite"
+
 mv _build.python3 build
 python3 setup.py --salt-transport=both install --prefix=%{_prefix} --root=%{buildroot}
 mv build _build.python3
@@ -853,11 +915,19 @@ install -Dd -m 0755 %{buildroot}%{_sysconfdir}/logrotate.d/
 # Install salt-support profiles
 install -Dpm 0644 salt/cli/support/profiles/* %{buildroot}%{python3_sitelib}/salt/cli/support/profiles
 
+%endif
+
+%if "%{flavor}" == "testsuite"
 # Install Salt tests
-install -Dd -m 0750 %{buildroot}%{_datadir}/salt
-install -Dd -m 0750 %{buildroot}%{_datadir}/salt/tests
-cp -a tests/* %{buildroot}%{_datadir}/salt/tests/
-sed -i '1s=^#!/usr/bin/\(python\|env python\)[0-9.]*=#!/usr/bin/python3=' %{buildroot}%{_datadir}/salt/tests/runtests.py
+install -Dd %{buildroot}%{python3_sitelib}/salt-testsuite
+cp -a tests %{buildroot}%{python3_sitelib}/salt-testsuite/
+# Remove runtests.py which is not used as deprecated method of running the tests
+rm %{buildroot}%{python3_sitelib}/salt-testsuite/tests/runtests.py
+# Copy conf files to the testsuite as they are used by the tests
+cp -a conf %{buildroot}%{python3_sitelib}/salt-testsuite/
+%endif
+
+%if "%{flavor}" != "testsuite"
 
 ## Install Zypper plugins only on SUSE machines
 %if 0%{?suse_version}
@@ -968,10 +1038,9 @@ install -Dpm 0640 conf/suse/standalone-formulas-configuration.conf %{buildroot}%
 %fdupes %{buildroot}%{python3_sitelib}
 %endif
 
-%check
-%if %{with test}
-python3 setup.py test --runtests-opts=-u
 %endif
+
+%if "%{flavor}" != "testsuite"
 
 %pre
 S_HOME="/var/lib/salt"
@@ -1434,7 +1503,10 @@ rm -f %{_localstatedir}/cache/salt/minion/thin/version
 
 %files -n python3-salt
 %defattr(-,root,root,-)
-%{python3_sitelib}/*
+%dir %{python3_sitelib}/salt
+%dir %{python3_sitelib}/salt-*.egg-info
+%{python3_sitelib}/salt/*
+%{python3_sitelib}/salt-*.egg-info/*
 %exclude %{python3_sitelib}/salt/cloud/deploy/*.sh
 
 %if %{with docs}
@@ -1442,11 +1514,6 @@ rm -f %{_localstatedir}/cache/salt/minion/thin/version
 %defattr(-,root,root)
 %doc doc/_build/html
 %endif
-
-%files tests
-%dir %{_datadir}/salt/
-%dir %{_datadir}/salt/tests/
-%{_datadir}/salt/tests/*
 
 %if %{with bash_completion}
 %files bash-completion
@@ -1484,6 +1551,12 @@ rm -f %{_localstatedir}/cache/salt/minion/thin/version
 %defattr(-,root,root)
 %config(noreplace) %attr(0640, root, root) %{_sysconfdir}/salt/minion.d/transactional_update.conf
 
+%endif
+
+%if "%{flavor}" == "testsuite"
+%files -n python3-salt-testsuite
+%{python3_sitelib}/salt-testsuite
+%endif
 
 %changelog
 

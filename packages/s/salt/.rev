@@ -2279,4 +2279,27 @@ let build start it or we will get libvirt errors.
   * fix-cve-2024-22231-and-cve-2024-22232-bsc-1219430-bs.patch</comment>
     <requestid>1143454</requestid>
   </revision>
+  <revision rev="144" vrev="8">
+    <srcmd5>f4f489ec45181332fcd2a882521ce261</srcmd5>
+    <version>3006.0</version>
+    <time>1709070329</time>
+    <user>anag+factory</user>
+    <comment>- Fix problematic tests and allow smooth tests executions on containers
+- Added:
+  * fix-problematic-tests-and-allow-smooth-tests-executi.patch 
+
+- Discover Ansible playbook files as &quot;*.yml&quot; or &quot;*.yaml&quot; files (bsc#1211888)
+- Added:
+  * discover-both-.yml-and-.yaml-playbooks-bsc-1211888.patch
+
+- Extend dependencies for python3-salt-testsuite and python3-salt packages
+- Improve Salt and testsuite packages multibuild
+
+- Enable multibuilld and create test flavor
+- Additionally we require python-mock just for older Python versions.
+
+- Remove python-boto dependency for the python3-salt-testsuite package for Tumbleweed
+- Rename salt-tests to python3-salt-testsuite</comment>
+    <requestid>1152011</requestid>
+  </revision>
 </revisionlist>
