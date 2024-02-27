@@ -231,4 +231,12 @@ Use a license from the spreadsheet linked at http://license.opensuse.org (forwar
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1118983</requestid>
   </revision>
+  <revision rev="32" vrev="424">
+    <srcmd5>dc4a32d760da61cf0bc346472334c108</srcmd5>
+    <version>1.5</version>
+    <time>1709070361</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1150632 from dimstar)</comment>
+    <requestid>1150734</requestid>
+  </revision>
 </revisionlist>

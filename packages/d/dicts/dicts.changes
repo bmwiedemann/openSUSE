@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 08:08:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Oct 12 12:33:35 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - New RPM API change ... now no %patch anymore only %patch0 

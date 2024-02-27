@@ -409,7 +409,7 @@ the package dicts.
   patch -s -p0
   make -f Makefile.Linux extract
   rm Makefile.Linux
-%patch0 -p0 -b .pdicts
+%patch -P 0 -p0 -b .pdicts
 
 # unify the permissions of all files, to make fdupes working again (bnc#784670)
 find . -type f -exec chmod 0644 {} +
