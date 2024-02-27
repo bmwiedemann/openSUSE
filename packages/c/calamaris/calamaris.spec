@@ -32,8 +32,7 @@ Calamaris parses log files from Squid V1.1.x, V1.2.x, V2.x, and NetCache in
 native log format and generates a report.
 
 %prep
-%setup -q
-%patch0001
+%autosetup -p0
 
 %build
 
