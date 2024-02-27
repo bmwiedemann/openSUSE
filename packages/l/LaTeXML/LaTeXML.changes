@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Feb 26 20:06:44 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 0.8.8:
+  * This release addresses a large variety of usability, fidelity, robustness,
+    portability and output-quality issues.
+  * breaking change: ltx:inline-para has been renamed
+    ltx:inline-logical-block
+  * Improved CSS, html, accessibility affecting
+    * framing, position & rotation, color
+    * figure/subfigure grouping
+  * MathML (closer to MathML Core)
+    * avoid gratuitous math mode (simple sub/superscripts); mathvariant
+    * option to avoid InvisibleTimes, when not certain (--noinvisibletimes)
+  * Improved emulation of TeX internals
+    * affecting registers, \chardef, accents, intarray, tracing
+  * More TeX-like "scanning" of tokens affecting
+    * expansion, input,
+    * alignments (\halign,tabular)
+  * improved block mode processing
+    * affecting \parbox, {minipage}, \centering, \raggedright/left
+    * More consistent set of block elements:
+      * ltx:block, ltx:logical-block, ltx:sectional-block,
+      * along with their inline variants:
+        * ltx:inline-block, ltx:inline-logical-block, ltx:inline-sectional-block
+    * breaking change: ltx:inline-para has been renamed
+      ltx:inline-logical-block
+  * Improvements to processing alignments (\halign, tabular),
+    * more TeX-like (processing templates, spacing)
+  * Improved processing of images, graphics, svg generation
+    * image post-processing
+    * pgf, tikz, pgfplots, tikz-cd
+  * initial support for Vietnamese, t5enc
+  * improved Windows portability
+  * improved schema documentation
+  * Improvements to test cases.
+  * New bindings: boxedminipage, cmap, ifdraft, marginnote, tikz-cd.
+  * Improvements to bindings: aa, aas, algorithm2e, amsmath, amsthm,
+    cleverref, comment, csquotes, elsarticle, enumitem, expl3, framed,
+    hyperref, hyperxmp, IEEEtran, lineno, listing, longtable, mn2e, nicefrac,
+    ntheorem, pdfpages, pgfmath, pgfplots, rotating, srcltx, sidecap,
+    subcaption, subfiles, thmtools, tikz, url, xfrac, xypic.
+
+-------------------------------------------------------------------
 Mon Dec 26 19:48:22 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to version 0.8.7:

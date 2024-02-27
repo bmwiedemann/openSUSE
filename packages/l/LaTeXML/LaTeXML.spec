@@ -1,7 +1,7 @@
 #
 # spec file for package LaTeXML
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           LaTeXML
-Version:        0.8.7
+Version:        0.8.8
 Release:        1%{?dist}
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Utilities
 Summary:        TeX and LaTeX to XML translator
 URL:            http://dlmf.nist.gov/LaTeXML/
-Source:         https://math.nist.gov/~BMiller/LaTeXML/releases/%{name}-%{version}.tar.gz
+Source:         https://github.com/brucemiller/LaTeXML/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 %define perl_modules perl(Archive::Zip) perl(DB_File) perl(File::Which) perl(Getopt::Long) perl(IO::String) perl(Image::Size) perl(JSON::XS) perl(LWP::Protocol::https) perl(Parse::RecDescent) perl(Text::Unidecode) perl(Test::Simple) perl(Time::HiRes) perl(URI) perl(XML::LibXML) perl(XML::LibXSLT) perl(Pod::Find) perl(UUID::Tiny)
 BuildRequires:  %perl_modules
