@@ -53,8 +53,7 @@ compressors and delays adapted for the most simple applications and
 the wildest imaginable sonic contortions.
 
 %prep
-%setup -q -n Cecilia5_%{version}-src
-%patch0 -p1
+%autosetup -p1 -n Cecilia5_%{version}-src
 
 %build
 %python3_build
