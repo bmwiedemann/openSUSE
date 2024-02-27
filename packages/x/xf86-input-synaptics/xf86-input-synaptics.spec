@@ -71,10 +71,7 @@ drivers, this driver allows more advanced features of the touchpad to
 become available.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch2 -p1
-%patch5 -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv

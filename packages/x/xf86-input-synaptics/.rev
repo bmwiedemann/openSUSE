@@ -387,4 +387,12 @@
   * synclient: allow negative/large values for AreaLeftEdge etc.</comment>
     <requestid>988394</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>6ff20cdf2e4a31c79888907341620c66</srcmd5>
+    <version>1.9.2</version>
+    <time>1709070278</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151666</requestid>
+  </revision>
 </revisionlist>
