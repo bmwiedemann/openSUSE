@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 15 06:53:54 UTC 2024 - Duraisankar P <Duraisankar.pitchumani@suse.com>
+
+- Fix CVE-2023-3966 [bsc#1219465] openvswitch3: Invalid memory access in Geneve with HW offload
+- Added patch,
+      +openvswitch-CVE-2023-3966.patch 
+
+-------------------------------------------------------------------
 Thu Feb  1 19:34:16 UTC 2024 - Duraisankar P <Duraisankar.pitchumani@suse.com>
 
 - Fix CVE-2023-5366 [bsc#1216002], openvswitch: missing masks on a final stage with ports trie

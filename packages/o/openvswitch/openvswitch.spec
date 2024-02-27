@@ -81,6 +81,8 @@ Patch4:         install-ovsdb-tools.patch
 Patch5:         CVE-2023-1668.patch
 # PATCH-FIX-UPSTREAM CVE-2023-5366.patch
 Patch6:         CVE-2023-5366.patch
+# Fix CVE-2023-3966 [bsc#1219465] -- Invalid memory access in Geneve with HW offload
+Patch7:         openvswitch-CVE-2023-3966.patch
 #OVN patches
 # PATCH-FIX-OPENSUSE: 0001-Run-ovn-as-openvswitch-openvswitch.patch
 Patch20:        0001-Run-ovn-as-openvswitch-openvswitch.patch
@@ -422,6 +424,7 @@ Devel libraries and headers for Open Virtual Network.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 # remove python/ovs/dirs.py - this is generated from template to have proper paths
 rm python/ovs/dirs.py
 cd %{ovn_dir}
