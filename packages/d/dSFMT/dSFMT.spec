@@ -71,8 +71,7 @@ This package provides libraries and header files for developing applications
 that use dSFMT.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %ifarch x86_64
