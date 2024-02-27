@@ -201,26 +201,26 @@ if test "%version" != $(echo %isc_version | tr "-" "."); then
 fi
 %setup -q -n %{name}-%{isc_version} -a 44 -a 45
 ##
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9
-%patch10 -p1
-%patch12 -p1
-%patch14
-%patch15 -p1
-%patch16
-%patch17 -p1
-%patch18 -p1
-%patch20
-%patch21
-%patch22
-%patch23
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
+%patch -P 8 -p1
+%patch -P 9
+%patch -P 10 -p1
+%patch -P 12 -p1
+%patch -P 14
+%patch -P 15 -p1
+%patch -P 16
+%patch -P 17 -p1
+%patch -P 18 -p1
+%patch -P 20
+%patch -P 21
+%patch -P 22
+%patch -P 23
 ##
 find . -type f -name \*.cat\* -exec rm -f {} \;
 dos2unix contrib/ms2isc/*

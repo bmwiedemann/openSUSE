@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 07:45:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Dec  7 13:31:06 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Revert dhclient-script removal and instead change usleep to sleep
