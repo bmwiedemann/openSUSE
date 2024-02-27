@@ -65,8 +65,7 @@ Group:          System/Libraries
 This package contains the httrack shared libraries.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 %configure \
