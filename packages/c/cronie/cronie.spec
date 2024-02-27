@@ -103,15 +103,15 @@ overloaded in settings.
 
 %prep
 %setup -q -n %{name}-%{name}-%{cronie_version}
-%patch3 -p1
-%patch4
-%patch5 -p1
+%patch -P 3 -p1
+%patch -P 4
+%patch -P 5 -p1
 cp %{SOURCE7} ./cron_to_cronie.README
-%patch13 -p1
+%patch -P 13 -p1
 %if 0%{?suse_version} > 1500
-%patch14 -p1
+%patch -P 14 -p1
 %endif
-%patch16 -p1
+%patch -P 16 -p1
 
 %build
 # fill macro CRON_VERSION it is used in top three lines of crontab file,should be reworked

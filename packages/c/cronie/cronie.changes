@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 10:51:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Jan 22 15:39:47 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 1.7.1:
