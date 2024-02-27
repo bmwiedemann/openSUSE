@@ -80,8 +80,8 @@ This subpackage contains the header files for building programs with
 SoundTouch.
 
 %prep
-%setup -q -n %{name}
-%patch1 -p1
+%autosetup -p1 -n %{name}
+
 dos2unix README.html
 
 %build
