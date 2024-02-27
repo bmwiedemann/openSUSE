@@ -16,9 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 %bcond_without  test
 # https://build.opensuse.org/package/show/Java:packages/h2database is not in Factory
 %bcond_with     test_jdbc
@@ -31,7 +28,9 @@ URL:            https://github.com/jpype-project/jpype
 Source:         https://files.pythonhosted.org/packages/source/J/JPype1/JPype1-%{version}.tar.gz
 Patch0:         JPype1-java8compat.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -61,18 +60,17 @@ BuildRequires:  sqlite-jdbc
 A Python to Java bridge.
 
 %prep
-%setup -q -n JPype1-%{version}
-%patch0 -p1
+%autosetup -p1 -n JPype1-%{version}
 # Avoid build dependency on PyInstaller
 rm jpype/_pyinstaller/test_jpype_pyinstaller.py
 
 %build
 ant -f native/build.xml jar
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %if %{with test}
@@ -98,9 +96,9 @@ export CLASSPATH=${PWD}/test/classes:%{_libdir}/java/sqlite-jdbc.jar:%{_localsta
 %files %{python_files}
 %doc AUTHORS.rst README.rst
 %license LICENSE
-%{python_sitearch}/jpype/
+%{python_sitearch}/jpype
 %{python_sitearch}/org.jpype.jar
 %{python_sitearch}/_jpype*.so
-%{python_sitearch}/*JPype1*/
+%{python_sitearch}/JPype1-%{version}.dist-info
 
 %changelog

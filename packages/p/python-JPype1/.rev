@@ -72,4 +72,12 @@
     resolve some previous ambiguities between methods.</comment>
     <requestid>1137273</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>63d9c42d6bbdd03c6b1014baa1939fea</srcmd5>
+    <version>1.5.0</version>
+    <time>1709070484</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject and autosetup macros.</comment>
+    <requestid>1151988</requestid>
+  </revision>
 </revisionlist>
