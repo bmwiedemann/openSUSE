@@ -36,8 +36,7 @@ with any ICY-compatible stream and allows to either save the stream to
 user-customizable files or pipe the output to a media player, or both.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 make %{?_smp_mflags} \
