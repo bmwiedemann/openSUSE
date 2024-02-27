@@ -40,9 +40,7 @@ Capablanca chess, gothic chess, knightmate, cylinder chess, berolina
 chess, superchess and courier chess.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 make %{?_smp_mflags}
