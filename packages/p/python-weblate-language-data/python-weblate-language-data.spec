@@ -1,7 +1,7 @@
 #
 # spec file for package python-weblate-language-data
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ License:        MIT
 URL:            https://github.com/WeblateOrg/language-data
 Source0:        https://files.pythonhosted.org/packages/source/w/%{modname}/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module translate-toolkit >= 3.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
