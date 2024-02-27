@@ -96,32 +96,7 @@ that multiple kernel driver versions can be installed, one for each
 installed kernel.
 
 %prep
-%setup -q -n drbd-%{version}
-%patch0001 -p1
-%patch0002 -p1
-%patch0003 -p1
-%patch0004 -p1
-%patch0005 -p1
-%patch0006 -p1
-%patch0007 -p1
-%patch0008 -p1
-%patch0009 -p1
-%patch0010 -p1
-%patch0011 -p1
-%patch0012 -p1
-%patch0013 -p1
-%patch0014 -p1
-%patch0015 -p1
-%patch0016 -p1
-%patch0017 -p1
-%patch0018 -p1
-%patch0019 -p1
-%patch0020 -p1
-%patch0021 -p1
-%patch0022 -p1
-%patch0023 -p1
-%patch1001 -p1
-%patch1002 -p1
+%autosetup -p1 -n drbd-%{version}
 
 mkdir source
 cp -a drbd/. source/. || :
