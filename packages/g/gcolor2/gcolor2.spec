@@ -41,8 +41,7 @@ Gcolor2 is a GTK2 color selector to provide a quick and easy way to find
 colors for whatever task is at hand. Colors can be saved and deleted as well.
 
 %prep
-%setup -q -a1
-%patch0 -p1
+%autosetup -p1 -a1
 
 %build
 echo "gcolor2.glade" >> po/POTFILES.in
