@@ -62,11 +62,7 @@ This subpackage contains the header files for developing
 applications that want to make use of dataquay.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch4 -p1
-%patch5 -p1
+%autosetup -p1
 
 %build
 %qmake5 PREFIX=%{_prefix} LIBDIR=%{_libdir} dataquay.pro
