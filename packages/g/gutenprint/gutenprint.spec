@@ -135,9 +135,7 @@ See the user's manual at /usr/share/gutenprint/doc/gutenprint-users-manual.pdf
 %endif
 
 %prep
-# Be quiet when unpacking:
-%setup -q -n gutenprint-%{tarball_version}
-%patch0 -p1
+%autosetup -p1 -n gutenprint-%{tarball_version}
 
 %build
 #autoreconf -fvi
