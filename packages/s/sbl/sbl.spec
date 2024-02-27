@@ -57,15 +57,15 @@ this python module enables orca to use brld for braille output
 
 %prep
 %setup -q
-%patch1
-%patch2
-%patch3
+%patch -P 1
+%patch -P 2
+%patch -P 3
 %if "%{_lib}" == "lib64"
-%patch4 -p1
+%patch -P 4 -p1
 %endif
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags} -fcommon -D_POSIX_C_SOURCE=2 -D_BSD_SOURCE" \

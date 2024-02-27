@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:05:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Jul  7 09:49:24 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec(boo#1174075)
