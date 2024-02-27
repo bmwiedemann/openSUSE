@@ -86,8 +86,7 @@ sound with different sequencers. Furthermore, it features a pattern
 and piano roll and there is an editor to automate ports.
 
 %prep
-%setup -q
-%patch1 -p0
+%autosetup -p0
 
 %build
 autoreconf -fi

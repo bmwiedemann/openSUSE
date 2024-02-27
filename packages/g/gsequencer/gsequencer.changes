@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:17:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Sat Feb 17 10:31:16 UTC 2024 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v6.5.2 updated screenshots in user manual docs.
