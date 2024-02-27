@@ -131,6 +131,8 @@ donttest+=" or (test_hypothesmith and test_isort_is_idempotent)"
 # It's a deprecated finder for isort so we drop it
 # https://github.com/sarugaku/requirementslib/issues/288
 donttest+=" or (test_deprecated_finders and test_pipfile_finder)"
+# https://github.com/PyCQA/isort/issues/2233
+donttest+=" or test_black_pyi_file"
 
 ORIGPATH=$PATH
 %{python_expand # install isort and required example projects into custom root

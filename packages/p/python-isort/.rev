@@ -625,4 +625,12 @@ Let's see which package is missing in ringX for test flavor</comment>
     <comment></comment>
     <requestid>1140773</requestid>
   </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>a461324a990daeac9df241360c8749c9</srcmd5>
+    <version>5.13.2</version>
+    <time>1709070525</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1152081</requestid>
+  </revision>
 </revisionlist>
