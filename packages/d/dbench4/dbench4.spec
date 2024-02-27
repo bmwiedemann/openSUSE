@@ -40,9 +40,7 @@ This is version 4 of dbench that does not produce results comparable
 with older versions.
 
 %prep
-%setup -q -n dbench-%{version}
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n dbench-%{version}
 
 %build
 autoreconf -fiv
