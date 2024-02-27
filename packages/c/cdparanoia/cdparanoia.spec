@@ -79,14 +79,14 @@ CD-ROM directly as data and writes the data to a file or pipe as .wav,
 
 %prep
 %setup -q -n cdparanoia-%{filever}
-%patch1 -p1
-%patch2
-%patch3
-%patch4
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch14
+%patch -P 1 -p1
+%patch -P 2
+%patch -P 3
+%patch -P 4
+%patch -P 10 -p1
+%patch -P 11 -p1
+%patch -P 12 -p1
+%patch -P 14
 
 %build
 autoreconf -vfi
