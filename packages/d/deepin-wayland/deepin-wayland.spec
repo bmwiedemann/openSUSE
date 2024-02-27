@@ -68,8 +68,7 @@ Requires:       lib%{_name}-client%{sover} = %{version}-%{release}
 Header files and libraries for %{name}.
 
 %prep
-%setup -q -n %{_name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
 %qmake5 PREFIX=%{_prefix} \
