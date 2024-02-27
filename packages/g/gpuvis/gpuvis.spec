@@ -44,8 +44,7 @@ BuildRequires:  intel-gpu-tools-devel
 Gpuvis is a Linux GPU profiler similar to GPUView on Windows. It is designed to work with trace-cmd captures and help track down Linux gpu and application performance issues.
 
 %prep
-%setup -q -n gpuvis-%{commit}
-%patch0 -p1
+%autosetup -p1 -n gpuvis-%{commit}
 
 %build
 %meson \
