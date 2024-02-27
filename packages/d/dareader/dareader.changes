@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 07:44:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sat Oct  8 14:58:29 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add fix-link-library.patch, fix build on Leap 15.x 

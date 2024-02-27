@@ -54,7 +54,7 @@ The dareader-devel package contains the header files for dareader.
 %prep
 %setup -q -n %{name}-%{commit}
 %if 0%{?suse_version} <= 1500
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 
 %build

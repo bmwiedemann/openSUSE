@@ -15,4 +15,12 @@
     <comment>- Add fix-link-library.patch, fix build on Leap 15.x (forwarded request 1045272 from hillwood)</comment>
     <requestid>1045273</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6d057d77b3ac29ff747828869311d6d3</srcmd5>
+    <version>0.0.0+git20220726.2d7d79c</version>
+    <time>1709070560</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1152264</requestid>
+  </revision>
 </revisionlist>
