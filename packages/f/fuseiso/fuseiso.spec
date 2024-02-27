@@ -41,8 +41,7 @@ zisofs extensions and also supports the CD-ROM image types img, bin,
 mdf and nrg.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 autoreconf -fi
