@@ -55,10 +55,7 @@ TU Chemnitz in an easy markup language suitable for use with grep.
 A recommended graphical frontend for using this dictionary is "ding".
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 
