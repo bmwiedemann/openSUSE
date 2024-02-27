@@ -63,4 +63,12 @@
     <comment>bot hasn't picked it up yet</comment>
     <requestid>1110572</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>df0ef69d0cc464d7266b1d435dd275b0</srcmd5>
+    <version>20230129</version>
+    <time>1709070297</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1151645 from dimstar)</comment>
+    <requestid>1151700</requestid>
+  </revision>
 </revisionlist>

@@ -84,8 +84,7 @@ stb.h                       | misc             | helper functions for C, mostly 
 stb_leakcheck.h             | misc             | quick-and-dirty malloc/free leak-checking
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 # pkgconf
