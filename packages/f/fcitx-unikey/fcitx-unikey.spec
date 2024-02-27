@@ -45,9 +45,7 @@ BuildRequires:  libqt4-devel
 fcitx-unikey provides support for Vietnamese unikey IM.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %cmake
