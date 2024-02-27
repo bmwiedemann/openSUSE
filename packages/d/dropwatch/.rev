@@ -24,4 +24,12 @@
   statically linking libbfd</comment>
     <requestid>1137258</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>5916a2916fc90e65be7d9f0336d5de54</srcmd5>
+    <version>1.5.4</version>
+    <time>1709070357</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1150598 from dimstar)</comment>
+    <requestid>1150707</requestid>
+  </revision>
 </revisionlist>

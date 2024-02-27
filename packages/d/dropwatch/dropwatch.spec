@@ -43,10 +43,10 @@ are dropped by the kernel
 %prep
 %setup -q
 %if 0%{?suse_version} <= 1590
-%patch1 -p1
+%patch -P 1 -p1
 %endif
-%patch2 -p1
-%patch3 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 ./autogen.sh
 %configure
 

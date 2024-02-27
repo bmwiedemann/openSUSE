@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 07:52:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sat Jan  6 15:01:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add 83.patch, bfd-link-statically.patch: fix build when
