@@ -39,12 +39,10 @@ If you have ever had the desire to write a unit test for a shell
 script, shUnit2 can do the job.
 
 %prep
-%setup -q
+%autosetup -p0
+
 # Use the correct version and overwrite it:
 cp %{SOURCE1} doc/LGPL-2.1
-
-%patch0
-%patch1
 
 %build
 # Add the correct basedir in our script:
