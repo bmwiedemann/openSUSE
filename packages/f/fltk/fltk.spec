@@ -88,8 +88,8 @@ installation of this package requires a 3D library such as Mesa.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch2
+%patch -P 0 -p1
+%patch -P 2
 
 %build
 %configure \

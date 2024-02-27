@@ -435,4 +435,12 @@ Feel free to revert the update to submit it to Factory or to leave the request o
   * Raise CMake minimum required version to 3.15 and more (forwarded request 1135764 from dirkmueller)</comment>
     <requestid>1136152</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>4512ccea62424a7bec7ec3a2639442d7</srcmd5>
+    <version>1.3.9</version>
+    <time>1709070225</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1150690 from dimstar)</comment>
+    <requestid>1150744</requestid>
+  </revision>
 </revisionlist>
