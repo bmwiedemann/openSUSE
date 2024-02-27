@@ -41,8 +41,7 @@ BuildRequires:  pkgconfig(sofia-sip-ua-glib) >= 1.12.0
 Use the osmo-nitb MNCC interface and bridge it to SIP.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 echo "%{version}" >.tarball-version
