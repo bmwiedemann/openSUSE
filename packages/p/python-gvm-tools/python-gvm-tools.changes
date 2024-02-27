@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 27 07:10:34 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Remove unneeded call to find -name '*.snap' | xargs rm
+
+-------------------------------------------------------------------
 Sat Jan 20 19:39:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.1.0:

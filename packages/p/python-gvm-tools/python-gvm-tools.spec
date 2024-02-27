@@ -32,7 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-gvm >= 23.4.2
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
@@ -72,8 +72,7 @@ without programming in Python.
 %python_uninstall_alternative gvm-cli
 
 %check
-%{python_expand find -name '*.snap' | xargs rm
-export PYTHONPATH=%{buildroot}%{$python_sitelib}
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
 export PYTHONDONTWRITEBYTECODE=1
 py.test-%{$python_version} -vv --ignore-glob=_build.*
 }
