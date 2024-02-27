@@ -37,7 +37,7 @@ Reverse engineered Linux driver for the FacetimeHD PCIe webcam
 %prep
 %setup -q
 %if 0%{?sle_version} == 150300
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 set -- *
 mkdir source
