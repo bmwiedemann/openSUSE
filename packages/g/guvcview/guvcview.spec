@@ -159,9 +159,9 @@ Provides translations to libgviewv4l2core.
 
 %prep
 %setup -q -n %{pname}-src-%{version}
-%patch0 -p1
+%patch -P 0 -p1
 %if %{with qt5}
-%patch1 -p1
+%patch -P 1 -p1
 %endif
 
 %build
