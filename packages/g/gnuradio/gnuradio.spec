@@ -175,8 +175,8 @@ This package contains some examples of using GNU Radio.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1 -R
+%patch -P 0 -p1
+%patch -P 1 -p1 -R
 
 # protect the template files from %%cmake macro magic / mangling
 find  gr-utils/modtool/templates/gr-newmod -name CMakeLists.txt -ls -exec mv '{}' '{}.tmpl' \;
