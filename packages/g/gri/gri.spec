@@ -1,7 +1,7 @@
 #
 # spec file for package gri
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,13 +63,7 @@ language, so that it is easy to incorporate Greek letters and
 mathematical symbols in labels.
 
 %prep
-%setup -q
-%patch0
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%autosetup -p1
 
 %build
 %configure

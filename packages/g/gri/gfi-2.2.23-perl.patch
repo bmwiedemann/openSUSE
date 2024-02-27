@@ -1,7 +1,7 @@
-Index: doc/texinfo2HTML
+Index: a/doc/texinfo2HTML
 ===================================================================
---- doc/texinfo2HTML.orig	2009-12-12 18:11:23.000000000 +0000
-+++ doc/texinfo2HTML	2012-06-16 11:22:04.000000000 +0100
+--- a/doc/texinfo2HTML.orig	2009-12-12 18:11:23.000000000 +0000
++++ a/doc/texinfo2HTML	2012-06-16 11:22:04.000000000 +0100
 @@ -54,12 +54,12 @@ BUGS:
  		the end is here} and more blah
  	will not get the \@code{} item converted correctly.

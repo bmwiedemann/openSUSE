@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 27 16:59:54 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Modify gfi-2.2.23-perl.patch to apply with `-p1` and use
+  %autosetup to apply all patches.
+
+-------------------------------------------------------------------
+Tue Feb 27 11:10:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Jun  9 09:31:58 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop obsolete install-info post(un) scriptlets (also drop
