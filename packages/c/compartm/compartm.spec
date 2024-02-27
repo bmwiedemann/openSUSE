@@ -48,13 +48,13 @@ Authors:
 
 %prep
 %setup -n compartment-%version
-%patch0 -p1
-%patch1 -p1 -b .prctl
-%patch2
-%patch3
-%patch4
-%patch5
-%patch6
+%patch -P 0 -p1
+%patch -P 1 -p1 -b .prctl
+%patch -P 2
+%patch -P 3
+%patch -P 4
+%patch -P 5
+%patch -P 6
 
 %build
 make %{?_smp_mflags}
