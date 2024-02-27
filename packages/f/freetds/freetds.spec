@@ -120,8 +120,7 @@ The freetds-doc package contains the useguide and reference of FreeTDS
 and can be installed even if FreeTDS main package is not installed
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure \

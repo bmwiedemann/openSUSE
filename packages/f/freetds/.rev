@@ -387,4 +387,12 @@ License labeling issues should be fixed.  The (hopefully) LGPL libraries and GPL
   * odbc: Return better error for invalid character set</comment>
     <requestid>1135377</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>2d47fe0fd2193b502a19e9eba8557eb1</srcmd5>
+    <version>1.4.10</version>
+    <time>1709070221</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1150709 from dimstar)</comment>
+    <requestid>1150724</requestid>
+  </revision>
 </revisionlist>
