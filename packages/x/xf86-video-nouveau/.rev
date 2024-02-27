@@ -209,4 +209,12 @@
     <comment>- set SUSE_ZNOW to 0 (boo#1197994)</comment>
     <requestid>977260</requestid>
   </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>6a1fc53b965b41498cb00f867e4fb547</srcmd5>
+    <version>1.0.17</version>
+    <time>1709070276</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151660</requestid>
+  </revision>
 </revisionlist>

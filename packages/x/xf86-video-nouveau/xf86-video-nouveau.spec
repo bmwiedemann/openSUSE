@@ -47,8 +47,8 @@ cards. “Nouveau” [nuvo] is the French word for “new”.
 
 %prep
 %setup -q
-%patch0 -p1 -F 1 -b .nva3info
-%patch1 -p1
+%patch -P 0 -p1 -F 1 -b .nva3info
+%patch -P 1 -p1
 
 %build
 # We have some -z now related errors during X default startup (boo#1197994):
