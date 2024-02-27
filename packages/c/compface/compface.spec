@@ -53,9 +53,9 @@ library.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1
-%patch2
+%patch -P 0 -p1
+%patch -P 1
+%patch -P 2
 
 # do not strip
 sed -i "/strip/d" Makefile.in

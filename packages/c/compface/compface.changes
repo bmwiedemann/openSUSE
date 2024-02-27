@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 10:49:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Oct  8 12:45:25 UTC 2014 - tchvatal@suse.com
 
 - Grab patches from debian to actually work correctly
