@@ -1,7 +1,7 @@
 #
 # spec file for package skelcd-openSUSE
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define version_unconverted 84.87.20230918.56867a9
+%define version_unconverted 84.87.20240227.984e01a
 # changed by pre_checkin
 %define is_non_oss 0
 #
@@ -28,7 +28,7 @@
 %bcond_without  java
 #
 Name:           skelcd-openSUSE
-Version:        84.87.20230918.56867a9
+Version:        84.87.20240227.984e01a
 Release:        0
 Summary:        Skeleton for openSUSE OSS Media Sets
 License:        MIT
