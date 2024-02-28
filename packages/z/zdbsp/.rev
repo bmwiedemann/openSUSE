@@ -45,4 +45,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>487466</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b9fe1719fc3ab8ba94c003fb7a07f2ad</srcmd5>
+    <version>1.19</version>
+    <time>1709146063</time>
+    <user>anag+factory</user>
+    <comment>- Delete old specfile constructs.</comment>
+    <requestid>1152905</requestid>
+  </revision>
 </revisionlist>
