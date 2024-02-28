@@ -984,4 +984,16 @@
   * config/allconfig: Fix typo (forwarded request 1152008 from jfkw)</comment>
     <requestid>1152009</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>927847d4d69b89075dfddee121449eaa</srcmd5>
+    <version>0.123.5</version>
+    <time>1709146273</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.123.5:
+  * Fix .Page.Pages with similary named sections
+  * Fix single mount rename panic
+  * Fix multihost processed image not copied to non-default content languages
+  * build(deps): bump github.com/bep/overlayfs from 0.9.1 to 0.9.2 (forwarded request 1153000 from jfkw)</comment>
+    <requestid>1153001</requestid>
+  </revision>
 </revisionlist>
