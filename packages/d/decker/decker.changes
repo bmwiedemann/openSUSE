@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb 25 03:21:05 UTC 2024 - vivid <absolutely.vivid@fastmail.org>
+
+- Don't strip the decker or lilt binaries
+- Add decker-doc as a multibuild flavor instead of making it a separate package
+
+-------------------------------------------------------------------
 Sun Jan 14 16:34:57 UTC 2024 - vivid <absolutely.vivid@fastmail.org>
 
 - Create package at upstream version 1.37

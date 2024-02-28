@@ -16,18 +16,15 @@
 #
 
 
-Name:           decker
+Name:           decker-doc
 Version:        1.37
 Release:        0
 Summary:        A multimedia sketchpad
 License:        MIT
 URL:            http://beyondloom.com/decker/
 Source:         https://github.com/JohnEarnest/Decker/archive/refs/tags/v%{version}.tar.gz
-Patch:          install-script.patch
-BuildRequires:  make
-BuildRequires:  SDL2-devel
-BuildRequires:  SDL2_image-devel
-BuildRequires:  xxd
+BuildRequires:  decker
+BuildArch:      noarch
 
 %description
 Decker is a multimedia platform for creating and sharing interactive documents, with sound, images, hypertext, and scripted behavior.
@@ -36,20 +33,20 @@ Decker is a multimedia platform for creating and sharing interactive documents, 
 %autosetup -p1 -n Decker-%{version}
 
 %build
-%make_build lilt
-%make_build decker
+lilt scripts/lildoc.lil docs/lil.md         docs/lil.html
+lilt scripts/lildoc.lil docs/lilt.md        docs/lilt.html
+lilt scripts/lildoc.lil docs/decker.md      docs/decker.html
+lilt scripts/lildoc.lil docs/format.md      docs/format.html
+lilt scripts/lildoc.lil docs/lilquickref.md docs/lilquickref.html
 
 %install
-DESTDIR=%{buildroot} PREFIX=%{_prefix} %make_install
-
-%check
-make test
+mkdir -p %{buildroot}/%{_docdir}/decker
+install --mode=644 docs/*.html %{buildroot}/%{_docdir}/decker
+install -d examples/ %{buildroot}/%{_docdir}/decker
 
 %files
 %license LICENSE.txt
 %doc Readme.md VERSION
-%{_bindir}/decker
-%{_bindir}/lilt
+%{_docdir}/decker 
 
 %changelog
-
