@@ -73,14 +73,14 @@ from a sysstat package.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch2 -p1
-%patch3 -p1
+%patch -P 0 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 cp %{SOURCE1} .
 # remove date and time from objects
 find ./ -name \*.c -exec sed -i -e 's: " compiled " __DATE__ " " __TIME__::g' {} \;
-%patch4 -p1
-%patch5 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
 
 %build
 export conf_dir="%{_sysconfdir}/sysstat"

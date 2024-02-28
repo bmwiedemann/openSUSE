@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:34:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Jul 18 08:31:18 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Drop the build dependency on systemd. This was not really necessary and it
