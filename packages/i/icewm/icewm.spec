@@ -151,8 +151,8 @@ mailbox status, and a digital clock. It is fast and small.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 
 %build
 autoreconf -fi
