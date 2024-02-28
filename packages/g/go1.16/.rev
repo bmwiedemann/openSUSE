@@ -395,4 +395,12 @@
     <comment>- Use gcc13 compiler for Tumbleweed. (forwarded request 1079518 from jfkw)</comment>
     <requestid>1079519</requestid>
   </revision>
+  <revision rev="25" vrev="7">
+    <srcmd5>0d514da1633835d661f05443ec80dd02</srcmd5>
+    <version>1.16.15</version>
+    <time>1709145919</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1152226 from dimstar)</comment>
+    <requestid>1152296</requestid>
+  </revision>
 </revisionlist>
