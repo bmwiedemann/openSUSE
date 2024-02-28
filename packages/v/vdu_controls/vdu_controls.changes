@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 27 21:11:53 UTC 2024 - Michael Hamilton <michael@actrix.gen.nz>
+
+- Version 2.0.1 
+  * Fix D-Bus client code for python versions prior to 3.11.
+  * Fix infinite-loop when altering an existing FIFO lux-meter in the Lux-Dialog.
+  * Fix the refresh of the LuxDialog meter-readout/plot when changing to a new meter.
+  * Apply context-aware defaults to the LuxDialog device file-chooser. 
+  * Improve/fix the handling of displays/laptop-displays that may be detected but lack proper DDC.
+  * Force the file-picker to always show devices and FIFOs - it wasn't showing then on some desktops. 
+
+-------------------------------------------------------------------
 Fri Feb 16 00:58:22 UTC 2024 - Michael Hamilton <michael@actrix.gen.nz>
 
 - Update to 2.0.0:
