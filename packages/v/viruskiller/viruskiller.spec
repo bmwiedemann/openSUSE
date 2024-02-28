@@ -53,8 +53,8 @@ the spot! See how long you and your computer can survive the onslaught!
 
 %prep
 %setup -q -a 1
-%patch0
-%patch1 -p1
+%patch -P 0
+%patch -P 1 -p1
 
 # SED-FIX-OPENSUSE -- Use normal pak, fix paths, , remove docs install via files,
 # remove png and install from tar

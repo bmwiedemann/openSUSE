@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 13:27:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Jul 20 09:18:23 UTC 2017 - bwiedemann@suse.com
 
 - Add reproducible.patch to sort file list to fix build-compare (boo#1041090)
