@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-childprocess
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-childprocess
-Version:        4.1.0
+Version:        5.0.0
 Release:        0
 %define mod_name childprocess
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.4.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
@@ -37,7 +36,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A simple and reliable solution for controlling external programs
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 This gem aims at being a simple and reliable solution for controlling external
