@@ -1,7 +1,7 @@
 #
 # spec file for package zlib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           zlib
-Version:        1.3
+Version:        1.3.1
 Release:        0
 Summary:        Library implementing the DEFLATE compression algorithm
 License:        Zlib
@@ -135,16 +135,10 @@ It should exit 0
 
 %prep
 %setup -q
-%patch -P 1
-%patch -P 2 -p1
-%patch -P 3 -p1
-%patch -P 4 -p1
-%patch -P 6 -p1
-%patch -P 7 -p1
-%patch -P 8
-%patch -P 10 -p1
-%patch -P 11 -p1
-%patch -P 12 -p1
+%autopatch -M 1
+%autopatch -m 2 -M 7 -p1
+%autopatch -m 8 -M 8
+%autopatch -m 10 -p1
 cp %{SOURCE4} .
 
 %build
@@ -207,7 +201,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n libz1
 %license LICENSE
-%{_libdir}/libz.so.1.3
+%{_libdir}/libz.so.1.3.1
 %{_libdir}/libz.so.1
 
 %files devel

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Feb 26 11:08:33 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Use %autopatch instead of %patch
+
+-------------------------------------------------------------------
+Fri Feb 23 14:17:22 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 1.3.1:
+  * Reject overflows of zip header fields in minizip
+  * Fix bug in inflateSync() for data held in bit buffer
+  * Add LIT_MEM define to use more memory for a small deflate speedup
+  * Fix decision on the emission of Zip64 end records in minizip
+  * Add bounds checking to ERR_MSG() macro, used by zError()
+  * Neutralize zip file traversal attacks in miniunz
+  * Fix a bug in ZLIB_DEBUG compiles in check_match()
+- Update pacthes:
+  * CVE-2023-45853.patch
+  * zlib-1.3-IBM-Z-hw-accelerated-deflate-s390x.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 12:10:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
