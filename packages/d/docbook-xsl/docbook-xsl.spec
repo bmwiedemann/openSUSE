@@ -145,9 +145,9 @@ tar xf %{SOURCE1} -C docbook-xsl-%{realversion}-ns --strip-components 1
 
 # Patch the orginal source and remove unnecessary files:
 (cd docbook-xsl-%{realversion}-ns
-%patch0 -p1
-%patch1 -p1
-# %%patch2 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+# %%patch -P 2 -p1
 
 # Remove some Python and Java extensions
 # Remove dbtoepub Ruby script. This has been moved to devel:languages:ruby:extensions
