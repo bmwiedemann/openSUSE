@@ -1,7 +1,7 @@
 #
 # spec file for package easytag
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,24 @@
 
 %bcond_with    nautilus_extension
 Name:           easytag
-Version:        2.4.3
+Version:        2.4.3+155
 Release:        0
 Summary:        GTK+ tag editor for audio files
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://projects.gnome.org/easytag/
-Source0:        http://download.gnome.org/sources/easytag/2.4/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 # PATCH-FIX-UPSTREAM easytag-revert-open-handle-ogg.patch bgo#776110 boo#1069789 bjorn.lie@gmail.com -- Revert commit causing corruption in oggfiles
 Patch0:         easytag-revert-open-handle-ogg.patch
+# PATCH-FIX-UPSTREAM easytag-taglib-2.0.patch glgo#GNOME/easytag#92 dimstar@opensuse.org -- Fix build against taglib 2.0
+Patch1:         easytag-taglib-2.0.patch
 BuildRequires:  appstream-glib-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-doc
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  id3lib-devel
 BuildRequires:  intltool >= 0.50.0
+BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.24
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
@@ -43,6 +46,7 @@ BuildRequires:  pkgconfig(id3tag)
 %if %{with nautilus_extension}
 BuildRequires:  pkgconfig(libnautilus-extension) >= 3.0
 %endif
+BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(ogg) >= 1.0
 BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(speex)
@@ -70,10 +74,10 @@ easier access to EasyTAG when opening directories and audio files.
 %lang_package
 
 %prep
-%setup -q
-%patch -P 0 -p1 -R
+%autosetup -p1
 
 %build
+NOCONFIGURE=1 ./autogen.sh
 %if %{with nautilus_extension}
 %configure
 %else
@@ -84,7 +88,7 @@ easier access to EasyTAG when opening directories and audio files.
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-%suse_update_desktop_file %{name}
+#suse_update_desktop_file %{name}
 %find_lang %{name}
 # We take the HACKERS and AUTHORS file to the standard package doc
 rm -rf %{buildroot}%{_datadir}/doc
@@ -93,12 +97,11 @@ rm -rf %{buildroot}%{_datadir}/doc
 %license COPYING
 %doc ChangeLog README HACKING THANKS TODO
 %{_bindir}/%{name}
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/easytag.appdata.xml
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/org.gnome.EasyTAG.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.EasyTAG.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.EasyTAG.gschema.xml
-%{_datadir}/icons/hicolor/*/apps/%{name}*
+%{_datadir}/icons/hicolor/*/apps/org.gnome.EasyTAG*
+%{_datadir}/metainfo/org.gnome.EasyTAG.appdata.xml
 %{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files lang -f %{name}.lang
