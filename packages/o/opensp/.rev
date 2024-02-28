@@ -153,4 +153,14 @@
     <comment></comment>
     <requestid>1084810</requestid>
   </revision>
+  <revision rev="23" vrev="203">
+    <srcmd5>23818882af26418696ac27ca18ec89be</srcmd5>
+    <version>1.5.2</version>
+    <time>1709145879</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN.
+
+- Use %patch -P N instead of deprecated %patchN.</comment>
+    <requestid>1152852</requestid>
+  </revision>
 </revisionlist>
