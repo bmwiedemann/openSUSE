@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 27 18:13:38 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1709057610.5d9f343:
+  * video_stream: Fix uninitialized cmd_prefix
+  * t: Split author tests and build test
+  * os-autoinst-setup-multi-machine: Switch from STP to RSTP
+  * t: Explicitly only run tests under t/ and xt/
+  * git subrepo pull (merge) external/os-autoinst-common
+
+-------------------------------------------------------------------
 Fri Feb 23 21:22:40 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1708525804.02cbbda:

@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1708525804.02cbbda
+Version:        4.6.1709057610.5d9f343
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -207,7 +207,7 @@ for i in 07-commands 13-osutils 14-isotovideo 18-qemu-options 18-backend-qemu 29
     rm t/$i.t
 done
 # exclude unnecessary author tests
-rm xt/00-tidy.t
+rm xt/00-tidy.t tools/tidyall
 # Remove test relying on a git working copy
 rm xt/30-make.t
 # https://progress.opensuse.org/issues/114881
