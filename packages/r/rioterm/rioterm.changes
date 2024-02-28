@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb 27 20:16:40 UTC 2024 - androw95220@gmail.com
+
+- Update to version 0.0.35:
+  * update action for nix build
+  * update to sync with main
+  * add workflow_dispatch for nix-build
+  * flake.lock: Update (#465)
+  * update flake to match main
+  * use first() instead of get(0)
+  * prepare 0.0.35
+  * Bump wayland dependencies: wayland-backend, wayland-client, wayland-cursor and wayland-scanner.
+  * disable cursor blink on selection
+  * report focus change
+  * update rust version and winit
+  * flake: refactor and update flake.lock (#406)
+  * update CHANGELOG.md
+
+-------------------------------------------------------------------
 Sun Feb 11 15:23:51 UTC 2024 - androw95220@gmail.com
 
 - Update to version 0.0.34:
