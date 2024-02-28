@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 28 09:18:58 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- update to 3.1.74
+  * required by hibiscus 2.10.16
+  * see https://github.com/hbci4j/hbci4java/compare/hbci4j-core-3.1.64...hbci4j-core-3.1.74
+
+-------------------------------------------------------------------
 Wed Feb 21 10:44:35 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

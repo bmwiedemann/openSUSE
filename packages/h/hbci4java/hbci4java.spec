@@ -18,7 +18,7 @@
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 Name:           hbci4java
-Version:        3.1.64
+Version:        3.1.74
 Release:        0
 Summary:        Java online banking client using the HBCI standard
 License:        LGPL-2.1-only
@@ -74,7 +74,7 @@ install -Dm0644 chipcard/lib/*.so %{buildroot}%{_jnidir}/%{name}
 
 %files -f .mfiles
 %license LICENSE
-%{_jnidir}/%{name}
+%{_jnidir}/%{name}/*.so
 
 %files javadoc -f .mfiles-javadoc
 %license LICENSE
