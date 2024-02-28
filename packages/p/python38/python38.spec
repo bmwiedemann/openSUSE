@@ -846,7 +846,6 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %dir %{_datadir}/icons/hicolor/32x32
 %dir %{_datadir}/icons/hicolor/48x48
 %dir %{_datadir}/icons/hicolor/*/apps
-%attr(755, root, root) %{_bindir}/idle%{python_version}
 # endif for if general
 %endif
 
