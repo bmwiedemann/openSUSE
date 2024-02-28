@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  8 16:54:41 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 0.19.0:
+  * C++ API
+    * added support for renaming sheets after they have been created.
+  * formula interpreter
+    * added support for inline arrays.
+
+-------------------------------------------------------------------
 Thu Jun 29 13:27:14 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 0.18.1:

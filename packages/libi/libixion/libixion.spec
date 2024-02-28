@@ -1,7 +1,7 @@
 #
 # spec file for package libixion
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 %define libname libixion-0_18-0
 Name:           libixion
-Version:        0.18.1
+Version:        0.19.0
 Release:        0
 Summary:        Threaded multi-target formula parser & interpreter
 License:        MIT
