@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 28 08:09:11 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Small spec file cleanup
+
+-------------------------------------------------------------------
+Tue Feb 27 11:10:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Sep 25 16:46:26 UTC 2015 - mpluskal@suse.com
 
 - Use url for source

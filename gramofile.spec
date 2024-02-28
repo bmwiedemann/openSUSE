@@ -1,7 +1,7 @@
 #
 # spec file for package gramofile
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,10 +20,8 @@ Name:           gramofile
 Version:        1.6
 Release:        0
 Summary:        Digitize Audio Records
-License:        GPL-2.0+
-Group:          Productivity/Multimedia/Sound/Editors and Convertors
-#BuildRequires:  fftw3-devel
-Url:            http://www.opensourcepartners.nl/~costar/gramofile/
+License:        GPL-2.0-or-later
+URL:            http://www.opensourcepartners.nl/~costar/gramofile/
 Source0:        http://www.opensourcepartners.nl/~costar/gramofile/gramofile-%{version}.tar.gz
 Source1:        gramofile.1
 Patch1:         gramofile-1.6-makefiles.dif
@@ -36,7 +34,6 @@ Patch7:         20-via-kludge.dpatch
 Patch8:         20-warning-fixes.dpatch
 Patch9:         30-basename-fix.dpatch
 Patch10:        40-fast-swap-and-buffer.dpatch
-Patch11:        50-cmf3.dpatch
 Patch12:        60-bplay_in_gramo.dpatch
 Patch13:        70-endian-fixes.dpatch
 Patch14:        80_fix_wav_length.dpatch
@@ -44,7 +41,6 @@ Patch15:        91_rename_cdrecord_wodim.dpatch
 BuildRequires:  ncurses-devel
 Provides:       gramofil = %{version}-%{release}
 Obsoletes:      gramofil < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Gramofile is a program to digitize audio records. Through the
@@ -65,26 +61,23 @@ cdrecord or xcdroast.
 %patch8
 %patch9
 %patch10
-# Disable for now, needs to be ported to fftw3
-#%%patch11
 %patch12
 %patch13
 %patch14
 %patch15
 
 %build
-make %{?_smp_mflags} CC="gcc"
+%make_build CC="gcc"
 
 %install
 make CC="gcc" DESTDIR=%{buildroot} docdir=%{_docdir}/%{name} install
 install -Dm644 %{SOURCE1} %{buildroot}%{_mandir}/man1/gramofile.1
 
 %files
-%defattr(-,root,root)
 %{_bindir}/bplay_gramo
 %{_bindir}/brec_gramo
 %{_bindir}/gramofile
-%{_mandir}/man1/gramofile.1*
+%{_mandir}/man1/gramofile.1%{?ext_man}
 %dir %{_docdir}/%{name}
 %{_docdir}/%{name}/ChangeLog
 %{_docdir}/%{name}/COPYING

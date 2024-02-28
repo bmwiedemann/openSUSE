@@ -138,4 +138,14 @@
     <comment>1</comment>
     <requestid>334017</requestid>
   </revision>
+  <revision rev="21" vrev="398">
+    <srcmd5>6e5a588673b6a5708f2c3642913c9f68</srcmd5>
+    <version>1.6</version>
+    <time>1709146041</time>
+    <user>anag+factory</user>
+    <comment>- Small spec file cleanup
+
+- Use %patch -P N instead of deprecated %patchN.</comment>
+    <requestid>1152853</requestid>
+  </revision>
 </revisionlist>
