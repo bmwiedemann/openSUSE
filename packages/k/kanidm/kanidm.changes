@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 28 01:10:20 UTC 2024 - william.brown@suse.com
+
+- Update to version 1.1.0~rc16~git4.d407844:
+  * Remove zstd feature
+
+-------------------------------------------------------------------
+Tue Feb 27 03:03:35 UTC 2024 - william.brown@suse.com
+
+- Update to version 1.1.0~rc16~git3.81298e8:
+  * Allow /dev/tpmrm0 on older systemd versions (#2587)
+
+-------------------------------------------------------------------
 Tue Feb 20 04:31:01 UTC 2024 - william.brown@suse.com
 
 - Add ipa-sync service
