@@ -56,8 +56,8 @@ subtrees may be restored from full or partial backups.
 
 %prep
 %setup -q
-%patch0
-%patch1 -p1
+%patch -P 0
+%patch -P 1 -p1
 
 %build
 rm -f configure
