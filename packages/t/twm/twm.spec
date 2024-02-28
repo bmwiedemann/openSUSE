@@ -49,8 +49,7 @@ user-defined macro functions, click-to-type and pointer-driven
 keyboard focus, and user-specified key and pointer button bindings.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 %configure
