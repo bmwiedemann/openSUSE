@@ -90,9 +90,9 @@ This package provides the GTK+ 4 support of Greybird-geeko.
 
 %prep
 %setup -q -n %{_name}-%{version}
-%patch0 -p1
+%patch -P 0 -p1
 %if 0%{?sle_version} >= 150400 && 0%{?is_opensuse}
-%patch1
+%patch -P 1
 %endif
 
 %build
