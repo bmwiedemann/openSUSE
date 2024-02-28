@@ -1,8 +1,8 @@
-Index: apparmor-3.1.6/profiles/apparmor.d/unix-chkpwd
+Index: apparmor-3.1.7/profiles/apparmor.d/unix-chkpwd
 ===================================================================
---- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ apparmor-3.1.6/profiles/apparmor.d/unix-chkpwd	2024-01-29 21:53:27.234254724 +0100
-@@ -0,0 +1,31 @@
+--- /dev/null
++++ apparmor-3.1.7/profiles/apparmor.d/unix-chkpwd
+@@ -0,0 +1,35 @@
 +# apparmor.d - Full set of apparmor profiles
 +# Copyright (C) 2019-2021 Mikhail Morfikov
 +# SPDX-License-Identifier: GPL-2.0-only
@@ -29,16 +29,20 @@ Index: apparmor-3.1.6/profiles/apparmor.d/unix-chkpwd
 +
 +  /etc/shadow r,
 +
++  # systemd userdb, used in nspawn
++  /run/host/userdb/*.user r,
++  /run/host/userdb/*.user-privileged r,
++
 +  # file_inherit
 +  owner /dev/tty[0-9]* rw,
 +
 +  include if exists <local/unix-chkpwd>
 +}
-Index: apparmor-3.1.6/profiles/apparmor.d/usr.lib.dovecot.auth
+Index: apparmor-3.1.7/profiles/apparmor.d/usr.lib.dovecot.auth
 ===================================================================
---- apparmor-3.1.6.orig/profiles/apparmor.d/usr.lib.dovecot.auth	2023-06-21 23:13:41.000000000 +0200
-+++ apparmor-3.1.6/profiles/apparmor.d/usr.lib.dovecot.auth	2024-01-29 21:45:32.528140518 +0100
-@@ -52,8 +52,12 @@ profile dovecot-auth /usr/lib/dovecot/au
+--- apparmor-3.1.7.orig/profiles/apparmor.d/usr.lib.dovecot.auth
++++ apparmor-3.1.7/profiles/apparmor.d/usr.lib.dovecot.auth
+@@ -52,8 +52,12 @@ profile dovecot-auth /usr/lib*/dovecot/a
    @{run}/dovecot/stats-user rw,
    @{run}/dovecot/anvil-auth-penalty rw,
  

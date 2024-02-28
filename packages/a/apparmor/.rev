@@ -2703,4 +2703,12 @@ thanks to the upstream 926 merge. (forwarded request 1108011 from dmdiss)</comme
     <comment>Prepare for RPM 4.20 (forwarded request 1147750 from dimstar)</comment>
     <requestid>1147947</requestid>
   </revision>
+  <revision rev="203" vrev="4">
+    <srcmd5>c904b73d914f36c4890e9f93af15ed08</srcmd5>
+    <version>3.1.7</version>
+    <time>1709145884</time>
+    <user>anag+factory</user>
+    <comment>- Fix systemd userdb access in unix-chkpwd (forwarded request 1151902 from lnussel)</comment>
+    <requestid>1151926</requestid>
+  </revision>
 </revisionlist>
