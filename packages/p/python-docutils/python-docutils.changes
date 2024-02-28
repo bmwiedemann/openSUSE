@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 23 11:02:30 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- Drop obsolete Requires & BuildRequires on python-packaging & python-xml
+
+-------------------------------------------------------------------
 Fri Nov 10 02:31:29 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.20.1:

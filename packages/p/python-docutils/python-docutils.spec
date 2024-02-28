@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,15 +36,12 @@ Source99:       python-docutils-rpmlintrc
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-xml
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-Pillow
 Recommends:     python-Pygments
-Requires:       python-packaging
 Recommends:     python-roman
 BuildArch:      noarch
 %if %{with test}
