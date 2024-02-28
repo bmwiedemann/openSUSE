@@ -1,7 +1,7 @@
 #
 # spec file for package armagetron
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,8 +49,7 @@ to try to make your enemies hit the walls, while you avoid doing the
 same. Unlike glTron, this program does not require 3D hardware support.
 
 %prep
-%setup -q -a 1 -n armagetronad-%{version}
-%patch0 -p1
+%autosetup -p1 -a 1 -n armagetronad-%{version}
 
 %build
 autoreconf -fi
