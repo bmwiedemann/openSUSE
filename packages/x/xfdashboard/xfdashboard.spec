@@ -90,9 +90,7 @@ Group:          System/GUI/XFCE
 A library providing authenticators for Xfdashboard.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags}"
