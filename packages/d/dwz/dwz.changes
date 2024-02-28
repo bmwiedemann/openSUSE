@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 08:07:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Sun Nov 20 16:04:19 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Make PGO training independent from number of build machine cores

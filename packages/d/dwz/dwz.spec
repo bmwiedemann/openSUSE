@@ -108,9 +108,8 @@ This package contains the testsuite results from DWZ.
 %endif
 
 %prep
-%setup -q -n dwz
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n dwz
+
 cp ../../SOURCES/tramp3d-v4.cpp.xz .
 xz -d tramp3d-v4.cpp.xz
 
