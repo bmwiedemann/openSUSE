@@ -97,8 +97,7 @@ that support the SAML 1.0, 1.1, and 2.0 specifications.
 This package includes XML schemas and related files.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 # The default C++ standard used in GCC-11 is C++17,
