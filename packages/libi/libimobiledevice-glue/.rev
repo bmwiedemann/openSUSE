@@ -15,4 +15,26 @@
     <comment></comment>
     <requestid>1091443</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2221d74da977f3d6a010e8abd9b8d267</srcmd5>
+    <version>1.1.0+git0.20240222</version>
+    <time>1709145905</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.1.0+git0.20240222:
+ - Changes:
+  * socket: Use poll() - when available - instead of select()
+  * socket: Allow NULL as address for socket_create() and socket_connect()
+  * win32: Remove windows.h from public headers
+  * Add version function to interface
+ - Bugfixes:
+  * opack: Fixed 32bit buffer overflow
+  * opack: Fix parsing of 32 and 64 bit packed values
+ - Internal:
+  * Move LIMD_GLUE_API definitions to public headers
+  * socket: Conditionally compile using poll or select based on availability
+  * socket: Fix select failing when the process has many file descriptors by using poll instead
+  * win32: Fix external compilation using libimobiledevice-glue/thread.h
+</comment>
+    <requestid>1152120</requestid>
+  </revision>
 </revisionlist>
