@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1139941</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>aee8497a49a9a48247820e166e5ee5e6</srcmd5>
+    <version>1.3.275.0</version>
+    <time>1709145903</time>
+    <user>anag+factory</user>
+    <comment>- Add more Conflict markers against libvolk.</comment>
+    <requestid>1152114</requestid>
+  </revision>
 </revisionlist>

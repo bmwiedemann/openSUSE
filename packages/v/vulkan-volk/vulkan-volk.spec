@@ -25,8 +25,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/zeux/volk
 Source:         https://github.com/zeux/volk/archive/refs/tags/vulkan-sdk-%version.tar.gz
 Patch1:         shared.diff
-BuildRequires:  cmake
 BuildRequires:  c_compiler
+BuildRequires:  cmake
 BuildRequires:  python3-base
 BuildRequires:  pkgconfig(vulkan)
 
@@ -36,6 +36,7 @@ A meta loader for Vulkan.
 %package -n libvolk
 Summary:        Meta loader for the Vulkan API
 Group:          System/Libraries
+Conflicts:      volk-devel
 
 %description -n libvolk
 volk is a meta loader for Vulkan. It loads entrypoints required to
@@ -48,6 +49,9 @@ increase performance by skipping loader dispatch overhead.
 Summary:        Headers for the Vulkan meta loader
 Group:          Development/Libraries/C and C++
 Requires:       libvolk = %version-%release
+# -lvolk is logically ambiguous, so block this package mix even
+# if the filesets do not overlap at all times.
+# https://github.com/zeux/volk/issues/166
 Conflicts:      volk-devel
 
 %description devel
