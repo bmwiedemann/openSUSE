@@ -216,4 +216,12 @@
     <comment>- Add gpicview-0.2.5-addreturnvalue.patch: to fix build</comment>
     <requestid>737580</requestid>
   </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>9c0bb4eeb071d70e26c188132fa10e76</srcmd5>
+    <version>0.2.5</version>
+    <time>1709146027</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1152843</requestid>
+  </revision>
 </revisionlist>

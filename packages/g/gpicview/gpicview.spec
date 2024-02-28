@@ -48,9 +48,7 @@ An extremely fast, lightweight, yet feature-rich photo viewer.
 This software is part of the LXDE Desktop Environment.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %configure
