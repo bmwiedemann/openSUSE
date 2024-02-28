@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:28:27 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Use SRPM base name for subpackages like -devel.
+- Delete old specfile constructs.
+
+-------------------------------------------------------------------
+Tue Feb 27 11:02:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Fri Jan 16 12:21:16 UTC 2015 - jengelh@inai.de
 
 - Improve RPM group classification and summaries.
