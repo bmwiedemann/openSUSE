@@ -295,6 +295,7 @@ ExcludeArch:    %ix86
 %define libname lib%{name}
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150200
 %define _hpc_python3 1
+%else
 %undefine _hpc_python3
 %endif
 %define p_python_sitelib %hpc_python_sitelib
@@ -366,7 +367,7 @@ BuildRequires:  superlu-devel
 BuildRequires:  hdf5-devel
 BuildRequires:  netcdf-devel
 BuildRequires:  scotch-devel
-BuildRequires:  umfpack-devel
+#BuildRequires:  suitesparse-devel
   %else
 BuildRequires:  blacs-devel-headers
 BuildRequires:  hdf5-%{mpi_family}%{?mpi_ext}-devel
@@ -442,8 +443,7 @@ Requires:       libxml2-devel
 Requires:       mumps-devel
 Requires:       netcdf-devel
 Requires:       scotch-devel
-Requires:       suitesparse-common-devel
-Requires:       umfpack-devel
+#Requires:       suitesparse-devel
 Conflicts:      kokkos-devel
  %else
 Requires:       blacs-devel-headers

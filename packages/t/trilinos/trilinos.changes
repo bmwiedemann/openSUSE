@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 27 16:54:18 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- umfpack-devel have been replaced by suitesparse-devel. However,
+  since current trilinos build does not require this dependency
+  it's been disabled.
+
+-------------------------------------------------------------------
 Tue Jan 30 14:13:12 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - Make sure, we call python3 for all Python needs on anything later
