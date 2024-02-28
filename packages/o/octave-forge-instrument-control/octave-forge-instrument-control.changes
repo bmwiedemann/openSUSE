@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:42:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Oct 30 16:00:26 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update URL to point to 'https://gnu-octave.github.io/packages/'

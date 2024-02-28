@@ -39,7 +39,7 @@ This is part of the Octave-Forge project.
 %prep
 %setup -q -c %{name}-%{version}
 pushd %{octpkg}-%{version}
-%patch0 -p2
+%patch -P 0 -p2
 popd
 %octave_pkg_src
 
