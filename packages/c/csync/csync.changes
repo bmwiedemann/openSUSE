@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 10:56:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Apr 13 08:56:21 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - explicitly add -pie linker flag to make /usr/bin/csync a PIE binary
