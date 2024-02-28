@@ -258,9 +258,9 @@ library packages.
 
 %prep
 %setup -q -n %{pname}-%{version}
-%patch6
-%patch7 -p1
-%patch8 -p1
+%patch -P 6
+%patch -P 7 -p1
+%patch -P 8 -p1
 
 %build
 

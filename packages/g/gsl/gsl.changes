@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:13:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Aug 28 11:27:15 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - 989a193268b963aa1047814f7f1402084fb7d859.patch: fix

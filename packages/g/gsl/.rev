@@ -455,4 +455,12 @@
    (bsc#1214681, CVE-2020-353570)</comment>
     <requestid>1106734</requestid>
   </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>9c5fce999b6f3f7439a553159cd7bd6e</srcmd5>
+    <version>2.7.1</version>
+    <time>1709145913</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1152243</requestid>
+  </revision>
 </revisionlist>
