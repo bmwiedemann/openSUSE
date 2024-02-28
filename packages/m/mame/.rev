@@ -124,4 +124,13 @@
 - Used ld.gold for link (fixed aarch64 build).</comment>
     <requestid>1144011</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6370af68498de42278809d46afe39865</srcmd5>
+    <version>0.263</version>
+    <time>1709146053</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 0.263
+  * /usr/share/doc/packages/mame/whatsnew-0.263.txt</comment>
+    <requestid>1152896</requestid>
+  </revision>
 </revisionlist>
