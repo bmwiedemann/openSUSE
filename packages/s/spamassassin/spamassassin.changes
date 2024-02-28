@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:33:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Jan  2 21:58:50 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Remove the dependency on perl(IO::Socket::INET6) as it has been

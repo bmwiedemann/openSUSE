@@ -224,12 +224,12 @@ via DNS using the domains given in the config file(s).
 %prep
 %setup -q -n Mail-SpamAssassin-%{sa_version} -a 2 -a 3
 tar -zxf %{SOURCE1} -C rules
-%patch1
-%patch2 -p1
-%patch3
-%patch6
-%patch7 -p1
-%patch10 -p1
+%patch -P 1
+%patch -P 2 -p1
+%patch -P 3
+%patch -P 6
+%patch -P 7 -p1
+%patch -P 10 -p1
 cp %{SOURCE11} ./
 
 %build
