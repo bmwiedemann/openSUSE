@@ -1,7 +1,7 @@
 #
 # spec file for package aspell-dictionaries
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -133,7 +133,6 @@ Source999:      aspell-dictionaries-rpmlintrc
 Patch0:         aspell-dansk.patch
 BuildRequires:  aspell
 BuildRequires:  fdupes
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This source package contains dictionaries from http://aspell.net/ that
@@ -857,7 +856,7 @@ A Punjabi (ਪੰਜਾਬੀ, پنجابی‎) dictionary for the aspell spell 
 Version:        0.60.2015.04.28
 Release:        0
 Summary:        Polish (polszczyzna) Dictionary for Aspell
-License:        GPL-2.0-only AND LGPL-2.1-only AND MPL-1.1 AND CC-BY-SA-1.0
+License:        CC-BY-SA-1.0 AND GPL-2.0-only AND LGPL-2.1-only AND MPL-1.1
 Group:          Productivity/Text/Spell
 URL:            http://www.sjp.pl/slownik/en/
 Provides:       locale(aspell:pl)
@@ -1232,373 +1231,283 @@ rm -f %{buildroot}%{_defaultdocdir}/aspell-ast/Copyright
 rm -f %{buildroot}%{_defaultdocdir}/aspell-ms/doc/ms_MY.aff
 # Fix "install-file-in-docs" rpmlint warning
 rm -f %{buildroot}%{_defaultdocdir}/aspell-br/doc/INSTALL
-# Fix "waste of space" warnings 
+# Fix "waste of space" warnings
 %fdupes -s %{buildroot}%{_libdir}
 %fdupes -s %{buildroot}%{_datadir}
 
 %files -n aspell-af -f files-af
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-af
 
 %files -n aspell-agal -f files-agal
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-agal
 
 %files -n aspell-ar -f files-ar
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-ar
 
 %files -n aspell-ast -f files-ast
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-ast
 
 %files -n aspell-az -f files-az
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-az
 
 %files -n aspell-bg -f files-bg
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-bg
 
 %files -n aspell-br -f files-br
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-br
 
 %files -n aspell-ca -f files-ca
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-ca
 
 %files -n aspell-cy -f files-cy
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-cy
 
 %files -n aspell-da -f files-da
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-da
 
 %files -n aspell-de -f files-de
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-de
 
 %files -n aspell-el -f files-el
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-el
 
 %files -n aspell-eo -f files-eo
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-eo
 
 %files -n aspell-es -f files-es
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-es
 
 %files -n aspell-fo -f files-fo
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-fo
 
 %files -n aspell-fr -f files-fr
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-fr
 
 %files -n aspell-fy -f files-fy
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-fy
 
 %files -n aspell-ga -f files-ga
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-ga
 
 %files -n aspell-hr -f files-hr
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-hr
 
 %files -n aspell-is -f files-is
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-is
 
 %files -n aspell-it -f files-it
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-it
 
 %files -n aspell-mt -f files-mt
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-mt
 
 %files -n aspell-nb -f files-nb
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-nb
 
 %files -n aspell-nn -f files-nn
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-nn
 
 %files -n aspell-pl -f files-pl
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-pl
 
 %files -n aspell-pt_PT -f files-pt_PT
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-pt_PT
 
 %files -n aspell-pt_BR -f files-pt_BR
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-pt_BR
 
 %files -n aspell-ro -f files-ro
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-ro
 
 %files -n aspell-ru -f files-ru
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-ru
 
 %files -n aspell-sk -f files-sk
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-sk
 
 %files -n aspell-sr -f files-sr
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-sr
 
 %files -n aspell-sv -f files-sv
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-sv
 
 %files -n aspell-uk -f files-uk
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-uk
 
 %files -n aspell-am -f files-am
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-am
 
 %files -n aspell-be -f files-be
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-be
 
 %files -n aspell-bn -f files-bn
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-bn
 
 %files -n aspell-csb -f files-csb
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-csb
 
 %files -n aspell-et -f files-et
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-et
 
 %files -n aspell-fa -f files-fa
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-fa
 
 %files -n aspell-he -f files-he
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-he
 
 %files -n aspell-fi -f files-fi
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-fi
 
 %files -n aspell-gd -f files-gd
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-gd
 
 %files -n aspell-gl -f files-gl
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-gl
 
 %files -n aspell-grc -f files-grc
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-grc
 
 %files -n aspell-gv -f files-gv
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-gv
 
 %files -n aspell-hi -f files-hi
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-hi
 
 %files -n aspell-hil -f files-hil
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-hil
 
 %files -n aspell-hsb -f files-hsb
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-hsb
 
 %files -n aspell-hu -f files-hu
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-hu
 
 %files -n aspell-hus -f files-hus
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-hus
 
 %files -n aspell-ia -f files-ia
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-ia
 
 %files -n aspell-id -f files-id
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-id
 
 %files -n aspell-kn -f files-kn
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-kn
 
 %files -n aspell-ku -f files-ku
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-ku
 
 %files -n aspell-ky -f files-ky
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-ky
 
 %files -n aspell-la -f files-la
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-la
 
 %files -n aspell-lt -f files-lt
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-lt
 
 %files -n aspell-lv -f files-lv
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-lv
 
 %files -n aspell-mg -f files-mg
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-mg
 
 %files -n aspell-mi -f files-mi
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-mi
 
 %files -n aspell-mk -f files-mk
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-mk
 
 %files -n aspell-ml -f files-ml
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-ml
 
 %files -n aspell-mn -f files-mn
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-mn
 
 %files -n aspell-mr -f files-mr
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-mr
 
 %files -n aspell-ms -f files-ms
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-ms
 
 %files -n aspell-ny -f files-ny
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-ny
 
 %files -n aspell-or -f files-or
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-or
 
 %files -n aspell-pa -f files-pa
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-pa
 
 %files -n aspell-qu -f files-qu
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-qu
 
 %files -n aspell-rw -f files-rw
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-rw
 
 %files -n aspell-sl -f files-sl
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-sl
 
 %files -n aspell-sc -f files-sc
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-sc
 
 %files -n aspell-sw -f files-sw
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-sw
 
 %files -n aspell-ta -f files-ta
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-ta
 
 %files -n aspell-tet -f files-tet
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-tet
 
 %files -n aspell-tk -f files-tk
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-tk
 
 %files -n aspell-tl -f files-tl
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-tl
 
 %files -n aspell-tn -f files-tn
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-tn
 
 %files -n aspell-tr -f files-tr
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-tr
 
 %files -n aspell-uz -f files-uz
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-uz
 
 %files -n aspell-vi -f files-vi
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-vi
 
 %files -n aspell-wa -f files-wa
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-wa
 
 %files -n aspell-yi -f files-yi
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-yi
 
 %files -n aspell-zu -f files-zu
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-zu
 
 %files -n aspell-nl -f files-nl
-%defattr(-,root,root)
 %dir %{_defaultdocdir}/aspell-nl
 %doc %{_defaultdocdir}/aspell-nl/*
 
 %files -n aspell-gu -f files-gu
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-gu
 
 %files -n aspell-hy -f files-hy
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-hy
 
 %files -n aspell-nds -f files-nds
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-nds
 #conflicting files with aspell package
 %exclude %{aspell_data_dir}/iso-8859-15.cmap
 %exclude %{aspell_data_dir}/iso-8859-15.cset
 
 %files -n aspell-cs -f files-cs
-%defattr(-,root,root)
 %dir %{_defaultdocdir}/aspell-cs
 %doc %{_defaultdocdir}/aspell-cs/*
 
 %files -n aspell-te -f files-te
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-te
 
 %changelog
