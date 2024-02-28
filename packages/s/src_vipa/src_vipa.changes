@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:32:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Nov 23 14:10:45 UTC 2021 - Jean Delvare <jdelvare@suse.com>
 
 - src_vipa-fix-abend-in-memcpy.patch: src_vipa: Fix abend in

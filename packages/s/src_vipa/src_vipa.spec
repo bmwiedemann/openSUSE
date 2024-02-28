@@ -45,9 +45,9 @@ pushd `dirname %{S:0}`
 md5sum -c %{S:1}
 popd
 %setup -q
-%patch1 -p1
-%patch2
-%patch3 -p1
+%patch -P 1 -p1
+%patch -P 2
+%patch -P 3 -p1
 
 %build
 make SRC_VIPA_PATH=%_libdir
