@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Jan  8 16:36:32 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to orcus 0.19.2:
+  * fixed a build issue with gcc 14 due to a missing include for std::find_if
+    and std::for_each.
+  * fixed a segmentation fault with the orcus-test-xml-mapped test which
+    manifested on hppa hardware, as originally reported on
+    https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1054376.
+  * fixed a crash when loading a document that includes a style record
+    referencing an unnamed style record as its parent.  In Excel-generated
+    documents, styles only reference named styles as their parents.  But in
+    3rd-party generated documents, styles referencing unnamed styles as their
+    parents can occur.
+  * fixed a crash when the document model returned a null pointer when a
+    reference resolver interface was requested.
+- Update to orcus 0.19.1:
+  * implemented orcus::create_filter() which instantiates a filter object of
+    specified type.  The returned object is of type
+    orcus::iface::import_filter.
+  * moved test cases for format detection to the respective filter test files.
+  * fixed a bug where the import filter did not set the formula grammer prior
+    to importing.
+- Update to orcus 0.19.0:
+  * added support for allowing use of std::filesystem,
+    std::experimental::filesystem or boost::filesystem per build
+    configuration.
+  * refactored styles import to use style indices returned by the document
+    model implementer rather than using the indices stored in the file.  This
+    allows the implementer to aggregate some style records and re-use the same
+    index for records that are stored as different records in the original
+    file.
+  * fixed a bug where column styles were not applied to the correct columns
+    when the starting column index was not 0.
+  * overhauled the Gnumeric import filter to fix many bugs and support many
+    missing features relative to the other filters included in orcus.  Most
+    notable mentions are:
+    * cell styles
+    * rich-text strings
+    * named ranges
+    * row heights and column widths
+    * merged cells
+  * added partial support for Apache Parquet import filter.  This is still
+    heavily experimental.
+- Remove patches:
+  * 0001-Possibility-to-build-against-a-host-of-filesystem-im.patch (upstreamed)
+  * 0002-Allow-using-older-boost-filesystem.patch
+
+-------------------------------------------------------------------
 Fri Aug 11 14:29:57 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Removed patches:

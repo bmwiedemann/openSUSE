@@ -409,4 +409,12 @@
     <comment>Rework to work with -no-undefined with different linkers and compilers and different filesystem</comment>
     <requestid>1103506</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>4a3dbcf184484219dfe53f9f337cffd0</srcmd5>
+    <version>0.19.2</version>
+    <time>1709145881</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1152885</requestid>
+  </revision>
 </revisionlist>
