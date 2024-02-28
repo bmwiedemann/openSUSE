@@ -813,4 +813,12 @@ Use SPDX format (http://www.spdx.org/licenses). Where there is no suitable short
   See included Changes for benefits and breaking changes</comment>
     <requestid>1056083</requestid>
   </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>f0e8672c5895b34b487546ebfb8321f4</srcmd5>
+    <version>4.14.1</version>
+    <time>1709145906</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1151366 from dimstar)</comment>
+    <requestid>1152158</requestid>
+  </revision>
 </revisionlist>

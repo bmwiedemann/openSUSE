@@ -147,8 +147,7 @@ This package contains libraries and signature files for developing
 applications that use Ocaml.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 echo %version > VERSION
