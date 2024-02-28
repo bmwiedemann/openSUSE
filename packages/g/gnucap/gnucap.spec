@@ -71,11 +71,11 @@ driven analog simulation, and true multi-rate simulation.
 %setup -q
 # use ncurses instead of termcap
 sed -i 's/-ltermcap/-lncurses/g' configure
-%patch1 -p1
-%patch2 -p1
-%patch3 -p0
-%patch4 -p0
-%patch5 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p0
+%patch -P 4 -p0
+%patch -P 5 -p1
 rm INSTALL
 
 %build

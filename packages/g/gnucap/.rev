@@ -37,4 +37,12 @@
   * gnucap-0.35-gcc6.patch</comment>
     <requestid>402847</requestid>
   </revision>
+  <revision rev="6" vrev="18">
+    <srcmd5>3436e6a2d7e33e47c073928c3bd40213</srcmd5>
+    <version>0.35</version>
+    <time>1709146075</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1152932</requestid>
+  </revision>
 </revisionlist>
