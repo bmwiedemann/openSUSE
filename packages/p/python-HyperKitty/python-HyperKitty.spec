@@ -55,18 +55,26 @@
 %global hyperkitty_services hyperkitty-qcluster.service hyperkitty-runjob-daily.service hyperkitty-runjob-daily.timer hyperkitty-runjob-hourly.service hyperkitty-runjob-hourly.timer hyperkitty-runjob-minutely.service hyperkitty-runjob-minutely.timer hyperkitty-runjob-monthly.service hyperkitty-runjob-monthly.timer hyperkitty-runjob-quarter-hourly.service hyperkitty-runjob-quarter-hourly.timer hyperkitty-runjob-weekly.service hyperkitty-runjob-weekly.timer hyperkitty-runjob-yearly.service hyperkitty-runjob-yearly.timer
 
 # keep in sync with python-mailman/python-mailman-web/python-postorious
-%if 0%{?suse_version} >= 1550
-# Newest python supported by mailman is Python 3.12 (?)
+%if 0%{?suse_version} >= 1600
+# Newest python supported by mailman is Python 3.12, but we have just Python 3.11 in SLE
+# See https://gitlab.com/mailman/mailman/-/blob/master/src/mailman/docs/NEWS.rst
 %define pythons python312
 %define mypython python312
-%define __mypython %{__python312}
 %define mypython_sitelib %{python312_sitelib}
+%define __mypython %{__python312}
 %else
-%{?sle15_python_module_pythons}
-%define pythons python312
-%define mypython python312
-%define __mypython %{__python312}
-%define mypython_sitelib %{python312_sitelib}
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
+%define pythons python311
+%define mypython python311
+%define mypython_sitelib %{python311_sitelib}
+%define __mypython %{__python311}
+%else
+%{?!python_module:%define python_module() python3-%{**}}
+%define pythons python3
+%define mypython python3
+%define mypython_sitelib %{python3_sitelib}
+%define __mypython %{__python3}
+%endif
 %endif
 
 Name:           python-HyperKitty

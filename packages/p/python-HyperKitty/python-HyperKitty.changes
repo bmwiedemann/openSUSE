@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 28 06:46:36 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix building on SLE15 based distributions
+
+-------------------------------------------------------------------
 Sat Feb 24 20:34:06 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
 
 - Split out system user
