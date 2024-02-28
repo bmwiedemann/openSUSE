@@ -1,7 +1,7 @@
 #
 # spec file for package python-ligotimegps
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,10 @@ Summary:        A pure-python version of lalLIGOTimeGPS
 URL:            https://github.com/gwpy/ligotimegps
 Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/l/ligotimegps/ligotimegps-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module versioneer}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 2.8}
@@ -52,12 +54,13 @@ this module.
 
 %prep
 %setup -q -n ligotimegps-%{version}
+rm versioneer.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -66,6 +69,7 @@ this module.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/ligotimegps*
+%{python_sitelib}/ligotimegps
+%{python_sitelib}/ligotimegps-%{version}.dist-info
 
 %changelog

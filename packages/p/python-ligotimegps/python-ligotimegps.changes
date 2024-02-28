@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 27 18:57:58 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Remove bundled versioneer; use system package instead
+  gh#gwpy/ligotimegps#22
+- Build PEP517 wheel
+
+-------------------------------------------------------------------
 Mon Mar 13 12:48:01 UTC 2023 - pgajdos@suse.com
 
 - python-six is not required
