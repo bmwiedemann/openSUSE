@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 28 06:02:26 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Wed May 10 08:51:01 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons
