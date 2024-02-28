@@ -312,4 +312,14 @@
   than SLE/Leap (boo#1219310). (forwarded request 1142863 from eeich)</comment>
     <requestid>1142864</requestid>
   </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>5784ae3d42ce44bc44ed71dd7720eb90</srcmd5>
+    <version>14.0.0</version>
+    <time>1709145993</time>
+    <user>anag+factory</user>
+    <comment>- umfpack-devel have been replaced by suitesparse-devel. However,
+  since current trilinos build does not require this dependency
+  it's been disabled. (forwarded request 1152493 from eeich)</comment>
+    <requestid>1152494</requestid>
+  </revision>
 </revisionlist>
