@@ -3173,6 +3173,7 @@ BuildFlags: onlybuild:usbredir
 BuildFlags: onlybuild:userspace-rcu
 BuildFlags: onlybuild:utempter
 BuildFlags: onlybuild:utf8proc
+BuildFlags: onlybuild:utfcpp
 BuildFlags: onlybuild:util-linux
 BuildFlags: onlybuild:util-linux:systemd
 BuildFlags: onlybuild:util-macros
