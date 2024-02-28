@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 27 10:33:09 UTC 2024 - ming li <mli@suse.com>
+
+- Update to 4.9.1:
+  * Improved detection of bad remote storage URLs gracefully. This also fixes
+    crashes seen in ccache’s own test suite.
+  * Made caching completely disabled when modification of a source or include
+    file is detected during ccache invocation. Previously this was only done for the direct mode.
+  * Fixed an MSVC crash when using /Zi with many concurrent compilations.
+  * Fixed a crash when -arch is the last compiler option.
+- Drop no longer needed fix2038.patch
+
+-------------------------------------------------------------------
 Thu Jan 18 10:54:53 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 4.9:

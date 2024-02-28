@@ -764,4 +764,20 @@ mtime and ctime values are now stored in the manifest files only when sloppy_fil
     <comment></comment>
     <requestid>1139889</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>938031160d1bfc90a6b6e90baeb46ce6</srcmd5>
+    <version>4.9.1</version>
+    <time>1709145910</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.9.1:
+  * Improved detection of bad remote storage URLs gracefully. This also fixes
+    crashes seen in ccache’s own test suite.
+  * Made caching completely disabled when modification of a source or include
+    file is detected during ccache invocation. Previously this was only done for the direct mode.
+  * Fixed an MSVC crash when using /Zi with many concurrent compilations.
+  * Fixed a crash when -arch is the last compiler option.
+- Drop no longer needed fix2038.patch
+</comment>
+    <requestid>1152216</requestid>
+  </revision>
 </revisionlist>

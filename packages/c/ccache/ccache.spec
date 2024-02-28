@@ -23,7 +23,7 @@
 %bcond_with hiredis
 %endif
 Name:           ccache
-Version:        4.9
+Version:        4.9.1
 Release:        0
 Summary:        A Fast C/C++ Compiler Cache
 License:        GPL-3.0-or-later
@@ -45,7 +45,6 @@ BuildRequires:  pkgconfig(libzstd) >= 1.1.2
 BuildRequires:  rubygem(asciidoctor)
 Provides:       distcc:%{_bindir}/ccache
 %ifnarch %{ix86} %{arm}
-Patch0:         fix2038.patch
 %endif
 %if %{with hiredis}
 BuildRequires:  pkgconfig(hiredis) >= 0.13.3
