@@ -142,15 +142,15 @@ Documentation and examples for cloud-init tools
 
 %prep
 %setup -q
-%patch1 -p0
-%patch2
-%patch3
-%patch4
-%patch6
-%patch7
-%patch8
-%patch9
-%patch10
+%patch -P 1 -p0
+%patch -P 2
+%patch -P 3
+%patch -P 4
+%patch -P 6
+%patch -P 7
+%patch -P 8
+%patch -P 9
+%patch -P 10
 
 # patch in the full version to version.py
 version_pys=$(find . -name version.py -type f)
