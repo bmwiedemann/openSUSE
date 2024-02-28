@@ -66,8 +66,7 @@ patterns in text.
 This package contains libraries for using flex.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 cp -a %{SOURCE2} .
