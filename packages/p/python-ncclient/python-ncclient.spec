@@ -1,7 +1,7 @@
 #
 # spec file for package python-ncclient
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-ncclient
 Version:        0.6.15
 Release:        0
 Summary:        Python library for NETCONF clients
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://ncclient.readthedocs.io/en/latest/
 Source:         https://github.com/ncclient/ncclient/archive/v%{version}.tar.gz#/ncclient-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE allow_old_sphinx.patch mcepl@suse.com
@@ -61,7 +58,7 @@ This package contains documentation files for %{name}.
 %prep
 %setup -q -n ncclient-%{version}
 %if 0%{?suse_version} < 1550
-%patch0 -p1
+%patch -P 0 -p 1
 %endif
 
 find examples/ -name "*.py" -exec sed -i 's|#!/usr/bin/env python$|#!/usr/bin/python|g' {} \;

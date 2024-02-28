@@ -248,4 +248,12 @@
 - Convert to singlespec</comment>
     <requestid>1131734</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>471c6d82f300b6b63255a588cd0dbe72</srcmd5>
+    <version>0.6.15</version>
+    <time>1709146022</time>
+    <user>anag+factory</user>
+    <comment>- Switch to %patch macro.</comment>
+    <requestid>1152821</requestid>
+  </revision>
 </revisionlist>
