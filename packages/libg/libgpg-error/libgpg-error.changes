@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Feb 26 10:51:14 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.48:
+  * New configure option --with-libtool-modification.  [T6619]
+  * New option parser flag to detect commands given without a double
+    dash.  There is also the new meta command "command-mode" to set
+    this flag via a config file.  [T6978]
+  * Added an es_fopen mode flag "sequential" with support on Windows.
+    [rE7a42ff0ec9]
+  * Added an es_fopen mode flag "wipe" to cleanup internal buffers at
+    close time.  [T6954]
+  * New function gpgrt_wipememory.  [T6964]
+  * Improvements to setenv on Windows.  [rE89e53ad90f]
+  * Fixed call to estream-printf string filters.  [T6737]
+  * Many improvements to the yat2m tool.
+  * Updates to the build system.
+  * Interface changes relative to the 1.47 release:
+    - ARGPARSE_FLAG_COMMAND          NEW.
+    - gpgrt_wipememory               NEW.
+  * Release-info: https://dev.gnupg.org/T6441
+  * Update upstream libgpg-error.keyring
+
+-------------------------------------------------------------------
 Tue Oct 17 10:27:15 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Do not pull revision info from GIT when autoconf is run. This
