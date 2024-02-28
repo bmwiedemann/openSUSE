@@ -102,6 +102,9 @@ Library for f3d.
 
 %build
 %cmake \
+%if 0%{?suse_version} < 1600
+    -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
+%endif
     -DCMAKE_SKIP_INSTALL_RPATH=ON \
     -DBUILD_TESTING=OFF \
     -DF3D_BINDINGS_JAVA=OFF \
@@ -124,7 +127,7 @@ Library for f3d.
 
 %install
 %cmake_install
-rm -rfv %{buildroot}%{_datadir}/doc/F3D
+rm -rfv %{buildroot}%{_docdir}/f3d
 rm -fv %{buildroot}%{_libdir}/libVTKExtensions*.a
 
 # this is needed so f3d autoloads the plugins for those filetypes specified in the configs
