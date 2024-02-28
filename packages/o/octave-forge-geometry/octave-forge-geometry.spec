@@ -40,7 +40,7 @@ This is part of Octave-Forge project.
 %prep
 %setup -q -c %{name}-%{version}
 pushd %{octpkg}-%{version}
-%patch0 -p1
+%patch -P 0 -p1
 popd
 %octave_pkg_src
 
