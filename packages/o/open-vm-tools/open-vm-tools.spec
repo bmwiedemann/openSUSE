@@ -264,11 +264,11 @@ sed -i -e "s/\r//" README
 #Upstream patches
 
 #SUSE specific patches
-%patch0 -p2
-%patch1 -p2
-autoreconf -fi
+%patch -P 0 -p2
+%patch -P 1 -p2
 
 %build
+autoreconf -fi
 %if %{with_X}
     %define arg_x --with-x
 %else

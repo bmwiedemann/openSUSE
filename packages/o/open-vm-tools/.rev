@@ -1017,4 +1017,12 @@ this is ever going to be fixed</comment>
   -&gt; suse-module-tools dependency before.</comment>
     <requestid>1134303</requestid>
   </revision>
+  <revision rev="123" vrev="4">
+    <srcmd5>15e9b2f07c7d4122afd8c1bd1fa9df72</srcmd5>
+    <version>12.3.5</version>
+    <time>1709145867</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1152453</requestid>
+  </revision>
 </revisionlist>

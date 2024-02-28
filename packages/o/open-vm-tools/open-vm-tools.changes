@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:48:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Dec 20 17:14:46 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Own %{_modulesloaddir}: used to be present via udev-mini -> kmod
