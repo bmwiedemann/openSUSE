@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Feb 28 10:44:28 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix tpm2-pkcs11 build:
+  * internal/crypto: fix _MyRSAPrivateNumbers with cryptograpy >= 42.0.1
+  * Upstream: github.com/tpm2-software/tpm2-pytss/pull/562
+  * Add python-tpm2-pytss-RSAPrivateNumbers.patch
+
+-------------------------------------------------------------------
+Tue Feb 27 18:21:56 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 2.2.0:
+  * docs: use same requirements as in setup.cfg
+  * policy: fix hardcoded size in description
+  * policy: fix hardcoded size in get_calculated_json
+  * readthedocs: switch to new build specification format
+  * test: test against python 3.12
+  * test: skip tests if ECC curves aren't supported.
+  * init: provide a better error message for missing symbols
+  * scripts: remove references to TPMS_ALGORITHM_DESCRIPTION
+  * tctildr: use Tss2_TctiLdr_GetInfo to lookup tcti backend
+  * setup: fixup compilation with fortify source enabled
+  * setup: drop python 3.7
+  * test: add check for renamed cryptography types
+  * constants: use relative import over absolute
+  * constants: support unmarshal and marshal routines
+  * ESAPI: fix check on ESYS_TR in policy_secret
+  * constants: add routine for making ESYS_TR from parts
+  * setup: define __float128 for pycparse
+  * Remove fix_pycparse_float128.patch fixed upstream
+
+-------------------------------------------------------------------
 Fri Feb 17 13:17:22 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add fix_pycparse_float128.patch to fix issue in 32bits platforms

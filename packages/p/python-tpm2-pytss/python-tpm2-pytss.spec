@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-tpm2-pytss
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,14 @@
 %define srcname tpm2-pytss
 %bcond_with     test
 Name:           python-%{srcname}
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Python bindings for TSS
 License:        BSD-2-Clause
-URL:            https://github.com/tpm2-software/tpm2-pkcs11
+URL:            https://github.com/tpm2-software/tpm2-pytss
 Source:         %{srcname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix_pycparse_float128.patch gh#tpm2-software/tpm2-pytss#497
-Patch0:         fix_pycparse_float128.patch
+# PATCH-FIX-UPSTREAM Fix tpm2-pkcs11 build: github.com/tpm2-software/tpm2-pytss/pull/562
+Patch0:         python-tpm2-pytss-RSAPrivateNumbers.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module asn1crypto}
 BuildRequires:  %{python_module cffi}
