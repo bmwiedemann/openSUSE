@@ -63,8 +63,7 @@ It is designed to be an easy-to-use, point and click virus scanner.
 %lang_package
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 gzip -dc clamtk.1.gz > clamtk.1
