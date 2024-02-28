@@ -60,7 +60,7 @@ Summary:        Tape drive control utility
 Group:          Productivity/Archiving/Backup
 Requires:       %{name} = %{version}
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       mt
 
 %description mt
@@ -70,17 +70,8 @@ This package includes the 'mt', a local tape drive control program.
 
 %prep
 %setup -q
-%patch2
-%patch4
-%patch5
-%patch15
-%patch17
-%patch18
-%patch20
-###
-%patch21 -p1
-%patch23 -p1
-%patch25 -p1
+%autopatch -M 20 -p0
+%autopatch -m 21 -p1
 
 %build
 gettextize -f --no-changelog
