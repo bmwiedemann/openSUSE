@@ -55,10 +55,7 @@ typefaces: one monospaced and two proportional (one with uniform and
 one with modulated stroke).
 
 %prep
-%setup -q -n %{fontname}-%{fontversion}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n %{fontname}-%{fontversion}
 
 %build
 chmod 755 $RPM_SOURCE_DIR/remove-kana-glyphs
