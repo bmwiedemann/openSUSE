@@ -598,4 +598,13 @@ changes since last time:
 </comment>
     <requestid>1150537</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>285c07050ccbb5b435c9294b0e7f9434</srcmd5>
+    <version>1.9</version>
+    <time>1709146016</time>
+    <user>anag+factory</user>
+    <comment>- Fix broken package by declaring the actual version of branding package of sway which
+  is 0.16.0. Hopefully resolves bsc#1220496</comment>
+    <requestid>1152814</requestid>
+  </revision>
 </revisionlist>

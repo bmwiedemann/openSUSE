@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 28 00:56:07 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Fix broken package by declaring the actual version of branding package of sway which
+  is 0.16.0. Hopefully resolves bsc#1220496
+
+-------------------------------------------------------------------
 Mon Feb 26 02:47:39 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Specfile cleanup:

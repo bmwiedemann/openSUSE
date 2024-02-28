@@ -16,6 +16,7 @@
 #
 
 
+%global  _branding_version 0.16.0
 Name:           sway
 Version:        1.9
 Release:        0
@@ -56,7 +57,7 @@ BuildRequires:  fdupes
 BuildRequires:  pkgconfig(wlroots) >= 0.17.0
 BuildRequires:  pkgconfig(xkbcommon)
 # RPMLINT requires to have a version
-Requires:       %{name}-branding = %{version}
+Requires:       %{name}-branding = %{_branding_version}
 %if 0%{?suse_version}
 # I definitely recommend Xwayland
 Recommends:     xorg-x11-server-wayland
@@ -79,7 +80,7 @@ Group:          System/GUI/Other
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and branding-upstream)
 Conflicts:      %{name}-branding
-Provides:       %{name}-branding = %{version}
+Provides:       %{name}-branding = %{_branding_version}
 BuildArch:      noarch
 #BRAND: /etc/sway/config contains upstream config and brand
 
