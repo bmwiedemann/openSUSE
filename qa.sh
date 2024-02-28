@@ -491,7 +491,28 @@ kfail_factory=(
     # Sets breakpoints in gdb build with lto.  This is known to be slow, and
     # likely to cause timeouts.
     gdb.gdb/python-helper.exp
-    
+
+    # Should be fixed by commit fe6356def67 ("PowerPC and aarch64: Fix reverse
+    # stepping failure"), available in gdb 15.
+    "FAIL: gdb.reverse/solib-precsave.exp: reverse-step into solib function one"
+    "FAIL: gdb.reverse/solib-precsave.exp: reverse-step within solib function one"
+    "FAIL: gdb.reverse/solib-precsave.exp: reverse-step back to main one"
+    "FAIL: gdb.reverse/solib-precsave.exp: reverse-step into solib function two"
+    "FAIL: gdb.reverse/solib-precsave.exp: reverse-step within solib function two"
+    "FAIL: gdb.reverse/solib-precsave.exp: reverse-step back to main two"
+    "FAIL: gdb.reverse/solib-precsave.exp: run until end part two"
+    "FAIL: gdb.reverse/solib-precsave.exp: reverse-next over solib function one"
+    "FAIL: gdb.reverse/solib-precsave.exp: reverse-next over solib function two"
+    "FAIL: gdb.reverse/solib-reverse.exp: reverse-step into solib function one"
+    "FAIL: gdb.reverse/solib-reverse.exp: reverse-step within solib function one"
+    "FAIL: gdb.reverse/solib-reverse.exp: reverse-step back to main one"
+    "FAIL: gdb.reverse/solib-reverse.exp: reverse-step into solib function two"
+    "FAIL: gdb.reverse/solib-reverse.exp: reverse-step within solib function two"
+    "FAIL: gdb.reverse/solib-reverse.exp: reverse-step back to main two"
+    "FAIL: gdb.reverse/solib-reverse.exp: run until end part two"
+    "FAIL: gdb.reverse/solib-reverse.exp: reverse-next over solib function one"
+    "FAIL: gdb.reverse/solib-reverse.exp: reverse-next over solib function two"
+
 ) # kfail_factory
 
 kfail_aarch64=(
@@ -504,6 +525,15 @@ kfail_aarch64=(
     "FAIL: gdb.base/watchpoint-unaligned.exp: continue \(timeout\)"
     "FAIL: gdb.base/watchpoint-unaligned.exp: size8twice write"
 
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=31214
+    "FAIL: gdb.base/watch-bitfields.exp: -location watch against bitfields: q\.e: 0->5: continue"
+    "FAIL: gdb.base/watch-bitfields.exp: -location watch against bitfields: q\.a: 1->0: print expression before"
+    "FAIL: gdb.base/watch-bitfields.exp: -location watch against bitfields: q\.a: 1->0: continue \(the program exited\)"
+    "FAIL: gdb.base/watch-bitfields.exp: -location watch against bitfields: q\.e: 5->4: print expression before"
+    "FAIL: gdb.base/watch-bitfields.exp: -location watch against bitfields: q\.e: 5->4: continue \(the program is no longer running\)"
+    "FAIL: gdb.base/watch-bitfields.exp: -location watch against bitfields: q\.e: 5->4: print expression after"
+    "FAIL: gdb.base/watch-bitfields.exp: -location watch against bitfields: continue until exit \(the program is no longer running\)"
+    
     # https://sourceware.org/bugzilla/show_bug.cgi?id=28561
     # "[gdb/testsuite] Error due to not reading \r\n at end of mi prompt"
     # We match pretty aggressively here.
@@ -589,6 +619,8 @@ kfail_powerpc64le=(
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=31004
     "FAIL: gdb.base/run-control-while-bg-execution.exp: action1=.*: action2=run: run"
+    "FAIL: gdb.base/run-control-while-bg-execution.exp: action1=.*: action2=start: start"
+
 )
 
 kfail_powerpc64le_sle12=(
