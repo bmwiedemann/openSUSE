@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 28 17:53:41 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.15.1:
+  * gopls: update go.mod for v0.15.1-pre.1
+  * gopls/internal/test: add test for NPE in control flow highlighting
+  * gopls: add non nil if check around function result highlight
+
+-------------------------------------------------------------------
 Mon Feb 26 21:39:43 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.15.0:
