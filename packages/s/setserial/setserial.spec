@@ -41,11 +41,11 @@ port and IRQ that a particular serial device is using.
 
 %prep
 %setup -q
-%patch0
-%patch1
-%patch2
-%patch3 -p1
-%patch4
+%patch -P 0
+%patch -P 1
+%patch -P 2
+%patch -P 3 -p1
+%patch -P 4
 
 chmod -x rc.serial
 

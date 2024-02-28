@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:08:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Jun 12 12:30:06 UTC 2014 - tchvatal@suse.com
 
 - Remove the usr merge compat stuff.
