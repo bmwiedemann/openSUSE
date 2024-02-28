@@ -1254,4 +1254,15 @@ FIXES (LSP):
     <comment></comment>
     <requestid>1136267</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>4719d84b34eba1c6c3cf210e74af4de6</srcmd5>
+    <version>0.9.5</version>
+    <time>1709145928</time>
+    <user>anag+factory</user>
+    <comment>- Update license field based on legaldb review 
+  - GPL-3.0+ for neovim-0.8.3/runtime/syntax/poke.vim
+  - CC-BY-3.0 for neovim-0.8.3/runtime/doc/dev_style.txt
+</comment>
+    <requestid>1152969</requestid>
+  </revision>
 </revisionlist>
