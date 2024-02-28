@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-commander
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
 URL:            http://gcmd.github.io/
 Source:         https://download.gnome.org/sources/gnome-commander/1.16/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM gnome-commander-taglib-2.0.patch -- Fix build against taglib 2.0
+Patch0:         gnome-commander-taglib-2.0.patch
 
 %if 0%{?suse_version} < 1550
 BuildRequires:  gcc11
