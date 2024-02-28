@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 08:05:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Nov 27 09:34:34 UTC 2023 - Jiri Srain <jsrain@suse.com>
 
 - fix the download URL
