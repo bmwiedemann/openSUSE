@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 16:47:41 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Add handling for Leap Micro 6.X and Leap 16.X
+
+-------------------------------------------------------------------
 Thu Feb  8 10:12:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - switch to a service using zstd

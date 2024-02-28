@@ -32,13 +32,13 @@ BuildArch:      noarch
 %description
 Logos for openSUSE Distributions
 
-%if 0%{?sle_version}
+%if 0%{?sle_version} || 0%{?suse_version} == 1600
 %package Leap
 Summary:        Logos for openSUSE Leap
 Conflicts:      distribution-logos
 Obsoletes:      distribution-logos
 Provides:       distribution-logos
-Removepathpostfixes: .Leap
+Removepathpostfixes:.Leap
 BuildArch:      noarch
 
 %description Leap
@@ -49,7 +49,7 @@ Summary:        Logos for openSUSE Leap Micro
 Conflicts:      distribution-logos
 Obsoletes:      distribution-logos
 Provides:       distribution-logos
-Removepathpostfixes: .LeapMicro
+Removepathpostfixes:.LeapMicro
 BuildArch:      noarch
 
 %description LeapMicro
@@ -62,7 +62,7 @@ Summary:        Logos for openSUSE Tumbleweed
 Conflicts:      distribution-logos
 Obsoletes:      distribution-logos
 Provides:       distribution-logos
-Removepathpostfixes: .Tumbleweed
+Removepathpostfixes:.Tumbleweed
 BuildArch:      noarch
 
 %description Tumbleweed
@@ -73,7 +73,7 @@ Summary:        Logos for openSUSE Kubic
 Conflicts:      distribution-logos
 Obsoletes:      distribution-logos
 Provides:       distribution-logos
-Removepathpostfixes: .Kubic
+Removepathpostfixes:.Kubic
 BuildArch:      noarch
 
 %description Kubic
@@ -84,7 +84,7 @@ Summary:        Logos for openSUSE MicroOS
 Conflicts:      distribution-logos
 Obsoletes:      distribution-logos
 Provides:       distribution-logos
-Removepathpostfixes: .MicroOS
+Removepathpostfixes:.MicroOS
 BuildArch:      noarch
 
 %description MicroOS
@@ -95,7 +95,7 @@ Summary:        Logos for openSUSE Aeon
 Conflicts:      distribution-logos
 Obsoletes:      distribution-logos
 Provides:       distribution-logos
-Removepathpostfixes: .Aeon
+Removepathpostfixes:.Aeon
 BuildArch:      noarch
 
 %description Aeon
@@ -125,7 +125,7 @@ Icons with openSUSE distribution logos.
 export NO_BRP_STALE_LINK_ERROR=yes
 mkdir -p %{buildroot}%{_datadir}/pixmaps/distribution-logos
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/{scalable,symbolic}/apps
-%if 0%{?sle_version}
+%if 0%{?sle_version} || 0%{?suse_version} == 1600
 for distro in Leap LeapMicro; do \
 %else
 for distro in Tumbleweed Kubic MicroOS Aeon; do \
@@ -142,7 +142,7 @@ ln -sf %{_datadir}/pixmaps/distribution-logos/square-symbolic.svg %{buildroot}%{
 %files
 %dir %{_datadir}/pixmaps/distribution-logos
 
-%if 0%{?sle_version}
+%if 0%{?sle_version} || 0%{?suse_version} == 1600
 %files Leap
 %{_datadir}/pixmaps/distribution-logos/*.Leap
 
