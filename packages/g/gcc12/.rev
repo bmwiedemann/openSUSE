@@ -176,4 +176,12 @@ to release my review on the gcc package now.
     <comment>- Use %{_target_cpu} to determine host and build.</comment>
     <requestid>1144304</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>b18fe9032f7b00445dd7c60585219993</srcmd5>
+    <version>12.3.0+git1204</version>
+    <time>1709146227</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN. (forwarded request 1152860 from dimstar)</comment>
+    <requestid>1152861</requestid>
+  </revision>
 </revisionlist>

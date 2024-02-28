@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:28:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Feb  5 14:24:16 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Use %{_target_cpu} to determine host and build.
