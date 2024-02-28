@@ -94,17 +94,17 @@ sequences of single frames.
 %setup -q
 chmod -x ChangeLog
 %if ! 0%{?BUILD_ORIG}
-%patch0
+%patch -P 0
 %endif
 %if 0%{?BUILD_ORIG}
-%patch1
+%patch -P 1
 %endif
-%patch2
+%patch -P 2
 %if 0%{?BUILD_ORIG}
-%patch3
+%patch -P 3
 %endif
-%patch4
-%patch5 -p1
+%patch -P 4
+%patch -P 5 -p1
 sed -i -e "s,sr@Latn,sr@latin," po/LINGUAS
 mv po/sr@Latn.po po/sr@latin.po
 
