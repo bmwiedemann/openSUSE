@@ -1,7 +1,7 @@
 #
 # spec file for package neovim
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,7 @@ Name:           neovim
 Version:        0.9.5
 Release:        0
 Summary:        Vim-fork focused on extensibility and agility
-License:        Apache-2.0 AND Vim
+License:        Apache-2.0 AND Vim AND GPL-3.0-or-later AND CC-BY-3.0
 Group:          Productivity/Text/Editors
 URL:            https://neovim.io/
 Source0:        https://github.com/neovim/neovim/archive/v%{version}/%{name}-%{version}.tar.gz
@@ -105,7 +105,7 @@ Requires:       lua51-luv
 Recommends:     python3-neovim
 %if 0%{?suse_version} < 1330
 Requires(post): gtk3-tools
-Requires(postun):gtk3-tools
+Requires(postun): gtk3-tools
 %endif
 %endif
 %if 0%{?suse_version} > 1500

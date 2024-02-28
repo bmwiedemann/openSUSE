@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 27 16:02:45 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Update license field based on legaldb review 
+  - GPL-3.0+ for neovim-0.8.3/runtime/syntax/poke.vim
+  - CC-BY-3.0 for neovim-0.8.3/runtime/doc/dev_style.txt
+
+-------------------------------------------------------------------
 Sun Dec 31 07:11:58 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to version 0.9.5:
