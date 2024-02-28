@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 22:14:02 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove double definition of /usr/bin/idle%%{version} in
+  %%files. 
+
+-------------------------------------------------------------------
 Thu Feb 15 10:29:07 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add upstream patch libexpat260.patch, Fix tests for XMLPullParser
