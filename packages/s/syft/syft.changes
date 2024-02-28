@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 27 12:40:20 UTC 2024 - andrea.manzini@suse.com
+
+- Update to version 0.105.1:
+  * bump deps and build tools
+  * fix: SPDX tag value version selector (#2665)
+  * fix(install): return appropriate error codes (#2664)
+  * chore: update busybox image for acceptance tests (#2663)
+  * rename binary classifier cataloger name (#2643)
+  * add cataloger selection example (#2646)
+  * add syft version used to SBOM tool info by default (#2647)
+
+-------------------------------------------------------------------
 Thu Feb 15 06:10:35 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.105.0:
