@@ -2142,4 +2142,12 @@ Fixes build with Perl-IO-socket-SSL 2.073, as currently staged in :E (forwarded 
     <comment></comment>
     <requestid>1142753</requestid>
   </revision>
+  <revision rev="207" vrev="3">
+    <srcmd5>3cebf7da3f88b813f1be7bccd24d7246</srcmd5>
+    <version>2.4.58</version>
+    <time>1709145895</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1152028</requestid>
+  </revision>
 </revisionlist>

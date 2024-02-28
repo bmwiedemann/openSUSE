@@ -312,14 +312,7 @@ is to provide a secure, efficient and extensible server that
 provides HTTP services in sync with the current HTTP standards.
 
 %prep
-%setup -q -n %{upstream_name}-%{version} -a20
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch100 -p1
-%patch101 -p1
+%autosetup -p1 -n %{upstream_name}-%{version} -a20
 
 #
 # BUILD
