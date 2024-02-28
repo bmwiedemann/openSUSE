@@ -1,7 +1,7 @@
 #
 # spec file for package libmsym
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ Group:          System/Libraries
 URL:            https://github.com/mcodev31/libmsym
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros

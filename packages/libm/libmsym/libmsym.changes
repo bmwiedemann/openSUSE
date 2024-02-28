@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 27 21:14:50 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Add dependency on setuptools
+
+-------------------------------------------------------------------
 Sun Sep 11 18:47:58 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix python_files macro invocation on Leap 15.4/SLE 15SP4.
