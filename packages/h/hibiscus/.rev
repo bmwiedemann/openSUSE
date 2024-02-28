@@ -144,4 +144,12 @@
     <comment>port to apache-commons-lang3</comment>
     <requestid>1152328</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8793e759301a0eab2f02d899e5db5079</srcmd5>
+    <version>2.10.16</version>
+    <time>1709146002</time>
+    <user>anag+factory</user>
+    <comment>2.10.16</comment>
+    <requestid>1152769</requestid>
+  </revision>
 </revisionlist>

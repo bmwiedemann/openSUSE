@@ -16,10 +16,10 @@
 #
 
 
-%define _build 370
-%define tag V_2_10_8_BUILD_%{_build}
+%define _build 380
+%define tag V_2_10_16_BUILD_%{_build}
 Name:           hibiscus
-Version:        2.10.8
+Version:        2.10.16
 Release:        0
 Summary:        Java online banking client using the HBCI standard
 License:        Apache-2.0 AND GPL-2.0-only AND LGPL-2.0-only AND CPL-1.0 AND Zlib AND MPL-1.0 AND EPL-1.0
@@ -86,8 +86,8 @@ mkdir -p %{buildroot}%{_prefix}/lib/jameica/plugins
 cp -r releases/%{version}-%{_build}/%{name} %{buildroot}%{_prefix}/lib/jameica/plugins
 
 # unbundle HBCI4Java
-rm  %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/hbci4j-core-3.1.62.jar
-ln -sf %{_jnidir}/hbci4java/hbci4j-core.jar %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/hbci4j-core-3.1.62.jar
+rm  %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/hbci4j-core-3.1.74.jar
+ln -sf %{_jnidir}/hbci4java/hbci4j-core.jar %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/hbci4j-core-3.1.74.jar
 rm %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/libhbci4java-card-*.so
 %ifarch x86_64
 ln -sf %{_jnidir}/hbci4java/libhbci4java-card-linux.so %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/libhbci4java-card-linux-64.so
