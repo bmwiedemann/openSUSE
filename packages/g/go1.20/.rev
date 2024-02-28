@@ -302,4 +302,13 @@
     as required by go tool dist and go tool distpack (forwarded request 1147331 from jfkw)</comment>
     <requestid>1147335</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>da61c2128d3d55da035b8a535e082b1c</srcmd5>
+    <version>1.20.14</version>
+    <time>1709145887</time>
+    <user>anag+factory</user>
+    <comment>- Packaging improvements:
+  * Use %patch -P N instead of deprecated %patchN (forwarded request 1151996 from jfkw)</comment>
+    <requestid>1152004</requestid>
+  </revision>
 </revisionlist>
