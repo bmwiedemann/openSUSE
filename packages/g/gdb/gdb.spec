@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 RedHat
 #
 # All modifications and additions to the file contributed by third parties
@@ -349,6 +349,8 @@ Patch2071:      gdb-symtab-add-producer_is_gas.patch
 Patch2072:      gdb-symtab-work-around-gas-pr28629.patch
 Patch2073:      gdb-tdep-fix-nr-array-elements-in-ppc64_aggregate_ca.patch
 Patch2074:      gdb-tui-fix-wmaybe-uninitialized-in-tui_find_disasse.patch
+Patch2075:      gdb-testsuite-add-missing-no-prompt-anchor-in-gdb.ba.patch
+Patch2076:      gdb-testsuite-remove-spurious-in-save_vars.patch
 
 # Backport from gdb-patches
 
@@ -428,17 +430,28 @@ BuildRequires:  rpm-devel
 BuildRequires:  xz-devel
 %endif
 BuildRequires:  zlib-devel
+
 %if 0%{!?_without_python:1}
+%if %{build_testsuite}
+BuildRequires:  %{python}-base
+%else
 Requires:       %{python}-base
+%endif
 BuildRequires:  %{python}-devel
 %endif	# 0%{!?_without_python:1}
+
 %global have_libdebuginfod 0
-%if 0%{?suse_version} > 1500
+# Enable for SLE15-SP4/Leap-15.4, ALP/Factory.
+%if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1600
 %global have_libdebuginfod 1
 %endif
+
 %if 0%{have_libdebuginfod}
 BuildRequires:  libdebuginfod-devel
+# Indicate that we prefer libdebuginfod1 over libdebuginfod1-dummy.
+BuildRequires:  libdebuginfod1
 %endif
+
 %global have_libipt 0
 %if 0%{suse_version} > 1110
 %ifarch %{ix86} x86_64
@@ -586,6 +599,9 @@ BuildRequires:  systemtap-sdt-devel
 %if 0%{have_libdebuginfod}
 BuildRequires:  curl
 BuildRequires:  elfutils-debuginfod
+# Fix: unresolvable: have choice for debuginfod-client needed by
+# elfutils-debuginfod: debuginfod-client debuginfod-dummy-client.
+BuildRequires:  debuginfod-client
 %endif
 
 # SLE-10 doesn't have xz.
@@ -676,168 +692,170 @@ rm -f gdb/jv-exp.c gdb/m2-exp.c gdb/objc-exp.c gdb/p-exp.c gdb/go-exp.c
 find -name "*.info*"|xargs rm -f
 
 #Fedora patching start
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch6 -p1
-%patch8 -p1
-%patch9 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
-%patch19 -p1
-%patch22 -p1
-%patch23 -p1
-%patch24 -p1
-%patch25 -p1
-%patch26 -p1
-%patch27 -p1
-%patch28 -p1
-%patch30 -p1
-%patch31 -p1
-%patch32 -p1
-%patch33 -p1
-%patch35 -p1
-%patch36 -p1
-%patch37 -p1
-%patch38 -p1
-%patch39 -p1
-%patch40 -p1
-%patch42 -p1
-%patch43 -p1
-%patch44 -p1
-%patch45 -p1
-%patch46 -p1
-%patch49 -p1
-%patch50 -p1
-%patch51 -p1
-%patch52 -p1
-%patch53 -p1
-%patch54 -p1
-%patch55 -p1
-%patch57 -p1
-%patch59 -p1
-%patch60 -p1
-%patch61 -p1
-%patch62 -p1
-%patch63 -p1
-%patch64 -p1
-%patch65 -p1
-%patch66 -p1
-%patch67 -p1
-%patch68 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 6 -p1
+%patch -P 8 -p1
+%patch -P 9 -p1
+%patch -P 11 -p1
+%patch -P 12 -p1
+%patch -P 13 -p1
+%patch -P 14 -p1
+%patch -P 15 -p1
+%patch -P 16 -p1
+%patch -P 17 -p1
+%patch -P 18 -p1
+%patch -P 19 -p1
+%patch -P 22 -p1
+%patch -P 23 -p1
+%patch -P 24 -p1
+%patch -P 25 -p1
+%patch -P 26 -p1
+%patch -P 27 -p1
+%patch -P 28 -p1
+%patch -P 30 -p1
+%patch -P 31 -p1
+%patch -P 32 -p1
+%patch -P 33 -p1
+%patch -P 35 -p1
+%patch -P 36 -p1
+%patch -P 37 -p1
+%patch -P 38 -p1
+%patch -P 39 -p1
+%patch -P 40 -p1
+%patch -P 42 -p1
+%patch -P 43 -p1
+%patch -P 44 -p1
+%patch -P 45 -p1
+%patch -P 46 -p1
+%patch -P 49 -p1
+%patch -P 50 -p1
+%patch -P 51 -p1
+%patch -P 52 -p1
+%patch -P 53 -p1
+%patch -P 54 -p1
+%patch -P 55 -p1
+%patch -P 57 -p1
+%patch -P 59 -p1
+%patch -P 60 -p1
+%patch -P 61 -p1
+%patch -P 62 -p1
+%patch -P 63 -p1
+%patch -P 64 -p1
+%patch -P 65 -p1
+%patch -P 66 -p1
+%patch -P 67 -p1
+%patch -P 68 -p1
 #Fedora patching end
 
-%patch1000 -p1
-%patch1002 -p1
-%patch1003 -p1
-%patch1004 -p1
-%patch1005 -p1
-%patch1006 -p1
-%patch1007 -p1
-%patch1008 -p1
-%patch1009 -p1
-%patch1010 -p1
-%patch1011 -p1
-%patch1012 -p1
+%patch -P 1000 -p1
+%patch -P 1002 -p1
+%patch -P 1003 -p1
+%patch -P 1004 -p1
+%patch -P 1005 -p1
+%patch -P 1006 -p1
+%patch -P 1007 -p1
+%patch -P 1008 -p1
+%patch -P 1009 -p1
+%patch -P 1010 -p1
+%patch -P 1011 -p1
+%patch -P 1012 -p1
 
-%patch1100 -p1
-%patch1101 -p1
+%patch -P 1100 -p1
+%patch -P 1101 -p1
 
-%patch1200 -p1
-#%patch1201 -p1
-%patch1202 -p1
-%patch1203 -p1
-%patch1204 -p1
+%patch -P 1200 -p1
+#%patch -P 1201 -p1
+%patch -P 1202 -p1
+%patch -P 1203 -p1
+%patch -P 1204 -p1
 
-%patch1500 -p1
-%patch1501 -p1
-%patch1503 -p1
-%patch1504 -p1
-%patch1505 -p1
+%patch -P 1500 -p1
+%patch -P 1501 -p1
+%patch -P 1503 -p1
+%patch -P 1504 -p1
+%patch -P 1505 -p1
 
-%patch2000 -p1
-%patch2001 -p1
-%patch2002 -p1
-%patch2003 -p1
-%patch2004 -p1
-%patch2005 -p1
-%patch2006 -p1
-%patch2007 -p1
-%patch2008 -p1
-%patch2009 -p1
-%patch2010 -p1
-%patch2011 -p1
-%patch2012 -p1
-%patch2013 -p1
-%patch2014 -p1
-%patch2015 -p1
-%patch2016 -p1
-%patch2017 -p1
-%patch2018 -p1
-%patch2019 -p1
-%patch2020 -p1
-%patch2021 -p1
-%patch2022 -p1
-%patch2023 -p1
-%patch2024 -p1
-%patch2025 -p1
-%patch2026 -p1
-%patch2027 -p1
-%patch2028 -p1
-%patch2029 -p1
-%patch2030 -p1
-%patch2031 -p1
-%patch2032 -p1
-%patch2033 -p1
-%patch2034 -p1
-%patch2035 -p1
-%patch2036 -p1
-%patch2037 -p1
-%patch2038 -p1
-%patch2039 -p1
-%patch2040 -p1
-%patch2041 -p1
-%patch2042 -p1
-%patch2043 -p1
-%patch2044 -p1
-%patch2045 -p1
-%patch2046 -p1
-%patch2047 -p1
-%patch2048 -p1
-%patch2049 -p1
+%patch -P 2000 -p1
+%patch -P 2001 -p1
+%patch -P 2002 -p1
+%patch -P 2003 -p1
+%patch -P 2004 -p1
+%patch -P 2005 -p1
+%patch -P 2006 -p1
+%patch -P 2007 -p1
+%patch -P 2008 -p1
+%patch -P 2009 -p1
+%patch -P 2010 -p1
+%patch -P 2011 -p1
+%patch -P 2012 -p1
+%patch -P 2013 -p1
+%patch -P 2014 -p1
+%patch -P 2015 -p1
+%patch -P 2016 -p1
+%patch -P 2017 -p1
+%patch -P 2018 -p1
+%patch -P 2019 -p1
+%patch -P 2020 -p1
+%patch -P 2021 -p1
+%patch -P 2022 -p1
+%patch -P 2023 -p1
+%patch -P 2024 -p1
+%patch -P 2025 -p1
+%patch -P 2026 -p1
+%patch -P 2027 -p1
+%patch -P 2028 -p1
+%patch -P 2029 -p1
+%patch -P 2030 -p1
+%patch -P 2031 -p1
+%patch -P 2032 -p1
+%patch -P 2033 -p1
+%patch -P 2034 -p1
+%patch -P 2035 -p1
+%patch -P 2036 -p1
+%patch -P 2037 -p1
+%patch -P 2038 -p1
+%patch -P 2039 -p1
+%patch -P 2040 -p1
+%patch -P 2041 -p1
+%patch -P 2042 -p1
+%patch -P 2043 -p1
+%patch -P 2044 -p1
+%patch -P 2045 -p1
+%patch -P 2046 -p1
+%patch -P 2047 -p1
+%patch -P 2048 -p1
+%patch -P 2049 -p1
 
-%patch2070 -p1
-%patch2071 -p1
-%patch2072 -p1
-%patch2073 -p1
-%patch2074 -p1
+%patch -P 2070 -p1
+%patch -P 2071 -p1
+%patch -P 2072 -p1
+%patch -P 2073 -p1
+%patch -P 2074 -p1
+%patch -P 2075 -p1
+%patch -P 2076 -p1
 
-%patch2100 -p1
-%patch2101 -p1
-%patch2104 -p1
-%patch2105 -p1
-%patch2106 -p1
-%patch2107 -p1
-%patch2108 -p1
-%patch2109 -p1
+%patch -P 2100 -p1
+%patch -P 2101 -p1
+%patch -P 2104 -p1
+%patch -P 2105 -p1
+%patch -P 2106 -p1
+%patch -P 2107 -p1
+%patch -P 2108 -p1
+%patch -P 2109 -p1
 
-%patch2120 -p1
-%patch2121 -p1
-%patch2122 -p1
-%patch2123 -p1
-%patch2124 -p1
-%patch2125 -p1
-%patch2126 -p1
-%patch2127 -p1
-%patch2128 -p1
-%patch2129 -p1
-%patch2130 -p1
+%patch -P 2120 -p1
+%patch -P 2121 -p1
+%patch -P 2122 -p1
+%patch -P 2123 -p1
+%patch -P 2124 -p1
+%patch -P 2125 -p1
+%patch -P 2126 -p1
+%patch -P 2127 -p1
+%patch -P 2128 -p1
+%patch -P 2129 -p1
+%patch -P 2130 -p1
 
 #unpack libipt
 %if 0%{have_libipt}
@@ -979,6 +997,9 @@ EXTRA_TARGETS=
 %endif
 %endif
 	--with-separate-debug-dir=/usr/lib/debug		\
+%if 0%{have_libdebuginfod}
+	--with-debuginfod=yes                                   \
+%endif
 	--disable-sim						\
 	--disable-rpath						\
 	--with-system-zlib					\

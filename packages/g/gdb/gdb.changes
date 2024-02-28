@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:24:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Wed Jan 10 13:40:34 UTC 2024 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  * Add PR31214 kfail.
+  * Add kfail for fails in gdb.reverse/solib-precsave.exp /
+    gdb.reverse/solib-reverse.exp fixed by commit fe6356def67
+    ("PowerPC and aarch64: Fix reverse stepping failure").
+  * Extend PR31004 kfail.
+- Don't require %{python}-base for gdb-testresults package.
+- Fix debuginfod handling:
+  * Enable for sle_version >= 150400 (bsc#1185605, jsc#PED-1149,
+    jsc#PED-1138), SLE15-SP4 and later.
+  * Enable for suse_version >= 1600, ALP and Tumbleweed.
+  * Add back "BuildRequires: libdebuginfod1" to prevent selecting
+    dummy variant.
+  * Add "BuildRequires: debuginfod-client" to prevent unresolved
+    due to conflict with dummy variant.
+  * Add --with-debuginfod=yes to prevent silently dropping support.
+- Patches added (backport from master):
+  * gdb-testsuite-add-missing-no-prompt-anchor-in-gdb.ba.patch
+  * gdb-testsuite-remove-spurious-in-save_vars.patch
+
+-------------------------------------------------------------------
 Wed Dec 13 14:58:14 UTC 2023 - Tom de Vries <tdevries@suse.com>
 
 - Patches added (backport from gdb-patches, swo#30728):
