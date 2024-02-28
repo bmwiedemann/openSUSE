@@ -178,15 +178,15 @@ can run on a serial terminal or terminal emulator.
 mkdir -p %{name}-%{version}/python2
 tar -xf %{SOURCE0} -C %{name}-%{version}/python2
 pushd %{name}-%{version}/python2/%{name}-%{version}
-%patch0
-%patch1
+%patch -P 0
+%patch -P 1
 popd
 %endif
 mkdir -p %{name}-%{version}/python3
 tar -xf %{SOURCE0} -C %{name}-%{version}/python3
 pushd %{name}-%{version}/python3/%{name}-%{version}
-%patch0
-%patch1
+%patch -P 0
+%patch -P 1
 popd
 
 %build
