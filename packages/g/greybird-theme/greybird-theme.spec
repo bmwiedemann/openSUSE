@@ -86,7 +86,7 @@ This package provides the GTK+ 4 support of Greybird
 %prep
 %setup -q -n %{_name}-%{version}
 %if 0%{?sle_version} >= 150400 && 0%{?is_opensuse}
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 
 %build
