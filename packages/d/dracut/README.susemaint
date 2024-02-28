@@ -334,4 +334,5 @@ PR      Commit message
 2614    fix(dracut-systemd): replace `rd.udev.log-priority` with `rd.udev.log_level`
 2618    fix(i18n): handle keymap includes with `--sysroot`
 2618    fix(dracut-init.sh): handle decompress with `--sysroot`
+2630    fix(zfcp_rules): correct shellcheck regression when parsing ccw args
 

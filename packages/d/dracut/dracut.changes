@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 28 08:05:09 UTC 2024 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.557.g8a62bf73:
+  * fix(zfcp_rules): correct shellcheck regression when parsing ccw args (bsc#1220485)
+
+-------------------------------------------------------------------
 Tue Feb 13 10:42:38 UTC 2024 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.554.g6144bf71:
