@@ -143,7 +143,7 @@ Libraries, includes, etc. for developing XML Security applications with NSS.
 %prep
 %setup -q
 %if 0%{?suse_version} < 1500
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 
 %build
