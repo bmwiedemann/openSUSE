@@ -222,4 +222,12 @@
     <user>dimstar_suse</user>
     <comment>Use netcat instead of non-free nmap/ncat</comment>
   </revision>
+  <revision rev="29" vrev="29">
+    <srcmd5>88e6dc1914e044173eaabd1634ca6228</srcmd5>
+    <version>unknown</version>
+    <time>1709146024</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1152837</requestid>
+  </revision>
 </revisionlist>

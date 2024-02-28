@@ -25,8 +25,6 @@ LABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/virt-launcher:%%PKG_VER
 # endlabelprefix
 
 RUN zypper -n install \
-              augeas \
-              augeas-lenses \
               curl \
               ethtool \
               gawk \
@@ -49,48 +47,49 @@ RUN zypper -n install \
 
 #!ArchExclusiveLine: x86_64
 RUN if [ "$(uname -m)" = "x86_64" ]; then \
-        zypper -n install qemu-x86 ; \
-    fi;
-
-#!ArchExclusiveLine: aarch64
-RUN if [ "$(uname -m)" = "aarch64" ]; then \
-        zypper -n install \
-                  qemu-arm \
-                  qemu-uefi-aarch64 ; \
-    fi;
-
-RUN zypper clean -a
-
-#!ArchExclusiveLine: x86_64
-RUN if [ "$(uname -m)" = "x86_64" ]; then \
+        zypper -n install qemu-x86 && \
         mkdir -p /usr/share/OVMF && \
         ln -s ../qemu/ovmf-x86_64-code.bin /usr/share/OVMF/OVMF_CODE.fd && \
         ln -s ../qemu/ovmf-x86_64-vars.bin /usr/share/OVMF/OVMF_VARS.fd && \
         ln -s ../qemu/ovmf-x86_64-code.bin /usr/share/OVMF/OVMF_CODE.cc.fd && \
         ln -s ../qemu/ovmf-x86_64-smm-ms-code.bin /usr/share/OVMF/OVMF_CODE.secboot.fd && \
         ln -s ../qemu/ovmf-x86_64-smm-ms-vars.bin /usr/share/OVMF/OVMF_VARS.secboot.fd ; \
-    fi;
+    fi
 
 #!ArchExclusiveLine: aarch64
 RUN if [ "$(uname -m)" = "aarch64" ]; then \
+        zypper -n install \
+                  qemu-arm \
+                  qemu-uefi-aarch64 && \
         mkdir -p /usr/share/AAVMF && \
         ln -s ../qemu/aavmf-aarch64-code.bin /usr/share/AAVMF/AAVMF_CODE.fd && \
         ln -s ../qemu/aavmf-aarch64-vars.bin /usr/share/AAVMF/AAVMF_VARS.fd ; \
-    fi;
-
-# KubeVirt expects virtiofsd to be installed in /usr/libexec
-RUN ls /usr/libexec/virtiofsd || \
-    (mkdir -p /usr/libexec && ln -s ../lib/virtiofsd /usr/libexec/virtiofsd)
+    fi
 
 COPY augconf /augconf
+RUN zypper -n install \
+              augeas \
+              augeas-lenses && \
+    augtool --echo -f /augconf && \
+    zypper -n remove \
+              augeas \
+              augeas-lenses && \
+    zypper clean -a && \
+    rm -f /augconf
 
-RUN augtool -f /augconf
-RUN cd /var && rm -rf run && ln -s ../run .
+# KubeVirt expects virtiofsd to be installed in /usr/libexec
+# NOTE: the value of %{_libexecdir} may vary across distros
+RUN VIRTIOFSD=$(rpm --eval '%{_libexecdir}')/virtiofsd; \
+    [ -d ${VIRTIOFSD} ] && VIRTIOFSD=${VIRTIOFSD}/virtiofsd; \
+    [ -f /usr/libexec/virtiofsd ] || \
+    (mkdir -p /usr/libexec && ln -svrt /usr/libexec ${VIRTIOFSD})
 
 # Setup permissions and capabilities for non-root VMIs
 RUN setcap 'cap_net_bind_service=+ep' /usr/bin/virt-launcher && \
     setcap 'cap_net_bind_service=+ep' /usr/bin/virt-launcher-monitor && \
     setcap 'cap_net_bind_service=+ep' /usr/bin/qemu-system-$(uname -m) && \
     chmod 0755 /etc/libvirt
+
+RUN cd /var && rm -rf run && ln -s ../run .
 
 ENTRYPOINT [ "/usr/bin/virt-launcher-monitor" ]
