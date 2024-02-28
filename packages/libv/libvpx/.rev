@@ -532,4 +532,31 @@
     <comment></comment>
     <requestid>1116504</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>462e31eaa0b46fd2c5ee7ef4c4b46456</srcmd5>
+    <version>1.14.0</version>
+    <time>1709145898</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.14.0:
+  - library so version is changing to 9
+  - Upgrading:
+    This release is ABI incompatible with the previous release.
+    Various new features for rate control library for real-time: SVC parallel
+    encoding, loopfilter level, support for frame dropping, and screen content.
+    New callback function send_tpl_gop_stats for vp9 external rate control
+    library, which can be used to transmit TPL stats for a group of pictures. A
+    public header vpx_tpl.h is added for the definition of TPL stats used in
+    this callback.
+    libwebm is upgraded to libwebm-1.0.0.29-9-g1930e3c.
+  - Enhancement:
+    Improvements on Neon optimizations: VoD: 12-35% speed up for bitdepth 8,
+    68%-151% speed up for high bitdepth.
+    Improvements on AVX2 and SSE optimizations.
+    Improvements on LSX optimizations for LoongArch.
+    42-49% speedup on speed 0 VoD encoding.
+    Android API level predicates.
+  - Bug fixes:
+    please check the CHANGELOG file</comment>
+    <requestid>1152046</requestid>
+  </revision>
 </revisionlist>
