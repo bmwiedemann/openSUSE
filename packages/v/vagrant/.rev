@@ -465,4 +465,12 @@
 To Staging:F with rubygem-vagrant_cloud</comment>
     <requestid>1146277</requestid>
   </revision>
+  <revision rev="57" vrev="6">
+    <srcmd5>aa59b4b6e445ed16a7261f383ef06092</srcmd5>
+    <version>2.3.7</version>
+    <time>1709145869</time>
+    <user>anag+factory</user>
+    <comment>- Added file childprocess-5.0.patch for support childprocess 5.0.</comment>
+    <requestid>1152492</requestid>
+  </revision>
 </revisionlist>

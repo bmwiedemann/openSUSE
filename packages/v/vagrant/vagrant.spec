@@ -65,6 +65,7 @@ Patch11:        0011-Remove-vagrant-ssl-extension.patch
 Patch12:        0012-Bump-rgl-dependency-to-0.6.6.patch
 Patch13:        0013-Bump-webrick-dependency-to-1.8.0.patch
 Patch14:        0014-Bump-vagrant_cloud_dependency.patch
+Patch15:        childprocess-5.0.patch
 
 # force only one ruby version
 # CAUTION: if you change this, then you *must* also change the sed calls which
@@ -87,8 +88,8 @@ BuildRequires:  %{rubygem bundler}
 BuildRequires:  %{ruby} < 3.4
 #  s.add_dependency "bcrypt_pbkdf", "~> 1.1"
 BuildRequires:  %{rubygem bcrypt_pbkdf:1 >= 1.1 }
-#  s.add_dependency "childprocess", "~> 4.1.0"
-BuildRequires:  %{rubygem childprocess:4.1 }
+#  s.add_dependency "childprocess", "~> 5.0.0"
+BuildRequires:  %{rubygem childprocess:5.0 }
 #  s.add_dependency "ed25519", "~> 1.3.0"
 BuildRequires:  %{rubygem ed25519:1.3 >= 1.3.0 }
 #  s.add_dependency "erubi"
@@ -184,8 +185,8 @@ BuildRequires:  fdupes
 
 #  s.add_dependency "bcrypt_pbkdf", "~> 1.1"
 Requires:       %{rubygem bcrypt_pbkdf:1 >= 1.1 }
-#    s.add_dependency "childprocess", "~> 4.1.0"
-Requires:       %{rubygem childprocess:4.1}
+#    s.add_dependency "childprocess", "~> 5.0.0"
+Requires:       %{rubygem childprocess:5.0}
 #   s.add_dependency "ed25519", "~> 1.3.0"
 Requires:       %{rubygem ed25519:1.3 >= 1.3.0}
 #  s.add_dependency "erubi"

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 27 19:14:03 UTC 2024 - Илья Индиго <13ilya@gmail.com>
+
+- Added file childprocess-5.0.patch for support childprocess 5.0.
+
+-------------------------------------------------------------------
 Mon Feb 12 05:43:13 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - add patch 0014-Bump-vagrant_cloud_dependency.patch to allow newer
