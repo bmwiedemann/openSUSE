@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 28 17:01:24 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- let's provide/obsolete nvidia-open-driver-G06 instead of
+  nvidia-open-driver-G06-kmp since older versions still had
+  conflicts to nvidia-open-driver-G06-kmp ...
+
+-------------------------------------------------------------------
 Sat Feb 24 13:06:48 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 550.54.14

@@ -336,4 +336,14 @@
   * kernel-6.7.patch</comment>
     <requestid>1150149</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>8f4ff98d1a3f5147a2e152b16a6d3c28</srcmd5>
+    <version>550.54.14</version>
+    <time>1709146092</time>
+    <user>anag+factory</user>
+    <comment>- let's provide/obsolete nvidia-open-driver-G06 instead of
+  nvidia-open-driver-G06-kmp since older versions still had
+  conflicts to nvidia-open-driver-G06-kmp ...</comment>
+    <requestid>1152990</requestid>
+  </revision>
 </revisionlist>
