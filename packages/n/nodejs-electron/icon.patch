@@ -4,8 +4,8 @@
    };
  
    if (process.platform === 'linux') {
--    options.icon = path.join(__dirname, 'icon.png');
-+    options.icon = '/usr/share/icons/hicolor/1024x1024/apps/electron.png';
+-    options.icon = url.fileURLToPath(new URL('icon.png', import.meta.url));
++    options.icon = '/usr/share/icons/hicolor/1024x1024/apps/electron.png'
    }
  
    mainWindow = new BrowserWindow(options);

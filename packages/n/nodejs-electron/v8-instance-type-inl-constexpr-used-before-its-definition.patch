@@ -1,0 +1,45 @@
+--- src/v8/src/objects/instance-type-inl.h.orig	2024-02-21 13:34:15.959879700 +0000
++++ src/v8/src/objects/instance-type-inl.h	2024-02-25 13:47:34.748156000 +0000
+@@ -71,7 +71,9 @@ constexpr bool kHasUniqueMapOfInstanceTy
+ 
+ template <InstanceType type>
+ constexpr RootIndex kUniqueMapOfInstanceType =
+-    UniqueMapOfInstanceType(type).value_or(RootIndex::kRootListLength);
++  kHasUniqueMapOfInstanceType<type>?
++    *UniqueMapOfInstanceType(type):
++    RootIndex::kRootListLength;
+ 
+ // Manually curated list of instance type ranges which are associated with a
+ // unique range of map addresses on the read only heap. Both ranges are
+@@ -129,14 +131,17 @@ UniqueMapRangeOfInstanceTypeRange(Instan
+   return {};
+ }
+ 
++constexpr inline TaggedAddressRange NULL_ADDRESS_RANGE{kNullAddress, kNullAddress};
++
+ template <InstanceType first, InstanceType last>
+ constexpr bool kHasUniqueMapRangeOfInstanceTypeRange =
+     UniqueMapRangeOfInstanceTypeRange(first, last).has_value();
+ 
+ template <InstanceType first, InstanceType last>
+ constexpr TaggedAddressRange kUniqueMapRangeOfInstanceTypeRange =
+-    UniqueMapRangeOfInstanceTypeRange(first, last)
+-        .value_or(TaggedAddressRange(kNullAddress, kNullAddress));
++  kHasUniqueMapRangeOfInstanceTypeRange<first, last>?
++    *UniqueMapRangeOfInstanceTypeRange(first, last):
++    NULL_ADDRESS_RANGE;
+ 
+ inline constexpr base::Optional<TaggedAddressRange>
+ UniqueMapRangeOfInstanceType(InstanceType type) {
+@@ -149,8 +154,9 @@ constexpr bool kHasUniqueMapRangeOfInsta
+ 
+ template <InstanceType type>
+ constexpr TaggedAddressRange kUniqueMapRangeOfInstanceType =
+-    UniqueMapRangeOfInstanceType(type).value_or(
+-        TaggedAddressRange(kNullAddress, kNullAddress));
++  kHasUniqueMapRangeOfInstanceType<type>?
++    *UniqueMapRangeOfInstanceType(type):
++    NULL_ADDRESS_RANGE;
+ 
+ inline bool MayHaveMapCheckFastCase(InstanceType type) {
+   if (UniqueMapOfInstanceType(type)) return true;

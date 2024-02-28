@@ -1,5 +1,6 @@
 Partially revert https://github.com/chromium/chromium/commit/c1dc375391403442935f1305f5a9782dd1c33f3a
-This feature has no real-world use and inhibits build with old brotli
+and disable dependent code. This removes `brs` from Accept-Encoding list.
+This feature does not build with brotli < 1.1
 
 --- src/net/filter/brotli_source_stream.cc.orig	2023-10-12 17:25:42.094020700 +0200
 +++ src/net/filter/brotli_source_stream.cc	2023-10-12 22:43:53.790708700 +0200
@@ -11,7 +12,7 @@ This feature has no real-world use and inhibits build with old brotli
  
  namespace net {
  
-@@ -25,20 +22,10 @@ const char kBrotli[] = "BROTLI";
+@@ -25,21 +22,11 @@ const char kBrotli[] = "BROTLI";
  // Brotli format specification: http://www.ietf.org/id/draft-alakuijala-brotli.
  class BrotliSourceStream : public FilterSourceStream {
   public:
@@ -25,15 +26,16 @@ This feature has no real-world use and inhibits build with old brotli
 +      : FilterSourceStream(SourceStream::TYPE_BROTLI, std::move(upstream)) {
      brotli_state_ =
          BrotliDecoderCreateInstance(AllocateMemory, FreeMemory, this);
+     CHECK(brotli_state_);
 -    if (dictionary_) {
 -      BROTLI_BOOL result = BrotliDecoderAttachDictionary(
 -          brotli_state_, BROTLI_SHARED_DICTIONARY_RAW, dictionary_size_,
 -          reinterpret_cast<const unsigned char*>(dictionary_->data()));
 -      CHECK(result);
 -    }
-     CHECK(brotli_state_);
    }
  
+   BrotliSourceStream(const BrotliSourceStream&) = delete;
 @@ -176,9 +163,6 @@ class BrotliSourceStream : public Filter
      free(&array[-1]);
    }
@@ -54,3 +56,14 @@ This feature has no real-world use and inhibits build with old brotli
  }
  
  }  // namespace net
+--- src/services/network/public/cpp/features.cc.old	2024-02-26 14:40:47.616464200 +0000
++++ src/services/network/public/cpp/features.cc	2024-02-26 18:32:53.080944900 +0000
+@@ -383,7 +383,7 @@ BASE_FEATURE(kPrefetchNoVarySearch,
+ //     decompresses the response body using the dictionary.
+ BASE_FEATURE(kCompressionDictionaryTransportBackend,
+              "CompressionDictionaryTransportBackend",
+-             base::FEATURE_ENABLED_BY_DEFAULT);
++             base::FEATURE_DISABLED_BY_DEFAULT);
+ 
+ // When both this feature and the kCompressionDictionaryTransportBackend feature
+ // are enabled, the following will happen:

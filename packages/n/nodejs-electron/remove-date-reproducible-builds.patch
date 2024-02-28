@@ -15,8 +15,8 @@
 --- a/tools/json_to_struct/json_to_struct.py
 +++ b/tools/json_to_struct/json_to_struct.py
 @@ -74,7 +74,7 @@
+ import java_element_generator
  import struct_generator
- import element_generator
  
 -HEAD = u"""// Copyright %d The Chromium Authors
 +HEAD = u"""// Copyright 2022 The Chromium Authors

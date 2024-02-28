@@ -113,19 +113,19 @@ index c5a6f0aea88..71d9bf41a71 100644
 +#if BUILDFLAG(ENABLE_WEB_SPEECH)
  #include "content/browser/speech/speech_recognition_dispatcher_host.h"
 +#endif
- #include "content/browser/wake_lock/wake_lock_service_impl.h"
- #include "content/browser/web_contents/file_chooser_impl.h"
- #include "content/browser/web_contents/web_contents_impl.h"
+ #include "content/browser/storage_access/storage_access_handle.h"
+ #include "content/browser/tracing/trace_report/trace_report.mojom.h"
+ #include "content/browser/tracing/trace_report/trace_report_internals_ui.h"
 @@ -144,7 +146,9 @@
- #include "third_party/blink/public/mojom/runtime_feature_state/runtime_feature_state_controller.mojom.h"
+ #include "third_party/blink/public/mojom/sensor/web_sensor_provider.mojom.h"
  #include "third_party/blink/public/mojom/sms/webotp_service.mojom.h"
  #include "third_party/blink/public/mojom/speculation_rules/speculation_rules.mojom.h"
 +#if BUILDFLAG(ENABLE_WEB_SPEECH)
  #include "third_party/blink/public/mojom/speech/speech_recognizer.mojom.h"
 +#endif
  #include "third_party/blink/public/mojom/speech/speech_synthesis.mojom.h"
+ #include "third_party/blink/public/mojom/storage_access/storage_access_handle.mojom.h"
  #include "third_party/blink/public/mojom/usb/web_usb_service.mojom.h"
- #include "third_party/blink/public/mojom/wake_lock/wake_lock.mojom.h"
 @@ -168,7 +172,9 @@
  #else  // BUILDFLAG(IS_ANDROID)
  #include "content/browser/direct_sockets/direct_sockets_service_impl.h"

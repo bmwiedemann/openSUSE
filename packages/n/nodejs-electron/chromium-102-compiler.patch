@@ -59,7 +59,7 @@ index d40843b..b92f03b 100644
  
      if (!is_clang) {
        # Use pipes for communicating between sub-processes. Faster.
-@@ -527,37 +527,6 @@
+@@ -527,55 +527,6 @@
      ldflags += [ "-Wl,-z,keep-text-section-prefix" ]
    }
  
@@ -83,6 +83,24 @@ index d40843b..b92f03b 100644
 -        ldflags += [ "-mllvm:-instcombine-lower-dbg-declare=0" ]
 -      } else {
 -        ldflags += [ "-Wl,-mllvm,-instcombine-lower-dbg-declare=0" ]
+-      }
+-    }
+-
+-    # TODO(crbug.com/1488374): This causes binary size growth and potentially
+-    # other problems.
+-    # TODO(crbug.com/1491036): This isn't supported by Cronet's mainline llvm version.
+-    if (default_toolchain != "//build/toolchain/cros:target" &&
+-        !llvm_android_mainline) {
+-      cflags += [
+-        "-mllvm",
+-        "-split-threshold-for-reg-with-hint=0",
+-      ]
+-      if (use_thin_lto && is_a_target_toolchain) {
+-        if (is_win) {
+-          ldflags += [ "-mllvm:-split-threshold-for-reg-with-hint=0" ]
+-        } else {
+-          ldflags += [ "-Wl,-mllvm,-split-threshold-for-reg-with-hint=0" ]
+-        }
 -      }
 -    }
 -
@@ -164,27 +182,20 @@ index d40843b..b92f03b 100644
    cflags = []
    cflags_c = []
    cflags_cc = []
-@@ -1597,7 +1535,7 @@
+@@ -1597,11 +1535,7 @@
        defines = [ "_HAS_NODISCARD" ]
      }
    } else {
 -    cflags = [ "-Wall" ]
 +    cflags = []
-     if (treat_warnings_as_errors) {
-       cflags += [ "-Werror" ]
- 
-@@ -1606,10 +1544,6 @@
-       # well.
-       ldflags = [ "-Werror" ]
-     }
 -    if (is_clang) {
 -      # Enable extra warnings for chromium_code when we control the compiler.
 -      cflags += [ "-Wextra" ]
 -    }
  
-     if (treat_warnings_as_errors) {
-       # Turn rustc warnings into the "deny" lint level, which produce compiler
-@@ -1618,23 +1552,6 @@
+     # In Chromium code, we define __STDC_foo_MACROS in order to get the
+     # C99 macros on Mac and Linux.
+@@ -1618,24 +1552,6 @@
        "__STDC_FORMAT_MACROS",
      ]
  
@@ -197,9 +208,10 @@ index d40843b..b92f03b 100644
 -      # disabled, so only do that for Release build.
 -      fortify_level = "2"
 -
--      # ChromeOS supports a high-quality _FORTIFY_SOURCE=3 implementation
--      # with a few custom glibc patches. Use that if it's available.
--      if (is_chromeos_ash) {
+-      # ChromeOS's toolchain supports a high-quality _FORTIFY_SOURCE=3
+-      # implementation with a few custom glibc patches. Use that if it's
+-      # available.
+-      if (is_chromeos_device && !lacros_use_chromium_toolchain) {
 -        fortify_level = "3"
 -      }
 -      defines += [ "_FORTIFY_SOURCE=" + fortify_level ]
@@ -227,7 +239,7 @@ index d40843b..b92f03b 100644
    if (is_clang) {
      cflags += [ "-Wno-incompatible-pointer-types" ]
 @@ -1990,7 +1915,8 @@
-   }
+   common_optimize_on_cflags += [ "-fno-math-errno" ]
  }
  
 -config("default_stack_frames") {

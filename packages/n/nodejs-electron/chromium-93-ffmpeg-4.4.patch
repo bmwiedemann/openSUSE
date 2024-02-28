@@ -42,9 +42,9 @@ Index: chromium-118.0.5993.18/media/filters/ffmpeg_demuxer.cc
 --- chromium-118.0.5993.18.orig/media/filters/ffmpeg_demuxer.cc
 +++ chromium-118.0.5993.18/media/filters/ffmpeg_demuxer.cc
 @@ -398,7 +398,11 @@ void FFmpegDemuxerStream::EnqueuePacket(
-     // TODO(crbug.com/1471504): This is now broken without side data; remove.
-     buffer = DecoderBuffer::CopyFrom(packet->data, packet->size);
-   } else {
+ 
+   scoped_refptr<DecoderBuffer> buffer;
+ 
 +#if LIBAVUTIL_VERSION_MAJOR < 57
 +    int side_data_size = 0;
 +#else

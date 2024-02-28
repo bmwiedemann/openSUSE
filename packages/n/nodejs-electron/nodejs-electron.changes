@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Feb 27 18:33:02 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Update to version 28.2.4:
+  * ABI break: NODE_MODULE_VERSION is now 119
+  * Chromium 120.0.6099.291
+  * Node 18.18.2
+  * V8 12.0
+  * The ipcRenderer.sendTo() method has been removed.
+  * The scroll-touch-{begin,end,edge} events have been removed.
+  * Setting backgroundThrottling to false will disable frames throttling in the BrowserWindow for all WebContents displayed by it.
+  * Enabled ESM support.
+  * The UtilityProcess API now supports ESM entrypoints.
+  * Added several properties to the display object including detected, maximumCursorSize, and nativeOrigin.
+  * Added support for ELECTRON_OZONE_PLATFORM_HINT environment variable on Linux.
+  * see https://www.electronjs.org/blog/electron-28-0 and https://github.com/electron/electron/releases/tag/v28.0.0 for more
+- Drop upstreamed patches:
+  * absl-make_unique-missing-include.patch
+  * async_shared_storage_database_impl-missing-absl-WrapUnique.patch
+  * autofill_i18n_parsing_expressions-constexpr.patch
+  * chromium-system-libusb.patch
+  * computed_style_base-nbsp.patch
+  * CVE-2023-38552-node-integrity-checks-according-to-policies.patch
+  * CVE-2023-39333-node-create_dynamic_module-code-injection.patch
+  * CVE-2023-45143-undici-cookie-leakage.patch
+  * decoder_buffer_side_data-missing-uint8_t.patch
+  * electron_api_app-GetPathConstant-non-constexpr.patch
+  * electron_browser_context-missing-variant.patch
+  * flatbuffers.gn
+  * libsecret.gn
+  * highway.gn
+  * kwallet_dbus-missing-uint8_t.patch
+  * mojo_ukm_recorder-missing-WrapUnique.patch
+  * page_content_annotations_common-remove-tflite.patch
+  * Partial-migration-from-imp-to-importlib.patch
+  * partition_root-attribute.patch
+  * quiche-missing-absl-includes.patch
+  * replace_gn_files-system-libs.patch
+  * sensor_reading-missing-int64_t-size_t.patch
+  * services-network-optional-explicit-constructor.patch
+  * simple_font_data-freetype-include.patch
+  * utf_string_conversion_utils-missing-numeric_limits.patch
+  * vulkan_memory_allocator.gn
+  * vulkan_memory_allocator-upgrade.patch
+  * vulkan_memory_allocator-vk_mem_alloc-missing-snprintf.patch
+- Add patches to fix build errors:
+  * atspi.patch
+  * local_frame-local_frame_client-incomplete-WebBackgroundResourceFetchAssets.patch
+  * v8-instance-type-inl-constexpr-used-before-its-definition.patch
+  * web_local_frame_client-incomplete-WebBackgroundResourceFetchAssets.patch
+- Adjust brotli-remove-shared-dictionary.patch to disable the offending code which is now live,
+  and enable this patch only on systems with old brotli.
+- Conditionally add pending_task_safety_flag-abseil-2022-nullability.patch
+  to make electron buildable with old abseil.
+- Use bundled avif everywhereas chromium now uses features available only in development snapshots.
+
+-------------------------------------------------------------------
 Sat Feb 24 18:24:19 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Bundle minizip on Fedora 40 due to the system version not including necessary headers

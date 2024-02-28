@@ -30,7 +30,7 @@ index c165a1703395a..dc1377a90a9f7 100644
  #include <memory>
  #include <utility>
  
-@@ -190,32 +191,6 @@ struct ReshapeQueueItem {
+@@ -194,33 +195,6 @@ struct ReshapeQueueItem {
        : action_(action), start_index_(start), num_characters_(num) {}
  };
  
@@ -52,7 +52,8 @@ index c165a1703395a..dc1377a90a9f7 100644
 -      (*destroy_)(ptr_);
 -  }
 -
--  T* Get() { return ptr_; }
+-  T* Get() const{ return ptr_; }
+-  operator T *() const {return ptr_;}
 -  void Set(T* ptr) { ptr_ = ptr; }
 -
 - private:
@@ -60,39 +61,33 @@ index c165a1703395a..dc1377a90a9f7 100644
 -  DestroyFunction destroy_;
 -};
 -
- struct RangeData {
-   STACK_ALLOCATED();
- 
-@@ -908,8 +883,8 @@ scoped_refptr<ShapeResult> HarfBuzzShaper::Shape(const Font* font,
-   scoped_refptr<ShapeResult> result =
-       ShapeResult::Create(font, start, length, direction);
- 
--  HarfBuzzScopedPtr<hb_buffer_t> buffer(hb_buffer_create(), hb_buffer_destroy);
--  RangeData range_data = CreateRangeData(font, direction, buffer.Get());
-+  hb::unique_ptr<hb_buffer_t> buffer(hb_buffer_create());
-+  RangeData range_data = CreateRangeData(font, direction, buffer.get());
-   range_data.start = start;
-   range_data.end = end;
- 
-@@ -965,8 +940,8 @@ scoped_refptr<ShapeResult> HarfBuzzShaper::Shape(
-   scoped_refptr<ShapeResult> result =
-       ShapeResult::Create(font, start, length, direction);
- 
--  HarfBuzzScopedPtr<hb_buffer_t> buffer(hb_buffer_create(), hb_buffer_destroy);
--  RangeData range_data = CreateRangeData(font, direction, buffer.Get());
-+  hb::unique_ptr<hb_buffer_t> buffer(hb_buffer_create());
-+  RangeData range_data = CreateRangeData(font, direction, buffer.get());
- 
-   for (const RunSegmenter::RunSegmenterRange& segmented_range : ranges) {
-     DCHECK_GE(segmented_range.end, segmented_range.start);
-@@ -1001,8 +976,8 @@ scoped_refptr<ShapeResult> HarfBuzzShaper::Shape(
-   scoped_refptr<ShapeResult> result =
-       ShapeResult::Create(font, start, length, direction);
- 
--  HarfBuzzScopedPtr<hb_buffer_t> buffer(hb_buffer_create(), hb_buffer_destroy);
--  RangeData range_data = CreateRangeData(font, direction, buffer.Get());
-+  hb::unique_ptr<hb_buffer_t> buffer(hb_buffer_create());
-+  RangeData range_data = CreateRangeData(font, direction, buffer.get());
-   range_data.start = start;
-   range_data.end = end;
- 
+ //
+ // Represents a context while shaping a range.
+ //
+@@ -239,7 +214,7 @@ struct RangeContext {
+         text_direction(direction),
+         start(start),
+         end(end),
+-        buffer(hb_buffer_create(), hb_buffer_destroy),
++        buffer(hb_buffer_create()),
+         options(options) {
+     DCHECK_GE(end, start);
+     font_features.Initialize(font->GetFontDescription());
+@@ -249,7 +224,7 @@ struct RangeContext {
+   const TextDirection text_direction;
+   const unsigned start;
+   const unsigned end;
+-  const HarfBuzzScopedPtr<hb_buffer_t> buffer;
++  const hb::unique_ptr<hb_buffer_t> buffer;
+   FontFeatures font_features;
+   Deque<ReshapeQueueItem> reshape_queue;
+   const ShapeOptions options;
+@@ -1032,7 +1007,7 @@ void HarfBuzzShaper::GetGlyphData(const
+                                   UScriptCode script,
+                                   bool is_horizontal,
+                                   GlyphDataList& glyphs) {
+-  HarfBuzzScopedPtr<hb_buffer_t> hb_buffer(hb_buffer_create(), hb_buffer_destroy);
++  hb::unique_ptr<hb_buffer_t> hb_buffer(hb_buffer_create());
+   hb_buffer_set_language(hb_buffer, locale.HarfbuzzLanguage());
+   hb_buffer_set_script(hb_buffer, ICUScriptToHBScript(script));
+   hb_buffer_set_direction(hb_buffer,

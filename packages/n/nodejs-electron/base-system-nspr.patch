@@ -1,8 +1,8 @@
 --- a/base/time/time.cc	2022-06-21 21:52:33.367987695 +0200
 +++ b/base/time/time.cc	2022-06-30 13:15:58.619513336 +0200
 @@ -21,7 +21,7 @@
- 
  #include "base/check.h"
+ #include "base/format_macros.h"
  #include "base/strings/stringprintf.h"
 -#include "base/third_party/nspr/prtime.h"
 +#include <prtime.h>

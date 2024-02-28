@@ -2,14 +2,16 @@ This font is already available in opensuse and can be installed systemwide
 
 --- a/ui/webui/resources/BUILD.gn	2022-06-15 15:58:23.822426713 +0200
 +++ b/ui/webui/resources/BUILD.gn	2022-06-21 15:51:23.647223308 +0200
-@@ -36,16 +36,6 @@
+@@ -36,18 +36,6 @@
    input_files = [ "test_loader.html" ]
    input_files_base_dir = rebase_path(".", "//")
  
--  if (!is_chromeos_ash && !is_android) {
--    # Roboto Font. Roboto-Regular and Roboto-Light is already available on
--    # Android, and Roboto-Medium is not used on Android. All 6 weights of
--    # Roboto are available on Chrome OS.
+-  if (is_linux) {
+-    # Only need to include on Linux.
+-    #  - Android: Roboto-Regular and Roboto-Light is already available on
+-    #             Android, and Roboto-Medium is not used on Android.
+-    #  - CrOS: All 6 weights of Roboto are available on Chrome OS.
+-    #  - Win/Mac: Use system UI fonts for WebUI surfaces and don't need Roboto.
 -    input_files += [
 -      "roboto/roboto-bold.woff2",
 -      "roboto/roboto-medium.woff2",

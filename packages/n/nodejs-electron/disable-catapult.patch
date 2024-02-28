@@ -148,13 +148,13 @@ author: Michael Gilbert <mgilbert@debian.org>
 +++ b/tools/gritsettings/resource_ids.spec
 @@ -755,12 +755,6 @@
    "content/test/web_ui_mojo_test_resources.grd": {
-     "includes": [6340],
+     "includes": [7340],
    },
 -
 -  # This file is generated during the build.
 -  "<(SHARED_INTERMEDIATE_DIR)/content/browser/tracing/tracing_resources.grd": {
 -    "META": {"sizes": {"includes": [20],}},
--    "includes": [6360],
+-    "includes": [7360],
 -  },
    # END content/ section.
  
@@ -312,18 +312,6 @@ author: Michael Gilbert <mgilbert@debian.org>
      "//third_party/perfetto/src/trace_processor:trace_processor_shell",
    ]
    data = [
---- a/weblayer/shell/BUILD.gn
-+++ b/weblayer/shell/BUILD.gn
-@@ -185,9 +185,6 @@ repack("support_pak") {
-   }
-   if (is_android) {
-     deps += [ "//ui/android:ui_java_resources" ]
--  } else {
--    deps += [ "//content/browser/tracing:resources" ]
--    sources += [ "$root_gen_dir/content/browser/tracing/tracing_resources.pak" ]
-   }
-   output = "$root_out_dir/weblayer_support.pak"
- }
 --- a/electron/electron_paks.gni
 +++ b/electron/electron_paks.gni
 @@ -57,7 +57,6 @@

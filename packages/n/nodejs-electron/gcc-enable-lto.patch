@@ -29,7 +29,7 @@ Index: electron-17.1.0/build/config/compiler/BUILD.gn
 --- electron-17.1.0.orig/build/config/compiler/BUILD.gn	2022-03-09 08:24:53.098851231 +0100
 +++ electron-17.1.0/build/config/compiler/BUILD.gn	2022-03-09 08:25:02.250701641 +0100
 @@ -1880,6 +1880,10 @@ if (is_win) {
-   }
+   common_optimize_on_cflags += [ "-fno-math-errno" ]
  }
  
 +config("gcc_lto") {

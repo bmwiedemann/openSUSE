@@ -1,7 +1,7 @@
 Compile files which declare functions in inline assembly without LTO due to https://gcc.gnu.org/bugzilla/show_bug.cgi?id=57703
 
---- src/base/allocator/partition_allocator/BUILD.gn.old	2022-10-01 13:53:03.367797474 +0200
-+++ src/base/allocator/partition_allocator/BUILD.gn	2022-10-05 14:23:53.999860356 +0200
+--- src/base/allocator/partition_allocator/src/partition_alloc/BUILD.gn.old	2022-10-01 13:53:03.367797474 +0200
++++ src/base/allocator/partition_allocator/src/partition_alloc/BUILD.gn	2022-10-05 14:23:53.999860356 +0200
 @@ -51,6 +51,33 @@
    _add_configs += [ "//build/config/compiler:no_optimize" ]
  }
@@ -65,8 +65,8 @@ Compile files which declare functions in inline assembly without LTO due to http
    }
    if (use_freelist_pool_offsets) {
 @@ -289,7 +295,6 @@
-     ":partition_alloc_implementation",
      ":memory_tagging",
+     "//build/config/compiler:wexit_time_destructors",
    ]
 -  deps = [ ":allocator_base" ]
    public_configs = []
