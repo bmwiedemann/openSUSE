@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 22 12:42:26 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.98.9
+  * Avoid creating a .hypothesis directory when using register_type_strategy().
+  * Add ability to pass any object to note().
+  * Warn when constructing a repr that is overly long.
+  * Change the distribution of sampled_from() when sampling from a Flag.
+  * Deprecate use of the global random number generator while drawing from a strategy.
+  * Improve our distribution of generated values for all strategies.
+  * Improve the Ghostwriter for binary operators.
+
+-------------------------------------------------------------------
 Wed Jan 24 13:47:04 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 6.93.2:
