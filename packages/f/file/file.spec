@@ -1,7 +1,7 @@
 #
 # spec file for package file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -109,26 +109,26 @@ to develop applications that require the magic "file" interface.
 
 %prep
 %setup -q -n file-%{version}
-%patch42 -p0 -b .t_t
-%patch1  -p0 -b .misc
-%patch4  -p0 -b .conf
-%patch5  -p0 -b .tex
-%patch7  -p0 -b .ssd
-%patch8  -p0 -b .xen
-%patch9  -p0 -b .elf
-%patch10 -p0 -b .prtf
-%patch12 -p1 -b .opt
-%patch13 -p0 -b .scri
-%patch15 -p0 -b .xcur
-%patch22 -p0 -b .cromfs
-%patch25 -p0 -b .javacheck
-%patch26 -p0 -b .solv
-%patch27 -p0 -b .zip2.0
-%patch31 -p0 -b .biorad
-%patch32 -p0 -b .clicfs
-%patch37 -p1 -b .getenv
-%patch39 -p1 -b .btrfs
-%patch0 -b .0
+%patch -P 42 -p0 -b .t_t
+%patch -P 1  -p0 -b .misc
+%patch -P 4  -p0 -b .conf
+%patch -P 5  -p0 -b .tex
+%patch -P 7  -p0 -b .ssd
+%patch -P 8  -p0 -b .xen
+%patch -P 9  -p0 -b .elf
+%patch -P 10 -p0 -b .prtf
+%patch -P 12 -p1 -b .opt
+%patch -P 13 -p0 -b .scri
+%patch -P 15 -p0 -b .xcur
+%patch -P 22 -p0 -b .cromfs
+%patch -P 25 -p0 -b .javacheck
+%patch -P 26 -p0 -b .solv
+%patch -P 27 -p0 -b .zip2.0
+%patch -P 31 -p0 -b .biorad
+%patch -P 32 -p0 -b .clicfs
+%patch -P 37 -p1 -b .getenv
+%patch -P 39 -p1 -b .btrfs
+%patch -P 0 -b .0
 test -s src/magic.h.in || cp -p src/magic.h src/magic.h.in
 rm -fv src/magic.h
 

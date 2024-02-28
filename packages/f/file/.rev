@@ -1654,4 +1654,12 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
 - Port and rename patch file-5.44.dif now file-5.45.dif</comment>
     <requestid>1101521</requestid>
   </revision>
+  <revision rev="136" vrev="2">
+    <srcmd5>e2598d05370c787c8979a34df8ceac9f</srcmd5>
+    <version>5.45</version>
+    <time>1709145857</time>
+    <user>anag+factory</user>
+    <comment>- Prepare for RPM 4.20</comment>
+    <requestid>1150751</requestid>
+  </revision>
 </revisionlist>
