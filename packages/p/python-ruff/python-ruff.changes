@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Feb 21 16:49:44 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.2.2
+ * Highlights include:
+   * Initial support formatting f-strings (in --preview).
+   * Support for overriding arbitrary configuration options via the CLI
+      through an expanded --config argument (e.g., --config "lint.isort.combine-as-imports=false").
+   * Significant performance improvements in Ruff's lexer, parser, and lint rules.
+ * Preview features
+   * Implement minimal f-string formatting 
+   * [pycodestyle] Add blank line(s) rules (E301, E302, E303, E304, E305, E306) 
+   * [refurb] Implement readlines_in_for (FURB129) 
+ * Rule changes
+   * [ruff] Ensure closing parentheses for multiline sequences are always on their own line (RUF022, RUF023) 
+   * [numpy] Add missing deprecation violations (NPY002) 
+   * [flake8-bandit] Detect mark_safe usages in decorators 
+   * [ruff] Expand asyncio-dangling-task (RUF006) to include new_event_loop 
+   * [flake8-pyi] Ignore 'unused' private type dicts in class scopes 
+ * Formatter
+   * Docstring formatting: Preserve tab indentation when using indent-style=tabs 
+   * Disable top-level docstring formatting for notebooks 
+   * Stabilize quote-style's preserve mode 
+ * CLI
+   * Allow arbitrary configuration options to be overridden via the CLI 
+ * Bug fixes
+   * Make show-settings filters directory-agnostic 
+   * Respect duplicates when rewriting type aliases 
+   * Respect tuple assignments in typing analyzer 
+   * Use atomic write when persisting cache 
+   * Use non-parenthesized range for DebugText 
+   * [flake8-simplify] Avoid false positive with async for loops (SIM113) 
+   * [flake8-trio] Respect async with in timeout-without-await 
+   * [perflint] Catch a wider range of mutations in PERF101 
+   * [pycodestyle] Fix E30X panics on blank lines with trailing white spaces 
+   * [pydocstyle] Allow using parameters as a subsection header (D405) 
+   * [pydocstyle] Fix blank-line docstring rules for module-level docstrings 
+   * [pylint] Accept 0.0 and 1.0 as common magic values (PLR2004) 
+   * [pylint] Avoid suggesting set rewrites for non-hashable types 
+   * [ruff] Avoid false negatives with string literals inside of method calls (RUF027) 
+   * [ruff] Fix panic on with f-string detection (RUF027) 
+   * [ruff] Ignore builtins when detecting missing f-strings 
+ * Performance
+   * Use memchr for string lexing 
+   * Use memchr for tab-indentation detection 
+   * Reduce Result<Tok, LexicalError> size by using Box<str> instead of String 
+   * Reduce size of Expr from 80 to 64 bytes 
+   * Improve trailing comma rule performance 
+   * Remove unnecessary string cloning from the parser 
+
+-------------------------------------------------------------------
 Wed Feb  7 10:16:16 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.2.1
