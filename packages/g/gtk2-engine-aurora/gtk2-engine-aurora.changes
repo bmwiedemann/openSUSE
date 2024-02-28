@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:15:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Tue Jan 10 18:37:44 UTC 2012 - gber@opensuse.org
 
 - added gtk2-engine-aurora-fix-glib-includes.patch in order to

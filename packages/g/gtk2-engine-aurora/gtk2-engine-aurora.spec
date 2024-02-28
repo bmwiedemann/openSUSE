@@ -39,10 +39,7 @@ to provide an attractive, complete and consistent
 look for Gtk applications.
 
 %prep
-%setup -q -n aurora-%version
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n aurora-%version
 
 %build
 %configure --enable-animation
