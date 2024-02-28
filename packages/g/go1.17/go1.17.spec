@@ -230,14 +230,14 @@ Go standard library compiled to a dynamically loadable shared object libstd.so
 
 # go
 %setup -q -n go
-%patch7 -p1
+%patch -P 7 -p1
 %if %{with gccgo}
 # Currently gcc-go does not manage an update-alternatives entry and will
 # never be symlinked as "go", even if gcc-go is the only installed go toolchain.
 # Patch go bootstrap scripts to find hardcoded go-(gcc-go-version) e.g. go-8
 # Substitute defined gcc_go_version into gcc-go.patch
 sed -i "s/\$gcc_go_version/%{gcc_go_version}/" $RPM_SOURCE_DIR/gcc-go.patch
-%patch8 -p1
+%patch -P 8 -p1
 %endif
 
 cp %{SOURCE4} .

@@ -379,4 +379,12 @@
   * Change source URLs to go.dev as per Go upstream (forwarded request 1079832 from jfkw)</comment>
     <requestid>1079833</requestid>
   </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>57178ca49b8296fd0b39b918588d60b5</srcmd5>
+    <version>1.17.13</version>
+    <time>1709145920</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1152227 from dimstar)</comment>
+    <requestid>1152297</requestid>
+  </revision>
 </revisionlist>

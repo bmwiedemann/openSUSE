@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:33:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Apr 14 23:41:22 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Build subpackage go1.x-libstd compiled shared object libstd.so
