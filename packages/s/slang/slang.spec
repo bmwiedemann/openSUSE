@@ -85,10 +85,7 @@ This package contains all necessary include files and libraries needed to
 develop applications that require it.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 # %%global _lto_cflags %%{_lto_cflags} -ffat-lto-objects
