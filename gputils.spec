@@ -51,8 +51,7 @@ BuildArch:      noarch
 Documentation for gputils and supported PIC MCUs.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 %configure
