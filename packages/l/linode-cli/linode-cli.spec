@@ -1,7 +1,7 @@
 #
 # spec file for package linode-cli
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ Patch0:         0001-Remove-shebang-from-non-executable-files.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module terminaltables}
 BuildRequires:  python-rpm-macros
 %if %{with python2}
@@ -46,7 +47,7 @@ Requires:       python-enum34
 Requires:       python2-future
 %endif
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
