@@ -1,4 +1,143 @@
 -------------------------------------------------------------------
+Fri Feb 23 20:04:59 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.2.1
+  ## Enhancements
+  * Added pyarrow pip extra so users can install pandas and pyarrow
+    with pip with pip install pandas[pyarrow] (#54466)
+  ## Fixed regressions
+  * Fixed memory leak in `read_csv` (#57039)
+  * Fixed performance regression in `Series.combine_first` (#55845)
+  * Fixed regression causing overflow for near-minimum timestamps
+    (#57150)
+  * Fixed regression in `concat` changing long-standing behavior
+    that always sorted the non-concatenation axis when the axis was
+    a `DatetimeIndex` (#57006)
+  * Fixed regression in `merge_ordered` raising TypeError for
+    fill_method="ffill" and how="left" (#57010)
+  * Fixed regression in `pandas.testing.assert_series_equal`
+    defaulting to check_exact=True when checking the `Index`
+    (#57067)
+  * Fixed regression in `read_json` where an `Index` would be
+    returned instead of a `RangeIndex` (#57429)
+  * Fixed regression in `wide_to_long` raising an AttributeError
+    for string columns (#57066)
+  * Fixed regression in `.DataFrameGroupBy.idxmin`,
+    `.DataFrameGroupBy.idxmax`, `.SeriesGroupBy.idxmin`,
+    `.SeriesGroupBy.idxmax` ignoring the skipna argument (#57040)
+  * Fixed regression in `.DataFrameGroupBy.idxmin`,
+    `.DataFrameGroupBy.idxmax`, `.SeriesGroupBy.idxmin`,
+    `.SeriesGroupBy.idxmax` where values containing the minimum or
+    maximum value for the dtype could produce incorrect results
+    (#57040)
+  * Fixed regression in `CategoricalIndex.difference` raising
+    KeyError when other contains null values other than NaN
+    (#57318)
+  * Fixed regression in `DataFrame.groupby` raising ValueError when
+    grouping by a `Series` in some cases (#57276)
+  * Fixed regression in `DataFrame.loc` raising IndexError for
+    non-unique, masked dtype indexes where result has more than
+    10,000 rows (#57027)
+  * Fixed regression in `DataFrame.loc` which was unnecessarily
+    throwing "incompatible dtype warning" when expanding with
+    partial row indexer and multiple columns (see PDEP6) (#56503)
+  * Fixed regression in `DataFrame.map` with na_action="ignore" not
+    being respected for NumPy nullable and `ArrowDtypes` (#57316)
+  * Fixed regression in `DataFrame.merge` raising ValueError for
+    certain types of 3rd-party extension arrays (#57316)
+  * Fixed regression in `DataFrame.query` with all NaT column with
+    object dtype (#57068)
+  * Fixed regression in `DataFrame.shift` raising AssertionError
+    for axis=1 and empty `DataFrame` (#57301)
+  * Fixed regression in `DataFrame.sort_index` not producing a
+    stable sort for a index with duplicates (#57151)
+  * Fixed regression in `DataFrame.to_dict` with orient='list' and
+    datetime or timedelta types returning integers (#54824)
+  * Fixed regression in `DataFrame.to_json` converting nullable
+    integers to floats (#57224)
+  * Fixed regression in `DataFrame.to_sql` when method="multi" is
+    passed and the dialect type is not Oracle (#57310)
+  * Fixed regression in `DataFrame.transpose` with nullable
+    extension dtypes not having F-contiguous data potentially
+    causing exceptions when used (#57315)
+  * Fixed regression in `DataFrame.update` emitting incorrect
+    warnings about downcasting (#57124)
+  * Fixed regression in `DataFrameGroupBy.idxmin`,
+    `DataFrameGroupBy.idxmax`, `SeriesGroupBy.idxmin`,
+    `SeriesGroupBy.idxmax` ignoring the skipna argument (#57040)
+  * Fixed regression in `DataFrameGroupBy.idxmin`,
+    `DataFrameGroupBy.idxmax`, `SeriesGroupBy.idxmin`,
+    `SeriesGroupBy.idxmax` where values containing the minimum or
+    maximum value for the dtype could produce incorrect results
+    (#57040)
+  * Fixed regression in `ExtensionArray.to_numpy` raising for
+    non-numeric masked dtypes (#56991)
+  * Fixed regression in `Index.join` raising TypeError when joining
+    an empty index to a non-empty index containing mixed dtype
+    values (#57048)
+  * Fixed regression in `Series.astype` introducing decimals when
+    converting from integer with missing values to string dtype
+    (#57418)
+  * Fixed regression in `Series.pct_change` raising a ValueError
+    for an empty `Series` (#57056)
+  * Fixed regression in `Series.to_numpy` when dtype is given as
+    float and the data contains NaNs (#57121)
+  * Fixed regression in addition or subtraction of `DateOffset`
+    objects with millisecond components to datetime64 `Index`,
+    `Series`, or `DataFrame` (#57529)
+  ## Bug fixes
+  * Fixed bug in `pandas.api.interchange.from_dataframe` which was
+    raising for Nullable integers (#55069)
+  * Fixed bug in `pandas.api.interchange.from_dataframe` which was
+    raising for empty inputs (#56700)
+  * Fixed bug in `pandas.api.interchange.from_dataframe` which
+    wasn't converting columns names to strings (#55069)
+  * Fixed bug in `DataFrame.__getitem__` for empty `DataFrame` with
+    Copy-on-Write enabled (#57130)
+  * Fixed bug in `PeriodIndex.asfreq` which was silently converting
+    frequencies which are not supported as period frequencies
+    instead of raising an error (#56945)
+  ## Note
+  * The DeprecationWarning that was raised when pandas was imported
+    without PyArrow being installed has been removed. This decision
+    was made because the warning was too noisy for too many users
+    and a lot of feedback was collected about the decision to make
+    PyArrow a required dependency. Pandas is currently considering
+    the decision whether or not PyArrow should be added as a hard
+    dependency in 3.0. Interested users can follow the discussion
+    here.
+  * Added the argument skipna to `DataFrameGroupBy.first`,
+    `DataFrameGroupBy.last`, `SeriesGroupBy.first`, and
+    `SeriesGroupBy.last`; achieving skipna=False used to be
+    available via `DataFrameGroupBy.nth`, but the behavior was
+    changed in pandas 2.0.0 (#57019)
+  * Added the argument skipna to `Resampler.first`,
+    `Resampler.last` (#57019)
+- Release notes for 2.2.0
+  * For full changelog see
+    https://github.com/pandas-dev/pandas/blob/main/doc/source/whatsnew/v2.2.0.rst
+  ## Enhancements
+  * ADBC Driver support in to_sql and read_sql
+  * Create a pandas Series based on one or more conditions
+  * to_numpy for NumPy nullable and Arrow types converts to
+    suitable NumPy dtype
+  * Series.struct accessor for PyArrow structured data
+  * Series.list accessor for PyArrow list data
+  * Calamine engine for `read_excel`
+  ## Notable bug fixes
+  * `merge` and `DataFrame.join` now consistently follow documented
+    sort behavior
+  * `merge` and `DataFrame.join` no longer reorder levels when
+    levels differ
+  * Increased minimum versions for dependencies
+  ## Deprecations
+  * Chained assignment
+  * Deprecate aliases M, Q, Y, etc. in favour of ME, QE, YE, etc.
+    for offsets
+  * Deprecated automatic downcasting
+- Simplify flavor test setup: obs can evaluate %{shrink:} now
+
+-------------------------------------------------------------------
 Tue Feb  6 08:59:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - enable py312 testing, remove py39 testing 
