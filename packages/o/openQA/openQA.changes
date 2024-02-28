@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 28 07:59:37 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1709047585.9bc6ce52:
+  * Document GitHub action for cloning job from PR description
+  * Update networking doc advising RSTP instead of slower STP
+
+-------------------------------------------------------------------
 Fri Feb 23 21:02:19 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1708608805.993d8f89:
