@@ -291,4 +291,22 @@ Bugfixes:
     * Support --display-compact-type original-with-refresh-rate to show refresh rates in compact / oneline mode (Display)</comment>
     <requestid>1150004</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8f21f6df84f6bcfbb73595a28dbe1560</srcmd5>
+    <version>2.8.6</version>
+    <time>1709146042</time>
+    <user>anag+factory</user>
+    <comment>- update to version 2.8.6:
+  Changes:
+    * Due to newly introduced configs, JSONC option { &quot;temperatureUnit&quot;: &quot;C&quot; } has been changed to { &quot;temp&quot;: { &quot;unit&quot;: &quot;C&quot; } }
+  Bugfixes:
+    * Fix incorrect GPU name detection for Intel iGPU on Linux (GPU, Linux)
+  Features:
+    * Support additional temperature formatting options
+        { &quot;temp&quot;: { &quot;ndigits&quot;: 1 } }
+        { &quot;temp&quot;: { &quot;color&quot;: { &quot;green&quot;: &quot;green&quot;, &quot;yellow&quot;: &quot;yellow&quot;, &quot;red&quot;: &quot;red&quot; } } }
+    * Support specifying custom pci.ids path for Linux (GPU, Linux)
+    * Support warp-linux terminal version &amp; terminal font detection (Terminal, Linux)</comment>
+    <requestid>1152862</requestid>
+  </revision>
 </revisionlist>
