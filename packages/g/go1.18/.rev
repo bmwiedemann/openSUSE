@@ -409,4 +409,12 @@
   * On x86_64 %define go_amd64=v1 as current instruction baseline (forwarded request 1079834 from jfkw)</comment>
     <requestid>1079835</requestid>
   </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>527994993154c25cc389b6c9153cd941</srcmd5>
+    <version>1.18.10</version>
+    <time>1709145922</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1152220 from dimstar)</comment>
+    <requestid>1152298</requestid>
+  </revision>
 </revisionlist>
