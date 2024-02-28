@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:09:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Tue May 23 20:47:50 UTC 2023 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
 
 - Add key from Ludovic Courtès to guile.keyring, who released 3.0.9
