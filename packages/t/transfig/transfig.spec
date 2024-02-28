@@ -67,11 +67,11 @@ releases, this command was implemented as a shell script.
 %prep
 %setup -q -n fig2dev-%{version}
 find -type f -exec chmod a-x,go-w '{}' \;
-%patch0 -p0 -b .0
-%patch4 -p1 -b .afl
-%patch43 -p1 -b .mpdf
-%patch44 -p1 -b .mpdfdoc
-%patch47 -p1 -b .epstopdf
+%patch -P 0 -p0 -b .0
+%patch -P 4 -p1 -b .afl
+%patch -P 43 -p1 -b .mpdf
+%patch -P 44 -p1 -b .mpdfdoc
+%patch -P 47 -p1 -b .epstopdf
 # remove obsolete libc fallback implementations
 rm fig2dev/lib/*.c
 

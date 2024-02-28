@@ -600,4 +600,12 @@
   * 1b09a8.patch</comment>
     <requestid>1112311</requestid>
   </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>f8bb334a53ce860f4c9371666e37fed8</srcmd5>
+    <version>3.2.9</version>
+    <time>1709145892</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN (forwarded request 1151818 from pgajdos)</comment>
+    <requestid>1152019</requestid>
+  </revision>
 </revisionlist>

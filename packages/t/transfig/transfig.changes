@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 15:47:27 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN
+
+-------------------------------------------------------------------
 Fri Sep 15 07:41:38 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Update to fig2dev version 3.2.9 (Aug 2023)
