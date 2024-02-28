@@ -24,4 +24,12 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1147844 from dimstar)</comment>
     <requestid>1148068</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>2edf0dcb9c75d79600b9e6283e7fc24e</srcmd5>
+    <version>unknown</version>
+    <time>1709146067</time>
+    <user>anag+factory</user>
+    <comment>- Delete old specfile constructs. (forwarded request 1152913 from jengelh)</comment>
+    <requestid>1152924</requestid>
+  </revision>
 </revisionlist>
