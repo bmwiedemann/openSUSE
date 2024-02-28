@@ -94,8 +94,7 @@ interface.
 %endif
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 %python_build
