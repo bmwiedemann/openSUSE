@@ -12826,6 +12826,7 @@ unsorted:
   - libgnutls-dane-devel 
   - libgnutls-devel 
   - libgnutls-devel-32bit 
+  - libgnutls-devel-doc 
   - libgnutlsxx-devel 
   - libgnutlsxx30 
   - libgo11 
@@ -16146,7 +16147,6 @@ unsorted:
   - libvted-3-0 
   - libvterm-devel 
   - libvterm-tools 
-  - libvterm0 
   - libvtk-m-2_1 
   - libvtk-m-mpich-2_1 
   - libvtk-m-openmpi4-2_1 
@@ -18048,6 +18048,7 @@ unsorted:
   - monitoring-plugins-contentage 
   - monitoring-plugins-count_file 
   - monitoring-plugins-cups 
+  - monitoring-plugins-curl 
   - monitoring-plugins-dbi 
   - monitoring-plugins-dbi-mysql 
   - monitoring-plugins-dbi-pgsql 
@@ -19381,6 +19382,7 @@ unsorted:
   - okular-devel 
   - okular-mobile 
   - okular-spectre 
+  - ollama 
   - olm-devel 
   - olm-doc 
   - omemo-utils 
@@ -23040,6 +23042,7 @@ unsorted:
   - python3-rpmconf 
   - python3-rrdtool 
   - python3-saharaclient 
+  - python3-salt-testsuite 
   - python3-seccomp 
   - python3-senlinclient 
   - python3-smbus 
@@ -24403,6 +24406,7 @@ unsorted:
   - python310-fire 
   - python310-first 
   - python310-fissix 
+  - python310-fixedint 
   - python310-fixtures 
   - python310-flake8 
   - python310-flake8-blind-except 
@@ -27919,6 +27923,7 @@ unsorted:
   - python311-fire 
   - python311-first 
   - python311-fissix 
+  - python311-fixedint 
   - python311-fixtures 
   - python311-flake8 
   - python311-flake8-blind-except 
@@ -31362,6 +31367,7 @@ unsorted:
   - python312-fire 
   - python312-first 
   - python312-fissix 
+  - python312-fixedint 
   - python312-fixtures 
   - python312-flake8 
   - python312-flake8-blind-except 
@@ -31526,6 +31532,7 @@ unsorted:
   - python312-guessit 
   - python312-gunicorn 
   - python312-guzzle_sphinx_theme 
+  - python312-gvm-tools 
   - python312-gwcs 
   - python312-gwdatafind 
   - python312-gwosc 
@@ -31922,6 +31929,7 @@ unsorted:
   - python312-lz4 
   - python312-macholib 
   - python312-magic 
+  - python312-magic-wormhole 
   - python312-magic-wormhole-mailbox-server 
   - python312-magic-wormhole-transit-relay 
   - python312-magicalimport 
@@ -33034,6 +33042,7 @@ unsorted:
   - python312-skyfield 
   - python312-slack-sdk 
   - python312-slimit 
+  - python312-slixmpp 
   - python312-sly 
   - python312-slycot 
   - python312-smartypants 
@@ -33144,6 +33153,7 @@ unsorted:
   - python312-subprocess-tee 
   - python312-subprocrunner 
   - python312-subscene-api 
+  - python312-subst 
   - python312-suds 
   - python312-sunpy 
   - python312-suntime 
@@ -33250,6 +33260,7 @@ unsorted:
   - python312-transip 
   - python312-transitions 
   - python312-translate-toolkit 
+  - python312-translation-finder 
   - python312-translationstring 
   - python312-translitcodec 
   - python312-treq 
@@ -33386,6 +33397,7 @@ unsorted:
   - python312-webassets 
   - python312-webcolors 
   - python312-webencodings 
+  - python312-weblate-language-data 
   - python312-weblate-schemas 
   - python312-webruntime 
   - python312-websocket-client 
@@ -34834,6 +34846,7 @@ unsorted:
   - python39-fire 
   - python39-first 
   - python39-fissix 
+  - python39-fixedint 
   - python39-fixtures 
   - python39-flake8 
   - python39-flake8-blind-except 
@@ -38232,7 +38245,6 @@ unsorted:
   - salt-ssh 
   - salt-standalone-formulas-configuration 
   - salt-syndic 
-  - salt-tests 
   - salt-zsh-completion 
   - samba-ad-dc 
   - samba-ad-dc-libs-32bit 
@@ -38489,6 +38501,10 @@ unsorted:
   - sendxmpp 
   - sensord 
   - seq24 
+  - sequoia-sq 
+  - sequoia-sq-bash-completion 
+  - sequoia-sq-fish-completion 
+  - sequoia-sq-zsh-completion 
   - ser2net 
   - serd-devel 
   - serdi 
@@ -38672,6 +38688,7 @@ unsorted:
   - slurm-cray 
   - slurm-devel 
   - slurm-doc 
+  - slurm-hdf5 
   - slurm-lua 
   - slurm-munge 
   - slurm-node 
