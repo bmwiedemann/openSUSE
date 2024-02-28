@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 12:06:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Wed Nov 23 13:07:24 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Homepage link http://zaz.sourceforge.net/ is a permanent redirect

@@ -52,8 +52,7 @@ from level to level.
 A 3D accelerator is needed for decent gameplay.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 # Convert to unix line end
 find -name "*.rc" -print0 -or -name "*.cpp" -print0 -or -name "*.h" -print0 | xargs -0 dos2unix
