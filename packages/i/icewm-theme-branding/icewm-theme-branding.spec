@@ -1,7 +1,7 @@
 #
 # spec file for package icewm-theme-branding
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,6 +51,8 @@ Source:         https://github.com/openSUSE/%{_name}/archive/%{_name}-%{version}
 Patch0:         pass-env-var-to-systemd-user-session.patch
 # PATCH-FIX-UPSTREAM fix-font-configuration.patch boo#1195328 bsc#1196336 yfjiang@suse.com -- Fix font configuration after google-droid-fonts update
 Patch1:         fix-font-configuration.patch
+# PATCH-FIX-UPSTREAM fix-web-browser-icon.patch bsc#1220034 yfjiang@suse.com -- Fix the path of web browser icon
+Patch2:         fix-web-browser-icon.patch
 Requires:       icewm
 Conflicts:      icewm < 1.3.11
 Conflicts:      otherproviders(icewm-configuration-files)
@@ -66,9 +68,7 @@ This package is made for SLE or openSUSE customization of icewm, including
 the system default theme,background etc.
 
 %prep
-%setup -q -n %{_name}-%{_name}-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n %{_name}-%{_name}-%{version}
 
 %build
 %if 0%{?build_openSUSE}

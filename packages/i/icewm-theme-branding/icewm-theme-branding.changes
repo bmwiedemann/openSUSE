@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 22 13:39:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
+Mon Feb 19 06:47:17 UTC 2024 - Yifan Jiang <yfjiang@suse.com>
+
+- Add fix-web-browser-icon.patch:
+  The Adwaita theme does not provide much legacy apps icon now,
+  redirect icewm web-browser icon to the right place. See:
+  https://gitlab.gnome.org/GNOME/adwaita-icon-theme/-/issues/163
+  https://gitlab.gnome.org/GNOME/adwaita-icon-theme/-/merge_requests/34/
+
+-------------------------------------------------------------------
 Mon Feb 28 09:24:08 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
 
 - Add pass-env-var-to-systemd-user-session.patch instead of changing

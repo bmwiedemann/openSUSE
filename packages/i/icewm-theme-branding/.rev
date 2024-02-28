@@ -131,4 +131,12 @@ icewm-theme-branding icewm-config-upstream</comment>
   the tar ball to fix the bsc#1179237. (forwarded request 957986 from yfjiang)</comment>
     <requestid>957988</requestid>
   </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>9b0bfc6f23e691e0f771a3d141b9e141</srcmd5>
+    <version>1.2.5</version>
+    <time>1709145900</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1152082</requestid>
+  </revision>
 </revisionlist>

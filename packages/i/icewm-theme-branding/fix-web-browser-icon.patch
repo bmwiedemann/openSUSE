@@ -1,0 +1,42 @@
+From e201ec60a7fdfa0784a32b9d952ec549636b2ae1 Mon Sep 17 00:00:00 2001
+From: Yifan J <yifanj2007@gmail.com>
+Date: Mon, 19 Feb 2024 11:02:51 +0800
+Subject: [PATCH] Update web browser icon.
+
+The Adwaita theme does not provide much legacy apps icon now, redirect
+icewm web-browser icon to the right place. See:
+
+https://gitlab.gnome.org/GNOME/adwaita-icon-theme/-/issues/163
+https://gitlab.gnome.org/GNOME/adwaita-icon-theme/-/merge_requests/34/
+---
+ preferences | 2 +-
+ toolbar     | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/preferences b/preferences
+index 55c2ab2..62eee3d 100644
+--- a/preferences
++++ b/preferences
+@@ -539,7 +539,7 @@ MenuMouseTracking=1 # 0/1
+ # NetWorkAreaBehaviour=0 # [0-2]
+ 
+ #  Icon search path (colon separated)
+-IconPath="/usr/share/icons/Adwaita/16x16/legacy:/usr/share/icons/Adwaita/16x16/apps:/usr/share/icons/hicolor/16x16/apps:/usr/share/pixmaps"
++IconPath="/usr/share/icons/Adwaita/symbolic/legacy:/usr/share/icons/hicolor/16x16/apps:/usr/share/pixmaps"
+ 
+ #  Mailbox path (use $MAIL instead)
+ # MailBoxPath=""
+diff --git a/toolbar b/toolbar
+index 8872d8b..d51319c 100644
+--- a/toolbar
++++ b/toolbar
+@@ -5,5 +5,5 @@
+ # (re)install icewm.
+ #
+ prog xterm xterm xterm
+-prog "Web browser" web-browser xdg-open about:blank
++prog "Web browser" web-browser-symbolic xdg-open about:blank
+ 
+-- 
+2.43.0
+
