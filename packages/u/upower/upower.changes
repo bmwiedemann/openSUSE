@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb 12 09:47:07 UTC 2024 - trenn@suse.de
+
+- Update to version 1.90.2+15:
+  * Revert "ci: Update last ABI break"
+  * Revert "build: Bump the library soname after recent changes"
+  * Revert "all: Remove Lid handling"
+  * Revert "lib: Remove deprecated up_client_get_devices()"
+  * dbus: org.freedesktop.UPower: EnergyRate is a positive value
+  * linux: Adjust test_bluetooth_le_device for dbusmock 0.30.1
+  * linux: stop assuming power supply of unknown type as battery
+  * linux: drop f-literals without format string
+  * linux: prefer is not None over !=
+  * build: make 'udevrulesdir' and 'udevhwdbdir' as Linux-only
+- Introduce _service obs_scm and obsinfo files for automated
+  update service via:
+  osc service mr
+
+-------------------------------------------------------------------
 Tue Jan 16 16:06:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Own /usr/share/gtk-doc: glib no longer uses gtk-doc and as a

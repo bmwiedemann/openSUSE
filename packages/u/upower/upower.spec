@@ -21,15 +21,15 @@
 %else
 %define libplist2 0
 %endif
-
 Name:           upower
-Version:        1.90.2
+Version:        1.90.2+15
 Release:        0
 Summary:        Power Device Enumeration Framework
 License:        GPL-2.0-or-later
 Group:          System/Daemons
 URL:            https://upower.freedesktop.org/
-Source:         https://gitlab.freedesktop.org/upower/upower/-/archive/v%{version}/upower-v%{version}.tar.bz2
+#Source:         https://gitlab.freedesktop.org/upower/upower/-/archive/v%%{version}/upower-v%%{version}.tar.bz2
+Source:         %{name}-%{version}.tar.zst
 # PATCH-FIX-OPENSUSE: Skip installation of test-only dependencies
 Patch1:         skip-tests-install.patch
 BuildRequires:  gobject-introspection-devel >= 0.9.9
@@ -45,15 +45,15 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.34.0
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gudev-1.0) >= 235
 BuildRequires:  pkgconfig(libimobiledevice-1.0) >= 0.9.7
+BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.0
+BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(udev)
+%{?systemd_requires}
 %if %libplist2
 BuildRequires:  pkgconfig(libplist-2.0)
 %else
 BuildRequires:  pkgconfig(libplist) >= 0.12
 %endif
-BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.0
-BuildRequires:  pkgconfig(systemd)
-BuildRequires:  pkgconfig(udev)
-%{?systemd_requires}
 
 %description
 UPower is an abstraction for enumerating power devices, listening to
@@ -105,7 +105,7 @@ system) are restricted using PolicyKit.
 %lang_package
 
 %prep
-%autosetup -p1 -n %{name}-v%{version}
+%autosetup -p1
 
 %build
 %meson \
