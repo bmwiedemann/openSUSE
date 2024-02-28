@@ -394,6 +394,7 @@
     <package name="emacs-info" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="emacs-jinx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="emacs-nox" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="emacs-vterm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="emacs-w3m" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="emacs-x11" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="enchant-1-backends" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2645,8 +2646,8 @@
     <package name="libsysfs2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsystemd0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsystemd0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libtag1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libtag_c0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="libtag2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libtag_c2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libtalloc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtalloc2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libtalloc2-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -2770,6 +2771,7 @@
     <package name="libvpl2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libvpx8" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libvte-2_91-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libvterm0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libvulkan1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwacom-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwacom9" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

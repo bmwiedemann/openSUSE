@@ -1427,7 +1427,7 @@
     <package name="libswresample4" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="libswscale7" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libsystemd0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
-    <package name="libtag1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="libtag2" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libtalloc2" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libtasn1-6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="libtdb1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
