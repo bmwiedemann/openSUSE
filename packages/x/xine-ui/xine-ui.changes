@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:18:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Jan 27 09:15:49 UTC 2023 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 0.99.14

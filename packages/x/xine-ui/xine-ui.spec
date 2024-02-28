@@ -82,10 +82,10 @@ Authors:
 %prep
 echo %{with distributable}
 %setup -q
-%patch0
-%patch50 -p0
-%patch60
-%patch1
+%patch -P 0
+%patch -P 50 -p0
+%patch -P 60
+%patch -P 1
 install -m 0644 %SOURCE1 misc/splash-default/xine-ui_logo.png
 install -m 0644 %SOURCE2 misc/splash-default/xine-ui_logo-crippled.png
 %ifarch x86_64
