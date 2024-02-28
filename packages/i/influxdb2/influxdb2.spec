@@ -20,7 +20,7 @@ Name:           influxdb2
 Summary:        Scalable datastore for metrics, events, and real-time analytics
 License:        MIT
 Group:          Productivity/Databases/Servers
-Version:        2.7.1
+Version:        2.7.5
 Release:        0
 URL:            https://github.com/influxdata/influxdb
 Source:         %{name}-%{version}.tar.xz
@@ -29,8 +29,8 @@ Source2:        influxdb.tmpfiles
 Source3:        influxdb-user.conf
 Source4:        config.yaml
 # Prebuild UI assets as specified in ./scripts/fetch_ui_assets.sh
-# https://github.com/influxdata/ui/releases/download/OSS-v2.6.1/build.tar.gz
-Source98:       ui-assets-%{version}.tar.xz
+# https://github.com/influxdata/ui/releases/download/OSS-v2.7.1/build.tar.gz
+Source98:       ui-assets-2.7.1.tar.xz
 Source99:       vendor.tar.xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  sysuser-tools
