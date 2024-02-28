@@ -67,4 +67,12 @@
     <comment>Automatic systemd hardening effort by the security team. This has not been tested. For details please see https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort (forwarded request 920642 from jsegitz)</comment>
     <requestid>921908</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>7e02067d3a97299cc54ae6ffe0940549</srcmd5>
+    <version>0.8.4</version>
+    <time>1709146005</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1152175 from dimstar)</comment>
+    <requestid>1152783</requestid>
+  </revision>
 </revisionlist>

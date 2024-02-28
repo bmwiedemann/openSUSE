@@ -63,8 +63,7 @@ HTTP servers, for example, can use GSS-API without needing to access
 keys directly.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf -fvi
