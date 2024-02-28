@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Wed Feb 28 11:13:01 UTC 2024 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#988
+- allow more control of environment in SystemCmd class
+- 4.5.193
+
+--------------------------------------------------------------------
+Tue Feb 27 16:05:37 UTC 2024 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#987
+- fixed check in testsuite
+- 4.5.192
+
+--------------------------------------------------------------------
 Thu Feb 22 08:55:17 UTC 2024 - aschnell@suse.com
 
 - Translated using Weblate (Finnish) (bsc#1149754)
