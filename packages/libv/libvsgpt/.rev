@@ -79,4 +79,13 @@
     <comment>python 3.12 build fix</comment>
     <requestid>1144607</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6520ae92621af2c5b143111ac3e8ed80</srcmd5>
+    <version>20240228</version>
+    <time>1709146063</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20240228
+  * No user-visible changes</comment>
+    <requestid>1152916</requestid>
+  </revision>
 </revisionlist>
