@@ -52,10 +52,10 @@ debug-events, gebaar-libinput interfaces with libinput directly.
 
 %prep
 %setup -q
-%patch0
+%patch -P 0
 tar -xzf %{SOURCE1} -C libs/cpptoml --strip-components=1
 tar -xzf %{SOURCE2} -C libs/cxxopts --strip-components=1
-%patch1 -p1
+%patch -P 1 -p1
 
 %build
 %if 0%{?suse_version} == 1500

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 27 10:58:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon May 31 20:17:53 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add Patch to fix build with GCC 11:
