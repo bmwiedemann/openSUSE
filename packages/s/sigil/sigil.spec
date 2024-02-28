@@ -30,6 +30,8 @@ Source1:        https://github.com/Sigil-Ebook/sigil-user-guide/releases/downloa
 Source2:        %{name}.desktop
 # PATCH-FIX-OPENSUSE Disabled __DATE__ and __TIME__ which is replaced later in pre section
 Patch0:         %{name}-gt-0.9.0-Dialogs-About.cpp.patch
+# https://github.com/Sigil-Ebook/Sigil/issues/740
+Patch1:         12701c.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake >= 3.0
 BuildRequires:  dos2unix
@@ -82,17 +84,17 @@ BuildRequires:  python3-tk
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
-BuildRequires:  pkgconfig(Qt6Concurrent)
-BuildRequires:  pkgconfig(Qt6Core5Compat)
-BuildRequires:  pkgconfig(Qt6Linguist)
-BuildRequires:  pkgconfig(Qt6Network)
-BuildRequires:  pkgconfig(Qt6PrintSupport)
-BuildRequires:  pkgconfig(Qt6Svg)
-BuildRequires:  pkgconfig(Qt6UiTools)
-BuildRequires:  pkgconfig(Qt6WebEngineCore)
-BuildRequires:  pkgconfig(Qt6WebEngineWidgets)
-BuildRequires:  pkgconfig(Qt6Widgets)
-BuildRequires:  pkgconfig(Qt6Xml)
+BuildRequires:  cmake(Qt6Concurrent)
+BuildRequires:  cmake(Qt6Core5Compat)
+BuildRequires:  cmake(Qt6Linguist)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6PrintSupport)
+BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6UiTools)
+BuildRequires:  cmake(Qt6WebEngineCore)
+BuildRequires:  cmake(Qt6WebEngineWidgets)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(libusb-1.0)
@@ -119,8 +121,7 @@ use it to add any of the metadata entries supported by the EPUB
 specification and create a hierarchical Table of Contents.
 
 %prep
-%setup -q -n Sigil-%{version}
-%patch -P 0 -p1
+%autosetup -p1 -n Sigil-%{version}
 cp -v %{SOURCE1} .
 cp -v %{SOURCE2} .
 # rpmlint
@@ -151,17 +152,13 @@ export CXX=g++-12
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS="$CFLAGS"
 
-# FIXME: you should use %%cmake macros
-# With SYSTEM_LIBS=1 package does not build
-cmake -G "Unix Makefiles" \
-   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
-   -DUSE_SYSTEM_LIBS=0 \
-   -DCMAKE_BUILD_TYPE=Release .
+%cmake_qt6 -G "Unix Makefiles" \
+    -DTRY_NEWER_FINDPYTHON3=1
 
-%make_build
+%qt6_build
 
 %install
-%make_install
+%qt6_install
 
 # create a .desktop file:
 mkdir -p %{buildroot}%{_datadir}/applications

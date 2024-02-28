@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 27 09:03:06 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Make use of Qt6 cmake build macros
+- Backport upstream patch to fix build on aarch64:
+  * 12701c.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 09:07:53 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Adjustments patch macro for rpm 4.20.
