@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 27 21:27:24 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Add dependency on setuptools.
+
+-------------------------------------------------------------------
 Mon Oct 23 12:32:36 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update spec file to use openmpi-macros-devel and always use the

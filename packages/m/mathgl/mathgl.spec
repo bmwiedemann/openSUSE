@@ -1,7 +1,7 @@
 #
 # spec file for package mathgl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -84,6 +84,7 @@ BuildRequires:  wxGTK3-devel
 %if %{with python}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
 %endif
@@ -282,9 +283,9 @@ This package provides Octave interface for MathGL.
 Summary:        MathGL scripts for LaTeX documents
 Requires:       mathgl-tools >= %{version}
 Requires(post): coreutils
-Requires(posttrans):texlive
-Requires(postun):coreutils
-Requires(postun):texlive
+Requires(posttrans): texlive
+Requires(postun): coreutils
+Requires(postun): texlive
 Requires(pre):  texlive
 Recommends:     mathgl-tex-doc = %{version}
 Provides:       tex(mgltex.sty)
