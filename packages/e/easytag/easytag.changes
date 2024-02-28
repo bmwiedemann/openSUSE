@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 28 10:00:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.4.3+155:
+  + Port to using libsoup for CDDB requests.
+  + Use GSubprocess instead of g_spawn_async().
+  + Updated translations.
+- Add easytag-taglib-2.0.patch: Fix build against taglib 2.0.
+- Rebase easytag-revert-open-handle-ogg.patch.
+
+-------------------------------------------------------------------
 Tue Nov 28 11:22:11 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -p N instead of deprecated %patchN.
