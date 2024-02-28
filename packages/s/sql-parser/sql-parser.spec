@@ -57,8 +57,8 @@ other environments as well.
 This package contains development files for sql-parser.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
+
 sed -i \
     -e "s|\$(INSTALL)/lib|%{buildroot}%{_libdir}|" \
     Makefile

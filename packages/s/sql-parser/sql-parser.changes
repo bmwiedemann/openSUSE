@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:45:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Mon Jul  6 06:35:19 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to sort the file list (boo#1041090)
