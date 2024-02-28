@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 27 06:35:56 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 1.9.14:
+  * Correctly detect ARM32 and RISC-V UEFI binaries.
+  * Correctly migrate the database schema from very old fwupd versions.
+  * Fix DS-20 descriptors by opening the GUsbDevice earlier.
+  * Fix updating the fingerprint reader on the Framework 13 and 16 laptop.
+  * Fix warning when probing devices using the metadata allowlist.
+  * Only recover the version format for specific devices.
+
+-------------------------------------------------------------------
 Thu Feb  8 14:45:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.9.13:

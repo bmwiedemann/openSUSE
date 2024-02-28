@@ -676,4 +676,12 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
     - GoodWay Acer Dock. (forwarded request 1145210 from dimstar)</comment>
     <requestid>1145221</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>020c43cc0961f52b16d7e8ca2f037422</srcmd5>
+    <version>1.9.14</version>
+    <time>1709145893</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1152024</requestid>
+  </revision>
 </revisionlist>
