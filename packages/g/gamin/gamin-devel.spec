@@ -1,7 +1,7 @@
 #
 # spec file for package gamin-devel
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -74,41 +74,30 @@ monitor mechanism compatible with FAM, but not dependent on a system wide
 daemon.
 
 %prep
-%setup -q -n gamin-%version
-%patch0 -p0
-%patch1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%autosetup -n gamin-%version -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %configure --disable-static --disable-server
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 rm "%{buildroot}%{_libdir}"/*.la
 
-%post   -n libgamin-%{packnum}   -p /sbin/ldconfig
-%postun -n libgamin-%{packnum}   -p /sbin/ldconfig
-
-%post   -n libfam%{famnum}-gamin -p /sbin/ldconfig
-%postun -n libfam%{famnum}-gamin -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgamin-%{packnum}
+%ldconfig_scriptlets -n libfam%{famnum}-gamin
 
 %files -n libgamin-%{packnum}
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog NEWS README Copyright TODO
 %{_libdir}/libgamin-%{vernum}.so.%{sonum}
 %{_libdir}/libgamin-%{vernum}.so.%{sonum}.*
 
 %files -n libfam%{famnum}-gamin
-%defattr(-,root,root)
 %{_libdir}/libfam.so.%{famnum}
 %{_libdir}/libfam.so.%{famnum}.*
 
 %files -n gamin-devel
-%defattr(-,root,root)
 %{_includedir}/fam.h
 %{_libdir}/libfam.so
 %{_libdir}/libgamin-%{vernum}.so

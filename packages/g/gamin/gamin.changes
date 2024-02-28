@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:15:33 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Rediff patches for consistent patch level.
+- Delete old specfile constructs.
+
+-------------------------------------------------------------------
 Thu May  4 13:21:42 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add _multibuild to define 2nd spec file as additional flavor.

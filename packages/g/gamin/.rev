@@ -111,4 +111,13 @@ I tried removing the %py_requires macros, but that resulted in an rpmlint warnin
     <comment></comment>
     <requestid>1084809</requestid>
   </revision>
+  <revision rev="15" vrev="19">
+    <srcmd5>0a74dcc489432d6e8658a760e25ae7a8</srcmd5>
+    <version>0.1.10</version>
+    <time>1709145909</time>
+    <user>anag+factory</user>
+    <comment>- Rediff patches for consistent patch level.
+- Delete old specfile constructs.</comment>
+    <requestid>1152209</requestid>
+  </revision>
 </revisionlist>

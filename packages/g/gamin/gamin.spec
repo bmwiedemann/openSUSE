@@ -1,7 +1,7 @@
 #
 # spec file for package gamin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,7 +50,8 @@ daemon.
 
 %package doc
 Summary:        Documentation for %{name}
-Group:          Development/Libraries/C and C++
+Group:          Documentation/HTML
+BuildArch:      noarch
 
 %description doc
 Documentation and help files for %{name}.
@@ -67,16 +68,11 @@ It is split off into its own subpackage to void file conflicts when both
 %{name} and %{name}-32bit are installed on a multiarch platform.
 
 %prep
-%setup -q
-%patch0 -p0
-%patch1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%autosetup -p1
 
 %build
 %configure --disable-static --enable-tests
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -95,7 +91,6 @@ rm %buildroot%{_includedir}/fam.h              \
 make tests || echo "**** WARNING TESTSUITE FAILS ****"
 
 %files server
-%defattr(-, root, root)
 %{_libexecdir}/gam_server
 
 %changelog

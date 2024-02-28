@@ -1,5 +1,12 @@
---- server/gam_eq.c.orig	2008-12-22 21:58:44.000000000 +0100
-+++ server/gam_eq.c	2008-12-22 21:56:46.000000000 +0100
+---
+ server/gam_eq.c     |    2 +-
+ server/gam_server.c |    1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+Index: gamin-0.1.10/server/gam_eq.c
+===================================================================
+--- gamin-0.1.10.orig/server/gam_eq.c
++++ gamin-0.1.10/server/gam_eq.c
 @@ -124,7 +124,7 @@ gam_eq_flush (gam_eq_t *eq, GamConnDataP
  {
  	gboolean done_work = FALSE;
@@ -9,8 +16,10 @@
  
  #ifdef GAM_EQ_VERBOSE
  	GAM_DEBUG(DEBUG_INFO, "gam_eq: Flushing event queue for %s\n", gam_connection_get_pidname (conn));
---- server/gam_server.c.orig	2008-12-22 21:58:21.000000000 +0100
-+++ server/gam_server.c	2008-12-22 21:57:49.000000000 +0100
+Index: gamin-0.1.10/server/gam_server.c
+===================================================================
+--- gamin-0.1.10.orig/server/gam_server.c
++++ gamin-0.1.10/server/gam_server.c
 @@ -532,6 +532,7 @@ gam_error_signal_pipe_handler(gpointer u
      g_io_channel_read_chars(pipe_read_ioc, buf, sizeof(buf), NULL, NULL);
  
@@ -19,4 +28,3 @@
  }  
  
  static void
-
