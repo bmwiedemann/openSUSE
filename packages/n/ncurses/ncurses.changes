@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb 26 07:17:44 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20240217
+  + add vt100+noapp, vt100+noapp+pc, xterm+app+pc, xterm+decedit from
+    xterm #389 -TD
+  + fix inconsistent description of wmouse_trafo() (Debian #1059778).
+  + modify wenclose() to handle pads (Debian #1059783).
+  + improve manpage discussion of mouseinterval() (Debian #1058560).
+- Add ncurses patch 20240224
+  + improve man/curs_mouse.3x style (Brandon Robinson, Sven Joachim).
+  + provide for CCHARW_MAX greater than 1
+  + eliminate use of PATH_MAX in lib_trace.c
+  + work around misconfiguration of MacPorts gcc13, which exposes invalid
+    definition of MB_LEN_MAX in gcc's fallback copy of limits.h (MacPorts
+    #69374).
+
+-------------------------------------------------------------------
 Mon Feb 12 14:57:41 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20240210
