@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 27 17:36:39 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.6.2
+  * Fix building golang hooks during `git commit --all`.
+- Changelog for 3.6.1
+  * Remove `PYTHONEXECUTABLE` from environment when running.
+  * Handle staged-files-only with only a crlf diff.
+- Build PEP517 wheel
+- Skip golang test trying to download dependency
+
+-------------------------------------------------------------------
 Wed Jan  3 17:04:33 UTC 2024 - Marina Latini <marina.latini@suse.com>
 
 - Specify a Group tag for Leap and SUSE Linux Enterprise 

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pre-commit
-Version:        3.6.0
+Version:        3.6.2
 Release:        0
 Summary:        Multi-language pre-commit hooks
 License:        MIT
@@ -27,7 +27,10 @@ Source:         https://github.com/pre-commit/pre-commit/archive/v%{version}.tar
 %if 0%{?sle_version} <= 150600
 Group:          Development/Tools/Other
 %endif
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 5.1
@@ -36,7 +39,7 @@ Requires:       python-identify >= 1.0.0
 Requires:       python-nodeenv >= 0.11.1
 Requires:       python-virtualenv >= 20.10.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if 0%{?sle_version} <= 150600 && 0%{?is_opensuse}
 BuildRequires:  lua53-devel
@@ -63,15 +66,15 @@ BuildRequires:  git-core
 A framework for managing and maintaining multi-language pre-commit hooks.
 
 %prep
-%setup -q -n pre-commit-%{version}
+%autosetup -n pre-commit-%{version}
 sed -i 's|^#!%{_bindir}/env python|#!%{_bindir}/python|' pre_commit/resources/hook-tmpl
 sed -i 's|^#!%{_bindir}/env bash|#!%{_bindir}/bash|' pre_commit/resources/hook-tmpl
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/pre-commit
 
@@ -99,7 +102,11 @@ EXCLUDED_TESTS="$EXCLUDED_TESTS or test_local_lua_additional_dependencies"
 # rust_tests use rustup which require network
 EXCLUDED_TESTS="$EXCLUDED_TESTS or test_local_python_repo_python2 or rust_test"
 # tests that require network access
-EXCLUDED_TESTS="$EXCLUDED_TESTS or test_run_example_executable or test_run_dep or test_perl_additional_dependencies or test_lua_additional_dependencies"
+EXCLUDED_TESTS="$EXCLUDED_TESTS or test_run_example_executable"
+EXCLUDED_TESTS="$EXCLUDED_TESTS or test_run_dep"
+EXCLUDED_TESTS="$EXCLUDED_TESTS or test_perl_additional_dependencies"
+EXCLUDED_TESTS="$EXCLUDED_TESTS or test_lua_additional_dependencies"
+EXCLUDED_TESTS="$EXCLUDED_TESTS or (golang_test and test_during_commit_all)"
 # requires swift
 EXCLUDED_TESTS="$EXCLUDED_TESTS or test_swift_language"
 %if 0%{?sle_version} <= 150600
@@ -109,8 +116,12 @@ EXCLUDED_TESTS="$EXCLUDED_TESTS or test_perl_install"
 
 # Fix issue with git submodule in OBS
 git config --global --add protocol.file.allow always
-
 git init .
+
+# Required for python312 https://virtualenv.pypa.io/en/latest/changelog.html#features-20-23-0
+export VIRTUALENV_SETUPTOOLS=bundle
+export VIRTUALENV_WHEEL=bundle
+
 %pytest -k "not ($EXCLUDED_TESTS)"
 
 %post
@@ -124,6 +135,6 @@ git init .
 %doc CHANGELOG.md
 %python_alternative %{_bindir}/pre-commit
 %{python_sitelib}/pre_commit
-%{python_sitelib}/pre_commit-%{version}-py*.egg-info
+%{python_sitelib}/pre_commit-%{version}.dist-info
 
 %changelog
