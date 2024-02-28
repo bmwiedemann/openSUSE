@@ -96,9 +96,9 @@ game using Python interfaces.
 %setup -q -n %{oname}-%{version}
 # only apply the patch if swig 4 is used (currently: Tumbleweed)
 %if 0%{?suse_version} > 1500
-%patch0 -p1
+%patch -P 0 -p1
 %endif
-%patch1 -p1
+%patch -P 1 -p1
 
 %build
 %define __builddir py3
