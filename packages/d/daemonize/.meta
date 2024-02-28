@@ -1,0 +1,5 @@
+<package name="daemonize" project="openSUSE:Factory">
+  <title>daemonize</title>
+  <description>Command line utility to run a program as a Unix daemon</description>
+  <devel project="utilities" package="daemonize"/>
+</package>
