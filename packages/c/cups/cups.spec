@@ -299,37 +299,37 @@ printer drivers for CUPS.
 # Patch0...Patch9 is for patches from upstream:
 # Patch10...Patch99 is for patches from SUSE which are intended for upstream:
 # Patch10 cups-2.1.0-choose-uri-template.patch adds 'smb://...' URIs to templates/choose-uri.tmpl:
-%patch10 -b choose-uri-template.orig
+%patch -P 10 -b choose-uri-template.orig
 # Patch11 cups-2.1.0-default-webcontent-path.patch changes the default path whereto the
 # web content is installed from /usr/share/doc/cups to /usr/share/cups/webcontent
 # because the files of the CUPS web content are no documentation, see CUPS STR #3578
 # and https://bugzilla.suse.com/show_bug.cgi?id=546023#c6 and subsequent comments:
-%patch11 -b default-webcontent-path.orig
+%patch -P 11 -b default-webcontent-path.orig
 # Patch100...Patch999 is for private patches from SUSE which are not intended for upstream:
 # Patch100 cups-pam.diff adds conf/pam.suse regarding support for PAM for SUSE:
-%patch100 -b cups-pam.orig
+%patch -P 100 -b cups-pam.orig
 # Patch103 cups-1.4-do_not_strip_recommended_from_PPDs.patch
 # reverts the change which was added by Michael Sweet in Jan 2007
 # which strips the word "recommended" from NickName in PPDs because
 # at least yast2-printer in SUSE needs it, compare the
 # 'Why not "recommend" PPDs in the NickName?' and the subsequent
 # 'RFC: New Driver Rating/Information Attributes' mail thread on cups@easysw.com:
-%patch103 -b do_not_strip_recommended_from_PPDs.orig
+%patch -P 103 -b do_not_strip_recommended_from_PPDs.orig
 # Patch104 cups-config-libs.patch fixes option --libs in cups-config script:
-%patch104 -b cups-config-libs.orig
+%patch -P 104 -b cups-config-libs.orig
 # Patch107 harden_cups.service.patch adds hardening to systemd service cups.service
 # see https://bugzilla.suse.com/show_bug.cgi?id=1181400
 # and https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 # where the default hardening settings are enhanced by adding
 # ReadWritePaths=/etc/cups because cupsd needs write access in /etc/cups
 # see https://bugzilla.suse.com/show_bug.cgi?id=1195288
-%patch107 -p1 -b harden_cups.service.orig
+%patch -P 107 -p1 -b harden_cups.service.orig
 # Patch108 downgrade-autoconf-requirement.patch
 # downgrades the autoconf requirement to the autoconf available in Tumbleweed as of this writing:
-%patch108 -b downgrade-autoconf-requirement.orig
+%patch -P 108 -b downgrade-autoconf-requirement.orig
 # Patch112 cups-2.4.2-additional_policies.patch adds the 'allowallforanybody' policy to cupsd.conf
 # see SUSE FATE 303515 and https://bugzilla.suse.com/show_bug.cgi?id=936309
-%patch112 -b cups-2.4.2-additional_policies.orig
+%patch -P 112 -b cups-2.4.2-additional_policies.orig
 
 %build
 # Remove ".SILENT" rule for verbose build output

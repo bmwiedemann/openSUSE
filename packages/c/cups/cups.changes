@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 10:48:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Feb  2 13:45:06 UTC 2024 - Johannes Meixner <jsmeix@suse.com>
 
 - Removed outdated ntadmin stuff from cups.spec (boo#1219503)

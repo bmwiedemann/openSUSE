@@ -1305,4 +1305,12 @@ Apple grant an openssl linking exception (and an exception for linking on Apple 
     <comment>cups: Removed outdated ntadmin stuff from cups.spec (boo#1219503) (forwarded request 1143647 from jsmeix)</comment>
     <requestid>1143648</requestid>
   </revision>
+  <revision rev="172" vrev="3">
+    <srcmd5>d8a8f44b74afa91373a636fb86a2086c</srcmd5>
+    <version>2.4.7</version>
+    <time>1709145903</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1152117</requestid>
+  </revision>
 </revisionlist>
