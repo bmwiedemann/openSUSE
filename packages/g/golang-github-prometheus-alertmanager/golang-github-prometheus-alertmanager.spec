@@ -50,7 +50,7 @@ OpsGenie. It also takes care of silencing and inhibition of alerts.
 %prep
 %ifarch s390x
 %autosetup -N -a1 -n alertmanager-%{version}
-%patch1 -p1
+%patch -P 1 -p1
 %else
 %autosetup -a1 -p1 -n alertmanager-%{version}
 %endif
