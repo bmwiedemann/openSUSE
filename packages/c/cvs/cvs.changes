@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 10:48:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Apr 21 15:05:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add compile-with-Wformat-security.patch 

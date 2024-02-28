@@ -85,29 +85,29 @@ Development with CVS, 2nd Edition".
 
 %prep
 %setup -q -a 1 -a 10
-%patch0
-%patch2
-%patch5
-%patch8 -p1
-%patch10
-%patch11 -p1
-%patch12 -p1
-%patch16
-%patch17
-%patch18
-%patch19
-%patch20 -p1
-%patch21
-%patch22 -p1
-%patch23
-%patch24
-%patch25
-%patch26
-%patch27
-%patch28
-%patch29
-%patch30 -p1
-%patch31 -p1
+%patch -P 0
+%patch -P 2
+%patch -P 5
+%patch -P 8 -p1
+%patch -P 10
+%patch -P 11 -p1
+%patch -P 12 -p1
+%patch -P 16
+%patch -P 17
+%patch -P 18
+%patch -P 19
+%patch -P 20 -p1
+%patch -P 21
+%patch -P 22 -p1
+%patch -P 23
+%patch -P 24
+%patch -P 25
+%patch -P 26
+%patch -P 27
+%patch -P 28
+%patch -P 29
+%patch -P 30 -p1
+%patch -P 31 -p1
 
 %build
 autoreconf -fvi
