@@ -60,9 +60,7 @@ This package contains the yaml file requried to download and run the
 kured container in a kubernetes cluster.
 
 %prep
-%setup -qa1
-%patch0 -p1
-%patch1 -p1
+%autosetup -a1 -p1
 
 %build
 # Build the binary.
