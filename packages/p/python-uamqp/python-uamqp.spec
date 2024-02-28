@@ -31,6 +31,7 @@ URL:            https://github.com/Azure/azure-uamqp-python
 Source:         https://files.pythonhosted.org/packages/source/u/uamqp/uamqp-%{version}.tar.gz
 Patch1:         u_strip-werror.patch
 Patch2:         CVE-2024-25110.patch
+Patch3:         CVE-2024-27099.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
@@ -55,6 +56,7 @@ AMQP 1.0 Client Library for Python
 %patch1 -p1
 pushd src/vendor/azure-uamqp-c
 %patch2 -p1
+%patch3 -p1
 popd
 
 %build
