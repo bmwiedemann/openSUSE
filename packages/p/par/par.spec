@@ -32,8 +32,7 @@ used to restore the complete archive after some data loss or
 corruption.
 
 %prep
-%setup -q -n %{name}-cmdline
-%patch0
+%autosetup -p0 -n %{name}-cmdline
 
 %build
 make %{?_smp_mflags}
