@@ -1,7 +1,7 @@
 #
 # spec file for package uncrustify
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,12 +47,17 @@ Features:
 %setup -q -n %{name}-%{name}-%{version}
 
 %build
-%cmake
+%define build_args %{nil}
+%if 0%{?suse_version} < 1600
+%define build_args -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name}
+%endif
+%cmake %{build_args}
+
 %cmake_build
 
 %install
 %cmake_install
-rm -rf %{buildroot}%{_datadir}/doc/uncrustify
+rm -rf %{buildroot}%{_docdir}/uncrustify
 
 %files
 %doc AUTHORS ChangeLog README.md documentation/* etc
