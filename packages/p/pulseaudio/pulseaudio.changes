@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 27 21:49:56 UTC 2024 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- Do not BuildRequire pkgconfig(webrtc-audio-processing-1) on big
+  endian architectures (s390, s390x, ppc64) as the dependency is
+  not available:
+  * WebRTC echo canceller will be disabled there
+
+-------------------------------------------------------------------
 Tue Feb 13 07:21:51 UTC 2024 - Jannik Seiler <seil0@mosad.xyz>
 
 - Add cherry-picks to fix UCM crashes

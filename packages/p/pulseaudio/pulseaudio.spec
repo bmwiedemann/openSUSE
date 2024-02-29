@@ -1,7 +1,7 @@
 #
 # spec file for package pulseaudio
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,12 @@
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir /var/adm/fillup-templates
+%endif
+
+%ifnarch s390 s390x ppc64
+%define with_webrtc_audio_processing 1
+%else
+%define with_webrtc_audio_processing 0
 %endif
 
 %define drvver  17.0
@@ -70,7 +76,9 @@ BuildRequires:  libopenssl-devel
 BuildRequires:  libsndfile-devel >= 1.0.18
 BuildRequires:  libtool
 BuildRequires:  pkgconfig(libudev) >= 143
+%if %{with_webrtc_audio_processing}
 BuildRequires:  pkgconfig(webrtc-audio-processing-1) >= 1.0
+%endif
 BuildRequires:  orc >= 0.4.9
 BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
@@ -470,7 +478,9 @@ exit 0
 %{_libdir}/pulseaudio/modules/libprotocol-native.so
 %{_libdir}/pulseaudio/modules/libprotocol-simple.so
 %{_libdir}/pulseaudio/modules/librtp.so
+%if %{with_webrtc_audio_processing}
 %{_libdir}/pulseaudio/modules/libwebrtc-util.so
+%endif
 %{_libdir}/pulseaudio/modules/module-alsa-card.so
 %{_libdir}/pulseaudio/modules/module-alsa-sink.so
 %{_libdir}/pulseaudio/modules/module-alsa-source.so
