@@ -105,24 +105,24 @@ CoolKeys are based on JavaCard 1.2.
 
 %prep
 %setup -q
-%patch1
-%patch2
-%patch3
-%patch4
-%patch5
-%patch6
-%patch7
-%patch8
-%patch9 -p1
-%patch10
-%patch20
-%patch21
-%patch22
-%patch23
-%patch24
-%patch25
-%patch26
-%patch27
+%patch -P 1
+%patch -P 2
+%patch -P 3
+%patch -P 4
+%patch -P 5
+%patch -P 6
+%patch -P 7
+%patch -P 8
+%patch -P 9 -p1
+%patch -P 10
+%patch -P 20
+%patch -P 21
+%patch -P 22
+%patch -P 23
+%patch -P 24
+%patch -P 25
+%patch -P 26
+%patch -P 27
 
 %build
 autoreconf -f -i
