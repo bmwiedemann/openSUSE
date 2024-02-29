@@ -48,8 +48,8 @@ using a simple, easy to read syntax and let Premake generate the project files f
  * MonoDevelop
 
 %prep
-%setup -q -n premake-4.4-beta4
-%patch0 -p1
+%autosetup -p1 -n premake-4.4-beta4
+
 rm -rf src/host/lua-5.1.4
 
 %build
