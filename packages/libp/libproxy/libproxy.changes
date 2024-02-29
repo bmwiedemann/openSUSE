@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 28 16:04:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop pkgconfig(libsoup-3.0) BuildRequires: no longer needed.
+
+-------------------------------------------------------------------
 Wed Sep 13 09:06:58 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add libpxbackend-1_0 to baselibs.conf: required by libproxy.so.1.

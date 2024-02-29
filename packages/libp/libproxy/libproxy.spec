@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package libproxy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,7 +48,6 @@ BuildRequires:  pkgconfig(duktape)
 BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(libsoup-3.0)
 #!BuildIgnore:  libproxy1
 # We require a config module, at worst the env reader
 Requires:       PxPlugin(config)
