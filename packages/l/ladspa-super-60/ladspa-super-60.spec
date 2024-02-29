@@ -37,8 +37,7 @@ plugin for 16th order IIR Filter modeled after an impulse response from
 a Fender 'Super 60' guitar amplifier.
 
 %prep
-%setup -q -n super-60
-%patch1
+%autosetup -p0 -n super-60
 cp %{SOURCE1} .
 
 %build
