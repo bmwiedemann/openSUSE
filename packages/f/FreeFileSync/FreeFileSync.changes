@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 29 13:56:14 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 13.4:
+  * Ignore leading/trailing space when matching file names
+  * Work around wxWidgets system logger clearing error code
+  * Avoid modal dialog hang on KDE when compiling with GTK3
+
+-------------------------------------------------------------------
 Wed Jan 31 07:08:15 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 13.3:

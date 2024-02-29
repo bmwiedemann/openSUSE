@@ -253,4 +253,16 @@ It would be nice to have this application available in the default repos. </comm
 </comment>
     <requestid>1142943</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>678a2dc31c38ab02ffc1f465bd8adbcd</srcmd5>
+    <version>13.4</version>
+    <time>1709239859</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 13.4:
+  * Ignore leading/trailing space when matching file names
+  * Work around wxWidgets system logger clearing error code
+  * Avoid modal dialog hang on KDE when compiling with GTK3
+</comment>
+    <requestid>1153252</requestid>
+  </revision>
 </revisionlist>
