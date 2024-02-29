@@ -1,7 +1,7 @@
 #
 # spec file for package python-delegator.py
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-delegator.py
 Version:        0.1.1
 Release:        0
 Summary:        Python library for dealing with subprocesses
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/kennethreitz/delegator.py
 Source:         https://files.pythonhosted.org/packages/source/d/delegator.py/delegator.py-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/kennethreitz/delegator.py/master/tests/test_chain.py
 Patch0:         merged_pr_62.patch
 BuildRequires:  %{python_module pexpect >= 4.1.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pexpect >= 4.1.0
@@ -43,15 +43,14 @@ Delegator.py is a library for dealing with subprocesses, inspired
 by both "envoy" and "pexpect" (in fact, it depends on it).
 
 %prep
-%setup -q -n delegator.py-%{version}
-%patch0 -p1
+%autosetup -p1 -n delegator.py-%{version}
 cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # Tests from master are not compatible.  Likely fixed in next release.
@@ -63,6 +62,8 @@ cp %{SOURCE1} .
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/delegator.py
+%pycache_only %{python_sitelib}/__pycache__/delegator.*.py*
+%{python_sitelib}/delegator.py-%{version}.dist-info
 
 %changelog

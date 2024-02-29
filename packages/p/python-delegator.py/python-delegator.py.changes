@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 03:13:06 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Sun Oct 23 09:43:15 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Replace custom exclude-eof-from-result.patch with merged_pr_62.patch
