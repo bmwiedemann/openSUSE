@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 29 07:05:54 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.3.0:
+  * Add watchdog_secs directive to config (thanks @errge)
+  * Use full-speed for max_temp if supported
+  * Only do temperature file globbing once
+    + This should be a noop, but please file an issue if it causes a problem.
+
+-------------------------------------------------------------------
 Tue Nov  7 10:18:55 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer
