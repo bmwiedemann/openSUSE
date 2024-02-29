@@ -63,4 +63,14 @@
     <comment></comment>
     <requestid>1096267</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>b6f5f809ba7bf6ab7ba2858acbbec58c</srcmd5>
+    <version>1.2.1</version>
+    <time>1709239809</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1152937 from crameleon
+
+Build for Python 3.12 to restore compatibility with Mailman3</comment>
+    <requestid>1153132</requestid>
+  </revision>
 </revisionlist>

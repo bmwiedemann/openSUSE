@@ -1,7 +1,7 @@
 #
 # spec file for package python-mailman-hyperkitty
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 
 
 %if 0%{?suse_version} >= 1550
-# Newest python supported by mailman is Python 3.9 -- https://gitlab.com/mailman/mailman/-/issues/936
-%define pythons python311
-%define mypython python311
+%define pythons python312
+%define mypython python312
 %else
 %{?sle15_python_module_pythons}
 %define pythons python311
