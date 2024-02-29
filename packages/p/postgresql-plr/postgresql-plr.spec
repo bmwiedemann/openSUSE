@@ -89,8 +89,8 @@ This package contain the associated documentation
 
 %prep
 # plr.so know where R is located
-%setup -q -n %{sname}-%{sversion}
-%patch0 -p1
+%autosetup -p1 -n %{sname}-%{sversion}
+
 # Need to fix spurious rights in doc and root
 find ./ -type f -exec chmod 0644 {} \;
 cp -v %{S:2} .

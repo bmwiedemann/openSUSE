@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 15:12:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Mon Jan  8 11:04:24 UTC 2024 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - update to bugfix release 8.4.6 adding support to postgresql16
