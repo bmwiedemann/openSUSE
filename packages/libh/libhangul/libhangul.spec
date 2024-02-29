@@ -55,7 +55,7 @@ to develop applications that require libhangul.
 %prep
 %setup -q
 %if 0%{?sles_version}
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 # Fix for factory gettext version
 %if 0%{?suse_version} > 1310

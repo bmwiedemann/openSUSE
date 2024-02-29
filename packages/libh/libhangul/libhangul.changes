@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 16:41:02 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Nov  7 08:52:55 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer
