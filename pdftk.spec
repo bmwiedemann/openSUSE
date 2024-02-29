@@ -68,8 +68,7 @@ Group:          Documentation/HTML
 API documentation for %{name}.
 
 %prep
-%setup -q -n %{name}-v%{version}
-%patch0 -p1
+%autosetup -p1 -n %{name}-v%{version}
 
 %pom_remove_plugin :jacoco-maven-plugin
 
