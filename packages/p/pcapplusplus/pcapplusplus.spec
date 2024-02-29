@@ -48,8 +48,8 @@ PcapPlusPlus is a C++ network sniffing and packet parsing and
 manipulation framework.
 
 %prep
-%setup -q -n %{_oname}-%{version}
-%patch2 -p1
+%autosetup -p1 -n %{_oname}-%{version}
+
 dos2unix Examples/*/* README.md
 chmod -x Examples/Tutorials/Tutorial-DpdkL2Fwd/WorkerThread.*
 
