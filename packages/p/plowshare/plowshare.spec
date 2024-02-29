@@ -46,8 +46,7 @@ basic concept is that files can be downloaded and uploaded though command
 line as easily as wget (or curl).
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 
