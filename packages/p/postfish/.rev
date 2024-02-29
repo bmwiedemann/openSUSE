@@ -137,4 +137,12 @@
     <comment>1</comment>
     <requestid>257316</requestid>
   </revision>
+  <revision rev="21" vrev="17">
+    <srcmd5>523e98cc6b0a6917b75150dae9e13baa</srcmd5>
+    <version>svn17492</version>
+    <time>1709239881</time>
+    <user>dimstar_suse</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1153301 from dimstar)</comment>
+    <requestid>1153306</requestid>
+  </revision>
 </revisionlist>

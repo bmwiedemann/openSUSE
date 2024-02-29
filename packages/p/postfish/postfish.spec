@@ -44,19 +44,8 @@ audio into a group of up to eight output channels. The third stage
 applies processing filters to the output group post-mixdown.
 
 
-
-Authors:
---------
-    Monty
-    TD, Xiph.Org
-
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%if 0%{suse_version} > 1120
-%patch2 -p1
-%endif
+%autosetup -p1
 
 %build
 %define archopt %{nil}
