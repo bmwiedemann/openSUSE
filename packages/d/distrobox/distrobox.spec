@@ -17,15 +17,13 @@
 
 
 Name:           distrobox
-Version:        1.6.0.1
+Version:        1.7.0
 Release:        0
 Summary:        Use any linux distribution inside your terminal
 License:        GPL-3.0-only
 URL:            https://github.com/89luca89/distrobox
 Source:         https://github.com/89luca89/distrobox/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        distrobox.conf
-Patch0:         0001-Fix-systemd-init-container-startup-1069.patch
-# Default to distrobox-enter when just distrobox is used
 Requires:       %{_bindir}/basename
 Requires:       %{_bindir}/find
 Requires:       %{_bindir}/grep
@@ -105,8 +103,10 @@ done
 %dir %{_datadir}/icons/hicolor/
 %dir %{_datadir}/icons/hicolor/*x*/
 %dir %{_datadir}/icons/hicolor/*x*/apps/
+%dir %{_datadir}/zsh/site-functions/
 %{_datadir}/icons/hicolor/*/apps/terminal-distrobox-icon.png
 %{_datadir}/icons/hicolor/scalable/apps/terminal-distrobox-icon.svg
+%{_datadir}/zsh/site-functions/_%{name}*
 
 %files bash-completion
 %{_datadir}/bash-completion/completions/%{name}*

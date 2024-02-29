@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Feb 28 21:55:18 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Removed:
+  * 0001-Fix-systemd-init-container-startup-1069.patch
+- Update to 1.7.0
+  * added --enter-flags to distrobox-export to specify additional
+    distrobox flags to use when entering
+  * added --hostname flag to distrobox-create so you can choose a
+    different hostname than the box name
+  * added --unshare-groups to distrobox-create to allow unsharing
+    user's additional groups inside the container
+  * better login shell management
+  * better systemd support for initful containers
+  * fixed multiple bins and apps exports declaration in assemble
+  * improved NVidia support
+  * improved Wolfi container support
+  * improved rootful containers support for exported graphical apps
+  * improved terminfo support
+  * new distrobox-export --list-apps and --list-binaries to show
+    exported apps and binaries
+
+
+-------------------------------------------------------------------
 Thu Feb 22 17:54:06 UTC 2024 - Dario Faggioli <dfaggioli@suse.com>
 
 - Add flatpak as a dependency, as we need it for distrobox-host-exec
