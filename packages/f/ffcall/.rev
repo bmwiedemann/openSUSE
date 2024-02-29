@@ -209,4 +209,12 @@
 - Run testsuite (forwarded request 1104705 from Andreas_Schwab)</comment>
     <requestid>1110584</requestid>
   </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>116ee2912a133e599f48b16f80bbd5f8</srcmd5>
+    <version>2.4</version>
+    <time>1709239857</time>
+    <user>dimstar_suse</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1150675 from dimstar)</comment>
+    <requestid>1153253</requestid>
+  </revision>
 </revisionlist>

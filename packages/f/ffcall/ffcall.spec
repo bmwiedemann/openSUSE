@@ -100,8 +100,8 @@ This library allows using closures (lambdas) as first-class C
 functions.
 
 %prep
-%setup -q -n libffcall-%{version}
-%patch1 -p1
+%autosetup -p1 -n libffcall-%{version}
+
 if ! test -e /usr/include/asm/cachectl.h
 then
     # FIX-OPENSUSE -- Remove this if there is no <asm/cachectl.h>
