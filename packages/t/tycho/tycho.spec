@@ -38,7 +38,7 @@ Summary:        Plugins and extensions for building Eclipse plugins and OSGI bun
 License:        Apache-2.0 AND EPL-1.0
 URL:            https://eclipse.org/tycho
 # Tycho project source
-Source0:        http://git.eclipse.org/c/tycho/org.eclipse.tycho.git/snapshot/org.eclipse.tycho-%{git_tag}.tar.xz
+Source0:        https://github.com/eclipse-tycho/tycho/archive/refs/tags/%{git_tag}.tar.gz
 # Eclipse Plugin Project supporting filesystem as p2 repository
 Source1:        https://github.com/rgrunber/fedoraproject-p2/archive/%{fp_p2_git_tag}/fedoraproject-p2-%{fp_p2_git_tag}.tar.gz
 # this is a workaround for maven-plugin-plugin changes that happened after
@@ -204,7 +204,7 @@ Provides:       tycho-extras-javadoc = %{version}-%{release}
 This package contains the API documentation for %{name}.
 
 %prep
-%setup -q -n org.eclipse.tycho-%{git_tag} -a 1
+%setup -q -n tycho-%{git_tag} -a 1
 mv fedoraproject-p2-%{fp_p2_git_tag} fedoraproject-p2
 
 %patch -P 0 -p1
