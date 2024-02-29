@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 15:57:11 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Fri Jun 12 16:03:43 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add remove_2_backslashes_in_shell_call.patch

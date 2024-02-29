@@ -68,8 +68,7 @@ Coherent accelerator interface header files and man pages
 only for development purposes.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 make CFLAGS="%{optflags} -fPIC" V=1
