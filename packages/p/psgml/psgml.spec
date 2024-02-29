@@ -66,26 +66,16 @@ For more info see README.openSUSE.
 Compiled for GNU Emacs (XEmacs has its own version!).
 
 
-
-Authors:
---------
-    James Clark <jjc@clark.com>
-    Lennart Staflin <lenst@lysator.liu.se>
-    David Megginson <dmeggins@sprynet.com>
-    Matthias Clasen <mclasen@sun2.mathematik.uni-freiburg.de>
-    François Pinard <pinard@iro.umontreal.ca>
-    etc.
-
 %prep
 %setup -q
-%patch0 -p1
-%patch9 -p1
+%patch -P 0 -p1
+%patch -P 9 -p1
 cp -p %{SOURCE1} .
 # xxml
 mkdir xxml
 tar vxz -C xxml -f %{SOURCE4}
 %patch -P 5 -p0
-%patch7 -p1
+%patch -P 7 -p1
 cp xxml/xxml.el .
 for f in README THANKS; do
   cp xxml/$f $f.xxml
@@ -102,8 +92,8 @@ cp -p %{SOURCE7} .
 cp -p %{SOURCE8} .
 cp -p %{S:9} .
 %patch -p 1 -P 6
-%patch8
-%patch10 -p0
+%patch -P 8
+%patch -P 10 -p0
 
 %build
 ./configure --prefix=%{_prefix} --infodir=%{_infodir}
