@@ -20,7 +20,7 @@
 
 %define lname	libvshadow1
 Name:           libvshadow
-Version:        20231128
+Version:        20240229
 Release:        0
 Summary:        Library to access the Volume Shadow Snapshot (VSS) format
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -39,17 +39,17 @@ BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fuse)
 BuildRequires:  pkgconfig(libbfio) >= 20221025
-BuildRequires:  pkgconfig(libcdata) >= 20230108
-BuildRequires:  pkgconfig(libcerror) >= 20220101
-BuildRequires:  pkgconfig(libcfile) >= 20220106
-BuildRequires:  pkgconfig(libclocale) >= 20221218
-BuildRequires:  pkgconfig(libcnotify) >= 20220108
-BuildRequires:  pkgconfig(libcpath) >= 20220108
-BuildRequires:  pkgconfig(libcsplit) >= 20220109
-BuildRequires:  pkgconfig(libcthreads) >= 20220102
-BuildRequires:  pkgconfig(libfdatetime) >= 20220112
-BuildRequires:  pkgconfig(libfguid) >= 20220113
-BuildRequires:  pkgconfig(libuna) >= 20230710
+BuildRequires:  pkgconfig(libcdata) >= 20240103
+BuildRequires:  pkgconfig(libcerror) >= 20240101
+BuildRequires:  pkgconfig(libcfile) >= 20240106
+BuildRequires:  pkgconfig(libclocale) >= 20240107
+BuildRequires:  pkgconfig(libcnotify) >= 20240108
+BuildRequires:  pkgconfig(libcpath) >= 20240109
+BuildRequires:  pkgconfig(libcsplit) >= 20240110
+BuildRequires:  pkgconfig(libcthreads) >= 20240102
+BuildRequires:  pkgconfig(libfdatetime) >= 20240115
+BuildRequires:  pkgconfig(libfguid) >= 20240116
+BuildRequires:  pkgconfig(libuna) >= 20240130
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
 
@@ -58,12 +58,12 @@ Library and tools to access the Volume Shadow Snapshot (VSS) format.
 The VSS format is used by Windows, as of Vista, to maintain copies of
 data on a storage media volume.
 
-%package -n %{lname}
+%package -n %lname
 Summary:        Library and tools to access the Volume Shadow Snapshot (VSS) format
 License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
-%description -n %{lname}
+%description -n %lname
 Library and tools to access the Volume Shadow Snapshot (VSS) format.
 The VSS format is used by Windows, as of Vista, to maintain copies of
 data on a storage media volume.
@@ -79,17 +79,17 @@ format is used by Windows, as of Vista, to maintain copies of data on
 a storage media volume.
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 Requires:       libbfio-devel
 
 %description    devel
-The %{name}-devel package contains libraries and header files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and header files for
+developing applications that use %name.
 
-The package contains %{_docdir}/%{name}:
+The package contains %_docdir/%name:
 
 * OSDFC 2012: Paper - Windowless Shadow Snapshots
 * OSDFC 2012: Slides - Windowless Shadow Snapshots
@@ -100,8 +100,8 @@ mkdir doc
 cp -av %_sourcedir/*.pdf .
 
 %build
-export CFLAGS="%{optflags} -fno-strict-aliasing"
-export CXXFLAGS="%{optflags}"
+export CFLAGS="%optflags -fno-strict-aliasing"
+export CXXFLAGS="%optflags"
 %{python_expand #
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static --enable-wide-character-type \
@@ -117,27 +117,27 @@ grep ' '' ''local' config.log && exit 1
 mv "%_builddir/rt"/* "%buildroot/"
 find "%buildroot" -type f -name "*.la" -delete -print
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%post -n %lname -p /sbin/ldconfig
+%postun -n %lname -p /sbin/ldconfig
 
-%files -n %{lname}
+%files -n %lname
 %license COPYING*
-%{_libdir}/*.so.*
+%_libdir/*.so.*
 
 %files -n %name-tools
-%{_bindir}/vshadow*
-%{_mandir}/man1/*.gz
+%_bindir/vshadow*
+%_mandir/man1/*.gz
 
 %files -n %name-devel
 %license COPYING*
 %doc Paper_-_Windowless_Shadow_Snapshots.pdf
 %doc Slides_-_Windowless_Shadow_Snapshots.pdf
 %doc Volume_Shadow_Snapshot_*.pdf
-%{_includedir}/libvshadow.h
-%{_includedir}/libvshadow/
-%{_libdir}/*.so
-%{_libdir}/pkgconfig/libvshadow.pc
-%{_mandir}/man3/*.gz
+%_includedir/libvshadow.h
+%_includedir/libvshadow/
+%_libdir/*.so
+%_libdir/pkgconfig/libvshadow.pc
+%_mandir/man3/*.gz
 
 %files %python_files
 %license COPYING*
