@@ -76,12 +76,12 @@ few simple queries.
 
 %prep
 %setup -q
-%patch0
-%patch1
-%patch3 -p1
-%patch4
-%patch5 -p1
-%patch6 -p1
+%patch -P 0
+%patch -P 1
+%patch -P 3 -p1
+%patch -P 4
+%patch -P 5 -p1
+%patch -P 6 -p1
 
 %build
 %configure

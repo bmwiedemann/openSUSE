@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:07:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Aug 27 07:27:00 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Ensure neutrality of description. Use noun phrase in summary.
