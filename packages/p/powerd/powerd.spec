@@ -45,9 +45,8 @@ an unattended shutdown of the system if the UPS is on battery longer
 than a specified number of minutes.
 
 %prep
-%setup -q
-%patch0
-%patch1
+%autosetup -p0
+
 %_fixowner .
 %_fixgroup .
 /bin/chmod -Rf a+rX,g-w,o-w .

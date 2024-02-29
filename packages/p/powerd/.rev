@@ -7,4 +7,12 @@
     <comment>Can we have back powerd?</comment>
     <requestid>1085515</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>56c60dba42e09a246854f2a9267b53ea</srcmd5>
+    <version>2.0.2</version>
+    <time>1709239882</time>
+    <user>dimstar_suse</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1153316 from dimstar)</comment>
+    <requestid>1153321</requestid>
+  </revision>
 </revisionlist>
