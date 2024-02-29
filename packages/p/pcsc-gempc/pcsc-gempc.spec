@@ -49,9 +49,8 @@ This driver is meant to be used with the PCSC-Lite daemon from the
 pcsc-lite package.
 
 %prep
-%setup -q -n %{_name}-%{version}
-%patch0
-%patch1
+%autosetup -p0 -n %{_name}-%{version}
+
 mv README.410 README_410
 mv README.430 README_430
 for DIR in GemPC410 GemPC430 ; do
