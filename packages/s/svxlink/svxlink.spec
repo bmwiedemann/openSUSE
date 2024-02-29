@@ -1,7 +1,7 @@
 #
 # spec file for package svxlink
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -141,6 +141,7 @@ tar -xjvf %{_sourcedir}/svxlink-sounds-en_US-heather-16k-%{SOUNDS}.tar.bz2
 %build
 cd src
 %cmake \
+    -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
     -DLOCAL_STATE_DIR=%{_localstatedir}
 %make_jobs
 %make_build man
@@ -168,7 +169,7 @@ rm -f %{buildroot}/%{_libdir}/libsvxmisc.a
 %{_sbindir}/svxlink_gpio_down
 %{_sbindir}/svxlink_gpio_up
 %{_datadir}/svxlink
-%{_datadir}/doc/svxlink
+%{_docdir}/svxlink
 %config(noreplace) %{_sysconfdir}/svxlink
 %dir %{_libdir}/svxlink
 %{_libdir}/svxlink/Module*.so
