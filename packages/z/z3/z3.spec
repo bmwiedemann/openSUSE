@@ -1,7 +1,7 @@
 #
 # spec file for package z3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %define sover 4_12
 Name:           z3
-Version:        4.12.2
+Version:        4.12.5
 Release:        0
 Summary:        Theorem prover from Microsoft Research
 License:        MIT
 Group:          Productivity/Scientific/Other
 URL:            https://github.com/Z3Prover/z3/wiki
 Source0:        https://github.com/Z3Prover/z3/archive/z3-%{version}.tar.gz
-Patch0:         0001-Fix-building-with-gcc-13-6723.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++ >= 6.0
 BuildRequires:  gmp-devel

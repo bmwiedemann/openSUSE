@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Feb 22 07:59:37 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 4.12.5
+  * track quantifier instantiation method in proof hint #7080
+  * prepare for release
+  * free memory the clean way
+  * encapsulate anum functionality
+  * encapsulate mpz a bit more
+  * Fixes in Java's User Propagator (#7088)
+  * remove unused code
+  * take care of strategy undecided, Nikolaj's comments
+  * Merge branch 'master' of https://github.com/z3prover/z3
+  * force int bound on int columns, call term_is_int() after subst
+  * pin expression passed to validate_eq
+  * Update z3_api.h
+  * fix #7081
+  * fix #7085
+  * fix #7084
+  * change the definition of Gomory row
+  * and more
+- remove 0001-Fix-building-with-gcc-13-6723.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Jun 15 07:18:34 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 4.12.2
