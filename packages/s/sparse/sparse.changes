@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Feb 22 07:55:48 UTC 2024 - jslaby@suse.cz
+
+- Update to version 0.6.4+20240203:
+  * llvm: allow arm64
+  * llvm: avoid trivial recursion in symbol_type()
+  * llvm: fix LLVM 15 deprecation warnings
+  * riscv: G extension implies Zicsr & Zifencei
+  * riscv: V extension implies F & D
+  * riscv: add predefines for v_min_vlen, v_elen & v_elen_fp
+  * RISC-V: Add basic support for the vector extension
+  * llvm: ensure SYM_NODE is stripped before accessing the return type
+  * llvm: do not duplicate strings and use their length in struct string
+  * llvm: suppress warnings about deprecated API
+  * add .readthedocs.yaml
+  * doc: set 'en' as language in Sphinx's config file
+  * doc: update conf.py for more recent version of sphinx
+  * reassoc: fix infinite loop during reassociation
+  * linearize.c: fix buffer overrun warning from fortify
+  * xtensa: switch to little endianness
+  * RISC-V: Add support for the zihintpause extension
+  * RISC-V: Add support for the zicbom extension
+  * parse: handle __cleanup__ attribute
+
+-------------------------------------------------------------------
 Mon Apr  3 11:03:49 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
 
 - don't build llvm parts. It requires llvm < 16.

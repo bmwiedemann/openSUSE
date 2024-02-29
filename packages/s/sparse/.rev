@@ -497,4 +497,12 @@ Spec file licenses are written in SPDX compatible format. Where there is no shor
     <comment>- don't build llvm parts. It requires llvm &lt; 16.</comment>
     <requestid>1076899</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>6d41fcc7eec3beb2869befb819345eb3</srcmd5>
+    <version>0.6.4+20240203</version>
+    <time>1709239801</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1153112</requestid>
+  </revision>
 </revisionlist>

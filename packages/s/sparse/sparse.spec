@@ -1,7 +1,7 @@
 #
 # spec file for package sparse
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_with llvm
 
 Name:           sparse
-Version:        0.6.4+20220627
+Version:        0.6.4+20240203
 Release:        0
 Summary:        A semantic parser of source files
 License:        MIT
@@ -36,7 +36,7 @@ BuildRequires:  pkgconfig(sqlite3)
 %if %{with llvm}
 %ifarch         x86_64
 BuildRequires:  clang
-BuildRequires:  llvm-devel < 16
+BuildRequires:  llvm-devel
 %endif
 %endif
 
