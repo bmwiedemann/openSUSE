@@ -1,7 +1,7 @@
 #
 # spec file for package ladspa-caps
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,8 +35,7 @@ emulation, stomp-box classics, versatile virtual analog oscillators,
 fractal oscillation, reverb, equalization and others.
 
 %prep
-%setup -q -n caps-%{version}
-%patch2 -p1
+%autosetup -p1 -n caps-%{version}
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags} -ggdb -fPIC"
