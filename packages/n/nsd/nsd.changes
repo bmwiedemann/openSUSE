@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 26 18:42:56 UTC 2024 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- As far as it is known the kernel has a working recvmmsg
+  pass --enable-recvmmsg to configure.
+- Don't --enable-mmap. Replacing malloc may sound attractive but
+  all safety checks to prevent corruption included in libc are lost.
+
+-------------------------------------------------------------------
 Wed Feb  7 12:04:19 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Provide user/group symbol for user created during pre.

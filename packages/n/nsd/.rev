@@ -348,4 +348,12 @@ BUG FIXES:
 - Provide user/group symbol for user created during pre.</comment>
     <requestid>1145386</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>edc90ca5990cd2c03caae7a91c4378e4</srcmd5>
+    <version>4.8.0</version>
+    <time>1709239831</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153173</requestid>
+  </revision>
 </revisionlist>

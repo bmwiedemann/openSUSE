@@ -78,9 +78,9 @@ by NLnet Labs, with the purpose of creating more diversity in the DNS landscape.
     --enable-root-server               \
     --enable-bind8-stats               \
     --enable-zone-stats                \
-    --enable-mmap                      \
     --with-user=_nsd                   \
-    --enable-ratelimit
+    --enable-ratelimit \
+    --enable-recvmmsg
 make -O V=1 VERBOSE=1 %{?_smp_mflags}
 iconv -f iso8859-1 -t utf-8 doc/RELNOTES > doc/RELNOTES.utf8
 iconv -f iso8859-1 -t utf-8 doc/CREDITS > doc/CREDITS.utf8
