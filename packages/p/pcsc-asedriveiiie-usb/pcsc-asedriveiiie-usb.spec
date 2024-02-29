@@ -54,10 +54,9 @@ This driver is meant to be used with the PCSC-Lite daemon from the
 pcsc-lite package.
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -p1 -n %{_name}-%{version}
+
 chmod -x ChangeLog LICENSE README
-%patch1 -p1
-%patch2 -p1
 
 %build
 %configure
