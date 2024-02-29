@@ -77,20 +77,20 @@ traffic.
 
 %prep
 %setup -q
-%patch0
-%patch1
-%patch2
-%patch3
-%patch4
-%patch5
-%patch6
-%patch7
-%patch8
-%patch9
-%patch10
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
+%patch -P 0
+%patch -P 1
+%patch -P 2
+%patch -P 3
+%patch -P 4
+%patch -P 5
+%patch -P 6
+%patch -P 7
+%patch -P 8
+%patch -P 9
+%patch -P 10
+%patch -P 13 -p1
+%patch -P 14 -p1
+%patch -P 15 -p1
 
 %build
 cp %{_datadir}/automake-1.*/config.* .
