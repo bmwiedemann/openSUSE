@@ -46,11 +46,6 @@ Patch0:         %{name}-%{version}-config.patch
 Patch1:         %{name}-groupid.patch
 # PATCH-FIX-OPENSUSE -- patch SOURCE5 to run under openSUSE
 Patch2:         postgrey_clients_dump.patch
-%if 0%{?suse_version} < 1210
-# PATCH-FIX-OPENSUSE -- revert process name changes from 1.35
-# startproc will return 7 without
-Patch3:         postgrey_process_name.patch
-%endif
 BuildRequires:  postfix
 Requires:       perl >= 5.6.0
 Requires:       perl-BerkeleyDB
@@ -58,19 +53,14 @@ Requires:       perl-IO-Multiplex
 Requires:       perl-Net-DNS
 Requires:       perl-Net-Server
 Requires:       perl-NetAddr-IP
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %if 0%{?suse_version}
 Suggests:       cron
-%if 0%{?suse_version} >= 1210
 BuildRequires:  pkgconfig(systemd)
 %systemd_ordering
-%endif
 Requires(post): %fillup_prereq
 %endif
-%if 0%{?suse_version} >= 1330
 Requires(pre):  group(nogroup)
-%endif
 Provides:       user(%{name})
 
 %description
@@ -95,12 +85,7 @@ test -d timer || mkdir timer
 cp -a %{SOURCE7} timer/
 cp -a %{SOURCE8} timer/
 cp -a %{SOURCE9} timer/
-%patch0
-%patch1
-%patch2
-%if 0%{?suse_version} < 1210
-%patch3
-%endif
+%autopatch -p0
 cp %{SOURCE3} README.SUSE
 
 %build
@@ -167,8 +152,8 @@ getent passwd %{name} >/dev/null || useradd -r -g nogroup -d %{_localstatedir}/l
 %endif
 
 %files
-%defattr(-,root,root)
-%doc Changes COPYING README README.SUSE
+%license COPYING
+%doc Changes README README.SUSE
 %doc examples timer
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/whitelist_recipients
