@@ -84,10 +84,8 @@ This Linux PAM module allows X.509 a certificate-based user
 authentication.
 
 %prep
-%setup -q -n %{_name}-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch3 -p1
+%autosetup -p1 -n %{_name}-%{version}
+
 cp -a %{SOURCE1} common-auth-smartcard
 sed -i s:/lib/:/%{_lib}/:g etc/pam_pkcs11.conf.example.in etc/pkcs11_eventmgr.conf.example
 # make dist was not called and cannot be called on a non git snapshot.
