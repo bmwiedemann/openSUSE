@@ -28,7 +28,7 @@
 %define plainpython python
 
 Name:           python-onionshare
-Version:        2.6
+Version:        2.6.1
 Release:        0
 Summary:        Self-hosting Tor Onion Service based file sharing
 License:        GPL-3.0-or-later
@@ -38,14 +38,8 @@ Source0:        https://github.com/onionshare/onionshare/archive/v%{version}.tar
 Source99:       python-onionshare.rpmlintrc
 # PATCH-FIX-OPENSUSE skip test_large_download in gui tests
 Patch0:         0001-adjust_tests.diff
-# PATCH-FIX-UPSTREAM fix-test-cli-web.patch -- https://github.com/onionshare/onionshare/issues/1534
-Patch1:         fix-test-cli-web.patch
 # PATCH-FIX-OPENSUSE relax-async-mode.patch -- Do not rely on gevent
-Patch2:         relax-async-mode.patch
-# PATCH-FIX-UPSTREAM onionshare-poetry-core.patch -- poetry-core is enough to build and has a much smaller footprint
-Patch3:         https://github.com/onionshare/onionshare/commit/a05d7af729585bdaa4f71437167339ac67bf3327.patch#/onionshare-poetry-core.patch
-# PATCH-FIX-UPSTREAM onionshare-pr1677-fix-werkzeug3.patch gh#onionshare/onionshare#1677
-Patch4:         onionshare-pr1677-fix-werkzeug3.patch
+Patch1:         relax-async-mode.patch
 BuildRequires:  %{mypython}-devel
 BuildRequires:  %{mypython}-pip
 BuildRequires:  %{mypython}-setuptools
@@ -64,7 +58,7 @@ BuildRequires:  %{mypython}-pytest-xvfb
 # SECTION runtime test
 BuildRequires:  %{mypython}-Flask >= 2.3.2
 BuildRequires:  %{mypython}-Flask-Compress >= 1.13
-BuildRequires:  %{mypython}-Flask-SocketIO >= 5.3.1
+BuildRequires:  %{mypython}-Flask-SocketIO >= 5.3.4
 BuildRequires:  %{mypython}-PyNaCl
 BuildRequires:  %{mypython}-PySocks
 BuildRequires:  %{mypython}-Unidecode
@@ -75,7 +69,7 @@ BuildRequires:  %{mypython}-colorama
 BuildRequires:  %{mypython}-eventlet
 BuildRequires:  %{mypython}-gevent-websocket
 BuildRequires:  %{mypython}-psutil
-BuildRequires:  %{mypython}-pyside2 >= 5.15.2.1
+BuildRequires:  %{mypython}-pyside6 >= 6.5.2
 BuildRequires:  %{mypython}-python-gnupg
 BuildRequires:  %{mypython}-qrcode
 BuildRequires:  %{mypython}-requests
@@ -85,7 +79,7 @@ BuildRequires:  tor
 # /SECTION
 Requires:       python-Flask >= 2.3.2
 Requires:       python-Flask-Compress >= 1.13
-Requires:       python-Flask-SocketIO >= 5.3.1
+Requires:       python-Flask-SocketIO >= 5.3.4
 Requires:       python-PyNaCl
 Requires:       python-PySocks
 Requires:       python-Unidecode
@@ -96,7 +90,7 @@ Requires:       python-colorama
 Requires:       python-eventlet
 Requires:       python-gevent-websocket
 Requires:       python-psutil
-Requires:       python-pyside2 >= 5.15.2.1
+Requires:       python-pyside6 >= 6.5.2
 Requires:       python-python-gnupg
 Requires:       python-qrcode
 Requires:       python-requests
@@ -179,7 +173,7 @@ popd
 %files %python_files
 %{_bindir}/onionshare
 %{_bindir}/onionshare-cli
-%license LICENSE
+%license LICENSE.txt
 %doc README.md
 %{_datadir}/applications/org.onionshare.OnionShare.desktop
 %{_datadir}/metainfo/org.onionshare.OnionShare.metainfo.xml
