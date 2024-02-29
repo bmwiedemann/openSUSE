@@ -178,4 +178,12 @@
   * remove old test generators. FuzzSMT is much better than these</comment>
     <requestid>1073729</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0eac16450d195afcd940489a30832f5f</srcmd5>
+    <version>2.3.3+20231214</version>
+    <time>1709239810</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1153133</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Feb 22 08:05:19 UTC 2024 - jslaby@suse.cz
+
+- Update to version 2.3.3+20231214:
+  * Partially fix Appveyor (windows) automated build. (#478)
+  * Trying again to get clang building the api tests
+  * fixes #476
+  * Trying to get uint32_t found on clang.
+  * Partial revert previous checkin because some code needs this include.
+  * Improved word wrap.
+  * Update index.rst
+  * Update README.markdown
+  * Remove nonsensical sbrk usage
+  * fix compiler warnings.
+  * Build script for docker based on the quick install for Ubuntu 20
+  * add extra test case for let, currently not functional
+  * Implement smtlib2 format "let" properly. Fixes #388
+  * Adding let tests
+  * Update README.markdown
+  * Improve build instructions
+  * [gcc 13] include cstdint for *int*_t
+- remove 0001-gcc-13-include-cstdint-for-int-_t.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Mar 22 09:20:33 UTC 2023 - jslaby@suse.cz
 
 - Update to version 2.3.3+20220915:

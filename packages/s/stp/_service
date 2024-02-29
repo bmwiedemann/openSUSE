@@ -1,5 +1,5 @@
 <services>
-  <service mode="disabled" name="obs_scm">
+  <service mode="manual" name="obs_scm">
     <param name="url">https://github.com/stp/stp</param>
     <param name="scm">git</param>
     <param name="filename">stp</param>
@@ -7,7 +7,7 @@
     <param name="versionformat">@PARENT_TAG@+%cd</param>
     <param name="match-tag">[0-9]*</param>
   </service>
-  <service mode="disabled" name="set_version"/>
+  <service mode="manual" name="set_version"/>
 
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
