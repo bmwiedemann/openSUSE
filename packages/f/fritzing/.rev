@@ -199,4 +199,12 @@ now depends on Qt 4.8 (forwarded request 148324 from Heinervdm)</comment>
 </comment>
     <requestid>813312</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>43aceb01f4df286cf4501634d42bf92e</srcmd5>
+    <version>0.9.9+git20210922.f0af53a</version>
+    <time>1709239764</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153138</requestid>
+  </revision>
 </revisionlist>

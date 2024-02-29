@@ -1,7 +1,7 @@
 #
 # spec file for package fritzing
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,44 +16,33 @@
 #
 
 
-%define cdversion CD-498
 Name:           fritzing
-Version:        0.9.4
+Version:        0.9.9+git20210922.f0af53a
 Release:        0
 Summary:        Electronic Design Automation platform featuring prototype to product
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
-URL:            http://fritzing.org/
-Source0:        https://github.com/fritzing/fritzing-app/archive/%{cdversion}.tar.gz
-#PATCH-FIX-OPENSUSE fritzing-use-system-libgit2.patch -- use system libgit, upstream wants to use bundled version
-Patch0:         fritzing-use-system-libgit2.patch
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost_1_58_0-devel
-%endif
+URL:            https://fritzing.org/
+Source0:        %{name}-app-%{version}.tar.gz
+#PATCH-FIX-OPENSUSE 0001-Use-system-libgit2.patch -- use system libgit, upstream wants to use bundled version
+Patch1:         0001-Use-system-libgit2.patch
+#PATCH-FIX-OPENSUSE 0002-Fix-appdata.xml-url-type.patch -- fix appdata url type
+Patch2:         0002-Fix-appdata.xml-url-type.patch
+BuildRequires:  appstream-glib
 BuildRequires:  fdupes
+BuildRequires:  libboost_headers-devel
 BuildRequires:  libgit2-devel >= 0.23
 BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  zlib-devel
-%if 0%{?suse_version} < 1320
-BuildRequires:  libQt5SerialPort-devel
-BuildRequires:  libQt5Svg-devel
-Requires:       libqt5-sql-sqlite
-%else
 BuildRequires:  libqt5-qtserialport-devel
 BuildRequires:  libqt5-qtsvg-devel
-Requires:       libQt5Sql5-sqlite
-%endif
+BuildRequires:  update-desktop-files
+BuildRequires:  zlib-devel
 Requires:       fritzing-parts
-Requires(post):    shared-mime-info
-Requires(postun):  shared-mime-info
-Requires(post):    desktop-file-utils
-Requires(postun):  desktop-file-utils
-BuildRequires:  appstream-glib
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       libQt5Sql5-sqlite
+Requires(post): desktop-file-utils
+Requires(post): shared-mime-info
+Requires(postun): desktop-file-utils
+Requires(postun): shared-mime-info
 
 %description
 Fritzing is an initiative to support designers, artists,
@@ -63,31 +52,28 @@ allow users to document their Arduino and other electronic-based
 prototypes, and to create a PCB layout for manufacturing.
 
 %prep
-%setup -q -n %{name}-app-%{cdversion}
-%patch0 -p1
+%autosetup -p1 -n %{name}-app-%{version}
+
 sed -i 's/\r$//' LICENSE.CC-BY-SA
 chmod -x LICENSE* README.md Fritzing.1
 
 %build
 # QMAKE_CFLAGS_ISYSTEM= added to work around gcc6 build problems
 qmake-qt5 QMAKE_CFLAGS_ISYSTEM=
-make %{?_smp_mflags}
+%make_build
 
 %install
 make INSTALL_ROOT=%{buildroot} install
 sed -i '/Categories=/d' org.fritzing.Fritzing.desktop
 %suse_update_desktop_file -i -r org.fritzing.Fritzing Development IDE
 find %{buildroot}%{_datadir}/%{name}/ -type f -exec chmod -x {} \;
-#rm -rf %{buildroot}%{_datadir}/%{name}/parts
+#rm -rf %%{buildroot}%%{_datadir}/%%{name}/parts
 %fdupes %{buildroot}%{_datadir}/%{name}/sketches
 appstream-util validate-relax --nonet org.fritzing.Fritzing.appdata.xml
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root,-)
-%doc README.md LICENSE.GPL2 LICENSE.GPL3 LICENSE.CC-BY-SA
+%license LICENSE.GPL2 LICENSE.GPL3 LICENSE.CC-BY-SA
+%doc README.md
 %{_bindir}/Fritzing
 %{_datadir}/%{name}/
 %{_datadir}/pixmaps/%{name}.png
@@ -95,13 +81,5 @@ rm -rf %{buildroot}
 %{_mandir}/man1/Fritzing.*
 %{_datadir}/mime/packages/*.xml
 %{_datadir}/metainfo/org.fritzing.Fritzing.appdata.xml
-
-%post
-%desktop_database_post
-%mime_database_post
-
-%postun
-%desktop_database_postun
-%mime_database_postun
 
 %changelog

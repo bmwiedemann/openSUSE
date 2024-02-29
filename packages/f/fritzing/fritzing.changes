@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Feb 29 06:18:42 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix package name typo in _service file.
+- Change deprecated "disabled" modes to "manual".
+- Disable automatic changes generation when running tar_scm
+  service.
+- Freeze at commit f0af53a, drop full url for Source0, and
+  regenerate tarball (note version changes: f0af53a9 -> f0af53a).
+- Clean up specfile, drop macros catering to ancient oS releases.
+- Drop _servicedata.
+
+-------------------------------------------------------------------
+Mon Feb 26 08:46:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
+Sun May 22 11:51:41 UTC 2022 - Klaus Kämpf <kkaempf@suse.com>
+
+- rename fritzing-use-system-libgit2.patch to 0001-Use-system-libgit2.patch
+- add 0002-Fix-appdata.xml-url-type.patch
+
+-------------------------------------------------------------------
+Sun May 22 11:32:42 UTC 2022 - kkaempf@suse.com
+
+- Update to version 0.9.9+git20210922.f0af53a9:
+  * Fixed #3882 by fixing power label bus removal.
+  * Add keyboard shortcut for rotating by 90 degree, horizontal flip and search
+  * Do not add wires if they are too small, fixes #3731. Additionally, this commit fixes the color of the temporal wire that appears when creating a new bend point (the wire needs to not be blue to observe the bug)
+  * resize a stripboard following the current layout, fixes #3090 #2998 and #3084. The slow performance is still present but the extended area is not shortcircuited.
+  * Added Fritzing Fab links to recent file list in welcome view.
+  * Bump version to 0.9.9
+  * Merge develop
+  * Remove .ts.orig file from merge conflict
+  * Increased width of fabuploaddialog to fit translations.
+  * Fix swapped url + title, projects could not be selected if language setting is not English
+
+-------------------------------------------------------------------
+Sun May 22 11:24:40 UTC 2022 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to 0.9.6
+  maintenance release, fixed at least ten crashes, several critical
+  bugs, and about 30-100 regular bugs
+
+-------------------------------------------------------------------
 Wed Jun 10 18:16:39 UTC 2020 - Thomas Zimmermann <bugs@vdm-design.de>
 
 - Remove version requirement for fritzing-parts,
