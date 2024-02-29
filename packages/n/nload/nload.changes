@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 14:11:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Thu Jul 14 07:26:58 UTC 2016 - adam.majer@suse.de
 
 - use standard SPDX license names in spec License field

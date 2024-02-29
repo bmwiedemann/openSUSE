@@ -36,9 +36,7 @@ and provides additional info like total amount of transfered data and min/max
 network usage.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 ./run_autotools
