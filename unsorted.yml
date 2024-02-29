@@ -454,8 +454,6 @@ unsorted:
   - afl 
   - afterburn 
   - afterburn-dracut 
-  - agama-cli 
-  - agama-dbus-server 
   - age 
   - agenda 
   - agenda-lang 
@@ -2903,6 +2901,7 @@ unsorted:
   - dLeyna-devel 
   - dMagnetic 
   - dSFMT-devel 
+  - daemonize 
   - dai-banna-fonts 
   - dante 
   - dante-devel 
@@ -3006,6 +3005,7 @@ unsorted:
   - decibels 
   - decibels-lang 
   - decker 
+  - decker-doc 
   - deco 
   - deepin-account-faces 
   - deepin-api 
@@ -3750,6 +3750,7 @@ unsorted:
   - exec-maven-plugin-javadoc 
   - execstack 
   - exempi-tools 
+  - exfat-utils 
   - exfatprogs 
   - exif 
   - exiftool 
@@ -3938,6 +3939,8 @@ unsorted:
   - fd-fish-completion 
   - fd-zsh-completion 
   - fde-firstboot 
+  - fde-tools 
+  - fde-tools-bash-completion 
   - fde-tpm-helper-rpm-macros 
   - fdo-client 
   - fdo-client-devel 
@@ -4350,6 +4353,7 @@ unsorted:
   - fuse-devel 
   - fuse-devel-static 
   - fuse-doc 
+  - fuse-exfat 
   - fuse-oscfs 
   - fuse2fs 
   - fuse3-devel 
@@ -6922,6 +6926,7 @@ unsorted:
   - glassfish-websocket-api-javadoc 
   - glassfishbuild-maven-plugin 
   - glassfishbuild-maven-plugin-javadoc 
+  - gle-devel 
   - glew 
   - glew-devel 
   - glfw2-devel 
@@ -7198,6 +7203,7 @@ unsorted:
   - go1.15-race 
   - go1.16 
   - go1.16-doc 
+  - go1.16-libstd 
   - go1.16-race 
   - go1.17 
   - go1.17-doc 
@@ -12771,7 +12777,6 @@ unsorted:
   - libglade2-doc 
   - libgladeui-2-13 
   - libgladeui-2-devel 
-  - libgle-devel 
   - libglfw-devel 
   - libglfw2 
   - libglfw3 
@@ -14082,6 +14087,9 @@ unsorted:
   - libnice 
   - libnice-devel 
   - libnice10-32bit 
+  - libnilfs0 
+  - libnilfscleaner0 
+  - libnilfsgc0 
   - libnitrokey-devel 
   - libnitrokey-udev 
   - libnitrokey3 
@@ -15631,6 +15639,7 @@ unsorted:
   - libsuperlu6-32bit 
   - libsuperlu_6_0_1-gnu-hpc 
   - libsurgescript0_5_6 
+  - libsuseconnect 
   - libsvm-devel 
   - libsvm-java 
   - libsvm3 
@@ -16121,7 +16130,7 @@ unsorted:
   - libvpl-devel 
   - libvpl-samples 
   - libvpx-devel 
-  - libvpx8-32bit 
+  - libvpx9-32bit 
   - libvsapm-devel 
   - libvsapm-tools 
   - libvsapm1 
@@ -18904,6 +18913,7 @@ unsorted:
   - ngspice-scripts 
   - ngspice-xspice-cm 
   - nh2ps 
+  - nilfs-utils 
   - nilfs-utils-devel 
   - nim 
   - nimbus-icon-theme 
@@ -25285,6 +25295,7 @@ unsorted:
   - python310-pandas-performance 
   - python310-pandas-plot 
   - python310-pandas-postgresql 
+  - python310-pandas-pyarrow 
   - python310-pandas-spss 
   - python310-pandas-sql-other 
   - python310-pandas-test 
@@ -25902,7 +25913,6 @@ unsorted:
   - python310-pyudev 
   - python310-pyupgrade 
   - python310-pyusb 
-  - python310-pyuv 
   - python310-pyux 
   - python310-pyvdr 
   - python310-pyvips 
@@ -28757,6 +28767,7 @@ unsorted:
   - python311-pandas-performance 
   - python311-pandas-plot 
   - python311-pandas-postgresql 
+  - python311-pandas-pyarrow 
   - python311-pandas-spss 
   - python311-pandas-sql-other 
   - python311-pandas-test 
@@ -29346,7 +29357,6 @@ unsorted:
   - python311-pyuca 
   - python311-pyupgrade 
   - python311-pyusb 
-  - python311-pyuv 
   - python311-pyux 
   - python311-pyvdr 
   - python311-pyvips 
@@ -31536,6 +31546,7 @@ unsorted:
   - python312-gwcs 
   - python312-gwdatafind 
   - python312-gwosc 
+  - python312-gwpy 
   - python312-gyp 
   - python312-h11 
   - python312-h2 
@@ -31862,6 +31873,7 @@ unsorted:
   - python312-libmodi 
   - python312-libmount 
   - python312-libmsiecf 
+  - python312-libmsym 
   - python312-libnacl 
   - python312-libolecf 
   - python312-libpff 
@@ -31893,6 +31905,7 @@ unsorted:
   - python312-license-expression 
   - python312-ligo-lw 
   - python312-ligo-segments 
+  - python312-ligotimegps 
   - python312-limnoria 
   - python312-line_profiler 
   - python312-linecache2 
@@ -31900,6 +31913,7 @@ unsorted:
   - python312-lineup-widget 
   - python312-link-traits 
   - python312-linkify-it-py 
+  - python312-linode-cli 
   - python312-linstor 
   - python312-linstor-client 
   - python312-linux-procfs 
@@ -31947,6 +31961,7 @@ unsorted:
   - python312-marshmallow 
   - python312-marshmallow-enum 
   - python312-material-color-utilities-python 
+  - python312-mathgl 
   - python312-mathics-pygments 
   - python312-matplotlib 
   - python312-matplotlib-cairo 
@@ -32213,6 +32228,7 @@ unsorted:
   - python312-pandas-performance 
   - python312-pandas-plot 
   - python312-pandas-postgresql 
+  - python312-pandas-pyarrow 
   - python312-pandas-spss 
   - python312-pandas-sql-other 
   - python312-pandas-test 
@@ -32338,6 +32354,7 @@ unsorted:
   - python312-pprintpp 
   - python312-pproxy 
   - python312-praatio 
+  - python312-pre-commit 
   - python312-precis-i18n 
   - python312-precise-runner 
   - python312-preggy 
@@ -32378,6 +32395,7 @@ unsorted:
   - python312-publicsuffix 
   - python312-publicsuffix2 
   - python312-publicsuffixlist 
+  - python312-pudb 
   - python312-pulsectl 
   - python312-pulsemixer 
   - python312-pure-eval 
@@ -35721,6 +35739,7 @@ unsorted:
   - python39-pandas-performance 
   - python39-pandas-plot 
   - python39-pandas-postgresql 
+  - python39-pandas-pyarrow 
   - python39-pandas-spss 
   - python39-pandas-sql-other 
   - python39-pandas-test 
@@ -36338,7 +36357,6 @@ unsorted:
   - python39-pyudev 
   - python39-pyupgrade 
   - python39-pyusb 
-  - python39-pyuv 
   - python39-pyux 
   - python39-pyvdr 
   - python39-pyvips 
@@ -38054,6 +38072,7 @@ unsorted:
   - rofi-network-manager 
   - rofi-wayland 
   - rofi-wayland-devel 
+  - rollback-helper 
   - rook 
   - rook-ceph-helm-charts 
   - rook-integration 
@@ -39108,6 +39127,8 @@ unsorted:
   - suse-hpc 
   - suse-prime 
   - suse-xsl-stylesheets 
+  - suseconnect-ng 
+  - suseconnect-ruby-bindings 
   - suseprime-appindicator 
   - svg-schema 
   - svg-schema-doc 
