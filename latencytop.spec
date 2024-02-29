@@ -53,9 +53,9 @@ hiccups. This package contains version with graphic interface.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p2
-%patch2 -p1
+%patch -P 0 -p1
+%patch -P 1 -p2
+%patch -P 2 -p1
 
 %build
 export CFLAGS="%{optflags}"

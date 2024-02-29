@@ -127,4 +127,12 @@ and %prep]
 - Split graphical version of package</comment>
     <requestid>545698</requestid>
   </revision>
+  <revision rev="18" vrev="26">
+    <srcmd5>6592e667ec32cdb38e1488332b2a47db</srcmd5>
+    <version>0.5</version>
+    <time>1709239858</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153249</requestid>
+  </revision>
 </revisionlist>
