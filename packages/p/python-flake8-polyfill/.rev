@@ -25,4 +25,13 @@ https://build.opensuse.org/request/show/605779</comment>
     <comment></comment>
     <requestid>894326</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e02b8b7e80dce4439ec009c77d05aca2</srcmd5>
+    <version>1.0.2</version>
+    <time>1709239789</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1153082</requestid>
+  </revision>
 </revisionlist>

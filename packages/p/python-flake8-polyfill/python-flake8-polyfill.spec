@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-polyfill
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-flake8-polyfill
 Version:        1.0.2
 Release:        0
@@ -29,7 +28,9 @@ Source:         https://files.pythonhosted.org/packages/source/f/flake8-polyfill
 Patch0:         python-flake8-polyfill-use-unittest-mock.patch
 # https://gitlab.com/pycqa/flake8-polyfill/-/issues/3
 Patch1:         python-flake8-polyfill-tool-pytest.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-flake8
@@ -48,15 +49,13 @@ Flake8-polyfill is a package that provides some compatibility helpers for
 Flake8 plugins that intend to support Flake8 2.x and 3.x simultaneously.
 
 %prep
-%setup -q -n flake8-polyfill-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n flake8-polyfill-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -66,6 +65,7 @@ Flake8 plugins that intend to support Flake8 2.x and 3.x simultaneously.
 %files %{python_files}
 %doc AUTHORS.rst CHANGELOG.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/flake8_polyfill
+%{python_sitelib}/flake8_polyfill-%{version}.dist-info
 
 %changelog
