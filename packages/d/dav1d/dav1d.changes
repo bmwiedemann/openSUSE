@@ -64,6 +64,8 @@ Wed May  3 06:27:24 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
   * AVX-512 optimizations for high bit-depth itx (16x64, 32x64,
     64x16, 64x32, 64x64)
   * AVX2 optimizations for 12bpc for 16x32, 32x16, 32x32 itx
+  * Includes fix for possible crash when decoding a frame
+    (bsc#1211262 CVE-2023-32570).
 
 -------------------------------------------------------------------
 Tue Mar  7 19:40:24 UTC 2023 - Michael Gorse <mgorse@suse.com>

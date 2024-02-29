@@ -279,4 +279,12 @@
     sizes (bsc#1220105, CVE-2024-1580) (forwarded request 1148679 from alarrosa)</comment>
     <requestid>1148724</requestid>
   </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>3b3f2ce721045ff79d545923a19e0273</srcmd5>
+    <version>1.4.0</version>
+    <time>1709239838</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153239</requestid>
+  </revision>
 </revisionlist>
