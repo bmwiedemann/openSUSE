@@ -124,4 +124,12 @@ Leap 15.5
     <comment>- Update to release 0.10</comment>
     <requestid>1149093</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>36c51bd0373137bf1df974837e1118d1</srcmd5>
+    <version>0.10.1</version>
+    <time>1709239756</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.10.1</comment>
+    <requestid>1153025</requestid>
+  </revision>
 </revisionlist>

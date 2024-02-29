@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 28 16:19:26 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.10.1
+  * reduce allocations and fixing speed regressions since 0.9.0
+  * resolve some bug in streaming encoding
+
+-------------------------------------------------------------------
 Thu Feb 22 00:12:54 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.10
