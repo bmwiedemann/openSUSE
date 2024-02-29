@@ -48,14 +48,14 @@ paps is a command line program for converting Unicode text encoded in UTF-8 to p
 
 %prep
 %setup -qT -b0 -n %{name}-%{version}
-%patch1 -p0 -b .p1
-%patch2 -p0 -b .p2
-%patch3 -p0 -b .p3
-%patch4 -p0 -b .p4
-%patch5 -p0 -b .p5
-%patch6 -p0 -b .p6
-%patch7 -p0 -b .p7
-%patch8 -p0 -b .p8
+%patch -P 1 -p0 -b .p1
+%patch -P 2 -p0 -b .p2
+%patch -P 3 -p0 -b .p3
+%patch -P 4 -p0 -b .p4
+%patch -P 5 -p0 -b .p5
+%patch -P 6 -p0 -b .p6
+%patch -P 7 -p0 -b .p7
+%patch -P 8 -p0 -b .p8
 mkdir -p config m4
 for c in /usr/share/aclocal*/{codeset,gettext,glibc21,iconv,isc-posix,lcmessage}.m4
 do
