@@ -36,8 +36,7 @@ TLS/SSL FTP wrapper/proxy, allowing you to use your favorite FTP client with
 any TLS/SSL-enabled FTP server.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
