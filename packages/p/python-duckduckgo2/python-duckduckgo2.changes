@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 04:16:58 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Tue May 26 07:22:46 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
