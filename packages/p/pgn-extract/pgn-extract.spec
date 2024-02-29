@@ -45,9 +45,7 @@ For a full description of pgn-extract's functionality see
 %{_docdir}/%{name}/help.html.
 
 %prep
-%setup -q -n %{name}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n %{name}
 
 %build
 CFLAGS="%{optflags}" make
