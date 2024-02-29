@@ -38,8 +38,7 @@ images, a binary file format understood by bootloaders to load and initialize
 Operating Systems or Hypervisors.
 
 %prep
-%setup -q
-%patch0 -p0
+%autosetup -p0
 
 %build
 

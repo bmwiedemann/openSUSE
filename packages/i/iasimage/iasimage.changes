@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 13:32:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Wed Apr 29 05:28:19 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 - Use python3 - python2 is dead and upstream relies on venv, where
