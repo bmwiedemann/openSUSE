@@ -67,8 +67,7 @@ Additionally, it provides a submission URL for adding the DiscID to the
 database and gathers ISRCs and the MCN from disc.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv
