@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Feb 29 09:30:20 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 1.5.5
+  * Add support of
+    - Alpha-Project ANGARA Token
+    - Broadcom Corp 58200 (idProduct: 0x5864)
+    - Broadcom Corp 58200 (idProduct: 0x5865)
+    - Imprivata USB CCID
+    - KAPELSE eS-KAP-Ad
+    - Kapelse inSide
+    - KAPELSE KAP-Care
+    - KAPELSE KAP-eCV
+    - KAPELSE KAP-GO
+    - KAPELSE KAP-LINK2
+    - Kapelse KAP-Move
+    - Kapelse Ti-Kap
+    - rf IDEAS USB CCID
+    - SIMHUB pcsc reader
+  * support Kapelse readers on macOS (composite as multislot)
+  * Some other minor improvements 
+
+-------------------------------------------------------------------
 Thu Nov 16 11:26:14 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Fix build dependency - require zlib-devel instead of zlib
