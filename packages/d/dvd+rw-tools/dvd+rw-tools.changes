@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 29 14:41:25 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Avoid comment out of patch application that leads to failure ot
+  "osc service runall"
+
+-------------------------------------------------------------------
+Mon Feb 26 07:55:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Apr  9 22:26:01 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add fix-build-with-recent-glibc.patch.

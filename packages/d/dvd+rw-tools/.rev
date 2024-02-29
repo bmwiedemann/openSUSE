@@ -168,4 +168,15 @@
     <comment></comment>
     <requestid>692930</requestid>
   </revision>
+  <revision rev="25" vrev="63">
+    <srcmd5>fe08c46f8bdcb67ac063f75fc383d3d4</srcmd5>
+    <version>7.1</version>
+    <time>1709239879</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid comment out of patch application that leads to failure ot
+  &quot;osc service runall&quot;
+
+- Use %patch -P N instead of deprecated %patchN.</comment>
+    <requestid>1153305</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package dvd+rw-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,12 +49,14 @@ Blu-ray and DVD+-RW/+-R media.
 
 %prep
 %setup -q
-%patch0
-%patch1
-#%%patch2
-%patch3
-%patch4
-%patch5 -p1
+%patch -P 0
+%patch -P 1
+%if 0
+%patch -P 2
+%endif
+%patch -P 3
+%patch -P 4
+%patch -P 5 -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
