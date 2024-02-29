@@ -75,4 +75,12 @@ firehol (3.1.6) - 2018-08-13
     <comment></comment>
     <requestid>954074</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>671eca73dcad70b2dece7b7245dcef2f</srcmd5>
+    <version>3.1.7</version>
+    <time>1709239816</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153119</requestid>
+  </revision>
 </revisionlist>

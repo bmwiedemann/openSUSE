@@ -91,9 +91,7 @@ BuildArch:      noarch
 Contains documentation and configuration examples for FireHOL.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %configure --docdir=%{_docdir}/%{name}
