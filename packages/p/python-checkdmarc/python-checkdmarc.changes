@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Thu Feb 29 01:43:19 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.3.1:
+  * Ignore UnicodeDecodeError exceptions when querying for TXT records
+  * Check DNSSEC on MX hostnames
+  * USE DNSSEC when requesting DNSKEY records
+  * Do not require an RRSIG answer when querying for DNSKEY records
+  * Pass in nameservers and timeout when running get_dnskey recursively
+  * Properly cache DNSKEY answers
+  * Fix exception handling for query_mta_sts_record
+  * Check for TLSA records
+  * Add support for parsing SMTP TLS Reporting (RFC8460) DNS records
+  * Add missing import dns.dnssec
+  * Always use the actual subdomain or domain provided
+  * Include MTA-STS and BIMI results in CSV output
+  * Added the include_tag_descriptions parameter to
+    checkdmarc.bimi.check_bimi()
+  * Added the exception class MTASTSPolicyDownloadError
+  * Major refactoring: Change from a single module to a package of modules,
+    with each checked standard as its own package
+  * Add support for MTA-STS RFC 8461
+  * Add support for BIMI
+  * Specify a BIMI selector using the --bimi-selector/-b option
+  * Fix SPF query error and warning messages
+  * Add support for null MX records - RFC 7505
+  * Make DMARC retorting URI error messages more clear
+  * Fix compatibility with Python 3.8
+  * SPFRecordNotFound exception now includes a domain argument
+  * The DMARC missing authorization error message now includes the full
+    expected DNS record
+  * Properly parse DMARC and BIMI records for domains that do not have an
+    identified base domain
+  * Add ignore_unrelated_records argument to query_dmarc_record()
+  * Replace publicsuffix2 with publicsuffixlist
+  * Maintain the original character case of the DMARC record
+  * Always treat tag names as lowercase
+  * Always treat the DMARC v tag value as if it was uppercase
+  * Always treat the DMARC p, and fo tag values as if they were lowercase
+  * Always treat URI schemes as lowercase, but maintain the case of the address
+  * Ignore case and whitespace when parsing DMARC and BIMI key=value pairs
+  * Handle missing PTR records more gracefully
+  * Redundant DMARC fo tag values now result in a warning
+  * Detect non-trivial loops
+  * Raise a SPFSyntaxError exception when an IP address and IP version do
+    not match
+  * Fix raising the DMARCRecordNotFound exception when a DMARC record does
+    not exist
+  * Add void lookup limit
+  * Add Support for User Defined DNS Resolver Object
+  * Fix DNS caching
+  * Fix CSV output
+  * Always parse RUA and RUF fields, even if other parts of the record are
+    invalid
+  * Migrate build from setuptools to hatch
+- Stop shipping LICENSE, now included directly.
+- Refresh tests.py from upstream.
+- Switch to pyproject and patch macros.
+- No more greedy globs in %files.
+- Drop skip-broken-tests.patch, not required.
+- Add patch skip-network-tests.patch, skip tests that require network access.
+
+-------------------------------------------------------------------
 Wed Jul 21 10:20:44 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Use %pyunittest macro instead of directly calling %python_exec

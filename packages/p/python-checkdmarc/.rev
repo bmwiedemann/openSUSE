@@ -7,4 +7,41 @@
     <comment>Seems like a good idea, not much obnoxious dependencies.</comment>
     <requestid>907467</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6fd6de22b346c0bbb481770dcd0f1751</srcmd5>
+    <version>5.3.1</version>
+    <time>1709239779</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.3.1:
+  * Ignore UnicodeDecodeError exceptions when querying for TXT records
+  * Check DNSSEC on MX hostnames
+  * USE DNSSEC when requesting DNSKEY records
+  * Do not require an RRSIG answer when querying for DNSKEY records
+  * Pass in nameservers and timeout when running get_dnskey recursively
+  * Properly cache DNSKEY answers
+  * Fix exception handling for query_mta_sts_record
+  * Check for TLSA records
+  * Add support for parsing SMTP TLS Reporting (RFC8460) DNS records
+  * Add missing import dns.dnssec
+  * Always use the actual subdomain or domain provided
+  * Include MTA-STS and BIMI results in CSV output
+  * Added the include_tag_descriptions parameter to
+    checkdmarc.bimi.check_bimi()
+  * Added the exception class MTASTSPolicyDownloadError
+  * Major refactoring: Change from a single module to a package of modules,
+    with each checked standard as its own package
+  * Add support for MTA-STS RFC 8461
+  * Add support for BIMI
+  * Specify a BIMI selector using the --bimi-selector/-b option
+  * Fix SPF query error and warning messages
+  * Add support for null MX records - RFC 7505
+  * Make DMARC retorting URI error messages more clear
+  * Fix compatibility with Python 3.8
+  * SPFRecordNotFound exception now includes a domain argument
+  * The DMARC missing authorization error message now includes the full
+    expected DNS record
+  * Properly parse DMARC and BIMI records for domains that do not have an
+    identified base domain</comment>
+    <requestid>1153060</requestid>
+  </revision>
 </revisionlist>
