@@ -250,4 +250,12 @@
     <comment></comment>
     <requestid>1147053</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>1c57eb16cbc722d18648b5dd8d6dafef</srcmd5>
+    <version>1.62.0</version>
+    <time>1709239902</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.62.0</comment>
+    <requestid>1153416</requestid>
+  </revision>
 </revisionlist>
