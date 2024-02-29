@@ -1,7 +1,7 @@
-Index: grpcio-1.60.0/src/python/grpcio/grpc/_cython/_cygrpc/vtable.pyx.pxi
+Index: grpcio-1.62.0/src/python/grpcio/grpc/_cython/_cygrpc/vtable.pyx.pxi
 ===================================================================
---- grpcio-1.60.0.orig/src/python/grpcio/grpc/_cython/_cygrpc/vtable.pyx.pxi
-+++ grpcio-1.60.0/src/python/grpcio/grpc/_cython/_cygrpc/vtable.pyx.pxi
+--- grpcio-1.62.0.orig/src/python/grpcio/grpc/_cython/_cygrpc/vtable.pyx.pxi
++++ grpcio-1.62.0/src/python/grpcio/grpc/_cython/_cygrpc/vtable.pyx.pxi
 @@ -13,16 +13,16 @@
  # limitations under the License.
  
@@ -22,10 +22,10 @@ Index: grpcio-1.60.0/src/python/grpcio/grpc/_cython/_cygrpc/vtable.pyx.pxi
    if first_pointer < second_pointer:
      return -1
    elif first_pointer > second_pointer:
-Index: grpcio-1.60.0/src/python/grpcio/grpc/_cython/_cygrpc/credentials.pyx.pxi
+Index: grpcio-1.62.0/src/python/grpcio/grpc/_cython/_cygrpc/credentials.pyx.pxi
 ===================================================================
---- grpcio-1.60.0.orig/src/python/grpcio/grpc/_cython/_cygrpc/credentials.pyx.pxi
-+++ grpcio-1.60.0/src/python/grpcio/grpc/_cython/_cygrpc/credentials.pyx.pxi
+--- grpcio-1.62.0.orig/src/python/grpcio/grpc/_cython/_cygrpc/credentials.pyx.pxi
++++ grpcio-1.62.0/src/python/grpcio/grpc/_cython/_cygrpc/credentials.pyx.pxi
 @@ -316,7 +316,7 @@ def server_credentials_ssl_dynamic_cert_
    return credentials
  
@@ -35,10 +35,10 @@ Index: grpcio-1.60.0/src/python/grpcio/grpc/_cython/_cygrpc/credentials.pyx.pxi
    # This is a credentials.ServerCertificateConfig
    cdef ServerCertificateConfig cert_config = None
    if not user_data:
-Index: grpcio-1.60.0/src/python/grpcio/grpc/_cython/_cygrpc/aio/callback_common.pyx.pxi
+Index: grpcio-1.62.0/src/python/grpcio/grpc/_cython/_cygrpc/aio/callback_common.pyx.pxi
 ===================================================================
---- grpcio-1.60.0.orig/src/python/grpcio/grpc/_cython/_cygrpc/aio/callback_common.pyx.pxi
-+++ grpcio-1.60.0/src/python/grpcio/grpc/_cython/_cygrpc/aio/callback_common.pyx.pxi
+--- grpcio-1.62.0.orig/src/python/grpcio/grpc/_cython/_cygrpc/aio/callback_common.pyx.pxi
++++ grpcio-1.62.0/src/python/grpcio/grpc/_cython/_cygrpc/aio/callback_common.pyx.pxi
 @@ -50,7 +50,7 @@ cdef class CallbackWrapper:
      @staticmethod
      cdef void functor_run(
@@ -48,10 +48,10 @@ Index: grpcio-1.60.0/src/python/grpcio/grpc/_cython/_cygrpc/aio/callback_common.
          cdef CallbackContext *context = <CallbackContext *>functor
          cdef object waiter = <object>context.waiter
          if not waiter.cancelled():
-Index: grpcio-1.60.0/src/python/grpcio/grpc/_cython/_cygrpc/aio/callback_common.pxd.pxi
+Index: grpcio-1.62.0/src/python/grpcio/grpc/_cython/_cygrpc/aio/callback_common.pxd.pxi
 ===================================================================
---- grpcio-1.60.0.orig/src/python/grpcio/grpc/_cython/_cygrpc/aio/callback_common.pxd.pxi
-+++ grpcio-1.60.0/src/python/grpcio/grpc/_cython/_cygrpc/aio/callback_common.pxd.pxi
+--- grpcio-1.62.0.orig/src/python/grpcio/grpc/_cython/_cygrpc/aio/callback_common.pxd.pxi
++++ grpcio-1.62.0/src/python/grpcio/grpc/_cython/_cygrpc/aio/callback_common.pxd.pxi
 @@ -48,7 +48,7 @@ cdef class CallbackWrapper:
      @staticmethod
      cdef void functor_run(
@@ -61,3 +61,52 @@ Index: grpcio-1.60.0/src/python/grpcio/grpc/_cython/_cygrpc/aio/callback_common.
  
      cdef grpc_completion_queue_functor *c_functor(self)
  
+Index: grpcio-1.62.0/src/python/grpcio/grpc/_cython/_cygrpc/fork_posix.pyx.pxi
+===================================================================
+--- grpcio-1.62.0.orig/src/python/grpcio/grpc/_cython/_cygrpc/fork_posix.pyx.pxi
++++ grpcio-1.62.0/src/python/grpcio/grpc/_cython/_cygrpc/fork_posix.pyx.pxi
+@@ -35,7 +35,7 @@ _GRPC_ENABLE_FORK_SUPPORT = (
+ 
+ _fork_handler_failed = False
+ 
+-cdef void __prefork() nogil:
++cdef void __prefork() noexcept nogil:
+     with gil:
+         global _fork_handler_failed
+         _fork_handler_failed = False
+@@ -49,14 +49,14 @@ cdef void __prefork() nogil:
+             _fork_handler_failed = True
+ 
+ 
+-cdef void __postfork_parent() nogil:
++cdef void __postfork_parent() noexcept nogil:
+     with gil:
+         with _fork_state.fork_in_progress_condition:
+             _fork_state.fork_in_progress = False
+             _fork_state.fork_in_progress_condition.notify_all()
+ 
+ 
+-cdef void __postfork_child() nogil:
++cdef void __postfork_child() noexcept nogil:
+     with gil:
+         try:
+             if _fork_handler_failed:
+Index: grpcio-1.62.0/src/python/grpcio/grpc/_cython/_cygrpc/fork_posix.pxd.pxi
+===================================================================
+--- grpcio-1.62.0.orig/src/python/grpcio/grpc/_cython/_cygrpc/fork_posix.pxd.pxi
++++ grpcio-1.62.0/src/python/grpcio/grpc/_cython/_cygrpc/fork_posix.pxd.pxi
+@@ -12,10 +12,10 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-cdef void __prefork() nogil
++cdef void __prefork() noexcept nogil
+ 
+ 
+-cdef void __postfork_parent() nogil
++cdef void __postfork_parent() noexcept nogil
+ 
+ 
+-cdef void __postfork_child() nogil
+\ No newline at end of file
++cdef void __postfork_child() noexcept nogil

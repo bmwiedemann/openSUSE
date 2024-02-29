@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Feb 26 19:09:09 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Version update in SLE 15 SP4 and later (jsc#PED-6697)
+
+-------------------------------------------------------------------
+Fri Feb 23 22:10:40 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.62.0:
+  * [Python AIO] Handle DeprecationWarnings when get current loop
+    (gh#grpc/grpc#35583).
+  * [Python AIO] Raise resource_exhausted error in case of
+    concurrent RPC limit exceeded (gh#grpc/grpc#35376).
+  * [Python O11y] Build and distrib O11y package
+    (gh#grpc/grpc#35578).
+  * [Python setuptools] Import error from distutils for lower
+    version of setuptools (gh#grpc/grpc#35561).
+- Add terminate.patch: Fix control reaching end of non-void
+  function.
+- Rebase python-grpcio-cython3-compat.patch for updated version.
+
+-------------------------------------------------------------------
 Fri Feb  9 12:10:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.60.1:

@@ -19,7 +19,7 @@
 %global modname grpcio
 %{?sle15_python_module_pythons}
 Name:           python-grpcio
-Version:        1.60.1
+Version:        1.62.0
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
@@ -32,6 +32,8 @@ Patch0:         python-grpcio-cython3-compat.patch
 Patch1:         xxhash-avoid-armv6-unaligned-access.patch
 # PATCH-FIX-SLE xxhash-ppc64le-gcc7.patch boo#1208794 alarrosa@suse.com -- fix build failure on ppc64le when using gcc 7
 Patch2:         xxhash-ppc64le-gcc7.patch
+# PATCH-FIX-UPSTREAM Fix issues about control reaching end of non-void function
+Patch3:         terminate.patch
 BuildRequires:  %{python_module Cython >= 0.29.8}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pip}
@@ -59,10 +61,11 @@ connected systems.
 
 %prep
 %autosetup -N -n grpcio-%{version}
-%patch0 -p1
+%patch -P 0 -p1
+%patch -P 3 -p1
 pushd third_party/xxhash
-%patch1 -p1
-%patch2 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 popd
 
 %build
