@@ -107,10 +107,10 @@ This package provides the GStreamer plugin for pocketsphinx.
 
 %prep
 %setup -q -n pocketsphinx-%{version}
-%patch0
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch -P 0
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 sed -ie "1s,^#!/usr/bin/env python$,#!/usr/bin/python3," doc/doxy2swig.py
 
 %build
