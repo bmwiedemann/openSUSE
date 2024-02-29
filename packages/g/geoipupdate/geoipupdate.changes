@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 17:05:34 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Use autosetup to prepare for RPM 4.20. 
+
+-------------------------------------------------------------------
 Wed Feb 21 08:11:49 UTC 2024 - valentin.lefebvre@suse.com
 
 - Update to version 6.1.0:

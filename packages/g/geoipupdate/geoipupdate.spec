@@ -16,7 +16,6 @@
 #
 
 
-# Common info
 Name:           geoipupdate
 Version:        6.1.0
 Release:        0
@@ -53,11 +52,8 @@ Requires:       geolite2legacy
 %description legacy
 Script for updating data in GeoIP Legacy format.
 
-
-# Preparation step (unpackung and patching if necessary)
 %prep
-%setup -q -a1
-%patch0 -p1
+%autosetup -p1 -a1
 
 %build
 %if 0%{?suse_version} >= 1500
