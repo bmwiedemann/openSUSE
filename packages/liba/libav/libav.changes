@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 15:28:39 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Mon Mar 26 12:34:28 UTC 2018 - alarrosa@suse.com
 
 - Remove the without-ffmpeg path in the spec file. We just support

@@ -48,8 +48,7 @@ Various tools providing access to multimedia metadata and similar things.
 This build of libav-tools is modified to use the ffmpeg libraries
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 # Remove build time references so build-compare can do its work
 FAKE_BUILDTIME=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%H:%%M')
