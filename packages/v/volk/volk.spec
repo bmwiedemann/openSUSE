@@ -19,7 +19,7 @@
 %global sonum 3
 %global soname 3_1
 Name:           volk
-Version:        3.1.0
+Version:        3.1.2
 Release:        0
 Summary:        Vector-Optimized Library of Kernels
 License:        LGPL-3.0-or-later
