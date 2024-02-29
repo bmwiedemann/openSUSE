@@ -34,14 +34,8 @@ program (shell) and all child processes. In the created environment,
 uname -m returns ppc, so you can create 32 bit PowerPC programs.
 
 
-
-Authors:
---------
-    Jakub Jelinek <jj@ultra.linux.cz>
-
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 make CFLAGS="$RPM_OPT_FLAGS"
