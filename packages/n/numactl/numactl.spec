@@ -56,9 +56,7 @@ Control NUMA policy for individual processes. Offer libnuma for
 individual NUMA policy in applications.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 ./autogen.sh
