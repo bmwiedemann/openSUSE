@@ -180,7 +180,6 @@
     <package name="bash-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="bash-sh" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="bc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="bcache-tools" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="bcm20702a1-firmware" supportstatus="unsupported"/> <!-- reason: dvd:bcm20702a1-firmware -->
     <package name="bcm43xx-firmware" supportstatus="unsupported"/> <!-- reason: dvd:bcm43xx-firmware -->
     <package name="bind" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-dhcp_dns_server -->
@@ -424,7 +423,6 @@
     <package name="evolution-ews-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="evolution-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="evolution-plugin-spamassassin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="exfat-utils" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="exo-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="exo-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="exo-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -456,10 +454,7 @@
     <package name="fcitx-table-tw-cangjie5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="fcitx-table-tw-smart-cangjie6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="fcitx-zhuyin" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="fcoe-utils" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="fd0ssh" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="fde-tools" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="fde-tools-bash-completion" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="fde-tpm-helper" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
     <package name="fdupes" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="ffmpegthumbnailer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -496,7 +491,6 @@
     <package name="frei0r-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="fribidi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="fuse" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="fuse-exfat" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="fuse3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="fwupd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="fwupd-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -2205,7 +2199,6 @@
     <package name="liblilv-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblirc_client0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libliveMedia112" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="liblldp_clif1" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="liblmdb-0_9_30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libloader" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liblogging0" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
@@ -2312,9 +2305,6 @@
     <package name="libnftnl11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnghttp2-14" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libnice10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libnilfs0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libnilfscleaner0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libnilfsgc0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libnl-config" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnl3-200" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnm0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2636,7 +2626,6 @@
     <package name="libsubid4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsuitesparseconfig7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsunpinyin3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libsuseconnect" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libsvrcore0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="libswresample3_9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libswresample4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2769,7 +2758,7 @@
     <package name="libvorbisfile3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libvorbisfile3-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libvpl2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libvpx8" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libvpx9" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libvte-2_91-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libvterm0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libvulkan1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3061,7 +3050,6 @@
     <package name="nfs-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="nfs-kernel-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
     <package name="nftables" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="nilfs-utils" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="nkf" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="nodejs-common" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="nodejs21" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3085,7 +3073,6 @@
     <package name="okular-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="open-iscsi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="open-isns" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="open-lldp" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="open-vm-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="open-vm-tools-desktop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="openSUSE-build-key" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3657,7 +3644,6 @@
     <package name="ristretto" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="ristretto-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="rng-tools" supportstatus="unsupported"/> <!-- reason: dvd:rng-tools -->
-    <package name="rollback-helper" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="rp-pppoe" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="rpcbind" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="rpm" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -3687,7 +3673,6 @@
     <package name="ruby3.3-rubygem-addressable" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.3-rubygem-aes_key_wrap" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.3-rubygem-afm" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="ruby3.3-rubygem-agama" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.3-rubygem-airbrussh" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.3-rubygem-amq-protocol" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.3-rubygem-arel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -4160,8 +4145,6 @@
     <package name="supermin" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="suse-module-tools" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="suse-module-tools-scriptlets" supportstatus="unsupported"/> <!-- reason: dvd:suse-module-tools-scriptlets -->
-    <package name="suseconnect-ng" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="suseconnect-ruby-bindings" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="susefirewall2-to-firewalld" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="susepaste" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="susepaste-screenshot" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
