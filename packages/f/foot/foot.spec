@@ -15,7 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%if 0%{?suse_version} < 1550
+%define _distconfdir %{_sysconfdir}
+%endif
 Name:           foot
 Version:        1.16.2
 Release:        0

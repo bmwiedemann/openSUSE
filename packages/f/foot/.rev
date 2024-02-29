@@ -509,4 +509,12 @@
   * See https://codeberg.org/dnkl/foot/releases/tag/1.16.2 for more details.</comment>
     <requestid>1118347</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>b09e72825408479a3c0cc3582414e651</srcmd5>
+    <version>1.16.2</version>
+    <time>1709239912</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153442</requestid>
+  </revision>
 </revisionlist>
