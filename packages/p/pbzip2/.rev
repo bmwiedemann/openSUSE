@@ -166,4 +166,12 @@
 - Drop rpm macro</comment>
     <requestid>586688</requestid>
   </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>4618d2c982e3d1fb5b5cc399bba8026b</srcmd5>
+    <version>1.1.13</version>
+    <time>1709239943</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153502</requestid>
+  </revision>
 </revisionlist>

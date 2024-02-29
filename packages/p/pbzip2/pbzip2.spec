@@ -35,8 +35,7 @@ compressor that uses pthreads and achieves near-linear speedup on SMP
 machines.
 
 %prep
-%setup -q
-%patch3
+%autosetup -p0
 
 %build
 make %{?_smp_mflags} CXXFLAGS="%{optflags} -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64"
