@@ -72,8 +72,7 @@ Udev rules for Mirics MRi2500 based DVB dongles.
 
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake

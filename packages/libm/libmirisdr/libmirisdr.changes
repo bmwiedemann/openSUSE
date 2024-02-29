@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 17:38:11 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Wed Nov  8 10:23:50 UTC 2017 - mardnh@gmx.de
 
 - Split udev rules to separate package
