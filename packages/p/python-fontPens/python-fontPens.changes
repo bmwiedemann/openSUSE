@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 04:27:13 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros. 
+- Remove out of date skips.
+
+-------------------------------------------------------------------
 Thu Dec 16 11:06:34 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Drop python36 for good: FontTools dropped support
