@@ -26,7 +26,9 @@ License:        BSD-2-Clause
 URL:            https://launchpad.net/dkimpy
 Source:         https://files.pythonhosted.org/packages/source/d/dkimpy/dkimpy-%{version}.tar.gz
 Patch0:         no-optional.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  openssl
 BuildRequires:  python-rpm-macros
@@ -35,7 +37,7 @@ Requires:       python-authres
 Requires:       python-dnspython >= 1.16
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyNaCl}
@@ -49,14 +51,13 @@ BuildRequires:  %{python_module pytest}
 DKIM (DomainKeys Identified Mail)
 
 %prep
-%setup -q -n dkimpy-%{version}
-%patch0 -p1
+%autosetup -p1 -n dkimpy-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 for c in %{commands}; do
   %python_clone -a %{buildroot}%{_mandir}/man1/$c.1
   %python_clone -a %{buildroot}%{_bindir}/$c
@@ -89,6 +90,7 @@ done
 %python_alternative %{_mandir}/man1/dkimsign.1%{?ext_man}
 %python_alternative %{_mandir}/man1/dkimverify.1%{?ext_man}
 %python_alternative %{_mandir}/man1/dknewkey.1%{?ext_man}
-%{python_sitelib}/*
+%{python_sitelib}/dkim
+%{python_sitelib}/dkimpy-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 03:25:54 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Sat Jan  6 18:02:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.5:
