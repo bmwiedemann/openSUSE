@@ -36,10 +36,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 This package provides a LADSPA (Linux Audio Developer's Simple Plug-in API) plugin to implement the Alien Wah effect.
 
 %prep
-%setup -q -n alienwah-%{version}
-%patch1
-%patch2
-%patch3
+%autosetup -p0 -n alienwah-%{version}
 
 %build
 # This package failed when testing with -Wl,-as-needed being default.
