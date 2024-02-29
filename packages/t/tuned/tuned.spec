@@ -1,7 +1,7 @@
 #
 # spec file for package tuned
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         profile_dir %{_prefix}/lib/%{name}
 Name:           tuned
-Version:        2.21.0.0+git.670541d
+Version:        2.22.1.2+git.86ac977
 Release:        0
 Summary:        A dynamic adaptive system tuning daemon
 License:        GPL-2.0-or-later

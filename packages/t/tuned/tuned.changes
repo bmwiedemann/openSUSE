@@ -1,9 +1,71 @@
 -------------------------------------------------------------------
+Thu Feb 29 11:37:09 UTC 2024 - trenn@suse.de
+
+- Update to version 2.22.1.2+git.86ac977:
+  * fix-error
+  * new release (2.22.1)
+  * Rename plugin_intel_uncore.py to plugin_uncore.py
+  * Rename IntelUncorePlugin to UncorePlugin
+  * network-throughput: increased net.ipv4.tcp_rmem default value
+  * spec: cleanup, drop RHEL dynamic_tuning customization
+  * new release (2.22.0)
+- Polkit changes got accepted by security review (bsc#1220081)
+
+-------------------------------------------------------------------
+Fri Feb 16 13:30:06 UTC 2024 - trenn@suse.de
+
+- Update to version 2.22.0.rc.1.0+git.ad314ee:
+  * Disable dynamic tuning by default
+  * plugin_cpu: improved backward compat. of the pm_qos parser warnings
+
+-------------------------------------------------------------------
+Sun Feb 11 18:29:24 UTC 2024 - trenn@suse.de
+
+- Update to version 2.22.0-rc.1.0+git.ad314ee:
+  * new release (2.22.0-rc.1)
+  * Add missing install command for tuned-ppd.py
+  * Fixes for intel uncore plugin
+  * Add intel uncore plugin
+  * scheduler: add option for ignoring IRQs affinity
+  * Configure the PPD-to-TuneD daemon to work as a replacement of PPD
+  * Implement the PPD-to-TuneD daemon
+  * Make DBusExporter reusable for other services
+  * Do not report errors on systems with no wifi
+  * Add an ACPI plugin
+  * plugin_cpu: Support cstate settings of `pm_qos_resume_latency_us`
+  * Skip calling rpm-ostree kargs in no-op case
+  * Expand sysctl plugin options when reporting overrides
+  * profiles: add energy_performance_preference hints to profiles
+  * hotplug: do not report ENOENT errors on device remove
+  * profiles: Improve 'isolated_cores=' help text
+  * Be explicit about amd-pstate support
+  * Fixed REs escape sequences not to trigger SyntaxWarning
+  * sap-hana-kvm-guest: fix whitespaces
+  * Fix TextView to expand with window
+
+-------------------------------------------------------------------
+
 Mon Dec 04 11:28:35 CET 2023 - aschnell@suse.com
 
 - do not package inoperable plugins (bsc#1217758)
 
 -------------------------------------------------------------------
+
+Wed Nov 15 09:42:09 UTC 2023 - trenn@suse.de
+
+- Update to version 2.21.0.17+git.5d3b469:
+  * Add API functions to retrieve active instances and their devices
+  * Add a tuned-adm command for moving devices between plugin instances
+  * Add support for sysctl names with slash
+  * Make all functions in plugin_sysctl.py methods of SysctlPlugin
+  * RHEL-3689: Print all arguments of failing command in err_msg
+  * style: fix inconsistent whitespace in plugin_cpu.py
+  * Return 0 when ksm services do not exist
+  * fix error
+  * Converted SPEC file license to SPDX
+
+-------------------------------------------------------------------
+
 Fri Sep 15 15:27:32 UTC 2023 - trenn@suse.de
 
 - Update to version 2.21.0.0+git.670541d:
