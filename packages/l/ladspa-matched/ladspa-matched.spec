@@ -42,9 +42,9 @@ unmatched.
 %prep
 %setup -q -c -a 0 -a 1
 cd matched
-%patch1
+%patch -P 1
 cd ../unmatched
-%patch1
+%patch -P 1
 
 %build
 # This package failed when testing with -Wl,-as-needed being default.

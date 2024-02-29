@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 13:04:20 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Mar  3 13:51:44 CET 2014 - tiwai@suse.de
 
 - Remove obsoleted autoreq/autoprov tags
