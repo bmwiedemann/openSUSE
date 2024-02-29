@@ -186,6 +186,9 @@ Patch42:        CVE-2023-27043-email-parsing-errors.patch
 # PATCH-FIX-UPSTREAM libexpat260.patch gh#python/cpython#115289
 # Fix tests for XMLPullParser with Expat 2.6.0
 Patch43:        libexpat260.patch
+# PATCH-FIX-UPSTREAM CVE-2023-6597-TempDir-cleaning-symlink.patch bsc#1219666 mcepl@suse.com
+# tempfile.TemporaryDirectory: fix symlink bug in cleanup (from gh#python/cpython!99930)
+Patch44:        CVE-2023-6597-TempDir-cleaning-symlink.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -444,9 +447,7 @@ other applications.
 %patch -P 08 -p1
 %patch -P 09 -p1
 %patch -P 15 -p1
-%ifarch ppc ppc64 ppc64le
 %patch -P 23 -p1
-%endif
 %patch -P 24 -p1
 %patch -P 25 -p1
 %patch -P 27 -p1
@@ -461,6 +462,7 @@ other applications.
 %patch -P 41 -p1
 %patch -P 42 -p1
 %patch -P 43 -p1
+%patch -P 44 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

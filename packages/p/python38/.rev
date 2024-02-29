@@ -791,4 +791,17 @@ Core and Builtins
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1152788</requestid>
   </revision>
+  <revision rev="44" vrev="5">
+    <srcmd5>a25be93a4c4b0ba54d30c76c3cf9b525</srcmd5>
+    <version>3.8.18</version>
+    <time>1709239780</time>
+    <user>dimstar_suse</user>
+    <comment>- (bsc#1219666, CVE-2023-6597) Add
+  CVE-2023-6597-TempDir-cleaning-symlink.patch (patch from
+  gh#python/cpython!99930) fixing symlink bug in cleanup of
+  tempfile.TemporaryDirectory.
+ 
+</comment>
+    <requestid>1153058</requestid>
+  </revision>
 </revisionlist>
