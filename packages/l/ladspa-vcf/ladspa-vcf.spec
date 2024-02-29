@@ -36,8 +36,7 @@ This package provides LADSPA (Linux Audio Developer's Simple Plug-in API)
 plugins for audio EQ biquad filters.
 
 %prep
-%setup -q -n vcf-%{version}
-%patch1
+%autosetup -p0 -n vcf-%{version}
 cp %{SOURCE1} README
 cp %{SOURCE2} .
 
