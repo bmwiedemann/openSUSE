@@ -11,10 +11,10 @@ case "$arch" in
 	*) echo "Unknown arch $arch"; exit 1 ;;
 esac
 echo "install boot loader"
-sdbootutil -v --arch "$arch" --esp-path /boot/efi --entry-token=auto --no-variables install
+sdbootutil -v --no-random-seed --arch "$arch" --esp-path /boot/efi --entry-token=auto --no-variables install
 echo "add kernels"
 export hostonly_l=no # for dracut
-sdbootutil --arch "$arch" --esp-path /boot/efi --entry-token=auto add-all-kernels
+sdbootutil -v --arch "$arch" --esp-path /boot/efi --entry-token=auto add-all-kernels
 # Set a 5s timeout, the "hold a key down" method doesn't work effectively.
 echo "timeout 5" >> /boot/efi/loader/loader.conf
 echo "##### AFTER ####"
