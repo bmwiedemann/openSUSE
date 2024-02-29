@@ -1,7 +1,7 @@
 #
 # spec file for package ofono
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2014 Sergey Kondakov <virtuousfox@gmail.com>.
 # Copyright (c) 2014 Bernd Wachter <bwachter@lart.info>.
 #
@@ -23,11 +23,8 @@ Version:        1.34
 Release:        0
 Summary:        Mobile telephony application development framework
 License:        GPL-2.0-only
-Group:          Productivity/Telephony/Utilities
 URL:            https://01.org/ofono
 Source0:        https://www.kernel.org/pub/linux/network/ofono/%{name}-%{version}.tar.xz
-Source1:        https://www.kernel.org/pub/linux/network/ofono/sha256sums.asc#/%{name}-%{version}.tar.xz.sig
-Source2:        http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x589DA6B1#/ofono.keyring
 Patch0:         harden_ofono.service.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bluez) >= 4.85
@@ -49,7 +46,6 @@ functionality is modeled on public standards, in particular 3GPP TS
 
 %package devel
 Summary:        Development files for ofono, a mobile telephony framework
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 
 %description devel
@@ -62,7 +58,6 @@ applications that want to make use of ofono.
 
 %package tests
 Summary:        Test Scripts for oFono
-Group:          Productivity/Telephony/Utilities
 Requires:       %{name} = %{version}
 Provides:       ofono-test >= 1.0
 Obsoletes:      ofono-test < 1.0
@@ -71,8 +66,7 @@ Obsoletes:      ofono-test < 1.0
 Scripts for testing oFono and its functionality.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure \
@@ -81,7 +75,7 @@ Scripts for testing oFono and its functionality.
   --enable-threads \
   --enable-test \
   --with-systemdunitdir="%{_unitdir}"
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install

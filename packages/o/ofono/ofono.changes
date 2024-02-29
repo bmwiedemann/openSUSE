@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 29 12:47:28 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Drop gpg signature verification due to issues with key
+- Minor spec file cleanup
+
+-------------------------------------------------------------------
+Mon Feb 26 12:44:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Mon Jan 10 22:52:08 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.34:
