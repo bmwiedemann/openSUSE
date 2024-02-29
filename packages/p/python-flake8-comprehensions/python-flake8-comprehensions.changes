@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 27 19:41:44 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add flake8-comprehensions-pr559-notnormalized.patch
+  gh#adamchainz/flake8-comprehensions#559
+
+-------------------------------------------------------------------
 Tue Jul 11 13:33:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.14.0:

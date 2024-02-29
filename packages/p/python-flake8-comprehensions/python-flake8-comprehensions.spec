@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-comprehensions
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 Name:           python-flake8-comprehensions
 Version:        3.14.0
 Release:        0
@@ -24,7 +23,9 @@ Summary:        A flake8 plugin to help you write better list/set/dict comprehen
 License:        ISC
 Group:          Development/Languages/Python
 URL:            https://github.com/adamchainz/flake8-comprehensions
-Source:         https://github.com/adamchainz/flake8-comprehensions/archive/%{version}.tar.gz
+Source:         https://github.com/adamchainz/flake8-comprehensions/archive/%{version}.tar.gz#/flake8-comprehensions-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM flake8-comprehensions-pr559-notnormalized.patch gh#adamchainz/flake8-comprehensions#559
+Patch0:         flake8-comprehensions-pr559-notnormalized.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -45,7 +46,7 @@ BuildRequires:  %{python_module pytest}
 A flake8 plugin that helps you write better list/set/dict comprehensions.
 
 %prep
-%setup -q -n flake8-comprehensions-%{version}
+%autosetup -p1 -n flake8-comprehensions-%{version}
 
 %build
 %pyproject_wheel
@@ -61,6 +62,6 @@ A flake8 plugin that helps you write better list/set/dict comprehensions.
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/flake8_comprehensions
-%{python_sitelib}/flake8_comprehensions-%{version}*-info
+%{python_sitelib}/flake8_comprehensions-%{version}.dist-info
 
 %changelog

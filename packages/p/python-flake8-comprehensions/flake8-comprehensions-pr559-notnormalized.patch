@@ -1,0 +1,12 @@
+diff -ur flake8-comprehensions-3.14.0.orig/tests/test_flake8_comprehensions.py flake8-comprehensions-3.14.0/tests/test_flake8_comprehensions.py
+--- flake8-comprehensions-3.14.0.orig/tests/test_flake8_comprehensions.py	2024-02-27 20:40:03.434499715 +0100
++++ flake8-comprehensions-3.14.0/tests/test_flake8_comprehensions.py	2024-02-27 20:40:14.791498740 +0100
+@@ -22,7 +22,7 @@
+ 
+ def test_version(flake8_path):
+     result = flake8_path.run_flake8(["--version"])
+-    version_regex = r"flake8-comprehensions:( )*" + version("flake8-comprehensions")
++    version_regex = r"flake8[-_]comprehensions:( )*" + version("flake8-comprehensions")
+     unwrapped = "".join(result.out_lines)
+     assert re.search(version_regex, unwrapped)
+ 

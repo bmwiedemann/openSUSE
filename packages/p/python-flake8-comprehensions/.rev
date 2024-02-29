@@ -131,4 +131,15 @@
   * Drop Python 3.7 support.</comment>
     <requestid>1098178</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>ecc3b8890397dddd85d18cf1397c64ac</srcmd5>
+    <version>3.14.0</version>
+    <time>1709239818</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1152490 from bnavigator
+
+- Add flake8-comprehensions-pr559-notnormalized.patch
+    gh#adamchainz/flake8-comprehensions#559</comment>
+    <requestid>1153128</requestid>
+  </revision>
 </revisionlist>
