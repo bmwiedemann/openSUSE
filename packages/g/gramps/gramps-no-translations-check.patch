@@ -1,14 +1,12 @@
-Index: gramps-5.1.4/gramps/gui/grampsgui.py
-===================================================================
---- gramps-5.1.4.orig/gramps/gui/grampsgui.py
-+++ gramps-5.1.4/gramps/gui/grampsgui.py
-@@ -613,7 +613,8 @@ class Gramps:
-         self._vm = ViewManager(app, dbstate,
-                                config.get("interface.view-categories"))
+diff -auNr gramps-5.2.0-orig/gramps/gui/grampsgui.py gramps-5.2.0/gramps/gui/grampsgui.py
+--- gramps-5.2.0-orig/gramps/gui/grampsgui.py	2024-02-29 15:24:39.051875696 +0800
++++ gramps-5.2.0/gramps/gui/grampsgui.py	2024-02-29 15:25:28.485647876 +0800
+@@ -573,7 +573,7 @@
+         dbstate = DbState()
+         self._vm = ViewManager(app, dbstate, config.get("interface.view-categories"))
  
--        if (lin()
-+        # Disabled, as gramps/gettext fails to report correctly when bundle-lang packages are used (boo#941490)
-+        if (False and lin()
-                 and glocale.lang != 'C'
-                 and not gettext.find(GTK_GETTEXT_DOMAIN)):
+-        if lin() and glocale.lang != "C" and not gettext.find(GTK_GETTEXT_DOMAIN):
++        if (False and lin() and glocale.lang != "C" and not gettext.find(GTK_GETTEXT_DOMAIN)):
              _display_gtk_gettext_message(parent=self._vm.window)
+ 
+         _display_translator_message(parent=self._vm.window)

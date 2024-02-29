@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Feb 29 09:05:48 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 5.2.0
+  * Updated translations: ca, cs, da, de, de_AT, en_GB, es, fr,
+    hr, hu, id, it, nb, nl, pl, sk, sl, sv, tr, uk, zh_CN.
+  * Update development status to production.
+  * Remove the Trove classifier
+    "Natural Language :: German(Austrian)".
+  * Emit a "plugins-reloaded" signal when a new addon is
+    installed. This ensures that the user interface will be
+    updated to include the new addon. Fixes #13021.
+  * Fix Windows AIO build.
+  * Update GitHub actions to latest versions. Some actions are
+    deprecated.
+  * Package Gramps 5.2.0-rc1 on macOS. 
+- Update gramps-no-translations-check.patch because of source
+  code changes
+
+-------------------------------------------------------------------
 Thu Feb  8 16:00:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Prepare for RPM 4.20: use autosetup.

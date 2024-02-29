@@ -19,7 +19,7 @@
 
 %global __requires_exclude typelib\\(GtkosxApplication\\)|typelib\\(Gtkspell\\)|typelib\\(GConf\\)
 Name:           gramps
-Version:        5.1.6
+Version:        5.2.0
 Release:        0
 Summary:        Genealogical Research Software
 License:        GPL-2.0-or-later
@@ -34,6 +34,7 @@ BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  python3
+BuildRequires:  python3-setuptools
 # We need the %%mime_database_* macros
 BuildRequires:  shared-mime-info
 BuildRequires:  update-desktop-files
@@ -72,13 +73,12 @@ python3 setup.py build
 python3 setup.py install --root=%{buildroot}
 # fix resource-path containing buildroot information
 echo -n %{_datadir} > %{buildroot}%{python3_sitelib}/gramps/gen/utils/resource-path
-# Application Registry is obsolete since GNOME 2.8.
-rm -r %{buildroot}%{_datadir}/mime-info
 # We package those files as package docs...
 rm -r %{buildroot}%{_datadir}/doc/%{name}/
-%suse_update_desktop_file -r %{name} Office Database
+%suse_update_desktop_file -r %{buildroot}%{_datadir}/applications/org.gramps_project.Gramps.desktop Office Database
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
+%fdupes %{buildroot}%{python3_sitelib}/%{name}/
 
 %post
 %desktop_database_post
@@ -96,10 +96,10 @@ rm -r %{buildroot}%{_datadir}/doc/%{name}/
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %dir %{_datadir}/metainfo
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/org.gramps_project.Gramps.desktop
 %{_datadir}/icons/hicolor/*/*/
-%{_datadir}/metainfo/%{name}.appdata.xml
-%{_datadir}/mime/packages/%{name}.xml
+%{_datadir}/metainfo/org.gramps_project.Gramps.appdata.xml
+%{_datadir}/mime/packages/org.gramps_project.Gramps.xml
 %{python3_sitelib}/%{name}/
 %{python3_sitelib}/%{name}-%{version}-*.egg-info
 %{_mandir}/man1/%{name}.1%{?ext_man}
