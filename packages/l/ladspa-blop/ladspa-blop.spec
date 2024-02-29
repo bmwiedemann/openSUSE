@@ -42,11 +42,7 @@ plugins to implement bandlimited sawtooth, square, variable pulse and
 slope-variable triangle waves.
 
 %prep
-%setup -q -n blop-%{version}
-%patch1
-%patch2
-%patch3
-%patch4
+%autosetup -p0 -n blop-%{version}
 
 %build
 # This package failed when testing with -Wl,-as-needed being default.
