@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 14:35:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Mar 26 10:22:01 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use update-alternatives for the man pages
