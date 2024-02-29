@@ -1,7 +1,7 @@
 #
 # spec file for package mhash
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        A Library for Working with Strong Hashes
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://mhash.sourceforge.net/
+URL:            https://mhash.sourceforge.net/
 Source:         https://sourceforge.net/projects/%{name}/files/%{name}/%{version}/%{name}-%{version}.tar.bz2
 Patch0:         %{name}-%{version}-shared.diff
 # PATCH-FIX-UPSTREAM fix-for-upstream-sources.patch sourceforge#2908478
@@ -34,7 +34,6 @@ Patch5:         mhash-0.9.9-no-free-before-use.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The mhash library provides an easy way to access strong hashes, such as
@@ -61,13 +60,7 @@ The mhash library provides an easy way to access strong hashes such as
 MD5, SHA1, and other algorithms.
 
 %prep
-%setup -q
-%patch0
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%autosetup -p1
 
 %build
 autoreconf --force --install
@@ -75,30 +68,29 @@ autoreconf --force --install
 	--with-pic \
 	--disable-static
 
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
-# useless .la file 
+%make_install
+# useless .la file
 rm %{buildroot}%{_libdir}/lib%{name}.la
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n lib%{name}2 -p /sbin/ldconfig
-
 %postun -n lib%{name}2 -p /sbin/ldconfig
 
 %files -n lib%{name}2
-%defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog NEWS README THANKS TODO
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README THANKS TODO
 %{_libdir}/libmhash.so.*
 
 %files devel
-%defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog NEWS README THANKS TODO
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README THANKS TODO
 %doc doc/skid2-authentication doc/example.c
-%doc %{_mandir}/man?/*
+%{_mandir}/man?/*
 %{_includedir}/*
 %{_libdir}/libmhash.so
 

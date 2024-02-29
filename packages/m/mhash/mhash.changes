@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 28 20:18:21 UTC 2024 - Thomas Renninger <trenn@suse.de>
+
+- Use %autosetup instead of %patch based on pgajdos idea
+- Some spec-cleaner cleanups
+
+-------------------------------------------------------------------
 Fri Apr 29 10:21:00 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - switched source url to https
