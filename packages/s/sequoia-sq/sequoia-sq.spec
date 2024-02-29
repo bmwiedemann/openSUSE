@@ -21,6 +21,7 @@ Version:        0.33.0
 Release:        0
 Summary:        Command-line frontend for Sequoia
 Group:          Productivity/Security
+# for legal: vendor packages are not shipped the tool itself is GPL-v2-only
 License:        GPL-2.0-only
 URL:            https://sequoia-pgp.org/
 Source0:        sequoia-sq-%{version}.tar.xz
@@ -41,7 +42,6 @@ Conflicts:      ispell-sq
 Sequoia is an OpenPGP implementation. Sequoia-sq is the frontend
 for the sequoia library and it is also an example of how to use various
 aspects of Sequoia.
-
 
 %package bash-completion
 Summary:        Bash completion for %{name}
@@ -73,7 +73,6 @@ BuildArch:      noarch
 
 %description    zsh-completion
 Zsh command-line completion support for %{name}.
-
 
 %prep
 %autosetup -a1 -n sequoia-sq-%{version}

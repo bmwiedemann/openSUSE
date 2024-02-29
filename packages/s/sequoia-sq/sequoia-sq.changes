@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 29 13:32:20 UTC 2024 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Disable cargo_audit for now
+
+-------------------------------------------------------------------
+Thu Feb 29 13:30:50 UTC 2024 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Add comment for future legal reviews
+
+-------------------------------------------------------------------
 Mon Feb 26 17:33:40 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Ensure neutrality of descriptions.
