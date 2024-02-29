@@ -38,9 +38,7 @@ This package provides a LADSPA (Linux Audio Developer's Simple Plug-in API)
 pvoc plugin implementing a phase vocoder.
 
 %prep
-%setup -q -n pvoc-%{version}
-%patch1
-%patch2
+%autosetup -p0 -n pvoc-%{version}
 
 %build
 # This package failed when testing with -Wl,-as-needed being default.
