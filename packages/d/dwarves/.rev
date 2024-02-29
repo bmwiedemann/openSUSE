@@ -322,4 +322,12 @@
     <comment></comment>
     <requestid>1116437</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>87f34b7861ca38dab9b0c0b321612aeb</srcmd5>
+    <version>1.26</version>
+    <time>1709239758</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.26</comment>
+    <requestid>1153031</requestid>
+  </revision>
 </revisionlist>

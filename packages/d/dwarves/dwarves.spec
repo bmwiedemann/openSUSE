@@ -1,7 +1,7 @@
 #
 # spec file for package dwarves
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 
 Name:           dwarves
-Version:        1.25
+Version:        1.26
 Release:        0
 Summary:        DWARF utilities
 License:        GPL-2.0-only

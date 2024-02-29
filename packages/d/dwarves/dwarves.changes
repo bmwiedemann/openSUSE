@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 28 20:35:36 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.26
+  * Show more holes (the ones in contained types)
+  * Ability to express the BTF features to encode
+
+-------------------------------------------------------------------
 Mon Oct  9 09:05:08 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix have_libbpf conditional (jsc#PED-4593 bsc#1216042).
