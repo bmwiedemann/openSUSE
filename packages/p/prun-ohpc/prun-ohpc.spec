@@ -35,7 +35,7 @@ within a resource manager for a variety of MPI families.
 %prep
 cp %{S:1} %{S:2} .
 
-%patch1 -p0
+%patch -P 1 -p0
 
 cat <<EOF > ./prunrc
 # Loglvl:  0=error,1=warn,2=info,3=debug
