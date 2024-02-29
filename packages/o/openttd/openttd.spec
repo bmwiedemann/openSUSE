@@ -1,7 +1,7 @@
 #
 # spec file for package openttd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2007-2012 The OpenTTD developers
 #
 # All modifications and additions to the file contributed by third parties
@@ -121,13 +121,21 @@ export CXX=g++
 export CXXFLAGS=-fPIE
 # first, we build the dedicated binary inside dedicated/
 %define __builddir dedicated
-%cmake -DCMAKE_INSTALL_BINDIR="bin" -DCMAKE_INSTALL_DATADIR="share" -DOPTION_DEDICATED:BOOL=ON
+%cmake -DCMAKE_INSTALL_BINDIR="bin" -DCMAKE_INSTALL_DATADIR="share" \
+%if 0%{?suse_version} < 1600
+    -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
+%endif
+    -DOPTION_DEDICATED:BOOL=ON
 %cmake_build
 cd ..
 
 # then, we build the common gui version which we install the usual way
 %define __builddir build
-%cmake -DCMAKE_INSTALL_BINDIR="bin" -DCMAKE_INSTALL_DATADIR="share" -DOPTION_DEDICATED:BOOL=OFF
+%cmake -DCMAKE_INSTALL_BINDIR="bin" -DCMAKE_INSTALL_DATADIR="share" \
+%if 0%{?suse_version} < 1600
+    -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
+%endif
+    -DOPTION_DEDICATED:BOOL=OFF
 %cmake_build
 
 %install
@@ -178,7 +186,7 @@ fi
 %{_mandir}/man6/%{name}.6%{?ext_man}
 
 %files data
-%{_datadir}/doc/%{name}
+%{_docdir}/%{name}
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/lang
 %{_datadir}/%{name}/baseset
