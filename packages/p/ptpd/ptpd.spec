@@ -51,8 +51,8 @@ to work properly with other IEEE 1588 implementations.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
-%patch0
-%patch1 -p1
+%patch -P 0
+%patch -P 1 -p1
 
 %build
 autoreconf -fiv
