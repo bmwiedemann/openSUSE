@@ -76,4 +76,13 @@
     private key is invalid</comment>
     <requestid>1137284</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a50694e58f462f15850178d9ff4e0a2c</srcmd5>
+    <version>1.1.5</version>
+    <time>1709239786</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1153078</requestid>
+  </revision>
 </revisionlist>
