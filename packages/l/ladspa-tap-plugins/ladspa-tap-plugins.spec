@@ -33,8 +33,7 @@ Simple Plug-in API) TAP plugins, short for Tom's Audio Processing,
 which contains a collection of various audio plugins.
 
 %prep
-%setup -q -n tap-plugins-%{version}
-%patch1
+%autosetup -p0 -n tap-plugins-%{version}
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags} -fPIC -ggdb -c"
