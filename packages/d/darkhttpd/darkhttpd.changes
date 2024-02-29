@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 28 23:37:03 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Version 1.16:
+  * Support chroot as non-root on FreeBSD 14+
+  * Listen to IPv4 and IPv6 at the same time when --ipv6 is passed.
+
+-------------------------------------------------------------------
 Thu Jan 18 11:17:39 UTC 2024 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.15

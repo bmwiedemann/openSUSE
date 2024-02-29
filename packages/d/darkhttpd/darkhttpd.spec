@@ -18,7 +18,7 @@
 
 %define pkg_home %{_localstatedir}/lib/%{name}
 Name:           darkhttpd
-Version:        1.15
+Version:        1.16
 Release:        0
 Summary:        When you need a web server in a hurry
 License:        ISC
