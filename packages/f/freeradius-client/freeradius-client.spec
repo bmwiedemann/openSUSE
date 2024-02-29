@@ -59,8 +59,8 @@ freeradius-client-devel if you want to develop applications using
 freeradius-client.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
+
 find -type d -name CVS -print | xargs rm -rf
 cp %{SOURCE1} .
 cp %{SOURCE2} login.radius
