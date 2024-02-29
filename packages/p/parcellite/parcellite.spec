@@ -45,9 +45,7 @@ other desktops or window managers you should also install a panel with a
 system tray or notification area if you want to use this package.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi

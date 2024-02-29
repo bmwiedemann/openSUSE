@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 14:56:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Wed Aug  4 00:55:10 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 1.2.1
 
 - fix parcellite-1.1.9_no_kde_start.patch boo#904731, boo#958343
