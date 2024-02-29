@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>1141004</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>1e7aba6aebc429afb68d316f146fab96</srcmd5>
+    <version>2.6.4+git.1682509819.1ff135ea</version>
+    <time>1709239910</time>
+    <user>dimstar_suse</user>
+    <comment>Submit buildfix from devel to Factory</comment>
+    <requestid>1153440</requestid>
+  </revision>
 </revisionlist>

@@ -31,7 +31,7 @@
 %define gname haclient
 %define uname hacluster
 
-%define rb_ruby_suffix 		ruby3.2
+%define rb_ruby_suffix 		ruby3.3
 %define rb_build_versions       %rb_default_ruby
 %define rb_build_ruby_abis      %rb_default_ruby_abi
 

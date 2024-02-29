@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 15 13:12:09 UTC 2024 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Update the ruby version from 3.2 to 3.3
+
+-------------------------------------------------------------------
 Thu Dec 14 10:36:41 CET 2023 - mls@suse.de
 
 - declare the users/groups we create in the preinstall scripts
