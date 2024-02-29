@@ -421,4 +421,24 @@
   * Tell git to ignore directory ownership (fixes #2495) (#2496) (forwarded request 1152031 from ph03nix)</comment>
     <requestid>1152301</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b91af9b9a8021c529e5ee2fe409751d8</srcmd5>
+    <version>3.68.3</version>
+    <time>1709239925</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.68.3:
+  * Ignore canary IDs in notifications (#2526)
+  * Fix minor typo (#2527)
+  * Remove one filter word (#2525)
+  * fix(deps): update module golang.org/x/crypto to v0.20.0 (#2523)
+  * fix(deps): update module github.com/prometheus/client_golang to v1.19.0 (#2522)
+  * fix(deps): update module github.com/googleapis/gax-go/v2 to v2.12.2 (#2521)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.50.28 (#2520)
+  * fix(deps): update module github.com/golang-jwt/jwt/v4 to v5 (#2513)
+  * Improve Gitlab default URL handling (#2491)
+  * Implement detectors.EndpointCustomizer on datadogtoken (#2510)
+  * JDBC test and parsing improvements (#2516)
+  * Improve monogo and snowflake detectors (#2518) (forwarded request 1153115 from ph03nix)</comment>
+    <requestid>1153484</requestid>
+  </revision>
 </revisionlist>
