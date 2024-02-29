@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 03:08:48 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Thu Dec  9 08:43:20 UTC 2021 - pgajdos@suse.com
 
 - do not require pytest-runner for build, not required

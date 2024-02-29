@@ -1,7 +1,7 @@
 #
 # spec file for package python-datrie
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-datrie
 Version:        0.8.2
 Release:        0
 Summary:        Trie data structure for Python
 License:        LGPL-2.1-or-later
-Group:          Development/Languages/Python
 URL:            https://github.com/kmike/datrie
 Source:         https://files.pythonhosted.org/packages/source/d/datrie/datrie-%{version}.tar.gz
 Patch0:         datrie-bigendian.patch
 BuildRequires:  %{python_module Cython >= 0.26.1}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %python_subpackages
@@ -39,8 +39,7 @@ BuildRequires:  python-rpm-macros
 A trie data structure for Python (2.x and 3.x). Uses libdatrie.
 
 %prep
-%setup -q -n datrie-%{version}
-%patch0 -p1
+%autosetup -p1 -n datrie-%{version}
 # https://github.com/pytries/datrie/pull/89
 sed -i 's:pytest-runner::' setup.py
 
@@ -49,10 +48,10 @@ pushd src
 cython datrie.pyx
 cython *.pxd
 popd
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -61,6 +60,7 @@ popd
 %files %{python_files}
 %license COPYING
 %doc README.rst CHANGES.rst
-%{python_sitearch}/*
+%{python_sitearch}/datrie.cpython-*linux*.so
+%{python_sitearch}/datrie-%{version}.dist-info
 
 %changelog
