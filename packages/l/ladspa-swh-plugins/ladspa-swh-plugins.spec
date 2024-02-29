@@ -52,10 +52,10 @@ Simple Plug-in API) plugins written by Steve Harris.
 %setup -q -n %{tarname}-%{version}
 # This creates the .c files from .xml files.
 for i in `ls -1 *.xml|cut -f 1 -d .` ;do ./makestub.pl "$i.xml" > "$i.c";done
-%patch1
-%patch2
-%patch3
-%patch5
+%patch -P 1
+%patch -P 2
+%patch -P 3
+%patch -P 5
 cp gsm/README README-gsm
 cp %{SOURCE1} .
 cp %{SOURCE2} .

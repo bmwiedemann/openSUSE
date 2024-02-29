@@ -32,4 +32,12 @@ Resubmitted after a few trivial fixes</comment>
     <comment>Update to version 0.4.17, fixes boo#1006861</comment>
     <requestid>440030</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f6a41bbe2739edac52e1314372fbef26</srcmd5>
+    <version>0.4.17</version>
+    <time>1709239871</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153283</requestid>
+  </revision>
 </revisionlist>

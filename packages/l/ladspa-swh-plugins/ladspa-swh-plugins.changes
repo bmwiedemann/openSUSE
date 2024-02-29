@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 13:13:41 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sat Nov 12 13:07:16 UTC 2016 - davejplater@gmail.com
 
 - Update to version 0.4.17, fixes boo#1006861
