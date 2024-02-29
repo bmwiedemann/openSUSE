@@ -54,4 +54,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148875</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>681c8cdaa20358fb246924df60a49c31</srcmd5>
+    <version>5.20.0</version>
+    <time>1709239770</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 5.20.0 (bsc#1185940)</comment>
+    <requestid>1153419</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Tue Feb 26 15:27:50 UTC 2024 - Gus Kenion <gkenion@suse.com>
+
+- Update to version 5.20.0 (bsc#1185940)
+  * Notable changes since release 5.0.0:
+    + Add ability to specify maximum message size.
+    + Do not confirmSelect more than once per channel.
+    + Make RpcClient (Auto)Closeable.
+    + Re-enable DNS round robin.
+    + Multi-treaded topology recovery and related fixes.
+    + NIO connection fixes and improvements.
+    + Handle basic query parameters in connection URI.
+    + Add support for OAuth 2 authentication.
+    + Introduce Connection#openChannel.
+    + TLS enhancements.
+    + Introduce CredentialsProvider interface for authentication.
+    + For details of all fixes and improvements, see release notes at:
+      https://github.com/rabbitmq/rabbitmq-java-client/releases
+  * Includes updates from major release 5.0.0:
+    + Require Java 8 or above.
+    + Supports Android 7.0 or later. 4.x releases continue to
+      support earlier versions of Android.
+    + Lambda-oriented API for Consumers
+    + Make it possible to use lambdas instead of *Listener objects
+    + Add an asynchronous method which returns a CompletableFuture
+    + Introduce SslContextFactory interface to create SSLContext
+      instances.
+    + Remove QueueingConsumer from RpcServer.
+    + Exception handling improvements.
+    + Remove the following deprecated classes and methods:
+      QueueingConsumer, NullTrustManager, FlowListener,
+      and SingleShotLinearTimer.
+    + Breaking changes:
+      - Connection - A new method has been introduced,
+        addBlockedListener(BlockedCallback, UnblockedCallback).
+        This is a concern only if you implement your own Connection.
+        If you only use Connection in your application, the rest of
+        the API hasn't changed.
+      - Channel - New methods have been introduced:
+        addReturnListener(ReturnCallback),
+        addConfirmListener(ConfirmCallback, ConfirmCallback), asyncCompletableRpc(Method), and "lambda-enabled"
+        basicConsume methods. This is a concern only if you
+        implement your own Channel. If you only use Channel in
+        your application, the rest of the API hasn't changed.
+      - RpcServer - RpcServer doesn't rely anymore on
+        QueueingConsumer, which has been removed. If your RpcServer
+        implementation relies on QueueingConsumer.Delivery, use
+        RpcServer.Delivery instead (it has the same API). If you
+        override setupConsumer to create the consumer, you need
+        now to create an implementation of RpcServer.RpcConsumer
+        in this method.
+      - FrameHandlerFactory - FrameHandlerFactory#create has an
+        extra connectionName String parameter. Note this interface
+        isn't meant to be used in applications, so this change
+        shouldn't impact application code.
+      - Removal of AssertionError usages - AssertionsErrors were
+        used in a few places of internal APIs (e.g. BlockingCell),
+        not meant to be used by applications. Nevertheless, if you
+        use those, have a look at the code changes in the GitHub
+        issue #239.
+      - Removal of QueueuingConsumer - QueueingConsumer had been
+        originally introduced to allow applications to overcome a
+        limitation in the way Connection managed threads and
+        consumer dispatching. The threading behavior of Connection
+        and Channel has been changed since then, making
+        QueueingConsumer less relevant. If blocking behavior is
+        needed, applications can use DefaultConsumer and a JDK
+        BlockingQueue.
+      - Removal of NullTrustManager - Use
+        TrustEverythingTrustManager instead, it has the same
+        behavior, but a more meaningful name.
+      - Removal of FlowListener - Channel flow events have been
+        superseded by TCP back pressure. Corresponding methods
+        have been removed from the Channel and ExceptionHandler
+        interfaces, so implementations of those interfaces need
+        to remove them as well (most likely ExceptionHandler
+        implementations, Channel not being an interface implemented
+        in applications).
+    + Full list of changes specific to v5.0.0 at:
+      https://github.com/rabbitmq/rabbitmq-java-client/releases/tag/v5.0.0
+  * Includes updates from previous major release 4.0.0:
+    + Decouple the Java Client project from the RabbitMQ broker.
+    + Enable automatic connection recovery by default.
+    + Logging library integration.
+    + Add support for metrics.
+    + Support NIO.
+    + Support dynamic versioning
+    + Extract Tracer into a separate project
+    + Extract PerfTest into a separate project
+    + Prevent Socket.write() from blocking
+    + UnknownChannelException in AMQConnection.MainLoop.run
+    + Add Recoverable[Connection/Channel] interfaces
+    + Make socket connection to try all DNS record IPs
+    + Transition build from Ant to Maven
+    + Bump default TLS protocol version to TLS v1.2
+    + Begin recovery after all shutdown listeners have been given a
+      chance to run
+    + Enhance RpcClient: Provide access to message metadata
+    + Make Connection implement Closeable interface
+- Remove rabbitmq-java-client-python3.patch - updated codegen.py
+  is already compatible with python3.
+- Remove rabbitmq-java-client-3.3.4-disable-bundlor.diff patch -
+  version 5.20.0 no longer includes bundlor.
+- Download tarballs directly from github instead of using source
+  service.
+
+-------------------------------------------------------------------
 Wed Feb 21 21:01:39 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

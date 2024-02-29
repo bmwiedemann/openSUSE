@@ -16,50 +16,75 @@
 #
 
 
+%global codegen_version 3.8.9
 Name:           rabbitmq-java-client
-Version:        3.5.0
+Version:        5.20.0
 Release:        0
 Summary:        Java AMQP client library
-License:        GPL-2.0-or-later AND MPL-1.1
+License:        Apache-2.0 AND GPL-2.0-or-later AND MPL-2.0
 Group:          Development/Libraries/Java
 URL:            https://www.rabbitmq.com/java-client.html
-Source0:        %{name}-%{version}.tar.xz
-Source1:        rabbitmq-codegen-%{version}.tar.xz
-Patch0:         rabbitmq-java-client-3.3.4-disable-bundlor.diff
-Patch1:         rabbitmq-java-client-python3.patch
-BuildRequires:  ant
-BuildRequires:  apache-commons-io
-BuildRequires:  jakarta-commons-cli
-BuildRequires:  java-devel >= 1.8
-BuildRequires:  junit
-BuildRequires:  python3-devel
-Requires:       apache-commons-io
-Requires:       jakarta-commons-cli
+Source0:        https://github.com/rabbitmq/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        https://github.com/rabbitmq/rabbitmq-codegen/archive/refs/tags/v%{codegen_version}.tar.gz#/rabbitmq-codegen-%{codegen_version}.tar.gz
+BuildRequires:  fdupes
+BuildRequires:  maven-local
+BuildRequires:  python3
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind)
+BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
+BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildArch:      noarch
 
 %description
 The RabbitMQ Java client library allows Java code to interface to AMQP servers.
 
+%package javadoc
+Summary:        API documentation for %{name}
+Group:          Documentation/HTML
+
+%description javadoc
+API documentation for %{name}.
+
 %prep
 %setup -q -a1
-ln -s rabbitmq-codegen-%{version} codegen
-%patch -P 0
-%patch -P 1 -p1
-find . -name *.jar | xargs rm -f
-# Java source and target
-sed -i -e 's#1\.6#1\.8#g' build.properties
+
+%pom_remove_dep org.junit:junit-bom
+
+# Exclude optional dependencies
+%pom_remove_dep io.dropwizard.metrics:metrics-core
+rm -f src/main/java/com/rabbitmq/client/impl/StandardMetricsCollector.java
+
+%pom_remove_dep io.micrometer:micrometer-core
+rm -f src/main/java/com/rabbitmq/client/impl/MicrometerMetricsCollector.java
+rm -rf src/main/java/com/rabbitmq/client/observation/micrometer
+
+%pom_remove_dep io.opentelemetry:opentelemetry-api
+rm -f src/main/java/com/rabbitmq/client/impl/OpenTelemetryMetricsCollector.java
+
+%pom_remove_plugin :groovy-maven-plugin
+
+# Exclude *-sources.jar
+%pom_remove_plugin :maven-source-plugin
+
+%pom_remove_plugin :keytool-maven-plugin
+
+%pom_xpath_remove pom:project/pom:build/pom:extensions
 
 %build
-export CLASSPATH=$(build-classpath commons-io commons-cli junit)
-ant dist
+export PYTHONPATH=rabbitmq-codegen-%{codegen_version}
+python3 ./codegen.py header ${PYTHONPATH}/amqp-rabbitmq-0.9.1.json src/main/java/com/rabbitmq/client/AMQP.java
+python3 ./codegen.py body ${PYTHONPATH}/amqp-rabbitmq-0.9.1.json src/main/java/com/rabbitmq/client/impl/AMQImpl.java
+%{mvn_build} -f -- -DskipTests=true
 
 %install
-mkdir -p %{buildroot}%{_javadir}
-install build/lib/rabbitmq-client.jar %{buildroot}%{_javadir}/rabbitmq-client.jar
+%mvn_install
+%fdupes -s %{buildroot}%{_javadocdir}
 
-%files
+%files -f .mfiles
 %license LICENSE LICENSE-APACHE2 LICENSE-GPL2 LICENSE-MPL-RabbitMQ
 %doc README.md
-%{_javadir}/rabbitmq-client.jar
+
+%files javadoc -f .mfiles-javadoc
+%license LICENSE LICENSE-APACHE2 LICENSE-GPL2 LICENSE-MPL-RabbitMQ
 
 %changelog
