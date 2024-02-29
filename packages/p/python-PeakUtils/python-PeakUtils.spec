@@ -1,7 +1,7 @@
 #
 # spec file for package python-PeakUtils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ Requires:       python-scipy
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module scipy}
 # /SECTION
 %python_subpackages
@@ -44,7 +45,7 @@ centroid computation to further increase the resolution of the peak
 detection.
 
 %prep
-%setup -q -n PeakUtils-%{version}
+%autosetup -p1 -n PeakUtils-%{version}
 
 %build
 %python_build
@@ -54,7 +55,7 @@ detection.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand $python -m unittest discover
+%pyunittest -v tests/peakutils_test.py
 
 %files %{python_files}
 %doc README.rst
