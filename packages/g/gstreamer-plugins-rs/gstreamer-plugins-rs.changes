@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Thu Feb 29 11:52:01 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.12.2:
+  * Fixed
+    - rtpgccbwe: Don't reset PTS/DTS to None as otherwise
+      rtpsession won't be able to generate valid RTCP.
+    - webrtcsink: Fix usage with 1.22.
+  * Added
+    - janusvrwebrtcsink: Add secret-key property.
+    - janusvrwebrtcsink: Allow for string room ids and add
+      string-ids property.
+    - textwrap: Don't split on all whitespaces, especially not on
+      non-breaking whitespace.
+- Update to version 0.12.1:
+  * Added
+    - gtk4: Create a window for testing purposes when running in
+      gst-launch-1.0 or if GST_GTK4_WINDOW=1 is set.
+    - webrtcsink: Add msid property.
+- Update to version 0.12.0:
+  * Changed
+    - ndi: ndisrc passes received data downstream without an
+      additional copy, if possible.
+    - webrtc: Cleanups to webrtcsrc/sink default signalling
+      protocol, JavaScript implementation and server
+      implementation.
+    - webrtc: whipwebrtcsink is renamed to whipclientsink and
+      deprecate old whipsink.
+  * Fixed
+    - gtk4: Fix Windows build when using EGL.
+    - gtk4: Fix ARGB pre-multiplication with GTK 4.14. This
+      requires building with the gtk_v4_10 or even better gtk_v4_14
+      feature.
+    - gtk4: Fix segfault if GTK3 is used in the same process.
+    - gtk4: Always draw background behind the video frame and not
+      only when borders have to be added to avoid glitches.
+    - livekitwebrtcsink: Add high-quality layer for video streams.
+    - webrtc: Fix potential hang and fd leak in signalling server.
+    - webrtc: Fix closing of WebSockets.
+    - webrtchttp: Allow setting None for audio/video caps for WHEP.
+  * Added
+    - New awss3putobjectsink that works similar to awss3sink but
+      with a different upload strategy.
+    - New hlscmafsink element for writing HLS streams with
+      CMAF/ISOBMFF fragments.
+    - New inter plugin with intersink / intersrc elements that
+      allow to connect different pipelines in the same process.
+    - New janusvrwebrtcsink element for the Janus VideoRoom API.
+    - New rtspsrc2 element.
+    - New whipserversrc element.
+    - gtk4: New background-color property for setting the color of
+      the background of the frame and the borders, if any.
+    - gtk4: New scale-filter property for defining how to scale the
+      frames.
+    - livesync: Add support for image formats.
+    - ndi: Closed Caption support in ndisrc / ndisink.
+    - textwrap: Add support for gaps.
+    - tracers: Optionally only show late buffers in buffer-lateness
+      tracer.
+    - webrtc: Add support for custom headers.
+    - webrtcsink: New payloader-setup signal to configure payloader
+      elements.
+    - webrtcsrc: Support for navigation events.
+
+-------------------------------------------------------------------
 Mon Jan 29 10:22:55 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Increase memory to 12G for s390x builds in _constraints

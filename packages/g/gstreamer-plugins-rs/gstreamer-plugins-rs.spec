@@ -33,7 +33,7 @@
 %endif
 
 Name:           gstreamer-plugins-rs
-Version:        0.11.3
+Version:        0.12.2
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -45,6 +45,7 @@ Source2:        vendor.tar.zst
 Source3:        cargo_config
 Source4:        gstreamer-plugins-rs.appdata.xml
 Source5:        vendor-for-dav1d-1.3.0.tar.zst
+Source99:       README.SUSE
 
 BuildRequires:  cargo-c >= 0.9.21
 BuildRequires:  cargo-packaging >= 1.2.0+3
@@ -106,6 +107,7 @@ plugins.
 %autosetup -n %{_name}-%{version} -a5 -p1
 
 sed -ie 's/^dav1d = "[0-9\.]*"/dav1d = "0.10"/' video/dav1d/Cargo.toml
+sed -i -e "s/'extra-deps': {'dav1d': \['>=1.0', '<1.3'\]}/'extra-deps': {'dav1d': ['>=1.3']}/" meson.build
 %else
 %autosetup -n %{_name}-%{version} -a2 -p1
 %endif
@@ -177,9 +179,11 @@ cp %{SOURCE4} %{buildroot}%{_datadir}/appdata/
 %{_libdir}/gstreamer-%{gst_branch}/libgstrsclosedcaption.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrsfile.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrsflv.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstrsinter.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrsonvif.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrspng.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrsrtp.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstrsrtsp.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrstracers.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrsvideofx.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrswebp.so
