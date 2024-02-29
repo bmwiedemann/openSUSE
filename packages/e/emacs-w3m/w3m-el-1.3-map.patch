@@ -1,5 +1,5 @@
---- w3m-form.el
-+++ w3m-form.el	2002/07/07 19:16:32
+--- ./w3m-form.el
++++ ./w3m-form.el	2002/07/07 19:16:32
 @@ -417,7 +417,7 @@
  			      (char-after (match-beginning 1))
  			      ?/)))

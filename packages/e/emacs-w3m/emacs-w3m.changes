@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Feb 21 19:59:11 UTC 2024 - schwab@linux-m68k.org
+
+- Update to version 1.4.632+563+gdc5136d2:
+  * * shimbun/sb-sankei.el (shimbun-sankei-login, shimbun-sankei-keep-login): Revert
+  * * shimbun/sb-sankei.el (shimbun-sankei-get-headers): Add author's name to subject if possible (shimbun-sankei-login, shimbun-sankei-keep-login): Update cookies handling
+  * * shimbun/sb-sankei.el (shimbun-sankei-get-headers-ranking) (shimbun-sankei-get-headers): Update regexps
+  * * shimbun/sb-sankei.el (shimbun-sankei-get-headers): Minor fixes
+  * Add ``lexical-binding: nil'' to many files
+  * * shimbun/sb-sankei.el (shimbun-sankei-get-headers-ranking): New function (shimbun-sankei-get-headers): Use it for the sankeisyo group; minor improvements
+  * * shimbun/sb-sankei.el: Fix it so to work again for almost groups
+  * * w3m.el (w3m-fontify-anchors): Improve the way to find unsafe links
+  * * shimbun/mew-shimbun.el (mew-shimbun-unseen-setup): Fix advice
+  * * w3m.el (w3m-add-referer, w3m-puny-utf-16be): Fix custom types
+  * * w3mhack.el (w3mhack-insert-git-revision, w3mhack-generate-load-file): Fix so to generate emacs-w3m-git-revision on Emacs 29 and up as well
+  * * nnshimbun.el (nnshimbun-replace-date-header): Compile it if and only if it is necessary
+  * * mew-shimbun.el (mew-shimbun-unseen-setup): Use advice-add instead of defadvice that's been marked obsolete in Emacs 30
+  * * w3m-util.el (w3m-delete-w3m-initial-frames): Doc fix
+  * * mime-w3m.el (mime-display-message, kill-new): Use advice-add instead of defadvice that's been marked obsolete in Emacs 30
+  * Drop Emacs 27 support
+  * * nnshimbun.el (nnshimbun-replace-date-header): Don't quote lambda form
+
+-------------------------------------------------------------------
 Sat Apr 01 21:20:37 UTC 2023 - schwab@linux-m68k.org
 
 - Update to version 1.4.632+546+gf8819bca:

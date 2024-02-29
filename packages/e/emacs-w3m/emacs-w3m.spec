@@ -21,7 +21,7 @@ Summary:        An interface program to use w3m with Emacs
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 # Summary(ja): w3m を Emacs 上で動かすためのプログラムです
-Version:        1.4.632+546+gf8819bca
+Version:        1.4.632+563+gdc5136d2
 Release:        0
 URL:            http://emacs-w3m.namazu.org/
 Source0:        emacs-w3m-%{version}.tar.xz
@@ -30,11 +30,11 @@ Patch1:         w3m-el-1.3-map.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 BuildRequires:  autoconf
-BuildRequires:  emacs-nox
+BuildRequires:  emacs-nox >= 28.0
 BuildRequires:  flim
 BuildRequires:  makeinfo
 Requires:       apel
-Requires:       emacs
+Requires:       emacs >= 28.0
 Requires:       flim
 Requires:       w3m
 Provides:       w3m-el = %{version}
@@ -60,8 +60,7 @@ with WWW capability, developed by Akinori ITO. It is a pager, but it
 can be used as a text-mode WWW browser.
 
 %prep
-%setup -q
-%patch1
+%autosetup -p1
 
 %build
 %define emacs_sitelisp_dir %{_datadir}/emacs/site-lisp
