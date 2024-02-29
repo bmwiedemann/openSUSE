@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 12:33:16 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip broken tests with python 3.12
+
+-------------------------------------------------------------------
 Fri Nov 12 01:28:36 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip a broken test. 

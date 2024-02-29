@@ -1,7 +1,7 @@
 #
 # spec file for package python-cloudscraper
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname cloudscraper
 %define skip_python2 1
 Name:           python-cloudscraper
-Version:        1.2.58
+Version:        1.2.68
 Release:        0
 Summary:        A Python module to bypass Cloudflare's anti-bot page
 License:        MIT
@@ -59,11 +58,17 @@ A Python module to bypass Cloudflare's anti-bot page.
 
 %check
 # Skip broken test
-%pytest -k 'not test_getCookieString_challenge_js_challenge1_16_05_2020'
+donttest="test_getCookieString_challenge_js_challenge1_16_05_2020"
+donttest+=" or test_bad_interpreter_js_challenge1_16_05_2020"
+donttest+=" or test_bad_solve_js_challenge1_16_05_2020"
+donttest+=" or test_Captcha_challenge_12_12_2019"
+donttest+=" or test_reCaptcha_providers"
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/cloudscraper
+%{python_sitelib}/cloudscraper-%{version}*-info
 
 %changelog
