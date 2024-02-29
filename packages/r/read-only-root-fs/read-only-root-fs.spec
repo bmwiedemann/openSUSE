@@ -1,7 +1,7 @@
 #
 # spec file for package read-only-root-fs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           read-only-root-fs
-Version:        1.0+git20220808.cd59f4f
+Version:        1.0+git20240228.d85232a
 Release:        0
 Summary:        Files and Scripts for a RO root fileystem
 License:        GPL-2.0-or-later

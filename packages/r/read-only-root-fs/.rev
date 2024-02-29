@@ -142,4 +142,13 @@
     <comment></comment>
     <requestid>993755</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>13637b8167e0c0144e759b35820d63b3</srcmd5>
+    <version>1.0+git20240228.d85232a</version>
+    <time>1709239752</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git20240228.d85232a:
+  * etc/grub.d/01_suse_ro_root: Don't btrfs-mount-subvol inside grub-emu</comment>
+    <requestid>1152966</requestid>
+  </revision>
 </revisionlist>
