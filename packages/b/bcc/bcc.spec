@@ -87,6 +87,7 @@ Shared Library from the BPF Compiler Collection.
 Summary:        Header files for the BPF Compiler Collection
 Group:          Development/Languages/C and C++
 Requires:       libbcc0 = %{version}
+Requires:       llvm%{llvm_major_version}-devel
 
 %description devel
 Headers and pkg-config build descriptions for developing BCC programs.
