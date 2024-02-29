@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb 25 20:35:05 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Add CVE-2024-1454.patch.
+  Fix for CVE-2024-1454 / bsc#1219868.
+
+-------------------------------------------------------------------
 Wed Dec 13 12:27:34 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Update to OpenSC 0.24.0:

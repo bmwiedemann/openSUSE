@@ -1,7 +1,7 @@
 #
 # spec file for package opensc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ Source2:        %{name}-rpmlintrc
 # https://web.archive.org/web/20111225073733/http://www.opensc-project.org/opensc/ticket/390
 Source3:        opensc.module
 Patch0:         opensc-gcc11.patch
+# PATCH-FIX-UPSTREAM martin.schreiner@suse.com CVE-2024-1454 bsc#1219868
+Patch1:         CVE-2024-1454.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libxslt
 BuildRequires:  pkgconfig
