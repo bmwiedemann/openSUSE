@@ -1,7 +1,7 @@
 #
 # spec file for package proj
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define data_version 1.15
+%define data_version 1.16
 %define sover   25
 %define libname lib%{name}%{sover}
 Name:           proj
@@ -36,7 +36,6 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(nlohmann_json)
 BuildRequires:  pkgconfig(sqlite3) >= 3.11
-Provides:       libproj = %{version}
 
 %description
 This package offers the commandline tools for performing respective
@@ -56,8 +55,6 @@ data with a wide range of selectable projection functions.
 Summary:        Development files for PROJ
 License:        MIT
 Requires:       %{libname} = %{version}
-Provides:       libproj-devel = %{version}
-Obsoletes:      libproj-devel < %{version}
 
 %description devel
 This package contains libproj and the appropriate header files and man pages.
@@ -132,8 +129,7 @@ rm -rf %{buildroot}%{_datadir}/doc/${name}
 %ctest
 %endif
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files
 %doc NEWS AUTHORS README ChangeLog
