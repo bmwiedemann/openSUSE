@@ -1,7 +1,7 @@
 #
 # spec file for package exiv2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with docs
 Name:           exiv2
-Version:        0.28.1
+Version:        0.28.2
 Release:        0
 Summary:        Tool to access image Exif metadata
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -195,7 +195,7 @@ done
 %{_includedir}/exiv2
 %{_libdir}/libexiv2.so
 %{_libdir}/pkgconfig/exiv2.pc
-%{_datadir}/cmake/exiv2
+%{_libdir}/cmake/exiv2
 
 %if %{with docs}
 %files -n libexiv2-doc

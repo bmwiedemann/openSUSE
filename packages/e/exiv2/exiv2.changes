@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 28 14:31:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.28.2 (bsc#1219870, CVE-2024-24826, bsc#1219871,
+  CVE-2024-25112):
+  * CVE-2024-24826: out-of-bounds read in
+    QuickTimeVideo::NikonTagsDecoder.
+  * CVE-2024-25112: denial of service due to unbounded
+    recursion in QuickTimeVideo::multipleEntriesDecoder.
+
+-------------------------------------------------------------------
 Tue Nov  7 08:42:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.28.1 (bsc#1216923, CVE-2023-44398):
