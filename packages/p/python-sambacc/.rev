@@ -78,4 +78,12 @@
   * sambacc: make config module robust to unexpected jsonschema versions</comment>
     <requestid>1086073</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>be223d75df64d39fc8a893546aedd4fa</srcmd5>
+    <version>v0.2+git.108.e7850e0</version>
+    <time>1709239769</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153034</requestid>
+  </revision>
 </revisionlist>
