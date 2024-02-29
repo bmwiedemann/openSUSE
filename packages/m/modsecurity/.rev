@@ -88,4 +88,12 @@
  - Fix variable FILES_TMPNAMES</comment>
     <requestid>1142603</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>dc4a018cfb403a583602e86db80eae86</srcmd5>
+    <version>3.0.12</version>
+    <time>1709239833</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153184</requestid>
+  </revision>
 </revisionlist>
