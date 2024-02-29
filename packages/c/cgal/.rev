@@ -295,4 +295,12 @@
   * https://github.com/CGAL/cgal/issues?q=sort%3Aupdated-desc+label%3AMerged_in_5.5.2+-label%3AMerged_in_5.5.1</comment>
     <requestid>1101456</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>ab96aa36758cd31db1a737a8ca24359c</srcmd5>
+    <version>5.6.1</version>
+    <time>1709239823</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153187</requestid>
+  </revision>
 </revisionlist>

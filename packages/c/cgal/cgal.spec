@@ -1,7 +1,7 @@
 #
 # spec file for package cgal
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2014 Ioda-Net Sàrl, Charmoille, Switzerland.
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@
 #@TODO : ask for rename and take into account the obsolete existant thing. like libcgal deps
 %define _sourcename CGAL
 Name:           cgal
-Version:        5.6
+Version:        5.6.1
 Release:        0
 Summary:        Computational Geometry Algorithms Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -109,7 +109,8 @@ This package provides the documentation for CGAL algorithms.
 export CXX="g++-11"
 %endif
 
-%cmake -DCGAL_INSTALL_LIB_DIR=%{_lib}
+%cmake -DCGAL_INSTALL_LIB_DIR=%{_lib} \
+       -DCGAL_INSTALL_DOC_DIR=%{_docdir}/%{name}-doc
 
 %make_build
 
@@ -126,13 +127,12 @@ install -d %{buildroot}/%{_datadir}/CGAL/demo
 cp -a examples/* %{buildroot}/%{_datadir}/CGAL/examples
 cp -a demo/* %{buildroot}/%{_datadir}/CGAL/demo
 
-# Clean doc wrongly placed by make install
-rm -rfv %{buildroot}/%{_datadir}/doc/CGAL
-
 # no macos here.
 rm %{buildroot}/%{_bindir}/cgal_make_macosx_app
 
-install -d %{buildroot}/%{_docdir}/%{name}-doc/
+# installed as docs, but licenses are under %%{_datadir}/licenses/, remove duplicate
+rm %{buildroot}%{_docdir}/%{name}-doc/LICENSE*
+
 cp -a doc_html %{buildroot}/%{_docdir}/%{name}-doc/
 %fdupes %{buildroot}%{_docdir}/%{name}-doc/
 
@@ -143,7 +143,8 @@ cp -a doc_html %{buildroot}/%{_docdir}/%{name}-doc/
 %doc AUTHORS CHANGES.md
 %{_includedir}/CGAL
 %{_libdir}/cmake/CGAL
-%{_bindir}/*
+%{_bindir}/cgal_create_CMakeLists
+%{_bindir}/cgal_create_cmake_script
 %{_mandir}/man1/cgal_create_cmake_script.1%{?ext_man}
 
 %files demo-examples-devel
@@ -152,7 +153,9 @@ cp -a doc_html %{buildroot}/%{_docdir}/%{name}-doc/
 
 %files doc
 %license LICENSE*
-%doc AUTHORS CHANGES.md
+%doc %dir %{_docdir}/%{name}-doc
 %doc %{_docdir}/%{name}-doc/doc_html
+%doc %{_docdir}/%{name}-doc/AUTHORS
+%doc %{_docdir}/%{name}-doc/CHANGES.md
 
 %changelog

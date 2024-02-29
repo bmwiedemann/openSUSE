@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 28 15:47:46 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.6.1
+  * CGAL-5.6.1 is a bug-fix release.
+    See on Github the list of bugs that were solved since CGAL-5.6.
+    https://github.com/CGAL/cgal/releases/tag/v5.6.1
+- Fix documentation packaging: Tumbleweed uses a different default
+  destination than older distributions now. Force doc subdir.
+
+-------------------------------------------------------------------
 Mon Jul 31 06:06:33 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 5.6:
