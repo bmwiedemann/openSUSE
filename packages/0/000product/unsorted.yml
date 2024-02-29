@@ -8115,6 +8115,7 @@ unsorted:
   - hauler 
   - haveged-devel 
   - hawk-apiserver 
+  - hawk2 
   - hawkey-man 
   - hawknl-devel 
   - hawknl-libs 
@@ -15214,9 +15215,6 @@ unsorted:
   - librist-devel 
   - librist4-32bit 
   - librk0 
-  - librlog-devel 
-  - librlog5 
-  - librlog5-doc 
   - librmt-devel-doc 
   - librnnoise0 
   - librnp0 
@@ -15248,7 +15246,6 @@ unsorted:
   - librttr_core0_9_6 
   - librubberband-devel 
   - librubberband2-32bit 
-  - libruby3_2-3_2 
   - librvngabw-0_0-0 
   - librvngabw-devel 
   - librvngabw-devel-doc 
@@ -23079,6 +23076,7 @@ unsorted:
   - python3-unbound 
   - python3-upm 
   - python3-vapoursynth 
+  - python3-vigranumpy 
   - python3-virt-bootstrap 
   - python3-virt-scenario 
   - python3-virt-tuner 
@@ -25466,7 +25464,6 @@ unsorted:
   - python310-ptpython-ptipython 
   - python310-ptr 
   - python310-ptyprocess 
-  - python310-publicsuffix 
   - python310-publicsuffix2 
   - python310-publicsuffixlist 
   - python310-pudb 
@@ -25688,7 +25685,6 @@ unsorted:
   - python310-pyscreenshot 
   - python310-pysendfile 
   - python310-pyserial 
-  - python310-pysha3 
   - python310-pyshark 
   - python310-pyshould 
   - python310-pyshp 
@@ -26514,7 +26510,6 @@ unsorted:
   - python310-voluptuous 
   - python310-voluptuous-serialize 
   - python310-vsts 
-  - python310-vsts-cd-manager 
   - python310-vulkan 
   - python310-vulture 
   - python310-w3lib 
@@ -28481,7 +28476,6 @@ unsorted:
   - python311-magic-wormhole-mailbox-server 
   - python311-magic-wormhole-transit-relay 
   - python311-magicalimport 
-  - python311-mailman-hyperkitty 
   - python311-mailman3-fedmsg-plugin 
   - python311-mailmanclient 
   - python311-main-wrapper 
@@ -28930,7 +28924,6 @@ unsorted:
   - python311-ptpython 
   - python311-ptpython-ptipython 
   - python311-ptr 
-  - python311-publicsuffix 
   - python311-publicsuffix2 
   - python311-publicsuffixlist 
   - python311-pudb 
@@ -29936,7 +29929,6 @@ unsorted:
   - python311-voluptuous 
   - python311-voluptuous-serialize 
   - python311-vsts 
-  - python311-vsts-cd-manager 
   - python311-vulkan 
   - python311-vulture 
   - python311-w3lib 
@@ -30187,6 +30179,7 @@ unsorted:
   - python312-Parsley 
   - python312-Paste 
   - python312-PasteDeploy 
+  - python312-PeakUtils 
   - python312-Pebble 
   - python312-Pillow 
   - python312-Pillow-tk 
@@ -30981,6 +30974,7 @@ unsorted:
   - python312-cloud-init-seed 
   - python312-cloudflare 
   - python312-cloudpickle 
+  - python312-cloudscraper 
   - python312-cloup 
   - python312-cluster 
   - python312-cma 
@@ -31351,6 +31345,7 @@ unsorted:
   - python312-fake-useragent 
   - python312-fakeredis 
   - python312-falcon 
+  - python312-fanficfare 
   - python312-fann2 
   - python312-fastapi 
   - python312-fastbencode 
@@ -31383,6 +31378,7 @@ unsorted:
   - python312-flake8-bugbear 
   - python312-flake8-builtins 
   - python312-flake8-class-newline 
+  - python312-flake8-comprehensions 
   - python312-flake8-debugger 
   - python312-flake8-deprecated 
   - python312-flake8-docstrings 
@@ -31835,6 +31831,7 @@ unsorted:
   - python312-ldapdomaindump 
   - python312-ldappool 
   - python312-ldaptor 
+  - python312-ldas-tools-al-swig 
   - python312-leather 
   - python312-leglight 
   - python312-lesscpy 
@@ -31946,6 +31943,7 @@ unsorted:
   - python312-magic-wormhole-mailbox-server 
   - python312-magic-wormhole-transit-relay 
   - python312-magicalimport 
+  - python312-mailman-hyperkitty 
   - python312-mailman3-fedmsg-plugin 
   - python312-mailmanclient 
   - python312-main-wrapper 
@@ -32391,7 +32389,6 @@ unsorted:
   - python312-ptpython-ptipython 
   - python312-ptr 
   - python312-ptyprocess 
-  - python312-publicsuffix 
   - python312-publicsuffix2 
   - python312-publicsuffixlist 
   - python312-pudb 
@@ -32971,6 +32968,7 @@ unsorted:
   - python312-s3transfer 
   - python312-sadisplay 
   - python312-safe-netrc 
+  - python312-sambacc 
   - python312-samplerate 
   - python312-sane 
   - python312-sanlock 
@@ -33390,7 +33388,6 @@ unsorted:
   - python312-voluptuous 
   - python312-voluptuous-serialize 
   - python312-vsts 
-  - python312-vsts-cd-manager 
   - python312-vulkan 
   - python312-vulture 
   - python312-w3lib 
@@ -35910,7 +35907,6 @@ unsorted:
   - python39-ptpython-ptipython 
   - python39-ptr 
   - python39-ptyprocess 
-  - python39-publicsuffix 
   - python39-publicsuffix2 
   - python39-publicsuffixlist 
   - python39-pudb 
@@ -36133,7 +36129,6 @@ unsorted:
   - python39-pyscreenshot 
   - python39-pysendfile 
   - python39-pyserial 
-  - python39-pysha3 
   - python39-pyshark 
   - python39-pyshould 
   - python39-pyshp 
@@ -36957,7 +36952,6 @@ unsorted:
   - python39-voluptuous 
   - python39-voluptuous-serialize 
   - python39-vsts 
-  - python39-vsts-cd-manager 
   - python39-vulkan 
   - python39-vulture 
   - python39-w3lib 
@@ -37763,6 +37757,7 @@ unsorted:
   - r128gain 
   - rabbitmq-c-tools 
   - rabbitmq-java-client 
+  - rabbitmq-java-client-javadoc 
   - rabbitmq-server 
   - rabbitmq-server-bash-completion 
   - rabbitmq-server-plugins 
@@ -38192,11 +38187,6 @@ unsorted:
   - ruby-selinux 
   - ruby-xapian 
   - ruby-yui 
-  - ruby3.2 
-  - ruby3.2-devel 
-  - ruby3.2-devel-extra 
-  - ruby3.2-doc 
-  - ruby3.2-doc-ri 
   - ruby3.3-devel 
   - ruby3.3-devel-extra 
   - ruby3.3-doc 

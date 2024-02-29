@@ -3862,7 +3862,6 @@
     <package name="ruby3.3-rubygem-oauth2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.3-rubygem-omniauth" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.3-rubygem-omniauth-oauth2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="ruby3.3-rubygem-openid_connect" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.3-rubygem-optimist" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.3-rubygem-orm_adapter" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.3-rubygem-os" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
