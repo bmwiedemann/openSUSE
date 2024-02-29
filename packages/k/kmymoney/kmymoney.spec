@@ -29,7 +29,6 @@ BuildRequires:  doxygen
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  kdiagram-devel
-BuildRequires:  kf5-filesystem
 BuildRequires:  libQt5Sql-private-headers-devel
 BuildRequires:  libalkimia5-devel >= 7.0
 BuildRequires:  libofx-devel
@@ -37,7 +36,6 @@ BuildRequires:  libqgpgme-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  cmake(KF5Activities)
-BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
@@ -48,7 +46,6 @@ BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5Holidays)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5IdentityManagement)
 BuildRequires:  cmake(KF5ItemModels)
 BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5KCMUtils)
@@ -58,6 +55,9 @@ BuildRequires:  cmake(KF5Service)
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5Wallet)
 BuildRequires:  cmake(KF5XmlGui)
+# Disabled PIM dependencies until kmymoney is ported to KF6/Qt6
+# BuildRequires:  cmake(KF5Akonadi)
+# BuildRequires:  cmake(KF5IdentityManagement)
 BuildRequires:  cmake(Qt5Concurrent) >= 5.6.0
 BuildRequires:  cmake(Qt5Core) >= 5.6.0
 BuildRequires:  cmake(Qt5DBus) >= 5.6.0
@@ -116,8 +116,7 @@ Development files and headers need to build software using KMyMoney.
 %{kf5_find_htmldocs}
 %endif
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license LICENSES/*
