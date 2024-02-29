@@ -1,5 +1,0 @@
-<package name="rlog" project="openSUSE:Factory">
-  <title>C++ Logging Library</title>
-  <description>RLOG is a C++ library to manage message logging.</description>
-  <devel project="devel:libraries:c_c++" package="rlog"/>
-</package>
