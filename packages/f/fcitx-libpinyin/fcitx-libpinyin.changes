@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 08:42:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Tue Mar 29 08:20:14 CEST 2022 - tiwai@suse.de
 
 - Fix the recent TW build breakage, add icons directory to file list
