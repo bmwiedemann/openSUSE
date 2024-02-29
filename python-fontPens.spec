@@ -1,7 +1,7 @@
 #
 # spec file for package python-fontPens
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 Name:           python-fontPens
 Version:        0.2.4
 Release:        0
@@ -27,7 +24,9 @@ License:        BSD-3-Clause
 URL:            https://github.com/robotools/fontPens
 Source:         https://files.pythonhosted.org/packages/source/f/fontPens/fontPens-%{version}.zip
 Patch0:         fix-fp-issue.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -44,14 +43,13 @@ BuildRequires:  %{python_module pytest}
 A collection of classes implementing the pen protocol for manipulating glyphs.
 
 %prep
-%setup -q -n fontPens-%{version}
-%patch0 -p1
+%autosetup -p1 -n fontPens-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,6 +59,6 @@ A collection of classes implementing the pen protocol for manipulating glyphs.
 %doc README.rst
 %license LICENSE.txt
 %{python_sitelib}/fontPens
-%{python_sitelib}/fontPens-%{version}*-info
+%{python_sitelib}/fontPens-%{version}.dist-info
 
 %changelog
