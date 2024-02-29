@@ -1,7 +1,7 @@
 #
 # spec file for package python-daemonize
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,10 @@ License:        MIT
 URL:            https://github.com/thesharp/daemonize
 Source:         https://github.com/thesharp/daemonize/archive/v%{version}.tar.gz
 Patch0:         no-python2.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  procps
 BuildRequires:  python-rpm-macros
@@ -38,14 +40,13 @@ BuildArch:      noarch
 daemonize is a library for writing system daemons in Python.
 
 %prep
-%setup -q -n daemonize-%{version}
-%patch0 -p1
+%autosetup -p1 -n daemonize-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -54,6 +55,8 @@ daemonize is a library for writing system daemons in Python.
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/daemonize.py
+%pycache_only %{python_sitelib}/__pycache__/daemonize.*.py*
+%{python_sitelib}/daemonize-%{version}.dist-info
 
 %changelog
