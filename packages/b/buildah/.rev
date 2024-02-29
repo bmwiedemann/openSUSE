@@ -650,4 +650,12 @@
     <comment></comment>
     <requestid>1151104</requestid>
   </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>cc3929e9cfc34812bee7aa1c1a52e15e</srcmd5>
+    <version>1.34.1</version>
+    <time>1709239908</time>
+    <user>dimstar_suse</user>
+    <comment>Require cni-plugins (bsc#1220568) (forwarded request 1152994 from danishprakash)</comment>
+    <requestid>1153433</requestid>
+  </revision>
 </revisionlist>
