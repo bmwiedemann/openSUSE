@@ -1,7 +1,7 @@
 #
 # spec file for package SDL_bgi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,14 +66,11 @@ together.
 %autosetup -p1
 
 %build
-%cmake
+%cmake -DCMAKE_INSTALL_DOCDIR:PATH="%_docdir/%name"
 %cmake_build
 
 %install
 %cmake_install
-b="%buildroot"
-mkdir -p "$b/%_defaultdocdir"
-mv "$b/%_datadir/doc/%name" "$b/%_defaultdocdir/"
 # just a forwarder and conflicts with xbgi
 rm -v "%buildroot/%_includedir/graphics.h"
 
@@ -85,7 +82,7 @@ rm -v "%buildroot/%_includedir/graphics.h"
 %_libdir/libSDL_bgi.so.*
 
 %files -n libSDL_bgi-devel
-%_defaultdocdir/%name/
+%_docdir/%name/
 %_includedir/*
 %_libdir/libSDL_bgi.so
 %_mandir/man3/*

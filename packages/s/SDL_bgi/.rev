@@ -199,4 +199,14 @@
     <comment>- Update to release 3.0.0</comment>
     <requestid>1043225</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>9b63a81d4765874e39b824b97842ddae</srcmd5>
+    <version>3.0.0</version>
+    <time>1709239772</time>
+    <user>dimstar_suse</user>
+    <comment>- Align path for document installation between openSUSE versions.
+  (Resolve failure to build the .spec because of a change in
+  the default docdir for %cmake in SUSE.)</comment>
+    <requestid>1153042</requestid>
+  </revision>
 </revisionlist>

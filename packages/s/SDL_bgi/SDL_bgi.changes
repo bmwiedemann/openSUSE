@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 28 20:16:30 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Align path for document installation between openSUSE versions.
+  (Resolve failure to build the .spec because of a change in
+  the default docdir for %cmake in SUSE.)
+
+-------------------------------------------------------------------
 Thu Dec 15 18:02:14 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.0.0
