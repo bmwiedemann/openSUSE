@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 14:36:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Nov 21 01:28:20 UTC 2016 - jengelh@inai.de
 
 - RPM group classification fix

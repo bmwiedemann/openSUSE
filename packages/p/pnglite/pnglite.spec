@@ -61,7 +61,7 @@ to link against pnglite.
 
 %prep
 %setup -q -c
-%patch0 -p1 -b .zlib
+%patch -P 0 -p1 -b .zlib
 sed 's/\r//' -i pnglite.h
 
 %build
