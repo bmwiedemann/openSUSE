@@ -1,7 +1,27 @@
 -------------------------------------------------------------------
+Thu Feb 29 06:46:24 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 3.9.15 (bsc#1220489, CVE-2024-27454):
+  * Implement recursion limit of 1024 on orjson.loads().
+  * Use byte-exact read on str formatting SIMD path to avoid crash.
+- 3.9.14:
+  * Fix crash serializing str introduced in 3.9.11.
+  * Build now depends on Rust 1.72 or later.
+- 3.9.13:
+  * Serialization str escape uses only 128-bit SIMD.
+  * Fix compatibility with CPython 3.13 alpha 3.
+  * Publish musllinux_1_2 instead of musllinux_1_1 wheels.
+  * Serialization uses small integer optimization in CPython 3.12 or later.
+- 3.9.12:
+  * Minimal musllinux_1_1 build due to sporadic CI failure.
+- 3.9.11:
+  * Improve performance of serializing. str is significantly faster. Documents
+    using dict, list, and tuple are somewhat faster.
+
+-------------------------------------------------------------------
 Sun Jan 14 14:46:13 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
-- Update to 3.8.10
+- Update to 3.9.10
   * Fix debug assert failure on 3.12 --profile=dev build.
 - Release 3.9.9
   * orjson module metadata explicitly marks subinterpreters as not

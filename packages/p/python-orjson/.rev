@@ -56,4 +56,93 @@
     <comment></comment>
     <requestid>1138742</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a50b0e18851eef3d84d8d1e581064d55</srcmd5>
+    <version>3.9.15</version>
+    <time>1709239794</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.9.15 (bsc#1220489, CVE-2024-27454):
+  * Implement recursion limit of 1024 on orjson.loads().
+  * Use byte-exact read on str formatting SIMD path to avoid crash.
+- 3.9.14:
+  * Fix crash serializing str introduced in 3.9.11.
+  * Build now depends on Rust 1.72 or later.
+- 3.9.13:
+  * Serialization str escape uses only 128-bit SIMD.
+  * Fix compatibility with CPython 3.13 alpha 3.
+  * Publish musllinux_1_2 instead of musllinux_1_1 wheels.
+  * Serialization uses small integer optimization in CPython 3.12 or later.
+- 3.9.12:
+  * Minimal musllinux_1_1 build due to sporadic CI failure.
+- 3.9.11:
+  * Improve performance of serializing. str is significantly faster. Documents
+    using dict, list, and tuple are somewhat faster.
+- Update to 3.9.10
+  * Fix debug assert failure on 3.12 --profile=dev build.
+- Release 3.9.9
+  * orjson module metadata explicitly marks subinterpreters as not
+    supported.
+- Release 3.9.8
+  * Improve performance.
+  * Drop support for Python 3.7.
+- Release 3.9.7
+  * Fix crash in orjson.loads() due to non-reentrant handling of
+    persistent buffer. This was introduced in 3.9.3.
+  * Handle some FFI removals in CPython 3.13.
+- Release 3.9.6
+  * Fix numpy reference leak on unsupported array dtype.
+  * Fix numpy.datetime64 reference handling.
+  * Minor performance improvements.
+- Release 3.9.5
+  * Remove futex from module import and initialization path.
+- Release 3.9.4
+  * Fix hash builder using default values.
+  * Fix non-release builds of orjson copying large deserialization
+    buffer from stack to heap. This was introduced in 3.9.3.
+- Release 3.9.3
+  * Fix compatibility with CPython 3.12.
+  * Support i686/x86 32-bit Python installs on Windows.
+- Release 3.9.2
+  * Fix the __cause__ exception on orjson.JSONEncodeError possibly
+    being denormalized, i.e., of type str instead of Exception.
+- Release 3.9.1
+  * Fix memory leak on chained tracebacks of exceptions raised in
+    default. This was introduced in 3.8.12.
+- Release 3.9.0
+  * orjson.Fragment includes already-serialized JSON in a document.
+- Release 3.8.13
+  * Source distribution contains all source code required for an
+    offline build.
+  * Build uses maturin v1.
+- Release 3.8.12
+    * Exceptions raised in default are now chained as the __cause__
+      attribute on orjson.JSONEncodeError.
+- Release 3.8.11
+  * orjson.loads() on an empty document has a specific error
+    message.
+- Avoid cargo_audit error because of shipped old vulnerable
+  zerocopy: Devendor the shipped cargo and update the cargo_vendor
+  service
+- Add %{?sle15_python_module_pythons}
+- Update to 3.8.10:
+  - Fix compatibility with CPython 3.12.0a7.
+  - Fix compatibility with big-endian architectures.
+  - Fix crash in serialization.
+  - Fix parallel initialization of orjson.
+- update to 3.8.3:
+  * `orjson.dumps()` accepts `option=None` per `Optional[int]` type.
+  * Fix tests on 32-bit for `numpy.intp` and `numpy.uintp`.
+  * Build now depends on rustc 1.60 or later.
+  * Support building with maturin 0.13 or 0.14.
+- Update to 3.8.1 
+  - Build maintenance for Python 3.11.
+- Update to 3.8.0:
+  - Support serializing numpy.int16 and numpy.uint16.
+  - Fix datetime regression tests with tzinfo 2022b.
+- Activate test suite
+- Tidy spec
+- initial package of version 3.7.7
+</comment>
+    <requestid>1153104</requestid>
+  </revision>
 </revisionlist>

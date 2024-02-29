@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-orjson
-Version:        3.9.10
+Version:        3.9.15
 Release:        0
 Summary:        Fast, correct Python JSON library supporting dataclasses, datetimes, and numpy
 License:        Apache-2.0 OR MIT
