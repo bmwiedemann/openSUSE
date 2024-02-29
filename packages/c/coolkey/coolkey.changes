@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 10:48:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Aug 15 19:50:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - light modernization of the spec file
