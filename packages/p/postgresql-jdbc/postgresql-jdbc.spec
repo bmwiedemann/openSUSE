@@ -18,15 +18,12 @@
 
 
 Name:           postgresql-jdbc
-Version:        42.2.25
+Version:        42.7.2
 Release:        0
 Summary:        JDBC driver for PostgreSQL
 License:        BSD-2-Clause
 URL:            https://jdbc.postgresql.org/
 Source0:        https://repo1.maven.org/maven2/org/postgresql/postgresql/%{version}/postgresql-%{version}-jdbc-src.tar.gz
-Patch1:         CVE-2022-26520.patch
-Patch2:         fix-SQL-Injection-CVE-2022-31197.patch
-Patch3:         fix-createTempFile-vulnerability-CVE-2022-41946.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.ongres.scram:client) >= 2.0
@@ -45,9 +42,6 @@ This package contains the API Documentation for %{name}.
 
 %prep
 %setup -q -n postgresql-%{version}-jdbc-src
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 3 -p2
 
 # Build parent POMs in the same Maven call.
 %pom_xpath_remove "pom:plugin[pom:artifactId = 'maven-shade-plugin']"

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Feb 29 16:40:26 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 42.7.2
+  * Security fix:
+    + CVE-2024-1597 (bsc#1220644) postgresql vulnerable to SQL
+      Injection via line comment generation
+  * Other changes:
+    + perf: avoid autoboxing bind indexes
+    + add: Add PasswordUtil for encrypting passwords client side
+    + refactor: document that encodePassword will zero out the
+      password array, and remove driver's default encodePassword
+    + change: Use simple query for isValid. Using Extended query
+      sends two messages
+- Removed patches:
+  * CVE-2022-26520.patch
+  * fix-SQL-Injection-CVE-2022-31197.patch
+  * fix-createTempFile-vulnerability-CVE-2022-41946.patch
+    + issues fixed by upstream before this version
+
+-------------------------------------------------------------------
 Wed Feb 21 10:53:23 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
