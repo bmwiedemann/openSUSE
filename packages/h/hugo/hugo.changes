@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 28 19:55:14 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.123.6:
+  * Fix panic when cascading headless from site config to section that does not have an _index.md file
+  * Fix assets vs data issue
+  * Fix draft for non-default content when content in default language does not exist
+
+-------------------------------------------------------------------
 Wed Feb 28 17:51:59 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.123.5:

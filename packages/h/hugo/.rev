@@ -996,4 +996,15 @@
   * build(deps): bump github.com/bep/overlayfs from 0.9.1 to 0.9.2 (forwarded request 1153000 from jfkw)</comment>
     <requestid>1153001</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>7abd2d9e02130beefe2a46731afb39ab</srcmd5>
+    <version>0.123.6</version>
+    <time>1709239767</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.123.6:
+  * Fix panic when cascading headless from site config to section that does not have an _index.md file
+  * Fix assets vs data issue
+  * Fix draft for non-default content when content in default language does not exist (forwarded request 1153024 from jfkw)</comment>
+    <requestid>1153026</requestid>
+  </revision>
 </revisionlist>
