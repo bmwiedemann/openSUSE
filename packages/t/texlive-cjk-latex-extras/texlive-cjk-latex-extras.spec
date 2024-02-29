@@ -1,7 +1,7 @@
 #
 # spec file for package texlive-cjk-latex-extras
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -83,9 +83,8 @@ This package contains some extra font setup files and scripts to
 automatically generate fonts and setup files to use with CJK LaTeX.
 
 %prep
-%setup0
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
+
 mv README.SuSE README.SUSE
 find . -name CVS -type d | xargs rm -rf
 
