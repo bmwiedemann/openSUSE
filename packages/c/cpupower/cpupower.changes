@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 10:55:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Nov 20 12:34:46 UTC 2023 - Thomas Renninger <trenn@suse.de>
 
 - Fix library file version: libcpupower.so.0.0.1 -> libcpupower.so.1.0.1

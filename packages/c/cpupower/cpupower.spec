@@ -99,10 +99,10 @@ There is no reason to install this package.
 # copy necessary files from kernel-source since we need to modify them
 (cd %{_prefix}/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile arch/*/{include,lib,Makefile} lib) | tar -xf -
 chmod +x tools/power/cpupower/utils/version-gen.sh
-%patch1 -p1
+%patch -P 1 -p1
 cd %{maindir}
-%patch3 -p1
-%patch6 -p1
+%patch -P 3 -p1
+%patch -P 6 -p1
 
 %build
 CONF="PACKAGE_BUGREPORT=https://bugs.opensuse.org mandir=%{_mandir} libdir=%{_libdir} CPUFRQ_BENCH=true"
