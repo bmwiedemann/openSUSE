@@ -85,9 +85,9 @@ pcsc-lite package.
 %prep
 %setup -q
 cp -a %{S:1} README.SUSE
-%patch1
-%patch2 -p1
-%patch3 -p1
+%patch -P 1
+%patch -P 2 -p1
+%patch -P 3 -p1
 
 # unused at the moment; avoid adding GPL as a license
 rm -rf libcyberjack checksuite

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 15:04:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Jun 21 13:05:00 UTC 2022 - chris@computersalat.de
 
 - update to 3.99.5 Service Pack 15
