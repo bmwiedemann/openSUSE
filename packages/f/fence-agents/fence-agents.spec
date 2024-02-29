@@ -111,8 +111,7 @@ configuration. This package provides agents suitable only for
 development.
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch1 -p1
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 CFLAGS="${CFLAGS} ${RPM_OPT_FLAGS}"

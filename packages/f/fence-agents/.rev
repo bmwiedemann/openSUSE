@@ -1065,4 +1065,12 @@
   * fence_vmware_rest : monitoring is not detecting if the API user has sufficient right to manage the fence device. The call https://{api_host}/api/vcenter/vm is subject to permission checks. If the delivered list is empty the user has no rights.</comment>
     <requestid>1147064</requestid>
   </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>b6d99ad7d3406abefcdbb49e65be4b1c</srcmd5>
+    <version>4.13.1+git.1707822268.4229d52f</version>
+    <time>1709239915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153447</requestid>
+  </revision>
 </revisionlist>
