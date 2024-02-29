@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 13:05:19 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Jun 23 12:05:44 CEST 2016 - tiwai@suse.de
 
 - Wrap with a namespace for own exp2() implementation to fix the

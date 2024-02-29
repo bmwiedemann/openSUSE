@@ -1,7 +1,7 @@
 #
 # spec file for package ladspa-preamp
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           ladspa-preamp
 Version:        2
 Release:        0
 Summary:        LADSPA preamp plugin
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
-Url:            http://quitte.de/dsp/
+URL:            http://quitte.de/dsp/
 Source:         preamp-v%{version}.tar.bz2
 Patch1:         preamp.dif
 Patch2:         preamp-ext2-conflict.patch
@@ -37,8 +37,8 @@ plugin emulating a vlve-based preamplifier.
 
 %prep
 %setup -q -n preamp
-%patch1
-%patch2 -p1
+%patch -P 1
+%patch -P 2 -p1
 
 %build
 # This package failed when testing with -Wl,-as-needed being default.
