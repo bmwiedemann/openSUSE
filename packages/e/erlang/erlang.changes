@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 11:41:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Jan 23 09:35:11 UTC 2024 - Simon Lees <sflees@suse.de>
 
 - Disable rpmlint tests on SLE-15 where they currently fail

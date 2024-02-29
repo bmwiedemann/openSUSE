@@ -245,8 +245,8 @@ A Graphics System used to write platform independent user interfaces.
 
 %prep
 %setup -q -n otp-OTP-%{version}
-%patch0 -p1 -b .rpath
-%patch4 -p1
+%patch -P 0 -p1 -b .rpath
+%patch -P 4 -p1
 cp %{SOURCE9} .
 
 ./otp_build autoconf

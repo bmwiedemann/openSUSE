@@ -1072,4 +1072,12 @@ erlang 17.0 is ready for factory, now. See changes in .changes</comment>
     <comment></comment>
     <requestid>1141317</requestid>
   </revision>
+  <revision rev="133" vrev="3">
+    <srcmd5>70f955cf1e3d44f2df72f75959b7b865</srcmd5>
+    <version>26.2.1</version>
+    <time>1709239834</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1153197</requestid>
+  </revision>
 </revisionlist>
