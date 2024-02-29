@@ -124,9 +124,9 @@ This package contains the default branding for %{name}.
 
 #---[ Build & Install ]-----------------------------------------------------------------------------------------------
 %prep
-%setup
-%patch0 -p1
+%autosetup -p1
 
+%build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 NOCONFIGURE=1 ./autogen.sh
 
@@ -150,7 +150,6 @@ update_for_compatibility() {
 
 %configure --with-release=%{release} CFLAGS="${CFLAGS} -fpie" LDFLAGS="${LDFLAGS} -pie"
 
-%build
 make %{?_smp_mflags} clean
 
 # parallel build is broken

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 15:19:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Sun Mar 26 13:53:07 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to override build date (boo#1047218)
