@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 28 17:22:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.46.1:
+  + Fix some implicit function declarations and other compiler
+    warnings in the tests.
+  + Remove some unused code.
+  + Update the README to describe the module's current status.
+
+-------------------------------------------------------------------
 Wed Sep 21 15:46:02 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.46.0:

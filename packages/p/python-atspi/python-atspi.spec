@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-atspi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@ BuildArch:      noarch
 %define skip_python2 1
 %define _name   pyatspi
 Name:           python-atspi%{psuffix}
-Version:        2.46.0
+Version:        2.46.1
 Release:        0
 Summary:        Python bindings for the Assistive Technology Service Provider Interface
 License:        LGPL-2.0-only
@@ -120,7 +120,7 @@ popd
 %if ! %{with test}
 %files %{python_files}
 %license COPYING
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md
 %{python_sitelib}/pyatspi/
 %endif
 
