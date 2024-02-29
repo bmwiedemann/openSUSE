@@ -32,6 +32,7 @@ BuildRequires:  libqt5-linguist
 BuildRequires:  python3
 BuildRequires:  python3-devel
 BuildRequires:  python3-pip
+BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
 BuildRequires:  update-desktop-files
 Requires:       hicolor-icon-theme
