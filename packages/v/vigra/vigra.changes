@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Feb 29 14:49:04 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Set disabled mode in service, to be accepted for TW
+
+-------------------------------------------------------------------
+Tue Oct 10 13:15:43 UTC 2023 - Takashi Iwai <tiwai@suse.com>
+
+- Drop stale patches
+
+-------------------------------------------------------------------
+Sun Oct  8 18:53:10 UTC 2023 - Dan Weatherill <plasteredparrot@gmail.com>
+
+- Bump version to new version 1.11.2
+- disable patch vigra-openexr3.patch (fixed upstream)
+- disable patch 0001-Add-compatibility-for-hdf5-1-12.patch (fixed upstream)
+- add conditional build for numpy support (enabled by default on Tumbleweed,
+  disabled on Leap as it fails for that boost_python version)
+- add conditional build for LEMON support (disabled by default)
+
+-------------------------------------------------------------------
 Wed Aug 17 10:52:50 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Drop baselibs.conf, not necessary

@@ -1,7 +1,7 @@
 #
 # spec file for package vigra
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,23 @@
 #
 
 
+%if 0%{?suse_version} < 1600
+%bcond_with numpy
+%else
+%bcond_without numpy
+%endif
+
+#LEMON build doesn't work right now (shared library problem)
+%bcond_with    lemon
 %define _shlibname libvigraimpex11
 Name:           vigra
-Version:        1.11.1
+Version:        1.11.2
 Release:        0
 Summary:        Computer vision Library
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            http://ukoethe.github.io/vigra/
-Source:         https://github.com/ukoethe/vigra/releases/download/Version-1-11-1/vigra-%{version}-src.tar.gz#/%{name}-%{version}.tar.gz
-# https://github.com/ukoethe/vigra/issues/496
-Patch0:         vigra-openexr3.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Add-compatibility-for-hdf5-1-12.patch
+Source:         https://github.com/ukoethe/vigra/archive/refs/tags/Version-1-11-2.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
@@ -44,6 +48,15 @@ BuildRequires:  zlib-devel
 BuildRequires:  libboost_headers-devel
 %else
 BuildRequires:  boost-devel
+%endif
+%if %{with numpy}
+BuildRequires:  libboost_python3-devel
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-numpy-devel
+%endif
+
+%if %{with lemon}
+BuildRequires:  lemon-devel
 %endif
 
 %description
@@ -81,6 +94,9 @@ Requires:       libtiff-devel
 Requires:       openexr-devel
 Requires:       python3-base
 Requires:       zlib-devel
+%if %{with numpy}
+Requires:       python3-numpy
+%endif
 
 %description devel
 VIGRA stands for "Vision with Generic Algorithms". It is a novel
@@ -90,15 +106,40 @@ those in the C++ Standard Template Library, you can easily adapt any
 VIGRA component to the needs of your application, without giving up
 execution speed.
 
+
+%if %{with numpy}
+%package -n python3-vigranumpy
+Summary:        Numpy support for VIGRA library
+Group:          Development/Libraries/C and C++
+Requires:       %{name} == %{version}
+Requires:       python3-numpy
+
+%description -n python3-vigranumpy
+VIGRA stands for "Vision with Generic Algorithms". It is a novel
+computer vision library that puts its main emphasis on customizable
+algorithms and data structures. By using template techniques similar to
+those in the C++ Standard Template Library, you can easily adapt any
+VIGRA component to the needs of your application, without giving up
+execution speed. This package contains python / numpy bindings for VIGRA
+
+
+%endif
+
 %prep
-%autosetup -p1
+%autosetup -p1 -n%{name}-Version-1-11-2
 sed -i -e "1s|#!.*|#!/usr/bin/python3|" config/vigra-config.in
 
 %build
 %cmake \
     -DDOCINSTALL=%{_docdir} \
     -DWITH_HDF5=1 \
-    -DWITH_OPENEXR=1
+    -DWITH_OPENEXR=1 \
+%if %{with lemon}
+    -DWITH_LEMON=1
+%else
+    -DWITH_LEMON=0
+%endif
+
 make %{?_smp_mflags}
 
 %install
@@ -111,7 +152,8 @@ rm -rf %{buildroot}%{_docdir}/vigranumpy
 %postun -n %{_shlibname} -p /sbin/ldconfig
 
 %files -n %{_shlibname}
-%doc README.md LICENSE.txt
+%doc README.md
+%license LICENSE.txt
 %{_libdir}/*.so.*
 
 %files devel
@@ -121,5 +163,16 @@ rm -rf %{buildroot}%{_docdir}/vigranumpy
 %dir %{_libdir}/vigra/
 %{_libdir}/vigra/*.cmake
 %doc %{_docdir}/%{name}
+
+%if %{with numpy}
+%files -n python3-vigranumpy
+%dir %{python_sitearch}/vigra
+%dir %{python_sitearch}/vigra/pyqt
+%dir %{_libdir}/vigranumpy
+%{python_sitearch}/vigra/*.py
+%{python_sitearch}/vigra/pyqt/*.py
+%{python_sitearch}/vigra/*.so
+%{_libdir}/vigranumpy/*.cmake
+%endif
 
 %changelog
