@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 03:16:06 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Thu Mar 17 08:58:50 UTC 2022 - pgajdos@suse.com
 
 - actually does not require python-mock for build
