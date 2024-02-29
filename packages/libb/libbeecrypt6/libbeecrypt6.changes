@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 15:32:13 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Mar  5 09:46:30 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Don't package static archive

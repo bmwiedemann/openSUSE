@@ -1,7 +1,7 @@
 #
 # spec file for package libbeecrypt6
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,9 +50,9 @@ multiprecision integer routines, and public key primitives.
 
 %prep
 %setup -q -n beecrypt-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 %patch -P 3 -p1
 
 %build
