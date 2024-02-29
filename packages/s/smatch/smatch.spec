@@ -1,7 +1,7 @@
 #
 # spec file for package smatch
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           smatch
-Version:        1.73+20230517
+Version:        1.73+20240222
 Release:        0
 Summary:        Static analysis tool for C
 License:        GPL-2.0-only

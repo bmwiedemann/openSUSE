@@ -165,4 +165,12 @@
   * and much more</comment>
     <requestid>1093222</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9df76222d27d2d7c9cff5d388d8fb682</srcmd5>
+    <version>1.73+20240222</version>
+    <time>1709239799</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1153111</requestid>
+  </revision>
 </revisionlist>

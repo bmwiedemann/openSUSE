@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Feb 22 07:20:02 UTC 2024 - jslaby@suse.cz
+
+- Update to version 1.73+20240222:
+  * db/kernel.return_fixes: add cred scoped guard annotations
+  * mtag: fix a bug on 32 bit systems
+  * kernel_irq_context: add (struct irqaction)->handler as an ignored function
+  * kernel_irq_context: mark the IRQ handler in the function
+  * points_to_user_data: Add __wbuf() as setting a user buffer
+  * double_checking: ignore known/constant conditions
+  * err_ptr_deref: silence impossible checks
+  * function_hooks: add missing return states
+  * refcount_info: add xe_device_mem_access_get/put()
+  * kernel.unconstant_macros: add __GFP_SKIP_ZERO
+  * sleep_info: add mas_alloc_cyclic() as a weird function
+  * points_to_container: white space change
+  * db/kernel.delete.return_states: lets say that bio_alloc_bioset() can't fail
+  * db/kernel.return_fixes: fix up copy_from_user() on 32bit systems
+  * db/kernel.return_fixes: add __kthread_create_on_node() and of_graph_get_endpoint_count()
+  * db/kernel.return_fixes: delete __hci_cmd_sync_sk()
+  * db/kernel.return_fixes: add more guard lock annotations
+  * flow: set prev_stream
+  * irq_context: ignore (struct flexcop_device)->read_ibi_reg
+  * data/kernel.unconstant_macros: add VM_USWAP and some others
+  * and much more
+
+-------------------------------------------------------------------
 Thu Jun 15 07:05:18 UTC 2023 - jslaby@suse.cz
 
 - Update to version 1.73+20230517:
