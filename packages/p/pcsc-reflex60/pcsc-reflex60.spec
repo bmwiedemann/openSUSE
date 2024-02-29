@@ -43,18 +43,8 @@ This driver is meant to be used with the PCSC-Lite daemon from the
 pcsc-lite package.
 
 
-
-Authors:
---------
-    David Corcoran <corcoran@linuxnet.com>
-
 %prep
-%setup -q -n slb_rf60
-%patch0
-%patch1
-%patch2
-%patch3
-%patch4
+%autosetup -p0 -n slb_rf60
 
 %build
 make %{?jobs:-j%jobs} lib COPTS="$RPM_OPT_FLAGS -Wno-unused" LD="gcc $LDFLAGS"
