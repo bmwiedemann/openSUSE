@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 22 09:31:15 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- updated to 4.5.0rc2. This fixes:
+  * `wwctl node list` panics if a node uses a profile with a
+    network which isn't present on this node (bsc#1220189).
+
+-------------------------------------------------------------------
 Mon Feb 19 15:45:20 UTC 2024 - Christian Goll <cgoll@suse.com>
 
 - updated to 4.5.0rc1 from upstream with following change:

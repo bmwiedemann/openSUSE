@@ -17,7 +17,7 @@
 
 
 %global vers 4.5.0
-%global rls_cndt rc1
+%global rls_cndt rc2
 %if "0%{?rls_cndt}" != "0"
 %global rls_char ~
 %endif
@@ -39,9 +39,6 @@ Source0:        https://github.com/warewulf/warewulf/releases/download/v%{vers}%
 Source5:        warewulf4-rpmlintrc
 Source10:       config-ww4.sh
 Source20:       README.dnsmasq
-#Patch12:        clean-warewulf-conf.patch
-#Patch15:        dnsmasq-template-move.patch
-#Conflicts:      warewulf4-slurm < %version
 
 # no firewalld in sle12
 %if 0%{?sle_version} >= 150000 || 0%{?suse_version} > 1500
