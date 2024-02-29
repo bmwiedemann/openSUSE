@@ -28,6 +28,7 @@ Source:         https://github.com/libyal/liblnk/releases/download/%version/libl
 Source2:        https://github.com/libyal/liblnk/releases/download/%version/liblnk-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
 Source8:        Windows_Shortcut_File_LNK_format.pdf
+Patch1:         0001-Changes-for-updates-to-libfwsi.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  c_compiler
@@ -45,9 +46,9 @@ BuildRequires:  pkgconfig(libcthreads) >= 20240102
 BuildRequires:  pkgconfig(libfdatetime) >= 20240115
 BuildRequires:  pkgconfig(libfguid) >= 20240116
 BuildRequires:  pkgconfig(libfole) >= 20240119
-BuildRequires:  pkgconfig(libfwps) >= 20240120
-BuildRequires:  pkgconfig(libfwsi) >= 20231130
-BuildRequires:  pkgconfig(libuna) >= 20230710
+BuildRequires:  pkgconfig(libfwps) >= 20240225
+BuildRequires:  pkgconfig(libfwsi) >= 20240225
+BuildRequires:  pkgconfig(libuna) >= 20240130
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
 

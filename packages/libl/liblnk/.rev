@@ -231,4 +231,13 @@ part of summer 2013 libyal refresh for opensuse 13.1
     <comment>python 3.12 build fix</comment>
     <requestid>1144591</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>38ebc242db79998c0d17ec2e2c1eed66</srcmd5>
+    <version>20240120</version>
+    <time>1709239782</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Changes-for-updates-to-libfwsi.patch to resolve FTBFS
+  with current libfwsi (20240225)</comment>
+    <requestid>1153057</requestid>
+  </revision>
 </revisionlist>
