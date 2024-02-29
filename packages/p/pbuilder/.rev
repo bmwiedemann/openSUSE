@@ -101,4 +101,12 @@ See http://lists.opensuse.org/opensuse-factory/2012-05/msg00164.html for a littl
     <comment></comment>
     <requestid>975105</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>8031119a5198c912b65da2bd326d2b3e</srcmd5>
+    <version>0.231</version>
+    <time>1709239886</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153347</requestid>
+  </revision>
 </revisionlist>

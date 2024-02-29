@@ -58,16 +58,8 @@ image.
 pdebuild is a wrapper for developers, to allow running pbuilder
 just like "debuild", as a normal user.
 
-Authors:
---------
-    Junichi Uekawa
-
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 
 %build
 %make_build
