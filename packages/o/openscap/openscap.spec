@@ -1,7 +1,7 @@
 #
 # spec file for package openscap
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -186,6 +186,9 @@ This package contains the Script Checking Engine Library (SCE) for OpenSCAP.
 %build
 %cmake \
 	-DENABLE_DOCS=TRUE \
+%if 0%{?suse_version} < 1600
+	-DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
+%endif
 	-DCMAKE_SHARED_LINKER_FLAGS="" \
 	-DENABLE_OSCAP_REMEDIATE_SERVICE=TRUE \
 	-DWITH_PCRE2=ON \
@@ -282,10 +285,11 @@ mv %{buildroot}/%{_prefix}/libexec/oscap-remediate %{buildroot}/%{_bindir}
 %{_libdir}/libopenscap.so.%{sover}*
 
 %files devel
-%dir %{_datadir}/doc/openscap
+%dir %{_docdir}/openscap
+%{_docdir}/openscap/html
+%{_docdir}/openscap/manual
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
-%{_datadir}/doc/openscap/*
 %{_includedir}/*
 
 %files docker
