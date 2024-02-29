@@ -42,11 +42,9 @@ And uses their MAC address and not their IP, so it works on networks
 with DHCP.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 sed -e '/CHANGELOG/d' -e '/init.d/d' \
     -e 's|/lib/systemd/system/|%{_unitdir}|' -i CMakeLists.txt
-%patch1 -p1
 
 %build
 %cmake
