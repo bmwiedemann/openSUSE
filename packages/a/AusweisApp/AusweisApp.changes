@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Feb 29 14:15:15 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.1.0
+    - Visual adjustments and optimization of the graphical user interface.
+    - Improved detection of system language on macOS.
+    - Removed the five minutes time limit for password
+      entry when the ID card is placed on the reader.
+    - Fixed display of changed device names when using "Smartphone as card reader".
+    - Add an option to disable animations.
+    - Fixed the behavior of "Smartphone as card reader"
+      with activated password entry when using a PUK.
+    - Fixed of the connection test with a password-protected
+      proxy in the diagnostics on desktop systems.
+    - Drop support for macOS 11 Big Sur.
+    - Fixed processing of certificates with CAv3 extension.
+    - Unified documentation for installation and integration.
+    - Update of OpenSSL to version 3.1.5.
+
+-------------------------------------------------------------------
 Fri Jan 19 10:44:24 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
