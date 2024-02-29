@@ -60,8 +60,7 @@ is C & C++ programmers, astronomers and anyone else interested in
 calculating positions of astronomical objects or celestial mechanics.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 # Regenerate build system because of errors about libtool during compilation
