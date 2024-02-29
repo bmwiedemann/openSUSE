@@ -74,14 +74,8 @@ transmitter is located near to Frankfurt/Main and covers a radius of
 more than 1500 kilometers.
 
 %prep
-%setup -q
-%patch0
-%patch1
-%patch2
-%patch3
-%patch4
-%patch5
-%patch6
+%autosetup -p0
+
 mkdir source
 mkdir obj
 cp -a linux/pcfclock.c %{SOURCE1} \

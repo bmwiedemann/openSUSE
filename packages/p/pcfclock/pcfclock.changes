@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 14:53:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Mon Dec  5 12:47:43 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
 
 - BuildRequire %kernel_module_package_buildreqs (boo#1205149)
