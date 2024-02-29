@@ -37,8 +37,7 @@ A pass extension for managing one-time-password (OTP) tokens.
 More information may be found in the pass-otp(1) man page.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 14:58:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Sun Aug 30 08:04:00 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Fix library path where %{_libexecdir} points to %{_prefix}/libexec
