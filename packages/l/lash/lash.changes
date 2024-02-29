@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 13:43:36 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sat Apr 17 00:09:08 UTC 2021 - Simon Lees <sflees@suse.de>
 
 - Greatly simplify 0001-Fix-detection-of-Python-3.patch to use
