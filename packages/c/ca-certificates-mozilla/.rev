@@ -767,4 +767,41 @@
     <comment>- readd _multibuild</comment>
     <requestid>1104176</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>a9b73f4fc0cbdf847a6dc64ecda52bf9</srcmd5>
+    <version>2.66</version>
+    <time>1709239752</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 2.66 state of Mozilla SSL root CAs (bsc#1220356)
+  Added:
+  - CommScope Public Trust ECC Root-01
+  - CommScope Public Trust ECC Root-02
+  - CommScope Public Trust RSA Root-01
+  - CommScope Public Trust RSA Root-02
+  - D-Trust SBR Root CA 1 2022
+  - D-Trust SBR Root CA 2 2022
+  - Telekom Security SMIME ECC Root 2021
+  - Telekom Security SMIME RSA Root 2023
+  - Telekom Security TLS ECC Root 2020
+  - Telekom Security TLS RSA Root 2023
+  - TrustAsia Global Root CA G3
+  - TrustAsia Global Root CA G4
+  Removed:
+  - Autoridad de Certificacion Firmaprofesional CIF A62634068
+  - Chambers of Commerce Root - 2008
+  - Global Chambersign Root - 2008
+  - Security Communication Root CA
+  - Symantec Class 1 Public Primary Certification Authority - G6
+  - Symantec Class 2 Public Primary Certification Authority - G6
+  - TrustCor ECA-1
+  - TrustCor RootCert CA-1
+  - TrustCor RootCert CA-2
+  - VeriSign Class 1 Public Primary Certification Authority - G3
+  - VeriSign Class 2 Public Primary Certification Authority - G3
+- remove-trustcor.patch: removed, now upstream
+- do a versioned obsoletes of &quot;openssl-certs&quot;.
+
+- use rpm 4.20 compatible patch syntax</comment>
+    <requestid>1152964</requestid>
+  </revision>
 </revisionlist>

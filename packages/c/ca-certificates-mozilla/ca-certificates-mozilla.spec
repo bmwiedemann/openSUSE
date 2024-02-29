@@ -1,7 +1,7 @@
 #
 # spec file for package ca-certificates-mozilla
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@
 Name:           ca-certificates-mozilla
 # Version number is NSS_BUILTINS_LIBRARY_VERSION in this file:
 # http://hg.mozilla.org/projects/nss/file/default/lib/ckfw/builtins/nssckbi.h
-Version:        2.62
+Version:        2.66
 Release:        0
 Summary:        CA certificates for OpenSSL
 License:        MPL-2.0
@@ -59,7 +59,6 @@ Source1:        https://hg.mozilla.org/projects/nss/raw-file/default/lib/ckfw/bu
 Source10:       certdata2pem.py
 Source11:       %{name}.COPYING
 Source12:       compareoldnew
-Patch0:         remove-trustcor.patch
 BuildRequires:  ca-certificates
 BuildRequires:  openssl
 BuildRequires:  p11-kit-devel
@@ -69,7 +68,7 @@ Requires(post): ca-certificates
 Requires(postun):ca-certificates
 #
 # replaces this package from SLE11 times
-Obsoletes:      openssl-certs
+Obsoletes:      openssl-certs < %version
 BuildArch:      noarch
 %if %{defined p11_kit_min}
 Conflicts:      p11-kit-tools < %p11_kit_min
@@ -84,9 +83,6 @@ from MozillaFirefox
 
 mkdir certs
 cp %{SOURCE0} certs
-cd certs
-%patch0 -p0
-cd ..
 
 install -m 644 %{SOURCE11} COPYING
 ver=`sed -ne '/NSS_BUILTINS_LIBRARY_VERSION /s/.*"\(.*\)"/\1/p' < "%{SOURCE1}"`
