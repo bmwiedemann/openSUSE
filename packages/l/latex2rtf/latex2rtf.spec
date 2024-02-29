@@ -49,9 +49,7 @@ conversion of a LaTeX document to RTF allows anyone with a copy of Word to
 ponvert LaTeX files to Word .doc or .docx files.
 
 %prep
-%setup -q -n %{name}-%{mversion}
-
-%patch1 -p1
+%autosetup -p1 -n %{name}-%{mversion}
 
 %build
 
