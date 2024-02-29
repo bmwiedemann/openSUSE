@@ -702,4 +702,15 @@
 </comment>
     <requestid>1146112</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>6754126f85500d9618bf127b2554e06d</srcmd5>
+    <version>1.23.11</version>
+    <time>1709239796</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.23.11:
+  * Add support to redact line art.
+  * Add new image redaction option to remove images that intrudes on redaction with clipping applied.
+</comment>
+    <requestid>1153110</requestid>
+  </revision>
 </revisionlist>

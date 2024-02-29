@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 29 07:52:14 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.23.11:
+  * Add support to redact line art.
+  * Add new image redaction option to remove images that intrudes on redaction with clipping applied.
+
+-------------------------------------------------------------------
 Mon Feb 12 08:49:32 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.23.10:
