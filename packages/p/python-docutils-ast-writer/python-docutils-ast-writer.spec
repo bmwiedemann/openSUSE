@@ -1,7 +1,7 @@
 #
 # spec file for package python-docutils-ast-writer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-docutils-ast-writer
 Version:        0.1.2
 Release:        0
 Summary:        AST Writer for docutils
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/jimo1001/docutils-ast-writer
 Source:         https://files.pythonhosted.org/packages/source/d/docutils-ast-writer/docutils-ast-writer-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/jimo1001/docutils-ast-writer/master/LICENSE
-Patch0:         https://patch-diff.githubusercontent.com/raw/jimo1001/docutils-ast-writer/pull/5.patch#/pr_5.patch
+# PATCH-FIX-UPSTREAM Based on gh#jimo1001/docutils-ast-writer#5
+Patch0:         pr_5.patch
 BuildRequires:  %{python_module docutils >= 0.12}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-docutils >= 0.12
@@ -41,15 +42,14 @@ BuildArch:      noarch
 Docutils-ast-writer is an AST writer of Docutils.
 
 %prep
-%setup -q -n docutils-ast-writer-%{version}
+%autosetup -p1 -n docutils-ast-writer-%{version}
 cp %{SOURCE1} .
-%patch0 -p1 
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/rst2ast
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -65,6 +65,7 @@ cp %{SOURCE1} .
 %license LICENSE
 %doc README.rst
 %python_alternative %{_bindir}/rst2ast
-%{python_sitelib}/*
+%{python_sitelib}/rst2ast
+%{python_sitelib}/docutils_ast_writer-%{version}.dist-info
 
 %changelog

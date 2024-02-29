@@ -27,4 +27,14 @@
     <comment></comment>
     <requestid>957880</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b4925edca4df681d83cfcb7383af2e2d</srcmd5>
+    <version>0.1.2</version>
+    <time>1709239787</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+- Refactor pr_5.patch to not change the version.</comment>
+    <requestid>1153080</requestid>
+  </revision>
 </revisionlist>

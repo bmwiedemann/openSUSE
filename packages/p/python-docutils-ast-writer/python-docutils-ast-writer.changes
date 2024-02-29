@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 29 04:10:42 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+- Refactor pr_5.patch to not change the version.
+
+-------------------------------------------------------------------
 Sun Feb 27 07:37:35 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Add pr_5.patch to fix Python 3.10
