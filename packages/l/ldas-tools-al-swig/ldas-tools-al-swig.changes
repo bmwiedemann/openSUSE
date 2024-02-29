@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 15:59:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire python_module distutils-extra: fix build with python
+  3.12.
+
+-------------------------------------------------------------------
 Tue May  4 13:01:57 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Adapt for multi-flavoured python.

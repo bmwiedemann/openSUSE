@@ -1,7 +1,7 @@
 #
 # spec file for package ldas-tools-al-swig
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        GPL-2.0-or-later
 URL:            https://wiki.ligo.org/Computing/LDASTools
 Source:         http://software.ligo.org/lscsoft/source/ldas-tools-al-swig-2.6.7.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module distutils-extra}
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
