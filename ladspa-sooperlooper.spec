@@ -36,9 +36,7 @@ This package provides a LADSPA (Linux Audio Developer's Simple Plug-in API)
 vocoder plugin.
 
 %prep
-%setup -q -n sooperlooper-%{version}
-%patch1
-%patch2
+%autosetup -p0 -n sooperlooper-%{version}
 
 %build
 # This package failed when testing with -Wl,-as-needed being default.
