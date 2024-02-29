@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-virtualenv
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-virtualenv%{psuffix}
-Version:        20.25.0
+Version:        20.25.1
 Release:        0
 Summary:        Virtual Python Environment builder
 License:        MIT
@@ -60,7 +60,7 @@ Requires:       (python-distlib >= 0.3.7 with python-distlib < 1)
 Requires:       (python-filelock >= 3.12.2 with python-filelock < 4)
 Requires:       (python-platformdirs >= 3.9.1 with python-platformdirs < 5)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if 0%{python_version_nodots} < 38
 Requires:       python-importlib-metadata >= 6.6

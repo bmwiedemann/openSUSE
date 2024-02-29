@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 27 18:13:43 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 20.25.1
+  * Upgrade embedded wheels:
+  * Avoid importing contextlib in _virtualenv #2688
+
+-------------------------------------------------------------------
 Fri Jan  5 13:24:46 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 20.25.0
