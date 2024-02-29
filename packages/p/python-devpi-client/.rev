@@ -224,4 +224,16 @@
   - Drop {Build,}Requires on pep517.</comment>
     <requestid>1128736</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>3364387ba6eb9a1cb6963434f46f0743</srcmd5>
+    <version>7.0.2</version>
+    <time>1709239866</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip some tests that are failing for python 3.12, because it tries
+  to install setuptools package during tests.
+  * test_main_example
+  * test_specific_version
+  * test_pkgname_with_dashes</comment>
+    <requestid>1153255</requestid>
+  </revision>
 </revisionlist>

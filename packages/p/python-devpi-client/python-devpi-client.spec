@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-devpi-client
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,7 @@ Requires:       python-pluggy >= 0.6.0
 Requires:       python-tox >= 3.1.0
 Requires:       python-virtualenv
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     git-core
 Recommends:     python-Sphinx
 BuildArch:      noarch
@@ -101,6 +101,8 @@ donttest+=" or test_main_example_with_basic_auth"
 donttest+=" or test_derive_devpi_token or test_derive_legacy_token or test_derive_token"
 # error deleting VIRTUAL_ENV
 donttest+=" or test_simple_install_missing_venvdir"
+# Broken tests with python3.12 because missing setuptools
+donttest+=" or test_main_example or test_specific_version or test_pkgname_with_dashes"
 %pytest -k "not ($donttest)"
 %endif
 
