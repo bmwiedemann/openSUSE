@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Feb 29 10:07:19 UTC 2024 - pgajdos@suse.com
+
+- version update to 1.11 [bsc#1220491]
+  1.11: 2024-02-07::
+    Ship 6 bytes of address ratrher than 4, files run bigger these days.
+    Update to modern C style standard.
+  1.10: 2019-06-12::
+    Name changed to hexd to avoid collision with BSD hexdump.
+    License changed to BSD-2-clause.
+  1.9: 2015-04-02::
+    Administrivial release; Gitorious is dying, project metadata must change.
+  1.8: 2012-12-03::
+    Use C99 bools.  Code passes cppcheck audit.  Added a regression test.
+  1.7: 2010-10-20::
+    Code fully ANSIfied. License changed to BSD.  RPM spec removed.
+  1.6: 2003-12-29::
+    Source RPMs no longer depend on --define myversion
+  1.5: 2003-12-26::
+    Name changed to 'hexd'.
+- deleted patches
+  - hex-1.4.diff (renamed)
+- added patches
+  + hex.diff
+
+-------------------------------------------------------------------
 Thu Feb 22 07:55:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

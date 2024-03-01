@@ -132,4 +132,32 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1149028 from dimstar)</comment>
     <requestid>1149087</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>cda6625ce699eb3736278e2eaa6987c1</srcmd5>
+    <version>1.11</version>
+    <time>1709332465</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 1.11 [bsc#1220491]
+  1.11: 2024-02-07::
+    Ship 6 bytes of address ratrher than 4, files run bigger these days.
+    Update to modern C style standard.
+  1.10: 2019-06-12::
+    Name changed to hexd to avoid collision with BSD hexdump.
+    License changed to BSD-2-clause.
+  1.9: 2015-04-02::
+    Administrivial release; Gitorious is dying, project metadata must change.
+  1.8: 2012-12-03::
+    Use C99 bools.  Code passes cppcheck audit.  Added a regression test.
+  1.7: 2010-10-20::
+    Code fully ANSIfied. License changed to BSD.  RPM spec removed.
+  1.6: 2003-12-29::
+    Source RPMs no longer depend on --define myversion
+  1.5: 2003-12-26::
+    Name changed to 'hexd'.
+- deleted patches
+  - hex-1.4.diff (renamed)
+- added patches
+  + hex.diff</comment>
+    <requestid>1153157</requestid>
+  </revision>
 </revisionlist>

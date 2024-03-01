@@ -1,0 +1,35 @@
+Index: hexd-1.11/Makefile
+===================================================================
+--- hexd-1.11.orig/Makefile
++++ hexd-1.11/Makefile
+@@ -5,7 +5,7 @@
+ VERS=$(shell sed -n <NEWS.adoc '/^[0-9]/s/:.*//p' | head -1)
+ 
+ hexd: hexd.c
+-	$(CC) -DRELEASE=\"$(VERS)\" -O hexd.c -o hexd
++	$(CC) -DRELEASE=\"$(VERS)\" -O $(CFLAGS) hexd.c -o hexd
+ 
+ SOURCES = README COPYING NEWS.adoc control Makefile hexd.c hexd.adoc
+ 
+@@ -27,8 +27,8 @@ hexd-$(VERS).tar.gz: $(SOURCES) hexd.1
+ 	asciidoctor -D. -a nofooter -a webfonts! $<
+ 
+ install: hexd.1 uninstall
+-	cp hexd /usr/bin
+-	cp hexd.1 /usr/share/man/man1/hexd.1
++	install -m 0755 hexd $(DESTDIR)/usr/bin/hex
++	install -m 0644 hexd.1 $(DESTDIR)$(MANDIR)/man1/hex.1
+ 
+ uninstall:
+ 	rm -f /usr/bin/hexd /usr/share/man/man1/hexd.
+Index: hexd-1.11/hexd.1
+===================================================================
+--- hexd-1.11.orig/hexd.1
++++ hexd-1.11/hexd.1
+@@ -105,4 +105,4 @@ Eric S. Raymond \c
+ See my home page at
+ .URL "http://www.catb.org/~esr" "" ""
+ for updates and
+-related resources.
+\ No newline at end of file
++related resources.

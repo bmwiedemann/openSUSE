@@ -1,7 +1,7 @@
 #
 # spec file for package hex
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           hex
-# I am not inclined towards the update to 1.8, see bsc#806703
-Version:        1.4
+Version:        1.11
 Release:        0
 Summary:        Yet Another Hex Dumper
 License:        BSD-3-Clause
 Group:          Development/Tools/Other
-Url:            http://www.catb.org/~esr/hexdump/
-Source:         http://www.catb.org/~esr/hexdump/%{name}-%{version}.tar.gz
-Patch0:         %{name}-%{version}.diff
+URL:            http://www.catb.org/~esr/hexd/index.html
+Source:         http://www.catb.org/~esr/hexd/hexd-1.11.tar.gz
+Patch0:         %{name}.diff
+BuildRequires:  rubygem(asciidoctor)
 Provides:       util-linux:%{_bindir}/hex
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -34,7 +34,7 @@ A hex dumper that does CP/M and EBCDIC formatting and has
 internationalization support.
 
 %prep
-%autosetup -p0
+%autosetup -p1 -n hexd-%{version}
 
 %build
 make %{?_smp_mflags} clean
@@ -46,7 +46,7 @@ make install DESTDIR=%{buildroot} MANDIR=%{_mandir}
 
 %files
 %defattr(-,root,root)
-%doc READ.ME
+%doc README NEWS.adoc
 %doc %{_mandir}/man?/*
 %{_bindir}/hex
 
