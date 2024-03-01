@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IPC-Run3
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-IPC-Run3
-Version:        0.048
-Release:        0
-#Upstream: SUSE-Public-Domain
 %define cpan_name IPC-Run3
-Summary:        Run a Subprocess with Input/Ouput Redirection
-License:        BSD-2-Clause or GPL-2.0+ or Artistic-1.0
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/IPC-Run3/
-Source0:        http://www.cpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
+Name:           perl-IPC-Run3
+Version:        0.49.0
+Release:        0
+%define cpan_version 0.049
+#Upstream: SUSE-Public-Domain
+License:        Artistic-1.0 OR BSD-2-Clause OR GPL-2.0-or-later
+Summary:        Run a subprocess with input/output redirection
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(IPC::Run3) = %{version}
+Provides:       perl(IPC::Run3::ProfArrayBuffer) = %{version}
+Provides:       perl(IPC::Run3::ProfLogReader) = %{version}
+Provides:       perl(IPC::Run3::ProfLogger) = %{version}
+Provides:       perl(IPC::Run3::ProfPP) = %{version}
+Provides:       perl(IPC::Run3::ProfReporter) = %{version}
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -44,14 +50,14 @@ code; which is often much slower than the kind of buffered I/O that this
 module uses to spool input to and output from the child command.)
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -59,7 +65,7 @@ module uses to spool input to and output from the child command.)
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes LICENSE README
+%doc Changes README
+%license LICENSE
 
 %changelog
