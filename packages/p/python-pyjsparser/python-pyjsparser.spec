@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyjsparser
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-pyjsparser
 Version:        2.7.1
 Release:        0
 Summary:        Javascript parser based on esprimajs
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/PiotrDabkowski/pyjsparser
 Source:         https://files.pythonhosted.org/packages/source/p/pyjsparser/pyjsparser-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/PiotrDabkowski/pyjsparser/master/LICENSE
 Patch0:         fix_version.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -39,20 +39,20 @@ A JavaScript parser - a manual translation of esprima.js to Python.
 It supports the whole of ECMAScript 5.1 and parts of ECMAScript 6.
 
 %prep
-%setup -q -n pyjsparser-%{version}
-%patch0 -p1
+%autosetup -p1 -n pyjsparser-%{version}
 cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/pyjsparser
+%{python_sitelib}/pyjsparser-%{version}.dist-info
 
 %changelog
