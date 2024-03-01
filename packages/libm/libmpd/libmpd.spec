@@ -63,8 +63,7 @@ develop applications based on libmpd.
 
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv
