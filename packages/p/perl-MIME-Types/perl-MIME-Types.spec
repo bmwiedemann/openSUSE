@@ -1,7 +1,7 @@
 #
 # spec file for package perl-MIME-Types
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,21 @@
 
 %define cpan_name MIME-Types
 Name:           perl-MIME-Types
-Version:        2.24
+Version:        2.260.0
 Release:        0
+%define cpan_version 2.26
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Definition of MIME types
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/M/MA/MARKOV/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/M/MA/MARKOV/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(MIME::Type) = %{version}
+Provides:       perl(MIME::Types) = %{version}
+Provides:       perl(MojoX::MIME::Types) = %{version}
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -45,7 +50,7 @@ various sources. For instance, it contains *all IANA* types and the
 knowledge of Apache. Probably the most complete table on the net!
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
