@@ -48,8 +48,7 @@ of the LXDE project.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure \

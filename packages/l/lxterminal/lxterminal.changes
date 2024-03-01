@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  1 11:29:55 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Sun Mar  7 12:21:58 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - lxterminal 0.4.0:
