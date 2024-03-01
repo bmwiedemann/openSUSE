@@ -1098,4 +1098,12 @@ nicer version with try-reload-or-restart</comment>
     <comment>- fix users/groups with rpm 4.19 (forwarded request 1144143 from AndreasStieger)</comment>
     <requestid>1144494</requestid>
   </revision>
+  <revision rev="121" vrev="3">
+    <srcmd5>53bbca72a000c9ca83cc1c69c9ebc060</srcmd5>
+    <version>0.4.8.10</version>
+    <time>1709332709</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153959</requestid>
+  </revision>
 </revisionlist>

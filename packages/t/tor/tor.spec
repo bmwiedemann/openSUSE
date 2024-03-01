@@ -54,9 +54,7 @@ Recommends:     torsocks
 Provides:       group(%{torgroup})
 Provides:       user(%{toruser})
 %systemd_ordering
-%if 0%{?suse_version} > 1500
 BuildRequires:  libscrypt-devel
-%endif
 
 %description
 Tor is a connection-based low-latency anonymous communication system.

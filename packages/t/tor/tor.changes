@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 14 15:50:14 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Enables scrypt support unconditionally
+
+-------------------------------------------------------------------
 Mon Feb  5 09:01:39 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix users/groups with rpm 4.19
