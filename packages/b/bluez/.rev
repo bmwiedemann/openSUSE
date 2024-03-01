@@ -1660,4 +1660,12 @@ If we cannot get this in, we need to push an security update for the current blu
   regression</comment>
     <requestid>1136648</requestid>
   </revision>
+  <revision rev="204" vrev="3">
+    <srcmd5>c093a3f8ce86e37fbef308931cdf57f9</srcmd5>
+    <version>5.71</version>
+    <time>1709332451</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153085</requestid>
+  </revision>
 </revisionlist>

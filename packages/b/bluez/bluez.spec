@@ -204,13 +204,18 @@ to use the modern tools instead.
 %endif
 
 %package obexd
-Summary:        Object Exchange daemon for sharing content
+Summary:        Object Exchange daemon for sharing binary objects
 License:        GPL-2.0-or-later
 Group:          Hardware/Mobile
 Requires:       bluez = %{version}
+Supplements:    bluedevil5
+Supplements:    blueman
+Supplements:    gnome-bluetooth
 
 %description obexd
-Object Exchange daemon for sharing content.
+This is an object exchange daemon for binary objects transferring between
+devices. obexd is necessary to install for sharing files, contacts
+etc. through bluetooth.
 
 %package zsh-completion
 Summary:        Zsh completion for bluez
