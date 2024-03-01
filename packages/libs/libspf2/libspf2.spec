@@ -26,6 +26,7 @@ License:        BSD-2-Clause OR LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.libspf2.org/
 Source0:        %{fname}.tar.xz
+# SPF_debugf macro should always have at least two parameters
 Patch0:         libspf2-1.2.10-format.patch
 # PATCH-FIX-OPENSUSE Drop usage of libreplace
 Patch1:         libspf2-1.2.10-libreplace.patch
@@ -125,14 +126,9 @@ testing. While it can be used as an SPF implementation, you can also
 use Mail::SPF, which is a little more perlish.
 
 %prep
-%setup -n %{fname}
-
-# SPF_debugf macro should always have at least two parameters
-%patch0
-
+%autosetup -p0 -n %{fname}
 # libreplace is not needed on modern Linux
 rm -rf src/libreplace
-%patch1
 find . "(" -name Makefile.am -o -name Makefile.in ")" -exec touch {} +
 
 %build
