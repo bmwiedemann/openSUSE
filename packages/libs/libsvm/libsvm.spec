@@ -95,8 +95,7 @@ BuildArch:      noarch
 This package contains the Java bindings for libsvm.
 
 %prep
-%setup -q -n %{name}-%{fileversion}
-%patch0 -p1
+%autosetup -p1 -n %{name}-%{fileversion}
 
 %build
 # We can't override CFLAGS, we have to patch the Makefile.
