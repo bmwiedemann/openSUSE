@@ -92,8 +92,7 @@ write text on the display, directly draw dots, or get the value of
 keys pressed on the Braille keyboard.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 autoreconf -fi

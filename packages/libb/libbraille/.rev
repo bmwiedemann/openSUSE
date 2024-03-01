@@ -130,4 +130,13 @@
     <comment>- fix shlib-policy-name-error [bsc#1191761]</comment>
     <requestid>926318</requestid>
   </revision>
+  <revision rev="18" vrev="25">
+    <srcmd5>9383d5c5a3a716487e000fda0490351d</srcmd5>
+    <version>0.19.0</version>
+    <time>1709332537</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN (forwarded request 1153436 from pgajdos)</comment>
+    <requestid>1153780</requestid>
+  </revision>
 </revisionlist>
