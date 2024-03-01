@@ -110,8 +110,7 @@ Requires:       %{name} >= %{version}
 libfm developers documentation
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 ./autogen.sh
