@@ -172,4 +172,15 @@
   * various toplevel domain updates</comment>
     <requestid>1137815</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8f978c06748e3fdc67f0ec8c67acf791</srcmd5>
+    <version>0.10.0.20240214</version>
+    <time>1709332599</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to  0.10.0.20240214:
+  * various toplevel domain updates
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1153731</requestid>
+  </revision>
 </revisionlist>

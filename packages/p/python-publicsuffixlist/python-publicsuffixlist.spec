@@ -18,16 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-publicsuffixlist
-Version:        0.10.0.20240108
+Version:        0.10.0.20240214
 Release:        0
 Summary:        Public suffix list implementaion in Python
 License:        MPL-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/ko-zu/psl
 Source:         https://files.pythonhosted.org/packages/source/p/publicsuffixlist/publicsuffixlist-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE change_psl_location.patch -- use list from publicsuffix package
 Patch0:         change_psl_location.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION tests
@@ -45,16 +46,15 @@ Parser implementation for the Public Suffix List <https://publicsuffix.org/> in 
 Support for IDN (unicode or punycoded).
 
 %prep
-%setup -q -n publicsuffixlist-%{version}
-%patch0 -p1
+%autosetup -p1 -n publicsuffixlist-%{version}
 sed -i '/public_suffix_list\.dat/ d' setup.py
 rm publicsuffixlist/update.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 rm %{buildroot}%{_bindir}/publicsuffixlist-download
 %{python_expand rm -f %{buildroot}%{$python_sitelib}/publicsuffixlist/test* %{buildroot}%{$python_sitelib}/publicsuffixlist/__pycache__/test*
 %fdupes %{buildroot}%{$python_sitelib}
@@ -66,6 +66,7 @@ rm %{buildroot}%{_bindir}/publicsuffixlist-download
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/publicsuffixlist
+%{python_sitelib}/publicsuffixlist-%{version}.dist-info
 
 %changelog
