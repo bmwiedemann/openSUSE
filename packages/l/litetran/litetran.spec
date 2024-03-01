@@ -47,8 +47,7 @@ LiteTran is a GUI for text translation (like Yandex.Translate).
  * 37 supported languages.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 # rpmlint: executable-docs, script-without-shebang
 chmod 644 LICENSE.txt README.md RELNOTES.txt 
