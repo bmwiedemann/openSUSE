@@ -85,9 +85,7 @@ Requires:       libshadowdive%{sover} = %{version}
 Development and header files for libShadowDive.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %cmake \
