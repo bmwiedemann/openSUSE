@@ -864,4 +864,12 @@
     <comment>- Fix version at configure time as there was no .tarball-version</comment>
     <requestid>1119659</requestid>
   </revision>
+  <revision rev="88" vrev="5">
+    <srcmd5>09c65bd09a013ad9b5b5c38847e7fdc2</srcmd5>
+    <version>23.6</version>
+    <time>1709332508</time>
+    <user>dimstar_suse</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1153364 from dimstar)</comment>
+    <requestid>1153389</requestid>
+  </revision>
 </revisionlist>

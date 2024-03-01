@@ -60,9 +60,9 @@ processes that are using specified files or filesystems.
 
 %prep
 %setup -q -n %{name}-v%{version}
-%patch2 -p0 -b .pstree
-%patch3 -p0 -b .mntinf
-%patch0 -p0 -b .p0
+%patch -P 2 -p0 -b .pstree
+%patch -P 3 -p0 -b .mntinf
+%patch -P 0 -p0 -b .p0
 
 %build
 grep -h src/ po/*.po|\
