@@ -1,7 +1,7 @@
 #
 # spec file for package dpkg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -86,12 +86,12 @@ Libraries and header files for dpkg.
 
 %prep
 %setup -q
-%patch1 -p1
+%patch -P 1 -p1
 %if 0%{?suse_version} == 1315
-%patch2 -p1
+%patch -P 2 -p1
 %endif
-%patch3 -p1
-%patch4 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
