@@ -42,9 +42,7 @@ LLCbench (Low-Level Characterization Benchmarks) was created by combining
 MPBench, CacheBench, and BLASBench into a single benchmark package.
 
 %prep
-%setup -q -n %{name}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n %{name}
 
 %build
 %setup_openmpi

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  1 10:56:27 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Thu Oct 10 07:06:51 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Use openmpi-macros-devel to automatically pick the default OpenMPI version
