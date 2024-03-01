@@ -1,7 +1,7 @@
 #
 # spec file for package jdupes
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019-2020 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,8 +23,8 @@ Release:        0
 Summary:        A powerful duplicate file finder and an enhanced fork of 'fdupes'
 License:        MIT
 Group:          Productivity/File utilities
-URL:            https://github.com/jbruchon/jdupes
-Source0:        https://github.com/jbruchon/jdupes/archive/refs/tags/v%{version}.tar.gz
+URL:            https://codeberg.org/jbruchon/jdupes
+Source0:        https://codeberg.org/jbruchon/jdupes/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        macros.jdupes
 Source2:        jdupes_wrapper.cpp
 BuildRequires:  gcc-c++
@@ -39,7 +39,7 @@ work the same way. Option availability and meanings differ between the two
 programs.
 
 %prep
-%setup -q
+%autosetup -p1 -n %{name}
 
 %build
 %make_build \

@@ -68,4 +68,13 @@
     <comment></comment>
     <requestid>1108046</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>1c46162142714f6555242e26e728dc54</srcmd5>
+    <version>1.27.3</version>
+    <time>1709332493</time>
+    <user>dimstar_suse</user>
+    <comment>- Reflect upstream move to https://codeberg.org/jbruchon
+</comment>
+    <requestid>1153254</requestid>
+  </revision>
 </revisionlist>
