@@ -90,9 +90,7 @@ heterogenous GPUs/accelerators.
 This subpackage provides the development files needed for pocl.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %define __builder ninja
