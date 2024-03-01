@@ -78,8 +78,7 @@ BuildArch:      noarch
 Udev rules for XTRX USB devices.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake \
