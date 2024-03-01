@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 04:33:15 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Switch to sysusers
+
+-------------------------------------------------------------------
 Mon Dec  4 22:31:39 UTC 2023 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Repair system call filter induced startup failure

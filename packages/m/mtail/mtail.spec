@@ -1,7 +1,7 @@
 #
 # spec file for package mtail
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,10 +35,13 @@ Source1:        vendor.tar.gz
 Source2:        %{name}.service
 Source3:        %{name}.sysconfig
 Source4:        apparmor-usr.sbin.%{name}
+Source5:        %{name}.sysuser
 BuildRequires:  golang-packaging
+BuildRequires:  sysuser-tools
 BuildRequires:  golang(API) >= 1.17
 Requires(post): %fillup_prereq
 Requires(pre):  shadow
+%sysusers_requires
 %if %{with apparmor}
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
@@ -59,6 +62,7 @@ go build -mod=vendor -o mtail cmd/mtail/main.go
 %else
 go build -mod=vendor -buildmode=pie -o mtail cmd/mtail/main.go
 %endif
+%sysusers_generate_pre %{SOURCE5} %{name}
 
 %install
 # Install the binary
@@ -68,6 +72,8 @@ install -D -m 0755 %{name} "%{buildroot}%{_sbindir}/%{name}"
 mkdir -p %{buildroot}%{_unitdir}
 install -p -m644 %{SOURCE2} %{buildroot}%{_unitdir}/
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
+# Install sysuser configuration
+install -D -m 0644 %{SOURCE5} %{buildroot}%{_sysusersdir}/%{name}.conf
 # create config directory and create example config files
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}
 # create sysconfig file
@@ -79,12 +85,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/apparmor.d
 install -m 0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/apparmor.d/usr.sbin.%{name}
 %endif
 
-%pre
-# creating group and user mtail
-%{_bindir}/getent group %{name} >/dev/null || %{_sbindir}/groupadd -r %{name}
-%{_bindir}/getent passwd %{name} >/dev/null || \
-  %{_sbindir}/useradd -r -g %{name} -d / -s /sbin/nologin \
-  -c "%{name} service user" %{name}
+%pre -f %{name}.pre
 %service_add_pre %{name}.service
 
 %post
@@ -107,6 +108,7 @@ install -m 0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/apparmor.d/usr.sbin.%{name
 %{_unitdir}/%{name}.service
 %{_sbindir}/rc%{name}
 %{_unitdir}/%{name}.service
+%{_sysusersdir}/%{name}.conf
 %dir %attr(0750, root, %{name}) %{_sysconfdir}/%{name}
 %if %{with apparmor}
 %dir %{_sysconfdir}/apparmor.d
