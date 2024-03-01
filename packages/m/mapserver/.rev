@@ -51,4 +51,12 @@
     <comment>curate changelog</comment>
     <requestid>1111509</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>db3109ce3dc96fb1b9287eaa5d42049d</srcmd5>
+    <version>8.0.1</version>
+    <time>1709332608</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153756</requestid>
+  </revision>
 </revisionlist>

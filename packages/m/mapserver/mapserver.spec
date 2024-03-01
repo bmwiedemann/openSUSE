@@ -1,7 +1,7 @@
 #
 # spec file for package mapserver
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2014 Ioda-Net Sàrl, Charmoille, Switzerland. Bruno Friedmann (tigerfoot)
 # Copyright (c) 2015 Angelos Tzotsos (kalxas)
 #
@@ -60,7 +60,6 @@ BuildRequires:  libgdal-devel >= 1.10
 BuildRequires:  libgeos-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
-BuildRequires:  libproj-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-devel
@@ -69,6 +68,7 @@ BuildRequires:  openjpeg2-devel
 BuildRequires:  pam
 BuildRequires:  pam-devel
 BuildRequires:  postgresql-devel >= 9.1
+BuildRequires:  proj-devel
 %if 0%{?suse_version} >= 1500
 BuildRequires:  postgresql-server-devel >= 9.1
 %endif
