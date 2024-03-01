@@ -52,9 +52,7 @@ has support for importing Step files and support for both importing and
 exporting Iges, DXF, and VRML files, and for exporting SVG.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 # Rebuild G-Code
 find . -type f -name \*.o -exec rm {} \;
