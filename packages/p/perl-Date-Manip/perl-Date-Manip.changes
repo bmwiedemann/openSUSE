@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jan 10 03:07:00 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.94
+   see /usr/share/doc/packages/perl-Date-Manip/Changes
+
+  6.94  2024-01-09
+    -  Time zone fixes
+           The 6.93 release didn't include the windows timezone aliases from
+           GitHub #46. Pointed out by Mike Capella.
+           Newest zoneinfo data (tzdata 2023d).
+    -  Documentation fixes
+           Fixed a grammatical issue. GitHub #49
+  6.93  2023-12-01
+    -  Bug fixes
+           Bug where Date::Manip::TZ::convert wasn't returning an error code
+           if an invalid date was passed in. GitHub #47.
+    -  Time zone fixes
+           Updated the windows timezone aliases. They were out-of-date. See
+           GitHub #46.
+    -  Test fixes
+           In the test scripts, changed RELEASE_TESTING variable. Now use a
+           release-specific testing variable rather than RELEASE_TESTING. See
+           GitHub #17 in my Locale-Codes module for details.
+
+-------------------------------------------------------------------
 Sat Dec  2 03:08:01 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.93

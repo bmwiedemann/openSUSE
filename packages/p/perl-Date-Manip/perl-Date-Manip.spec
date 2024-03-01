@@ -18,9 +18,9 @@
 
 %define cpan_name Date-Manip
 Name:           perl-Date-Manip
-Version:        6.930.0
+Version:        6.940.0
 Release:        0
-%define cpan_version 6.93
+%define cpan_version 6.94
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Date manipulation routines
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -613,6 +613,7 @@ Provides:       perl(Date::Manip::TZ::anmaws00) = %{version}
 Provides:       perl(Date::Manip::TZ::anpalm00) = %{version}
 Provides:       perl(Date::Manip::TZ::anroth00) = %{version}
 Provides:       perl(Date::Manip::TZ::antrol00) = %{version}
+Provides:       perl(Date::Manip::TZ::anvost00) = %{version}
 Provides:       perl(Date::Manip::TZ::asalma00) = %{version}
 Provides:       perl(Date::Manip::TZ::asamma00) = %{version}
 Provides:       perl(Date::Manip::TZ::asanad00) = %{version}
