@@ -53,4 +53,12 @@
   * Fix null reference in cJSON_InsertItemInArray (CVE-2023-50471).</comment>
     <requestid>1135432</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3eb6ed8ece7d1c9d2a76b2c91caf69c6</srcmd5>
+    <version>1.7.17</version>
+    <time>1709332697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153952</requestid>
+  </revision>
 </revisionlist>
