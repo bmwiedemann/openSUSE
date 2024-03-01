@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  1 15:07:33 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Drop definition of BuildRoot
+- Drop support for older Python versions
+- Limit Python files matched in %files section
+
+-------------------------------------------------------------------
 Mon Aug 15 11:57:08 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

@@ -133,4 +133,12 @@
 - Update Requires from setup.py (forwarded request 995152 from glaubitz)</comment>
     <requestid>995156</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>ba60deed6d0a9b4227779d2e51ffc8c0</srcmd5>
+    <version>0.7.1</version>
+    <time>1709332779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1154104</requestid>
+  </revision>
 </revisionlist>

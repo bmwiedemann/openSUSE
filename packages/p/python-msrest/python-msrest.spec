@@ -1,7 +1,7 @@
 #
 # spec file for package python-msrest
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,13 +39,6 @@ Requires:       python-isodate >= 0.6.0
 Requires:       python-requests < 3.00
 Requires:       python-requests >= 2.16
 Requires:       python-requests-oauthlib >= 0.5.0
-%if "%{python_flavor}" == "python2" || %{python3_version_nodots} < 35
-Requires:       python-typing
-%endif
-%if "%{python_flavor}" == "python2" || %{python3_version_nodots} < 34
-Requires:       python-enum34 >= 1.0.4
-%endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %python_subpackages
@@ -69,6 +62,7 @@ cp %{SOURCE1} LICENSE.md
 %defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE.md
-%{python_sitelib}/*
+%{python_sitelib}/msrest
+%{python_sitelib}/msrest-%{version}*-info
 
 %changelog
