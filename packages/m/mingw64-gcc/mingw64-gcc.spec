@@ -208,8 +208,8 @@ MinGW Windows compiler for Objective-C and Objective-C++ shared libraries
 %prep
 %setup -q -c
 pushd gcc-%{version}
-%patch1
-%patch2 -p1
+%patch -P 1
+%patch -P 2 -p1
 popd
 
 %build

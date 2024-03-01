@@ -108,7 +108,7 @@ MinGW Windows cross-compiler for Ada
 %prep
 %setup -q -c
 pushd gcc-%{version}
-%patch1
+%patch -P 1
 popd
 
 %build
