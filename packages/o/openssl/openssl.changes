@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 23 11:31:44 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Build the 32bit flavor of libopenssl-fips-provider [bsc#1220232]
+  * Update baselibs.conf
+
+-------------------------------------------------------------------
 Mon Jan 29 15:17:22 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - New libopenssl-fips-provider package.

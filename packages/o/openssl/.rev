@@ -1778,4 +1778,12 @@ fixes its regression.
 - Fix armv6l arch (armv7 was previously used to build armv6 which</comment>
     <requestid>1142585</requestid>
   </revision>
+  <revision rev="171" vrev="3">
+    <srcmd5>f51b94e0ffbae2b851c081124ea55dbb</srcmd5>
+    <version>3.1.4</version>
+    <time>1709332437</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153156</requestid>
+  </revision>
 </revisionlist>
