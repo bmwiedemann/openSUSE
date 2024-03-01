@@ -152,4 +152,12 @@
 - squirrel.rpmlintrc: ignore EOL warnings in doc files</comment>
     <requestid>1073749</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>1460c477b24a3d8a9cb67fa17d5608a8</srcmd5>
+    <version>3.2</version>
+    <time>1709332700</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153983</requestid>
+  </revision>
 </revisionlist>

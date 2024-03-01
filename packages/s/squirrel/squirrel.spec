@@ -82,8 +82,8 @@ Example scripts to show squirrel usage.
 %prep
 %setup -q -n squirrel3
 sed -e 's,1000,%{sover},g' < %{_sourcedir}/sover.patch.in > %{_sourcedir}/sover.patch
-%patch1 -p1
-%patch10 -p1
+%patch -P 1 -p1
+%patch -P 10 -p1
 cp %SOURCE1 .
 
 %build
