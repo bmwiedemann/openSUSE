@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar  1 12:08:37 UTC 2024 - Neal Gompa <ngompa@opensuse.org>
+
+- Update to v1.1.1
+  + Make the tab widget frameless
+  + Update branding colors in metainfo.xml
+  + http -> https in some links in metainfo.xml
+  + Add release URLs and additional release metadata in metainfo.xml
+  + Clarify recommended display length and screenshot types in metainfo.xml
+
+-------------------------------------------------------------------
 Sat Feb 10 23:10:10 UTC 2024 - Neal Gompa <ngompa@opensuse.org>
 
 - Update to v1.1.0

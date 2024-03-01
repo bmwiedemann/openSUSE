@@ -60,4 +60,17 @@
   + Fix aura-shell protocol detection</comment>
     <requestid>1145857</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>66f098fae48854ad6f5882eb3635eea3</srcmd5>
+    <version>1.1.1</version>
+    <time>1709332693</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.1.1
+  + Make the tab widget frameless
+  + Update branding colors in metainfo.xml
+  + http -&gt; https in some links in metainfo.xml
+  + Add release URLs and additional release metadata in metainfo.xml
+  + Clarify recommended display length and screenshot types in metainfo.xml</comment>
+    <requestid>1153937</requestid>
+  </revision>
 </revisionlist>
