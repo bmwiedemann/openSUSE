@@ -254,4 +254,12 @@
   Leap builds.</comment>
     <requestid>1149572</requestid>
   </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>cfa070eb94946747d1fedd73d7bc824d</srcmd5>
+    <version>3.6.8</version>
+    <time>1709332788</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing requirements for dcmtk-devel (boo#1220809)</comment>
+    <requestid>1154155</requestid>
+  </revision>
 </revisionlist>

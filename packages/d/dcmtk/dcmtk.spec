@@ -51,6 +51,10 @@ parts the DICOM standard.
 Summary:        Development files for dcmtk
 Requires:       libdcmtk%{abiversion} = %{version}
 Requires:       tcpd-devel
+Requires:       pkgconfig(libjpeg)
+Requires:       pkgconfig(libopenjp2)
+Requires:       pkgconfig(libpng)
+Requires:       pkgconfig(libxml-2.0)
 
 %description devel
 This package provides development libraries and headers needed to build

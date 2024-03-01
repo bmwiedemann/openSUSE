@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  1 19:15:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add missing requirements for dcmtk-devel (boo#1220809)
+
+-------------------------------------------------------------------
 Thu Feb 22 11:09:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Use the KDE cmake macros that are guaranteed to not break
