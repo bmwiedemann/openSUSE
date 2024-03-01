@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 # Disable LTO on aarch64
 # https://github.com/libunwind/libunwind/issues/693
 %ifarch aarch64
@@ -23,7 +24,7 @@
 
 # Note the wrong version number from upstream
 Name:           libunwind
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        Call chain detection library
 License:        MIT
@@ -116,6 +117,8 @@ autoreconf -fiv
 find %{buildroot} -iregex '.*\.l?a$' -delete -print
 # Help packagers with %%files
 find %{buildroot}/%{_libdir} -type f | sort
+# Do not install the test files
+rm -rf %{buildroot}%{_libexecdir}/%{name}
 
 %post   -n libunwind8 -p /sbin/ldconfig
 %postun -n libunwind8 -p /sbin/ldconfig

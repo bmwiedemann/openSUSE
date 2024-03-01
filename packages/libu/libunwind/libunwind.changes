@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 23 11:43:14 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.8.1:
+  * Fix issue #713 by @cshung in #717
+  * Add do-release script by @bregma in #725
+  * Backport dotnet-runtime fixes to the 1.8 branch by @bregma in #726
+  * [v1.8] Make tests installable by @bregma in #722
+  * Bump version to 1.8.1 by @bregma in #727
+
+-------------------------------------------------------------------
 Mon Feb 12 13:57:28 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable LTO on aarch64 until upstream fix the issue:

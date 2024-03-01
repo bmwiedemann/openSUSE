@@ -420,4 +420,12 @@ Patches submitted to libunwind-devel.
     <comment></comment>
     <requestid>1146211</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>fe74d0f02c8cdc182059a6327dbbf66a</srcmd5>
+    <version>1.8.1</version>
+    <time>1709332465</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153166</requestid>
+  </revision>
 </revisionlist>
