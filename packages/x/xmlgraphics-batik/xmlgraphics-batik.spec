@@ -17,10 +17,11 @@
 #
 
 
+%{!?mvn_install_pom:%global mvn_install_pom install -pm 0644}
 %define _buildshell /bin/bash
 %global classpath xmlgraphics-batik:rhino:xml-commons-apis:xml-commons-apis-ext:xmlgraphics-commons
 Name:           xmlgraphics-batik
-Version:        1.15
+Version:        1.17
 Release:        0
 Summary:        Scalable Vector Graphics for Java
 License:        Apache-2.0
@@ -31,18 +32,14 @@ Source1:        batik-build.tar.xz
 Source7:        %{name}.security.policy
 Patch0:         %{name}-nolinksinjavadoc.patch
 Patch1:         0001-Fix-imageio-codec-lookup.patch
-Patch2:         %{name}-nosourcetarget.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local >= 6
+BuildRequires:  javapackages-local
 BuildRequires:  rhino >= 1.6
 BuildRequires:  xml-commons-apis >= 1.3.03
 BuildRequires:  xmlgraphics-commons
 Requires:       %{name}-css = %{version}-%{release}
-Requires:       mvn(org.apache.xmlgraphics:xmlgraphics-commons)
-Requires:       mvn(xml-apis:xml-apis)
-Requires:       mvn(xml-apis:xml-apis-ext)
 Obsoletes:      batik < %{version}-%{release}
 Provides:       batik = %{version}-%{release}
 BuildArch:      noarch
@@ -66,6 +63,10 @@ CSS component of the Apache Batik SVG manipulation and rendering library.
 Summary:        Batik SVG browser
 Group:          Productivity/Graphics/Vector Editors
 Requires:       %{name} = %{version}-%{release}
+Requires:       javapackages-tools
+Requires:       rhino
+Requires:       xml-commons-apis
+Requires:       xmlgraphics-commons
 Obsoletes:      batik-squiggle < %{version}-%{release}
 Provides:       batik-squiggle = %{version}-%{release}
 
@@ -77,6 +78,10 @@ in the content and select text items in the image and much more.
 Summary:        Batik SVG pretty printer
 Group:          Productivity/Graphics/Vector Editors
 Requires:       %{name} = %{version}-%{release}
+Requires:       javapackages-tools
+Requires:       rhino
+Requires:       xml-commons-apis
+Requires:       xmlgraphics-commons
 Obsoletes:      batik-svgpp < %{version}-%{release}
 Provides:       batik-svgpp = %{version}-%{release}
 
@@ -89,6 +94,10 @@ also be used to modify the DOCTYPE declaration on SVG files.
 Summary:        Batik SVG font converter
 Group:          Productivity/Graphics/Vector Editors
 Requires:       %{name} = %{version}-%{release}
+Requires:       javapackages-tools
+Requires:       rhino
+Requires:       xml-commons-apis
+Requires:       xmlgraphics-commons
 Obsoletes:      batik-ttf2svg < %{version}-%{release}
 Provides:       batik-ttf2svg = %{version}-%{release}
 
@@ -102,6 +111,10 @@ rendered exactly the same on all systems.
 Summary:        Batik SVG rasterizer
 Group:          Productivity/Graphics/Vector Editors
 Requires:       %{name} = %{version}-%{release}
+Requires:       javapackages-tools
+Requires:       rhino
+Requires:       xml-commons-apis
+Requires:       xmlgraphics-commons
 Obsoletes:      batik-rasterizer < %{version}-%{release}
 Provides:       batik-rasterizer = %{version}-%{release}
 
@@ -116,6 +129,10 @@ to be added easily.
 Summary:        Batik SVG slideshow
 Group:          Productivity/Graphics/Vector Editors
 Requires:       %{name} = %{version}-%{release}
+Requires:       javapackages-tools
+Requires:       rhino
+Requires:       xml-commons-apis
+Requires:       xmlgraphics-commons
 Obsoletes:      batik-slideshow < %{version}-%{release}
 Provides:       batik-slideshow = %{version}-%{release}
 
@@ -149,18 +166,12 @@ find -name '*.jar' -delete
 
 %patch -P 0 -p1
 %patch -P 1 -p1
-%patch -P 2 -p1
 
 cp -p %{SOURCE7} batik-svgrasterizer/src/main/resources/org/apache/batik/apps/rasterizer/resources/rasterizer.policy
 cp -p %{SOURCE7} batik-svgbrowser/src/main/resources/org/apache/batik/apps/svgbrowser/resources/svgbrowser.policy
 
-# It's an uberjar, it shouldn't have requires
-%pom_xpath_inject pom:dependency '<optional>true</optional>' batik-all
-
 # eclipse expects xmlgraphics to be optional
 %pom_xpath_inject 'pom:dependency[pom:artifactId="xmlgraphics-commons"]' '<optional>true</optional>' batik-css
-
-%pom_remove_dep :batik-i18n batik-util
 
 for pom in `find -mindepth 2 -name pom.xml -not -path ./batik-all/pom.xml`; do
     %pom_add_plugin org.apache.felix:maven-bundle-plugin $pom "
@@ -191,7 +202,6 @@ export OPT_JAR_LIST=:
     -f build-batik.xml -Dtest.skip=true \
 	package
 %{ant} \
-    -Dant.build.javac.source=8 -Dant.build.javac.target=8 \
     all-jar jars javadoc
 
 %install

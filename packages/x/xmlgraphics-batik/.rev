@@ -353,4 +353,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148641</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>8be133fab5c464f0137b6eb81cd20f51</srcmd5>
+    <version>1.17</version>
+    <time>1709332553</time>
+    <user>dimstar_suse</user>
+    <comment>Some more security fixes</comment>
+    <requestid>1154161</requestid>
+  </revision>
 </revisionlist>

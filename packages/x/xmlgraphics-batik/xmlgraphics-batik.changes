@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Mar  1 19:02:03 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.17
+  * BATIK-1346: Allow configuration of rhino whitelist
+  * BATIK-1347: Switch to empty whitelist for rhino (CVE-2022-44730)
+  * BATIK-1349: Block loading external resource by default
+    (CVE-2022-44729)
+- Upgrade to version 1.16
+  * Java 8 or later is minimum runtime required
+  * BATIK-1338: Block loading jar inside svg (CVE-2022-41704,
+    bsc#1204704)
+  * BATIK-1345: Restrict what java classes can be run thru rhino
+    (CVE-2022-42890, bsc#1204709)
+- Removed patch:
+  * xmlgraphics-batik-nosourcetarget.patch
+    + not needed since Java 8 compatibility is now the default
+
+-------------------------------------------------------------------
+Thu Feb 29 07:18:22 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Allow building with this spec-file on systems that don't have the
+  mvn_install_pom macros defined and release version requirement
+  of javapackages-local
+- Require the xmlgraphics-commons, xml-commons-apis a rhino by their
+  names, since they are on the classpath by their location in the
+  scripts. Require them in the subpackages that contain the scripts.
+- Require javapackages-tools in subpackages that contain scripts
+  created by jpackage_script macro. The scripts need functions from
+  javapackages-tools
+
+-------------------------------------------------------------------
 Wed Feb 21 10:55:53 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
