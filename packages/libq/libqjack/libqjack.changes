@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  1 08:56:26 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Mon Jun 11 18:13:47 UTC 2018 - aloisio@gmx.com
 
 - Added qjack-Qt511.patch to fix build with Qt 5.11

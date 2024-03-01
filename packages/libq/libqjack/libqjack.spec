@@ -61,9 +61,7 @@ Requires:       pkgconfig(Qt5Core)
 QJack makes you connect with the Jack soundserver system with Qt.
 
 %prep
-%setup -q -n qjack-%{_reldate}
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n qjack-%{_reldate}
 
 %build
 install -d build
