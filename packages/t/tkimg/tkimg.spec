@@ -17,7 +17,7 @@
 
 
 Name:           tkimg
-Version:        1.4.14
+Version:        1.4.16
 Release:        0
 Summary:        More Image Formats for Tk
 Group:          Development/Libraries/Tcl
@@ -46,7 +46,7 @@ Group:          Development/Libraries/Tcl
 Files needed to compile/link C code against tkimg.
 
 %prep
-%autosetup -p1 -n Img-%{version}-Source
+%autosetup -p1 -n Img-%{version}
 # Source archive is likly created on Windows, so fix some issues
 # 1. Fix file permissions: Executable bit is set on every file, fix that
 find . -type f -not -name configure -exec chmod 0644 \{\} +
