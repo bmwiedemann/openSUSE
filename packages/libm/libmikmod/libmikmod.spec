@@ -65,8 +65,7 @@ also write wav files. Supported file formats include mod, stm, s3m,
 mtm, xm, and it.
 
 %prep
-%setup -q
-%patch1
+%autosetup -p0
 
 %build
 %configure --disable-static --disable-oss
