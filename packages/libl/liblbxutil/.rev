@@ -70,4 +70,12 @@
 - added baselibs.conf as source to specfile</comment>
     <requestid>762023</requestid>
   </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>9677ca58cf0728aa794e2a521d194b32</srcmd5>
+    <version>1.1.0</version>
+    <time>1709332591</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153715</requestid>
+  </revision>
 </revisionlist>

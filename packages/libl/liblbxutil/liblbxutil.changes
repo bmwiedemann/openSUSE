@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 17:13:26 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Wed Jan  8 17:48:26 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_fno-common.patch
