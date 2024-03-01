@@ -65,8 +65,8 @@ Current features:
 
 %prep
 %setup -q -n %{name}
-%patch0
-%patch1 -p1
+%patch -P 0
+%patch -P 1 -p1
 
 %build
 %configure

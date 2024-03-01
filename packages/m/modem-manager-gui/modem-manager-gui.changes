@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 23 09:19:22 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Aug 19 10:10:54 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
 
 - added patch fix_segfault_on_DNS_entries.patch
