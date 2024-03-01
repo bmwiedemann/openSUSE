@@ -313,4 +313,12 @@
     <comment></comment>
     <requestid>1130559</requestid>
   </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>6babc1a7027daa8c0dbcb5cd4081d077</srcmd5>
+    <version>3.24</version>
+    <time>1709332497</time>
+    <user>dimstar_suse</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1153270 from dimstar)</comment>
+    <requestid>1153311</requestid>
+  </revision>
 </revisionlist>

@@ -52,16 +52,16 @@ for p in ../procmail-%{version}-patches/* ; do
     echo Patch $p
     patch -s -p1 --fuzz=0 < $p
 done
-%patch0
-%patch1
-%patch2
-%patch3
-%patch4
-%patch5
-%patch6
-%patch8 -p1
-%patch10 -p1
-%patch11 -p1
+%patch -P 0
+%patch -P 1
+%patch -P 2
+%patch -P 3
+%patch -P 4
+%patch -P 5
+%patch -P 6
+%patch -P 8 -p1
+%patch -P 10 -p1
+%patch -P 11 -p1
 sed -ri '\@^/\*@,\@\*/@{ s@^(/\*[^*]*)(/\*)@\1\*/ \2@; }' config.h
 sed -ri '\@^/\*@,\@\*/@{ s@^(/\*[^*]*)(/\*)@\1\*/ \2@; }' src/includes.h
 sed -ri '\@^#.*[[:blank:]]+/\*[^/]*$@M,\@\*/$@{ s@(^[[:blank:]]+)/\*@\1  @;}' src/includes.h
