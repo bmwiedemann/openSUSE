@@ -128,4 +128,21 @@ Required by python-scikit-image</comment>
   * Bug Fixes</comment>
     <requestid>1090084</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0feb053da6e0932b46b6a38a8a48bae5</srcmd5>
+    <version>1.0.10</version>
+    <time>1709332549</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.10:
+  * When there's no handler for the request, add more details to
+    the response sent by the server about the request to help
+    debugging.
+  * Use ruff for linting. It includes some source code changes
+    which should not introduce functional changes, or API
+    changes.
+  * Add __repr__ to RequestHandler object so when it is compared
+    (eg. with the log attribute of the server) it will show the
+    matcher parameters.</comment>
+    <requestid>1153853</requestid>
+  </revision>
 </revisionlist>
