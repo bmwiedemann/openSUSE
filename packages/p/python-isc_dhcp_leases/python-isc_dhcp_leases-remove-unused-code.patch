@@ -1,7 +1,7 @@
-diff --git a/isc_dhcp_leases/iscdhcpleases.py b/isc_dhcp_leases/iscdhcpleases.py
-index e16677e..8578060 100644
---- a/isc_dhcp_leases/iscdhcpleases.py
-+++ b/isc_dhcp_leases/iscdhcpleases.py
+Index: python-isc-dhcp-leases-0.10.0/isc_dhcp_leases/iscdhcpleases.py
+===================================================================
+--- python-isc-dhcp-leases-0.10.0.orig/isc_dhcp_leases/iscdhcpleases.py
++++ python-isc-dhcp-leases-0.10.0/isc_dhcp_leases/iscdhcpleases.py
 @@ -5,8 +5,6 @@ import re
  import struct
  import gzip
@@ -11,3 +11,16 @@ index e16677e..8578060 100644
  
  try:
      utc = datetime.timezone.utc
+Index: python-isc-dhcp-leases-0.10.0/setup.py
+===================================================================
+--- python-isc-dhcp-leases-0.10.0.orig/setup.py
++++ python-isc-dhcp-leases-0.10.0/setup.py
+@@ -43,7 +43,7 @@ setup(
+     version='0.10.0',
+     packages=['isc_dhcp_leases'],
+     url='https://github.com/MartijnBraam/python-isc-dhcp-leases',
+-    install_requires=['six'],
++    install_requires=[],
+     license='MIT',
+     author='Martijn Braam',
+     author_email='martijn@brixit.nl',

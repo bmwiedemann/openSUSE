@@ -31,4 +31,14 @@
     <comment></comment>
     <requestid>1108799</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7216d832d0880ada35063310df0585cc</srcmd5>
+    <version>0.10.0</version>
+    <time>1709332585</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to autosetup and pyproject macros.
+- Refresh python-isc_dhcp_leases-remove-unused-code.patch to also drop the
+  install_requires.</comment>
+    <requestid>1153661</requestid>
+  </revision>
 </revisionlist>

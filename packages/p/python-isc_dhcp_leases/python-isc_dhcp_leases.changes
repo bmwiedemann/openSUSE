@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 29 23:44:35 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- Refresh python-isc_dhcp_leases-remove-unused-code.patch to also drop the
+  install_requires.
+
+-------------------------------------------------------------------
 Thu Aug 31 15:41:47 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.10.0

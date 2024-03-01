@@ -1,7 +1,7 @@
 #
 # spec file for package python-isc_dhcp_leases
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,12 +21,13 @@ Version:        0.10.0
 Release:        0
 Summary:        Python module for reading dhcpd.leases from ISC DHCP server
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/MartijnBraam/python-isc-dhcp-leases
 Source:         https://github.com/MartijnBraam/python-isc-dhcp-leases/archive/%{version}.tar.gz#/isc_dhcp_leases-%{version}.tar.gz
 # https://github.com/MartijnBraam/python-isc-dhcp-leases/issues/38
 Patch0:         python-isc_dhcp_leases-remove-unused-code.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -41,14 +42,13 @@ This module also supports reading lease files from the ISC DHCP daemon
 running in IPv6 mode.
 
 %prep
-%setup -q -n python-isc-dhcp-leases-%{version}
-%patch0 -p1
+%autosetup -p1 -n python-isc-dhcp-leases-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,6 +56,7 @@ running in IPv6 mode.
 
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/isc_dhcp_leases*
+%{python_sitelib}/isc_dhcp_leases
+%{python_sitelib}/isc_dhcp_leases-%{version}.dist-info
 
 %changelog
