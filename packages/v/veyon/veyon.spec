@@ -1,7 +1,7 @@
 #
 # spec file for package veyon
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,6 @@ BuildRequires:  libXcursor-devel
 BuildRequires:  libXdamage-devel
 BuildRequires:  libXfixes-devel
 BuildRequires:  libfakekey-devel
-BuildRequires:  libgsasl
 BuildRequires:  libjpeg8-devel
 BuildRequires:  libpng16-compat-devel
 BuildRequires:  libpng16-devel

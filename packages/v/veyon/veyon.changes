@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 27 10:11:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop libgsasl BuildRequires: I can't find any reference of this
+  being used.
+
+-------------------------------------------------------------------
 Fri Dec  1 05:53:27 UTC 2023 - ming li <mli@suse.com>
 
 - Update to 4.8.2:
