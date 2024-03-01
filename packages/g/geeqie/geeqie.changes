@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar  1 10:53:10 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- boo#1220031:
+  * Fix crash when hiding files gh/BestImageViewer/geeqie#1248
+    Add geeqie-2.2-fix-filelist-crash.patch
+  * Fix crash when renaming files gh/BestImageViewer/geeqie#1242
+    Add geeqie-2.2-fix-rename-crash.patch
+
+-------------------------------------------------------------------
 Fri Jan 26 09:42:15 UTC 2024 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 2.2:

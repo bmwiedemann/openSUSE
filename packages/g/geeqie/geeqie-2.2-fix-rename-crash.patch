@@ -1,0 +1,25 @@
+From fef4012de70dc468b00c7d07549f7b447cf47f13 Mon Sep 17 00:00:00 2001
+From: Colin Clark <colin.clark@cclark.uk>
+Date: Wed, 7 Feb 2024 16:20:11 +0000
+Subject: [PATCH] Fix #1242: Renaming files results in a crash
+
+https://github.com/BestImageViewer/geeqie/issues/1242
+
+Fix bug from GTK4: Reduce the use of gtk_widget_destroy() 6d72bf20cc
+---
+ src/ui-tree-edit.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/ui-tree-edit.cc b/src/ui-tree-edit.cc
+index 2921d0de..c63dcd40 100644
+--- a/src/ui-tree-edit.cc
++++ b/src/ui-tree-edit.cc
+@@ -38,7 +38,7 @@ static void tree_edit_close(TreeEditData *ted)
+ 	gdk_keyboard_ungrab(GDK_CURRENT_TIME);
+ 	gdk_pointer_ungrab(GDK_CURRENT_TIME);
+ 
+-	g_object_unref(ted->window);
++	gq_gtk_widget_destroy(ted->window);
+ 
+ 	g_free(ted->old_name);
+ 	g_free(ted->new_name);
