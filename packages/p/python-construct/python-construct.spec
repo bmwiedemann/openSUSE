@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-construct
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -64,8 +64,7 @@ code, it can be used in one direction to parse data into Pythonic objects,
 and in the other direction to convert ("build") objects into binary data.
 
 %prep
-%setup -q -n construct-%{version}
-%patch0 -p1
+%autosetup -p1 -n construct-%{version}
 
 # remove gallery tests that require in place stuff
 rm -rf tests/gallery

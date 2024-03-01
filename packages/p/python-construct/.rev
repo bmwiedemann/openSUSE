@@ -182,4 +182,12 @@ New packages, see: http://lists.opensuse.org/opensuse-factory/2013-07/msg00135.h
   Necessary due change in pytest macro gh#openSUSE/python-rpm-macros#48</comment>
     <requestid>1136270</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>155f0ff2f84465d99c3e46d69b5d36a3</srcmd5>
+    <version>2.10.70</version>
+    <time>1709332450</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to autosetup macro.</comment>
+    <requestid>1153062</requestid>
+  </revision>
 </revisionlist>
