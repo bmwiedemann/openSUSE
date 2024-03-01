@@ -63,7 +63,7 @@ History Simulation Project at http://simh.trailing-edge.com/
 %setup -c -T
 unzip -a %SOURCE0
 cd sim
-%patch1 -p1
+%patch -P 1 -p1
 
 %build
 cd sim
