@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 15:19:08 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Mon Oct 18 16:20:29 UTC 2021 - Reinhard Max <max@suse.com>
 
 - Explicitly require xlsfonts (boo#1191365).

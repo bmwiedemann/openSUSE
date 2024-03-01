@@ -40,9 +40,7 @@ Authors:
     Neil Grant <grantj@sfu.ca>
 
 %prep
-%setup
-%patch0
-%patch1
+%autosetup -p0
 
 %build
 
