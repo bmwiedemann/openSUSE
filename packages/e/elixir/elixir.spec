@@ -1,7 +1,7 @@
 #
 # spec file for package elixir
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define elixirdir %{_prefix}/lib/elixir
 
 Name:           elixir
-Version:        1.15.7
+Version:        1.16.1
 Release:        0
 Summary:        Functional meta-programming aware language built atop Erlang
 License:        Apache-2.0
@@ -28,8 +28,7 @@ URL:            http://elixir-lang.org
 Source0:        https://github.com/elixir-lang/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/elixir-lang/%{name}/releases/download/v%{version}/Docs.zip#/%{name}-%{version}-doc.zip
 Source2:        macros.elixir
-Patch0:         0001-Use-PID-valid-for-32-bit-systems-closes-12741.patch
-Patch1:         0001-Use-PID-valid-for-32-bit-systems-followup-to-12741-1.patch
+Patch0:         0001-Skip-tests-if-Erlang-compiled-without-docs-closes-13322.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  make

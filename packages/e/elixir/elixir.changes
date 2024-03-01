@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb 24 11:56:38 UTC 2024 - Alessio Biancalana <alessio.biancalana@suse.com>
+
+- Upgrade to Elixir 1.16.1
+- Drop 0001-Use-PID-valid-for-32-bit-systems-closes-12741.patch:
+  * Not needed anymore, included in this version
+- Drop 0001-Use-PID-valid-for-32-bit-systems-followup-to-12741-1.patch:
+  * Not needed anymore, included in this version
+- Add 0001-Skip-tests-if-Erlang-compiled-without-docs-closes-13322.patch:
+  * Skip some tests if Erlang is compiled without docs
+
+-------------------------------------------------------------------
 Tue Nov 21 15:47:29 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Use pregenerated documentation

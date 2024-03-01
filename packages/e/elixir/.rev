@@ -215,4 +215,12 @@
     <comment></comment>
     <requestid>1128747</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d80da4fe1ae866bb3e208f0e74eb9b44</srcmd5>
+    <version>1.16.1</version>
+    <time>1709332789</time>
+    <user>dimstar_suse</user>
+    <comment>Fix elixir.changes file mentioning dropped and added patches (forwarded request 1154159 from alessio.biancalana)</comment>
+    <requestid>1154162</requestid>
+  </revision>
 </revisionlist>
