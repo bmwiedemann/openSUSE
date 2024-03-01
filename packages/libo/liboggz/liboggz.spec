@@ -96,8 +96,7 @@ This package contains HTML documentation needed for development using
 liboggz
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 %configure --disable-static --docdir=%{_docdir}/%{name}

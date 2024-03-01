@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 18:36:49 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Thu Jan  8 12:04:24 UTC 2015 - olaf@aepfle.de
 
 - Avoid noarch sub package in SLE_11
