@@ -136,4 +136,12 @@
     <comment>python 3.12 build fix</comment>
     <requestid>1144609</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>720c9d2f4a4b12eb90db7e3fe51f7289</srcmd5>
+    <version>20240301</version>
+    <time>1709332672</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20240301</comment>
+    <requestid>1153872</requestid>
+  </revision>
 </revisionlist>
