@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 14:59:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Oct  4 08:49:26 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add pure-ftpd.ftpusers, the netcfg one is not maintained, outdated

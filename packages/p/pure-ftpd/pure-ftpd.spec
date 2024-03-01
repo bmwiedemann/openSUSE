@@ -72,14 +72,14 @@ Apache log files, and more.
 
 %prep
 %setup -q
-%patch0
-%patch1
-%patch2
-%patch5
-%patch7
-%patch8 -p1
-%patch9 -p2
-%patch10 -p1
+%patch -P 0
+%patch -P 1
+%patch -P 2
+%patch -P 5
+%patch -P 7
+%patch -P 8 -p1
+%patch -P 9 -p2
+%patch -P 10 -p1
 
 %build
 CFLAGS="%{optflags} -I%{_includedir}/mysql"
