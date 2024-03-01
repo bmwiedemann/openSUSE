@@ -76,14 +76,14 @@ libsmi.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2
 %if 0%{?suse_version} > 1220 && 0%{?suse_version} < 1321
-%patch3 -p1
+%patch -P 3 -p1
 %endif
-%patch4 -p1
-%patch5 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
 
 %build
 autoreconf --force --install
