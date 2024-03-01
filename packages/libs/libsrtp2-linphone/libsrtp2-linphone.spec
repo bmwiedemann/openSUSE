@@ -60,8 +60,7 @@ Protocol (SRTP) originally authored by Cisco Systems, Inc.
 This subpackage contains the development headers.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure \
