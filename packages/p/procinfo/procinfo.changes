@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 14:34:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Aug  7 08:36:29 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch procinfo-strsignal.dif to use strsignal(3) as replacement

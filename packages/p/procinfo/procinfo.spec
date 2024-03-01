@@ -57,31 +57,31 @@ directory and prints it nicely formatted on the standard output device.
 
 %prep
 %setup -q
-%patch0
-%patch1
-%patch2
-%patch3
-%patch4
-%patch5 -p1
-%patch6 -p1
-%patch7
-%patch8
-%patch9
-%patch10
-%patch11
-%patch12
-%patch13
-%patch14
+%patch -P 0
+%patch -P 1
+%patch -P 2
+%patch -P 3
+%patch -P 4
+%patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 7
+%patch -P 8
+%patch -P 9
+%patch -P 10
+%patch -P 11
+%patch -P 12
+%patch -P 13
+%patch -P 14
 %if %suse_version > 1100
-%patch15 -p1
+%patch -P 15 -p1
 %endif
-%patch16
-%patch17
-%patch18
-%patch19
-%patch20
-%patch21
-%patch22
+%patch -P 16
+%patch -P 17
+%patch -P 18
+%patch -P 19
+%patch -P 20
+%patch -P 21
+%patch -P 22
 
 %build
 CFLAGS="-D_GNU_SOURCE $(getconf LFS_CFLAGS) %{optflags} -pipe"

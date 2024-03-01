@@ -224,4 +224,12 @@
   of (_)sys_siglist[]</comment>
     <requestid>824821</requestid>
   </revision>
+  <revision rev="33" vrev="226">
+    <srcmd5>e6850cf6726f91e25f741bf769d030f1</srcmd5>
+    <version>18</version>
+    <time>1709332500</time>
+    <user>dimstar_suse</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1153272 from dimstar)</comment>
+    <requestid>1153314</requestid>
+  </revision>
 </revisionlist>
