@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 18:26:54 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Jan 17 00:56:07 UTC 2017 - jengelh@inai.de
 
 - Disable static library generation
