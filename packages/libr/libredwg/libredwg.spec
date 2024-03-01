@@ -18,7 +18,7 @@
 
 %define lname	libredwg0
 Name:           libredwg
-Version:        0.13.2
+Version:        0.13.3
 Release:        0
 Summary:        A library to handle DWG files
 License:        GPL-3.0-or-later
@@ -28,7 +28,7 @@ URL:            https://www.gnu.org/software/libredwg/
 Source:         https://ftp.gnu.org/pub/gnu/libredwg/%name-%version.tar.xz
 Source2:        https://ftp.gnu.org/pub/gnu/libredwg/%name-%version.tar.xz.sig
 #Source:         https://github.com/LibreDWG/libredwg/releases/download/%version/libredwg-%version.tar.xz
-Source3:        http://savannah.gnu.org/people/viewgpg.php?user_id=101103#/%name.keyring
+Source3:        https://savannah.gnu.org/people/viewgpg.php?user_id=101103#/%name.keyring
 Source4:        %name-rpmlintrc
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libpcre2-8)
@@ -87,8 +87,7 @@ echo 'V_%version { global: *; };' >src/sv.sym
 b="%buildroot"
 find "$b" -type f -name "*.la" -delete -print
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files tools
 %license COPYING

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar  1 19:29:26 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.13.3:
+  * Promote SUN object to stable
+  * Improve BLOCKSTRETCHACTION
+  * Improveddxf import for OLE2FRAME.data
+  * Fix some fuzzing errors
+  * Improve wrong DWG_MAX_OBJSIZE, which prevented very large
+    3DSOLID's to encode, like STEERING.dwg from_autocad_r13
+  * Improved support for beta versions, no logic holes
+
+-------------------------------------------------------------------
 Sun Feb 11 11:42:48 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.13.2
