@@ -27,7 +27,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           lighttpd
-Version:        1.4.73
+Version:        1.4.74
 Release:        0
 Summary:        A Secure, Fast, Compliant, and Very Flexible Web Server
 License:        BSD-3-Clause
@@ -73,8 +73,8 @@ Recommends:     %{name}-mod_openssl = %{version}
 Recommends:     logrotate
 Provides:       http_daemon
 Provides:       httpd
-Provides:       user(%{name})
 Provides:       group(%{name})
+Provides:       user(%{name})
 %{?systemd_requires}
 %if 0%{?suse_version} > 1500
 # pg_config moved to postgresql-server-devel in postgresql11* packages boo#1153722
@@ -219,8 +219,7 @@ Requires:       %{name} = %{version}
 A module to provide PAM authentication in lighttpd.
 
 %prep
-%setup -q -n %{pkg_name}-%{pkg_version}
-%patch0 -p1
+%autosetup -p1 -n %{pkg_name}-%{pkg_version}
 
 %build
 export CFLAGS="%{optflags} -DLDAP_DEPRECATED -W -Wmissing-prototypes -Wmissing-declarations -Wpointer-arith -Wchar-subscripts -Wformat=2 -Wbad-function-cast -std=gnu99 -fstack-protector"

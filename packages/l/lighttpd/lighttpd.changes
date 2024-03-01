@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar  1 11:04:18 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.74:
+  * Some messages sent to syslog() (if enabled in lighttpd config)
+    have been changed to use different priorities (e.g.
+    LOG_WARNING, LOG_DEBUG) instead of everything being sent with
+    LOG_ERROR priority. The change affects only lighttpd configs
+    which set server.errorlog-use-syslog = “enable” (not default)
+  * Other bug fixes
+
+-------------------------------------------------------------------
 Mon Feb  5 10:31:25 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix user/group with rpm 4.19 (boo#1219549) 

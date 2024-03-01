@@ -588,4 +588,12 @@ bsc#1181400</comment>
     <comment>fix user/group with rpm 4.19 (boo#1219549)</comment>
     <requestid>1144182</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>0cd472b963f653c00d4e69dfd47385ad</srcmd5>
+    <version>1.4.74</version>
+    <time>1709332673</time>
+    <user>dimstar_suse</user>
+    <comment>lighttpd 1.4.74</comment>
+    <requestid>1153941</requestid>
+  </revision>
 </revisionlist>
