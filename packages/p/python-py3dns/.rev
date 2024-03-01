@@ -36,4 +36,14 @@
   differently</comment>
     <requestid>1137811</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>eaa50c23f0f1fc93565cd53c26cb7b68</srcmd5>
+    <version>4.0.1</version>
+    <time>1709332667</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.1:
+  * Fix regex string in Base.py to be raw string to resolve
+    SyntaxWarning for invalid escape sequence with python3.12</comment>
+    <requestid>1153851</requestid>
+  </revision>
 </revisionlist>

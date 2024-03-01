@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  1 10:16:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.1:
+  * Fix regex string in Base.py to be raw string to resolve
+    SyntaxWarning for invalid escape sequence with python3.12
+
+-------------------------------------------------------------------
 Tue Jan  9 21:30:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.0:
