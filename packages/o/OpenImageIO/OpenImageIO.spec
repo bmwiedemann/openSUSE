@@ -35,7 +35,7 @@
 %define so_ver 2_5
 %define major_minor_ver 2.5
 Name:           OpenImageIO
-Version:        2.5.8.0
+Version:        2.5.9.0
 Release:        0
 Summary:        Library for Reading and Writing Images
 License:        BSD-3-Clause
@@ -46,7 +46,6 @@ Source0:        https://github.com/AcademySoftwareFoundation/OpenImageIO/archive
 Source1:        oiio-images-%{images_ts}.tar.xz
 # NOTE: Please don't uncomment a build requirement unless you have submitted the package to factory and it exists
 #BuildRequires:  Field3D-devel
-Patch1:         https://github.com/AcademySoftwareFoundation/OpenImageIO/pull/4143.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  dcmtk-devel
 %if %{with apidocs}
@@ -87,6 +86,7 @@ BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libheif)
 %endif
 BuildRequires:  pkgconfig(libopenjp2)
+BuildRequires:  pkgconfig(libxml-2.0)
 %if %{with imageviewer}
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
