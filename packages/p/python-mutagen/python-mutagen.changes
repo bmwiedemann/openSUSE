@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  1 03:32:49 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros. 
+
+-------------------------------------------------------------------
 Mon Nov 27 09:05:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.47.0:

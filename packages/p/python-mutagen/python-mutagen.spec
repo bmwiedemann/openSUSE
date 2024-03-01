@@ -1,7 +1,7 @@
 #
 # spec file for package python-mutagen
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,20 +22,20 @@ Version:        1.47.0
 Release:        0
 Summary:        Python module to Handle Audio Metadata
 License:        GPL-2.0-or-later
-Group:          Development/Libraries/Python
 URL:            https://pypi.python.org/pypi/mutagen
 Source:         https://files.pythonhosted.org/packages/source/m/mutagen/mutagen-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE reduce-test-length.diff alarrosa@suse.com -- Reduce the number of iterations so tests don't take so long to finish
 Patch0:         reduce-test-length.diff
 BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 %python_subpackages
 
 %description
@@ -48,16 +48,15 @@ can be edited regardless of their audio format. It can also manipulate
 Ogg streams on an individual packet/page level.
 
 %prep
-%setup -q -n mutagen-%{version}
-%patch0 -p1
+%autosetup -p1 -n mutagen-%{version}
 # remove shebangs from library files
 find mutagen/ -name "*.py" -exec sed -i -e '/^#!\s\?\/usr\/bin\/\(env\s\)\?python$/d' {} ';'
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 for i in mid3cp mid3iconv mid3v2 moggsplit mutagen-inspect mutagen-pony; do
    %python_clone -a %{buildroot}%{_bindir}/${i}
@@ -92,6 +91,6 @@ export LANG=en_US.UTF-8
 %python_alternative %{_mandir}/man1/mutagen-inspect.1%{ext_man}
 %python_alternative %{_mandir}/man1/mutagen-pony.1%{ext_man}
 %{python_sitelib}/mutagen
-%{python_sitelib}/mutagen-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/mutagen-%{version}.dist-info
 
 %changelog
