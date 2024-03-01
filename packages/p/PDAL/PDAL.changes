@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar  1 10:53:46 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix building on Leap
+
+-------------------------------------------------------------------
+Fri Mar  1 07:33:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire proj-devel instead of the long deprecated name
+  libproj-devel.
+
+-------------------------------------------------------------------
 Tue Oct  3 07:29:11 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 2.5.6, complete description:

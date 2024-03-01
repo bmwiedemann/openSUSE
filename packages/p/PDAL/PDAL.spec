@@ -1,7 +1,7 @@
 #
 # spec file for package PDAL
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021 Friedmann Bruno, Ioda-Net Sàrl, Charmoille, Switzerland.
 #
 # All modifications and additions to the file contributed by third parties
@@ -45,7 +45,6 @@ BuildRequires:  curl-devel
 BuildRequires:  eigen3-devel
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
-BuildRequires:  gcc-c++
 BuildRequires:  gdal
 BuildRequires:  geotiff-devel
 BuildRequires:  gtest
@@ -58,7 +57,7 @@ BuildRequires:  libboost_program_options-devel
 BuildRequires:  libgdal-devel
 BuildRequires:  libgeos-devel
 BuildRequires:  libopenssl-devel >= 1.1
-BuildRequires:  libproj-devel
+BuildRequires:  proj-devel
 # Needed to have proj.db for tests
 BuildRequires:  libpsl5
 BuildRequires:  libspatialindex-devel
@@ -95,6 +94,11 @@ Provides:       bundled(PoissonRecon)
 Provides:       bundled(nanoflann)
 # https://github.com/nlohmann/json bundled in vendor/nlohmann
 Provides:       bundled(nlohmann)
+%if 0%{?suse_version} < 1550
+BuildRequires:  gcc12-c++
+%else
+BuildRequires:  gcc-c++ >= 11
+%endif
 
 %description
 PDAL is a C++ BSD library for translating and manipulating point cloud data.
@@ -178,6 +182,9 @@ find ./doc/ -type f -iname "*.ai" -delete
 %ifarch ppc64le
 # boo#1194109 and upstream https://gcc.gnu.org/bugzilla/show_bug.cgi?id=102059
 %define _lto_cflags %{nil}
+%endif
+%if 0%{?suse_version} < 1550
+export CXX=g++-12
 %endif
 
 %cmake \
