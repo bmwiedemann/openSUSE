@@ -55,8 +55,7 @@ The libksi-devel package contains the header files and libraries
 needed to develop applications using libksi.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure \

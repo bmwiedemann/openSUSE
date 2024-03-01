@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 17:04:41 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Aug 22 10:58:00 UTC 2017 - pmonrealgonzalez@suse.com
 
 - Fixed errors when building with openssl-1.1.0 [bsc#1042656]
