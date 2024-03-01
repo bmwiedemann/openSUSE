@@ -18,7 +18,7 @@
 
 %define         _lto_cflags %{nil}
 Name:           newsflash
-Version:        3.1.3
+Version:        3.1.5
 Release:        0
 Summary:        The spiritual successor to FeedReader
 License:        GPL-3.0-only
