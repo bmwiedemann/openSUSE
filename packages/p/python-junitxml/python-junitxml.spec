@@ -1,7 +1,7 @@
 #
 # spec file for package python-junitxml
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-junitxml
 Version:        0.7
 Release:        0
 Summary:        A pyunit extension to output JUnit compatible XML
 License:        LGPL-3.0-or-later
-Group:          Development/Languages/Python
 URL:            https://launchpad.net/pyjunitxml
 Source:         https://files.pythonhosted.org/packages/source/j/junitxml/junitxml-%{version}.tar.gz
 # tests are failing
 Patch0:         junitxml-tests.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xml}
-BuildRequires:  python-rpm-macros
-%ifpython2
-Requires:       python-xml
-%endif
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -41,14 +40,13 @@ BuildArch:      noarch
 A Python unittest TestResult that outputs JUnit compatible XML.
 
 %prep
-%setup -q -n junitxml-%{version}
-%patch0 -p1
+%autosetup -p1 -n junitxml-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/pyjunitxml
@@ -66,6 +64,7 @@ A Python unittest TestResult that outputs JUnit compatible XML.
 %license COPYING
 %doc README
 %python_alternative %{_bindir}/pyjunitxml
-%{python_sitelib}/*
+%{python_sitelib}/junitxml
+%{python_sitelib}/junitxml-%{version}.dist-info
 
 %changelog

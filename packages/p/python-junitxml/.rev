@@ -41,4 +41,15 @@
     <comment>- add python-rpm-macros dependency</comment>
     <requestid>945679</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>6fda415bcb6035db7bce4e266b2c492c</srcmd5>
+    <version>0.7</version>
+    <time>1709332586</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+- Add update-alternatives Requires.
+- Clean up some Python 2 leftovers.</comment>
+    <requestid>1153668</requestid>
+  </revision>
 </revisionlist>

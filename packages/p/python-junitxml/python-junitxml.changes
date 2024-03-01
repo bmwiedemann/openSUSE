@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 29 23:51:12 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+- Add update-alternatives Requires.
+- Clean up some Python 2 leftovers.
+
+-------------------------------------------------------------------
 Tue Jan 11 21:06:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add python-rpm-macros dependency 
