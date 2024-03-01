@@ -309,4 +309,12 @@
     <comment>removed conflicting package</comment>
     <requestid>259141</requestid>
   </revision>
+  <revision rev="40" vrev="37">
+    <srcmd5>77c517f54d22166ac9aa5ba1e3acd88a</srcmd5>
+    <version>12.1</version>
+    <time>1709332762</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1154063</requestid>
+  </revision>
 </revisionlist>

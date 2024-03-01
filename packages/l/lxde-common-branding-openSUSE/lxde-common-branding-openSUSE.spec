@@ -56,14 +56,7 @@ This branding-style package sets openSUSE style improvements into LXDE.
 You should always prefer branding-openSUSE packages to branding-upstream.
 
 %prep
-%setup -q -n lxde-common-%{upstream_ver}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+%autosetup -p1 -n lxde-common-%{upstream_ver}
 
 %build
 # keep enable-man even if not needed or make will fail

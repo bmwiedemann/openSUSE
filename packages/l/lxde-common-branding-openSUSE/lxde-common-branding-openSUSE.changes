@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  1 11:25:46 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Fri Oct 31 11:01:51 UTC 2014 - andrea@opensuse.org
 
 - removed conflicting files.
