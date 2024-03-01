@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Feb 27 20:28:12 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- version update to 7.1.1.29
+  https://github.com/ImageMagick/Website/blob/main/ChangeLog.md
+
+-------------------------------------------------------------------
+Thu Feb 22 07:57:01 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Sun Feb 11 20:57:22 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- version update to 7.1.1.28
+  https://github.com/ImageMagick/Website/blob/main/ChangeLog.md
+
+-------------------------------------------------------------------
+Sun Jan 21 19:12:06 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- version update to 7.1.1.27
+  https://github.com/ImageMagick/Website/blob/main/ChangeLog.md
+
+-------------------------------------------------------------------
+Tue Jan 16 14:54:49 UTC 2024 - pgajdos@suse.com
+
+- only one configuration again, based on upstream 'secure' policy
+- other upstream policies packaged in documentation
+
+-------------------------------------------------------------------
+Mon Jan 15 14:30:40 UTC 2024 - pgajdos@suse.com
+
+- use correct policy.xml
+
+-------------------------------------------------------------------
+Sun Jan 14 10:57:43 UTC 2024 - munix9@googlemail.com
+
+- Fix incomplete removal of update-alternatives for config
+- Replace obsolete 'otherproviders(imagick-%{config_spec})' with
+  'Conflicts: imagick-%{config_spec}'
+
+-------------------------------------------------------------------
 Fri Jan 12 15:32:08 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - version update to 7.1.1.26

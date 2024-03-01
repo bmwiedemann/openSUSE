@@ -20,15 +20,13 @@
 %define asan_build     0
 %define maj            7
 %define mfr_version    %{maj}.1.1
-%define mfr_revision   26
+%define mfr_revision   29
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        10
 %define cwandver       10
 %define cxxlibver      5
 %define libspec        -%{maj}_Q%{quantum_depth}HDRI
-%define config_dir     ImageMagick-7
-%define config_spec    config-7
 %define test_verbose   1
 # bsc#1088463
 %define urw_base35_fonts 0
@@ -98,6 +96,13 @@ BuildRequires:  urw-base35-fonts
 BuildRequires:  ghostscript-fonts-other
 BuildRequires:  ghostscript-fonts-std
 %endif
+Obsoletes:      ImageMagick-config-7-SUSE < 7.1.1.27
+Provides:       ImageMagick-config-7-SUSE = %{version}
+Obsoletes:      ImageMagick-config-7-upstream < 7.1.1.27
+Obsoletes:      ImageMagick-config-7-upstream-open < 7.1.1.27
+Obsoletes:      ImageMagick-config-7-upstream-secure < 7.1.1.27
+Obsoletes:      ImageMagick-config-7-upstream-websafe < 7.1.1.27
+Obsoletes:      imagemagick-config-7-upstream-limited < 7.1.1.27
 
 %package -n perl-PerlMagick
 Summary:        Perl interface for ImageMagick
@@ -132,19 +137,19 @@ Recommends:     transfig
 %package -n libMagickCore%{libspec}%{clibver}
 Summary:        C runtime library for ImageMagick
 Group:          Productivity/Graphics/Other
-Requires:       imagick-%{config_spec}
-Recommends:     %{config_spec}-SUSE
 Recommends:     ghostscript
-Suggests:       %{name}-extra = %{version}
+Suggests:       ImageMagick-extra = %{version}
+Recommends:     ImageMagick
 
 %package -n libMagickWand%{libspec}%{cwandver}
 Summary:        C runtime library for ImageMagick
 Group:          Productivity/Graphics/Other
+Recommends:     ImageMagick
 
 %package -n libMagick++%{libspec}%{cxxlibver}
 Summary:        C++ interface runtime library for ImageMagick
 Group:          Development/Libraries/C and C++
-Requires:       %{name}
+Recommends:     ImageMagick
 
 %package -n libMagick++-devel
 Summary:        Development files for ImageMagick's C++ interface
@@ -157,38 +162,6 @@ Requires:       pkgconfig(ImageMagick) = %{mfr_version}
 Summary:        Document Files for ImageMagick Library
 Group:          Documentation/HTML
 BuildArch:      noarch
-
-%package %{config_spec}-upstream-open
-Summary:        Open ImageMagick Security Policy
-Group:          Development/Libraries/C and C++
-Provides:       imagick-%{config_spec}
-Conflicts:      otherproviders(imagick-%{config_spec})
-Obsoletes:      %{config_spec}-upstream < %{version}
-Provides:       %{config_spec}-upstream = %{version}
-
-%package %{config_spec}-upstream-limited
-Summary:        Limited ImageMagick Security Policy
-Group:          Development/Libraries/C and C++
-Provides:       imagick-%{config_spec}
-Conflicts:      otherproviders(imagick-%{config_spec})
-
-%package %{config_spec}-upstream-secure
-Summary:        Secure ImageMagick Security Policy
-Group:          Development/Libraries/C and C++
-Provides:       imagick-%{config_spec}
-Conflicts:      otherproviders(imagick-%{config_spec})
-
-%package %{config_spec}-upstream-websafe
-Summary:        Web-safe ImageMagick Security Policy
-Group:          Development/Libraries/C and C++
-Provides:       imagick-%{config_spec}
-Conflicts:      otherproviders(imagick-%{config_spec})
-
-%package %{config_spec}-SUSE
-Summary:        SUSE Provided Configuration
-Group:          Development/Libraries/C and C++
-Provides:       imagick-%{config_spec}
-Conflicts:      otherproviders(imagick-%{config_spec})
 
 %description
 ImageMagick is a robust collection of tools and libraries to read,
@@ -288,67 +261,17 @@ support multiple generations of an image in memory at one time.
 %description doc
 HTML documentation for ImageMagick library and scene examples.
 
-%description %{config_spec}-upstream-open
-This policy is designed for usage in secure settings like those
-protected by firewalls or within Docker containers. Within this framework,
-ImageMagick enjoys broad access to resources and functionalities. This policy
-provides convenient and adaptable options for image manipulation. However,
-it's important to note that it might present security vulnerabilities in
-less regulated conditions. Thus, organizations should thoroughly assess
-the appropriateness of the open policy according to their particular use
-case and security prerequisites.
-
-%description %{config_spec}-upstream-limited
-The primary objective of the limited security policy is to find a
-middle ground between convenience and security. This policy involves the
-deactivation of potentially hazardous functionalities, like specific coders
-such as SVG or HTTP. Furthermore, it establishes several constraints on
-the utilization of resources like memory, storage, and processing duration,
-all of which are adjustable. This policy proves advantageous in situations
-where there's a need to mitigate the potential threat of handling possibly
-malicious or demanding images, all while retaining essential capabilities
-for prevalent image formats.
-
-%description %{config_spec}-upstream-secure
-This stringent security policy prioritizes the implementation of
-rigorous controls and restricted resource utilization to establish a
-profoundly secure setting while employing ImageMagick. It deactivates
-conceivably hazardous functionalities, including specific coders like
-SVG or HTTP. The policy promotes the tailoring of security measures to
-harmonize with the requirements of the local environment and the guidelines
-of the organization. This protocol encompasses explicit particulars like
-limitations on memory consumption, sanctioned pathways for reading and
-writing, confines on image sequences, the utmost permissible duration of
-workflows, allocation of disk space intended for image data, and even an
-undisclosed passphrase for remote connections. By adopting this robust
-policy, entities can elevate their overall security stance and alleviate
-potential vulnerabilities.
-
-%description %{config_spec}-upstream-websafe
-This security protocol designed for web-safe usage focuses on situations
-where ImageMagick is applied in publicly accessible contexts, like websites.
-It deactivates the capability to read from or write to any image formats
-other than web-safe formats like GIF, JPEG, and PNG. Additionally, this
-policy prohibits the execution of image filters and indirect reads, thereby
-thwarting potential security breaches. By implementing these limitations,
-the web-safe policy fortifies the safeguarding of systems accessible to
-the public, reducing the risk of exploiting ImageMagick's capabilities
-for potential attacks.
-
-%description %{config_spec}-SUSE
-ImageMagick configuration as provide by SUSE. It is upstream 'secure'
-policy plus disable few other coders for reading and/or writing.
-
 %prep
 %setup -q -n ImageMagick-%{source_version}
-%patch2 -p1
+%patch -P 0 -p1
+%patch -P 2 -p1
 %ifarch i586
 %if %{?suse_version} < 1550
-%patch4 -p1
+%patch -P 4 -p1
 %endif
 %endif
 %ifarch s390x
-%patch5 -p1
+%patch -P 5 -p1
 %endif
 
 %build
@@ -400,7 +323,8 @@ export CXXFLAGS="%{optflags} -O0"
   --without-gcc-arch \
   --enable-pipes=no \
   --enable-reproducible-build=yes \
-  --disable-openmp
+  --disable-openmp \
+  --with-security-policy=open # open for %%check
 %if %{asan_build}
 sed -i -e 's/\(^CFLAGS.*\)/\1 -fsanitize=address/' \
        -e 's/\(^LIBS =.*\)/\1 -lasan/' \
@@ -410,7 +334,7 @@ sed -i -e 's/\(^CFLAGS.*\)/\1 -fsanitize=address/' \
 # [1] http://pkgs.fedoraproject.org/cgit/ImageMagick.git/tree/ImageMagick.spec
 %make_build all
 %make_build -j1 perl-build
-# mostly because */demo is used later with %check
+# mostly because */demo is used later with %%check
 # polutting dir with .libs etc.
 cp -r Magick++/demo Magick++/examples
 cp -r PerlMagick/demo PerlMagick/examples
@@ -443,24 +367,13 @@ sed -i 's:TEST_VERBOSE=0:TEST_VERBOSE=1:' Makefile
 cd ..
 
 %install
-%make_install pkgdocdir=%{_defaultdocdir}/%{name}-%{maj}/
-# configuration magic
-mv -t %{buildroot}%{_sysconfdir}/%{name}* %{buildroot}%{_datadir}/%{name}*/*.xml
-for policy in open limited secure websafe; do
-  cp -r %{buildroot}%{_sysconfdir}/%{config_dir}{,-upstream-$policy}
-  cp config/policy-$policy.xml %{buildroot}%{_sysconfdir}/%{config_dir}-upstream-$policy
-done
-mv %{buildroot}%{_sysconfdir}/%{config_dir}{,-SUSE}
-cp config/policy-secure.xml %{buildroot}%{_sysconfdir}/%{config_dir}-SUSE
-patch --fuzz=0 --dir %{buildroot}%{_sysconfdir}/%{config_dir}-SUSE < %{PATCH0}
-mkdir -p  %{buildroot}%{_sysconfdir}/alternatives/
-ln -sf %{_sysconfdir}/alternatives/%{config_dir} %{buildroot}%{_sysconfdir}/%{config_dir}
-# symlink header file relative to /usr/include/ImageMagick-7/
-# so that inclusions like wand/*.h and magick/*.h work
-ln -s ./MagickCore %{buildroot}%{_includedir}/%{name}-%{maj}/magick
-ln -s ./MagickWand %{buildroot}%{_includedir}/%{name}-%{maj}/wand
-# these will be included via %doc
-rm -r %{buildroot}%{_datadir}/doc/%{name}-%{maj}/
+%make_install pkgdocdir=%{_defaultdocdir}/ImageMagick-%{maj}/
+# suse modified secure policy as a default
+cp config/policy-secure.xml %{buildroot}/etc/ImageMagick-%{maj}/policy.xml
+ln -s ./MagickCore %{buildroot}%{_includedir}/ImageMagick-%{maj}/magick
+ln -s ./MagickWand %{buildroot}%{_includedir}/ImageMagick-%{maj}/wand
+# these will be included via %%doc
+rm -r %{buildroot}%{_datadir}/doc/ImageMagick-%{maj}/
 rm %{buildroot}%{_libdir}/*.la
 # remove RPATH from perl module
 perl_module=$(find %{buildroot}%{_prefix}/lib/perl5 -name '*.so')
@@ -470,8 +383,8 @@ chmod 555 $perl_module
 # remove %%{buildroot} from distributed file
 sed -i 's:%{buildroot}::' %{buildroot}/%{_libdir}/ImageMagick-%{mfr_version}/config%{libspec}%{clibver}/configure.xml
 #remove duplicates
-%fdupes -s %{buildroot}%{_defaultdocdir}/%{name}-%{maj}
-%fdupes -s %{buildroot}%{_includedir}/%{name}-%{maj}
+%fdupes -s %{buildroot}%{_defaultdocdir}/ImageMagick-%{maj}
+%fdupes -s %{buildroot}%{_includedir}/ImageMagick-%{maj}
 %fdupes -s %{buildroot}%{_libdir}/pkgconfig
 %perl_process_packlist
 
@@ -485,9 +398,13 @@ sed -i 's:%{buildroot}::' %{buildroot}/%{_libdir}/ImageMagick-%{mfr_version}/con
 %files
 %license LICENSE
 %doc NEWS.txt
+%doc config/policy-{open,limited,secure,websafe}.xml
 %{_bindir}/[^MW]*
 %{_mandir}/man1/*
 %exclude %{_mandir}/man1/*-config.1%{ext_man}
+%dir  %{_sysconfdir}/ImageMagick-%{maj}
+%config(noreplace) %{_sysconfdir}/ImageMagick-%{maj}/*
+%{_datadir}/ImageMagick-%{maj}
 
 %files -n libMagickCore%{libspec}%{clibver}
 %license LICENSE
@@ -559,36 +476,6 @@ sed -i 's:%{buildroot}::' %{buildroot}/%{_libdir}/ImageMagick-%{mfr_version}/con
 %{_mandir}/man1/Magick++-config.1%{?ext_man}
 
 %files doc
-%{_defaultdocdir}/%{name}-%{maj}
-
-%files %{config_spec}-upstream-open
-%dir %{_sysconfdir}/ImageMagick*-upstream-open/
-%config(noreplace) %{_sysconfdir}/ImageMagick*-upstream-open/*
-%{_sysconfdir}/%{config_dir}
-%ghost %{_sysconfdir}/alternatives/%{config_dir}
-
-%files %{config_spec}-upstream-limited
-%dir %{_sysconfdir}/ImageMagick*-upstream-limited/
-%config(noreplace) %{_sysconfdir}/ImageMagick*-upstream-limited/*
-%{_sysconfdir}/%{config_dir}
-%ghost %{_sysconfdir}/alternatives/%{config_dir}
-
-%files %{config_spec}-upstream-secure
-%dir %{_sysconfdir}/ImageMagick*-upstream-secure/
-%config(noreplace) %{_sysconfdir}/ImageMagick*-upstream-secure/*
-%{_sysconfdir}/%{config_dir}
-%ghost %{_sysconfdir}/alternatives/%{config_dir}
-
-%files %{config_spec}-SUSE
-%dir %{_sysconfdir}/ImageMagick*-SUSE/
-%config %{_sysconfdir}/ImageMagick*-SUSE/*
-%{_sysconfdir}/%{config_dir}
-%ghost %{_sysconfdir}/alternatives/%{config_dir}
-
-%files %{config_spec}-upstream-websafe
-%dir %{_sysconfdir}/ImageMagick*-upstream-websafe/
-%config(noreplace) %{_sysconfdir}/ImageMagick*-upstream-websafe/*
-%{_sysconfdir}/%{config_dir}
-%ghost %{_sysconfdir}/alternatives/%{config_dir}
+%{_defaultdocdir}/ImageMagick-%{maj}
 
 %changelog
