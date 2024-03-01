@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Mar 01 14:20:25 UTC 2024 - i@guoyunhe.me
+
+- Update to version 0.0.30~git20240301:
+  * Update serialization.hpp
+  * Update serialization.hpp
+  * Update serialization.hpp
+  * serialization.hpp: Fix HLE serilization
+  * cellPamf implementation (#15143)
+  * Fix for sceNpScoreGetGameData
+  * Send initial presence for offline friends.
+  * GL: remove unused params
+  * Fix warnings: Remove unused decryption code
+  * SPU LLVM: Improve runtime SPU compilation preferences (#15250)
+  * Improve cellSysutilAvc2SetAttribute logging
+  * Add check for score transactions being reused
+  * Misc: Update FW Latest Version
+  * xaudio2: use system library instead of xaudio2redist
+  * Make clang happy
+  * gl: Allow selecting FSR1 upscaling from the settings
+  * gl: FSR1 cleanup, making it functional
+  * gl: Always log the current renderer visibly.
+  * rsx: Improve simple array performance for small objects
+  * gl: Fix compilation
+  * rsx: Implement FSR1 integration for OpenGL
+  * gl: Rework the upscalers a bit and define the FSR interface
+  * gl: Remove upscaling 'dst' binding and clean up some awful code in GLPresent
+  * gl: Introduce the concept of scaling passes to the backend
+  * rsx/vk: Refactor FSR integration to support multiple backends
+
+-------------------------------------------------------------------
 Sun Feb 25 07:26:21 UTC 2024 - i@guoyunhe.me
 
 - Update to version 0.0.30~git20240224:
