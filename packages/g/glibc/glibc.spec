@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package glibc
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -304,6 +304,8 @@ Patch306:       glibc-fix-double-loopback.diff
 ###
 # PATCH-FIX-UPSTREAM arm: Remove wrong ldr from _dl_start_user (BZ #31339)
 Patch1000:      arm-dl-start-user.patch
+# PATCH-FIX-UPSTREAM S390: Do not clobber r7 in clone (BZ #31402)
+Patch1001:      s390-clone-error-clobber-r7.patch
 %endif
 
 ###
@@ -349,7 +351,7 @@ Summary:        Info Files for the GNU C Library
 License:        GFDL-1.1-only
 Group:          Documentation/Other
 Requires(post): %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
+Requires(preun): %{install_info_prereq}
 BuildArch:      noarch
 
 %description info

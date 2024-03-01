@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 27 08:14:31 UTC 2024 - Ludwig Nussel <lnussel@suse.com>
+
+- nsswitch.conf: Add systemd also for shadow lookups, use merge
+  strategy for group lookups
+
+-------------------------------------------------------------------
+Mon Feb 26 12:48:48 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- s390-clone-error-clobber-r7.patch: S390: Do not clobber r7 in clone (BZ
+  #31402)
+
+-------------------------------------------------------------------
 Wed Feb  7 09:08:50 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Add libnsl1 to baselibs.conf (bsc#1219640)

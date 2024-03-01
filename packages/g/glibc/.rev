@@ -2985,4 +2985,13 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   #31339) (forwarded request 1145071 from Andreas_Schwab)</comment>
     <requestid>1145073</requestid>
   </revision>
+  <revision rev="287" vrev="3">
+    <srcmd5>393403c0c21dbece760625f23a5ad16d</srcmd5>
+    <version>2.39</version>
+    <time>1709332441</time>
+    <user>dimstar_suse</user>
+    <comment>- nsswitch.conf: Add systemd also for shadow lookups, use merge
+  strategy for group lookups (forwarded request 1152035 from lnussel)</comment>
+    <requestid>1153158</requestid>
+  </revision>
 </revisionlist>
