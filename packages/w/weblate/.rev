@@ -216,4 +216,14 @@
     <comment></comment>
     <requestid>1143034</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>13d2c7d101b36c177fdd255c51d56349</srcmd5>
+    <version>5.3.1</version>
+    <time>1709332688</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not generate dependency on /usr/bin/python (boo#1220367)
+- Do not depend on unflavored /usr/bin/python3
+</comment>
+    <requestid>1154073</requestid>
+  </revision>
 </revisionlist>

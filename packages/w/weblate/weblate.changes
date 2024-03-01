@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 09:13:31 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Do not generate dependency on /usr/bin/python (boo#1220367)
+- Do not depend on unflavored /usr/bin/python3
+
+-------------------------------------------------------------------
 Thu Jan 25 09:04:33 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.3.1

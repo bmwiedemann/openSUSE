@@ -20,7 +20,6 @@
 %define WLDATADIR %{_localstatedir}/lib/weblate
 %define WLETCDIR %{_sysconfdir}/weblate
 %define _name Weblate
-%define skip_python310 1
 Name:           weblate
 Version:        5.3.1
 Release:        0
@@ -265,6 +264,8 @@ sed -i -e '/diff-match-patch/d' requirements.txt
 sed -e 's:==:>=:g' \
     -i requirements*.txt \
     -i setup.py
+# rpm dependency generator: do not require usr/bin/python
+sed -i 's#/usr/bin/python$#/usr/bin/python3#' data/vcs/osmand/ios/*.py
 
 %build
 %make_build -C docs html
@@ -298,6 +299,14 @@ rm -f %{buildroot}/%{WLDIR}/README.rst \
 
 # Byte compile python files
 %py3_compile %{buildroot}/%{WLDIR}
+
+# Do not require unflavored /usr/bin/python3 on Tumbleweed
+%if 0%{?suse_version} >= 1600
+%python3_fix_shebang_path %{buildroot}/%{WLDIR}/data/vcs/im/f-droid-web/tools/*.py
+%python3_fix_shebang_path %{buildroot}/%{WLDIR}/data/vcs/osmand/ios/*.py
+%python3_fix_shebang_path %{buildroot}/%{WLDIR}/weblate/utils/*.py
+%python3_fix_shebang_path %{buildroot}/%{WLDIR}/*.py
+%endif
 
 # remove dupes
 %fdupes %{buildroot}/%{WLDIR}
