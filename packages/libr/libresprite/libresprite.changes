@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  1 09:18:59 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Mon Apr 17 14:13:23 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - fix build with newest GCC (LibreSprite-1.0_includes.patch)

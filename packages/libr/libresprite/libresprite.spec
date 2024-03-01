@@ -57,8 +57,7 @@ LibreSprite is an open source program to create animated sprites
 for websites and games.
 
 %prep
-%setup -q -n LibreSprite-%{version}
-%patch1 -p1
+%autosetup -p1 -n LibreSprite-%{version}
 
 %build
 %cmake .. -DWITH_DESKTOP_INTEGRATION=ON \
