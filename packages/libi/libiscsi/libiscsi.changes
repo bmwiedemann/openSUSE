@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 29 13:02:24 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.20.0+git.20240206:
+  * spelling fixes: eventhough, shoudl, asyncronous, maxium, implicity
+  * COPYING: stop mentioning ld_scsi
+  * New version 1.20.0
+  * Previously, 'task->status' was printed as decimal. In iscsi.h, the values that are put into it are defined as hexadecimal. This is a bit confusing (grepping through the code for 251658241 did not result in anything while the hex variant f000001 resulted in SCSI_STATUS_ERROR).
+  * Fix for https://github.com/sahlberg/libiscsi/issues/409 'ms->pages' was not checked for being NULL. This can happen when a target does not return any pages.
+  * Improve iSCSI PDU header dump
+  * Abstract value_string as common utility
+  * Drain DATAOUT PDU on timeout
+
+-------------------------------------------------------------------
 Tue Nov 14 10:16:34 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.19.0+git.20231114:

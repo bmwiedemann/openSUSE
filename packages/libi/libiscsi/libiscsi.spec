@@ -1,7 +1,7 @@
 #
 # spec file for package libiscsi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,12 @@
 #
 
 
-%define         sover 9
+%define         sover 10
 Name:           libiscsi
-Version:        1.19.0+git.20231114
+Version:        1.20.0+git.20240206
 Release:        0
 Summary:        iSCSI client library and utilities
 License:        GPL-2.0-only AND LGPL-2.1-only
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/sahlberg/libiscsi
 Source0:        %{name}-%{version}.tar.gz
 Source99:       baselibs.conf
@@ -42,7 +41,6 @@ that can be used to access resource of an iSCSI target.
 
 %package -n %{name}%{sover}
 Summary:        iSCSI client library and utilities
-Group:          System/Libraries
 
 %description -n %{name}%{sover}
 libiscsi is a clientside library to implement the iSCSI protocol
@@ -54,7 +52,6 @@ for simpler applications.
 
 %package utils
 Summary:        Some utilities for %{name}
-Group:          Productivity/Networking/Other
 
 %description utils
 libiscsi is a clientside library to implement the iSCSI protocol that can
@@ -64,7 +61,6 @@ This package contains utilities based on %{name}.
 
 %package devel
 Summary:        Development files for %{name}
-Group:          Development/Languages/C and C++
 Requires:       %{name}%{sover} = %{version}
 
 %description devel
@@ -72,7 +68,6 @@ Development files for %{name}
 
 %package test
 Summary:        Test utilities for iSCSI
-Group:          System/Base
 
 %description test
 A comprehensive iSCSI transport and SCSI block device test suite based on
@@ -93,8 +88,7 @@ autoreconf -fiv
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post   -n %{name}%{sover} -p /sbin/ldconfig
-%postun -n %{name}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{name}%{sover}
 
 %files -n %{name}%{sover}
 %{_libdir}/libiscsi.so.%{sover}*

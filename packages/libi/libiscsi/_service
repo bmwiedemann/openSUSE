@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">libiscsi</param>
-    <param name="versionformat">@PARENT_TAG@+git.%cd</param>
+    <param name="versionformat">1.20.0+git.%cd</param>
   </service>
   <service mode="manual" name="set_version"/>
   <service name="tar" mode="buildtime"/>
