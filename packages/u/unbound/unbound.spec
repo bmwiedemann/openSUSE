@@ -1,7 +1,7 @@
 #
 # spec file for package unbound
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@
 %define piddir /run
 
 Name:           unbound
-Version:        1.19.0
+Version:        1.19.1
 Release:        0
 BuildRequires:  flex
 BuildRequires:  ldns-devel >= %{ldns_version}

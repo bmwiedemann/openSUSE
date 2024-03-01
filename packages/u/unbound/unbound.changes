@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 28 13:35:31 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.19.1:
+  * Bug Fixes: [bsc#1219823, CVE-2023-50387][bsc#1219826, CVE-2023-50868]
+    - Fix CVE-2023-50387, DNSSEC verification complexity can be
+      exploited to exhaust CPU resources and stall DNS resolvers.
+    - Fix CVE-2023-50868, NSEC3 closest encloser proof can exhaust CPU.
+
+-------------------------------------------------------------------
 Fri Nov 17 09:50:18 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.19.0:
