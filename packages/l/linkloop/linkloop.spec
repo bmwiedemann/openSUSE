@@ -40,8 +40,7 @@ Authors:
     Dominique Domet de Mont <Dominique.Domet-de-Mont@hp.com>
 
 %prep
-%setup -q -n %{name}-%{version}-hp
-%patch0
+%autosetup -p0 -n %{name}-%{version}-hp
 
 %build
 autoreconf -fi
