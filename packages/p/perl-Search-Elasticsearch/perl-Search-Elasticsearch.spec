@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Search-Elasticsearch
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %define cpan_name Search-Elasticsearch
 Name:           perl-Search-Elasticsearch
-Version:        8.00
+Version:        8.120.0
 Release:        0
+%define cpan_version 8.12
 #Upstream:  This is free software, licensed under: The Apache License, Version 2.0, January 2004
 License:        Apache-2.0
 Summary:        The official client for Elasticsearch
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/E/EZ/EZIMUEL/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/E/EZ/EZIMUEL/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -82,6 +83,85 @@ Requires:       perl(Sub::Exporter)
 Requires:       perl(Try::Tiny)
 Requires:       perl(URI)
 Requires:       perl(namespace::clean)
+Provides:       perl(Search::Elasticsearch) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0)
+Provides:       perl(Search::Elasticsearch::Client::8_0::Bulk) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Autoscaling) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::CCR) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Cat) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Cluster) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Connector) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::ConnectorSyncJob) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::DanglingIndices) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Enrich) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Eql) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Esql) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Features) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Fleet) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Graph) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::ILM) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Indices) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Inference) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Ingest) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::License) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Logstash) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::ML) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Migration) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Monitoring) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Nodes) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Profiling) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::QueryRuleset) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Rollup) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::SQL) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::SSL) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::SearchApplication) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::SearchableSnapshots) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Security) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Shutdown) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Simulate) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Slm) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Snapshot) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Synonyms) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Tasks) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::TextStructure) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Transform) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::Watcher) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Direct::XPack) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Role::API) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Role::Bulk) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Role::Scroll) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::Scroll) = %{version}
+Provides:       perl(Search::Elasticsearch::Client::8_0::TestServer) = %{version}
+Provides:       perl(Search::Elasticsearch::Cxn::Factory) = %{version}
+Provides:       perl(Search::Elasticsearch::Cxn::HTTPTiny) = %{version}
+Provides:       perl(Search::Elasticsearch::Cxn::LWP) = %{version}
+Provides:       perl(Search::Elasticsearch::CxnPool::Sniff) = %{version}
+Provides:       perl(Search::Elasticsearch::CxnPool::Static) = %{version}
+Provides:       perl(Search::Elasticsearch::CxnPool::Static::NoPing) = %{version}
+Provides:       perl(Search::Elasticsearch::Error) = %{version}
+Provides:       perl(Search::Elasticsearch::Logger::LogAny) = %{version}
+Provides:       perl(Search::Elasticsearch::Role::API) = %{version}
+Provides:       perl(Search::Elasticsearch::Role::Client) = %{version}
+Provides:       perl(Search::Elasticsearch::Role::Client::Direct) = %{version}
+Provides:       perl(Search::Elasticsearch::Role::Cxn) = %{version}
+Provides:       perl(Search::Elasticsearch::Role::CxnPool) = %{version}
+Provides:       perl(Search::Elasticsearch::Role::CxnPool::Sniff) = %{version}
+Provides:       perl(Search::Elasticsearch::Role::CxnPool::Static) = %{version}
+Provides:       perl(Search::Elasticsearch::Role::CxnPool::Static::NoPing) = %{version}
+Provides:       perl(Search::Elasticsearch::Role::Is_Sync) = %{version}
+Provides:       perl(Search::Elasticsearch::Role::Logger) = %{version}
+Provides:       perl(Search::Elasticsearch::Role::Serializer) = %{version}
+Provides:       perl(Search::Elasticsearch::Role::Serializer::JSON) = %{version}
+Provides:       perl(Search::Elasticsearch::Role::Transport) = %{version}
+Provides:       perl(Search::Elasticsearch::Serializer::JSON) = %{version}
+Provides:       perl(Search::Elasticsearch::Serializer::JSON::Cpanel) = %{version}
+Provides:       perl(Search::Elasticsearch::Serializer::JSON::PP) = %{version}
+Provides:       perl(Search::Elasticsearch::Serializer::JSON::XS) = %{version}
+Provides:       perl(Search::Elasticsearch::TestServer) = %{version}
+Provides:       perl(Search::Elasticsearch::Transport) = %{version}
+Provides:       perl(Search::Elasticsearch::Util) = %{version}
+%define         __perllib_provides /bin/true
 Recommends:     perl(IO::Socket::IP) >= 0.37
 Recommends:     perl(URI::Escape::XS)
 %{perl_requires}
@@ -93,7 +173,7 @@ powerful open source, distributed real-time search and analytics engine for
 the cloud. You can read more about it on at http://www.elastic.co.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
