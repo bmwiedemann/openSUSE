@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 14:25:55 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add explicit versioned dependency on google-guest-agent (bsc#1219642)
+
+-------------------------------------------------------------------
 Thu Jan  4 11:56:22 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20231116.00

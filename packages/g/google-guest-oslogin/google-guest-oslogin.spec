@@ -38,6 +38,7 @@ BuildRequires:  libjson-c-devel
 BuildRequires:  make
 BuildRequires:  pam-devel
 BuildRequires:  systemd-rpm-macros
+Requires:       google-guest-agent >= 20231003
 Requires:       google-guest-configs
 Provides:       google-compute-engine-oslogin = %{version}
 Obsoletes:      google-compute-engine-oslogin < %{version}
