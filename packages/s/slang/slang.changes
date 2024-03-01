@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  1 09:16:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop slsh/lib/test/test_timestamp.sl: Do not test timestamps but
+  trust on upstream (calculations in leap years are off in the
+  test).
+
+-------------------------------------------------------------------
 Mon Feb 26 13:20:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
