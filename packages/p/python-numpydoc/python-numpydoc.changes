@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Feb 29 19:29:26 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.6.0
+  * Requires Python 3.8+ and Sphinx 5+.
+  ## Closed issues
+  * `numpydoc ignore` inline comment not recognized when using
+    decorators #495
+  * Align pre-commit and Sphinx rule override syntax #466
+  * Use pyproject.toml #473
+  * circleci-artifacts-redirector-action error #469
+  * Incorporate a pre-commit hook for numpydoc validation #450
+  * PR06 fails when offending type name is used only as a substring
+    #446
+  * style of [1] is strange in numpydoc docs #443
+  * Double click on function parameter selects parameter type as
+    well #427
+  ## Merged pull requests
+  * BUG: validator now handles properties #500 (sdiebolt)
+  * Fix clean_backref for extensions that have backrefs to inline
+    elements. #499 (mcmtroffaes)
+  * BUG: validator now handles decorators #496 (sdiebolt)
+  * TST: Test no-file for source #493 (larsoner)
+  * Update pydata-sphinx-theme #490 (jarrodmillman)
+  * Sync updates to generate_requirements.py from scikit-image #485
+    (mwtoews)
+  * Generate requirements files from pyproject.toml #483 (mwtoews)
+  * Add token for artifact redirector #470 (jarrodmillman)
+  * Use rtd template (old method is deprecated) #468
+    (jarrodmillman)
+  * Drop Python 3.7 #462 (jarrodmillman)
+  * Require Sphinx 5+ #461 (jarrodmillman)
+  * Pre-commit hook for running numpydoc validation #454
+    (stefmolin)
+  * Change PR06 logic to only fail when type is used standalone
+    #447 (amoeba)
+- Add numpydoc-pr523-py312deprecation.patch gh#numpy/numpydoc#523
+
+-------------------------------------------------------------------
 Sun Oct  9 19:18:50 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
