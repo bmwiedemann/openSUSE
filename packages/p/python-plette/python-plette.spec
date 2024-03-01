@@ -1,7 +1,7 @@
 #
 # spec file for package python-plette
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,13 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-plette
-Version:        0.4.4
+Version:        1.0.0
 Release:        0
 Summary:        Structured Pipfile and Pipfile.lock models
 License:        ISC
-Group:          Development/Languages/Python
 URL:            https://github.com/sarugaku/plette
 Source:         https://github.com/sarugaku/plette/archive/refs/tags/v%{version}.tar.gz#/plette-%{version}.tar.gz
-# See https://github.com/sarugaku/plette/issues/8
-Patch0:         ignore-hashlib-case.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.0.0}
 BuildRequires:  %{python_module wheel}
@@ -47,8 +43,7 @@ BuildRequires:  %{python_module tomlkit}
 Structured Pipfile and Pipfile.lock models.
 
 %prep
-%setup -q -n plette-%{version}
-%patch0 -p1
+%autosetup -p1 -n plette-%{version}
 
 %build
 %pyproject_wheel
@@ -64,6 +59,7 @@ Structured Pipfile and Pipfile.lock models.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/plette
+%{python_sitelib}/plette-%{version}.dist-info
 
 %changelog

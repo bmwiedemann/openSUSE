@@ -40,4 +40,17 @@
     <comment></comment>
     <requestid>1056677</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f16675e7b5383cb47ad845f6d0e7e743</srcmd5>
+    <version>1.0.0</version>
+    <time>1709332597</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * Rewrite the entire library using dataclasses.
+  * Add more rigorous testing.
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+- Drop patch ignore-hashlib-case.patch, no longer required.</comment>
+    <requestid>1153727</requestid>
+  </revision>
 </revisionlist>
