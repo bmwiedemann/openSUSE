@@ -37,8 +37,7 @@ specification, c.f. http://lv2plug.in/ . It is still quite early days, but most
 things should work as well or not as they did in LADSPA.
 
 %prep
-%setup -q -n %{pkgsrc}
-%patch0 -p1
+%autosetup -p1 -n %{pkgsrc}
 
 # We are using the system header:
 rm -f include/lv2.h
