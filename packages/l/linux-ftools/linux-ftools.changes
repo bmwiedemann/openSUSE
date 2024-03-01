@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  1 10:47:46 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Aug 14 15:28:09 UTC 2015 - normand@linux.vnet.ibm.com
 
 - use <asm/unistd.h> in place of <asm/unistd_64.h>

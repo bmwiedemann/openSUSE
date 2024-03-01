@@ -44,8 +44,8 @@ debug performance problems.
 
 %prep
 %setup -q -n linux-ftools-%{hg_version}
-%patch0
-%patch1 -p1
+%patch -P 0
+%patch -P 1 -p1
 
 %build
 autoreconf -fi

@@ -22,4 +22,12 @@
     <comment>minor fix in changelog (patch)</comment>
     <requestid>326418</requestid>
   </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>19497341a1529943f43d88fd9251cbed</srcmd5>
+    <version>1.3</version>
+    <time>1709332681</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153918</requestid>
+  </revision>
 </revisionlist>
