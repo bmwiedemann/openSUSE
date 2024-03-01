@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 18:13:57 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Jun 23 09:14:47 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Clean spec-file using spec-cleaner; mainly move LICENSE from %doc

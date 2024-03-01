@@ -51,8 +51,7 @@ Requires:       libusb-devel
 Nomad Jukebox API
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 autoreconf -fiv
