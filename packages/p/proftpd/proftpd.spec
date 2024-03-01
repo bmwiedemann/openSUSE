@@ -166,17 +166,9 @@ Requires:       %{name} = %{version}
 Here are Documentation for ProFTPD
 
 %prep
-#gpg_verify %{S:1}
-%setup -q
+%autosetup -p0
+
 rm README.AIX README.cygwin README.FreeBSD README.Solaris2.5x README.Unixware
-#
-%patch100
-%patch101
-%patch102
-%patch103
-%patch104
-%patch105
-%patch106
 
 %build
 rm contrib/mod_wrap.c
