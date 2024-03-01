@@ -1,7 +1,7 @@
 #
 # spec file for package tkxcd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,8 +41,7 @@ Authors:
     John C. Quillan <quillan@doitnow.com>
 
 %prep
-%setup -q -n tkxcd_1.1.0
-%patch0
+%autosetup -p0 -n tkxcd_1.1.0
 
 %build
 
