@@ -4,15 +4,16 @@
 
 --- shell.c
 +++ shell.c	2018-09-20 08:08:34.242204532 +0000
-@@ -43,6 +43,7 @@
+@@ -43,6 +43,8 @@
  #endif
  
  #if defined (HAVE_UNISTD_H)
++#  include <sys/mman.h>
 +#  include <sys/types.h>
  #  include <unistd.h>
  #endif
  
-@@ -1888,6 +1893,28 @@ init_interactive_script ()
+@@ -1888,6 +1894,28 @@ init_interactive_script ()
  #endif
  }
  

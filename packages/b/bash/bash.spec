@@ -88,6 +88,8 @@ Patch48:        bash-4.3-extra-import-func.patch
 Patch49:        bash-4.3-pathtemp.patch
 # PATCH-FIX-SUSE
 Patch50:        quotes-man2html.patch
+# PATCH-FIX-UPSTREAM
+Patch51:        bash-5.2-gcc14.patch
 BuildRequires:  autoconf
 # latest bash uses with patch 18 the tag YYEOF
 BuildRequires:  bison
@@ -281,6 +283,7 @@ set -x
 %endif
 %patch -P49  -b .pthtmp
 %patch -P50  -b .qd
+%patch -P51  -b .gcc14
 %patch -P0   -b .p0
 
 # This has to be always the same version as included in the bash its self

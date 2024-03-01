@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 28 13:52:24 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Harden bash to be compiled with gcc 14 (boo#1220564)
+  * Modify patch bash-4.2-nscdunmap.dif to include <sys/mman.h>
+  * Port bash-5.2.dif to the former change
+  * Add patch bash-5.2-gcc14.patch
+
+-------------------------------------------------------------------
 Tue Jan 16 08:49:57 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add upstream patches

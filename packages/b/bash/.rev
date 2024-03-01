@@ -1968,4 +1968,15 @@ Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded requ
     the correct value for $?.</comment>
     <requestid>1139152</requestid>
   </revision>
+  <revision rev="190" vrev="11">
+    <srcmd5>25adfe73d9583bd1c8e109ea8dd362c1</srcmd5>
+    <version>5.2.MACRO</version>
+    <time>1709332557</time>
+    <user>dimstar_suse</user>
+    <comment>- Harden bash to be compiled with gcc 14 (boo#1220564)
+  * Modify patch bash-4.2-nscdunmap.dif to include &lt;sys/mman.h&gt;
+  * Port bash-5.2.dif to the former change
+  * Add patch bash-5.2-gcc14.patch</comment>
+    <requestid>1152946</requestid>
+  </revision>
 </revisionlist>

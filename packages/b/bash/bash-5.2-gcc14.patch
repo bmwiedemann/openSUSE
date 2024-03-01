@@ -1,0 +1,16 @@
+---
+ aclocal.m4 |    3 +++
+ 1 file changed, 3 insertions(+)
+
+--- aclocal.m4
++++ aclocal.m4	2024-02-28 13:50:24.552597535 +0000
+@@ -238,6 +238,9 @@ AC_CACHE_VAL(bash_cv_dup2_broken,
+ #include <sys/types.h>
+ #include <fcntl.h>
+ #include <stdlib.h>
++#ifdef HAVE_UNISTD_H
++#include <unistd.h>
++#endif
+ int
+ main()
+ {
