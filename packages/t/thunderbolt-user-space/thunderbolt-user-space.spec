@@ -1,7 +1,7 @@
 #
 # spec file for package thunderbolt-user-space
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,9 +54,7 @@ These user-space components implement device approval support:
 * ACL for auto-approving devices white-listed by the user.
 
 %prep
-%setup -q -n thunderbolt-software-user-space-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n thunderbolt-software-user-space-%{version}
 
 %build
 %cmake \

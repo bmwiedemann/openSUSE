@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 14:44:07 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Aug  4 10:22:33 UTC 2020 - Frederik Möllers <frederik@die-sinlosen.de>
 
 - Add support for Thunderbolt to initramfs (approved devices are authorized automatically)
