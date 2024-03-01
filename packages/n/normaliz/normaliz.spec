@@ -1,7 +1,7 @@
 #
 # spec file for package normaliz
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           normaliz
 %define lname	libnormaliz3
-Version:        3.10.1
+Version:        3.10.2
 Release:        0
 Summary:        Tools for computations in affine monoids and rational cones
 License:        GPL-3.0-or-later
@@ -26,7 +26,6 @@ Group:          Productivity/Scientific/Math
 URL:            https://www.normaliz.uni-osnabrueck.de/
 
 Source:         https://github.com/Normaliz/Normaliz/releases/download/v%version/%name-%version.tar.gz
-Patch1:         0001-Add-FLINT-3-support.patch
 BuildRequires:  e-antic-devel >= 1.0.1
 BuildRequires:  flint-devel
 BuildRequires:  gcc-c++

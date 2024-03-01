@@ -191,4 +191,12 @@ systems
     <comment>- Add 0001-Add-FLINT-3-support.patch</comment>
     <requestid>1134932</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8d53196f66ed3e8af512dd369ec61848</srcmd5>
+    <version>3.10.2</version>
+    <time>1709332748</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.10.2</comment>
+    <requestid>1154020</requestid>
+  </revision>
 </revisionlist>
