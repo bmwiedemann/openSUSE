@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package presage
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -216,18 +216,9 @@ This package contains the libpresage API Documentation in HTML format.
 %endif
 
 %prep
-%setup -q -n %{sname}-%{version}
+%autosetup -p1 -n %{sname}-%{version}
+
 find . -type f -exec sed -i  's/\r//g' "{}" \;
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
 echo "[D-BUS Service]" > apps/dbus/org.gnome.presage.service.in
 echo "Name=org.gnome.presage.beta" >> apps/dbus/org.gnome.presage.service.in
 echo "Exec={bindir}/presage_dbus_service --start" >> apps/dbus/org.gnome.presage.service.in
