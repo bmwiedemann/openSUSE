@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  1 09:57:29 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Thu Jan 20 08:35:18 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - update to 1.2.11 - no changelog available, bugfixes
