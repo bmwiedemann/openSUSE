@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 23 11:50:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Jun 27 14:25:10 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Disable tests to allow the package to build under GCC 9

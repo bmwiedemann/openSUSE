@@ -51,17 +51,17 @@ library itself, which is written in C++.
 %prep
 %setup -q -n%{name}-%{version}
 %if 0%{?suse_version} < 1500
-%patch0 -p1
+%patch -P 0 -p1
 %endif
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
 
 #only apply move elision to gcc versions that support it
 %if 0%{?suse_version} >= 1500
-%patch6 -p1
+%patch -P 6 -p1
 %endif
 
 %build
