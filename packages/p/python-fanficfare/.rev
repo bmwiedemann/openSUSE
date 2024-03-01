@@ -1326,4 +1326,30 @@
     BasicCache.</comment>
     <requestid>1142076</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>631430ffad687c2c397b60e4a45c2449</srcmd5>
+    <version>4.32.0</version>
+    <time>1709332785</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.32.0:
+  - Update translations.
+  - Add Edit personal.ini as a direct menu item--can keyboard
+    shortcut
+  - adapter_deviantartcom: Fix for site change and detect no
+    username.
+  - Set book[tags] after writeStory for literotica.
+  - New site: syosetu.com Japanese language site, thanks praschke
+  - Don't do random lang anymore in test1--changes series sort in
+    Calibre.
+  - Don't need \n after &lt;/span&gt; looking for log entries.
+  - Add include_images:coveronly option for
+    [#1037](https://github.com/JimmXinu/FanFicFare/issues/1037)
+  - adapter_literotica: Allow for empty div.aa_ht tags, remove
+    extra None from text
+  - adapter_wwwutopiastoriescom: Remove author page get, add
+    extracategories instead. Site static now.
+  - adapter_wwwutopiastoriescom: Updates for site changes.
+</comment>
+    <requestid>1154140</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Mar  1 17:34:47 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 4.32.0:
+  - Update translations.
+  - Add Edit personal.ini as a direct menu item--can keyboard
+    shortcut
+  - adapter_deviantartcom: Fix for site change and detect no
+    username.
+  - Set book[tags] after writeStory for literotica.
+  - New site: syosetu.com Japanese language site, thanks praschke
+  - Don't do random lang anymore in test1--changes series sort in
+    Calibre.
+  - Don't need \n after </span> looking for log entries.
+  - Add include_images:coveronly option for
+    [#1037](https://github.com/JimmXinu/FanFicFare/issues/1037)
+  - adapter_literotica: Allow for empty div.aa_ht tags, remove
+    extra None from text
+  - adapter_wwwutopiastoriescom: Remove author page get, add
+    extracategories instead. Site static now.
+  - adapter_wwwutopiastoriescom: Updates for site changes.
+
+-------------------------------------------------------------------
 Sun Jan 28 10:24:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.30.0:
