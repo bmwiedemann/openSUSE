@@ -58,8 +58,7 @@ Authors:
     H. Peter Anvin <hpa@zytor.com>
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %{__cp} %{SOURCE1} .
 
