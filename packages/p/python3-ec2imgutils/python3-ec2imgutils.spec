@@ -19,20 +19,32 @@
 %define upstream_name ec2imgutils
 
 Name:           python3-ec2imgutils
-Version:        10.0.2
+Version:        10.0.3
 Release:        0
 Summary:        Image management utilities for AWS EC2
 License:        GPL-3.0+
 Group:          System/Management
 Url:            https://github.com/SUSE-Enceladus/ec2imgutils
 Source0:        %{upstream_name}-%{version}.tar.bz2
+%if 0%{?sle_version} >= 150400
+Requires:       python311
+Requires:       python311-boto3 >= 1.29.84
+Requires:       python311-dateutil
+Requires:       python311-paramiko >= 2.2.0
+BuildRequires:  python311-boto3 >= 1.29.84
+BuildRequires:  python311-dateutil
+BuildRequires:  python311-pip
+BuildRequires:  python311-setuptools
+BuildRequires:  python311-wheel
+%else
 Requires:       python3
-Requires:       python3-boto3 >= 1.26.89
+Requires:       python3-boto3 >= 1.29.84
 Requires:       python3-dateutil
-Requires:       python3-paramiko
-BuildRequires:  python3-boto3 >= 1.26.89
+Requires:       python3-paramiko >= 2.2.0
+BuildRequires:  python3-boto3 >= 1.29.84
 BuildRequires:  python3-dateutil
 BuildRequires:  python3-setuptools
+%endif
 BuildRequires:  python-rpm-macros
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -67,12 +79,23 @@ A collection of image manipulation utilities for AWS EC2. These include:
 
 %prep
 %setup -q -n %{upstream_name}-%{version}
+%if 0%{?sle_version} >= 150400
+find . -type f -name "ec2*" | xargs grep -l '/usr/bin/' | xargs sed -i 's/python3/python3.11/'
+%endif
 
 %build
+%if 0%{?sle_version} >= 150400
+%python311_pyproject_wheel
+%else
 python3 setup.py build
+%endif
 
 %install
+%if 0%{?sle_version} >= 150400
+%python311_pyproject_install
+%else
 python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%endif
 install -d -m 755 %{buildroot}/%{_mandir}/man1
 install -m 644 man/man1/* %{buildroot}/%{_mandir}/man1
 gzip %{buildroot}/%{_mandir}/man1/*
@@ -82,10 +105,13 @@ gzip %{buildroot}/%{_mandir}/man1/*
 %doc README.md
 %license LICENSE
 %{_mandir}/man*/*
+%if 0%{?sle_version} >= 150400
+%dir %{python311_sitelib}/ec2imgutils
+%{python311_sitelib}/*
+%else
 %dir %{python3_sitelib}/ec2imgutils
 %{python3_sitelib}/*
+%endif
 %{_bindir}/*
 
 %changelog
-
-

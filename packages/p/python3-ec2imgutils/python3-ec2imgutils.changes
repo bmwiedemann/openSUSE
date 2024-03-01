@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 22 21:38:49 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Support IMDS version setting (bsc#1220168)
+  + For SLE 15 SP6 and later images we want to have instance launch with
+    IMDS v2 as the default access protocol. This is accomplished by
+    setting the a attribute on the image. The new --imds-support command
+    line argument supports this setting.
+
+-------------------------------------------------------------------
 Wed Jun  7 12:43:26 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
 
-- Fix version confusion between boto3 nd botocore for dependency
+- Fix version confusion between boto3 and botocore for dependency
 
 -------------------------------------------------------------------
 Wed Apr 26 22:00:24 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
