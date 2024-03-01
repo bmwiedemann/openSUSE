@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan 26 03:10:36 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.76
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+
+  6.76      2024-01-25 18:31:25Z
+      - Simplify code slightly for Perl v5.8+ (GH#455) (James Raspass)
+      - Move HTTP::CookieJar::LWP to test requires (GH#453) (Olaf Alders)
+  6.75      2024-01-24 14:29:17Z
+      - Update lwp-request to suport PATCH HTTP method (GH#452) (Javier Puche)
+  6.74      2024-01-22 17:48:18Z
+      - Making it possible to use IPv6 in https call through https proxy
+        environment (in case of using CONNECT method to create a tunnel) (GH#450)
+        (Dmitriy Shamatrin)
+  6.73      2024-01-13 20:19:09Z
+      - Fix no_proxy subdomain matching (GH#447) (Axel Burri)
+
+-------------------------------------------------------------------
 Tue Jul 18 03:07:20 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.72

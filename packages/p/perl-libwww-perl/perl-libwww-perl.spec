@@ -1,7 +1,7 @@
 #
 # spec file for package perl-libwww-perl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %define cpan_name libwww-perl
 Name:           perl-libwww-perl
-Version:        6.720.0
+Version:        6.760.0
 Release:        0
-%define cpan_version 6.72
+%define cpan_version 6.76
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        The World-Wide Web library for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -58,7 +58,6 @@ Requires:       perl(Encode::Locale)
 Requires:       perl(File::Listing) >= 6
 Requires:       perl(HTML::Entities)
 Requires:       perl(HTML::HeadParser) >= 3.71
-Requires:       perl(HTTP::CookieJar::LWP)
 Requires:       perl(HTTP::Cookies) >= 6
 Requires:       perl(HTTP::Date) >= 6
 Requires:       perl(HTTP::Negotiate) >= 6
@@ -74,29 +73,29 @@ Requires:       perl(URI) >= 1.10
 Requires:       perl(URI::Escape)
 Requires:       perl(WWW::RobotRules) >= 6
 Requires:       perl(parent) >= 0.217
-Provides:       perl(LWP) = 6.720.0
-Provides:       perl(LWP::Authen::Basic) = 6.720.0
-Provides:       perl(LWP::Authen::Digest) = 6.720.0
-Provides:       perl(LWP::Authen::Ntlm) = 6.720.0
-Provides:       perl(LWP::ConnCache) = 6.720.0
-Provides:       perl(LWP::Debug) = 6.720.0
-Provides:       perl(LWP::Debug::TraceHTTP) = 6.720.0
-Provides:       perl(LWP::DebugFile) = 6.720.0
-Provides:       perl(LWP::MemberMixin) = 6.720.0
-Provides:       perl(LWP::Protocol) = 6.720.0
-Provides:       perl(LWP::Protocol::cpan) = 6.720.0
-Provides:       perl(LWP::Protocol::data) = 6.720.0
-Provides:       perl(LWP::Protocol::file) = 6.720.0
-Provides:       perl(LWP::Protocol::ftp) = 6.720.0
-Provides:       perl(LWP::Protocol::gopher) = 6.720.0
-Provides:       perl(LWP::Protocol::http) = 6.720.0
-Provides:       perl(LWP::Protocol::loopback) = 6.720.0
-Provides:       perl(LWP::Protocol::mailto) = 6.720.0
-Provides:       perl(LWP::Protocol::nntp) = 6.720.0
-Provides:       perl(LWP::Protocol::nogo) = 6.720.0
-Provides:       perl(LWP::RobotUA) = 6.720.0
-Provides:       perl(LWP::Simple) = 6.720.0
-Provides:       perl(LWP::UserAgent) = 6.720.0
+Provides:       perl(LWP) = %{version}
+Provides:       perl(LWP::Authen::Basic) = %{version}
+Provides:       perl(LWP::Authen::Digest) = %{version}
+Provides:       perl(LWP::Authen::Ntlm) = %{version}
+Provides:       perl(LWP::ConnCache) = %{version}
+Provides:       perl(LWP::Debug) = %{version}
+Provides:       perl(LWP::Debug::TraceHTTP) = %{version}
+Provides:       perl(LWP::DebugFile) = %{version}
+Provides:       perl(LWP::MemberMixin) = %{version}
+Provides:       perl(LWP::Protocol) = %{version}
+Provides:       perl(LWP::Protocol::cpan) = %{version}
+Provides:       perl(LWP::Protocol::data) = %{version}
+Provides:       perl(LWP::Protocol::file) = %{version}
+Provides:       perl(LWP::Protocol::ftp) = %{version}
+Provides:       perl(LWP::Protocol::gopher) = %{version}
+Provides:       perl(LWP::Protocol::http) = %{version}
+Provides:       perl(LWP::Protocol::loopback) = %{version}
+Provides:       perl(LWP::Protocol::mailto) = %{version}
+Provides:       perl(LWP::Protocol::nntp) = %{version}
+Provides:       perl(LWP::Protocol::nogo) = %{version}
+Provides:       perl(LWP::RobotUA) = %{version}
+Provides:       perl(LWP::Simple) = %{version}
+Provides:       perl(LWP::UserAgent) = %{version}
 %define         __perllib_provides /bin/true
 %{perl_requires}
 # MANUAL BEGIN
