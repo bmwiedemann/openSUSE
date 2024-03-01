@@ -16,9 +16,19 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%bcond_without test
+%define psuffix -test
+%else
+%bcond_with test
+%define psuffix %{nil}
+%endif
+
+%define skip_python39 1
 %{?sle15_python_module_pythons}
-Name:           python-xarray
-Version:        2023.12.0
+Name:           python-xarray%{psuffix}
+Version:        2024.2.0
 Release:        0
 Summary:        N-D labeled arrays and datasets in Python
 License:        Apache-2.0
@@ -28,58 +38,20 @@ Source:         https://files.pythonhosted.org/packages/source/x/xarray/xarray-%
 # fix xr.tutorial.open_dataset to work with the preloaded cache.
 Patch0:         local_dataset.patch
 BuildRequires:  %{python_module base >= 3.9}
-BuildRequires:  %{python_module numpy-devel >= 1.22}
-BuildRequires:  %{python_module packaging >= 21.3}
-BuildRequires:  %{python_module pandas >= 1.4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.22
-Requires:       python-packaging >= 21.3
-Requires:       python-pandas >= 1.4
-Provides:       python-xray = %{version}
-Obsoletes:      python-xray < %{version}
+Requires:       python-numpy >= 1.23
+Requires:       python-packaging >= 22
+Requires:       python-pandas >= 1.5
+Obsoletes:      python-xray <= 0.7
 BuildArch:      noarch
-# SECTION extras accel
-Recommends:     python-scipy
-Recommends:     python-bottleneck
-Recommends:     python-flox
-Recommends:     python-numbagg
-# /SECTION
-# SECTION extras parallalel
-Suggests:       python-dask-complete
-# /SECTION
-# SECTION extras viz
-Suggests:       python-matplotlib
-Suggests:       python-seaborn
-Suggests:       python-nc-time-axis
-#/SECTION
-# SECTION extras io
-Suggests:       python-netCDF4
-Suggests:       python-h5netcdf
-Suggests:       (python-pydap if python-base < 3.10)
-Suggests:       python-zarr
-Suggests:       python-fsspec
-Suggests:       python-cftime
-Suggests:       python-rasterio
-Suggests:       python-cfgrib
-Suggests:       python-pooch
-#/SECTION
-# SECTION tests
-BuildRequires:  %{python_module Bottleneck}
-BuildRequires:  %{python_module dask-dataframe}
-BuildRequires:  %{python_module dask-diagnostics}
-BuildRequires:  %{python_module h5netcdf}
-BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module netCDF4}
-BuildRequires:  %{python_module pooch}
-BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy}
-BuildRequires:  %{python_module zarr}
+%if %{with test}
+BuildRequires:  %{python_module xarray-complete = %{version}}
+%endif
 # /SECTION
 %python_subpackages
 
@@ -92,18 +64,112 @@ rather than the tabular data that pandas uses.
 The Common Data Model for self-describing scientific data is used.
 The dataset is an in-memory representation of a netCDF file.
 
+%package accel
+# for minimum versions, check ci/requirements/min-all-deps.yml
+Summary:        The python xarray[accel] extra
+Requires:       python-Bottleneck >= 1.3
+Requires:       python-opt-einsum
+Requires:       python-scipy
+Requires:       python-xarray = %{version}
+# not available yet
+Recommends:     python-flox >= 0.7
+Recommends:     python-numbagg
+
+%description accel
+The [accel] extra for xarray, N-D labeled arrays and datasets in Python
+Except flox and numbagg, because they are not packaged yet.
+Use `pip-%{python_bin_suffix} --user install flox numbagg` to install from PyPI, if needed.
+
+%package complete
+Summary:        The python xarray[complete] extra
+Requires:       python-xarray = %{version}
+Requires:       python-xarray-accel = %{version}
+Requires:       python-xarray-dev = %{version}
+Requires:       python-xarray-io = %{version}
+Requires:       python-xarray-parallel = %{version}
+Requires:       python-xarray-viz = %{version}
+
+%description complete
+The [complete] extra for xarray, N-D labeled arrays and datasets in Python
+
+%package dev
+Summary:        The python xarray[dev] extra
+Requires:       python-hypothesis
+Requires:       python-pytest
+Requires:       python-pytest-cov
+Requires:       python-pytest-env
+Requires:       python-pytest-timeout
+Requires:       python-pytest-xdist
+Requires:       python-ruff
+Requires:       python-xarray = %{version}
+Requires:       python-xarray-complete = %{version}
+# Not available and not really useful for us
+Recommends:     python-pre-commit
+
+%description dev
+The [dev] extra for xarray, N-D labeled arrays and datasets in Python
+Except pre-commit, Use `pip-%{python_bin_suffix} --user install pre-commit` to install, if needed.
+
+%package io
+Summary:        The python xarray[io] extra
+Requires:       python-cftime >= 1.6
+Requires:       python-fsspec
+Requires:       python-h5netcdf >= 1.1
+Requires:       python-netCDF4 >= 1.6
+Requires:       python-pooch
+Requires:       python-scipy >= 1.10
+Requires:       python-xarray = %{version}
+Requires:       python-zarr >= 2.13
+
+%description io
+The [io] extra for xarray, N-D labeled arrays and datasets in Python
+
+%package parallel
+Summary:        The python xarray[parallel] extra
+Requires:       python-dask-complete >= 2022.12
+Requires:       python-xarray = %{version}
+
+%description parallel
+The [parallel] extra for xarray, N-D labeled arrays and datasets in Python
+
+%package viz
+Summary:        The python xarray[viz] extra
+Requires:       python-matplotlib >= 3.6
+Requires:       python-seaborn >= 0.12
+Requires:       python-xarray = %{version}
+# Not available yet
+Recommends:     python-nc-time-axis
+
+%description viz
+The [viz] extra for xarray, N-D labeled arrays and datasets in Python
+
+Except nc-time-axis, because it's not packaged yet.
+Use `pip-%{python_bin_suffix} --user install nc-time-axis` to install from PyPI, if needed.
+
 %prep
 %autosetup -p1 -n xarray-%{version}
+%if "%{version}" == "2024.2.0"
+# gh#pydata/xarray#8768, remove this after the next update!
+rm -r xarray/tests/datatree
+%else
+echo "You failed to update the specfile"
+exit 1
+%endif
 
 chmod -x xarray/util/print_versions.py
 
 %build
+%if !%{with test}
 %pyproject_wheel
+%endif
 
 %install
+%if !%{with test}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
 # obs file open race conditions?
 donttest="(test_open_mfdataset_manyfiles and (h5netcdf or netCDF4))"
@@ -117,12 +183,42 @@ if [ $(getconf LONG_BIT) -eq 32 ]; then
 fi
 # h5py was built without ROS3 support, can't use ros3 driver
 donttest="$donttest or TestH5NetCDFDataRos3Driver"
-%pytest -n auto -rsEf -k "not ($donttest)" xarray
+# NetCDF4 fails with these unsupported drivers
+donttest="$donttest or (TestNetCDF4 and test_compression_encoding and (szip or zstd or blosc_lz or blosc_zlib))"
 
+%pytest -n auto -rsEf -k "not ($donttest)" xarray
+%endif
+
+%if !%{with test}
 %files %{python_files}
 %doc README.md
 %license LICENSE licenses/
 %{python_sitelib}/xarray
 %{python_sitelib}/xarray-%{version}.dist-info
+
+%files %{python_files accel}
+%doc README.md
+%license LICENSE
+
+%files %{python_files complete}
+%doc README.md
+%license LICENSE
+
+%files %{python_files dev}
+%doc README.md
+%license LICENSE
+
+%files %{python_files io}
+%doc README.md
+%license LICENSE
+
+%files %{python_files parallel}
+%doc README.md
+%license LICENSE
+
+%files %{python_files viz}
+%doc README.md
+%license LICENSE
+%endif
 
 %changelog

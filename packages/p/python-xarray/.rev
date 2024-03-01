@@ -1443,4 +1443,115 @@
 </comment>
     <requestid>1136895</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>02b1373a23ad6d2dfbf7559748705f3f</srcmd5>
+    <version>2024.2.0</version>
+    <time>1709332811</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip Python 3.9. It requires pydap, which is not available any
+  more.
+- Update to 2024.2.0
+  * This release brings size information to the text repr, changes
+    to the accepted frequency strings, and various bug fixes.
+  ## New Features
+  * Added a simple nbytes representation in DataArrays and Dataset
+    repr. (GH8690, PR8702). By Etienne Schalk.
+  * Allow negative frequency strings (e.g. &quot;-1YE&quot;). These strings
+    are for example used in date_range(), and cftime_range()
+    (PR8651). By Mathias Hauser.
+  * Add NamedArray.expand_dims(), NamedArray.permute_dims() and
+    NamedArray.broadcast_to() (PR8380) By Anderson Banihirwe.
+  * Xarray now defers to flox’s heuristics to set the default
+    method for groupby problems. This only applies to flox&gt;=0.9. By
+    Deepak Cherian.
+  * All quantile methods (e.g. DataArray.quantile()) now use
+    numbagg for the calculation of nanquantiles (i.e., skipna=True)
+    if it is installed. This is currently limited to the linear
+    interpolation method (method=’linear’). (GH7377, PR8684) By
+    Marco Wolsza.
+  ## Breaking changes
+  * infer_freq() always returns the frequency strings as defined in
+    pandas 2.2 (GH8612, PR8627). By Mathias Hauser.
+  * Deprecations
+  * The dt.weekday_name parameter wasn’t functional on modern
+    pandas versions and has been removed. (GH8610, PR8664) By Sam
+    Coleman.
+  ## Bug fixes
+  * Fixed a regression that prevented multi-index level coordinates
+    being serialized after resetting or dropping the multi-index
+    (GH8628, PR8672). By Benoit Bovy.
+  * Fix bug with broadcasting when wrapping array API-compliant
+    classes. (GH8665, PR8669) By Tom Nicholas.
+  * Ensure DataArray.unstack() works when wrapping array
+    API-compliant classes. (GH8666, PR8668) By Tom Nicholas.
+  * Fix negative slicing of Zarr arrays without dask installed.
+    (GH8252) By Deepak Cherian.
+  * Preserve chunks when writing time-like variables to zarr by
+    enabling lazy CF encoding of time-like variables (GH7132,
+    GH8230, GH8432, PR8575). By Spencer Clark and Mattia Almansi.
+  * Preserve chunks when writing time-like variables to zarr by
+    enabling their lazy encoding (GH7132, GH8230, GH8432, PR8253,
+    PR8575; see also discussion in PR8253). By Spencer Clark and
+    Mattia Almansi.
+  * Raise an informative error if dtype encoding of time-like
+    variables would lead to integer overflow or unsafe conversion
+    from floating point to integer values (GH8542, PR8575). By
+    Spencer Clark.
+  * Raise an error when unstacking a MultiIndex that has duplicates
+    as this would lead to silent data loss (GH7104, PR8737). By
+    Mathias Hauser.
+- Release 2024.1.1
+  ## Breaking changes
+  * Following pandas, infer_freq() will return &quot;YE&quot;, instead of &quot;Y&quot;
+    (formerly &quot;A&quot;). This is to be consistent with the deprecation
+    of the latter frequency string in pandas 2.2. This is a follow
+    up to PR8415 (GH8612, PR8642). By Mathias Hauser.
+  ## Deprecations
+  * Following pandas, the frequency string &quot;Y&quot; (formerly &quot;A&quot;) is
+    deprecated in favor of &quot;YE&quot;. These strings are used, for
+    example, in date_range(), cftime_range(), DataArray.resample(),
+    and Dataset.resample() among others (GH8612, PR8629). By
+    Mathias Hauser.
+- Release 2024.1.0
+  * This release brings support for weights in correlation and
+    covariance functions, a new DataArray.cumulative aggregation,
+    improvements to xr.map_blocks, an update to our minimum
+    dependencies, and various bugfixes.
+  ## New Features
+  * xr.cov() and xr.corr() now support using weights (GH8527,
+    PR7392). By Llorenç Lledó.
+  * Accept the compression arguments new in netCDF 1.6.0 in the
+    netCDF4 backend. See netCDF4 documentation for details. Note
+    that some new compression filters needs plugins to be installed
+    which may not be available in all netCDF distributions. By
+    Markel García-Díez. (GH6929, PR7551)
+  * Add DataArray.cumulative() &amp; Dataset.cumulative() to compute
+    cumulative aggregations, such as sum, along a dimension — for
+    example da.cumulative('time').sum(). This is similar to pandas’
+    .expanding, and mostly equivalent to .cumsum methods, or to
+    DataArray.rolling() with a window length equal to the dimension
+    size. By Maximilian Roos. (PR8512)
+  * Decode/Encode netCDF4 enums and store the enum definition in
+    dataarrays’ dtype metadata. If multiple variables share the
+    same enum in netCDF4, each dataarray will have its own enum
+    definition in their respective dtype metadata. By Abel Aoun.
+    (GH8144, PR8147)
+  ## Deprecations
+  * The squeeze kwarg to GroupBy is now deprecated. (GH2157,
+    PR8507) By Deepak Cherian.
+  ## Bug fixes
+  * Support non-string hashable dimensions in xarray.DataArray
+    (GH8546, PR8559). By Michael Niklas.
+  * Reverse index output of bottleneck’s rolling
+    move_argmax/move_argmin functions (GH8541, PR8552). By Kai
+    Mühlbauer.
+  * Vendor SerializableLock from dask and use as default lock for
+    netcdf4 backends (GH8442, PR8571). By Kai Mühlbauer.
+  * Add tests and fixes for empty CFTimeIndex, including broken
+    html repr (GH7298, PR8600). By Mathias Hauser.
+- Create subpackages for the python [extras], test dependencies
+  with _multibuild
+</comment>
+    <requestid>1154193</requestid>
+  </revision>
 </revisionlist>
