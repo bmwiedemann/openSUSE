@@ -571,4 +571,32 @@
   * chore: revert `minAlertLevel` (forwarded request 1147452 from jfkw)</comment>
     <requestid>1147453</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>daf7b6db5734065df5235f4bdf1cf0c7</srcmd5>
+    <version>3.2.1</version>
+    <time>1709332753</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2.1:
+  * chore: bump twine to v0.10.0
+  * refactor: use actual path for assigned formats
+  * chore: bump Docker to golang:1.21
+
+- Update to version 3.2.0:
+  * feat: support script-based actions
+  * feat: allow `script`-based rules to use local files
+  * feat: support `prefix` key in `capitalization`
+  * chore: bump twine to v0.9.0
+  * feat: match case in `Substitution`s default action
+  * docs [skip ci]: add note about default threshold
+  * chore: bump twine to v0.8.1
+  * fix: ensure `capitalization` respects `vocab: false`
+  * feat: proto support (#777)
+  * feat: add `--no-global`
+  * refactor: better install details
+  * fix: don't double-report install errors
+  * refactor: add CLI help text for host commands
+  * fix: remove duplicate $home prefix
+  * refactor: check action params (forwarded request 1154048 from jfkw)</comment>
+    <requestid>1154049</requestid>
+  </revision>
 </revisionlist>

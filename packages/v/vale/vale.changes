@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Mar 01 13:34:40 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.2.1:
+  * chore: bump twine to v0.10.0
+  * refactor: use actual path for assigned formats
+  * chore: bump Docker to golang:1.21
+
+-------------------------------------------------------------------
+Fri Mar 01 13:34:05 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.2.0:
+  * feat: support script-based actions
+  * feat: allow `script`-based rules to use local files
+  * feat: support `prefix` key in `capitalization`
+  * chore: bump twine to v0.9.0
+  * feat: match case in `Substitution`s default action
+  * docs [skip ci]: add note about default threshold
+  * chore: bump twine to v0.8.1
+  * fix: ensure `capitalization` respects `vocab: false`
+  * feat: proto support (#777)
+  * feat: add `--no-global`
+  * refactor: better install details
+  * fix: don't double-report install errors
+  * refactor: add CLI help text for host commands
+  * fix: remove duplicate $home prefix
+  * refactor: check action params
+
+-------------------------------------------------------------------
 Sun Feb 18 17:03:03 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.1.0:
