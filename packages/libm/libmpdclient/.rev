@@ -80,4 +80,13 @@
   * queue: make &quot;priority&quot; parameter unsigned</comment>
     <requestid>934612</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>df428e081f1e37b02311ddbc28430457</srcmd5>
+    <version>2.20</version>
+    <time>1709332606</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN</comment>
+    <requestid>1153745</requestid>
+  </revision>
 </revisionlist>
