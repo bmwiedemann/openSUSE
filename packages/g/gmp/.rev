@@ -581,4 +581,12 @@ discover that breaks ...
     <comment>- Add gmp-6.3.0-s390x-fix.patch to fix s390x optimized code on z13.</comment>
     <requestid>1105276</requestid>
   </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>bdd8d4c743c796f3b55874de3bdaf581</srcmd5>
+    <version>6.3.0</version>
+    <time>1709332556</time>
+    <user>dimstar_suse</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1152157 from dimstar)</comment>
+    <requestid>1152858</requestid>
+  </revision>
 </revisionlist>

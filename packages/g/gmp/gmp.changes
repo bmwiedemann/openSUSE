@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:03:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Aug 22 11:51:01 UTC 2023 - Richard Biener <rguenther@suse.com>
 
 - Add gmp-6.3.0-s390x-fix.patch to fix s390x optimized code on z13. 

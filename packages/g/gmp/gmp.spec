@@ -78,8 +78,8 @@ huge numbers (integer and floating point).
 
 %prep
 %setup -q
-%patch1
-%patch2 -p1
+%patch -P 1
+%patch -P 2 -p1
 
 %build
 export CFLAGS="%{optflags} -fexceptions"
