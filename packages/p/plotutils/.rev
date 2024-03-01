@@ -212,4 +212,12 @@
   * More changes to autobuild toolset files</comment>
     <requestid>1005205</requestid>
   </revision>
+  <revision rev="29" vrev="30">
+    <srcmd5>869ab9eae42396a6d353b63156dd7155</srcmd5>
+    <version>2.6</version>
+    <time>1709332501</time>
+    <user>dimstar_suse</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1153275 from dimstar)</comment>
+    <requestid>1153315</requestid>
+  </revision>
 </revisionlist>

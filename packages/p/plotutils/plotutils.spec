@@ -148,14 +148,14 @@ graphics animations under the X Window System.
 %prep
 %{?gpg_verify: %gpg_verify %{S:1}}
 %setup -q
-%patch0 -p0
-%patch1 -p0
-%patch2 -p0
-%patch3 -p0 -b .p3
-%patch4 -p1
-%patch5 -p0
-%patch6 -p0
-%patch7 -p0
+%patch -P 0 -p0
+%patch -P 1 -p0
+%patch -P 2 -p0
+%patch -P 3 -p0 -b .p3
+%patch -P 4 -p1
+%patch -P 5 -p0
+%patch -P 6 -p0
+%patch -P 7 -p0
 # Avoid update lex and bison code as otherwise we may see broken code (bnc#829479)
 # that is do *not* remove any lex\yacc code
 grep -rslE '(made by GNU Bison|A Bison parser, made from|"lex.yy.c")' . | xargs -r touch
