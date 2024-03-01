@@ -102,4 +102,15 @@ I welcome any suggestion of improvement of this beast ;-)</comment>
 </comment>
     <requestid>1103214</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9f338f54312e3b1d58fe4cbdfd7b7b9a</srcmd5>
+    <version>3.3.4</version>
+    <time>1709332573</time>
+    <user>dimstar_suse</user>
+    <comment>- Add BuildRequire proj-devel instead of legacy name libproj-devel.
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+</comment>
+    <requestid>1153764</requestid>
+  </revision>
 </revisionlist>

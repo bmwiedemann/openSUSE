@@ -42,7 +42,7 @@ BuildRequires:  gdal-devel >= 3.0
 BuildRequires:  gtk2-devel
 BuildRequires:  libgeos-devel >= 3.7.0
 BuildRequires:  libjson-c-devel
-BuildRequires:  libproj-devel >= 6.0.0
+BuildRequires:  proj-devel >= 6.0.0
 BuildRequires:  libprotobuf-c-devel
 # proj.db is required for ST_ functions and tests boo#1188129
 BuildRequires:  proj
@@ -90,9 +90,9 @@ BuildArch:      noarch
 The postgis-utils package provides utilities for PostGIS.
 
 %prep
-%setup -q -n %{ext_name}-%{version}
+%autosetup -p1 -n %{ext_name}-%{version}
+
 echo "pg_version is %{pg_version}"
-%patch0 -p1
 
 %build
 %configure \

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 29 21:18:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add BuildRequire proj-devel instead of legacy name libproj-devel.
+
+-------------------------------------------------------------------
+Thu Feb 29 15:11:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Wed Aug  2 07:51:07 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - update to 3.3.4
