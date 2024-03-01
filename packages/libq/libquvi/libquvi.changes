@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  1 08:55:44 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Apr 22 13:56:03 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add libquvi-autoconf-2.70.patch: Fix build using autoconf 2.70.

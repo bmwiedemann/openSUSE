@@ -74,12 +74,12 @@ URLs with C API.
 %prep
 %setup -q
 if test -f %{_sourcedir}/%{name}.changes ; then
-%patch0
+%patch -P 0
 echo "timestamp for BUILD_TIME" >stamp-build-time
 touch -d "$(sed -n '2s/ - .*$//p' <%{_sourcedir}/%{name}.changes)" stamp-build-time
 fi
-%patch1 -p1
-%patch2 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 
 %build
 export CFLAGS="%{optflags} -DLUA_COMPAT_MODULE"
