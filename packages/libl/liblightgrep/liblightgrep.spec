@@ -89,8 +89,7 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of %{name}.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 #The test file test_kilopattern.CPP breaks ARM builds
 find . -name 'test_kilopattern.CPP' -delete
 
