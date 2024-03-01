@@ -40,8 +40,7 @@ understands BPF filter logic in the same fashion as more common packet
 sniffing tools, such as tcpdump and snoop.
 
 %prep
-%setup -q -n %{name}-%{tarver}
-%patch0 -p1
+%autosetup -p1 -n %{name}-%{tarver}
 
 %build
 %configure \

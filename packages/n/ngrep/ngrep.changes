@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 14:09:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Fri Sep 23 06:11:48 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - Cherry picking PR 27.patch from github to switch to PCRE2 (project
