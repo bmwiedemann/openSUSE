@@ -1,7 +1,7 @@
 #
 # spec file for package libkkc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -95,10 +95,8 @@ libkkc provides a converter from Japanese Kana-string to Kana-Kanji-mixed-string
 This package contains its development headers and vala bindings.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
+
 NOCONFIGURE=1 ./autogen.sh
 
 %build
