@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-auth-oauthlib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-google-auth >= 2.14.0
 Requires:       python-requests-oauthlib >= 0.7.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-click
 BuildArch:      noarch
 # SECTION test requirements
@@ -48,8 +48,7 @@ BuildRequires:  %{python_module requests-oauthlib >= 0.7.0}
 This library provides oauthlib integration with google-auth.
 
 %prep
-%setup -q -n google-auth-oauthlib-%{version}
-%patch0 -p1
+%autosetup -p1 -n google-auth-oauthlib-%{version}
 rm -rf docs
 rm -rf tests/__pycache__/
 rm -rf tests/*.pyc

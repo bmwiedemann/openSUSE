@@ -160,4 +160,12 @@
   * Use setuptools.find_namespace_packages (#321)</comment>
     <requestid>1133645</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>28eee39c2cfde8041c366e7834b24d1e</srcmd5>
+    <version>1.2.0</version>
+    <time>1709332583</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to autosetup macro.</comment>
+    <requestid>1153644</requestid>
+  </revision>
 </revisionlist>
