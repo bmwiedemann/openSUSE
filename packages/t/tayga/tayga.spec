@@ -1,7 +1,7 @@
 #
 # spec file for package tayga
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,8 +38,7 @@ intended to provide production-quality NAT64 service for networks where
 dedicated NAT64 hardware would be overkill.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 sed -i 's|%{_localstatedir}/db/tayga|%{_localstatedir}/lib/tayga|g' tayga.conf.example
 
 %build
