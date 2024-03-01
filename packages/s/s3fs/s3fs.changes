@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 29 20:53:07 UTC 2024 - Julio González Gil <julio@juliogonzalez.es>
+
+- Update to version 1.94
+  * Fixed a bug that mounting with ksmid specified to fail
+  * Fixed ordering problem between fdatasync and flush
+  * Fixed ListBucket/IAM edge cases
+  * Corrected list_bucket to search in stat cache during creating new file
+  * Make dir size 4096 not 0
+  * Added option free_space_ratio to control cache size
+  * Fixed a bug upload boundary calculation in StreamUpload
+  * Abort MPU when MPU fails to avoid litter
+
+-------------------------------------------------------------------
 Mon Jul 24 22:44:05 UTC 2023 - Julio González Gil <julio@juliogonzalez.es>
 
 - Update to version 1.93
