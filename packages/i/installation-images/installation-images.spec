@@ -354,7 +354,6 @@ BuildRequires:  gpm
 BuildRequires:  gptfdisk
 BuildRequires:  graphviz
 BuildRequires:  graphviz-gnome
-BuildRequires:  haveged
 BuildRequires:  hdparm
 BuildRequires:  hex
 BuildRequires:  hfsutils
@@ -669,7 +668,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.115
+Version:        17.116
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
