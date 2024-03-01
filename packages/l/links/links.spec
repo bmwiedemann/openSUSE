@@ -51,8 +51,7 @@ graphical interface besides the text interface. It has good support for
 frames, supports ssl, and has a little bit of JavaScript support.
 
 %prep
-%setup -q
-%patch2 -p1
+%autosetup -p1
 
 %build
 autoreconf -ifv
