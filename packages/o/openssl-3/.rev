@@ -256,4 +256,12 @@
   * Add openssl-CVE-2024-0727.patch</comment>
     <requestid>1144625</requestid>
   </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>2bc7266172d5fc242fd7f1e6ce7e3daf</srcmd5>
+    <version>3.1.4</version>
+    <time>1709332434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153155</requestid>
+  </revision>
 </revisionlist>

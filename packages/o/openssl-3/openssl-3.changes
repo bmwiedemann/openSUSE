@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 23 11:31:44 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Build the 32bit flavor of libopenssl-3-fips-provider [bsc#1220232]
+  * Update baselibs.conf
+
+-------------------------------------------------------------------
 Mon Feb  5 16:29:26 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Add migration script to move old files (bsc#1219562)
