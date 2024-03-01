@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Feb 10 03:10:09 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.27
+   see /usr/share/doc/packages/perl-URI/Changes
+
+  5.27      2024-02-09 15:01:24Z
+      - Add missing NAME section to POD of URI::geo (GH#142) (gregor herrmann)
+  5.26      2024-02-02 19:04:40Z
+      - Add URI::geo (GH#141) (david-dick)
+  5.25      2024-01-27 16:11:41Z
+      - cache scheme so it never attempt to load it again (GH#55) (mschae94)
+  5.24      2024-01-26 04:36:32Z
+      - Really revert "use Scalar::Util::reftype instead of ref to check for
+        ARRAY" (GH#136) (Olaf Alders)
+  5.23      2024-01-25 21:02:18Z
+      - Revert the reftype change introduced in 5.22 as it causes warnings.
+        (GH#134) (Olaf Alders)
+  5.22      2024-01-25 15:22:54Z
+      - Use Scalar::Util::reftype instead of ref to check for ARRAY (GH#132)
+        (Jacques Deguest)
+
+-------------------------------------------------------------------
 Thu Aug 24 03:09:00 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.21

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-URI
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %define cpan_name URI
 Name:           perl-URI
-Version:        5.210.0
+Version:        5.270.0
 Release:        0
-%define cpan_version 5.21
+%define cpan_version 5.27
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Uniform Resource Identifiers (absolute and relative)
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -35,52 +35,53 @@ BuildRequires:  perl(Test::Needs)
 BuildRequires:  perl(Test::Warnings)
 BuildRequires:  perl(parent)
 Requires:       perl(parent)
-Provides:       perl(URI) = 5.210.0
-Provides:       perl(URI::Escape) = 5.210.0
-Provides:       perl(URI::Heuristic) = 5.210.0
-Provides:       perl(URI::IRI) = 5.210.0
-Provides:       perl(URI::QueryParam) = 5.210.0
-Provides:       perl(URI::Split) = 5.210.0
-Provides:       perl(URI::URL) = 5.210.0
-Provides:       perl(URI::WithBase) = 5.210.0
-Provides:       perl(URI::data) = 5.210.0
-Provides:       perl(URI::file) = 5.210.0
-Provides:       perl(URI::file::Base) = 5.210.0
-Provides:       perl(URI::file::FAT) = 5.210.0
-Provides:       perl(URI::file::Mac) = 5.210.0
-Provides:       perl(URI::file::OS2) = 5.210.0
-Provides:       perl(URI::file::QNX) = 5.210.0
-Provides:       perl(URI::file::Unix) = 5.210.0
-Provides:       perl(URI::file::Win32) = 5.210.0
-Provides:       perl(URI::ftp) = 5.210.0
-Provides:       perl(URI::gopher) = 5.210.0
-Provides:       perl(URI::http) = 5.210.0
-Provides:       perl(URI::https) = 5.210.0
-Provides:       perl(URI::icap) = 5.210.0
-Provides:       perl(URI::icaps) = 5.210.0
-Provides:       perl(URI::ldap) = 5.210.0
-Provides:       perl(URI::ldapi) = 5.210.0
-Provides:       perl(URI::ldaps) = 5.210.0
-Provides:       perl(URI::mailto) = 5.210.0
-Provides:       perl(URI::mms) = 5.210.0
-Provides:       perl(URI::news) = 5.210.0
-Provides:       perl(URI::nntp) = 5.210.0
-Provides:       perl(URI::nntps) = 5.210.0
-Provides:       perl(URI::pop) = 5.210.0
-Provides:       perl(URI::rlogin) = 5.210.0
-Provides:       perl(URI::rsync) = 5.210.0
-Provides:       perl(URI::rtsp) = 5.210.0
-Provides:       perl(URI::rtspu) = 5.210.0
-Provides:       perl(URI::sftp) = 5.210.0
-Provides:       perl(URI::sip) = 5.210.0
-Provides:       perl(URI::sips) = 5.210.0
-Provides:       perl(URI::snews) = 5.210.0
-Provides:       perl(URI::ssh) = 5.210.0
-Provides:       perl(URI::telnet) = 5.210.0
-Provides:       perl(URI::tn3270) = 5.210.0
-Provides:       perl(URI::urn) = 5.210.0
-Provides:       perl(URI::urn::isbn) = 5.210.0
-Provides:       perl(URI::urn::oid) = 5.210.0
+Provides:       perl(URI) = %{version}
+Provides:       perl(URI::Escape) = %{version}
+Provides:       perl(URI::Heuristic) = %{version}
+Provides:       perl(URI::IRI) = %{version}
+Provides:       perl(URI::QueryParam) = %{version}
+Provides:       perl(URI::Split) = %{version}
+Provides:       perl(URI::URL) = %{version}
+Provides:       perl(URI::WithBase) = %{version}
+Provides:       perl(URI::data) = %{version}
+Provides:       perl(URI::file) = %{version}
+Provides:       perl(URI::file::Base) = %{version}
+Provides:       perl(URI::file::FAT) = %{version}
+Provides:       perl(URI::file::Mac) = %{version}
+Provides:       perl(URI::file::OS2) = %{version}
+Provides:       perl(URI::file::QNX) = %{version}
+Provides:       perl(URI::file::Unix) = %{version}
+Provides:       perl(URI::file::Win32) = %{version}
+Provides:       perl(URI::ftp) = %{version}
+Provides:       perl(URI::geo) = %{version}
+Provides:       perl(URI::gopher) = %{version}
+Provides:       perl(URI::http) = %{version}
+Provides:       perl(URI::https) = %{version}
+Provides:       perl(URI::icap) = %{version}
+Provides:       perl(URI::icaps) = %{version}
+Provides:       perl(URI::ldap) = %{version}
+Provides:       perl(URI::ldapi) = %{version}
+Provides:       perl(URI::ldaps) = %{version}
+Provides:       perl(URI::mailto) = %{version}
+Provides:       perl(URI::mms) = %{version}
+Provides:       perl(URI::news) = %{version}
+Provides:       perl(URI::nntp) = %{version}
+Provides:       perl(URI::nntps) = %{version}
+Provides:       perl(URI::pop) = %{version}
+Provides:       perl(URI::rlogin) = %{version}
+Provides:       perl(URI::rsync) = %{version}
+Provides:       perl(URI::rtsp) = %{version}
+Provides:       perl(URI::rtspu) = %{version}
+Provides:       perl(URI::sftp) = %{version}
+Provides:       perl(URI::sip) = %{version}
+Provides:       perl(URI::sips) = %{version}
+Provides:       perl(URI::snews) = %{version}
+Provides:       perl(URI::ssh) = %{version}
+Provides:       perl(URI::telnet) = %{version}
+Provides:       perl(URI::tn3270) = %{version}
+Provides:       perl(URI::urn) = %{version}
+Provides:       perl(URI::urn::isbn) = %{version}
+Provides:       perl(URI::urn::oid) = %{version}
 %define         __perllib_provides /bin/true
 %{perl_requires}
 
