@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 14:34:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Dec 14 13:26:05 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - procps-3.3.17-ignore-sysctl_conf.patch: ignore dangling symlink

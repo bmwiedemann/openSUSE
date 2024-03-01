@@ -130,34 +130,34 @@ the process information pseudo-file system.
 
 %prep
 %setup -q
-%patch0
-%patch1
-%patch3 -b .trcate
-%patch7 -b .rof
-%patch8 -b .cache
-%patch10 -b .acc
-%patch11
-%patch12
-%patch13 -b .column
-%patch14 -b .ovrflw
-%patch15
-%patch16
-%patch17 -b .sysctl
-%patch18
-%patch19
-%patch20
-%patch21
-%patch28
-%patch31 -p1
-%patch32
-%patch33 -b .pmap4us
-%patch34
-%patch35 -p1
-%patch36 -p0
-%patch42
-%patch43
-%patch44 -p1
-%patch45 -p1
+%patch -P 0
+%patch -P 1
+%patch -P 3 -b .trcate
+%patch -P 7 -b .rof
+%patch -P 8 -b .cache
+%patch -P 10 -b .acc
+%patch -P 11
+%patch -P 12
+%patch -P 13 -b .column
+%patch -P 14 -b .ovrflw
+%patch -P 15
+%patch -P 16
+%patch -P 17 -b .sysctl
+%patch -P 18
+%patch -P 19
+%patch -P 20
+%patch -P 21
+%patch -P 28
+%patch -P 31 -p1
+%patch -P 32
+%patch -P 33 -b .pmap4us
+%patch -P 34
+%patch -P 35 -p1
+%patch -P 36 -p0
+%patch -P 42
+%patch -P 43
+%patch -P 44 -p1
+%patch -P 45 -p1
 
 %build
 test -s .tarball-version || echo %{version} > .tarball-version

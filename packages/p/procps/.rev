@@ -1389,4 +1389,12 @@ There are also man pages translations but they doesn't get installed automatical
   to missing /etc/sysctl.conf file [bsc#1217990] (forwarded request 1133107 from kukuk)</comment>
     <requestid>1133112</requestid>
   </revision>
+  <revision rev="136" vrev="17">
+    <srcmd5>fcf56f1ae3e9ad2bc6b63c6c2d0dc8a8</srcmd5>
+    <version>3.3.17</version>
+    <time>1709332499</time>
+    <user>dimstar_suse</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1153271 from dimstar)</comment>
+    <requestid>1153312</requestid>
+  </revision>
 </revisionlist>
