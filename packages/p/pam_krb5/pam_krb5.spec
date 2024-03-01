@@ -52,10 +52,7 @@ supports updating your Kerberos password.
 %prep
 %setup -q -n pam_krb5-%{version}
 %setup -a 2 -T -D -n pam_krb5-%{version}
-%patch1 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%autopatch -p1
 
 %build
 CFLAGS="$RPM_OPT_FLAGS -D_GNU_SOURCE "         \

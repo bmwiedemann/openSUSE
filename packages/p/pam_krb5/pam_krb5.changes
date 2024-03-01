@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 14:31:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autopatch macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Wed Jan 12 10:29:54 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
 
 - Use the %_pam_moduledir macro in pam_userpass.spec in order to
