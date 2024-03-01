@@ -37,9 +37,8 @@ You can find a comprehensive archive on the World Wide Web at
 http://www.nocrew.org/software/psgplay/tunes/
 
 %prep
-%setup -q -n psgplay-0.6
-%patch0
-%patch1
+%autosetup -p0 -n psgplay-0.6
+
 rm -f acconfig.h
 
 %build
