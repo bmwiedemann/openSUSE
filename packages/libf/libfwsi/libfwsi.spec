@@ -18,7 +18,7 @@
 
 %define lname	libfwsi1
 Name:           libfwsi
-Version:        20240225
+Version:        20240301
 Release:        0
 Summary:        Library to access the Windows Shell Item format
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -41,7 +41,7 @@ BuildRequires:  pkgconfig(libcthreads) >= 20240102
 BuildRequires:  pkgconfig(libfdatetime) >= 20240115
 BuildRequires:  pkgconfig(libfguid) >= 20240116
 BuildRequires:  pkgconfig(libfole) >= 20240119
-BuildRequires:  pkgconfig(libfwps) >= 20240224
+BuildRequires:  pkgconfig(libfwps) >= 20240301
 BuildRequires:  pkgconfig(libuna) >= 20240130
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal

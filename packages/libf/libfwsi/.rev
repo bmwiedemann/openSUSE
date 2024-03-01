@@ -168,4 +168,12 @@
     <comment>- Update to release 20240225</comment>
     <requestid>1150505</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bd425817f8b1a032635d4d6bc2b968f3</srcmd5>
+    <version>20240301</version>
+    <time>1709332757</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20240301</comment>
+    <requestid>1154052</requestid>
+  </revision>
 </revisionlist>
