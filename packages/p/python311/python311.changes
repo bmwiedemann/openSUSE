@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb 23 01:06:42 UTC 2024 - Matej Cepl <mcepl@suse.com>
+
+- (bsc#1219666, CVE-2023-6597) Add
+  CVE-2023-6597-TempDir-cleaning-symlink.patch (patch from
+  gh#python/cpython!99930) fixing symlink bug in cleanup of
+  tempfile.TemporaryDirectory.
+
+-------------------------------------------------------------------
+Tue Feb 20 22:14:02 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove double definition of /usr/bin/idle%%{version} in
+  %%files. 
+
+-------------------------------------------------------------------
 Thu Feb 15 10:29:07 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add upstream patch libexpat260.patch, Fix tests for XMLPullParser

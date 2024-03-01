@@ -168,6 +168,9 @@ Patch40:        CVE-2023-27043-email-parsing-errors.patch
 # PATCH-FIX-UPSTREAM libexpat260.patch gh#python/cpython#115289
 # Fix tests for XMLPullParser with Expat 2.6.0
 Patch41:        libexpat260.patch
+# PATCH-FIX-UPSTREAM CVE-2023-6597-TempDir-cleaning-symlink.patch bsc#1219666 mcepl@suse.com
+# tempfile.TemporaryDirectory: fix symlink bug in cleanup (from gh#python/cpython!99930)
+Patch42:        CVE-2023-6597-TempDir-cleaning-symlink.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -429,6 +432,7 @@ other applications.
 %patch -P 39 -p1
 %patch -P 40 -p1
 %patch -P 41 -p1
+%patch -P 42 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
@@ -825,7 +829,6 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %dir %{_datadir}/icons/hicolor/32x32
 %dir %{_datadir}/icons/hicolor/48x48
 %dir %{_datadir}/icons/hicolor/*/apps
-%attr(755, root, root) %{_bindir}/idle%{python_version}
 # endif for if general
 %endif
 
