@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar  1 03:20:14 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.1.0:
+  * Added classes to the libnacl.aead module allowing for the use of
+    XChaCha20-Poly1305-IETF, ChaCha20-Poly1305-IETF, and AES256-GCM.
+  * Added the libnacl.kx module. This module contains the ExchangeKey class.
+- Switch to autosetup and pyproject macros.
+- Drop patch crypto_kdf_derive.patch, no longer required.
+
+-------------------------------------------------------------------
 Wed Jul  5 08:28:58 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

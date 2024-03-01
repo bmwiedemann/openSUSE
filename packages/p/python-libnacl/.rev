@@ -178,4 +178,17 @@
     <comment></comment>
     <requestid>1096919</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>101de4c839853e74880279d40dcdb663</srcmd5>
+    <version>2.1.0</version>
+    <time>1709332594</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.0:
+  * Added classes to the libnacl.aead module allowing for the use of
+    XChaCha20-Poly1305-IETF, ChaCha20-Poly1305-IETF, and AES256-GCM.
+  * Added the libnacl.kx module. This module contains the ExchangeKey class.
+- Switch to autosetup and pyproject macros.
+- Drop patch crypto_kdf_derive.patch, no longer required.</comment>
+    <requestid>1153722</requestid>
+  </revision>
 </revisionlist>

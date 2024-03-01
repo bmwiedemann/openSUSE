@@ -1,7 +1,7 @@
 #
 # spec file for package python-libnacl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-libnacl
-Version:        1.7.2
+Version:        2.1.0
 Release:        0
 Summary:        Python bindings for libsodium based on ctypes
 License:        Apache-2.0
 URL:            https://github.com/saltstack/libnacl
 Source0:        https://github.com/saltstack/libnacl/archive/v%{version}.tar.gz#/libnacl-%{version}.tar.gz
-Patch0:         crypto_kdf_derive.patch
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -34,6 +35,7 @@ BuildRequires:  pkgconfig(libsodium)
 # This will need updating and verification but smart magic is not copied by
 #  singlespec macros
 Requires:       libsodium23
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -42,14 +44,13 @@ It has been constructed to maintain extensive documentation on how to use nacl a
 in libnacl/__init__.py can be pulled out and placed directly in any project to give a single file binding to all of nacl.
 
 %prep
-%setup -q -n libnacl-%{version}
-%patch0 -p1
+%autosetup -p1 -n libnacl-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}/%{$python_sitelib}
 
 %check
@@ -58,6 +59,7 @@ in libnacl/__init__.py can be pulled out and placed directly in any project to g
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/libnacl
+%{python_sitelib}/libnacl-%{version}.dist-info
 
 %changelog
