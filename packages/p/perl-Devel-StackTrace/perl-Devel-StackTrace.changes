@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan  9 03:07:39 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.05
+   see /usr/share/doc/packages/perl-Devel-StackTrace/Changes
+
+  2.05   2024-01-08
+
+  - Added explicit boolean overloading for trace objects. Without this, Perl
+    will use the object's string overloading and then check the truthiness of
+    the returned string, which is a lot of extra work. This can produce
+    significant slowdowns in some cases, as seen in
+    https://github.com/plack/Plack/pull/697. Requested by Tatsuhiko
+    Miyagawa. GH #23.
+
+-------------------------------------------------------------------
 Sat May 25 05:05:57 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 2.04
