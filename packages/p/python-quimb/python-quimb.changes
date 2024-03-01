@@ -1,4 +1,187 @@
 -------------------------------------------------------------------
+Tue Feb 27 20:12:07 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.7.3
+ ## Enhancements:
+  * qu.randn: support dist="rademacher".
+  * support dist and other randn options in various TN builders.
+  ## Bug fixes:
+  * restore fallback (to scipy.linalg.svd with driver='gesvd')
+    behavior for truncated SVD with numpy backend.
+- Release 1.7.2
+  ## Bug fixes:
+  * removed import of deprecated numba.generated_jit decorator.
+  ## Enhancements:
+  * add normalized=True option to tensor_network_distance for
+    computing the normalized distance between tensor networks,
+    which is useful for convergence checks.
+    Tensor.distance_normalized and
+    TensorNetwork.distance_normalized added as aliases.
+  * add TensorNetwork.cut_bond for cutting a bond index
+- Release v1.7.1
+  ## Enhancements:
+  * add TensorNetwork.visualize_tensors for visualizing the actual
+    data entries of an entire tensor network.
+  * add ham.build_mpo_propagator_trotterized for building a
+    trotterized propagator from a local 1D hamiltonian. This also
+    includes updates for creating 'empty' tensor networks using
+    TensorNetwork.new, and building up gates from empty tensor
+    networks using TensorNetwork.gate_inds_with_tn.
+  * add more options to Tensor.expand_ind and Tensor.new_ind:
+    repeat tiling mode and random padding mode.
+  * tensor decomposition: make eigh_truncated backend agnostic.
+  * tensor_compress_bond: add reduced="left" and reduced="right"
+    modes for when the pair of tensors is already in a canonical
+    form.
+  * add qtn.TN2D_embedded_classical_ising_partition_function for
+    constructing 2D (triangular) tensor networks representing
+    all-to-all classical ising partition functions.
+  ## Bug fixes:
+  * fix bug in kruas_op when operator spanned multiple subsystems
+    (#214)
+  * fix bug in qr_stabilized when the diagonal of R has significant
+    imaginary parts.
+  * fix bug in quantum discord computation when the state was
+    diagonal (#217)
+  * Fix empty lines in dimacs by @jjcmoon in #215
+- Release 1.7.0
+  ## Breaking Changes
+  * Circuit : remove target_size in preparation for all contraction
+    specifications to be encapsulated at the contract level (e.g.
+    with cotengra) some TN drawing options (mainly arrow options)
+    have changed due to the backend change detailed below.
+  ## Enhancements:
+  * Multi tag drawing support
+  * TensorNetwork.draw: use quimb.schematic for main
+    backend="matplotlib" drawing. Enabling:
+    - multi tag coloring for single tensors
+    - arrows and labels on multi-edges
+    - better sizing of tensors using absolute units
+    - neater single tensor drawing, in 2D and 3D
+  * add quimb.schematic.Drawing from experimental submodule, add
+    example docs at schematic. Add methods text_between, wedge,
+    line_offset and other tweaks for future use by main TN drawing.
+  * upgrade all contraction to use cotengra as the backend
+  * Circuit : allow any gate to be controlled by any number of
+    qubits.
+  * Circuit : support for parsing openqasm2 specifications now with
+    custom and nested gate definitions etc.
+  * add is_cyclic_x, is_cyclic_y) and is_cyclic_z to
+    TensorNetwork2D and TensorNetwork3D.
+  * add TensorNetwork.compress_all_1d for compressing generic
+    tensor networks that you promise have a 1D topology, without
+    casting as a TensorNetwork1D.
+  * add MatrixProductState.from_fill_fn for constructing MPS from a
+    function that fills the tensors.
+  * add Tensor.idxmin and Tensor.idxmax for finding the index of
+    the minimum / maximum element.
+  * 2D and 3D classical partition function TN builders: allow
+    output indices.
+  * quimb.experimental.belief_propagation: add various
+    1-norm/2-norm dense/lazy BP algorithms.
+  ## Bug fixes:
+  * fixed bug where an output index could be removed by squeezing
+    when performing tensor network simplifications.
+  * Fix deprecation warnings by @king-p3nguin in #209
+- Release v1.6.0
+  ## Breaking Changes
+  * Quantum circuit RZZ definition corrected (angle changed by -1/2
+    to match qiskit).
+  ## Enhancements:
+  * add OpenQASM 2.0 parsing support:
+    :meth:Circuit.from_openqasm2_file
+  * :class:Circuit: add RXX, RYY, CRX, CRY, CRZ, toffoli, fredkin,
+    givens gates
+  * truncate TN pretty html reprentation to 100 tensors for
+    performance
+  * add :meth:Tensor.sum_reduce and :meth:Tensor.vector_reduce
+  * :meth:contract_compressed, default to 'virtual-tree' gauge
+  * add :func:TN_rand_tree
+  * experimental.operatorbuilder: fix parallel and heisenberg
+    builder
+  * make parametrized gate generation even more robost (ensure
+    matching types so e.g. tensorflow can be used)
+  ## Bug fixes:
+  * fix gauge size check for some backends
+- Release 1.5.1
+  * add various MPO-MPS gate methods, including zip-up and density
+    matrix, in the experimental submodule
+  * some PTensor refactoring
+  * Circuit: more robust parametrized gate generation
+  * various new contraction convenience interfaces (incld.
+    array_contract)
+  * add Tensor.check() and TensorNetwork.check() for diagnostics
+  * add TensorNetwork.isconnected(), TensorNetwork.istree()
+- Release 1.5.0
+  ## Enhancements
+  * refactor 'isometrize' methods including new "cayley",
+    "householder" and "torch_householder" methods. See
+    :func:quimb.tensor.decomp.isometrize.
+  * add
+    :meth:~quimb.tensor.tensor_core.TensorNetwork.compute_reduced_factor
+    and
+    :meth:~quimb.tensor.tensor_core.TensorNetwork.insert_compressor_between_regions
+    methos, for some RG style algorithms.
+  * add the mode="projector" option for 2D tensor network
+    contractions
+  * add HOTRG style coarse graining and contraction in 2D and 3D.
+    See
+    :meth:~quimb.tensor.tensor_2d.TensorNetwork2D.coarse_grain_hotrg,
+    :meth:~quimb.tensor.tensor_2d.TensorNetwork2D.contract_hotrg,
+    :meth:~quimb.tensor.tensor_3d.TensorNetwork3D.coarse_grain_hotrg,
+    and
+    :meth:~quimb.tensor.tensor_3d.TensorNetwork3D.contract_hotrg,
+  * add CTMRG style contraction for 2D tensor networks:
+    :meth:~quimb.tensor.tensor_2d.TensorNetwork2D.contract_ctmrg
+  * add 2D tensor network 'corner double line' (CDL) builders:
+    :func:~quimb.tensor.tensor_builder.TN2D_corner_double_line
+  * update the docs to use the furo <https://pradyunsg.me/furo/>_
+    theme, myst_nb <https://myst-nb.readthedocs.io/en/latest/>_ for
+    notebooks, and several other sphinx extensions.
+  * add the 'adabelief' optimizer to
+    :class:~quimb.tensor.optimize.TNOptimizer as well as a quick
+    plotter: :meth:~quimb.tensor.optimize.TNOptimizer.plot
+  * add initial 3D plotting methods for tensors networks (
+    TensorNetwork.draw(dim=3, backend='matplotlib3d') or
+    TensorNetwork.draw(dim=3, backend='plotly') ). The new
+    backend='plotly' can also be used for 2D interactive plots.
+  * Update :func:~quimb.tensor.tensor_builder.HTN_from_cnf to
+    handle more weighted model counting formats.
+  * Add :func:~quimb.tensor.tensor_builder.cnf_file_parse
+  * Add :func:~quimb.tensor.tensor_builder.random_ksat_instance
+  * Add :func:~quimb.tensor.tensor_builder.TN_from_strings
+  * Add :func:~quimb.tensor.tensor_builder.convert_to_2d
+  * Add :func:~quimb.tensor.tensor_builder.TN2D_rand_hidden_loop
+  * Add :func:~quimb.tensor.tensor_builder.convert_to_3d
+  * Add :func:~quimb.tensor.tensor_builder.TN3D_corner_double_line
+  * Add :func:~quimb.tensor.tensor_builder.TN3D_rand_hidden_loop
+  * various optimizations for minimizing computational graph size
+    and
+  * construction time.
+  * add 'lu', 'polar_left' and 'polar_right' methods to
+    :func:~quimb.tensor.tensor_core.tensor_split.
+  * add experimental arbitrary hamilotonian MPO building
+  * :class:~quimb.tensor.tensor_core.TensorNetwork: allow empty
+    constructor (i.e. no tensors representing simply the scalar 1)
+  * :meth:~quimb.tensor.tensor_core.TensorNetwork.drop_tags: allow
+    all tags to be dropped
+  * tweaks to compressed contraction and gauging
+  * add jax, flax and optax example
+  * add 3D and interactive plotting of tensors networks with via
+    plotly.
+  * add pygraphiviz layout options
+  * add :meth:~quimb.tensor.tensor_core.TensorNetwork.combine for
+    unified handling of combining tensor networks potentially with
+    structure
+  * add HTML colored pretty printing of tensor networks for
+    notebooks
+  * add quimb.experimental.cluster_update.py
+  ## Bug fixes:
+  * fix :func:~quimb.tensor.decomp.qr_stabilized bug for strictly
+    upper triangular R factors.
+- Run tests in parallel (rerun flaky precision errors)
+
+-------------------------------------------------------------------
 Thu Jun  1 07:31:29 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Numba now exists for Python 3.11, stop skipping it. 

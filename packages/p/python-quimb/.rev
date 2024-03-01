@@ -56,4 +56,43 @@
     <comment>- Numba now exists for Python 3.11, stop skipping it.</comment>
     <requestid>1090173</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9a2000990df1c8e7b188cecdf4f3d622</srcmd5>
+    <version>1.7.3</version>
+    <time>1709332575</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1152767 from bnavigator
+
+- Update to 1.7.3
+   ## Enhancements:
+    * qu.randn: support dist=&quot;rademacher&quot;.
+    * support dist and other randn options in various TN builders.
+    ## Bug fixes:
+    * restore fallback (to scipy.linalg.svd with driver='gesvd')
+      behavior for truncated SVD with numpy backend.
+  - Release 1.7.2
+    ## Bug fixes:
+    * removed import of deprecated numba.generated_jit decorator.
+    ## Enhancements:
+    * add normalized=True option to tensor_network_distance for
+      computing the normalized distance between tensor networks,
+      which is useful for convergence checks.
+      Tensor.distance_normalized and
+      TensorNetwork.distance_normalized added as aliases.
+    * add TensorNetwork.cut_bond for cutting a bond index
+  - Release v1.7.1
+    ## Enhancements:
+    * add TensorNetwork.visualize_tensors for visualizing the actual
+      data entries of an entire tensor network.
+    * add ham.build_mpo_propagator_trotterized for building a
+      trotterized propagator from a local 1D hamiltonian. This also
+      includes updates for creating 'empty' tensor networks using
+      TensorNetwork.new, and building up gates from empty tensor
+      networks using TensorNetwork.gate_inds_with_tn.
+    * add more options to Tensor.expand_ind and Tensor.new_ind:
+      repeat tiling mode and random padding mode.
+    * tensor decomposition: make eigh_truncated backend agnostic.
+    * tensor_compress_bond: add reduced=&quot;left&quot; and reduced=&quot;right&quot;</comment>
+    <requestid>1153130</requestid>
+  </revision>
 </revisionlist>
