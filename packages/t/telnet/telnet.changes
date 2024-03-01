@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:33:43 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Oct 21 14:47:08 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Fix CVE-2022-39028, NULL pointer dereference in telnetd

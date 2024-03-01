@@ -66,12 +66,12 @@ this machine.
 
 %prep
 %setup -q -n telnet-bsd-%{version}
-%patch1
-%patch2
-%patch3
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+%patch -P 1
+%patch -P 2
+%patch -P 3
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
 
 %build
 export CFLAGS="%{optflags} -fpie $(ncurses6-config --cflags)"
