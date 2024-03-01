@@ -76,8 +76,7 @@ This package contains the headers for developing applications that
 want to make use of libao.
 
 %prep
-%setup -q
-%patch1
+%autosetup -p0
 
 # setup libdir properly
 sed -i "s:/lib:/%{_lib}:g" ao.m4
