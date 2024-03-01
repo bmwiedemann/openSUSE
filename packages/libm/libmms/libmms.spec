@@ -67,9 +67,7 @@ Requires:       glibc-devel
 Headers and libraries to program against %{name}
 
 %prep
-%setup -q
-%patch0
-%patch1
+%autosetup -p0
 
 %build
 %configure --disable-static

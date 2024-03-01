@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 17:37:45 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Thu Feb  9 18:25:43 UTC 2017 - dimstar@opensuse.org
 
 - Explicitly package %{_docdir}/%{name} to fix build with RPM 4.13.
