@@ -1,7 +1,7 @@
 #
 # spec file for package libmpdclient
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020 Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -58,8 +58,7 @@ libmpdclient - a stable, documented and asynchronous API library for
 MPD (Music Player Daemon).
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 %meson -Ddocumentation=true -Dtest=true
