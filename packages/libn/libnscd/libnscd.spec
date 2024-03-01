@@ -67,8 +67,7 @@ This package contains all necessary include files and libraries needed
 to develop applications that needs to communicate with a running nscd.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure --disable-static
