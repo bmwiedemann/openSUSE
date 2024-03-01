@@ -1,7 +1,7 @@
 #
 # spec file for package python-altair
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-altair
-Version:        5.1.2
+Version:        5.2.0
 Release:        0
 Summary:        Declarative statistical visualization library for Python
 License:        BSD-3-Clause
@@ -74,7 +74,7 @@ seamlessly display client-side renderings in the Jupyter notebook.
 %check
 # disable tests that require network
 # vega requires vl-convert-python, not packaged
-%pytest -k 'not (test_examples or test_vegalite_compiler or with_format_vega)'
+%pytest -k 'not (test_examples or test_vegalite_compiler or with_format_vega or test_to_url)'
 
 %files %{python_files}
 %doc README.md

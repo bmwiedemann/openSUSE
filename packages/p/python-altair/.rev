@@ -163,4 +163,25 @@
     *  ``alz.LayerChart`` no longer has ``mark_*()`` methods, because they never</comment>
     <requestid>1128724</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>503b7e146fb0658b168c524b84135c3c</srcmd5>
+    <version>5.2.0</version>
+    <time>1709332577</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.0:
+  - Update Vega-Lite from version 5.15.1 to version 5.16.3
+  - Support offline HTML export using vl-convert
+  - Support saving charts as PDF files using the vl-convert
+    export engine
+  - Support converting charts to sharable Vega editor URLs with
+    chart.to_url()
+  - Pass format_locale and time_format_locale through to
+    vl-convert to support locales in static image export
+  - Vega-Altair is now a typed package, with type annotations for
+    all public functions and classes and some of the internal
+    code
+  - Vega-Altair is tested against Python 3.12
+</comment>
+    <requestid>1153601</requestid>
+  </revision>
 </revisionlist>

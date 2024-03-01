@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Feb 29 13:10:56 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 5.2.0:
+  - Update Vega-Lite from version 5.15.1 to version 5.16.3
+  - Support offline HTML export using vl-convert
+  - Support saving charts as PDF files using the vl-convert
+    export engine
+  - Support converting charts to sharable Vega editor URLs with
+    chart.to_url()
+  - Pass format_locale and time_format_locale through to
+    vl-convert to support locales in static image export
+  - Vega-Altair is now a typed package, with type annotations for
+    all public functions and classes and some of the internal
+    code
+  - Vega-Altair is tested against Python 3.12
+
+-------------------------------------------------------------------
 Sat Nov 25 12:54:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.1.2:
