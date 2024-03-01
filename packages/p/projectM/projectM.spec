@@ -105,9 +105,9 @@ projectM is a music visualizer.
 This package contains its development files.
 
 %prep
-%setup -q -n projectm-%{version}
+%autosetup -p1 -n projectm-%{version}
+
 chmod -x LICENSE.txt
-%patch0 -p1
 
 %if %{with gles_flavor}
 # https://github.com/projectM-visualizer/projectm/issues/356
