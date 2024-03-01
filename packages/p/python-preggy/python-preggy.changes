@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  1 04:22:23 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Sun Aug 16 17:07:56 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Replace nose with pytest

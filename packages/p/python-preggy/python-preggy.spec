@@ -1,7 +1,7 @@
 #
 # spec file for package python-preggy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-preggy
 Version:        1.4.4
 Release:        0
 Summary:        Assertion library for Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/heynemann/preggy
 Source:         https://files.pythonhosted.org/packages/source/p/preggy/preggy-%{version}.tar.gz
 # https://github.com/heynemann/preggy/issues/32 re LICENSE
 Patch0:         split-readme.patch
 BuildRequires:  %{python_module Unidecode}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Unidecode
@@ -43,16 +43,15 @@ preggy is an assertion library for Python. (What were you ``expect()``ing?)
 Part of the pyVows test framework.
 
 %prep
-%setup -q -n preggy-%{version}
-%patch0 -p1
+%autosetup -p1 -n preggy-%{version}
 sed -i "s/'nose', //" setup.py
 sed -i '/^#!/d' preggy/__main__.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,6 +60,7 @@ sed -i '/^#!/d' preggy/__main__.py
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/preggy
+%{python_sitelib}/preggy-%{version}.dist-info
 
 %changelog
