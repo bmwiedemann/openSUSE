@@ -36,8 +36,8 @@ BuildRequires:  pkgconfig(libcurl)
 GnuSocialShell is a text-based GNU social client written in C.
 
 %prep
-%setup -q -n %{_name}-v%{version}
-%patch0 -p1
+%autosetup -p1 -n %{_name}-v%{version}
+
 touch config.rpath
 mv config config.example
 
