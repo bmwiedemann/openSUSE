@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 13:47:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Jun  6 19:39:19 UTC 2017 - fisiu@opensuse.org
 
 - Add fix-gcc71-compilation-errors.patch: fix compilation issues with gcc 7.1.

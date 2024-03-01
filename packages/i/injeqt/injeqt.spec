@@ -58,8 +58,7 @@ injeqt is an attempt to build a powerful and reliable dependency injection
 framework on Qt's reflection based on MOC (meta-object compiler).
 
 %prep
-%setup -q
-%patch0 -p0
+%autosetup -p0
 
 %build
 %cmake \
