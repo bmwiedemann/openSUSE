@@ -1,7 +1,7 @@
 #
 # spec file for package pyradio
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019-2023 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,21 +18,21 @@
 
 
 Name:           pyradio
-Version:        0.9.2.13
+Version:        0.9.2.25
 Release:        0
 Summary:        Curses based internet radio player
 License:        MIT
 URL:            https://www.coderholic.com/pyradio
 Source0:        https://github.com/coderholic/pyradio/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# Ignore zero length notification file.
 Source99:       pyradio-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-base >= 3.8
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
-## MANUAL BEGIN
+BuildRequires:  python3-wheel
 Requires:       python3-rich
 Recommends:     vlc-noX
-## MANUAL END
 BuildArch:      noarch
 
 %description
@@ -42,22 +42,28 @@ players: MPV, MPlayer and VLC.
 
 %prep
 %autosetup
-mv LICENCE LICENSE
+chmod -x pyradio/notification
 
 %build
 export LC_ALL=en_US.utf8
-%python3_build
+%python3_pyproject_wheel
 
 %install
-%python3_install
-install -Dm0644 pyradio.1 %{buildroot}%{_mandir}/man1/pyradio.1
-%python_expand %fdupes %{buildroot}%{python3_sitelib}/
+%python3_pyproject_install
+install -Dm0644 -t %{buildroot}%{_mandir}/man1/ docs/pyradio*.1
+install -Dm0644 -t %{buildroot}%{_docdir}/%{name}/ docs/*.md
+%fdupes %{buildroot}%{python3_sitelib}
+
+#%%check
+# no tests upstream
 
 %files
-%doc Changelog radio-browser.md README.md
+%doc Changelog README.md
 %license LICENSE
 %{_bindir}/pyradio
-%{_mandir}/man1/pyradio.1%{?ext_man}
-%{python3_sitelib}/*
+%{_docdir}/%{name}
+%{_mandir}/man1/pyradio*.1%{?ext_man}
+%{python3_sitelib}/pyradio
+%{python3_sitelib}/pyradio-%{version}.dist-info
 
 %changelog

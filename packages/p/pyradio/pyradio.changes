@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Fri Mar  1 17:26:03 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.2.25
+  * droping python 2 - PyRadio will only run on python 3
+  * fixing #228
+- version 0.9.2.24 (BUG FIX)
+  * fixing mpv title parsing (once again)
+  * fixing "Genre" field wrapping on Starion Info window
+- version 0.9.2.23 (BUG FIX)
+  * fixing issue #224 - crash when "artist", "album", "year"
+    string in received data
+- version 0.9.2.22 (BUG FIX)
+  * fixing bug #222 - Appending a radio station with A in a playlist
+    leads to a crash (when number stations is less than window height)
+  * fixing a crash that would occur when pressing ENTER on the Cancel
+    button of the "rename playlist" and "new playlist" window
+- version 0.9.2.21
+  * adding --headless command line parameter and functionality
+  * adding the --address command line parameter
+  * recorded files will always be saved in the recordings folder
+    If mkvtoolnix is present, a tmp_ prefix will be used to record
+    the raw file, which will be removed after chapters integration
+  * the message to indicate failure to connect to RadioBrowser will
+    be displayed for 2 seconds (instead of requiring a key press)
+  * mpv will read the "artist" and "title" fields from station response (#217)
+  * remote control server: adding functionality for RadioBrowser
+  * remote control server: do not disable individual buttons
+  * remote control server: will restart if crashed
+  * remote control server: can now accept real IPs (config option)
+  * introducing "remote control server lock" files
+  * trying to fix "pipx not found" on MacOS again
+  * fixing config window rendering bug (#215)
+  * fixing cover insertion to mkv files
+  * fixing escape character warnings for python 3.12
+  * fixing lock refresh issues
+  * working on scheculer (not available yet)
+  * updating win mplayer link
+  * creating issues templates
+  * updating documentation
+- version 0.9.2.20
+  * Creating the docs folder and moving files there
+  * Updating pyproject.toml and setup.py for the latest
+    Installation method changes
+  * Working on scheduler (not applicable yet)
+  * Updating docs
+- version 0.9.2.19 (BUG FIX release)
+  * cover.png updated
+  * make sure cover.png is in the data folder
+  * fix "No chapters found" message when recorded file has
+    less than 3 chapter markers
+- version 0.9.2.18
+  * fixing a crash on mkvtoolnix.py
+- version 0.9.2.17
+  * Recorded MKV files will have a cover image by default
+    (when MKVToolNix is installed)
+  * Adding -mkv, -scv, -srt, -ach and -lr command line parameters
+    (applicable when MKVToolNix is installed)
+  * Rearranging and grouping options in the program's help screen
+  * Working on scheduler (not applicable yet)
+  * Updating docs
+- version 0.9.2.16
+  * install.py: will terminate if python not in PATH
+  * recorded files will have tags inserted in them if mkvmerge
+    is detected. Chapters will also be added if the station
+    provides ICY Titles
+  * opening the config folder while recording will actually open the
+    recording folder
+  * buffering can now be disabled (in 0.9.2.15, once buffering was
+    enabled, it could not be disabled until program termination)
+  * fixing a couple of race conditions (threading lock files not being
+    released) that would lead to a freeze
+  * fixing players crash detection routines
+  * fixing config players parsing
+  * on Windows, downloaded recording files in the data directory
+    will be deleted at startup, when recording is not active
+  * adding recording man page
+  * Updating docs
+- version 0.9.2.15 (BUG FIX)
+  * fixing mplayer and vlc recording
+  * mplayer buffering min changed to 250KB
+  * fixing updateRecordingStatus not exiting when asked
+  * buffer size cannot be 0
+- version 0.9.2.14
+  * adding players buffering
+  * [B] will be displayed at top left corner of the window
+    when player is buffering
+  * adding "Force transparency" config option (as per #201)
+  * redisigning players' extra parameters window
+  * removing command line parameters -ep, -ap, lp
+    and changing -ocd etc.
+  * Windows: MPV installation will check CPU flags to
+    download V3 or normal mpv release
+  * fix_pyradio_desktop_file: parameters will be placed
+    after terminal name (before -e)
+  * fixing mpv parameter which might throw a warning
+    which would break the TUI
+  * fixing mplayer volume parsing error
+  * fixing a couple of python2 crashes
+  * updating build_install_pyradio (as per #203)
+  * updating docs
+- Update pyradio-rpmlintrc
+- Install markdown docs and more manpages
+- Build PEP517 wheel
+
+-------------------------------------------------------------------
 Sun Jul 16 11:10:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.2.13:
