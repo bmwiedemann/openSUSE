@@ -114,4 +114,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>973627</requestid>
   </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>ea0848e02079525dc83072ec50a1c74b</srcmd5>
+    <version>1.0.3</version>
+    <time>1709332534</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN (forwarded request 1153551 from pgajdos)</comment>
+    <requestid>1153757</requestid>
+  </revision>
 </revisionlist>

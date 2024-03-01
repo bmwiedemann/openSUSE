@@ -71,8 +71,7 @@ the hash/signatures.
 This archive contains the header files for liboauth development.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 sed -i -e '/^Libs.private/d' -e '/^Requires.private/d' oauth.pc.in
