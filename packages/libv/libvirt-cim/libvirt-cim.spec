@@ -85,12 +85,7 @@ Authors:
 %define CIMV2_MOF %{_datadir}/%{name}/{HostedResourcePool,ElementCapabilities,HostedService,HostedDependency,RegisteredProfile,ComputerSystem,ElementConformsToProfile,HostedAccessPoint}.mof
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1
 chmod -x src/* libxkutil/* schema/* README doc/* base_schema/README*
 chmod +X src/* libxkutil/* schema/*
 

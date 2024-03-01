@@ -389,4 +389,12 @@ into SLE12, e.g. making the change in some IBS project.  Thanks!
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1001414</requestid>
   </revision>
+  <revision rev="50" vrev="16">
+    <srcmd5>2e7524d25eb936dbf049991aa8282429</srcmd5>
+    <version>0.6.3</version>
+    <time>1709332676</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153873</requestid>
+  </revision>
 </revisionlist>
