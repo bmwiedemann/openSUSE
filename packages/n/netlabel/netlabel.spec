@@ -59,8 +59,8 @@ different types of NetLabel commands supported by the kernel.
 #
 %prep
 %setup -q -n netlabel_tools-%{version}
-%patch1 -p0
-%patch2 -p1
+%patch -P 1 -p0
+%patch -P 2 -p1
 
 %build
 %configure --with-systemdsystemunitdir=%_unitdir
