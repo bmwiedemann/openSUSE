@@ -51,8 +51,7 @@ BuildArch:      noarch
 A library with SDR DSP primitives headers - Documentation
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 echo "%version" >.tarball-version
