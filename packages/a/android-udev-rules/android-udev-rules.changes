@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar  1 04:27:44 UTC 2024 - munix9@googlemail.com
+
+- Update to version 20240221
+  Features
+  * Add Oculus Quest 2 (close #308) (#309)
+  * Add Allwinner fastboot rule (#311)
+
+  Miscellaneous Tasks
+  * Quest 2 and 3 have the same IDs
+
+-------------------------------------------------------------------
 Sun Jan 14 11:16:34 UTC 2024 - munix9@googlemail.com
 
 - Update to version 20240114
