@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 14:48:17 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Jun 14 10:05:03 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add patch disable-time-max-rss-test.patch to disable time max rss

@@ -40,7 +40,7 @@ while the program was running.
 %prep
 %setup -q
 %ifarch ppc ppc64 ppc64le
-%patch1 -p1
+%patch -P 1 -p1
 %endif
 
 %build
