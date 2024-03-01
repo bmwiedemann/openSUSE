@@ -1,0 +1,297 @@
+-------------------------------------------------------------------
+Mon Feb 26 12:55:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- use shared library naming policy
+
+-------------------------------------------------------------------
+Wed Feb 21 13:05:16 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.10.2
+  * Remove no-longer-necessary setup callback cross-thread task by @bretambrose in (#341)
+  * Fix a bunch of places we forget to aws_raise_error() by @graebm in (#350)
+  * Push ping time only if the request complete is successful by @alfred2g in (#348)
+
+-------------------------------------------------------------------
+Wed Jan  3 15:11:55 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.10.1
+  * Change `port` from uint16_t to uint32_t to support VSOCK by @graebm in (#338)
+
+-------------------------------------------------------------------
+Thu Nov 30 12:34:13 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.10
+  * Add MQTT error for subscribe failure by @sfod in (#335)
+
+-------------------------------------------------------------------
+Tue Nov 21 10:11:41 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.9
+  * MQTT5 operation timeout by @bretambrose in (#333)
+  * Relax validation on user-specified topic aliasing by @bretambrose in (#334)
+- from version 0.9.8
+  * Remove callback severance on 5-to-3 adapter by @bretambrose in (#329)
+
+-------------------------------------------------------------------
+Tue Oct 17 11:00:20 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.7
+  * Restore negotiated settings copy by @xiazhvera in (#330)
+
+-------------------------------------------------------------------
+Fri Sep 22 09:18:23 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.6
+  * Added workflow for handling answerable discussions by @yasminetalby in (#318)
+  * MQTT311 compliance client behavior2 by @bretambrose in (#326)
+  * Fix: coredump, dereference null variable by @alfred2g in (#327)
+
+-------------------------------------------------------------------
+Wed Aug 30 07:39:34 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.5
+  * Explicit Private for target_link_libraries by @waahm7 in (#322)
+
+-------------------------------------------------------------------
+Tue Aug 22 09:50:37 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.4
+  * Match format specifier to integer width in some
+    logging by @bretambrose in (#266)
+  * Address theoretical possibility of a TPS-throttled
+    publish getting lost by @bretambrose in (#320)
+  * Add MQTT311 on_termination callback by @sfod in (#317)
+
+-------------------------------------------------------------------
+Tue Aug 15 10:48:08 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.3
+  * Pushoff keep alive on ack received by @xiazhvera in (#314)
+  * Remove IoT core specific topic and client ID validation
+    checks in MQTT5 by @bretambrose in (#315)
+- from version 0.9.2
+  * Fix websocket transfer callback userdata and server
+    name in tls_options by @xiazhvera in (#313)
+
+-------------------------------------------------------------------
+Tue Aug  1 02:24:32 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.1
+  * MQTT5 to MQTT3 adapter implementation by @bretambrose in (#312)
+- from version 0.9.0
+  * Run forgotten content type tests by @bretambrose in (#309)
+  * MQTT311 decoder by @bretambrose in (#311)
+
+-------------------------------------------------------------------
+Thu Jul  6 09:05:20 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.14
+  * Extra Connection Callbacks in 311 by @xiazhvera in (#300)
+  * Adapter lifecycle take2 by @bretambrose in (#296)
+
+-------------------------------------------------------------------
+Sat Jun 10 03:20:06 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.13
+  * Stub MQTT3-to-MQTT5 adapter by @bretambrose in (#281)
+  * Use UUID for socket endpoints by @TwistedTwigleg in (#283)
+  * Misc refactors involving MQTT5 needed for the MQTT3 adapter by @bretambrose in (#284)
+  * Update time to ancient by @jmklix in (#287)
+  * Move acquire/release to the connection vtable by @bretambrose in (#285)
+  * Mqtt3-to-5 Adapter Config APIs by @bretambrose in (#286)
+  * Some misc. cleanup by @bretambrose in (#292)
+  * Fix cmake config by @TingDaoK in (#294)
+  * Fix a bug when unsub from a non-subscribed parent topic by @xiazhvera in (#297)
+  * Unit Test for #297 by @xiazhvera in (#298)
+  * 311 adapter lifecycle foundations by @bretambrose in (#293)
+
+-------------------------------------------------------------------
+Tue May 16 08:20:37 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.12
+  * Vtable refactor311 by @bretambrose in (#280)
+  * Fix warnings in public headers by @waahm7 in (#282)
+
+-------------------------------------------------------------------
+Wed May  3 12:05:49 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.11
+  * Add GitHub templates and bots by @jmklix in (#272)
+  * Update builder version to fix aws-lc build on manylinux1
+    by @TingDaoK in (#273)
+  * Canary amazon linux by @TwistedTwigleg in (#275)
+  * Add a millisecond sleep to insure tests dont share
+    socket endpoints by @sbSteveK in (#276)
+  * Test endpoint UUID by @sbSteveK in (#277)
+  * Add const qualifier to topic alias options in
+    client options for mqtt5 by @sbSteveK in (#278)
+  * MQTT311 shared subscription support by @TwistedTwigleg in (#274)
+  * Backed up socket fixes by @TwistedTwigleg in (#254)
+  * Adjust the canary not to crash if it cannot poll
+    the metric alarms by @TwistedTwigleg in (#279)
+
+-------------------------------------------------------------------
+Mon Apr 24 11:11:25 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.10
+  * Missed actually setting the DNS override
+    on MQTT311 by @bretambrose in (#270)
+- from version 0.8.9
+  * Resolution override by @bretambrose in (#269)
+
+-------------------------------------------------------------------
+Thu Apr  6 07:41:31 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.8
+  * Update timeouts to be more container/emu-friendly by @bretambrose in (#264)
+  * Adds a basic check for min reconnect delay to the
+    311 reconnect test by @bretambrose in (#262)
+  * A minor validation check by @xiazhvera in (#265)
+  * General improvements to MQTT5 canary by @TwistedTwigleg in (#252)
+  * Reconnection Backoff Fix by @bretambrose in (#267)
+
+-------------------------------------------------------------------
+Fri Feb 10 13:37:26 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.7
+  * Port MQTT5 listener PR from staging to public by @bretambrose in (#234)
+  * Add on_closed callback to MQTT311 by @TwistedTwigleg in (#258)
+  * Remove upper bound checks in MQTT5 tests for now by @TwistedTwigleg in (#259)
+  * Remove next_attempt_ms by @sbSteveK in (#260)
+  * Add UTF8 validation check on user properties by @sbSteveK in (#256)
+
+-------------------------------------------------------------------
+Thu Jan 26 13:06:03 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.6
+  * MQTT311 operation statistics locks by @TwistedTwigleg in (#255)
+
+-------------------------------------------------------------------
+Tue Jan 24 11:14:09 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.5
+  * Remove temporary logging around MQTT5 decoder by @TwistedTwigleg in (#249)
+  * MQTT311 operation statistics support by @TwistedTwigleg in (#247)
+  * Fix and test MQTT5 decoder reset bug by @bretambrose in (#251)
+
+-------------------------------------------------------------------
+Thu Jan  5 11:52:24 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.4
+  * Fix macro usage by @DmitriyMusatkin in (#244)
+  * Tweak comment about websockets by @graebm in (#245)
+  * Force channel setup failures to always execute on
+    the client's event loop by @bretambrose in (#246)
+
+-------------------------------------------------------------------
+Fri Dec 23 19:14:28 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.3
+  * Adapt to minor breaking change in websocket API by @graebm in (#243)
+- from version 0.8.2
+  * More debugging for MQTT5 decoder by @TwistedTwigleg in (#241)
+  * Add codecov action by @TingDaoK in (#240)
+  * Always rejoin session option by @bretambrose in (#242)
+
+-------------------------------------------------------------------
+Fri Dec  9 07:55:33 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.1
+  * Decoder logging and several canary improvements by @TwistedTwigleg in (#232)
+  * Private API to dump full packet byte sequences to logging by @bretambrose in (#233)
+  * Do not turn on full packet logging by default by @bretambrose in (#235)
+  * Make the Canary more resistant by @TwistedTwigleg in (#236)
+  * More canary adjustments by @TwistedTwigleg in (#237)
+  * TMP: Only print packet on error by @TwistedTwigleg in (#238)
+  * Disable outbound topic aliasing by default by @bretambrose in (#239)
+
+-------------------------------------------------------------------
+Thu Dec  1 09:22:38 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.0
+  * Update CI to fix downstream build by @waahm7 in (#225)
+  * MQTT5 support by @TwistedTwigleg in (#227)
+  * Fix zip and update canary time by @TwistedTwigleg in (#228)
+  * Update canary comment to trigger CI by @TwistedTwigleg in (#229)
+  * Add developer preview notice for MQTT5 at top of all public
+    header files by @bretambrose in (#230)
+  * Sizet stats by @bretambrose in (#231)
+
+-------------------------------------------------------------------
+Fri Nov 11 13:22:18 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.13
+  * Add AppVerifier to CI by @TwistedTwigleg in (#222)
+  * Log the client id going into the connect packet by @bretambrose in (#223)
+  * Serialize mqtt by @bretambrose in (#224)
+
+-------------------------------------------------------------------
+Fri Sep  2 09:17:53 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.12
+  * Minimum stable connection time before resetting
+    reconnect timer by @sbSteveK in (#212)
+  * Load cmake target fallback by @TingDaoK in #218
+  * Infinite loop by @sbSteveK in (#219)
+  * Removed forced cleansession behavior on a user called
+    disconnect by @sbSteveK in (#220)
+- from version 0.7.11
+  * Update to latest builder by @bretambrose in (#209)
+  * Fixed endpoint not being read in arguments by @sbSteveK in (#211)
+  * No resubscribe by @bretambrose in (#215)
+  * Clean up on user disconnect by @sbSteveK in (#216)
+- Add rpmlint override for bogus shlib-policy-name-error
+  * aws-c-mqtt-rpmlintrc
+
+-------------------------------------------------------------------
+Fri Jan  7 10:36:16 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.10
+  + Remove using of try_lock
+    * Try lock is not available in Windows Server 2008. Remove it from our debug build
+- from version 0.7.9
+  + Empty payload fixes
+    * Fix a crash on Windows when the will payload was empty (precondition
+      is turned into a fatal assert on Windows CD builds still)
+    * Fix a decode error when receiving a message with an empty payload
+- from version 0.7.8
+  + Stability fix
+    * Fixes a crash due to a race condition in the mqtt connection logic
+- from version 0.7.7
+  + Allow for null on-message callbacks in subscribe
+    * Fixes a crash when the on-message callback is null for a subscription
+    * Updates the public API documentation with some missing parameters and
+      annotations as to what parameters can be null
+- from version 0.7.6
+  + Data race fixes
+    * Fixes several data races related to the outstanding requests table
+      and a request's timeout task.
+- from version 0.7.5
+  + Fix non-threadsafe hash-table accesses (take 2)
+    * fix test function (#190)
+- from version 0.7.4
+  + Fix non-threadsafe hash-table accesses
+    * Fix unsafe hash-table accesses (#189)
+    * Fact: It's not safe to mutate aws_hash_table while holding an aws_hash_element.
+    * Fact: `outstanding_requests_table` is accessed by multiple threads.
+      We always hold a lock while accessing it.
+    * Bug: There were several places where we release the lock, but continue to hold an
+      aws_hash_element we got from a find() call. Once the lock is released another thread
+      can mutate the `outstanding_requests_table`, leading to undefined behavior when the
+      aws_hash_element is accessed again.
+- from version 0.7.3
+  + Direct mqtt through http proxy
+    * Adds support for establishing direct mqtt connections through an http proxy
+- from version 0.7.2
+  + Publish payload
+    * We now keep a deep copy of the publish payload. User don't need
+      to keep the payload alive for the whole process.
+- from version 0.7.1
+  + Proxy refactor
+    * Companion release to the new proxy systems in aws-c-http v0.6.2
+
+-------------------------------------------------------------------
+Thu Dec  9 15:02:40 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 0.7.0
