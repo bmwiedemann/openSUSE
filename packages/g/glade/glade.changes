@@ -25,6 +25,7 @@ Thu Aug 25 16:09:37 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
     glgo#GNOME/glade#509, glgo#GNOME/glade#373,
     glgo#GNOME/glade#484, glgo#GNOME/glade#194,
     glgo#GNOME/glade#53, glgo#GNOME/glade#98, glgo#GNOME/glade#491.
+    (CVE-2020-36774 bsc#1220059).
 - Package docs sub-package as noarch.
 - Drop patches fixed upstream:
   + 117.patch
