@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  9 03:09:56 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.024
+   see /usr/share/doc/packages/perl-Test-Manifest/Changes
+
+  2.024 2024-01-08T15:34:49Z
+  	* refresh distro
+  	* fix tests for parallel execution (https://rt.cpan.org/Ticket/Display.html?id=92604)
+
+-------------------------------------------------------------------
 Sun Jan  9 03:09:54 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.023
