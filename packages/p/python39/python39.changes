@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb 28 19:49:12 UTC 2024 - Matej Cepl <mcepl@suse.com>
+
+- Update SPEC file to build on SLE-15-SP5 (jsc#PED-7886).
+
+-------------------------------------------------------------------
+Fri Feb 23 01:06:42 UTC 2024 - Matej Cepl <mcepl@suse.com>
+
+- (bsc#1219666, CVE-2023-6597) Add
+  CVE-2023-6597-TempDir-cleaning-symlink.patch (patch from
+  gh#python/cpython!99930) fixing symlink bug in cleanup of
+  tempfile.TemporaryDirectory.
+- Repurpose skip-failing-tests.patch to increase timeout for
+  test.test_asyncio.test_tasks.TimeoutTests.test_timeout_time,
+  which fails on slow machines in IBS (s390x).
+ 
+-------------------------------------------------------------------
 Tue Feb 20 22:14:02 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Remove double definition of /usr/bin/idle%%{version} in
@@ -22,7 +38,7 @@ Mon Dec 18 16:20:58 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 Wed Sep  6 06:38:27 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 3.9.18 (bsc#1214692):
-  - (bsc#1215454, gh-108310)Fixed an issue where instances
+  - (bsc#1215454, gh-108310) Fixed an issue where instances
     of ssl.SSLSocket were vulnerable to a bypass of the TLS
     handshake and included protections (like certificate
     verification) and treating sent unencrypted data as if it
@@ -35,6 +51,20 @@ Wed Sep  6 06:38:27 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
     LinkOutsideDestinationError.
   - gh-107565: Update multissltests and GitHub CI workflows to use
     OpenSSL 1.1.1v, 3.0.10, and 3.1.2.
+- Refresh all patches:
+  - 98437-sphinx.locale._-as-gettext-in-pyspecific.patch
+  - 99366-patch.dict-can-decorate-async.patch
+  - Revert-gh105127-left-tests.patch
+  - bpo-31046_ensurepip_honours_prefix.patch
+  - decimal.patch
+  - distutils-reproducible-compile.patch
+  - gh-78214-marshal_stabilize_FLAG_REF.patch
+  - python-3.3.0b1-localpath.patch
+  - python-3.3.0b1-test-posix_fadvise.patch
+  - python3-imp-returntype.patch
+  - subprocess-raise-timeout.patch
+  - support-expat-CVE-2022-25236-patched.patch
+  - downport-Sphinx-features.patch
 
 -------------------------------------------------------------------
 Thu Aug  3 14:53:38 UTC 2023 - Matej Cepl <mcepl@suse.com>
