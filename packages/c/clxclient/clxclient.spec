@@ -59,8 +59,7 @@ Requires:       pkgconfig(xproto)
 Development files for %{name} including headers and libraries.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 export CXXFLAGS="%{optflags}"
