@@ -171,4 +171,12 @@
     <comment>Replace transitional %usrmerged macro with regular version check (boo#1206798) (forwarded request 1055177 from lnussel)</comment>
     <requestid>1057032</requestid>
   </revision>
+  <revision rev="24" vrev="141">
+    <srcmd5>29cba0714b1f6879cb134eec30c7ed08</srcmd5>
+    <version>5.2</version>
+    <time>1709332651</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN. (forwarded request 1153797 from pgajdos)</comment>
+    <requestid>1153810</requestid>
+  </revision>
 </revisionlist>

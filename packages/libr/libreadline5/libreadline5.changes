@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  1 09:00:55 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Dec 27 13:07:05 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

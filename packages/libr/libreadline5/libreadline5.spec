@@ -70,11 +70,11 @@ for p in ../readline-%{rl_vers}-patches/*; do
     echo Patch $p
     patch -s -p0 < $p
 done
-%patch21 -p0 -b .zerotty
-%patch22 -p0 -b .wrap
-%patch23 -p0 -b .conf
-%patch30 -p0 -b .destdir
-%patch20 -p0
+%patch -P 21 -p0 -b .zerotty
+%patch -P 22 -p0 -b .wrap
+%patch -P 23 -p0 -b .conf
+%patch -P 30 -p0 -b .destdir
+%patch -P 20 -p0
 
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
