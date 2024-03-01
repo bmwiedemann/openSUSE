@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  1 10:14:09 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Sun Feb 13 12:30:06 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Build only for supported architectures
