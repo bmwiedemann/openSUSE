@@ -57,11 +57,14 @@ Group:          System/Management
 Source0:        %{base_name}-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
+BuildRequires:  NetworkManager
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(udev)
 Requires:       curl
 Requires:       udev
 Provides:       cloud-netconfig
+Provides:       cloud-netconfig-nm
+Obsoletes:      cloud-netconfig-nm
 Conflicts:      cloud-netconfig
 %if 0%{?suse_version} == 1315
 %{?systemd_requires}
@@ -71,8 +74,10 @@ Conflicts:      cloud-netconfig
 %define _scriptdir %{_libexecdir}/cloud-netconfig
 %if 0%{?suse_version} > 1550
 %define _netconfigdir %{_libexecdir}/netconfig.d
+%define _dispatcherdir /usr/lib/NetworkManager/dispatcher.d
 %else
 %define _netconfigdir %{_sysconfdir}/netconfig.d
+%define _dispatcherdir %{_sysconfdir}/NetworkManager/dispatcher.d
 %endif
 
 %description -n %{base_name}%{flavor_suffix}
@@ -94,7 +99,7 @@ make install%{flavor_suffix} \
   UDEVRULESDIR=%{_udevrulesdir} \
   UNITDIR=%{_unitdir} \
   NETCONFIGDIR=%{_netconfigdir} \
-  NMDISPATCHDIR=/usr/lib/NetworkManager/dispatcher.d
+  NMDISPATCHDIR=%{_dispatcherdir}
 
 # Disable persistent net generator from udev-persistent-ifnames as
 # it does not work for xen interfaces. This will likely produce a warning.
@@ -132,7 +137,7 @@ ln -s %{_scriptdir}/cloud-netconfig-cleanup %{buildroot}/%{_sysconfdir}/sysconfi
 %endif
 %{_udevrulesdir}/*
 %{_unitdir}/*
-/usr/lib/NetworkManager
+%{_dispatcherdir}
 %doc README.md
 %license LICENSE
 
