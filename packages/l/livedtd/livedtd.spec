@@ -42,7 +42,7 @@ Authors:
 
 %prep
 %setup0 -q -c -n %{name}
-%patch0 -p 1 -b .catalog
+%patch -P 0 -p 1 -b .catalog
 
 %install
 if [ -n $RPM_BUILD_ROOT ]; then
