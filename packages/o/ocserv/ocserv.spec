@@ -87,14 +87,10 @@ escalation due to any bug on the VPN handling (worker) process.
 A management interface allows for viewing and querying logged-in users.
 
 %prep
-gpg --import %{SOURCE100} && gpg --verify %{SOURCE1}
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-autoreconf -fiv
+%autosetup -p1
 
 %build
+autoreconf -fiv
 %configure --enable-systemd \
 	--enable-seccomp \
 	--disable-rpath \
