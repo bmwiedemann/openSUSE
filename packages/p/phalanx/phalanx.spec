@@ -36,16 +36,8 @@ Group:          Amusements/Games/Board/Chess
 %description
 A smart chess playing program which uses opening book.
 
-
-
-Authors:
---------
-    Dusan Dobes <dobes@math.muni.cz>
-
 %prep
-%setup -q -n %{srcname}-%{srcver}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n %{srcname}-%{srcver}
 
 %build
 make CFLAGS="$RPM_OPT_FLAGS" %{?_smp_mflags}
