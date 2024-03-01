@@ -240,4 +240,12 @@
     <comment>- remove bin symlink for non-suse distributions</comment>
     <requestid>1142423</requestid>
   </revision>
+  <revision rev="32" vrev="281">
+    <srcmd5>0feaa463ed7912e1101e1a401c8946fc</srcmd5>
+    <version>1.42</version>
+    <time>1709332474</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153181</requestid>
+  </revision>
 </revisionlist>

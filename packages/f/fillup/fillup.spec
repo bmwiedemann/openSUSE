@@ -47,13 +47,13 @@ its variable name.
 
 %prep
 %setup -q
-%patch0
-%patch1 -p1
-%patch2
-%patch3
-%patch4
-%patch5
-%patch6 -p1
+%patch -P 0
+%patch -P 1 -p1
+%patch -P 2
+%patch -P 3
+%patch -P 4
+%patch -P 5
+%patch -P 6 -p1
 
 %build
 make %{?_smp_mflags} compile COMPILE_OPTION=OPTIMIZE OPTISPLUS="%{optflags}"

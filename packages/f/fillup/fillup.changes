@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 08:19:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Jan 17 17:32:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - remove bin symlink for non-suse distributions
