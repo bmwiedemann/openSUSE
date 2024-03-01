@@ -36,8 +36,7 @@ remember passwords. The also contained makepasswd gives even more
 options which are more aimed at security.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 autoreconf -fiv
