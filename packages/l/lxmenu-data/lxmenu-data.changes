@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  1 11:26:18 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Mon Dec 26 19:28:24 UTC 2016 - trcs@gmx.com
 
 - new upstream version 0.1.5

@@ -47,8 +47,7 @@ This package provides files required to build freedesktop.org
 menu spec-compliant desktop menus for LXDE.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure
