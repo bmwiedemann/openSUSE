@@ -1,7 +1,7 @@
 #
 # spec file for package python-lockfile
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,8 +28,10 @@ Source:         https://files.pythonhosted.org/packages/source/l/lockfile/lockfi
 Patch0:         %{name}-empty_ident.patch
 Patch1:         convert-to-unittest.patch
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -46,17 +48,13 @@ provided, more as a demonstration of the possibilities it provides than as
 production-quality code.
 
 %prep
-%setup -q -n lockfile-%{version}
-# current thread has ident = None, which causes a TypeError
-# http://code.google.com/p/pylockfile/issues/detail?id=8
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n lockfile-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -65,6 +63,7 @@ production-quality code.
 %files %{python_files}
 %license LICENSE
 %doc README.rst AUTHORS ACKS RELEASE-NOTES ChangeLog
-%{python_sitelib}/lockfile*
+%{python_sitelib}/lockfile
+%{python_sitelib}/lockfile-%{version}.dist-info
 
 %changelog

@@ -129,4 +129,12 @@
     <comment></comment>
     <requestid>1085072</requestid>
   </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>1fdd888dc1acfb71ba1f2bb97e948789</srcmd5>
+    <version>0.12.2</version>
+    <time>1709332595</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to autosetup and pyproject macros.</comment>
+    <requestid>1153723</requestid>
+  </revision>
 </revisionlist>
