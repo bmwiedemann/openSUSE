@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  1 11:12:57 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Nov 23 13:51:48 UTC 2017 - rbrown@suse.com
 
 - Replace references to /var/adm/fillup-templates with new 

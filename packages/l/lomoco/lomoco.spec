@@ -91,10 +91,10 @@ You can configure which features should be enabled in
 
 %prep
 %setup -q
-%patch0
-%patch1
-%patch2 -p1
-%patch3 -p1
+%patch -P 0
+%patch -P 1
+%patch -P 2 -p1
+%patch -P 3 -p1
 
 %build
 autoreconf -f -i
