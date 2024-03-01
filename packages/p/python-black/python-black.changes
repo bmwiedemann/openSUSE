@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 22 13:28:34 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 24.2.0
+  * Consistently add trailing comma on typed parameters (#4164)
+  * Fixed a bug where comments where mistakenly removed along with 
+    redundant parentheses (#4218)
+  * Move the hug_parens_with_braces_and_square_brackets feature to 
+    the unstable style due to an outstanding crash and proposed 
+    formatting tweaks (#4198)
+  * Black now ignores pyproject.toml that is missing a [tool.black]
+    section when discovering project root and configuration.
+  * More changes, see upstream CHANGES.md
+
+-------------------------------------------------------------------
 Mon Jan 29 08:51:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.1.0:

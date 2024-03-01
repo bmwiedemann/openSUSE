@@ -384,4 +384,23 @@
     out and share your feedback. In the past, the preview</comment>
     <requestid>1142193</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>fdecdd9688f71360954a357f456e4b6d</srcmd5>
+    <version>24.2.0</version>
+    <time>1709332455</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1152440 from mcalabkova
+
+- Update to 24.2.0
+    * Consistently add trailing comma on typed parameters (#4164)
+    * Fixed a bug where comments where mistakenly removed along with 
+      redundant parentheses (#4218)
+    * Move the hug_parens_with_braces_and_square_brackets feature to 
+      the unstable style due to an outstanding crash and proposed 
+      formatting tweaks (#4198)
+    * Black now ignores pyproject.toml that is missing a [tool.black]
+      section when discovering project root and configuration.
+    * More changes, see upstream CHANGES.md</comment>
+    <requestid>1153125</requestid>
+  </revision>
 </revisionlist>
