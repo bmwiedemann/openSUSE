@@ -61,4 +61,12 @@
 - drop python-pycxx-7.0.3-python37.patch python-pycxx-7.0.3-setup.py.patch (upstream)</comment>
     <requestid>955482</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e77d64d324c0f72beda6b1f1024e14e7</srcmd5>
+    <version>7.1.8</version>
+    <time>1709332797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1154182</requestid>
+  </revision>
 </revisionlist>

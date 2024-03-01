@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,10 @@
 # Note PyPI 'pycxx' is a different package,
 # and this package is not 'cxx' or 'CXX' on PyPI
 %global modname pycxx
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 %define oldpython python
 Name:           python-%{modname}
-Version:        7.1.7
+Version:        7.1.8
 Release:        0
 Summary:        Python extensions in C++
 License:        BSD-3-Clause

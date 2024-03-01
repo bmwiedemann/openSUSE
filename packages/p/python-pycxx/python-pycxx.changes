@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  1 08:00:09 UTC 2024 - Torsten Gruner <simmphonie@opensuse.org>
+
+- update to 7.1.8
+  * Add support for building against python 3.12 beta
+  * _Py_PackageContext is no longer accessible.
+
+-------------------------------------------------------------------
 Wed Feb 16 20:21:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.1.7:
