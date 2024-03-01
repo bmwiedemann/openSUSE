@@ -2339,4 +2339,30 @@
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1219074</comment>
   </revision>
+  <revision rev="111" vrev="2">
+    <srcmd5>cf308d7573d9f6312a57aef54ef4d49a</srcmd5>
+    <version>9.25.22</version>
+    <time>1709332551</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix activation of luks pool in the initrd
+  kiwi called systemd-cryptsetup directly which does not take
+  the settings available in /etc/crypttab into account. This
+  commit changes the activation procedure in a way that the
+  generator created unit file systemd-cryptsetup@... is used
+  This Fixes bsc#1219009
+
+- Set default output console to gfxterm for grub
+  If no console setting is done in the image description for grub
+  the default output console is set to: gfxterm and the default
+  input console is set to: console. This Fixes bsc#1219074
+
+- Allow terminal emulation setup from the cmdline
+  Using rd.kiwi.term will export the TERM variable into the initrd
+  environment. In case the default value for the terminal emulation
+  is not appropriate rd.kiwi.term can be used to overwrite the default.
+  The environment is also passed to the systemd unit which calls
+  dialog based programs in kiwi dracut code, such that the TERM
+  setting will be effective there too. For example:</comment>
+    <requestid>1153889</requestid>
+  </revision>
 </revisionlist>
