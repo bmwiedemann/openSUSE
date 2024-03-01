@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Tie-Cycle
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,21 @@
 
 %define cpan_name Tie-Cycle
 Name:           perl-Tie-Cycle
-Version:        1.227
+Version:        1.228.0
 Release:        0
-Summary:        Cycle through a list of values via a scalar
+%define cpan_version 1.228
 License:        Artistic-2.0
+Summary:        Cycle through a list of values via a scalar
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/B/BD/BDFOY/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/B/BD/BDFOY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
 BuildRequires:  perl(Test::More) >= 1
+Provides:       perl(Tie::Cycle) = %{version}
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -50,7 +53,7 @@ after the tie, the elements of the cycle will change as well. See the
 included _test.pl_ script for an example of this effect.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
