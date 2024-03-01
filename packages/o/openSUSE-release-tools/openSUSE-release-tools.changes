@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Feb 23 12:37:59 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240223.f941f9d:
+  * Call rabbit-repoid.py for openSUSE:Slowroll
+
+-------------------------------------------------------------------
+Thu Feb 22 15:43:06 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240222.1748b20:
+  * osclib/repochecks.py: Use libsolv for checking conflicts between packages
+  * findfileconflicts: Quote version and release in YAML output
+
+-------------------------------------------------------------------
+Thu Feb 22 13:43:26 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240222.db4bd75:
+  * Introduce new openSUSE|SUSE.Legal group and move pipelines into them
+
+-------------------------------------------------------------------
+Wed Feb 21 10:27:20 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240221.84b76ec:
+  * Fix mkdir permissions argument
+  * Add IPv4 and IPv6 handling in one file
+
+-------------------------------------------------------------------
+Tue Feb 20 08:47:19 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240220.9919e02:
+  * Maintenance setup for Leap 15.6
+
+-------------------------------------------------------------------
+Thu Feb 15 10:07:18 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240215.54075b0:
+  * Remove 15.4 and add 15.6 where missing
+
+-------------------------------------------------------------------
+Thu Feb 15 10:05:30 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240215.9e5a7f9:
+  * ttm: Remove livecd size checks
+
+-------------------------------------------------------------------
 Wed Feb 07 14:44:13 UTC 2024 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20240207.602b3d2:
