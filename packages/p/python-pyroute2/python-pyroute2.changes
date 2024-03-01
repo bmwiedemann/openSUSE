@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar  1 09:54:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.12:
+  * cli: move readline import to the script
+  * nl80211: decoder improvements
+  * remote: fix dump() on RemoteIPRoute
+  * ndb: add ensure() call
+  * ethtool: ring support
+    ndb: fix sources objects counting
+  * ethtool: ring support
+  * ndb: fix FDB records index
+  * ndb: fix sources objects counting
+
+-------------------------------------------------------------------
 Thu Dec 14 21:34:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.10:

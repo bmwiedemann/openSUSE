@@ -367,4 +367,21 @@
   * nftables: sets draft</comment>
     <requestid>1133205</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>07a33f6f12346d0ac6f213c4be538d55</srcmd5>
+    <version>0.7.12</version>
+    <time>1709332655</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.12:
+  * cli: move readline import to the script
+  * nl80211: decoder improvements
+  * remote: fix dump() on RemoteIPRoute
+  * ndb: add ensure() call
+  * ethtool: ring support
+    ndb: fix sources objects counting
+  * ethtool: ring support
+  * ndb: fix FDB records index
+  * ndb: fix sources objects counting</comment>
+    <requestid>1153828</requestid>
+  </revision>
 </revisionlist>

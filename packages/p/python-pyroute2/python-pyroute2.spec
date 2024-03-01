@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyroute2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyroute2
-Version:        0.7.10
+Version:        0.7.12
 Release:        0
 Summary:        Python Netlink library
 License:        Apache-2.0 OR GPL-2.0-or-later
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 Provides:       python-pyroute2.core = %{version}
 Obsoletes:      python-pyroute2.core < %{version}
