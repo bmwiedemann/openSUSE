@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Business-ISMN
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %define cpan_name Business-ISMN
 Name:           perl-Business-ISMN
-Version:        1.203
+Version:        1.204.0
 Release:        0
+%define cpan_version 1.204
 License:        Artistic-2.0
 Summary:        Work with International Standard Music Numbers
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/B/BD/BDFOY/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/B/BR/BRIANDFOY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -32,15 +33,18 @@ BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
 BuildRequires:  perl(Test::More) >= 1
 BuildRequires:  perl(Tie::Cycle) >= 1.21
 Requires:       perl(Tie::Cycle) >= 1.21
+Provides:       perl(Business::ISMN) = %{version}
+Provides:       perl(Business::ISMN::Data) = %{version}
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
 work with International Standard Music Numbers
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
