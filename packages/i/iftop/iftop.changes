@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 13:35:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Apr 21 09:20:09 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - spec-cleaner run (move license to licensedir)
