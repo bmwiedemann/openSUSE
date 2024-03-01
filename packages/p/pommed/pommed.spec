@@ -97,11 +97,11 @@ of each item controlled by pommed.
 
 %prep
 %setup -q
-%patch1
-%patch2 -p1
-%patch3 -p1
-%patch4
-%patch5 -p1
+%patch -P 1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4
+%patch -P 5 -p1
 
 %build
 make %{?_smp_mflags}
