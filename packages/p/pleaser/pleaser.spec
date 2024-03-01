@@ -56,8 +56,8 @@ elevation.
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 %prep
-%setup -qa1 -n please-%{version}
-%patch0 -p1
+%autosetup -p1 -a1 -n please-%{version}
+
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
