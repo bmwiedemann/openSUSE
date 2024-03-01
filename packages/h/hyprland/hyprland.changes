@@ -1,4 +1,147 @@
 -------------------------------------------------------------------
+Fri Mar  1 00:16:18 UTC 2024 - Florian "sp1rit" <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.36.0:
+  + A lot of fixes and changes, enjoy! Thanks for all the
+    contributions :)
+    CPU and GPU usage should be considerably down from 0.35.*
+  + Breaking changes
+    - config:
+      * migrated to hyprlang. Some nice additions include
+        rgba(123, 123, 69, 0.5), dynamic variables updating, and
+        more.
+      * all device:XYZ sections are now device { name = XYZ ..., see
+        the wiki
+      * ## is now properly treated as an escaped #.
+    - windowrules:
+      * no*request rules have been nuked in favor of the new suppressevent rule.
+  + New features:
+    - config: Add option to resolve keybinds by sym instead of code
+      (#4851)
+    - config: add defaultName for workspace rules
+    - config: add opengl:force_introspection
+    - core: add env to disable crash reporter
+    - dispatchers: add Fullscreen without sending fullscreen to
+      application (#4720)
+    - dwindle: add swapsplit dispatcher (#4702)
+    - feat: Add css style gaps (#4723)
+    - hyprctl: add -r argument
+    - internal: add forcenofocus prop (#4672)
+    - keybinds: Add an option to pass a window argument to
+      moveoutofgroup (#4724)
+    - renderer: add more logging for fails in beginRender
+    - socket2: monitoraddedv2 IPC event for monitor description and
+      id (#4646)
+    - windowrules: add suppressevent
+  + Fixes:
+    - config: fix errors in default config
+    - config: fix layout invalidation for keyword commands (#4826)
+    - config: fix tiny typo in defaultConfig.hpp (#4693)
+    - core: Fix SEGV/ABRT core dump when exiting (#4823)
+    - core: Fix building plugins (#4783)
+    - core: Try to fix the exit hang (#4811)
+    - crashreporter: fix logging of function data (#4632)
+    - format: fix formatting
+    - hyprctl: fix dispatchBatch() treating empty curitem as last
+      request (#4681)
+    - hyprctl: fix showing invalid instances
+    - input: fix follow_focus
+    - input: fix vectorToWindowUnified with floating over fs
+    - keybinds: Fix focus not moving along when moving workspace
+      (#4660)
+    - keybinds: fix focuswindow for fullscreen (#4840)
+    - keybinds: fix keys without keysyms triggering random binds
+      (#4739)
+    - keybinds: fix movewindoworgroup onto empy workspace on next
+      monitor (#4486)
+    - keybinds: fix swapactiveworkspaces not moving focus
+    - layout: Fixed ghost window when opened while fullscreen on a
+      different workspace (#4822)
+    - monitors: fix outputmgr nullptr crash (#4738)
+    - renderer: fix invalid damage accumulation with invalid
+      buffer_age
+    - renderer: fixup damage_ring rotation
+    - renderer: minor fixes for introspection detection
+    - screencopy: fix invalid damage being used for final copy in
+      dma
+    - screencopy: fix ~dtor being in monitorRenderResources map
+    - shadow: fix missed invalid use of cfg val ptr
+    - surface: fix damage calcs with a viewport src
+    - surface: fix invalid damage tracking in damageSurface
+    - surface: minor fixes for last logicalDamage calc fix
+    - xdgpopup: fix UAF because of an invalid listener connection
+  + Other:
+    - IME: don't set modifiers on grab destroy
+    - Migrate the config to hyprlang (#4656)
+    - animationmgr: expand layer box for damage
+    - assets: update tetrahedra by honkadaloonga
+    - avar: return curve value of 1 when not animated
+    - compositor: allow source monitor to be provided to
+      getMonitorInDirection (#4837)
+    - compositor: check for pworkspace validity in setActiveMonitor
+    - config: adjust default splash col
+    - config: remove usages of nomaximizerequest from default cfg
+    - config: update default config for hyprlang migration
+    - core: nullcheck for old monitor in moveWorkspaceToMonitor
+    - crashreporter: Use ~/.cache as cache dir (#4719)
+    - dwindle: round wbox before setting
+    - events: bring back accidentally nuked preConfigReload
+    - groupbar: scale groupbar text according to monitor scale (#4640)
+    - hyprctl: ignore non-lock files for instances
+    - hyprctl: jsonify new gaps
+    - hyprctl: more safety around stoull
+    - hyprctl: reload everything on dynamic source keywords
+    - hyprctl: remove hardcoded hyprctl commands. (#4671)
+    - input: Map touch devices and tablets bound to an output (#3544)
+    - input: avoid rampant refocuses on popups
+    - input: avoid reassigns of unchanged surfaces in
+      processMouseRequest
+    - input: don't schedule frame on cursor move on hw cursors
+    - input: focus monitor on mouse down
+    - input: log cursor image requests
+    - input: partially revert #4514
+    - input: refocus on completed drags
+    - internal: removed Herobrine
+    - keybinds: focus floating on top of fs
+    - keybinds: focusWorkspaceOnCurrentMonitor: use focused monitor
+      instead (#4625)
+    - misc: remove unused var
+    - misc: you're the best for reading this :)
+    - monitor: don't damage twice (#4727)
+    - opengl: check bottom/bg layers for required introspection
+    - renderer: Update splash text properties to be configurable
+      (#4707)
+    - renderer: accept custom state requests for fake outputs
+    - renderer: don't calculate mirror damage without mirrors present
+    - renderer: don't set solitary on present notifications
+    - renderer: ignore set cursor surface if cursor should be hidden
+      (#4780)
+    - renderer: nuke lastFrameDamage and rework finalDamage
+    - renderer: take into account fading out windows in solitary recheck
+    - renderer: update cursor also when hostpot only changes
+    - rules: ignore static tile/float rules in dynamic gets
+    - screencopy/toplevelexport: sanitize pointers in ::copyFrame
+    - screencopy: attempt binding framebuffer before gathering format
+    - screencopy: avoid dangling client ptrs on client destroy
+    - screencopy: damage entire screen on a no-damage request
+    - screencopy: move monitor verif check to the proper place
+    - screencopy: send full frame damage
+    - sessionLock: send preferred fractional scale
+    - shaders: use highp for fragments
+    - socket2: move to the wayland event loop
+    - surface: ensure global pointers valid before using in
+      destructor (#4844)
+    - toplevelexport: set last damage for dmabuf copy
+    - vector: avoid min0 clamps without a max being invalid
+    - wayland: implement keyboard_shortcuts_inhibit_v1
+    - windowrules: nuke no*request
+    - xdg: manually schedule initial configures
+    - xwayland: ignore OR activate requests if surface doesn't want
+      focus
+    - xwaylandmgr: clamp size in setWindowSize
+    - xwaylandmgr: proper clamping for setWindowSize
+
+-------------------------------------------------------------------
 Mon Feb 12 10:46:15 UTC 2024 - Florian <packaging@sp1rit.anonaddy.me>
 
 - Update to version 0.35.0:
