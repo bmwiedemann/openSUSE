@@ -17,8 +17,9 @@
 
 
 %{?sle15_python_module_pythons}
+%define skip_python39 1
 Name:           python-mitmproxy
-Version:        9.0.1
+Version:        10.2.2
 Release:        0
 Summary:        An interactive, SSL/TLS-capable intercepting proxy
 License:        MIT
@@ -27,6 +28,7 @@ URL:            https://mitmproxy.org
 Source:         https://github.com/mitmproxy/mitmproxy/archive/refs/tags/%{version}.tar.gz#/mitmproxy-%{version}.tar.gz
 BuildRequires:  %{python_module Brotli >= 1.0}
 BuildRequires:  %{python_module Flask >= 1.1.1}
+BuildRequires:  %{python_module aioquic >= 0.9.4}
 BuildRequires:  %{python_module asgiref >= 3.2.10}
 BuildRequires:  %{python_module certifi >= 2019.9.11}
 BuildRequires:  %{python_module click >= 7.0}
@@ -37,10 +39,12 @@ BuildRequires:  %{python_module hyperframe >= 6.0}
 BuildRequires:  %{python_module hypothesis >= 5.8}
 BuildRequires:  %{python_module kaitaistruct >= 0.10}
 BuildRequires:  %{python_module ldap3 >= 2.8}
+BuildRequires:  %{python_module mitmproxy-rs >= 0.5.1}
 BuildRequires:  %{python_module mitmproxy-wireguard >= 0.1.6}
 BuildRequires:  %{python_module msgpack >= 1.0.0}
 BuildRequires:  %{python_module parver >= 0.1}
 BuildRequires:  %{python_module passlib >= 1.6.5}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module protobuf >= 3.14}
 BuildRequires:  %{python_module publicsuffix2 >= 2.20190812}
 BuildRequires:  %{python_module pyOpenSSL >= 22.1}
@@ -53,14 +57,16 @@ BuildRequires:  %{python_module ruamel.yaml >= 0.16}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sortedcontainers >= 2.3}
 BuildRequires:  %{python_module tornado >= 6.1}
-BuildRequires:  %{python_module typing_extensions >= 4.3 if %python-base < 3.10}
+BuildRequires:  %{python_module typing_extensions >= 4.3 if %python-base < 3.11}
 BuildRequires:  %{python_module urwid >= 2.1.1}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module wsproto >= 1.0}
 BuildRequires:  %{python_module zstandard >= 0.11}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Brotli >= 1.0
 Requires:       python-Flask >= 1.1.1
+Requires:       python-aioquic >= 0.9.4
 Requires:       python-asgiref >= 3.2.10
 Requires:       python-certifi >= 2019.9.11
 Requires:       python-click >= 7.0
@@ -70,6 +76,7 @@ Requires:       python-h2 >= 4.1
 Requires:       python-hyperframe >= 6.0
 Requires:       python-kaitaistruct >= 0.10
 Requires:       python-ldap3 >= 2.8
+Requires:       python-mitmproxy-rs >= 0.5.1
 Requires:       python-mitmproxy-wireguard >= 0.1.6
 Requires:       python-msgpack >= 1.0.0
 Requires:       python-passlib >= 1.6.5
@@ -84,11 +91,11 @@ Requires:       python-tornado >= 6.1
 Requires:       python-urwid >= 2.1.1
 Requires:       python-wsproto >= 1.0
 Requires:       python-zstandard >= 0.11
-%if 0%{?python_version_nodots} < 310
-Requires:       python-typing_extensions >= 4.3
-%endif
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%if 0%{?python_version_nodots} < 311
+Requires:       python-typing_extensions >= 4.3
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -102,12 +109,6 @@ mitmweb is a web-based interface for mitmproxy.
 
 %prep
 %autosetup -p1 -n mitmproxy-%{version}
-#remove shebang
-sed -i '1 {\@^#!/usr/bin/python@ d}' mitmproxy/contrib/urwid/raw_display.py
-sed -i '1 {\@^#!/usr/bin/env@ d}' mitmproxy/contrib/wbxml/*.py
-sed -i '1 {\@^#!/usr/bin/env@ d}' mitmproxy/utils/emoji.py
-# upstream likes to pin dependencies too aggressively
-sed -i 's/,\s*<.*"/"/g' setup.py
 rm mitmproxy/contrib/kaitaistruct/make.sh
 
 sed -i 's/--color=yes//' setup.cfg
@@ -123,10 +124,10 @@ hypothesis.settings.register_profile(
 " >> test/conftest.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/mitmdump
 %python_clone -a %{buildroot}%{_bindir}/mitmproxy
@@ -135,9 +136,7 @@ hypothesis.settings.register_profile(
 %check
 # test_refresh fails on i586... wrong timestamp type, maybe?
 # test_rollback and test_output[None-expected_out0-expected_err0] just randomly fail on i586
-# test_get_version fails to mock updated git version
-# test_wireguard uses a binary client just available for x86_64
-%pytest -k "not (test_refresh or test_rollback or test_output or test_get_version or test_wireguard)" --hypothesis-profile="obs"
+%pytest -k "not (test_refresh or test_rollback or test_output)" --hypothesis-profile="obs"
 
 %post
 %python_install_alternative mitmdump

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Feb 27 14:37:10 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 10.2.2:
+  * The onboarding_port option has been removed. The onboarding app now 
+    responds to all requests for the hostname specified in onboarding_host.
+  * connection.Client and connection.Server now accept keyword arguments 
+    only. This is a breaking change for custom addons that use these classes 
+    directly.
+  * Add experimental support for HTTP/3 and QUIC.
+  * ASGI/WSGI apps can now listen on all ports for a specific hostname.
+  * Add replay.server.add command for adding flows to server replay buffer.
+  * Remove string escaping in raw view.
+  * mitmproxy now requires Python 3.10 or above.
+  * Add support for reading and writing HAR files.
+  * UDP streams are now backed by a new implementation in mitmproxy_rs.
+  * ignore_hosts now waits for the entire HTTP headers if it suspects the 
+    connection to be HTTP.
+
+-------------------------------------------------------------------
 Mon Jan 29 21:27:19 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - switch to python311 build
