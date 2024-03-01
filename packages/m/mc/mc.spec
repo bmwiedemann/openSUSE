@@ -1,7 +1,7 @@
 #
 # spec file for package mc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mc
-Version:        4.8.30
+Version:        4.8.31
 Release:        0
 Summary:        Midnight Commander
 License:        GPL-3.0-or-later
@@ -61,7 +61,7 @@ Patch100:       xls2csv_update.patch
 BuildRequires:  audiofile-devel
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  gettext >= 0.18.1
-BuildRequires:  glib2-devel >= 2.26.0
+BuildRequires:  glib2-devel >= 2.32.0
 BuildRequires:  gpm-devel
 BuildRequires:  libssh2-devel
 BuildRequires:  libtool
@@ -95,24 +95,26 @@ isoinfo (from mkisofs) or xorriso for the iso:// extension.
 %prep
 echo "`grep %{name}-%{version}.tar.xz %{SOURCE6} | head -n1 | cut -c1-64`  %{SOURCE0}" | sha256sum -c
 %setup -q
-%patch0
-%patch61
-%patch62
-%patch63
-%patch64
-%patch69
-%patch71 -p1
-%patch12 -p1
-%patch16
-%patch20
-%patch21
-%patch22 -p1
-%patch23
-%patch32
-%patch41 -p1
-%patch42 -p1
-%patch52 -p1
-%patch100 -p1
+%patch -P 0
+%patch -P 61
+%patch -P 62
+%patch -P 63
+%patch -P 64
+%patch -P 69
+%patch -P 71 -p1
+%patch -P 12 -p1
+%patch -P 16
+%patch -P 20
+%patch -P 21
+%patch -P 22 -p1
+%patch -P 23
+%patch -P 32
+%patch -P 41 -p1
+%patch -P 42 -p1
+%patch -P 52 -p1
+%patch -P 100 -p1
+# rpmlint
+sed -i -e 's|\/usr\/bin\/env python3|\/usr\/bin\/python|g' src/vfs/extfs/helpers/uc1541
 
 %build
 %{?!make_build:%define make_build make -O %_smp_mflags V=1 VERBOSE=1}
@@ -191,6 +193,7 @@ rm -rf  %{buildroot}%{_datadir}/locale/be@tarask
 %dir %{_libexecdir}/mc
 %{_libexecdir}/mc/ext.d
 %{_libexecdir}/mc/extfs.d
+%{_libexecdir}/mc/shell
 %verify(not mode) %{_libexecdir}/mc/cons.saver
 %exclude %{_mandir}/*/man1/*
 %{_mandir}/man1/*
