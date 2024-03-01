@@ -65,9 +65,7 @@ safe_reopen() or sigprotection()) that can be used for developing
 exposed applications.
 
 %prep
-%setup -q -n libsecprog
-%patch1 -p1
-%patch2 -p0
+%autosetup -p1 -n libsecprog
 
 %build
 autoreconf --install
