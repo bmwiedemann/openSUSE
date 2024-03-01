@@ -536,4 +536,12 @@ though it did make builds reproducible, it would lose some optimizations (forwar
     <comment></comment>
     <requestid>1120193</requestid>
   </revision>
+  <revision rev="66" vrev="3">
+    <srcmd5>42e34db00d654ac349ace7dac13674fd</srcmd5>
+    <version>1.13</version>
+    <time>1709332560</time>
+    <user>dimstar_suse</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1152170 from dimstar)</comment>
+    <requestid>1152254</requestid>
+  </revision>
 </revisionlist>

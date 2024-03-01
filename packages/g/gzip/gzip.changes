@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:10:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Oct 24 08:56:10 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Fix s390x build with 'gcc -Dalignas=_Alignas' bug#66709

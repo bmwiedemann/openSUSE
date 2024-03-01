@@ -50,12 +50,12 @@ times.
 
 %prep
 %setup -q
-%patch0
-%patch2 -p1
-%patch3
-%patch6
-%patch7 -p1
-%patch8 -p1
+%patch -P 0
+%patch -P 2 -p1
+%patch -P 3
+%patch -P 6
+%patch -P 7 -p1
+%patch -P 8 -p1
 
 %build
 export CFLAGS="%{optflags} -fomit-frame-pointer \
