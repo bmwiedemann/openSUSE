@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb  6 03:07:22 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.13
+   see /usr/share/doc/packages/perl-LWP-Protocol-https/Changes
+
+  6.13      2024-02-06 01:00:50Z
+      - Fix ssl upgrade for regular host names (GH#77) (Axel Burri)
+
+  6.12      2024-01-22 17:51:31Z
+      - Enable MultiHomed for IO::Socket::SSL (GH#61) (ℕicolas ℝ.)
+      - Making it possible to use IPv6 in https call through https proxy
+        environment (in case of using CONNECT method to create a tunnel) (GH#74)
+        (Dmitriy Shamatrin)
+
+-------------------------------------------------------------------
 Fri Aug 11 16:36:32 UTC 2023 - Tina Müller <tina.mueller@suse.com>
 
 - Remove CVE-2014-3230.patch, upstream was fixed. CVE-2014-3230, Debian #746576

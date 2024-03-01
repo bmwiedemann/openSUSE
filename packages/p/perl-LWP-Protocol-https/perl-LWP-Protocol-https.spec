@@ -1,7 +1,7 @@
 #
 # spec file for package perl-LWP-Protocol-https
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %define cpan_name LWP-Protocol-https
 Name:           perl-LWP-Protocol-https
-Version:        6.110.0
+Version:        6.130.0
 Release:        0
-%define cpan_version 6.11
+%define cpan_version 6.13
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Provide https support for LWP::UserAgent
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -42,8 +42,8 @@ Requires:       perl(IO::Socket::SSL) >= 1.970
 Requires:       perl(LWP::Protocol::http)
 Requires:       perl(LWP::UserAgent) >= 6.06
 Requires:       perl(Net::HTTPS) >= 6
-Provides:       perl(LWP::Protocol::https) = 6.110.0
-Provides:       perl(LWP::Protocol::https::Socket) = 6.110.0
+Provides:       perl(LWP::Protocol::https) = %{version}
+Provides:       perl(LWP::Protocol::https::Socket) = %{version}
 %define         __perllib_provides /bin/true
 %{perl_requires}
 
