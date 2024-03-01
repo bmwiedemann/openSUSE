@@ -70,29 +70,16 @@ BuildArch:      i686
 
 # Linker selection. GCC only. Default is BFD.
 # You can try different ones if it has problems.
-# arm64 reports relocation errors with BFD.
-# obj/third_party/electron_node/deps/uv/uv/threadpool.o: in function `init_once':
-# /home/abuild/rpmbuild/BUILD/src/out/Release/../../third_party/electron_node/deps/uv/src/threadpool.c:254:(.text+0x2bc): relocation truncated to fit: R_AARCH64_CALL26 against symbol `pthread_atfork' defined in .text section in /usr/lib64/libc_nonshared.a(pthread_atfork.oS)
-# obj/third_party/electron_node/node_lib/embed_helpers.o: in function `std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > node::SPrintFImpl<char const*>(char const*, char const*&&)':
-# /home/abuild/rpmbuild/BUILD/src/out/Release/../../third_party/electron_node/src/debug_utils-inl.h:76:(.text.unlikely._ZN4node11SPrintFImplIPKcJEEENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES2_OT_DpOT0_[_ZN4node11SPrintFImplIPKcJEEENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES2_OT_DpOT0_]+0x50): relocation truncated to fit: R_AARCH64_CALL26 against symbol `node::Assert(node::AssertionInfo const&)' defined in .text section in obj/third_party/electron_node/node_lib/node_errors.o
 
-%if 0%{?suse_version}
-%ifarch aarch64
-%bcond_without gold
-%else
 %bcond_with gold
-%endif
-%else
-%bcond_with gold
-%endif
+
 
 %endif #with clang
 
 #Mold succeeds on ix86 but seems to produce corrupt binaries (no build-id)
 %bcond_with mold
 
-%ifnarch %ix86 %arm aarch64
-# OBS does not have enough powerful machines to build with LTO on aarch64.
+%ifnarch %ix86 %arm
 
 %if (0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora})
 %bcond_without lto
@@ -234,7 +221,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        28.2.4
+Version:        28.2.5
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11%{AndZlib}
@@ -932,6 +919,11 @@ export LDFLAGS="${LDFLAGS} -Wl,--as-needed -fuse-ld=mold"
 %limit_build -m 3500
 %endif
 
+%ifarch aarch64
+#These settings make it use much more memory leading to OOM during linking
+unset MALLOC_CHECK_
+unset MALLOC_PERTURB_
+%endif
 
 %if %{with lto} && %{without clang}
 %ifarch aarch64
@@ -940,7 +932,7 @@ export LDFLAGS="${LDFLAGS} -Wl,--as-needed -fuse-ld=mold"
 _link_threads=$(((%{jobs} - 6)))
 
 test "$_link_threads" -le 0 && _link_threads=1
-export LDFLAGS="$LDFLAGS -flto=$_link_threads --param lto-max-streaming-parallelism=1 -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
+export LDFLAGS="$LDFLAGS -flto=$_link_threads --param ggc-min-expand=20 --param ggc-min-heapsize=32768 --param lto-max-streaming-parallelism=1 -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
 %else
 # x64 is fine with the the default settings (the machines have 30GB+ ram)
 export LDFLAGS="$LDFLAGS -flto=auto"

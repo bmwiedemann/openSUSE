@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 29 20:47:40 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 28.2.5
+  * Fix use after free in Mojo (CVE-2024-1670 bsc#1220131)
+- aarch64: use bfd linker (bsc#1210687) and enable LTO
+
+-------------------------------------------------------------------
 Tue Feb 27 18:33:02 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Update to version 28.2.4:
