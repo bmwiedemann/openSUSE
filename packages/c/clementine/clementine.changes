@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 28 07:38:40 UTC 2024 - Dave Plater <davejplater@gmail.com>
+
+- Allow use of internal taglib until taglib2 build issue is solved
+  see https://github.com/clementine-player/Clementine/issues/7313
+
+-------------------------------------------------------------------
 Mon Jul 10 12:43:29 UTC 2023 - Dave Plater <davejplater@gmail.com>
 
 - Fix build on tumbleweed with clementine-cpp17-force.patch by

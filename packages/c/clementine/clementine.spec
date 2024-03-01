@@ -1,7 +1,7 @@
 #
 # spec file for package clementine
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,6 +19,9 @@
 %define rev bbda59a5f347a75bbecde0b1928e03942e367850
 
 %bcond_without git
+#Allow use of internal taglib until taglib2 build issue is solved
+#https://github.com/clementine-player/Clementine/issues/7313
+%bcond_with systaglib
 
 %if 0%{?suse_version} > 1500
 %bcond_without manpage
@@ -110,8 +113,10 @@ BuildRequires:  pkgconfig(libsparsehash)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(sqlite3)
+%if %{with systaglib}
 BuildRequires:  pkgconfig(taglib) >= 1.11.1
 Requires:       libtag1 >= 1.8
+%endif
 %if %{without qt5}
 Recommends:     sni-qt
 %else
@@ -152,7 +157,7 @@ Features:
 %autopatch -p1
 
 # NOTE: Build using system versions of libraries.
-rm -rvf 3rdparty/taglib
+#rm -rvf 3rdparty/taglib
 rm -rvf 3rdparty/SPMediaKeyTap
 
 %build
@@ -164,7 +169,11 @@ export CXXFLAGS="$CFLAGS"
 %cmake \
   -DBUILD_WERROR=OFF                   \
   -DUSE_SYSTEM_QTSINGLEAPPLICATION=OFF \
+%if %{with systaglib}
   -DUSE_SYSTEM_TAGLIB=ON               \
+%else
+  -DUSE_SYSTEM_TAGLIB=OFF               \
+%endif
   -DUSE_SYSTEM_PROJECTM=ON             \
   -DBUNDLE_PROJECTM_PRESETS=OFF        \
 %if %{with qt5}
