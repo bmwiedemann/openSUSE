@@ -1,7 +1,7 @@
 #
 # spec file for package nvmetcli
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,12 +30,13 @@ BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python3-pip
 BuildRequires:  python3-rpm-macros
+BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
 Requires:       python3-configshell-fb
 Requires:       python3-kmod
 Requires(post): systemd
-Requires(postun):systemd
-Requires(preun):systemd
+Requires(postun): systemd
+Requires(preun): systemd
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
