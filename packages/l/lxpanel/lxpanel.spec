@@ -83,9 +83,7 @@ Requires:       pkgconfig
 Headers and development files for lxpanel.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 # autoconf
