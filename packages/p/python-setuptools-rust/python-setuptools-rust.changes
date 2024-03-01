@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 29 09:23:45 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.9.0
+
+  * Deprecate py_limited_api option to RustExtension in favour of always using
+    "auto" to configure this from bdist_wheel. #410
+
+- Remove unnecessary BuildRequires
+
+-------------------------------------------------------------------
 Mon Jan 29 14:14:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - fix dependencies (add tomli)

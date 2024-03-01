@@ -19,7 +19,7 @@
 %global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-setuptools-rust
-Version:        1.8.1
+Version:        1.9.0
 Release:        0
 Summary:        Setuptools plugin for Rust extensions
 License:        BSD-3-Clause
@@ -28,10 +28,8 @@ URL:            https://github.com/PyO3/setuptools-rust
 Source:         https://files.pythonhosted.org/packages/source/s/setuptools-rust/setuptools-rust-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module semantic_version >= 2.8.2}
 BuildRequires:  %{python_module setuptools >= 62.4}
-BuildRequires:  %{python_module setuptools_scm >= 6.3.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  cargo
 BuildRequires:  fdupes
