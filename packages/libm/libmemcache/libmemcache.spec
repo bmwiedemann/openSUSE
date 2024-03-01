@@ -60,10 +60,7 @@ Interactive.
 This package contains the development files for libmemcache.
 
 %prep
-%setup -q
-%patch0
-%patch1
-%patch2
+%autosetup -p0
 touch NEWS README AUTHORS
 
 %build

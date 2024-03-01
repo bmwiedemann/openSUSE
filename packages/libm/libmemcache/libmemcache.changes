@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 17:19:33 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Thu Jul 30 13:44:45 UTC 2015 - mpluskal@suse.com
 
 - Use explicit dependencies for autoconf/make
