@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:46:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Wed Apr 29 08:49:21 UTC 2020 - matthias.gerstner@suse.com
 
 - add 0001-Fix-ERROR-INVALID_PORT-when-sport-iptables-rules-are.patch: fix

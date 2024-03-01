@@ -36,8 +36,7 @@ This is a simple bash script aiming to provide a basic migration path from
 SuSEfirewall2 to FirewallD.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{name}-%{name}-%{version}
 
 %build
 
