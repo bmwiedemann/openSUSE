@@ -130,4 +130,13 @@
     <comment>1</comment>
     <requestid>508643</requestid>
   </revision>
+  <revision rev="20" vrev="150">
+    <srcmd5>846cbc6e69468e8dd2cfba8660f8b1da</srcmd5>
+    <version>4.51</version>
+    <time>1709332678</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN (forwarded request 1153911 from pgajdos)</comment>
+    <requestid>1153912</requestid>
+  </revision>
 </revisionlist>

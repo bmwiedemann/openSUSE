@@ -42,12 +42,7 @@ multilingual grep functionality under the name lgrep. It also
 recognizes ANSI escape sequences for text decoration.
 
 %prep
-%setup -q -n lv451
-%patch0 -p1 -b .add-lgrep-man-page
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%autosetup -p1 -n lv451
 
 %build
 pushd src

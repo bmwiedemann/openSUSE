@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  1 11:20:35 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Thu Jul  6 00:28:07 UTC 2017 - jengelh@inai.de
 
 - Stylistically diversify description; try not to start every
