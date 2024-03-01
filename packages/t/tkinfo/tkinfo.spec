@@ -41,9 +41,7 @@ Authors:
     Axel Boldt <boldt@math.ucsb.edu>
 
 %prep
-%setup
-%patch0
-%patch1
+%autosetup -p0
 
 %build
 

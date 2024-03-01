@@ -107,4 +107,12 @@
     <comment>update to 2.11 (forwarded request 851241 from jgwang)</comment>
     <requestid>851244</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>ef1c75b997ff4ecf99eaf32658975bc9</srcmd5>
+    <version>2.11</version>
+    <time>1709332759</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1154066</requestid>
+  </revision>
 </revisionlist>
