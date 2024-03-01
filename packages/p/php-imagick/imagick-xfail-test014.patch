@@ -1,0 +1,12 @@
+diff -purN a/tests/014-setresourcelimit.phpt b/tests/014-setresourcelimit.phpt
+--- a/tests/014-setresourcelimit.phpt	2022-01-11 16:23:45.000000000 +0100
++++ b/tests/014-setresourcelimit.phpt	2024-01-21 21:21:54.685527129 +0100
+@@ -5,6 +5,8 @@ Imagick::setResourceLimit test
+ $imageMagickRequiredVersion=0x692;
+ require_once(dirname(__FILE__) . '/skipif.inc'); 
+ ?>
++--XFAIL--
++These tests are flaky as the values ImageMagick will accept are limited by the policy.xml of the system.
+ --FILE--
+ <?php
+ 

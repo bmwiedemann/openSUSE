@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 21 20:38:00 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- Expect test to fail as the values ImageMagick will accept are limited
+  by the policy.xml of the system which is more restrictive now
+  + imagick-xfail-test014.patch
+
+- Fix test failing since ImageMagick 7.1.1.24 due to changed calculation
+  of kurtosis and skewness values
+  + imagick-fix-test316.patch
+
+-------------------------------------------------------------------
 Sat Dec 10 10:32:12 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - Remove php7 build for Tumbleweed (PHP 7.4 has reached EOL)

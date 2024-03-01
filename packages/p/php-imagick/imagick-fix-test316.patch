@@ -1,0 +1,19 @@
+diff -purN a/tests/316_Imagick_getImageKurtosis.phpt b/tests/316_Imagick_getImageKurtosis.phpt
+--- a/tests/316_Imagick_getImageKurtosis.phpt	2022-01-11 16:23:47.000000000 +0100
++++ b/tests/316_Imagick_getImageKurtosis.phpt	2024-01-22 20:29:18.738097214 +0100
+@@ -14,8 +14,13 @@ function getImageKurtosis() {
+     $imagick = new \Imagick(__DIR__ . '/Biter_500.jpg');
+     $values = $imagick->getImageKurtosis();
+ 
+-    check_value($values, "kurtosis", -0.9379261035010518);
+-    check_value($values, "skewness", 0.4562517200972045);
++    if (isVersionGreaterEqual('6.9.13-2', '7.1.1-24')) {
++        check_value($values, "kurtosis", -0.7092599567492);
++        check_value($values, "skewness", 0.56839010636614);
++    } else {
++        check_value($values, "kurtosis", -0.9379261035010518);
++        check_value($values, "skewness", 0.4562517200972045);
++    }
+ }
+ 
+ getImageKurtosis() ;
