@@ -62,9 +62,7 @@ A special language (the Structured Terminal Forms Language) is used to
 describe STFL GUIs.
 
 %prep
-%setup -q -n "stfl-%{version}"
-%patch1
-%patch2
+%autosetup -p0 -n "stfl-%{version}"
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
