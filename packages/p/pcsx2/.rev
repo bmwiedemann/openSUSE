@@ -281,4 +281,27 @@
 </comment>
     <requestid>1151572</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f4d28da24aac6fc441c29672e685e164</srcmd5>
+    <version>1.7.5585~git20240229</version>
+    <time>1709332765</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.5585~git20240229:
+  * 3rdparty/rcheevos: Bump to 3d01191 and move in-tree
+  * Debugger: Add automatic refresh on 1 second interval
+  * DebugTools: Add noreturn heuristic
+  * GameDB: FIFA Street 2 Fixes
+  * GameDB: FIFA 14 Fixes
+  * GS/HW: Calculate alpha on updated areas on RT invalidation
+  * PAD: Update to latest controller database.
+  * GameDB: Various fixes
+  * CI/Flatpak: Fix dubious ownership error
+  * ci: Switch Flatpak build to flathub-infra/flatpak-github-actions (#10838)
+  * 3rdparty: Update xbyak to 7.05.1
+  * Debugger: Fixes crash on debugger open when cpu not alive
+  * DisassemblyWidget: Allow showing opcodes &amp; some key bind modification
+  * GS/HW: Preload whole target on match
+</comment>
+    <requestid>1154070</requestid>
+  </revision>
 </revisionlist>
