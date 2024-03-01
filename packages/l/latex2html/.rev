@@ -485,4 +485,13 @@ A    latex2html-share-dir.diff</comment>
 for reproducible packages even with --nocheck (forwarded request 1150775 from bmwiedemann)</comment>
     <requestid>1151123</requestid>
   </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>91378143d8c890dcfc2d58a7dfbcf743</srcmd5>
+    <version>2024</version>
+    <time>1709332489</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN (forwarded request 1153250 from pgajdos)</comment>
+    <requestid>1153251</requestid>
+  </revision>
 </revisionlist>

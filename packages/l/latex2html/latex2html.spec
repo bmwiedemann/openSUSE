@@ -66,8 +66,7 @@ Group:          Productivity/Publishing/TeX/Utilities
 This subpackage contains the documentation for the Latex2HTML converter.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 # Not autotools based configure

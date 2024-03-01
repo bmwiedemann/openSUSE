@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 14:00:54 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Mon Feb 26 09:33:39 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Remove .log files during build
