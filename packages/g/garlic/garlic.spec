@@ -1,7 +1,7 @@
 #
 # spec file for package garlic
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ Release:        0
 Summary:        Molecular Graphics Visualization Tool
 License:        LGPL-2.1-or-later
 Group:          Productivity/Scientific/Chemistry
-Url:            http://www.ccp14.ac.uk/ccp/web-mirrors/garlic/garlic/
+URL:            http://www.ccp14.ac.uk/ccp/web-mirrors/garlic/garlic/
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        %{name}-%{version}-doc.tar.bz2
 Source2:        %{name}.1.gz
@@ -68,10 +68,10 @@ This subpackage contains the full documentation to Garlic.
 %prep
 %setup -q -b 0
 %setup -q -T -D -a 1
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 # fix executable permission on text files
 cd garlic-1.6
 chmod -x README favicon.ico tolower.script garlic.gif cookbook/garlic.gif precompiled_packages/garlic.gif
