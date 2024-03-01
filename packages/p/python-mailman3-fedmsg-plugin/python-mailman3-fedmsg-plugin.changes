@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 20:24:52 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to SLE15 python module
+- Build PEP517 wheel
+
+-------------------------------------------------------------------
 Mon Dec  2 10:47:14 UTC 2019 - pgajdos@suse.com
 
 - call spec-cleaner

@@ -7,4 +7,14 @@
     <comment>SLE-7686</comment>
     <requestid>755540</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6487f1ed3c32a4baec68e7734b292f39</srcmd5>
+    <version>0.5</version>
+    <time>1709332807</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to SLE15 python module
+- Build PEP517 wheel
+</comment>
+    <requestid>1154189</requestid>
+  </revision>
 </revisionlist>
