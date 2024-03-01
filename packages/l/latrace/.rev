@@ -78,4 +78,14 @@
   generation of configure from configure.ac in Factory</comment>
     <requestid>972153</requestid>
   </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>b56c345b1853d645bfa9079ce278174c</srcmd5>
+    <version>0.5.11</version>
+    <time>1709332623</time>
+    <user>dimstar_suse</user>
+    <comment>- Go all the way to %autosetup.
+
+- Use %patch -P N instead of deprecated %patchN.</comment>
+    <requestid>1153789</requestid>
+  </revision>
 </revisionlist>

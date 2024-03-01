@@ -2,7 +2,7 @@
 #
 # spec file for package latrace
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,21 +51,13 @@ latrace is a glibc 2.4+ LD_AUDIT frontend. It allows you to trace library calls
 and get their statistics in a manner similar to the strace utility.
 
 %prep
-%setup -q
+%autosetup -p1
 cp %{SOURCE1} %{SOURCE2} .
-%patch0 -p1
-%patch1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
 
 %build
 autoconf
 %configure --libdir=%{_libdir}/latrace
-make V=1
+%make_build V=1
 
 %install
 %make_install V=1

@@ -1,6 +1,12 @@
---- src/config-flex.l	2011-07-25 13:18:18.000000000 +0200
-+++ src/config-flex.l	2017-07-25 13:13:12.171371960 +0200
-@@ -108,8 +108,8 @@
+---
+ src/config-flex.l |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: latrace-0.5.11/src/config-flex.l
+===================================================================
+--- latrace-0.5.11.orig/src/config-flex.l
++++ latrace-0.5.11/src/config-flex.l
+@@ -108,8 +108,8 @@ OPTIONS				{ BEGIN(options); return OPTI
  
  %%
  
