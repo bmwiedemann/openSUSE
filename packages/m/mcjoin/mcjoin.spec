@@ -25,9 +25,7 @@ License:        ISC
 Group:          Productivity/Networking/Diagnostic
 URL:            https://github.com/troglobit/mcjoin
 #Git-Clone:     https://github.com/troglobit/mcjoin.git
-Source:         https://github.com/troglobit/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  automake
+Source:         https://github.com/troglobit/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 
 %description
 mcjoin can be used to join IPv4 multicast groups, display
@@ -39,20 +37,26 @@ in layer-2 bridges/switches, as well as test forwarding of
 multicast in static or dynamic multicast routing setups.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-autoreconf -fiv
-%configure
+%configure \
+	--docdir=%{_docdir}/%{name} \
+	%{nil}
 %make_build
 
 %install
 %make_install
-rm -R %{buildroot}/%{_datadir}/doc
+# installed via macro
+rm %{buildroot}%{_docdir}/%{name}/LICENSE
+
+%check
+%make_build check
 
 %files
 %license LICENSE
-%doc doc/AUTHORS ChangeLog.md README.md
+%doc ChangeLog.md
+%doc %{_docdir}/%{name}
 %{_bindir}/mcjoin
 %{_mandir}/man1/mcjoin.1%{?ext_man}
 
