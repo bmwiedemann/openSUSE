@@ -69,4 +69,13 @@
 </comment>
     <requestid>963786</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>fa17c2a6c0cbea44e5b014f24ff30967</srcmd5>
+    <version>1.2.6</version>
+    <time>1709332593</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to autosetup, pyproject and pytest macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1153713</requestid>
+  </revision>
 </revisionlist>

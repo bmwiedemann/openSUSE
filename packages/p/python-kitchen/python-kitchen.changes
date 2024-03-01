@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  1 01:33:11 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup, pyproject and pytest macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Mon Mar 21 21:13:49 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Skip failing tests (gh#fedora-infra/kitchen#37).
