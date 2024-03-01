@@ -1231,4 +1231,18 @@
 </comment>
     <requestid>1134224</requestid>
   </revision>
+  <revision rev="104" vrev="4">
+    <srcmd5>91b7d4508dbbc07af8def12fae5b7a6b</srcmd5>
+    <version>7.2.6</version>
+    <time>1709332460</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1152961 from anag+factory
+
+IMPORTANT: It would be better to fix/update the test, so if you can fix this please do so.
+  I'm sending this SR because this have been holding the updates of ImageMagick and php-imagick for almost 2 months now.
+  
+  Changes: 
+  - Disable test test_ext_imgconverter.</comment>
+    <requestid>1153136</requestid>
+  </revision>
 </revisionlist>

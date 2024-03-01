@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-Sphinx
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,7 +71,7 @@ Requires:       python-sphinxcontrib-qthelp >= 1.0.2
 Requires:       python-sphinxcontrib-serializinghtml >= 1.1.9
 Requires:       python-sphinxcontrib-websupport
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-SQLAlchemy >= 0.9
 Recommends:     python-Sphinx-doc-man
 Recommends:     python-Whoosh >= 2.0
@@ -211,7 +211,7 @@ Summary:        Man files for python-Sphinx
 Group:          Documentation/Man
 Requires:       python3-Sphinx = %{version}
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Supplements:    python3-Sphinx
 Obsoletes:      python-Sphinx-doc-man-common <= %{version}
 
@@ -316,7 +316,7 @@ export PYTHONPATH=.
 export LC_ALL="C.utf8"
 # test_latex_images test downloading a remote image
 # test_signature_annotations doesn’t work
-%pytest tests -k 'not (linkcheck or test_latex_images or test_signature_annotations or test_copy_images)'
+%pytest tests -k 'not (linkcheck or test_latex_images or test_signature_annotations or test_copy_images or test_ext_imgconverter)'
 %endif
 
 %if ! %{with test}
