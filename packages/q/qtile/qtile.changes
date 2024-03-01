@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Mar  1 05:12:59 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update specfile
+  * add python3-isort for tests
+
+-------------------------------------------------------------------
+Thu Feb 29 00:37:29 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update specfile
+  * add python3-libcst for tests
+
+-------------------------------------------------------------------
+Thu Feb 29 00:30:00 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.24.0
+    !!! config breakage/changes !!!
+      - Matches no longer use "include/substring" style matching. But match the string
+      exactly. Previously on X11, if the WM_TYPE of a spawned window is e.g. dialog a
+      match with wm_type dialognoonereadschangelogs would return true. Additionally
+      a window with an empty WM_CLASS (which can happen) would match anything. If
+      you rely this style of substring matching, pass a regex to your match or use
+      a function with func=.
+        Using a list of strings inside Match with role, title, wm_class,
+        wm_instance_class, wm_type are also deprecated, use a regex. Right now we
+        replace the property with a regex if it's a list and warn with a deprecation
+        message. You can use "qtile migrate" to migrate your config to this.
+    * features
+      - Change how `tox` runs tests. See
+      https://docs.qtile.org/en/latest/manual/contributing.html#running-tests-locally
+      for more information on how to run tests locally.
+      - Add `ScreenSplit` layout which allows multiple layouts per screen. Also adds `ScreenSplit`
+        widget to display name of active split.
+      - Updated `Bluetooth` widget which allows users to manage multiple devices in a single widget
+      - Add `align` option to `Columns` layout so new windows can be added to left or right column.
+      - `.when()` have two new parameters:
+        - `func: Callable`: Enable call when the result of the callable evaluates to True
+        - `condition: bool`: a boolean value to determine whether the lazy object should be run. Unlike `func`, the
+          condition is evaluated once when the config file is first loaded.
+      - Add ability to have bar drawns over windows by adding `reserve=False` to bar's config to
+        stop the bar reserving screen space.
+      - Add ability for third-party code (widgets, layouts) to create hooks
+      - Add ability to create user-defined hooks which can be fired from external scripts
+    * bugfixes
+      - Fix two bugs in stacking transient windows in X11
+      - Checking configs containing `qtile.core.name` with `python config.py` don't fail anymore (but `qtile.core.name`
+        will be `None`)
+      - Fix an error if a wayland xwindow has unknown wm_type
+
+-------------------------------------------------------------------
 Mon Jan 29 09:38:19 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Remove unneeded constraints

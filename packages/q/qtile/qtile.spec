@@ -19,7 +19,7 @@
 %bcond_without     test
 
 Name:           qtile
-Version:        0.23.0
+Version:        0.24.0
 Release:        0
 Summary:        A pure-Python tiling window manager
 # All MIT except for: libqtile/widget/pacman.py:GPL (v3 or later)
@@ -62,7 +62,7 @@ Requires:       python3-pywayland
 Requires:       python3-pywlroots
 Requires:       python3-xcffib >= 0.10.1
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     libxcb-cursor0
 Recommends:     pipewire
 Recommends:     pipewire-pulseaudio
@@ -97,6 +97,8 @@ BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
 BuildRequires:  python3-importlib-metadata
 BuildRequires:  python3-importlib-resources
+BuildRequires:  python3-isort
+BuildRequires:  python3-libcst
 BuildRequires:  python3-mypy
 BuildRequires:  python3-pytest
 BuildRequires:  python3-pyxdg
