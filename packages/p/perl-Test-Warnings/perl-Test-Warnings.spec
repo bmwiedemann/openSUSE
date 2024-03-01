@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Warnings
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %define cpan_name Test-Warnings
 Name:           perl-Test-Warnings
-Version:        0.32.0
+Version:        0.33.0
 Release:        0
-%define cpan_version 0.032
+%define cpan_version 0.033
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Test for warnings and the lack of them
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -32,7 +32,7 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(Test::More) >= 0.94
 BuildRequires:  perl(parent)
 Requires:       perl(parent)
-Provides:       perl(Test::Warnings) = 0.32.0
+Provides:       perl(Test::Warnings) = %{version}
 %define         __perllib_provides /bin/true
 %{perl_requires}
 

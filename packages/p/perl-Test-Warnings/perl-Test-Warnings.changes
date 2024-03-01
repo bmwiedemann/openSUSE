@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 24 03:10:02 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.033
+   see /usr/share/doc/packages/perl-Test-Warnings/Changes
+
+  0.033     2024-01-23 03:31:29Z
+            - add Test2 compatibility in the test triggered by done_testing();
+            - new long-awaited feature (!!!) "allow_patterns", to either
+              temporarily or globally exempt particular warning patterns
+
+-------------------------------------------------------------------
 Sun Oct  1 03:06:35 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.032
