@@ -57,8 +57,7 @@ command-line editing, history, authentication and callbacks for a
 user-definable function tree.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 make %{?_smp_mflags} PREFIX=%{_prefix} LIBDIR=%{_libdir} CFLAGS="%{optflags}"
