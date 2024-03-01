@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  1 10:10:17 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Sun Apr 17 09:42:43 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use unibilium instead of ncurses (gh#neovim/neovim#13408)

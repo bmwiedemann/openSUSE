@@ -60,8 +60,7 @@ programs. It handles all the necessary logic to recognise special keys, UTF-8
 combining, and so on, with a simple interface.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 make %{?_smp_mflags} \
