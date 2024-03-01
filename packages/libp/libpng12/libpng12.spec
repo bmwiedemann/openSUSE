@@ -97,9 +97,7 @@ tools necessary for compiling and linking programs that don't care
 about libpng version.
 
 %prep
-%setup -n libpng-%{version}
-%patch0 
-%patch1
+%autosetup -p0 -n libpng-%{version}
 
 %build
 # PNG_SAFE_LIMITS_SUPPORTED: http://www.openwall.com/lists/oss-security/2015/01/10/1

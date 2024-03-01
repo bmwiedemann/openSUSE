@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  1 08:38:09 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Wed May  4 08:59:53 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - switched to https url
