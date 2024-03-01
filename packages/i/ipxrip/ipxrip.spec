@@ -38,11 +38,7 @@ This is an RIP/SAP daemon for Linux. With this daemon, you can turn
 your Linux machine into an IPX router.
 
 %prep
-%setup -n ipxripd
-%patch0
-%patch1
-%patch2
-%patch3
+%autosetup -p0 -n ipxripd
 
 %build
 make
