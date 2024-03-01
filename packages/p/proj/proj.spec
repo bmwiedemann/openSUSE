@@ -36,6 +36,7 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(nlohmann_json)
 BuildRequires:  pkgconfig(sqlite3) >= 3.11
+Provides:       libproj = %{version}
 
 %description
 This package offers the commandline tools for performing respective
@@ -55,6 +56,8 @@ data with a wide range of selectable projection functions.
 Summary:        Development files for PROJ
 License:        MIT
 Requires:       %{libname} = %{version}
+Provides:       libproj-devel = %{version}
+Obsoletes:      libproj-devel < %{version}
 
 %description devel
 This package contains libproj and the appropriate header files and man pages.

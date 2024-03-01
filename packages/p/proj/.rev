@@ -390,4 +390,13 @@ This package is included in Debian.
   * no changelog available</comment>
     <requestid>1153497</requestid>
   </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>685d887d9f5a8e44bcbc5d6079778dbc</srcmd5>
+    <version>9.3.1</version>
+    <time>1709332628</time>
+    <user>dimstar_suse</user>
+    <comment>- Reintroduce legacy provides/obsoletes as many packages still
+  rely on them</comment>
+    <requestid>1153805</requestid>
+  </revision>
 </revisionlist>

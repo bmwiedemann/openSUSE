@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  1 09:21:33 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Reintroduce legacy provides/obsoletes as many packages still
+  rely on them
+
+-------------------------------------------------------------------
 Thu Feb 29 13:17:48 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update grid data to release 1.16:
