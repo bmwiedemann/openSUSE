@@ -40,11 +40,7 @@ information in OwnTracks JSON to an MQTT broker in order for
 compatible software to process location data.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags}"
