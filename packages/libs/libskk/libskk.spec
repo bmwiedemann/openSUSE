@@ -86,8 +86,7 @@ to model the Japanese language, it use a backoff bigram and trigram
 This package provides C/Vala headers for the libskk library.
 
 %prep
-%setup -q -n %{name}-%{real_version}
-%patch0 -p1
+%autosetup -p1 -n %{name}-%{real_version}
 
 %build
 autoreconf -f
