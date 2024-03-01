@@ -111,9 +111,9 @@ compile plugins for the pcsc-lite package.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P 0 -p1
 cp -a %{SOURCE1} %{SOURCE2} %{SOURCE6} .
-%patch1 -p1
+%patch -P 1 -p1
 
 %build
 %sysusers_generate_pre %{SOURCE9} %{PKG_USER} %{PKG_USER}.conf
