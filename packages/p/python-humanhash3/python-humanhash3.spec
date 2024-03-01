@@ -1,7 +1,7 @@
 #
 # spec file for package python-humanhash3
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-humanhash3
 Version:        0.0.6
 Release:        0
 Summary:        Human-readable representations of digests
 License:        Unlicense
-Group:          Development/Languages/Python
 URL:            https://github.com/blag/humanhash
 Source:         https://files.pythonhosted.org/packages/source/h/humanhash3/humanhash3-%{version}.tar.gz
 Source99:       https://raw.githubusercontent.com/blag/humanhash/master/UNLICENSE
 Patch0:         convert-to-ascii.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -37,20 +37,21 @@ BuildArch:      noarch
 humanhash provides human-readable representations of digests.
 
 %prep
-%setup -q -n humanhash3-%{version}
-%patch0 -p1
+%autosetup -p1 -n humanhash3-%{version}
 cp %{SOURCE99} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.rst
 %license UNLICENSE
-%{python_sitelib}/*
+%{python_sitelib}/humanhash.py
+%pycache_only %{python_sitelib}/__pycache__/humanhash.*.py*
+%{python_sitelib}/humanhash3-%{version}.dist-info
 
 %changelog

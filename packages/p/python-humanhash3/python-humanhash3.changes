@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 23:31:04 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Tue Dec  4 12:49:00 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package
