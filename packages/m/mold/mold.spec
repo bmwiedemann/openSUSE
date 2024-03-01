@@ -1,7 +1,7 @@
 #
 # spec file for package mold
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mold
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        A Modern Linker (mold)
 License:        MIT
@@ -50,8 +50,8 @@ BuildRequires:  zlib-devel
 BuildRequires:  zstd
 PreReq:         update-alternatives
 
-%if %{suse_version} < 1550
-%define build_args -DMOLD_USE_MIMALLOC=OFF -DMOLD_USE_MIMALLOC=OFF
+%if %{suse_version} < 1600
+%define build_args -DMOLD_USE_MIMALLOC=OFF -DMOLD_USE_MIMALLOC=OFF -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name}
 %else
 %define build_args -DMOLD_USE_MIMALLOC=OFF -DMOLD_USE_MIMALLOC=OFF -DMOLD_USE_SYSTEM_TBB=ON
 %endif
@@ -108,8 +108,8 @@ fi
 %{_libdir}/mold/mold-wrapper.so
 %{_mandir}/man1/mold.1.gz
 %{_mandir}/man1/ld.mold.1.gz
-%dir /usr/share/doc/mold
-%doc /usr/share/doc/mold/LICENSE
-%doc /usr/share/doc/mold/LICENSE.third-party
+%dir %{_docdir}/mold
+%doc %{_docdir}/mold/LICENSE
+%doc %{_docdir}/mold/LICENSE.third-party
 
 %changelog

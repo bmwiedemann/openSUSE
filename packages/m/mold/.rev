@@ -712,4 +712,41 @@
     (de7d37e)</comment>
     <requestid>1129883</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>240b5ffb195223a8efda844b60004ecd</srcmd5>
+    <version>2.4.1</version>
+    <time>1709332770</time>
+    <user>dimstar_suse</user>
+    <comment>- Align path for document installation between openSUSE versions.
+
+- Update to version 2.4.1
+  * mold 2.4.0 or prior may promote weak dynamic symbols to strong ones under a rare
+    circumstance, which caused &quot;undefined symbol&quot; error at runtime. The bug has been
+    fixed. (50bdf39)
+  * Previously, if two or more VERSION clauses in a version script match to the same
+    symbol, the first one took precedence. This was incompatible with GNU ld, which
+    gives the last one the highest priority, causing a Qt library link failure. This
+    compatibility issue has been resolved. (e1e16bf)
+  * By default, we demangle symbols in error messages so that they are easier to
+    read. Previously, Rust symbols could accidentally be demangled as C++ symbols.
+    Now, mold attempts to demangle symbols as Rust ones only for object files
+    created by rustc. (ea9864b)
+  * [RISC-V] mold now relaxes a GOT-load instruction sequence into a direct address
+    materialization if the symbol address is known at link time. This relaxation
+    eliminates one memory load and slightly improves the linked program's
+    performance. (2ccaa81)
+  * [PowerPC64 ELFv2] GCC may emit references to _savegpr0_*, _restgpr0_*,
+    _savegpr1_* and _restgpr1_* symbols for the -Os command line option to optimize
+    the output for code size. These symbols are not defined by any object file and
+    expected to be synthesized by the linker. mold didn't use to synthesize these
+    symbols, and therefore object files created with -Os sometimes failed due to
+    missing symbol errors. Now, mold synthesizes these symbols. (d4ff48a)
+  * [PowerPC64] R_PPC64_DTPREL16_LO_DS relocation type has now been supported.
+    (6d8e6af)
+  * [Illumos] On Illumos OS, absolute symbols in DSOs need to be resolved at runtime
+    because the dynamic linker treats such symbols in a special manner. Previously,
+    mold directly used absolute symbol addresses at link-time and did not place them
+    into the dynamic symbol table. That optimization has been removed for</comment>
+    <requestid>1154127</requestid>
+  </revision>
 </revisionlist>
