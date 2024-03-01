@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 14:46:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sun Mar 26 18:15:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - use rundir for tmpfiles 

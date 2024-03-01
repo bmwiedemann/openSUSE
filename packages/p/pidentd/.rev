@@ -179,4 +179,12 @@
     <comment>- use rundir for tmpfiles</comment>
     <requestid>1074491</requestid>
   </revision>
+  <revision rev="25" vrev="7">
+    <srcmd5>ac6c2b4cf70fcd86a92579fdb5f996da</srcmd5>
+    <version>3.0.19</version>
+    <time>1709332744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1154018</requestid>
+  </revision>
 </revisionlist>
