@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Business-ISBN
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %define cpan_name Business-ISBN
 Name:           perl-Business-ISBN
-Version:        3.008
+Version:        3.9.0
 Release:        0
+%define cpan_version 3.009
 License:        Artistic-2.0
 Summary:        Work with International Standard Book Numbers
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/B/BD/BDFOY/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/B/BR/BRIANDFOY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -32,6 +33,10 @@ BuildRequires:  perl(Business::ISBN::Data) >= 20230322.001
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
 BuildRequires:  perl(Test::More) >= 1
 Requires:       perl(Business::ISBN::Data) >= 20230322.001
+Provides:       perl(Business::ISBN) = %{version}
+Provides:       perl(Business::ISBN10) = %{version}
+Provides:       perl(Business::ISBN13) = %{version}
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -44,7 +49,7 @@ whatever _RangeMessage.xml_ you like if you have updated data. See that
 module for details.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
