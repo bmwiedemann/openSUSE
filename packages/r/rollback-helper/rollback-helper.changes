@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 01 13:02:59 UTC 2024 - kukuk@suse.com
+
+- Update to version 1.0+git20240301.73ac53e:
+  * Report an error if all SUSEConnect calls fail
+
+-------------------------------------------------------------------
 Tue Dec 18 14:29:03 UTC 2018 - opensuse-packaging@opensuse.org
 
 - Update to version 1.0+git20181218.5394d6e:

@@ -2,7 +2,7 @@
   <service name="tar_scm" mode="disabled">
     <param name="version">1.0</param>
     <param name="versionformat">1.0+git%cd.%h</param>
-    <param name="url">git://github.com/openSUSE/rollback-helper.git</param>
+    <param name="url">https://github.com/openSUSE/rollback-helper.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
   </service>

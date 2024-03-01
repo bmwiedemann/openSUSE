@@ -17,7 +17,7 @@
 
 
 Name:           rollback-helper
-Version:        1.0+git20181218.5394d6e
+Version:        1.0+git20240301.73ac53e
 Release:        0
 Summary:        Helper Scripts for system rollback
 License:        GPL-2.0-or-later
