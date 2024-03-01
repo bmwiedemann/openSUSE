@@ -1,0 +1,45 @@
+From 2d0fca820c6258836d3caf0b87fb804ec94e48d4 Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Fri, 1 Mar 2024 18:04:16 +0100
+Subject: [PATCH] Replace SafeConfigParser with ConfigParser
+
+The rename and deprecation happened with Python 3.2 and SafeConfigParser
+was removed in Python 3.12
+
+diff --git a/lalinference/bin/lalinference_pipe.py b/lalinference/bin/lalinference_pipe.py
+index 9dab7c6471..cb35c7dbba 100644
+--- alalinference/bin/lalinference_pipe.py
++++ blalinference/bin/lalinference_pipe.py
+@@ -211,7 +211,7 @@ if len(args)!=1:
+ 
+ inifile=args[0]
+ 
+-cp=configparser.SafeConfigParser()
++cp=configparser.ConfigParser()
+ fp=open(inifile)
+ cp.optionxform = str
+ cp.readfp(fp)
+diff --git a/lalinference/bin/lalinference_review_test.py b/lalinference/bin/lalinference_review_test.py
+index a861dfd631..15dd66892f 100644
+--- alalinference/bin/lalinference_review_test.py
++++ blalinference/bin/lalinference_review_test.py
+@@ -6,7 +6,7 @@ import subprocess
+ import glob
+ import lalinference
+ 
+-from six.moves.configparser import SafeConfigParser
++from configparser import ConfigParser
+ 
+ prefix=''
+ try:
+@@ -101,7 +101,7 @@ except KeyError:
+     sys.exit()
+ 
+ def init_ini_file(file=args.ini_file):
+-    cp=SafeConfigParser()
++    cp=ConfigParser()
+     fp=open(file)
+     cp.optionxform = str
+     cp.readfp(fp)
+
+

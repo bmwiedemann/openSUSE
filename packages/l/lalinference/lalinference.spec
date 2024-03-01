@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package lalinference
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -31,9 +31,6 @@
 # octave >= 6 not supported
 %bcond_with octave
 
-# astropy not supported for python < 3.7
-%define skip_python2  1
-%define skip_python36 1
 Name:           %{pname}%{?psuffix}
 Version:        4.1.5
 Release:        0
@@ -44,6 +41,8 @@ URL:            https://wiki.ligo.org/Computing/DASWG/LALSuite
 Source:         https://software.igwn.org/sources/source/lalsuite/%{pname}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM lalinference-printf-data-type-consistency.patch badshah400@gmail.com -- Cast data passed to printf from size_t to long to make it consistent with the format "%li"; this fixes build failures on i586
 Patch0:         lalinference-printf-data-type-consistency.patch
+# PATCH-FIX-UPSTREAM 0001-Replace-SafeConfigParser-with-ConfigParser.patch sent to duncan.macleod@ligo.org by code@bnavigator.de
+Patch1:         0001-Replace-SafeConfigParser-with-ConfigParser.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.7}
 BuildRequires:  fdupes
