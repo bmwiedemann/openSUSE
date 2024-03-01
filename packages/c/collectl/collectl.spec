@@ -47,8 +47,7 @@ information. It features:
 * API for importing additional data
 
 %prep
-%setup -q -n %{name}
-%patch0 -p1
+%autosetup -p1 -n %{name}
 
 %build
 
