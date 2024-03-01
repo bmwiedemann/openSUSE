@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 28 08:08:44 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Reenable logging
+  * Add apache-arrow-pr40230-glog-0.7.patch
+  * Add apache-arrow-pr40275-glog-0.7-2.patch
+  * now requires glog devel files to be present for
+    apache-arrow-devel; ArrowConfig.cmake fails otherwise
+  * gh#apache/arrow#40181
+  * gh#apache/arrow#40230
+  * gh#apache/arrow#40275
+
+-------------------------------------------------------------------
 Fri Feb 23 17:35:45 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 15.0.1

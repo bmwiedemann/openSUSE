@@ -36,6 +36,10 @@ URL:            https://arrow.apache.org/
 Source0:        https://github.com/apache/arrow/archive/apache-arrow-%{version}.tar.gz
 Source1:        https://github.com/apache/arrow-testing/archive/%{arrow_testing_commit}.tar.gz#/arrow-testing-%{version}.tar.gz
 Source2:        https://github.com/apache/parquet-testing/archive/%{parquet_testing_commit}.tar.gz#/parquet-testing-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM apache-arrow-pr40230-glog-0.7.patch gh#apache/arrow#40230
+Patch0:         https://github.com/apache/arrow/pull/40230.patch#/apache-arrow-pr40230-glog-0.7.patch
+# PATCH-FIX-UPSTREAM apache-arrow-pr40275-glog-0.7-2.patch gh#apache/arrow#40275
+Patch1:         https://github.com/apache/arrow/pull/40275.patch#/apache-arrow-pr40275-glog-0.7-2.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
@@ -60,7 +64,7 @@ BuildRequires:  pkgconfig(libbrotlicommon) >= 1.0.7
 BuildRequires:  pkgconfig(libbrotlidec) >= 1.0.7
 BuildRequires:  pkgconfig(libbrotlienc) >= 1.0.7
 BuildRequires:  pkgconfig(libcares) >= 1.15.0
-#BuildRequires:  pkgconfig(libglog) >= 0.3.5
+BuildRequires:  pkgconfig(libglog) >= 0.3.5
 BuildRequires:  pkgconfig(liblz4) >= 1.8.3
 BuildRequires:  pkgconfig(libopenssl)
 BuildRequires:  pkgconfig(liburiparser) >= 0.9.3
@@ -249,6 +253,7 @@ This package provides utilities for working with the Parquet format.
 
 %prep
 %setup -q -n arrow-apache-arrow-%{version} -a1 -a2
+%autopatch -p1
 
 %build
 export CFLAGS="%{optflags} -ffat-lto-objects"
@@ -282,7 +287,7 @@ pushd cpp
    -DARROW_JSON:BOOL=ON \
    -DARROW_ORC:BOOL=OFF \
    -DARROW_PARQUET:BOOL=ON \
-   -DARROW_USE_GLOG:BOOL=OFF \
+   -DARROW_USE_GLOG:BOOL=ON \
    -DARROW_USE_OPENSSL:BOOL=ON \
    -DARROW_WITH_BACKTRACE:BOOL=ON \
    -DARROW_WITH_BROTLI:BOOL=ON \
