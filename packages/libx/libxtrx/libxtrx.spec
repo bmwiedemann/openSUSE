@@ -83,8 +83,7 @@ Soapy XTRX - XTRX device support for Soapy SDR.
 A Soapy module that supports XTRX devices within the Soapy API.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 # FIXME: Architecture detection in the used CMake is br0ken, use FORCE_ARCH for now
