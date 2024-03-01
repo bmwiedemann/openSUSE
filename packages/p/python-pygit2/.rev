@@ -416,4 +416,17 @@
     Instead pass `MergeFavor` for the `favor` argument, `MergeFlag`</comment>
     <requestid>1142846</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>530d918d2c90a0793eb57be4ec580b75</srcmd5>
+    <version>1.14.1</version>
+    <time>1709332666</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.14.1:
+  * Now `Object.filemode` returns `enums.FileMode` and
+    `Reference.type` returns `enums.ReferenceType`
+  * Fix tests on Fedora 40
+  * Deprecate `ReferenceType.OID`, use `ReferenceType.DIRECT`
+  * Deprecate `ReferenceType.LISTALL`, use `ReferenceType.ALL`</comment>
+    <requestid>1153847</requestid>
+  </revision>
 </revisionlist>

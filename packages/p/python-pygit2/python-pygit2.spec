@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pygit2
-Version:        1.14.0
+Version:        1.14.1
 Release:        0
 Summary:        Python bindings for libgit2
 License:        GPL-2.0-only

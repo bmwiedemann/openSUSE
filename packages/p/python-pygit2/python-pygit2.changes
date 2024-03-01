@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar  1 10:14:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.1:
+  * Now `Object.filemode` returns `enums.FileMode` and
+    `Reference.type` returns `enums.ReferenceType`
+  * Fix tests on Fedora 40
+  * Deprecate `ReferenceType.OID`, use `ReferenceType.DIRECT`
+  * Deprecate `ReferenceType.LISTALL`, use `ReferenceType.ALL`
+
+-------------------------------------------------------------------
 Tue Jan 30 18:11:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.14.0:
