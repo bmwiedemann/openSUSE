@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 09:46:12 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- drop unnecessary buildrequire python-py
+
+-------------------------------------------------------------------
 Fri Oct  6 16:25:24 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Upgrade to 1.16.0:
