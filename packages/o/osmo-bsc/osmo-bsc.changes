@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:50:48 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Nov 19 09:39:22 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to new upstream release 1.8.0
