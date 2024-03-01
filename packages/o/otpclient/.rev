@@ -378,4 +378,20 @@
 </comment>
     <requestid>1146089</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>8b8836febc596a1383f787f64afc0ffc</srcmd5>
+    <version>3.5.0</version>
+    <time>1709332769</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.5.0:
+  * NEW: add support for importing and exporting plain/encrypted 2FAS backups (#322)
+  * NEW: add support for importing and exporting plain/encrypted AuthenticatorPro backups (#322)
+  * CHANGE: show warning when exporting a plain backup
+  * CHANGE: remove support for older Glib and GCrypt
+  * FIX: add 2fa keyword to the desktop file (#349)
+  * FIX: remove custom keywords from metadata file (#348)
+  * FIX: returning to a dialog won't crash the widget
+</comment>
+    <requestid>1154079</requestid>
+  </revision>
 </revisionlist>

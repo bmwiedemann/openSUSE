@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar  1 14:51:17 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.5.0:
+  * NEW: add support for importing and exporting plain/encrypted 2FAS backups (#322)
+  * NEW: add support for importing and exporting plain/encrypted AuthenticatorPro backups (#322)
+  * CHANGE: show warning when exporting a plain backup
+  * CHANGE: remove support for older Glib and GCrypt
+  * FIX: add 2fa keyword to the desktop file (#349)
+  * FIX: remove custom keywords from metadata file (#348)
+  * FIX: returning to a dialog won't crash the widget
+
+-------------------------------------------------------------------
 Mon Feb 12 07:53:22 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.4.1:
