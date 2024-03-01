@@ -110,8 +110,7 @@ nice for monitoring applications. Both IPv4 and IPv6 are supported
 transparently.
 
 %prep
-%setup -q
-%patch1
+%autosetup -p0
 
 sed -i 's/-Werror//g' src/Makefile*
 # Do not use versioned automake binary for backward compatibility
