@@ -73,4 +73,12 @@
     <comment>add nfswatch-4.99.11-sysmacros.patch to build with current glibc (forwarded request 678404 from seife)</comment>
     <requestid>678405</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>0b6f6b83f6d14886d29e076aed2794d5</srcmd5>
+    <version>4.99.11</version>
+    <time>1709332705</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153948</requestid>
+  </revision>
 </revisionlist>

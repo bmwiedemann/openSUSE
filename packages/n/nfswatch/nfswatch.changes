@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 14:09:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sat Feb 23 11:01:02 UTC 2019 - seife+obs@b1-systems.com
 
 - add nfswatch-4.99.11-sysmacros.patch to build with current glibc
