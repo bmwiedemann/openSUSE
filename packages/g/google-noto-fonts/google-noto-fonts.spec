@@ -17,7 +17,7 @@
 
 
 %define hyear     2024
-%define hmonth    01
+%define hmonth    03
 %define hday      01
 
 %define src_name  NotoFonts
@@ -31,14 +31,12 @@ Summary:        All Noto Fonts except CJK and Emoji
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://notofonts.github.io/
-# https://github.com/notofonts/notofonts.github.io/archive/refs/tags/noto-monthly-release-24.1.1.tar.gz
-Source0:        notofonts.github.io-noto-monthly-release-24.1.1.tar.gz
+# https://github.com/notofonts/notofonts.github.io/archive/refs/tags/noto-monthly-release-24.3.1.tar.gz
+Source0:        notofonts.github.io-noto-monthly-release-24.3.1.tar.gz
 Source1:        generate-specfile.sh
 Source2:        README.FAQ
 Source3:        README.maintain
 BuildRequires:  fontpackages-devel
-BuildRequires:  fonttools
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 Obsoletes:      noto-fonts < %{version}
 Provides:       noto-fonts = %{version}
@@ -3162,19 +3160,18 @@ heights and stroke thicknesses) across languages. This package contains
 TraditionalNushu font, hinted.
 
 %prep
-tar -xzf %{SOURCE0} -C .
+%autosetup -c
 
-cp notofonts.github.io-noto-monthly-release-24.1.1/fonts/LICENSE .
+cp notofonts.github.io-noto-monthly-release-24.3.1/fonts/LICENSE .
 
 %build
 
 %install
 
-rm -r notofonts.github.io-noto-monthly-release-24.1.1/fonts/Noto*Test
-rm -r notofonts.github.io-noto-monthly-release-24.1.1/fonts/NotoLoopedThai
-rm -r notofonts.github.io-noto-monthly-release-24.1.1/fonts/NotoSansPhagsPa/hinted/ttf/NotoSansPhags-Pa-Regular.ttf
+rm -r notofonts.github.io-noto-monthly-release-24.3.1/fonts/Noto*Test
+rm -r notofonts.github.io-noto-monthly-release-24.3.1/fonts/NotoSansPhagsPa/hinted/ttf/NotoSansPhags-Pa-Regular.ttf
 
-install -Dm 644 -t %{buildroot}%{_ttfontsdir} notofonts.github.io-noto-monthly-release-24.1.1/fonts/*/hinted/ttf/*
+install -Dm 644 -t %{buildroot}%{_ttfontsdir} notofonts.github.io-noto-monthly-release-24.3.1/fonts/*/hinted/ttf/*
 
 %reconfigure_fonts_scriptlets -n google-noto-fangsongkssrotated-fonts
 
@@ -3573,1202 +3570,1003 @@ install -Dm 644 -t %{buildroot}%{_ttfontsdir} notofonts.github.io-noto-monthly-r
 %reconfigure_fonts_scriptlets -n google-noto-traditionalnushu-fonts
 
 %files
-%defattr(0644,root,root,755)
 
 %files -n google-noto-fangsongkssrotated-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoFangsongKSSRotated-*.?tf
 
 %files -n google-noto-fangsongkssvertical-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoFangsongKSSVertical-*.?tf
 
 %files -n google-noto-kufiarabic-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoKufiArabic-*.?tf
 
 %files -n google-noto-music-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoMusic-*.?tf
 
 %files -n google-noto-naskharabic-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoNaskhArabic-*.?tf
 %{_ttfontsdir}/NotoNaskhArabicUI-*.?tf
 
 %files -n google-noto-nastaliqurdu-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoNastaliqUrdu-*.?tf
 
 %files -n google-noto-rashihebrew-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoRashiHebrew-*.?tf
 
 %files -n google-noto-sans-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSans-*.?tf
 
 %files -n google-noto-sans-adlam-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansAdlam-*.?tf
 
 %files -n google-noto-sans-adlamunjoined-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansAdlamUnjoined-*.?tf
 
 %files -n google-noto-sans-anatolianhieroglyphs-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansAnatolianHieroglyphs-*.?tf
 
 %files -n google-noto-sans-arabic-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansArabic-*.?tf
 
 %files -n google-noto-sans-armenian-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansArmenian-*.?tf
 
 %files -n google-noto-sans-avestan-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansAvestan-*.?tf
 
 %files -n google-noto-sans-balinese-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansBalinese-*.?tf
 
 %files -n google-noto-sans-bamum-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansBamum-*.?tf
 
 %files -n google-noto-sans-bassavah-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansBassaVah-*.?tf
 
 %files -n google-noto-sans-batak-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansBatak-*.?tf
 
 %files -n google-noto-sans-bengali-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansBengali-*.?tf
 %{_ttfontsdir}/NotoSansBengaliUI-*.?tf
 
 %files -n google-noto-sans-bhaiksuki-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansBhaiksuki-*.?tf
 
 %files -n google-noto-sans-brahmi-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansBrahmi-*.?tf
 
 %files -n google-noto-sans-buginese-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansBuginese-*.?tf
 
 %files -n google-noto-sans-buhid-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansBuhid-*.?tf
 
 %files -n google-noto-sans-canadianaboriginal-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansCanadianAboriginal-*.?tf
 
 %files -n google-noto-sans-carian-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansCarian-*.?tf
 
 %files -n google-noto-sans-caucasianalbanian-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansCaucasianAlbanian-*.?tf
 
 %files -n google-noto-sans-chakma-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansChakma-*.?tf
 
 %files -n google-noto-sans-cham-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansCham-*.?tf
 
 %files -n google-noto-sans-cherokee-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansCherokee-*.?tf
 
 %files -n google-noto-sans-chorasmian-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansChorasmian-*.?tf
 
 %files -n google-noto-sans-coptic-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansCoptic-*.?tf
 
 %files -n google-noto-sans-cuneiform-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansCuneiform-*.?tf
 
 %files -n google-noto-sans-cypriot-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansCypriot-*.?tf
 
 %files -n google-noto-sans-cyprominoan-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansCyproMinoan-*.?tf
 
 %files -n google-noto-sans-deseret-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansDeseret-*.?tf
 
 %files -n google-noto-sans-devanagari-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansDevanagari-*.?tf
 %{_ttfontsdir}/NotoSansDevanagariUI-*.?tf
 
 %files -n google-noto-sans-duployan-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansDuployan-*.?tf
 
 %files -n google-noto-sans-egyptianhieroglyphs-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansEgyptianHieroglyphs-*.?tf
 
 %files -n google-noto-sans-elbasan-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansElbasan-*.?tf
 
 %files -n google-noto-sans-elymaic-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansElymaic-*.?tf
 
 %files -n google-noto-sans-ethiopic-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansEthiopic-*.?tf
 
 %files -n google-noto-sans-georgian-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansGeorgian-*.?tf
 
 %files -n google-noto-sans-glagolitic-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansGlagolitic-*.?tf
 
 %files -n google-noto-sans-gothic-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansGothic-*.?tf
 
 %files -n google-noto-sans-grantha-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansGrantha-*.?tf
 
 %files -n google-noto-sans-gujarati-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansGujarati-*.?tf
 %{_ttfontsdir}/NotoSansGujaratiUI-*.?tf
 
 %files -n google-noto-sans-gunjalagondi-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansGunjalaGondi-*.?tf
 
 %files -n google-noto-sans-gurmukhi-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansGurmukhi-*.?tf
 %{_ttfontsdir}/NotoSansGurmukhiUI-*.?tf
 
 %files -n google-noto-sans-hanifirohingya-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansHanifiRohingya-*.?tf
 
 %files -n google-noto-sans-hanunoo-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansHanunoo-*.?tf
 
 %files -n google-noto-sans-hatran-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansHatran-*.?tf
 
 %files -n google-noto-sans-hebrew-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansHebrew-*.?tf
 
 %files -n google-noto-sans-imperialaramaic-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansImperialAramaic-*.?tf
 
 %files -n google-noto-sans-indicsiyaqnumbers-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansIndicSiyaqNumbers-*.?tf
 
 %files -n google-noto-sans-inscriptionalpahlavi-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansInscriptionalPahlavi-*.?tf
 
 %files -n google-noto-sans-inscriptionalparthian-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansInscriptionalParthian-*.?tf
 
 %files -n google-noto-sans-javanese-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansJavanese-*.?tf
 
 %files -n google-noto-sans-kaithi-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansKaithi-*.?tf
 
 %files -n google-noto-sans-kannada-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansKannada-*.?tf
 %{_ttfontsdir}/NotoSansKannadaUI-*.?tf
 
 %files -n google-noto-sans-kawi-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansKawi-*.?tf
 
 %files -n google-noto-sans-kayahli-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansKayahLi-*.?tf
 
 %files -n google-noto-sans-kharoshthi-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansKharoshthi-*.?tf
 
 %files -n google-noto-sans-khmer-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansKhmer-*.?tf
 
 %files -n google-noto-sans-khojki-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansKhojki-*.?tf
 
 %files -n google-noto-sans-khudawadi-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansKhudawadi-*.?tf
 
 %files -n google-noto-sans-lao-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansLao-*.?tf
 
 %files -n google-noto-sans-laolooped-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansLaoLooped-*.?tf
 
 %files -n google-noto-sans-lepcha-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansLepcha-*.?tf
 
 %files -n google-noto-sans-limbu-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansLimbu-*.?tf
 
 %files -n google-noto-sans-lineara-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansLinearA-*.?tf
 
 %files -n google-noto-sans-linearb-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansLinearB-*.?tf
 
 %files -n google-noto-sans-lisu-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansLisu-*.?tf
 
 %files -n google-noto-sans-lycian-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansLycian-*.?tf
 
 %files -n google-noto-sans-lydian-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansLydian-*.?tf
 
 %files -n google-noto-sans-mahajani-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansMahajani-*.?tf
 
 %files -n google-noto-sans-malayalam-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansMalayalam-*.?tf
 %{_ttfontsdir}/NotoSansMalayalamUI-*.?tf
 
 %files -n google-noto-sans-mandaic-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansMandaic-*.?tf
 
 %files -n google-noto-sans-manichaean-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansManichaean-*.?tf
 
 %files -n google-noto-sans-marchen-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansMarchen-*.?tf
 
 %files -n google-noto-sans-masaramgondi-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansMasaramGondi-*.?tf
 
 %files -n google-noto-sans-math-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansMath-*.?tf
 
 %files -n google-noto-sans-mayannumerals-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansMayanNumerals-*.?tf
 
 %files -n google-noto-sans-medefaidrin-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansMedefaidrin-*.?tf
 
 %files -n google-noto-sans-meeteimayek-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansMeeteiMayek-*.?tf
 
 %files -n google-noto-sans-mendekikakui-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansMendeKikakui-*.?tf
 
 %files -n google-noto-sans-meroitic-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansMeroitic-*.?tf
 
 %files -n google-noto-sans-miao-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansMiao-*.?tf
 
 %files -n google-noto-sans-modi-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansModi-*.?tf
 
 %files -n google-noto-sans-mongolian-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansMongolian-*.?tf
 
 %files -n google-noto-sans-mono-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansMono-*.?tf
 
 %files -n google-noto-sans-mro-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansMro-*.?tf
 
 %files -n google-noto-sans-multani-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansMultani-*.?tf
 
 %files -n google-noto-sans-myanmar-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansMyanmar-*.?tf
 
 %files -n google-noto-sans-nabataean-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansNabataean-*.?tf
 
 %files -n google-noto-sans-nagmundari-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansNagMundari-*.?tf
 
 %files -n google-noto-sans-nandinagari-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansNandinagari-*.?tf
 
 %files -n google-noto-sans-newa-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansNewa-*.?tf
 
 %files -n google-noto-sans-newtailue-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansNewTaiLue-*.?tf
 
 %files -n google-noto-sans-nko-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansNKo-*.?tf
 
 %files -n google-noto-sans-nkounjoined-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansNKoUnjoined-*.?tf
 
 %files -n google-noto-sans-nushu-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansNushu-*.?tf
 
 %files -n google-noto-sans-ogham-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansOgham-*.?tf
 
 %files -n google-noto-sans-olchiki-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansOlChiki-*.?tf
 
 %files -n google-noto-sans-oldhungarian-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansOldHungarian-*.?tf
 
 %files -n google-noto-sans-olditalic-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansOldItalic-*.?tf
 
 %files -n google-noto-sans-oldnortharabian-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansOldNorthArabian-*.?tf
 
 %files -n google-noto-sans-oldpermic-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansOldPermic-*.?tf
 
 %files -n google-noto-sans-oldpersian-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansOldPersian-*.?tf
 
 %files -n google-noto-sans-oldsogdian-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansOldSogdian-*.?tf
 
 %files -n google-noto-sans-oldsoutharabian-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansOldSouthArabian-*.?tf
 
 %files -n google-noto-sans-oldturkic-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansOldTurkic-*.?tf
 
 %files -n google-noto-sans-oriya-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansOriya-*.?tf
 
 %files -n google-noto-sans-osage-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansOsage-*.?tf
 
 %files -n google-noto-sans-osmanya-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansOsmanya-*.?tf
 
 %files -n google-noto-sans-pahawhhmong-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansPahawhHmong-*.?tf
 
 %files -n google-noto-sans-palmyrene-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansPalmyrene-*.?tf
 
 %files -n google-noto-sans-paucinhau-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansPauCinHau-*.?tf
 
 %files -n google-noto-sans-phagspa-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansPhagsPa-*.?tf
 
 %files -n google-noto-sans-phoenician-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansPhoenician-*.?tf
 
 %files -n google-noto-sans-psalterpahlavi-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansPsalterPahlavi-*.?tf
 
 %files -n google-noto-sans-rejang-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansRejang-*.?tf
 
 %files -n google-noto-sans-runic-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansRunic-*.?tf
 
 %files -n google-noto-sans-samaritan-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansSamaritan-*.?tf
 
 %files -n google-noto-sans-saurashtra-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansSaurashtra-*.?tf
 
 %files -n google-noto-sans-sharada-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansSharada-*.?tf
 
 %files -n google-noto-sans-shavian-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansShavian-*.?tf
 
 %files -n google-noto-sans-siddham-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansSiddham-*.?tf
 
 %files -n google-noto-sans-signwriting-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansSignWriting-*.?tf
 
 %files -n google-noto-sans-sinhala-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansSinhala-*.?tf
 %{_ttfontsdir}/NotoSansSinhalaUI-*.?tf
 
 %files -n google-noto-sans-sogdian-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansSogdian-*.?tf
 
 %files -n google-noto-sans-sorasompeng-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansSoraSompeng-*.?tf
 
 %files -n google-noto-sans-soyombo-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansSoyombo-*.?tf
 
 %files -n google-noto-sans-sundanese-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansSundanese-*.?tf
 
 %files -n google-noto-sans-sylotinagri-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansSylotiNagri-*.?tf
 
 %files -n google-noto-sans-symbols-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansSymbols-*.?tf
 
 %files -n google-noto-sans-symbols2-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansSymbols2-*.?tf
 
 %files -n google-noto-sans-syriac-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansSyriac-*.?tf
 
 %files -n google-noto-sans-syriaceastern-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansSyriacEastern-*.?tf
 
 %files -n google-noto-sans-syriacwestern-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansSyriacWestern-*.?tf
 
 %files -n google-noto-sans-tagalog-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansTagalog-*.?tf
 
 %files -n google-noto-sans-tagbanwa-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansTagbanwa-*.?tf
 
 %files -n google-noto-sans-taile-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansTaiLe-*.?tf
 
 %files -n google-noto-sans-taitham-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansTaiTham-*.?tf
 
 %files -n google-noto-sans-taiviet-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansTaiViet-*.?tf
 
 %files -n google-noto-sans-takri-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansTakri-*.?tf
 
 %files -n google-noto-sans-tamil-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansTamil-*.?tf
 %{_ttfontsdir}/NotoSansTamilUI-*.?tf
 
 %files -n google-noto-sans-tamilsupplement-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansTamilSupplement-*.?tf
 
 %files -n google-noto-sans-tangsa-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansTangsa-*.?tf
 
 %files -n google-noto-sans-telugu-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansTelugu-*.?tf
 %{_ttfontsdir}/NotoSansTeluguUI-*.?tf
 
 %files -n google-noto-sans-thaana-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansThaana-*.?tf
 
 %files -n google-noto-sans-thai-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansThai-*.?tf
 
 %files -n google-noto-sans-thailooped-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansThaiLooped-*.?tf
 
 %files -n google-noto-sans-tifinagh-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansTifinagh*.?tf
 
 %files -n google-noto-sans-tirhuta-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansTirhuta-*.?tf
 
 %files -n google-noto-sans-ugaritic-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansUgaritic-*.?tf
 
 %files -n google-noto-sans-vai-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansVai-*.?tf
 
 %files -n google-noto-sans-vithkuqi-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansVithkuqi-*.?tf
 
 %files -n google-noto-sans-wancho-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansWancho-*.?tf
 
 %files -n google-noto-sans-warangciti-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansWarangCiti-*.?tf
 
 %files -n google-noto-sans-yi-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansYi-*.?tf
 
 %files -n google-noto-sans-zanabazarsquare-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansZanabazarSquare-*.?tf
 
 %files -n google-noto-serif-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerif-*.?tf
 
 %files -n google-noto-serif-ahom-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifAhom-*.?tf
 
 %files -n google-noto-serif-armenian-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifArmenian-*.?tf
 
 %files -n google-noto-serif-balinese-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifBalinese-*.?tf
 
 %files -n google-noto-serif-bengali-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifBengali-*.?tf
 
 %files -n google-noto-serif-devanagari-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifDevanagari-*.?tf
 
 %files -n google-noto-serif-display-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifDisplay-*.?tf
 
 %files -n google-noto-serif-divesakuru-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifDivesAkuru-*.?tf
 
 %files -n google-noto-serif-dogra-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifDogra-*.?tf
 
 %files -n google-noto-serif-ethiopic-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifEthiopic-*.?tf
 
 %files -n google-noto-serif-georgian-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifGeorgian-*.?tf
 
 %files -n google-noto-serif-grantha-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifGrantha-*.?tf
 
 %files -n google-noto-serif-gujarati-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifGujarati-*.?tf
 
 %files -n google-noto-serif-gurmukhi-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifGurmukhi-*.?tf
 
 %files -n google-noto-serif-hebrew-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifHebrew-*.?tf
 
 %files -n google-noto-serif-kannada-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifKannada-*.?tf
 
 %files -n google-noto-serif-khitansmallscript-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifKhitanSmallScript-*.?tf
 
 %files -n google-noto-serif-khmer-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifKhmer-*.?tf
 
 %files -n google-noto-serif-khojki-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifKhojki-*.?tf
 
 %files -n google-noto-serif-lao-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifLao-*.?tf
 
 %files -n google-noto-serif-makasar-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifMakasar-*.?tf
 
 %files -n google-noto-serif-malayalam-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifMalayalam-*.?tf
 
 %files -n google-noto-serif-myanmar-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifMyanmar-*.?tf
 
 %files -n google-noto-serif-nphmong-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifNPHmong-*.?tf
 
 %files -n google-noto-serif-olduyghur-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifOldUyghur-*.?tf
 
 %files -n google-noto-serif-oriya-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifOriya-*.?tf
 
 %files -n google-noto-serif-ottomansiyaq-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifOttomanSiyaq-*.?tf
 
 %files -n google-noto-serif-sinhala-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifSinhala-*.?tf
 
 %files -n google-noto-serif-tamil-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifTamil-*.?tf
 
 %files -n google-noto-serif-tangut-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifTangut-*.?tf
 
 %files -n google-noto-serif-telugu-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifTelugu-*.?tf
 
 %files -n google-noto-serif-thai-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifThai-*.?tf
 
 %files -n google-noto-serif-tibetan-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifTibetan-*.?tf
 
 %files -n google-noto-serif-toto-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifToto-*.?tf
 
 %files -n google-noto-serif-vithkuqi-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifVithkuqi-*.?tf
 
 %files -n google-noto-serif-yezidi-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifYezidi-*.?tf
 
 %files -n google-noto-traditionalnushu-fonts
-%defattr(0644,root,root,755)
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoTraditionalNushu-*.?tf

@@ -17,7 +17,7 @@
 set -euo pipefail
 
 pkg_name="google-noto-fonts"
-font_dir="notofonts.github.io-noto-monthly-release-24.1.1"
+font_dir="notofonts.github.io-noto-monthly-release-24.3.1"
 
 # Used to extract the tarball to generate the specfile.
 # You can comment this out while testing out changes to the script,
@@ -28,7 +28,7 @@ cp -f $pkg_name.spec.in $pkg_name.spec
 ls $font_dir/fonts | sed -e 's:Noto::' -e 's:-.*\..tf::' -e 's:\..tf::' -e 's:\.ttc::' | sort -f | uniq | while read -r font; do
 
   # DO NOT create font packages out of these folders.
-  if [ "$font" == "LICENSE" ] || [ "$font" == "SansTest" ] || [ "$font" == "SerifTest" ] || [ "$font" == "NaskhArabicUI" ] || [ "$font" = "LoopedThai" ]; then
+  if [ "$font" == "LICENSE" ] || [ "$font" == "SansTest" ] || [ "$font" == "SerifTest" ] || [ "$font" == "NaskhArabicUI" ]; then
     continue
   fi
 
@@ -113,7 +113,6 @@ ls $font_dir/fonts | sed -e 's:Noto::' -e 's:-.*\..tf::' -e 's:\..tf::' -e 's:\.
   sed -i "s/@SUBPACKAGE_HEADERS@/\n@SUBPACKAGE_HEADERS@/" $pkg_name.spec
   sed -i "s/@SUBPACKAGE_SCRIPTLETS@/%reconfigure_fonts_scriptlets -n $packagename\n\n@SUBPACKAGE_SCRIPTLETS@/" $pkg_name.spec
   sed -i "s/@SUBPACKAGE_FILELISTS@/%files -n $packagename\n@SUBPACKAGE_FILELISTS@/" $pkg_name.spec
-  sed -i "s/@SUBPACKAGE_FILELISTS@/%defattr(0644,root,root,755)\n@SUBPACKAGE_FILELISTS@/" $pkg_name.spec
   sed -i "s/@SUBPACKAGE_FILELISTS@/%license LICENSE\n@SUBPACKAGE_FILELISTS@/" $pkg_name.spec
   sed -i "s/@SUBPACKAGE_FILELISTS@/%dir %{_ttfontsdir}\n@SUBPACKAGE_FILELISTS@/" $pkg_name.spec
 
