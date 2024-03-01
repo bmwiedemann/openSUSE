@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  1 11:34:56 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Wed Jun 27 13:01:55 UTC 2018 - mpluskal@suse.com
 
 - Modernise spec file with spec-cleaner

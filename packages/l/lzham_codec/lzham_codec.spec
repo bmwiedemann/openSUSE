@@ -51,9 +51,7 @@ Group:          Productivity/Archiving/Compression
 Libraries for encoding/decoding lzham codec files.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 rm example?/*.vcxproj
 # avoid conflict with the actual zlib header
 mv include/zlib.h include/lzham_zlib.h
