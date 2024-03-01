@@ -101,6 +101,7 @@ URL:            https://www.scipy.org
 Source0:        https://files.pythonhosted.org/packages/source/s/scipy/scipy-%{version}.tar.gz
 # Create with pooch: `python3 scipy-%{version}/scipy/datasets/_download_all.py scipy-datasets/scipy-data; tar czf scipy-datasets.tar.gz scipy-datasets`
 Source1:        scipy-datasets.tar.gz
+Patch1:         8c96a1f742335bca283aae418763aaba62c03378.patch
 BuildRequires:  %{python_module Cython >= 0.29.32}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module meson-python >= 0.9.0}

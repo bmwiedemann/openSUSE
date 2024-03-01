@@ -1253,4 +1253,17 @@ bsc#1130564: Apply update from the openSUSE package
     <comment>- Disable broken tests in s390x, gh#scipy/scipy#18878, bsc#1218608</comment>
     <requestid>1141434</requestid>
   </revision>
+  <revision rev="69" vrev="3">
+    <srcmd5>25c007912b9333c55b626982a768df65</srcmd5>
+    <version>1.11.4</version>
+    <time>1709332457</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1152470 from eeich
+
+- Add 8c96a1f742335bca283aae418763aaba62c03378.patch
+    to fix issues with OpenBLAS 0.3.26 and later (boo#1220163).
+
+    This fix is required to update OpenBLAS in oS:Factory!</comment>
+    <requestid>1153127</requestid>
+  </revision>
 </revisionlist>
