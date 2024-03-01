@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  1 11:34:54 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sun Nov 12 09:54:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add missing gawk dependency

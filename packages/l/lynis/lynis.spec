@@ -75,10 +75,10 @@ most interesting parts useful for audits, like:
 
 %prep
 %setup -q -n %{name}
-%patch0
-%patch2
-%patch5
-%patch6 -p1
+%patch -P 0
+%patch -P 2
+%patch -P 5
+%patch -P 6 -p1
 
 %build
 
