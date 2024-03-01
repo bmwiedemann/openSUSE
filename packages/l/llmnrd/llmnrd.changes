@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  1 10:59:36 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Nov 22 06:47:11 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Only install man-pages once

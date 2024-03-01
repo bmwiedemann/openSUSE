@@ -46,8 +46,7 @@ llmnrd will respond to name resolution queries sent by Windows clients in
 networks where no DNS server is available. It supports both IPv4 and IPv6.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 export GIT_VERSION=""
