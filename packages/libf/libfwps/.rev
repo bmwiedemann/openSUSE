@@ -99,4 +99,12 @@ Required to allow builds to complete.</comment>
     <comment>- Update to release 20240225</comment>
     <requestid>1150504</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e61a2f970c999ec68a5650cd972a5232</srcmd5>
+    <version>20240301</version>
+    <time>1709332756</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20240301</comment>
+    <requestid>1154051</requestid>
+  </revision>
 </revisionlist>
