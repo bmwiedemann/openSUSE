@@ -1,7 +1,7 @@
 #
 # spec file for package nwg-displays
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,13 @@
 
 
 Name:           nwg-displays
-Version:        0.3.10
+Version:        0.3.14
 Release:        0
 Summary:        A GTK3 wrapper to display text on the desktop for wlroots
 License:        MIT
 URL:            https://github.com/nwg-piotr/nwg-displays
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  fdupes
 BuildRequires:  gtk-layer-shell-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
@@ -53,12 +54,24 @@ install -Dpm 0644 %{name}.svg -t %{buildroot}%{_datadir}/pixmaps/
 install -Dpm 0644 nwg-displays.svg -t %{buildroot}%{_datadir}/pixmaps/
 install -Dpm 0755 %{name}.desktop -t %{buildroot}%{_datadir}/applications/
 
+# fix env-script-interpreter
+sed -i '1s|#!/usr/bin/env python|#!/usr/bin/python3|' \
+   %{buildroot}%{python_sitelib}/nwg_displays/main.py
+
+# fix non-executable-script
+for file in %{buildroot}%{python_sitelib}/nwg_displays/main.py; do
+   chmod a+x $file
+done
+
+%fdupes %{buildroot}%{python_sitelib}/nwg_displays/__pycache__
+
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/*.desktop
 %{_datadir}/pixmaps/*.svg
-%{python_sitelib}/*
+%{python_sitelib}/nwg_displays
+%{python_sitelib}/nwg_displays-*.egg-info
 
 %changelog

@@ -35,4 +35,28 @@
     <comment>Update to version 0.3.10</comment>
     <requestid>1132341</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3eb771dc366ef23003c394531d282769</srcmd5>
+    <version>0.3.14</version>
+    <time>1709418249</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix some rpmlint issues:
+  + Add fdupes BuildRequires: fix files-duplicate
+  + fix env-script-interpreter
+  + fix non-executable-script
+- Update to version 0.3.14
+  + Added XDG_CONFIG_HOME usage for hyprland config;
+  + Added creation of empty files on: 
+    ~/.config/sway/outputs, 
+    ~/.config/sway/workspaces, 
+    ~/.config/hypr/monitors, 
+    ~/.config/hypr/workspaces,
+    (or their equivalents in XDG_CONFIG_HOME if not found)
+  + Documentation updated.
+  + From now on we rely on the difference between hyprctl monitors
+    all and hyprctl monitors output to detect disabled monitors.
+  + The DPMS check button works on Hyprland now.
+</comment>
+    <requestid>1154301</requestid>
+  </revision>
 </revisionlist>

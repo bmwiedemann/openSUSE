@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Mar  2 12:15:17 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Fix some rpmlint issues:
+  + Add fdupes BuildRequires: fix files-duplicate
+  + fix env-script-interpreter
+  + fix non-executable-script
+
+-------------------------------------------------------------------
+Sat Mar  2 10:42:02 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.3.14
+  + Added XDG_CONFIG_HOME usage for hyprland config;
+  + Added creation of empty files on: 
+    ~/.config/sway/outputs, 
+    ~/.config/sway/workspaces, 
+    ~/.config/hypr/monitors, 
+    ~/.config/hypr/workspaces,
+    (or their equivalents in XDG_CONFIG_HOME if not found)
+  + Documentation updated.
+  + From now on we rely on the difference between hyprctl monitors
+    all and hyprctl monitors output to detect disabled monitors.
+  + The DPMS check button works on Hyprland now.
+
+-------------------------------------------------------------------
 Sun Dec 10 16:45:12 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.3.10
