@@ -926,4 +926,12 @@
       previously have reported “unable to find trailer dictionary.” (forwarded request 1139461 from ohollmann)</comment>
     <requestid>1140140</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>82fb2887d2b701fde2bc7936c3b0fb2b</srcmd5>
+    <version>11.9.0</version>
+    <time>1709418032</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153455</requestid>
+  </revision>
 </revisionlist>

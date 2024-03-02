@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Feb 29 12:11:58 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 11.9.0:
+  * CLI Enhancements
+    - Add new command-line arguments --file and --range which can be
+      used within --pages in place of positional arguments. Allow
+      --file to be used inside of --overlay and --underlay as well.
+      These new options can be freely intermixed with positional
+      arguments.
+    - Allow --overlay and --underlay to be repeated. They may appear
+      multiple times on the command-line and will be stacked in the
+      order in which they appear. In QPDFJob JSON (see QPDFJob: a
+      Job-Based Interface), the overlay and underlay keys may contain
+      arrays. For compatibility, they may also contain a single dictionary.
+  * Library Enhancements
+    - Add file(), range(), and password() to QPDFJob::PagesConfig
+      as an alternative to pageSpec.
+    - Add QPDFObjectHandle::writeJSON to write the JSON representation
+      of the object directly to a pipeline. This is much faster than
+      calling QPDFObjectHandle::getJSON.
+  * Other Enhancements
+    - There have been non-user-visible improvements to the reliability
+      of the JSON parser. The JSON parser has been added to fuzz testing
+      with OSS-Fuzz.
+  * Remove openssl3_2-fuzz-16214.patch fixed upstream
+
+-------------------------------------------------------------------
 Wed Jan 17 12:48:06 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Temporary workaround for test fuzz-16214 (bsc#1218902)
