@@ -52,8 +52,7 @@ libcuefile is a library for working with Cue Sheet (cue) and Table of Contents
 (toc) files.
 
 %prep
-%setup -q -n %{name}_%{version}
-%patch0
+%autosetup -p0 -n %{name}_%{version}
 
 # Fix rpmlint error "spurious-executable-perm"
 chmod 644 AUTHORS COPYING README
