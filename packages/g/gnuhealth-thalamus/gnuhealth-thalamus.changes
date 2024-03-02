@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar  2 09:23:21 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- limit python build to latest python version
+
+-------------------------------------------------------------------
+Mon Jan 22 10:11:10 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- switch to wheel, enable %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Apr  8 12:34:35 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - version 0.9.14 - no changelog provided

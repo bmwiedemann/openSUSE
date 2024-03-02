@@ -1,8 +1,8 @@
 #
 # spec file for package gnuhealth-thalamus
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2017-2021 Dr. Axel Braun
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2017-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,17 @@
 #
 
 
-%bcond_without test
+%bcond_without test 1
+
+%if 0%{?suse_version} >= 1550
+%define pythons python3
+%define mypython python3
+%define mysitelib %python3_sitelib
+%else
+%{?sle15_python_module_pythons}
+%define mypython %pythons
+%define mysitelib %{expand:%%%{mypython}_sitelib}
+%endif
 
 %define modname thalamus
 Name:           gnuhealth-%{modname}
@@ -28,27 +38,35 @@ License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            http://health.gnu.org
 Source:         https://files.pythonhosted.org/packages/source/t/%{modname}/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  postgresql-server
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
+
 %if %{with test}
-BuildRequires:  python3-Flask
-BuildRequires:  python3-Flask-HTTPAuth
-BuildRequires:  python3-Flask-RESTful
-BuildRequires:  python3-Flask-WTF
-BuildRequires:  python3-bcrypt
-BuildRequires:  python3-psycopg2
+BuildRequires:  %{python_module Flask-Cors}
+BuildRequires:  %{python_module Flask-HTTPAuth}
+BuildRequires:  %{python_module Flask-RESTful}
+BuildRequires:  %{python_module Flask-WTF}
+BuildRequires:  %{python_module Flask}
+BuildRequires:  %{python_module bcrypt}
+BuildRequires:  %{python_module psycopg2}
 %endif
-BuildRequires:  fdupes
-Requires:       postgresql-server
-Requires:       python3-Flask
-Requires:       python3-Flask-HTTPAuth
-Requires:       python3-Flask-RESTful
-Requires:       python3-Flask-WTF
-Requires:       python3-bcrypt
-Requires:       python3-psycopg2
+
+Requires:       %{python_module Flask-HTTPAuth}
+Requires:       %{python_module Flask-RESTful}
+Requires:       %{python_module Flask-WTF}
+Requires:       %{python_module Flask}
+Requires:       %{python_module bcrypt}
+Requires:       %{python_module psycopg2}
+# postgres may run on own cluster
+Suggests:       postgresql-server
 BuildArch:      noarch
+
+%python_subpackages
 
 %description
 Thalamus: The GNU Health Federation Message and Authentication Server
@@ -71,19 +89,19 @@ Thalamus is part of the GNU Health project, but it is a self contained,
 independent server that can be used in different health related scenarios.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%autosetup -n %{modname}-%{version}
 
 %build
-python3 setup.py build
+%pyproject_wheel
 
 %install
-python3 setup.py install --prefix="%{_prefix}" --root=%{buildroot}
-%fdupes %{buildroot}%{$python_sitelib}
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{mysitelib}
 
 %files
 %defattr(-,root,root)
 %doc README.rst
 %license LICENSE
-%{python3_sitelib}/*
+%{mysitelib}/thalamus*
 
 %changelog

@@ -70,4 +70,12 @@
     <comment>version 0.9.14</comment>
     <requestid>883859</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>6721ec3b2d45a6796eae76f8189ea0f5</srcmd5>
+    <version>0.9.14</version>
+    <time>1709418235</time>
+    <user>dimstar_suse</user>
+    <comment>python 311 for Leap 15.6</comment>
+    <requestid>1154269</requestid>
+  </revision>
 </revisionlist>
