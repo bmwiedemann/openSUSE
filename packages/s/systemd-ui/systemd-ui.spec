@@ -51,8 +51,7 @@ Patch0:         systemd-ui-notification-clarification.patch
 Graphical front-end for systemd system and service manager.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 export V=1
