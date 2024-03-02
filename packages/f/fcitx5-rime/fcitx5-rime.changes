@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar  1 16:08:23 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- update to version 5.1.5:
+  * Minimize the highligh preedit style usage in rime preedit
+  * Make latin mode action "toggle" the latin mode
+  * Only refresh app option after we run start_maintainence
+
+-------------------------------------------------------------------
 Mon Feb  5 12:36:14 UTC 2024 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.4
