@@ -38,10 +38,7 @@ For more information about SGPIO, please consult the  SFF-8485
 Specification.
 
 %prep
-%setup -q -n %{name}
-%patch0
-%patch1
-%patch2
+%autosetup -p0 -n %{name}
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags}"
