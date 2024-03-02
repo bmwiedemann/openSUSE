@@ -1,7 +1,7 @@
 #
 # spec file for package xlsfonts
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xlsfonts
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Summary:        Utility to list fonts available from an X server
 License:        X11

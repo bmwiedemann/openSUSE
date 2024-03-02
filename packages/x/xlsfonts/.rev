@@ -78,4 +78,13 @@
   * bugfix release</comment>
     <requestid>966784</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>91b3108cbd5f3a26d3c69e61119a146a</srcmd5>
+    <version>1.0.8</version>
+    <time>1709418246</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.7
+  * This release fixes a failure to build with the upcoming gcc 14.</comment>
+    <requestid>1154276</requestid>
+  </revision>
 </revisionlist>
