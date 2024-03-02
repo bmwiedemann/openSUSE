@@ -54,17 +54,8 @@ relevant files.
 
 Comment: Sitar is an ancient Indian instrument as well.
 
-
-
-Authors:
---------
-    Matthias Eckermann  <mge@suse.de>
-    and contributors
-
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 : ${SOURCE_DATE_EPOCH:=1168904229}
