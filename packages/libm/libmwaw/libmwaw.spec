@@ -71,8 +71,8 @@ Summary:        Tools to work with publications in pre MAC OSX text file-formats
 Command line tools to work with publications in pre MAC OSX text file-formats.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
+
 # doxygen needles rebuild
 sed -i \
 	-e 's:on $datetime::g' \
