@@ -79,10 +79,6 @@ unsorted:
   - HyperKitty-web 
   - HyperKitty-web-uwsgi 
   - IccXML 
-  - ImageMagick-config-7-upstream-limited 
-  - ImageMagick-config-7-upstream-open 
-  - ImageMagick-config-7-upstream-secure 
-  - ImageMagick-config-7-upstream-websafe 
   - ImageMagick-devel 
   - ImageMagick-devel-32bit 
   - ImageMagick-doc 
@@ -1120,6 +1116,8 @@ unsorted:
   - aws-c-http 
   - aws-c-http-devel 
   - aws-c-io-devel 
+  - aws-c-mqtt-bin 
+  - aws-c-mqtt-devel 
   - aws-c-s3-bin 
   - aws-c-s3-devel 
   - aws-c-sdkutils-devel 
@@ -1434,7 +1432,6 @@ unsorted:
   - bluez-deprecated 
   - bluez-devel 
   - bluez-devel-32bit 
-  - bluez-obexd 
   - bluez-qt-devel 
   - bluez-test 
   - bluez-zsh-completion 
@@ -11416,6 +11413,7 @@ unsorted:
   - libaws-c-compression1_0_0 
   - libaws-c-http1_0_0 
   - libaws-c-io0unstable 
+  - libaws-c-mqtt1_0_0 
   - libaws-c-s30unstable 
   - libaws-c-sdkutils1_0_0 
   - libaws-checksums-devel 
@@ -13325,7 +13323,7 @@ unsorted:
   - libiscsi-devel 
   - libiscsi-test 
   - libiscsi-utils 
-  - libiscsi9-32bit 
+  - libiscsi10-32bit 
   - libisds-devel 
   - libisds5 
   - libisl23-32bit 
@@ -14309,6 +14307,8 @@ unsorted:
   - libopenssl-3-devel 
   - libopenssl-3-devel-32bit 
   - libopenssl-3-fips-provider 
+  - libopenssl-3-fips-provider-32bit 
+  - libopenssl-3-fips-provider-x86-64-v3 
   - libopenssl-devel 
   - libopenssl-fips-provider 
   - libopenssl10 
@@ -14767,7 +14767,6 @@ unsorted:
   - libpystring0_0 
   - libpythia8 
   - libpythia8lhapdf6 
-  - libpython2_7-1_0 
   - libpython3_10-1_0 
   - libpython3_10-1_0-32bit 
   - libpython3_11-1_0-32bit 
@@ -19001,6 +19000,7 @@ unsorted:
   - nss-shared-helper-devel 
   - nss_synth 
   - nss_wrapper 
+  - nst 
   - ntfs2btrfs 
   - ntfsprogs-extra 
   - ntl-devel 
@@ -20807,6 +20807,7 @@ unsorted:
   - perl-HTML-TreeBuilder-XPath 
   - perl-HTTP-Body 
   - perl-HTTP-BrowserDetect 
+  - perl-HTTP-CookieJar 
   - perl-HTTP-CookieMonster 
   - perl-HTTP-DAV 
   - perl-HTTP-Daemon 
@@ -22638,7 +22639,6 @@ unsorted:
   - python-azure-agent-config-server 
   - python-azure-agent-test 
   - python-barbicanclient-doc 
-  - python-base 
   - python-beautifulsoup4-doc 
   - python-billiard-doc 
   - python-blinker-doc 
@@ -24064,6 +24064,7 @@ unsorted:
   - python310-copr 
   - python310-copr-cli 
   - python310-cornice 
+  - python310-cotengra 
   - python310-cov-core 
   - python310-covdefaults 
   - python310-coverage 
@@ -24146,6 +24147,7 @@ unsorted:
   - python310-defusedxml 
   - python310-delegator.py 
   - python310-dennis 
+  - python310-dep-logic 
   - python310-deprecation 
   - python310-derpconf 
   - python310-devel 
@@ -25060,6 +25062,7 @@ unsorted:
   - python310-mistune 
   - python310-mistune2 
   - python310-mitmproxy 
+  - python310-mitmproxy-rs 
   - python310-mitmproxy-wireguard 
   - python310-mizani 
   - python310-mkdocs 
@@ -25555,7 +25558,6 @@ unsorted:
   - python310-pydocstyle 
   - python310-pydocumentdb 
   - python310-pydot 
-  - python310-pydot3 
   - python310-pydotplus 
   - python310-pydrive2 
   - python310-pydub 
@@ -26566,7 +26568,13 @@ unsorted:
   - python310-xapian-haystack 
   - python310-xapp 
   - python310-xarray 
+  - python310-xarray-accel 
+  - python310-xarray-complete 
+  - python310-xarray-dev 
   - python310-xarray-einstats 
+  - python310-xarray-io 
+  - python310-xarray-parallel 
+  - python310-xarray-viz 
   - python310-xattr 
   - python310-xcffib 
   - python310-xdg 
@@ -27587,6 +27595,7 @@ unsorted:
   - python311-copr 
   - python311-copr-cli 
   - python311-cornice 
+  - python311-cotengra 
   - python311-cov-core 
   - python311-covdefaults 
   - python311-coverage 
@@ -27663,6 +27672,7 @@ unsorted:
   - python311-defusedxml 
   - python311-delegator.py 
   - python311-dennis 
+  - python311-dep-logic 
   - python311-deprecation 
   - python311-derpconf 
   - python311-devel 
@@ -28539,6 +28549,7 @@ unsorted:
   - python311-mistune 
   - python311-mistune2 
   - python311-mitmproxy 
+  - python311-mitmproxy-rs 
   - python311-mitmproxy-wireguard 
   - python311-mizani 
   - python311-mkdocs 
@@ -29006,7 +29017,6 @@ unsorted:
   - python311-pydocstyle 
   - python311-pydocumentdb 
   - python311-pydot 
-  - python311-pydot3 
   - python311-pydotplus 
   - python311-pydrive2 
   - python311-pydub 
@@ -29985,7 +29995,13 @@ unsorted:
   - python311-xapian-haystack 
   - python311-xapp 
   - python311-xarray 
+  - python311-xarray-accel 
+  - python311-xarray-complete 
+  - python311-xarray-dev 
   - python311-xarray-einstats 
+  - python311-xarray-io 
+  - python311-xarray-parallel 
+  - python311-xarray-viz 
   - python311-xattr 
   - python311-xcffib 
   - python311-xdg 
@@ -31025,6 +31041,7 @@ unsorted:
   - python312-copr 
   - python312-copr-cli 
   - python312-cornice 
+  - python312-cotengra 
   - python312-cov-core 
   - python312-covdefaults 
   - python312-coverage 
@@ -31107,6 +31124,7 @@ unsorted:
   - python312-defusedxml 
   - python312-delegator.py 
   - python312-dennis 
+  - python312-dep-logic 
   - python312-deprecation 
   - python312-derpconf 
   - python312-devel 
@@ -32004,6 +32022,8 @@ unsorted:
   - python312-mistletoe 
   - python312-mistune 
   - python312-mistune2 
+  - python312-mitmproxy 
+  - python312-mitmproxy-rs 
   - python312-mitmproxy-wireguard 
   - python312-mizani 
   - python312-mkdocs 
@@ -32110,6 +32130,7 @@ unsorted:
   - python312-nine 
   - python312-nkdfu 
   - python312-nlopt 
+  - python312-nntplib 
   - python312-nocasedict 
   - python312-nocaselist 
   - python312-node-semver 
@@ -32138,6 +32159,7 @@ unsorted:
   - python312-numpy-gnu-hpc-devel 
   - python312-numpy_1_26_2-gnu-hpc 
   - python312-numpy_1_26_2-gnu-hpc-devel 
+  - python312-numpydoc 
   - python312-nwdiag 
   - python312-nxapi-plumbing 
   - python312-o2sclpy 
@@ -32479,7 +32501,6 @@ unsorted:
   - python312-pydocstyle 
   - python312-pydocumentdb 
   - python312-pydot 
-  - python312-pydot3 
   - python312-pydotplus 
   - python312-pydrive2 
   - python312-pydub 
@@ -32507,6 +32528,7 @@ unsorted:
   - python312-pygments-ansi-color 
   - python312-pygments-pytest 
   - python312-pygments-style-railscasts 
+  - python312-pygn 
   - python312-pygraphviz 
   - python312-pyhcl 
   - python312-pyhibp 
@@ -32863,6 +32885,7 @@ unsorted:
   - python312-quantities 
   - python312-queuelib 
   - python312-quicktions 
+  - python312-quimb 
   - python312-radexreader 
   - python312-radon 
   - python312-railroad-diagrams 
@@ -33444,7 +33467,13 @@ unsorted:
   - python312-xapian-haystack 
   - python312-xapp 
   - python312-xarray 
+  - python312-xarray-accel 
+  - python312-xarray-complete 
+  - python312-xarray-dev 
   - python312-xarray-einstats 
+  - python312-xarray-io 
+  - python312-xarray-parallel 
+  - python312-xarray-viz 
   - python312-xattr 
   - python312-xcffib 
   - python312-xdg 
@@ -34513,6 +34542,7 @@ unsorted:
   - python39-copr 
   - python39-copr-cli 
   - python39-cornice 
+  - python39-cotengra 
   - python39-cov-core 
   - python39-covdefaults 
   - python39-coverage 
@@ -34595,6 +34625,7 @@ unsorted:
   - python39-defusedxml 
   - python39-delegator.py 
   - python39-dennis 
+  - python39-dep-logic 
   - python39-deprecation 
   - python39-derpconf 
   - python39-devel 
@@ -35503,7 +35534,6 @@ unsorted:
   - python39-mistletoe 
   - python39-mistune 
   - python39-mistune2 
-  - python39-mitmproxy 
   - python39-mitmproxy-wireguard 
   - python39-mizani 
   - python39-mkdocs 
@@ -35999,7 +36029,6 @@ unsorted:
   - python39-pydocstyle 
   - python39-pydocumentdb 
   - python39-pydot 
-  - python39-pydot3 
   - python39-pydotplus 
   - python39-pydrive2 
   - python39-pydub 
@@ -37007,7 +37036,6 @@ unsorted:
   - python39-xapian 
   - python39-xapian-haystack 
   - python39-xapp 
-  - python39-xarray 
   - python39-xarray-einstats 
   - python39-xattr 
   - python39-xcffib 
@@ -48298,6 +48326,7 @@ unsorted:
   - tftpboot-installation-common 
   - tftpboot-installation-openSUSE-Tumbleweed-x86_64 
   - the_silver_searcher 
+  - thefuck 
   - thermal-monitor 
   - thermald 
   - thessalonica-oldstandard-ttf-fonts 
@@ -48566,8 +48595,6 @@ unsorted:
   - trousers-devel 
   - trufflehog 
   - trurl 
-  - trustedgrub2 
-  - trustedgrub2-i386-pc 
   - truth 
   - truth-javadoc 
   - tryton 
