@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar  2 10:01:43 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.3:
+  * Fixed background color and truncated text in LaTeX tool
+  * Fixed zoom jumping and zoom steps
+  * Fixed various segfaults and rendering issues
+  * Fixed pressure values and project URL when saving documents
+  * Enabled font hint metrics in PDF export to improve text
+    alignment
+
+-------------------------------------------------------------------
 Fri Oct 20 11:53:02 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.2.2:
