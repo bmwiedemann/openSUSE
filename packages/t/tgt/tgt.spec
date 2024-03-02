@@ -1,7 +1,7 @@
 #
 # spec file for package tgt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,11 +58,7 @@ tools. Some target drivers uses all of them and some use only
 user-space daemon and tools (i.e. they completely runs in user space).
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1
 
 %build
 %ifarch ppc ppc64 ppc64le

@@ -353,4 +353,12 @@ Most of the source code files carry a GPL-2.0 notice, not GPL-2.0+ (forwarded re
     <comment></comment>
     <requestid>1127146</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>8638bf9db2604dc547042dc87565e3a1</srcmd5>
+    <version>1.0.89</version>
+    <time>1709418232</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153986</requestid>
+  </revision>
 </revisionlist>
