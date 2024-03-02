@@ -70,8 +70,7 @@ developing applications that use %{name}.
 %global build_vars OPTCFLAGS='%{optflags}' OPTLDFLAGS="$RPM_LD_FLAGS"
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %make_build %{make_vars} %{build_vars}
