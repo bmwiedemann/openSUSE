@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 29 17:49:03 UTC 2024 - dfaggioli@suse.com
+
+- Backports and bugfixes:
+  * [openSUSE]: Increase default phys bits to 42, if host supports that
+    (bsc#1205978, bsc#1219977)
+  * vfio/pci: Clear MSI-X IRQ index always (bsc#1220275)
+
+-------------------------------------------------------------------
 Wed Feb 21 15:52:39 UTC 2024 - dfaggioli@suse.com
 
 - Just "prettify" the spec files a little:
