@@ -17,4 +17,12 @@ known issue: KMPs not yet propetly supported</comment>
     <comment>6.6.18</comment>
     <requestid>1150117</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bac56ff608d4507dbfcaabd8e998d37d</srcmd5>
+    <version>6.6.19</version>
+    <time>1709418245</time>
+    <user>dimstar_suse</user>
+    <comment>6.6.19</comment>
+    <requestid>1154261</requestid>
+  </revision>
 </revisionlist>
