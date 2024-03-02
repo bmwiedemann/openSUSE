@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 15:09:20 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Thu Mar 23 12:47:37 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Make the package respect %optflags and disable LTO.

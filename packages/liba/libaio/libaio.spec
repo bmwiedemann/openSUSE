@@ -1,7 +1,7 @@
 #
 # spec file for package libaio
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,8 +62,7 @@ with, for the Linux-native asynchronous I/O facility ("async I/O", or
 "aio").
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
-%patch1 -p1
+%autosetup -p1 -n %{name}-%{name}-%{version}
 
 %build
 %define _lto_cflags %nil
