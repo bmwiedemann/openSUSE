@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar  2 09:22:58 UTC 2024 - Natasha Ament <stacheldrahtje@gmail.com>
+
+- Added "Requires: usbutils"
+  * Adds usb tools for troubleshooting, e.g.lsusb 
+
+-------------------------------------------------------------------
 Thu Feb  8 15:40:24 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Added "Requires: kdnssd"

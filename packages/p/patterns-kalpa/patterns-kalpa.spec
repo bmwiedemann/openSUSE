@@ -232,6 +232,7 @@ Requires:       unzip
 Requires:       upower
 Requires:       wget
 Requires:       xdg-utils
+Requires:       usbutils
 # Support ntfs drives
 Requires:       ntfs-3g
 Requires:       ntfsprogs
