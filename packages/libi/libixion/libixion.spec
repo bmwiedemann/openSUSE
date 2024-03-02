@@ -83,8 +83,7 @@ Provides:       %{name}-python3 = %{version}
 Python 3 bindings for %{name}.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %global optflags %optflags -fexcess-precision=fast
