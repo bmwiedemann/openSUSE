@@ -140,4 +140,12 @@ GPL matches are for e.g. Makefile. Consolidate to BSD (as per Fedora) (forwarded
   as non-root</comment>
     <requestid>975014</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>78bee353612b03f619cde37ab03dac5b</srcmd5>
+    <version>0.3.7</version>
+    <time>1709418219</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153947</requestid>
+  </revision>
 </revisionlist>

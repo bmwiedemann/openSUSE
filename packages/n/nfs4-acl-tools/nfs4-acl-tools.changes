@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 14:09:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Apr 26 02:24:27 UTC 2022 - Neil Brown <nfbrown@suse.com>
 
 - Disable CHOWN/CHGRP call in install_sh as we build code

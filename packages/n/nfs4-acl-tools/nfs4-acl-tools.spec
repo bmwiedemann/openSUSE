@@ -34,8 +34,7 @@ when using NFSv4 to access a remote filesystem. The remote filesystem
 must also support ACLs.
 
 %prep
-%setup -q
-%patch2 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
