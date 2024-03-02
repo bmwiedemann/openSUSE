@@ -55,8 +55,8 @@ Javadoc for %{name}.
 
 %prep
 %setup -q -c
-%patch0 -p1 -b .build
-%patch1 -p1
+%patch -P 0 -p1 -b .build
+%patch -P 1 -p1
 find . -name "*.jar" -delete
 mkdir -p lib
 build-jar-repository -s -p lib commons-logging-api libbase libloader
