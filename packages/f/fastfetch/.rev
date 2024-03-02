@@ -309,4 +309,18 @@ Bugfixes:
     * Support warp-linux terminal version &amp; terminal font detection (Terminal, Linux)</comment>
     <requestid>1152862</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f050cd1f3ed763fd0ac84240a285f09b</srcmd5>
+    <version>2.8.7</version>
+    <time>1709418251</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.8.7:
+  Bugfixes:
+    * Fix max CPU frequency detection for some cases (CPU, Linux)
+    * Fix some memory leaks
+    * Fix ddcutil 2.1 compatibility (Brightness, Linux)
+  Features:
+    * Support zellij version detection (Linux, Terminal)</comment>
+    <requestid>1154306</requestid>
+  </revision>
 </revisionlist>

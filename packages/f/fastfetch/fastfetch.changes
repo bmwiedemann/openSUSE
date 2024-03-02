@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Mar  2 13:13:39 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- update to version 2.8.7:
+  Bugfixes:
+    * Fix max CPU frequency detection for some cases (CPU, Linux)
+    * Fix some memory leaks
+    * Fix ddcutil 2.1 compatibility (Brightness, Linux)
+  Features:
+    * Support zellij version detection (Linux, Terminal)
+
+
+-------------------------------------------------------------------
 Wed Feb 28 08:48:27 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - update to version 2.8.6:
