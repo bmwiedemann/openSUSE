@@ -89,8 +89,7 @@ Tools to transform e-books into other formats.
 Currently supported: XHTML, raw, text.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"

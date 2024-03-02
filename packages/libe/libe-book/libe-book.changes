@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 16:09:00 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Mon Nov  6 08:57:08 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer
