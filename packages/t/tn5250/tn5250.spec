@@ -57,9 +57,9 @@ Header files for use with the tn5250 library.
 
 %prep
 %setup
-%patch0 -p1
-%patch1
-%patch2
+%patch -P 0 -p1
+%patch -P 1
+%patch -P 2
 cp -p %{SOURCE1} .
 
 %build
