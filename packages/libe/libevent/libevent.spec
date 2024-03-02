@@ -112,10 +112,7 @@ signals or regular timeouts.
 This package holds the static libraries for libevent2.
 
 %prep
-%setup -q  -n %{name}-%{version}-%{version_suffix}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1  -n %{name}-%{version}-%{version_suffix}
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

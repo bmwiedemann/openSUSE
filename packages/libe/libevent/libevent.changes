@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 16:15:04 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Sun Jan 15 22:06:53 UTC 2023 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Disable the select backend, this can be easily done by lying
