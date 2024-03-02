@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 14:50:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Thu Feb  1 22:51:16 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Change YAML::XS::LibYAML to YAML::XS as this is the module to be used

@@ -2843,17 +2843,11 @@ updated policy package.
 %endif
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch5 -p1
-%patch6 -p1
-%patch10 -p1
+%autosetup -p1
 
-autoconf
 
 %build
+autoconf
 %define _lto_cflags %{nil}
 %if 0%{?suse_version}
 # in case we're building without os-release (bsc#1123311)...
