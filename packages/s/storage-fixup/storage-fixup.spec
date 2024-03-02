@@ -47,8 +47,7 @@ settings which makes the drive unload its head frequently shortening
 its lifespan.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 
