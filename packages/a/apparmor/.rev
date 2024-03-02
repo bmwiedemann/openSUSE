@@ -2711,4 +2711,20 @@ thanks to the upstream 926 merge. (forwarded request 1108011 from dmdiss)</comme
     <comment>- Fix systemd userdb access in unix-chkpwd (forwarded request 1151902 from lnussel)</comment>
     <requestid>1151926</requestid>
   </revision>
+  <revision rev="204" vrev="5">
+    <srcmd5>894aa9daa5ab39e8dde437ed54c4553a</srcmd5>
+    <version>3.1.7</version>
+    <time>1709418203</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove workaround for boo#853019 in %postun parser -
+  apparmor.service contains a more safe workaround.
+  This also fixes boo#1220708 (missing daemon-reload).
+
+- Add smbd-unix_chkpwd.diff to allow smbd to execute
+  unix_chkpwd and fix other pam related denies; (boo#1220032).
+
+- Only run utils and profiles make check if kernel LSM is enabled
+  (bsc#1220084)</comment>
+    <requestid>1154197</requestid>
+  </revision>
 </revisionlist>

@@ -98,6 +98,10 @@ Patch9:         dovecot-unix_chkpwd.diff
 # abstractions/openssl: allow version specific engdef & engines paths (boo#1219571)
 Patch10:        apparmor-abstractions-openssl-allow-version-specific-en.patch
 
+# allow smbd to execute unix_chkpwd (boo#1220032)
+# https://gitlab.com/apparmor/apparmor/-/merge_requests/1159
+Patch11:        smbd-unix_chkpwd.diff
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bison
@@ -367,6 +371,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %endif
 %patch -P 9 -p1
 %patch -P 10 -p1
+%patch -P 11 -p1
 
 %build
 export SUSE_ASNEEDED=0
@@ -429,17 +434,24 @@ make check -C libraries/libapparmor
 make check -C parser
 make check -C binutils
 
-# profiles make check fails for the utils (they expect /sbin/apparmor_parser to exist), therefore only do parser-based check
-make -C profiles check-parser
+# some tests depend on kernel LSM (e.g. access /proc/PID/attr/apparmor/current)
+if grep -q apparmor /sys/kernel/security/lsm; then
+	# profiles make check fails for the utils (they expect
+	# /sbin/apparmor_parser to exist), therefore only do parser-based check
+	make -C profiles check-parser
 
-# test for a few files that should exist in the cache
 %if %{with precompiled_cache}
-test -f profiles/cache/*/bin.ping
-test -f profiles/cache/*/.features
+	# test for a few files that should exist in the cache
+	test -f profiles/cache/*/bin.ping
+	test -f profiles/cache/*/.features
 %endif
 
-# run checks in utils except linting -- https://gitlab.com/apparmor/apparmor/-/issues/121
-make check -o check_lint -C utils
+	# run checks in utils except linting -- https://gitlab.com/apparmor/apparmor/-/issues/121
+	make check -o check_lint -C utils
+else
+	# clear grep status to avoid flagging check failure
+	true
+fi
 
 %install
 # libapparmor: swig bindings only, libapparmor is packaged via libapparmor.spec
@@ -736,13 +748,9 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %service_del_preun apparmor.service
 
 %postun parser
-# don't call try-restart, see bnc#853019
-%if 0%{?suse_version} <= 1500
-export DISABLE_RESTART_ON_UPDATE="yes"
+# bnc#853019 aka boo#853019 is still a thing, but in the meantime apparmor.service has ExecStop=/bin/true (= do nothing),
+# which means that 'systemctl restart apparmor' is safe now
 %service_del_postun apparmor.service
-%else
-%service_del_postun_without_restart apparmor.service
-%endif
 
 %posttrans abstractions
 # workaround for bnc#904620#c8 / lp#1392042

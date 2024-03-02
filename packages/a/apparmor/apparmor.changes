@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar  1 20:54:12 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
+
+- Remove workaround for boo#853019 in %postun parser -
+  apparmor.service contains a more safe workaround.
+  This also fixes boo#1220708 (missing daemon-reload).
+
+-------------------------------------------------------------------
+Tue Feb 27 14:26:58 UTC 2024 - Noel Power <nopower@suse.com>
+
+- Add smbd-unix_chkpwd.diff to allow smbd to execute
+  unix_chkpwd and fix other pam related denies; (boo#1220032).
+
+-------------------------------------------------------------------
 Mon Feb 26 17:25:58 UTC 2024 - Ludwig Nussel <lnussel@suse.com>
 
 - Fix systemd userdb access in unix-chkpwd
@@ -7,6 +20,12 @@ Mon Feb 26 17:25:58 UTC 2024 - Ludwig Nussel <lnussel@suse.com>
 Tue Feb 20 10:16:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Tue Feb 20 02:41:09 UTC 2024 - David Disseldorp <ddiss@suse.com>
+
+- Only run utils and profiles make check if kernel LSM is enabled
+  (bsc#1220084)
 
 -------------------------------------------------------------------
 Thu Feb  8 05:20:26 UTC 2024 - David Disseldorp <ddiss@suse.com>
