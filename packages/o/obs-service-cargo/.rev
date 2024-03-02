@@ -144,4 +144,14 @@ packages. This library is fasted, easier to maintain and easier for a user to co
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1140293</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b178ea606a5f0b9e78530d9b40c5caa1</srcmd5>
+    <version>1.1.0</version>
+    <time>1709418256</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0:
+  * make tarballs reproducible
+</comment>
+    <requestid>1154321</requestid>
+  </revision>
 </revisionlist>
