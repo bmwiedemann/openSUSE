@@ -1,0 +1,190 @@
+-------------------------------------------------------------------
+Thu Feb 29 01:17:28 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.9.0:
+  * chore: update dependencies
+  * build: update Dockerfile to use Rust 1.74
+  * build: added `assets/*/*.png` to exclude list
+  * doc: added screenshots for `0.9.0`
+  * doc: updated 'Features' section of `README.md`
+  * doc: added `--tui-max-flows` to 'Command Reference' in `README.md`
+  * feat(tui): add `tui-max-flows` config
+  * fix: validate targets resolve to at least one address or exit
+  * doc: add matrix chat badge to `README.md`
+  * refactor: remove `Required` trait and `util` module
+  * feat(net): remove use of `Required` trait
+  * feat: capture `type_name::<T>` in `RequiredError`
+  * fix(net): only split icmp packet into payload and extension if extensions enabled
+  * feat(packet): added `payload_raw` method to Ipv4 and Ipv6 `DestinationUnreachablePacket` and `TimeExceededPacket`
+  * test(packet): added ipv6 tests to `extension_splitter` module
+  * fix(packet): return full payload for packets with invalid extension lengths
+  * build: fix `deb` and `rpm` release builds
+  * doc: finalize `CHANGELOG.md` for `0.9.0` release
+  * build: exclude assets from crate
+  * build: add feature `Win32_Security` to `windows-sys` dependency
+  * doc: added `--tui-icmp-extension-mode` to 'Command Reference' section of `README.md`
+  * doc: tweak wording of `IcmpExtensionMode::All`
+  * doc: fix documented default `tui_icmp_extension_mode` to be `off`
+  * doc: added #752 & #825 to `CHANGELOG.md`
+  * feat(tui): show unique flow count in header
+  * feat(tui): added ICMP extensions support to frontend
+  * feat(tui): always display ASN data in hop detailed view
+  * doc: added `toggle-privacy` key binding to `README.md`
+  * fix(tui): do not show map locations for private ttls
+  * feat(tui): add privacy toggle
+  * refactor(tui): rename `privacy_ttl` as `privacy_max_ttl`
+  * fix(config): use default for `toggle_flows`
+  * doc: added `toggle-flows` key binding to `README.md`
+  * doc: added flows theme items to `README.md`
+  * feat(tui): display individual tracing flows in Tui
+  * fix(tui): do not clear selected hop when attempting to navigate between traces if only a single trace exists
+  * feat(backend): record the flow id for the current round
+  * doc: updated 'Binary Asset Download' table to include previous `0.7.0` release
+  * doc: updated the wording of 'Versions' section in `README.md`
+  * doc: added example of using `--icmp-extensions` (`-e`) to `README.md`
+  * doc: add `--icmp-extensions` to 'Command Reference' section of `README.md`
+  * doc: change 'Command Reference' to use `text` formatting in `README.md`
+  * doc: more fixes to `CHANGELOG.md`
+  * doc: fix CHANGELOG.md issues
+  * doc: updated CHANGELOG.md for all changes since `0.8.0`
+  * feat(tui): add panic handler to reset terminal
+  * feat(report): reworked `stream` to display ICMP extensions
+  * refactor(report): replace use of `DnsResolver` with `R: Resolver`
+  * feat(report): reworked `json` to use `types` module
+  * feat(report): reworked `csv` report to use `csv` crate
+  * build: added `csv` to `dependencies`
+  * feat(report): added common `types` module
+  * refactor(report): split `report` module
+  * refactor: export additional ICMP types from the `tracing` module
+  * test(config): added config tests
+  * test(config): added test to parse `trippy-config-sample.toml` and validate default values
+  * feat(config): update addr_family logic to account for `DEFAULT_ADDRESS_FAMILY`
+  * feat(config): added `constants::DEFAULT_TUI_MAX_ADDRS`
+  * feat(config): added `constants::DEFAULT_ADDRESS_FAMILY`
+  * feat(config): added `constants::DEFAULT_ICMP_EXTENSIONS`
+  * build: added `pretty_assertions` to `dev-dependencies`
+  * feat(config): added `Default` impl for `bindings` and `theme` modules
+  * test(platform): add `Platform::dummy_for_test` method
+  * refactor(config): replace TrippyConfig `TryFrom` impl with `from` method that takes a `ConfigFile`
+  * feat(config): add `Eq` and `PartialEq` derive to several config types
+  * fix(config): change from `icmp_extensions` to `icmp-extensions` in sample config file
+  * fix(config): updated `min-round-duration` and `max-round-duration` to be `1s` instead of `1000ms` to be consistent with cmd line config default
+  * feat(net): record `class`, `subtype` and `bytes` of unknown ICMP extensions
+  * build: rename all release builds to match targets
+  * build: added additonal release targets
+  * build: added `armv7-unknown-linux-gnueabihf`, `armv7-unknown-linux-musleabihf` & `armv7-unknown-linux-musleabi` release builds
+  * build: add `aarch64-apple-darwin` release target
+  * build: switch to installing `cargo-cross` from latest version on github
+  * feat: added ICMP extensions support to backend
+  * feat: added ICMP extensions command line and config
+  * feat(net): added ICMP `extensions` to `Probe`
+  * refactor(net): removed `Copy` trait from `Probe` and related types
+  * feat(net): added support for ICMP extensions
+  * feat(packet): added MPLS ICMP extension object to packet
+  * feat(packet): added `extension` method to TE and DU icmpv6 packet
+  * feat(packet): added `extension` method to TE and DU icmpv4 packet
+  * feat(packet): added ICMP `extension_splitter` module
+  * feat(packet): added `icmp_extension` packet module and core types
+  * feat(packet): added length field to icmpv6 TE and DU packets
+  * feat(packet): added length field to icmpv4 TE and DU packets
+  * build: add `hex-literal` version `0.4.1` to dev-dependencies
+  * doc: add `--icmp` alias to example in `README.md`
+  * doc: `dot` and `flows` examples to `README.md`
+  * doc: added example of using `tui-privacy-max-ttl` to 'Usage Examples' section of `README.md`
+  * doc: updated 'Acknowledgements' section to reflect the change from `tui-rs` to `ratatui`
+  * doc: removed old 'Platforms' section from `README.md`
+  * doc: add 'Binary Assets' section to `README.md`
+  * doc: remove `www.` prefix from `www.example.com` in `README.md`
+  * doc: added corrected `-z` example in `README.md`
+  * doc: added 'Versions' section to `README.md`
+  * doc: update Command Reference section in `README.md` to reflect latest `master`
+  * doc: add 'and exit' to the end of the `print_config_template` help text
+  * refactor(backend): introduce `Backend` struct
+  * doc: update README.md to include details and example of using '--print-config-template'
+  * feat: add `--print-config-template` flag to output template config file
+  * feat: add icmp command shortcut
+  * feat(tui)!: change default key for `ToggleFreeze` from `f` to be `ctrl+f`
+  * fix(backend): filter hosts used for flows to complete and pending and limit to max ttl
+  * refactor(backend): reintroduce `ProbeStatus::Skipped` to aid diagnostics
+  * refactor(backend): move logic to TraceData::update_from_round function
+  * feat(report): add `flows` report mode
+  * feat(backend): add `Display` impls for `FlowId`, `Flow` and `FlowEntry`
+  * fix(backend): index flows from 1 in `FlowRegistry` as flow 0 is reserved as the default flow
+  * feat(report): add `dot` report mode to output flows in Graphviz `DOT` format
+  * build: add `petgraph` version `0.6.4` to dependencies
+  * feat(backend): segregate traces by flow
+  * feat(backend): record tracing flows
+  * refactor(backend): introduced backend::trace module
+  * refactor(tui): use selected_hop_or_target() in `chart` and `histogram` modules
+  * refactor(tui): align parameter order for `tabs` module
+  * feat(tui): add `--tui-privacy-max-ttl` flag to set the maximum ttl of hops which will be masked for privacy
+  * fix(tui): set correct table row height for hops with no response
+  * feat: add `dns_resolve_all` flag to trace to all resolved ips
+  * refactor(dns): reorder items in `lazy_resolver` module
+  * refactor(dns): rename module `lazy` as `lazy_resolver` and remove `DnsResolver` suffixes
+  * refactor(dns): promote dns module to directory
+  * refactor(dns): introduce `Resolver` trait
+  * fix(dns): filter system resolver dns lookups for IPv4/IPv6 address family
+  * doc(dns): improve rustdoc for `dns` module
+  * feat: expose the `dns` module as part of the library
+  * feat(net): add Paris ECMP strategy support for Ipv6/UDP
+  * doc: update README.md to capitalize Trippy correctly
+  * doc: update README.md to note that command line arguments may appear in any order
+  * doc: use `[!IMPORTANT]` instead of `**:exclamation:**` for README.md
+  * doc: rename MacOS to macOS
+  * doc: update README.md to add --unprivileged mode to the `#privileges` section
+  * doc: update README.md to add --unprivileged mode usage details and example
+  * feat(net): add support for --unprivileged mode on MacOS
+  * fix: render TracerChannel::connect() errors in tui
+  * refactor(net): introduce `common.rs` add unify ipv4/ipv6 `process_result`
+  * refactor(net): replace needless use of `matches!` macro
+  * fix(net): ensure the actual and expected original datagram protocol match or discard the packet
+  * refactor(net): use `Ipv4Packet::payload()` when extracting the original Ipv4 datagram
+  * refactor(net): rename `ip4` as `ipv4`
+  * Fix typos in sample config
+  * refactor(config): introduce `platform` module to replace `caps` module
+  * build: add `BSD-2-Clause` to the allowed licences
+  * feat(net): try to use an unprivileged IPPROTO_ICMP socket when probing for ipv4 field byte order
+  * refactor(net): introduce `SocketImpl::new_dgram_ipv4` and `SocketImpl::new_dgram_ipv6`
+  * doc: fix types in FAQ section of `README.md`
+  * fix: changed `Ipv4Packet::payload()` to not be based on total_length which is platform dependant
+  * feat: truncate Ipv4 and Ipv6 packets to the number of bytes read from the socket
+  * refactor(net): rename `Socket` struct as `SocketImpl` and `TracerSocket` trait as `Socket`
+  * refactor(net): make net code generic over `S` where `S: TracerSocket`
+  * fix: add clap `styles=Styles::styled()` to reintroduce previous behaviour
+  * build: enable `unstable-styles` feature in `clap`
+  * fix: add clap `arg_required_else_help` to reintroduce prior behaviour
+  * refactor: remove clap `display_order` attributes
+  * feat: improve command line bool flag handling
+  * refactor: combine `extract_time_exceeded` and `extract_dest_unreachable` into `extract_probe_resp_seq`
+  * doc: add `toogle-help-alt` key binding to README.md
+  * feat: add support for the `ToggleHelpAlt` command which defaults to the `?` key
+  * doc: re-add trippy.gif
+  * fix(net): remove redundant calls to `TimeExceededPacket::new_view()` in `ipv4.rs`
+  * doc: remove unused FAQ entry from `README.md`
+  * fix: add clap `usage` feature which is needed by clap 4.4.x
+  * fix(net): ignore `EINTR` errno response from select
+  * doc: reformat comments to width 100
+  * build: remove unused features
+  * fix(dns): resolver queue processor blocking lazy lookup
+  * build: removed hardcoded Rust 1.63.0 ci fmt job
+  * fix(net): only create the needed icmp or udp sending socket
+  * refactor(config): split `constants` into a submodule
+  * refactor(config): split `cmd` into a submodule
+  * refactor(config): split `theme`, `binding` and `file` into submodules
+  * Document default for GeoIp
+  * Update trippy-config-sample.toml
+  * feat(report): add `IPs` field to csv and all tabular reports
+  * fix(report): perform blocking dns lookups
+  * feat(dns): added blocking `reverse_lookup` and `reverse_lookup_with_asinfo` methods
+  * refactor(dns): add `lazy_` prefix to `reverse_lookup` and `reverse_lookup_with_asinfo`
+  * refactor: split frontend.rs into multiple modules
+  * doc: restore relative path for gif in README.md
+  * build: add a `musl` `deb` package build to release
+  * feat: replace `tui` crate with `ratatui`
+  * doc: update README.md to use external gif link
+
+-------------------------------------------------------------------
+Sun Jun 18 06:52:20 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Initial package for 0.8.0

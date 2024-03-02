@@ -1,0 +1,6 @@
+<package name="trippy" project="openSUSE:Factory">
+  <title>trippy</title>
+  <description>A network diagnostic tool for the analysis of networking issues.</description>
+  <devel project="network:utilities" package="trippy"/>
+  <url>https://github.com/fujiapple852/trippy</url>
+</package>

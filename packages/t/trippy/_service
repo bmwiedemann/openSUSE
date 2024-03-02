@@ -1,0 +1,21 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/fujiapple852/trippy.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="revision">@PARENT_TAG@</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service name="cargo_vendor" mode="manual">
+    <param name="srcdir">trippy</param>
+    <param name="compression">zst</param>
+    <param name="update">true</param>
+  </service>
+</services>
