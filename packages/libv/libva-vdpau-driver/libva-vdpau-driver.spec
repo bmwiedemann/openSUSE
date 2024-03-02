@@ -42,12 +42,7 @@ Obsoletes:      vdpau-video <= %{version}-%{release}
 VDPAU Backend for Video Acceleration (VA) API HW video decode support.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1
 cat > %{name}.sh << EOF
 # use this library when NVIDIA's proprietary driver is running
 if test -c /dev/nvidiactl; then

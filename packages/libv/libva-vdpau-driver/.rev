@@ -65,4 +65,12 @@ only support libva support.</comment>
   VDPAU_DRIVER to /usr/etc/profiles.d on TW (boo#1173036)</comment>
     <requestid>830257</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>57c1efaaea3df524d60881aa93ea85b6</srcmd5>
+    <version>0.7.4</version>
+    <time>1709418259</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1154328</requestid>
+  </revision>
 </revisionlist>

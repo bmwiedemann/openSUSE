@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  1 10:14:01 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Fri Aug 28 10:39:37 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - moved profiles for setting env variables LIBVA_DRIVER_NAME and
