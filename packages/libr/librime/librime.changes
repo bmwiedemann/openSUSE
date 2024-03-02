@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Mar 01 15:20:39 UTC 2024 - rrahl0@proton.me
+
+- remove one of the source downloaders (download_files)
+- Update to version 1.10.0:
+  * build: make deps/clean prefix=dist_dir
+  * build: make clean build=build_dir
+  * build(Makefile): fix install targets
+  * fix(glog): someone at google is to blame for linking error
+  * fix(glog): replace deprecated API
+  * fix(glog): configure macros
+  * chore(deps): update glog to v0.7.0
+  * chore: log file_path_ when warning in tsv.cc (#825)
+  * chore: add git blame ignore file [skip ci] (#819)
+  * feat(dict_compiler): rebuild packs on demand (#816)
+
+- Update to version 1.9.0:
+  * switches: abbreviate state labels
+  * dict: shorten the data struct used by Vocabulary
+  * add append_comment option to reverse_lookup_filter
+  * avoid invalid page_size
+  * vocabulary.h: align the size of DictEntry struct
+  * dict_compiler.cc: correct the usage of auto in loop
+  * dict: improve dict complile performance
+  * replace rbtree with vector of pair
+  * release memory of temporary fields
+  * install-boost.bat: default to boost 1.78
+  * build.bat: build boost_
+
+-------------------------------------------------------------------
 Wed Sep 13 04:37:51 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update to version 1.8.5

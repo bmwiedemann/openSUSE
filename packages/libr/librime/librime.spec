@@ -1,7 +1,7 @@
 #
 # spec file for package librime
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           librime
-Version:        1.8.5
+Version:        1.10.0+git20240229.4ee471e
 Release:        0
 Summary:        Rime Input Method Engine
 License:        BSD-3-Clause
 Group:          System/I18n/Chinese
 URL:            https://github.com/rime/librime
-Source:         https://github.com/rime/librime/archive/%{version}/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  capnproto >= 0.7.0
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
@@ -115,10 +115,11 @@ This package provides private headers of Rime to build plugins.
 %{_bindir}/rime_deployer
 %{_bindir}/rime_dict_manager
 %{_bindir}/rime_patch
+%{_bindir}/rime_table_decompiler
 
 %files -n librime1
 %{_libdir}/%{name}.so.1
-%{_libdir}/%{name}.so.%{version}
+%{_libdir}/%{name}.so.1.10.0
 
 %files devel
 %{_includedir}/rime_api.h

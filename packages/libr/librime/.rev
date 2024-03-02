@@ -272,4 +272,12 @@
   librime-1.7.3-ensure_std_exp_can_be_found_after_including_cmath.patch (forwarded request 1110803 from hillwood)</comment>
     <requestid>1110804</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>b32714a863a9fc03eb6530fba48fab20</srcmd5>
+    <version>1.10.0+git20240229.4ee471e</version>
+    <time>1709418243</time>
+    <user>dimstar_suse</user>
+    <comment>fixed version string</comment>
+    <requestid>1154285</requestid>
+  </revision>
 </revisionlist>
