@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 29 16:15:33 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+- modified patches
+  % libev-4.15_compiler_warnings.patch (refreshed)
+
+-------------------------------------------------------------------
 Thu Oct 12 10:17:23 UTC 2023 - pgajdos@suse.com
 
 - changed comment in sig file

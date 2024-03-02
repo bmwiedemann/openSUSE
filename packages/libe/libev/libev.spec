@@ -1,7 +1,7 @@
 #
 # spec file for package libev
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -81,9 +81,7 @@ This package holds the development files for libev.
 %if %{with signify}
 signify -V -p %{SOURCE3} -m %{SOURCE0}
 %endif
-%setup -q
-%patch0
-%patch1 -p1
+%autosetup -p1
 
 %build
 CFLAGS="%{optflags} -fno-strict-aliasing -Wno-unused"

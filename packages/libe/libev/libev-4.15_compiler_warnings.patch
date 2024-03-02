@@ -1,7 +1,7 @@
 Index: ev.c
 ===================================================================
---- ev.c.orig
-+++ ev.c
+--- a/ev.c
++++ b/ev.c
 @@ -577,7 +577,7 @@ struct signalfd_siginfo
   * This value is good at least till the year 4000.
   */
@@ -33,8 +33,8 @@ Index: ev.c
  
 Index: ev_iouring.c
 ===================================================================
---- ev_iouring.c.orig
-+++ ev_iouring.c
+--- a/ev_iouring.c
++++ b/ev_iouring.c
 @@ -295,7 +295,7 @@ iouring_sqe_submit (EV_P_ struct io_urin
    EV_SQ_ARRAY [idx] = idx;
    ECB_MEMORY_FENCE_RELEASE;

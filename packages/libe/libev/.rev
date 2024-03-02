@@ -193,4 +193,15 @@
   % libev-4.33.tar.gz.sig</comment>
     <requestid>1117170</requestid>
   </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>d762df2b2a24149ca67296f8c9af11f8</srcmd5>
+    <version>4.33</version>
+    <time>1709418035</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+- modified patches
+  % libev-4.15_compiler_warnings.patch (refreshed) (forwarded request 1153467 from pgajdos)</comment>
+    <requestid>1153468</requestid>
+  </revision>
 </revisionlist>
