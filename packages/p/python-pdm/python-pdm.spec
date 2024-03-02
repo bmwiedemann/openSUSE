@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-pdm
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pdm%{psuffix}
-Version:        2.10.4
+Version:        2.12.4
 Release:        0
 Summary:        Python Development Master
 License:        MIT
@@ -42,6 +42,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-blinker
 Requires:       python-cachecontrol >= 0.12.11
 Requires:       python-certifi
+Requires:       python-dep-logic
 Requires:       python-findpython >= 0.4
 Requires:       python-installer
 Requires:       python-packaging >= 20.9
@@ -69,7 +70,7 @@ Requires:       python-typing-extensions
 Requires:       python-truststore
 %endif
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 %if %{with test}

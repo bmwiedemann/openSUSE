@@ -391,4 +391,32 @@
     network marker. #858</comment>
     <requestid>1137127</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0da4197720a2ec49d2d7478171a9dda8</srcmd5>
+    <version>2.12.4</version>
+    <time>1709418210</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1152936 from mcalabkova
+
+- Update to 2.12.4
+    * Officially drop the support for Python 3.7.
+    * Allow exporting current project as editable dependency with pdm export.
+    * Use ==major.minor.* as default requires python for application projects.
+    * We now use the package-type field in the tool.pdm table to differentiate 
+      between library and application projects.
+    * pdm lock now supports --update-reuse option to keep the pinned versions 
+      in the lockfile if possible.
+    * Introduce a new lock strategy inherit_metadata to inherit and merge 
+      markers from parent requirements. This is enabled by default when 
+      creating a new lockfile.
+    * Allow excluding packages from the lockfile via tool.pdm.resolution.excludes 
+      setting, the dependencies will also be skipped.
+    * Rename --no-lock option to --frozen-lockfile.
+    * Add --no-markers to export command to exclude markers from the output.
+    * Change the warning category emitted by deprecated_warning() to PDMDeprecationWarning.
+    * Rename the preferred_pins argument of provider classes to locked_candidates, 
+      and deprecate the old name.
+    * Use env PDM_NO_EDITABLE as the default value for --no-editable option.</comment>
+    <requestid>1153131</requestid>
+  </revision>
 </revisionlist>
