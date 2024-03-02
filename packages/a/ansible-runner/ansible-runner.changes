@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 14 20:22:04 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.3.5:
+  * fix pexpect child shutdown race (#1331) by @TheRealHaoLiu in
+    #1336
+
+-------------------------------------------------------------------
 Thu Sep  7 07:34:22 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 2.3.4:
@@ -85,7 +92,7 @@ Thu Feb 20 15:39:49 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
   + Fix some unicode issues when using command line override on python 2.7
   + Fix an issue with file handles not closing on the pexpect pty
   + Fix missing ssh_key parameter from module interface
-  + Fix a bug where the ssh agent process would hang around after 
+  + Fix a bug where the ssh agent process would hang around after
     process isolation exit causing a failure to remove temporary directories
   1.4.2 (2019-10-04)
   + Reverted ansible-runner --version to print a semantic version number
@@ -98,10 +105,10 @@ Thu Feb 20 15:39:49 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
   + Fix command line args override missing from module run kwargs
   + Omit inventory argument entirely if no inventory content is supplied
     this allows ansible to pick up inventory from implicit locations and ansible.cfg
-  + Fix an issue where Runner wouldn't properly clean up process 
+  + Fix an issue where Runner wouldn't properly clean up process
     isolation temporary directories
   + Fix error generated if unsafe parameter is used on vars prompt tasks
-  + Fix an issue where additional callback plugins weren't being 
+  + Fix an issue where additional callback plugins weren't being
     used when defined in the environment
   + Fix an issue where Runner would stop returning events after the
     playbook finished when using run_async
@@ -109,7 +116,7 @@ Thu Feb 20 15:39:49 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
   + Fix issues using vaulted data that would cause Runner to fail
   + Fix an issue where artifact-dir was only allowed in ad-hoc mode
 - run fdupes
-- remove upstreamed patch: 
+- remove upstreamed patch:
   0001-Use-the-correct-python-executable-for-tests.patch
 - disable tests again for now
 
