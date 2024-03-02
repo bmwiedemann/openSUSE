@@ -75,10 +75,7 @@ Provides:       %{name} = %{version}-%{release}
 Command-line utilities to inspect and control AV/C hardware.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 autoreconf -fvi
