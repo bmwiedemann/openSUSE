@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Mar  2 14:38:06 UTC 2024 - Jan Baier <jbaier@suse.com>
+
+- update to 0.7.5
+  * Change: add constants GROUNDSPRITE_ROAD_X and GROUNDSPRITE_ROAD_Y by @andythenorth in https://github.com/OpenTTD/nml/pull/307
+  * Fix: Register named parameters earlier by @glx22 in https://github.com/OpenTTD/nml/pull/301
+  * Add: Support for build probability action CB 162 var10 0 (reverse rail vehicle) by @PeterN in https://github.com/OpenTTD/nml/pull/313
+  * Fix cleanup leaving generated files behind by @matthijskooijman in https://github.com/OpenTTD/nml/pull/312
+  * Change: Allow creating 32bpp-only NewGRFs by @PeterN in https://github.com/OpenTTD/nml/pull/314
+  * Fix a9a1a3e: Don't use station properties 1C/1D for IDs 00-FF by @glx22 in https://github.com/OpenTTD/nml/pull/305
+  * Add: [Dependabot] introduce Dependabot to keep our workflows up-to-date by @glx22 in https://github.com/OpenTTD/nml/pull/316
+  * Upgrade: [Actions] Bump the actions group with 4 updates by @dependabot in https://github.com/OpenTTD/nml/pull/317
+  * Add: Support for faster ship speed 23 and acceleration 24 (OTTD #10734) by @zephyris in https://github.com/OpenTTD/nml/pull/315
+  * Update: changelog for 0.7.5 by @glx22 in https://github.com/OpenTTD/nml/pull/319
+  * Add: Support town_production_effect and town_production_multiplier. by @PeterN in https://github.com/OpenTTD/nml/pull/318
+  * Change: add --no-palette-validation optional arg by @andythenorth in https://github.com/OpenTTD/nml/pull/322
+  * Update: changelog for 0.7.5 by @glx22 in https://github.com/OpenTTD/nml/pull/323
+
+-------------------------------------------------------------------
 Thu Feb 22 14:12:19 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
