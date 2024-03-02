@@ -139,4 +139,21 @@ The upstream has developed for a long time and waylyrics has been stable, althou
   * feat!: set lyric align mode on run time</comment>
     <requestid>1150119</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8d5ef25a9c95baa156869f51472fee16</srcmd5>
+    <version>0.2.12</version>
+    <time>1709418239</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.12:
+  * chore: release v0.2.12
+  * feat: set Priority::HIGH for lyric_scroll
+  * docs(readme): go-musicfox merged fix-position [ci skip]
+  * docs(build): fix install command for schema [ci skip]
+  * Update waylyrics.spec
+  * Update INSTALLATION.md
+  * docs(build): update packaging docs
+  * chore: remove CSS stylelintrc
+  * docs(install): show packaging status</comment>
+    <requestid>1154232</requestid>
+  </revision>
 </revisionlist>

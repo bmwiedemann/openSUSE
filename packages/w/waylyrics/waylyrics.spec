@@ -17,7 +17,7 @@
 
 
 Name:           waylyrics
-Version:        0.2.11
+Version:        0.2.12
 Release:        0
 Summary:        The furry way to show desktop lyrics
 License:        MIT
@@ -67,7 +67,7 @@ install -Dm644 "io.poly000.waylyrics.gschema.xml" -t %{buildroot}%{_datadir}/gli
     cd locales
     for po in $(find . -type f -name '*.po')
     do
-        mkdir -p %{buildroot}%{_datadir}"/locale/${po#/*}" 
+        mkdir -p %{buildroot}%{_datadir}"/locale/${po#/*}"
         msgfmt -o %{buildroot}%{_datadir}"/locale/${po%.po}.mo" ${po}
     done
 )

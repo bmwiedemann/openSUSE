@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 02 04:37:01 UTC 2024 - xtexchooser@duck.com
+
+- Update to version 0.2.12:
+  * chore: release v0.2.12
+  * feat: set Priority::HIGH for lyric_scroll
+  * docs(readme): go-musicfox merged fix-position [ci skip]
+  * docs(build): fix install command for schema [ci skip]
+  * Update waylyrics.spec
+  * Update INSTALLATION.md
+  * docs(build): update packaging docs
+  * chore: remove CSS stylelintrc
+  * docs(install): show packaging status
+
+-------------------------------------------------------------------
 Sat Feb 24 11:04:49 UTC 2024 - xtexchooser@duck.com
 
 - Package language files
