@@ -45,8 +45,8 @@ work with.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2
+%patch -P 1 -p1
+%patch -P 2
 
 %build
 autoreconf -fiv
