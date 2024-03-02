@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyproj
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,14 +36,14 @@ BuildRequires:  proj-devel >= 8
 BuildRequires:  python-rpm-macros
 Requires:       python-certifi
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # SECTION test requirements
 BuildRequires:  %{python_module Shapely}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module xarray}
+BuildRequires:  %{python_module xarray if %python-base >= 3.10}
 # /SECTION
 %python_subpackages
 

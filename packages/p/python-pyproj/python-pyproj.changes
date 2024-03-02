@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar  2 10:10:48 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip testing xarray with python39: python39-xarray got removed
+  early
+
+-------------------------------------------------------------------
 Sun Sep 24 20:01:29 UTC 2023 - Libor Pechacek <lpechacek@gmx.com>
 
 - Update to 3.6.1
