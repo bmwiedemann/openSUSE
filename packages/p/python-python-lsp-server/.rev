@@ -297,4 +297,12 @@
   * python-lsp-server-pr510-flake8-7.patch (forwarded request 1137146 from bnavigator)</comment>
     <requestid>1137147</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>363be99cec31d8cd7842543916df02d8</srcmd5>
+    <version>1.10.0</version>
+    <time>1709418248</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1154296</requestid>
+  </revision>
 </revisionlist>

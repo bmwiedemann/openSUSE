@@ -19,14 +19,12 @@
 %{?sle15_python_module_pythons}
 
 Name:           python-python-lsp-server
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python-lsp-server-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM python-lsp-server-pr510-flake8-7.patch gh#/python-lsp/python-lsp-server#510
-Patch0:         python-lsp-server-pr510-flake8-7.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}
@@ -85,7 +83,7 @@ Conflicts:      python-pyflakes >= 3.3.0
 # /SECTION
 BuildArch:      noarch
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
