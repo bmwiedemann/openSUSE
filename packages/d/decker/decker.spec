@@ -17,7 +17,7 @@
 
 
 Name:           decker
-Version:        1.37
+Version:        1.39
 Release:        0
 Summary:        A multimedia sketchpad
 License:        MIT

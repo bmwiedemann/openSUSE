@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Feb 28 02:25:45 UTC 2024 - vivid <absolutely.vivid@fastmail.org>
+
+- Update decker and decker-doc to version 1.39
+
+* checking in Puppeteer
+* introduce dictionary conforming to Lil
+* notes about set operations
+* fix description of raze-of-table
+* even more weekly challenge stuff
+* redefine the raze operator applied to a table to form a dictionary from the first two columns, if available.
+* patch possible UB in GIF decoder
+* make right-clicking with the fill tool erase (pattern 0) instead of using the fill color. In practice I've found this tremendously more useful, especially when working in transparency mask mode.
+* slightly nicer test framework
+* in some situations saving a deck would not necessarily reflect in-progress text editing operations.
+* make dialogizer respect the hidden state of its canvas when servicing a resize.
+* generalize deck.remove[] to accept widgets, removing them from whatever card they may reside within.
+* Lil solutions to the codereport 'top 10' problems.
+* more weekly challenge problems
+* more weekly challenge puzzles
+* extend the image interface with image.scale[], as a convenient chainable alternative to scaling images with image.paste[]
+* fix image export from the background image of a prototype.
+* allow image interfaces to be coerced (rtext.cat[] as well as internal rtext_cast()) to rtext runs containing an inline image.
+* when exporting images, clip the selection to the active container bounds.
+* make the 'Show Transparent' appearance of make Transparent+Invisible buttons not show an inverted background when clicked, making them less visible than ever before
+* when compact sliders are at their minimum or maximum extent, visibly disable the appropriate stepper button and its highlighting behavior.
+* more puzzle solutions
+* correct the vx := random NN instruction in the chip8 emulator example.
+* improve performance of readcsv[] by reducing unnecessary intermediate allocations.
+* a more efficient implementation of l_by(), which carries out the work of the 'by' clause in lil queries.
+* web-decker's random[] did not handle dicts like native-decker; they should be treated the same as lists.
+
+-------------------------------------------------------------------
 Sun Feb 25 03:21:05 UTC 2024 - vivid <absolutely.vivid@fastmail.org>
 
 - Don't strip the decker or lilt binaries
