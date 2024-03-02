@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.7
-%define patchversion 6.7.6
-%define git_commit b9dc7c6bd504ffa68f293710ddbb3d2d3b978e0e
+%define patchversion 6.7.7
+%define git_commit 1ff84c539098385746e3fa3aaf975296fb8e6791
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -113,9 +113,9 @@ Name:           kernel-64kb
 Summary:        Kernel with 64kb PAGE_SIZE
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.7.6
+Version:        6.7.7
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gb9dc7c6
+Release:        <RELEASE>.g1ff84c5
 %else
 Release:        0
 %endif
