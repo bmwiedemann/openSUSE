@@ -83,22 +83,22 @@ variables IRDA_PORT and IRDA_IRQ in the configuration file
 
 %prep
 %setup -q -n irda-utils-%{version}
-%patch1
-%patch2
-%patch3
-%patch4
-%patch5
-%patch6
-%patch7
-%patch8
-%patch9
-%patch10
-%patch11
-%patch12
-%patch13
-%patch14
-%patch15
-%patch16 -p1
+%patch -P 1
+%patch -P 2
+%patch -P 3
+%patch -P 4
+%patch -P 5
+%patch -P 6
+%patch -P 7
+%patch -P 8
+%patch -P 9
+%patch -P 10
+%patch -P 11
+%patch -P 12
+%patch -P 13
+%patch -P 14
+%patch -P 15
+%patch -P 16 -p1
 
 %build
 make %{?_smp_mflags} V=1 RPM_OPT_FLAGS="%{optflags} -fgnu89-inline -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64" INITD=%{_sysconfdir}/init.d ROOT=%{buildroot} all
