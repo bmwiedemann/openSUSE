@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Fri Mar  1 22:59:40 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.7.1
+  + Added
+    - Support libinput option sendEventsMode to allow
+      enabling/disabling devices.
+    - Add click method libinput option.
+    - Add data/labwc.svg & data/labwc-symbolic.svg, and specify
+      icon name in labwc.desktop to enable Display Managers to show
+      an icons for labwc.
+    - Expose output configuration test to clients.
+      For example, this enables wlr-randr --dryrun
+    - Add window-edge resistance for interactive moves/resizes and
+      support negative strengths to indicate attractive snapping.
+    - Set keyboard layout on reconfigure.
+    - Reset keyboard-layout group (index) for each window on
+      reconfigure if the keymap has changed.
+    - Support merging multiple config files with the
+      --merge-config command line option.
+    - Add config option to map touch events to a named output
+      (display). Optionally, make this only apply to specific named
+      devices.
+    - Add tablet support including:
+      + Mapping of tablet to output (display)
+      + Emulation of cursor movement and button press/release
+      + Configuration of area and rotation
+    - Add tearing support.
+    - Add configuration support for mouse buttons Side, Extra,
+      Forward, Back and Task.
+    - config: allow <libinput><device> without category attribute
+      to define a default profile because it is more user-friendly
+      and intuitive.
+    - Add a configuration option to enable adaptive sync only when
+      an application is in fullscreen mode.
+    - Add touchpad libinput device type to increase configuration
+      flexibility, for example allowing naturalScroll on touchpads,
+      but not on regular pointer devices such as mice.
+    - Add actions:
+      + AutoPlace
+      + MoveToOutput, FitToOutput
+      + Shade, Unshade, ToggleShade
+    - Add config option <placement><policy> with supported values
+      center, cursor and automatic. The latter minimizes overlap
+      with other windows already on screen and is similar to
+      Openbox's smart window placement.
+  + Fixed
+    - Delay popup-unconstrain until after first commit in response
+      to a changed wlroots 0.17 interface and to get rid of the
+      error message below.
+    - Notify clients about configuration errors when changing
+      output settings.
+    - Fix output configuration bug causing compositor crash when
+      refresh rate is zero.
+    - Fix disappearing cursor bug on view destruction. Issue #1393
+    - Use used specified config-file (using -c command line option)
+      on reconfigure.
+    - Assign outputs to new views on surface creation instead of
+      mapping, and notify the client of the preferred output scale
+      when doing so.
+    - Fix crash when a minimized fullscreen window closes.
+    - Execute menu actions after closing menus so that menu
+      entries can issue wtype commands to the surface with
+      keyboard-focus.
+    - Try to honor original window geometry on layout changes.
+    - Fix virtual keyboard bug experienced with wlrctl keyboard
+      type xyz. Do not process virtual keyboard keycodes (just the
+      keysyms).
+    - Sync xdg-shell client view->pending when applying geometry
+      to fix issue caused by applications choosing not respond to
+      pending resize requests either by ignoring them or
+      substituting alternative sizes (for example, when mpv
+      constrains resizes to keep its aspect ratio fixed).
+  + Changed
+    - Make MoveToCursor honour <core><gap>.
+    - Add Roll Up/Down client-menu entry for ToggleShade
+    - When a Wayland-native window is snapped to a screen edges or
+      user-defined region, labwc will notify the application that
+      it is "tiled", allowing the application to better adapt its
+      rendering to constrained layouts. Windows with client-side
+      decorations may respond to these notices by squaring off
+      corners and, in some cases, disabling resize abilities.
+    - When a window is dragged from a snapped position (either a
+      screen edge or a user-defined region), the snapped state is
+      now discarded as soon as the dragging begins.
+    - The new windowEdgeStrength setting makes windows resist
+      interactive moves and resizes across the edges of other
+      windows.
+    - Run menu actions on button release intead of press.
+    - Constrain window size to that of usable area when an
+      application is started.
+    - Support showing the full app_id in the window switcher. Users
+      with a custom windowSwitcher configuration should use the
+      trimmed_identifier field label to preserve existing behavior;
+      the identifier field now refers to the full app_id. Consult
+      the labwc-config(5) manual page for more details.
+- Add hicolor-icon-theme BuildRequires: fix icons directory
+
+-------------------------------------------------------------------
 Thu Jan 11 10:05:01 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Remove openbox themes that cause conflict.

@@ -21,7 +21,7 @@
 %define sname   wlroots
 %define sver    0.17.0
 Name:           labwc
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        A Wayland window-stacking compositor
 License:        GPL-2.0-or-later
@@ -51,6 +51,7 @@ BuildRequires:  pkgconfig(xwaylandproto)
 %else
 BuildRequires:  wlroots-devel
 %endif
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
@@ -116,6 +117,7 @@ install -Dm 0644 docs/*.xml -t %{buildroot}%{_sysconfdir}/xdg/%{name}/
 %config(noreplace) %{_sysconfdir}/xdg/%{name}/rc.xml
 %dir %{_datadir}/wayland-sessions
 %{_datadir}/wayland-sessions/%{name}.desktop
+%{_datadir}/icons/hicolor/scalable/apps/labwc*.svg
 %{_mandir}/man?/%{name}*.?%{?ext_man}
 %{_datadir}/doc/%{name}/
 
