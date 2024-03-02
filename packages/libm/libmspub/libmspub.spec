@@ -79,8 +79,7 @@ Group:          Productivity/Publishing/Word
 Command line tools to work with publications in Microsoft Publisher file-format.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"
