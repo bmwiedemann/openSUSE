@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 16:23:33 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Apr 21 07:43:16 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Update to 1.1.6.
