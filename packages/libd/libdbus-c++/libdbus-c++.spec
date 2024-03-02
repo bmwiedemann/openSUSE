@@ -117,11 +117,11 @@ libdbus-c++.
 
 %prep
 %setup -q -n dbus-cplusplus-%{_rev}
-%patch0
-%patch1
-%patch4 -p1
-%patch5
-%patch6
+%patch -P 0
+%patch -P 1
+%patch -P 4 -p1
+%patch -P 5
+%patch -P 6
 
 %build
 export SOVER="%{sover}:0:0"
