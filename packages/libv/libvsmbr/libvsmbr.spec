@@ -18,34 +18,35 @@
 
 Name:           libvsmbr
 %define lname	libvsmbr1
-Version:        20210509
+Version:        20240302
 Release:        0
 Summary:        Library and tools to access the MS-DOS volume system format
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libvsmbr
-Source:         %name-%version.tar.xz
-Patch1:         system-libs.patch
+Source:         https://github.com/libyal/libvsmbr/releases/download/%version/libvsmbr-experimental-%version.tar.gz
+Source2:        https://github.com/libyal/libvsmbr/releases/download/%version/libvsmbr-experimental-%version.tar.gz.asc
+Source3:        %name.keyring
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libbfio) >= 20201229
-BuildRequires:  pkgconfig(libcdata) >= 20200509
-BuildRequires:  pkgconfig(libcerror) >= 20201121
-BuildRequires:  pkgconfig(libcfile) >= 20201229
-BuildRequires:  pkgconfig(libclocale) >= 20200913
-BuildRequires:  pkgconfig(libcnotify) >= 20200913
-BuildRequires:  pkgconfig(libcpath) >= 20200913
-BuildRequires:  pkgconfig(libcsplit) >= 20200703
-BuildRequires:  pkgconfig(libcthreads) >= 20200508
-BuildRequires:  pkgconfig(libfcache) >= 20200708
-BuildRequires:  pkgconfig(libfdata) >= 20201129
-BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(libbfio) >= 20221025
+BuildRequires:  pkgconfig(libcdata) >= 20240103
+BuildRequires:  pkgconfig(libcerror) >= 20240101
+BuildRequires:  pkgconfig(libcfile) >= 20240106
+BuildRequires:  pkgconfig(libclocale) >= 20240107
+BuildRequires:  pkgconfig(libcnotify) >= 20240108
+BuildRequires:  pkgconfig(libcpath) >= 20240109
+BuildRequires:  pkgconfig(libcsplit) >= 20240110
+BuildRequires:  pkgconfig(libcthreads) >= 20240102
+BuildRequires:  pkgconfig(libfcache) >= 20240112
+BuildRequires:  pkgconfig(libfdata) >= 20240114
+BuildRequires:  pkgconfig(libuna) >= 20240130
 %python_subpackages
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 libvsmbr is a library to access the MS-DOS volume system.
@@ -85,7 +86,6 @@ inspect MS-DOS partition tables.
 %autosetup -p1
 
 %build
-autoreconf -fi
 # OOT builds are presently broken, so we have to install
 # within each python iteration now, not in %%install.
 %{python_expand #
@@ -103,8 +103,7 @@ echo "V_%version { global: *; };" >v.sym
 mv %_builddir/rt/* %buildroot/
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING*

@@ -47,4 +47,12 @@
     <comment>python 3.12 build fix</comment>
     <requestid>1144573</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>60379bb67241bc902366f09255df1a02</srcmd5>
+    <version>20240302</version>
+    <time>1709493577</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20240302</comment>
+    <requestid>1154341</requestid>
+  </revision>
 </revisionlist>
