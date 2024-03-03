@@ -129,8 +129,7 @@ KateDJ allows extracting Kate tracks embedded in an Ogg stream, editing
 them, and rebuilding the Ogg stream after the Kate tracks are modified.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 echo 'HTML_TIMESTAMP=NO' >> doc/kate.doxygen.in

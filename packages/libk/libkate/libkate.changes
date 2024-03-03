@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 16:51:20 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Thu Mar 12 08:29:56 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build wihtout python2 again, if any py interpreter is found

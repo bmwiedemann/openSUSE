@@ -189,4 +189,12 @@
   it tries to build with it (here it is pulled by doxygen)</comment>
     <requestid>784191</requestid>
   </revision>
+  <revision rev="23" vrev="27">
+    <srcmd5>dab0f18e9c77892d919f2824818ed090</srcmd5>
+    <version>0.4.1</version>
+    <time>1709493560</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1154098</requestid>
+  </revision>
 </revisionlist>
