@@ -119,7 +119,7 @@ cp -fp %{SOURCE21} .
 cp -fp %{SOURCE22} .
 %autopatch -p1
 %ifarch %{ix86} x86_64
-%patch14 -p1 -R
+%patch -P 14 -p1 -R
 %endif
 
 %build

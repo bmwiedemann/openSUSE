@@ -984,4 +984,12 @@ Fix version typo:
     <comment></comment>
     <requestid>1138333</requestid>
   </revision>
+  <revision rev="122" vrev="2">
+    <srcmd5>a5924ff2cc515d499adf3c9561944568</srcmd5>
+    <version>2.6.4</version>
+    <time>1709493527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153962</requestid>
+  </revision>
 </revisionlist>
