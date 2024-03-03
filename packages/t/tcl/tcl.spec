@@ -1,7 +1,7 @@
 #
 # spec file for package tcl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,11 @@
 
 Name:           tcl
 URL:            http://www.tcl.tk
-Version:        8.6.13
+Version:        8.6.14
 Release:        0
 %define         rrc %{nil}
 %define TCL_MINOR %(echo %version | cut -c1-3)
-%define itclver 4.2.3
+%define itclver 4.2.4
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        The Tcl Programming Language
 License:        TCL
@@ -48,9 +48,6 @@ Source0:        http://prdownloads.sourceforge.net/tcl/%{name}%{version}%{rrc}-s
 Source1:        tcl-rpmlintrc
 Source2:        baselibs.conf
 Source3:        macros.tcl
-Patch0:         tcl-refchan-mode-needed.patch
-Patch1:         tcl-string-compare.patch
-Patch2:         tcl-interp-limit-time.patch
 BuildRequires:  autoconf
 BuildRequires:  pkg-config
 BuildRequires:  zlib-devel
@@ -91,12 +88,9 @@ the Tcl language itself.
 %prep
 %setup -q -n %name%version
 if ! test -d pkgs/itcl%itclver; then
-   : Version mismatch in itcl, please chek the %%itclver macro!
+   : New itcl version: pkgs/itcl* . Please update the %%itclver macro acordingly.
    exit 1
 fi
-%patch0
-%patch1
-%patch2
 
 # The SQLite extension is provided by the sqlite3 package,
 # so don't build it here.

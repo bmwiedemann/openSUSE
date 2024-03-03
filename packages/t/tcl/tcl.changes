@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Mar  1 16:52:58 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Version 8.6.14:
+  * Backport TIP #402: path name starting with '//' not replaced by
+    '/' also on Cygwin and QNX
+  * (bug) [8f7fde] string compare failing on big endian
+  * (bug) [3e8074] y2k38 problem in [interp limit time -seconds]
+  * (bug) [e3dcab] crash with tcl_precision equal 15..18
+  * (bug) [d19fe0] output replacement character on incomplete
+    sequences in unicode encoding
+  * (bug) [534172] sporadic crash in memchan thread cleanup.
+  * (bug) [f9eafc] throw error in zip command when file
+    comment/filename to long or not iso-latin-1
+  * (bug)[183a1a] Prevent BO by Tcl_UtfToExternal
+  * (bug) [ea69b0], crash when using a channel transformation on
+    TCP client socket
+  * (bug)[026575] Prevent invalid read in Tcl_UtfToUniChar
+  * (rfe) Allow empty mode in [chan create] to allow refchan
+    version of [socket -server]
+  * (bug) [ab123c] argument position overflow in [scan %num$mode]
+  * (bug) [784bef] tailcall crash
+  * (bug) [af3ebc] clock scan and clock add bugs in error cases /
+    with abbreviated options
+  * (bug) [66ffaf] incomplete double byte encoding sequences
+    ignored like in [encoding convertfrom gb12345 x]
+  * (rfe) [c54e4a] fork multithreading performance by using
+    vfork/spawn when supported
+  * Update libtommath to version 1.2.1
+  * (bug) [60cacf] Fix tclvfs tkt Segmentation Fault at
+    interpreter exit when tclvfs loaded.
+  * (bug) [b5ac3e] Tcl_GetUniChar reads beyond string length for
+    ASCII strings
+  * Unicode 15.1
+  * (bug) [00655c] ClockGetdatefieldsObjCmd(): avoid signed integer
+    overflow and platform-dependent behavior
+  * TIP #662: Tcl_VarEval is not depreciated any more
+  * (bug) [7b3167] tclOO.c: initialize fakeObject.refCount
+  * (bug) [7371b6] AddressSanitizer use-after-return detection
+    breaks NRE tests, coroutines
+  * (bug)[32b889] prevent spurious errors from [clock format]
+  * (rfe) [0ac9d0] Don't call getsockname(2) in
+    Tcl_MakeFileChannel(3) unless absolutely necessary. Permits
+    better constraining of Tcl/tclsh via OpenBSD's pledge(2) or
+    similar mechanisms. Minor rewrite.
+  * (feature) Adapt tcltest to support Tcl 9.
+  * (bug) [fd27ad] doc change of Tcl_PkgRequire & friends: version
+    string specification refers to "package require".
+  * (bug) [16e25e] error for
+    [tcl_startOfPreviousWord string end-1]
+  * [db4f28] segfault when Tcl_ReadChars is called with unicode
+    object
+  * fix/document Tcl_ObjPrintf with "ll" modifier
+  * [8e666d] endless loop when redefining proc ::history
+  * [86b3c1] endless loop when ::unknown is moved into a namespace
+- Obsoleted patches:
+  * tcl-interp-limit-time.patch
+  * tcl-refchan-mode-needed.patch
+  * tcl-string-compare.patch
+
+-------------------------------------------------------------------
 Thu Mar 30 09:30:57 UTC 2023 - Reinhard Max <max@suse.com>
 
 - Update tcl-refchan-mode-needed.patch to the upstream version.

@@ -749,4 +749,41 @@ sqlite3 patch I will submit in a moment.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1077716</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>1f4e98cf39efe40844ded179a3a77d36</srcmd5>
+    <version>8.6.14</version>
+    <time>1709493489</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 8.6.14:
+  * Backport TIP #402: path name starting with '//' not replaced by
+    '/' also on Cygwin and QNX
+  * (bug) [8f7fde] string compare failing on big endian
+  * (bug) [3e8074] y2k38 problem in [interp limit time -seconds]
+  * (bug) [e3dcab] crash with tcl_precision equal 15..18
+  * (bug) [d19fe0] output replacement character on incomplete
+    sequences in unicode encoding
+  * (bug) [534172] sporadic crash in memchan thread cleanup.
+  * (bug) [f9eafc] throw error in zip command when file
+    comment/filename to long or not iso-latin-1
+  * (bug)[183a1a] Prevent BO by Tcl_UtfToExternal
+  * (bug) [ea69b0], crash when using a channel transformation on
+    TCP client socket
+  * (bug)[026575] Prevent invalid read in Tcl_UtfToUniChar
+  * (rfe) Allow empty mode in [chan create] to allow refchan
+    version of [socket -server]
+  * (bug) [ab123c] argument position overflow in [scan %num$mode]
+  * (bug) [784bef] tailcall crash
+  * (bug) [af3ebc] clock scan and clock add bugs in error cases /
+    with abbreviated options
+  * (bug) [66ffaf] incomplete double byte encoding sequences
+    ignored like in [encoding convertfrom gb12345 x]
+  * (rfe) [c54e4a] fork multithreading performance by using
+    vfork/spawn when supported
+  * Update libtommath to version 1.2.1
+  * (bug) [60cacf] Fix tclvfs tkt Segmentation Fault at
+    interpreter exit when tclvfs loaded.
+  * (bug) [b5ac3e] Tcl_GetUniChar reads beyond string length for
+    ASCII strings</comment>
+    <requestid>1154135</requestid>
+  </revision>
 </revisionlist>
