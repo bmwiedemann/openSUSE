@@ -1,0 +1,60 @@
+From d43b41431379f9c9bb05fab158c4d97e6d515f8f Mon Sep 17 00:00:00 2001
+From: Johannes Schauer Marin Rodrigues <josch@mister-muffin.de>
+Date: Tue, 20 Feb 2024 07:44:20 +0100
+Subject: [PATCH] Make tests work with black 24.2.0
+
+Closes: #55
+---
+ setup.cfg            |  2 ++
+ tests/test_plugin.py | 18 ++++++++++++++++--
+ 2 files changed, 18 insertions(+), 2 deletions(-)
+
+diff --git a/setup.cfg b/setup.cfg
+index a4fefd3..5103bcb 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -22,6 +22,8 @@ install_requires =
+     python-lsp-server>=1.4.0
+     black>=23.11.0
+     tomli; python_version<'3.11'
++tests_require =
++    black>=24.2.0
+ python_requires = >= 3.8
+ 
+ [options.entry_points]
+diff --git a/tests/test_plugin.py b/tests/test_plugin.py
+index 0a51767..2ae8088 100644
+--- a/tests/test_plugin.py
++++ b/tests/test_plugin.py
+@@ -281,7 +281,14 @@ def test_load_config_defaults(config):
+ 
+     assert config == {
+         "line_length": 88,
+-        "target_version": set(),
++        "target_version": set(
++            [
++                black.TargetVersion.PY38,
++                black.TargetVersion.PY39,
++                black.TargetVersion.PY310,
++                black.TargetVersion.PY311,
++            ]
++        ),
+         "pyi": False,
+         "fast": False,
+         "skip_magic_trailing_comma": False,
+@@ -297,7 +304,14 @@ def test_load_config_with_skip_options(config_with_skip_options):
+ 
+     assert config == {
+         "line_length": 88,
+-        "target_version": set(),
++        "target_version": set(
++            [
++                black.TargetVersion.PY38,
++                black.TargetVersion.PY39,
++                black.TargetVersion.PY310,
++                black.TargetVersion.PY311,
++            ]
++        ),
+         "pyi": False,
+         "fast": False,
+         "skip_magic_trailing_comma": True,

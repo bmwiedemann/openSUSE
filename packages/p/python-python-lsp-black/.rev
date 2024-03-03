@@ -83,4 +83,13 @@
 - Be clear that we require lsp-jsonrpc, because the test suite does.</comment>
     <requestid>1137135</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>83f45275dec5b82e78833f02141a3ce4</srcmd5>
+    <version>2.0.0</version>
+    <time>1709493582</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-lsp-black-pr56-black24.2.patch
+  gh#python-lsp/python-lsp-black#56 (forwarded request 1154411 from bnavigator)</comment>
+    <requestid>1154412</requestid>
+  </revision>
 </revisionlist>

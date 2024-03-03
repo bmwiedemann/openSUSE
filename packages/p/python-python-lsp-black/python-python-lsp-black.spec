@@ -24,6 +24,8 @@ Summary:        Black plugin for the Python LSP Server
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-black
 Source:         https://github.com/python-lsp/python-lsp-black/archive/refs/tags/v%{version}.tar.gz#/python-lsp-black-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM python-lsp-black-pr56-black24.2.patch gh#python-lsp/python-lsp-black#56
+Patch0:         https://github.com/python-lsp/python-lsp-black/pull/56.patch#/python-lsp-black-pr56-black24.2.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -56,7 +58,7 @@ To avoid unexpected results you should make sure yapf and autopep8 are not insta
 - python-lsp-black will use your project's pyproject.toml if it has one.
 
 %prep
-%setup -q -n python-lsp-black-%{version}
+%autosetup -p1 -n python-lsp-black-%{version}
 
 %build
 %pyproject_wheel
