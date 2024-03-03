@@ -3741,6 +3741,7 @@ unsorted:
   - evolution-plugin-pst-import 
   - evolution-plugin-text-highlight 
   - evtest 
+  - eww 
   - exaile 
   - exaile-lang 
   - exec-maven-plugin 
@@ -11020,6 +11021,7 @@ unsorted:
   - libX11-6-32bit 
   - libX11-devel 
   - libX11-devel-32bit 
+  - libX11-devel-doc 
   - libX11-xcb1-32bit 
   - libXISF-devel 
   - libXISF0 
@@ -14237,10 +14239,10 @@ unsorted:
   - libopenblas-gnu-hpc-devel 
   - libopenblas-pthreads-gnu-hpc 
   - libopenblas-pthreads-gnu-hpc-devel 
-  - libopenblas-pthreads_0_3_25-gnu-hpc 
-  - libopenblas-pthreads_0_3_25-gnu-hpc-devel 
-  - libopenblas_0_3_25-gnu-hpc 
-  - libopenblas_0_3_25-gnu-hpc-devel 
+  - libopenblas-pthreads_0_3_26-gnu-hpc 
+  - libopenblas-pthreads_0_3_26-gnu-hpc-devel 
+  - libopenblas_0_3_26-gnu-hpc 
+  - libopenblas_0_3_26-gnu-hpc-devel 
   - libopenblas_openmp-devel 
   - libopenblas_pthreads-devel 
   - libopenblas_pthreads-devel-32bit 
@@ -19530,8 +19532,8 @@ unsorted:
   - openbabel-devel 
   - openbabel-gui 
   - openblas-common-devel 
-  - openblas-pthreads_0_3_25-gnu-hpc-devel-static 
-  - openblas_0_3_25-gnu-hpc-devel-static 
+  - openblas-pthreads_0_3_26-gnu-hpc-devel-static 
+  - openblas_0_3_26-gnu-hpc-devel-static 
   - openblas_openmp-devel-static 
   - openblas_pthreads-devel-static 
   - openblas_serial-devel-static 
