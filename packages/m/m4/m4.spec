@@ -37,9 +37,7 @@ Provides:       base:%{_bindir}/m4
 GNU m4 is an implementation of the traditional Unix macro processor.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 %configure \

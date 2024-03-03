@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 23 11:47:05 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Sun Jul 31 08:10:20 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - Use %make_build macro and make sure we run the profiling run with -j1
