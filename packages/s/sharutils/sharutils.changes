@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:10:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Apr 20 20:54:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add sharutils-4.14.2-Pass-compilation-with-Werror-format-security.patch

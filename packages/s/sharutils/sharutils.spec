@@ -52,10 +52,10 @@ bytes.	uudecode does the converse transformation.
 
 %prep
 %setup -q
-%patch0
-%patch1
-%patch2 -p1
-%patch3 -p1
+%patch -P 0
+%patch -P 1
+%patch -P 2 -p1
+%patch -P 3 -p1
 chmod +w src/scripts.x
 
 %build
