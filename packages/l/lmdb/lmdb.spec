@@ -82,10 +82,7 @@ This package contains the files needed to compile programs that use
 the liblmdb library.
 
 %prep
-%setup -qn openldap-LMDB_%version
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1 -n openldap-LMDB_%version
 
 %build
 cd libraries/liblmdb
