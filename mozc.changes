@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb 24 05:36:36 UTC 2024 - Fuminobu Takeyama <ftake@geeko.jp> - 2.29.5268.102
+
+- Upstream update to 2.29.5268
+  * Update dictionaries
+  * Fix crash issue of the candidate window UI 
+- Update zip code dictionaries
+  * Refresh add-sha256sum-for-zipcode-archives.patch
+- Add patch ibus-mozc-candidate-window-qt-virtual-coordinate.patch
+  * Fix google #823: candidate window position issue on HiDPI displays 
+- Enable to build with Python 3.6
+  * Add support-python-3.6.patch 
+
+-------------------------------------------------------------------
 Fri Feb 23 11:54:27 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.

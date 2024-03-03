@@ -10,12 +10,12 @@ Index: mozc-2.28.4715.102/src/WORKSPACE.bazel
      name = "zip_code_ken_all",
      build_file_content = "exports_files([\"KEN_ALL.CSV\"])",
      url = "https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip",
-+    sha256 = "c6255ae5b4bee9c607bf8d88e1f8230e8bcf2a314c5ebc020e2ce3e526ede646"
++    sha256 = "ae7a5cd832b3da5f7c021d70d151a4241c741ca4278ac909c0e3930114f62a75"
  )
  
  http_archive(
      name = "zip_code_jigyosyo",
      build_file_content = "exports_files([\"JIGYOSYO.CSV\"])",
      url = "https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip",
-+    sha256 = "2f2588d4c0f8736f686dfef84d16f30ee6ffb7d0a18919d80d924686f5e2bfd6"
++    sha256 = "f001217dadd684841c31b1eca6aea05eec918f147a548710443d08ff82c28c8a"
  )
