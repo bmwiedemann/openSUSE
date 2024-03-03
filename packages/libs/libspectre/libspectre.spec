@@ -57,8 +57,7 @@ provides a convenient easy to use API for handling and rendering
 Postscript documents.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure --disable-static --enable-shared
