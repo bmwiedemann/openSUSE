@@ -214,4 +214,12 @@
     <comment>- bsc#1191103: Move executable to /usr/sbin.</comment>
     <requestid>922025</requestid>
   </revision>
+  <revision rev="30" vrev="28">
+    <srcmd5>dedd0373cfc29b7224a26572b2143dc0</srcmd5>
+    <version>1.5</version>
+    <time>1709493537</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1154006</requestid>
+  </revision>
 </revisionlist>

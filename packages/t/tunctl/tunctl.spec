@@ -38,8 +38,7 @@ applications to the network stack.
 tunctl originates from the User Mode Linux project.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 make CFLAGS="%{optflags}" %{?_smp_mflags}
