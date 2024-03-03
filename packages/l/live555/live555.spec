@@ -90,8 +90,7 @@ using open standard protocols (RTP/RTCP, RTSP, SIP). These libraries
 can be used to build streaming applications
 
 %prep
-%setup -q -n live
-%patch0 -p1
+%autosetup -p1 -n live
 
 %if 0%{?suse_version} < 1550
 # workaround for build error with test variable w/ atomic_flag
