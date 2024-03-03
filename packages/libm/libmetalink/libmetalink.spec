@@ -67,8 +67,7 @@ provide the programs written in C to add Metalink functionality such as parsing
 Metalink XML files.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 autoreconf -fiv
