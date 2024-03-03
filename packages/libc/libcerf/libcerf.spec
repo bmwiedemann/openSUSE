@@ -58,8 +58,7 @@ Faddeeva, and Voigt functions.
 This package contains development headers and libraries for libcerf
 
 %prep
-%setup -q -n %{name}-v%{version}
-%patch1
+%autosetup -p0 -n %{name}-v%{version}
 # Force cmake to use the paths passed at configure time
 sed -i -e 's|lib/pkgconfig/|%{_lib}/pkgconfig/|' CMakeLists.txt
 sed -i -e 's|DESTINATION lib|DESTINATION %{_lib}|' lib/CMakeLists.txt
