@@ -697,4 +697,44 @@
     <comment></comment>
     <requestid>1134707</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>72be680a144b8b68b1b69c86f7ef0fb0</srcmd5>
+    <version>0.3.26</version>
+    <time>1709493512</time>
+    <user>dimstar_suse</user>
+    <comment>Please stage together with https://build.opensuse.org/request/show/1153127!
+Currently, openSUSE:Factory:Staging:E.
+
+- Remove DYNAMIC_LIST for aarch64 for older gcc versions: This has
+  been fixed upstream.
+
+- Update to version 0.3.26:
+  * General:
+    - Improved the version of openblas.pc that is created by the
+      CMAKE build.
+    - Fixed a CMAKE-specific build problem on older versions of
+      MacOS.
+    - Worked around linking problems on old versions of MacOS.
+    - Corrected installation location of the lapacke_mangling
+      header in CMAKE builds.
+    - Added type declarations for complex variables to the
+      MSVC-specific parts of the LAPACK header.
+    - Significantly sped up ?GESV for small problem sizes by
+      introducing a lower bound for multithreading.
+    - Imported additions and corrections from the Reference-LAPACK
+      project:
+      + Added new LAPACK functions for truncated QR with pivoting
+        (Reference-LAPACK PRs 891&amp;941).
+      + Handle miscalculation of minimum work array size in corner
+      	cases (Reference-LAPACK PR 942).
+      + Fixed use of uninitialized variables in ?GEDMD and
+      	improved inline documentation.
+      + Fixed use of uninitialized variables (and consequential
+      	failures) in ?BBCSD.
+      + Added tests for the recently introduced Dynamic Mode
+      	Decomposition functions.
+      + Fixed several memory leaks in the LAPACK testsuite.
+      + Fixed counting of testsuite results by the Python script.</comment>
+    <requestid>1153572</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Thu Feb 15 08:27:33 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Remove DYNAMIC_LIST for aarch64 for older gcc versions: This has
+  been fixed upstream.
+
+-------------------------------------------------------------------
+Wed Jan 17 08:47:55 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Update to version 0.3.26:
+  * General:
+    - Improved the version of openblas.pc that is created by the
+      CMAKE build.
+    - Fixed a CMAKE-specific build problem on older versions of
+      MacOS.
+    - Worked around linking problems on old versions of MacOS.
+    - Corrected installation location of the lapacke_mangling
+      header in CMAKE builds.
+    - Added type declarations for complex variables to the
+      MSVC-specific parts of the LAPACK header.
+    - Significantly sped up ?GESV for small problem sizes by
+      introducing a lower bound for multithreading.
+    - Imported additions and corrections from the Reference-LAPACK
+      project:
+      + Added new LAPACK functions for truncated QR with pivoting
+        (Reference-LAPACK PRs 891&941).
+      + Handle miscalculation of minimum work array size in corner
+      	cases (Reference-LAPACK PR 942).
+      + Fixed use of uninitialized variables in ?GEDMD and
+      	improved inline documentation.
+      + Fixed use of uninitialized variables (and consequential
+      	failures) in ?BBCSD.
+      + Added tests for the recently introduced Dynamic Mode
+      	Decomposition functions.
+      + Fixed several memory leaks in the LAPACK testsuite.
+      + Fixed counting of testsuite results by the Python script.
+  * x86-64:
+    - Fixed computation of CASUM on SkylakeX and newer targets in
+      the special case that AVX512 is not supported by the compiler
+      or operating environment.
+    - Fixed potential undefined behaviour in the CASUM/ZASUM
+      kernels for AVX512 targets.
+    - worked around a problem in the pre-AVX kernels for GEMV
+  * arm64:
+    - Sped up SGEMM and DGEMM on Neoverse V1 and N1.
+    - Sped up ?DOT on SVE-capable targets.
+    - Reduced the number of targets in DYNAMIC_ARCH builds by
+      eliminating functionally equivalent ones.
+  * POWER:
+    - Improved the SGEMM kernel for POWER10.
+    - Fixed compilation with (very) old versions of gcc.
+    - Fixed detection of old 32bit PPC targets in CMAKE-based
+      builds.
+    - Added autodetection of the POWERPC 7400 subtype.
+    - Fixed CMAKE-based compilation for PPCG4 and PPC970 targets.
+  * LONGARCH64:
+    - Added and improved optimized kernels for almost all BLAS
+      functions.
+
+-------------------------------------------------------------------
 Wed Dec 20 12:02:55 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - add Requires(pre/post): coreutils to the sub-packages that use

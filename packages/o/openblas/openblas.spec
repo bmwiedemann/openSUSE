@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,8 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define _vers 0_3_25
-%define vers 0.3.25
+%define _vers 0_3_26
+%define vers 0.3.26
 %define so_v 0
 %define pname openblas
 
@@ -387,10 +387,6 @@ EOF
 %endif
 %ifarch aarch64
 %global openblas_target %openblas_target TARGET=ARMV8
-%if 0%{?suse_version} < 1550
-# Only enable targets without sve when using GCC < 9
-%global openblas_target %openblas_target DYNAMIC_LIST="ARMV8 CORTEXA53 CORTEXA57 CORTEXA72 CORTEXA73 CORTEXA55 FALKOR THUNDERX THUNDERX2T99 TSV110 EMAG8180 NEOVERSEN1 NEOVERSEV1 THUNDERX3T110"
-%endif
 %define openblas_opt BUILD_BFLOAT16=1
 %endif
 %ifarch s390 s390x
