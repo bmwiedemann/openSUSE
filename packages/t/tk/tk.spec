@@ -1,7 +1,7 @@
 #
 # spec file for package tk
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ BuildRequires:  libXt-devel
 BuildRequires:  pkg-config
 BuildRequires:  tcl-devel
 URL:            http://www.tcl.tk
-Version:        8.6.13
+Version:        8.6.14
 Release:        0
 %define         rrc %{nil}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

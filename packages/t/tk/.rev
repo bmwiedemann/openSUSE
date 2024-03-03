@@ -567,4 +567,32 @@
   * (bug)[0ce975] panedwindow calls memcpy with NULL pointer</comment>
     <requestid>1038706</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>0859f4eb0b8cbd4f91d8ccf92d748040</srcmd5>
+    <version>8.6.14</version>
+    <time>1709493490</time>
+    <user>dimstar_suse</user>
+    <comment>- New version 8.6.14:
+  * (bug)[6ee162] crash in [ttk::style configure]
+  * Permit [tk scaling] to return scale factor in safe interp
+  * Correct rounding of [nsFont pointSize]
+  * (bug)[cee095] X error handler management in Tk_MeasureChars
+  * (bug)[170551] crash in [tk busy forget]
+  * (bug)[6cd476] crash using [tk busy hold]
+  * (bug)[93fe36] Fix &lt;&lt;MenuSelect&gt;&gt; with -tearoff
+  * (bug)[15c685] menu clones, tests menu-20.1[2-6]
+  * (bug)[f4d9d7] canvas items ignored -disabledwidth
+  * (bug)[a9cf21] Text selection omits first character
+  * (bug)[310c74] No theme change attempts after Tk finalize
+  * (bug)[3414695] Dialogs robust against parent destruction
+  * (bug)[ab9581] Guard against use-after-free crashes
+  * (bug)[7447ed] [tk_chooseColor] handle grab fail
+  * (bug)[4666f2] Protect aganst NULL windows
+  * (bug)[a418aa] bogus @x,y menu entry indices, menu-22.[6-9]
+  * (bug)[578441] memleak in TkScrollWindow
+  * (bug)[228476] link wish to correct libtk
+  * (bug)[f9eddb] region clip &amp; copy better OS implementations
+  * (bug)[c35c34] memleak in Initialize</comment>
+    <requestid>1154136</requestid>
+  </revision>
 </revisionlist>
