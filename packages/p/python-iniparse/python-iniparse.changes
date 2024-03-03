@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 29 23:36:16 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+- Refresh iniparse-insert-after-commented-option.patch to apply with -p1
+- Drop now unneeded Buildrequires on python3-devel
+
+-------------------------------------------------------------------
 Wed Dec 20 11:37:21 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Fix tests with python 3.11.7

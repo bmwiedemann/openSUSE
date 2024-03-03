@@ -1,7 +1,7 @@
 Index: iniparse/ini.py
 ===================================================================
---- iniparse/ini.py.orig
-+++ iniparse/ini.py
+--- a/iniparse/ini.py.orig
++++ b/iniparse/ini.py
 @@ -240,8 +240,11 @@ class LineContainer(object):
              if isinstance(d, list): self.extend(d)
              else: self.add(d)
@@ -77,8 +77,8 @@ Index: iniparse/ini.py
  
 Index: tests/test_ini.py
 ===================================================================
---- tests/test_ini.py.orig
-+++ tests/test_ini.py
+--- a/tests/test_ini.py.orig
++++ b/tests/test_ini.py
 @@ -404,6 +404,40 @@ another = baz
          ip.section.another = 'baz'
          self.assertEqual(str(ip), self.s6)

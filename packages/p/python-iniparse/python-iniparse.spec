@@ -1,7 +1,7 @@
 #
 # spec file for package python-iniparse
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2017 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,6 @@ Version:        0.5
 Release:        0
 Summary:        Python Module for Accessing and Modifying Configuration Data in INI files
 License:        MIT
-Group:          Development/Libraries/Python
 URL:            https://github.com/candlepin/python-iniparse
 Source:         https://files.pythonhosted.org/packages/source/i/iniparse/iniparse-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM: speilicke@suse.com -- Backport of https://code.google.com/p/iniparse/issues/detail?id=31
@@ -35,13 +34,12 @@ Patch2:         python-iniparse-no-six.patch
 Patch3:         python311-compat.patch
 # PATCH-FIX-UPSTREAM: python3117.patch gh#candlepin/python-iniparse#29
 Patch4:         python3117.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module testsuite}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# python2-devel contains test module, even for noarch package
-BuildRequires:  %{python_module devel}
-# tests require testsuite modules
-BuildRequires:  %{python_module testsuite}
 BuildArch:      noarch
 %python_subpackages
 
@@ -52,21 +50,16 @@ standard library's ConfigParser, preserves structure of INI files
 are preserved when data is updated), and is more convenient to use.
 
 %prep
-%setup -q -n iniparse-%{version}
-%patch0
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1 -n iniparse-%{version}
 
 chmod 644 html/index.html
 sed -i "/.*test_multiprocessing.*/d" tests/__init__.py # NOTE(saschpe): Doesn't work and I'm lazy
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 rm -rf %{buildroot}%{_datadir}/doc/iniparse-%{version} # Remove unwanted stuff
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -77,6 +70,6 @@ rm -rf %{buildroot}%{_datadir}/doc/iniparse-%{version} # Remove unwanted stuff
 %license LICENSE
 %doc Changelog LICENSE-PSF README.md html/*
 %{python_sitelib}/iniparse
-%{python_sitelib}/iniparse-*.egg-info
+%{python_sitelib}/iniparse-%{version}.dist-info
 
 %changelog
