@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Fri Mar 01 20:05:18 UTC 2024 - mcepl@cepl.eu
+
+- Update to version 5.1.2.1.0+git.1707061634.0d313b2:
+  * Rework stack overflow handling.
+  * Preserve keys with dynamic values in template tables when saving bytecode.
+  * Prevent include of luajit_rolling.h.
+  * Fix documentation bug about '\z' string escape.
+  * Fix zero stripping in %g number formatting.
+  * Fix unsinking of IR_FSTORE for NULL metatable.
+  * DynASM/x86: Add endbr instruction.
+  * MIPS64 R2/R6: Fix FP to integer conversions.
+  * Add cross-32/64 bit and deterministic bytecode generation.
+  * DynASM/x86: Allow [&expr] operand.
+  * Check for IR_HREF vs. IR_HREFK aliasing in non-nil store check.
+  * Respect jit.off() on pending trace exit.
+  * Simplify handling of instable types in TNEW/TDUP load forwarding.
+  * Only emit proper parent references in snapshot replay.
+  * Fix anchoring for string buffer set() method (again).
+  * ARM: Fix stack restore for FP slots.
+  * Document workaround for multilib vs. cross-compiler conflict.
+  * Fix anchoring for string buffer set() method.
+  * Fix runtime library flags for MSVC debug builds.
+  * Fix .debug_abbrev section in GDB JIT API.
+  * Optimize table.new() with constant args to (sinkable) IR_TNEW.
+  * Emit sunk IR_NEWREF only once per key on snapshot replay.
+  * Fix last commit.
+  * x86/x64: Don't fuse loads across IR_NEWREF.
+  * Improve last commit.
+  * x86/x64: Don't fuse loads across table.clear.
+  * x86/x64: Add more red zone checks to assembler backend.
+  * Add stack check to pcall/xpcall.
+  * Invalidate SCEV entry when returning to lower frame.
+  * FFI: Fix pragma push stack limit check and throw on overflow.
+  * ARM64: Fix disassembly of ldp/stp offsets.
+  * Check for upvalue state transition in IR_UREFO.
+  * x64: Properly fix __call metamethod return dispatch.
+  * Windows/x86: _BitScan*64 are only available on 64 bit archs.
+  * Add 'cc' file type for saving bytecode.
+  * FFI/Windows: Fix type declaration for int64_t and uint64_t.
+  * FFI: Fix dangling reference to CType in carith_checkarg().
+  * DynASM/ARM64: Support ldp/stp of q registers.
+  * ARM64: Use ADR and ADRP to form constants.
+  * ARM64: Fix disassembly of U12 loads.
+  * ARM64: Unify constant register handling in interpreter.
+  * ARM: Fix register hint for FFI calls with FP results.
+  * ARM64: Fix register hint for FFI calls with FP results.
+  * ARM64: Restore fp before sp in C stack unwinders.
+  * FFI: Fix ffi.abi("pauth").
+  * Maintain chain invariant in DCE.
+  * LJ_FR2: Fix stack checks in vararg calls.
+  * Follow-up fix for stack overflow handling cleanup.
+  * Handle OOM error on stack resize in coroutine.resume and lua_checkstack.
+  * Restore cur_L for specific Lua/C API use case.
+  * Consistently use 64 bit constants for 64 bit IR instructions.
+  * ARM64: Fix IR_HREF code generation for constant FP keys.
+  * ARM64: Fuse negative 32 bit constants into arithmetic ops again.
+  * Handle all stack layouts in (delayed) TRACE vmevent.
+  * Add missing coercion when recording select(string, ...)
+  * Cleanup stack overflow handling.
+  * Windows/ARM64: Add MSVC cross-build support for x64 to ARM64.
+  * IR_MIN/IR_MAX is non-commutative due to underlying FPU ops.
+  * ARM64: Set fixed interpreter registers before rethrow.
+  * Windows/ARM64: Update install docs.
+  * Windows: Call C++ destructors without compiling with /EHa.
+  * Windows: Pass scratch CONTEXT record to RtlUnwindEx.
+  * ARM64: External unwinder already restores non-volatile registers.
+  * Windows/ARM64: Fix exception unwinding (again).
+  * Windows/ARM64: Fix typo in exception unwinding.
+  * FFI: Fix 64 bit shift fold rules.
+  * Windows/ARM64: Support Windows calling conventions.
+  * Windows/ARM64: Fix exception unwinding.
+  * ARM64: Remove unneeded IRCALL_* defs for math intrinsics.
+  * Fix Cygwin build.
+  * Allow path overrides in genversion.lua with minilua, too.
+  * Windows/ARM64: Add initial support.
+  * Improve architecture detection error messages.
+  * ARM64: Fuse rotates into logical operands.
+  * ARM64: Don't fuse sign extensions into logical operands.
+  * ARM64: Disassemble rotates on logical operands.
+  * ARM: Fix stack check code generation.
+  * ARM64: Fix LDP/STP fusion (again).
+  * ARM64: Ensure branch is in range before emitting TBZ/TBNZ.
+  * Fix mcode limit check for non-x86 archs.
+  * ARM64: Improve BC_JLOOP.
+  * ARM64: Improve integer IR_MUL code generation.
+  * ARM64: Simplify code generation for IR_STRTO.
+  * ARM64: Use RID_TMP instead of scratch register in more places.
+  * ARM64: Improve IR_OBAR code generation.
+  * ARM64: Improve IR_UREF code generation.
+  * ARM64: Improve IR_HREF code generation.
+  * ARM64: Reload BASE via GL instead of spilling it.
+  * ARM64: Consolidate 32/64-bit constant handling in assembler.
+  * ARM64: Tune emit_lsptr. Avoid wrong load for asm_prof.
+  * ARM64: Inline only use of emit_loada.
+  * ARM64: Improve K13 constant rematerialization.
+  * Add NaN check to IR_NEWREF.
+  * Allow override of paths for genversion.lua.
+  * Fix native MinGW build.
+- Also refresh luajit-s390x.patch from the rebased pull request.
+
+-------------------------------------------------------------------
 Mon Oct  9 20:09:43 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Adjust luajit-lua-versioned.patch to have correct LUA_LJDIR

@@ -1,7 +1,7 @@
 #
 # spec file for package luajit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define lib_version 5_1
 %define so_version 2
 Name:           luajit
-Version:        5.1.2.1.0+git.1693350652.41fb94d
+Version:        5.1.2.1.0+git.1707061634.0d313b2
 Release:        0
 Summary:        JIT compiler for Lua language
 License:        MIT

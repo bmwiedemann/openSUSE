@@ -34,11 +34,12 @@ Subject: Get rid of LUAJIT_VERSION_SYM that changes ABI on every patch release
    if (argn < 0) {  /* Invalid args? */
 --- a/src/luajit_rolling.h
 +++ b/src/luajit_rolling.h
-@@ -73,7 +73,4 @@ LUA_API void luaJIT_profile_stop(lua_Sta
+@@ -73,8 +73,5 @@ LUA_API void luaJIT_profile_stop(lua_Sta
  LUA_API const char *luaJIT_profile_dumpstack(lua_State *L, const char *fmt,
  					     int depth, size_t *len);
  
 -/* Enforce (dynamic) linker error for version mismatches. Call from main. */
 -LUA_API void LUAJIT_VERSION_SYM(void);
 -
+ #error "DO NOT USE luajit_rolling.h -- only include build-generated luajit.h"
  #endif

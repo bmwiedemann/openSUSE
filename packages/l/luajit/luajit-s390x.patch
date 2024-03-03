@@ -1,24 +1,3 @@
-From ad1d41ea8bd3454c066172c99e94cc6848e470ce Mon Sep 17 00:00:00 2001
-From: Ilya Leoshkevich <iii@linux.ibm.com>
-Date: Fri, 11 Aug 2023 13:51:19 +0200
-Subject: [PATCH] Add s390x architecture support
-
-s390x (IBM Z) is an architecture of server computers produced by IBM.
-It is supported by a number of open source code generators, such as
-GCC, LLVM, OpenJDK, eBPF, QEMU, Valgrind and Cranelift. One of the
-missing pieces in the ecosystem support is LuaJIT.
-
-The s390x support for LuaJIT was initially developed by @ketank-new,
-@mundaym and @niravthakkar. It found its way into moonjit and luajit2
-forks, as well as Fedora distro (as a patch). There were also smaller
-contributions by @preetikhorjuvenkar, @Bisht13, @velemas and @iii-i.
-
-This is a cumulative patch of the work mentioned above. It contains
-all the contributions squashed together, plus minor stylistic
-cleanups. It passes all the tests from LuaJIT-test-cleanup, except
-for contents.lua, which fails on x86_64 as well.
-
-Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
 ---
  dynasm/dasm_s390x.h    |  546 ++++++
  dynasm/dasm_s390x.lua  | 1634 ++++++++++++++++++
@@ -29,7 +8,7 @@ Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
  src/lib_jit.c          |    2 
  src/lj_arch.h          |   19 
  src/lj_asm.c           |    2 
- src/lj_ccall.c         |   47 
+ src/lj_ccall.c         |   50 
  src/lj_ccall.h         |   15 
  src/lj_ccallback.c     |    9 
  src/lj_err.c           |    3 
@@ -37,12 +16,7 @@ Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
  src/lj_target.h        |    2 
  src/lj_target_s390x.h  |   80 
  src/vm_s390x.dasc      | 4261 +++++++++++++++++++++++++++++++++++++++++++++++++
- 17 files changed, 6693 insertions(+), 1 deletion(-)
- create mode 100644 dynasm/dasm_s390x.h
- create mode 100644 dynasm/dasm_s390x.lua
- create mode 100644 src/jit/dis_s390x.lua
- create mode 100644 src/lj_target_s390x.h
- create mode 100644 src/vm_s390x.dasc
+ 17 files changed, 6697 insertions(+)
 
 --- /dev/null
 +++ b/dynasm/dasm_s390x.h
@@ -2343,7 +2317,7 @@ Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
 +-- Not yet implemented.
 --- a/src/lib_jit.c
 +++ b/src/lib_jit.c
-@@ -720,6 +720,8 @@ static uint32_t jit_cpudetect(void)
+@@ -702,6 +702,8 @@ static uint32_t jit_cpudetect(void)
    }
  #endif
  
@@ -2365,14 +2339,14 @@ Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
  #define LUAJIT_OS_OTHER		0
 @@ -59,6 +61,8 @@
  #define LUAJIT_TARGET	LUAJIT_ARCH_ARM
- #elif defined(__aarch64__)
+ #elif defined(__aarch64__) || defined(_M_ARM64)
  #define LUAJIT_TARGET	LUAJIT_ARCH_ARM64
 +#elif defined(__s390x__) || defined(__s390x)
 +#define LUAJIT_TARGET	LUAJIT_ARCH_S390X
  #elif defined(__ppc__) || defined(__ppc) || defined(__PPC__) || defined(__PPC) || defined(__powerpc__) || defined(__powerpc) || defined(__POWERPC__) || defined(__POWERPC) || defined(_M_PPC)
  #define LUAJIT_TARGET	LUAJIT_ARCH_PPC
  #elif defined(__mips64__) || defined(__mips64) || defined(__MIPS64__) || defined(__MIPS64)
-@@ -438,6 +442,21 @@
+@@ -439,6 +443,21 @@
  #define LJ_ARCH_VERSION		10
  #endif
  
@@ -2396,7 +2370,7 @@ Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
  #endif
 --- a/src/lj_asm.c
 +++ b/src/lj_asm.c
-@@ -1704,6 +1704,8 @@ static void asm_loop(ASMState *as)
+@@ -1708,6 +1708,8 @@ static void asm_loop(ASMState *as)
  #include "lj_asm_ppc.h"
  #elif LJ_TARGET_MIPS
  #include "lj_asm_mips.h"
@@ -2448,24 +2422,27 @@ Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
  #else
  #error "Missing calling convention definitions for this architecture"
  #endif
-@@ -990,7 +1024,7 @@ static int ccall_set_args(lua_State *L,
-     CTypeID did;
+@@ -999,6 +1033,9 @@ static int ccall_set_args(lua_State *L,
      CType *d;
      CTSize sz;
--    MSize n, isfp = 0, isva = 0;
-+    MSize n, isfp = 0, isva = 0, onstack = 0;
+     MSize n, isfp = 0, isva = 0;
++#if LJ_TARGET_S390X
++    MSize onstack = 0;
++#endif
      void *dp, *rp = NULL;
  
      if (fid) {  /* Get argument type from field. */
-@@ -1029,6 +1063,7 @@ static int ccall_set_args(lua_State *L,
+@@ -1037,6 +1074,9 @@ static int ccall_set_args(lua_State *L,
      CCALL_HANDLE_REGARG  /* Handle register arguments. */
  
      /* Otherwise pass argument on stack. */
++#if LJ_TARGET_S390X
 +    onstack = 1;
++#endif
      if (CCALL_ALIGN_STACKARG) {  /* Align argument on stack. */
        MSize align = (1u << ctype_align(d->info)) - 1;
        if (rp || (CCALL_PACK_STACKARG && isva && align < CTSIZE_PTR-1))
-@@ -1073,6 +1108,16 @@ static int ccall_set_args(lua_State *L,
+@@ -1086,6 +1126,16 @@ static int ccall_set_args(lua_State *L,
        *(int64_t *)dp = (int64_t)*(int32_t *)dp;  /* Sign-extend to 64 bit. */
      }
  #endif
@@ -2526,7 +2503,7 @@ Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
  #endif
 --- a/src/lj_err.c
 +++ b/src/lj_err.c
-@@ -419,6 +419,9 @@ LJ_FUNCA int lj_err_unwind_dwarf(int ver
+@@ -448,6 +448,9 @@ LJ_FUNCA int lj_err_unwind_dwarf(int ver
    if (version != 1)
      return _URC_FATAL_PHASE1_ERROR;
    cf = (void *)_Unwind_GetCFA(ctx);
@@ -2561,7 +2538,7 @@ Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
  #endif
 --- a/src/lj_target.h
 +++ b/src/lj_target.h
-@@ -146,6 +146,8 @@ typedef uint32_t RegCost;
+@@ -143,6 +143,8 @@ typedef uint32_t RegCost;
  #include "lj_target_ppc.h"
  #elif LJ_TARGET_MIPS
  #include "lj_target_mips.h"
