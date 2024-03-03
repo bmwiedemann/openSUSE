@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar  2 18:55:05 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 1.1.8
+  * This release includes build system cleanups and adds "e" to the
+    fopen() flags to avoid leaking fd's when calling applications
+    exec another program.
+
+-------------------------------------------------------------------
 Fri Dec  9 22:35:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.7:
