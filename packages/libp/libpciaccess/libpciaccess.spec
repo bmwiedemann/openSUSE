@@ -66,8 +66,7 @@ This package contains the development headers for the library found
 in %lname.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %meson -Dpci-ids=%_datadir
