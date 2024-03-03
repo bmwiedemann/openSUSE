@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 01 13:59:28 UTC 2024 - andrea.manzini@suse.com
+
+- Update to version 1.0.0:
+  * fix: match OpenSSL letter releases (#2682)
+  * Mark duplicated rows in table output (#2679)
+  * fix: trim path from deps.json in portable way (#2674)
+  * chore(deps): update tools to latest versions (#2680)
+  * enforce breaking change bump major version (#2635)
+  * docs: fix incorrect flag name in readme (#2677)
+  * Consider filesystem types for mount points when ignoring system paths (#2675)
+  * fix: stop emitting bus events on go mod events (#2673)
+  * chore(deps): bump peter-evans/create-pull-request from 6.0.0 to 6.0.1 (#2676)
+  * feat: add `--from` flag, refactor source providers (#2610)
+
+-------------------------------------------------------------------
 Tue Feb 27 12:40:20 UTC 2024 - andrea.manzini@suse.com
 
 - Update to version 0.105.1:
