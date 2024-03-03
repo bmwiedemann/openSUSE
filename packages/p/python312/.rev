@@ -1023,4 +1023,16 @@
 </comment>
     <requestid>1148455</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>588634c72e3aa060f5586f59717f400d</srcmd5>
+    <version>3.12.2</version>
+    <time>1709493515</time>
+    <user>dimstar_suse</user>
+    <comment>- (bsc#1219666, CVE-2023-6597) Add
+  CVE-2023-6597-TempDir-cleaning-symlink.patch (patch from
+  gh#python/cpython!99930) fixing symlink bug in cleanup of
+  tempfile.TemporaryDirectory.
+</comment>
+    <requestid>1153616</requestid>
+  </revision>
 </revisionlist>

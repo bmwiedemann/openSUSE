@@ -163,6 +163,9 @@ Patch36:        CVE-2023-27043-email-parsing-errors.patch
 # PATCH-FIX-UPSTREAM libexpat260.patch gh#python/cpython#115288
 # Fix tests for XMLPullParser with Expat 2.6.0
 Patch37:        libexpat260.patch
+# PATCH-FIX-UPSTREAM CVE-2023-6597-TempDir-cleaning-symlink.patch bsc#1219666 mcepl@suse.com
+# tempfile.TemporaryDirectory: fix symlink bug in cleanup (from gh#python/cpython!99930)
+Patch38:        CVE-2023-6597-TempDir-cleaning-symlink.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
