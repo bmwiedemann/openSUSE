@@ -35,7 +35,7 @@
 %define libAppStreamQt_sover 3
 %define libappstream_compose_sover 0
 Name:           AppStream%{?pkg_suffix}
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Tools and libraries to work with AppStream metadata
 License:        LGPL-2.1-or-later
@@ -215,9 +215,9 @@ GObject introspection bindings for interfaces provided by AppStream.
 %endif
 
 %if 0%{?qt6}
-%define options -Dqt=true -Dvapi=false -Dcompose=false -Dgir=false
+%define options -Dqt=true -Dqt-versions=6 -Dvapi=false -Dcompose=false -Dgir=false
 %else
-%define options -Dqt5=true -Dcompose=true -Dvapi=%{build_vapi}
+%define options -Dqt=true -Dqt-versions=5 -Dcompose=true -Dvapi=%{build_vapi}
 %endif
 
 %if %{with gcc13}

@@ -482,4 +482,12 @@ Features:
     <comment>Update to 1.0.1 (forwarded request 1143235 from krop)</comment>
     <requestid>1143302</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>50e76f415f97a0ec9398b1604b58fac1</srcmd5>
+    <version>1.0.2</version>
+    <time>1709493569</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1154154</requestid>
+  </revision>
 </revisionlist>
