@@ -55,9 +55,9 @@ Documentation: man page
 %prep
 %setup -q
 # global_screenrc.patch
-%patch0
+%patch -P 0
 # libtinfo.diff
-%patch6
+%patch -P 6
 
 %build
 sh ./autogen.sh

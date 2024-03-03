@@ -558,4 +558,12 @@ Changelog updated and bug reported upstream here: https://savannah.gnu.org/bugs/
 - fix for root compromise using configurable visual bell string</comment>
     <requestid>1114265</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>a0347bf3f34b2915008fefe1e32e5e2d</srcmd5>
+    <version>4.9.1</version>
+    <time>1709493476</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153236</requestid>
+  </revision>
 </revisionlist>

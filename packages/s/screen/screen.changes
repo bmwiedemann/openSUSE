@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:12:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Sep 13 12:01:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.9.1 (bsc#1210272, CVE-2023-24626):
