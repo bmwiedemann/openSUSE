@@ -121,29 +121,29 @@ such applications.
 
 %prep
 %setup -q
-%patch1
-%patch2
-%patch3
-%patch4
-%patch5
-%patch6
-%patch7
-%patch8
-%patch9
-%patch10
-%patch11
-%patch12
-%patch13
-%patch14
-%patch15
-%patch16
-%patch17
-%patch18 -p2
-%patch19
-%patch20
-%patch21 -p1
-%patch22
-%patch23
+%patch -P 1
+%patch -P 2
+%patch -P 3
+%patch -P 4
+%patch -P 5
+%patch -P 6
+%patch -P 7
+%patch -P 8
+%patch -P 9
+%patch -P 10
+%patch -P 11
+%patch -P 12
+%patch -P 13
+%patch -P 14
+%patch -P 15
+%patch -P 16
+%patch -P 17
+%patch -P 18 -p2
+%patch -P 19
+%patch -P 20
+%patch -P 21 -p1
+%patch -P 22
+%patch -P 23
 
 %build
 autoreconf -fiv

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:37:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Aug 31 14:21:40 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Migration to /usr/etc: Saving user changed configuration files
