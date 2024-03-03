@@ -69,7 +69,7 @@ available.
 
 %prep
 %setup -q
-%patch0 -b .p0
+%patch -P 0 -b .p0
 
 %build
 %add_optflags -g3 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE
