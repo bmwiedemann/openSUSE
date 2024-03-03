@@ -67,9 +67,7 @@ The libnetcontrol-devel package contains libraries and header files
 required for development.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 %configure \

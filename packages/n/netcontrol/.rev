@@ -224,4 +224,12 @@
   version (fate#306765).</comment>
     <requestid>1124120</requestid>
   </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>eb96a094b8241d85f2eaad8d950514f3</srcmd5>
+    <version>0.3.2</version>
+    <time>1709493522</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153945</requestid>
+  </revision>
 </revisionlist>
