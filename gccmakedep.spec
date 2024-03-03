@@ -1,7 +1,7 @@
 #
 # spec file for package gccmakedep
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gccmakedep
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Summary:        Utility to list the resource database of an X application
 License:        MIT
 Group:          Development/Tools/Building
 URL:            https://xorg.freedesktop.org/
-Source0:        https://www.x.org/releases/individual/util/%{name}-%{version}.tar.bz2
+Source0:        https://www.x.org/releases/individual/util/%{name}-%{version}.tar.xz
 # This was part of the xorg-x11-util-devel package up to version 7.6
 Conflicts:      xorg-x11-util-devel <= 7.6
 BuildArch:      noarch
