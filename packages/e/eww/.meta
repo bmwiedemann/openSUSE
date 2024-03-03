@@ -1,0 +1,6 @@
+<package name="eww" project="openSUSE:Factory">
+  <title>Elkowars Wacky Widgets</title>
+  <description>Elkowars Wacky Widgets is a standalone widget system made in Rust that allows you to implement your own, custom widgets in any window manager.</description>
+  <devel project="X11:Wayland" package="eww"/>
+  <url>https://github.com/elkowar/eww</url>
+</package>
