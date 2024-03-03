@@ -2530,4 +2530,12 @@ See bugzilla 1167537 for the gory details.</comment>
   0003-Error-out-on-a-missing-changelog-date.patch (forwarded request 1146788 from jzerebecki)</comment>
     <requestid>1146851</requestid>
   </revision>
+  <revision rev="315" vrev="3">
+    <srcmd5>a21d0c4a44714969d365aed8c2541ba1</srcmd5>
+    <version>4.19.1.1</version>
+    <time>1709493488</time>
+    <user>dimstar_suse</user>
+    <comment>- added a missing %patch NR conversion</comment>
+    <requestid>1153996</requestid>
+  </revision>
 </revisionlist>

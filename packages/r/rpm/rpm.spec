@@ -233,7 +233,7 @@ rm -rf sqlite
 %patch -P 140 -P 141 -P 142 -p1
 
 %ifarch aarch64 ppc64le riscv64
-%patch6464
+%patch -P 6464
 %endif
 
 rm -f m4/libtool.m4
