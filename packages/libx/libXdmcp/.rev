@@ -113,4 +113,20 @@
   * Switch from libbsd to libbsd-overlay</comment>
     <requestid>1036995</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>90d038913c76d31de4f932fd2162056d</srcmd5>
+    <version>1.1.5</version>
+    <time>1709493510</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.5
+  * Remove &quot;All rights reserved&quot; from Oracle copyright notices
+  * configure: Use LT_INIT from libtool 2 instead of deprecated
+    AC_PROG_LIBTOOL
+  * Xdmcp.h: add access attributes to function prototypes
+  * Clear -Wunused-macros warnings when arc4random_buf() is available
+  * XdmcpWriteHeader: drop unnecessary cast of free() argument
+  * XdmcpWriteHeader: use calloc instead of malloc to alloc buffer
+  * gitlab CI: add xz-utils to container for &quot;make distcheck&quot;</comment>
+    <requestid>1154347</requestid>
+  </revision>
 </revisionlist>

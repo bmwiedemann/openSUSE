@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar  3 03:34:58 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.5
+  * Remove "All rights reserved" from Oracle copyright notices
+  * configure: Use LT_INIT from libtool 2 instead of deprecated
+    AC_PROG_LIBTOOL
+  * Xdmcp.h: add access attributes to function prototypes
+  * Clear -Wunused-macros warnings when arc4random_buf() is available
+  * XdmcpWriteHeader: drop unnecessary cast of free() argument
+  * XdmcpWriteHeader: use calloc instead of malloc to alloc buffer
+  * gitlab CI: add xz-utils to container for "make distcheck"
+
+-------------------------------------------------------------------
 Sun Nov 20 22:48:32 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.1.4
