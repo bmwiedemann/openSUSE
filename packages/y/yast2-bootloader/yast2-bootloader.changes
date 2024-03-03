@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:30:54 UTC 2024 - Stefan Schubert <schubi@suse.com>
+
+- Feature: Do not timeout boot menue in systemd-boot. (bsc#1216366)
+- 5.0.6
+
+-------------------------------------------------------------------
 Tue Feb 20 07:42:45 UTC 2024 - Stefan Schubert <schubi@suse.com>
 
 - Proposal: Trying to take the bootloader which has been defined in
