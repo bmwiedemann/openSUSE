@@ -169,10 +169,10 @@ then
     echo "dlcompat contains potential legal risks."
     rm -rf %{_builddir}/%{name}-%{version}/dlcompat-*
 fi
-%patch0
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
+%patch -P 0
+%patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
 
 %build
 find . -name "*.cvsignore" -exec rm -fv "{}" "+"

@@ -22,7 +22,7 @@
 %endif
 
 Name:           cyrus-sasl-saslauthd-bdb
-Version:        2.1.28
+Version: 2.1.28
 Release:        0
 Summary:        The SASL Authentication Server
 License:        BSD-4-Clause
@@ -75,10 +75,10 @@ The SQL auxprop plugin supports PostgreSQL and MySQL
 
 %prep
 %setup -n cyrus-sasl-%{version} -a 1
-%patch0
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
+%patch -P 0
+%patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
 
 %build
 find . -name "*.cvsignore" -exec rm -fv "{}" "+"

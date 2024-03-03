@@ -18,7 +18,7 @@
 
 Name:           cyrus-sasl-bdb
 %define lname   libsasl2-3
-Version:        2.1.28
+Version: 2.1.28
 Release:        0
 URL:            https://github.com/cyrusimap/cyrus-sasl
 Summary:        Implementation of Cyrus SASL API
@@ -161,10 +161,10 @@ then
     echo "dlcompat contains potential legal risks."
     rm -rf %{_builddir}/cyrus-sasl-%{version}/dlcompat-*
 fi
-%patch0
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
+%patch -P 0
+%patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
 
 %build
 find . -name "*.cvsignore" -exec rm -fv "{}" "+"
