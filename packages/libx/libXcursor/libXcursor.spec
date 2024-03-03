@@ -1,7 +1,7 @@
 #
 # spec file for package libXcursor
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libXcursor
 %define lname	libXcursor1
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        X Window System Cursor management library
 License:        MIT

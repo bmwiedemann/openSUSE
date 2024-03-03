@@ -104,4 +104,19 @@
     significant documentation improvements.</comment>
     <requestid>966672</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>303acfff036e2edb2a946ad02678b6b2</srcmd5>
+    <version>1.2.2</version>
+    <time>1709493508</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.2
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * configure: Use LT_INIT from libtool 2 instead of deprecated
+    AC_PROG_LIBTOOL
+  * If O_CLOEXEC is defined, add &quot;e&quot; to fopen modes
+  * Add comment about keeping libxcb-cursor copy of code in sync
+  * XcursorXcFileLoad: plug memory leak in error paths
+  * Remove superfluous and unguarded config.h include</comment>
+    <requestid>1154345</requestid>
+  </revision>
 </revisionlist>
