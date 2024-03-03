@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 13 09:35:57 MST 2024 - carnold@suse.com
+
+- bsc#1219885 - VUL-0: CVE-2023-46841: xen: x86: shadow stack vs
+  exceptions from emulation stubs (XSA-451)
+  xsa451.patch
+
+-------------------------------------------------------------------
 Wed Jan 31 13:40:00 CET 2024 - jbeulich@suse.com
 
 - Upstream bug fixes (bsc#1027519)

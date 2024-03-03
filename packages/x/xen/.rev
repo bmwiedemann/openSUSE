@@ -2902,4 +2902,12 @@
     <comment>Various upstream bug fixes and updated security patches</comment>
     <requestid>1143458</requestid>
   </revision>
+  <revision rev="341" vrev="2">
+    <srcmd5>e7ae745b4417e790a0f7f091589af938</srcmd5>
+    <version>4.18.0_06</version>
+    <time>1709493566</time>
+    <user>dimstar_suse</user>
+    <comment>Security update for bsc#1219885 CVE-2023-46841 XSA-451</comment>
+    <requestid>1154130</requestid>
+  </revision>
 </revisionlist>

@@ -172,6 +172,7 @@ Patch15:        65b29e91-x86-ucode-stability-of-raw-policy-rescan.patch
 Patch16:        65b8f961-PCI-fail-dev-assign-if-phantom-functions.patch
 Patch17:        65b8f9ab-VT-d-else-vs-endif-misplacement.patch
 # EMBARGOED security fixes
+Patch100:       xsa451.patch
 # libxc
 Patch301:       libxc-bitmap-long.patch
 Patch302:       libxc-sr-xl-migration-debug.patch
