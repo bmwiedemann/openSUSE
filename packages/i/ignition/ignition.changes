@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  1 12:53:50 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- module-setup.sh: Use $dracutsysrootdir
+
+-------------------------------------------------------------------
 Fri Nov 24 13:20:31 UTC 2023 - iforster@suse.com
 
 - Update to version 2.17.0:
