@@ -212,4 +212,12 @@
   implicitly installed for something else.</comment>
     <requestid>1000833</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>f47c48e69bf7829ca9b0acd6768db6d7</srcmd5>
+    <version>1.0.22</version>
+    <time>1709493561</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1154099</requestid>
+  </revision>
 </revisionlist>

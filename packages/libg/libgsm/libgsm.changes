@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 16:34:37 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sun Aug 28 22:32:54 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.0.22

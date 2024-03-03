@@ -86,9 +86,9 @@ standard test patterns.
 
 %prep
 %setup -q -n %{_name}-%{_version}
-%patch0 -p1
-%patch1
-%patch2
+%patch -P 0 -p1
+%patch -P 1
+%patch -P 2
 
 %build
 make -j1 CCFLAGS="-c %{optflags} -D_POSIX_SOURCE -D_BSD_SOURCE -DNeedFunctionPrototypes=1" lib/libgsm.a
