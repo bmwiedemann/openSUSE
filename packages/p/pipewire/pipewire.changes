@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 14:58:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Feb 21 06:48:22 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Force using doxygen-1_10 in SLE where the default doxygen is too

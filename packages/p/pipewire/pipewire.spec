@@ -390,7 +390,7 @@ JACK libraries.
 %autosetup -N
 %if %{?pkg_vcmp:%{pkg_vcmp meson <= 0.61.0}}
 sed -ie "s/version : '0.3.72'/version : '%{version}'/" %{P:0}
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 
 %build
