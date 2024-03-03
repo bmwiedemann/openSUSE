@@ -1,7 +1,7 @@
 #
 # spec file for package libX11
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,13 +45,8 @@ BuildRequires:  pkgconfig(xproto) >= 7.0.13
 BuildRequires:  pkgconfig(xtrans)
 
 %description
-The X Window System is a network-transparent window system that was
-designed at MIT. X display servers run on computers with either
-monochrome or color bitmap display hardware. The server distributes
-user input to and accepts output requests from various client
-programs located either on the same machine or elsewhere in the
-network. Xlib is a C subroutine library that application programs
-(clients) use to interface with the window system by means of a
+Xlib is a C subroutine library that application programs
+(clients) use to interface with the X window system by means of a
 stream connection.
 
 %package -n libX11-6
@@ -78,14 +73,9 @@ Group:          System/Libraries
 Requires:       %{name}-data >= %{version}
 
 %description -n libX11-xcb1
-The X Window System is a network-transparent window system that was
-designed at MIT. X display servers run on computers with either
-monochrome or color bitmap display hardware. The server distributes
-user input to and accepts output requests from various client
-programs located either on the same machine or elsewhere in the
-network. Xlib is a C subroutine library that application programs
-(clients) use to interface with the window system by means of a
-stream connection.
+libX11-xcb provides functions needed by clients which take advantage
+of Xlib/XCB to mix calls to both Xlib and XCB over the same X
+connection.
 
 %package data
 Summary:        Shared data for the Core X11 protocol library
@@ -93,14 +83,11 @@ Group:          System/Libraries
 BuildArch:      noarch
 
 %description data
-The X Window System is a network-transparent window system that was
-designed at MIT. X display servers run on computers with either
-monochrome or color bitmap display hardware. The server distributes
-user input to and accepts output requests from various client
-programs located either on the same machine or elsewhere in the
-network. Xlib is a C subroutine library that application programs
-(clients) use to interface with the window system by means of a
-stream connection.
+Data files for X11:
+
+* Error strings for X error codes
+* Device-independent color name database
+* Locale data and tables for the Compose Key
 
 %package devel
 Summary:        Development files for the Core X11 protocol library
@@ -114,17 +101,16 @@ Conflicts:      xorgproto-devel < 2019.2
 Provides:       xorgproto-devel:%{_includedir}/X11/extensions/XKBgeom.h
 
 %description devel
-The X Window System is a network-transparent window system that was
-designed at MIT. X display servers run on computers with either
-monochrome or color bitmap display hardware. The server distributes
-user input to and accepts output requests from various client
-programs located either on the same machine or elsewhere in the
-network. Xlib is a C subroutine library that application programs
-(clients) use to interface with the window system by means of a
-stream connection.
-
 This package contains the development headers for the library found
 in libX11-6 and libX11-xcb1.
+
+%package devel-doc
+Summary:        Manual pages for libX11
+Group:          Documentation/Man
+BuildArch:      noarch
+
+%description devel-doc
+Manual pages for the C API of libX11.
 
 %prep
 %setup -q
@@ -132,16 +118,16 @@ in libX11-6 and libX11-xcb1.
 test -f nls/ja.U90/XLC_LOCALE.pre && exit 1
 test -f nls/ja.S90/XLC_LOCALE.pre && exit 1
 
-%patch1
-%patch2
-%patch3 -p1
+%patch -P 1
+%patch -P 2
+%patch -P 3 -p1
 
 %build
 %configure \
     --disable-silent-rules \
     --docdir=%{_docdir}/%{name} \
     --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -163,10 +149,8 @@ popd
 
 %fdupes %{buildroot}/%{_mandir}
 
-%post   -n libX11-6 -p /sbin/ldconfig
-%postun -n libX11-6 -p /sbin/ldconfig
-%post   -n libX11-xcb1 -p /sbin/ldconfig
-%postun -n libX11-xcb1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libX11-6
+%ldconfig_scriptlets -n libX11-xcb1
 
 %files -n libX11-6
 %{_libdir}/libX11.so.6*
@@ -181,7 +165,9 @@ popd
 %{_includedir}/X11/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
-%{_docdir}/%{name}
+
+%files devel-doc
 %{_mandir}/man?/*
+%{_docdir}/%{name}
 
 %changelog
