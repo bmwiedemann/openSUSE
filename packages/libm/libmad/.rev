@@ -52,4 +52,12 @@
   bsc#1036968, bsc#1036969 (CVE-2017-8373, CVE-2017-8372)</comment>
     <requestid>1030136</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>9e6672fd5bc39d2f5d70099029cffd53</srcmd5>
+    <version>0.15.1b</version>
+    <time>1709493558</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1154097</requestid>
+  </revision>
 </revisionlist>

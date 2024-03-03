@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 17:19:36 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Oct 20 09:13:05 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - length-check.patch: incorporate previous frame_length.diff checks
