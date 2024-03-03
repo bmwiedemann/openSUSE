@@ -64,8 +64,8 @@ Files needed to program against libmodplug.
 
 %prep
 %setup -q
-%patch1
-%patch2 -p1
+%patch -P 1
+%patch -P 2 -p1
 sed -i 's/\r$//' ChangeLog
 
 %build
