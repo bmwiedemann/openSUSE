@@ -20,7 +20,7 @@
 
 %define lname	libvmdk1
 Name:           libvmdk
-Version:        20231123
+Version:        20240303
 Release:        0
 Summary:        Library to access the VMware Virtual Disk (VMDK) format
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -37,18 +37,18 @@ BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fuse)
 BuildRequires:  pkgconfig(libbfio) >= 20221025
-BuildRequires:  pkgconfig(libcdata) >= 20230108
-BuildRequires:  pkgconfig(libcerror) >= 20220101
-BuildRequires:  pkgconfig(libcfile) >= 20220106
-BuildRequires:  pkgconfig(libclocale) >= 20221218
-BuildRequires:  pkgconfig(libcnotify) >= 20220108
-BuildRequires:  pkgconfig(libcpath) >= 20220108
-BuildRequires:  pkgconfig(libcsplit) >= 20220109
-BuildRequires:  pkgconfig(libcthreads) >= 20220102
-BuildRequires:  pkgconfig(libfcache) >= 20230115
-BuildRequires:  pkgconfig(libfdata) >= 20230319
-BuildRequires:  pkgconfig(libfvalue) >= 20220120
-BuildRequires:  pkgconfig(libuna) >= 20230710
+BuildRequires:  pkgconfig(libcdata) >= 20240103
+BuildRequires:  pkgconfig(libcerror) >= 20240101
+BuildRequires:  pkgconfig(libcfile) >= 20240106
+BuildRequires:  pkgconfig(libclocale) >= 20240107
+BuildRequires:  pkgconfig(libcnotify) >= 20240108
+BuildRequires:  pkgconfig(libcpath) >= 20240109
+BuildRequires:  pkgconfig(libcsplit) >= 20240110
+BuildRequires:  pkgconfig(libcthreads) >= 20240102
+BuildRequires:  pkgconfig(libfcache) >= 20240112
+BuildRequires:  pkgconfig(libfdata) >= 20240114
+BuildRequires:  pkgconfig(libfvalue) >= 20240124
+BuildRequires:  pkgconfig(libuna) >= 20240130
 BuildRequires:  pkgconfig(zlib)
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
@@ -56,12 +56,12 @@ BuildRequires:  pkgconfig(zlib)
 %description
 The libvmdk library is a library to access the VMware Virtual Disk (VMDK) format.
 
-%package -n %{lname}
+%package -n %lname
 Summary:        Library to access the VMDK image format
 License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
-%description -n %{lname}
+%description -n %lname
 The libvmdk library is a library to access the VMware Virtual Disk (VMDK) format.
 
 Read supported extent file formats:
@@ -124,28 +124,28 @@ grep ' '' ''local' config.log && exit 1
 
 %install
 mv %_builddir/rt/* %buildroot/
-find %{buildroot} -type f -name "*.la" -delete -print
+find %buildroot -type f -name "*.la" -delete -print
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%post   -n %lname -p /sbin/ldconfig
+%postun -n %lname -p /sbin/ldconfig
 
-%files -n %{lname}
+%files -n %lname
 %license COPYING*
-%{_libdir}/libvmdk.so.*
+%_libdir/libvmdk.so.*
 
 %files -n %name-tools
 %license COPYING*
-%{_bindir}/vmdk*
-%{_mandir}/man1/vmdk*.1*
+%_bindir/vmdk*
+%_mandir/man1/vmdk*.1*
 
 %files -n %name-devel
 %license COPYING*
 %doc VMWare_Virtual_Disk_Format*
-%{_includedir}/libvmdk.h
-%{_includedir}/libvmdk/
-%{_libdir}/libvmdk.so
-%{_libdir}/pkgconfig/libvmdk.pc
-%{_mandir}/man3/libvmdk.3*
+%_includedir/libvmdk.h
+%_includedir/libvmdk/
+%_libdir/libvmdk.so
+%_libdir/pkgconfig/libvmdk.pc
+%_mandir/man3/libvmdk.3*
 
 %files %python_files
 %license COPYING*
