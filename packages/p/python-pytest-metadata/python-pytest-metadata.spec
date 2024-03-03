@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-metadata
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        Pytest plugin for test session metadata
 License:        MPL-2.0

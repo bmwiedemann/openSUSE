@@ -89,4 +89,15 @@
   * Support Pytest 8.0</comment>
     <requestid>1143994</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c42efa1352507a8af0604e71906f2bdf</srcmd5>
+    <version>3.1.1</version>
+    <time>1709493586</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.1:
+  * Add environment variables for AWS CodeBuild CI
+
+- Remove python_module macro definition</comment>
+    <requestid>1154428</requestid>
+  </revision>
 </revisionlist>

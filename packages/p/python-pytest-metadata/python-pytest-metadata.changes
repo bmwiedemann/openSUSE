@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar  3 14:02:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.1:
+  * Add environment variables for AWS CodeBuild CI
+
+-------------------------------------------------------------------
 Sun Feb  4 12:14:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.0:
@@ -21,7 +27,7 @@ Tue May  9 13:10:34 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 -------------------------------------------------------------------
 Wed Nov 30 11:13:54 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
-- Remove python_module macro definition 
+- Remove python_module macro definition
 - Update to 2.0.4:
   * Fix deprecated pytest.mark.optionalhook marker.
 - 2.0.3:
