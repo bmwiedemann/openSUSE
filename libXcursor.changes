@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar  3 03:15:13 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.2.2
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * configure: Use LT_INIT from libtool 2 instead of deprecated
+    AC_PROG_LIBTOOL
+  * If O_CLOEXEC is defined, add "e" to fopen modes
+  * Add comment about keeping libxcb-cursor copy of code in sync
+  * XcursorXcFileLoad: plug memory leak in error paths
+  * Remove superfluous and unguarded config.h include
+
+-------------------------------------------------------------------
 Sun Apr  3 17:08:50 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.2.1
