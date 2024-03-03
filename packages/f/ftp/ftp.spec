@@ -37,17 +37,11 @@ This package provides the standard UNIX command line FTP client. FTP is
 the file transfer protocol, which is a widely used Internet protocol
 for transferring files.
 
-
-
-Authors:
---------
-    David A. Holland <netbug@ftp.uk.linux.org>
-
 %prep
 %setup -n netkit-ftp-%{version}
-%patch0
-%patch1 -p2
-%patch2
+%patch -P 0
+%patch -P 1 -p2
+%patch -P 2
 
 %build
 CFLAGS=$RPM_OPT_FLAGS CC="%__cc" ./configure --without-readline
