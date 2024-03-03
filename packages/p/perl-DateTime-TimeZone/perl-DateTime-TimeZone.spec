@@ -18,9 +18,9 @@
 
 %define cpan_name DateTime-TimeZone
 Name:           perl-DateTime-TimeZone
-Version:        2.610.0
+Version:        2.620.0
 Release:        0
-%define cpan_version 2.61
+%define cpan_version 2.62
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Time zone object base class and factory
 URL:            https://metacpan.org/release/%{cpan_name}

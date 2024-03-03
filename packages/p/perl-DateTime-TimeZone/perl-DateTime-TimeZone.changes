@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb  3 03:06:36 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.62
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.62    2024-02-02
+
+  - This release is based on version 2024a of the Olson database. This release
+    includes contemporary changes for Kazakhstan and Palestine.
+
+-------------------------------------------------------------------
 Sun Dec 31 03:06:30 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.61
