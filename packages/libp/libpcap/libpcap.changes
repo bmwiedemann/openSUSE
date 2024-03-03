@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 18:52:55 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sat Apr  8 10:47:29 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.10.4:

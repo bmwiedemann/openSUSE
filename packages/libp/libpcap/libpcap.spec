@@ -83,8 +83,8 @@ libpcap static libraries
 
 %prep
 %setup -q
-%patch2
-%patch3 -p1
+%patch -P 2
+%patch -P 3 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
