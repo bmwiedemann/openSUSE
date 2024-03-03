@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 15:01:21 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Mon Feb 19 19:22:57 UTC 2018 - crrodriguez@opensuse.org
 
 - Remove buildrequires on xorg-x11-devel 

@@ -43,8 +43,7 @@ in intuitive ways.
 
 
 %prep
-%setup -q -n Tix%version
-%patch0
+%autosetup -p0 -n Tix%version
 find docs -type f | xargs chmod a-x
 
 %build
