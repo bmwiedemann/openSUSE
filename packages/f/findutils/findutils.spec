@@ -65,8 +65,7 @@ useful for finding things on your system.
 %lang_package
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 %configure \
