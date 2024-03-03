@@ -451,4 +451,12 @@ GPL-2.0 matches found in ppp-2.4.5/include/linux/if_pppol2tp.h             (forw
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1139724</requestid>
   </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>aa9f10f87d9f07c0009cb92a7d44c2d0</srcmd5>
+    <version>2.5.0</version>
+    <time>1709493539</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1154016</requestid>
+  </revision>
 </revisionlist>

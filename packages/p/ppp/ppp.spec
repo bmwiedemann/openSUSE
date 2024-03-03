@@ -106,14 +106,7 @@ sudo systemctl unmask modem@0.service
 you can disable unnecessary or disable everything.
 
 %prep
-%setup -q
-%patch0
-%patch3
-%patch4
-%patch5
-%patch6
-%patch7
-%patch8
+%autosetup -p0
 
 sed -i -e '1s/local\///' scripts/secure-card
 find scripts -type f | xargs chmod a-x

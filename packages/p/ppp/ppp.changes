@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 14:39:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Thu Jan 11 13:22:52 UTC 2024 - Reinhard Max <max@suse.com>
 
 - Backport ppp-pidfiles.patch and ppp-mkdir-run.patch from the
