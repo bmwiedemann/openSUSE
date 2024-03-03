@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar  3 11:34:08 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Dejavu: Skip testing xarray on  Python 3.9
+
+-------------------------------------------------------------------
 Sun Jan 14 20:51:16 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Remove obsolete python38 skip

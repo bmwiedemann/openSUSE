@@ -1,7 +1,7 @@
 #
 # spec file for package python-traittypes
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ URL:            https://github.com/jupyter-widgets/traittypes
 Source:         https://files.pythonhosted.org/packages/source/t/traittypes/traittypes-%{version}.tar.gz
 # PATCH-FEATURE-UPSTREAM gh#jupyter-widgets/traittypes#43
 Patch0:         python-traittypes-remove-nose.patch
-# PATCH-FIX-UPSTREAM h#jupyter-widgets/traittypes#32
+# PATCH-FIX-UPSTREAM gh#jupyter-widgets/traittypes#32
 Patch1:         python-fix-nptypes.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
@@ -38,10 +38,11 @@ Requires:       python-traitlets >= 4.2.2
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module traitlets >= 4.2.2}
-BuildRequires:  %{python_module xarray}
+BuildRequires:  %{python_module xarray if %python-base >= 3.10}
 # /SECTION
 %python_subpackages
 
@@ -60,7 +61,9 @@ sed -i '1{/^#!/d}' traittypes/tests/test_validators.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest traittypes
+# no xarray for Python 3.9 anymore
+python39_ignore="--ignore traittypes/tests/test_traittypes.py"
+%pytest traittypes ${$python_ignore}
 
 %files %{python_files}
 %doc README.md
