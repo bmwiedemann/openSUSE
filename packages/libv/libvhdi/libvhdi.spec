@@ -20,7 +20,7 @@
 
 %define lname	libvhdi1
 Name:           libvhdi
-Version:        20231127
+Version:        20240303
 Release:        0
 Summary:        Library and tools to access the VHD image format
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -36,18 +36,18 @@ BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libbfio) >= 20221025
-BuildRequires:  pkgconfig(libcdata) >= 20230108
-BuildRequires:  pkgconfig(libcerror) >= 2022010
-BuildRequires:  pkgconfig(libcfile) >= 20220106
-BuildRequires:  pkgconfig(libclocale) >= 20221218
-BuildRequires:  pkgconfig(libcnotify) >= 20220108
-BuildRequires:  pkgconfig(libcpath) >= 20220108
-BuildRequires:  pkgconfig(libcsplit) >= 20220109
-BuildRequires:  pkgconfig(libcthreads) >= 20220102
-BuildRequires:  pkgconfig(libfcache) >= 20230115
-BuildRequires:  pkgconfig(libfdata) >= 20230319
-BuildRequires:  pkgconfig(libfguid) >= 20220113
-BuildRequires:  pkgconfig(libuna) >= 20230710
+BuildRequires:  pkgconfig(libcdata) >= 20240103
+BuildRequires:  pkgconfig(libcerror) >= 20240101
+BuildRequires:  pkgconfig(libcfile) >= 20240106
+BuildRequires:  pkgconfig(libclocale) >= 20240107
+BuildRequires:  pkgconfig(libcnotify) >= 20240108
+BuildRequires:  pkgconfig(libcpath) >= 20240109
+BuildRequires:  pkgconfig(libcsplit) >= 20240110
+BuildRequires:  pkgconfig(libcthreads) >= 20240102
+BuildRequires:  pkgconfig(libfcache) >= 20240112
+BuildRequires:  pkgconfig(libfdata) >= 20240114
+BuildRequires:  pkgconfig(libfguid) >= 20240116
+BuildRequires:  pkgconfig(libuna) >= 20240130
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
 
@@ -65,12 +65,12 @@ Supported image types:
 * Differential (or differencing) hard disk image
 * Note that an undo disk image (.vud) is also a differential image
 
-%package -n %{lname}
+%package -n %lname
 Summary:        Library to access the VHD image format
 License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
-%description -n %{lname}
+%description -n %lname
 Library to access the Virtual Hard Disk (VHD) image format.
 
 Read-supported formats:
@@ -123,27 +123,27 @@ grep ' '' ''local' config.log && exit 1
 
 %install
 mv %_builddir/rt/* %buildroot/
-find %{buildroot} -type f -name "*.la" -delete -print
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+find %buildroot -type f -name "*.la" -delete -print
+%post   -n %lname -p /sbin/ldconfig
+%postun -n %lname -p /sbin/ldconfig
 
-%files -n %{lname}
+%files -n %lname
 %license COPYING*
-%{_libdir}/libvhdi.so.*
+%_libdir/libvhdi.so.*
 
 %files -n %name-tools
 %license COPYING*
-%{_bindir}/vhdi*
-%{_mandir}/man1/vhdi*.1*
+%_bindir/vhdi*
+%_mandir/man1/vhdi*.1*
 
 %files -n %name-devel
 %license COPYING*
 %doc Virtual_Hard_Disk_*
-%{_includedir}/libvhdi.h
-%{_includedir}/libvhdi/
-%{_libdir}/libvhdi.so
-%{_libdir}/pkgconfig/libvhdi.pc
-%{_mandir}/man3/libvhdi.3*
+%_includedir/libvhdi.h
+%_includedir/libvhdi/
+%_libdir/libvhdi.so
+%_libdir/pkgconfig/libvhdi.pc
+%_mandir/man3/libvhdi.3*
 
 %files %python_files
 %license COPYING*
