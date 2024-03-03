@@ -89,7 +89,7 @@ cp -a %{S:6} %{S:7} %{S:8} %{S:9} .
 cp -a %{S:10} translation-update-upstream-embedded.README
 sed 's:@DATADIR@:%{_datadir}:g;s:@LIBEXECDIR@:%{_prefix}/lib:g' <translation-update-upstream.in >translation-update-upstream
 sed 's/@LIBEXECDIR@/\$BASE_DIR/g;s:@DATADIR@/translation-update-upstream:\$BASE_DIR/translation-update-upstream/po:g;s/translation-update-upstream\./translation-update-upstream-embedded./g' <translation-update-upstream.in >translation-update-upstream-embedded.sh
-%patch0
+%patch -P 0
 chmod +x translation-update-upstream-embedded.sh
 
 %build
