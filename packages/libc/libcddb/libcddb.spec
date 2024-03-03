@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package libcddb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,7 +75,7 @@ tries to be as cross-platform as possible.
 %prep
 %setup -q -n %{_name}-%{version}
 %if !%{BUILD_UTILS}
-%patch0
+%patch -P 0
 %else
 sed -i 's:\(\.\.\|\$(top_builddir)\)/[^/]*/lib\([^ ]*\)\.la:-l\2:g' */Makefile.am
 %endif
