@@ -1,7 +1,7 @@
 #
 # spec file for package libreplaygain
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 Asterios Dramis <asterios.dramis@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -51,8 +51,7 @@ libreplaygain is a library that analyzes input samples and gives the
 recommended volume change.
 
 %prep
-%setup -q -n %{name}_%{version}
-%patch0 -p1
+%autosetup -p1 -n %{name}_%{version}
 
 %build
 # Fix rpmlint error "spurious-executable-perm"
