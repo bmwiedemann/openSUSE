@@ -64,12 +64,12 @@ API reference.
 
 %prep
 %setup -q -n libvorbis-%{version}
-%patch2
-# %%patch5 -p1
+%patch -P 2
+# %%patch -P 5 -p1
 if [ "%{_lib}" == "lib64" ]; then
-%patch1
+%patch -P 1
 fi
-%patch12
+%patch -P 12
 
 %build
 autoreconf -fiv

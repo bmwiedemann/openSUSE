@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  1 10:25:24 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu May  4 11:06:48 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add _multibuild to define 2nd spec file as additional flavor.

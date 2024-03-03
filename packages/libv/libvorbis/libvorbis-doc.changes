@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  1 10:25:24 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sat Mar 17 14:55:12 CET 2018 - tiwai@suse.de
 
 - Split from libvorbis.spec to reduce the build dependencies
