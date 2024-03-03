@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar  3 02:58:42 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.16.1
+  * This release fixes build issues for Windows & NetBSD platforms 
+  * For those building for 32-bit platforms, it also enables use of
+    the "large file" APIs - though xcb mainly uses stat() calls on
+    sockets, not normal files.
+
+-------------------------------------------------------------------
+Fri Mar  1 10:33:22 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Feb  5 14:22:08 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - devel package: added missing Requires to libxcb-dbe0 (boo#1219572)

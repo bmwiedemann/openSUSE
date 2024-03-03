@@ -23,7 +23,7 @@
 %bcond_without python2
 %endif
 Name:           libxcb
-Version:        1.16
+Version:        1.16.1
 Release:        0
 Summary:        X11 core protocol C library
 License:        MIT
@@ -400,8 +400,8 @@ libxcb.
 
 %prep
 %setup -q
-%patch1
-%patch2 -p1
+%patch -P 1
+%patch -P 2 -p1
 
 %build
 NOCONFIGURE=1 ./autogen.sh

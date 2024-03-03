@@ -367,4 +367,18 @@
     <comment>- devel package: added missing Requires to libxcb-dbe0 (boo#1219572)</comment>
     <requestid>1144288</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>3112d34afd459ef6227acdc1e3e0525c</srcmd5>
+    <version>1.16.1</version>
+    <time>1709493507</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.16.1
+  * This release fixes build issues for Windows &amp; NetBSD platforms 
+  * For those building for 32-bit platforms, it also enables use of
+    the &quot;large file&quot; APIs - though xcb mainly uses stat() calls on
+    sockets, not normal files.
+
+- Use %patch -P N instead of deprecated %patchN.</comment>
+    <requestid>1154344</requestid>
+  </revision>
 </revisionlist>
