@@ -17,17 +17,17 @@
 
 
 # commonver - version from containers/common
-%define commonver 0.57.0
+%define commonver 0.57.4
 # storagever - version from containers/storage
 %define storagever 1.51.0
 # imagever - version from containers/image
-%define imagever 5.29.0
+%define imagever 5.29.2
 # skopeover - version from containers/skopeo
-%define skopeover 1.14.0
+%define skopeover 1.14.2
 # https://github.com/containers/shortnames
 %define shortnamesver 2023.02.20
 Name:           libcontainers-common
-Version:        20231204
+Version:        20240206
 Release:        0
 Summary:        Configuration files common to github.com/containers
 License:        Apache-2.0
@@ -55,7 +55,7 @@ Source12:       openSUSE-policy.json
 BuildRequires:  go-go-md2man
 Requires(post): %{_bindir}/sed
 # add SLE-specific mounts for only SLES systems
-Requires:       (libcontainers-sles-mounts if product(SUSE_SLE))
+Requires:       (libcontainers-sles-mounts if (product(SUSE_SLE) or product(SLE-Micro)))
 Requires:       libcontainers-policy >= %{version}
 Suggests:       (libcontainers-policy-openSUSE if openSUSE-release)
 Provides:       libcontainers-image = %{version}
@@ -106,7 +106,7 @@ pwd
 cd image-%{imagever}
 for md in docs/*.md
 do
-	go-md2man -in $md -out $md
+        go-md2man -in $md -out $md
 done
 rename '.5.md' '.5' docs/*
 rename '.md' '.1' docs/*
@@ -115,7 +115,7 @@ cd ..
 cd storage-%{storagever}
 for md in docs/*.md
 do
-	go-md2man -in $md -out $md
+        go-md2man -in $md -out $md
 done
 rename '.5.md' '.5' docs/*
 rename '.md' '.1' docs/*
@@ -134,7 +134,7 @@ EOL
 
 # Disable CNI related configs on ALP (bsc#1213556)
 # https://github.com/containers/podman/issues/19327
-%if 0%{suse_version} >= 1600 && !0%{?is_opensuse}
+%if 0%{?suse_version} >= 1600 && !0%{?is_opensuse}
 sed -i 's/cni_plugin_dirs = .*/\# cni_plugin_dirs = []/g' %{SOURCE9}
 %endif
 
@@ -175,7 +175,9 @@ install -D -m 0644 common-%{commonver}/pkg/hooks/docs/oci-hooks.5 %{buildroot}/%
 install -D -m 0644 common-%{commonver}/docs/containers-mounts.conf.5 %{buildroot}/%{_mandir}/man5/
 install -D -m 0644 common-%{commonver}/docs/containers.conf.5 %{buildroot}/%{_mandir}/man5/
 
-install -D -m 0644 %{SOURCE12} %{buildroot}/%{_sysconfdir}/containers/policy.json.openSUSE
+#install -D -m 0644 %{SOURCE12} %{buildroot}/%{_sysconfdir}/containers/policy.json.openSUSE
+# temporary switch off the key checking again, to switch the SUSE container keys
+install -D -m 0644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/containers/policy.json.openSUSE
 install -D -m 0644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/containers/policy.json.default
 
 %post

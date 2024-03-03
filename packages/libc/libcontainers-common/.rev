@@ -570,4 +570,13 @@
     <comment></comment>
     <requestid>1130686</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>9ab4c294aaaac2c48254f04ac3d47901</srcmd5>
+    <version>20240206</version>
+    <time>1709493547</time>
+    <user>dimstar_suse</user>
+    <comment>- disable the SUSE registry key validation temporary to switch the key on 
+  registry.suse.com. (forwarded request 1154044 from msmeissn)</comment>
+    <requestid>1154053</requestid>
+  </revision>
 </revisionlist>

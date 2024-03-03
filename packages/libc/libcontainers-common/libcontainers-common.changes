@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar  1 13:16:28 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- disable the SUSE registry key validation temporary to switch the key on 
+  registry.suse.com.
+
+-------------------------------------------------------------------
+Tue Feb  6 13:35:30 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- New release 20240206
+- bump bundled c/common to 0.57.4
+- bump bundled c/image to 0.29.2
+- conditionally require libcontainers-sles-mounds for product(SLE-Micro) as well
+  (SLE Micro 6.0 now no longer provides product(SUSE_SLE) and instead only
+  provides product(SLE-Micro)), fixes bsc#1216443
+
+-------------------------------------------------------------------
 Mon Dec  4 07:12:17 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - New release 20231204
