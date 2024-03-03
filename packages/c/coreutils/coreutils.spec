@@ -148,33 +148,33 @@ This package contains the documentation for the GNU Core Utilities.
 
 %prep
 %setup -q -n coreutils-%{version}
-%patch4 -p1
-%patch1
-%patch3
-%patch8
+%patch -P 4 -p1
+%patch -P 1
+%patch -P 3
+%patch -P 8
 #
 %if 0%{?suse_version} <= 1320
-%patch100
+%patch -P 100
 %endif
-%patch112
-%patch113
-%patch114 -p1
-%patch115 -p1
+%patch -P 112
+%patch -P 113
+%patch -P 114 -p1
+%patch -P 115 -p1
 
-%patch300
+%patch -P 300
 
 %ifarch %{ix86} x86_64 ppc ppc64
-%patch301
+%patch -P 301
 %endif
 
-%patch303
-%patch304
-%patch500
-%patch501
+%patch -P 303
+%patch -P 304
+%patch -P 500
+%patch -P 501
 
-%patch810
-%patch900
-%patch920 -p1
+%patch -P 810
+%patch -P 900
+%patch -P 920 -p1
 
 # ================================================
 %build

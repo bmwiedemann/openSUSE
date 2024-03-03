@@ -1344,4 +1344,12 @@ then, coreutils doesn't need this patch from the kernel v4.10-rc1. (forwarded re
     <comment>Complement CVE-2024-0684 with bsc#1218982 in changes for ALP 1.0.</comment>
     <requestid>1146149</requestid>
   </revision>
+  <revision rev="156" vrev="5">
+    <srcmd5>12ccd88d1dcdae64c6668f97fbc8d7a0</srcmd5>
+    <version>9.4</version>
+    <time>1709493486</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153953</requestid>
+  </revision>
 </revisionlist>

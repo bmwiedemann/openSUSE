@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 10:48:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sun Jan 21 09:50:55 UTC 2024 - Bernhard Voelker <mail@bernhard-voelker.de>
 
 - coreutils-9.4.split-CVE-2024-0684.patch: Add upstream patch:
