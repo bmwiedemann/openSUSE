@@ -61,9 +61,9 @@ to compile and develop applications that use libogg.
 
 %prep
 %setup -q
-%patch2
+%patch -P 2
 if [ "%{_lib}" == "lib64" ]; then
-%patch1
+%patch -P 1
 fi
 
 %build
