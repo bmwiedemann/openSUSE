@@ -630,4 +630,12 @@ additions, including new UTF-8 compose sequences for:
   applications to crash randomly (boo#1181963)</comment>
     <requestid>1127741</requestid>
   </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>617c41f6e6f5f08bcce716ecead30d8a</srcmd5>
+    <version>1.8.7</version>
+    <time>1709493574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1154330</requestid>
+  </revision>
 </revisionlist>

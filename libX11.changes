@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar  1 17:52:11 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim descriptions for size (keep the big one for the prominently
+  installed libX11-6).
+- Spin documentation off to libX11-devel-doc, this saves buildroots
+  800+ files and time (mandb is run in %posttrans).
+
+-------------------------------------------------------------------
+Fri Mar  1 10:26:37 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Nov 20 15:55:51 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - this update is needed due to jsc#PED-7282; it includes the
