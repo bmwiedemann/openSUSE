@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 16:34:29 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Sep  5 07:05:35 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Don't hide behind bcond_with stuff, just clean the SPEC (if you
