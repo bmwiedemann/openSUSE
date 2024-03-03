@@ -61,7 +61,7 @@ cd international
 tar -zxf cjkfonts.tar.gz
 rm cjkfonts.tar.gz
 cd ..
-%patch0
+%patch -P 0
 
 %build
 make CFLAGS="%{optflags}" %{?_smp_mflags}
