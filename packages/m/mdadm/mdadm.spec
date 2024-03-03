@@ -58,17 +58,7 @@ Patch1005:      1005-mdadm-enable-Intel-Alderlake-RSTe-configuration.patch
 mdadm is a program that can be used to control Linux md devices.
 
 %prep
-%setup -q -a1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch1001 -p1
-%patch1002 -p1
-%patch1003 -p1
-%patch1004 -p1
-%patch1005 -p1
+%autosetup -p1 -a1
 
 %build
 make %{?_smp_mflags} CC="%__cc" CXFLAGS="%{optflags} -Wno-error" EXTRAVERSION="%{release}" SUSE=yes BINDIR=%{_sbindir}

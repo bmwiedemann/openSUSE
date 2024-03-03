@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 23 10:46:16 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Fri Feb 23 10:05:39 UTC 2024 - Coly Li <colyli@suse.de>
 
 - Update mdadm-4.3 to latest status (jsc#PED-7542)
