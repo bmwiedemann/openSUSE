@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 08:36:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue May 23 04:33:32 UTC 2023 - Jiri Srain <jsrain@suse.com>
 
 - adjust .spec-file to list all sources independently on the
