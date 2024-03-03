@@ -20,7 +20,7 @@
 
 %define lname	libfsext1
 Name:           libfsext
-Version:        20240219
+Version:        20240301
 Release:        0
 Summary:        Library and tools to access the Extended File System
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -71,12 +71,12 @@ Unsupported ext format features:
 * compression
 * encryption
 
-%package -n %{lname}
+%package -n %lname
 Summary:        Library to access the Extended File System (ext)
 License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
-%description -n %{lname}
+%description -n %lname
 libfsext is a library to access the Extended File System (ext).
 
 Read-only supported ext formats:
@@ -99,7 +99,7 @@ Unsupported ext format features:
 Summary:        Tools to access the Extended File System (ext)
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
-Requires:       %{lname} = %{version}
+Requires:       %lname = %version
 
 %description tools
 Tools to access the Extended File System.  See libfsext for additional details.
@@ -121,7 +121,10 @@ applications that want to make use of libfsext.
 %autosetup -p1
 
 %build
+# OOT builds are presently broken, so we have to install
+# within each python iteration now, not in %%install.
 %{python_expand #
+# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static --enable-wide-character-type \
 	--enable-python PYTHON_VERSION="%{$python_bin_suffix}" \
@@ -134,30 +137,30 @@ grep ' '' ''local' config.log && exit 1
 
 %install
 mv "%_builddir/rt"/* %buildroot/
-find %{buildroot} -type f -name "*.la" -delete -print
+find %buildroot -type f -name "*.la" -delete -print
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%post   -n %lname -p /sbin/ldconfig
+%postun -n %lname -p /sbin/ldconfig
 
-%files -n %{lname}
+%files -n %lname
 %license COPYING*
-%{_libdir}/libfsext.so.*
+%_libdir/libfsext.so.*
 
 %files -n %name-tools
 %license COPYING*
-%{_bindir}/fsext*
-%{_mandir}/man1/fsext*.1*
+%_bindir/fsext*
+%_mandir/man1/fsext*.1*
 
 %files -n %name-devel
 %license COPYING*
-%{_includedir}/libfsext.h
-%{_includedir}/libfsext/
-%{_libdir}/libfsext.so
-%{_libdir}/pkgconfig/libfsext.pc
-%{_mandir}/man3/libfsext.3*
+%_includedir/libfsext.h
+%_includedir/libfsext/
+%_libdir/libfsext.so
+%_libdir/pkgconfig/libfsext.pc
+%_mandir/man3/libfsext.3*
 
 %files %python_files
 %license COPYING*
-%{python_sitearch}/pyfsext.so
+%python_sitearch/pyfsext.so
 
 %changelog

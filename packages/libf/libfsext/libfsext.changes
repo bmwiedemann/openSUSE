@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar  2 22:41:23 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240301
+  * Support for EXT2_FEATURE_COMPAT_DIR_INDEX,
+    EXT4_FEATURE_COMPAT_FAST_COMMIT,
+    EXT4_FEATURE_COMPAT_STABLE_INODES,
+    EXT4_FEATURE_COMPAT_ORPHAN_FILE,
+    EXT4_FEATURE_RO_COMPAT_ORPHAN_PRESENT
+
+-------------------------------------------------------------------
 Mon Feb 19 11:35:03 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20240219
