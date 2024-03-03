@@ -1,7 +1,7 @@
 #
 # spec file for package libmpcdec
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -90,9 +90,7 @@ low bitrate tuning has gone into the codec, opposite to that of AAC,
 Vorbis, WMA and others which focus more on this region.
 
 %prep
-%setup -q
-%patch0
-%patch1
+%autosetup -p0
 
 %build
 autoreconf -fiv
