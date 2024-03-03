@@ -35,9 +35,7 @@ pbuildid dumps the build-ids of an executable, core file or a process,
 given the pid of that process.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %configure
