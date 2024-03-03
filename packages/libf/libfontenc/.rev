@@ -117,4 +117,15 @@
     <comment></comment>
     <requestid>1045908</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>dd05e477ed2e90fc040df1bf4a91597d</srcmd5>
+    <version>1.1.8</version>
+    <time>1709493504</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.8
+  * This release includes build system cleanups and adds &quot;e&quot; to the
+    fopen() flags to avoid leaking fd's when calling applications
+    exec another program.</comment>
+    <requestid>1154327</requestid>
+  </revision>
 </revisionlist>
