@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar  1 19:17:49 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 15.1.05:
+  * Plane 0: redraw all Hangul glyphs not in the Hangul Syllables
+    range, so their style more closely resembles the style of the
+    Hangul Syllables range
+  * improve several glyphs in the range U+2100..U+214F
+    Letterlike Symbols.
+  * redraw U+013D LATIN CAPITAL LETTER L WITH CARON for better
+    compatibility with other glyphs in the Czech and Slovak
+    alphabets.
+  * Planes 2 and 3: almost 600 new ideographs
+  * Plane F: modify the Sitelen Pona script, added combining
+    character indicators and adding several new glyphs since the
+    last release
+
+-------------------------------------------------------------------
 Tue Dec 12 11:16:16 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - add %reconfigure_fonts_prereq to the subpackages

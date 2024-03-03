@@ -2,6 +2,7 @@
 # spec file for package gnu-unifont-fonts
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           gnu-unifont-fonts
-Version:        15.1.04
+Version:        15.1.05
 Release:        0
 Summary:        GNU Unifont fonts
 License:        GPL-2.0-or-later OR OFL-1.1
@@ -95,6 +96,7 @@ install -Dm 0644 %{SOURCE16} %{buildroot}/%{_fontsdir}/misc/unifont.pcf.gz
 %reconfigure_fonts_scriptlets -n gnu-unifont-jp-otf-fonts
 
 %files -n gnu-unifont-bitmap-fonts
+%license COPYING
 %{_fontsdir}/misc/
 
 %files -n gnu-unifont-otf-fonts
