@@ -520,4 +520,14 @@
     reproducibility.</comment>
     <requestid>1068242</requestid>
   </revision>
+  <revision rev="59" vrev="46">
+    <srcmd5>267ed047ca2d6d14db89fdff32d89695</srcmd5>
+    <version>7.6</version>
+    <time>1709493508</time>
+    <user>dimstar_suse</user>
+    <comment>- encodings-1.1.0
+  * Add a meson build system
+  * Add the ISO8859-14 encoding</comment>
+    <requestid>1154346</requestid>
+  </revision>
 </revisionlist>

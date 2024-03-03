@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,7 +64,7 @@ Source28:       http://xorg.freedesktop.org/archive/individual/font/font-sony-mi
 Source29:       http://xorg.freedesktop.org/archive/individual/font/font-sun-misc-1.0.4.tar.xz
 Source30:       http://xorg.freedesktop.org/archive/individual/font/font-winitzki-cyrillic-1.0.4.tar.xz
 Source31:       http://xorg.freedesktop.org/archive/individual/font/font-xfree86-type1-1.0.5.tar.xz
-Source32:       http://xorg.freedesktop.org/archive/individual/font/encodings-1.0.7.tar.xz
+Source32:       http://xorg.freedesktop.org/archive/individual/font/encodings-1.1.0.tar.xz
 Source33:       http://xorg.freedesktop.org/archive/individual/font/font-adobe-utopia-100dpi-1.0.5.tar.xz
 Source34:       http://xorg.freedesktop.org/archive/individual/font/font-adobe-utopia-75dpi-1.0.5.tar.xz
 Source35:       http://xorg.freedesktop.org/archive/individual/font/font-adobe-utopia-type1-1.0.5.tar.xz
