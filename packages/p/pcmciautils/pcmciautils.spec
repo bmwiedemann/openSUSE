@@ -56,12 +56,12 @@ There are also some tools for debugging and CIS handling.
 
 %prep
 %setup -q -n pcmciautils-%{version}
-%patch1
+%patch -P 1
 %setup -q -n pcmciautils-%{version} -T -D -a 1
 %setup -q -n pcmciautils-%{version} -T -D -a 2
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
 
 %build
 make %{?_smp_mflags} all DEF_CFLAGS="-fPIE %{optflags}" DEF_LDFLAGS="-pie" STRIPCMD=true
