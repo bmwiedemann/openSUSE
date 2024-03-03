@@ -37,6 +37,7 @@ libertas:	marvell		LICENCE.Marvell LICENCE.OLPC
 mwl8k:		marvell		LICENCE.Marvell
 mwifiex:	marvell		LICENCE.Marvell
 iwlwifi:	iwlwifi		LICENCE.iwlwifi_firmware
+atomisp:	intel		LICENSE.ivsc
 ipu3-imgu:	intel		LICENSE.ipu3_firmware
 intel-ipu6-isys: intel		LICENSE.ivsc
 mei-vsc-hw:	intel		LICENSE.ivsc

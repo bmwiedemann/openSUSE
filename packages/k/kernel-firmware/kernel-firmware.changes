@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 01 15:09:13 UTC 2024 - tiwai@suse.com
+
+- Update to version 20240229 (git commit 977332782302):
+  * amdgpu: Update VCN firmware binaries
+  * Intel IPU2: Add firmware files
+  * brcm: Add nvram for the Acer Iconia One 7 B1-750 tablet
+  * i915: Add Xe2LPD DMC v2.18
+  * i915: Update MTL DMC v2.21
+
+-------------------------------------------------------------------
 Thu Feb 22 07:46:01 UTC 2024 - tiwai@suse.com
 
 - Update to version 20240220 (git commit 73b4429fae36):

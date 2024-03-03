@@ -37,6 +37,7 @@ libertas:	marvell		libertas_tf_usb libertas_sdio libertas_cs usb8xxx btmrvl_sdio
 mwl8k:		marvell
 mwifiex:	mwifiex		mwifiex mwifiex_pcie mwifiex_usb mwifiex_sdio btmrvl_sdio
 iwlwifi:	iwlwifi		iwlwifi iwl4965 iwl3945
+atomisp:	intel
 ipu3-imgu:	intel
 intel-ipu6-isys: intel
 mei-vsc-hw:	intel
