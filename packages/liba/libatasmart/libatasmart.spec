@@ -73,8 +73,7 @@ A small and lightweight parser library for ATA S.M.A.R.T. hard disk
 health monitoring.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure --disable-static

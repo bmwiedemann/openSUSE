@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 15:22:13 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Sat Jan  4 15:53:10 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Modernize spec file
