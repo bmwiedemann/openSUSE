@@ -88,9 +88,9 @@ Its usage is documented in the README.
 
 %prep
 %setup -q -b1
-%patch0 -p1
+%patch -P 0 -p1
 pushd ../vdpauinfo-*
-%patch1 -p1
+%patch -P 1 -p1
 popd
 
 %build

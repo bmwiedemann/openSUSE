@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  1 10:17:39 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Mar 10 17:27:33 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add U_Support-AV1.patch: Add support for AV1 in vdpauinfo.
