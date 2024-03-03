@@ -73,8 +73,7 @@ This package contains all necessary include files and libraries needed
 to develop applications that require these.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf -fvi

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  1 09:25:05 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Sat Oct 16 10:14:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.2.2:
