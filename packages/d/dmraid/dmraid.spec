@@ -1,7 +1,7 @@
 #
 # spec file for package dmraid
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@ BuildRequires:  zlib-devel
 Requires:       aaa_base
 Requires:       kpartx
 Requires(post): coreutils
-Requires(postun):coreutils
+Requires(postun): coreutils
 URL:            http://people.redhat.com/~heinzm/sw/dmraid/src/
 Summary:        A Device-Mapper Software RAID Support Tool
 License:        GPL-2.0-only
@@ -94,13 +94,7 @@ dmraid uses libdevmapper and the device-mapper kernel runtime to create
 devices with respective mappings for the ATARAID sets discovered.
 
 %prep
-%setup -n dmraid/%{src_version}/dmraid
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p2
+%autosetup -p1 -n dmraid/%{src_version}/dmraid
 
 cp %{SOURCE3} .
 

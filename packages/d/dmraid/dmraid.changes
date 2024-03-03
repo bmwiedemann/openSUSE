@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 26 07:50:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+- Rebase 0001-remove-partitions-with-O_RDONLY.patch to apply -p1.
+
+-------------------------------------------------------------------
 Tue Dec 27 10:33:15 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

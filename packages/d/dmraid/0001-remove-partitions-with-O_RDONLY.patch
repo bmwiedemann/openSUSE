@@ -13,8 +13,8 @@ from systemd, which will reinstate all partitions just deleted.
 
 diff --git a/lib/device/partition.c b/lib/device/partition.c
 index 99e92f6a66cd..bcc8de819eb4 100644
---- a/1.0.0.rc16/lib/device/partition.c
-+++ b/1.0.0.rc16/lib/device/partition.c
+--- a/lib/device/partition.c
++++ b/lib/device/partition.c
 @@ -22,8 +22,7 @@ _remove_subset_partitions(struct lib_context *lc, struct raid_set *rs)
  	};
  
