@@ -150,12 +150,7 @@ expression pattern matching using the same syntax and semantics
 as Perl 5.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

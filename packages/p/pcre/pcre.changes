@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 14:49:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Wed May 11 09:21:09 UTC 2022 - Jason Sikes <jsikes@suse.com>
 
 - Added pcre-8.45-bsc1199232-unicode-property-matching.patch
