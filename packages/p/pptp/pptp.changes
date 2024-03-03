@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 15:02:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Fri Feb  4 05:20:42 UTC 2022 - Reinhard Max <max@suse.com>
 
 - bsc#1194714: Remove pptp-command (the former SysV init scirpt).

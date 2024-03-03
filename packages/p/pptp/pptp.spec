@@ -37,8 +37,7 @@ employers and some cable and ADSL service providers. It requires MPPE
 support in the kernel. Use the ppp-mppe package.
 
 %prep
-%setup -q
-%patch1
+%autosetup -p0
 
 %build
 make CFLAGS="%{optflags}"
