@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  1 20:52:46 UTC 2024 - Michal Jireš <michal.jires@suse.com>
+
+- Add fix_gcc14_errors.patch (bsc#1220467)
+
+-------------------------------------------------------------------
 Thu Feb 22 07:54:56 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -48,6 +48,7 @@ Patch4:         dcraw-CVE-2018-5801.patch
 Patch5:         iowrappers.patch
 Patch6:         dcraw-CVE-2021-3624.patch
 Patch7:         dcraw-glibc-2.38.patch
+Patch8:         fix_gcc14_errors.patch
 BuildRequires:  gettext-runtime
 BuildRequires:  libjasper-devel
 BuildRequires:  libjpeg-devel
@@ -70,6 +71,7 @@ cp -a %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} .
 %patch -P 5 -p1
 %patch -P 6 -p1
 %patch -P 7 -p1
+%patch -P 8 -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing -fstack-protector-all"

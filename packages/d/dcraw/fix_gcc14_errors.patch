@@ -1,0 +1,24 @@
+Index: dcraw/fuji_green.c
+===================================================================
+--- dcraw.orig/fuji_green.c
++++ dcraw/fuji_green.c
+@@ -5,6 +5,7 @@
+    $Date: 2006/03/01 01:46:47 $
+  */
+ 
++#define _XOPEN_SOURCE
+ #include <ctype.h>
+ #include <math.h>
+ #include <setjmp.h>
+Index: dcraw/fujiturn.c
+===================================================================
+--- dcraw.orig/fujiturn.c
++++ dcraw/fujiturn.c
+@@ -15,6 +15,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <fcntl.h>
++#include <arpa/inet.h>
+ 
+ #ifdef _16BIT
+ typedef unsigned short value;
