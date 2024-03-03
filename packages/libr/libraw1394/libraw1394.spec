@@ -83,9 +83,7 @@ Command-line utilities to inspect and send IEEE 1394 isochronous
 packets, and to test the basic functionality of raw1394.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 autoreconf --force --install
