@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 01 13:03:26 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.3+git7:
+  * Only enable all existing DASDs if it's actually the first boot (bsc#1219849)
+  * Use $dracutsysrootdir
+
+-------------------------------------------------------------------
 Thu Jan 25 15:19:26 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.3+git5:
