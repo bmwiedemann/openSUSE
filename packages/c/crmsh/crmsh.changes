@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb 27 15:11:03 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240227.21cbb9ee:
+  * Fix: add diagnostic messages when crm report cannot find ssh-agent (bsc#1219538)
+
+-------------------------------------------------------------------
+Mon Feb 26 09:41:00 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240226.cf0a94f2:
+  * Dev: unittest: adjust unit tests for previous changes
+  * Dev: use ClusterShell for the changes in the previous commit
+  * Fix: crm report hangs in the root passwordless with ssh-agent
+  * Dev: unittest: adjust unit tests for previous changes
+  * Fix: report: use ClusterShell for ssh (bsc#1220170)
+
+-------------------------------------------------------------------
 Wed Feb 21 04:31:29 UTC 2024 - nicholas.yang@suse.com
 
 - Update to version 4.6.0+20240221.58aa13d1:
