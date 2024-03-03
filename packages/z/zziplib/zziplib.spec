@@ -1,7 +1,7 @@
 #
 # spec file for package zziplib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,8 @@ URL:            http://zziplib.sourceforge.net
 Source0:        https://github.com/gdraheim/zziplib/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
 Patch0:         zziplib-0.13.62.patch
-Patch8:         bsc1154002-prevent-unnecessary-perror.patch
+Patch1:         bsc1154002-prevent-unnecessary-perror.patch
+Patch2:         CVE-2020-18770.patch
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  xmlto
@@ -59,9 +60,7 @@ That are the header files needed for developing applications using
 ZZipLib.
 
 %prep
-%setup -q
-%patch -P 0
-%patch -P 8 -p1
+%autosetup -p1
 # do not bother with html docs saving us python2 dependency
 sed -i -e 's:docs ::g' Makefile.am
 

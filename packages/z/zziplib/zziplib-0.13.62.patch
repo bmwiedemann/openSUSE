@@ -1,7 +1,7 @@
-Index: m4/ax_cflags_no_writable_strings.m4
+Index: zziplib/m4/ax_cflags_no_writable_strings.m4
 ===================================================================
---- m4/ax_cflags_no_writable_strings.m4.orig
-+++ m4/ax_cflags_no_writable_strings.m4
+--- zziplib/m4/ax_cflags_no_writable_strings.m4
++++ zziplib-new/m4/ax_cflags_no_writable_strings.m4
 @@ -40,6 +40,7 @@ VAR,[VAR="no, unknown"
  for ac_arg dnl
  in "-pedantic % -fno-writable-strings -Wwrite-strings" dnl   GCC

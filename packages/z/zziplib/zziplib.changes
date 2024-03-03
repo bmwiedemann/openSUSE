@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 27 15:50:19 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- assert full zzip_file_header.                                                 
+  [bsc#1214577, CVE-2020-18770, CVE-2020-18770.patch]
+- Use autosetup
+
+-------------------------------------------------------------------
 Tue Feb 20 12:11:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
