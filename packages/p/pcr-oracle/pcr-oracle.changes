@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 15:14:37 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Remove fix_efi_measure.patch
+- Add fix_efi_measure_and_shim.patch (bsc#1219807)
+
+-------------------------------------------------------------------
 Tue Feb 20 18:16:53 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add fix_loader_conf.patch to measure the systemd-boot loader.conf file

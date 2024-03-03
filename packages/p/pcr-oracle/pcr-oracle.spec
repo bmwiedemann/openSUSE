@@ -25,8 +25,9 @@ License:        GPL-2.0-only
 Group:          System/Boot
 URL:            https://github.com/okirch/pcr-oracle
 Source:         %{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM fix_efi_measure.patch gh#okirch/pcr-oracle!47
-Patch0:         fix_efi_measure.patch
+# PATCH-FIX-UPSTREAM fix_efi_measure_and_shim.patch gh#okirch/pcr-oracle!47
+# PATCH-FIX-UPSTREAM fix_efi_measure_and_shim.patch gh#okirch/pcr-oracle!51
+Patch0:         fix_efi_measure_and_shim.patch
 # PATCH-FIX-UPSTREAM fix_loader_conf.patch gh#okirch/pcr-oracle!50
 Patch1:         fix_loader_conf.patch
 BuildRequires:  libopenssl-devel >= 0.9.8

@@ -1,0 +1,412 @@
+From 9489d98463a596ec8e4ba9f1f4a2b2af91c0968b Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Wed, 10 Jan 2024 15:32:07 +0100
+Subject: [PATCH 1/8] Print the measured kernel
+
+The debug output can be missleading, as print information about the
+current event log, but not about the measured element, that can be
+different as in the kernel case.
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ src/efi-application.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/efi-application.c b/src/efi-application.c
+index 3e80083..2fd33ec 100644
+--- a/src/efi-application.c
++++ b/src/efi-application.c
+@@ -292,6 +292,12 @@ __tpm_event_efi_bsa_rehash(const tpm_event_t *ev, const tpm_parsed_event_t *pars
+ 
+ 	/* The next boot can have a different kernel */
+ 	if (sdb_is_kernel(evspec->efi_application) && ctx->boot_entry) {
++		/* TODO: the parsed data type did not change, so all
++		 * the description correspond to the current event
++		 * log, and not the asset that has been measured.  The
++		 * debug output can then be missleading.
++		 */
++		debug("Measuring %s\n", ctx->boot_entry->image_path);
+ 		new_application = ctx->boot_entry->image_path;
+ 		if (new_application) {
+ 			evspec_clone = *evspec;
+
+From d8d97a3c233e326e0b1836b77fa08f483ea8f410 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Wed, 10 Jan 2024 15:51:45 +0100
+Subject: [PATCH 2/8] Rename variable to cmdline
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ src/eventlog.c | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/src/eventlog.c b/src/eventlog.c
+index 4277d42..377f4d6 100644
+--- a/src/eventlog.c
++++ b/src/eventlog.c
+@@ -790,8 +790,8 @@ static const tpm_evdigest_t *
+ __tpm_event_systemd_rehash(const tpm_event_t *ev, const tpm_parsed_event_t *parsed, tpm_event_log_rehash_ctx_t *ctx)
+ {
+ 	const uapi_boot_entry_t *boot_entry = ctx->boot_entry;
+-	char initrd[2048];
+-	char initrd_utf16[4096];
++	char cmdline[2048];
++	char cmdline_utf16[4096];
+ 	unsigned int len;
+ 
+ 	/* If no --next-kernel option was given, do not rehash anything */
+@@ -804,15 +804,16 @@ __tpm_event_systemd_rehash(const tpm_event_t *ev, const tpm_parsed_event_t *pars
+ 	}
+ 
+ 	debug("Next boot entry expected from: %s %s\n", boot_entry->title, boot_entry->version? : "");
+-	snprintf(initrd, sizeof(initrd), "initrd=%s %s",
++	snprintf(cmdline, sizeof(cmdline), "initrd=%s %s",
+ 			path_unix2dos(boot_entry->initrd_path),
+ 			boot_entry->options? : "");
++	debug("Measuring Kernel command line: %s\n", cmdline);
+ 
+-	len = (strlen(initrd) + 1) << 1;
+-	assert(len <= sizeof(initrd_utf16));
+-	__convert_to_utf16le(initrd, strlen(initrd) + 1, initrd_utf16, len);
++	len = (strlen(cmdline) + 1) << 1;
++	assert(len <= sizeof(cmdline_utf16));
++	__convert_to_utf16le(cmdline, strlen(cmdline) + 1, cmdline_utf16, len);
+ 
+-	return digest_compute(ctx->algo, initrd_utf16, len);
++	return digest_compute(ctx->algo, cmdline_utf16, len);
+ }
+ 
+ /*
+
+From 4f8e3f4760ff7fe97df1e6af569d049e30f3ee06 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Wed, 10 Jan 2024 15:55:41 +0100
+Subject: [PATCH 3/8] Add debug output for initrd
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ src/eventlog.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/eventlog.c b/src/eventlog.c
+index 377f4d6..3574a4d 100644
+--- a/src/eventlog.c
++++ b/src/eventlog.c
+@@ -877,6 +877,7 @@ __tpm_event_tag_initrd_rehash(const tpm_event_t *ev, const tpm_parsed_event_t *p
+ 	}
+ 
+ 	debug("Next boot entry expected from: %s %s\n", boot_entry->title, boot_entry->version? : "");
++	debug("Measuring initrd: %s\n", boot_entry->initrd_path);
+ 	return runtime_digest_efi_file(ctx->algo, boot_entry->initrd_path);
+ }
+ 
+
+From 90ee8dab9d972b741bc0c27a04a872afbecdef82 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Wed, 10 Jan 2024 18:54:04 +0100
+Subject: [PATCH 4/8] Add debug output during extension
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ src/oracle.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/oracle.c b/src/oracle.c
+index 1cafafc..0afd910 100644
+--- a/src/oracle.c
++++ b/src/oracle.c
+@@ -366,6 +366,7 @@ pcr_bank_extend_register(tpm_pcr_bank_t *bank, unsigned int pcr_index, const tpm
+ static void
+ predictor_extend_hash(struct predictor *pred, unsigned int pcr_index, const tpm_evdigest_t *d)
+ {
++	debug("Extend PCR#%d: %s\n", pcr_index, digest_print(d));
+ 	pcr_bank_extend_register(&pred->prediction, pcr_index, d);
+ }
+ 
+
+From 5133fe6f3c00a41aee362a51621a278dd472497e Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Thu, 11 Jan 2024 14:09:03 +0100
+Subject: [PATCH 5/8] Update the EFI image info before rehash
+
+If the new EFI image is in a new place, the image information stored in
+the parsed event should be updated, so the rehash will use this
+information instead of the one from the event log.
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ src/efi-application.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/efi-application.c b/src/efi-application.c
+index 2fd33ec..842bca6 100644
+--- a/src/efi-application.c
++++ b/src/efi-application.c
+@@ -40,7 +40,7 @@
+  */
+ static const tpm_evdigest_t *	__tpm_event_efi_bsa_rehash(const tpm_event_t *, const tpm_parsed_event_t *, tpm_event_log_rehash_ctx_t *);
+ static bool			__tpm_event_efi_bsa_extract_location(tpm_parsed_event_t *parsed);
+-static bool			__tpm_event_efi_bsa_inspect_image(tpm_parsed_event_t *parsed);
++static bool			__tpm_event_efi_bsa_inspect_image(struct efi_bsa_event *evspec);
+ 
+ static void
+ __tpm_event_efi_bsa_destroy(tpm_parsed_event_t *parsed)
+@@ -111,7 +111,7 @@ __tpm_event_parse_efi_bsa(tpm_event_t *ev, tpm_parsed_event_t *parsed, buffer_t
+ 			assign_string(&ctx->efi_partition, evspec->efi_partition);
+ 		else
+ 			assign_string(&evspec->efi_partition, ctx->efi_partition);
+-		__tpm_event_efi_bsa_inspect_image(parsed);
++		__tpm_event_efi_bsa_inspect_image(evspec);
+ 	}
+ 
+ 	return true;
+@@ -150,9 +150,8 @@ __tpm_event_efi_bsa_extract_location(tpm_parsed_event_t *parsed)
+ }
+ 
+ static bool
+-__tpm_event_efi_bsa_inspect_image(tpm_parsed_event_t *parsed)
++__tpm_event_efi_bsa_inspect_image(struct efi_bsa_event *evspec)
+ {
+-        struct efi_bsa_event *evspec = &parsed->efi_bsa_event;
+ 	char path[PATH_MAX];
+ 	const char *display_name;
+ 	buffer_t *img_data;
+@@ -302,6 +301,7 @@ __tpm_event_efi_bsa_rehash(const tpm_event_t *ev, const tpm_parsed_event_t *pars
+ 		if (new_application) {
+ 			evspec_clone = *evspec;
+ 			evspec_clone.efi_application = strdup(new_application);
++			__tpm_event_efi_bsa_inspect_image(&evspec_clone);
+ 			evspec = &evspec_clone;
+ 		}
+ 	}
+
+From 93cbe02ca05297c638b1ac7f32b3da3a6cd2f684 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Thu, 11 Jan 2024 14:35:07 +0100
+Subject: [PATCH 6/8] Bump version to 0.5.5
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ configure         | 2 +-
+ microconf/version | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure b/configure
+index 1dccbdc..854cc0a 100755
+--- a/configure
++++ b/configure
+@@ -12,7 +12,7 @@
+ # Invoke with --help for a description of options
+ #
+ # microconf:begin
+-# version 0.5.4
++# version 0.5.5
+ # require libtss2
+ # require json
+ # disable debug-authenticode
+diff --git a/microconf/version b/microconf/version
+index 7e913d9..591473f 100644
+--- a/microconf/version
++++ b/microconf/version
+@@ -1 +1 @@
+-uc_version=0.5.4
++uc_version=0.5.5
+
+From e622620a8de5eaf499265adf6c5e8d2ecdaa295b Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Mon, 26 Feb 2024 13:34:13 +0100
+Subject: [PATCH 7/8] Add secure boot detector
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ Makefile.in       |  3 ++-
+ src/eventlog.h    |  2 ++
+ src/secure_boot.c | 44 ++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 48 insertions(+), 1 deletion(-)
+ create mode 100644 src/secure_boot.c
+
+diff --git a/Makefile.in b/Makefile.in
+index 02a915b..9698253 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -34,7 +34,8 @@ ORACLE_SRCS	= oracle.c \
+ 		  store.c \
+ 		  util.c \
+ 		  sd-boot.c \
+-		  uapi.c
++		  uapi.c \
++		  secure_boot.c
+ ORACLE_OBJS	= $(addprefix build/,$(patsubst %.c,%.o,$(ORACLE_SRCS)))
+ 
+ all: $(TOOLS) $(MANPAGES)
+diff --git a/src/eventlog.h b/src/eventlog.h
+index 3741b58..8af5eb0 100644
+--- a/src/eventlog.h
++++ b/src/eventlog.h
+@@ -323,4 +323,6 @@ extern bool			shim_variable_name_valid(const char *name);
+ extern const char *		shim_variable_get_rtname(const char *name);
+ extern const char *		shim_variable_get_full_rtname(const char *name);
+ 
++extern bool			secure_boot_enabled();
++
+ #endif /* EVENTLOG_H */
+diff --git a/src/secure_boot.c b/src/secure_boot.c
+new file mode 100644
+index 0000000..215baa6
+--- /dev/null
++++ b/src/secure_boot.c
+@@ -0,0 +1,44 @@
++/*
++ *   Copyright (C) 2023 SUSE LLC
++ *
++ *   This program is free software; you can redistribute it and/or modify
++ *   it under the terms of the GNU General Public License as published by
++ *   the Free Software Foundation; either version 2 of the License, or
++ *   (at your option) any later version.
++ *
++ *   This program is distributed in the hope that it will be useful,
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *   GNU General Public License for more details.
++ *
++ *   You should have received a copy of the GNU General Public License
++ *   along with this program; if not, write to the Free Software
++ *   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
++ *
++ * Written by Alberto Planas <aplanas@suse.com>
++ */
++
++#include <stdio.h>
++#include "bufparser.h"
++#include "runtime.h"
++
++#define SECURE_BOOT_EFIVAR_NAME	"SecureBoot-8be4df61-93ca-11d2-aa0d-00e098032b8c"
++
++
++bool
++secure_boot_enabled()
++{
++	buffer_t *data;
++	uint8_t enabled;
++
++	data = runtime_read_efi_variable(SECURE_BOOT_EFIVAR_NAME);
++	if (data == NULL) {
++		return false;
++	}
++
++	if (!buffer_get_u8(data,  &enabled)) {
++		 return false;
++	}
++
++	return enabled == 1;
++}
+
+From 211502ec5cac7e252f8af251ee34872f7adae9ca Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Mon, 26 Feb 2024 14:52:37 +0100
+Subject: [PATCH 8/8] Detect when device path is missing for kernel
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ src/efi-application.c | 48 ++++++++++++++++++++++++++++++++++++++++---
+ src/sd-boot.c         |  3 +++
+ 2 files changed, 48 insertions(+), 3 deletions(-)
+
+diff --git a/src/efi-application.c b/src/efi-application.c
+index 842bca6..1f434fc 100644
+--- a/src/efi-application.c
++++ b/src/efi-application.c
+@@ -42,6 +42,8 @@ static const tpm_evdigest_t *	__tpm_event_efi_bsa_rehash(const tpm_event_t *, co
+ static bool			__tpm_event_efi_bsa_extract_location(tpm_parsed_event_t *parsed);
+ static bool			__tpm_event_efi_bsa_inspect_image(struct efi_bsa_event *evspec);
+ 
++static bool			__is_shim_issue(const tpm_event_t *ev, const struct efi_bsa_event *evspec);
++
+ static void
+ __tpm_event_efi_bsa_destroy(tpm_parsed_event_t *parsed)
+ {
+@@ -114,6 +116,15 @@ __tpm_event_parse_efi_bsa(tpm_event_t *ev, tpm_parsed_event_t *parsed, buffer_t
+ 		__tpm_event_efi_bsa_inspect_image(evspec);
+ 	}
+ 
++	/* When the shim issue is present the efi_application will be
++	 * empty.  The binary path will be reconstructed with the
++	 * --next-kernel parameter, but to generate the full path the
++	 * `efi_partition` is needed.
++	 */
++	if (__is_shim_issue(ev, evspec))
++		assign_string(&evspec->efi_partition, ctx->efi_partition);
++
++
+ 	return true;
+ }
+ 
+@@ -273,6 +284,31 @@ efi_application_extract_signer(const tpm_parsed_event_t *parsed)
+ 	return authenticode_get_signer(evspec->img_info);
+ }
+ 
++static bool __is_shim_issue(const tpm_event_t *ev, const struct efi_bsa_event *evspec)
++{
++	/* When secure boot is enabled and shim is installed,
++	 * systemd-boot installs some security overrides that will
++	 * delegate into shim (via shim_validate from systemd-boot)
++	 * the validation of the kernel signature.
++	 *
++	 * The shim_validate function receives the device path from
++	 * the firmware, and is used to load the kernel into memory.
++	 * At the end call shim_verify from shim, but pass only the
++	 * buffer with the loaded image.
++	 *
++	 * The net result is that the event log
++	 * EV_EFI_BOOT_SERVICES_APPLICATION registered by shim_verify
++	 * will not contain the device path that pcr-oracle requires
++	 * to rehash the binary.
++	 *
++	 * So far only the kernel is presenting this issue (when
++	 * systemd-boot is used, GRUB2 needs to be evaluated), so this
++	 * can be detected if there is an event registered in PCR 4
++	 * without path.
++	 */
++	return (secure_boot_enabled() && ev->pcr_index == 4 && !evspec->efi_application);
++}
++
+ static const tpm_evdigest_t *
+ __tpm_event_efi_bsa_rehash(const tpm_event_t *ev, const tpm_parsed_event_t *parsed, tpm_event_log_rehash_ctx_t *ctx)
+ {
+@@ -284,13 +320,19 @@ __tpm_event_efi_bsa_rehash(const tpm_event_t *ev, const tpm_parsed_event_t *pars
+ 	 * We're not yet prepared to handle these, so we hope the user doesn't mess with them, and
+ 	 * return the original digest from the event log.
+ 	 */
+-	if (!evspec->efi_application) {
+-		debug("Unable to locate boot service application - probably not a file\n");
++	if (!evspec->efi_application && !(__is_shim_issue(ev, evspec) && ctx->boot_entry)) {
++		if (__is_shim_issue(ev, evspec) && !ctx->boot_entry)
++			debug("Unable to locate boot service application - missing device path because shim issue");
++		else
++			debug("Unable to locate boot service application - probably not a file\n");
+ 		return tpm_event_get_digest(ev, ctx->algo);
+ 	}
+ 
+ 	/* The next boot can have a different kernel */
+-	if (sdb_is_kernel(evspec->efi_application) && ctx->boot_entry) {
++	if ((sdb_is_kernel(evspec->efi_application) || __is_shim_issue(ev, evspec)) && ctx->boot_entry) {
++		if (__is_shim_issue(ev, evspec))
++			debug("Empty device path for the kernel - building one based on next kernel\n");
++
+ 		/* TODO: the parsed data type did not change, so all
+ 		 * the description correspond to the current event
+ 		 * log, and not the asset that has been measured.  The
+diff --git a/src/sd-boot.c b/src/sd-boot.c
+index cbdaa49..ede2569 100644
+--- a/src/sd-boot.c
++++ b/src/sd-boot.c
+@@ -138,6 +138,9 @@ sdb_is_kernel(const char *application)
+ 	char *path_copy;
+ 	int found = 0;
+ 
++	if (!application)
++		return false;
++
+ 	match = get_valid_kernel_entry_tokens();
+ 	path_copy = strdup(application);
+ 
