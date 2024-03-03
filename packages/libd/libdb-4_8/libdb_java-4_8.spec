@@ -61,9 +61,9 @@ These are the development files.
 
 %prep
 %setup -q -n %{generic_name}-%{version}
-%patch0
-%patch1 -p1
-%patch2
+%patch -P 0
+%patch -P 1 -p1
+%patch -P 2
 
 %build
 cd dist

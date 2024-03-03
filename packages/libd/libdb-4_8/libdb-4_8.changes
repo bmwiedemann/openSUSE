@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 16:01:36 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Jun 21 12:42:57 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix incomplete license tag. [bsc#1099695]

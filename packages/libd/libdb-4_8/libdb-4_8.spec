@@ -92,9 +92,9 @@ This package contains the header files and libraries.
 
 %prep
 %setup -q -n %{generic_name}-%{version}
-%patch0
-%patch1
-%patch2 -p1
+%patch -P 0
+%patch -P 1
+%patch -P 2 -p1
 
 %build
 cd dist
