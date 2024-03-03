@@ -1,0 +1,16 @@
+diff --git a/daemon/gdm-session.c b/daemon/gdm-session.c
+index d6c39c2..52d9718 100644
+--- a/daemon/gdm-session.c
++++ b/daemon/gdm-session.c
+@@ -3431,8 +3431,9 @@ gdm_session_get_display_mode (GdmSession *self)
+                  self->is_program_session? "yes" : "no",
+                  self->display_seat_id);
+ 
+-        if (g_strcmp0 (self->display_seat_id, "seat0") != 0) {
+-                return GDM_SESSION_DISPLAY_MODE_LOGIND_MANAGED;
++        if (g_strcmp0 (self->display_seat_id?: "", "") == 0
++            && g_strcmp0 (self->session_type?: "", "") == 0) {
++                return GDM_SESSION_DISPLAY_MODE_REUSE_VT;
+         }
+ 
+ #ifdef ENABLE_USER_DISPLAY_SERVER

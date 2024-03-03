@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 01:17:18 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gdm-xvnc-start-session-failed.patch: None seat0 session runs
+  without running launcher(bsc#1219205 glgo#GNOME/gdm#909).
+
+-------------------------------------------------------------------
 Wed Feb 21 10:51:12 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Drop gdm-disable-wayland-on-mgag200-chipsets.patch: fixed
