@@ -78,4 +78,12 @@
 - skip python 36 (no FontTools as that requries scipy)</comment>
     <requestid>1131701</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>2fa70ff83bf08a524fab0dbc63d18475</srcmd5>
+    <version>0.12.1</version>
+    <time>1709583937</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1154612</requestid>
+  </revision>
 </revisionlist>
