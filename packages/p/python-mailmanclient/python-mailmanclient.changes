@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 20:26:33 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Build PEP517 wheel
+
+-------------------------------------------------------------------
 Tue Feb 20 13:23:35 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Get rid of six dependency

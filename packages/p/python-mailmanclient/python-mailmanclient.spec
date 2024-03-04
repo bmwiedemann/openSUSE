@@ -25,7 +25,9 @@ License:        LGPL-3.0-only
 Group:          Productivity/Networking/Email/Mailinglists
 URL:            https://www.list.org/
 Source:         https://files.pythonhosted.org/packages/source/m/mailmanclient/mailmanclient-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests
@@ -59,10 +61,10 @@ sed -i 's/six.moves.urllib_error/urllib.error/' src/mailmanclient/tests/test_dom
 
 %build
 export LC_ALL=C.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -78,6 +80,6 @@ export LC_ALL=C.UTF-8
 %doc README.rst
 %license COPYING.LESSER
 %{python_sitelib}/mailmanclient
-%{python_sitelib}/mailmanclient-%{version}*-info
+%{python_sitelib}/mailmanclient-%{version}.dist-info
 
 %changelog
