@@ -51,10 +51,7 @@ BuildRequires:  pkgconfig(xproto)
 Open-source X.org graphics driver for Qualcomm Adreno graphics
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
