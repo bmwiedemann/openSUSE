@@ -57,8 +57,7 @@ BuildArch:      noarch
 zsh shell completions for git-subrepo
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 
