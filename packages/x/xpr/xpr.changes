@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar  4 04:27:37 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.2.0
+  * Use memcpy() instead of memmove() when buffers are known not to overlap
+  * Remove unnnecessary casts from malloc(), calloc(), and free() calls
+  * No need to bzero() buffers allocated by calloc()
+  * Add support for paper sizes other than 8.5 x 11 inches
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Modernize lseek() calls
+  * configure: Use AC_SYS_LARGEFILE to enable large file support
+
+-------------------------------------------------------------------
 Mon Jul 11 13:03:34 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.1.0
