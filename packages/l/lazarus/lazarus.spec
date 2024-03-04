@@ -19,7 +19,7 @@
 %define qt5_sover   1
 %define qt6_sover   6
 Name:           lazarus
-Version:        3.0
+Version:        3.2
 Release:        0
 # Please note that the LGPL is modified and this is not multi-licensed, but each component has a separate license chosen.
 Summary:        FreePascal RAD IDE and Component Library
@@ -46,8 +46,8 @@ Requires:       gdb
 Requires:       make
 Requires(post): desktop-file-utils
 Requires(post): shared-mime-info
-Requires(postun):desktop-file-utils
-Requires(postun):shared-mime-info
+Requires(postun): desktop-file-utils
+Requires(postun): shared-mime-info
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-qtbase-common-devel >= 5.6.0
@@ -262,27 +262,16 @@ fpcmake -Tall
 popd
 
 # Compile some basic targets required by everything else
-make registration %{fpmakeopt}
+make registration %{fpmakeopt} OPT='%{fpcopt}'
 
-# Compile tools (lazbuild, etc.). Requires the nogui widgetset.
-make lazbuild %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM=nogui
-make tools %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM=nogui
+# Compile lazbuild - required to build other targets
+make lazbuild %{fpmakeopt} OPT='%{fpcopt}'
 
-# Compile LCL base (Lazarus Component Library) for the "nogui" widgetset. Note that
-# starting with Lazarus 3.0, the "basecomponents" build target changed to the point that
-# it can no longer be build for the "nogui" widgetset. Manually build the targets of
-# the original "basecomponents", prior to Lazarus 3.0. This outputs the files needed for
-# subpackage lcl-nogui. Eventually subpackage lcl-nogui should be removed, because it
-# is not officially supported nor tested according to:
-#   https://gitlab.com/freepascal.org/lazarus/lazarus/-/issues/40683
-make -C lcl/interfaces/nogui/ %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM=nogui
-make -C components/buildintf %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM=nogui
-make -C components/debuggerintf %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM=nogui
-make -C components/lazcontrols %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM=nogui
-make -C components/ideintf %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM=nogui
-make -C components/synedit %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM=nogui
-make -C components/lazdebuggergdbmi %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM=nogui
-make -C components/lazcontrols/design %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM=nogui
+# Compile LCL base (Lazarus Component Library) for the "nogui" widgetset
+make lcl %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM=nogui
+
+# Compile extra tools
+make tools %{fpmakeopt} OPT='%{fpcopt}'
 
 # Compile the LCL base + extra components for GUI widgetsets
 for WIDGETSET in gtk2 gtk3 qt5 qt6; do
@@ -292,13 +281,13 @@ done
 # Compile the IDE itself. Default to using the gkt2 widget set.
 make bigide %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM=gtk2
 
-# build libQt5Pas
+# Build libQt5Pas
 pushd lcl/interfaces/qt5/cbindings
   %qmake5
   %make_build
 popd
 
-# build libQt6Pas
+# Build libQt6Pas
 pushd lcl/interfaces/qt6/cbindings
   %qmake6
   %make_build
@@ -403,7 +392,6 @@ rm -f %{buildroot}%{_libdir}/%{name}/lcl/interfaces/qt6/cbindings/.qmake.stash
 
 # Helper macro to reduce repetitions (lcl, basecomponents)
 %define lcl_base_files(n:) %{expand:
-	%{*} %{_libdir}/%{name}/components/*/design/lib/*-linux/%{-n*}/
 	%{*} %{_libdir}/%{name}/components/*/lib/*-linux/%{-n*}/
 	%{*} %{_libdir}/%{name}/components/*/units/*-linux/%{-n*}/
 	%{*} %{_libdir}/%{name}/lcl/interfaces/%{-n*}/
@@ -412,6 +400,7 @@ rm -f %{buildroot}%{_libdir}/%{name}/lcl/interfaces/qt6/cbindings/.qmake.stash
 
 # Some files are not present for nogui (bigidecomponents)
 %define lcl_extra_files(n:) %{expand:
+	%{*} %{_libdir}/%{name}/components/*/design/lib/*-linux/%{-n*}/
 	%{*} %{_libdir}/%{name}/components/*/design/units/*-linux/%{-n*}/
 	%{*} %{_libdir}/%{name}/components/*/include/%{-n*}/
 	%{*} %{_libdir}/%{name}/components/*/include/intf/%{-n*}/

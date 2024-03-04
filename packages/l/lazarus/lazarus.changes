@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar  3 20:46:41 UTC 2024 - PragmaticLinux <info@pragmaticlinux.com>
+
+- Update to 3.2
+  * This is a bugfix release for which no seperate release notes were
+    published. The previous release notes still apply and contain
+    Lazarus 3.2 notes:
+    https://wiki.freepascal.org/Lazarus_3.0_release_notes
+- Improved the build commands in the spec-file.
+
+-------------------------------------------------------------------
 Tue Jan 16 19:02:38 UTC 2024 - PragmaticLinux <info@pragmaticlinux.com>
 
 - Corrected fdupes usage and removed an unneeded hidden file. 
