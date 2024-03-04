@@ -15,4 +15,12 @@
     <comment>- Use spec file macros for pam (boo#1190959)</comment>
     <requestid>922002</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>090826c5c5a460733456410652c6d2bd</srcmd5>
+    <version>1.1.9</version>
+    <time>1709583957</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1154716</requestid>
+  </revision>
 </revisionlist>

@@ -44,11 +44,10 @@ security application has no PAM support but is accessible with perl
 or other scripts.
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch0
-autoreconf -fis
+%autosetup -p0 -n %{name}-%{version}
 
 %build
+autoreconf -fis
 %configure --disable-static --with-gnu-ld --libdir=%{_pam_moduledir}
 make %{?_smp_mflags}
 
