@@ -37,7 +37,6 @@
 %global flufl_lock_min_version 4.0
 %global django_q_min_version 1.0.0
 
-%{?sle15_python_module_pythons}
 %global webapps_dir /srv/www/webapps
 
 %global hyperkitty_pkgname   HyperKitty
@@ -54,28 +53,17 @@
 
 %global hyperkitty_services hyperkitty-qcluster.service hyperkitty-runjob-daily.service hyperkitty-runjob-daily.timer hyperkitty-runjob-hourly.service hyperkitty-runjob-hourly.timer hyperkitty-runjob-minutely.service hyperkitty-runjob-minutely.timer hyperkitty-runjob-monthly.service hyperkitty-runjob-monthly.timer hyperkitty-runjob-quarter-hourly.service hyperkitty-runjob-quarter-hourly.timer hyperkitty-runjob-weekly.service hyperkitty-runjob-weekly.timer hyperkitty-runjob-yearly.service hyperkitty-runjob-yearly.timer
 
-# keep in sync with python-mailman/python-mailman-web/python-postorious
-%if 0%{?suse_version} >= 1600
-# Newest python supported by mailman is Python 3.12, but we have just Python 3.11 in SLE
-# See https://gitlab.com/mailman/mailman/-/blob/master/src/mailman/docs/NEWS.rst
-%define pythons python312
-%define mypython python312
-%define mypython_sitelib %{python312_sitelib}
-%define __mypython %{__python312}
-%else
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
-%define pythons python311
-%define mypython python311
-%define mypython_sitelib %{python311_sitelib}
-%define __mypython %{__python311}
-%else
-%{?!python_module:%define python_module() python3-%{**}}
+# keep in sync with python-postorius/python-mailman-web
+# Always only build one flavor: primary python for TW, python311 from the SLE15 python module for 15.x
+%if 0%{?suse_version} >= 1550
 %define pythons python3
-%define mypython python3
-%define mypython_sitelib %{python3_sitelib}
-%define __mypython %{__python3}
+%else
+%{?sle15_python_module_pythons}
 %endif
-%endif
+%global mypython %pythons
+%global mypython_sitelib %{expand:%%{%{mypython}_sitelib}}
+%global __mypython %{expand:%%{__%{mypython}}}
+%define plainpython python
 
 Name:           python-HyperKitty
 Version:        1.3.8
@@ -116,7 +104,9 @@ BuildRequires:  %{python_module django-gravatar2 >= %{django_gravatar2_min_versi
 BuildRequires:  %{python_module isort}
 BuildRequires:  %{python_module mailmanclient >= %{mailmanclient_min_version}}
 BuildRequires:  %{python_module mistune >= %{mistune_min_version}}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xapian-haystack >= 2.1.0}
 BuildRequires:  acl
 BuildRequires:  fdupes
@@ -172,10 +162,10 @@ Requires:       %{mypython}-python-dateutil >= %{python_dateutil_min_version}
 Requires:       %{mypython}-pytz >= %{pytz_min_version}
 Requires:       %{mypython}-robot-detection >= %{robot_detection_min_version}
 Requires:       %{mypython}-xapian-haystack >= %{django_haystack_min_version}
-%if "%{expand:%%%{mypython}_provides}" == "python3"
-Provides:       python3-%{hyperkitty_pkgname} = %{version}-%{release}
-%endif
+# help in replacing any previously installed flavor package back to the unprefixed package
+%if 0%{?suse_version} < 1550
 Obsoletes:      python3-%{hyperkitty_pkgname} < %{version}-%{release}
+%endif
 Provides:       %{mypython}-%{hyperkitty_pkgname} = %{version}-%{release}
 Obsoletes:      %{mypython}-%{hyperkitty_pkgname} < %{version}-%{release}
 %if 0%{?suse_version} >= 1550
@@ -241,7 +231,7 @@ sed -i 's|^#!/usr/bin/env.*|#!%{__mypython}|' \
 sed -i 's|/usr/bin/python3|%{__mypython}|' %{SOURCE10} %{SOURCE20} %{SOURCE21}
 sed -i 's|python3|%{mypython}|' %{SOURCE12}
 
-%python_build
+%pyproject_wheel
 
 # Build static files
 export PYTHONPATH=$(pwd)
@@ -265,7 +255,7 @@ install -d -m 0755 \
     %{buildroot}%{hyperkitty_staticdir}/CACHE \
     %{buildroot}%{_unitdir}
 
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # Copy static files

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 29 19:57:33 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Simplify python flavor selection
+  * Go back to primary python3 on Tumbleweed
+  * Use SLE15 python module pythons on 15.x
+- Build PEP517 wheel
+
+-------------------------------------------------------------------
 Wed Feb 28 06:46:36 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix building on SLE15 based distributions
