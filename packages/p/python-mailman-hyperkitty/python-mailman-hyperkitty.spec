@@ -16,14 +16,15 @@
 #
 
 
+# Always only build one flavor: primary python for TW, python311 from the SLE15 python module for 15.x
 %if 0%{?suse_version} >= 1550
-%define pythons python312
-%define mypython python312
+%define pythons python3
 %else
 %{?sle15_python_module_pythons}
-%define pythons python311
-%define mypython python311
 %endif
+%global mypython %pythons
+%global mypython_sitelib %{expand:%%{%{mypython}_sitelib}}
+
 Name:           python-mailman-hyperkitty
 Version:        1.2.1
 Release:        0
@@ -33,43 +34,49 @@ URL:            https://gitlab.com/mailman/mailman-hyperkitty/
 Source:         https://files.pythonhosted.org/packages/source/m/mailman-hyperkitty/mailman-hyperkitty-%{version}.tar.gz
 # https://gitlab.com/mailman/mailman-hyperkitty/-/issues/28
 Patch0:         python-mailman-hyperkitty-fix-archiver-test.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       %{mypython}-requests
-Requires:       %{mypython}-setuptools
-Requires:       %{mypython}-zope.interface
-Requires:       mailman3 >= 3.3.5
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  mailman3 >= 3.3.5
+BuildRequires:  (mailman3 >= 3.3.5 with %{mypython}-mailman3)
 BuildRequires:  %{python_module nose2}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module zope.interface}
 # /SECTION
-%python_subpackages
 
 %description
+Mailman archiver plugin for HyperKitty
+
+%package -n %{mypython}-mailman-hyperkitty
+Summary:        Mailman archiver plugin for HyperKitty
+Requires:       %{mypython}-requests
+Requires:       %{mypython}-zope.interface
+Requires:       (mailman3 >= 3.3.5 with %{mypython}-mailman3)
+
+%description -n %{mypython}-mailman-hyperkitty
 Mailman archiver plugin for HyperKitty
 
 %prep
 %autosetup -n mailman-hyperkitty-%{version} -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m nose2 -v
 
-%files %{python_files}
+%files -n %{mypython}-mailman-hyperkitty
 %doc README.rst mailman-hyperkitty.cfg
 %license LICENSE.txt
-%{python_sitelib}/mailman_hyperkitty
-%{python_sitelib}/mailman_hyperkitty-%{version}*-info
+%{mypython_sitelib}/mailman_hyperkitty
+%{mypython_sitelib}/mailman_hyperkitty-%{version}.dist-info
 
 %changelog
