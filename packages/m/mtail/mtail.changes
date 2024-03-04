@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 26 05:13:02 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Clean up service unit file
+
+-------------------------------------------------------------------
+Mon Feb 26 05:02:29 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Support service reload
+
+-------------------------------------------------------------------
 Mon Feb 26 04:33:15 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
 
 - Switch to sysusers

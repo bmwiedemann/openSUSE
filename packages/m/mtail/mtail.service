@@ -6,39 +6,41 @@ Before=nss-user-lookup.target
 After=local-fs.target network.target
 
 [Service]
-Type=simple
 User=mtail
 Group=mtail
+
 EnvironmentFile=-/etc/sysconfig/mtail
 ExecStart=/usr/sbin/mtail $ARGS
+ExecReload=/usr/bin/kill -1 $MAINPID
 Restart=always
+
 # various hardening options
-CapabilityBoundingSet=
 AmbientCapabilities=
+CapabilityBoundingSet=
+KeyringMode=private
 LockPersonality=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+MountFlags=private
+NoNewPrivileges=yes
+PrivateDevices=yes
 PrivateTmp=yes
 PrivateUsers=yes
-PrivateDevices=yes
-ProtectSystem=full
+ProtectClock=yes
+ProtectControlGroups=yes
 ProtectHome=yes
 ProtectHostname=yes
-ProtectClock=yes
+ProtectKernelLogs=yes
 ProtectKernelModules=yes
 ProtectKernelTunables=yes
-ProtectControlGroups=yes
-ProtectKernelLogs=yes
-NoNewPrivileges=yes
-MountFlags=private
-MemoryDenyWriteExecute=yes
+ProtectSystem=full
 RemoveIPC=yes
-LockPersonality=yes
-RestrictRealtime=yes
-RestrictNamespaces=yes
-RestrictSUIDSGID=yes
-KeyringMode=private
-SystemCallArchitectures=native
-SystemCallFilter=@basic-io @file-system @io-event @ipc @network-io @signal clone madvise setrlimit tgkill uname
 RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+SystemCallArchitectures=native
+SystemCallFilter=@basic-io @file-system @io-event @ipc @network-io @signal clone kill madvise setrlimit tgkill uname
 
 [Install]
 WantedBy=multi-user.target
