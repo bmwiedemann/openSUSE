@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 29 17:32:20 UTC 2024 - Benjamin Greiner <code@bnavigator.de>
+
+- Simplify python flavor selection
+  * Go back to primary python3 on Tumbleweed
+  * Use SLE15 python module pythons on 15.x
+
+-------------------------------------------------------------------
 Thu Feb 15 10:53:34 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Adapt to new RPM 4.19 and properly create mailman user/group (boo#1219674)

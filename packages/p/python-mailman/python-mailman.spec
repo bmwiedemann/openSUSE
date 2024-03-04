@@ -47,24 +47,17 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%if 0%{?suse_version} >= 1600
-# Newest python supported by mailman is Python 3.12, but we have just Python 3.11 in SLE
-# See https://gitlab.com/mailman/mailman/-/blob/master/src/mailman/docs/NEWS.rst
-%define pythons python312
-%define mypython python312
-%define mypython_sitelib %{python312_sitelib}
-%else
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
-%define pythons python311
-%define mypython python311
-%define mypython_sitelib %{python311_sitelib}
-%else
-%{?!python_module:%define python_module() python3-%{**}}
+# Keep this in sync with HyperKitty und Postorius
+# Always only build one flavor: primary python for TW, python311 from the SLE15 python module for 15.x
+%if 0%{?suse_version} >= 1550
 %define pythons python3
-%define mypython python3
-%define mypython_sitelib %{python3_sitelib}
+%else
+%{?sle15_python_module_pythons}
 %endif
-%endif
+%global mypython %pythons
+%global mypython_sitelib %{expand:%%{%{mypython}_sitelib}}
+%define plainpython python
+
 Name:           python-mailman%{psuffix}
 Version:        3.3.9
 Release:        0
@@ -96,6 +89,8 @@ Source101:      https://gitlab.com/mailman/mailman/-/raw/master/src/mailman/test
 Patch0:         find-flufl.patch
 #
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  sysuser-tools
@@ -108,7 +103,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module flufl.testing}
 BuildRequires:  %{python_module nose2}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  mailman3 = %{version}
+BuildRequires:  (mailman3 = %{version} with %mypython-mailman3)
 %endif
 
 %description
@@ -143,16 +138,16 @@ Requires(pre):  /usr/sbin/groupadd
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Provides:       mailman = %{version}
-%if "%{expand:%%%{mypython}_provides}" == "python3"
-Provides:       python3-mailman = %{version}-%{release}
-%endif
+# help in replacing any previously installed flavor package back to the unprefixed package
 %if 0%{?suse_version} < 1550
 Requires:       %{mypython}-importlib-resources >= 1.1.0
-%endif
 Obsoletes:      python3-mailman < %{version}-%{release}
-# help in replacing any previously installed multiflavor package back to the unprefixed package
+Obsoletes:      python3-mailman3 < %{version}-%{release}
+%endif
 Provides:       %{mypython}-mailman = %{version}-%{release}
 Obsoletes:      %{mypython}-mailman < %{version}-%{release}
+Provides:       %{mypython}-mailman3 = %{version}-%{release}
+Obsoletes:      %{mypython}-mailman3 < %{version}-%{release}
 
 %description -n mailman3
 Mailman is a mailing list manager from the GNU project.
@@ -184,14 +179,14 @@ done
 popd
 sed '/importlib_resources/d' -i src/mailman.egg-info/requires.txt setup.py
 %endif
-%python_build
+%pyproject_wheel
 ./generate_mo.sh
 
 %sysusers_generate_pre %{SOURCE14} mailman system-user-%{mailman_name}.conf
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 install -d -m 0755 \
