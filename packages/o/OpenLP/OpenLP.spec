@@ -17,7 +17,7 @@
 
 
 Name:           OpenLP
-Version:        3.0.2
+Version:        3.1.0
 Release:        0
 Summary:        Open source Church presentation and lyrics projection application
 License:        GPL-2.0-only
@@ -37,17 +37,30 @@ BuildRequires:  python3-wheel
 BuildRequires:  update-desktop-files
 Requires:       hicolor-icon-theme
 Requires:       python3-Mako
+Requires:       python3-PyICU
+Requires:       python3-QtAwesome
 Requires:       python3-SQLAlchemy
 Requires:       python3-alembic
 Requires:       python3-beautifulsoup4
 Requires:       python3-chardet
+Requires:       python3-dbus-python
+Requires:       python3-distro
+Requires:       python3-Flask
+Requires:       python3-Flask-Cors
 Requires:       python3-lxml
+Requires:       python3-platformdirs
 Requires:       python3-pyenchant
-Requires:       python3-qt5
-Requires:       python3-xdg
+Requires:       python3-pymediainfo >= 2.2
+Requires:       python3-qrcode
+Requires:       python3-qt5 >= 5.12
+Requires:       python3-qtwebengine-qt5
+Requires:       python3-requests
+Requires:       python3-waitress
+Requires:       python3-websockets
 Requires(post): shared-mime-info
 Requires(postun): shared-mime-info
 Recommends:     libreoffice-pyuno
+Recommends:     python3-python-vlc
 BuildArch:      noarch
 
 %description
