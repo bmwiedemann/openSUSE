@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  4 04:48:04 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Sun Apr 12 08:05:44 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - add no_download_setup.patch for skipping the files download during build.

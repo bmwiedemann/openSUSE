@@ -1,7 +1,7 @@
 #
 # spec file for package python-runthis-sphinxext
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-runthis-sphinxext
 Version:        0.0.3
 Release:        0
@@ -32,7 +30,9 @@ Source2:        sha256-0.0.3.txt
 Source99:       download_client.sh
 # PATCH-FIX-OPENSUSE no_download_setup.patch -- do not download files during setup
 Patch0:         no_download_setup.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -46,21 +46,21 @@ block is replaced by a terminal session that has executed that
 code.
 
 %prep
-%setup -q -n runthis-sphinxext-%{version}
+%autosetup -p1 -n runthis-sphinxext-%{version}
 cp %{SOURCE1} runthis/
 cp %{SOURCE2} .
-%patch0 -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%{python_sitelib}/*
 %doc README.md AUTHORS.md
 %license LICENSE
+%{python_sitelib}/runthis
+%{python_sitelib}/runthis_sphinxext-%{version}.dist-info
 
 %changelog
