@@ -1,7 +1,7 @@
 #
 # spec file for package xmh
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xmh
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 Summary:        Graphical user interface to send and read mail with MH
 License:        MIT

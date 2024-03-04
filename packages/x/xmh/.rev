@@ -63,4 +63,27 @@
    * Convert vfork checks from Imake-style to autoconf-style</comment>
     <requestid>1000409</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>99bc19f8dfcd9c1d623f36e212ee1f01</srcmd5>
+    <version>1.0.5</version>
+    <time>1709583914</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.5
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Print which arguments were unknown before giving usage message
+  * Add -help and -version options
+  * Modernize lseek() calls
+  * configure: Use AC_SYS_LARGEFILE to enable large file support
+  * Replace sprintf calls with snprintf or XtAsprintf
+  * Use _CONST_X_STRING to make libXt declare String as const char *
+  * Further reduce the number of -Wdiscarded-qualifiers warnings from 276 to 76
+  * Mark Punt as _X_NORETURN
+  * Fix 4 of 4 -Wformat-truncation warnings
+  * Clear 4 of 6 -Wstringop-truncation warnings
+  * Plug memory leaks in error paths of ScanDir()
+  * Handle -Wformat-security warnings from the DEBUG macro
+  * Convert allocation calls to XtMallocArray or XtReallocArray where appropriate
+  * Simplify fallback code for systems without S_ISDIR</comment>
+    <requestid>1154499</requestid>
+  </revision>
 </revisionlist>
