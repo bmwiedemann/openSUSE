@@ -144,4 +144,29 @@
 	  custom themes (#193).</comment>
     <requestid>1146266</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2fa35855cf71d4957638a3cb75da8700</srcmd5>
+    <version>0.7.0+0</version>
+    <time>1709583920</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.7.0:
+  New features:
+  * Add color to prefix in block quote (#218).
+  * Allow having code blocks without background (#215 #216).
+  * Allow validating whether presentation overflows terminal (#209 #211).
+  * Add parameter to list themes (#207).
+  * Add catppuccin themes (#197 #205 #206)
+  * Detect konsole terminal emulator (#204).
+  * Allow customizing slide title style (#201).
+  Fixes:
+  * Don't crash in present mode (#210).
+  * Set colors properly before displaying an error (#212).
+  Improvements:
+  * Suggest a tool is missing when spawning returns ENOTFOUND (#221).
+  * Sort input file list (#202).
+  * Add more example presentations (#217).
+  * Add Scoop to package managers (#200).
+  * Remove support for uncommon image formats (#208).</comment>
+    <requestid>1154566</requestid>
+  </revision>
 </revisionlist>

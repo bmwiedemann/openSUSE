@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Mar  4 06:44:19 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.0:
+  New features:
+  * Add color to prefix in block quote (#218).
+  * Allow having code blocks without background (#215 #216).
+  * Allow validating whether presentation overflows terminal (#209 #211).
+  * Add parameter to list themes (#207).
+  * Add catppuccin themes (#197 #205 #206)
+  * Detect konsole terminal emulator (#204).
+  * Allow customizing slide title style (#201).
+  Fixes:
+  * Don't crash in present mode (#210).
+  * Set colors properly before displaying an error (#212).
+  Improvements:
+  * Suggest a tool is missing when spawning returns ENOTFOUND (#221).
+  * Sort input file list (#202).
+  * Add more example presentations (#217).
+  * Add Scoop to package managers (#200).
+  * Remove support for uncommon image formats (#208).
+
+-------------------------------------------------------------------
 Mon Feb 12 19:32:06 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.1:
