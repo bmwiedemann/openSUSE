@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 14:37:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Feb  8 14:10:04 UTC 2024 - Reinhard Max <max@suse.com>
 
 - Upgrade to 14.11:

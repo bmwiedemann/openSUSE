@@ -219,4 +219,12 @@ Also for older PostgreSQL versions to keep the packaging consistent.</comment>
   * https://www.postgresql.org/docs/release/14.11/</comment>
     <requestid>1145270</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>38bb91a15d562c04950ef6075870d315</srcmd5>
+    <version>14.11</version>
+    <time>1709583953</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1154711</requestid>
+  </revision>
 </revisionlist>
