@@ -712,4 +712,16 @@
 	* For details see NEWS.org file</comment>
     <requestid>1150565</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>5f166943f73248496614c20105214282</srcmd5>
+    <version>1.12.1</version>
+    <time>1709583919</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.12.1:
+  * CLD2: add build option; ensure CLD2 is actually used
+  * insist --maildir is absolute
+  * tweak mu4e-compose; add 'display-buffer option for mu4e-compose-switch
+  * fix typos, update mu4e documentation</comment>
+    <requestid>1154557</requestid>
+  </revision>
 </revisionlist>

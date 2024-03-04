@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  4 06:26:24 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.12.1:
+  * CLD2: add build option; ensure CLD2 is actually used
+  * insist --maildir is absolute
+  * tweak mu4e-compose; add 'display-buffer option for mu4e-compose-switch
+  * fix typos, update mu4e documentation
+
+-------------------------------------------------------------------
 Mon Feb 26 06:52:31 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.12.0:
