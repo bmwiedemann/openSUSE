@@ -421,4 +421,12 @@ Upgrade to version 12.6:
     The documentation says that pg_signal_backend cannot issue</comment>
     <requestid>1145273</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>548bff75fa8e4b89900877d1c0dfa6ef</srcmd5>
+    <version>12.18</version>
+    <time>1709583949</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1154709</requestid>
+  </revision>
 </revisionlist>

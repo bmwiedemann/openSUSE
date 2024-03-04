@@ -507,13 +507,13 @@ included in the postgresql-server package.
 # Keep the timestamp of configure, because patching it would otherwise
 # confuse PostgreSQL's build system
 touch -r configure tmp
-%patch1
-%patch4
-%patch8
-%patch9
+%patch -P 1
+%patch -P 4
+%patch -P 8
+%patch -P 9
 %if %{with llvm}
-%patch10
-%patch11
+%patch -P 10
+%patch -P 11
 %endif
 touch -r tmp configure
 rm tmp
