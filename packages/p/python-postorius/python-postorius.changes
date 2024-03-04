@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar  4 09:51:32 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Provide postorius name and group in web package (rpm 4.19)
+
+-------------------------------------------------------------------
+Thu Feb 29 20:31:42 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Simplify python flavor selection
+  * Go back to primary python3 on Tumbleweed
+  * Use SLE15 python module pythons on 15.x
+- Build PEP517 wheel
+
+-------------------------------------------------------------------
 Mon Nov  6 11:47:26 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - make it easy to run a build without testsuite

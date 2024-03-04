@@ -1,7 +1,7 @@
 #
 # spec file for package python-postorius
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %bcond_without testsuite
 
 # keep in sync with setup.py
@@ -22,8 +23,6 @@
 %global django_min_version 3.2
 %global django_max_version 4.3
 %global mailmanclient_min_version 3.3.3
-
-%{?sle15_python_module_pythons}
 
 %global webapps_dir /srv/www/webapps
 
@@ -39,19 +38,15 @@
 %global postorius_datadir   %{postorius_libdir}/data
 
 # keep in sync with python-HyperKitty/python-mailman-web
+# Always only build one flavor: primary python for TW, python311 from the SLE15 python module for 15.x
 %if 0%{?suse_version} >= 1550
-# Newest python supported by mailman is Python 3.11
-%define pythons python311
-%define mypython python311
-%define __mypython %{__python311}
-%define mypython_sitelib %{python311_sitelib}
+%define pythons python3
 %else
 %{?sle15_python_module_pythons}
-%define pythons python311
-%define mypython python311
-%define __mypython %{__python311}
-%define mypython_sitelib %{python311_sitelib}
 %endif
+%global mypython %pythons
+%global mypython_sitelib %{expand:%%{%{mypython}_sitelib}}
+%global __mypython %{expand:%%{__%{mypython}}}
 
 Name:           python-postorius
 Version:        1.3.10
@@ -70,8 +65,9 @@ Source20:       README.SUSE.md
 #
 Patch0:         postorius-settings.patch
 #
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  acl
 BuildRequires:  fdupes
 BuildRequires:  openssl
@@ -105,16 +101,16 @@ A web user interface for GNU Mailman
 
 %package -n %{postorius_pkgname}
 Summary:        A web user interface for GNU Mailman
-Requires:       (%{mypython}-Django >= %{django_min_version} with %{mypython}-Django < %{django_max_version})
 Requires:       %{mypython}-django-debug-toolbar >= 2.2.0
 Requires:       %{mypython}-django-mailman3 >= %{django_mailman3_min_version}
 Requires:       %{mypython}-django-requests-debug-toolbar >= 0.0.3
 Requires:       %{mypython}-mailmanclient >= %{mailmanclient_min_version}
 Requires:       %{mypython}-readme_renderer
-%if "%{expand:%%%{mypython}_provides}" == "python3"
-Provides:       python3-%{postorius_pkgname} = %{version}-%{release}
-%endif
+Requires:       (%{mypython}-Django >= %{django_min_version} with %{mypython}-Django < %{django_max_version})
+# help in replacing any previously installed flavor package back to the unprefixed package
+%if 0%{?suse_version} < 1550
 Obsoletes:      python3-%{postorius_pkgname} < %{version}-%{release}
+%endif
 Provides:       %{mypython}-%{postorius_pkgname} = %{version}-%{release}
 Obsoletes:      %{mypython}-%{postorius_pkgname} < %{version}-%{release}
 
@@ -127,6 +123,8 @@ Requires:       %{postorius_pkgname}
 Requires:       acl
 Requires:       openssl
 Requires:       sudo
+Provides:       user(postorius)
+Provides:       group(postorius)
 
 %description -n %{postorius_pkgname}-web
 A web user interface for GNU Mailman.
@@ -163,7 +161,7 @@ sed -i 's|^#!/usr/bin/env.*|#!%{__mypython}|' \
 sed -i 's|/usr/bin/python3|%{__mypython}|' %{SOURCE10}
 sed -i 's|python3|%{mypython}|' %{SOURCE12}
 
-%python_build
+%pyproject_wheel
 
 # Build static files
 install -d -m 0755 build_static_files/logs
@@ -171,7 +169,7 @@ export PYTHONPATH=$(pwd)/src
 %python_exec build_static_files/manage.py collectstatic --clear --noinput
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 install -d -m 0750 \
