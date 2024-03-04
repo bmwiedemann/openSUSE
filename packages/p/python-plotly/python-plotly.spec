@@ -1,7 +1,7 @@
 #
 # spec file for package python-plotly
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%define skip_python39 1
 Name:           python-plotly
-Version:        5.14.1
+Version:        5.16.1
 Release:        0
 Summary:        Library for collaborative, interactive, publication-quality graphs
 License:        MIT
@@ -138,11 +139,12 @@ donttest="test_described_subscript_error_on_type_error"
 %pytest plotly/tests/test_core -k "not ($donttest)"
 # not available
 donttest="test_kaleido"
+donttest="$donttest or test_px_input and (vaex or polars)"
 # API parameter mismatches and precision errors
-donttest+=" or test_matplotlylib"
+donttest="$donttest or test_matplotlylib"
 # flaky timing error
-donttest+=" or test_fast_track_finite_arrays"
-%pytest plotly/tests/test_optional -k "not ($donttest)" ${$python_ignore}
+donttest="$donttest or test_fast_track_finite_arrays"
+%pytest plotly/tests/test_optional -k "not ($donttest)"
 popd
 
 %files %{python_files}
