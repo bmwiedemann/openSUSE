@@ -1,7 +1,7 @@
 #
 # spec file for package scrcpy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           scrcpy
-Version:        2.3.1
+Version:        2.4
 Release:        0
 Summary:        Display and control your Android device
 License:        Apache-2.0
@@ -34,7 +34,7 @@ BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(sdl2)
-Recommends:     android-tools
+Requires:       android-tools
 %if 0%{?suse_version} <= 1500
 BuildRequires:  gcc11
 BuildRequires:  gcc11-PIE

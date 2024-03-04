@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar  3 09:22:57 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4
+  * Add UHID keyboard and mouse support.
+  * Simulate tilt multitouch by pressing Shift.
+  * Add rotation support for non-default display.
+  * Improve audio player.
+  * Adapt to display API changes in Android 15.
+  * Adapt audio workarounds to Android 14.
+  * Fix clipboard for IQOO devices on Android 14.
+  * Fix integer overflow for audio packet duration.
+  * Various technical fixes.
+
+-------------------------------------------------------------------
 Sat Dec  2 11:56:54 UTC 2023 - munix9@googlemail.com
 
 - Update to version 2.3.1:
