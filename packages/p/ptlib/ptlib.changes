@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 14:59:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Jun  7 08:05:07 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Rename SRPM and libpt2-devel to ptlib-*, following the upstream

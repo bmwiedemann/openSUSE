@@ -150,15 +150,15 @@ This plugin enables pulseaudio support for %{name}.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch7 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 7 -p1
 %if %{pkg_vcmp make >= 4.3}
-%patch10 -p1
+%patch -P 10 -p1
 %endif
-%patch11 -p1
-%patch12 -p1
+%patch -P 11 -p1
+%patch -P 12 -p1
 
 %build
 export CXXFLAGS="%optflags -fvisibility-inlines-hidden"
