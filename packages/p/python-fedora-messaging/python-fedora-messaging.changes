@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar  4 14:50:05 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- use pyproject_wheel to build
+- skip broken tests with python 3.12
+- Update to 3.4.1:
+  * This is just a minor bugfix release to fix CI.
+- 3.4.0:
+  * Mirror the message priority in the headers (eba336b)
+- 3.3.0:
+  * Add support for asyncio-based callbacks in the consumer. As a
+    consequence, the Twisted reactor used by the CLI is now asyncio.
+    (#282)
+
+-------------------------------------------------------------------
 Thu Dec 15 09:16:19 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python_module macro definition
