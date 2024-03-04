@@ -3884,7 +3884,6 @@
     <package name="ruby3.3-rubygem-prawn" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.3-rubygem-prawn-core" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.3-rubygem-prawn-icon" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="ruby3.3-rubygem-prawn-svg" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.3-rubygem-prawn-table" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.3-rubygem-prawn-templates" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.3-rubygem-pry" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
