@@ -1,5 +1,314 @@
 -------------------------------------------------------------------
-Sun Jan 28 20:44:23 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+Mon Feb 26 00:33:29 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 2.9.4+git20240225.aa26e11:
+  * update readme
+  * handle exif errors
+  * don't use semver tweak
+  * naming changes
+  * fix regression
+  * don't use forward declares and naming changes
+
+-------------------------------------------------------------------
+Sun Feb 25 15:19:44 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 2.9.3+git20240225.42367f0:
+  * handle exceptions
+  * fix versioning and deps
+  * fix tmux bug and be const correct
+  * gracefully exit on x11/wayland server close
+  * use range-v3 and fix process
+  * bump version
+  * add range-v3
+  * add range-v3 dependency
+  * don't use regex
+  * process changes
+  * remove gsl from scripts
+  * use target_compile_definitions
+  * check wsl
+  * format changes
+  * remove O_NONBLOCK
+  * remove gsl dependency
+  * performance improvements
+  * cleanup os.hpp
+  * simplify env retrieving and don't use daemon
+  * handle bad values in stoi
+  * use array instead of vector for sum calculation
+  * don't create lambda for simple threads
+  * don't use reinterpret_cast
+  * pin wayland event versions
+  * handle hyprland scaling
+  * remove march flag
+  * formatting changes
+  * formatting changes
+  * use new chafa 1.14 api
+  * premultiply alpha values
+  * fix scaling with libvips
+  * better scaling handling
+  * format changes
+  * formatting changes
+  * handle multimonitor scaling with sway
+  * formatting changes
+  * formatting changes
+  * support rgb16 images on opencv
+
+-------------------------------------------------------------------
+Sun Jan 28 21:18:37 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 2.9.2+git20240122.b5d0022:
+  * remove dead code
+  * use clang for formatting
+  * restore old code
+  * support exif rotation
+  * fix typo
+  * change logging messages
+  * copy env variables before using them
+  * simplify wayland code
+  * clarify minimum versions
+  * handle existance of WINDOWID under wayland
+  * Proper wayland scaling (#148)
+  * docs: add command line to install required libs on ubuntu (#146)
+  * check for any existing x11 atoms
+  * don't throw exceptions on main and improve config file parsing
+  * bump version
+  * follow core guidelines and be more const correct
+  * support kitty 0.30
+  * updated readme
+  * use pointer instead of const ref
+  * refactor: add posix and mac compliance for example scripts (#121)
+  * added flag to set the image center as origin (#114)
+  * change art printing
+  * bump version and dep release
+  * fix compilation with internal spdlog 1.12
+  * fix compilation with fmt 10.1.0 and spdlog 1.12
+  * enable c compiler extensions
+  * bump version
+  * reduce c standard
+  * logging changes
+  * remove ranges header
+  * use range-v3 under macos
+  * don't create cache dir if user doesn't want cache
+  * use xdg_cache_home if available
+  * finish support wayfire
+  * updated plugin
+  * add wayfire plugin
+  * wayland changes
+  * Initial wayfire support (#104)
+  * use weak_from_this
+  * remove debug headers
+  * docs: add new link of yazi (#102)
+  * style changes
+  * fix egl logging
+  * send json commands using nlohmann-json
+  * fix memory leaks when using tmux
+  * fix wayland memory leak
+  * fix number of args when opengl is disabled
+  * don't reset egl util if opengl not enabled
+  * more informative opengl error handling
+  * don't try to use opengl unless requested
+  * random changes
+  * implement egl support for wayland
+  * opengl refactoring
+  * random opengl changes
+  * cleanup code
+  * naming changes
+  * more changes to wayland egl
+  * test opengl on wayland
+  * flip images for opengl
+  * initial egl implementation for x11
+  * playing with opengl
+  * add fedora packaging
+  * bump version
+  * update readme
+  * sway cleanup and add wayland-egl to cmake
+  * cleanup hyprland code
+  * hyprland test
+  * remove hyprland multimonitor checks
+  * refactor hyprland config
+  * read all data from hyprland socket after write
+  * modernizing changes
+  * clean up windows before disconnecting
+  * test handle multimonitors with hyprland
+  * change terminal flags
+  * fix include guard
+  * check for par_unseq instead of <execution>
+  * replace <execution> verification
+  * remove old terminal recognition code
+  * test better terminal recognition
+  * change header guard names
+  * another const
+  * explicit lambda capture and some more const
+  * remove sway absolute moving
+  * test multimonitor on wayland
+  * minor changes
+  * don't call virtual functions inside constructor
+  * handle xcb screen_num
+  * some more const
+  * fix tmux hook crashing u++
+  * use feature detection to test for std::execution support (#87)
+  * restore old resize logic
+  * simplify image resizing logic
+  * remove iterm2 logging
+  * erase before insert
+  * add missing include
+  * don't use string_view with nlohmann json
+  * finish spdlog fwd
+  * use spdlog fwd
+  * don't copy json strings
+  * use bound checking when querying json
+  * some error handling
+  * simplify xres reply processing
+  * random changes
+  * logging for stdout canvas
+  * destroy canvas before destroying libvips
+  * better handle multiple images
+  * naming changes
+  * atomic bool refactor
+  * add tmux support to wayland
+  * wayland code refactoring
+  * properly use weak_ptr
+  * implement multiple image support for wayland
+  * simplify stdout canvas
+  * bind egl to opengl
+  * separate method call and test libressl fix
+  * pass Image as shared_ptr
+  * pass around mutex as a shared_ptr
+  * add missing header
+  * Add support for multiple images (#79)
+  * add image.nvim
+  * fix crash when draw/clear commands are issued quickly in wayland (#78)
+  * prefer one time move commands over window rules in wayland sway/hyprland (#77)
+  * update homebrew links
+  * move brew script to tap
+  * fix(brewfile): syntax (#75)
+  * hide xcb-errors behind compile flag
+  * use pkgconfig for xcb
+  * final code cleanup before refactor
+  * remove xlib interop, use vanilla xcb
+  * cleanup x11 code
+  * remove unused headers
+  * restore mutex usage on x11 canvas
+  * naming changes
+  * fix bug when image has n-pages but not delay
+  * alloc 32 bytes for each event
+  * add some more debugging messages for x11 canvas
+  * remove const from pointer
+  * performance improvements for X11 canvas
+  * improvements to terminal recognition and x11 windows
+  * check if running tmux to get fallback x11 sizes
+  * don't take into account incomplete windows
+  * add ENABLE_OPENGL flag
+  * don't process image afterwards
+  * prepare for argb x11 windows
+  * add more x11 debug messages
+  * move window on redraw
+  * use activewindow address instead of pid
+  * change xcb-res name
+  * use xcb-res extension for faster pid-window queries
+  * add debugging messages for X11
+  * use fallthrough
+  * improve xcb error checking
+  * opencv 4.7.0 added support for non-animated webps
+  * example: img-fifo script (#66)
+  * remove usage of shared_ptr should increase performance a bit
+  * improve performance for unix socket
+  * fix obs naming
+  * fix obs file naming
+  * use curl's basic auth
+  * upload files to obs
+  * generate tar and dsc file
+  * add pacman flag
+  * install git on workflow
+  * add workflow name
+  * add workflow
+  * bump version
+  * properly recognize active monitor under sway
+  * handle multiple monitors on sway
+  * improvements with image processing
+  * reset pointer instead of reassignment
+  * try to consume all events as soon as one arrives
+  * remove funny defines
+  * improve performance of X11 output
+  * fix crash when receiving multiple commmands fast
+  * better handle image processing
+  * subtract monitor coordinates
+  * take into account active monitor coordinates
+  * share x11 connection with smart pointers
+  * example: add img script (#59)
+  * calculate terminal sizes on hyprland
+  * add wayland logging
+  * use daemon function
+  * update README
+  * fix symlink path
+  * replace version in manpage
+  * install manpage
+  * fix manpage section
+  * fix man install dir
+  * install man and symlink with cmake
+  * update debian files
+  * simplify debian rules
+  * update debian deps
+  * update debian dependencies
+  * add cli11 as a submodule for offline builds
+  * add debian packaging files
+  * logging changes
+  * add repology
+  * finish naming changes and update manpage
+  * replace wlroots naming
+  * generalize wayland support
+  * rollback changes on benchmark function
+  * fmt can't handle fast image switching
+  * bump brew version
+  * bump version and sixel changes
+  * update README and fix regression
+  * update README.md
+  * don't crash on socket errors
+  * add support for hyprland
+  * fix issues with new naming
+  * refactor code for hyprland support
+  * update README.md and remove uuid dependency
+  * position window properly when terminal has padding under sway canvas
+  * fix sway window position
+  * docs: add ueberzugpp manpage (1) (#51)
+  * use common functions for reading terminal escape sequences
+  * stop reading from fd after newline
+  * fix immediate exit if stdin is not used
+  * fix build on gsl < 4
+  * handle poll events and add support for FreeBSD
+  * test fix for closed/null stdin
+  * bump homebrew to 2.8.5
+  * bump version and update README
+  * generate random app_id for each ueberzugpp instance under sway
+  * simplify sway polling
+  * add reusable functions for polling and reading from file descriptors
+  * remove zmq dependency, use regular sockets
+  * add sway support checking
+  * implement gif support on sway canvas
+  * don't use recursion for tree iteration
+  * ensure ueberzgpp is being used with tmux hooks
+  * handle tmux events on sway canvas
+  * execute less ipc commands on every canvas init
+  * don't start/stop wayland's event handler constantly
+  * finish initial support for sway
+  * send commands to sway socket
+  * use maybe_unused
+  * better wayland drawing
+  * test wayland drawing control
+  * basic image displaying under wayland
+  * wayland modifications
+  * explicitly link against librt for wayland
+  * add missing header and require C compiler now
+  * add uuid and wayland shm helper
+  * register wayland shm and compositor
+  * wayland testing
+  * initial groundwork for wayland support
+  * upgrade homebrew script
+  * bump version
+  * Final changes for 2.8.4 (#45)
+  * Changes for v2.8.4 (#44)
+
+-------------------------------------------------------------------
+Thu Sep 21 23:45:42 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 2.9.2:
   * support kitty 0.30

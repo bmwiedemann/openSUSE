@@ -1,8 +1,7 @@
 #
 # spec file for package ueberzugpp
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,22 +18,22 @@
 
 %define short_name ueberzug
 Name:           ueberzugpp
-Version:        2.9.2
+Version:        2.9.4+git20240225.aa26e11
 Release:        0
 Summary:        Utility to render images in terminals
-License:        GPL-3.0-or-later
+License:        GPL-3.0
 URL:            https://github.com/jstkdng/%{name}
 Source:         https://github.com/jstkdng/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  automake
 BuildRequires:  cmake
+BuildRequires:  cmake(Microsoft.GSL)
+BuildRequires:  cmake(range-v3)
+BuildRequires:  cmake(spdlog)
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
 BuildRequires:  make
 BuildRequires:  ninja
-BuildRequires:  pkgconfig
-BuildRequires:  cmake(Microsoft.GSL)
-BuildRequires:  cmake(spdlog)
 BuildRequires:  pkgconfig(CLI11)
 BuildRequires:  pkgconfig(botan-2)
 BuildRequires:  pkgconfig(chafa)
@@ -87,3 +86,4 @@ ln -s %{_mandir}/man1/ueberzugpp.1 %{buildroot}%{_mandir}/man1/ueberzug.1
 %{_mandir}/man1/%{short_name}pp.1%{?ext_man}
 
 %changelog
+
