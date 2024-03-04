@@ -46,4 +46,12 @@ as the default openmpi implementation is still openmpi4.</comment>
     <comment></comment>
     <requestid>1121157</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>8499247e29e1e23c061c6a83b9124db2</srcmd5>
+    <version>5.0.0</version>
+    <time>1709583945</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1154677</requestid>
+  </revision>
 </revisionlist>
