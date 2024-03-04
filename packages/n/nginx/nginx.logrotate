@@ -8,8 +8,7 @@
     notifempty
     delaycompress
     lastaction
-      # -s reopen will use the pid file passed in the config file or the compiled in default path
-      /usr/sbin/nginx -s reopen
-    endscript  
+      # "-s reopen" will use the pid file passed in the config file or the compiled in default path
+      [ -f /run/nginx.pid ] && /usr/sbin/nginx -s reopen
+    endscript
 }
-

@@ -1065,4 +1065,12 @@
     <comment>- Use %patch -P N instead of deprecated %patchN.</comment>
     <requestid>1149661</requestid>
   </revision>
+  <revision rev="86" vrev="3">
+    <srcmd5>65281873382329629e412d40170cb5af</srcmd5>
+    <version>1.25.4</version>
+    <time>1709583878</time>
+    <user>anag+factory</user>
+    <comment>- logrotate: don't fail if service not running</comment>
+    <requestid>1154408</requestid>
+  </revision>
 </revisionlist>
