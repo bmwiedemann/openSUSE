@@ -35,8 +35,8 @@ PgAccess is a graphical interface and application building environment
 for PostgreSQL.
 
 %prep
-%setup -q -n pgaccess-0_99_0_20040219
-%patch0
+%autosetup -p0 -n pgaccess-0_99_0_20040219
+
 chmod -R a+rX .
 
 %build

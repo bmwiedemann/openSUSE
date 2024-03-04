@@ -101,4 +101,12 @@ SPDX format as per spdx.org/licenses/PostgreSQL (forwarded request 111414 from b
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="16" vrev="20">
+    <srcmd5>e25a4a076766e8a01ef94b9cbe42dcc2</srcmd5>
+    <version>0.99.0.20040219</version>
+    <time>1709583948</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1154708</requestid>
+  </revision>
 </revisionlist>
