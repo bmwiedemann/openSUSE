@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Sun Mar  3 22:35:19 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Cleanup Requires/BuildRequires
+  - drop unused python3-cairo
+  - drop < 3.8 requirement python3-importlib-metadata
+  - add python3-packaging
+
+-------------------------------------------------------------------
+Sun Mar  3 22:24:57 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- refresh disable-version-check.patch to apply without fuzz again
+- remove fix-build-with-setuptools67.patch: no longer needed
+- track series file as source for easier quilt usage
+
+-------------------------------------------------------------------
+Sun Mar  3 22:23:31 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- bump minimum python to 3.10
+- sync with requirements.txt
+
+-------------------------------------------------------------------
+Sun Mar  3 22:16:41 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.9.36 
+  - Rapid Photo Downloader 0.9.35 requires Python 3.10 or newer.
+  - Rapid Photo Downloader 0.9.19 introduced support for HEIF /
+    HEIC files. The
+    [documentation](https://damonlynch.net/rapid/documentation/#heifheic)
+    goes into details.
+  - Version 0.9.19 also introduced much improved support for
+    high-resolution displays. Consult the
+    [documentation](https://damonlynch.net/rapid/documentation/#highdpi)
+    to learn more.
+  - If thumbnailing fails to finish but no error is reported, that
+    could indicate Exiv2 has crashed. See the [documentation](
+    https://damonlynch.net/rapid/documentation/#miscellaneousnpreferences)
+    for how to resolve the problem:
+  - On some systems, Rapid Photo Downloader cannot use gstreamer to
+    generate video thumbnails for all common video files. Install
+    the good and libav plugins for gstreamer to solve this problem.
+    In Debian and Ubuntu-like systems, the packages are
+    gstreamer1.0-libav gstreamer1.0-plugins-good On Fedora, the
+    packages are gstreamer1-plugins-good and gstreamer1-libav.
+    Fedora users can enable the rpmfusion.org free repository to be
+    able to install gstreamer1-libav.
+  - Display a warning message window when the user selects an
+    invalid download destination.
+  - Highlight Timeline cell when the mouse is hovering over it.
+  - Fix bug
+    [#121](https://github.com/damonlynch/rapid-photo-downloader/issues/121):
+    No feedback provided when invalid destination chosen in
+    download panel.
+  - Fix bug
+    [#122](https://github.com/damonlynch/rapid-photo-downloader/issues/122):
+    Application crashes on start on openSUSE Tumbleweed. Thanks to
+    Bozhin Karaivanov for the fix. 
+  - Catch GLib errors like g-io-error-quark when checking the
+    results of mount operations.
+  - Update Albanian, Dutch, Hungarian, Norwegian BokmÃ¥l, Russian
+    and Spanish translations.
+- Changes from 0.9.35
+  - Remove `install.py` script, built-in updater and new version
+    check.
+  - Python 3.10 or newer is now required.
+  - New Python packet requirement: packaging.
+  - Fix bug
+    [#85](https://github.com/damonlynch/rapid-photo-downloader/issues/85):
+    Exception while selecting generation scheme from download
+    subfolder menu with more than five custom presets.
+  - Fix bug
+    [#50](https://github.com/damonlynch/rapid-photo-downloader/issues/50):
+    Confirm before removing all presets for custom renaming or
+    subfolder generation.
+  - Fix bug
+    [#49](https://github.com/damonlynch/rapid-photo-downloader/issues/49):
+    Enable deletion of individual custom renaming and subfolder
+    generation preset.
+  - Re-enabled Ctrl-Q shortcut key for quiting when running under
+    WSL. 
+  - Limit the default number cores used to generate thumbnails to
+    8 (or the number of physical CPU cores if lower). Previously
+    the limit was the number of physical CPU cores, which is
+    nonsensical on high core count systems.
+  - Fix bug
+    [#110](https://github.com/damonlynch/rapid-photo-downloader/issues/110):
+    ExifTool not called during rename process.
+  - Fix bug
+    [#112](https://github.com/damonlynch/rapid-photo-downloader/issues/112):
+    QWIDGETSIZE_MAX import error.
+  - Conform version indentifier in `setup.py` to PEP 440 which is
+    enforced with setuptools >= 66.0.0. Thanks to stratakis for
+    the fix.
+  - Eliminate use of depreciated pkg_resources. 
+  - Conform to changes in package python-gphoto2 2.5.0.
+  - Update Albanian, Brazilian Portuguese, Danish, Dutch,
+    Hungarian, Japanese, Polish, Russian, and Spanish
+    translations.
+
+-------------------------------------------------------------------
 Tue Apr 11 14:21:49 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add fix-build-with-setuptools67.patch: Fix build with

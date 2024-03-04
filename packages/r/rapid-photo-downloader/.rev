@@ -683,4 +683,24 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1082709</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>32dedcf246af334bfacbe42adaafc363</srcmd5>
+    <version>0.9.36</version>
+    <time>1709583895</time>
+    <user>anag+factory</user>
+    <comment>- Cleanup Requires/BuildRequires
+  - drop unused python3-cairo
+  - drop &lt; 3.8 requirement python3-importlib-metadata
+  - add python3-packaging
+
+- refresh disable-version-check.patch to apply without fuzz again
+- remove fix-build-with-setuptools67.patch: no longer needed
+- track series file as source for easier quilt usage
+
+- bump minimum python to 3.10
+- sync with requirements.txt
+
+- Update to 0.9.36</comment>
+    <requestid>1154459</requestid>
+  </revision>
 </revisionlist>

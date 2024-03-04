@@ -20,7 +20,7 @@
 
 %global __requires_exclude ^typelib\\(Unity\\).*$
 Name:           rapid-photo-downloader
-Version:        0.9.34
+Version:        0.9.36
 Release:        0
 Summary:        Parallel downloader for camera and smartphone photos
 License:        GPL-3.0-or-later
@@ -28,15 +28,15 @@ Group:          Productivity/Graphics/Other
 URL:            https://damonlynch.net/rapid/
 Source:         https://launchpad.net/rapid/pyqt/%{version}/+download/%{name}-%{version}.tar.gz
 Source1:        https://launchpad.net/rapid/pyqt/%{version}/+download/%{name}-%{version}.tar.gz.asc
+Source2:        series
 # PATCH-FEATURE-OPENSUSE disable-version-check.patch
 Patch0:         disable-version-check.patch
-Patch1:         fix-build-with-setuptools67.patch
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
-BuildRequires:  python3-devel >= 3.6
-Requires:       python3 >= 3.6
+BuildRequires:  python3-devel >= 3.10
+Requires:       python3 >= 3.10
 BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 Requires:       exiftool
@@ -45,8 +45,6 @@ Requires:       python3-PyPrind >= 2.9.4
 BuildRequires:  python3-arrow >= 0.9.0
 Requires:       python3-arrow >= 0.9.0
 BuildRequires:  python3-base >= 3.6
-BuildRequires:  python3-cairo >= 1.11.1
-Requires:       python3-cairo >= 1.11.1
 BuildRequires:  python3-Babel
 Requires:       python3-Babel
 BuildRequires:  python3-colorlog >= 2.6
@@ -61,6 +59,8 @@ BuildRequires:  python3-gobject-Gdk
 Requires:       python3-gobject-Gdk
 BuildRequires:  python3-gphoto2 >= 1.8.0
 Requires:       python3-gphoto2 >= 1.8.0
+BuildRequires:  python3-packaging
+Requires:       python3-packaging
 BuildRequires:  python3-psutil >= 3.4.2
 Requires:       python3-psutil >= 3.4.2
 BuildRequires:  python3-pymediainfo >= 2.2.0
@@ -75,8 +75,8 @@ BuildRequires:  python3-pyzmq >=  16.0.2
 Requires:       python3-pyzmq >=  16.0.2
 BuildRequires:  python3-requests
 Requires:       python3-requests
-BuildRequires:  python3-show-in-file-manager
-Requires:       python3-show-in-file-manager
+BuildRequires:  python3-show-in-file-manager >= 1.1.2
+Requires:       python3-show-in-file-manager >= 1.1.2
 BuildRequires:  python3-sortedcontainers
 Requires:       python3-sortedcontainers
 BuildRequires:  python3-tornado
@@ -86,15 +86,8 @@ Requires:       python3-tenacity
 # needed since 0.9.20 for SVG assets
 BuildRequires:  libQt5Svg5
 Requires:       libQt5Svg5
-%if 0%{?suse_version} < 1550
-BuildRequires:  python3-importlib-metadata
-Requires:       python3-importlib-metadata
-BuildRequires:  python3-qt5 >= 5.4
-Requires:       python3-qt5 >= 5.4
-%else
 BuildRequires:  python3-qt5 >= 5.15.6
 Requires:       python3-qt5 >= 5.15.6
-%endif
 
 BuildArch:      noarch
 
@@ -133,7 +126,8 @@ python3 setup.py install \
 %fdupes %{buildroot}%{python3_sitelib}
 
 %files
-%doc README.md CHANGES.md
+%doc README.md CHANGES.md RELEASE_NOTES.md
+%license LICENSE
 %{_bindir}/%{name}
 %{_datadir}/metainfo/net.damonlynch.rapid_photo_downloader.metainfo.xml
 %{_datadir}/applications/net.damonlynch.rapid_photo_downloader.desktop
