@@ -182,4 +182,20 @@
  + Fix other bugs</comment>
     <requestid>1132785</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2889f164534f291598f27c2ad2bdbab9</srcmd5>
+    <version>2.3.1</version>
+    <time>1709583931</time>
+    <user>anag+factory</user>
+    <comment>- Release version 2.3.1
+ + Fix mpris naming error
+ + add Debian 12 install info, use atzlinux apt source
+ + Fix volume adjustment desynchronization
+ + Fix title bar width error
+ + Fix login not working when using proxy
+ + Use async_channel as message channel.
+ + Update dependencies and fix conflicts
+</comment>
+    <requestid>1154609</requestid>
+  </revision>
 </revisionlist>

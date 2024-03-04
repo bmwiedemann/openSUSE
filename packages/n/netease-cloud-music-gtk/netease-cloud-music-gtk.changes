@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar  4 08:49:54 UTC 2024 - gmg 137 <gmg137@live.com>
+
+- Release version 2.3.1
+ + Fix mpris naming error
+ + add Debian 12 install info, use atzlinux apt source
+ + Fix volume adjustment desynchronization
+ + Fix title bar width error
+ + Fix login not working when using proxy
+ + Use async_channel as message channel.
+ + Update dependencies and fix conflicts
+
+-------------------------------------------------------------------
 Wed Dec 13 03:01:42 UTC 2023 - gmg 137 <gmg137@live.com>
 
 - Release version 2.3.0

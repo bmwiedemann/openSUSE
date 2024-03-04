@@ -1,7 +1,7 @@
 #
 # spec file for package netease-cloud-music-gtk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) specCURRENT_YEAR SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 %define _lto_cflags %{nil}
 Name:           netease-cloud-music-gtk
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        Linux 平台下基于 Rust + GTK4 开发的网易云音乐播放器
 License:        GPL-3.0-or-later
