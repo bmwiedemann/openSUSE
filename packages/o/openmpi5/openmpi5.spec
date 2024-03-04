@@ -402,8 +402,7 @@ echo with HPC
 %if %{without hpc}
 echo without HPC
 %endif
-%setup -q -n  openmpi-%{version}%{git_ver}
-%patch1
+%autosetup -p0 -n  openmpi-%{version}%{git_ver}
 
 # Live patch the VERSION file
 sed -i -e 's/^greek=.*$/greek=%{git_ver}/' -e 's/^repo_rev=.*$/repo_rev=%{version}%{git_ver}/' \
