@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar  3 18:21:15 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 1.7.3:
+  Features:
+  * Revolt support added
+  * mailto comcast email template added
+  * mailto *improved custom email server handling, to= and
+    from_addr= are no longer required in most circumstances
+  * ntfy markdown support added, just add ?format=markdown
+  Fixes:
+  * Fixed documents with respect to the use of yaml files
+  * Asynchronous dynamic module loading support
+
+-------------------------------------------------------------------
 Thu Feb 15 13:34:12 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Added single-line patch comments to better conform to patch

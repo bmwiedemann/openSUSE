@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-apprise
-Version:        1.7.2
+Version:        1.7.3
 Release:        0
 Summary:        A simple wrapper to many popular notification services used today
 License:        BSD-2-Clause
