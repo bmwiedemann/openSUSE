@@ -1,7 +1,7 @@
 #
 # spec file for package python-smpplib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2016-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,20 +17,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-smpplib
 Version:        2.2.3
 Release:        0
 Summary:        SMPP library for Python
 License:        LGPL-2.0-only
-Group:          Development/Languages/Python
 URL:            https://pypi.org/project/smpplib/
 #Git-Clone:     https://github.com/python-smpplib/python-smpplib.git
 Source:         https://github.com/python-smpplib/python-smpplib/archive/%{version}.tar.gz#/smpplib-%{version}.tar.gz
 # https://github.com/python-smpplib/python-smpplib/issues/200
 Patch0:         python-smpplib-no-mock.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
@@ -47,14 +47,13 @@ Python-smpplib is a python based SMPP 3.4 client library that
 allows you to send and receive SMS to an SMS gateway or SMSC.
 
 %prep
-%setup -q -n python-smpplib-%{version}
-%patch0 -p1
+%autosetup -p1 -n python-smpplib-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 # Remove tests from sitelib
 %python_expand rm -R %{buildroot}%{$python_sitelib}/smpplib/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -65,6 +64,7 @@ allows you to send and receive SMS to an SMS gateway or SMSC.
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/smpplib*
+%{python_sitelib}/smpplib
+%{python_sitelib}/smpplib-%{version}.dist-info
 
 %changelog
