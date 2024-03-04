@@ -999,4 +999,23 @@
 - Update patch macro `patchN` -&gt; `patch -P N`</comment>
     <requestid>1146473</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>6ee102eb2841d3a21ed43bec253b4768</srcmd5>
+    <version>4.14.6</version>
+    <time>1709583877</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.14.6:
+  * login(1):
+    + Fix off-by-one bugs.
+  * passwd(1):
+    + Don't silently truncate passwords of length &gt;= 200 characters.
+      Instead, accept a length of PASS_MAX, and reject longer ones.
+  * libshadow:
+    + Fix calculation in strtoday(), which caused a wrong half-day
+      offset in some cases (bsc#1176006)
+    + Fix parsing of dates in get_date() (bsc#1176006)
+    + Use utmpx instead of utmp. This fixes a regression introduced in
+      4.14.0.</comment>
+    <requestid>1154375</requestid>
+  </revision>
 </revisionlist>

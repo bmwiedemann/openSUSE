@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Mar  3 06:03:25 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.14.6:
+  * login(1):
+    + Fix off-by-one bugs.
+  * passwd(1):
+    + Don't silently truncate passwords of length >= 200 characters.
+      Instead, accept a length of PASS_MAX, and reject longer ones.
+  * libshadow:
+    + Fix calculation in strtoday(), which caused a wrong half-day
+      offset in some cases (bsc#1176006)
+    + Fix parsing of dates in get_date() (bsc#1176006)
+    + Use utmpx instead of utmp. This fixes a regression introduced in
+      4.14.0.
+
+-------------------------------------------------------------------
 Tue Feb 13 18:33:26 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.14.5:
