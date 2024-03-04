@@ -29,8 +29,10 @@ Source:         https://github.com/python-rapidjson/python-rapidjson/archive/v%{
 Patch0:         rapidjson-system.patch
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module devel >= 3.6}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
@@ -44,14 +46,13 @@ serialization/deserialization (to/from either bytes, str or file-like
 instances) and JSON Schema validation capabilities.
 
 %prep
-%setup -q -n python-rapidjson-%{version}
-%patch0 -p1
+%autosetup -p1 -n python-rapidjson-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -62,6 +63,6 @@ export LANG=en_US.UTF-8
 %doc CHANGES.rst README.rst
 %license LICENSE
 %{python_sitearch}/rapidjson.*.so
-%{python_sitearch}/python_rapidjson-%{version}*-info
+%{python_sitearch}/python_rapidjson-%{version}.dist-info
 
 %changelog

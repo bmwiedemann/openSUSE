@@ -93,4 +93,12 @@
     #130 and PR #131, thanks to Sebastian Pipping)</comment>
     <requestid>1137126</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>9fceb028e9d9bd5b0ff786b73b7f2728</srcmd5>
+    <version>1.14</version>
+    <time>1709583905</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup and pyproject macros.</comment>
+    <requestid>1154475</requestid>
+  </revision>
 </revisionlist>
