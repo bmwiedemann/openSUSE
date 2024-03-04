@@ -357,4 +357,12 @@
   * https://www.postgresql.org/docs/release/13.4/</comment>
     <requestid>1145272</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>9e1e8cad223479eb60743646cb7ab543</srcmd5>
+    <version>13.14</version>
+    <time>1709583954</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1154712</requestid>
+  </revision>
 </revisionlist>
