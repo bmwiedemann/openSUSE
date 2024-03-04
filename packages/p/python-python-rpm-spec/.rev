@@ -51,4 +51,20 @@
     <comment></comment>
     <requestid>1111023</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2beaf23d2bf48b79afebfbeea2a508da</srcmd5>
+    <version>0.15.0</version>
+    <time>1709583910</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.15.0:
+  * The `replace_macro` function gained a new `max_attempts` parameter that
+    prevents endless recursion in certain scenarios. Thanks @kraptor.
+  * Add support for Python 3.12.
+  * Drop support for Python 3.7. It is EOL and no longer supported by the
+    Python core team.
+- Switch to autosetup macro.
+- Drop patch avoid-DoS-on-carefully-crafted-spec-files.patch, now included
+  upstream.</comment>
+    <requestid>1154482</requestid>
+  </revision>
 </revisionlist>

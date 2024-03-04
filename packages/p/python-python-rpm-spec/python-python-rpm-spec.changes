@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar  4 03:15:47 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.15.0:
+  * The `replace_macro` function gained a new `max_attempts` parameter that
+    prevents endless recursion in certain scenarios. Thanks @kraptor.
+  * Add support for Python 3.12.
+  * Drop support for Python 3.7. It is EOL and no longer supported by the
+    Python core team.
+- Switch to autosetup macro.
+- Drop patch avoid-DoS-on-carefully-crafted-spec-files.patch, now included
+  upstream.
+
+-------------------------------------------------------------------
 Wed Sep 13 15:17:43 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Replace the contents of avoid-DoS-on-carefully-crafted-spec-files.patch

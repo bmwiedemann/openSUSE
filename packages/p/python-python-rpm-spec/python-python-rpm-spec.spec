@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-rpm-spec
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,13 @@
 #
 
 
-%define skip_python2 1
 Name:           python-python-rpm-spec
-Version:        0.14.1
+Version:        0.15.0
 Release:        0
 Summary:        Python module for parsing RPM spec files
 License:        MIT
-Group:          Development/Libraries/Python
 URL:            https://github.com/bkircher/python-rpm-spec
-Source0:        https://files.pythonhosted.org/packages/source/p/python-rpm-spec/python-rpm-spec-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE avoid-DoS-on-carefully-crafted-spec-files.patch bsc#1215274
-# this patch fixes an endless loop that could be triggered by carefully crafting
-# a malicious RPM spec file that uses macro expansions, causing a denial-of-service
-# PR to upstream code here: https://github.com/bkircher/python-rpm-spec/pull/62
-Patch0:         avoid-DoS-on-carefully-crafted-spec-files.patch
+Source0:        https://files.pythonhosted.org/packages/source/p/python_rpm_spec/python_rpm_spec-%{version}.tar.gz
 BuildRequires:  %{python_module flit}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -47,8 +40,7 @@ RPM is built. This module allows you to parse spec files and gives you simple
 access to various bits of information that is contained in the spec file.
 
 %prep
-%setup -q -n python-rpm-spec-%{version}
-%patch0 -p1
+%autosetup -p1 -n python_rpm_spec-%{version}
 
 %build
 %pyproject_wheel
@@ -61,9 +53,9 @@ access to various bits of information that is contained in the spec file.
 %pytest tests
 
 %files %{python_files}
-%doc CHANGELOG* README*
-%license LICENSE*
-%{python_sitelib}/python_rpm_spec-%{version}*-info
+%doc CHANGELOG.md README.md
+%license LICENSE
 %{python_sitelib}/pyrpm
+%{python_sitelib}/python_rpm_spec-%{version}.dist-info
 
 %changelog
