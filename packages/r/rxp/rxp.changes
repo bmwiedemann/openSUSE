@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar  4 10:58:41 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernise package
+- Split shared library into subpackage
+- Add conflict with festival-devel for devel package
+
+-------------------------------------------------------------------
+Thu Feb 29 04:44:52 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to 1.5.2
+  * no changelog for 1.5.2
+  * Drop rxp-1.4.8.diff as it is now in upstream
+  * Add sub package rxp-devel 
+
+-------------------------------------------------------------------
 Fri Feb 23 11:59:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

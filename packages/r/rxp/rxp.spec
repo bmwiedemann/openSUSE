@@ -1,7 +1,7 @@
 #
 # spec file for package rxp
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define         sover 0
 Name:           rxp
-Version:        1.4.8
+Version:        1.5.2
 Release:        0
 Summary:        XML Parser in C
-License:        GPL-2.0+
-Group:          Productivity/Publishing/XML
-Url:            http://www.cogsci.ed.ac.uk/~richard/rxp.html
-Source:         ftp://ftp.cogsci.ed.ac.uk/pub/richard/rxp-%{version}.tar.bz2
-Patch0:         rxp-1.4.8.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+License:        GPL-2.0-or-later
+URL:            https://www.cogsci.ed.ac.uk/~richard/rxp.html
+Source:         rxp-%{version}.tar.gz
 
 %description
 The current version of RXP supports XML 1.1, Namespaces 1.1, xml:id,
@@ -39,27 +37,59 @@ A simple application (called rxp) is provided. It parses and writes XML
 data, optionally expanding entities, defaulting attributes, and
 translating to a different output encoding.
 
-Bug reports should be sent to richard@cogsci.ed.ac.uk.
+%package        devel
+Summary:        Development files for %{name}
+Conflicts:      festival-devel
+Requires:       lib%{name}%{sover} = %{version}
+
+%description    devel
+The %{name}-devel package contains libraries and header files for
+developing applications that use %{name}.
+
+%package -n lib%{name}%{sover}
+Summary:        Shared library for %{name}
+
+%description -n lib%{name}%{sover}
+The current version of RXP supports XML 1.1, Namespaces 1.1, xml:id,
+and XML Catalogs. To use an XML Catalog, set the environment variable
+XML_CATALOG_FILES to a space-separated list of catalog files.
+
+RXP was written by Richard Tobin at the Language Technology Group,
+Human Communication Research Centre, University of Edinburgh.
+
+A simple application (called rxp) is provided. It parses and writes XML
+data, optionally expanding entities, defaulting attributes, and
+translating to a different output encoding.
+
+This package contains shared library
 
 %prep
 %autosetup -p1
 
 %build
-mv Makefile Makefile.orig
-%{__sed} -e 's/^LIBS:/\#LIBS:/'  Makefile.orig > Makefile
-%{__make} "DEBUG=%{optflags}" # CHAR_SIZE=8
+%configure \
+  --enable-shared \
+  --disable-static
+%make_build
 
 %install
-%{__install} -d -m755 %{buildroot}
-%{__install} -d -m755 %{buildroot}/usr/bin
-%{__install} -d -m755 %{buildroot}%{_mandir}/man1
-%{__install} -m755 rxp %{buildroot}/usr/bin
-%{__install} -m644 rxp.1 %{buildroot}%{_mandir}/man1
+%make_install
+find %{buildroot} -type f -name "*.a" -or -name "*.la" -delete -print
+
+%ldconfig_scriptlets -n lib%{name}%{sover}
 
 %files
-%license COPYRIGHT COPYING
-%doc Manual Threads
-%{_bindir}/*
-%doc %{_mandir}/man1/*
+%{_bindir}/rxp
+%{_mandir}/man1/rxp.1%{?ext_man}
+
+%files -n %{name}-devel
+%license doc/COPYRIGHT doc/COPYING
+%doc doc/Manual doc/Threads
+%{_includedir}/%{name}*
+%{_libdir}/*.so
+
+%files -n lib%{name}%{sover}
+%license doc/COPYRIGHT doc/COPYING
+%{_libdir}/librxp.so.%{sover}*
 
 %changelog

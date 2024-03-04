@@ -113,4 +113,19 @@
     <comment></comment>
     <requestid>1149955</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>534cdd793e0e91cfd7514240e403acce</srcmd5>
+    <version>1.5.2</version>
+    <time>1709583940</time>
+    <user>anag+factory</user>
+    <comment>- Modernise package
+- Split shared library into subpackage
+- Add conflict with festival-devel for devel package
+
+- Update to 1.5.2
+  * no changelog for 1.5.2
+  * Drop rxp-1.4.8.diff as it is now in upstream
+  * Add sub package rxp-devel</comment>
+    <requestid>1154635</requestid>
+  </revision>
 </revisionlist>
