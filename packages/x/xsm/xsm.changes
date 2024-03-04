@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar  4 04:34:09 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.6
+  * unifdef -UUSG
+  * unifdef -UMOTOROLA
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Add -help and -version options
+  * unifdef SCO325
+  * unifdef SCO
+  * unifdef SYSV
+
+-------------------------------------------------------------------
 Mon Feb 26 12:21:19 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -93,4 +93,19 @@
     <comment></comment>
     <requestid>1151685</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8f8fb6332d0651060ac61115e51b90ca</srcmd5>
+    <version>1.0.6</version>
+    <time>1709583915</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.6
+  * unifdef -UUSG
+  * unifdef -UMOTOROLA
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Add -help and -version options
+  * unifdef SCO325
+  * unifdef SCO
+  * unifdef SYSV</comment>
+    <requestid>1154504</requestid>
+  </revision>
 </revisionlist>
