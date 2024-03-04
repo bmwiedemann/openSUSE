@@ -1,7 +1,7 @@
 #
 # spec file for package editres
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           editres
-Version:        1.0.8
+Version:        1.0.9
 Release:        0
 Summary:        Dynamic resource editor for X Toolkit applications
 License:        X11
@@ -27,6 +27,7 @@ Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{ve
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xaw7)
+BuildRequires:  pkgconfig(xkbfile)
 BuildRequires:  pkgconfig(xmu)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 BuildRequires:  pkgconfig(xt) >= 1.0.99.1
