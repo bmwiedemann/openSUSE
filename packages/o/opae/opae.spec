@@ -146,15 +146,7 @@ Libraries for the Open Programmable Acceleration Engine Libraries tools.
 %endif
 
 %prep
-%setup -q -n %{name}-%{version}%{git_ver}
-%patch0
-%patch1
-%patch2
-%patch3
-%patch4
-%patch5
-%patch6
-%patch7
+%autosetup -p0 -n %{name}-%{version}%{git_ver}
 
 %build
 export RPM_OPT_FLAGS
