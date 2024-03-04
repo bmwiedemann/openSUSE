@@ -1,7 +1,7 @@
 #
 # spec file for package tcmu-runner
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -143,9 +143,7 @@ Requires:       libtcmu2 = %{version}
 Development header(s) and lib(s) for developing against libtcmu.
 
 %prep
-%setup
-%patch1 -p1
-%patch3 -p1
+%autosetup -p1
 
 %build
 CMAKE_OPTIONS="\
