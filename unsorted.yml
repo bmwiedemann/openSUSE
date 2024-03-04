@@ -12644,9 +12644,6 @@ unsorted:
   - libgarcon-branding-upstream 
   - libgarcon-devel 
   - libgarcon-doc 
-  - libgav1-1 
-  - libgav1-devel 
-  - libgav1-tools 
   - libgavl-devel 
   - libgbm-devel 
   - libgbm-devel-32bit 
@@ -15250,6 +15247,7 @@ unsorted:
   - librvngabw-0_0-0 
   - librvngabw-devel 
   - librvngabw-devel-doc 
+  - librxp0 
   - librxtx2 
   - librygel-core-2_8-0 
   - librygel-db-2_8-0 
@@ -19953,7 +19951,6 @@ unsorted:
   - pam_chroot 
   - pam_cifscreds 
   - pam_csync 
-  - pam_dbus 
   - pam_krb5 
   - pam_mktemp 
   - pam_oath 
@@ -22872,7 +22869,6 @@ unsorted:
   - python3-dnf-plugin-versionlock 
   - python3-dnf-plugins-core 
   - python3-dnf-plugins-extras-common 
-  - python3-ec2imgutils 
   - python3-ec2metadata 
   - python3-espressomd 
   - python3-evemu 
@@ -22953,6 +22949,7 @@ unsorted:
   - python3-logreduce 
   - python3-lttngust 
   - python3-magnumclient 
+  - python3-mailman-hyperkitty 
   - python3-manilaclient 
   - python3-marisa 
   - python3-masakariclient 
@@ -25003,7 +25000,6 @@ unsorted:
   - python310-mailmanclient 
   - python310-main-wrapper 
   - python310-makefun 
-  - python310-managesieve 
   - python310-mando 
   - python310-manuel 
   - python310-manuel-doc 
@@ -25818,7 +25814,6 @@ unsorted:
   - python310-python-bidi 
   - python310-python-binary-memcached 
   - python310-python-box 
-  - python310-python-cjson 
   - python310-python-consul 
   - python310-python-coveralls 
   - python310-python-crfsuite 
@@ -28492,7 +28487,6 @@ unsorted:
   - python311-mailmanclient 
   - python311-main-wrapper 
   - python311-makefun 
-  - python311-managesieve 
   - python311-mando 
   - python311-manuel 
   - python311-manuel-doc 
@@ -29271,7 +29265,6 @@ unsorted:
   - python311-python-bidi 
   - python311-python-binary-memcached 
   - python311-python-box 
-  - python311-python-cjson 
   - python311-python-consul 
   - python311-python-coveralls 
   - python311-python-crfsuite 
@@ -31378,6 +31371,7 @@ unsorted:
   - python312-fastremap 
   - python312-fasttext 
   - python312-fb-re2 
+  - python312-fedora-messaging 
   - python312-feedgen 
   - python312-feedgenerator 
   - python312-feedparser 
@@ -31963,7 +31957,6 @@ unsorted:
   - python312-magic-wormhole-mailbox-server 
   - python312-magic-wormhole-transit-relay 
   - python312-magicalimport 
-  - python312-mailman-hyperkitty 
   - python312-mailman3-fedmsg-plugin 
   - python312-mailmanclient 
   - python312-main-wrapper 
@@ -32795,6 +32788,7 @@ unsorted:
   - python312-python-qprogedit 
   - python312-python-rapidjson 
   - python312-python-redis-lock 
+  - python312-python-redmine 
   - python312-python-rpm-spec 
   - python312-python-rtmidi 
   - python312-python-slugify 
@@ -35478,7 +35472,6 @@ unsorted:
   - python39-mailmanclient 
   - python39-main-wrapper 
   - python39-makefun 
-  - python39-managesieve 
   - python39-mando 
   - python39-manuel 
   - python39-manuel-doc 
@@ -35869,8 +35862,6 @@ unsorted:
   - python39-platformdirs 
   - python39-platformio 
   - python39-plette 
-  - python39-plotly 
-  - python39-plotly-jupyter 
   - python39-plplot 
   - python39-plplot-pyqt5 
   - python39-pluggy 
@@ -36290,7 +36281,6 @@ unsorted:
   - python39-python-bidi 
   - python39-python-binary-memcached 
   - python39-python-box 
-  - python39-python-cjson 
   - python39-python-consul 
   - python39-python-coveralls 
   - python39-python-crfsuite 
@@ -38246,6 +38236,7 @@ unsorted:
   - rustscan 
   - rustup 
   - rxp 
+  - rxp-devel 
   - rxtx-java 
   - rxtx-java-javadoc 
   - rxvt-unicode 
