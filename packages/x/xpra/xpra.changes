@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Sun Feb 25 21:02:57 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.0+git20240225.77c41071:
+  * Install manpages to share/man on FreeBSD
+  * Bump actions/setup-python from 2 to 5
+  * Bump actions/checkout from 2 to 4
+  * Create `dependabot.yml`
+  * Add `.git-blame-ignore-revs` file
+  * add Ubuntu Noble Nombat repo files
+
+-------------------------------------------------------------------
+Thu Feb 22 16:16:11 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.0+git20240222.41136907:
+  * stop using dbus notifier after cleanup
+  * oops: forgot to bump the year
+  * add package list for Fedora 40
+  * update the release notes
+  * add Ubuntu Noble Nombat
+  * shortcut out if we're not going to use the 'guess-content' feature
+  * don't guess the window's content type in the UI thread
+  * cosmetic warnings
+  * menu data could be empty if first loaded without the 'remove_icons' flag
+  * add type hints
+  * parsing should always return an int
+  * also avoid subsampling csc with text
+  * ignore video_max_size for text content
+  * #4144 use sys.executable to find the correct python interpreter
+  * update the index to prevent 404s
+  * #3978 have to install build deps to run build command
+  * #3978 test more Python versions, with 'cythonize-more' option
+  * newer versions can throw NotImplementedError here
+  * make it possible to expose all map state
+  * cleanup + better warning for unexpected events
+  * #4135 add env toggles for all delete options
+  * fall through to XKill if we don't have pid
+  * #3478 WM_STATE should be two longs
+  * type hints and formatting
+  * stronger type hints, add 'WithdrawnState' constant
+  * remove unused screen_number
+  * use shlex for quoting
+  * add debug logging
+  * simplify and add debug logging
+  * try harder to always close sockets on error
+  * replace traceback with 'backtrace' logging feature
+  * add more attributes and use stronger types
+  * log stats before resetting the connection object
+  * add more mask constants, utility functions
+  * expose more event attributes
+  * stronger type
+  * #4113 ignore the generated cpp libproc file
+  * PEP 591
+  * enumify
+  * #4137 add missing check for start-child-late
+  * log sockets stats from more places
+  * log the wm-state we're setting
+  * check again after acquiring the lock
+  * more readable: parse don't return defaults
+  * fixup 0c6bcc23a5bde960c90f4aea7d04f405692718ad: oops, negated test
+  * doh: all backends now take a display argument
+  * #4135 use DestroyWindow instead of kill signal
+  * #3936 add riscv64 to Debian repo files we have builds for
+  * return whether the request was handled or not
+  * avoid mdns errors, log message instead
+  * #4125 make it easier to automatically enable all backtraces
+  * #3483 numpy can be imported when making gl calls
+  * #4124 the xpra-server.socket and xpra-server.service are already bundled automagically
+  * #4124 use the same update file as from fs/lib/systemd/system
+  * type hints and debug logging
+  * more appropriate method name
+  * #3938 honour the ICCCM spec
+  * #3938 not needed, I think
+  * #3938 split configure and notify
+  * always include a backtrace with logged X11 errors
+  * consistent return statements
+  * #3483 numpy may be imported here first
+  * we need the display name to validate
+  * call the narrower move / resize functions
+  * add socket upgrade debug logging
+  * #3938 until we reparent, update the client window directly
+  * #4125 also make it easier to trigger backtraces programmatically
+  * type hint fix (errors with cythonize-more)
+  * typo caused ssh upgrade flag to remain enabled
+  * simplify
+  * #4129 ensure 'c' is initialized
+  * don't use video dowscaling for text
+  * #3938 avoid unnecessary configure event
+  * the above argument is an int, cythonizing causes errors with a bool
+  * don't synchronize window manager X11 properties
+  * #3938 update requested position and size from hints
+  * use the correct type for sibling window (an xid)
+  * blacklist some more gnome apps
+
+-------------------------------------------------------------------
 Wed Feb 07 19:13:44 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 6.0+git20240207.f845c2d5:
