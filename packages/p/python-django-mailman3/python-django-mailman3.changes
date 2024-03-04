@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 21:07:54 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Build PEP517 wheel
+
+-------------------------------------------------------------------
 Mon Nov  6 00:11:01 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - make it easier to notice to keep buildrequires and runtime

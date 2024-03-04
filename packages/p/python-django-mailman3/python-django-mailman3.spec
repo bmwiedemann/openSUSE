@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-mailman3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %global django_min_version           3.2
 %global django_max_version           4.3
@@ -33,20 +34,22 @@ Source:         https://files.pythonhosted.org/packages/source/d/django-mailman3
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       (python-Django >= %{django_min_version} with python-Django < %{django_max_version})
 Requires:       python-django-allauth >= %{django_allauth_min_version}
 Requires:       python-django-gravatar2 >= %{django_gravatar2_min_version}
 Requires:       python-mailmanclient >= %{mailmanclient_min_version}
 Requires:       python-pytz
+Requires:       (python-Django >= %{django_min_version} with python-Django < %{django_max_version})
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= %{django_min_version}}
 BuildRequires:  %{python_module django-allauth >= %{django_allauth_min_version}}
 BuildRequires:  %{python_module django-gravatar2 >= %{django_gravatar2_min_version}}
 BuildRequires:  %{python_module mailmanclient >= %{mailmanclient_min_version}}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
+BuildRequires:  %{python_module wheel}
 # /SECTION
 %python_subpackages
 
@@ -57,10 +60,10 @@ Django library to help interaction with Mailman.
 %autosetup -p1 -n django-mailman3-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -70,7 +73,7 @@ export PYTHONPATH="$(pwd)"
 %files %{python_files}
 %doc README.rst
 %license COPYING.txt
-%{python_sitelib}/%{modname}-%{version}*-info
+%{python_sitelib}/%{modname}-%{version}.dist-info
 %{python_sitelib}/%{modname}
 
 %changelog
