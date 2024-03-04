@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Mar  3 17:02:11 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.20.0:
+  ### Changed
+  - Files excluded by git (via .gitignore or global git configuration), as well as in an .ignore file 
+    (used by ripgrep and The Silver Searcher) will now also be ignored by StyLua 
+    (as if they were all .styluaignore files).
+  ### Fixed
+  * General
+  - The CLI tool will now only write files if the contents differ, and not modify the file if there 
+    is no change after formatting 
+  - Fixed function body parentheses being placed on multiple lines unnecessarily when there are no parameters
+  - Fixed directory paths w/o globs in .styluaignore not matching when using --respect-ignores
+  * Luau
+  - Fixed handling of floor division (//) syntax when only Luau command line flag is enabled
+  - Fixed missing space when table is inside of Luau interpolated string expression ({{ is invalid syntax)
+  - Fixed parentheses around a Luau compound type inside of a type table indexer being removed causing a syntax error
+
+-------------------------------------------------------------------
 Sun Nov 12 13:56:19 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 0.19.0:

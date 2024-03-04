@@ -1,7 +1,7 @@
 #
 # spec file for package StyLua
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _bin_name stylua
 Name:           StyLua
-Version:        0.19.0
+Version:        0.20.0
 Release:        0
 Summary:        Opinionated Lua code formatter
 License:        (Apache-2.0 OR MIT) AND Unicode-DFS-2016 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (MIT OR Unlicense) AND Apache-2.0 AND MIT AND MPL-2.0 AND MPL-2.0
@@ -36,9 +36,7 @@ parses your Lua codebase, and prints it back out from scratch, enforcing a
 consistent code style.
 
 %prep
-%setup -q -a1
-mkdir -p .cargo
-cp cargo_config .cargo/config.toml
+%autosetup -a1
 
 %build
 %{cargo_build} --all-features
