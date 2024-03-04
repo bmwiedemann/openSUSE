@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymacaroons-pynacl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,12 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %define         github_name pymacaroons
 Name:           python-pymacaroons-pynacl
 Version:        0.9.3
 Release:        0
 Summary:        Macaroon library for Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/matrix-org/pymacaroons
 Source:         https://github.com/matrix-org/%{github_name}/archive/v%{version}/pymacaroons-%{version}.tar.gz
 # https://github.com/ecordell/pymacaroons/pull/54/
@@ -32,9 +29,11 @@ Patch0:         python-pymacaroons-pynacl-remove-nose.patch
 BuildRequires:  %{python_module PyNaCl}
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module libnacl}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyNaCl
@@ -58,16 +57,15 @@ from the enforcement of that policy.
 This is a Python implementation of Macaroons.
 
 %prep
-%setup -q -n %{github_name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{github_name}-%{version}
 # requires too old hypothesis
 rm -f tests/property_tests/macaroon_property_tests.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -76,6 +74,7 @@ rm -f tests/property_tests/macaroon_property_tests.py
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/pymacaroons
+%{python_sitelib}/pymacaroons_pynacl-%{version}.dist-info
 
 %changelog
