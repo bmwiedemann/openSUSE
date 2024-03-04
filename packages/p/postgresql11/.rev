@@ -418,4 +418,12 @@ Upgrade to version 11.11:
     <comment>November 2023 Security Updates</comment>
     <requestid>1124720</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>76f922526c33d9ab9a0ac2ff1a5b266d</srcmd5>
+    <version>11.22</version>
+    <time>1709583951</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1154710</requestid>
+  </revision>
 </revisionlist>
