@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 25 20:12:48 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 12.0+git20240215.edf32fa:
+  * Bugfix: Update video_max_size when offsceen_api flag is changed
+  * update version string
+  * #282 support custom minifier command
+
+-------------------------------------------------------------------
 Thu Feb 08 14:26:13 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 12.0+git20240208.20dddce:
