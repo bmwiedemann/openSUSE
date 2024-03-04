@@ -167,4 +167,12 @@
   * https://www.postgresql.org/docs/release/15.6/</comment>
     <requestid>1145269</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>0ef6dc699d03993dd0c3dfc69a0036aa</srcmd5>
+    <version>15.6</version>
+    <time>1709583956</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1154713</requestid>
+  </revision>
 </revisionlist>
