@@ -65,4 +65,14 @@
     <comment></comment>
     <requestid>1149116</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4098361a1f7ae317e409189da6940413</srcmd5>
+    <version>1.6.4</version>
+    <time>1709583926</time>
+    <user>anag+factory</user>
+    <comment>- Update to release v1.6.4
+  * fix build on powerpc
+  * drop upstream rust-use-libc-Ioctl-type-for-ioctl-request-argument.patch (forwarded request 1154476 from ddiss)</comment>
+    <requestid>1154583</requestid>
+  </revision>
 </revisionlist>
