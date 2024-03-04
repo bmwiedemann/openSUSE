@@ -51,8 +51,7 @@ Mainly it's about to express your thinking with your keystrokes.
 This package is the Fcitx implentation of RIME.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 mkdir -p build
