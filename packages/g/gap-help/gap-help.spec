@@ -1,7 +1,7 @@
 #
 # spec file for package gap-help
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gap-help
-Version:        3.5
+Version:        4.0
 Release:        0
 Summary:        GAP: Hertweck-Luthar-Passi method
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/HeLP/
 Source:         https://github.com/gap-packages/HeLP/releases/download/v%version/HeLP-%version.tar.gz
 BuildRequires:  gap-rpm-devel
 BuildRequires:  xz
 BuildArch:      noarch
-# For zsolve
+# 4ti2: to get /usr/bin/zsolve
 Requires:       4ti2 >= 1.6.5
 Requires:       gap-4ti2interface >= 2015.04.29
 Requires:       gap-atlasrep >= 1.5
