@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar  4 00:42:10 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.16.0:
+  * Add support for dealing "binary_star".
+  * Add tests.
+  * Try to fix getstate() / setstate() ; with tests
+- Switch to pyproject and autosetup macros.
+- No more greedy globs in %files.
+- Actually drop {Build,}Requires on six.
+- Refresh python-pysol-cards-no-six.patch.
+
+-------------------------------------------------------------------
 Thu Dec  8 10:07:54 UTC 2022 - pgajdos@suse.com
 
 - version update to 0.14.2
