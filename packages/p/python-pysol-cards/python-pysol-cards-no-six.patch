@@ -1,16 +1,16 @@
-Index: pysol_cards-0.14.2/pysol_cards.egg-info/requires.txt
+Index: pysol_cards-0.16.0/pysol_cards.egg-info/requires.txt
 ===================================================================
---- pysol_cards-0.14.2.orig/pysol_cards.egg-info/requires.txt
-+++ pysol_cards-0.14.2/pysol_cards.egg-info/requires.txt
+--- pysol_cards-0.16.0.orig/pysol_cards.egg-info/requires.txt
++++ pysol_cards-0.16.0/pysol_cards.egg-info/requires.txt
 @@ -1,2 +1 @@
  random2
 -six
-Index: pysol_cards-0.14.2/pysol_cards/deal_game.py
+Index: pysol_cards-0.16.0/pysol_cards/deal_game.py
 ===================================================================
---- pysol_cards-0.14.2.orig/pysol_cards/deal_game.py
-+++ pysol_cards-0.14.2/pysol_cards/deal_game.py
-@@ -12,9 +12,6 @@
- from pysol_cards.cards import Card, createCards
+--- pysol_cards-0.16.0.orig/pysol_cards/deal_game.py
++++ pysol_cards-0.16.0/pysol_cards/deal_game.py
+@@ -13,9 +13,6 @@ from pysol_cards.cards import Card
+ from pysol_cards.cards import createCards
  from pysol_cards.random import shuffle
  
 -from six import print_
@@ -19,7 +19,7 @@ Index: pysol_cards-0.14.2/pysol_cards/deal_game.py
  def empty_card():
      ret = Card(0, 0, 0)
      ret.empty = True
-@@ -166,7 +163,7 @@ class Game(object):
+@@ -170,7 +167,7 @@ class Game(object):
          return self.board.calc_string(renderer)
  
      def print_layout(self, renderer):
@@ -28,7 +28,7 @@ Index: pysol_cards-0.14.2/pysol_cards/deal_game.py
  
      def new_cards(self, cards):
          self.cards = cards
-@@ -291,7 +288,7 @@ class Game(object):
+@@ -304,7 +301,7 @@ class Game(object):
      def der_katz(game):
          is_ds = game.game_id == 'die_schlange'
          if is_ds:
@@ -37,21 +37,23 @@ Index: pysol_cards-0.14.2/pysol_cards/deal_game.py
          game.board = Board(9)
          i = 0
          for c in game:
-Index: pysol_cards-0.14.2/requirements.txt
+Index: pysol_cards-0.16.0/requirements.txt
 ===================================================================
---- pysol_cards-0.14.2.orig/requirements.txt
-+++ pysol_cards-0.14.2/requirements.txt
+--- pysol_cards-0.16.0.orig/requirements.txt
++++ pysol_cards-0.16.0/requirements.txt
 @@ -1,2 +1 @@
  random2
 -six
-Index: pysol_cards-0.14.2/setup.py
+Index: pysol_cards-0.16.0/setup.py
 ===================================================================
---- pysol_cards-0.14.2.orig/setup.py
-+++ pysol_cards-0.14.2/setup.py
-@@ -27,5 +27,5 @@ setup(name='pysol_cards',
+--- pysol_cards-0.16.0.orig/setup.py
++++ pysol_cards-0.16.0/setup.py
+@@ -29,7 +29,7 @@ setup(name='pysol_cards',
                     ],
        packages=find_packages(exclude=('tests', 'tests.*')),
        include_package_data=True,
 -      install_requires=['random2','six'],
 +      install_requires=['random2'],
-       )
+       entry_points={
+           'console_scripts': [
+               'pysol_cards = pysol_cards.__main__:main',

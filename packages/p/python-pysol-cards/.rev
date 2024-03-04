@@ -31,4 +31,19 @@
     <comment></comment>
     <requestid>1041750</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>49c588d0349d6ed37b28f719b5cbd67c</srcmd5>
+    <version>0.16.0</version>
+    <time>1709583901</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.16.0:
+  * Add support for dealing &quot;binary_star&quot;.
+  * Add tests.
+  * Try to fix getstate() / setstate() ; with tests
+- Switch to pyproject and autosetup macros.
+- No more greedy globs in %files.
+- Actually drop {Build,}Requires on six.
+- Refresh python-pysol-cards-no-six.patch.</comment>
+    <requestid>1154464</requestid>
+  </revision>
 </revisionlist>
