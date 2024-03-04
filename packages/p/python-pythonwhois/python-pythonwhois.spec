@@ -1,7 +1,7 @@
 #
 # spec file for package python-pythonwhois
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define commit 60adc3acc2d59627b2e32dc36d27802942e0820d/
 Name:           python-pythonwhois
 Version:        2.4.3
 Release:        0
 Summary:        Python whois library
 License:        WTFPL
-Group:          Development/Languages/Python
 URL:            http://cryto.net/pythonwhois
 #Source:         https://files.pythonhosted.org/packages/source/p/pythonwhois/pythonwhois-%%{version}.tar.gz
 # github tarball includes docs and tests (which require network)
 Source:         https://github.com/joepie91/python-whois/archive/%{commit}.zip#/%{name}-%{version}.zip
 # PATCH-FIX-UPSTREAM remove_argparse_req.patch -- argparse is not a package
 Patch0:         remove_argparse_req.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -44,17 +44,16 @@ Conflicts:      perl-Net-Whois-Raw
 Module for retrieving and parsing the WHOIS data for a domain.
 
 %prep
-%setup -q -n python-whois-%{commit}
-%patch0 -p1
+%autosetup -p1 -n python-whois-%{commit}
 # https://github.com/joepie91/python-whois/issues/142
 # boo#1129473
 sed -i 's/\(\s*regex = re.sub(r"\\\\s.*\)r"\\s\(.*\)>\\S\(.*\)/\1r"\\\\s\2>\\\\S\3/' pythonwhois/parse.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pwhois
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -68,6 +67,7 @@ sed -i 's/\(\s*regex = re.sub(r"\\\\s.*\)r"\\s\(.*\)>\\S\(.*\)/\1r"\\\\s\2>\\\\S
 %doc README.md doc/*.html
 %license LICENSE.txt
 %python_alternative %{_bindir}/pwhois
-%{python_sitelib}/*
+%{python_sitelib}/pythonwhois
+%{python_sitelib}/pythonwhois-%{version}.dist-info
 
 %changelog

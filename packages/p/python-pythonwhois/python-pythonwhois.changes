@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  4 04:08:44 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Fri Feb 12 12:55:17 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - get rid of %ifpython3
