@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  4 04:14:08 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to version 1.2.6
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Mark global variables as "static" since there's only one source file
+  * Mark graceful_exit as noreturn
+  * Fix overflow on XmbLookupString buffer
+
+-------------------------------------------------------------------
 Mon Feb 26 12:08:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

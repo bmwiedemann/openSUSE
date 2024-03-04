@@ -121,4 +121,16 @@
     <comment></comment>
     <requestid>1151664</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>04348f7be9c9b5369a6b66a704145b9f</srcmd5>
+    <version>1.2.6</version>
+    <time>1709583911</time>
+    <user>anag+factory</user>
+    <comment>- update to version 1.2.6
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Mark global variables as &quot;static&quot; since there's only one source file
+  * Mark graceful_exit as noreturn
+  * Fix overflow on XmbLookupString buffer</comment>
+    <requestid>1154493</requestid>
+  </revision>
 </revisionlist>

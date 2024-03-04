@@ -1,7 +1,7 @@
 #
 # spec file for package xev
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xev
-Version:        1.2.5
+Version:        1.2.6
 Release:        0
 Summary:        Utility to print contents of X events
 License:        X11
