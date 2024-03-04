@@ -24,4 +24,16 @@
     <comment></comment>
     <requestid>1149695</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>65be52049e9cb5136bb5d86b71f6a6be</srcmd5>
+    <version>1.0+git20240302</version>
+    <time>1709583939</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0+git20240302:
+  * libbacktrace: pass -no-install when linking test programs
+  * libbacktrace: skip all LZMA block header padding bytes
+  * libbacktrace: use real .opd for debuginfo on ppc64 v1 ABI
+  * libbacktrace: read symbol table of debuginfo file</comment>
+    <requestid>1154626</requestid>
+  </revision>
 </revisionlist>

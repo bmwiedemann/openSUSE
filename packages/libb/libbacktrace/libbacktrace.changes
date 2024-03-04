@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  4 10:37:57 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0+git20240302:
+  * libbacktrace: pass -no-install when linking test programs
+  * libbacktrace: skip all LZMA block header padding bytes
+  * libbacktrace: use real .opd for debuginfo on ppc64 v1 ABI
+  * libbacktrace: read symbol table of debuginfo file
+
+-------------------------------------------------------------------
 Fri Feb 23 01:25:31 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - switch over the devel packages to pkgconfig
