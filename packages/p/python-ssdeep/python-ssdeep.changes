@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  4 07:18:51 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros. 
+
+-------------------------------------------------------------------
 Fri Nov 11 13:09:00 UTC 2022 - pgajdos@suse.com
 
 - silent rpmlint

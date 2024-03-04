@@ -1,7 +1,7 @@
 #
 # spec file for package python-ssdeep
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,11 @@
 #
 
 
-%define skip_python2 1
 Name:           python-ssdeep
 Version:        3.4.1
 Release:        0
 Summary:        Python wrapper for the ssdeep library
 License:        LGPL-3.0-or-later
-Group:          Development/Languages/Python
 URL:            https://github.com/DinoTools/python-ssdeep
 #Source:         https://files.pythonhosted.org/packages/source/s/ssdeep/ssdeep-%%{version}.tar.gz # no docs here, see https://github.com/DinoTools/python-ssdeep/issues/37
 Source:         https://github.com/DinoTools/python-ssdeep/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -30,7 +28,9 @@ Source:         https://github.com/DinoTools/python-ssdeep/archive/%{version}.ta
 Patch0:         python-ssdeep-no-six.patch
 BuildRequires:  %{python_module cffi >= 0.8.6}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  libfuzzy-devel
 BuildRequires:  python-rpm-macros
@@ -47,25 +47,24 @@ have sequences of identical bytes in the same order, although bytes in between t
 content and length.
 
 %prep
-%setup -q -n python-ssdeep-%{version}
-%patch0 -p1
+%autosetup -p1 -n python-ssdeep-%{version}
 # https://github.com/DinoTools/python-ssdeep/issues/57
 sed -i 's:"pytest-runner.*"::' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 %pytest_arch
 
 %files %{python_files}
-%{python_sitearch}/ssdeep
-%{python_sitearch}/ssdeep-*egg-info
 %doc README.rst CHANGELOG.rst
 %license LICENSE
+%{python_sitearch}/ssdeep
+%{python_sitearch}/ssdeep-%{version}.dist-info
 
 %changelog

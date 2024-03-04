@@ -65,4 +65,12 @@
     <comment></comment>
     <requestid>1035278</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>323f11378cd6c84bcb7c2bbad9fb3ea2</srcmd5>
+    <version>3.4.1</version>
+    <time>1709583924</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup and pyproject macros.</comment>
+    <requestid>1154576</requestid>
+  </revision>
 </revisionlist>
