@@ -88,4 +88,17 @@
     <comment></comment>
     <requestid>998305</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e775e394e08ae5950793a1435982f266</srcmd5>
+    <version>1.1.1</version>
+    <time>1709583912</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.1.1
+  * Use gettext() to localize messages if available
+  * include config.h in xfontsel.c before checking for USE_GETTEXT
+  * Print which arguments were unknown before giving usage message
+  * Add -help and -version options
+  * Fixed -Wshadow declaration warnings</comment>
+    <requestid>1154497</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar  4 04:17:37 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.1
+  * Use gettext() to localize messages if available
+  * include config.h in xfontsel.c before checking for USE_GETTEXT
+  * Print which arguments were unknown before giving usage message
+  * Add -help and -version options
+  * Fixed -Wshadow declaration warnings
+
+-------------------------------------------------------------------
 Thu Aug 11 08:07:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec-file, move license to %%licensedir
