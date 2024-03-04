@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  4 01:54:50 UTC 2024 - David Disseldorp <ddiss@suse.de>
+
+- Update to release v1.6.4
+  * fix build on powerpc
+  * drop upstream rust-use-libc-Ioctl-type-for-ioctl-request-argument.patch
+
+-------------------------------------------------------------------
 Thu Feb 22 06:23:25 UTC 2024 - David Disseldorp <ddiss@suse.de>
 
 - Fix 32-bit builds [boo#1220175]

@@ -17,7 +17,7 @@
 
 
 Name:           bcachefs-tools
-Version:        1.6.3
+Version:        1.6.4
 Release:        0
 Summary:        Configuration utilities for bcachefs
 License:        GPL-2.0-or-later
@@ -26,7 +26,6 @@ URL:            https://bcachefs.org/
 Source0:        https://evilpiepirate.org/%name/%name-vendored-%version.tar.zst
 Source1:        https://evilpiepirate.org/%name/%name-vendored-%version.tar.sign
 Source2:        %{name}.keyring
-Patch0:         rust-use-libc-Ioctl-type-for-ioctl-request-argument.patch
 BuildRequires:  cargo
 BuildRequires:  clang-devel
 BuildRequires:  libaio-devel >= 0.3.111
