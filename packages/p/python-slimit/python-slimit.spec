@@ -1,7 +1,7 @@
 #
 # spec file for package python-slimit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,15 +23,16 @@ Version:        0.8.1
 Release:        0
 Summary:        JavaScript minifier written in Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://slimit.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/s/slimit/slimit-%{version}.zip
 # PATCH-FIX-OPENSUSE python-slimit-add-licence.patch -- Include the licence file that is present in git since 4111f2d.
 Patch0:         python-slimit-add-licence.patch
 # https://github.com/rspivak/slimit/commit/40956e7fc6e954b3e6d7b629faeb3303f5efb7ea
 Patch1:         python-slimit-fix-python3.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module ply >= 3.4}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -39,9 +40,8 @@ BuildRequires:  unzip
 BuildRequires:  %{python_module pytest}
 # /SECTION
 Requires:       python-ply >= 3.4
-Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %ifpython2
 # python-slimit was last used in openSUSE Leap 15.0.
@@ -60,15 +60,13 @@ lexer, pretty printer and a tree visitor.
 %python_subpackages
 
 %prep
-%setup -q -n slimit-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n slimit-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/
 %python_clone -a %{buildroot}%{_bindir}/slimit
 
@@ -85,7 +83,7 @@ lexer, pretty printer and a tree visitor.
 %license LICENSE
 %doc CHANGES README.rst
 %python_alternative %{_bindir}/slimit
-%{python_sitelib}/slimit/
-%{python_sitelib}/slimit-*
+%{python_sitelib}/slimit
+%{python_sitelib}/slimit-%{version}.dist-info
 
 %changelog
