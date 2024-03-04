@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-redmine
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,17 @@ Version:        2.4.0
 Release:        0
 Summary:        Python library for the Redmine RESTful API
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://python-redmine.com
 Source:         https://files.pythonhosted.org/packages/source/p/python-redmine/python-redmine-%{version}.tar.gz
 Patch0:         https://github.com/maxtepkeev/python-redmine/pull/328.patch
+# PATCH-FIX-UPSTREAM gh#maxtepkeev/python-redmine#332
+Patch1:         support-python-312.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.28.2}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 2.28.2
@@ -42,14 +45,13 @@ via REST API for which Python Redmine provides a simple but
 powerful Pythonic API inspired by a well-known Django ORM.
 
 %prep
-%setup -q -n python-redmine-%{version}
-%patch0 -p1
+%autosetup -p1 -n python-redmine-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,6 +61,6 @@ powerful Pythonic API inspired by a well-known Django ORM.
 %license LICENSE
 %doc CHANGELOG.rst README.rst
 %{python_sitelib}/redminelib
-%{python_sitelib}/python_redmine-*
+%{python_sitelib}/python_redmine-%{version}.dist-info
 
 %changelog

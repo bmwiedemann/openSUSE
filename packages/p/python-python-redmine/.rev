@@ -84,4 +84,13 @@
   https://github.com/maxtepkeev/python-redmine/pull/328</comment>
     <requestid>1114261</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>04887d5bc04483684d67dda9c9459e12</srcmd5>
+    <version>2.4.0</version>
+    <time>1709583908</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject and autosetup macros.
+- Add patch support-python-312.patch, support Python 3.12.</comment>
+    <requestid>1154477</requestid>
+  </revision>
 </revisionlist>
