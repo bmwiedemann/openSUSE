@@ -1,7 +1,7 @@
 #
 # spec file for package lite-xl-plugin-manager
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 %define baseprogramname lite-xl
 Name:           lite-xl-plugin-manager
-Version:        1.0.14+git20240128.9189b99
+Version:        1.2.0+git20240225.45d1d50
 Release:        0
 Summary:        A %{baseprogramname} plugin manager
 %if 0%{?suse_version} > 1500
@@ -56,7 +56,7 @@ Requires:       %{baseprogramname}
 %prep
 #%%autosetup
 %setup -q
-%patch0
+%patch -P 0
 
 %build
 %meson -Dstatic=true 

@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon Feb 26 00:30:37 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.2.0+git20240225.45d1d50:
+  * Made run notification verbose.
+  * Changed bzero to memset, in order to eliminate warnings on windows.
+  * Unescaped backslashes.
+  * Might fix #64.
+  * Should fix #82. Will ensure that progress bars go to 100% when downloading files.
+  * Updated CHANGELOG.md.
+  * Added test, and clarified things.
+  * Added in warnings when we won't install or unisntall things due to mask.
+  * hopefully fixed the memory leak (#83)
+  * Fix Windows install issues (#79)
+  * Added in initial implementation of --mask.
+
+-------------------------------------------------------------------
+Sun Feb 25 21:35:04 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.1.0+git20240225.f264efb:
+  * Added in chcek to ensure that we don't try to double-install dependencies.
+  * Threw an explicit error if you try to install a repository with no addons selected.
+  * Made hash backwards compatible.
+  * Added in ephemeral flag as a determinant for bottle hash construction.
+  * Use vendored `microtar` version in `meson.build` (#77)
+  * Checks if dependency is core beofore marking it as orphan (#76)
+  * Update extract: .tgz and +100 char name support (#73)
+
+-------------------------------------------------------------------
+Tue Feb 20 18:05:47 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.1.0+git20240220.9a37552:
+  * Fixed typing mistake.
+
+-------------------------------------------------------------------
+Mon Feb 12 00:50:01 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.1.0+git20240211.78ff363:
+  * Updated CHANGELOG.md.
+  * Made sure to create folders for files if they don't exist.
+  * Allowed addons that don't specify a path, but have files, to download only those files.
+
+-------------------------------------------------------------------
+Wed Feb 07 03:07:51 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.0.14+git20240206.8a1e790:
+  * Made paths absolute when adding a lite-xl.
+  * Doubled response header buffer, added in better error handling for responses, and added in logging and checksum updating of remote file singletons.
+  * Added in update-checksums.
+
+-------------------------------------------------------------------
 Sun Jan 28 20:29:34 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 1.0.14+git20240128.9189b99:
