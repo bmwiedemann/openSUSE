@@ -60,9 +60,8 @@ of incoming email. With Postfix, the proxies can operate as either
 Before-Queue or After-Queue content filters.
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n %{name}-%{version}
+
 # ---------------------------------------------------------------------------
 
 %build
