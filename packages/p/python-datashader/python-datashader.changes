@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar  2 09:43:04 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip python39: no xarray anymore
+- Add datashader-pr1314-fix-pandas2.2-tests.patch
+  gh#holoviz/datashader#1314
+
+-------------------------------------------------------------------
 Fri Feb  9 06:46:39 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Drop DataShape requirement, it's included and maintained in

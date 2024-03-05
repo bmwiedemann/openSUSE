@@ -28,6 +28,7 @@ BuildArch:      noarch
 %endif
 
 %{?sle15_python_module_pythons}
+%define skip_python39 1
 Name:           python-datashader%{psuffix}
 Version:        0.16.0
 Release:        0
@@ -37,6 +38,8 @@ URL:            https://datashader.org
 # SourceRepository: https://github.com/holoviz/datashader
 Source0:        https://files.pythonhosted.org/packages/source/d/datashader/datashader-%{version}.tar.gz
 Source100:      python-datashader-rpmlintrc
+# PATCH-FIX-UPSTREAM datashader-pr1314-fix-pandas2.2-tests.patch gh#holoviz/datashader#1314
+Patch0:         datashader-pr1314-fix-pandas2.2-tests.patch
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module multipledispatch}
 BuildRequires:  %{python_module numpy}
@@ -60,7 +63,6 @@ Requires:       python-requests
 Requires:       python-scipy
 Requires:       python-toolz
 Requires:       python-xarray
-Requires:       python-xarray
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %if %{with test}
@@ -73,8 +75,8 @@ BuildRequires:  %{python_module nbformat}
 BuildRequires:  %{python_module nbsmoke >= 0.5.0}
 BuildRequires:  %{python_module netCDF4}
 BuildRequires:  %{python_module pyarrow}
+BuildRequires:  %{python_module pytest < 8}
 BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scikit-image}
 %endif
 %python_subpackages
