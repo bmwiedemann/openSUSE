@@ -137,4 +137,12 @@ Please relay on oS13.2</comment>
     <comment></comment>
     <requestid>1150138</requestid>
   </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>0631d7f1c7889e632ae78f32d367dad5</srcmd5>
+    <version>42.1</version>
+    <time>1709661136</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN. (forwarded request 1155197 from hillwood)</comment>
+    <requestid>1155198</requestid>
+  </revision>
 </revisionlist>

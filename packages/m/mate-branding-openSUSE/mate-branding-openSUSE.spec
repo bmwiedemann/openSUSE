@@ -1,7 +1,7 @@
 #
 # spec file for package mate-branding-openSUSE
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -27,7 +27,7 @@ Release:        0
 Summary:        openSUSE Branding of the MATE Desktop Environment
 License:        MIT
 Group:          System/GUI/Other
-Url:            http://mate-desktop.org/
+URL:            http://mate-desktop.org/
 Source1:        mate-session-branding-openSUSE-mate_defaults.conf
 Source2:        mate-session-branding.gschema.override.in
 Source3:        mate-panel-branding.gschema.override.in
@@ -53,7 +53,7 @@ This package provides the openSUSE look and feel for the MATE desktop environmen
 
 %package -n mate-control-center-branding-openSUSE
 Summary:        openSUSE Branding of mate-control-center
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/GUI/Other
 Requires:       mate-control-center = %{mate_control_center_version}
 Supplements:    packageand(mate-control-center:branding-openSUSE)
@@ -66,7 +66,7 @@ control centre.
 
 %package -n mate-desktop-gschemas-branding-openSUSE
 Summary:        openSUSE Branding of mate-desktop
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/GUI/Other
 Requires:       adwaita-icon-theme
 Requires:       mate-desktop-gschemas = %{mate_desktop_gschemas_version}
@@ -79,7 +79,7 @@ This package provides the openSUSE definition for MATE Desktop GSchemas.
 
 %package -n mate-panel-branding-openSUSE
 Summary:        openSUSE Branding of mate-panel
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/GUI/Other
 Requires:       mate-applet-softupd
 Requires:       mate-applets
@@ -95,7 +95,7 @@ This package provides the openSUSE look and feel for the MATE Panel.
 
 %package -n mate-menus-branding-openSUSE
 Summary:        openSUSE Branding of mate-menus
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/GUI/Other
 Requires:       mate-menus = %{mate_menus_version}
 Supplements:    packageand(mate-menus:branding-openSUSE)
@@ -107,7 +107,7 @@ This package provides the openSUSE definitions for menus.
 
 %package -n mate-session-manager-branding-openSUSE
 Summary:        openSUSE Branding of mate-session-manager
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/GUI/Other
 Requires:       mate-icon-theme
 Requires:       mate-session-manager = %{mate_session_manager_version}
@@ -126,9 +126,9 @@ This package provides the openSUSE look and feel for the MATE Session Manager.
 # MATE Control Center branding part.
 # We will base the shell content on upstream content:
 cp -a %{_sysconfdir}/xdg/menus/*.menu .
-%patch0 -p1
+%patch -P 0 -p1
 # MATE Menus branding part.
-%patch1 -p1
+%patch -P 1 -p1
 # MATE Session Manager branding part.
 cp -a %{SOURCE1} mate_defaults.conf
 cp -a %{SOURCE2} mate-session-branding.gschema.override.in

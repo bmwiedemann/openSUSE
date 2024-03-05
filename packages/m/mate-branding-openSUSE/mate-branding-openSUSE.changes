@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 23 11:10:33 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Nov 17 18:01:27 UTC 2022 - Mihai Moldovan <ionic@ionic.de>
 
 - Install mate-preferences-categories.menu and mate-settings.menu
