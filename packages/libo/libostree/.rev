@@ -387,4 +387,12 @@ CVE-2014-9862 boo#1201770 (forwarded request 991255 from AndreasStieger)</commen
     <comment></comment>
     <requestid>1132052</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>10a40d99496dac7c94d9644be4dd9e04</srcmd5>
+    <version>2024.4</version>
+    <time>1709660823</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1154605</requestid>
+  </revision>
 </revisionlist>

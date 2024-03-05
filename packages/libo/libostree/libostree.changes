@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Mar  2 19:23:07 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 2024.4:
+  + Support for a new root.transient flag that makes / an overlayfs
+    that is persistent across reboots but not across upgrades
+  + Expand ostree admin pin command
+  + root.transient switches to tmpfs
+  + Composefs recommended to be enabled via
+    ostree-prepare-root.conf and not the ex-integrity.composefs
+  + Finalize "deployment finalization locking" feature
+  + Add ostree admin post-copy
+  + Speed-up through reflinks
+  + improvements to system root and bootloader
+  + Bug fixes, documentation updates, and developer visible fixes
+
+-------------------------------------------------------------------
 Fri Oct 27 19:02:18 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 2023.7:

@@ -2,6 +2,7 @@
 # spec file for package libostree
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +24,7 @@
 %bcond_without     ed25519
 %bcond_with        tests
 Name:           libostree
-Version:        2023.7
+Version:        2024.4
 Release:        0
 Summary:        Git for operating system binaries
 License:        LGPL-2.0-or-later
@@ -197,6 +198,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcostree-remount
 %{_mandir}/man1/ostree*.1%{?ext_man}
 %{_mandir}/man5/ostree.repo*.5%{?ext_man}
 %{_mandir}/man1/rofiles-fuse.1%{?ext_man}
+%{_mandir}/man8/ostree-state-overlay@.service.8%{?ext_man}
 %{_bindir}/ostree
 %{_bindir}/rofiles-fuse
 %{_datadir}/bash-completion/completions/ostree
@@ -211,6 +213,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcostree-remount
 %{_unitdir}/ostree-finalize-staged-hold.service
 %{_unitdir}/ostree-finalize-staged.path
 %{_unitdir}/ostree-boot-complete.service
+%{_unitdir}/ostree-state-overlay@.service
 %dir %{_sysconfdir}/dracut.conf.d
 %config %{_sysconfdir}/dracut.conf.d/ostree.conf
 %{_datadir}/ostree/
