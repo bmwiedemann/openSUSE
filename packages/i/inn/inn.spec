@@ -103,7 +103,7 @@ Rich Salz's InterNetNews news transport system.
 %setup -n inn%{PatchVersion} -D -T -a 1
 %setup -n inn%{PatchVersion} -D -T -a 3
 sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i  %{SOURCE7} %{PATCH0}
-%patch0 -p1
+%patch -P 0 -p1
 cp -a $RPM_SOURCE_DIR/pubring.pgp .
 
 %build

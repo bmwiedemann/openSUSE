@@ -389,4 +389,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
       permission bits were given to semaphores.</comment>
     <requestid>993958</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>f1bdfab7d2e40458d083704c9ef9aa48</srcmd5>
+    <version>2.6.5</version>
+    <time>1709661094</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1155019</requestid>
+  </revision>
 </revisionlist>
