@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar  2 09:36:16 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip python39: no xarray anymore
+
+-------------------------------------------------------------------
 Mon Feb 12 12:21:36 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Enable again numba tests for python >= 3.11

@@ -17,6 +17,7 @@
 
 
 %{?sle15_python_module_pythons}
+%define skip_python39 1
 Name:           python-xarray-einstats
 Version:        0.7.0
 Release:        0
