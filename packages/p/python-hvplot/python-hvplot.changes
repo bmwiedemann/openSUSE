@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Mar  2 09:59:59 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.2
+  * Correctly fall back to all numeric Polars columns when y is not
+    specified (#1247)
+  * Compatibility with Pandas 2.2 (#1257)
+- Update to 0.9.1
+  ## Enhancements:
+  * Explorer: give more space to the plot and various UI tweaks
+    (#1197, #1198, #1199, #1225)
+  * Explorer: disable the geographic controls when geoviews is not
+    installed (#1223)
+  * Explorer: change the default plot type from line to scatter
+    (#1228)
+  * Support polars objects in the hvplot.plot entrypoint (#1219,
+    #1222)
+  ## Bug fixes:
+  * Fix ignoring hover_cols in OHLC plots (#1216)
+  * Fix considering datashaded plots with one y variable as
+    categorical (#1231)
+  * Fix displaying Panel objects returned by hvPlot with show
+    (#1230)
+- Skip python39: no xarray anymore
+
+-------------------------------------------------------------------
 Tue Nov 14 11:38:42 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - update to 0.9.0

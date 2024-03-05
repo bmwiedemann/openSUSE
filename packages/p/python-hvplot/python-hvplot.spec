@@ -1,7 +1,7 @@
 #
 # spec file for package python-hvplot
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%define skip_python39 1
 Name:           python-hvplot
-Version:        0.9.0
+Version:        0.9.2
 Release:        0
 Summary:        High-level plotting API for the PyData ecosystem built on HoloViews
 License:        BSD-3-Clause
@@ -27,9 +28,11 @@ Source0:        https://files.pythonhosted.org/packages/source/h/hvplot/hvplot-%
 # Test data. Bump the commit whenever you bump this version
 Source1:        https://github.com/pydata/xarray-data/archive/7d8290e0be9d2a8f4b4381641f20a97db6eaea3d.tar.gz#/xarray-data.tar.gz
 Source100:      python-hvplot-rpmlintrc
-BuildRequires:  %{python_module param >= 1.9}
+BuildRequires:  %{python_module param >= 1.9 with %python-param < 3}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyct >= 0.4.4}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-bokeh >= 1.0.0
@@ -39,9 +42,9 @@ Requires:       python-numpy >= 1.15
 Requires:       python-packaging
 Requires:       python-pandas
 Requires:       python-panel >= 0.11.0
-Requires:       python-param >= 1.9
+Requires:       (python-param >= 1.12 with python-param < 3)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-Pillow
 Recommends:     python-dask
 Recommends:     python-datashader >= 0.6.5
@@ -105,10 +108,10 @@ sed -i "s/import xarray as xr/import pytest; xr = pytest.importorskip('xarray')/
 sed -i "s/import hvplot.xarray/import pytest; xarray = pytest.importorskip('xarray')/" hvplot/tests/testinteractive.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
