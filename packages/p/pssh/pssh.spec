@@ -72,13 +72,7 @@ versions of ssh, scp, and rsync, as well as a parallel kill command.
 This package contains the pssh Python module.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
+%autosetup -p1
 
 %build
 python%{python_version} setup.py build

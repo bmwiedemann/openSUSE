@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 15:00:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Wed Mar 23 11:36:50 UTC 2022 - Yan Gao <ygao@suse.com>
 
 - spec: use python3_sitelib macro rather than python_sitelib
