@@ -136,6 +136,7 @@ Requires(post): libxslt-tools
 Requires(pre):  shadow
 Requires:       libtcnative-1-0 >= 1.2.38
 Requires:       logrotate
+%systemd_ordering
 BuildArch:      noarch
 Conflicts:      %{app_name}
 Provides:       group(tomcat)
@@ -221,6 +222,7 @@ Summary:        Apache jsvc wrapper for Apache Tomcat as separate service
 Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}-%{release}
 Requires:       apache-commons-daemon-jsvc
+%systemd_ordering
 Conflicts:      %{app_name}-jsvc
 
 %description jsvc
