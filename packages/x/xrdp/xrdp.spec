@@ -102,15 +102,15 @@ This package contains libraries for the JPEG2000 codec for RDP.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+%patch -P 1 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
 %if 0%{?sle_version}
-%patch1001 -p1
-%patch1002 -p1
-%patch1003 -p1
-#%patch1004 -p1
+%patch -P 1001 -p1
+%patch -P 1002 -p1
+%patch -P 1003 -p1
+#%patch -P 1004 -p1
 %endif
 
 %build

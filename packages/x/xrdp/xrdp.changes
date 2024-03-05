@@ -1,3 +1,8 @@
+-------------------------------------------------------------------
+Mon Feb 26 12:18:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
 Thu Nov 30 20:47:32 UTC 2023 - Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
 -------------------------------------------------------------------
 
