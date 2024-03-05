@@ -51,7 +51,7 @@ expression. Piped input is allowed and date restrictions are supported.
 sed -i -e 's/use inc::Module::Install;/use lib q[.];\nuse inc::Module::Install;/' Makefile.PL
 %if 0%{?suse_version} <= 1320
 # needed for <= 13.2, but breaks 'make test' in > 13.2
-%patch2
+%patch -P 2
 %endif
 rm inc/Scalar/Util.pm
 %if 0%{?suse_version} >= 1320

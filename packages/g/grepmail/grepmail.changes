@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:12:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Oct 17 12:23:01 UTC 2017 - dimstar@opensuse.org
 
 - Fix build with perl 5.26.
