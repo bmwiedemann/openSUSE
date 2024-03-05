@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 16:46:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Jan 15 07:34:20 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Fix wrong sys link target name for context.lua (Jianhua Lu) 

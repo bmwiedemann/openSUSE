@@ -4099,56 +4099,56 @@ This package is required by the package texlive-biber-bin.
     popd
 %endif
 
-%patch1  -p0 -b .configure
-%patch2  -p0 -b .xdvizilla
-%patch3  -p0 -b .arraysubs
-%patch4  -p0 -b .unicode
-%patch5  -p0 -b .texdoc
-%patch6  -p0 -b .dviutils
-%patch8  -p0 -b .psutils
-%patch11 -p0 -b .lacheck
-%patch12 -p0 -b .warns
-%patch13 -p0 -b .x11r7
-%patch17 -p0 -b .64
-%patch18 -p0 -b .a2p
-%patch19 -p0 -b .dvipng
-%patch21 -p0 -b .ppcelf
+%patch -P 1  -p0 -b .configure
+%patch -P 2  -p0 -b .xdvizilla
+%patch -P 3  -p0 -b .arraysubs
+%patch -P 4  -p0 -b .unicode
+%patch -P 5  -p0 -b .texdoc
+%patch -P 6  -p0 -b .dviutils
+%patch -P 8  -p0 -b .psutils
+%patch -P 11 -p0 -b .lacheck
+%patch -P 12 -p0 -b .warns
+%patch -P 13 -p0 -b .x11r7
+%patch -P 17 -p0 -b .64
+%patch -P 18 -p0 -b .a2p
+%patch -P 19 -p0 -b .dvipng
+%patch -P 21 -p0 -b .ppcelf
 pushd libs/luajit/LuaJIT-src/
 #Missed patch ppc and risc
-%patch106 -p1 -b .arm64
+%patch -P 106 -p1 -b .arm64
 popd
-%patch0  -p0 -b .p0
+%patch -P 0  -p0 -b .p0
 %if %{with luametatex}
 pushd ../luametatex*
-%patch50 -p0 -b .unicode
+%patch -P 50 -p0 -b .unicode
 popd
 %endif
-%patch51
+%patch -P 51
 %if %{with buildbiber}
 pushd ../biber-*/
 /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
-%patch42 -p0 -b .en
-%patch44 -p0 -b .noica
+%patch -P 42 -p0 -b .en
+%patch -P 44 -p0 -b .noica
 %if 0%{perl_versnum} < 5200
-%patch47 -p0 -b .518
+%patch -P 47 -p0 -b .518
 %endif
 rm -vf bin/biber.noica
 rm -vf t/*.fastsort
 popd
 pushd ../biblatex-biber-*/
 /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
-%patch43 -p0 -b .en
-%patch44 -p0 -b .noica
-%patch45 -p0 -b .missing
+%patch -P 43 -p0 -b .en
+%patch -P 44 -p0 -b .noica
+%patch -P 45 -p0 -b .missing
 %if 0%{perl_versnum} < 5200
-%patch47 -p0 -b .518
+%patch -P 47 -p0 -b .518
 %endif
 rm -vf bin/biber.noica
 rm -vf t/*.fastsort
 popd
 %endif
 
-%patch62 -p0 -b .kpserr
+%patch -P 62 -p0 -b .kpserr
 
     # Correct FHS paths
     paths=$(find -name cnf-to-paths.awk)
