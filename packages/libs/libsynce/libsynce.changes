@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  1 10:07:31 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Apr 19 14:33:34 UTC 2011 - tejas.guruswamy@opensuse.org
 
 - Disable hal support

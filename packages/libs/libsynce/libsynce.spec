@@ -70,8 +70,7 @@ Requires:       hal-devel
 This package contains the header files, static libraries and development documentation for %{name}. If you like to develop programs using %{name}, you will need to install %{name}-devel.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure --disable-rpath \
