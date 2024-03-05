@@ -16,6 +16,8 @@
 #
 
 
+%bcond_without  apparmor
+
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
@@ -40,7 +42,9 @@ BuildRequires:  grep
 BuildRequires:  sed
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
+%if %{with apparmor}
 Requires:       apparmor-abstractions
+%endif
 Requires(post): %fillup_prereq
 Recommends:     %{name}-lang = %{version}
 Provides:       findutils:%{_bindir}/locate
@@ -95,8 +99,10 @@ install -D -m 644 %{SOURCE6} %{buildroot}%{_unitdir}/mlocate.service
 mkdir -p %{buildroot}%{_sbindir}
 ln -s /usr/sbin/service %{buildroot}/%{_sbindir}/rcmlocate
 # apparmor
+%if %{with apparmor}
 install -D -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/apparmor.d/usr.bin.locate
 install -D -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/apparmor.d/usr.bin.updatedb
+%endif
 
 %check
 make check %{?_smp_mflags}
@@ -126,8 +132,10 @@ make check %{?_smp_mflags}
 %dir %{_localstatedir}/lib/mlocate
 %ghost %{_localstatedir}/lib/mlocate/mlocate.db
 %{_fillupdir}/*
+%if %{with apparmor}
 %dir %{_sysconfdir}/apparmor.d/
 %{_sysconfdir}/apparmor.d/*
+%endif
 %{_sbindir}/rcmlocate
 
 %files lang -f %{name}.lang

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 12:12:02 UTC 2024 - Jiri Srain <jsrain@suse.com>
+
+- add bcond for building without AppArmor support (for ALP code
+  base)
+
+-------------------------------------------------------------------
 Thu Jan 25 07:40:47 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Remove the post-install scriptlet introduced earlier. It turns
