@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:20:42 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove old specfile constructs
+
+-------------------------------------------------------------------
+Tue Feb 27 11:18:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sun Dec 20 17:06:29 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)

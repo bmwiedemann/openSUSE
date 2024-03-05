@@ -1,7 +1,7 @@
 #
 # spec file for package gup
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,10 +12,11 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define _buildshell /bin/bash
 Name:           gup
 Version:        0.3
 Release:        0
@@ -25,7 +26,6 @@ Group:          Productivity/Networking/News/Utilities
 Source:         gup.tar.gz
 Patch0:         gup.dif
 Patch1:         gup-fdleak.dif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       inn
 %if 0%{?suse_version} >= 1330
 Requires(pre):  group(news)
@@ -40,28 +40,27 @@ INN and C-News.
 %prep
 %setup -n gup
 sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{PATCH0}
-%patch0
-%patch1
+%patch -P 0
+%patch -P 1
 
 %build
 export RPM_OPT_FLAGS
 make all %{?_smp_mflags}
 
 %install
-mkdir -p $RPM_BUILD_ROOT%{_libexecdir}/news/bin
-install gup sample/{gupdate,gupadd,gupverify} $RPM_BUILD_ROOT%{_libexecdir}/news/bin/
-mkdir -p $RPM_BUILD_ROOT%{_mandir}/man1
-install -m 644 gup.1 $RPM_BUILD_ROOT%{_mandir}/man1/
+mkdir -p %{buildroot}/%{_libexecdir}/news/bin
+install gup sample/{gupdate,gupadd,gupverify} %{buildroot}/%{_libexecdir}/news/bin/
+mkdir -p %{buildroot}/%{_mandir}/man1
+install -m 644 gup.1 %{buildroot}/%{_mandir}/man1/
 var=/var/lib/news/gup
-mkdir -p $RPM_BUILD_ROOT$var/sites $RPM_BUILD_ROOT$var/default
-install -m 600 sample/config $RPM_BUILD_ROOT$var
-install -m 644 sample/{gup_headers,gupconfig,newsfeeds.{start,end}} $RPM_BUILD_ROOT$var
-install -m 644 sample/default/{exclude,groups,header,trailer} $RPM_BUILD_ROOT$var/default/
-touch $RPM_BUILD_ROOT$var/log
-chmod 600 $RPM_BUILD_ROOT$var/log
+mkdir -p %{buildroot}/$var/sites %{buildroot}/$var/default
+install -m 600 sample/config %{buildroot}/$var
+install -m 644 sample/{gup_headers,gupconfig,newsfeeds.{start,end}} %{buildroot}/$var
+install -m 644 sample/default/{exclude,groups,header,trailer} %{buildroot}/$var/default/
+touch %{buildroot}/$var/log
+chmod 600 %{buildroot}/$var/log
 
 %files
-%defattr(-,root,root)
 %doc README README.linux
 %dir %{_libexecdir}/news
 %dir %{_libexecdir}/news/bin
