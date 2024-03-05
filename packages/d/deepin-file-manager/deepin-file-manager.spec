@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-file-manager
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,9 @@ Source2:        deepin-file-polkit-installer.in
 Patch1:         fix-header-include.patch
 # PATCH-FIX-UPSTEAM gcc12.patch hillwood@opensuse.org - fix gcc 12 build
 Patch2:         gcc-12.patch
-Patch3:         harden_dde-filemanager-daemon.service.patch
+# PATCH-FIX-UPSTRAM update-taglib-interface.patch hillwood@opensuse.org - fix build on new taglib
+Patch3:         update-taglib-interface.patch
+Patch4:         harden_dde-filemanager-daemon.service.patch
 %ifarch ppc ppc64 ppc64le s390 s390x
 BuildRequires:  deepin-desktop-base
 %else
