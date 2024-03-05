@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-python-xlib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,13 +31,14 @@ Version:        0.33
 Release:        0
 Summary:        Python X11 interface
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/Python
 URL:            https://github.com/python-xlib/python-xlib
 Source:         https://files.pythonhosted.org/packages/source/p/python-xlib/python-xlib-%{version}.tar.gz
 # PATCH-FEATURE-UPSTREAM remove-mock.patch -- gh#python-xlib/python-xlib#186
 Patch0:         remove-mock.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 %if %{with test}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
@@ -67,10 +68,10 @@ library for Python programs.
 %setup -q -n python-xlib-%{version}
 dos2unix CHANGELOG.md README.rst TODO dev-requirements.txt test/*
 # patch only applies to unix endings
-%patch0 -p1
+%patch -P 0 -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %if %{with test}
 %check
@@ -79,14 +80,14 @@ dos2unix CHANGELOG.md README.rst TODO dev-requirements.txt test/*
 %else
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE
 %doc CHANGELOG.md README.rst TODO
-%{python_sitelib}/Xlib/
-%{python_sitelib}/python_xlib-*
+%{python_sitelib}/Xlib
+%{python_sitelib}/python_xlib-%{version}.dist-info
 %endif
 
 %changelog

@@ -127,4 +127,13 @@
     <comment></comment>
     <requestid>1102208</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>b4c6a83b123a26d1f2065c060f047ee7</srcmd5>
+    <version>0.33</version>
+    <time>1709660820</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject and patch macros.
+- Less globs in %files.</comment>
+    <requestid>1154495</requestid>
+  </revision>
 </revisionlist>
