@@ -2,7 +2,7 @@ diff --git a/cli/main.rs.1 b/cli/main.rs
 index 031ab07..4f3b05c 100644
 --- a/cli/main.rs.1
 +++ b/cli/main.rs
-@@ -202,15 +202,6 @@ async fn run_subcommand(flags: Flags) -> Result<i32, AnyError> {
+@@ -204,15 +204,6 @@ async fn run_subcommand(flags: Flags) -> Result<i32, AnyError> {
        let types = tsc::get_types_declaration_file_text();
        display::write_to_stdout_ignore_sigpipe(types.as_bytes())
      }),
@@ -46,15 +46,15 @@ index 72841df..1c93da1 100644
    Vendor(VendorFlags),
    Publish(PublishFlags),
  }
-@@ -760,7 +750,7 @@ impl Flags {
-         std::env::current_dir().ok()
+@@ -768,7 +768,7 @@ impl Flags {
        }
-       Bundle(_) | Completions(_) | Doc(_) | Fmt(_) | Init(_) | Install(_)
--      | Uninstall(_) | Jupyter(_) | Lsp | Lint(_) | Types | Upgrade(_)
-+      | Uninstall(_) | Jupyter(_) | Lsp | Lint(_) | Types
-       | Vendor(_) | Publish(_) => None,
+       Add(_) | Bundle(_) | Completions(_) | Doc(_) | Fmt(_) | Init(_)
+       | Install(_) | Uninstall(_) | Jupyter(_) | Lsp | Lint(_) | Types
+-      | Upgrade(_) | Vendor(_) => None,
++      | Vendor(_) => None,
      }
    }
+
 @@ -944,7 +934,6 @@ pub fn flags_from_vec(args: Vec<String>) -> clap::error::Result<Flags> {
        "test" => test_parse(&mut flags, &mut m),
        "types" => types_parse(&mut flags, &mut m),
