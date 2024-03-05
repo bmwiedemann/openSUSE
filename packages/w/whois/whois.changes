@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar  2 10:52:07 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 5.5.21:
+  * Updated the .cv and .sd TLD servers
+  * Remove 4 new gTLDs which are no longer active
+- drop whois-remove-malloc-attribute.patch
+
+-------------------------------------------------------------------
 Fri Nov 24 14:53:29 UTC 2023 - Danilo Spinella <oss@danyspin97.org>
 
 - Fix build on SLE
