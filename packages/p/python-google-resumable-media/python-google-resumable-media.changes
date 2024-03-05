@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 20:38:41 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Version update in SLE 15 SP4 and later (jsc#PED-6697)
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Jan  4 11:00:19 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.7.0

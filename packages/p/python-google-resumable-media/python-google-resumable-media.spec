@@ -16,8 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-google-resumable-media
 Version:        2.7.0
 Release:        0
