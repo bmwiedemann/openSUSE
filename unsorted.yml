@@ -2103,7 +2103,6 @@ unsorted:
   - cinnamon-theme-matcha 
   - cint-devel 
   - circuslinux 
-  - citra 
   - civetweb 
   - civetweb-devel 
   - cjs 
@@ -11152,7 +11151,7 @@ unsorted:
   - libabigail3 
   - libabiword-3_0 
   - libabiword-3_0-devel 
-  - libabsl2308_0_0-32bit 
+  - libabsl2401_0_0-32bit 
   - libabw-devel 
   - libabw-devel-doc 
   - libabw-tools 
@@ -24773,6 +24772,7 @@ unsorted:
   - python310-jmespath 
   - python310-joblib 
   - python310-josepy 
+  - python310-joserfc 
   - python310-jplephem 
   - python310-jsbeautifier 
   - python310-jschema-to-python 
@@ -25710,6 +25710,7 @@ unsorted:
   - python310-pytest-astropy 
   - python310-pytest-astropy-header 
   - python310-pytest-asyncio 
+  - python310-pytest-asyncio0.21 
   - python310-pytest-attrib 
   - python310-pytest-base-url 
   - python310-pytest-bdd 
@@ -26257,6 +26258,7 @@ unsorted:
   - python310-sqlparse 
   - python310-srcinfo 
   - python310-ssdeep 
+  - python310-sseclient 
   - python310-sshpubkeys 
   - python310-sshtunnel 
   - python310-stack-data 
@@ -28272,6 +28274,7 @@ unsorted:
   - python311-jirafs 
   - python311-joblib 
   - python311-josepy 
+  - python311-joserfc 
   - python311-jplephem 
   - python311-jsbeautifier 
   - python311-jschema-to-python 
@@ -29161,6 +29164,7 @@ unsorted:
   - python311-pytest-astropy 
   - python311-pytest-astropy-header 
   - python311-pytest-asyncio 
+  - python311-pytest-asyncio0.21 
   - python311-pytest-attrib 
   - python311-pytest-base-url 
   - python311-pytest-bdd 
@@ -29687,6 +29691,7 @@ unsorted:
   - python311-sqlparse 
   - python311-srcinfo 
   - python311-ssdeep 
+  - python311-sseclient 
   - python311-sshpubkeys 
   - python311-sshtunnel 
   - python311-stack-data 
@@ -30421,6 +30426,7 @@ unsorted:
   - python312-argparse_addons 
   - python312-args 
   - python312-arrow 
+  - python312-arviz 
   - python312-asciimatics 
   - python312-asciitree 
   - python312-asdf 
@@ -30920,6 +30926,7 @@ unsorted:
   - python312-calmjs.parse 
   - python312-calmjs.types 
   - python312-calver 
+  - python312-cangjie 
   - python312-canonicaljson 
   - python312-capturer 
   - python312-case 
@@ -31425,6 +31432,7 @@ unsorted:
   - python312-flufl.lock 
   - python312-flufl.testing 
   - python312-fluidity-sm 
+  - python312-flynt 
   - python312-folium 
   - python312-fontMath 
   - python312-fontParts 
@@ -31740,6 +31748,7 @@ unsorted:
   - python312-jmespath 
   - python312-joblib 
   - python312-josepy 
+  - python312-joserfc 
   - python312-jplephem 
   - python312-jsbeautifier 
   - python312-jschema-to-python 
@@ -32640,6 +32649,7 @@ unsorted:
   - python312-pytest-astropy 
   - python312-pytest-astropy-header 
   - python312-pytest-asyncio 
+  - python312-pytest-asyncio0.21 
   - python312-pytest-attrib 
   - python312-pytest-base-url 
   - python312-pytest-bdd 
@@ -33168,6 +33178,7 @@ unsorted:
   - python312-sqlparse 
   - python312-srcinfo 
   - python312-ssdeep 
+  - python312-sseclient 
   - python312-sshpubkeys 
   - python312-sshtunnel 
   - python312-stack-data 
@@ -33456,6 +33467,7 @@ unsorted:
   - python312-wsaccel 
   - python312-wsgi_intercept 
   - python312-wsproto 
+  - python312-wstools 
   - python312-wtf-peewee 
   - python312-wurlitzer 
   - python312-wxPython 
@@ -33915,7 +33927,6 @@ unsorted:
   - python39-argparse_addons 
   - python39-args 
   - python39-arrow 
-  - python39-arviz 
   - python39-asciimatics 
   - python39-asciitree 
   - python39-asdf 
@@ -34307,6 +34318,7 @@ unsorted:
   - python39-azure-schemaregistry 
   - python39-azure-schemaregistry-avroencoder 
   - python39-azure-schemaregistry-avroserializer 
+  - python39-azure-sdk 
   - python39-azure-search-documents 
   - python39-azure-search-nspkg 
   - python39-azure-security-attestation 
@@ -34600,7 +34612,6 @@ unsorted:
   - python39-dask-test 
   - python39-databases 
   - python39-datadiff 
-  - python39-datashader 
   - python39-dateparser 
   - python39-dateutils 
   - python39-datrie 
@@ -35096,7 +35107,6 @@ unsorted:
   - python39-hkdf 
   - python39-hl7apy 
   - python39-holidays 
-  - python39-holoviews 
   - python39-hotdoc 
   - python39-hpack 
   - python39-hsluv 
@@ -35124,7 +35134,6 @@ unsorted:
   - python39-hupper 
   - python39-husl 
   - python39-hvac 
-  - python39-hvplot 
   - python39-hyfetch 
   - python39-hyperframe 
   - python39-hyperlink 
@@ -35246,6 +35255,7 @@ unsorted:
   - python39-jmespath 
   - python39-joblib 
   - python39-josepy 
+  - python39-joserfc 
   - python39-jplephem 
   - python39-jsbeautifier 
   - python39-jschema-to-python 
@@ -36177,6 +36187,7 @@ unsorted:
   - python39-pytest-astropy 
   - python39-pytest-astropy-header 
   - python39-pytest-asyncio 
+  - python39-pytest-asyncio0.21 
   - python39-pytest-attrib 
   - python39-pytest-base-url 
   - python39-pytest-bdd 
@@ -36723,6 +36734,7 @@ unsorted:
   - python39-sqlparse 
   - python39-srcinfo 
   - python39-ssdeep 
+  - python39-sseclient 
   - python39-sshpubkeys 
   - python39-sshtunnel 
   - python39-stack-data 
@@ -37029,7 +37041,6 @@ unsorted:
   - python39-xapian 
   - python39-xapian-haystack 
   - python39-xapp 
-  - python39-xarray-einstats 
   - python39-xattr 
   - python39-xcffib 
   - python39-xdg 
@@ -50299,7 +50310,6 @@ unsorted:
   - yudit 
   - yum 
   - yum-utils 
-  - yuzu 
   - z 
   - z3 
   - z3-devel 
