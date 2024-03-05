@@ -64,9 +64,14 @@
 %bcond_without ldacBT
 %endif
 
+%ifnarch s390 s390x ppc64
 %if 0%{?suse_version} >= 1550
 %bcond_without microdns
 %bcond_without webrtc_audio_processing_1
+%else
+%bcond_with microdns
+%bcond_with webrtc_audio_processing_1
+%endif
 %else
 %bcond_with microdns
 %bcond_with webrtc_audio_processing_1
@@ -205,7 +210,7 @@ BuildRequires:  pkgconfig(zvbi-0.2)
 BuildRequires:  pkgconfig(zxing) >= 1.4.0
 %endif
 Requires(post): glib2-tools
-Requires(postun):glib2-tools
+Requires(postun): glib2-tools
 # FIXME! - this leads to unresolvables currently
 #%%define gstreamer_plugins_bad_req %%(xzgrep --text "^GST.*_REQ" %%{S:0} | sort -u | sed 's/GST_REQ=/gstreamer >= /;s/GSTPB_REQ=/gstreamer-plugins-base >= /' | tr '\\n' ' ')
 #Requires:       %%gstreamer_plugins_bad_req
