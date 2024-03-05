@@ -18,7 +18,7 @@
 
 %define uclname OTPClient
 Name:           otpclient
-Version:        3.5.0
+Version:        3.5.1
 Release:        0
 Summary:        Simple GTK+ client for managing TOTP and HOTP
 License:        GPL-3.0-or-later
@@ -71,6 +71,8 @@ HMAC-Based One-Time Passwords (HOTP).
 %{_bindir}/%{name}-cli
 
 %{_datadir}/%{name}/otpclient.ui
+%{_datadir}/%{name}/add_popover.ui
+%{_datadir}/%{name}/settings_popover.ui
 %{_datadir}/%{name}/shortcuts.ui
 %{_datadir}/applications/com.github.paolostivanin.%{uclname}.desktop
 %{_datadir}/metainfo/com.github.paolostivanin.%{uclname}.appdata.xml

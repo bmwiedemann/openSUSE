@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  5 09:57:03 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.5.1:
+  * NEW: add back buttons to the various popover menus
+  * FIX: split popovers into their own UI files
+  * FIX: remove upgrade message when upgrading from a version older than 2.6.0 
+
+-------------------------------------------------------------------
 Fri Mar  1 14:51:17 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.5.0:

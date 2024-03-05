@@ -394,4 +394,16 @@
 </comment>
     <requestid>1154079</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>346f0ebe3e1f81624febf3bd8586e6b8</srcmd5>
+    <version>3.5.1</version>
+    <time>1709661117</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.5.1:
+  * NEW: add back buttons to the various popover menus
+  * FIX: split popovers into their own UI files
+  * FIX: remove upgrade message when upgrading from a version older than 2.6.0 
+</comment>
+    <requestid>1155064</requestid>
+  </revision>
 </revisionlist>
