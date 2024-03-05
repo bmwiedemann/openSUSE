@@ -34,4 +34,12 @@
 - Initial package (0.76)</comment>
     <requestid>1131702</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a22aef373335f0264aab9878cc8ae0f5</srcmd5>
+    <version>1.0.1</version>
+    <time>1709661139</time>
+    <user>anag+factory</user>
+    <comment>- Skip broken tests with python 3.12</comment>
+    <requestid>1155196</requestid>
+  </revision>
 </revisionlist>

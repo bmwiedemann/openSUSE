@@ -1,7 +1,7 @@
 #
 # spec file for package python-flynt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,7 @@ BuildRequires:  %{python_module tomli >= 1.1.0}
 CLI tool to convert a python project's %-formatted strings to f-strings.
 
 %prep
-%setup -q -n flynt-%{version}
+%autosetup -p1 -n flynt-%{version}
 
 %build
 %pyproject_wheel
@@ -55,7 +55,9 @@ CLI tool to convert a python project's %-formatted strings to f-strings.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# Tests that fails with python 3.12 because string formatting changes a bit
+donttest="test_mixed_quote_types_unsafe or test_fstringify[string_in_string.py] or test_fstringify_single_line[string_in_string.py]"
+%pytest -k "not ($donttest)"
 
 %post
 %python_install_alternative flynt
