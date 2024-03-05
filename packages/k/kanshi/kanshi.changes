@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 04:17:18 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to v1.5.1:
+  * Forget current profile on match_and_apply failure
+
+-------------------------------------------------------------------
 Wed Jan 17 09:14:04 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to v.1.5.0:

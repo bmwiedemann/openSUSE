@@ -17,13 +17,13 @@
 
 
 Name:           kanshi
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Dynamic display configuration
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://git.sr.ht/~emersion/kanshi
-Source:         %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://git.sr.ht/~emersion/kanshi/refs/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  meson
 BuildRequires:  ninja
@@ -35,7 +35,7 @@ kanshi allows you to define output profiles that are automatically enabled
 and disabled on hotplug.
 
 %prep
-%setup -q -n kanshi-v%{version}
+%autosetup -p1
 
 %build
 # Disabled because libvarlink is not available in Factory
