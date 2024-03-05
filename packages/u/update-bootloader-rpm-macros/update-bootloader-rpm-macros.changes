@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  4 07:53:38 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Remove coreutils from the %update_bootloader_requires (bsc#1218241)
+- Make mkdir optional if it is not available, this is non-fatal because that
+  generally indicates update-bootloader can be ignored due to missing coreutils 
+
+-------------------------------------------------------------------
 Tue Dec 12 09:54:44 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - add Requires(post): coreutils to the macro %update_bootloader_requires

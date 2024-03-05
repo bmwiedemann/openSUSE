@@ -1,13 +1,13 @@
-%update_bootloader_requires Requires(post): coreutils
+%update_bootloader_requires %nil
 
 %update_bootloader_refresh_post() \
-mkdir -p %{_rundir}/update-bootloader/ \
-touch %{_rundir}/update-bootloader/refresh \
+! command -v mkdir >/dev/null || mkdir -p %{_rundir}/update-bootloader \
+[ ! -d %{_rundir}/update-bootloader ] || > %{_rundir}/update-bootloader/refresh \
 %nil
 
 %update_bootloader_reinit_post() \
-mkdir -p %{_rundir}/update-bootloader/ \
-touch %{_rundir}/update-bootloader/reinit \
+! command -v mkdir >/dev/null || mkdir -p %{_rundir}/update-bootloader \
+[ ! -d %{_rundir}/update-bootloader ] || > %{_rundir}/update-bootloader/reinit \
 %nil
 
 %update_bootloader_check_type_refresh_post() \
@@ -17,8 +17,8 @@ loader_type=`sed -n \\\
 2>/dev/null || :` \
 for bl in %{?*}; do \
   if test "x${bl}" = "x$loader_type" ; then \
-    mkdir -p %{_rundir}/update-bootloader/ \
-    touch %{_rundir}/update-bootloader/refresh \
+    ! command -v mkdir >/dev/null || mkdir -p %{_rundir}/update-bootloader \
+    [ ! -d %{_rundir}/update-bootloader ] || > %{_rundir}/update-bootloader/refresh \
     break \
   fi \
 done \
@@ -31,8 +31,8 @@ loader_type=`sed -n \\\
 2>/dev/null || :` \
 for bl in %{?*}; do \
   if test "x${bl}" = "x$loader_type" ; then \
-    mkdir -p %{_rundir}/update-bootloader/ \
-    touch %{_rundir}/update-bootloader/reinit \
+    ! command -v mkdir >/dev/null || mkdir -p %{_rundir}/update-bootloader \
+    [ ! -d %{_rundir}/update-bootloader ] || > %{_rundir}/update-bootloader/reinit \
     break \
   fi \
 done \
