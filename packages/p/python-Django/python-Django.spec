@@ -24,7 +24,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-Django
 # We want support LTS versions of Django -  numbered 2.2 -> 3.2 -> 4.2 etc
-Version:        4.2.10
+Version:        4.2.11
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
@@ -37,8 +37,6 @@ Source99:       python-Django-rpmlintrc
 Patch0:         sanitize_address.patch
 # PATCH-FIX-OPENSUSE: ignore minor failure on Python 3.12
 Patch1:         dirty-hack-remove-assert.patch
-# PATCH-FIX-UPSTREAM: python3122.patch gh#django/django#17843
-Patch2:         python3122.patch
 BuildRequires:  %{python_module Jinja2 >= 2.9.2}
 BuildRequires:  %{python_module Pillow >= 6.2.0}
 BuildRequires:  %{python_module PyYAML}
