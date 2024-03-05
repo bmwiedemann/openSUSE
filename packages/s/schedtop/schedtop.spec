@@ -45,9 +45,7 @@ the largest stat, or by name.  Stats can be included or excluded based on
 reg-ex pattern matching.
 
 %prep
-%setup -q
-%patch0
-%patch1
+%autosetup -p0
 
 %build
 make %{?_smp_mflags} CXXFLAGS="%{optflags}"
