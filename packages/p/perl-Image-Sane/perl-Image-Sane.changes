@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  4 13:12:16 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Aug  8 15:09:54 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add Image-Sane-5-Replace-deprecated-given-and-when-operators.patch:
