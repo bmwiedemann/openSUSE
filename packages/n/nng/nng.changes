@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Mar  3 09:59:52 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.3
+  * Improved Mbed TLS configuration.
+  * New NNG_ENABLE_IPV6 option to disable IPv6.
+  * Fix for test failures when system does not support IPv6.
+  * Compiler warning fixes.
+  * Fix for various documentation formatting bugs.
+- Update to version 1.7.2
+  * New NNG_ENABLE_COMPAT (defaults to ON) can be disabled to
+    remove compatibility support for legacy libnanomsg.
+  * Better detection and handling of Mbed TLS - especially
+    version 3.0 and later.
+  * Fixed some compilation warnings.
+
+-------------------------------------------------------------------
 Sun Jan 28 17:17:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.1:
