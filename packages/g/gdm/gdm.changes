@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  4 01:24:06 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update gdm-xvnc-start-session-failed.patch: Following the upstream
+  final solution(bsc#1219205 glgo#GNOME/gdm#909).
+
+-------------------------------------------------------------------
 Thu Feb 22 01:17:18 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add gdm-xvnc-start-session-failed.patch: None seat0 session runs

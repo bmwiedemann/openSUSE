@@ -1,16 +1,33 @@
+From f984069418485191fb8fee16c9f202ac2b717e41 Mon Sep 17 00:00:00 2001
+From: Joan Torres <joan.torres@suse.com>
+Date: Fri, 1 Mar 2024 12:07:38 +0100
+Subject: [PATCH] session: Reuse the VT when on XDMCP
+
+XDMCP is running when session_type is not wayland and is not on any
+seat_id.
+
+Consider this to keep using DISPLAY_MODE_REUSE_VT on XDMCP (keep using the
+same Xorg/Xvnc server), otherwise, the vncserver would be closed.
+---
+ daemon/gdm-session.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
 diff --git a/daemon/gdm-session.c b/daemon/gdm-session.c
-index d6c39c2..52d9718 100644
+index 09b6ce52e..a4c4b2dcf 100644
 --- a/daemon/gdm-session.c
 +++ b/daemon/gdm-session.c
-@@ -3431,8 +3431,9 @@ gdm_session_get_display_mode (GdmSession *self)
+@@ -3648,6 +3648,11 @@ gdm_session_get_display_mode (GdmSession *self)
                   self->is_program_session? "yes" : "no",
                   self->display_seat_id);
  
--        if (g_strcmp0 (self->display_seat_id, "seat0") != 0) {
--                return GDM_SESSION_DISPLAY_MODE_LOGIND_MANAGED;
-+        if (g_strcmp0 (self->display_seat_id?: "", "") == 0
-+            && g_strcmp0 (self->session_type?: "", "") == 0) {
++        if (self->display_seat_id == NULL &&
++            g_strcmp0 (self->session_type, "wayland") != 0) {
 +                return GDM_SESSION_DISPLAY_MODE_REUSE_VT;
++        }
++
+         if (g_strcmp0 (self->display_seat_id, "seat0") != 0) {
+                 return GDM_SESSION_DISPLAY_MODE_LOGIND_MANAGED;
          }
- 
- #ifdef ENABLE_USER_DISPLAY_SERVER
+-- 
+GitLab
+
