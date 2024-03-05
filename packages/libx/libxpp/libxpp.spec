@@ -68,6 +68,14 @@ Header and development files for libxpp.
 %setup -q -n libxpp-0.2.0+git%{commit}
 
 %build
+# include/xpp is a symlink to -> .
+# this doesn't go well with the `debugedit` tool that determines source files.
+# The -debugsource package will be incomplete and confusing.
+# work around this at the moment by moving the symlink out of the way.
+rm include/xpp
+mkdir xpp
+mv include/* xpp
+mv xpp include
 scons libtype=shared use-system-pkgs=1
 
 %install

@@ -23,4 +23,12 @@
   * Pixmap: support creating Pixmap from in-memory bitmap data</comment>
     <requestid>1147059</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4af3f347b27c9d3da2e9ddc084240d4e</srcmd5>
+    <version>0.2</version>
+    <time>1709661138</time>
+    <user>anag+factory</user>
+    <comment>- fix -debugsource package contents</comment>
+    <requestid>1155199</requestid>
+  </revision>
 </revisionlist>
