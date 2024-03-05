@@ -22,17 +22,19 @@
 %global pythons python311
 %endif
 Name:           virtme
-Version:        1.18
+Version:        1.22
 Release:        0
 Summary:        Tools for virtualize the running distro or a rootfs
 License:        GPL-2.0-only
 Group:          Development/Tools/Other
 URL:            https://github.com/arighi/virtme-ng
-Source0:        https://github.com/arighi/virtme-ng/archive/v%{version}.tar.gz#/%{name}-ng-%{version}.tar.gz
+Source0:        %{name}-ng-%{version}.tar.xz
 BuildRequires:  %{pythons}-argcomplete
+BuildRequires:  %{pythons}-requests
 BuildRequires:  %{pythons}-setuptools
 BuildRequires:  python-rpm-macros
 Requires:       %{pythons}-argcomplete
+Requires:       %{pythons}-requests
 Requires:       %{pythons}-setuptools
 Requires:       busybox-static
 Requires:       qemu

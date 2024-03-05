@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Mar  4 12:25:43 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.22:
+  * Fix potential sudo errors (in openSUSE, Fedora, CachyOS)
+  * Propagate /proc/sys/fs/nr_open from host to guest
+  * More robust parsing of upstream kernel versions
+  * Small command help improvements
+- Update to 1.21:
+  * When running in script mode do not hang in case of kernel panic,
+    but return the special error code 255 (this allows to automate
+    catching kernel panics)
+  * Redirect kernel log to stderr on the host when running in interactive
+    mode: this allows to easily save the kernel log to a file (or pipe
+    it to another tool), simply by runing a vng -vr 2>/tmp/kernel.log
+  * vng --dump can now generate a memory dump compatible with drgn
+  * It is now possible to use virtiofsd with a btrfs root filesystem
+    on the host (e.g., default openSUSE setup)
+  * It is not possible to to use the microvm architecture with kernels
+    that don't have built-in virtio-pci / virtio-mmio (e.g., stock
+    openSUSE Tumbleweed kernel)
+- Update to 1.20:
+  * The return code of a command executed in the vng guest is now
+    transparently channeled to the host: this, together with
+    stdin/stdout/stderr redirection, gives the complete illusion to
+    run the command in the guest as if it was executed on the host
+    and it can help to easily integrate vng with other CI tools/scripts
+  * NUMA support: it is now possible to create multiple NUMA nodes,
+    and assign CPUs to them, inside a vng guest,
+    using the --numa option.
+  * new --quiet option to override --verbose
+  * new --disable-kvm option to explicitly disable hardware
+    virtualization (KVM)
+  * lockdep is now disabled by default during the kernel build
+- Update to 1.19:
+  * The most noticeable change is definitely the support for running
+    virtme-ng inside Docker containers. This opens the possibility for
+    many other projects to use virtme-ng to potentially pick any
+    arbitrary kernel to run their tests inside their Docker instances.
+  * The other interesting change (this one only for Ubuntu users) is
+    the --root-release argument (used together with --root) that allows
+    bootstrapping a rootfs from scratch, selecting a specific Ubuntu
+    release. The rootfs will be created from the latest Ubuntu cloud
+    image of the target release.
+- Add dependency on `requests`
+- Add _service file:
+  They use git submodule to get virtme_ng_init.
+
+-------------------------------------------------------------------
 Fri Feb 23 13:04:18 UTC 2024 - Marcos de Souza <mpdesouza@suse.com>
 
 - Fix python version checking
