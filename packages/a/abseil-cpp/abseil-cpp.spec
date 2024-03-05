@@ -16,15 +16,18 @@
 #
 
 
-%define lname	libabsl2308_0_0
+%define lname	libabsl2401_0_0
 Name:           abseil-cpp
-Version:        20230802.1
+Version:        20240116.1
 Release:        0
 Summary:        C++11 libraries which augment the C++ stdlib
 License:        Apache-2.0
 URL:            https://abseil.io/
-Source0:        https://github.com/abseil/abseil-cpp/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/abseil/abseil-cpp/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+BuildRequires:  cmake
+BuildRequires:  fdupes
+BuildRequires:  pkgconfig
 %if 0%{?suse_version} && 0%{?suse_version} < 1500
 BuildRequires:  gcc7
 BuildRequires:  gcc7-c++
@@ -32,9 +35,6 @@ BuildRequires:  gcc7-c++
 BuildRequires:  gcc >= 7
 BuildRequires:  gcc-c++ >= 7
 %endif
-BuildRequires:  cmake
-BuildRequires:  fdupes
-BuildRequires:  pkgconfig
 # PATCH-FIX-OPENSUSE options-{old,cxx17}.patch Ensure ABI stability regardless of compiler options
 %if 0%{?suse_version} && 0%{?suse_version} < 1550
 Patch0:         options-old.patch
@@ -82,14 +82,14 @@ export CXX="g++-7"
 %cmake_install
 %fdupes %{buildroot}/%{_prefix}
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %files -n %{lname}
 %license LICENSE
 %{_libdir}/libabsl_*.so.*
 
 %files devel
+%license LICENSE
 %doc README.md
 %{_includedir}/absl
 %{_libdir}/cmake/absl

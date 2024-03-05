@@ -3,10 +3,10 @@ to avoid mysterious linker errors when using wrong C++ version in compiler.
 This version of patch is for new systems (Tumbleweed) where Abseil is built with C++17 support.
 For more information, see “notice for package managers” in options.h
 
-Index: abseil-cpp-20230125.2/absl/base/options.h
+Index: abseil-cpp-20240116.1/absl/base/options.h
 ===================================================================
---- abseil-cpp-20230125.2.orig/absl/base/options.h
-+++ abseil-cpp-20230125.2/absl/base/options.h
+--- abseil-cpp-20240116.1.orig/absl/base/options.h
++++ abseil-cpp-20240116.1/absl/base/options.h
 @@ -94,7 +94,7 @@
  // User code should not inspect this macro.  To check in the preprocessor if
  // absl::any is a typedef of std::any, use the feature macro ABSL_USES_STD_ANY.
@@ -41,5 +41,5 @@ Index: abseil-cpp-20230125.2/absl/base/options.h
 -#define ABSL_OPTION_USE_STD_VARIANT 2
 +#define ABSL_OPTION_USE_STD_VARIANT 1
  
- 
- // ABSL_OPTION_USE_INLINE_NAMESPACE
+ // ABSL_OPTION_USE_STD_ORDERING
+ //

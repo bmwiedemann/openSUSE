@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Mar  3 06:35:57 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 20240116.1:
+  * Add absl::NoDestructor<T> to simplify defining static types
+    that do not need to be destructed upon program exit.
+  * Add configurable verbose logging (also known as VLOG).
+  * Added absl::Overload(), which returns a functor that provides
+    overloads based on the functors passed to it. Note that this
+    functionality requires C++17 or newer.
+  * Breaking Change: AbslHashValue() no longer accepts C-style
+    arrays as a parameter, caller need to wrap C-string literals in
+    absl::string_view.
+  * Breaking Change: absl::weak_equality and absl::strong_equality
+    have been removed. The corresponding std types were removed
+    before C++20 was finalized
+
+-------------------------------------------------------------------
 Fri Jan 19 15:53:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - fix build for non-SUSE distributions
