@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar  5 01:56:10 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.13.0:
+  * Drop Python 2.7, 3.5 and 3.6 support. Minimum required version now is
+    Python 3.7.
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Mon Oct 17 15:53:55 UTC 2022 - pgajdos@suse.com
 
 - python-six is not required

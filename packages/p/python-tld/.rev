@@ -182,4 +182,16 @@ pypi works again now (at least for me)</comment>
     <comment></comment>
     <requestid>1029738</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a8a037eb0467f4ae96d560cef9209957</srcmd5>
+    <version>0.13</version>
+    <time>1709661047</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.13.0:
+  * Drop Python 2.7, 3.5 and 3.6 support. Minimum required version now is
+    Python 3.7.
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1154937</requestid>
+  </revision>
 </revisionlist>
