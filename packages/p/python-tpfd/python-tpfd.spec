@@ -1,7 +1,7 @@
 #
 # spec file for package python-tpfd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tpfd
 Version:        0.2.4
 Release:        0
 Summary:        Text Parsing Function Dispatcher
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/erinxocon/tpfd
 Source:         https://github.com/erinxocon/tpfd/archive/v%{version}.tar.gz#/tpfd-%{version}.tar.gz
 Patch0:         drop-test-data-installation.patch
 BuildRequires:  %{python_module parse}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-parse
@@ -45,14 +45,13 @@ the function will be run with a set of keyword arguments you've specified passed
 Great for parsing logs and executing macros on what it finds!
 
 %prep
-%setup -q -n tpfd-%{version}
-%patch0 -p1
+%autosetup -p1 -n tpfd-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -64,6 +63,7 @@ $python test_parse.py
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/tpfd
+%{python_sitelib}/tpfd-%{version}.dist-info
 
 %changelog
