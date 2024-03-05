@@ -206,4 +206,14 @@
     <comment>- Update to version 1.26.1.</comment>
     <requestid>1087302</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>c4ea2cd91fd345750f6af96ea00eb621</srcmd5>
+    <version>1.26.1</version>
+    <time>1709661137</time>
+    <user>anag+factory</user>
+    <comment>- CVE-2023-52138: 
+  Add patch: engrampa-1.26.1-use-unar-instead-of-cpio-for-CPIO-archives.patch, 
+  Use unar instead of cpio for CPIO archives (upstream commit 8cd485a5). (forwarded request 1155200 from hillwood)</comment>
+    <requestid>1155201</requestid>
+  </revision>
 </revisionlist>

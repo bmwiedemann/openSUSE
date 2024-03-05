@@ -1,7 +1,7 @@
 #
 # spec file for package engrampa
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM engrampa-1.26.1-add-7zip-support.patch -- Add new 7-zip (7zz and 7zzs) project support (commit 6f49d2c7).
 Patch0:         engrampa-1.26.1-add-7zip-support.patch
+# PATCH-FIX-UPSTREAM engrampa-1.26.1-use-unar-instead-of-cpio-for-CPIO-archives.patch -- CVE-2023-52138: Use unar instead of cpio for CPIO archives (commit 8cd485a5)
+Patch1:         engrampa-1.26.1-use-unar-instead-of-cpio-for-CPIO-archives.patch
 BuildRequires:  caja >= %{_version}
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  mate-common >= %{_version}
