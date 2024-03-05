@@ -37,9 +37,7 @@ It recognizes a few programming languages for syntax highlighting.
 The function keys are reminiscient of pico's choices.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 %configure
