@@ -1,7 +1,7 @@
 #
 # spec file for package emacs-libgit2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Patch2:         0002-Add-install-targets-for-libgit-and-libegit2.patch
 # PATCH-FEATURE-UPSTREAM Don't rebuild libgit even if it already has been build PR 126
 Patch3:         0003-Don-t-mark-libgit2-target-as-phony-don-t-rebuild-it-.patch
 BuildRequires:  cmake
+BuildRequires:  emacs-devel
 BuildRequires:  emacs-nox
 BuildRequires:  gcc-c++
 BuildRequires:  make

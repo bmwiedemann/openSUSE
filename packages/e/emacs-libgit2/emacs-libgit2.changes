@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 21:20:39 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Depend on emacs-devel to make sure Emacs packaging macros are installed when not building with emacs-eln
+
+-------------------------------------------------------------------
 Fri Oct 20 15:18:26 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Initial packaging for openSUSE
