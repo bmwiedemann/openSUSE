@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Mar  4 14:55:53 UTC 2024 - Ignaz Forster <iforster@suse.com>
+
+- Version 4.6.0
+  - tukit / t-u: Implement support for systemd soft-reboot, but
+    needs package manager support (provided by zypp-boot-plugin on
+    openSUSE) to determine which kind of reboot is required; the
+    minimally required reboot method (soft-reboot, kexec, full
+    reboot) will be used automatically if enabled (see tukit.conf).
+    This deprecates the "kexec" reboot method in favor of automatic
+    selection.
+  - tukit: Determine D-Bus availability via system socket instead
+    of brute force
+  - tukit: Don't ignore return status of snapper - plugins can
+    return an error code now where tukit has to fail [gh##118] /
+    [poo#127169]
+  - tukit: Remove BTRFS dependencies in snapper backend, user
+    snapper for for everything directly. In theory this should
+    support further file systems such as bcachefs if they follow
+    the same layout (untested).
+  - t-u: Add safety net before deleting overlays [boo#1217416]
+  - t-u: Remove telemetry support, the required packages haven't
+    been in the repository for quite some time as they were
+    abandoned upstream.
+  - doc: Document option to use names in BINDDIRS array
+  - doc: Mention tukit.conf in t-u man page
+  - doc: Link Reboot.hpp as an officially supported API on the
+    main page
+  - Code cleanup
+
+-------------------------------------------------------------------
 Thu Jan 18 16:19:41 UTC 2024 - Ignaz Forster <iforster@suse.com>
 
 - Use "up" instead of "dup" by default on ALP [bsc#1218861]
