@@ -1,7 +1,7 @@
 #
 # spec file for package python-wptools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define pyname wptools
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-wptools
 Version:        0.4.17
 Release:        0
@@ -27,7 +26,9 @@ URL:            https://github.com/siznax/wptools/
 Source:         https://files.pythonhosted.org/packages/source/w/wptools/%{pyname}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM python-wptools-avoid-reading-readme.patch badshah400@gmail.com -- README.rst contains numerous spurious characters that are not readable in ascii. Skip reading this file in setup.py and manually insert a long description text instead
 Patch0:         python-wptools-avoid-reading-readme.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-certifi >= 2017.7.27.1
@@ -51,15 +52,14 @@ Features:
 * get random info
 
 %prep
-%setup -q -n wptools-%{version}
-%patch0 -p1
+%autosetup -p1 -n wptools-%{version}
 sed -E -i "1{/^#!\/usr\/bin.*python/d}" scripts/wptool.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/wptool
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -73,6 +73,8 @@ sed -E -i "1{/^#!\/usr\/bin.*python/d}" scripts/wptool.py
 %license LICENSE
 %doc HISTORY.rst README.rst
 %python_alternative %{_bindir}/wptool
-%{python_sitelib}/*
+%{python_sitelib}/scripts
+%{python_sitelib}/wptools
+%{python_sitelib}/wptools-%{version}.dist-info
 
 %changelog
