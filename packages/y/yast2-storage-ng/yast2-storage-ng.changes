@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  4 14:36:58 UTC 2024 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- [Proposal] Apply mandatory SpaceMaker actions in all the affected
+  disks (gh#yast/yast-storage-ng#1372).
+- [Proposal] Make it possible to specify that certain volumes
+  should reuse given existing block devices.
+- 5.0.7
+
+-------------------------------------------------------------------
 Wed Feb 14 09:11:06 UTC 2024 - Michal Filka <mfilka@suse.com>
 
 - jsc#PED-6407
