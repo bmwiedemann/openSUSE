@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 04 14:10:36 UTC 2024 - dfaggioli@suse.com
+
+- Fix bsc#1220799. Amended commit:
+  * [openSUSE]: Increase default phys bits to 42, if host supports that
+    (bsc#1205978, bsc#1219977, bsc#1220799)
+
+-------------------------------------------------------------------
 Thu Feb 29 17:49:03 UTC 2024 - dfaggioli@suse.com
 
 - Backports and bugfixes:

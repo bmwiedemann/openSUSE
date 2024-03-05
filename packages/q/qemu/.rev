@@ -3785,4 +3785,15 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1153541</requestid>
   </revision>
+  <revision rev="269" vrev="4">
+    <srcmd5>6074b0fc2ba20433028ede9666344b5f</srcmd5>
+    <version>8.2.1</version>
+    <time>1709660847</time>
+    <user>anag+factory</user>
+    <comment>- Fix bsc#1220799. Amended commit:
+  * [openSUSE]: Increase default phys bits to 42, if host supports that
+    (bsc#1205978, bsc#1219977, bsc#1220799)
+</comment>
+    <requestid>1154847</requestid>
+  </revision>
 </revisionlist>
