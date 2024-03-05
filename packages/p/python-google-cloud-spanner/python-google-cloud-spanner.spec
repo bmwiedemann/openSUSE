@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-google-cloud-spanner
 #
 # Copyright (c) 2024 SUSE LLC
 #
