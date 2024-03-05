@@ -1,7 +1,7 @@
 #
 # spec file for package trojan
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           trojan
 Version:        1.16.0
 Release:        0
@@ -25,11 +26,11 @@ URL:            https://github.com/trojan-gfw/trojan
 Source0:        https://github.com/trojan-gfw/trojan/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig(openssl)
-BuildRequires:  pkgconfig(libmariadb)
 BuildRequires:  libboost_program_options-devel-impl >= 1.66.0
 BuildRequires:  libboost_system-devel-impl >= 1.66.0
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(libmariadb)
+BuildRequires:  pkgconfig(openssl)
 %{?systemd_ordering}
 
 %description
@@ -47,7 +48,11 @@ are the GreatER Fire; we ship Trojan Horses.
 %setup -q -n %{name}-%{version}
 
 %build
-%cmake
+%define build_args %{nil}
+%if 0%{?suse_version} < 1600
+%define build_args -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name}
+%endif
+%cmake %{build_args}
 %cmake_build
 
 %install
@@ -73,7 +78,7 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %license LICENSE
 %dir %{_sysconfdir}/%{name}
 %config %{_sysconfdir}/%{name}/config.json
-%{_datadir}/doc/%{name}
+%{_docdir}/%{name}
 %{_bindir}/%{name}
 %{_sbindir}/rc%{name}
 %{_unitdir}/*.service
