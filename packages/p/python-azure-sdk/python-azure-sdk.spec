@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-sdk
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,18 +28,21 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
 BuildRequires:  python-rpm-macros
-Requires:       python-adal
 Requires:       python-applicationinsights
 Requires:       python-azure-agrifood-farming
 Requires:       python-azure-ai-anomalydetector
+Requires:       python-azure-ai-contentsafety
 Requires:       python-azure-ai-formrecognizer
 Requires:       python-azure-ai-language-conversations
 Requires:       python-azure-ai-language-questionanswering
 Requires:       python-azure-ai-metricsadvisor
+Requires:       python-azure-ai-ml
 Requires:       python-azure-ai-nspkg
 Requires:       python-azure-ai-textanalytics
 Requires:       python-azure-ai-translation-document
+Requires:       python-azure-ai-translation-text
 Requires:       python-azure-appconfiguration
+Requires:       python-azure-appconfiguration-provider
 Requires:       python-azure-applicationinsights
 Requires:       python-azure-batch
 Requires:       python-azure-cognitiveservices-anomalydetector
@@ -70,30 +73,41 @@ Requires:       python-azure-cognitiveservices-vision-face
 Requires:       python-azure-cognitiveservices-vision-nspkg
 Requires:       python-azure-common
 Requires:       python-azure-communication-administration
+Requires:       python-azure-communication-callautomation
 Requires:       python-azure-communication-chat
 Requires:       python-azure-communication-email
 Requires:       python-azure-communication-identity
+Requires:       python-azure-communication-jobrouter
 Requires:       python-azure-communication-networktraversal
 Requires:       python-azure-communication-nspkg
 Requires:       python-azure-communication-phonenumbers
+Requires:       python-azure-communication-rooms
 Requires:       python-azure-communication-sms
 Requires:       python-azure-confidentialledger
 Requires:       python-azure-containerregistry
 Requires:       python-azure-core
+Requires:       python-azure-core-experimental
 Requires:       python-azure-core-tracing-opencensus
 Requires:       python-azure-core-tracing-opentelemetry
 Requires:       python-azure-cosmos
 Requires:       python-azure-data-nspkg
 Requires:       python-azure-data-tables
 Requires:       python-azure-datalake-store
+Requires:       python-azure-defender-easm
+Requires:       python-azure-developer-devcenter
+Requires:       python-azure-developer-loadtesting
+Requires:       python-azure-devops
 Requires:       python-azure-digitaltwins-core
 Requires:       python-azure-eventgrid
 Requires:       python-azure-eventhub
 Requires:       python-azure-eventhub-checkpointstoreblob
 Requires:       python-azure-eventhub-checkpointstoreblob-aio
-Requires:       python-azure-functions-devops-build
 Requires:       python-azure-graphrbac
+Requires:       python-azure-healthinsights-cancerprofiling
+Requires:       python-azure-healthinsights-clinicalmatching
 Requires:       python-azure-identity
+Requires:       python-azure-identity-broker
+Requires:       python-azure-iot-deviceprovisioning
 Requires:       python-azure-iot-deviceupdate
 Requires:       python-azure-iot-nspkg
 Requires:       python-azure-keyvault
@@ -103,7 +117,10 @@ Requires:       python-azure-keyvault-keys
 Requires:       python-azure-keyvault-nspkg
 Requires:       python-azure-keyvault-secrets
 Requires:       python-azure-loganalytics
+Requires:       python-azure-maps-render
+Requires:       python-azure-maps-route
 Requires:       python-azure-media-videoanalyzer-edge
+Requires:       python-azure-messaging-webpubsubclient
 Requires:       python-azure-messaging-webpubsubservice
 Requires:       python-azure-mgmt
 Requires:       python-azure-mgmt-appcontainers
@@ -116,6 +133,7 @@ Requires:       python-azure-mgmt-workloads
 Requires:       python-azure-mixedreality-authentication
 Requires:       python-azure-monitor
 Requires:       python-azure-monitor-ingestion
+Requires:       python-azure-monitor-opentelemetry-exporter
 Requires:       python-azure-monitor-query
 Requires:       python-azure-multiapi-storage
 Requires:       python-azure-nspkg
@@ -123,7 +141,9 @@ Requires:       python-azure-purview-account
 Requires:       python-azure-purview-administration
 Requires:       python-azure-purview-catalog
 Requires:       python-azure-purview-scanning
+Requires:       python-azure-purview-sharing
 Requires:       python-azure-schemaregistry
+Requires:       python-azure-schemaregistry-avroencoder
 Requires:       python-azure-schemaregistry-avroserializer
 Requires:       python-azure-search-documents
 Requires:       python-azure-search-nspkg
@@ -149,9 +169,6 @@ Requires:       python-azure-template
 Requires:       python-msal
 Requires:       python-msal-extensions
 Requires:       python-msrest
-Requires:       python-msrestazure
-Requires:       python-pydocumentdb
-Requires:       python-uamqp
 BuildArch:      noarch
 %python_subpackages
 

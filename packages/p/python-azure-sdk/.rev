@@ -140,4 +140,40 @@
     <comment></comment>
     <requestid>1007256</requestid>
   </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>c5837baace1a8c29324ad92c051476d9</srcmd5>
+    <version>4.0.0</version>
+    <time>1709660998</time>
+    <user>anag+factory</user>
+    <comment>- Add additional packages from the Azure SDK to Requires
+  + python-azure-ai-contentsafety
+  + python-azure-ai-ml
+  + python-azure-ai-translation-text
+  + python-azure-appconfiguration-provider
+  + python-azure-communication-callautomation
+  + python-azure-communication-jobrouter
+  + python-azure-communication-rooms
+  + python-azure-core-experimental
+  + python-azure-defender-easm
+  + python-azure-developer-devcenter
+  + python-azure-developer-loadtesting
+  + python-azure-devops
+  + python-azure-healthinsights-cancerprofiling
+  + python-azure-healthinsights-clinicalmatching
+  + python-azure-identity-broker
+  + python-azure-iot-deviceprovisioning
+  + python-azure-maps-render
+  + python-azure-maps-route
+  + python-azure-messaging-webpubsubclient
+  + python-azure-monitor-opentelemetry-exporter
+  + python-azure-purview-sharing
+  + python-azure-schemaregistry-avroencoder
+- Remove deprecated packages from the Azure SDK from Requires
+  + python-adal
+  + python-azure-functions-devops-build
+  + python-msrestazure
+  + python-pydocumentdb
+  + python-uamqp</comment>
+    <requestid>1155042</requestid>
+  </revision>
 </revisionlist>
