@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:10:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Mon Feb 13 10:55:45 UTC 2012 - coolo@suse.com
 
 - patch license to follow spdx.org standard

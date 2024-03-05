@@ -44,17 +44,7 @@ sc is a free curses-based spreadsheet program that uses key bindings similar to
 vi and less.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
+%autosetup -p1
 
 %build
 make %{?_smp_mflags} LIBDIR="%{_docdir}/%{name}" CFLAGS="%{optflags} -DSYSV3" all sc.1 psc.1
