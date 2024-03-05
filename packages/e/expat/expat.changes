@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar  1 16:45:35 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.6.1:
+  * Expose billion laughs API with XML_DTD defined and XML_GE
+    undefined, regression from 2.6.0
+  * Make tests independent of CPU speed, and thus more robust
+- drop libxml2-fix-xmlwf.1-handling.patch, upstream
+
+-------------------------------------------------------------------
 Tue Feb 20 12:21:17 UTC 2024 - David Anes <david.anes@suse.com>
 
 - Fix handling of xmlwf.1 to avoid workarounds in specfile:

@@ -16,9 +16,9 @@
 #
 
 
-%global unversion 2_6_0
+%global unversion 2_6_1
 Name:           expat
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 Summary:        XML Parser Toolkit
 License:        MIT
@@ -31,13 +31,7 @@ Source3:        %{name}faq.html
 # https://www.gentoo.org/inside-gentoo/developers/index.html#sping
 # https://github.com/libexpat/libexpat/issues/537#issuecomment-1003796884
 Source4:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x3176ef7db2367f1fca4f306b1f9b0e909af37285#/expat.keyring
-
-# PATCH-UPSTREAM: Re-work handling of xmlwf.1
-# https://github.com/libexpat/libexpat/pull/824
-Patch0:         libxml2-fix-xmlwf.1-handling.patch
-
-BuildRequires:  gcc-c++
-BuildRequires:  libtool
+BuildRequires:  c++_compiler
 BuildRequires:  pkgconfig
 
 %description
@@ -70,11 +64,7 @@ in libexpat.
 
 %prep
 %autosetup -p1
-
 cp %{SOURCE3} .
-
-# instead of autoreconf, it needs this to avoid breakign expat_config.h.in
-./buildconf.sh
 
 %build
 %configure \
