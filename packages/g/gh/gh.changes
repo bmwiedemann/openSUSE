@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Mar 05 08:39:33 UTC 2024 - pdostal@suse.com
+
+- Update to version 2.45.0:
+  * Bump cli/go-gh v2.6.0 for tenant using GH_TOKEN (#8787)
+  * Support `project view --web` with TTY (#8773)
+  * Handle case: some system set 600 mod for new file.
+  * Clarify helptext for `gh search issues` and `gh search repos` regarding archived repos
+  * Make minor cache list ref flag adjustments
+  * Update incorrect regex comment for client Commits
+  * Use regex to split apart the git client Commit logs
+  * Use null byte separators when fetching comments from git
+  * Add new tests to git client Commits
+  * Remove unnecessary split conditional from client Commits
+  * Extract new test helper for git client Commits
+  * redirect users to the `gh environment` command
+  * Revert "make comments in the default config file more informative"
+  * make comments in the default config file more informative
+  * fixed whitespace
+  * Clarify helptext for search prs regarding archived repos
+  * bug: fixed the result.Operation variable prior to patchRepoVariable being called in the setVariable function.
+  * Remove mainLoop label from garden
+  * feat: Add `ref` option to `gh cache list`
+  * chore: simplify parameter `owner`
+  * Support for `[HOST/]OWNER/REPO` format
+  * Replace `assert` with `require` in testing
+  * Simplify install command for Debian & Ubuntu
+  * Remove `--format` flag and add description for not specifying `--repo` and `--team` flag
+  * Fix printed project number
+  * Support for directory based repo and `GH_REPO` env variable
+  * Change the output of link` and `unlink`
+  * Refactor `OrganizationTeam`
+  * Replace `httpmock` with `gock` in testing
+  * handle flags with `cmdutil.MutuallyExclusive`, and move mutation methods to `queries.go`
+  * fix wording, move conditional blocks to functions, and add api to retrieve the ID of a team
+  * Fix wording
+  * Add testing for link and unlink
+  * Support for team
+  * Support for unlink
+  * Remove support for team
+  * Link Project to Repository or Team Command
+
+-------------------------------------------------------------------
 Mon Feb 19 11:34:55 UTC 2024 - pdostal@suse.com
 
 - Update to version 2.44.1:
