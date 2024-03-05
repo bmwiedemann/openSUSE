@@ -1,0 +1,16 @@
+diff -Nur deepin-music-6.2.18/src/libdmusic/metadetector.cpp deepin-music-6.2.18-new/src/libdmusic/metadetector.cpp
+--- deepin-music-6.2.18/src/libdmusic/metadetector.cpp	2022-08-04 09:19:15.000000000 +0800
++++ deepin-music-6.2.18-new/src/libdmusic/metadetector.cpp	2024-03-05 10:42:48.328521936 +0800
+@@ -226,9 +226,9 @@
+     meta.length = t_audioProperties->length() * 1000;
+ 
+     bool encode = true;
+-    encode &= tag->title().isNull() ? true : tag->title().isLatin1();
+-    encode &= tag->artist().isNull() ? true : tag->artist().isLatin1();
+-    encode &= tag->album().isNull() ? true : tag->album().isLatin1();
++    encode &= tag->title().isEmpty() ? true : tag->title().isLatin1();
++    encode &= tag->artist().isEmpty() ? true : tag->artist().isLatin1();
++    encode &= tag->album().isEmpty() ? true : tag->album().isLatin1();
+ 
+     if (forceEncode) {
+         encode = true;

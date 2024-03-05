@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-music-player
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013-2021 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,6 +33,8 @@ URL:            https://github.com/linuxdeepin/deepin-music
 Source0:        https://github.com/linuxdeepin/deepin-music/archive/%{version}/deepin-music-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM Fix-library-link.patch hillwood@opensuse.org - Fix library link
 Patch0:         Fix-library-link.patch
+# PATCH-FIX-UPSTRAM update-taglib-interface.patch hillwood@opensuse.org - fix build on new taglib
+Patch1:         update-taglib-interface.patch
 %ifarch ppc ppc64 ppc64le s390 s390x
 BuildRequires:  deepin-desktop-base
 %else
