@@ -1,8 +1,8 @@
-Index: biosdevname-0.7.1/configure.ac
+Index: biosdevname-0.7.3.7.g495ab76/configure.ac
 ===================================================================
---- biosdevname-0.7.1.orig/configure.ac
-+++ biosdevname-0.7.1/configure.ac
-@@ -66,20 +66,9 @@ AC_FUNC_STAT
+--- biosdevname-0.7.3.7.g495ab76.orig/configure.ac
++++ biosdevname-0.7.3.7.g495ab76/configure.ac
+@@ -66,27 +66,18 @@ AC_FUNC_STAT
  AC_FUNC_VPRINTF
  AC_CHECK_FUNCS([dup2 gettimeofday memset munmap select socket strcasecmp strchr strdup strerror strncasecmp strpbrk strrchr strstr strtol strtoul])
  
@@ -22,7 +22,50 @@ Index: biosdevname-0.7.1/configure.ac
 -fi
 +# Only way to make this robust: Replace for each distro with the correct path
 +# /lib/udev/rules.d/71-biosdevname.rules
++SBINDIR=@@BIOSDEVNAME_SBINDIR@@
 +RULEDEST=@@BIOSDEVNAME_RULEDEST@@
  RULEDIR=$(dirname $RULEDEST)
  AC_SUBST(RULEDEST, $RULEDEST)
  AC_SUBST(RULEDIR,  $RULEDIR)
++AC_SUBST(SBINDIR,  $SBINDIR)
+ 
+ echo "PACKAGE_NAME='$PACKAGE_NAME'" > version
+ echo "PACKAGE_VERSION='$PACKAGE_VERSION'" >> version
+ echo "PACKAGE_STRING='$PACKAGE_STRING'" >> version
+ 
+-AC_CONFIG_FILES([Makefile biosdevname.spec.fedora biosdevname.spec.suse src/bios_dev_name.h])
++AC_CONFIG_FILES([Makefile biosdevname.spec.fedora biosdevname.spec.suse src/bios_dev_name.h biosdevname.rules])
+ AC_OUTPUT
+Index: biosdevname-0.7.3.7.g495ab76/biosdevname.rules.in
+===================================================================
+--- biosdevname-0.7.3.7.g495ab76.orig/biosdevname.rules.in
++++ biosdevname-0.7.3.7.g495ab76/biosdevname.rules.in
+@@ -22,6 +22,6 @@ LABEL="netdevicename_start"
+ 
+ # using NAME= instead of setting INTERFACE_NAME, so that persistent
+ # names aren't generated for these devices, they are "named" on each boot.
+-SUBSYSTEMS=="pci", PROGRAM="/sbin/biosdevname --policy physical --smbios 2.6 --nopirq -i %k", NAME="%c",  OPTIONS+="string_escape=replace"
++SUBSYSTEMS=="pci", PROGRAM="@SBINDIR@/biosdevname --policy physical --smbios 2.6 --nopirq -i %k", NAME="%c",  OPTIONS+="string_escape=replace"
+ 
+ LABEL="netdevicename_end"
+Index: biosdevname-0.7.3.7.g495ab76/Makefile.am
+===================================================================
+--- biosdevname-0.7.3.7.g495ab76.orig/Makefile.am
++++ biosdevname-0.7.3.7.g495ab76/Makefile.am
+@@ -2,14 +2,14 @@ AUTOMAKE_OPTIONS = subdir-objects
+ SUBDIRS = 
+ EXTRA_DIST = 
+ 
+-dist_noinst_DATA = biosdevname.rules.in biosdevname.spec.fedora biosdevname.spec.suse biosdevname.1
++dist_noinst_DATA = biosdevname.rules biosdevname.spec.fedora biosdevname.spec.suse biosdevname.1
+ 
+ 
+ 
+ CLEANFILES = version src/bios_dev_name.h
+ install-data-local:
+ 	mkdir -p $(DESTDIR)@RULEDIR@
+-	$(INSTALL_DATA) $(top_srcdir)/biosdevname.rules.in $(DESTDIR)@RULEDEST@
++	$(INSTALL_DATA) $(top_srcdir)/biosdevname.rules $(DESTDIR)@RULEDEST@
+ 
+ uninstall-local:
+ 	rm -f $(DESTDIR)@RULEDEST@

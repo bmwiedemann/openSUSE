@@ -1,7 +1,7 @@
 #
 # spec file for package biosdevname
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,20 +32,18 @@ Patch4:         biosdevname-pic.patch
 Patch5:         biosdevname-dom0.patch
 BuildRequires:  automake
 BuildRequires:  pciutils-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  sed
 BuildRequires:  suse-module-tools
 BuildRequires:  zlib-devel
 # to figure out how to name/location of the rules file
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(udev)
-Requires(post): coreutils
-Requires(postun):coreutils
 # for ownership of /usr/lib/udev/rules.d
 Requires:       udev
-BuildRequires:  pkgconfig(udev)
+Requires(post): coreutils
+Requires(postun): coreutils
 Supplements:    modalias(dmi:*svnDell*)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # SMBIOS and PCI IRQ Routing Tables only exist on these arches.  It's
 # also likely that other arches don't expect the PCI bus to be sorted
 # breadth-first, or of so, there haven't been any comments about that
@@ -68,6 +66,7 @@ You can enable/disable usage of biosdevname with boot option
 
 %build
 sed -i -e 's#@@BIOSDEVNAME_RULEDEST@@#'%{_udevrulesdir}'/71-biosdevname.rules#' configure.ac
+sed -i -e 's#@@BIOSDEVNAME_SBINDIR@@#'%{_sbindir}'#' configure.ac
 autoreconf -fi
 %configure \
        --disable-rpath

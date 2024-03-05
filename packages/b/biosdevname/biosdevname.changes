@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 27 21:56:34 UTC 2024 - Thomas Renninger <trenn@suse.de>
+
+- Binary is in /usr/sbin not /sbin
+  (cmp with install to /usr below) (bsc#1220125)
+M udev-rule-path.patch
+
+-------------------------------------------------------------------
 Fri Jul  9 07:38:43 UTC 2021 - Thomas Renninger <trenn@suse.de>
 
 - Enhance _service file

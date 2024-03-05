@@ -407,4 +407,12 @@ D    biosdevname-Read-DMI-entries-from-sys-firmware-dmi-tables-DMI.patch
 D    dmidecode-prevent-infinite-recursion.patch</comment>
     <requestid>905342</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>b9a28a7d101f38030f1b349ed60898e7</srcmd5>
+    <version>0.7.3.7.g495ab76</version>
+    <time>1709660833</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1154679</requestid>
+  </revision>
 </revisionlist>
