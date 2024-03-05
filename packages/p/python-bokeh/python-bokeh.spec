@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-bokeh
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -29,7 +29,7 @@
 %bcond_with testexamples
 
 Name:           python-bokeh%{psuffix}
-Version:        3.3.3
+Version:        3.3.4
 Release:        0
 Summary:        Statistical interactive HTML plots for Python
 License:        BSD-3-Clause
@@ -69,7 +69,7 @@ Requires:       python-pandas >= 1.2
 Requires:       python-tornado >= 5.1
 Requires:       python-xyzservices >= 2021.9.1
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 %if %{with test}
@@ -87,7 +87,7 @@ BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pydot}
 BuildRequires:  %{python_module pygraphviz}
 BuildRequires:  %{python_module pyshp}
-BuildRequires:  %{python_module pytest-asyncio >= 0.18.1}
+BuildRequires:  %{python_module pytest-asyncio >= 0.18.1 with %python-pytest-asyncio < 0.23}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
