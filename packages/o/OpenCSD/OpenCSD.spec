@@ -21,7 +21,7 @@
 
 %define libnum  1
 Name:           OpenCSD
-Version:        1.4.2
+Version:        1.5.1
 Release:        0
 Summary:        CoreSight Trace Decode library
 License:        BSD-3-Clause
