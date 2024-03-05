@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  4 16:49:37 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Add %%systemd_ordering to packages with systemd unit files, so
+  that the order is the right one if those packages find themselves
+  in the same transaction with systemd
+
+-------------------------------------------------------------------
 Sat Feb 17 14:55:06 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Link ecj.jar into the install instead of copying it

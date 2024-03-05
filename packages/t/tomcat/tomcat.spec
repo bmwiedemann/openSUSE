@@ -118,6 +118,7 @@ Requires:       java >= 1.8
 Requires(post): %fillup_prereq
 Requires(post): libxslt-tools
 Requires(pre):  shadow
+%systemd_ordering
 Recommends:     libtcnative-1-0 >= 1.1.24
 Recommends:     logrotate
 BuildArch:      noarch
@@ -200,6 +201,7 @@ Summary:        Apache jsvc wrapper for Apache Tomcat as separate service
 Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}-%{release}
 Requires:       apache-commons-daemon-jsvc
+%systemd_ordering
 
 %description jsvc
 Systemd service and wrapper scripts to start tomcat with jsvc,
