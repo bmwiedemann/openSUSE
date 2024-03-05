@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 29 15:28:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix previous change: should be %autopatch -p0.
+
+-------------------------------------------------------------------
+Thu Feb 29 14:51:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autopatch macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Wed Jul 11 22:53:18 CEST 2012 - sbrabec@suse.cz
 
 - Update to version 1.7.11:

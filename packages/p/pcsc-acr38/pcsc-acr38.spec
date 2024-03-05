@@ -1,7 +1,7 @@
 #
 # spec file for package pcsc-acr38
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -28,9 +28,9 @@ Version:        1.7.11
 Release:        0
 %define envelope_tar_version 101_P
 %define tar_version 100711_P
-Url:            http://www.acs.com.hk/drivers-manual.php?driver=ACR38
+URL:            http://www.acs.com.hk/drivers-manual.php?driver=ACR38
 Summary:        PC/SC IFD Handler for the ACR38 Smart Card Reader
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Security
 # This source is a zip that contains two tar files with drivers, one for
 # non-CCID devices, one for CCID devices.
@@ -40,8 +40,8 @@ Patch3:         ACR38_LINUX_100710-automake-cleanup.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       pcsc-lite
 Supplements:    modalias(usb:v072Fp9000d*dc*dsc*dp*ic*isc*ip*)
-Supplements:    modalias(usb:v072Fp90CFd*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v072Fp9006d*dc*dsc*dp*ic*isc*ip*)
+Supplements:    modalias(usb:v072Fp90CFd*dc*dsc*dp*ic*isc*ip*)
 %define ifddir %(pkg-config libpcsclite --variable=usbdropdir)
 
 %description
@@ -81,8 +81,7 @@ cd non-ccid
 tar -jxf ACR38_LINUX_%{tar_version}.tar.bz2
 cd ACR38_LINUX_%{tar_version}
 mv src/driver/Info.plist src/driver/Info.plist.in
-%patch2
-%patch3
+%autopatch -p0
 
 %build
 cd non-ccid/ACR38_LINUX_%{tar_version}
