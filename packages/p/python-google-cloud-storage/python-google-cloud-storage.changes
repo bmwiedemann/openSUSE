@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 23:54:23 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Version update in SLE 15 SP4 and later (jsc#PED-6697)
+
+-------------------------------------------------------------------
 Tue Dec 19 17:05:18 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Fix tests, setting GOOGLE_CLOUD_PROJECT environment variable.

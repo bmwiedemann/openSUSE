@@ -270,4 +270,12 @@
   * Support configurable retries in upload_chunks_concurrently (#1120)</comment>
     <requestid>1134085</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>8eccabb6ec6b6d4024097fd70e07fc19</srcmd5>
+    <version>2.14.0</version>
+    <time>1709661128</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1155082</requestid>
+  </revision>
 </revisionlist>
