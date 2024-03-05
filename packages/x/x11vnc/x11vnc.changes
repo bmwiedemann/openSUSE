@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:03:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Jun 17 13:59:00 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix building with gcc10

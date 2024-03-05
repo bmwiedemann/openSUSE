@@ -91,13 +91,13 @@ This package adds a simple GUI frontend to run x11vnc.
 
 %prep
 %setup -q
-%patch1 -p1
+%patch -P 1 -p1
 # workaround for Factory, as maintaining that patch with fuzz==0 is
 # too annoying (it patches files that are modified by other patches):
 patch -p1 -i "%{PATCH2}"
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
 mv misc examples
 
 %build
