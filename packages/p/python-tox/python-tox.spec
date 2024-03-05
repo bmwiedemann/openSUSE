@@ -1,7 +1,7 @@
 #
 # spec file for package python-tox
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -77,7 +77,7 @@ Requires:       python-virtualenv >= 20.24.3
 Requires:       (python-importlib-metadata >= 0.12 if python3-base < 3.8)
 Requires:       (python-tomli >= 2.0.1 if python3-base < 3.11)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # last detox version is 0.19
 Obsoletes:      python-detox <= 0.19
 Provides:       python-detox > 0.19
@@ -116,9 +116,9 @@ use for:
 %prep
 %setup -q -n tox-%{version}
 %if %{without devpi_process}
-%patch0 -p1
+%patch -P 0 -p1
 %endif
-%patch1 -p1
+%patch -P 1 -p1
 
 %build
 export LANG=en_US.UTF8
