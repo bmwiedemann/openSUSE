@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  4 04:21:23 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.7
+  * Print which arguments were unknown before giving usage message
+  * Add -version option
+  * configure: Use AC_SYS_LARGEFILE to enable large file support
+
+-------------------------------------------------------------------
 Tue Jul 12 22:18:47 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.6

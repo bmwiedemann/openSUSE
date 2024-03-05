@@ -79,4 +79,15 @@
   * gitlab CI: stop requiring Signed-off-by in commits</comment>
     <requestid>988765</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>66ad293b03ef68e079aedc946586c41d</srcmd5>
+    <version>1.0.7</version>
+    <time>1709660812</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.7
+  * Print which arguments were unknown before giving usage message
+  * Add -version option
+  * configure: Use AC_SYS_LARGEFILE to enable large file support</comment>
+    <requestid>1154498</requestid>
+  </revision>
 </revisionlist>
