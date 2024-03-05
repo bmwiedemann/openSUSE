@@ -87,9 +87,9 @@ This package provides the upstream look and feel for
 lightdm-slick-greeter.
 
 %prep
-%setup -q
+%autosetup -p1
+
 cp -a %{SOURCE1} .
-%patch0 -p1
 
 %build
 NOCONFIGURE=1 gnome-autogen.sh
