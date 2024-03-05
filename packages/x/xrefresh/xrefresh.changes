@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  4 04:30:32 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.8
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Add -help option
+  * Adding in a '-delay ms' parameter to optionally prolong refreshx
+
+-------------------------------------------------------------------
 Thu Aug 11 08:05:34 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec-file, move license to licensedir

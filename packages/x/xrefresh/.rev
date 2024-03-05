@@ -79,4 +79,15 @@
     <comment></comment>
     <requestid>998304</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>252b25d03d8b7f25eebffe205a1f27f7</srcmd5>
+    <version>1.1.0</version>
+    <time>1709660813</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.8
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Add -help option
+  * Adding in a '-delay ms' parameter to optionally prolong refreshx</comment>
+    <requestid>1154502</requestid>
+  </revision>
 </revisionlist>
