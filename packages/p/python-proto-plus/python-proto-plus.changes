@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 19:29:22 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Include in SLE 15 SP4 and later (jsc#PED-6697)
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Jan  1 20:18:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.23.0:

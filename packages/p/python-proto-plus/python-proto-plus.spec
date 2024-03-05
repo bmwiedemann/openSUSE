@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-proto-plus
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -24,8 +24,8 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define skip_python2 1
 %define modname proto-plus
+%{?sle15_python_module_pythons}
 Name:           python-proto-plus%{psuffix}
 Version:        1.23.0
 Release:        0
