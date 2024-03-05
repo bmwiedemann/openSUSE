@@ -1,7 +1,7 @@
 #
 # spec file for package ovmf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,6 +69,8 @@ Patch9:         %{name}-Revert-OvmfPkg-OvmfXen-Set-PcdFSBClock.patch
 Patch10:        %{name}-Revert-OvmfPkg-PlatformPei-Update-ReserveEmuVariable.patch
 # Bug 1216472 - VMs with secure boot do not start (assertion in edk2)
 Patch11:        %{name}-UefiCpuPkg-BaseXApicX2ApicLib-fix-CPUID_V2_EXTENDED_.patch
+# Bug 1219024 - SVVP test Check SMBIOS Table Specific Requirements fails
+Patch12:        %{name}-OvmfPkg-SmbiosPlatformDxe-tweak-fallback-release-dat.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -195,17 +197,7 @@ virt board.
 PKG_TO_REMOVE="EmulatorPkg"
 rm -rf $PKG_TO_REMOVE
 
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
+%autopatch -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl

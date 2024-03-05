@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar  4 11:39:30 UTC 2024 - Joey Lee <jlee@suse.com>
+
+- Add ovmf-OvmfPkg-SmbiosPlatformDxe-tweak-fallback-release-dat.patch
+  tweak fallback release date again (bsc#1219024) 
+
+-------------------------------------------------------------------
+Mon Feb 26 12:54:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autopatch macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Tue Nov 21 02:58:02 UTC 2023 - Joey Lee <jlee@suse.com>
 
 - Sync change log to prepare for sending edk2-stable202308 ovmf to SLE15-SP6

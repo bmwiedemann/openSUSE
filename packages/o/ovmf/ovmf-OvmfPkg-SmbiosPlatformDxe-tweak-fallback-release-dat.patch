@@ -1,0 +1,48 @@
+From 9aa057b298345f868dc0ca55e76128037c54e3aa Mon Sep 17 00:00:00 2001
+From: "Lee, Chun-Yi" <jlee@suse.com>
+Date: Sun, 4 Feb 2024 17:32:13 +0800
+Subject: [PATCH] OvmfPkg/SmbiosPlatformDxe: tweak fallback release date again
+
+In case PcdFirmwareReleaseDateString is not set use a valid date
+as fallback. But the default valid date can _NOT_ pass the Microsoft
+SVVP test "Check SMBIOS Table Specific Requirements". The test emitted
+the error message:
+
+BIOS Release Date string is unexpected length: 8. This string must be in
+MM/DD/YYYY format. No other format is allowed and no additional information
+may be included. See field description in the SMBIOS specification.
+
+Base on SMBIOS spec v3.7.0:
+
+08h     2.0+    BIOS Release Date       BYTE    STRING
+String number of the BIOS release date. The date
+string, if supplied, is in either mm/dd/yy or
+mm/dd/yyyy format. If the year portion of the string
+is two digits, the year is assumed to be 19yy.
+NOTE: The mm/dd/yyyy format is required for SMBIOS
+version 2.3 and later.
+
+So, let's tweek the fallback release date again.
+
+Fixes: a0f9628705e3 ("OvmfPkg/SmbiosPlatformDxe: tweak fallback release date") [edk2-stable202305~327]
+Signed-off-by: "Lee, Chun-Yi" <jlee@suse.com>
+---
+ OvmfPkg/SmbiosPlatformDxe/SmbiosPlatformDxe.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/OvmfPkg/SmbiosPlatformDxe/SmbiosPlatformDxe.c b/OvmfPkg/SmbiosPlatformDxe/SmbiosPlatformDxe.c
+index 0ca3776..e929da6 100644
+--- a/OvmfPkg/SmbiosPlatformDxe/SmbiosPlatformDxe.c
++++ b/OvmfPkg/SmbiosPlatformDxe/SmbiosPlatformDxe.c
+@@ -160,7 +160,7 @@ InstallAllStructures (
+     DateStr = (CHAR16 *)FixedPcdGetPtr (PcdFirmwareReleaseDateString);
+     DateLen = StrLen (DateStr);
+     if (DateLen < 3) {
+-      DateStr = L"2/2/2022";
++      DateStr = L"02/02/2022";
+       DateLen = StrLen (DateStr);
+     }
+ 
+-- 
+2.35.3
+
