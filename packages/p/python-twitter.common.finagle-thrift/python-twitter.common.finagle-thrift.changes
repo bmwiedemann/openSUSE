@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  5 03:10:19 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Mon Jan 13 18:35:18 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Add setup-ns-fix.patch to remove top level __init__ from site-packages
