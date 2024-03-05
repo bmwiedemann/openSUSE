@@ -597,4 +597,14 @@ Reduced to applicable license in SPDX format (forwarded request 107670 from dims
     to support chunked base64. (forwarded request 1109935 from ateixeira)</comment>
     <requestid>1110530</requestid>
   </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>6e88b6abe35e5f4a77d92c70340f2a34</srcmd5>
+    <version>3.2.14</version>
+    <time>1709661146</time>
+    <user>anag+factory</user>
+    <comment>- Drop baselibs.conf: the -32bit packages are no longer needed and
+  have not been part of Tumbleweed for a while already (build for
+  i586 only enabled in LegacyX86). (forwarded request 1155228 from dimstar)</comment>
+    <requestid>1155245</requestid>
+  </revision>
 </revisionlist>

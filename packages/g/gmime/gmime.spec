@@ -1,7 +1,7 @@
 #
 # spec file for package gmime
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,6 @@
 # Define a base version
 %define base_ver 3.0
 # Define a so version
-# NOTE - also update baselibs.conf when bumping this
 %define so_ver 3_0
 Name:           gmime
 Version:        3.2.14
@@ -29,7 +28,6 @@ License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Email/Utilities
 URL:            https://github.com/jstedfast/gmime/
 Source:         https://github.com/jstedfast/gmime/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source99:       baselibs.conf
 BuildRequires:  gobject-introspection-devel >= 1.30.0
 BuildRequires:  gtk-doc
 BuildRequires:  pkgconfig

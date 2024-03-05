@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  5 14:13:19 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop baselibs.conf: the -32bit packages are no longer needed and
+  have not been part of Tumbleweed for a while already (build for
+  i586 only enabled in LegacyX86).
+
+-------------------------------------------------------------------
 Fri Sep  8 21:38:11 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to version 3.2.14:
