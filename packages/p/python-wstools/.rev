@@ -65,4 +65,15 @@
     <comment></comment>
     <requestid>949681</requestid>
   </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>3da893fe624f033d4f7a3fccbc43706d</srcmd5>
+    <version>0.4.8</version>
+    <time>1709661052</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+- Add patch support-python-312.patch:
+  * Use correct assertion methods in the testsuite.</comment>
+    <requestid>1154976</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-wstools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,26 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-wstools
 Version:        0.4.8
 Release:        0
 Summary:        WSDL parsing services package for Web Services for Python
 License:        ZPL-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/pycontribs/wstools
 Source:         https://files.pythonhosted.org/packages/8d/d0/0e48ae89e4b2a9aa3a1a088782ae183dc09ca1f3545b29051c46d9efbc0f/wstools-%{version}.tar.gz
 # https://github.com/pycontribs/wstools/issues/37
 Patch0:         python-wstools-python-310.patch
+Patch1:         support-python-312.patch
 BuildRequires:  %{python_module pbr >= 1.10}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 17.1}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-pbr
+Requires:       python-setuptools
 Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
@@ -41,16 +44,15 @@ BuildArch:      noarch
 Python module for WSDL parsing services package for Web Services.
 
 %prep
-%setup -q -n wstools-%{version}
-%patch0 -p1
+%autosetup -p1 -n wstools-%{version}
 # https://github.com/pycontribs/wstools/issues/35
 sed -i 's:.pytest-runner.::' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,6 +61,7 @@ sed -i 's:.pytest-runner.::' setup.py
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/wstools
+%{python_sitelib}/wstools-%{version}.dist-info
 
 %changelog
