@@ -42,8 +42,7 @@ window is full, it can automatically display another window in order
 to display more icons.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf -f -i
