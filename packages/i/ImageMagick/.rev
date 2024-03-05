@@ -3812,4 +3812,15 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   https://github.com/ImageMagick/Website/blob/main/ChangeLog.md (forwarded request 1152504 from adkorte)</comment>
     <requestid>1152922</requestid>
   </revision>
+  <revision rev="290" vrev="2">
+    <srcmd5>14fa7510aa3f0852c36c16df9d88502a</srcmd5>
+    <version>7.1.1.29</version>
+    <time>1709660815</time>
+    <user>anag+factory</user>
+    <comment>- We can not replace a symlink with a directory on the directly
+  Unregister the whole group manually in %pre with
+  update-alternatives. (boo#1220818)
+  Restore Requires(pre) on update-alternatives for the mean time. (forwarded request 1154340 from darix)</comment>
+    <requestid>1154575</requestid>
+  </revision>
 </revisionlist>

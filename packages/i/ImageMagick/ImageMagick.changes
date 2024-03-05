@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar  2 23:03:12 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- We can not replace a symlink with a directory on the directly
+  Unregister the whole group manually in %pre with
+  update-alternatives. (boo#1220818)
+  Restore Requires(pre) on update-alternatives for the mean time.
+
+-------------------------------------------------------------------
 Tue Feb 27 20:28:12 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - version update to 7.1.1.29

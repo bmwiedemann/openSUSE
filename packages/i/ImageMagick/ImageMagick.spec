@@ -103,6 +103,7 @@ Obsoletes:      ImageMagick-config-7-upstream-open < 7.1.1.27
 Obsoletes:      ImageMagick-config-7-upstream-secure < 7.1.1.27
 Obsoletes:      ImageMagick-config-7-upstream-websafe < 7.1.1.27
 Obsoletes:      imagemagick-config-7-upstream-limited < 7.1.1.27
+Requires(pre):  update-alternatives
 
 %package -n perl-PerlMagick
 Summary:        Perl interface for ImageMagick
@@ -394,6 +395,11 @@ sed -i 's:%{buildroot}::' %{buildroot}/%{_libdir}/ImageMagick-%{mfr_version}/con
 %postun -n libMagickWand%{libspec}%{cwandver} -p /sbin/ldconfig
 %post -n libMagick++%{libspec}%{cxxlibver} -p /sbin/ldconfig
 %postun -n libMagick++%{libspec}%{cxxlibver} -p /sbin/ldconfig
+
+%pre
+if readlink -q /etc/ImageMagick-7 > /dev/null 2>&1 ; then
+  /usr/sbin/update-alternatives --remove-all ImageMagick-7
+fi
 
 %files
 %license LICENSE
