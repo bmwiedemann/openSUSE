@@ -70,7 +70,11 @@ BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xkbcommon-x11)
 BuildRequires:  pkgconfig(xrender)
+%if 0%{?suse_version} > 1500
 BuildRequires:  rpm_macro(_kf5_plugindir)
+%else
+BuildRequires:  kf5-filesystem
+%endif
 
 %description
 Multiple Qt plugins to provide better Qt5 integration for DDE are included.
