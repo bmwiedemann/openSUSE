@@ -1,7 +1,7 @@
 #
 # spec file for package notcurses
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -199,6 +199,9 @@ library.
 %cmake -DUSE_DOCTEST=OFF -DUSE_STATIC=OFF \
      -DDFSG_BUILD=ON \
      -DUSE_QRCODEGEN=ON \
+%if 0%{?suse_version} < 1600
+     -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
+%endif
 %if %{with pandoc}
      -DUSE_PANDOC=ON
 %else
@@ -211,7 +214,7 @@ export CFLAGS="%{optflags} -I../include -L../build"
 
 %install
 %cmake_install
-rm -rf %{buildroot}%{_datadir}/doc/notcurses/
+rm -rf %{buildroot}%{_docdir}/notcurses/
 cd python
 %python3_install
 %fdupes %{buildroot}/%{python3_sitearch}
