@@ -184,4 +184,36 @@
 </comment>
     <requestid>1010955</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b2dc2c4153c49eface08f62f0a41e1f7</srcmd5>
+    <version>2.6.3</version>
+    <time>1709661050</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.6.3:
+  * Solved an error in the xmlformatter when using default namespaces. #89
+  * #108: Fixed an error that happens if using namespaces like ns0 or ns1.
+  * Added `InsertNamespace` and `DeleteNamespace` actions for better handling
+    of changing namespaces. Should improve any &quot;Unknown namespace prefix&quot;
+    errors. Changing the URI of a a namespace prefix is not supported, and
+    will raise an error.
+  * Used geometric mean for the node_ratio, for better handling of simple nodes.
+  * Added an experimental --best-match method that is slower, but generate
+    smaller diffs when you have many nodes that are similar.
+  * The -F argument now also affects the --fast-match stage.
+  * Make it possible to adjust the attributes considered when comparing nodes.
+  * Python versions 3.7 to 3.11 are now supported.
+  * Improved node matching method, that puts more emphasis similarities than
+    differences when weighing attributes vs children.
+  * Added a parameter to return error code 1 when there are differences
+    between the files
+  * Added a parameter for ignoring attributes in comparison.
+  * Solved a bug in xmlpatch in certain namespace situations.
+  * Added a --diff-encoding parameter to xmlpatch, to support diff-files
+    that are not in your system default encoding.
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+- Drop python-xmldiff-src-upgrades.patch, now included upstream.
+- Drop python-xmldiff-no-six-remains.patch, no longer required.</comment>
+    <requestid>1154951</requestid>
+  </revision>
 </revisionlist>

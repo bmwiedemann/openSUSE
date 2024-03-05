@@ -1,7 +1,7 @@
 #
 # spec file for package python-xmldiff
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,30 +17,26 @@
 
 
 %define oldpython python
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-xmldiff
-Version:        2.4
+Version:        2.6.3
 Release:        0
 Summary:        Tree to tree correction between XML documents
 License:        MIT
 URL:            https://github.com/Shoobx/xmldiff
 Source:         https://files.pythonhosted.org/packages/source/x/xmldiff/xmldiff-%{version}.tar.gz
-# https://github.com/Shoobx/xmldiff/commit/34b810f4394965aadeca31204e6b76eb023fd11a
-Patch0:         python-xmldiff-src-upgrades.patch
-# https://github.com/Shoobx/xmldiff/issues/93
-Patch1:         python-xmldiff-no-six-remains.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-lxml >= 3.1.0
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Conflicts:      %{oldpython}-xmldiff < %{version}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module lxml >= 3.1.0}
-BuildRequires:  %{python_module setuptools}
 # /SECTION
 %python_subpackages
 
@@ -53,15 +49,13 @@ structured information", by S. Chawathe, A. Rajaraman, H.
 Garcia-Molina, and J. Widom, Stanford University, 1996.
 
 %prep
-%setup -q -n xmldiff-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n xmldiff-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/xmlpatch
 %python_clone -a %{buildroot}%{_bindir}/xmldiff
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -82,6 +76,7 @@ Garcia-Molina, and J. Widom, Stanford University, 1996.
 %license LICENSE.txt
 %python_alternative %{_bindir}/xmldiff
 %python_alternative %{_bindir}/xmlpatch
-%{python_sitelib}/*
+%{python_sitelib}/xmldiff
+%{python_sitelib}/xmldiff-%{version}.dist-info
 
 %changelog
