@@ -50,4 +50,12 @@
     <comment>- use modern python stack for sle15</comment>
     <requestid>1133641</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d1de63bb73c22f2263d3285badd8d830</srcmd5>
+    <version>1.5.0</version>
+    <time>1709661020</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1154918</requestid>
+  </revision>
 </revisionlist>
