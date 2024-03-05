@@ -93,8 +93,7 @@ xplayer-plparser is a simple GObject-based library to parse a host
 of playlist formats, to save them too.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 NOCONFIGURE=1 gnome-autogen.sh
