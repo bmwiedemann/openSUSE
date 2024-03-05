@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:26:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Nov 30 18:03:44 CET 2022 - ro@suse.de
 
 - actually gzip manpage to match the filename extension 

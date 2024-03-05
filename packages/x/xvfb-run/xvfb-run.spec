@@ -43,7 +43,7 @@ value of the command becomes the return value of this script.
 
 %prep
 cp %{SOURCE0} .
-%patch0 -p0
+%patch -P 0 -p0
 
 %build
 
