@@ -1,0 +1,410 @@
+Reference: https://github.com/supermihi/pytaglib/pull/123
+Index: pytaglib-2.1.0/.github/workflows/default.yml
+===================================================================
+--- pytaglib-2.1.0.orig/.github/workflows/default.yml
++++ pytaglib-2.1.0/.github/workflows/default.yml
+@@ -6,12 +6,14 @@ jobs:
+   build:
+     strategy:
+       matrix:
+-        os: [ubuntu-latest, macos-latest, windows-latest]
++        os: [ubuntu-latest, macos-latest] #, windows-latest]
+     runs-on: ${{ matrix.os }}
+     env:
+-      CIBW_SKIP: "*p36-* *p37-*"
++      #CIBW_SKIP: "*p36-* *p37-*"
++      CIBW_BUILD: "cp311-*"
+       CIBW_ARCHS: auto64
+       CIBW_ARCHS_MACOS: "x86_64 arm64"
++      MACOSX_DEPLOYMENT_TARGET: "10.14"
+     steps:
+       - uses: actions/checkout@v3
+       - name: Set up Python
+@@ -24,9 +26,6 @@ jobs:
+         with:
+           path: build/taglib
+           key: taglib-windows-${{ hashFiles('build_taglib.py') }}
+-      - name: Install TagLib (Linux)
+-        if: ${{ runner.os == 'Linux' }}
+-        run: sudo apt-get install -y libtag1-dev
+       - name: install pip dependencies (Linux)
+         if: ${{ runner.os == 'Linux' }}
+         run: |
+Index: pytaglib-2.1.0/build_taglib.py
+===================================================================
+--- pytaglib-2.1.0.orig/build_taglib.py
++++ pytaglib-2.1.0/build_taglib.py
+@@ -1,4 +1,5 @@
+ import hashlib
++import os
+ import platform
+ import shutil
+ import subprocess
+@@ -8,22 +9,24 @@ import urllib.request
+ from argparse import ArgumentParser
+ from pathlib import Path
+ 
+-is_x64 = sys.maxsize > 2**32
++is_x64 = sys.maxsize > 2 ** 32
+ arch = "x64" if is_x64 else "x32"
+ system = platform.system()
+ python_version = platform.python_version()
+ here = Path(__file__).resolve().parent
+-default_taglib_path = here / "build" / "taglib" / f"{system}-{arch}-py{python_version}"
+ 
+-taglib_version = "1.13.1"
++taglib_version = "2.0"
+ taglib_release = f"https://github.com/taglib/taglib/archive/refs/tags/v{taglib_version}.tar.gz"
+-taglib_sha256sum = "c8da2b10f1bfec2cd7dbfcd33f4a2338db0765d851a50583d410bacf055cfd0b"
++taglib_sha256sum = "e36ea877a6370810b97d84cf8f72b1e4ed205149ab3ac8232d44c850f38a2859"
++
++utfcpp_version = "4.0.5"
++utfcpp_release = f"https://github.com/nemtrif/utfcpp/archive/refs/tags/v{utfcpp_version}.tar.gz"
+ 
+ 
+ class Configuration:
+     def __init__(self):
+-        self.tl_install_dir = default_taglib_path
+         self.build_path = here / "build"
++        self.tl_install_dir = self.build_path / "taglib" / f"{system}-{arch}-py{python_version}"
+         self.clean = False
+ 
+     @property
+@@ -31,31 +34,63 @@ class Configuration:
+         return self.build_path / f"taglib-{taglib_version}.tar.gz"
+ 
+     @property
++    def utfcpp_download_dest(self):
++        return self.build_path / f"utfcpp-{utfcpp_version}.tar.gz"
++
++    @property
+     def tl_extract_dir(self):
+         return self.build_path / f"taglib-{taglib_version}"
+ 
++    @property
++    def utfcpp_extract_dir(self):
++        return self.build_path / f"utfcpp-{utfcpp_version}"
+ 
+-def download(config: Configuration):
+-    target = config.tl_download_dest
++    @property
++    def utfcpp_include_dir(self):
++        return self.utfcpp_extract_dir / "source"
++
++
++def _download_file(url: str, target: Path, sha256sum: str = None):
+     if target.exists():
+         print("skipping download, file exists")
+-    else:
+-        print(f"downloading taglib {taglib_version} ...")
+-        response = urllib.request.urlopen(taglib_release)
+-        data = response.read()
+-        target.parent.mkdir(exist_ok=True, parents=True)
+-        target.write_bytes(data)
++        return
++    print(f"downloading {url} ...")
++    response = urllib.request.urlopen(url)
++    data = response.read()
++    target.parent.mkdir(exist_ok=True, parents=True)
++    target.write_bytes(data)
++    if sha256sum is None:
++        return
+     the_hash = hashlib.sha256(target.read_bytes()).hexdigest()
+-    assert the_hash == taglib_sha256sum
++    if the_hash != taglib_sha256sum:
++        error = f'checksum of downloaded file ({the_hash}) does not match expected hash ({taglib_sha256sum})'
++        raise RuntimeError(error)
++
++
++def download(config: Configuration):
++    _download_file(taglib_release, config.tl_download_dest, taglib_sha256sum)
++    _download_file(utfcpp_release, config.utfcpp_download_dest)
++
++
++def _extract_tar(archive: Path, target: Path):
++    if target.exists():
++        print(f"extracted directory {target} found; skipping tar")
++        return
++    print(f"extracting {archive} ...")
++    tar = tarfile.open(archive)
++    tar.extractall(target.parent)
+ 
+ 
+ def extract(config: Configuration):
+-    if config.tl_extract_dir.exists():
+-        print("extracted taglib found. Skipping tar")
+-    else:
+-        print("extracting tarball")
+-        tar = tarfile.open(config.tl_download_dest)
+-        tar.extractall(config.tl_extract_dir.parent)
++    _extract_tar(config.tl_download_dest, config.tl_extract_dir)
++    _extract_tar(config.utfcpp_download_dest, config.utfcpp_extract_dir)
++
++
++def copy_utfcpp(config: Configuration):
++    target = config.tl_extract_dir / "3rdparty" / "utfcpp"
++    if target.exists():
++        shutil.rmtree(target)
++    shutil.copytree(config.utfcpp_extract_dir, target)
+ 
+ 
+ def cmake_clean(config: Configuration):
+@@ -85,6 +120,7 @@ def cmake_config(config: Configuration):
+     elif system == "Linux":
+         args.append("-DCMAKE_POSITION_INDEPENDENT_CODE=ON")
+     args.append(f"-DCMAKE_INSTALL_PREFIX={config.tl_install_dir}")
++    args.append(f"-DCMAKE_CXX_FLAGS=-I{config.tl_extract_dir / '3rdparty' / 'utfcpp' / 'source'}")
+     args.append(".")
+     config.tl_install_dir.mkdir(exist_ok=True, parents=True)
+     call_cmake(config, *args)
+@@ -132,15 +168,16 @@ def run():
+     print(f"building taglib on {system}, arch {arch}, for python {python_version} ...")
+     config = parse_args()
+     tag_lib = (
+-        config.tl_install_dir
+-        / "lib"
+-        / ("tag.lib" if system == "Windows" else "libtag.a")
++            config.tl_install_dir
++            / "lib"
++            / ("tag.lib" if system == "Windows" else "libtag.a")
+     )
+     if tag_lib.exists() and not config.clean:
+         print("installed TagLib found, exiting")
+         return
+     download(config)
+     extract(config)
++    copy_utfcpp(config)
+     cmake_clean(config)
+     cmake_config(config)
+     cmake_build(config)
+Index: pytaglib-2.1.0/pyproject.toml
+===================================================================
+--- pytaglib-2.1.0.orig/pyproject.toml
++++ pytaglib-2.1.0/pyproject.toml
+@@ -40,4 +40,5 @@ package-dir = { "" = "src" }
+ [tool.cibuildwheel]
+ test-extras = ["tests"]
+ test-command = "pytest {project}/tests"
+-before-build = "python build_taglib.py --clean"
+\ No newline at end of file
++before-build = "python build_taglib.py --clean"
++skip = "cp36-* cp37-*"
+\ No newline at end of file
+Index: pytaglib-2.1.0/src/ctypes.pxd
+===================================================================
+--- pytaglib-2.1.0.orig/src/ctypes.pxd
++++ pytaglib-2.1.0/src/ctypes.pxd
+@@ -1,5 +1,5 @@
+ # -*- coding: utf-8 -*-
+-# Copyright 2011-2018 Michael Helmling, michaelhelmling@posteo.de
++# Copyright 2011-2024 Michael Helmling, michaelhelmling@posteo.de
+ #
+ # This program is free software; you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License version 3 as
+@@ -7,12 +7,9 @@
+ 
+ """This file contains the external C/C++ definitions used by taglib.pyx."""
+ 
+-from libc.stddef cimport wchar_t
+ from libcpp.list cimport list
+ from libcpp.map cimport map
+ from libcpp.string cimport string
+-from cpython.mem cimport PyMem_Free
+-from cpython.object cimport PyObject
+ 
+ 
+ cdef extern from 'taglib/tstring.h' namespace 'TagLib::String':
+@@ -42,14 +39,19 @@ cdef extern from 'taglib/tpropertymap.h'
+         StringList& unsupportedData()
+         int size()
+ 
+-    
++
+ cdef extern from 'taglib/audioproperties.h' namespace 'TagLib':
+     cdef cppclass AudioProperties:
+-        int length()
++        int lengthInMilliseconds()
+         int bitrate()
+         int sampleRate()
+         int channels()
+ 
++cdef extern from 'taglib/audioproperties.h' namespace 'TagLib::AudioProperties':
++    cdef enum ReadStyle:
++        Fast = 0
++        Average = 1
++        Accurate = 2
+ 
+ cdef extern from 'taglib/tfile.h' namespace 'TagLib':
+     cdef cppclass File:
+@@ -62,21 +64,30 @@ cdef extern from 'taglib/tfile.h' namesp
+         void removeUnsupportedProperties(StringList&)
+ 
+ 
+-IF UNAME_SYSNAME == "Windows":
+-    cdef extern from 'taglib/fileref.h' namespace 'TagLib::FileRef':
+-        cdef File * create(const wchar_t *) except +
+-    cdef extern from "Python.h":
+-        cdef wchar_t *PyUnicode_AsWideCharString(PyObject *path, Py_ssize_t *size)
+-    cdef inline File* create_wrapper(unicode path):
+-        cdef wchar_t *wchar_path = PyUnicode_AsWideCharString(<PyObject*>path, NULL)
+-        cdef File * file = create(wchar_path)
+-        PyMem_Free(wchar_path)
+-        return file
+-ELSE:
+-    cdef extern from 'taglib/fileref.h' namespace 'TagLib::FileRef':
+-        cdef File* create(const char*) except +
+-    cdef inline File* create_wrapper(unicode path):
+-        return create(path.encode('utf-8'))
++cdef extern from 'taglib/tiostream.h' namespace 'TagLib':
++    IF UNAME_SYSNAME != "Windows":
++        ctypedef char* FileName
++    ELSE:
++        cdef cppclass FileName:
++            FileName(const char*)
++
++cdef extern from 'taglib/fileref.h' namespace 'TagLib':
++    cdef cppclass FileRef:
++        FileRef(FileName, boolean, ReadStyle) except +
++        File* file()
++
++        AudioProperties *audioProperties()
++        bint save() except +
++        PropertyMap properties()
++        PropertyMap setProperties(PropertyMap&)
++        void removeUnsupportedProperties(StringList&)
++
++cdef inline FileRef* create_wrapper(char* path) except +:
++    IF UNAME_SYSNAME != "Windows":
++        return new FileRef(path,  True, ReadStyle.Average)
++    ELSE:
++        cdef FileName fn = FileName(path)
++        return new FileRef(fn, True, ReadStyle.Average)
+ 
+ cdef extern from 'taglib/taglib.h':
+     int TAGLIB_MAJOR_VERSION
+Index: pytaglib-2.1.0/src/taglib.pyx
+===================================================================
+--- pytaglib-2.1.0.orig/src/taglib.pyx
++++ pytaglib-2.1.0/src/taglib.pyx
+@@ -43,12 +43,12 @@ cdef dict propertyMapToDict(ctypes.Prope
+ 
+ cdef class File:
+     """Class representing an audio file with metadata ("tags").
+-    
++
+     To read tags from an audio file, create a *File* object, passing the file's path to the
+     constructor (should be a unicode string):
+-    
++
+     >>> f = taglib.File('/path/to/file.ogg')
+-    
++
+     The tags are stored in the attribute *tags* as a *dict* mapping strings (tag names)
+     to lists of strings (tag values).
+ 
+@@ -59,30 +59,30 @@ cdef class File:
+     as strings (e.g. cover art, proprietary data written by some programs, ...), according
+     identifiers will be placed into the *unsupported* attribute of the File object. Using the
+     method *removeUnsupportedProperties*, some or all of those can be removed.
+-    
++
+     Additionally, the readonly attributes *length*, *bitrate*, *sampleRate*, and *channels* are
+     available with their obvious meanings.
+ 
+     >>> print('File length: {}'.format(f.length))
+-    
++
+     Changes to the *tags* attribute are stored using the *save* method.
+ 
+     >>> f.save()
+     """
+-    cdef ctypes.File *cFile
++    cdef ctypes.FileRef *cFile
+     cdef public dict tags
+     cdef readonly object path
+     cdef readonly list unsupported
+     cdef readonly object save_on_exit
+ 
+     def __cinit__(self, path, save_on_exit: bool = False):
+-        if not isinstance(path, os.PathLike):
+-            if not isinstance(path, unicode):
+-                path = path.decode('utf8')
++        if not isinstance(path, Path):
++            if isinstance(path, bytes):
++                path = path.decode('utf-8')
+             path = Path(path)
+         self.path = path
+-        self.cFile = ctypes.create_wrapper(str(self.path))
+-        if not self.cFile or not self.cFile.isValid():
++        self.cFile = ctypes.create_wrapper(str(path).encode('utf-8'))
++        if self.cFile is NULL or self.cFile.file() is NULL or not self.cFile.file().isValid():
+             raise OSError(f'Could not read file {path}')
+ 
+     def __init__(self, path, save_on_exit: bool = False):
+@@ -97,7 +97,7 @@ cdef class File:
+         This method is not accessible from Python, and is called only once, immediately after
+         object creation.
+         """
+-        
++
+         cdef:
+             ctypes.PropertyMap cTags = self.cFile.properties()
+             ctypes.String cString
+@@ -109,7 +109,7 @@ cdef class File:
+ 
+     def save(self):
+         """Store the tags currently hold in the `tags` attribute into the file.
+-        
++
+         If some tags cannot be stored because the underlying metadata format does not support them,
+         the unsuccesful tags are returned as a "sub-dictionary" of `self.tags` which will be empty
+         if everything is ok.
+@@ -143,7 +143,7 @@ cdef class File:
+         if not success:
+             raise OSError('Unable to save tags: Unknown OS error')
+         return propertyMapToDict(cRemaining)
+-    
++
+     def removeUnsupportedProperties(self, properties):
+         """This is a direct binding for the corresponding TagLib method."""
+         if not self.cFile:
+@@ -173,32 +173,32 @@ cdef class File:
+     property length:
+         def __get__(self):
+             self.check_closed()
+-            return self.cFile.audioProperties().length()
+-            
++            return self.cFile.audioProperties().lengthInMilliseconds() / 1_000
++
+     property bitrate:
+         def __get__(self):
+             self.check_closed()
+             return self.cFile.audioProperties().bitrate()
+-    
++
+     property sampleRate:
+         def __get__(self):
+             self.check_closed()
+             return self.cFile.audioProperties().sampleRate()
+-            
++
+     property channels:
+         def __get__(self):
+             self.check_closed()
+             return self.cFile.audioProperties().channels()
+-    
++
+     property readOnly:
+         def __get__(self):
+             self.check_closed()
+-            return self.cFile.readOnly()
++            return self.cFile.file().readOnly()
+ 
+     cdef check_closed(self):
+         if self.is_closed:
+             raise ValueError('I/O operation on closed file.')
+-        
++
+     def __enter__(self):
+         return self
+ 

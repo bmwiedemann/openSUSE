@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar  1 14:49:51 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- version update to 2.1.0
+  * Fix #110 (broken test) in #113
+  * CI: update cibuildwheel; ensure Python-3.12 builds in #116
+  * Modernize tooling in #117
+- version update to 2.0.0
+  * improve build_taglib.py helper script (now supports all platforms)
+  * add taglib_version() to the taglib module
+  * allow using File as a context manager, optionally saving on exit
+  * new property File.is_closed
+  * fix #94: Accept os.PathLike in constructor
+  * File.path is now a Path object
+- Add upgrade_taglib_version.patch
+- Skip building for python 3.6 on Leap since it now uses a pyproject.toml
+
+-------------------------------------------------------------------
 Thu Oct  6 22:10:20 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Version Update to pytaglib 1.5.0 (2021-12-18)

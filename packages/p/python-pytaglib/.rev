@@ -65,4 +65,25 @@
     <comment></comment>
     <requestid>1008688</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a5727e77d16d83425bae1995a31064c7</srcmd5>
+    <version>2.1.0</version>
+    <time>1709661109</time>
+    <user>anag+factory</user>
+    <comment>- version update to 2.1.0
+  * Fix #110 (broken test) in #113
+  * CI: update cibuildwheel; ensure Python-3.12 builds in #116
+  * Modernize tooling in #117
+- version update to 2.0.0
+  * improve build_taglib.py helper script (now supports all platforms)
+  * add taglib_version() to the taglib module
+  * allow using File as a context manager, optionally saving on exit
+  * new property File.is_closed
+  * fix #94: Accept os.PathLike in constructor
+  * File.path is now a Path object
+- Add upgrade_taglib_version.patch
+- Skip building for python 3.6 on Leap since it now uses a pyproject.toml
+</comment>
+    <requestid>1155039</requestid>
+  </revision>
 </revisionlist>
