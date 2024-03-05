@@ -1,7 +1,7 @@
 #
 # spec file for package libchipcard
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,8 +71,7 @@ This package contains all necessary include files and libraries needed
 to develop applications that require these.
 
 %prep
-%setup -q -n %{name}-%{_version}
-%patch0 -p1
+%autosetup -p1 -n %{name}-%{_version}
 # And update clones of include files to prevent clash:
 cp -a /usr/include/PCSC/*.h src/PCSC/
 
