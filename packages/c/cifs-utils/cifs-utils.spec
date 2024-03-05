@@ -131,7 +131,7 @@ for i in $pyscripts; do
     fi
 done
 
-%patch1 -p1
+%patch -P 1 -p1
 
 %build
 export CFLAGS="%{optflags} -D_GNU_SOURCE -fpie"

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 10:44:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Jan  4 10:32:54 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)
