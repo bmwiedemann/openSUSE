@@ -316,4 +316,12 @@
   + python-azure-mgmt-securityinsight (forwarded request 969723 from glaubitz)</comment>
     <requestid>969850</requestid>
   </revision>
+  <revision rev="27" vrev="24">
+    <srcmd5>9adb0d83e13ed898e79e40b56192c899</srcmd5>
+    <version>4.0.0</version>
+    <time>1709660994</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1153890</requestid>
+  </revision>
 </revisionlist>

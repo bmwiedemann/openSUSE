@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Mar  1 10:38:19 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-apicenter
+  + python-azure-mgmt-appcomplianceautomation
+  + python-azure-mgmt-azurearcdata
+  + python-azure-mgmt-containerservicefleet
+  + python-azure-mgmt-cosmosdbforpostgresql
+  + python-azure-mgmt-defendereasm
+  + python-azure-mgmt-desktopvirtualization
+  + python-azure-mgmt-devcenter
+  + python-azure-mgmt-devhub
+  + python-azure-mgmt-education
+  + python-azure-mgmt-elasticsan
+  + python-azure-mgmt-graphservices
+  + python-azure-mgmt-hardwaresecuritymodules
+  + python-azure-mgmt-hybridconnectivity
+  + python-azure-mgmt-hybridcontainerservice
+  + python-azure-mgmt-iotfirmwaredefense
+  + python-azure-mgmt-loadtesting
+  + python-azure-mgmt-managedapplications
+  + python-azure-mgmt-managednetworkfabric
+  + python-azure-mgmt-networkanalytics
+  + python-azure-mgmt-networkcloud
+  + python-azure-mgmt-networkfunction
+  + python-azure-mgmt-newrelicobservability
+  + python-azure-mgmt-paloaltonetworksngfw
+  + python-azure-mgmt-playwrighttesting
+  + python-azure-mgmt-qumulo
+  + python-azure-mgmt-securitydevops
+  + python-azure-mgmt-selfhelp
+  + python-azure-mgmt-servicenetworking
+  + python-azure-mgmt-sphere
+  + python-azure-mgmt-springappdiscovery
+  + python-azure-mgmt-storagemover
+  + python-azure-mgmt-voiceservices
+  + python-azure-mgmt-workloadmonitor
+
+-------------------------------------------------------------------
 Wed Apr 13 07:56:36 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add additional packages from the Azure SDK to Requires
