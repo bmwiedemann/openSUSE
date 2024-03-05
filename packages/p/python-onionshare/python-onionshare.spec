@@ -40,7 +40,7 @@ Source99:       python-onionshare.rpmlintrc
 Patch0:         0001-adjust_tests.diff
 # PATCH-FIX-OPENSUSE relax-async-mode.patch -- Do not rely on gevent
 Patch1:         relax-async-mode.patch
-BuildRequires:  %{mypython}-devel
+BuildRequires:  %{mypython}-devel >= 3.8
 BuildRequires:  %{mypython}-pip
 BuildRequires:  %{mypython}-setuptools
 BuildRequires:  %{mypython}-wheel
@@ -56,6 +56,7 @@ BuildRequires:  %{mypython}-pytest-qt
 BuildRequires:  %{mypython}-pytest-xvfb
 # /SECTION
 # SECTION runtime test
+BuildRequires:  %{mypython}-Cython >= 3.0.2
 BuildRequires:  %{mypython}-Flask >= 2.3.2
 BuildRequires:  %{mypython}-Flask-Compress >= 1.13
 BuildRequires:  %{mypython}-Flask-SocketIO >= 5.3.4
@@ -67,7 +68,9 @@ BuildRequires:  %{mypython}-cepa
 BuildRequires:  %{mypython}-click
 BuildRequires:  %{mypython}-colorama
 BuildRequires:  %{mypython}-eventlet
+BuildRequires:  %{mypython}-gevent >= 23.9.1
 BuildRequires:  %{mypython}-gevent-websocket
+BuildRequires:  %{mypython}-packaging >= 23.1
 BuildRequires:  %{mypython}-psutil
 BuildRequires:  %{mypython}-pyside6 >= 6.5.2
 BuildRequires:  %{mypython}-python-gnupg
@@ -77,6 +80,7 @@ BuildRequires:  %{mypython}-urllib3
 BuildRequires:  %{mypython}-waitress >= 2.1.2
 BuildRequires:  tor
 # /SECTION
+Requires:       python-Cython >= 3.0.2
 Requires:       python-Flask >= 2.3.2
 Requires:       python-Flask-Compress >= 1.13
 Requires:       python-Flask-SocketIO >= 5.3.4
@@ -88,7 +92,9 @@ Requires:       python-cepa >= 1.8.1
 Requires:       python-click
 Requires:       python-colorama
 Requires:       python-eventlet
+Requires:       python-gevent >= 23.9.1
 Requires:       python-gevent-websocket
+Requires:       python-packaging >= 23.1
 Requires:       python-psutil
 Requires:       python-pyside6 >= 6.5.2
 Requires:       python-python-gnupg
@@ -97,6 +103,7 @@ Requires:       python-requests
 Requires:       python-setuptools
 Requires:       python-urllib3
 Requires:       python-waitress >= 2.1.2
+Requires:       python-wheel >= 0.41.2
 Requires:       tor
 Provides:       python-onionshare = %{version}-%{release}
 Provides:       python-onionshare_cli = %{version}-%{release}
