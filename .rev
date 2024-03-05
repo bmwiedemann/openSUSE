@@ -90,4 +90,12 @@
     <comment>- Fix file list for %arm (forwarded request 1007237 from Guillaume_G)</comment>
     <requestid>1008945</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>d10e261302fe41db67a7b4efcbd09f84</srcmd5>
+    <version>5.6.4</version>
+    <time>1709661040</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1154945</requestid>
+  </revision>
 </revisionlist>
