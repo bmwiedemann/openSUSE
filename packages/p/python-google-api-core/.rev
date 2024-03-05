@@ -285,4 +285,12 @@
   * Update pins of ‘googleapis-common-protos.</comment>
     <requestid>1133662</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>5cd0c96480925ca212744b7e8640f2a1</srcmd5>
+    <version>2.15.0</version>
+    <time>1709661033</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1154888</requestid>
+  </revision>
 </revisionlist>
