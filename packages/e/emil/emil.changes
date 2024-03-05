@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 11:33:19 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Wed Feb 14 16:56:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop source URLs: the original site is no longer operational

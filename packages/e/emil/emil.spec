@@ -44,13 +44,7 @@ style RFC822'.
 It is especially useful for elm users.
 
 %prep
-%setup -q -n emil-2.1.0-beta9
-%patch0
-%patch1
-%patch2
-%patch3
-%patch4
-%patch5
+%autosetup -p0 -n emil-2.1.0-beta9
 
 %build
 autoreconf -fiv
