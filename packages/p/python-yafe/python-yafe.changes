@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar  3 13:34:32 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Build PEP517 wheel
+- Skip testing xarray on python 3.9: no longer available
+
+-------------------------------------------------------------------
 Wed Feb 17 21:03:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Skip python36 build: python36-numpy in TW is no more (NEP 29)
