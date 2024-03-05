@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  4 11:22:15 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python312.patch, gh#Cangjians/pycangjie#39
+- Remove py-compile from sources so the build process uses the one
+  provided by automake
+
+-------------------------------------------------------------------
 Mon Mar  6 16:13:41 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Don't use fdupes -s, it hurts.

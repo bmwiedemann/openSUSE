@@ -1,7 +1,7 @@
 #
 # spec file for package python-cangjie
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,11 @@ License:        LGPL-3.0-or-later
 URL:            http://cangjians.github.io/projects/pycangjie
 Source:         https://github.com/Cangjians/pycangjie/releases/download/v%{version}/%{src_name}-%{version}.tar.xz
 Source99:       python-cangjie-rpmlintrc
+# PATCH-FIX-UPSTREAM python312.patch gh#Cangjians/pycangjie#39
+Patch:          python312.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -41,8 +44,11 @@ Requires:       libcangjie-data
 Python wrapper to libcangjie, the library implementing the Cangjie input method.
 
 %prep
-%setup -q -n %{src_name}-%{version}
+%autosetup -p1 -n %{src_name}-%{version}
 sed -i '/.\/configure/ d' autogen.sh
+# Remove distributed py-compile, this doesn't work with python 3.12,
+# removing it will use default from automake
+rm py-compile
 
 %build
 ./autogen.sh
