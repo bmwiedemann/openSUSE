@@ -1,7 +1,7 @@
 #
 # spec file for package kim-api
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2018--2020 Christoph Junghans, Ryan S. Elliott
 #
 # All modifications and additions to the file contributed by third parties
@@ -87,6 +87,9 @@ This package contains the example models for the KIM-API.
 %build
 %cmake \
   -DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir} \
+%if 0%{?suse_version} < 1600
+  -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
+%endif
   -DBASH_COMPLETION_COMPLETIONSDIR=%{_datadir}/bash-completion/completions \
   -DZSH_COMPLETION_COMPLETIONSDIR=%{_datadir}/zsh/functions/Unix ..
 %make_jobs
@@ -95,7 +98,7 @@ This package contains the example models for the KIM-API.
 %cmake_install
 mkdir -p %{buildroot}/usr/share/emacs/site-lisp
 mv %{buildroot}/usr/share/emacs/site-lisp/kim-api/kim-api-c-style.el %{buildroot}%{_datadir}/emacs/site-lisp/kim-api-c-style.el
-rm %{buildroot}/usr/share/doc/kim-api/{LICENSE.LGPL,NEWS,README.md}
+rm %{buildroot}%{_docdir}/kim-api/{LICENSE.LGPL,NEWS,README.md}
 
 %post -n libkim-api2 -p /sbin/ldconfig
 %postun -n libkim-api2 -p /sbin/ldconfig
