@@ -1,7 +1,7 @@
 #
 # spec file for package mkfontscale
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mkfontscale
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        Utility to create index of scalable font files for X
 License:        MIT

@@ -120,4 +120,25 @@
   * bugfix release</comment>
     <requestid>966688</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c55a6ea2b650c429b83a288647904e67</srcmd5>
+    <version>1.2.3</version>
+    <time>1709660811</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.3
+  * configure: Use pkg-config to find zlib
+  * configure: Use AC_SYS_LARGEFILE to enable large file support
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Remove &quot;All rights reserved&quot; from Oracle copyright notices
+  * Convert to X.Org standard code style
+  * doDirectory: add missing check for malloc() returning NULL
+  * mkfontscale.c: handle -Wshadow warnings from gcc
+  * ident.c: clear -Wdeclaration-after-statement warning
+  * Variable scope reductions as recommended by cppcheck
+  * Resolve some -Wsign-conversion warnings from clang
+  * Fix -Wimplicit-float-conversion warnings from clang
+  * configure: Move check for zlib into its own section
+  * Address a UBSan warning about int left shift overflow</comment>
+    <requestid>1154485</requestid>
+  </revision>
 </revisionlist>
