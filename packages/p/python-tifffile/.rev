@@ -180,4 +180,12 @@ This should fix ERROR: download_files is configured to fail when the upstream fi
   * Re-add pure Python PackBits decoder.</comment>
     <requestid>1135343</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>acc90d480b5183ce2b6f977e2971ea56</srcmd5>
+    <version>2024.2.12</version>
+    <time>1709661114</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1155044</requestid>
+  </revision>
 </revisionlist>

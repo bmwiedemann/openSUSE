@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-tifffile
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-tifffile%{psuffix}
-Version:        2023.12.9
+Version:        2024.2.12
 Release:        0
 Summary:        Read and write TIFF files
 License:        BSD-2-Clause
@@ -40,7 +40,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-fsspec
 Recommends:     python-imagecodecs >= 2023.3.16
 Recommends:     python-lxml
@@ -62,7 +62,7 @@ BuildRequires:  %{python_module oiffile}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module roifile}
-BuildRequires:  %{python_module xarray}
+BuildRequires:  %{python_module xarray if %python-base >= 3.10}
 BuildRequires:  %{python_module zarr}
 %endif
 # /SECTION
