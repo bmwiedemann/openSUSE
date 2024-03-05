@@ -17,26 +17,27 @@
 
 
 Name:           rustdesk-server
-Version:        1.1.9
+Version:        1.1.10+3
 Release:        0
 Summary:        RustDesk Server Program
 License:        AGPL-3.0-only
 URL:            https://github.com/rustdesk/rustdesk-server
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{name}-1.1.103.tar.gz
 Source1:        vendor.tar.zst
 Source2:        rustdesk-server.sysusers
 Source3:        hbbr.service
 Source4:        hbbs.service
 BuildRequires:  cargo-packaging
-BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig
-Requires:       system-user-rustdesk == %{version}
+BuildRequires:  rust >= 1.70
+BuildRequires:  sysuser-tools
 Requires:       %{name}-hbbr == %{version}
 Requires:       %{name}-hbbs == %{version}
 Requires:       %{name}-utils == %{version}
+Requires:       system-user-rustdesk == %{version}
 
 %package -n system-user-rustdesk
-Summary: System user for rustdesk-server
+Summary:        System user for rustdesk-server
 BuildArch:      noarch
 %{sysusers_requires}
 
@@ -44,21 +45,21 @@ BuildArch:      noarch
 %summary.
 
 %package hbbr
-Summary: Relay Server for Rustdesk
-Requires: system-user-rustdesk == %{version}
+Summary:        Relay Server for Rustdesk
+Requires:       system-user-rustdesk == %{version}
 
 %description hbbr
 This package only contains the Relay Server part.
 
 %package hbbs
-Summary: Signal Server for Rustdesk
-Requires: system-user-rustdesk == %{version}
+Summary:        Signal Server for Rustdesk
+Requires:       system-user-rustdesk == %{version}
 
 %description hbbs
 This package only contains the Signal Server part.
 
 %package utils
-Summary: Utilities for Rustdesk
+Summary:        Utilities for Rustdesk
 
 %description utils
 the utilities for Rustdesk Server
@@ -67,7 +68,7 @@ the utilities for Rustdesk Server
 Self-host your own RustDesk server.
 
 %prep
-%autosetup -a1
+%autosetup -a1 -n %{name}-1.1.103
 
 %build
 %sysusers_generate_pre %{SOURCE2} system-user-rustdesk system-user-rustdesk.conf

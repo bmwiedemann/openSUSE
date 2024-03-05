@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/rustdesk/rustdesk-server.git</param>
     <param name="scm">git</param>
-    <param name="revision">refs/tags/1.1.9</param>
+    <param name="revision">refs/tags/1.1.10-3</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">disable</param>
   </service>
@@ -15,5 +15,6 @@
   </service>
   <service name="cargo_vendor" mode="manual">
     <param name="srcdir">rustdesk-server</param>
+    <param name="update">true</param>
   </service>
 </services>
