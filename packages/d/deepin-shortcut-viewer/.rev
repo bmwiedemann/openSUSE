@@ -15,4 +15,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1001106</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2efdbaf503ef7841b0bcfa141f35097c</srcmd5>
+    <version>5.0.7</version>
+    <time>1709661042</time>
+    <user>anag+factory</user>
+    <comment>- Update version to 5.0.7
+  *  fix: Display problem of shortcut-viewer (forwarded request 1154970 from hillwood)</comment>
+    <requestid>1154971</requestid>
+  </revision>
 </revisionlist>

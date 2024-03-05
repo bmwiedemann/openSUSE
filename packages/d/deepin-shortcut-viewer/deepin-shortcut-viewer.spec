@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-shortcut-viewer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           deepin-shortcut-viewer
-Version:        5.0.6
+Version:        5.0.7
 Release:        0
 Summary:        Deepin Shortcut Viewer
 License:        GPL-3.0-or-later
@@ -35,7 +35,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 The program displays a shortcut key window when a JSON data is passed.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %qmake5 PREFIX=%{_prefix}
