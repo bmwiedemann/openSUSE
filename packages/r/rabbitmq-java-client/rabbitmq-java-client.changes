@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar  5 09:57:17 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Fix reproducibility of the build
+
+-------------------------------------------------------------------
 Tue Feb 26 15:27:50 UTC 2024 - Gus Kenion <gkenion@suse.com>
 
 - Update to version 5.20.0 (bsc#1185940)
+  * Fixes: bsc#1216583 (CVE-2023-46120)
   * Notable changes since release 5.0.0:
     + Add ability to specify maximum message size.
     + Do not confirmSelect more than once per channel.

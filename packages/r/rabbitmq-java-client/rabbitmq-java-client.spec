@@ -74,7 +74,9 @@ rm -f src/main/java/com/rabbitmq/client/impl/OpenTelemetryMetricsCollector.java
 export PYTHONPATH=rabbitmq-codegen-%{codegen_version}
 python3 ./codegen.py header ${PYTHONPATH}/amqp-rabbitmq-0.9.1.json src/main/java/com/rabbitmq/client/AMQP.java
 python3 ./codegen.py body ${PYTHONPATH}/amqp-rabbitmq-0.9.1.json src/main/java/com/rabbitmq/client/impl/AMQImpl.java
-%{mvn_build} -f -- -DskipTests=true
+%{mvn_build} -f -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
+    -DskipTests=true
 
 %install
 %mvn_install

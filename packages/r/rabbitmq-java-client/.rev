@@ -62,4 +62,12 @@
     <comment>Update to version 5.20.0 (bsc#1185940)</comment>
     <requestid>1153419</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>2093314d95f3708f889689ab58c511e3</srcmd5>
+    <version>5.20.0</version>
+    <time>1709661118</time>
+    <user>anag+factory</user>
+    <comment>Reproducibility issues fixed</comment>
+    <requestid>1155067</requestid>
+  </revision>
 </revisionlist>
