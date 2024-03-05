@@ -188,4 +188,15 @@ Sorry I didn't realize it had a pending request until now. (forwarded request 22
     <comment></comment>
     <requestid>1041378</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8a8237099a067be3936e7abc801ca7bc</srcmd5>
+    <version>5.0</version>
+    <time>1709661051</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.0:
+  * Drop support for Python 2.7, 3.5, 3.6.
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1154973</requestid>
+  </revision>
 </revisionlist>

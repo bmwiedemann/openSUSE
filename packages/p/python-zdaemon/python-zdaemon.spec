@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-zdaemon
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,29 @@
 
 
 %define modname zdaemon
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-%{modname}
-Version:        4.4
+Version:        5.0
 Release:        0
 Summary:        Daemon process control library and tools
 License:        ZPL-2.1
-Group:          Development/Languages/Python
 URL:            https://github.com/zopefoundation/zdaemon
 Source:         https://files.pythonhosted.org/packages/source/z/zdaemon/%{modname}-%{version}.tar.gz
 Patch0:         obs-timeout.patch
 BuildRequires:  %{python_module ZConfig}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module manuel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zc.customdoctests}
 BuildRequires:  %{python_module zope.testing}
 BuildRequires:  %{python_module zope.testrunner}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ZConfig
+Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -48,26 +50,24 @@ manage the application server and storage server daemons for Zope / ZEO,
 although it is not limited to running Python-based applications
 
 %prep
-%setup -q -n %{modname}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{modname}-%{version}
 # remove unwanted shebang
 sed -i '1 { /^#!/ d }' src/zdaemon/tests/nokill.py
 rm -rf src/zdaemon.egg-info
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/zdaemon
 
 %check
-# https://github.com/zopefoundation/zdaemon/issues/28
-sed -i 's:import mock:from unittest import mock:' src/zdaemon/tests/testuser.py
 pushd src
 %pyunittest discover -v
+popd
 
 %post
 %python_install_alternative zdaemon
@@ -79,6 +79,7 @@ pushd src
 %license LICENSE.txt
 %doc README.rst CHANGES.rst
 %python_alternative %{_bindir}/zdaemon
-%{python_sitelib}/*
+%{python_sitelib}/%{modname}
+%{python_sitelib}/%{modname}-%{version}.dist-info
 
 %changelog

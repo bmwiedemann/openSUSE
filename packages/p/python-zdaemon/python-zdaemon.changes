@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  5 06:08:56 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.0:
+  * Drop support for Python 2.7, 3.5, 3.6.
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Wed Dec  7 22:49:00 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 4.4 
