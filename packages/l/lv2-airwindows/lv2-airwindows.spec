@@ -18,7 +18,7 @@
 
 
 Name:           lv2-airwindows
-Version:        26.2
+Version:        28.0
 Release:        0
 Summary:        LV2 port of the Airwindows plugins
 License:        MIT
@@ -34,7 +34,7 @@ BuildRequires:  pkgconfig(lv2)
 This is an LV2 port (by Hannes Braun) of the Airwindows plugins
 originally developed by Chris Johnson.
 
-Right now, only 128 plugins (out of 362) have been ported to LV2.
+Right now, only 147 plugins (out of 362) have been ported to LV2.
 
 %prep
 %setup -q

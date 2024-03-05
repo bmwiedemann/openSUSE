@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar  5 14:12:42 UTC 2024 - Hannes Braun <apple.hannes@gmail.com>
+
+- Update to new upstream release 28.0
+  * New plugins: ConsoleLABuss, ConsoleLAChannel, Drive, FinalClip, Hull2,
+    kPlateA, kPlateB, kPlateC, kPlateD, Luxor, PurestConsole3Buss,
+    PurestConsole3Channel, RawGlitters, RawTimbers, Reverb, ShortBuss,
+    TPDFDither, XLowpass, ZOutputStage
+
+-------------------------------------------------------------------
 Tue Dec  5 11:22:48 UTC 2023 - Hannes Braun <apple.hannes@gmail.com>
 
 - Update to new upstream release 26.2
