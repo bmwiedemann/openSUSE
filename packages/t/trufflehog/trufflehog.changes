@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Mar 05 13:39:33 UTC 2024 - felix.niederwanger@suse.com
+
+- Update to version 3.68.4:
+  * Add naive S3 ignorelist (#2536)
+  * fix(deps): update module github.com/stretchr/testify to v1.9.0 (#2534)
+  * fix(deps): update module cloud.google.com/go/storage to v1.39.0 (#2533)
+  * fix(deps): update module github.com/felixge/fgprof to v0.9.4 (#2532)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.50.30 (#2529)
+  * Create basic escaped unicode decoder (#2456)
+  * [feat] - Make the client configurable (#2528)
+  * Ignore canary IDs in notifications (#2526)
+  * Fix minor typo (#2527)
+  * Remove one filter word (#2525)
+  * fix(deps): update module golang.org/x/crypto to v0.20.0 (#2523)
+  * fix(deps): update module github.com/prometheus/client_golang to v1.19.0 (#2522)
+  * fix(deps): update module github.com/googleapis/gax-go/v2 to v2.12.2 (#2521)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.50.28 (#2520)
+  * fix(deps): update module github.com/golang-jwt/jwt/v4 to v5 (#2513)
+  * Improve Gitlab default URL handling (#2491)
+  * Implement detectors.EndpointCustomizer on datadogtoken (#2510)
+  * JDBC test and parsing improvements (#2516)
+  * Improve monogo and snowflake detectors (#2518)
+  * fix(deps): update module google.golang.org/api to v0.167.0 (#2512)
+  * fix(deps): update module github.com/xanzy/go-gitlab to v0.98.0 (#2511)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.50.25 (#2509)
+  * fix(deps): update golang.org/x/exp digest to 814bf88 (#2508)
+  * fix(deps): update module github.com/golang-jwt/jwt/v4 to v5 (#2455)
+  * fix(deps): update module github.com/google/go-github/v57 to v59 (#2464)
+  * fix prefix check when returning early (#2503)
+
+-------------------------------------------------------------------
 Thu Feb 29 08:01:06 UTC 2024 - felix.niederwanger@suse.de
 
 - Update to version 3.68.3:
