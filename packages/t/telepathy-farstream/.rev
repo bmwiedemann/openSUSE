@@ -101,4 +101,14 @@
   directory structure. (forwarded request 1139239 from dimstar)</comment>
     <requestid>1139262</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>17682a4fd0abf3f318f6895d241abe21</srcmd5>
+    <version>0.6.2</version>
+    <time>1709661145</time>
+    <user>anag+factory</user>
+    <comment>- Drop baselibs.conf: the -32bit packages are no longer needed and
+  have not been part of Tumbleweed for a while already (build for
+  i586 only enabled in LegacyX86). (forwarded request 1155215 from dimstar)</comment>
+    <requestid>1155235</requestid>
+  </revision>
 </revisionlist>

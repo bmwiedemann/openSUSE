@@ -24,7 +24,6 @@ License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            http://telepathy.freedesktop.org/
 Source0:        http://telepathy.freedesktop.org/releases/telepathy-farstream/%{name}-%{version}.tar.gz
-Source1:        baselibs.conf
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
