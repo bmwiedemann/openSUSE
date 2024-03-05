@@ -391,4 +391,12 @@
     * Don't pin notebook in conda recipe for pyviz channel (#6108)</comment>
     <requestid>1147598</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>71ea4fa9e56456b251c7cf5635bb102a</srcmd5>
+    <version>1.18.3</version>
+    <time>1709661104</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1155036</requestid>
+  </revision>
 </revisionlist>

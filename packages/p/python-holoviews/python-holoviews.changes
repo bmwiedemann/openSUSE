@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar  2 09:44:23 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip python39: no xarray anymore
+
+-------------------------------------------------------------------
 Sun Feb 18 15:34:16 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.18.3

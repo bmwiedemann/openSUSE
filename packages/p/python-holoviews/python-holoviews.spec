@@ -17,6 +17,7 @@
 
 
 %bcond_without  test
+%define skip_python39 1
 Name:           python-holoviews
 Version:        1.18.3
 Release:        0
