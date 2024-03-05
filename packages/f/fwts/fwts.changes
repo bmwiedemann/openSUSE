@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar  5 12:03:15 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 24.01.00:
+  * acpi: sbbr: check the existence of SPCR console devices
+  * acpi: dbg2: update the subtype RISC-V SBI console for DBG2
+  * acpi: ras2: stop for loop when list exceeds the table
+  * framework: fix memory leaks caused by fwts_log_get_filenames
+  * acpi: s3: fix potential memory leaks on fwts_get() calls
+  * acpi: s3: enable debug messages on S0ix failure for Intel platforms
+  * lib: fwts_version.h - update to V24.01.00
+  * debian: update changelog
+  * Update copyright year to 2024
+  * fwts-test: add regression tests for SKVL
+
+-------------------------------------------------------------------
 Mon Jan 29 17:37:29 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Only build on supported architectures (bsc#1219232)
