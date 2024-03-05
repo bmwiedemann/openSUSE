@@ -81,4 +81,13 @@
     <comment></comment>
     <requestid>989338</requestid>
   </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>af98bf48590e3d16ea2f3c6846bfc0f7</srcmd5>
+    <version>0.3.21</version>
+    <time>1709661049</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup and pyproject macros.
+- Remove python2 leftovers.</comment>
+    <requestid>1154943</requestid>
+  </revision>
 </revisionlist>
