@@ -188,8 +188,8 @@ Cinnamon modules/applications.
 This package contains development files for libcvc.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
+
 cp -a %{SOURCE1} .
 
 %build
