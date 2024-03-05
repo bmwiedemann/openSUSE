@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 21:13:02 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Depend on emacs-devel to make sure Emacs packaging macros are installed when not building with emacs-eln
+
+-------------------------------------------------------------------
 Wed Jan 31 08:10:11 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Update to version 29.1.4.4:

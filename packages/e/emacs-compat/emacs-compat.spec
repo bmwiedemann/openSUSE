@@ -28,6 +28,7 @@ Group:          Productivity/Text/Editors
 URL:            https://github.com/emacs-compat/compat
 Source0:        %{_name}-%{version}.tar.gz
 BuildArch:      noarch
+BuildRequires:  emacs-devel
 BuildRequires:  emacs-nox
 BuildRequires:  info
 BuildRequires:  make
