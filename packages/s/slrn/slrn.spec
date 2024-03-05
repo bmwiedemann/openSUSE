@@ -45,9 +45,7 @@ language for further customization.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
-%patch2 -p1
+%autosetup -p1
 
 # replace __DATE__ and __TIME__ with date/time of the last specfile changelog
 # entry
