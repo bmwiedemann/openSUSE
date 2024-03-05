@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb 28 14:43:25 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.5.2:
+  * Make sure openjpeg.h includes opj_config.h #1514
+
+-------------------------------------------------------------------
+Tue Feb 27 06:16:30 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.5.1:
+  * CMake: drop support for cmake < 3.5
+  * Several bugfixes, including #1509 for CVE-2021-3575 (bsc#1187048)
+  * Significant speed-up rate allocation by rate/distoratio ratio #1440
+- Set devel-doc subpackage to noarch
+- Change cmake parameters (see c7bccf)
+
+-------------------------------------------------------------------
 Wed Mar  8 14:11:29 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Build AVX2 enabled hwcaps library for x86_64-v3

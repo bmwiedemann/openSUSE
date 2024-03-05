@@ -19,7 +19,7 @@
 %define library_name  libopenjp2-7
 %define base_version 2.5
 Name:           openjpeg2
-Version:        2.5.0
+Version:        2.5.2
 Release:        0
 Summary:        Opensource JPEG 2000 Codec Implementation
 License:        BSD-2-Clause
@@ -27,7 +27,7 @@ Group:          Productivity/Graphics/Other
 URL:            https://www.openjpeg.org/
 Source0:        https://github.com/uclouvain/openjpeg/archive/v%{version}.tar.gz#/openjpeg-%{version}.tar.gz
 Source1:        baselibs.conf
-BuildRequires:  cmake > 2.8.2
+BuildRequires:  cmake > 3.5
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -79,6 +79,7 @@ Summary:        API documentation for %{name}
 Group:          Documentation/HTML
 Recommends:     %{library_name} = %{version}
 Recommends:     %{name} = %{version}
+BuildArch:      noarch
 
 %description    devel-doc
 The OpenJPEG library is an open-source JPEG 2000 codec written in C language.
@@ -106,14 +107,13 @@ done
   -DBUILD_TESTING=OFF \
   -DBUILD_DOC=ON \
   -DBUILD_THIRDPARTY=OFF \
-  -DOPENJPEG_INSTALL_LIB_DIR=%{_lib} \
-  -DOPENJPEG_INSTALL_DOC_DIR=share/doc/packages/%{name}-devel-doc
+  -DCMAKE_INSTALL_LIB_DIR=%{_lib} \
+  -DCMAKE_INSTALL_DOC_DIR=share/doc/packages/%{name}-devel-doc
 
 %cmake_build all doc
 
 %install
 %cmake_install
-rm %{buildroot}%{_defaultdocdir}/%{name}-devel-doc/LICENSE
 %fdupes %{buildroot}%{_defaultdocdir}
 
 %post -n %{library_name} -p /sbin/ldconfig
@@ -131,12 +131,13 @@ rm %{buildroot}%{_defaultdocdir}/%{name}-devel-doc/LICENSE
 %{_includedir}/openjpeg-%{base_version}/
 %{_libdir}/libopenjp2.so
 %{_libdir}/pkgconfig/libopenjp2.pc
-%{_libdir}/openjpeg-%{base_version}/
+%{_libdir}/cmake/openjpeg-2.5/
 %{_mandir}/man3/libopenjp2.3%{?ext_man}
 
 %files devel-doc
 %license LICENSE
 %doc AUTHORS.md CHANGELOG.md NEWS.md README.md THANKS.md
-%doc %{_defaultdocdir}/%{name}-devel-doc/html
+%dir %{_defaultdocdir}/%{name}
+%doc %{_defaultdocdir}/%{name}/html
 
 %changelog
