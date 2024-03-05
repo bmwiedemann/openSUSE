@@ -1,8 +1,8 @@
-Index: xauth-1.0.8/gethost.c
+Index: xauth-1.1.3/gethost.c
 ===================================================================
---- xauth-1.0.8.orig/gethost.c
-+++ xauth-1.0.8/gethost.c
-@@ -156,7 +156,8 @@ struct addrlist *get_address_info (
+--- xauth-1.1.3.orig/gethost.c
++++ xauth-1.1.3/gethost.c
+@@ -150,7 +150,8 @@ struct addrlist *get_address_info (
      int family,
      const char *fulldpyname,
      int prefix,
@@ -12,7 +12,7 @@ Index: xauth-1.0.8/gethost.c
  {
      struct addrlist *retval = NULL;
      int len = 0;
-@@ -183,7 +184,7 @@ struct addrlist *get_address_info (
+@@ -176,7 +177,7 @@ struct addrlist *get_address_info (
  	if (prefix == 0 && (strncmp (fulldpyname, "unix:", 5) == 0 ||
  			    fulldpyname[0] == ':')) {
  
@@ -21,7 +21,7 @@ Index: xauth-1.0.8/gethost.c
  		len = 0;
  	    } else {
  		src = buf;
-@@ -233,7 +234,7 @@ struct addrlist *get_address_info (
+@@ -252,7 +253,7 @@ struct addrlist *get_address_info (
  		src = &(sin->sin_addr);
                  if (*(const in_addr_t *) src == htonl(INADDR_LOOPBACK)) {
                      family = FamilyLocal;
@@ -30,7 +30,7 @@ Index: xauth-1.0.8/gethost.c
                          src = buf;
                          len = strlen (buf);
                      } else
-@@ -248,7 +249,7 @@ struct addrlist *get_address_info (
+@@ -267,7 +268,7 @@ struct addrlist *get_address_info (
                  if (!IN6_IS_ADDR_V4MAPPED((const struct in6_addr *)src)) {
                      if (IN6_IS_ADDR_LOOPBACK((const struct in6_addr *)src)) {
                          family = FamilyLocal;
@@ -39,7 +39,7 @@ Index: xauth-1.0.8/gethost.c
                              src = buf;
                              len = strlen (buf);
                          } else
-@@ -303,7 +304,7 @@ struct addrlist *get_address_info (
+@@ -322,7 +323,7 @@ struct addrlist *get_address_info (
  	src = (char *) &hostinetaddr;
          if (*(const in_addr_t *) src == htonl(INADDR_LOOPBACK)) {
              family = FamilyLocal;
@@ -48,10 +48,10 @@ Index: xauth-1.0.8/gethost.c
                  src = buf;
                  len = strlen (buf);
              } else {
-Index: xauth-1.0.8/parsedpy.c
+Index: xauth-1.1.3/parsedpy.c
 ===================================================================
---- xauth-1.0.8.orig/parsedpy.c
-+++ xauth-1.0.8/parsedpy.c
+--- xauth-1.1.3.orig/parsedpy.c
++++ xauth-1.1.3/parsedpy.c
 @@ -70,20 +70,23 @@ copystring (const char *src, int len)
  
  
@@ -96,11 +96,11 @@ Index: xauth-1.0.8/parsedpy.c
  	    family = FamilyInternet;
  	}
  #endif
-Index: xauth-1.0.8/process.c
+Index: xauth-1.1.3/process.c
 ===================================================================
---- xauth-1.0.8.orig/process.c
-+++ xauth-1.0.8/process.c
-@@ -470,7 +470,7 @@ read_auth_entries(FILE *fp, Bool numeric
+--- xauth-1.1.3.orig/process.c
++++ xauth-1.1.3/process.c
+@@ -491,7 +491,7 @@ read_auth_entries(FILE *fp, Bool numeric
  }
  
  static Bool
@@ -109,7 +109,7 @@ Index: xauth-1.0.8/process.c
  {
      int family;
      char *host = NULL, *rest = NULL;
-@@ -490,11 +490,13 @@ get_displayname_auth(const char *display
+@@ -511,11 +511,13 @@ get_displayname_auth(const char *display
        prelen = (cp - displayname);
  
      if (!parse_displayname (displayname + ((prelen > 0) ? prelen + 1 : 0),
@@ -124,28 +124,29 @@ Index: xauth-1.0.8/process.c
      if (addrlist_head) {
  	char buf[40];			/* want to hold largest display num */
  	unsigned short dpylen;
-@@ -1240,13 +1242,18 @@ iterdpy (const char *inputfilename, int
-     Xauth *tmp_auth;
-     AuthList *proto_head, *proto;
-     AuthList *l, *next;
--
-+    /*
+@@ -1288,6 +1290,12 @@ iterdpy (const char *inputfilename, int
+     int errors = 0;
+ 
+     /*
 +     * get saved local address from environment in case the host
 +     * name has changed after the credential was added.
 +     */
 +    char *xlocalhostname = getenv("XAUTHLOCALHOSTNAME");
-+    
-     /*
++
++    /*
       * iterate
       */
-     for (i = start; i < argc; i++) {
- 	const char *displayname = argv[i];
+     for (int i = start; i < argc; i++) {
+@@ -1296,7 +1304,7 @@ iterdpy (const char *inputfilename, int
+ 	AuthList *next;
+ 	int status;
+ 
 -	if (!get_displayname_auth (displayname, &proto_head)) {
 +	if (!get_displayname_auth (displayname, &proto_head, xlocalhostname)) {
  	    prefix (inputfilename, lineno);
  	    baddisplayname (displayname, argv[0]);
  	    errors++;
-@@ -1601,7 +1608,7 @@ do_add(const char *inputfilename, int li
+@@ -1659,7 +1667,7 @@ do_add(const char *inputfilename, int li
  	}
      }
  
@@ -154,10 +155,10 @@ Index: xauth-1.0.8/process.c
  	prefix (inputfilename, lineno);
  	baddisplayname (dpyname, argv[0]);
  	free (key);
-Index: xauth-1.0.8/xauth.h
+Index: xauth-1.1.3/xauth.h
 ===================================================================
---- xauth-1.0.8.orig/xauth.h
-+++ xauth-1.0.8/xauth.h
+--- xauth-1.1.3.orig/xauth.h
++++ xauth-1.1.3/xauth.h
 @@ -48,10 +48,10 @@ struct addrlist {
  };
  

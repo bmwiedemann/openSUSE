@@ -144,4 +144,21 @@
     <comment></comment>
     <requestid>1151659</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f699bafdf4aa0abdf9d518b2e10aad62</srcmd5>
+    <version>1.1.3</version>
+    <time>1709660811</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.1.3
+  * config: Add missing AC_CONFIG_SRCDIR
+  * Variable scope reductions, as suggested by cppcheck
+  * Remove unnecessary casts from malloc() calls
+  * Handle -Wempty-body warning for WRITES() macro
+  * configure: Use AC_SYS_LARGEFILE to enable large file support
+  * configure: raise minimum autoconf requirement to 2.70
+  * unifdef hpux
+  * unifdef Lynx
+- adjusted xauth-tolerant-hostname-changes.diff</comment>
+    <requestid>1154491</requestid>
+  </revision>
 </revisionlist>
