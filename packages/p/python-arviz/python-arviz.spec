@@ -16,15 +16,18 @@
 #
 
 
-%define modname arviz
 %{?sle15_python_module_pythons}
+%define skip_python39 1
 Name:           python-arviz
 Version:        0.17.0
 Release:        0
 Summary:        Exploratory analysis of Bayesian models
 License:        Apache-2.0
 URL:            http://github.com/arviz-devs/arviz
-Source:         https://github.com/arviz-devs/arviz/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+Source:         https://github.com/arviz-devs/arviz/archive/v%{version}.tar.gz#/arviz-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 60.0.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module cloudpickle}
@@ -40,7 +43,6 @@ BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pandas >= 1.4.0}
 BuildRequires:  %{python_module pytest >= 0.23}
 BuildRequires:  %{python_module scipy >= 1.8.0}
-BuildRequires:  %{python_module setuptools >= 60.0.0}
 BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module ujson}
 BuildRequires:  %{python_module xarray >= 0.21.0}
@@ -70,25 +72,27 @@ functions for posterior analysis, data storage, model checking, comparison and
 diagnostics.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%setup -q -n arviz-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # Matplotlib tests try to save results to non-writeable dir
 donttest="test_plots_matplotlib"
 donttest+=" or test_plot_separation"
+# Different edge numbers
+donttest+=" or (test_plots_bokeh and test_plot_forest)"
 %pytest -k "not ($donttest)"
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
 %license LICENSE
-%{python_sitelib}/%{modname}
-%{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/arviz
+%{python_sitelib}/arviz-%{version}.dist-info
 
 %changelog

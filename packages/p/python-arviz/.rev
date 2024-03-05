@@ -117,4 +117,12 @@
 - No longer skip Python 3.8 and 3.11.</comment>
     <requestid>1140110</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>4852302c6fcce85e52dc6760f47b7855</srcmd5>
+    <version>0.17.0</version>
+    <time>1709661071</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1155005</requestid>
+  </revision>
 </revisionlist>
