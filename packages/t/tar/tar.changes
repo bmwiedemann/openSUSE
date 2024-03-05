@@ -52,6 +52,8 @@ Wed Dec  6 16:04:39 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
   * bsc1200657.patch
   * bsc1202436-2.patch
   * bsc1202436-1.patch
+- Fix CVE-2023-39804, Incorrectly handled extension attributes in PAX
+  archives can lead to a crash, bsc#1217969
 
 -------------------------------------------------------------------
 Tue Jul 25 13:54:28 UTC 2023 - Andreas Schwab <schwab@suse.de>

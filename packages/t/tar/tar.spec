@@ -1,7 +1,7 @@
 #
 # spec file for package tar
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -88,7 +88,7 @@ Upstream testsuite for the package
 Summary:        Remote tape drive control server by GNU
 Group:          Productivity/Archiving/Backup
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       rmt
 
 %description rmt
