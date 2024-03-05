@@ -238,4 +238,12 @@
   * Wrap away message and don't let it touch the borders</comment>
     <requestid>1128874</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>a1e28eb9fac972026d1c96fe604927e2</srcmd5>
+    <version>6.0.0</version>
+    <time>1709661062</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1155015</requestid>
+  </revision>
 </revisionlist>

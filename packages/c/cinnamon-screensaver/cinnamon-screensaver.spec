@@ -59,8 +59,7 @@ simple, sane and secure defaults, and be well integrated with the
 Cinnamon Desktop.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %meson
