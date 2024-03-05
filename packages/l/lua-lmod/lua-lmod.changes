@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  1 11:15:37 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Jan 17 15:14:23 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - Update to version 8.7.34

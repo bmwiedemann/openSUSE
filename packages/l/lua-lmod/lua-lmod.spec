@@ -147,9 +147,9 @@ Profile for shell source scripts for lua-lmod
 
 %prep
 %setup -q -n Lmod-%{version}
-%patch1 -p1
+%patch -P 1 -p1
 %if 0%{?sle_version:1} && 0%{?sle_version} < 150000
-%patch2 -p1
+%patch -P 2 -p1
 %endif
 
 %build
