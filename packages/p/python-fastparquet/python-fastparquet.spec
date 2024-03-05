@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fastparquet
-Version:        2023.10.1
+Version:        2024.2.0
 Release:        0
 Summary:        Python support for Parquet file format
 License:        Apache-2.0
@@ -64,6 +64,8 @@ sed -i "s/'pytest-runner',//" setup.py
 sed -i "s/oldest-supported-numpy/numpy/" setup.py
 # the tests import the fastparquet.test module and we need to import from sitearch, so install it.
 sed -i -e "s/^\s*packages=\[/&'fastparquet.test', /" -e "/exclude_package_data/ d" setup.py
+# remove empty module
+[ ! -s fastparquet/evolve.py ] && rm fastparquet/evolve.py
 
 %build
 export CFLAGS="%{optflags}"

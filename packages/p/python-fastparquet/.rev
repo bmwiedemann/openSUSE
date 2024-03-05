@@ -291,4 +291,12 @@
     <comment>- Do not run tests in s390x, bsc#1218603</comment>
     <requestid>1144842</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d01dcd13dd55264d2e16a5613b810ad1</srcmd5>
+    <version>2024.2.0</version>
+    <time>1709661069</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1154995</requestid>
+  </revision>
 </revisionlist>

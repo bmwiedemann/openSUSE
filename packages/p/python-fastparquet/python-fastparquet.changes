@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar  4 21:12:17 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2024.2.0
+  * allow loading categoricals even if not so in the pandas
+    metadata, when a column is dict-encoded and we only have one
+    row-group (#863)
+  * apply dtype to the columns names series, even when selecting no
+    columns (#861, 859)
+  * don’t make strings while estimating bye column size (#858)
+  * handle upstream depr (#857, 856)
+
+-------------------------------------------------------------------
 Mon Jan 22 12:41:30 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Do not run tests in s390x, bsc#1218603
