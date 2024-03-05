@@ -65,10 +65,10 @@ Environment.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P 0 -p1
 # fix boo#1189452 for Leap 15.2+
 %if 0%{?suse_version} <=1500
-%patch1 -p1
+%patch -P 1 -p1
 %endif
 
 sed -i 's/su-to-root/xdg-su/g' %{_name}/execute.py

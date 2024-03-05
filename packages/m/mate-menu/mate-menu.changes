@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 23 11:09:48 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue May 10 16:32:32 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 22.04.2
