@@ -37,6 +37,7 @@ BuildRequires:  ninja
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 Recommends:     libOpenCL1
+ExclusiveArch:  x86_64 aarch64
 %{?systemd_ordering}
 
 %description

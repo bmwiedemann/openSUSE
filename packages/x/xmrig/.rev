@@ -646,4 +646,12 @@
   * v6.21.1-dev</comment>
     <requestid>1151815</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>e4aa67a9b28e5aa2af89983a45c7ef9b</srcmd5>
+    <version>6.21.1</version>
+    <time>1709661132</time>
+    <user>anag+factory</user>
+    <comment>- Build only on supported architectures</comment>
+    <requestid>1155109</requestid>
+  </revision>
 </revisionlist>

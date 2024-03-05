@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  5 12:13:41 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Build only on supported architectures 
+
+-------------------------------------------------------------------
 Mon Feb 26 15:46:09 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.21.1:
