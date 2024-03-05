@@ -427,4 +427,20 @@
 - don't clobber existing links with empty files</comment>
     <requestid>1146868</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>be17efe065de474b384a99b131547e51</srcmd5>
+    <version>309</version>
+    <time>1709660840</time>
+    <user>anag+factory</user>
+    <comment>- cockpit.pam: respect /etc/cockpit/disallowed-users
+  This means by default root cannot login with password to cockpit
+  (bsc#1216080)
+
+- Remove SELinux file context for /usr/bin/cockpit-bridge, this
+  is already defined in the main selinux-policy package (bsc#1220385).
+  Modified selinux_libdir.patch
+
+- Use %patch -P N instead of deprecated %patchN.</comment>
+    <requestid>1154833</requestid>
+  </revision>
 </revisionlist>

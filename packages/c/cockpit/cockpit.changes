@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar  4 13:24:23 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- cockpit.pam: respect /etc/cockpit/disallowed-users
+  This means by default root cannot login with password to cockpit
+  (bsc#1216080)
+
+-------------------------------------------------------------------
+Thu Feb 29 16:40:06 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
+
+- Remove SELinux file context for /usr/bin/cockpit-bridge, this
+  is already defined in the main selinux-policy package (bsc#1220385).
+  Modified selinux_libdir.patch
+
+-------------------------------------------------------------------
+Mon Feb 26 10:52:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Feb 15 12:21:55 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - suse-microos-branding.patch: fix branding for SLE Micro
