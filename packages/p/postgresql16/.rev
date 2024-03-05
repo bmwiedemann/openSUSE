@@ -53,4 +53,12 @@
   * https://www.postgresql.org/docs/release/16.2/</comment>
     <requestid>1145268</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ea3db318c8cef19efedee386c58fa945</srcmd5>
+    <version>16.2</version>
+    <time>1709660835</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1154714</requestid>
+  </revision>
 </revisionlist>

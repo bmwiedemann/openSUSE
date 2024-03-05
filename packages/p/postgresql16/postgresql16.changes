@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 14:36:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Feb  8 13:22:49 UTC 2024 - Reinhard Max <max@suse.com>
 
 - Upgrade to 16.2:
