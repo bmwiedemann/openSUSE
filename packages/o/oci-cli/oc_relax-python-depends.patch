@@ -1,6 +1,6 @@
-diff -Nru oci-cli-3.37.8.orig/requirements.txt oci-cli-3.37.8/requirements.txt
---- oci-cli-3.37.8.orig/requirements.txt	2024-02-06 07:35:21.000000000 +0100
-+++ oci-cli-3.37.8/requirements.txt	2024-02-08 10:28:27.347609032 +0100
+diff -Nru oci-cli-3.37.9.orig/requirements.txt oci-cli-3.37.9/requirements.txt
+--- oci-cli-3.37.9.orig/requirements.txt	2024-02-13 11:20:04.000000000 +0100
++++ oci-cli-3.37.9/requirements.txt	2024-02-16 14:28:54.514405130 +0100
 @@ -2,47 +2,47 @@
  # (https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format),
  # you may need to use the --extra-index-url option instead.
@@ -18,7 +18,7 @@ diff -Nru oci-cli-3.37.8.orig/requirements.txt oci-cli-3.37.8/requirements.txt
 -jmespath==0.10.0
 -ndg-httpsclient==0.4.2
 -mock==2.0.0
--oci==2.121.0
+-oci==2.121.1
 -packaging==20.2
 -pluggy==0.13.0
 -py==1.11.0
@@ -38,7 +38,7 @@ diff -Nru oci-cli-3.37.8.orig/requirements.txt oci-cli-3.37.8/requirements.txt
 +jmespath>=0.10.0
 +ndg-httpsclient>=0.4.2
 +mock>=2.0.0
-+oci>=2.121.0
++oci>=2.121.1
 +packaging>=20.2
 +pluggy>=0.13.0
 +py>=1.11.0
@@ -53,7 +53,7 @@ diff -Nru oci-cli-3.37.8.orig/requirements.txt oci-cli-3.37.8/requirements.txt
  pytz>=2016.10
 -requests==2.21.0; python_version == '3.6'
 -requests==2.31.0; python_version > '3.6'
-+requests>=2.21.0; python_version >= '3.6'
++requests>=2.21.0; python_version == '3.6'
 +requests>=2.31.0; python_version > '3.6'
  six>=1.15.0
 -sphinx==3.3.0
@@ -82,18 +82,18 @@ diff -Nru oci-cli-3.37.8.orig/requirements.txt oci-cli-3.37.8/requirements.txt
 +prompt-toolkit>=3.0.29
  setuptools>65.5.1; python_version > '3.6'
 -setuptools==59.6.0; python_version == '3.6'
-+setuptools>=59.6.0; python_version >= '3.6'
++setuptools>=59.6.0; python_version == '3.6'
  # this is required because of python 3.6 requests dependency version bound
  urllib3<=1.26.15
-diff -Nru oci-cli-3.37.8.orig/setup.py oci-cli-3.37.8/setup.py
---- oci-cli-3.37.8.orig/setup.py	2024-02-06 07:35:21.000000000 +0100
-+++ oci-cli-3.37.8/setup.py	2024-02-08 10:27:25.770560495 +0100
+diff -Nru oci-cli-3.37.9.orig/setup.py oci-cli-3.37.9/setup.py
+--- oci-cli-3.37.9.orig/setup.py	2024-02-13 11:20:04.000000000 +0100
++++ oci-cli-3.37.9/setup.py	2024-02-16 14:26:29.467531027 +0100
 @@ -30,23 +30,23 @@
      readme = f.read()
  
  requires = [
--    'oci==2.121.0',
-+    'oci>=2.121.0',
+-    'oci==2.121.1',
++    'oci>=2.121.1',
      'arrow>=1.0.0',
      'certifi',
 -    'click==8.0.4',
