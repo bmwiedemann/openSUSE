@@ -1,5 +1,14 @@
 -------------------------------------------------------------------
-Mon Nov  2 18:19:32 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Mon Mar  4 17:59:28 UTC 2024 - Илья Индиго <13ilya@gmail.com>
 
-- Initialization 3.0.1.
-- Add patch Use-local-cmake-modules-first.patch.
+- Changed source to https://github.com/nphantasm/soundkonverter
+- Updated to 3.0.1+git20240225.
+  * Removed file Use-local-cmake-modules-first.patch.
+  * https://github.com/dfaust/soundkonverter/compare/master...nphantasm:soundkonverter:master
+  * Added support libtag 2.
+
+-------------------------------------------------------------------
+Mon Nov  2 18:19:32 UTC 2020 - Илья Индиго <13ilya@gmail.com>
+
+- Initialized 3.0.1.
+- Added file Use-local-cmake-modules-first.patch.

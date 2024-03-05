@@ -1,7 +1,7 @@
 #
 # spec file for package soundkonverter
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           soundkonverter
-Version:        3.0.1
+Version:        3.0.1+git20240225
 Release:        0
 Summary:        Audio file converter, CD ripper and Replay Gain tool
 License:        GPL-2.0-only
-URL:            https://github.com/dfaust/%{name}
-Source0:        https://github.com/dfaust/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         Use-local-cmake-modules-first.patch
+URL:            https://github.com/nphantasm/%{name}
+# n=soundkonverter && v=3.0.1 && g=20240225 && d=$n-$v+git$g && cd /tmp && git clone https://github.com/nphantasm/$n.git && pushd $n && rm -rf .??* && popd && mv $n $d && f=$d.tar.xz && tar c --remove-files "$d" | xz -9e > "$f"
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  cdparanoia-devel
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
@@ -81,7 +81,7 @@ popd
 %{_bindir}/soundkonverter
 %{_libdir}/libsoundkonvertercore.so*
 %{_libdir}/qt5/plugins/soundkonverter_*
-%{_datadir}/appdata/soundkonverter.appdata.xml
+%{_datadir}/metainfo/soundkonverter.appdata.xml
 %{_datadir}/applications/soundkonverter.desktop
 %{_datadir}/icons/hicolor/*/apps/soundkonverter*.png
 %{_datadir}/kservices5/soundkonverter_*

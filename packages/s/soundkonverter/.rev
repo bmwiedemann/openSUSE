@@ -8,4 +8,16 @@
 - Add patch Use-local-cmake-modules-first.patch.</comment>
     <requestid>845515</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5d95c1547b0634aefce9745dd4662b47</srcmd5>
+    <version>3.0.1+git20240225</version>
+    <time>1709661017</time>
+    <user>anag+factory</user>
+    <comment>- Changed source to https://github.com/nphantasm/soundkonverter
+- Updated to 3.0.1+git20240225.
+  * Removed file Use-local-cmake-modules-first.patch.
+  * https://github.com/dfaust/soundkonverter/compare/master...nphantasm:soundkonverter:master
+  * Added support libtag 2.</comment>
+    <requestid>1154902</requestid>
+  </revision>
 </revisionlist>
