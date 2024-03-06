@@ -37,8 +37,7 @@ Guile-Charting is a library to create charts and graphs in Guile. It
 is thus far a hack.
 
 %prep
-%setup -q
-%patch0 -p0
+%autosetup -p0
 
 %build
 aclocal
