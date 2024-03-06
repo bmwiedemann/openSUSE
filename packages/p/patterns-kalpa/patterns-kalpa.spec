@@ -141,6 +141,7 @@ Requires:       vim-small
 Requires:       wtmpdb
 # people are addicted to sudo
 Requires:       sudo
+Requires:       system-group-wheel
 Requires:       systemd-presets-branding-Kalpa
 Requires:       terminfo-base
 Requires:       timezone
