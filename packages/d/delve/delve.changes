@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Mar 06 17:57:37 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.22.1:
+  * *: release version 1.22.1 (#3662)
+  * pkg/proc: remove usage of gore dependency (#3664)
+  * cmd/dlv: fix --continue with unix domain sockets (#3658)
+  * Don't use a fixed width for s when parsing /proc/net/tcp lines (#3660)
+  * *: update gore (#3659)
+  * terminal: add prompt color option (#3648)
+  * terminal: add color highlighting to stacktraces (#3649)
+  * cmd/dlv: support unix domain sockets (#3655)
+  * service/dap: support waitfor option for 'dap attach' only (#3656)
+  * *: update go-delve/gore (#3646)
+  * *: remove accidentally committed binary (#3645)
+  * proc: if a reslice operator is used load the whole slice (#3623)
+  * proc/gdbserver: clean up rr directory on detach (#3570)
+  * proc: skip TestDebugStripped on development versions of Go (#3642)
+  * evalop: fix name of executeOp function in test (#3643)
+  * service/dap: make TestEvaluateCallFunction independent of line numbers (#3644)
+  * proc/native: add support sentinel for FreeBSD with cgo disabled (#3636)
+  * make.go: do not recodesign when rebuilding (#3639)
+  * proc/native: remove dead code in nonative_darwin.go (#3637)
+  * proc: fix stacktrace frame after runtime.sigpanic (#3638)
+  * proc: fix dynamic library loading with musl loader (#3621)
+  * proc: fix TestCondBreakpointWithFrame flakes on 1.22rc1 (#3624)
+  * terminal: add paging to print, vars, args and locals (#3620)
+  * TeamCity: speed up ppc64le CI (#3622)
+  * Documentation: document runtime.frame(n).varname (#3625)
+  * go.mod: Update version of go-delve/liner (#3619)
+  * Cirrus-CI: update FreeBSD version (#3618)
+
+-------------------------------------------------------------------
 Fri Dec 29 23:00:54 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.22.0:
