@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  4 13:45:21 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Sat Jan 20 02:36:09 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use %patch0 to fix compilation with rpm-4.19

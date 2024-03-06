@@ -50,8 +50,7 @@ Authors:
     Ryan Eatmon <reatmon@ti.com>
 
 %prep
-%setup -q -n Net-Jabber-%{version}
-%patch0
+%autosetup -p0 -n Net-Jabber-%{version}
 
 %build
 perl Makefile.PL
