@@ -60,10 +60,9 @@ BuildRequires:  perl-macros
 This module deals with decoding of strings with XML character entities.
 
 %prep
-%setup -q -n "XML-Entities"
+%autosetup -p0 -n "XML-Entities"
 %__sed -i '/^auto_install/d' Makefile.PL
 %__cp bin/download-entities.pl bin/download-entities.pl.orig
-%patch1
 
 %__cp -v "%{SOURCE10}" .
 %__grep -E 'href.*=.*/.*\.ent.*Entity Declarations' "%{SOURCE10}" | cut -f2 -d\" \

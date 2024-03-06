@@ -77,4 +77,12 @@ Looking at the diffs, this looks to be exclusively a documentation update. (forw
      - make clean no longer wipes out entities data</comment>
     <requestid>407697</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>688896238fa004e24a2386b0a7c0bc07</srcmd5>
+    <version>1.0002</version>
+    <time>1709762696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1155375</requestid>
+  </revision>
 </revisionlist>
