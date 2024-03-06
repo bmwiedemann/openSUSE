@@ -49,4 +49,18 @@
   * trivial: SocketAddress: remove superfluous slash in comment</comment>
     <requestid>1148686</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>7ed96d587d6d222e04f5d1aee8c3f4a0</srcmd5>
+    <version>0.2</version>
+    <time>1709762756</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.0+gita8e6f94:
+  * GroupInfo: fix system include style
+  * global: use angle bracket includes for libcosmos
+  * string.hxx: add wide-string variant for to_lower(), to_upper()
+  * string.hxx. support wide string strip() operation
+  * byte_order: add default constructor for EndianNumber
+- this fixes a broken -debugsource package generation</comment>
+    <requestid>1155512</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 06 09:46:18 UTC 2024 - matthias.gerstner@suse.com
+
+- Update to version 0.2.0+gita8e6f94:
+  * GroupInfo: fix system include style
+  * global: use angle bracket includes for libcosmos
+  * string.hxx: add wide-string variant for to_lower(), to_upper()
+  * string.hxx. support wide string strip() operation
+  * byte_order: add default constructor for EndianNumber
+- this fixes a broken -debugsource package generation
+
+-------------------------------------------------------------------
 Wed Feb 21 11:06:40 UTC 2024 - matthias.gerstner@suse.com
 
 - Update to version 0.2.0+gitff219ee:
