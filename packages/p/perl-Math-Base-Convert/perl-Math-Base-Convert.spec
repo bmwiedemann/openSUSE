@@ -41,8 +41,7 @@ This module is pure Perl, has no external dependencies, and is backward
 compatible with old versions of Perl 5.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{cpan_name}-%{version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor

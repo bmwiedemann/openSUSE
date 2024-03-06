@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  4 13:19:46 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Jan 17 13:59:26 UTC 2017 - bwiedemann@suse.com
 
 - Add reproducible.patch to allow for reproducible builds
