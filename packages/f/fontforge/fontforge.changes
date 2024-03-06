@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar  5 12:17:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 642d8a3db6d4bc0e70b429622fdf01ecb09c4c10.patch: Fix build
+  with gettext 0.22.
+
+-------------------------------------------------------------------
+Sat Mar  2 03:24:22 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add fontforge-CVE-2024-25081-CVE-2024-25082.patch
+  Backporting 216eb14b from upstream, Fix splinefont shell command
+  injection.
+  (CVE-2024-25081 CVE-2024-25082 bsc#1220404 bsc#1220405)
+
+-------------------------------------------------------------------
 Mon Feb 26 08:38:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

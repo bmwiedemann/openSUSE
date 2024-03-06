@@ -1,7 +1,7 @@
 #
 # spec file for package fontforge
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,10 @@ Source0:        https://github.com/fontforge/fontforge/archive/%{version}.tar.gz
 # workaround for bug 930076, imho upstream should fix this
 # https://github.com/fontforge/fontforge/issues/2270
 Patch0:         fontforge-version.patch
-Patch5:         add-bitmap-transform-support.patch
+Patch1:         add-bitmap-transform-support.patch
+# PATCH-FIX-UPSTREAM fontforge-CVE-2024-25081-CVE-2024-25082.patch CVE-2024-25081 CVE-2024-25082 bsc#1220404 bsc#1220405 qzhao@suse.com -- Fix Splinefont shell invocation.
+Patch2:         fontforge-CVE-2024-25081-CVE-2024-25082.patch
+Patch3:         https://github.com/fontforge/fontforge/commit/642d8a3db6d4bc0e70b429622fdf01ecb09c4c10.patch
 BuildRequires:  cairo-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -121,7 +124,6 @@ rm %{buildroot}%{_docdir}/%{name}/html/.nojekyll
 %{_datadir}/icons/hicolor/*/apps/org.fontforge.FontForge.png
 %{_datadir}/icons/hicolor/scalable/apps/org.fontforge.FontForge.svg
 %{_datadir}/metainfo/org.fontforge.FontForge.*.xml
-# %{_datadir}/pixmaps/org.fontforge.FontForge.*
 %{_datadir}/mime/packages/%{name}.xml
 %dir %{_docdir}/fontforge
 
