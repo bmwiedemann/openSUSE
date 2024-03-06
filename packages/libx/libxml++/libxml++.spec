@@ -1,7 +1,7 @@
 #
 # spec file for package libxml++
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-# Bump the version in baselibs too!
 %define so_ver  5_0-1
 %define base_ver 5.0
 
@@ -28,7 +27,6 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://libxmlplusplus.github.io/libxmlplusplus
 Source0:        https://download.gnome.org/sources/libxml++/%{base_ver}/%{name}-%{version}.tar.xz
-Source1:        baselibs.conf
 
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
