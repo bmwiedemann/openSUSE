@@ -1,7 +1,7 @@
 #
 # spec file for package python-widgetsnbextension
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%define skip_python39 1
 %define jupver 8.0.9
 Name:           python-widgetsnbextension
 Version:        4.0.9

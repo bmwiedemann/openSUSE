@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  5 18:38:44 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip python39: no longer supported since ipython 8.19 (through
+  nbclassic)
+
+-------------------------------------------------------------------
 Sun Sep 24 18:34:51 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.0.9 with jupyter-js-widgets 8.0.9
