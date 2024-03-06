@@ -1,7 +1,7 @@
 #
 # spec file for package telepathy-glib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,6 @@ License:        LGPL-2.1-or-later
 Group:          Development/Languages/C and C++
 URL:            http://telepathy.freedesktop.org/
 Source:         http://telepathy.freedesktop.org/releases/telepathy-glib/%{name}-%{version}.tar.gz
-Source99:       baselibs.conf
 
 BuildRequires:  gtk-doc >= 1.17
 BuildRequires:  libxslt-devel

@@ -664,4 +664,14 @@ Wanted for 13.1 (forwarded request 201347 from dimstar)</comment>
     <comment></comment>
     <requestid>870855</requestid>
   </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>cc95ca85bc902b0fa7d3e61b0b6cf705</srcmd5>
+    <version>0.24.2</version>
+    <time>1709762626</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop baselibs.conf: the -32bit packages are no longer needed and
+  have not been part of Tumbleweed for a while already (build for
+  i586 only enabled in LegacyX86). (forwarded request 1155216 from dimstar)</comment>
+    <requestid>1155236</requestid>
+  </revision>
 </revisionlist>
