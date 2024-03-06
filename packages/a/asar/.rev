@@ -57,4 +57,14 @@
     <comment></comment>
     <requestid>1124165</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>117b7097eed565af4419de55a4a9fc80</srcmd5>
+    <version>3.2.9</version>
+    <time>1709762819</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream version 3.2.9
+  * fix symlink pointing error in filesystem.insertLink
+</comment>
+    <requestid>1155755</requestid>
+  </revision>
 </revisionlist>

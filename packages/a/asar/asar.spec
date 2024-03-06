@@ -17,7 +17,7 @@
 
 
 Name:           asar
-Version:        3.2.8
+Version:        3.2.9
 Release:        0
 Summary:        Creating atom-shell (electron) app packages
 License:        MIT and ISC
@@ -89,7 +89,11 @@ find -name '.releaserc*' -type f -print -delete
 
 %fdupes %{buildroot}
 
-#%%check
+%check
+# https://docs.fedoraproject.org/en-US/packaging-guidelines/Node.js/#_build_testing_in_check
+%{__nodejs} -e 'require("./")'
+
+
 #We can't run tests, we don't have mocha available.
 
 %files

@@ -1,5 +1,4 @@
-#!/bin/bash -x
-# shellcheck disable=2181
+#!/bin/bash -eux
 
 ASAR_PKGDIR="$(pwd)"
 ASAR_PKGVERSION=$(<./*.spec grep ^Version | sed -e 's/Version:[ ]*//g')
@@ -41,7 +40,7 @@ pushd "$ASAR_PATH" || cleanup_and_exit 1
 
 
 echo ">>>>>> Install npm modules"
-yarn install --pure-lockfile --ignore-engines --ignore-scripts --production --link-duplicates
+yarn install --frozen-lockfile --ignore-engines --ignore-platform  --ignore-scripts --production --link-duplicates
 ret=$?
 if [ $ret -ne 0 ]; then
     echo "ERROR: yarn install failed"
@@ -69,14 +68,9 @@ find . -type f| sponge |\
 
 
 echo ">>>>>> Package vendor files"
-rm -f "${SIGNAL_PKGDIR}/vendor.tar.zst"
+rm -f "${ASAR_PKGDIR}/vendor.tar.zst"
 ZSTD_CLEVEL=19 ZSTD_NBTHREADS=$(nproc) tar --zstd --sort=name -vvScf "${ASAR_PKGDIR}/vendor.tar.zst" node_modules
 if [ $? -ne 0 ]; then
     cleanup_and_exit 1
 fi
 echo "vendor $(du -sh "${ASAR_PKGDIR}/vendor.tar.zst")"
-
-
-popd || cleanup_and_exit 1
-
-cleanup_and_exit 0
