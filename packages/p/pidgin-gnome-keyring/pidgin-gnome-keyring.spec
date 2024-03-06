@@ -45,8 +45,8 @@ password signs on, its password will automatically be saved to the
 keyring and removed from the plaintext accounts.xml file.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
+
 echo "%{version}" > VERSION
 
 %build

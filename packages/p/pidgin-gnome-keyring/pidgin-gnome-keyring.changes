@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 15:00:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Wed Mar 15 20:05:11 UTC 2017 - sor.alexei@meowr.ru
 
 - Use a generated tarball instead of using _service.
