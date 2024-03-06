@@ -1,7 +1,7 @@
 #
 # spec file for package python-fabio
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,64 +16,75 @@
 #
 
 
-%define packagename fabio
-%define skip_python2 1
+%define pyversion 2023.10.0
 Name:           python-fabio
-Version:        0.14.0
+Version:        2023.10
 Release:        0
 Summary:        Image IO for images produced by 2D X-ray detectors
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
 URL:            https://github.com/silx-kit/fabio
-Source:         https://github.com/silx-kit/fabio/archive/v%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
+Source:         https://github.com/silx-kit/fabio/archive/v%{version}.tar.gz#/fabio-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module h5py}
+BuildRequires:  %{python_module hdf5plugin}
 BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module numpy >= 1.19.1}
+BuildRequires:  %{python_module meson-python >= 0.11}
 BuildRequires:  %{python_module numpy-devel}
-BuildRequires:  %{python_module qt5}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pyproject-metadata}
+BuildRequires:  %{python_module tomli}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  meson
+BuildRequires:  ninja
 BuildRequires:  python-rpm-macros
 Requires:       python-Pillow
 Requires:       python-h5py
+Requires:       python-hdf5plugin
 Requires:       python-lxml
-Requires:       python-numpy >= 1.19.1
-Requires:       python-qt5
+Requires:       python-numpy
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # This package does not support 32 bit arch.
-ExcludeArch:    i586 %{arm}
+ExcludeArch:    %{ix86} %{arm}
 %python_subpackages
 
 %description
 FabIO is an I/O library for images produced by 2D X-ray detectors.
 
 %prep
-%autosetup -n %{packagename}-%{version}
-# Fix W: non-executable-script
-grep -ElRZ '*.py' . | xargs -0 -l sed -i '/^#!/d'
+%autosetup -n fabio-%{version}
+find src -name '*.py' -and ! -path src/fabio/_version.py -exec sed -i '1{/^#!/d}' '{}' ';' -exec chmod -x '{}' ';'
 
 %build
-%python_build
+%{python_expand # _version.py is called during meson build
+sed -i '1{s|^#!.*$|#!%{__$python}|}' src/fabio/_version.py
+%{$python_pyproject_wheel}
+}
 
 %install
-%python_install
-%python_clone -a %{buildroot}%{_bindir}/densify-Bragg
+%pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/densify_Bragg
 %python_clone -a %{buildroot}%{_bindir}/fabio-convert
 %python_clone -a %{buildroot}%{_bindir}/fabio_viewer
 %python_clone -a %{buildroot}%{_bindir}/eiger2cbf
 %python_clone -a %{buildroot}%{_bindir}/eiger2crysalis
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-%prepare_alternative fabio-convert fabio_viewer eiger2cbf eiger2crysalis
+
+# the master/slave names have changed, we need to uninstall the old set before installing any new flavor
+%pre
+%python_uninstall_alternative densify-Bragg
 
 %post
-%python_install_alternative densify-Bragg fabio-convert fabio_viewer eiger2cbf eiger2crysalis
+%python_install_alternative fabio-convert fabio_viewer eiger2cbf eiger2crysalis densify_Bragg
 
 %postun
-%python_uninstall_alternative densify-Bragg fabio-convert fabio_viewer eiger2cbf eiger2crysalis
+%python_uninstall_alternative fabio-convert
 
 %check
+export PYTHONDONTWRITEBYTECODE=1
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
 $python ./run_tests.py --installed -v
 }
@@ -81,12 +92,12 @@ $python ./run_tests.py --installed -v
 %files %{python_files}
 %doc README.rst
 %license copyright
-%python_alternative %{_bindir}/densify-Bragg
+%python_alternative %{_bindir}/densify_Bragg
 %python_alternative %{_bindir}/fabio-convert
 %python_alternative %{_bindir}/fabio_viewer
 %python_alternative %{_bindir}/eiger2cbf
 %python_alternative %{_bindir}/eiger2crysalis
-%{python_sitearch}/%{packagename}
-%{python_sitearch}/%{packagename}-%{version}*-info
+%{python_sitearch}/fabio
+%{python_sitearch}/fabio-%{pyversion}.dist-info
 
 %changelog

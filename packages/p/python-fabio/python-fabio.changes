@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Mar  1 18:00:38 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2023.10
+  * New tutorial on the ccreation of multiframe Tiff
+  * Fix regression related to the depreciation of fopen on MSVC compilers (validation code)
+  * Clean-up packaging
+  * Support Python 3.7-3.12
+- FabIO-2023.6.0:
+  * Move source code to src
+  * Remove anything related to setup.py (i.e. exit setuptools and numpy.distutils)
+  * Debian build works only on debian12 (impossible to meet requirements on former versions)
+  * Supports python 3.7 - 3.11
+- FabIO-2023.4.1:
+  * Bugfix (#528) wrong checksum with small CBF files
+- FabIO-2023.04:
+  * eiger2crysalis generates full CrysalisPro projects, including mask & scan description
+  * Support Python 3.7 to 3.11 with Cython 0.21-3.0
+- FabIO-2022.12: (12/12/2022):
+  * First version declared stable
+  * Change the versioning system to calendar
+  * Change build-system from numpy.distutils to meson-python
+  * Deprecate the usage of setup.py (will be removed in next release)
+  * Fix Tif-reader for wrong photometric interpretation
+  * Update HiPiCimage
+  * Support BigTIFF
+  * Improvement of test-coverage
+  * Fix issue in ProgressBar in the viewer
+  * Fix memory leak in densify
+  * Fix EigerImage behavour
+  * Drop Python-3.6 (declared EOL 12-2021)
+
+-------------------------------------------------------------------
 Tue Nov 29 12:11:46 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python-six dependency 
