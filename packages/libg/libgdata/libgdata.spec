@@ -1,7 +1,7 @@
 #
 # spec file for package libgdata
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-# Update baselibs.conf when changing this
 %define _sover 22
 Name:           libgdata
 Version:        0.18.1
@@ -26,7 +25,6 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            http://live.gnome.org/libgdata
 Source:         https://download.gnome.org/sources/libgdata/0.18/%{name}-%{version}.tar.xz
-Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM 47.patch -- build: Build against new gcr-4 library
 Patch0:         47.patch
 
@@ -37,6 +35,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gcr-4)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(goa-1.0) >= 3.8
+BuildRequires:  pkgconfig(gtk+-3.0) >= 2.91.2
 BuildRequires:  pkgconfig(json-glib-1.0) >= 0.15
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.55.90
 BuildRequires:  pkgconfig(libxml-2.0)

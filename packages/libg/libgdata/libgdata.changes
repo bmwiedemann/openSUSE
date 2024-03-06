@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar  5 14:09:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop baselibs.conf: the -32bit packages are no longer needed and
+  have not been part of Tumbleweed for a while already (build for
+  i586 only enabled in LegacyX86).
+
+-------------------------------------------------------------------
+Mon Mar  4 11:13:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add explicit pkgconfig(gtk+-3.0) BuildRequires: meson checks for
+  it and we just relied on it being brought in indirectly.
+
+-------------------------------------------------------------------
 Mon Sep  5 10:14:32 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 47.patch: build: Build against new gcr-4 library. Following

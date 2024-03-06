@@ -525,4 +525,17 @@
 - Remove already disabled pkgconfig(gtk+-3.0) BuildRequires. (forwarded request 1003126 from dimstar)</comment>
     <requestid>1003237</requestid>
   </revision>
+  <revision rev="66" vrev="4">
+    <srcmd5>5c1d06b1c1ad64969f058e05ad914273</srcmd5>
+    <version>0.18.1</version>
+    <time>1709762632</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop baselibs.conf: the -32bit packages are no longer needed and
+  have not been part of Tumbleweed for a while already (build for
+  i586 only enabled in LegacyX86).
+
+- Add explicit pkgconfig(gtk+-3.0) BuildRequires: meson checks for
+  it and we just relied on it being brought in indirectly. (forwarded request 1155223 from dimstar)</comment>
+    <requestid>1155241</requestid>
+  </revision>
 </revisionlist>
