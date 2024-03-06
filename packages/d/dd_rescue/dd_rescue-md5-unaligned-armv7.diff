@@ -1,0 +1,44 @@
+commit 19da344403f9d340d7343e99df6ec3e4b79684d9
+Author: Kurt Garloff <kurt@garloff.de>
+Date:   Sun Mar 3 21:53:21 2024 +0100
+
+    Trouble is that we don't detect that ARMv7 requires extra buffering
+    is md5 input is not properly aligned. gcc-12 apparently is clever enough
+    to handle unlaigned memory access for us, which makes us succeed in the
+    testcase. It's not clever enough to also succeed in md5_64() :-O
+    
+    Signed-off-by: Kurt Garloff <kurt@garloff.de>
+
+diff --git a/configure.ac b/configure.ac
+index d99387c..7a7dccf 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -60,7 +60,7 @@ AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ 	AC_DEFINE_UNQUOTED([HAVE_REP_NOP], 1,
+ 		[check whether asm rep nop works])
+ ],[
+-	AC_MSG_RESULT(yes)
++	AC_MSG_RESULT(no)
+ ],[
+ 	AC_MSG_RESULT(no -- cross compiling)
+ ])
+@@ -79,7 +79,7 @@ AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ 	AC_DEFINE_UNQUOTED([HAVE_LFENCE], 1,
+ 		[check whether asm lfence works])
+ ],[
+-	AC_MSG_RESULT(yes)
++	AC_MSG_RESULT(no)
+ ],[
+ 	AC_MSG_RESULT(no -- cross compiling)
+ ])
+@@ -171,6 +171,10 @@ AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ 	 fprintf(stderr, "Debug: Off %i, Ptr %08lx\n", off, (unsigned long)ptr);
+ 	 copy((int*)b2, (const int*)ptr, 4);
+ 	 fprintf(stderr, "Ints: %08x %08x %08x %08x\n", *(int*)b2, *(int*)(b2+4), *(int*)(b2+8), *(int*)(b2+12));
++	 /* HACK: Somehow this test does no longer trigger with gcc-12 on armhf, but it should */
++	 #ifdef __arm__
++	 return 1;
++	 #endif
+ 	 return 0;
+ 	}
+ ]])],[

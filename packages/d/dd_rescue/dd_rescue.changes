@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Mar  3 22:47:17 CET 2024 - kurt@garloff.de
+
+- dd_rescue-md5-unaligned-armv7.diff: gcc-12 does make unaligned
+  accesses on armv7 work sometimes, which breaks a configure test
+  and then makes the make check fail with SIGBUS when using hash
+  after lzo compression. Hardcode knowledge about armv7.
+- Drop %setup (not needed if using %autosetup, thanks Valentin!)
+- Mention [bsc#1219882], as suggested by Valentin Lefebvre.
+
+-------------------------------------------------------------------
+Thu Feb 29 09:20:59 CET 2024 - kurt@garloff.de
+
+- Fix openssl version detection for 3.0.x. 
+- dd_rescue-ossl3-evpcipherctx.diff: There's an additional field
+  in the (private) struct _evp_cipher_ctx_st in openssl-3 since
+  3.0.6, which makes a difference on 32bit. (On 64bit, the effect
+  is hidden by the compiler's alignment rules.)
+
+-------------------------------------------------------------------
+Wed Feb 28 20:21:01 CET 2024 - kurt@garloff.de
+
+- Specify libopenssl-devel as BuildRequirements. This will select
+  openssl-3 on new distributions. 
+  This fixes [bsc#1219882].
+
+-------------------------------------------------------------------
 Fri Mar 17 08:54:11 CET 2023 - kurt@garloff.de
 
 - Readd detached signature. 

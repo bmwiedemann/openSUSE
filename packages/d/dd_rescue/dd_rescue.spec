@@ -31,12 +31,14 @@ Source0:        http://garloff.de/kurt/linux/ddrescue/%{name}-%{version}.tar.bz2
 Source1:        http://garloff.de/kurt/linux/ddrescue/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 Source99:       %{name}.changes
+Patch1:		dd_rescue-ossl3-evpcipherctx.diff
+Patch2:		dd_rescue-md5-unaligned-armv7.diff
 # PATCH-FIX-UPSTREAM no-python2.patch sf#ddrescue#4 mcepl@suse.com
 # Remove dependency on python2
 BuildRequires:  autoconf
 BuildRequires:  libattr-devel
 # Workaround for bsc#1193438
-BuildRequires:  libopenssl-1_1-devel
+BuildRequires:  libopenssl-devel
 BuildRequires:  lzo-devel
 BuildRequires:  lzop
 BuildRequires:  pkgconfig
@@ -111,7 +113,7 @@ though more will have to be done to feel confident about feeding untrusted
 data to the decompressor; the plugin is still young and might expose bugs.
 
 %prep
-%setup -q
+%autosetup -p1
 
 # Remove build time references so build-compare can do its work
 FAKE_BUILDTIME=$(LC_ALL=C date -u -r %{SOURCE99} '+%%H:%%M')
