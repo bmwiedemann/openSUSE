@@ -43,4 +43,41 @@
     <comment>- Update to version 1.0.2: (forwarded request 1139543 from jfkw)</comment>
     <requestid>1139545</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7d14594054f00ae347cabe818e68bdde</srcmd5>
+    <version>1.0.4</version>
+    <time>1709762818</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.4:
+  * cmd/govulncheck: mask line numbers and columns
+  * internal/scan: remove redundant new lines
+  * internal/vulncheck: add position for sinks in findings' trace
+  * internal/scan: put -show &lt;option&gt; into single quotes
+  * internal/buildinfo: do module-level analysis with no PCLN table
+  * internal/scan: add a newline after summary
+  * internal/test: add more info on GoBuild failures
+  * internal/scan: remove extra dot in a comment
+  * cmd/govulncheck: fix vendor test
+  * internal/vulncheck: refactor a loop with an append
+  * cmd/govulncheck: fix stripped bin test
+  * cmd/govulncheck: update vendor tests
+  * cmd/govulncheck: add more tests and reorganize them
+  * internal/vulncheck: add package and module mode for binaries
+  * internal/scan: replace Source with Symbol in text output
+  * internal/scan: fix error statuses for scan={package|module}
+  * internal/scan: add -show verbose flag
+  * internal/scan: overhaul text output
+  * internal/scan: simplify redundant error checking
+  * internal/scan: add scan level to testdata
+  * cmd/govulncheck/integration: update expectations for stackrox
+  * internal/vulncheck: support osv entries with no pkg info
+  * internal/vulncheck: remove redundant symbol check
+  * internal/vulncheck: simplify vulnerability detection
+
+- Update to version 1.0.3:
+  * internal/scan: add binary extract mode
+  * internal/scan, vulncheck: use packages.load for mod info
+  * internal/govulncheck: briefly explain streaming JSON</comment>
+    <requestid>1155753</requestid>
+  </revision>
 </revisionlist>
