@@ -1,0 +1,35 @@
+Index: orc-orc-0.4.28/testsuite/memcpy_speed.c
+===================================================================
+--- orc-orc-0.4.28.orig/testsuite/memcpy_speed.c
++++ orc-orc-0.4.28/testsuite/memcpy_speed.c
+@@ -102,6 +102,10 @@ main(int argc, char *argv[])
+     max = 140;
+   }
+ 
++  /* There is a pathological slow down for max > 150 or so
++     so set a lower value. */
++  max = 140;
++
+   for(i=0;i<max;i+=2){
+     double x = i*0.1 + 6.0;
+     int size = (int) pow(2.0, x);
+Index: orc-orc-0.4.28/testsuite/meson.build
+===================================================================
+--- orc-orc-0.4.28.orig/testsuite/meson.build
++++ orc-orc-0.4.28/testsuite/meson.build
+@@ -31,6 +31,7 @@ foreach test : tests
+     test(
+       test,
+       t,
++      timeout: 120,
+       env: {
+         'testfile': meson.current_source_dir() + '/test.orc',
+         'ORC_TARGET': i,
+@@ -43,6 +44,7 @@ foreach test : tests
+   test(
+       test,
+       t,
++      timeout: 120,
+       env: {
+         'testfile': meson.current_source_dir() + '/test.orc',
+       },

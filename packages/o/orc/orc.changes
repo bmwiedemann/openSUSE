@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Mar  6 13:10:24 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Backport patch from SLE
+- Add relax-tests.patch to increase test timeouts to 2 minutes,
+  also limit the max value for memcpy_speed.c test bsc#1130085
+- Enable tests
+
+-------------------------------------------------------------------
+Tue Mar  5 07:06:08 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- version update to 0.4.38
+  0.4.38
+  ======
+  - x86: account for XSAVE when checking for AVX support, fixing
+    usage on hardened linux kernels where AVX support has been
+    disabled (L. E. Segovia)
+  - neon: Use the real intrinsics for divf and sqrtf
+    (L. E. Segovia)
+  - orc.m4 for autotools is no longer shipped. If anyone still uses
+    it they can copy it into their source tree (Tim-Philipp Müller)
+
+-------------------------------------------------------------------
 Thu Feb 15 09:26:15 UTC 2024 - pgajdos@suse.com
 
 - version update to 0.4.37

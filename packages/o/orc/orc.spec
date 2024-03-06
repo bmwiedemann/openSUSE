@@ -18,7 +18,7 @@
 
 
 Name:           orc
-Version:        0.4.37
+Version:        0.4.38
 Release:        0
 Summary:        The Oil Runtime Compiler
 License:        BSD-3-Clause
@@ -26,6 +26,7 @@ Group:          Productivity/Multimedia/Other
 URL:            https://gitlab.freedesktop.org/gstreamer/orc
 Source:         https://gstreamer.freedesktop.org/src/orc/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+Patch0:         relax-tests.patch
 BuildRequires:  gtk-doc >= 1.12
 BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
@@ -66,14 +67,22 @@ arithmetic operations.
 
 %build
 %meson \
-	-Dorc-test=disabled \
+	-Dorc-test=enabled \
 	-Dexamples=disabled \
-	-Dtests=disabled \
+	-Dtests=enabled \
 	%{nil}
 %meson_build
 
 %install
 %meson_install
+rm %{buildroot}%{_bindir}/orc-bugreport
+rm %{buildroot}%{_libdir}/pkgconfig/orc-test-0.4.pc
+
+%check
+# Disable testsuite for almost all arches, it's only stable on x86_64
+%ifnarch aarch64 %{arm} %{ix86} ppc64le
+%meson_test
+%endif
 
 %post -n liborc-0_4-0 -p /sbin/ldconfig
 %postun -n liborc-0_4-0 -p /sbin/ldconfig
@@ -83,7 +92,6 @@ arithmetic operations.
 %{_includedir}/orc-0.4/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/orc-0.4.pc
-%{_datadir}/aclocal/orc.m4
 
 %files doc
 %dir %{_datadir}/gtk-doc
