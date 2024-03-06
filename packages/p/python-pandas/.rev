@@ -659,4 +659,12 @@ All packages broken by this update should be fixed now.</comment>
     <comment></comment>
     <requestid>1152290</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>f235e9363aa58ba778dd69b512deaf8e</srcmd5>
+    <version>2.2.1</version>
+    <time>1709762580</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1155222</requestid>
+  </revision>
 </revisionlist>

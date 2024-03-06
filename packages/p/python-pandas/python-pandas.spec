@@ -17,14 +17,17 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
+%{?sle15_python_module_pythons}
+
 %if "%{flavor}" == ""
 %define psuffix %{nil}
 %bcond_with test
 %else
 %define psuffix -%{flavor}
 %bcond_without test
-# globally skip testing py39
+%if "%{flavor}" != "test-py39"
 %define skip_python39 1
+%endif
 %if "%{flavor}" != "test-py310"
 %define skip_python310 1
 %endif
@@ -55,7 +58,10 @@ ExclusiveArch:  donotbuild
 # depend/not depend on python-pyarrow and apache-arrow [bsc#1218592]
 %bcond_without pyarrow
 
-%{?sle15_python_module_pythons}
+%if %{suse_version} <= 1500
+# requires __has_builtin with keywords
+%define gccver 13
+%endif
 Name:           python-pandas%{psuffix}
 # Set version through _service
 Version:        2.2.1
@@ -74,7 +80,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module versioneer-toml}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?gccver}-c++
 BuildRequires:  git-core
 BuildRequires:  meson >= 1.2.1
 BuildRequires:  python-rpm-macros
@@ -125,7 +131,7 @@ BuildRequires:  %{python_module dask-dataframe}
 BuildRequires:  %{python_module pandas-all = %{version}}
 BuildRequires:  %{python_module pandas-clipboard = %{version}}
 BuildRequires:  %{python_module pandas-compression = %{version}}
-BuildRequires:  %{python_module pandas-computation = %{version}}
+BuildRequires:  %{python_module pandas-computation = %{version} if %python-base >= 3.10}
 BuildRequires:  %{python_module pandas-excel = %{version}}
 %{?with_pyarrow:BuildRequires:  %{python_module pandas-feather = %{version}}}
 BuildRequires:  %{python_module pandas-fss = %{version}}
@@ -412,7 +418,9 @@ Requires:       python-pytest-xdist >= 2.2.0
 Requires:       python-scipy >= 1.10.0
 Requires:       python-tables >= 3.8.0
 Requires:       python-tabulate >= 0.9
+%if 0%{python_version_nodots} >= 310
 Requires:       python-xarray >= 2022.12
+%endif
 Requires:       python-xlrd >= 2.0.1
 Requires:       python-zstandard >= 0.19.0
 %{?with_aws:Requires:                  python-s3fs >= 2022.05.0}
@@ -451,6 +459,8 @@ sed -i '/dependencies = \[/,/\]/ {/tzdata.*>=/d}' pyproject.toml
 
 %build
 %if !%{with test}
+%{?gccver:export CXX=g++-%{gccver}}
+%{?gccver:export CC=gcc-%{gccver}}
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %pyproject_wheel
 %endif
@@ -574,9 +584,11 @@ xvfb-run pytest-%{$python_bin_suffix} -v -n %{jobs} -rsfE --dist=loadfile \
 %license LICENSE
 %doc README.md
 
+%if 0%{python_version_nodots} >= 310
 %files %{python_files computation}
 %license LICENSE
 %doc README.md
+%endif
 
 %files %{python_files fss}
 %license LICENSE

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar  4 20:44:10 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- No xarrary for python 3.9 anymore: Remove from pandas[all] and
+  exclude pandas[computation]. Reenable testing to check it.
+  It will be skipped automatically when python39 is dropped from
+  Tumbleweed globally.
+- Fix 15.x build: requires newer compiler
+- Fix 15.x test skips: sle15_python_module_pythons needs to be
+  declared earlier
+
+-------------------------------------------------------------------
 Fri Feb 23 20:04:59 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.2.1
