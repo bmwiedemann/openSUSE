@@ -56,9 +56,8 @@ sanity tests. The comparison routines are the exception for which there
 will be more extensive tests in a future release.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -p1 -n %{cpan_name}-%{version}
 find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
-%patch0 -p1
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
