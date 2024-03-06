@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 06 09:40:15 UTC 2024 - matthias.gerstner@suse.com
+
+- Update to version 0.2.0+git4881bea:
+  * global: replace cosmos and xpp #include with angle brackets
+- rollback the "-debugsource" fix that didn't work as expected
+
+-------------------------------------------------------------------
 Tue Mar  5 13:29:42 UTC 2024 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - fix -debugsource package contents
