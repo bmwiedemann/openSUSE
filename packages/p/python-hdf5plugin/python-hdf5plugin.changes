@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Fri Mar  1 18:05:32 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for v4.4.0 required by python-fabio
+- Add hdf5plugin-system-libs.patch
+  * Try to debundle as much as possible with 
+  * Disable SSE3 and AVX512 because we are stuck at supporting
+    x86_64v1
