@@ -53,4 +53,12 @@ which is used to monitor the amount of disk I/O</comment>
     <comment>- perl522.patch: fix test to work with perl-5.22</comment>
     <requestid>327563</requestid>
   </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>6f1531f1ed1aa7c99e51d556ce07582f</srcmd5>
+    <version>0.36</version>
+    <time>1709762789</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1155634</requestid>
+  </revision>
 </revisionlist>
