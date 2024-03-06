@@ -34,14 +34,15 @@
 %endif
 
 Name:           mygnuhealth
-Version:        %{majorver}.0.1
+Version:        %{majorver}.0.2
 Release:        0
 Summary:        The personal health record for the GNU Health system
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Management
 URL:            http://health.gnu.org/
-Source:         https://ftp.gnu.org/gnu/health/mygnuhealth/%{name}-%{version}.tar.gz
-Source1:        https://ftp.gnu.org/gnu/health/mygnuhealth/%{name}-%{version}.tar.gz.sig
+Source:         https://files.pythonhosted.org/packages/source/m/%{name}/%{name}-%{version}.tar.gz  
+## https://ftp.gnu.org/gnu/health/mygnuhealth/%{name}-%{version}.tar.gz
+## Source1:        https://ftp.gnu.org/gnu/health/mygnuhealth/%{name}-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=health&download=1#/%{name}.keyring
 Patch0:         remove-obsolete-deps.patch
 # SECTION build

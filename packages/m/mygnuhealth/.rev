@@ -89,4 +89,12 @@ the _link needed to be removed as the .spec file got out of sync</comment>
     <comment></comment>
     <requestid>1144985</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c8fe5b036306ad111bc40e146ecf55b1</srcmd5>
+    <version>2.0.2</version>
+    <time>1709762750</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1155504</requestid>
+  </revision>
 </revisionlist>
