@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Mar  3 19:17:50 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.8
+  * Added Arm 64bit (AArch64) support.
+  * Implemented ``PTRACE_GETREGSET`` and ``PTRACE_SETREGSET``
+    required on AArch64 and available on Linux.
+  * Issue #66: Fix ``SIGTRAP|0x80`` or ``SIGTRAP`` wait in
+    syscall_state.exit  (``PTRACE_O_TRACESYSGOOD``).
+- Build PEP517 wheels separately in multibuild
+- Add patchtes for Python 3.12:
+  * python-ptrace-pr81-importlib.patch gh#vstinner/python-ptrace#81
+  * python-ptrace-pr83-importlib.patch gh#vstinner/python-ptrace#83
+- Remove upstreamed patch:
+  * add-aarch64-support.patch
+
+-------------------------------------------------------------------
 Wed Jan 13 07:33:18 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Backport patch to add aarch64 support:

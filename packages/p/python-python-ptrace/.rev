@@ -58,4 +58,23 @@
     <comment></comment>
     <requestid>862825</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>256f1648f94b3ece43bd51ca4e4c96ac</srcmd5>
+    <version>0.9.8</version>
+    <time>1709762686</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.8
+  * Added Arm 64bit (AArch64) support.
+  * Implemented ``PTRACE_GETREGSET`` and ``PTRACE_SETREGSET``
+    required on AArch64 and available on Linux.
+  * Issue #66: Fix ``SIGTRAP|0x80`` or ``SIGTRAP`` wait in
+    syscall_state.exit  (``PTRACE_O_TRACESYSGOOD``).
+- Build PEP517 wheels separately in multibuild
+- Add patchtes for Python 3.12:
+  * python-ptrace-pr81-importlib.patch gh#vstinner/python-ptrace#81
+  * python-ptrace-pr83-importlib.patch gh#vstinner/python-ptrace#83
+- Remove upstreamed patch:
+  * add-aarch64-support.patch</comment>
+    <requestid>1155342</requestid>
+  </revision>
 </revisionlist>
