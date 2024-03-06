@@ -352,8 +352,8 @@ Index: gstreamer-1.22.2/tools/gst-inspect.c
 +          print_plugin_automatic_install_info (plugin, print_aii_rpm);
          } else {
            print_plugin_info (plugin);
-           print_plugin_features (plugin);
-@@ -2306,13 +2549,17 @@ real_main (int argc, char *argv[])
+           print_plugin_status (plugin);
+@@ -2306,14 +2549,18 @@ real_main (int argc, char *argv[])
  
            if (plugin) {
              if (print_aii) {
@@ -361,6 +361,7 @@ Index: gstreamer-1.22.2/tools/gst-inspect.c
 +              print_plugin_automatic_install_info (plugin, print_aii_rpm);
              } else {
                print_plugin_info (plugin);
+               print_plugin_status (plugin);
                print_plugin_features (plugin);
              }
            } else {

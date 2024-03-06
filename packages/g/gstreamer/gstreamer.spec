@@ -19,7 +19,7 @@
 %define gst_branch 1.0
 
 Name:           gstreamer
-Version:        1.22.9
+Version:        1.24.0
 Release:        0
 Summary:        Streaming-Media Framework Runtime
 License:        LGPL-2.1-or-later
@@ -34,8 +34,7 @@ Source99:       baselibs.conf
 Patch1:         gstreamer-rpm-prov.patch
 # PATCH-FIX-OPENSUSE gstreamer-pie.patch mgorse@suse.com -- create position-independent executables.
 Patch2:         gstreamer-pie.patch
-# PATCH-FIX-OPENSUSE reduce-required-meson.patch alarrosa@suse.com -- build with meson 0.61
-Patch3:         reduce-required-meson.patch
+
 
 BuildRequires:  bison >= 2.4
 BuildRequires:  check-devel
@@ -43,10 +42,11 @@ BuildRequires:  flex >= 2.5.31
 BuildRequires:  gobject-introspection-devel >= 1.31.1
 BuildRequires:  libcap-devel
 BuildRequires:  libcap-progs
-BuildRequires:  meson >= 0.61
+BuildRequires:  meson >= 1.1
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
+BuildRequires:  rust >= 1.48
 BuildRequires:  pkgconfig(bash-completion) >= 2.0
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
@@ -139,8 +139,8 @@ sed -i -e '1{s,^#!/usr/bin/env python3,#!%{_bindir}/python3,}' docs/gst-plugins-
 
 %build
 export PYTHON=%{_bindir}/python3
-sed -i "s/executable('gst-plugin-scanner',/executable('gst-plugin-scanner-%{_target_cpu}',/" libs/gst/helpers/meson.build
-sed -i "s/gst-plugin-scanner/gst-plugin-scanner-%{_target_cpu}/" meson.build
+sed -i "s/'gst-plugin-scanner': /'gst-plugin-scanner-%{_target_cpu}': /" libs/gst/helpers/meson.build
+sed -i "s/'gst-plugin-scanner'/'gst-plugin-scanner-%{_target_cpu}'/" meson.build
 sed -i 's/^#define EXESUFFIX$/#define EXESUFFIX "-%{_target_cpu}"/' gst/gstpluginloader.c
 # TODO: enable dbghelp
 %meson \
@@ -230,6 +230,7 @@ install -m755 -D %{SOURCE2} %{buildroot}%{_rpmconfigdir}/gstreamer-provides
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_libexecdir}/gstreamer-%{gst_branch}/gst-plugins-doc-cache-generator
+%{_libexecdir}/gstreamer-%{gst_branch}/gst-ptp-helper-test
 %{_rpmconfigdir}/gstreamer-provides
 %{_fileattrsdir}/gstreamer.attr
 %{_datadir}/gir-1.0/*.gir
