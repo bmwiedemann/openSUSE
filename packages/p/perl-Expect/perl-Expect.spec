@@ -60,9 +60,8 @@ automate password entry for su/ssh/scp/rsh/..." and "I want to use Expect
 to automate [anything with a buzzword]..."
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -p1 -n %{cpan_name}-%{version}
 find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
-%patch0 -p1
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
