@@ -47,8 +47,7 @@ Author:
 
 
 %prep
-%setup -q -n %{real_name}-%{version}
-%patch1 -p0
+%autosetup -p0 -n %{real_name}-%{version}
 
 %build
 perl Makefile.PL 
