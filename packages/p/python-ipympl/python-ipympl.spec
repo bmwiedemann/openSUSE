@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipympl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%define skip_python39 1
 %define pyver   0.9.3
 %define jsver   0.11.3
 %bcond_with     test
