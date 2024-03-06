@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Mar 06 12:57:49 UTC 2024 - martin.liska@hey.com
+
+- Update to version 2.9.0+git.20240306.f0e1387:
+  * Fix CI
+  * Fix CI
+  * CI: install ruff
+  * Add TW docker step
+  * Add Ruff as a separate job
+  * Start using Ruff
+  * Reformat the code with Ruff formatter
+  * CI refactor
+  * Reformat CI configs
+  * Simplify CI openSUSE matrix
+  * Fix CI package
+  * Add missing package for mold action
+  * Use mold GH action
+  * CI: use checkout@v4
+  * Support changes function signature in IncludesPPCallbacks::InclusionDirective
+  * Test agains LLVM 19
+  * Fix flake8 error:
+  * CMakeLists changes to fix macOS build:
+  * Fix LLVM 18 build error:
+  * Add clang version string to clang_delta --version
+  * Disable for now deprecated declarations Werrors
+  * Revert "Add CI hack for LLVM nightly"
+  * Add CI hack for LLVM nightly
+  * cvise.py: call shell vial `/usr/bin/env` indirection instead of `/bin`
+
+-------------------------------------------------------------------
 Mon Nov 06 18:36:00 UTC 2023 - martin.liska@hey.com
 
 - Update to version 2.9.0+git.20231106.cc76e98:

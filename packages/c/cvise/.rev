@@ -1103,4 +1103,36 @@
   * disable -Werror=non-template-friend in llvm/ADT/PagedVector.h:215:59</comment>
     <requestid>1123668</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>c778bd1c667318f3a42207b94a86788c</srcmd5>
+    <version>2.9.0+git.20240306.f0e1387</version>
+    <time>1709762762</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.9.0+git.20240306.f0e1387:
+  * Fix CI
+  * Fix CI
+  * CI: install ruff
+  * Add TW docker step
+  * Add Ruff as a separate job
+  * Start using Ruff
+  * Reformat the code with Ruff formatter
+  * CI refactor
+  * Reformat CI configs
+  * Simplify CI openSUSE matrix
+  * Fix CI package
+  * Add missing package for mold action
+  * Use mold GH action
+  * CI: use checkout@v4
+  * Support changes function signature in IncludesPPCallbacks::InclusionDirective
+  * Test agains LLVM 19
+  * Fix flake8 error:
+  * CMakeLists changes to fix macOS build:
+  * Fix LLVM 18 build error:
+  * Add clang version string to clang_delta --version
+  * Disable for now deprecated declarations Werrors
+  * Revert &quot;Add CI hack for LLVM nightly&quot;
+  * Add CI hack for LLVM nightly
+  * cvise.py: call shell vial `/usr/bin/env` indirection instead of `/bin`</comment>
+    <requestid>1155556</requestid>
+  </revision>
 </revisionlist>

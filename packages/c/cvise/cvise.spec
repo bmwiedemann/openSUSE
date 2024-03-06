@@ -1,7 +1,7 @@
 #
 # spec file for package cvise
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cvise
-Version:        2.9.0+git.20231106.cc76e98
+Version:        2.9.0+git.20240306.f0e1387
 Release:        0
 Summary:        Super-parallel Python port of the C-Reduce
 License:        BSD-3-Clause
