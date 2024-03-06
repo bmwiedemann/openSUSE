@@ -185,4 +185,12 @@ The failing packages have been resolved</comment>
     by @martinRenou in #3830</comment>
     <requestid>1113293</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>144dc24051528cea95381faab2fd4127</srcmd5>
+    <version>8.1.1</version>
+    <time>1709762676</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip python39: no longer supported since ipython 8.19</comment>
+    <requestid>1155325</requestid>
+  </revision>
 </revisionlist>
