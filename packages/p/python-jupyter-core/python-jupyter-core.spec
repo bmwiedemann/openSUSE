@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-jupyter-core
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -24,6 +24,7 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
+%define skip_python39 1
 %define psuffix -test
 %bcond_without test
 %else
@@ -52,7 +53,7 @@ BuildRequires:  alts
 Requires:       alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 Recommends:     python-ipython
 Provides:       python-jupyter_core = %{version}-%{release}

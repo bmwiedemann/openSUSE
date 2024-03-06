@@ -277,4 +277,13 @@ Update to 4.6.1</comment>
   * Enable async JupyterApp #381 (@blink1073)</comment>
     <requestid>1140285</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>b8db8510eb3be7e3d02168d4834b8c1f</srcmd5>
+    <version>5.7.1</version>
+    <time>1709762582</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip tests for python 3.9: python-ipython is no longer available.
+</comment>
+    <requestid>1155312</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  5 15:14:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Skip tests for python 3.9: python-ipython is no longer available.
+
+-------------------------------------------------------------------
 Sun Jan 21 11:00:17 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.7.1
