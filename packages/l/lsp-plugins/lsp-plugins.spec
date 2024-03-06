@@ -1,7 +1,7 @@
 #
 # spec file for package lsp-plugins
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 
 Name:           lsp-plugins
-Version:        1.2.14
+Version:        1.2.15
 Release:        0
 Summary:        Linux Studio Plugins Project (Stand-alone)
 License:        LGPL-3.0-or-later
@@ -128,6 +128,20 @@ the GNU/Linux platform.
 
 This is the CLAP version of the plugins.
 
+%package -n     vst3-%{name}
+Summary:        Linux Studio Plugins (VST3)
+Group:          Productivity/Multimedia/Sound/Utilities
+Requires:       %{name}-common = %{version}
+
+%description -n vst3-%{name}
+LSP (Linux Studio Plugins) is a collection of open-source plugins
+currently compatible with LADSPA, LV2, CLAP and LinuxVST formats.
+
+The basic idea is to fill the lack of good and useful plugins under
+the GNU/Linux platform.
+
+This is the VST3 version of the plugins.
+
 %package devel
 Summary:        Linux Studio Plugins Development files
 Group:          Productivity/Multimedia/Sound/Utilities
@@ -142,7 +156,7 @@ Development files for Linux Studio Plugins
 
 %build
 export CFLAGS="%{optflags}" CXXFLAGS="%{optflags}"
-make config PREFIX="%{_prefix}" LIBDIR="%{_libdir}" SHAREDDIR=%{_datadir} FEATURES='lv2 vst2 clap doc jack ladspa xdg'
+make config PREFIX="%{_prefix}" LIBDIR="%{_libdir}" SHAREDDIR=%{_datadir} FEATURES='vst3 lv2 vst2 clap doc jack ladspa xdg'
 %make_build
 
 %install
@@ -150,6 +164,9 @@ make config PREFIX="%{_prefix}" LIBDIR="%{_libdir}" SHAREDDIR=%{_datadir} FEATUR
 
 mkdir -p %{buildroot}/%{_docdir}
 mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}/%{_docdir}/
+
+%post common -p /sbin/ldconfig
+%postun common -p /sbin/ldconfig
 
 %fdupes -s %{buildroot}%{_libdir}
 
@@ -188,6 +205,10 @@ mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}/%{_docdir}/
 %files -n clap-%{name}
 %dir %{_libdir}/clap
 %{_libdir}/clap/
+
+%files -n vst3-%{name}
+%dir %{_libdir}/vst3
+%{_libdir}/vst3/
 
 %files doc
 %{_docdir}/%{name}
