@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Mar  5 17:38:51 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.22.1 (released 2024-03-05) includes security fixes to the
+  crypto/x509, html/template, net/http, net/http/cookiejar, and
+  net/mail packages, as well as bug fixes to the compiler, the go
+  command, the runtime, the trace command, and the go/types and
+  net/http packages.
+  Refs boo#1218424 go1.22 release tracking
+  CVE-2023-45289 CVE-2023-45290 CVE-2024-24783 CVE-2024-24784 CVE-2024-24785
+  * go#65831 go#65390 boo#1220999 security: fix CVE-2024-24783 crypto/x509: Verify panics on certificates with an unknown public key algorithm
+  * go#65849 go#65083 boo#1221002 security: fix CVE-2024-24784 net/mail: comments in display names are incorrectly handled
+  * go#65850 go#65383 boo#1221001 security: fix CVE-2023-45290 net/http: memory exhaustion in Request.ParseMultipartForm
+  * go#65859 go#65065 boo#1221000 security: fix CVE-2023-45289 net/http, net/http/cookiejar: incorrect forwarding of sensitive headers and cookies on HTTP redirect
+  * go#65969 go#65697 boo#1221003 security: fix CVE-2024-24785 html/template: errors returned from MarshalJSON methods may break template escaping
+  * go#65352 cmd/go: go generate fails silently when run on a package in a nested workspace module
+  * go#65471 internal/testenv: TestHasGoBuild failures on the LUCI noopt builders
+  * go#65474 internal/testenv: support LUCI mobile builders in testenv tests
+  * go#65577 cmd/trace/v2: goroutine analysis page doesn't identify goroutines consistently
+  * go#65618 cmd/compile: Go 1.22 build fails with 1.21 PGO profile on internal/saferio change
+  * go#65619 cmd/compile: Go 1.22 changes support for modules that declare go 1.0
+  * go#65641 cmd/cgo/internal/testsanitizers,x/build: LUCI clang15 builders failing
+  * go#65644 runtime: crash in race detector when execution tracer reads from CPU profile buffer
+  * go#65728 go/types: nil pointer dereference in Alias.Underlying()
+  * go#65759 net/http: context cancellation can leave HTTP client with deadlocked HTTP/1.1 connections in Go1.22
+  * go#65760 runtime: Go 1.22.0 fails to build from source on armv7 Alpine Linux
+  * go#65818 runtime: go1.22.0 test with -race will SIGSEGV or SIGBUS or Bad Pointer
+  * go#65852 cmd/go: "missing ziphash" error with go.work
+  * go#65883 runtime: scheduler sometimes starves a runnable goroutine on wasm platforms
+
+-------------------------------------------------------------------
 Tue Feb 27 05:45:13 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:
