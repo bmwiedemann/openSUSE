@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  4 15:06:20 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Thu Dec 10 06:41:42 UTC 2020 - Frank Schreiner <FSchreiner@suse.com>
 
 - added 0001-enhance-loadavg-array-from-2-to-3-doubles.patch
