@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  4 15:05:18 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Fri Jan 26 14:53:18 UTC 2018 - guillaume@opensuse.org
 
 -  Remove full URL since it is not available anymore there

@@ -40,9 +40,7 @@ clock speed. While much of the code is from UNIX::Processors, win32 support
 has been added (but not tested).
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n %{cpan_name}-%{version}
 find . -type f -print0 | xargs -0 chmod 644
 
 %build
