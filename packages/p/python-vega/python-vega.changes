@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  5 18:36:39 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip python39: no longer supported since ipython 8.19
+
+-------------------------------------------------------------------
 Sat Sep 23 08:50:58 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Disable altair entrypoint tests: altair 5 removed the vega

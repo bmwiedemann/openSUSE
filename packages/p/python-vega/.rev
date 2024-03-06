@@ -113,4 +113,12 @@
   * gh#vega/ipyvega#509</comment>
     <requestid>1113173</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>3eb6ea1391d131054364e63c8f895341</srcmd5>
+    <version>4.0.0</version>
+    <time>1709762679</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip python39: no longer supported since ipython 8.19</comment>
+    <requestid>1155328</requestid>
+  </revision>
 </revisionlist>
