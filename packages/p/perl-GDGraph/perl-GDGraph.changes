@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  4 13:03:01 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Mon Feb 28 09:34:18 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix line endings in samples/sample64.pl

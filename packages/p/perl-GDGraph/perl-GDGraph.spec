@@ -44,8 +44,7 @@ BuildArch:      noarch
 Produces charts with GD
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{cpan_name}-%{version}
 perl -pi -e 's/\r\n/\n/' samples/sample64.pl
 
 %build
