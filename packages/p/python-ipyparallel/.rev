@@ -321,4 +321,12 @@
 </comment>
     <requestid>1144868</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>2ad35030f75b7e306e45e30dc25167b4</srcmd5>
+    <version>8.6.1</version>
+    <time>1709762674</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip python39: no longer supported since ipython 8.19</comment>
+    <requestid>1155322</requestid>
+  </revision>
 </revisionlist>

@@ -16,6 +16,7 @@
 #
 
 
+%define skip_python39 1
 Name:           python-ipyparallel
 Version:        8.6.1
 Release:        0
