@@ -46,7 +46,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2024.2.0
+Version:        2024.2.1
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
@@ -270,11 +270,7 @@ This package contains the dask.diagnostics module
 %package test
 Summary:        The test submodules of the python-dask package
 Requires:       %{name}-complete = %{version}
-Requires:       python-pandas
-# SECTION pandas[test]
-Requires:       python-hypothesis
-Requires:       python-pytest-asyncio
-# /SECTION
+Requires:       python-pandas-test
 Requires:       python-pytest
 Requires:       python-pytest-rerunfailures
 Requires:       python-pytest-timeout

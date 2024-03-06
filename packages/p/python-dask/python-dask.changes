@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar  5 21:24:51 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2024.2.1
+  * Allow silencing dask.DataFrame deprecation warning
+  * More robust distributed scheduler for rare key collisions
+  * More robust adaptive scaling on large clusters
+- The test subpackage now directly depends on pandas-test which
+  does not use pytest-asyncio anymore
+
+-------------------------------------------------------------------
 Wed Feb 14 21:23:45 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2024.2.0
