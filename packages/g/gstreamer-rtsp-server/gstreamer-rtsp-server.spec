@@ -20,7 +20,7 @@
 %define _name gst-rtsp-server
 
 Name:           gstreamer-rtsp-server
-Version:        1.22.9
+Version:        1.24.0
 Release:        0
 Summary:        GStreamer-based RTSP server library
 License:        LGPL-2.0-or-later
@@ -28,10 +28,8 @@ Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
 Source0:        %{url}/src/gst-rtsp-server/%{_name}-%{version}.tar.xz
 Source99:       gstreamer-rtsp-server-rpmlintrc
-# PATCH-FIX-OPENSUSE reduce-required-meson.patch alarrosa@suse.com -- build with meson 0.61
-Patch0:         reduce-required-meson.patch
 
-BuildRequires:  meson >= 0.47
+BuildRequires:  meson >= 1.1
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.31.1
