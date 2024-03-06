@@ -224,4 +224,12 @@
     <comment>- Suggest primary python package -- boo#1214354</comment>
     <requestid>1104446</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>ffb1de4201ea18f014be90ab3e31444a</srcmd5>
+    <version>1.0.0</version>
+    <time>1709762677</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip python39: no longer supported since ipython 8.19</comment>
+    <requestid>1155327</requestid>
+  </revision>
 </revisionlist>
