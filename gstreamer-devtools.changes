@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Mar  6 08:21:18 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add missing file in package
+
+-------------------------------------------------------------------
+Tue Mar  5 06:22:20 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.24.0:
+  * In action types, add a way to avoid checking property value
+    after setting it, in case elements do it async for example.
+  * Add a vmethod to free GstValidateActionParameters to be more
+    binding friendly.
+  * Allow scenarios to define the pipeline state target in the
+    metadata instead of assuming PLAYING state.
+  * Add support to run sub-pipelines/scenarios
+    * Added support to forward buffers from appsink to appsrc
+  * Add a way to set pipeline base-time, start-time and force
+    using the system clock.
+  * Add a 'fill-mode' to the appsrc-push action type so we can
+    create some type of streams easily using an appsrc, giving
+    control when writing scenarios without requiring files with
+    the content.
+  * Add a "select-streams" action type to test "stream aware"
+    elements.
+  * Add a way to wait for a property to reach a specified value
+    before executing an action. For example it is possible to wait
+    for a pad to get some specific caps set before executing an
+    action.
+  * validate: Add support to replace variables in deeply nested
+    structures in particular for more complex action types where
+    some of the properties are inside structures.
+  * Fixed compatibility with Python 3.12.
+  * For more detailed information on this update, please see
+    https://gstreamer.freedesktop.org/releases/1.24/
+- Use %{?sle15_python_module_pythons}
+- Remove patch reduce-required-meson.patch since meson 1.1 is
+  really required now.
+
+-------------------------------------------------------------------
 Thu Feb  1 10:57:47 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.22.9:

@@ -18,8 +18,9 @@
 
 %define _name   gst-devtools
 
+%{?sle15_python_module_pythons}
 Name:           gstreamer-devtools
-Version:        1.22.9
+Version:        1.24.0
 Release:        0
 Summary:        Development and debugging tools for GStreamer
 License:        LGPL-2.1-or-later
@@ -28,11 +29,9 @@ URL:            https://gstreamer.freedesktop.org
 Source:         %{url}/src/%{_name}/%{_name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM gst-devtools-fix-hicolor-dir.patch -- Install icon file in correct folder
 Patch0:         gst-devtools-fix-hicolor-dir.patch
-# PATCH-FIX-OPENSUSE reduce-required-meson.patch alarrosa@suse.com -- build with meson 0.61
-Patch1:         reduce-required-meson.patch
 
 BuildRequires:  fdupes
-BuildRequires:  meson
+BuildRequires:  meson >= 1.1
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gdk-3.0)
@@ -41,7 +40,7 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gstreamer-1.0) >= %{version}
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= %{version}
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= %{version}
-%if 0%{?suse_version} >= 1599
+%if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(gstreamer-rtsp-server-1.0) >= %{version}
 %endif
 BuildRequires:  pkgconfig(gstreamer-transcoder-1.0)
@@ -124,10 +123,10 @@ sed -i -e '1{s,^#!/usr/bin/env python3,#!%{_bindir}/python3,}' debug-viewer/gst-
 %{_bindir}/gst-validate-images-check-1.0
 %{_bindir}/gst-validate-launcher
 %{_bindir}/gst-validate-media-check-1.0
-%{_bindir}/gst-validate-transcoding-1.0
-%if 0%{?suse_version} >= 1599
+%if 0%{?suse_version} >= 1500
 %{_bindir}/gst-validate-rtsp-server-1.0
 %endif
+%{_bindir}/gst-validate-transcoding-1.0
 %{_libdir}/gst-validate-launcher/
 %dir %{_datadir}/gstreamer-1.0/
 %{_datadir}/gstreamer-1.0/validate/
