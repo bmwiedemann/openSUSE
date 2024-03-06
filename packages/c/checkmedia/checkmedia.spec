@@ -1,7 +1,7 @@
 #
 # spec file for package checkmedia
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           checkmedia
 Summary:        Check installation or Live media
 License:        GPL-3.0-or-later
 Group:          System/Management
-Version:        6.2
+Version:        6.3
 Release:        0
 URL:            https://github.com/openSUSE/checkmedia
 Source:         %{name}-%{version}.tar.xz

@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Tue Mar 5 17:39:47 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/checkmedia#18
+- tagmedia: fix size detection for block devices (bsc#1220972)
+- 6.3
+
+--------------------------------------------------------------------
 Fri Jun 2 10:57:02 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/checkmedia#17
