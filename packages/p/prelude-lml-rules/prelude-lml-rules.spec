@@ -34,8 +34,7 @@ BuildArch:      noarch
 Rules for Prelude LML contributed by the community.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 

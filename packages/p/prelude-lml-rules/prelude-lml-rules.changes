@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 15:13:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Sun Oct 25 19:26:00 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - prelude-lml-rules 5.2.0:
