@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar  2 10:26:04 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.5.1
+  ## New features
+  * Add support to format selections with Black.
+  ## Important fixes
+  * Fix several errors when trying to detect if a new Spyder
+    version is available.
+
+-------------------------------------------------------------------
 Fri Nov 24 20:04:12 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.5.0

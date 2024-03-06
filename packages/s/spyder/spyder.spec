@@ -1,7 +1,7 @@
 #
 # spec file for package spyder
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 # your live system before submitting an update.
 %bcond_with     test
 Name:           spyder
-Version:        5.5.0
+Version:        5.5.1
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -81,9 +81,9 @@ Requires:       (python3-QDarkStyle >= 3.2.0 with python3-QDarkStyle < 3.3.0)
 Requires:       (python3-ipython >= 8.13 with python3-ipython < 9)
 Requires:       (python3-jedi >= 0.17.2 with python3-jedi < 0.20)
 Requires:       (python3-pylint >= 2.5.0 with python3-pylint < 3.1)
-Requires:       (python3-python-lsp-black >= 1.2.0 with python3-python-lsp-black < 3)
-Requires:       (python3-python-lsp-server >= 1.9.0 with python3-python-lsp-server < 1.10)
-Requires:       (python3-qtconsole >= 5.5.0 with python3-qtconsole < 5.6.0)
+Requires:       (python3-python-lsp-black >= 2.0.0 with python3-python-lsp-black < 3)
+Requires:       (python3-python-lsp-server >= 1.10.0 with python3-python-lsp-server < 1.11)
+Requires:       (python3-qtconsole >= 5.5.1 with python3-qtconsole < 5.6.0)
 Requires:       (python3-spyder-kernels >= 2.5 with python3-spyder-kernels < 2.6)
 Recommends:     %{name}-dicom
 Recommends:     %{name}-hdf5
@@ -176,9 +176,9 @@ BuildRequires:  (python3-QDarkStyle >= 3.2 with python3-QDarkStyle < 3.3)
 BuildRequires:  (python3-ipython >= 8.13 with python3-ipython < 9)
 BuildRequires:  (python3-jedi >= 0.17.2 with python3-jedi < 0.20)
 BuildRequires:  (python3-pylint >= 2.5.0 with python3-pylint < 3.1)
-BuildRequires:  (python3-python-lsp-black >= 1.2.0 with python3-python-lsp-black < 3)
-BuildRequires:  (python3-python-lsp-server >= 1.9 with python3-python-lsp-server < 1.10)
-BuildRequires:  (python3-qtconsole >= 5.5 with python3-qtconsole < 5.6)
+BuildRequires:  (python3-python-lsp-black >= 2.0.0 with python3-python-lsp-black < 3)
+BuildRequires:  (python3-python-lsp-server >= 1.10 with python3-python-lsp-server < 1.11)
+BuildRequires:  (python3-qtconsole >= 5.5.1 with python3-qtconsole < 5.6)
 BuildRequires:  (python3-spyder-kernels >= 2.5 with python3-spyder-kernels < 2.6)
 # /SECTION
 
