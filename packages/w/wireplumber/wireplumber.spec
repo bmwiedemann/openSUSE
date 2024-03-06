@@ -16,13 +16,13 @@
 #
 
 
-%define pipewire_minimum_version 0.3.68
-%define apiver 0.4
-%define apiver_str 0_4
+%define pipewire_minimum_version 0.3.75
+%define apiver 0.5
+%define apiver_str 0_5
 %define sover 0
 %define libwireplumber libwireplumber-%{apiver_str}-%{sover}
 Name:           wireplumber
-Version:        0.4.17
+Version:        0.4.90
 Release:        0
 Summary:        Session / policy manager implementation for PipeWire
 License:        MIT
@@ -30,8 +30,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/pipewire/wireplumber
 Source0:        wireplumber-%{version}.tar.xz
 Source1:        split-config-file.py
-# FIX-PATCH-SUSE fix-bsc1219411.patch alarrosa@suse.com -- Enable bluetooth only when audio support is enabled
-Patch0:         fix-bsc1219411.patch
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-scripts-fix-typo-in-rescan-virtual-links.lua.patch
 # docs
 BuildRequires:  doxygen
 BuildRequires:  graphviz
@@ -147,9 +147,8 @@ Optional dependency offering zsh completion for various wpctl parameters.
 %prep
 %autosetup -p1
 
-pushd src/config/main.lua.d
+pushd src/config
 python3 %{SOURCE1}
-rm 90-enable-all.lua
 popd
 
 %build
@@ -216,31 +215,37 @@ fi
 %{_bindir}/wpctl
 %{_bindir}/wpexec
 %dir %{_libdir}/wireplumber-%{apiver}
+%{_libdir}/wireplumber-%{apiver}/libwireplumber-module-dbus-connection.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-default-nodes-api.so
-%{_libdir}/wireplumber-%{apiver}/libwireplumber-module-default-nodes.so
-%{_libdir}/wireplumber-%{apiver}/libwireplumber-module-default-profile.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-file-monitor-api.so
+%{_libdir}/wireplumber-%{apiver}/libwireplumber-module-log-settings.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-logind.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-lua-scripting.so
-%{_libdir}/wireplumber-%{apiver}/libwireplumber-module-metadata.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-mixer-api.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-portal-permissionstore.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-reserve-device.so
+%{_libdir}/wireplumber-%{apiver}/libwireplumber-module-settings.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-si-audio-adapter.so
-%{_libdir}/wireplumber-%{apiver}/libwireplumber-module-si-audio-endpoint.so
+%{_libdir}/wireplumber-%{apiver}/libwireplumber-module-si-audio-virtual.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-si-node.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-si-standard-link.so
+%{_libdir}/wireplumber-%{apiver}/libwireplumber-module-standard-event-source.so
+
 %{_userunitdir}/wireplumber.service
 %{_userunitdir}/wireplumber@.service
 %{_datadir}/wireplumber
-%exclude %{_datadir}/wireplumber/main.lua.d/90-2-1-enable-alsa.lua
-%exclude %{_datadir}/wireplumber/bluetooth.lua.d/90-enable-all.lua
+%dir %{_datadir}/doc/wireplumber
+%dir %{_datadir}/doc/wireplumber/examples
+%{_datadir}/doc/wireplumber/examples/wireplumber.conf.d
+%{_datadir}/wireplumber/wireplumber.conf
+%dir %{_datadir}/wireplumber/wireplumber.conf.d
+%exclude %{_datadir}/wireplumber/wireplumber.conf.d/00-device-monitors.conf
+%{_datadir}/wireplumber/wireplumber.conf.d/alsa-vm.conf
 
 %files lang -f %{name}.lang
 
 %files audio
-%{_datadir}/wireplumber/main.lua.d/90-2-1-enable-alsa.lua
-%{_datadir}/wireplumber/bluetooth.lua.d/90-enable-all.lua
+%{_datadir}/wireplumber/wireplumber.conf.d/00-device-monitors.conf
 
 %files devel
 %{_includedir}/wireplumber-%{apiver}

@@ -1,0 +1,25 @@
+From a141ec0c684a20b816ea793e94c665ab3ba3d7a2 Mon Sep 17 00:00:00 2001
+From: George Kiagiadakis <george.kiagiadakis@collabora.com>
+Date: Tue, 5 Mar 2024 16:34:11 +0200
+Subject: [PATCH] scripts: fix typo in rescan-virtual-links.lua
+
+---
+ src/scripts/linking/rescan-virtual-links.lua | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/scripts/linking/rescan-virtual-links.lua b/src/scripts/linking/rescan-virtual-links.lua
+index bc96c31d..2470f211 100644
+--- a/src/scripts/linking/rescan-virtual-links.lua
++++ b/src/scripts/linking/rescan-virtual-links.lua
+@@ -12,7 +12,7 @@ defaults = {}
+ defaults.duck_level = 0.3
+ 
+ config = {}
+-config.duck_level = default.duck_level -- FIXME
++config.duck_level = defaults.duck_level -- FIXME
+ config.roles = Conf.get_section_as_object ("virtual-item-roles")
+ 
+ -- enable ducking if mixer-api is loaded
+-- 
+GitLab
+

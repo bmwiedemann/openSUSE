@@ -1,48 +1,43 @@
 #!/usr/bin/python3
 import hashlib
 import sys
+import re
 
 def sha256_from_data(data):
     hash_sha256 = hashlib.sha256()
     hash_sha256.update(data)
     return hash_sha256.hexdigest()
 
-contents = open('90-enable-all.lua', 'r', encoding='utf-8').read()
+lines = open('wireplumber.conf', 'r', encoding='utf-8').readlines()
 
-sha256sum = sha256_from_data(contents.encode('utf-8'))
-expected_sha256sum = '86888e9d3fcc952c41e778ab4edae4a0eb1f9f51b62ae0772befa9f0fdef611d'
-
-if sha256sum != expected_sha256sum:
-    print('The script has to be updated for new changes in 90-enable-all.lua')
-    print(f'File sha256sum: {sha256sum}')
-    print(f'expected sha256sum: {expected_sha256sum}')
-    sys.exit(1)
-
-content_sections = contents.split('\n\n')
-
-sections = ['enable-metadata',
-            'default-access-policy',
-            'load-devices',
-            'track-user-choices-devices',
-            'track-user-choices-streams',
-            'link-nodes-by-roles',
-            'suspend-idle-nodes',
-            'allow-loading-objects-on-demand']
-
-if len(content_sections) != len(sections):
-    print('The script has to be updated for new changes in 90-enable-all.lua')
-    sys.exit(1)
-
-for i, (content, sec) in enumerate(zip(content_sections, sections)):
-    if sec == 'load-devices':
-        lines = content.split('\n')
-        open(f'90-{i}-1-enable-alsa.lua', 'w',
-             encoding='utf-8').write(lines[1])
-        open(f'90-{i}-2-enable-v4l2.lua', 'w',
-             encoding='utf-8').write(lines[2])
-        open(f'90-{i}-3-enable-libcamera.lua', 'w',
-             encoding='utf-8').write(lines[3])
+is_in_device_monitor = False
+main_config_content = ''
+device_monitors_content = ''
+for line in lines:
+    if re.match(' *## Device monitors$', line):
+        main_config_content += line
+        main_config_content += '  # Section moved to a device-monitors.conf file which is provided by the wireplumber-audio package\n\n'
+        is_in_device_monitor = True
         continue
+    elif re.match(' *## ', line):
+        is_in_device_monitor = False
 
-    filename = f'90-{i}-{sec}.lua'
-    open(filename, 'w', encoding='utf-8').write(content)
+    if is_in_device_monitor:
+        device_monitors_content += line
+    else:
+        main_config_content += line
+
+config_sha256 = sha256_from_data(device_monitors_content.encode('utf-8'))
+verified_sha256 = 'bf33d018e5b924da71266636757fa264bc677b945c35e4dcd7f708da42731cc9'
+if config_sha256 != verified_sha256:
+    print('The "Device monitors" section was modified, please verify that the contents are ok')
+    print('and if they are, modify the "verified_sha256" value in this script to')
+    print(f'    {config_sha256}')
+    print('Current device monitors section is:')
+    print(device_monitors_content)
+    sys.exit(1)
+
+device_monitors_content = 'wireplumber.components = [\n' + device_monitors_content + ']'
+
+open('wireplumber.conf', 'w', encoding='utf-8').write(main_config_content)
+open('wireplumber.conf.d/00-device-monitors.conf', 'w', encoding='utf-8').write(device_monitors_content)

@@ -1,4 +1,164 @@
 -------------------------------------------------------------------
+Wed Mar  6 15:43:02 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Revert that last change. Obsoletes shouldn't be used for that.
+
+-------------------------------------------------------------------
+Wed Mar  6 11:27:41 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Obsolete libwireplumber-0_4-0 from libwireplumber-0_5-0
+
+-------------------------------------------------------------------
+Tue Mar  5 19:29:02 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix a typo a lua script:
+  * 0001-scripts-fix-typo-in-rescan-virtual-links.lua.patch
+
+-------------------------------------------------------------------
+Tue Mar  5 05:36:27 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.4.90 (0.5.0 RC1)
+  * Highlights:
+    - The configuration system has been changed back to load files
+      from the WirePlumber configuration directories, such as
+      /etc/wireplumber and $XDG_CONFIG_HOME/wireplumber, unlike in
+      the pre-releases. This was done because issues were observed
+      with installations that use a different prefix for pipewire
+      and wireplumber. If you had a wireplumber.conf file in
+      /etc/pipewire or $XDG_CONFIG_HOME/pipewire, you should move
+      it to /etc/wireplumber or $XDG_CONFIG_HOME/wireplumber
+      respectively (!601)
+    - The internal base directories lookup system now also respects
+      the XDG_CONFIG_DIRS and XDG_DATA_DIRS environment variables,
+      and their default values as per the XDG spec, so it is
+      possible to install configuration files also in places like
+      /etc/xdg/wireplumber and override system-wide data paths
+      (!601)
+    - wpctl now has a settings subcommand to show, change and
+      delete settings at runtime. This comes with changes in the
+      WpSettings system to validate settings using a schema that is
+      defined in the configuration file. The schema is also
+      exported on a metadata object, so it is available to any
+      client that wants to expose WirePlumber settings (!599, !600)
+    - The WpConf API has changed to not be a singleton and support
+      opening arbitrary config files. The main config file now
+      needs to be opened prior to creating a WpCore and passed to
+      the core using a property. The core uses that without letting
+      the underlying pw_context open and read the default
+      client.conf. The core also closes the WpConf after all
+      components are loaded, which means all the config loading is
+      done early at startup. Finally, WpConf loads all sections
+      lazily, keeping the underlying files memory mapped until it
+      is closed and merging them on demand (!601, !606)
+- Remove patch that's already included:
+  * 0001-wpctl-add-settings-subcomand-to-show_-delete-or-change.patch
+
+-------------------------------------------------------------------
+Mon Feb 19 07:29:52 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to remove the "clear-persistent"
+  sub-command and add a "settings" sub-command:
+  * 0001-wpctl-add-settings-subcomand-to-show_-delete-or-change.patch
+
+-------------------------------------------------------------------
+Thu Feb 15 07:23:41 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.4.82 (0.5.0 pre-release 2)
+  * Highlights:
+    - Bluetooth auto-switching is now implemented with a virtual
+      source node. When an application links to it, the actual
+      device switches to the HSP/HFP profile to provide the real
+      audio stream. This is a more robust solution that works with
+      more applications and is more user-friendly than the previous
+      application whitelist approach
+    - Added support for dynamic log level changes via the PipeWire
+      settings metadata. Also added support for log level patterns
+      in the configuration file
+    - The "persistent" (i.e. stored) settings approach has changed
+      to use two different metadata objects: sm-settings and
+      persistent-sm-settings. Changes in the former are applied in
+      the current session but not stored, while changes in the
+      latter are stored and restored at startup. Some work was also
+      done to expose a wpctl interface to read and change these
+      settings, but more is underway
+    - Several WirePlumber-specific node properties that used to be
+      called target.* have been renamed to node.* to match the
+      PipeWire convention of node.dont-reconnect. These are also
+      now fully documented
+  * Other changes:
+    - Many documentation updates
+    - Added support for SNAP container permissions
+    - Fixed multiple issues related to restoring the Route
+      parameter of devices, which includes volume state
+    - Smart filters can now be targetted by specific streams
+      directly when the filter.smart.targetable property is set
+    - Ported the mechanism to override device profile priorities in
+      the configuration, which is used to re-prioritize Bluetooth
+      codecs
+    - WpSettings is no longer a singleton class and there is a
+      built-in component to preload an instance of it
+
+-------------------------------------------------------------------
+Mon Feb  5 16:11:12 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.4.81
+  * Highlights:
+    - Lua scripts have been refactored to use the new event
+      dispatcher API, which allows them to be split into multiple
+      small fragments that react to events in a specified order.
+      This allows scripts to be more modular and easier to
+      maintain, as well as more predictable in terms of execution
+      order.
+    - The configuration system has been refactored to use a single
+      SPA-JSON file, like PipeWire does, with support for fragments
+      that can override options. This file is also now loaded using
+      PipeWire's configuration API, which effectively means that
+      the file is now loaded from the PipeWire configuration
+      directories, such as /etc/pipewire and
+      $XDG_CONFIG_HOME/pipewire.
+    - The configuration system now has the concept of profiles,
+      which are groups of components that can be loaded together,
+      with the ability to mark certain components as optional. This
+      allows having multiple configurations that can be loaded
+      using the same configuration file. Optional components also
+      allow loading the same profile gracefully on different
+      setups, where some components may not be available (ex,
+      loading of the session D-Bus plugin on a system-wide PipeWire
+      setup now does not fail).
+    - Many configuration options are now exposed in the sm-settings
+      metadata, which allows changing them at runtime. This can be
+      leveraged in the future to implement configuration tools that
+      can modify WirePlumber's behaviour dynamically, without
+      restarting.
+    - A new "filters" system has been implemented, which allows
+      specifying chains of "filter" nodes to be dynamically linked
+      in-between streams and devices. This is achieved with certain
+      properties and metadata that can be set on the filter nodes
+      themselves.
+    - The default linking policy now reads some more target.*
+      properties from nodes, which allows fine-tuning some aspects
+      of their linking behaviour, such as whether they are allowed
+      to be re-linked or whether an error should be sent to the
+      client if they cannot be linked.
+    - Some state files have been renamed and some have changed
+      format to use JSON for storing complex values, such as
+      arrays. This may cause some of the old state to be lost on
+      upgrade, as there is no transition path implemented.
+    - The libcamera and V4L2 monitors have a "device deduplication"
+      logic built-in, which means that for each physical camera
+      device, only one node will be created, either from libcamera
+      or V4L2, depending on which one is considered better for the
+      device. This is mainly to avoid having multiple nodes for the
+      same camera device, which can cause confusion when looking at
+      the list of available cameras in applications.
+- Bump apiver to 0.5
+- Rewrite split-config-file.py to work with the new config
+  subsystem
+- Remove patch which isn't applying anymore and whose fix is
+  now handled by the split-config-file.py script:
+  * fix-bsc1219411.patch
+
+-------------------------------------------------------------------
 Mon Feb  5 06:46:58 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to only enable bluetooth when audio support is enabled
