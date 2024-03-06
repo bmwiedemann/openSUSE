@@ -45,8 +45,7 @@ to perform SASL client connection functionality, including loading
 existing shared library mechanisms.
 
 %prep
-%setup -n Authen-SASL-Cyrus-%{version}
-%patch0 -p0
+%autosetup -p0 -n Authen-SASL-Cyrus-%{version}
 
 %build
 perl Makefile.PL OPTIMIZE="$RPM_OPT_FLAGS -Wall"
