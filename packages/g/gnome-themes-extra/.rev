@@ -23,4 +23,14 @@
     <comment> (forwarded request 590559 from dimstar)</comment>
     <requestid>592263</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>de50e52c96410987753875d2d7eb1d5d</srcmd5>
+    <version>3.28</version>
+    <time>1709762625</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop baselibs.conf: the -32bit packages are no longer needed and
+  have not been part of Tumbleweed for a while already (build for
+  i586 only enabled in LegacyX86). (forwarded request 1155214 from dimstar)</comment>
+    <requestid>1155234</requestid>
+  </revision>
 </revisionlist>
