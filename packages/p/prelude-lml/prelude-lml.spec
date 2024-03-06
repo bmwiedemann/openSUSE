@@ -64,10 +64,7 @@ Libraries, include files, etc you can use to develop custom
 Prelude LML plugins.
 
 %prep
-%setup -q
-%patch0
-%patch1
-%patch2
+%autosetup -p0
 
 %build
 %configure
