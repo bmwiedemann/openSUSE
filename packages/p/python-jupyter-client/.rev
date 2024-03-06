@@ -378,4 +378,12 @@ Update to 5.3.4</comment>
   * Allow to update kernels env in between restart. #987 (@Carreau)</comment>
     <requestid>1128950</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>3a8029369efdc6c26cbd0745c36a54c3</srcmd5>
+    <version>8.6.0</version>
+    <time>1709762583</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1155313</requestid>
+  </revision>
 </revisionlist>

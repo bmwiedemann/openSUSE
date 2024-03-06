@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-jupyter-client
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,6 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
+%define skip_python39 1
 %bcond_without test
 %else
 %define psuffix %{nil}
@@ -47,7 +48,7 @@ Requires:       python-traitlets >= 5.3
 Requires:       (python-importlib-metadata >= 4.8.3 if python-base < 3.10)
 Requires:       (python-jupyter-core >= 5.1 or (python-jupyter-core >= 4.12 with python-jupyter-core < 5.0))
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       python-jupyter_client = %{version}-%{release}
 Obsoletes:      python-jupyter_client < %{version}-%{release}
 Provides:       jupyter-jupyter-client = %{version}-%{release}

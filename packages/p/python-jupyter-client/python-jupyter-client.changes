@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  5 15:16:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Skip python 3.9 in the test suite: python-ipython is no longer
+  available.
+
+-------------------------------------------------------------------
 Sun Nov 26 15:10:24 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.6.0
