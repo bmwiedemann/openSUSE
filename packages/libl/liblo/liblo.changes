@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Mar  3 18:04:29 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.32:
+  * Consider subnet-specific broadcast addresses
+  * OSC path validation during deserialization
+  * Redefine opaque types as pointers to structs
+  * Add lo_server_config struct and corresponding server init
+    functions
+  * Add support for pattern matching in method names
+  * Support optionally encoding messages with double-END SLIP
+  * Improvements to CMake build
+  * lo_servers_wait: return immediately if any server already has a
+    message waiting
+  * Allow creating size-0 blobs
+
+-------------------------------------------------------------------
 Thu Aug 20 22:17:50 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.31:
