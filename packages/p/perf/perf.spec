@@ -26,6 +26,7 @@
 %define         _perf_unwind %{nil}
 BuildRequires:  libunwind-devel
 %endif
+%{?sle15_python_module_pythons}
 Name:           perf
 Version:        %{version}
 Release:        0
@@ -51,14 +52,15 @@ BuildRequires:  libcap-devel
 # Debuginfod integration has major issues: boo#1213785
 #BuildRequires:  libdebuginfod-devel
 BuildRequires:  libdw-devel
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  libelf-devel
 BuildRequires:  libtraceevent-devel
 BuildRequires:  libzstd-devel
 BuildRequires:  llvm
 BuildRequires:  newt-devel
 BuildRequires:  openssl-devel
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
+BuildRequires:  python-rpm-macros
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
 BuildRequires:  rubygem(asciidoctor)
@@ -69,6 +71,9 @@ Recommends:     kernel >= 2.6.31
 Recommends:     perf-gtk
 %{perl_requires}
 %{?libperl_requires}
+
+%define python_subpackage_only 1
+%python_subpackages
 
 %description
 This package provides a userspace tool 'perf', which monitors performance for
@@ -113,6 +118,15 @@ kernel-default is rebuilt in OBS.
 
 There is no reason to install this package.
 
+%package -n python-perf
+Summary:        Python Bindings for Manipulating Perf Events
+Group:          Development/Languages/Python
+Requires:       %{name} = %{version}
+
+%description -n python-perf
+This package contains a module that permits applications written in
+the Python programming language to manipulate perf events.
+
 %prep
 # copy necessary files from kernel-source since we need to modify them
 (cd %{_prefix}/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile arch/*/{include,lib,tools,Makefile} lib kernel/bpf/disasm.[ch]) | tar -xf -
@@ -124,36 +138,42 @@ sed -i 's@ignored "-Wstrict-prototypes"@&\n#pragma GCC diagnostic ignored "-Wdep
 # skip info-from-txt generation (it's the same as man anyway)
 sed -i.old 's@\(all: .*\)info@\1@' tools/perf/Documentation/Makefile
 
+# PASS rpm optflags as EXTRA_FLAGS, passing as CFLAGS overrides and breaks build
+%define perf_options LIBTRACEEVENT_DYNAMIC=1 BUILD_BPF_SKEL=1 EXTRA_CFLAGS="%{optflags}" ASCIIDOC8=1 USE_ASCIIDOCTOR=1 CORESIGHT=1 GTK2=1 prefix=%{_prefix} libdir=%{_libdir} perfexecdir=lib/%{name}-core tipdir=share/doc/packages/perf %{_perf_unwind}
+
 %build
 cd tools/perf
 export WERROR=0
-# PASS rpm optflags as EXTRA_FLAGS, passing as CFLAGS overrides and breaks build
-make %{?_smp_mflags} -f Makefile.perf V=1 PYTHON=python3 \
-	LIBTRACEEVENT_DYNAMIC=1 \
-	BUILD_BPF_SKEL=1 \
-	EXTRA_CFLAGS="%{optflags}" \
-	ASCIIDOC8=1 USE_ASCIIDOCTOR=1 CORESIGHT=1 GTK2=1 \
-	prefix=%{_prefix} \
-	libdir=%{_libdir} \
-	perfexecdir=lib/%{name}-core \
-	tipdir=share/doc/packages/perf \
-	%{_perf_unwind} \
-	all doc
+
+# Specifying "all doc" as one invocation when using -f Makefile.perf doesn't
+# work and all compiling is deferred to later %install; so seperate into two
+make %{?_smp_mflags} -f Makefile.perf \
+	V=0 VF=0 \
+	%{perf_options} \
+	all
+
+make %{?_smp_mflags} -f Makefile.perf \
+	V=0 VF=0 \
+	%{perf_options} \
+	doc
 
 %install
 cd tools/perf
 export WERROR=0
-make -f Makefile.perf V=1 PYTHON=python3 EXTRA_CFLAGS="%{optflags}" \
-	LIBTRACEEVENT_DYNAMIC=1 \
-	BUILD_BPF_SKEL=1 \
-	ASCIIDOC8=1 USE_ASCIIDOCTOR=1 CORESIGHT=1 GTK2=1 \
-	prefix=%{_prefix} \
-	libdir=%{_libdir} \
-	perfexecdir=lib/%{name}-core \
-	tipdir=share/doc/packages/perf \
+make -f Makefile.perf \
+	%{perf_options} \
 	DESTDIR=%{buildroot} \
-	%{_perf_unwind} \
 	install install-doc
+
+# Install all python-perf flavors
+%{python_expand #
+rm -rf python_ext_build/*
+make -f Makefile.perf \
+	PYTHON=$python \
+	%{perf_options} \
+	DESTDIR=%{buildroot} \
+	install-python_ext
+}
 
 mkdir -p %{buildroot}%{_datadir}/bash-completion/completions/
 mv %{buildroot}%{_sysconfdir}/bash_completion.d/perf %{buildroot}%{_datadir}/bash-completion/completions/
@@ -189,5 +209,9 @@ rm -rf %{buildroot}/%{_libdir}/traceevent
 
 %files rebuild
 %license COPYING
+
+%files %{python_files perf}
+%defattr(-,root,root)
+%{python_sitearch}/perf*
 
 %changelog

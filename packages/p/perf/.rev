@@ -647,4 +647,12 @@
 - fix build with 6.7 (tar also arch/*/tools)</comment>
     <requestid>1137712</requestid>
   </revision>
+  <revision rev="75" vrev="84">
+    <srcmd5>d18d808c007db4e02ae7bdf5354c9945</srcmd5>
+    <version>MACRO</version>
+    <time>1709762799</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1155605</requestid>
+  </revision>
 </revisionlist>
