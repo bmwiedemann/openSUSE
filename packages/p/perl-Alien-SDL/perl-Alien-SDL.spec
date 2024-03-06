@@ -84,8 +84,7 @@ The important facts:
   functionality (see below).
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{cpan_name}-%{version}
 
 %build
 %{__perl} Build.PL installdirs=vendor optimize="%{optflags}"  --travis

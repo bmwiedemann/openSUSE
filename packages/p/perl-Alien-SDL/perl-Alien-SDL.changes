@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  4 11:59:45 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Apr 20 11:37:09 UTC 2021 - Tina Müller <tina.mueller@suse.com>
 
 - Extend reproducible.patch (enforce list context for the return value
