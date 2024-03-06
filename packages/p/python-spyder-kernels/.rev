@@ -619,4 +619,16 @@
     <comment></comment>
     <requestid>1128648</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>eba50cfb02a17c0014d7b9912c646c3b</srcmd5>
+    <version>2.5.1</version>
+    <time>1709762651</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip python39 altogether: no ipykernel anymore
+- Update to 2.5.1
+  * Fix hangs with Maplotlib interactive backends
+- Skip testing with xarray on python39
+</comment>
+    <requestid>1155335</requestid>
+  </revision>
 </revisionlist>

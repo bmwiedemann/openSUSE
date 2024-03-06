@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar  5 18:55:24 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip python39 altogether: no ipykernel anymore
+
+-------------------------------------------------------------------
+Sat Mar  2 10:13:51 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.5.1
+  * Fix hangs with Maplotlib interactive backends
+- Skip testing with xarray on python39
+
+-------------------------------------------------------------------
 Fri Nov 24 20:04:43 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.5.0
