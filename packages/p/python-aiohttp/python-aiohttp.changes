@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  4 20:40:03 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Don't test proxy functional: proxy.py is not maintained anymore
+
+-------------------------------------------------------------------
 Tue Jan 30 10:26:57 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.9.3

@@ -65,7 +65,6 @@ BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module gunicorn}
 BuildRequires:  %{python_module pluggy}
-BuildRequires:  %{python_module proxy.py}
 BuildRequires:  %{python_module pytest >= 6.2.0}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-timeout}
@@ -136,8 +135,10 @@ donttest+=" or test_tcp_connector_raise_connector_ssl_error[pyloop]"
 
 # requires python-on-whales
 rm -v tests/autobahn/test_autobahn.py
+# uses proxy.py which is not maintained anymore
+rm -v tests/test_proxy_functional.py
 # randomly fails on xdist splits
-single_runs="test_run_app"
+single_runs="test_run_app or test_web_runner"
 test -d aiohttp && mv aiohttp aiohttp.bkp
 %pytest_arch %{?jobs: -n %jobs} tests -k "not ($donttest or ${single_runs})"
 %pytest_arch tests -k "${single_runs}"
