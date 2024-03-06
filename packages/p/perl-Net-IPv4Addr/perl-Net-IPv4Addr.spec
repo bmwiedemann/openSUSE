@@ -43,8 +43,7 @@ Authors:
     Francis J. Lacoste <francis.lacoste@iNsu.COM>
 
 %prep
-%setup -n Net-IPv4Addr-%{version}
-%patch0
+%autosetup -p0 -n Net-IPv4Addr-%{version}
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" perl Makefile.PL 
