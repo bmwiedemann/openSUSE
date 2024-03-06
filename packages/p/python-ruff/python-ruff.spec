@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-ruff
-Version:        0.2.2
+Version:        0.3.0
 Release:        0
 Summary:        An extremely fast Python linter, written in Rust
 License:        MIT
@@ -33,7 +33,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       alts
 BuildRequires:  alts
-ExclusiveArch:  %{rust_tier1_arches}
+ExclusiveArch:  %{rust_tier1_arches} riscv64
 %python_subpackages
 
 %description

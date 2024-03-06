@@ -639,4 +639,41 @@
 </comment>
     <requestid>1152491</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ee18a87cdf387c82247dac26f4bdc697</srcmd5>
+    <version>0.3.0</version>
+    <time>1709762691</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.0
+ * Preview features
+   * [flake8-bandit] Remove suspicious-lxml-import (S410) 
+   * [pycodestyle] Allow os.environ modifications between imports (E402) 
+   * [pycodestyle] Don't warn about a single whitespace character before a comma in a tuple (E203) 
+ * Rule changes
+   * [eradicate] Detect commented out case statements (ERA001) 
+   * [eradicate] Detect single-line code for try:, except:, etc. (ERA001) 
+   * [flake8-boolean-trap] Allow boolean positionals in __post_init__ 
+   * [flake8-copyright] Allow © in copyright notices 
+   * [isort]: Use one blank line after imports in typing stub files 
+   * [pylint] New Rule dict-iter-missing-items (PLE1141) 
+   * [pylint] Ignore sys.version and sys.platform (PLR1714) 
+   * [pyupgrade] Detect literals with unary operators (UP018) 
+   * [ruff] Expand rule for list(iterable).pop(0) idiom (RUF015) 
+ * Formatter
+  * This release introduces the Ruff 2024.2 style, stabilizing the following changes:
+   * Prefer splitting the assignment's value over the target or type annotation 
+   * Remove blank lines before class docstrings 
+   * Wrap multiple context managers in with parentheses when targeting Python 3.9 or newer 
+   * Add a blank line after nested classes with a dummy body (...) in typing stub files 
+   * Reduce vertical spacing for classes and functions with a dummy (...) body
+   * Add a blank line after the module docstring 
+   * Parenthesize long type hints in assignments 
+   * Preserve indent for single multiline-string call-expressions 
+   * Normalize hex escape and unicode escape sequences 
+   * Format module docstrings 
+ * CLI
+   * Explicitly disallow extend as part of a --config flag 
+   * Remove build from the default exclusion list</comment>
+    <requestid>1155592</requestid>
+  </revision>
 </revisionlist>

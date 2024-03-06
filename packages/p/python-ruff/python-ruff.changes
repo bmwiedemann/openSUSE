@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Mar  6 14:20:44 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.3.0
+ * Preview features
+   * [flake8-bandit] Remove suspicious-lxml-import (S410) 
+   * [pycodestyle] Allow os.environ modifications between imports (E402) 
+   * [pycodestyle] Don't warn about a single whitespace character before a comma in a tuple (E203) 
+ * Rule changes
+   * [eradicate] Detect commented out case statements (ERA001) 
+   * [eradicate] Detect single-line code for try:, except:, etc. (ERA001) 
+   * [flake8-boolean-trap] Allow boolean positionals in __post_init__ 
+   * [flake8-copyright] Allow © in copyright notices 
+   * [isort]: Use one blank line after imports in typing stub files 
+   * [pylint] New Rule dict-iter-missing-items (PLE1141) 
+   * [pylint] Ignore sys.version and sys.platform (PLR1714) 
+   * [pyupgrade] Detect literals with unary operators (UP018) 
+   * [ruff] Expand rule for list(iterable).pop(0) idiom (RUF015) 
+ * Formatter
+  * This release introduces the Ruff 2024.2 style, stabilizing the following changes:
+   * Prefer splitting the assignment's value over the target or type annotation 
+   * Remove blank lines before class docstrings 
+   * Wrap multiple context managers in with parentheses when targeting Python 3.9 or newer 
+   * Add a blank line after nested classes with a dummy body (...) in typing stub files 
+   * Reduce vertical spacing for classes and functions with a dummy (...) body
+   * Add a blank line after the module docstring 
+   * Parenthesize long type hints in assignments 
+   * Preserve indent for single multiline-string call-expressions 
+   * Normalize hex escape and unicode escape sequences 
+   * Format module docstrings 
+ * CLI
+   * Explicitly disallow extend as part of a --config flag 
+   * Remove build from the default exclusion list 
+   * Deprecate ruff <path>, ruff --explain, ruff --clean, and ruff --generate-shell-completion
+      in favor of ruff check <path>, ruff rule, ruff clean, and ruff generate-shell-completion 
+   * Remove the deprecated CLI option --format from ruff rule and ruff linter 
+ * Bug fixes
+   * [flake8-bugbear] Avoid adding default initializers to stubs (B006) 
+   * [flake8-type-checking] Respect runtime-required decorators for function signatures 
+   * [pycodestyle] Mark fixes overlapping with a multiline string as unsafe (W293) 
+   * [pydocstyle] Trim whitespace when removing blank lines after section (D413) 
+   * [pylint] Delete entire statement, including semicolons (PLR0203) 
+   * [ruff] Avoid f-string false positives in gettext calls (RUF027) 
+   * Fix ruff crashing on PowerPC systems because of too small page size 
+ * Performance
+   * Add cold attribute to less likely printer queue branches in the formatter 
+   * Skip unnecessary string normalization in the formatter 
+ * Documentation
+   * Remove "Beta" Label from formatter documentation 
+   * line-length option: fix link to pycodestyle.max-line-length 
+
+-------------------------------------------------------------------
+Tue Mar  5 14:12:37 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Enable build on riscv64
+
+-------------------------------------------------------------------
 Wed Feb 21 16:49:44 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.2.2
