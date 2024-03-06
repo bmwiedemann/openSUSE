@@ -20,7 +20,7 @@
 %define gst_branch 1.0
 %define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 Name:           gstreamer-plugins-base
-Version:        1.22.9
+Version:        1.24.0
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -30,9 +30,10 @@ Source0:        %{url}/src/%{_name}/%{_name}-%{version}.tar.xz
 Source1:        gstreamer-plugins-base.appdata.xml
 Source2:        baselibs.conf
 
-Patch4:         add_wayland_dep_to_tests.patch
-Patch5:         MR-221-video-anc-add-two-new-CEA-608-caption-formats.patch
-Patch6:         reduce-required-meson.patch
+Patch1:         add_wayland_dep_to_tests.patch
+Patch2:         MR-221-video-anc-add-two-new-CEA-608-caption-formats.patch
+# https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/3303
+Patch3:         gst-plugins-base-audiobasesink-gap.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  cdparanoia-devel
@@ -45,7 +46,7 @@ BuildRequires:  libXext-devel
 BuildRequires:  libXv-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
-BuildRequires:  meson >= 0.61
+BuildRequires:  meson >= 1.1
 BuildRequires:  orc >= 0.4.24
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
@@ -559,8 +560,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstaudioresample.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstaudiotestsrc.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstaudiorate.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstbasedebug.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstcdparanoia.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstcompositor.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstdsd.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstencoding.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstgio.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstlibvisual.so
