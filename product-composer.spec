@@ -17,7 +17,7 @@
 
 
 Name:           product-composer
-Version:        0.3.4
+Version:        0.4.0
 Release:        0
 Summary:        Product Composer
 License:        GPL-2.0-or-later
@@ -35,7 +35,6 @@ Requires:       python3-rpm
 Requires:       build
 Requires:       createrepo
 Requires:       inst-source-utils
-Requires:       instsource-susedata
 Requires:       mkisofs
 BuildArch:      noarch
 
