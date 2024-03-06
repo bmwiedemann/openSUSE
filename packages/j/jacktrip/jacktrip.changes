@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar  6 08:11:51 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.2.3:
+  * Updating domain name for virtual studio endpoints 
+  * Adding files for building a docker image 
+  * Use correct number of channels for the selected CoreAudio stream 
+  * Optimized image layers for docker container image 
+  * Blacklisting Generic Low Latency ASIO Driver 
+  * Don't send ping data in heartbeats until after vsPinger has started
+  * Prevent server crash by ensuring ports are closed before reuse
+
+-------------------------------------------------------------------
 Sat Feb 10 15:13:31 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.2.2:
