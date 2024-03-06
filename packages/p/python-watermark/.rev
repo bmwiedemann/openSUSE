@@ -125,4 +125,12 @@
 - Add watermark-pr92-optional-py3nvml.patch gh#rasbt/watermark#92</comment>
     <requestid>1096410</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>432b5306277edd0c76c6936093d4d882</srcmd5>
+    <version>2.4.3</version>
+    <time>1709762680</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip python39: no longer supported since ipython 8.19</comment>
+    <requestid>1155329</requestid>
+  </revision>
 </revisionlist>
