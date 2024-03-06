@@ -2,6 +2,7 @@
 # spec file for package liblo
 #
 # Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +19,15 @@
 
 %define lname	liblo7
 Name:           liblo
-Version:        0.31
+Version:        0.32
 Release:        0
 Summary:        Open Sound Control implementation
-# was http://plugin.org.uk/liblo/
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://liblo.sourceforge.net
+URL:            https://liblo.sourceforge.net
 Source:         https://downloads.sourceforge.net/liblo/%{name}-%{version}.tar.gz
 Source100:      baselibs.conf
-BuildRequires:  autoconf >= 2.69
-BuildRequires:  automake
 BuildRequires:  doxygen
-BuildRequires:  libtool
 BuildRequires:  pkgconfig
 
 %description
@@ -55,11 +52,10 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of liblo.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 echo 'HTML_TIMESTAMP=NO' >> doc/reference.doxygen.in
-autoreconf -fiv
 %configure \
   --disable-static \
   --disable-examples
@@ -70,8 +66,7 @@ make %{?_smp_mflags}
 rm -f examples/Makefile examples/Makefile.in
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %files -n %{lname}
 %license COPYING
@@ -79,6 +74,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/liblo.so.*
 
 %files devel
+%license COPYING
 %doc doc/html
 %doc examples
 %{_bindir}/oscdump
