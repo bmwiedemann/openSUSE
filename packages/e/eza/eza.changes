@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Mar  6 07:26:51 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.6:
+  Bug Fixes:
+  * NetBSD did not have fflagstostr and as such did not build properly
+  * Fix total-size option
+  * Add fortran to source filetypes
+  * Fix absolute_path() for broken symlinks
+  * Update line numbers in panic messages in tests
+  Features:
+  * Add filetype and icon for age
+  * Adding icons for graphql extensions
+  * Add nim icons
+  * Use fsharp icon for fsproj files (similar to cs/csproj)
+  * Add new icons, diverse selection
+  * Adding more haskell related icons
+  * Adding more icons for docker specific files
+  * Adding more dockerfile icons
+  * Add --absolute flag
+  * Add shell completions for --absolute flag
+
+-------------------------------------------------------------------
 Thu Feb 29 06:19:27 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.18.5:
@@ -29,7 +51,7 @@ Thu Feb 15 07:46:05 UTC 2024 - Michael Vetter <mvetter@suse.com>
 Thu Feb  8 19:01:58 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.18.2:
-  * This security release fixes GHSA-3qx3-6hxr-j2ch
+  * This security release fixes GHSA-3qx3-6hxr-j2ch (bsc#1221053)
   * Update libgit2 to 1.7.2
 
 -------------------------------------------------------------------
