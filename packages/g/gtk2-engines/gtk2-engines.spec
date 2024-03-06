@@ -1,7 +1,7 @@
 #
 # spec file for package gtk2-engines
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,6 @@ Release:        0
 URL:            http://www.gnome.org
 Source:         %{_name}-%{version}.tar.bz2
 Source1:        README.openSUSE
-Source99:       baselibs.conf
 #
 Patch0:         gtk-engines-bnc546966-clearlooks-fix-main-menu-icon-size.patch
 # PATCH-FIX-UPSTREAM gtk-engines-glib.patch bgo#664914 dimstar@opensuse.org -- FIx build with new glib: only glib.h can be included.
