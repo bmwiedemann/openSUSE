@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>34af2b8ff4fea9ea2aba8824cdb95330</srcmd5>
+    <version>1.41.0</version>
+    <time>1709762657</time>
+    <user>dimstar_suse</user>
+    <comment>inflxudb1 is old and does not support Python 3.12, New client lib required for a migration of openSUSE-release-tools metrics to influxdb2 https://github.com/openSUSE/openSUSE-release-tools/issues/3034</comment>
+    <requestid>1155204</requestid>
+  </revision>
+</revisionlist>

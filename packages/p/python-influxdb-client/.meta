@@ -1,0 +1,5 @@
+<package name="python-influxdb-client" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="server:database" package="python-influxdb-client"/>
+</package>
