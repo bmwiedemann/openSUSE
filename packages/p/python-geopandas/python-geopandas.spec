@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-geopandas
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-geopandas%{psuffix}
-Version:        0.14.1
+Version:        0.14.3
 Release:        0
 Summary:        Geographic pandas extensions
 License:        BSD-3-Clause
