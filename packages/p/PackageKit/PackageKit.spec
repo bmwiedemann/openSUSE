@@ -40,7 +40,6 @@ Group:          System/Daemons
 URL:            https://www.freedesktop.org/software/PackageKit
 Source0:        %{url}/releases/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/%{name}-%{version}.tar.xz.asc
-Source2:        baselibs.conf
 Source3:        PackageKit.tmpfiles
 Source99:       PackageKit.keyring
 
@@ -174,7 +173,7 @@ Summary:        Install GStreamer codecs using PackageKit
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     %{name} = %{version}
 Supplements:    (%{name} and gstreamer-plugins-base)
 

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  5 14:14:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop baselibs.conf: the -32bit packages are no longer needed and
+  have not been part of Tumbleweed for a while already (build for
+  i586 only enabled in LegacyX86).
+
+-------------------------------------------------------------------
 Tue Jan  2 08:23:40 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add PackageKit-find-python-3-6.patch: Specify the Python version
