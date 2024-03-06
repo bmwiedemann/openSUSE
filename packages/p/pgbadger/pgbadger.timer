@@ -1,0 +1,33 @@
+#
+# The following two examples will auto-generate an report from your 
+# postgresql log files.
+#
+# You need the following settings in a standard postgresql-server 
+# installation in /var/lib/pgsql/data/postgresql.conf for this:
+#   log_filename = 'postgresql-%Y-%m-%d.log'
+#   log_rotation_age = 1d 
+#   log_rotation_size = 0
+#
+# The output will be placed below /srv/www/htdocs/pgbadger/
+#
+# See https://github.com/darold/pgbadger/ for more details
+#
+# Note 1: Please have a look at the corresponding pgbadger.service file
+#             systemctl edit pgbadger.service
+#         and adjust it to your needs. 
+#
+
+[Unit]
+Description=Auto-Generate an incremental report from a postgresql logfile
+
+[Timer]
+## 1. This timer runs every day at 04:00 - and should match the first 
+##    command in the pgbadger.service file
+# OnCalendar=*-*-* 04:00:00
+## 2. This timer runs every week - and should match the 2nd 
+##    command in the pgbadger.service file
+# OnCalendar=weekly
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,351 @@
+-------------------------------------------------------------------
+Mon Feb 26 11:23:36 UTC 2024 - Emiliano Langella <emiliano.langella@suse.com>
+
+- Disabling cronjobs on any non-systemd distribution. 
+
+-------------------------------------------------------------------
+Tue Jan  2 09:05:55 UTC 2024 - Emiliano Langella <emiliano.langella@suse.com>
+
+- update to 12.4
+  This is a maintenance release of pgBadger that fixes issues reported by
+  users since last release.
+  * Fix pgbouncer report with version 1.21. Thanks to Ales Zeleny for the patch.
+  * Prevent parallelism perl file to be higher than the number of files. Thanks
+    to maliangzhu for the report.
+  * Fix regression test broken since v12.3. Thanks to ieshin for the report.
+  * Fix cases where LOG entries where counted as ERROR log level entries. Thanks
+    to Matti Linnanvuori for the report.
+
+-------------------------------------------------------------------
+Mon Nov 27 11:48:16 UTC 2023 - lars@linux-schulserver.de - 12.3
+
+- update to 12.3
+  This is a maintenance release of pgBadger that fixes issues reported by
+  users since last release. It also adds some new features:
+  * Add option --include-pid to only report events related to a session
+    pid (%p). Can be used multiple time. Thanks to Henrietta Dombrovskaya
+    for the feature request.
+  * Add option --include-session to only report events related to the
+    session id (%c). Can be used multiple time. Thanks to Henrietta Dombrovskaya
+    for the feature request.
+  * Add option --dump-raw-csv to only parse the log and dump the information
+    into CSV format. No further processing is done, no report is generated.
+    Thanks to Henrietta Dombrovskaya for the feature request.
+  Here is the complete list of changes and acknowledgments:
+  * Update pgFormatter to version 5.5
+  * Fix end date of parsing with jsonlog format. Thanks to jw1u1 for the report.
+  * Fix typo in "Sessions per application". Thanks to fairyfar for the patch.
+  * Fix "INSERT/UPDATE/DELETE Traffic" chart bug. Thanks to fairyfar for the
+    patch.
+  * Fix parsing of orphan lines with bind queries. Thanks to youxq for the
+    report.
+  * Fix Analyze per table report with new PG versions. Thanks to Jean-Christophe
+    Arnu for the patch.
+  * Fix syslog entry parser when the syslog timestamp contains milliseconds.
+    Thanks to Pavel Rabel for the report.
+- add systemd timer examples: beside the existing cron job example, this 
+  allows people to get an idea how to automate the generation of reports
+- introduce local cron macro: only recommend cron on older distributions 
+  and leave the cron example file where it was historically (but place it 
+  into the examples folder on newer distributions).
+- get rid of old suse_version 11.3 check
+- Package rename: provide and obsolete the old PgBadger package
+
+-------------------------------------------------------------------
+Fri Nov 17 15:34:14 UTC 2023 - Emiliano Langella <emiliano.langella@suse.com>
+
+- added pgbadger-rpmlintrc as source 
+
+-------------------------------------------------------------------
+Fri Nov 17 09:10:35 UTC 2023 - Emiliano Langella <emiliano.langella@suse.com>
+
+- renamed package to pgbadger 
+
+-------------------------------------------------------------------
+Thu Nov 16 16:44:33 UTC 2023 - Emiliano Langella <emiliano.langella@suse.com>
+
+- modified Source0
+
+-------------------------------------------------------------------
+Thu Nov 16 08:23:20 UTC 2023 - Emiliano Langella <emiliano.langella@suse.com>
+
+- added rpmlint filter for crontabs
+
+-------------------------------------------------------------------
+Wed Nov 15 20:34:19 UTC 2023 - Emiliano Langella <emiliano.langella@suse.com>
+
+- removed clean macro 
+
+-------------------------------------------------------------------
+Wed Nov 15 10:11:49 UTC 2023 - Emiliano Langella <emiliano.langella@suse.com>
+
+- alligned changes file to the OBS project name
+
+-------------------------------------------------------------------
+Wed Nov 15 09:55:46 UTC 2023 - Emiliano Langella <emiliano.langella@suse.com>
+
+- alligned "Name:" tag and spec file name to the OBS project name 
+
+-------------------------------------------------------------------
+Sat Aug 26 05:25:19 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 12.2
+  https://github.com/darold/pgbadger/releases/tag/v12.2
+
+-------------------------------------------------------------------
+Wed Mar 22 00:45:29 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 12.1
+  https://github.com/darold/pgbadger/releases/tag/v12.1
+
+-------------------------------------------------------------------
+Tue Sep 13 22:30:31 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 12.0
+  https://github.com/darold/pgbadger/releases/tag/v12.0
+
+-------------------------------------------------------------------
+Sat Jul 16 01:06:50 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 11.8
+  https://github.com/darold/pgbadger/releases/tag/v11.8
+- drop 716.diff:
+  included in update
+
+-------------------------------------------------------------------
+Sat Feb 19 17:48:06 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- apply upstream test fix 716.diff
+  https://github.com/darold/pgbadger/pull/716
+
+-------------------------------------------------------------------
+Tue Jan 25 10:41:34 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 11.7
+  https://github.com/darold/pgbadger/releases/tag/v11.7
+
+-------------------------------------------------------------------
+Tue Sep  7 16:36:46 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 11.6
+  https://github.com/darold/pgbadger/releases/tag/v11.5
+  https://github.com/darold/pgbadger/releases/tag/v11.6
+
+-------------------------------------------------------------------
+Tue Dec  1 11:00:41 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 11.4
+  https://github.com/darold/pgbadger/releases/tag/v11.2
+  https://github.com/darold/pgbadger/releases/tag/v11.3
+  https://github.com/darold/pgbadger/releases/tag/v11.4
+
+-------------------------------------------------------------------
+Wed Oct 23 19:54:32 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- BR for cron for directory ownership
+
+-------------------------------------------------------------------
+Wed Oct  2 08:18:11 UTC 2019 - lars@linux-schulserver.de
+
+- update to 11.1
+  - please refer to /usr/share/doc/packages/pgbadger/ChangeLog for a 
+    complete list of changes. The following is just an excerpt
+
+  - This new release breaks backward compatibility with old binary or JSON
+    files. This also mean that incremental mode will not be able to read
+    old binary file. If you want to update pgBadger and keep you old reports
+    take care to upgrade at start of a new week otherwise weekly report will
+    be broken. pgBadger will print a warning and just skip the old binary
+    file.
+  - From 9.0: This major release of pgBadger is a port to bootstrap 3 and
+    a version upgrade of all resources files (CSS and Javascript). 
+    There's also some bugs fixes and features enhancements.
+
+  - Add support of pgbouncer syslog log file format.
+  - Add support to all auto_explain format (text, xml, json and yaml).
+  - Add support to %q placeholder in log_line_prefix.
+  - Add jsonlog format of Michael Paquier extension, with -f jsonlog 
+    pgbadger will be able to parse the log.
+  - Add report of checkpoint distance and estimate.
+  - Add support of AWS Redshift keywords to SQL code beautifier.
+  - Add autodetection of log format in remote mode to allow remote 
+    parsing of pgbouncer log file together with PostgreSQL log file.
+  - Replace the SQL formatter/beautify with v3.0 of pgFormatter.
+  - Add report of error class distribution when SQLState is available
+    in the log_line_prefix (see %e placeholder).
+  - Update SQL Beautifier to pgFormatter v1.6 code.
+  - Improve error message normalization.
+  - Add --normalized-only option to generate a text file containing all
+    normalized queries found in a log with count.
+  - Allow %c (session id) to replace %p (pid) as unique session id.
+  - Add waiting for lock messages to event reports.
+  - Add --start-monday option to start calendar weeks in Monday
+    instead of default to Sunday.
+  - Add report of top N queries that consume the most time in the 
+    prepare or parse stage.
+  - Add report of top N queries that consume the most time in the 
+    bind stage.
+  - Add report of timing for prepare/bind/execute queries parts. 
+    Reported in a new "Duration" tab in Global Stats report. This 
+    also fix previous report of "Total query duration" that was 
+    only reporting execute total duration. 
+  - Add support to RDS and CloudWatch log format, they are detected 
+    automatically. You can use -f rds if pgbadger is not able to 
+    auto-detect the log format.
+  - Add new configuration option --month-report to be able to build 
+    monthly incremental reports.
+  - Add top bind queries that generate the more temporary files.
+    Require log_connection and log_disconnection be activated.
+  - Add --exclude-client command line option to be able to exclude log
+    entries for the specified client ip. Can be used multiple time.
+  - Add -H, --html-dir option to be able to set a different path where
+    HTML report must be written in incremental mode. Binary files stay
+    on directory defined with -O, --outdir option.
+  - Add -E | --explode option to explode the main report into one
+    report per database. Global information not related to a database
+    are added to the postgres database report.
+  - Add per database report to incremental mode. In this mode there
+    will be a sub directory per database with dedicated incremental
+    reports.
+  - Add support to Heroku's PostgreSQL logplex format.
+- needs Pod::Markdown and JSON::XS to build now
+- uses additional modules during runtime: Storable, File::Spec, File::Temp
+  IO::Handle, IO::Pipe, FileHandle, Socket, Encode, Text::Wrap
+- new upstream URL
+- disable tests on SLE, as there is no JSON::XS available
+- added some cron examples in /etc/cron.d/pgbadger
+
+-------------------------------------------------------------------
+Mon Apr 25 15:00:48 UTC 2016 - mrueckert@suse.de
+
+- update to 8.1
+  - Fix one case where pid file remain after dying.
+  - Add requirement of log_error_verbosity = default to
+    documentation.
+  - Report message "LOG: using stale statistics instead of current
+    ones because stats collector is not responding" in events view.
+  - Remove obsolete days when we are in binary mode with --noreport
+  - Fix wrong report of statements responsible of temporary files.
+    Thanks to Luan Nicolini Marcondes for the report. This patch
+    also exclude line with log level LOCATION to be parsed.
+  - Fix limit on number of sample at report generation and remove
+    pending LAST_PARSED.tmp file.
+  - Update load_stat() function and global variables to support
+    pgbouncer statistics. Update version to 2.0.
+  - Handle more kind or query types. Thanks to julien Rouhaud for
+    the patch.
+  - Fix pgbouncer log parser to handle message: FATAL: the database
+    system is shutting down
+  - Fix whitespace placed in between the E and the quote character.
+    Thanks to clijunky for the report.
+  - Fix a major issue introduced with support to pgbouncer that
+    prevent parsing of compressed PostgreSQL log files. Thanks to
+    Levente Birta for the report.
+- remove the unused rpmlintrc
+
+-------------------------------------------------------------------
+Sun Sep 13 11:40:04 UTC 2015 - lars@linux-schulserver.de
+
+- update to 7.1:
+  + This new release fixes some issues and adds a new report:
+  ++ Distribution of sessions per application
+  + It also adds Json operators to SQL Beautifier. 
+  + this release also adds some more useful reports and features, 
+    please check the changes file in 
+    /usr/share/doc/packages/pgbadger/ChangeLog for details
+- remove perl vendorarch directory if empty
+- also package pgbadger_tools in doc directory
+- add rpmlintrc to get rid of the license warning
+
+-------------------------------------------------------------------
+Tue Oct 14 18:13:21 UTC 2014 - darin@darins.net
+
+- update to 6.2
+  + This is a maintenance release to fix a regression in SQL traffic graphs and
+    fix some other minor issues.
+  + The release also add a new option -D or --dns-resolv to map client ip addresses
+    to FQDN without having log_hostname enabled on the postgresql's configuration
+  + Do not display queries in Slowest individual, Time consuming and
+    Normalized slowest queries reports when there is no duration in
+    log file. Display NO DATASET instead.
+  + Fix min/max queries in SQL traffic that was based on duration instead
+    of query count.
+  + Fix wrong unit to Synced files in Checkpoints files report. Thanks
+    to Levente Birta for the report.
+  + Enable allow_loose_quotes in Text::CSV_XS call to fix CSV parsing
+    error when fields have quote inside an unquoted field. Thanks to
+    Josh Berkus for the report.
+  +- Add -D | --dns-resolv command line option to replace ip addresses
+    by their DNS name. Be warned that this can slow down pgBagder a lot.
+    Thanks to Jiri Hlinka for the feature request. 
+
+-------------------------------------------------------------------
+Wed Mar 12 20:11:06 UTC 2014 - lars@linux-schulserver.de
+
+- update to 5.0:
+  + This new major release adds some new features like incremental 
+    mode and SQL queries times histogram. There is also a hourly 
+    graphic representation of the count and average duration of top 
+    normalized queries.
+  + there are many more changes, please refer to 
+    /usr/share/doc/packages/pgbadger/ChangeLog
+    for details
+
+-------------------------------------------------------------------
+Mon May  6 09:51:04 UTC 2013 - lars@linux-schulserver.de
+
+- update to 3.3:
+  * adds four more useful reports about queries that generate locks 
+    and temporary files
+  * new report about restartpoint on slaves and several
+  * adds escaping of HTML code inside queries
+  * adds Min/Max reports with Average duration in all queries reports
+  * many bug fixes
+
+-------------------------------------------------------------------
+Sat Mar 23 17:44:15 UTC 2013 - lars@linux-schulserver.de
+
+- update to 3.1:
+  !! UPGRADE: if you are running pgbadger by cron take care if you 
+  !! were using one of the following option: --enable-log_min_duration
+  !! and --enable-log_duration, they have been removed and pgbadger 
+  !! will refuse to start
+  + This new major release adds parallel log processing by using as 
+    many cores as wanted to parse log files, the performances gain is 
+    directly related to the number of cores specified. 
+    There's also new reports about autovacuum/autoanalyze informations 
+    and many bugs have been fixed.
+  + Please read the full Changelog at:
+    /usr/share/doc/packages/pgbadger/ChangeLog 
+- do not use perl_gen_filelist macro on old distributions: 
+  breaks build
+- removed duplicated perl(Text::CSV_XS) build requires line
+
+-------------------------------------------------------------------
+Wed Feb 13 13:22:57 UTC 2013 - darin@darins.net
+
+- update to 2.3
+  * Clarify misleading statement about log_duration: log_duration may be
+    turned on depending on desired information. Only log_statement must
+    not be on. Thanks to Matt Romaine for the patch.
+  * Fix --dbname and --dbuser not working with csvlog format. Thanks to
+    Luke Cyca for the report.
+  * Fix issue in SQL formatting that prevent left back indentation when
+    major keywords were found. Thanks to Kevin Brannen for the report.
+  * Display 3 decimals in time report so that ms can be seen. Thanks to
+    Adam Schroder for the request.
+  * Force the parser to not insert a new line after the SET keyword when
+    the query begin with it. This is to preserve the single line with
+    queries like SET client_encoding TO "utf8";
+  * Add better SQL formatting of update queries by adding a new line
+    after the SET keyword. Thanks to pilat66 for the report.
+  * Update copyright and documentation.
+  * See ChangeLog
+
+- added missing perl dependency for cvs logs 
+
+-------------------------------------------------------------------
+Sun Jan  6 03:50:45 UTC 2013 - lars@linux-schulserver.de
+
+- initial version 2.2-1
+

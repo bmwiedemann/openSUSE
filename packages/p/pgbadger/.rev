@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>59ef5a580c3eead1682288c0a08eb392</srcmd5>
+    <version>12.4</version>
+    <time>1709762653</time>
+    <user>dimstar_suse</user>
+    <comment>I would like to maintain the package pgbadger in Factory and use server:database:postgresql/pgbadger as devel/feeder project.</comment>
+    <requestid>1154876</requestid>
+  </revision>
+</revisionlist>

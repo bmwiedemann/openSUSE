@@ -1,0 +1,30 @@
+#
+# The following example will auto-generate an incremental report from a
+# postgresql log file, which is rotated on a daily base, 
+# every day at 04:00.
+#
+# You need the following settings in a standard postgresql-server 
+# installation in /var/lib/pgsql/data/postgresql.conf for this:
+#   log_directory = '/var/log/pgsql'
+#   log_filename = 'postgresql-%Y-%m-%d.log'
+#   log_file_mode = 0640
+#   log_rotation_age = 1d 
+#   log_rotation_size = 0
+#
+# Once you created a new user pgbadger, you can place the script below 
+#   /etc/cron.d/ 
+# Please have a look at /usr/share/doc/packages/pgbadger/README.SUSE 
+# for setup details.
+# 
+# The output will be placed below /srv/www/htdocs/pgbadger/
+#
+# See https://github.com/darold/pgbadger/ for more details
+#
+#-0 4 * * * pgbadger /usr/bin/pgbadger -I -q /var/log/pgsql/postgresql-$(date "+%Y-%m-%d" -d "yesterday").log -O /srv/www/htdocs/pgbadger/
+
+
+#
+# The following example will generate a report every week using incremental behavior
+#
+#-0 4 * * 1 pgbadger /usr/bin/pgbadger -q `find /var/log/pgsql/ -mtime -7 -name "postgresql.log*"` -o /srv/www/htdocs/pgbadger/reports/pg_errors-`date +\%F`.html -l /srv/www/htdocs/pgbadger/reports/pgbadger_incremental_file.dat
+

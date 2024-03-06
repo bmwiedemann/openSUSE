@@ -1,0 +1,112 @@
+Dear customer,
+
+We provide a cron job and a systemd timer and service, which might help you 
+implementing an automatism for pgbadger on your local systems. 
+
+Security considerations:
+ a) Running pgbadger as root might be simple, but is in no way secure.
+    We do NOT recommend to do this. 
+
+ b) Running pgbadger as user postgres is possible, but - depending on 
+    your local security guideline - also not allowed. 
+
+ c) Running pgbadger as dedicated user is the most secure and 
+    recommended way of operation. This requires some adjustments on 
+    your postgresql.conf and at least a restart of your database 
+    service. 
+    We will follow this solution in our documentation below. 
+    Please note, however, that to make use of such a setting, you'll 
+    need to alter the 'log_directory' to store the log files somewhere 
+    outside the cluster data directory. 
+    In any case, it's unwise to make the log files world-readable, 
+    since they might contain sensitive data.
+
+
+= Prerequisite
+
+1. Think about a (new) user that executes the script.
+
+   We will create a new user called 'pgbadger', who will later be used 
+   to execute the script:
+
+     /usr/sbin/useradd  -r -g postgres -M -d /srv/www/htdocs/pgbadger/ -s /bin/false -c "User for pgbadger" pgbadger
+
+
+2. Prepare a local directory, that can be used to store the generated 
+   reports of pgbadger.
+
+   We suggest to use /srv/www/htdocs/pgbadger/ here in the examples. 
+   This directory is below the usual WEBROOT of any webserver. which 
+   would allow to view the files directly in a browser. 
+
+   A command to create such a directory therefor looks like:
+
+     install -o pgbadger -g wwwrun -m 0750 -d /srv/www/htdocs/pgbadger/
+
+3. Create a new directory to store postgresql logs.
+
+   Think about a secure directory for storing your log files and create
+   this directory via:
+
+     install -o postgres -g postgres -m 0700 -d /var/log/pgsql/
+
+4. Adjust the configuration of your postgresql server.
+
+   You need the following settings in a standard postgresql-server installation 
+   in /var/lib/pgsql/data/postgresql.conf for this:
+
+    log_directory = '/var/log/pgsql'
+    log_filename = 'postgresql-%Y-%m-%d.log'
+    log_file_mode = 0640
+    log_rotation_age = 1d 
+    log_rotation_size = 0
+ 
+  Note: these changes require a restart of your postgresql server. If you 
+        have SELinux or Apparmor enabled, please adjust the configuration 
+        before you restart the service. 
+        Same applies obviously to any service, which connects to your 
+        database. 
+
+   Once all preparations are done, execute:
+
+      rcpostgresql restart
+
+
+As result, your postgresql server should log now into this new directory. 
+The files in this directory should belong to the user 'postgres', 
+group 'postgres' with file permissions 0640:
+
+-rw-r----- 1 postgres postgres 997 Jan  1 05:58 /var/log/pgsql/postgresql-2024-01-31.log
+
+Now it's time to work on the automation.
+
+
+= Using a cron job
+
+For historical reasons, we provide a small cron script for older distrubutions 
+in the following
+folder, that you can adjust to your needs:
+
+/etc/cron.d/
+
+
+= Using systemd timer
+
+This is the recommended way.
+
+Please adjust the following systemd timer and unit (see comments inline) to 
+your needs:
+
+     systemctl edit pgbadger.timer
+     systemctl edit pgbadger.service
+
+After that, please enable the systemd timer with the following two 
+commands:
+
+     systemctl daemon-reload
+     systemctl enable pgbadger.timer
+
+
+----
+ And remember to have a lot of fun!
+  Your SUSE Team.

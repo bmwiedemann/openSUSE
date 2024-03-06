@@ -1,0 +1,38 @@
+#
+# The following two examples will auto-generate an report from your 
+# postgresql log files.
+#
+# You need the following settings in a standard postgresql-server 
+# installation in /var/lib/pgsql/data/postgresql.conf for this:
+#   log_directory = '/var/log/pgsql'
+#   log_filename = 'postgresql-%Y-%m-%d.log'
+#   log_file_mode = 0640
+#   log_rotation_age = 1d 
+#   log_rotation_size = 0
+#
+# The output will be placed below /srv/www/htdocs/pgbadger/
+#
+# See https://github.com/darold/pgbadger/ for more details
+#
+# Note 1: Only ONE ExecStart line should be active at a time. 
+#         If you uncomment more than one, the last line 'wins'.
+# Note 2: As the 2nd example is expected to be run once a week, the 
+#         corresponding pgbadger.timer needs to be adjusted. Please use
+#               systemctl edit pgbadger.timer
+#         to do this (have a look at the comments there).
+#
+
+[Unit]
+Description=Auto-Generate an incremental report from a postgresql logfile
+
+[Service]
+Type=oneshot
+User=pgbadger
+Group=postgres
+## 1. The following example will generate an incremental report from a 
+##    log file, which is rotated on a daily base, every day at 04:00.
+# ExecStart=/usr/bin/pgbadger -I -q /var/log/pgsql/postgresql-$(date "+%Y-%m-%d" -d "yesterday").log -O /srv/www/htdocs/pgbadger
+## 2. The following example will generate a report every week 
+##    using incremental behavior
+#ExecStart=/usr/bin/pgbadger -q `find /var/log/pgsql/ -mtime -7 -name "postgresql.log*"` -o /srv/www/htdocs/pgbadger/reports/pg_errors-`date +\%F`.html -l /srv/www/htdocs/pgbadger/reports/pgbadger_incremental_file.dat
+
