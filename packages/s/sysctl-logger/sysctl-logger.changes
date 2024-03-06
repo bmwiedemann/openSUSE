@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  6 11:50:38 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update to v0.0.5
+  * Show parent process info
+  * Improve readability with empty event values
+- Use default LLVM/Clang version available (on openSUSE)
+
+-------------------------------------------------------------------
 Fri Oct 20 08:31:44 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update to v0.0.4

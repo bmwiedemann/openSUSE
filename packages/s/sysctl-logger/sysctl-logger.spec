@@ -15,10 +15,26 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define llvm_major_version 15
+# Use default LLVM on openSUSE
+%if 0%{?suse_version} >= 1600 || 0%{?is_opensuse}
+ %define llvm_major_version %{nil}
+%else
+ # Hard-code latest LLVM for SLES, the default version is too old
+ %if 0%{?sle_version} == 150600
+  %define llvm_major_version 17
+ %else
+ %if 0%{?sle_version} == 150500
+  %define llvm_major_version 15
+ %else
+ %if 0%{?sle_version} == 150400
+  %define llvm_major_version 11
+ %endif
+ %endif
+ %endif
+%endif
 
 Name:           sysctl-logger
-Version:        0.0.4
+Version:        0.0.5
 Release:        0
 Summary:        A sysctl monitoring tool based on BPF
 License:        GPL-2.0-only
@@ -26,7 +42,7 @@ Group:          System/Monitoring
 URL:            https://github.com/shunghsiyu/sysctl-logger
 Source:         https://github.com/shunghsiyu/sysctl-logger/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  bpftool
-BuildRequires:  clang%{llvm_major_version}
+BuildRequires:  clang%{llvm_major_version} > 9
 BuildRequires:  gettext-runtime
 BuildRequires:  make
 BuildRequires:  pkgconfig(libbpf)
