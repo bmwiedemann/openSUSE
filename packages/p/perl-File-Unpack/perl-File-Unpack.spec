@@ -183,14 +183,7 @@ Requires:       perl(File::Unpack) == %version
 ships with the File::Unpack perl module.
 
 %prep
-%setup -q -n File-Unpack-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+%autosetup -p1 -n File-Unpack-%{version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor

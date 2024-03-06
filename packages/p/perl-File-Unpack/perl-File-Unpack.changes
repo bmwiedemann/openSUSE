@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  4 12:54:48 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Wed Feb 23 11:41:50 UTC 2021 - Sebastian Riedel <sriedel@suse.com>
 
 - Take 12.diff from https://github.com/jnweiger/perl-File-Unpack/pull/12
