@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar  5 14:17:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop baselibs.conf: the -32bit packages are no longer needed and
+  have not been part of Tumbleweed for a while already (build for
+  i586 only enabled in LegacyX86).
+
+-------------------------------------------------------------------
+Fri Feb  2 14:40:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.78.1:
+  + Glib: Dispatcher: Allow destroy during emit.
+  + gmmproc: h2def.py: Make return types that are unsigned work.
+  + Build:
+    - Meson build: Don't fail if warning_level=everything
+    - MSVC, NMake: Make dep paths configurable.
+
+-------------------------------------------------------------------
 Tue Sep 12 11:58:17 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.78.0:

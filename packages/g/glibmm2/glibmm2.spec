@@ -1,7 +1,7 @@
 #
 # spec file for package glibmm2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-# Update baselibs.conf when changing this
 %define so_ver -2_68-1
 # Define a baseversion to ease updates
 %define base_ver 2.68
@@ -24,14 +23,13 @@
 %define _name glibmm
 
 Name:           glibmm2
-Version:        2.78.0
+Version:        2.78.1
 Release:        0
 Summary:        C++ Interface for Glib
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.gtkmm.org/
 Source0:        https://download.gnome.org/sources/glibmm/2.78/%{_name}-%{version}.tar.xz
-Source99:       baselibs.conf
 
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
