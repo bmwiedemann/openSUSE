@@ -169,4 +169,14 @@
     <comment>spec-cleaner (forwarded request 581162 from dimstar)</comment>
     <requestid>582765</requestid>
   </revision>
+  <revision rev="25" vrev="11">
+    <srcmd5>2cd54569abfa87125052e70fe989fc47</srcmd5>
+    <version>0.98.2</version>
+    <time>1709762636</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop baselibs.conf: the -32bit packages are no longer needed and
+  have not been part of Tumbleweed for a while already (build for
+  i586 only enabled in LegacyX86). (forwarded request 1155227 from dimstar)</comment>
+    <requestid>1155244</requestid>
+  </revision>
 </revisionlist>
