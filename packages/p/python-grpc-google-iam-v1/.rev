@@ -51,4 +51,12 @@
     <comment>- require setuptools</comment>
     <requestid>1136439</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>846c5d4f665082378d3af417ddb9da72</srcmd5>
+    <version>0.13.0</version>
+    <time>1709762654</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1154910</requestid>
+  </revision>
 </revisionlist>
