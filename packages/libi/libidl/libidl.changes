@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  5 14:06:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop baselibs.conf: the -32bit packages are no longer needed and
+  have not been part of Tumbleweed for a while already (build for
+  i586 only enabled in LegacyX86).
+
+-------------------------------------------------------------------
 Mon Mar  5 15:41:27 UTC 2018 - jengelh@inai.de
 
 - Fix SRPM groups. Update summaries. Remove ineffective --with-pic.

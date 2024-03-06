@@ -1,7 +1,7 @@
 #
 # spec file for package libidl
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,13 +20,12 @@
 Name:           libidl
 Version:        0.8.14
 Release:        0
-# NOTE: on upgrade to a new upstream version, change the Obsoletes from <= to < (here and in baselibs.conf)
+# NOTE: on upgrade to a new upstream version, change the Obsoletes from <= to <
 Summary:        IDL Parsing Library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
-Url:            http://www.gnome.org
+URL:            http://www.gnome.org
 Source:         http://ftp.gnome.org/pub/GNOME/sources/%{_name}/0.8/%{_name}-%{version}.tar.bz2
-Source99:       baselibs.conf
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  glib2-devel
@@ -90,6 +89,7 @@ rm -f %{buildroot}%{_infodir}/dir
 
 %post -n libIDL-2-0 -p /sbin/ldconfig
 %postun -n libIDL-2-0 -p /sbin/ldconfig
+
 %post devel
 %install_info --info-dir=%{_infodir} %{_infodir}/%{_name}2.info%{ext_info}
 

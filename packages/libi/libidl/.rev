@@ -219,4 +219,14 @@
     <comment>- Fix SRPM groups. Update summaries. Remove ineffective --with-pic. (forwarded request 583035 from jengelh)</comment>
     <requestid>583047</requestid>
   </revision>
+  <revision rev="32" vrev="24">
+    <srcmd5>85a800f919eb525028735306e52809e6</srcmd5>
+    <version>0.8.14</version>
+    <time>1709762628</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop baselibs.conf: the -32bit packages are no longer needed and
+  have not been part of Tumbleweed for a while already (build for
+  i586 only enabled in LegacyX86). (forwarded request 1155218 from dimstar)</comment>
+    <requestid>1155238</requestid>
+  </revision>
 </revisionlist>
