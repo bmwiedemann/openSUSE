@@ -1,7 +1,7 @@
 #
 # spec file for package rofi-wayland
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rofi-wayland
-Version:        1.7.5+wayland2+git.1697052256.5cd1e3c
+Version:        1.7.5+wayland3+git.1709656676.1c41373
 Release:        0
 Summary:        A window switcher, run dialog and dmenu replacement
 License:        MIT
