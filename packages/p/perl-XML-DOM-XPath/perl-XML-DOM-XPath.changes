@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  4 15:52:13 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Sun Sep 24 06:39:10 UTC 2017 - coolo@suse.com
 
 - add no-more-encoding.diff to fix test with perl 5.26

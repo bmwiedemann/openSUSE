@@ -47,8 +47,7 @@ XML::DOM::XPath allows you to use XML::XPath methods to query a DOM. This
 is often much easier than relying only on getElementsByTagName.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{cpan_name}-%{version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
