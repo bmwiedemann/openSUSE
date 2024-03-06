@@ -11,23 +11,59 @@
   checkNewVersion = false
   sendAnonymousUsage = false
 
+#[tls.options]
+#  [tls.options.default]
+#    sniStrict = true
+
+################################################################
+# As the HTTP/3 spec is still in draft, HTTP/3 support in 
+# Traefik is an experimental feature and needs to be activated
+# in the experimental section of the static configuration.
+#
+# Will be a stable feature starting with version 3
+#
+# https://doc.traefik.io/traefik/routing/entrypoints/#http3
+################################################################
+#[experimental]
+#  http3 = true
+
 ################################################################
 # Entrypoints configuration
+#
+# https://doc.traefik.io/traefik/routing/entrypoints/
 ################################################################
 
-# Entrypoints definition
-#
 # Optional
 # Default:
 [entryPoints]
   [entryPoints.web]
     address = ":80"
 
-  [entryPoints.websecure]
-    address = ":443"
+## Redirect all requests incoming from http to https
+## websecure/https must be enabled to be use this configuration
+##
+## https://doc.traefik.io/traefik/routing/entrypoints/#redirection
+##
+#  [entryPoints.web.http]
+#    [entryPoints.web.http.redirections]
+#      [entryPoints.web.http.redirections.entryPoint]
+#        to = "websecure"
+#        scheme = "https"
+
+##  Enable the https endpoint at port 443
+##
+#  [entryPoints.websecure]
+#    address = ":443"
+
+## Enable the http3 and advertize it at UDP port 443
+## In Version 2.x the experimental http3 feature must be enabled 
+#  [entryPoints.websecure.http3]
+#    advertisedPort = 443
 
 ################################################################
 # Traefik logs configuration
+# 
+# https://doc.traefik.io/traefik/observability/logs/
 ################################################################
 
 # Traefik logs
@@ -50,7 +86,7 @@
   # Optional
   # Default: os.Stdout
   #
-  # filePath = "log/traefik.log"
+  # filePath = "/var/log/traefik/traefik.log"
 
   # Format is either "json" or "common".
   #
@@ -61,6 +97,8 @@
 
 ################################################################
 # Access logs configuration
+#
+# https://doc.traefik.io/traefik/observability/access-logs/
 ################################################################
 
 # Enable access logs
@@ -68,7 +106,6 @@
 # Common Log Format (CLF), extended with additional fields.
 #
 # Optional
-#
 # [accessLog]
 
   # Sets the file path for the access log. If not specified, stdout will be used.
@@ -77,7 +114,7 @@
   # Optional
   # Default: os.Stdout
   #
-  # filePath = "/path/to/log/log.txt"
+  # filePath = "/var/log/traefik/access.log"
 
   # Format is either "json" or "common".
   #
@@ -88,6 +125,8 @@
 
 ################################################################
 # API and dashboard configuration
+#
+# https://doc.traefik.io/traefik/operations/api/
 ################################################################
 
 # Enable API and dashboard
@@ -98,7 +137,7 @@
   # Optional
   # Default: false
   #
-  # insecure = true
+  #insecure = true
 
   # Enabled Dashboard
   #
@@ -109,6 +148,8 @@
 
 ################################################################
 # Ping configuration
+#
+# https://doc.traefik.io/traefik/operations/ping/
 ################################################################
 
 # Enable ping
@@ -122,11 +163,13 @@
   # entryPoint = "traefik"
 
 ################################################################
-# Docker configuration backend
+# Docker configuration provider
+#
+# https://doc.traefik.io/traefik/providers/docker/
 ################################################################
 
-# Enable Docker configuration backend
-[providers.docker]
+# Enable Docker configuration provider
+#[providers.docker]
 
   # Docker server endpoint. Can be a tcp or a unix socket endpoint.
   #
@@ -148,3 +191,25 @@
   # Default: true
   #
   # exposedByDefault = false
+  
+################################################################
+# File provider backend
+#
+# https://doc.traefik.io/traefik/providers/file/
+################################################################
+
+# Enable File configuration provider
+[providers.file]
+
+  # Defines the path to the directory that contains the 
+  # configuration files.
+  # Default: unset
+  #
+  directory = "/etc/traefik/conf.d"
+ 
+  # Set the watch option to true to allow Traefik to automatically
+  # watch for file changes
+  # Default: false
+  #
+  watch = true
+

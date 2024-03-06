@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Mar  6 11:13:51 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Remove node_modules.sums left over by obs-service-node_modules 
+
+-------------------------------------------------------------------
+Tue Mar  5 10:54:13 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- configuration changes:
+  * Enhanced default configuration file, including configs for http3 support.
+  * Docker configuration has been disabled per default, file provider has been enabled.
+    The directory for the file provider has been set to /etc/traefik/conf.d
+  * Prepared directories for logging in /var/log/traefik
+  * Enhanced default configuration file, including configs for http3 support. Settings
+    are disabled per default.
+
+- packaging general:
+  * Use standard source-download feature, modified _service file and removed _servicedata
+  * packagers can invoke `prepare-sources.sh` to doenload sources and prepare go-packages
+    as well as node_modules for the built process.
+
+- frontend packaging:
+  * The frontend will now be packaged on OBS to have reproduceable builds.
+
+- Go packaging: 
+  * Added upstream patch traefik-fix-int-overflow-with-go-generate-10452.patch to
+    allow packaging on 32bit architectures gh#traefik/traefik#10451
+  * Enabled CGO because there is no cross compilation needed in OSB (we build
+    packages for every distribution/architecture seperately). PIE can not be used
+    with CGO enabled for most architectures and is reported as failure sinc go 1.22.
+    See https://github.com/golang/go/issues/64875
+  * Don't use pie-buildmode for ppc64 and s390x architectures
+
+- Update to version 2.11.0:
+  * Enhancements:
+    * [middleware] Deprecate IPWhiteList middleware in favor of IPAllowList
+    * [redis] Add Redis Sentinel support
+    * [server] Add KeepAliveMaxTime and KeepAliveMaxRequests features to entrypoints
+    * [sticky-session] Hash WRR sticky cookies
+  * Bug fixes:
+    * [acme] Update go-acme/lego to v4.15.0
+    * [authentication] Fix NTLM and Kerberos
+    * [file] Fix file watcher
+    * [file] Update github.com/fsnotify/fsnotify to v1.7.0
+    * [http3] Update quic-go to v0.40.1
+    * [middleware,tcp] Add missing TCP IPAllowList middleware constructor
+    * [nomad] Update the Nomad API dependency to v1.7.2
+    * [server] Fix ReadHeaderTimeout for PROXY protocol
+    * [webui] Fixes the Header Button
+    * [webui] Fix URL encode resource's id before calling API endpoints
+
+-------------------------------------------------------------------
 Wed Feb 21 14:21:09 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Fixed packaging of UI

@@ -1,19 +1,9 @@
 <services>
-  <service name="tar_scm" mode="disabled">
-    <param name="url">https://github.com/traefik/traefik.git</param>
-    <param name="scm">git</param>
-    <param name="exclude">.git</param>
-    <param name="revision">v2.10.7</param>
-    <param name="versionformat">@PARENT_TAG@</param>
-    <param name="changesgenerate">enable</param>
-    <param name="versionrewrite-pattern">v(.*)</param>
+  <service name="go_modules" mode="manual">
   </service>
-  <service mode="disabled" name="set_version">
-  </service>
-  <service name="recompress" mode="disabled">
-    <param name="file">*.tar</param>
-    <param name="compression">gz</param>
-  </service>
-  <service name="go_modules" mode="disabled">
+  <service name="node_modules" mode="manual">
+    <param name="cpio">node_modules.obscpio</param>
+    <param name="output">node_modules.spec.inc</param>
+    <param name="source-offset">10000</param>
   </service>
 </services>

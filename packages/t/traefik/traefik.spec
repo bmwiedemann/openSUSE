@@ -17,23 +17,38 @@
 
 
 %define project github.com/traefik/traefik
+%include  %{_sourcedir}/node_modules.spec.inc
+%ifarch ppc64 s390x
+%define buildmode default
+%else
+%define buildmode pie
+%endif
 
 Name:           traefik
-Version:        2.10.7
+Version:        2.11.0
 Release:        0
 Summary:        The Cloud Native Application Proxy
 License:        MIT
 Group:          Productivity/Networking/Web/Proxy
 URL:            https://traefik.io/
-Source0:        %{name}-%{version}.tar.gz
+Source0:        https://github.com/traefik/traefik/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        traefik.service
 Source3:        traefik.toml
-Source4:        %{name}-%{version}.webui.tar.gz
+Source4:        package-lock.json
+Source5:        node_modules.spec.inc
+# prepare-sources.sh is used to prepare sources for packaging
+Source6:        prepare-sources.sh
+
+# PATCH-FIX-UPSTREAM allow packaging on 32bit architectures gh#traefik/traefik#10451
+Patch1:         traefik-fix-int-overflow-with-go-generate-10452.patch
+
 BuildRequires:  go-bindata
 BuildRequires:  golang-packaging
+BuildRequires:  local-npm-registry
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  (golang(API) >= 1.21 with golang(API) < 1.22)
+BuildRequires:  yarn
+BuildRequires:  (golang(API) >= 1.22)
 Recommends:     podman
 %{?systemd_requires}
 %{go_provides}
@@ -47,24 +62,26 @@ Etcd, Rancher, Amazon ECS) and configures itself automatically and dynamically.
 Pointing Traefik at your orchestrator should be the only configuration step you need.
 
 %prep
-%setup -q
+%setup -b0 -a1 -q
+%autopatch -p1
+cd webui
+local-npm-registry %{_sourcedir} install --include=dev --legacy-peer-deps
 
 %build
 %{goprep} %{project}
 
-# tarball causes "inconsistent vendoring"
-tar -xf %{SOURCE1}
-
-# unpack webui
-tar -xf %{SOURCE4} -C webui --strip-components=2
+pushd webui
+export PATH=$PATH:./node_modules/.bin
+yarn build
+popd
 
 # see script/generate
 go generate
 
 build_date=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +"%%Y%%m%%d")
 # see script/binary
-CGO_ENABLED=0 GOGC=off go build \
-  -buildmode=pie \
+CGO_ENABLED=1 GOGC=off go build \
+  -buildmode=%{buildmode} \
   -mod=vendor \
   -ldflags "-X github.com/traefik/traefik/v2/pkg/version.Version=%{version} \
             -X github.com/traefik/traefik/v2/pkg/version.Codename='' \
@@ -83,6 +100,10 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 # configuration
 install -D -p -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/%{name}/%{name}.toml
+mkdir -p %{buildroot}%{_sysconfdir}/%{name}/conf.d
+
+# logging
+mkdir -p %{buildroot}%{_localstatedir}/log/%{name}
 
 %pre
 %service_add_pre %{name}.service
@@ -106,6 +127,9 @@ install -D -p -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/%{name}/%{name}.toml
 %{_sbindir}/rc%{name}
 
 %dir %{_sysconfdir}/%{name}
+%dir %{_sysconfdir}/%{name}/conf.d
+
 %config(noreplace) %{_sysconfdir}/%{name}/%{name}.toml
+%attr(750,root,root) %dir %{_localstatedir}/log/%{name}
 
 %changelog
