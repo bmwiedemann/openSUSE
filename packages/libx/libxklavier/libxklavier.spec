@@ -1,7 +1,7 @@
 #
 # spec file for package libxklavier
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ Group:          Development/Libraries/X11
 URL:            http://www.freedesktop.org/Software/LibXklavier
 #Source:         http://download.gnome.org/sources/libxklavier/5.4/%%{name}-%%{version}.tar.xz
 Source:         http://people.freedesktop.org/~svu/libxklavier-5.4.tar.bz2
-Source99:       baselibs.conf
 
 BuildRequires:  doxygen
 BuildRequires:  gobject-introspection-devel >= 1.30
