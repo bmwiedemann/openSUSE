@@ -43,9 +43,7 @@ Useful for temporary services, mobile/local servers, or embedding an HTTP
 server into another program.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n %{cpan_name}-%{version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
