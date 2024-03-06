@@ -26,7 +26,7 @@
 %define gst_branch 1.0
 
 Name:           gstreamer-plugins-good
-Version:        1.22.9
+Version:        1.24.0
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -35,7 +35,6 @@ URL:            https://gstreamer.freedesktop.org
 Source0:        %{url}/src/%{_name}/%{_name}-%{version}.tar.xz
 Source1:        gstreamer-plugins-good.appdata.xml
 Source99:       baselibs.conf
-Patch0:         reduce-required-meson.patch
 
 BuildRequires:  Mesa-libGLESv2-devel
 BuildRequires:  Mesa-libGLESv3-devel
@@ -49,7 +48,7 @@ BuildRequires:  libavc1394-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libmp3lame-devel
-BuildRequires:  meson >= 0.61.0
+BuildRequires:  meson >= 1.1
 BuildRequires:  nasm
 BuildRequires:  orc >= 0.4.16
 BuildRequires:  pkgconfig
@@ -69,8 +68,10 @@ BuildRequires:  pkgconfig(Qt5X11Extras)
 # Disable qt6 for now (see -Dqt6=disabled passed to meson)
 #BuildRequires:  pkgconfig(Qt6Core)
 #BuildRequires:  pkgconfig(Qt6Gui)
+#BuildRequires:  pkgconfig(Qt6Linguist)
 #BuildRequires:  pkgconfig(Qt6Qml)
 #BuildRequires:  pkgconfig(Qt6Quick)
+#BuildRequires:  pkgconfig(Qt6ShaderTools)
 #BuildRequires:  pkgconfig(Qt6WaylandClient)
 
 BuildRequires:  pkgconfig(caca)
@@ -102,6 +103,7 @@ BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libsoup-gnome-2.4) >= 2.40.0
 BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.9
+BuildRequires:  pkgconfig(opencore-amrwb) >= 0.1.3
 BuildRequires:  pkgconfig(shout) >= 2.4.3
 BuildRequires:  pkgconfig(speex) >= 1.1.6
 BuildRequires:  pkgconfig(taglib) >= 1.5
@@ -115,7 +117,7 @@ Requires:       gstreamer >= %{gstreamer_req_version}
 Requires:       gstreamer-plugins-base >= %{gstreamer_req_version}
 Recommends:     %{name}-gtk
 Enhances:       gstreamer
-Conflicts:      gstreamer-plugins-ugly < 1.22.0
+Conflicts:      gstreamer-plugins-ugly < 1.24.0
 # Generic name, never used in SuSE: I wish it had been used I would have used it then I wouldn't have to keep copy pasting and actually type it.
 Provides:       gst-plugins-good = %{version}
 %if 0%{?ENABLE_AALIB}
@@ -203,6 +205,7 @@ fi
 %doc AUTHORS README.md RELEASE REQUIREMENTS NEWS
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/gstreamer-plugins-good.appdata.xml
+%{_datadir}/gstreamer-%{gst_branch}/presets/GstAmrnbEnc.prs
 %{_datadir}/gstreamer-%{gst_branch}/presets/GstIirEqualizer10Bands.prs
 %{_datadir}/gstreamer-%{gst_branch}/presets/GstIirEqualizer3Bands.prs
 %{_datadir}/gstreamer-%{gst_branch}/presets/GstQTMux.prs
@@ -211,6 +214,8 @@ fi
 %{_libdir}/gstreamer-%{gst_branch}/libgstalaw.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstalphacolor.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstalpha.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstamrnb.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstamrwbdec.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstapetag.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstaudiofx.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstaudioparsers.so
