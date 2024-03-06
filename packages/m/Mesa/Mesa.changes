@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar  5 04:33:37 UTC 2024 - Jianhua Lu <lujianhua000@gmail.com>
+
+- Enable zink driver build on aarch64, this is needed for Qualcomm Adreno a7xx
+  to use hw accelerated GL.
+
+-------------------------------------------------------------------
+Mon Mar  4 03:10:33 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- buildrequire llvm17 also on sle15-sp5/Leap15.5 
+
+-------------------------------------------------------------------
 Sat Feb 17 01:01:22 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to bugfix release 23.3.6

@@ -245,7 +245,7 @@ BuildRequires:  pkgconfig(wayland-server) >= 1.11
 %if 0%{?suse_version} >= 1550
 BuildRequires:  llvm-devel
 %else
-%if 0%{?sle_version} >= 150600
+%if 0%{?sle_version} >= 150500
 BuildRequires:  llvm17-devel
 %endif
 %endif
@@ -255,7 +255,7 @@ BuildRequires:  llvm17-devel
 %if 0%{?suse_version} >= 1550
 BuildRequires:  clang-devel
 %else
-%if 0%{?sle_version} >= 150600
+%if 0%{?sle_version} >= 150500
 BuildRequires:  clang17-devel
 %endif
 %endif
@@ -860,7 +860,7 @@ egl_platforms=x11,wayland
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast,svga,virgl,iris,crocus,i915,d3d12,zink \
   %else
   %ifarch %{arm} aarch64
-            -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast,virgl,freedreno,vc4,etnaviv,lima,panfrost,v3d,svga,tegra \
+            -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast,virgl,freedreno,vc4,etnaviv,lima,panfrost,v3d,svga,tegra,zink \
   %else
   %ifarch ppc64 ppc64le riscv64
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast,virgl \
