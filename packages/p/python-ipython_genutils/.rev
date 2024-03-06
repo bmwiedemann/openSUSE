@@ -33,4 +33,13 @@ This version adds a specific requirement for Python 2.7, since it won't even bui
     <comment></comment>
     <requestid>862445</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>0631aac71bfc290e9e4a8b0a91067c35</srcmd5>
+    <version>0.2.0</version>
+    <time>1709762675</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean specfile from bogus requirements
+- Build PEP517 wheel</comment>
+    <requestid>1155324</requestid>
+  </revision>
 </revisionlist>

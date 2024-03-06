@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  5 18:26:09 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Clean specfile from bogus requirements
+- Build PEP517 wheel
+
+-------------------------------------------------------------------
 Mon Jan 11 21:15:13 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add denose.patch to remove dependency on nose

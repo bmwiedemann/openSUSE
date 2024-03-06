@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipython_genutils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ipython_genutils
 Version:        0.2.0
 Release:        0
@@ -28,13 +27,12 @@ Source:         https://files.pythonhosted.org/packages/source/i/ipython_genutil
 # PATCH-FEATURE-UPSTREAM denose.patch gh#ipython/ipython_genutils#17 mcepl@suse.com
 # Replace dependency on nose with the one on pytest
 Patch0:         denose.patch
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python
-Requires:       python-pytest
 BuildArch:      noarch
 %python_subpackages
 
@@ -50,10 +48,10 @@ whatever packages need it
 %autosetup -p1 -n ipython_genutils-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -63,6 +61,7 @@ export LC_ALL=en_US.utf8
 %files %{python_files}
 %license COPYING.md
 %doc CONTRIBUTING.md README.md
-%{python_sitelib}/*
+%{python_sitelib}/ipython_genutils
+%{python_sitelib}/ipython_genutils-%{version}.dist-info
 
 %changelog
