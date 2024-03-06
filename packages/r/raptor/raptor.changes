@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 23 11:32:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Dec  4 09:34:24 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - switch icu to use pkgconfig(icu-uc) to pick up current ICU. (jsc#PED-6193)

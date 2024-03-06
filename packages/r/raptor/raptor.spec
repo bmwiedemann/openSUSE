@@ -68,8 +68,8 @@ raptor library.
 
 %prep
 %setup -q -n %{name}2-%{version}
-%patch2
-%patch3 -p1
+%patch -P 2
+%patch -P 3 -p1
 
 %build
 %configure \
