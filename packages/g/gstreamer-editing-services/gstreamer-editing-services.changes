@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Mar  5 06:22:41 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.24.0:
+  * GStreamer Editing Services and NLE
+    - Implement a gesvideoscale effect which gives user the ability
+      to chooses where a clip has to be scaled in the chain of
+      effects. By default scaling is done in the compositor.
+    - Add support for gessrc as sub-timeline element so third party
+      can implement their own formatters and use their timelines as
+      sub-timelines. Before that, only timelines serialized as
+      files on the filesystem could be loaded as sub-timelines
+      (using gesdemux).
+    - Implement a new GESDiscovererManager singleton object making
+      management of the discoverers used to discoverer media files
+      cleaner and allowing to expose the following APIs:
+      * load-serialize-info signal so GstDiscovererInfo can be
+        serialized by users the way they like and load them without
+        requiring discovering the file when reloading a project.
+      * source-setup signal so user can tweak source elements
+        during discovery
+    - Expose GESFrameCompositionMeta in public API so user can
+      implement their own effects targetting GES which take into
+      account that meta.
+    - Expose audioconvert:mix-matrix property in audio sources
+    - Port GESPipeline rendering to use encodebin2. This allows
+      rendering timelines directly with a muxing sink (like
+      hlssinkX etc..) and leverage all new features of that new
+      element.
+  * ges-launch
+    - Fix setting keyframes
+    - Add an ignore-eos option
+    - Allow overriding container profile so that the user can build
+      encoding profiles following the media format of a specific
+      media file, for example, but ensuring it is muxed using a
+      specific format
+    - Ensure sink elements are inside a GstBin and never in a
+      GstPipeline
+    - Move +effect stack effects from source to last effect added,
+      so it feels more natural to user as adding them at the
+      beginning of the chain while the syntax is +effect felt wrong
+  * For more detailed information on this update, please see
+    https://gstreamer.freedesktop.org/releases/1.24/
+- Remove patch reduce-required-meson.patch since meson 1.1 is
+  really required now.
+
+-------------------------------------------------------------------
 Thu Feb  1 10:58:23 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.22.9:

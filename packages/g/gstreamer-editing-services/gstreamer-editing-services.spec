@@ -20,20 +20,18 @@
 %define _name gst-editing-services
 
 Name:           gstreamer-editing-services
-Version:        1.22.9
+Version:        1.24.0
 Release:        0
 Summary:        GStreamer Editing Services
 License:        LGPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer-editing-services/html/ges-architecture.html
 Source0:        https://gstreamer.freedesktop.org/src/gstreamer-editing-services/%{_name}-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE reduce-required-meson.patch alarrosa@suse.com -- build with meson 0.61
-Patch0:         reduce-required-meson.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  flex
-BuildRequires:  meson >= 0.47.0
+BuildRequires:  meson >= 1.1
 BuildRequires:  pkgconfig
 BuildRequires:  python3-gobject-devel
 BuildRequires:  pkgconfig(bash-completion) >= 2.0
@@ -171,12 +169,10 @@ editing-related applications.
 %{_mandir}/man1/ges-launch-1.0.1%{?ext_man}
 %{_bindir}/ges-launch-1.0
 %{_datadir}/bash-completion/completions/ges-launch-1.0
-%{_datadir}/gstreamer-1.0/validate/scenarios/ges-edit-clip-while-paused.scenario
-%{_libdir}/gst-validate-launcher/python/launcher/apps/geslaunch.py
-%dir %{python3_sitelib}/gi
-%dir %{python3_sitelib}/gi/overrides
-%{python3_sitelib}/gi/overrides/GES.py
-%{python3_sitelib}/gi/overrides/__pycache__/
+%dir %{python_sitearch}/gi
+%dir %{python_sitearch}/gi/overrides
+%{python_sitearch}/gi/overrides/GES.py
+%{python_sitearch}/gi/overrides/__pycache__/
 
 %files -n libges-1_0-0
 %license COPYING
