@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 06 01:35:21 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Enabled tests
+- Fix regex in _service and fix obs_scm to not create unneeded
+  tarballs
+- Update to version 13.0.0.alpha.1+git0:
+  * fixed language names not showing when in Light mode
+  * Fix LD Script language data
+  * Fix language data example in CONTRIBUTING.md
+  * Update dependencies
+  * Add widget install instructions
+
+-------------------------------------------------------------------
 Sun Aug 13 13:26:54 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Replace obsoleted `disabled` option with `manual`
