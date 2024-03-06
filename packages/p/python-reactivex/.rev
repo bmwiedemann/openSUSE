@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e988025cff1db63e70055336ab91c853</srcmd5>
+    <version>4.0.4</version>
+    <time>1709762656</time>
+    <user>dimstar_suse</user>
+    <comment>needed by python-influxdb-client (I think?)</comment>
+    <requestid>1155045</requestid>
+  </revision>
+</revisionlist>
