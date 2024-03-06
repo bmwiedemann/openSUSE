@@ -1,7 +1,7 @@
 #
 # spec file for package libsigc++3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://libsigcplusplus.github.io/libsigcplusplus/
 Source0:        https://download.gnome.org/sources/libsigc++/3.6/%{_name}-%{version}.tar.xz
-Source99:       baselibs.conf
 
 BuildRequires:  gcc-c++
 BuildRequires:  meson
