@@ -1,7 +1,7 @@
 #
-# spec file for package gettext-runtime-mini
+# spec file for package gettext-runtime
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,14 @@
 %bcond_without mini
 
 Name:           gettext-runtime-mini
-Version:        0.21.1
+Version:        0.22.5
 Release:        0
+BuildRequires:  automake >= 1.14
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 # To get an updated linkdupes.sh (in case there are new dupes), temproarily enable:
 #BuildRequires: fdupes
 %if %{without mini}
-BuildRequires:  automake
 BuildRequires:  glib2-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  perl-libintl-perl
@@ -67,7 +67,6 @@ Patch4:         gettext-po-mode.diff
 Patch5:         gettext-initialize_vars.patch
 # PATCH-FIX-OPENSUSE gettext-dont-test-gnulib.patch -- coolo@suse.de
 Patch6:         gettext-dont-test-gnulib.patch
-Patch7:         gettext-0.21-jdk17.patch
 # PATCH-FIX-UPSTREAM boo#941629 -- pth@suse.com
 Patch11:        boo941629-unnessary-rpath-on-standard-path.patch
 # PATCH-FIX-SUSE Bug boo#1106843
@@ -92,7 +91,7 @@ Requires:       %{name} = %{version}
 Requires:       xz
 %if %{without mini}
 Requires(post): info
-Requires(preun):info
+Requires(preun): info
 %endif
 Provides:       gettext-devel = %{version}
 %if %{without mini}
@@ -153,18 +152,17 @@ This package provides headers and static libraries for libtextstyle
 
 %prep
 %setup -q -n %{pacname}-%{version}
-%patch0
-%patch1 -p1
-%patch2
-%patch3 -p1
-%patch4
-%patch5
-%patch6 -p1
-%patch7 -p1
-%patch11 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
+%patch -P 0
+%patch -P 1 -p1
+%patch -P 2
+%patch -P 3 -p1
+%patch -P 4
+%patch -P 5
+%patch -P 6 -p1
+%patch -P 11 -p1
+%patch -P 13 -p1
+%patch -P 14 -p1
+%patch -P 15 -p1
 
 %build
 %define _lto_cflags %{nil}

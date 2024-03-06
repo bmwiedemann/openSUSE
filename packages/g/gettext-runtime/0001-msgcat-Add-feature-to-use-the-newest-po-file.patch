@@ -29,20 +29,19 @@ Index: gettext-0.21/gettext-tools/src/Makefile.am
    write-catalog.h write-po.h write-properties.h write-stringtable.h \
    dir-list.h file-list.h po-gram-gen.h po-gram-gen2.h cldr-plural.h \
    cldr-plural-exp.h locating-rule.h its.h search-path.h \
--  msgl-charset.h msgl-equal.h msgl-iconv.h msgl-ascii.h msgl-cat.h msgl-header.h \
-+  msgl-age.h msgl-charset.h msgl-equal.h msgl-iconv.h msgl-ascii.h msgl-cat.h msgl-header.h \
-   msgl-english.h msgl-check.h msgl-fsearch.h msgfmt.h msgunfmt.h \
+-  msgl-charset.h msgl-equal.h msgl-iconv.h msgl-ascii.h msgl-ofn.h msgl-cat.h \
++  msgl-age.h msgl-charset.h msgl-equal.h msgl-iconv.h msgl-ascii.h msgl-ofn.h msgl-cat.h \
+   msgl-header.h msgl-english.h msgl-check.h msgl-fsearch.h msgfmt.h msgunfmt.h \
    plural-count.h plural-eval.h plural-distrib.h \
    read-mo.h write-mo.h \
-@@ -174,7 +174,7 @@ FORMAT_SOURCE += \
- libgettextsrc_la_SOURCES = \
- $(COMMON_SOURCE) read-catalog.c \
- write-catalog.c write-properties.c write-stringtable.c write-po.c \
--msgl-ascii.c msgl-iconv.c msgl-equal.c msgl-cat.c msgl-header.c msgl-english.c \
-+msgl-age.c msgl-ascii.c msgl-iconv.c msgl-equal.c msgl-cat.c msgl-header.c msgl-english.c \
- msgl-check.c file-list.c msgl-charset.c po-time.c plural-exp.c plural-eval.c \
- plural-table.c quote.h sentence.h sentence.c \
- $(FORMAT_SOURCE) \
+@@ -174,6 +174,7 @@ FORMAT_SOURCE += \
+   $(COMMON_SOURCE) \
+   read-catalog.c \
+   write-catalog.c write-properties.c write-stringtable.c write-po.c \
++  msgl-age.c \
+   msgl-ascii.c \
+   msgl-ofn.c \
+   msgl-iconv.c \
 Index: gettext-0.21/gettext-tools/src/message.c
 ===================================================================
 --- gettext-0.21.orig/gettext-tools/src/message.c
@@ -283,8 +282,8 @@ Index: gettext-0.21/gettext-tools/src/msgl-cat.c
  #include "po-charset.h"
 +#include "msgl-age.h"
  #include "msgl-ascii.h"
+ #include "msgl-ofn.h"
  #include "msgl-equal.h"
- #include "msgl-iconv.h"
 @@ -57,6 +58,11 @@ int less_than;
     If false, merge all available translations into one and fuzzy it.  */
  bool use_first;

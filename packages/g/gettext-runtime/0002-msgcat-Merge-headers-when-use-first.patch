@@ -41,8 +41,8 @@ Index: gettext-0.20.1/gettext-tools/src/msgl-cat.c
 --- gettext-0.20.1.orig/gettext-tools/src/msgl-cat.c
 +++ gettext-0.20.1/gettext-tools/src/msgl-cat.c
 @@ -40,6 +40,7 @@
- #include "msgl-age.h"
  #include "msgl-ascii.h"
+ #include "msgl-ofn.h"
  #include "msgl-equal.h"
 +#include "msgl-header.h"
  #include "msgl-iconv.h"

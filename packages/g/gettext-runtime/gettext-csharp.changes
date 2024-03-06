@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Mon Feb 26 14:57:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Sat Feb 24 18:50:38 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.22.5:
+  * xgettext's processing of Vala files with printf method
+    invocations has been corrected (regression in 0.22)
+
+-------------------------------------------------------------------
+Tue Feb 13 09:03:34 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.22.4
+  * Bug fixes:
+    - AM_GNU_GETTEXT now recognizes a statically built libintl on
+      macOS and AIX.
+    - Build fixes on AIX
+- Update to version 0.22.3
+  * Portability:
+    - The libintl library now works on macOS 14.  (Older versions
+      of libintl crash on macOS 14, due to an incompatible change
+      in macOS.)
+- Update to version 0.22.2
+  * No information available upstream
+- Update to version 0.22.1
+  * Bug fixes:
+    - The libintl shared library now exports again some symbols
+      that were accidentally missing.
+    - xgettext's processing of large Perl files may have led to
+      errors.
+    - "xgettext --join-existing" could encounter errors.
+  * Portability:
+    - Building on Android is now supported.
+- Update to version 0.22.0
+  * PO file format:
+    - When a #: line contains references to file names that contain
+      spaces, these file names are surrounded by Unicode characters
+      U+2068 and U+2069. This makes it possible to parse such
+      references correctly.
+  * Improvements for maintainers:
+    - The AM_GNU_GETTEXT macro now defines two variables
+      localedir_c and localedir_c_make, that can be used in C code
+      or in Makefiles, respectively, for representing the value of
+      the --localedir configure option.
+  * Programming languages support:
+    - C, C++:
+      + xgettext now supports gettext-like functions that take wide
+        strings (of type 'const wchar_t *', 'const char16_t *', or
+        'const char32_t *') as arguments.
+      + xgettext now recognizes numbers with digit separators, as
+        defined by ISO C 23, as tokens.
+      + xgettext and msgfmt now recognize the format string
+        directive %b (for binary integer output, as defined by
+        ISO C 23) in format strings.
+      + xgettext and msgfmt now recognize the argument size
+        specifiers w8, w16, w32, w64, wf8, wf16, wf32, wf64
+        (as defined by ISO C 23) in format strings.
+      + xgettext and msgfmt now recognize C++ format strings, as
+        defined by ISO C++ 20.  They are marked as 'c++-format' in
+        POT and PO files. A new example has been added,
+        'hello-c++20', that illustrates how to use these format
+        strings with gettext.
+    - Java:
+      + The build system and tools now also support Java versions
+        newer than Java 11. This is known to work up to Java 20,
+        at least. On the other hand, support for old versions of
+        Java (Java 1.5 and GCJ) has been dropped.
+      + Tcl: xgettext now supports the \x, \u, and \U escapes as
+        defined in Tcl 8.6.
+  * Portability:
+    - On systems with musl libc, the *gettext() functions in libc
+      now work with MO files generated from PO files with an
+      encoding other than UTF-8. To this effect, the msgfmt program
+      now converts the messages to UTF-8 encoding before storing
+      them in a MO file.  You can prevent this byusing the msgfmt
+      --no-convert option.
+    - On systems with musl libc, the *gettext() functions in libc
+      now work with MO files generated from PO files with ISO C 99
+      <inttypes.h> format string directive macros.  To this effect,
+      the msgfmt program pre-expands strings with such macros. You
+      can prevent this by using the msgfmt --no-redundancy option.
+  * xgettext:
+    - The xgettext option '--sorted-output' is now deprecated.
+    - xgettext input files of type PO that are not all ASCII and
+      not UTF-8 encoded are now handled correctly.
+  * The base Unicode standard is now updated to 15.0.0.
+  * Emacs PO mode:
+    - Fix an incompatibility with Emacs version 29 or newer.
+- Rebase patches:
+  * gettext-dont-test-gnulib.patch
+  * 0001-msgcat-Add-feature-to-use-the-newest-po-file.patch
+  * 0002-msgcat-Merge-headers-when-use-first.patch
+- Drop patch which isn't required anymore since newer java
+  versions are already supported by upstream:
+  * gettext-0.21-jdk17.patch
+
+-------------------------------------------------------------------
 Thu May  4 13:32:58 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Add _multibuild to define additional spec files as additional

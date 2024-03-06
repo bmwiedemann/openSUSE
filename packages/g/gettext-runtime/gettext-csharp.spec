@@ -1,7 +1,7 @@
 #
 # spec file for package gettext-csharp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global debug_package %{nil}
 %endif
 Name:           gettext-csharp
-Version:        0.21.1
+Version:        0.22.5
 Release:        0
 Summary:        Native Language Support (NLS) for C#
 License:        LGPL-2.1-or-later
@@ -40,7 +40,6 @@ Patch4:         gettext-po-mode.diff
 Patch5:         gettext-initialize_vars.patch
 # PATCH-FIX-OPENSUSE gettext-dont-test-gnulib.patch -- coolo@suse.de
 Patch6:         gettext-dont-test-gnulib.patch
-Patch7:         gettext-0.21-jdk17.patch
 # PATCH-FIX-UPSTREAM boo#941629 -- pth@suse.com
 Patch11:        boo941629-unnessary-rpath-on-standard-path.patch
 # PATCH-FIX-SUSE Bug boo#1106843
@@ -48,6 +47,7 @@ Patch13:        reproducible.patch
 # PATCH-FEATURE bsc#1165138
 Patch14:        0001-msgcat-Add-feature-to-use-the-newest-po-file.patch
 Patch15:        0002-msgcat-Merge-headers-when-use-first.patch
+BuildRequires:  automake >= 1.14
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
@@ -81,18 +81,17 @@ reliably than 'resgen'.
 
 %prep
 %setup -q -n gettext-%{version}
-%patch0
-%patch1 -p1
-%patch2
-%patch3 -p1
-%patch4
-%patch5
-%patch6 -p1
-%patch7 -p1
-%patch11 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
+%patch -P 0
+%patch -P 1 -p1
+%patch -P 2
+%patch -P 3 -p1
+%patch -P 4
+%patch -P 5
+%patch -P 6 -p1
+%patch -P 11 -p1
+%patch -P 13 -p1
+%patch -P 14 -p1
+%patch -P 15 -p1
 
 %build
 export CFLAGS="%{optflags} -pipe -W -Wall -Dgcc_is_lint -lm"
