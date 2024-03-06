@@ -46,8 +46,7 @@ the 'use' keyword introduces a 'BEGIN' block, so you may need to define (or
 at least declare) your overriding method in a 'BEGIN' block.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{cpan_name}-%{version}
 find . -type f -print0 | xargs -0 chmod 644
 
 %build
