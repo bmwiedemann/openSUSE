@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Mar  6 07:42:40 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 12.78:
+  * Added new Geolocation feature and write-only Geolocate tag
+  * Added new config file entry (@Image::ExifTool::UserDefined::Arguments)
+    to allow default command-line arguments to be specified
+  * Added print conversion for TIFF-EPStandardID
+  * Added ability to delete Nextbase information from MP4 videos
+  * Decode timed GPS from MP4 videos written by Nextbase software
+  * Decode a number of new tags from Nextbase MP4 videos
+  * Decode a few new tags from Garmin MP4 videos
+  * Extract PreviewJXL images from DNG 1.7 files
+  * Generate Validate, ImageDataHash and UserParam tags earlier to
+    allow them to be used in UserDefined Composite tags
+  * Enhanced the -c option so a minus sign in the format
+    specification prints a signed coordinate without a leading "+"
+    for positive numbers
+  * Changed formatting of some Accelerometer tags for consistency
+  * Changed behaviour of -ee3 option to do a brute-force scan for
+    freeGPS in the media data even when referenced by 'gps ' atom
+  * Other internal changes to decoding of timed GPS from videos
+  * Fixed problem were ExifTool would give up on extracting some
+    types of timed GPS from videos after 100 void fixes
+  * Fixed bug that could cause runtime error when reading Ogg files
+  * Fixed issue where some tags from alternate files using the
+    -fileNUM option weren't generated as requested
+  * API Changes:
+    + Added Geolocation, GeolocMaxDist and GeolocMinPop API options
+
+-------------------------------------------------------------------
 Sat Feb 17 11:51:45 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 12.77:
