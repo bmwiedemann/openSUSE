@@ -1,0 +1,28 @@
+From 7dd8ab8920806384c01e3765ff2027222ac21d29 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Thu, 29 Feb 2024 15:05:35 +0800
+Subject: [PATCH] Allow RPM_MACRO_DIR to be defined during build time
+
+The system directory of rpm macro files could be either /etc/rpm
+or /usr/lib/rpm/macros.d/. This commit allows RPM_MACRO_DIR to be
+defined during build time, so that the packager can change the variable
+if necessary.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: fde-tools-0.7.2/Makefile
+===================================================================
+--- fde-tools-0.7.2.orig/Makefile
++++ fde-tools-0.7.2/Makefile
+@@ -12,7 +12,7 @@ FDE_CONFIG_DIR	= ${SYSCONFDIR}/fde
+ FDE_SHARE_DIR	= $(DATADIR)/fde
+ FIRSTBOOTDIR	= $(DATADIR)/jeos-firstboot
+ FDE_HELPER_DIR	= $(LIBEXECDIR)/fde
+-RPM_MACRO_DIR	= /etc/rpm
+++RPM_MACRO_DIR	?= /etc/rpm
+ FIDO_LINK	= -lfido2 -lcrypto
+ CRPYT_LINK	= -lcryptsetup -ljson-c
+ TOOLS		= fde-token fdectl-grub-tpm2

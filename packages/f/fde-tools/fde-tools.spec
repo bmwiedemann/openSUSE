@@ -16,6 +16,10 @@
 #
 
 
+%if %{undefined _rpmmacrodir}
+  %define _rpmmacrodir %{_sysconfdir}/rpm
+%endif
+
 Name:           fde-tools
 Version:        0.7.2
 Release:        0
@@ -27,6 +31,8 @@ Source:         https://github.com/openSUSE/%{name}/releases/download/%{version}
 Source1:        fde-tools.service
 Patch0:         fde-tools-firstboot-alp-snapshot.patch
 Patch1:         fde-tools-bsc1213945-set-rsa-key-size.patch
+Patch2:         fde-tools-change-rpm-macro-dir.patch
+Patch3:         fde-tools-bsc1220160-conditional-requires.patch
 BuildRequires:  help2man
 BuildRequires:  pkgconfig(libcryptsetup)
 BuildRequires:  pkgconfig(libfido2)
@@ -45,6 +51,7 @@ Summary:        Full Disk Encryption for images
 Group:          System/Boot
 Requires:       fde-tools
 Requires:       jeos-firstboot
+BuildArch:      noarch
 
 %description -n fde-firstboot
 This package contains the scripts necessary to plug Full Disk Encryption
@@ -64,6 +71,7 @@ Bash shell completions for fde-tools
 %package -n fde-tpm-helper
 Summary:        TPM helper for fde-tools
 Group:          System/Boot
+BuildArch:      noarch
 
 %description -n fde-tpm-helper
 This package contains the TPM helper script for the bootloader packages
@@ -72,6 +80,7 @@ to update the signature in the sealed key.
 %package -n fde-tpm-helper-rpm-macros
 Summary:        RPM macros for fde-tools
 Group:          Development/Tools/Building
+BuildArch:      noarch
 
 %description -n fde-tpm-helper-rpm-macros
 This package contains the RPM macros for the bootloader packages to
@@ -87,7 +96,8 @@ update the signature in the sealed key.
 	LIBEXECDIR="%{_libexecdir}" \
 	SBINDIR="%{_sbindir}" \
 	DATADIR="%{_datadir}" \
-	SYSCONFDIR="%{_sysconfdir}"
+	SYSCONFDIR="%{_sysconfdir}" \
+	RPM_MACRO_DIR="%{_rpmmacrodir}"
 
 %install
 %make_install \
@@ -95,7 +105,8 @@ update the signature in the sealed key.
 	LIBEXECDIR="%{_libexecdir}" \
 	SBINDIR="%{_sbindir}" \
 	DATADIR="%{_datadir}" \
-	SYSCONFDIR="%{_sysconfdir}"
+	SYSCONFDIR="%{_sysconfdir}" \
+	RPM_MACRO_DIR="%{_rpmmacrodir}"
 
 mkdir -p %{buildroot}%{_fillupdir}
 mv %{buildroot}/etc/sysconfig/fde-tools %{buildroot}%{_fillupdir}/sysconfig.fde-tools
@@ -141,6 +152,6 @@ cp %{S:1} %{buildroot}%{_unitdir}/fde-tpm-enroll.service
 %{_libexecdir}/fde/fde-tpm-helper
 
 %files -n fde-tpm-helper-rpm-macros
-%config %{_sysconfdir}/rpm/macros.fde-tpm-helper
+%{_rpmmacrodir}/macros.fde-tpm-helper
 
 %changelog

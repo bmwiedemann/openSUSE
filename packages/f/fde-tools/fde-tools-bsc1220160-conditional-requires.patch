@@ -1,0 +1,26 @@
+From 7f5a36bb82728a6cce66b15e6bb656ce05cf5978 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Tue, 5 Mar 2024 14:51:57 +0800
+Subject: [PATCH] macros.fde-tpm-helper: conditionally requires the helper
+
+fde-tpm-helper is only used when fde-tools is installed. Update the rpm
+macro to make fde-tpm-helper an conditional "Requires".
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ rpm-build/macros.fde-tpm-helper | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/rpm-build/macros.fde-tpm-helper b/rpm-build/macros.fde-tpm-helper
+index 1ec3a4e..3c89e2b 100644
+--- a/rpm-build/macros.fde-tpm-helper
++++ b/rpm-build/macros.fde-tpm-helper
+@@ -1,4 +1,4 @@
+-%fde_tpm_update_requires Requires(posttrans): fde-tpm-helper
++%fde_tpm_update_requires Requires(posttrans): (fde-tpm-helper if fde-tools)
+ 
+ %fde_tpm_update_post() \
+ mkdir -p %{_rundir}/fde-tpm-helper/ \
+-- 
+2.35.3
+
