@@ -1,7 +1,7 @@
 #
 # spec file for package gv
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -33,19 +33,22 @@ BuildRequires:  desktop-data-SuSE
 %endif
 PreReq:         %install_info_prereq
 Requires:       ghostscript_x11
-Conflicts:      gs_serv gs_vga
+Conflicts:      gs_serv
+Conflicts:      gs_vga
 # NOTE: We don't want this dependency and desktop-data-SuSE is in all
 # desktop selections.
 #Requires:    desktop-data-SuSE
-Url:            http://www.gnu.org/software/gv/
+URL:            https://www.gnu.org/software/gv/
 Summary:        A Program to View PostScript Files
 License:        GPL-3.0-or-later
 Group:          Productivity/Publishing/PS
 Version:        3.7.4
 Release:        0
-Source0:        http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz
+Source0:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz
 Source1:        gv.desktop
 Source2:        gv.png
+Source3:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz.sig
+Source4:        gv.keyring
 Patch1:         gv-3.7.4.dif
 Patch2:         gv-3.7.0-I18N-mb.patch
 # PATCH-FIX-OPENSUSE: make libzio usable
@@ -148,12 +151,12 @@ done
 # japanese app-defaults:
 mkdir -p %{buildroot}%{_x11data}/{ja_JP.SJIS,ja_JP.EUC-JP}/app-defaults
 iconv -f UTF-8 -t SJIS < %{buildroot}%{_x11data}/ja_JP.UTF-8/app-defaults/GV \
-   > %{buildroot}%{_x11data}/ja_JP.SJIS/app-defaults/GV 
+   > %{buildroot}%{_x11data}/ja_JP.SJIS/app-defaults/GV
 iconv -f UTF-8 -t EUC-JP < %{buildroot}%{_x11data}/ja_JP.UTF-8/app-defaults/GV \
-   > %{buildroot}%{_x11data}/ja_JP.EUC-JP/app-defaults/GV 
+   > %{buildroot}%{_x11data}/ja_JP.EUC-JP/app-defaults/GV
 mkdir -p %{buildroot}%{_x11data}/ko_KR.EUC-KR/app-defaults
 iconv -f UTF-8 -t EUC-KR < %{buildroot}%{_x11data}/ko_KR.UTF-8/app-defaults/GV \
-   > %{buildroot}%{_x11data}/ko_KR.EUC-KR/app-defaults/GV 
+   > %{buildroot}%{_x11data}/ko_KR.EUC-KR/app-defaults/GV
 %suse_update_desktop_file -i gv Office Viewer
 
 %post

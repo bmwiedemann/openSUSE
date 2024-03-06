@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 28 09:31:52 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- http -> https
+- Verify signed tar ball 
+
+-------------------------------------------------------------------
 Tue Feb 27 11:10:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
