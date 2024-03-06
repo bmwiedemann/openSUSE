@@ -265,4 +265,12 @@ bnc#809703: remove the key from the pending request if necessary (forwarded requ
     <comment></comment>
     <requestid>1151160</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>db2e15dbfdbf999e2af0e6ee9db044d8</srcmd5>
+    <version>0.7.0</version>
+    <time>1709762593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1154986</requestid>
+  </revision>
 </revisionlist>

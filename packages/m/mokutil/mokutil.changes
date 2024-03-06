@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Mar  1 08:23:24 UTC 2024 - Dennis Tseng <dennis.tseng@suse.com>
+
+- Update to 0.7.0
+    + 82694cb Show usage instead of aborting on bad flags
+    + 04791c2 mokutil bugfix: del unused opt "-s"
+    + d978c18 Fix leak of list in delete_data_from_req_var()
+    + e498f64 Fix leak of fd in mok_get_variable()
+    + 7b6258a Show the key owner GUID
+    + 51b5e55 Use PKG_PROG_PKG_CONFIG macro from pkg.m4 to detect pkg-config
+    + 1aefcdb mokutil: handle the parsing error from "mok-variables"
+    + 71140ef mokutil: Fix memory leak in export_db_keys
+    + 0011d52 mokutil:check the result of malloc() is necessary
+    + a0d8702 Fix inconsistency in skip messages
+    + ae59d89 man: add "--trust-mok" and "--untrust-mok"
+    + dd55c28 Avoid conflicting efi_char16_t type definitions
+    + 8b6d116 fix: typo "accesss" -> "access"
+    + f68a4f4 Do not exit with non zero status for version query
+    + 5f49730 Check for efi variabales support after processing commands
+    + 2d6c409 Return 0 after printing help messages
+    + c64741d Add support for SSPPolicy, depricate --set-sbat-policy delete
+    + 48e3d2a Fix tab alignment for help (set-fallback-verbosity/set-fallback-noreboot)
+    + c361087 (HEAD -> master, tag: 0.7.0, origin/ssppolicy-v2-fix, origin/master, origin/HEAD) Rename "previous" revocations to "automatic" 
+   
+-------------------------------------------------------------------
 Fri Feb 23 09:19:54 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.
