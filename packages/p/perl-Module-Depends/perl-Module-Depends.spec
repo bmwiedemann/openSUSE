@@ -48,9 +48,8 @@ suggest you take your life in your hands and look at
 Module::Depends::Intrusive.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -p1 -n %{cpan_name}-%{version}
 find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
-%patch0 -p1
 
 %build
 %{__perl} Build.PL installdirs=vendor

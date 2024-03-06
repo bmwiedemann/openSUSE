@@ -59,4 +59,12 @@
     <comment>- add left-brace.patch to fix build with perl 5.26</comment>
     <requestid>534619</requestid>
   </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>aca596e7f4925a28d89a6c50197e66d2</srcmd5>
+    <version>0.16</version>
+    <time>1709762790</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1155635</requestid>
+  </revision>
 </revisionlist>

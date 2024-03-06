@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  4 13:23:39 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Wed Oct 18 04:34:38 UTC 2017 - coolo@suse.com
 
 - add left-brace.patch to fix build with perl 5.26
