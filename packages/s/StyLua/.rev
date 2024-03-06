@@ -123,4 +123,15 @@
     <comment></comment>
     <requestid>1154478</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>6fbe3723e73e124b8d3866ba0c2d4e01</srcmd5>
+    <version>0.20.0</version>
+    <time>1709762709</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildRequires should be cargo and not rust+cargo
+  * a known issue is causing some broken builds e.g. providing a lower version
+- Reenable cargo tests.
+</comment>
+    <requestid>1155393</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar  6 02:07:17 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- BuildRequires should be cargo and not rust+cargo
+  * a known issue is causing some broken builds e.g. providing a lower version
+
+-------------------------------------------------------------------
+Wed Mar  6 01:58:43 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Reenable cargo tests.
+
+-------------------------------------------------------------------
 Sun Mar  3 17:02:11 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.20.0:

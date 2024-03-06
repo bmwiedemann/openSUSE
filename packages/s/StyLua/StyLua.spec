@@ -25,8 +25,8 @@ License:        (Apache-2.0 OR MIT) AND Unicode-DFS-2016 AND (Apache-2.0 OR BSL-
 URL:            https://github.com/JohnnyMorganz/StyLua
 Source0:        https://github.com/JohnnyMorganz/StyLua/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+BuildRequires:  cargo
 BuildRequires:  cargo-packaging
-BuildRequires:  rust+cargo
 BuildRequires:  zstd
 
 %description
@@ -44,11 +44,8 @@ consistent code style.
 %install
 %{cargo_install} --all-features
 
-# %%check
-# %%{cargo_test} --locked --features lua52
-# %%{cargo_test} --locked --features lua53
-# %%{cargo_test} --locked --features lua54
-# %%{cargo_test} --locked --features luau
+%check
+%{cargo_test} --all-features
 
 %files
 %{_bindir}/%{_bin_name}
