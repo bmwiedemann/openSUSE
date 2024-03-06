@@ -33,9 +33,7 @@ BuildArch:      noarch
 A nice mouse cursor theme for the X Window System.
 
 %prep
-%setup -q
-%patch0
-%patch1
+%autosetup -p0
 
 %build
 autoreconf -fi
