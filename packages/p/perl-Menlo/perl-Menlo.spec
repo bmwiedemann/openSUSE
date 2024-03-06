@@ -96,8 +96,7 @@ cpanm internals with a set of modules that are more flexible, extensible
 and easier to use.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
