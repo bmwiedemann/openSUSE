@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar  5 21:29:43 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2024.2.1
+  * Allow silencing dask.DataFrame deprecation warning
+  * More robust distributed scheduler for rare key collisions
+  * More robust adaptive scaling on large clusters
+- Drop distributed-ignore-daskdepr.patch
+
+-------------------------------------------------------------------
 Wed Feb 14 20:38:44 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2024.2.0

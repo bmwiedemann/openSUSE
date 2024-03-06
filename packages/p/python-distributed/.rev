@@ -991,4 +991,12 @@
   - Fix python312 tests</comment>
     <requestid>1146836</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>dc374e9964536c5ee5d99f19eea05869</srcmd5>
+    <version>2024.2.1</version>
+    <time>1709762752</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1155502</requestid>
+  </revision>
 </revisionlist>
