@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  6 09:10:38 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Fix build errors with gcc14 (bsc#1220975):
+  0001-icy-include-stdlib-h-and-stdio-h.patch
+  0002-legacy-include-stdlib-h.patch
+
+-------------------------------------------------------------------
 Thu May  5 10:11:54 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2.4.6

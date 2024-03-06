@@ -1,7 +1,7 @@
 #
 # spec file for package libshout
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://icecast.org/
 #Git-Clone:     https://gitlab.xiph.org/xiph/icecast-libshout/
 Source:         https://downloads.xiph.org/releases/libshout/%name-%version.tar.gz
 Source1:        baselibs.conf
+Patch1:         0001-icy-include-stdlib-h-and-stdio-h.patch
+Patch2:         0002-legacy-include-stdlib-h.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig(speex)
 BuildRequires:  pkgconfig(theora)

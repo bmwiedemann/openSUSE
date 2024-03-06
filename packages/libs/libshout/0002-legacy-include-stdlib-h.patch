@@ -1,0 +1,25 @@
+From 600fa105a799986efcccddfedfdfd3e9a1988cd0 Mon Sep 17 00:00:00 2001
+From: Alexandre Janniaux <ajanni@videolabs.io>
+Date: Wed, 14 Sep 2022 16:30:03 +0200
+Subject: [PATCH 2/2] legacy: include stdlib.h
+
+free() had no previous declaration, making the build fail with clang.
+---
+ src/legacy.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/legacy.c b/src/legacy.c
+index 3e1d3d7..e0ed961 100644
+--- a/src/legacy.c
++++ b/src/legacy.c
+@@ -28,6 +28,8 @@
+ #include "shout_private.h"
+ #include "util.h"
+ 
++#include <stdlib.h> /* for free() */
++
+ int shout_set_format(shout_t *self, unsigned int format)
+ {
+     if (!self)
+-- 
+GitLab
