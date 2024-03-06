@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  4 13:05:07 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Mon May  4 18:01:42 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Fix build: Test 30_tree.t fails
