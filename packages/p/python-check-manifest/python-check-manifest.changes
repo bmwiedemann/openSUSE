@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 28 05:56:23 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to breezy everywhere.
+- Use %patch macro.
+
+-------------------------------------------------------------------
 Fri Dec  1 18:58:24 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to use the current interpreter by default in the 

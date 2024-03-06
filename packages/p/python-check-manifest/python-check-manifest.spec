@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-check-manifest
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -30,7 +30,6 @@ Version:        0.49
 Release:        0
 Summary:        Tool to check Python source package MANIFEST.in for completeness
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/mgedmin/check-manifest
 Source:         https://files.pythonhosted.org/packages/source/c/check-manifest/check-manifest-%{version}.tar.gz
 Patch0:         use-current-interpreter.patch
@@ -46,19 +45,18 @@ Requires:       python-setuptools
 Requires:       python-tomli
 %endif
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     git-core > 2.11
 Recommends:     python-pip
 Recommends:     python-wheel
-Suggests:       bzr
+Suggests:       breezy
 Suggests:       mercurial
 Suggests:       subversion
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module check-manifest = %{version}}
 BuildRequires:  %{python_module pytest}
-# breezy (the bzr replacement) currently fails in Factory, we're the only user, don't require it.
-# BuildRequires:  bzr
+BuildRequires:  breezy
 BuildRequires:  git-core > 2.11
 BuildRequires:  mercurial
 BuildRequires:  subversion
@@ -72,9 +70,8 @@ and missing files in MANIFEST.
 %prep
 %setup -q -n check-manifest-%{version}
 %if 0%{?suse_version} == 1500
-%patch0 -p1
+%patch -P 0 -p1
 %endif
-
 sed -i '1{\,^#!%{_bindir}/env python,d}' check_manifest.py
 chmod -x check_manifest.py
 
@@ -109,7 +106,7 @@ git config --global --add protocol.file.allow always
 %doc CHANGES.rst README.rst
 %license LICENSE.rst
 %python_alternative %{_bindir}/check-manifest
-%{python_sitelib}/check_manifest.py*
+%{python_sitelib}/check_manifest.py
 %pycache_only %{python_sitelib}/__pycache__/check_manifest*.pyc
 %{python_sitelib}/check_manifest-%{version}.dist-info
 %endif
