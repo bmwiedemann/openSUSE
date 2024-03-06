@@ -173,11 +173,7 @@ Group:          Documentation/HTML
 Libprelude documentation files.
 
 %prep
-%setup -q
-%patch0
-%patch1
-%patch3
-%patch4
+%autosetup -p0
 
 %build
 %configure --with-html-dir=%{_defaultdocdir}/%{name}-%{version}/html \
