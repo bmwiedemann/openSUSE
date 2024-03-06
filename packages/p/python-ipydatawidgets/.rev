@@ -125,4 +125,13 @@
 - Fix jupyter package chain for multiflavor</comment>
     <requestid>1106080</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>9a058ec595c0062515d6a3b3477f0a3b</srcmd5>
+    <version>unknown</version>
+    <time>1709762683</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip python39: no longer supported since ipython 8.19 (through
+  ipywidgets)</comment>
+    <requestid>1155332</requestid>
+  </revision>
 </revisionlist>
