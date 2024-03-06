@@ -39,8 +39,7 @@ This module provides an interface to the protocol family represented by
 IMAP, IMSP, ACAP, and ICAP.  A usable IMAP module is also provide.
 
 %prep
-%setup -n %{cpan_name}-%{version}
-%patch0
+%autosetup -p0 -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL
