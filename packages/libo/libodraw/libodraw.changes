@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  6 07:51:02 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240306
+  * Namespace CUE parsing functions into libodraw_
+- Delete system-libs.patch (not needed)
+
+-------------------------------------------------------------------
 Tue Jan  3 15:57:49 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add missing Require on libbfio-devel.

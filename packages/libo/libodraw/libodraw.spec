@@ -1,7 +1,7 @@
 #
 # spec file for package libodraw
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,32 +18,33 @@
 
 Name:           libodraw
 %define lname	libodraw1
-Version:        20210503
+Version:        20240306
 Release:        0
 Summary:        Library and tools to access to optical disc (split) RAW image files
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libodraw
-Source:         %name-%version.tar.xz
-Source2:        CUE_sheet_format.pdf
-Patch1:         system-libs.patch
+Source:         https://github.com/libyal/libodraw/releases/download/%version/libodraw-alpha-%version.tar.gz
+Source2:        https://github.com/libyal/libodraw/releases/download/%version/libodraw-alpha-%version.tar.gz.asc
+Source3:        %name.keyring
+Source9:        CUE_sheet_format.pdf
 BuildRequires:  bison
 BuildRequires:  c_compiler
 BuildRequires:  flex
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libbfio) >= 20201229
-BuildRequires:  pkgconfig(libcdata) >= 20200509
-BuildRequires:  pkgconfig(libcerror) >= 20201121
-BuildRequires:  pkgconfig(libcfile) >= 20201229
-BuildRequires:  pkgconfig(libclocale) >= 20200913
-BuildRequires:  pkgconfig(libcnotify) >= 20200913
-BuildRequires:  pkgconfig(libcpath) >= 20200623
-BuildRequires:  pkgconfig(libcsplit) >= 20200703
-BuildRequires:  pkgconfig(libcthreads) >= 20200508
-BuildRequires:  pkgconfig(libhmac) >= 20200104
-BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(libbfio) >= 20221025
+BuildRequires:  pkgconfig(libcdata) >= 20240103
+BuildRequires:  pkgconfig(libcerror) >= 20240101
+BuildRequires:  pkgconfig(libcfile) >= 20240106
+BuildRequires:  pkgconfig(libclocale) >= 20240107
+BuildRequires:  pkgconfig(libcnotify) >= 20240108
+BuildRequires:  pkgconfig(libcpath) >= 20240109
+BuildRequires:  pkgconfig(libcsplit) >= 20240110
+BuildRequires:  pkgconfig(libcthreads) >= 20240102
+BuildRequires:  pkgconfig(libhmac) >= 20240129
+BuildRequires:  pkgconfig(libuna) >= 20240130
 
 %description
 libodraw is a library to access optical disc (split) RAW images such
@@ -84,7 +85,7 @@ can read optical disc (split) RAW image files such as BIN/ISO/CUE.
 
 %prep
 %autosetup -p1
-cp "%{S:2}" .
+cp %_sourcedir/*.pdf .
 
 %build
 if [ ! -e configure ]; then ./autogen.sh; fi
@@ -98,8 +99,7 @@ echo "V_%version { global: *; };" >v.sym
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING*
