@@ -55,8 +55,7 @@ The libfakekey-devel package contains libraries and header files for
 developing applications that use libfakekey.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv
