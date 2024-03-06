@@ -1,7 +1,7 @@
 #
 # spec file for package cpanspec
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,6 +44,7 @@ Requires:       perl(Archive::Tar)
 Requires:       perl(Archive::Zip)
 Requires:       perl(Class::Accessor::Chained)
 Requires:       perl(File::ShareDir::Install)
+Requires:       perl(LWP::Protocol::https)
 Requires:       perl(LWP::UserAgent)
 Requires:       perl(Module::Build::Tiny)
 Requires:       perl(Parse::CPAN::Packages)
@@ -54,6 +55,8 @@ Requires:       perl(Text::Autoformat)
 Requires:       perl(Text::Capitalize)
 Requires:       perl(YAML)
 Requires:       perl(YAML::XS)
+Recommends:     obs-service-format_spec_file
+Recommends:     osc
 Recommends:     perl(IO::Uncompress::Bunzip2)
 BuildArch:      noarch
 %{perl_requires}
@@ -68,10 +71,10 @@ find . -type f -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} test
+%make_build test
 perl ./cpanspec -h
 
 %install
