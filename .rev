@@ -42,4 +42,14 @@
     <comment></comment>
     <requestid>1096291</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>4234791f5bbbe8ea2a71facbf5dc17a2</srcmd5>
+    <version>0.1.6</version>
+    <time>1709762584</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip testing with python 3.9: python39-ipython is no longer
+  available.
+</comment>
+    <requestid>1155314</requestid>
+  </revision>
 </revisionlist>
