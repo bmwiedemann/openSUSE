@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  4 15:38:21 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Wed Nov 25 10:21:58 UTC 2020 - Frank Schreiner <FSchreiner@suse.com>
 
 - re-run cpanspec

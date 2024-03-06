@@ -40,8 +40,7 @@ called on an object that has requested an overloaded ref, the object's
 '->ref' method will be called and its return value used instead.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
