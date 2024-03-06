@@ -1,7 +1,7 @@
 #
 # spec file for package python-opencensus-ext-threading
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,7 @@
 
 
 %define repo_version 0.7.12
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%{?sle15_python_module_pythons}
 Name:           python-opencensus-ext-threading
 Version:        0.1.2
 Release:        0
@@ -29,18 +28,13 @@ Source:         https://github.com/census-instrumentation/opencensus-python/arch
 # PATCH-FIX-UPSTREAM remove-mock.patch gh#census-instrumentation/opencensus-python#1002
 Patch0:         remove-mock.patch
 BuildRequires:  %{python_module opencensus}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-%if %{with python2}
-BuildRequires:  python-futures
-BuildRequires:  python-mock
-%endif
 BuildRequires:  python-rpm-macros
 Requires:       python-opencensus
 BuildArch:      noarch
-%ifpython2
-Requires:       python-futures
-%endif
 %python_subpackages
 
 %description
@@ -55,10 +49,10 @@ popd
 touch tests/__init__.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %{python_expand # delete common files
 rm -rf %{buildroot}%{$python_sitelib}/opencensus/__init__.*
@@ -75,6 +69,7 @@ rm -rf %{buildroot}%{$python_sitelib}/opencensus/ext/__pycache__
 %files %{python_files}
 %doc CHANGELOG.md README.rst
 %license ../../LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/opencensus/ext/threading
+%{python_sitelib}/opencensus_ext_threading-%{version}*-info
 
 %changelog

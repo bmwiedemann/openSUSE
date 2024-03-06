@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  5 23:05:44 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Switch package to modern Python Stack on SLE-15
+  + Add %{?sle15_python_module_pythons}
+  + Drop %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+  + Drop build support for Python 2.x
+
+-------------------------------------------------------------------
 Thu Jan 21 11:57:26 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Update base archive to opencensus-0.7.12 (no code change for
