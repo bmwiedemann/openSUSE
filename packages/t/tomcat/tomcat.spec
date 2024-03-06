@@ -117,13 +117,15 @@ Requires:       apache-commons-pool2
 Requires:       java >= 1.8
 Requires(post): %fillup_prereq
 Requires(post): libxslt-tools
+# for runuser
+Requires(post): util-linux
 Requires(pre):  shadow
 %systemd_ordering
 Recommends:     libtcnative-1-0 >= 1.1.24
 Recommends:     logrotate
-BuildArch:      noarch
 Provides:       group(tomcat)
 Provides:       user(tomcat)
+BuildArch:      noarch
 
 %description
 Tomcat is the servlet container that is used in the official Reference
@@ -138,6 +140,8 @@ Summary:        The host manager and manager web applications for Apache Tomcat
 Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}-%{release}
 Requires(post): libxslt-tools
+# for runuser
+Requires(post): util-linux
 
 %description admin-webapps
 The host manager and manager web-based applications for Apache Tomcat.
@@ -154,6 +158,8 @@ Summary:        The "docs" web application for Apache Tomcat
 Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}-%{release}
 Requires(post): libxslt-tools
+# for runuser
+Requires(post): util-linux
 
 %description docs-webapp
 The documentation of web application for Apache Tomcat.
@@ -244,6 +250,8 @@ Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}-%{release}
 Requires:       jakarta-taglibs-standard >= 1.1
 Requires(post): libxslt-tools
+# for runuser
+Requires(post): util-linux
 
 %description webapps
 The ROOT and examples web applications for Apache Tomcat
