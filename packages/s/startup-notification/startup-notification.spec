@@ -1,7 +1,7 @@
 #
 # spec file for package startup-notification
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,6 @@ License:        LGPL-2.1-or-later
 Group:          System/X11/Utilities
 URL:            http://www.freedesktop.org/wiki/Software/startup-notification
 Source:         http://www.freedesktop.org/software/startup-notification/releases/startup-notification-%{version}.tar.gz
-Source99:       baselibs.conf
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xcb) >= 1.6
