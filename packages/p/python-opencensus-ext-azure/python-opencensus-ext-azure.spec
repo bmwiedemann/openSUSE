@@ -1,7 +1,7 @@
 #
 # spec file for package python-opencensus-ext-azure
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,8 @@
 
 
 %define repo_version 0.11.0
-%if 0%{?suse_version} >= 1500
-# mirror python-azure-core
-%define skip_python2 1
-%bcond_with python2
-%else
-%bcond_with python2
-%endif
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+
+%{?sle15_python_module_pythons}
 Name:           python-opencensus-ext-azure
 Version:        1.1.6
 Release:        0
@@ -42,10 +36,6 @@ BuildRequires:  %{python_module requests >= 2.19.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with python2}
-BuildRequires:  python-mock
-BuildRequires:  python-unittest2
-%endif
 BuildArch:      noarch
 Requires:       python-azure-core >= 1.12.0
 Requires:       python-azure-identity >= 1.5.0

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  5 23:04:08 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Switch package to modern Python Stack on SLE-15
+  + Add %{?sle15_python_module_pythons}
+  + Drop %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+  + Drop build support for Python 2.x
+
+-------------------------------------------------------------------
 Tue Oct 18 11:45:21 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.1.6
