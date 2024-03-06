@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  4 13:56:17 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Fri Mar 26 11:16:18 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Add build requirement perl(HTTP::Daemon)
