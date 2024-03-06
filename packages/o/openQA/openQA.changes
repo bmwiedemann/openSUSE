@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 05 11:45:59 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1709639149.060eef3f:
+  * Avoid syncing tests via the cache service when using Git anyway
+  * Revert "Avoid syncing tests via the cache service when using Git anyway"
+  * Avoid syncing tests via the cache service when using Git anyway
+
+-------------------------------------------------------------------
 Fri Mar 01 21:02:52 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1709291879.1d220054:
