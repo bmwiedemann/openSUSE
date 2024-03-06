@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Mar  6 12:02:14 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- update to 6.8
+  - Fix marking of problematic cached IP addresses (#1691)
+  - Bug 5344: mgr:config segfaults without logformat (#1680)
+  - Fix infinite recursion when parsing HTTP chunks (#1553)
+    (bsc#1216715, CVE-2024-25111)
+
+- changes in 6.7
+  - Bug 5337: workaround for crash on startup if -a option is used
+  - Bug 5274: Successful tunnels logged as TCP_TUNNEL/500
+  - Fix crash when NTLM and Negotiate helpers are queried with no HTTP request
+  - Fix SslBump memory leak when mimicking certificates with Authority Key Identifier
+  - Fix memory leak on SslBump certificates with Authority Key Identifier extension
+  - Fix a possible integer overflow in FTP Gateway
+  - Extend cache_log_message to Bug 5187 and job invalidation BUGs
+  - Remove incorrect beta version warning
+
+- squid.keyring: updated
+- header_fixups.patch: added
+- 9be86d8db5e8f40829374d26334d0bb5272c1afd.patch: don't throw on
+  client errors
+
+-------------------------------------------------------------------
 Mon Feb 26 13:37:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
@@ -21,7 +45,7 @@ Thu Dec 28 22:12:14 UTC 2023 - Sean Lewis <seanlew@opensuse.org>
 - changes in 6.5:
  - Bug 5309: frequent "lowestOffset () <= target_offset" assertion
  - Bug 4977: Remove mem_hdr::freeDataUpto() assertion
- - Fix handling of expanding HTTP header values
+ - Fix handling of expanding HTTP header values (bsc#1219960, CVE-2024-25617)
  - Fix RFC 1123 date parsing (bsc#1217813, CVE-2023-49285)
  - Gracefully shutdown when helper process startup fails (bsc#1217815, CVE-2023-49286)
 
