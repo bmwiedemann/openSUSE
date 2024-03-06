@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar  5 08:00:51 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.5.1:
+  * Significant improvement to packet loss robustness using
+    Deep Redundancy (DRED)
+  * Improved packet loss concealment through Deep PLC
+  * Low-bitrate speech quality enhancement down to
+    6 kb/s wideband
+  * Improved x86 (AVX2) and Arm (Neon) optimizations
+  * Support for 4th and 5th order ambisonics
+
+-------------------------------------------------------------------
 Thu Apr 20 21:00:25 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.4:

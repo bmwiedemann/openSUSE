@@ -1,7 +1,7 @@
 #
 # spec file for package opus
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,13 +19,13 @@
 
 %define sover   0
 Name:           opus
-Version:        1.4
+Version:        1.5.1
 Release:        0
 Summary:        Audio Codec Library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://opus-codec.org/
-Source:         https://github.com/xiph/opus/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source:         https://downloads.xiph.org/releases/opus/opus-%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  pkgconfig
 
