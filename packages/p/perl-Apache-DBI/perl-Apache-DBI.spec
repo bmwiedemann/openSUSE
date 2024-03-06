@@ -59,8 +59,7 @@ your code. They won't do anything because the Apache::DBI module overloads
 the disconnect method.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0 
+%autosetup -p0 -n %{cpan_name}-%{version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
