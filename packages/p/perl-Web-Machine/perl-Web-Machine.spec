@@ -97,8 +97,7 @@ To learn more about Webmachine, take a look at the links in the SEE ALSO
 section.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{cpan_name}-%{version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor

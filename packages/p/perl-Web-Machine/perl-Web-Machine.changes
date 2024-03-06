@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  4 15:40:43 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Thu Jul 29 02:59:34 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add fix-tests-2036.patch to make tests pass after 2036 (boo#1102840)
