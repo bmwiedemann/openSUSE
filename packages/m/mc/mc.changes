@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  4 12:49:30 UTC 2024 - Adam Mizerski <adam@mizerski.pl>
+
+- fix python3 dependency (boo#1220900)
+
+-------------------------------------------------------------------
 Fri Feb 23 11:00:04 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -114,7 +114,7 @@ echo "`grep %{name}-%{version}.tar.xz %{SOURCE6} | head -n1 | cut -c1-64`  %{SOU
 %patch -P 52 -p1
 %patch -P 100 -p1
 # rpmlint
-sed -i -e 's|\/usr\/bin\/env python3|\/usr\/bin\/python|g' src/vfs/extfs/helpers/uc1541
+sed -i -e 's|\/usr\/bin\/env python3|\/usr\/bin\/python3|g' src/vfs/extfs/helpers/uc1541
 
 %build
 %{?!make_build:%define make_build make -O %_smp_mflags V=1 VERBOSE=1}
