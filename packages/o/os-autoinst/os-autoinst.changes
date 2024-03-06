@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 05 22:11:29 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1709676681.c0c1cf8:
+  * Add tidyall to README
+  * Symlink xt/00-tidy.t from common repo
+  * video_stream: Fix uninitialized cmd_prefix
+  * t: Split author tests and build test
+  * os-autoinst-setup-multi-machine: Switch from STP to RSTP
+
+-------------------------------------------------------------------
 Tue Feb 27 18:13:38 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1709057610.5d9f343:
