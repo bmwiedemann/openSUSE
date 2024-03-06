@@ -30,7 +30,7 @@
 %endif
 
 Name:           kubevirt
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -41,13 +41,12 @@ Source1:        kubevirt_containers_meta
 Source2:        kubevirt_containers_meta.service
 Source3:        %{url}/releases/download/v%{version}/disks-images-provider.yaml
 Source100:      %{name}-rpmlintrc
-Patch1:         0001-tests-Adapt-VM-phase-expectation.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
 BuildRequires:  rsync
 BuildRequires:  sed
-BuildRequires:  golang(API) >= 1.19
+BuildRequires:  golang(API) >= 1.21
 BuildRequires:  pkgconfig(libvirt)
 ExclusiveArch:  %{_exclusive_arch}
 
@@ -280,6 +279,11 @@ install -p -m 0644 cmd/virt-handler/virt_launcher.cil %{buildroot}%{_datadir}/ku
 mkdir -p %{buildroot}%{_datadir}/kube-virt/pr-helper
 install -p -m 0644 cmd/pr-helper/multipath.conf %{buildroot}%{_datadir}/kube-virt/pr-helper/
 
+# Configuration files for libvirt
+mkdir -p %{buildroot}%{_datadir}/kube-virt/virt-launcher
+install -p -m 0644 cmd/virt-launcher/virtqemud.conf %{buildroot}%{_datadir}/kube-virt/virt-launcher
+install -p -m 0644 cmd/virt-launcher/qemu.conf %{buildroot}%{_datadir}/kube-virt/virt-launcher
+
 # Install release manifests
 mkdir -p %{buildroot}%{_datadir}/kube-virt/manifests/release
 install -m 0644 _out/manifests/release/kubevirt-operator.yaml %{buildroot}%{_datadir}/kube-virt/manifests/release/
@@ -340,12 +344,15 @@ install -m 0644 %{S:2} %{buildroot}%{_prefix}/lib/obs/service
 %files virt-launcher
 %license LICENSE
 %doc README.md
+%dir %{_datadir}/kube-virt
+%dir %{_datadir}/kube-virt/virt-launcher
 %{_bindir}/virt-launcher
 %{_bindir}/virt-launcher-monitor
 %{_bindir}/virt-freezer
 %{_bindir}/virt-probe
 %{_bindir}/virt-tail
 %{_bindir}/node-labeller.sh
+%{_datadir}/kube-virt/virt-launcher
 
 %files virt-operator
 %license LICENSE

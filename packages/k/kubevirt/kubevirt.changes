@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar  6 07:45:30 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.2.0
+  Release notes https://github.com/kubevirt/kubevirt/releases/tag/v1.2.0
+- Drop upstreamed patch
+  0001-tests-Adapt-VM-phase-expectation.patch
+- Pack configuration files for libvirt
+
+-------------------------------------------------------------------
 Fri Jan 12 06:27:45 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Fix test with initially invalid DataVolume (bsc#1218174)
