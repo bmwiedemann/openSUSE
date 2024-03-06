@@ -40,8 +40,7 @@ Cache::LRU is a simple, fast implementation of an in-memory LRU cache in
 pure perl.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{cpan_name}-%{version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
