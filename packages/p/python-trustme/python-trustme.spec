@@ -1,7 +1,7 @@
 #
 # spec file for package python-trustme
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,10 +27,12 @@ Source:         https://files.pythonhosted.org/packages/source/t/trustme/trustme
 Patch0:         fix2038.patch
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module idna}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module service_identity}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 41.0.1
@@ -46,14 +48,13 @@ https://martinfowler.com/bliki/TestDouble.html, that is, the trust
 circle of the CA is limited to the test environment.
 
 %prep
-%setup -q -n trustme-%{version}
-%patch0 -p1
+%autosetup -p1 -n trustme-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -65,6 +66,6 @@ circle of the CA is limited to the test environment.
 %license LICENSE.APACHE2
 %doc README.rst
 %{python_sitelib}/trustme
-%{python_sitelib}/trustme-%{version}*-info
+%{python_sitelib}/trustme-%{version}.dist-info
 
 %changelog
