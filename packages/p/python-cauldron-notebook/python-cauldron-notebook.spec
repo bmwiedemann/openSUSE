@@ -1,7 +1,7 @@
 #
 # spec file for package python-cauldron-notebook
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-# requires NumPy, seaborn (<-- SciPy), which are dropping Python 3.6 support.
-%define         skip_python36 1
+%define         skip_python39 1
 Name:           python-cauldron-notebook
 Version:        1.0.9
 Release:        0
@@ -28,7 +25,9 @@ License:        MIT
 URL:            https://github.com/sernst/cauldron
 Source:         https://github.com/sernst/cauldron/archive/v%{version}.tar.gz#/cauldron-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask
@@ -39,12 +38,14 @@ Requires:       python-numpy
 Requires:       python-pandas
 Requires:       python-pygments
 Requires:       python-requests
+Requires:       python-waitress
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-bokeh
 Recommends:     python-matplotlib
 Recommends:     python-plotly
 Recommends:     python-seaborn
+Provides:       python-cauldron_notebook = %{version}-%{release}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Flask}
@@ -61,6 +62,7 @@ BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module seaborn}
+BuildRequires:  %{python_module waitress}
 # /SECTION
 %python_subpackages
 
@@ -74,10 +76,10 @@ modeling and analysis in Python.
 sed -i 's:.pytest-runner.::' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/cauldron
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -95,6 +97,7 @@ sed -i 's:.pytest-runner.::' setup.py
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/cauldron
-%{python_sitelib}/*
+%{python_sitelib}/cauldron
+%{python_sitelib}/cauldron_notebook-%{version}.dist-info
 
 %changelog
