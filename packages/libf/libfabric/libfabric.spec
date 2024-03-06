@@ -65,8 +65,7 @@ libfabric provides a user-space API to access high-performance fabric
 services, such as RDMA. This package contains the development files.
 
 %prep
-%setup -q -n  %{name}-%{version}%{git_ver}
-%patch0 -p1
+%autosetup -p1 -n  %{name}-%{version}%{git_ver}
 
 %build
 rm -f config/libtool.m4
