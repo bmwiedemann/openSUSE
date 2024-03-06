@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 05 20:01:08 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.2.2:
+  * fix: use `utf8.RuneCountInString` for offsets
+  * refactor: remove rst/adoc scripts
+  * refactor: fix golangci-lint
+  * fix: ensure `getNativeConfig` is consistent
+
+-------------------------------------------------------------------
 Fri Mar 01 13:34:40 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.2.1:

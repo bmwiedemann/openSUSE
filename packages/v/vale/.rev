@@ -599,4 +599,16 @@
   * refactor: check action params (forwarded request 1154048 from jfkw)</comment>
     <requestid>1154049</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>937a5344c64b2609b935cba2862a1ddd</srcmd5>
+    <version>3.2.2</version>
+    <time>1709762688</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2.2:
+  * fix: use `utf8.RuneCountInString` for offsets
+  * refactor: remove rst/adoc scripts
+  * refactor: fix golangci-lint
+  * fix: ensure `getNativeConfig` is consistent (forwarded request 1155347 from jfkw)</comment>
+    <requestid>1155348</requestid>
+  </revision>
 </revisionlist>
