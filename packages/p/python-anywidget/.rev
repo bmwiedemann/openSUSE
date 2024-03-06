@@ -104,4 +104,13 @@
 - Add anywidget-pr439-py312mock.patch gh#manzt/anywidget#439</comment>
     <requestid>1145690</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>90ea6ad60ce8481f27c8df5e4be726ba</srcmd5>
+    <version>0.9.0</version>
+    <time>1709762682</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip python39: no longer supported since ipython 8.19 (through
+  ipywidgets)</comment>
+    <requestid>1155331</requestid>
+  </revision>
 </revisionlist>

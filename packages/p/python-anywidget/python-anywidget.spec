@@ -16,6 +16,7 @@
 #
 
 
+%define skip_python39 1
 %define distver 0.9
 Name:           python-anywidget
 Version:        0.9.0
