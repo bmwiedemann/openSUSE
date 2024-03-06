@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  5 17:24:44 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to upstream version 0.10+9.gf28f084:
+  * ktls: restrict hash functions to supported sizes (bsc#1218037)
+  * tlshd: Add support for chained certs
+
+-------------------------------------------------------------------
 Tue Feb 20 17:28:48 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Update to upstream version 0.10:

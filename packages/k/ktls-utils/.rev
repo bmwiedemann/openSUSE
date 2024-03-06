@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1151124</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c9109f000f57f8d779d18dea0b0fb1da</srcmd5>
+    <version>0.10+9.gf28f084</version>
+    <time>1709762664</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream version 0.10+9.gf28f084:
+  * ktls: restrict hash functions to supported sizes (bsc#1218037)
+  * tlshd: Add support for chained certs (forwarded request 1155293 from mwilck)</comment>
+    <requestid>1155294</requestid>
+  </revision>
 </revisionlist>
