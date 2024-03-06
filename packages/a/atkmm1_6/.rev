@@ -56,4 +56,14 @@
     <comment>Add a missing patch from Leap/SLE. (forwarded request 1131269 from yfjiang)</comment>
     <requestid>1131305</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>9e7bc44540777bb10131e83f53f552ed</srcmd5>
+    <version>2.28.3</version>
+    <time>1709762639</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop baselibs.conf: the -32bit packages are no longer needed and
+  have not been part of Tumbleweed for a while already (build for
+  i586 only enabled in LegacyX86). (forwarded request 1155231 from dimstar)</comment>
+    <requestid>1155247</requestid>
+  </revision>
 </revisionlist>
