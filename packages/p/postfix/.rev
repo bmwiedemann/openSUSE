@@ -2275,4 +2275,12 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment></comment>
     <requestid>1145294</requestid>
   </revision>
+  <revision rev="236" vrev="1">
+    <srcmd5>39f40731892b7e89972a18eee3119f55</srcmd5>
+    <version>3.8.6</version>
+    <time>1709762618</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1155598</requestid>
+  </revision>
 </revisionlist>

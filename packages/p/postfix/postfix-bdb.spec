@@ -59,14 +59,14 @@
 %endif
 %bcond_without ldap
 Name:           postfix-bdb
-Version:        3.8.5
+Version:        3.8.6
 Release:        0
 Summary:        A fast, secure, and flexible mailer
 License:        EPL-2.0 OR IPL-1.0
 Group:          Productivity/Networking/Email/Servers
 URL:            http://www.postfix.org
-Source0:        http://cdn.postfix.johnriley.me/mirrors/postfix-release/official/postfix-%{version}.tar.gz
-Source1:        http://cdn.postfix.johnriley.me/mirrors/postfix-release/official/postfix-%{version}.tar.gz.gpg2#/postfix-%{version}.tar.gz.asc
+Source0:        https://de.postfix.org/ftpmirror/official/postfix-%{version}.tar.gz
+Source1:        https://de.postfix.org/ftpmirror/official/postfix-%{version}.tar.gz.gpg2#/postfix-%{version}.tar.gz.asc
 Source2:        postfix-SUSE.tar.gz
 Source3:        postfix-mysql.tar.bz2
 #Source4:        http://cdn.postfix.johnriley.me/mirrors/postfix-release/wietse.pgp#/postfix.keyring
@@ -128,14 +128,14 @@ Requires(pre):  shadow
 %endif
 # /usr/lib/postfix/bin//post-install: line 667: ed: command not found
 Requires(pre):  ed
-Requires(preun): ed
+Requires(preun):ed
 Requires(post): ed
-Requires(postun): ed
+Requires(postun):ed
 # /usr/sbin/config.postfix needs perl
 Requires(pre):  perl
-Requires(preun): perl
+Requires(preun):perl
 Requires(post): perl
-Requires(postun): perl
+Requires(postun):perl
 
 %description
 Postfix aims to be an alternative to the widely-used sendmail program with bdb support
@@ -157,17 +157,8 @@ lmdb.
 %endif
 
 %prep
-%setup -n postfix-%{version} -a 2 -a 3
-%patch1
-%patch2
-%patch3
-%patch4
-%patch5
-%patch6
-%patch7
-%patch8
-%patch9
-%patch10
+%setup -q -n postfix-%{version} -a 2 -a 3
+%autopatch -p0
 
 # ---------------------------------------------------------------------------
 

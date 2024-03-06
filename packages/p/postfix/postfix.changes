@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Tue Mar  5 16:46:16 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 3.8.6
+  * Bugfix (defect introduced: Postfix 2.3, date 20051222): the
+    Dovecot auth client did not reset the 'reason' from a previous
+    Dovecot auth service response, before parsing the next Dovecot
+    auth server response in the same SMTP session, resulting in a
+    nonsensical "authentication failed" warning message. Reported
+    by Stephan Bosch.
+  * Bugfix (defect introduced: Postfix 3.1, date: 20151128):
+    "postqueue -j" produced broken JSON when escaping a control
+    character as \uXXXX. Found during code maintenance.
+  * Cleanup: this fixes posttls-finger certificate match expectations
+    for all TLS security levels, including warnings for levels that
+    don't implement certificate matching. By Viktor Dukhovni.
+  * Bugfix (defect introduced: Postfix 2.3): after prepending a
+    header at the top of a message (with an access(5), header_checks(5)
+    or Milter action), the Postfix Milter "delete header" or "update
+    header" action was skipping the prepended header, instead of
+    skipping the Postfix-generated Received: header. Problem report
+    by Carlos Velasco.
+  * Workaround: tlsmgr logfile spam. Reportedly, some OS lies under
+    load: it says that a socket is readable, then it says that the
+    socket has unread data, and then it says that read returns EOF,
+    causing Postfix to spam the log with a warning message.
+  * Bugfix (defect introduced: Postfix 3.4): the SMTP server's BDAT
+    command handler could be tricked to read $message_size_limit
+    bytes into memory. Found during code maintenance.
+  * Safety: limit the total size of DNS lookup results to 100
+    records; drop the excess records, and log a warning. This limit
+    is 20x larger than the number of server addresses that the
+    Postfix SMTP client is willing to consider when delivering mail,
+    and is far below the number of records that could cause a tail
+    recursion crash in dns_rr_append() as reported by Toshifumi
+    Sakaguchi. This fix also limits the number of DNS requests that
+    a check_*_*_access restriction can make.
+  * Performance, related to the previous problem: eliminate worst-case
+    behavior where the queue manager could defer delivery to all
+    destinations over a specific delivery transport, after only a
+    single delivery agent crash. The scheduler now throttles
+    deliveries to one destination, and allows other deliveries to
+    keep making progress.
+- change to functioning mirror (http://cdn.postfix.johnriley.me/
+  has been dead for a while although it is still listed upstream)
+- make output of %setup less verbose by restoring -q option
+
+-------------------------------------------------------------------
+Tue Mar  5 12:19:01 UTC 2024 - Peter Varkoly <varkoly@suse.com>
+
+- %autosetup does not works with multiple -a.
+  https://github.com/rpm-software-management/rpm/issues/1204 
+
+-------------------------------------------------------------------
+Thu Feb 29 14:40:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Tue Jan 23 18:24:16 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 3.8.5
