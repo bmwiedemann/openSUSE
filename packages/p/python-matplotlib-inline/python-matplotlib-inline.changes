@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  5 15:18:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Skip testing with python 3.9: python39-ipython is no longer
+  available.
+
+-------------------------------------------------------------------
 Sat Jul  1 10:34:02 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
