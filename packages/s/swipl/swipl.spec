@@ -17,12 +17,12 @@
 
 
 Name:           swipl
-Version:        9.0.4
+Version:        9.3.2
 Release:        0
 Summary:        Prolog Compiler
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://www.swi-prolog.org
-Source0:        http://www.swi-prolog.org/download/stable/src/swipl-%{version}.tar.gz
+Source0:        https://www.swi-prolog.org/download/devel/src/swipl-%{version}.tar.gz
 Source98:       swipl-rpmlintrc
 # For SOURCE_DATE_EPOCH variable- reproducible builds
 Source99:       %{name}.changes

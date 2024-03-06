@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  4 17:41:37 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to the devel version 9.3.2. Unfortunately, the number
+  of changes is so large and the upstream doesn't keep a
+  changelog file, so I have to refer you to the web page
+  https://www.swi-prolog.org/.
+
+-------------------------------------------------------------------
 Tue Jul  4 14:24:55 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Make rpmlint slightly less unhappy with us.
