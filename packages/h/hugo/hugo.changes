@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 06 20:12:41 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.123.7:
+  * hugofs: Fix vertical mount merge issue
+  * Fix and add integration test for the Bootstrap SCSS module for both Dart Sass and Libsass
+  * Fix resources.GetMatch, resources.Match, and resources.ByType to they don't normalize permalinks
+  * Make sure that sitemaps gets generated even if there is a content bundle with the same path
+  * resources/page: Make Taxonomy.Get and Taxonomy.Count case-insensitive
+
+-------------------------------------------------------------------
 Wed Feb 28 19:55:14 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.123.6:

@@ -1007,4 +1007,17 @@
   * Fix draft for non-default content when content in default language does not exist (forwarded request 1153024 from jfkw)</comment>
     <requestid>1153026</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>c978174292752f80b250b70dfec2f53f</srcmd5>
+    <version>0.123.7</version>
+    <time>1709762816</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.123.7:
+  * hugofs: Fix vertical mount merge issue
+  * Fix and add integration test for the Bootstrap SCSS module for both Dart Sass and Libsass
+  * Fix resources.GetMatch, resources.Match, and resources.ByType to they don't normalize permalinks
+  * Make sure that sitemaps gets generated even if there is a content bundle with the same path
+  * resources/page: Make Taxonomy.Get and Taxonomy.Count case-insensitive (forwarded request 1155747 from jfkw)</comment>
+    <requestid>1155748</requestid>
+  </revision>
 </revisionlist>
