@@ -2040,4 +2040,14 @@ Pushing GNOME 45.rc packages</comment>
     <comment> (forwarded request 1139464 from dimstar)</comment>
     <requestid>1139465</requestid>
   </revision>
+  <revision rev="237" vrev="3">
+    <srcmd5>b75c4f71b4fc9a178ef6e65488b04dcc</srcmd5>
+    <version>1.2.8</version>
+    <time>1709762637</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop baselibs.conf: the -32bit packages are no longer needed and
+  have not been part of Tumbleweed for a while already (build for
+  i586 only enabled in LegacyX86). (forwarded request 1155230 from dimstar)</comment>
+    <requestid>1155246</requestid>
+  </revision>
 </revisionlist>
