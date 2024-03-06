@@ -151,4 +151,12 @@ The rights and obligations in verify_zones are most akin to the SPDX recognised 
     <comment></comment>
     <requestid>1140624</requestid>
   </revision>
+  <revision rev="22" vrev="517">
+    <srcmd5>271fdfde5eb2b60bc042661fe7eebeda</srcmd5>
+    <version>0.97</version>
+    <time>1709762739</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1155462</requestid>
+  </revision>
 </revisionlist>

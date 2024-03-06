@@ -36,8 +36,7 @@ This module implements a virtual base class for parsing BIND server
 version 8 configuration files (named.conf).
 
 %prep
-%setup -n BIND-Conf_Parser-%{version}
-%patch0
+%autosetup -p0 -n BIND-Conf_Parser-%{version}
 
 %build
 perl Makefile.PL
