@@ -89,8 +89,7 @@ provides a consistent platform independent interface for any
 system-wide input gesture recognition mechanism.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
