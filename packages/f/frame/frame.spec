@@ -69,8 +69,7 @@ synchronisation of a set of simultaneous touches.
 This package includes the development files for frame.
 
 %prep
-%setup -q -c
-%patch0 -p1
+%autosetup -p1 -c
 
 %build
 NOCONFIGURE=1 ./autogen.sh
