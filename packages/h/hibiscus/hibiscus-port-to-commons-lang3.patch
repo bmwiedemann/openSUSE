@@ -1,5 +1,5 @@
---- hibiscus-V_2_10_16_BUILD_380/build/build.properties	2024-02-27 22:58:10.105140251 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/build/build.properties	2024-02-27 22:58:21.888497587 +0100
+--- hibiscus-V_2_10_17_BUILD_381/build/build.properties	2024-03-06 20:17:15.887346650 +0100
++++ hibiscus-V_2_10_17_BUILD_381/build/build.properties	2024-03-06 20:17:30.674035070 +0100
 @@ -31,7 +31,7 @@
                                    ${define.jameica.dir}/releases/jameica-lib.jar;\
                                    ${define.jameica.dir}/lib/de_willuhn_ds/de_willuhn_ds.jar;\
@@ -9,8 +9,8 @@
                                    ${define.jameica.dir}/lib/nanoxml/nanoxml-2.2.3.jar;\
                                    ${define.jameica.dir}/lib/paperclips/net.sf.paperclips_1.0.4.jar;\
                                    ${define.jameica.dir}/lib/java_ee/javax.annotation-api-1.3.2.jar;\
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/accounts/hbci/controller/HBCIVariantPinTanController.java	2024-02-27 22:58:10.151807014 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/accounts/hbci/controller/HBCIVariantPinTanController.java	2024-02-27 22:58:21.891830928 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/accounts/hbci/controller/HBCIVariantPinTanController.java	2024-03-06 20:17:15.910680017 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/accounts/hbci/controller/HBCIVariantPinTanController.java	2024-03-06 20:17:30.674035070 +0100
 @@ -12,7 +12,7 @@
  
  import java.util.List;
@@ -20,8 +20,8 @@
  import org.eclipse.swt.widgets.Event;
  import org.eclipse.swt.widgets.Listener;
  import org.kapott.hbci.manager.BankInfo;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/calendar/UmsatzAppointmentProvider.java	2024-02-27 22:58:10.155140354 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/calendar/UmsatzAppointmentProvider.java	2024-02-27 22:58:21.891830928 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/calendar/UmsatzAppointmentProvider.java	2024-03-06 20:17:15.910680017 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/calendar/UmsatzAppointmentProvider.java	2024-03-06 20:17:30.674035070 +0100
 @@ -12,7 +12,7 @@
  
  import java.rmi.RemoteException;
@@ -31,8 +31,19 @@
  import org.eclipse.swt.graphics.RGB;
  
  import de.willuhn.jameica.gui.util.Color;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/action/AuslandsUeberweisungNew.java	2024-02-27 22:58:10.155140354 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/action/AuslandsUeberweisungNew.java	2024-02-27 22:58:21.891830928 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/forecast/ForecastCreator.java	2024-03-06 20:17:15.910680017 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/forecast/ForecastCreator.java	2024-03-06 20:19:06.850843204 +0100
+@@ -18,7 +18,7 @@
+ import java.util.List;
+ import java.util.TreeMap;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ 
+ import de.willuhn.jameica.hbci.HBCI;
+ import de.willuhn.jameica.hbci.gui.filter.KontoFilter;
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/action/AuslandsUeberweisungNew.java	2024-03-06 20:17:15.914013356 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/action/AuslandsUeberweisungNew.java	2024-03-06 20:17:30.677368409 +0100
 @@ -13,7 +13,7 @@
  import java.rmi.RemoteException;
  import java.util.Date;
@@ -42,8 +53,8 @@
  
  import de.jost_net.OBanToo.SEPA.IBAN;
  import de.willuhn.jameica.gui.Action;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/action/ChipTanTest.java	2024-02-27 22:58:10.155140354 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/action/ChipTanTest.java	2024-02-27 22:58:21.891830928 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/action/ChipTanTest.java	2024-03-06 20:17:15.914013356 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/action/ChipTanTest.java	2024-03-06 20:17:30.677368409 +0100
 @@ -10,7 +10,7 @@
  
  package de.willuhn.jameica.hbci.gui.action;
@@ -53,8 +64,19 @@
  
  import de.willuhn.jameica.gui.Action;
  import de.willuhn.jameica.hbci.HBCI;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/action/PassportChange.java	2024-02-27 22:58:10.158473694 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/action/PassportChange.java	2024-02-27 22:58:21.891830928 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/action/KontoCopyIBAN.java	2024-03-06 20:17:15.914013356 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/action/KontoCopyIBAN.java	2024-03-06 20:19:06.850843204 +0100
+@@ -10,7 +10,7 @@
+ 
+ package de.willuhn.jameica.hbci.gui.action;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ 
+ import de.willuhn.jameica.hbci.rmi.Konto;
+ import de.willuhn.jameica.messaging.StatusBarMessage;
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/action/PassportChange.java	2024-03-06 20:17:15.914013356 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/action/PassportChange.java	2024-03-06 20:17:30.677368409 +0100
 @@ -13,7 +13,7 @@
  import java.util.Enumeration;
  import java.util.Properties;
@@ -64,8 +86,8 @@
  
  import de.willuhn.jameica.gui.Action;
  import de.willuhn.jameica.hbci.HBCI;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/action/SepaConvertAddress.java	2024-02-27 22:58:10.158473694 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/action/SepaConvertAddress.java	2024-02-27 22:58:21.891830928 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/action/SepaConvertAddress.java	2024-03-06 20:17:15.914013356 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/action/SepaConvertAddress.java	2024-03-06 20:17:30.677368409 +0100
 @@ -14,7 +14,7 @@
  import java.util.Arrays;
  import java.util.List;
@@ -75,8 +97,8 @@
  import org.kapott.hbci.manager.HBCIUtils;
  
  import de.jost_net.OBanToo.SEPA.IBAN;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/action/SepaLastschriftNew.java	2024-02-27 22:58:10.158473694 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/action/SepaLastschriftNew.java	2024-02-27 22:58:21.891830928 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/action/SepaLastschriftNew.java	2024-03-06 20:17:15.914013356 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/action/SepaLastschriftNew.java	2024-03-06 20:17:30.677368409 +0100
 @@ -13,7 +13,7 @@
  import java.rmi.RemoteException;
  import java.util.Date;
@@ -86,8 +108,8 @@
  
  import de.willuhn.jameica.gui.Action;
  import de.willuhn.jameica.gui.GUI;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/action/SepaSammelLastschriftNew.java	2024-02-27 22:58:10.158473694 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/action/SepaSammelLastschriftNew.java	2024-02-27 22:58:21.891830928 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/action/SepaSammelLastschriftNew.java	2024-03-06 20:17:15.914013356 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/action/SepaSammelLastschriftNew.java	2024-03-06 20:17:30.677368409 +0100
 @@ -11,7 +11,7 @@
  
  import java.rmi.RemoteException;
@@ -97,8 +119,8 @@
  
  import de.willuhn.jameica.gui.Action;
  import de.willuhn.jameica.gui.GUI;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/action/SepaSammelUeberweisungNew.java	2024-02-27 22:58:10.158473694 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/action/SepaSammelUeberweisungNew.java	2024-02-27 22:58:21.891830928 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/action/SepaSammelUeberweisungNew.java	2024-03-06 20:17:15.914013356 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/action/SepaSammelUeberweisungNew.java	2024-03-06 20:17:30.677368409 +0100
 @@ -11,7 +11,7 @@
  
  import java.rmi.RemoteException;
@@ -108,8 +130,19 @@
  
  import de.willuhn.jameica.gui.Action;
  import de.willuhn.jameica.gui.GUI;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/controller/AbstractSepaSammelTransferBuchungControl.java	2024-02-27 22:58:10.161807034 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/controller/AbstractSepaSammelTransferBuchungControl.java	2024-02-27 22:58:21.891830928 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/chart/LineChart.java	2024-03-06 20:17:15.917346694 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/chart/LineChart.java	2024-03-06 20:19:06.850843204 +0100
+@@ -15,7 +15,7 @@
+ import java.util.LinkedList;
+ import java.util.List;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ import org.eclipse.swt.SWT;
+ import org.eclipse.swt.graphics.Color;
+ import org.eclipse.swt.graphics.RGB;
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/controller/AbstractSepaSammelTransferBuchungControl.java	2024-03-06 20:17:15.917346694 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/controller/AbstractSepaSammelTransferBuchungControl.java	2024-03-06 20:17:30.677368409 +0100
 @@ -11,7 +11,7 @@
  
  import java.rmi.RemoteException;
@@ -119,8 +152,8 @@
  import org.eclipse.swt.widgets.Event;
  import org.eclipse.swt.widgets.Listener;
  
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/controller/AbstractTransferControl.java	2024-02-27 22:58:10.161807034 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/controller/AbstractTransferControl.java	2024-02-27 22:58:21.891830928 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/controller/AbstractTransferControl.java	2024-03-06 20:17:15.917346694 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/controller/AbstractTransferControl.java	2024-03-06 20:17:30.677368409 +0100
 @@ -11,7 +11,7 @@
  
  import java.rmi.RemoteException;
@@ -130,8 +163,8 @@
  import org.eclipse.swt.widgets.Event;
  import org.eclipse.swt.widgets.Listener;
  
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/controller/EinnahmeAusgabeControl.java	2024-02-27 22:58:10.161807034 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/controller/EinnahmeAusgabeControl.java	2024-02-27 23:02:50.812368561 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/controller/EinnahmeAusgabeControl.java	2024-03-06 20:17:15.917346694 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/controller/EinnahmeAusgabeControl.java	2024-03-06 20:17:30.680701747 +0100
 @@ -19,7 +19,7 @@
  import java.util.Map.Entry;
  import java.util.Objects;
@@ -141,8 +174,8 @@
  import org.eclipse.swt.widgets.Event;
  import org.eclipse.swt.widgets.Listener;
  import org.eclipse.swt.widgets.TreeItem;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/controller/EmpfaengerControl.java	2024-02-27 22:58:10.161807034 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/controller/EmpfaengerControl.java	2024-02-27 22:58:21.891830928 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/controller/EmpfaengerControl.java	2024-03-06 20:17:15.917346694 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/controller/EmpfaengerControl.java	2024-03-06 20:17:30.680701747 +0100
 @@ -16,7 +16,7 @@
  import java.util.List;
  import java.util.Objects;
@@ -152,8 +185,8 @@
  import org.eclipse.swt.widgets.Event;
  import org.eclipse.swt.widgets.Listener;
  import org.kapott.hbci.manager.HBCIUtils;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/controller/KontoauszugPdfControl.java	2024-02-27 22:58:10.161807034 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/controller/KontoauszugPdfControl.java	2024-02-27 22:58:21.895164268 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/controller/KontoauszugPdfControl.java	2024-03-06 20:17:15.917346694 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/controller/KontoauszugPdfControl.java	2024-03-06 20:17:30.680701747 +0100
 @@ -14,7 +14,7 @@
  import java.rmi.RemoteException;
  import java.util.Date;
@@ -163,8 +196,8 @@
  import org.eclipse.swt.widgets.Event;
  import org.eclipse.swt.widgets.FileDialog;
  import org.eclipse.swt.widgets.Listener;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/controller/KontoControl.java	2024-02-27 22:58:10.161807034 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/controller/KontoControl.java	2024-02-27 22:58:21.895164268 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/controller/KontoControl.java	2024-03-06 20:17:15.917346694 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/controller/KontoControl.java	2024-03-06 20:17:30.680701747 +0100
 @@ -14,7 +14,7 @@
  import java.util.LinkedList;
  import java.util.List;
@@ -174,8 +207,8 @@
  import org.eclipse.swt.widgets.Event;
  import org.eclipse.swt.widgets.Listener;
  import org.kapott.hbci.manager.HBCIUtils;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/controller/SepaLastschriftControl.java	2024-02-27 22:58:10.161807034 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/controller/SepaLastschriftControl.java	2024-02-27 22:58:21.895164268 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/controller/SepaLastschriftControl.java	2024-03-06 20:17:15.917346694 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/controller/SepaLastschriftControl.java	2024-03-06 20:17:30.680701747 +0100
 @@ -13,7 +13,7 @@
  import java.rmi.RemoteException;
  import java.util.Date;
@@ -185,8 +218,8 @@
  import org.eclipse.swt.widgets.Event;
  import org.eclipse.swt.widgets.Listener;
  
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/controller/SepaSammelLastBuchungControl.java	2024-02-27 22:58:10.161807034 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/controller/SepaSammelLastBuchungControl.java	2024-02-27 22:58:21.895164268 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/controller/SepaSammelLastBuchungControl.java	2024-03-06 20:17:15.917346694 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/controller/SepaSammelLastBuchungControl.java	2024-03-06 20:17:30.680701747 +0100
 @@ -12,7 +12,7 @@
  import java.rmi.RemoteException;
  import java.util.Date;
@@ -196,8 +229,8 @@
  import org.eclipse.swt.widgets.Event;
  import org.eclipse.swt.widgets.Listener;
  
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/controller/SepaSammelLastschriftControl.java	2024-02-27 22:58:10.161807034 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/controller/SepaSammelLastschriftControl.java	2024-02-27 22:58:21.895164268 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/controller/SepaSammelLastschriftControl.java	2024-03-06 20:17:15.917346694 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/controller/SepaSammelLastschriftControl.java	2024-03-06 20:17:30.680701747 +0100
 @@ -13,7 +13,7 @@
  import java.rmi.RemoteException;
  import java.util.Date;
@@ -207,8 +240,8 @@
  
  import de.willuhn.jameica.gui.AbstractView;
  import de.willuhn.jameica.gui.Action;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/controller/SepaSammelUeberweisungControl.java	2024-02-27 22:58:10.161807034 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/controller/SepaSammelUeberweisungControl.java	2024-02-27 22:58:21.895164268 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/controller/SepaSammelUeberweisungControl.java	2024-03-06 20:17:15.917346694 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/controller/SepaSammelUeberweisungControl.java	2024-03-06 20:17:30.680701747 +0100
 @@ -16,7 +16,7 @@
  import java.util.Date;
  import java.util.List;
@@ -218,8 +251,8 @@
  import org.eclipse.swt.widgets.Event;
  import org.eclipse.swt.widgets.Listener;
  
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/controller/UmsatzDetailControl.java	2024-02-27 22:58:10.161807034 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/controller/UmsatzDetailControl.java	2024-02-27 22:58:21.895164268 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/controller/UmsatzDetailControl.java	2024-03-06 20:17:15.917346694 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/controller/UmsatzDetailControl.java	2024-03-06 20:17:30.680701747 +0100
 @@ -12,7 +12,7 @@
  
  import java.rmi.RemoteException;
@@ -229,8 +262,8 @@
  import org.eclipse.swt.widgets.Event;
  import org.eclipse.swt.widgets.Listener;
  
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/dialogs/AccountContainerDialog.java	2024-02-27 22:58:10.161807034 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/dialogs/AccountContainerDialog.java	2024-02-27 22:58:21.895164268 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/dialogs/AccountContainerDialog.java	2024-03-06 20:17:15.917346694 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/dialogs/AccountContainerDialog.java	2024-03-06 20:17:30.680701747 +0100
 @@ -9,7 +9,7 @@
   **********************************************************************/
  package de.willuhn.jameica.hbci.gui.dialogs;
@@ -240,8 +273,8 @@
  import org.eclipse.swt.SWT;
  import org.eclipse.swt.widgets.Composite;
  import org.eclipse.swt.widgets.Event;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/dialogs/CaptchaDialog.java	2024-02-27 22:58:10.161807034 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/dialogs/CaptchaDialog.java	2024-02-27 22:58:21.895164268 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/dialogs/CaptchaDialog.java	2024-03-06 20:17:15.917346694 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/dialogs/CaptchaDialog.java	2024-03-06 20:17:30.680701747 +0100
 @@ -15,7 +15,7 @@
  import java.io.InputStream;
  import java.net.URL;
@@ -251,8 +284,8 @@
  import org.eclipse.swt.SWT;
  import org.eclipse.swt.events.KeyAdapter;
  import org.eclipse.swt.events.KeyEvent;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/dialogs/CSVImportDialog.java	2024-02-27 22:58:10.161807034 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/dialogs/CSVImportDialog.java	2024-02-27 22:58:21.895164268 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/dialogs/CSVImportDialog.java	2024-03-06 20:17:15.917346694 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/dialogs/CSVImportDialog.java	2024-03-06 20:17:30.680701747 +0100
 @@ -18,7 +18,7 @@
  import java.util.ArrayList;
  import java.util.List;
@@ -262,8 +295,8 @@
  import org.eclipse.swt.SWT;
  import org.eclipse.swt.layout.GridData;
  import org.eclipse.swt.layout.GridLayout;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/dialogs/CSVProfileStoreDialog.java	2024-02-27 22:58:10.161807034 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/dialogs/CSVProfileStoreDialog.java	2024-02-27 22:58:21.895164268 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/dialogs/CSVProfileStoreDialog.java	2024-03-06 20:17:15.917346694 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/dialogs/CSVProfileStoreDialog.java	2024-03-06 20:17:30.680701747 +0100
 @@ -11,7 +11,7 @@
  
  import java.util.List;
@@ -273,8 +306,19 @@
  import org.eclipse.swt.SWT;
  import org.eclipse.swt.events.KeyAdapter;
  import org.eclipse.swt.events.KeyEvent;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/dialogs/HBCITraceDialog.java	2024-02-27 22:58:10.161807034 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/dialogs/HBCITraceDialog.java	2024-02-27 22:58:21.895164268 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/dialogs/CustomRangeDialog.java	2024-03-06 20:17:15.917346694 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/dialogs/CustomRangeDialog.java	2024-03-06 20:19:06.850843204 +0100
+@@ -13,7 +13,7 @@
+ import java.util.Calendar;
+ import java.util.Date;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ import org.eclipse.swt.SWT;
+ import org.eclipse.swt.widgets.Composite;
+ 
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/dialogs/HBCITraceDialog.java	2024-03-06 20:17:15.917346694 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/dialogs/HBCITraceDialog.java	2024-03-06 20:17:30.680701747 +0100
 @@ -19,7 +19,7 @@
  import java.util.Date;
  import java.util.List;
@@ -284,8 +328,8 @@
  import org.eclipse.swt.SWT;
  import org.eclipse.swt.widgets.Composite;
  import org.eclipse.swt.widgets.FileDialog;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/dialogs/IbanCalcDialog.java	2024-02-27 22:58:10.161807034 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/dialogs/IbanCalcDialog.java	2024-02-27 22:58:21.895164268 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/dialogs/IbanCalcDialog.java	2024-03-06 20:17:15.917346694 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/dialogs/IbanCalcDialog.java	2024-03-06 20:17:30.680701747 +0100
 @@ -10,7 +10,7 @@
  
  package de.willuhn.jameica.hbci.gui.dialogs;
@@ -295,8 +339,8 @@
  import org.eclipse.swt.SWT;
  import org.eclipse.swt.widgets.Composite;
  import org.eclipse.swt.widgets.Event;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/dialogs/KontoauszugMoveDialog.java	2024-02-27 22:58:10.161807034 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/dialogs/KontoauszugMoveDialog.java	2024-02-27 22:58:21.895164268 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/dialogs/KontoauszugMoveDialog.java	2024-03-06 20:17:15.917346694 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/dialogs/KontoauszugMoveDialog.java	2024-03-06 20:17:30.680701747 +0100
 @@ -15,7 +15,7 @@
  import java.io.FileOutputStream;
  import java.nio.channels.FileChannel;
@@ -306,8 +350,8 @@
  import org.eclipse.swt.SWT;
  import org.eclipse.swt.widgets.Composite;
  import org.eclipse.swt.widgets.Event;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/dialogs/KontoauszugPdfSettingsDialog.java	2024-02-27 22:58:10.161807034 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/dialogs/KontoauszugPdfSettingsDialog.java	2024-02-27 22:58:21.895164268 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/dialogs/KontoauszugPdfSettingsDialog.java	2024-03-06 20:17:15.917346694 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/dialogs/KontoauszugPdfSettingsDialog.java	2024-03-06 20:17:30.680701747 +0100
 @@ -13,7 +13,7 @@
  import java.rmi.RemoteException;
  import java.util.Date;
@@ -317,8 +361,8 @@
  import org.eclipse.swt.SWT;
  import org.eclipse.swt.events.DisposeEvent;
  import org.eclipse.swt.events.DisposeListener;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/dialogs/SepaExportDialog.java	2024-02-27 22:58:10.165140375 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/dialogs/SepaExportDialog.java	2024-02-27 22:58:21.895164268 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/dialogs/SepaExportDialog.java	2024-03-06 20:17:15.917346694 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/dialogs/SepaExportDialog.java	2024-03-06 20:17:30.680701747 +0100
 @@ -16,7 +16,7 @@
  import java.util.Date;
  import java.util.List;
@@ -328,8 +372,8 @@
  import org.eclipse.swt.SWT;
  import org.eclipse.swt.widgets.Composite;
  import org.eclipse.swt.widgets.Event;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/dialogs/UmsatzTypListDialog.java	2024-02-27 22:58:10.165140375 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/dialogs/UmsatzTypListDialog.java	2024-02-27 22:58:21.895164268 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/dialogs/UmsatzTypListDialog.java	2024-03-06 20:17:15.917346694 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/dialogs/UmsatzTypListDialog.java	2024-03-06 20:17:30.680701747 +0100
 @@ -15,7 +15,7 @@
  import java.util.List;
  import java.util.Set;
@@ -339,8 +383,8 @@
  import org.eclipse.swt.events.DisposeEvent;
  import org.eclipse.swt.events.DisposeListener;
  import org.eclipse.swt.events.KeyAdapter;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/filter/KontoFilter.java	2024-02-27 22:58:10.165140375 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/filter/KontoFilter.java	2024-02-27 22:58:21.895164268 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/filter/KontoFilter.java	2024-03-06 20:17:15.917346694 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/filter/KontoFilter.java	2024-03-06 20:17:30.680701747 +0100
 @@ -12,7 +12,7 @@
  
  import java.rmi.RemoteException;
@@ -350,8 +394,8 @@
  
  import de.willuhn.jameica.hbci.HBCIProperties;
  import de.willuhn.jameica.hbci.rmi.Konto;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/formatter/IbanFormatter.java	2024-02-27 22:58:10.165140375 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/formatter/IbanFormatter.java	2024-02-27 22:58:21.895164268 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/formatter/IbanFormatter.java	2024-03-06 20:17:15.917346694 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/formatter/IbanFormatter.java	2024-03-06 20:17:30.680701747 +0100
 @@ -10,7 +10,7 @@
  
  package de.willuhn.jameica.hbci.gui.formatter;
@@ -361,8 +405,19 @@
  
  import de.willuhn.jameica.gui.formatter.Formatter;
  import de.willuhn.jameica.hbci.HBCIProperties;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/input/BLZInput.java	2024-02-27 22:58:10.165140375 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/input/BLZInput.java	2024-02-27 22:58:21.895164268 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/input/AddressInput.java	2024-03-06 20:17:15.917346694 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/input/AddressInput.java	2024-03-06 20:19:06.850843204 +0100
+@@ -16,7 +16,7 @@
+ import java.util.List;
+ import java.util.Map;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ import org.eclipse.swt.SWT;
+ import org.eclipse.swt.layout.GridData;
+ import org.eclipse.swt.layout.GridLayout;
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/input/BLZInput.java	2024-03-06 20:17:15.917346694 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/input/BLZInput.java	2024-03-06 20:17:30.680701747 +0100
 @@ -13,7 +13,7 @@
  import java.util.ArrayList;
  import java.util.List;
@@ -372,8 +427,8 @@
  import org.eclipse.swt.SWT;
  import org.eclipse.swt.widgets.Control;
  import org.eclipse.swt.widgets.Event;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/input/IBANInput.java	2024-02-27 22:58:10.165140375 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/input/IBANInput.java	2024-02-27 22:58:21.895164268 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/input/IBANInput.java	2024-03-06 20:17:15.920680033 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/input/IBANInput.java	2024-03-06 20:17:30.680701747 +0100
 @@ -10,7 +10,7 @@
  
  package de.willuhn.jameica.hbci.gui.input;
@@ -383,8 +438,8 @@
  import org.eclipse.swt.widgets.Event;
  import org.eclipse.swt.widgets.Listener;
  
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/input/KontoInput.java	2024-02-27 22:58:10.165140375 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/input/KontoInput.java	2024-02-27 22:58:21.895164268 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/input/KontoInput.java	2024-03-06 20:17:15.920680033 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/input/KontoInput.java	2024-03-06 20:17:30.684035085 +0100
 @@ -15,7 +15,7 @@
  import java.util.Date;
  import java.util.List;
@@ -394,8 +449,8 @@
  import org.eclipse.swt.events.DisposeEvent;
  import org.eclipse.swt.events.DisposeListener;
  import org.eclipse.swt.widgets.Control;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/input/UmsatzTypInput.java	2024-02-27 22:58:10.165140375 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/input/UmsatzTypInput.java	2024-02-27 22:58:21.895164268 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/input/UmsatzTypInput.java	2024-03-06 20:17:15.920680033 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/input/UmsatzTypInput.java	2024-03-06 20:17:30.684035085 +0100
 @@ -16,7 +16,7 @@
  import java.util.ArrayList;
  import java.util.List;
@@ -405,8 +460,30 @@
  import org.eclipse.swt.widgets.Event;
  import org.eclipse.swt.widgets.Listener;
  
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/parts/KontoauszugList.java	2024-02-27 22:58:10.165140375 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/parts/KontoauszugList.java	2024-02-27 22:58:21.895164268 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/menus/EmpfaengerList.java	2024-03-06 20:17:15.920680033 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/menus/EmpfaengerList.java	2024-03-06 20:19:06.850843204 +0100
+@@ -11,7 +11,7 @@
+ 
+ import java.rmi.RemoteException;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ 
+ import de.willuhn.jameica.gui.Action;
+ import de.willuhn.jameica.gui.extension.Extendable;
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/menus/KontoList.java	2024-03-06 20:17:15.920680033 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/menus/KontoList.java	2024-03-06 20:19:06.850843204 +0100
+@@ -11,7 +11,7 @@
+ 
+ import java.rmi.RemoteException;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ 
+ import de.willuhn.jameica.gui.Action;
+ import de.willuhn.jameica.gui.extension.Extendable;
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/parts/KontoauszugList.java	2024-03-06 20:17:15.920680033 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/parts/KontoauszugList.java	2024-03-06 20:17:30.684035085 +0100
 @@ -16,7 +16,7 @@
  import java.util.List;
  import java.util.regex.PatternSyntaxException;
@@ -416,8 +493,8 @@
  import org.eclipse.swt.SWT;
  import org.eclipse.swt.events.DisposeEvent;
  import org.eclipse.swt.events.DisposeListener;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/parts/SammelTransferBuchungList.java	2024-02-27 22:58:10.165140375 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/parts/SammelTransferBuchungList.java	2024-02-27 22:58:21.898497608 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/parts/SammelTransferBuchungList.java	2024-03-06 20:17:15.920680033 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/parts/SammelTransferBuchungList.java	2024-03-06 20:17:30.684035085 +0100
 @@ -12,7 +12,7 @@
  
  import java.rmi.RemoteException;
@@ -427,8 +504,8 @@
  import org.eclipse.swt.events.DisposeEvent;
  import org.eclipse.swt.events.DisposeListener;
  import org.eclipse.swt.widgets.Composite;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/views/AbstractUmsatzDetail.java	2024-02-27 22:58:10.168473714 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/gui/views/AbstractUmsatzDetail.java	2024-02-27 22:58:21.898497608 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/views/AbstractUmsatzDetail.java	2024-03-06 20:17:15.920680033 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/gui/views/AbstractUmsatzDetail.java	2024-03-06 20:17:30.684035085 +0100
 @@ -12,7 +12,7 @@
  
  import java.rmi.RemoteException;
@@ -438,8 +515,8 @@
  
  import de.willuhn.jameica.gui.AbstractView;
  import de.willuhn.jameica.gui.GUI;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/HBCIProperties.java	2024-02-27 22:58:10.151807014 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/HBCIProperties.java	2024-02-27 22:58:21.898497608 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/HBCIProperties.java	2024-03-06 20:17:15.910680017 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/HBCIProperties.java	2024-03-06 20:17:30.684035085 +0100
 @@ -17,7 +17,7 @@
  import java.util.Map;
  import java.util.Set;
@@ -449,8 +526,8 @@
  import org.kapott.hbci.manager.BankInfo;
  import org.kapott.hbci.manager.HBCIUtils;
  import org.kapott.hbci.passport.HBCIPassport;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/AbstractSepaExporter.java	2024-02-27 22:58:10.168473714 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/AbstractSepaExporter.java	2024-02-27 22:58:21.898497608 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/AbstractSepaExporter.java	2024-03-06 20:17:15.924013371 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/AbstractSepaExporter.java	2024-03-06 20:17:30.684035085 +0100
 @@ -18,7 +18,7 @@
  import java.util.Properties;
  import java.util.Set;
@@ -460,8 +537,8 @@
  import org.kapott.hbci.GV.generators.ISEPAGenerator;
  import org.kapott.hbci.GV.generators.SEPAGeneratorFactory;
  import org.kapott.hbci.sepa.SepaVersion;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/csv/ProfileUtil.java	2024-02-27 22:58:10.171807055 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/csv/ProfileUtil.java	2024-02-27 22:58:21.898497608 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/csv/ProfileUtil.java	2024-03-06 20:17:15.924013371 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/csv/ProfileUtil.java	2024-03-06 20:17:30.684035085 +0100
 @@ -22,7 +22,7 @@
  import java.util.Collections;
  import java.util.List;
@@ -471,8 +548,8 @@
  
  import de.willuhn.jameica.hbci.HBCI;
  import de.willuhn.jameica.hbci.gui.dialogs.CSVProfileStoreDialog;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/MT940UmsatzExporter.java	2024-02-27 22:58:10.168473714 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/MT940UmsatzExporter.java	2024-02-27 22:58:21.898497608 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/MT940UmsatzExporter.java	2024-03-06 20:17:15.924013371 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/MT940UmsatzExporter.java	2024-03-06 20:17:30.684035085 +0100
 @@ -27,7 +27,7 @@
  import java.util.Locale;
  import java.util.Objects;
@@ -482,8 +559,8 @@
  
  import de.willuhn.datasource.BeanUtil;
  import de.willuhn.io.IOUtil;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/MT940UmsatzExporterMerged.java	2024-02-27 22:58:10.168473714 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/MT940UmsatzExporterMerged.java	2024-02-27 22:58:21.898497608 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/MT940UmsatzExporterMerged.java	2024-03-06 20:17:15.924013371 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/MT940UmsatzExporterMerged.java	2024-03-06 20:17:30.684035085 +0100
 @@ -18,7 +18,7 @@
  import java.util.List;
  import java.util.Objects;
@@ -493,8 +570,8 @@
  
  import de.willuhn.datasource.BeanUtil;
  import de.willuhn.io.IOUtil;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/print/AbstractPrintSupportSepaSammelTransfer.java	2024-02-27 22:58:10.171807055 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/print/AbstractPrintSupportSepaSammelTransfer.java	2024-02-27 22:58:21.898497608 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/print/AbstractPrintSupportSepaSammelTransfer.java	2024-03-06 20:17:15.924013371 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/print/AbstractPrintSupportSepaSammelTransfer.java	2024-03-06 20:17:30.684035085 +0100
 @@ -14,7 +14,7 @@
  import java.util.Date;
  import java.util.List;
@@ -504,8 +581,8 @@
  import org.eclipse.swt.graphics.RGB;
  
  import de.willuhn.jameica.gui.parts.TablePart;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/print/PrintSupportUmsatzList.java	2024-02-27 22:58:10.171807055 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/print/PrintSupportUmsatzList.java	2024-02-27 22:58:21.898497608 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/print/PrintSupportUmsatzList.java	2024-03-06 20:17:15.924013371 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/print/PrintSupportUmsatzList.java	2024-03-06 20:17:30.684035085 +0100
 @@ -18,7 +18,7 @@
  import java.util.List;
  import java.util.Map;
@@ -515,8 +592,8 @@
  import org.eclipse.swt.graphics.RGB;
  
  import de.willuhn.jameica.hbci.HBCI;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/SepaLastschriftExporter.java	2024-02-27 22:58:10.168473714 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/SepaLastschriftExporter.java	2024-02-27 22:58:21.898497608 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/SepaLastschriftExporter.java	2024-03-06 20:17:15.924013371 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/SepaLastschriftExporter.java	2024-03-06 20:17:30.684035085 +0100
 @@ -19,7 +19,7 @@
  import java.util.Properties;
  import java.util.Set;
@@ -526,8 +603,8 @@
  import org.kapott.hbci.GV.SepaUtil;
  import org.kapott.hbci.manager.HBCIUtils;
  import org.kapott.hbci.sepa.SepaVersion.Type;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/SepaLastschriftImporter.java	2024-02-27 22:58:10.168473714 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/SepaLastschriftImporter.java	2024-02-27 22:58:21.898497608 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/SepaLastschriftImporter.java	2024-03-06 20:17:15.924013371 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/SepaLastschriftImporter.java	2024-03-06 20:17:30.684035085 +0100
 @@ -15,7 +15,7 @@
  import java.util.Map;
  import java.util.Properties;
@@ -537,8 +614,8 @@
  import org.kapott.hbci.GV.SepaUtil;
  import org.kapott.hbci.GV.parsers.ISEPAParser;
  import org.kapott.hbci.sepa.SepaVersion;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/SepaSammelLastschriftExporter.java	2024-02-27 22:58:10.168473714 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/SepaSammelLastschriftExporter.java	2024-02-27 22:58:21.898497608 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/SepaSammelLastschriftExporter.java	2024-03-06 20:17:15.924013371 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/SepaSammelLastschriftExporter.java	2024-03-06 20:17:30.684035085 +0100
 @@ -20,7 +20,7 @@
  import java.util.Properties;
  import java.util.Set;
@@ -548,8 +625,8 @@
  import org.kapott.hbci.GV.SepaUtil;
  import org.kapott.hbci.manager.HBCIUtils;
  import org.kapott.hbci.sepa.SepaVersion.Type;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/SepaSammelLastschriftImporter.java	2024-02-27 22:58:10.168473714 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/SepaSammelLastschriftImporter.java	2024-02-27 22:58:21.898497608 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/SepaSammelLastschriftImporter.java	2024-03-06 20:17:15.924013371 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/SepaSammelLastschriftImporter.java	2024-03-06 20:17:30.684035085 +0100
 @@ -16,7 +16,7 @@
  import java.util.Map;
  import java.util.Properties;
@@ -559,8 +636,8 @@
  import org.kapott.hbci.GV.SepaUtil;
  import org.kapott.hbci.GV.parsers.ISEPAParser;
  import org.kapott.hbci.sepa.SepaVersion;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/SepaSammelUeberweisungExporter.java	2024-02-27 22:58:10.168473714 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/SepaSammelUeberweisungExporter.java	2024-02-27 22:58:21.898497608 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/SepaSammelUeberweisungExporter.java	2024-03-06 20:17:15.924013371 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/SepaSammelUeberweisungExporter.java	2024-03-06 20:17:30.684035085 +0100
 @@ -14,7 +14,7 @@
  import java.util.List;
  import java.util.Properties;
@@ -570,8 +647,8 @@
  import org.kapott.hbci.GV.SepaUtil;
  import org.kapott.hbci.manager.HBCIUtils;
  import org.kapott.hbci.sepa.SepaVersion.Type;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/SepaSammelUeberweisungImporter.java	2024-02-27 22:58:10.168473714 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/SepaSammelUeberweisungImporter.java	2024-02-27 22:58:21.898497608 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/SepaSammelUeberweisungImporter.java	2024-03-06 20:17:15.924013371 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/SepaSammelUeberweisungImporter.java	2024-03-06 20:17:30.684035085 +0100
 @@ -16,7 +16,7 @@
  import java.util.Map;
  import java.util.Properties;
@@ -581,8 +658,8 @@
  import org.kapott.hbci.GV.SepaUtil;
  import org.kapott.hbci.GV.parsers.ISEPAParser;
  import org.kapott.hbci.sepa.SepaVersion;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/SepaUeberweisungExporter.java	2024-02-27 22:58:10.168473714 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/SepaUeberweisungExporter.java	2024-02-27 22:58:21.898497608 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/SepaUeberweisungExporter.java	2024-03-06 20:17:15.924013371 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/SepaUeberweisungExporter.java	2024-03-06 20:17:30.684035085 +0100
 @@ -13,7 +13,7 @@
  import java.text.SimpleDateFormat;
  import java.util.Properties;
@@ -592,8 +669,8 @@
  import org.kapott.hbci.GV.SepaUtil;
  import org.kapott.hbci.manager.HBCIUtils;
  import org.kapott.hbci.sepa.SepaVersion.Type;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/SepaUeberweisungImporter.java	2024-02-27 22:58:10.168473714 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/SepaUeberweisungImporter.java	2024-02-27 22:58:21.898497608 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/SepaUeberweisungImporter.java	2024-03-06 20:17:15.924013371 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/SepaUeberweisungImporter.java	2024-03-06 20:17:30.684035085 +0100
 @@ -15,7 +15,7 @@
  import java.util.Map;
  import java.util.Properties;
@@ -603,8 +680,8 @@
  import org.kapott.hbci.GV.SepaUtil;
  import org.kapott.hbci.GV.parsers.ISEPAParser;
  import org.kapott.hbci.sepa.SepaVersion;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/VelocityExporter.java	2024-02-27 22:58:10.168473714 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/VelocityExporter.java	2024-02-27 22:58:21.898497608 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/VelocityExporter.java	2024-03-06 20:17:15.924013371 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/VelocityExporter.java	2024-03-06 20:17:30.684035085 +0100
 @@ -22,7 +22,7 @@
  import java.util.HashMap;
  import java.util.Map;
@@ -614,8 +691,8 @@
  import org.apache.velocity.Template;
  import org.apache.velocity.VelocityContext;
  import org.apache.velocity.app.VelocityEngine;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/ZUGFeRDImporter.java	2024-02-27 22:58:10.168473714 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/io/ZUGFeRDImporter.java	2024-02-27 22:58:21.898497608 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/ZUGFeRDImporter.java	2024-03-06 20:17:15.924013371 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/io/ZUGFeRDImporter.java	2024-03-06 20:17:30.684035085 +0100
 @@ -16,7 +16,7 @@
  import java.util.Date;
  import java.util.List;
@@ -625,8 +702,8 @@
  
  import de.willuhn.jameica.hbci.HBCI;
  import de.willuhn.jameica.hbci.Settings;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/messaging/CheckOfflineUmsatzMessageConsumer.java	2024-02-27 22:58:10.171807055 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/messaging/CheckOfflineUmsatzMessageConsumer.java	2024-02-27 22:58:21.898497608 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/messaging/CheckOfflineUmsatzMessageConsumer.java	2024-03-06 20:17:15.924013371 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/messaging/CheckOfflineUmsatzMessageConsumer.java	2024-03-06 20:17:30.684035085 +0100
 @@ -10,7 +10,7 @@
  
  package de.willuhn.jameica.hbci.messaging;
@@ -636,8 +713,8 @@
  
  import de.willuhn.datasource.GenericObject;
  import de.willuhn.jameica.hbci.HBCI;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/messaging/NeueUmsaetze.java	2024-02-27 22:58:10.171807055 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/messaging/NeueUmsaetze.java	2024-02-27 23:02:50.812368561 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/messaging/NeueUmsaetze.java	2024-03-06 20:17:15.924013371 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/messaging/NeueUmsaetze.java	2024-03-06 20:17:30.684035085 +0100
 @@ -20,7 +20,7 @@
  import java.util.TimerTask;
  import java.util.function.Function;
@@ -647,8 +724,8 @@
  import org.eclipse.swt.widgets.Event;
  import org.eclipse.swt.widgets.Listener;
  
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/passports/ddv/Controller.java	2024-02-27 22:58:10.171807055 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/passports/ddv/Controller.java	2024-02-27 22:58:21.898497608 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/passports/ddv/Controller.java	2024-03-06 20:17:15.924013371 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/passports/ddv/Controller.java	2024-03-06 20:17:30.687368423 +0100
 @@ -18,7 +18,7 @@
  import javax.smartcardio.CardTerminals;
  import javax.smartcardio.TerminalFactory;
@@ -658,8 +735,8 @@
  import org.eclipse.swt.widgets.Event;
  import org.eclipse.swt.widgets.Listener;
  import org.kapott.hbci.callback.HBCICallback;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/passports/ddv/DDVConfigFactory.java	2024-02-27 22:58:10.171807055 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/passports/ddv/DDVConfigFactory.java	2024-02-27 22:58:21.898497608 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/passports/ddv/DDVConfigFactory.java	2024-03-06 20:17:15.924013371 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/passports/ddv/DDVConfigFactory.java	2024-03-06 20:17:30.687368423 +0100
 @@ -22,7 +22,7 @@
  import javax.smartcardio.CardTerminals;
  import javax.smartcardio.TerminalFactory;
@@ -669,8 +746,8 @@
  import org.kapott.hbci.manager.HBCIUtils;
  import org.kapott.hbci.passport.AbstractHBCIPassport;
  import org.kapott.hbci.passport.HBCIPassportChipcard;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/passports/pintan/ChipTANDialog.java	2024-02-27 22:58:10.171807055 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/passports/pintan/ChipTANDialog.java	2024-02-27 22:58:21.898497608 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/passports/pintan/ChipTANDialog.java	2024-03-06 20:17:15.927346709 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/passports/pintan/ChipTANDialog.java	2024-03-06 20:17:30.687368423 +0100
 @@ -12,7 +12,7 @@
  import java.rmi.RemoteException;
  import java.util.concurrent.atomic.AtomicBoolean;
@@ -680,8 +757,19 @@
  import org.eclipse.swt.SWT;
  import org.eclipse.swt.events.DisposeEvent;
  import org.eclipse.swt.events.DisposeListener;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/passports/pintan/server/PassportHandleImpl.java	2024-02-27 22:58:10.171807055 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/passports/pintan/server/PassportHandleImpl.java	2024-02-27 22:58:21.901830948 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/passports/pintan/PinTanMigrationService.java	2024-03-06 20:17:15.927346709 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/passports/pintan/PinTanMigrationService.java	2024-03-06 20:19:06.847509866 +0100
+@@ -15,7 +15,7 @@
+ 
+ import javax.annotation.PostConstruct;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ import org.kapott.hbci.manager.BankInfo;
+ import org.kapott.hbci.manager.HBCIUtils;
+ 
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/passports/pintan/server/PassportHandleImpl.java	2024-03-06 20:17:15.927346709 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/passports/pintan/server/PassportHandleImpl.java	2024-03-06 20:17:30.687368423 +0100
 @@ -13,7 +13,7 @@
  import java.rmi.server.UnicastRemoteObject;
  import java.util.ArrayList;
@@ -691,8 +779,8 @@
  import org.kapott.hbci.callback.HBCICallback;
  import org.kapott.hbci.manager.HBCIHandler;
  import org.kapott.hbci.manager.HBCIVersion;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/passports/pintan/server/PinTanConfigImpl.java	2024-02-27 22:58:10.175140395 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/passports/pintan/server/PinTanConfigImpl.java	2024-02-27 22:58:21.901830948 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/passports/pintan/server/PinTanConfigImpl.java	2024-03-06 20:17:15.927346709 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/passports/pintan/server/PinTanConfigImpl.java	2024-03-06 20:17:30.687368423 +0100
 @@ -16,7 +16,7 @@
  import java.util.Arrays;
  import java.util.List;
@@ -702,8 +790,8 @@
  import org.kapott.hbci.manager.HBCIVersion;
  import org.kapott.hbci.passport.HBCIPassport;
  
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/passports/pintan/SmartCardUtil.java	2024-02-27 22:58:10.171807055 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/passports/pintan/SmartCardUtil.java	2024-02-27 23:02:50.812368561 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/passports/pintan/SmartCardUtil.java	2024-03-06 20:17:15.927346709 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/passports/pintan/SmartCardUtil.java	2024-03-06 20:17:30.687368423 +0100
 @@ -17,7 +17,7 @@
  import javax.smartcardio.CardTerminals;
  import javax.smartcardio.TerminalFactory;
@@ -713,8 +801,8 @@
  import org.kapott.hbci.smartcardio.ChipTanCardService;
  import org.kapott.hbci.smartcardio.SmartCardService;
  
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/passports/pintan/TANDialog.java	2024-02-27 22:58:10.171807055 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/passports/pintan/TANDialog.java	2024-02-27 22:58:21.901830948 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/passports/pintan/TANDialog.java	2024-03-06 20:17:15.927346709 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/passports/pintan/TANDialog.java	2024-03-06 20:17:30.687368423 +0100
 @@ -12,7 +12,7 @@
  import java.rmi.RemoteException;
  import java.util.Date;
@@ -724,8 +812,8 @@
  import org.eclipse.swt.SWT;
  import org.eclipse.swt.custom.StyledText;
  import org.eclipse.swt.events.KeyAdapter;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/reminder/ReminderStorageProviderHibiscus.java	2024-02-27 22:58:10.175140395 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/reminder/ReminderStorageProviderHibiscus.java	2024-02-27 22:58:21.901830948 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/reminder/ReminderStorageProviderHibiscus.java	2024-03-06 20:17:15.927346709 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/reminder/ReminderStorageProviderHibiscus.java	2024-03-06 20:17:30.687368423 +0100
 @@ -16,7 +16,7 @@
  import java.util.ArrayList;
  import java.util.List;
@@ -735,8 +823,8 @@
  
  import de.willuhn.annotation.Lifecycle;
  import de.willuhn.annotation.Lifecycle.Type;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/rmi/PurposeCode.java	2024-02-27 22:58:10.141806994 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/rmi/PurposeCode.java	2024-02-27 22:58:21.901830948 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/rmi/PurposeCode.java	2024-03-06 20:17:15.904013341 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/rmi/PurposeCode.java	2024-03-06 20:17:30.687368423 +0100
 @@ -13,7 +13,7 @@
  import java.util.ArrayList;
  import java.util.List;
@@ -746,8 +834,8 @@
  
  import de.willuhn.jameica.hbci.HBCI;
  import de.willuhn.jameica.system.Application;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/search/UmsatzSearchProvider.java	2024-02-27 22:58:10.145140334 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/search/UmsatzSearchProvider.java	2024-02-27 23:02:50.812368561 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/search/UmsatzSearchProvider.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/search/UmsatzSearchProvider.java	2024-03-06 20:17:30.687368423 +0100
 @@ -15,7 +15,7 @@
  import java.util.Date;
  import java.util.List;
@@ -757,8 +845,8 @@
  
  import de.willuhn.datasource.rmi.DBIterator;
  import de.willuhn.jameica.hbci.HBCI;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/AbstractHibiscusTransferImpl.java	2024-02-27 22:58:10.145140334 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/AbstractHibiscusTransferImpl.java	2024-02-27 22:58:21.901830948 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/AbstractHibiscusTransferImpl.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/AbstractHibiscusTransferImpl.java	2024-03-06 20:17:30.687368423 +0100
 @@ -11,7 +11,7 @@
  
  import java.rmi.RemoteException;
@@ -768,8 +856,8 @@
  
  import de.willuhn.datasource.rmi.DBObject;
  import de.willuhn.jameica.hbci.HBCI;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/AbstractSammelTransferBuchungImpl.java	2024-02-27 22:58:10.145140334 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/AbstractSammelTransferBuchungImpl.java	2024-02-27 22:58:21.901830948 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/AbstractSammelTransferBuchungImpl.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/AbstractSammelTransferBuchungImpl.java	2024-03-06 20:17:30.687368423 +0100
 @@ -11,7 +11,7 @@
  
  import java.rmi.RemoteException;
@@ -779,8 +867,8 @@
  
  import de.willuhn.jameica.hbci.HBCI;
  import de.willuhn.jameica.hbci.HBCIProperties;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/AbstractSepaSammelTransferBuchungImpl.java	2024-02-27 22:58:10.145140334 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/AbstractSepaSammelTransferBuchungImpl.java	2024-02-27 22:58:21.901830948 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/AbstractSepaSammelTransferBuchungImpl.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/AbstractSepaSammelTransferBuchungImpl.java	2024-03-06 20:17:30.687368423 +0100
 @@ -11,7 +11,7 @@
  
  import java.rmi.RemoteException;
@@ -790,8 +878,8 @@
  
  import de.willuhn.jameica.hbci.HBCI;
  import de.willuhn.jameica.hbci.HBCIProperties;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/AddressbookHibiscusImpl.java	2024-02-27 22:58:10.145140334 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/AddressbookHibiscusImpl.java	2024-02-27 22:58:21.901830948 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/AddressbookHibiscusImpl.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/AddressbookHibiscusImpl.java	2024-03-06 20:17:30.687368423 +0100
 @@ -15,7 +15,7 @@
  import java.util.ArrayList;
  import java.util.List;
@@ -801,8 +889,8 @@
  import org.kapott.hbci.manager.HBCIUtils;
  
  import de.jost_net.OBanToo.SEPA.IBAN;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/AuslandsUeberweisungImpl.java	2024-02-27 22:58:10.145140334 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/AuslandsUeberweisungImpl.java	2024-02-27 22:58:21.901830948 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/AuslandsUeberweisungImpl.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/AuslandsUeberweisungImpl.java	2024-03-06 20:17:30.687368423 +0100
 @@ -12,7 +12,7 @@
  import java.rmi.RemoteException;
  import java.util.Date;
@@ -812,8 +900,8 @@
  
  import de.willuhn.jameica.hbci.HBCI;
  import de.willuhn.jameica.hbci.HBCIProperties;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/Converter.java	2024-02-27 22:58:10.145140334 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/Converter.java	2024-02-27 22:58:21.901830948 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/Converter.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/Converter.java	2024-03-06 20:17:30.687368423 +0100
 @@ -16,7 +16,7 @@
  import java.util.Date;
  import java.util.Map;
@@ -823,8 +911,8 @@
  import org.kapott.hbci.GV_Result.GVRDauerList;
  import org.kapott.hbci.GV_Result.GVRKUms;
  import org.kapott.hbci.GV_Result.GVRKUms.UmsLine;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/DBPropertyUtil.java	2024-02-27 22:58:10.145140334 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/DBPropertyUtil.java	2024-02-27 22:58:21.901830948 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/DBPropertyUtil.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/DBPropertyUtil.java	2024-03-06 20:17:30.687368423 +0100
 @@ -22,7 +22,7 @@
  import java.util.concurrent.Callable;
  import java.util.concurrent.TimeUnit;
@@ -834,8 +922,8 @@
  
  import com.google.common.cache.Cache;
  import com.google.common.cache.CacheBuilder;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/DBReminderImpl.java	2024-02-27 22:58:10.145140334 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/DBReminderImpl.java	2024-02-27 22:58:21.901830948 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/DBReminderImpl.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/DBReminderImpl.java	2024-03-06 20:17:30.687368423 +0100
 @@ -16,7 +16,7 @@
  import java.io.ByteArrayOutputStream;
  import java.rmi.RemoteException;
@@ -845,8 +933,8 @@
  
  import de.willuhn.jameica.hbci.HBCI;
  import de.willuhn.jameica.hbci.rmi.DBReminder;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/hbci/HBCIContext.java	2024-02-27 22:58:10.148473674 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/hbci/HBCIContext.java	2024-02-27 22:58:21.901830948 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/hbci/HBCIContext.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/hbci/HBCIContext.java	2024-03-06 20:17:30.687368423 +0100
 @@ -10,7 +10,7 @@
  
  package de.willuhn.jameica.hbci.server.hbci;
@@ -856,8 +944,8 @@
  
  import de.willuhn.datasource.rmi.DBObject;
  import de.willuhn.jameica.hbci.HBCI;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/hbci/HBCISepaDauerauftragDeleteJob.java	2024-02-27 22:58:10.148473674 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/hbci/HBCISepaDauerauftragDeleteJob.java	2024-02-27 22:58:21.901830948 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/hbci/HBCISepaDauerauftragDeleteJob.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/hbci/HBCISepaDauerauftragDeleteJob.java	2024-03-06 20:17:30.687368423 +0100
 @@ -13,7 +13,7 @@
  import java.util.Date;
  import java.util.Properties;
@@ -867,8 +955,8 @@
  import org.kapott.hbci.GV.HBCIJob;
  
  import de.willuhn.jameica.hbci.HBCIProperties;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/hbci/HBCISepaDauerauftragListJob.java	2024-02-27 22:58:10.148473674 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/hbci/HBCISepaDauerauftragListJob.java	2024-02-27 22:58:21.901830948 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/hbci/HBCISepaDauerauftragListJob.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/hbci/HBCISepaDauerauftragListJob.java	2024-03-06 20:17:30.687368423 +0100
 @@ -13,7 +13,7 @@
  import java.util.HashMap;
  import java.util.Map;
@@ -878,8 +966,8 @@
  import org.kapott.hbci.GV_Result.GVRDauerList;
  import org.kapott.hbci.GV_Result.GVRDauerList.Dauer;
  
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/hbci/HBCISepaDauerauftragStoreJob.java	2024-02-27 22:58:10.148473674 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/hbci/HBCISepaDauerauftragStoreJob.java	2024-02-27 22:58:21.901830948 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/hbci/HBCISepaDauerauftragStoreJob.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/hbci/HBCISepaDauerauftragStoreJob.java	2024-03-06 20:17:30.687368423 +0100
 @@ -13,7 +13,7 @@
  import java.util.Date;
  import java.util.Properties;
@@ -889,8 +977,8 @@
  import org.kapott.hbci.GV.HBCIJob;
  import org.kapott.hbci.GV_Result.GVRDauerEdit;
  import org.kapott.hbci.GV_Result.GVRDauerNew;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/hbci/HBCISepaLastschriftJob.java	2024-02-27 22:58:10.148473674 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/hbci/HBCISepaLastschriftJob.java	2024-02-27 22:58:21.901830948 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/hbci/HBCISepaLastschriftJob.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/hbci/HBCISepaLastschriftJob.java	2024-03-06 20:17:30.687368423 +0100
 @@ -12,7 +12,7 @@
  import java.rmi.RemoteException;
  import java.util.Date;
@@ -900,8 +988,8 @@
  import org.kapott.hbci.GV_Result.AbstractGVRLastSEPA;
  
  import de.willuhn.datasource.rmi.ObjectNotFoundException;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/hbci/HBCISepaSammelLastschriftJob.java	2024-02-27 22:58:10.148473674 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/hbci/HBCISepaSammelLastschriftJob.java	2024-02-27 22:58:21.901830948 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/hbci/HBCISepaSammelLastschriftJob.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/hbci/HBCISepaSammelLastschriftJob.java	2024-03-06 20:17:30.687368423 +0100
 @@ -14,7 +14,7 @@
  import java.util.Date;
  import java.util.List;
@@ -911,8 +999,8 @@
  
  import de.willuhn.datasource.rmi.ObjectNotFoundException;
  import de.willuhn.jameica.hbci.MetaKey;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/hbci/HBCIUmsatzJob.java	2024-02-27 22:58:10.148473674 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/hbci/HBCIUmsatzJob.java	2024-02-27 22:58:21.901830948 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/hbci/HBCIUmsatzJob.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/hbci/HBCIUmsatzJob.java	2024-03-06 20:17:30.690701761 +0100
 @@ -24,7 +24,7 @@
  import java.util.List;
  import java.util.Map;
@@ -922,8 +1010,8 @@
  import org.kapott.hbci.GV_Result.GVRKUms;
  import org.kapott.hbci.GV_Result.GVRKUms.UmsLine;
  import org.kapott.hbci.comm.Comm;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/InstantPaymentStatus.java	2024-02-27 22:58:10.145140334 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/InstantPaymentStatus.java	2024-02-27 22:58:21.901830948 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/InstantPaymentStatus.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/InstantPaymentStatus.java	2024-03-06 20:17:30.690701761 +0100
 @@ -10,7 +10,7 @@
  
  package de.willuhn.jameica.hbci.server;
@@ -933,8 +1021,8 @@
  
  import de.willuhn.jameica.hbci.HBCI;
  import de.willuhn.jameica.system.Application;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/KontoauszugPdfUtil.java	2024-02-27 22:58:10.145140334 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/KontoauszugPdfUtil.java	2024-02-27 22:58:21.905164289 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/KontoauszugPdfUtil.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/KontoauszugPdfUtil.java	2024-03-06 20:17:30.690701761 +0100
 @@ -24,8 +24,8 @@
  import java.util.List;
  import java.util.Map;
@@ -946,8 +1034,8 @@
  import org.kapott.hbci.GV_Result.GVRKontoauszug.Format;
  
  import de.willuhn.datasource.GenericIterator;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/KontoImpl.java	2024-02-27 22:58:10.145140334 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/KontoImpl.java	2024-02-27 22:58:21.905164289 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/KontoImpl.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/KontoImpl.java	2024-03-06 20:17:30.690701761 +0100
 @@ -15,7 +15,7 @@
  import java.util.Date;
  import java.util.zip.CRC32;
@@ -957,8 +1045,8 @@
  
  import de.willuhn.datasource.rmi.DBIterator;
  import de.willuhn.datasource.rmi.ResultSetExtractor;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/KontoUtil.java	2024-02-27 22:58:10.145140334 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/KontoUtil.java	2024-02-27 22:58:21.905164289 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/KontoUtil.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/KontoUtil.java	2024-03-06 20:17:30.690701761 +0100
 @@ -17,7 +17,7 @@
  import java.util.Date;
  import java.util.List;
@@ -968,8 +1056,8 @@
  
  import de.willuhn.datasource.rmi.DBIterator;
  import de.willuhn.datasource.rmi.DBService;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/SepaDauerauftragImpl.java	2024-02-27 22:58:10.148473674 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/SepaDauerauftragImpl.java	2024-02-27 22:58:21.905164289 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/SepaDauerauftragImpl.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/SepaDauerauftragImpl.java	2024-03-06 20:17:30.690701761 +0100
 @@ -13,7 +13,7 @@
  import java.util.Date;
  import java.util.zip.CRC32;
@@ -979,8 +1067,8 @@
  
  import de.willuhn.jameica.hbci.HBCI;
  import de.willuhn.jameica.hbci.HBCIProperties;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/SepaLastschriftImpl.java	2024-02-27 22:58:10.148473674 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/SepaLastschriftImpl.java	2024-02-27 22:58:21.905164289 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/SepaLastschriftImpl.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/SepaLastschriftImpl.java	2024-03-06 20:17:30.690701761 +0100
 @@ -13,7 +13,7 @@
  import java.util.Date;
  import java.util.List;
@@ -990,8 +1078,8 @@
  
  import de.willuhn.jameica.hbci.HBCI;
  import de.willuhn.jameica.hbci.HBCIProperties;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/UmsatzImpl.java	2024-02-27 22:58:10.148473674 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/UmsatzImpl.java	2024-02-27 22:58:21.905164289 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/UmsatzImpl.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/UmsatzImpl.java	2024-03-06 20:17:30.690701761 +0100
 @@ -14,7 +14,7 @@
  import java.util.Iterator;
  import java.util.zip.CRC32;
@@ -1001,8 +1089,8 @@
  
  import de.willuhn.datasource.GenericObject;
  import de.willuhn.datasource.rmi.DBIterator;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/UmsatzTypBean.java	2024-02-27 22:58:10.148473674 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/UmsatzTypBean.java	2024-02-27 22:58:21.905164289 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/UmsatzTypBean.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/UmsatzTypBean.java	2024-03-06 20:17:30.690701761 +0100
 @@ -14,7 +14,7 @@
  import java.util.LinkedList;
  import java.util.List;
@@ -1012,8 +1100,8 @@
  
  import de.willuhn.datasource.BeanUtil;
  import de.willuhn.datasource.GenericIterator;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/UmsatzTypImpl.java	2024-02-27 22:58:10.148473674 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/UmsatzTypImpl.java	2024-02-27 22:58:21.905164289 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/UmsatzTypImpl.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/UmsatzTypImpl.java	2024-03-06 20:17:30.690701761 +0100
 @@ -20,7 +20,7 @@
  import java.util.regex.Pattern;
  import java.util.regex.PatternSyntaxException;
@@ -1023,8 +1111,8 @@
  
  import de.willuhn.datasource.GenericIterator;
  import de.willuhn.datasource.GenericObjectNode;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/UmsatzTypUtil.java	2024-02-27 22:58:10.148473674 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/UmsatzTypUtil.java	2024-02-27 22:58:21.905164289 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/UmsatzTypUtil.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/UmsatzTypUtil.java	2024-03-06 20:17:30.690701761 +0100
 @@ -17,7 +17,7 @@
  import java.util.List;
  import java.util.regex.PatternSyntaxException;
@@ -1034,8 +1122,8 @@
  
  import de.willuhn.datasource.BeanUtil;
  import de.willuhn.datasource.GenericIterator;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/UmsatzUtil.java	2024-02-27 22:58:10.148473674 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/UmsatzUtil.java	2024-02-27 22:58:21.905164289 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/UmsatzUtil.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/UmsatzUtil.java	2024-03-06 20:17:30.690701761 +0100
 @@ -19,7 +19,7 @@
  import java.util.Date;
  import java.util.List;
@@ -1045,8 +1133,8 @@
  
  import de.willuhn.datasource.rmi.DBIterator;
  import de.willuhn.datasource.rmi.ResultSetExtractor;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/VerwendungszweckUtil.java	2024-02-27 22:58:10.148473674 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/server/VerwendungszweckUtil.java	2024-02-27 22:58:21.905164289 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/VerwendungszweckUtil.java	2024-03-06 20:17:15.907346679 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/server/VerwendungszweckUtil.java	2024-03-06 20:17:30.690701761 +0100
 @@ -17,7 +17,7 @@
  import java.util.List;
  import java.util.Map;
@@ -1056,8 +1144,8 @@
  
  import de.willuhn.jameica.hbci.HBCI;
  import de.willuhn.jameica.hbci.HBCIProperties;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/synchronize/scripting/ScriptingSynchronizeBackend.java	2024-02-27 22:58:10.151807014 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/synchronize/scripting/ScriptingSynchronizeBackend.java	2024-02-27 22:58:21.905164289 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/synchronize/scripting/ScriptingSynchronizeBackend.java	2024-03-06 20:17:15.910680017 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/synchronize/scripting/ScriptingSynchronizeBackend.java	2024-03-06 20:17:30.690701761 +0100
 @@ -17,7 +17,7 @@
  
  import javax.annotation.Resource;
@@ -1067,8 +1155,8 @@
  
  import de.willuhn.annotation.Lifecycle;
  import de.willuhn.annotation.Lifecycle.Type;
---- hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/synchronize/SynchronizeEngine.java	2024-02-27 22:58:10.148473674 +0100
-+++ hibiscus-V_2_10_16_BUILD_380/src/de/willuhn/jameica/hbci/synchronize/SynchronizeEngine.java	2024-02-27 22:58:21.905164289 +0100
+--- hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/synchronize/SynchronizeEngine.java	2024-03-06 20:17:15.910680017 +0100
++++ hibiscus-V_2_10_17_BUILD_381/src/de/willuhn/jameica/hbci/synchronize/SynchronizeEngine.java	2024-03-06 20:17:30.690701761 +0100
 @@ -16,7 +16,7 @@
  import java.util.LinkedList;
  import java.util.List;
