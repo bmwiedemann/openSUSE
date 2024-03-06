@@ -76,12 +76,12 @@ BuildRequires:  %{python_module altair}
 BuildRequires:  %{python_module asyncio}
 BuildRequires:  %{python_module diskcache}
 BuildRequires:  %{python_module folium}
-BuildRequires:  %{python_module holoviews >= 1.16.0}
-BuildRequires:  %{python_module ipympl}
-BuildRequires:  %{python_module ipython >= 7.0}
+BuildRequires:  %{python_module holoviews >= 1.16.0 if %python-base >= 3.10}
+BuildRequires:  %{python_module ipympl if %python-base >= 3.10}
+BuildRequires:  %{python_module ipython >= 7.0 if %python-base >= 3.10}
 BuildRequires:  %{python_module panel = %{version}}
 BuildRequires:  %{python_module parameterized}
-BuildRequires:  %{python_module plotly >= 4.0}
+BuildRequires:  %{python_module plotly >= 4.0 if %python-base >= 3.10}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-xdist}
