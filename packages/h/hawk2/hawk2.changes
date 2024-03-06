@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 06 09:53:44 UTC 2024 - aburlakov@suse.com
+
+- Update to version 2.6.4+git.1709557109.3388d243:
+  * Update sanity check for passwd existance (bsc#1220891)
+  * Update validation for the newer versions of rails (bsc#1220890)
+  * Enable HttpOnly secure flag by default (bsc#1216508)
+  * Enforse CSRF in errors_controller.rb (bsc#1216571)
+  * Enable ACL (bsc#1219548)
+  * Fix mime type issue in MS windows (bsc#1215438)
+  * Parametrize CORS Access-Control-Allow-Origin header (bsc#1213454)
+
+-------------------------------------------------------------------
 Thu Feb 15 13:12:09 UTC 2024 - Aleksei Burlakov <aburlakov@suse.com>
 
 - Update the ruby version from 3.2 to 3.3
