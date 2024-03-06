@@ -131,16 +131,18 @@ Requires:       apache-commons-logging
 Requires:       apache-commons-pool2
 Requires:       jakarta-servlet
 Requires:       java >= %{java_version}
-Requires(post): %fillup_prereq
-Requires(post): libxslt-tools
-Requires(pre):  shadow
 Requires:       libtcnative-1-0 >= 1.2.38
 Requires:       logrotate
+Requires(post): %fillup_prereq
+Requires(post): libxslt-tools
+# for runuser
+Requires(post): util-linux
+Requires(pre):  shadow
 %systemd_ordering
-BuildArch:      noarch
 Conflicts:      %{app_name}
 Provides:       group(tomcat)
 Provides:       user(tomcat)
+BuildArch:      noarch
 
 %description
 Tomcat is the servlet container that is used in the official Reference
@@ -155,6 +157,8 @@ Summary:        The host manager and manager web applications for Apache Tomcat
 Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}-%{release}
 Requires(post): libxslt-tools
+# for runuser
+Requires(post): util-linux
 Conflicts:      %{app_name}-admin-webapps
 
 %description admin-webapps
@@ -173,6 +177,8 @@ Summary:        The "docs" web application for Apache Tomcat
 Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}-%{release}
 Requires(post): libxslt-tools
+# for runuser
+Requires(post): util-linux
 Conflicts:      %{app_name}-docs-webapp
 
 %description docs-webapp
@@ -183,12 +189,12 @@ Summary:        Expression Language v%{elspec} API
 Group:          Development/Libraries/Java
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
+Conflicts:      %{app_name}-el-3_0-api < %{version}
 Provides:       %{app_name}-el-%{elspec}-api = %{version}-%{release}
 Provides:       el_%{elspec_major}_%{elspec_minor}_api = %{version}-%{release}
 Provides:       el_api = %{elspec}
 Obsoletes:      %{app_name}-el-2_2-api < %{version}
 Obsoletes:      el_api < %{elspec}
-Conflicts:      %{app_name}-el-3_0-api < %{version}
 
 %description el-%{elspec_major}_%{elspec_minor}-api
 Expression Language API version %{elspec}.
@@ -196,8 +202,8 @@ Expression Language API version %{elspec}.
 %package doc
 Summary:        Javadoc generated documentation for Apache Tomcat
 Group:          Documentation/HTML
-BuildArch:      noarch
 Conflicts:      %{app_name}-javadoc
+BuildArch:      noarch
 
 %description doc
 Javadoc generated documentation files for Apache Tomcat.
@@ -207,12 +213,12 @@ Summary:        Apache Tomcat JSP API implementation classes
 Group:          Productivity/Networking/Web/Servers
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Conflicts:      %{app_name}-jsp-2_3-api < %{version}
 Provides:       %{app_name}-jsp-%{jspspec}-api
 Provides:       jsp = %{jspspec}
 Provides:       jsp%{jspspec_major}%{jspspec_minor}
 Obsoletes:      %{app_name}-jsp-2_2-api < %{version}
 Obsoletes:      jsp < %{jspspec}
-Conflicts:      %{app_name}-jsp-2_3-api < %{version}
 
 %description jsp-%{jspspec_major}_%{jspspec_minor}-api
 Apache Tomcat JSP API implementation classes version %{jspspec}
@@ -222,8 +228,8 @@ Summary:        Apache jsvc wrapper for Apache Tomcat as separate service
 Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}-%{release}
 Requires:       apache-commons-daemon-jsvc
-%systemd_ordering
 Conflicts:      %{app_name}-jsvc
+%systemd_ordering
 
 %description jsvc
 Systemd service and wrapper scripts to start tomcat with jsvc,
@@ -239,9 +245,9 @@ Requires:       %{app_name}-servlet-%{servletspec}-api = %{version}-%{release}
 Requires:       mvn(org.apache.tomcat:tomcat-websocket-client-api)
 Requires(post): ecj >= 4.4
 Requires(preun): coreutils
+Conflicts:      %{app_name}-lib
 Provides:       jakarta-commons-dbcp-tomcat5 = 1.4
 Obsoletes:      jakarta-commons-dbcp-tomcat5 < 1.4
-Conflicts:      %{app_name}-lib
 
 %description lib
 Libraries required to successfully run the Tomcat Web container
@@ -251,6 +257,7 @@ Summary:        Apache Tomcat Servlet API implementation classes
 Group:          Productivity/Networking/Web/Servers
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Conflicts:      %{app_name}-servlet-4_0-api < %{version}
 Provides:       %{app_name}-servlet-%{servletspec}-api = %{version}-%{release}
 Provides:       servlet = %{servletspec}
 Provides:       servlet11
@@ -258,7 +265,6 @@ Provides:       servlet60
 Obsoletes:      %{app_name}-servlet-3_0-api < %{version}
 Obsoletes:      %{app_name}-servlet-3_1-api < %{version}
 Obsoletes:      servlet < %{servletspec}
-Conflicts:      %{app_name}-servlet-4_0-api < %{version}
 
 %description servlet-%{servletspec_major}_%{servletspec_minor}-api
 Apache Tomcat Servlet API implementation classes version %{servletspec}
@@ -269,6 +275,8 @@ Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}-%{release}
 Requires:       jakarta-taglibs-standard >= 1.1
 Requires(post): libxslt-tools
+# for runuser
+Requires(post): util-linux
 Conflicts:      %{app_name}-webapps
 
 %description webapps
