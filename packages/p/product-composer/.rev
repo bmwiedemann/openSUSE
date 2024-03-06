@@ -48,4 +48,21 @@
   - support basic iso generation, not for bootable images yet</comment>
     <requestid>1149811</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>08c4379f3d441dda9a45910dcd094615</srcmd5>
+    <version>0.4.0</version>
+    <time>1709762803</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.4.0
+  Replacement of susedata tool, first part
+  
+  - Add supportstatus
+  - Add gpg trusted keys
+  - switch to SHA512 checksum
+  
+  Missing:
+  - diskusage data
+  - package translations</comment>
+    <requestid>1155607</requestid>
+  </revision>
 </revisionlist>

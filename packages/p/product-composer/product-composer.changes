@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar  6 15:11:10 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.4.0
+  Replacement of susedata tool, first part
+  
+  - Add supportstatus
+  - Add gpg trusted keys
+  - switch to SHA512 checksum
+  
+  Missing:
+  - diskusage data
+  - package translations
+
+-------------------------------------------------------------------
 Fri Feb 23 10:58:49 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.3.4
