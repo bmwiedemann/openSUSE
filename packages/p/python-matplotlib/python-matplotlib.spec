@@ -89,7 +89,7 @@ BuildRequires:  %{python_module matplotlib-cairo = %{version}}
 BuildRequires:  %{python_module matplotlib-gtk3 = %{version}}
 BuildRequires:  %{python_module matplotlib-gtk4 = %{version}}
 %if 0%{?suse_version} > 1500
-BuildRequires:  %{python_module matplotlib-nbagg = %{version}}
+BuildRequires:  %{python_module matplotlib-nbagg = %{version} if %python-base >= 3.10}
 %endif
 BuildRequires:  %{python_module matplotlib-qt5 = %{version}}
 BuildRequires:  %{python_module matplotlib-testdata = %{version}}
@@ -115,8 +115,8 @@ BuildRequires:  %{python_module cairocffi >= 0.8}
 # /SECTION cairo
 # SECTION nbagg backend tests
 %if !%{with ringdisabled} && 0%{?suse_version} > 1500
-BuildRequires:  %{python_module nbconvert}
-BuildRequires:  %{python_module nbformat}
+BuildRequires:  %{python_module nbconvert if %python-base >= 3.10}
+BuildRequires:  %{python_module nbformat if %python-base >= 3.10}
 %endif
 # /SECTION nbagg
 # SECTION qt backends: Only test PyQt5 in Minimal-X
@@ -179,7 +179,7 @@ Requires:       python-gobject-cairo
 This package provides code common for the GTK3 and GTK4 backends
 for the %{name} plotting package
 
-%if 0%{?suse_version} > 1500
+
 %package        nbagg
 Summary:        Jupyter nbagg backend for %{name}
 Requires:       %{name} = %{version}
@@ -188,7 +188,6 @@ Requires:       python-ipykernel
 %description    nbagg
 This package includes the Jupyter notebook backend
 for the %{name} plotting package
-%endif
 
 %package        latex
 Summary:        Allow rendering latex in %{name}
@@ -461,7 +460,7 @@ $python -m pytest --pyargs matplotlib.tests \
 %{python_sitearch}/matplotlib/backends/_backend_gtk.py
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/_backend_gtk.*.py*
 
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 && 0%{?python_version_nodots} >= 310
 %files %{python_files nbagg}
 %license LICENSE/
 %license doc/users/project/license.rst

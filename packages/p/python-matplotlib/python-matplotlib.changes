@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  5 18:06:28 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Don't build nbagg for python39: ipython not available anymore
+
+-------------------------------------------------------------------
 Fri Feb 23 07:40:01 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Disable nbagg and wx plugin on Leap15/SLE15
