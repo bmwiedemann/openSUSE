@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  5 18:22:42 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Actually run the correct tests
+- Fix the fdupes call
+- Add 0001-Remove-calls-to-the-deprecated-method-assertEquals.patch
+
+-------------------------------------------------------------------
 Sat Jan  7 23:24:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.5:

@@ -1,0 +1,65 @@
+From 1ead9028fc63ae3ec6ea3b0c438e6ed088a2b20e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jaime=20Marqui=CC=81nez=20Ferra=CC=81ndiz?=
+ <jaime.marquinez.ferrandiz@fastmail.net>
+Date: Tue, 5 Mar 2024 19:14:30 +0100
+Subject: [PATCH] Remove calls to the deprecated method "assertEquals"
+Reference: https://github.com/sdgathman/pymilter/pull/57
+
+It has been removed in python 3.12
+---
+ testsample.py | 6 +++---
+ testutils.py  | 4 ++--
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/testsample.py b/testsample.py
+index 100d1a6..70222bf 100644
+--- a/testsample.py
++++ b/testsample.py
+@@ -31,7 +31,7 @@ class BMSMilterTestCase(unittest.TestCase):
+     count = 10
+     while count > 0:
+       rc = ctx._connect(helo='milter-template.example.org')
+-      self.assertEquals(rc,Milter.CONTINUE)
++      self.assertEqual(rc,Milter.CONTINUE)
+       with open('test/'+fname,'rb') as fp:
+         rc = ctx._feedFile(fp)
+       milter = ctx.getpriv()
+@@ -46,7 +46,7 @@ class BMSMilterTestCase(unittest.TestCase):
+     ctx._setsymval('{auth_type}','batcomputer')
+     ctx._setsymval('j','mailhost')
+     rc = ctx._connect()
+-    self.assertEquals(rc,Milter.CONTINUE)
++    self.assertEqual(rc,Milter.CONTINUE)
+     with open('test/'+fname,'rb') as fp:
+       rc = ctx._feedFile(fp)
+     milter = ctx.getpriv()
+@@ -69,7 +69,7 @@ class BMSMilterTestCase(unittest.TestCase):
+     milter = ctx.getpriv()
+ #    self.assertTrue(milter.user == 'batman',"getsymval failed: "+
+ #        "%s != %s"%(milter.user,'batman'))
+-    self.assertEquals(milter.user,'batman')
++    self.assertEqual(milter.user,'batman')
+     self.assertTrue(milter.auth_type != 'batcomputer',"setsymlist failed")
+     self.assertTrue(rc == Milter.ACCEPT)
+     self.assertTrue(ctx._bodyreplaced,"Message body not replaced")
+diff --git a/testutils.py b/testutils.py
+index 56ec161..93e078c 100644
+--- a/testutils.py
++++ b/testutils.py
+@@ -24,11 +24,11 @@ class AddrCacheTestCase(unittest.TestCase):
+     self.assertTrue(cache.has_key('foo@bar.com'))
+     self.assertTrue(not cache.has_key('hello@bar.com'))
+     self.assertTrue('baz@bar.com' in cache)
+-    self.assertEquals(cache['temp@bar.com'],'testing')
++    self.assertEqual(cache['temp@bar.com'],'testing')
+     s = open(self.fname).readlines()
+     self.assertTrue(len(s) == 2)
+     self.assertTrue(s[0].startswith('foo@bar.com '))
+-    self.assertEquals(s[1].strip(),'baz@bar.com')
++    self.assertEqual(s[1].strip(),'baz@bar.com')
+     # check that new result overrides old
+     cache['temp@bar.com'] = None
+     self.assertTrue(not cache['temp@bar.com'])
+-- 
+2.44.0
+

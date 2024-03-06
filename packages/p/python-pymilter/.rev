@@ -44,4 +44,12 @@
   * fix deprecation warnings</comment>
     <requestid>1137822</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>293f9ec090c1c649f7363fbe5b6dc8b7</srcmd5>
+    <version>1.0.5</version>
+    <time>1709762694</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1155368</requestid>
+  </revision>
 </revisionlist>
