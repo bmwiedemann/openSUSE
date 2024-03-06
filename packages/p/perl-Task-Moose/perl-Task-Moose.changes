@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  4 15:34:44 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Dec  5 00:24:08 UTC 2017 - stefan.bruens@rwth-aachen.de
 
 - Add Task-Moose_fix_perl_5_26_INC_without_cwd.patch

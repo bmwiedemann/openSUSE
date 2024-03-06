@@ -79,8 +79,7 @@ extensions listed below. This list is meant to be comprehensive, so if I
 missed something please let me know.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0 -p0
+%autosetup -p0 -n %{cpan_name}-%{version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
