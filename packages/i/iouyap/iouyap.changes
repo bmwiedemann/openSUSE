@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 19 17:12:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Provide group(iouyap): the group is generated in the pre script.
+  Advertise the capability in order tix installation of package
+  built using RPM 4.19.
+
+-------------------------------------------------------------------
 Tue Jun  9 10:38:55 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Set CFLAGS+=-fcommon to workaround gcc10 errors (boo#1160244)

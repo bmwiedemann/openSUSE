@@ -1,7 +1,7 @@
 #
 # spec file for package iouyap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ BuildRequires:  flex
 BuildRequires:  gcc
 BuildRequires:  glibc-devel
 Requires(pre):  shadow
+Provides:       group(iouyap)
 %if 0%{?suse_version}
 Requires(pre):  permissions
 %endif
