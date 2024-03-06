@@ -67,18 +67,23 @@
 %ifnarch s390 s390x ppc64
 %if 0%{?suse_version} >= 1550
 %bcond_without microdns
+%else
+%bcond_with microdns
+%endif
 %bcond_without webrtc_audio_processing_1
 %else
 %bcond_with microdns
 %bcond_with webrtc_audio_processing_1
 %endif
+
+%ifarch x86_64 aarch64 riscv64
+%bcond_without svtav1
 %else
-%bcond_with microdns
-%bcond_with webrtc_audio_processing_1
+%bcond_with svtav1
 %endif
 
 Name:           gstreamer-plugins-bad
-Version:        1.22.9
+Version:        1.24.0
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -91,10 +96,6 @@ Source99:       baselibs.conf
 Patch0:         fix-build-with-srt-1.3.4.patch
 # PATCH-FIX-OPENSUSE spandsp3.patch jengelh@inai.de -- Fix build against spandsp 3.x. Patch is not upstreamable in this form
 Patch2:         spandsp3.patch
-# PATCH-FIX-SLE reduce-required-meson.patch alarrosa@suse.com -- Reduce the required meson version to build in SLE
-Patch3:         reduce-required-meson.patch
-# PATCH-FIX-UPSTREAM 0001-Update-code-for-webrtc-audio-processing-1.patch alarrosa@suse.com -- Update code to use webrtc-audio-processing-1
-Patch4:         0001-Update-code-for-webrtc-audio-processing-1.patch
 
 %if %{with fdk_aac}
 BuildRequires:  pkgconfig(fdk-aac) >= 0.1.4
@@ -105,7 +106,7 @@ BuildRequires:  gobject-introspection-devel
 BuildRequires:  ladspa-devel
 BuildRequires:  libgme-devel
 BuildRequires:  libgsm-devel
-BuildRequires:  meson >= 0.61.0
+BuildRequires:  meson >= 1.1
 BuildRequires:  musepack-devel
 BuildRequires:  orc >= 0.4.11
 BuildRequires:  pkgconfig
@@ -143,6 +144,7 @@ BuildRequires:  pkgconfig(gstreamer-video-1.0) >= %{gstreamer_req_version}
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
+BuildRequires:  pkgconfig(lc3)
 BuildRequires:  pkgconfig(lcms2)
 %if %{with ldacBT}
 BuildRequires:  pkgconfig(ldacBT-enc)
@@ -170,6 +172,9 @@ BuildRequires:  pkgconfig(lilv-0) >= 0.16
 BuildRequires:  pkgconfig(lrdf)
 %if %{with microdns}
 BuildRequires:  pkgconfig(microdns)
+%endif
+%if %{with svtav1}
+BuildRequires:  pkgconfig(SvtAv1Enc)
 %endif
 BuildRequires:  pkgconfig(mjpegtools)
 BuildRequires:  pkgconfig(neon)
@@ -494,19 +499,55 @@ anything media-related,from real-time sound processing to playing
 videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
 
+%package -n libgstanalytics-1_0-0
+Summary:        GStreamer Streaming-Media Framework Plug-Ins
+Group:          System/Libraries
+
+%description -n libgstanalytics-1_0-0
+GStreamer is a streaming media framework based on graphs of filters
+that operate on media data. Applications using this library can do
+anything media-related,from real-time sound processing to playing
+videos. Its plug-in-based architecture means that new data types or
+processing capabilities can be added simply by installing new plug-ins.
+
+%package -n libgstdxva-1_0-0
+Summary:        GStreamer Streaming-Media Framework Plug-Ins
+Group:          System/Libraries
+
+%description -n libgstdxva-1_0-0
+GStreamer is a streaming media framework based on graphs of filters
+that operate on media data. Applications using this library can do
+anything media-related,from real-time sound processing to playing
+videos. Its plug-in-based architecture means that new data types or
+processing capabilities can be added simply by installing new plug-ins.
+
+%package -n libgstmse-1_0-0
+Summary:        GStreamer Streaming-Media Framework Plug-Ins
+Group:          System/Libraries
+
+%description -n libgstmse-1_0-0
+GStreamer is a streaming media framework based on graphs of filters
+that operate on media data. Applications using this library can do
+anything media-related,from real-time sound processing to playing
+videos. Its plug-in-based architecture means that new data types or
+processing capabilities can be added simply by installing new plug-ins.
+
 %package devel
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       libgstadaptivedemux-1_0-0 = %{version}
+Requires:       libgstanalytics-1_0-0 = %{version}
 Requires:       libgstbadaudio-1_0-0 = %{version}
 Requires:       libgstbasecamerabinsrc-1_0-0 = %{version}
 Requires:       libgstcodecparsers-1_0-0 = %{version}
 Requires:       libgstcodecs-1_0-0 = %{version}
 Requires:       libgstcuda-1_0-0 = %{version}
+Requires:       libgstdxva-1_0-0 = %{version}
 Requires:       libgstinsertbin-1_0-0 = %{version}
 Requires:       libgstisoff-1_0-0 = %{version}
 Requires:       libgstmpegts-1_0-0 = %{version}
+Requires:       libgstmse-1_0-0 = %{version}
 Requires:       libgstphotography-1_0-0 = %{version}
 Requires:       libgstplay-1_0-0 = %{version}
 Requires:       libgstplayer-1_0-0 = %{version}
@@ -519,11 +560,14 @@ Requires:       libgstwayland-1_0-0 = %{version}
 Requires:       libgstwebrtc-1_0-0 = %{version}
 Requires:       libgstwebrtcnice-1_0-0 = %{version}
 Requires:       typelib-1_0-CudaGst-1_0 = %{version}
+Requires:       typelib-1_0-GstAnalytics-1_0 = %{version}
 Requires:       typelib-1_0-GstBadAudio-1_0 = %{version}
 Requires:       typelib-1_0-GstCodecs-1_0 = %{version}
 Requires:       typelib-1_0-GstCuda-1_0 = %{version}
+Requires:       typelib-1_0-GstDxva-1_0 = %{version}
 Requires:       typelib-1_0-GstInsertBin-1_0 = %{version}
 Requires:       typelib-1_0-GstMpegts-1_0 = %{version}
+Requires:       typelib-1_0-GstMse-1_0 = %{version}
 Requires:       typelib-1_0-GstPlay-1_0 = %{version}
 Requires:       typelib-1_0-GstPlayer-1_0 = %{version}
 Requires:       typelib-1_0-GstVa-1_0 = %{version}
@@ -552,11 +596,44 @@ anything media-related,from real-time sound processing to playing
 videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
 
+%package -n typelib-1_0-GstAnalytics-1_0
+Summary:        GStreamer Streaming-Media Framework Plug-Ins -- Introspection bindings
+Group:          System/Libraries
+
+%description -n typelib-1_0-GstAnalytics-1_0
+GStreamer is a streaming media framework based on graphs of filters
+that operate on media data. Applications using this library can do
+anything media-related, from real-time sound processing to playing
+videos. Its plug-in-based architecture means that new data types or
+processing capabilities can be added simply by installing new plug-ins.
+
 %package -n typelib-1_0-GstBadAudio-1_0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins -- Introspection bindings
 Group:          System/Libraries
 
 %description -n typelib-1_0-GstBadAudio-1_0
+GStreamer is a streaming media framework based on graphs of filters
+that operate on media data. Applications using this library can do
+anything media-related, from real-time sound processing to playing
+videos. Its plug-in-based architecture means that new data types or
+processing capabilities can be added simply by installing new plug-ins.
+
+%package -n typelib-1_0-GstDxva-1_0
+Summary:        GStreamer Streaming-Media Framework Plug-Ins -- Introspection bindings
+Group:          System/Libraries
+
+%description -n typelib-1_0-GstDxva-1_0
+GStreamer is a streaming media framework based on graphs of filters
+that operate on media data. Applications using this library can do
+anything media-related, from real-time sound processing to playing
+videos. Its plug-in-based architecture means that new data types or
+processing capabilities can be added simply by installing new plug-ins.
+
+%package -n typelib-1_0-GstMse-1_0
+Summary:        GStreamer Streaming-Media Framework Plug-Ins -- Introspection bindings
+Group:          System/Libraries
+
+%description -n typelib-1_0-GstMse-1_0
 GStreamer is a streaming media framework based on graphs of filters
 that operate on media data. Applications using this library can do
 anything media-related, from real-time sound processing to playing
@@ -745,10 +822,6 @@ sed -ie "/subdir('decklink')/d" sys/meson.build
 %if %{pkg_vcmp spandsp-devel >= 3}
 %patch -P 2 -p1
 %endif
-%patch -P 3 -p1
-%if %{with webrtc_audio_processing_1}
-%patch -P 4 -p3
-%endif
 
 %build
 %global optflags %{optflags} -fcommon
@@ -767,6 +840,7 @@ export PYTHON=%{_bindir}/python3
 	-D openaptx=disabled \
 %endif
 	-D gpl=enabled \
+	-D aja=disabled \
 %if %{without avtp}
 	-D avtp=disabled \
 %endif
@@ -805,7 +879,6 @@ export PYTHON=%{_bindir}/python3
 	-D hls-crypto=openssl \
 	-D introspection=enabled \
 	-D iqa=disabled \
-	-D kate=disabled \
 	-D magicleap=disabled \
 %if %{without microdns}
 	-D microdns=disabled \
@@ -817,6 +890,9 @@ export PYTHON=%{_bindir}/python3
 	-D opensles=disabled \
 	-D sctp=enabled \
 	-D svthevcenc=disabled \
+%if %{without svtav1}
+	-D svtav1=disabled \
+%endif
 	-D tinyalsa=disabled \
 %if %{without voamrwbenc}
 	-D voamrwbenc=disabled \
@@ -838,6 +914,8 @@ export PYTHON=%{_bindir}/python3
 %endif
 	-D amfcodec=disabled \
 	-D directshow=disabled \
+	-D d3d11=disabled \
+	-D qt6d3d11=disabled \
 	%{nil}
 %meson_build
 
@@ -867,14 +945,17 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{_name}-%{gst_branch}
 
 %ldconfig_scriptlets -n libgstadaptivedemux-1_0-0
+%ldconfig_scriptlets -n libgstanalytics-1_0-0
 %ldconfig_scriptlets -n libgstbadaudio-1_0-0
 %ldconfig_scriptlets -n libgstbasecamerabinsrc-1_0-0
 %ldconfig_scriptlets -n libgstcodecs-1_0-0
 %ldconfig_scriptlets -n libgstcodecparsers-1_0-0
 %ldconfig_scriptlets -n libgstcuda-1_0-0
+%ldconfig_scriptlets -n libgstdxva-1_0-0
 %ldconfig_scriptlets -n libgstinsertbin-1_0-0
 %ldconfig_scriptlets -n libgstisoff-1_0-0
 %ldconfig_scriptlets -n libgstmpegts-1_0-0
+%ldconfig_scriptlets -n libgstmse-1_0-0
 %ldconfig_scriptlets -n libgstphotography-1_0-0
 %ldconfig_scriptlets -n libgstplayer-1_0-0
 %ldconfig_scriptlets -n libgstsctp-1_0-0
@@ -897,6 +978,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstadpcmenc.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstaes.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstaiff.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstanalyticsoverlay.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstaom.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstasfmux.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstassrender.so
@@ -915,6 +997,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstcamerabin.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstclosedcaption.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstcodecalpha.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstcodec2json.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstcoloreffects.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstcolormanagement.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstcurl.so
@@ -941,6 +1024,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstgme.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstgsm.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsthls.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstinsertbin.so
 %if %{with ldacBT}
 %{_libdir}/gstreamer-%{gst_branch}/libgstldac.so
 %endif
@@ -954,6 +1038,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstjpegformat.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstkms.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstladspa.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstlc3.so
 %if %{with microdns}
 %{_libdir}/gstreamer-%{gst_branch}/libgstmicrodns.so
 %endif
@@ -967,6 +1052,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %ifarch x86_64
 %{_libdir}/gstreamer-%{gst_branch}/libgstmsdk.so
 %endif
+%{_libdir}/gstreamer-%{gst_branch}/libgstmse.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmusepack.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmxf.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstlegacyrawparse.so
@@ -999,9 +1085,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstspeed.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstsrt.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstsubenc.so
+%if %{with svtav1}
+%{_libdir}/gstreamer-%{gst_branch}/libgstsvtav1.so
+%endif
 %{_libdir}/gstreamer-%{gst_branch}/libgstswitchbin.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsttimecode.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstttmlsubs.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstunixfd.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstuvcgadget.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstv4l2codecs.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstva.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstvideofiltersbad.so
@@ -1113,8 +1204,26 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n libgstwebrtcnice-1_0-0
 %{_libdir}/libgstwebrtcnice-%{gst_branch}.so.0*
 
+%files -n libgstanalytics-1_0-0
+%{_libdir}/libgstanalytics-%{gst_branch}.so.0*
+
+%files -n libgstdxva-1_0-0
+%{_libdir}/libgstdxva-%{gst_branch}.so.0*
+
+%files -n libgstmse-1_0-0
+%{_libdir}/libgstmse-%{gst_branch}.so.0*
+
+%files -n typelib-1_0-GstAnalytics-1_0
+%{_libdir}/girepository-1.0/GstAnalytics-1.0.typelib
+
 %files -n typelib-1_0-GstBadAudio-1_0
 %{_libdir}/girepository-1.0/GstBadAudio-1.0.typelib
+
+%files -n typelib-1_0-GstDxva-1_0
+%{_libdir}/girepository-1.0/GstDxva-1.0.typelib
+
+%files -n typelib-1_0-GstMse-1_0
+%{_libdir}/girepository-1.0/GstMse-1.0.typelib
 
 %files -n typelib-1_0-GstPlay-1_0
 %{_libdir}/girepository-1.0/GstPlay-1.0.typelib
@@ -1156,10 +1265,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %doc AUTHORS NEWS README.md RELEASE REQUIREMENTS
 %{_includedir}/gstreamer-%{gst_branch}
 %{_libdir}/*.so
+%{_libdir}/pkgconfig/gstreamer-analytics-%{gst_branch}.pc
 %{_libdir}/pkgconfig/gstreamer-bad-audio-%{gst_branch}.pc
 %{_libdir}/pkgconfig/gstreamer-codecparsers-%{gst_branch}.pc
 %{_libdir}/pkgconfig/gstreamer-insertbin-%{gst_branch}.pc
 %{_libdir}/pkgconfig/gstreamer-mpegts-%{gst_branch}.pc
+%{_libdir}/pkgconfig/gstreamer-mse-%{gst_branch}.pc
 %{_libdir}/pkgconfig/gstreamer-photography-%{gst_branch}.pc
 %{_libdir}/pkgconfig/gstreamer-player-%{gst_branch}.pc
 %{_libdir}/pkgconfig/gstreamer-plugins-bad-%{gst_branch}.pc
