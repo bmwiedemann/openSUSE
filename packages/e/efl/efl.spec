@@ -1,7 +1,7 @@
 #
 # spec file for package efl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -76,6 +76,8 @@ License:        BSD-2-Clause AND LGPL-2.1-only AND Zlib
 URL:            https://git.enlightenment.org/core/efl.git
 Source:         https://download.enlightenment.org/rel/libs/efl/%{name}-%{version}.tar.xz
 Patch1:         efl-no-neon.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         https://git.enlightenment.org/enlightenment/efl/commit/d9ec36e1de4c2a70ac82dc66a72c282dc42037b7.patch
 BuildRequires:  ImageMagick
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
