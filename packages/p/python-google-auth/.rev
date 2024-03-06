@@ -471,4 +471,12 @@
     by the caller.</comment>
     <requestid>1143977</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>6a1bdfa9244bd28556606cac974abf32</srcmd5>
+    <version>2.27.0</version>
+    <time>1709762655</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1154917</requestid>
+  </revision>
 </revisionlist>
