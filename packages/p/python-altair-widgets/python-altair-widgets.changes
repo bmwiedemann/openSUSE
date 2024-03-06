@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  5 18:15:17 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip python39: no longer supported since ipython 8.19
+
+-------------------------------------------------------------------
 Fri May 28 02:41:49 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not build for Python 3.6, due to no NumPy.
