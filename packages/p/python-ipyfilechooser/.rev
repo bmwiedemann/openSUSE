@@ -7,4 +7,14 @@
     <comment>required by python-sidpy</comment>
     <requestid>951801</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>674d1a36d5337e80ef783099c1de484c</srcmd5>
+    <version>0.6.0</version>
+    <time>1709762684</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip python39: no longer supported since ipython 8.19 (through
+  ipywidgets)
+- Build PEP517 wheel</comment>
+    <requestid>1155334</requestid>
+  </revision>
 </revisionlist>

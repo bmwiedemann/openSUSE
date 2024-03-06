@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipyfilechooser
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
+%define skip_python39 1
 Name:           python-ipyfilechooser
 Version:        0.6.0
 Release:        0
@@ -26,8 +25,10 @@ License:        MIT
 URL:            https://github.com/crahan/ipyfilechooser
 Source:         https://files.pythonhosted.org/packages/source/i/ipyfilechooser/ipyfilechooser-%{version}.tar.gz
 Source1:        https://github.com/crahan/ipyfilechooser/raw/v%{version}/ipyfilechooser_examples.ipynb
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module nbval}
@@ -45,10 +46,10 @@ Python file chooser widget for use in Jupyter/IPython in conjunction with ipywid
 %setup -q -n ipyfilechooser-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,6 +60,6 @@ Python file chooser widget for use in Jupyter/IPython in conjunction with ipywid
 %doc README.md
 %license LICENSE
 %{python_sitelib}/ipyfilechooser
-%{python_sitelib}/ipyfilechooser-%{version}*-info
+%{python_sitelib}/ipyfilechooser-%{version}.dist-info
 
 %changelog
