@@ -98,8 +98,7 @@ HTML::Entities by default; this can be disabled by setting the _decode_
 parameter to 0.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{cpan_name}-%{version}
 find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
 
 %build
