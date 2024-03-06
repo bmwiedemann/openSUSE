@@ -1016,7 +1016,7 @@ find %{buildroot}/%{_datadir}/%{name} \
 install -m 755 %{SOURCE1} %{buildroot}/%{_sysconfdir}/grub.d/
 
 # Script to generate memtest86+ menu entry
-install -m 755 %{SOURCE7} %{buildroot}/%{_sysconfdir}/grub.d/
+install -m 644 %{SOURCE7} %{buildroot}/%{_sysconfdir}/grub.d/
 
 # Ghost config file
 install -d %{buildroot}/boot/%{name}
@@ -1273,7 +1273,7 @@ fi
 %endif
 %dir /boot/%{name}
 %ghost %attr(600, root, root) /boot/%{name}/grub.cfg
-%{_datadir}/bash-completion/completions/grub
+%{_datadir}/bash-completion/completions/grub*
 %config(noreplace) %{_sysconfdir}/default/grub
 %dir %{_sysconfdir}/grub.d
 %{_sysconfdir}/grub.d/README

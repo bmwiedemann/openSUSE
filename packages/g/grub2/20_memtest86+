@@ -19,6 +19,14 @@ set -e
 # You should have received a copy of the GNU General Public License
 # along with the script.  If not, see <http://www.gnu.org/licenses/>.
 
+# WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+# This file is deprecated, it is going to be removed soon
+# and it's functionality has been disabled.
+# The package memtest86+ is going to provide a similar file.
+# Until that happens, you can reenable this file by
+# adding to it the execute permission.
+# WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+
 . "$pkgdatadir/grub-mkconfig_lib"
 
 export TEXTDOMAIN=grub2

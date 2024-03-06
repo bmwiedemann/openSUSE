@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Mar  4 08:57:36 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update grub2-change-bash-completion-dir.patch to support bash
+  completion correctly (bsc#1218875)
+- Drop grub2-bash-completion-2.12.patch since the have() function
+  is not used in those scripts anymore
+
+-------------------------------------------------------------------
+Fri Mar  1 12:44:37 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- disable the file 20_memtest86+
+  * added a deprecation note in the header
+
+-------------------------------------------------------------------
+Thu Feb 29 10:12:12 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch grub2-bash-completion-2.12.patch 
+  The shell function have() had become deprecated with 2.11
+  and had been removed from 2.12 which is now providing
+  the shell function _comp_have_command() (boo#1220626)
+
+-------------------------------------------------------------------
 Thu Feb 22 04:19:21 UTC 2024 - Michael Chang <mchang@suse.com>
 
 - Fix grub.xen memdisk script doesn't look for /boot/grub/grub.cfg
