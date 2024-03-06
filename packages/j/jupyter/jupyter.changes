@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  5 18:17:56 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip python39: no longer supported since ipython 8.19
+
+-------------------------------------------------------------------
 Mon May 22 12:25:44 UTC 2023 - Jiri Srain <jsrain@suse.com>
 
 - refresh also the jupyter.zip from upstream URL

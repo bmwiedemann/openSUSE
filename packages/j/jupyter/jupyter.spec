@@ -1,7 +1,7 @@
 #
 # spec file for package jupyter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define plainpython python
-%define skip_python2 1
+%define skip_python39 1
 Name:           jupyter
 Version:        1.0.0
 Release:        0
