@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar  6 03:18:20 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.27.1:
+  * #1459 Fix #1458 internal error within aiohttp-based socket mode 
+    client - Thanks @seratch @jhofeditz
+  * #1450 #1452 Add "slack_file" properties to "image" blocks/elements
+    under slack_sdk.models - Thanks @seratch
+  * #1466 Fix #1462 websocket_client-based SocketModeClient does not
+    reconnect after a DNS outage - Thanks @ktindall-godaddy @seratch
+  * #1463 Unpin moto, and support moto 5.0 changes - Thanks
+    @s-t-e-v-e-n-k
+
+-------------------------------------------------------------------
 Sun Jan 21 11:23:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.26.2:
