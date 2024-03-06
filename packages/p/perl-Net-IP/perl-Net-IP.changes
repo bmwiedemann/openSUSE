@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  4 13:36:23 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+- modified patches
+  % perl-Net-IP-1.25-zero_address.diff (refreshed)
+
+-------------------------------------------------------------------
 Wed Nov 13 10:28:31 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Update spec file:

@@ -43,9 +43,7 @@ is also a procedural way of accessing most of the functions. Most
 subroutines can take either *IPv4* or *IPv6* addresses transparently.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0
-%patch1 -p1
+%autosetup -p1 -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
