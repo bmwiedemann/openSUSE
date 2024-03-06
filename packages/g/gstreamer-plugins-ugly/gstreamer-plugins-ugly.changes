@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Tue Mar  5 06:22:13 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.24.0:
+  * Highlights
+    - New Discourse forum and Matrix chat space
+    - New Analytics and Machine Learning abstractions and elements
+    - Playbin3 and decodebin3 are now stable and the default in
+      gst-play-1.0, GstPlay/GstPlayer
+    - The va plugin is now preferred over gst-vaapi and has higher
+      ranks
+    - GstMeta serialization/deserialization and other GstMeta
+      improvements
+    - New GstMeta for SMPTE ST-291M HANC/VANC Ancillary Data
+    - New unixfd plugin for efficient 1:N inter-process
+      communication on Linux
+    - cudaipc source and sink for zero-copy CUDA memory sharing
+      between processes
+    - New intersink and intersrc elements for 1:N pipeline
+      decoupling within the same process
+    - Qt5 + Qt6 QML integration improvements including qml6glsrc,
+      qml6glmixer, qml6gloverlay, and qml6d3d11sink elements
+    - DRM Modifier Support for dmabufs on Linux
+    - OpenGL, Vulkan and CUDA integration enhancements
+    - Vulkan H.264 and H.265 video decoders
+    - RTP stack improvements including new RFC7273 modes and more
+      correct header extension handling in depayloaders
+    - WebRTC improvements such as support for ICE consent
+      freshness, and a new webrtcsrc element to complement
+      webrtcsink
+    - WebRTC signallers and webrtcsink implementations for LiveKit
+      and AWS Kinesis Video Streams
+    - WHIP server source and client sink, and a WHEP source
+    - Precision Time Protocol (PTP) clock support for Windows and
+      other additions
+    - Low-Latency HLS (LL-HLS) support and many other HLS and DASH
+      enhancements
+    - New W3C Media Source Extensions library
+    - Countless closed caption handling improvements including new
+      cea608mux and cea608tocea708 elements
+    - Translation support for awstranscriber
+    - Bayer 10/12/14/16-bit depth support
+    - MPEG-TS support for asynchronous KLV demuxing and segment
+      seeking, plus various new muxer features
+    - Capture source and sink for AJA capture and playout cards
+    - SVT-AV1 and VA-API AV1 encoders, stateless AV1 video decoder
+    - New uvcsink element for exporting streams as UVC camera
+    - DirectWrite text rendering plugin for windows
+    - Direct3D12-based video decoding, conversion, composition, and
+      rendering
+    - AMD Advanced Media Framework AV1 + H.265 video encoders with
+      10-bit and HDR support
+    - AVX/AVX2 support and NEON support on macOS on Apple ARM64
+      CPUs via new liborc
+    - GStreamer C# bindings have been updated
+    - Rust bindings improvements and many new and improved Rust
+      plugins
+    - Rust plugins now shipped in packages for all major platforms
+      including Android and iOS
+    - Lots of new plugins, features, performance improvements and
+      bug fixes
+  * For more detailed information on this update, please see
+    https://gstreamer.freedesktop.org/releases/1.24/
+- Remove patch reduce-required-meson.patch since meson 1.1 is
+  really required now.
+
+-------------------------------------------------------------------
 Thu Feb  1 10:57:32 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.22.9:

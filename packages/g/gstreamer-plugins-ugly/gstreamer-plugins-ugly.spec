@@ -25,7 +25,7 @@
 %define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 
 Name:           gstreamer-plugins-ugly
-Version:        1.22.9
+Version:        1.24.0
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -33,13 +33,12 @@ Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
 Source0:        %{url}/src/%{_name}/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
-Patch0:         reduce-required-meson.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  liba52-devel
 BuildRequires:  libcdio-devel >= 0.76
 BuildRequires:  libdvdread-devel
-BuildRequires:  meson >= 0.61.0
+BuildRequires:  meson >= 1.1
 BuildRequires:  orc >= 0.4.16
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
@@ -49,7 +48,6 @@ BuildRequires:  pkgconfig(gmodule-no-export-2.0)
 BuildRequires:  pkgconfig(gstreamer-1.0) >= %{gstreamer_req_version}
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= %{gstreamer_req_version}
 BuildRequires:  pkgconfig(libmpeg2) >= 0.5.1
-BuildRequires:  pkgconfig(opencore-amrwb) >= 0.1.3
 Requires:       gstreamer-plugins-base >= %{gstreamer_req_version}
 Enhances:       gstreamer
 # Generic name, never used in SUSE:
@@ -123,10 +121,7 @@ export PYTHON=%{_bindir}/python3
 %files
 %license COPYING
 %doc AUTHORS NEWS README.md RELEASE REQUIREMENTS
-%{_datadir}/gstreamer-%{gst_branch}/presets/GstAmrnbEnc.prs
 %{_libdir}/gstreamer-%{gst_branch}/libgsta52dec.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstamrnb.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstamrwbdec.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstasf.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstcdio.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdvdlpcmdec.so
