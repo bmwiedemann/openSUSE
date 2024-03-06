@@ -56,11 +56,8 @@ In short 'Alien::wxWidgets' can be used to detect and get configuration
 settings from an installed wxWidgets.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -p0 -n %{cpan_name}-%{version}
 find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
-%patch0 
-%patch1 
-%patch2 
 # MANUAL BEGIN
 # this copy of GNU patch is only used on win32, remove it for license clarity
 # see https://build.opensuse.org/request/show/237465
