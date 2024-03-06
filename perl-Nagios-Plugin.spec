@@ -53,8 +53,7 @@ developers to create plugins that conform the Nagios Plugin guidelines
 (http://nagiosplug.sourceforge.net/developer-guidelines.html).
 
 %prep
-%setup -q -n %cpan_name-%{version}
-%patch0 -p2
+%autosetup -p2 -n %cpan_name-%{version}
 
 %build
 perl Makefile.PL OPTIMIZE="%{optflags} -Wall"
