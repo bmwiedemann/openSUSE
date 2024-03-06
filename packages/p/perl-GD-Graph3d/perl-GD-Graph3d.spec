@@ -43,8 +43,7 @@ the GD::Graph module by Martien Verbruggen, which in turn generates
 graph using Lincoln Stein's GD.pm.
 
 %prep
-%setup -n GD-Graph3d-%{version}
-%patch0 -p1
+%autosetup -p1 -n GD-Graph3d-%{version}
 
 %build
 perl Makefile.PL OPTIMIZE="$RPM_OPT_FLAGS -Wall"
