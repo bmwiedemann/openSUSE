@@ -66,16 +66,8 @@ RUN if [ "$(uname -m)" = "aarch64" ]; then \
         ln -s ../qemu/aavmf-aarch64-vars.bin /usr/share/AAVMF/AAVMF_VARS.fd ; \
     fi
 
-COPY augconf /augconf
-RUN zypper -n install \
-              augeas \
-              augeas-lenses && \
-    augtool --echo -f /augconf && \
-    zypper -n remove \
-              augeas \
-              augeas-lenses && \
-    zypper clean -a && \
-    rm -f /augconf
+RUN cp -f /usr/share/kube-virt/virt-launcher/virtqemud.conf /etc/libvirt/virtqemud.conf && \
+    cp -f /usr/share/kube-virt/virt-launcher/qemu.conf /etc/libvirt/qemu.conf
 
 # KubeVirt expects virtiofsd to be installed in /usr/libexec
 # NOTE: the value of %{_libexecdir} may vary across distros

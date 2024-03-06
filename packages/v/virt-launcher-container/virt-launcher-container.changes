@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  6 08:16:34 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Use predefined configuration files for libvirt
+
+-------------------------------------------------------------------
 Fri Feb 23 08:53:39 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Handle various virtiofsd install paths (bsc#1219772)
