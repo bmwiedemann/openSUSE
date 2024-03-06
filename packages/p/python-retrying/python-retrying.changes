@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  6 11:40:49 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Switch package to modern Python Stack on SLE-15
+  + Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue Jan  2 22:35:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - require setuptools
