@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar  5 15:11:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Skip build for python 3.9: python-ipython is no longer available.
+
+-------------------------------------------------------------------
+Sat Mar  2 11:25:38 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.29.3
+  ## Enhancements made
+  * Eventloop scheduling improvements for stop_on_error_timeout and
+    schedule_next #1212 (@jdranczewski)
+  ## Bugs fixed
+  * Disable frozen modules by default, add a toggle #1213
+    (@krassowski)
+
+-------------------------------------------------------------------
 Wed Feb  7 17:05:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.29.2:

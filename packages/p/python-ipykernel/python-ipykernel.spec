@@ -17,8 +17,9 @@
 
 
 %{?sle15_python_module_pythons}
+%define skip_python39 1
 Name:           python-ipykernel
-Version:        6.29.2
+Version:        6.29.3
 Release:        0
 Summary:        IPython Kernel for Jupyter
 License:        BSD-3-Clause
@@ -73,7 +74,7 @@ Requires:       (python-jupyter-core >= 5.1 or (python-jupyter-core >= 4.12 with
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module pytest >= 7.0}
-BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-asyncio >= 0.23.5}
 BuildRequires:  %{python_module pytest-timeout}
 # we don't want ipyparallel and its dependencies in Ring1, see below
 #BuildRequires:  #{python_module ipyparallel}
