@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb 25 09:30:03 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.28.3:
+  * Fixes for Freetype with ZLIB, execute_process, Autogen, Matlab, 
+    and various bugs
+
+-------------------------------------------------------------------
+Thu Feb 22 11:59:08 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix python dependencies: python 3.11 is only needed for build (boo#1218125).
+
+-------------------------------------------------------------------
 Wed Feb 14 16:46:22 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

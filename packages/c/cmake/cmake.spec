@@ -2,6 +2,7 @@
 # spec file for package cmake
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,8 +46,13 @@
 %bcond_with full
 %endif
 %define shortversion 3.28
+%if 0%{?suse_version} && 0%{?suse_version} <= 1500
+%define pyver 311
+%else
+%define pyver 3
+%endif
 Name:           cmake%{?psuffix}
-Version:        3.28.1
+Version:        3.28.3
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause
@@ -79,20 +85,15 @@ BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(libuv) >= 1.28
 # Needs a rebuild as libuv will otherwise abort the program with:
 # fatal error: libuv version too new: running with libuv 1.X+1 when compiled with libuv 1.X will lead to libuv failures
-%requires_eq  libuv1
+%requires_eq    libuv1
 %endif
 %if "%{flavor}" == ""
 Requires:       cmake-implementation = %{version}
 %endif
-%if 0%{?suse_version} && 0%{?suse_version} <= 1500
-%define pyver 311
-%else
-%define pyver 3
-%endif
 %if %{with full} || %{with mini}
 Requires:       make
 # bnc#953842 - A python file is shipped so require python base so it can be run.
-Requires:       python%{pyver}-base
+Requires:       python3-base
 Conflicts:      cmake-implementation
 Provides:       cmake-implementation = %{version}
 %endif
@@ -105,6 +106,7 @@ BuildRequires:  pkgconfig(libarchive) >= 3.3.3
 BuildRequires:  pkgconfig(libcurl)
 %endif
 %if %{with gui}
+BuildRequires:  python%{pyver}-base
 BuildRequires:  python%{pyver}-Sphinx
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Widgets)
@@ -214,7 +216,7 @@ install -m644 %{SOURCE1} -D %{buildroot}%{_rpmconfigdir}/macros.d/macros.cmake
 # RPM auto provides
 install -p -m0644 -D %{SOURCE3} %{buildroot}%{_fileattrsdir}/cmake.attr
 install -p -m0755 -D %{SOURCE4} %{buildroot}%{_rpmconfigdir}/cmake.prov
-sed -i -e "1s@#!.*python.*@#!$(realpath /usr/bin/python3)@" %{buildroot}%{_rpmconfigdir}/cmake.prov
+sed -i -e "1s@#!.*python.*@#!$(realpath %{_bindir}/python3)@" %{buildroot}%{_rpmconfigdir}/cmake.prov
 
 # fix: W: files-duplicate  (%%license covers already)
 rm %{buildroot}%{_docdir}/cmake/Copyright.txt
