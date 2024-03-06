@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-pytest-jupyter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 # defined at Ring1-MinimalX lettered staging prjconf
 # We do not want jupyter-server in ring1
 %bcond_with ringdisabled
-
+%define skip_python39 1
 Name:           python-pytest-jupyter%{psuffix}
 Version:        0.8.0
 Release:        0

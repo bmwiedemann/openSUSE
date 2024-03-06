@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  5 15:20:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Skip python 3.9 flavor: python39-ipython is no longer available.
+
+-------------------------------------------------------------------
 Sun Dec 24 14:14:51 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.8.0
