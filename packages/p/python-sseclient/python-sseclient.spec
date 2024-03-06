@@ -26,10 +26,11 @@ Source:         https://files.pythonhosted.org/packages/source/s/sseclient/ssecl
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  python-rpm-macros
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+# PATCH-FIX-UPSTREAM https://github.com/btubbs/sseclient/pull/64 drop six
+Patch:          no-six.patch
 Requires:       python-requests >= 2.9
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -41,7 +42,7 @@ iterator over messages coming from the server.
 
 %prep
 %autosetup -p1 -n sseclient-%{version}
-sed -i 's|#!/usr/bin/env python|#!/usr/bin/python|g' sseclient.py
+sed -i 's|#!/usr/bin/env python|#!/usr/bin/python3|g' sseclient.py
 
 %build
 %pyproject_wheel
