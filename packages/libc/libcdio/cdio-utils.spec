@@ -1,7 +1,7 @@
 #
 # spec file for package cdio-utils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,7 @@ This package contains a number of utility programs that make use of
 libcdio.
 
 %prep
-%setup -q -n libcdio-%{version}
+%autosetup -p1 -n libcdio-%{version}
 
 %define buildir ${PWD}
 

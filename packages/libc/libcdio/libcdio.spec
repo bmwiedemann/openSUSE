@@ -1,7 +1,7 @@
 #
 # spec file for package libcdio
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -117,8 +117,7 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of the cdio libraries.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure \

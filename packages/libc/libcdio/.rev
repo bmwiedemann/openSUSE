@@ -402,4 +402,16 @@ In home:RedDwarf:cdio it can be seen it doesn't break the build of anything.
     <time>1683296354</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="51" vrev="8">
+    <srcmd5>2727d495a58793244f44a8354bf450e2</srcmd5>
+    <version>2.1.0</version>
+    <time>1709762617</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN</comment>
+    <requestid>1155481</requestid>
+  </revision>
 </revisionlist>
