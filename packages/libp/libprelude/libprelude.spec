@@ -182,15 +182,15 @@ Libprelude documentation files.
 
 %prep
 %setup -q
-%patch0
-%patch1
-%patch2
-%patch3
-%patch5
-%patch7
+%patch -P 0
+%patch -P 1
+%patch -P 2
+%patch -P 3
+%patch -P 5
+%patch -P 7
 # ruby 2.7
 %if 0%{?suse_version} > 1500
-%patch8 -p1
+%patch -P 8 -p1
 %endif
 
 %build

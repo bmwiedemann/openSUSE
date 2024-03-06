@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  1 08:38:44 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Nov 11 11:39:44 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove python-devel Requires on devel-bindings package 
