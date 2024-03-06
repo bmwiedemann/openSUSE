@@ -95,9 +95,7 @@ Requires:       %{name} = %{version}-%{release}
 This plugin adds SNMP traps capabilities to prelude-manager
 
 %prep
-%setup -q
-%patch0
-%patch1
+%autosetup -p0
 
 %build
 %configure \
