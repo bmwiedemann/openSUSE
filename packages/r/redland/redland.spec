@@ -88,9 +88,9 @@ including contexts.
 
 %setup -q
 %if 0%{?suse_version} >= 1210
-%patch1 -p1
+%patch -P 1 -p1
 %endif
-%patch3
+%patch -P 3
 #
 # If multiple libdb-X.Y.so are installed, redland's logic in configure.ac picks
 # the library by the numbers it knows (and it may not know future versions!),
@@ -98,7 +98,7 @@ including contexts.
 # libdb-X.Y.so that does not match up with the headers, for linking.
 #
 %patch -P 2 -p1
-%patch4 -p1
+%patch -P 4 -p1
 
 %build
 autoconf

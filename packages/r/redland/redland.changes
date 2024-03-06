@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 23 11:45:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Aug 18 11:54:56 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Fix tests against latest raptor by cleaning up parser in each iteration.
