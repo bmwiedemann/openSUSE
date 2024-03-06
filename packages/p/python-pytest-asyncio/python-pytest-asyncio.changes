@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Sat Mar  2 11:29:53 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.23.5
+  * Declare compatibility with pytest 8 #737
+  * Fix typing errors with recent versions of mypy #769
+  * Prevent DeprecationWarning about internal use of
+    asyncio.get_event_loop() from affecting test cases #757
+  ## Known issues
+  * As of v0.23, pytest-asyncio attaches an asyncio event loop to
+    each item of the test suite (i.e. session, packages, modules,
+    classes, functions) and allows tests to be run in those loops
+    when marked accordingly. Pytest-asyncio currently assumes that
+    async fixture scope is correlated with the new event loop
+    scope. This prevents fixtures from being evaluated
+    independently from the event loop scope and breaks some
+    existing test suites (see #706). For example, a test suite may
+    require all fixtures and tests to run in the same event loop,
+    but have async fixtures that are set up and torn down for each
+    module. If you're affected by this issue, please continue using
+    the v0.21 release, until it is resolved.
+- Release 0.23.4
+  * pytest-asyncio no longer imports additional, unrelated packages
+    during test collection #729
+  * Addresses further issues that caused an internal pytest error
+    during test collection
+  * Declares incompatibility with pytest 8 #737
+
+-------------------------------------------------------------------
+Tue Jan  2 12:01:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.23.3:
+  * Fixes a bug that caused event loops to be closed prematurely
+    when using async generator fixtures with class scope or wider
+    in a function-scoped test #706
+  * Fixes various bugs that caused an internal pytest error
+    during test collection #711 #713 #719
+  * Fixes a bug that caused an internal pytest error when
+    collecting .txt files
+  * Fixes a bug that caused an internal pytest error when using
+    module-level skips #701
+    This release is backwards-compatible with v0.21. Changes are
+    non-breaking, unless you upgrade from v0.22.
+  * BREAKING: The asyncio_event_loop mark has been removed.
+    Event loops with class, module, package, and session scopes
+    can be requested via the scope keyword argument to the
+    _asyncio_ mark. -
+    Introduces the event_loop_policy fixture which allows testing
+    with non-default or multiple event loops
+  * Introduces pytest_asyncio.is_async_test which returns whether
+    a test item is managed by pytest-asyncio
+  * Removes and pytest trio, mypy, and flaky from the test
+    dependencies
+  * Deprecate redefinition of the event_loop fixture. #587 Users
+    requiring a class-scoped or module-scoped asyncio event loop
+    for their tests should mark the corresponding class or module
+    with asyncio_event_loop.
+  * Test items based on asynchronous generators always exit with
+    xfail status and emit a warning during the collection phase.
+    This behavior is consistent with synchronous yield tests.
+    #642
+  * Remove support for Python 3.7
+  * Declare support for Python 3.12
+- drop hypothesis-health-check.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Nov  7 19:34:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - remove unnecessary dependency on async_generator

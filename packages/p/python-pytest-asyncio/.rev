@@ -193,4 +193,12 @@ required by mycroft-core</comment>
 - Initial release of python-pytest-asyncio 0.8.0</comment>
     <requestid>1124081</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>46099b6a0293aa719a135563dc02f96e</srcmd5>
+    <version>0.23.5</version>
+    <time>1709762578</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1154886</requestid>
+  </revision>
 </revisionlist>
