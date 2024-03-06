@@ -18,21 +18,20 @@
 
 %define _name gst-python
 
+%{?sle15_python_module_pythons}
 Name:           python-gst
-Version:        1.22.9
+Version:        1.24.0
 Release:        0
 Summary:        Python Bindings for GStreamer
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://gstreamer.freedesktop.org
 Source0:        %{url}/src/gst-python/%{_name}-%{version}.tar.xz
-# PATCH-FEATURE-OPENSUSE reduce-required-meson.patch -- Fix build on Leap 15.5
-Patch0:         reduce-required-meson.patch
 
 BuildRequires:  %{python_module devel}
 BuildRequires:  c++_compiler
 BuildRequires:  gobject-introspection
-BuildRequires:  meson
+BuildRequires:  meson >= 1.1
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(gstreamer-1.0) >= %{version}
@@ -77,7 +76,7 @@ written in Python.
 
 %files %{python_files}
 %license COPYING
-%doc NEWS TODO
+%doc NEWS README.md
 %dir %{python_sitearch}/gi
 %{python_sitearch}/gi/overrides/
 

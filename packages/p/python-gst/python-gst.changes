@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar  5 06:23:20 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.24.0:
+  * Added a GstTagList override that makes a tag list act like a
+    dict
+  * Fix build and usage in Windows
+  * Various fixes for Python >= 3.12
+  * Rework libpython loading to be relocatable
+  * Fix libpython dlopen on macOS
+  * For more detailed information on this update, please see
+    https://gstreamer.freedesktop.org/releases/1.24/
+- Use %{?sle15_python_module_pythons} to use python3.11 in SLE/Leap
+- Remove patch reduce-required-meson.patch since meson 1.1 is
+  really required now.
+
+-------------------------------------------------------------------
 Thu Feb  1 10:59:21 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.22.9:
