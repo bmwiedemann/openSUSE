@@ -1,7 +1,7 @@
 #
 # spec file for package python-physt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,25 +23,32 @@ Summary:        Python histogram library
 License:        MIT
 URL:            https://github.com/janpipek/physt
 Source:         https://github.com/janpipek/physt/archive/v%{version}.tar.gz#/physt-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy
-Requires:       python-pandas
+Requires:       python-numpy >= 1.20
+Requires:       python-packaging
+Requires:       python-typing-extensions
 Recommends:     python-dask
 Recommends:     python-folium
 Recommends:     python-matplotlib
+Recommends:     python-pandas
 Recommends:     python-protobuf
 Recommends:     python-uproot
 Recommends:     python-vega3
 Recommends:     python-xarray
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module numpy >= 1.20}
 BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pandas}
-BuildRequires:  %{python_module plotly}
+BuildRequires:  %{python_module plotly if %python-base >= 3.10}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module typing-extensions}
 # /SECTION
 %python_subpackages
 
@@ -58,10 +65,10 @@ options.
 %setup -q -n physt-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -71,6 +78,7 @@ options.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/physt
+%{python_sitelib}/physt-%{version}.dist-info
 
 %changelog

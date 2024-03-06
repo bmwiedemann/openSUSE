@@ -65,4 +65,12 @@
   * Fixed: Typing annotations (again) passing mypy validation.</comment>
     <requestid>1066081</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>381f8bd4fcb758c5900a03226c6e9e57</srcmd5>
+    <version>0.5.3</version>
+    <time>1709762686</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1155343</requestid>
+  </revision>
 </revisionlist>

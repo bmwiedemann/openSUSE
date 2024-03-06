@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  5 19:09:36 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Build PEP517 wheel
+- Fix runtime requirements
+- Don't test plotly on python <3.10: no longer available
+
+-------------------------------------------------------------------
 Thu Feb 16 05:58:07 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.5.3:
