@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  4 13:57:05 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Fri Feb  2 22:36:38 UTC 2018 - stefan.bruens@rwth-aachen.de
 
 - Add Mesa-dri to BuildRequires, required for %check/xvfb-run

@@ -48,9 +48,8 @@ BuildRequires:  pkgconfig(xmu)
 Perl bindings to the OpenGL API, GLU, and GLUT/FreeGLUT
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -p1 -n %{cpan_name}-%{version}
 find . -type f -print0 | xargs -0 chmod 644
-%patch0 -p1
 # MANUAL BEGIN
 find include -type f  \! -name glprocs.h -exec rm {} +
 # MANUAL END
