@@ -21,6 +21,7 @@
 %global psuffix -mini
 %else
 %global psuffix %{nil}
+%bcond_without  apparmor
 %endif
 Name:           ghostscript%{psuffix}
 Version:        10.02.1
@@ -78,9 +79,11 @@ BuildRequires:  cups154-devel
 %else
 BuildRequires:  cups-devel
 %endif
+%if %{with apparmor}
 %if 0%{?suse_version} >= 1500
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
+%endif
 %endif
 %endif
 # Always check if latest version of openjpeg becomes compatible with ghostscript
@@ -159,7 +162,7 @@ This package contains the development files for Ghostscript.
 
 # Patch101 ijs_exec_server_dont_use_sh.patch fixes IJS printing problem
 # additionally allow exec'ing hpijs in apparmor profile was needed (bsc#1128467):
-%patch101 -p1
+%patch -P 101 -p1
 # Remove patch backup files to avoid packaging
 # cf. https://build.opensuse.org/request/show/581052
 rm -f Resource/Init/*.ps.orig
@@ -305,8 +308,10 @@ done
 # Switch back to the usual build log messages:
 set -x
 install -m 644 catalog.devices $DOCDIR
+%if %{with apparmor}
 %if "%{flavor}" != "mini"
 install -D -m 644 %{SOURCE10} %{buildroot}%{_sysconfdir}/apparmor.d/ghostscript
+%endif
 %endif
 
 # Move /usr/bin/gs to /usr/bin/gs.bin to be able to use update-alternatives
@@ -317,9 +322,11 @@ ln -sf %{_sysconfdir}/alternatives/gs %{buildroot}%{_bindir}/gs
 
 %post
 /sbin/ldconfig
+%if %{with apparmor}
 %if "%{flavor}" != "mini"
 %if 0%{?suse_version} >= 1500
 %apparmor_reload %{_sysconfdir}/apparmor.d/ghostscript
+%endif
 %endif
 %endif
 %{_sbindir}/update-alternatives \
@@ -399,10 +406,12 @@ fi
 %{_libdir}/libijs-0.35.so
 %if "%{flavor}" != "mini"
 %exclude %{_libdir}/ghostscript/%{version}/X11.so
+%if %{with apparmor}
 %if 0%{?suse_version} < 1500
 %dir %{_sysconfdir}/apparmor.d
 %endif
 %{_sysconfdir}/apparmor.d/ghostscript
+%endif
 
 %files x11
 %{_libdir}/ghostscript/%{version}/X11.so
