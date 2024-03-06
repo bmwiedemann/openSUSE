@@ -1,7 +1,7 @@
 #
 # spec file for package deadbeef
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define _lto_cflags %{nil}
 %bcond_with restricted
 Name:           deadbeef
-Version:        1.9.5
+Version:        1.9.6
 Release:        0
 Summary:        GTK+ audio player
 License:        BSD-3-Clause AND GPL-2.0-or-later AND Zlib AND LGPL-2.1-or-later
@@ -33,13 +33,8 @@ Source1:        %{name}.appdata.xml
 Patch0:         0003-Fix-operator-precedence-and-uninitialized-value-warn.patch
 # PATCH-FIX-OPENSUSE deadbeef-drop-documents-installation.patch hillwood@opensuse.org -- Install documents by rpmbuild.
 Patch1:         %{name}-drop-documents-installation.patch
-Patch2:         %{name}-fix-includes.patch
-Patch3:         %{name}-fix-desktop-file.patch
-Patch4:         %{name}-fix-libretro-compilation.patch
-# PATCH-FIX-UPSTREAM https://github.com/DeaDBeeF-Player/deadbeef/commit/6afd56831825e67f1eff97e5e291a60947b187a3
-Patch5:         %{name}-fix-register-cxx17.patch
-# PATCH-FIX-UPSTREAM https://github.com/DeaDBeeF-Player/deadbeef/commit/ec70bec029c379ea17442c95b2ad346a0a68d9d0
-Patch6:         %{name}-adplug-use-cxx11.patch
+# PATCH-FIX-OPENSUSE deadbeef-fix-desktop-file.patch -- fix bogus "Play Pause" action
+Patch2:         %{name}-fix-desktop-file.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  clang
@@ -141,6 +136,8 @@ export CXXFLAGS="$CFLAGS"
 export CFLAGS=$(echo "$CFLAGS -Wno-error=unused-variable")
 export CXXFLAGS="$CFLAGS"
 %endif
+# libdispatch-devel puts Block.h in non standard directory
+export CFLAGS="$CFLAGS -I%{_includedir}/block"
 export LDFLAGS="$LDFLAGS -pie"
 
 %configure \
