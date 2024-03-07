@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipdb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?sle15_python_module_pythons}
+%define skip_python39 1
 Name:           python-ipdb
 Version:        0.13.13
 Release:        0
@@ -39,7 +40,7 @@ Requires:       (python-ipython >= 7.16.3 if python-base < 3.7)
 Requires:       (python-ipython >= 7.31.1 if python-base >= 3.7)
 Requires:       (python-tomli if python-base < 3.11)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       python-jupyter_ipdb = %{version}
 Obsoletes:      python-jupyter_ipdb < %{version}
 BuildArch:      noarch
