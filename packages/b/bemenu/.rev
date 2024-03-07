@@ -345,4 +345,17 @@
   * Revert &quot;wayland: force window-&gt;scale = 1, if BEMENU_SCALE&quot;</comment>
     <requestid>1143745</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d86374b2afd22a493694e94803d209af</srcmd5>
+    <version>0.6.20</version>
+    <time>1709832704</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.20:
+  * Fix mouse press being ignored on x11 #382
+  * Fixed verry fast repeat when pressing shift+Tab #383
+  * Fix use after free in wayland.c #386
+  * document vim bindings #389
+  * wayland: bind to zwlr_layer_shell_v1 version 3 #390</comment>
+    <requestid>1155982</requestid>
+  </revision>
 </revisionlist>

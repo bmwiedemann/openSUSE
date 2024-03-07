@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar  7 14:10:55 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.20:
+  * Fix mouse press being ignored on x11 #382
+  * Fixed verry fast repeat when pressing shift+Tab #383
+  * Fix use after free in wayland.c #386
+  * document vim bindings #389
+  * wayland: bind to zwlr_layer_shell_v1 version 3 #390
+
+-------------------------------------------------------------------
 Sat Feb  3 06:38:03 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.19:
