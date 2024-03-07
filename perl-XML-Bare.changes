@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  4 15:52:17 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Mon Aug  5 13:51:57 UTC 2013 - coolo@suse.com
 
 - add fix-pointers.diff to fix build on factory
