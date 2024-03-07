@@ -45,7 +45,11 @@ BuildRequires:  curl-devel
 BuildRequires:  dcmtk
 BuildRequires:  dcmtk-devel
 BuildRequires:  doxygen
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  googletest-devel
 BuildRequires:  help2man
 BuildRequires:  jsoncpp-devel
@@ -141,6 +145,10 @@ mkdir -p OrthancServer/ThirdPartyDownloads
 cp %{S:10} %{S:11} %{S:12} %{S:13} OrthancServer/ThirdPartyDownloads/.
 
 %build
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+export CC=gcc-13
+export CXX=g++-13
+%endif
 %cmake	../OrthancServer \
     -DSTANDALONE_BUILD:BOOL=ON \
     -DSTATIC_BUILD:BOOL=OFF \
