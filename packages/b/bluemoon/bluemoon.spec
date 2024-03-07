@@ -56,10 +56,7 @@ cannot take more than 13 deals. A good score is 1-3 deals, 4-7 is
 average, 8 or more is poor.
 
 %prep
-%setup -q
-%patch0
-%patch1
-%patch2
+%autosetup -p0
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags}"
