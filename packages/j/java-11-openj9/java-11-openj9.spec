@@ -118,7 +118,6 @@ Patch32:        stringop-overflow.patch
 # OpenJDK specific patches
 #
 Patch302:       disable-doclint-by-default.patch
-Patch303:       alternative-tzdb_dat.patch
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -235,7 +234,6 @@ Requires(post): java-ca-certificates
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
 Requires(postun): update-alternatives
-Recommends:     tzdata-java8
 Obsoletes:      %{name}-accessibility
 # Standard JPackage base provides.
 Provides:       java-%{javaver}-headless = %{version}-%{release}
@@ -366,7 +364,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch -P 32 -p1
 
 %patch -P 302 -p1
-%patch -P 303 -p1
 
 cat %{SOURCE100} \
     | sed "s/@OPENJ9_SHA@/`expr substr '%{openj9_revision}' 1 7`/g" \
@@ -438,9 +435,6 @@ find %{imagesdir}/jdk -iname '*.diz' -exec rm {} \;
 find %{imagesdir}/jdk -iname '*.debuginfo' -exec rm {} \;
 
 export JAVA_HOME=$(pwd)/%{imagesdir}/jdk
-
-# Copy tz.properties
-echo "sun.zoneinfo.dir=%{_datadir}/javazi" >> $JAVA_HOME/conf/tz.properties
 
 # cacerts are generated in runtime in openSUSE
 if [ -f %{imagesdir}/jdk/lib/security/cacerts ]; then
@@ -777,7 +771,6 @@ fi
 %{_jvmdir}/%{sdkdir}/conf/security/policy/unlimited/default_local.policy
 %{_jvmdir}/%{sdkdir}/conf/security/policy/unlimited/default_US_export.policy
 %{_jvmdir}/%{sdkdir}/conf/sound.properties
-%{_jvmdir}/%{sdkdir}/conf/tz.properties
 %{_jvmdir}/%{sdkdir}/lib/J9TraceFormat.dat
 %{_jvmdir}/%{sdkdir}/lib/OMRTraceFormat.dat
 %{_jvmdir}/%{sdkdir}/lib/default/j9ddr.dat
