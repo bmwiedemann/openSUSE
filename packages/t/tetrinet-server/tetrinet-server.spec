@@ -35,8 +35,7 @@ Tetrinetx-qirc1.40c with Async DNS support for high productivity
 server.
 
 %prep
-%setup -n %{realname}-%{version}+qirc-%{qirc_version}
-%patch2
+%autosetup -p0 -n %{realname}-%{version}+qirc-%{qirc_version}
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS"
