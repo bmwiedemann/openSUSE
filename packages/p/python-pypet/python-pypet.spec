@@ -1,7 +1,7 @@
 #
 # spec file for package python-pypet
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,11 @@ Source:         https://files.pythonhosted.org/packages/source/p/pypet/pypet-%{v
 # PATCH-FIX-OPENSUSE Do not call decode() on objects that do not have that
 # method
 Patch0:         do-not-decode-int.patch
+# PATCH-FIX-UPSTREAM ConfigParser_readfp-312.patch gh#SmokinCaterpillar/pypet!69 mcepl@suse.com
+# Long deprecated method .readfp() was finally removed in 3.12.
+Patch1:         ConfigParser_readfp-312.patch
+# PATCH-FIX-UPSTREAM https://github.com/SmokinCaterpillar/pypet/pull/70 Replace deprecated/removed unittest.TestCase method aliases
+Patch2:         unittest.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
