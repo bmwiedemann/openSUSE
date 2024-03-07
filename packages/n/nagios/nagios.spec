@@ -227,13 +227,13 @@ may compile against.
 %prep
 %setup -q
 %if 0%{?suse_version} < 01500
-%patch3 -p1
-%patch4 -p1
-%patch11 -p1
-%patch14 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 11 -p1
+%patch -P 14 -p1
+%patch -P 16 -p1
+%patch -P 17 -p1
+%patch -P 18 -p1
 %else
 %autopatch -p1
 %endif
