@@ -85,10 +85,7 @@ BuildArch:      noarch
 These are the data files for Dungeon Crawl Stone Soup.
 
 %prep
-%setup -q -n stone_soup-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n stone_soup-%{version}
 
 %build
 cd source
