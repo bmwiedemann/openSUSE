@@ -183,4 +183,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148231</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>710f4087c80b8c5184a1dc01b4c49b87</srcmd5>
+    <version>1.8.0.402</version>
+    <time>1709832699</time>
+    <user>dimstar_suse</user>
+    <comment>Erase the existence of tzdata-java8 from the memory of mankind</comment>
+    <requestid>1155987</requestid>
+  </revision>
 </revisionlist>
