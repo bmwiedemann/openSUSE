@@ -2472,6 +2472,7 @@ BuildFlags: onlybuild:perl-Authen-SASL
 BuildFlags: onlybuild:perl-B-COW
 BuildFlags: onlybuild:perl-B-Hooks-EndOfScope
 BuildFlags: onlybuild:perl-Bit-Vector
+BuildFlags: onlybuild:perl-Bootloader
 BuildFlags: onlybuild:perl-Business-ISBN
 BuildFlags: onlybuild:perl-Business-ISBN-Data
 BuildFlags: onlybuild:perl-Business-ISMN
