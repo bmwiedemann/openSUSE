@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  7 10:49:01 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.18.2
+  * Add leaflet as singleton by @martinRenou in #1175
+- Skip python39: no longer supported since ipython 8.19 (through
+  ipywidgets)
+
+-------------------------------------------------------------------
 Sat Dec 23 18:45:01 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.18.1

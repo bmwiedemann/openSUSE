@@ -173,4 +173,15 @@
   * Add support for PMTiles by @giswqs in #1138</comment>
     <requestid>1134921</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f9aef0a033f02a063945abfd1d349a45</srcmd5>
+    <version>0.18.2</version>
+    <time>1709832638</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.2
+  * Add leaflet as singleton by @martinRenou in #1175
+- Skip python39: no longer supported since ipython 8.19 (through
+  ipywidgets)</comment>
+    <requestid>1155854</requestid>
+  </revision>
 </revisionlist>
