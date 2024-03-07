@@ -52,4 +52,21 @@
     <comment></comment>
     <requestid>1140719</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a3b65625c7ddc0b1f13db7cb6bc6da1d</srcmd5>
+    <version>2.0.3</version>
+    <time>1709832654</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.3
+  * Fix cancellation of file save operation #241 (@davidbrochart)
+  * Call get with options of type IFetchOptions #238
+    (@davidbrochart)
+- Release 2.0.2
+  * Handle last_modified only in FileLoader #232 (@davidbrochart)
+  * Fix file saving #231 (@davidbrochart)
+- Fix python39-ipython removal fallout
+  * Don't require jupyterlab to build
+  * Don't test on python39</comment>
+    <requestid>1155896</requestid>
+  </revision>
 </revisionlist>
