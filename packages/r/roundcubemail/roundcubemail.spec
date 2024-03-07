@@ -84,8 +84,8 @@ Roundcube Webmail is written in PHP and requires a MySQL database.
 The user interface is skinnable using XHTML and CSS 2.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
+
 cp %{SOURCE4} .
 # remove cruft from source archive:
 # .arcconfig       => file for phabricator.uri
