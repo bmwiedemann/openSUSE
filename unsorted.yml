@@ -781,8 +781,6 @@ unsorted:
   - appframework 
   - appframework-javadoc 
   - appimaged 
-  - applet-window-appmenu 
-  - applet-window-buttons 
   - appmenu-registrar 
   - appres 
   - appstream-glib-devel 
@@ -3938,6 +3936,7 @@ unsorted:
   - fde-firstboot 
   - fde-tools 
   - fde-tools-bash-completion 
+  - fde-tpm-helper 
   - fde-tpm-helper-rpm-macros 
   - fdo-client 
   - fdo-client-devel 
@@ -10257,8 +10256,6 @@ unsorted:
   - latex2rtf 
   - lato-fonts 
   - latrace 
-  - latte-dock 
-  - latte-dock-lang 
   - layer-shell-qt5-devel 
   - lazarus 
   - lazarus-doc 
@@ -12913,6 +12910,7 @@ unsorted:
   - libgssdp-devel 
   - libgstadaptivedemux-1_0-0-32bit 
   - libgstallocators-1_0-0-32bit 
+  - libgstanalytics-1_0-0-32bit 
   - libgstapp-1_0-0-32bit 
   - libgstaudio-1_0-0-32bit 
   - libgstbadaudio-1_0-0-32bit 
@@ -12922,12 +12920,14 @@ unsorted:
   - libgstcodecparsers-1_0-0-32bit 
   - libgstcodecs-1_0-0-32bit 
   - libgstcuda-1_0-0-32bit 
+  - libgstdxva-1_0-0 
+  - libgstdxva-1_0-0-32bit 
   - libgstfft-1_0-0-32bit 
   - libgstgl-1_0-0-32bit 
-  - libgstinsertbin-1_0-0 
   - libgstinsertbin-1_0-0-32bit 
   - libgstisoff-1_0-0-32bit 
   - libgstmpegts-1_0-0-32bit 
+  - libgstmse-1_0-0-32bit 
   - libgstpbutils-1_0-0-32bit 
   - libgstphotography-1_0-0-32bit 
   - libgstplay-1_0-0-32bit 
@@ -14765,6 +14765,7 @@ unsorted:
   - libpystring0_0 
   - libpythia8 
   - libpythia8lhapdf6 
+  - libpython2_7-1_0 
   - libpython3_10-1_0 
   - libpython3_10-1_0-32bit 
   - libpython3_11-1_0-32bit 
@@ -21717,6 +21718,7 @@ unsorted:
   - pgadmin4-doc 
   - pgadmin4-web-uwsgi 
   - pgbackrest 
+  - pgbadger 
   - pgloader 
   - pgn-extract 
   - phetsarath-fonts 
@@ -22637,6 +22639,7 @@ unsorted:
   - python-azure-agent-config-server 
   - python-azure-agent-test 
   - python-barbicanclient-doc 
+  - python-base 
   - python-beautifulsoup4-doc 
   - python-billiard-doc 
   - python-blinker-doc 
@@ -23364,6 +23367,7 @@ unsorted:
   - python310-agate-stats 
   - python310-ahocorasick-rs 
   - python310-aina 
+  - python310-aiocsv 
   - python310-aiodataloader 
   - python310-aiodns 
   - python310-aioeventlet 
@@ -23591,7 +23595,6 @@ unsorted:
   - python310-azure-eventhub 
   - python310-azure-eventhub-checkpointstoreblob 
   - python310-azure-eventhub-checkpointstoreblob-aio 
-  - python310-azure-functions-devops-build 
   - python310-azure-graphrbac 
   - python310-azure-healthinsights-cancerprofiling 
   - python310-azure-healthinsights-clinicalmatching 
@@ -24070,6 +24073,7 @@ unsorted:
   - python310-cppclean 
   - python310-cpplint 
   - python310-cppy 
+  - python310-cptrace 
   - python310-cracklib 
   - python310-cramjam 
   - python310-crashtest 
@@ -24234,7 +24238,6 @@ unsorted:
   - python310-django-oauth-toolkit 
   - python310-django-oidc-provider 
   - python310-django-opentracing 
-  - python310-django-pandas 
   - python310-django-parler 
   - python310-django-perf-rec 
   - python310-django-pglocks 
@@ -24608,6 +24611,7 @@ unsorted:
   - python310-hatchling 
   - python310-hawkauthlib 
   - python310-hcloud 
+  - python310-hdf5plugin 
   - python310-hdf5storage 
   - python310-healpy 
   - python310-healpy-devel 
@@ -24688,6 +24692,7 @@ unsorted:
   - python310-inflect 
   - python310-inflection 
   - python310-influxdb 
+  - python310-influxdb-client 
   - python310-ini2toml 
   - python310-ini2toml-all 
   - python310-ini2toml-full 
@@ -25355,6 +25360,7 @@ unsorted:
   - python310-pep8-naming 
   - python310-peppercorn 
   - python310-percy 
+  - python310-perf 
   - python310-perky 
   - python310-persistent 
   - python310-persistent-devel 
@@ -25450,7 +25456,6 @@ unsorted:
   - python310-proton-client 
   - python310-protonvpn-nm-lib 
   - python310-proxmoxer 
-  - python310-proxy.py 
   - python310-psautohint 
   - python310-pscript 
   - python310-psutil 
@@ -25546,6 +25551,7 @@ unsorted:
   - python310-pycxx 
   - python310-pycxx-devel 
   - python310-pydantic 
+  - python310-pydantic-core 
   - python310-pydash 
   - python310-pydata-google-auth 
   - python310-pydata-sphinx-theme 
@@ -25554,7 +25560,6 @@ unsorted:
   - python310-pydicom 
   - python310-pydicom-data 
   - python310-pydocstyle 
-  - python310-pydocumentdb 
   - python310-pydot 
   - python310-pydotplus 
   - python310-pydrive2 
@@ -25973,6 +25978,7 @@ unsorted:
   - python310-rcssmin 
   - python310-rdflib 
   - python310-re-assert 
+  - python310-reactivex 
   - python310-readme_renderer 
   - python310-readthedocs-sphinx-ext 
   - python310-rebulk 
@@ -26433,7 +26439,6 @@ unsorted:
   - python310-tzlocal 
   - python310-u-msgpack-python 
   - python310-ua-parser 
-  - python310-uamqp 
   - python310-ubelt 
   - python310-uc-micro-py 
   - python310-ufoLib2 
@@ -26510,7 +26515,6 @@ unsorted:
   - python310-volatile 
   - python310-voluptuous 
   - python310-voluptuous-serialize 
-  - python310-vsts 
   - python310-vulkan 
   - python310-vulture 
   - python310-w3lib 
@@ -26918,6 +26922,7 @@ unsorted:
   - python311-agate-stats 
   - python311-ahocorasick-rs 
   - python311-aina 
+  - python311-aiocsv 
   - python311-aiodataloader 
   - python311-aiodns 
   - python311-aioeventlet 
@@ -27135,7 +27140,6 @@ unsorted:
   - python311-azure-eventhub 
   - python311-azure-eventhub-checkpointstoreblob 
   - python311-azure-eventhub-checkpointstoreblob-aio 
-  - python311-azure-functions-devops-build 
   - python311-azure-graphrbac 
   - python311-azure-healthinsights-cancerprofiling 
   - python311-azure-healthinsights-clinicalmatching 
@@ -27602,6 +27606,7 @@ unsorted:
   - python311-cppclean 
   - python311-cpplint 
   - python311-cppy 
+  - python311-cptrace 
   - python311-cracklib 
   - python311-cramjam 
   - python311-crashtest 
@@ -27759,7 +27764,6 @@ unsorted:
   - python311-django-oauth-toolkit 
   - python311-django-oidc-provider 
   - python311-django-opentracing 
-  - python311-django-pandas 
   - python311-django-parler 
   - python311-django-perf-rec 
   - python311-django-pglocks 
@@ -28123,6 +28127,7 @@ unsorted:
   - python311-hatchling 
   - python311-hawkauthlib 
   - python311-hcloud 
+  - python311-hdf5plugin 
   - python311-hdf5storage 
   - python311-healpy 
   - python311-healpy-devel 
@@ -28193,6 +28198,7 @@ unsorted:
   - python311-inflect 
   - python311-inflection 
   - python311-influxdb 
+  - python311-influxdb-client 
   - python311-ini2toml 
   - python311-ini2toml-all 
   - python311-ini2toml-full 
@@ -28831,6 +28837,7 @@ unsorted:
   - python311-pep8-naming 
   - python311-peppercorn 
   - python311-percy 
+  - python311-perf 
   - python311-perky 
   - python311-persistent 
   - python311-persistent-devel 
@@ -28921,7 +28928,6 @@ unsorted:
   - python311-proton-client 
   - python311-protonvpn-nm-lib 
   - python311-proxmoxer 
-  - python311-proxy.py 
   - python311-psautohint 
   - python311-pscript 
   - python311-psychtoolbox 
@@ -29006,6 +29012,7 @@ unsorted:
   - python311-pycxx 
   - python311-pycxx-devel 
   - python311-pydantic 
+  - python311-pydantic-core 
   - python311-pydash 
   - python311-pydata-google-auth 
   - python311-pydata-sphinx-theme 
@@ -29014,7 +29021,6 @@ unsorted:
   - python311-pydicom 
   - python311-pydicom-data 
   - python311-pydocstyle 
-  - python311-pydocumentdb 
   - python311-pydot 
   - python311-pydotplus 
   - python311-pydrive2 
@@ -29420,6 +29426,7 @@ unsorted:
   - python311-rcssmin 
   - python311-rdflib 
   - python311-re-assert 
+  - python311-reactivex 
   - python311-readme_renderer 
   - python311-readthedocs-sphinx-ext 
   - python311-rebulk 
@@ -29863,7 +29870,6 @@ unsorted:
   - python311-tzlocal 
   - python311-u-msgpack-python 
   - python311-ua-parser 
-  - python311-uamqp 
   - python311-ubelt 
   - python311-uc-micro-py 
   - python311-ufoLib2 
@@ -29938,7 +29944,6 @@ unsorted:
   - python311-volatile 
   - python311-voluptuous 
   - python311-voluptuous-serialize 
-  - python311-vsts 
   - python311-vulkan 
   - python311-vulture 
   - python311-w3lib 
@@ -30352,6 +30357,7 @@ unsorted:
   - python312-agate-stats 
   - python312-ahocorasick-rs 
   - python312-aina 
+  - python312-aiocsv 
   - python312-aiodataloader 
   - python312-aiodns 
   - python312-aioeventlet 
@@ -30579,7 +30585,6 @@ unsorted:
   - python312-azure-eventhub 
   - python312-azure-eventhub-checkpointstoreblob 
   - python312-azure-eventhub-checkpointstoreblob-aio 
-  - python312-azure-functions-devops-build 
   - python312-azure-graphrbac 
   - python312-azure-healthinsights-cancerprofiling 
   - python312-azure-healthinsights-clinicalmatching 
@@ -31051,6 +31056,7 @@ unsorted:
   - python312-cppclean 
   - python312-cpplint 
   - python312-cppy 
+  - python312-cptrace 
   - python312-cracklib 
   - python312-cramjam 
   - python312-crashtest 
@@ -31214,7 +31220,6 @@ unsorted:
   - python312-django-oauth-toolkit 
   - python312-django-oidc-provider 
   - python312-django-opentracing 
-  - python312-django-pandas 
   - python312-django-parler 
   - python312-django-perf-rec 
   - python312-django-pglocks 
@@ -31361,6 +31366,7 @@ unsorted:
   - python312-eyed3 
   - python312-ez_setup 
   - python312-ezdxf 
+  - python312-fabio 
   - python312-factory_boy 
   - python312-fake-useragent 
   - python312-fakeredis 
@@ -31585,6 +31591,7 @@ unsorted:
   - python312-hatchling 
   - python312-hawkauthlib 
   - python312-hcloud 
+  - python312-hdf5plugin 
   - python312-hdf5storage 
   - python312-healpy 
   - python312-healpy-devel 
@@ -31665,6 +31672,7 @@ unsorted:
   - python312-inflate64 
   - python312-inflect 
   - python312-inflection 
+  - python312-influxdb-client 
   - python312-ini2toml 
   - python312-ini2toml-all 
   - python312-ini2toml-full 
@@ -32312,6 +32320,7 @@ unsorted:
   - python312-pep8-naming 
   - python312-peppercorn 
   - python312-percy 
+  - python312-perf 
   - python312-perky 
   - python312-persistent 
   - python312-persistent-devel 
@@ -32400,7 +32409,6 @@ unsorted:
   - python312-proton-client 
   - python312-protonvpn-nm-lib 
   - python312-proxmoxer 
-  - python312-proxy.py 
   - python312-psautohint 
   - python312-pscript 
   - python312-psutil 
@@ -32496,6 +32504,7 @@ unsorted:
   - python312-pycxx 
   - python312-pycxx-devel 
   - python312-pydantic 
+  - python312-pydantic-core 
   - python312-pydash 
   - python312-pydata-sphinx-theme 
   - python312-pydbus 
@@ -32503,7 +32512,6 @@ unsorted:
   - python312-pydicom 
   - python312-pydicom-data 
   - python312-pydocstyle 
-  - python312-pydocumentdb 
   - python312-pydot 
   - python312-pydotplus 
   - python312-pydrive2 
@@ -32577,6 +32585,7 @@ unsorted:
   - python312-pymediainfo 
   - python312-pymemcache 
   - python312-pymetar 
+  - python312-pymilter 
   - python312-pymisp 
   - python312-pymol 
   - python312-pymongo 
@@ -32793,6 +32802,7 @@ unsorted:
   - python312-python-poppler 
   - python312-python-prctl 
   - python312-python-pseudorandom 
+  - python312-python-ptrace 
   - python312-python-qdatamatrix 
   - python312-python-qpid-proton 
   - python312-python-qprogedit 
@@ -32904,6 +32914,7 @@ unsorted:
   - python312-rcssmin 
   - python312-rdflib 
   - python312-re-assert 
+  - python312-reactivex 
   - python312-readme_renderer 
   - python312-readthedocs-sphinx-ext 
   - python312-rebulk 
@@ -33418,7 +33429,6 @@ unsorted:
   - python312-volatile 
   - python312-voluptuous 
   - python312-voluptuous-serialize 
-  - python312-vsts 
   - python312-vulkan 
   - python312-vulture 
   - python312-w3lib 
@@ -33853,6 +33863,7 @@ unsorted:
   - python39-agate-stats 
   - python39-ahocorasick-rs 
   - python39-aina 
+  - python39-aiocsv 
   - python39-aiodataloader 
   - python39-aiodns 
   - python39-aioeventlet 
@@ -33885,7 +33896,6 @@ unsorted:
   - python39-allpairspy 
   - python39-alsa 
   - python39-altair 
-  - python39-altair-widgets 
   - python39-altgraph 
   - python39-amqp 
   - python39-amqpstorm 
@@ -33903,7 +33913,6 @@ unsorted:
   - python39-anyio3 
   - python39-anyjson 
   - python39-anymarkup-core 
-  - python39-anywidget 
   - python39-apache-libcloud 
   - python39-apacheconfig 
   - python39-apfel 
@@ -34079,7 +34088,6 @@ unsorted:
   - python39-azure-eventhub 
   - python39-azure-eventhub-checkpointstoreblob 
   - python39-azure-eventhub-checkpointstoreblob-aio 
-  - python39-azure-functions-devops-build 
   - python39-azure-graphrbac 
   - python39-azure-healthinsights-cancerprofiling 
   - python39-azure-healthinsights-clinicalmatching 
@@ -34435,7 +34443,6 @@ unsorted:
   - python39-casttube 
   - python39-catkin-pkg 
   - python39-cattrs 
-  - python39-cauldron-notebook 
   - python39-cbor 
   - python39-cbor2 
   - python39-cchardet 
@@ -34559,6 +34566,7 @@ unsorted:
   - python39-cppclean 
   - python39-cpplint 
   - python39-cppy 
+  - python39-cptrace 
   - python39-cracklib 
   - python39-cramjam 
   - python39-crashtest 
@@ -34721,7 +34729,6 @@ unsorted:
   - python39-django-oauth-toolkit 
   - python39-django-oidc-provider 
   - python39-django-opentracing 
-  - python39-django-pandas 
   - python39-django-parler 
   - python39-django-perf-rec 
   - python39-django-pglocks 
@@ -35093,6 +35100,7 @@ unsorted:
   - python39-hatchling 
   - python39-hawkauthlib 
   - python39-hcloud 
+  - python39-hdf5plugin 
   - python39-hdf5storage 
   - python39-healpy 
   - python39-healpy-devel 
@@ -35171,6 +35179,7 @@ unsorted:
   - python39-inflect 
   - python39-inflection 
   - python39-influxdb 
+  - python39-influxdb-client 
   - python39-ini2toml 
   - python39-ini2toml-all 
   - python39-ini2toml-full 
@@ -35190,23 +35199,15 @@ unsorted:
   - python39-ipdb 
   - python39-iptables 
   - python39-ipy 
-  - python39-ipydatawidgets 
-  - python39-ipyevents 
-  - python39-ipyfilechooser 
-  - python39-ipykernel 
   - python39-ipyleaflet 
-  - python39-ipympl 
-  - python39-ipyparallel 
   - python39-ipyscales 
   - python39-ipysheet 
   - python39-ipytablewidgets 
-  - python39-ipython 
   - python39-ipython_genutils 
   - python39-ipyvolume 
   - python39-ipyvue 
   - python39-ipyvuetify 
   - python39-ipywebrtc 
-  - python39-ipywidgets 
   - python39-irc 
   - python39-isbnlib 
   - python39-isc_dhcp_leases 
@@ -35286,7 +35287,6 @@ unsorted:
   - python39-junit-xml 
   - python39-junitxml 
   - python39-junos-eznc 
-  - python39-jupyter 
   - python39-jupyter-client 
   - python39-jupyter-collaboration 
   - python39-jupyter-core 
@@ -35501,7 +35501,6 @@ unsorted:
   - python39-matplotlib-gtk4 
   - python39-matplotlib-inline 
   - python39-matplotlib-latex 
-  - python39-matplotlib-nbagg 
   - python39-matplotlib-qt 
   - python39-matplotlib-testdata 
   - python39-matplotlib-tk 
@@ -35528,7 +35527,6 @@ unsorted:
   - python39-mergedeep 
   - python39-meson-python 
   - python39-metaextract 
-  - python39-metakernel 
   - python39-metamagic.json 
   - python39-methodtools 
   - python39-micropipenv 
@@ -35614,7 +35612,6 @@ unsorted:
   - python39-natsort 
   - python39-nautilus 
   - python39-nautilus-devel 
-  - python39-nbclassic 
   - python39-nbclient 
   - python39-nbconvert 
   - python39-nbdime 
@@ -35758,7 +35755,6 @@ unsorted:
   - python39-pandas-all 
   - python39-pandas-clipboard 
   - python39-pandas-compression 
-  - python39-pandas-computation 
   - python39-pandas-datareader 
   - python39-pandas-excel 
   - python39-pandas-feather 
@@ -35833,6 +35829,7 @@ unsorted:
   - python39-pep8-naming 
   - python39-peppercorn 
   - python39-percy 
+  - python39-perf 
   - python39-perky 
   - python39-persistent 
   - python39-persistent-devel 
@@ -35926,7 +35923,6 @@ unsorted:
   - python39-proton-client 
   - python39-protonvpn-nm-lib 
   - python39-proxmoxer 
-  - python39-proxy.py 
   - python39-psautohint 
   - python39-pscript 
   - python39-psutil 
@@ -36022,6 +36018,7 @@ unsorted:
   - python39-pycxx 
   - python39-pycxx-devel 
   - python39-pydantic 
+  - python39-pydantic-core 
   - python39-pydash 
   - python39-pydata-google-auth 
   - python39-pydata-sphinx-theme 
@@ -36031,7 +36028,6 @@ unsorted:
   - python39-pydicom-data 
   - python39-pydle 
   - python39-pydocstyle 
-  - python39-pydocumentdb 
   - python39-pydot 
   - python39-pydotplus 
   - python39-pydrive2 
@@ -36227,9 +36223,6 @@ unsorted:
   - python39-pytest-instafail 
   - python39-pytest-isort 
   - python39-pytest-json-report 
-  - python39-pytest-jupyter 
-  - python39-pytest-jupyter-client 
-  - python39-pytest-jupyter-server 
   - python39-pytest-lazy-fixture 
   - python39-pytest-listener 
   - python39-pytest-localserver 
@@ -36449,6 +36442,7 @@ unsorted:
   - python39-rcssmin 
   - python39-rdflib 
   - python39-re-assert 
+  - python39-reactivex 
   - python39-readme_renderer 
   - python39-readthedocs-sphinx-ext 
   - python39-rebulk 
@@ -36724,7 +36718,6 @@ unsorted:
   - python39-spotipy 
   - python39-spsdk 
   - python39-spur 
-  - python39-spyder-kernels 
   - python39-sqlalchemy-migrate 
   - python39-sqlglot 
   - python39-sqlite-fts4 
@@ -36908,7 +36901,6 @@ unsorted:
   - python39-tzlocal 
   - python39-u-msgpack-python 
   - python39-ua-parser 
-  - python39-uamqp 
   - python39-ubelt 
   - python39-uc-micro-py 
   - python39-ufoLib2 
@@ -36959,7 +36951,6 @@ unsorted:
   - python39-vcversioner 
   - python39-vdf 
   - python39-vdirsyncer 
-  - python39-vega 
   - python39-vega_datasets 
   - python39-venusian 
   - python39-venusian-doc 
@@ -36985,7 +36976,6 @@ unsorted:
   - python39-volatile 
   - python39-voluptuous 
   - python39-voluptuous-serialize 
-  - python39-vsts 
   - python39-vulkan 
   - python39-vulture 
   - python39-w3lib 
@@ -36999,7 +36989,6 @@ unsorted:
   - python39-watchdog 
   - python39-watchdog-doc 
   - python39-watchfiles 
-  - python39-watermark 
   - python39-wcag-contrast-ratio 
   - python39-wcmatch 
   - python39-wcwidth 
@@ -37022,7 +37011,6 @@ unsorted:
   - python39-wheezy.template 
   - python39-whichcraft 
   - python39-whitenoise 
-  - python39-widgetsnbextension 
   - python39-wikipedia 
   - python39-wirerope 
   - python39-wiring 
@@ -48817,17 +48805,20 @@ unsorted:
   - typelib-1_0-Gsf-1 
   - typelib-1_0-Gst-1_0-32bit 
   - typelib-1_0-GstAllocators-1_0 
+  - typelib-1_0-GstAnalytics-1_0 
   - typelib-1_0-GstApp-1_0 
   - typelib-1_0-GstBadAudio-1_0 
   - typelib-1_0-GstClapper-1 
   - typelib-1_0-GstCodecs-1_0 
   - typelib-1_0-GstCuda-1_0 
+  - typelib-1_0-GstDxva-1_0 
   - typelib-1_0-GstGL-1_0 
   - typelib-1_0-GstGLEGL-1_0 
   - typelib-1_0-GstGLWayland-1_0 
   - typelib-1_0-GstGLX11-1_0 
   - typelib-1_0-GstInsertBin-1_0 
   - typelib-1_0-GstMpegts-1_0 
+  - typelib-1_0-GstMse-1_0 
   - typelib-1_0-GstPlay-1_0 
   - typelib-1_0-GstPlayer-1_0 
   - typelib-1_0-GstRtp-1_0 
@@ -48917,7 +48908,7 @@ unsorted:
   - typelib-1_0-WebKitWebProcessExtension-6_0 
   - typelib-1_0-Wnck-1_0 
   - typelib-1_0-Workrave-1_0 
-  - typelib-1_0-Wp-0_4 
+  - typelib-1_0-Wp-0_5 
   - typelib-1_0-XApp-1_0 
   - typelib-1_0-XdpGtk3-1_0 
   - typelib-1_0-XdpGtk4-1_0 
@@ -49431,6 +49422,7 @@ unsorted:
   - vst-lsp-plugins 
   - vst-rnnoise 
   - vst-zam-plugins 
+  - vst3-lsp-plugins 
   - vst3-rnnoise 
   - vst3-zam-plugins 
   - vtable-dumper 

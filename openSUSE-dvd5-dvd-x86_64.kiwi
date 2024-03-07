@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20240305" schemaversion="4.1">
+<image name="OBS__openSUSE___20240306" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20240305</productvar>
+      <productvar name="VERSION">20240306</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20240305,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20240306,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20240305/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20240306/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -453,7 +453,6 @@
       <repopackage name="fcitx-table-tw-smart-cangjie6"/>
       <repopackage name="fcitx-zhuyin"/>
       <repopackage name="fd0ssh"/>
-      <repopackage name="fde-tpm-helper"/>
       <repopackage name="fdupes"/>
       <repopackage name="ffmpegthumbnailer"/>
       <repopackage name="ffmpegthumbs"/>
@@ -1648,6 +1647,7 @@
       <repopackage name="libgssdp-1_6-0"/>
       <repopackage name="libgstadaptivedemux-1_0-0"/>
       <repopackage name="libgstallocators-1_0-0"/>
+      <repopackage name="libgstanalytics-1_0-0"/>
       <repopackage name="libgstapp-1_0-0"/>
       <repopackage name="libgstaudio-1_0-0"/>
       <repopackage name="libgstbadaudio-1_0-0"/>
@@ -1657,8 +1657,10 @@
       <repopackage name="libgstcuda-1_0-0"/>
       <repopackage name="libgstfft-1_0-0"/>
       <repopackage name="libgstgl-1_0-0"/>
+      <repopackage name="libgstinsertbin-1_0-0"/>
       <repopackage name="libgstisoff-1_0-0"/>
       <repopackage name="libgstmpegts-1_0-0"/>
+      <repopackage name="libgstmse-1_0-0"/>
       <repopackage name="libgstpbutils-1_0-0"/>
       <repopackage name="libgstphotography-1_0-0"/>
       <repopackage name="libgstplay-1_0-0"/>
@@ -2319,7 +2321,6 @@
       <repopackage name="libpwquality1"/>
       <repopackage name="libpwquality1-32bit"/>
       <repopackage name="libpxbackend-1_0"/>
-      <repopackage name="libpython2_7-1_0"/>
       <repopackage name="libpython3_11-1_0"/>
       <repopackage name="libpython3_11-1_0-x86-64-v3"/>
       <repopackage name="libqaccessibilityclient-qt5-0"/>
@@ -2744,7 +2745,7 @@
       <repopackage name="libwebpmux3"/>
       <repopackage name="libwebrtc-audio-processing-1-3"/>
       <repopackage name="libwinpr2-2"/>
-      <repopackage name="libwireplumber-0_4-0"/>
+      <repopackage name="libwireplumber-0_5-0"/>
       <repopackage name="libwmf-0_2-7"/>
       <repopackage name="libwmf-tools"/>
       <repopackage name="libwnck-3-0"/>
@@ -3489,7 +3490,6 @@
       <repopackage name="purpose"/>
       <repopackage name="purpose-lang"/>
       <repopackage name="pwgen"/>
-      <repopackage name="python-base"/>
       <repopackage name="python3-apparmor"/>
       <repopackage name="python3-audit"/>
       <repopackage name="python3-brlapi"/>
