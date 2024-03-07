@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Thu Mar  7 15:22:29 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.1.4
+  * Fix creating files in custom drives, fix ContentsManagerMock
+    #15291 (@jtpio)
+  * Fix Theme color is not applied to SwitchKernel ToolbarButton
+    #15924 (@FoSuCloud)
+  * Revert "Prevent command shortcuts from preventing user input"
+    #15938 (@krassowski)
+  * Fix spurious dedent when opening inspector tooltip #15898
+    (@krassowski)
+  * Add an explicit default for inline completer providers #15899
+    (@krassowski)
+
+-------------------------------------------------------------------
+Thu Mar  7 11:04:55 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Release 4.1.3
+ * Fix Pressing enter in console with console run keystroke set to
+   enter creates a newline and runs #15869 (@FoSuCloud)
+ * Fix saving of item positions in reactive toolbar #15843
+   (@brichet)
+ * Prevent command shortcuts from preventing user input #15790
+   (@krassowski)
+ * Fix missing signals in file editor adapter #15873 (@krassowski)
+ * Fix codemirror highlight for Python builtin #15805 (@AllanChain)
+ * When attaching only typeset after rendering is completed #15810
+   (@krassowski)
+- Release 4.1.2
+  * Fix highlight sequencing when replacing text in code cells
+    #15803 (@JasonWeill)
+  * Windows platforms, erratic pasting of text into Markdown field
+    #15794 (@kiliansinger)
+  * Restore notebook scrolling on dragging a cell to the viewport
+    edge #15782 (@krassowski)
+  * Fix typing in editable elements inside of open shadow DOM
+    #15774 (@krassowski)
+- Release 4.1.1
+  * Correct Alt + number keyboard shortcuts command map #15791
+    (@g547315)
+  * Catch errors attempting to access document.cookie #15788
+    (@minrk)
+  * Fix undo/redo in console, fix undo/redo enabled state in file
+    editor #15783 (@krassowski)
+  * Fix console cells not becoming read-only after execution #15779
+    (@krassowski)
+  * Fix migration of command selectors for shortcuts #15762
+    (@krassowski)
+  * Disable (shift + ) alt + number shortcuts on Mac #15761
+    (@krassowski)
+  * Catch OSError in addition to PermissionError when sys_prefix is
+    read-only #15756 (@dhml)
+  * Fix completer auto-invoking on non-source changes #15753
+    (@krassowski)
+  * Fix outputs preservation on splitting cells #15751
+    (@krassowski)
+- Release 4.1
+  * Full changelog for user-facing changes:
+    https://jupyterlab.readthedocs.io/en/latest/getting_started/changelog.html#v4-1
+  * Custom CSS
+  * Diagrams in Markdown
+  * Inline completer
+  * Keyboard navigation improvements
+  * Execution history in notebook
+  * Opening files from tracebacks
+  * Error indicator in the table of contents
+  * Plugin Manager
+  * Virtual scrollbar for notebook in windowed mode
+  * Notifications
+  * Full notebook windowing mode improvements
+  * Search improvements
+  * Moved plugins
+- Release 4.0.12
+  * Fix jupyterlab downgrade issue on extension installation #15650
+    (@Sarthug99)
+  * Fix search highlights removal on clearing input box #15690
+    (@krassowski)
+  * Add scroll margin to headings for better alignment #15703
+    (@krassowski)
+  * Fix shortcut UI failing on filtering when empty command is
+    given #15695 (@krassowski)
+  * Fix connection loop issue with standalone foreign document in
+    LSP #15262 (@trungleduc)
+  * Fix outputarea package from not detecting updates #15642
+    (@MFA-X-AI)
+- Skip python39: no longer supported since ipython 8.19 (through
+  ipykernel)
+
+-------------------------------------------------------------------
 Sat Jan 20 11:28:26 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.0.11
