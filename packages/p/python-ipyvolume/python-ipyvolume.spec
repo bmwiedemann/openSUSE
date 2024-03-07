@@ -18,6 +18,7 @@
 
 # No bqplot for Python 3.12 yet: https://github.com/bqplot/bqplot/issues/1639
 %define skip_python312 1
+%define skip_python39 1
 Name:           python-ipyvolume
 Version:        0.6.3
 Release:        0

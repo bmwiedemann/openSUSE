@@ -71,4 +71,13 @@
     <comment>- Skip python3.12: No bqplot yet -- gh#bqplot/bqplot#1639</comment>
     <requestid>1145391</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>c338f37080ce8e1a53d140b3ec4f644e</srcmd5>
+    <version>0.6.3</version>
+    <time>1709832642</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip python39: no longer supported since ipython 8.19 (through
+  ipywidgets)</comment>
+    <requestid>1155864</requestid>
+  </revision>
 </revisionlist>
