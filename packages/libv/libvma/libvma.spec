@@ -70,8 +70,7 @@ Requires:       libvma%{lib_major} = %{version}
 Headers and symbolink link required to compile and link with the Libvma library.
 
 %prep
-%setup -q -n  %{name}-%{version}%{git_ver}
-%patch3 -p1
+%autosetup -p1 -n  %{name}-%{version}%{git_ver}
 
 %build
 ./autogen.sh
