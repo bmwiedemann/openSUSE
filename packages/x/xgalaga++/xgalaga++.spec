@@ -43,8 +43,7 @@ It is inspired by XGalaga, but rewritten from scratch,
 except for the graphics.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 # Adjust Highscore
 sed -i -e 's|/usr/local|/usr/|' \
