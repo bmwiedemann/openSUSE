@@ -55,8 +55,10 @@ Summary:        A web user interface for GNU Mailman
 License:        GPL-3.0-only
 URL:            https://gitlab.com/mailman/postorius
 #
-Source0:        https://files.pythonhosted.org/packages/source/p/postorius/postorius-%{version}.tar.gz
-Source1:        python-postorius-rpmlintrc
+Source0:        https://gitlab.com/mailman/postorius/-/releases/v%{version}/downloads/postorius-%{version}.tar.gz
+Source1:        https://gitlab.com/mailman/postorius/-/releases/v%{version}/downloads/postorius-%{version}.tar.gz.asc
+Source2:        python-postorius.keyring
+Source3:        python-postorius-rpmlintrc
 #
 Source10:       postorius-manage.sh
 Source12:       postorius.uwsgi
@@ -123,8 +125,7 @@ Requires:       %{postorius_pkgname}
 Requires:       acl
 Requires:       openssl
 Requires:       sudo
-Provides:       user(postorius)
-Provides:       group(postorius)
+Requires:       system-user-%{postorius_pkgname}
 
 %description -n %{postorius_pkgname}-web
 A web user interface for GNU Mailman.
@@ -145,6 +146,15 @@ A web user interface for GNU Mailman.
 
 This package holds the uwsgi configuration.
 
+%package -n system-user-%{postorius_pkgname}
+Summary:        System user for HyperKitty
+BuildArch:      noarch
+BuildRequires:  sysuser-tools
+%sysusers_requires
+
+%description -n system-user-%{postorius_pkgname}
+System user for HyperKitty.
+
 %prep
 %setup -q -n postorius-%{version}
 cp %{SOURCE20} .
@@ -154,6 +164,10 @@ touch settings_local.py
 rsync -a example_project/* build_static_files
 
 %autopatch -p1
+
+tee > %{postorius_pkgname}.sysuser <<EOF
+u %{postorius_pkgname} - "Postorius" %{postorius_basedir} -
+EOF
 
 %build
 sed -i 's|^#!/usr/bin/env.*|#!%{__mypython}|' \
@@ -167,6 +181,8 @@ sed -i 's|python3|%{mypython}|' %{SOURCE12}
 install -d -m 0755 build_static_files/logs
 export PYTHONPATH=$(pwd)/src
 %python_exec build_static_files/manage.py collectstatic --clear --noinput
+
+%sysusers_generate_pre %{postorius_pkgname}.sysuser %{postorius_pkgname}
 
 %install
 %pyproject_install
@@ -207,6 +223,9 @@ install -m 0750 %{SOURCE10} %{buildroot}%{_sbindir}/postorius-manage
 install -d -m 0755 %{buildroot}%{_sysconfdir}/uwsgi/vassals
 install -m 0644 %{SOURCE12} %{buildroot}%{_sysconfdir}/uwsgi/vassals/postorius.ini
 
+install -d -m 0755 %{buildroot}%{_sysusersdir}
+install -m 0644 %{postorius_pkgname}.sysuser %{buildroot}%{_sysusersdir}/%{postorius_pkgname}.conf
+
 %if %{with testsuite}
 %check
 export PYTHONPATH="$(pwd):$(pwd)/src"
@@ -228,6 +247,8 @@ if ! grep -q "^SECRET_KEY.*" %{postorius_etcdir}/settings_local.py; then
 fi
 %{_sbindir}/postorius-manage makemigrations --pythonpath /srv/www/webapps/mailman/postorius/ --settings settings
 %{_sbindir}/postorius-manage migrate --pythonpath /srv/www/webapps/mailman/postorius/ --settings settings
+
+%pre -n system-user-%{postorius_pkgname} -f %{postorius_pkgname}.pre
 
 %files -n %{postorius_pkgname}
 %doc README.rst example_project src/postorius/doc/*.rst
@@ -267,5 +288,8 @@ fi
 %dir %{_sysconfdir}/uwsgi
 %dir %{_sysconfdir}/uwsgi/vassals
 %config (noreplace) %{_sysconfdir}/uwsgi/vassals/postorius.ini
+
+%files -n system-user-%{postorius_pkgname}
+%{_sysusersdir}/%{postorius_pkgname}.conf
 
 %changelog
