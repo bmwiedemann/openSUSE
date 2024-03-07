@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 13:54:25 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Jun 11 02:15:24 UTC 2019 - Max Mitschke <maxmitschke@fastmail.com>
 
 - Cleaned up specfile
