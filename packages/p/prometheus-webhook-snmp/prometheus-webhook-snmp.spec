@@ -44,8 +44,7 @@ prometheus-webhook-snmp is a Prometheus Alertmanager receiver that
 translates incoming notifications into SNMP traps.
 
 %prep
-%setup -n %{name}-%{version}
-%patch0 -p1
+%autosetup -p1
 
 %build
 
