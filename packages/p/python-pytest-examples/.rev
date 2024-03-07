@@ -24,4 +24,16 @@
   * Support code changes in Python 3.12+.</comment>
     <requestid>1141121</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>1307d2f53b6c9a355108782c779358ed</srcmd5>
+    <version>0.0.10</version>
+    <time>1709832581</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop patch suppot-python-312.patch.
+- Add patch support-python-312.patch, which is a rename of the previous
+  patch.
+- Add patch fix-traceback.patch, support traceback changes of
+  Python 3.12.</comment>
+    <requestid>1155765</requestid>
+  </revision>
 </revisionlist>
