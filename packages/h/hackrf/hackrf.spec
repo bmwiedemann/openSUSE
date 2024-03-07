@@ -1,7 +1,7 @@
 #
 # spec file for package hackrf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define libname lib%{name}%{sover}
 %define hackrf_group  hackrf
 Name:           hackrf
-Version:        2023.01.1
+Version:        2024.02.1
 Release:        0
 Summary:        Support programs for the open source SDR hardware
 License:        GPL-2.0-only
@@ -107,6 +107,7 @@ getent group %{hackrf_group} >/dev/null || groupadd -r %{hackrf_group}
 %files
 %license ../COPYING
 %doc ../RELEASENOTES ../Readme.md
+%{_bindir}/hackrf_biast
 %{_bindir}/hackrf_clock
 %{_bindir}/hackrf_cpldjtag
 %{_bindir}/hackrf_debug
