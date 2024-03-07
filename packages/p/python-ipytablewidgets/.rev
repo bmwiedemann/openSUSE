@@ -15,4 +15,13 @@
     <comment>- Suggest primary python package -- boo#1214354</comment>
     <requestid>1104437</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>cff66d003d1e283dc5931f13386b2230</srcmd5>
+    <version>0.3.1</version>
+    <time>1709832641</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip python39: no longer supported since ipython 8.19 (through
+  ipywidgets)</comment>
+    <requestid>1155862</requestid>
+  </revision>
 </revisionlist>
