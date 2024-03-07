@@ -48,8 +48,7 @@ a small fleet of robotic fighters which you control from the relative
 safety of the Chromium vessel.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 %configure --docdir=%{_docdir}/%{name}
