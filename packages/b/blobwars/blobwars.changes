@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 10:11:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Aug 16 08:01:08 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add blobwars-glibc-2.38.patch: rename internally used strlcpy
