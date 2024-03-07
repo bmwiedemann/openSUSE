@@ -1,7 +1,7 @@
 #
 # spec file for package python-fixedint
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-fixedint
 Version:        0.2.0
 Release:        0
@@ -24,9 +24,9 @@ Summary:        simple fixed-width integers
 License:        Python-2.0
 URL:            https://github.com/nneonneo/fixedint
 Source:         https://files.pythonhosted.org/packages/source/f/fixedint/fixedint-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 
