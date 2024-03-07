@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 29 11:32:53 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.072:
+  * ui: add /app/project/:id with propagation
+  * Rework rollout to include subfolders in repo projects
+
+-------------------------------------------------------------------
 Thu Feb 08 10:05:38 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.071:
