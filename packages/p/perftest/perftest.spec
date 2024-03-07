@@ -40,8 +40,7 @@ BuildRequires:  pciutils-devel
 gen2 uverbs microbenchmarks
 
 %prep
-%setup -q -n %{name}-%{version}%{extra_version}
-%patch4 -p1
+%autosetup -p1 -n %{name}-%{version}%{extra_version}
 
 %build
 ./autogen.sh
