@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Feb 21 06:15:30 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 1.17.25:
+  Campaigns
+  * Eastern Invasion
+    - Fix S04b’s time limit, which extends by 10 turns if a bonus
+      objective is completed.
+    - Fix macros in translatable strings, because they prevent
+      translation.
+  * Winds of Fate
+    - Made the epilogue more vague about events on the Green Isle
+    - Removed part of epilogue suggesting a Drake-led war
+      around 120YW
+  Translations
+  * Updated translations: Arabic, British English, Czech, Finnish,
+    French, German, Italian, Slovak
+  Units
+  * New fish and bug zombie variations
+  User interface
+  * Added hotkeys for various menu items and ThemeWML buttons in
+    Map Editor
+  * Added shortcut Ctrl+G for 'I'm Ready' button in mp_staging
+    dialog
+  * Fix the left pane of the help browser’s layout for
+    right-to-left languages (Arabic and Hebrew)
+  Miscellaneous and Bug Fixes
+  * wmllint now warns about [kill] tags containing [filter] tags
+  * Fix a regression from 1.13.11 that inverted horizontal
+    scrolling with SDL versions 2.0.18+ on X11 and versions
+    2.0.20+ on Wayland
+  * Run wesnothd server as _wesnoth:_wesnoth instead of
+    nobody:users, improving safety and fixing a warning message
+    in systemd 246+
+- Full Changelog for changes since 1.17.22
+  https://github.com/wesnoth/wesnoth/blob/master/changelog.md#version-11725
+- Use boost 1.7.5 for openSUSE Leap
+- Use %patch -P N instead of deprecated %patchN, prepare for RPM 4.20
+
+-------------------------------------------------------------------
 Mon Nov  6 13:42:57 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - update to 1.17.22
