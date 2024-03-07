@@ -1,7 +1,7 @@
 #
 # spec file for package wesnoth
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define boost_min_version 1.66
+%define boost_min_version 1.67
 Name:           wesnoth
-Version:        1.17.22
+Version:        1.17.25
 Release:        0
 Summary:        Fantasy Turn-Based Strategy Game
 License:        EPL-1.0 AND GPL-2.0-or-later
@@ -27,13 +27,27 @@ URL:            https://www.wesnoth.org/
 # https://github.com/wesnoth/wesnoth/issues/6986 - How about adding a note to the GitHub release page saying "Don't download the tarballs from here"?
 Source:         http://files.wesnoth.org/%{name}-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE wesnoth-cmake-fix-find-readline.patch - cmake 3.20 (used on leap) can't find readline via pkg_check_modules
-Patch1:         wesnoth-cmake-fix-find-readline.patch
+Patch0:         wesnoth-cmake-fix-find-readline.patch
 BuildRequires:  cmake >= 3.14
 BuildRequires:  dejavu
 BuildRequires:  fdupes
 BuildRequires:  fribidi-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
+%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+BuildRequires:  libboost_atomic1_75_0-devel
+BuildRequires:  libboost_chrono1_75_0-devel
+BuildRequires:  libboost_coroutine1_75_0-devel
+BuildRequires:  libboost_date_time1_75_0-devel
+BuildRequires:  libboost_filesystem1_75_0-devel
+BuildRequires:  libboost_iostreams1_75_0-devel
+BuildRequires:  libboost_locale1_75_0-devel
+BuildRequires:  libboost_program_options1_75_0-devel
+BuildRequires:  libboost_random1_75_0-devel
+BuildRequires:  libboost_regex1_75_0-devel
+BuildRequires:  libboost_system1_75_0-devel
+BuildRequires:  libboost_thread1_75_0-devel
+%else
 BuildRequires:  libboost_atomic-devel >= %{boost_min_version}
 BuildRequires:  libboost_chrono-devel >= %{boost_min_version}
 BuildRequires:  libboost_coroutine-devel >= %{boost_min_version}
@@ -46,6 +60,8 @@ BuildRequires:  libboost_random-devel >= %{boost_min_version}
 BuildRequires:  libboost_regex-devel >= %{boost_min_version}
 BuildRequires:  libboost_system-devel >= %{boost_min_version}
 BuildRequires:  libboost_thread-devel >= %{boost_min_version}
+%endif
+BuildRequires:  libopenssl-3-devel
 BuildRequires:  libvorbis-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
@@ -115,7 +131,7 @@ This package solely contains the basic file structure in order to have it owned 
 %prep
 %setup -q
 %if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
-%patch1 -p1
+%patch -P 0 -p1
 %endif
 
 # Fix rpmlint's "E: env-script-interpreter".
@@ -176,6 +192,8 @@ done
 %{_bindir}/campaignd
 
 %files fslayout
+%dir %{_mandir}/bg
+%dir %{_mandir}/bg/man6
 %dir %{_mandir}/en_GB
 %dir %{_mandir}/en_GB/man6
 %dir %{_mandir}/et
