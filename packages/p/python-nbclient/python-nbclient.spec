@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-nbclient
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,6 +20,7 @@
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
+%define skip_python39 1
 %else
 %define psuffix %{nil}
 %bcond_with test
@@ -52,7 +53,7 @@ BuildRequires:  alts
 Requires:       alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 %if %{with test}
 BuildRequires:  %{python_module flaky}
