@@ -44,8 +44,7 @@ outmaneuver them. A fun and very silly game that proves you don't need
 fancy graphical user interfaces to have a good time.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 %make_build CFLAGS="%{optflags}"
