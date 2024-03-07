@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  7 15:12:01 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Build gpaste with gcc13 on Leap 15
+- Added gpaste-rpmlintrc for bypass shlib-policy-name-error check
+  with Leap15/SLE15 rpmlint
+
+-------------------------------------------------------------------
 Wed Jan 17 07:41:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop pkgconfig(mutter-clutter-13) BuildRequires: no longer needed
