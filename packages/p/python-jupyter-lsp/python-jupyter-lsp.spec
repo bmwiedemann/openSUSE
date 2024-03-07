@@ -16,14 +16,16 @@
 #
 
 
-%define shortversion 2.2.2
+%define shortversion 2.2.4
 Name:           python-jupyter-lsp
-Version:        2.2.2
+Version:        2.2.4
 Release:        0
 Summary:        LSP for Jupyter Notebook/Lab server
 License:        BSD-3-Clause
+# SourceRepository: https://github.com/jupyter-lsp/jupyterlab-lsp
 URL:            https://github.com/jupyter-lsp/jupyterlab-lsp/tree/main/python_packages/jupyter_lsp
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter-lsp/jupyter-lsp-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -80,7 +82,6 @@ donttest="test_r_package_detection"
 %files -n jupyter-lsp
 %doc README.md
 %license LICENSE
-%_jupyter_config %_jupyter_servextension_confdir/jupyter-lsp-notebook.json
 %_jupyter_config %_jupyter_server_confdir/jupyter-lsp-jupyter-server.json
 
 %changelog

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar  7 12:48:15 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.2.4
+  * fix websocket handler incorrectly inheriting from APIHandler
+    rather than JupyterHandler (#1069)
+  * remove unused notebook config entry point (#1069)
+  * support latest version of typescript-language-server (#1064)
+
+-------------------------------------------------------------------
 Fri Jan 19 08:16:17 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.2.2
