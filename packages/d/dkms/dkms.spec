@@ -1,7 +1,7 @@
 #
 # spec file for package dkms
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dkms
-Version:        3.0.12
+Version:        3.0.13
 Release:        0
 Summary:        Dynamic Kernel Module Support Framework
 License:        GPL-2.0-only
@@ -51,6 +51,28 @@ BuildArch:      noarch
 This package contains the framework for the Dynamic
 Kernel Module Support (DKMS) method for installing
 module RPMS as originally developed by Dell.
+
+%package bash-completion
+Summary:        Bash completion for %{name}
+BuildRequires:  bash-completion
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash command line completion support for %{name}.
+
+%package zsh-completion
+Summary:        Zsh completion for %{name}
+BuildRequires:  zsh
+Requires:       %{name} = %{version}
+Requires:       zsh
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+Zsh command line completion support for %{name}.
 
 %prep
 %setup -q
@@ -125,7 +147,6 @@ exit 0
 %{_sysconfdir}/kernel/postinst.d/%{name}
 %{_sysconfdir}/kernel/prerm.d/%{name}
 %{_sysconfdir}/kernel/install.d/40-%{name}.install
-%{_datadir}/bash-completion/completions/%{name}
 %{_unitdir}/dkms.service
 # these dirs are for plugins - owned by other packages
 %dir %{_sysconfdir}/kernel
@@ -134,5 +155,12 @@ exit 0
 %dir %{_sysconfdir}/kernel/prerm.d
 %dir %{_prefix}/lib/kernel/
 %dir %{_prefix}/lib/kernel/install.d
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/%{name}
+
+%files zsh-completion
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_%{name}
 
 %changelog

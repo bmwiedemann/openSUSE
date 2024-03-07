@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar  7 10:54:04 UTC 2024 - Alexandru Gabriel Bradatan <alex.bradatan85@yahoo.it>
+
+- Update to 3.0.13
+  * New dkms status adjective broken
+  * Allow overriding the /lib/modules directory
+  * Adjust kernel module compression, compatible with the in-kernel decompressors
+- Add dkms-bash-completion sub-package
+- Add dkms-zsh-completion sub-package
+
+-------------------------------------------------------------------
 Fri Oct 27 07:43:34 UTC 2023 - Alexandru Gabriel Bradatan <alex.bradatan85@yahoo.it>
 
 - Update to 3.0.12
