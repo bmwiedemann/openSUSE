@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:12:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Tue Feb  9 20:05:18 UTC 2021 - Matthias Eliasson <elimat@opensuse.org>
 
 - use LDC for all architectures and for all openSUSE targets.
