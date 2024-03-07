@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar  6 09:00:01 UTC 2024 - Josef Reidinger <jreidinger@suse.com>
+
+- Replace 'mkinitrd' with dracut (bsc#1220995)
+- 5.0.1
+
+-------------------------------------------------------------------
+Tue Dec 12 14:35:37 UTC 2023 - Steffen Maier <maier@linux.ibm.com>
+
+- onpanic: add support for multipathed zfcp-attached SCSI disks
+  (bsc#1020336, also related to bsc#1216257).
+
+-------------------------------------------------------------------
 Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
 
 - 5.0.0 (bsc#1185510)
