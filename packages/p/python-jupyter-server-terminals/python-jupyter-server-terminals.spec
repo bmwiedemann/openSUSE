@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-jupyter-server-terminals
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -20,14 +20,15 @@
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
+%define skip_python39 1
 %else
 %define psuffix %{nil}
 %bcond_with test
 %endif
 
-%define distversion 0.5.1
+%define distversion 0.5.2
 Name:           python-jupyter-server-terminals%{psuffix}
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 Summary:        A Jupyter Server Extension Providing Terminals
 License:        BSD-3-Clause

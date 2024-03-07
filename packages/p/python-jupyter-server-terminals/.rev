@@ -47,4 +47,16 @@
   * fix: support OPTIONS method for CORS #102 (@zhanba)</comment>
     <requestid>1140286</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1dc4f290d70d9d860e3db97a3f9b9a3b</srcmd5>
+    <version>0.5.2</version>
+    <time>1709832687</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.2
+  * Fix usage of await #106 (@blink1073)
+  * Set terminals_available to False when not enabled #105
+    (@Wh1isper)
+- Skip testing on python39</comment>
+    <requestid>1155951</requestid>
+  </revision>
 </revisionlist>
