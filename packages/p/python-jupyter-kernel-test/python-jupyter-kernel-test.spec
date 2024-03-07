@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-kernel-test
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@ Provides:       python-jupyter_kernel_test = %{version}-%{release}
 Obsoletes:      python-jupyter_kernel_test < %{version}-%{release}
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module ipykernel}
+BuildRequires:  %{python_module ipykernel if %python-base >= 3.10}
 BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module jupyter_client >= 6.1.13}
 # /SECTION
@@ -55,7 +55,13 @@ successful code execution and conformance with the Jupyter Messaging Protocol.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest -v
+export PYTHONDONTWRITEBYTECODE=1
+%{python_expand # don't test anything on python39: no ipykernel anymore
+export PYTHONPATH=%{buildroot}%{$python_sitelib}
+if [ ${python_flavor} != "python39" ]; then
+  $python -m unittest -v
+fi
+}
 
 %files %{python_files}
 %license LICENSE
