@@ -1,7 +1,7 @@
 #
 # spec file for package git-cliff
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,15 @@
 
 
 Name:           git-cliff
-Version:        1.4.0
+Version:        2.1.2
 Release:        0
 Summary:        Changelog generator for git repositories
 URL:            https://github.com/orhun/git-cliff
 License:        (Apache-2.0 OR MIT) AND Unicode-DFS-2016 AND (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND BSD-3-Clause AND ISC AND MIT AND MPL-2.0 AND GPL-3.0-only AND SUSE-GPL-2.0-with-linking-exception+
 Source0:        https://github.com/orhun/git-cliff/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-Source2:        cargo_config
+BuildRequires:  cargo
 BuildRequires:  cargo-packaging
-BuildRequires:  rust+cargo
 BuildRequires:  zstd
 ExclusiveArch:  %{rust_arches}
 
@@ -66,11 +65,10 @@ Bash command-line completion support for %{name}.
 
 %prep
 %autosetup -a1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
-%{cargo_build} --no-default-features
+# We don't need to check an update. github feature is nice to have though
+%{cargo_build} --no-default-features -F github
 mkdir -p target/completions/
 mkdir -p target/man/
 OUT_DIR=target/completions/ ./target/release/%{name}-completions
