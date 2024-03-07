@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:04:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sat Jan 21 15:02:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - always build all configured python bindings for Tumbleweed+ 
