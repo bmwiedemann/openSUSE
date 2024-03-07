@@ -1,7 +1,7 @@
 #
 # spec file for package python-pypuppetdb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pypuppetdb
 Version:        2.5.1
@@ -51,16 +50,18 @@ More information: https://github.com/nedap/pypuppetdb
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+# requirements-test.txt packages oddly
+rm %{buildroot}%{_prefix}/requirements_for_tests/requirements-test.txt
+
 %check
 # https://github.com/voxpupuli/pypuppetdb/issues/227
 sed -i 's:import mock:from unittest import mock:' tests/test_*.py
 %pytest
-# requirements-test.txt packages oddly
-rm %{buildroot}/usr/requirements_for_tests/requirements-test.txt
 
 %files %{python_files}
 %doc README.md CHANGELOG.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pypuppetdb
+%{python_sitelib}/pypuppetdb-%{version}*-info
 
 %changelog
