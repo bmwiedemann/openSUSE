@@ -223,4 +223,12 @@
     <comment>Update to 7.14.6, Fix for CVE-2023-40619, boo#1215551 (forwarded request 1123213 from computersalat)</comment>
     <requestid>1123214</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>4ab2fc41a917de2e2bae32d3dccfa139</srcmd5>
+    <version>7.14.6</version>
+    <time>1709845363</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1156110</requestid>
+  </revision>
 </revisionlist>
