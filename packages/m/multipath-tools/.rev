@@ -1937,4 +1937,14 @@ by an upstream reviewed commit. (forwarded request 1109432 from mwilck)</comment
   since multipath-tools 0.8.6. (forwarded request 1152109 from mwilck)</comment>
     <requestid>1152111</requestid>
   </revision>
+  <revision rev="162" vrev="1">
+    <srcmd5>42abdf6a6b0f4c376bef6df293462d68</srcmd5>
+    <version>0.9.8+87+suse.f72b9f3</version>
+    <time>1709832444</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.8+87+suse.f72b9f3:
+  * fix misspelled DM_UDEV_DISABLE_OTHER_RULES_FLAG in udev rules
+    (bsc#1220810) (forwarded request 1155345 from mwilck)</comment>
+    <requestid>1155346</requestid>
+  </revision>
 </revisionlist>

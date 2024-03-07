@@ -23,7 +23,7 @@
 %endif
 
 Name:           crun
-Version:        1.14
+Version:        1.14.4
 Release:        0
 Summary:        OCI runtime written in C
 License:        GPL-2.0-or-later

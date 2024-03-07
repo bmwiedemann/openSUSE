@@ -287,4 +287,15 @@
   -fmin-function-alignment.  [bsc#1214934]</comment>
     <requestid>1145209</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>f478a614f65f4cd01356a88a96d5af9b</srcmd5>
+    <version>13.2.1+git8285</version>
+    <time>1709832441</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix libgccjit-devel dependency, a newer shared library is OK.
+- Fix libgccjit dependency, the corresponding compiler isn't required.
+
+- Use %patch -P N instead of %patchN.</comment>
+    <requestid>1155262</requestid>
+  </revision>
 </revisionlist>

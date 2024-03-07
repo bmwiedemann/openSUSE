@@ -381,4 +381,12 @@
 - Use %patch -P N instead of deprecated %patchN.</comment>
     <requestid>1154344</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>161d6b271ac49cddcdeb74cfd146c30f</srcmd5>
+    <version>1.16.1</version>
+    <time>1709832471</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1155614</requestid>
+  </revision>
 </revisionlist>

@@ -102,41 +102,41 @@ to compile and link programs against the TCP wrapper library.
 
 %prep
 %setup -q -n tcp_wrappers_%{version}
-%patch0
-%patch1
-%patch2
-%patch3
-%patch4
-%patch5
-%patch6
-%patch7
-%patch8
-%patch9
-%patch10
-%patch11
-%patch12
-%patch13
-%patch14
-%patch15
-%patch16
-%patch17
-%patch18
-%patch19
-%patch20
-%patch21
-%patch22
-%patch23
-%patch24
-%patch25
-%patch26
-%patch27
-%patch28
-%patch29
-%patch30 -p1
-%patch31
-%patch32 -p1
-%patch33 -p1
-%patch34
+%patch -P 0
+%patch -P 1
+%patch -P 2
+%patch -P 3
+%patch -P 4
+%patch -P 5
+%patch -P 6
+%patch -P 7
+%patch -P 8
+%patch -P 9
+%patch -P 10
+%patch -P 11
+%patch -P 12
+%patch -P 13
+%patch -P 14
+%patch -P 15
+%patch -P 16
+%patch -P 17
+%patch -P 18
+%patch -P 19
+%patch -P 20
+%patch -P 21
+%patch -P 22
+%patch -P 23
+%patch -P 24
+%patch -P 25
+%patch -P 26
+%patch -P 27
+%patch -P 28
+%patch -P 29
+%patch -P 30 -p1
+%patch -P 31
+%patch -P 32 -p1
+%patch -P 33 -p1
+%patch -P 34
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

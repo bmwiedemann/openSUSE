@@ -46,8 +46,7 @@ Recommends:     perl(Date::Calc::XS) >= 6.4
 * *
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{cpan_name}-%{version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor

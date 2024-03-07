@@ -18,7 +18,7 @@
 
 # Temporarily bump version to aid package split
 Name:           kexec-tools
-Version:        2.0.27
+Version:        2.0.28
 Release:        0
 Summary:        Tools for loading replacement kernels into memory
 License:        GPL-2.0-or-later
@@ -29,13 +29,13 @@ Source1:        https://kernel.org/pub/linux/utils/kernel/kexec/%{name}-%{versio
 Source2:        kexec-tools.keyring
 Source3:        kexec-load.service
 Source4:        %{name}-rpmlintrc
-Patch0:         6419b008fde783fd0cc2cc266bd1c9cf35e99a0e.patch
 Patch3:         %{name}-disable-test.patch
 Patch4:         %{name}-vmcoreinfo-in-xen.patch
 # https://patchwork.kernel.org/project/linux-riscv/patch/20190416123233.4779-1-mick@ics.forth.gr/
 Patch5:         %{name}-riscv64.patch
 Patch10:        %{name}-SYS_getrandom.patch
 Patch11:        kexec-dont-use-kexec_file_load-on-xen.patch
+Patch12:        fix-building-on-x86_64-with-binutils-2.41.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  systemd-rpm-macros

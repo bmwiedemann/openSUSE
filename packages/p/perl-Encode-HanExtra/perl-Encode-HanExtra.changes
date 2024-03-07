@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  4 12:51:02 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Sat Sep 23 15:03:00 UTC 2017 - coolo@suse.com
 
 - compile with perl 5.26 by patching the Makefile

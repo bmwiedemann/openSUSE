@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar  5 14:58:43 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update to libXaw3d 1.6.6:
+  * unifdef ISC
+  * unifdef macII
+  * Stop working around a bug in the macII A/UX 1.0 cc
+  * Remove unused sharedlib.c
+  * It was only built by Imake if SUNSHLIB was defined.
+  * SUNSHLIB was only set in the Imake configs for SunOS versions < 5
+  * unifdef __UNIXOS2__
+  * unifdef __osf__
+  * gitlab CI: add xz-utils to container for "make distcheck"
+  * Also update to latest ci-templates
+  * unifdef AIXV3
+  * unifdef sony
+  * unifdef NCR
+  * Multisink.c: Clear -Werror=incompatible-pointer-types error
+    this fixes boo#1220977
+
+-------------------------------------------------------------------
 Wed Aug 16 12:33:24 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Update to libXaw3d 1.6.5:

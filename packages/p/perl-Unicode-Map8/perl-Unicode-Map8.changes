@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  4 15:37:46 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Sat Jan 18 07:18:32 UTC 2014 - coolo@suse.com
 
 - use new perl template, fix license

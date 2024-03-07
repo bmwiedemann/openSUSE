@@ -60,8 +60,7 @@ The BSD radix code is thoroughly described in "TCP/IP Illustrated, Volume
 Table for Berkeley Unix'' by Keith Sklower.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch1 -p1
+%autosetup -p1 -n %{cpan_name}-%{version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

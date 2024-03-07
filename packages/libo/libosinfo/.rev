@@ -448,4 +448,12 @@ New package for Factory, dependency for gnome-boxes. Hardware seems to be the be
   directory structure. (forwarded request 1139227 from dimstar)</comment>
     <requestid>1139228</requestid>
   </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>ebe082396b02c7b2bcf54e29d58f93ef</srcmd5>
+    <version>1.11.0</version>
+    <time>1709832481</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1220228 - virt-manager crashes when its viewer is opened on a running guest that uses spice graphics (on SLE15-SP6)</comment>
+    <requestid>1155741</requestid>
+  </revision>
 </revisionlist>

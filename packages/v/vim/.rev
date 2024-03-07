@@ -7489,4 +7489,41 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>1148648</requestid>
   </revision>
+  <revision rev="363" vrev="1">
+    <srcmd5>d3a6bd721b99912aa44136c3c023877a</srcmd5>
+    <version>9.1.0151</version>
+    <time>1709832474</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 9.1.0151
+- refreshed vim-7.3-filetype_spec.patch
+ *  ml_get_buf_len() does not consider text properties
+ *  Several minor 'winfixbuf' issues
+ *  Update Serbian messages 
+ *  Recognize &quot;__inline&quot; 
+ *  Update base-syntax, fix escaping :syn and :hi sub-groups 
+ *  Update syntax file, fix issue #962 
+ *  null pointer member access when accessing 'winfixbuf' property
+ *  update syntax script
+ *  Update base-syntax, fix issue #14135 
+ *  Highlight the error message at *E1513*
+ *  Update base-syntax, improve :augroup highlighting 
+ *  Use unnamed register when clipboard not working 
+ *  Vim9: can't call internal methods with objects
+ *  Cannot keep a buffer focused in a window
+ *  Updated Russian installer translation 
+ *  Recognise text blocks 
+ *  Update ftplugin, browsefilter labels 
+ *  Improve the recognition of literals 
+ *  v:echospace wrong with invalid value of 'showcmdloc'
+ *  some improvements to getregion() docs 
+ *  update &quot;Last Change header&quot;, remove trailing whitespace
+ *  handle file/dir symlinks specifically in tree mode
+ *  v:echospace not correct when 'showcmdloc' != last
+ *  getregion() needs more tests
+ *  disable multiline_scalar detection by default
+ *  [security]: autocmd causes use-after-free in set_curbuf()
+ *  getregion() can be improved
+ *  include runtime/syntax/testdir/ftplugin</comment>
+    <requestid>1155625</requestid>
+  </revision>
 </revisionlist>

@@ -73,9 +73,8 @@ care of a lot of the (usually) annoying (but sometimes necessary) features
 that come with XML and XML::Parser.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -p1 -n %{cpan_name}-%{version}
 find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
-%patch0 -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

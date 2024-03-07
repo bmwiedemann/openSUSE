@@ -39,8 +39,7 @@ JIS 2000, hence the module name).
 %define __find_requires %{_prefix}/lib/rpm/find-requires
 
 %prep
-%setup -q -n Encode-JIS2K-%{version}
-%patch0 -p1
+%autosetup -p1 -n Encode-JIS2K-%{version}
 
 %build
 CFLAGS="%{optflags}" perl Makefile.PL

@@ -130,4 +130,27 @@
 - Port patch xaw3d-secure.patch</comment>
     <requestid>1104169</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d34fd1b67ab7d8880d22b4f63125456b</srcmd5>
+    <version>1.6.6</version>
+    <time>1709832462</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to libXaw3d 1.6.6:
+  * unifdef ISC
+  * unifdef macII
+  * Stop working around a bug in the macII A/UX 1.0 cc
+  * Remove unused sharedlib.c
+  * It was only built by Imake if SUNSHLIB was defined.
+  * SUNSHLIB was only set in the Imake configs for SunOS versions &lt; 5
+  * unifdef __UNIXOS2__
+  * unifdef __osf__
+  * gitlab CI: add xz-utils to container for &quot;make distcheck&quot;
+  * Also update to latest ci-templates
+  * unifdef AIXV3
+  * unifdef sony
+  * unifdef NCR
+  * Multisink.c: Clear -Werror=incompatible-pointer-types error
+    this fixes boo#1220977</comment>
+    <requestid>1155454</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,3 @@
+# extra testing requirements not declared in python metadata
+addFilter("python-leftover-require python.*-beautifulsoup4")
+addFilter("python-leftover-require python.*-percy")

@@ -36,10 +36,10 @@ BuildRequires:  pkgconfig(check)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-%if 0%{suse_version} > 1550
-BuildRequires:  pkgconfig(libsoup-3.0)
-%else
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150600
 BuildRequires:  pkgconfig(libsoup-2.4)
+%else
+BuildRequires:  pkgconfig(libsoup-3.0)
 %endif
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt) >= 1.0.0

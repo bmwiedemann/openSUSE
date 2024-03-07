@@ -57,9 +57,7 @@ This class collection aims to fully conform to the SPF specification (RFC
 a reference for other developers of SPF implementations.
 
 %prep
-%setup -q -n %{cpan_name}-v%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n %{cpan_name}-v%{version}
 
 %build
 perl Build.PL installdirs=vendor

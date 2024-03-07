@@ -134,4 +134,23 @@
     <comment>- Update to release 1.7.0</comment>
     <requestid>1123160</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f9059ee5cff3795b5a0454d532023f99</srcmd5>
+    <version>1.8.0</version>
+    <time>1709832477</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.8.0
+  * Improve the tradeoffs for the random access mode across presets:
+  * Speedup CRF presets M6 to M0 by 17-53% while maintaining
+    similar quality levels
+  * Re-adjust CRF presets M7 to M13 for better quality with BD-rate
+    gains ranging from 1-4%
+  * Improve the quality and speed of the 1-pass VBR mode
+  * Add API allowing to update bitrate / CRF and Key_frame
+    placement during the encoding session for CBR lowdelay mode and
+    CRF Random Access mode
+  * ARM Neon SIMD optimizations for most critical kernels allowing
+    for a 4.5-8x fps speedup vs the c implementation</comment>
+    <requestid>1155722</requestid>
+  </revision>
 </revisionlist>

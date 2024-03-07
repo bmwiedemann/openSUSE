@@ -42,8 +42,7 @@ several megabytes; hence, this CPAN module tries to provide the rest of
 them.
 
 %prep
-%setup -q -n Encode-HanExtra-%{version}
-%patch1 -p1
+%autosetup -p1 -n Encode-HanExtra-%{version}
 
 %build
 sed -i -e 's/use inc::Module::Install;/use lib q[.];\nuse inc::Module::Install;/' Makefile.PL

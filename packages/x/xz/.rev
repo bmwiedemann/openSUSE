@@ -715,4 +715,41 @@
     <comment></comment>
     <requestid>1142679</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>fd78f84e2975bc117119ae3e81c198f2</srcmd5>
+    <version>5.6.0</version>
+    <time>1709832439</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.6.0:
+  * This bumps the minor version of liblzma because new
+    features were added. The API and ABI are still backward
+    compatible with liblzma 5.4.x and 5.2.x and 5.0.x.
+  * liblzma:
+    - Disabled the branchless C variant in the LZMA
+    decoder based on the benchmark results from the community.
+    - Disabled x86-64 inline assembly on x32 to fix the
+    build.
+  * Sandboxing support in xz:
+    - Landlock is now used even when xz needs to create
+    files.
+    - Landlock and pledge(2) are now stricter when
+    reading from more than one input file and only writing to
+    standard output.
+    - Added support for Landlock ABI version 4.
+    - Now builds lzmainfo and lzmadec.
+    - xzdiff, xzgrep, xzless, xzmore, and their symlinks
+    are now installed. The scripts are also tested during &quot;make
+    test&quot;.
+    - Added translation support for xz, lzmainfo, and the
+      man pages.
+    - Minimum required CMake version is now 3.14.
+  * liblzma:
+    - LZMA decoder: Speed optimizations to the C code and
+    added GCC &amp; Clang compatible inline assembly for
+    x86-64.
+    - Added lzma_mt_block_size() to recommend a Block
+    size for multithreaded encoding.
+    - Added CLMUL-based CRC32 on x86-64 and E2K with</comment>
+    <requestid>1155110</requestid>
+  </revision>
 </revisionlist>

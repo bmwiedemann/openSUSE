@@ -1,7 +1,7 @@
 #
 # spec file for package python-chartify
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,19 @@
 
 
 %{?sle15_python_module_pythons}
+%define skip_python39 1
 Name:           python-chartify
-Version:        4.0.2
+Version:        4.0.5
 Release:        0
 Summary:        Python library for plotting charts
 License:        Apache-2.0
 URL:            https://github.com/spotify/chartify
 Source:         https://github.com/spotify/chartify/archive/%{version}.tar.gz#/chartify-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM chartify-pr170-pd.melt-kwarg.patch gh#spotify/chartify#170
+Patch0:         chartify-pr170-pd.melt-kwarg.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -32,11 +37,11 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module Pillow >= 8.4.0}
 BuildRequires:  %{python_module bokeh >= 3.0.0}
-BuildRequires:  %{python_module ipykernel >= 5.0}
-BuildRequires:  %{python_module ipython >= 7.0}
+BuildRequires:  %{python_module ipykernel}
+BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy >= 1.0.0 with %python-scipy < 2}
+BuildRequires:  %{python_module scipy >= 1.0.0}
 # ignoring https://github.com/SeleniumHQ/selenium/issues/5296
 BuildRequires:  %{python_module selenium >= 3.7.0}
 # /SECTION
@@ -47,21 +52,20 @@ BuildRequires:  %{python_module selenium >= 3.7.0}
 Chartify is a Python library for creating charts.
 
 %prep
-%setup -q -n chartify-%{version}
+%autosetup -p1 -n chartify-%{version}
 rm tox.ini
 # unpin selenium (see comment above)
 # unpin Jinja2 (see release notes), but keep a pinning char for the check in setup.py
 sed -i \
   -e '/selenium/ s/,<=3.8.0//' \
-  -e '/pandas/ s/,<2.0.0//' \
   -e '/Jinja2/ s/<3.1.0/>1/' \
   requirements.txt
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -71,6 +75,6 @@ sed -i \
 %doc AUTHORS.rst README.rst
 %license LICENSE
 %{python_sitelib}/chartify
-%{python_sitelib}/chartify-%{version}*-info
+%{python_sitelib}/chartify-%{version}.dist-info
 
 %changelog

@@ -47,8 +47,7 @@ Associates's series of books about X (ISBN 1-56592-083-X,
 'http://www.oreilly.com'), which contains most of the same information.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{cpan_name}-%{version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

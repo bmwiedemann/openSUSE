@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  6 15:18:25 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Fix n_If-auth-with-credentials-for-hostname-fails-retry-with-XAUTHLOCALHOSTNAME.patch,
+  the rebase in 1.16 caused an regression: It loops indefinitely if
+  XAUTHLOCALHOSTNAME is unset (boo#1221078)
+
+-------------------------------------------------------------------
 Sun Mar  3 02:58:42 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.16.1

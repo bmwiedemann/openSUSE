@@ -1043,6 +1043,12 @@ Prefer: -wlroots-0_16-devel
 # have choice for pkgconfig(nunit): nunit-devel nunit3-devel; as usual, unversioned one wins
 Prefer: -nunit3-devel
 
+# have choice for python39-pytest-asyncio: python39-pytest-asyncio python39-pytest-asyncio0.21
+Prefer: -python39-pytest-asyncio0.21
+Prefer: -python310-pytest-asyncio0.21
+Prefer: -python311-pytest-asyncio0.21
+Prefer: -python312-pytest-asyncio0.21
+
 # have choice for libsymspg.so.2()(64bit) needed by libAvogadro1: libsymspg2 python3-spglib
 Prefer: -python3-spglib
 

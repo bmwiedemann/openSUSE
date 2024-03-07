@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  4 12:41:19 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Nov  3 16:29:26 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 
 - Security fix [bsc#1176492, CVE-2014-10401, CVE-2014-10402]

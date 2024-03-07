@@ -3487,4 +3487,12 @@ Petr</comment>
     <comment>7.6.4.1 + cleanup</comment>
     <requestid>1132161</requestid>
   </revision>
+  <revision rev="287" vrev="1">
+    <srcmd5>a4e41f0a664e2bf093c1b2bfaf22d5d6</srcmd5>
+    <version>24.2.1.2</version>
+    <time>1709832484</time>
+    <user>dimstar_suse</user>
+    <comment>24.2.1.2 (will need the zxcvbn package in Rings)</comment>
+    <requestid>1154376</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Mar  2 19:41:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 24.2.1.2 (24.2.1 final):
+  https://wiki.documentfoundation.org/Releases/24.2.1/RC1 and
+  https://wiki.documentfoundation.org/Releases/24.2.1/RC2
+- Allow building with gcc >= 12 on system where it is the default
+
+-------------------------------------------------------------------
+Sat Mar  2 13:12:07 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build on SLE12 and SLE15
+
+-------------------------------------------------------------------
+Fri Mar  1 08:59:56 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0001-Allow-building-with-Java-8.patch
+    + patch submitted upstream restoring the possibility to build
+      with JDK >= 8
+- Removed patch:
+  * 0001-Revert-java-9-changes.patch
+    + not needed with the new patch above
+
+-------------------------------------------------------------------
+Wed Feb 21 18:45:44 UTC 2024 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 24.2.0.3 (24.2.0 final):
+  https://wiki.documentfoundation.org/ReleaseNotes/24.2
+- Armenian translation added
+- Update patch handling to be compatible with rpm 4.20
+- Removed 0002-Revert-Require-HarfBuzz-5.1.0.patch
+
+-------------------------------------------------------------------
 Fri Dec  8 17:18:14 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 7.6.4.1

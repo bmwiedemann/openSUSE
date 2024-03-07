@@ -1514,4 +1514,53 @@ https://lists.opensuse.org/archives/list/packaging@lists.opensuse.org/message/5F
   * profiles: drop /etc/ftpusers which is no longer shipped in netcfg</comment>
     <requestid>1144679</requestid>
   </revision>
+  <revision rev="162" vrev="1">
+    <srcmd5>73a4221c1b67998663eae53068471d13</srcmd5>
+    <version>1699_20240305</version>
+    <time>1709832507</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1699_20240305:
+  * chkstat: EntryProcessor: make error handling in safeOpen() clearer
+  * chkstat regtests: catch bad error reporting for non-existent files
+  * chkstat: EntryProcessor: don't report errors for non-existent files
+- Update to version 1699_20240223:
+  * chkstat: replace ProcMountState enum by simple bool member
+  * chkstat: minor style, spelling and documentation fixes
+  * chkstat: drop types.h header
+  * chkstat: make ProcMountState a private type of ChkStat
+  * chkstat: EntryProcessor: rename some member variables for improved readability
+  * chkstat: get rid of EntryContext and incorporate it into EntryProcessor
+  * chkstat: split-off EntryProcessor from Chkstat main class
+  * chkstat: define _GNU_SOURCE via Makefile
+  * chkstat: processEntries(): make loop variables const
+  * chkstat: split up checkHaveProc()
+  * chkstat: ProfileParser: fix a bug when applying capabilities in custom root
+  * chkstat: ProfileParser: make adding the root to paths transparent
+  * chkstat: ProfileParser: refactor the now reduced codebase
+  * chkstat: split off separate ProfileParser
+  * chkstat: ProfileEntry: mark dropXID() const to support const ProfileEntry use
+  * chkstat: parseProfile(): improve badProfileLine() calls
+  * chkstat: drop deprecated capability check
+  * chkstat: also move expandProfilePaths() into new VariableExpansions class
+  * chkstat: split off variable expansion logic into separate class
+  * chkstat: loadVariableExpansions(): a bit of refactoring
+  * chkstat: parseSysconfig(): bit of refactoring
+  * chkstat: remove deprecated CHECK_PERMISSIONS logic
+  * chkstat: move assorted types into dedicated header
+  * chkstat: replace #include guards by #pragma once
+  * chkstat: split off command line arguments from Chkstat main class
+  * chkstat: drop SaneValueArg wrapper
+  * chkstat: document new packages.d directory
+  * chkstat: drop TODO regarding ProfileEntry being changed on-the-fly
+  * chkstat: harmonize FileCapabilities API
+  * chkstat: support /usr/share/permissions/package.d for per-package drop-ins
+  * chkstat: minor coding style fixes
+  * chkstat: improve readability for rstrip() to strip trailing slashes
+  * chkstat: remove trailing slashes from paths found on the command line
+  * chkstat: add warning messages for rare error situations
+  * chkstat: open profiles right away without racy `access()` check.
+- Remove fix_version.sh, handle version with services
+</comment>
+    <requestid>1155258</requestid>
+  </revision>
 </revisionlist>

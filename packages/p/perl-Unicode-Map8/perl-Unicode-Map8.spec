@@ -43,9 +43,7 @@ are efficient both in terms of space allocated and translation speed.
 The 16-bit strings are assumed to use network byte order.
 
 %prep
-%setup -n Unicode-Map8-%{version}
-%patch0
-%patch1
+%autosetup -p0 -n Unicode-Map8-%{version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
