@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar  6 21:03:36 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Fix truncated version requirement for python3dist(dash)
+
+-------------------------------------------------------------------
+Tue Mar  5 19:40:43 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.16.0
+  * Lots ofchanges since 2.6.2:
+    https://github.com/plotly/dash/compare/v2.6.2...v2.16.0
+- Skip python39: plotly no longer available (due to ipython)
+- Add jupyter-dash package
+
+-------------------------------------------------------------------
 Sun Sep 25 20:21:02 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.6.2:
