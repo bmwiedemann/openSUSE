@@ -7,4 +7,12 @@
     <comment>Please accept this new RPM.</comment>
     <requestid>311416</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6e4365a6268845bb6a9ddca0e7087ba2</srcmd5>
+    <version>0.99.3</version>
+    <time>1709845316</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1156083</requestid>
+  </revision>
 </revisionlist>
