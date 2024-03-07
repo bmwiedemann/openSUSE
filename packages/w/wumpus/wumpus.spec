@@ -43,8 +43,7 @@ of the source. Superhack is a structurally similar game with a
 different premise.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 cp -af %{SOURCE2} .
 cp -af %{SOURCE3} .
