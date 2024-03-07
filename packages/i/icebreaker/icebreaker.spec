@@ -44,8 +44,7 @@ an exact clone of) the 1992 game Jezzball by Dima Pavlovsky, itself
 having similarities to the 1981 game of Qix.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 %if 0%{?suse_version} <= 1500
