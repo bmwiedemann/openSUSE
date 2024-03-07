@@ -51,8 +51,7 @@ pipes cannot be placed. The game is playable with joystick/joypad as
 well.
 
 %prep
-%setup -q -n %{name}-svn
-%patch0
+%autosetup -p0 -n %{name}-svn
 
 # Fix path
 sed -i 's|= /usr/local|= /usr|' Makefile
