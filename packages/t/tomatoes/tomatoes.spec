@@ -50,8 +50,7 @@ in ten short minutes? If you have the time to spare, this game has the
 vegetables just waiting to beeliminated!
 
 %prep
-%setup -q -a1
-%patch0 -p1
+%autosetup -p1 -a1
 
 cp -r tomatoes-1.5/* .
 
