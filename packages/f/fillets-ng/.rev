@@ -193,4 +193,12 @@ No indication of GPL-1.0+ files. They are all GPL-2.0+ - hence no need for GPL-1
     <comment>use https://en.opensuse.org/openSUSE:Packaging_Patches_guidelines abbreviations</comment>
     <requestid>665303</requestid>
   </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>1fdd8a158944c699a0128036b4e33b57</srcmd5>
+    <version>1.0.1</version>
+    <time>1709845328</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1156094</requestid>
+  </revision>
 </revisionlist>

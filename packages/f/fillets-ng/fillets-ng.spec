@@ -46,8 +46,7 @@ underwater realm quarrel among themselves or comment on the efforts of
 your fish. The whole game is accompanied by quiet, comforting music.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 %configure
