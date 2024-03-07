@@ -29,7 +29,7 @@ URL:            https://github.com/Keruspe/GPaste
 # Source url disabled as we are using a git checkout
 # Source0:        http://www.imagination-land.org/files/%%{name}/%%{alt_name}-%%{version}.tar.xz
 Source0:        %{alt_name}-%{version}.tar.zst
-
+Source99:       gpaste-rpmlintrc
 # For directory ownership
 BuildRequires:  gnome-shell >= 3.28
 BuildRequires:  gobject-introspection-devel >= 1.58.0
@@ -57,6 +57,11 @@ BuildRequires:  pkgconfig(vapigen) >= 0.42
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xtst)
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+BuildRequires:  gcc13
+%else
+BuildRequires:  gcc
+%endif
 
 %description
 GPaste is a clipboard management daemon with DBus interface.
@@ -171,6 +176,9 @@ This package provides zsh tab-completion for %{name}.
 %autosetup -p1 -n %{alt_name}-%{version}
 
 %build
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+export CC=gcc-13
+%endif
 %meson
 %meson_build
 

@@ -475,4 +475,12 @@
   since version 45. (forwarded request 1139381 from dimstar)</comment>
     <requestid>1139383</requestid>
   </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>ae2963a361d9449503d8fd752ed88ea3</srcmd5>
+    <version>45</version>
+    <time>1709832718</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1156050</requestid>
+  </revision>
 </revisionlist>
