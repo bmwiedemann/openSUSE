@@ -54,8 +54,7 @@ Requires:       lib%{name}0 = %{version}
 This package contains the development files, like headers etc, for %{name}.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake
