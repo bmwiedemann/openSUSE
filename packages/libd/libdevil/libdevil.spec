@@ -123,12 +123,12 @@ This package contains the development libraries and headers.
 
 %prep
 %setup -q -n devil-%{version}
-%patch0
-%patch1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p2
-%patch5 -p1
+%patch -P 0
+%patch -P 1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p2
+%patch -P 5 -p1
 # FIXME: src-IL/src/il_wdp.c unclear license: https://jxrlib.codeplex.com can stand as replacement
 # make sure we don't compile this accidentally
 > src-IL/src/il_wdp.c
