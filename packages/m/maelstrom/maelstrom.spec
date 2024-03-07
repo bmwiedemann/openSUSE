@@ -69,18 +69,7 @@ Mac game Maelstrom originally written by Ambrosia Software.
 Unique to this port is a kick-butt network play mode.
 
 %prep
-%setup -q -n Maelstrom-%{version}
-%patch0
-%patch1
-%patch2
-%patch3
-%patch4
-%patch5
-%patch6
-%patch7
-%patch8
-%patch9
-%patch10
+%autosetup -p0 -n Maelstrom-%{version}
 
 # Fix paths
 sed -i 's|games/||' configure.in
