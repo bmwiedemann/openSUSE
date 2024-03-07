@@ -20,7 +20,7 @@
 %define		realname orafce
 
 Name:           %{pgname}-orafce
-Version:        4.9.2+git0.17c9ce4
+Version:        4.9.3+git0.6adbd66
 Release:        0
 Summary:        Implementation of some Oracle functions into PostgreSQL
 Group:          Productivity/Databases/Tools
