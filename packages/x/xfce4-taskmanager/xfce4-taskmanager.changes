@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar  1 18:09:51 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.5.7
+  * Update copyright year
+  * build: Fix -Wcast-align warning from clang
+  * Fix UBSan errors
+  * settings-dialog: Fix XtmRefreshRate memory leak
+  * Dark mode for process-statusbar
+  * Dark mode for process-monitor
+  * Allow multiple instances via command line option.
+  * Fix blurry app icons when UI scale > 1
+  * Use symbolic window picker icon in toolbar
+  * Fix broken "show-legend" setting sync
+  * Translation Updates
+- Add xfce4-taskmanager-relax-x11-version.patch
+
+-------------------------------------------------------------------
 Mon Oct  2 18:03:01 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.5.6
