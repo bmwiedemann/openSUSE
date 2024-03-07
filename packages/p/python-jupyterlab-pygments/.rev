@@ -79,4 +79,13 @@
   * no release notes</comment>
     <requestid>1134934</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>2a28654de5550f1d76ca2e7d93735124</srcmd5>
+    <version>0.3.0</version>
+    <time>1709845279</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip testing with python39: no longer supported since ipython
+  8.19 (nbval)</comment>
+    <requestid>1155873</requestid>
+  </revision>
 </revisionlist>
