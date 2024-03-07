@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Thu Mar  7 06:50:33 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.0.7:
+  * cc2eee8: Add support to save/read password to/from keyring.
+  * 691479f: Small text improvement.
+
+-------------------------------------------------------------------
+Tue Feb 20 05:52:49 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.0.6:
+  * 47870d6: Add darwin/amd64 and darwin/arm64 builds.
+  * 6af0316: Update README with new flags.
+
+-------------------------------------------------------------------
+Sat Feb 17 11:57:59 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.0.5:
+  * d914359: Improve README.md.
+  * 00fd244: Fix repo name for installer in README.md
+  * b089391: More documentation improvements.
+  * 282bca9: Added why termotp section and similar programs.
+  * 5f63c38: Fix tipo in a comment.
+  * 05bc615: Add goreportcard badge.
+  * 4eb742c: Add fzf support
+
+-------------------------------------------------------------------
+Sun Feb 12 07:34:34 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Initial package of termotp 0.0.4 for openSUSE
