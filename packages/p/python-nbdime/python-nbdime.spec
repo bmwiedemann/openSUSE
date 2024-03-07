@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbdime
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,11 @@
 %bcond_with libalternatives
 %endif
 
-%define pyver 3.2.1
-%define labver 2.2.0
-%define jupver  6.2.0
+%define pyver 4.0.1
+%define labver 3.0.1
+%define jupver  7.0.1
 # always cut trailing .0
-%define pyverdist 3.2.1
+%define pyverdist 4.0.1
 %define mainbins nbdime nbshow nbdiff nbdiff-web nbmerge nbmerge-web
 %define gitbins  git-nbdifftool git-nbmergetool git-nbdiffdriver git-nbmergedriver
 %define hgbins   hg-nbdiff hg-nbdiffweb hg-nbmerge hg-nbmergeweb
@@ -42,21 +42,21 @@ BuildRequires:  %{python_module Jinja2 >= 2.9}
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module colorama}
+BuildRequires:  %{python_module hatch-jupyter-builder >= 0.5}
+BuildRequires:  %{python_module hatchling >= 1.5.0}
 BuildRequires:  %{python_module jupyter-server-mathjax >= 0.2.2}
 BuildRequires:  %{python_module jupyter-server}
 BuildRequires:  %{python_module nbformat}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module jupyter-server-test}
+BuildRequires:  %{python_module jupyter-server-test if %python-base >= 3.10}
 BuildRequires:  %{python_module jsonschema}
-BuildRequires:  %{python_module notebook}
+BuildRequires:  %{python_module notebook if %python-base >= 3.10}
 BuildRequires:  %{python_module pytest >= 3.6}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-timeout}
@@ -77,7 +77,7 @@ BuildRequires:  alts
 Requires:       alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 Conflicts:      python-jupyter_nbdime-git < 1.0.5
 Conflicts:      python-jupyter_nbdime-hg < 1.0.5
@@ -141,7 +141,7 @@ Conflicts:      jupyter-nbdime-git < %{jupver}-%{release}
 Requires:       alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 
 %description git
@@ -168,7 +168,7 @@ Conflicts:      jupyter-nbdime-hg < %{jupver}-%{release}
 Requires:       alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 
 %description hg
@@ -197,6 +197,9 @@ done
 %fdupes %{buildroot}%{_jupyter_prefix}
 
 %check
+# tornado mock setup failures: no auth_url
+donttest="(test_cli_apps and (test_git_difftool or test_git_mergetool))"
+donttest="$donttest or (test_web and (test_fetch_diff or test_fetch_merge))"
 # freshly to be install libalternatives commands are not yet flavorbinned automatically
 %if %{with libalternatives}
 %{python_expand mkdir -p build/flavorbin
@@ -205,10 +208,17 @@ for b in %mainbins %gitbins %hgbins; do
 done
 }
 %endif
+%python_flavored_alternatives
 git config --global user.email "test@test.com"
 git config --global user.name "tester"
 git config --global init.defaultBranch master
-%pytest --pyargs nbdime
+export PYTHONDONTWRITEBYTECODE=1
+%{python_expand # don't test anything on python39: no jupyter-server-test anymore
+export PYTHONPATH=%{buildroot}%{$python_sitelib}
+if [ "${python_flavor}" != "python39" ]; then
+  $python -m pytest -v --pyargs nbdime -k "not ($donttest)"
+fi
+}
 
 %pre
 # remove any non-symlink bin before installing the alternative links
@@ -285,6 +295,5 @@ done
 %license LICENSE.md
 %dir %{_jupyter_prefix}/labextensions
 %{_jupyter_labextensions_dir3}/nbdime-jupyterlab
-%{_jupyter_labextensions_dir}/nbdime-jupyterlab-%{labver}.tgz
 
 %changelog
