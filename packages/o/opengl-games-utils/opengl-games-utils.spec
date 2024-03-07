@@ -1,7 +1,7 @@
 #
 # spec file for package opengl-games-utils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,7 @@ by other packages and is not intended for direct end user use!
 %prep
 %setup -q -c -T
 cp %{SOURCE0} %{SOURCE1} %{SOURCE2} .
-%patch0
+%autopatch
 
 %build
 # nothing to build
