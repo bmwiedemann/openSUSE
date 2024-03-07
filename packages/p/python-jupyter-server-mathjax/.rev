@@ -33,4 +33,13 @@
 - Update minimum python requirement to &gt;= 3.7</comment>
     <requestid>992084</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>4eadd580814e0b00e8cb535a6887123d</srcmd5>
+    <version>0.2.6</version>
+    <time>1709832686</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip testing with python39: no longer supported since ipython
+  8.19 (no jupyter-server-test)</comment>
+    <requestid>1155949</requestid>
+  </revision>
 </revisionlist>
