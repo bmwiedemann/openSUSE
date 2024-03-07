@@ -61,4 +61,13 @@
 - Refine jupyter requirement and recommendation chain (forwarded request 1106052 from bnavigator)</comment>
     <requestid>1106053</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>1a9e0a1afc04c4877c5aad60b601544e</srcmd5>
+    <version>unknown</version>
+    <time>1709832640</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip python39: no longer supported since ipython 8.19 (through
+  ipywidgets)</comment>
+    <requestid>1155859</requestid>
+  </revision>
 </revisionlist>
