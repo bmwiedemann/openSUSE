@@ -66,14 +66,16 @@
 %define plainpython python
 
 Name:           python-HyperKitty
-Version:        1.3.8
+Version:        1.3.9
 Release:        0
 Summary:        A web interface to access GNU Mailman v3 archives
 License:        GPL-3.0-only
 URL:            https://gitlab.com/mailman/hyperkitty
 #
-Source0:        https://files.pythonhosted.org/packages/source/H/HyperKitty/HyperKitty-%{version}.tar.gz
-Source1:        python-HyperKitty-rpmlintrc
+Source0:        https://gitlab.com/mailman/hyperkitty/-/releases/%{version}/downloads/hyperkitty-%{version}.tar.gz
+Source1:        https://gitlab.com/mailman/hyperkitty/-/releases/%{version}/downloads/hyperkitty-%{version}.tar.gz.asc
+Source2:        python-HyperKitty.keyring
+Source3:        python-HyperKitty-rpmlintrc
 #
 Source10:       hyperkitty-manage.sh
 Source12:       hyperkitty.uwsgi
@@ -87,8 +89,6 @@ Source30:       README.SUSE.md
 # PATCH-FIX-OPENSUSE hyperkitty-settings.patch mcepl@suse.com
 # hard-code locations of configuration files
 Patch0:         hyperkitty-settings.patch
-# PATCH-FIX-UPSTREAM mistune3.patch gl#mailman/hyperkitty#541
-Patch2:         mistune3.patch
 #
 # PATCH-FIX-UPSTREAM gl-mr300-add-opengraph-metadata.patch gl#mailman/hyperkitty#300
 Patch98:        gl-mr300-add-opengraph-metadata.patch
@@ -104,6 +104,7 @@ BuildRequires:  %{python_module django-gravatar2 >= %{django_gravatar2_min_versi
 BuildRequires:  %{python_module isort}
 BuildRequires:  %{python_module mailmanclient >= %{mailmanclient_min_version}}
 BuildRequires:  %{python_module mistune >= %{mistune_min_version}}
+BuildRequires:  %{python_module pdm}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -212,7 +213,7 @@ BuildRequires:  sysuser-tools
 System user for HyperKitty.
 
 %prep
-%setup -n HyperKitty-%{version}
+%setup -n hyperkitty-%{version}
 cp %{SOURCE30} .
 touch settings_local.py
 
@@ -360,10 +361,10 @@ fi
 %service_del_postun %{hyperkitty_services}
 
 %files -n %{hyperkitty_pkgname}
-%doc AUTHORS.txt README.rst example_project doc/*.rst
+%doc AUTHORS.txt README.rst example_project
 %license COPYING.txt
 %{mypython_sitelib}/hyperkitty
-%{mypython_sitelib}/HyperKitty-%{version}*-info
+%{mypython_sitelib}/hyperkitty-%{version}*-info
 
 %files -n %{hyperkitty_pkgname}-web
 %doc README.SUSE.md
