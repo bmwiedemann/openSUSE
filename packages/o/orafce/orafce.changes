@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 07 12:13:12 UTC 2024 - emiliano.langella@suse.com
+
+- Update to version 4.9.3+git0.6adbd66:
+  * prepare for 4.9.3
+  * fix regress tests
+  * fix broken handling null in dbms_sql.column_value
+  * fix build for master (pg17+)
+  * possibility to raise error inside trigger functions
+  * fix regress test on fc40
+
+-------------------------------------------------------------------
 Thu Feb 08 08:43:18 UTC 2024 - emiliano.langella@suse.com
 
 - Update to version 4.9.2+git0.17c9ce4:
