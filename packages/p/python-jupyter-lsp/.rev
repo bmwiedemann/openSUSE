@@ -44,4 +44,16 @@
     in addition to authentication fixes</comment>
     <requestid>1139869</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ef3087b09afe31b5a3b4e63fb51eee9c</srcmd5>
+    <version>2.2.4</version>
+    <time>1709832655</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.4
+  * fix websocket handler incorrectly inheriting from APIHandler
+    rather than JupyterHandler (#1069)
+  * remove unused notebook config entry point (#1069)
+  * support latest version of typescript-language-server (#1064)</comment>
+    <requestid>1155897</requestid>
+  </revision>
 </revisionlist>
