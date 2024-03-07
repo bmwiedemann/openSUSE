@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 13:40:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Sun Mar 20 06:26:51 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add icebreaker-makefile-fix.patch, fixes unterminated call to
