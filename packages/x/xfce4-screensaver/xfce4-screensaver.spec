@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-screensaver
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with git
 Name:           xfce4-screensaver
-Version:        4.18.2
+Version:        4.18.3
 Release:        0
 Summary:        Screensaver and locker for Xfce
 License:        GPL-2.0-only
@@ -35,12 +35,17 @@ BuildRequires:  xscreensaver-data
 BuildRequires:  pkgconfig(dbus-1) >= 0.30
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(garcon-1) >= 0.5.0
+BuildRequires:  pkgconfig(garcon-gtk3-1) >= 0.5.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libwnck-3.0) >= 3.20
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.18.4
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12.1
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.12.1
 BuildRequires:  pkgconfig(libxklavier) >= 5.2
 BuildRequires:  pkgconfig(x11) >= 1.0
 BuildRequires:  pkgconfig(xrandr) >= 1.3

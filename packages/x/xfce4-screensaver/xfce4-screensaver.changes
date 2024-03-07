@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Mar  4 13:05:29 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.3
+  * Update copyright year
+  * build: Use XDT_VERSION_INIT for proper version scheme
+  * Fix memory management of GSPrefs
+  * lock-dialog: Do not use gtk_widget_grab_default()
+  * i18n: Use xfce_textdomain()
+  * prefs-dialog: Fix spin button signal of cycle-delay
+  * prefs-dialog: Add missing sanity check
+  * manager: Fix cycling jobs
+  * manager: Fix desktop leak when reconfiguring monitors
+  * Revert "Add overlays to initial activation"
+  * manager: Align job table management with window table management
+  * manager: Use a hash table instead of a list for windows
+  * manager: Fix leak on prefs
+  * window: Reset monitor pointer when disposed
+  * window: Add source id management when deactivated
+  * Add hint for users how to make Blank Screen DPMS work
+  * Do not activate screensaver if disabled
+  * Translation Updates
+
+-------------------------------------------------------------------
 Tue May 30 08:12:32 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.18.2
