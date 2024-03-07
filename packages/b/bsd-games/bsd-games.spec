@@ -61,15 +61,15 @@ teachgammon, trek, wargames, worm, worms, and wump.
 
 %prep
 %setup -q -n bsd-games-%{version}
-%patch0
-%patch1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5
-%patch7
-%patch8
-%patch9
+%patch -P 0
+%patch -P 1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5
+%patch -P 7
+%patch -P 8
+%patch -P 9
 
 %build
 # easier than patching :-)
