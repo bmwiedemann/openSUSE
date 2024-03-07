@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-antlr4-python3-runtime
 Version:        4.13.1
 Release:        0
@@ -34,9 +33,6 @@ BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
-%if %{python3_version_nodots} < 35
-Requires:       python-typing
-%endif
 %python_subpackages
 
 %description
