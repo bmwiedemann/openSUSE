@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 15:02:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Thu Jul  9 15:29:18 UTC 2015 - nemysis@gmx.ch
 
 - Use diff -ruB instead of diff -ruNB for patching

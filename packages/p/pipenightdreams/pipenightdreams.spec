@@ -48,8 +48,7 @@ collecting various bonus tokens making the liquid pass through their
 pipes. There are also life bonus and, hopefully soon, "freeze tokens".
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 # SED-FIX-OPENSUSE -- Fix paths
 sed -i 's|datadir/games|datadir|' configure
