@@ -103,12 +103,12 @@ effects, 8 unique graphical transition effects, 8 unique logo eye-candies.
 %prep
 %setup -q -n frozen-bubble-2.2.1-beta1
 cp server/init/README server/README.init
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
 
 %build
 perl Build.PL destdir=%{buildroot} installdirs=vendor --prefix=%{_prefix}

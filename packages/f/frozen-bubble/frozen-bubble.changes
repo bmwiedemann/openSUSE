@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 08:47:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Nov 28 18:20:04 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add BuildRequires SDL2 for openSUSE Leap, fix for building
