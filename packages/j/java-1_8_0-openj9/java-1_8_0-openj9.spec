@@ -121,7 +121,6 @@ Patch201:       system-libjpeg.patch
 Patch202:       system-libpng.patch
 Patch203:       system-lcms.patch
 Patch210:       openj9-no-werror.patch
-Patch300:       alternative-path-to-tzdb_dat.patch
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -227,7 +226,6 @@ Requires:       jpackage-utils
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
 Requires(postun): update-alternatives
-Recommends:     tzdata-java8
 # Standard JPackage base provides.
 Provides:       java-%{javaver}-headless = %{version}-%{release}
 Provides:       java-headless = %{javaver}
@@ -362,8 +360,6 @@ rm -rvf jdk/src/share/native/sun/java2d/cmm/lcms/lcms2*
 
 %patch -P 32 -p1
 
-%patch -P 300 -p1
-
 cat %{SOURCE100} \
     | sed "s/@OPENJ9_SHA@/`expr substr '%{openj9_revision}' 1 7`/g" \
     | sed "s/@OPENJ9_BRANCH@/%{openj9_branch}/g" \
@@ -438,9 +434,6 @@ find %{imagesdir}/j2sdk-image -iname '*.diz' -exec rm {} \;
 find %{imagesdir}/j2sdk-image -iname '*.debuginfo' -exec rm {} \;
 
 export JAVA_HOME=$(pwd)/%{imagesdir}/j2sdk-image
-
-# Copy tz.properties
-echo "sun.zoneinfo.dir=%{_datadir}/javazi" >> $JAVA_HOME/jre/lib/tz.properties
 
 # cacerts are generated in runtime in openSUSE
 if [ -f %{imagesdir}/j2sdk-image/jre/lib/security/cacerts ]; then
