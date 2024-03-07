@@ -86,10 +86,10 @@ the level editor and then click the play button.
 
 %prep
 %setup -q -n %{name}
-%patch1
-%patch2
-%patch3 -p1
-%patch4 -p1
+%patch -P 1
+%patch -P 2
+%patch -P 3 -p1
+%patch -P 4 -p1
 
 # Convert to unix line end
 dos2unix data/po/pl.po data/levels/incoming/*.pingus \
