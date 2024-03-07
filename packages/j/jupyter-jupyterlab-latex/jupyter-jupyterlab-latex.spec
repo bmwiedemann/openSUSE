@@ -1,7 +1,7 @@
 #
 # spec file for package jupyter-jupyterlab-latex
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,8 +41,8 @@ BuildRequires:  (python3-jupyter-packaging >= 0.12 with python3-jupyter-packagin
 BuildRequires:  (python3-jupyter-server >= 2 with python3-jupyter-server < 3)
 BuildRequires:  (python3-jupyterlab >= 4 with python3-jupyterlab < 5)
 Requires:       texlive-latex-bin
-Requires:       (python3-jupyterlab >= 4 with python3-jupyterlab < 5)
 Requires:       (python3-jupyter-server >= 2 with python3-jupyter-server < 3)
+Requires:       (python3-jupyterlab >= 4 with python3-jupyterlab < 5)
 Provides:       python3-jupyter_jupyterlab_latex = %{version}-%{release}
 Obsoletes:      python3-jupyter_jupyterlab_latex < %{version}-%{release}
 Provides:       python3-jupyterlab-latex = %{version}-%{release}
@@ -66,7 +66,8 @@ An extension for JupyterLab which allows for live-editing of LaTeX documents.
 
 %check
 export JUPYTER_PATH=%{buildroot}%{_jupyter_prefix}
-export JUPYTER_CONFIG_DIR=%{buildroot}%{_jupyter_confdir}
+cp -r %{buildroot}%{_jupyter_confdir} myconfig
+export JUPYTER_CONFIG_DIR=myconfig
 export PYTHONPATH=%{buildroot}%{python3_sitelib}
 jupyter server extension list 2>&1 | grep -ie "jupyterlab_latex.*OK"
 jupyter labextension list 2>&1 | grep -ie "@jupyterlab/latex.*OK"
