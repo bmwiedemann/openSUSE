@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:21:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Mon Jan 30 20:14:29 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add BuildRequires pkgconfig and use pkgconfig for sdl, fix
