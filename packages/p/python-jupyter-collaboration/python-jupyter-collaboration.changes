@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar  7 12:40:30 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.0.3
+  * Fix cancellation of file save operation #241 (@davidbrochart)
+  * Call get with options of type IFetchOptions #238
+    (@davidbrochart)
+- Release 2.0.2
+  * Handle last_modified only in FileLoader #232 (@davidbrochart)
+  * Fix file saving #231 (@davidbrochart)
+- Fix python39-ipython removal fallout
+  * Don't require jupyterlab to build
+  * Don't test on python39
+
+-------------------------------------------------------------------
 Mon Jan 22 19:00:29 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.0.1

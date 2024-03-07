@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-jupyter-collaboration
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -20,14 +20,15 @@
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
+%define skip_python39 1
 %else
 %define psuffix %{nil}
 %bcond_with test
 %endif
 
-%define python3distversion 2.0.1
+%define python3distversion 2.0.3
 Name:           python-jupyter-collaboration%{psuffix}
-Version:        2.0.1
+Version:        2.0.3
 Release:        0
 Summary:        Jupyter Server Extension Providing Y Documents
 License:        BSD-3-Clause
@@ -38,7 +39,6 @@ BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch-jupyter-builder >= 0.5}
 BuildRequires:  %{python_module hatch-nodejs-version}
 BuildRequires:  %{python_module hatchling >= 1.4}
-BuildRequires:  %{python_module jupyterlab >= 4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-rpm-macros
