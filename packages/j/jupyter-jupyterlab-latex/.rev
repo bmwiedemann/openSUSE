@@ -77,4 +77,12 @@
 </comment>
     <requestid>1116207</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>394f0486411a6ae3ed2069a61a047560</srcmd5>
+    <version>4.0.0</version>
+    <time>1709832652</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure not to create config files during test</comment>
+    <requestid>1155893</requestid>
+  </revision>
 </revisionlist>
