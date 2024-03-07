@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  7 13:43:14 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip testing with python39: no longer supported since ipython
+  8.19 (no jupyter-server-test)
+
+-------------------------------------------------------------------
 Mon Aug  1 18:11:35 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.2.6
