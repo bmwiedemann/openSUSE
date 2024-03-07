@@ -87,7 +87,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        120.0.6099.224
+Version:        121.0.6167.184
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -127,31 +127,30 @@ Patch202:       chromium-prop-codecs.patch
 Patch203:       chromium-106-ffmpeg-duration.patch
 Patch205:       chromium-disable-GlobalMediaControlsCastStartStop.patch
 Patch208:       chromium-icu72-2.patch
-Patch210:       chromium-110-system-libffi.patch
-Patch211:       gcc13-fix.patch
 Patch214:       chromium-113-webview-namespace.patch
-Patch215:       chromium-113-webauth-include-variant.patch
 Patch218:       chromium-114-lld-argument.patch
 Patch221:       chromium-115-lp155-typename.patch
 Patch224:       chromium-115-compiler-SkColor4f.patch
 Patch229:       chromium-116-lp155-url_load_stats-size-t.patch
 Patch232:       chromium-116-lp155-typenames.patch
 Patch238:       chromium-117-blink-BUILD-mnemonic.patch
-Patch239:       chromium-117-includes.patch
 Patch240:       chromium-117-string-convert.patch
 Patch241:       chromium-117-lp155-typename.patch
-Patch242:       chromium-118-includes.patch
 Patch244:       chromium-117-system-zstd.patch
-Patch246:       chromium-119-dont-redefine-ATSPI-version-macros.patch
 Patch248:       chromium-119-assert.patch
-Patch249:       chromium-120-nullptr_t-without-namespace-std.patch
 Patch250:       chromium-120-emplace.patch
 Patch251:       chromium-120-lp155-typename.patch
-Patch252:       chromium-120-no_matching_constructor.patch
-Patch253:       chromium-120-missing-header-files.patch
 Patch254:       chromium-120-emplace-struct.patch
-Patch255:       chromium-120-workaround_clang_bug-structured_binding.patch
 Patch256:       chromium-120-make_unique-struct.patch
+Patch257:       chromium-121-no_matching_constructor.patch
+Patch258:       chromium-121-nullptr_t-without-namespace-std.patch
+Patch259:       chromium-121-workaround_clang_bug-structured_binding.patch
+Patch260:       chromium-121-missing-header-files.patch
+Patch261:       chromium-121-rust-clang_lib.patch
+Patch262:       chromium-121-python3-invalid-escape-sequence.patch
+Patch263:       chromium-disable-FFmpegAllowLists.patch
+Patch264:       chromium-121-avoid-SFINAE-TypeConverter.patch
+Patch265:       chromium-121-blink-libxml-const.patch
 BuildRequires:  (python3 >= 3.7 or python3-dataclasses)
 BuildRequires:  (python3-importlib-metadata if python3-base < 3.8)
 BuildRequires:  SDL-devel
@@ -182,6 +181,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-six
+BuildRequires:  rust
 BuildRequires:  snappy-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  util-linux
@@ -426,6 +426,12 @@ export PATH="$HOME/bin/:$PATH"
 rm chrome/installer/linux/common/wrapper
 cp %{SOURCE106} chrome/installer/linux/common/wrapper
 
+# from our Fedora friends
+export RUSTC_BOOTSTRAP=1
+rustc_version="$(rustc --version | cut -d' ' -f2)"
+clang_version="$(clang --version | sed -n 's/clang version //p' | cut -d. -f1)"
+clang_base_path="$(clang --version | grep InstalledDir | cut -d' ' -f2 | sed 's#/bin##')" 
+
 # Remove bundled libs
 keeplibs=(
     base/third_party/cityhash
@@ -436,7 +442,6 @@ keeplibs=(
     base/third_party/superfasthash
     base/third_party/symbolize
     base/third_party/valgrind
-    base/third_party/xdg_mime
     base/third_party/xdg_user_dirs
     buildtools/third_party/eu-strip
     buildtools/third_party/libc++
@@ -559,6 +564,7 @@ keeplibs=(
     third_party/libxcb-keysyms/keysyms
     third_party/libxml/chromium
     third_party/libzip
+    third_party/lit
     third_party/lottie
     third_party/lss
     third_party/lzma_sdk
@@ -601,6 +607,7 @@ keeplibs=(
     third_party/pyyaml
     third_party/qcms
     third_party/rnnoise
+    third_party/rust
     third_party/ruy
     third_party/s2cellid
     third_party/securemessage
@@ -756,8 +763,9 @@ export CXXFLAGS="${CXXFLAGS} -flax-vector-conversions=all"
 %endif
 %endif
 %endif
+export CXXFLAGS="${CXXFLAGS} -Wno-unused-but-set-variable -Wno-missing-braces -Wno-unused-private-field -Wno-absolute-value"
 %if %{without clang}
-export CXXFLAGS="${CXXFLAGS} -Wno-unused-but-set-variable -Wno-packed-not-aligned"
+export CXXFLAGS="${CXXFLAGS} -Wno-packed-not-aligned"
 %endif
 export CFLAGS="${CXXFLAGS}"
 %if %{without clang}
@@ -869,7 +877,10 @@ myconf_gn+=" media_use_openh264=false"
 myconf_gn+=" rtc_use_h264=false"
 myconf_gn+=" use_v8_context_snapshot=true"
 myconf_gn+=" v8_use_external_startup_data=true"
-myconf_gn+=" enable_rust=false"
+myconf_gn+=" rust_sysroot_absolute=\"%{_prefix}\""
+myconf_gn+=" rustc_version=\"$rustc_version\""
+myconf_gn+=" clang_base_path=\"$clang_base_path\""
+myconf_gn+=" clang_version=\"$clang_version\"" 
 %if %{with gtk4}
 myconf_gn+=" gtk_version=4"
 %endif
@@ -889,6 +900,7 @@ myconf_gn+=" use_system_harfbuzz=true"
 %if %{with system_freetype}
 myconf_gn+=" use_system_freetype=true"
 %endif
+myconf_gn+=" use_system_libffi=true"
 myconf_gn+=" enable_hangout_services_extension=true"
 myconf_gn+=" enable_vulkan=true"
 %if %{with pipewire}

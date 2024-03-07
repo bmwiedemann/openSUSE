@@ -1,8 +1,8 @@
-Index: chromium-120.0.6099.129/third_party/webrtc/modules/congestion_controller/goog_cc/loss_based_bwe_v2.cc
+Index: chromium-121.0.6167.85/third_party/webrtc/modules/congestion_controller/goog_cc/loss_based_bwe_v2.cc
 ===================================================================
---- chromium-120.0.6099.129.orig/third_party/webrtc/modules/congestion_controller/goog_cc/loss_based_bwe_v2.cc
-+++ chromium-120.0.6099.129/third_party/webrtc/modules/congestion_controller/goog_cc/loss_based_bwe_v2.cc
-@@ -508,7 +508,7 @@ absl::optional<LossBasedBweV2::Config> L
+--- chromium-121.0.6167.85.orig/third_party/webrtc/modules/congestion_controller/goog_cc/loss_based_bwe_v2.cc
++++ chromium-121.0.6167.85/third_party/webrtc/modules/congestion_controller/goog_cc/loss_based_bwe_v2.cc
+@@ -546,7 +546,7 @@ absl::optional<LossBasedBweV2::Config> L
    if (!enabled.Get()) {
      return config;
    }
@@ -10,12 +10,12 @@ Index: chromium-120.0.6099.129/third_party/webrtc/modules/congestion_controller/
 +  config.emplace(Config());
    config->bandwidth_rampup_upper_bound_factor =
        bandwidth_rampup_upper_bound_factor.Get();
-   config->rampup_acceleration_max_factor = rampup_acceleration_max_factor.Get();
-Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/randr.cc
+   config->bandwidth_rampup_upper_bound_factor_in_hold =
+Index: chromium-121.0.6167.85/ui/gfx/x/generated_protos/randr.cc
 ===================================================================
---- chromium-120.0.6099.129.orig/ui/gfx/x/generated_protos/randr.cc
-+++ chromium-120.0.6099.129/ui/gfx/x/generated_protos/randr.cc
-@@ -304,7 +304,7 @@ void ReadEvent<RandR::NotifyEvent>(RandR::NotifyEvent* event_,
+--- chromium-121.0.6167.85.orig/ui/gfx/x/generated_protos/randr.cc
++++ chromium-121.0.6167.85/ui/gfx/x/generated_protos/randr.cc
+@@ -305,7 +305,7 @@ void ReadEvent<RandR::NotifyEvent>(RandR
    // data
    auto data_expr = subCode;
    if (CaseEq(data_expr, RandR::Notify::CrtcChange)) {
@@ -24,7 +24,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/randr.cc
      auto& timestamp = (*data.cc).timestamp;
      auto& window = (*data.cc).window;
      auto& crtc = (*data.cc).crtc;
-@@ -348,7 +348,7 @@ void ReadEvent<RandR::NotifyEvent>(RandR::NotifyEvent* event_,
+@@ -349,7 +349,7 @@ void ReadEvent<RandR::NotifyEvent>(RandR
      Read(&height, &buf);
    }
    if (CaseEq(data_expr, RandR::Notify::OutputChange)) {
@@ -33,7 +33,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/randr.cc
      auto& timestamp = (*data.oc).timestamp;
      auto& config_timestamp = (*data.oc).config_timestamp;
      auto& window = (*data.oc).window;
-@@ -393,7 +393,7 @@ void ReadEvent<RandR::NotifyEvent>(RandR::NotifyEvent* event_,
+@@ -394,7 +394,7 @@ void ReadEvent<RandR::NotifyEvent>(RandR
      subpixel_order = static_cast<Render::SubPixel>(tmp6);
    }
    if (CaseEq(data_expr, RandR::Notify::OutputProperty)) {
@@ -42,7 +42,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/randr.cc
      auto& window = (*data.op).window;
      auto& output = (*data.op).output;
      auto& atom = (*data.op).atom;
-@@ -421,7 +421,7 @@ void ReadEvent<RandR::NotifyEvent>(RandR::NotifyEvent* event_,
+@@ -422,7 +422,7 @@ void ReadEvent<RandR::NotifyEvent>(RandR
      Pad(&buf, 11);
    }
    if (CaseEq(data_expr, RandR::Notify::ProviderChange)) {
@@ -51,7 +51,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/randr.cc
      auto& timestamp = (*data.pc).timestamp;
      auto& window = (*data.pc).window;
      auto& provider = (*data.pc).provider;
-@@ -439,7 +439,7 @@ void ReadEvent<RandR::NotifyEvent>(RandR::NotifyEvent* event_,
+@@ -440,7 +440,7 @@ void ReadEvent<RandR::NotifyEvent>(RandR
      Pad(&buf, 16);
    }
    if (CaseEq(data_expr, RandR::Notify::ProviderProperty)) {
@@ -60,7 +60,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/randr.cc
      auto& window = (*data.pp).window;
      auto& provider = (*data.pp).provider;
      auto& atom = (*data.pp).atom;
-@@ -465,7 +465,7 @@ void ReadEvent<RandR::NotifyEvent>(RandR::NotifyEvent* event_,
+@@ -466,7 +466,7 @@ void ReadEvent<RandR::NotifyEvent>(RandR
      Pad(&buf, 11);
    }
    if (CaseEq(data_expr, RandR::Notify::ResourceChange)) {
@@ -69,7 +69,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/randr.cc
      auto& timestamp = (*data.rc).timestamp;
      auto& window = (*data.rc).window;
  
-@@ -479,7 +479,7 @@ void ReadEvent<RandR::NotifyEvent>(RandR::NotifyEvent* event_,
+@@ -480,7 +480,7 @@ void ReadEvent<RandR::NotifyEvent>(RandR
      Pad(&buf, 20);
    }
    if (CaseEq(data_expr, RandR::Notify::Lease)) {
@@ -78,11 +78,11 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/randr.cc
      auto& timestamp = (*data.lc).timestamp;
      auto& window = (*data.lc).window;
      auto& lease = (*data.lc).lease;
-Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xkb.cc
+Index: chromium-121.0.6167.85/ui/gfx/x/generated_protos/xkb.cc
 ===================================================================
---- chromium-120.0.6099.129.orig/ui/gfx/x/generated_protos/xkb.cc
-+++ chromium-120.0.6099.129/ui/gfx/x/generated_protos/xkb.cc
-@@ -5284,7 +5284,7 @@ std::unique_ptr<Xkb::GetKbdByNameReply> detail::ReadReply<
+--- chromium-121.0.6167.85.orig/ui/gfx/x/generated_protos/xkb.cc
++++ chromium-121.0.6167.85/ui/gfx/x/generated_protos/xkb.cc
+@@ -5285,7 +5285,7 @@ std::unique_ptr<Xkb::GetKbdByNameReply>
    if (CaseAnd(replies_expr, Xkb::GBNDetail::Types) ||
        CaseAnd(replies_expr, Xkb::GBNDetail::ClientSymbols) ||
        CaseAnd(replies_expr, Xkb::GBNDetail::ServerSymbols)) {
@@ -91,7 +91,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xkb.cc
      auto& getmap_type = (*replies.types).getmap_type;
      auto& typeDeviceID = (*replies.types).typeDeviceID;
      auto& getmap_sequence = (*replies.types).getmap_sequence;
-@@ -5716,7 +5716,7 @@ std::unique_ptr<Xkb::GetKbdByNameReply> detail::ReadReply<
+@@ -5717,7 +5717,7 @@ std::unique_ptr<Xkb::GetKbdByNameReply>
      }
    }
    if (CaseAnd(replies_expr, Xkb::GBNDetail::CompatMap)) {
@@ -100,7 +100,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xkb.cc
      auto& compatmap_type = (*replies.compat_map).compatmap_type;
      auto& compatDeviceID = (*replies.compat_map).compatDeviceID;
      auto& compatmap_sequence = (*replies.compat_map).compatmap_sequence;
-@@ -5840,7 +5840,7 @@ std::unique_ptr<Xkb::GetKbdByNameReply> detail::ReadReply<
+@@ -5841,7 +5841,7 @@ std::unique_ptr<Xkb::GetKbdByNameReply>
      }
    }
    if (CaseAnd(replies_expr, Xkb::GBNDetail::IndicatorMaps)) {
@@ -109,7 +109,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xkb.cc
      auto& indicatormap_type = (*replies.indicator_maps).indicatormap_type;
      auto& indicatorDeviceID = (*replies.indicator_maps).indicatorDeviceID;
      auto& indicatormap_sequence =
-@@ -5934,7 +5934,7 @@ std::unique_ptr<Xkb::GetKbdByNameReply> detail::ReadReply<
+@@ -5935,7 +5935,7 @@ std::unique_ptr<Xkb::GetKbdByNameReply>
    }
    if (CaseAnd(replies_expr, Xkb::GBNDetail::KeyNames) ||
        CaseAnd(replies_expr, Xkb::GBNDetail::OtherNames)) {
@@ -118,7 +118,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xkb.cc
      auto& keyname_type = (*replies.key_names).keyname_type;
      auto& keyDeviceID = (*replies.key_names).keyDeviceID;
      auto& keyname_sequence = (*replies.key_names).keyname_sequence;
-@@ -6193,7 +6193,7 @@ std::unique_ptr<Xkb::GetKbdByNameReply> detail::ReadReply<
+@@ -6194,7 +6194,7 @@ std::unique_ptr<Xkb::GetKbdByNameReply>
      }
    }
    if (CaseAnd(replies_expr, Xkb::GBNDetail::Geometry)) {
@@ -127,11 +127,11 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xkb.cc
      auto& geometry_type = (*replies.geometry).geometry_type;
      auto& geometryDeviceID = (*replies.geometry).geometryDeviceID;
      auto& geometry_sequence = (*replies.geometry).geometry_sequence;
-Index: chromium-120.0.6099.129/mojo/public/cpp/bindings/lib/multiplex_router.cc
+Index: chromium-121.0.6167.85/mojo/public/cpp/bindings/lib/multiplex_router.cc
 ===================================================================
---- chromium-120.0.6099.129.orig/mojo/public/cpp/bindings/lib/multiplex_router.cc
-+++ chromium-120.0.6099.129/mojo/public/cpp/bindings/lib/multiplex_router.cc
-@@ -870,7 +870,7 @@ bool MultiplexRouter::ExclusiveSyncWaitForReply(InterfaceId interface_id,
+--- chromium-121.0.6167.85.orig/mojo/public/cpp/bindings/lib/multiplex_router.cc
++++ chromium-121.0.6167.85/mojo/public/cpp/bindings/lib/multiplex_router.cc
+@@ -870,7 +870,7 @@ bool MultiplexRouter::ExclusiveSyncWaitF
    DCHECK(!exclusive_sync_wait_);
  
    scoped_refptr<MultiplexRouter> keep_alive(this);
@@ -140,11 +140,11 @@ Index: chromium-120.0.6099.129/mojo/public/cpp/bindings/lib/multiplex_router.cc
    exclusive_sync_wait_->interface_id = interface_id;
    exclusive_sync_wait_->request_id = request_id;
    while (!exclusive_sync_wait_->finished) {
-Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
+Index: chromium-121.0.6167.85/ui/gfx/x/generated_protos/xinput.cc
 ===================================================================
---- chromium-120.0.6099.129.orig/ui/gfx/x/generated_protos/xinput.cc
-+++ chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
-@@ -566,7 +566,7 @@ void ReadEvent<Input::DeviceChangedEvent>(Input::DeviceChangedEvent* event_,
+--- chromium-121.0.6167.85.orig/ui/gfx/x/generated_protos/xinput.cc
++++ chromium-121.0.6167.85/ui/gfx/x/generated_protos/xinput.cc
+@@ -567,7 +567,7 @@ void ReadEvent<Input::DeviceChangedEvent
        // data
        auto data_expr = type;
        if (CaseEq(data_expr, Input::DeviceClassType::Key)) {
@@ -153,7 +153,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
          uint16_t num_keys{};
          auto& keys = (*data.key).keys;
          size_t keys_len = keys.size();
-@@ -582,7 +582,7 @@ void ReadEvent<Input::DeviceChangedEvent>(Input::DeviceChangedEvent* event_,
+@@ -583,7 +583,7 @@ void ReadEvent<Input::DeviceChangedEvent
          }
        }
        if (CaseEq(data_expr, Input::DeviceClassType::Button)) {
@@ -162,7 +162,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
          uint16_t num_buttons{};
          auto& state = (*data.button).state;
          size_t state_len = state.size();
-@@ -607,7 +607,7 @@ void ReadEvent<Input::DeviceChangedEvent>(Input::DeviceChangedEvent* event_,
+@@ -608,7 +608,7 @@ void ReadEvent<Input::DeviceChangedEvent
          }
        }
        if (CaseEq(data_expr, Input::DeviceClassType::Valuator)) {
@@ -171,7 +171,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
          auto& number = (*data.valuator).number;
          auto& label = (*data.valuator).label;
          auto& min = (*data.valuator).min;
-@@ -670,7 +670,7 @@ void ReadEvent<Input::DeviceChangedEvent>(Input::DeviceChangedEvent* event_,
+@@ -671,7 +671,7 @@ void ReadEvent<Input::DeviceChangedEvent
          Pad(&buf, 3);
        }
        if (CaseEq(data_expr, Input::DeviceClassType::Scroll)) {
@@ -180,7 +180,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
          auto& number = (*data.scroll).number;
          auto& scroll_type = (*data.scroll).scroll_type;
          auto& flags = (*data.scroll).flags;
-@@ -705,7 +705,7 @@ void ReadEvent<Input::DeviceChangedEvent>(Input::DeviceChangedEvent* event_,
+@@ -706,7 +706,7 @@ void ReadEvent<Input::DeviceChangedEvent
          }
        }
        if (CaseEq(data_expr, Input::DeviceClassType::Touch)) {
@@ -189,7 +189,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
          auto& mode = (*data.touch).mode;
          auto& num_touches = (*data.touch).num_touches;
  
-@@ -718,7 +718,7 @@ void ReadEvent<Input::DeviceChangedEvent>(Input::DeviceChangedEvent* event_,
+@@ -719,7 +719,7 @@ void ReadEvent<Input::DeviceChangedEvent
          Read(&num_touches, &buf);
        }
        if (CaseEq(data_expr, Input::DeviceClassType::Gesture)) {
@@ -198,7 +198,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
          auto& num_touches = (*data.gesture).num_touches;
  
          // num_touches
-@@ -2205,7 +2205,7 @@ std::unique_ptr<Input::ListInputDevicesReply> detail::ReadReply<
+@@ -2206,7 +2206,7 @@ std::unique_ptr<Input::ListInputDevicesR
        // info
        auto info_expr = class_id;
        if (CaseEq(info_expr, Input::InputClass::Key)) {
@@ -207,7 +207,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
          auto& min_keycode = (*info.key).min_keycode;
          auto& max_keycode = (*info.key).max_keycode;
          auto& num_keys = (*info.key).num_keys;
-@@ -2223,14 +2223,14 @@ std::unique_ptr<Input::ListInputDevicesReply> detail::ReadReply<
+@@ -2224,14 +2224,14 @@ std::unique_ptr<Input::ListInputDevicesR
          Pad(&buf, 2);
        }
        if (CaseEq(info_expr, Input::InputClass::Button)) {
@@ -224,7 +224,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
          uint8_t axes_len{};
          auto& mode = (*info.valuator).mode;
          auto& motion_size = (*info.valuator).motion_size;
-@@ -3843,7 +3843,7 @@ std::unique_ptr<Input::GetFeedbackControlReply> detail::ReadReply<
+@@ -3844,7 +3844,7 @@ std::unique_ptr<Input::GetFeedbackContro
        // data
        auto data_expr = class_id;
        if (CaseEq(data_expr, Input::FeedbackClass::Keyboard)) {
@@ -233,7 +233,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
          auto& pitch = (*data.keyboard).pitch;
          auto& duration = (*data.keyboard).duration;
          auto& led_mask = (*data.keyboard).led_mask;
-@@ -3885,7 +3885,7 @@ std::unique_ptr<Input::GetFeedbackControlReply> detail::ReadReply<
+@@ -3886,7 +3886,7 @@ std::unique_ptr<Input::GetFeedbackContro
          }
        }
        if (CaseEq(data_expr, Input::FeedbackClass::Pointer)) {
@@ -242,7 +242,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
          auto& accel_num = (*data.pointer).accel_num;
          auto& accel_denom = (*data.pointer).accel_denom;
          auto& threshold = (*data.pointer).threshold;
-@@ -3903,7 +3903,7 @@ std::unique_ptr<Input::GetFeedbackControlReply> detail::ReadReply<
+@@ -3904,7 +3904,7 @@ std::unique_ptr<Input::GetFeedbackContro
          Read(&threshold, &buf);
        }
        if (CaseEq(data_expr, Input::FeedbackClass::String)) {
@@ -251,7 +251,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
          auto& max_symbols = (*data.string).max_symbols;
          uint16_t num_keysyms{};
          auto& keysyms = (*data.string).keysyms;
-@@ -3923,7 +3923,7 @@ std::unique_ptr<Input::GetFeedbackControlReply> detail::ReadReply<
+@@ -3924,7 +3924,7 @@ std::unique_ptr<Input::GetFeedbackContro
          }
        }
        if (CaseEq(data_expr, Input::FeedbackClass::Integer)) {
@@ -260,7 +260,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
          auto& resolution = (*data.integer).resolution;
          auto& min_value = (*data.integer).min_value;
          auto& max_value = (*data.integer).max_value;
-@@ -3938,7 +3938,7 @@ std::unique_ptr<Input::GetFeedbackControlReply> detail::ReadReply<
+@@ -3939,7 +3939,7 @@ std::unique_ptr<Input::GetFeedbackContro
          Read(&max_value, &buf);
        }
        if (CaseEq(data_expr, Input::FeedbackClass::Led)) {
@@ -269,7 +269,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
          auto& led_mask = (*data.led).led_mask;
          auto& led_values = (*data.led).led_values;
  
-@@ -3949,7 +3949,7 @@ std::unique_ptr<Input::GetFeedbackControlReply> detail::ReadReply<
+@@ -3950,7 +3950,7 @@ std::unique_ptr<Input::GetFeedbackContro
          Read(&led_values, &buf);
        }
        if (CaseEq(data_expr, Input::FeedbackClass::Bell)) {
@@ -278,7 +278,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
          auto& percent = (*data.bell).percent;
          auto& pitch = (*data.bell).pitch;
          auto& duration = (*data.bell).duration;
-@@ -4769,7 +4769,7 @@ std::unique_ptr<Input::QueryDeviceStateReply> detail::ReadReply<
+@@ -4770,7 +4770,7 @@ std::unique_ptr<Input::QueryDeviceStateR
        // data
        auto data_expr = class_id;
        if (CaseEq(data_expr, Input::InputClass::Key)) {
@@ -287,7 +287,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
          auto& num_keys = (*data.key).num_keys;
          auto& keys = (*data.key).keys;
          size_t keys_len = keys.size();
-@@ -4787,7 +4787,7 @@ std::unique_ptr<Input::QueryDeviceStateReply> detail::ReadReply<
+@@ -4788,7 +4788,7 @@ std::unique_ptr<Input::QueryDeviceStateR
          }
        }
        if (CaseEq(data_expr, Input::InputClass::Button)) {
@@ -296,7 +296,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
          auto& num_buttons = (*data.button).num_buttons;
          auto& buttons = (*data.button).buttons;
          size_t buttons_len = buttons.size();
-@@ -4805,7 +4805,7 @@ std::unique_ptr<Input::QueryDeviceStateReply> detail::ReadReply<
+@@ -4806,7 +4806,7 @@ std::unique_ptr<Input::QueryDeviceStateR
          }
        }
        if (CaseEq(data_expr, Input::InputClass::Valuator)) {
@@ -305,7 +305,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
          uint8_t num_valuators{};
          auto& mode = (*data.valuator).mode;
          auto& valuators = (*data.valuator).valuators;
-@@ -5076,7 +5076,7 @@ std::unique_ptr<Input::GetDeviceControlReply> detail::ReadReply<
+@@ -5077,7 +5077,7 @@ std::unique_ptr<Input::GetDeviceControlR
      // data
      auto data_expr = control_id;
      if (CaseEq(data_expr, Input::DeviceControl::resolution)) {
@@ -314,7 +314,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
        uint32_t num_valuators{};
        auto& resolution_values = (*data.resolution).resolution_values;
        size_t resolution_values_len = resolution_values.size();
-@@ -5110,7 +5110,7 @@ std::unique_ptr<Input::GetDeviceControlReply> detail::ReadReply<
+@@ -5111,7 +5111,7 @@ std::unique_ptr<Input::GetDeviceControlR
        }
      }
      if (CaseEq(data_expr, Input::DeviceControl::abs_calib)) {
@@ -323,7 +323,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
        auto& min_x = (*data.abs_calib).min_x;
        auto& max_x = (*data.abs_calib).max_x;
        auto& min_y = (*data.abs_calib).min_y;
-@@ -5145,7 +5145,7 @@ std::unique_ptr<Input::GetDeviceControlReply> detail::ReadReply<
+@@ -5146,7 +5146,7 @@ std::unique_ptr<Input::GetDeviceControlR
        Read(&button_threshold, &buf);
      }
      if (CaseEq(data_expr, Input::DeviceControl::core)) {
@@ -332,7 +332,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
        auto& status = (*data.core).status;
        auto& iscore = (*data.core).iscore;
  
-@@ -5159,7 +5159,7 @@ std::unique_ptr<Input::GetDeviceControlReply> detail::ReadReply<
+@@ -5160,7 +5160,7 @@ std::unique_ptr<Input::GetDeviceControlR
        Pad(&buf, 2);
      }
      if (CaseEq(data_expr, Input::DeviceControl::enable)) {
@@ -341,7 +341,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
        auto& enable = (*data.enable).enable;
  
        // enable
-@@ -5169,7 +5169,7 @@ std::unique_ptr<Input::GetDeviceControlReply> detail::ReadReply<
+@@ -5170,7 +5170,7 @@ std::unique_ptr<Input::GetDeviceControlR
        Pad(&buf, 3);
      }
      if (CaseEq(data_expr, Input::DeviceControl::abs_area)) {
@@ -350,7 +350,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
        auto& offset_x = (*data.abs_area).offset_x;
        auto& offset_y = (*data.abs_area).offset_y;
        auto& width = (*data.abs_area).width;
-@@ -6661,7 +6661,7 @@ std::unique_ptr<Input::XIQueryDeviceReply> detail::ReadReply<
+@@ -6662,7 +6662,7 @@ std::unique_ptr<Input::XIQueryDeviceRepl
            // data
            auto data_expr = type;
            if (CaseEq(data_expr, Input::DeviceClassType::Key)) {
@@ -359,7 +359,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
              uint16_t num_keys{};
              auto& keys = (*data.key).keys;
              size_t keys_len = keys.size();
-@@ -6677,7 +6677,7 @@ std::unique_ptr<Input::XIQueryDeviceReply> detail::ReadReply<
+@@ -6678,7 +6678,7 @@ std::unique_ptr<Input::XIQueryDeviceRepl
              }
            }
            if (CaseEq(data_expr, Input::DeviceClassType::Button)) {
@@ -368,7 +368,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
              uint16_t num_buttons{};
              auto& state = (*data.button).state;
              size_t state_len = state.size();
-@@ -6702,7 +6702,7 @@ std::unique_ptr<Input::XIQueryDeviceReply> detail::ReadReply<
+@@ -6703,7 +6703,7 @@ std::unique_ptr<Input::XIQueryDeviceRepl
              }
            }
            if (CaseEq(data_expr, Input::DeviceClassType::Valuator)) {
@@ -377,7 +377,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
              auto& number = (*data.valuator).number;
              auto& label = (*data.valuator).label;
              auto& min = (*data.valuator).min;
-@@ -6765,7 +6765,7 @@ std::unique_ptr<Input::XIQueryDeviceReply> detail::ReadReply<
+@@ -6766,7 +6766,7 @@ std::unique_ptr<Input::XIQueryDeviceRepl
              Pad(&buf, 3);
            }
            if (CaseEq(data_expr, Input::DeviceClassType::Scroll)) {
@@ -386,7 +386,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
              auto& number = (*data.scroll).number;
              auto& scroll_type = (*data.scroll).scroll_type;
              auto& flags = (*data.scroll).flags;
-@@ -6800,7 +6800,7 @@ std::unique_ptr<Input::XIQueryDeviceReply> detail::ReadReply<
+@@ -6801,7 +6801,7 @@ std::unique_ptr<Input::XIQueryDeviceRepl
              }
            }
            if (CaseEq(data_expr, Input::DeviceClassType::Touch)) {
@@ -395,7 +395,7 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
              auto& mode = (*data.touch).mode;
              auto& num_touches = (*data.touch).num_touches;
  
-@@ -6813,7 +6813,7 @@ std::unique_ptr<Input::XIQueryDeviceReply> detail::ReadReply<
+@@ -6814,7 +6814,7 @@ std::unique_ptr<Input::XIQueryDeviceRepl
              Read(&num_touches, &buf);
            }
            if (CaseEq(data_expr, Input::DeviceClassType::Gesture)) {
@@ -404,11 +404,11 @@ Index: chromium-120.0.6099.129/ui/gfx/x/generated_protos/xinput.cc
              auto& num_touches = (*data.gesture).num_touches;
  
              // num_touches
-Index: chromium-120.0.6099.129/components/viz/service/display/surface_aggregator.cc
+Index: chromium-121.0.6167.85/components/viz/service/display/surface_aggregator.cc
 ===================================================================
---- chromium-120.0.6099.129.orig/components/viz/service/display/surface_aggregator.cc
-+++ chromium-120.0.6099.129/components/viz/service/display/surface_aggregator.cc
-@@ -2228,7 +2228,7 @@ AggregatedFrame SurfaceAggregator::Aggregate(
+--- chromium-121.0.6167.85.orig/components/viz/service/display/surface_aggregator.cc
++++ chromium-121.0.6167.85/components/viz/service/display/surface_aggregator.cc
+@@ -2228,7 +2228,7 @@ AggregatedFrame SurfaceAggregator::Aggre
    root_surface_id_ = surface_id;
  
    // Start recording new stats for this aggregation.
@@ -417,10 +417,10 @@ Index: chromium-120.0.6099.129/components/viz/service/display/surface_aggregator
  
    base::ElapsedTimer prewalk_timer;
    ResolvedFrameData* resolved_frame = GetResolvedFrame(surface_id);
-Index: chromium-120.0.6099.129/chrome/browser/ui/web_applications/diagnostics/web_app_icon_diagnostic.cc
+Index: chromium-121.0.6167.85/chrome/browser/ui/web_applications/diagnostics/web_app_icon_diagnostic.cc
 ===================================================================
---- chromium-120.0.6099.129.orig/chrome/browser/ui/web_applications/diagnostics/web_app_icon_diagnostic.cc
-+++ chromium-120.0.6099.129/chrome/browser/ui/web_applications/diagnostics/web_app_icon_diagnostic.cc
+--- chromium-121.0.6167.85.orig/chrome/browser/ui/web_applications/diagnostics/web_app_icon_diagnostic.cc
++++ chromium-121.0.6167.85/chrome/browser/ui/web_applications/diagnostics/web_app_icon_diagnostic.cc
 @@ -37,7 +37,7 @@ void WebAppIconDiagnostic::Run(
    if (!downloaded_icon_sizes.empty())
      icon_size_ = *downloaded_icon_sizes.begin();
@@ -430,11 +430,11 @@ Index: chromium-120.0.6099.129/chrome/browser/ui/web_applications/diagnostics/we
    result_->has_empty_downloaded_icon_sizes = downloaded_icon_sizes.empty();
    result_->has_generated_icon_flag = app_->is_generated_icon();
  
-Index: chromium-120.0.6099.129/third_party/blink/renderer/modules/media_controls/elements/media_control_timeline_element.cc
+Index: chromium-121.0.6167.85/third_party/blink/renderer/modules/media_controls/elements/media_control_timeline_element.cc
 ===================================================================
---- chromium-120.0.6099.129.orig/third_party/blink/renderer/modules/media_controls/elements/media_control_timeline_element.cc
-+++ chromium-120.0.6099.129/third_party/blink/renderer/modules/media_controls/elements/media_control_timeline_element.cc
-@@ -101,7 +101,7 @@ void MediaControlTimelineElement::UpdateAria() {
+--- chromium-121.0.6167.85.orig/third_party/blink/renderer/modules/media_controls/elements/media_control_timeline_element.cc
++++ chromium-121.0.6167.85/third_party/blink/renderer/modules/media_controls/elements/media_control_timeline_element.cc
+@@ -101,7 +101,7 @@ void MediaControlTimelineElement::Update
  void MediaControlTimelineElement::SetPosition(double current_time,
                                                bool suppress_aria) {
    if (is_live_ && !live_anchor_time_ && current_time != 0) {
@@ -443,11 +443,11 @@ Index: chromium-120.0.6099.129/third_party/blink/renderer/modules/media_controls
      live_anchor_time_->clock_time_ = base::TimeTicks::Now();
      live_anchor_time_->media_time_ = MediaElement().currentTime();
    }
-Index: chromium-120.0.6099.129/third_party/blink/renderer/platform/graphics/paint/geometry_mapper_transform_cache.cc
+Index: chromium-121.0.6167.85/third_party/blink/renderer/platform/graphics/paint/geometry_mapper_transform_cache.cc
 ===================================================================
---- chromium-120.0.6099.129.orig/third_party/blink/renderer/platform/graphics/paint/geometry_mapper_transform_cache.cc
-+++ chromium-120.0.6099.129/third_party/blink/renderer/platform/graphics/paint/geometry_mapper_transform_cache.cc
-@@ -70,7 +70,7 @@ void GeometryMapperTransformCache::Update(
+--- chromium-121.0.6167.85.orig/third_party/blink/renderer/platform/graphics/paint/geometry_mapper_transform_cache.cc
++++ chromium-121.0.6167.85/third_party/blink/renderer/platform/graphics/paint/geometry_mapper_transform_cache.cc
+@@ -70,7 +70,7 @@ void GeometryMapperTransformCache::Updat
      to_2d_translation_root_ += translation;
  
      if (parent.plane_root_transform_) {
@@ -456,7 +456,7 @@ Index: chromium-120.0.6099.129/third_party/blink/renderer/platform/graphics/pain
        plane_root_transform_->plane_root = parent.plane_root();
        plane_root_transform_->to_plane_root = parent.to_plane_root();
        plane_root_transform_->to_plane_root.Translate(translation.x(),
-@@ -98,7 +98,7 @@ void GeometryMapperTransformCache::Update(
+@@ -98,7 +98,7 @@ void GeometryMapperTransformCache::Updat
        // as the 2d translation root.
        plane_root_transform_ = absl::nullopt;
      } else {
@@ -465,7 +465,7 @@ Index: chromium-120.0.6099.129/third_party/blink/renderer/platform/graphics/pain
        plane_root_transform_->plane_root = parent.plane_root();
        plane_root_transform_->to_plane_root.MakeIdentity();
        parent.ApplyToPlaneRoot(plane_root_transform_->to_plane_root);
-@@ -140,7 +140,7 @@ void GeometryMapperTransformCache::UpdateScreenTransform(
+@@ -140,7 +140,7 @@ void GeometryMapperTransformCache::Updat
    parent_node->UpdateScreenTransform();
    const auto& parent = parent_node->GetTransformCache();
  

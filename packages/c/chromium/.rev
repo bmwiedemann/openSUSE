@@ -4868,4 +4868,13 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
     <comment>chromium 120.0.6099.224 (boo#1218892)</comment>
     <requestid>1139408</requestid>
   </revision>
+  <revision rev="412" vrev="1">
+    <srcmd5>712db94830c1cef6cee06f96b7f06153</srcmd5>
+    <version>121.0.6167.184</version>
+    <time>1709832515</time>
+    <user>dimstar_suse</user>
+    <comment>- Chromium 121.0.6167.184 (boo#1219118, boo#1219387, boo#1219661)(bsc#1219070)
+</comment>
+    <requestid>1155575</requestid>
+  </revision>
 </revisionlist>
