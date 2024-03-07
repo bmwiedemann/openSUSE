@@ -86,4 +86,14 @@
   * [Fixed] Build breaks on FreeBSD/arm64,i386</comment>
     <requestid>1128532</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6179edd24f04a9324c476c16265c0a12</srcmd5>
+    <version>0.14.5+0</version>
+    <time>1709832593</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.5:
+  * [Added] Add show_self_parents option #607
+  * [Changed] MSRV to Rust 1.70</comment>
+    <requestid>1155809</requestid>
+  </revision>
 </revisionlist>

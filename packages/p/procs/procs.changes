@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  7 06:42:10 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.5:
+  * [Added] Add show_self_parents option #607
+  * [Changed] MSRV to Rust 1.70
+
+-------------------------------------------------------------------
 Fri Nov 24 10:46:35 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.14.4:
