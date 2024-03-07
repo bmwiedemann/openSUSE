@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipywebrtc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%define skip_python39 1
 %define distversion 0.6
 Name:           python-ipywebrtc
 Version:        0.6.0
@@ -76,13 +77,13 @@ extensions.
 # there are no python tests, only js in the github repo,
 # which we cannot test offline with npm.
 export JUPYTER_PATH=%{buildroot}%{_jupyter_prefix}
-export JUPYTER_CONFIG_DIR=%{buildroot}%{_jupyter_confdir}
+cp -r %{buildroot}%{_jupyter_confdir} myconfig
+export JUPYTER_CONFIG_DIR=$PWD/myconfig
 %{python_expand  # Just check that we installed the extensions
 export PYTHONPATH=%{buildroot}%{$python_sitelib}
 jupyter-%{$python_bin_suffix} nbclassic-extension list 2>&1 | grep -ie "jupyter-webrtc/extension.*enabled"
 jupyter-%{$python_bin_suffix} labextension list 2>&1 | grep -ie "jupyter-webrtc.*enabled.*ok"
 }
-rm -f %{buildroot}%{_jupyter_confdir}migrated
 
 %files %{python_files}
 %doc README.md
