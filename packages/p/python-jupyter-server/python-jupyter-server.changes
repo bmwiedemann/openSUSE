@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar  7 12:13:10 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.13.0
+  ## Enhancements made
+  * Add an option to have authentication enabled for all endpoints
+    by default #1392 (@krassowski)
+  * websockets: add configurations for ping interval and timeout
+    #1391 (@oliver-sanders)
+  ## Bugs fixed
+  * Fix color in windows log console with colorama #1397
+    (@hansepac)
+- Skip building and using python39-jupyter-server-test: no longer
+  supported since ipython 8.19 (through ipykernel)
+
+-------------------------------------------------------------------
 Sun Jan 21 11:04:04 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.12.5

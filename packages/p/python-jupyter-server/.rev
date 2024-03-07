@@ -653,4 +653,22 @@
   * Improve warning handling #1386 (@blink1073)</comment>
     <requestid>1140283</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>5abd65a44c8b8906064add4234ce9f37</srcmd5>
+    <version>2.13.0</version>
+    <time>1709845281</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.13.0
+  ## Enhancements made
+  * Add an option to have authentication enabled for all endpoints
+    by default #1392 (@krassowski)
+  * websockets: add configurations for ping interval and timeout
+    #1391 (@oliver-sanders)
+  ## Bugs fixed
+  * Fix color in windows log console with colorama #1397
+    (@hansepac)
+- Skip building and using python39-jupyter-server-test: no longer
+  supported since ipython 8.19 (through ipykernel)</comment>
+    <requestid>1155890</requestid>
+  </revision>
 </revisionlist>

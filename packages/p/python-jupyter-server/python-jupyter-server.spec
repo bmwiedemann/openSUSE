@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-jupyter-server
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -19,6 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
+%define skip_python39 1
 %bcond_without test
 %else
 %define psuffix %{nil}
@@ -32,7 +33,7 @@
 %endif
 
 Name:           python-jupyter-server%{psuffix}
-Version:        2.12.5
+Version:        2.13.0
 Release:        0
 Summary:        The backend to Jupyter web applications
 License:        BSD-3-Clause
@@ -78,7 +79,7 @@ BuildRequires:  alts
 Requires:       alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 Provides:       jupyter-jupyter-server = %{version}-%{release}
@@ -101,7 +102,7 @@ Requires:       python-ipykernel
 Requires:       python-jupyter-server = %{version}
 Requires:       python-pytest >= 7
 Requires:       python-pytest-console-scripts
-Requires:       python-pytest-jupyter-server >= 0.4
+Requires:       python-pytest-jupyter-server >= 0.7
 Requires:       python-pytest-timeout
 Requires:       python-requests
 
@@ -154,8 +155,10 @@ fi
 %{python_sitelib}/jupyter_server
 %{python_sitelib}/jupyter_server-%{version}*-info
 
+%if 0%{python_version_nodots} >= 310
 %files %{python_files test}
 %license LICENSE
+%endif
 %endif
 
 %changelog
