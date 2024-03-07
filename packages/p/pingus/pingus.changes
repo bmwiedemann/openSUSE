@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 14:34:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Apr 12 05:34:13 UTC 2023 - munix9@googlemail.com
 
 - Add pingus-gcc13.patch: Fix build with gcc 13
