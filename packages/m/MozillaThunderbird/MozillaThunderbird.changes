@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar  5 09:09:34 CET 2024 - Wolfgang Rosenauer <wr@@rosenauer.org>
+
+- Mozilla Thunderbird 115.8.1
+  https://www.thunderbird.net/en-US/thunderbird/115.8.1/releasenotes/
+  MFSA 2024-11
+  * CVE-2024-1936 (bmo#1860977)
+    Leaking of encrypted email subjects to other conversations
+
+-------------------------------------------------------------------
 Mon Feb 19 22:01:04 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 115.8.0

@@ -5239,4 +5239,16 @@ I cannot test locally unfortunately.
     <comment></comment>
     <requestid>1150520</requestid>
   </revision>
+  <revision rev="331" vrev="1">
+    <srcmd5>5cf0fa2b4e8d1e93549fc4d19959014a</srcmd5>
+    <version>115.8.1</version>
+    <time>1709832609</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 115.8.1
+  https://www.thunderbird.net/en-US/thunderbird/115.8.1/releasenotes/
+  MFSA 2024-11
+  * CVE-2024-1936 (bmo#1860977)
+    Leaking of encrypted email subjects to other conversations</comment>
+    <requestid>1155826</requestid>
+  </revision>
 </revisionlist>
