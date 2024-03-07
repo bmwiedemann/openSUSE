@@ -1,7 +1,7 @@
 #
 # spec file for package wyrmgus
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -76,6 +76,9 @@ export CC="gcc-11"
 export CXX="g++-11"
 %endif
 %cmake \
+%if 0%{?suse_version} < 1600
+  -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
+%endif
   -DWITH_BZIP2=ON \
   -DWITH_PHYSFS=ON \
   -DGAMEDIR=%{_bindir} \
@@ -87,7 +90,7 @@ export CXX="g++-11"
 %cmake_install
 install -D -m 0644 doc/stratagus.6 %{buildroot}%{_mandir}/man6/wyrmgus.6
 install -D -m 0644 gameheaders/stratagus-game-launcher.h %{buildroot}%{_includedir}/wyrmgus-game-launcher.h
-rm %{buildroot}%{_datadir}/doc/wyrmgus/copyright
+rm %{buildroot}%{_docdir}/wyrmgus/wyrmgus/copyright
 
 %files
 %license COPYING
