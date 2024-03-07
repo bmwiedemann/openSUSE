@@ -56,8 +56,8 @@ series.
 NOTE: Original Dune 2 game files are needed.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
+
 dos2unix ToDo.txt
 
 %build
