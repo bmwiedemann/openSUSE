@@ -1,0 +1,5 @@
+<package name="termotp" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="security" package="termotp"/>
+</package>
