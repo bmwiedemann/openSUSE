@@ -161,10 +161,10 @@ which use Xapian.
 %prep
 %setup -q
 %if %{without sphinx}
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 %if %{with php} && "%{phpver}" == "php7"
-%patch1 -p1
+%patch -P 1 -p1
 %endif
 
 #remove shebang in python examples
