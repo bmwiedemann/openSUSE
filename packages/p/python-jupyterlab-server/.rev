@@ -101,4 +101,15 @@
   yet</comment>
     <requestid>1144742</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d051edea3192127d0bffe2c0abd94d38</srcmd5>
+    <version>2.25.3</version>
+    <time>1709845280</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.25.3
+  * URL Incorrect path Issue #436 (@itsmevichu)
+- Skip building and using python39-jupyterlab-server-test: no
+  longer supported since ipython 8.19 (through ipykernel)</comment>
+    <requestid>1155876</requestid>
+  </revision>
 </revisionlist>

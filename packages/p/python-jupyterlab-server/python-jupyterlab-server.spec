@@ -20,13 +20,14 @@
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
+%define skip_python39 1
 %else
 %define psuffix %{nil}
 %bcond_with test
 %endif
 
 Name:           python-jupyterlab-server%{psuffix}
-Version:        2.25.2
+Version:        2.25.3
 Release:        0
 Summary:        Server components for JupyterLab and JupyterLab-like applications
 License:        BSD-3-Clause
@@ -154,8 +155,10 @@ build/testenv/bin/python -m pytest -v ${$python_ignoretests}
 %{python_sitelib}/jupyterlab_server
 %{python_sitelib}/jupyterlab_server-%{version}.dist-info
 
+%if %{python_version_nodots} >= 310
 %files %{python_files test}
 %license LICENSE
+%endif
 
 %if %{python_version_nodots} < 312
 %files %{python_files openapi}

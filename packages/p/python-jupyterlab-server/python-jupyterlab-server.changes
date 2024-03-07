@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  7 11:25:04 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.25.3
+  * URL Incorrect path Issue #436 (@itsmevichu)
+- Skip building and using python39-jupyterlab-server-test: no
+  longer supported since ipython 8.19 (through ipykernel)
+
+-------------------------------------------------------------------
 Tue Feb  6 21:55:06 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Disable openapi subpackage and tests for python312: not supported
