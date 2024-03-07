@@ -39,8 +39,7 @@ to bounce clowns into the air. When they reach the top, they pop rows
 of balloons, and then fall back down.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 AUTOMAKE='automake --foreign' autoreconf -fi

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 11:00:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Wed Feb  8 17:49:49 CET 2017 - kukuk@suse.de
 
 - Move /usr/games to /usr/bin as done with the rest 4 years ago.
