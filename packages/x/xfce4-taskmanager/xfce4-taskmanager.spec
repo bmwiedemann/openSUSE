@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-taskmanager
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           xfce4-taskmanager
-Version:        1.5.6
+Version:        1.5.7
 Release:        0
 Summary:        Simple Taskmanager for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            https://docs.xfce.org/apps/xfce4-taskmanager
 Source:         https://archive.xfce.org/src/apps/%{name}/1.5/%{name}-%{version}.tar.bz2
+# PATCH-FIX-OPENSUSE xfce4-taskmanager-relax-x11-version.patch lower required X11 version to allow building for Leap which only has 1.6.5, which is enough, though
+Patch0:         xfce4-taskmanager-relax-x11-version.patch
 BuildRequires:  intltool
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cairo) >= 1.5.0
@@ -45,7 +47,7 @@ CPU and memory usage are displayed as a graph.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
@@ -64,7 +66,7 @@ CPU and memory usage are displayed as a graph.
 %license COPYING
 %{_bindir}/xfce4-taskmanager
 %{_datadir}/applications/xfce4-taskmanager.desktop
-%{_datadir}/icons/hicolor/*/actions/xc_crosshair.*
+%{_datadir}/icons/hicolor/*/actions/xc_crosshair*
 %{_datadir}/icons/hicolor/*/apps/org.xfce.taskmanager.*
 
 %files lang -f %{name}.lang
