@@ -1,7 +1,7 @@
 #
 # spec file for package grex
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,14 @@
 
 
 Name:           grex
-Version:        1.4.4
+Version:        1.4.5
 Release:        0
 Summary:        CLI regex generator
 License:        Apache-2.0 AND MPL-2.0 AND MIT AND (Apache-2.0 OR MIT) AND BSL-1.0 AND Apache-2.0 WITH LLVM-exception
 URL:            https://github.com/pemistahl/grex
 Source0:        https://github.com/pemistahl/grex/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 BuildRequires:  cargo-packaging
-BuildRequires:  rust+cargo
 
 %description
 grex is a library as well as a command-line utility that is meant to simplify the
@@ -37,15 +35,16 @@ The resulting expression is guaranteed to match the test cases which it was gene
 It started as a Rust port of the JavaScript tool regexgen written by Devon Govett.
 
 %prep
-%setup -qa1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
+%autosetup -a 1
 
 %build
 %{cargo_build} --features "default cli"
 
 %install
 %{cargo_install} --features "default cli"
+
+%check
+%{cargo_test} --features "default cli"
 
 %files
 %doc *.md

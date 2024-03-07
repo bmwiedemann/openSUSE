@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar  5 17:55:41 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Modernized rust in specfile and enabled tests
+- Update to version 1.4.5:
+  * All dependencies have been updated to their latest versions
+  * For a small set of special characters, grex produced incorrect
+    regular expressions when the case-insensitivity feature was
+    enabled. This has been fixed.
+  * The code for creating regular expressions in verbose mode has
+    been simplified and is more performant now.
+
+-------------------------------------------------------------------
 Mon Oct 16 20:38:12 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
 
 - License correction based on legaldb scan 
@@ -16,9 +28,9 @@ Wed Jul 26 12:41:47 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 - Update to version 1.4.2:
   Improvements:
   * All characters from the current Unicode standard 15.0 are now
-    fully supported. (#128)
+    fully supported.
   * A proper exit code is now returned if the provided user input
-    cannot be handled by the CLI. (#165)
+    cannot be handled by the CLI.
   Fixes:
   * Several bugs have been fixed that caused incorrect expressions
     to be generated in rare cases.
