@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipyleaflet
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%define skip_python39 1
 Name:           python-ipyleaflet
-Version:        0.18.1
+Version:        0.18.2
 Release:        0
 Summary:        A Jupyter widget for dynamic Leaflet maps
 License:        MIT
