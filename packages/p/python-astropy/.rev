@@ -2051,4 +2051,12 @@
 </comment>
     <requestid>1132348</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>f64828b7e53111078446719742a480bd</srcmd5>
+    <version>6.0.0</version>
+    <time>1709832635</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't test with python39-ipython: not available anymore</comment>
+    <requestid>1155863</requestid>
+  </revision>
 </revisionlist>

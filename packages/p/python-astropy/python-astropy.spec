@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-astropy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -77,7 +77,7 @@ Requires:       python-packaging >= 19.0
 Requires:       python-pyerfa >= 2.0
 Requires:       (python-numpy >= 1.22 with python-numpy < 2)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # %%{_bindir}/showtable namespace clash
 Conflicts:      perl-Data-ShowTable
 # [recommended]
@@ -133,7 +133,7 @@ BuildRequires:  libxml2-tools
 # SECTION [test]
 # We need the compiled package for testing
 BuildRequires:  %{python_module astropy = %{version}}
-BuildRequires:  %{python_module ipython >= 4.2}
+BuildRequires:  %{python_module ipython >= 4.2 if %python-base >= 3.10}
 BuildRequires:  %{python_module objgraph}
 BuildRequires:  %{python_module pytest >= 7 with %python-pytest < 8}
 BuildRequires:  %{python_module pytest-astropy >= 0.10}

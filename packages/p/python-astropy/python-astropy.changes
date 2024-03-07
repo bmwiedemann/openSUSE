@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar  7 10:42:18 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Don't test with python39-ipython: not available anymore
+
+-------------------------------------------------------------------
 Sat Dec  9 18:08:42 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.0.0
