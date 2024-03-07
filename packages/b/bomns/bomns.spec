@@ -61,8 +61,7 @@ Other controls:
   Quit current game         : escape
 
 %prep
-%setup -q -n Bomns-for-Linux
-%patch0
+%autosetup -p0 -n Bomns-for-Linux
 
 %build
 %cmake
