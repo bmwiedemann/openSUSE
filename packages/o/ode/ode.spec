@@ -71,8 +71,7 @@ virtual creatures. It is currently used in many computer games, 3D
 authoring tools and simulation tools.
 
 %prep
-%setup -q -n ode-%{version}
-%patch0 -p1
+%autosetup -p1 -n ode-%{version}
 
 %build
 #autoreconf -fi
