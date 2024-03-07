@@ -51,9 +51,7 @@ interface of the original, but compensates by automating away some of
 the game's simpler deductions.
 
 %prep
-%setup -q
-%patch0
-%patch1
+%autosetup -p0
 
 cp -af %{SOURCE1} .
 
