@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar  6 20:25:54 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2024.02.1
+  * A new utility, hackrf_biast, provides a way to control the "bias
+    tee" antenna port power output on HackRF One. Thank you, Jonathan
+    Suite (AI6AJ)!
+  * Completely new and comprehensive libhackrf API documentation
+    generated from source is now available in the release package.
+    Thank you, László Baráth!
+  * hackrf_sweep now supports more FFTW features including the
+    ability to use a wisdom file. Thank you, Jonathan Suite (AI6AJ)!
+  * HackRF One r10, the latest hardware revision, is based on r8,
+    reverting most of the changes made in r9.
+  * There have been many other enhancements and bug fixes. For a
+    full list of changes, see the git log.
+
+-------------------------------------------------------------------
 Wed Feb 15 22:01:37 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 2023.01.1
