@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sat Mar  2 12:39:17 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Chromium 121.0.6167.184 (boo#1219118, boo#1219387, boo#1219661)
+  * CVE-2024-1284: Use after free in Mojo
+  * CVE-2024-1283: Heap buffer overflow in Skia
+  * CVE-2024-1060: Use after free in Canvas
+  * CVE-2024-1059: Use after free in WebRTC
+  * CVE-2024-1077: Use after free in Network
+  * CVE-2024-0807: Use after free in WebAudio
+  * CVE-2024-0812: Inappropriate implementation in Accessibility
+  * CVE-2024-0808: Integer underflow in WebUI
+  * CVE-2024-0810: Insufficient policy enforcement in DevTools
+  * CVE-2024-0814: Incorrect security UI in Payments
+  * CVE-2024-0813: Use after free in Reading Mode
+  * CVE-2024-0806: Use after free in Passwords
+  * CVE-2024-0805: Inappropriate implementation in Downloads
+  * CVE-2024-0804: Insufficient policy enforcement in iOS Security UI
+  * CVE-2024-0811: Inappropriate implementation in Extensions API
+  * CVE-2024-0809: Inappropriate implementation in Autofill
+- Removed patches:
+  * chromium-117-includes.patch
+  * chromium-118-includes.patch
+  * chromium-119-dont-redefine-ATSPI-version-macros.patch
+  * chromium-120-missing-header-files.patch
+  * chromium-120-no_matching_constructor.patch
+  * chromium-120-nullptr_t-without-namespace-std.patch
+  * chromium-120-workaround_clang_bug-structured_binding.patch
+  * gcc13-fix.patch
+  * chromium-113-webauth-include-variant.patch
+  * chromium-110-system-libffi.patch
+- Added patches:
+  * chromium-121-no_matching_constructor.patch
+  * chromium-121-nullptr_t-without-namespace-std.patch
+  * chromium-121-workaround_clang_bug-structured_binding.patch
+  * chromium-121-missing-header-files.patch
+  * chromium-121-rust-clang_lib.patch
+  * chromium-121-python3-invalid-escape-sequence.patch
+  * chromium-121-rust-clang_lib.patch
+  * chromium-121-avoid-SFINAE-TypeConverter.patch
+  * chromium-121-blink-libxml-const.patch
+- Add patch chromium-disable-FFmpegAllowLists.patch:
+  disable codec checker this will always fail (bsc#1219070)
+
+-------------------------------------------------------------------
 Wed Jan 17 08:54:07 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 120.0.6099.224 (boo#1218892)
