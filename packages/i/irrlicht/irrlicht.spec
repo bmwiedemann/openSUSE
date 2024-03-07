@@ -95,8 +95,8 @@ commercial 3D engines.
 
 %prep
 %setup -q
-%patch0
-%patch1 -p1
+%patch -P 0
+%patch -P 1 -p1
 
 sed -i 's/\r//' readme.txt
 iconv -o readme.txt.iso88591 -f iso88591 -t utf8 readme.txt
