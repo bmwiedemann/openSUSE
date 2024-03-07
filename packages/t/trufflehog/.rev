@@ -475,4 +475,21 @@
   * fix prefix check when returning early (#2503) (forwarded request 1155212 from ph03nix)</comment>
     <requestid>1155283</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8bddac6ade895a085d205261b73a5241</srcmd5>
+    <version>3.68.5</version>
+    <time>1709832649</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.68.5:
+  * DB is not needed for ping command (#2540)
+  * Redact secret in git command output (#2539)
+  * Add naive S3 ignorelist (#2536)
+  * fix(deps): update module github.com/stretchr/testify to v1.9.0 (#2534)
+  * fix(deps): update module cloud.google.com/go/storage to v1.39.0 (#2533)
+  * fix(deps): update module github.com/felixge/fgprof to v0.9.4 (#2532)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.50.30 (#2529)
+  * Create basic escaped unicode decoder (#2456)
+  * [feat] - Make the client configurable (#2528) (forwarded request 1155851 from ph03nix)</comment>
+    <requestid>1155887</requestid>
+  </revision>
 </revisionlist>

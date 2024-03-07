@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 07 10:24:49 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 3.68.5:
+  * DB is not needed for ping command (#2540)
+  * Redact secret in git command output (#2539)
+  * Add naive S3 ignorelist (#2536)
+  * fix(deps): update module github.com/stretchr/testify to v1.9.0 (#2534)
+  * fix(deps): update module cloud.google.com/go/storage to v1.39.0 (#2533)
+  * fix(deps): update module github.com/felixge/fgprof to v0.9.4 (#2532)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.50.30 (#2529)
+  * Create basic escaped unicode decoder (#2456)
+  * [feat] - Make the client configurable (#2528)
+
+-------------------------------------------------------------------
 Tue Mar 05 13:39:33 UTC 2024 - felix.niederwanger@suse.com
 
 - Update to version 3.68.4:
