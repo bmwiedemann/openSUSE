@@ -1,7 +1,7 @@
 #
 # spec file for package R-base
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define release 1
 
 Name:           R-base
-Version:        4.3.2
+Version:        4.3.3
 Release:        %release
 %define Rversion %{version}
 Source0:        R-%{version}.tar.xz
@@ -107,7 +107,7 @@ R is a language which is not entirely unlike the S language developed at
 AT&T Bell Laboratories by Rick Becker, John Chambers and Allan Wilks.
 
 %prep
-%setup -n R-%{version}
+%autosetup -n R-%{version}
 #%%patch0 -p1
 
 %build
@@ -1148,7 +1148,7 @@ Metapackage, Requires: all recommended Packages
 
 %package -n R-boot
 Summary:        Package provides recommended R-boot
-Version:        1.3.28
+Version:        1.3.29
 Release:        %release
 Requires:       R-base
 
@@ -1212,7 +1212,7 @@ This packages provides R-class, one of the recommended packages.
 
 %package -n R-cluster
 Summary:        Package provides recommended R-cluster
-Version:        2.1.4
+Version:        2.1.6
 Release:        %release
 Requires:       R-base
 
@@ -1267,7 +1267,7 @@ This packages provides R-codetools, one of the recommended packages.
 
 %package -n R-foreign
 Summary:        Package provides recommended R-foreign
-Version:        0.8.85
+Version:        0.8.86
 Release:        %release
 Requires:       R-base
 
@@ -1326,7 +1326,7 @@ This packages provides R-KernSmooth, one of the recommended packages.
 
 %package -n R-lattice
 Summary:        Package provides recommended R-lattice
-Version:        0.21.9
+Version:        0.22.5
 Release:        %release
 Requires:       R-base
 
@@ -1393,7 +1393,7 @@ This packages provides R-MASS, one of the recommended packages.
 
 %package -n R-Matrix
 Summary:        Package provides recommended R-Matrix
-Version:        1.6.1
+Version:        1.6.5
 Release:        %release
 Requires:       R-base
 Obsoletes:      R-Matrix-devel <= 1.3.2
@@ -1436,10 +1436,18 @@ This packages provides R-Matrix, one of the recommended packages.
 %{_libdir}/R/library/Matrix/include/Matrix.h
 %{_libdir}/R/library/Matrix/include/Matrix_stubs.c
 %{_libdir}/R/library/Matrix/include/cholmod.h
+%dir %{_libdir}/R/library/Matrix/include/Matrix/
+%{_libdir}/R/library/Matrix/include/Matrix/Matrix.h
+%{_libdir}/R/library/Matrix/include/Matrix/alloca.h
+%{_libdir}/R/library/Matrix/include/Matrix/cholmod-utils.h
+%{_libdir}/R/library/Matrix/include/Matrix/cholmod.h
+%{_libdir}/R/library/Matrix/include/Matrix/remap.h
+%{_libdir}/R/library/Matrix/include/Matrix/stubs.c
+%{_libdir}/R/library/Matrix/include/Matrix/version.h
 
 %package -n R-mgcv
 Summary:        Package provides recommended R-mgcv
-Version:        1.9.0
+Version:        1.9.1
 Release:        %release
 Requires:       R-base
 
@@ -1464,13 +1472,12 @@ This packages provides R-mgcv, one of the recommended packages.
 %lang(de) %{_libdir}/R/library/mgcv/po/de/
 %lang(en) %{_libdir}/R/library/mgcv/po/en*/
 %lang(fr) %{_libdir}/R/library/mgcv/po/fr/
-%lang(it) %{_libdir}/R/library/mgcv/po/it/
 %lang(ko) %{_libdir}/R/library/mgcv/po/ko/
 %lang(pl) %{_libdir}/R/library/mgcv/po/pl/
 
 %package -n R-nlme
 Summary:        Package provides recommended R-nlme
-Version:        3.1.163
+Version:        3.1.164
 Release:        %release
 Requires:       R-base
 
@@ -1533,7 +1540,7 @@ This packages provides R-nnet, one of the recommended packages.
 
 %package -n R-rpart
 Summary:        Package provides recommended R-rpart
-Version:        4.1.21
+Version:        4.1.23
 Release:        %release
 Requires:       R-base
 
@@ -1598,7 +1605,7 @@ This packages provides R-spatial, one of the recommended packages.
 
 %package -n R-survival
 Summary:        Package provides recommended R-survival
-Version:        3.5.7
+Version:        3.5.8
 Release:        %release
 Requires:       R-base
 
