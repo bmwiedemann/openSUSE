@@ -50,9 +50,7 @@ many many times. These complex logical rules are exactly the same ones
 that people use with paper and pen.
 
 %prep
-%setup -q -n %{oname}Sources
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n %{oname}Sources
 
 # Convert to unix line end
 find -name "*.txt" -print0 -or -name "*.h" -print0 -or -name "*.cpp" -print0 -or -name "*.html" -print0 | xargs -0 dos2unix
