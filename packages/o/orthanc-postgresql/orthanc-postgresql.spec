@@ -29,7 +29,11 @@ Source1:        orthanc-postgresql-readme.SUSE
 Source2:        postgresql.json
 BuildRequires:  cmake
 BuildRequires:  e2fsprogs-devel
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  googletest-devel
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_atomic-devel >= 1.66
@@ -66,7 +70,10 @@ PostgreSQL Database plugin for Orthanc, replaces SQLite database
 %autosetup -n OrthancPostgreSQL-%{version}
 
 %build
-
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+export CC=gcc-13
+export CXX=g++-13
+%endif
 %cmake ../PostgreSQL \
        -DALLOW_DOWNLOADS=ON \
        -DUSE_SYSTEM_GOOGLE_TEST=ON \
