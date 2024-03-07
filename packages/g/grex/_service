@@ -1,11 +1,12 @@
 <services>
-  <service name="cargo_vendor" mode="disabled">
-     <param name="srctar">grex-1.4.4.tar.gz</param>
-     <param name="compression">zst</param>
-     <param name="update">true</param>
+  <service name="download_files" mode="manual"/>
+  <service name="cargo_vendor" mode="manual">
+    <param name="src">grex-*</param>
+    <param name="compression">zst</param>
+    <param name="update">true</param>
   </service>
-  <service name="cargo_audit" mode="disabled">
-     <param name="srcdir">grex-1.4.4</param>
+  <service name="cargo_audit" mode="manual">
+    <param name="src">grex-*</param>
   </service>
 </services>
 
