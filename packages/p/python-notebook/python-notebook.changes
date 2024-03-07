@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Mar  7 15:25:14 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.1.1
+  * Jupyter Notebook 7.1 is based on JupyterLab 4.1, and includes a
+    number of new features, bug fixes, and enhancements for
+    extension developers. This release is compatible with
+    extensions supporting JupyterLab 4.0. Extension authors are
+    recommended to consult the Extension Migration Guide which
+    lists deprecations and changes to the public API.
+  ## Bugs fixed
+  * Grayout "Edit Notebook Metadata" for other file formats. #7265
+    (@itsmevichu)
+- Release 7.1.0
+  ## Enhancements made
+  * Create a new notebook with a specific kernel from the new
+    dropdown #7255 (@jtpio)
+  * Add the plugin manager #7198 (@jtpio)
+  * Fix toggle functionality for widgets. #7178 (@haok1402)
+  * Bump to JupyterLab 4.1.0a4 bis #7172 (@brichet)
+  * Update to JupyterLab 4.1.0a3 #7161 (@jtpio)
+  * Added Lumino Plugin Description (#7008) #7127 (@Dilip-Jain)
+  * Added Edit Notebook Metadata Option (#6402) #7099 (@Dilip-Jain)
+  * Update to JupyterLab 4.1 #7096 (@jtpio)
+  * Add the JupyterLab resources plugin #6968 (@jtpio)
+  ## Bugs fixed
+  * Fix spurious kernel selection dialog on notebook creation #7258
+    (@jtpio)
+  * Workaround for the file browser tracker focus issue #7224
+    (@jtpio)
+- Skip python39: jupyterlab no longer available (due to ipython)
+
+-------------------------------------------------------------------
 Sat Jan 20 11:32:13 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.0.7
