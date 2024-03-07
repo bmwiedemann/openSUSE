@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-dep-logic
 Version:        0.2.0
 Release:        0
@@ -23,9 +24,9 @@ Summary:        Python dependency specifications supporting logical operations
 License:        Apache-2.0
 URL:            https://github.com/pdm-project/dep-logic
 Source:         https://files.pythonhosted.org/packages/source/d/dep-logic/dep_logic-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module packaging >= 22}
 BuildRequires:  %{python_module pytest}
