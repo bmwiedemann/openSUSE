@@ -59,8 +59,7 @@ Shortcut Keys Used During the Game
  0 - 9 - toggle the L & R colors on Insane mode (can be used anywhere)
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 # SED-FIX-OPENSUSE -- Correct Path and Highscore
 sed -i -e 's|chown |true |;
