@@ -71,8 +71,7 @@ Requires:       libpmemobj++-devel >= 1.10
 This package contains the header files for libpmemkv and libpmemkv_json_config
 
 %prep
-%setup -q
-%patch1
+%autosetup -p0
 
 %build
 # ENGINE_VCMAP needs package-config(tbb) which is currently not available
