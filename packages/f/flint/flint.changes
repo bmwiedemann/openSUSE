@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Mar  7 13:46:51 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.1.1
+  * Add check for aligned_alloc and _aligned_malloc
+
+-------------------------------------------------------------------
+Sun Feb 25 18:19:17 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.1.0
+  * The methods in the ``fmpz_mod_mat`` module now use a context object.
+  * Changed ``fq_mat_rref`` and others to allow separate input and
+    output matrices.
+  * New module ``acb_theta`` for computing complex Riemann theta
+    functions with characteristics in any dimension.
+  * ``flint_printf`` and related functions now supports printing
+    common FLINT types, e.g. using the format string ``%{fmpz}``
+    for ``fmpz_t``.
+  * Added ``fmpz_mpoly_q_set_str_pretty`` and
+    ``fmpz_mpoly_q_get_str_pretty``.
+  * Added ``flint_mpn_mulhigh``.
+
+-------------------------------------------------------------------
 Fri Nov 10 12:20:30 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.0.1

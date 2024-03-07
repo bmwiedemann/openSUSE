@@ -136,4 +136,12 @@
     <comment>- Update to release 3.0.1</comment>
     <requestid>1124969</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>db1626770c6759399b74a459355756e5</srcmd5>
+    <version>3.1.1</version>
+    <time>1709832709</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.1.1</comment>
+    <requestid>1156007</requestid>
+  </revision>
 </revisionlist>

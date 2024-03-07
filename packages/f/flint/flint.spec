@@ -1,7 +1,7 @@
 #
 # spec file for package flint
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,24 @@
 
 
 Name:           flint
-%define lname	libflint18
-Version:        3.0.1
+%define lname	libflint19
+Version:        3.1.1
 Release:        0
 Summary:        C library for doing number theory
-License:        LGPL-2.1-or-later
+License:        LGPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://flintlib.org/
 
+# doc/source/history.rst for changelog
 #Git-Clone:     https://github.com/flintlib/flint
 Source:         https://github.com/flintlib/flint/archive/v%version.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  gmp-devel >= 5
+BuildRequires:  gmp-devel >= 6.2.1
 BuildRequires:  libtool
-BuildRequires:  mpfr-devel >= 3
+BuildRequires:  mpfr-devel >= 4.1.0
 BuildRequires:  ntl-devel
 BuildRequires:  xz
 
@@ -111,7 +112,7 @@ ln -s ../flint/fmpz_mpoly.h "$b/%_includedir/calcium/utils_flint.h"
 
 %files -n %lname
 %_libdir/libflint.so.*
-%license LICENSE
+%license COPYING*
 
 %files devel
 %_includedir/*
