@@ -91,10 +91,7 @@ This package contains modeling documention and a users guide
 for cal3d.
 
 %prep
-%setup -q -n %{oname}-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n %{oname}-%{version}
 
 pushd %{name}
 sed -e 's/AM_USE_UNITTESTCPP/#\ AM_USE_UNITTESTCPP/' -i configure.in
