@@ -77,12 +77,7 @@ programming. It contains the following libraries:
 * SSG - A Simple Scene Graph API built on top of OpenGL
 
 %prep
-%setup -q
-%patch0
-%patch1
-%patch2
-%patch3
-%patch4
+%autosetup -p0
 
 %build
 autoreconf -fiv

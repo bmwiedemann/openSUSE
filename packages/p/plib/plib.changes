@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 14:33:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Sun Oct 31 11:40:35 UTC 2021 - ldreier@vodafonemail.de
 
 - add plib-1.8.5-CVE-2021-38714.patch from Anton Gladky to fix
