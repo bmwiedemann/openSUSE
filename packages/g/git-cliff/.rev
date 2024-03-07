@@ -80,4 +80,80 @@
 </comment>
     <requestid>1121406</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2300767558b6ee0b873e2a11119e4890</srcmd5>
+    <version>2.1.2</version>
+    <time>1709832587</time>
+    <user>dimstar_suse</user>
+    <comment>- Adopt new way to package rust software with obs-service-cargo:
+  * remove cargo_config. it's part of vendor.tar now
+- Update to version 2.1.2:
+  * feat(npm): add programmatic API for TypeScript
+  * chore(fixtures): enable verbose logging for output
+  * refactor(clippy): apply clippy suggestions
+  * refactor(changelog): do not output to stdout when prepend is used
+  * feat(args): add `--tag-pattern` argument
+  * fix(config): fix commit parser regex in the default config
+  * fix(github): sanitize the GitHub token in debug logs
+  * chore(config): add animation to the header of the changelog
+  * refactor(clippy): apply clippy suggestions
+  * docs(security): update security policy
+  * chore(project): add readme to core package
+  * chore(embed): do not allow missing docs
+  * chore(config): skip dependabot commits for dev updates
+  * docs(readme): mention RustLab 2023 talk
+  * chore(config): revamp the configuration files
+  * chore(docker): update versions in Dockerfile
+  * chore(example): use full links in GitHub templates
+  * chore(project): bump MSRV to 1.74.1
+  * revert(config): use postprocessors for checking the typos
+  * feat(template): support using PR labels in the GitHub template
+  * docs(configuration): fix typo
+  * feat(args): add `--no-exec` flag for skipping command execution
+  * chore(command): explicitly set the directory of command to current dir
+  * refactor(ci): use hardcoded workspace members for cargo-msrv command
+  * refactor(ci): simplify cargo-msrv installation
+  * refactor(clippy): apply clippy suggestions
+  * refactor(config): use postprocessors for checking the typos
+  * chore(project): update copyright years
+  * chore(github): update templates about GitHub integration
+  * feat(changelog): set the timestamp of the previous release
+  * feat(template): support using PR title in the GitHub template
+  * feat(changelog): improve skipping via `.cliffignore` and `--skip-commit`
+  * chore(changelog): disable the default behavior of next-version
+  * fix(git): sort commits in topological order
+  * test(changelog): use the correct version for missing tags
+  * chore(changelog): use 0.1.0 as default next release if no tag is found
+  * feat(github)!: support integration with GitHub repos
+  * refactor(changelog): support `--bump` for processed releases
+  * fix(cli): fix broken pipe when stdout is interrupted
+  * test(fixtures): update the bumped value output to add prefix
+  * feat(changelog): support tag prefixes with `--bump`
+  * feat(changelog)!: set tag to `0.0.1` via `--bump` if no tags exist
+  * fix(commit): trim the trailing newline from message
+  * docs(readme): use the raw link for the animation
+  * chore(example): remove limited commits example
+  * feat(args): add `-x` short argument for `--context`
+  * revert(deps): bump actions/upload-pages-artifact from 2 to 3
+  * revert(deps): bump actions/deploy-pages from 3 to 4
+  * chore(dependabot): group the dependency updates for creating less PRs
+  * feat(parser): support using SHA1 of the commit
+  * feat(commit): add merge_commit flag to the context
+  * chore(mergify): don't update PRs for the main branch
+  * fix(links): skip checking the GitHub commit URLs
+  * fix(changelog): fix previous version links
+  * feat(parser): support using regex scope values
+  * test(fixture): update the date for example test fixture
+  * docs(fixtures): add instructions for adding new fixtures
+  * feat(args): support initialization with built-in templates
+  * feat(changelog)!: support templating in the footer
+  * feat(args): allow returning the bumped version
+  * test(fixture): add test fixture for bumping version
+  * fix: allow version bump with a single previous release
+  * fix(changelog): set the correct previous tag when a custom tag is given
+  * feat(args): set `CHANGELOG.md` as default missing value for output option
+  * refactor(config): remove unnecessary newline from configs
+</comment>
+    <requestid>1155786</requestid>
+  </revision>
 </revisionlist>
