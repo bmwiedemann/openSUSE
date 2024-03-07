@@ -52,8 +52,8 @@ escape a Weapco patrol that has intercepted him.
 %lang_package
 
 %prep
-%setup -q -a 1 -n %{name}-%{version}-src
-%patch0 -p1
+%autosetup -p1 -a 1 -n %{name}-%{version}-src
+
 sed -i 's/\r$//' README.txt
 
 %build
