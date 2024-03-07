@@ -87,10 +87,7 @@ Supplements:    packageand(apache2:%name)
 This subpackage contains the Apache configuration files
 
 %prep
-%setup -q -n %{name}-%{version}-mod
-%patch0
-%patch10
-%patch100
+%autosetup -p0 -n %{name}-%{version}-mod
 
 ### remove not needed files
 pushd lang
