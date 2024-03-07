@@ -41,8 +41,7 @@ Authors:
     Ken MacLeod <ken@bitsko.slc.ut.us>
 
 %prep
-%setup -n libxml-perl-%{version}
-%patch0
+%autosetup -p0 -n libxml-perl-%{version}
 
 %build
 perl Makefile.PL

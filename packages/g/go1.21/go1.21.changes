@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Mar  5 17:38:51 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.21.8 (released 2024-03-05) includes security fixes to the
+  crypto/x509, html/template, net/http, net/http/cookiejar, and
+  net/mail packages, as well as bug fixes to the go command and the
+  runtime.
+  Refs boo#1212475 go1.21 release tracking
+  CVE-2023-45289 CVE-2023-45290 CVE-2024-24783 CVE-2024-24784 CVE-2024-24785
+  * go#65385 go#65065 boo#1221000 security: fix CVE-2023-45289 net/http, net/http/cookiejar: incorrect forwarding of sensitive headers and cookies on HTTP redirect
+  * go#65389 go#65383 boo#1221001 security: fix CVE-2023-45290 net/http: memory exhaustion in Request.ParseMultipartForm
+  * go#65392 go#65390 boo#1220999 security: fix CVE-2024-24783 crypto/x509: Verify panics on certificates with an unknown public key algorithm
+  * go#65848 go#65083 boo#1221002 security: fix CVE-2024-24784 net/mail: comments in display names are incorrectly handled
+  * go#65968 go#65697 boo#1221003 security: fix CVE-2024-24785 html/template: errors returned from MarshalJSON methods may break template escaping
+  * go#65472 internal/testenv: TestHasGoBuild failures on the LUCI noopt builders
+  * go#65475 internal/testenv: support LUCI mobile builders in testenv tests
+  * go#65478 runtime: don't let the tests leave core files behind
+  * go#65640 cmd/cgo/internal/testsanitizers,x/build: LUCI clang15 builders failing
+  * go#65851 cmd/go: "missing ziphash" error with go.work
+  * go#65882 internal/poll: invalid uintptr conversion in call to windows.SetFileInformationByHandle
+
+-------------------------------------------------------------------
 Tue Feb 27 05:45:13 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:

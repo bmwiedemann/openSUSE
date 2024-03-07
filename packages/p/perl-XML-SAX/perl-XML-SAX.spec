@@ -43,8 +43,7 @@ required for implementing SAX drivers, along with a factory class for
 returning any SAX parser installed on the user's system.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0 -p0
+%autosetup -p0 -n %{cpan_name}-%{version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor

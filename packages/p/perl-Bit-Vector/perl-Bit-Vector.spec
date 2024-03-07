@@ -41,8 +41,7 @@ Requires:       perl(Storable) >= 2.21
 Bit::Vector Perl module
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0 
+%autosetup -p0 -n %{cpan_name}-%{version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

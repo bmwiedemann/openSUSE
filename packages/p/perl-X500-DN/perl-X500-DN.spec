@@ -44,10 +44,7 @@ Authors:
     Robert Joop <yaph-020416@timesink.de>
 
 %prep
-%setup -n X500-DN-%{version}
-%patch0
-%patch1
-%patch2 -p1
+%autosetup -p1 -n X500-DN-%{version}
 # ---------------------------------------------------------------------------
 
 %build

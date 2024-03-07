@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Wed Mar  6 15:36:55 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.1.0151
+- refreshed vim-7.3-filetype_spec.patch
+ *  ml_get_buf_len() does not consider text properties
+ *  Several minor 'winfixbuf' issues
+ *  Update Serbian messages 
+ *  Recognize "__inline" 
+ *  Update base-syntax, fix escaping :syn and :hi sub-groups 
+ *  Update syntax file, fix issue #962 
+ *  null pointer member access when accessing 'winfixbuf' property
+ *  update syntax script
+ *  Update base-syntax, fix issue #14135 
+ *  Highlight the error message at *E1513*
+ *  Update base-syntax, improve :augroup highlighting 
+ *  Use unnamed register when clipboard not working 
+ *  Vim9: can't call internal methods with objects
+ *  Cannot keep a buffer focused in a window
+ *  Updated Russian installer translation 
+ *  Recognise text blocks 
+ *  Update ftplugin, browsefilter labels 
+ *  Improve the recognition of literals 
+ *  v:echospace wrong with invalid value of 'showcmdloc'
+ *  some improvements to getregion() docs 
+ *  update "Last Change header", remove trailing whitespace
+ *  handle file/dir symlinks specifically in tree mode
+ *  v:echospace not correct when 'showcmdloc' != last
+ *  getregion() needs more tests
+ *  disable multiline_scalar detection by default
+ *  [security]: autocmd causes use-after-free in set_curbuf()
+ *  getregion() can be improved
+ *  include runtime/syntax/testdir/ftplugin
+ *  Put in Visual mode wrong if it replaces fold marker
+ *  Fix typo under *kitty-terminal* in term.txt
+ *  Update Serbian translation 
+ *  Recognise _when_ clauses in _switch_ blocks
+ *  simplify code and allow filetype options
+ *  Update Italian translation
+ *  cursor on wrong row after 1 char 'below' virtual text when EOL is shown
+ *  Update ftplugin, fix #14101 
+ *  Update base-syntax, improve :echo highlighting 
+ *  update Debian syntax files 
+ *  too many STRLEN calls when getting a memline
+ *  Update syntax file, improve :substitute matching 
+ *  <Del> in cmdline mode doesn't delete composing chars
+ *  Fix typo in usr_41.txt
+ *  fix inconsistent indent 
+ *  Vim9: need more test for exists() methods
+ *  clarify ':set[l] {option}<' behaviour
+ *  Insufficient testing for 'delcombine'
+ *  "C" doesn't include composing chars with 'virtualedit'
+ *  buffer-completion may not always find all matches
+ *  [security]: UAF if win_split_ins autocommands delete "wp"
+ *  Fix truncation of text_wrap 'wrap' virt text after EOL list char
+ *  runtime(doc) Update help text for matchbufline() and matchstrlist()
+ *  small fixes to the zh tutor 
+ *  Recognize SourceLicense tag name in RPM spec syntax 
+ *  win_gotoid() may abort even when not switching a window
+ *  Naming a non-pointer variable "oap" is strange
+ *  Internal error when using upper-case mark in getregion()
+ *  Update base-syntax, fix :unabbrev highlighting 
+ *  add syntax support for Java switch expressions 
+ *  unused init of text_prop_idxs in win_line()
+ *  display of below/right virtual text with non-virtual text overlap
+ *  clarify expand() for :terminal windows
+ *  Some minor issues with the getregion() function
+ *  Update tmux syntax 
+ *  Infinite loop or signed overflow with 'smoothscroll'
+ *  hard to get visual region using Vim script
+ *  can move away from cmdwin using win_splitmove()
+ *  Use different restoration strategy in win_splitmove
+ *  Stop split-moving from firing WinNew and WinNewPre autocommands
+ *  win_split_ins may not check available room
+ *  Add a place holder section for version 9.2 
+ *  Modula-2 files with priority not detected 
+ *  announce adoption of various runtime files
+ *  Distinguish Vim9 constructor definitions from the :new ex command 
+ *  Using freed memory with full tag stack and user data
+ *  Fix typo in testing.txt 
+ *  Setting some options may change curswant
+ *  update "Last Change:" header
+ *  reset readonly setting when disabling less mode
+ *  duplicate code when cleaning undo stack
+ *  Remove undo information, when cleaning quickfix buffer
+
+-------------------------------------------------------------------
 Tue Feb 20 13:24:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

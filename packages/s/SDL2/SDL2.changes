@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar  6 07:45:37 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.30.1
+  * Fixed a regression causing SDL_WaitEvent() to return spurious
+    failures
+  * Wayland windows automatically have OpenGL enabled again
+  * Fixed memory corruption when converting signed 16-bit audio
+    to float
+  * Fixed audio artifacts when converting signed 8-bit audio to
+    float
+  * Fixed the clip rectangle not being updated when the viewport
+    changes in the SDL renderer
+
+-------------------------------------------------------------------
 Fri Feb  2 00:45:50 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.30

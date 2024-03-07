@@ -4061,4 +4061,12 @@ However, upstream development now focuses on 3.x series.
     <comment></comment>
     <requestid>1137573</requestid>
   </revision>
+  <revision rev="192" vrev="43">
+    <srcmd5>26049ed0cf1db480ba8003d3d34b1221</srcmd5>
+    <version>2.7.18</version>
+    <time>1709832449</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1155422</requestid>
+  </revision>
 </revisionlist>

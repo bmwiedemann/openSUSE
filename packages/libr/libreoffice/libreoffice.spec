@@ -1,7 +1,7 @@
 #
 # spec file for package libreoffice
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,14 +29,14 @@
 %else
 %bcond_with lto
 %endif
-# Enable the kde integration on openSUSE and SLE15-SP3 or newer
-%if 0%{?is_opensuse} || 0%{?sle_version} >= 150300
+# Enable the kde integration on openSUSE and SLE15-SP4 or newer
+%if 0%{?is_opensuse} || 0%{?sle_version} >= 150400
 %bcond_without kdeintegration
 %else
 %bcond_with kdeintegration
 %endif
 # Use system gpgme and curl on TW and SLE15-SP4 or newer
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
+%if 0%{?suse_version} > 1500
 %bcond_without system_gpgme
 %bcond_without system_curl
 %bcond_without system_harfbuzz
@@ -51,8 +51,11 @@
 %bcond_with system_harfbuzz
 %endif
 %bcond_with firebird
+%if 0%{?gcc_version} < 12
+%global with_gcc 12
+%endif
 Name:           libreoffice
-Version:        7.6.4.1
+Version:        24.2.1.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -91,11 +94,11 @@ Source2005:     %{external_url}/a7983f859eafb2677d7ff386a023bc40-xsltml_2.1.2.zi
 Source2006:     https://dev-www.libreoffice.org/extern/8249374c274932a21846fa7629c2aa9b-officeotron-0.7.4-master.jar
 Source2007:     https://dev-www.libreoffice.org/extern/odfvalidator-0.9.0-RC2-SNAPSHOT-jar-with-dependencies-2726ab578664434a545f8379a01a9faffac0ae73.jar
 # PDFium is bundled everywhere
-Source2008:     %{external_url}/pdfium-5778.tar.bz2
+Source2008:     %{external_url}/pdfium-6179.tar.bz2
 # Single C file with patches from LO
 Source2009:     %{external_url}/dtoa-20180411.tgz
 # Skia is part of chromium and bundled everywhere as by google only way is monorepo way
-Source2010:     %{external_url}/skia-m111-a31e897fb3dcbc96b2b40999751611d029bf5404.tar.xz
+Source2010:     %{external_url}/skia-m116-2ddcf183eb260f63698aa74d1bb380f247ad7ccd.tar.xz
 Source2012:     %{external_url}/libcmis-0.6.1.tar.xz
 Provides:       bundled(libcmis) = 0.6.1
 # change user config dir name from ~/.libreoffice/3 to ~/.libreoffice/3-suse
@@ -114,10 +117,8 @@ Patch11:        fix_webp_on_sle12_sp5.patch
 Patch14:        use-fixmath-shared-library.patch
 # PATCH-FIX-SUSE Fix make distro-pack-install
 Patch15:        fix-sdk-idl.patch
-# PATCH-FIX-SUSE Allow the use of old harfbuzz versions
-Patch16:        0002-Revert-Require-HarfBuzz-5.1.0.patch
-# Build with java 8
-Patch101:       0001-Revert-java-9-changes.patch
+# Patch submitted upstream to allow building with any Java >= 8
+Patch100:       0001-Allow-building-with-Java-8.patch
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
@@ -135,11 +136,12 @@ BuildRequires:  cups-devel
 BuildRequires:  fixmath-devel
 BuildRequires:  libwebp-devel
 BuildRequires:  zlib-devel
+BuildRequires:  zxcvbn-devel
 %if %{with system_curl}
 BuildRequires:  curl-devel >= 7.68.0
 %else
-Source2013:     %{external_url}/curl-8.4.0.tar.xz
-Provides:       bundled(curl) = 8.4.0
+Source2013:     %{external_url}/curl-8.6.0.tar.xz
+Provides:       bundled(curl) = 8.6.0
 %endif
 # Needed for tests
 BuildRequires:  dejavu-fonts
@@ -213,6 +215,8 @@ Source2026:     %{external_url}/graphite2-minimal-1.3.14.tgz
 Provides:       bundled(graphite2) = 1.3.14
 Provides:       bundled(harfbuzz) = 8.2.2
 %endif
+# Java-WebSocket
+Source3000:     %{external_url}/Java-WebSocket-1.5.4.tar.gz
 BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(lcms2)
@@ -230,7 +234,7 @@ BuildRequires:  pkgconfig(libmspub-0.1) >= 0.1
 BuildRequires:  pkgconfig(libmwaw-0.3) >= 0.3.21
 BuildRequires:  pkgconfig(libnumbertext) >= 1.0.6
 BuildRequires:  pkgconfig(libodfgen-0.1) >= 0.1.4
-BuildRequires:  pkgconfig(liborcus-0.18)
+BuildRequires:  pkgconfig(liborcus-0.18) >= 0.19.0
 BuildRequires:  pkgconfig(libpagemaker-0.0)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libpq)
@@ -238,7 +242,6 @@ BuildRequires:  pkgconfig(libqxp-0.0)
 BuildRequires:  pkgconfig(librevenge-0.0) >= 0.0.1
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libstaroffice-0.0) >= 0.0.7
-BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libvisio-0.1) >= 0.1
 BuildRequires:  pkgconfig(libwpd-0.10) >= 0.10
 BuildRequires:  pkgconfig(libwpg-0.3)
@@ -291,6 +294,7 @@ Obsoletes:      %{name}-icon-theme-oxygen < %{version}
 Source2020:     %{external_url}/boost_1_82_0.tar.xz
 Source2023:     %{external_url}/poppler-23.09.0.tar.xz
 Source2024:     %{external_url}/poppler-data-0.4.12.tar.gz
+Source2030:     %{external_url}/tiff-4.6.0.tar.xz
 Provides:       bundled(boost) = 1.82.0
 Provides:       bundled(poppler) = 23.06.0
 Provides:       bundled(poppler-data) = 0.4.12
@@ -300,6 +304,7 @@ BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_locale-devel
 BuildRequires:  libboost_system-devel
+BuildRequires:  pkgconfig(libtiff-4) >= 4.0.10
 BuildRequires:  pkgconfig(poppler) >= 21.01.0
 BuildRequires:  pkgconfig(poppler-cpp)
 %endif
@@ -307,38 +312,31 @@ BuildRequires:  pkgconfig(poppler-cpp)
 # Too old icu on the system
 Source2021:     %{external_url}/icu4c-73_2-src.tgz
 Source2022:     %{external_url}/icu4c-73_2-data.zip
+Source2027:     %{external_url}/phc-winner-argon2-20190702.tar.gz
+Source2028:     %{external_url}/fontconfig-2.14.2.tar.xz
+Source2029:     %{external_url}/freetype-2.13.0.tar.xz
 Provides:       bundled(icu) = 73.2
-BuildRequires:  java-devel >= 1.8
 BuildRequires:  libBox2D-devel
 BuildRequires:  libmysqlclient-devel
-BuildConflicts: java < 1.8
-BuildConflicts: java >= 9
-BuildConflicts: java-devel < 1.8
-BuildConflicts: java-devel >= 9
-BuildConflicts: java-headless < 1.8
-BuildConflicts: java-headless >= 9
 Requires(post): update-desktop-files
-Requires(postun):update-desktop-files
+Requires(postun): update-desktop-files
 %else
 # genbrk binary is required
 BuildRequires:  icu
-BuildRequires:  java-devel >= 9
+BuildRequires:  argon2-devel
 BuildRequires:  libbox2d-devel
 BuildRequires:  libmariadb-devel
 BuildRequires:  pkgconfig(icu-i18n)
-BuildConflicts: java < 9
-BuildConflicts: java-devel < 9
-BuildConflicts: java-headless < 9
 BuildRequires:  pkgconfig(libopenjp2)
 %endif
-# Dragonbox requires C++17
-%if 0%{?is_opensuse} || 0%{?sle_version} >= 150000
-BuildRequires:  gcc >= 7
-BuildRequires:  gcc-c++ >= 7
+%if 0%{?with_gcc:1}
+BuildRequires:  gcc%{with_gcc}
+BuildRequires:  gcc%{with_gcc}-c++
 %else
-BuildRequires:  gcc7
-BuildRequires:  gcc7-c++
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
 %endif
+BuildRequires:  java-devel >= 1.8
 %if 0%{?suse_version}
 # needed by python3_sitelib
 BuildRequires:  python-rpm-macros
@@ -346,12 +344,12 @@ BuildRequires:  python-rpm-macros
 %if %{with system_gpgme}
 BuildRequires:  libgpgmepp-devel >= 1.14
 %else
-Source1000:     %{external_url}/gpgme-1.18.0.tar.bz2
-Source1001:     %{external_url}/libgpg-error-1.43.tar.bz2
+Source1000:     %{external_url}/gpgme-1.20.0.tar.bz2
+Source1001:     %{external_url}/libgpg-error-1.47.tar.bz2
 Source1002:     %{external_url}/libassuan-2.5.6.tar.bz2
-Provides:       bundled(gpgme) = 1.18.0
+Provides:       bundled(gpgme) = 1.20.0
 Provides:       bundled(libassuan) = 2.5.6
-Provides:       bundled(libgpg-error) = 1.43
+Provides:       bundled(libgpg-error) = 1.47
 %endif
 %if %{with firebird}
 BuildRequires:  pkgconfig(fbclient)
@@ -427,7 +425,7 @@ This package includes the original branding for the LibreOffice office suite.
 Summary:        LibreOffice Icon Themes
 Group:          Productivity/Office/Suite
 Requires(post): %{name}-share-linker
-Requires(postun):%{name}-share-linker
+Requires(postun): %{name}-share-linker
 Supplements:    libreoffice
 Provides:       %{name}-icon-theme-breeze = %{version}
 Obsoletes:      %{name}-icon-theme-breeze < %{version}
@@ -951,6 +949,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %langpack -l hr -n Croatian -m hr_HR -X -T
 %langpack -l hsb -n Upper_Sorbian -T -X
 %langpack -l hu -n Hungarian -X -m hu_HU -T
+%langpack -l hy -n Armenian
 %langpack -l it -n Italian -X -m it_IT -T
 %langpack -l id -n Indonesian -T -M -X
 %langpack -l is -n Icelandic -T -X -M
@@ -1028,26 +1027,23 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %setup -q -b2 -b4
 %if 0%{?suse_version} < 1500
 # The rename of the configdir is needed only on older than factory for compat
-%patch1
+%patch -P 1
 %endif # Leap 42/SLE-12
-%patch2
-%patch3
-%patch6 -p1
-%patch9 -p1
+%patch -P 2
+%patch -P 3
+%patch -P 6 -p1
+%patch -P 9 -p1
+%patch -P 100 -p1
 %if 0%{?suse_version} < 1500
-%patch10 -p1
-%patch11 -p1
-%patch101 -p1
+%patch -P 10 -p1
+%patch -P 11 -p1
 %endif
-%patch14 -p1
-%patch15 -p1
+%patch -P 14 -p1
+%patch -P 15 -p1
+%patch -P 990 -p1
+%patch -P 991 -p1
 %if 0%{?suse_version} < 1550
-%patch16 -p1
-%endif
-%patch990 -p1
-%patch991 -p1
-%if 0%{?suse_version} < 1550
-%patch992 -p1
+%patch -P 992 -p1
 %endif
 
 # Disable some of the failing tests (some are random)
@@ -1098,12 +1094,12 @@ ARCH_FLAGS="`echo %{optflags} -flifetime-dse=1 | sed -e 's/^-g /-g1 /g' -e 's/ -
 ARCH_FLAGS="`echo %{optflags} | sed -e 's/^-g /-g1 /g' -e 's/ -g / -g1 /g' -e 's/ -g$/ -g1/g'`"
 %endif
 CFLAGS="$ARCH_FLAGS"
-CXXFLAGS="-std=c++17 $ARCH_FLAGS"
+CXXFLAGS="-std=c++20 $ARCH_FLAGS"
 export ARCH_FLAGS CFLAGS CXXFLAGS
 
-%if !0%{?is_opensuse} && 0%{?sle_version} < 150000
-export CC=gcc-7
-export CXX=g++-7
+%if 0%{?with_gcc:1}
+export CC=gcc-%{with_gcc}
+export CXX=g++-%{with_gcc}
 %endif
 
 # Fake the epoch stuff in generated zip files
@@ -1136,7 +1132,6 @@ export NOCONFIGURE=yes
         --with-system-headers \
         --with-system-libs \
         --with-system-jars \
-        --with-system-ucpp \
         --with-system-dicts \
         --with-system-libpng \
         --with-system-dragonbox \
@@ -1192,10 +1187,14 @@ export NOCONFIGURE=yes
 %if 0%{?suse_version} < 1550
         --without-system-boost \
         --without-system-poppler \
+        --without-system-libtiff \
 %endif
 %if 0%{?suse_version} < 1500
+        --without-system-argon2 \
         --without-system-icu \
         --without-system-openjpeg \
+        --without-system-fontconfig \
+        --without-system-freetype \
 %else
         --with-system-openjpeg \
 %endif
@@ -1213,7 +1212,6 @@ export NOCONFIGURE=yes
 %endif
         --enable-evolution2 \
         --enable-dbus \
-        --enable-ext-ct2n \
         --enable-ext-nlpsolver \
         --enable-ext-numbertext \
         --enable-ext-wiki-publisher \

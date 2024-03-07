@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 12:32:07 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Oct 11 09:34:37 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Add hosts.allow and hosts.deny config files from the netcfg package,

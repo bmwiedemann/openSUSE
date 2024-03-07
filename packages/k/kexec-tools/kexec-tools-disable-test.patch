@@ -8,10 +8,12 @@ Fedora).  Also one less file for usr_merge
  Makefile.in |    7 +++++--
  1 file changed, 5 insertions(+), 2 deletions(-)
 
---- a/Makefile.in
-+++ b/Makefile.in
-@@ -173,8 +173,11 @@ PSRCS:=$(foreach s, $(SRCS), $(PACKAGE_N
- PGSRCS:=$(foreach s, $(GENERATED_SRCS), $(PACKAGE_NAME)-$(PACKAGE_VERSION)/$(s))
+Index: kexec-tools-2.0.28/Makefile.in
+===================================================================
+--- kexec-tools-2.0.28.orig/Makefile.in
++++ kexec-tools-2.0.28/Makefile.in
+@@ -181,8 +181,11 @@ TARBALL.gz=$(TARBALL).gz
+ SRCS:= $(dist)
  
  MAN_PAGES:=$(KEXEC_MANPAGE) $(VMCORE_DMESG_MANPAGE)
 -BINARIES_i386:=$(KEXEC_TEST)

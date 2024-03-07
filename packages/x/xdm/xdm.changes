@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  6 09:21:36 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_gcc14-fix.patch
+  * fix build against gcc14 (boo#1221028)
+
+-------------------------------------------------------------------
 Mon Feb 26 12:07:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 06 12:50:29 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.3+git9:
+  * Explicitly install modules for config sources
+  * Trigger udev rules on ACTION!="remove"
+
+-------------------------------------------------------------------
 Fri Mar 01 13:03:26 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.3+git7:

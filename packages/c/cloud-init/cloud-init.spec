@@ -166,7 +166,7 @@ make unittest
 make lint
 
 %install
-python3 setup.py install --root=%{buildroot} --prefix=%{_prefix} --install-lib=%{python3_sitelib} --init-system=%{initsys}
+python3 setup.py install --root=%{buildroot} --prefix=%{_prefix} --install-lib=%{python3_sitelib} --init-system=%{initsys} --distro=suse
 find %{buildroot} \( -name .gitignore -o -name .placeholder \) -delete
 # from debian install script
 for x in "%{buildroot}%{_bindir}/"*.py; do

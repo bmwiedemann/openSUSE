@@ -64,4 +64,15 @@
     <comment></comment>
     <requestid>1115631</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>40db49e37c65ef237f2c9ff720010239</srcmd5>
+    <version>0.2.8+hg.44</version>
+    <time>1709832469</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to getting source code from the Mercurial tip 0.2.8+hg.44
+- Add 0001-Fix-building-with-clang-16.patch fixing bsc#1221017
+  compile with GCC 14.
+</comment>
+    <requestid>1155565</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  6 09:57:38 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Use the system default cipher list instead of hardcoded values
+  by using crypto-policies. [bsc#1211301]
+  * Use the --with-system-ciphers configure option.
+
+-------------------------------------------------------------------
 Fri Feb 16 07:57:56 UTC 2024 - pgajdos@suse.com
 
 - version update to 8.2.16

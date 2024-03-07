@@ -40,9 +40,7 @@ objects and other types of references. Because of Perl's reference-count
 based memory management, circular references will cause memory leaks.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0 
-%patch1 
+%autosetup -p0 -n %{cpan_name}-%{version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar  4 14:24:21 MST 2024 - carnold@suse.com
+
+- bsc#1220228 - virt-manager crashes when its viewer is opened on a
+  running guest that uses spice graphics
+  virt-manager uses both libosinfo and spice-gtk. spice-gtk is now 
+  built to use libsoup 3.0 but libosinfo was still using
+  libsoup 2.4. Prefer libsoup 3.0 over libsoup 2.4 for Tumbleweed
+  and newer SLE versions.
+
+-------------------------------------------------------------------
 Tue Jan 16 16:07:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Own /usr/share/gtk-doc: glib no longer uses gtk-doc and as a

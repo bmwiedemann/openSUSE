@@ -1,0 +1,45 @@
+From 3175de56d20de1bfa537e315e3c12883edf58954 Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Tue, 5 Mar 2024 20:27:04 +0100
+Subject: [PATCH 1/2] Fix example: pd.melt(var_name=scalar)
+
+---
+ chartify/examples.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/chartify/examples.py b/chartify/examples.py
+index 430e5e4..291ef77 100644
+--- a/chartify/examples.py
++++ b/chartify/examples.py
+@@ -1268,7 +1268,7 @@ def style_color_palette_sequential():
+         id_vars=["time"],
+         value_vars=data.columns[1:],
+         value_name="y",
+-        var_name=["grouping"],
++        var_name="grouping",
+     )
+ 
+     # Plot the data
+
+From b1b50c2b8bbf989f6112669b3ad9a0e8ea94b1d0 Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Tue, 5 Mar 2024 20:35:27 +0100
+Subject: [PATCH 2/2] Another instance
+
+---
+ chartify/examples.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/chartify/examples.py b/chartify/examples.py
+index 291ef77..e0a7801 100644
+--- a/chartify/examples.py
++++ b/chartify/examples.py
+@@ -1306,7 +1306,7 @@ def style_color_palette_diverging():
+         id_vars=["time"],
+         value_vars=data.columns[1:],
+         value_name="y",
+-        var_name=["grouping"],
++        var_name="grouping",
+     )
+ 
+     # Plot the data

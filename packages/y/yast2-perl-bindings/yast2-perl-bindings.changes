@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  6 14:03:01 UTC 2024 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Revert the last locale fix to avoid Perl crashing (bsc#1220375)
+- 5.0.2
+
+-------------------------------------------------------------------
 Wed Feb 21 14:22:32 UTC 2024 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Fix the locale after initializing embedded Perl interpreter

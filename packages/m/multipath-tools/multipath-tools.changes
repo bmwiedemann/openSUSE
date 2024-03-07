@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  5 20:19:12 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.9.8+87+suse.f72b9f3:
+  * fix misspelled DM_UDEV_DISABLE_OTHER_RULES_FLAG in udev rules
+    (bsc#1220810)
+
+-------------------------------------------------------------------
 Tue Feb 27 10:12:35 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Remove libmpathpersist-example-old.c, which has been obsolete

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  5 17:43:19 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Build with -std=gnu89 to build correctly with gcc14, bsc#1220970
+
+-------------------------------------------------------------------
 Mon Jan  8 10:00:07 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add CVE-2023-27043-email-parsing-errors.patch to

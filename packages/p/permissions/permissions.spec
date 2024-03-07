@@ -16,18 +16,15 @@
 #
 
 
-%define VERSION_DATE 20240206
-
 Name:           permissions
-Version:        %{suse_version}_%{VERSION_DATE}
+Version:        1699_20240305
 Release:        0
 Summary:        SUSE Linux Default Permissions
 # Maintained in github by the security team.
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
 URL:            http://github.com/openSUSE/permissions
-Source:         permissions-%{VERSION_DATE}.tar.xz
-Source1:        fix_version.sh
+Source:         permissions-%{version}.tar.xz
 Source2:        permissions.rpmlintrc
 BuildRequires:  gcc-c++
 BuildRequires:  libcap-devel
@@ -41,7 +38,7 @@ Requires:       permissions-config
 Provides:       aaa_base:%{_datadir}/permissions
 
 %prep
-%autosetup -n permissions-%{VERSION_DATE}
+%autosetup
 
 %build
 make %{?_smp_mflags} CXXFLAGS="%{optflags}"
@@ -78,7 +75,7 @@ Requires(post): %fillup_prereq
 Requires(post): chkstat
 #!BuildIgnore:  group(trusted)
 Requires(pre):  group(trusted)
-Obsoletes:      permissions-doc <= %{suse_version}_%{VERSION_DATE}
+Obsoletes:      permissions-doc <= %{version}
 BuildArch:      noarch
 
 %description config

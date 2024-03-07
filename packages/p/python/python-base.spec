@@ -347,7 +347,8 @@ sed -i -e 's/python2_package_prefix python2/python2_package_prefix python/' macr
 
 %build
 %define _lto_cflags %{nil}
-export OPT="%{optflags} -DOPENSSL_LOAD_CONF -fwrapv"
+# -std=gnu89 option is needed to build with gcc14, bsc#1220970
+export OPT="%{optflags} -DOPENSSL_LOAD_CONF -fwrapv -std=gnu89"
 
 autoreconf -f -i . # Modules/_ctypes/libffi
 

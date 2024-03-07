@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Mar  6 16:46:15 UTC 2024 - Jiri Bohac <jbohac@suse.com>
+
+- update to 2.0.28:
+  * LoongArch: Load vmlinux.efi to the link address
+  * LoongArch: Fix an issue with relocatable vmlinux
+  * m68k: fix getrandom() use with uclibc
+  * lzma: Relax memory limit for lzma decompressor
+  * kexec: ppc64: print help to stdout instead of stderr
+  * kexec/loongarch64: fix 'make dist' file loss issue
+  * crashdump/x86: set the elfcorehdr segment size for hotplug
+  * crashdump/x86: identify elfcorehdr segment for hotplug
+  * crashdump: exclude elfcorehdr segment from digest for hotplug
+  * crashdump: setup general hotplug support
+  * crashdump: introduce the hotplug command line options
+  * kexec: define KEXEC_UPDATE_ELFCOREHDR
+  * kexec: update manpage with explicit mention of clean kexec
+  * zboot: add loongarch kexec_load support
+  * zboot: enable arm64 kexec_load for zboot image
+- drop 6419b008fde783fd0cc2cc266bd1c9cf35e99a0e.patch, upstream
+- add fix-building-on-x86_64-with-binutils-2.41.patch:
+  * fix assembling on binutils >= 2.42
+- refresh kexec-tools-disable-test.patch
+
+-------------------------------------------------------------------
 Fri Jan 19 16:50:42 UTC 2024 - Jiri Bohac <jbohac@suse.com>
 
 - add kexec-dont-use-kexec_file_load-on-xen.patch:

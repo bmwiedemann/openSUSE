@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar  5 14:35:38 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Fix libgccjit-devel dependency, a newer shared library is OK.
+- Fix libgccjit dependency, the corresponding compiler isn't required.
+
+-------------------------------------------------------------------
+Thu Feb 22 14:50:13 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Use %patch -P N instead of %patchN. 
+
+-------------------------------------------------------------------
 Thu Feb  8 08:17:53 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Add gcc13-sanitizer-remove-crypt-interception.patch to remove

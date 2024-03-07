@@ -1,8 +1,8 @@
-Index: vim-8.2.2411/runtime/filetype.vim
+Index: vim-9.1.0151/runtime/filetype.vim
 ===================================================================
---- vim-8.2.2411.orig/runtime/filetype.vim
-+++ vim-8.2.2411/runtime/filetype.vim
-@@ -1639,7 +1639,7 @@ au BufNewFile,BufRead *.rules			call dis
+--- vim-9.1.0151.orig/runtime/filetype.vim
++++ vim-9.1.0151/runtime/filetype.vim
+@@ -2122,7 +2122,7 @@ au BufRead,BufNewFile *.sol			setf solid
  au BufNewFile,BufRead *.rq,*.sparql		setf sparql
  
  " Spec (Linux RPM)
@@ -11,16 +11,16 @@ Index: vim-8.2.2411/runtime/filetype.vim
  
  " Speedup (AspenTech plant simulator)
  au BufNewFile,BufRead *.speedup,*.spdata,*.spd	setf spup
-Index: vim-8.2.2411/runtime/syntax/spec.vim
+Index: vim-9.1.0151/runtime/syntax/spec.vim
 ===================================================================
---- vim-8.2.2411.orig/runtime/syntax/spec.vim
-+++ vim-8.2.2411/runtime/syntax/spec.vim
+--- vim-9.1.0151.orig/runtime/syntax/spec.vim
++++ vim-9.1.0151/runtime/syntax/spec.vim
 @@ -102,7 +102,7 @@ syn case ignore
  "%% PreAmble Section %%
  "Copyright and Serial were deprecated by License and Epoch
  syn region specPreAmbleDeprecated oneline matchgroup=specError start='^\(Copyright\|Serial\)' end='$' contains=specEmail,specURL,specURLMacro,specLicense,specColon,specVariables,specSpecialChar,specMacroIdentifier
--syn region specPreAmble oneline matchgroup=specCommand start='^\(Prereq\|Summary\|Name\|Version\|Packager\|Requires\|Recommends\|Suggests\|Supplements\|Enhances\|Icon\|URL\|Source\d*\|Patch\d*\|Prefix\|Packager\|Group\|License\|Release\|BuildRoot\|Distribution\|Vendor\|Provides\|ExclusiveArch\|ExcludeArch\|ExclusiveOS\|Obsoletes\|BuildArch\|BuildArchitectures\|BuildRequires\|BuildConflicts\|BuildPreReq\|Conflicts\|AutoRequires\|AutoReq\|AutoReqProv\|AutoProv\|Epoch\)' end='$' contains=specEmail,specURL,specURLMacro,specLicense,specColon,specVariables,specSpecialChar,specMacroIdentifier
-+syn region specPreAmble oneline matchgroup=specCommand start='^\(Prereq\|Summary\|Name\|Version\|Packager\|Requires\|Recommends\|Suggests\|Supplements\|Enhances\|Icon\|URL\|Source\d*\|Patch\d*\|Prefix\|Packager\|Group\|License\|Release\|BuildRoot\|Distribution\|Vendor\|Provides\|ExclusiveArch\|ExcludeArch\|ExclusiveOS\|Obsoletes\|BuildArch\|BuildArchitectures\|BuildRequires\|BuildConflicts\|BuildPreReq\|Conflicts\|AutoRequires\|AutoReq\|AutoReqProv\|AutoProv\|Epoch\|Recommends\|Suggests\|Freshens\|EssentialFor\|Supplements\|Enhances\)' end='$' contains=specEmail,specURL,specURLMacro,specLicense,specColon,specVariables,specSpecialChar,specMacroIdentifier
+-syn region specPreAmble oneline matchgroup=specCommand start='^\(Prereq\|Summary\|Name\|Version\|Packager\|Requires\|Recommends\|Suggests\|Supplements\|Enhances\|Icon\|URL\|SourceLicense\|Source\d*\|Patch\d*\|Prefix\|Packager\|Group\|License\|Release\|BuildRoot\|Distribution\|Vendor\|Provides\|ExclusiveArch\|ExcludeArch\|ExclusiveOS\|Obsoletes\|BuildArch\|BuildArchitectures\|BuildRequires\|BuildConflicts\|BuildPreReq\|Conflicts\|AutoRequires\|AutoReq\|AutoReqProv\|AutoProv\|Epoch\)' end='$' contains=specEmail,specURL,specURLMacro,specLicense,specColon,specVariables,specSpecialChar,specMacroIdentifier
++syn region specPreAmble oneline matchgroup=specCommand start='^\(Prereq\|Summary\|Name\|Version\|Packager\|Requires\|Recommends\|Suggests\|Supplements\|Enhances\|Icon\|URL\|SourceLicense\|Source\d*\|Patch\d*\|Prefix\|Packager\|Group\|License\|Release\|BuildRoot\|Distribution\|Vendor\|Provides\|ExclusiveArch\|ExcludeArch\|ExclusiveOS\|Obsoletes\|BuildArch\|BuildArchitectures\|BuildRequires\|BuildConflicts\|BuildPreReq\|Conflicts\|AutoRequires\|AutoReq\|AutoReqProv\|AutoProv\|Epoch\|Freshens\|EssentialFor\)' end='$' contains=specEmail,specURL,specURLMacro,specLicense,specColon,specVariables,specSpecialChar,specMacroIdentifier
  
  "%% Description Section %%
  syn region specDescriptionArea matchgroup=specSection start='^%description' end='^%'me=e-1 contains=specDescriptionOpts,specEmail,specURL,specNumber,specMacroIdentifier,specComment

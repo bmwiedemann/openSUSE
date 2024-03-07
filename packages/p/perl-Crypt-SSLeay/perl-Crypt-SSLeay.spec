@@ -55,11 +55,8 @@ loaded by 'LWP::Protocol::https' for https requests and provides the
 necessary SSL glue.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -p1 -n %{cpan_name}-%{version}
 find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

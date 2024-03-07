@@ -126,7 +126,7 @@
 %endif
 
 Name:           go1.21
-Version:        1.21.7
+Version:        1.21.8
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause

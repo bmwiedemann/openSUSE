@@ -200,10 +200,7 @@ Requires:       pkgconfig(json-glib-1.0)
 This package contains the development files for the dbusmenu-jsonloader library.
 
 %prep
-%setup -q -n %{sname}-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n %{sname}-%{version}
 
 %build
 export CFLAGS="%{optflags} -Wno-error"

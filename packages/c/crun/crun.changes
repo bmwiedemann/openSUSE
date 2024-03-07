@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Mar  6 10:06:50 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.14.4
+
+* crun-1.14.4
+
+- linux: fix mount of file with recursive flags.  Do not assume it is
+  a directory, but check the source type.
+
+* crun-1.14.3
+
+- follow up for 1.14.2.  Drop the version check for each command.
+
+* crun-1.14.2
+
+- crun: drop check for OCI version.  A recent bump in the OCI runtime
+  specs caused crun to fail with every config file.  Just drop the
+  check since it doesn't add any value.
+
+* crun-1.14.1
+
+- there was recently a security vulnerability (CVE-2024-21626) in runc
+  that allowed a malicious user to chdir(2) to a /proc/*/fd entry that is
+  outside the container rootfs.  While crun is not affected directly,
+  harden chdir by validating that we are still inside the container
+  rootfs.
+- container: attempt to close all the files before execv(2).
+  if we leak any fd, it prevents execv to gain access to files outside
+  the container rootfs through /proc/self/fd/$fd.
+- fix a regression caused by 1.14 when installing the ebpf filter on a
+  kernel older than 5.11.
+- cgroup, systemd: fix segfault if the resources block is not specified.
+
+-------------------------------------------------------------------
 Sat Jan 27 16:21:04 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.14:

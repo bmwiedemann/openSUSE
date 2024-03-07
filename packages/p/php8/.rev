@@ -674,4 +674,14 @@
   % php-build-reproducible-phar.patch (refreshed)</comment>
     <requestid>1147032</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>5988e5f206c475cc07bf711225e19c39</srcmd5>
+    <version>8.2.16</version>
+    <time>1709832482</time>
+    <user>dimstar_suse</user>
+    <comment>- Use the system default cipher list instead of hardcoded values
+  by using crypto-policies. [bsc#1211301]
+  * Use the --with-system-ciphers configure option. (forwarded request 1155517 from pmonrealgonzalez)</comment>
+    <requestid>1155742</requestid>
+  </revision>
 </revisionlist>

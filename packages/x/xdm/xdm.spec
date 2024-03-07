@@ -1,7 +1,7 @@
 #
 # spec file for package xdm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,7 @@ Patch1:         xdm-tolerant-hostname-changes.diff
 Patch2:         xdm-tarball.patch
 Patch3:         n_Allow-the-greeter-to-set-the-input-fields-bg-color.patch
 Patch4:         xinit-UsrEtcMove.patch
+Patch5:         u_gcc14-fix.patch
 BuildRequires:  firewall-macros
 BuildRequires:  libtool
 BuildRequires:  pam-devel
@@ -104,6 +105,7 @@ pushd xdm
 popd
 # reverse apply (boo#1130321)
 %patch -P 3 -p1 -R
+%patch -P 5 -p1
 
 %build
 # needed for patch0

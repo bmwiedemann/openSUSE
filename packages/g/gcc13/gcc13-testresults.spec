@@ -527,30 +527,30 @@ ln -s newlib-4.3.0.20230120/newlib .
 
 #test patching start
 
-%patch2
-%patch5
-%patch6
-%patch7
-%patch11
-%patch15
-%patch16
-%patch17 -p1
+%patch -P 2
+%patch -P 5
+%patch -P 6
+%patch -P 7
+%patch -P 11
+%patch -P 15
+%patch -P 16
+%patch -P 17 -p1
 # These patches are needed only for llvm11
 %if "%{TARGET_ARCH}" == "amdgcn" && %{suse_version} < 1550
-%patch18 -p1
-%patch20 -p1
+%patch -P 18 -p1
+%patch -P 20 -p1
 %endif
 # In SLE15 and earlier default to dwarf4, not dwarf5
 %if %{suse_version} < 1550
-%patch19 -p1
+%patch -P 19 -p1
 %endif
-%patch21 -p1
-%patch23 -p1
-%patch24 -p1
-%patch51
-%patch60 -p1
-%patch61 -p1
-%patch100 -p1
+%patch -P 21 -p1
+%patch -P 23 -p1
+%patch -P 24 -p1
+%patch -P 51
+%patch -P 60 -p1
+%patch -P 61 -p1
+%patch -P 100 -p1
 
 #test patching end
 

@@ -1154,6 +1154,7 @@ Build cli \
     --with-mysqli=shared,mysqlnd \
     --with-unixODBC=shared,%{_usr} \
     --with-openssl=shared \
+    --with-system-ciphers \
     --with-pgsql=shared,%{_usr} \
     --enable-phar=shared \
     --with-enchant=shared \

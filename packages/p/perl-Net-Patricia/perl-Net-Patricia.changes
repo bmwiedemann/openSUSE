@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  4 13:46:11 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Wed Jan 25 13:48:49 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - no-libnsl.diff: don't link against libnsl if we don't use it
