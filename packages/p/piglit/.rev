@@ -302,4 +302,19 @@
   * egl_khr_create_context: add test for EXT_create_context_robustness and EXT_query_reset_notification_strategy</comment>
     <requestid>1144214</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>05ce15b6eb3139dc341f7443d37d9a4f</srcmd5>
+    <version>1~20240305</version>
+    <time>1709832597</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1~20240305:
+  * tests: Fix cl test program@execute@builtin@builtin-float-degrees-1.0.generated issue about tolerance.
+  * replayer: add ANGLE backend
+  * ext_texture_format_bgra8888: test glRenderbufferStorage
+  * glsl-1.50: test the copy of an entire ifc block
+  * amd_gpu_shader_half_float: varying error check
+  * arb_texture_query_lod: fix LOD queries in divergent control flow
+  * ext_external_objects: remove gl_cleanup done with atexit</comment>
+    <requestid>1155823</requestid>
+  </revision>
 </revisionlist>
