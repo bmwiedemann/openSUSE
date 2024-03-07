@@ -49,4 +49,13 @@
 </comment>
     <requestid>1106065</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>63489cadce3fa6aa35129d7688bfb586</srcmd5>
+    <version>0.6.0</version>
+    <time>1709832646</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip python39: no longer supported since ipython 8.19 (through
+  ipywidgets)</comment>
+    <requestid>1155892</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  7 11:03:12 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip python39: no longer supported since ipython 8.19 (through
+  ipywidgets)
+
+-------------------------------------------------------------------
 Sat Aug 26 15:05:12 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Use notebook < 6 or nbclassic for the nbextension
