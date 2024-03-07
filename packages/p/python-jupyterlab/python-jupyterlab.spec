@@ -16,8 +16,9 @@
 #
 
 
+%define skip_python39 1
 Name:           python-jupyterlab
-Version:        4.0.11
+Version:        4.1.4
 Release:        0
 Summary:        Environment for interactive and reproducible computing
 License:        BSD-3-Clause
@@ -30,6 +31,7 @@ Source99:       python-jupyterlab-rpmlintrc
 BuildRequires:  %{python_module Jinja2 >= 3.0.3}
 BuildRequires:  %{python_module async_lru >= 1.0.0}
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module httpx >= 0.25.0}
 BuildRequires:  %{python_module importlib-metadata >= 4.8.3 if %python-base < 3.10}
 BuildRequires:  %{python_module importlib-resources >= 1.4 if %python-base < 3.9}
 BuildRequires:  %{python_module ipykernel}
@@ -49,10 +51,11 @@ BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
 BuildRequires:  update-desktop-files
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Requires:       jupyter-jupyterlab = %{version}
 Requires:       python-Jinja2 >= 3.0.3
 Requires:       python-async_lru >= 1.0.0
+Requires:       python-httpx >= 0.25.0
 Requires:       python-ipykernel
 Requires:       python-jupyter-lsp >= 2.0.0
 Requires:       python-jupyter_core
@@ -71,7 +74,7 @@ Obsoletes:      python-jupyter_jupyterlab < %{version}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module jupyterlab-server-test}
-BuildRequires:  %{python_module pytest >= 6.0}
+BuildRequires:  %{python_module pytest >= 7.0}
 BuildRequires:  %{python_module pytest-check-links}
 BuildRequires:  %{python_module pytest-console-scripts}
 BuildRequires:  %{python_module pytest-jupyter >= 0.5.3}
