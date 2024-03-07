@@ -1228,4 +1228,32 @@ PubCloud:
   * Handle system token for BYOS instances in the cloud</comment>
     <requestid>1088331</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>bd7111865ee458d8726d11a8e7d2504c</srcmd5>
+    <version>2.15</version>
+    <time>1709832711</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.15:
+  * Moving system hardware information to systems database table to
+    allow transmitting system information dynamically. (jsc#PED-3734)
+  * Dropping Rails Secrets facilities and related config files (bsc#1215176)
+  * Updated supportconfig script (bsc#1216389)
+  * Support zstd compression for repository metadata (bsc#1218775)
+  * Do not add credential handling to normal repository URLs (bsc#1219153)
+  * Fix for SUSE Liberty registration script to allow RHEL7/SLL7/CentOS7 clients to register to RMT servers
+  * Provide user/group symbol for user created during pre (boo#1219540)
+  * Disable authentication for license files in pubcloud context
+  * Higher registration sharing timeout
+  * rmt-server-pubcloud:
+    * Extend cache expiration time for BYOS systems (PAYG: 20 min, BYOS: 24 hours)
+    * Include byos parameter when checking subscription validity for BYOS systems with SCC
+
+- Version 2.14
+- Add command 'rmt-cli clean packages', which remove dangling packages no longer
+  referenced in the available metadata files and their database entries. (gh#662)
+- Fix for SUSE Liberty registration script to allow register to RMT servers with
+  self-signed certificates and enable both old and new singing keys for SLL8 (bsc#1209825)
+- Fix for local import of packages with special characters (bsc#1213002)</comment>
+    <requestid>1156024</requestid>
+  </revision>
 </revisionlist>
