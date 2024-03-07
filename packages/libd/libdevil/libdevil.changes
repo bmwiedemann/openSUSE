@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 16:07:16 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN
+
+-------------------------------------------------------------------
 Wed Apr 14 10:43:09 UTC 2021 - pgajdos@suse.com
 - 
 - added patches
