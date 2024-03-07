@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 13:55:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Feb  9 14:07:26 UTC 2024 - Lars Vogdt <lars@linux-schulserver.de>
 
 - remove some old rpmlintrc entries
