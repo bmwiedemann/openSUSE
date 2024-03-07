@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Mar  1 18:14:19 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.6.6
+  * Update copyright year
+  * Use X11 clipboard manager from libxfce4ui if available
+  * collector: Fix sanity check
+  * history: Make search case-sensitive
+  * actions: Update gimp command (Fixes #96)
+  * build: Use system wlr-protocols if avail or fall back to submodule
+  * clipboard-manager: Add missing static qualifier
+  * build: Lower xfce4-dev-tools requirements to stable version
+  * Fix xfce_titled_dialog_create_action_area() deprecation
+  * build: Simplify and clarify X11/Wayland distinction
+  * build: Define our own windowing macro instead of extending GDK's
+  * build: Add check for gdk-wayland
+  * Translation Updates
+- Re-generate xfce4-clipman-plugin-relax-x11-version.patch
+
+-------------------------------------------------------------------
 Fri Sep 29 15:40:20 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.6.5
