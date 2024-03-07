@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-server-fileid
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,7 @@
 %else
 %bcond_with libalternatives
 %endif
+
 Name:           python-jupyter-server-fileid
 Version:        %{pyversion}
 Release:        0
@@ -32,6 +33,8 @@ URL:            https://github.com/jupyter-server/jupyter_server_fileid
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_server_fileid/jupyter_server_fileid-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatchling >= 1.0}
+BuildRequires:  %{python_module jupyter-events >= 0.5.0}
+BuildRequires:  %{python_module jupyter-server >= 1.15 with %python-jupyter-server < 3}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-rpm-macros
@@ -47,14 +50,13 @@ BuildRequires:  alts
 Requires:       alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
-# SECTION test requirements
-BuildRequires:  %{python_module jupyter-events >= 0.5.0}
-BuildRequires:  %{python_module jupyter-server-test >= 1.15 with %python-jupyter-server-test < 3}
+# SECTION test
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module jupyter-server-test >= 1.15 if %python-base >= 3.10}
 BuildRequires:  %{python_module traitlets}
-# /SECTION
+#/SECTION
 %python_subpackages
 
 %description
@@ -87,7 +89,13 @@ sed -i 's/--color=yes//' pyproject.toml
 %check
 # flaky on obs
 donttest="test_get_path_oob_move_nested"
-%pytest -k "not ($donttest)"
+export PYTHONDONTWRITEBYTECODE=1
+%{python_expand # don't test anything on python39: no jupyter-server-test anymore
+export PYTHONPATH=%{buildroot}%{$python_sitelib}
+if [ ${python_flavor} != "python39" ]; then
+  $python -m pytest  -k "not ($donttest)"
+fi
+}
 
 %pre
 %python_libalternatives_reset_alternative jupyter-fileid

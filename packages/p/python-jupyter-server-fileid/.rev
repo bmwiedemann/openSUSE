@@ -46,4 +46,14 @@
   * provides a summary description for pip #68 (@stonebig)</comment>
     <requestid>1134928</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b67ab00f256380de99b803f2857e512d</srcmd5>
+    <version>0.9.1</version>
+    <time>1709832689</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip testing with python39: no longer supported since ipython
+  8.19 (jupyter-server-test)
+</comment>
+    <requestid>1155953</requestid>
+  </revision>
 </revisionlist>
