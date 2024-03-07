@@ -61,8 +61,7 @@ portable API for otherwise operating system specific tasks such as opening
 an OpenGL window, and reading keyboard, time, mouse and joystick input.
 
 %prep
-%setup -q -n glfw-%version
-%patch0 -p1
+%autosetup -p1 -n glfw-%version
 
 %build
 CFLAGS="%{optflags}" \

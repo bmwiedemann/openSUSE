@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:05:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Thu Mar 12 09:51:57 UTC 2015 - lnussel@suse.de
 
 - revive 2.7.6 as glfw2 package
