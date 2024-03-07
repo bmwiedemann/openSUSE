@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar  7 12:58:44 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Do not recommend timezone-java8 (bsc#1213470)
+
+-------------------------------------------------------------------
 Tue Feb 20 15:42:42 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
