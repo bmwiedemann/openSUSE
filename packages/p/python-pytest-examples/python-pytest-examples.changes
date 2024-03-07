@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar  7 01:15:34 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop patch suppot-python-312.patch.
+- Add patch support-python-312.patch, which is a rename of the previous
+  patch.
+- Add patch fix-traceback.patch, support traceback changes of
+  Python 3.12.
+
+-------------------------------------------------------------------
 Wed Jan 24 06:44:56 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch suppot-python-312.patch:
