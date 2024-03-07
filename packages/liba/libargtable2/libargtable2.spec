@@ -64,8 +64,7 @@ The libargtable2-devel package contains libraries and header files for
 developing applications that use libargtable.
 
 %prep
-%setup -q -n %{name2}-%{oversion}
-%patch0
+%autosetup -p0 -n %{name2}-%{oversion}
 
 %build
 %configure --disable-static --docdir=%{_defaultdocdir}/%{name}
