@@ -145,4 +145,14 @@
   gh#bqplot/bqplot#1639</comment>
     <requestid>1145389</requestid>
   </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>16b3a2cf18dc280b63025c7e28f102e9</srcmd5>
+    <version>unknown</version>
+    <time>1709832639</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip python39: no longer supported since ipython 8.19 (through
+  ipywidgets)
+</comment>
+    <requestid>1155858</requestid>
+  </revision>
 </revisionlist>
