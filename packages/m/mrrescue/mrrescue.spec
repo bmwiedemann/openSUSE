@@ -50,10 +50,10 @@ buildings.
 
 %prep
 %setup -q
-%patch1 -p1
+%patch -P 1 -p1
 %if 0%{?suse_version}
 %if 0%{?suse_version} > 1500
-%patch2 -p1
+%patch -P 2 -p1
 %endif
 %endif
 
