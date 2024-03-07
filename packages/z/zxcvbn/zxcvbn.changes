@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Sat Mar  2 13:47:54 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Change the spec name to the name of the sources.
+- Package the *.so into devel package and make it archfull
+- The shared library is still in a package that corresponds to its
+  SONAME
+
+-------------------------------------------------------------------
+Thu Feb 29 19:24:00 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Conditionally define make_build macro in order to fix SLE12 build
+
+-------------------------------------------------------------------
+Wed Jan 31 02:59:04 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Add 'devel' package.
+
+-------------------------------------------------------------------
+Tue Jan 30 02:41:31 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Change package's name according to its SONAME.
+  Finish installation process.
+
+-------------------------------------------------------------------
+Mon Jan 22 13:34:18 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Initial packaging
