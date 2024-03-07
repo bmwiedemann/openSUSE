@@ -112,8 +112,7 @@ Requires:       libvted-%{gtkd_major}-%{sover} = %{version}
 This package contains the header files for GtkD a D binding and OO wrapper of GTK+
 
 %prep
-%setup -q -n GtkD-%{version}
-%patch1 -p1
+%autosetup -p1 -n GtkD-%{version}
 
 sed -i 's|ldconfig|/sbin/ldconfig|g' GNUmakefile
 
