@@ -65,4 +65,13 @@
     serialization</comment>
     <requestid>1113292</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2cccdc1d175db78d710efda11eac4434</srcmd5>
+    <version>1.10.1</version>
+    <time>1709832644</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip python39: no longer supported since ipython 8.19 (through
+  ipywidgets)</comment>
+    <requestid>1155867</requestid>
+  </revision>
 </revisionlist>

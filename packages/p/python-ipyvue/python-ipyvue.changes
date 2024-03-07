@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  7 11:01:41 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip python39: no longer supported since ipython 8.19 (through
+  ipywidgets)
+
+-------------------------------------------------------------------
 Sun Sep 24 17:44:12 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.10.1

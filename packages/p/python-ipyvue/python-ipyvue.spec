@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipyvue
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 # This is important for versions ending in .0
 %define python3dist_version 1.10.1
+%define skip_python39 1
 Name:           python-ipyvue
 Version:        1.10.1
 Release:        0
