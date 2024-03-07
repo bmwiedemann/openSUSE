@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Mar  7 17:22:06 UTC 2024 - Natasha Ament <stacheldrahtje@gmail.com>
+
+- Update to version 3.12.1:
+  * Feature/detect open files (gh#nextcloud/desktop#6444)
+  * Settings dialog. Nextcloud version label should be visible 
+    even if auto-updates are turned off in config. 
+    (gh#nextcloud/desktop#6460)
+  * Use 'FindMimeFromData' from Win API instead of QMimeDatabase() 
+    functions to get the mimetype. Prevents freeze from VFS 
+    placeholders. (gh#nextcloud/desktop#6475)
+  * VFS. CfAPI. Provide detailed error message for leading '#' 
+    placeholder update failure. (gh#nextcloud/desktop#6476)
+  * E2EE. Allow decryption v1.0 and v1.1 folders. 
+    (gh#nextcloud/desktop#6478)
+  * Fix crash when deleting a local sync folder during sync. 
+    (gh#nextcloud/desktop#6481)
+  * add extra logs to investigate lock type issues 
+    (gh#nextcloud/desktop#6465)
+  * Client Status Reporting. Only report statuses listed on the server. 
+    (gh#nextcloud/desktop#6494)
+  * Bugfix/e2ee v2 non-root sync (gh#nextcloud/desktop#6496)
+  * Bugfix. E2ee misleading log fix. (gh#nextcloud/desktop#6499)
+  * Bugfix/expandable folder status model (gh#nextcloud/desktop#6505)
+  * Bugfix. Federated share activity show 'Decline' action button. 
+    (gh#nextcloud/desktop#6506)
+  * when moving a file, checks that it exists at origin or 
+    destination (gh#nextcloud/desktop#6509)
+ 
+-------------------------------------------------------------------
 Sun Feb 18 17:41:51 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Set doc dir consistently after recent cmake macro changes in
