@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar  6 03:20:24 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Explicitly define PYTHON3_EXECUTABLE, since python 3.11 is being
+  pulled in by cmake in SLE-15-SP6.
+
+-------------------------------------------------------------------
+Mon Mar  4 21:29:51 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Fix PowerPC triples: use powerpc[64[le]] instead of ppc[64[le]].
+- Disable test that fails on ppc64le.
+
+-------------------------------------------------------------------
+Fri Mar  1 12:28:41 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Jan 11 07:38:12 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Use %_target_* for determining the compiler host triple (boo#1218701)
