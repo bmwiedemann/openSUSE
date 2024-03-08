@@ -1,7 +1,7 @@
 #
 # spec file for package htdig
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -101,19 +101,19 @@ This package provides additional documentation for htdig in
 %prep
 %setup -q
 cp %{SOURCE1} README.SUSE
-%patch1
-%patch2
-%patch3
-%patch4
-%patch5
-%patch8 -p 1
-%patch9 -p1
-%patch10 -p1
-%patch11
-%patch14 -p1
-%patch15
-%patch16 -p1
-%patch17 -p1
+%patch -P 1
+%patch -P 2
+%patch -P 3
+%patch -P 4
+%patch -P 5
+%patch -P 8 -p 1
+%patch -P 9 -p1
+%patch -P 10 -p1
+%patch -P 11
+%patch -P 14 -p1
+%patch -P 15
+%patch -P 16 -p1
+%patch -P 17 -p1
 
 %build
 %{?suse_update_config:%{suse_update_config -f db/dist}}

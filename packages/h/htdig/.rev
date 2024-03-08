@@ -287,4 +287,13 @@ for further information.
 </comment>
     <requestid>911244</requestid>
   </revision>
+  <revision rev="26" vrev="245">
+    <srcmd5>c3fe243a5eb6329d60e6f806522e27b3</srcmd5>
+    <version>3.2.0b6</version>
+    <time>1709917812</time>
+    <user>anag+factory</user>
+    <comment>- Replace deprecated %patchX in spec file
+</comment>
+    <requestid>1156301</requestid>
+  </revision>
 </revisionlist>
