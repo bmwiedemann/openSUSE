@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  1 11:42:56 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- fix conversion of lowercase f in de-e1 keymap (boo#1207841)
+
+-------------------------------------------------------------------
 Thu Feb 22 12:40:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

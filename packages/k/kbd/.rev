@@ -992,4 +992,12 @@ Fix version typo:
     <comment></comment>
     <requestid>1153962</requestid>
   </revision>
+  <revision rev="123" vrev="3">
+    <srcmd5>3e51c6a3c67f24f8090de48446a300fc</srcmd5>
+    <version>2.6.4</version>
+    <time>1709917705</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1156140</requestid>
+  </revision>
 </revisionlist>
