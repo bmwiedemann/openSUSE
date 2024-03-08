@@ -764,4 +764,40 @@
     <comment>Update libpng to 1.6.42 (forwarded request 1147257 from yannboyer_dev)</comment>
     <requestid>1147522</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>f33a464f9aedfa07417dd3d272532d9e</srcmd5>
+    <version>1.6.43</version>
+    <time>1709917667</time>
+    <user>anag+factory</user>
+    <comment>
+- version update to 1.6.43
+  * Fixed the row width check in png_check_IHDR().
+    This corrected a bug that was specific to the 16-bit platforms,
+    and removed a spurious compiler warning from the 64-bit builds.
+    (Reported by Jacek Caban; fixed by John Bowler)
+  * Added eXIf chunk support to the push-mode reader in pngpread.c.
+    (Contributed by Chris Blume)
+  * Added contrib/pngexif for the benefit of the users who would like
+    to inspect the content of eXIf chunks.
+  * Added contrib/conftest/basic.dfa, a basic build-time configuration.
+    (Contributed by John Bowler)
+  * Fixed a preprocessor condition in pngread.c that broke build-time
+    configurations like contrib/conftest/pngcp.dfa.
+    (Contributed by John Bowler)
+  * Added CMake build support for LoongArch LSX.
+    (Contributed by GuXiWei)
+  * Fixed a CMake build error that occurred under a peculiar state of the
+    dependency tree. This was a regression introduced in libpng-1.6.41.
+    (Contributed by Dan Rosser)
+  * Marked the installed libpng headers as system headers in CMake.
+    (Contributed by Benjamin Buch)
+  * Updated the build support for RISCOS.
+    (Contributed by Cameron Cawley)
+  * Updated the makefiles to allow cross-platform builds to initialize
+    conventional make variables like AR and ARFLAGS.
+  * Added various improvements to the CI scripts in areas like version
+    consistency verification and text linting.
+  * Added version consistency verification to pngtest.c also.</comment>
+    <requestid>1155898</requestid>
+  </revision>
 </revisionlist>
