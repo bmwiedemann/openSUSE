@@ -1,7 +1,7 @@
 #
 # spec file for package perl-CGI-Simple
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,24 @@
 
 %define cpan_name CGI-Simple
 Name:           perl-CGI-Simple
-Version:        1.280
+Version:        1.281.0
 Release:        0
-Summary:        Object-oriented CGI interface compliant to CGI.pm
+%define cpan_version 1.281
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Object-oriented CGI interface compliant to CGI.pm
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/M/MA/MANWAR/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/M/MA/MANWAR/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::Exception)
 BuildRequires:  perl(Test::NoWarnings)
+Provides:       perl(CGI::Simple) = %{version}
+Provides:       perl(CGI::Simple::Cookie) = %{version}
+Provides:       perl(CGI::Simple::Standard) = %{version}
+Provides:       perl(CGI::Simple::Util) = %{version}
+%define         __perllib_provides /bin/true
 %{perl_requires}
 # MANUAL BEGIN
 # after 1.115 came 1.12 - provide the zero padded version number to fix version checks
@@ -53,7 +59,7 @@ In practical testing this module loads and runs about twice as fast as
 CGI.pm depending on the precise task.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
