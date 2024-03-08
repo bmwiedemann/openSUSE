@@ -179,4 +179,12 @@ This needs to go into openSUSE:Factory:Staging:adi:49 with the other jupyter sub
 </comment>
     <requestid>1072975</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>fa00fbf9f5b3b543dee42ec49d61987e</srcmd5>
+    <version>6.6.3</version>
+    <time>1709917836</time>
+    <user>anag+factory</user>
+    <comment>- Skip python39: no longer supported since ipython 8.19</comment>
+    <requestid>1156352</requestid>
+  </revision>
 </revisionlist>
