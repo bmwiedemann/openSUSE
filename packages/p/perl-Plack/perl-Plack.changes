@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jan  6 03:09:02 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.0051
+   see /usr/share/doc/packages/perl-Plack/Changes
+
+  1.0051  2024-01-05 15:09:37 PST
+      [BUG FIXES]
+          - Fix a bug where $req->headers can pick up non-PSGI header values from environment #703
+
+      [IMPROVEMENTS]
+          - Performance improvements on StackTrace middleware by avoiding overloaded methods #697
+          - Added tests for Plack::Runner::mangle_host_port_socket #700
+
+-------------------------------------------------------------------
 Tue Sep  6 03:09:04 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.0050
