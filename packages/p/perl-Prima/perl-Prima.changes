@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Feb  1 03:11:24 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.72
+   see /usr/share/doc/packages/perl-Prima/Changes
+
+  1.72 2024-01-31
+   - Major rehaul of ROP constants with API compatibility break:
+     -- rop(R), put_image(X,Y,I) will not use rop R but rop::Default instead
+     -- rop::Blend and rop::CopyPut are no longer equal. rop::XorPut and rop::Xor
+        are no longer equal; the latter is rop::XorOver now.
+   - Image.text_out() works outside the paint mode by querying glyph bitmaps.
+        Other text- and font- related method work too.
+   - Pod parsing and rendering moved to Prima::Drawable::Pod
+     -- added utils/pod2pdf that works without needing a X11 server
+   - Font.underlinePosition and Font.underlineThickness are added
+   - Image.has_codec added
+   - Prima::Image::Loader and per-frame image loading and saving is added
+   - Utils.sound is removed
+
+-------------------------------------------------------------------
 Mon Oct 30 03:07:53 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.71
