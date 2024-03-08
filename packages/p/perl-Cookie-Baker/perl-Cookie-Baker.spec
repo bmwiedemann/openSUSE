@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Cookie-Baker
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,32 +16,34 @@
 #
 
 
-Name:           perl-Cookie-Baker
-Version:        0.11
-Release:        0
 %define cpan_name Cookie-Baker
-Summary:        Cookie string generator / parser
+Name:           perl-Cookie-Baker
+Version:        0.120.0
+Release:        0
+%define cpan_version 0.12
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/%{cpan_name}-%{version}.tar.gz
+Summary:        Cookie string generator / parser
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Module::Build)
 BuildRequires:  perl(Module::Build::Tiny) >= 0.035
 BuildRequires:  perl(Test::More) >= 0.98
 BuildRequires:  perl(Test::Time)
 BuildRequires:  perl(URI::Escape)
 Requires:       perl(URI::Escape)
+Provides:       perl(Cookie::Baker) = %{version}
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
 Cookie::Baker provides simple cookie string generator and parser.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Build.PL --installdirs=vendor
@@ -55,8 +57,7 @@ perl Build.PL --installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes minil.toml README.md
+%doc Changes README.md
 %license LICENSE
 
 %changelog
