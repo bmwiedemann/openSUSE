@@ -45,7 +45,7 @@ BuildRequires:  curl-devel
 BuildRequires:  dcmtk
 BuildRequires:  dcmtk-devel
 BuildRequires:  doxygen
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150500
 BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++
@@ -131,8 +131,7 @@ Group:          Development/Sources
 This package includes the source files for Orthanc. Use it in conjunction with the -devel package
 
 %prep
-%setup -q -n Orthanc-%{version}
-%autopatch -p1
+%autosetup -p1 -n Orthanc-%{version}
 
 cp %{S:1} %{S:2} .
 
@@ -145,7 +144,7 @@ mkdir -p OrthancServer/ThirdPartyDownloads
 cp %{S:10} %{S:11} %{S:12} %{S:13} OrthancServer/ThirdPartyDownloads/.
 
 %build
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150500
 export CC=gcc-13
 export CXX=g++-13
 %endif

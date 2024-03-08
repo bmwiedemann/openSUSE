@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar  7 20:21:58 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- fix build for Leap < 15.6
+
+-------------------------------------------------------------------
 Thu Mar  7 15:13:59 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Build orthanc with gcc13 on Leap 15
