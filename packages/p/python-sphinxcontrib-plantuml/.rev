@@ -62,4 +62,13 @@
 - Update to version 0.24.1</comment>
     <requestid>1135617</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>3602f0c91e9b853adf005719e39a372d</srcmd5>
+    <version>0.27</version>
+    <time>1709917799</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup macro.
+- Slightly less mess in %files.</comment>
+    <requestid>1155785</requestid>
+  </revision>
 </revisionlist>
