@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 27 02:29:39 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 2.3.24
+  * Installed a patch suggested by Sharlatan Hellseher to improve the
+    accuracy of a spherical geometry application. 
+  * Add BuildRequires package "autoconf"
+
+-------------------------------------------------------------------
 Sat Dec  3 22:59:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.23:
