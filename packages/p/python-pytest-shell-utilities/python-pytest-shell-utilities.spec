@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pytest-shell-utilities%{psuffix}
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        Pytest plugin to simplify running shell commands against the system
 License:        Apache-2.0

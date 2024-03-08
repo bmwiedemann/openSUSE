@@ -43,4 +43,12 @@
 - remove :test flavor for now to allow bootstrap in Tumbleweed</comment>
     <requestid>1144837</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>58a7eb62de123aa2bb65dea1df76c635</srcmd5>
+    <version>1.9.0</version>
+    <time>1709917822</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1156333</requestid>
+  </revision>
 </revisionlist>
