@@ -1,7 +1,7 @@
 #
 # spec file for package python-sidecar
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,11 @@
 #
 
 
+%define skip_python39 1
 Name:           python-sidecar
-%define mainver 0.5.2
-%define labver  0.6.2
+%define mainver 0.7.0
+%define shortver 0.7
+%define labver  0.7.0
 Version:        %{mainver}
 Release:        0
 Summary:        A sidecar output widget for JupyterLab
@@ -26,17 +28,15 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter-widgets/jupyterlab-sidecar
 Source:         https://files.pythonhosted.org/packages/py3/s/sidecar/sidecar-%{mainver}-py3-none-any.whl
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module ipywidgets >= 7.6.0 with %python-ipywidgets < 9}
-BuildRequires:  %{python_module jupyterlab >= 3.0.0}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module ipywidgets >= 8 with %python-ipywidgets < 9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-jupyter_core-filesystem
 BuildRequires:  jupyter-jupyterlab-filesystem
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-sidecar-jupyterlab = %{labver}
-Requires:       python-jupyterlab >= 3.0.0
-Requires:       (python-ipywidgets >= 7.6.0 with python-ipywidgets < 9)
+Requires:       (python-ipywidgets >= 8 with python-ipywidgets < 9)
 BuildArch:      noarch
 
 %python_subpackages
@@ -53,7 +53,7 @@ Version:        %{labver}
 Release:        0
 Requires:       jupyter-jupyterlab >= 3.0.0
 # Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
-Requires:       python3dist(sidecar) = %{mainver}
+Requires:       python3dist(sidecar) = %{shortver}
 Suggests:       python3-sidecar
 
 %description -n jupyter-sidecar-jupyterlab
@@ -72,18 +72,18 @@ This package provides the JupyterLab extension.
 %python_expand find %{buildroot}%{$python_sitelib} -name '*.py' -exec sed -i '1{/^#!.*env/ d}' {} \;
 %python_compileall
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-find %{buildroot}%{_prefix} -path '*/sidecar-%{mainver}.dist-info/LICENSE.txt' -exec cp {} . ';' -quit
+find %{buildroot}%{_prefix} -path '*/sidecar-%{mainver}.dist-info/licenses' -exec cp -r {} ./ ';'
 
 #%%check
 # Tests need online connection using jlpm
 
 %files %{python_files}
-%license LICENSE.txt
+%license licenses/*
 %{python_sitelib}/sidecar-%{mainver}.dist-info/
 %{python_sitelib}/sidecar/
 
 %files -n jupyter-sidecar-jupyterlab
-%license LICENSE.txt
+%license licenses/*
 %dir %{_jupyter_prefix}/labextensions
 %dir %{_jupyter_prefix}/labextensions/@jupyter-widgets
 %{_jupyter_prefix}/labextensions/@jupyter-widgets/jupyterlab-sidecar
