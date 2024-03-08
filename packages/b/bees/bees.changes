@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  7 15:05:28 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Fix build fail with gcc7 on Leap 15
+  * Use gcc13 on compilation
+
+-------------------------------------------------------------------
 Mon Jul 24 13:28:10 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Update to 0.10:

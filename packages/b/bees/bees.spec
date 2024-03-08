@@ -28,6 +28,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  libbtrfs-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  make
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+BuildRequires:  gcc13-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 
 %description
 bees is a block-oriented userspace deduplication agent designed for large btrfs
@@ -50,6 +55,10 @@ Hilights:
 %autosetup -p1
 
 %build
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+export CC=gcc-13
+export CXX=g++-13
+%endif
 cat >localconf <<-EOF
 	SYSTEMD_SYSTEM_UNIT_DIR=%{_unitdir}
 	LIBEXEC_PREFIX=%{_bindir}
