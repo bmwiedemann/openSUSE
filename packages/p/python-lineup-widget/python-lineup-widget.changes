@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  8 13:05:17 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip python39: no longer supported since ipython 8.19
+
+-------------------------------------------------------------------
 Sat Aug 26 15:28:34 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Don't use notebook 7: nbclassic or notebook 6 required
