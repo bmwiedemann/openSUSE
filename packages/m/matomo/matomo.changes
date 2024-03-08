@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar  8 06:55:07 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.0.3
+  * matomo-org/matomo
+    - #21971 Visits log executes thousands of DB queries in a single request in getAliasSiteUrlsFromId()
+    - #21186 Scheduled report shows square character in HTML report in date
+    - #21867 [Bug] Bad date formatting in email reports
+    - #22001 [Bug] Call to a member function getSeriesCount() on null
+    - #21924 [Bug] cron:archive CLI changed response format in 
+      Matomo 5 – instead of DateTime before every row, only time is displayed
+
+-------------------------------------------------------------------
 Wed Feb 21 13:44:26 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Adjustments patch macro for rpm 4.20.
