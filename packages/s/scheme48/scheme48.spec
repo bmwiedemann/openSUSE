@@ -96,12 +96,7 @@ Recommends:     emacs
 Scheme process in a buffer.  Adapted from cmuscheme.el
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
