@@ -49,4 +49,13 @@
   + python-pylzma-test-python3.patch</comment>
     <requestid>919149</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>4d520fefb527727ea679dd4c5470c1e7</srcmd5>
+    <version>0.5.0</version>
+    <time>1709917769</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup and pyproject macro.
+- Less globs in %files.</comment>
+    <requestid>1156215</requestid>
+  </revision>
 </revisionlist>
