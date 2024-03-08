@@ -39,6 +39,7 @@ Patch5:         rxtx-java-38400.patch
 Patch6:         rxtx-java-version.patch
 Patch7:         rxtx-java-missing-javah.patch
 Patch8:         rxtx-yield.patch
+Patch9:         rxtx-missing-sysmacros.patch
 BuildRequires:  automake
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  libtool
@@ -56,6 +57,7 @@ BuildRequires:  javapackages-tools
 %if 0%{?mdkversion}
 Patch3:         rxtx-java-formatstring.patch
 %endif
+BuildRequires:  fdupes
 
 %description
 RxTx is a Java library, using a native implementation (via JNI), providing serial
@@ -95,6 +97,7 @@ the specification for Sun's Java Communications API.
 %patch -P 6 -p1
 %patch -P 7 -p1
 %patch -P 8 -p1
+%patch -P 9 -p1
 
 %build
 export THREADS_FLAG=native
@@ -131,6 +134,8 @@ fi
 # install javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}
 cp -r javadoc %{buildroot}%{_javadocdir}/%{name}/
+# create hardlinks
+%fdupes %{buildroot}%{_javadocdir}/%{name}
 
 %files
 %doc AUTHORS ChangeLog README RMISecurityManager.html INSTALL PORTING TODO
@@ -138,7 +143,7 @@ cp -r javadoc %{buildroot}%{_javadocdir}/%{name}/
 
 %files javadoc
 %dir %{_javadocdir}
-%{_javadocdir}
+%{_javadocdir}/%{name}
 %license COPYING
 
 %files -n librxtx%{libversion}

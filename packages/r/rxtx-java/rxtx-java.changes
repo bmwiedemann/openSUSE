@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  7 14:29:29 UTC 2024 - Frank Schütte <F.Schuette@t-online.de>
+
+- Added patch:
+  * rxtx-missing-sysmacros.patch
+    + RH#1645856 missing sysmacros include fixed 
+
+-------------------------------------------------------------------
 Wed Feb 21 20:57:37 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
