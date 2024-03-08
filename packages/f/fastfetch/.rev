@@ -323,4 +323,21 @@ Bugfixes:
     * Support zellij version detection (Linux, Terminal)</comment>
     <requestid>1154306</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>26ede09bcfe2d2d985d8372c314586c9</srcmd5>
+    <version>2.8.8</version>
+    <time>1709917786</time>
+    <user>anag+factory</user>
+    <comment>- update to version 2.8.8:
+  Bugfixes:
+    * Fix old fish version compatibility
+    * Fix truncated texts in --help format
+    * Fix old vulkan-header and libdrm library compatibility (Linux)
+    * Fix possible segfaults in --help *-format
+    * Fix invalid resolution detection when using libdrm (Linux, Display)
+    * Fix segfault when /sys/devices/system/cpu/cpufreq/ doesn't exist (CPU, Linux)
+    * Don't detect SessionLeader as terminal (Terminal, Linux)
+    * Fix detection of client IP (Users, Linux)</comment>
+    <requestid>1156252</requestid>
+  </revision>
 </revisionlist>
