@@ -71,7 +71,8 @@
 # See https://build.opensuse.org/request/show/968066.
 %define target_cpu armv6kz
 %else
-%define target_cpu %{_target_cpu}
+# What RPM spells ppc, GCC spells powerpc.
+%define target_cpu %{lua:print((string.gsub(rpm.expand("%{_target_cpu}"), "ppc", "powerpc")))}
 %endif
 
 %ifarch %{arm}
@@ -802,29 +803,29 @@ This package contains the development files for Polly.
 
 %prep
 %setup -q -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7 -a 8 -a 9 -b 50 -b 51 -n llvm-%{_version}.src
-%patch0 -p2
-%patch1 -p2
-%patch5 -p1
-%patch13 -p1
-%patch14 -p1
-%patch20 -p1
-%patch21 -p1
-%patch22 -p1
-%patch24 -p1
-%patch25 -p2
-%patch27 -p2
-%patch33 -p2
-%patch37 -p2
-%patch39 -p2
+%patch -P 0 -p2
+%patch -P 1 -p2
+%patch -P 5 -p1
+%patch -P 13 -p1
+%patch -P 14 -p1
+%patch -P 20 -p1
+%patch -P 21 -p1
+%patch -P 22 -p1
+%patch -P 24 -p1
+%patch -P 25 -p2
+%patch -P 27 -p2
+%patch -P 33 -p2
+%patch -P 37 -p2
+%patch -P 39 -p2
 
 pushd clang-%{_version}.src
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch6 -p1
-%patch9 -p2
-%patch34 -p2
-%patch36 -p2
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 6 -p1
+%patch -P 9 -p2
+%patch -P 34 -p2
+%patch -P 36 -p2
 
 # We hardcode openSUSE
 rm unittests/Driver/DistroTest.cpp
@@ -835,24 +836,24 @@ rm test/Driver/nacl-direct.c
 popd
 
 pushd clang-tools-extra-%{_version}.src
-%patch10 -p2
+%patch -P 10 -p2
 popd
 
 pushd lld-%{_version}.src
-%patch26 -p1
+%patch -P 26 -p1
 # lld got a compile-time dependency on libunwind that we don't want. (https://reviews.llvm.org/D86805)
 mkdir include/mach-o
 cp %{SOURCE10} include/mach-o
 popd
 
 pushd compiler-rt-%{_version}.src
-%patch35 -p2
+%patch -P 35 -p2
 popd
 
 %if %{with lldb}
 pushd lldb-%{_version}.src
-%patch11 -p1
-%patch38 -p2
+%patch -P 11 -p1
+%patch -P 38 -p2
 popd
 %endif
 
@@ -947,6 +948,7 @@ avail_mem=$(awk '/MemAvailable/ { print $2 }' /proc/meminfo)
     -DLLVM_PARALLEL_LINK_JOBS="$max_link_jobs" \
     -DENABLE_LINKER_BUILD_ID=ON \
     -DLLVM_BINUTILS_INCDIR=%{_includedir} \
+    -DPython3_EXECUTABLE=%{_bindir}/python3 \
     -DLLVM_BUILD_TOOLS:BOOL=OFF \
     -DLLVM_BUILD_UTILS:BOOL=OFF \
     -DLLVM_BUILD_EXAMPLES:BOOL=OFF \
@@ -1034,6 +1036,7 @@ export LD_LIBRARY_PATH=%{sourcedir}/build/%{_lib}
     -DLLVM_ENABLE_RTTI:BOOL=ON \
     -DLLVM_ENABLE_PIC=ON \
     -DLLVM_BINUTILS_INCDIR=%{_includedir} \
+    -DPython3_EXECUTABLE=%{_bindir}/python3 \
     -DLLVM_TARGETS_TO_BUILD=%{llvm_targets} \
     -DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD=%{llvm_experimental_targets} \
     -DLLVM_TOOL_LLVM_EXEGESIS_BUILD:BOOL=OFF \
@@ -1357,6 +1360,8 @@ sed -i '/UNSUPPORTED/i// XFAIL: powerpc-' ../tools/clang/test/Interpreter/execut
 # Tests hang on armv6l.
 sed -i '1i// UNSUPPORTED: armv6' \
   ../tools/clang/test/{Interpreter/execute.cpp,Modules/{preprocess-{build-diamond.m,decluse.cpp,module.cpp},string_names.cpp}}
+# Missing DW_TAG_formal_parameter. Test has been moved to X86 in the meantime (https://reviews.llvm.org/D109806).
+sed -i '1i; XFAIL: powerpc64le-' ../test/DebugInfo/Generic/missing-abstract-variable.ll
 %ifarch ppc64le
 # Sporadic failures, possibly races?
 rm -r ../tools/clang/test/ClangScanDeps
