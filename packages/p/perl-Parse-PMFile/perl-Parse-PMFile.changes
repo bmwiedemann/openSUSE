@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 24 03:08:54 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.45
+   see /usr/share/doc/packages/perl-Parse-PMFile/Changes
+
+  0.45 2024/01/21
+    - Make sure to stringify versions so that they are quoted when they are encoded in JSON
+
+-------------------------------------------------------------------
 Fri Apr 28 03:07:24 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.44
