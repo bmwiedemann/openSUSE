@@ -83,9 +83,7 @@ Development files for the libpsm2 library.
 Support for MPIs linked with PSM versions < 2.
 
 %prep
-%setup -q -n %{name}-%{version}%{git_ver}
-%patch2
-%patch3
+%autosetup -p0 -n %{name}-%{version}%{git_ver}
 
 cp %{SOURCE1} ChangeLog
 
