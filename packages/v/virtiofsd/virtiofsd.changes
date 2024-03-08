@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar  7 14:03:20 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Fix libexecdir move: rpm cannot replace a directory with a single
+  file on upgrades -- boo#1220592
+  * Add pre scriptlet removing the directory on Tumbleweed during
+    upgrades
+  * Don't own plain %_libexecdir on Tumbleweed
+
+-------------------------------------------------------------------
+Wed Feb 28 15:08:19 UTC 2024 - Caleb Crane <caleb.crane@suse.com>
+
+- Spec: More tweaks to libexecdir path issues on SLE and Tumbleweed
+
+-------------------------------------------------------------------
 Mon Feb 26 14:16:30 UTC 2024 - Caleb Crane <caleb.crane@suse.com>
 
 - Spec: We don't want /usr/libexec to be namespaced like it is with /usr/lib (bsc#1220304)

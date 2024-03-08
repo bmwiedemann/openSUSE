@@ -66,4 +66,12 @@ Use macros to exclude 32-bit archs</comment>
     <comment>- Spec: We don't want /usr/libexec to be namespaced like it is with /usr/lib (bsc#1220304)</comment>
     <requestid>1151775</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>8cc4b6b800da8bb431edcf9477be8dda</srcmd5>
+    <version>1.10.1</version>
+    <time>1709917692</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1156035</requestid>
+  </revision>
 </revisionlist>
