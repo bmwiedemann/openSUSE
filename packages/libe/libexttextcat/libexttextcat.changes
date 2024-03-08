@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 19:17:51 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Don't use ldconfig_scriptlets macro missing on sle12
+
+-------------------------------------------------------------------
 Sun Jan 28 18:28:36 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 3.4.7:
