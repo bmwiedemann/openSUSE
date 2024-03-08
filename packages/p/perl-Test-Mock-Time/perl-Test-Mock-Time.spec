@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Mock-Time
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Test-Mock-Time
 Name:           perl-Test-Mock-Time
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 License:        MIT
 Summary:        Deterministic time & timers for event loop tests

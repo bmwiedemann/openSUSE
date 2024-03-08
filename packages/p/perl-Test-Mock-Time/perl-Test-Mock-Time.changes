@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 10 03:10:01 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.2.1
+   see /usr/share/doc/packages/perl-Test-Mock-Time/Changes
+
+  v0.2.1  2024-01-09 13:25:43 EET
+          - Fix warning about bigint/bignum conflict.
+
+-------------------------------------------------------------------
 Wed Jun  7 03:08:53 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.2.0
