@@ -117,9 +117,7 @@ This package contain all that is needed to developer or compile
 appliancation with the Bullet library.
 
 %prep
-%setup -q -n bullet3-%{version}
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n bullet3-%{version}
 
 # Take from Fedora specfile
 rm -rf build3/*.{bat,exe}
