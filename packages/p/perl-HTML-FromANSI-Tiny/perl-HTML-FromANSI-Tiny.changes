@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 12 03:07:21 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.107
+   see /usr/share/doc/packages/perl-HTML-FromANSI-Tiny/Changes
+
+  0.107     2024-01-11T15:55:33Z
+    - Update meta files.  No code changes.
+  0.106     2024-01-11T15:47:02Z
+    - Add 'attr_to_class' method to allow subclasses to customize class names.
+
+-------------------------------------------------------------------
 Thu Sep  7 05:33:45 UTC 2017 - coolo@suse.com
 
 - updated to 0.105
