@@ -47,6 +47,7 @@
 %define with_libssh2       0%{!?_without_libssh2:1}
 %define with_numactl       0%{!?_without_numactl:1}
 %define with_modular_daemons 0%{!?_without_modular_daemons:1}
+%define with_userfaultfd_sysctl 0%{!?_without_userfaultfd_sysctl:1}
 
 # A few optional bits off by default, we enable later
 %define with_numad         0%{!?_without_numad:0}
@@ -65,6 +66,12 @@
 # Enable numactl for most architectures. Handle aarch64 separately
 %ifarch s390 s390x %arm %ix86
     %define with_numactl   0
+%endif
+
+# Tumbleweeed is new enough to support /dev/userfaultfd, which
+# does not require enabling vm.unprivileged_userfaultfd sysct
+%if 0%{?suse_version} > 1500
+    %define with_userfaultfd_sysctl 0
 %endif
 
 # vbox is available only on i386 x86_64
@@ -128,7 +135,7 @@
 
 Name:           libvirt
 URL:            https://libvirt.org/
-Version:        10.0.0
+Version:        10.1.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -900,6 +907,11 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 %else
     %define arg_numad -Dnumad=disabled
 %endif
+%if %{with_userfaultfd_sysctl}
+    %define arg_userfaultfd_sysctl -Duserfaultfd_sysctl=enabled
+%else
+    %define arg_userfaultfd_sysctl -Duserfaultfd_sysctl=disabled
+%endif
 %if %{with_nbdkit}
     %define arg_nbdkit -Dnbdkit=enabled
 %else
@@ -1020,8 +1032,10 @@ libvirt plugin for NSS for translating domain names into IP addresses.
            -Dstorage_vstorage=disabled \
            %{?arg_numactl} \
            %{?arg_numad} \
+           %{?arg_userfaultfd_sysctl} \
            %{?arg_nbdkit} \
            %{?arg_nbdkit_config_default} \
+           -Dsysctl_config=enabled \
            -Dcapng=enabled \
            -Dfuse=enabled \
            -Dnetcf=disabled \
@@ -1111,6 +1125,7 @@ rm -f %{buildroot}/%{_datadir}/augeas/lenses/libvirt_sanlock.aug
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/tests/test_libvirt_sanlock.aug
 %endif
 
+rm -f %{buildroot}/%{_sysusersdir}/libvirt-qemu.conf
 rm -f %{buildroot}/usr/lib/sysctl.d/60-libvirtd.conf
 # Provide rc symlink backward compatibility
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rclibvirtd
@@ -1696,7 +1711,9 @@ fi
 %if %{with_apparmor}
 %config(noreplace) %{_sysconfdir}/apparmor.d/usr.sbin.virtqemud
 %endif
+%if %{with_userfaultfd_sysctl}
 %config(noreplace) %{_prefix}/lib/sysctl.d/60-qemu-postcopy-migration.conf
+%endif
 %{_datadir}/augeas/lenses/virtqemud.aug
 %{_datadir}/augeas/lenses/tests/test_virtqemud.aug
 %{_unitdir}/virtqemud.service

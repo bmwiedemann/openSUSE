@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  5 21:20:53 UTC 2024 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 10.1.0
+  - CVE-2024-1441
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v10-1-0-2024-03-01
+
+-------------------------------------------------------------------
 Thu Feb 22 22:11:36 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - Add SLE virtiofsd path to apparmor profiles
