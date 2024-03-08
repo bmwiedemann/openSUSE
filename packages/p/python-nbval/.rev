@@ -102,4 +102,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1062934</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7086225ea23c9f418e4345d67c7cd02d</srcmd5>
+    <version>0.11.0</version>
+    <time>1709917843</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.11.0
+  * no release notes
+  * pure maintenance
+- Skip python39: no longer supported since ipython 8.19 (via
+  ipykernel)</comment>
+    <requestid>1156363</requestid>
+  </revision>
 </revisionlist>
