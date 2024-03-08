@@ -1,7 +1,7 @@
 #
 # spec file for package tracker
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2010 Luis Medinas, Portugal
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,6 +28,10 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://wiki.gnome.org/Projects/Tracker
 Source0:        https://download.gnome.org/sources/tracker/3.6/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 0001-decouple-fts-initialization-from-ontologies.patch glgo#GNOME/tracker#418 yfjiang@suse.com -- Decouple FTS initialization from ongologies
+Patch0:         0001-decouple-fts-initialization-from-ontologies.patch
+# PATCH-FIX-UPSTREAM 0002-early-fts-initialization.patch glgo#GNOME/tracker#418 yfjiang@suse.com -- Move FTS initialization to an earlier stage
+Patch1:         0002-early-fts-initialization.patch
 
 BuildRequires:  asciidoc
 BuildRequires:  fdupes

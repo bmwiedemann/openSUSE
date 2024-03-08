@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  6 10:50:26 UTC 2024 - Yifan Jiang <yfjiang@suse.com>
+
+- Add patches to adapt SQLite 3.44 (glgo#GNOME/tracker#418):
+  + 0001-decouple-fts-initialization-from-ontologies.patch
+  + 0002-early-fts-initialization.patch  
+
+-------------------------------------------------------------------
 Mon Sep 18 11:50:17 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - use pkgconfig(icu-i18n) to use the current libicu. (jsc#PED-6193)
