@@ -406,4 +406,18 @@
 </comment>
     <requestid>1155064</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>20b7230ce6a54c3704afb7373329c904</srcmd5>
+    <version>3.5.2</version>
+    <time>1709917815</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.5.2:
+  * NEW: add possibility to export plain/encrypted
+    Authenticator Pro/2FAS backups using the CLI.
+  * FIX: improve popover layout.
+  * FIX: exporting plaing Aegis via CLI.
+  * FIX: cleanup code. 
+</comment>
+    <requestid>1156324</requestid>
+  </revision>
 </revisionlist>

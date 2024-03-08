@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar  8 10:32:23 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.5.2:
+  * NEW: add possibility to export plain/encrypted
+    Authenticator Pro/2FAS backups using the CLI.
+  * FIX: improve popover layout.
+  * FIX: exporting plaing Aegis via CLI.
+  * FIX: cleanup code. 
+
+-------------------------------------------------------------------
 Tue Mar  5 09:57:03 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.5.1:
