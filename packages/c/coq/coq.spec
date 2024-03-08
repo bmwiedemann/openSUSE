@@ -26,7 +26,7 @@
 %endif
 
 Name:           coq
-Version:        8.19.0
+Version:        8.19.1
 Release:        0
 Summary:        Proof Assistant based on the Calculus of Inductive Constructions
 License:        LGPL-2.1-only
@@ -185,10 +185,10 @@ find %{buildroot}%{_libdir} -name '*.a' \
 # pushd doc
 # git sparse-checkout add V%{version}
 # cd V%{version}
-# tar --sort=name --owner=0 --group=0 --mtime="@$(stat -c %%Y refman/index.html)" \
+# tar --sort=name --owner=0 --group=0 --mtime="@${SOURCE_DATE_EPOCH}" \
 #     --pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime \
 #     -cJf ../../coq-refman-%{version}.tar.xz refman
-# tar --sort=name --owner=0 --group=0 --mtime="@$(stat -c %%Y stdlib/index.html)" \
+# tar --sort=name --owner=0 --group=0 --mtime="@${SOURCE_DATE_EPOCH}" \
 #     --pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime \
 #     -cJf ../../coq-stdlib-%{version}.tar.xz stdlib
 # popd

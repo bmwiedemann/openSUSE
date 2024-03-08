@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar  7 22:31:46 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net> 
+
+- Update to version 8.19.1.
+  * Fixed incorrect abstraction of sort variables for opaque
+    constants leading to an inconsistency.
+  * Fixed memory corruption with `vm_compute` (rare but more
+    likely with OCaml 5.1).
+  * "Found no matching notation to enable or disable" is now a
+    warning instead of an error.
+  * Fixed undeclared universe with multiple uses of `abstract`.
+  * Fixed incorrect printing of constructor values with multiple
+    arguments, and over-parenthesizing of constructor printing.
+  * Fixed incorrect declared type for Ltac2.FMap.fold.
+
+-------------------------------------------------------------------
 Sun Jan 28 20:20:35 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 8.19.0. The most impactful changes:

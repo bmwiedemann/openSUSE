@@ -486,4 +486,23 @@
 </comment>
     <requestid>1142140</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>00b80357a678e72b011c4b15a8b91488</srcmd5>
+    <version>8.19.1</version>
+    <time>1709917749</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 8.19.1.
+  * Fixed incorrect abstraction of sort variables for opaque
+    constants leading to an inconsistency.
+  * Fixed memory corruption with `vm_compute` (rare but more
+    likely with OCaml 5.1).
+  * &quot;Found no matching notation to enable or disable&quot; is now a
+    warning instead of an error.
+  * Fixed undeclared universe with multiple uses of `abstract`.
+  * Fixed incorrect printing of constructor values with multiple
+    arguments, and over-parenthesizing of constructor printing.
+  * Fixed incorrect declared type for Ltac2.FMap.fold.
+</comment>
+    <requestid>1156169</requestid>
+  </revision>
 </revisionlist>
