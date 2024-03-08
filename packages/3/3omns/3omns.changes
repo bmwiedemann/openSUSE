@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  8 07:47:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sat Apr 17 16:21:24 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Fixed spec file

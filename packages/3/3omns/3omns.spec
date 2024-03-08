@@ -1,7 +1,7 @@
 #
 # spec file for package 3omns
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,9 +62,9 @@ BuildRequires:  lua-devel >= 5.2
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P 0 -p1
 %if %{with lua53}
-%patch1 -p1
+%patch -P 1 -p1
 %endif
 
 %build
