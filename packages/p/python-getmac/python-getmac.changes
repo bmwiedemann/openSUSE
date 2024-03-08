@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Mar  8 00:58:45 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.9.4: 
+  * Support BusyBox's ``arping``
+  * Improve how ARP is handled. If ``ArpFile`` method succeeds, use it
+    instead of ``ArpingHost``
+  * Speed up the first call to ``ArpingHost``
+  * Fix FORCE_METHOD not being respected for IPv4 macs
+  * Fix `ArpFile` method being used for IPv6
+  * Deprecate Python 3.6 support
+  * This release is a *complete rewrite of getmac from the ground up*. The
+    public API of `getmac` is **unchanged** as part of this rewrite.
+  * Fully support Python 3.9
+  * Tentatively support Python 3.10 and 3.11
+  * `arping` (POSIX) or `SendARP` (Windows) will now *always* be used instead 
+    of sending a UDP packet when looking for the MAC of a IPv4 host, if
+    they're available and operable (otherwise, UDP + ARP table check will be
+    used like before).
+  * Added ability to override the detected platform via `--override-platform` 
+    argument (CLI) or `getmac.getmac.OVERRIDE_PLATFORM` variable (Python).
+    This will force methods for that platform to be used, regardless of the
+    actual platform.
+  * Overhauled `ifconfig` parsing. It should now be far more reliable and
+    accurate across all platforms.
+  * Fixed bug with `/proc/net/route` parsing
+  * Removed man pages from distribution (`getmac.1`/`getmac2.1`). They were
+    severely out of date and unused.
+- Drop patches fix-failing-darwin-test.patch and support-python3.9.patch
+- Add patch cope-with-no-ip6.patch
+
+-------------------------------------------------------------------
 Wed Sep 28 21:01:13 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - 0.8.3 (12/10/2021)
