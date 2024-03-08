@@ -1,7 +1,7 @@
 #
 # spec file for package python-notebook-shim
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-notebook-shim
-Version:        0.2.3
+Version:        0.2.4
 Release:        0
 Summary:        A shim layer for notebook traits and config
 License:        BSD-3-Clause
@@ -35,7 +35,7 @@ Provides:       python-notebook_shim = %{version}-%{release}
 BuildArch:      noarch
 BuildRequires:  %{python_module jupyter_server >= 1.8 with %python-jupyter_server < 3}
 BuildRequires:  %{python_module pytest-console-scripts}
-BuildRequires:  %{python_module pytest-jupyter}
+BuildRequires:  %{python_module pytest-jupyter if %python-base >= 3.10}
 BuildRequires:  %{python_module pytest-tornasync}
 BuildRequires:  %{python_module pytest}
 %python_subpackages
@@ -68,7 +68,13 @@ file
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest notebook_shim
+export PYTHONDONTWRITEBYTECODE=1
+%{python_expand # don't test anything on python39: no pytest-jupyter anymore
+export PYTHONPATH=%{buildroot}%{$python_sitelib}
+if [ ${python_flavor} != "python39" ]; then
+$python -m pytest -v notebook_shim
+fi
+}
 
 %files %{python_files}
 %license LICENSE

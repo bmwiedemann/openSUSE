@@ -47,4 +47,14 @@
     <comment>- Suggest primary python package -- boo#1214354</comment>
     <requestid>1104451</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>08f5a81087c3300578b27379f5aecdb4</srcmd5>
+    <version>0.2.4</version>
+    <time>1709917844</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.2.4
+  * Fix extension discovery warning #31 (@Zsailer)
+- Stop testing on python39: no pytest-jupyter anymore</comment>
+    <requestid>1156366</requestid>
+  </revision>
 </revisionlist>
