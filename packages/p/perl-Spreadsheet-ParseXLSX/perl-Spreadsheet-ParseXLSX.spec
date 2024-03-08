@@ -18,9 +18,9 @@
 
 %define cpan_name Spreadsheet-ParseXLSX
 Name:           perl-Spreadsheet-ParseXLSX
-Version:        0.290.0
+Version:        0.310.0
 Release:        0
-%define cpan_version 0.29
+%define cpan_version 0.31
 License:        MIT
 Summary:        Parse XLSX files
 URL:            https://metacpan.org/release/%{cpan_name}
