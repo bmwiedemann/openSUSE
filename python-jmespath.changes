@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:47:18 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Remove the forced switch to Python 3.11 in SLE 15 SP4 and
+  openSUSE Leap 15.4 and later. However the updated version will only
+  be available as a Python 3.11 build. (jsc#PED-4514)
+
+-------------------------------------------------------------------
+Thu Feb  1 21:08:03 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Switch users of SLE 15 SP4 and openSUSE Leap 15.4 and later to the
+  Python 3.11 build (jsc#PCT-371). The Python 3.6 build will no longer be
+  maintained
+
+-------------------------------------------------------------------
 Thu Feb  1 14:09:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - switch to PEP517 / wheel build
