@@ -74,4 +74,15 @@
   * write translations of package descriptions</comment>
     <requestid>1156038</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2e8a05b1c7a1d422960495ec3b96d343</srcmd5>
+    <version>0.4.2</version>
+    <time>1709917823</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.4.2
+  * generate also diskusage data now (done by mls)
+  * code cleanup
+- add missing dependency to python-zstandard</comment>
+    <requestid>1156330</requestid>
+  </revision>
 </revisionlist>
