@@ -1020,4 +1020,22 @@
   * resources/page: Make Taxonomy.Get and Taxonomy.Count case-insensitive (forwarded request 1155747 from jfkw)</comment>
     <requestid>1155748</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>afa92c3876d2890709a7a6bc07cddff0</srcmd5>
+    <version>0.123.8</version>
+    <time>1709917776</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.123.8:
+  * markup/goldmark: TOC: render strikethrough, emojis
+  * Add hugo.IsMultiHost
+  * docs: Fix hyphens and grammar in synopsis of command 'hugo server'
+  * resources/images: Retain newlines with text overlays
+  * Don't auto-create empty sections for nested taxonomies
+  * Fix resource name in resources.ByType
+  * Fix global resource isn't published when using an uncommon code construct
+  * Fix section page resource not published if resource filename partially matches content file name
+  * Fix taxonomy kind template lookup issue
+  * tpl/tplimpl: Honor markdown attributes in embedded image render hook (forwarded request 1156218 from jfkw)</comment>
+    <requestid>1156219</requestid>
+  </revision>
 </revisionlist>

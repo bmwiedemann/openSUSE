@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 08 03:52:34 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.123.8:
+  * markup/goldmark: TOC: render strikethrough, emojis
+  * Add hugo.IsMultiHost
+  * docs: Fix hyphens and grammar in synopsis of command 'hugo server'
+  * resources/images: Retain newlines with text overlays
+  * Don't auto-create empty sections for nested taxonomies
+  * Fix resource name in resources.ByType
+  * Fix global resource isn't published when using an uncommon code construct
+  * Fix section page resource not published if resource filename partially matches content file name
+  * Fix taxonomy kind template lookup issue
+  * tpl/tplimpl: Honor markdown attributes in embedded image render hook
+
+-------------------------------------------------------------------
 Wed Mar 06 20:12:41 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.123.7:
