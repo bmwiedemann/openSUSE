@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Compress-Raw-Lzma
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,18 @@
 
 %define cpan_name Compress-Raw-Lzma
 Name:           perl-Compress-Raw-Lzma
-Version:        2.206.0
+Version:        2.209.0
 Release:        0
-%define cpan_version 2.206
+%define cpan_version 2.209
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Summary:        Low-Level Interface to lzma compression library
+Summary:        Low-Level Perl Interface to lzma compression library
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PM/PMQS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
-Provides:       perl(Compress::Raw::Lzma) = 2.206.0
+BuildRequires:  perl(Pod::Markdown)
+Provides:       perl(Compress::Raw::Lzma) = %{version}
 %define         __perllib_provides /bin/true
 %{perl_requires}
 # MANUAL BEGIN
