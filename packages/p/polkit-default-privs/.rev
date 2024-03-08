@@ -2152,4 +2152,14 @@ for 12.3</comment>
 </comment>
     <requestid>1149948</requestid>
   </revision>
+  <revision rev="233" vrev="1">
+    <srcmd5>10ad1593d55b5ca0165a5dd180ece709</srcmd5>
+    <version>1550+20240307.987ebab</version>
+    <time>1709917645</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1550+20240307.987ebab:
+  * add incremental libvirt addition org.libvirt.api.node-device.save (bsc#1221094)
+</comment>
+    <requestid>1156045</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 07 15:33:36 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 1550+20240307.987ebab:
+  * add incremental libvirt addition org.libvirt.api.node-device.save (bsc#1221094)
+
+-------------------------------------------------------------------
 Fri Feb 23 13:20:49 UTC 2024 - filippo.bonazzi@suse.com
 
 - Update to version 1550+20240223.b0857d7:
