@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Thu Mar  7 17:11:06 UTC 2024 - Tobias Klausmann <tobias.klausmann@freenet.de>
+
+- Update to version 1.11:
+  - libvkd3d
+    Descriptor updates happen asynchronously on an internal worker thread, for
+    a minor performance improvement in applications that update many
+    descriptors per frame.
+    When the VK_EXT_mutable_descriptor_type extension is available, libvkd3d
+    will make more efficient use of descriptor pools and sets.
+    When the VK_EXT_shader_viewport_index_layer extension is available,
+    libvkd3d supports indexing viewport and render target arrays from vertex
+    and tessellation evaluation shaders.
+    Support for standard (i.e., black and white) border colours is implemented.
+    The GetResourceAllocationInfo1() method of the ID3D12Device4 interface is
+    implemented.
+    The ID3D12Device7 and ID3D12Resource2 interface is supported.
+    Several new feature queries are supported: D3D12_FEATURE_D3D12_OPTIONS6,
+    D3D12_FEATURE_D3D12_OPTIONS7, D3D12_FEATURE_D3D12_OPTIONS8,
+    D3D12_FEATURE_D3D12_OPTIONS9, D3D12_FEATURE_D3D12_OPTIONS10,
+    D3D12_FEATURE_D3D12_OPTIONS11, D3D12_FEATURE_D3D12_OPTIONS12 and
+    D3D12_FEATURE_D3D12_OPTIONS13
+  - libvkd3d-shader
+    Initial support for compiling legacy Direct3D bytecode to SPIR-V.
+    Experimental support for compiling DirectX Intermediate Language (DXIL) to
+    SPIR-V and Direct3D shader assembly. Being an experimental feature, this
+    requires building vkd3d with the ‘-DVKD3D_SHADER_UNSUPPORTED_DXIL’
+    preprocessor option. Note that enabling this feature will affect the
+    capabilities reported by libvkd3d as well, and may cause previously working
+    applications to break due to attempting to use incomplete DXIL support. No
+    API or ABI stability guarantees are provided for experimental features.
+    New features for the HLSL source type:
+    Initial support for the ‘fx_2_0’, ‘fx_4_0’, ‘fx_4_1’, and ‘fx_5_0’
+    profiles, using the new ‘VKD3D_SHADER_TARGET_FX’ target type.
+    Support for ‘Buffer’ resources.
+    The acos(), asin(), atan(), and atan2() intrinsic functions are supported.
+    Explicit register assignment using the ‘register()’ keyword in shader model
+    1-3 profiles. This was previously only supported in shader model 4+
+    profiles.
+    Casts from integer to floating-point types in shader model 1-3 profiles.
+    Support for various input/output semantics:
+    SV_InstanceID in shader model 4+ fragment shaders.
+    SV_PrimitiveID in shader model 4+ fragment shaders. In previous versions
+    this was only supported in shader model 4+ geometry shaders.
+    SV_RenderTargetArrayIndex in shader model 4+ vertex and fragment shaders.
+    SV_ViewportArrayIndex in shader model 4+ vertex and fragment shaders.
+    Support for various rasteriser-ordered view types. Specifically:
+    RasterizerOrderedBuffer, RasterizerOrderedStructuredBuffer,
+    RasterizerOrderedTexture1D, RasterizerOrderedTexture1DArray,
+    RasterizerOrderedTexture2D, RasterizerOrderedTexture2DArray,
+    RasterizerOrderedTexture3D
+    New features for the SPIR-V target type:
+    Support for globally coherent unordered access views. These have the
+    ‘globallycoherent’ storage class in HLSL, and the ‘_glc’ suffix in Direct3D
+    assembly.
+    Support for thread group unordered access view barriers. This corresponds
+    to ‘sync_ugroup’ instructions in Direct3D assembly.
+    When the SPV_EXT_viewport_index_layer extension is supported, vertex and
+    tessellation evaluation shaders can write render target and viewport array
+    indices. This corresponds to the ‘SV_RenderTargetArrayIndex’ and
+    ‘SV_ViewportArrayIndex’ HLSL output semantics.
+    New interfaces:
+    The VKD3D_SHADER_COMPILE_OPTION_FEATURE compile option can be used to
+    specify features available in the target environment. The
+    VKD3D_SHADER_COMPILE_OPTION_FEATURE_INT64 flag indicates support for 64-bit
+    integer types in the SPIR-V target environment. The
+    VKD3D_SHADER_COMPILE_OPTION_FEATURE_FLOAT64 flag indicates support for
+    64-bit floating-point types in the SPIR-V target environment. For backward
+    compatibility, VKD3D_SHADER_API_VERSION_1_10 and earlier also imply support
+    for 64-bit floating-point types.
+    The VKD3D_SHADER_SPIRV_EXTENSION_EXT_VIEWPORT_INDEX_LAYER enumeration value
+    indicates support for the SPV_EXT_viewport_index_layer extension in the
+    SPIR-V target environment.
+  -libvkd3d-utils
+    When available, the following Vulkan extensions are enabled by
+    D3D12CreateDeviceVKD3D() and D3D12CreateDevice(): VK_KHR_android_surface,
+    VK_KHR_wayland_surface, VK_KHR_win32_surface, VK_KHR_xlib_surface,
+    VK_EXT_metal_surface, VK_MVK_ios_surface
+    Previous versions of vkd3d-utils enabled VK_KHR_xcb_surface and
+    VK_MVK_macos_surface. In practice this means that D3D12CreateDevice() /
+    D3D12CreateDeviceVKD3D() can be used on the corresponding additional window
+    systems.
+    New interfaces:
+    D3DReflect() is used to retrieve information about shaders. It currently
+    supports retrieving information about input, output, and patch constant
+    parameters using the ID3D12ShaderReflection interface.
+    D3DDisassemble() is used to disassemble legacy Direct3D bytecode (shader
+    model 1-3) and ‘Tokenized Program Format’ (shader model 4 and 5) shaders.
+  - vkd3d-compiler
+    The new ‘fx’ target is used for outputting Direct3D effects when compiling
+    HLSL ‘fx_2_0’, ‘fx_4_0’, ‘fx_4_1’, and ‘fx_5_0’ profiles.
+  - build
+    The minimum required version of Vulkan-Headers for this release is version
+    1.3.228.
+
+-------------------------------------------------------------------
 Thu Dec  7 13:07:01 UTC 2023 - Tobias Klausmann <tobias.klausmann@freenet.de>
 
 - Update to version 1.10:
