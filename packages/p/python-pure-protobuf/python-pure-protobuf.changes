@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar  8 00:46:53 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- add script get-tests.sh to fetch tests
+- update to 3.0.1:
+  * technical update (deps)
+
+- update to 3.0.0:
+  * = field field declarations replaced with Annotated hinting
+  * Removed @message decorator in favour of BaseMessage
+  * Re-written the core
+  * Typing changes (see also: https://eigenein.github.io/protobuf/migration/)
+
+-------------------------------------------------------------------
 Sat Dec 16 07:45:47 UTC 2023 - Richard Rahl <rrahl0@proton.me>
 
 - initial packaging

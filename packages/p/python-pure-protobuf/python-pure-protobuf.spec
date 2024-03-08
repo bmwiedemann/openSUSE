@@ -1,7 +1,7 @@
 #
 # spec file for package python-pure-protobuf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,26 +15,36 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-pure-protobuf
-Version:        2.3.0
+Version:        3.0.1
 Release:        0
 Summary:        Protocol Buffers using Python type annotations
-Group:          Development/Libraries/Python
 License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://github.com/eigenein/protobuf
 Source:         https://files.pythonhosted.org/packages/source/p/pure-protobuf/pure_protobuf-%{version}.tar.gz
-Source1:        pure_protobuf-tests-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+Source1:        %{name}-tests-%{version}.tar.gz
+Source99:       get-tests.sh
+BuildRequires:  %{python_module get-annotations}
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
-BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module poetry-dynamic-versioning}
+BuildRequires:  %{python_module pydantic}
+BuildRequires:  %{python_module typing-extensions}
 BuildRequires:  fdupes
+BuildRequires:  git-core
+BuildRequires:  python-rpm-macros
 ## needed for tests
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-benchmark}
+BuildRequires:  %{python_module pytest-cov}
 BuildArch:      noarch
+Requires:       python-get-annotations
+Requires:       python-typing-extensions
 %python_subpackages
 
 %description
@@ -51,8 +61,7 @@ BuildArch:      noarch
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-donttest="serializer"
-%pytest -k "not $donttest"
+%pytest
 
 %files %{python_files}
 %{python_sitelib}/pure_protobuf
