@@ -431,4 +431,16 @@
   * Support configurable width and height of reveal presentations</comment>
     <requestid>1144995</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>b11b866773f0e86b24a79b859a36dd96</srcmd5>
+    <version>7.16.2</version>
+    <time>1709917841</time>
+    <user>anag+factory</user>
+    <comment>- Update to 7.16.2
+  * [HTMLExporter] Initialize resources before widget filtering
+    #2118 (@yuvipanda)
+- Release 7.16.1 is pure maintenance
+- Skip testing python39: no longer supported since ipython 8.19</comment>
+    <requestid>1156358</requestid>
+  </revision>
 </revisionlist>
