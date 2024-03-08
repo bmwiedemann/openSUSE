@@ -1,36 +1,38 @@
-diff -ru a/development.txt b/development.txt
---- a/development.txt	2020-04-15 08:32:37.395625095 +0200
-+++ b/development.txt	2020-04-15 08:35:55.487958938 +0200
+Index: forbiddenfruit-0.1.4/development.txt
+===================================================================
+--- forbiddenfruit-0.1.4.orig/development.txt
++++ forbiddenfruit-0.1.4/development.txt
 @@ -1,4 +1,4 @@
  -r requirements.txt
 -nose==1.2.1
 +pytest
  coverage==3.6
  tox==1.4.3
-diff -ru a/Makefile b/Makefile
---- a/Makefile	2020-04-15 08:32:37.395625095 +0200
-+++ b/Makefile	2020-04-15 08:35:45.359941783 +0200
-@@ -24,8 +24,7 @@
+Index: forbiddenfruit-0.1.4/Makefile
+===================================================================
+--- forbiddenfruit-0.1.4.orig/Makefile
++++ forbiddenfruit-0.1.4/Makefile
+@@ -25,8 +25,7 @@ run_test:
  	@if [ -d tests/$(suite) ]; then \
  		echo "Running \033[0;32m$(suite)\033[0m test suite"; \
  		make prepare; \
 -		nosetests --stop --with-coverage --cover-package=$(PACKAGE) \
 -			--cover-branches --verbosity=2 -s tests/$(suite) ; \
-+        pytest --cov=$(PACKAGE) tests/$(suite) ; \	
++        pytest --cov=$(PACKAGE) tests/$(suite) ; \
  	fi
  
  prepare: clean install_deps build_test_stub
-diff -ru a/tests/unit/test_forbidden_fruit.py b/tests/unit/test_forbidden_fruit.py
---- a/tests/unit/test_forbidden_fruit.py	2020-04-15 08:32:37.395625095 +0200
-+++ b/tests/unit/test_forbidden_fruit.py	2020-04-15 08:34:08.055776995 +0200
-@@ -1,21 +1,19 @@
+Index: forbiddenfruit-0.1.4/tests/unit/test_forbidden_fruit.py
+===================================================================
+--- forbiddenfruit-0.1.4.orig/tests/unit/test_forbidden_fruit.py
++++ forbiddenfruit-0.1.4/tests/unit/test_forbidden_fruit.py
+@@ -1,21 +1,18 @@
  import sys
 +import pytest
  from datetime import datetime
- from forbiddenfruit import curses, curse, reverse
+ from forbiddenfruit import cursed, curses, curse, reverse
  from types import FunctionType
 -from nose.tools import nottest, istest
-+
  
  # Our stub! :)
  from . import ffruit
@@ -44,10 +46,19 @@ diff -ru a/tests/unit/test_forbidden_fruit.py b/tests/unit/test_forbidden_fruit.
  
 -skip_legacy = nottest if sys.version_info < (3, 3) else istest
 -
- def test_cursing_a_builting_class():
+ def test_cursing_a_builtin_class():
  
      # Given that I have a function that returns *blah*
-@@ -172,10 +170,10 @@
+@@ -44,7 +41,7 @@ def test_cursing_a_builtin_class_with_a_
+     assert 'hello' in dir(str)
+ 
+ 
+-@skip_legacy
++@pytest.mark.skipif(sys.version_info < (3,3), reason="requires python3.3")
+ def test_cursing_a_builtin_class_dunder_with_a_random_callable():
+     # Given that I have an object that returns *blah*
+     class Twelver(object):
+@@ -186,10 +183,10 @@ def test_dir_without_args_returns_names_
  
      # Then I see that `dir()` correctly returns a sorted list of those names
      assert 'some_name' in dir()
@@ -60,7 +71,7 @@ diff -ru a/tests/unit/test_forbidden_fruit.py b/tests/unit/test_forbidden_fruit.
  def test_dunder_func_chaining():
      """Overload * (mul) operator to to chaining between functions"""
      def matmul_chaining(self, other):
-@@ -199,7 +197,7 @@
+@@ -213,7 +210,7 @@ def test_dunder_func_chaining():
          assert squared(i) == i ** 2
  
  
@@ -69,7 +80,7 @@ diff -ru a/tests/unit/test_forbidden_fruit.py b/tests/unit/test_forbidden_fruit.
  def test_dunder_list_map():
      """Overload * (__mul__) operator to apply function to a list"""
      def map_list(func, list_):
-@@ -215,7 +213,7 @@
+@@ -229,7 +226,7 @@ def test_dunder_list_map():
      assert list(times_2 * list_) == list(range(0, 20, 2))
  
  
@@ -78,7 +89,7 @@ diff -ru a/tests/unit/test_forbidden_fruit.py b/tests/unit/test_forbidden_fruit.
  def test_dunder_unary():
      """Overload ~ operator to compute a derivative of function"""
      def derive_func(func):
-@@ -237,7 +235,7 @@
+@@ -251,7 +248,7 @@ def test_dunder_unary():
      assert almost_equal((~f)(10), f_(10))
  
  
@@ -87,7 +98,7 @@ diff -ru a/tests/unit/test_forbidden_fruit.py b/tests/unit/test_forbidden_fruit.
  def test_sequence_dunder():
      def derive_func(func, deriv_grad):
          if deriv_grad == 0:
-@@ -265,7 +263,7 @@
+@@ -279,7 +276,7 @@ def test_sequence_dunder():
          assert almost_equal(f_2(x), f[2](x), e=.01)
  
  
@@ -96,20 +107,41 @@ diff -ru a/tests/unit/test_forbidden_fruit.py b/tests/unit/test_forbidden_fruit.
  def test_dunder_list_revert():
      """Test reversion of a curse with dunders"""
      def map_list(func, list_):
-diff -ru a/tox.ini b/tox.ini
---- a/tox.ini	2020-04-15 08:32:37.395625095 +0200
-+++ b/tox.ini	2020-04-15 08:34:28.431811503 +0200
-@@ -4,10 +4,11 @@
- # and then run "tox" from this directory.
+@@ -312,7 +309,7 @@ def test_cursing_a_reversed_curse():
+     curse(str, 'one', 2)
+     assert str.one == 2
  
- [tox]
--envlist = py27, py30, py33, py34, py35, py36, py37
-+envlist = py27, py30, py33, py34, py35, py36, py37, py38
+-@skip_legacy
++@pytest.mark.skipif(sys.version_info < (3,3), reason="requires python3.3")
+ def test_dunder_str():
+     assert str(1) == "1"
+     def always_one(self):
+@@ -320,7 +317,7 @@ def test_dunder_str():
+     curse(int, '__str__', always_one)
+     assert str(1) == "one"
  
- [testenv]
+-@skip_legacy
++@pytest.mark.skipif(sys.version_info < (3,3), reason="requires python3.3")
+ def test_dunder_reverse():
+     def type_error_str(self):
+         return 'type error'
+@@ -348,7 +345,7 @@ def test_cursed_context_manager():
+     assert "open_box" not in dir(dict)
+ 
+ 
+-@skip_legacy
++@pytest.mark.skipif(sys.version_info < (3,3), reason="requires python3.3")
+ def test_cursed_decorator():
+     "The `cursed` decorator should curse an existing symbols during a function"
+ 
+Index: forbiddenfruit-0.1.4/tox.ini
+===================================================================
+--- forbiddenfruit-0.1.4.orig/tox.ini
++++ forbiddenfruit-0.1.4/tox.ini
+@@ -12,5 +12,5 @@ setenv =
+ whitelist_externals = make
  commands = make
  deps =
 -    nose
 +    pytest
-+    pytest-cov
      coverage

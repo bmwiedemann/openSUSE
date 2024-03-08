@@ -31,4 +31,21 @@
     <comment></comment>
     <requestid>794032</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b814b69b6fd855714e7d6316a488d2f7</srcmd5>
+    <version>0.1.4</version>
+    <time>1709917763</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.1.4:
+  * Add cursed() context manager/decorator
+  * Conditionally build test C extension
+  * Allow cursing dunder methods with non functions
+  * Fix dual licensing issues. Distribute both GPLv3 &amp; MIT license
+    files.
+- Drop COPYING.GPL, now included in the sdist.
+- Switch to pyproject and autosetup macros.
+- No more greedy globs in %files.
+- Fiddle with remove-nose.patch to drop a useless decorator.</comment>
+    <requestid>1156212</requestid>
+  </revision>
 </revisionlist>
