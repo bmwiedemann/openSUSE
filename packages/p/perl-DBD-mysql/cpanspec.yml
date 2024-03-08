@@ -4,9 +4,8 @@ description_paragraphs: 1
 #sources:
 #  - source1
 #  - source2
-#patches:
-#  foo.patch: -p1
-#  bar.patch:
+patches:
+  perl-DBD-mysql-gcc14.patch: -p1
 preamble: |-
  BuildRequires:  libmariadb-devel
  BuildRequires:  zlib-devel

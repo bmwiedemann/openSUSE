@@ -1,0 +1,40 @@
+From 93bc876808af048091bf76d6908a9748d0476ab9 Mon Sep 17 00:00:00 2001
+From: Eric Herman <eric@freesa.org>
+Date: Thu, 10 Jan 2019 10:22:38 +0100
+Subject: [PATCH] Fix "assignment from incompatible pointer type"
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+I encountered this warning from gcc 7.3.0 building on Ubuntu:
+
+dbdimp.c: In function ‘mysql_st_prepare’:
+dbdimp.c:3207:24: warning: assignment from incompatible pointer type [-Wincompatible-pointer-types]
+           bind->is_null=      (_Bool*) &(fbind->is_null);
+
+The "MYSQL_BIND" field "is_null" is of type "my_bool", not "_Bool".
+
+The type "my_bool" is (usually) type-defined to be of a "char" type.
+
+Regardless, the "imp_sth_phb_t" field "is_null" is of type "char".
+
+This commit removes the cast, which means that if we later discover
+that "my_bool" is defined to be of a type incompatible with the
+"imp_sth_phb_t" field "is_null", it will break at compile-time.
+---
+ dbdimp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dbdimp.c b/dbdimp.c
+index b0399d94..e7e6c007 100644
+--- a/dbdimp.c
++++ b/dbdimp.c
+@@ -3204,7 +3204,7 @@ dbd_st_prepare(
+           bind->buffer_type=  MYSQL_TYPE_STRING;
+           bind->buffer=       NULL;
+           bind->length=       &(fbind->length);
+-          bind->is_null=      (_Bool*) &(fbind->is_null);
++          bind->is_null=      &(fbind->is_null);
+           fbind->is_null=     1;
+           fbind->length=      0;
+         }
