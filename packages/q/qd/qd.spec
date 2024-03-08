@@ -1,7 +1,7 @@
 #
 # spec file for package qd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %define libname libqd0
 Name:           qd
-Version:        2.3.23
+Version:        2.3.24
 Release:        0
 Summary:        Quad Double computation package
 License:        BSD-3-Clause-LBNL
 Group:          Development/Libraries/C and C++
 URL:            https://www.davidhbailey.com/dhbsoftware/
 Source0:        https://www.davidhbailey.com/dhbsoftware/%{name}-%{version}.tar.gz
+BuildRequires:  autoconf
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  pkg-config
