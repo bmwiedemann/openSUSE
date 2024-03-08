@@ -1,7 +1,7 @@
 #
 # spec file for package python-virtualenvwrapper
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_with test
 %global pythons python3
 Name:           python-virtualenvwrapper
-Version:        4.8.4
+Version:        6.1.0
 Release:        0
 Summary:        Enhancements to virtualenv
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://virtualenvwrapper.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/v/virtualenvwrapper/virtualenvwrapper-%{version}.tar.gz
-Patch0:         virtualenvwrapper-4.8.4-python_version.patch
 BuildRequires:  %{python_module pbr}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-stevedore
@@ -60,15 +59,14 @@ conflicts in their dependencies.
 6.  Plugin system for more creating sharable extensions.
 
 %prep
-%setup -q -n virtualenvwrapper-%{version}
+%autosetup -p1 -n virtualenvwrapper-%{version}
 sed -i -e '1i#!/bin/sh' virtualenvwrapper.sh
-%patch0 -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 mv %{buildroot}%{_bindir}/virtualenvwrapper.sh %{buildroot}%{_bindir}/virtualenvwrapper
 mv %{buildroot}%{_bindir}/virtualenvwrapper_lazy.sh %{buildroot}%{_bindir}/virtualenvwrapper_lazy
@@ -91,9 +89,10 @@ done
 
 %files %{python_files}
 %license LICENSE
-%doc AUTHORS ChangeLog README.es.rst README.ja.rst README.txt
+%doc README.es.rst README.ja.rst README.txt
 %python_alternative %{_bindir}/virtualenvwrapper
 %python_alternative %{_bindir}/virtualenvwrapper_lazy
-%{python_sitelib}/*
+%{python_sitelib}/virtualenvwrapper
+%{python_sitelib}/virtualenvwrapper-%{version}.dist-info
 
 %changelog

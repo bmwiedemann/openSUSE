@@ -208,4 +208,31 @@
     <comment>- build against main-python as this is a cli tool (bsc#1181608)</comment>
     <requestid>872029</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>90bfd186207f9d1a853054e2e59a39e8</srcmd5>
+    <version>6.1.0</version>
+    <time>1709917783</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.1.0:
+  * Breaking Changes
+    + formally drop Python 2 support
+    + remove toggleglobalsitepackages command, since virtualenv seems to
+      have removed that capability
+    + drop ksh support
+    + remove python2 from startup logic for finding the python interpreter
+    + Updated tested Python versions in README.
+  * Features
+    + add a --version option to the hook loader
+  * Miscellaneous Improvements
+    + switch to implicit namespaces
+    + modernize packaging
+    + Update the tested Python versions to match README
+    + Changed workon's env switching to use OR not $?
+    + Fix issues for python 3.12
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+- Drop patch virtualenvwrapper-4.8.4-python_version.patch, no longer
+  required.</comment>
+    <requestid>1156224</requestid>
+  </revision>
 </revisionlist>
