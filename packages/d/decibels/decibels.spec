@@ -19,7 +19,7 @@
 %define sname   gi-typescript-definitions
 %define scommit eb2a87a25c5e2fb580b605fbec0bd312fe34c492
 Name:           decibels
-Version:        0.1.6
+Version:        0.1.7
 Release:        0
 Summary:        Play audio files with a waveform
 License:        GPL-3.0-or-later
