@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar  8 13:15:32 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.16.2
+  * [HTMLExporter] Initialize resources before widget filtering
+    #2118 (@yuvipanda)
+- Release 7.16.1 is pure maintenance
+- Skip testing python39: no longer supported since ipython 8.19
+
+-------------------------------------------------------------------
 Wed Feb  7 19:37:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.16.0:

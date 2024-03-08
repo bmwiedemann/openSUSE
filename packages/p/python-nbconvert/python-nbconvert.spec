@@ -20,6 +20,7 @@
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
+%define skip_python39 1
 %else
 %define psuffix %{nil}
 %bcond_with test
@@ -30,9 +31,9 @@
 %bcond_with libalternatives
 %endif
 # X.X.0 gets abbreviated by pythondistdeps
-%define shortversion 7.16
+%define shortversion 7.16.2
 Name:           python-nbconvert%{psuffix}
-Version:        7.16.0
+Version:        7.16.2
 Release:        0
 Summary:        Conversion of Jupyter Notebooks
 License:        BSD-3-Clause AND MIT
