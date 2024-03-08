@@ -223,4 +223,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1146054</requestid>
   </revision>
+  <revision rev="18" vrev="13">
+    <srcmd5>37b7773c86f29ddc174c587994c54e1a</srcmd5>
+    <version>13.0.1</version>
+    <time>1709917720</time>
+    <user>anag+factory</user>
+    <comment>- Explicitly define PYTHON3_EXECUTABLE, since python 3.11 is being
+  pulled in by cmake in SLE-15-SP6.
+- Fix PowerPC triples: use powerpc[64[le]] instead of ppc[64[le]].
+- Disable test that fails on ppc64le.
+- Use %patch -P N instead of deprecated %patchN.
+</comment>
+    <requestid>1156033</requestid>
+  </revision>
 </revisionlist>
