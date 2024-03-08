@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan  6 03:06:08 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.12
+   see /usr/share/doc/packages/perl-Cookie-Baker/Changes
+
+  0.12 2024-01-05T08:27:56Z
+
+     - Support CHIPS #20
+     - Set secure when SameSite=None #21
+     Thank you yoshikazusawa.
+
+-------------------------------------------------------------------
 Sat Jun  8 05:04:07 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.11
