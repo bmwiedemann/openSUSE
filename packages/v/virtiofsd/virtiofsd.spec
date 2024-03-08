@@ -16,9 +16,10 @@
 #
 
 
-%define _virtiofsd_dir %{_libexecdir}
-%if 0%{?suse_version} <= 1500
-   %define _virtiofsd_dir %{_libdir}/%{name}
+%if 0%{?suse_version} > 1500
+  %define _virtiofsd_libexecdir %{_libexecdir}
+%else
+  %define _virtiofsd_libexecdir %{_libexecdir}/%{name}
 %endif
 
 Name:           virtiofsd
@@ -47,23 +48,28 @@ mkdir .cargo
 cp %{SOURCE2} .cargo/config
 # Adjust libvirt/virtiofsd interop config file to handle differences in
 # the definition of libexecdir macro on SLE and Tumbleweed (bsc#1219772)
-sed -i 's#@@LIBEXECDIR@@#%{_virtiofsd_dir}#' %{SOURCE3}
+sed -i 's#@@LIBEXECDIR@@#%{_virtiofsd_libexecdir}#' %{SOURCE3}
 
 %build
 %{cargo_build}
 
 %install
-mkdir -p %{buildroot}%{_virtiofsd_dir}
-install -D -p -m 0755 %{_builddir}/%{name}-%{version}/target/release/virtiofsd %{buildroot}%{_virtiofsd_dir}/virtiofsd
+mkdir -p %{buildroot}%{_virtiofsd_libexecdir}
+install -D -p -m 0755 %{_builddir}/%{name}-%{version}/target/release/virtiofsd %{buildroot}%{_virtiofsd_libexecdir}/virtiofsd
 install -D -p -m 0644 %{SOURCE3} %{buildroot}%{_datadir}/qemu/vhost-user/50-virtiofsd.json
 
 %check
 %{cargo_test}
 
+%if  0%{?suse_version} > 1500
+# transition from old subdirectory to single file: rpm can't replace a directory on upgrades, force delete
+%pre
+[ ! -d %{_libexecdir}/%{name} ] || rm -r %{_libexecdir}/%{name}
+%endif
+
 %files
 %doc README.md
-%dir %{_virtiofsd_dir}
-%{_virtiofsd_dir}/virtiofsd
+%{_libexecdir}/virtiofsd
 %dir %{_datadir}/qemu
 %dir %{_datadir}/qemu/vhost-user
 %{_datadir}/qemu/vhost-user/50-virtiofsd.json
