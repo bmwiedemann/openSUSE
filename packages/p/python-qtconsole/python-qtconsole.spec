@@ -1,7 +1,7 @@
 #
 # spec file for package python-qtconsole
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%define skip_python39 1
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
@@ -65,7 +66,7 @@ BuildRequires:  alts
 Requires:       alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 # SECTION test requirements
 BuildRequires:  %{python_module Pygments}
