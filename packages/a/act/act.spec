@@ -1,7 +1,7 @@
 #
 # spec file for package act
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021 Orville Q. Song <orville@anislet.dev>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@
 %global provider_prefix %{provider}.%{provider_tld}/%{project}
 %global import_path     %{provider_prefix}/%{repo}
 Name:           act
-Version:        0.2.45
+Version:        0.2.60
 Release:        0
 Summary:        Run your GitHub Actions locally
 License:        MIT
