@@ -1,7 +1,7 @@
 #
 # spec file for package python-pythreejs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%define skip_python39 1
 %define mainver 2.4.1
 %define shortver 2.4.1
 %define jupver  2.4.0
@@ -121,13 +122,13 @@ cp %{buildroot}%{python3_sitelib}/pythreejs-%{mainver}.dist-info/LICENSE .
 %check
 %pytest -l --nbval-lax --current-env examples
 export JUPYTER_PATH=%{buildroot}%{_jupyter_prefix}
-export JUPYTER_CONFIG_DIR=%{buildroot}%{_jupyter_confdir}
+cp -r %{buildroot}%{_jupyter_confdir} myconf
+export JUPYTER_CONFIG_DIR=$PWD/myconf
 %{python_expand # check extensions
 export PYTHONPATH=%{buildroot}%{$python_sitelib}
 jupyter-%{$python_bin_suffix} nbclassic-extension list 2>&1 | grep 'threejs.*enabled'
 jupyter-%{$python_bin_suffix} labextension list 2>&1 | grep 'threejs.*enabled'
 }
-rm -f %{buildroot}%{_jupyter_confdir}migrated
 
 %files %{python_files}
 %license LICENSE
