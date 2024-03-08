@@ -15,4 +15,15 @@
     <comment>Update to version 0.1.6</comment>
     <requestid>1127564</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b18f5ec1a905fd8088c63f7b32c5d87c</srcmd5>
+    <version>0.1.7</version>
+    <time>1709917745</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.1.7
+  * Add tooltip buttons for the player
+  * Update translations
+</comment>
+    <requestid>1156147</requestid>
+  </revision>
 </revisionlist>
