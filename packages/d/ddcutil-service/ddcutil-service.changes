@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 29 06:37:06 UTC 2024 - Michael Hamilton <michael@actrix.gen.nz>
+
+- Version 1.0.2
+  - Added VcpValueChanged D-Bus signal which triggers if the SetVcp method succeeds. This is to allow
+    multiple clients to be aware of changes made by each.
+  - Added SetVcpWithContext which accepts a client-context to be returned with the VcpValueChanged signal.
+  - ServiceEmitSignals renamed to ServiceEmitConnectivitySignals to avoid confusion.
+  - Command line option --emit-signals renamed to --emit-connectivity-signals for the same reason.
+  - Fix ServiceEmitSignals property assignment so that it correctly toggles hotplug signals.
+  - Fix hotplug polling so that it remains an option no matter what version of libddcutil is in use. 
+- Version 1.0.1
+  - Use gcc with -Wformat-security for safety and to match Arch and Ubuntu defaults.
+  - Calling ddca_init() before verify_i2c() to fix runtime error for libddcutil >= 2.1.
+
+-------------------------------------------------------------------
 Thu Jan 18 21:15:00 UTC 2024 - Michael Hamilton <michael@actrix.gen.nz>
 
 - Version 1.0.0
