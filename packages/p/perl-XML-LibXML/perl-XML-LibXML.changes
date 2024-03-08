@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar  6 11:33:51 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- updated to 2.0210 [bsc#1221013]
+   see /usr/share/doc/packages/perl-XML-LibXML/Changes
+
+  2.0210  2024-01-24
+      - Fix copying external entity from an ext_ent_handler handler
+          - https://github.com/shlomif/perl-XML-LibXML/issues/81
+          - thanks to Petr
+      - libxml-mm: Fix function prototypes in function pointers
+          - thanks to Khem Raj
+
+-------------------------------------------------------------------
 Tue Jul 25 18:17:14 UTC 2023 - Tina Müller <tina.mueller@suse.com>
 
 - Added versions to 'Provides' lines after fixing a bug in cpanspec

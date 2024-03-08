@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XML-LibXML
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name XML-LibXML
 Name:           perl-XML-LibXML
-Version:        2.0209
+Version:        2.0210
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Interface to Gnome libxml2 xml parsing and DOM library
@@ -102,7 +102,7 @@ perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
 %make_build
 
 %check
-make test
+%make_build test
 
 %install
 %perl_make_install
