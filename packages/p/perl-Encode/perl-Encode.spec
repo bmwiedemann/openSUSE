@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Encode
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %define cpan_name Encode
 Name:           perl-Encode
-Version:        3.200.0
+Version:        3.210.0
 Release:        0
-%define cpan_version 3.20
+%define cpan_version 3.21
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Character encodings in Perl
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -32,7 +32,7 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(Test::More) >= 0.92
 BuildRequires:  perl(parent) >= 0.221
 Requires:       perl(parent) >= 0.221
-Provides:       perl(Encode) = 3.200.0
+Provides:       perl(Encode) = %{version}
 Provides:       perl(Encode::Alias) = 2.25
 Provides:       perl(Encode::CJKConstants) = 2.200.0
 Provides:       perl(Encode::CN::HZ) = 2.10
