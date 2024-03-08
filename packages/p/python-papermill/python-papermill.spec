@@ -63,12 +63,12 @@ BuildRequires:  %{python_module entrypoints}
 BuildRequires:  %{python_module gcsfs}
 # for python-azure-storage-blob (https://build.opensuse.org/request/show/1083380#comments)
 BuildRequires:  %{python_module typing_extensions}
-BuildRequires:  %{python_module ipython >= 5.0}
-BuildRequires:  %{python_module ipywidgets}
+BuildRequires:  %{python_module ipython >= 5.0 if %python-base >= 3.10}
+BuildRequires:  %{python_module ipywidgets if %python-base >= 3.10}
 BuildRequires:  %{python_module moto}
 BuildRequires:  %{python_module nbclient >= 0.2.0}
 BuildRequires:  %{python_module nbformat >= 5.1.2}
-BuildRequires:  %{python_module notebook}
+BuildRequires:  %{python_module notebook if %python-base >= 3.10}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pyarrow}
 BuildRequires:  %{python_module pytest-env}
@@ -100,7 +100,13 @@ sed -i '/docs_/d' setup.py
 %check
 # different output type expected
 donttest="TestBrokenNotebook2"
-%pytest -k "not ($donttest)"
+export PYTHONDONTWRITEBYTECODE=1
+%{python_expand # don't test anything on python39: no ipython anymore
+export PYTHONPATH=%{buildroot}%{$python_sitelib}
+if [ ${python_flavor} != "python39" ]; then
+$python -m pytest -k "not ($donttest)"
+fi
+}
 
 %post
 %python_install_alternative papermill
