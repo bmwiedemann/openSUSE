@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  8 02:28:33 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- require at least python-pure-protobuf 3.0.0
+- add dependency to fix Komikku
+
+-------------------------------------------------------------------
 Sat Mar  2 19:12:22 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - update to 1.39.0:
