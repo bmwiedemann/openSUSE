@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan  7 03:06:16 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.07052
+   see /usr/share/doc/packages/perl-DBIx-Class-Schema-Loader/Changes
+
+  0.07052 - 2024-01-06
+          - fix: don't load Test::More in ::Utils
+
+-------------------------------------------------------------------
 Thu Nov 24 03:06:27 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.07051
