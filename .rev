@@ -49,4 +49,13 @@
 - PEP517 (forwarded request 1070052 from bnavigator)</comment>
     <requestid>1070053</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>44a179bec658d29960f1a3876f44e920</srcmd5>
+    <version>0.1.0.post25</version>
+    <time>1709917939</time>
+    <user>anag+factory</user>
+    <comment>- Skip python39: no longer supported since ipython 8.19
+  (via pythreejs)</comment>
+    <requestid>1156377</requestid>
+  </revision>
 </revisionlist>
