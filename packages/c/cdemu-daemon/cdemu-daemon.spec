@@ -1,7 +1,7 @@
 #
 # spec file for package cdemu-daemon
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,8 @@
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-
 Name:           cdemu-daemon
 Version:        3.2.6
 Release:        0
@@ -28,7 +27,6 @@ Summary:        Device daemon for cdemu, a virtual CD-ROM device emulator
 License:        GPL-2.0-or-later
 Group:          System/Daemons
 URL:            https://cdemu.sourceforge.io/about/daemon/
-
 #Git-Clone:	https://github.com/cdemu/cdemu
 Source:         https://downloads.sf.net/cdemu/%name-%version.tar.xz
 Source2:        60-vhba.rules
@@ -36,7 +34,7 @@ Source3:        cdemu-daemon.sysconfig
 Source4:        cdemu-daemon.service
 BuildRequires:  cmake >= 2.8.5
 BuildRequires:  intltool >= 0.21
-BuildRequires:  pkg-config >= 0.16
+BuildRequires:  pkgconfig >= 0.16
 BuildRequires:  pkgconfig(ao) >= 0.8.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.30
 BuildRequires:  pkgconfig(glib-2.0) >= 2.30
@@ -44,10 +42,9 @@ BuildRequires:  pkgconfig(gmodule-2.0) >= 2.30
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.30
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.30
 BuildRequires:  pkgconfig(libmirage) >= 3.2.0
-Requires(pre):  %fillup_prereq
 Requires:       vhba-kmp
+Requires(pre):  %fillup_prereq
 Recommends:     %name-lang
-
 %lang_package
 
 %description
@@ -69,14 +66,14 @@ that can be used by clients to control it.
 %cmake_build
 
 %install
-b="%buildroot"
+b=%{buildroot}
 %cmake_install
 mkdir -p "$b/%_sbindir" "$b/%_fillupdir" \
 	"$b/%_prefix/lib/udev/rules.d"
-install -pm0644 "%{S:2}" "$b/%_prefix/lib/udev/rules.d/60-vhba.rules"
-install -pm0644 "%{S:3}" "$b/%_fillupdir/sysconfig.cdemu-daemon"
+install -pm0644 "%{SOURCE2}" "$b/%_prefix/lib/udev/rules.d/60-vhba.rules"
+install -pm0644 "%{SOURCE3}" "$b/%_fillupdir/sysconfig.cdemu-daemon"
 mkdir -p "$b/%_userunitdir"
-install -pm0644 "%{S:4}" "$b/%_userunitdir/cdemu-daemon.service"
+install -pm0644 "%{SOURCE4}" "$b/%_userunitdir/cdemu-daemon.service"
 mkdir -p "$b/%_datadir/dbus-1/services"
 install -pm0644 "service-example/net.sf.cdemu.CDEmuDaemon.service" "$b/%_datadir/dbus-1/services/net.sf.cdemu.CDEmuDaemon.service"
 %find_lang %name
