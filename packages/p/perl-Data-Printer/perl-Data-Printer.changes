@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan 23 03:06:31 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.002001
+   see /usr/share/doc/packages/perl-Data-Printer/Changes
+
+  1.2.1    2024-01-21
+      BUG FIXES:
+          - Ensure that core boolean support doesn't fail on perls
+  	  older than 5.36 (Paul Evans)
+
+  1.2.0	2024-01-21
+      NEW FEATURES:
+          - support the core boolean type (true/false) in perl >= 5.36.0
+      OTHER:
+          - doc fixes and improvements (Florian Schlichting, Andre Klärner)
+
+-------------------------------------------------------------------
 Mon Jul 31 03:08:13 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.001001
