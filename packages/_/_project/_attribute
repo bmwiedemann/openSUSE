@@ -252,8 +252,8 @@ products:
     - x86_64
   - opensuse-registry-image:
     - x86_64
-#  - opensuse-rmt-server-image:
-#    - x86_64
+  - opensuse-rmt-server-image:
+    - x86_64
   - opensuse-rstudio-desktop:
     - x86_64
   - opensuse-rstudio-server:
@@ -389,8 +389,8 @@ products:
     - x86_64
   - rmt-nginx-image:
     - x86_64
-#  - rmt-server-image:
-#    - x86_64
+  - rmt-server-image:
+    - x86_64
   - ruby-3.3-image:
     - x86_64
   - rust-keylime-image:
