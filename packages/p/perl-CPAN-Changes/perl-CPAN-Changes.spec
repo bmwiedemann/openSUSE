@@ -1,7 +1,7 @@
 #
 # spec file for package perl-CPAN-Changes
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name CPAN-Changes
 Name:           perl-CPAN-Changes
-Version:        0.500002
+Version:        0.500003
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Parser for CPAN style change logs

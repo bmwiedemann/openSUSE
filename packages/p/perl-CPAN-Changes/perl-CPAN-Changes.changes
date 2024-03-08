@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 23 03:06:20 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.500003
+   see /usr/share/doc/packages/perl-CPAN-Changes/Changes
+
+  0.500003 - 2024-02-22
+    - fix calling ->name on an unnamed group
+    - fix ->set_changes call on groups
+
+-------------------------------------------------------------------
 Fri Oct 27 03:06:03 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.500002
