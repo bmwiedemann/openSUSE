@@ -123,4 +123,12 @@
     <comment>- Ignore test failure due to new unicode handling in the stack (forwarded request 1103425 from bnavigator)</comment>
     <requestid>1103426</requestid>
   </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>40a74099e0a95422df45eec4a1dde978</srcmd5>
+    <version>0.6.0</version>
+    <time>1709917842</time>
+    <user>anag+factory</user>
+    <comment>- Skip python39: no longer supported since ipython 8.19</comment>
+    <requestid>1156360</requestid>
+  </revision>
 </revisionlist>
