@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Software-License
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define cpan_name Software-License
 Name:           perl-Software-License
-Version:        0.104005
+Version:        0.104006
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Packages that provide templated software licenses
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/L/LE/LEONT/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
