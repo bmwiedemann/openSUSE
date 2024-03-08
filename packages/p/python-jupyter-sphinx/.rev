@@ -87,4 +87,13 @@
 - Drop jupyter-sphinx-pr233-pathlib.patch</comment>
     <requestid>1140292</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>479f016414326190623e216545e2ccec</srcmd5>
+    <version>0.5.3</version>
+    <time>1709917838</time>
+    <user>anag+factory</user>
+    <comment>- Skip python39: no longer supported since ipython 8.19
+</comment>
+    <requestid>1156383</requestid>
+  </revision>
 </revisionlist>

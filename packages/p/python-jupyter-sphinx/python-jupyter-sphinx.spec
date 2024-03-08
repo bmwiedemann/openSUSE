@@ -16,6 +16,7 @@
 #
 
 
+%define skip_python39 1
 Name:           python-jupyter-sphinx
 Version:        0.5.3
 Release:        0
