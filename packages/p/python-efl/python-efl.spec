@@ -111,7 +111,7 @@ Some examples of usage of python-efl.
 %prep
 %setup -q
 %if 0%{?suse_version} > 1599
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 # drop build date from doc to fix build-compare
 sed -i "s/\(html_last_updated_fmt = \).*/\\1None/" ./doc/conf.py
