@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DBD-mysql
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,10 @@ Release:        0
 Summary:        MySQL driver for the Perl5 Database Interface (DBI)
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DV/DVEEDEN/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Patch0:         perl-DBD-mysql-gcc14.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -49,7 +50,7 @@ are supported. Some rarely used functions are missing, mainly because
 no-one ever requested them. :-)
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -p1 -n %{cpan_name}-%{version}
 find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
 
 %build
