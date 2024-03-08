@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Mar  7 04:36:51 UTC 2024 - Joey Lee <jlee@suse.com>
+
+- Updated descriptors.tar.xz tarball, adding secure-boot feature tag
+  to the following firmware descriptor of qemu. For libvirt, the
+  enrolled-keys feature relies on secure-boot (bsc#1217422):
+
+        /usr/share/qemu/firmware/60-ovmf-x86_64-2m-ms.json
+        /usr/share/qemu/firmware/60-ovmf-x86_64-2m-opensuse.json
+        /usr/share/qemu/firmware/60-ovmf-x86_64-2m-suse.json
+        /usr/share/qemu/firmware/60-ovmf-x86_64-ms.json
+        /usr/share/qemu/firmware/60-ovmf-x86_64-opensuse.json
+        /usr/share/qemu/firmware/60-ovmf-x86_64-suse.json
+  
+  User should awares that the secure-boot feature of ovmf is NOT real
+  secure without SMM. Adding secure-boot is just for enabling
+  enrolled-keys. Otherwise preloaded keys ovmf can not be auto-selected
+  by libvirt.
+
+-------------------------------------------------------------------
 Mon Mar  4 11:39:30 UTC 2024 - Joey Lee <jlee@suse.com>
 
 - Add ovmf-OvmfPkg-SmbiosPlatformDxe-tweak-fallback-release-dat.patch
