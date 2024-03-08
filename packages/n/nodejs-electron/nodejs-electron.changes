@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar  8 05:33:05 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 28.2.6
+  * Fixed a crash that can result from some kinds of dynamic imports.
+  * Fixed saving traces from devtools performance panel.
+- Do not suppress compiler warnings in third_party/electron_node (bsc#1220571 rh#2142177)
+  * add node-compiler.patch
+
+-------------------------------------------------------------------
 Thu Feb 29 20:47:40 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 28.2.5

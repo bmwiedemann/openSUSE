@@ -221,7 +221,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        28.2.5
+Version:        28.2.6
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11%{AndZlib}
@@ -275,6 +275,7 @@ Patch78:        rdynamic.patch
 Patch79:        v8-hide-private-symbols.patch
 Patch80:        icon.patch
 Patch81:        disable-tests.patch
+Patch82:        node-compiler.patch
 
 # PATCHES to use system libs
 Patch1000:      do-not-build-libvulkan.so.patch
@@ -927,12 +928,7 @@ unset MALLOC_PERTURB_
 
 %if %{with lto} && %{without clang}
 %ifarch aarch64
-# reduce the threads for linking even more due to LTO eating ton of memory
-# [This is not used currently — these settings still get us OOM on 20GB memory]
-_link_threads=$(((%{jobs} - 6)))
-
-test "$_link_threads" -le 0 && _link_threads=1
-export LDFLAGS="$LDFLAGS -flto=$_link_threads --param ggc-min-expand=20 --param ggc-min-heapsize=32768 --param lto-max-streaming-parallelism=1 -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
+export LDFLAGS="$LDFLAGS -flto=auto --param ggc-min-expand=20 --param ggc-min-heapsize=32768 --param lto-max-streaming-parallelism=1 -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
 %else
 # x64 is fine with the the default settings (the machines have 30GB+ ram)
 export LDFLAGS="$LDFLAGS -flto=auto"
