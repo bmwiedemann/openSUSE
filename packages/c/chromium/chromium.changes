@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  8 13:16:51 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add Cr121-ffmpeg-new-channel-layout.patch to rollback more FFmpeg
+  changes so that FFmpeg 4 will work on Leap
+- Prepare for libxml 2.12
+
+-------------------------------------------------------------------
 Sat Mar  2 12:39:17 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Chromium 121.0.6167.184 (boo#1219118, boo#1219387, boo#1219661)
