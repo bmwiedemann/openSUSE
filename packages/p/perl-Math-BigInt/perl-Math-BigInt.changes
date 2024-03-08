@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jan  7 03:07:42 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.003002
+   see /usr/share/doc/packages/perl-Math-BigInt/CHANGES
+
+  2.003002 2024-01-05
+
+   * Improved interaction between Math::BigInt and the backend libraries.
+
+   * Much faster versions of _ilog2() and _clog2() implemented in the
+     Math::BigInt::Calc backend library. This should speed up bilog2() and
+     bclog2() in Math::BigInt when "Calc" is used as the backend liberary.
+
+-------------------------------------------------------------------
 Wed Dec 27 03:08:03 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.003001
