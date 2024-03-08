@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  7 12:44:28 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Removed patch:
+  * alternative-tzdb_dat.patch
+    + Remove the possibility to use the system timezone-java. It
+      creates more problems then it solves (bsc#1213470)
+
+-------------------------------------------------------------------
 Tue Feb 20 15:37:20 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

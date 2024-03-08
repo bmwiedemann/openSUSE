@@ -168,7 +168,6 @@ Patch20:        loadAssistiveTechnologies.patch
 Patch200:       ppc_stack_overflow_fix.patch
 #
 Patch302:       disable-doclint-by-default.patch
-Patch303:       alternative-tzdb_dat.patch
 #
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
@@ -278,7 +277,6 @@ Requires(posttrans): java-ca-certificates
 # Postun requires update-alternatives to uninstall tool update-alternatives.
 Requires(postun): update-alternatives
 Recommends:     mozilla-nss-sysinit
-Recommends:     tzdata-java8
 Obsoletes:      %{name}-accessibility
 %if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 # Standard JPackage base provides.
@@ -407,7 +405,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch -P 200 -p1
 
 %patch -P 302 -p1
-%patch -P 303 -p1
 
 # Extract systemtap tapsets
 
@@ -506,9 +503,6 @@ find %{imagesdir}/jdk -iname '*.debuginfo' -exec rm {} \;
 popd >& /dev/null
 
 export JAVA_HOME=$(pwd)/%{buildoutputdir}/%{imagesdir}/jdk
-
-# Copy tz.properties
-echo "sun.zoneinfo.dir=%{_datadir}/javazi" >> $JAVA_HOME/conf/tz.properties
 
 # cacerts are generated in runtime in openSUSE
 if [ -f %{buildoutputdir}/%{imagesdir}/jdk/lib/security/cacerts ]; then
@@ -892,7 +886,6 @@ fi
 %{_jvmdir}/%{sdkdir}/conf/security/policy/unlimited/default_local.policy
 %{_jvmdir}/%{sdkdir}/conf/security/policy/unlimited/default_US_export.policy
 %{_jvmdir}/%{sdkdir}/conf/sound.properties
-%{_jvmdir}/%{sdkdir}/conf/tz.properties
 %{_jvmdir}/%{sdkdir}/lib/desktop/jconsole.desktop
 %{_jvmdir}/%{sdkdir}/lib/jexec
 %{_jvmdir}/%{sdkdir}/lib/jfr/default.jfc
