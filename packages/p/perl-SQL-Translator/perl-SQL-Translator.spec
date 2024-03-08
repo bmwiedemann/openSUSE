@@ -18,9 +18,9 @@
 
 %define cpan_name SQL-Translator
 Name:           perl-SQL-Translator
-Version:        1.640.0
+Version:        1.650.0
 Release:        0
-%define cpan_version 1.64
+%define cpan_version 1.65
 #Upstream: Artistic-1.0 or GPL-1.0-or-later
 License:        (Artistic-1.0 OR GPL-1.0-or-later) AND GPL-2.0-only
 Summary:        SQL DDL transformations and more
@@ -37,12 +37,13 @@ BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.54
 BuildRequires:  perl(File::ShareDir) >= 1.0
 BuildRequires:  perl(File::ShareDir::Install)
 BuildRequires:  perl(JSON::MaybeXS) >= 1.003003
+BuildRequires:  perl(List::Util) >= 1.33
 BuildRequires:  perl(Moo) >= 1.000003
 BuildRequires:  perl(Package::Variant) >= 1.001001
 BuildRequires:  perl(Parse::RecDescent) >= 1.967009
 BuildRequires:  perl(Sub::Quote)
 BuildRequires:  perl(Test::Differences)
-BuildRequires:  perl(Test::Exception) >= 0.31
+BuildRequires:  perl(Test::Exception) >= 0.42
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Try::Tiny) >= 0.04
 BuildRequires:  perl(XML::Writer) >= 0.500
@@ -51,6 +52,7 @@ Requires:       perl(Carp::Clan)
 Requires:       perl(DBI) >= 1.54
 Requires:       perl(Digest::SHA)
 Requires:       perl(File::ShareDir) >= 1.0
+Requires:       perl(List::Util) >= 1.33
 Requires:       perl(Moo) >= 1.000003
 Requires:       perl(Package::Variant) >= 1.001001
 Requires:       perl(Parse::RecDescent) >= 1.967009
