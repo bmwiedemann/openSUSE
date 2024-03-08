@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar  8 12:59:07 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.5.1
+  * bump node to 16, remove extraneous stuff in ci by @timkpaine in
+    #223
+  * bump javascript deps by @timkpaine in #230
+  * add governance policies and finos tags by @timkpaine in #233
+  * Add template_label setting by @forest-d in #241
+  * CVE and License scanning for node by @TheJuanAndOnly99 in #236
+- Skip python39: jupyterlab requires ipython which dropped it.
+
+-------------------------------------------------------------------
 Thu Aug 17 15:54:54 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Suggest primary python package -- boo#1214354
