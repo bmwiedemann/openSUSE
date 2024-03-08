@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 14 03:10:35 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.90
+   see /usr/share/doc/packages/perl-Spreadsheet-Read/Changes
+
+  0.90	- 13 Feb 2024, H.Merijn Brand
+      * Consistent return value for parses ($type) on failure (issue#52)
+      * New options for xlscat (--no-empty, --clip=N)
+      * Support for hidden sheets
+
+-------------------------------------------------------------------
 Wed Jan  3 03:11:33 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.89
