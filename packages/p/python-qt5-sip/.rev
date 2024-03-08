@@ -89,4 +89,12 @@
     <comment></comment>
     <requestid>1117889</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>8ed131d4071130245573071c3bfe6d3e</srcmd5>
+    <version>12.13.0</version>
+    <time>1709917661</time>
+    <user>anag+factory</user>
+    <comment>Fix gcc14</comment>
+    <requestid>1155828</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  7 07:49:00 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add fix-build-gcc14.patch to fix build with GCC14 (boo#1221016)
+- Switch to %autosetup
+
+-------------------------------------------------------------------
 Sun Oct 15 13:56:21 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 12.13.0
