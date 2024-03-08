@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  8 14:01:30 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip python39: no longer supported since ipython 8.19
+  (via pythreejs)
+
+-------------------------------------------------------------------
 Wed Mar  8 03:36:10 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Shorten Summary (rpmlint)
