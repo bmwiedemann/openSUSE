@@ -1355,4 +1355,12 @@
     <comment>- use pkgconfig(icu-i18n) to use the current libicu. (jsc#PED-6193)</comment>
     <requestid>1113615</requestid>
   </revision>
+  <revision rev="161" vrev="3">
+    <srcmd5>4ec2d63d72f197d34708c668d66790ac</srcmd5>
+    <version>3.6.0</version>
+    <time>1709917696</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1156042</requestid>
+  </revision>
 </revisionlist>
