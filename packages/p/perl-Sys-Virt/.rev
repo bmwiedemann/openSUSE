@@ -1039,4 +1039,15 @@ new request.</comment>
     jsc#PED-6851</comment>
     <requestid>1139515</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>9d0935cb086e0293c107ff405cafca94</srcmd5>
+    <version>10.1.0</version>
+    <time>1709917708</time>
+    <user>anag+factory</user>
+    <comment>Updated perl bindings for libvirt 10.1.0
+
+- Update to 10.1.0
+  - Add all new APIs and constants in libvirt 10.1.0</comment>
+    <requestid>1155383</requestid>
+  </revision>
 </revisionlist>
