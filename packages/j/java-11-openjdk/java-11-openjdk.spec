@@ -233,7 +233,6 @@ Patch200:       ppc_stack_overflow_fix.patch
 Patch201:       fix_armv6_build.patch
 #
 Patch302:       disable-doclint-by-default.patch
-Patch303:       alternative-tzdb_dat.patch
 #
 Patch500:       activation-module.patch
 Patch501:       annotation-module.patch
@@ -350,7 +349,6 @@ Requires(post): update-alternatives
 Requires(posttrans): java-ca-certificates
 # Postun requires update-alternatives to uninstall tool update-alternatives.
 Requires(postun): update-alternatives
-Recommends:     tzdata-java8
 Obsoletes:      %{name}-accessibility
 %if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 # Standard JPackage base provides.
@@ -523,7 +521,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %endif
 
 %patch -P 302 -p1
-%patch -P 303 -p1
 
 %patch -P 500
 %patch -P 501
@@ -669,9 +666,6 @@ install -m 644 nss.cfg $JAVA_HOME/conf/security/
 
 # Install nss.fips.cfg: NSS configuration for global FIPS mode (crypto-policies)
 install -m 644 nss.fips.cfg $JAVA_HOME/conf/security/
-
-# Copy tz.properties
-echo "sun.zoneinfo.dir=%{_datadir}/javazi" >> $JAVA_HOME/conf/tz.properties
 
 %if %{add_back_javaee_modules}
 
@@ -1204,7 +1198,6 @@ fi
 %{_jvmdir}/%{sdkdir}/conf/security/policy/unlimited/default_local.policy
 %{_jvmdir}/%{sdkdir}/conf/security/policy/unlimited/default_US_export.policy
 %{_jvmdir}/%{sdkdir}/conf/sound.properties
-%{_jvmdir}/%{sdkdir}/conf/tz.properties
 %if ! %{with zero}
 %{_jvmdir}/%{sdkdir}/lib/classlist
 %endif
