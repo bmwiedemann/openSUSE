@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 07 20:27:13 UTC 2024 - antonio.teixeira@suse.com
+
+- Update to version 3.14.2:
+  * wayland_backend: Use a fake sequential timestamp
+  * wayland_backend: Implement fullscreening + keybinds
+  * wayland_backend: Fix 0 refresh in _Presented callback
+  * src/meson: include protocols_client_src
+  * Tell git to ignore subprojects from meson that aren't git submodules
+  * wayland_backend: allow unmapping subsurfaces
+  * wayland_backend: don't crash because of out of bounds accesses
+  * wayland_backend: Fix build
+  * wayland_backend: Handle --hdr-enabled correctly
+  * wayland_backend: Add new wayland backend
+
+-------------------------------------------------------------------
 Tue Jan 23 21:09:17 UTC 2024 - antonio.teixeira@suse.com
 
 - Update to version 3.14.0:
