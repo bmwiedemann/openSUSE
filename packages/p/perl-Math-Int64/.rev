@@ -7,4 +7,12 @@
     <comment>initial version required by https://build.opensuse.org/request/show/831049</comment>
     <requestid>832968</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0ba8bbbe433633e7d61e7d513e467369</srcmd5>
+    <version>0.570.0</version>
+    <time>1709917738</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1156066</requestid>
+  </revision>
 </revisionlist>
