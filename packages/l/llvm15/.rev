@@ -170,4 +170,18 @@ without RUNPATH on libc++.so.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1146032</requestid>
   </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>0db9bb56e3d19008a0b883847a3c3581</srcmd5>
+    <version>15.0.7</version>
+    <time>1709917710</time>
+    <user>anag+factory</user>
+    <comment>- Explicitly define PYTHON3_EXECUTABLE, since python 3.11 is being
+  pulled in by cmake in SLE-15-SP6.
+- Fix PowerPC triples: use powerpc[64[le]] instead of ppc[64[le]].
+- Require 8 GB memory for 64-bit architectures to prevent OOM.
+- Disable test that fails on ppc64le.
+- Use %patch -P N instead of deprecated %patchN.
+</comment>
+    <requestid>1156031</requestid>
+  </revision>
 </revisionlist>
