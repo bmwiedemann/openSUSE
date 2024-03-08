@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jan 30 03:07:00 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.803
+   see /usr/share/doc/packages/perl-IO-Async/Changes
+
+  0.803   2024-01-29
+          [CHANGES]
+           * Module style updates:
+              + Use perl v5.14 for `//` operator and `package NAME VER` syntax
+              + Updated Pod style
+              + Swapped unit tests from `Test::More` to `Test2::V0`
+              + Removed several now-unnecessary test-time dependencies
+
+          [BUGFIXES]
+           * Take the first name for each aliased signal in case of aliased
+             names (RT145759)
+
+-------------------------------------------------------------------
 Wed Mar 22 07:19:51 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - add missing build requires Test2::V0
