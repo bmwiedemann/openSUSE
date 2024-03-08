@@ -193,4 +193,12 @@
     <comment>- Add papermill-pr779-moto5.patch gh#nteract/papermill#779</comment>
     <requestid>1146564</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>948dc78308f6fe98b2e66f30565d1c69</srcmd5>
+    <version>2.5.0</version>
+    <time>1709917846</time>
+    <user>anag+factory</user>
+    <comment>- Skip testing python39: no longer supported since ipython 8.19</comment>
+    <requestid>1156372</requestid>
+  </revision>
 </revisionlist>
