@@ -1982,4 +1982,12 @@
     <comment>Fixes bsc#1219791 - [virt-manager][aarch64] Error launching details: name 'log' is not defined</comment>
     <requestid>1146269</requestid>
   </revision>
+  <revision rev="251" vrev="17">
+    <srcmd5>4b7c2b0fd77e7391ddfa0141fb6e05f1</srcmd5>
+    <version>4.1.0</version>
+    <time>1709917647</time>
+    <user>anag+factory</user>
+    <comment>Disable mdev tests with introduction of libvirt 10.1.0. This a temporary work around.</comment>
+    <requestid>1156150</requestid>
+  </revision>
 </revisionlist>
