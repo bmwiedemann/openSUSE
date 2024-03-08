@@ -55,4 +55,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148919</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>7f5b80f97910ce779fc71f7de7e23dda</srcmd5>
+    <version>2.2~pre2</version>
+    <time>1709917775</time>
+    <user>anag+factory</user>
+    <comment>missing sysmacros include fixed</comment>
+    <requestid>1156223</requestid>
+  </revision>
 </revisionlist>

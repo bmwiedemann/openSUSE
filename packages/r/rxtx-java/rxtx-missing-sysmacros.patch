@@ -1,0 +1,11 @@
+diff -up rxtx-2.2pre2/src/SerialImp.c.orig rxtx-2.2pre2/src/SerialImp.c
+--- rxtx-2.2pre2/src/SerialImp.c.orig 2024-03-07 15:23:09.969976021 +0100
++++ rxtx-2.2pre2/src/SerialImp.c      2024-03-07 15:25:10.089430040 +0100
+@@ -148,6 +148,7 @@
+ #endif /* LIBLOCKDEV */
+ 
+ extern int errno;
++#include <sys/sysmacros.h>
+ 
+ #include "SerialImp.h"
+ 
