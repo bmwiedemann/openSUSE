@@ -1,7 +1,7 @@
 #
 # spec file for package 2048-cli
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -38,9 +38,7 @@ keys in four different directions. When two tiles with the same number
 touch, they will merge into one.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} $(pkg-config --cflags ncurses)"

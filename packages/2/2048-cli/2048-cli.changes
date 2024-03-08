@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  8 07:46:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows us to eliminate the use of
+  deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Jan 17 15:05:08 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Generalize description, and adjust summary grammar.
