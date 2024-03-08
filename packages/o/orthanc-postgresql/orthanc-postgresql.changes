@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar  7 20:23:33 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- fix build for Leap < 15.6 (no gcc13)
+
+-------------------------------------------------------------------
 Thu Mar  7 15:16:35 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Build orthanc-postgresql with gcc13 on Leap 15
+
+-------------------------------------------------------------------
+Wed Feb 21 13:14:22 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- version 6.1
+  * Fixed handling of MaximumStorageSize & MaximumPatientCount.
 
 -------------------------------------------------------------------
 Wed Feb 14 11:12:43 UTC 2024 - Axel Braun <axel.braun@gmx.de>

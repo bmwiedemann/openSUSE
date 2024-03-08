@@ -21,7 +21,7 @@ Name:           orthanc-postgresql
 Summary:        Database plugin for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Databases/Tools
-Version:        6.0
+Version:        6.1
 Release:        0
 URL:            https://orthanc-server.com
 Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancPostgreSQL-%{version}.tar.gz
@@ -29,7 +29,7 @@ Source1:        orthanc-postgresql-readme.SUSE
 Source2:        postgresql.json
 BuildRequires:  cmake
 BuildRequires:  e2fsprogs-devel
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150500
 BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++
@@ -70,7 +70,7 @@ PostgreSQL Database plugin for Orthanc, replaces SQLite database
 %autosetup -n OrthancPostgreSQL-%{version}
 
 %build
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150500
 export CC=gcc-13
 export CXX=g++-13
 %endif
