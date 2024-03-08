@@ -25,13 +25,15 @@
 %endif
 
 Name:           bpftrace
-Version:        0.20.1
+Version:        0.20.2
 Release:        0
 Summary:        High-level tracing language for Linux eBPF
 License:        Apache-2.0
 Group:          Development/Tools/Debuggers
 URL:            https://github.com/iovisor/bpftrace
 Source:         https://github.com/iovisor/bpftrace/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-build-issue-when-using-UAPI-of-older-kernel.patch -- based on PR 2977
+Patch1:         https://github.com/bpftrace/bpftrace/pull/2977.patch#/fix-build-issue-when-using-UAPI-of-older-kernel.patch
 BuildRequires:  binutils
 BuildRequires:  binutils-devel
 BuildRequires:  bison

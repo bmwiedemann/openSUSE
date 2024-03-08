@@ -1,0 +1,58 @@
+From f806ebc9ec9fadab368267ba910c4ca8c7327f59 Mon Sep 17 00:00:00 2001
+From: Shung-Hsi Yu <shung-hsi.yu@suse.com>
+Date: Thu, 1 Feb 2024 15:22:18 +0800
+Subject: [PATCH] Fix build issue with UAPI header of older kernel
+
+322cdfa7 ("Fixup generated BTF for older kernels") allowed the generated
+BTF to work stable v5.4 kernel. However, the newly added btf_type_size()
+requires definition of struct btf_decl_tag (v5.16) and struct btf_enum64
+(v6.0), which were not available in UAPI header of v5.4 kernel; which
+will cause build to fail.
+
+Similar to libbpf/libbpf@85f8b7c, we can fix this by treating the
+structs as an array, and thus calculate their respective size without
+require their definition being present in the kernel UAPI header.
+
+Signed-off-by: Shung-Hsi Yu <shung-hsi.yu@suse.com>
+---
+ src/bpfbytecode.cpp | 20 ++++++++++++++++++--
+ 1 file changed, 18 insertions(+), 2 deletions(-)
+
+diff --git a/src/bpfbytecode.cpp b/src/bpfbytecode.cpp
+index f8d5d03483e..7ef8d2cb703 100644
+--- a/src/bpfbytecode.cpp
++++ b/src/bpfbytecode.cpp
+@@ -49,7 +49,16 @@ static int btf_type_size(const struct btf_type *t)
+     case BTF_KIND_ENUM:
+       return base_size + vlen * sizeof(struct btf_enum);
+     case BTF_KIND_ENUM64:
+-      return base_size + vlen * sizeof(struct btf_enum64);
++      /* struct btf_enum64 is not available in UAPI header until v6.0,
++       * calculate its size with array instead. Its definition is:
++       *
++       * struct btf_enum64 {
++       *	__u32	name_off;
++       *	__u32	val_lo32;
++       *	__u32	val_hi32;
++       * };
++       */
++      return base_size + vlen * sizeof(__u32[3]);
+     case BTF_KIND_ARRAY:
+       return base_size + sizeof(struct btf_array);
+     case BTF_KIND_STRUCT:
+@@ -62,7 +71,14 @@ static int btf_type_size(const struct btf_type *t)
+     case BTF_KIND_DATASEC:
+       return base_size + vlen * sizeof(struct btf_var_secinfo);
+     case BTF_KIND_DECL_TAG:
+-      return base_size + sizeof(struct btf_decl_tag);
++      /* struct btf_decl_tag is not available until v5.16. Use the same trick
++       * as btf_enum64 above. Its definition is:
++       *
++       * struct btf_decl_tag {
++       *  __s32   component_idx;
++       * };
++       */
++      return base_size + sizeof(__s32);
+     default:
+       return -EINVAL;
+   }

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar  8 06:42:00 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update to 0.20.2 
+    * Fix security hole checking unpacked kernel headers  
+- Add fix-build-issue-when-using-UAPI-of-older-kernel.patch to
+  fix build issue on pre-v6.0 kernel
+
+-------------------------------------------------------------------
 Wed Jan 31 07:31:21 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Change LLVM version macro to the cleaner alternative suggested in
