@@ -131,4 +131,12 @@
   * Fix bugs (forwarded request 1096458 from hillwood)</comment>
     <requestid>1096459</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f83986b12abbdc0729452b7c97cd7f2f</srcmd5>
+    <version>5.25.15</version>
+    <time>1709917706</time>
+    <user>anag+factory</user>
+    <comment>* Remove unit files, they are useless for dde (forwarded request 1156349 from hillwood)</comment>
+    <requestid>1156350</requestid>
+  </revision>
 </revisionlist>

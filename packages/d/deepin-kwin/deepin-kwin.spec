@@ -22,7 +22,7 @@
 %global wayland (0%{?suse_version} >= 1330)
 
 Name:           deepin-kwin
-Version:        5.25.5
+Version:        5.25.15
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -32,7 +32,7 @@ Summary:        Deepin Window Manager
 License:        GPL-3.0-or-later
 Group:          System/GUI/Deepin
 Url:            https://github.com/linuxdeepin/deepin-kwin/
-Source0:        https://github.com/linuxdeepin/deepin-kwin//archive/%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/linuxdeepin/deepin-kwin/archive/%{version}/%{name}-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE
 Patch101:       0001-Export-consistent-hostname-as-XAUTHLOCALHOSTNAME.patch
 BuildRequires:  extra-cmake-modules >= 0.0.11
@@ -53,9 +53,9 @@ BuildRequires:  hwdata
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
-BuildRequires:  cmake(Breeze) >= 5.9.0
+BuildRequires:  (cmake(Breeze) >= 5.9.0 with cmake(Breeze) < 6)
 BuildRequires:  cmake(DWayland)
-BuildRequires:  cmake(KDecoration2) >= %{_plasma5_version}
+BuildRequires:  (cmake(KDecoration2) >= %{_plasma5_version} with cmake(KDecoration2) < 6)
 BuildRequires:  cmake(KF5Activities) >= %{kf5_version}
 BuildRequires:  cmake(KF5Completion) >= %{kf5_version}
 BuildRequires:  cmake(KF5Config) >= %{kf5_version}
@@ -83,7 +83,7 @@ BuildRequires:  cmake(KF5Wayland) >= %{kf5_version}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
 BuildRequires:  cmake(KF5XmlGui) >= %{kf5_version}
-BuildRequires:  cmake(KScreenLocker) >= %{_plasma5_version}
+BuildRequires:  (cmake(KScreenLocker) >= %{_plasma5_version} with cmake(KScreenLocker) < 6)
 BuildRequires:  cmake(PlasmaWaylandProtocols)
 BuildRequires:  cmake(QAccessibilityClient)
 BuildRequires:  cmake(Qt5Concurrent) >= %{qt5_version}
@@ -267,8 +267,8 @@ sed -i 's#/usr/bin/env python3#/usr/bin/python3#' %{buildroot}%{_kf5_sharedir}/k
 %{_kf5_qmldir}/org/deepin/kwin/decoration/qmldir
 %dir %{_kf5_qmldir}/org/kde/
 %{_kf5_qmldir}/org/kde/%{name}
-%{_userunitdir}/%{name}_wayland.service
-%{_userunitdir}/%{name}_x11.service
+#%{_userunitdir}/%{name}_wayland.service
+#%{_userunitdir}/%{name}_x11.service
 
 %dir %{_datadir}/doc/HTML
 %dir %{_datadir}/doc/HTML/en
