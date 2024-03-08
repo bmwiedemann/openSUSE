@@ -1,7 +1,7 @@
 #
 # spec file for package 4store
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,8 +63,7 @@ Requires:       lib4store%{major} = %{version}
 This package provides 4store RDF storage development files.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 # configure script is not shipped since v1.1.6, generation is required
