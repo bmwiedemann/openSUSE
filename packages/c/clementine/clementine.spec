@@ -49,7 +49,7 @@ Patch1:         clementine-udisks-headers.patch
 Patch2:         clementine-moodbar-fpic.patch
 # PATCH-FEATURE-OPENSUSE
 Patch6:         use_system_qxtglobalshortcut.patch
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || (0%{?suse_version} == 1500 && 0%{?sle_version} > 150500)
 # Patch fix build with recent protobuf
 Patch3:         clementine-cpp17-force.patch
 # Patch fix ix86 build for missing protobuf link libs

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  7 14:49:26 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Fix build error with protobuf 25 in Leap 15.6
+  * Apply clementine-cpp17-force.patch and clementine-ix86-build-fix.patch
+    to Leap 15.6 build
+
+-------------------------------------------------------------------
 Wed Feb 28 07:38:40 UTC 2024 - Dave Plater <davejplater@gmail.com>
 
 - Allow use of internal taglib until taglib2 build issue is solved
