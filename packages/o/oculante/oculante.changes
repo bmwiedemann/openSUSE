@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar  8 10:38:52 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.8.14:
+  + Bug Fixes:
+    - Enable hotkey copy and paste
+    - Enable clipboard support on wayland
+    - Prevent image from flickering at the first frame
+    - Make sure window size is not larger than window
+    - Disable heif image support by default due to non-static
+      linking
+  + Features:
+    - use .config location on unix for storing settings
+    - Add perspective cropping with UI. You can now de-warp scans
+      or similar into a nice rectangular picture. 
+
+-------------------------------------------------------------------
 Sun Feb 25 20:17:46 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.8.11:
