@@ -80,4 +80,13 @@
 </comment>
     <requestid>1056889</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>674283fa0bb58f5362318f1b08ec96c7</srcmd5>
+    <version>0.35.1</version>
+    <time>1709917845</time>
+    <user>anag+factory</user>
+    <comment>- Skip python39: no longer supported since ipython 8.19 (via
+  ipykernel)</comment>
+    <requestid>1156369</requestid>
+  </revision>
 </revisionlist>
