@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  6 12:31:04 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix build with --nochecks
+
+-------------------------------------------------------------------
 Wed Feb 28 14:31:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.28.2 (bsc#1219870, CVE-2024-24826, bsc#1219871,

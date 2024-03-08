@@ -127,14 +127,6 @@ export CFLAGS="%{optflags} $(getconf LFS_CFLAGS)"
 %install
 %cmake_install
 
-%check
-%ifarch aarch64 ppc64 ppc64le ppc
-# bugfixes.github.test_CVE_2018_12265.AdditionOverflowInLoaderExifJpeg is broken on some archs
-# See: https://github.com/Exiv2/exiv2/issues/933
-export disabled_tests="-E bugfixTests"
-%endif
-%ctest -- -j1 $disabled_tests
-
 for t in \
     addmoddel \
     convert-test \
@@ -176,6 +168,14 @@ done
 
 %find_lang exiv2
 %fdupes -s %{buildroot}%{_docdir}/libexiv2
+
+%check
+%ifarch aarch64 ppc64 ppc64le ppc
+# bugfixes.github.test_CVE_2018_12265.AdditionOverflowInLoaderExifJpeg is broken on some archs
+# See: https://github.com/Exiv2/exiv2/issues/933
+export disabled_tests="-E bugfixTests"
+%endif
+%ctest -- -j1 $disabled_tests
 
 %post -n libexiv2-28 -p /sbin/ldconfig
 %postun -n libexiv2-28 -p /sbin/ldconfig
