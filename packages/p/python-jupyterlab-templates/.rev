@@ -110,4 +110,19 @@
     <comment>- Suggest primary python package -- boo#1214354</comment>
     <requestid>1104443</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c26892a8d4e3b80095ba7f7bfadd1f94</srcmd5>
+    <version>0.5.1</version>
+    <time>1709917837</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.5.1
+  * bump node to 16, remove extraneous stuff in ci by @timkpaine in
+    #223
+  * bump javascript deps by @timkpaine in #230
+  * add governance policies and finos tags by @timkpaine in #233
+  * Add template_label setting by @forest-d in #241
+  * CVE and License scanning for node by @TheJuanAndOnly99 in #236
+- Skip python39: jupyterlab requires ipython which dropped it.</comment>
+    <requestid>1156356</requestid>
+  </revision>
 </revisionlist>

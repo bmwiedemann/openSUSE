@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyterlab-templates
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
-%define pyver 0.5.0
-%define distver 0.5
+%define skip_python39 1
+%define pyver 0.5.1
+%define distver 0.5.1
 Name:           python-jupyterlab-templates
 Version:        %{pyver}
 Release:        0
