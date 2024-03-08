@@ -1,7 +1,7 @@
 #
 # spec file for package perl-POSIX-strftime-Compiler
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %define cpan_name POSIX-strftime-Compiler
 Name:           perl-POSIX-strftime-Compiler
-Version:        0.450.0
+Version:        0.460.0
 Release:        0
-%define cpan_version 0.45
+%define cpan_version 0.46
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        GNU C library compatible strftime for loggers and servers
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -29,9 +29,10 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Module::Build)
 BuildRequires:  perl(Module::Build::Tiny) >= 0.035
 BuildRequires:  perl(Test::More) >= 0.98
-Provides:       perl(POSIX::strftime::Compiler) = 0.450.0
+Provides:       perl(POSIX::strftime::Compiler) = %{version}
 %define         __perllib_provides /bin/true
 %{perl_requires}
 # MANUAL BEGIN
