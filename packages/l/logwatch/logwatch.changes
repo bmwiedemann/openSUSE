@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  1 11:10:09 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sat Sep 23 11:34:44 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - Add Requires for perl-HTML-Parser, see boo#1215630
