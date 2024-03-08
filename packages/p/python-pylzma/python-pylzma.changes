@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  8 04:17:08 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macro.
+- Less globs in %files.
+
+-------------------------------------------------------------------
 Wed Sep 15 12:08:00 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Fix the patch metadata in the SPEC file.

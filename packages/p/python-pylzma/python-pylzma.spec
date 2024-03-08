@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylzma
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 %define oname   pylzma
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pylzma
 Version:        0.5.0
 Release:        0
 Summary:        Python bindings for the LZMA compression library
 License:        LGPL-2.1-only
-Group:          Development/Languages/Python
 URL:            https://github.com/fancycode/pylzma
 Source0:        https://github.com/fancycode/pylzma/archive/v%{version}.tar.gz
 # PATCH-FIX-UPSTREAM python-pylzma-test-python3.patch gh#fancycode/pylzma#76 mcepl@suse.com
 # use python3 syntax in test_usage.py
 Patch0:         python-pylzma-test-python3.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %python_subpackages
@@ -40,17 +40,19 @@ PyLZMA provides a platform independent way to read and write data
 that has been compressed or can be decompressed by the LZMA library.
 
 %prep
-%setup -q -n %{oname}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{oname}-%{version}
+# No .dev0 builds please
+rm -rf pylzma.egg-info setup.cfg
 
 # Remove Shebang
 sed -i '1d' py7zlib.py
 
 %build
-%python_build
+echo %{version} > RELEASE-VERSION
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -59,7 +61,9 @@ sed -i '1d' py7zlib.py
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitearch}/*
-%{python_sitearch}/%{oname}*
+%{python_sitearch}/py7zlib.py
+%pycache_only %{python_sitearch}/__pycache__/py7zlib.*.py*
+%{python_sitearch}/%{oname}.cpython-*.so
+%{python_sitearch}/%{oname}-%{version}.dist-info
 
 %changelog
