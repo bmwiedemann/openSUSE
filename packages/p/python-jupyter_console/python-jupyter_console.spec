@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter_console
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%define skip_python39 1
 Name:           python-jupyter_console
 Version:        6.6.3
 Release:        0
@@ -51,7 +52,7 @@ Requires:       python-pyzmq >= 17
 Requires:       python-traitlets >= 5.4
 Requires:       ((python-jupyter-core >= 4.12 with python-jupyter-core < 5.0) or python-jupyter-core >= 5.1)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       python-jupyter-console = %{version}-%{release}
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 Provides:       jupyter-jupyter_console = %{version}-%{release}
