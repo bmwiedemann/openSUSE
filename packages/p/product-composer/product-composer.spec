@@ -17,7 +17,7 @@
 
 
 Name:           product-composer
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        Product Composer
 License:        GPL-2.0-or-later
@@ -31,6 +31,7 @@ BuildRequires:  python3-wheel
 Requires:       python3-PyYAML
 Requires:       python3-pydantic
 Requires:       python3-rpm
+Requires:       python3-zstandard
 # build for signdummy
 Requires:       build
 Requires:       createrepo

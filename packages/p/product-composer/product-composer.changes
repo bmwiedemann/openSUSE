@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar  8 10:40:48 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.4.2
+  * generate also diskusage data now (done by mls)
+  * code cleanup
+- add missing dependency to python-zstandard
+
+-------------------------------------------------------------------
 Thu Mar  7 15:49:18 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.4.1
