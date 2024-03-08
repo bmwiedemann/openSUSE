@@ -98,4 +98,15 @@
     <comment></comment>
     <requestid>1145357</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>97943b42348f597d4491bfc3db102419</srcmd5>
+    <version>23.48.27912.11</version>
+    <time>1709917817</time>
+    <user>anag+factory</user>
+    <comment>- fixed typo in Requires ... 
+
+- adding recommends to libOpenCL1, since the driver doesn't make any
+  sense without any libOpenCL installed (bsc#1219781)</comment>
+    <requestid>1156365</requestid>
+  </revision>
 </revisionlist>
