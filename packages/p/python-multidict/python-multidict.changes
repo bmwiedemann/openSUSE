@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Mar  7 10:03:00 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 6.0.5 (bsc#1221014):
+  * Upgraded the C-API macros that have been deprecated in Python 3.9
+    and later removed in 3.13 -- by :user:`iemelyanov`.
+  * Related issues and pull requests on GitHub: :issue:`862`,
+    :issue:`864`, :issue:`868`, :issue:`898`.
+  * Reverted to using the public argument parsing API
+    :c:func:`PyArg_ParseTupleAndKeywords` under Python 3.12 -- by
+    :user:`charles-dyfis-net` and :user:`webknjaz`.
+  * The effect is that this change prevents build failures with clang
+    16.9.6 and gcc-14 reported in :issue:`926`. It also fixes a
+    segmentation fault crash caused by passing keyword arguments to
+    :py:meth:`MultiDict.getall() <multidict.MultiDict.getall>`
+    discovered by :user:`jonaslb` and :user:`hroncok` while examining
+    the problem.
+  * Related issues and pull requests on GitHub: :issue:`862`,
+    :issue:`909`, :issue:`926`, :issue:`929`.
+  * Fixed a SystemError: null argument to internal routine error on a
+    MultiDict.items().isdisjoint() call when using C Extensions.
+  * Related issues and pull requests on GitHub: :issue:`927`.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:28:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

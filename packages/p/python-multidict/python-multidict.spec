@@ -1,7 +1,7 @@
 #
 # spec file for package python-multidict
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 %{?sle15_python_module_pythons}
 Name:           python-multidict
-Version:        6.0.4
+Version:        6.0.5
 Release:        0
 Summary:        Multidict implementation
 License:        Apache-2.0
 URL:            https://github.com/aio-libs/multidict
 Source:         https://files.pythonhosted.org/packages/source/m/multidict/multidict-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %python_subpackages
@@ -41,24 +40,27 @@ arguments, etc.
 The code was extracted from the aiohttp library.
 
 %prep
-%setup -q -n multidict-%{version}
+%autosetup -p1 -n multidict-%{version}
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 # remove the extra pytest opts
-rm setup.cfg
-%pytest_arch
+rm pytest.ini
+# test_circular_imports try to import from the system and the module
+# is installed in the buildroot at this point.
+%pytest_arch --ignore tests/test_circular_imports.py
 
 %files %{python_files}
 %license LICENSE
 %doc docs/changes.rst README.rst
-%{python_sitearch}/*
+%{python_sitearch}/multidict
+%{python_sitearch}/multidict-%{version}*-info
 
 %changelog
