@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  8 13:26:06 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.2.4
+  * Fix extension discovery warning #31 (@Zsailer)
+- Stop testing on python39: no pytest-jupyter anymore
+
+-------------------------------------------------------------------
 Thu Aug 17 16:06:14 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Suggest primary python package -- boo#1214354
