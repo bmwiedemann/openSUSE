@@ -36,6 +36,7 @@ BuildRequires:  pkgconfig(libva)
 Requires:       libigc1
 Requires:       libigdfcl1
 Requires:       libopencl-clang14
+Recommends:     libOpenCL1
 ExclusiveArch:  x86_64
 
 %description
