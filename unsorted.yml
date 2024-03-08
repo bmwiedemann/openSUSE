@@ -1357,6 +1357,7 @@ unsorted:
   - bind-modules-sqlite3 
   - bindfs 
   - bing 
+  - binutils 
   - binutils-devel 
   - binutils-devel-32bit 
   - binutils-gold 
@@ -3205,6 +3206,8 @@ unsorted:
   - dkgpg 
   - dkimproxy 
   - dkms 
+  - dkms-bash-completion 
+  - dkms-zsh-completion 
   - dlpack-devel 
   - dlt-daemon 
   - dlt-daemon-devel 
@@ -4579,6 +4582,7 @@ unsorted:
   - gcad3d 
   - gcal 
   - gcal-lang 
+  - gcalcli 
   - gcc 
   - gcc-32bit 
   - gcc-PIE 
@@ -4619,6 +4623,7 @@ unsorted:
   - gcc12-objc 
   - gcc12-objc-32bit 
   - gcc12-testresults 
+  - gcc13 
   - gcc13-32bit 
   - gcc13-PIE 
   - gcc13-ada 
@@ -4633,6 +4638,7 @@ unsorted:
   - gcc13-go 
   - gcc13-go-32bit 
   - gcc13-info 
+  - gcc13-locale 
   - gcc13-m2 
   - gcc13-m2-32bit 
   - gcc13-obj-c++ 
@@ -6937,6 +6943,7 @@ unsorted:
   - glib2-doc 
   - glib2-tests-devel 
   - glib2-tools-32bit 
+  - glibc-devel 
   - glibc-devel-32bit 
   - glibc-devel-static 
   - glibc-devel-static-32bit 
@@ -9264,10 +9271,12 @@ unsorted:
   - juniversalchardet 
   - juniversalchardet-javadoc 
   - jupyter-anywidget 
+  - jupyter-bokeh 
   - jupyter-bqplot-jupyterlab 
   - jupyter-bqplot-notebook 
   - jupyter-cadabra2-kernel 
   - jupyter-collaboration 
+  - jupyter-dash 
   - jupyter-doc 
   - jupyter-ipydatawidgets 
   - jupyter-ipydatawidgets-jupyterlab 
@@ -11303,6 +11312,7 @@ unsorted:
   - libart_lgpl_2-2 
   - libasan4 
   - libasan4-32bit 
+  - libasan8 
   - libasan8-32bit 
   - libasan8-gcc12 
   - libasan8-gcc12-32bit 
@@ -12013,6 +12023,8 @@ unsorted:
   - libct4 
   - libctemplate-devel 
   - libctemplate3 
+  - libctf-nobfd0 
+  - libctf0 
   - libcthreads-devel 
   - libcthreads1 
   - libctl-devel 
@@ -12462,7 +12474,7 @@ unsorted:
   - libflatbuffers23_5_26 
   - libflickcurl-devel 
   - libflickcurl0 
-  - libflint18 
+  - libflint19 
   - libflite1 
   - libflite_cmu_grapheme_lang1 
   - libflite_cmu_grapheme_lex1 
@@ -13182,6 +13194,7 @@ unsorted:
   - libhugetlbfs-devel 
   - libhugetlbfs-tests 
   - libhunspell-1_7-0-32bit 
+  - libhwasan0 
   - libhwasan0-gcc13 
   - libhwloc15 
   - libhwy1-32bit 
@@ -13335,6 +13348,7 @@ unsorted:
   - libite-devel 
   - libite5 
   - libiterm-devel 
+  - libitm1 
   - libitm1-32bit 
   - libitm1-gcc12 
   - libitm1-gcc12-32bit 
@@ -13648,6 +13662,7 @@ unsorted:
   - liblrdf-devel 
   - liblrdf2-32bit 
   - liblrs1 
+  - liblsan0 
   - liblsan0-gcc12 
   - liblsan0-gcc13 
   - liblsan0-gcc7 
@@ -15109,6 +15124,7 @@ unsorted:
   - libreoffice-l10n-hi 
   - libreoffice-l10n-hr 
   - libreoffice-l10n-hsb 
+  - libreoffice-l10n-hy 
   - libreoffice-l10n-id 
   - libreoffice-l10n-is 
   - libreoffice-l10n-ka 
@@ -15821,6 +15837,7 @@ unsorted:
   - libtrng4-25 
   - libts0-32bit 
   - libtsan0 
+  - libtsan2 
   - libtsan2-gcc12 
   - libtsan2-gcc13 
   - libtsk19 
@@ -16409,6 +16426,7 @@ unsorted:
   - libxcb1-32bit 
   - libxcfun2 
   - libxclass-0_9_2 
+  - libxcrypt-devel 
   - libxcrypt-devel-32bit 
   - libxcrypt-devel-static 
   - libxcvt 
@@ -16691,6 +16709,7 @@ unsorted:
   - linux-atm 
   - linux-atm-devel 
   - linux-ftools 
+  - linux-glibc-devel 
   - linux-libertine-fonts 
   - linux32 
   - linux_logo 
@@ -23406,6 +23425,7 @@ unsorted:
   - python310-amqpstorm 
   - python310-ana 
   - python310-aniso8601 
+  - python310-annotated-types 
   - python310-annoy 
   - python310-ansel 
   - python310-ansi2html 
@@ -24363,6 +24383,7 @@ unsorted:
   - python310-et_xmlfile 
   - python310-etcd 
   - python310-ethtool 
+  - python310-eval-type-backport 
   - python310-evdev 
   - python310-eventlet 
   - python310-evilunit 
@@ -24809,6 +24830,7 @@ unsorted:
   - python310-junitxml 
   - python310-junos-eznc 
   - python310-jupyter 
+  - python310-jupyter-bokeh 
   - python310-jupyter-client 
   - python310-jupyter-collaboration 
   - python310-jupyter-core 
@@ -26960,6 +26982,7 @@ unsorted:
   - python311-amqpstorm 
   - python311-ana 
   - python311-aniso8601 
+  - python311-annotated-types 
   - python311-annoy 
   - python311-ansel 
   - python311-ansi2html 
@@ -27888,6 +27911,7 @@ unsorted:
   - python311-et_xmlfile 
   - python311-etcd 
   - python311-ethtool 
+  - python311-eval-type-backport 
   - python311-evdev 
   - python311-eventlet 
   - python311-evilunit 
@@ -28308,6 +28332,7 @@ unsorted:
   - python311-junitxml 
   - python311-junos-eznc 
   - python311-jupyter 
+  - python311-jupyter-bokeh 
   - python311-jupyter-client 
   - python311-jupyter-collaboration 
   - python311-jupyter-core 
@@ -30396,6 +30421,7 @@ unsorted:
   - python312-amqpstorm 
   - python312-ana 
   - python312-aniso8601 
+  - python312-annotated-types 
   - python312-annoy 
   - python312-ansel 
   - python312-ansi2html 
@@ -31345,6 +31371,7 @@ unsorted:
   - python312-et_xmlfile 
   - python312-etcd 
   - python312-ethtool 
+  - python312-eval-type-backport 
   - python312-evdev 
   - python312-eventlet 
   - python312-evilunit 
@@ -31787,6 +31814,7 @@ unsorted:
   - python312-junitxml 
   - python312-junos-eznc 
   - python312-jupyter 
+  - python312-jupyter-bokeh 
   - python312-jupyter-client 
   - python312-jupyter-collaboration 
   - python312-jupyter-core 
@@ -32605,6 +32633,7 @@ unsorted:
   - python312-pyparsing 
   - python312-pyperclip 
   - python312-pyperf 
+  - python312-pypet 
   - python312-pypi-search 
   - python312-pypiserver 
   - python312-pypng 
@@ -32679,6 +32708,7 @@ unsorted:
   - python312-pytest-echo 
   - python312-pytest-env 
   - python312-pytest-error-for-skips 
+  - python312-pytest-examples 
   - python312-pytest-expect 
   - python312-pytest-filter-subpackage 
   - python312-pytest-fixture-config 
@@ -33901,6 +33931,7 @@ unsorted:
   - python39-amqpstorm 
   - python39-ana 
   - python39-aniso8601 
+  - python39-annotated-types 
   - python39-annoy 
   - python39-ansel 
   - python39-ansi2html 
@@ -34408,7 +34439,6 @@ unsorted:
   - python39-bottle 
   - python39-bowler 
   - python39-bpython 
-  - python39-bqplot 
   - python39-bracex 
   - python39-branca 
   - python39-breathe 
@@ -34475,7 +34505,6 @@ unsorted:
   - python39-chardet 
   - python39-charset-normalizer 
   - python39-chart-studio 
-  - python39-chartify 
   - python39-check-manifest 
   - python39-checkdmarc 
   - python39-cheroot 
@@ -34606,7 +34635,6 @@ unsorted:
   - python39-daemonize 
   - python39-daiquiri 
   - python39-dasbus 
-  - python39-dash 
   - python39-dash-core-components 
   - python39-dash-html-components 
   - python39-dash-renderer 
@@ -34853,6 +34881,7 @@ unsorted:
   - python39-et_xmlfile 
   - python39-etcd 
   - python39-ethtool 
+  - python39-eval-type-backport 
   - python39-evdev 
   - python39-eventlet 
   - python39-evilunit 
@@ -35196,18 +35225,9 @@ unsorted:
   - python39-invocations 
   - python39-invoke 
   - python39-ipaddr 
-  - python39-ipdb 
   - python39-iptables 
   - python39-ipy 
-  - python39-ipyleaflet 
-  - python39-ipyscales 
-  - python39-ipysheet 
-  - python39-ipytablewidgets 
   - python39-ipython_genutils 
-  - python39-ipyvolume 
-  - python39-ipyvue 
-  - python39-ipyvuetify 
-  - python39-ipywebrtc 
   - python39-irc 
   - python39-isbnlib 
   - python39-isc_dhcp_leases 
@@ -35298,15 +35318,12 @@ unsorted:
   - python39-jupyter-server-fileid 
   - python39-jupyter-server-mathjax 
   - python39-jupyter-server-terminals 
-  - python39-jupyter-server-test 
   - python39-jupyter-sphinx 
   - python39-jupyter-ydoc 
   - python39-jupyter_console 
-  - python39-jupyterlab 
   - python39-jupyterlab-pygments 
   - python39-jupyterlab-server 
   - python39-jupyterlab-server-openapi 
-  - python39-jupyterlab-server-test 
   - python39-jupyterlab-templates 
   - python39-jupyterlab-widgets 
   - python39-jwcrypto 
@@ -35653,7 +35670,6 @@ unsorted:
   - python39-noiseprotocol 
   - python39-nornir 
   - python39-nose2 
-  - python39-notebook 
   - python39-notebook-shim 
   - python39-notify2 
   - python39-nox 
@@ -39260,6 +39276,7 @@ unsorted:
   - system-user-ntp 
   - system-user-osc-collab 
   - system-user-pgadmin 
+  - system-user-postorius 
   - system-user-prometheus 
   - system-user-rustdesk 
   - system-user-transmission 
@@ -39422,6 +39439,7 @@ unsorted:
   - terminus-lang 
   - terminus-ttf-fonts 
   - termit 
+  - termotp 
   - termrec 
   - termshark 
   - termsyn-bitmap-fonts 
@@ -50408,6 +50426,7 @@ unsorted:
   - zvbi-devel 
   - zvbi-devel-32bit 
   - zvbi-lang 
+  - zxcvbn-devel 
   - zxing-cpp-devel 
   - zynaddsubfx 
   - zynaddsubfx-bash-completion 
