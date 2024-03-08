@@ -71,7 +71,8 @@
 # See https://build.opensuse.org/request/show/968066.
 %define target_cpu armv6kz
 %else
-%define target_cpu %{_target_cpu}
+# What RPM spells ppc, GCC spells powerpc.
+%define target_cpu %{lua:print((string.gsub(rpm.expand("%{_target_cpu}"), "ppc", "powerpc")))}
 %endif
 
 %ifarch %{arm}
@@ -422,7 +423,7 @@ BuildRequires:  python3-base
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(zlib)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # llvm does not work on s390
 ExcludeArch:    s390
 %if %{with ffi}
@@ -512,7 +513,7 @@ Summary:        CLANG frontend for LLVM
 Group:          Development/Languages/C and C++
 URL:            https://clang.llvm.org/
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     clang-tools
 Recommends:     gcc
 Recommends:     glibc-devel
@@ -716,7 +717,7 @@ Summary:        Linker for Clang/LLVM
 Group:          Development/Tools/Building
 URL:            https://lld.llvm.org/
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 
 %description -n lld%{_sonum}
 LLD is a linker from the LLVM project. That is a drop-in replacement for system linkers and runs much faster than them. It also provides features that are useful for toolchain developers.
@@ -748,7 +749,7 @@ BuildRequires:  pkgconfig(panel)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(zlib)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python3-lldb%{_sonum}
 
 %description -n lldb%{_sonum}
@@ -826,24 +827,24 @@ This package contains the development files for Polly.
 
 %prep
 %setup -q -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7 -a 8 -a 9 -a 10 -a 11 -a 12 -b 50 -b 51 -n llvm-%{_version}.src
-%patch0 -p2
-%patch1 -p2
-%patch5 -p1
-%patch13 -p1
-%patch14 -p1
-%patch16 -p2
-%patch17 -p2
-%patch20 -p1
-%patch21 -p1
-%patch24 -p1
-%patch25 -p2
+%patch -P 0 -p2
+%patch -P 1 -p2
+%patch -P 5 -p1
+%patch -P 13 -p1
+%patch -P 14 -p1
+%patch -P 16 -p2
+%patch -P 17 -p2
+%patch -P 20 -p1
+%patch -P 21 -p1
+%patch -P 24 -p1
+%patch -P 25 -p2
 
 pushd clang-%{_version}.src
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch6 -p1
-%patch9 -p2
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 6 -p1
+%patch -P 9 -p2
 
 # We hardcode openSUSE
 rm unittests/Driver/DistroTest.cpp
@@ -854,15 +855,15 @@ rm test/Driver/nacl-direct.c
 popd
 
 pushd clang-tools-extra-%{_version}.src
-%patch10 -p2
+%patch -P 10 -p2
 popd
 
 pushd openmp-%{_version}.src
-%patch18 -p1
+%patch -P 18 -p1
 popd
 
 pushd lld-%{_version}.src
-%patch26 -p1
+%patch -P 26 -p1
 # lld got a compile-time dependency on libunwind that we don't want. (https://reviews.llvm.org/D86805)
 mkdir include/mach-o
 cp %{SOURCE13} include/mach-o
@@ -870,7 +871,7 @@ popd
 
 %if %{with lldb}
 pushd lldb-%{_version}.src
-%patch11 -p1
+%patch -P 11 -p1
 popd
 %endif
 
@@ -879,7 +880,7 @@ sed -i '/set(LLVM_COMMON_CMAKE_UTILS/ s/CMAKE_CURRENT_SOURCE_DIR/CMAKE_SOURCE_DI
     libcxx{,abi}-%{_version}.src/CMakeLists.txt
 sed -i '\"runtimes/cmake/Modules" s/CMAKE_CURRENT_SOURCE_DIR/CMAKE_SOURCE_DIR/g' libcxx{,abi}-%{_version}.src/CMakeLists.txt
 pushd libcxx-%{_version}.src
-%patch15 -p2
+%patch -P 15 -p2
 rm test/libcxx/thread/thread.threads/thread.thread.this/sleep_for.pass.cpp
 rm test/std/localization/locale.categories/category.time/locale.time.get.byname/get_monthname.pass.cpp
 rm test/std/localization/locale.categories/category.time/locale.time.get.byname/get_monthname_wide.pass.cpp
@@ -973,6 +974,7 @@ avail_mem=$(awk '/MemAvailable/ { print $2 }' /proc/meminfo)
     -DLLVM_PARALLEL_LINK_JOBS="$max_link_jobs" \
     -DENABLE_LINKER_BUILD_ID=ON \
     -DLLVM_BINUTILS_INCDIR=%{_includedir} \
+    -DPython3_EXECUTABLE=%{_bindir}/python3 \
     -DLLVM_BUILD_TOOLS:BOOL=OFF \
     -DLLVM_BUILD_UTILS:BOOL=OFF \
     -DLLVM_BUILD_EXAMPLES:BOOL=OFF \
@@ -1070,6 +1072,7 @@ export LD_LIBRARY_PATH=%{sourcedir}/build/%{_lib}
     -DLLVM_ENABLE_RTTI:BOOL=ON \
     -DLLVM_ENABLE_PIC=ON \
     -DLLVM_BINUTILS_INCDIR=%{_includedir} \
+    -DPython3_EXECUTABLE=%{_bindir}/python3 \
     -DLLVM_ENABLE_ZSTD:BOOL=OFF \
     -DLLVM_TARGETS_TO_BUILD=%{llvm_targets} \
     -DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD=%{llvm_experimental_targets} \
