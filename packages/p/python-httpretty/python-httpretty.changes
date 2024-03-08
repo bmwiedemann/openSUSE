@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar  7 13:24:32 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Allow building with python-urllib3 >= 2.x
+
+-------------------------------------------------------------------
 Fri Dec 29 12:33:24 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Do not use python-boto3 when building in SLE where it's currently
