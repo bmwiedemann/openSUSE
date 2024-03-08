@@ -1,7 +1,7 @@
 #
 # spec file for package python-getmac
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,25 @@
 #
 
 
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-getmac
-Version:        0.8.3
+Version:        0.9.4
 Release:        0
 Summary:        Module to get MAC addresses of remote hosts and local interfaces
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/GhostofGoes/getmac
 Source:         https://files.pythonhosted.org/packages/source/g/getmac/getmac-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE
-Patch0:         fix-failing-darwin-test.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         support-python3.9.patch
+Patch0:         cope-with-no-ip6.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -45,19 +42,16 @@ BuildArch:      noarch
 A Python module to get MAC addresses of remote hosts and local interfaces.
 
 %prep
-%setup -q -n getmac-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n getmac-%{version}
 sed -i "1,4{/\/usr\/bin\/env/d}" getmac/__main__.py
 rm -r *egg-info
 find . -type f -exec chmod -x {} \;
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-%python_clone -a %{buildroot}%{_mandir}/man1/getmac.1
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/getmac
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -65,10 +59,10 @@ find . -type f -exec chmod -x {} \;
 export LANG=C.UTF-8
 # test_cli_main fails in OBS not local run
 # test_cli_multiple_debug_levels  same as above
-%pytest tests -k 'not test_get_default_iface_freebsd and not test_cli_main and not test_cli_multiple_debug_levels'
+%pytest tests -k 'not test_cli_main and not test_cli_multiple_debug_levels'
 
 %post
-%python_install_alternative getmac getmac.1
+%python_install_alternative getmac
 
 %postun
 %python_uninstall_alternative getmac
@@ -77,7 +71,7 @@ export LANG=C.UTF-8
 %doc CHANGELOG.md README.md
 %license LICENSE
 %python_alternative %{_bindir}/getmac
-%python_alternative %{_mandir}/man1/getmac.1%{?ext_man}
-%{python_sitelib}/getmac*
+%{python_sitelib}/getmac
+%{python_sitelib}/getmac-%{version}.dist-info
 
 %changelog

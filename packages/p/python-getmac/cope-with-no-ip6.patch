@@ -1,0 +1,13 @@
+Index: getmac-0.9.4/tests/test_getmac.py
+===================================================================
+--- getmac-0.9.4.orig/tests/test_getmac.py
++++ getmac-0.9.4/tests/test_getmac.py
+@@ -144,7 +144,7 @@ def test_initialize_method_cache_valid_t
+     assert getmac.initialize_method_cache(method_type)
+     assert getmac.METHOD_CACHE[method_type] is not None
+     if method_type in ["ip4", "ip6"]:
+-        assert getmac.FALLBACK_CACHE[method_type]
++        assert method_type in getmac.FALLBACK_CACHE
+ 
+ 
+ def test_initialize_method_cache_initialized(mocker):
