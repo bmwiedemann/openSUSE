@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 19 03:08:17 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.31
+   see /usr/share/doc/packages/perl-Spreadsheet-ParseXLSX/Changes
+
+  0.31  2024-01-18
+        - CVE-2024-23525: fixed in previous release
+  0.30  2024-01-17
+        - Fix xml external entity (XEE) injection bug
+        - added unit test for support of purl.oclc.org namespace ... see issue #7
+        - removed tidyness tests again as it fails on weaver'ed code
+
+-------------------------------------------------------------------
 Wed Jan  3 03:10:46 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.29

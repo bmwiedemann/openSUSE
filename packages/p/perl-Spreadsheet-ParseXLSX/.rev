@@ -23,4 +23,12 @@
     <comment>Update changes file, add missing boo#1218651 (CVE-2024-22368) Information (forwarded request 1139008 from computersalat)</comment>
     <requestid>1139009</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>60b757354c0febdea8fc75ccc9f9bfe8</srcmd5>
+    <version>0.310.0</version>
+    <time>1709917737</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1156065</requestid>
+  </revision>
 </revisionlist>
