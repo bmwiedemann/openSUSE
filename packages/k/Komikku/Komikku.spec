@@ -49,12 +49,13 @@ Requires:       python3-lxml
 Requires:       python3-modern-colorthief
 Requires:       python3-natsort
 Requires:       python3-piexif
-Requires:       python3-pure-protobuf
+Requires:       python3-pure-protobuf >= 3.0.0
 Requires:       python3-pycairo
 Requires:       python3-python-magic
 Requires:       python3-rarfile
 Requires:       python3-requests
 Requires:       python3-setuptools-gettext
+Requires:       python3-typing-extensions
 Requires:       python3-wheel
 Requires:       unrar_wrapper
 BuildArch:      noarch
