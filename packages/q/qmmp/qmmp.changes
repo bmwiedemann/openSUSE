@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  8 08:43:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add qmmp-taglib2.patch: Fix build against taglib 2.0. Patch taken
+  from https://sourceforge.net/p/qmmp-dev/code/11255/
+
+-------------------------------------------------------------------
 Sun Oct 29 09:29:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.5:

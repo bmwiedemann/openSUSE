@@ -1,7 +1,7 @@
 #
 # spec file for package qmmp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ URL:            https://qmmp.ylsoftware.com/
 Source:         https://qmmp.ylsoftware.com/files/%{name}/%{mver}/%{name}-%{version}.tar.bz2
 # PATCH-FEATURE-OPENSUSE qmmp-default_pulse.patch reddwarf@opensuse.org -- Use PulseAudio instead of ALSA by default.
 Patch0:         %{name}-default-pulse.patch
+# PATCH-FIX-UPSTREAM qmmp-taglib2.patch -- Fix build with taglib 2.0 (https://sourceforge.net/p/qmmp-dev/code/11255/)
+Patch1:         qmmp-taglib2.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
