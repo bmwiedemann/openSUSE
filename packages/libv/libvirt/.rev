@@ -4545,4 +4545,15 @@ bsc#1216656</comment>
   boo#1219986</comment>
     <requestid>1149655</requestid>
   </revision>
+  <revision rev="393" vrev="1">
+    <srcmd5>9ea66b61cd734b4ff6929fa6ffa39262</srcmd5>
+    <version>10.1.0</version>
+    <time>1709917641</time>
+    <user>anag+factory</user>
+    <comment>- Update to libvirt 10.1.0
+  - CVE-2024-1441
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v10-1-0-2024-03-01</comment>
+    <requestid>1155381</requestid>
+  </revision>
 </revisionlist>
