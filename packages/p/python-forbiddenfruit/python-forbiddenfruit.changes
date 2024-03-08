@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar  8 03:56:53 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.1.4:
+  * Add cursed() context manager/decorator
+  * Conditionally build test C extension
+  * Allow cursing dunder methods with non functions
+  * Fix dual licensing issues. Distribute both GPLv3 & MIT license
+    files.
+- Drop COPYING.GPL, now included in the sdist.
+- Switch to pyproject and autosetup macros.
+- No more greedy globs in %files.
+- Fiddle with remove-nose.patch to drop a useless decorator.
+
+-------------------------------------------------------------------
 Wed Apr 15 06:42:01 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Switch to pytest from nose 

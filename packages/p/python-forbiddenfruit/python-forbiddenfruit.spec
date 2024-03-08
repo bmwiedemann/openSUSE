@@ -1,7 +1,7 @@
 #
 # spec file for package python-forbiddenfruit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-forbiddenfruit
-Version:        0.1.3
+Version:        0.1.4
 Release:        0
 Summary:        Python module to patch python built-in objects
 License:        GPL-3.0-only OR MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/clarete/forbiddenfruit
 Source0:        https://github.com/clarete/forbiddenfruit/archive/%{version}.tar.gz
-# https://github.com/clarete/forbiddenfruit/issues/30
-Source1:        COPYING.GPL
 # https://github.com/clarete/forbiddenfruit/pull/47
 Patch0:         remove-nose.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %python_subpackages
@@ -41,15 +39,14 @@ This project allows you to patch built-in objects, declared in C through
 python.
 
 %prep
-%setup -q -n forbiddenfruit-%{version}
-cp %{SOURCE1} .
-%patch0 -p1
+%autosetup -p1 -n forbiddenfruit-%{version}
 
 %build
-%python_build
+export FFRUIT_EXTENSION=true
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -57,8 +54,10 @@ cp %{SOURCE1} .
 %pytest
 
 %files %{python_files}
-%license COPYING.GPL COPYING.mit
+%license COPYING COPYING.mit
 %doc README.md
-%{python_sitearch}/*
+%{python_sitearch}/ffruit.cpython-*-linux-gnu.so
+%{python_sitearch}/forbiddenfruit
+%{python_sitearch}/forbiddenfruit-%{version}.dist-info
 
 %changelog
