@@ -52,4 +52,15 @@
     <comment>- Suggest primary python package -- boo#1214354</comment>
     <requestid>1104452</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>85990ab5d1528417177850c55ee58cc0</srcmd5>
+    <version>0.7.0</version>
+    <time>1709917847</time>
+    <user>anag+factory</user>
+    <comment>- Update to v0.7.0
+  * Use lumino classes by @krassowski in #105
+  * Update to JupyterLab 4 by @martinRenou in #110
+- Skip python39: no longer supported by ipython (via ipykernel)</comment>
+    <requestid>1156376</requestid>
+  </revision>
 </revisionlist>

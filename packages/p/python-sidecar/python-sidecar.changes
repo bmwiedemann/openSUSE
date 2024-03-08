@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar  8 13:53:52 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.7.0
+  * Use lumino classes by @krassowski in #105
+  * Update to JupyterLab 4 by @martinRenou in #110
+- Skip python39: no longer supported by ipython (via ipykernel)
+
+-------------------------------------------------------------------
 Thu Aug 17 16:07:42 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Suggest primary python package -- boo#1214354
