@@ -658,4 +658,12 @@
     <comment>Require cni-plugins (bsc#1220568) (forwarded request 1152994 from danishprakash)</comment>
     <requestid>1153433</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>56d382a8e50d53b3d5cc8e7f0de55bde</srcmd5>
+    <version>1.35.0</version>
+    <time>1709917772</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1156214</requestid>
+  </revision>
 </revisionlist>
