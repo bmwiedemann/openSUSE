@@ -52,7 +52,11 @@
 %bcond_with system_zstd
 %endif
 # LLVM version
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600
+%define llvm_version 17
+%else
 %define llvm_version 15
+%endif
 # GCC version
 %define gcc_version 13
 %if 0%{?suse_version} < 1699
@@ -72,6 +76,11 @@
 %bcond_without system_ffmpeg
 %bcond_with system_zlib
 %bcond_with system_vpx
+%if %{pkg_vcmp libxml2-devel >= 2.12}
+%bcond_without libxml2_2_12
+%else
+%bcond_with libxml2_2_12
+%endif
 # FFmpeg version
 %if %{with ffmpeg_51}
 %define ffmpeg_version 59
@@ -96,6 +105,7 @@ Source0:        https://commondatastorage.googleapis.com/chromium-browser-offici
 Source1:        esbuild.tar.gz
 Source3:        README.SUSE
 Source4:        ffmpeg-new-channel-layout.patch
+Source5:        Cr121-ffmpeg-new-channel-layout.patch
 # Toolchain definitions
 Source30:       master_preferences
 Source104:      chromium-symbolic.svg
@@ -387,13 +397,16 @@ Provides:       chromedriver = %{version}-%{release}
 WebDriver is an open source tool for automated testing of webapps across many browsers. It provides capabilities for navigating to web pages, user input, JavaScript execution, and more. ChromeDriver is a standalone server which implements WebDriver's wire protocol for Chromium. It is being developed by members of the Chromium and WebDriver teams.
 
 %prep
-%setup -q -n %{rname}-%{version}
-%autopatch -p1
+%autosetup -p1 -n %{rname}-%{version}
 %if 0%{?suse_version} >= 1550
 patch -R -p1 < %{PATCH68}
 %endif
 %if %{without ffmpeg_51}
+patch -R -p1 < %{SOURCE5}
 patch -R -p1 < %{SOURCE4}
+%endif
+%if %{with libxml2_2_12}
+patch -R -p1 < %{PATCH265}
 %endif
 
 %build
@@ -429,7 +442,10 @@ cp %{SOURCE106} chrome/installer/linux/common/wrapper
 # from our Fedora friends
 export RUSTC_BOOTSTRAP=1
 rustc_version="$(rustc --version | cut -d' ' -f2)"
-clang_version="$(clang --version | sed -n 's/clang version //p' | cut -d. -f1)"
+clang_version="$(clang --version | sed -n 's/clang version //p')"
+if [[ $(echo ${clang_version} | cut -d. -f1) -ge 16 ]]; then
+  clang_version="$(echo ${clang_version} | cut -d. -f1)"
+fi
 clang_base_path="$(clang --version | grep InstalledDir | cut -d' ' -f2 | sed 's#/bin##')" 
 
 # Remove bundled libs

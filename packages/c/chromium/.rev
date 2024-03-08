@@ -4877,4 +4877,15 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 </comment>
     <requestid>1155575</requestid>
   </revision>
+  <revision rev="413" vrev="2">
+    <srcmd5>6a891dccadb1adaaf5961ae19bef0e87</srcmd5>
+    <version>121.0.6167.184</version>
+    <time>1709917850</time>
+    <user>anag+factory</user>
+    <comment>- Add Cr121-ffmpeg-new-channel-layout.patch to rollback more FFmpeg
+  changes so that FFmpeg 4 will work on Leap
+- Prepare for libxml 2.12
+</comment>
+    <requestid>1156359</requestid>
+  </revision>
 </revisionlist>
