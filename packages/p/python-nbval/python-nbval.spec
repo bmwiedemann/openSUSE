@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-nbval
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,16 +25,16 @@
 %bcond_with test
 %endif
 
-%define         skip_python2 1
+%define         skip_python39 1
 Name:           python-nbval%{psuffix}
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        A pytest plugin to validate Jupyter notebooks
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/computationalmodelling/nbval
 Source:         https://files.pythonhosted.org/packages/source/n/nbval/nbval-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -44,7 +44,7 @@ Requires:       python-coverage
 Requires:       python-ipykernel
 Requires:       python-jupyter-client
 Requires:       python-nbformat
-Requires:       python-pytest >= 2.8
+Requires:       python-pytest >= 7
 Provides:       python-jupyter_nbval = %{version}
 Obsoletes:      python-jupyter_nbval < %{version}
 BuildArch:      noarch
