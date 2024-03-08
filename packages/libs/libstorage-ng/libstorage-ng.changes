@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Thu Mar 7 07:15:04 UTC 2024 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#990
+- set minimal size for XFS to 300 MiB (bsc#1220728)
+- 4.5.201
+
+--------------------------------------------------------------------
 Mon Mar 4 13:45:02 UTC 2024 - aschnell@suse.com
 
 - Translated using Weblate (French) (bsc#1149754)
