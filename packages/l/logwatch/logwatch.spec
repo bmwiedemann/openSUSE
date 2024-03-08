@@ -60,13 +60,13 @@ desired areas at the desired detail level.
 %prep
 %setup -q -a 2
 chmod u+w Logwatch_Setup_Files/*
-%patch0
-%patch2
+%patch -P 0
+%patch -P 2
 cp %{SOURCE3} .
 # fix package doc dir in man page
 sed -i -e 's,%{_datadir}/doc/logwatch-\*,%{_defaultdocdir}/logwatch,' logwatch.8
-%patch3 -p1
-%patch4 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
 
 %build
 
