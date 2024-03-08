@@ -1,7 +1,7 @@
 #
 # spec file for package kbd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -326,6 +326,10 @@ while read line; do
   echo "$XKBLAYOUT" >> layouts-list.lst
   XKBVARIANT=`echo "$line" | cut -d " " -f 2`
   ckbcomp "$XKBLAYOUT" "$XKBVARIANT" > /tmp/"$XKBLAYOUT"-"$XKBVARIANT".map
+  # fix conversion of lowercase f in de-e1 keymap (boo#1207841)
+  if [ "$XKBLAYOUT-$XKBVARIANT" == "de-e1" ]; then
+    sed -i 's/^plain keycode 33 = AltGr/plain keycode 33 = +U+0066/' /tmp/"$XKBLAYOUT"-"$XKBVARIANT".map
+  fi
   # skip converted layouts which cannot input ASCII (rh#1031848)
   grep -q "U+0041" /tmp/"$XKBLAYOUT"-"$XKBVARIANT".map && \
     gzip -cn9 /tmp/"$XKBLAYOUT"-"$XKBVARIANT".map > %{buildroot}%{kbd}/keymaps/xkb/"$XKBLAYOUT"-"$XKBVARIANT".map.gz
