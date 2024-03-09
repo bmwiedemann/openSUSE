@@ -40,7 +40,7 @@ Requires:       perl(IO::Scalar)
 Requires:       perl(Test::More) >= 0.88
 Requires:       perl(Test::NoWarnings)
 Provides:       perl(Spreadsheet::Read) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 Recommends:     perl(Data::Dumper) >= 2.183
 Recommends:     perl(Data::Peek) >= 0.52
 Recommends:     perl(Encode) >= 3.200.0
