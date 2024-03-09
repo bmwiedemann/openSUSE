@@ -1,7 +1,7 @@
 #
 # spec file for package perl-JSON-Any
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@ BuildRequires:  perl(Test::Needs)
 BuildRequires:  perl(Test::Warnings) >= 0.009
 BuildRequires:  perl(Test::Without::Module)
 Provides:       perl(JSON::Any) = 1.400.0
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
