@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Domain-PublicSuffix
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@ Requires:       perl(Net::IDN::Encode) >= 2.401
 Requires:       perl(Test::More) >= 0.88
 Provides:       perl(Domain::PublicSuffix) = 0.200.0
 Provides:       perl(Domain::PublicSuffix::Default) = 0.200.0
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
