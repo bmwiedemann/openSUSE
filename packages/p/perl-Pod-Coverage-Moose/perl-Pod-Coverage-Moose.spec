@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Pod-Coverage-Moose
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,7 @@ Requires:       perl(Moose) >= 2.1300
 Requires:       perl(Pod::Coverage)
 Requires:       perl(namespace::autoclean) >= 0.08
 Provides:       perl(Pod::Coverage::Moose) = 0.80.0
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
