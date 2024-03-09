@@ -16,8 +16,6 @@
 #
 
 
-%{!?make_build:%global make_build make %{?_smp_mflags}}
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define tarname protobuf
 %define extra_java_flags -source 8 -target 8
 # requires gmock, which is not yet in the distribution
@@ -26,8 +24,8 @@
 %bcond_without python3
 %{?sle15_python_module_pythons}
 Name:           protobuf
-Version:        25.1
-%global         sover 25_1_0
+Version:        25.2
+%global         sover 25_2_0
 Release:        0
 Summary:        Protocol Buffers - Google's data interchange format
 License:        BSD-3-Clause
@@ -36,7 +34,6 @@ URL:            https://github.com/protocolbuffers/protobuf
 Source0:        https://github.com/protocolbuffers/protobuf/archive/v%{version}.tar.gz#/%{tarname}-%{version}.tar.gz
 Source1:        manifest.txt.in
 Source2:        baselibs.conf
-Source1000:     %{name}-rpmlintrc
 Patch0:         add-missing-stdint-header.patch
 BuildRequires:  %{python_module abseil}
 BuildRequires:  %{python_module devel >= 3.7}
@@ -215,24 +212,24 @@ popd
 
 %fdupes %{buildroot}%{_prefix}
 
-%post -n libprotobuf%{sover} -p /sbin/ldconfig
-%postun -n libprotobuf%{sover} -p /sbin/ldconfig
-%post -n libprotoc%{sover} -p /sbin/ldconfig
-%postun -n libprotoc%{sover} -p /sbin/ldconfig
-%post -n libprotobuf-lite%{sover} -p /sbin/ldconfig
-%postun -n libprotobuf-lite%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libprotobuf%{sover}
+%ldconfig_scriptlets -n libprotoc%{sover}
+%ldconfig_scriptlets -n libprotobuf-lite%{sover}
 
 %files -n libprotobuf%{sover}
 %license LICENSE
 %{_libdir}/libprotobuf.so.%{VERSION}.0
 
 %files -n libprotoc%{sover}
+%license LICENSE
 %{_libdir}/libprotoc.so.%{VERSION}.0
 
 %files -n libprotobuf-lite%{sover}
+%license LICENSE
 %{_libdir}/libprotobuf-lite.so.%{VERSION}.0
 
 %files devel
+%license LICENSE
 %doc CONTRIBUTORS.txt README.md
 %{_bindir}/protoc*
 %{_includedir}/google
@@ -258,6 +255,7 @@ popd
 
 %if %{with java}
 %files -n %{name}-java -f java/.mfiles
+%license LICENSE
 %{_javadir}/%{name}.jar
 %endif
 

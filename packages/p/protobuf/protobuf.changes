@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  8 16:25:26 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 25.2:
+  * Only substitute prefixes during installation setup
+  * Register a shutdown delete for C++ feature defaults
+
+-------------------------------------------------------------------
 Tue Jan  2 13:52:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 25.1:
