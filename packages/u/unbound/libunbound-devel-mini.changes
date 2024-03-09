@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar  8 10:15:41 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to 1.19.2:
+  * Bug Fixes:
+    - Fix CVE-2024-1931, Denial of service when trimming EDE text
+      on positive replies.
+      [bsc#1221164]
+
+-------------------------------------------------------------------
 Wed Feb 28 13:35:31 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.19.1:
@@ -6,6 +15,13 @@ Wed Feb 28 13:35:31 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
     - Fix CVE-2023-50387, DNSSEC verification complexity can be
       exploited to exhaust CPU resources and stall DNS resolvers.
     - Fix CVE-2023-50868, NSEC3 closest encloser proof can exhaust CPU.
+
+-------------------------------------------------------------------
+Tue Feb  6 13:27:06 UTC 2024 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- as we use --disable-explicit-port-randomisation, also disable
+  outgoing-port-permit and outgoing-port-avoid in config file to
+  suppress the related unbound-checkconf warnings on every start
 
 -------------------------------------------------------------------
 Fri Nov 17 09:50:18 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
