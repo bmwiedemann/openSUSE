@@ -37,7 +37,7 @@ BuildRequires:  perl(version) >= 0.83
 Requires:       perl(JSON::PP) >= 2.00
 Requires:       perl(version) >= 0.83
 Provides:       perl(Parse::PMFile) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
