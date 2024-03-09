@@ -1,7 +1,7 @@
 #
 # spec file for package inkscape
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,9 @@ Source1:        openSUSE.gpl
 Source2:        inkscape-split-extensions-extra.py
 Source98:       https://media.inkscape.org/media/resources/sigs/inkscape-%{_version}.tar.xz.sig
 Source99:       https://inkscape.org/~MarcJeanmougin/gpg#/%name.keyring
+
+# PATCH-FIX-UPSTREAM https://gitlab.com/inkscape/inkscape/-/merge_requests/6209
+Patch0:         inkscape-poppler-24.03.0.patch
 
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
