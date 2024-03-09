@@ -1970,7 +1970,6 @@
     <package name="thryomanes-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="tigervnc" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="timezone" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
-    <package name="timezone-java" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="tpm2-0-tss" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="tpm2.0-abrmd" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="tpm2.0-abrmd-selinux" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
