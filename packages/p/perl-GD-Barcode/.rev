@@ -120,4 +120,13 @@
     <comment></comment>
     <requestid>1114046</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>2eebd07b513ae904fc2b03a6f23a331d</srcmd5>
+    <version>2.0.0</version>
+    <time>1710014123</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix disabling of __perllib_provides
+</comment>
+    <requestid>1156545</requestid>
+  </revision>
 </revisionlist>
