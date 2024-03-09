@@ -1,0 +1,31 @@
+From: Matthew Fernandez <matthew.fernandez@gmail.com>
+Subject: gvc: detect plugin installation failure and display an error
+References: bsc#1219491
+Patch-Mainline: 10.0.1
+Git-commit: a95f977f5d809915ec4b14836d2b5b7f5e74881e
+Git-repo: git@gitlab.com:graphviz/graphviz.git.git
+
+Gitlab: fixes #2441
+Reported-by: GJDuck
+
+A malformed config6 file that leads to plugin search failing no longer causes
+out-of-bounds memory reads. This now causes an error message and graceful
+failure. #2441
+
+
+Signed-off-by:  <trenn@suse.com>
+Index: graphviz-2.49.3/lib/gvc/gvconfig.c
+===================================================================
+--- graphviz-2.49.3.orig/lib/gvc/gvconfig.c
++++ graphviz-2.49.3/lib/gvc/gvconfig.c
+@@ -183,6 +183,10 @@ static int gvconfig_plugin_install_from_
+ 	do {
+ 	    api = token(&nest, &s);
+ 	    gv_api = gvplugin_api(api);
++	    if (gv_api == (api_t)-1) {
++		agerr(AGERR, "config error: %s %s not found\n", path, api);
++		return 0;
++	    }
+ 	    do {
+ 		if (nest == 2) {
+ 		    type = token(&nest, &s);
