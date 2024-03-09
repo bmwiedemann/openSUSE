@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Kit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,7 @@ Requires:       perl(Import::Into)
 Requires:       perl(Module::Runtime)
 Requires:       perl(Sub::Delete)
 Provides:       perl(Test::Kit) = 2.160.0
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
