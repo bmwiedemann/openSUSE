@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Crypt-JWT
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@ Requires:       perl(JSON)
 Requires:       perl(Test::More) >= 0.88
 Provides:       perl(Crypt::JWT) = 0.35.0
 Provides:       perl(Crypt::KeyWrap) = 0.35.0
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
