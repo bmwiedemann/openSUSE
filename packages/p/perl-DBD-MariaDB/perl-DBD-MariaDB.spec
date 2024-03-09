@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DBD-MariaDB
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@ BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::More) >= 0.90
 Requires:       perl(DBI) >= 1.608
 Provides:       perl(DBD::MariaDB) = 1.230.0
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  libmariadb-devel
