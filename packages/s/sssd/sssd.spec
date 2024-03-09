@@ -111,7 +111,7 @@ Obsoletes:      sssd-common < %version-%release
 %define cifs_idmap_lib          %_libdir/cifs-utils/cifs_idmap_sss.so
 %define cifs_idmap_name         cifs-idmap-plugin
 %define cifs_idmap_priority     10
-Requires(post): update-alternatives
+Requires(post):update-alternatives
 Requires(postun):update-alternatives
 
 %description
@@ -443,6 +443,10 @@ find "$b" -type f -name "*.la" -print -delete
 # dummy target for cifs-idmap-plugin
 mkdir -pv %buildroot/%_sysconfdir/alternatives %buildroot/%_sysconfdir/cifs-utils
 ln -sfv %_sysconfdir/alternatives/%cifs_idmap_name %buildroot/%cifs_idmap_plugin
+%python3_fix_shebang
+%if %{suse_version} >= 1600
+%python3_fix_shebang_path %{buildroot}/%{_libexecdir}/%{name}/
+%endif
 
 %check
 # sss_config-tests fails
