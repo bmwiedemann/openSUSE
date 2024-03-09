@@ -230,4 +230,14 @@
   - Make sure /run/reboot-needed get's deleted after a soft-reboot</comment>
     <requestid>1144932</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2b37ed2f285f8d26f9dca008b70b16a9</srcmd5>
+    <version>2.3</version>
+    <time>1710014029</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3
+  - rebootmgrd: add verbose mode
+  - Enable verbose mode in rebootmgr.service by default</comment>
+    <requestid>1156310</requestid>
+  </revision>
 </revisionlist>
