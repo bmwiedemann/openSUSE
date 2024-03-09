@@ -6820,6 +6820,9 @@ unsorted:
   - git-svn 
   - git-sync 
   - git-test 
+  - gitea-tea 
+  - gitea-tea-bash-completion 
+  - gitea-tea-zsh-completion 
   - gitg 
   - gitg-lang 
   - gitk 
@@ -24875,6 +24878,7 @@ unsorted:
   - python310-kiwisolver 
   - python310-kmatch 
   - python310-kmod 
+  - python310-kmodpy 
   - python310-knack 
   - python310-kombu 
   - python310-korean-lunar-calendar 
@@ -28376,6 +28380,7 @@ unsorted:
   - python311-kiwisolver 
   - python311-kmatch 
   - python311-kmod 
+  - python311-kmodpy 
   - python311-knack 
   - python311-kombu 
   - python311-korean-lunar-calendar 
@@ -31857,6 +31862,7 @@ unsorted:
   - python312-kiwisolver 
   - python312-kmatch 
   - python312-kmod 
+  - python312-kmodpy 
   - python312-knack 
   - python312-kombu 
   - python312-korean-lunar-calendar 
@@ -35318,13 +35324,10 @@ unsorted:
   - python39-jupyter-server-fileid 
   - python39-jupyter-server-mathjax 
   - python39-jupyter-server-terminals 
-  - python39-jupyter-sphinx 
   - python39-jupyter-ydoc 
-  - python39-jupyter_console 
   - python39-jupyterlab-pygments 
   - python39-jupyterlab-server 
   - python39-jupyterlab-server-openapi 
-  - python39-jupyterlab-templates 
   - python39-jupyterlab-widgets 
   - python39-jwcrypto 
   - python39-k5test 
@@ -35348,6 +35351,7 @@ unsorted:
   - python39-kiwisolver 
   - python39-kmatch 
   - python39-kmod 
+  - python39-kmodpy 
   - python39-knack 
   - python39-kombu 
   - python39-korean-lunar-calendar 
@@ -35458,7 +35462,6 @@ unsorted:
   - python39-line_profiler 
   - python39-linecache2 
   - python39-linetable 
-  - python39-lineup-widget 
   - python39-link-traits 
   - python39-linkify-it-py 
   - python39-linode-cli 
@@ -35635,9 +35638,7 @@ unsorted:
   - python39-nbdime-git 
   - python39-nbdime-hg 
   - python39-nbformat 
-  - python39-nbsmoke 
   - python39-nbsphinx 
-  - python39-nbval 
   - python39-ncclient 
   - python39-ndg-httpsclient 
   - python39-ndindex 
@@ -35699,7 +35700,6 @@ unsorted:
   - python39-objgraph 
   - python39-oci-sdk 
   - python39-oct2py 
-  - python39-octave-kernel 
   - python39-odfpy 
   - python39-odorik 
   - python39-ogr 
@@ -36373,7 +36373,6 @@ unsorted:
   - python39-pythonfinder 
   - python39-pythonwhois 
   - python39-pythran 
-  - python39-pythreejs 
   - python39-pytidylib 
   - python39-pytils 
   - python39-pytimeparse 
@@ -36435,7 +36434,6 @@ unsorted:
   - python39-qtcharts-qt5-api 
   - python39-qtcharts-qt5-doc 
   - python39-qtcharts-qt5-sip 
-  - python39-qtconsole 
   - python39-qtdatavis3d-qt5 
   - python39-qtdatavis3d-qt5-devel 
   - python39-qtdatavis3d-qt5-doc 
@@ -36627,7 +36625,6 @@ unsorted:
   - python39-shodan 
   - python39-shortuuid 
   - python39-show-in-file-manager 
-  - python39-sidecar 
   - python39-sidpy 
   - python39-sievelib 
   - python39-signedjson 
@@ -36831,7 +36828,6 @@ unsorted:
   - python39-thespian 
   - python39-threadpoolctl 
   - python39-three-merge 
-  - python39-threevis 
   - python39-thrift 
   - python39-thriftpy2 
   - python39-tifffile 
@@ -48385,6 +48381,7 @@ unsorted:
   - timeshift 
   - timeshift-lang 
   - timewarrior 
+  - timezone-java 
   - timezonemap-devel 
   - timg 
   - timidity 
