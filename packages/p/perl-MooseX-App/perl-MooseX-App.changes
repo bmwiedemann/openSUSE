@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  8 22:44:05 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Fix disabling of __perllib_provides
+
+-------------------------------------------------------------------
 Thu Oct 26 12:43:58 UTC 2023 - Tina Müller <tina.mueller@suse.com>
 
 - Remove 70.patch and 71.patch: fixed upstream
