@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar  7 13:02:18 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 2.5.7:
+  * New configure option --with-libtool-modification. [T6619]
+  * Change the naming of the 64 bit Windows DLL from libassuan6-0.dll
+    to libassuan-0.dll to sync this with what we did for libgpg-error.
+  * Release-info: https://dev.gnupg.org/T7028
+
+-------------------------------------------------------------------
+Mon Feb 26 12:13:56 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update upstream libassuan.keyring
+
+-------------------------------------------------------------------
 Tue Jun 20 07:12:11 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 2.5.6:

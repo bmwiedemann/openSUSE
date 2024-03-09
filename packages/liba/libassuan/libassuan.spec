@@ -1,7 +1,7 @@
 #
 # spec file for package libassuan
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libassuan
-Version:        2.5.6
+Version:        2.5.7
 Release:        0
 Summary:        IPC library used by GnuPG version 2
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -26,8 +26,8 @@ URL:            https://www.gnupg.org/related_software/libassuan/index.en.html
 Source0:        ftp://ftp.gnupg.org/gcrypt/libassuan/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
 Source2:        ftp://ftp.gnupg.org/gcrypt/libassuan/%{name}-%{version}.tar.bz2.sig
-# http://www.gnupg.org/signature_key.en.html
-Source3:        libassuan.keyring
+# https://www.gnupg.org/signature_key.html
+Source3:        https://gnupg.org/signature_key.asc#/%{name}.keyring
 BuildRequires:  libgpg-error-devel >= 1.17
 Requires:       %{install_info_prereq}
 
@@ -54,7 +54,7 @@ gpgme also uses libassuan to communicate with a libassuan-enabled GnuPG
 v2 server, but it uses it's own copy of libassuan.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 # Compile with PIC, library is linked into shared libraries:
