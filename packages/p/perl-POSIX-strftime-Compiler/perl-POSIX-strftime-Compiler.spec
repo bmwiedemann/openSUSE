@@ -33,7 +33,7 @@ BuildRequires:  perl(Module::Build)
 BuildRequires:  perl(Module::Build::Tiny) >= 0.035
 BuildRequires:  perl(Test::More) >= 0.98
 Provides:       perl(POSIX::strftime::Compiler) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  timezone
