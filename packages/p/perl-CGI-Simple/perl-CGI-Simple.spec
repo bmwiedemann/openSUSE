@@ -35,7 +35,7 @@ Provides:       perl(CGI::Simple) = %{version}
 Provides:       perl(CGI::Simple::Cookie) = %{version}
 Provides:       perl(CGI::Simple::Standard) = %{version}
 Provides:       perl(CGI::Simple::Util) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 # after 1.115 came 1.12 - provide the zero padded version number to fix version checks
