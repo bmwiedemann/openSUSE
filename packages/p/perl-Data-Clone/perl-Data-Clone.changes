@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  8 22:15:39 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Fix disabling of __perllib_provides
+
+-------------------------------------------------------------------
 Thu Nov 30 17:46:40 UTC 2023 - Tina Müller <tina.mueller@suse.com>
 
 - Remove perl-Data-Clone-perl-5.38.patch (fixed upstream)
