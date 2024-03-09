@@ -2254,4 +2254,12 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment></comment>
     <requestid>1148449</requestid>
   </revision>
+  <revision rev="251" vrev="4">
+    <srcmd5>af96318850084be1d34e592e38eaa67a</srcmd5>
+    <version>45.3</version>
+    <time>1710014023</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1156279</requestid>
+  </revision>
 </revisionlist>

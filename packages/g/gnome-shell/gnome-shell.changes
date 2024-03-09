@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  7 07:47:00 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update gnome-shell-gdm-login-applet.patch: Clean up JS errors
+  (bsc#1221100).
+
+-------------------------------------------------------------------
 Tue Feb 20 10:03:05 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add gjs Requires, because ScreenSaver DBus daemon is a gjs
