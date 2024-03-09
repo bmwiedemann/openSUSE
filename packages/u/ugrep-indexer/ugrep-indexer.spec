@@ -1,7 +1,7 @@
 #
 # spec file for package ugrep-indexer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           ugrep-indexer
-Version:        0.9.5
+Version:        0.9.6
 Release:        0
 Summary:        File indexer for accelerated search using ugrep
 License:        BSD-3-Clause
 URL:            https://github.com/Genivia/ugrep-indexer
-Source:         https://github.com/Genivia/ugrep-indexer/archive/refs/tags/v%{version}-2.tar.gz#/%{name}-%{version}-2.tar.gz
+Source:         https://github.com/Genivia/ugrep-indexer/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  c++_compiler
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
@@ -42,7 +42,7 @@ The ugrep-indexer utility recursively indexes files to accelerate recursive
 searching on file systems with ugrep.
 
 %prep
-%setup -q -n %{name}-%{version}-2
+%autosetup -p1
 
 %build
 %configure \

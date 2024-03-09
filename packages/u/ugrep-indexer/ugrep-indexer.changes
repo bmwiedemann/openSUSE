@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar  9 19:42:34 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.9.6:
+  * fix missing C++ header
+  * fix an issue with option -z and compressed files
+
+-------------------------------------------------------------------
 Sat Jan  6 08:55:53 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.9.5-2:
