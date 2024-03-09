@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  8 22:54:43 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Fix disabling of __perllib_provides
+
+-------------------------------------------------------------------
 Fri Sep  1 16:54:11 UTC 2023 - Tina Müller <tina.mueller@suse.com>
 
 - Initial submission
