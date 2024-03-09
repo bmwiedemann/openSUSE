@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  8 22:27:59 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Fix disabling of __perllib_provides
+
+-------------------------------------------------------------------
 Thu Dec 14 14:14:13 UTC 2023 - Tina Müller <tina.mueller@suse.com>
 
 - Remove make test workaround, fixed upstream
