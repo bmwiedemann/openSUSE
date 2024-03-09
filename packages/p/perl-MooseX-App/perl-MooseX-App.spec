@@ -1,7 +1,7 @@
 #
 # spec file for package perl-MooseX-App
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -95,7 +95,7 @@ Provides:       perl(MooseX::App::Role::Base)
 Provides:       perl(MooseX::App::Role::Common)
 Provides:       perl(MooseX::App::Simple) = 1.42
 Provides:       perl(MooseX::App::Utils)
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  perl(Config::Any)
