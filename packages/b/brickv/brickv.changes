@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Mar  9 12:06:43 UTC 2024 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- Update to new upstream version 2.4.26
+  - Add support for Industrial Dual AC In Bricklet
+  - Add Data Logger support for Industrial Dual AC In Bricklet
+  - Only use Python dev-mode if available
+  - Fix health monitor metric errors for ESP32 (Ethernet) Brick
+  - Add "@ host:port" to window title if connected
+  - Avoid crash when closing Brick Viewer
+  - Add function code to Modbus master function selection in RS485 Bricklet plugin
+
+-------------------------------------------------------------------
 Wed Feb 15 16:18:51 UTC 2023 - Avinesh Kumar <avinesh.kumar@suse.com>
 
 - Update to new upstream version 2.4.25
