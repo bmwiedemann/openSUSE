@@ -97,7 +97,7 @@ Provides:       perl(Mail::Message::TransferEnc::EightBit) = %{version}
 Provides:       perl(Mail::Message::TransferEnc::QuotedPrint) = %{version}
 Provides:       perl(Mail::Message::TransferEnc::SevenBit) = %{version}
 Provides:       perl(Mail::Reporter) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
