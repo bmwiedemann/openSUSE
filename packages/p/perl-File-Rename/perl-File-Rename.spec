@@ -37,7 +37,7 @@ BuildRequires:  perl(Pod::Parser)
 Provides:       perl(File::Rename) = %{version}
 Provides:       perl(File::Rename::Options) = 2.10.0
 Provides:       perl(File::Rename::Unicode) = 1.30
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
