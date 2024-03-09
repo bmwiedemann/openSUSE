@@ -1,7 +1,7 @@
 #
 # spec file for package perl-AnyEvent-Connector
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@ Requires:       perl(AnyEvent::Socket)
 Requires:       perl(URI)
 Provides:       perl(AnyEvent::Connector) = 0.40.0
 Provides:       perl(AnyEvent::Connector::Proxy::http)
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
