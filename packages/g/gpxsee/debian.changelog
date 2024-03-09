@@ -1,3 +1,11 @@
+gpxsee (13.17) stable; urgency=low
+
+  * Added support for hillshading (IMG & Mapsforge maps).
+  * Fixed broken "recent files" under KDE/Plasma6 style.
+  * Minor fixes (Mapsforge, IMG and ENC maps).
+
+ -- Martin Tuma <tumic@cbox.cz>  Thu, 07 Mar 2024 21:37:16 +0100
+
 gpxsee (13.16) stable; urgency=low
 
   * Improved vector maps rendering.
