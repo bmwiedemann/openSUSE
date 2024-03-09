@@ -1,7 +1,7 @@
 #
 # spec file for package nautilus-image-converter
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2007-2010 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,8 @@ Version:        0.4.0
 Release:        0
 URL:            https://gitlab.gnome.org/coreyberla/nautilus-image-converter
 Source:         %{name}-%{version}.tar.xz
-
+# PATCH-FIX-UPSTREAM
+Patch0:         nautilus-image-converter-fix-translations.patch
 BuildRequires:  meson >= 0.49
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.28.0

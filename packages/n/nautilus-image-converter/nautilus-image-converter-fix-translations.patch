@@ -1,0 +1,19 @@
+commit be3ea2e3f6ed6949035fc155dfb976ec5f43a49f
+Author: Dominique Leuenberger <dimstar@opensuse.org>
+Date:   Thu Mar 7 10:30:19 2024 +0100
+
+    po: Add valid charset to fr.po
+
+diff --git a/po/fr.po b/po/fr.po
+index a73c55f..3f34924 100644
+--- a/po/fr.po
++++ b/po/fr.po
+@@ -14,7 +14,7 @@ msgstr ""
+ "Last-Translator:  <>\n"
+ "Language-Team: \n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=\n"
++"Content-Type: text/plain; charset=UTF-8\n"
+ "Content-Transfer-Encoding: "
+ 
+ #: ../src/nautilus-image-converter.c:118
