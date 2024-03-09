@@ -824,4 +824,12 @@
 - Update graphviz-rpmlintrc</comment>
     <requestid>1149009</requestid>
   </revision>
+  <revision rev="101" vrev="9">
+    <srcmd5>5e06e215427194a40d29f636f27e6ece</srcmd5>
+    <version>2.49.3</version>
+    <time>1710014026</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1156284</requestid>
+  </revision>
 </revisionlist>

@@ -17,43 +17,32 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-
 %if "%{flavor}" != ""
 %define psuffix -%{flavor}
 %else
 %define psuffix %{nil}
 %endif
-
 #fixes build failure caused by new .debug files, not sure how to fix correctly
-
 %define mname graphviz
 # name of the plugin config file that dot creates
 %define config_file config6
-# Java and ocaml are not in ring1, thus this gets overriden in staging
-# Also, both install into generic locations instead of a language
-# specific prefix, disable both
-%bcond_with    java
-%bcond_with    ocaml
 %if "%{flavor}" == "addons"
+%define phpconf_dir %{_sysconfdir}/php%{php_version}/conf.d
+%define phpext_dir  %(%{__php_config} --extension-dir)
+%define ruby_version $(pkg-config --variable=RUBY_API_VERSION %{_libdir}/pkgconfig/ruby-*.pc)
 # PHP8 requires swig >= 4.1.0, https://github.com/swig/swig/commit/56d74355735f3661406d69d04d89d1bdb4ca96f9
 %if 0%{?suse_version} >= 1599
 %define php_version 8
 %else
 %define php_version 7
 %endif
-%define phpconf_dir %{_sysconfdir}/php%{php_version}/conf.d
-%define phpext_dir  %(%{__php_config} --extension-dir)
-
-%define ruby_version $(pkg-config --variable=RUBY_API_VERSION %{_libdir}/pkgconfig/ruby-*.pc)
 %endif
-
 # No pkgconfig(gts) in sle12 GA or SPx, but in sle15
 %if 0%{?suse_version} == 1315 && !0%{?is_opensuse}
 %bcond_with    gts
 %else
 %bcond_without gts
 %endif
-
 %define cdt_soversion 5
 %define cgraph_soversion 6
 %define gvc_soversion 6
@@ -61,7 +50,11 @@
 %define lab_gamut_soversion 1
 %define pathplan_soversion 4
 %define xdot_soversion 4
-
+# Java and ocaml are not in ring1, thus this gets overriden in staging
+# Also, both install into generic locations instead of a language
+# specific prefix, disable both
+%bcond_with    java
+%bcond_with    ocaml
 Name:           graphviz%{psuffix}
 Version:        2.49.3
 Release:        0
@@ -83,7 +76,8 @@ Patch5:         graphviz-no_strict_aliasing.patch
 Patch6:         graphviz-no_php_extra_libs.patch
 # https://gitlab.com/graphviz/graphviz/-/issues/2303
 Patch7:         swig-4.1.0.patch
-
+#PATCH-FIX-UPSTREAM gvc: detect plugin installation failure and display an error
+Patch8:         gvc-detect-plugin-installation-failure-and-display-an-error.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -96,12 +90,13 @@ BuildRequires:  libstdc++-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(zlib)
+Requires:       bitstream-vera-fonts
+Requires:       graphviz-plugins-core = %{version}
+Recommends:     graphviz-gd = %{version}
 %if %{with gts}
 BuildRequires:  pkgconfig(gts)
 %endif
-BuildRequires:  pkgconfig(zlib)
-Requires:       graphviz-plugins-core = %{version}
-Recommends:     graphviz-gd = %{version}
 %if "%{flavor}" == "addons"
 BuildRequires:  freeglut-devel
 BuildRequires:  ghostscript
@@ -109,13 +104,6 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libwebp-devel
 BuildRequires:  perl
-%if %{php_version} == 8
-BuildRequires:  php8-devel
-BuildRequires:  swig >= 4.1.0
-%else
-BuildRequires:  php7-devel
-BuildRequires:  swig >= 3.0.11
-%endif
 BuildRequires:  ruby-devel
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(fontconfig)
@@ -136,6 +124,13 @@ BuildRequires:  pkgconfig(tcl)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xaw7)
 BuildRequires:  pkgconfig(xext)
+%if %{php_version} == 8
+BuildRequires:  php8-devel
+BuildRequires:  swig >= 4.1.0
+%else
+BuildRequires:  php7-devel
+BuildRequires:  swig >= 3.0.11
+%endif
 %if %{with java}
 BuildRequires:  java-devel >= 1.6.0
 %endif
@@ -148,7 +143,6 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Widgets)
 %endif
-Requires:       bitstream-vera-fonts
 
 %description
 A collection of tools and tcl packages for the manipulation and layout
@@ -176,7 +170,7 @@ Experimental large graph viewer using graphviz
 Summary:        Graphviz plugins that use gtk/GNOME
 Group:          Productivity/Graphics/Visualization/Graph
 Requires(post): graphviz = %{version}
-Supplements:    packageand(graphviz:xorg-x11-fonts-core)
+Supplements:    (graphviz and xorg-x11-fonts-core)
 
 %description -n graphviz-gnome
 Graphviz plugins that use gtk/GNOME.
@@ -414,6 +408,7 @@ programs that use the graphviz libraries including man3 pages.
 %patch -P 5 -p1
 %patch -P 6
 %patch -P 7 -p1
+%patch -P 8 -p1
 
 # pkg-config returns 0 (TRUE) when guile-2.2 is present
 if pkg-config --atleast-version=2.2 guile-2.2; then

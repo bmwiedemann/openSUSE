@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar  7 14:57:35 UTC 2024 - Thomas Renninger <trenn@suse.de>
+
+- VUL-0: CVE-2023-46045: graphviz: out-of-bounds read via a crafted config6a file
+  bsc#1219491
+A gvc-detect-plugin-installation-failure-and-display-an-error.patch
+- Some alphabetical re-ordering and other spec file changes which should
+  not have any functional change which came from some kind of auto-spec
+  cleaner
+
+-------------------------------------------------------------------
 Thu Feb 22 07:45:53 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
