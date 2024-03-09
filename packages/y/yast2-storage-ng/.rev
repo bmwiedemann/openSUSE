@@ -1219,4 +1219,12 @@
     <comment>submit new version 5.0.7</comment>
     <requestid>1154849</requestid>
   </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>bec583eb856f775a9a12bfce100444e0</srcmd5>
+    <version>5.0.8</version>
+    <time>1710014047</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 5.0.8</comment>
+    <requestid>1156335</requestid>
+  </revision>
 </revisionlist>

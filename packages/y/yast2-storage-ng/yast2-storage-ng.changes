@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  7 16:26:04 UTC 2024 - José Iván López González <jlopez@suse.com>
+
+- Share the logic for generating the description of a device and
+  the label of a file system.
+- Needed for (gh#openSUSE/agama#1079).
+- 5.0.8
+
+-------------------------------------------------------------------
 Mon Mar  4 14:36:58 UTC 2024 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - [Proposal] Apply mandatory SpaceMaker actions in all the affected
