@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Spreadsheet-ReadSXC
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,7 @@ Provides:       perl(Spreadsheet::ParseODS::Styles) = 0.380.0
 Provides:       perl(Spreadsheet::ParseODS::Workbook) = 0.380.0
 Provides:       perl(Spreadsheet::ParseODS::Worksheet) = 0.380.0
 Provides:       perl(Spreadsheet::ReadSXC) = 0.380.0
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
