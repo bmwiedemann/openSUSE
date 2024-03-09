@@ -140,7 +140,7 @@ Provides:       perl(SQL::Translator::Types)
 Provides:       perl(SQL::Translator::Utils) = %{version}
 Provides:       perl(SQL::Translator::Utils::Error)
 Provides:       perl(Test::SQL::Translator) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 Recommends:     perl(GD)
 Recommends:     perl(Graph::Directed)
 Recommends:     perl(GraphViz)

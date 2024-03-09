@@ -161,4 +161,13 @@ See e.g. script/sqlt (forwarded request 185916 from babelworx)</comment>
     <comment></comment>
     <requestid>1156063</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>8e9c137d9124a84940011a437047dd84</srcmd5>
+    <version>1.650.0</version>
+    <time>1710014110</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix disabling of __perllib_provides
+</comment>
+    <requestid>1156506</requestid>
+  </revision>
 </revisionlist>
