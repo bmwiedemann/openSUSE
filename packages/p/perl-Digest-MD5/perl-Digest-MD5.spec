@@ -29,7 +29,7 @@ Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
 Provides:       perl(Digest::MD5) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
