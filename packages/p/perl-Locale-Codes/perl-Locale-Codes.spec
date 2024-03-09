@@ -57,7 +57,7 @@ Provides:       perl(Locale::Country) = %{version}
 Provides:       perl(Locale::Currency) = %{version}
 Provides:       perl(Locale::Language) = %{version}
 Provides:       perl(Locale::Script) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
