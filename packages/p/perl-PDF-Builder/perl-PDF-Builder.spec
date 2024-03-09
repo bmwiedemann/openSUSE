@@ -146,7 +146,7 @@ Provides:       perl(PDF::Builder::Resource::XObject::Image::TIFF_GT) = %{versio
 Provides:       perl(PDF::Builder::UniWrap) = %{version}
 Provides:       perl(PDF::Builder::Util) = %{version}
 Provides:       perl(PDF::Builder::ViewerPreferences) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
