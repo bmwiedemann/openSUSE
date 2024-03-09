@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Mar  5 14:19:32 UTC 2024 - seife+obs@b1-systems.com
+
+- update to version 2.3.1 (2022-11-17):
+  * multiple bugfixes, style fixes
+  * add nix flake support
+  * add support for tunnel commands
+  * add support for batchSizeLimit
+  * add -onepass option
+  * add crontab support
+  * support relative executable paths
+- remove obsoleted patches lsyncd-lua.patch, lsyncd-man.patch
+- add "After=remote-fs.target" to lsyncd.service to avoid syncing
+  unmounted NFS shares
+
+-------------------------------------------------------------------
+Fri Mar  1 11:15:40 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Wed Oct  6 06:17:08 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
