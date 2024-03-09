@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  8 09:51:29 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.3
+  - rebootmgrd: add verbose mode
+  - Enable verbose mode in rebootmgr.service by default
+
+-------------------------------------------------------------------
 Wed Feb  7 13:07:11 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.2
