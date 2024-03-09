@@ -73,7 +73,7 @@ Provides:       perl(MooseX::Getopt::Meta::Attribute::Trait::NoGetopt) = %{versi
 Provides:       perl(MooseX::Getopt::OptionTypeMap) = %{version}
 Provides:       perl(MooseX::Getopt::ProcessedArgv) = %{version}
 Provides:       perl(MooseX::Getopt::Strict) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
