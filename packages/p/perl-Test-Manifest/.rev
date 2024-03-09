@@ -164,4 +164,13 @@
     <comment></comment>
     <requestid>1153790</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>8152794273ce56eb54e20790954bb519</srcmd5>
+    <version>2.24.0</version>
+    <time>1710014113</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix disabling of __perllib_provides
+</comment>
+    <requestid>1156515</requestid>
+  </revision>
 </revisionlist>
