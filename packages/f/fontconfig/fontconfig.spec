@@ -18,7 +18,7 @@
 
 Name:           fontconfig
 %define lname   libfontconfig1
-Version:        2.14.2
+Version:        2.15.0
 Release:        0
 Summary:        Library for Font Configuration
 License:        MIT
@@ -161,7 +161,7 @@ mkdir -p %{buildroot}/%{_docdir}/%{name}
 %files lang -f %{name}.lang -f %{name}-conf.lang
 
 %files doc
-%doc AUTHORS ChangeLog README
+%doc AUTHORS ChangeLog README.md
 %dir %{_docdir}/%{name}
 %{_docdir}/%{name}/fontconfig-user.html
 %{_docdir}/%{name}/fontconfig-user.pdf

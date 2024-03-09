@@ -843,4 +843,12 @@ As we probably don't want a prerelease in 13.1, please checkin there also (forwa
     <comment></comment>
     <requestid>1129692</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>f92457d70dcea6f9c6ecac4e9f4fc7d4</srcmd5>
+    <version>2.15.0</version>
+    <time>1710014055</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1135844</requestid>
+  </revision>
 </revisionlist>
