@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  8 15:37:58 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Stop testing python39: dropped since ipython 8.19
+
+-------------------------------------------------------------------
 Wed Feb 21 15:35:47 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Simplify test flavor logic
