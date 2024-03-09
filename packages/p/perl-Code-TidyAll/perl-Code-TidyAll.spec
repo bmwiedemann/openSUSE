@@ -123,7 +123,7 @@ Provides:       perl(Code::TidyAll::SVN::Util) = %{version}
 Provides:       perl(Code::TidyAll::Util::Zglob) = %{version}
 Provides:       perl(Code::TidyAll::Zglob) = %{version}
 Provides:       perl(Test::Code::TidyAll) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 Recommends:     perl(Parallel::ForkManager)
 %{perl_requires}
 
