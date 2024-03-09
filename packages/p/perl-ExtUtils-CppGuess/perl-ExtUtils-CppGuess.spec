@@ -1,7 +1,7 @@
 #
 # spec file for package perl-ExtUtils-CppGuess
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@ BuildRequires:  perl(Test::More) >= 0.88
 Requires:       perl(Capture::Tiny)
 Requires:       perl(ExtUtils::ParseXS) >= 3.35
 Provides:       perl(ExtUtils::CppGuess) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  gcc-c++
