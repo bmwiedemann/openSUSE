@@ -36,7 +36,7 @@ BuildRequires:  perl(Test::Time)
 BuildRequires:  perl(URI::Escape)
 Requires:       perl(URI::Escape)
 Provides:       perl(Cookie::Baker) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
