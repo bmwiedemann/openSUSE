@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Dist-Zilla
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -314,7 +314,7 @@ Provides:       perl(Dist::Zilla::Types) = %{version}
 Provides:       perl(Dist::Zilla::Util) = %{version}
 Provides:       perl(Dist::Zilla::Util::AuthorDeps) = %{version}
 Provides:       perl(Test::DZil) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 Recommends:     perl(App::cpanminus)
 Recommends:     perl(Archive::Tar::Wrapper) >= 0.15
 Recommends:     perl(Data::OptList) >= 0.110
