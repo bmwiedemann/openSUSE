@@ -37,7 +37,7 @@ BuildRequires:  perl(Test::Requires)
 Requires:       perl(HTML::Entities)
 Requires:       perl(Parse::ANSIColor::Tiny) >= 0.600
 Provides:       perl(HTML::FromANSI::Tiny) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
