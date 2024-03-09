@@ -1,6 +1,6 @@
 [Unit]
 Description=Live Syncing (Mirror) Daemon
-After=network.target
+After=network.target remote-fs.target
 
 [Service]
 # added automatically, for details please see

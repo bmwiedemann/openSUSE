@@ -1,7 +1,7 @@
 #
 # spec file for package lsyncd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           lsyncd
-Version:        2.2.3
+Version:        2.3.1
 Release:        0
 Summary:        Live Syncing (Mirror) Daemon
 License:        GPL-2.0-only
@@ -33,10 +33,8 @@ Source2:        rsync_sudo.sh
 Source3:        %{name}.service
 Source4:        %{name}.sysconfig
 Source5:        %{name}.logrotate
-Patch0:         lsyncd-lua.patch
-Patch1:         lsyncd-man.patch
 BuildRequires:  asciidoc
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(lua) >= 5.2
@@ -49,9 +47,7 @@ Requires:       rsync >= 3.1
 Lsyncd (Live Syncing (Mirror) Daemon) uses rsync to synchronize local directories with a remote machine running rsyncd. It watches multiple directory trees through inotify. The first step after adding the watches is to rsync all directories with the remote host, and then the software synchronizes single files by collecting the inotify events. lsyncd is a lightweight live mirror solution that should be easy to install and use while blending well with your system.
 
 %prep
-%setup -q -n %{name}-release-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -71,6 +67,7 @@ install -Dm 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/logrotate.d/lsyncd
 install -Dm 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/lsyncd/lsyncd.conf
 install -Dm 755 %{SOURCE2} %{buildroot}%{_sysconfdir}/lsyncd/rsync_sudo.sh
 install -Dm 644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.%{name}
+rm -rf %{buildroot}/usr/doc/examples
 
 %pre
 %service_add_pre %{name}.service
@@ -86,7 +83,7 @@ install -Dm 644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 
 %files
 %license COPYING
-%doc ChangeLog
+%doc ChangeLog examples/*
 %{_bindir}/lsyncd
 %{_sbindir}/rc%{name}
 %{_mandir}/man1/lsyncd.1%{?ext_man}
