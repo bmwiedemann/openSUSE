@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTTP-Tiny
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(IPC::Cmd)
 BuildRequires:  perl(Test::More) >= 0.96
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 Recommends:     perl(HTTP::CookieJar) >= 0.001
 Recommends:     perl(IO::Socket::IP) >= 0.32
 Recommends:     perl(IO::Socket::SSL) >= 1.42
