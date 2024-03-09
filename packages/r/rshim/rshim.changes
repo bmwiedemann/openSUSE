@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  7 10:06:39 UTC 2024 - Matthias Brugger <mbrugger@suse.com>
+
+- Update to 2.0.20.0 (jsc#PED-6843 jsc#PED-6979)
+  * Adjust delay time for nic_fw reset
+  * Add BFB completion condition for enhanced NIC mode
+  * Fixes for potential high CPU utilization
+
+-------------------------------------------------------------------
 Thu Nov  2 15:58:07 UTC 2023 - Matthias Brugger <mbrugger@suse.com>
 
 - Update to 2.0.12.1
