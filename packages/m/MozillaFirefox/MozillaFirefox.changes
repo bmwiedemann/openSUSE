@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar  8 06:16:48 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 123.0.1
+  * Fixed the *Firefox Translation* language indicator in the
+    address bar displaying a colored square icon instead of the
+    language code icon. (bmo#1879415)
+  * Fixed a regression with the `onChange` event not firing when
+    clearing the value of a `textarea` HTML field.
+    (bmo#1881457)
+  * Fixed a regression in the JavaScript JIT engine incorrectly
+    inlining strings in some cases. (bmo#1882386)
+  * Fixed: Fixed low contrast of text when selecting rows in the
+    Developer tools' Storage panel. (bmo#1877090)
+
+-------------------------------------------------------------------
 Thu Feb 22 11:02:39 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 123.0
