@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Module-CPANTS-Analyse
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,7 +80,7 @@ Provides:       perl(Module::CPANTS::Kwalitee::Repackageable) = 1.20.0
 Provides:       perl(Module::CPANTS::Kwalitee::Signature) = 1.20.0
 Provides:       perl(Module::CPANTS::Kwalitee::Uses) = 1.20.0
 Provides:       perl(Module::CPANTS::Kwalitee::Version) = 1.20.0
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 Source99:       rpmlintrc
