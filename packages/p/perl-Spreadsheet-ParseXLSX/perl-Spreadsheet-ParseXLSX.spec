@@ -50,7 +50,7 @@ Provides:       perl(Spreadsheet::ParseXLSX) = %{version}
 Provides:       perl(Spreadsheet::ParseXLSX::Decryptor) = %{version}
 Provides:       perl(Spreadsheet::ParseXLSX::Decryptor::Agile) = %{version}
 Provides:       perl(Spreadsheet::ParseXLSX::Decryptor::Standard) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
