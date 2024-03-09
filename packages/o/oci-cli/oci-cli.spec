@@ -103,8 +103,8 @@ Some of these, such as the ability to run scripts, extend the Console's
 functionality.
 
 %prep
-%setup -q -n oci-cli-%{version}
-%patch0 -p1
+%autosetup -p1 -n oci-cli-%{version}
+
 # Fix includes
 find . -name "*.py" -exec sed -i 's/from oci\._vendor //' \{\} +
 find . -name "*.py" -exec sed -i 's/oci\._vendor\.//' \{\} +
