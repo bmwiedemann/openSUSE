@@ -1,7 +1,7 @@
 #
 # spec file for package perl-MCE
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,7 +63,7 @@ Provides:       perl(MCE::Step) = 1.889.0
 Provides:       perl(MCE::Stream) = 1.889.0
 Provides:       perl(MCE::Subs) = 1.889.0
 Provides:       perl(MCE::Util) = 1.889.0
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 Recommends:     perl(Sereal::Decoder) >= 3.015
 Recommends:     perl(Sereal::Encoder) >= 3.015
 %{perl_requires}
