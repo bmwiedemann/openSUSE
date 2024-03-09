@@ -1627,4 +1627,13 @@ Tons of changes, just the peak of the ice berg:
     <comment></comment>
     <requestid>1126987</requestid>
   </revision>
+  <revision rev="175" vrev="2">
+    <srcmd5>93f40edf228e9b019e3348e13e1e2c56</srcmd5>
+    <version>9.350.0</version>
+    <time>1710014102</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix disabling of __perllib_provides
+</comment>
+    <requestid>1156497</requestid>
+  </revision>
 </revisionlist>
