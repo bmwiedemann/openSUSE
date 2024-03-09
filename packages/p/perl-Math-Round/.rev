@@ -80,4 +80,12 @@
     <comment></comment>
     <requestid>1118902</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>0ecddb5684aea398c5c54fb2936509c0</srcmd5>
+    <version>0.80.0</version>
+    <time>1710014099</time>
+    <user>dimstar_suse</user>
+    <comment>Fix disabling of __perllib_provides</comment>
+    <requestid>1156493</requestid>
+  </revision>
 </revisionlist>
