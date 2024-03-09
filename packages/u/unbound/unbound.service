@@ -9,11 +9,13 @@ Wants=nss-lookup.target
 
 [Service]
 Type=simple
+User=unbound
+Group=unbound
 EnvironmentFile=-/etc/sysconfig/unbound
 #ExecStartPre=/sbin/runuser --shell /bin/sh -c "/usr/sbin/unbound-anchor -a /var/lib/unbound/root.key -c /etc/unbound/icannbundle.pem" unbound
-ExecStartPre=/usr/bin/sudo -u unbound /usr/sbin/unbound-anchor -a /var/lib/unbound/root.key -c /etc/unbound/icannbundle.pem
+ExecStartPre=/usr/sbin/unbound-anchor -a /var/lib/unbound/root.key -c /etc/unbound/icannbundle.pem
 ExecStartPre=/usr/sbin/unbound-checkconf
-ExecStart=/usr/sbin/unbound -d $UNBOUND_OPTIONS
+ExecStart=!/usr/sbin/unbound -d $UNBOUND_OPTIONS
 
 [Install]
 WantedBy=multi-user.target

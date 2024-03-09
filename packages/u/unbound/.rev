@@ -591,4 +591,16 @@ Features
     <comment></comment>
     <requestid>1153210</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>67b6110fcdf08829eb125a46652d8309</srcmd5>
+    <version>1.19.2</version>
+    <time>1710014045</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.19.2 [bsc#1221164, CVE-2024-1931]
+- as we use --disable-explicit-port-randomisation, also disable
+  outgoing-port-permit and outgoing-port-avoid in config file to
+  suppress the related unbound-checkconf warnings on every start
+- Use prefixes instead of sudo in unbound.service (boo#1215628)</comment>
+    <requestid>1156332</requestid>
+  </revision>
 </revisionlist>

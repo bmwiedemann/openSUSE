@@ -33,7 +33,7 @@
 %define piddir /run
 
 Name:           unbound
-Version:        1.19.1
+Version:        1.19.2
 Release:        0
 BuildRequires:  flex
 BuildRequires:  ldns-devel >= %{ldns_version}
@@ -174,6 +174,7 @@ This package holds the Python modules and extensions for unbound.
 
 %build
 %sysusers_generate_pre %{SOURCE19} anchor unbound.conf
+
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
 
