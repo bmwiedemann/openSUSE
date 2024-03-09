@@ -23,10 +23,15 @@ Version:        1.26
 Release:        0
 Summary:        Account management library for GLib Applications
 License:        LGPL-2.1-only
-Group:          System/Libraries
 URL:            https://gitlab.com/accounts-sso/libaccounts-glib
 Source:         https://gitlab.com/accounts-sso/libaccounts-glib/-/archive/%{version}/libaccounts-glib-%{version}.tar.gz
 Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-ag-account-fix-incorrect-cleanup-in-ag_account_final.patch
+Patch1:         0002-Build-Don-t-install-Python-overrides-by-default.patch
+Patch2:         0003-Lib-do-not-attempt-to-terminate-the-GTask-twice.patch
+Patch3:         0004-ag-provider-fix-memory-leak-on-provider-tags.patch
+Patch4:         0006-ag-account-do-not-emit-misleading-enabled-signals-on.patch
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -46,24 +51,14 @@ BuildRequires:  pkgconfig(vapigen)
 %description
 This package contains the shared libraries for use by applications.
 
-%package -n %{name}%{sover}
+%package -n libaccounts-glib%{sover}
 Summary:        Account management library for GLib Applications
-Group:          System/Libraries
 
-%description -n %{name}%{sover}
+%description -n libaccounts-glib%{sover}
 This package contains the shared libraries for use by applications.
-
-%package -n python3-libaccounts
-Summary:        Python bindings for the Account management library
-Group:          Development/Languages/Python
-
-%description -n python3-libaccounts
-This package contains the python bindings for the account
-management library.
 
 %package -n %{typelib}
 Summary:        Account management library for GLib Applications -- Introspection Bindings
-Group:          System/Libraries
 
 %description -n %{typelib}
 This package contains the GObject Introspection bindings for the
@@ -71,10 +66,8 @@ accounts-glib library.
 
 %package devel
 Summary:        Development files for libaccounts-glib
-Group:          Development/Libraries/C and C++
-Requires:       %{name}%{sover} = %{version}
+Requires:       libaccounts-glib%{sover} = %{version}
 Requires:       %{typelib} = %{version}
-Requires:       python3-libaccounts = %{version}
 
 %description devel
 This package contains the development files for the accounts-glib
@@ -82,7 +75,6 @@ library.
 
 %package docs
 Summary:        Documentation for libaccounts-glib
-Group:          Documentation/HTML
 BuildArch:      noarch
 
 %description docs
@@ -91,8 +83,7 @@ library.
 
 %package tools
 Summary:        Tools for libaccounts-glib
-Group:          Development/Tools/Other
-Requires:       %{name}%{sover} = %{version}
+Requires:       libaccounts-glib%{sover} = %{version}
 
 %description tools
 This package contains the tools for the accounts-glib library.
@@ -102,39 +93,36 @@ This package contains the tools for the accounts-glib library.
 
 %build
 %meson
+
 %meson_build
 
 %install
 %meson_install
 
-%post -n %{name}%{sover} -p /sbin/ldconfig
-%postun -n %{name}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libaccounts-glib%{sover}
 
-%files -n %{name}%{sover}
+%files -n libaccounts-glib%{sover}
 %doc NEWS
 %license COPYING
-%{_libdir}/%{name}.so.%{sover}*
+%{_libdir}/libaccounts-glib.so.%{sover}*
 # The library version wasn't updated in the 1.26 release
-%{_libdir}/%{name}.so.1.25
+%{_libdir}/libaccounts-glib.so.1.25
 
 %files -n %{typelib}
 %{_libdir}/girepository-1.0/Accounts-1.0.typelib
 
-%files -n python3-libaccounts
-%{python3_sitearch}/gi/overrides/
-
 %files devel
-%{_includedir}/%{name}/
+%{_includedir}/libaccounts-glib/
 %{_datadir}/gettext/
-%{_libdir}/%{name}.so
-%{_libdir}/pkgconfig/%{name}.pc
+%{_libdir}/libaccounts-glib.so
+%{_libdir}/pkgconfig/libaccounts-glib.pc
 %{_datadir}/gir-1.0/Accounts-1.0.gir
 %dir %{_datadir}/vala/
 %dir %{_datadir}/vala/vapi/
-%{_datadir}/vala/vapi/%{name}.*
+%{_datadir}/vala/vapi/libaccounts-glib.*
 
 %files docs
-%doc %{_datadir}/gtk-doc/html/%{name}/
+%doc %{_datadir}/gtk-doc/html/libaccounts-glib/
 
 %files tools
 %{_bindir}/ag-backup
