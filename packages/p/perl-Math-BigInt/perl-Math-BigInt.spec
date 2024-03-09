@@ -40,7 +40,7 @@ Provides:       perl(Math::BigInt) = %{version}
 Provides:       perl(Math::BigInt::Calc) = %{version}
 Provides:       perl(Math::BigInt::Lib) = %{version}
 Provides:       perl(Math::BigRat) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 Recommends:     perl(bignum) >= 0.22
