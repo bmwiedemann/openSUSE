@@ -1,7 +1,7 @@
 #
 # spec file for package libwacom
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 Name:           libwacom
-Version:        2.8.0
+Version:        2.10.0
 Release:        0
 Summary:        Library to identify wacom tablets
 License:        MIT
@@ -32,6 +32,7 @@ BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gudev-1.0)
+BuildRequires:  pkgconfig(libevdev) >= 1.7.0
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  doxygen
 
