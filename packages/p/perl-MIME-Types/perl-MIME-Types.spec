@@ -32,7 +32,7 @@ BuildRequires:  perl-macros
 Provides:       perl(MIME::Type) = %{version}
 Provides:       perl(MIME::Types) = %{version}
 Provides:       perl(MojoX::MIME::Types) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
