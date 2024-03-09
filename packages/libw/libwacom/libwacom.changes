@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Mar  7 23:50:38 UTC 2024 - Aeneas Jaißle <aj@ajaissle.de>
+
+- update to 2.10.0:
+  * Append to DeviceMatch for X1 Yoga Gen 5 (#632)
+  * Add .tablet file for Ingenic touch and pen display (#621)
+  * Update the name for the Dell Active Pen (#628)
+  * Add support for xp-pen artist 10s table (#625)
+  * github: Minimize permissions granted to automated 
+    workflows / jobs
+  * data: Update ModelName for DTH134 and DTC121
+  * data: Add Wacom HID-5362
+  * github: update the issue templates
+  * github: add a label commenter bot
+  * Add an editorconfig file
+  * github: fix the sysinfo check workflow
+  * tools: fix a memleak in list-local-devices
+  * Fix an indentation issue
+  * data: Intuos Pro 2 is compatible with Intuos 4 styli
+  * libwacom 2.10.0
+  * data: add isdv4-50a0 (#630)
+  * build(deps): bump tj-actions/changed-files in 
+    /.github/workflows
+  * Add support for Lenovo ThinkPad X1 Yoga Gen 7 (#626)
+  
+- update to 2.9.0:
+  * data: add Wacom Cintiq Pro 22 & 17
+  * data: remove erroneous dash from latest Cintiq Pro model 
+    names
+  * data: add dtc121
+  * data: add dth134
+  * meson.build: correct license to HPND
+  * Switch strcmp to g_str_equal()
+  * meson.build: remove duplicate pytest run
+  * Add support for evdev code parsing
+  * Drop the separate Button= assignment
+  * database: move parsing the features into a helper
+  * data: add a new Keys/KeyCodes entry to the tablet files
+  * CI: fix the pages job for the new libevdev dependency
+  * libwacom: only memcmp the led data if we have leds
+  * libwacom 2.9.0
+  * data: Add isdv-48b7 (#604)
+  * Add data for XP-Pen G430s (#603)
+  * data: Add XP-Pen Artist 13.3 Pro (#601)
+
+- requires libevdev >= 1.7.0
+
+-------------------------------------------------------------------
 Mon Sep 11 12:52:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.0 (bsc#1214390):
