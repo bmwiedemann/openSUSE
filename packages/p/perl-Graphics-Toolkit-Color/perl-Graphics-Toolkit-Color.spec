@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Graphics-Toolkit-Color
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,7 +52,7 @@ Provides:       perl(Graphics::Toolkit::Color::Space::Instance::YIQ) = 1.710.0
 Provides:       perl(Graphics::Toolkit::Color::Space::Shape) = 1.710.0
 Provides:       perl(Graphics::Toolkit::Color::Space::Util) = 1.710.0
 Provides:       perl(Graphics::Toolkit::Color::Values) = 1.710.0
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
