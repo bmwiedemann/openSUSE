@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  8 19:00:48 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 2024.2.1
+  * Fix issues with clipboard under Wayland
+- Drop half of use-node-argon2.patch which was applied upstream and rename the rest as remove-argon2-browser.patch
+
+-------------------------------------------------------------------
 Wed Feb  7 20:35:34 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 2024.2.0

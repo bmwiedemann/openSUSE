@@ -18,7 +18,7 @@
 #
 
 Name:       bitwarden
-Version:    2024.2.0
+Version:    2024.2.1
 Release:    0
 Summary:    A secure and free password manager for all of your devices
 Group:      Productivity/Security
@@ -55,7 +55,7 @@ Patch0:    remove-unnecessary-deps.patch
 Patch1:    fix-desktop-file.patch
 Patch3:    do-not-install-font-privately.patch
 Patch4:    desktop_native-rust-arch.patch
-Patch5:    use-node-argon2.patch
+Patch5:    remove-argon2-browser.patch
 Patch6:    argon2-binary-path.patch
 Patch7:    bug-reporting-url.patch
 Patch8:    no-sourcemaps.patch
@@ -91,6 +91,7 @@ BuildRequires:  cargo-auditable
 BuildRequires: fdupes
 BuildRequires: fontpackages-devel
 BuildRequires: hicolor-icon-theme
+BuildRequires: jq
 %if 0%{?suse_version}
 BuildRequires: nodejs-packaging
 %endif
@@ -102,6 +103,7 @@ BuildRequires: zstd
 BuildRequires: gcc-c++
 BuildRequires: pkgconfig(glib-2.0)
 BuildRequires: pkgconfig(libsecret-1)
+BuildRequires: pkgconfig(wayland-protocols)
 
 Requires: (google-opensans-fonts or open-sans-fonts)
 Requires: nodejs-electron%{_isa}
@@ -140,6 +142,14 @@ mkdir %{_builddir}/cargo
 #Rust config
 cd apps/desktop/desktop_native
 tar --zstd -xf %SOURCE4
+rm -rf vendor/wayland-protocols/protocols
+ln -svT /usr/share/wayland-protocols vendor/wayland-protocols/protocols
+# https://blogs.gnome.org/mcatanzaro/2020/05/18/patching-vendored-rust-dependencies/
+for i in wayland-protocols; do
+pushd vendor/$i
+jq -cj '.files={}' .cargo-checksum.json >tmp && mv tmp .cargo-checksum.json && popd
+done
+
 
 # Make `node` and `npm` binaries refer to Electron
 %if 0%{?suse_version}
