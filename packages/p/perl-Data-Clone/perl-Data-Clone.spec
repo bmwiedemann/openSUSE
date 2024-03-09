@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Data-Clone
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@ BuildRequires:  perl(Test::Requires) >= 0.03
 BuildRequires:  perl(parent)
 Requires:       perl(parent)
 Provides:       perl(Data::Clone) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
