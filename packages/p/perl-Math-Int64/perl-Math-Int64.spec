@@ -33,7 +33,7 @@ Provides:       perl(Math::Int64) = %{version}
 Provides:       perl(Math::Int64::die_on_overflow)
 Provides:       perl(Math::Int64::native_if_available)
 Provides:       perl(Math::UInt64)
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 Requires:       perl-base = %{perl_version}
