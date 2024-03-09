@@ -56,7 +56,7 @@ Recommends:     python3-Weasyprint
 Patch0:         use_qpdfview.patch
 %endif
 %if %{with akonadi}
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || (0%{?suse_version} == 1500 && 0%{?sle_version} > 150500)
 BuildRequires:  cmake(KPim5AkonadiContact)
 %else
 BuildRequires:  cmake(KF5AkonadiContact)
@@ -87,7 +87,7 @@ See the website http://volle-kraft-voraus.de for more information.
 
 [ -f .tag ] && echo ".tag file exists in tarball." || echo "%{version}" > .tag
 
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || (0%{?suse_version} == 1500 && 0%{?sle_version} > 150500)
 %cmake_kf5 -d build
 %else
 %cmake_kf5 -d build -- -DAKONADI_LEGACY_BUILD=ON

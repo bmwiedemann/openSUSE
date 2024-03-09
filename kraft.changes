@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar  7 14:47:04 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Use BuildRequires cmake(KPim5AkonadiContact) on Leap 15.6
+
+-------------------------------------------------------------------
 Thu Feb 22 12:46:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
