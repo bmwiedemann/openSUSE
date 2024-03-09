@@ -32,7 +32,7 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::More) >= 0.94
 Provides:       perl(Mozilla::CA) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
