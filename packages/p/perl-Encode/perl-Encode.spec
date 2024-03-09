@@ -52,7 +52,7 @@ Provides:       perl(Encode::Unicode::UTF7) = 2.10
 Provides:       perl(Encode::XS)
 Provides:       perl(Encode::utf8)
 Provides:       perl(encoding) = 3.00
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
