@@ -33,7 +33,7 @@ BuildRequires:  perl(Devel::CheckLib)
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
 BuildRequires:  perl(Text::Patch)
 Provides:       perl(UUID) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  libuuid-devel
