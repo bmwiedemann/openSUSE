@@ -2122,4 +2122,12 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1146612</requestid>
   </revision>
+  <revision rev="203" vrev="1">
+    <srcmd5>6ee655120dd447c34af277a73b041a17</srcmd5>
+    <version>24.03.0</version>
+    <time>1710014056</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1154586</requestid>
+  </revision>
 </revisionlist>
