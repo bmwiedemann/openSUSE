@@ -161,7 +161,7 @@ Provides:       perl(Search::Elasticsearch::Serializer::JSON::XS) = %{version}
 Provides:       perl(Search::Elasticsearch::TestServer) = %{version}
 Provides:       perl(Search::Elasticsearch::Transport) = %{version}
 Provides:       perl(Search::Elasticsearch::Util) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 Recommends:     perl(IO::Socket::IP) >= 0.37
 Recommends:     perl(URI::Escape::XS)
 %{perl_requires}
