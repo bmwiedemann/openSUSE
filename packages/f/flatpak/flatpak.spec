@@ -1,7 +1,7 @@
 #
 # spec file for package flatpak
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%global selinuxtype targeted
 %define libname libflatpak0
 %define bubblewrap_version 0.8.0
 %define ostree_version 2020.8
@@ -60,6 +61,7 @@ BuildRequires:  libgpgme-devel >= 1.1.8
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python3-pyparsing
+BuildRequires:  selinux-policy-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  xdg-dbus-proxy >= %{xdg_dbus_proxy_version}
@@ -94,6 +96,7 @@ Requires:       bubblewrap >= %{bubblewrap_version}
 Requires:       ostree >= %{ostree_version}
 Requires:       xdg-dbus-proxy >= %{xdg_dbus_proxy_version}
 Requires:       xdg-desktop-portal >= 0.10
+Requires:       (flatpak-selinux = %{version} if selinux-policy-%{selinuxtype})
 Requires:       user(flatpak)
 # Remove after openSUSE Leap 42 is out of scope
 Provides:       xdg-app = %{version}
@@ -160,14 +163,28 @@ more information.
 Summary:        Add Flathub repository to system flatpak
 Group:          System/Packages
 Requires:       flatpak
-Requires(postun):flatpak
-Requires(postun):sed
+Requires(postun): flatpak
+Requires(postun): sed
 Supplements:    flatpak
 BuildArch:      noarch
 
 %description remote-flathub
 Flathub is a widely used repository for Flatpak applications. This package
 adds the Flathub repository to the list of system flatpak remotes.
+
+%package selinux
+Summary:        SELinux policy module for flatpak
+Group:          System Environment/Base
+Requires:       flatpak
+BuildArch:      noarch
+%{?selinux_requires}
+
+%description selinux
+flatpak is a system for building, distributing and running sandboxed desktop
+applications on Linux. See https://wiki.gnome.org/Projects/SandboxedApps for
+more information.
+
+This package provides the SELinux policy module for flatpak.
 
 %postun remote-flathub
 # upon uninstall
@@ -199,6 +216,7 @@ sed -i -e '1s,#!%{_bindir}/env python3,#!%{_bindir}/python3,' scripts/flatpak-*
 	--enable-documentation \
 	--enable-gtk-doc \
 	--with-wayland-security-context=yes \
+        --with-selinux_module=yes \
 	%{nil}
 %make_build
 %sysusers_generate_pre system-helper/flatpak.conf system-user-flatpak flatpak.conf
@@ -262,6 +280,24 @@ fi
 %service_del_postun flatpak-system-helper.service
 %service_del_postun update-system-flatpaks.service
 %service_del_postun update-system-flatpaks.timer
+
+%pre selinux
+%selinux_relabel_pre -s %{selinuxtype}
+
+%post selinux
+%selinux_modules_install -s %{selinuxtype} %{_datadir}/selinux/packages/flatpak.pp.bz2
+
+%preun selinux
+%selinux_relabel_pre -s %{selinuxtype}
+
+%postun selinux
+if [ $1 -eq 0 ]; then
+    %selinux_modules_uninstall -s %{selinuxtype} flatpak
+    %selinux_relabel_post -s %{selinuxtype}
+fi;
+
+%posttrans selinux
+%selinux_relabel_post -s %{selinuxtype}
 
 %files -f %{name}.lang
 %license COPYING
@@ -355,5 +391,9 @@ fi
 
 %files remote-flathub
 %config %{_sysconfdir}/flatpak/remotes.d/flathub.flatpakrepo
+
+%files selinux
+%{_datadir}/selinux/devel/include/contrib/flatpak.if
+%{_datadir}/selinux/packages/flatpak.pp.bz2
 
 %changelog

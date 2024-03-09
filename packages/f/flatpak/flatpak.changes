@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  7 11:21:12 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add a flatpak-selinux subpackage that provides a SELinux policy
+  module (boo#1220591).
+
+-------------------------------------------------------------------
 Tue Nov 14 19:34:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.15.6:
