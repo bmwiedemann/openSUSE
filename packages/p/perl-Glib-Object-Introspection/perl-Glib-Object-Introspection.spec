@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Glib-Object-Introspection
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@ Requires:       perl(ExtUtils::PkgConfig) >= 1
 Requires:       perl(Glib) >= 1.32
 Provides:       perl(Glib::Object::Introspection) = 0.51.0
 Provides:       perl(Glib::Object::Introspection::_FuncWrapper)
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  pkgconfig
