@@ -1,7 +1,7 @@
 #
 # spec file for package efitools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,12 @@
 Name:           efitools
 Version:        1.9.2
 Release:        0
-Summary:	UEFI secure boot toolkit
-License:        GPL-2.0-only and LGPL-2.1-only
+Summary:        UEFI secure boot toolkit
+License:        GPL-2.0-only AND LGPL-2.1-only
 URL:            https://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.git
 Source:         https://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.git/snapshot/%{name}-%{version}.tar.gz
 Patch1:         efitools-disable-efisigned.patch
+Patch2:         efitools-bsc1220470-fix-gcc14-errors.patch
 BuildRequires:  gnu-efi
 BuildRequires:  help2man
 BuildRequires:  openssl-devel
