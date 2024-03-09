@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  8 10:49:30 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix build with gcc14, bsc#1221007
+  * fix-build-gcc14.patch
+
+-------------------------------------------------------------------
 Fri Feb 23 11:16:54 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
