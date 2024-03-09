@@ -78,7 +78,7 @@ Provides:       perl(IO::Async::Timer) = %{version}
 Provides:       perl(IO::Async::Timer::Absolute) = %{version}
 Provides:       perl(IO::Async::Timer::Countdown) = %{version}
 Provides:       perl(IO::Async::Timer::Periodic) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 Recommends:     perl(IO::Socket::IP)
 %{perl_requires}
 # MANUAL BEGIN
