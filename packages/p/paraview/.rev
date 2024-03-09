@@ -511,4 +511,31 @@ Please consider for 13.2, which already has 4.2.0-RC1 and the only change is the
     <comment></comment>
     <requestid>1141041</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>ab37e575142bc824a9fdba2fbb743db4</srcmd5>
+    <version>5.12.0</version>
+    <time>1710014074</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.12.0:
+  * Save and load files on either the client or server
+  * Internationalization support with translations
+  * Importing and exporting of animation settings
+  * Copy and paste available for filters in the Pipeline Browser
+  * Widget colors linked to color palette
+  * Fire Dynamics Simulator file reader
+  * New “Toggle file sequence grouping” button in Open File dialog
+  * Reorganized Color Map Editor
+  * More info at &lt;https://www.kitware.com/paraview-5-12-0-release-notes/&gt;.
+- Use internal jsoncpp with leap &lt;= 15.5.
+- Use internal token lib.
+- Use internal FastFloat lib.
+- Use external verdict with leap &gt;= 15.5.
+- Use external pugixml with leap &gt;= 15.5.
+- Always use external CLI11.
+- Drop compatibility to leap 15.3.
+- Always skip using RPATH in SUSE builds.
+- Added patch: fix-soversion-soname.patch
+</comment>
+    <requestid>1156449</requestid>
+  </revision>
 </revisionlist>

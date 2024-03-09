@@ -17,11 +17,11 @@
 
 
 %define major_ver 5
-%define minor_ver 11
+%define minor_ver 12
 %define short_ver %{major_ver}.%{minor_ver}
 %define shlib libparaview%{major_ver}_%{minor_ver}
 
-%if 0%{?suse_version} <= 1500
+%if 0%{?sle_version} <= 150400 && 0%{?is_opensuse}
 %bcond_with    pugixml
 %bcond_with    verdict
 %else
@@ -29,16 +29,14 @@
 %bcond_without verdict
 %endif
 
-%if 0%{?sle_version} == 150300 && 0%{?is_opensuse}
-# No nlohmann_json in Leap 15.3
-%bcond_with    nlohmann
-# libproj too old in Leap 15.3
-%bcond_with    proj
+%if 0%{?sle_version} <= 150600 && 0%{?is_opensuse}
+%bcond_with    jsoncpp
 %else
-%bcond_without nlohmann
-%bcond_without proj
+%bcond_without jsoncpp
 %endif
 
+%bcond_without nlohmann
+%bcond_without proj
 %bcond_without gl2ps
 
 # Need patched version with HPDF_SHADING
@@ -46,7 +44,7 @@
 
 %define __builder ninja
 Name:           paraview
-Version:        %{short_ver}.2
+Version:        %{short_ver}.0
 Release:        0
 Summary:        Data analysis and visualization application
 License:        BSD-3-Clause
@@ -55,12 +53,13 @@ URL:            https://www.paraview.org
 Source0:        https://www.paraview.org/files/v%{short_ver}/ParaView-v%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 # CAUTION: GettingStarted may or may not be updated with each minor version
-Source2:        https://www.paraview.org/files/v%{short_ver}/ParaViewGettingStarted-%{major_ver}.%{minor_ver}.1.pdf
-Source3:        https://www.paraview.org/files/v%{short_ver}/ParaViewTutorial-%{major_ver}.%{minor_ver}.1.pdf
+Source2:        https://www.paraview.org/files/v%{short_ver}/ParaViewGettingStarted-%{major_ver}.%{minor_ver}.0.pdf
 # PATCH-FIX-UPSTREAM paraview-desktop-entry-fix.patch badshah400@gmail.com -- Fix desktop menu entry by inserting proper required categories
 Patch0:         paraview-desktop-entry-fix.patch
 # PATCH-FIX-OPENSUSE fix-libharu-missing-m.patch -- missing libraries for linking (gh#libharu/libharu#213)
 Patch2:         fix-libharu-missing-m.patch
+# We need to change the default soname for vtk modules.
+Patch3:         fix-soversion-soname.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  cgns-devel
 BuildRequires:  cmake >= 3.13
@@ -105,7 +104,9 @@ BuildRequires:  pkgconfig(eigen3) >= 2.91.0
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(glew)
-BuildRequires:  pkgconfig(jsoncpp) >= 0.7.0
+%if %{with jsoncpp}
+BuildRequires:  pkgconfig(jsoncpp) >= 1.9.4
+%endif
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(liblz4) >= 1.7.3
 BuildRequires:  pkgconfig(liblzma)
@@ -129,11 +130,7 @@ BuildRequires:  pkgconfig(pugixml) >= 1.11
 %if %{with verdict}
 BuildRequires:  verdict-devel
 %endif
-%if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300
-BuildRequires:  cli11-devel
-%else
 BuildRequires:  pkgconfig(CLI11)
-%endif
 BuildRequires:  pkgconfig(theora)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(zlib)
@@ -238,13 +235,16 @@ sed -Ei "1{s|#!/usr/bin/env python3|#!/usr/bin/python3|}" Clients/CommandLineExe
        -DPARAVIEW_BUILD_WITH_EXTERNAL:BOOL=ON \
        -DVTK_MODULE_USE_EXTERNAL_ParaView_vtkcatalyst:BOOL=OFF \
        -DVTK_MODULE_USE_EXTERNAL_VTK_exprtk:BOOL=OFF \
+       -DVTK_MODULE_USE_EXTERNAL_VTK_fast_float:BOOL=OFF \
        -DVTK_MODULE_USE_EXTERNAL_VTK_fmt:BOOL=OFF \
        -DVTK_MODULE_USE_EXTERNAL_VTK_gl2ps=%{?with_gl2ps:ON}%{!?with_gl2ps:OFF} \
        -DVTK_MODULE_USE_EXTERNAL_VTK_ioss:BOOL=OFF \
+       -DVTK_MODULE_USE_EXTERNAL_VTK_jsoncpp=%{?with_jsoncpp:ON}%{!?with_jsoncpp:OFF} \
        -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=%{?with_haru:ON}%{!?with_haru:OFF} \
        -DVTK_MODULE_USE_EXTERNAL_VTK_libproj=%{?with_proj:ON}%{!?with_proj:OFF} \
        -DVTK_MODULE_USE_EXTERNAL_VTK_nlohmannjson=%{?with_nlohmann:ON}%{!?with_nlohmann:OFF} \
        -DVTK_MODULE_USE_EXTERNAL_VTK_pugixml=%{?with_pugixml:ON}%{!?with_pugixml:OFF} \
+       -DVTK_MODULE_USE_EXTERNAL_VTK_token:BOOL=OFF \
        -DVTK_MODULE_USE_EXTERNAL_VTK_verdict=%{?with_verdict:ON}%{!?with_verdict:OFF} \
        %{nil}
 
@@ -260,7 +260,6 @@ sed -i "1{\@/usr/bin/env@d}" %{buildroot}%{python3_sitearch}/paraview/vtkmodules
 
 # INSTALL DOCUMENTATION USED BY THE HELP MENU IN MAIN APP
 install -Dm0644 %{S:2} %{buildroot}%{_datadir}/%{name}-%{short_ver}/doc/GettingStarted.pdf
-install -Dm0644 %{S:3} %{buildroot}%{_datadir}/%{name}-%{short_ver}/doc/Guide.pdf
 
 %fdupes %{buildroot}/
 

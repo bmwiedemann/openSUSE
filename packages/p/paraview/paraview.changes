@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Mar 07 00:00:00 UTC 2024 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com>
+
+- Update to version 5.12.0:
+  * Save and load files on either the client or server
+  * Internationalization support with translations
+  * Importing and exporting of animation settings
+  * Copy and paste available for filters in the Pipeline Browser
+  * Widget colors linked to color palette
+  * Fire Dynamics Simulator file reader
+  * New “Toggle file sequence grouping” button in Open File dialog
+  * Reorganized Color Map Editor
+  * More info at <https://www.kitware.com/paraview-5-12-0-release-notes/>.
+- Use internal jsoncpp with leap <= 15.5.
+- Use internal token lib.
+- Use internal FastFloat lib.
+- Use external verdict with leap >= 15.5.
+- Use external pugixml with leap >= 15.5.
+- Always use external CLI11.
+- Drop compatibility to leap 15.3.
+- Always skip using RPATH in SUSE builds.
+- Added patch: fix-soversion-soname.patch
+
+-------------------------------------------------------------------
 Fri Jan 19 13:38:42 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Do not delete zero-sized .cmake files, these are referenced from
