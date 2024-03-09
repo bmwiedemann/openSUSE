@@ -1,7 +1,7 @@
 #
 # spec file for package brickv
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019 Frank Kunz
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           brickv
-Version:        2.4.25
+Version:        2.4.26
 Release:        0
 Summary:        Tinkerforge Brick Viewer
 License:        GPL-2.0-only
