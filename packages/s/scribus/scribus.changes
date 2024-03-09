@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  8 09:33:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add patches to fix build with poppler 24.03:
+  * 0001-Fix-build-failure-with-poppler-24.03.0.patch
+  * 0001-Fix-incorrect-value-used-in-initial-build-fix-agains.patch
+
+-------------------------------------------------------------------
 Wed Feb  7 17:39:59 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.6.1:

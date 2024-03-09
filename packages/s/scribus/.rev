@@ -694,4 +694,12 @@
     <comment>Update to 1.6.1</comment>
     <requestid>1144999</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>d5a9d71741c5447fbf481f82a70f2318</srcmd5>
+    <version>1.6.1</version>
+    <time>1710014057</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with poppler 24.03</comment>
+    <requestid>1156308</requestid>
+  </revision>
 </revisionlist>
