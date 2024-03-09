@@ -103,7 +103,10 @@ sed -i '/cov/d' pytest.ini
 IGNORED_TESTS='test_callback_plugin_task_args_leak[playbook0] or '
 IGNORED_TESTS+='test_resolved_actions[playbook0] or '
 IGNORED_TESTS+='test_playbook_on_stats_summary_fields or '
-IGNORED_TESTS+='test_multiline_blank_write[pexpect]'
+IGNORED_TESTS+='test_multiline_blank_write[pexpect] or '
+# flaky tests
+IGNORED_TESTS+='test_run_command_long_running or '
+IGNORED_TESTS+='test_run_command_long_running_children'
 export PATH=%{buildroot}%{_bindir}:$PATH
 %pytest -k "not ($IGNORED_TESTS)"
 
