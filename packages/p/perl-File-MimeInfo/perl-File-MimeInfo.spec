@@ -40,7 +40,7 @@ Provides:       perl(File::MimeInfo) = %{version}
 Provides:       perl(File::MimeInfo::Applications) = %{version}
 Provides:       perl(File::MimeInfo::Magic) = %{version}
 Provides:       perl(File::MimeInfo::Rox) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  shared-mime-info
