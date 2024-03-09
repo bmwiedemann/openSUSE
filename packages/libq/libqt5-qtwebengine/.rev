@@ -928,4 +928,12 @@ of the last blockers as we're still waiting for an upstream fix. (forwarded requ
 - Build with python 3.11 on Leap</comment>
     <requestid>1148328</requestid>
   </revision>
+  <revision rev="95" vrev="3">
+    <srcmd5>2e402479bad7c657748a62e96ac267e6</srcmd5>
+    <version>5.15.16</version>
+    <time>1710014051</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1156408</requestid>
+  </revision>
 </revisionlist>
