@@ -1,7 +1,7 @@
 #
 # spec file for package glab
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021-2022 Orville Q. Song <orville@anislet.dev>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           glab
-Version:        1.36.0
+Version:        1.37.0
 Release:        0
 Summary:        A GitLab command line tool
 License:        MIT

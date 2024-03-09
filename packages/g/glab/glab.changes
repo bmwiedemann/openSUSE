@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Mar 08 16:53:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.37.0:
+  * feat: Json output
+  * fix: support transparent background on all tui views
+  * fix: reorganise commands/variable/update like
+    commands/variable/set
+  * docs: Add a stub changelog file
+  * fix: ci trigger does interactively ask for job (#7462)
+  * feat(ci): add compile command to show full ci config
+  * chore: Vale and Markdown rule refresh for project
+  * docs: Add mention of 1Password collaboration
+  * chore: Update .gitlab-ci.yml - use GO_VERSION var for
+    code_navigation
+  * fix(release): use link to display release URL
+  * fix: change `repo list` alias from `users` to `ls`
+  * fix: use gitlab.Client.BaseURL to build release upload URL
+  * docs(sourcefile): fix gitFlags comment
+  * docs: add glab ask GitLab Duo docs to README
+  * docs: document SemVer adoption and usage
+  * chore(dependency): update to github.com/google/renameio/v2
+  * build: upgrade go version from 1.19 to 1.21
+  * docs: Lint URL fragments for validity
+  * feat(pagination): add pagination to release list
+  * feat(schedule): add option to create a scheduled pipeline with
+    variables
+  * feat(lint): provide dry-run, include-jobs and ref options
+  * chore: remove deprecated `config init` command
+
+-------------------------------------------------------------------
 Thu Dec 14 11:16:06 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.36.0:
