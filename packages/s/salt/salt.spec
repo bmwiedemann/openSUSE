@@ -353,7 +353,8 @@ Patch99:        allow-kwargs-for-fileserver-roots-update-bsc-1218482.patch
 Patch100:       discover-both-.yml-and-.yaml-playbooks-bsc-1211888.patch
 # PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/66130
 Patch101:       fix-problematic-tests-and-allow-smooth-tests-executi.patch
-
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/628
+Patch102:       make-importing-seco.range-thread-safe-bsc-1211649.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END

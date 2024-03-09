@@ -1,0 +1,63 @@
+From 0913a58a36ef69d957dd9cc5c95fafe6d56448d5 Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Mon, 4 Mar 2024 11:27:35 +0100
+Subject: [PATCH] Make importing seco.range thread safe (bsc#1211649)
+
+---
+ salt/roster/range.py         | 5 +++++
+ salt/utils/roster_matcher.py | 5 +++++
+ 2 files changed, 10 insertions(+)
+
+diff --git a/salt/roster/range.py b/salt/roster/range.py
+index 3f039dcef42..1525f70c32b 100644
+--- a/salt/roster/range.py
++++ b/salt/roster/range.py
+@@ -15,16 +15,21 @@ import copy
+ import fnmatch
+ import logging
+ 
++import salt.loader
++
+ log = logging.getLogger(__name__)
+ 
+ # Try to import range from https://github.com/ytoolshed/range
+ HAS_RANGE = False
+ try:
++    salt.loader.LOAD_LOCK.acquire()
+     import seco.range
+ 
+     HAS_RANGE = True
+ except ImportError:
+     log.error("Unable to load range library")
++finally:
++    salt.loader.LOAD_LOCK.release()
+ # pylint: enable=import-error
+ 
+ 
+diff --git a/salt/utils/roster_matcher.py b/salt/utils/roster_matcher.py
+index db5dfda3e03..5165dc122b7 100644
+--- a/salt/utils/roster_matcher.py
++++ b/salt/utils/roster_matcher.py
+@@ -8,14 +8,19 @@ import functools
+ import logging
+ import re
+ 
++import salt.loader
++
+ # Try to import range from https://github.com/ytoolshed/range
+ HAS_RANGE = False
+ try:
++    salt.loader.LOAD_LOCK.acquire()
+     import seco.range
+ 
+     HAS_RANGE = True
+ except ImportError:
+     pass
++finally:
++    salt.loader.LOAD_LOCK.release()
+ # pylint: enable=import-error
+ 
+ 
+-- 
+2.44.0
+

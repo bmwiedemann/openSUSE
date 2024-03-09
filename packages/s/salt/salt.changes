@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  6 13:38:29 UTC 2024 - Marek Czernek <marek.czernek@suse.com>
+
+- Make importing seco.range thread safe (bsc#1211649)
+
+- Added:
+  * make-importing-seco.range-thread-safe-bsc-1211649.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 10:43:37 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Fix problematic tests and allow smooth tests executions on containers
