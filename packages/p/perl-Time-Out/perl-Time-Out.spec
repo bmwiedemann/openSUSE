@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Time-Out
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@ Requires:       perl(Try::Tiny)
 Provides:       perl(Time::Out) = %{version}
 Provides:       perl(Time::Out::Exception) = %{version}
 Provides:       perl(Time::Out::ParamConstraints) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 Recommends:     perl(Time::HiRes) >= 1.972.600
 %{perl_requires}
 
