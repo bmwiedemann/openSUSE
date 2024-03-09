@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Minion
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,7 @@ Provides:       perl(Minion::Job)
 Provides:       perl(Minion::Worker)
 Provides:       perl(Mojolicious::Plugin::Minion)
 Provides:       perl(Mojolicious::Plugin::Minion::Admin)
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
