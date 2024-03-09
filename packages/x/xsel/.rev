@@ -97,4 +97,36 @@
     <comment></comment>
     <requestid>1083008</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8e99b424a11907350f48a1fb2c071448</srcmd5>
+    <version>1.2.1</version>
+    <time>1710014028</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix download url
+
+- Update to version 1.2.1 
+  * INCR transfer bug fixes in #16
+  * Use XDG_CACHE_HOME for xsel.log in #15
+  * Using markdown syntax in #9
+  * Plug memory leak in handle_targets in #18
+  * Fix segfault when stdin is empty in #17
+  * Fix #19 segfault when --append to empty selection in #20
+  * Do not modify HOME environment variable in #21
+  * Perform fstat on stdin and stdout only if required in #22
+  * Debian patches in #25
+  * Avoid passing NULL to vsnprintf() in #27
+  * Avoid extra char copy in strncpy in #32
+  * Set timer value to 0 to stop timer, don't use a nullptr timer
+    in #31
+  * Remove interfering error message in #37
+  * Option: trim trailing newline from output in #39
+  * In README file: updated link to ICCCM rant to one that works
+    in #40
+  * Fix MULTIPLE conversion requests in #45
+  * Added option to add window name in #41
+  * Set WM_NAME and WM_CLASS window properties in #35
+  * Modernize in #50
+- Remove disable-werror.patch because it was applied in code</comment>
+    <requestid>1156289</requestid>
+  </revision>
 </revisionlist>
