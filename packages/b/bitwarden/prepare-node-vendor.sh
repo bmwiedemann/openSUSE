@@ -1,4 +1,4 @@
-#!/bin/sh -eu
+#!/bin/sh -eux
 
 # dnf install curl gzip jq npm patch tar wget
 

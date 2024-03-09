@@ -4,8 +4,8 @@
      }
      throw err;
    }
--  if (stdout !== "0.17.8") {
+-  if (stdout !== versionFromPackageJSON) {
 +  if (0) {
-     throw new Error(`Expected ${JSON.stringify("0.17.8")} but got ${JSON.stringify(stdout)}`);
+     throw new Error(`Expected ${JSON.stringify(versionFromPackageJSON)} but got ${JSON.stringify(stdout)}`);
    }
  }
