@@ -47,7 +47,7 @@ Provides:       perl(XML::RSS::Private::Output::V0_9) = %{version}
 Provides:       perl(XML::RSS::Private::Output::V0_91) = %{version}
 Provides:       perl(XML::RSS::Private::Output::V1_0) = %{version}
 Provides:       perl(XML::RSS::Private::Output::V2_0) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
