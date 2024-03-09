@@ -1,7 +1,7 @@
 #
 # spec file for package xsel
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2010 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,15 @@
 
 
 Name:           xsel
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Command-line Program for Getting and Setting the Contents of the X Selection
 License:        MIT
-Group:          System/X11/Utilities
-Source:         http://www.kfish.org/software/xsel/download/xsel-%{version}.tar.gz
-Patch0:         disable-werror.patch
+Source:         https://github.com/kfish/xsel/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 URL:            http://www.kfish.org/software/xsel/
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xt)
 
@@ -38,6 +39,7 @@ information and pasting it with the middle mouse button.
 %autosetup -p1
 
 %build
+./autogen.sh --version
 %configure
 %make_build
 
