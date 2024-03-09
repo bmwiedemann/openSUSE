@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  7 21:30:38 CET 2024 - tumic@cbox.cz
+
+- Update to version 13.17
+  * Added support for hillshading (IMG & Mapsforge maps).
+  * Fixed broken "recent files" under KDE/Plasma6 style.
+  * Minor fixes (Mapsforge, IMG and ENC maps).
+
+-------------------------------------------------------------------
 Mon Feb 12 23:38:57 CET 2024 - tumic@cbox.cz
 
 - Update to version 13.16
