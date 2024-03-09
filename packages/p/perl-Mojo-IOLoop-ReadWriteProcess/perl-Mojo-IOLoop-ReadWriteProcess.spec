@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojo-IOLoop-ReadWriteProcess
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,7 +62,7 @@ Provides:       perl(Mojo::IOLoop::ReadWriteProcess::Session)
 Provides:       perl(Mojo::IOLoop::ReadWriteProcess::Shared::Lock)
 Provides:       perl(Mojo::IOLoop::ReadWriteProcess::Shared::Memory)
 Provides:       perl(Mojo::IOLoop::ReadWriteProcess::Shared::Semaphore)
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
