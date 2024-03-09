@@ -1,7 +1,7 @@
 #
 # spec file for package perl-App-perlbrew
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,7 +63,7 @@ Provides:       perl(App::Perlbrew::Path::Installations)
 Provides:       perl(App::Perlbrew::Path::Root)
 Provides:       perl(App::Perlbrew::Util)
 Provides:       perl(App::perlbrew) = 0.980.0
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  wget curl groff
