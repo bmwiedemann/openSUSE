@@ -150,7 +150,6 @@ BuildRequires:  pkgconfig(libmtp)
 BuildRequires:  pkgconfig(libpci)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libpulse)
-BuildRequires:  pkgconfig(libsrtp)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libwebp)
@@ -186,6 +185,7 @@ BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  yasm-devel
+Provides:       bundled(libsrtp2) = 2.2.0~pre
 %requires_ge libQt5Network5
 %requires_ge libQtQuick5
 %requires_ge libQt5Widgets5

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 24 11:06:56 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop BuildRequire on libsrtp, qt builds a bundled copy.
+
+-------------------------------------------------------------------
 Tue Feb 20 14:42:07 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Switch to '%patch -P'
