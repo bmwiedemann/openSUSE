@@ -33,6 +33,9 @@ Source2:        scribus.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Make-sure-information-displayed-on-the-about-window-.patch
+# PATCH-FIX-UPSTREAM poppler...
+Patch1:         0001-Fix-build-failure-with-poppler-24.03.0.patch
+Patch2:         0001-Fix-incorrect-value-used-in-initial-build-fix-agains.patch
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  cups-devel
 BuildRequires:  dos2unix
@@ -102,9 +105,12 @@ Summary:        Documentation for Scribus
 This package provides the documentation for Scribus.
 
 %prep
-%autosetup -p1
+# Convert line endings before patching
+%setup -q
 # W: wrong-script-end-of-line-encoding
 find . -type f \( -iname \*.py -o -iname \*.cpp -o -iname \*.h \) -exec dos2unix {} \;
+
+%autopatch -p1
 
 # Unused test file still using QQC1
 rm scribus/ui/qml/qtq_test1.qml
