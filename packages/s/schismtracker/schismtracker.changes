@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 10 09:18:42 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240308
+  * Use native text input handlers rather than emulating SDL 1.2
+    APIs, which should allow for a smoother experience for locales
+    other than en_US.
+  * Fixed panbrello implementation
+  * Fixed a player bug that implemented NNA incorrectly
+  * Clear MIDI macros if a file is made with Impulse Tracker 2.14,
+    not when it declares to be compatible with it.
+
+-------------------------------------------------------------------
 Mon Jan 29 23:12:54 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20240129
