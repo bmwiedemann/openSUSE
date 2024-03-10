@@ -34,7 +34,7 @@ Requires:       perl(Test::More) >= 0.92
 Provides:       perl(Text::CSV) = %{version}
 Provides:       perl(Text::CSV::ErrorDiag)
 Provides:       perl(Text::CSV_PP) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 Recommends:     perl(Text::CSV_XS) >= 1.530.0
 %{perl_requires}
 
