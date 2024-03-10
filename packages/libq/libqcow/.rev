@@ -170,4 +170,12 @@
     <comment>python 3.12 build fix</comment>
     <requestid>1144598</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e60ea886bf76187cbac3bd151fd8e99f</srcmd5>
+    <version>20240308</version>
+    <time>1710098749</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20240308</comment>
+    <requestid>1156698</requestid>
+  </revision>
 </revisionlist>
