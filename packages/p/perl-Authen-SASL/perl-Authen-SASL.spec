@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Authen-SASL
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,7 +45,7 @@ Provides:       perl(Authen::SASL::Perl::EXTERNAL) = 2.170.0
 Provides:       perl(Authen::SASL::Perl::GSSAPI) = 2.170.0
 Provides:       perl(Authen::SASL::Perl::LOGIN) = 2.170.0
 Provides:       perl(Authen::SASL::Perl::PLAIN) = 2.170.0
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 Recommends:     perl(GSSAPI)
 %{perl_requires}
 
