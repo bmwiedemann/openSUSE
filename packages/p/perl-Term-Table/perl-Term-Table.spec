@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Term-Table
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@ Provides:       perl(Term::Table::HashBase) = 0.18.0
 Provides:       perl(Term::Table::LineBreak) = 0.18.0
 Provides:       perl(Term::Table::Spacer) = 0.18.0
 Provides:       perl(Term::Table::Util) = 0.18.0
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 Recommends:     perl(Term::Size::Any) >= 0.002
 Recommends:     perl(Unicode::GCString) >= 2013.10
 Recommends:     perl(Unicode::LineBreak) >= 2015.06
