@@ -1,7 +1,7 @@
 #
 # spec file for package clojure
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           clojure
-Version:        1.11.1.1435
+Version:        1.11.2.1446
 Release:        0
 Summary:        A dynamic programming language that targets the JVM
 License:        EPL-1.0
@@ -42,7 +42,7 @@ optional type hints and type inference, to ensure that calls to Java
 can avoid reflection.
 
 %prep
-%setup -q -n clojure-tools
+%autosetup -p1 -n clojure-tools
 sed -i "s/#!\/usr\/bin\/env bash/#!\/bin\/bash/" clj
 sed -i "s/#!\/usr\/bin\/env bash/#!\/bin\/bash/" clojure
 sed -i "s|PREFIX|%{_datadir}/clojure|" clojure

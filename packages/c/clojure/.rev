@@ -231,4 +231,18 @@
   * Update to tools.deps 1.18.1394</comment>
     <requestid>1135749</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d1972e4b1e4eda8274b649be7a07c1cb</srcmd5>
+    <version>1.11.2.1446</version>
+    <time>1710098737</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.11.2.1446:
+  * Clojure -X:deps programs that create a basis now take a :dir
+    option for the directory context to use
+  * Updated tools.deps, tools.deps.cli to latest
+  * Fix for CVE-2024-22871 detailed in GHSA-vr64-r9qj-h27f:
+    CLJ-2839 - iterate, cycle, repeat - infinite seqs have infinite
+    hashCode() (bsc#1220666)</comment>
+    <requestid>1156680</requestid>
+  </revision>
 </revisionlist>
