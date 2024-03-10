@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Mar  3 08:46:55 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update specfile:
+  * kak-lsp is now called as kakoune-lsp so we add a Provides.
+  * update URL of sources.
+
+-------------------------------------------------------------------
+Sun Mar  3 00:44:10 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update specfile:
+  * top-level folder of extracted source is kakoune-lsp-16.0.0
+  * explicit build requirement of cargo
+
+-------------------------------------------------------------------
+Sun Mar  3 00:39:28 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 16.0.0:
+  * The modeline shows breadcrumbs like somemodule > someclass > somefunction
+  to indicate the symbol around the main cursor.
+  * lsp-document-symbols now renders symbols in a tree.
+  * lsp_auto_show_code_actions (which renders a lightbulb in the modeline)
+  now defaults to true.
+  * lsp-code-lens can now run the test at cursor with rust-analyzer. Fixes:
+  * lsp-inlay-diagnostics no longer jump around when the cursor is moved
+  over the diagnostics. To use this feature, use Kakoune version >= 2024
+  (not yet release, consider building from source).
+  * When LSP integration is enabled, then disabled and enabled again, the
+  KakEnd hook failed to ask the server to exit, which has been fixed.
+  * lsp-auto-hover-enable now only re-renders hover info when the main
+  selection changes. This means that :info is no longer shadowed immediately
+  by auto hover.
+  * Completion snippets (accessed via lsp-snippets-select-next-placeholders)
+  can now be nested, making it possible to cycle through the arguments of
+  nested function calls.
+  * In some cases, selecting completions provided by rust-analyzer would labels
+  with extra characters (like self.some_method(…)) which has been fixed.
+  * completionItem.additionalTextEdits are now applied also when the server
+  does not support completionItem/resolve.
+  * Snippet metacharacters are now properly escaped, removing spurious
+  backslashes from inserted completions.
+
+-------------------------------------------------------------------
 Mon Dec 25 09:42:34 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 15.0.1:
