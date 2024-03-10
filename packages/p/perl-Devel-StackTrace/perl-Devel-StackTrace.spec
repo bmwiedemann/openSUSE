@@ -32,7 +32,7 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(Test::More) >= 0.96
 Provides:       perl(Devel::StackTrace) = %{version}
 Provides:       perl(Devel::StackTrace::Frame) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
