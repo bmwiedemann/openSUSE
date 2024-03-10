@@ -51,7 +51,7 @@ Provides:       perl(Spreadsheet::ParseExcel::SaveParser::Worksheet) = %{version
 Provides:       perl(Spreadsheet::ParseExcel::Utility) = %{version}
 Provides:       perl(Spreadsheet::ParseExcel::Workbook) = %{version}
 Provides:       perl(Spreadsheet::ParseExcel::Worksheet) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
