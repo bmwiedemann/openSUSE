@@ -19,14 +19,13 @@
 
 %define modname pyscard
 Name:           python-pyscard
-Version:        2.0.7
+Version:        2.0.8
 Release:        0
 Summary:        Python module adding smart card support
 License:        LGPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://pyscard.sourceforge.io/
 Source:         https://files.pythonhosted.org/packages/source/p/pyscard/pyscard-%{version}.tar.gz
-Patch0:         0001-Remove-use-of-imp-module-for-wx-GUI.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
@@ -46,7 +45,6 @@ python framework built on top of the raw PCSC API.
 
 %prep
 %setup -q -n %{modname}-%{version}
-%autopatch -p1
 mv smartcard/doc .
 dos2unix LICENSE
 
