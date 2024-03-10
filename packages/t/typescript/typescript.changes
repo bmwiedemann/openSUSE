@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Mar  9 09:05:35 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 5.4:
+  * Preserved Narrowing in Closures Following Last Assignments
+  * The NoInfer Utility Type
+  * Object.groupBy and Map.groupBy
+  * Support for require() calls in --moduleResolution bundler and --module preserve
+  * Checked Import Attributes and Assertions
+  * Quick Fix for Adding Missing Parameters
+  * Auto-Import Support for Subpath Imports
+  * Upcoming 5.5 Deprecations:
+    + TypeScript 5.0 deprecated the following options and behaviors:
+        charset
+        target: ES3
+        importsNotUsedAsValues
+        noImplicitUseStrict
+        noStrictGenericChecks
+        keyofStringsOnly
+        suppressExcessPropertyErrors
+        suppressImplicitAnyIndexErrors
+        out
+        preserveValueImports
+        prepend in project references
+        implicitly OS-specific newLine
+      To continue using them, developers using TypeScript 5.0 and other more recent versions 
+      have had to specify a new option called ignoreDeprecations with the value "5.0".
+      However, TypScript 5.4 will be the last version in which these will continue to function as normal. 
+      By TypeScript 5.5 (likely June 2024), these will become hard errors, 
+      and code using them will need to be migrated away.
+  * Notable Behavioral Changes:
+    see https://devblogs.microsoft.com/typescript/announcing-typescript-5-4/#notable-behavioral-changes
+
+For the full changelog see https://devblogs.microsoft.com/typescript/announcing-typescript-5-4/
+
+-------------------------------------------------------------------
 Sun Dec 10 17:41:41 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 5.3.3:
