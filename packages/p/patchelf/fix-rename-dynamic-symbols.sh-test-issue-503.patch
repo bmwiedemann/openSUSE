@@ -1,0 +1,13 @@
+Index: patchelf-0.18.0/tests/Makefile.in
+===================================================================
+--- patchelf-0.18.0.orig/tests/Makefile.in
++++ patchelf-0.18.0/tests/Makefile.in
+@@ -729,7 +729,7 @@ many_syms_main_SOURCES = many-syms-main.
+ many_syms_main_LDFLAGS = $(LDFLAGS_local) 
+ many_syms_main_LDADD = -lmany-syms $(AM_LDADD)
+ many_syms_main_DEPENDENCIES = libmany-syms.so
+-many_syms_main_CFLAGS = -pie
++many_syms_main_CFLAGS = -pie -fPIE
+ libmany_syms_so_SOURCES = many-syms.c
+ libmany_syms_so_LDFLAGS = $(LDFLAGS_sharedlib)
+ no_rpath_SOURCES = no-rpath.c

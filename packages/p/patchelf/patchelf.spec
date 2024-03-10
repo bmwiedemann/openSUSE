@@ -1,7 +1,7 @@
 #
 # spec file for package patchelf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,14 @@ License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://nixos.org/patchelf.html
 Source:         https://github.com/NixOS/patchelf/releases/download/%{version}/patchelf-%{version}.tar.bz2
+Patch1:         fix-rename-dynamic-symbols.sh-test-issue-503.patch
+
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150600
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 
 %description
 PatchELF is a simple utility for modifing existing ELF executables and
@@ -35,6 +42,10 @@ executables and change the RPATH of executables and libraries.
 %autosetup -p1
 
 %build
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150600
+export CC=gcc-13
+export CXX=g++-13
+%endif
 %configure
 %make_build
 

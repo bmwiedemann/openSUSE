@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar  8 23:25:32 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Make the package buildable also on Leap 15.6 and SLE 15 SP 6.
+  * Conditionally compile with gcc 13.
+  * fix-rename-dynamic-symbols.sh-test-issue-503.patch new patch to
+    fix upstream (github) issue 503, not using the correct flags to
+    build a binary as a part of the rename-dynamic-symbols.sh test.
+
+-------------------------------------------------------------------
 Mon Dec  4 07:29:40 UTC 2023 - Duraisankar P <Duraisankar.pitchumani@suse.com>
 
 - [bsc#1211860] - build failure for patchelf on s390x 
