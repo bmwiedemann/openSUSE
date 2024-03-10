@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTTP-Message
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -73,7 +73,7 @@ Provides:       perl(HTTP::Request) = 6.450.0
 Provides:       perl(HTTP::Request::Common) = 6.450.0
 Provides:       perl(HTTP::Response) = 6.450.0
 Provides:       perl(HTTP::Status) = 6.450.0
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 Recommends:     perl(IO::Compress::Brotli) >= 0.4.1
 Recommends:     perl(IO::Uncompress::Brotli) >= 0.4.1
 %{perl_requires}
