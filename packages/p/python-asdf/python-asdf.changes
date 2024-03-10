@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Mar 10 11:45:02 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.1.0
+  * Cleanup asdf.util including deprecating: human_list
+    resolve_name minversion and iter_subclasses [#1688]
+  * Deprecate validation on AsdfFile.tree assignment. Please use
+    AsdfFile.validate to validate the tree [#1691]
+  * Deprecate validation during AsdfFile.resolve_references. Please
+    use AsdfFile.validate to validate the tree [#1691]
+  * Deprecate asdf.asdf and AsdfFile.resolve_and_inline [#1690]
+  * Deprecate automatic calling of AsdfFile.find_references during
+    AsdfFile.__init__ and asdf.open [#1708]
+  * Allow views of memmapped arrays to keep the backing mmap open
+    to avoid segfaults [#1668]
+  * Introduce memmap argument to asdf.open that overrides
+    copy_arrays with documentation that describes that the default
+    for memmap when copy_arrays is removed in an upcoming asdf
+    release will be False and asdf will no longer by-default memory
+    map arrays. [#1667]
+  * Introduce asdf.util.load_yaml to load just the YAML contents of
+    an ASDF file (with the option tagged to load the contents as a
+    tree of asdf.tagged.Tagged instances to preserve tags) [#1700]
+  * Require pytest 7+ and update asdf pytest plugin to be
+    compatible with the current development version of pytest (8.1)
+    [#1731]
+  * Eliminate the use of the legacy tmpdir fixture in favor of the
+    new tmp_path fixture for temporary directory creation. [#1759]
+  * Remove conversion of warnings to errors in asdf pytest plugin.
+    This prevented other warning filters (like those provided with
+    -W) from working. If you want these warnings to produce errors
+    you can now add your own warning filter [#1757]
+  * Only show str representation during info and search if it
+    contains a single line (and does not fail) [#1748]
+
+
+-------------------------------------------------------------------
 Sun Feb 11 18:12:12 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Drop removed test dependencies: gwcs throws AsdfWarning about an

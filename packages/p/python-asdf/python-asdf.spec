@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-asdf%{psuffix}
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        Python tools to handle ASDF files
 License:        BSD-2-Clause AND BSD-3-Clause
@@ -62,9 +62,9 @@ BuildRequires:  %{python_module asdf = %{version}}
 BuildRequires:  %{python_module fsspec >= 2022.8.2}
 BuildRequires:  %{python_module lz4 >= 0.10}
 BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pytest >= 7}
 BuildRequires:  %{python_module pytest-doctestplus}
 BuildRequires:  %{python_module pytest-remotedata}
-BuildRequires:  %{python_module pytest}
 %endif
 %python_subpackages
 
@@ -75,7 +75,7 @@ Python implementation of the ASDF Standard.
 
 %prep
 %autosetup -p1 -n asdf-%{version}
-removeshebang="asdf/extern/RangeHTTPServer.py asdf/_jsonschema/json/bin/jsonschema_suite"
+removeshebang="asdf/_extern/RangeHTTPServer.py asdf/_jsonschema/json/bin/jsonschema_suite"
 sed -i -e '1{/^#!/d}' $removeshebang
 chmod a-x $removeshebang asdf/_tests/data/example_schema.json
 sed -i 's/\r$//' asdf/_tests/data/example_schema.json
