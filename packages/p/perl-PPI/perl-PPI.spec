@@ -1,7 +1,7 @@
 #
 # spec file for package perl-PPI
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -136,7 +136,7 @@ Provides:       perl(PPI::Transform) = 1.277.0
 Provides:       perl(PPI::Transform::UpdateCopyright) = 1.277.0
 Provides:       perl(PPI::Util) = 1.277.0
 Provides:       perl(PPI::XSAccessor) = 1.277.0
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
