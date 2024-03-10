@@ -151,4 +151,12 @@ This is part of the summer 2013 libyal refresh for opensuse 13.1</comment>
     <comment>python 3.12 build fix</comment>
     <requestid>1144602</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>353dd57f228966471719c6e0911d5398</srcmd5>
+    <version>20240309</version>
+    <time>1710098752</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20240309</comment>
+    <requestid>1156700</requestid>
+  </revision>
 </revisionlist>
