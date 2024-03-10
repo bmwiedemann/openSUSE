@@ -365,4 +365,13 @@
     <comment></comment>
     <requestid>1120847</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>45b8078b8e3c0c31a50bd869f59e8922</srcmd5>
+    <version>1.152.0</version>
+    <time>1710098637</time>
+    <user>anag+factory</user>
+    <comment>- Fix disabling of __perllib_provides
+</comment>
+    <requestid>1156562</requestid>
+  </revision>
 </revisionlist>

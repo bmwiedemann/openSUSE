@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Perl-Critic
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -278,7 +278,7 @@ Provides:       perl(Perl::Critic::Utils::PPI) = 1.152.0
 Provides:       perl(Perl::Critic::Utils::Perl) = 1.152.0
 Provides:       perl(Perl::Critic::Violation) = 1.152.0
 Provides:       perl(Test::Perl::Critic::Policy) = 1.152.0
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
