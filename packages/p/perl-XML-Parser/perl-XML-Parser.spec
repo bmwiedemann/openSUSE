@@ -32,7 +32,7 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(LWP::UserAgent)
 Requires:       perl(LWP::UserAgent)
 Provides:       perl(XML::Parser) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  libexpat-devel
