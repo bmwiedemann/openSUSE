@@ -36,7 +36,7 @@ Provides:       perl(IPC::Run3::ProfLogReader) = %{version}
 Provides:       perl(IPC::Run3::ProfLogger) = %{version}
 Provides:       perl(IPC::Run3::ProfPP) = %{version}
 Provides:       perl(IPC::Run3::ProfReporter) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
