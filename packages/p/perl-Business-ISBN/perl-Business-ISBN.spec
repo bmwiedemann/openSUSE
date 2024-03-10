@@ -36,7 +36,7 @@ Requires:       perl(Business::ISBN::Data) >= 20230322.001
 Provides:       perl(Business::ISBN) = %{version}
 Provides:       perl(Business::ISBN10) = %{version}
 Provides:       perl(Business::ISBN13) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
