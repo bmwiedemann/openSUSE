@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Module-Build-Tiny
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,7 +48,7 @@ Requires:       perl(Getopt::Long) >= 2.36
 Requires:       perl(JSON::PP) >= 2
 Requires:       perl(TAP::Harness::Env)
 Provides:       perl(Module::Build::Tiny) = 0.47.0
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
