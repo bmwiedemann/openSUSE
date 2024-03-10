@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Syntax-Keyword-Try
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@ BuildRequires:  perl(XS::Parse::Keyword) >= 0.06
 BuildRequires:  perl(XS::Parse::Keyword::Builder) >= 0.06
 Requires:       perl(XS::Parse::Keyword) >= 0.06
 Provides:       perl(Syntax::Keyword::Try::Deparse) = 0.290.0
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
