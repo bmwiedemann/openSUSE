@@ -44,7 +44,7 @@ Requires:       perl(LWP::UserAgent) >= 6.06
 Requires:       perl(Net::HTTPS) >= 6
 Provides:       perl(LWP::Protocol::https) = %{version}
 Provides:       perl(LWP::Protocol::https::Socket) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
