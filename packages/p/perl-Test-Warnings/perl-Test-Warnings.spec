@@ -33,7 +33,7 @@ BuildRequires:  perl(Test::More) >= 0.94
 BuildRequires:  perl(parent)
 Requires:       perl(parent)
 Provides:       perl(Test::Warnings) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
