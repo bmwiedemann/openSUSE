@@ -96,7 +96,7 @@ Provides:       perl(LWP::Protocol::nogo) = %{version}
 Provides:       perl(LWP::RobotUA) = %{version}
 Provides:       perl(LWP::Simple) = %{version}
 Provides:       perl(LWP::UserAgent) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 Recommends:     perl(LWP::Protocol::https) >= 6.06

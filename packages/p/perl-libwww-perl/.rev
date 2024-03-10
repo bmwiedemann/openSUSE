@@ -1437,4 +1437,13 @@ update to 5.76
     <comment></comment>
     <requestid>1153800</requestid>
   </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>7fb0f9c3b7c15efbef4b9bb3fe6119e0</srcmd5>
+    <version>6.760.0</version>
+    <time>1710098641</time>
+    <user>anag+factory</user>
+    <comment>- Fix disabling of __perllib_provides
+</comment>
+    <requestid>1156575</requestid>
+  </revision>
 </revisionlist>
