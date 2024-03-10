@@ -37,7 +37,7 @@ Provides:       perl(XS::Parse::Infix) = %{version}
 Provides:       perl(XS::Parse::Infix::Builder) = %{version}
 Provides:       perl(XS::Parse::Keyword) = %{version}
 Provides:       perl(XS::Parse::Keyword::Builder) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
