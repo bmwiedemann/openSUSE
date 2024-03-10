@@ -387,7 +387,7 @@ Provides:       perl(DateTime::TimeZone::Pacific::Tarawa) = %{version}
 Provides:       perl(DateTime::TimeZone::Pacific::Tongatapu) = %{version}
 Provides:       perl(DateTime::TimeZone::UTC) = %{version}
 Provides:       perl(DateTime::TimeZone::WET) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
