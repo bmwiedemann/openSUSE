@@ -14482,7 +14482,7 @@ unsorted:
   - libpapi_7_1_0-hpc 
   - libpappl1 
   - libparanoia1_0 
-  - libparaview5_11 
+  - libparaview5_12 
   - libpari-gmp-tls8 
   - libparlatype-devel 
   - libparlatype7 
@@ -14654,7 +14654,7 @@ unsorted:
   - libpoppler-qt5-devel 
   - libpoppler-qt6-3 
   - libpoppler-qt6-devel 
-  - libpoppler134-32bit 
+  - libpoppler135-32bit 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -14700,13 +14700,13 @@ unsorted:
   - libprofiler0 
   - libproj25 
   - libprotobuf-c-devel 
-  - libprotobuf-lite25_1_0-32bit 
+  - libprotobuf-lite25_2_0-32bit 
   - libprotobuf-lite3_21_12 
   - libprotobuf-nanopb0 
-  - libprotobuf25_1_0-32bit 
+  - libprotobuf25_2_0-32bit 
   - libprotobuf3_21_12 
-  - libprotoc25_1_0 
-  - libprotoc25_1_0-32bit 
+  - libprotoc25_2_0 
+  - libprotoc25_2_0-32bit 
   - libprotoc3_21_12 
   - libproxy-devel 
   - libproxy-devel-doc 
@@ -22942,7 +22942,6 @@ unsorted:
   - python3-ldb-devel 
   - python3-ldns 
   - python3-lensfun 
-  - python3-libaccounts 
   - python3-libblockdev 
   - python3-libcec 
   - python3-libcomps 
