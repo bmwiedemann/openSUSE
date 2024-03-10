@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar  8 23:12:12 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Fix disabling of __perllib_provides
+
+-------------------------------------------------------------------
+Sat Jan 27 03:10:33 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.89
+   see /usr/share/doc/packages/perl-YAML-LibYAML/Changes
+
+  0.89 Sat 27 Jan 2024 01:44:08 AM CET
+   - Recognise core booleans on Perl 5.36+ at dump time (PR#114 PEVANS++)
+
+-------------------------------------------------------------------
 Sat May 13 03:08:54 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.88

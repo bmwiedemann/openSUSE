@@ -218,4 +218,17 @@
     <comment></comment>
     <requestid>1090352</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1c5f89a1b8caa82236b54da71aad982d</srcmd5>
+    <version>0.890.0</version>
+    <time>1710098629</time>
+    <user>anag+factory</user>
+    <comment>- Fix disabling of __perllib_provides
+- updated to 0.89
+   see /usr/share/doc/packages/perl-YAML-LibYAML/Changes
+  0.89 Sat 27 Jan 2024 01:44:08 AM CET
+   - Recognise core booleans on Perl 5.36+ at dump time (PR#114 PEVANS++)
+</comment>
+    <requestid>1156526</requestid>
+  </revision>
 </revisionlist>
