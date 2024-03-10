@@ -31,7 +31,7 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(Test::Fatal) >= 0.010
 Requires:       perl(Test::Fatal) >= 0.010
 Provides:       perl(Sub::Override) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
