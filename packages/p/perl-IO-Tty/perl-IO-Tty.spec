@@ -30,7 +30,7 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 Provides:       perl(IO::Pty) = %{version}
 Provides:       perl(IO::Tty) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
