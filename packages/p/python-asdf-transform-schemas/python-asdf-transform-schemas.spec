@@ -26,23 +26,20 @@
 %endif
 
 Name:           python-asdf-transform-schemas%{psuffix}
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        ASDF schemas for transforms
 License:        BSD-3-Clause
 URL:            https://github.com/asdf-format/asdf-transform-schemas
 Source:         https://files.pythonhosted.org/packages/source/a/asdf-transform-schemas/asdf_transform_schemas-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 42}
 BuildRequires:  %{python_module setuptools_scm >= 3.4}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-asdf-standard >= 1.0.1
-%if 0%{?python_version_nodots} < 39
-Requires:       python-importlib_resources >= 3
-%endif
+Requires:       python-asdf-standard >= 1.1
 %if %{with test}
 BuildRequires:  %{python_module asdf-astropy}
 BuildRequires:  %{python_module asdf-transform-schemas = %{version}}
@@ -74,13 +71,15 @@ sed -i "/addopts = '--color=yes'/d" pyproject.toml
 
 %if %{with test}
 %check
-%pytest -v
+# gh#asdf-format/asdf-transform-schemas#114
+donttest="(label_mapper-1.3.0.yaml and test_example_2)"
+%pytest -v -k "not ($donttest)"
 %endif
 
 %if !%{with test}
 %files %{python_files}
 %{python_sitelib}/asdf_transform_schemas
-%{python_sitelib}/asdf_transform_schemas-%{version}*-info
+%{python_sitelib}/asdf_transform_schemas-%{version}.dist-info
 %endif
 
 %changelog

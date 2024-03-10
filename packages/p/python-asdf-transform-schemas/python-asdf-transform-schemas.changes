@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 10 11:59:45 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.5.0
+  * Update schemas for ASDF standard 1.6.0 [#110]
+
+-------------------------------------------------------------------
 Sun Feb 18 13:00:11 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Tests require asdf-astropy and scipy which got lost as transitive
