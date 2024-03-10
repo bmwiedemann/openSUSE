@@ -395,4 +395,13 @@
     <comment></comment>
     <requestid>1153786</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>feb820f8bfe1685f69a9113f34a630a9</srcmd5>
+    <version>5.270.0</version>
+    <time>1710098628</time>
+    <user>anag+factory</user>
+    <comment>- Fix disabling of __perllib_provides
+</comment>
+    <requestid>1156521</requestid>
+  </revision>
 </revisionlist>

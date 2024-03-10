@@ -82,7 +82,7 @@ Provides:       perl(URI::tn3270) = %{version}
 Provides:       perl(URI::urn) = %{version}
 Provides:       perl(URI::urn::isbn) = %{version}
 Provides:       perl(URI::urn::oid) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
