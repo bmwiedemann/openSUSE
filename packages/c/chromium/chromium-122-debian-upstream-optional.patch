@@ -1,0 +1,25 @@
+commit 8d253767f895b45053c39ea99a8f02bbe7071d3a
+Author: Jose Dapena Paz <jdapena@igalia.com>
+Date:   Mon Feb 19 19:00:26 2024 +0000
+
+    IWYU: usage of std::optional in plus_address_types.h requires include
+    
+    Bug: 41455655
+    Change-Id: Ibfda146f5bf7485ad31828f1dc22eb39b57f83b5
+    Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/5306779
+    Reviewed-by: Jan Keitel <jkeitel@google.com>
+    Commit-Queue: José Dapena Paz <jdapena@igalia.com>
+    Cr-Commit-Position: refs/heads/main@{#1262436}
+
+diff --git a/components/plus_addresses/plus_address_types.h b/components/plus_addresses/plus_address_types.h
+index 7a7eaa2a818a9..77569d345011a 100644
+--- a/components/plus_addresses/plus_address_types.h
++++ b/components/plus_addresses/plus_address_types.h
+@@ -5,6 +5,7 @@
+ #ifndef COMPONENTS_PLUS_ADDRESSES_PLUS_ADDRESS_TYPES_H_
+ #define COMPONENTS_PLUS_ADDRESSES_PLUS_ADDRESS_TYPES_H_
+ 
++#include <optional>
+ #include <string>
+ #include <unordered_map>
+ 

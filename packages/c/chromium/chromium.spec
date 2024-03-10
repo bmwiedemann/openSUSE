@@ -52,11 +52,7 @@
 %bcond_with system_zstd
 %endif
 # LLVM version
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600
 %define llvm_version 17
-%else
-%define llvm_version 15
-%endif
 # GCC version
 %define gcc_version 13
 %if 0%{?suse_version} < 1699
@@ -96,7 +92,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        121.0.6167.184
+Version:        122.0.6261.111
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -105,7 +101,7 @@ Source0:        https://commondatastorage.googleapis.com/chromium-browser-offici
 Source1:        esbuild.tar.gz
 Source3:        README.SUSE
 Source4:        ffmpeg-new-channel-layout.patch
-Source5:        Cr121-ffmpeg-new-channel-layout.patch
+Source5:        Cr122-ffmpeg-new-channel-layout.patch
 # Toolchain definitions
 Source30:       master_preferences
 Source104:      chromium-symbolic.svg
@@ -137,32 +133,54 @@ Patch202:       chromium-prop-codecs.patch
 Patch203:       chromium-106-ffmpeg-duration.patch
 Patch205:       chromium-disable-GlobalMediaControlsCastStartStop.patch
 Patch208:       chromium-icu72-2.patch
-Patch214:       chromium-113-webview-namespace.patch
-Patch218:       chromium-114-lld-argument.patch
-Patch221:       chromium-115-lp155-typename.patch
 Patch224:       chromium-115-compiler-SkColor4f.patch
 Patch229:       chromium-116-lp155-url_load_stats-size-t.patch
-Patch232:       chromium-116-lp155-typenames.patch
 Patch238:       chromium-117-blink-BUILD-mnemonic.patch
 Patch240:       chromium-117-string-convert.patch
-Patch241:       chromium-117-lp155-typename.patch
 Patch244:       chromium-117-system-zstd.patch
 Patch248:       chromium-119-assert.patch
 Patch250:       chromium-120-emplace.patch
-Patch251:       chromium-120-lp155-typename.patch
 Patch254:       chromium-120-emplace-struct.patch
 Patch256:       chromium-120-make_unique-struct.patch
-Patch257:       chromium-121-no_matching_constructor.patch
 Patch258:       chromium-121-nullptr_t-without-namespace-std.patch
-Patch259:       chromium-121-workaround_clang_bug-structured_binding.patch
-Patch260:       chromium-121-missing-header-files.patch
 Patch261:       chromium-121-rust-clang_lib.patch
-Patch262:       chromium-121-python3-invalid-escape-sequence.patch
-Patch263:       chromium-disable-FFmpegAllowLists.patch
-Patch264:       chromium-121-avoid-SFINAE-TypeConverter.patch
 Patch265:       chromium-121-blink-libxml-const.patch
-BuildRequires:  (python3 >= 3.7 or python3-dataclasses)
-BuildRequires:  (python3-importlib-metadata if python3-base < 3.8)
+# from fedora package
+Patch300:       chromium-121-el7-clang-version-warning.patch
+Patch306:       chromium-122-arm64-memory_tagging.patch
+Patch307:       chromium-122-clang16-buildflags.patch
+Patch308:       chromium-122-clang16-disable-auto-upgrade-debug-info.patch
+Patch309:       chromium-122-clang-build-flags.patch
+Patch310:       chromium-122-constexpr.patch
+Patch311:       chromium-122-disable-FFmpegAllowLists.patch
+Patch312:       chromium-122-el7-default-constructor-involving-anonymous-union.patch
+Patch313:       chromium-122-el7-extra-operator.patch
+Patch314:       chromium-122-el7-inline-function.patch
+Patch315:       chromium-122-el8-support-64kpage.patch
+Patch316:       chromium-122-missing-header-files.patch
+Patch317:       chromium-122-no_matching_constructor.patch
+Patch318:       chromium-122-avoid-SFINAE-TypeConverter.patch
+# Do not use unrar code, it is non-free
+Patch319:       chromium-122-norar.patch
+Patch320:       chromium-122-python3-assignment-expressions.patch
+Patch321:       chromium-122-static-assert.patch
+Patch322:       chromium-122-typename.patch
+Patch323:       chromium-122-unique_ptr.patch
+Patch324:       chromium-122-workaround_clang_bug-structured_binding.patch
+# from debian
+Patch325:       chromium-122-undo-internal-alloc.patch
+Patch326:       chromium-122-debian-upstream-bitset.patch
+Patch328:       chromium-122-debian-upstream-mojo.patch
+Patch329:       chromium-122-debian-upstream-optional.patch
+Patch330:       chromium-122-debian-upstream-uniqptr.patch
+Patch332:       chromium-122-debian-fixes-optional.patch
+# local fix, needed on code15
+Patch333:       chromium-122-skip_bubble_contents_wrapper_static_assert.patch
+# only applied on 15.4
+Source401:      chromium-122-revert-av1enc-el9.patch
+# reverse applied
+Source402:      chromium-121-v8-c++20-p1.patch
+Source403:      chromium-121-v8-c++20.patch
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -172,9 +190,11 @@ BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  git
 BuildRequires:  gn >= 0.1807
-BuildRequires:  golang(API)
 BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  (python3 >= 3.7 or python3-dataclasses)
+BuildRequires:  (python3-importlib-metadata if python3-base < 3.8)
+BuildRequires:  golang(API)
 # Java used during build
 BuildRequires:  java-openjdk-headless
 BuildRequires:  libdc1394
@@ -277,6 +297,10 @@ BuildRequires:  pkgconfig(xscrnsaver)
 BuildRequires:  pkgconfig(xshmfence)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtst)
+# BEG add rust BR
+BuildRequires:  cargo
+BuildRequires:  rust >= 1.47
+# END add rust BR
 Requires:       xdg-utils
 Requires(pre):  permissions
 Recommends:     noto-coloremoji-fonts
@@ -297,9 +321,6 @@ Obsoletes:      chromium-ffmpeg < %{version}
 Obsoletes:      chromium-ffmpegsumo < %{version}
 # no 32bit supported and it takes ages to build
 ExclusiveArch:  x86_64 aarch64 riscv64
-%if 0%{?sle_version} == 150400
-Patch300:       chromium-114-revert-av1enc-lp154.patch
-%endif
 %if 0%{?suse_version} <= 1500
 BuildRequires:  pkgconfig(glproto)
 %endif
@@ -356,7 +377,7 @@ BuildRequires:  pkgconfig(libwebp) >= 0.4.0
 BuildRequires:  pkgconfig(libzstd) = 1.5.5
 %endif
 %if %{with clang}
-%if 0%{?suse_version} < 1550
+%if 0%{?suse_version} < 1570
 BuildRequires:  clang%{llvm_version}
 BuildRequires:  gcc%{gcc_version}
 BuildRequires:  libstdc++6-devel-gcc%{gcc_version}
@@ -405,6 +426,14 @@ patch -R -p1 < %{PATCH68}
 patch -R -p1 < %{SOURCE5}
 patch -R -p1 < %{SOURCE4}
 %endif
+%if 0%{?sle_version} == 150400
+patch -p1 < %{SOURCE401}
+%endif
+patch -R -p1 < %{SOURCE402}
+patch -R -p1 < %{SOURCE403}
+%if 0%{?suse_version} < 1600
+patch -R -p1 < %{PATCH309}
+%endif
 %if %{with libxml2_2_12}
 patch -R -p1 < %{PATCH265}
 %endif
@@ -446,7 +475,7 @@ clang_version="$(clang --version | sed -n 's/clang version //p')"
 if [[ $(echo ${clang_version} | cut -d. -f1) -ge 16 ]]; then
   clang_version="$(echo ${clang_version} | cut -d. -f1)"
 fi
-clang_base_path="$(clang --version | grep InstalledDir | cut -d' ' -f2 | sed 's#/bin##')" 
+clang_base_path="$(clang --version | grep InstalledDir | cut -d' ' -f2 | sed 's#/bin##')"
 
 # Remove bundled libs
 keeplibs=(
@@ -723,6 +752,10 @@ keeplibs+=( third_party/libwebp )
 %if !%{with system_zstd}
 keeplibs+=( third_party/zstd )
 %endif
+# needed ...
+keeplibs+=( third_party/lit )
+keeplibs+=( third_party/rust/chromium_crates_io )
+keeplibs+=( third_party/rust/cxx )
 build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove
 
 # GN sets lto on its own and we need just ldflag options, not cflags
@@ -788,6 +821,8 @@ export CFLAGS="${CXXFLAGS}"
 export CXXFLAGS="${CXXFLAGS} -Wno-subobject-linkage -Wno-class-memaccess"
 %endif
 export CXXFLAGS="${CXXFLAGS} -Wno-invalid-offsetof -fpermissive"
+export RUSTFLAGS
+
 # do not eat all memory
 %limit_build -m 2600
 %if %{with lto} && %{without clang}
@@ -796,6 +831,9 @@ _link_threads=$(((%{jobs} - 2)))
 test "$_link_threads" -le 0 && _link_threads=1
 export LDFLAGS="-flto=$_link_threads --param lto-max-streaming-parallelism=1"
 %endif
+
+# need for error: the option `Z` is only accepted on the nightly compiler
+export RUSTC_BOOTSTRAP=1
 
 # Set system libraries to be used
 gn_system_libraries=(
@@ -846,6 +884,7 @@ gn_system_libraries+=( zstd )
 %if %{with system_zlib}
 gn_system_libraries+=( zlib )
 %endif
+
 build/linux/unbundle/replace_gn_files.py --system-libraries ${gn_system_libraries[@]}
 
 # Create the configuration for GN
@@ -896,7 +935,7 @@ myconf_gn+=" v8_use_external_startup_data=true"
 myconf_gn+=" rust_sysroot_absolute=\"%{_prefix}\""
 myconf_gn+=" rustc_version=\"$rustc_version\""
 myconf_gn+=" clang_base_path=\"$clang_base_path\""
-myconf_gn+=" clang_version=\"$clang_version\"" 
+myconf_gn+=" clang_version=\"$clang_version\""
 %if %{with gtk4}
 myconf_gn+=" gtk_version=4"
 %endif
@@ -923,7 +962,7 @@ myconf_gn+=" enable_vulkan=true"
 myconf_gn+=" rtc_use_pipewire=true rtc_link_pipewire=true"
 %endif
 %if %{with clang}
-myconf_gn+=" is_clang=true clang_base_path=\"/usr\" clang_use_chrome_plugins=false"
+myconf_gn+=" is_clang=true clang_use_chrome_plugins=false"
 %if %{with lto} && %{with clang}
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
 myconf_gn+=" use_thin_lto=true"

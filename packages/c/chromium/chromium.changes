@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Fri Mar  8 16:14:39 CET 2024 - ro@suse.de
+
+- Chromium 122.0.6261.111 (boo#1220131,boo#1220604,boo#1221105)
+  * New upstream security release.
+  * CVE-2024-2173: Out of bounds memory access in V8.
+  * CVE-2024-2174: Inappropriate implementation in V8.
+  * CVE-2024-2176: Use after free in FedCM.
+- Chromium 122.0.6261.94
+  * CVE-2024-1669: Out of bounds memory access in Blink.
+  * CVE-2024-1670: Use after free in Mojo.
+  * CVE-2024-1671: Inappropriate implementation in Site Isolation.
+  * CVE-2024-1672: Inappropriate implementation in Content Security Policy.
+  * CVE-2024-1673: Use after free in Accessibility.
+  * CVE-2024-1674: Inappropriate implementation in Navigation.
+  * CVE-2024-1675: Insufficient policy enforcement in Download.
+  * CVE-2024-1676: Inappropriate implementation in Navigation.
+  * Type Confusion in V8
+  * rediff chromium-disable-GlobalMediaControlsCastStartStop.patch
+  * drop chromium-114-lld-argument.patch
+    replaced by chromium-122-clang16-disable-auto-upgrade-debug-info.patch
+  * drop chromium-121-no_matching_constructor.patch
+    replaced by chromium-122-no_matching_constructor.patch
+  * drop chromium-113-webview-namespace.patch (obsolete)
+  * reduce chromium-norar.patch
+    by the hunks in chromium-122-norar.patch
+  * drop chromium-114-revert-av1enc-lp154.patch
+    replaced by chromium-122-revert-av1enc-el9.patch
+  * drop chromium-115-lp155-typename.patch
+         chromium-116-lp155-typenames.patch
+         chromium-117-lp155-typename.patch
+         chromium-120-lp155-typename.patch
+    replaced by chromium-122-typename.patch
+  * drop chromium-121-missing-header-files.patch
+    replaced by chromium-122-missing-header-files.patch
+  * drop chromium-121-workaround_clang_bug-structured_binding.patch
+    replaced by chromium-122-workaround_clang_bug-structured_binding.patch
+  * drop chromium-121-no_matching_constructor.patch
+    replaced by chromium-122-no_matching_constructor.patch
+  * drop chromium-121-python3-invalid-escape-sequence.patch (upstream)
+  * drop chromium-disable-FFmpegAllowLists.patch
+    replaced by chromium-122-disable-FFmpegAllowLists.patch
+  * drop chromium-121-avoid-SFINAE-TypeConverter.patch
+    replaced by chromium-122-avoid-SFINAE-TypeConverter.patch
+  * add buildrequires for rust
+  * add patches from fedora package for 121 and 122
+  * chromium-121-el7-clang-version-warning.patch
+  * chromium-121-v8-c++20-p1.patch
+  * chromium-121-v8-c++20.patch
+  * chromium-122-arm64-memory_tagging.patch
+  * chromium-122-clang16-buildflags.patch
+  * chromium-122-clang16-disable-auto-upgrade-debug-info.patch
+  * chromium-122-clang-build-flags.patch
+  * chromium-122-constexpr.patch
+  * chromium-122-disable-FFmpegAllowLists.patch
+  * chromium-122-el7-default-constructor-involving-anonymous-union.patch
+  * chromium-122-el7-extra-operator.patch
+  * chromium-122-el7-inline-function.patch
+  * chromium-122-el8-support-64kpage.patch
+  * chromium-122-missing-header-files.patch
+  * chromium-122-no_matching_constructor.patch
+  * chromium-122-norar.patch
+  * chromium-122-python3-assignment-expressions.patch
+  * chromium-122-revert-av1enc-el9.patch
+  * chromium-122-static-assert.patch
+  * chromium-122-typename.patch
+  * chromium-122-unique_ptr.patch
+  * chromium-122-workaround_clang_bug-structured_binding.patch
+  * from debian add
+  * chromium-122-undo-internal-alloc.patch
+  * chromium-122-debian-upstream-bitset.patch
+  * chromium-122-debian-upstream-mojo.patch
+  * chromium-122-debian-upstream-optional.patch
+  * chromium-122-debian-upstream-uniqptr.patch
+  * chromium-122-debian-fixes-optional.patch
+  * added compile fix needed on code15
+    chromium-122-skip_bubble_contents_wrapper_static_assert.patch
+    to prevent "static assertion expression is not an integral constant expression"
+    "in call to 'operator+(&"."[0], ShoppingInsightsSidePanelUI::GetWebUIName())'"
+    in bubble_contents_wrapper.h:153
+- replace Cr121-ffmpeg-new-channel-layout.patch by
+  Cr122-ffmpeg-new-channel-layout.patch (rediff against 122)
+- drop chromium-121-system-old-ffmpeg.patch
+
+-------------------------------------------------------------------
 Fri Mar  8 13:16:51 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add Cr121-ffmpeg-new-channel-layout.patch to rollback more FFmpeg

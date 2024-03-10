@@ -1,0 +1,25 @@
+commit e189c46f1ee584c1721ccfecb38bd8db84b58d5b
+Author: Jose Dapena Paz <jdapena@igalia.com>
+Date:   Tue Jan 23 15:36:15 2024 +0000
+
+    IWYU: missing include for unique_ptr usage in data_sharing_network_loader.h
+    
+    Bug: 957519
+    Change-Id: Ib324b2f66fbaa43b01046425fb480236df012dd2
+    Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/5227330
+    Commit-Queue: José Dapena Paz <jdapena@igalia.com>
+    Reviewed-by: Colin Blundell <blundell@chromium.org>
+    Cr-Commit-Position: refs/heads/main@{#1250827}
+
+diff --git a/components/data_sharing/public/data_sharing_network_loader.h b/components/data_sharing/public/data_sharing_network_loader.h
+index 374ce896bdf68..833dd12dbfed9 100644
+--- a/components/data_sharing/public/data_sharing_network_loader.h
++++ b/components/data_sharing/public/data_sharing_network_loader.h
+@@ -5,6 +5,7 @@
+ #ifndef COMPONENTS_DATA_SHARING_PUBLIC_DATA_SHARING_NETWORK_LOADER_H_
+ #define COMPONENTS_DATA_SHARING_PUBLIC_DATA_SHARING_NETWORK_LOADER_H_
+ 
++#include <memory>
+ #include <string>
+ #include <vector>
+ 
