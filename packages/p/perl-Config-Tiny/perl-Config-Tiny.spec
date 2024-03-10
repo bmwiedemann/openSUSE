@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Config-Tiny
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ BuildRequires:  perl(Test::More) >= 1.001002
 Requires:       perl(File::Spec) >= 3.30
 Requires:       perl(File::Temp) >= 0.22
 Provides:       perl(Config::Tiny) = 2.300.0
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
