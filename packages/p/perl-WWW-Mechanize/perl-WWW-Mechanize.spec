@@ -1,7 +1,7 @@
 #
 # spec file for package perl-WWW-Mechanize
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %define cpan_name WWW-Mechanize
 Name:           perl-WWW-Mechanize
-Version:        2.17
+Version:        2.180.0
 Release:        0
+%define cpan_version 2.18
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Handy web browsing in a Perl object
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/S/SI/SIMBABQUE/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -61,6 +62,10 @@ Requires:       perl(HTTP::Request::Common)
 Requires:       perl(LWP::UserAgent)
 Requires:       perl(URI::URL)
 Requires:       perl(URI::file)
+Provides:       perl(WWW::Mechanize) = %{version}
+Provides:       perl(WWW::Mechanize::Image) = %{version}
+Provides:       perl(WWW::Mechanize::Link) = %{version}
+%define         __perllib_provides /bin/true
 Recommends:     perl(Compress::Zlib)
 %{perl_requires}
 
@@ -85,7 +90,7 @@ the Test::*, like Test::HTML::Lint modules, you can check the fetched
 content and use that as input to a test call.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
