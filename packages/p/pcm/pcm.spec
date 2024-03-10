@@ -37,30 +37,34 @@ energy metrics of Intel Core, Xeon, Atom and Xeon Phi processors.
 %setup -q
 
 %build
-%cmake -DCMAKE_BUILD_TYPE=CUSTOM -DCMAKE_INSTALL_PREFIX=%{_prefix}
+%cmake -DCMAKE_BUILD_TYPE=CUSTOM -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_INSTALL_DOCDIR=%{_docdir}/pcm
 %{!?cmake_build:%define cmake_build %{__cmake}}
 %cmake_build
 
 %install
 %cmake_install
-rm -rf %{buildroot}%{_datadir}/doc/PCM/CUSTOM-COMPILE-OPTIONS.md
-rm -rf %{buildroot}%{_datadir}/doc/PCM/DOCKER_README.md
-rm -rf %{buildroot}%{_datadir}/doc/PCM/FREEBSD_HOWTO.txt
-rm -rf %{buildroot}%{_datadir}/doc/PCM/MAC_HOWTO.txt
-rm -rf %{buildroot}%{_datadir}/doc/PCM/WINDOWS_HOWTO.md
+rm -rf %{buildroot}%{_docdir}/pcm/CUSTOM-COMPILE-OPTIONS.md
+rm -rf %{buildroot}%{_docdir}/pcm/DOCKER_README.md
+rm -rf %{buildroot}%{_docdir}/pcm/FREEBSD_HOWTO.txt
+rm -rf %{buildroot}%{_docdir}/pcm/MAC_HOWTO.txt
+rm -rf %{buildroot}%{_docdir}/pcm/WINDOWS_HOWTO.md
+rm -rf %{buildroot}%{_docdir}/pcm/STARS.md
+rm -rf %{buildroot}%{_docdir}/pcm/generate_summary_readme.md
 
 %files
 %license LICENSE
 %doc doc/*HOWTO*
-/usr/share/doc/PCM
-/usr/share/doc/PCM/ENVVAR_README.md
-/usr/share/doc/PCM/FAQ.md
-/usr/share/doc/PCM/LINUX_HOWTO.txt
-/usr/share/doc/PCM/PCM-EXPORTER.md
-/usr/share/doc/PCM/PCM-SENSOR-SERVER-README.md
-/usr/share/doc/PCM/PCM_RAW_README.md
-/usr/share/doc/PCM/README.md
-/usr/share/doc/PCM/license.txt
+%dir %{_docdir}/pcm
+%{_docdir}/pcm/ENVVAR_README.md
+%{_docdir}/pcm/FAQ.md
+%{_docdir}/pcm/LINUX_HOWTO.txt
+%{_docdir}/pcm/PCM-EXPORTER.md
+%{_docdir}/pcm/PCM-SENSOR-SERVER-README.md
+%{_docdir}/pcm/PCM_RAW_README.md
+%{_docdir}/pcm/CXL_README.md
+%{_docdir}/pcm/PCM_ACCEL_README.md
+%{_docdir}/pcm/README.md
+%{_docdir}/pcm/license.txt
 %{_sbindir}/pcm
 %{_sbindir}/pcm-core
 %{_sbindir}/pcm-iio
