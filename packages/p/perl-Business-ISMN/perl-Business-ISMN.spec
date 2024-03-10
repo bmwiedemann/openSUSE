@@ -35,7 +35,7 @@ BuildRequires:  perl(Tie::Cycle) >= 1.21
 Requires:       perl(Tie::Cycle) >= 1.21
 Provides:       perl(Business::ISMN) = %{version}
 Provides:       perl(Business::ISMN::Data) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
