@@ -176,20 +176,20 @@ Perl man pages and pod files.
 %prep
 %setup -q -n perl-%{pversion}
 cp -p %{SOURCE3} .
-%patch0
-%patch3
-%patch4
-%patch5
-%patch6
-%patch7
+%patch -P 0
+%patch -P 3
+%patch -P 4
+%patch -P 5
+%patch -P 6
+%patch -P 7
 %ifarch ppc ppc64 ppc64le
-%patch8 -p1
-%patch13
+%patch -P 8 -p1
+%patch -P 13
 %endif
-%patch9 -p1
-%patch11
-%patch12 -p1
-%patch18
+%patch -P 9 -p1
+%patch -P 11
+%patch -P 12 -p1
+%patch -P 18
 
 %build
 %define _lto_cflags %{nil}
