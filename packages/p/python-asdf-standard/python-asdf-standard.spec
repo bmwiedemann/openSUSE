@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-asdf-standard
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,31 +26,23 @@
 %endif
 
 Name:           python-asdf-standard%{psuffix}
-Version:        1.0.3
+Version:        1.1.1
 Release:        0
 Summary:        The ASDF Standard schemas
 License:        BSD-3-Clause
 URL:            https://github.com/asdf-format/asdf-standard
 Source:         https://files.pythonhosted.org/packages/source/a/asdf-standard/asdf_standard-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module importlib_resources >= 3 if %python-base < 3.9}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 61}
+BuildRequires:  %{python_module setuptools_scm >= 3.4}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %python_version_nodots < 39
-Requires:       python-importlib_resources >= 3
-%endif
 %if %{with test}
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module asdf >= 2.8.0}
+BuildRequires:  %{python_module asdf >= 3}
 BuildRequires:  %{python_module asdf-standard = %{version}}
-BuildRequires:  %{python_module astropy >= 5.0.4}
-BuildRequires:  %{python_module gwcs}
-# https://github.com/asdf-format/asdf-standard/pull/391
-BuildRequires:  %{python_module jsonschema < 4.18}
 BuildRequires:  %{python_module packaging >= 16.0}
 BuildRequires:  %{python_module pytest}
 %endif

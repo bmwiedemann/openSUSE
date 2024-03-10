@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Mar 10 11:57:48 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.1.1
+  * Fix readthedocs config. [#429]
+- Release 1.1.0
+  * The in progress ASDF Standard is v1.6.0
+  * The stable ASDF Standard is v1.5.0
+  * Add new quantity-1.2.0 schema to support datatype option. [#351]
+  * Bugfix for base_format in time-1.2.0 schema. [#349]
+  * Add new ndarray-1.1.0 schema to fix #345 [#350]
+  * Remove unit-1.1.0 erroneously added in #350 [#355]
+  * Fix URI fragment format in metaschema references. [#373]
+  * Fix URI fragment format in quantity-1.2 schema [#374]
+  * Drop support for python 3.8 [#390]
+  * Add float16 to ndarray-1.1.0 [#411]
+  * Remove unneeded tag keyword from fits schema [#421]
+  * Move non-core tags to astronomy manifest [#422]
+
+-------------------------------------------------------------------
 Mon Aug 21 19:25:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Add jsonschema < 4.18 to test dependencies
