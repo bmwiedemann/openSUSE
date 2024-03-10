@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar 10 07:17:16 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.4:
+  * Properly handle lost connection.
+  * Better compatibility with perl sendxmpp config files.
+  * Improve file name for private Ox keys.
+  * Improve fallback behavior if no SRV records are provided.
+  * Remove 100ms sleep before closing the connection. This should
+    be no more needed since go-xmpp commit
+    9684a8ff690f0d75e284f8845696c5057926d276.
+  * Return an error if there is no answer to an IQ within 60s.
+  * Check for errors after sending the auth message during
+    SCRAM authentication (via go-xmpp v0.1.2).
+
+-------------------------------------------------------------------
 Mon Feb 19 07:38:34 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.8.3:

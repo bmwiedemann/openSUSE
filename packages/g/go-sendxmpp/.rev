@@ -176,4 +176,22 @@
   * Fix specifying a message via command line flag -m.</comment>
     <requestid>1147512</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7db30d39d55b263fe961a3b9c0f5974a</srcmd5>
+    <version>0.8.4</version>
+    <time>1710098739</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.8.4:
+  * Properly handle lost connection.
+  * Better compatibility with perl sendxmpp config files.
+  * Improve file name for private Ox keys.
+  * Improve fallback behavior if no SRV records are provided.
+  * Remove 100ms sleep before closing the connection. This should
+    be no more needed since go-xmpp commit
+    9684a8ff690f0d75e284f8845696c5057926d276.
+  * Return an error if there is no answer to an IQ within 60s.
+  * Check for errors after sending the auth message during
+    SCRAM authentication (via go-xmpp v0.1.2).</comment>
+    <requestid>1156683</requestid>
+  </revision>
 </revisionlist>
