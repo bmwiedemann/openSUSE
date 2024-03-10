@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mail-DKIM
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Mail-DKIM
 Name:           perl-Mail-DKIM
-Version:        1.20230911
+Version:        1.20240124
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Signs/verifies Internet mail with DKIM/DomainKey signatures

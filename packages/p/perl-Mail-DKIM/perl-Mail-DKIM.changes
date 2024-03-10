@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 25 03:07:52 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.20240124
+   see /usr/share/doc/packages/perl-Mail-DKIM/Changes
+
+  1.20240124 2024-01-24 UTC
+    * ARC: Return fail for any ARC set with an instance number greater than 50.
+      This brings ARC verification in line with DKIM verification limits.
+
+-------------------------------------------------------------------
 Mon Sep 11 03:08:25 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.20230911
