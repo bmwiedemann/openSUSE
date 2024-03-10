@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Sub-Exporter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@ Requires:       perl(Params::Util) >= 0.14
 Requires:       perl(Sub::Install) >= 0.92
 Provides:       perl(Sub::Exporter) = %{version}
 Provides:       perl(Sub::Exporter::Util) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
