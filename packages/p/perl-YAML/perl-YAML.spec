@@ -54,7 +54,7 @@ Provides:       perl(YAML::Warning)
 Provides:       perl(yaml_mapping)
 Provides:       perl(yaml_scalar)
 Provides:       perl(yaml_sequence)
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
