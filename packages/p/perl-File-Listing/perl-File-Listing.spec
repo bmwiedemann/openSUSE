@@ -1,7 +1,7 @@
 #
 # spec file for package perl-File-Listing
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(HTTP::Date)
 BuildRequires:  perl(Test::More) >= 0.98
 Requires:       perl(HTTP::Date)
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
