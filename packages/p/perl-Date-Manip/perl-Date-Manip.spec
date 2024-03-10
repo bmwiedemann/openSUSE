@@ -839,7 +839,7 @@ Provides:       perl(Date::Manip::TZ::z00) = %{version}
 Provides:       perl(Date::Manip::TZ_Base) = %{version}
 Provides:       perl(Date::Manip::TZdata) = %{version}
 Provides:       perl(Date::Manip::Zones) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
