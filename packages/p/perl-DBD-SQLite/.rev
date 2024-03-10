@@ -464,4 +464,13 @@ Used &quot;osc vc&quot; for once to document changes (forwarded request 78484 fr
     <comment></comment>
     <requestid>1114052</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>692829ce89b965c5fe504606910ff296</srcmd5>
+    <version>1.740.0</version>
+    <time>1710098613</time>
+    <user>anag+factory</user>
+    <comment>- Fix disabling of __perllib_provides
+</comment>
+    <requestid>1156469</requestid>
+  </revision>
 </revisionlist>

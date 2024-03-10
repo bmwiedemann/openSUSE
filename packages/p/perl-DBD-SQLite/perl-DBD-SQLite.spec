@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DBD-SQLite
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,7 @@ Provides:       perl(DBD::SQLite::VirtualTable::FileContent)
 Provides:       perl(DBD::SQLite::VirtualTable::FileContent::Cursor)
 Provides:       perl(DBD::SQLite::VirtualTable::PerlData)
 Provides:       perl(DBD::SQLite::VirtualTable::PerlData::Cursor)
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 %if 0%{?sle_version} >= 140000 && 0%{?sle_version} <= 150400
