@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar  9 21:40:30 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.8
+  * Make CardMonitor() thread safe on Python 3.12
+  * Add hresult value in exceptions
+  * Improve documentation
+  * Check swig is installed on build
+  * Remove use of imp module for wx (GUI)
+  * Makefile: modernize use of setup.py
+- Drop not longer needed patch:
+  * 0001-Remove-use-of-imp-module-for-wx-GUI.patch
+
+-------------------------------------------------------------------
 Wed Feb  7 22:39:49 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Add patch:
