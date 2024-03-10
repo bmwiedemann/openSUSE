@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  8 22:34:05 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Fix disabling of __perllib_provides
+
+-------------------------------------------------------------------
 Wed Oct 11 12:10:06 UTC 2023 - Tina Müller <tina.mueller@suse.com>
 
 - Remove IPC-Run-0.89-path.diff (fixed upstream)

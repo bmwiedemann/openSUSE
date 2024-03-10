@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IPC-Run
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@ Provides:       perl(IPC::Run::Win32Helper) = 20231003.0.0
 Provides:       perl(IPC::Run::Win32IO) = 20231003.0.0
 Provides:       perl(IPC::Run::Win32Process) = 20231003.0.0
 Provides:       perl(IPC::Run::Win32Pump) = 20231003.0.0
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 Recommends:     perl(IO::Pty) >= 1.08
 Recommends:     perl(Readonly)
 %{perl_requires}
