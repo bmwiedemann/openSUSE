@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Text-BibTeX
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,7 @@ Provides:       perl(Text::BibTeX::SimpleValue) = 0.88
 Provides:       perl(Text::BibTeX::Structure) = 0.88
 Provides:       perl(Text::BibTeX::StructuredEntry) = 0.88
 Provides:       perl(Text::BibTeX::Value) = 0.88
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  glibc-devel
@@ -64,6 +64,7 @@ The libbtparse is a C library for parsing and processing BibTeX files.
 Note that the interface provided by libbtparse, while complete, is fairly
 low-level.  If you have more sophisticated needs, you might be interested
 the "Text::BibTeX" module for Perl.
+
 
 
 # MANUAL END
