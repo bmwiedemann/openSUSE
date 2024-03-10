@@ -40,7 +40,7 @@ Requires:       perl(HTTP::Request)
 Provides:       perl(HTTP::Cookies) = %{version}
 Provides:       perl(HTTP::Cookies::Microsoft) = %{version}
 Provides:       perl(HTTP::Cookies::Netscape) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
