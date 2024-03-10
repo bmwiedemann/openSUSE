@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Convert-ASN1
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@ BuildRequires:  perl(Math::BigInt) >= 1.997
 BuildRequires:  perl(Test::More) >= 0.90
 Provides:       perl(Convert::ASN1) = 0.340.0
 Provides:       perl(Convert::ASN1::parser) = 0.340.0
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
