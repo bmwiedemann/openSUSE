@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,7 +72,7 @@ Provides:       perl(DateTime::LeapSecond) = 1.650.0
 Provides:       perl(DateTime::PP) = 1.650.0
 Provides:       perl(DateTime::PPExtra) = 1.650.0
 Provides:       perl(DateTime::Types) = 1.650.0
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
