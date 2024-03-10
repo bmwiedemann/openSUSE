@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Perl-Tidy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %define cpan_name Perl-Tidy
 Name:           perl-Perl-Tidy
-Version:        20230912.0.0
+Version:        20240202.0.0
 Release:        0
-%define cpan_version 20230912
+%define cpan_version 20240202
 #Upstream: GPL-1.0-or-later
 License:        GPL-2.0-or-later
 Summary:        Indent and reformat perl scripts
@@ -30,20 +30,20 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-Provides:       perl(Perl::Tidy) = 20230912.0.0
-Provides:       perl(Perl::Tidy::Debugger) = 20230912.0.0
-Provides:       perl(Perl::Tidy::Diagnostics) = 20230912.0.0
-Provides:       perl(Perl::Tidy::FileWriter) = 20230912.0.0
-Provides:       perl(Perl::Tidy::Formatter) = 20230912.0.0
-Provides:       perl(Perl::Tidy::HtmlWriter) = 20230912.0.0
-Provides:       perl(Perl::Tidy::IOScalar) = 20230912.0.0
-Provides:       perl(Perl::Tidy::IOScalarArray) = 20230912.0.0
-Provides:       perl(Perl::Tidy::IndentationItem) = 20230912.0.0
-Provides:       perl(Perl::Tidy::Logger) = 20230912.0.0
-Provides:       perl(Perl::Tidy::Tokenizer) = 20230912.0.0
-Provides:       perl(Perl::Tidy::VerticalAligner) = 20230912.0.0
-Provides:       perl(Perl::Tidy::VerticalAligner::Alignment) = 20230912.0.0
-Provides:       perl(Perl::Tidy::VerticalAligner::Line) = 20230912.0.0
+Provides:       perl(Perl::Tidy) = %{version}
+Provides:       perl(Perl::Tidy::Debugger) = %{version}
+Provides:       perl(Perl::Tidy::Diagnostics) = %{version}
+Provides:       perl(Perl::Tidy::FileWriter) = %{version}
+Provides:       perl(Perl::Tidy::Formatter) = %{version}
+Provides:       perl(Perl::Tidy::HtmlWriter) = %{version}
+Provides:       perl(Perl::Tidy::IOScalar) = %{version}
+Provides:       perl(Perl::Tidy::IOScalarArray) = %{version}
+Provides:       perl(Perl::Tidy::IndentationItem) = %{version}
+Provides:       perl(Perl::Tidy::Logger) = %{version}
+Provides:       perl(Perl::Tidy::Tokenizer) = %{version}
+Provides:       perl(Perl::Tidy::VerticalAligner) = %{version}
+Provides:       perl(Perl::Tidy::VerticalAligner::Alignment) = %{version}
+Provides:       perl(Perl::Tidy::VerticalAligner::Line) = %{version}
 %define         __perllib_provides /bin/true
 %{perl_requires}
 
