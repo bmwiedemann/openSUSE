@@ -242,8 +242,8 @@ diff --git a/cli/lsp/language_server.rs.1 b/cli/lsp/language_server.rs
 index 573fb1e..158c136 100644
 --- a/cli/lsp/language_server.rs.1
 +++ b/cli/lsp/language_server.rs
-@@ -119,8 +119,6 @@ use crate::npm::CliNpmResolverManagedPackageJsonInstallerOption;
- use crate::npm::CliNpmResolverManagedSnapshotOption;
+@@ -124,8 +124,6 @@ use crate::npm::CliNpmResolverManagedSnapshotOption;
+ use crate::resolver::CliNodeResolver;
  use crate::tools::fmt::format_file;
  use crate::tools::fmt::format_parsed_source;
 -use crate::tools::upgrade::check_for_upgrades_for_lsp;
