@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Pod-Parser
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,32 @@
 
 %define cpan_name Pod-Parser
 Name:           perl-Pod-Parser
-Version:        1.66
+Version:        1.670.0
 Release:        0
+%define cpan_version 1.67
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Modules for parsing/translating POD format documents
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/M/MA/MAREKR/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/M/MA/MAREKR/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Pod::Cache)
+Provides:       perl(Pod::Cache::Item)
+Provides:       perl(Pod::Find) = %{version}
+Provides:       perl(Pod::Hyperlink)
+Provides:       perl(Pod::InputObjects) = %{version}
+Provides:       perl(Pod::InputSource)
+Provides:       perl(Pod::InteriorSequence)
+Provides:       perl(Pod::List)
+Provides:       perl(Pod::Paragraph)
+Provides:       perl(Pod::ParseTree)
+Provides:       perl(Pod::ParseUtils) = %{version}
+Provides:       perl(Pod::Parser) = %{version}
+Provides:       perl(Pod::PlainText) = 2.07
+Provides:       perl(Pod::Select) = %{version}
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -45,7 +61,7 @@ components of the POD. Subclasses of *Pod::Parser* override these methods
 to translate the POD into whatever output format they desire.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
