@@ -1,7 +1,7 @@
 #
 # spec file for package perl-CPAN-Meta-Check
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@ BuildRequires:  perl(Test::More) >= 0.88
 Requires:       perl(CPAN::Meta::Prereqs) >= 2.132830
 Requires:       perl(CPAN::Meta::Requirements) >= 2.121000
 Requires:       perl(Module::Metadata) >= 1.000023
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
