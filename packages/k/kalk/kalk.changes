@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 23 13:58:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.0
+  * New feature release
+- No code change since 24.01.95
+
+-------------------------------------------------------------------
+Fri Feb  9 16:07:42 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.01.95
+  * https://kde.org/announcements/megarelease/6/rc2/
+- Drop patch, merged upstream:
+  * 0001-Drop-use-of-QtFeedback.patch
+
+-------------------------------------------------------------------
 Tue Dec 12 07:37:47 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to drop dependency on QtFeedback (boo#1217957):

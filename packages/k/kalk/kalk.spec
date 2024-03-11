@@ -1,7 +1,7 @@
 #
 # spec file for package kalk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,41 +16,37 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without  released
 Name:           kalk
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Convergent calculator
 License:        GPL-3.0-or-later
 URL:            https://apps.kde.org/kalk
-Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX(?)-DOWNSTREAM
-Patch1:         0001-Drop-use-of-QtFeedback.patch
-BuildRequires:  bison
-BuildRequires:  extra-cmake-modules
-BuildRequires:  flex
-BuildRequires:  gmp-devel
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  mpfr-devel
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5Kirigami2)
-BuildRequires:  cmake(KF5UnitConversion)
-BuildRequires:  cmake(Qt5Core) >= 5.15.2
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5QuickCompiler)
-BuildRequires:  cmake(Qt5QuickControls2)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
-Requires:       kirigami2
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
+BuildRequires:  cmake(KF6UnitConversion) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  pkgconfig(libqalculate) >= 4.7.0
+Requires:       kf6-kirigami-imports >= %{kf6_version}
+Requires:       qt6-declarative-imports >= %{qt6_version}
 
 %description
 Kalk is a convergent calculator application built with the Kirigami framework.
@@ -63,22 +59,22 @@ desktop.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
+%cmake_kf6
 
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
 %find_lang %{name} --all-name
 
 %files
 %license LICENSES/*
 %doc README.md
-%{_kf5_applicationsdir}/org.kde.kalk.desktop
-%{_kf5_appstreamdir}/org.kde.kalk.appdata.xml
-%{_kf5_bindir}/kalk
-%{_kf5_iconsdir}/hicolor/scalable/apps/org.kde.kalk.svg
+%{_kf6_applicationsdir}/org.kde.kalk.desktop
+%{_kf6_appstreamdir}/org.kde.kalk.appdata.xml
+%{_kf6_bindir}/kalk
+%{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.kalk.svg
 
 %files lang -f %{name}.lang
 
