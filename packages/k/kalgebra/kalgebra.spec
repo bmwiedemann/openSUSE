@@ -1,7 +1,7 @@
 #
 # spec file for package kalgebra
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,97 +17,109 @@
 
 
 # Internal QML imports
-%global __requires_exclude qmlimport\\((widgets|org\\.kde\\.kalgebra\\.mobile).*
+%global __requires_exclude qt6qmlimport\\((widgets|org\\.kde\\.kalgebra\\.mobile).*
+
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define plasma6_version 5.27.80
 
 %bcond_without released
 Name:           kalgebra
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Math Expression Solver and Plotter
 License:        GPL-2.0-or-later
 URL:            https://edu.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
 BuildRequires:  perl
-BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
-BuildRequires:  xz
-BuildRequires:  cmake(Analitza5)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Plasma)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(Qt5OpenGL)
-BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5WebEngineWidgets)
-BuildRequires:  cmake(Qt5Xml)
-BuildRequires:  pkgconfig(glu)
-BuildRequires:  pkgconfig(eigen3)
-Obsoletes:      %{name}5 < %{version}
-Provides:       %{name}5 = %{version}
+BuildRequires:  cmake(Analitza6)
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Plasma) >= %{plasma6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6OpenGLWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
+Obsoletes:      kalgebra5 < %{version}
+Provides:       kalgebra5 = %{version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 KAlgebra is a math expression solver and plotter.
 
 %package mobile
 Summary:        Math Expression Solver and Plotter - mobile version
-Requires:       kirigami2
-Requires:       libqt5-qtquickcontrols2
-Recommends:     %{name}-lang
+Requires:       kf6-kirigami-imports >= %{kf6_version}
+Requires:       qt6-declarative-imports >= %{qt6_version}
 
 %description mobile
 KAlgebra is a math expression solver and plotter. This package includes
 a QtQuick based version for use in mobile (phone, tablet) environments.
 
 %lang_package
+%lang_package -n %{name}-mobile
 
 %prep
 %autosetup -p1
+# https://bugs.kde.org/show_bug.cgi?id=482464
+echo > plasmoids/CMakeLists.txt
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
+%find_lang kalgebra --with-html
+%find_lang kalgebramobile
 
-%fdupes -s %{buildroot}
+%fdupes %{buildroot}
 
 %files
 %license COPYING*
-%doc %lang(en) %{_kf5_htmldir}/en/kalgebra
-%{_kf5_applicationsdir}/org.kde.kalgebra.desktop
-%{_kf5_appstreamdir}/org.kde.kalgebra.appdata.xml
-%{_kf5_appstreamdir}/org.kde.graphsplasmoid.appdata.xml
-%{_kf5_bindir}/calgebra
-%{_kf5_bindir}/kalgebra
-%{_kf5_iconsdir}/hicolor/*/apps/kalgebra.*
-%{_kf5_plasmadir}/
-%{_kf5_sharedir}/katepart5
+%doc %lang(en) %{_kf6_htmldir}/en/kalgebra
+%{_kf6_applicationsdir}/org.kde.kalgebra.desktop
+%{_kf6_appstreamdir}/org.kde.kalgebra.appdata.xml
+#%%{_kf6_appstreamdir}/org.kde.graphsplasmoid.appdata.xml
+%{_kf6_bindir}/calgebra
+%{_kf6_bindir}/kalgebra
+%{_kf6_iconsdir}/hicolor/*/apps/kalgebra.*
+#%%{_kf6_plasmadir}/plasmoids/org.kde.graphsplasmoid/
+%dir %{_kf6_sharedir}/katepart5
+%dir %{_kf6_sharedir}/katepart5/syntax
+%{_kf6_sharedir}/katepart5/syntax/kalgebra.xml
 
 %files mobile
 %license COPYING*
-%{_kf5_applicationsdir}/org.kde.kalgebramobile.desktop
-%{_kf5_bindir}/kalgebramobile
-%{_kf5_appstreamdir}/org.kde.kalgebramobile.appdata.xml
+%{_kf6_applicationsdir}/org.kde.kalgebramobile.desktop
+%{_kf6_bindir}/kalgebramobile
+%{_kf6_appstreamdir}/org.kde.kalgebramobile.appdata.xml
 
-%files lang -f %{name}.lang
+%files lang -f kalgebra.lang
+%exclude %{_kf6_htmldir}/en/kalgebra
+
+%files mobile-lang -f kalgebramobile.lang
 
 %changelog

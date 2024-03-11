@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar  5 13:12:58 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Don't build the Plasmoid until kde#482464 is fixed
+- Fix kalgebra-mobile-lang
+
+-------------------------------------------------------------------
+Fri Feb 23 13:58:35 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.0
+  * New feature release
+- No code change since 24.01.95
+
+-------------------------------------------------------------------
+Fri Feb  9 16:07:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.01.95
+  * https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
 Tue Dec  5 14:19:11 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.4
