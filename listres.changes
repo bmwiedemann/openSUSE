@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  4 03:49:48 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to version 1.0.6
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Print which argument was unknown before giving usage message
+  * Add -help and -version options
+
+-------------------------------------------------------------------
 Sun Apr  3 19:15:41 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.5
