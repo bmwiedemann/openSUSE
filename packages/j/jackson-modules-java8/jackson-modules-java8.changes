@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar  8 08:33:47 UTC 2024 - Gus Kenion <gkenion@suse.com>
+
+- Upgrade to 2.16.1
+  * #286: Breaking change in InstantDeserializer API between 2.15
+    and 2.16
+  * #288: LocalDateTime serialization issue with custom-configured
+    LocalDateTimeSerializer
+
+
+-------------------------------------------------------------------
 Wed Dec 20 19:29:17 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v2.16.0
