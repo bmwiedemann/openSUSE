@@ -1,7 +1,7 @@
 #
 # spec file for package calindori
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,45 +16,39 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without  released
 Name:           calindori
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Kirigami-based calendar application
 License:        GPL-3.0-or-later
 URL:            https://apps.kde.org/calindori
-Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-%if 0%{?suse_version} == 1500
-BuildRequires:  gcc10-c++
-BuildRequires:  gcc10-PIE
-%endif
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  cmake(KF5CalendarCore)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5Kirigami2)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5People)
-BuildRequires:  cmake(Qt5Core) >= 5.15.2
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5QuickCompiler)
-BuildRequires:  cmake(Qt5QuickControls2)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
-Requires:       kirigami2
-# TODO: Check if needed
-Requires:       kpeoplevcard
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6People) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+Requires:       kf6-kirigami-imports >= %{kf6_version}
 
 %description
 Calindori is a touch friendly calendar application.
@@ -67,16 +61,13 @@ Users of Calindori are able to check previous and future dates and manage tasks 
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} == 1500
-  export CXX=g++-10
-%endif
 
-%cmake_kf5 -d build
+%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
 
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
 %find_lang %{name} --all-name
 
@@ -84,13 +75,13 @@ Users of Calindori are able to check previous and future dates and manage tasks 
 %doc README.md
 %license LICENSES/*
 %{_datadir}/dbus-1/services/org.kde.calindac.service
-%{_kf5_applicationsdir}/org.kde.calindori.desktop
-%{_kf5_appstreamdir}/org.kde.calindori.appdata.xml
-%{_kf5_bindir}/calindac
-%{_kf5_bindir}/calindori
-%{_kf5_configdir}/autostart/org.kde.calindac.desktop
-%{_kf5_iconsdir}/hicolor/scalable/apps/calindori.svg
-%{_kf5_notifydir}/calindac.notifyrc
+%{_kf6_applicationsdir}/org.kde.calindori.desktop
+%{_kf6_appstreamdir}/org.kde.calindori.appdata.xml
+%{_kf6_bindir}/calindac
+%{_kf6_bindir}/calindori
+%{_kf6_configdir}/autostart/org.kde.calindac.desktop
+%{_kf6_iconsdir}/hicolor/scalable/apps/calindori.svg
+%{_kf6_notificationsdir}/calindac.notifyrc
 
 %files lang -f %{name}.lang
 
