@@ -1,0 +1,9 @@
+<package name="kf6-kded" project="openSUSE:Factory">
+  <title>Central daemon of KDE workspaces</title>
+  <description>KDED runs in the background and performs a number of small tasks.
+Some of these tasks are built in, others are started on demand.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kded"/>
+  <url>https://www.kde.org</url>
+</package>
