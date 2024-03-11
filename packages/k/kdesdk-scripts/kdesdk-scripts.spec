@@ -1,7 +1,7 @@
 #
 # spec file for package kdesdk-scripts
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,40 +17,40 @@
 
 
 %define rname kde-dev-scripts
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
+
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           kdesdk-scripts
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Scripts for KDE software development
 License:        GPL-2.0-only AND GFDL-1.2-only
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 Patch0:         kde-dev-scripts-4.14.3-fix-bashisms.patch
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5DocTools)
-Obsoletes:      kdesdk4-scripts < %{_kapp_version}
-Provides:       kdesdk4-scripts = %{_kapp_version}
-Obsoletes:      kde-dev-scripts < %{_kapp_version}
-Provides:       kde-dev-scripts = %{_kapp_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+# For ecm_query_qt
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+Obsoletes:      kdesdk4-scripts < %{version}
+Provides:       kdesdk4-scripts = %{version}
+Obsoletes:      kde-dev-scripts < %{version}
+Provides:       kde-dev-scripts = %{version}
 
 %description
 This package contains scripts useful for development of KDE software.
 
-%package kf5-porting
-Summary:        Scripts for porting applications to KF5
-Obsoletes:      kdesdk4-scripts-kf5-porting < %{version}
-Provides:       kdesdk4-scripts-kf5-porting = %{version}
+%package kf6-porting
+Summary:        Scripts for porting applications to KF6
 
-%description kf5-porting
-This package contains the scripts to make the porting KDE software from
-kdelibs and Qt4 to Qt5 and KDE Frameworks 5.
+%description kf6-porting
+This package contains helper scripts to port code to Qt6 and KDE Frameworks 6.
 
 %lang_package
 
@@ -61,33 +61,29 @@ kdelibs and Qt4 to Qt5 and KDE Frameworks 5.
 %ifarch ppc64
 RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %endif
-export CXXFLAGS="%{optflags} -fPIC"
-export CFLAGS="%{optflags} -fPIC"
-%cmake_kf5 -d build -- -DCMAKE_CXXFLAGS="%{optflags}" -DCMAKE_CFLAGS="%{optflags}"
-%cmake_build
+%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
 %find_lang %{name} --with-man --all-name
 
-%{kf5_post_install}
-
-# Copy the KF5 porting scripts
-mkdir -p %{buildroot}%{_datadir}/kf5-port-scripts
-cp kf5/* %{buildroot}%{_datadir}/kf5-port-scripts/
+# Copy the KF6 porting scripts
+mkdir -p %{buildroot}%{_kf6_sharedir}/kf6-port-scripts
+cp kf6/* %{buildroot}%{_kf6_sharedir}/kf6-port-scripts/
 
 %files
 %license COPYING COPYING.DOC
 %doc README
-%{_kf5_appsdir}/uncrustify/
-%{_kf5_bindir}/*
-%{_mandir}/man1/*%{ext_man}
+%doc %lang(en) %{_kf6_mandir}/man1/*%{ext_man}
+%{_kf6_bindir}/*
+%{_kf6_sharedir}/uncrustify/
 
-%files kf5-porting
+%files kf6-porting
 %license COPYING COPYING.DOC
-%doc README
-%{_datadir}/kf5-port-scripts/
+%{_kf6_sharedir}/kf6-port-scripts/
 
 %files lang -f %{name}.lang
 
