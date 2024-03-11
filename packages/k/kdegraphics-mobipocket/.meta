@@ -1,0 +1,8 @@
+<package name="kdegraphics-mobipocket" project="openSUSE:Factory">
+  <title>E-book plugin and library</title>
+  <description>Mobipocket E-book support for Okular.
+
+</description>
+  <devel project="KDE:Applications" package="kdegraphics-mobipocket"/>
+  <url>https://www.kde.org</url>
+</package>
