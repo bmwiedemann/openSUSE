@@ -1,7 +1,7 @@
 #
 # spec file for package kopeninghours
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,33 +16,46 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           kopeninghours
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        OSM opening hours expression parser and evaluator
 License:        LGPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  bison
-BuildRequires:  extra-cmake-modules
+BuildRequires:  doxygen
 BuildRequires:  flex
-BuildRequires:  cmake(KF5Holidays)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(Qt5Core) >= 5.15.2
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(KF6Holidays) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 
 %description
 A library for parsing and evaluating OSM opening hours expressions.
 
+%package imports
+Summary:        QML imports for kopeninghours
+Requires:       libKOpeningHours1 = %{version}
+
+%description imports
+kopeninghours is a library for parsing and evaluating OSM opening hours
+expressions.
+This package contains QML imports for using kopeninghours in QML apps.
+
 %package -n libKOpeningHours1
 Summary:        OSM opening hours expression parser and evaluator
-Recommends:     %{name}
+Requires:       kopeninghours >= %{version}
 
 %description -n libKOpeningHours1
 A library for parsing and evaluating OSM opening hours expressions.
@@ -61,13 +74,17 @@ library.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build -- -DBUILD_TESTING=ON
-%cmake_build
+%cmake_kf6 \
+  -DBUILD_WITH_QT6:BOOL=TRUE \
+  -DBUILD_QCH:BOOL=TRUE \
+  -DBUILD_TESTING:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man
+%find_lang %{name}
 
 %check
 export QT_QPA_PLATFORM=offscreen
@@ -76,21 +93,22 @@ export QT_QPA_PLATFORM=offscreen
 %ldconfig_scriptlets -n libKOpeningHours1
 
 %files
-%dir %{_kf5_qmldir}/org
-%dir %{_kf5_qmldir}/org/kde
-%{_kf5_qmldir}/org/kde/kopeninghours/
+%{_kf6_debugdir}/org_kde_kopeninghours.categories
+
+%files imports
+%{_kf6_qmldir}/org/kde/kopeninghours/
 
 %files -n libKOpeningHours1
 %license LICENSES/*
-%{_kf5_debugdir}/org_kde_kopeninghours.categories
-%{_kf5_libdir}/libKOpeningHours.so.*
+%{_kf6_libdir}/libKOpeningHours.so.*
 
 %files devel
+%doc %{_kf6_qchdir}/KOpeningHours.*
 %{_includedir}/KOpeningHours/
 %{_includedir}/kopeninghours/
 %{_includedir}/kopeninghours_version.h
-%{_kf5_cmakedir}/KOpeningHours/
-%{_kf5_libdir}/libKOpeningHours.so
+%{_kf6_cmakedir}/KOpeningHours/
+%{_kf6_libdir}/libKOpeningHours.so
 
 %files lang -f %{name}.lang
 
