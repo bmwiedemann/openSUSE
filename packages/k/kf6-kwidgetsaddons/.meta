@@ -1,0 +1,9 @@
+<package name="kf6-kwidgetsaddons" project="openSUSE:Factory">
+  <title>Large set of desktop widgets</title>
+  <description>This repository contains add-on widgets and classes for applications
+that use the Qt Widgets module.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kwidgetsaddons"/>
+  <url>https://www.kde.org</url>
+</package>
