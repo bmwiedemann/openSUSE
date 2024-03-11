@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Wed Feb 21 19:28:22 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.249.0:
+  * update version for new release
+  * OCaml: unicode escapes in strings
+  * OCaml: add quoted strings
+  * OCaml: hex,octal,binary integer and hex floating point literals
+  * OCaml: _ is valid identifier start
+  * OCaml: update list of modules
+  * OCaml: add Ok/Error variant tags
+  * OCaml: update list of types
+  * OCaml: update Stdlib functions
+  * OCaml: add "initializer" keyword
+  * OCaml: "closed" is not a keyword
+  * OCaml: bump syntax highlighting version
+  * fix kate-editor.org update for 6.x
+  * update version for new release
+
+-------------------------------------------------------------------
+Wed Jan 31 17:51:18 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.249.0 (6.0 RC 2):
+  * New bugfix release
+  * For more details see https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
+Mon Jan 15 20:02:03 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.248.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Sat May 27 11:18:36 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init kf6-syntax-highlighting

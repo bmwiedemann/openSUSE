@@ -1,0 +1,9 @@
+<package name="kf6-syntax-highlighting" project="openSUSE:Factory">
+  <title>Syntax highlighting engine and library</title>
+  <description>This is a tier1/functional version of the Kate syntax highlighting engine.
+It's not tied to a particular output format or editor engine.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-syntax-highlighting"/>
+  <url>https://www.kde.org</url>
+</package>
