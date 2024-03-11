@@ -1,0 +1,13 @@
+<package name="kf6-threadweaver" project="openSUSE:Factory">
+  <title>KDE Helper for multithreaded programming</title>
+  <description>ThreadWeaver is a helper for multithreaded programming. It uses a job-based
+interface to queue tasks and execute them in an efficient way.
+
+You simply divide the workload into jobs, state the dependencies between jobs
+and ThreadWeaver will work out the most efficient way of dividing the work
+between threads within a set of resource limits.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-threadweaver"/>
+  <url>https://www.kde.org</url>
+</package>
