@@ -33,9 +33,7 @@ Source:         %{name}_%{version}.tar.gz
 An I2C serial EEPROM programming tool for cheap Winchiphead CH341 IC based programmers.
 
 %prep
-%setup -q -n %{name}_%{version}
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n %{name}_%{version}
 
 %build
 gcc -Wall -O2 %{optflags} ch341eeprom.c ch341funcs.c -lusb-1.0 -o ch341eeprom $(pkg-config libusb-1.0 --libs --cflags)

@@ -7,4 +7,12 @@
     <comment>I2C Serial EEPROM Programming Tool for the WCH CH341A</comment>
     <requestid>1038279</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ea863f71426d2af67b29c498d8c6d240</srcmd5>
+    <version>0.5</version>
+    <time>1710167690</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1156881</requestid>
+  </revision>
 </revisionlist>
