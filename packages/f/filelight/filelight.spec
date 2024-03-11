@@ -1,7 +1,7 @@
 #
 # spec file for package filelight
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,42 +16,35 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           filelight
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Graphical disk usage viewer
 License:        GPL-2.0-only OR GPL-3.0-only
 URL:            https://apps.kde.org/filelight
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-%if 0%{?suse_version} == 1500
-BuildRequires:  gcc10-c++
-BuildRequires:  gcc10-PIE
-%endif
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  update-desktop-files
-BuildRequires:  xz
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Declarative)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Parts)
-BuildRequires:  cmake(KF5Solid)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5QuickControls2)
-BuildRequires:  cmake(Qt5Script)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons)
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+Requires:       kf6-qqc2-desktop-style >= %{kf6_version}
+Requires:       kirigami-addons6
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 
@@ -65,32 +58,29 @@ and the sizes of files and directories on the system.
 %autosetup -p1 -n filelight-%{version}
 
 %build
-%if 0%{?suse_version} == 1500
-export CXX=g++-10
-%endif
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
+%find_lang %{name} --with-html --all-name
 
 %suse_update_desktop_file org.kde.filelight System Filesystem
 
 %files
 %license LICENSES/*
 %doc AUTHORS README.md
-%config %{_kf5_configdir}/filelightrc
-%doc %lang(en) %{_kf5_htmldir}/en/filelight/
-%{_kf5_applicationsdir}/org.kde.filelight.desktop
-%{_kf5_appstreamdir}/org.kde.filelight.appdata.xml
-%{_kf5_bindir}/filelight
-%{_kf5_debugdir}/filelight.categories
-%{_kf5_iconsdir}/hicolor/*/*/*
-%{_kf5_kxmlguidir}/filelight/
+%config %{_kf6_configdir}/filelightrc
+%doc %lang(en) %{_kf6_htmldir}/en/filelight/
+%{_kf6_applicationsdir}/org.kde.filelight.desktop
+%{_kf6_appstreamdir}/org.kde.filelight.appdata.xml
+%{_kf6_bindir}/filelight
+%{_kf6_debugdir}/filelight.categories
+%{_kf6_iconsdir}/hicolor/*/*/filelight.png
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/filelight/
 
 %changelog
