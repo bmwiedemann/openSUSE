@@ -1,7 +1,7 @@
 #
 # spec file for package kdeconnect-kde
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,64 +16,69 @@
 #
 
 
+%define kf6_version 5.240.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           kdeconnect-kde
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Integration of Android with Linux desktops
 License:        GPL-2.0-or-later
-URL:            https://community.kde.org/KDEConnect
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+URL:            https://apps.kde.org/kdeconnect
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 Source100:      kdeconnect-kde.SuSEfirewall
-BuildRequires:  cmake >= 3.0
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  libQt5Gui-private-headers-devel
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
+BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5Declarative)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5GuiAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Kirigami2)
-BuildRequires:  cmake(KF5ModemManagerQt)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5People)
-BuildRequires:  cmake(KF5PeopleVCard)
-BuildRequires:  cmake(KF5PulseAudioQt)
-BuildRequires:  cmake(KF5QQC2DesktopStyle)
-BuildRequires:  cmake(KF5Wayland)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(PlasmaWaylandProtocols)
-BuildRequires:  cmake(Qca-qt5)
-BuildRequires:  cmake(Qt5Multimedia)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5QuickControls2)
-BuildRequires:  cmake(Qt5WaylandClient)
-BuildRequires:  cmake(Qt5X11Extras)
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Kirigami2) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons) >= 0.11
+BuildRequires:  cmake(KF6ModemManagerQt) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6Package) >= %{kf6_version}
+BuildRequires:  cmake(KF6People) >= %{kf6_version}
+# BuildRequires:  cmake(KF6PeopleVCard)
+BuildRequires:  cmake(KF6PulseAudioQt)
+BuildRequires:  cmake(KF6QQC2DesktopStyle) >= %{kf6_version}
+BuildRequires:  cmake(KF6Service) >= %{kf6_version}
+BuildRequires:  cmake(KF6Solid) >= %{kf6_version}
+BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Bluetooth) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libfakekey)
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xtst)
-Requires:       kirigami-addons
-Requires:       kirigami2
-Requires:       libqt5-qtquickcontrols2
-Requires:       plasma-framework-components
-# kdeconnect-openssh-8.8.patch needs https://github.com/libfuse/sshfs/pull/269,
-# which is so far only on the way to TW.
+Requires:       kf6-kirigami-imports >= %{kf6_version}
+Requires:       kf6-qqc2-desktop-style >= %{kf6_version}
+Requires:       kirigami-addons6
+Requires:       qt6-declarative-imports >= %{qt6_version}
 Requires:       sshfs >= 3.7.2
-Recommends:     kpeoplevcard
+# TODO Not packaged yet
+# Recommends:     kpeoplevcard
 Conflicts:      kdeconnect-kde4
 
 %description
@@ -91,13 +96,13 @@ https://play.google.com/store/apps/details?id=org.kde.kdeconnect_tp or
 https://f-droid.org/en/packages/org.kde.kdeconnect_tp/
 
 %package zsh-completion
-Summary:        ZSH completion for %{name}
-Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:zsh)
+Summary:        ZSH completion for kdeconnect-kde
+Requires:       kdeconnect-kde = %{version}
+Supplements:    (kdeconnect-kde and zsh)
 BuildArch:      noarch
 
 %description zsh-completion
-ZSH command line completion support for %{name}.
+ZSH command line completion support for kdeconnect-kde.
 
 %lang_package
 
@@ -105,24 +110,26 @@ ZSH command line completion support for %{name}.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --all-name
+%find_lang %{name} --with-html --all-name
 
-%kf5_find_htmldocs
+# Remove unused static lib
+rm %{buildroot}%{_kf6_libdir}/libkdeconnectinterfaces.a
 
 %if 0%{?suse_version} < 1550
 # susefirewall config file
 install -D -m 0644 %{SOURCE100} \
-    %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/%{name}
+    %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/kdeconnect-kde
 %endif
 
-%suse_update_desktop_file %{buildroot}%{_kf5_applicationsdir}/org.kde.kdeconnect.app.desktop Network RemoteAccess
-%suse_update_desktop_file %{buildroot}%{_kf5_applicationsdir}/org.kde.kdeconnect.nonplasma.desktop Network RemoteAccess
+%suse_update_desktop_file %{buildroot}%{_kf6_applicationsdir}/org.kde.kdeconnect.app.desktop RemoteAccess
+%suse_update_desktop_file %{buildroot}%{_kf6_applicationsdir}/org.kde.kdeconnect.nonplasma.desktop RemoteAccess
 
 %pre
 # migrate old kdeconnect-kde service
@@ -183,51 +190,62 @@ true
 %files
 %license LICENSES/*
 %doc README*
+%doc %lang(en) %{_kf6_htmldir}/en/kdeconnect*/
 %if 0%{?suse_version} < 1550
-%config(noreplace) %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/%{name}
+%config(noreplace) %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/kdeconnect-kde
 %endif
-%dir %{_datadir}/Thunar
-%dir %{_datadir}/contractor
-%dir %{_datadir}/deepin
-%dir %{_datadir}/deepin/dde-file-manager
-%dir %{_datadir}/deepin/dde-file-manager/oem-menuextensions
-%dir %{_datadir}/nautilus-python
-%dir %{_kf5_sharedir}/kdeconnect
-%{_datadir}/Thunar/sendto/
-%{_datadir}/contractor/kdeconnect.contract
-%{_datadir}/deepin/dde-file-manager/oem-menuextensions/kdeconnect-dde.desktop
-%{_datadir}/nautilus-python/extensions/
-%{_kf5_applicationsdir}/*.desktop
-%{_kf5_appstreamdir}/org.kde.kdeconnect.appdata.xml
-%{_kf5_appstreamdir}/org.kde.kdeconnect.metainfo.xml
-%{_kf5_bindir}/kdeconnect-app
-%{_kf5_bindir}/kdeconnect-cli
-%{_kf5_bindir}/kdeconnect-handler
-%{_kf5_bindir}/kdeconnect-indicator
-%{_kf5_bindir}/kdeconnect-settings
-%{_kf5_bindir}/kdeconnect-sms
-%{_kf5_configdir}/autostart/org.kde.kdeconnect.daemon.desktop
-%{_kf5_debugdir}/kdeconnect-kde.categories
-%{_kf5_htmldir}/en/kdeconnect/
-%{_kf5_iconsdir}/hicolor/*/apps/kdeconnect*
-%{_kf5_iconsdir}/hicolor/*/status/*.svg
-%{_kf5_libdir}/libkdeconnect*.so.*
-%{_kf5_notifydir}/kdeconnect.notifyrc
-%{_kf5_plugindir}/
-%dir %{_kf5_qmldir}/org
-%dir %{_kf5_qmldir}/org/kde
-%{_kf5_qmldir}/org/kde/kdeconnect
-%{_kf5_servicesdir}/plasma-kdeconnect.desktop
-%{_kf5_sharedir}/dbus-1/services/org.kde.kdeconnect.service
-%{_kf5_sharedir}/kdeconnect/kdeconnect_findthisdevice_config.qml
-%{_kf5_sharedir}/kdeconnect/kdeconnect_pausemusic_config.qml
-%{_kf5_sharedir}/kdeconnect/kdeconnect_runcommand_config.qml
-%{_kf5_sharedir}/kdeconnect/kdeconnect_sendnotifications_config.qml
-%{_kf5_sharedir}/kdeconnect/kdeconnect_share_config.qml
-%{_kf5_sharedir}/kdeconnect/kdeconnect_clipboard_config.qml
-%{_kf5_sharedir}/plasma/
+%{_kf6_applicationsdir}/kcm_kdeconnect.desktop
+%{_kf6_applicationsdir}/org.kde.kdeconnect-settings.desktop
+%{_kf6_applicationsdir}/org.kde.kdeconnect.app.desktop
+%{_kf6_applicationsdir}/org.kde.kdeconnect.daemon.desktop
+%{_kf6_applicationsdir}/org.kde.kdeconnect.handler.desktop
+%{_kf6_applicationsdir}/org.kde.kdeconnect.nonplasma.desktop
+%{_kf6_applicationsdir}/org.kde.kdeconnect.sms.desktop
+%{_kf6_appstreamdir}/org.kde.kdeconnect.appdata.xml
+%{_kf6_appstreamdir}/org.kde.kdeconnect.metainfo.xml
+%{_kf6_bindir}/kdeconnect-app
+%{_kf6_bindir}/kdeconnect-cli
+%{_kf6_bindir}/kdeconnect-handler
+%{_kf6_bindir}/kdeconnect-indicator
+%{_kf6_bindir}/kdeconnect-settings
+%{_kf6_bindir}/kdeconnect-sms
+%{_kf6_configdir}/autostart/org.kde.kdeconnect.daemon.desktop
+%{_kf6_debugdir}/kdeconnect-kde.categories
+%{_kf6_iconsdir}/hicolor/*/apps/kdeconnect*.svg
+%{_kf6_iconsdir}/hicolor/*/status/*.svg
+%{_kf6_libdir}/libkdeconnectcore.so.*
+%{_kf6_libdir}/libkdeconnectpluginkcm.so.*
+%{_kf6_notificationsdir}/kdeconnect.notifyrc
+%{_kf6_plasmadir}/plasmoids/org.kde.kdeconnect/
+%{_kf6_plugindir}/kdeconnect/
+%dir %{_kf6_plugindir}/kf6/kfileitemaction
+%{_kf6_plugindir}/kf6/kfileitemaction/kdeconnectfileitemaction.so
+%{_kf6_plugindir}/kf6/kio/kdeconnect.so
+%{_kf6_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_kdeconnect.so
+%{_kf6_qmldir}/org/kde/kdeconnect/
+%dir %{_kf6_sharedir}/contractor
+%{_kf6_sharedir}/contractor/kdeconnect.contract
+%{_kf6_sharedir}/dbus-1/services/org.kde.kdeconnect.service
+%dir %{_kf6_sharedir}/deepin
+%dir %{_kf6_sharedir}/deepin/dde-file-manager
+%dir %{_kf6_sharedir}/deepin/dde-file-manager/oem-menuextensions
+%{_kf6_sharedir}/deepin/dde-file-manager/oem-menuextensions/kdeconnect-dde.desktop
+%{_kf6_sharedir}/kdeconnect
+%{_kf6_sharedir}/kdeconnect/kdeconnect_clipboard_config.qml
+%{_kf6_sharedir}/kdeconnect/kdeconnect_findthisdevice_config.qml
+%{_kf6_sharedir}/kdeconnect/kdeconnect_pausemusic_config.qml
+%{_kf6_sharedir}/kdeconnect/kdeconnect_runcommand_config.qml
+%{_kf6_sharedir}/kdeconnect/kdeconnect_sendnotifications_config.qml
+%{_kf6_sharedir}/kdeconnect/kdeconnect_share_config.qml
+%dir %{_kf6_sharedir}/nautilus-python
+%dir %{_kf6_sharedir}/nautilus-python/extensions/
+%{_kf6_sharedir}/nautilus-python/extensions/kdeconnect-share.py
+%dir %{_kf6_sharedir}/Thunar
+%dir %{_kf6_sharedir}/Thunar/sendto
+%{_kf6_sharedir}/Thunar/sendto/kdeconnect-thunar.desktop
 %{_libexecdir}/kdeconnectd
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/kdeconnect*/
 
 %changelog
