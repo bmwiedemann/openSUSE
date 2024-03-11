@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 10 22:58:35 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Migrate from kmod to kmodpy -- both are supported, kmodpy is now
+  packaged. 
+
+-------------------------------------------------------------------
 Tue Feb 27 22:17:04 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Add dependency on setuptools

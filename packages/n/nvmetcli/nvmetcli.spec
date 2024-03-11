@@ -33,7 +33,7 @@ BuildRequires:  python3-rpm-macros
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
 Requires:       python3-configshell-fb
-Requires:       python3-kmod
+Requires:       python3-kmodpy
 Requires(post): systemd
 Requires(postun): systemd
 Requires(preun): systemd
