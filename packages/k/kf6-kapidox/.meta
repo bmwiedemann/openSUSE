@@ -1,0 +1,9 @@
+<package name="kf6-kapidox" project="openSUSE:Factory">
+  <title>Scripts and data for building API documentation</title>
+  <description>The kapidox framework enables the generation of API documentation from
+Doxygen-formatted codde comments in a standard format and style.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kapidox"/>
+  <url>https://www.kde.org</url>
+</package>
