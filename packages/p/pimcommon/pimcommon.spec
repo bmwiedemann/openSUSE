@@ -1,7 +1,7 @@
 #
 # spec file for package pimcommon
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,56 +16,58 @@
 #
 
 
-%define kf5_version 5.105.0
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define kpim6_version 6.0.0
+
 %bcond_without released
 Name:           pimcommon
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Base package of KDE PIM PimCommon library
 License:        GPL-2.0-only AND LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= %{kf5_version}
-BuildRequires:  kf5-filesystem
-BuildRequires:  libxslt-devel
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5Codecs)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5Contacts)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5ItemModels)
-BuildRequires:  cmake(KF5JobWidgets)
-BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5NewStuff)
-BuildRequires:  cmake(KF5Purpose)
-BuildRequires:  cmake(KF5Service)
-BuildRequires:  cmake(KF5TextAutoCorrectionWidgets)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(KPim5Akonadi)
-BuildRequires:  cmake(KPim5AkonadiContact)
-BuildRequires:  cmake(KPim5AkonadiSearch)
-BuildRequires:  cmake(KPim5IMAP)
-BuildRequires:  cmake(KPim5Ldap)
-BuildRequires:  cmake(KPim5Libkdepim)
-BuildRequires:  cmake(KPim5TextEdit)
-BuildRequires:  cmake(Qt5Core) >= 5.15.2
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5UiPlugin)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5Xml)
-Conflicts:      libKF5PimCommon5 < %{version}
+BuildRequires:  doxygen
+BuildRequires:  fdupes
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+# For xsltproc
+BuildRequires:  libxslt-tools
+BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
+BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6Contacts) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
+BuildRequires:  cmake(KF6JobWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6NewStuff) >= %{kf6_version}
+BuildRequires:  cmake(KF6Purpose) >= %{kf6_version}
+BuildRequires:  cmake(KF6Service) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextAddonsWidgets)
+BuildRequires:  cmake(KF6TextAutoCorrectionWidgets)
+BuildRequires:  cmake(KF6TextCustomEditor)
+BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(KPim6Akonadi) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6AkonadiContactWidgets) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6AkonadiSearch) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6IMAP) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6LdapWidgets) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6Libkdepim) >= %{kpim6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
+BuildRequires:  cmake(Qt6UiPlugin) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
 
 %description
 This package contains the pimcommon library, used by several KDE PIM
@@ -74,38 +76,38 @@ applications.
 %package devel
 Summary:        Development package for pimcommon
 License:        LGPL-2.1-or-later
-Requires:       libKPim5PimCommon5 = %{version}
-Requires:       libKPim5PimCommonAkonadi5 = %{version}
-Requires:       cmake(KF5Config)
-Requires:       cmake(KF5Contacts)
-Requires:       cmake(KF5KIO)
-Requires:       cmake(KF5TextAutoCorrectionCore)
-Requires:       cmake(KF5TextAutoCorrectionWidgets)
-Requires:       cmake(KF5TextGrammarCheck)
-Requires:       cmake(KF5TextTranslator)
-Requires:       cmake(KPim5Akonadi)
-Requires:       cmake(KPim5AkonadiContact)
-Requires:       cmake(KPim5IMAP)
-Requires:       cmake(KPim5Libkdepim)
-Requires:       cmake(KPim5TextEdit)
+Requires:       libKPim6PimCommon6 = %{version}
+Requires:       libKPim6PimCommonAkonadi6 = %{version}
+Requires:       cmake(KF6Config) >= %{kf6_version}
+Requires:       cmake(KF6Contacts) >= %{kf6_version}
+Requires:       cmake(KF6KIO) >= %{kf6_version}
+Requires:       cmake(KF6TextAutoCorrectionWidgets)
+Requires:       cmake(KF6TextCustomEditor)
+Requires:       cmake(KPim6Akonadi) >= %{kpim6_version}
+Requires:       cmake(KPim6AkonadiContactWidgets) >= %{kpim6_version}
+Requires:       cmake(KPim6IMAP) >= %{kpim6_version}
+Requires:       cmake(KPim6Libkdepim) >= %{kpim6_version}
+Requires:       cmake(Qt6DBus) >= %{qt6_version}
+Requires:       cmake(Qt6Gui) >= %{qt6_version}
+Requires:       cmake(Qt6Widgets) >= %{qt6_version}
 
 %description devel
 The development package for the pimcommon libraries
 
-%package -n libKPim5PimCommon5
+%package -n libKPim6PimCommon6
 Summary:        The PimCommon Library
 License:        LGPL-2.1-or-later
-%requires_eq    %{name}
+Requires:       pimcommon >= %{version}
 
-%description -n libKPim5PimCommon5
+%description -n libKPim6PimCommon6
 The PimCommon library
 
-%package -n libKPim5PimCommonAkonadi5
+%package -n libKPim6PimCommonAkonadi6
 Summary:        The PimCommon Akonadi Library
 License:        LGPL-2.1-or-later
-%requires_eq    %{name}
+Requires:       pimcommon >= %{version}
 
-%description -n libKPim5PimCommonAkonadi5
+%description -n libKPim6PimCommonAkonadi6
 The PimCommon Akonadi library
 
 %lang_package
@@ -114,40 +116,40 @@ The PimCommon Akonadi library
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
+%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
 
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
+%fdupes %{buildroot}
 
-%ldconfig_scriptlets -n libKPim5PimCommon5
-%ldconfig_scriptlets -n libKPim5PimCommonAkonadi5
+%find_lang %{name} --all-name
+
+%ldconfig_scriptlets -n libKPim6PimCommon6
+%ldconfig_scriptlets -n libKPim6PimCommonAkonadi6
 
 %files
+%{_kf6_debugdir}/pimcommon.categories
+%{_kf6_debugdir}/pimcommon.renamecategories
+
+%files -n libKPim6PimCommon6
 %license LICENSES/*
-%{_kf5_debugdir}/pimcommon.categories
-%{_kf5_debugdir}/pimcommon.renamecategories
+%{_kf6_libdir}/libKPim6PimCommon.so.*
 
-%files -n libKPim5PimCommon5
-%{_kf5_libdir}/libKPim5PimCommon.so.*
-
-%files -n libKPim5PimCommonAkonadi5
-%{_kf5_libdir}/libKPim5PimCommonAkonadi.so.*
+%files -n libKPim6PimCommonAkonadi6
+%{_kf6_libdir}/libKPim6PimCommonAkonadi.so.*
 
 %files devel
-%dir %{_includedir}/KPim5/
-%{_includedir}/KPim5/PimCommon/
-%{_includedir}/KPim5/PimCommonAkonadi/
-%{_kf5_cmakedir}/KPim5PimCommon/
-%{_kf5_cmakedir}/KPim5PimCommonAkonadi/
-%{_kf5_libdir}/libKPim5PimCommon.so
-%{_kf5_libdir}/libKPim5PimCommonAkonadi.so
-%{_kf5_mkspecsdir}/qt_PimCommon.pri
-%{_kf5_mkspecsdir}/qt_PimCommonAkonadi.pri
-%{_kf5_plugindir}/designer/
+%doc %{_kf6_qchdir}/KPim6PimCommon*.*
+%{_includedir}/KPim6/PimCommon/
+%{_includedir}/KPim6/PimCommonAkonadi/
+%{_kf6_cmakedir}/KPim6PimCommon/
+%{_kf6_cmakedir}/KPim6PimCommonAkonadi/
+%{_kf6_libdir}/libKPim6PimCommon.so
+%{_kf6_libdir}/libKPim6PimCommonAkonadi.so
+%{_kf6_plugindir}/designer/
 
 %files lang -f %{name}.lang
 
