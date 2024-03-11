@@ -1,7 +1,7 @@
 #
 # spec file for package akonadiconsole
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,52 +16,53 @@
 #
 
 
-%define kf5_version 5.105.0
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define kpim6_version 6.0.0
+
 %bcond_without released
 Name:           akonadiconsole
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Management and debugging console for akonadi
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= %{kf5_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libxapian-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5CalendarCore)
-BuildRequires:  cmake(KF5Completion)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5Contacts)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5ItemModels)
-BuildRequires:  cmake(KF5ItemViews)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5TextWidgets)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(KPim5Akonadi)
-BuildRequires:  cmake(KPim5AkonadiContact)
-BuildRequires:  cmake(KPim5AkonadiMime)
-BuildRequires:  cmake(KPim5AkonadiSearch)
-BuildRequires:  cmake(KPim5CalendarSupport)
-BuildRequires:  cmake(KPim5Libkdepim)
-BuildRequires:  cmake(KPim5MessageViewer)
-BuildRequires:  cmake(KPim5Mime)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Sql)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
+BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6Contacts) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
+BuildRequires:  cmake(KF6ItemViews) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(KPim6Akonadi) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6AkonadiContactWidgets) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6AkonadiMime) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6AkonadiSearch) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6CalendarSupport) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6Libkdepim) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6MessageViewer) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Obsoletes:      akonadi_resources < %{version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 Akonadi Console is a utility that can be used to explore or manage
@@ -74,28 +75,26 @@ for debugging.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build -- -DBUILD_TESTING=OFF
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
-%suse_update_desktop_file -u org.kde.akonadiconsole Network Email
+%kf6_install
 
 %find_lang %{name}
 
 %ldconfig_scriptlets
 
-%files lang -f %{name}.lang
-
 %files
 %license LICENSES/*
-%dir %{_kf5_iconsdir}/hicolor/256x256
-%dir %{_kf5_iconsdir}/hicolor/256x256/apps
-%{_kf5_applicationsdir}/org.kde.akonadiconsole.desktop
-%{_kf5_bindir}/akonadiconsole
-%{_kf5_debugdir}/akonadiconsole.categories
-%{_kf5_debugdir}/akonadiconsole.renamecategories
-%{_kf5_iconsdir}/hicolor/*/apps/akonadiconsole.png
-%{_kf5_libdir}/libakonadiconsole.so.*
+%{_kf6_applicationsdir}/org.kde.akonadiconsole.desktop
+%{_kf6_bindir}/akonadiconsole
+%{_kf6_debugdir}/akonadiconsole.categories
+%{_kf6_debugdir}/akonadiconsole.renamecategories
+%{_kf6_iconsdir}/hicolor/*/apps/akonadiconsole.png
+%{_kf6_libdir}/libakonadiconsole.so.*
+
+%files lang -f %{name}.lang
 
 %changelog
