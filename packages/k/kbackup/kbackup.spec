@@ -1,7 +1,7 @@
 #
 # spec file for package kbackup
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,31 +16,37 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           kbackup
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Backup program based on KDE Frameworks 5
 License:        GPL-2.0-only
 URL:            https://apps.kde.org/kbackup
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5GuiAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  pkgconfig
+BuildRequires:  shared-mime-info
+BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(libarchive)
 
 %description
@@ -55,27 +61,27 @@ Although GUI based, it also offers an automated, GUI-less mode.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --with-qt --all-name
-%{kf5_find_htmldocs}
+%find_lang %{name} --with-html --with-man --all-name
 
 %files
 %license COPYING
 %doc README
-%doc %lang(en) %{_kf5_htmldir}/en/kbackup
+%doc %lang(en) %{_kf6_htmldir}/en/kbackup
+%doc %lang(en) %{_mandir}/man1/kbackup.1%{ext_man}
 %{_datadir}/mime/packages/kbackup.xml
-%{_kf5_applicationsdir}/org.kde.kbackup.desktop
-%{_kf5_appstreamdir}/org.kde.kbackup.appdata.xml
-%{_kf5_bindir}/kbackup
-%{_kf5_iconsdir}/hicolor/*/*/
-%{_kf5_kxmlguidir}/kbackup/
-%{_mandir}/man1/kbackup.1.gz
+%{_kf6_applicationsdir}/org.kde.kbackup.desktop
+%{_kf6_appstreamdir}/org.kde.kbackup.appdata.xml
+%{_kf6_bindir}/kbackup
+%{_kf6_iconsdir}/hicolor/*/*/
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/kbackup
 
 %changelog
