@@ -1,7 +1,7 @@
 #
 # spec file for package kdevelop5-plugin-python3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,14 @@
 %define mypython python3
 %bcond_without released
 Name:           kdevelop5-plugin-python3
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Python support for KDevelop
 License:        GPL-2.0-or-later
 URL:            https://www.kdevelop.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 # PATCH-FIX-OPENSUSE
