@@ -41,13 +41,11 @@ This is a maintenance release. The following items were fixed and/or added:
     RDP: Fix possible crash when connecting with the Apple Silicon variant of the Microsoft Remote Desktop application (bug #21820).
     BIOS: Fixed handle number used for DMI OEM table (bug #19781) 
 
-=======
 -------------------------------------------------------------------
 Thu Oct 26 18:10:45 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
 
 - Update file "fixes_for_leap.patch" to cover API change in Leap 15.6 kernel.
 
->>>>>>> ./virtualbox.changes.new
 -------------------------------------------------------------------
 Sat Oct 21 19:27:40 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
 

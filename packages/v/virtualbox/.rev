@@ -2557,4 +2557,12 @@ Linux hosts and guests: fix for building kernel modules against Linux 5.0. Thank
     <comment>Prepare for RPM 4.20 (forwarded request 1148021 from dimstar)</comment>
     <requestid>1148230</requestid>
   </revision>
+  <revision rev="271" vrev="4">
+    <srcmd5>246acbd8fda61decaa7580a6814cf4b3</srcmd5>
+    <version>7.0.14</version>
+    <time>1710167166</time>
+    <user>anag+factory</user>
+    <comment>Remove conflict markers (forwarded request 1156296 from favogt)</comment>
+    <requestid>1156427</requestid>
+  </revision>
 </revisionlist>
