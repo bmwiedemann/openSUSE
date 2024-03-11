@@ -1,0 +1,8 @@
+<package name="kinfocenter6" project="openSUSE:Factory">
+  <title>Utility that provides information about a computer system</title>
+  <description>KDE Utility that provides information about a computer system.
+
+</description>
+  <devel project="KDE:Frameworks" package="kinfocenter6"/>
+  <url>https://www.kde.org/</url>
+</package>
