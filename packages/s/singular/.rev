@@ -31,4 +31,12 @@
     <comment>- Update to release 4.3.2.10</comment>
     <requestid>1123138</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ec706e38300ef9fa2b6a46f80842d7f8</srcmd5>
+    <version>4.3.2.p16</version>
+    <time>1710167641</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 4.3.2p16</comment>
+    <requestid>1156773</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package singular
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,11 @@
 
 %define verud 4_3_2
 %define mainversion 4.3.2
-%define patchlevel p10
-
+%define patchlevel p16
 Name:           singular
 Version:        %mainversion%{?patchlevel:.%patchlevel}
 Release:        0
-Summary:        Singular CAS
+Summary:        Computer algebra system for polynomials
 License:        BSD-3-Clause AND GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-only
 Group:          Productivity/Scientific/Math
 URL:            https://www.singular.uni-kl.de/
@@ -180,9 +179,7 @@ Requires:       libsingular_resources-%verud = %version-%release
 (Upstream has not provided any description.)
 
 %prep
-%autosetup -n singular-%{mainversion} -p1
-# Remove prebuilt documantation
-rm doc/doc.tbz2
+%autosetup -n singular-%mainversion -p1
 
 %build
 ./autogen.sh
@@ -198,20 +195,16 @@ blen="${#b}"
 for i in "$b/%_libexecdir/%name"/*Singular; do
 	ln -s "${i:$blen}" "$b/%_bindir/"
 done
+find "%buildroot/usr/share/doc" -type f -exec chmod a-x {} +
 %if 0%{?fdupes:1}
 %fdupes %buildroot/%_prefix
 %endif
 
-%post   -n libfactory-%verud -p /sbin/ldconfig
-%postun -n libfactory-%verud -p /sbin/ldconfig
-%post   -n libomalloc-%verud -p /sbin/ldconfig
-%postun -n libomalloc-%verud -p /sbin/ldconfig
-%post   -n libpolys-%verud -p /sbin/ldconfig
-%postun -n libpolys-%verud -p /sbin/ldconfig
-%post   -n libSingular-%verud -p /sbin/ldconfig
-%postun -n libSingular-%verud -p /sbin/ldconfig
-%post   -n libsingular_resources-%verud -p /sbin/ldconfig
-%postun -n libsingular_resources-%verud -p /sbin/ldconfig
+%ldconfig_scriptlets -n libfactory-%verud
+%ldconfig_scriptlets -n libomalloc-%verud
+%ldconfig_scriptlets -n libpolys-%verud
+%ldconfig_scriptlets -n libSingular-%verud
+%ldconfig_scriptlets -n libsingular_resources-%verud
 
 %files
 %_bindir/*Singular
@@ -221,6 +214,8 @@ done
 %_datadir/man/man1/*
 %_datadir/ml_*/
 %_datadir/singular/
+/usr/share/doc/singular/
+%_infodir/*
 %license COPYING GPL2 GPL3
 
 %files -n libfactory-%verud
