@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Wed Mar  6 08:40:34 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.1
+- Changes since 6.0.0:
+  * update version for new release
+  * Remove overriding of Kirigami application header
+  * ScrollView: Improve scrolling behaviour
+
+-------------------------------------------------------------------
+Wed Feb 21 18:36:41 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0:
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.93.0:
+  * update version for new release
+
+-------------------------------------------------------------------
+Wed Jan 31 17:38:29 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.93.0 (6.0 RC 2):
+  * New bugfix release
+  * See https://kde.org/announcements/megarelease/6/rc2/ for details
+- No code changes since 5.92.0
+
+-------------------------------------------------------------------
+Mon Jan 15 21:09:16 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.92.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Wed Aug 23 19:47:24 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init qqc2-breeze-style6
