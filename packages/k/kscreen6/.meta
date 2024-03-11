@@ -1,0 +1,8 @@
+<package name="kscreen6" project="openSUSE:Factory">
+  <title>Screen management software by KDE</title>
+  <description>KScreen handles screen management for both X11 and Wayland sessions, including rotation, size, refresh rate, and scaling.
+
+</description>
+  <devel project="KDE:Frameworks" package="kscreen6"/>
+  <url>https://www.kde.org</url>
+</package>
