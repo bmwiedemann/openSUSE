@@ -1,7 +1,7 @@
 #
 # spec file for package bovo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,31 +16,35 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           bovo
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Five-in-a-row Board Game
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/bovo
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  xz
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5KDEGames)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Widgets)
-Obsoletes:      %{name}5 < %{version}
-Provides:       %{name}5 = %{version}
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KDEGames6) 
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6SvgWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+Obsoletes:      bovo5 < %{version}
+Provides:       bovo5 = %{version}
 
 %description
 Bovo is a Gomoku (Connect Five, Five in a row, X and O, etc) game by KDE.
@@ -51,24 +55,25 @@ Bovo is a Gomoku (Connect Five, Five in a row, X and O, etc) game by KDE.
 %autosetup -p1 -n bovo-%{version}
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
+%find_lang %{name} --with-man --with-html --all-name
 
 %files
 %license COPYING*
-%doc %lang(en) %{_kf5_htmldir}/en/bovo/
-%{_kf5_applicationsdir}/org.kde.bovo.desktop
-%{_kf5_appstreamdir}/org.kde.bovo.appdata.xml
-%{_kf5_bindir}/bovo
-%{_kf5_iconsdir}/hicolor/*/apps/bovo.*
-%{_kf5_sharedir}/bovo/
+%doc %lang(en) %{_kf6_htmldir}/en/bovo/
+%{_kf6_applicationsdir}/org.kde.bovo.desktop
+%{_kf6_appstreamdir}/org.kde.bovo.appdata.xml
+%{_kf6_bindir}/bovo
+%{_kf6_iconsdir}/hicolor/*/apps/bovo.*
+%{_kf6_sharedir}/bovo/
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/bovo/
 
 %changelog
