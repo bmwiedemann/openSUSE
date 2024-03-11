@@ -1,7 +1,7 @@
 #
 # spec file for package libktorrent
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,69 +16,73 @@
 #
 
 
-%define sonum   6
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           libktorrent
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Torrent Downloading Library
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/ktorrent
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  doxygen
-BuildRequires:  extra-cmake-modules
 BuildRequires:  gmp-devel >= 6.0.0
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libboost_headers-devel
-BuildRequires:  libgcrypt-devel
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Solid)
-BuildRequires:  cmake(Qca-qt5)
-BuildRequires:  cmake(Qt5Core) >= 5.15.2
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Solid) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
+BuildRequires:  pkgconfig(libgcrypt) >= 1.4.5
 
 %description
 libktorrent is a torrent downloading library.
 
+%package -n libKTorrent6
+Summary:        Torrent Downloading Library
+Provides:       libktorrent = %{version}
+Obsoletes:      libktorrent < %{version}
+Provides:       libktorrent-lang = %{version}
+Obsoletes:      libktorrent-lang < %{version}
+
+%description -n libKTorrent6
+libktorrent is a torrent downloading library.
+
 %package devel
 Summary:        Development files for libktorrent
-Requires:       gmp-devel
-Requires:       libKF5Torrent%{sonum} = %{version}
-Requires:       libboost_headers-devel
-Requires:       libgcrypt-devel
-Requires:       cmake(KF5Archive)
-Requires:       cmake(KF5Config)
-Requires:       cmake(KF5KIO)
-Requires:       cmake(Qca-qt5)
-Requires:       cmake(Qt5Core)
-Requires:       cmake(Qt5Network)
+Requires:       libKTorrent6 = %{version}
+Requires:       libboost_headers-devel >= 1.66.0
+Requires:       cmake(KF6Archive) >= %{kf6_version}
+Requires:       cmake(KF6Config) >= %{kf6_version}
+Requires:       cmake(KF6KIO) >= %{kf6_version}
+Requires:       cmake(Qt6Core) >= %{qt6_version}
+Requires:       cmake(Qt6Core5Compat) >= %{qt6_version}
+Requires:       cmake(Qt6Network) >= %{qt6_version}
+Requires:       gmp-devel >= 6.0.0
+Requires:       pkgconfig(libgcrypt) >= 1.4.5
 
 %description devel
 This package includes the necessary files for development using libktorrent.
 
-%package -n libKF5Torrent%{sonum}
-Summary:        Torrent Downloading Library
-Recommends:     %{name}-lang = %{version}
-Provides:       %{name} = %{version}
-Obsoletes:      %{name} < %{version}
-
-%description -n libKF5Torrent%{sonum}
-libktorrent is a torrent downloading library.
-
-%lang_package
+%lang_package -n libKTorrent6
 
 %prep
 %autosetup -p1
 
-# The boost minimum version change is only cosmetic. Leap 15.2 provides 1.66
+# The boost minimum version change is only cosmetic. Leap 15 only provides 1.66...
 sed -i 's#1.71.0#1.66.0#' CMakeLists.txt
 
 %build
@@ -86,26 +90,26 @@ sed -i 's#1.71.0#1.66.0#' CMakeLists.txt
 %define _lto_cflags %{nil}
 %endif
 
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang libktorrent5 %{name}.lang
+%find_lang %{name} --all-name
 
-%ldconfig_scriptlets -n libKF5Torrent%{sonum}
+%ldconfig_scriptlets -n libKTorrent6
+
+%files -n libKTorrent6
+%license LICENSES/*
+%{_kf6_libdir}/libKTorrent6.so.*
 
 %files devel
-%{_kf5_cmakedir}/KF5Torrent/
-%{_kf5_includedir}/libktorrent/
-%{_kf5_libdir}/libKF5Torrent.so
+%{_kf6_cmakedir}/KTorrent6/
+%{_kf6_includedir}/libktorrent/
+%{_kf6_libdir}/libKTorrent6.so
 
-%files -n libKF5Torrent%{sonum}
-%license LICENSES/*
-%doc ChangeLog RoadMap
-%{_kf5_libdir}/libKF5Torrent.so.*
-
-%files lang -f %{name}.lang
+%files -n libKTorrent6-lang -f %{name}.lang
 
 %changelog
