@@ -1,0 +1,8 @@
+<package name="plasma6-print-manager" project="openSUSE:Factory">
+  <title>Tools for managing print jobs and printers</title>
+  <description>plasma6-print-manager provides tools for managing print jobs and printers.
+
+</description>
+  <devel project="KDE:Frameworks" package="plasma6-print-manager"/>
+  <url>https://www.kde.org</url>
+</package>
