@@ -1,7 +1,7 @@
 #
 # spec file for package akonadi-calendar
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,56 +16,63 @@
 #
 
 
-%define kf5_version 5.105.0
-%define libname libKPim5AkonadiCalendar5
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define kpim6_version 6.0.0
+
 %bcond_without released
 Name:           akonadi-calendar
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Akonadi calendar integration
 License:        LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= %{kf5_version}
-BuildRequires:  cmake(KF5CalendarCore)
-BuildRequires:  cmake(KF5Codecs)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(KPim5Akonadi)
-BuildRequires:  cmake(KPim5AkonadiContact)
-BuildRequires:  cmake(KPim5CalendarUtils)
-BuildRequires:  cmake(KPim5MessageCore)
-BuildRequires:  cmake(KPim5IdentityManagement)
-BuildRequires:  cmake(KPim5MailTransport)
-BuildRequires:  cmake(KPim5Mime)
-BuildRequires:  cmake(Qt5Test)
-Conflicts:      libKF5AkonadiCalendar5 < %{version}
+BuildRequires:  doxygen
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
+BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(KPim6Akonadi) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6AkonadiContactCore) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6AkonadiMime) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6CalendarUtils) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6IdentityManagementCore) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6Libkleo) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6MailTransport) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6MessageComposer) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6MessageCore) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
+BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 This library provides calendar integration for Akonadi based Applications.
 
-%package -n %{libname}
+%package -n libKPim6AkonadiCalendar6
 Summary:        KDE PIM Libraries: AkonadiCalendar
-%requires_eq    %{name}
+Requires:       akonadi-calendar >= %{version}
+Obsoletes:      libKPim5AkonadiCalendar5 < %{version}
+Obsoletes:      libKPim5AkonadiCalendar5-lang < %{version}
 # Renamed
 Obsoletes:      akonadi-calendar-lang <= 23.04.0
 
-%description -n %{libname}
+%description -n libKPim6AkonadiCalendar6
 This library provides calendar integration for Akonadi based Applications.
 
 %package -n akonadi-plugin-calendar
 Summary:        Akonadi calendar integration - serializer plugin
-Requires:       %{libname} = %{version}
+Requires:       libKPim6AkonadiCalendar6 = %{version}
 
 %description -n akonadi-plugin-calendar
 This package provides plugins required by PIM applications to read and write calendar data.
@@ -73,74 +80,72 @@ This package provides plugins required by PIM applications to read and write cal
 %package -n kalendarac
 Summary:        Reminder daemon client
 # Moved from kalendar 1.0.0 to akonadi-calendar
-Conflicts:      kalendar = 1.0.0
+Obsoletes:      kalendar = 1.0.0
 
 %description -n kalendarac
 Kalendarac is a reminder daemon client for calendar events.
 
 %package devel
 Summary:        KDE PIM Libraries: Build Environment
-Requires:       %{libname} = %{version}
-Requires:       cmake(KPim5Akonadi)
-Requires:       cmake(KF5CalendarCore)
-Requires:       cmake(KF5I18n)
-Requires:       cmake(KF5WidgetsAddons)
+Requires:       libKPim6AkonadiCalendar6 = %{version}
+Requires:       cmake(KF6CalendarCore) >= %{kf6_version}
+Requires:       cmake(KF6I18n) >= %{kf6_version}
+Requires:       cmake(KF6WidgetsAddons) >= %{kf6_version}
+Requires:       cmake(KPim6Akonadi) >= %{kpim6_version}
+Requires:       cmake(KPim6IdentityManagementCore) >= %{kpim6_version}
 Obsoletes:      akonadi5-calendar-devel < %{version}
 Provides:       akonadi5-calendar-devel = %{version}
 
 %description devel
 Development package for akonadi-calendar.
 
-%lang_package -n %{libname}
+%lang_package -n libKPim6AkonadiCalendar6
 
 %prep
 %autosetup -p1 -n akonadi-calendar-%{version}
 
 %build
-%cmake_kf5 -d build -- -DBUILD_TESTING=ON
-%cmake_build
+%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{libname} --with-man --all-name
+%find_lang libKPim6AkonadiCalendar6 --all-name
 
-%ldconfig_scriptlets -n libKPim5AkonadiCalendar5
+%ldconfig_scriptlets -n libKPim6AkonadiCalendar6
 
 %files
 %license LICENSES/*
-%{_kf5_debugdir}/*.categories
-%{_kf5_debugdir}/*.renamecategories
-%exclude %{_kf5_debugdir}/org_kde_kalendarac.categories
+%{_kf6_debugdir}/akonadi-calendar.categories
+%{_kf6_debugdir}/akonadi-calendar.renamecategories
 
-%files -n libKPim5AkonadiCalendar5
-%{_kf5_libdir}/libKPim5AkonadiCalendar.so.*
+%files -n libKPim6AkonadiCalendar6
+%{_kf6_libdir}/libKPim6AkonadiCalendar.so.*
 
 %files -n akonadi-plugin-calendar
-%{_kf5_plugindir}/akonadi_serializer_kcalcore.so
-%dir %{_kf5_sharedir}/akonadi
-%dir %{_kf5_sharedir}/akonadi/plugins
-%dir %{_kf5_sharedir}/akonadi/plugins/serializer
-%dir %{_kf5_plugindir}/kf5/
-%dir %{_kf5_plugindir}/kf5/org.kde.kcalendarcore.calendars
-%{_kf5_plugindir}/kf5/org.kde.kcalendarcore.calendars/libakonadicalendarplugin.so
-%{_kf5_sharedir}/akonadi/plugins/serializer/akonadi_serializer_kcalcore.desktop
+%{_kf6_plugindir}/akonadi_serializer_kcalcore.so
+%dir %{_kf6_plugindir}/kf6/org.kde.kcalendarcore.calendars
+%{_kf6_plugindir}/kf6/org.kde.kcalendarcore.calendars/libakonadicalendarplugin.so
+%dir %{_kf6_sharedir}/akonadi
+%dir %{_kf6_sharedir}/akonadi/plugins
+%dir %{_kf6_sharedir}/akonadi/plugins/serializer
+%{_kf6_sharedir}/akonadi/plugins/serializer/akonadi_serializer_kcalcore.desktop
 
 %files -n kalendarac
-%{_kf5_bindir}/kalendarac
-%{_kf5_configdir}/autostart/org.kde.kalendarac.desktop
-%{_kf5_debugdir}/org_kde_kalendarac.categories
-%{_kf5_notifydir}/kalendarac.notifyrc
-%{_kf5_sharedir}/dbus-1/services/org.kde.kalendarac.service
+%{_kf6_bindir}/kalendarac
+%{_kf6_configdir}/autostart/org.kde.kalendarac.desktop
+%{_kf6_debugdir}/org_kde_kalendarac.categories
+%{_kf6_notificationsdir}/kalendarac.notifyrc
+%{_kf6_sharedir}/dbus-1/services/org.kde.kalendarac.service
 
 %files devel
-%dir %{_includedir}/KPim5
-%{_includedir}/KPim5/AkonadiCalendar/
-%{_kf5_cmakedir}/KF5AkonadiCalendar/
-%{_kf5_cmakedir}/KPim5AkonadiCalendar/
-%{_kf5_libdir}/libKPim5AkonadiCalendar.so
-%{_kf5_mkspecsdir}/qt_AkonadiCalendar.pri
+%doc %{_kf6_qchdir}/KPim6AkonadiCalendar.*
+%{_includedir}/KPim6/AkonadiCalendar/
+%{_kf6_cmakedir}/KPim6AkonadiCalendar/
+%{_kf6_libdir}/libKPim6AkonadiCalendar.so
 
-%files -n %{libname}-lang -f %{libname}.lang
+%files -n libKPim6AkonadiCalendar6-lang -f libKPim6AkonadiCalendar6.lang
 
 %changelog
