@@ -394,4 +394,12 @@ you may enable build for SLE &gt;= 10 (forwarded request 96955 from rudi_m)</com
   with gzip (boo#1132118). (forwarded request 1030408 from marxin)</comment>
     <requestid>1031152</requestid>
   </revision>
+  <revision rev="51" vrev="6">
+    <srcmd5>aeca25b8e3eda6b5e9e80f514d6da7f1</srcmd5>
+    <version>2.49.92</version>
+    <time>1710167686</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1151082 from dimstar)</comment>
+    <requestid>1156872</requestid>
+  </revision>
 </revisionlist>

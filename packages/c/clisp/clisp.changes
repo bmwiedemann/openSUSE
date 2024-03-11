@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 10:47:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Oct 21 12:57:41 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Depends on gzip as CLISP memory image data are compressed

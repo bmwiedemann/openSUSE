@@ -129,16 +129,16 @@ contains two nice applications.
 
 %prep
 %setup -qT -b0
-%patch1  -p1 -b .sel
-%patch2  -p1 -b .wooh
-%patch4  -p1 -b .conf
-%patch5  -p1 -b .gc
-%patch6  -p1 -b .demos
-%patch7  -p1 -b .psql
-%patch8  -p1 -b .rpath
-%patch12 -p1 -b .p12
-%patch14 -p0 -b .p14
-%patch16 -p1 -b .p16
+%patch -P 1  -p1 -b .sel
+%patch -P 2  -p1 -b .wooh
+%patch -P 4  -p1 -b .conf
+%patch -P 5  -p1 -b .gc
+%patch -P 6  -p1 -b .demos
+%patch -P 7  -p1 -b .psql
+%patch -P 8  -p1 -b .rpath
+%patch -P 12 -p1 -b .p12
+%patch -P 14 -p0 -b .p14
+%patch -P 16 -p1 -b .p16
 
 %build
 %add_optflags -g3 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE
