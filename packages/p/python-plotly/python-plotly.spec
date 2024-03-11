@@ -18,7 +18,7 @@
 
 %define skip_python39 1
 Name:           python-plotly
-Version:        5.16.1
+Version:        5.17.0
 Release:        0
 Summary:        Library for collaborative, interactive, publication-quality graphs
 License:        MIT
