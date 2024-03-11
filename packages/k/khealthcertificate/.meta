@@ -1,0 +1,17 @@
+<package name="khealthcertificate" project="openSUSE:Factory">
+  <title>Handling of digital vaccination, test and recovery certificates</title>
+  <description>KHeathCertificate permits parsing of digital vaccination, test and recovery
+certificates.
+The following certificate formats can be parsed:
+- Digital Infrastructure for Vaccination Open Credentialing (DIVOC), the
+system used for Indian vaccination certificates.
+- EU &quot;Digital Green Certificate&quot; (DCG) vaccination, test and recovery
+certificates
+- SMART Heath Cards (SHC) vaccination certificates, in use some areas of North
+America.
+Check the README.md file for formats with limited support.
+
+</description>
+  <devel project="KDE:Applications" package="khealthcertificate"/>
+  <url>https://www.kde.org</url>
+</package>
