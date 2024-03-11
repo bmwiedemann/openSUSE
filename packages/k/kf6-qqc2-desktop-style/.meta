@@ -1,0 +1,9 @@
+<package name="kf6-qqc2-desktop-style" project="openSUSE:Factory">
+  <title>A Qt Quick Controls 2 Style for Desktop UIs</title>
+  <description>A Qt Quick Controls 2 style engine that uses the desktop style
+to draw controls with QStyle.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-qqc2-desktop-style"/>
+  <url>https://www.kde.org</url>
+</package>

@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Wed Feb 21 19:28:17 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.249.0:
+  * update version for new release
+  * Set a small longPressThreshold to enable longPressed signal
+  * Menu: Use StyleItem as a property
+  * Menu: fix TextFieldContextMenu opening at wrong position (kde#481293)
+  * MenuItem: remove some unused property bindings
+  * DialogButtonBox: Respect QStyle::SH_DialogButtonBox_ButtonsHaveIcons
+  * VerticalHeaderView: Don't highlight if selection doesn't match
+  * HorizontalHeaderView: Fix incorrect highlighting when no selection model set
+  * Revert "DefaultListItemBackground: use outline only to show focus"
+  * Revert "Use consistent paddings for the first list item"
+  * Use kirigami.theme.framecontrast
+  * Specify QtQuick dependency for private plugin
+  * Make sidebar drawer separators proper Separator
+  * Set borders to follow same colors as Breeze widget style
+  * update version for new release
+
+-------------------------------------------------------------------
+Wed Jan 31 17:51:11 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.249.0 (6.0 RC 2):
+  * New bugfix release
+  * For more details see https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
+Mon Jan 15 20:01:58 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.248.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Sat May 27 11:18:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init kf6-qqc2-desktop-style
