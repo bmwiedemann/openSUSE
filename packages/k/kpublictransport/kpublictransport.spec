@@ -1,7 +1,7 @@
 #
 # spec file for package kpublictransport
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,56 +16,61 @@
 #
 
 
-%global sover   1
-%global lname   libKPublicTransport%{sover}
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           kpublictransport
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        QML imports for querying public transport data
 License:        LGPL-2.0-or-later
 URL:            https://www.kde.org
-Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  bison
-BuildRequires:  extra-cmake-modules
+BuildRequires:  doxygen
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
 BuildRequires:  flex
-%if 0%{?suse_version} == 1500
-BuildRequires:  gcc10-c++
-BuildRequires:  gcc10-PIE
-%endif
-BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5NetworkManagerQt)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6NetworkManagerQt) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(zlib)
-Requires:       %{lname} = %{version}
-Requires:       libKPublicTransportOnboard%{sover} = %{version}
 
 %description
 A library for access realtime public transport data and for performing public
+ransport journey queries.
+
+%package imports
+Summary:        QML Imports for using kpublictransport
+
+%description imports
+A library for access realtime public transport data and for performing public
 ransport journey queries. QML imports.
 
-%package -n %{lname}
+%package -n libKPublicTransport1
 Summary:        Library for querying public transport data
+Requires:       kpublictransport >= %{version}
 
-%description -n %{lname}
+%description -n libKPublicTransport1
 A library for access realtime public transport data and for performing public
 ransport journey queries.
 
-%package -n libKPublicTransportOnboard%{sover}
+%package -n libKPublicTransportOnboard1
 Summary:        Library for querying public transport data onboard trains
-Requires:       %{lname} = %{version}
+Requires:       libKPublicTransport1 = %{version}
 
-%description -n libKPublicTransportOnboard%{sover}
+%description -n libKPublicTransportOnboard1
 A library for access realtime public transport data and for performing public
 transport journey queries. This package contains a library to determine 
 the presence onboard of a train using WiFi SSIDs and provide journey 
@@ -73,10 +78,9 @@ details.
 
 %package devel
 Summary:        Library for querying public transport data
-Requires:       %{lname} = %{version}
-Requires:       libKPublicTransportOnboard%{sover} = %{version}
-Requires:       extra-cmake-modules
-Requires:       cmake(Qt5Gui)
+Requires:       libKPublicTransport1 = %{version}
+Requires:       libKPublicTransportOnboard1 = %{version}
+Requires:       cmake(Qt6Gui) >= %{qt6_version}
 Requires:       pkgconfig(zlib)
 
 %description devel
@@ -87,39 +91,40 @@ ransport journey queries.Development files.
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} == 1500
-export CXX=g++-10
-%endif
-%cmake_kf5 -d build -- -DBUILD_TESTING=ON
-%cmake_build
+%cmake_kf6 \
+  -DBUILD_TESTING:BOOL=TRUE \
+  -DBUILD_QCH:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
 %check
 %ctest
 
-%ldconfig_scriptlets -n %{lname}
-%ldconfig_scriptlets -n libKPublicTransportOnboard%{sover}
+%ldconfig_scriptlets -n libKPublicTransport1
+%ldconfig_scriptlets -n libKPublicTransportOnboard1
 
 %files
-%dir %{_kf5_qmldir}/org/
-%dir %{_kf5_qmldir}/org/kde/
-%{_kf5_qmldir}/org/kde/kpublictransport/
+%{_kf6_debugdir}/org_kde_kpublictransport.categories
+%{_kf6_debugdir}/org_kde_kpublictransport_onboard.categories
 
-%files -n %{lname}
+%files imports
+%{_kf6_qmldir}/org/kde/kpublictransport/
+
+%files -n libKPublicTransport1
 %license LICENSES/*
-%{_kf5_debugdir}/org_kde_kpublictransport.categories
-%{_kf5_libdir}/libKPublicTransport.so.*
+%{_kf6_libdir}/libKPublicTransport.so.*
 
-%files -n libKPublicTransportOnboard%{sover}
-%{_kf5_libdir}/libKPublicTransportOnboard.so.*
-%{_kf5_debugdir}/org_kde_kpublictransport_onboard.categories
+%files -n libKPublicTransportOnboard1
+%{_kf6_libdir}/libKPublicTransportOnboard.so.*
 
 %files devel
+%doc %{_kf6_qchdir}/KPublicTransport.*
 %{_includedir}/KPublicTransport/
-%{_kf5_cmakedir}/KPublicTransport/
-%{_kf5_libdir}/libKPublicTransport.so
-%{_kf5_libdir}/libKPublicTransportOnboard.so
+%{_kf6_cmakedir}/KPublicTransport/
+%{_kf6_libdir}/libKPublicTransport.so
+%{_kf6_libdir}/libKPublicTransportOnboard.so
 
 %changelog
