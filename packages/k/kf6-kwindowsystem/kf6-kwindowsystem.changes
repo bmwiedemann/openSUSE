@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Wed Feb 21 19:28:16 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.249.0:
+  * update version for new release
+  * [kwindowinfo] Fix mixup between applicationMenuServiceName and appMenuObjectPath (kde#479940)
+  * Apply 1 suggestion(s) to 1 file(s)
+  * Expose _NET_WM_MOVERESIZE source
+  * Expose _NET_WM_MOVERESIZE button
+  * kkeyserver: add api for Qt Key mapping to multiple X Keys
+  * kkeyserver: use new XF86keysym.h & qxcbcommon.cpp
+  * update version for new release
+
+-------------------------------------------------------------------
+Wed Jan 31 17:51:03 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.249.0 (6.0 RC 2):
+  * New bugfix release
+  * For more details see https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
+Mon Jan 15 20:01:50 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.248.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Sat May 27 11:18:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init kf6-kwindowsystem
