@@ -1,0 +1,6 @@
+#%PAM-1.0
+# for fingerprint
+auth     required       pam_fprintd.so
+auth     include        common-auth
+account  include        common-account
+password include        common-password

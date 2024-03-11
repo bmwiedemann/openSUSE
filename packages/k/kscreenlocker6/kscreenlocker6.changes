@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Wed Mar  6 08:40:27 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.1
+- Changes since 6.0.0:
+  * update version for new release
+
+-------------------------------------------------------------------
+Tue Mar  5 08:40:32 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Remove kscreenlocker_greet restart in %post, no longer necessary
+  after kcheckpass got removed
+
+-------------------------------------------------------------------
+Wed Feb 21 18:36:13 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0:
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.93.0:
+  * update version for new release
+
+-------------------------------------------------------------------
+Fri Feb 16 11:58:45 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Remove session mechanism from kscreenlocker pam files (boo#1217189)
+
+-------------------------------------------------------------------
+Wed Jan 31 17:37:07 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.93.0 (6.0 RC 2):
+  * New bugfix release
+  * See https://kde.org/announcements/megarelease/6/rc2/ for details
+- Changes since 5.92.0:
+  * greeter: Fix pressing Esc to turn off the display (kde#476533)
+  * Respect max value of LockGrace in the UI as well
+
+-------------------------------------------------------------------
+Mon Jan 15 21:08:52 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.92.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Wed Nov 15 00:17:09 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add QML module provides
+
+-------------------------------------------------------------------
+Sat Jul  1 09:23:14 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init kscreenlocker6

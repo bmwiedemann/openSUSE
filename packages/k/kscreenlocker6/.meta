@@ -1,0 +1,8 @@
+<package name="kscreenlocker6" project="openSUSE:Factory">
+  <title>Library and components for secure lock screen architecture</title>
+  <description>Library and components for secure lock screen architecture.
+
+</description>
+  <devel project="KDE:Frameworks" package="kscreenlocker6"/>
+  <url>https://www.kde.org</url>
+</package>

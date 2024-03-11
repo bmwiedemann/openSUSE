@@ -1,0 +1,6 @@
+#%PAM-1.0
+# for smartcard
+auth     required       pam_pkcs11.so        wait_for_card card_only
+auth     include        common-auth
+account  include        common-account
+password include        common-password
