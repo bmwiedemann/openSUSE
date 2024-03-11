@@ -1,0 +1,8 @@
+<package name="kf6-kauth" project="openSUSE:Factory">
+  <title>Framework which lets applications perform actions as a privileged user</title>
+  <description>KAuth is a framework to let applications perform actions as a privileged user.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kauth"/>
+  <url>https://www.kde.org</url>
+</package>
