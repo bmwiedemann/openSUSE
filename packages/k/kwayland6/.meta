@@ -1,0 +1,9 @@
+<package name="kwayland6" project="openSUSE:Factory">
+  <title>KDE Wayland library</title>
+  <description>KWayland provides a Qt-style Client and Server library wrapper for the Wayland
+libraries.
+
+</description>
+  <devel project="KDE:Frameworks" package="kwayland6"/>
+  <url>https://www.kde.org</url>
+</package>
