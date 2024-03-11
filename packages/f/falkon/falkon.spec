@@ -16,62 +16,60 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           falkon
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Modern web browser
 License:        GPL-3.0-or-later
-URL:            https://www.falkon.org/
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+URL:            https://apps.kde.org/falkon
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# Search engine favicons.
-Source3:        obs.png
-Source4:        opensusesoftware.png
-# No QtWebEngine for other archs
-ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{riscv}
-BuildRequires:  extra-cmake-modules
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
-BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  python3-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Purpose)
-BuildRequires:  cmake(KF5Wallet)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5QuickWidgets)
-BuildRequires:  cmake(Qt5Sql)
-BuildRequires:  cmake(Qt5WebChannel)
-BuildRequires:  cmake(Qt5WebEngineCore)
-BuildRequires:  cmake(Qt5WebEngineWidgets)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5X11Extras)
+BuildRequires:  qt6-network-private-devel >= %{qt6_version}
+BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6JobWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Purpose) >= %{kf6_version}
+BuildRequires:  cmake(KF6Wallet) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6LinguistTools) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WebChannel) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WebEngineCore) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(xcb-util)
-# It fails to build for the moment
-#BuildRequires:  cmake(PySide2)
-#BuildRequires:  cmake(Shiboken2)
-#BuildRequires:  python3-devel
-# it doesn't start without it (boo#1067547)
-Requires:       libQt5Sql5-sqlite
-Recommends:     %{name}-kde
+# 2024-02-11 still fails to build with python deps
+# BuildRequires:  cmake(PySide6)
+# BuildRequires:  cmake(Shiboken6)
+# BuildRequires:  python3-devel
+Requires:       qt6-sql-sqlite >= %{qt6_version}
+Recommends:     falkon-kde
 Provides:       qupzilla = %{version}
-Provides:       web_browser
 Obsoletes:      qupzilla < %{version}
+Provides:       web_browser
 Provides:       falkon-gnome-keyring = %{version}
 Obsoletes:      falkon-gnome-keyring < %{version}
+# No QtWebEngine for other archs
+ExclusiveArch:  aarch64 x86_64 riscv64
 
 %description
 Falkon is a web browser designed to well integrate with all
@@ -83,7 +81,7 @@ It was previously known as QupZilla.
 
 %package kde
 Summary:        Plugin for tighter integration of KDE technologies
-Requires:       %{name} = %{version}
+Requires:       falkon = %{version}
 Supplements:    (%{name} and plasma5-workspace)
 Supplements:    (%{name} and plasma6-workspace)
 Provides:       falkon-kwallet = %{version}
@@ -100,47 +98,40 @@ such as storing passwords in KWallet.
 %prep
 %autosetup -p1
 
-# openSUSE icons.
-cp -f %{SOURCE3} %{SOURCE4} src/lib/data/icons/sites/
-
 %if %{with released}
 # The plugins are not installed if PySide is not present at build time.
 find po/ -name "falkon_helloqml.po" -o -name "falkon_hellopython.po" -exec rm {} \;
 %endif
 
-# Decrease the minimum CMake version for 15.3.
-# There's no technical reason for requiring CMake 3.18.
-sed -i 's/VERSION 3.18/VERSION 3.17/' CMakeLists.txt
-
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
 %find_lang %{name} --all-name --with-qt
 
-%suse_update_desktop_file org.kde.falkon
-%fdupes %{buildroot}%{_kf5_sharedir}/
+%fdupes %{buildroot}%{_kf6_sharedir}
 
 %ldconfig_scriptlets
 
 %files
 %license COPYING
-%doc CHANGELOG README.md
-%{_kf5_appstreamdir}/org.kde.falkon.appdata.xml
-%{_kf5_bindir}/falkon
-%{_kf5_libdir}/libFalkonPrivate.so.*
-%{_kf5_plugindir}/falkon/
-%{_kf5_sharedir}/applications/org.kde.falkon.desktop
-%{_kf5_sharedir}/bash-completion/
-%{_kf5_sharedir}/falkon/
-%{_kf5_sharedir}/icons/hicolor/*/apps/falkon.*
-%exclude %{_kf5_plugindir}/falkon/KDEFrameworksIntegration.so
+%doc README.md
+%{_kf6_appstreamdir}/org.kde.falkon.appdata.xml
+%{_kf6_bindir}/falkon
+%{_kf6_iconsdir}/hicolor/*/apps/falkon.*
+%{_kf6_libdir}/libFalkonPrivate.so.*
+%{_kf6_plugindir}/falkon/
+%{_kf6_sharedir}/applications/org.kde.falkon.desktop
+%{_kf6_sharedir}/bash-completion/
+%{_kf6_sharedir}/falkon/
+%exclude %{_kf6_plugindir}/falkon/KDEFrameworksIntegration.so
 
 %files kde
-%{_kf5_plugindir}/falkon/KDEFrameworksIntegration.so
+%{_kf6_plugindir}/falkon/KDEFrameworksIntegration.so
 
 %files lang -f %{name}.lang
 
