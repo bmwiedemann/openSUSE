@@ -1,0 +1,9 @@
+<package name="libkgapi6" project="openSUSE:Factory">
+  <title>Extension for accessing Google data</title>
+  <description>An extension for accessing some Google services, such as Google Calendar,
+Google Contacts and Google tasks.
+
+</description>
+  <devel project="KDE:Applications" package="libkgapi6"/>
+  <url>https://www.kde.org</url>
+</package>
