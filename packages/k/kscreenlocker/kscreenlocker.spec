@@ -51,7 +51,7 @@ BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5Wayland)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(LayerShellQt)
+BuildRequires:  cmake(LayerShellQt) < 6.0.0
 BuildRequires:  cmake(Qt5Quick) >= 5.15.0
 BuildRequires:  cmake(Qt5QuickWidgets)
 BuildRequires:  cmake(Qt5Test)
