@@ -1,0 +1,8 @@
+<package name="libplasma6" project="openSUSE:Factory">
+  <title>Plasma library and runtime components based upon KF6 and Qt6</title>
+  <description>Plasma library and runtime components based upon KF6 and Qt6
+
+</description>
+  <devel project="KDE:Frameworks" package="libplasma6"/>
+  <url>https://www.kde.org</url>
+</package>
