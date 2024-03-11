@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar  8 08:33:47 UTC 2024 - Gus Kenion <gkenion@suse.com>
+
+- Upgrade to 2.16.1
+  * 2.16.1 (24-Dec-2023)
+    + #616: Fix mismatch in setNextIsUnwrapped(boolean) in
+      XmlBeanSerializerBase#serializeFieldsFiltered()
+  * 2.16.0 (15-Nov-2023)
+    + #148: @JacksonXmlElementWrapper not respected when
+      serializing Iterators / Iterables
+    + #302: Unable to serialize top-level Java8 Stream
+    + #329: @JacksonXmlElementWrapper ignored on Stream
+    + #599: Use IterationType in TypeUtil
+
+
+-------------------------------------------------------------------
 Sat Sep  9 13:41:57 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
