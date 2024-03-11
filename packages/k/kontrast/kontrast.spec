@@ -1,7 +1,7 @@
 #
 # spec file for package kontrast
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,41 +16,41 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           kontrast
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Contrast checker
 License:        GPL-3.0-or-later AND CC0-1.0
 URL:            https://apps.kde.org/kontrast
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-%if 0%{?suse_version} == 1500
-# gcc10 is not enough. Missing std::coroutine_handle
-BuildRequires:  gcc12-c++
-BuildRequires:  gcc12-PIE
-%endif
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(FutureSQL5)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Declarative)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5Kirigami2)
-BuildRequires:  cmake(QCoro5Core)
-BuildRequires:  cmake(Qt5Core) >= 5.15.2
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5QuickControls2)
-BuildRequires:  cmake(Qt5Sql)
-BuildRequires:  cmake(Qt5Svg)
-Requires:       kirigami2
-Requires:       libqt5-qtquickcontrols
+BuildRequires:  cmake(FutureSQL6)
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
+BuildRequires:  cmake(QCoro6Core)
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+Requires:       kf6-kirigami-imports >= %{kf6_version}
+Requires:       qt6-declarative-imports >= %{qt6_version}
+Requires:       qt6-sql-sqlite >= %{qt6_version}
+
 %lang_package
 
 %description
@@ -61,28 +61,26 @@ used together.
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} == 1500
-  export CXX=g++-12
-%endif
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name}
-%{kf5_find_htmldocs}
+%find_lang %{name} --with-html
 
 %suse_update_desktop_file -r org.kde.kontrast Qt KDE Utility Accessibility
 
 %files
 %license LICENSES/*
-%doc %lang(en) %{_kf5_htmldir}/en/kontrast/
-%{_kf5_applicationsdir}/org.kde.kontrast.desktop
-%{_kf5_appstreamdir}/org.kde.kontrast.appdata.xml
-%{_kf5_bindir}/kontrast
-%{_kf5_iconsdir}/hicolor/scalable/apps/org.kde.kontrast.svg
+%doc %lang(en) %{_kf6_htmldir}/en/kontrast/
+%{_kf6_applicationsdir}/org.kde.kontrast.desktop
+%{_kf6_appstreamdir}/org.kde.kontrast.appdata.xml
+%{_kf6_bindir}/kontrast
+%{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.kontrast.svg
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/kontrast/
 
 %changelog
