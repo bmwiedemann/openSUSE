@@ -1,0 +1,10 @@
+<package name="kf6-kcalendarcore" project="openSUSE:Factory">
+  <title>Library to access and handle calendar data</title>
+  <description>KCalendarCore is a library to provide access to and handling of calendar data.
+It supports the standard formats iCalendar and vCalendar and the group
+scheduling standard iTIP.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kcalendarcore"/>
+  <url>https://www.kde.org</url>
+</package>
