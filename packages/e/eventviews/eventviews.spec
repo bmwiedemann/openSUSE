@@ -1,7 +1,7 @@
 #
 # spec file for package eventviews
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,103 +16,106 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define kpim6_version 6.0.0
+
 %bcond_without released
-%define libname libKPim5EventViews5
 Name:           eventviews
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Eventviews Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  cmake(KGantt)
-BuildRequires:  cmake(KF5CalendarCore)
-BuildRequires:  cmake(KF5Codecs)
-BuildRequires:  cmake(KF5Completion)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5Contacts)
-BuildRequires:  cmake(KF5GuiAddons)
-BuildRequires:  cmake(KF5Holidays)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5ItemModels)
-BuildRequires:  cmake(KF5Service)
-BuildRequires:  cmake(KPim5Akonadi)
-BuildRequires:  cmake(KPim5AkonadiCalendar)
-BuildRequires:  cmake(KPim5CalendarSupport)
-BuildRequires:  cmake(KPim5CalendarUtils)
-BuildRequires:  cmake(KPim5Libkdepim)
-BuildRequires:  cmake(KPim5Mime)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  doxygen
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
+BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
+BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6Contacts) >= %{kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Holidays) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
+BuildRequires:  cmake(KF6Service) >= %{kf6_version}
+BuildRequires:  cmake(KGantt6) >= 3.0.0
+BuildRequires:  cmake(KPim6Akonadi) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6AkonadiCalendar) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6CalendarSupport) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6CalendarUtils) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6Libkdepim) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
+BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 This internal library implements a GUI framework for viewing various
 calendar events in agenda, list, month view or timeline fashion.
 
-%package -n %{libname}
+%package -n libKPim6EventViews6
 Summary:        Eventviews Library
 License:        LGPL-2.1-or-later
-Requires:       eventviews
-# Renamed
+Requires:       eventviews >= %{version}
 Obsoletes:      eventviews-lang <= 23.04.0
+Obsoletes:      libKPim5EventViews5-lang < %{version}
 
-%description -n %{libname}
+%description -n libKPim6EventViews6
 This internal library implements a GUI framework for viewing various
 calendar events in agenda, list, month view or timeline fashion.
 
 %package devel
 Summary:        Library for messages
 License:        LGPL-2.1-or-later
-Requires:       %{libname} = %{version}
-Requires:       cmake(KPim5Akonadi)
-Requires:       cmake(KF5CalendarCore)
-Requires:       cmake(KPim5AkonadiCalendar)
-Requires:       cmake(KPim5CalendarSupport)
-Requires:       cmake(KPim5CalendarUtils)
+Requires:       libKPim6EventViews6 = %{version}
+Requires:       cmake(KPim6Akonadi) >= %{kpim6_version}
+Requires:       cmake(KF6CalendarCore) >= %{kf6_version}
+Requires:       cmake(KPim6AkonadiCalendar) >= %{kpim6_version}
+Requires:       cmake(KPim6CalendarSupport) >= %{kpim6_version}
+Requires:       cmake(KPim6CalendarUtils) >= %{kpim6_version}
 
 %description devel
 The development package for the eventviews libraries
 
-%lang_package -n %{libname}
+%lang_package -n libKPim6EventViews6
 
 %prep
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
+%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
 
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{libname} --with-man --all-name
+%find_lang libKPim6EventViews6 --all-name
 
-%ldconfig_scriptlets -n %{libname}
+%ldconfig_scriptlets -n libKPim6EventViews6
 
 %files
-%license LICENSES/*
-%{_kf5_debugdir}/eventviews.categories
-%{_kf5_debugdir}/eventviews.renamecategories
+%{_kf6_debugdir}/eventviews.categories
+%{_kf6_debugdir}/eventviews.renamecategories
 
-%files -n %{libname}
-%{_kf5_libdir}/libKPim5EventViews.so.*
+%files -n libKPim6EventViews6
+%license LICENSES/*
+%{_kf6_libdir}/libKPim6EventViews.so.*
 
 %files devel
-%dir %{_includedir}/KPim5
-%{_includedir}/KPim5/EventViews/
-%{_kf5_cmakedir}/KPim5EventViews/
-%{_kf5_libdir}/libKPim5EventViews.so
-%{_kf5_mkspecsdir}/qt_EventViews.pri
+%doc %{_kf6_qchdir}/KPim6EventViews.*
+%{_includedir}/KPim6/EventViews/
+%{_kf6_cmakedir}/KPim6EventViews/
+%{_kf6_libdir}/libKPim6EventViews.so
 
-%files -n %{libname}-lang -f %{libname}.lang
+%files -n libKPim6EventViews6-lang -f libKPim6EventViews6.lang
 
 %changelog
