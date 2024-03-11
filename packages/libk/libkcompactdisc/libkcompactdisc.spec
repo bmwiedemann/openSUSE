@@ -1,7 +1,7 @@
 #
 # spec file for package libkcompactdisc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,76 +16,130 @@
 #
 
 
+%define rname  libkcompactdisc
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "qt6"
+%define qt6 1
+%define pkg_suffix -qt6
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define library_name libKCompactDisc6
+%define so_suffix -5
+%else
+%define qt5 1
+%define kf5_version 5.92.0
+%define qt5_version 5.15.2
+%define library_name libKF5CompactDisc
+%define so_suffix 5
+%endif
 %bcond_without released
-Name:           libkcompactdisc
-Version:        23.08.4
+Name:           libkcompactdisc%{?pkg_suffix}
+Version:        24.02.0
 Release:        0
 Summary:        CD drive library for KDE Platform
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  alsa-devel
-BuildRequires:  extra-cmake-modules
-BuildRequires:  xz
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5Solid)
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(alsa)
+%if 0%{?qt6}
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6Solid) >= %{kf6_version}
+BuildRequires:  cmake(Phonon4Qt6)
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+%else
+BuildRequires:  extra-cmake-modules >= %{kf5_version}
+BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
+BuildRequires:  cmake(KF5Solid) >= %{kf5_version}
 BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
+BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
+%endif
 
 %description
 The KDE Compact Disc library provides an API for applications using
 the KDE Platform to interface with the CD drives for audio CDs.
 
-%package -n libKF5CompactDisc5
+%package -n %{library_name}%{so_suffix}
 Summary:        CD drive library for KDE Platform
-Provides:       %{name} = %{version}
-Recommends:     %{name}-lang
+Recommends:     libkcompactdisc-lang = %{version}
 
-%description -n libKF5CompactDisc5
+%description -n %{library_name}%{so_suffix}
 The KDE Compact Disc library provides an API for applications using
 the KDE Platform to interface with the CD drives for audio CDs.
 
 %package devel
 Summary:        Development files for the KDE CD drive library
-Requires:       libKF5CompactDisc5 = %{version}
+Requires:       %{library_name}%{so_suffix} = %{version}
 
 %description devel
 This package contains the development headers for libkcompactdisc.
 
-%lang_package
+%if 0%{?qt6}
+%package -n libkcompactdisc-lang
+Summary:        Translations for package libkcompactdisc
+Supplements:    libKCompactDisc6-5 = %{version}
+Supplements:    libKF5CompactDisc5 = %{version}
+Provides:       libkcompactdisc-lang-all = %{version}
+# Briefly existed in the devel project
+Obsoletes:      libKF5CompactDisc5-lang
+Obsoletes:      libKCompactDisc6-5-lang
+BuildArch:      noarch
+
+%description -n libkcompactdisc-lang
+Provides translations for package libkcompactdisc.
+%endif
 
 %prep
-%autosetup -p1
-FAKE_BUILDDATE=$(LC_ALL=C date -r %{_sourcedir}/%{name}.changes '+%{b} %{e} %{Y}')
-sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/" src/wmlib/wm_helpers.c
+%autosetup -p1 -n %{rname}-%{version}
 
 %build
+%if 0%{?qt6}
+%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+%kf6_build
+%else
 %cmake_kf5 -d build
 %cmake_build
+%endif
 
 %install
+%if 0%{?qt6}
+%kf6_install
+
+%find_lang %{name} --all-name
+%else
 %kf5_makeinstall -C build
 
-%find_lang %{name} --with-man --all-name
+# Only one translation package for both flavors
+rm -r %{buildroot}%{_datadir}/locale
+%endif
 
-%ldconfig_scriptlets -n libKF5CompactDisc5
+%ldconfig_scriptlets -n %{library_name}%{so_suffix}
 
-%files -n libKF5CompactDisc5
+%files -n %{library_name}%{so_suffix}
 %license COPYING*
-%{_kf5_libdir}/libKF5CompactDisc.so.*
+%{_libdir}/%{library_name}.so.*
 
 %files devel
+%if 0%{?qt6}
+%{_kf6_cmakedir}/KCompactDisc6/
+%{_includedir}/KCompactDisc6/
+%{_kf6_mkspecsdir}/qt_KCompactDisc.pri
+%else
 %{_kf5_cmakedir}/KF5CompactDisc/
 %{_kf5_includedir}/KCompactDisc/
-%{_kf5_libdir}/libKF5CompactDisc.so
 %{_kf5_mkspecsdir}/qt_KCompactDisc.pri
+%endif
+%{_libdir}/%{library_name}.so
 
-%files lang -f %{name}.lang
+%if 0%{?qt6}
+%files -n libkcompactdisc-lang -f %{name}.lang
+%endif
 
 %changelog
