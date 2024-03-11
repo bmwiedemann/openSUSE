@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec  5 15:52:06 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add patch for Qt6 support:
+  * 0001-Add-Qt6-support.patch
+- Drop 0001_Multilib.patch. This is now handled in the %prep section
+- Add flavors
+
+-------------------------------------------------------------------
 Thu Aug 10 15:24:48 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 8.61

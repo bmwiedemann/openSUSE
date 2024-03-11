@@ -63,4 +63,15 @@
     <comment>Update to 8.61</comment>
     <requestid>1103446</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>94525b2a9354a630c1787192cfce44a8</srcmd5>
+    <version>8.61</version>
+    <time>1710167236</time>
+    <user>anag+factory</user>
+    <comment>- Add patch for Qt6 support:
+  * 0001-Add-Qt6-support.patch
+- Drop 0001_Multilib.patch. This is now handled in the %prep section
+- Add flavors</comment>
+    <requestid>1151235</requestid>
+  </revision>
 </revisionlist>

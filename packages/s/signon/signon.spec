@@ -16,30 +16,39 @@
 #
 
 
+%define flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "qt6"
+%define qt6 1
+%define pkg_suffix -qt6
+%define _suffix qt6
+%define _major_ver 6
+%else
+%define qt5 1
+%define _suffix qt5
+%define _major_ver 5
+%endif
 %define _soname 1
-%define _tarbasename signond
-%define _version VERSION_8.61
-Name:           signon
+%define rname signond
+%define rversion VERSION_8.61
+Name:           signon%{?pkg_suffix}
 Version:        8.61
 Release:        0
 Summary:        Single Sign On Framework
 License:        LGPL-2.0-only
-Group:          System/Libraries
 URL:            https://gitlab.com/accounts-sso/signond
-Source:         https://gitlab.com/accounts-sso/%{_tarbasename}/-/archive/VERSION_%{version}/%{_tarbasename}-%{_version}.tar.bz2
-# PATCH-FIX-OPENSUSE
-Patch0:         0001_Multilib.patch
+Source:         https://gitlab.com/accounts-sso/%{rname}/-/archive/VERSION_%{version}/%{rname}-%{rversion}.tar.bz2
+# PATCH-FIX-UPSTREAM -- https://gitlab.com/accounts-sso/signond/-/merge_requests/36/diffs
+Patch0:         0001-Add-Qt6-support.patch
 BuildRequires:  doxygen
-BuildRequires:  fdupes
 BuildRequires:  graphviz
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(Qt%{_major_ver}Core)
+BuildRequires:  pkgconfig(Qt%{_major_ver}DBus)
+BuildRequires:  pkgconfig(Qt%{_major_ver}Gui)
+BuildRequires:  pkgconfig(Qt%{_major_ver}Network)
+BuildRequires:  pkgconfig(Qt%{_major_ver}Sql)
+BuildRequires:  pkgconfig(Qt%{_major_ver}Test)
+BuildRequires:  pkgconfig(Qt%{_major_ver}Xml)
 BuildRequires:  pkgconfig(libproxy-1.0)
 BuildRequires:  pkgconfig(libssl)
 
@@ -47,95 +56,92 @@ BuildRequires:  pkgconfig(libssl)
 The SignOn daemon is a D-Bus service which performs user authentication on
 behalf of its clients.
 
-%package -n libsignon-qt5-%{_soname}
+# NOTE Read https://gitlab.com/accounts-sso/signon-plugin-oauth2/-/merge_requests/28#note_1689621252
+# Only lisignon-qtX must be flavored
+%package -n libsignon-qt%{_major_ver}-%{_soname}
 Summary:        Single Sign On Framework for Qt
-Group:          System/Libraries
 
-%description -n libsignon-qt5-%{_soname}
+%description -n libsignon-qt%{_major_ver}-%{_soname}
 Framework that provides credential storage and authentication service.
 
-%package -n libsignon-qt5-devel
+%package -n libsignon-qt%{_major_ver}-devel
 Summary:        Development files for libsignon-qt%{_soname}
-Group:          Development/Libraries/C and C++
-Requires:       libsignon-qt5-%{_soname} = %{version}
-Requires:       pkgconfig(Qt5Core)
+Requires:       libsignon-qt%{_major_ver}-%{_soname} = %{version}
+Requires:       pkgconfig(Qt%{_major_ver}Core)
 
-%description -n libsignon-qt5-devel
+%description -n libsignon-qt%{_major_ver}-devel
 This package contains the development files for the signon-qt library.
 
-%package -n libsignon-qt5-docs
-Summary:        Documentation for libsignon-qt%{_soname}
-Group:          Documentation/HTML
-BuildArch:      noarch
-
-%description -n libsignon-qt5-docs
-This package contains the documentation for the signon-qt library.
-
+%if 0%{?qt6}
 %package -n signond
 Summary:        Single Sign On Framework
-Group:          System/Libraries
+Requires:       signond-libs = %{version}
+Requires:       qt6-sql-sqlite
 
 %description -n signond
 Framework that provides credential storage and authentication service.
 
-%package -n signond-libs
-Summary:        Single Sign On Framework
-Group:          System/Libraries
-
-%description -n signond-libs
-Framework that provides credential storage and authentication service.
-
-%package -n signond-libs-devel
-Summary:        Development files for signond-libs
-Group:          Development/Libraries/C and C++
-Requires:       signond = %{version}
-Requires:       signond-libs = %{version}
-Requires:       pkgconfig(Qt5Core)
-
-%description -n signond-libs-devel
-This package contains the development files for signond-libs.
-
+# No need to build docs twice
 %package -n signond-docs
 Summary:        Single Sign On Framework - Documentation
-Group:          Documentation/HTML
 BuildArch:      noarch
 
 %description -n signond-docs
 This package contains the documentation for signond.
 
-%package -n signon-plugins
-Summary:        Plugins for the Single Sign On Framework
-Group:          System/Libraries
-Requires:       signond = %{version}
+%package -n libsignon-qt-docs
+Summary:        Documentation for the signon-qt library
+BuildArch:      noarch
 
-%description -n signon-plugins
-This package contains the following plugins for the Single Sign On Framework:
-- Password plugin
-- Test plugin
-
-%package -n signon-plugins-devel
-Summary:        Development files for the Single Sign On Framework's plugins
-Group:          Development/Libraries/C and C++
-Requires:       libsignon-qt5-devel = %{version}
-Requires:       signon-plugins = %{version}
-
-%description -n signon-plugins-devel
-This package contains the development files necessary for creating plugins for
-the Single Sign On Framework.
+%description -n libsignon-qt-docs
+This package contains the documentation for the signon-qt library.
 
 %package -n signon-plugins-docs
 Summary:        Documentation for the Single Sign On Framework's plugins
-Group:          Documentation/HTML
 BuildArch:      noarch
 
 %description -n signon-plugins-docs
 This package contains the documentation for the Single Sign On Framework's
 plugins.
 
-%prep
-%autosetup -p1 -n %{_tarbasename}-%{_version}
+%package -n signond-libs
+Summary:        Single Sign On Framework
 
-sed -i 's|@LIB@|%{_lib}|g' \
+%description -n signond-libs
+Framework that provides credential storage and authentication service.
+
+%package -n signond-libs-devel
+Summary:        Development files for signond-libs
+Requires:       signond = %{version}
+Requires:       signond-libs = %{version}
+Requires:       pkgconfig(Qt6Core)
+
+%description -n signond-libs-devel
+This package contains the development files for signond-libs.
+
+%package -n signon-plugins
+Summary:        Plugins for the Single Sign On Framework
+Requires:       signond = %{version}
+
+%description -n signon-plugins
+This package contains the following plugins for the Single Sign On Framework:
+  * Password plugin
+  * Test plugin
+
+%package -n signon-plugins-devel
+Summary:        Development files for the Single Sign On Framework's plugins
+Requires:       libsignon-qt6-devel = %{version}
+Requires:       signon-plugins = %{version}
+
+%description -n signon-plugins-devel
+This package contains the development files necessary for creating plugins for
+the Single Sign On Framework.
+%endif
+
+%prep
+%autosetup -p1 -n %{rname}-%{rversion}
+
+sed -i 's|/usr/lib|%{_libdir}|g' \
   lib/plugins/signon-plugins.pc.in \
   lib/plugins/signon-plugins-common/signon-plugins-common.pc.in \
   src/signond/signondaemon.h \
@@ -151,50 +157,63 @@ sed -i -e '/^documentation.path/ s|share/doc|share/doc/packages|g' \
 sed -i -e '/^example.path/ s|share/doc|share/doc/packages|g' \
   src/plugins/example/example.pro
 
-sed -i 's|qdbusxml2cpp|qdbusxml2cpp-qt5|g' \
-  src/signond/signond.pro
-
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%if 0%{?qt6}
+%qmake6 \
+%else
 %qmake5 \
+%endif
   PREFIX=%{_prefix} \
   LIBDIR=%{_libdir}
 
 %make_jobs
 
 %install
+%if 0%{?qt6}
+%qmake6_install
+%else
 %qmake5_install
 
+# Only needed once
+rm %{buildroot}%{_bindir}/*
+rm %{buildroot}%{_libdir}/libsignon-{extension,plugins}*
+rm %{buildroot}%{_libdir}/pkgconfig/{SignOnExtension,signond,signon-plugins}*
+rm %{buildroot}%{_sysconfdir}/signond.conf
+rm -r %{buildroot}%{_datadir}/dbus-1
+rm -r %{buildroot}%{_docdir}
+rm -r %{buildroot}%{_includedir}/signon-{extension,plugins}
+rm -r %{buildroot}%{_includedir}/signond
+rm -r %{buildroot}%{_libdir}/signon
+
+%endif
+
 # Remove tests
-find %{buildroot} -type f -name '*tests*' -delete
+find %{buildroot} -type f -name '*tests*' -print -delete
 
-%fdupes -s %{buildroot}
-
-%ldconfig_scriptlets -n libsignon-qt5-%{_soname}
+%ldconfig_scriptlets -n libsignon-qt%{_major_ver}-%{_soname}
+%if 0%{?qt6}
 %ldconfig_scriptlets -n signond-libs
 %ldconfig_scriptlets -n signon-plugins
+%endif
 
-%files -n libsignon-qt5-%{_soname}
-%{_libdir}/libsignon-qt5.so.*
-
-%files -n libsignon-qt5-devel
-%dir %{_includedir}/signon-qt5/
-%dir %{_includedir}/signon-qt5/SignOn/
-%{_includedir}/signon-qt5/SignOn/*
-%{_libdir}/libsignon-qt5.so
-%{_libdir}/libsignon-qt5.a
-%{_libdir}/pkgconfig/libsignon-qt5.pc
-%{_libdir}/cmake/SignOnQt5/
-
-%files -n libsignon-qt5-docs
-%doc %{_docdir}/libsignon-qt/
-
-%files -n signond
+%files -n libsignon-qt%{_major_ver}-%{_soname}
 %license COPYING
+%{_libdir}/libsignon-qt%{_major_ver}.so.*
+
+%files -n libsignon-qt%{_major_ver}-devel
+%{_includedir}/signon-qt%{_major_ver}/
+%{_libdir}/libsignon-qt%{_major_ver}.so
+%{_libdir}/libsignon-qt%{_major_ver}.a
+%{_libdir}/pkgconfig/libsignon-qt%{_major_ver}.pc
+%{_libdir}/cmake/SignOnQt%{_major_ver}/
+
+%if 0%{?qt6}
+%files -n signond
 %doc README.md
+%config(noreplace) %{_sysconfdir}/signond.conf
 %{_bindir}/signond
 %{_bindir}/signonpluginprocess
-%config(noreplace) %{_sysconfdir}/signond.conf
 %{_datadir}/dbus-1/services/com.google.code.AccountsSSO.SingleSignOn.service
 %{_datadir}/dbus-1/services/com.nokia.SingleSignOn.Backup.service
 
@@ -203,18 +222,12 @@ find %{buildroot} -type f -name '*tests*' -delete
 %{_libdir}/libsignon-plugins-common.so.*
 
 %files -n signond-libs-devel
-%dir %{_includedir}/signond/
-%{_includedir}/signond/*.h
-%dir %{_includedir}/signon-extension/
-%dir %{_includedir}/signon-extension/SignOn/
-%{_includedir}/signon-extension/SignOn/*
+%{_includedir}/signond/
+%{_includedir}/signon-extension/
 %{_libdir}/libsignon-extension.so
 %{_libdir}/libsignon-plugins-common.so
 %{_libdir}/pkgconfig/signond.pc
 %{_libdir}/pkgconfig/SignOnExtension.pc
-
-%files -n signond-docs
-%doc %{_docdir}/signon/
 
 %files -n signon-plugins
 %{_libdir}/libsignon-plugins.so.*
@@ -226,15 +239,19 @@ find %{buildroot} -type f -name '*tests*' -delete
 
 %files -n signon-plugins-devel
 %doc %{_docdir}/signon-plugins-dev/
-%dir %{_includedir}/signon-plugins/
-%dir %{_includedir}/signon-plugins/SignOn/
-%{_includedir}/signon-plugins/SignOn/*.h
-%{_includedir}/signon-plugins/*
+%{_includedir}/signon-plugins/
 %{_libdir}/libsignon-plugins.so
 %{_libdir}/pkgconfig/signon-plugins-common.pc
 %{_libdir}/pkgconfig/signon-plugins.pc
 
+%files -n signond-docs
+%doc %{_docdir}/signon/
+
+%files -n libsignon-qt-docs
+%doc %{_docdir}/libsignon-qt/
+
 %files -n signon-plugins-docs
 %doc %{_docdir}/signon-plugins/
+%endif
 
 %changelog
