@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Wed Feb 21 19:27:41 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.249.0:
+  * Filter out Asturian and Esperanto
+  * Revert "Interlingua is now supported by Android"
+  * update version for new release
+
+-------------------------------------------------------------------
+Wed Jan 31 17:49:43 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.249.0 (6.0 RC 2):
+  * New bugfix release
+  * For more details see https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
+Wed Jan 31 14:42:42 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Switch to the latest GCC version available in Leap for packages
+  that can't build with the default compiler
+
+-------------------------------------------------------------------
+Mon Jan 15 19:57:07 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.248.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Mon Jan 15 19:35:10 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.248.0 (6.0 RC 1)
+  * For more details please see:
+  * https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Tue May 30 17:14:58 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Swith to gcc12 for Leap builds. Some frameworks fail to build
+  with gcc10.
+
+-------------------------------------------------------------------
+Sat May 27 11:18:10 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init kf6-extra-cmake-modules

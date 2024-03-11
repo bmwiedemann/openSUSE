@@ -1,0 +1,7 @@
+<package name="kf6-extra-cmake-modules" project="openSUSE:Factory">
+  <title>CMake modules</title>
+  <description>Extra modules and scripts for CMake.
+</description>
+  <devel project="KDE:Frameworks" package="kf6-extra-cmake-modules"/>
+  <url>https://www.kde.org</url>
+</package>
