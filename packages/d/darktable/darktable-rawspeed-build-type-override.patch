@@ -1,0 +1,25 @@
+Index: src/external/CMakeLists.txt
+===================================================================
+--- darktable.orig/src/external/CMakeLists.txt
++++ darktable/src/external/CMakeLists.txt
+@@ -13,17 +13,19 @@ endif()
+
+ ################################################################################
+ # RawSpeed block
+
+ string(TOUPPER "${CMAKE_BUILD_TYPE}" CMAKE_BUILD_TYPE_UPPERCASE)
+
+ set(RAWSPEED_${CMAKE_BUILD_TYPE_UPPERCASE}_BUILD 1)
+ if(RAWSPEED_RELWITHDEBINFO_BUILD)
+-  set(CMAKE_BUILD_TYPE "Release")
++  # openSUSE hack: we really do need to override CMAKE_BUILD_TYPE here.
++  set(VARNAME "CMAKE_BUILD_TYPE")
++  set(${VARNAME} "Release")
+ endif()
+
+ SET(COMPILER_SUPPORTS_DEBUG_INFO_COMPRESSION OFF)
+ SET(COMPILER_SUPPORTS_DEBUG_INFO_COMPRESSION_LINK OFF)
+ SET(COMPILER_SUPPORTS_SPLIT_DEBUG_INFO OFF)
+ SET(LINKER_SUPPORTS_GDB_INDEX OFF)
+
+ set(BUILD_TESTING_SAVE "${BUILD_TESTING}")

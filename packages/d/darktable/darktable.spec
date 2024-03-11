@@ -1,7 +1,7 @@
 #
 # spec file for package darktable
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -119,7 +119,7 @@
 %endif
 
 Name:           darktable
-Version:        4.6.0
+Version:        4.6.1
 Release:        0
 %global pkg_name darktable
 %global pkg_version %{version}
@@ -134,6 +134,7 @@ Source98:       debian.tar.xz
 Source99:       README.openSUSE
 #
 Patch0:         darktable-old-glib.patch
+Patch1:         darktable-rawspeed-build-type-override.patch
 #
 ExclusiveArch:  x86_64 aarch64 ppc64le
 # build time tools
@@ -304,6 +305,7 @@ rm -rf src/external/lua/
    -DCMAKE_INSTALL_DATAROOTDIR="share" \\\
    -DCMAKE_INSTALL_LIBEXECDIR="%{_libexecdir}" \\\
    -DCMAKE_INSTALL_DOCDIR="%{_defaultdocdir}/%{pkg_name}" \\\
+   -DCOMPILER_SUPPORTS_SPLIT_DEBUG_INFO=OFF \\\
    -DBINARY_PACKAGE_BUILD=1 \\\
    -DRAWSPEED_ENABLE_LTO=ON \\\
    -DUSE_OPENCL="%{_use_opencl}" \\\
