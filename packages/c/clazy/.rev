@@ -195,4 +195,15 @@
     <comment>Update snapshot</comment>
     <requestid>1150765</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8fce58ac8d58fe5c4250943c583a922f</srcmd5>
+    <version>1.11git.20240311T110110~ebf99de</version>
+    <time>1710167700</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.11git.20240311T110110~ebf99de:
+  * Fix false positives when using a typedef in combination with a generic
+  * Add fitit for qstring-arg check
+  * [cmake] Increase mimimum required CMake version to 3.8</comment>
+    <requestid>1156909</requestid>
+  </revision>
 </revisionlist>

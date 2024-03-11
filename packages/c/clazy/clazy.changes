@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 11 11:09:18 UTC 2024 - christophe@krop.fr
+
+- Update to version 1.11git.20240311T110110~ebf99de:
+  * Fix false positives when using a typedef in combination with a generic
+  * Add fitit for qstring-arg check
+  * [cmake] Increase mimimum required CMake version to 3.8
+
+-------------------------------------------------------------------
 Mon Feb 26 08:37:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add a _constraints file for PowerPC. It needs more memory
