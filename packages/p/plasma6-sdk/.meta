@@ -1,0 +1,9 @@
+<package name="plasma6-sdk" project="openSUSE:Factory">
+  <title>Plasma SDK</title>
+  <description>Plasma SDK taylored for development of Plasma components,
+such as Widgets, Runners, Dataengines.
+
+</description>
+  <devel project="KDE:Frameworks" package="plasma6-sdk"/>
+  <url>https://www.kde.org</url>
+</package>
