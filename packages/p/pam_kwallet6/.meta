@@ -1,0 +1,9 @@
+<package name="pam_kwallet6" project="openSUSE:Factory">
+  <title>A PAM Module for KWallet signing</title>
+  <description>This PAM module allows you to automatically open your kwallet
+when signing into your account.
+
+</description>
+  <devel project="KDE:Frameworks" package="pam_kwallet6"/>
+  <url>https://www.kde.org/</url>
+</package>
