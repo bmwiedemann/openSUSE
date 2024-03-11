@@ -1,7 +1,7 @@
 #
 # spec file for package kde-inotify-survey
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,31 +16,30 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
-%define kf5_version 5.105.0
 Name:           kde-inotify-survey
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Monitor inotify limits and inform the user when they are reached
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  cmake >= 3.22
-BuildRequires:  extra-cmake-modules >= %{kf5_version}
-BuildRequires:  cmake(KF5Auth)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(Qt5Core) >= 5.15.2
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6Auth) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 
 %description
 Tooling for monitoring inotify limits and informing the user
@@ -51,25 +50,29 @@ when they have been or are about to be reached.
 %prep
 %autosetup -p1
 
+# No technical reason to require cmake 3.22
+sed -i 's#VERSION 3.22#VERSION 3.20#' CMakeLists.txt
+
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-qt --with-man --all-name
+%find_lang %{name} --all-name
 
 %files
 %license LICENSES/*
-%{_kf5_bindir}/kde-inotify-survey
-%{_libexecdir}/kauth/kded-inotify-helper
-%{_kf5_plugindir}/kf5/kded/inotify.so
 %{_datadir}/dbus-1/system-services/org.kde.kded.inotify.service
-%{_kf5_dbuspolicydir}/org.kde.kded.inotify.conf
-%{_kf5_notifydir}/org.kde.kded.inotify.notifyrc
-%{_kf5_appstreamdir}/org.kde.inotify-survey.metainfo.xml
 %{_datadir}/polkit-1/actions/org.kde.kded.inotify.policy
+%{_kf6_appstreamdir}/org.kde.inotify-survey.metainfo.xml
+%{_kf6_bindir}/kde-inotify-survey
+%{_kf6_dbuspolicydir}/org.kde.kded.inotify.conf
+%{_kf6_libexecdir}/kauth/kded-inotify-helper
+%{_kf6_notificationsdir}/org.kde.kded.inotify.notifyrc
+%{_kf6_plugindir}/kf6/kded/inotify.so
 
 %files lang -f %{name}.lang
 
