@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Wed Mar  6 08:40:25 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.1
+- Changes since 6.0.0:
+  * update version for new release
+- Add patch to fix build:
+  * 0001-Don-t-require-a-non-existent-ECM-version.patch
+
+-------------------------------------------------------------------
+Wed Feb 21 18:35:49 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0:
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.93.0:
+  * Use 0.2 instead of varied values for outline contrasts
+  * update version for new release
+
+-------------------------------------------------------------------
+Sun Feb 18 14:16:43 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.93.0 (6.0 RC 2):
+  * New bugfix release
+  * See https://kde.org/announcements/megarelease/6/rc2/ for details
+- No code changes since 5.93.0
+
+-------------------------------------------------------------------
+Thu Feb 15 17:55:21 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Fix obsoleted versions
+
+-------------------------------------------------------------------
+Sat Jul 15 11:32:59 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init breeze6-gtk

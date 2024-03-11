@@ -1,0 +1,8 @@
+<package name="breeze6-gtk" project="openSUSE:Factory">
+  <title>GTK+ theme matching KDE's Breeze</title>
+  <description>A GTK+ theme created to match with the Plasma 6 Breeze theme.
+
+</description>
+  <devel project="KDE:Frameworks" package="breeze6-gtk"/>
+  <url>https://www.kde.org</url>
+</package>
