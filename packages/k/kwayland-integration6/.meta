@@ -1,0 +1,8 @@
+<package name="kwayland-integration6" project="openSUSE:Factory">
+  <title>Plugin to integrate KF5 KWayland into Plasma 6</title>
+  <description>Plugin to integrate KF5 KWayland into Plasma 6.
+
+</description>
+  <devel project="KDE:Frameworks" package="kwayland-integration6"/>
+  <url>http://www.kde.org</url>
+</package>
