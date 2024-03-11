@@ -1,7 +1,7 @@
 #
 # spec file for package analitza
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,58 +16,54 @@
 #
 
 
-%define soversion 8
-%define kf5_version 5.105.0
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           analitza
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        A library to add mathematical features to programs
 License:        LGPL-2.1-or-later
 URL:            https://invent.kde.org/education/analitza
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  cmake
-BuildRequires:  eigen3-devel
-BuildRequires:  extra-cmake-modules >= %{kf5_version}
-BuildRequires:  kf5-filesystem
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  xz
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  cmake(Qt5OpenGL)
-BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5Xml)
-BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(glu)
-Requires:       libAnalitza%{soversion} = %{version}
-Obsoletes:      %{name}5 < %{version}
-Provides:       %{name}5 = %{version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6LinguistTools) >= %{qt6_version}
+BuildRequires:  cmake(Qt6OpenGLWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
+BuildRequires:  pkgconfig(eigen3)
+BuildRequires:  pkgconfig(glew)
+Requires:       libAnalitza8 = %{version}
+Obsoletes:      analitza5 < %{version}
+Provides:       analitza5 = %{version}
 
 %description
 The Analitza library lets developers add mathematical features to programs.
 
-%package -n libAnalitza%{soversion}
+%package -n libAnalitza8
 Summary:        A library to add mathematical features to programs
 Requires:       analitza = %{version}
 # Mistakenly contained libAnalitza6, 7 and 8
-%if %{soversion} == 8
 Conflicts:      libAnalitza5
-%endif
 
-%description -n libAnalitza%{soversion}
+%description -n libAnalitza8
 The Analitza library lets developers add mathematical features to programs.
 
 %package devel
 Summary:        Development files for analitza, a mathematical feature library
-Requires:       libAnalitza%{soversion} = %{version}
+Requires:       libAnalitza8 = %{version}
 Obsoletes:      analitza5-devel < %{version}
 
 %description devel
@@ -77,31 +73,32 @@ add mathematical features to programs.
 %lang_package
 
 %prep
-%autosetup -p1 -n analitza-%{version}
+%autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --with-qt --all-name
+%find_lang %{name} --with-qt --all-name
 
-%ldconfig_scriptlets -n libAnalitza%{soversion}
+%ldconfig_scriptlets -n libAnalitza8
 
-%files -n libAnalitza%{soversion}
+%files -n libAnalitza8
 %license COPYING*
-%{_kf5_libdir}/libAnalitza*.so.%{soversion}*
+%{_kf6_libdir}/libAnalitza*.so.*
 
 %files devel
-%{_kf5_cmakedir}/Analitza5/
-%{_kf5_libdir}/libAnalitza*.so
-%{_kf5_prefix}/include/Analitza5/
+%{_includedir}/Analitza6/
+%{_kf6_cmakedir}/Analitza6/
+%{_kf6_libdir}/libAnalitza*.so
 
 %files
-%{_kf5_qmldir}/
-%{_kf5_sharedir}/libanalitza/
+%{_kf6_qmldir}/org/kde/analitza/
+%{_kf6_sharedir}/libanalitza/
 
 %files lang -f %{name}.lang
 
