@@ -1,0 +1,8 @@
+<package name="kdecoration6" project="openSUSE:Factory">
+  <title>KDE's window decorations library</title>
+  <description>Plugin based library to create window decorations.
+
+</description>
+  <devel project="KDE:Frameworks" package="kdecoration6"/>
+  <url>https://www.kde.org</url>
+</package>
