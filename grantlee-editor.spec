@@ -1,7 +1,7 @@
 #
 # spec file for package grantlee-editor
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,45 +16,46 @@
 #
 
 
-%define kf5_version 5.105.0
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define kpim6_version 6.0.0
+
 %bcond_without released
 Name:           grantlee-editor
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Messageviewer header theme editor based on Grantlee
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= %{kf5_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 #Only required for the icon
 BuildRequires:  kaddressbook
 BuildRequires:  kmail-application-icons
 BuildRequires:  libkleo
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5SyntaxHighlighting)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(KPim5AkonadiContact)
-BuildRequires:  cmake(KPim5AkonadiMime)
-BuildRequires:  cmake(KPim5GrantleeTheme)
-BuildRequires:  cmake(KPim5IMAP)
-BuildRequires:  cmake(KPim5Libkdepim)
-BuildRequires:  cmake(KPim5MessageViewer)
-BuildRequires:  cmake(KPim5Mime)
-BuildRequires:  cmake(KPim5PimCommonAkonadi)
-BuildRequires:  cmake(KPim5TextEdit)
-BuildRequires:  cmake(Qt5WebEngineWidgets)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6SyntaxHighlighting) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextCustomEditor)
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(KPim6AkonadiContactWidgets) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6GrantleeTheme) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6IMAP) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6MessageViewer) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6PimCommon) >= %{kpim6_version}
+BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Requires:       kaddressbook
 Requires:       kmail-application-icons
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 A theme editor for messageviewer based on Grantlee. Once created or modified,
@@ -66,32 +67,34 @@ the themes can be used in KMail.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
+%find_lang %{name} --with-html --all-name
 
 %ldconfig_scriptlets
 
 %files
 %license LICENSES/*
-%doc %lang(en) %{_kf5_htmldir}/en/contactthemeeditor/
-%doc %lang(en) %{_kf5_htmldir}/en/headerthemeeditor/
-%{_kf5_applicationsdir}/org.kde.contactprintthemeeditor.desktop
-%{_kf5_applicationsdir}/org.kde.contactthemeeditor.desktop
-%{_kf5_applicationsdir}/org.kde.headerthemeeditor.desktop
-%{_kf5_bindir}/contactprintthemeeditor
-%{_kf5_bindir}/contactthemeeditor
-%{_kf5_bindir}/headerthemeeditor
-%{_kf5_configkcfgdir}/grantleethemeeditor.kcfg
-%{_kf5_debugdir}/grantleeditor.categories
-%{_kf5_debugdir}/grantleeditor.renamecategories
-%{_kf5_libdir}/libgrantleethemeeditor.so.*
+%doc %lang(en) %{_kf6_htmldir}/en/contactthemeeditor/
+%doc %lang(en) %{_kf6_htmldir}/en/headerthemeeditor/
+%{_kf6_applicationsdir}/org.kde.contactprintthemeeditor.desktop
+%{_kf6_applicationsdir}/org.kde.contactthemeeditor.desktop
+%{_kf6_applicationsdir}/org.kde.headerthemeeditor.desktop
+%{_kf6_bindir}/contactprintthemeeditor
+%{_kf6_bindir}/contactthemeeditor
+%{_kf6_bindir}/headerthemeeditor
+%{_kf6_configkcfgdir}/grantleethemeeditor.kcfg
+%{_kf6_debugdir}/grantleeditor.categories
+%{_kf6_debugdir}/grantleeditor.renamecategories
+%{_kf6_libdir}/libgrantleethemeeditor.so.*
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/contactthemeeditor/
+%exclude %{_kf6_htmldir}/en/headerthemeeditor/
 
 %changelog
