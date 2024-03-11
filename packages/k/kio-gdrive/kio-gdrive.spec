@@ -1,7 +1,7 @@
 #
 # spec file for package kio-gdrive
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,39 +16,45 @@
 #
 
 
+%define kf6_version 5.240.0
+%define qt6_version 6.6.0
+%define kpim6_version 6.0.0
+
 %bcond_without released
 Name:           kio-gdrive
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Google Drive KIO slave for KDE applications
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  intltool
-BuildRequires:  cmake(KAccounts)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KPim5GAPI)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(KAccounts6)
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6Purpose) >= %{kf6_version}
+BuildRequires:  cmake(KPim6GAPI) >= %{kpim6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Keychain) >= 0.6.0
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 # Used by the .desktop file
 Recommends:     dolphin
 # libkgapi has no ABI stability
-%requires_eq    libKPim5GAPICore5
+%requires_eq    libKPim6GAPICore6
 
 %description
 Google Drive KIO slave for KDE applications.
-KIO GDrive requires a KIO-enabled file manager at runtime,
-otherwise there is no way to setup a Google Drive account.
-This can be Dolphin or Gwenview or Konqueror.
+KIO GDrive requires a KIO-enabled file manager at runtime, otherwise there is
+no way to setup a Google Drive account.
+This can be Dolphin or Gwenview.
 
 %lang_package
 
@@ -56,27 +62,30 @@ This can be Dolphin or Gwenview or Konqueror.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang kio5_gdrive %{name}.lang
-%kf5_find_htmldocs
+%find_lang %{name} --all-name --with-html
 
 %files
 %license COPYING
 %doc README.md README.packagers
-%doc %lang(en) %{_kf5_htmldir}/en/kioslave5/gdrive/
-%dir %{_kf5_sharedir}/remoteview
-%{_kf5_appstreamdir}/org.kde.kio_gdrive.metainfo.xml
-%{_kf5_notifydir}/gdrive.notifyrc
-%{_kf5_plugindir}/kaccounts/
-%{_kf5_plugindir}/kf5/
-%{_kf5_sharedir}/accounts/
-%{_kf5_sharedir}/remoteview/gdrive-network.desktop
+%doc %lang(en) %{_kf6_htmldir}/en/kioslave5/gdrive/
+%{_kf6_appstreamdir}/org.kde.kio_gdrive.metainfo.xml
+%{_kf6_notificationsdir}/gdrive.notifyrc
+%{_kf6_plugindir}/kaccounts/
+%{_kf6_plugindir}/kf6/
+%{_kf6_sharedir}/accounts/
+%dir %{_kf6_sharedir}/purpose
+%{_kf6_sharedir}/purpose/purpose_gdrive_config.qml
+%dir %{_kf6_sharedir}/remoteview
+%{_kf6_sharedir}/remoteview/gdrive-network.desktop
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/kioslave5/gdrive/
 
 %changelog
