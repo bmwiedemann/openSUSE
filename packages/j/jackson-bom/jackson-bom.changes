@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar  8 08:33:47 UTC 2024 - Gus Kenion <gkenion@suse.com>
+
+- Update to version 2.16.1
+  * 2.16.1 (24-Dec-2023)
+    + No changes since 2.16.0
+  * 2.16.0 (15-Nov-2023)
+    + Add dependency for jackson-module-android-record. This new
+      module offers support for Record type on Android platform,
+      where Java records are supported through "de-sugaring".
+
+-------------------------------------------------------------------
 Mon Aug 21 13:29:12 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 2.15.2
