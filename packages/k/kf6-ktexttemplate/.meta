@@ -1,0 +1,10 @@
+<package name="kf6-ktexttemplate" project="openSUSE:Factory">
+  <title>String template library</title>
+  <description>The goal of KTextTemplate is to make it easier for application developers to
+separate the structure of documents from the data they contain, opening the door
+for theming and advanced generation of other text such as code.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-ktexttemplate"/>
+  <url>https://www.kde.org</url>
+</package>
