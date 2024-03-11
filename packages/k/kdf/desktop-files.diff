@@ -1,7 +1,10 @@
---- desktop/org.kde.kwikdisk.desktop
-+++ desktop/org.kde.kwikdisk.desktop
-@@ -1,3 +1,4 @@
+diff --git a/desktop/org.kde.kwikdisk.desktop b/desktop/org.kde.kwikdisk.desktop
+index 8365ff8..233a8a8 100755
+--- a/desktop/org.kde.kwikdisk.desktop
++++ b/desktop/org.kde.kwikdisk.desktop
+@@ -1,4 +1,5 @@
  [Desktop Entry]
 +OnlyShowIn=KDE;
  Name=KwikDisk
  Name[af]=Kwikdisk
+ Name[ar]=KwikDisk
