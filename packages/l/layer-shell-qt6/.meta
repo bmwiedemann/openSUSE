@@ -1,0 +1,8 @@
+<package name="layer-shell-qt6" project="openSUSE:Factory">
+  <title>wlr-layer-shell integration for Qt</title>
+  <description>This allows integration of Qt applications with wlr-layer-shell.
+
+</description>
+  <devel project="KDE:Frameworks" package="layer-shell-qt6"/>
+  <url>https://www.kde.org</url>
+</package>
