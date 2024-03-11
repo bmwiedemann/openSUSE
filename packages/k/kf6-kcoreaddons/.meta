@@ -1,0 +1,11 @@
+<package name="kf6-kcoreaddons" project="openSUSE:Factory">
+  <title>Utilities for core application functionality and accessing the OS</title>
+  <description>KCoreAddons provides classes built on top of QtCore to perform various tasks
+such as manipulating mime types, autosaving files, creating backup files,
+generating random sequences, performing text manipulations such as macro
+replacement, accessing user information and many more.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kcoreaddons"/>
+  <url>https://www.kde.org</url>
+</package>
