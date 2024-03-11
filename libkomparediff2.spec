@@ -1,7 +1,7 @@
 #
 # spec file for package libkomparediff2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,81 +16,86 @@
 #
 
 
-%define soname 5
+
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           libkomparediff2
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        A library to compare files and strings
-License:        (GPL-2.0-or-later AND LGPL-2.0-or-later) AND BSD-2-Clause
+License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5Codecs)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Parts)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
-Obsoletes:      %{name}-kf5 < %{version}
-Provides:       %{name}-kf5 = %{version}
+# PATCH-FIX-OPENSUSE
+Patch0:         0001-Add-changes-to-allow-coinstallation.patch
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 
 %description
 A library to compare files and strings, used in Kompare and KDevelop.
 
+# Both libkomparediff packages will have to coexist until kdevelop is ported
+%package -n libkomparediff2-5_95
+Summary:        A library to compare files and strings
+# Conflicting translations catalog
+Conflicts:      libkomparediff2-lang
+Conflicts:      libkomparediff2-5-lang
+
+%description -n libkomparediff2-5_95
+A library to compare files and strings, used in Kompare and KDevelop.
+
 %package devel
 Summary:        Development package for libkomparediff2
-Requires:       %{name}-%{soname} = %{version}
-Obsoletes:      %{name}-kf5-devel < %{version}
-Provides:       %{name}-kf5-devel = %{version}
+Requires:       libkomparediff2-5_95 = %{version}
+Requires:       cmake(Qt6Core) >= %{qt6_version}
+Requires:       cmake(Qt6Widgets) >= %{qt6_version}
+Requires:       cmake(KF6Config) >= %{kf6_version}
+Requires:       cmake(KF6XmlGui) >= %{kf6_version}
+Conflicts:      libkomparediff-kf5-devel
 
 %description devel
 Development package for libkomparediff2.
 
-%package %{soname}
-Summary:        A library to compare files and strings
-Provides:       %{name} = %{version}
-Recommends:     %{name}-lang
-
-%description %{soname}
-A library to compare files and strings, used in Kompare and KDevelop.
-
-%lang_package
+%lang_package -n libkomparediff2-5_95
 
 %prep
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
+%find_lang %{name} --all-name
 
+%ldconfig_scriptlets -n libkomparediff2-5_95
 
-%ldconfig_scriptlets %{soname}
-
-%files %{soname}
-%license COPYING*
-%{_kf5_debugdir}/libkomparediff2.categories
-%{_kf5_libdir}/libkomparediff2.so.*
+%files -n libkomparediff2-5_95
+%license LICENSES/*
+%{_kf6_debugdir}/libkomparediff2.categories
+%{_kf6_libdir}/libkomparediff2.so.*
 
 %files devel
-%{_kf5_cmakedir}/LibKompareDiff2/
-%{_kf5_libdir}/libkomparediff2.so
 %{_includedir}/KompareDiff2/
+%{_kf6_cmakedir}/KompareDiff2/
+%{_kf6_libdir}/libkomparediff2.so
 
-%files lang -f %{name}.lang
+%files -n libkomparediff2-5_95-lang -f %{name}.lang
 
 %changelog
