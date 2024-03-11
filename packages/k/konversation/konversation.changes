@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Feb 23 14:00:01 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.0
+  * New feature release
+- Changes since 24.01.95:
+  * Provide scripts with an env var to find qdbus (kde#349675)
+  * Update NEWS
+  * Update changelog
+  * scripts/sysinfo: Add support for Plasma 6
+  * Add error handling and modernize kpart loading
+  * Fix the embedded Konsole (kde#480452)
+- Drop patch, no longer needed:
+  * 0001-Use-qdbus6-on-openSUSE.patch
+
+-------------------------------------------------------------------
+Fri Feb  9 16:09:07 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.01.95
+  * https://kde.org/announcements/megarelease/6/rc2/
+- Replace 0001-Use-qdbus-qt5-on-openSUSE.patch with 0001-Use-qdbus6-on-openSUSE.patch
+
+-------------------------------------------------------------------
 Tue Dec  5 14:20:02 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.4

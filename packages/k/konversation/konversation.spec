@@ -16,102 +16,106 @@
 #
 
 
-%define kf5_version 5.105.0
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           konversation
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        A graphical IRC client by KDE
 License:        GPL-2.0-or-later
 URL:            https://konversation.kde.org/
-Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-OPENSUSE
-Patch0:         0001-Use-qdbus-qt5-on-openSUSE.patch
-BuildRequires:  extra-cmake-modules
-BuildRequires:  libqca-qt5-devel
-BuildRequires:  cmake(KF5Archive) >= %{kf5_version}
-BuildRequires:  cmake(KF5Bookmarks) >= %{kf5_version}
-BuildRequires:  cmake(KF5Config) >= %{kf5_version}
-BuildRequires:  cmake(KF5ConfigWidgets) >= %{kf5_version}
-BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
-BuildRequires:  cmake(KF5Crash) >= %{kf5_version}
-BuildRequires:  cmake(KF5DBusAddons) >= %{kf5_version}
-BuildRequires:  cmake(KF5DocTools) >= %{kf5_version}
-BuildRequires:  cmake(KF5Emoticons) >= %{kf5_version}
-BuildRequires:  cmake(KF5GlobalAccel) >= %{kf5_version}
-BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
-BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
-BuildRequires:  cmake(KF5IdleTime) >= %{kf5_version}
-BuildRequires:  cmake(KF5ItemViews) >= %{kf5_version}
-BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
-BuildRequires:  cmake(KF5NewStuff) >= %{kf5_version}
-BuildRequires:  cmake(KF5Notifications) >= %{kf5_version}
-BuildRequires:  cmake(KF5NotifyConfig) >= %{kf5_version}
-BuildRequires:  cmake(KF5Parts) >= %{kf5_version}
-BuildRequires:  cmake(KF5Solid) >= %{kf5_version}
-BuildRequires:  cmake(KF5Wallet) >= %{kf5_version}
-BuildRequires:  cmake(KF5WidgetsAddons) >= %{kf5_version}
-BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Multimedia)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+# To get the path to qdbus
+BuildRequires:  qt6-tools-qdbus
+BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
+BuildRequires:  cmake(KF6Bookmarks) >= %{kf6_version}
+BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6GlobalAccel) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IdleTime) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6NewStuff) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6NotifyConfig) >= %{kf6_version}
+BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
+BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6Wallet) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(Qca-qt6) >= 2.2.0
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Tools) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+# Only used by some very old scripts, no need to recommend it
+Suggests:       qt6-tools-qdbus
 
 %description
 Konversation is an Internet Relay Chat (IRC) client built on the
 KDE Platform.
 
 Features:
-
- SSL server support
- Bookmarking support
- Multiple servers and channels in one single window
- DCC file transfer
- Multiple identities for different servers
- Text decorations and colors
- OnScreen Display for notifications
- Automatic UTF-8 detection
- Per channel encoding support
- Theme support for nick icons
+* SSL server support
+* Bookmarking support
+* Multiple servers and channels in one single window
+* DCC file transfer
+* Multiple identities for different servers
+* Text decorations and colors
+* OnScreen Display for notifications
+* Automatic UTF-8 detection
+* Per channel encoding support
+* Theme support for nick icons
 
 %lang_package
 
 %prep
 %autosetup -p1
 
+# search&replace not covered by %%patch0
+sed -i 's#qdbus#qdbus6#' {doc,po/*/docs/konversation}/index.docbook
+
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name}
+%find_lang %{name} --with-html
 
 %files
 %license LICENSES/*
 %doc AUTHORS ChangeLog NEWS README
-%doc %{_kf5_htmldir}/en/konversation/
-%dir %{_kf5_sharedir}/kconf_update/
-%{_kf5_applicationsdir}/org.kde.konversation.desktop
-%{_kf5_appstreamdir}/org.kde.konversation.appdata.xml
-%{_kf5_bindir}/konversation
-%{_kf5_debugdir}/konversation.categories
-%{_kf5_iconsdir}/hicolor/*/actions/konv_message.*
-%{_kf5_iconsdir}/hicolor/*/apps/konversation.*
-%{_kf5_knsrcfilesdir}/konversation_nicklist_theme.knsrc
-%{_kf5_notifydir}/konversation.notifyrc
-%{_kf5_sharedir}/kconf_update/konversation*
-%{_kf5_sharedir}/konversation/
-%{_kf5_sharedir}/dbus-1/services/org.kde.konversation.service
+%doc %{_kf6_htmldir}/en/konversation/
+%{_kf6_applicationsdir}/org.kde.konversation.desktop
+%{_kf6_appstreamdir}/org.kde.konversation.appdata.xml
+%{_kf6_bindir}/konversation
+%{_kf6_debugdir}/konversation.categories
+%{_kf6_iconsdir}/hicolor/*/actions/konv_message.*
+%{_kf6_iconsdir}/hicolor/*/apps/konversation.*
+%{_kf6_knsrcfilesdir}/konversation_nicklist_theme.knsrc
+%{_kf6_notificationsdir}/konversation.notifyrc
+%{_kf6_sharedir}/dbus-1/services/org.kde.konversation.service
+%{_kf6_sharedir}/konversation/
 
 %files lang -f %{name}.lang
-%dir %{_kf5_htmldir}/pt_BR/
-%doc %{_kf5_htmldir}/*/konversation/
-%exclude %{_kf5_htmldir}/en/konversation
+%exclude %{_kf6_htmldir}/en/konversation
 
 %changelog
