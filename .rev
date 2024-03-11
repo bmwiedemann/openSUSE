@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>df45fb55e154026de10dd6ac4a22fcd7</srcmd5>
+    <version>24.02.0</version>
+    <time>1710167296</time>
+    <user>anag+factory</user>
+    <comment>- Rename libkioarchive-devel to libkioarchive6-devel to not conflict
+  with kio-extras5</comment>
+    <requestid>1155572</requestid>
+  </revision>
+</revisionlist>
