@@ -1,0 +1,8 @@
+<package name="kf6-modemmanager-qt" project="openSUSE:Factory">
+  <title>Qt wrapper for ModemManager DBus API</title>
+  <description>Qt wrapper for ModemManager DBus API.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-modemmanager-qt"/>
+  <url>https://www.kde.org</url>
+</package>
