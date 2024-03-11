@@ -195,4 +195,13 @@
 </comment>
     <requestid>1139769</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b0021d9cc28d84e0dc6a8d215846ac16</srcmd5>
+    <version>1.16</version>
+    <time>1710167699</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.16
+  - Enhance logging for soft-reboot tracking</comment>
+    <requestid>1156907</requestid>
+  </revision>
 </revisionlist>
