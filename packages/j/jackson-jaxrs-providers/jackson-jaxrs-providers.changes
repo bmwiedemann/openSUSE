@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar  8 08:33:47 UTC 2024 - Gus Kenion <gkenion@suse.com>
+
+- Upgrade to 2.16.1
+  * 2.16.1 (24-Dec-2023)
+    + #178: Deprecate local `LRUMap`, use `jackson-databind`
+      provided one instead
+  * 2.16.0 (15-Nov-2023)
+    + No changes since 2.15.0
+
+-------------------------------------------------------------------
 Sat Sep  9 13:43:57 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp

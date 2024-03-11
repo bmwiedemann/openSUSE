@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-jaxrs-providers
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jackson-jaxrs-providers
-Version:        2.15.2
+Version:        2.16.1
 Release:        0
 Summary:        Jackson JAX-RS providers
 License:        Apache-2.0
