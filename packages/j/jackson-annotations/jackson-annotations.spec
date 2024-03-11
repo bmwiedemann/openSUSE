@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-annotations
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jackson-annotations
-Version:        2.15.2
+Version:        2.16.1
 Release:        0
 Summary:        Core annotations for Jackson data processor
 License:        Apache-2.0
@@ -59,7 +59,7 @@ install -dm 0755 %{buildroot}%{_javadir}
 install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-%mvn_install_pom pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 
 install -dm 0755 %{buildroot}%{_javadocdir}

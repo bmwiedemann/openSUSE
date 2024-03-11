@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar  8 08:33:47 UTC 2024 - Gus Kenion <gkenion@suse.com>
+
+- Update to 2.16.1
+  * no substantial changes from 2.16.0
+  * 2.16.0 (15-Nov-2023)
+    + #223: Add new OptBoolean valued property in @JsonTypeInfo to
+      allow per-type configuration of strict type id handling
+    + #229: Add JsonTypeInfo.Value object (backport from 3.0)
+    + #234: Add new JsonTypeInfo.Id.SIMPLE_NAME
+
+-------------------------------------------------------------------
 Mon Aug 21 13:34:06 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 2.15.2
