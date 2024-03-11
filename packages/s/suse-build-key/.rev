@@ -351,4 +351,14 @@ changelog can't be avoided.
   (bsc#1216203)</comment>
     <requestid>1117951</requestid>
   </revision>
+  <revision rev="43" vrev="14">
+    <srcmd5>8eaa3c79e7b629866ab602c3efada11f</srcmd5>
+    <version>12.0</version>
+    <time>1710167683</time>
+    <user>anag+factory</user>
+    <comment>- switch the container key to the new 4096RSA key by default
+- obsolete the 1024bit RSA key from SLES 11, so it gets deinstalled
+  from migrated systems. (forwarded request 1156875 from msmeissn)</comment>
+    <requestid>1156876</requestid>
+  </revision>
 </revisionlist>

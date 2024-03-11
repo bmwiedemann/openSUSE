@@ -1,7 +1,7 @@
 #
 # spec file for package suse-build-key
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,9 @@ Source9:        gpg-pubkey-25db7ae0-645bae34.asc
 
 # pub  1024R/307E3D54 2006-03-21 SuSE Package Signing Key <build@suse.de>
 # SLES 10 key.
-Source2:        gpg-pubkey-307e3d54-5aaa90a5.asc
+# Source2:        gpg-pubkey-307e3d54-5aaa90a5.asc
+# deinstall the old RSA 1024 bit key from SLES 11 .
+Obsoletes:      gpg-pubkey = 307e3d54
 
 #pub   rsa2048/0x8EFE1BC4D4ADE9C3 2017-12-11 [SC] [expires: 2027-12-09]
 #     Key fingerprint = 0EE9 CA43 0050 9E29 17A0  54ED 8EFE 1BC4 D4AD E9C3
@@ -126,12 +128,12 @@ install -m 755 %{SOURCE100} $RPM_BUILD_ROOT/usr/lib/rpm/gnupg
 %endif
 
 install -d -m 755 $RPM_BUILD_ROOT%{containerkeydir}/
-install -c -m 644 %{SOURCE3} $RPM_BUILD_ROOT%{containerkeydir}/suse-container-key.asc
-install -c -m 644 %{SOURCE7} $RPM_BUILD_ROOT%{containerkeydir}/suse-container-key-4096.asc
+install -c -m 644 %{SOURCE3} $RPM_BUILD_ROOT%{containerkeydir}/suse-container-key-old.asc
+install -c -m 644 %{SOURCE7} $RPM_BUILD_ROOT%{containerkeydir}/suse-container-key.asc
 
 install -d -m 755 $RPM_BUILD_ROOT%{pemcontainerkeydir}/
-install -c -m 644 %{SOURCE10} $RPM_BUILD_ROOT%{pemcontainerkeydir}/suse-container-key.pem
-install -c -m 644 %{SOURCE8} $RPM_BUILD_ROOT%{pemcontainerkeydir}/suse-container-key-4096.pem
+install -c -m 644 %{SOURCE10} $RPM_BUILD_ROOT%{pemcontainerkeydir}/suse-container-key-old.pem
+install -c -m 644 %{SOURCE8} $RPM_BUILD_ROOT%{pemcontainerkeydir}/suse-container-key.pem
 
 %files
 %defattr(644,root,root)
@@ -144,7 +146,8 @@ install -c -m 644 %{SOURCE8} $RPM_BUILD_ROOT%{pemcontainerkeydir}/suse-container
 %endif
 %{keydir}/gpg-pubkey-50a3dd1c-50f35137.asc
 %{keydir}/gpg-pubkey-39db7c82-5f68629b.asc
-%{keydir}/gpg-pubkey-307e3d54-5aaa90a5.asc
+# SLES 11 key no longer added
+#{keydir}/gpg-pubkey-307e3d54-5aaa90a5.asc
 %{keydir}/gpg-pubkey-09d9ea69-645b99ce.asc
 %{keydir}/gpg-pubkey-3fa1d6ce-63c9481c.asc
 %{keydir}/gpg-pubkey-73f03759-626bd414.asc
@@ -152,10 +155,10 @@ install -c -m 644 %{SOURCE8} $RPM_BUILD_ROOT%{pemcontainerkeydir}/suse-container
 %{keydir}/suse_ptf_4096_key.asc
 %{keydir}/suse_ptf_key.asc
 %{containerkeydir}/suse-container-key.asc
-%{containerkeydir}/suse-container-key-4096.asc
+%{containerkeydir}/suse-container-key-old.asc
 %dir /usr/share/pki/
 %dir %{pemcontainerkeydir}/
 %{pemcontainerkeydir}/suse-container-key.pem
-%{pemcontainerkeydir}/suse-container-key-4096.pem
+%{pemcontainerkeydir}/suse-container-key-old.pem
 
 %changelog

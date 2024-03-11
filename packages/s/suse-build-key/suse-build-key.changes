@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  7 10:19:49 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- switch the container key to the new 4096RSA key by default
+- obsolete the 1024bit RSA key from SLES 11, so it gets deinstalled
+  from migrated systems.
+
+-------------------------------------------------------------------
 Mon Oct 16 08:55:24 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - build-container-d4ade9c3-5a2e9669.pem: added missing current
