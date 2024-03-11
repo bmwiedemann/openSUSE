@@ -1,7 +1,7 @@
 #
 # spec file for package ark
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,58 +16,61 @@
 #
 
 
-%define SOMAJOR 23
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           ark
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        KDE Archiver Tool
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/ark
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  libarchive-devel
-BuildRequires:  libzip-devel >= 1.2.0
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  xz
-BuildRequires:  xz-devel
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5ItemModels)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Parts)
-BuildRequires:  cmake(KF5Pty)
-BuildRequires:  cmake(KF5Service)
-BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6FileMetaData) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
+BuildRequires:  cmake(KF6Pty) >= %{kf6_version}
+BuildRequires:  cmake(KF6Service) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  pkgconfig(libarchive) >= 3.3.3
+BuildRequires:  pkgconfig(libzip) >= 1.3.0
 BuildRequires:  pkgconfig(zlib)
-# Recommend the most used compression programs (bnc#872010)
-Recommends:     xz
-Obsoletes:      ark-devel
-Recommends:     p7zip-full
+Recommends:     /usr/bin/lzop
+Recommends:     7zip
+Recommends:     lrzip
+Recommends:     lzop
 Recommends:     unar
+Recommends:     unzip
+Recommends:     xz
+Recommends:     zstd
+Suggests:       arj
+Obsoletes:      ark-devel
 
 %description
 This is a KDE application to work with compressed archives.
 
-%package -n libkerfuffle%{SOMAJOR}
+%package -n libkerfuffle24
 Summary:        KDE Archiver Tool
 
-%description -n libkerfuffle%{SOMAJOR}
+%description -n libkerfuffle24
 This is a KDE application to work with compressed archives.
 
 %lang_package
@@ -76,48 +79,42 @@ This is a KDE application to work with compressed archives.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
+%find_lang %{name} --with-man --with-html --all-name
 
-%suse_update_desktop_file org.kde.ark System Archiving
 
-%ldconfig_scriptlets -n libkerfuffle%{SOMAJOR}
+%ldconfig_scriptlets -n libkerfuffle24
 
 %files
-%doc %lang(en) %{_kf5_htmldir}/en/ark/
-%doc %{_kf5_mandir}/man1/ark.*
-%dir %{_kf5_plugindir}/kf5
-%dir %{_kf5_plugindir}/kf5/kfileitemaction
-%dir %{_kf5_plugindir}/kf5/kio_dnd
-%dir %{_kf5_plugindir}/kf5/parts
-%{_kf5_applicationsdir}/org.kde.ark.desktop
-%{_kf5_appstreamdir}/org.kde.ark.appdata.xml
-%{_kf5_bindir}/ark
-%{_kf5_configkcfgdir}/ark.kcfg
-%{_kf5_configdir}/arkrc
-%dir %{_kf5_sharedir}/kconf_update
-%{_kf5_sharedir}/kconf_update/ark.upd
-%{_kf5_sharedir}/kconf_update/ark_add_hamburgermenu_to_toolbar.sh
-%{_kf5_debugdir}/ark.categories
-%{_kf5_iconsdir}/hicolor/*/apps/*
-%{_kf5_servicesdir}/ark_part.desktop
-%{_kf5_plugindir}/kf5/parts/arkpart.so
-%{_kf5_plugindir}/kerfuffle/
-%{_kf5_plugindir}/kf5/kfileitemaction/compressfileitemaction.so
-%{_kf5_plugindir}/kf5/kfileitemaction/extractfileitemaction.so
-%{_kf5_plugindir}/kf5/kio_dnd/extracthere.so
+%doc %lang(en) %{_kf6_htmldir}/en/ark/
+%doc %{_kf6_mandir}/man1/ark.1%{?ext_man}
+%{_kf6_applicationsdir}/org.kde.ark.desktop
+%{_kf6_appstreamdir}/org.kde.ark.appdata.xml
+%{_kf6_bindir}/ark
+%{_kf6_configkcfgdir}/ark.kcfg
+%{_kf6_configdir}/arkrc
+%{_kf6_sharedir}/kconf_update/ark.upd
+%{_kf6_sharedir}/kconf_update/ark_add_hamburgermenu_to_toolbar.sh
+%{_kf6_debugdir}/ark.categories
+%{_kf6_iconsdir}/hicolor/*/apps/*
+%{_kf6_plugindir}/kf6/parts/arkpart.so
+%{_kf6_plugindir}/kerfuffle/
+%dir %{_kf6_plugindir}/kf6/kfileitemaction
+%{_kf6_plugindir}/kf6/kfileitemaction/compressfileitemaction.so
+%{_kf6_plugindir}/kf6/kfileitemaction/extractfileitemaction.so
+%dir %{_kf6_plugindir}/kf6/kio_dnd
+%{_kf6_plugindir}/kf6/kio_dnd/extracthere.so
 
-%files -n libkerfuffle%{SOMAJOR}
-%license COPYING*
-%{_kf5_libdir}/libkerfuffle.so.%{SOMAJOR}
-%{_kf5_libdir}/libkerfuffle.so.*
+%files -n libkerfuffle24
+%{_kf6_libdir}/libkerfuffle.so.*
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/ark/
 
 %changelog
