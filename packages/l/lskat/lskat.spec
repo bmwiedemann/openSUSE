@@ -1,7 +1,7 @@
 #
 # spec file for package lskat
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,32 +16,35 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           lskat
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        German Skat game
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/lskat
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5GuiAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KDEGames)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KDEGames6) 
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Requires:       kdegames-carddecks-default
 Obsoletes:      lskat5 < %{version}
 Provides:       lskat5 = %{version}
@@ -58,28 +61,27 @@ the players.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
-
-%suse_update_desktop_file -r org.kde.lskat Game CardGame
+%find_lang %{name} --with-man --with-html --all-name
 
 %files
 %license LICENSES/*
 %doc README
-%doc %lang(en) %{_kf5_htmldir}/en/lskat/
-%{_kf5_applicationsdir}/org.kde.lskat.desktop
-%{_kf5_appsdir}/lskat/
-%{_kf5_appstreamdir}/org.kde.lskat.appdata.xml
-%{_kf5_bindir}/lskat
-%{_kf5_debugdir}/lskat.categories
-%{_kf5_iconsdir}/hicolor/*/apps/lskat.*
+%doc %lang(en) %{_kf6_htmldir}/en/lskat/
+%{_kf6_applicationsdir}/org.kde.lskat.desktop
+%{_kf6_appstreamdir}/org.kde.lskat.appdata.xml
+%{_kf6_bindir}/lskat
+%{_kf6_debugdir}/lskat.categories
+%{_kf6_iconsdir}/hicolor/*/apps/lskat.*
+%{_kf6_sharedir}/lskat/
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/lskat/
 
 %changelog
