@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Feb 23 14:01:10 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.0
+  * New feature release
+- Changes since 24.01.95:
+  * Hide interaction buttons on most notifications except for mentions
+  * Prevent crash when grouped notifications are used on initialization
+  * Enable grouping notifications by default
+  * Disable boosting private (followers-only) posts
+  * Add 24.02 release note
+  * Remove image attachment captions
+  * Fix bottom margin on settings button in sidebar
+  * Refresh the thread if we reply to it (kde#480695)
+  * Hide actions on mobile that are already present in the bottom bar
+  * TapHandler fixes to hopefully solve page switching woes
+
+-------------------------------------------------------------------
+Fri Feb  9 16:10:18 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.01.95
+  * https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
 Fri Dec 15 21:31:51 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Require extra-cmake-modules at build time
