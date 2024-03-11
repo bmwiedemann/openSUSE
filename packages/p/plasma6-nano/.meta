@@ -1,0 +1,8 @@
+<package name="plasma6-nano" project="openSUSE:Factory">
+  <title>Plasma Nano</title>
+  <description>A minimal plasma shell package intended for embedded devices
+
+</description>
+  <devel project="KDE:Frameworks" package="plasma6-nano"/>
+  <url>https://www.kde.org/</url>
+</package>
