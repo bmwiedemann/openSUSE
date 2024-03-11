@@ -1,0 +1,8 @@
+<package name="kglobalacceld6" project="openSUSE:Factory">
+  <title>Global keyboard shortcut daemon</title>
+  <description>Daemon providing Global Keyboard Shortcut (Accelerator) functionality.
+
+</description>
+  <devel project="KDE:Frameworks" package="kglobalacceld6"/>
+  <url>https://www.kde.org</url>
+</package>
