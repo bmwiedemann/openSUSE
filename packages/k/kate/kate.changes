@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Feb 23 13:58:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.0
+  * New feature release
+- Changes since 24.01.95:
+  * Fix tabswitcher performance when large of docs are opened
+  * Avoid many proxy invalidations on close
+  * fix crash on close other with active widget (kde#481625)
+  * Fix crash
+  * Documents: Fix row numbers not updated after dnd
+  * Fix diagnostic count when removing diagnostics from a doc with multiple providers
+  * diag: Always allow diagnostics for active document
+
+-------------------------------------------------------------------
+Fri Feb  9 16:07:49 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.01.95
+  * https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
 Fri Dec 15 21:29:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Require extra-cmake-modules at build time

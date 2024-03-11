@@ -1,7 +1,7 @@
 #
 # spec file for package kate
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,68 +16,55 @@
 #
 
 
-%define _appstreamkpackage 0%(cat %{_kf5_cmakedir}/KF5Package/KF5PackageMacros.cmake | grep -q 'appstream-metainfo' && echo 1)
+%define kf6_version 5.246.0
+%define plasma6_version 5.27.80
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           kate
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Advanced Text Editor
 License:        GPL-3.0-or-later
 URL:            https://kate-editor.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Defuse-root-block.patch
-BuildRequires:  extra-cmake-modules
-BuildRequires:  libgit2-devel
-BuildRequires:  cmake(KF5Activities)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5GuiAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5ItemModels)
-BuildRequires:  cmake(KF5JobWidgets)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5NewStuff)
-BuildRequires:  cmake(KF5Parts)
-BuildRequires:  cmake(KF5Plasma)
-BuildRequires:  cmake(KF5Pty)
-BuildRequires:  cmake(KF5Service)
-BuildRequires:  cmake(KF5SyntaxHighlighting)
-BuildRequires:  cmake(KF5TextEditor)
-BuildRequires:  cmake(KF5ThreadWeaver)
-BuildRequires:  cmake(KF5Wallet)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(KUserFeedback)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Script)
-BuildRequires:  cmake(Qt5Sql)
-BuildRequires:  cmake(Qt5X11Extras)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
-%if 0%{?suse_version} <= 1500
-# <charconv> is not available in GCC7
-BuildRequires:  gcc10-c++
-BuildRequires:  gcc10-PIE
-%endif
-Requires:       %{name}-plugins = %{version}
-Obsoletes:      %{name}5 < %{version}
-Provides:       %{name}5 = %{version}
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6NewStuff) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextEditor) >= %{kf6_version}
+BuildRequires:  cmake(KF6UserFeedback) >= %{kf6_version}
+BuildRequires:  cmake(KF6Wallet) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(PlasmaActivities) >= %{plasma6_version}
+BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+Requires:       kate-plugins = %{version}
+Obsoletes:      kate5 < %{version}
+Provides:       kate5 = %{version}
 
 %description
 Kate is an advanced text editor by KDE.
 
 %package -n kwrite
 Summary:        KDE Text Editor
-Requires:       %{name}-plugins = %{version}
+Requires:       kate-plugins = %{version}
 Obsoletes:      kwrite5 < %{version}
 
 %description -n kwrite
@@ -99,60 +86,45 @@ plugins and data files for Kate and KWrite editors.
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} <= 1500
-  export CXX=g++-10
-%endif
+%cmake_kf6
 
-%cmake_kf5 -d build
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
+# Remove exotic icon sizes
+rm -r %{buildroot}%{_kf6_iconsdir}/hicolor/{150x150,310x310,44x44}
+
+%find_lang %{name} --with-man --with-html --all-name
 
 %ldconfig_scriptlets
 
 %files
-%doc README*
-%dir %{_kf5_iconsdir}/hicolor/150x150/
-%dir %{_kf5_iconsdir}/hicolor/150x150/apps
-%dir %{_kf5_iconsdir}/hicolor/310x310/
-%dir %{_kf5_iconsdir}/hicolor/310x310/apps
-%dir %{_kf5_iconsdir}/hicolor/44x44/
-%dir %{_kf5_iconsdir}/hicolor/44x44/apps
-%dir %{_kf5_iconsdir}/hicolor/256x256/
-%dir %{_kf5_iconsdir}/hicolor/256x256/apps
-%dir %{_kf5_iconsdir}/hicolor/512x512/
-%dir %{_kf5_iconsdir}/hicolor/512x512/apps
-%doc %lang(en) %{_kf5_htmldir}/en/kate/
-%doc %lang(en) %{_kf5_htmldir}/en/katepart/
-%doc %{_kf5_mandir}/man1/kate.*
-%{_kf5_applicationsdir}/org.kde.kate.desktop
-%{_kf5_appstreamdir}/org.kde.kate.appdata.xml
-%{_kf5_bindir}/kate
-%{_kf5_iconsdir}/hicolor/*/apps/kate.*
-%{_kf5_libdir}/libkateprivate.so.*
-%dir %{_kf5_sharedir}/kconf_update/
-%{_kf5_sharedir}/kconf_update/katesession_migration.upd
-%{_kf5_sharedir}/kconf_update/migrate_kate_sessions_applet_to_kdeplasma-addons.sh
+%doc README.md
+%doc %lang(en) %{_kf6_htmldir}/en/kate/
+%doc %lang(en) %{_kf6_htmldir}/en/katepart/
+%doc %{_kf6_mandir}/man1/kate.1%{?ext_man}
+%{_kf6_applicationsdir}/org.kde.kate.desktop
+%{_kf6_appstreamdir}/org.kde.kate.appdata.xml
+%{_kf6_bindir}/kate
+%{_kf6_iconsdir}/hicolor/*/apps/kate.*
+%{_kf6_libdir}/libkateprivate.so.*
 
 %files -n kwrite
-%doc README*
-%doc %lang(en) %{_kf5_htmldir}/en/kwrite/
-%{_kf5_applicationsdir}/org.kde.kwrite.desktop
-%{_kf5_appstreamdir}/org.kde.kwrite.appdata.xml
-%{_kf5_bindir}/kwrite
-%{_kf5_iconsdir}/hicolor/*/apps/kwrite.*
+%doc README.md
+%{_kf6_applicationsdir}/org.kde.kwrite.desktop
+%{_kf6_appstreamdir}/org.kde.kwrite.appdata.xml
+%{_kf6_bindir}/kwrite
+%{_kf6_iconsdir}/hicolor/*/apps/kwrite.*
 
 %files plugins
-%license LICENSES/*
-%doc README*
-%{_kf5_plugindir}/
-%{_kf5_sharedir}/kateproject/
-%{_kf5_sharedir}/katexmltools/
+%{_kf6_plugindir}/kf6/ktexteditor/
+%{_kf6_sharedir}/kateproject/
+%{_kf6_sharedir}/katexmltools/
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/kate/
+%exclude %{_kf6_htmldir}/en/katepart/
 
 %changelog
