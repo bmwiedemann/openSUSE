@@ -1,0 +1,8 @@
+<package name="kf6-kjobwidgets" project="openSUSE:Factory">
+  <title>Widgets for showing progress of asynchronous jobs</title>
+  <description>KJobWIdgets provides widgets for showing progress of asynchronous jobs.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kjobwidgets"/>
+  <url>https://www.kde.org</url>
+</package>
