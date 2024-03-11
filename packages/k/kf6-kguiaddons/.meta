@@ -1,0 +1,9 @@
+<package name="kf6-kguiaddons" project="openSUSE:Factory">
+  <title>Utilities for graphical user interfaces</title>
+  <description>The KDE GUI addons provide utilities for graphical user interfaces in the areas
+of colors, fonts, text, images, keyboard input.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kguiaddons"/>
+  <url>https://www.kde.org</url>
+</package>
