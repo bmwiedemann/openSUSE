@@ -79,4 +79,12 @@
     <comment></comment>
     <requestid>1147897</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>3b36819e066dc589ae6d479da501947b</srcmd5>
+    <version>1.11.3</version>
+    <time>1710167655</time>
+    <user>anag+factory</user>
+    <comment>Fix build with jackson-databind 2.16.x</comment>
+    <requestid>1156790</requestid>
+  </revision>
 </revisionlist>

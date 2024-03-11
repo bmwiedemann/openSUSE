@@ -1,7 +1,7 @@
 #
 # spec file for package aws-sdk-java
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Development/Libraries/Java
 URL:            https://aws.amazon.com/sdk-for-java/
 Source0:        https://github.com/aws/aws-sdk-java/archive/%{githash}/%{name}-%{githash}.tar.gz
 Patch0:         aws-sdk-java-ambiguous-Record.patch
+Patch1:         aws-sdk-java-jackson-databind.patch
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8

@@ -1,0 +1,31 @@
+--- aws-sdk-java-9883b981ab5103cc6944fbf8f3b973994777350f.orig/aws-java-sdk-core/src/main/java/com/amazonaws/transform/JsonErrorUnmarshaller.java	2024-03-09 21:54:01.485016575 +0100
++++ aws-sdk-java-9883b981ab5103cc6944fbf8f3b973994777350f/aws-java-sdk-core/src/main/java/com/amazonaws/transform/JsonErrorUnmarshaller.java	2024-03-09 21:58:25.501906164 +0100
+@@ -20,7 +20,7 @@
+ import com.fasterxml.jackson.databind.DeserializationFeature;
+ import com.fasterxml.jackson.databind.JsonNode;
+ import com.fasterxml.jackson.databind.ObjectMapper;
+-import com.fasterxml.jackson.databind.PropertyNamingStrategy.PascalCaseStrategy;
++import com.fasterxml.jackson.databind.PropertyNamingStrategy.UpperCamelCaseStrategy;
+ 
+ /**
+  * Unmarshaller for JSON error responses from AWS services.
+@@ -34,7 +34,7 @@
+ 
+     private static final ObjectMapper MAPPER = new ObjectMapper().configure(
+             DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false).setPropertyNamingStrategy(
+-            new PascalCaseStrategy());
++            new UpperCamelCaseStrategy());
+ 
+     private final String handledErrorCode;
+ 
+--- aws-sdk-java-9883b981ab5103cc6944fbf8f3b973994777350f.orig/aws-java-sdk-core/src/main/java/com/amazonaws/util/EC2MetadataUtils.java	2024-03-09 21:54:01.485016575 +0100
++++ aws-sdk-java-9883b981ab5103cc6944fbf8f3b973994777350f/aws-java-sdk-core/src/main/java/com/amazonaws/util/EC2MetadataUtils.java	2024-03-09 21:54:49.988390864 +0100
+@@ -69,7 +69,7 @@
+                 DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+ 
+         mapper
+-                .setPropertyNamingStrategy(PropertyNamingStrategy.PASCAL_CASE_TO_CAMEL_CASE);
++                .setPropertyNamingStrategy(PropertyNamingStrategy.UPPER_CAMEL_CASE);
+     }
+ 
+     private static final Log log = LogFactory.getLog(EC2MetadataUtils.class);

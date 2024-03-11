@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 10 22:16:18 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * aws-sdk-java-jackson-databind.patch
+    + do not use previously deprecated classes that were removed
+      in jackson-databind 2.16.x
+
+-------------------------------------------------------------------
 Tue Feb 20 11:16:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
