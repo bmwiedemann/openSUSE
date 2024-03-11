@@ -1,0 +1,8 @@
+<package name="oxygen6" project="openSUSE:Factory">
+  <title>Oxygen style, KWin decoration and cursors</title>
+  <description>Provides Oxygen style, KWin decoration, and cursors.
+
+</description>
+  <devel project="KDE:Frameworks" package="oxygen6"/>
+  <url>https://www.kde.org</url>
+</package>
