@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Thu Mar  7 08:10:51 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Enable fwupd integration on Leap 15.6+
+
+-------------------------------------------------------------------
+Wed Mar  6 08:40:25 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.1
+- Changes since 6.0.0:
+  * update version for new release
+
+-------------------------------------------------------------------
+Mon Mar  4 18:52:04 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add Provides/Obsoletes to replace Plasma 5
+
+-------------------------------------------------------------------
+Wed Feb 28 08:31:18 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update QML dependencies
+
+-------------------------------------------------------------------
+Wed Feb 21 18:36:11 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0:
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.93.0:
+  * update version for new release
+  * flatpak: Fix loading a flatpakref when we already have the repository added
+  * update version for new release
+
+-------------------------------------------------------------------
+Wed Jan 31 17:36:48 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.93.0 (6.0 RC 2):
+  * New bugfix release
+  * See https://kde.org/announcements/megarelease/6/rc2/ for details
+- Changes since 5.92.0:
+  * Adapt to move of KNSCore::ErrorCode enum nested namespace
+  * Flatpak: Fix up prompt to delete uninstalled app's data (kde#478704)
+  * Improve time to a ready startup page
+  * Do not use the currentSubMenu to reset the view
+  * discover: Make status view the drawer's footer
+  * flatpak: Finalize refresh even when appstream pool was already loaded
+  * Fix missing Addons button/view (kde#477772)
+  * Home page: span and wrap title labels (kde#476898)
+  * Fix 'Still looking' text centering (kde#479737)
+
+-------------------------------------------------------------------
+Mon Jan 15 21:08:33 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.92.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Tue Dec 19 09:48:28 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init discover6

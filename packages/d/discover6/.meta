@@ -1,0 +1,10 @@
+<package name="discover6" project="openSUSE:Factory">
+  <title>Software store for the KDE Plasma desktop</title>
+  <description>Discover is a graphical software manager for the KDE Plasma desktop. It helps users to find software they might want easily and quickly.
+
+By allowing to navigate a software library by search, categories, top lists along with detailed application information including screenshots and reviews, users can more quickly find applications that suit their needs.
+
+</description>
+  <devel project="KDE:Frameworks" package="discover6"/>
+  <url>https://apps.kde.org/discover/</url>
+</package>
