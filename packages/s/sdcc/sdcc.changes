@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:08:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Fri Feb 16 10:13:41 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Use prebuilt sdccman.pdf as a workaround for build fail on Leap 15.x
+  (pdf manual not building, probably inkscape is too old)
+
+-------------------------------------------------------------------
 Thu Sep 29 22:05:23 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 4.2.0

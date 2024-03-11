@@ -25,6 +25,7 @@ Group:          Development/Languages/C and C++
 URL:            https://sdcc.sourceforge.net/
 Source:         http://downloads.sourceforge.net/%{name}/%{name}-src-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
+Source2:        sdccman.pdf
 Patch0:         0001-Doc-Disable-fallback-to-dvipdfm-remove-non-pdftex-ta.patch
 Patch2:         sdcc_enable_additional_target_libs.patch
 Patch4:         sdcc-pcode.patch
@@ -103,9 +104,9 @@ rm support/regression/tests/bug3304184.c
 find device/non-free/ \( -iname \*.h -o -iname \*.c -o -iname \*.S \) -delete
 # remove spurious x bits from source files to make rpmlint happy.
 find -name '*.[ch]' -perm -u=x | xargs chmod a-x
-%patch0 -p1
-%patch2 -p1
-%patch4
+%patch -P 0 -p1
+%patch -P 2 -p1
+%patch -P 4
 sed -i '1 s@.*@#!%{_bindir}/python3@' support/scripts/as2gbmap.py
 
 %build
@@ -121,7 +122,11 @@ export PYTHON=%{_bindir}/python3
 inkscape --export-area-drawing --export-pdf=doc/MCS51_named.pdf doc/MCS51_named.svg
 export LDFLAGS=-s
 %make_build
+%if 0%{?suse_version} > 1500
 %make_build -C doc sdccman.pdf
+%else
+cp %{SOURCE2} doc
+%endif
 
 %install
 %make_install
