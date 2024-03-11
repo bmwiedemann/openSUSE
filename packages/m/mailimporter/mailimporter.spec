@@ -1,7 +1,7 @@
 #
 # spec file for package mailimporter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,33 +16,37 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define kpim6_version 6.0.0
+
 %bcond_without released
 Name:           mailimporter
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Mail import functionality for KDE PIM applications
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KPim5Akonadi)
-BuildRequires:  cmake(KPim5AkonadiMime)
-BuildRequires:  cmake(KPim5Libkdepim)
-BuildRequires:  cmake(KPim5Mime)
-BuildRequires:  cmake(KPim5PimCommonAkonadi)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  doxygen
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KPim6Akonadi) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6AkonadiMime) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6PimCommon) >= %{kpim6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
 
 %description
 The mailimporter library is a KDE PIM project to provide a framework
@@ -52,28 +56,28 @@ KMail or Kontact.
 %package devel
 Summary:        Development package for mailimporter
 License:        LGPL-2.1-or-later
-Requires:       libKPim5MailImporter5 = %{version}
-Requires:       libKPim5MailImporterAkonadi5 = %{version}
-Requires:       cmake(KF5Archive)
+Requires:       libKPim6MailImporter6 = %{version}
+Requires:       libKPim6MailImporterAkonadi6 = %{version}
+Requires:       cmake(KF6Archive) >= %{kf6_version}
 
 %description devel
 This package provides the development headers of the mailimporter library.
 
-%package -n libKPim5MailImporter5
+%package -n libKPim6MailImporter6
 Summary:        MailImporter library for kdepim
 License:        LGPL-2.1-or-later
 Requires:       mailimporter >= %{version}
 
-%description -n libKPim5MailImporter5
+%description -n libKPim6MailImporter6
 This package provides the mailimporter library, used by KDE PIM applications
 to import data from other mail formats (such as mbox, Maildir...).
 
-%package -n libKPim5MailImporterAkonadi5
+%package -n libKPim6MailImporterAkonadi6
 Summary:        MailImporter Akonadi based library for kdepim
 License:        LGPL-2.1-or-later
 Requires:       mailimporter >= %{version}
 
-%description -n libKPim5MailImporterAkonadi5
+%description -n libKPim6MailImporterAkonadi6
 This package provides the mailimporter library for Akonadi based functions,
 used by KDE PIM applications to import data from other mail formats
 (such as mbox, Maildir...).
@@ -84,39 +88,38 @@ used by KDE PIM applications to import data from other mail formats
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
+%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
 
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
+%find_lang %{name} --all-name
 
-%ldconfig_scriptlets -n libKPim5MailImporter5
-%ldconfig_scriptlets -n libKPim5MailImporterAkonadi5
+%ldconfig_scriptlets -n libKPim6MailImporter6
+%ldconfig_scriptlets -n libKPim6MailImporterAkonadi6
 
 %files
-%{_kf5_debugdir}/mailimporter.categories
-%{_kf5_debugdir}/mailimporter.renamecategories
+%{_kf6_debugdir}/mailimporter.categories
+%{_kf6_debugdir}/mailimporter.renamecategories
+
+%files -n libKPim6MailImporter6
+%license LICENSES/*
+%{_kf6_libdir}/libKPim6MailImporter.so.*
+
+%files -n libKPim6MailImporterAkonadi6
+%{_kf6_libdir}/libKPim6MailImporterAkonadi.so.*
 
 %files devel
-%dir %{_includedir}/KPim5
-%{_includedir}/KPim5/MailImporter/
-%{_includedir}/KPim5/MailImporterAkonadi/
-%{_kf5_cmakedir}/KPim5MailImporter/
-%{_kf5_cmakedir}/KPim5MailImporterAkonadi/
-%{_kf5_libdir}/libKPim5MailImporter.so
-%{_kf5_libdir}/libKPim5MailImporterAkonadi.so
-%{_kf5_mkspecsdir}/qt_MailImporter.pri
-%{_kf5_mkspecsdir}/qt_MailImporterAkonadi.pri
-
-%files -n libKPim5MailImporter5
-%license LICENSES/*
-%{_kf5_libdir}/libKPim5MailImporter.so.*
-
-%files -n libKPim5MailImporterAkonadi5
-%{_kf5_libdir}/libKPim5MailImporterAkonadi.so.*
+%doc %{_kf6_qchdir}/KPim6MailImporter.*
+%doc %{_kf6_qchdir}/KPim6MailImporterAkonadi.*
+%{_includedir}/KPim6/MailImporter/
+%{_includedir}/KPim6/MailImporterAkonadi/
+%{_kf6_cmakedir}/KPim6MailImporter/
+%{_kf6_cmakedir}/KPim6MailImporterAkonadi/
+%{_kf6_libdir}/libKPim6MailImporter.so
+%{_kf6_libdir}/libKPim6MailImporterAkonadi.so
 
 %files lang -f %{name}.lang
 
