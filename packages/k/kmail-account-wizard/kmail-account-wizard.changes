@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Feb 23 13:59:40 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.0
+  * New feature release
+- Changes since 24.01.95:
+  * Fix separator being displayed while below element is not
+  * Fix disconnect mode not visible
+  * We really need to have kolab support
+  * Fix qCWarning
+  * This check is not necessary now
+  * Debug--
+  * Fix QML name
+  * Fix triggered nextAction
+  * i18n: Add more context to password string
+  * Backport change from master
+  * mAccountConfigurationImpl will allow to create account. => rename method
+  * Rename variable
+  * Rename files
+  * Rename this class to accountconfigurationbase
+  * Add UseTLS
+  * Add more autotest
+  * Use QStandardPath
+  * Remove not necessary this->
+  * continue to implement autotest
+  * Prepare to autotest it
+  * Export symbol
+  * Move to target_sources
+  * Prepare to test create resource
+  * Remove TODO
+  * Store as info
+  * Test signal
+  * We need QString info for testing it
+  * Improve supprot
+  * Improve autotests
+  * Improve debug
+
+-------------------------------------------------------------------
+Fri Feb  9 16:08:46 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.01.95
+  * https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
 Tue Dec  5 14:19:50 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.4
