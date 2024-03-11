@@ -1,7 +1,7 @@
 #
 # spec file for package kmouth
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,38 +16,38 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           kmouth
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Speech Synthesizer Frontend
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/kmouth
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  alsa-devel
-BuildRequires:  extra-cmake-modules
-BuildRequires:  libspeechd-devel
-BuildRequires:  sbl
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Completion)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5TextToSpeech)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
+BuildRequires:  cmake(Qt6TextToSpeech) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
+Requires:       python3-speechd
 Provides:       kde4-kmouth = 4.3.0
 Obsoletes:      kde4-kmouth < 4.3.0
 
@@ -60,29 +60,27 @@ The computer "speaks" the entered text for talking with people.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
-
-%suse_update_desktop_file org.kde.kmouth Utility Accessibility
+%find_lang %{name} --with-html --with-man --all-name
 
 %files
 %license COPYING COPYING.DOC
-%config %{_kf5_configdir}/kmouthrc
-%doc %lang(en) %{_kf5_htmldir}/en/kmouth/
-%{_kf5_applicationsdir}/*.desktop
-%{_kf5_appsdir}/kmouth/
-%{_kf5_appstreamdir}/org.kde.kmouth.appdata.xml
-%{_kf5_bindir}/kmouth
-%{_kf5_iconsdir}/hicolor/*/*/*.png
-%{_kf5_kxmlguidir}/kmouth/
-%{_mandir}/man1/kmouth.1%{?ext_man}
+%config %{_kf6_configdir}/kmouthrc
+%doc %lang(en) %{_kf6_htmldir}/en/kmouth/
+%doc %lang(en) %{_mandir}/man1/kmouth.1%{?ext_man}
+%{_kf6_applicationsdir}/org.kde.kmouth.desktop
+%{_kf6_appstreamdir}/org.kde.kmouth.appdata.xml
+%{_kf6_bindir}/kmouth
+%{_kf6_iconsdir}/hicolor/*/*/*.png
+%{_kf6_sharedir}/kmouth/
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/kmouth/
 
 %changelog
