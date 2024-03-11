@@ -1,7 +1,7 @@
 #
 # spec file for package akonadi-mime
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,52 +16,53 @@
 #
 
 
-%define sonum   5
-%define kf5_version 5.105.0
-%define libname libKPim5AkonadiMime5
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define kpim6_version 6.0.0
+
 %bcond_without released
 Name:           akonadi-mime
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        MIME email parser for KDE PIM
 License:        LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= %{kf5_version}
-BuildRequires:  kf5-filesystem
-BuildRequires:  libxslt-devel
+BuildRequires:  doxygen
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  pkgconfig
 BuildRequires:  shared-mime-info
-BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
-BuildRequires:  cmake(KF5ItemModels) >= %{kf5_version}
-BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
-BuildRequires:  cmake(KF5XmlGui) >= %{kf5_version}
-BuildRequires:  cmake(KPim5Akonadi)
-BuildRequires:  cmake(KPim5Mime)
-BuildRequires:  cmake(Qt5Test) >= 5.15.2
-BuildRequires:  cmake(Qt5Widgets) >= 5.15.2
-Conflicts:      libKF5AkonadiMime5 < %{version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(KPim6Akonadi) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
+BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
+BuildRequires:  pkgconfig(libxslt)
+Conflicts:      libKF6AkonadiMime5 < %{version}
 
 %description
 This package provides libraries needed for the correct parsing of email
 messages.
 
-%package -n %{libname}
+%package -n libKPim6AkonadiMime6
 Summary:        MIME email parser for KDE PIM - core library
-%requires_eq    akonadi-mime
-# Renamed
+Requires:       akonadi-mime >= %{version}
 Obsoletes:      akonadi-mime-lang <= 23.04.0
+Obsoletes:      libKPim5AkonadiMime5-lang < %{version}
 
-%description  -n %{libname}
+%description  -n libKPim6AkonadiMime6
 This package contains the core libraries needed for the correct parsing of email
 messages.
 
 %package -n akonadi-plugin-mime
 Summary:        MIME email parser for KDE PIM - runtime plugins
-Requires:       %{libname} >= %{version}
+Requires:       libKPim6AkonadiMime6 >= %{version}
 
 %description -n akonadi-plugin-mime
 This package provides plugins required by PIM applications read and write parsed
@@ -69,53 +70,52 @@ email data.
 
 %package devel
 Summary:        MIME email parser for KDE PIM - development files
-Requires:       %{libname} = %{version}
-Requires:       cmake(KPim5Akonadi)
+Requires:       libKPim6AkonadiMime6 = %{version}
+Requires:       cmake(KPim6Akonadi) >= %{kpim6_version}
 
 %description devel
 This package contains development headers needed to use MIME message parsing
 in KDE PIM applications.
 
-%lang_package -n %{libname}
+%lang_package -n libKPim6AkonadiMime6
 
 %prep
-%autosetup -p1 -n akonadi-mime-%{version}
+%autosetup -p1 -n %{name}-%{version}
 
 %build
-%cmake_kf5 -d build -- -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
-%cmake_build
+%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{libname} --with-man --all-name
+%find_lang libKPim6AkonadiMime6 --all-name
 
-%ldconfig_scriptlets -n %{libname}
+%ldconfig_scriptlets -n libKPim6AkonadiMime6
 
 %files
-%license LICENSES/*
-%{_kf5_configkcfgdir}/specialmailcollections.kcfg
-%{_kf5_debugdir}/*.categories
-%{_kf5_mkspecsdir}/qt_AkonadiMime.pri
-%{_kf5_sharedir}/mime/packages/x-vnd.kde.contactgroup.xml
+%{_kf6_debugdir}/akonadi-mime.categories
 
-%files -n %{libname}
-%{_kf5_libdir}/libKPim5AkonadiMime.so.*
+%files -n libKPim6AkonadiMime6
+%license LICENSES/*
+%{_kf6_libdir}/libKPim6AkonadiMime.so.*
 
 %files -n akonadi-plugin-mime
-%dir %{_kf5_sharedir}/akonadi
-%dir %{_kf5_sharedir}/akonadi/plugins
-%dir %{_kf5_sharedir}/akonadi/plugins/serializer
-%{_kf5_plugindir}/akonadi_serializer_mail.so
-%{_kf5_sharedir}/akonadi/plugins/serializer/akonadi_serializer_mail.desktop
+%{_kf6_configkcfgdir}/specialmailcollections.kcfg
+%{_kf6_plugindir}/akonadi_serializer_mail.so
+%dir %{_kf6_sharedir}/akonadi
+%dir %{_kf6_sharedir}/akonadi/plugins
+%dir %{_kf6_sharedir}/akonadi/plugins/serializer
+%{_kf6_sharedir}/akonadi/plugins/serializer/akonadi_serializer_mail.desktop
+%{_kf6_sharedir}/mime/packages/x-vnd.kde.contactgroup.xml
 
 %files devel
-%dir %{_includedir}/KPim5
-%{_kf5_cmakedir}/KF5AkonadiMime/
-%{_kf5_cmakedir}/KPim5AkonadiMime/
-%{_includedir}/KPim5/AkonadiMime/
-%{_kf5_libdir}/libKPim5AkonadiMime.so
+%doc %{_kf6_qchdir}/KPim6AkonadiMime.*
+%{_includedir}/KPim6/AkonadiMime/
+%{_kf6_cmakedir}/KPim6AkonadiMime/
+%{_kf6_libdir}/libKPim6AkonadiMime.so
 
-%files -n %{libname}-lang -f %{libname}.lang
+%files -n libKPim6AkonadiMime6-lang -f libKPim6AkonadiMime6.lang
 
 %changelog
