@@ -1,0 +1,9 @@
+<package name="wacomtablet-kcm6" project="openSUSE:Factory">
+  <title>Wacom drivers KCM</title>
+  <description>This module implements a GUI for the Wacom Linux Drivers and extends it
+with profile support to handle different button / pen layouts per profile.
+
+</description>
+  <devel project="KDE:Frameworks" package="wacomtablet-kcm6"/>
+  <url>https://invent.kde.org/plasma/wacomtablet</url>
+</package>
