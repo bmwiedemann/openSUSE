@@ -556,4 +556,12 @@
     <comment>Switch to GCC 13 for Leap builds for packages that can't be built with the default compiler (forwarded request 1143049 from krop)</comment>
     <requestid>1143119</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>655ab46a72a4effddb5d5ee3a7eb29b6</srcmd5>
+    <version>24.02.0</version>
+    <time>1710167422</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 24.02.0</comment>
+    <requestid>1150916</requestid>
+  </revision>
 </revisionlist>

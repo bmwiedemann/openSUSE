@@ -1,7 +1,7 @@
 #
 # spec file for package kdevelop5
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,29 +17,29 @@
 
 
 %define rname   kdevelop
-%define libkdev_major 512
+%define libkdev_major 513
 %bcond_without released
 Name:           kdevelop5
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Plugin-extensible IDE for C/C++ and other programming languages
 License:        GPL-2.0-or-later
 URL:            https://www.kdevelop.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{riscv}
-BuildRequires:  kdevelop5-pg-qt
-BuildRequires:  kf5-filesystem
-BuildRequires:  libboost_headers-devel
 BuildRequires:  clang-devel
+BuildRequires:  extra-cmake-modules
 %if 0%{?suse_version} == 1500
 BuildRequires:  gcc13-c++
 BuildRequires:  gcc13-PIE
 %endif
-BuildRequires:  extra-cmake-modules
+BuildRequires:  kdevelop5-pg-qt
+BuildRequires:  libboost_headers-devel
+BuildRequires:  libkomparediff2-kf5-devel
 BuildRequires:  okteta-devel
 BuildRequires:  shared-mime-info
 BuildRequires:  subversion-devel
@@ -70,7 +70,6 @@ BuildRequires:  cmake(KF5TextEditor)
 BuildRequires:  cmake(KF5ThreadWeaver)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(LibKompareDiff2)
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
@@ -178,6 +177,7 @@ Provides translations for the "kdevplatform" package.
 %endif
 
 %cmake_kf5 -d build
+
 %make_jobs
 
 %install
