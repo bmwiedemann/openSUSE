@@ -1,0 +1,9 @@
+<package name="kf6-kcontacts" project="openSUSE:Factory">
+  <title>KDE Frameworks based address book API</title>
+  <description>kcontacts is a Qt library which provides an API
+to access address book data stored in different formats.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kcontacts"/>
+  <url>https://www.kde.org</url>
+</package>
