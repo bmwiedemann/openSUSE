@@ -1,0 +1,8 @@
+<package name="kf6-kcrash" project="openSUSE:Factory">
+  <title>An application crash handler</title>
+  <description>KCrash provides support for intercepting and handling application crashes.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kcrash"/>
+  <url>https://www.kde.org</url>
+</package>
