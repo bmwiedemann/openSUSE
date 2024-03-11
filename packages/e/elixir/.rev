@@ -223,4 +223,12 @@
     <comment>Fix elixir.changes file mentioning dropped and added patches (forwarded request 1154159 from alessio.biancalana)</comment>
     <requestid>1154162</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>cd89a8b931f8ac75cb15254426fc5662</srcmd5>
+    <version>1.16.2</version>
+    <time>1710167681</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1156865</requestid>
+  </revision>
 </revisionlist>

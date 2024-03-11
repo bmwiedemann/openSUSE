@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 10 11:32:11 UTC 2024 - Alessio Biancalana <alessio.biancalana@suse.com>
+
+- Upgrade to Elixir 1.16.2:
+  * Changelog available at https://hexdocs.pm/elixir/1.16.2/changelog.html
+
+-------------------------------------------------------------------
 Sat Feb 24 11:56:38 UTC 2024 - Alessio Biancalana <alessio.biancalana@suse.com>
 
 - Upgrade to Elixir 1.16.1
