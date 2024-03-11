@@ -1,7 +1,7 @@
 #
 # spec file for package ffmpegthumbs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,27 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           ffmpegthumbs
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        FFmpeg-based thumbnail creator for video files
 License:        LGPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
@@ -47,19 +51,21 @@ FFmpeg-based thumbnail creator for video files.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+
+%kf6_build
 
 %install
-  %kf5_makeinstall -C build
+%kf6_install
 
 %ldconfig_scriptlets
 
 %files
 %license LICENSES/*
-%{_kf5_appstreamdir}/org.kde.ffmpegthumbs.metainfo.xml
-%{_kf5_configkcfgdir}/ffmpegthumbnailersettings5.kcfg
-%{_kf5_debugdir}/ffmpegthumbs.categories
-%{_kf5_plugindir}/
+%{_kf6_appstreamdir}/org.kde.ffmpegthumbs.metainfo.xml
+%{_kf6_configkcfgdir}/ffmpegthumbnailersettings5.kcfg
+%{_kf6_debugdir}/ffmpegthumbs.categories
+%dir %{_kf6_plugindir}/kf6/thumbcreator
+%{_kf6_plugindir}/kf6/thumbcreator/ffmpegthumbs.so
 
 %changelog
