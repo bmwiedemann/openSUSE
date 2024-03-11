@@ -1,0 +1,8 @@
+<package name="baloo-widgets" project="openSUSE:Factory">
+  <title>Framework for searching and managing metadata</title>
+  <description>Baloo is a framework for searching and managing metada
+
+</description>
+  <devel project="KDE:Applications" package="baloo-widgets"/>
+  <url>https://www.kde.org</url>
+</package>
