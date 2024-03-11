@@ -492,4 +492,22 @@
   * [feat] - Make the client configurable (#2528) (forwarded request 1155851 from ph03nix)</comment>
     <requestid>1155887</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>858817ba9ed783c3a09b639379b01be5</srcmd5>
+    <version>3.69.0</version>
+    <time>1710167542</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.69.0:
+  * fix(deps): update module github.com/go-sql-driver/mysql to v1.8.0 (#2561)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.50.35 (#2560)
+  * fix(deps): update module github.com/google/go-github/v57 to v60 (#2551)
+  * use custom grow method (#2555)
+  * fix(deps): update module github.com/golang-jwt/jwt/v4 to v5 (#2550)
+  * fix(deps): update module google.golang.org/protobuf to v1.33.0 (#2548)
+  * fix(deps): update testcontainers-go monorepo to v0.29.1 (#2549)
+  * Canary verification (#2531)
+  * fix(deps): update module google.golang.org/api to v0.169.0 (#2547)
+  * fix(deps): update module golang.org/x/oauth2 to v0.18.0 (#2546) (forwarded request 1156696 from ph03nix)</comment>
+    <requestid>1156771</requestid>
+  </revision>
 </revisionlist>
