@@ -16,10 +16,10 @@
 #
 
 
-%define rname kio-extras
+%define rname kio-extras-kf5
 %bcond_without released
 Name:           kio-extras5
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Additional KIO slaves for KDE applications
 License:        GPL-2.0-or-later
@@ -83,6 +83,8 @@ Provides:       kfileaudiopreview = 4.100.0
 Obsoletes:      kfileaudiopreview < 4.100.0
 Provides:       kde-odf-thumbnail = %{version}
 Obsoletes:      kde-odf-thumbnail < %{version}
+# Some common files moved to the KF6 version
+Requires:       kio-extras >= %{version}
 
 %description
 Additional KIO-slaves for KDE applications.
@@ -127,7 +129,6 @@ This is the development package for libkioarchive
 %files
 %license LICENSES/*
 %doc %lang(en) %{_datadir}/doc/HTML/en/kioslave5
-%{_kf5_configkcfgdir}/
 %{_kf5_debugdir}/kio-extras.categories
 %{_kf5_debugdir}/kio-extras.renamecategories
 %{_kf5_libexecdir}/smbnotifier
@@ -143,7 +144,6 @@ This is the development package for libkioarchive
 %{_kf5_plugindir}/kf5/kio/activities.so
 %{_kf5_plugindir}/kf5/kio/afc.so
 %{_kf5_plugindir}/kf5/kio/archive.so
-%{_kf5_plugindir}/kf5/kio/bookmarks.so
 %{_kf5_plugindir}/kf5/kio/filter.so
 %{_kf5_plugindir}/kf5/kio/fish.so
 %{_kf5_plugindir}/kf5/kio/info.so
@@ -176,14 +176,6 @@ This is the development package for libkioarchive
 %{_kf5_plugindir}/kfileaudiopreview.so
 %{_kf5_servicesdir}/
 %{_kf5_servicetypesdir}/
-%{_kf5_sharedir}/kio_bookmarks/
-%{_kf5_sharedir}/kio_docfilter/
-%{_kf5_sharedir}/kio_info/
-%{_kf5_sharedir}/konqueror/
-%{_kf5_sharedir}/remoteview/
-%{_kf5_sharedir}/solid/
-%{_kf5_sharedir}/dbus-1/services/org.kde.kmtpd5.service
-%{_kf5_sharedir}/mime/packages/org.kde.kio.smb.xml
 
 %files -n libkioarchive-devel
 %{_includedir}/KioArchive/

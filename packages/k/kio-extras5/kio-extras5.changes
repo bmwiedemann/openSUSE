@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Mar  5 13:37:03 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 24.02.0:
+  * New feature release
+  * For more details please see
+    https://kde.org/de/announcements/megarelease/6/
+- Changes since v23.08.4:
+  * Add BUILD_ACTIVITIES option (default=ON)
+  * Disable more conflicting files
+  * Add build option to disable files that conflict with KF6-based kio-extras
+  * Fix kexiv CI dep
+  * Drop Qt6 entries from .kde-ci.yml
+  * Hardcode Qt major version
+  * Adapt to renamed activities library repo
+  * Make KActivities dependencies required
+  * Add kactivities-stats to CI deps
+  * Reflect move of KActivities out of Frameworks to Plasma
+  * Fix build with MinGW (kde#430312)
+  * Fix smbnotifier install dir
+  * kio_man: add zstandard and brotli compressions
+  * recentlyused:/ expose Application that used files
+  * thumbnail: save all thumbnails in SRGB color space
+  * thumbnail: Fix heap-use-after-free in AudioCreator::create
+  * Add clang-format commit to ignore list
+  * Add and make use of ECM clang-format integration
+  * thumbnail Jpegcreator: skip exif thumbnail when too small (kde#466658)
+  * Follow precedence that tests are built conditionally
+  * Thumbnailer: convert scaled images to sRGB
+  * Fix crash with corrupted EXR images
+  * Mark .3mf as supported by opendocument thumbnailer
+  * [Thumbnail] Fix lookup of legacy thumbnailer plugins
+  * Remove bookmarks worker
+  * Port kio_fish to WorkerBase (kde#463614)
+  * Remove no longer used about: KIO worker
+  * Port kio_info to WorkerBase
+  * Port kio_bookmarks to WorkerBase
+
+-------------------------------------------------------------------
 Wed Jan 31 14:35:17 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Switch to the latest GCC version available in Leap for packages
