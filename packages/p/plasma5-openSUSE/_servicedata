@@ -1,6 +1,0 @@
-<servicedata>
-<service name="tar_scm">
-                <param name="url">git://github.com/openSUSE/plasma-opensuse.git</param>
-              <param name="changesrevision">fffd234bf221fea4c4ad92dad18853c3b6207980</param></service><service name="tar_scm">
-                <param name="url">https://github.com/openSUSE/plasma-opensuse.git</param>
-              <param name="changesrevision">757fefa79499181ffd6036541587c4372fe89a18</param></service></servicedata>
