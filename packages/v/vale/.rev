@@ -611,4 +611,15 @@
   * fix: ensure `getNativeConfig` is consistent (forwarded request 1155347 from jfkw)</comment>
     <requestid>1155348</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>b5e52aec2d99582cbdc06812aab4d9d1</srcmd5>
+    <version>3.3.0</version>
+    <time>1710167668</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.3.0:
+  * fix: ensure `StylesPath` is created with `sync`
+  * feat: support showing expected case in `message`
+  * chore: update twine to v0.10.1 (forwarded request 1156818 from jfkw)</comment>
+    <requestid>1156819</requestid>
+  </revision>
 </revisionlist>

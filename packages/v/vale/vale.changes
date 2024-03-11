@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 11 03:56:40 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.3.0:
+  * fix: ensure `StylesPath` is created with `sync`
+  * feat: support showing expected case in `message`
+  * chore: update twine to v0.10.1
+
+-------------------------------------------------------------------
 Tue Mar 05 20:01:08 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.2.2:
