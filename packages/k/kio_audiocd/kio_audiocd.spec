@@ -1,7 +1,7 @@
 #
 # spec file for package kio_audiocd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,32 +17,36 @@
 
 
 %define rname audiocd-kio
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           kio_audiocd
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        KDE I/O Slave for Audio CDs
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  alsa-devel
 BuildRequires:  cdparanoia-devel
-BuildRequires:  extra-cmake-modules
-BuildRequires:  flac-devel
-BuildRequires:  libvorbis-devel
-BuildRequires:  cmake(KF5Cddb)
-BuildRequires:  cmake(KF5CompactDisc)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Cddb)
-BuildRequires:  cmake(Phonon4Qt5)
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  pkgconfig
+BuildRequires:  cmake(KCddb6)
+BuildRequires:  cmake(KCompactDisc6)
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  pkgconfig(flac)
+BuildRequires:  pkgconfig(vorbis)
 
 %description
 This package contains an KIO slave to access audio CDs.
@@ -50,7 +54,7 @@ This package contains an KIO slave to access audio CDs.
 %package devel
 Summary:        Development package for kio_audiocd
 License:        LGPL-2.1-or-later
-Requires:       %{name} = %{version}
+Requires:       kio_audiocd = %{version}
 
 %description devel
 This package contains the development files for the audiocd kio slave
@@ -61,45 +65,44 @@ This package contains the development files for the audiocd kio slave
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
+%find_lang %{name} --with-html --all-name
 
 %ldconfig_scriptlets
 
 %files
 %license COPYING*
-%doc %lang(en) %{_kf5_htmldir}/en/kioslave5/audiocd/
-%doc %lang(en) %{_kf5_htmldir}/en/kcontrol/audiocd/
-%dir %{_kf5_plugindir}/plasma/
-%dir %{_kf5_plugindir}/plasma/kcms/
-%dir %{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/
-%dir %{_kf5_sharedir}/konqsidebartng
-%dir %{_kf5_sharedir}/konqsidebartng/virtual_folders
-%dir %{_kf5_sharedir}/konqsidebartng/virtual_folders/services
-%dir %{_kf5_sharedir}/solid
-%dir %{_kf5_sharedir}/solid/actions
-%{_kf5_applicationsdir}/kcm_audiocd.desktop
-%{_kf5_appstreamdir}/org.kde.kio_audiocd.metainfo.xml
-%{_kf5_configkcfgdir}/audiocd_*_encoder.kcfg
-%{_kf5_debugdir}/kio_audiocd.categories
-%{_kf5_debugdir}/kio_audiocd.renamecategories
-%{_kf5_libdir}/libaudiocdplugins.so.*
-%{_kf5_plugindir}/kf5/kio/audiocd.so
-%{_kf5_plugindir}/libaudiocd_encoder_*.so
-%{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_audiocd.so
-%{_kf5_sharedir}/konqsidebartng/virtual_folders/services/audiocd.desktop
-%{_kf5_sharedir}/solid/actions/solid_audiocd.desktop
+%doc %lang(en) %{_kf6_htmldir}/en/kcontrol/
+%doc %lang(en) %{_kf6_htmldir}/en/kioslave5/
+%{_kf6_applicationsdir}/kcm_audiocd.desktop
+%{_kf6_appstreamdir}/org.kde.kio_audiocd.metainfo.xml
+%{_kf6_configkcfgdir}/audiocd_*_encoder.kcfg
+%{_kf6_debugdir}/kio_audiocd.categories
+%{_kf6_debugdir}/kio_audiocd.renamecategories
+%{_kf6_libdir}/libaudiocdplugins.so.*
+%{_kf6_plugindir}/kf6/kio/audiocd.so
+%{_kf6_plugindir}/libaudiocd_encoder_*.so
+%{_kf6_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_audiocd.so
+%dir %{_kf6_sharedir}/konqsidebartng
+%dir %{_kf6_sharedir}/konqsidebartng/virtual_folders
+%dir %{_kf6_sharedir}/konqsidebartng/virtual_folders/services
+%{_kf6_sharedir}/konqsidebartng/virtual_folders/services/audiocd.desktop
+%dir %{_kf6_sharedir}/solid
+%dir %{_kf6_sharedir}/solid/actions
+%{_kf6_sharedir}/solid/actions/solid_audiocd.desktop
 
 %files devel
 %{_includedir}/audiocdplugins/
-%{_kf5_libdir}/libaudiocdplugins.so
+%{_kf6_libdir}/libaudiocdplugins.so
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/kcontrol/
+%exclude %{_kf6_htmldir}/en/kioslave5/
 
 %changelog
