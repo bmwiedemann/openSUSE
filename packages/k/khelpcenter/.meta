@@ -1,0 +1,8 @@
+<package name="khelpcenter" project="openSUSE:Factory">
+  <title>KDE Documentation Application</title>
+  <description>Application to show KDE Applications' documentation.
+
+</description>
+  <devel project="KDE:Applications" package="khelpcenter"/>
+  <url>https://apps.kde.org/khelpcenter</url>
+</package>
