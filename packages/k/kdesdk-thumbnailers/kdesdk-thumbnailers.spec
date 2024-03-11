@@ -1,7 +1,7 @@
 #
 # spec file for package kdesdk-thumbnailers
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,31 @@
 #
 
 
+%define kf6_version 5.240.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           kdesdk-thumbnailers
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Translation file thumbnail generators
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+# libgettextpo.so is needed
+BuildRequires:  gettext-tools
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 
 %description
-This package allows KDE applications to show thumbnails
-and previews of po files.
+This package allows KDE applications to show thumbnails and previews of po files.
 
 %lang_package
 
@@ -45,22 +48,22 @@ and previews of po files.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
+%find_lang %{name} --all-name
 
 %ldconfig_scriptlets
 
 %files
 %license LICENSES/*
-%dir %{_kf5_plugindir}/kf5
-%dir %{_kf5_plugindir}/kf5/thumbcreator
-%{_kf5_configkcfgdir}/pocreatorsettings.kcfg
-%{_kf5_plugindir}/kf5/thumbcreator/pothumbnail.so
+%{_kf6_configkcfgdir}/pocreatorsettings.kcfg
+%dir %{_kf6_plugindir}/kf6/thumbcreator
+%{_kf6_plugindir}/kf6/thumbcreator/pothumbnail.so
 
 %files lang -f %{name}.lang
 
