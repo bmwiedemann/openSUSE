@@ -23,7 +23,7 @@
   boo#1219188: '20240128'
   boo#1219242: '20240205'
   boo#1219284: '20240222'
-  boo#1219384: '20240309'
+  boo#1219384: '20240310'
   boo#1219401: '20240216'
   boo#1219481: '20240309'
   boo#1219529: '20240204'
@@ -35,7 +35,7 @@
   boo#1219602: '20240205'
   boo#1219904: '20240213'
   boo#1220000: '20240301'
-  boo#1221110: '20240309'
+  boo#1221110: '20240310'
   boo#1221206: '20240309'
   gh#os-autoinst/os-autoinst-distri-opensuse#18471: '20240116'
   gh#os-autoinst/os-autoinst-distri-opensuse#18688: '20240218'
@@ -524,10 +524,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20240310'
 published: '20240309'
 publishing: '20240309'
-testing: '20240309'
+testing: '20240310'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
