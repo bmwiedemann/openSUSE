@@ -1,0 +1,8 @@
+<package name="bluedevil6" project="openSUSE:Factory">
+  <title>Bluetooth Manager for KDE Plasma</title>
+  <description>Bluetooth daemon for KDE Plasma, handling connections.
+
+</description>
+  <devel project="KDE:Frameworks" package="bluedevil6"/>
+  <url>https://www.kde.org/</url>
+</package>
