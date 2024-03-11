@@ -1,0 +1,9 @@
+<package name="kf6-prison" project="openSUSE:Factory">
+  <title>Barcode abstraction layer library</title>
+  <description>Prison is a barcode abstraction layer library providing
+uniform access to generation of barcodes with data.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-prison"/>
+  <url>https://www.kde.org</url>
+</package>
