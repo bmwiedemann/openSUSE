@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar 11 11:51:38 UTC 2024 - msuchanek@suse.com
+
+- Update to version 0.8.0.49.git+f9cb13b:
+  * apple macpro 2008 3,1 dimm1-4 labels riser A&B
+  * labels/supermicro: add Supermicro X11DPi-N(T)
+  * rasdaemon: ras-mc-ctl: Add support to display the JaguarMicro vendor errors
+  * Supermicro X12DPU-6 DIMM labels
+  * Fix potential overflow with some arrays at page-isolation logic
+  * rasdaemon: Fix return value type compiling warnning of configure Optional Features with --enable-amp-ns-decode and without --enable-sqlite3.
+  * rasdaemon: Add support for creating vendor tables at startup.
+  * Add dynamic switch of ras events support.
+  * rasdaemon: Add support for vendor-specific machine check error information
+
+-------------------------------------------------------------------
+Mon Mar 11 11:50:00 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- Only require dmidecode on x86, other platforms may not have smbios or even the tool (bsc#1219917)
+
+-------------------------------------------------------------------
 Wed Dec 06 10:18:18 UTC 2023 - aschnell@suse.com
 
 - Update to version 0.8.0.39.git+cfabd93 (jsc#PED-7381):
