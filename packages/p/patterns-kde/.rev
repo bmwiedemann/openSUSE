@@ -330,4 +330,14 @@ This also handles TW properly. (forwarded request 653860 from lslezak)</comment>
   due to deprecation of the gstreamer backend</comment>
     <requestid>1142232</requestid>
   </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>20399f0f2ae7fa236e3954f06e1aeabb</srcmd5>
+    <version>20231206</version>
+    <time>1710167272</time>
+    <user>anag+factory</user>
+    <comment>- Replace the plasma5 pattern with the plasma6 one
+
+- Recommend xwaylandvideobridge in the Plasma patterns (forwarded request 1155001 from Vogtinator)</comment>
+    <requestid>1155118</requestid>
+  </revision>
 </revisionlist>

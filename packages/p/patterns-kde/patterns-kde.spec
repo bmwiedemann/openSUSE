@@ -16,8 +16,6 @@
 #
 
 
-%bcond_with betatest
-
 Name:           patterns-kde
 Version:        20231206
 Release:        0
@@ -34,6 +32,7 @@ of the installation source setup.  Installation of this package does
 not make sense.
 
 This particular package contains the KDE patterns.
+
 
 
 ################################################################################
@@ -332,7 +331,7 @@ Tools and libraries for software development using Qt 6.
 
 %package kde
 %pattern_graphicalenvironments
-Summary:        KDE Applications and Plasma 5 Desktop
+Summary:        KDE Applications and Plasma Desktop
 Group:          Metapackages
 Provides:       patterns-openSUSE-kde = %{version}
 Provides:       patterns-openSUSE-kde4 = %{version}
@@ -386,82 +385,65 @@ Packages providing the Plasma desktop environment and applications from KDE.
 
 %package kde_plasma
 %pattern_graphicalenvironments
-Summary:        KDE Plasma 5 Desktop Base
+Summary:        KDE Plasma 6 Desktop Base
 Group:          Metapackages
-Provides:       patterns-openSUSE-kde4_basis = %{version}
-Provides:       patterns-openSUSE-kde_plasma = %{version}
 Provides:       pattern() = kde_plasma
 Provides:       pattern-icon() = pattern%2Dkde
 Provides:       pattern-order() = 1100
 Provides:       pattern-visible()
-Obsoletes:      patterns-openSUSE-kde4_admin < %{version}
-Obsoletes:      patterns-openSUSE-kde4_basis < %{version}
-Obsoletes:      patterns-openSUSE-kde4_laptop < %{version}
-Obsoletes:      patterns-openSUSE-kde4_pure < %{version}
-Obsoletes:      patterns-openSUSE-kde_plasma < %{version}
-Obsoletes:      patterns-openSUSE-plasma5_basis < %{version}
-Provides:       patterns-openSUSE-plasma5_basis = %{version}
-# Obsolete the kdebase4-workspace-devel package specifically to prevent upgrade issues
-Obsoletes:      kdebase4-workspace-devel
-Requires:       pattern() = x11
-# Obsolete the KDE bindings which have not been ported yet
-Obsoletes:      mono-kde4
-Obsoletes:      perl-kde4
-Obsoletes:      python3-kde4
-Obsoletes:      ruby-kde4
+Requires:       pattern() = base
+
+# Old name, only seen in devel repos.
+Provides:       %{name}-kde_plasma6 = %{version}
+Obsoletes:      %{name}-kde_plasma6 < %{version}
 
 # Minimum to get a usable desktop
-Requires:       breeze5-cursors
-Requires:       breeze5-decoration
-Requires:       breeze5-icons
-Requires:       breeze5-style
-Requires:       plasma5-session
-Requires:       qqc2-desktop-style
-# bnc#508120
-Requires:       xdg-user-dirs
+Requires:       plasma6-session
+Requires:       kf6-qqc2-desktop-style
 # bnc#430161
 Requires:       desktop-data
 Requires:       polkit-default-privs
 
+Requires:       (plasma6-nm if NetworkManager)
+Requires:       (plasma6-pa if (pulseaudio or pipewire-alsa))
+
+# X11 session
+Recommends:     plasma6-session-x11
+Requires:       (pattern() = x11 if plasma6-session-x11)
+
 # We have a theme for this, so prefer it
-Recommends:     sddm
+Recommends:     sddm-qt6
 
 # To open folders on the desktop
 Recommends:     dolphin
 
 # Additional packages for the desktop
-Recommends:     bluedevil5
-Recommends:     breeze5-wallpapers
-Recommends:     kgamma5
-Recommends:     plasma-nm5
-Recommends:     plasma5-addons
-Recommends:     plasma5-disks
-Recommends:     plasma5-pa
-Recommends:     plasma5-pk-updates
-Recommends:     plasma5-systemmonitor
-Recommends:     plasma5-thunderbolt
+Recommends:     bluedevil6
+Recommends:     breeze6-wallpapers
+Recommends:     kdeplasma6-addons
+Recommends:     kgamma6
+Recommends:     plasma6-disks
+# Need to check which one to use
+Recommends:     (discover-notifier if discover)
+#Recommends:     plasma6-pk-updates
+Recommends:     plasma6-systemmonitor
+Recommends:     plasma6-thunderbolt
 # boo#1177628
 # Recommends:     kdeconnect-kde
-Recommends:     kde-print-manager
-Recommends:     kwrited5
-# Wayland is optional
-Recommends:     plasma5-session-wayland
-
-# Make sure that at least a phonon backend is being installed
-Requires:       phonon4qt5-backend
-Suggests:       phonon4qt5-backend-vlc
-
+Recommends:     plasma6-print-manager
+Recommends:     kwrited6
 # bnc#541820
-Recommends:     khelpcenter5
-Recommends:     baloo5-file
-Recommends:     baloo5-kioslaves
-Recommends:     baloo5-tools
+Recommends:     khelpcenter
 Recommends:     kdenetwork-filesharing
-Recommends:     kio-extras5
-Recommends:     kwalletmanager5
+Recommends:     kf6-baloo-file
+Recommends:     kf6-baloo-kioslaves
+Recommends:     kf6-baloo-tools
+Recommends:     kio-extras6
+Recommends:     kwalletmanager
 Recommends:     pinentry-qt5
 # boo#1208684
-Recommends:     pam_kwallet
+Recommends:     pam_kwallet6
+Recommends:     xwaylandvideobridge
 
 %if 0%{?suse_version} > 1500
 # pipewire
@@ -482,7 +464,7 @@ Recommends:     ffmpegthumbs
 Recommends:     kdegraphics-thumbnailers
 
 %description kde_plasma
-Base packages for the KDE Plasma 5 desktop environment.
+Base packages for the KDE Plasma 6 desktop environment.
 
 %files kde_plasma
 %dir %{_defaultdocdir}/patterns
@@ -648,7 +630,6 @@ Provides:       pattern-order() = 2540
 Obsoletes:      patterns-openSUSE-kde4_imaging < %{version}
 Obsoletes:      patterns-openSUSE-kde_imaging < %{version}
 Supplements:    (patterns-kde-kde and patterns-desktop-imaging)
-Requires:       pattern() = kde_plasma
 Recommends:     digikam
 Recommends:     gwenview5
 Recommends:     kcolorchooser
@@ -873,7 +854,7 @@ Graphical YaST user interfaces for the KDE desktop.
 mkdir -p %{buildroot}/%{_defaultdocdir}/patterns/
 for i in devel_kde_frameworks devel_qt5 devel_qt6 kde kde_plasma kde_pim \
     kde_edutainment kde_games kde_ide kde_imaging kde_internet kde_multimedia \
-    kde_office kde_utilities kde_utilities_opt kde_yast; do
+    kde_office kde_utilities kde_utilities_opt kde_yast kde_plasma; do
     echo "This file marks the pattern $i to be installed." \
         >"%{buildroot}/%{_defaultdocdir}/patterns/$i.txt"
 done

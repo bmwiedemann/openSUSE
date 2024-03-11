@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar  4 17:21:39 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Replace the plasma5 pattern with the plasma6 one
+
+-------------------------------------------------------------------
+Wed Feb 21 18:34:47 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Recommend xwaylandvideobridge in the Plasma patterns
+
+-------------------------------------------------------------------
 Mon Jan 29 11:11:20 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Make phonon4qt5-backend a hard dep of the plasma pattern
@@ -12,10 +22,23 @@ Wed Jan 24 01:42:45 UTC 2024 - pallas wept <pallaswept@proton.me>
   due to deprecation of the gstreamer backend
 
 -------------------------------------------------------------------
+Sat Dec 30 18:40:00 UTC 2023 - Neal Gompa <ngompa@opensuse.org>
+
+- Add recommends on plasma6-session-x11 for plasma6 pattern
+  and make the x11 pattern conditionally required based on its
+  existence
+- Add dependency on base pattern to plasma6 pattern
+
+-------------------------------------------------------------------
 Wed Dec  6 16:07:32 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add qt6-graph and qt6-webchannelquick development packages to
   the devel_qt6 pattern
+
+-------------------------------------------------------------------
+Mon Nov 13 19:10:14 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add plasma6 pattern
 
 -------------------------------------------------------------------
 Tue Aug  1 10:35:37 UTC 2023 - Christophe Marin <christophe@krop.fr>
