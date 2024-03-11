@@ -1,0 +1,9 @@
+<package name="kf6-kbookmarks" project="openSUSE:Factory">
+  <title>Framework for manipulating bookmarks in XBEL format</title>
+  <description>This is a framework for accessing and manipulating bookmarks using
+the XBEL format.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kbookmarks"/>
+  <url>https://www.kde.org</url>
+</package>
