@@ -1,7 +1,7 @@
 #
 # spec file for package minuet
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,35 +16,36 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           minuet
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        A KDE Software for Music Education
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/minuet
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5QuickControls2)
-BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  pkgconfig(fluidsynth)
 # Runtime requirement
-Requires:       libqt5-qtquickcontrols2
+Requires:       qt6-declarative-imports >= %{qt6_version}
 
 %description
 Application for Music Education.
@@ -70,35 +71,34 @@ Development headers and libraries for Minuet.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
-
-%suse_update_desktop_file org.kde.minuet Music
+%find_lang %{name} --with-html --all-name
 
 %ldconfig_scriptlets
 
 %files
 %doc README*
 %license COPYING*
-%doc %lang(en) %{_kf5_htmldir}/en/minuet/
-%{_kf5_applicationsdir}/org.kde.minuet.desktop
-%{_kf5_appstreamdir}/org.kde.minuet.appdata.xml
-%{_kf5_bindir}/minuet
-%{_kf5_iconsdir}/hicolor
-%{_kf5_libdir}/libminuetinterfaces.so.*
-%{_kf5_plugindir}/minuet/
-%{_kf5_sharedir}/minuet/
+%doc %lang(en) %{_kf6_htmldir}/en/minuet/
+%{_kf6_applicationsdir}/org.kde.minuet.desktop
+%{_kf6_appstreamdir}/org.kde.minuet.metainfo.xml
+%{_kf6_bindir}/minuet
+%{_kf6_iconsdir}/hicolor/*/*/*
+%{_kf6_libdir}/libminuetinterfaces.so.*
+%{_kf6_plugindir}/minuet/
+%{_kf6_sharedir}/minuet/
 
 %files devel
 %{_includedir}/minuet/
-%{_kf5_libdir}/libminuetinterfaces.so
+%{_kf6_libdir}/libminuetinterfaces.so
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/minuet/
 
 %changelog
