@@ -1,0 +1,211 @@
+From 1a5f040113e1d27f9298bfdcdf55e8f2012acb5a Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sun, 10 Mar 2024 19:51:29 +0100
+Subject: [PATCH] Revert "krunner: Remove kconf_update code"
+
+This reverts commit 713f14f3fa6515e73796d86d7b442f39f288b5e9.
+We need the migration for upgrades from < 15.4, which openQA tests
+still.
+
+Changes after revert: Set Version=6 and use QGuiApplication for QAction.
+---
+ krunner/CMakeLists.txt                     |  1 +
+ krunner/update/CMakeLists.txt              | 13 ++++
+ krunner/update/krunnerglobalshortcuts.cpp  | 76 ++++++++++++++++++++++
+ krunner/update/krunnerglobalshortcuts2.upd |  3 +
+ krunner/update/krunnerhistory.cpp          | 50 ++++++++++++++
+ krunner/update/krunnerhistory.upd          |  3 +
+ 6 files changed, 146 insertions(+)
+ create mode 100644 krunner/update/CMakeLists.txt
+ create mode 100644 krunner/update/krunnerglobalshortcuts.cpp
+ create mode 100644 krunner/update/krunnerglobalshortcuts2.upd
+ create mode 100644 krunner/update/krunnerhistory.cpp
+ create mode 100644 krunner/update/krunnerhistory.upd
+
+diff --git a/krunner/CMakeLists.txt b/krunner/CMakeLists.txt
+index c17bac6479..c7fead06d6 100644
+--- a/krunner/CMakeLists.txt
++++ b/krunner/CMakeLists.txt
+@@ -52,3 +52,4 @@ ecm_install_configured_files(
+ )
+ 
+ install(FILES completions/krunner.zsh RENAME _krunner DESTINATION ${KDE_INSTALL_ZSHAUTOCOMPLETEDIR})
++add_subdirectory(update)
+diff --git a/krunner/update/CMakeLists.txt b/krunner/update/CMakeLists.txt
+new file mode 100644
+index 0000000000..0fbac69b3d
+--- /dev/null
++++ b/krunner/update/CMakeLists.txt
+@@ -0,0 +1,13 @@
++set(krunnerglobalshortcuts_SRCS
++   krunnerglobalshortcuts.cpp
++)
++
++add_executable(krunnerglobalshortcuts ${krunnerglobalshortcuts_SRCS})
++
++target_link_libraries(krunnerglobalshortcuts KF6::CoreAddons KF6::Service KF6::Runner KF6::ConfigCore KF6::GlobalAccel KF6::XmlGui)
++
++add_executable(krunnerhistory krunnerhistory.cpp)
++target_link_libraries(krunnerhistory KF6::Runner KF6::ConfigCore Plasma::Activities)
++
++install(TARGETS krunnerglobalshortcuts krunnerhistory DESTINATION ${KDE_INSTALL_LIBDIR}/kconf_update_bin/)
++install(FILES krunnerglobalshortcuts2.upd krunnerhistory.upd DESTINATION ${KDE_INSTALL_KCONFUPDATEDIR})
+diff --git a/krunner/update/krunnerglobalshortcuts.cpp b/krunner/update/krunnerglobalshortcuts.cpp
+new file mode 100644
+index 0000000000..513d2ac74d
+--- /dev/null
++++ b/krunner/update/krunnerglobalshortcuts.cpp
+@@ -0,0 +1,76 @@
++/*
++    SPDX-FileCopyrightText: 2019 Kai Uwe Broulik <kde@broulik.de>
++    SPDX-FileCopyrightText: 2020 David Redondo <kde@david-redondo.de>
++
++    SPDX-License-Identifier: GPL-2.0-or-later
++*/
++
++#include <QGuiApplication>
++#include <QDebug>
++#include <QStandardPaths>
++
++#include <KActionCollection>
++#include <KConfig>
++#include <KConfigGroup>
++#include <KDesktopFile>
++#include <KGlobalAccel>
++#include <KSharedConfig>
++
++int main(int argc, char **argv)
++{
++    QGuiApplication app(argc, argv);
++
++    const QString oldComponentName = QStringLiteral("krunner");
++    const QString oldDesktopFile = QStringLiteral("krunner.desktop");
++    const QString newDesktopFile = QStringLiteral("org.kde.krunner.desktop");
++
++    // Since we need to fake those actions, read the translated names from the desktop file
++    KDesktopFile df(QStandardPaths::GenericDataLocation, QStringLiteral("kglobalaccel/") + newDesktopFile);
++    QString displayName = QStringLiteral("KRunner");
++    if (!df.readName().isEmpty()) {
++        displayName = df.readName();
++    }
++    const QString clipboardActionName = df.actionGroup(QStringLiteral("RunClipboard"))
++                                            .readEntry(QStringLiteral("Name"), //
++                                                       QStringLiteral("Run command on clipboard contents"));
++
++    KActionCollection shortCutActions(nullptr, newDesktopFile);
++    shortCutActions.setComponentDisplayName(displayName);
++    // The actions are intentionally allocated and never cleaned up, because otherwise KGlobalAccel
++    // will mark them as inactive
++    auto runCommandAction = new QAction(displayName);
++    shortCutActions.addAction(QStringLiteral("_launch"), runCommandAction);
++    auto runClipboardAction = new QAction(clipboardActionName);
++    shortCutActions.addAction(QStringLiteral("RunClipboard"), runClipboardAction);
++
++    QList<QKeySequence> oldRunCommand;
++    QList<QKeySequence> oldRunClipboard;
++
++    // It can happen that the old component is not active so we do it unconditionally
++    KActionCollection oldActions(nullptr, oldComponentName);
++    QAction oldRunCommandAction, oldRunClipboardAction;
++    oldActions.addAction(QStringLiteral("run command"), &oldRunCommandAction);
++    oldActions.addAction(QStringLiteral("run command on clipboard contents"), &oldRunClipboardAction);
++    oldRunCommand = KGlobalAccel::self()->globalShortcut(oldComponentName, oldRunCommandAction.objectName());
++    oldRunClipboard = KGlobalAccel::self()->globalShortcut(oldComponentName, oldRunClipboardAction.objectName());
++    KGlobalAccel::self()->setShortcut(&oldRunCommandAction, {});
++    KGlobalAccel::self()->setShortcut(&oldRunClipboardAction, {});
++    KGlobalAccel::self()->removeAllShortcuts(&oldRunCommandAction);
++    KGlobalAccel::self()->removeAllShortcuts(&oldRunClipboardAction);
++    KGlobalAccel::self()->cleanComponent(oldComponentName);
++
++    if (KGlobalAccel::isComponentActive(oldDesktopFile)) {
++        oldRunCommand = KGlobalAccel::self()->globalShortcut(oldDesktopFile, runCommandAction->objectName());
++        oldRunClipboard = KGlobalAccel::self()->globalShortcut(oldDesktopFile, runClipboardAction->objectName());
++        KGlobalAccel::self()->cleanComponent(oldDesktopFile);
++    }
++
++    if (!oldRunCommand.isEmpty()) {
++        KGlobalAccel::self()->setShortcut(runCommandAction, oldRunCommand, KGlobalAccel::NoAutoloading);
++    }
++    if (!oldRunClipboard.isEmpty()) {
++        KGlobalAccel::self()->setShortcut(runClipboardAction, oldRunClipboard, KGlobalAccel::NoAutoloading);
++    }
++
++    return 0;
++}
+diff --git a/krunner/update/krunnerglobalshortcuts2.upd b/krunner/update/krunnerglobalshortcuts2.upd
+new file mode 100644
+index 0000000000..84c7197382
+--- /dev/null
++++ b/krunner/update/krunnerglobalshortcuts2.upd
+@@ -0,0 +1,3 @@
++Version=6
++Id=5.22KRunnerGlobalShortcuts
++Script=krunnerglobalshortcuts
+diff --git a/krunner/update/krunnerhistory.cpp b/krunner/update/krunnerhistory.cpp
+new file mode 100644
+index 0000000000..9e3c29ef4a
+--- /dev/null
++++ b/krunner/update/krunnerhistory.cpp
+@@ -0,0 +1,50 @@
++/*
++    SPDX-FileCopyrightText: 2020 Alexander Lohnau <alexander.lohnau@gmx.de>
++
++    SPDX-License-Identifier: GPL-2.0-or-later
++*/
++
++#include <QCoreApplication>
++#include <QTimer>
++
++#include <PlasmaActivities/Consumer>
++#include <KConfigGroup>
++#include <KSharedConfig>
++
++using namespace Qt::StringLiterals;
++
++int main(int argc, char **argv)
++{
++    QCoreApplication app(argc, argv);
++
++    // Migrate data to state data file
++    KSharedConfigPtr krunnerrc = KSharedConfig::openConfig("krunnerrc");
++    KConfigGroup stateData = krunnerrc->group(u"PlasmaRunnerManager"_s);
++    KSharedConfigPtr newStateLocation = KSharedConfig::openConfig("krunnerstaterc", KConfig::NoGlobals, QStandardPaths::GenericDataLocation);
++    stateData.reparent(newStateLocation.data());
++    stateData.sync();
++
++    // Migrate history to activity aware config
++    auto consumer = new KActivities::Consumer();
++    // Wait a bit for consumer to be initialized
++    QObject::connect(consumer, &KActivities::Consumer::serviceStatusChanged, consumer, [consumer, newStateLocation, krunnerrc]() {
++        const QString history = krunnerrc->group(u"General"_s).readEntry("history");
++        QStringList activities = consumer->activities();
++        if (activities.isEmpty()) {
++            activities.append(QStringLiteral("00000000-0000-0000-0000-000000000000"));
++        }
++        KConfigGroup newHistory = newStateLocation->group(u"PlasmaRunnerManager"_s).group(u"History"_s);
++        for (const QString &activity : std::as_const(activities)) {
++            newHistory.writeEntry(activity, history);
++        }
++        newHistory.sync();
++        // Delete old values
++        krunnerrc->group(u"General"_s).deleteEntry("history");
++        krunnerrc->deleteGroup(u"PlasmaRunnerManager"_s);
++        krunnerrc->group(QStringLiteral("PlasmaRunnerManager")).writeEntry("migrated", true);
++        krunnerrc->sync();
++        qApp->exit();
++    });
++
++    return QCoreApplication::exec();
++}
+diff --git a/krunner/update/krunnerhistory.upd b/krunner/update/krunnerhistory.upd
+new file mode 100644
+index 0000000000..bb3c0502b0
+--- /dev/null
++++ b/krunner/update/krunnerhistory.upd
+@@ -0,0 +1,3 @@
++Version=6
++Id=5.21KRunnerHistory
++Script=krunnerhistory
+-- 
+2.44.0
+

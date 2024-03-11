@@ -1,0 +1,8 @@
+<package name="plasma6-workspace" project="openSUSE:Factory">
+  <title>The KDE Plasma Workspace Components</title>
+  <description>This package contains the basic packages for a Plasma workspace.
+
+</description>
+  <devel project="KDE:Frameworks" package="plasma6-workspace"/>
+  <url>https://www.kde.org/</url>
+</package>

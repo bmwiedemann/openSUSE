@@ -1,0 +1,104 @@
+-------------------------------------------------------------------
+Sun Mar 10 19:08:46 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to reinstate krunner shortcut migration from < 5.22:
+  * 0001-Revert-krunner-Remove-kconf_update-code.patch
+
+-------------------------------------------------------------------
+Sat Mar  9 21:20:25 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Fix panels floating after upgrade (kde#483136):
+  * Add 0001-Fix-panels-being-set-to-floating-by-upgrades.patch
+  * Add waitforkded.conf systemd dropin
+
+-------------------------------------------------------------------
+Wed Mar  6 08:40:33 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.1
+- Changes since 6.0.0:
+  * update version for new release
+  * applets/systemtray: Prefer Icon over IconName (kde#479712)
+  * Make sure AppItem is up to date with sycoca when checking isValid() (kde#481855)
+  * kcms/nightcolor: Fix DayNightView on edge cases (kde#482032)
+  * applets: add missing website in metadata
+  * libkmpris: find active player index in filter proxy model (kde#481992)
+  * libkmpris: connect to signals from base class
+  * appiumtests: add test for SystemDialog
+  * Show panels on entering edit mode and "add widgets" (kde#448393)
+  * Notifications: Only convert absolute paths to file URLs (kde#481759)
+  * applets/cameraindicator: add bug report button
+  * Revert "panelview: Take focus from other Plasma windows when clicked" (kde#481671)
+  * components/dialogs: fall back to null target when dialogButtonBox is null
+
+-------------------------------------------------------------------
+Mon Mar  4 18:52:28 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add Provides/Obsoletes to replace Plasma 5
+
+-------------------------------------------------------------------
+Mon Mar  4 17:35:10 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Pull in kwayland-integration6 when necessary
+
+-------------------------------------------------------------------
+Wed Feb 21 18:36:39 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0:
+  * New bugfix release
+  * Release announcement not available yet
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Wed Jan 31 17:38:01 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.93.0 (6.0 RC 2):
+  * New bugfix release
+  * See https://kde.org/announcements/megarelease/6/rc2/ for details
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Wed Jan 17 18:40:00 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.92.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Sat Dec 30 20:21:12 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Remove redundant redundant blank line + %license
+- Remove meanwhile obsolete provides/obsoletes
+
+-------------------------------------------------------------------
+Thu Dec 28 13:03:02 UTC 2023 - Neal Gompa <ngompa@opensuse.org>
+
+- Split X11 session into a subpackage
+
+-------------------------------------------------------------------
+Fri Dec  1 22:15:55 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Demote drkonqi6 from required to recommended. The performances
+  are (very) bad with gdb and LTO.
+
+-------------------------------------------------------------------
+Tue Nov 14 17:53:42 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop obsolete migration code
+- Move some requirements between pattern, plasma6-workspace and
+  plasma6-session
+- Make kio-extras6 a hard dep
+
+-------------------------------------------------------------------
+Mon Nov 13 21:50:26 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Merge plasma6-session-wayland into plasma6-session
+- Use fdupes again, without -s it's fine
+- Add sddm-qt6-branding-openSUSE package containing sddm.conf
+- Add 0001-lookandfeel-sddm-theme-metadata.desktop-Add-QtVersio.patch
+
+-------------------------------------------------------------------
+Tue Jul  4 20:48:13 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init plasma6-workspace

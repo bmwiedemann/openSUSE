@@ -1,0 +1,39 @@
+From 458b00f83a9de81edfacb30b2a0ed3ac9b681809 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sat, 9 Mar 2024 22:16:35 +0100
+Subject: [PATCH] Fix panels being set to floating by upgrades
+
+The floating setting is independent of resolution so it's read from the
+[PlasmaViews][Panel 42] group directly.
+---
+ ...keep-default-floating-setting-for-plasma-5-panels.cpp | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
+
+diff --git a/shell/kconf_update/plasmashell-6.0-keep-default-floating-setting-for-plasma-5-panels.cpp b/shell/kconf_update/plasmashell-6.0-keep-default-floating-setting-for-plasma-5-panels.cpp
+index ed7c7774c3..2e7be85962 100644
+--- a/shell/kconf_update/plasmashell-6.0-keep-default-floating-setting-for-plasma-5-panels.cpp
++++ b/shell/kconf_update/plasmashell-6.0-keep-default-floating-setting-for-plasma-5-panels.cpp
+@@ -35,18 +35,13 @@ int main()
+         }
+ 
+         KConfigGroup panelConfigGroup(&views, name);
+-        if (!panelConfigGroup.hasGroup(u"Defaults"_s)) {
+-            continue;
+-        }
+-
+-        KConfigGroup defaultConfigGroup(&panelConfigGroup, u"Defaults"_s);
+-        if (defaultConfigGroup.hasKey("floating")) {
++        if (panelConfigGroup.hasKey("floating")) {
+             // Respect the manual setting
+             continue;
+         }
+ 
+         // Explicitly set the old default floating setting for panels from Plasma 5
+-        defaultConfigGroup.writeEntry("floating", 0);
++        panelConfigGroup.writeEntry("floating", 0);
+     }
+ 
+     return configPtr->sync() ? EXIT_SUCCESS : EXIT_FAILURE;
+-- 
+2.43.0
+

@@ -1,0 +1,25 @@
+From a897020dc3bbd7aa47f8bdf8c724bdce81206ca5 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Sun, 9 Jul 2023 00:06:52 +0200
+Subject: [PATCH] Use qdbus6
+
+---
+ startkde/startplasma-wayland.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/startkde/startplasma-wayland.cpp b/startkde/startplasma-wayland.cpp
+index caeadd70a..f7ae977de 100644
+--- a/startkde/startplasma-wayland.cpp
++++ b/startkde/startplasma-wayland.cpp
+@@ -56,7 +56,7 @@ int main(int argc, char **argv)
+     runEnvironmentScripts();
+ 
+     if (!qEnvironmentVariableIsSet("DBUS_SESSION_BUS_ADDRESS")) {
+-        out << "startplasmacompositor: Could not start D-Bus. Can you call qdbus?\n";
++        out << "startplasmacompositor: Could not start D-Bus. Can you call qdbus6?\n";
+         return 1;
+     }
+     setupPlasmaEnvironment();
+-- 
+2.41.0
+
