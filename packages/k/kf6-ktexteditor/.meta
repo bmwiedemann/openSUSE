@@ -1,0 +1,9 @@
+<package name="kf6-ktexteditor" project="openSUSE:Factory">
+  <title>Embeddable text editor component</title>
+  <description>KTextEditor provides a text editor component that can be embedded in
+applications, either as a KPart or using the KF6::TextEditor library.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-ktexteditor"/>
+  <url>https://www.kde.org</url>
+</package>

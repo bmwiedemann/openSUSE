@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Wed Feb 21 19:28:09 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.249.0:
+  * add setRange overloads
+  * be consistent, the wrapper never uses const to hand out refs/pointers
+  * update version for new release
+  * Include QWidgetList
+  * add widgets api
+  * ensure we support unicode in patterns (kde#462437)
+  * fix quadratic checks
+  * fix handling for full scanned lines
+  * split lines early (kde#479073)
+  * more line wrapping tests
+  * Dont apply clipping with selections (kde#475378)
+  * Fix selection rendering with custom line height (kde#475378)
+  * Plugin template: fix plugin installation path
+  * Plugin template: bump min KF dep to match initial KF6 release
+  * Fix dyn word wrap indicator validation check (kde#480831)
+  * util-scripts: Use setText when working with whole document
+  * fix formatting
+  * check longestLineLoaded, too
+  * add test for setLineLengthLimit
+  * use cursorToOffset for accessibility events
+  * update version for new release
+
+-------------------------------------------------------------------
+Wed Jan 31 17:50:53 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.249.0 (6.0 RC 2):
+  * New bugfix release
+  * For more details see https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
+Mon Jan 15 20:01:40 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.248.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Sat May 27 11:18:29 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init kf6-ktexteditor
