@@ -1,0 +1,8 @@
+<package name="kwalletmanager" project="openSUSE:Factory">
+  <title>Wallet Management Tool</title>
+  <description>This application allows you to manage your KDE password wallet.
+
+</description>
+  <devel project="KDE:Applications" package="kwalletmanager"/>
+  <url>https://apps.kde.org/kwalletmanager</url>
+</package>
