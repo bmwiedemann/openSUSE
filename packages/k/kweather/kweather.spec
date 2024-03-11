@@ -1,7 +1,7 @@
 #
 # spec file for package kweather
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,41 +16,44 @@
 #
 
 
-%bcond_without  released
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define plasma6_version 5.27.80
+
+%bcond_without released
 Name:           kweather
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Weather application for Plasma
 URL:            https://apps.kde.org/kweather
-Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KWeatherCore) >= 0.6.0
-BuildRequires:  cmake(KF5Kirigami2)
-BuildRequires:  cmake(KF5KirigamiAddons)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5Plasma)
-BuildRequires:  cmake(Qt5Charts)
-BuildRequires:  cmake(Qt5Core) >= 5.15.2
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5QuickCompiler)
-BuildRequires:  cmake(Qt5QuickControls2)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
-Requires:       kirigami-addons
-Requires:       kirigami2
-Requires:       qt5qmlimport(QtCharts.2) >= 3
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KWeatherCore) >= 0.8
+BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons) >= 0.11
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(Plasma) >= %{plasma6_version}
+BuildRequires:  cmake(Qt6Charts) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6OpenGL) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+Requires:       kf6-kholidays-imports >= %{kf6_version}
+Requires:       kf6-kirigami-imports >= %{kf6_version}
+Requires:       kirigami-addons6
+Requires:       qt6-charts-imports >= %{qt6_version}
 
 %description
 A convergent weather application for Plasma. Has flat and dynamic/animated
@@ -62,27 +65,26 @@ views for showing forecasts and other information.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
+%cmake_kf6
 
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
 %find_lang %{name} --all-name
 
 %files
 %license LICENSES/*
-%dir %{_kf5_plasmadir}/plasmoids
-%dir %{_kf5_plugindir}/plasma/applets
 %{_datadir}/dbus-1/services/org.kde.kweather.service
-%{_kf5_applicationsdir}/org.kde.kweather.desktop
-%{_kf5_appstreamdir}/org.kde.kweather.appdata.xml
-%{_kf5_appstreamdir}/org.kde.plasma.kweather_1x4.appdata.xml
-%{_kf5_bindir}/kweather
-%{_kf5_iconsdir}/hicolor/scalable/apps/org.kde.kweather.svg
-%{_kf5_plasmadir}/plasmoids/org.kde.plasma.kweather_1x4/
-%{_kf5_plugindir}/plasma/applets/plasma_applet_kweather_1x4.so
+%{_kf6_applicationsdir}/org.kde.kweather.desktop
+%{_kf6_appstreamdir}/org.kde.kweather.appdata.xml
+%{_kf6_appstreamdir}/org.kde.plasma.kweather_1x4.appdata.xml
+%{_kf6_bindir}/kweather
+%{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.kweather.svg
+%dir %{_kf6_plasmadir}/plasmoids
+%{_kf6_plasmadir}/plasmoids/org.kde.plasma.kweather_1x4/
+%{_kf6_plugindir}/plasma/applets/plasma_applet_kweather_1x4.so
 
 %files lang -f %{name}.lang
 
