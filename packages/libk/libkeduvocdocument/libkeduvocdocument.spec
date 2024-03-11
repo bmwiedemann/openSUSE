@@ -1,7 +1,7 @@
 #
 # spec file for package libkeduvocdocument
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,28 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           libkeduvocdocument
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Library for KDE Education Applications
 License:        GPL-2.0-or-later
 URL:            https://edu.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
-BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
-BuildRequires:  xz
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
 
 %description
 This package contains the library which is required by the KDE education
@@ -47,9 +45,9 @@ applications.
 
 %package -n libKEduVocDocument5
 Summary:        Library for KDE Education Applications
-Recommends:     %{name}-lang
 Recommends:     kdeedu-data
-Provides:       %{name} = %{version}
+# Renamed
+Obsoletes:      libkeduvocdocument-lang
 
 %description -n libKEduVocDocument5
 This package contains the library which is required by the KDE education
@@ -63,35 +61,35 @@ Requires:       libKEduVocDocument5 = %{version}
 This package contains all necessary files and libraries needed to
 develop KDE education applications.
 
-%lang_package
+%lang_package -n libKEduVocDocument5
 
 %prep
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build -- -DKDE4_USE_COMMON_CMAKE_PACKAGE_CONFIG_DIR=ON
-%cmake_build
+%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
+%find_lang %{name} --all-name
 
-%fdupes -s %{buildroot}
+%fdupes %{buildroot}
 
 %ldconfig_scriptlets -n libKEduVocDocument5
 
 %files -n libKEduVocDocument5
-%license COPYING*
+%license LICENSES/*
 %doc README
-%{_kf5_libdir}/libKEduVocDocument.so.*
+%{_kf6_libdir}/libKEduVocDocument.so.*
 
 %files devel
-%doc README
-%{_kf5_cmakedir}/libkeduvocdocument/
-%{_kf5_libdir}/libKEduVocDocument.so
-%{_kf5_prefix}/include/libkeduvocdocument/
+%{_includedir}/libkeduvocdocument/
+%{_kf6_cmakedir}/libkeduvocdocument/
+%{_kf6_libdir}/libKEduVocDocument.so
 
-%files lang -f %{name}.lang
+%files -n libKEduVocDocument5-lang -f %{name}.lang
 
 %changelog
