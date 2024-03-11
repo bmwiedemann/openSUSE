@@ -1,0 +1,8 @@
+<package name="plasma6-workspace-wallpapers" project="openSUSE:Factory">
+  <title>Additional Plasma Wallpapers</title>
+  <description>Additional wallpapers for Plasma Workspace.
+
+</description>
+  <devel project="KDE:Frameworks" package="plasma6-workspace-wallpapers"/>
+  <url>https://www.kde.org</url>
+</package>
