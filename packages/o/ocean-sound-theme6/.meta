@@ -1,0 +1,8 @@
+<package name="ocean-sound-theme6" project="openSUSE:Factory">
+  <title>Ocean sound theme</title>
+  <description>This package contains the Ocean sound theme for KDE Plasma.
+
+</description>
+  <devel project="KDE:Frameworks" package="ocean-sound-theme6"/>
+  <url>https://www.kde.org</url>
+</package>
