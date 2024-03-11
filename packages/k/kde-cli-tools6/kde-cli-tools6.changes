@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Wed Mar  6 08:40:26 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.1
+- Changes since 6.0.0:
+  * update version for new release
+
+-------------------------------------------------------------------
+Mon Mar  4 20:33:25 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add Provides/Obsoletes to replace Plasma 5
+
+-------------------------------------------------------------------
+Wed Feb 21 18:36:11 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0:
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.93.0:
+  * kdeinhibit: Adapt to renamed night light d-bus interface
+  * keditfiletype: fix crash when adding apps to "empty" views (kde#481229)
+  * update version for new release
+
+-------------------------------------------------------------------
+Wed Jan 31 17:36:54 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.93.0 (6.0 RC 2):
+  * New bugfix release
+  * See https://kde.org/announcements/megarelease/6/rc2/ for details
+- Changes since 5.92.0:
+  * kinfo: run with relevant platforms when possible (kde#476012)
+
+-------------------------------------------------------------------
+Mon Jan 15 21:08:38 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.92.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Fri Nov 24 22:05:27 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Install kdesu symlink in /usr/bin
+
+-------------------------------------------------------------------
+Mon Jul  3 16:53:54 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init kde-cli-tools6

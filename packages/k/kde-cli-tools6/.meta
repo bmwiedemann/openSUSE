@@ -1,0 +1,8 @@
+<package name="kde-cli-tools6" project="openSUSE:Factory">
+  <title>Additional CLI tools for KDE applications</title>
+  <description>Additional CLI tools for KDE applications and workspaces.
+
+</description>
+  <devel project="KDE:Frameworks" package="kde-cli-tools6"/>
+  <url>https://www.kde.org</url>
+</package>
