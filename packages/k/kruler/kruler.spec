@@ -1,7 +1,7 @@
 #
 # spec file for package kruler
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,35 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           kruler
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Screen Ruler
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/kruler
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5X11Extras)
-Obsoletes:      %{name}5 < %{version}
-Provides:       %{name}5 = %{version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+Obsoletes:      kruler5 < %{version}
+Provides:       kruler5 = %{version}
 
 %description
 A screen ruler for the Plasma desktop environment
@@ -50,27 +55,28 @@ A screen ruler for the Plasma desktop environment
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
+%find_lang %{name} --with-html --all-name
 
 %suse_update_desktop_file -r org.kde.kruler Utility DesktopUtility
 
 %files
 %license LICENSES/*
-%doc %lang(en) %{_kf5_htmldir}/en/kruler/
-%{_kf5_applicationsdir}/org.kde.kruler.desktop
-%{_kf5_appstreamdir}/org.kde.kruler.appdata.xml
-%{_kf5_bindir}/kruler
-%{_kf5_iconsdir}/hicolor/*/*/kruler*
-%{_kf5_notifydir}/kruler.notifyrc
-%{_kf5_sharedir}/kruler/
+%doc %lang(en) %{_kf6_htmldir}/en/kruler/
+%{_kf6_applicationsdir}/org.kde.kruler.desktop
+%{_kf6_appstreamdir}/org.kde.kruler.appdata.xml
+%{_kf6_bindir}/kruler
+%{_kf6_iconsdir}/hicolor/*/*/kruler*
+%{_kf6_notificationsdir}/kruler.notifyrc
+%{_kf6_sharedir}/kruler/
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/kruler/
 
 %changelog
