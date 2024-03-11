@@ -1,7 +1,7 @@
 #
 # spec file for package kclock
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,41 +16,42 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define plasma6_version 5.27.80
+
 %bcond_without  released
 Name:           kclock
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Clock application for Plasma
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/kclock
-Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5Kirigami2)
-BuildRequires:  cmake(KF5KirigamiAddons)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5Package)
-BuildRequires:  cmake(KF5Plasma)
-BuildRequires:  cmake(KF5Service)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Multimedia)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5QuickCompiler)
-BuildRequires:  cmake(Qt5QuickControls2)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
-Requires:       kirigami-addons
-Requires:       kirigami2
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons)
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
+BuildRequires:  cmake(Plasma) >= %{plasma6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+Requires:       kirigami-addons6
+Requires:       kf6-kirigami-imports >= %{kf6_version}
 
 %description
 A clock application for Plasma.
@@ -61,38 +62,37 @@ A clock application for Plasma.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
 %find_lang %{name} --all-name
 
 %files
 %license LICENSES/*
 %doc README.md
-%dir %{_kf5_plasmadir}/plasmoids
-%dir %{_kf5_plugindir}/plasma
-%dir %{_kf5_plugindir}/plasma/applets
 %{_datadir}/dbus-1/services/org.kde.kclockd.service
-%{_kf5_applicationsdir}/org.kde.kclock.desktop
-%{_kf5_appstreamdir}/org.kde.kclock.appdata.xml
-%{_kf5_appstreamdir}/org.kde.plasma.kclock_1x2.appdata.xml
-%{_kf5_bindir}/kclock
-%{_kf5_bindir}/kclockd
-%{_kf5_configdir}/autostart/org.kde.kclockd-autostart.desktop
-%{_kf5_dbusinterfacesdir}/org.kde.kclockd.Alarm.xml
-%{_kf5_dbusinterfacesdir}/org.kde.kclockd.AlarmModel.xml
-%{_kf5_dbusinterfacesdir}/org.kde.kclockd.KClockSettings.xml
-%{_kf5_dbusinterfacesdir}/org.kde.kclockd.Timer.xml
-%{_kf5_dbusinterfacesdir}/org.kde.kclockd.TimerModel.xml
-%{_kf5_dbusinterfacesdir}/org.kde.kclockd.Utility.xml
-%{_kf5_iconsdir}/hicolor/scalable/apps/kclock_plasmoid_1x2.svg
-%{_kf5_iconsdir}/hicolor/scalable/apps/org.kde.kclock.svg
-%{_kf5_notifydir}/kclockd.notifyrc
-%{_kf5_plasmadir}/plasmoids/org.kde.plasma.kclock_1x2/
-%{_kf5_plugindir}/plasma/applets/plasma_applet_kclock_1x2.so
+%{_kf6_applicationsdir}/org.kde.kclock.desktop
+%{_kf6_appstreamdir}/org.kde.kclock.appdata.xml
+%{_kf6_appstreamdir}/org.kde.plasma.kclock_1x2.appdata.xml
+%{_kf6_bindir}/kclock
+%{_kf6_bindir}/kclockd
+%{_kf6_configdir}/autostart/org.kde.kclockd-autostart.desktop
+%{_kf6_dbusinterfacesdir}/org.kde.kclockd.Alarm.xml
+%{_kf6_dbusinterfacesdir}/org.kde.kclockd.AlarmModel.xml
+%{_kf6_dbusinterfacesdir}/org.kde.kclockd.KClockSettings.xml
+%{_kf6_dbusinterfacesdir}/org.kde.kclockd.Timer.xml
+%{_kf6_dbusinterfacesdir}/org.kde.kclockd.TimerModel.xml
+%{_kf6_dbusinterfacesdir}/org.kde.kclockd.Utility.xml
+%{_kf6_iconsdir}/hicolor/scalable/apps/kclock_plasmoid_1x2.svg
+%{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.kclock.svg
+%{_kf6_notificationsdir}/kclockd.notifyrc
+%dir %{_kf6_plasmadir}/plasmoids
+%{_kf6_plasmadir}/plasmoids/org.kde.plasma.kclock_1x2/
+%{_kf6_plugindir}/plasma/applets/org.kde.plasma.kclock_1x2.so
 
 %files lang -f %{name}.lang
 
