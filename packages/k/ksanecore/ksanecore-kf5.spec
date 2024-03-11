@@ -1,5 +1,5 @@
 #
-# spec file for package ksanecore
+# spec file for package ksanecore-kf5
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -16,75 +16,75 @@
 #
 
 
-%define kf6_version 5.246.0
-%define qt6_version 6.6.0
+%define kf5_version 5.90.0
+%define qt5_version 5.15.2
 
+%define rname ksanecore
 %bcond_without released
-Name:           ksanecore
+Name:           ksanecore-kf5
 Version:        24.02.0
 Release:        0
 Summary:        Qt interface for the SANE library for scanner hardware
 License:        LGPL-2.1-only OR LGPL-3.0-only
 URL:            https://www.kde.org
-Source:         %{name}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  sane-backends-devel
-BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
-BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
-BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  kf6-extra-cmake-modules
+BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
+BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Gui) >= %{qt5_version}
+BuildRequires:  pkgconfig(sane-backends)
 
 %description
 KSaneCore is a Qt-based interface for SANE library to control scanner hardware.
 
-%package -n libKSaneCore6-1
+%package -n libKSaneCore1
 Summary:        Qt interface for the SANE library for scanner hardware
-# Same translation catalog name
-Conflicts:      libKSaneCore1-lang
 Obsoletes:      ksanecore-lang < %{version}
 
-%description -n libKSaneCore6-1
+%description -n libKSaneCore1
 KSaneCore is a Qt-based interface for SANE library to control scanner hardware.
 
 %package devel
 Summary:        Development files for KSaneCore, a Qt library for scanner hardware
-Requires:       libKSaneCore6-1 = %{version}
-Requires:       cmake(Qt6Gui) >= %{qt6_version}
+Requires:       libKSaneCore1 = %{version}
+Requires:       cmake(Qt5Gui) >= %{qt5_version}
 
 %description devel
 KSaneCore is a Qt-based interface for SANE library to control scanner hardware.
 This package contains the development files required to use KSaneCore in other
 applications.
 
-%lang_package -n libKSaneCore6-1
+%lang_package -n libKSaneCore1
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+%cmake_kf5 -d build
 
-%kf6_build
+%cmake_build
 
 %install
-%kf6_install
+%kf5_makeinstall -C build
 
-%find_lang %{name} --all-name
+%find_lang %{name} --with-man --all-name
 
-%ldconfig_scriptlets -n libKSaneCore6-1
+%ldconfig_scriptlets -n libKSaneCore1
 
-%files -n libKSaneCore6-1
+%files -n libKSaneCore1
 %license LICENSES/*
-%{_kf6_libdir}/libKSaneCore6.so.*
+%{_kf5_libdir}/libKSaneCore.so.*
 
 %files devel
-%{_includedir}/KSaneCore6/
-%{_kf6_cmakedir}/KSaneCore6/
-%{_kf6_libdir}/libKSaneCore6.so
+%{_includedir}/KSaneCore/
+%{_kf5_cmakedir}/KSaneCore/
+%{_kf5_libdir}/libKSaneCore.so
 
-%files -n libKSaneCore6-1-lang -f %{name}.lang
+%files -n libKSaneCore1-lang -f %{name}.lang
 
 %changelog
