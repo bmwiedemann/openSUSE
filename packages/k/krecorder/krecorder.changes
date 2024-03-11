@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb 23 14:00:10 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.0
+  * New feature release
+- Changes since 24.01.95:
+  * Ensure audio prober is not loaded
+  * update build.gradle
+  * Fix android build
+
+-------------------------------------------------------------------
+Fri Feb  9 16:09:16 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.01.95
+  * https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
 Tue Dec  5 14:20:08 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.4

@@ -1,7 +1,7 @@
 #
 # spec file for package krecorder
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,36 +16,35 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without  released
 Name:           krecorder
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Audio recording application
 License:        GPL-3.0-or-later
 URL:            https://apps.kde.org/krecorder/
-Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KirigamiAddons)
-BuildRequires:  cmake(KF5Kirigami2)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(Qt5Core) >= 5.15.2
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Multimedia)
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5QuickCompiler)
-BuildRequires:  cmake(Qt5QuickControls2)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Widgets)
-Requires:       kirigami-addons
-Requires:       kirigami2
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons) >= 0.11
+BuildRequires:  cmake(KF6Kirigami2) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+Requires:       kirigami-addons6 >= 0.11
+Requires:       kf6-kirigami-imports >= %{kf6_version}
 
 %description
 Recorder is a simple, cross-platform audio recording application.
@@ -56,22 +55,22 @@ Recorder is a simple, cross-platform audio recording application.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
+%cmake_kf6
 
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
 %find_lang %{name} --all-name
 
 %files
 %license LICENSES/*
 %doc README.md
-%{_kf5_applicationsdir}/org.kde.krecorder.desktop
-%{_kf5_appstreamdir}/org.kde.krecorder.appdata.xml
-%{_kf5_bindir}/krecorder
-%{_kf5_iconsdir}/hicolor/scalable/apps/org.kde.krecorder.svg
+%{_kf6_applicationsdir}/org.kde.krecorder.desktop
+%{_kf6_appstreamdir}/org.kde.krecorder.appdata.xml
+%{_kf6_bindir}/krecorder
+%{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.krecorder.svg
 
 %files lang -f %{name}.lang
 
