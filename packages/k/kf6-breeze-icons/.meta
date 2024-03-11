@@ -1,0 +1,8 @@
+<package name="kf6-breeze-icons" project="openSUSE:Factory">
+  <title>Breeze icon theme</title>
+  <description>Breeze-icons is a freedesktop.org compatible icon theme.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-breeze-icons"/>
+  <url>https://www.kde.org</url>
+</package>

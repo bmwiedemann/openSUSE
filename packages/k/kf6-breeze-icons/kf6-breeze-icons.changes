@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Wed Feb 21 19:27:41 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.249.0:
+  * update version for new release
+  * The Highlight entry confuses the generator script, so the dark theme will have a dark icon
+  * Add folder edit sign encrypt icon
+  * fix warnings and output issues even in release builds
+  * allow the test to compile with strict flags
+  * Add OpenVPN and Cisco VPN file icons
+  * update version for new release
+  * Move 22px download-later arrow to be a bit more aesthetically pleasing
+  * Add upload-later icon for KTorrent
+  * Fix cmake config if lib was not build
+
+-------------------------------------------------------------------
+Wed Jan 31 17:49:42 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.249.0 (6.0 RC 2):
+  * New bugfix release
+  * For more details see https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
+Mon Jan 15 19:57:06 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.248.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Sat May 27 11:18:10 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init kf6-breeze-icons
