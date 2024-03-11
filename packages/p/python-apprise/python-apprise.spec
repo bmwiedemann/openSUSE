@@ -26,8 +26,9 @@
 %endif
 
 Name:           python-apprise
-Version:        1.7.3
+Version:        1.7.4
 Release:        0
+Group:          Development/Libraries/Python
 Summary:        A simple wrapper to many popular notification services used today
 License:        BSD-2-Clause
 URL:            https://github.com/caronc/apprise
@@ -46,7 +47,6 @@ BuildRequires:  %{python_module Markdown}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module click >= 5.0}
-BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module dbus-python}
 BuildRequires:  %{python_module paho-mqtt}
 BuildRequires:  %{python_module pip}
@@ -63,7 +63,6 @@ Requires:       python-Markdown
 Requires:       python-PyYAML
 Requires:       python-certifi
 Requires:       python-click >= 5.0
-Requires:       python-cryptography
 Requires:       python-requests
 Requires:       python-requests-oauthlib
 Recommends:     python-paho-mqtt
