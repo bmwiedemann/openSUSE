@@ -1,7 +1,7 @@
 #
 # spec file for package parley
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,50 +16,49 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           parley
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Vocabulary Trainer
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/parley
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  libxml2-devel
-BuildRequires:  libxslt-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  xz
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Kross)
-BuildRequires:  cmake(KF5NewStuff)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5Sonnet)
-BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6NewStuff) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6Sonnet) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(LibKEduVocDocument)
-BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Multimedia)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5WebEngine)
-BuildRequires:  cmake(Qt5WebEngineWidgets)
+BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libxslt)
 Requires:       kdeedu-data
+Recommends:     translate-shell
 Obsoletes:      %{name}5 < %{version}
 Obsoletes:      parley5 < %{version}
 Provides:       %{name}5 = %{version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 Parley is a vocabulary trainer by KDE.
@@ -70,30 +69,31 @@ Parley is a vocabulary trainer by KDE.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
+%find_lang %{name} --with-html --all-name
 
 %files
 %license LICENSES/*
 %doc AUTHORS README.md
-%doc %lang(en) %{_kf5_htmldir}/en/parley/
-%{_kf5_applicationsdir}/org.kde.parley.desktop
-%{_kf5_appstreamdir}/org.kde.parley.appdata.xml
-%{_kf5_bindir}/parley
-%{_kf5_configkcfgdir}/documentsettings.kcfg
-%{_kf5_configkcfgdir}/languagesettings.kcfg
-%{_kf5_configkcfgdir}/parley.kcfg
-%{_kf5_iconsdir}/*/*/*/*
-%{_kf5_knsrcfilesdir}/parley*.knsrc
-%{_kf5_kxmlguidir}/parley/
-%{_kf5_sharedir}/parley/
+%doc %lang(en) %{_kf6_htmldir}/en/parley/
+%{_kf6_applicationsdir}/org.kde.parley.desktop
+%{_kf6_appstreamdir}/org.kde.parley.appdata.xml
+%{_kf6_bindir}/parley
+%{_kf6_configkcfgdir}/documentsettings.kcfg
+%{_kf6_configkcfgdir}/languagesettings.kcfg
+%{_kf6_configkcfgdir}/parley.kcfg
+%{_kf6_iconsdir}/*/*/*/*
+%{_kf6_knsrcfilesdir}/parley.knsrc
+%{_kf6_knsrcfilesdir}/parley-themes.knsrc
+%{_kf6_sharedir}/parley/
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/parley/
 
 %changelog

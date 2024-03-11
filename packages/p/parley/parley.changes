@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Feb 23 14:00:56 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.0
+  * New feature release
+- Changes since 24.01.95:
+  * Fix window updates on wayland (kde#468591)
+  * Port PracticeSummaryComponent to be a QWidget
+  * Port PracticeMainWindow to be a QWidget
+  * Port Editor to be a QWidget
+  * Port StatisticsMainWindow to be a QWidget
+  * Port Dashboard to be a QWidget
+
+-------------------------------------------------------------------
+Fri Feb  9 16:10:03 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.01.95
+  * https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
 Tue Dec  5 14:20:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.4
