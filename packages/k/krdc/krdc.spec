@@ -1,7 +1,7 @@
 #
 # spec file for package krdc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,40 +16,48 @@
 #
 
 
+%define kf6_version 5.246.0
+%define plasma6_version 5.27.80
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           krdc
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Remote Desktop Connection
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/krdc
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  LibVNCServer-devel
-BuildRequires:  extra-cmake-modules
-BuildRequires:  freerdp
-BuildRequires:  freerdp-devel
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  kf6-breeze-icons
 BuildRequires:  libssh-devel
-BuildRequires:  oxygen5-icon-theme-large
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Bookmarks)
-BuildRequires:  cmake(KF5Completion)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5DNSSD)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5NotifyConfig)
-BuildRequires:  cmake(KF5Wallet)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(KF5XmlGui)
-Requires:       breeze5-icons
+BuildRequires:  cmake(FreeRDP) >= 2.10
+BuildRequires:  cmake(FreeRDP-Client) >= 2.10
+BuildRequires:  cmake(KF6Bookmarks) >= %{kf6_version}
+BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6DNSSD) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6NotifyConfig) >= %{kf6_version}
+BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
+BuildRequires:  cmake(KF6Wallet) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(PlasmaActivities) >= %{plasma6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(WinPR)
+Requires:       kf6-breeze-icons
 Requires:       freerdp
 
 %description
@@ -71,45 +79,38 @@ Development libraries and headers needed to build software using krdc
 %ifarch ppc ppc64
 export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %endif
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
+%find_lang %{name} --with-html --all-name
 
-for i in 128 16 22 32 48 64
-  do
-     mkdir -p %{buildroot}%{_kf5_iconsdir}/hicolor/${i}x${i}/apps
-     cp %{_kf5_iconsdir}/oxygen/base/${i}x${i}/apps/krdc.png %{buildroot}%{_kf5_iconsdir}/hicolor/${i}x${i}/apps/
-  done
-
-%suse_update_desktop_file -r org.kde.krdc System RemoteAccess
+mkdir -p %{buildroot}%{_kf6_iconsdir}/hicolor/scalable/apps
+cp %{_kf6_iconsdir}/breeze/apps/48/krdc.svg %{buildroot}%{_kf6_iconsdir}/hicolor/scalable/apps/
 
 %ldconfig_scriptlets
 
 %files
 %license LICENSES/*
-%doc %lang(en) %{_kf5_htmldir}/en/krdc/
-%{_kf5_applicationsdir}/org.kde.krdc.desktop
-%{_kf5_appstreamdir}/org.kde.krdc.appdata.xml
-%{_kf5_bindir}/krdc
-%{_kf5_configkcfgdir}/krdc.kcfg
-%{_kf5_iconsdir}/hicolor/*/apps/krdc.png
-%{_kf5_libdir}/libkrdccore.so.*
-%{_kf5_plugindir}/krdc/
-%{_kf5_debugdir}/krdc.categories
-%dir %{_kf5_sharedir}/kio/
-%dir %{_kf5_sharedir}/kio/servicemenus/
-%{_kf5_sharedir}/kio/servicemenus/smb2rdc.desktop
+%doc %lang(en) %{_kf6_htmldir}/en/krdc/
+%{_kf6_applicationsdir}/org.kde.krdc.desktop
+%{_kf6_appstreamdir}/org.kde.krdc.appdata.xml
+%{_kf6_bindir}/krdc
+%{_kf6_configkcfgdir}/krdc.kcfg
+%{_kf6_iconsdir}/hicolor/scalable/apps/krdc.svg
+%{_kf6_libdir}/libkrdccore.so.*
+%{_kf6_plugindir}/krdc/
+%{_kf6_debugdir}/krdc.categories
 
 %files devel
 %{_includedir}/krdc/
 %{_includedir}/krdccore_export.h
-%{_kf5_libdir}/libkrdccore.so
+%{_kf6_libdir}/libkrdccore.so
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/krdc/
 
 %changelog
