@@ -1,7 +1,7 @@
 #
 # spec file for package kross-interpreters
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,17 @@
 
 %bcond_without released
 Name:           kross-interpreters
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Diverse bindings for KROSS
 License:        LGPL-2.1-or-later
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  ruby-devel
-BuildRequires:  xz
-BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  cmake(KF5Kross)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
@@ -50,11 +48,12 @@ The Ruby bindings which can be used with KROSS
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
+%kf5_makeinstall -C build
 
 %files -n kross-ruby
 %license COPYING
