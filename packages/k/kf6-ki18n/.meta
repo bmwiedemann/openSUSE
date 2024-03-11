@@ -1,0 +1,11 @@
+<package name="kf6-ki18n" project="openSUSE:Factory">
+  <title>KDE Gettext-based UI text internationalization</title>
+  <description>KI18n provides functionality for internationalizing user interface text
+in applications, based on the GNU Gettext translation system.
+It wraps the standard Gettext functionality, so that the programmers
+and translators can use the familiar Gettext tools and workflows.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-ki18n"/>
+  <url>https://www.kde.org</url>
+</package>
