@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 28 19:18:01 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Build with kscreenlocker from Plasma 5
+
+-------------------------------------------------------------------
+Wed Feb 28 11:40:16 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Make sure to pick kdecoration and breeze < 6
+
+-------------------------------------------------------------------
 Wed Jan 31 14:35:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Switch to the latest GCC version available in Leap for packages

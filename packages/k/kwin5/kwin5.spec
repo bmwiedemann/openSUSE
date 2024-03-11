@@ -1,7 +1,7 @@
 #
 # spec file for package kwin5
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,8 +57,8 @@ BuildRequires:  libepoxy-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
-BuildRequires:  cmake(Breeze) >= 5.9.0
-BuildRequires:  cmake(KDecoration2) >= %{_plasma5_version}
+BuildRequires:  (cmake(Breeze) >= 5.9.0 with cmake(Breeze) < 6)
+BuildRequires:  (cmake(KDecoration2) >= %{_plasma5_version} with cmake(KDecoration2) < 6)
 BuildRequires:  cmake(KF5Activities) >= %{kf5_version}
 BuildRequires:  cmake(KF5Completion) >= %{kf5_version}
 BuildRequires:  cmake(KF5Config) >= %{kf5_version}
@@ -86,7 +86,7 @@ BuildRequires:  cmake(KF5Wayland) >= %{kf5_version}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
 BuildRequires:  cmake(KF5XmlGui) >= %{kf5_version}
-BuildRequires:  cmake(KScreenLocker) >= %{_plasma5_version}
+BuildRequires:  (cmake(KScreenLocker) >= %{_plasma5_version} with cmake(KScreenLocker) < 6)
 BuildRequires:  cmake(PlasmaWaylandProtocols)
 BuildRequires:  cmake(QAccessibilityClient)
 BuildRequires:  cmake(Qt5Concurrent) >= %{qt5_version}
@@ -153,7 +153,7 @@ Requires:       kitemmodels-imports
 Provides:       windowmanager
 # For post and verifyscript
 Requires(post): permissions
-Requires(verify):permissions
+Requires(verify): permissions
 %requires_ge Mesa-libEGL1
 %requires_ge libKF5WindowSystem5
 %requires_ge plasma-framework
@@ -170,7 +170,7 @@ Summary:        KDE Window Manager - development files
 Group:          Development/Libraries/KDE
 Requires:       %{name} = %{version}
 Requires:       libepoxy-devel
-Requires:       libkdecoration2-devel >= %{_plasma5_version}
+Requires:       (cmake(KDecoration2) >= %{_plasma5_version} with cmake(KDecoration2) < 6)
 Conflicts:      kdebase4-workspace-devel
 
 %description devel

@@ -1621,4 +1621,14 @@
     <comment>Switch to GCC 13 for Leap builds for packages that can't be built with the default compiler (forwarded request 1143049 from krop)</comment>
     <requestid>1143123</requestid>
   </revision>
+  <revision rev="194" vrev="3">
+    <srcmd5>cf085fac45804a10ea92a2235634cedc</srcmd5>
+    <version>5.27.10</version>
+    <time>1710167263</time>
+    <user>anag+factory</user>
+    <comment>- Build with kscreenlocker from Plasma 5
+
+- Make sure to pick kdecoration and breeze &lt; 6</comment>
+    <requestid>1153044</requestid>
+  </revision>
 </revisionlist>
