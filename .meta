@@ -1,0 +1,9 @@
+<package name="plasma6-welcome" project="openSUSE:Factory">
+  <title>Onboarding wizard for Plasma</title>
+  <description>Welcome Center is the perfect introduction to KDE Plasma! It can help you learn
+how to connect to the internet, install apps, customize the system, and more!
+
+</description>
+  <devel project="KDE:Frameworks" package="plasma6-welcome"/>
+  <url>https://invent.kde.org/plasma/plasma-welcome</url>
+</package>
