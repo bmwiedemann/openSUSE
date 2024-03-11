@@ -1,7 +1,7 @@
 #
 # spec file for package lokalize
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %bcond_without released
 Name:           lokalize
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        KDE Translation Editor
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/lokalize
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
@@ -86,7 +86,6 @@ export CFLAGS="%{optflags} -fPIC"
 %{_kf5_configkcfgdir}/lokalize.kcfg
 %{_kf5_debugdir}/lokalize.categories
 %{_kf5_iconsdir}/hicolor/*/apps/lokalize.*
-%{_kf5_kxmlguidir}/lokalize/
 %{_kf5_notifydir}/lokalize.notifyrc
 %{_kf5_sharedir}/lokalize/
 
