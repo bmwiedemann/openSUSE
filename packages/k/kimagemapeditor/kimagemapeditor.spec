@@ -1,7 +1,7 @@
 #
 # spec file for package kimagemapeditor
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,37 +16,40 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           kimagemapeditor
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        HTML Image Map Editor
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/kimagemapeditor
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5GuiAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5Parts)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5WebEngineWidgets)
-BuildRequires:  cmake(Qt5Widgets)
-# Only build on archs where Qt5WebEngine is available
-ExcludeArch:    ppc ppc64 ppc64le s390 s390x
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+# No QtWebEngine for other archs
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 A tool to edit image maps of HTML files
@@ -57,14 +60,14 @@ A tool to edit image maps of HTML files
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
+%find_lang %{name} --with-html --all-name
 
 %suse_update_desktop_file -r org.kde.kimagemapeditor Office WebDevelopment
 
@@ -72,18 +75,16 @@ A tool to edit image maps of HTML files
 
 %files
 %license COPYING*
-%dir %{_kf5_plugindir}/kf5
-%dir %{_kf5_plugindir}/kf5/parts
-%{_kf5_applicationsdir}/org.kde.kimagemapeditor.desktop
-%{_kf5_appstreamdir}/org.kde.kimagemapeditor.appdata.xml
-%{_kf5_bindir}/kimagemapeditor
-%{_kf5_debugdir}/kimagemapeditor.categories
-%{_kf5_htmldir}/en/kimagemapeditor/
-%{_kf5_iconsdir}/hicolor/*/*/*
-%{_kf5_plugindir}/kf5/parts/kimagemapeditorpart.so
-%{_kf5_servicesdir}/kimagemapeditorpart.desktop
-%{_kf5_sharedir}/kimagemapeditor/
+%doc %lang(en) %{_kf6_htmldir}/en/kimagemapeditor/
+%{_kf6_applicationsdir}/org.kde.kimagemapeditor.desktop
+%{_kf6_appstreamdir}/org.kde.kimagemapeditor.appdata.xml
+%{_kf6_bindir}/kimagemapeditor
+%{_kf6_debugdir}/kimagemapeditor.categories
+%{_kf6_iconsdir}/hicolor/*/*/*
+%{_kf6_plugindir}/kf6/parts/kimagemapeditorpart.so
+%{_kf6_sharedir}/kimagemapeditor/
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/kimagemapeditor/
 
 %changelog
