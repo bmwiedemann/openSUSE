@@ -1,0 +1,10 @@
+<package name="kf6-knewstuff" project="openSUSE:Factory">
+  <title>Framework for downloading and sharing additional application data</title>
+  <description>The KNewStuff library implements collaborative data sharing for
+applications. It uses libattica to support the Open Collaboration Services
+specification.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-knewstuff"/>
+  <url>https://www.kde.org</url>
+</package>
