@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-databind
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jackson-databind
-Version:        2.15.2
+Version:        2.16.1
 Release:        0
 Summary:        General data-binding package for Jackson (2.x)
 License:        Apache-2.0 AND LGPL-2.1-or-later

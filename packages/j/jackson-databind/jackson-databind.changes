@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Fri Mar  8 08:33:47 UTC 2024 - Gus Kenion <gkenion@suse.com>
+
+- Update to 2.16.1
+  * 2.16.1 (24-Dec-2023)
+    + #4200: JsonSetter(contentNulls = FAIL) is ignored in
+      delegating @JsonCreator argument
+    + #4216: Primitive array deserializer not being captured by
+      DeserializerModifier
+    + #4219: JsonNode.findValues() and findParents() missing
+      expected values in 2.16.0
+  * 2.16.0 (15-Nov-2023)
+    + #1770: Incorrect deserialization for BigDecimal numbers
+    + #2502: Add a way to configure caches Jackson uses
+    + #2787: Mix-ins do not work for Enums
+    + #3133: Map deserialization results in different numeric
+      classes based on json ordering (BigDecimal / Double) when
+      used in combination with @JsonSubTypes
+    + #3251: Generic class with generic field of runtime type
+      Double is deserialized as BigDecimal when used with
+      @JsonTypeInfo and JsonTypeInfo.As.EXISTING_PROPERTY
+    + #3277: Combination of @JsonUnwrapped and @JsonAnySetter
+      results in BigDecimal instead of Double
+    + #3647: @JsonIgnoreProperties not working with @JsonValue
+    + #3780: Deprecated JsonNode.with(String) suggests using
+      JsonNode.withObject(String) but it is not the same thing
+    + #3838: Difference in the handling of ObjectId-property in
+      JsonIdentityInfo depending on the deserialization route
+    + #3877: Add new OptBoolean valued property in @JsonTypeInfo,
+      handling, to allow per-polymorphic type loose Type Id
+      handling
+    + #3906: Regression: 2.15.0 breaks deserialization for records
+      when
+      mapper.setVisibility(PropertyAccessor.ALL, Visibility.NONE)
+    + #3924: Incorrect target type when disabling coercion, trying
+      to deserialize String from Array/Object
+    + #3928: @JsonProperty on constructor parameter changes default
+      field serialization order
+    + #3950: Create new JavaType subtype IterationType
+      (extending SimpleType)
+    + #3953: Use JsonTypeInfo.Value for annotation handling
+    + #3965: Add JsonNodeFeature.WRITE_PROPERTIES_SORTED for
+      sorting ObjectNode properties on serialization
+      (for Canonical JSON)
+    + #4008: Optimize ObjectNode findValue(s) and findParent(s)
+      fast paths
+    + #4009: Locale "" is deserialised as null if
+      ACCEPT_EMPTY_STRING_AS_NULL_OBJECT is enabled
+    + #4011: Add guardrail setting for TypeParser handling of type
+      parameters
+    + #4036: Use @JsonProperty for Enum values also when READ_ENUMS
+      USING_TO_STRING enabled
+    + #4037: Fix Enum deserialization to use @JsonProperty,
+      @JsonAlias even if EnumNamingStrategy used
+    + #4039: Use @JsonProperty and lowercase feature when
+      serializing Enums despite using toString()
+    + #4040: Use @JsonProperty over EnumNamingStrategy for Enum
+      serialization
+    + #4041: Actually cache EnumValues#internalMap
+    + #4047: ObjectMapper.valueToTree() will ignore the
+      configuration SerializationFeature.WRAP_ROOT_VALUE
+    + #4056: Provide the "ObjectMapper.treeToValue(TreeNode,
+      TypeReference)" method
+    + #4060: Expose NativeImageUtil.isRunningInNativeImage() method
+    + #4061: Add JsonTypeInfo.Id.SIMPLE_NAME which defaults type id
+      to Class.getSimpleName()
+    + #4071: Impossible to deserialize custom Throwable sub-classes
+      that do not have single-String constructors
+    + #4078: java.desktop module is no longer optional
+    + #4082: ClassUtil fails with
+      java.lang.reflect.InaccessibleObjectException trying to
+      setAccessible on OptionalInt with JDK 17+
+    + #4090: Support sequenced collections (JDK 21)
+    + #4095: Add withObjectProperty(String),
+      withArrayProperty(String) in JsonNode
+    + #4096: Change JsonNode.withObject(String) to work similar to
+      withArray() wrt argument
+    + #4144: Log WARN if deprecated subclasses of
+      PropertyNamingStrategy is used
+    + #4145: NPE when transforming a tree to a model class object,
+      at ArrayNode.elements()
+    + #4153: Deprecated ObjectReader.withType(Type) has no direct
+      replacement; need forType(Type)
+    + #4159: Add new DefaultTyping.NON_FINAL_AND_ENUMS to allow
+      Default Typing for Enums
+    + #4164: Do not rewind position when serializing direct
+      ByteBuffer
+    + #4175: Exception when deserialization of private record with
+      default constructor
+    + #4184: BeanDeserializer updates currentValue incorrectly when
+      deserialising empty Object
+
+-------------------------------------------------------------------
 Mon Aug 21 13:38:28 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 2.15.2
