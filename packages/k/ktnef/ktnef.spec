@@ -1,7 +1,7 @@
 #
 # spec file for package ktnef
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,86 +16,89 @@
 #
 
 
-%define kf5_version 5.105.0
-%define libname libKPim5Tnef5
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define kpim6_version 6.0.0
+
 %bcond_without released
 Name:           ktnef
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        TNEF support
 License:        LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5CalendarCore)
-BuildRequires:  cmake(KF5Contacts)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KPim5CalendarUtils)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  doxygen
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
+BuildRequires:  cmake(KF6Contacts) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KPim6CalendarUtils) >= %{kpim6_version}
+BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 
 %description
-This package contains additional libraries for KDE PIM applications.
+Library to work with TNEF Email Attachments.
 
-%package common
-Summary:        Files requires by libKPim5Tnef5
-Conflicts:      libKF5Tnef5 < %{version}
+# A ktnef subpackage is already created by kmail.spec, we need a different name
+# for debug categories
+%package debug-categories
+Summary:        Debug categories files needed by libKPim6Tnef6
 
-%description common
-Files that can't be in the libKPim5Tnef5 package anymore.
+%description debug-categories
+Debug categories files needed by libKPim6Tnef6.
 
-%package -n %{libname}
+%package -n libKPim6Tnef6
 Summary:        TNEF Support
-%requires_eq    ktnef-common
+Requires:       ktnef-debug-categories >= %{version}
+Obsoletes:      libKPim5Tnef5-lang < %{version}
 
-%description  -n %{libname}
-This package contains the TNEF support library for KDE PIM applications
+%description  -n libKPim6Tnef6
+Library to work with TNEF Email Attachments.
 
 %package devel
-Summary:        Development files for libKPim5Tnef5
-Requires:       %{libname} = %{version}
-Requires:       cmake(KF5CalendarCore)
+Summary:        Development files for ktnef
+Requires:       libKPim6Tnef6 = %{version}
+Requires:       cmake(KF6CalendarCore) >= %{kf6_version}
 
 %description devel
-This package contains necessary include files and libraries needed
-to develop KDE PIM applications.
+Development files for ktnef.
 
-%lang_package -n %{libname}
+%lang_package -n libKPim6Tnef6
 
 %prep
 %autosetup -p1 -n ktnef-%{version}
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{libname} --with-man --all-name
+%find_lang %{name} --all-name
 
-%ldconfig_scriptlets -n %{libname}
+%ldconfig_scriptlets -n libKPim6Tnef6
 
-%files common
+%files debug-categories
+%{_kf6_debugdir}/ktnef.categories
+%{_kf6_debugdir}/ktnef.renamecategories
+
+%files -n libKPim6Tnef6
 %license LICENSES/*
-%{_kf5_debugdir}/*.categories
-%{_kf5_debugdir}/*.renamecategories
-
-%files -n %{libname}
-%{_kf5_libdir}/libKPim5Tnef.so.*
+%{_kf6_libdir}/libKPim6Tnef.so.*
 
 %files devel
-%dir %{_includedir}/KPim5
-%{_includedir}/KPim5/KTNEF/
-%{_kf5_cmakedir}/KPim5Tnef/
-%{_kf5_libdir}/libKPim5Tnef.so
-%{_kf5_mkspecsdir}/qt_KTNef.pri
+%doc %{_kf6_qchdir}/KPim6Tnef.*
+%{_includedir}/KPim6/KTNEF/
+%{_kf6_cmakedir}/KPim6Tnef/
+%{_kf6_libdir}/libKPim6Tnef.so
 
-%files -n %{libname}-lang -f %{libname}.lang
+%files -n libKPim6Tnef6-lang -f %{name}.lang
 
 %changelog
