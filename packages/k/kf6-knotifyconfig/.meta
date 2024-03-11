@@ -1,0 +1,9 @@
+<package name="kf6-knotifyconfig" project="openSUSE:Factory">
+  <title>Configuration dialog for desktop notifications</title>
+  <description>KNotifyConfig provides a configuration dialog for desktop notifications which
+can be embedded in your application.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-knotifyconfig"/>
+  <url>https://www.kde.org</url>
+</package>
