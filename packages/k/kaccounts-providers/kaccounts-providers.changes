@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Feb 23 13:58:32 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.0
+  * New feature release
+- Changes since 24.01.95:
+  * Fix link target
+- Drop patch, merged upstream:
+  * 0001-Fix-link-target.patch
+
+-------------------------------------------------------------------
+Fri Feb  9 16:07:38 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.01.95
+  * https://kde.org/announcements/megarelease/6/rc2/
+- Add patch:
+  * 0001-Fix-link-target.patch
+
+-------------------------------------------------------------------
 Tue Dec  5 14:19:09 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.4
