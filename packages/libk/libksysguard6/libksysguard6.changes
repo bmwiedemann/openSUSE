@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Wed Mar  6 08:40:29 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.1
+- Changes since 6.0.0:
+  * update version for new release
+  * Handle the translations for systemstats
+
+-------------------------------------------------------------------
+Mon Mar  4 18:52:13 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add Provides/Obsoletes to replace Plasma 5
+
+-------------------------------------------------------------------
+Wed Feb 21 18:36:17 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0:
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.93.0:
+  * Drop all widgets related code
+  * faces: Match BadgeOverlay's minimum font size for Pie Chart label minimum size
+  * faces: Fix alignment of value in small Pie Chart face
+  * faces: Do not try to assign undefined for updateInterval in LineChart
+  * faces: Use a correct column span in FaceGrid if there are no sensors
+  * faces: Fix implicit/minimum size of FaceGrid faces
+  * faces: Fix FaceGrid config page
+  * faces: Fix Choices delegate size and other porting bugs
+  * faces/horizontalbars: Allow specifying the data range from config (kde#479573)
+  * update version for new release
+
+-------------------------------------------------------------------
+Wed Jan 31 17:37:22 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.93.0 (6.0 RC 2):
+  * New bugfix release
+  * See https://kde.org/announcements/megarelease/6/rc2/ for details
+- No code changes since 5.92.0
+
+-------------------------------------------------------------------
+Mon Jan 15 21:09:03 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.92.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Fri Jun  2 11:40:36 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init libksysguard6

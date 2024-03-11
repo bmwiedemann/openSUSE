@@ -1,0 +1,8 @@
+<package name="libksysguard6" project="openSUSE:Factory">
+  <title>Task management and system monitoring library</title>
+  <description>Task management and system monitoring library.
+
+</description>
+  <devel project="KDE:Frameworks" package="libksysguard6"/>
+  <url>https://www.kde.org</url>
+</package>

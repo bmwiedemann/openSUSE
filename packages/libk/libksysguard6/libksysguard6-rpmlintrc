@@ -1,0 +1,7 @@
+# Ideally this package gets split into multiple library subpackages,
+# but they all depend on each other and it's only used by Plasma itself
+# which doesn't allow coinstallation of multiple versions anyway.
+addFilter("shlib-policy-name-error SONAME: libKSysGuardFormatter.so.2");
+addFilter("shlib-policy-name-error SONAME: libKSysGuardSensorFaces.so.2");
+addFilter("shlib-policy-name-error SONAME: libKSysGuardSensors.so.2");
+addFilter("shlib-policy-name-error SONAME: libprocesscore.so.10");
