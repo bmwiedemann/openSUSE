@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Wed Mar  6 08:40:35 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.1
+- Changes since 6.0.0:
+  * update version for new release
+
+-------------------------------------------------------------------
+Mon Mar  4 18:52:34 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add Provides/Obsoletes to replace Plasma 5
+
+-------------------------------------------------------------------
+Wed Feb 21 18:36:42 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0:
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.93.0:
+  * update version for new release
+  * RegionSelectOverlay: Adapt to FloatingTextBox property change
+  * Format better human readable output descriptions (kde#473338)
+  * Fix connector type detection
+  * Create fake input device on demand
+  * update version for new release
+
+-------------------------------------------------------------------
+Wed Jan 31 17:38:34 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.93.0 (6.0 RC 2):
+  * New bugfix release
+  * See https://kde.org/announcements/megarelease/6/rc2/ for details
+- Changes since 5.92.0:
+  * RC 1 version dep
+  * add a version for dependencies so it does not break CI https://invent.kde.org/plasma/bluedevil/-/merge_requests/156
+  * RemoteDesktop: Include clipboard_enabled and the restore data even when no screens are requested
+  * ScreenChooserDialog: doubleclick to select&confirm (kde#470211)
+  * Fix ScreenChooserDialog Layout (kde#479304)
+  * Don't call toggled twice
+  * qml cleanup: removed duplicate toggled signal
+
+-------------------------------------------------------------------
+Mon Jan 15 21:09:22 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.92.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Sat Jul 15 10:39:02 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init xdg-desktop-portal-kde6

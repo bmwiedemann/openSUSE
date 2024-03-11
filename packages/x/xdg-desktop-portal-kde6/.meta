@@ -1,0 +1,8 @@
+<package name="xdg-desktop-portal-kde6" project="openSUSE:Factory">
+  <title>QT/KF6 backend for xdg-desktop-portal</title>
+  <description>A Qt/KF backend implementation for xdg-desktop-portal
+
+</description>
+  <devel project="KDE:Frameworks" package="xdg-desktop-portal-kde6"/>
+  <url>https://www.kde.org</url>
+</package>
