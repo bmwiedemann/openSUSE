@@ -17,24 +17,27 @@
 
 
 %define rname kio-zeroconf
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           kdnssd
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Zeroconf Support for KIO applications
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5DNSSD)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DNSSD) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 
 %description
 This package adds Zeroconf support to KIO, allowing the use of this protocol
@@ -49,26 +52,25 @@ in all applications that are using KIO.
 %ifarch ppc ppc64
 export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %endif
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
+%find_lang %{name} --all-name
 
 %ldconfig_scriptlets
 
 %files
 %license LICENSES/*
-%{_kf5_appstreamdir}/org.kde.kio_zeroconf.metainfo.xml
-%{_kf5_dbusinterfacesdir}/org.kde.kdnssd.xml
-%dir %{_kf5_plugindir}/kf5/
-%dir %{_kf5_plugindir}/kf5/kded
-%{_kf5_plugindir}/kf5/kded/dnssdwatcher.so
-%{_kf5_plugindir}/kf5/kio/zeroconf.so
-%dir %{_kf5_sharedir}/remoteview/
-%{_kf5_sharedir}/remoteview/zeroconf.desktop
+%{_kf6_appstreamdir}/org.kde.kio_zeroconf.metainfo.xml
+%{_kf6_dbusinterfacesdir}/org.kde.kdnssd.xml
+%{_kf6_plugindir}/kf6/kded/dnssdwatcher.so
+%{_kf6_plugindir}/kf6/kio/zeroconf.so
+%dir %{_kf6_sharedir}/remoteview/
+%{_kf6_sharedir}/remoteview/zeroconf.desktop
 
 %files lang -f %{name}.lang
 
