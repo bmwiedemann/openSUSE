@@ -1,0 +1,10 @@
+<package name="kf6-kunitconversion" project="openSUSE:Factory">
+  <title>Tool for converting physical units</title>
+  <description>KUnitConversion provides functions to convert values in different physical
+units. It supports converting different prefixes (e.g. kilo, mega, giga) as
+well as converting between different unit systems (e.g. liters, gallons).
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kunitconversion"/>
+  <url>https://www.kde.org</url>
+</package>
