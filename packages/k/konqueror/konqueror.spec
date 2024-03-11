@@ -18,20 +18,18 @@
 
 %bcond_without released
 Name:           konqueror
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        KDE File Manager and Browser
 # Note for legal: konqueror-17.04.2/webenginepart/autotests/webengine_testutils.h is Qt commercial OR GPL-3.0
 # but it is neither built nor installed in our package.
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/konqueror
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM https://invent.kde.org/network/konqueror/-/merge_requests/284
-Patch1:         0001-Fix-bookmarks.desktop.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  libtidy-devel
@@ -128,10 +126,8 @@ Development package for the konqueror libraries.
 %{_kf5_debugdir}/konqueror.categories
 %dir %{_kf5_sharedir}/konqsidebartng
 %dir %{_kf5_sharedir}/konqsidebartng/entries
-%dir %{_kf5_sharedir}/konqsidebartng/plugins
 %dir %{_kf5_sharedir}/kcontrol
 %dir %{_kf5_sharedir}/kcontrol/pics
-%dir %{_kf5_sharedir}/kxmlgui5
 %dir %{_kf5_plugindir}/konqueror_kcms
 %doc %lang(en) %{_kf5_htmldir}/en
 %{_datadir}/kcmcss/
@@ -141,6 +137,7 @@ Development package for the konqueror libraries.
 %{_kf5_applicationsdir}/kfmclient_war.desktop
 %{_kf5_applicationsdir}/konqbrowser.desktop
 %{_kf5_applicationsdir}/bookmarks.desktop
+%{_kf5_applicationsdir}/kcm_bookmarks.desktop
 %{_kf5_applicationsdir}/org.kde.konqueror.desktop
 %{_kf5_appstreamdir}/org.kde.konqueror.appdata.xml
 %{_kf5_bindir}/kfmclient
@@ -164,6 +161,7 @@ Development package for the konqueror libraries.
 %{_kf5_plugindir}/konqueror_kcms/khtml_filter.so
 %{_kf5_plugindir}/konqueror_kcms/khtml_general.so
 %{_kf5_plugindir}/konqueror_kcms/khtml_java_js.so
+%{_kf5_plugindir}/konqueror_kcms/khtml_tabs.so
 %{_kf5_plugindir}/konqueror_kcms/khtml_useragent.so
 %{_kf5_servicesdir}/org.kde.konqueror.desktop
 %{_kf5_sharedir}/kconf_update/webenginepart.upd
@@ -176,18 +174,16 @@ Development package for the konqueror libraries.
 %dir %{_kf5_plugindir}/kf5/parts/
 %dir %{_kf5_sharedir}/webenginepart/
 %{_kf5_iconsdir}/hicolor/*/*/webengine.*
-%{_kf5_kxmlguidir}/webenginepart/
 %{_kf5_libdir}/libkwebenginepart.so
 %{_kf5_plugindir}/kf5/parts/webenginepart.so
-%{_kf5_servicesdir}/webenginepart.desktop
 %{_kf5_sharedir}/webenginepart/error.html
 
 %files -n konqueror-plugins
 %config %{_kf5_configdir}/konqsidebartngrc
 %config %{_kf5_configdir}/translaterc
-%dir %{_kf5_kxmlguidir}/fsview
 %dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/parts
+%dir %{_kf5_plugindir}/kf5/kio
 %dir %{_kf5_plugindir}/khtml
 %dir %{_kf5_plugindir}/khtml/kpartplugins
 %dir %{_kf5_plugindir}/dolphinpart
@@ -207,22 +203,17 @@ Development package for the konqueror libraries.
 %{_kf5_iconsdir}/*/*/actions/imagegallery.png
 %{_kf5_iconsdir}/*/*/actions/webarchiver.*
 %{_kf5_iconsdir}/hicolor/*/apps/fsview.png
-%{_kf5_kxmlguidir}/fsview/fsview_part.rc
 %{_kf5_libdir}/libkonqsidebarplugin.so.*
 %{_kf5_plugindir}/akregatorkonqfeedicon.so
 %dir %{_kf5_plugindir}/kf5/kfileitemaction/
 %{_kf5_plugindir}/kf5/kfileitemaction/akregatorplugin.so
 %{_kf5_plugindir}/autorefresh.so
 %{_kf5_plugindir}/babelfishplugin.so
-%{_kf5_plugindir}/khtmlttsplugin.so
 %{_kf5_plugindir}/konqueror_kcms/kcm_history.so
 %{_kf5_plugindir}/kf5/parts/fsviewpart.so
 %{_kf5_plugindir}/kf5/parts/konq_sidebar.so
+%{_kf5_plugindir}/kf5/kio/bookmarks.so
 %{_kf5_plugindir}/khtmlsettingsplugin.so
-%{_kf5_plugindir}/konqsidebar_bookmarks.so
-%{_kf5_plugindir}/konqsidebar_history.so
-%{_kf5_plugindir}/konqsidebar_places.so
-%{_kf5_plugindir}/konqsidebar_tree.so
 %{_kf5_plugindir}/konqueror_kget_browser_integration.so
 %{_kf5_plugindir}/uachangerplugin.so
 %{_kf5_plugindir}/webarchiverplugin.so
@@ -234,16 +225,15 @@ Development package for the konqueror libraries.
 %{_kf5_plugindir}/khtml/kpartplugins/autorefreshkhtml_kpartplugins.so
 %{_kf5_plugindir}/khtml/kpartplugins/babelfishpluginkhtml_kpartplugins.so
 %{_kf5_plugindir}/khtml/kpartplugins/khtmlsettingspluginkhtml_kpartplugins.so
-%{_kf5_plugindir}/khtml/kpartplugins/khtmlttspluginkhtml_kpartplugins.so
 %{_kf5_plugindir}/khtml/kpartplugins/konqueror_kget_browser_integrationkhtml_kpartplugins.so
 %{_kf5_plugindir}/khtml/kpartplugins/uachangerpluginkhtml_kpartplugins.so
 %{_kf5_plugindir}/khtml/kpartplugins/webarchiverpluginkhtml_kpartplugins.so
 %{_kf5_plugindir}/konqueror/kpartplugins/searchbarplugin.so
+%{_kf5_plugindir}/konqueror/sidebar/
 %{_kf5_plugindir}/kwebkitpart/kpartplugins/akregatorkonqfeediconkwebkitpart_kpartplugins.so
 %{_kf5_plugindir}/kwebkitpart/kpartplugins/autorefreshkwebkitpart_kpartplugins.so
 %{_kf5_plugindir}/kwebkitpart/kpartplugins/babelfishpluginkwebkitpart_kpartplugins.so
 %{_kf5_plugindir}/kwebkitpart/kpartplugins/khtmlsettingspluginkwebkitpart_kpartplugins.so
-%{_kf5_plugindir}/kwebkitpart/kpartplugins/khtmlttspluginkwebkitpart_kpartplugins.so
 %{_kf5_plugindir}/kwebkitpart/kpartplugins/konqueror_kget_browser_integrationkwebkitpart_kpartplugins.so
 %{_kf5_plugindir}/kwebkitpart/kpartplugins/uachangerpluginkwebkitpart_kpartplugins.so
 %{_kf5_plugindir}/kwebkitpart/kpartplugins/webarchiverpluginkwebkitpart_kpartplugins.so
@@ -251,14 +241,11 @@ Development package for the konqueror libraries.
 %{_kf5_plugindir}/webenginepart/kpartplugins/autorefreshwebenginepart_kpartplugins.so
 %{_kf5_plugindir}/webenginepart/kpartplugins/babelfishpluginwebenginepart_kpartplugins.so
 %{_kf5_plugindir}/webenginepart/kpartplugins/khtmlsettingspluginwebenginepart_kpartplugins.so
-%{_kf5_plugindir}/webenginepart/kpartplugins/khtmlttspluginwebenginepart_kpartplugins.so
 %{_kf5_plugindir}/webenginepart/kpartplugins/konqueror_kget_browser_integrationwebenginepart_kpartplugins.so
 %{_kf5_plugindir}/webenginepart/kpartplugins/uachangerpluginwebenginepart_kpartplugins.so
 %{_kf5_plugindir}/webenginepart/kpartplugins/webarchiverpluginwebenginepart_kpartplugins.so
-%{_kf5_servicesdir}/fsview_part.desktop
-%{_kf5_servicesdir}/konq_sidebartng.desktop
-%{_kf5_servicesdir}/webarchivethumbnail.desktop
 %{_kf5_sharedir}/akregator/
+%{_kf5_sharedir}/kio_bookmarks/
 %{_kf5_sharedir}/konqsidebartng/entries/bookmarks.desktop
 %{_kf5_sharedir}/konqsidebartng/entries/fonts.desktop
 %{_kf5_sharedir}/konqsidebartng/entries/history.desktop
@@ -267,17 +254,12 @@ Development package for the konqueror libraries.
 %{_kf5_sharedir}/konqsidebartng/entries/remote.desktop
 %{_kf5_sharedir}/konqsidebartng/entries/root.desktop
 %{_kf5_sharedir}/konqsidebartng/entries/services.desktop
-%{_kf5_sharedir}/konqsidebartng/plugins/konqsidebar_bookmarks.desktop
-%{_kf5_sharedir}/konqsidebartng/plugins/konqsidebar_history.desktop
-%{_kf5_sharedir}/konqsidebartng/plugins/konqsidebar_places.desktop
-%{_kf5_sharedir}/konqsidebartng/plugins/konqsidebar_tree.desktop
 
 %files devel
 %{_kf5_cmakedir}/KF5Konq/
 %{_kf5_libdir}/libKF5Konq.so
 %{_kf5_libdir}/libkonqsidebarplugin.so
 %{_kf5_includedir}/
-%{_includedir}/konqsidebarplugin.h
 
 %files lang -f %{name}.lang
 

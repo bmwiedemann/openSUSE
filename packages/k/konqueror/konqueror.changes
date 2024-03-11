@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Feb 23 13:59:56 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.0
+  * New feature release
+- Changes since 24.01.95:
+  * fix: use proper CMakeLists variable name and fix versions
+  * Ensure WebEngineView receives focus after pressing return from the URL bar
+  * Ensure that GUI is correctly hidden and restored when toggling complete full screen
+  * Save and read cookies on disk
+  * Fix compilation with KF5 when DontUseKCookieJar is enabled
+
+-------------------------------------------------------------------
+Fri Feb  9 16:09:02 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.01.95
+  * https://kde.org/announcements/megarelease/6/rc2/
+- Drop patch, no longer needed
+  * 0001-Fix-bookmarks.desktop.patch
+
+-------------------------------------------------------------------
 Mon Jan  1 16:36:52 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix bookmarks.desktop (boo#1218465):
