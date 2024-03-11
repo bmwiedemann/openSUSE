@@ -1,7 +1,7 @@
 #
 # spec file for package breeze
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,7 +45,7 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
 # Needed for Plasma/LookAndFeel service type declaration (kde#367923)
 BuildRequires:  plasma-framework
-BuildRequires:  cmake(KDecoration2) >= %{_plasma5_version}
+BuildRequires:  (cmake(KDecoration2) >= %{_plasma5_version} with cmake(KDecoration2) < 6)
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5FrameworkIntegration)

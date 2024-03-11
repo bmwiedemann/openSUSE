@@ -1387,4 +1387,12 @@
     <comment>Plasma 5.27.10 (forwarded request 1131390 from Vogtinator)</comment>
     <requestid>1131398</requestid>
   </revision>
+  <revision rev="165" vrev="2">
+    <srcmd5>352857f56dbcbc2689a2db499b295642</srcmd5>
+    <version>5.27.10</version>
+    <time>1710167254</time>
+    <user>anag+factory</user>
+    <comment>- Make sure to pick kdecoration &lt; 6</comment>
+    <requestid>1152910</requestid>
+  </revision>
 </revisionlist>
