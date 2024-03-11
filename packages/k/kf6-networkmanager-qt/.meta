@@ -1,0 +1,11 @@
+<package name="kf6-networkmanager-qt" project="openSUSE:Factory">
+  <title>A Qt wrapper for NetworkManager DBus API</title>
+  <description>NetworkManagerQt provides access to all NetworkManager features
+exposed on DBus. It allows you to manage your connections and control
+your network devices and also provides a library for parsing connection
+settings which are used in DBus communication.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-networkmanager-qt"/>
+  <url>https://www.kde.org</url>
+</package>
