@@ -1,7 +1,7 @@
 #
 # spec file for package signon-kwallet-extension
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,26 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           signon-kwallet-extension
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        KWallet integration for signon framework
 License:        GPL-2.0-or-later
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+URL:            https://www.kde.org
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  signon-plugins-devel
-BuildRequires:  signond-libs-devel
-BuildRequires:  cmake(KF5Wallet)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Test)
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF6Wallet) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  pkgconfig(SignOnExtension)
 # This is very important - the default in signon is to save tokens in plaintext
 # in a sqlite database...
 Supplements:    signond
@@ -45,15 +47,16 @@ KWallet integration for signon framework.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
 %files
 %license COPYING
-%dir %{_kf5_libdir}/signon/extensions
-%{_kf5_libdir}/signon/extensions/libkeyring-kwallet.so*
+%dir %{_kf6_libdir}/signon/extensions
+%{_kf6_libdir}/signon/extensions/libkeyring-kwallet.so*
 
 %changelog
