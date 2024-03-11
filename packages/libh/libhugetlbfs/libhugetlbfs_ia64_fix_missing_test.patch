@@ -7,13 +7,13 @@ same seem to be the case for x86_64 in version 2.15.
 Signed-off-by: Thomas Renninger <trenn@suse.de>
 
 ---
- tests/Makefile |    2 +-
+ tests/Makefile.in |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: libhugetlbfs-2.21/tests/Makefile
+Index: libhugetlbfs-2.21/tests/Makefile.in
 ===================================================================
---- libhugetlbfs-2.21.orig/tests/Makefile
-+++ libhugetlbfs-2.21/tests/Makefile
+--- libhugetlbfs-2.21.orig/tests/Makefile.in
++++ libhugetlbfs-2.21/tests/Makefile.in
 @@ -295,7 +295,7 @@ obj64/install:
  	$(INSTALL) -m 755 wrapper-utils.sh $(DESTDIR)$(INST_TESTSDIR64)/obj64
  	$(INSTALL) -m 755 $(HELPERS:%=obj64/%) $(DESTDIR)$(INST_TESTSDIR64)/obj64

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Mar 11 09:47:47 UTC 2024 - trenn@suse.de
+
+- Adopt to mainline:
+M libhugetlbfs_ia64_fix_missing_test.patch
+M disable-rw-on-non-ldscripts.diff
+M zero_filesize_segment.patch
+D glibc-2.34-fix.patch
+- Update to version 2.24.0.g1322884:
+  * Update NEWS for 2.24 release
+  * CI: Add build, codeql, codestyle check
+  * build: automake support
+  * test: disable partial usecases of shmoverride_linked_static
+  * elflink.c: Fix LOAD max segment to adapt x86
+  * Add support for loong64
+  * alloc.c: Fix get_hugepage_region might return a wild pointer
+  * run_tests: Fix bug in paranoid bug
+  * Add closing the fd when exiting from gethugepagesizes
+  * tests: Append CPPFLAGS rather then override
+  * Update hugetlbfs.h
+  * Disable hugepage-backed malloc if __morecore is not available
+
+-------------------------------------------------------------------
 Wed Nov  1 16:44:03 UTC 2023 - Thomas Abraham <tabraham@suse.com>
 
 - Add libhugetlbfs-increase-mount-buffer.patch for upstream issue gh#43

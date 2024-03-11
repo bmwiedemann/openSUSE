@@ -1,7 +1,7 @@
-diff --git a/tests/Makefile b/tests/Makefile
+diff --git a/tests/Makefile.in b/tests/Makefile.in
 index e2e1156..4daa5d1 100644
---- a/tests/Makefile
-+++ b/tests/Makefile
+--- a/tests/Makefile.in
++++ b/tests/Makefile.in
 @@ -39,6 +39,11 @@ LDLIBS = $(STATIC_LDLIBS) -ldl -lhugetlbfs_privutils
  LDFLAGS32 = -L../obj32
  LDFLAGS64 = -L../obj64

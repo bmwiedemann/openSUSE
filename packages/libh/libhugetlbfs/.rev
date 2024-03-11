@@ -449,4 +449,12 @@ D fix_plt_extrasz_always_returning_0_on_ppc64le.patch
     <comment></comment>
     <requestid>1123910</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>a1dd43bc7759cef8ba8098d5b988e556</srcmd5>
+    <version>2.24.0.g1322884</version>
+    <time>1710167704</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1156916</requestid>
+  </revision>
 </revisionlist>

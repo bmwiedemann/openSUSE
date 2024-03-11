@@ -1,7 +1,7 @@
 #
 # spec file for package libhugetlbfs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define my_make_flags V=1 CFLAGS="%{optflags} -fPIC" LDFLAGS="-pie" BUILDTYPE=NATIVEONLY PREFIX=%{_prefix} LIBDIR32=%{_libdir} DESTDIR=%{buildroot}
 Name:           libhugetlbfs
-Version:        2.23.0.g6b126a4
+Version:        2.24.0.g1322884
 Release:        0
 Summary:        Helper library for the Huge Translation Lookaside Buffer Filesystem
 License:        LGPL-2.1-or-later
@@ -30,11 +30,11 @@ Patch0:         libhugetlbfs.tests-malloc.patch
 Patch1:         libhugetlbfs_ia64_fix_missing_test.patch
 Patch2:         disable-rw-on-non-ldscripts.diff
 Patch3:         zero_filesize_segment.patch
-Patch4:         glibc-2.34-fix.patch
-Patch5:         libhugetlbfs-increase-mount-buffer.patch
+Patch4:         libhugetlbfs-increase-mount-buffer.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  doxygen
 BuildRequires:  glibc-devel-static
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # bug437293
 %ifarch ppc64
 Obsoletes:      libhugetlbfs-64bit
@@ -65,13 +65,15 @@ The testsuite for libhugetlbfs. Binaries can be found in
 
 %build
 echo %{version} > version
+./autogen.sh
+%{configure}
 make %{my_make_flags}
 
 %install
 make %{my_make_flags} PMDIR="%{perl_vendorlib}/TLBC" \
 	install install-tests
-mkdir -p %{buildroot}%{_prefix}/include
-cp -avL hugetlbfs.h %{buildroot}%{_prefix}/include
+mkdir -p %{buildroot}%{_includedir}
+cp -avL hugetlbfs.h %{buildroot}%{_includedir}
 chmod 644 %{buildroot}%{_libdir}/*.a
 if [ -f %{buildroot}%{_libdir}/libhugetlbfs/tests/obj64/dummy.ldscript ]; then
 	chmod -f a-x %{buildroot}%{_libdir}/libhugetlbfs/tests/obj64/dummy.ldscript
