@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 23 14:00:19 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.0
+  * New feature release
+- Changes since 24.01.95:
+  * Correct icon and text positions in game chooser for HiDPI mode
+  * Fix 25x25 letter markers not showing up for ksudoku_scrible.svg
+
+-------------------------------------------------------------------
+Fri Feb  9 16:09:26 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.01.95
+  * https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
 Tue Dec  5 14:20:14 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.4

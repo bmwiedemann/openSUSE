@@ -1,7 +1,7 @@
 #
 # spec file for package ksudoku
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,44 +16,44 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           ksudoku
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Program to generate and solve Sudoku puzzles in 2D or 3D
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/ksudoku
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5ItemModels)
-BuildRequires:  cmake(KF5KDEGames)
-BuildRequires:  cmake(KF5KDELibs4Support)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5NewStuff)
-BuildRequires:  cmake(KF5NotifyConfig)
-BuildRequires:  cmake(KF5TextWidgets)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5OpenGL)
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5QuickWidgets)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(KDEGames6) 
+BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6JobWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6OpenGLWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(opengl)
 Obsoletes:      ksudoku5 < %{version}
 Provides:       ksudoku5 = %{version}
 
@@ -70,27 +70,26 @@ number twice on each column, row, or subsquare.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
-
-%suse_update_desktop_file -G "Sudoku Puzzles" org.kde.ksudoku Game LogicGame
+%find_lang %{name} --with-html --all-name
 
 %files
 %license COPYING*
-%config %{_kf5_configdir}/ksudokurc
-%doc %lang(en) %{_kf5_htmldir}/en/ksudoku/
-%{_kf5_applicationsdir}/org.kde.ksudoku.desktop
-%{_kf5_appstreamdir}/org.kde.ksudoku.appdata.xml
-%{_kf5_bindir}/ksudoku
-%{_kf5_iconsdir}/hicolor/*/*/ksudoku*
-%{_kf5_sharedir}/ksudoku/
+%config %{_kf6_configdir}/ksudokurc
+%doc %lang(en) %{_kf6_htmldir}/en/ksudoku/
+%{_kf6_applicationsdir}/org.kde.ksudoku.desktop
+%{_kf6_appstreamdir}/org.kde.ksudoku.appdata.xml
+%{_kf6_bindir}/ksudoku
+%{_kf6_iconsdir}/hicolor/*/*/ksudoku*
+%{_kf6_sharedir}/ksudoku/
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/ksudoku/
 
 %changelog
