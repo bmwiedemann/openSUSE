@@ -1,7 +1,7 @@
 #
 # spec file for package kitinerary
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,113 +16,106 @@
 #
 
 
-%define libname libKPimItinerary5
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define kpim6_version 6.0.0
+
 %bcond_without released
 Name:           kitinerary
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Data model and extraction system for travel reservations
 License:        LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-%if 0%{?suse_version} == 1500
-BuildRequires:  gcc10-c++
-BuildRequires:  gcc10-PIE
-%endif
-BuildRequires:  libopenssl-devel
+BuildRequires:  doxygen
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libphonenumber-devel
-BuildRequires:  libpoppler-qt5-devel
-BuildRequires:  libqt5-qtdeclarative-private-headers-devel
-BuildRequires:  libxml2-devel
-BuildRequires:  zlib-devel
-BuildRequires:  cmake(KF5CalendarCore)
-BuildRequires:  cmake(KF5Contacts)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5Mime)
-BuildRequires:  cmake(KPim5PkPass)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5Test)
+BuildRequires:  pkgconfig
+BuildRequires:  shared-mime-info
+BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
+BuildRequires:  cmake(KF6Contacts) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6PkPass) >= %{kpim6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
+BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(ZXing)
-%requires_eq    libKPim5Itinerary5
-Conflicts:      libKPimItinerary5 < %{version}
+BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(poppler-qt6)
+BuildRequires:  pkgconfig(zlib)
+Requires:       libKPim6Itinerary6 = %{version}
 
 %description
-Kitinerary is a library which provides a data model and a system to extract information
-from travel reservations. The model can then be reused in other applications.
+Kitinerary is a library which provides a data model and a system to extract
+information from travel reservations. The model can then be reused in other
+applications.
 
-%package -n libKPim5Itinerary5
+%package -n libKPim6Itinerary6
 Summary:        Data model and extraction system for travel reservations
-%requires_eq    %{name}
-# Renamed
-Obsoletes:      libKPimItinerary5-lang
+Requires:       kitinerary >= %{version}
+Obsoletes:      libKPim5Itinerary5-lang < %{version}
 
-%description -n libKPim5Itinerary5
-Kitinerary is a library which provides a data model and a system to extract information
-from travel reservations. The model can then be reused in other applications.
-This package contains the library itself.
+%description -n libKPim6Itinerary6
+Kitinerary is a library which provides a data model and a system to extract
+information from travel reservations. The model can then be reused in other
+applications.
+This package contains the kitinerary library.
 
 %package devel
 Summary:        Development files for kitinerary
-Requires:       libKPim5Itinerary5 = %{version}
-Requires:       libqt5-qtdeclarative-private-headers-devel
-Requires:       cmake(KF5CalendarCore)
-Requires:       cmake(KF5Contacts)
-Requires:       cmake(KF5Mime)
-Requires:       cmake(KPim5PkPass)
-Requires:       cmake(Qt5Gui)
+Requires:       libKPim6Itinerary6 = %{version}
+Requires:       cmake(KF6CalendarCore) >= %{kf6_version}
+Requires:       cmake(KF6Contacts) >= %{kf6_version}
+Requires:       cmake(KPim6Mime) >= %{kpim6_version}
+Requires:       cmake(KPim6PkPass) >= %{kpim6_version}
+Requires:       cmake(Qt6Gui) >= %{qt6_version}
 
 %description devel
 This package contains all necessary include files and libraries needed
 to build programs that use the kitinerary library.
 
-%lang_package -n libKPim5Itinerary5
+%lang_package -n libKPim6Itinerary6
 
 %prep
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} == 1500
-export CXX=g++-10
-%endif
 
-%cmake_kf5 -d build -- -DBUILD_TESTING=OFF
-%cmake_build
+%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --with-qt --all-name
+%find_lang %{name} --all-name
 
-#%check
-#%ctest
-
-%ldconfig_scriptlets -n libKPim5Itinerary5
+%ldconfig_scriptlets -n libKPim6Itinerary6
 
 %files
-%license LICENSES/*
-%{_kf5_debugdir}/*.categories
-%{_kf5_libexecdir}/kitinerary-extractor
-%{_kf5_sharedir}/mime/packages/application-vnd-kde-itinerary.xml
+%{_kf6_debugdir}/org_kde_kitinerary.categories
+%{_kf6_libexecdir}/kitinerary-extractor
+%{_kf6_sharedir}/mime/packages/application-vnd-kde-itinerary.xml
 
-%files -n libKPim5Itinerary5
-%{_kf5_libdir}/libKPim5Itinerary.so.*
+%files -n libKPim6Itinerary6
+%license LICENSES/*
+%{_kf6_libdir}/libKPim6Itinerary.so.*
 
 %files devel
-%dir %{_includedir}/KPim5/
-%{_includedir}/KPim5/KItinerary/
-%{_includedir}/KPim5/kitinerary/
-%{_includedir}/KPim5/kitinerary_version.h
-%{_kf5_cmakedir}/KPimItinerary/
-%{_kf5_cmakedir}/KPim5Itinerary/
-%{_kf5_libdir}/libKPim5Itinerary.so
+%doc %{_kf6_qchdir}/KPim6Itinerary.*
+%{_includedir}/KPim6/KItinerary/
+%{_includedir}/KPim6/kitinerary/
+%{_includedir}/KPim6/kitinerary_version.h
+%{_kf6_cmakedir}/KPim6Itinerary/
+%{_kf6_libdir}/libKPim6Itinerary.so
 
-%files -n libKPim5Itinerary5-lang -f %{name}.lang
+%files -n libKPim6Itinerary6-lang -f %{name}.lang
 
 %changelog

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Feb 23 13:59:31 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.0
+  * New feature release
+- Changes since 24.01.95:
+  * Handle another DB regional ERA TLB ticket variant with PLAI layout
+  * Handle time quadruples in the generic boarding pass extractor (kde#481281)
+  * Support the horizontally split double ticket layout for PV/Vivi
+  * Extract seat information from Elron tickets
+  * Make LTG Link extractor more robust against slight layout variations
+  * Force-disable unity builds
+  * Handle Carte Advantage with multiple validity periods
+  * Don't set reservationNumber for Thalys ERA SSB barcodes to TCN
+
+-------------------------------------------------------------------
+Fri Feb  9 16:08:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.01.95
+  * https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
 Tue Dec  5 14:19:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.4
