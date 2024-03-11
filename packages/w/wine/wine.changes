@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Mar  9 07:50:32 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 9.4 release
+  - Bundled vkd3d upgraded to version 1.11.
+  - Initial OpenGL support in the Wayland driver.
+  - Support for elevating process privileges.
+  - More HID pointer improvements.
+  - Various bug fixes.
+- update staging to 9.4 release
+
+-------------------------------------------------------------------
+Wed Feb 28 13:48:34 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- remove outdated wine-nine support.
+
+-------------------------------------------------------------------
 Mon Feb 26 10:34:20 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 9.3 release

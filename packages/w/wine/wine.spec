@@ -19,18 +19,14 @@
 %define projectname wine
 %global flavor @BUILD_FLAVOR@%nil
 %define staging 0
-%define nine 0
 
-%if "%flavor" == "staging" || "%flavor" == "staging-nine"
+%if "%flavor" == "staging"
 %define staging 1
-%endif
-%if "%flavor" == "nine" || "%flavor" == "staging-nine"
-%define nine 1
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 9.3
-Version:        9.3
+%define realver 9.4
+Version:        9.4
 Release:        0
 
 %if "%{flavor}" != ""
@@ -174,21 +170,12 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 9.3
+%define staging_version 9.4
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel
 BuildRequires:  libva-devel
 BuildRequires:  python3
-%endif
-%if %{nine}
-# upstream patch target version
-%define nine_version 4.1
-BuildRequires:  Mesa-libd3d-devel
-Requires:       Mesa-libd3d
-BuildRequires:  libOSMesa-devel
-BuildRequires:  pkgconfig(dri2proto)
-Source110:      wine-d3d9-patches-%{nine_version}.tar.xz
 %endif
 # wine bundles multiple unix libraries to be able to build PE files without dependencies
 # current versions are from 7.22 (update this if you update the versions below):
@@ -219,10 +206,6 @@ Windows applications into your desktop.
 %if %{staging}
 This WINE flavor contains the "staging" development patchset
 on top of the regular Wine release.
-%endif
-
-%if %{nine}
-This WINE flavor contains Direct3D9 enhancements patches for Gallium Nine support.
 %endif
 
 You can run your Windows executables with it and write your Windows
@@ -260,16 +243,6 @@ tar xf %{SOURCE100}
 python3 ./wine-staging-%staging_version/staging/patchinstall.py --all
 %endif
 
-%if %{nine}
-tar xf %{SOURCE110}
-%if %{staging}
-patch --no-backup-if-mismatch -p1 -i ./wine-d3d9-patches-%nine_version/staging-helper.patch
-%else
-patch --no-backup-if-mismatch -p1 -i ./wine-d3d9-patches-%nine_version/d3d9-helper.patch
-%endif
-patch --no-backup-if-mismatch -p1 -i ./wine-d3d9-patches-%nine_version/wine-d3d9.patch
-%endif
-
 %build
 # currently not building with LTO
 %define _lto_cflags %{nil}
@@ -286,7 +259,7 @@ export RPM_OPT_FLAGS=`echo $RPM_OPT_FLAGS|sed -e 's/-fomit-frame-pointer//'`
 export CC="/usr/bin/clang"
 %endif
 
-%if %{staging} || %{nine}
+%if %{staging}
 autoreconf -i -f
 %endif
 # keep just for susepatches with configure changes
@@ -300,9 +273,6 @@ CFLAGS="$RPM_OPT_FLAGS" \
 %endif
 %ifarch x86_64 aarch64
         --enable-win64 \
-%endif
-%if %{nine}
-    --with-d3d9-nine \
 %endif
 	--verbose
 
@@ -332,9 +302,6 @@ echo " recommends \"wine-mp3-32bit\""		>> %SOURCE7
 %endif
 %if 0%{?suse_version} >= 1310
 echo " requires \"p11-kit-32bit\""		>> %SOURCE7
-%endif
-%if %{nine}
-echo " requires \"Mesa-libd3d-32bit\""		>> %SOURCE7
 %endif
 %if "%{flavor}" != ""
 echo " provides \"wine-<targettype> = <version>\""		>> %SOURCE7

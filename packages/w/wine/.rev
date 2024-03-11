@@ -5088,4 +5088,20 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - correct conflicts/recommends for mono and gecko</comment>
     <requestid>1151632</requestid>
   </revision>
+  <revision rev="434" vrev="1">
+    <srcmd5>d0cd2ca7c0688906c738f7ba28d72a20</srcmd5>
+    <version>9.4</version>
+    <time>1710167693</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 9.4 release
+  - Bundled vkd3d upgraded to version 1.11.
+  - Initial OpenGL support in the Wayland driver.
+  - Support for elevating process privileges.
+  - More HID pointer improvements.
+  - Various bug fixes.
+- update staging to 9.4 release
+
+- remove outdated wine-nine support.</comment>
+    <requestid>1156900</requestid>
+  </revision>
 </revisionlist>
