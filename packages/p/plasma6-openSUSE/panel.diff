@@ -1,0 +1,20 @@
+--- /usr/share/plasma/layout-templates/org.kde.plasma.desktop.defaultPanel/contents/layout.js   2023-11-13 12:52:56.000000000 -0500
++++ /usr/share/plasma/layout-templates/org.opensuse.desktop.defaultPanel/contents/layout.js     2023-11-14 18:27:11.599802134 -0500
+@@ -1,6 +1,8 @@
+ var panel = new Panel
+ var panelScreen = panel.screen
+ 
++panel.floating = false
++
+ // No need to set panel.location as ShellCorona::addPanel will automatically pick one available edge
+ 
+ // For an Icons-Only Task Manager on the bottom, *3 is too much, *2 is too little
+@@ -22,6 +24,8 @@
+ }
+ 
+ var kickoff = panel.addWidget("org.kde.plasma.kickoff")
++kickoff.currentConfigGroup = ["General"]
++kickoff.writeConfig("icon", "start-here-branding")
+ kickoff.currentConfigGroup = ["Shortcuts"]
+ kickoff.writeConfig("global", "Alt+F1")
+ 

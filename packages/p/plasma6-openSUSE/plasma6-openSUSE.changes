@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Wed Mar  6 08:40:32 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.1
+
+-------------------------------------------------------------------
+Tue Mar  5 10:56:59 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Obsolete Plasma 5 branding
+
+-------------------------------------------------------------------
+Wed Feb 21 18:36:37 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0
+
+-------------------------------------------------------------------
+Wed Jan 31 17:37:47 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.93.0
+
+-------------------------------------------------------------------
+Wed Jan 17 18:39:47 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.92.0
+
+-------------------------------------------------------------------
+Fri Nov 24 14:04:49 UTC 2023 - fabian@ritter-vogt.de
+
+- Update to version 84.87~git20231124T150427~8b6e0ec:
+  * Remove font settings (except for fixed) from kdeglobals
+
+-------------------------------------------------------------------
+Sat Nov 18 17:33:41 UTC 2023 - fabian@ritter-vogt.de
+
+- Update to version 84.87~git20231118T182337~13910c9:
+  * Recreate openSUSEdark color scheme based on breeze with accent color
+
+-------------------------------------------------------------------
+Wed Nov 15 23:20:03 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 84.87~git20231116T001840~81362d1:
+  * Don't set usersWallpapers in plasmarc
+  * Set the default wallpaper in the LnF
+  * Remove icons from desktopthemes
+  * Make LNF and panel metadata.json compatible with Plasma 6
+  * Make the SDDM theme Qt 6 compatible
+  * Add SDDM config to use the breeze-openSUSE theme
+  * Port splash screen to Qt 6
+  * Convert desktopthemes from metadata.desktop to metadata.json + plasmarc
+  * Remove openSUSEdefault desktop theme
+  * Remove obsolete search providers
+  * Remove obsolete files and settings
+
+-------------------------------------------------------------------
+Tue Nov 14 21:53:30 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Initial commit based on plasma5-openSUSE

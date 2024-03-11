@@ -1,0 +1,8 @@
+<package name="plasma6-openSUSE" project="openSUSE:Factory">
+  <title>openSUSE KDE Extension</title>
+  <description>This package contains the standard openSUSE desktop and extensions.
+
+</description>
+  <devel project="KDE:Frameworks" package="plasma6-openSUSE"/>
+  <url>https://github.com/openSUSE/plasma-openSUSE</url>
+</package>
