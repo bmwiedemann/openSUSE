@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 11 08:03:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.12.6:
+  + Features: WebAlbums: allow Exif image title to be used.
+  + Bugfixes:
+    + Fixed 'could not perform operation' when editing a modified
+      image.
+    + Video thumbnailer: use the default thumbnail size if invalid.
+    + Video thumbnailer: avoid a null pointer dereference and
+      crash.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Feb 19 17:49:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.12.5:
