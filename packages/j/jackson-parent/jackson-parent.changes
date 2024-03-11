@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  8 08:33:47 UTC 2024 - Gus Kenion <gkenion@suse.com>
+
+- Upgrade to 2.16
+  * Upgrade to oss-parent 56 (tons of plugin updates to resolve
+    Maven warnings, new Moditect plugin)
+
+-------------------------------------------------------------------
 Mon Aug 21 13:25:44 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 2.15
