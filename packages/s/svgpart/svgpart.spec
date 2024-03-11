@@ -1,7 +1,7 @@
 #
 # spec file for package svgpart
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,28 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           svgpart
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        SVG viewer component
 License:        GPL-2.0-or-later
 URL:            https://invent.kde.org/graphics/svgpart
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Parts)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6SvgWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 
 %description
 An SVG viewer component (KPart).
@@ -45,23 +48,19 @@ An SVG viewer component (KPart).
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-
-%ldconfig_scriptlets
+%find_lang %{name} --all-name
 
 %files
 %license LICENSES/*
-%{_kf5_appstreamdir}/org.kde.svgpart.metainfo.xml
-%dir %{_kf5_plugindir}/kf5/
-%dir %{_kf5_plugindir}/kf5/parts
-%{_kf5_plugindir}/kf5/parts/svgpart.so
-%{_kf5_servicesdir}/svgpart.desktop
+%{_kf6_appstreamdir}/org.kde.svgpart.metainfo.xml
+%{_kf6_plugindir}/kf6/parts/svgpart.so
 
 %files lang -f %{name}.lang
 
