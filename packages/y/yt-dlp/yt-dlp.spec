@@ -1,7 +1,7 @@
 #
 # spec file for package yt-dlp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,15 @@
 %define skip_python37 1
 %{?sle15_python_module_pythons}
 Name:           yt-dlp
-Version:        2023.12.30
+Version:        2024.03.10
 Release:        0
 Summary:        Enhanced fork of youtube-dl, a video site downloader for offline watching
 License:        CC-BY-SA-3.0 AND SUSE-Public-Domain
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://github.com/yt-dlp/yt-dlp
 Source:         https://github.com/yt-dlp/yt-dlp/releases/download/%version/yt-dlp.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  make >= 4
 BuildRequires:  python-rpm-macros
@@ -92,12 +93,12 @@ rm -f youtube-dl yt-dlp
 # A self-decompressing yt-dlp is built only when python_build is not
 # exercised; else yt-dlp is a loader.
 #
-%python_build
+%pyproject_wheel
 %make_build yt-dlp
 
 %install
 b="%buildroot"
-%python_install
+%pyproject_install
 %fdupes %buildroot/usr
 rm -Rf "$b/%_datadir/doc"
 
