@@ -1,7 +1,7 @@
 #
 # spec file for package mailcommon
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,79 +16,84 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define kpim6_version 6.0.0
+
 %bcond_without released
-%define libname libKPim5MailCommon5
 Name:           mailcommon
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Base KDE PIM library for mail-handling applications
 License:        GPL-2.0-only AND LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  xsltproc
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5Codecs)
-BuildRequires:  cmake(KF5Completion)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5GuiAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5ItemModels)
-BuildRequires:  cmake(KF5ItemViews)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5SyntaxHighlighting)
-BuildRequires:  cmake(KF5TextWidgets)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(KPim5Akonadi)
-BuildRequires:  cmake(KPim5AkonadiMime)
-BuildRequires:  cmake(KPim5Libkdepim)
-BuildRequires:  cmake(KPim5MailImporter)
-BuildRequires:  cmake(KPim5MailTransport)
-BuildRequires:  cmake(KPim5MessageCore)
-BuildRequires:  cmake(KPim5Mime)
-BuildRequires:  cmake(KPim5PimCommon)
-BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5UiPlugin)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  doxygen
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
+BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
+BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6ItemViews) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6SyntaxHighlighting) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextCustomEditor)
+BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(KPim6Akonadi) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6AkonadiContactWidgets) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6AkonadiMime) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6IdentityManagementCore) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6Libkdepim) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6MailImporter) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6MailTransport) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6MessageComposer) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6MessageCore) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6MessageList) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6MessageViewer) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6PimCommonAkonadi) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6TemplateParser) >= %{kpim6_version}
+BuildRequires:  cmake(Phonon4Qt6)
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
+BuildRequires:  cmake(Qt6UiPlugin) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 The mailcommon library is a KDE PIM project to provide a
 framework to build applications which handle e-mail.
 
-%package -n %{libname}
+%package -n libKPim6MailCommon6
 Summary:        Common Mail library for KDE PIM applications
-License:        LGPL-2.1-or-later
-Requires:       %{name}
+Requires:       mailcommon >= %{version}
 
-%description -n %{libname}
+%description -n libKPim6MailCommon6
 This package provides the mailcommon library, a base KDE PIM library
 to build email-handling applications.
 
 %package devel
 Summary:        Development package for mailcommon
-License:        LGPL-2.1-or-later
-Requires:       %{libname} = %{version}
-Requires:       cmake(KF5Completion)
-Requires:       cmake(KPim5Akonadi)
-Requires:       cmake(KPim5AkonadiMime)
-Requires:       cmake(KPim5Libkdepim)
-Requires:       cmake(KPim5MessageCore)
-Requires:       cmake(KPim5PimCommon)
+Requires:       libKPim6MailCommon6 = %{version}
+Requires:       cmake(KF6Completion) >= %{kf6_version}
+Requires:       cmake(KPim6Akonadi) >= %{kpim6_version}
+Requires:       cmake(KPim6AkonadiMime) >= %{kpim6_version}
+Requires:       cmake(KPim6Libkdepim) >= %{kpim6_version}
+Requires:       cmake(KPim6MessageComposer) >= %{kpim6_version}
+Requires:       cmake(KPim6PimCommon) >= %{kpim6_version}
+Requires:       cmake(KPim6PimCommonAkonadi) >= %{kpim6_version}
 
 %description devel
 This package contains the development headers for the mailcommon library.
@@ -99,34 +104,31 @@ This package contains the development headers for the mailcommon library.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
+%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
 
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
+%find_lang %{name} --all-name
 
-%ldconfig_scriptlets -n %{libname}
+%ldconfig_scriptlets -n libKPim6MailCommon6
 
 %files
-%{_kf5_debugdir}/mailcommon.categories
-%{_kf5_debugdir}/mailcommon.renamecategories
+%{_kf6_debugdir}/mailcommon.categories
+%{_kf6_debugdir}/mailcommon.renamecategories
 
-%files -n %{libname}
+%files -n libKPim6MailCommon6
 %license LICENSES/*
-%{_libdir}/libKPim5MailCommon.so.*
+%{_libdir}/libKPim6MailCommon.so.*
 
 %files devel
-%dir %{_includedir}/KPim5
-%dir %{_kf5_plugindir}/designer
-%{_includedir}/KPim5/MailCommon/
-%{_kf5_cmakedir}/KF5MailCommon/
-%{_kf5_cmakedir}/KPim5MailCommon/
-%{_kf5_libdir}/libKPim5MailCommon.so
-%{_kf5_mkspecsdir}/qt_MailCommon.pri
-%{_kf5_plugindir}/designer/mailcommon5widgets.so
+%doc %{_kf6_qchdir}/KPim6MailCommon.*
+%{_includedir}/KPim6/MailCommon/
+%{_kf6_cmakedir}/KPim6MailCommon/
+%{_kf6_libdir}/libKPim6MailCommon.so
+%{_kf6_plugindir}/designer/mailcommon6widgets.so
 
 %files lang -f %{name}.lang
 
