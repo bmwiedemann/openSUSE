@@ -1,0 +1,10 @@
+<package name="kf6-kitemviews" project="openSUSE:Factory">
+  <title>Set of item views extending the Qt model-view framework</title>
+  <description>KItemViews includes a set of views, which can be used with item models. It
+includes views for categorizing lists and to add search filters to flat and
+hierarchical lists.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kitemviews"/>
+  <url>https://www.kde.org</url>
+</package>
