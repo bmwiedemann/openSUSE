@@ -1,0 +1,8 @@
+<package name="mpvqt" project="openSUSE:Factory">
+  <title>Libmpv wrapper for QtQuick2 and QML</title>
+  <description>MpvQt is a libmpv wrapper for QtQuick2 and QML.
+
+</description>
+  <devel project="KDE:Applications" package="mpvqt"/>
+  <url>https://invent.kde.org/libraries/mpvqt</url>
+</package>
