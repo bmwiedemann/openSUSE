@@ -1,7 +1,7 @@
 #
 # spec file for package kdegraphics-thumbnailers
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,29 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           kdegraphics-thumbnailers
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Graphics file thumbnail generators
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  pkgconfig
-BuildRequires:  xz
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5KDcraw)
-BuildRequires:  cmake(KF5KExiv2)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(QMobipocket)
-BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
+BuildRequires:  cmake(KDcrawQt6)
+BuildRequires:  cmake(KExiv2Qt6)
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(QMobipocket6)
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 
 %description
 This package allows KDE applications to show thumbnails
@@ -48,15 +48,16 @@ and previews of graphics files.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+
+%kf6_build
 
 %install
-  %kf5_makeinstall -C build
+%kf6_install
 
 %files
 %license COPYING*
-%{_kf5_appstreamdir}/org.kde.kdegraphics-thumbnailers.metainfo.xml
-%{_kf5_plugindir}/
+%{_kf6_appstreamdir}/org.kde.kdegraphics-thumbnailers.metainfo.xml
+%{_kf6_plugindir}/kf6/thumbcreator/
 
 %changelog
