@@ -1,0 +1,9 @@
+<package name="mimetreeparser" project="openSUSE:Factory">
+  <title>Library to parse MIME trees</title>
+  <description>mimetreeparser is a parser for MIME trees. Given a MIME tree, it extracts
+the parts (text, html...) and attachments.
+
+</description>
+  <devel project="KDE:Applications" package="mimetreeparser"/>
+  <url>https://www.kde.org</url>
+</package>

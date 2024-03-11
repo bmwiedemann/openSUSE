@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Wed Mar  6 14:38:43 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Forcibly rip out HTML support on architectures without qt6-webengine
+
+-------------------------------------------------------------------
+Fri Feb 23 14:00:51 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.0
+  * New feature release
+- Changes since 24.01.95:
+  * messageviewerdialog: Set window title
+
+-------------------------------------------------------------------
+Fri Feb  9 16:19:58 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.01.95
+  * https://kde.org/fr/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
+Fri Aug  4 06:08:57 UTC 2023 - Luca Beltrame <lbeltrame@kde.org>
+
+- Initial package
