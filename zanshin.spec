@@ -1,7 +1,7 @@
 #
 # spec file for package zanshin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,34 +16,39 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define kpim6_version 6.0.0
+
 %bcond_without released
 Name:           zanshin
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        TODO Application
 License:        GPL-2.0-only
 URL:            https://zanshin.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  boost-devel
-BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5Runner)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(KPim5Akonadi)
-BuildRequires:  cmake(KPim5AkonadiCalendar)
-BuildRequires:  cmake(KPim5KontactInterface)
-BuildRequires:  cmake(KPim5IdentityManagement)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6Runner) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
+BuildRequires:  cmake(KPim6Akonadi) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6AkonadiCalendar) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6KontactInterface) >= %{kpim6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 Zanshin Todo is an application for managing your day-to-day actions.
@@ -56,34 +61,32 @@ job and personal life. You will never forget anything anymore.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
+
 %suse_update_desktop_file org.kde.zanshin Utility TimeUtility
 
 %find_lang %{name}
 
 %files
 %license LICENSES/*
-%doc AUTHORS
-%dir %{_kf5_iconsdir}/hicolor/256x256
-%dir %{_kf5_iconsdir}/hicolor/256x256/apps
-%dir %{_kf5_plugindir}/pim5
-%dir %{_kf5_plugindir}/pim5/kontact
-%{_kf5_applicationsdir}/org.kde.zanshin.desktop
-%{_kf5_appstreamdir}/org.kde.zanshin.metainfo.xml
-%{_kf5_bindir}/zanshin
-%{_kf5_bindir}/zanshin-migrator
-%{_kf5_iconsdir}/hicolor/*/apps/zanshin.png
-%{_kf5_iconsdir}/hicolor/scalable/apps/zanshin.svgz
-%{_kf5_kxmlguidir}/zanshin/
-%{_kf5_plugindir}/pim5/kontact/kontact_zanshinplugin.so
-%{_kf5_plugindir}/zanshin_part.so
-%dir %{_kf5_plugindir}/kf5
-%dir %{_kf5_plugindir}/kf5/krunner
-%{_kf5_plugindir}/kf5/krunner/org.kde.zanshin.so
+%doc README.md
+%{_kf6_applicationsdir}/org.kde.zanshin.desktop
+%{_kf6_appstreamdir}/org.kde.zanshin.metainfo.xml
+%{_kf6_bindir}/zanshin
+%{_kf6_bindir}/zanshin-migrator
+%{_kf6_iconsdir}/hicolor/*/apps/zanshin.png
+%{_kf6_iconsdir}/hicolor/scalable/apps/zanshin.svgz
+%dir %{_kf6_plugindir}/kf6/krunner
+%{_kf6_plugindir}/kf6/krunner/org.kde.zanshin.so
+%dir %{_kf6_plugindir}/pim6
+%dir %{_kf6_plugindir}/pim6/kontact
+%{_kf6_plugindir}/pim6/kontact/kontact_zanshinplugin.so
+%{_kf6_plugindir}/zanshin_part.so
 
 %files lang -f %{name}.lang
 
