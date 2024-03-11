@@ -1,0 +1,8 @@
+<package name="kactivitymanagerd6" project="openSUSE:Factory">
+  <title>KDE Plasma Activities support</title>
+  <description>Kactivities provides an API for using and interacting with the Plasma Activities Manager.
+
+</description>
+  <devel project="KDE:Frameworks" package="kactivitymanagerd6"/>
+  <url>https://invent.kde.org/plasma/kactivitymanagerd</url>
+</package>
