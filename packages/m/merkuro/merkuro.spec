@@ -1,7 +1,7 @@
 #
 # spec file for package kalendar
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,82 +16,80 @@
 #
 
 
-%global __requires_exclude qmlimport\\((org\\.kde\\.merkuro\\.1|org\\.kde\\.raven).*
-%define kf5_version 5.105.0
+%global __requires_exclude qt6qmlimport\\((org\\.kde\\.merkuro|org\\.kde\\.raven).*
+
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define kpim6_version 6.0.0
+%define plasma6_version 5.27.80
+
 %bcond_without released
 Name:           merkuro
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Calendar Application
 License:        GPL-3.0-only
 URL:            https://apps.kde.org/merkuro.calendar
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= %{kf5_version}
-%if 0%{?suse_version} == 1500
-BuildRequires:  gcc10-c++
-BuildRequires:  gcc10-PIE
-%endif
-BuildRequires:  hicolor-icon-theme
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5CalendarCore)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5Contacts)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5ItemModels)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Kirigami2)
-BuildRequires:  cmake(KF5KirigamiAddons)
-BuildRequires:  cmake(KPim5PimCommonAkonadi)
-BuildRequires:  cmake(KF5Plasma)
-BuildRequires:  cmake(KF5QQC2DesktopStyle)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(KPim5Akonadi)
-BuildRequires:  cmake(KPim5AkonadiCalendar)
-BuildRequires:  cmake(KPim5AkonadiContact)
-BuildRequires:  cmake(KPim5AkonadiMime)
-BuildRequires:  cmake(KPim5CalendarSupport)
-BuildRequires:  cmake(KPim5EventViews)
-BuildRequires:  cmake(KPim5MailCommon)
-BuildRequires:  cmake(Qt5Core) >= 5.15.2
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5QuickControls2)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5QuickTest)
+BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6Contacts) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons)
+BuildRequires:  cmake(KF6QQC2DesktopStyle) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(KPim6Akonadi) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6AkonadiCalendar) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6AkonadiContactCore) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6AkonadiMime) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6CalendarUtils) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6IdentityManagementQuick) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6MailCommon) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6MailTransport) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6MimeTreeParserCore) >= %{kpim6_version}
+BuildRequires:  cmake(Plasma) >= %{plasma6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickTest) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  pkgconfig(gpgme)
 Requires:       kalendarac
 Requires:       kdepim-addons
 Requires:       kdepim-runtime
 # No automatic qmlimport requires for embedded resources :-/
-Requires:       kirigami2 >= %{kf5_version}
-Requires:       qt5qmlimport(QtGraphicalEffects.1)
-Requires:       qt5qmlimport(QtLocation.5)
-Requires:       qt5qmlimport(QtQuick.Dialogs.1)
-Requires:       qt5qmlimport(org.kde.kitemmodels.1)
+Requires:       kf6-kirigami-imports >= %{kf6_version}
+Requires:       kf6-kitemmodels-imports >= %{kf6_version}
+Requires:       qt6-declarative-imports >= %{qt6_version}
 Provides:       kalendar = %{version}
 Obsoletes:      kalendar < %{version}
-# Got vendored for now
-# Requires:       qt5qmlimport(org.kde.kirigamiaddons.treeview.1)
-# kalendar has a runtime dependency on QtWebEngine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
+# merkuro has a runtime dependency on QtWebEngine
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 Calendar application using Akonadi to sync with external services (NextCloud, GMail, ...).
 
 %package plasmoid
 Summary:        Plasma widget to view address book contacts
-Supplements:    (%{name} and plasma5-workspace)
-Requires:       %{name} = %{version}
+Supplements:    (merkuro and plasma6-workspace)
+Requires:       merkuro = %{version}
 Provides:       kalendar-plasmoid = %{version}
 Obsoletes:      kalendar-plasmoid < %{version}
 
@@ -104,44 +102,38 @@ This package provides a Plasma widget to view address book contacts.
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} == 1500
-  export CXX=g++-10
-%endif
+%cmake_kf6
 
-%cmake_kf5 -d build
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
+%find_lang %{name} --all-name
 
 %files
 %license LICENSES/*
-%dir %{_kf5_qmldir}/org/kde/merkuro/
-%{_kf5_applicationsdir}/org.kde.merkuro.contact.desktop
-%{_kf5_applicationsdir}/org.kde.merkuro.mail.desktop
-%{_kf5_applicationsdir}/org.kde.merkuro.calendar.desktop
-%{_kf5_bindir}/merkuro-mail
-%{_kf5_bindir}/merkuro-calendar
-%{_kf5_bindir}/merkuro-contact
-%{_kf5_debugdir}/akonadi.quick.categories
-%{_kf5_debugdir}/merkuro.categories
-%{_kf5_debugdir}/merkuro.contact.categories
-%{_kf5_iconsdir}/hicolor/*/apps/org.kde.merkuro.*.png
-%{_kf5_qmldir}/org/kde/akonadi/
-%{_kf5_qmldir}/org/kde/merkuro/contact/
-%{_kf5_qmldir}/org/kde/merkuro/calendar/
-%{_kf5_qmldir}/org/kde/merkuro/mail/
-%{_kf5_qmldir}/org/kde/merkuro/components/
-%{_kf5_appstreamdir}/org.kde.merkuro.calendar.metainfo.xml
-%{_kf5_appstreamdir}/org.kde.merkuro.mail.metainfo.xml
-%{_kf5_appstreamdir}/org.kde.merkuro.contact.metainfo.xml
+
+%{_kf6_applicationsdir}/org.kde.merkuro.calendar.desktop
+%{_kf6_applicationsdir}/org.kde.merkuro.contact.desktop
+%{_kf6_applicationsdir}/org.kde.merkuro.mail.desktop
+%{_kf6_appstreamdir}/org.kde.merkuro.calendar.metainfo.xml
+%{_kf6_appstreamdir}/org.kde.merkuro.contact.metainfo.xml
+%{_kf6_appstreamdir}/org.kde.merkuro.mail.metainfo.xml
+%{_kf6_bindir}/merkuro-calendar
+%{_kf6_bindir}/merkuro-contact
+%{_kf6_bindir}/merkuro-mail
+%{_kf6_debugdir}/akonadi.quick.categories
+%{_kf6_debugdir}/merkuro.categories
+%{_kf6_debugdir}/merkuro.contact.categories
+%{_kf6_iconsdir}/hicolor/*/apps/org.kde.merkuro.*.png
+%{_kf6_qmldir}/org/kde/akonadi/
+%{_kf6_qmldir}/org/kde/merkuro/
 
 %files plasmoid
-%dir %{_kf5_plasmadir}/plasmoids
-%{_kf5_appstreamdir}/org.kde.merkuro.contact.appdata.xml
-%{_kf5_plasmadir}/plasmoids/org.kde.merkuro.contact
+%dir %{_kf6_plasmadir}/plasmoids
+%{_kf6_appstreamdir}/org.kde.merkuro.contact.appdata.xml
+%{_kf6_plasmadir}/plasmoids/org.kde.merkuro.contact
 
 %files lang -f %{name}.lang
 
