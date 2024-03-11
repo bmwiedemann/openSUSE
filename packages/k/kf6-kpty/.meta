@@ -1,0 +1,10 @@
+<package name="kf6-kpty" project="openSUSE:Factory">
+  <title>Primitives to interface with pseudo terminal devices</title>
+  <description>This library provides primitives to interface with pseudo terminal devices
+as well as a KProcess derived class for running child processes and
+communicating with them using a pty.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kpty"/>
+  <url>https://www.kde.org</url>
+</package>
