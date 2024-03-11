@@ -1,0 +1,8 @@
+<package name="libkscreen6" project="openSUSE:Factory">
+  <title>Plasma screen management library</title>
+  <description>Dynamic display management library for KDE
+
+</description>
+  <devel project="KDE:Frameworks" package="libkscreen6"/>
+  <url>https://www.kde.org</url>
+</package>
