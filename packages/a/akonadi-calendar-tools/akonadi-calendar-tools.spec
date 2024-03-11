@@ -1,7 +1,7 @@
 #
 # spec file for package akonadi-calendar-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,32 +16,32 @@
 #
 
 
-%define kf5_version 5.105.0
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define kpim6_version 6.0.0
+
 %bcond_without released
 Name:           akonadi-calendar-tools
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Console applications and utilities for managing calendars
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= %{kf5_version}
-BuildRequires:  fdupes
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5CalendarCore)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KPim5Akonadi)
-BuildRequires:  cmake(KPim5AkonadiCalendar)
-BuildRequires:  cmake(KPim5CalendarSupport)
-BuildRequires:  cmake(KPim5CalendarUtils)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KPim6Akonadi) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6AkonadiCalendar) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6CalendarSupport) >= %{kpim6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 Console applications and utilities for managing calendars in Akonadi.
@@ -52,25 +52,26 @@ Console applications and utilities for managing calendars in Akonadi.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build -- -DBUILD_TESTING=OFF
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
+%find_lang %{name} --with-man --with-html --all-name
 
 %files
 %license LICENSES/*
-%doc %lang(en) %{_kf5_htmldir}/en/konsolekalendar/
-%{_kf5_applicationsdir}/konsolekalendar.desktop
-%{_kf5_bindir}/calendarjanitor
-%{_kf5_bindir}/konsolekalendar
-%{_kf5_debugdir}/console.categories
-%{_kf5_debugdir}/console.renamecategories
-%{_kf5_iconsdir}/hicolor/*/apps/konsolekalendar.png
+%doc %lang(en) %{_kf6_htmldir}/en/konsolekalendar/
+%{_kf6_applicationsdir}/konsolekalendar.desktop
+%{_kf6_bindir}/calendarjanitor
+%{_kf6_bindir}/konsolekalendar
+%{_kf6_debugdir}/console.categories
+%{_kf6_debugdir}/console.renamecategories
+%{_kf6_iconsdir}/hicolor/*/apps/konsolekalendar.png
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/konsolekalendar/
 
 %changelog
