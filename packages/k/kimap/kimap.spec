@@ -1,7 +1,7 @@
 #
 # spec file for package kimap
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,98 +16,100 @@
 #
 
 
-%define kf5_version 5.105.0
-%define libname libKPim5IMAP5
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define kpim6_version 6.0.0
+
 %bcond_without released
 Name:           kimap
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
-Summary:        KDE PIM Libraries: IMAP library
+Summary:        Library to assist working with IMAP servers
 License:        LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  cyrus-sasl-devel
-BuildRequires:  extra-cmake-modules >= 5.19.0
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
-BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
-BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
-BuildRequires:  cmake(KPim5Mime)
-BuildRequires:  cmake(Qt5Test)
-Conflicts:      libKF5IMAP5 < %{version}
+BuildRequires:  doxygen
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 
 %description
 KIMAP provides libraries to interface and communicate with
 IMAP mail servers.
 
-%package -n %{libname}
-Summary:        KDE PIM Libraries: IMAP APIs
-Provides:       %{name} = %{version}
+%package -n libKPim6IMAP6
+Summary:        Library to assist working with IMAP servers
 # Modules used for authentication
 Requires:       cyrus-sasl-crammd5
 Requires:       cyrus-sasl-digestmd5
 Requires:       cyrus-sasl-gssapi
 Requires:       cyrus-sasl-plain
 Requires:       sasl2-kdexoauth2
-%requires_eq    %{name}
-# Renamed
+Requires:       kimap >= %{version}
 Obsoletes:      kimap-lang <= 23.04.0
+Obsoletes:      libKPim5IMAP5-lang < %{version}
 
-%description  -n %{libname}
+%description  -n libKPim6IMAP6
 This package provides the core library to interface and communicate with
 IMAP mail servers.
 
 %package devel
-Summary:        KDE PIM Libraries: Build Environment
+Summary:        Development files for kimap
 Requires:       cyrus-sasl-devel
-Requires:       %{libname} = %{version}
-Requires:       cmake(KF5CoreAddons) >= %{kf5_version}
-Requires:       cmake(KPim5Mime)
+Requires:       libKPim6IMAP6 = %{version}
+Requires:       cmake(KF6CoreAddons) >= %{kf6_version}
+Requires:       cmake(KPim6Mime) >= %{kpim6_version}
 
 %description devel
 This package contains development headers to add IMAP support to PIM
 applications.
 
-%lang_package -n %{libname}
+%lang_package -n libKPim6IMAP6
 
 %prep
 %autosetup -p1 -n kimap-%{version}
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-%cmake_kf5 -d build -- -DBUILD_TESTING=ON
 
-%cmake_build
+%cmake_kf6 \
+  -DBUILD_QCH:BOOL=TRUE \
+  -DBUILD_TESTING:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{libname} --with-man --all-name
+%find_lang libKPim6IMAP6 --all-name
 
-%ldconfig_scriptlets -n %{libname}
+%ldconfig_scriptlets -n libKPim6IMAP6
 
 %files
-%license LICENSES/*
-%{_kf5_debugdir}/*.categories
-%{_kf5_debugdir}/*.renamecategories
+%{_kf6_debugdir}/*.categories
+%{_kf6_debugdir}/*.renamecategories
 
-%files -n %{libname}
-%{_kf5_libdir}/libKPim5IMAP.so.*
+%files -n libKPim6IMAP6
+%license LICENSES/*
+%{_kf6_libdir}/libKPim6IMAP.so.*
 
 %files devel
-%dir %{_includedir}/KPim5
-%{_includedir}/KPim5/KIMAP/
-%{_includedir}/KPim5/KIMAPTest/
-%{_kf5_cmakedir}/KF5IMAP/
-%{_kf5_cmakedir}/KPim5IMAP/
-%{_kf5_libdir}/libKPim5IMAP.so
-%{_kf5_libdir}/libkimaptest.a
-%{_kf5_mkspecsdir}/qt_KIMAP.pri
+%doc %{_kf6_qchdir}/KPim6Imap.*
+%{_includedir}/KPim6/KIMAP/
+%{_includedir}/KPim6/KIMAPTest/
+%{_kf6_cmakedir}/KPim6IMAP/
+%{_kf6_libdir}/libKPim6IMAP.so
+%{_kf6_libdir}/libkimaptest6.a
 
-%files -n %{libname}-lang -f %{libname}.lang
+%files -n libKPim6IMAP6-lang -f libKPim6IMAP6.lang
 
 %changelog
