@@ -1628,4 +1628,12 @@ https://www.kde.org/announcements/announce-applications-16.08.2.php
     <comment>KDE Release gear 23.08.4 (forwarded request 1131017 from krop)</comment>
     <requestid>1131992</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>b33dfe4efc1caf2eb47c16039bc2d2d6</srcmd5>
+    <version>24.02.0</version>
+    <time>1710167505</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 24.02.0</comment>
+    <requestid>1151101</requestid>
+  </revision>
 </revisionlist>

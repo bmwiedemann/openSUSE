@@ -1,7 +1,7 @@
 #
 # spec file for package umbrello
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,14 @@
 %endif
 %bcond_without released
 Name:           umbrello
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        UML Modeller
 License:        GPL-2.0-only AND GFDL-1.2-only AND GPL-3.0-or-later
 URL:            https://apps.kde.org/umbrello
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
