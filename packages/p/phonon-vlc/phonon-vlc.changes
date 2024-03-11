@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Thu Feb 29 18:02:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Require vlc to ensure all plugins are available (boo#1219416)
+
+-------------------------------------------------------------------
+Tue Feb 27 12:13:18 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Use the translations from the Qt 5 build for both flavors
+
+-------------------------------------------------------------------
+Wed Aug 30 12:39:48 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init phonon-vlc

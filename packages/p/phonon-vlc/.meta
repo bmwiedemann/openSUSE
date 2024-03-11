@@ -1,0 +1,13 @@
+<package name="phonon-vlc" project="openSUSE:Factory">
+  <title>Phonon VLC Backend</title>
+  <description>Phonon is a cross-platform portable Multimedia Support Abstraction,
+which allows you to play multiple audio or video formats with the same
+quality on all platforms, no matter which underlying architecture is
+used.
+
+This is the VLC backend for Phonon
+
+</description>
+  <devel project="KDE:Frameworks" package="phonon-vlc"/>
+  <url>https://www.kde.org/</url>
+</package>
