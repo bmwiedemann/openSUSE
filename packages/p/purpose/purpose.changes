@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar  9 16:23:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Move the purpose service files to a subpackage
+
+-------------------------------------------------------------------
 Thu Feb  8 11:15:40 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.115.0

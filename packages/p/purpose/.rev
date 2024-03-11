@@ -666,4 +666,12 @@
     <comment>KDE Frameworks 5.115.0. Not built yet (forwarded request 1145147 from krop)</comment>
     <requestid>1145677</requestid>
   </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>75835461abf7dab7bfb631917a2689e4</srcmd5>
+    <version>5.115.0</version>
+    <time>1710167367</time>
+    <user>anag+factory</user>
+    <comment>- Move the purpose service files to a subpackage</comment>
+    <requestid>1156632</requestid>
+  </revision>
 </revisionlist>

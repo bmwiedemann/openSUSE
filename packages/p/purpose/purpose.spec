@@ -59,6 +59,7 @@ BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
 Requires:       kdeclarative-components >= %{_kf5_version}
 Requires:       libKF5QuickAddons5 >= %{_kf5_version}
 Requires:       libqt5-qtquickcontrols2
+Requires:       purpose-services >= %{version}
 Suggests:       kdeconnect-kde
 
 %description
@@ -67,6 +68,15 @@ on any application without having to implement them specifically. Purpose will
 offer them mechanisms to list the different alternatives to execute given the
 requested action type and will facilitate components so that all the plugins
 can receive all the information they need.
+
+%package services
+Summary:        Online services for purpose
+# Split from the purpose package
+Conflicts:      purpose < %{version}-%{release}
+
+%description services
+This package adds online services to kf6-purpose and are needed to connect to
+Google and Nextcloud servers.
 
 %package -n %{lname}
 Summary:        Framework to integrate services and actions - core library
@@ -157,6 +167,8 @@ This package contains development files needed to build applications which rely 
 %{_kf5_iconsdir}/hicolor/*/actions/kipiplugin_youtube.*
 %{_kf5_iconsdir}/hicolor/*/apps/phabricator-purpose.*
 %{_kf5_iconsdir}/hicolor/*/apps/reviewboard-purpose.*
+
+%files services
 %{_kf5_sharedir}/accounts/
 
 %files devel
