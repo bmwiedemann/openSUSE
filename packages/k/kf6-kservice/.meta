@@ -1,0 +1,10 @@
+<package name="kf6-kservice" project="openSUSE:Factory">
+  <title>Plugin framework for desktop services</title>
+  <description>Provides a plugin framework for handling desktop services. Services can
+be applications or libraries. They can be bound to MIME types or handled by
+application specific code.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kservice"/>
+  <url>https://www.kde.org</url>
+</package>

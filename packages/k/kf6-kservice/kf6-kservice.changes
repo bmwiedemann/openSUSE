@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Wed Feb 21 19:28:07 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.249.0:
+  * update version for new release
+  * Remove unused member
+  * update some of the variable names
+  * kservice: remove InitialPreference (kde#305136)
+  * Fix respecting InitialPreference for mime types
+  * ksycocatest: Remove TODOs about using QFile::SetFileTime
+  * Remove unused includes and avoid depending on transient ones
+  * update version for new release
+
+-------------------------------------------------------------------
+Wed Jan 31 17:50:49 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.249.0 (6.0 RC 2):
+  * New bugfix release
+  * For more details see https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
+Mon Jan 15 20:01:34 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.248.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Sat May 27 11:18:28 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init kf6-kservice
