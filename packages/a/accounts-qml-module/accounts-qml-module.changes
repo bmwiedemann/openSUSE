@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 27 09:00:49 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Use a GIT snapshot to build accounts-qml-module with Qt 6
+- Update to 0.7git.20231028T182937~05e79eb
+- Drop patches, now included in the archive:
+  * Build-add-qmltypes-file-to-repository.patch
+  * Fix-compilation-with-Qt-5.13.patch
+
+-------------------------------------------------------------------
 Mon Sep 14 07:44:14 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Compile without "-Werror" to fix a build failure with Qt 5.15.1

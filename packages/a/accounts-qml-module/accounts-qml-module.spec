@@ -1,7 +1,7 @@
 #
 # spec file for package accounts-qml-module
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,18 @@
 
 
 Name:           accounts-qml-module
-Version:        0.7
+Version:        0.7git.20231028T182937~05e79eb
 Release:        0
-Summary:        QML bindings for libaccounts-qt + libsignon-qt
+Summary:        QML bindings for libaccounts-qt and libsignon-qt
 License:        LGPL-2.1-only
-Group:          System/Libraries
 URL:            https://gitlab.com/accounts-sso/accounts-qml-module
-Source:         https://gitlab.com/accounts-sso/%{name}/-/archive/VERSION_%{version}/%{name}-VERSION_%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM
-Patch0:         Fix-compilation-with-Qt-5.13.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         Build-add-qmltypes-file-to-repository.patch
-BuildRequires:  libqt5-qttools-doc
-BuildRequires:  cmake(AccountsQt5)
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(SignOnQt5)
+Source:         %{name}-%{version}.tar.xz
+BuildRequires:  qt6-tools-qdoc
+BuildRequires:  cmake(AccountsQt6)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6Qml)
+BuildRequires:  cmake(Qt6Test)
+BuildRequires:  cmake(SignOnQt6)
 
 %description
 This QML module provides an API to manage the user's online accounts and get
@@ -40,43 +37,35 @@ libaccounts-qt and libsignon-qt.
 
 %package doc
 Summary:        Documentation for accounts-qml-module
-Group:          Documentation/HTML
 BuildArch:      noarch
 
 %description doc
 This package contains the developer documentation for accounts-qml-module.
 
 %prep
-%setup -q -n %{name}-VERSION_%{version}
-%autopatch -p1
-sed -e 's/-Werror//' -i common-project-config.pri
+%autosetup -p1
 
 %build
-mkdir build
-pushd build
-%qmake5 \
-    PREFIX=%{_prefix} \
-    LIBDIR=%{_libdir} \
-    ..
-%make_jobs
-popd
+%qmake6
+
+%qmake6_build
 
 %install
-pushd build
-%qmake5_install
-popd
+%qmake6_install
 
-# remove tests
+# Delete test executable
 rm %{buildroot}%{_bindir}/tst_plugin
-# avoid rpmlint warning
-rm -f %{buildroot}/%{_datadir}/%{name}/doc/html/.gitignore
+
+# Fix rpmlint warning
+rm %{buildroot}%{_qt6_sharedir}/accounts-qml-module/doc/html/.gitignore
 
 %files
 %license COPYING
 %doc README.md
-%{_libqt5_archdatadir}/qml/Ubuntu
+%dir %{_qt6_qmldir}/SSO
+%{_qt6_qmldir}/SSO/OnlineAccounts/
 
 %files doc
-%doc %{_datadir}/%{name}/
+%doc %{_qt6_sharedir}/accounts-qml-module/
 
 %changelog

@@ -1,0 +1,13 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+   <param name="versionformat">0.7git.%ci~%h</param>
+   <param name="url">https://gitlab.com/accounts-sso/accounts-qml-module.git</param>
+   <param name="scm">git</param>
+  </service>
+  <service name="set_version" mode="disabled" />
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+   <param name="file">*.tar</param>
+   <param name="compression">xz</param>
+  </service>
+</services>

@@ -30,4 +30,16 @@
     <comment>Needed by some purpose plugins</comment>
     <requestid>834289</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9fcff086bb5497608d910d6a243b0d3a</srcmd5>
+    <version>0.7git.20231028T182937~05e79eb</version>
+    <time>1710167251</time>
+    <user>anag+factory</user>
+    <comment>- Use a GIT snapshot to build accounts-qml-module with Qt 6
+- Update to 0.7git.20231028T182937~05e79eb
+- Drop patches, now included in the archive:
+  * Build-add-qmltypes-file-to-repository.patch
+  * Fix-compilation-with-Qt-5.13.patch</comment>
+    <requestid>1152089</requestid>
+  </revision>
 </revisionlist>
