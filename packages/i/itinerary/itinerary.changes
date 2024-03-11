@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Feb 23 13:58:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.0
+  * New feature release
+- Changes since 24.01.95:
+  * Tighten QML module dependency requirements
+  * Add developer_name tag to Appstream data
+  * Update release note for 24.02
+  * Adapt Craft ignore list to renamed KMime translation catalog
+  * Add Craft ignore list from Craft's blueprint
+  * Add CD job for publishing on Google Play
+  * Disable the journey map on the live status page
+  * Fix check for displaying departure notes on train trips
+  * Improve display of notes sheet
+  * MapView: Improve mouse zooming behaviour
+  * Fix closing the journey replacement warning dialog
+  * Build our own dependencies in Flatpak from release branches
+
+-------------------------------------------------------------------
+Fri Feb  9 16:07:35 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.01.95
+  * https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
 Tue Dec  5 14:19:07 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.4

@@ -1,7 +1,7 @@
 #
 # spec file for package itinerary
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,70 +16,75 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define kpim6_version 6.0.0
+
 %bcond_without released
 Name:           itinerary
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Itinerary and boarding pass management application
 License:        LGPL-2.0-or-later
 URL:            https://apps.kde.org/itinerary
-Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  breeze5-icons
-BuildRequires:  extra-cmake-modules
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  kf5-filesystem
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  shared-mime-info
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5CalendarCore)
-BuildRequires:  cmake(KF5Contacts)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5FileMetaData)
-BuildRequires:  cmake(KF5Holidays)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5KirigamiAddons)
-BuildRequires:  cmake(KF5Mime)
-BuildRequires:  cmake(KF5NetworkManagerQt)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5QQC2DeskopStyle)
-BuildRequires:  cmake(KF5Solid)
-BuildRequires:  cmake(KF5UnitConversion)
-BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  qt6-core-private-devel >= %{qt6_version}
+BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
+BuildRequires:  cmake(KF6Contacts) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6FileMetaData) >= %{kf6_version}
+BuildRequires:  cmake(KF6Holidays) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons)
+BuildRequires:  cmake(KF6NetworkManagerQt) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6QQC2DesktopStyle) >= %{kf6_version}
+BuildRequires:  cmake(KF6Solid) >= %{kf6_version}
+BuildRequires:  cmake(KF6UnitConversion) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(KHealthCertificate)
 BuildRequires:  cmake(KOSMIndoorMap)
-BuildRequires:  cmake(KPim5Itinerary)
-BuildRequires:  cmake(KPim5PkPass)
+BuildRequires:  cmake(KPim6Itinerary) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6PkPass) >= %{kpim6_version}
 BuildRequires:  cmake(KPublicTransport)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Location)
-BuildRequires:  cmake(Qt5Positioning)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5QuickCompiler)
-BuildRequires:  cmake(Qt5QuickControls2)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(LibIcal)
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Positioning) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(QuotientQt6)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?suse_version} <= 1500
-# variadic macro causes build issues
-BuildRequires:  gcc10-c++
-BuildRequires:  gcc10-PIE
-%endif
 # itinerary uses icons from the breeze theme
-Requires:       breeze5-icons
+Requires:       kf6-breeze-icons
+# Upstream insists in having these as build dependencies...
+BuildRequires:       kf6-kirigami-imports >= %{kf6_version}
+BuildRequires:       kf6-prison-imports >= %{kf6_version}
+BuildRequires:       kf6-ki18n-imports >= %{kf6_version}
+BuildRequires:       qt6qmlimport(QtPositioning)
+BuildRequires:       qt6qmlimport(QtLocation)
+BuildRequires:       qt6qmlimport(org.kde.kosmindoormap)
+BuildRequires:       qt6qmlimport(org.kde.kopeninghours)
 # QML imports
-Requires:       kirigami2
-Requires:       prison-qt5-imports
-Requires:       ki18n-imports
+Requires:       kf6-kirigami-imports >= %{kf6_version}
+Requires:       kf6-prison-imports >= %{kf6_version}
+Requires:       kf6-ki18n-imports >= %{kf6_version}
 # Runtime dependencies (itinerary won't start without these packages)
-Requires:       kopeninghours
-Requires:       kosmindoormap
-Requires:       kpublictransport
-
+Requires:       kpublictransport-imports
+Requires:       kopeninghours-imports
+Requires:       kosmindoormap-imports
 
 %description
 Itinerary and boarding pass management application.
@@ -90,45 +95,40 @@ Itinerary and boarding pass management application.
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} <= 1500
-  export CXX=g++-10
-%endif
+%cmake_kf6 \
+  -DBUILD_TESTING=ON
 
-%cmake_kf5 -d build -- -DBUILD_TESTING=ON
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
 # Should be Utility Maps, but the checker does not like it
 %suse_update_desktop_file org.kde.itinerary Education Geography
 
 %check
-# one test fails on ppc64 (be). Upstream is investigating
+# one test fails on ppc64 (be)
 %ifnarch ppc64
 %ctest --exclude-regex "(itinerary-self-test)"
 %endif
 
 %find_lang %{name} --all-name
 
-%files lang -f %{name}.lang
-
 %files
 %license LICENSES/*
-%dir %{_kf5_plugindir}/kf5
-%dir %{_kf5_plugindir}/kf5/kfilemetadata
-%dir %{_kf5_plugindir}/kf5/thumbcreator
-%dir %{_kf5_qmldir}/org
-%dir %{_kf5_qmldir}/org/kde
-%{_kf5_applicationsdir}/org.kde.itinerary.desktop
-%{_kf5_appstreamdir}/org.kde.itinerary.appdata.xml
-%{_kf5_bindir}/itinerary
-%{_kf5_debugdir}/org_kde_itinerary.categories
-%{_kf5_iconsdir}/hicolor/scalable/apps/org.kde.itinerary.svg
-%{_kf5_libdir}/libSolidExtras.so
-%{_kf5_notifydir}/itinerary.notifyrc
-%{_kf5_plugindir}/kf5/kfilemetadata/kfilemetadata_itineraryextractor.so
-%{_kf5_plugindir}/kf5/thumbcreator/itinerarythumbnail.so
-%{_kf5_qmldir}/org/kde/solidextras/
+%{_kf6_applicationsdir}/org.kde.itinerary.desktop
+%{_kf6_appstreamdir}/org.kde.itinerary.appdata.xml
+%{_kf6_bindir}/itinerary
+%{_kf6_debugdir}/org_kde_itinerary.categories
+%{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.itinerary.svg
+%{_kf6_libdir}/libSolidExtras.so
+%{_kf6_notificationsdir}/itinerary.notifyrc
+%dir %{_kf6_plugindir}/kf6/kfilemetadata
+%{_kf6_plugindir}/kf6/kfilemetadata/kfilemetadata_itineraryextractor.so
+%dir %{_kf6_plugindir}/kf6/thumbcreator
+%{_kf6_plugindir}/kf6/thumbcreator/itinerarythumbnail.so
+%{_kf6_qmldir}/org/kde/solidextras/
+
+%files lang -f %{name}.lang
 
 %changelog
