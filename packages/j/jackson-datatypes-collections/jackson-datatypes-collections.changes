@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar  8 08:33:47 UTC 2024 - Gus Kenion <gkenion@suse.com>
+
+- Update to 2.16.1
+  * 2.16.1 (24-Dec-2023) - no significant changes since 2.16.0
+  * 2.16.0 (15-Nov-2023)
+    + #90: (guava) Cache Serialization serializes empty contents
+    + #113: (guava) Update default Guava dependency for Jackson
+      2.16 from Guava 23.x to 25.x
+    + #116: (guava) Suppport simple deserialization of Cache
+    + #117: (guava) ImmutableRangeSet fails to deserialize without
+      explicit deserializer
+    + #117: (pcollections) PCollections module info
+      (module-info.class) incorrect
+
+-------------------------------------------------------------------
 Sat Sep  9 13:42:41 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
