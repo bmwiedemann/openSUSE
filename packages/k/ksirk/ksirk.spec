@@ -1,7 +1,7 @@
 #
 # spec file for package ksirk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,47 +16,41 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           ksirk
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Risk-like game by KDE
-License:        GPL-2.0-or-later AND LGPL-2.0-or-later
+License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/ksirk
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  libqca-qt5-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Completion)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5Declarative)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5GuiAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5ItemViews)
-BuildRequires:  cmake(KF5KDEGames)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5NewStuff)
-BuildRequires:  cmake(KF5NotifyConfig)
-BuildRequires:  cmake(KF5TextWidgets)
-BuildRequires:  cmake(KF5Wallet)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5QuickWidgets)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KDEGames6)
+BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6NewStuff) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6SvgWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Obsoletes:      ksirk5 < %{version}
 Provides:       ksirk5 = %{version}
 
@@ -69,38 +63,36 @@ KsirK is a computerized version of a well known strategy game.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
-
-rm %{buildroot}%{_kf5_libdir}/libiris_ksirk.so
+%find_lang %{name} --with-html --all-name
 
 %ldconfig_scriptlets
 
 %files
 %license COPYING COPYING.DOC COPYING.LIB
-%doc %lang(en) %{_kf5_htmldir}/en/ksirk/
-%doc %lang(en) %{_kf5_htmldir}/en/ksirkskineditor/
-%{_kf5_applicationsdir}/org.kde.ksirk.desktop
-%{_kf5_applicationsdir}/org.kde.ksirkskineditor.desktop
-%{_kf5_appstreamdir}/org.kde.ksirk.appdata.xml
-%{_kf5_bindir}/ksirk
-%{_kf5_bindir}/ksirkskineditor
-%{_kf5_configkcfgdir}/ksirk*.kcfg
-%{_kf5_debugdir}/ksirk.categories
-%{_kf5_iconsdir}/hicolor/*/apps/ksirk.*
-%{_kf5_knsrcfilesdir}/ksirk.knsrc
-%{_kf5_kxmlguidir}/ksirk/
-%{_kf5_kxmlguidir}/ksirkskineditor/
-%{_kf5_libdir}/libiris_ksirk.so.*
-%{_kf5_sharedir}/ksirk/
-%{_kf5_sharedir}/ksirkskineditor/
+%doc %lang(en) %{_kf6_htmldir}/en/ksirk/
+%doc %lang(en) %{_kf6_htmldir}/en/ksirkskineditor/
+%{_kf6_applicationsdir}/org.kde.ksirk.desktop
+%{_kf6_applicationsdir}/org.kde.ksirkskineditor.desktop
+%{_kf6_appstreamdir}/org.kde.ksirk.appdata.xml
+%{_kf6_bindir}/ksirk
+%{_kf6_bindir}/ksirkskineditor
+%{_kf6_configkcfgdir}/ksirksettings.kcfg
+%{_kf6_configkcfgdir}/ksirkskineditorsettings.kcfg
+%{_kf6_debugdir}/ksirk.categories
+%{_kf6_iconsdir}/hicolor/*/apps/ksirk.*
+%{_kf6_knsrcfilesdir}/ksirk.knsrc
+%{_kf6_sharedir}/ksirk/
+%{_kf6_sharedir}/ksirkskineditor/
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/ksirk/
+%exclude %{_kf6_htmldir}/en/ksirkskineditor/
 
 %changelog
