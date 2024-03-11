@@ -1,0 +1,14 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+   <param name="url">https://gitlab.com/accounts-sso/signon-ui.git</param>
+   <param name="scm">git</param>
+   <!-- previous version was '0.17+<some digits>', we can't use '0.17git' -->
+   <param name="versionformat">0.17.%ci~%h</param>
+  </service>
+  <service name="set_version" mode="disabled" />
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+   <param name="file">*.tar</param>
+   <param name="compression">xz</param>
+  </service>
+</services>

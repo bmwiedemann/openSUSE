@@ -1,7 +1,7 @@
 #
 # spec file for package signon-ui
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,60 +12,61 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-# webengine branch
-%define commit 4368bb77d9d1abc2978af514225ba4a42c29a646
-
 Name:           signon-ui
-Version:        0.17+20171022
+Version:        0.17.20231016T221200~eef943f
 Release:        0
 Summary:        Single Sign On UI
 License:        GPL-3.0-only
 Group:          System/GUI/Other
-Url:            https://gitlab.com/accounts-sso/signon-ui
-Source:         https://gitlab.com/accounts-sso/signon-ui/-/archive/%{commit}/signon-ui-%{commit}.tar.bz2
+URL:            https://gitlab.com/accounts-sso/signon-ui
+Source:         %{name}-%{version}.tar.xz
 # Patches for upstream, but upstream is dead
-Patch1:         0001-Fix-WebEngine-cache-directory-path.patch
-Patch2:         0001-Reintroduce-the-username-field-reading-with-webkit-o.patch
-BuildRequires:  libaccounts-qt5-devel
-BuildRequires:  libsignon-qt5-devel
-BuildRequires:  signon-plugins-devel
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5WebEngine)
+Patch0:         0001-Fix-WebEngine-cache-directory-path.patch
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6DBus)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6Quick)
+BuildRequires:  pkgconfig(Qt6WebEngineQuick)
+BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(accounts-qt6)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libproxy-1.0)
+BuildRequires:  pkgconfig(libsignon-qt6)
+BuildRequires:  pkgconfig(signon-plugins-common)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
-Requires:       libQt5WebChannel5-imports
+Requires:       qt6-webchannel-imports
+# It can only build on the same platforms as Qt Webengine
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 This package contains the user interface for the signond Single Sign On service.
 
 %prep
-%setup -q -n %{name}-%{commit}
-%autopatch -p1
+%autosetup -p1
 
 # Don't build tests
 sed -i '/tests/d' signon-ui.pro
 
 # Fix libdir
-sed -i 's/\/lib/\/%{_lib}/g' common-installs-config.pri
+sed -i 's#/lib#/%{_lib}#g' common-installs-config.pri
 
 %build
-%qmake5 \
-  PREFIX=%{_prefix} \
-  LIBDIR=%{_libdir}
+%qmake6
 
-%make_jobs
+%qmake6_build
 
 %install
-%qmake5_install
+%qmake6_install
+
 # The .desktop file is useless
-rm -rf %{buildroot}%{_datadir}/applications
+rm -r %{buildroot}%{_datadir}/applications
 
 %files
 %license COPYING

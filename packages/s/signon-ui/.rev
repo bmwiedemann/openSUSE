@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>639229</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>67c1d3466926b31e812b2f2de29cc34a</srcmd5>
+    <version>0.17.20231016T221200~eef943f</version>
+    <time>1710167259</time>
+    <user>anag+factory</user>
+    <comment>- Drop 0001-Reintroduce-the-username-field-reading-with-webkit-o.patch
+  it's not needed anymore with the current snapshot
+
+- Use a git snapshot to build signon-ui with Qt6
+- Update to signon-ui-0.17.20231016T221200~eef943f</comment>
+    <requestid>1153008</requestid>
+  </revision>
 </revisionlist>
