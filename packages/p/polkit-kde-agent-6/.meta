@@ -1,0 +1,8 @@
+<package name="polkit-kde-agent-6" project="openSUSE:Factory">
+  <title>PolicyKit authentication agent for KDE</title>
+  <description>Provides Policy Kit Authentication Agent that nicely fits to KDE.
+
+</description>
+  <devel project="KDE:Frameworks" package="polkit-kde-agent-6"/>
+  <url>https://www.kde.org/</url>
+</package>
