@@ -1,7 +1,7 @@
 #
 # spec file for package cantor
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,20 @@
 
 
 %global libMAJOR 28
+
+# TODO Reenable when cantor is ported to KF6/Qt6
+%bcond_with analitza
+
 %bcond_without released
 Name:           cantor
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Worksheet GUI for mathematical software
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/cantor
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  R-base
@@ -35,15 +39,15 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  gcc-fortran
 BuildRequires:  help2man
-BuildRequires:  kf5-filesystem
 BuildRequires:  libpoppler-qt5-devel
 BuildRequires:  libspectre-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  shared-mime-info
-BuildRequires:  xz
+%if %{with analitza}
 BuildRequires:  cmake(Analitza5)
+%endif
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
@@ -157,7 +161,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_configkcfgdir}/rserver.kcfg
 %{_kf5_configkcfgdir}/octavebackend.kcfg.in
 %{_kf5_iconsdir}/hicolor/*/apps/*
-%{_kf5_kxmlguidir}/cantor/
 %{_kf5_libdir}/libcantor_config.so
 %{_kf5_libdir}/cantor_pythonbackend.so
 %dir %{_kf5_plugindir}/cantor
@@ -176,7 +179,9 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_plugindir}/cantor/assistants/cantor_solveassistant.so
 %{_kf5_plugindir}/cantor/assistants/cantor_qalculateplotassistant.so
 %dir %{_kf5_plugindir}/cantor/backends
+%if %{with analitza}
 %{_kf5_plugindir}/cantor/backends/cantor_kalgebrabackend.so
+%endif
 %{_kf5_plugindir}/cantor/backends/cantor_maximabackend.so
 %{_kf5_plugindir}/cantor/backends/cantor_octavebackend.so
 %{_kf5_plugindir}/cantor/backends/cantor_pythonbackend.so
