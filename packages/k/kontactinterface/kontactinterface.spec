@@ -1,7 +1,7 @@
 #
 # spec file for package kontactinterface
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,79 +16,84 @@
 #
 
 
-%define kf5_version 5.105.0
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           kontactinterface
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        KDE PIM Libraries: Interface to Contacts
 License:        LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
-BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
-BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
-BuildRequires:  cmake(KF5Parts) >= %{kf5_version}
-BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
-BuildRequires:  cmake(KF5XmlGui) >= %{kf5_version}
-BuildRequires:  cmake(Qt5X11Extras)
+BuildRequires:  doxygen
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
+BuildRequires:  pkgconfig(x11)
 
 %description
 This package contains additional libraries for KDE PIM applications.
 
-%package -n libKPim5KontactInterface5
+%package -n libKPim6KontactInterface6
 Summary:        KDE PIM Libraries: Interface to Contacts
-Provides:       %{name} = %{version}
+Requires:       kontactinterface >= %{version}
 # Renamed
 Obsoletes:      kontactinterface-lang <= 23.04.0
 
-%description  -n libKPim5KontactInterface5
+%description  -n libKPim6KontactInterface6
 This package provides the interface to contacts for KDE PIM applications
 
 %package devel
 Summary:        KDE PIM Libraries: Build Environment
-Requires:       libKPim5KontactInterface5 = %{version}
-Requires:       cmake(KF5Parts) >= %{kf5_version}
+Requires:       libKPim6KontactInterface6 = %{version}
+Requires:       cmake(KF6Parts) >= %{kf6_version}
 
 %description devel
 This package contains necessary include files and libraries needed
 to develop KDE PIM applications.
 
-%lang_package -n libKPim5KontactInterface5
+%lang_package -n libKPim6KontactInterface6
 
 %prep
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build -- -DBUILD_TESTING=OFF
-%cmake_build
+%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang libKPim5KontactInterface5 --with-man --all-name
+%find_lang %{name} --all-name
 
-%ldconfig_scriptlets -n libKPim5KontactInterface5
+%ldconfig_scriptlets -n libKPim6KontactInterface6
 
-%files -n libKPim5KontactInterface5
+%files
+%{_kf6_debugdir}/kontactinterface.categories
+%{_kf6_debugdir}/kontactinterface.renamecategories
+
+%files -n libKPim6KontactInterface6
 %license LICENSES/*
-%{_kf5_debugdir}/*.categories
-%{_kf5_debugdir}/*.renamecategories
-%{_kf5_libdir}/libKPim5KontactInterface.so.*
+%{_kf6_libdir}/libKPim6KontactInterface.so.*
 
 %files devel
-%dir %{_includedir}/KPim5
-%{_includedir}/KPim5/KontactInterface/
-%{_kf5_cmakedir}/KPim5KontactInterface/
-%{_kf5_libdir}/libKPim5KontactInterface.so
-%{_kf5_mkspecsdir}/qt_KontactInterface.pri
+%doc %{_kf6_qchdir}/KPim6KontactInterface.*
+%{_includedir}/KPim6/KontactInterface/
+%{_kf6_cmakedir}/KPim6KontactInterface/
+%{_kf6_libdir}/libKPim6KontactInterface.so
 
-%files -n libKPim5KontactInterface5-lang -f libKPim5KontactInterface5.lang
+%files -n libKPim6KontactInterface6-lang -f %{name}.lang
 
 %changelog
