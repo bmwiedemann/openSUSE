@@ -153,4 +153,18 @@
   * fix(deps): update rust crate inquire to 0.7.0 86ec845</comment>
     <requestid>1150575</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>954431be8b74d30ed965dea2c792d10f</srcmd5>
+    <version>0.19.4+0</version>
+    <time>1710167682</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.19.4:
+  * LSP default message for diagnostics #970
+  * feat: Add error messaging for rule file parsing failures #968
+  * feat: add html testing and tweak html #977
+  * fix(deps): update dependency @babel/core to v7.24.0 a14741d
+  * fix(deps): update dependency @swc/core to v1.4.6 4a397f4
+  * fix(deps): update rust crate pyo3 to 0.20.3 23653c2</comment>
+    <requestid>1156842</requestid>
+  </revision>
 </revisionlist>
