@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  6 12:12:11 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.58.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+
+-------------------------------------------------------------------
 Tue Feb 20 11:17:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
