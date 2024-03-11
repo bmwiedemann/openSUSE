@@ -1,7 +1,7 @@
 #
 # spec file for package kidentitymanagement
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,66 +16,84 @@
 #
 
 
-%define kf5_version 5.105.0
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define kpim6_version 6.0.0
+
 %bcond_without released
 Name:           kidentitymanagement
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        KDE PIM Libraries: Identity Management
 License:        LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5Codecs) >= %{kf5_version}
-BuildRequires:  cmake(KF5Completion) >= %{kf5_version}
-BuildRequires:  cmake(KF5Config) >= %{kf5_version}
-BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
-BuildRequires:  cmake(KF5Emoticons) >= %{kf5_version}
-BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
-BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
-BuildRequires:  cmake(KF5TextEditTextToSpeech)
-BuildRequires:  cmake(KF5TextWidgets) >= %{kf5_version}
-BuildRequires:  cmake(KF5XmlGui) >= %{kf5_version}
-BuildRequires:  cmake(KPim5TextEdit)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Test)
-Conflicts:      libKF5IdentityManagement5 < %{version}
-Conflicts:      libKF5IdentityManagementWidgets5 < %{version}
+BuildRequires:  doxygen
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons) >= 0.11
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextCustomEditor)
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(KPim6TextEdit) >= %{kpim6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
+Conflicts:      libKF6IdentityManagement5 < %{version}
+Conflicts:      libKF6IdentityManagementWidgets5 < %{version}
 
 %description
 This package provides a library to handle multiple email identities and
 associated settings.
 
-%package -n libKPim5IdentityManagement5
+%package -n libKPim6IdentityManagementCore6
 Summary:        KDE PIM Libraries: Identity Management - core library
-Recommends:     %{name}-lang
-%requires_eq    %{name}
+Recommends:     kidentitymanagement-lang
+Requires:       kidentitymanagement >= %{version}
 
-%description  -n libKPim5IdentityManagement5
+%description  -n libKPim6IdentityManagementCore6
 This package provides the core library to handle multiple email identities and
 associated settings.
 
-%package -n libKPim5IdentityManagementWidgets5
+%package -n libKPim6IdentityManagementWidgets6
 Summary:        KDE PIM Libraries: Identity Management - widgets library
-Recommends:     %{name}-lang
-Requires:       libKPim5IdentityManagement5 = %{version}
+Recommends:     kidentitymanagement-lang
+Requires:       libKPim6IdentityManagementCore6 = %{version}
 
-%description  -n libKPim5IdentityManagementWidgets5
+%description  -n libKPim6IdentityManagementWidgets6
 This package provides graphical widgets to handle multiple email identities
 and associated settings.
 
+%package -n libKPim6IdentityManagementQuick6
+Summary:        KDE PIM Libraries: Identity Management - QtQuick library
+Requires:       libKPim6IdentityManagementCore6 = %{version}
+
+%description -n libKPim6IdentityManagementQuick6
+This package provides a shared library to build QtQuick interfaces for 
+PIM identity management.
+
+%package imports
+Summary:        QML imports for using kidentitymanagement
+Requires:       libKPim6IdentityManagementCore6 = %{version}
+Requires:       libKPim6IdentityManagementQuick6 = %{version}
+
+%description imports
+QML imports for using kidentitymanagement.
+
 %package devel
 Summary:        KDE PIM Libraries: Identity Management - development files
-Requires:       libKPim5IdentityManagement5 = %{version}
-Requires:       libKPim5IdentityManagementWidgets5 = %{version}
-Requires:       cmake(KF5CoreAddons) >= %{kf5_version}
-Requires:       cmake(KF5TextEditTextToSpeech)
-Requires:       cmake(KPim5TextEdit)
+Requires:       libKPim6IdentityManagementCore6 = %{version}
+Requires:       libKPim6IdentityManagementWidgets6 = %{version}
+Requires:       libKPim6IdentityManagementQuick6 = %{version}
+Requires:       cmake(KF6CoreAddons) >= %{kf6_version}
+Requires:       cmake(KPim6TextEdit) >= %{kpim6_version}
 
 %description devel
 This package contains necessary include files and libraries needed
@@ -84,42 +102,51 @@ to develop applications that make use of multiple email identities.
 %lang_package
 
 %prep
-%autosetup -p1 -n kidentitymanagement-%{version}
+%autosetup -p1
 
 %build
-%cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
-%cmake_build
+%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
+%find_lang %{name} --all-name
 
-%ldconfig_scriptlets -n libKPim5IdentityManagement5
-%ldconfig_scriptlets -n libKPim5IdentityManagementWidgets5
+%ldconfig_scriptlets -n libKPim6IdentityManagementCore6
+%ldconfig_scriptlets -n libKPim6IdentityManagementWidgets6
+%ldconfig_scriptlets -n libKPim6IdentityManagementQuick6
 
 %files
+%{_kf6_debugdir}/kidentitymanagement.categories
+%{_kf6_debugdir}/kidentitymanagement.renamecategories
+
+%files -n libKPim6IdentityManagementCore6
 %license LICENSES/*
-%{_kf5_debugdir}/*.categories
-%{_kf5_debugdir}/*.renamecategories
+%{_kf6_libdir}/libKPim6IdentityManagementCore.so.*
 
-%files -n libKPim5IdentityManagement5
-%{_kf5_libdir}/libKPim5IdentityManagement.so.*
+%files -n libKPim6IdentityManagementWidgets6
+%{_kf6_libdir}/libKPim6IdentityManagementWidgets.so.*
 
-%files -n libKPim5IdentityManagementWidgets5
-%{_kf5_libdir}/libKPim5IdentityManagementWidgets.so.*
+%files -n libKPim6IdentityManagementQuick6
+%{_kf6_libdir}/libKPim6IdentityManagementQuick.so.*
+
+%files imports
+%{_kf6_qmldir}/org/kde/kidentitymanagement/
 
 %files devel
-%dir %{_includedir}/KPim5
-%{_includedir}/KPim5/KIdentityManagement/
-%{_includedir}/KPim5/KIdentityManagementWidgets/
-%{_kf5_cmakedir}/KF5IdentityManagement/
-%{_kf5_cmakedir}/KPim5IdentityManagement/
-%{_kf5_dbusinterfacesdir}/kf5_org.kde.pim.IdentityManager.xml
-%{_kf5_libdir}/libKPim5IdentityManagement.so
-%{_kf5_libdir}/libKPim5IdentityManagementWidgets.so
-%{_kf5_mkspecsdir}/qt_KIdentityManagement.pri
-%{_kf5_mkspecsdir}/qt_KIdentityManagementWidgets.pri
+%doc %{_kf6_qchdir}/KPim6IdentityManagement*.*
+%{_includedir}/KPim6/KIdentityManagementCore/
+%{_includedir}/KPim6/KIdentityManagementQuick/
+%{_includedir}/KPim6/KIdentityManagementWidgets/
+%{_kf6_cmakedir}/KPim6IdentityManagementCore/
+%{_kf6_cmakedir}/KPim6IdentityManagementQuick/
+%{_kf6_cmakedir}/KPim6IdentityManagementWidgets/
+%{_kf6_dbusinterfacesdir}/kf6_org.kde.pim.IdentityManager.xml
+%{_kf6_libdir}/libKPim6IdentityManagementCore.so
+%{_kf6_libdir}/libKPim6IdentityManagementQuick.so
+%{_kf6_libdir}/libKPim6IdentityManagementWidgets.so
 
 %files lang -f %{name}.lang
 
