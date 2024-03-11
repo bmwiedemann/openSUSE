@@ -1,7 +1,7 @@
 #
 # spec file for package kiriki
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,47 +16,34 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           kiriki
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Yahtzee-like Game
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/kiriki
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5Codecs)
-BuildRequires:  cmake(KF5Completion)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5DNSSD)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5ItemModels)
-BuildRequires:  cmake(KF5ItemViews)
-BuildRequires:  cmake(KF5KDEGames)
-BuildRequires:  cmake(KF5KDELibs4Support)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5NotifyConfig)
-BuildRequires:  cmake(KF5Service)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5QuickWidgets)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KDEGames6) 
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Obsoletes:      kiriki5 < %{version}
 Provides:       kiriki5 = %{version}
 
@@ -70,26 +57,26 @@ to get higher scores in several combinations
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
+%find_lang %{name} --with-man --with-html --all-name
 
-%suse_update_desktop_file -r org.kde.kiriki Game BoardGame
 
 %files
 %license COPYING*
-%doc %lang(en) %{_kf5_htmldir}/en/kiriki/
-%{_kf5_applicationsdir}/org.kde.kiriki.desktop
-%{_kf5_appsdir}/kiriki/
-%{_kf5_appstreamdir}/org.kde.kiriki.appdata.xml
-%{_kf5_bindir}/kiriki
-%{_kf5_iconsdir}/hicolor/*/apps/kiriki.*
+%doc %lang(en) %{_kf6_htmldir}/en/kiriki/
+%{_kf6_applicationsdir}/org.kde.kiriki.desktop
+%{_kf6_appstreamdir}/org.kde.kiriki.appdata.xml
+%{_kf6_bindir}/kiriki
+%{_kf6_iconsdir}/hicolor/*/apps/kiriki.*
+%{_kf6_sharedir}/kiriki/
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/kiriki/
 
 %changelog
