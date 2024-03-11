@@ -1,0 +1,9 @@
+<package name="kf6-kcodecs" project="openSUSE:Factory">
+  <title>Method collection to manipulate strings using various encodings</title>
+  <description>KCodecs provides a collection of methods to manipulate strings using various
+encodings.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kcodecs"/>
+  <url>https://www.kde.org</url>
+</package>
