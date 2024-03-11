@@ -1,0 +1,9 @@
+<package name="kf6-kpackage" project="openSUSE:Factory">
+  <title>Non-binary asset user-installable package managing framework</title>
+  <description>This framework lets applications to manage user installable packages of
+non-binary assets.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kpackage"/>
+  <url>https://www.kde.org</url>
+</package>
