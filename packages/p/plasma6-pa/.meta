@@ -1,0 +1,8 @@
+<package name="plasma6-pa" project="openSUSE:Factory">
+  <title>The Plasma6 Volume Manager</title>
+  <description>A volume manager plasmoid superseding kmix.
+
+</description>
+  <devel project="KDE:Frameworks" package="plasma6-pa"/>
+  <url>https://www.kde.org</url>
+</package>
