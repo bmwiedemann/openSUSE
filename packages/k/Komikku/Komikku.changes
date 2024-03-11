@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  8 18:58:41 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- switch runtime dep python-typing-extensions to python-typing_extensions
+
+-------------------------------------------------------------------
 Fri Mar  8 02:28:33 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - require at least python-pure-protobuf 3.0.0

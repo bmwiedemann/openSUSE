@@ -55,7 +55,7 @@ Requires:       python3-python-magic
 Requires:       python3-rarfile
 Requires:       python3-requests
 Requires:       python3-setuptools-gettext
-Requires:       python3-typing-extensions
+Requires:       python3-typing_extensions
 Requires:       python3-wheel
 Requires:       unrar_wrapper
 BuildArch:      noarch
