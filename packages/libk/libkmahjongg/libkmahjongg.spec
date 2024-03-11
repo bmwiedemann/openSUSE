@@ -1,7 +1,7 @@
 #
 # spec file for package libkmahjongg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,48 +16,50 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           libkmahjongg
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        General Data for KDE Games
-License:        GPL-2.0-or-later
+License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  cmake(KF5Completion)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 Obsoletes:      %{name}-kf5 < %{version}
 Provides:       %{name}-kf5 = %{version}
 
 %description
-This package contains data which is required by KDE games.
+Common code, backgrounds and tile sets for games using Mahjongg tiles.
 
-%package -n libKF5KMahjongglib5
+%package -n libKMahjongg6
 Summary:        Library for Mahjongg tiles
-License:        LGPL-2.1-or-later
-Requires:       libkmahjongg
+Requires:       libkmahjongg >= %{version}
 
-%description -n libKF5KMahjongglib5
-This package contains the library for Mahjongg tiles.
+%description -n libKMahjongg6
+Common code, backgrounds and tile sets for games using Mahjongg tiles.
 
 %package devel
 Summary:        Library for Mahjongg tiles: Build Environment
-License:        LGPL-2.1-or-later
-Requires:       libKF5KMahjongglib5 = %{version}
+Requires:       libKMahjongg6 = %{version}
+Requires:       cmake(KF6ConfigWidgets) >= %{kf6_version}
+Requires:       cmake(Qt6Gui) >= %{qt6_version}
 Obsoletes:      %{name}-kf5-devel < %{version}
 Provides:       %{name}-kf5-devel = %{version}
 
@@ -71,33 +73,32 @@ develop games that uses Mahjongg tiles.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
+%find_lang %{name} --all-name
 
 %fdupes -s %{buildroot}
 
-%ldconfig_scriptlets -n libKF5KMahjongglib5
+%ldconfig_scriptlets -n libKMahjongg6
 
 %files
-%doc README
-%{_kf5_debugdir}/libkmahjongg.categories
-%{_kf5_sharedir}/kmahjongglib/
+%{_kf6_debugdir}/libkmahjongg.categories
+%{_kf6_sharedir}/kmahjongglib/
 
-%files -n libKF5KMahjongglib5
+%files -n libKMahjongg6
 %license LICENSES/*
 %doc README
-%{_kf5_libdir}/libKF5KMahjongglib.so.*
+%{_kf6_libdir}/libKMahjongg6.so.*
 
 %files devel
-%doc README
-%{_kf5_cmakedir}/KF5KMahjongglib
-%{_kf5_includedir}/KMahjongg/
-%{_kf5_libdir}/libKF5KMahjongglib.so
+%{_includedir}/KMahjongg6/
+%{_kf6_cmakedir}/KMahjongglib6/
+%{_kf6_libdir}/libKMahjongg6.so
 
 %files lang -f %{name}.lang
 
