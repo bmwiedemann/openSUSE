@@ -1,7 +1,7 @@
 #
 # spec file for package kmag
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,31 +16,30 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           kmag
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Screen Magnifier
 License:        GPL-2.0-only
 URL:            https://apps.kde.org/kmag
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  alsa-devel
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  sbl
-BuildRequires:  update-desktop-files
-BuildRequires:  xz
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(QAccessibilityClient6)
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Obsoletes:      kmag5 < %{version}
 Provides:       kmag5 = %{version}
 
@@ -53,27 +52,26 @@ Magnifies a part of the screen.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
-
-%suse_update_desktop_file -r org.kde.kmag Utility Accessibility
+%find_lang %{name} --with-man --with-html --all-name
 
 %files
-%license COPYING*
-%doc %lang(en) %{_kf5_htmldir}/en/*/
-%{_kf5_applicationsdir}/org.kde.kmag.desktop
-%{_kf5_appstreamdir}/org.kde.kmag.appdata.xml
-%{_kf5_bindir}/kmag
-%{_kf5_iconsdir}/hicolor/*/apps/kmag.*
-%{_kf5_mandir}//man1/kmag.1*
-%{_kf5_sharedir}/kmag/
+%license LICENSES/*
+%doc %lang(en) %{_kf6_htmldir}/en/*/
+%{_kf6_applicationsdir}/org.kde.kmag.desktop
+%{_kf6_appstreamdir}/org.kde.kmag.appdata.xml
+%{_kf6_bindir}/kmag
+%{_kf6_iconsdir}/hicolor/*/apps/kmag.*
+%{_kf6_mandir}/man1/kmag.1*
+%{_kf6_sharedir}/kmag/
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/*/
 
 %changelog
