@@ -1,7 +1,7 @@
 #
 # spec file for package kasts
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,45 +16,51 @@
 #
 
 
-%bcond_without  released
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
+%bcond_without released
 Name:           kasts
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Kirigami-based podcast player
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/kasts
-Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5Kirigami2)
-BuildRequires:  cmake(KF5KirigamiAddons)
-BuildRequires:  cmake(KF5NetworkManagerQt)
-BuildRequires:  cmake(KF5Syndication)
-BuildRequires:  cmake(KF5ThreadWeaver)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Keychain)
-BuildRequires:  cmake(Qt5Multimedia)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5QuickControls2)
-BuildRequires:  cmake(Qt5Sql)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons) >= 0.7
+BuildRequires:  cmake(KF6NetworkManagerQt) >= %{kf6_version}
+BuildRequires:  cmake(KF6Syndication) >= %{kf6_version}
+BuildRequires:  cmake(KF6ThreadWeaver) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Keychain)
+BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
+BuildRequires:  pkgconfig(libvlc)
 BuildRequires:  pkgconfig(taglib)
-Requires:       kirigami-addons
-Requires:       kirigami2
+Requires:       kf6-kirigami-imports >= %{kf6_version}
+Requires:       kirigami-addons6
+Requires:       qt6-sql-sqlite >= %{qt6_version}
 
 %description
 Kasts is a convergent podcast application.
@@ -73,29 +79,25 @@ Its main features are:
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
+%cmake_kf6
 
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
 %find_lang %{name} --all-name
 
 %files
 %license LICENSES/*
-%dir %{_kf5_qmldir}/org
-%dir %{_kf5_qmldir}/org/kde
-%{_kf5_applicationsdir}/org.kde.kasts.desktop
-%{_kf5_appstreamdir}/org.kde.kasts.appdata.xml
-%{_kf5_bindir}/kasts
-%{_kf5_iconsdir}/hicolor/scalable/actions/media-playback-cloud.svg
-%{_kf5_iconsdir}/hicolor/scalable/apps/kasts-tray-*.svg
-%{_kf5_iconsdir}/hicolor/scalable/apps/kasts.svg
-%{_kf5_libdir}/libKMediaSession.so
-%{_kf5_libdir}/libKastsSolidExtras.so
-%{_kf5_qmldir}/org/kde/kasts/
-%{_kf5_qmldir}/org/kde/kmediasession/
+%{_kf6_applicationsdir}/org.kde.kasts.desktop
+%{_kf6_appstreamdir}/org.kde.kasts.appdata.xml
+%{_kf6_bindir}/kasts
+%{_kf6_iconsdir}/hicolor/scalable/actions/media-playback-cloud.svg
+%{_kf6_iconsdir}/hicolor/scalable/apps/kasts-tray-*.svg
+%{_kf6_iconsdir}/hicolor/scalable/apps/kasts.svg
+%{_kf6_libdir}/libKMediaSession.so
+%{_kf6_qmldir}/org/kde/kmediasession/
 
 %files lang -f %{name}.lang
 
