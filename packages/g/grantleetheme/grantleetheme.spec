@@ -1,7 +1,7 @@
 #
 # spec file for package grantleetheme
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,49 +16,50 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           grantleetheme
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Grantlee theme support
 License:        GPL-2.0-only
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(Grantlee5)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5GuiAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5NewStuff)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
-%if %{with released}
-%requires_eq    grantlee5
-%endif
+BuildRequires:  doxygen
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6NewStuff) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(KF6TextTemplate)
+BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 
 %description
 the grantleetheme library adds Grantlee theme support for PIM applications.
 
-%package -n libKPim5GrantleeTheme5
+%package -n libKPim6GrantleeTheme6
 Summary:        GrantleeTheme library for KDE PIM applications
 License:        LGPL-2.1-or-later
-Requires:       grantleetheme = %{version}
+Requires:       grantleetheme >= %{version}
 
-%description -n libKPim5GrantleeTheme5
+%description -n libKPim6GrantleeTheme6
 The GrantleeTheme library
 
 %package devel
 Summary:        Development package for grantleetheme
 License:        LGPL-2.1-or-later
-Requires:       libKPim5GrantleeTheme5 = %{version}
+Requires:       libKPim6GrantleeTheme6 = %{version}
+Requires:       cmake(KF6TextTemplate)
 
 %description devel
 The development package for the grantleetheme library
@@ -69,36 +70,31 @@ The development package for the grantleetheme library
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
+%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
 
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
+%find_lang %{name} --all-name
 
-%global grantlee_shortver %(rpm -q --queryformat=%%{VERSION} grantlee5 | cut -d . -f 1-2)
-
-%ldconfig_scriptlets -n libKPim5GrantleeTheme5
+%ldconfig_scriptlets -n libKPim6GrantleeTheme6
 
 %files
-%dir %{_kf5_libdir}/grantlee/
-%dir %{_kf5_libdir}/grantlee/%{grantlee_shortver}
-%{_kf5_debugdir}/grantleetheme.categories
-%{_kf5_debugdir}/grantleetheme.renamecategories
-%{_kf5_libdir}/grantlee/%{grantlee_shortver}/kde_grantlee_plugin.so
+%{_kf6_debugdir}/grantleetheme.categories
+%{_kf6_debugdir}/grantleetheme.renamecategories
+%{_kf6_plugindir}/kf6/ktexttemplate/kde_grantlee_plugin.so
 
-%files -n libKPim5GrantleeTheme5
+%files -n libKPim6GrantleeTheme6
 %license LICENSES/*
-%{_kf5_libdir}/libKPim5GrantleeTheme.so.*
+%{_kf6_libdir}/libKPim6GrantleeTheme.so.*
 
 %files devel
-%dir %{_includedir}/KPim5
-%{_includedir}/KPim5/GrantleeTheme/
-%{_kf5_cmakedir}/KPim5GrantleeTheme/
-%{_kf5_libdir}/libKPim5GrantleeTheme.so
-%{_kf5_mkspecsdir}/qt_GrantleeTheme.pri
+%doc %{_kf6_qchdir}/KPim6GrantleeTheme.*
+%{_includedir}/KPim6/GrantleeTheme/
+%{_kf6_cmakedir}/KPim6GrantleeTheme/
+%{_kf6_libdir}/libKPim6GrantleeTheme.so
 
 %files lang -f %{name}.lang
 
