@@ -57,9 +57,7 @@ The tool currently reads the contents of:
 See %{_docdir}/cardpeek/cardpeek_ref.en.pdf for more details.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %configure \
