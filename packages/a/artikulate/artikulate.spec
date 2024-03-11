@@ -1,7 +1,7 @@
 #
 # spec file for package artikulate
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,14 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           artikulate
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Pronunciation Self-Teaching
 License:        LGPL-3.0-or-later AND GPL-2.0-only AND BSD-3-Clause
 URL:            https://apps.kde.org/artikulate
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
