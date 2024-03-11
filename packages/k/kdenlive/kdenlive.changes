@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Feb 23 13:59:02 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.0
+  * New feature release
+- Too many changes since 24.01.95, only listing bugfixes:
+  * Subtitles: add session id to tmp files to ensure 2 concurrent versions of a project don't share the same tmp files (kde#481525)
+  * Refactor mouse position in the timeline to fix multiple small bugs (kde#480977)
+  * Fix Qt6 dragging clips with subtitle track visible (kde#480829)
+  * Multi guides export: replace slash and backslash in section names to fix rendering (kde#480845)
+  * Fix sequence corruption on project load (kde#480776)
+  * Ensure closed timeline sequences have a transparent background on opening (kde#480734)
+  * Fix duplicated filenames or multiple uses not correctly handled in archiving (kde#421567, kde#456346)
+  * Fix multiple archiving issues (kde#456346)
+  * Fix possible sequence corruption (kde#480398)
+
+-------------------------------------------------------------------
+Fri Feb  9 16:08:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.01.95
+  * https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
 Tue Dec  5 14:19:27 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.4
