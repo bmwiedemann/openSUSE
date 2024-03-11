@@ -1,7 +1,7 @@
 #
 # spec file for package neochat
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,68 +16,73 @@
 #
 
 
-%define _kf5_version 5.88.0
-%bcond_without  released
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
+%bcond_without released
 Name:           neochat
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        A chat client for Matrix, the decentralized communication protocol
 License:        BSD-2-Clause AND GPL-3.0-only AND GPL-3.0-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://apps.kde.org/neochat/
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  cmake >= 3.16
+# Needed for leap 15.5
 BuildRequires:  cmark
-BuildRequires:  extra-cmake-modules >= %{_kf5_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
-%if 0%{?suse_version} == 1500
-BuildRequires:  gcc12-PIE
-BuildRequires:  gcc12-c++
-%endif
-BuildRequires:  kf5-filesystem
+# Both kquickimageeditor flavors provide the same CMake target name, use the devel package name instead
+# BuildRequires:  cmake(KQuickImageEditor)
+BuildRequires:  kquickimageeditor6-devel
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5Config) >= %{_kf5_version}
-BuildRequires:  cmake(KF5ConfigWidgets) >= %{_kf5_version}
-BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_version}
-BuildRequires:  cmake(KF5DBusAddons) >= %{_kf5_version}
-BuildRequires:  cmake(KF5DocTools) >= %{_kf5_version}
-BuildRequires:  cmake(KF5I18n) >= %{_kf5_version}
-BuildRequires:  cmake(KF5ItemModels) >= %{_kf5_version}
-BuildRequires:  cmake(KF5KIO) >= %{_kf5_version}
-BuildRequires:  cmake(KF5Kirigami2) >= %{_kf5_version}
-BuildRequires:  cmake(KF5KirigamiAddons) >= 0.7.2
-BuildRequires:  cmake(KF5Notifications) >= %{_kf5_version}
-BuildRequires:  cmake(KF5QQC2DesktopStyle) >= %{_kf5_version}
-BuildRequires:  cmake(KF5Sonnet) >= %{_kf5_version}
-BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_version}
-BuildRequires:  cmake(KQuickImageEditor) >= 0.1
-BuildRequires:  cmake(QCoro5Coro)
-BuildRequires:  cmake(Qt5Core) >= 5.15.2
-BuildRequires:  cmake(Qt5Gui) >= 5.15.2
-BuildRequires:  cmake(Qt5Keychain)
-BuildRequires:  cmake(Qt5Multimedia) >= 5.15.2
-BuildRequires:  cmake(Qt5Quick) >= 5.15.2
-BuildRequires:  cmake(Qt5QuickControls2) >= 5.15.2
-BuildRequires:  cmake(Qt5Svg) >= 5.15.2
-BuildRequires:  cmake(Qt5Widgets) >= 5.15.2
-BuildRequires:  cmake(Quotient) >= 0.7.0
+BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons) >= 0.7.2
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6QQC2DesktopStyle) >= %{kf6_version}
+BuildRequires:  cmake(KF6Sonnet) >= %{kf6_version}
+BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(QCoro6Core)
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WebView) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(QuotientQt6) >= 0.7.0
+BuildRequires:  pkgconfig(icu-uc) >= 61.0
 BuildRequires:  pkgconfig(libcmark)
-Requires:       kirigami-addons
-Requires:       kirigami2
-Requires:       kitemmodels-imports
-Requires:       kquickimageeditor-imports
-Requires:       syntax-highlighting-imports
-Requires:       qt5qmlimport(QtLocation.5) >= 15
-Requires:       qt5qmlimport(QtPositioning.5) >= 15
-Requires:       qt5qmlimport(org.kde.quickcharts.1) >= 0
+# It can only build on the same platforms as Qt Webengine
+ExclusiveArch:  x86_64 aarch64 riscv64
+Requires:       kf6-kirigami-imports >= %{kf6_version}
+Requires:       kf6-kitemmodels-imports >= %{kf6_version}
+Requires:       kf6-kquickcharts >= %{kf6_version}
+Requires:       kf6-prison-imports >= %{kf6_version}
+Requires:       kf6-qqc2-desktop-style >= %{kf6_version}
+Requires:       kf6-syntax-highlighting-imports >= %{kf6_version}
+Requires:       kirigami-addons6 >= 0.7.2
+Requires:       qt6-location >= %{qt6_version}
+Requires:       qt6-positioning-imports >= %{qt6_version}
+Requires:       qt6qmlimport(org.kde.kquickimageeditor.1)
 
 %description
-Neochat is a client for Matrix, the decentralized communication protocol for instant
-messaging.
+Neochat is a client for Matrix, the decentralized communication protocol for
+instant messaging.
 
 %lang_package
 
@@ -85,17 +90,12 @@ messaging.
 %autosetup -p1
 
 %build
-# c++-20 is required
-%if 0%{?suse_version} == 1500
-    export CC=gcc-12 CXX=g++-12
-%endif
+%cmake_kf6
 
-%cmake_kf5 -d build
-
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
 %fdupes %{buildroot}
 
@@ -103,18 +103,16 @@ messaging.
 
 %files
 %license LICENSES/*
-%doc README*
-%dir %{_kf5_sharedir}/krunner/
-%dir %{_kf5_sharedir}/krunner/dbusplugins/
-%{_kf5_applicationsdir}/org.kde.neochat.desktop
-%{_kf5_appstreamdir}/org.kde.neochat.appdata.xml
-%{_kf5_bindir}/neochat
-%{_kf5_debugdir}/neochat.categories
-%{_kf5_iconsdir}/hicolor/*/apps/org.kde.neochat.svg
-%{_kf5_iconsdir}/hicolor/scalable/apps/org.kde.neochat.tray.svg
-%{_kf5_mandir}/man1/neochat.1%{?ext_man}
-%{_kf5_notifydir}/neochat.notifyrc
-%{_kf5_sharedir}/krunner/dbusplugins/plasma-runner-neochat.desktop
+%doc README.md
+%{_kf6_applicationsdir}/org.kde.neochat.desktop
+%{_kf6_appstreamdir}/org.kde.neochat.appdata.xml
+%{_kf6_bindir}/neochat
+%{_kf6_debugdir}/neochat.categories
+%{_kf6_iconsdir}/hicolor/*/apps/org.kde.neochat.svg
+%{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.neochat.tray.svg
+%{_kf6_mandir}/man1/neochat.1%{?ext_man}
+%{_kf6_notificationsdir}/neochat.notifyrc
+%{_kf6_sharedir}/krunner/dbusplugins/plasma-runner-neochat.desktop
 
 %files lang -f %{name}.lang
 

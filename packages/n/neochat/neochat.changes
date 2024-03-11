@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Feb 29 14:33:12 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update the kquickimageeditor build requirement
+
+-------------------------------------------------------------------
+Fri Feb 23 14:00:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.0
+  * New feature release
+- Changes since 24.01.95:
+  * Fix saving images from maximize component
+  * Add feature flag for reply in thread
+  * Add neochat 24.02 release note
+  * Fix reaction update event when the event is not there anymore
+  * Fix reaction delegate sizing for text reaction
+  * Skip Welcome screen when there's only one connection and it's loaded
+  * Allow dropping connections from the welcome page
+  * Show custom emoji reactions as per MSC4027
+  * Fix AudioDelegate playback
+
+-------------------------------------------------------------------
+Fri Feb  9 16:10:01 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.01.95
+  * https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
 Tue Dec  5 14:20:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.4
