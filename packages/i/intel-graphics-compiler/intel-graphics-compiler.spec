@@ -126,9 +126,7 @@ pushd opencl-clang
 popd
 tar -xzf %{_sourcedir}/spirv-llvm-translator.tar.gz -C llvm-spirv --strip-components=1
 pushd llvm-spirv
-%if 0%{?suse_version} > 1506
 %patch -P 1 -p1
-%endif
 popd
 popd
 

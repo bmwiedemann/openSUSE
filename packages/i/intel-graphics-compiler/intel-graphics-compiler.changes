@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 11 07:51:25 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Apply LongConstantCompositeINTEL fix regardless of suse_version 
+
+-------------------------------------------------------------------
 Thu Feb 22 13:48:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
