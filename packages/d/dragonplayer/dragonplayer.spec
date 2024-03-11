@@ -1,7 +1,7 @@
 #
 # spec file for package dragonplayer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,42 +16,40 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %define rname dragon
 %bcond_without released
 Name:           dragonplayer
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Multimedia Player
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/dragonplayer
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  update-desktop-files
-BuildRequires:  xz
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5JobWidgets)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5Parts)
-BuildRequires:  cmake(KF5Solid)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Phonon4Qt5)
-Obsoletes:      %{name}5 < %{version}
-Provides:       %{name}5 = %{version}
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6JobWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
+BuildRequires:  cmake(KF6Solid) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(Phonon4Qt6)
 
 %description
 Dragon Player is a simple video player.
@@ -62,39 +60,38 @@ Dragon Player is a simple video player.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
+# Obsolete icons, breeze is the default theme
+rm -r %{buildroot}%{_kf6_iconsdir}/oxygen
 
-%suse_update_desktop_file org.kde.dragonplayer Video
+%find_lang %{name} --with-man --with-html --all-name
 
 %ldconfig_scriptlets
 
 %files
 %license LICENSES/*
-%doc %lang(en) %{_kf5_htmldir}/en/dragonplayer/
-%doc %{_kf5_mandir}/man1/dragon.1*
-%config %{_kf5_configdir}/dragonplayerrc
-%dir %{_kf5_plugindir}/kf5
-%dir %{_kf5_plugindir}/kf5/parts
-%dir %{_kf5_servicesdir}/ServiceMenus
-%dir %{_kf5_sharedir}/solid
-%dir %{_kf5_sharedir}/solid/actions
-%{_kf5_applicationsdir}/org.kde.dragonplayer.desktop
-%{_kf5_appstreamdir}/org.kde.dragonplayer.appdata.xml
-%{_kf5_bindir}/dragon
-%{_kf5_iconsdir}/hicolor/*/apps/dragonplayer.*
-%{_kf5_iconsdir}/oxygen/*/actions/player-volume-muted.*
-%{_kf5_plugindir}/kf5/parts/dragonpart.so
-%{_kf5_servicesdir}/ServiceMenus/dragonplayer_play_dvd.desktop
-%{_kf5_sharedir}/solid/actions/dragonplayer-openaudiocd.desktop
-%{_kf5_sharedir}/solid/actions/dragonplayer-opendvd.desktop
+%doc %lang(en) %{_kf6_htmldir}/en/dragonplayer/
+%{_kf6_configdir}/dragonplayerrc
+%{_kf6_applicationsdir}/org.kde.dragonplayer.desktop
+%{_kf6_appstreamdir}/org.kde.dragonplayer.appdata.xml
+%{_kf6_bindir}/dragon
+%{_kf6_iconsdir}/hicolor/*/apps/dragonplayer.*
+%{_kf6_plugindir}/kf6/parts/dragonpart.so
+%dir %{_kf6_sharedir}/kio
+%dir %{_kf6_sharedir}/kio/servicemenus
+%{_kf6_sharedir}/kio/servicemenus/dragonplayer_play_dvd.desktop
+%dir %{_kf6_sharedir}/solid
+%dir %{_kf6_sharedir}/solid/actions
+%{_kf6_sharedir}/solid/actions/dragonplayer-openaudiocd.desktop
+%{_kf6_sharedir}/solid/actions/dragonplayer-opendvd.desktop
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/dragonplayer/
 
 %changelog
