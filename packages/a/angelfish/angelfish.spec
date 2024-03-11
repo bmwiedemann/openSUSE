@@ -1,7 +1,7 @@
 #
 # spec file for package angelfish
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,52 +16,54 @@
 #
 
 
-%bcond_without  released
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
+%bcond_without released
 Name:           angelfish
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Mobile web browser
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/angelfish
-Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-%if 0%{?suse_version} == 1500
-BuildRequires:  gcc10-c++
-BuildRequires:  gcc10-PIE
-%endif
-BuildRequires:  hicolor-icon-theme
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  qt6-core-private-devel >= %{qt6_version}
+BuildRequires:  qt6-webenginequick-private-devel >= %{qt6_version}
 # Cargo is only needed if Corrosion is present
 # BuildRequires:  cmake(Corrosion)
-BuildRequires:  cmake(FutureSQL5)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5Kirigami2)
-BuildRequires:  cmake(KF5KirigamiAddons)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5Purpose)
-BuildRequires:  cmake(KF5QQC2DesktopStyle)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(QCoro5Core) >= 0.7.0
-BuildRequires:  cmake(QCoro5Quick) >= 0.7.0
-BuildRequires:  cmake(Qt5Core) >= 5.15.2
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5QuickControls2)
-BuildRequires:  cmake(Qt5Sql)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5WebEngine)
-BuildRequires:  cmake(Qt5Widgets)
-Requires:       kirigami-addons
-Requires:       kirigami2
+BuildRequires:  cmake(FutureSQL6)
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons) >= 0.6
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6Purpose) >= %{kf6_version}
+BuildRequires:  cmake(KF6QQC2DesktopStyle) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(QCoro6Core) >= 0.7.0
+BuildRequires:  cmake(QCoro6Quick) >= 0.7.0
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WebEngineCore) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WebEngineQuick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+Requires:       kirigami-addons6
+Requires:       kf6-kirigami-imports >= %{kf6_version}
+Requires:       qt6-sql-sqlite >= %{qt6_version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 Angelfish is a mobile web browser. It supports typical browser features, such
@@ -73,28 +75,25 @@ as bookmarks, history and tabs.
 %lang_package
 
 %build
-%if 0%{?suse_version} == 1500
-  export CXX=g++-10
-%endif
+%cmake_kf6
 
-%cmake_kf5 -d build
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
 %find_lang %{name} --all-name
 
 %files
 %doc README.md
 %license LICENSES/*
-%{_kf5_applicationsdir}/org.kde.angelfish.desktop
-%{_kf5_appstreamdir}/org.kde.angelfish.metainfo.xml
-%{_kf5_bindir}/angelfish
-%{_kf5_bindir}/angelfish-webapp
-%{_kf5_configkcfgdir}/angelfishsettings.kcfg
-%{_kf5_iconsdir}/hicolor/scalable/apps/org.kde.angelfish.svg
-%{_kf5_notifydir}/angelfish.notifyrc
+%{_kf6_applicationsdir}/org.kde.angelfish.desktop
+%{_kf6_appstreamdir}/org.kde.angelfish.metainfo.xml
+%{_kf6_bindir}/angelfish
+%{_kf6_bindir}/angelfish-webapp
+%{_kf6_configkcfgdir}/angelfishsettings.kcfg
+%{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.angelfish.svg
+%{_kf6_notificationsdir}/angelfish.notifyrc
 
 %files lang -f %{name}.lang
 
