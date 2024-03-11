@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 23 13:58:03 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.0
+  * New feature release
+- Changes since 24.01.95:
+  * Fix bug 481593: New Feed and Add Feed Buttons Do the Same Thing (kde#481593)
+  * Fix mem leak
+
+-------------------------------------------------------------------
+Fri Feb  9 16:07:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.01.95
+  * https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
 Tue Dec  5 14:18:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.4
