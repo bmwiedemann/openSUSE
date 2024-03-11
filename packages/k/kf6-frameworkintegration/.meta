@@ -1,0 +1,12 @@
+<package name="kf6-frameworkintegration" project="openSUSE:Factory">
+  <title>Plugins responsible for better integration of Qt applications in KDE Workspace</title>
+  <description>Framework Integration is a set of plugins responsible for better
+integration of Qt applications when running on a
+KDE Plasma workspace.
+
+Applications do not need to link to this directly.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-frameworkintegration"/>
+  <url>https://www.kde.org</url>
+</package>
