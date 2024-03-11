@@ -1,0 +1,11 @@
+<package name="kf6-kxmlgui" project="openSUSE:Factory">
+  <title>Framework for managing menu and toolbar actions</title>
+  <description>libkxmlgui provides a framework for managing menu and toolbar actions in an
+abstract way. The actions are configured through a XML description and hooks
+in the application code. The framework supports merging of multiple
+description for example for integrating actions from plugins.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kxmlgui"/>
+  <url>https://www.kde.org</url>
+</package>
