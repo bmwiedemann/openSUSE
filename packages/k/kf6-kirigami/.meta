@@ -1,0 +1,8 @@
+<package name="kf6-kirigami" project="openSUSE:Factory">
+  <title>Set of QtQuick components</title>
+  <description>QtQuick plugins to build user interfaces based on the KDE UX guidelines.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kirigami"/>
+  <url>https://www.kde.org</url>
+</package>

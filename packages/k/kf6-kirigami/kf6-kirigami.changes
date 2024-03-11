@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Wed Feb 21 19:27:58 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.249.0:
+  * Handle null drawer as well
+  * Fix footer in layers (kde#480428)
+  * update version for new release
+  * Fix PassiveNotificationsManager height for wrapped text (kde#476021)
+  * Update template
+  * Units: make smallSpacing 4px and largeSpacing 8px
+  * PageRow: Ensure JS-created pages have a parent set (kde#477977)
+  * Mainpage.dox use correct URLs for types
+  * OverlaySheet: Don't do custom positioning on mobile Otherwise the overlaysheet seems to go to the bottom of the screen, with a tiny height
+  * pushDialogLayer: don't potentially override explicitly defined properties
+  * Actually close drawers on Escape
+  * Kirigami app template: bump min Qt/KF deps to match initial KF6 release
+  * Set framecontrast to 0.2
+  * workaround on the breakage in childAt introduced by the new headers
+  * Refactor separator to use frameContrast, add lightFrameContrast
+  * PagePoolAction: Do nothing if we're already showing the current page (kde#480837)
+  * pushDialogLayer: don't implicitly convert properties to bool
+  * Use Header color set on overlaydrawer
+  * Use header color instead of window for columnview separator
+  * Fix Overlay sheet size hints (kde#480673,kde#480508,kde#480147,kde#480514)
+  * Set borders to follow same colors as Breeze widget style
+  * update version for new release
+
+-------------------------------------------------------------------
+Wed Jan 31 17:50:29 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.249.0 (6.0 RC 2):
+  * New bugfix release
+  * For more details see https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
+Mon Jan 15 20:01:14 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.248.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Sat May 27 11:18:23 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init kf6-kirigami
