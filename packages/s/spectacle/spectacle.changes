@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Feb 23 14:01:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.0
+  * New feature release
+- Changes since 24.01.95:
+  * Fix filename template label buddies
+  * Fix drawing with touchscreen
+  * ViewerWindow: Check if s_viewerWindowInstance points to this when destroying (kde#469502)
+  * Fix always recording the screen at (0,0) with screen recording (kde#480599)
+  * Do not loop video player and pause on playback stopped
+  * recording: Play the video after it has recorded
+  * Fix invalid timestamp when opening config dialog before screen capture
+  * recording: Do not leak node ids
+  * Fix unclickable buttons on dialog window after startSystemMove() is called
+
+-------------------------------------------------------------------
+Fri Feb  9 16:10:14 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.01.95
+  * https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
 Wed Feb  7 16:00:01 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Drop meanwhile unneeeded BuildReqs on kColorPicker and

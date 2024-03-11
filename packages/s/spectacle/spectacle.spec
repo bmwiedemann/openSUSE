@@ -16,65 +16,62 @@
 #
 
 
-%define kf5_version 5.105.0
+%define kf6_version 5.246.0
+%define plasma6_version 5.27.80
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           spectacle
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Screen Capture Program
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 URL:            https://apps.kde.org/spectacle
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  libqt5-qtdeclarative-private-headers-devel
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  pkgconfig
+BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  update-desktop-files
-BuildRequires:  xcb-util-cursor-devel
-BuildRequires:  xcb-util-devel
-BuildRequires:  xcb-util-image-devel
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5Declarative)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5GlobalAccel)
-BuildRequires:  cmake(KF5GuiAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Kipi)
-BuildRequires:  cmake(KF5Kirigami2)
-BuildRequires:  cmake(KF5NewStuff)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5Purpose)
-BuildRequires:  cmake(KF5Screen)
-BuildRequires:  cmake(KF5Wayland)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(KPipeWire)
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6GlobalAccel) >= %{kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiPlatform) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6Purpose) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(KPipeWire) >= %{plasma6_version}
+BuildRequires:  cmake(LayerShellQt) >= %{plasma6_version}
 BuildRequires:  cmake(PlasmaWaylandProtocols)
-BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5QuickControls2)
-BuildRequires:  cmake(Qt5QuickTemplates2)
-BuildRequires:  cmake(Qt5QuickWidgets)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5WaylandClient)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5X11Extras)
-Obsoletes:      kscreengenie < %{version}
-Provides:       kscreengenie = %{version}
-# Upstream changed name twice (kscreengenie - kapture - spectacle)
-Obsoletes:      kapture < %{version}
-Provides:       kapture = %{version}
+BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
+BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickTemplates2) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(ZXing) >= 1.2.0
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(xcb-cursor)
+BuildRequires:  pkgconfig(xcb-image)
+BuildRequires:  pkgconfig(xcb-randr)
+BuildRequires:  pkgconfig(xcb-util)
+BuildRequires:  pkgconfig(xcb-xfixes)
 
 %description
 Spectactle is a screenshot-taking program made by KDE. It allows taking screenshots
@@ -83,66 +80,67 @@ online services.
 
 %package doc
 Summary:        Documentation for Spectacle
-Requires:       %{name}
+Requires:       spectacle
 
 %description doc
 This package contains the documentation available for Spectacle, which is a
 screenshot capture program by KDE.
 
 %lang_package
+%lang_package -n spectacle-doc
 
 %prep
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
 %find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
-
-%suse_update_desktop_file -r org.kde.spectacle Utility DesktopUtility
+%find_lang %{name}-doc --with-html --without-mo --all-name
 
 %post
-%systemd_user_post app-org.kde.spectacle.service
+%{systemd_user_post app-org.kde.spectacle.service}
 
 %preun
-%systemd_user_preun app-org.kde.spectacle.service
+%{systemd_user_preun app-org.kde.spectacle.service}
 
 %postun
-%systemd_user_postun app-org.kde.spectacle.service
+%{systemd_user_postun app-org.kde.spectacle.service}
 
 %files
 %license LICENSES/*
-%dir %{_kf5_libdir}/kconf_update_bin
-%dir %{_kf5_sharedir}/kconf_update
-%dir %{_kf5_sharedir}/kglobalaccel
 %doc %lang(en) %{_mandir}/man1/spectacle.1.gz
-%{_kf5_applicationsdir}/org.kde.spectacle.desktop
-%{_kf5_appstreamdir}/org.kde.spectacle.appdata.xml
-%{_kf5_bindir}/spectacle
-%{_kf5_dbusinterfacesdir}/org.kde.Spectacle.xml
-%{_kf5_debugdir}/spectacle.categories
-%{_kf5_iconsdir}/hicolor/*/*/spectacle*
-%{_kf5_libdir}/kconf_update_bin/spectacle-migrate-shortcuts
-%{_kf5_libdir}/kconf_update_bin/spectacle-migrate-rememberregion
-%{_kf5_notifydir}/spectacle.notifyrc
-%{_kf5_sharedir}/dbus-1/services/org.kde.Spectacle.service
-%{_kf5_sharedir}/kconf_update/spectacle_newConfig.upd
-%{_kf5_sharedir}/kconf_update/spectacle_shortcuts.upd
-%{_kf5_sharedir}/kconf_update/50-clipboard_settings_change.py
-%{_kf5_sharedir}/kconf_update/spectacle_clipboard.upd
-%{_kf5_sharedir}/kconf_update/spectacle_rememberregion.upd
-%{_kf5_sharedir}/kglobalaccel/org.kde.spectacle.desktop
+%{_kf6_applicationsdir}/org.kde.spectacle.desktop
+%{_kf6_appstreamdir}/org.kde.spectacle.appdata.xml
+%{_kf6_bindir}/spectacle
+%{_kf6_dbusinterfacesdir}/org.kde.Spectacle.xml
+%{_kf6_debugdir}/spectacle.categories
+%{_kf6_iconsdir}/hicolor/scalable/apps/spectacle.svg
+%{_kf6_libdir}/kconf_update_bin/spectacle-24.02.0-change_placeholder_format
+%{_kf6_libdir}/kconf_update_bin/spectacle-24.02.0-keep_old_filename_templates
+%{_kf6_libdir}/kconf_update_bin/spectacle-24.02.0-keep_old_save_location
+%{_kf6_libdir}/kconf_update_bin/spectacle-24.02.0-rename_settings
+%{_kf6_libdir}/kconf_update_bin/spectacle-24.02.0-video_format
+%{_kf6_notificationsdir}/spectacle.notifyrc
+%{_kf6_sharedir}/dbus-1/services/org.kde.Spectacle.service
+%{_kf6_sharedir}/dbus-1/services/org.kde.spectacle.service
+%dir %{_kf6_sharedir}/kglobalaccel
+%{_kf6_sharedir}/kglobalaccel/org.kde.spectacle.desktop
+%{_kf6_sharedir}/kconf_update/spectacle.upd
 %{_userunitdir}/app-org.kde.spectacle.service
 
 %files doc
 %doc README.md
-%doc %lang(en) %{_kf5_htmldir}/en/spectacle/
+%doc %lang(en) %{_kf6_htmldir}/en/spectacle/
 
 %files lang -f %{name}.lang
+
+%files doc-lang -f %{name}-doc.lang
+%exclude %{_kf6_htmldir}/en/spectacle/
 
 %changelog
