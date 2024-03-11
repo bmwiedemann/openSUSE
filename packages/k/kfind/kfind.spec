@@ -1,7 +1,7 @@
 #
 # spec file for package kfind
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,33 +16,34 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           kfind
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        KDE Find File Utility
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/kfind
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  kf5-filesystem
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5FileMetaData)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5TextWidgets)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6FileMetaData) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 
 %description
 KFind allows you to search for directories and files.
@@ -53,27 +54,28 @@ KFind allows you to search for directories and files.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
+%find_lang %{name} --with-html --with-man --all-name
 
 %suse_update_desktop_file org.kde.kfind System Filesystem core
 
 %files
 %license LICENSES/*
-%doc %lang(en) %{_kf5_htmldir}/en/kfind/
-%doc %{_kf5_mandir}/man1/kfind.*
-%{_kf5_applicationsdir}/org.kde.kfind.desktop
-%{_kf5_appstreamdir}/org.kde.kfind.appdata.xml
-%{_kf5_bindir}/kfind
-%{_kf5_debugdir}/kfind.categories
-%{_kf5_iconsdir}/hicolor/*/apps/kfind.*
+%doc %lang(en) %{_kf6_htmldir}/en/kfind/
+%doc %lang(en) %{_kf6_mandir}/man1/kfind.1%{ext_man}
+%{_kf6_applicationsdir}/org.kde.kfind.desktop
+%{_kf6_appstreamdir}/org.kde.kfind.appdata.xml
+%{_kf6_bindir}/kfind
+%{_kf6_debugdir}/kfind.categories
+%{_kf6_iconsdir}/hicolor/*/apps/kfind.*
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/kfind/
 
 %changelog
