@@ -1,0 +1,8 @@
+<package name="plasma6-thunderbolt" project="openSUSE:Factory">
+  <title>Plasma frontend for Thunderbolt 3 security levels</title>
+  <description>This is a frontend for configuring security levels of Thunderbolt 3 devices.
+
+</description>
+  <devel project="KDE:Frameworks" package="plasma6-thunderbolt"/>
+  <url>https://www.kde.org</url>
+</package>
