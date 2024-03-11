@@ -222,4 +222,12 @@
     <comment></comment>
     <requestid>1156390</requestid>
   </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>388f67f818c1c4e17dec65ac54e3d402</srcmd5>
+    <version>3.2.6</version>
+    <time>1710167707</time>
+    <user>anag+factory</user>
+    <comment>- Revert Feb 27 addition of static_node; this does not do anything.</comment>
+    <requestid>1156922</requestid>
+  </revision>
 </revisionlist>

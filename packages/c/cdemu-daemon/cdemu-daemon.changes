@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 11 12:17:01 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Revert Feb 27 addition of static_node; this does not do anything.
+
+-------------------------------------------------------------------
 Tue Feb 27 09:48:05 UTC 2024 - Matthias Bach <marix@marix.org>
 
 - Fix cdemu-daemon startup failing for regular users due to not
