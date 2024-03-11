@@ -16,69 +16,72 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           okular
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Document Viewer
 # GPL-3.0+ license used by a runtime plugin
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 URL:            https://okular.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 # PATCH-FEATURE-OPENSUSE
 Patch1000:      0001-Inform-users-about-the-okular-spectre-package.patch
-BuildRequires:  chmlib-devel
-BuildRequires:  extra-cmake-modules
-BuildRequires:  freetype2-devel
-BuildRequires:  kf5-filesystem
+# Disabled upstream
+# BuildRequires:  chmlib-devel
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libdjvulibre-devel
 BuildRequires:  libepub-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libmarkdown-devel
-BuildRequires:  libpoppler-qt5-devel
-BuildRequires:  libqt5-qtbase-private-headers-devel
-BuildRequires:  libqca-qt5-devel
-BuildRequires:  libspectre-devel
 BuildRequires:  libtiff-devel
-BuildRequires:  libzip-devel
-BuildRequires:  zlib-devel
-BuildRequires:  cmake(KF5Activities)
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5Bookmarks)
-BuildRequires:  cmake(KF5Completion)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5JS)
-BuildRequires:  cmake(KF5KExiv2)
-BuildRequires:  cmake(KF5KHtml)
-BuildRequires:  cmake(KF5Kirigami2)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Parts)
-BuildRequires:  cmake(KF5Pty)
-BuildRequires:  cmake(KF5Purpose)
-BuildRequires:  cmake(KF5ThreadWeaver)
-BuildRequires:  cmake(KF5Wallet)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(QMobipocket)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5TextToSpeech)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5X11Extras)
+BuildRequires:  pkgconfig
+BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
+BuildRequires:  cmake(KExiv2Qt6)
+BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
+BuildRequires:  cmake(KF6Bookmarks) >= %{kf6_version}
+BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
+BuildRequires:  cmake(KF6Pty) >= %{kf6_version}
+BuildRequires:  cmake(KF6Purpose) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6ThreadWeaver) >= %{kf6_version}
+BuildRequires:  cmake(KF6Wallet) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Phonon4Qt6)
+BuildRequires:  cmake(PlasmaActivities)
+BuildRequires:  cmake(QMobipocket6)
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6TextToSpeech) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(libspectre)
+BuildRequires:  pkgconfig(libzip)
+BuildRequires:  pkgconfig(poppler-qt6) >= 22.02.0
+BuildRequires:  pkgconfig(zlib)
 Suggests:       %{name}-spectre
 Obsoletes:      okular5 < %{version}
 Provides:       okular5 = %{version}
@@ -99,7 +102,8 @@ to display PostScript documents and images.
 %package mobile
 Summary:        Document Viewer, Mobile UI
 Requires:       %{name} = %{version}-%{release}
-Requires:       kirigami2
+Requires:       kf6-kirigami-imports >= %{kf6_version}
+Requires:       kirigami-addons6
 
 %description mobile
 Document viewing program; supports document in PDF, PS and
@@ -109,13 +113,12 @@ touch screen.
 %package devel
 Summary:        Development files for the Okular document viewer
 Requires:       %{name} = %{version}
-%requires_eq    libQt5Core-private-headers-devel
-Requires:       cmake(KF5Config)
-Requires:       cmake(KF5CoreAddons)
-Requires:       cmake(KF5XmlGui)
-Requires:       cmake(Qt5Core)
-Requires:       cmake(Qt5PrintSupport)
-Requires:       cmake(Qt5Widgets)
+Requires:       cmake(KF6Config) >= %{kf6_version}
+Requires:       cmake(KF6CoreAddons) >= %{kf6_version}
+Requires:       cmake(KF6XmlGui) >= %{kf6_version}
+Requires:       cmake(Qt6Core) >= %{qt6_version}
+Requires:       cmake(Qt6PrintSupport) >= %{qt6_version}
+Requires:       cmake(Qt6Widgets) >= %{qt6_version}
 Obsoletes:      okular5-devel < %{version}
 Provides:       okular5-devel = %{version}
 
@@ -127,131 +130,108 @@ Document viewing program; supports document in various formats
 %prep
 %autosetup -p1 -n okular-%{version}
 
-# No technical reason for requiring cmake 3.22. 15.4 only has 3.20
+# No technical reason for requiring cmake 3.22
 sed -i 's#3.22#3.20#' CMakeLists.txt
 
 %build
 %ifarch ppc64
 %define _lto_cflags %{nil}
 %endif
-%cmake_kf5 -d build -- -DBUILD_TESTING=OFF -DOKULAR_UI=both
-%cmake_build
+%cmake_kf6 -DBUILD_TESTING=OFF -DOKULAR_UI=both
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
+%find_lang %{name} --with-html --with-man --all-name
 
 %ldconfig_scriptlets
 
 %files
 %license LICENSES/*
-%doc %lang(en) %{_kf5_htmldir}/en/*/
-%doc %{_kf5_mandir}/man1/okular.*
-%{_kf5_applicationsdir}/okularApplication_chm.desktop
-%{_kf5_applicationsdir}/okularApplication_comicbook.desktop
-%{_kf5_applicationsdir}/okularApplication_djvu.desktop
-%{_kf5_applicationsdir}/okularApplication_dvi.desktop
-%{_kf5_applicationsdir}/okularApplication_epub.desktop
-%{_kf5_applicationsdir}/okularApplication_fax.desktop
-%{_kf5_applicationsdir}/okularApplication_fb.desktop
-%{_kf5_applicationsdir}/okularApplication_kimgio.desktop
-%{_kf5_applicationsdir}/okularApplication_md.desktop
-%{_kf5_applicationsdir}/okularApplication_mobi.desktop
-%{_kf5_applicationsdir}/okularApplication_pdf.desktop
-%{_kf5_applicationsdir}/okularApplication_plucker.desktop
-%{_kf5_applicationsdir}/okularApplication_tiff.desktop
-%{_kf5_applicationsdir}/okularApplication_txt.desktop
-%{_kf5_applicationsdir}/okularApplication_xps.desktop
-%{_kf5_applicationsdir}/org.kde.okular.desktop
-%{_kf5_appstreamdir}/org.kde.okular-chm.metainfo.xml
-%{_kf5_appstreamdir}/org.kde.okular-comicbook.metainfo.xml
-%{_kf5_appstreamdir}/org.kde.okular-djvu.metainfo.xml
-%{_kf5_appstreamdir}/org.kde.okular-dvi.metainfo.xml
-%{_kf5_appstreamdir}/org.kde.okular-epub.metainfo.xml
-%{_kf5_appstreamdir}/org.kde.okular-fax.metainfo.xml
-%{_kf5_appstreamdir}/org.kde.okular-fb.metainfo.xml
-%{_kf5_appstreamdir}/org.kde.okular-kimgio.metainfo.xml
-%{_kf5_appstreamdir}/org.kde.okular-md.metainfo.xml
-%{_kf5_appstreamdir}/org.kde.okular-mobipocket.metainfo.xml
-%{_kf5_appstreamdir}/org.kde.okular-plucker.metainfo.xml
-%{_kf5_appstreamdir}/org.kde.okular-poppler.metainfo.xml
-%{_kf5_appstreamdir}/org.kde.okular-tiff.metainfo.xml
-%{_kf5_appstreamdir}/org.kde.okular-txt.metainfo.xml
-%{_kf5_appstreamdir}/org.kde.okular-xps.metainfo.xml
-%{_kf5_appstreamdir}/org.kde.okular.appdata.xml
-%{_kf5_bindir}/okular
-%{_kf5_configkcfgdir}/gssettings.kcfg
-%{_kf5_configkcfgdir}/okular*.kcfg
-%{_kf5_configkcfgdir}/pdfsettings.kcfg
-%{_kf5_debugdir}/okular.categories
-%{_kf5_iconsdir}/hicolor/*/*/okular.*
-%{_kf5_kxmlguidir}/okular/
-%{_kf5_libdir}/libOkular5Core.so.*
-%dir %{_kf5_plugindir}/okular/
-%dir %{_kf5_plugindir}/okular/generators/
-%{_kf5_plugindir}/okularpart.so
-%dir %{_kf5_plugindir}/kf5/
-%dir %{_kf5_plugindir}/kf5/kio/
-%{_kf5_plugindir}/kf5/kio/kio_msits.so
-%{_kf5_plugindir}/okular/generators/okularGenerator_chmlib.so
-%{_kf5_plugindir}/okular/generators/okularGenerator_comicbook.so
-%{_kf5_plugindir}/okular/generators/okularGenerator_djvu.so
-%{_kf5_plugindir}/okular/generators/okularGenerator_dvi.so
-%{_kf5_plugindir}/okular/generators/okularGenerator_epub.so
-%{_kf5_plugindir}/okular/generators/okularGenerator_fax.so
-%{_kf5_plugindir}/okular/generators/okularGenerator_fb.so
-%{_kf5_plugindir}/okular/generators/okularGenerator_kimgio.so
-%{_kf5_plugindir}/okular/generators/okularGenerator_md.so
-%{_kf5_plugindir}/okular/generators/okularGenerator_mobi.so
-%{_kf5_plugindir}/okular/generators/okularGenerator_plucker.so
-%{_kf5_plugindir}/okular/generators/okularGenerator_poppler.so
-%{_kf5_plugindir}/okular/generators/okularGenerator_tiff.so
-%{_kf5_plugindir}/okular/generators/okularGenerator_txt.so
-%{_kf5_plugindir}/okular/generators/okularGenerator_xps.so
-%{_kf5_servicesdir}/okularChm.desktop
-%{_kf5_servicesdir}/okularComicbook.desktop
-%{_kf5_servicesdir}/okularDjvu.desktop
-%{_kf5_servicesdir}/okularDvi.desktop
-%{_kf5_servicesdir}/okularEPub.desktop
-%{_kf5_servicesdir}/okularFax.desktop
-%{_kf5_servicesdir}/okularFb.desktop
-%{_kf5_servicesdir}/okularKimgio.desktop
-%{_kf5_servicesdir}/okularMd.desktop
-%{_kf5_servicesdir}/okularMobi.desktop
-%{_kf5_servicesdir}/okularPlucker.desktop
-%{_kf5_servicesdir}/okularPoppler.desktop
-%{_kf5_servicesdir}/okularTiff.desktop
-%{_kf5_servicesdir}/okularTxt.desktop
-%{_kf5_servicesdir}/okularXps.desktop
-%{_kf5_servicesdir}/okular_part.desktop
-%{_kf5_servicetypesdir}/okularGenerator.desktop
-%{_kf5_sharedir}/kconf_update
-%{_kf5_sharedir}/okular/
+%doc %lang(en) %{_kf6_htmldir}/en/*/
+%doc %{_kf6_mandir}/man1/okular.*
+# %%{_kf6_applicationsdir}/okularApplication_chm.desktop
+%{_kf6_applicationsdir}/okularApplication_comicbook.desktop
+%{_kf6_applicationsdir}/okularApplication_djvu.desktop
+%{_kf6_applicationsdir}/okularApplication_dvi.desktop
+%{_kf6_applicationsdir}/okularApplication_epub.desktop
+%{_kf6_applicationsdir}/okularApplication_fax.desktop
+%{_kf6_applicationsdir}/okularApplication_fb.desktop
+%{_kf6_applicationsdir}/okularApplication_kimgio.desktop
+%{_kf6_applicationsdir}/okularApplication_md.desktop
+%{_kf6_applicationsdir}/okularApplication_mobi.desktop
+%{_kf6_applicationsdir}/okularApplication_pdf.desktop
+%{_kf6_applicationsdir}/okularApplication_plucker.desktop
+%{_kf6_applicationsdir}/okularApplication_tiff.desktop
+%{_kf6_applicationsdir}/okularApplication_txt.desktop
+%{_kf6_applicationsdir}/okularApplication_xps.desktop
+%{_kf6_applicationsdir}/org.kde.okular.desktop
+# %%{_kf6_appstreamdir}/org.kde.okular-chm.metainfo.xml
+%{_kf6_appstreamdir}/org.kde.okular-comicbook.metainfo.xml
+%{_kf6_appstreamdir}/org.kde.okular-djvu.metainfo.xml
+%{_kf6_appstreamdir}/org.kde.okular-dvi.metainfo.xml
+%{_kf6_appstreamdir}/org.kde.okular-epub.metainfo.xml
+%{_kf6_appstreamdir}/org.kde.okular-fax.metainfo.xml
+%{_kf6_appstreamdir}/org.kde.okular-fb.metainfo.xml
+%{_kf6_appstreamdir}/org.kde.okular-kimgio.metainfo.xml
+%{_kf6_appstreamdir}/org.kde.okular-md.metainfo.xml
+%{_kf6_appstreamdir}/org.kde.okular-mobipocket.metainfo.xml
+%{_kf6_appstreamdir}/org.kde.okular-plucker.metainfo.xml
+%{_kf6_appstreamdir}/org.kde.okular-poppler.metainfo.xml
+%{_kf6_appstreamdir}/org.kde.okular-tiff.metainfo.xml
+%{_kf6_appstreamdir}/org.kde.okular-txt.metainfo.xml
+%{_kf6_appstreamdir}/org.kde.okular-xps.metainfo.xml
+%{_kf6_appstreamdir}/org.kde.okular.appdata.xml
+%{_kf6_bindir}/okular
+%{_kf6_configkcfgdir}/gssettings.kcfg
+%{_kf6_configkcfgdir}/okular.kcfg
+%{_kf6_configkcfgdir}/okular_core.kcfg
+%{_kf6_configkcfgdir}/pdfsettings.kcfg
+%{_kf6_debugdir}/okular.categories
+%{_kf6_iconsdir}/hicolor/*/*/okular.*
+%{_kf6_libdir}/libOkular6Core.so.*
+%{_kf6_plugindir}/kf6/parts/okularpart.so
+# %%{_kf6_plugindir}/kf6/kio/kio_msits.so
+%dir %{_kf6_plugindir}/okular_generators/
+# %%{_kf6_plugindir}/okular_generators/okularGenerator_chmlib.so
+%{_kf6_plugindir}/okular_generators/okularGenerator_comicbook.so
+%{_kf6_plugindir}/okular_generators/okularGenerator_djvu.so
+%{_kf6_plugindir}/okular_generators/okularGenerator_dvi.so
+%{_kf6_plugindir}/okular_generators/okularGenerator_epub.so
+%{_kf6_plugindir}/okular_generators/okularGenerator_fax.so
+%{_kf6_plugindir}/okular_generators/okularGenerator_fb.so
+%{_kf6_plugindir}/okular_generators/okularGenerator_kimgio.so
+%{_kf6_plugindir}/okular_generators/okularGenerator_md.so
+%{_kf6_plugindir}/okular_generators/okularGenerator_mobi.so
+%{_kf6_plugindir}/okular_generators/okularGenerator_plucker.so
+%{_kf6_plugindir}/okular_generators/okularGenerator_poppler.so
+%{_kf6_plugindir}/okular_generators/okularGenerator_tiff.so
+%{_kf6_plugindir}/okular_generators/okularGenerator_txt.so
+%{_kf6_plugindir}/okular_generators/okularGenerator_xps.so
+%{_kf6_sharedir}/kconf_update/okular.upd
+%{_kf6_sharedir}/okular/
 
 %files spectre
-%{_kf5_applicationsdir}/okularApplication_ghostview.desktop
-%{_kf5_appstreamdir}/org.kde.okular-spectre.metainfo.xml
-%{_kf5_plugindir}/okular/generators/okularGenerator_ghostview.so
-%{_kf5_servicesdir}/okularGhostview.desktop
+%{_kf6_applicationsdir}/okularApplication_ghostview.desktop
+%{_kf6_appstreamdir}/org.kde.okular-spectre.metainfo.xml
+%{_kf6_plugindir}/okular_generators/okularGenerator_ghostview.so
 
 %files mobile
 %license LICENSES/*
-%{_kf5_bindir}/okularkirigami
-%dir %{_kf5_qmldir}/org/
-%dir %{_kf5_qmldir}/org/kde/
-%{_kf5_qmldir}/org/kde/okular/
-%{_kf5_applicationsdir}/org.kde.okular.kirigami.desktop
+%{_kf6_bindir}/okularkirigami
+%{_kf6_qmldir}/org/kde/okular/
+%{_kf6_applicationsdir}/org.kde.okular.kirigami.desktop
 # Can use a wildcard here, for non-mobile it's already expanded above
-%{_kf5_applicationsdir}/org.kde.mobile.okular_*.desktop
-%{_kf5_appstreamdir}/org.kde.okular.kirigami.appdata.xml
+%{_kf6_applicationsdir}/org.kde.mobile.okular_*.desktop
+%{_kf6_appstreamdir}/org.kde.okular.kirigami.appdata.xml
 
 %files devel
-%{_kf5_cmakedir}/Okular5/
-%{_kf5_libdir}/libOkular5Core.so
-%{_kf5_prefix}/include/okular/
+%{_includedir}/okular/
+%{_kf6_cmakedir}/Okular6/
+%{_kf6_libdir}/libOkular6Core.so
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/*/
 
 %changelog

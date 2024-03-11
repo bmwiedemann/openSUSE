@@ -1364,4 +1364,12 @@ before the switch to 4.8 and the KR47 repo. (forwarded request 91020 from christ
     <comment>KDE Release gear 23.08.4 (forwarded request 1131017 from krop)</comment>
     <requestid>1131970</requestid>
   </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>f4fd8faff270f4ce812388fae3717d4a</srcmd5>
+    <version>24.02.0</version>
+    <time>1710167227</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 24.02.0</comment>
+    <requestid>1151074</requestid>
+  </revision>
 </revisionlist>
