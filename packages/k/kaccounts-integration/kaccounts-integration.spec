@@ -1,7 +1,7 @@
 #
 # spec file for package kaccounts-integration
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,74 +16,63 @@
 #
 
 
-%define sover 2
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           kaccounts-integration
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        KDE Accounts Providers
 License:        GPL-2.0-or-later
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  cmake
-BuildRequires:  extra-cmake-modules
-%if 0%{?suse_version} < 1550
-BuildRequires:  gcc10-PIE
-BuildRequires:  gcc10-c++
-%endif
-BuildRequires:  kf5-filesystem
-BuildRequires:  libaccounts-glib-devel
-BuildRequires:  libsignon-qt5-devel
-BuildRequires:  cmake(AccountsQt5)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5Declarative)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Wallet)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(QCoro5)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(AccountsQt6)
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Wallet) >= %{kf6_version}
+BuildRequires:  cmake(QCoro6Core)
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(SignOnQt6)
+Requires:       signon-kwallet-extension
 Recommends:     kaccounts-providers
 
 %description
-Small system to administer web accounts for the sites
-and services across the KDE desktop, including: Google,
-Facebook, Owncloud, IMAP, Jabber and others.
+Small system to administer web accounts for the sites and services across the
+Plasma desktop, including: Google, Facebook, Owncloud, IMAP, Jabber and others.
 
-%package -n libkaccounts%{sover}
+%package -n libkaccounts6-2
 Summary:        KDE Accounts Providers - System Library
 Recommends:     kaccounts-integration
 
-%description -n libkaccounts%{sover}
-Small system to administer web accounts for the sites
-and services across the KDE desktop, including: Google,
-Facebook, Owncloud, IMAP, Jabber and others.
+%description -n libkaccounts6-2
+Small system to administer web accounts for the sites and services across the
+Plasma desktop, including: Google, Facebook, Owncloud, IMAP, Jabber and others.
 
 %package devel
 Summary:        KDE Accounts Providers - Development Files
-Requires:       libkaccounts%{sover} = %{version}
-Requires:       libsignon-qt5-devel
-Requires:       cmake(AccountsQt5)
-Requires:       cmake(KF5CoreAddons)
-Requires:       cmake(Qt5Core)
-Requires:       pkgconfig(libaccounts-glib)
 # Used in KAccountsMacros.cmake
 Requires:       intltool
+Requires:       libkaccounts6-2 = %{version}
+Requires:       cmake(AccountsQt6)
+Requires:       cmake(KF6CoreAddons) >= %{kf6_version}
+Requires:       cmake(Qt6Widgets) >= %{qt6_version}
+Requires:       cmake(SignOnQt6)
+Requires:       pkgconfig(libaccounts-glib)
 
 %description devel
-Small system to administer web accounts for the sites
-and services across the KDE desktop, including: Google,
-Facebook, Owncloud, IMAP, Jabber and others. Devel files.
+Small system to administer web accounts for the sites and services across the
+Plasma desktop, including: Google, Facebook, Owncloud, IMAP, Jabber and others.
+This package provides development files.
 
 %lang_package
 
@@ -91,47 +80,34 @@ Facebook, Owncloud, IMAP, Jabber and others. Devel files.
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} < 1550
-  export CXX=g++-10
-%endif
+%cmake_kf6
 
-%cmake_kf5 -d build
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
 %find_lang %{name} --with-man --all-name
 
-%ldconfig_scriptlets -n libkaccounts%{sover}
+%ldconfig_scriptlets -n libkaccounts6-2
 
 %files
-%dir %{_kf5_plugindir}/kaccounts
-%dir %{_kf5_plugindir}/kaccounts/daemonplugins
-%dir %{_kf5_plugindir}/kf5
-%dir %{_kf5_plugindir}/kf5/kded
-%dir %{_kf5_plugindir}/plasma
-%dir %{_kf5_plugindir}/plasma/kcms
-%dir %{_kf5_plugindir}/plasma/kcms/systemsettings
-%dir %{_kf5_qmldir}/org
-%dir %{_kf5_qmldir}/org/kde
-%dir %{_kf5_sharedir}/kpackage
-%dir %{_kf5_sharedir}/kpackage/kcms
-%{_kf5_applicationsdir}/kcm_kaccounts.desktop
-%{_kf5_plugindir}/kaccounts/daemonplugins/kaccounts_kio_webdav_plugin.so
-%{_kf5_plugindir}/kf5/kded/kded_accounts.so
-%{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_kaccounts.so
-%{_kf5_qmldir}/org/kde/kaccounts
-%{_kf5_sharedir}/kpackage/kcms/kcm_kaccounts/
+%{_kf6_applicationsdir}/kcm_kaccounts.desktop
+%dir %{_kf6_plugindir}/kaccounts
+%dir %{_kf6_plugindir}/kaccounts/daemonplugins
+%{_kf6_plugindir}/kaccounts/daemonplugins/kaccounts_kio_webdav_plugin.so
+%{_kf6_plugindir}/kf6/kded/kded_accounts.so
+%{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_kaccounts.so
+%{_kf6_qmldir}/org/kde/kaccounts/
 
-%files -n libkaccounts%{sover}
+%files -n libkaccounts6-2
 %license LICENSES/*
-%{_kf5_libdir}/libkaccounts.so.*
+%{_kf6_libdir}/libkaccounts6.so.*
 
 %files devel
-%{_includedir}/KAccounts/
-%{_kf5_cmakedir}/KAccounts/
-%{_kf5_libdir}/libkaccounts.so
+%{_includedir}/KAccounts6/
+%{_kf6_cmakedir}/KAccounts6/
+%{_kf6_libdir}/libkaccounts6.so
 
 %files lang -f %{name}.lang
 
