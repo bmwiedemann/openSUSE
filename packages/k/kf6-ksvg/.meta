@@ -1,0 +1,8 @@
+<package name="kf6-ksvg" project="openSUSE:Factory">
+  <title>Components for handling SVGs</title>
+  <description>Components for handling SVGs
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-ksvg"/>
+  <url>https://www.kde.org</url>
+</package>
