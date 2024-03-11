@@ -1,0 +1,8 @@
+<package name="kmenuedit6" project="openSUSE:Factory">
+  <title>Provides the interface and basic tools for the KDE workspace</title>
+  <description>Provides the interface and basic tools for the KDE workspace.
+
+</description>
+  <devel project="KDE:Frameworks" package="kmenuedit6"/>
+  <url>https://www.kde.org/</url>
+</package>
