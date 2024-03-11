@@ -1,0 +1,8 @@
+<package name="libaccounts-qt" project="openSUSE:Factory">
+  <title>Qt library for Single Sign On</title>
+  <description>This package contains the Qt library for Single Sign On.
+
+</description>
+  <devel project="KDE:Applications" package="libaccounts-qt"/>
+  <url>https://gitlab.com/accounts-sso/libaccounts-qt</url>
+</package>

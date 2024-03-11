@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Tue Dec  5 21:29:19 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init libaccounts-qt. Replaces libaccounts-qt5 and uses flavors
+  to build with both Qt 5 and 6

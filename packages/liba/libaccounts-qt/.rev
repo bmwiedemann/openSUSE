@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ea489cfca515926b4bfd739ef79b2597</srcmd5>
+    <version>1.16git.20231124T162152~18557f7</version>
+    <time>1710167237</time>
+    <user>anag+factory</user>
+    <comment>Add libaccounts-qt. Replaces libaccounts-qt5 and uses flavors</comment>
+    <requestid>1151241</requestid>
+  </revision>
+</revisionlist>
