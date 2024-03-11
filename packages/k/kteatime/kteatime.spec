@@ -1,7 +1,7 @@
 #
 # spec file for package kteatime
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,35 +16,37 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           kteatime
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Timer for various types of tea
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/kteatime
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5GuiAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5NotifyConfig)
-BuildRequires:  cmake(KF5TextWidgets)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Widgets)
-Obsoletes:      %{name}5 < %{version}
-Provides:       %{name}5 = %{version}
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6NotifyConfig) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+Obsoletes:      kteatime5 < %{version}
+Provides:       kteatime5 = %{version}
 
 %description
 Timer utility by KDE where the user can select a particular type of tea,
@@ -56,26 +58,25 @@ and be reminded when the associated hardcoded time is over.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
-
-%suse_update_desktop_file org.kde.kteatime Applet
+%find_lang %{name} --with-html --all-name
 
 %files
 %license LICENSES/*
-%doc %lang(en) %{_kf5_htmldir}/en/kteatime/
-%{_kf5_applicationsdir}/org.kde.kteatime.desktop
-%{_kf5_appstreamdir}/org.kde.kteatime.appdata.xml
-%{_kf5_bindir}/kteatime
-%{_kf5_iconsdir}/hicolor/*/apps/kteatime.*
-%{_kf5_sharedir}/knotifications5/kteatime.notifyrc
+%doc %lang(en) %{_kf6_htmldir}/en/kteatime/
+%{_kf6_applicationsdir}/org.kde.kteatime.desktop
+%{_kf6_appstreamdir}/org.kde.kteatime.appdata.xml
+%{_kf6_bindir}/kteatime
+%{_kf6_iconsdir}/hicolor/*/apps/kteatime.*
+%{_kf6_notificationsdir}/kteatime.notifyrc
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/kteatime/
 
 %changelog
