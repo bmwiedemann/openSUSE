@@ -7,4 +7,12 @@
     <comment>I want to add cargo-vendor-filterer to openSUSE:Factory</comment>
     <requestid>1110439</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>caf0f17c6835c15c9ac0f255e3ec85ba</srcmd5>
+    <version>0.5.12</version>
+    <time>1710167659</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1156805</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 <services>
   <service name="download_files" mode="manual" />
   <service name="cargo_vendor" mode="manual">
-     <param name="srctar">cargo-vendor-filterer-0.5.11.tar.gz</param>
+     <param name="srctar">cargo-vendor-filterer-0.5.12.tar.gz</param>
      <param name="compression">zst</param>
      <param name="update">true</param>
   </service>
