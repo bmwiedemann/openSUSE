@@ -23,4 +23,12 @@
     <comment>Reproducible builds improvement</comment>
     <requestid>1109956</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a0fbb9c0771901a7e9ddce186123654c</srcmd5>
+    <version>2.16.1</version>
+    <time>1710167650</time>
+    <user>anag+factory</user>
+    <comment>2.16.1, CVE-2023-3894, bsc#1214111</comment>
+    <requestid>1156784</requestid>
+  </revision>
 </revisionlist>

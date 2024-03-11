@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Mar  8 08:33:47 UTC 2024 - Gus Kenion <gkenion@suse.com>
+
+- Update to version 2.16.1
+  * Resolve CVE-2023-3894, bsc#1214111
+  * 2.16.1 (24-Dec-2023)
+    + #445: (yaml) YAMLParser throws unexpected NullPointerException
+      in certain number parsing cases
+  * 2.16.0 (15-Nov-2023)
+    + #198: (csv) Support writing numbers as quoted Strings with
+      CsvGenerator.Feature.ALWAYS_QUOTE_NUMBERS
+    + #422: (csv) Add removeColumn() method in CsvSchema.Builder
+    + #438: (csv) BigInteger and BigDecimal are quoted if
+      CsvGenerator.Feature.ALWAYS_QUOTE_STRINGS enabled
+    + #400: (yaml) IllegalArgumentException when attempting to
+      decode invalid UTF-8 surrogate by SnakeYAML
+    + #406: (yaml) NumberFormatException from SnakeYAML due to int
+      overflow for corrupt YAML version
+    + #435: (yaml) Minor parsing validation miss: tagged as int,
+      exception on underscore-only values
+    + #437: (yaml) Update SnakeYAML dependency to 2.2
+
+-------------------------------------------------------------------
 Sat Sep  9 13:41:12 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
