@@ -1,7 +1,7 @@
 #
 # spec file for package libkdepim
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,66 +16,46 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           libkdepim
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Base package of kdepim
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  cmake(KF5Codecs)
-BuildRequires:  cmake(KF5Completion)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5Contacts)
-BuildRequires:  cmake(KF5GuiAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5Wallet)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KPim5Akonadi)
-BuildRequires:  cmake(KPim5AkonadiContact)
-BuildRequires:  cmake(KPim5AkonadiSearch)
-BuildRequires:  cmake(KPim5Ldap)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5UiTools)
-BuildRequires:  cmake(Qt5Widgets)
-Conflicts:      libKF5Libkdepim5 < %{version}
+BuildRequires:  doxygen
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
+BuildRequires:  cmake(Qt6UiTools) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 
 %description
 This package contains the libkdepim library.
 
-%package -n libKPim5Libkdepim5
+%package -n libKPim6Libkdepim6
 Summary:        libkdepim library
-License:        LGPL-2.1-or-later
 Requires:       libkdepim >= %{version}
 
-%description -n libKPim5Libkdepim5
+%description -n libKPim6Libkdepim6
 The libkdepim library
-
-%package -n libKPim5LibkdepimAkonadi5
-Summary:        libkdepim Akonadi library
-License:        LGPL-2.1-or-later
-Requires:       libkdepim >= %{version}
-
-%description -n libKPim5LibkdepimAkonadi5
-The libkdepim library for Akonadi related functions
 
 %package devel
 Summary:        Development package for libkdepim
-License:        LGPL-2.1-or-later
-# For the DBus interfaces
-Requires:       libkdepim >= %{version}
-Requires:       libKPim5Libkdepim5 = %{version}
-Requires:       cmake(KPim5Akonadi)
-Requires:       cmake(KPim5AkonadiContact)
+Requires:       libKPim6Libkdepim6 = %{version}
 
 %description devel
 The development package for the libkdepim libraries
@@ -86,38 +66,35 @@ The development package for the libkdepim libraries
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
+%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
 
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
+%find_lang %{name} --all-name
 
-%ldconfig_scriptlets -n libKPim5Libkdepim5
-%ldconfig_scriptlets -n libKPim5LibkdepimAkonadi5
+%ldconfig_scriptlets -n libKPim6Libkdepim6
 
 %files
-%license LICENSES/*
-%{_kf5_dbusinterfacesdir}/org.kde.addressbook.service.xml
-%{_kf5_dbusinterfacesdir}/org.kde.mailtransport.service.xml
-%{_kf5_debugdir}/libkdepim.categories
-%{_kf5_debugdir}/libkdepim.renamecategories
-%{_kf5_plugindir}/designer/
+%{_kf6_debugdir}/libkdepim.categories
+%{_kf6_debugdir}/libkdepim.renamecategories
 
-%files -n libKPim5Libkdepim5
-%{_kf5_libdir}/libKPim5Libkdepim.so.*
+%files -n libKPim6Libkdepim6
+%license LICENSES/*
+%{_kf6_libdir}/libKPim6Libkdepim.so.*
 
 %files devel
-%dir %{_includedir}/KPim5
-%{_includedir}/KPim5/Libkdepim/
-%{_kf5_cmakedir}/KF5Libkdepim/
-%{_kf5_cmakedir}/KPim5Libkdepim/
-%{_kf5_cmakedir}/KPim5MailTransportDBusService/
-%{_kf5_cmakedir}/MailTransportDBusService/
-%{_kf5_libdir}/libKPim5Libkdepim.so
-%{_kf5_mkspecsdir}/qt_Libkdepim.pri
+%doc %{_kf6_qchdir}/KPim6Libkdepim.*
+%{_includedir}/KPim6/Libkdepim/
+%{_kf6_cmakedir}/KPim6Libkdepim/
+%{_kf6_cmakedir}/KPim6MailTransportDBusService/
+%{_kf6_dbusinterfacesdir}/org.kde.addressbook.service.xml
+%{_kf6_dbusinterfacesdir}/org.kde.mailtransport.service.xml
+%{_kf6_libdir}/libKPim6Libkdepim.so
+%dir %{_kf6_plugindir}/designer/
+%{_kf6_plugindir}/designer/kdepim6widgets.so
 
 %files lang -f %{name}.lang
 
