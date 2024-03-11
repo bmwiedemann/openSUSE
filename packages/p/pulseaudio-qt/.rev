@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>902626</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>08f56e536b01c2aa15ac9178e00b6ea3</srcmd5>
+    <version>1.4.0</version>
+    <time>1710167240</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.0. No changelog
+- Add a Qt6 build flavor</comment>
+    <requestid>1151257</requestid>
+  </revision>
 </revisionlist>
