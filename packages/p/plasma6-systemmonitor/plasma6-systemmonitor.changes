@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Wed Mar  6 08:40:32 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.1
+- Changes since 6.0.0:
+  * update version for new release
+
+-------------------------------------------------------------------
+Mon Mar  4 18:52:24 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add Provides/Obsoletes to replace Plasma 5
+
+-------------------------------------------------------------------
+Wed Feb 21 18:36:38 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0:
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.93.0:
+  * update version for new release
+  * table: Explicitly disable dragging beyond bounds in header (kde#481224)
+  * page: Fix missing sensors display when not editing
+  * Add a workaround for QTBUG-114999
+  * table: Use upstream table selection behavior (kde#479329)
+  * Only store window geometry if the window is in "Windowed" state (kde#478442)
+  * page: Fix warning about signal parameter injection in FaceConfigurationPage
+  * Slightly increase the width of the face configuration page
+  * page: Properly constrain the size of config/sensors items in FaceConfigPage (kde#480986)
+  * table: Ensure we update sortName when changing sort order (kde#480950)
+  * Enable hover tooltips for entries in ColumnConfigurationDialog
+  * Make face cache entries unique per-page (kde#480160)
+  * table: Fix sorting of tables using the header (kde#479326)
+  * update version for new release
+
+-------------------------------------------------------------------
+Wed Jan 31 17:37:53 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.93.0 (6.0 RC 2):
+  * New bugfix release
+  * See https://kde.org/announcements/megarelease/6/rc2/ for details
+- Changes since 5.92.0:
+  * Migrate existing system activity shortcut
+  * Clip scrollable listviews (kde#479324)
+
+-------------------------------------------------------------------
+Wed Jan 17 18:39:52 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.92.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Fri Jul 14 20:47:04 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init plasma6-systemmonitor

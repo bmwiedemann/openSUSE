@@ -1,0 +1,9 @@
+<package name="plasma6-systemmonitor" project="openSUSE:Factory">
+  <title>An application for monitoring system resources</title>
+  <description>plasma-systemmonitor provides an interface for monitoring system sensors,
+process information and other system resources.
+
+</description>
+  <devel project="KDE:Frameworks" package="plasma6-systemmonitor"/>
+  <url>https://www.kde.org</url>
+</package>
