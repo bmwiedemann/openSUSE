@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-modules-base
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           jackson-modules-base
-Version:        2.15.2
+Version:        2.16.1
 Release:        0
 Summary:        Jackson modules: Base
 License:        Apache-2.0
 URL:            https://github.com/FasterXML/jackson-modules-base
 Source0:        %{url}/archive/%{name}-%{version}.tar.gz
 BuildRequires:  maven-local
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations) >= 2.15
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core) >= 2.15
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind) >= 2.15
-BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:) >= 2.15
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations) >= 2.16
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core) >= 2.16
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind) >= 2.16
+BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:) >= 2.16
 BuildRequires:  mvn(com.google.code.maven-replacer-plugin:replacer)
 BuildRequires:  mvn(com.google.inject:guice)
 BuildRequires:  mvn(com.thoughtworks.paranamer:paranamer)
@@ -149,6 +149,9 @@ cp -p mrbean/src/main/resources/META-INF/{LICENSE,NOTICE} .
     <Import-Package>javax.activation;resolution:=optional,*</Import-Package>
   </instructions>
 </configuration>"
+
+%pom_disable_module guice7
+%pom_disable_module android-record
 
 %{mvn_file} ":{*}" jackson-modules/@1
 

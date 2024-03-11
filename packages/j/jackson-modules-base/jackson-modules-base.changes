@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar  8 08:33:47 UTC 2024 - Gus Kenion <gkenion@suse.com>
+
+- Upgrade to 2.16.1
+  * 2.16.1 (24-Dec-2023) - No major changes since 2.16.0
+  * 2.16.0 (15-Nov-2023)
+    + #216: (afterburner) Disable when running in native-image
+    + #223: (afterburner) IncompatibleClassChangeError when
+      deserializing a class implementing an interface with default
+      get/set implementations
+    + #181: (blackbird) BlackBird proxy object error in Java 17
+    + #216: (blackbird) Disable when running in native-image
+    + #209: (guice) Add guice7 (jakarta.inject) module
+
+-------------------------------------------------------------------
 Sat Sep  9 13:44:57 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
