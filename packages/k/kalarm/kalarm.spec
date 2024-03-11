@@ -1,7 +1,7 @@
 #
 # spec file for package kalarm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,61 +16,66 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define kpim6_version 6.0.0
+
 %bcond_without released
 Name:           kalarm
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Personal Alarm Scheduler
 License:        GPL-2.0-only
 URL:            https://apps.kde.org/kalarm
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  breeze5-icons
-BuildRequires:  extra-cmake-modules
+BuildRequires:  kf6-breeze-icons
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  polkit-default-privs
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Auth)
-BuildRequires:  cmake(KF5CalendarCore)
-BuildRequires:  cmake(KF5Codecs)
-BuildRequires:  cmake(KF5Completion)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5Contacts)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5GlobalAccel)
-BuildRequires:  cmake(KF5GuiAddons)
-BuildRequires:  cmake(KF5Holidays)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IdleTime)
-BuildRequires:  cmake(KF5ItemModels)
-BuildRequires:  cmake(KF5JobWidgets)
-BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5NotifyConfig)
-BuildRequires:  cmake(KF5Service)
-BuildRequires:  cmake(KF5TextEditTextToSpeech)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(KPim5Akonadi)
-BuildRequires:  cmake(KPim5AkonadiContact)
-BuildRequires:  cmake(KPim5AkonadiMime)
-BuildRequires:  cmake(KPim5CalendarUtils)
-BuildRequires:  cmake(KPim5IdentityManagement)
-BuildRequires:  cmake(KPim5MailTransport)
-BuildRequires:  cmake(KPim5Mime)
-BuildRequires:  cmake(KPim5TextEdit)
-BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5X11Extras)
+BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF6Auth) >= %{kf6_version}
+BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
+BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
+BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6Contacts) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6GlobalAccel) >= %{kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Holidays) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
+BuildRequires:  cmake(KF6JobWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6NotifyConfig) >= %{kf6_version}
+BuildRequires:  cmake(KF6Service) >= %{kf6_version}
+BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextEditTextToSpeech)
+BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(KPim6Akonadi) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6AkonadiContactWidgets) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6AkonadiMime) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6CalendarUtils) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6IdentityManagementWidgets) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6MailTransport) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
+BuildRequires:  cmake(Phonon4Qt6)
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  pkgconfig(x11)
 Provides:       kalarm5 = %{version}
 Obsoletes:      kalarm5 < %{version}
 
@@ -83,47 +88,44 @@ Personal alarm message, command and email scheduler by KDE.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
-
-%suse_update_desktop_file org.kde.kalarm Utility TimeUtility
+%find_lang %{name} --with-html --all-name
 
 %ldconfig_scriptlets
 
 %files
 %license LICENSES/*
 %doc README
-%config %{_kf5_configdir}/autostart/kalarm.autostart.desktop
-%doc %lang(en) %{_kf5_htmldir}/en/kalarm/
-%{_kf5_applicationsdir}/org.kde.kalarm.desktop
-%{_kf5_appstreamdir}/org.kde.kalarm.appdata.xml
-%{_kf5_bindir}/kalarm*
-%{_kf5_configkcfgdir}/kalarmconfig.kcfg
-%{_kf5_dbusinterfacesdir}/org.kde.kalarm.kalarm.xml
-%{_kf5_dbuspolicydir}/org.kde.kalarm.rtcwake.conf
-%{_kf5_debugdir}/kalarm.categories
-%{_kf5_debugdir}/kalarm.renamecategories
-%{_kf5_iconsdir}/hicolor/*/apps/kalarm.png
-%{_kf5_iconsdir}/breeze/actions/*/show-today.svg
-%{_kf5_iconsdir}/breeze-dark/actions/*/show-today.svg
-%{_kf5_kxmlguidir}/kalarm/
-%{_kf5_libdir}/libkalarmcalendar.so.*
-%{_kf5_libdir}/libkalarmplugin.so.*
-%dir %{_kf5_plugindir}/pim5/
-%dir %{_kf5_plugindir}/pim5/kalarm/
-%{_kf5_plugindir}/pim5/kalarm/akonadiplugin.so
-%{_kf5_notifydir}/kalarm.notifyrc
-%{_kf5_sharedir}/dbus-1/system-services/org.kde.kalarm.rtcwake.service
-%{_kf5_sharedir}/kalarm/
-%{_kf5_sharedir}/polkit-1/actions/org.kde.kalarm.rtcwake.policy
-%{_libexecdir}/kauth/kalarm_helper
+%config %{_kf6_configdir}/autostart/kalarm.autostart.desktop
+%doc %lang(en) %{_kf6_htmldir}/en/kalarm/
+%{_kf6_applicationsdir}/org.kde.kalarm.desktop
+%{_kf6_appstreamdir}/org.kde.kalarm.appdata.xml
+%{_kf6_bindir}/kalarm
+%{_kf6_bindir}/kalarmautostart
+%{_kf6_configkcfgdir}/kalarmconfig.kcfg
+%{_kf6_dbusinterfacesdir}/org.kde.kalarm.kalarm.xml
+%{_kf6_dbuspolicydir}/org.kde.kalarm.rtcwake.conf
+%{_kf6_debugdir}/kalarm.categories
+%{_kf6_debugdir}/kalarm.renamecategories
+%{_kf6_iconsdir}/hicolor/*/apps/kalarm.png
+%{_kf6_libdir}/libkalarmcalendar.so.*
+%{_kf6_libdir}/libkalarmplugin.so.*
+%{_kf6_libexecdir}/kauth/kalarm_helper
+%{_kf6_notificationsdir}/kalarm.notifyrc
+%dir %{_kf6_plugindir}/pim6/
+%dir %{_kf6_plugindir}/pim6/kalarm/
+%{_kf6_plugindir}/pim6/kalarm/akonadiplugin.so
+%{_kf6_sharedir}/dbus-1/system-services/org.kde.kalarm.rtcwake.service
+%{_kf6_sharedir}/kalarm/
+%{_kf6_sharedir}/polkit-1/actions/org.kde.kalarm.rtcwake.policy
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/kalarm/
 
 %changelog
