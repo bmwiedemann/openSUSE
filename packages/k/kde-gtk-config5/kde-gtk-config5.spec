@@ -1,7 +1,7 @@
 #
 # spec file for package kde-gtk-config5
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@ BuildRequires:  gsettings-desktop-schemas
 BuildRequires:  kf5-filesystem
 BuildRequires:  sassc
 BuildRequires:  xz
-BuildRequires:  cmake(KDecoration2)
+BuildRequires:  cmake(KDecoration2) < 6
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)
