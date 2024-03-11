@@ -1,0 +1,8 @@
+<package name="kdeplasma6-addons" project="openSUSE:Factory">
+  <title>Additional Plasma6 Widgets</title>
+  <description>Additional plasmoids from upstream for use on the Plasma workspace.
+
+</description>
+  <devel project="KDE:Frameworks" package="kdeplasma6-addons"/>
+  <url>https://www.kde.org/</url>
+</package>
