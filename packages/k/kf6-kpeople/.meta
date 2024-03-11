@@ -1,0 +1,8 @@
+<package name="kf6-kpeople" project="openSUSE:Factory">
+  <title>Library for access to contacts and identity holders</title>
+  <description>A library that provides access to all contacts and the people who hold them.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kpeople"/>
+  <url>https://www.kde.org</url>
+</package>
