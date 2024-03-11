@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Wed Jan 31 14:42:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Switch to the latest GCC version available in Leap for packages
+  that can't build with the default compiler
+
+-------------------------------------------------------------------
+Sun Aug 20 19:48:33 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Change the _kf6_kxmlguidir location to match upstream changes.
+
+-------------------------------------------------------------------
+Tue May 30 17:13:51 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Switch to the latest compiler version available on Leap
+
+-------------------------------------------------------------------
+Mon May 22 09:36:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init kf6-filesystem

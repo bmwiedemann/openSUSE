@@ -1,0 +1,129 @@
+#
+# Macros for KDE Packages using Qt6
+#
+# SPDX-License-Identifier: MIT
+#
+#########################################################################
+#
+# Note: The kf6-extra-cmake-modules package has a dependency on kf6-filesystem,
+# you don't need to add kf6-filesystem to your package's 'BuildRequires'
+#
+#########################################################################
+# The following macros are provided:
+#
+# %%cmake_kf6
+#   Run CMake with the default parameters for KDE packages
+#
+# %%kf6_build
+#   Builds the project with the selected build tool (default: ninja)
+#
+# %%kf6_install
+#   Install the project once built
+#
+# %%kf6_use_make
+#   Use 'make' instead of 'ninja' for building
+#
+#   Alternatively, you can add the following line in your spec file:
+#   %%global %%__kf6_build_tool make
+#
+#########################################################################
+#
+# Note about the compiler used for Leap 15 builds:
+# The compiler version required is the same as the one used for building
+# Qt6 packages
+#
+#########################################################################
+
+# Default paths
+%__kf6_sourcedir .
+%__kf6_builddir build
+
+# Use the Ninja generator by default
+%__kf6_build_tool %__ninja
+
+# Default build type
+%__kf6_build_type RelWithDebInfo
+
+# _kf6_variables to use in %%files sections
+%_kf6_prefix            %{_prefix}
+
+%_kf6_sysconfdir        %{_sysconfdir}
+%_kf6_libexecdir        %{_libexecdir}/kf6
+
+%_kf6_bindir            %{_kf6_prefix}/bin
+%_kf6_includedir        %{_kf6_prefix}/include/KF6
+%_kf6_libdir            %{_kf6_prefix}/%{_lib}
+%_kf6_sbindir           %{_prefix}/sbin
+%_kf6_sharedir          %{_prefix}/share
+
+%_kf6_datadir           %{_kf6_sharedir}/kf6
+
+%_kf6_configdir         %{_kf6_sysconfdir}/xdg
+
+%_kf6_cmakedir          %{_kf6_libdir}/cmake
+%_kf6_pkgconfigdir      %{_kf6_libdir}/pkgconfig
+
+%_kf6_qchdir            %{_kf6_sharedir}/doc/qt6
+
+%_kf6_importdir         %{_kf6_libdir}/qt6/imports
+%_kf6_mkspecsdir        %{_kf6_libdir}/qt6/mkspecs/modules
+%_kf6_plugindir         %{_kf6_libdir}/qt6/plugins
+%_kf6_qmldir            %{_kf6_libdir}/qt6/qml
+
+%_kf6_appsdir           %{_kf6_sharedir}
+%_kf6_applicationsdir   %{_kf6_sharedir}/applications
+%_kf6_configkcfgdir     %{_kf6_sharedir}/config.kcfg
+%_kf6_dbusinterfacesdir %{_kf6_sharedir}/dbus-1/interfaces
+%_kf6_dbuspolicydir     %{_kf6_sharedir}/dbus-1/system.d
+%_kf6_htmldir           %{_kf6_sharedir}/doc/HTML
+%_kf6_iconsdir          %{_kf6_sharedir}/icons
+%_kf6_notificationsdir  %{_kf6_sharedir}/knotifications6
+%_kf6_knsrcfilesdir     %{_kf6_sharedir}/knsrcfiles
+%_kf6_kxmlguidir        %{_kf6_sharedir}/kxmlgui5
+%_kf6_localedir         %{_kf6_sharedir}/locale/kf6
+%_kf6_mandir            %{_kf6_sharedir}/man
+%_kf6_appstreamdir      %{_kf6_sharedir}/metainfo
+%_kf6_plasmadir         %{_kf6_sharedir}/plasma
+%_kf6_debugdir          %{_kf6_sharedir}/qlogging-categories6
+%_kf6_wallpapersdir     %{_kf6_sharedir}/wallpapers
+
+# Macro to use 'make' instead of 'ninja'
+%kf6_use_make %global __kf6_build_tool %__make
+
+# Run CMake
+%cmake_kf6 \
+  cmake -DCMAKE_BUILD_TYPE:STRING=%{__kf6_build_type} \\\
+        -DCMAKE_INSTALL_PREFIX:STRING=%{_kf6_prefix} \\\
+        -S %__kf6_sourcedir \\\
+        -B %__kf6_builddir \\\
+%if "%__kf6_build_tool" == "%__ninja" \
+        -GNinja \\\
+%else \
+        -G"Unix Makefiles" \\\
+%endif \
+%if 0%{?suse_version} == 1500 \
+        -DCMAKE_C_COMPILER:STRING=gcc-13 \\\
+        -DCMAKE_CXX_COMPILER:STRING=g++-13 \\\
+        -DCMAKE_CXX_LINK_PIE_SUPPORTED:BOOL=TRUE \\\
+%endif \
+        -DCMAKE_C_FLAGS:STRING="%{optflags}" \\\
+        -DCMAKE_CXX_FLAGS:STRING="%{optflags}" \\\
+        -DCMAKE_EXE_LINKER_FLAGS:STRING="-Wl,--as-needed -Wl,--no-undefined" \\\
+        -DCMAKE_MODULE_LINKER_FLAGS:STRING="-Wl,--as-needed -Wl,--no-undefined" \\\
+        -DCMAKE_SHARED_LINKER_FLAGS:STRING="-Wl,--as-needed -Wl,--no-undefined" \\\
+        -DKDE_INSTALL_LIBEXECDIR=%{_libexecdir} \\\
+        -DBUILD_TESTING:BOOL=FALSE
+
+# Build the package
+%kf6_build \
+  cmake --build %__kf6_builddir %{?_smp_mflags} -v \
+%{nil}
+
+# Install package
+%kf6_install \
+  DESTDIR=%{buildroot} cmake --build %__kf6_builddir -v \\\
+%if "%__kf6_build_tool" == "%__ninja" \
+  -t install \
+%else \
+  -t install/fast \
+%endif

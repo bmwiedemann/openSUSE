@@ -1,0 +1,8 @@
+<package name="kf6-filesystem" project="openSUSE:Factory">
+  <title>RPM macros for KDE packages using Qt6</title>
+  <description>This package contains macros which are used when building KDE packages.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-filesystem"/>
+  <url>https://www.opensuse.org</url>
+</package>
