@@ -1124,4 +1124,12 @@
     <comment>Require extra-cmake-modules at build time</comment>
     <requestid>1133516</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>ac7bff2fb2a643dd61ce967eba42078c</srcmd5>
+    <version>24.02.0</version>
+    <time>1710167444</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 24.02.0</comment>
+    <requestid>1150960</requestid>
+  </revision>
 </revisionlist>
