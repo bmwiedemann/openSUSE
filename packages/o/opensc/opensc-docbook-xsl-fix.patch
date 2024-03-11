@@ -1,0 +1,13 @@
+diff --git a/doc/html.xsl b/doc/html.xsl
+index 665d45f..734fa98 100644
+--- a/doc/html.xsl
++++ b/doc/html.xsl
+@@ -3,7 +3,7 @@
+ <!ENTITY css SYSTEM "api.css">
+ ]>
+ <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+-	<xsl:import href="docbook-utf8.xsl"/>
++	<xsl:import href="docbook.xsl"/>
+ 	<xsl:param name="toc.section.depth" select="0"/>
+ 	<xsl:param name="generate.consistent.ids" select="1"/>
+ 	<xsl:template name="user.head.content">

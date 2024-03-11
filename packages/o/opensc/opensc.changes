@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Mar  9 12:06:03 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.25.0
+  Security
+  * CVE-2023-5992: Fix Side-channel leaks while stripping
+    encryption PKCS#1.5 padding in OpenSC.
+  * CVE-2024-1454: Fix Potential use-after-free in AuthentIC driver
+    during card enrollment in pkcs15init.
+  General improvements
+  * Remove support for old card drivers Akis, GPK, Incrypto34 and
+    Westcos, disable Cyberflex driver.
+  * Fix 64b to 32b conversions.
+  * Improvements for the p11test.
+  * Fix reader initialization without SCardControl.
+  * Make RSA PKCS#1 v1.5 depadding constant-time.
+  * Add option for disabling PKCS#1 v1.5 depadding (type 01 and 02)
+    on the card.
+  * Fixed various issues reported by OSS-Fuzz and Coverity in
+    drivers, PKCS#11 and PKCS#15 layer.
+- Add patch:
+  * opensc-docbook-xsl-fix.patch
+- Drop not longer needed patches:
+  * CVE-2024-1454.patch
+- Introduce subpackage for bash-completion
+
+-------------------------------------------------------------------
 Sun Feb 25 20:35:05 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Add CVE-2024-1454.patch.

@@ -18,7 +18,7 @@
 
 %define completionsdir %(pkg-config --variable completionsdir bash-completion)
 Name:           opensc
-Version:        0.24.0
+Version:        0.25.0
 Release:        0
 Summary:        Smart Card Utilities
 License:        LGPL-2.1-or-later
@@ -31,8 +31,8 @@ Source2:        %{name}-rpmlintrc
 # https://web.archive.org/web/20111225073733/http://www.opensc-project.org/opensc/ticket/390
 Source3:        opensc.module
 Patch0:         opensc-gcc11.patch
-# PATCH-FIX-UPSTREAM martin.schreiner@suse.com CVE-2024-1454 bsc#1219868
-Patch1:         CVE-2024-1454.patch
+Patch1:         opensc-docbook-xsl-fix.patch
+BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libxslt
 BuildRequires:  pkgconfig
@@ -60,8 +60,20 @@ also card version, card OS version and preloaded applet. Only subset of
 possible operations may be supported for your card. Card initialization
 may require third party proprietary software.
 
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          Productivity/Security
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash completion script for %{name}.
+
 %prep
-%autosetup -p1
+%setup -q
+%autopatch -p1
 
 %build
 %configure \
@@ -101,6 +113,8 @@ install -D -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/pkcs11/modules/opensc.mo
 %config %{_sysconfdir}/pkcs11/modules/
 # This is a private library. There is no reason to split it to libopensc* package.
 %{_libdir}/libopensc.so.*
+
+%files bash-completion
 %{completionsdir}/*
 
 %changelog
