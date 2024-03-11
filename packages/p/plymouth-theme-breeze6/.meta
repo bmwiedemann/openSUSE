@@ -1,0 +1,8 @@
+<package name="plymouth-theme-breeze6" project="openSUSE:Factory">
+  <title>Plymouth &quot;Breeze&quot; theme</title>
+  <description>This package contains the &quot;breeze&quot; boot splash theme for Plymouth.
+
+</description>
+  <devel project="KDE:Frameworks" package="plymouth-theme-breeze6"/>
+  <url>https://www.kde.org</url>
+</package>
