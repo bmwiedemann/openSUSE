@@ -1,7 +1,7 @@
 #
 # spec file for package calendarsupport
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,102 +16,100 @@
 #
 
 
-%define lname libKPim5CalendarSupport5
-%define kf5_version 5.105.0
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define kpim6_version 6.0.0
+
 %bcond_without released
 Name:           calendarsupport
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        KDE PIM calendaring support library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= %{kf5_version}
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5CalendarCore)
-BuildRequires:  cmake(KF5Codecs)
-BuildRequires:  cmake(KF5GuiAddons)
-BuildRequires:  cmake(KF5Holidays)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KPim5Akonadi)
-BuildRequires:  cmake(KPim5AkonadiCalendar)
-BuildRequires:  cmake(KPim5AkonadiMime)
-BuildRequires:  cmake(KPim5AkonadiNotes)
-BuildRequires:  cmake(KPim5CalendarUtils)
-BuildRequires:  cmake(KPim5IdentityManagement)
-BuildRequires:  cmake(KPim5Mime)
-BuildRequires:  cmake(KPim5TextEdit)
-BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  doxygen
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
+BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Holidays) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextCustomEditor)
+BuildRequires:  cmake(KPim6Akonadi) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6AkonadiCalendar) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6AkonadiNotes) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6CalendarUtils) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6IdentityManagementCore) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
+BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 This package contains the calendarsupport library, used by KDE PIM applications
 to handle calendaring.
 
-%package -n %{lname}
+%package -n libKPim6CalendarSupport6
 Summary:        Library for handling calendaring in PIM applications
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Requires:       %{name}
-# Renamed
+Requires:       calendarsupport >= %{version}
 Obsoletes:      calendarsupport-lang <= 23.04.0
+Obsoletes:      libKPim5CalendarSupport5-lang < %{version}
 
-%description -n %{lname}
+%description -n libKPim6CalendarSupport6
 This package contains the calendarsupport library, used by KDE PIM applications
 to handle calendaring.
 
 %package devel
 Summary:        Development package for the KDEPIM Calendarsupport library
-License:        LGPL-2.1-or-later
-Requires:       %{lname} = %{version}
-Requires:       cmake(KPim5AkonadiCalendar)
-Requires:       cmake(KPim5IdentityManagement)
-Requires:       cmake(KPim5Mime)
-Requires:       cmake(Qt5PrintSupport)
+Requires:       libKPim6CalendarSupport6 = %{version}
+Requires:       cmake(KPim6AkonadiCalendar) >= %{kpim6_version}
+Requires:       cmake(KPim6IdentityManagementCore) >= %{kpim6_version}
+Requires:       cmake(KPim6Mime) >= %{kpim6_version}
+Requires:       cmake(Qt6PrintSupport) >= %{qt6_version}
 
 %description devel
 The development package for the calendarsupport libraries
 
-%lang_package -n %{lname}
+%lang_package -n libKPim6CalendarSupport6
 
 %prep
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
+%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
 
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{lname} --with-man --all-name
+%find_lang libKPim6CalendarSupport6 --all-name
 
-%ldconfig_scriptlets -n %{lname}
+%ldconfig_scriptlets -n libKPim6CalendarSupport6
 
 %files
-%{_kf5_debugdir}/calendarsupport.categories
-%{_kf5_debugdir}/calendarsupport.renamecategories
+%{_kf6_debugdir}/calendarsupport.categories
+%{_kf6_debugdir}/calendarsupport.renamecategories
 
-%files -n %{lname}
+%files -n libKPim6CalendarSupport6
 %license LICENSES/*
-%{_libdir}/libKPim5CalendarSupport.so.*
+%{_libdir}/libKPim6CalendarSupport.so.*
 
 %files devel
-%dir %{_includedir}/KPim5
-%{_includedir}/KPim5/CalendarSupport/
-%{_kf5_cmakedir}/KF5CalendarSupport/
-%{_kf5_cmakedir}/KPim5CalendarSupport/
-%{_kf5_libdir}/libKPim5CalendarSupport.so
-%{_kf5_mkspecsdir}/qt_CalendarSupport.pri
+%doc %{_kf6_qchdir}/KPim6CalendarSupport.*
+%{_includedir}/KPim6/CalendarSupport/
+%{_kf6_cmakedir}/KPim6CalendarSupport/
+%{_kf6_libdir}/libKPim6CalendarSupport.so
 
-%files -n %{lname}-lang -f %{lname}.lang
+%files -n libKPim6CalendarSupport6-lang -f libKPim6CalendarSupport6.lang
 
 %changelog
