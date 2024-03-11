@@ -1,0 +1,9 @@
+<package name="kf6-syndication" project="openSUSE:Factory">
+  <title>RSS/Atom parsing library</title>
+  <description>KF6Syndication is an RSS/Atom parsing library by KDE, which
+also provides an API to fetch feeds from the network.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-syndication"/>
+  <url>https://www.kde.org</url>
+</package>
