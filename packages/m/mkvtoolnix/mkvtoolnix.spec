@@ -17,7 +17,7 @@
 
 
 Name:           mkvtoolnix
-Version:        82.0
+Version:        83.0
 Release:        0
 Summary:        Tools to Create, Alter, and Inspect Matroska Files
 License:        GPL-2.0-or-later
@@ -132,6 +132,8 @@ install -m0755 src/tools/ac3parser src/tools/base64tool src/tools/bluray_dump \
 %{_mandir}/man1/mkvextract.1%{ext_man}
 %{_mandir}/man1/mkvmerge.1%{ext_man}
 %{_mandir}/man1/mkvpropedit.1%{ext_man}
+%doc %lang(be) %dir %{_mandir}/be
+%doc %lang(be) %dir %{_mandir}/be/man1
 %doc %lang(bg) %dir %{_mandir}/bg
 %doc %lang(bg) %dir %{_mandir}/bg/man1
 %doc %lang(ko) %dir %{_mandir}/ko

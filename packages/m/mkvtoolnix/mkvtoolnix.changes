@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Mar 10 19:15:12 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 83.0
+  New features and enhancements:
+  * translations: added a Belarusian translation of the programs
+    & the man pages by prydespar (see `AUTHORS`).
+  * mkvmerge, MKVToolNix GUI's chapter editor: added support for
+    reading chapters from ffmpeg metadata files.
+  * MKVToolNix GUI: added a new action type for execution after
+    jobs or the queue finishes: quitting MKVToolNix.
+  Build system changes:
+  * The bundled `fmt` library was updated to v10.2.1.
+  Other changes:
+  * Tons of changes were made to support the latest development
+    versions of libEBML & libMatroska.
+
+-------------------------------------------------------------------
 Wed Jan  3 11:22:36 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 82.0
