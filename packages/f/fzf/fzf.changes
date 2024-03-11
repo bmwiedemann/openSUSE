@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 10 19:38:03 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.47.0:
+  * Replaced default find command with built-in directory walker
+    to simplify the code and to achieve better performance. This
+    doesn't affect you if you have $FZF_DEFAULT_COMMAND set.
+  * Added $FZF_DEFAULT_OPTS_FILE to allow managing default options
+    in a file
+  * Bug fixes and improvements.
+
+-------------------------------------------------------------------
 Thu Feb  1 15:08:48 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Update to version 0.46.1:
