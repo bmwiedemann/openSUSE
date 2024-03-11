@@ -1,0 +1,9 @@
+<package name="kgamma6" project="openSUSE:Factory">
+  <title>Display gamma configuration</title>
+  <description>This package contains a KDE system settings module to configure display
+gamma.
+
+</description>
+  <devel project="KDE:Frameworks" package="kgamma6"/>
+  <url>https://www.kde.org</url>
+</package>
