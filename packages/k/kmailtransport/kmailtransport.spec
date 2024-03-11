@@ -1,7 +1,7 @@
 #
 # spec file for package kmailtransport
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,46 +16,48 @@
 #
 
 
-%define kf5_version 5.105.0
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define kpim6_version 6.0.0
+
 %bcond_without released
 Name:           kmailtransport
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        KDE PIM Libraries: Mailtransport layer
 License:        LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  cyrus-sasl-devel
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5ConfigWidgets) >= %{kf5_version}
-BuildRequires:  cmake(KF5KCMUtils) >= %{kf5_version}
-BuildRequires:  cmake(KF5Wallet) >= %{kf5_version}
-BuildRequires:  cmake(KPim5GAPI)
-BuildRequires:  cmake(KPim5SMTP)
-BuildRequires:  cmake(Qt5Keychain)
-BuildRequires:  cmake(Qt5Test)
+BuildRequires:  doxygen
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KPim6GAPI) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6SMTP) >= %{kpim6_version}
+BuildRequires:  cmake(Qt6Keychain)
+BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 
 %description
 This package contains library to provide mailtransport functionality for
 KDE PIM applications.
 
-%package -n libKPim5MailTransport5
+%package -n libKPim6MailTransport6
 Summary:        Mail Transport library for KDE PIM applications
-Requires:       %{name} >= %{version}
+Requires:       kmailtransport >= %{version}
 
-%description -n libKPim5MailTransport5
+%description -n libKPim6MailTransport6
 The Mail Transport library for KDE PIM functionality
 
 %package devel
 Summary:        KDE PIM Libraries: Build Environment
 Requires:       cyrus-sasl-devel
-Requires:       libKPim5MailTransport5 = %{version}
-Requires:       cmake(KF5Wallet) >= %{kf5_version}
+Requires:       libKPim6MailTransport6 = %{version}
+Requires:       cmake(KF6Config) >= %{kf6_version}
 
 %description devel
 This package contains necessary include files and libraries needed
@@ -67,37 +69,35 @@ to develop KDE PIM applications.
 %autosetup -p1 -n kmailtransport-%{version}
 
 %build
-%cmake_kf5 -d build -- -DBUILD_TESTING=OFF
-%cmake_build
+%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
+%find_lang kmailtransport --with-man --all-name
 
-%ldconfig_scriptlets
-%ldconfig_scriptlets -n libKPim5MailTransport5
+%ldconfig_scriptlets -n libKPim6MailTransport6
 
 %files
-%dir %{_kf5_plugindir}/pim5/
-%dir %{_kf5_plugindir}/pim5/mailtransport/
-%{_kf5_configkcfgdir}/mailtransport.kcfg
-%{_kf5_debugdir}/kmailtransport.categories
-%{_kf5_debugdir}/kmailtransport.renamecategories
-%{_kf5_plugindir}/pim5/mailtransport/mailtransport_smtpplugin.so
+%{_kf6_configkcfgdir}/mailtransport.kcfg
+%{_kf6_debugdir}/kmailtransport.categories
+%{_kf6_debugdir}/kmailtransport.renamecategories
+%dir %{_kf6_plugindir}/pim6/
+%dir %{_kf6_plugindir}/pim6/mailtransport/
+%{_kf6_plugindir}/pim6/mailtransport/mailtransport_smtpplugin.so
 
-%files -n libKPim5MailTransport5
+%files -n libKPim6MailTransport6
 %license LICENSES/*
-%{_kf5_libdir}/libKPim5MailTransport.so.5*
+%{_kf6_libdir}/libKPim6MailTransport.so.*
 
 %files devel
-%dir %{_includedir}/KPim5
-%{_includedir}/KPim5/MailTransport/
-%{_kf5_cmakedir}/KF5MailTransport/
-%{_kf5_cmakedir}/KPim5MailTransport/
-%{_kf5_libdir}/libKPim5MailTransport.so
-%{_kf5_mkspecsdir}/qt_KMailTransport.pri
+%doc %{_kf6_qchdir}/KPim6MailTransport.*
+%{_includedir}/KPim6/MailTransport/
+%{_kf6_cmakedir}/KPim6MailTransport/
+%{_kf6_libdir}/libKPim6MailTransport.so
 
-%files lang -f %{name}.lang
+%files lang -f kmailtransport.lang
 
 %changelog
