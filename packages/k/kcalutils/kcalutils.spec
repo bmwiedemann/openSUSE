@@ -1,7 +1,7 @@
 #
 # spec file for package kcalutils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,53 +16,52 @@
 #
 
 
-%define kf5_version 5.105.0
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define kpim6_version 6.0.0
+
 %bcond_without released
 Name:           kcalutils
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Library with utility functions for handling calendar data
 License:        LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= %{kf5_version}
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(Grantlee5)
-BuildRequires:  cmake(KF5CalendarCore)
-BuildRequires:  cmake(KF5Codecs) >= %{kf5_version}
-BuildRequires:  cmake(KF5Config) >= %{kf5_version}
-BuildRequires:  cmake(KF5ConfigWidgets) >= %{kf5_version}
-BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
-BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
-BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
-BuildRequires:  cmake(KF5WidgetsAddons) >= %{kf5_version}
-BuildRequires:  cmake(KPim5IdentityManagement)
-BuildRequires:  cmake(Qt5Test)
-%requires_eq    grantlee5
-Conflicts:      libKF5CalendarUtils5 < %{version}
+BuildRequires:  doxygen
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
+BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextTemplate)
+BuildRequires:  cmake(KPim6IdentityManagementCore) >= %{kpim6_version}
+BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
+Conflicts:      libKF6CalendarUtils5 < %{version}
 
 %description
 This library provides a set of utility functions that help
 applications access and use calendar data via the KCalCore library.
 
-%package -n libKPim5CalendarUtils5
+%package -n libKPim6CalendarUtils6
 Summary:        Library with utility functions for handling calendar data
 Requires:       kcalutils = %{version}
 
-%description  -n libKPim5CalendarUtils5
+%description  -n libKPim6CalendarUtils6
 This library provides a set of utility functions that help
 applications access and use calendar data via the KCalCore library.
 
 %package devel
 Summary:        Development files for kcalutils
-Requires:       libKPim5CalendarUtils5
-Requires:       cmake(KF5CalendarCore)
-Requires:       cmake(KF5CoreAddons) >= %{kf5_version}
-Requires:       cmake(KF5KDELibs4Support) >= %{kf5_version}
+Requires:       libKPim6CalendarUtils6
+Requires:       cmake(KF6CalendarCore) >= %{kf6_version}
+Requires:       cmake(KF6CoreAddons) >= %{kf6_version}
 Provides:       kcalutils5-devel = %{version}
 Obsoletes:      kcalutils5-devel < %{version}
 
@@ -76,35 +75,32 @@ to develop applications wanting to use kcalutils.
 %autosetup -p1 -n kcalutils-%{version}
 
 %build
-%cmake_kf5 -d build -- -DBUILD_TESTING=ON
-%cmake_build
+%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
+%find_lang %{name} --all-name
 
-%global grantlee_shortver %(rpm -q --queryformat=%%{VERSION} grantlee5 | cut -d . -f 1-2)
-
-%ldconfig_scriptlets -n libKPim5CalendarUtils5
+%ldconfig_scriptlets -n libKPim6CalendarUtils6
 
 %files
 %license LICENSES/*
-%dir %{_kf5_libdir}/grantlee/
-%dir %{_kf5_libdir}/grantlee/%{grantlee_shortver}
-%{_kf5_debugdir}/*.categories
-%{_kf5_debugdir}/*.renamecategories
-%{_kf5_libdir}/grantlee/%{grantlee_shortver}/kcalendar_grantlee_plugin.so
+%{_kf6_debugdir}/kcalutils.categories
+%{_kf6_debugdir}/kcalutils.renamecategories
+%dir %{_kf6_plugindir}/kf6/ktexttemplate
+%{_kf6_plugindir}/kf6/ktexttemplate/kcalendar_grantlee_plugin.so
 
-%files -n libKPim5CalendarUtils5
-%{_kf5_libdir}/libKPim5CalendarUtils.so.*
+%files -n libKPim6CalendarUtils6
+%{_kf6_libdir}/libKPim6CalendarUtils.so.*
 
 %files devel
-%dir %{_includedir}/KPim5
-%{_includedir}/KPim5/KCalUtils/
-%{_kf5_cmakedir}/KPim5CalendarUtils/
-%{_kf5_libdir}/libKPim5CalendarUtils.so
-%{_kf5_mkspecsdir}/qt_KCalUtils.pri
+%doc %{_kf6_qchdir}/KPim6CalendarUtils.*
+%{_includedir}/KPim6/KCalUtils/
+%{_kf6_cmakedir}/KPim6CalendarUtils/
+%{_kf6_libdir}/libKPim6CalendarUtils.so
 
 %files lang -f %{name}.lang
 
