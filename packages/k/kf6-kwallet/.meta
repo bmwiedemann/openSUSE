@@ -1,0 +1,10 @@
+<package name="kf6-kwallet" project="openSUSE:Factory">
+  <title>Safe desktop-wide storage for passwords</title>
+  <description>This framework contains two main components:
+* Interface to KWallet, the safe desktop-wide storage for passwords on KDE workspaces.
+* The kwalletd used to safely store the passwords on KDE work spaces.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kwallet"/>
+  <url>https://www.kde.org</url>
+</package>
