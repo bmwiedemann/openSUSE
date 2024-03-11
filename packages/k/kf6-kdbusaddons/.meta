@@ -1,0 +1,9 @@
+<package name="kf6-kdbusaddons" project="openSUSE:Factory">
+  <title>Convenience classes for QtDBus</title>
+  <description>KDBusAddons provides convenience classes on top of QtDBus, as well as an API to
+create KDED modules.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kdbusaddons"/>
+  <url>https://www.kde.org</url>
+</package>
