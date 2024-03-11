@@ -1,0 +1,9 @@
+<package name="plasma6-browser-integration" project="openSUSE:Factory">
+  <title>Helper for the KDE Plasma Browser Integration</title>
+  <description>This package contains a helper binary necessary for the WebExtension to
+work.
+
+</description>
+  <devel project="KDE:Frameworks" package="plasma6-browser-integration"/>
+  <url>https://www.kde.org</url>
+</package>
