@@ -1,0 +1,8 @@
+<package name="plasma6-vault" project="openSUSE:Factory">
+  <title>Plasma applet and services for creating encrypted vaults</title>
+  <description>Plasma Vault is a plasmoid for creating and managing encrypted vaults
+
+</description>
+  <devel project="KDE:Frameworks" package="plasma6-vault"/>
+  <url>https://www.kde.org</url>
+</package>
