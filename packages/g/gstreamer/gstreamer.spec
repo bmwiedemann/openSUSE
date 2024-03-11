@@ -34,6 +34,8 @@ Source99:       baselibs.conf
 Patch1:         gstreamer-rpm-prov.patch
 # PATCH-FIX-OPENSUSE gstreamer-pie.patch mgorse@suse.com -- create position-independent executables.
 Patch2:         gstreamer-pie.patch
+# PATCH-FIX-OPENSUSE force-find-gst-plugin-scanner.patch alarrosa@suse.com -- Part of the fix for boo#1221150
+Patch3:         force-find-gst-plugin-scanner.patch
 
 
 BuildRequires:  bison >= 2.4

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 11 07:55:04 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to remove the (wrong) check for relocated library which
+  is making gstreamer fail to find the gst-plugin-scanner helper
+  binary, thus using the installation path set at build time
+  (boo#1221150):
+  * force-find-gst-plugin-scanner.patch
+
+-------------------------------------------------------------------
 Tue Mar  5 06:09:21 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.24.0:
