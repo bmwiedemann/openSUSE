@@ -1,7 +1,7 @@
 #
 # spec file for package sddm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@ Name:           sddm
 %else
 Name:           sddm-qt6
 %endif
-Version:        0.20.0
+Version:        0.21.0
 Release:        0
 Summary:        QML-based display manager (Qt%{qtver})
 License:        GPL-2.0-or-later
@@ -59,16 +59,6 @@ Source20:       sddm.pam
 Source21:       sddm-autologin.pam
 Source22:       sddm-greeter.pam
 # Patch0-100: PATCH-FIX-UPSTREAM
-# https://github.com/sddm/sddm/pull/1746
-Patch0:         0001-Session-Parse-.desktop-files-manually-again.patch
-# https://github.com/sddm/sddm/pull/1753
-Patch1:         0001-greeter-Look-at-WAYLAND_DISPLAY-for-platform-detecti.patch
-Patch2:         0002-Ignore-InputMethod-qtvirtualkeyboard-on-wayland.patch
-# https://github.com/sddm/sddm/pull/1792
-Patch3:         0001-Drop-unnecessary-ECM-dependency-and-dead-uninstall-t.patch
-# https://github.com/sddm/sddm/pull/1789
-Patch4:         0002-Make-sddm-greeter-for-Qt-5-and-Qt-6-coinstallable.patch
-Patch5:         0003-Let-themes-specify-the-used-version-of-Qt.patch
 # Patch100-?: PATCH-FIX-OPENSUSE
 Patch101:       0001-Write-the-daemon-s-PID-to-a-file-on-startup.patch
 Patch102:       0001-Set-XAUTHLOCALHOSTNAME-in-sessions.patch
@@ -113,7 +103,7 @@ BuildRequires:  pkgconfig(xcb-xkb)
 %sysusers_requires
 BuildRequires:  update-alternatives
 Requires(post): %{_sbindir}/update-alternatives
-Requires(postun):%{_sbindir}/update-alternatives
+Requires(postun): %{_sbindir}/update-alternatives
 Requires:       %{name}-branding = %{version}
 Requires:       sddm-greeter-qt%{qtver} = %{version}
 Requires:       xdm
@@ -198,6 +188,7 @@ LOGIN_DEFS_PATH="%{_sysconfdir}/login.defs"
       -DRUNTIME_DIR="/run/sddm" \
       -DPID_FILE="/run/sddm.pid" \
       -DLOGIN_DEFS_PATH:path="${LOGIN_DEFS_PATH}" \
+      -DINSTALL_PAM_CONFIGURATION:BOOL=OFF \
 %if 0%{?suse_version} <= 1500
       -DCMAKE_C_COMPILER:STRING=gcc-13 \
       -DCMAKE_CXX_COMPILER:STRING=g++-13 \
@@ -222,7 +213,6 @@ LOGIN_DEFS_PATH="%{_sysconfdir}/login.defs"
   %endif
 
   # Install PAM config
-  rm -r %{buildroot}%{_sysconfdir}/pam.d # Remove sddm's config, for debian only
   pam_dest="%{?_pam_vendordir}%{!?_pam_vendordir:%{_sysconfdir}/pam.d}"
   install -Dm 0644 %{SOURCE20} %{buildroot}${pam_dest}/sddm
   install -Dm 0644 %{SOURCE21} %{buildroot}${pam_dest}/sddm-autologin
