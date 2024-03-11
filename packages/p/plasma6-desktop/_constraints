@@ -1,0 +1,34 @@
+<constraints>
+ <hardware>
+  <disk>
+   <size unit="G">9</size>
+  </disk>
+  <memory>
+   <size unit="G">4</size>
+  </memory>
+  <processors>4</processors>
+ </hardware>
+  <overwrite>
+    <conditions>
+      <arch>s390x</arch>
+      <arch>ppc64</arch>
+      <arch>ppc64le</arch>
+    </conditions>
+    <hardware>
+     <memory>
+      <size unit="G">7</size>
+     </memory>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>armv6l</arch>
+      <arch>armv7l</arch>
+    </conditions>
+    <hardware>
+     <memory>
+      <size unit="M">768</size>
+     </memory>
+    </hardware>
+  </overwrite>
+</constraints>

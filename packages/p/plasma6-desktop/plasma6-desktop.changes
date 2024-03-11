@@ -1,0 +1,86 @@
+-------------------------------------------------------------------
+Wed Mar  6 08:40:30 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.1
+- Changes since 6.0.0:
+  * update version for new release
+  * Keep first selected item if currentIndex is 0
+  * Fix kicker close on click away (kde#482324)
+  * Fix some warnings
+  * Disable internal Key navigation (kde#482005)
+  * AppletError: Use compact error message from libplasma as the header
+  * 🍒Fix default appstream handler (kde#481932)
+  * appiumtests: move desktop tests to its own folder
+  * Fix running appstreamtest
+  * kcms:keys: fix changing command text or path (kde#481825)
+  * FolderView Positioner: fix rows insert and remove (kde#481254,kde#466337)
+  * applets/taskmanager: simplify right press handling
+  * Revert "Fix i18n domain"
+
+-------------------------------------------------------------------
+Mon Mar  4 18:52:18 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add Provides/Obsoletes to replace Plasma 5
+
+-------------------------------------------------------------------
+Thu Feb 29 12:54:32 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Fix build with SDL2 versions older than 2.0.16
+
+-------------------------------------------------------------------
+Wed Feb 21 18:36:36 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0:
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.93.0:
+  * update version for new release
+  * kcms/plasmasearch: don't crash on dragging favorties to the end (kde#481594)
+  * applets/taskmanager: don't show the virtual desktop number next to the VD name (kde#481576)
+  * applets/kimpanel: fix loading config dialog
+  * kicker/dash: fix category list items' vertical margins (kde#480664)
+  * Remove again the touchpad applet
+  * appiumtests/bug477220: compare difference instead of matching region
+  * 🍒applets/taskmanager: reset animating property on mouse enter (kde#465377)
+  * appiumtests/bug476968: fix test_bug476968
+  * Panel: use new API to calculate regionGeometry (kde#481379)
+  * kickoff: Use Item as searchField property type
+  * DefaultCompactRepresentation: accept key pressed event (kde#481393)
+  * PanelConfiguration: use appropriate string for vertical panels
+  * applets/kicker: fix favourites actions for Kicker in qt 6.7
+  * install a kde-mimeapps.list (kde#305136)
+  * applets/kickoff: fix favourites actions for Kickoff in QT 6.7 (kde#479183)
+  * Fix i18n domain
+  * Remove old panel focus workaround
+  * containments/desktop: make mime filter case insensitive
+  * containments/desktop: fix mimeTypesView in ConfigFilter
+  * appiumtests/bug47722: revert expect fail in test_2_bug477220_open_context_menu
+  * update version for new release
+
+-------------------------------------------------------------------
+Wed Jan 31 17:37:38 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.93.0 (6.0 RC 2):
+  * New bugfix release
+  * See https://kde.org/announcements/megarelease/6/rc2/ for details
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Wed Jan 17 18:39:39 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.92.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Sat Dec  2 07:47:08 UTC 2023 - Luca Beltrame <lbeltrame@kde.org>
+
+- Refreshed patches:
+  * 0001-Apply-branding-to-default-favorites.patch
+
+-------------------------------------------------------------------
+Sun Jul  9 23:07:37 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init plasma6-desktop
