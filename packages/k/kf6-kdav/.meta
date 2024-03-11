@@ -1,0 +1,9 @@
+<package name="kf6-kdav" project="openSUSE:Factory">
+  <title>DAV protocol implementation</title>
+  <description>kdav is a library providing a KJob-based implementation of DAV protocols such as
+CardDAV, WebDAV, and CalDAV.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kdav"/>
+  <url>https://www.kde.org</url>
+</package>
