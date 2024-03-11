@@ -1,0 +1,9 @@
+<package name="kde-gtk-config6" project="openSUSE:Factory">
+  <title>Daemon for GTK2 and GTK3 Applications Appearance Under KDE</title>
+  <description>kde-gtk-config is a KDED module which configures GTK2 and GTK3 applications
+appearance under KDE.
+
+</description>
+  <devel project="KDE:Frameworks" package="kde-gtk-config6"/>
+  <url>https://www.kde.org</url>
+</package>
