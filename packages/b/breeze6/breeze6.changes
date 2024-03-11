@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Wed Mar  6 08:40:25 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.1
+- Changes since 6.0.0:
+  * update version for new release
+  * kdecoration: Fix topright corner click when using fractional scaling hack (kde#481857)
+  * Move additions to left and right int to fix KWin tests
+  * Expand border on bottom and right, set decoration name to "breeze"
+
+-------------------------------------------------------------------
+Mon Mar  4 12:01:28 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Make sure breeze5-style-lang is also uninstalled when installing
+  breeze6-style
+
+-------------------------------------------------------------------
+Wed Feb 21 18:36:11 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0:
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.93.0:
+  * Fix background of titlebar of KPageWidget (kde#476907)
+  * QComboBoxListView: setAutoFillBackground to false
+  * Set tabPrimitive qrectf, set overlap to penwidth::frame
+  * Consistency fixes for outline/separator colors
+  * Breezestyle: use QRectF instead of QRect, fix tab-bar alignment issues (kde#480533)
+  * update version for new release
+
+-------------------------------------------------------------------
+Wed Jan 31 17:36:46 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.93.0 (6.0 RC 2):
+  * New bugfix release
+  * See https://kde.org/announcements/megarelease/6/rc2/ for details
+- Changes since 5.92.0:
+  * Fix display of multiline menu items (kde#477299)
+  * Change outlinesEnabled border width to 1
+  * Move outline drawing to Decoration::paint
+  * Update wallpaper to "Scarlett Tree" for Plasma 6.0
+  * Allow installing color scheme and cursor theme in Qt 5 build
+  * Allow to force display separator in QDialogButtonBox
+  * Revert "Expand frameless tabs that are not editable"
+- Drop patches, now upstream:
+  * 0001-Update-version-number-for-5.92.90.patch
+
+-------------------------------------------------------------------
+Mon Jan 15 21:08:31 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.92.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+- Add patch to fix the cmake version:
+  * 0001-Update-version-number-for-5.92.90.patch
+
+-------------------------------------------------------------------
+Sat Jul  1 10:15:58 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init breeze6

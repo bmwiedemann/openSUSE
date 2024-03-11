@@ -1,0 +1,8 @@
+<package name="breeze6" project="openSUSE:Factory">
+  <title>Plasma Desktop artwork, styles and assets</title>
+  <description>Artwork, styles and assets for the Breeze visual style for the Plasma Desktop.
+
+</description>
+  <devel project="KDE:Frameworks" package="breeze6"/>
+  <url>https://www.kde.org</url>
+</package>
