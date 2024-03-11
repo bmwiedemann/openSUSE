@@ -1,0 +1,10 @@
+<package name="kf6-kuserfeedback" project="openSUSE:Factory">
+  <title>Framework for collecting feedback from application users</title>
+  <description>KUserFeedback is a framework which allows applications to collect user
+telemetry and feedback surveys. It is designed to be compliant with the
+KDE Telemetry Policy, which forbids the usage of unique identification.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kuserfeedback"/>
+  <url>https://www.kde.org</url>
+</package>

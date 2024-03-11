@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Tue Mar  5 11:03:30 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Move -lang conflicts to the -lang package
+
+-------------------------------------------------------------------
+Wed Feb 21 19:28:15 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.249.0:
+  * update version for new release
+
+-------------------------------------------------------------------
+Wed Jan 31 17:50:59 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.249.0 (6.0 RC 2):
+  * New bugfix release
+  * For more details see https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
+Mon Jan 15 20:01:45 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.248.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Mon Nov  6 10:51:25 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init kf6-kuserfeedback
