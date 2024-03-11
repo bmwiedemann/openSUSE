@@ -9,5 +9,5 @@ Index: chromium-120.0.6099.18/chrome/browser/media/router/media_router_feature.c
 -             base::FEATURE_ENABLED_BY_DEFAULT);
 +             base::FEATURE_DISABLED_BY_DEFAULT);
  #endif  // BUILDFLAG(IS_CHROMEOS)
- #endif  // !BUILDFLAG(IS_ANDROID)
  
+ BASE_FEATURE(kCastSilentlyRemoveVcOnNavigation,

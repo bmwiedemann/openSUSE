@@ -1,0 +1,32 @@
+commit 04866680f4f9a8475ae3795ad6ed59649ba478d7
+Author: Jose Dapena Paz <jdapena@igalia.com>
+Date:   Tue Jan 23 12:04:05 2024 +0000
+
+    libstdc++: fix static assertion in NodeUuidEquality
+    
+    libstdc++ equality checks in static assertion that it is possible to
+    compare for equality base::Uuid to BookmarkNode*. This was a missing
+    operator in NodeUuidEquality that this changeset adds.
+    
+    Bug: 957519
+    Change-Id: Icc9809cb43d321f0b3e3394ef27ab55672aec5e7
+    Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/5227686
+    Reviewed-by: Mikel Astiz <mastiz@chromium.org>
+    Commit-Queue: José Dapena Paz <jdapena@igalia.com>
+    Cr-Commit-Position: refs/heads/main@{#1250753}
+
+diff --git a/components/bookmarks/browser/uuid_index.h b/components/bookmarks/browser/uuid_index.h
+index 77cb1a1a54dd9..639d6fefcd831 100644
+--- a/components/bookmarks/browser/uuid_index.h
++++ b/components/bookmarks/browser/uuid_index.h
+@@ -23,6 +23,10 @@ class NodeUuidEquality {
+   bool operator()(const BookmarkNode* n1, const base::Uuid& uuid2) const {
+     return n1->uuid() == uuid2;
+   }
++
++  bool operator()(const base::Uuid& uuid1, const BookmarkNode* n2) const {
++    return uuid1 == n2->uuid();
++  }
+ };
+ 
+ // Used to hash BookmarkNode instances by UUID.

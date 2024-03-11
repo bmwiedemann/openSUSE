@@ -353,4 +353,15 @@
 </comment>
     <requestid>1139807</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>f21382a64d9d575506487c84e2f0a5c8</srcmd5>
+    <version>122.0.6261.111</version>
+    <time>1710167549</time>
+    <user>anag+factory</user>
+    <comment>- Chromium 122.0.6261.111 (boo#1220131,boo#1220604,boo#1221105)
+- Chromium 121.0.6167.184 (boo#1219118, boo#1219387, boo#1219661)
+  disable codec checker this will always fail (bsc#1219070)
+</comment>
+    <requestid>1156764</requestid>
+  </revision>
 </revisionlist>
