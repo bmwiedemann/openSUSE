@@ -1,0 +1,8 @@
+<package name="plasma6-mobile" project="openSUSE:Factory">
+  <title>Plasma Mobile</title>
+  <description>Plasma shell and components targeted for phones.
+
+</description>
+  <devel project="KDE:Frameworks" package="plasma6-mobile"/>
+  <url>https://www.kde.org/</url>
+</package>

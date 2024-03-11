@@ -1,0 +1,76 @@
+-------------------------------------------------------------------
+Wed Mar  6 08:40:31 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.1
+- Changes since 6.0.0:
+  * update version for new release
+  * kwin/convergentwindows: Don't set maximize property for fullscreen windows Followup to https://invent.kde.org/teams/plasma-mobile/issues/-/issues/256
+  * meta: Fix appstream tests
+  * meta: Add tag to posix test
+  * taskswitcher: Remove all interaction restrictions while the task switcher is opening This allows users to properly interact (open apps, dismiss) while the task switcher is in its opening animation.
+  * kwin/convergentwindows: Fix race condition causing windows to be maximized too large See https://invent.kde.org/teams/plasma-mobile/issues/-/issues/256
+  * taskpanel: Delay setting panel position on screen change, so shell doesn't crash Setting it immediately seems to trigger an underlying bug that causes the shell to crash, see https://invent.kde.org/plasma/plasma-mobile/-/issues/321
+  * homescreens/folio: Don't show background for widget configure dialog https://invent.kde.org/plasma/plasma-mobile/-/issues/320 We seem to encounter an issue when a widget is deleted where the background stays. Workaround it for now.
+
+-------------------------------------------------------------------
+Tue Mar  5 10:02:22 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Require systemsettings6
+
+-------------------------------------------------------------------
+Mon Mar  4 18:52:20 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add Provides/Obsoletes to replace Plasma 5
+
+-------------------------------------------------------------------
+Wed Feb 21 18:36:37 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0:
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.93.0:
+  * update version for new release
+  * kcms/mobiledata: Clarify behavior when networkmanager wwanEnabled is off In NetworkManager, there is a global "wwanEnabled" setting. We do not typically deal with this because toggling it off shuts off cellular in ModemManager (the mobile data toggle just disconnects the connection instead).
+  * kwin/mobiletaskswitcher: make touchscreen swipe gesture use 3 fingers
+  * kwin/mobiletaskswither: remove the touchpad gesture
+  * kcms/wifi: Fix wi-fi dialog position, port to Kirigami.Dialog The Wi-Fi dialog position currently goes under the keyboard, fix it by porting to Kirigami.Dialog
+  * homescreens/folio: Add arrow if there is one page Show arrow to open app drawer if there is only one page. Open the app drawer if it is tapped.
+  * lockscreen: Remove bottom arrow animation Wastes battery as it keeps running with the display off
+  * homescreens/folio: Add setting to toggle wallpaper blur, and disable by default
+  * Adapt to renamed night light d-bus interface
+  * bin: Add Type=Application to dev session .desktop file It's part of the specification
+  * bin: Add POSIX shell linter and ensure scripts are compliant
+  * quicksettings/screenrotation: Fix initial state of quicksetting always being off
+  * update version for new release
+  * initialstart: Ensure background image accounts for widescreen, and raise resolution
+
+-------------------------------------------------------------------
+Wed Jan 31 17:37:44 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.93.0 (6.0 RC 2):
+  * New bugfix release
+  * See https://kde.org/announcements/megarelease/6/rc2/ for details
+- Changes since 5.92.0:
+  * 6.0 RC version dep
+  * add a version for dependencies so it does not break CI https://invent.kde.org/plasma/bluedevil/-/merge_requests/156
+  * Improve wallpaper handling in initial start
+  * Port intial start module to declarative qml type registration
+  * kcms/powermanagement: Move from power-management category up a level
+  * homescreens/folio: Remove unused plugin directory
+  * kcms/mobileshell: Remove gesture only navigation option for now The KWin gesture currently does not work at all, so turning off the navigation panel makes it so the user cannot navigate.
+  * Fix crash in envmanager
+  * Find white torch
+
+-------------------------------------------------------------------
+Wed Jan 17 18:39:45 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.92.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Fri Aug 25 08:23:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init plasma6-mobile
