@@ -1,0 +1,8 @@
+<package name="kf6-kholidays" project="openSUSE:Factory">
+  <title>Holiday calculation library</title>
+  <description>This package contains a library which helps developers determining when holidays occur.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kholidays"/>
+  <url>https://www.kde.org</url>
+</package>
