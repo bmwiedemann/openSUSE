@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Fri Feb 23 13:57:56 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.0
+  * New feature release
+- Changes since 24.01.95:
+  * Fix infinite recursion in NotificationCollector
+  * Monitor: restore Items from Ntf if we cannot fetch them
+  * NotificationCollector: ignore notification with invalid or empty item set
+  * Fix ChangeRecorder journal corruption due to qsizetype change in Qt6
+  * Ensure query size in search manager remains less than 1000
+  * Optimize imap set
+  * Also skip MySQL tests on the FreeBSD CI
+  * Disable PostgreSQL Akonadi tests on the CI
+
+-------------------------------------------------------------------
+Fri Feb  9 16:19:58 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.01.95
+  * https://kde.org/fr/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
+Mon Nov  6 15:23:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Switch to sqlite by default for new setup
+
+-------------------------------------------------------------------
+Mon Nov  6 15:23:18 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- init akonadi. Renamed from akonadi-server

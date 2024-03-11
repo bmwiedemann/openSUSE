@@ -1,0 +1,9 @@
+<package name="akonadi" project="openSUSE:Factory">
+  <title>PIM Storage Service</title>
+  <description>This package contains the data files of Akonadi, the KDE PIM storage
+service.
+
+</description>
+  <devel project="KDE:Applications" package="akonadi"/>
+  <url>https://userbase.kde.org/Akonadi</url>
+</package>
