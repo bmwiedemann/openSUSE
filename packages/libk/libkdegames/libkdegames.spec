@@ -1,7 +1,7 @@
 #
 # spec file for package libkdegames
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,93 +15,77 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define sover 7
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           libkdegames
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        General Data for KDE Games
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 Patch0:         libkdegames-bnc793185.patch
-BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  kf5-filesystem
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libsndfile-devel
-BuildRequires:  openal-soft-devel
-BuildRequires:  xz
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5Completion)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5DNSSD)
-BuildRequires:  cmake(KF5Declarative)
-BuildRequires:  cmake(KF5GuiAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5NewStuff)
-BuildRequires:  cmake(KF5Service)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5QuickWidgets)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
-Obsoletes:      %{name}-kf5 < %{version}
-Provides:       %{name}-kf5 = %{version}
-Conflicts:      libkf5kdegames6 < %{version}
-# Breaks debuginfo extraction of subpackages
-#BuildArch:      noarch
+BuildRequires:  openal-devel
+BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
+BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
+BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6DNSSD) >= %{kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6NewStuff) >= %{kf6_version}
+BuildRequires:  cmake(KF6Service) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 
 %description
 This package contains data which is required by the KDE games library.
 
-%package qt5-imports
+%package imports
 Summary:        QML modules for KDE games
-License:        LGPL-2.1-or-later
-Conflicts:      libkf5kdegames6 < %{version}
 
-%description qt5-imports
+%description imports
 This package contains QML modules for KDE games.
 
-%package -n libKF5KDEGames%{sover}
+%package -n libKDEGames6
 Summary:        Library for KDE Games
-License:        LGPL-2.1-or-later
 Requires:       libkdegames >= %{version}
-Requires:       %{name}-qt5-imports >= %{version}
-# libkf5kdegames6 actually contained libKF5KDEGames.so.7 at some point,
-# so obsolete that explicitly.
-Provides:       libkf5kdegames6 = %{version}
-Obsoletes:      libkf5kdegames6 < %{version}
+Requires:       libkdegames-imports >= %{version}
 
-%description -n libKF5KDEGames%{sover}
+%description -n libKDEGames6
 This package contains the KDE games library.
 
 %package devel
 Summary:        Library for KDE Games: Build Environment
-License:        LGPL-2.1-or-later
-Requires:       libKF5KDEGames%{sover} = %{version}
-Requires:       libsndfile-devel
-Requires:       openal-soft-devel
-Requires:       cmake(KF5Completion)
-Requires:       cmake(KF5Config)
-Requires:       cmake(KF5ConfigWidgets)
-Requires:       cmake(KF5I18n)
-Requires:       cmake(KF5WidgetsAddons)
-Requires:       cmake(Qt5Network)
-Requires:       cmake(Qt5Qml)
-Requires:       cmake(Qt5QuickWidgets)
-Requires:       cmake(Qt5Widgets)
-Requires:       cmake(Qt5Xml)
-Obsoletes:      %{name}-kf5-devel < %{version}
-Provides:       %{name}-kf5-devel = %{version}
+Requires:       libKDEGames6 = %{version}
+Requires:       cmake(KF6Completion) >= %{kf6_version}
+Requires:       cmake(KF6Config) >= %{kf6_version}
+Requires:       cmake(KF6ConfigWidgets) >= %{kf6_version}
+Requires:       cmake(KF6I18n) >= %{kf6_version}
+Requires:       cmake(KF6WidgetsAddons) >= %{kf6_version}
+Requires:       cmake(Qt6Network) >= %{qt6_version}
+Requires:       cmake(Qt6Qml) >= %{qt6_version}
+Requires:       cmake(Qt6QuickWidgets) >= %{qt6_version}
+Requires:       cmake(Qt6Widgets) >= %{qt6_version}
+Requires:       cmake(Qt6Xml) >= %{qt6_version}
 
 %description devel
 This package contains all necessary files and libraries needed to
@@ -109,7 +93,6 @@ develop KDE games.
 
 %package -n kdegames-carddecks-other
 Summary:        Further Card Decks for KDE Games
-License:        LGPL-2.1-or-later
 Requires:       kdegames-carddecks-default = %{version}
 BuildArch:      noarch
 
@@ -118,14 +101,11 @@ This package contains several further card deck set for KDE games.
 
 %package -n kdegames-carddecks-default
 Summary:        Default Card Decks for KDE Games
-License:        LGPL-2.1-or-later
 BuildArch:      noarch
 
 %description -n kdegames-carddecks-default
 This package contains the default card deck set for KDE games.
 
-# Should be called libkdegames5-lang, but that requires replacing the
-# macro with the expansion to Provide/Obsolete the old name.
 %lang_package
 
 %prep
@@ -135,54 +115,48 @@ This package contains the default card deck set for KDE games.
 rm -r src/carddecks/svg-konqi-modern
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang libkdegames5
+%find_lang libkdegames6
 
 %fdupes %{buildroot}
 
-%ldconfig_scriptlets -n libKF5KDEGames%{sover}
+%ldconfig_scriptlets -n libKDEGames6
 
 %files
-# Unversioned
-%{_kf5_sharedir}/kconf_update/
-%{_kf5_debugdir}/libkdegames.categories
+%{_kf6_debugdir}/libkdegames.categories
 
-%files -n libkdegames-qt5-imports
-# Qt/KF-versioned
-%license LICENSES/*
-%{_kf5_qmldir}/
+%files imports
+%{_kf6_qmldir}/org/kde/games/
 
-%files -n libKF5KDEGames%{sover}
-# sover-versioned
+%files -n libKDEGames6
 %license LICENSES/*
 %doc README
-%{_kf5_libdir}/libKF5KDEGames.so.%{sover}
-%{_kf5_libdir}/libKF5KDEGames.so.%{sover}.*
-%{_kf5_libdir}/libKF5KDEGamesPrivate.so.%{sover}
-%{_kf5_libdir}/libKF5KDEGamesPrivate.so.%{sover}.*
+%{_kf6_libdir}/libKDEGames6.so.6
+%{_kf6_libdir}/libKDEGames6.so.6.*
+%{_kf6_libdir}/libKDEGames6Private.so.6
+%{_kf6_libdir}/libKDEGames6Private.so.6.*
 
 %files devel
-%{_kf5_cmakedir}/KF5KDEGames/
-%{_kf5_includedir}/KDEGames/
-%{_kf5_libdir}/libKF5KDEGames.so
-%{_kf5_libdir}/libKF5KDEGamesPrivate.so
+%{_kf6_cmakedir}/KDEGames6/
+%{_includedir}/KDEGames6/
+%{_kf6_libdir}/libKDEGames6.so
+%{_kf6_libdir}/libKDEGames6Private.so
 
 %files -n kdegames-carddecks-other
 %license LICENSES/*
-%doc README
-%exclude %{_kf5_sharedir}/carddecks/svg-oxygen-air
-%{_kf5_sharedir}/carddecks
+%{_kf6_sharedir}/carddecks/
+%exclude %{_kf6_sharedir}/carddecks/svg-oxygen-air
 
 %files -n kdegames-carddecks-default
 %license LICENSES/*
-%doc README
-%{_kf5_sharedir}/carddecks/svg-oxygen-air
+%{_kf6_sharedir}/carddecks/svg-oxygen-air/
 
-%files lang -f libkdegames5.lang
+%files lang -f libkdegames6.lang
 
 %changelog
