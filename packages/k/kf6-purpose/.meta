@@ -1,0 +1,12 @@
+<package name="kf6-purpose" project="openSUSE:Factory">
+  <title>Framework to integrate services and actions in applications</title>
+  <description>This framework offers the possibility to create integrate services and actions
+on any application without having to implement them specifically. Purpose will
+offer them mechanisms to list the different alternatives to execute given the
+requested action type and will facilitate components so that all the plugins
+can receive all the information they need.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-purpose"/>
+  <url>https://www.kde.org</url>
+</package>
