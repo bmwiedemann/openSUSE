@@ -1,0 +1,8 @@
+<package name="kf6-kitemmodels" project="openSUSE:Factory">
+  <title>Set of item models extending the Qt model-view framework</title>
+  <description>KItemModels provides a set of item models extending the Qt model-view framework.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kitemmodels"/>
+  <url>https://www.kde.org</url>
+</package>
