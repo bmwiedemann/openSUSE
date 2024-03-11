@@ -1,7 +1,7 @@
 #
 # spec file for package kmbox
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,39 +16,43 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define kpim6_version 6.0.0
+
 %bcond_without released
-%define libname libKPim5Mbox5
 Name:           kmbox
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        KDE PIM Libraries: Mailbox functionality
 License:        LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KPim5Mime)
-BuildRequires:  cmake(Qt5Test)
-Conflicts:      libKF5MBox5 < %{version}
+BuildRequires:  doxygen
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
+Conflicts:      libKF6MBox5 < %{version}
 
 %description
 This package contains the basic packages for KDE PIM applications.
 
-%package -n %{libname}
+%package -n libKPim6Mbox6
 Summary:        KDE PIM Libraries: Mailbox functionality
-%requires_eq    kmbox
+Requires:       kmbox >= %{version}
 
-%description  -n %{libname}
+%description  -n libKPim6Mbox6
 This package provides the mailbox functionality for KDE PIM applications
 
 %package devel
 Summary:        KDE PIM Libraries: Build Environment
-Requires:       %{libname} = %{version}
-Requires:       cmake(KPim5Mime)
+Requires:       libKPim6Mbox6 = %{version}
+Requires:       cmake(KPim6Mime) >= %{kpim6_version}
 
 %description devel
 This package contains necessary include files and libraries needed
@@ -58,27 +62,27 @@ to develop KDE PIM applications.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build -- -DBUILD_TESTING=ON
-%cmake_build
+%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%ldconfig_scriptlets -n %{libname}
+%ldconfig_scriptlets -n libKPim6Mbox6
 
 %files
 %license LICENSES/*
-%{_kf5_debugdir}/*.categories
-%{_kf5_debugdir}/*.renamecategories
+%{_kf6_debugdir}/kmbox.categories
+%{_kf6_debugdir}/kmbox.renamecategories
 
-%files -n %{libname}
-%{_kf5_libdir}/libKPim5Mbox.so.*
+%files -n libKPim6Mbox6
+%{_kf6_libdir}/libKPim6Mbox.so.*
 
 %files devel
-%dir %{_includedir}/KPim5
-%{_includedir}/KPim5/KMbox/
-%{_kf5_cmakedir}/KPim5Mbox/
-%{_kf5_libdir}/libKPim5Mbox.so
-%{_kf5_mkspecsdir}/qt_KMbox.pri
+%doc %{_kf6_qchdir}/KPim6Mbox.*
+%{_includedir}/KPim6/KMbox/
+%{_kf6_cmakedir}/KPim6Mbox/
+%{_kf6_libdir}/libKPim6Mbox.so
 
 %changelog
