@@ -1,7 +1,7 @@
 #
 # spec file for package marble
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,19 +20,23 @@
 %define _so_astro 1
 %bcond_without released
 Name:           marble
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Generic map viewer
 # License note: the tools directory contains GPL-3 tools, but they are neither built nor installed by the package
 License:        LGPL-2.1-or-later
 URL:            https://apps.kde.org/marble
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc13-c++
+BuildRequires:  gcc13-PIE
+%endif
 BuildRequires:  libqt5-qtlocation-devel
 BuildRequires:  libshp-devel
 BuildRequires:  perl
@@ -160,9 +164,14 @@ The astronomy library for the satellites plugin.
 
 %build
 export SUSE_ASNEEDED=0
-%ifarch ppc ppc64
-export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
+%if 0%{?suse_version} == 1500
+  export CXX=g++-13
 %endif
+
+%ifarch ppc ppc64
+  export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
+%endif
+
 %cmake_kf5 -d build -- -DBUILD_MARBLE_TESTS=NO -DMOBILE=OFF -DQT_PLUGINS_DIR=%{_kf5_plugindir}
 %cmake_build
 
@@ -194,6 +203,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_appstreamdir}/org.kde.plasma.worldclock.appdata.xml
 %{_kf5_appstreamdir}/org.kde.plasma.worldmap.appdata.xml
 %{_kf5_configkcfgdir}/marble.kcfg
+%{_kf5_debugdir}/marble.categories
 %{_kf5_iconsdir}/hicolor/*/apps/marble.*
 %{_kf5_kxmlguidir}/marble/
 %{_kf5_libdir}/libmarbledeclarative.so

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Mar  1 20:23:17 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Build marble with GCC 13 on Leap 15
+
+-------------------------------------------------------------------
+Fri Feb 23 14:00:47 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.0
+  * New feature release
+- Changes since 24.01.95:
+  * Normalize polygon winding order for 3D buildings
+
+-------------------------------------------------------------------
+Fri Feb  9 16:09:56 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.01.95
+  * https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
 Tue Dec  5 14:20:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.4
