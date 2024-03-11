@@ -1,0 +1,9 @@
+<package name="powerdevil6" project="openSUSE:Factory">
+  <title>KDE Power Management module</title>
+  <description>KDE Power Management module. Provides kded daemon, DBus helper and KCM for
+configuring Power settings.
+
+</description>
+  <devel project="KDE:Frameworks" package="powerdevil6"/>
+  <url>https://www.kde.org</url>
+</package>
