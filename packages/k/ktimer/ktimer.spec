@@ -1,7 +1,7 @@
 #
 # spec file for package ktimer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,35 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           ktimer
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Countdown Launcher
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/ktimer
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Widgets)
-Obsoletes:      %{name}5 < %{version}
-Provides:       %{name}5 = %{version}
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+Obsoletes:      ktimer5 < %{version}
+Provides:       ktimer5 = %{version}
 
 %description
 Countdown launching tool by KDE
@@ -47,28 +52,27 @@ Countdown launching tool by KDE
 %lang_package
 
 %prep
-%autosetup -p1 -n ktimer-%{version}
+%autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
-
-%suse_update_desktop_file org.kde.ktimer Utility TimeUtility
+%find_lang %{name} --with-html --all-name
 
 %files
-%license COPYING*
-%doc %lang(en) %{_kf5_htmldir}/en/ktimer/
-%{_kf5_applicationsdir}/org.kde.ktimer.desktop
-%{_kf5_bindir}/ktimer
-%{_kf5_iconsdir}/hicolor/*/apps/ktimer.png
-%{_kf5_appstreamdir}/org.kde.ktimer.appdata.xml
+%license LICENSES/*
+%doc %lang(en) %{_kf6_htmldir}/en/ktimer/
+%{_kf6_applicationsdir}/org.kde.ktimer.desktop
+%{_kf6_bindir}/ktimer
+%{_kf6_iconsdir}/hicolor/*/apps/ktimer.png
+%{_kf6_appstreamdir}/org.kde.ktimer.appdata.xml
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/ktimer/
 
 %changelog
