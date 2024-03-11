@@ -1,7 +1,7 @@
 #
 # spec file for package messagelib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,69 +16,78 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define kpim6_version 6.0.0
+
 %bcond_without released
 Name:           messagelib
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        KDE PIM library for e-mail message parsing and display
 License:        GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  libQt5Sql-private-headers-devel
-BuildRequires:  libgpgme-devel
+BuildRequires:  doxygen
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libgpgmepp-devel
-BuildRequires:  cmake(Grantlee5)
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5Codecs)
-BuildRequires:  cmake(KF5Completion)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5Contacts)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5GuiAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5ItemViews)
-BuildRequires:  cmake(KF5JobWidgets)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Libkleo)
-BuildRequires:  cmake(KF5NewStuff)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5SyntaxHighlighting)
-BuildRequires:  cmake(KF5TextAutoCorrectionWidgets)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(KPim5Akonadi)
-BuildRequires:  cmake(KPim5AkonadiContact)
-BuildRequires:  cmake(KPim5AkonadiMime)
-BuildRequires:  cmake(KPim5AkonadiSearch)
-BuildRequires:  cmake(KPim5GrantleeTheme)
-BuildRequires:  cmake(KPim5Gravatar)
-BuildRequires:  cmake(KPim5IMAP)
-BuildRequires:  cmake(KPim5IdentityManagement)
-BuildRequires:  cmake(KPim5Ldap)
-BuildRequires:  cmake(KPim5Libkdepim)
-BuildRequires:  cmake(KPim5MailTransport)
-BuildRequires:  cmake(KPim5Mbox)
-BuildRequires:  cmake(KPim5Mime)
-BuildRequires:  cmake(KPim5PimCommon)
-BuildRequires:  cmake(KPim5TextEdit)
-BuildRequires:  cmake(QGpgme)
-BuildRequires:  cmake(Qca-qt5)
-BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Sql)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5UiTools)
-BuildRequires:  cmake(Qt5WebEngine)
-BuildRequires:  cmake(Qt5WebEngineWidgets)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
+BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
+BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
+BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6Contacts) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6ItemViews) >= %{kf6_version}
+BuildRequires:  cmake(KF6JobWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6NewStuff) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6Service) >= %{kf6_version}
+BuildRequires:  cmake(KF6Sonnet) >= %{kf6_version}
+BuildRequires:  cmake(KF6SyntaxHighlighting) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextAddonsWidgets)
+BuildRequires:  cmake(KF6TextAutoCorrectionWidgets)
+BuildRequires:  cmake(KF6TextCustomEditor)
+BuildRequires:  cmake(KF6TextEditTextToSpeech)
+BuildRequires:  cmake(KF6TextTemplate)
+BuildRequires:  cmake(KF6TextUtils)
+BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(KPim6Akonadi) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6AkonadiContactWidgets) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6AkonadiMime) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6AkonadiSearch) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6GrantleeTheme) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6Gravatar) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6IdentityManagementWidgets) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6Libkdepim) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6Libkleo) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6MailTransport) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6Mbox) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6PimCommonAkonadi) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6TextEdit) >= %{kpim6_version}
+BuildRequires:  cmake(QGpgmeQt6)
+BuildRequires:  cmake(Qca-qt6)
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 This package contains the messagelib library. It is used by KDE PIM to parse and
@@ -87,15 +96,22 @@ display emails.
 %package devel
 Summary:        Library for messages
 License:        LGPL-2.1-or-later
-Requires:       %{name} = %{version}
-Requires:       cmake(KF5Contacts)
-Requires:       cmake(KF5Libkleo)
-Requires:       cmake(KPim5PimCommon)
-Requires:       cmake(KPim5Akonadi)
-Requires:       cmake(KPim5AkonadiMime)
-Requires:       cmake(KPim5IdentityManagement)
-Requires:       cmake(KPim5Mime)
-Requires:       cmake(Qt5WebEngineWidgets)
+Requires:       messagelib = %{version}
+Requires:       cmake(KF6Contacts) >= %{kf6_version}
+Requires:       cmake(KF6Service) >= %{kf6_version}
+Requires:       cmake(KF6TextAutoCorrectionWidgets)
+Requires:       cmake(KPim6Akonadi) >= %{kpim6_version}
+Requires:       cmake(KPim6AkonadiMime) >= %{kpim6_version}
+Requires:       cmake(KPim6IdentityManagementWidgets) >= %{kpim6_version}
+Requires:       cmake(KPim6Libkleo) >= %{kpim6_version}
+Requires:       cmake(KPim6MessageCore) >= %{kpim6_version}
+Requires:       cmake(KPim6Mime) >= %{kpim6_version}
+Requires:       cmake(KPim6MimeTreeParser) >= %{kpim6_version}
+Requires:       cmake(KPim6PimCommon) >= %{kpim6_version}
+Requires:       cmake(KPim6PimCommonAkonadi) >= %{kpim6_version}
+Requires:       cmake(KPim6TemplateParser) >= %{kpim6_version}
+Requires:       cmake(KPim6WebEngineViewer) >= %{kpim6_version}
+Requires:       cmake(Qt6WebEngineWidgets) >= %{qt6_version}
 
 %description devel
 This package contains source headers for messagelib.
@@ -106,68 +122,64 @@ This package contains source headers for messagelib.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build -- -DBUILD_TESTS=OFF
-%cmake_build
+%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
+%find_lang %{name} --all-name
 
 %ldconfig_scriptlets
 
 %files
 %license LICENSES/*
-%{_kf5_debugdir}/messagelib.categories
-%{_kf5_debugdir}/messagelib.renamecategories
-%{_kf5_knsrcfilesdir}/messageviewer_header_themes.knsrc
-%dir %{_kf5_sharedir}/org.kde.syntax-highlighting
-%dir %{_kf5_sharedir}/org.kde.syntax-highlighting/syntax
-%{_kf5_sharedir}/org.kde.syntax-highlighting/syntax/kmail-template.xml
-%{_kf5_configkcfgdir}/*.kcfg
-%{_kf5_libdir}/libKPim5MessageComposer.so.*
-%{_kf5_libdir}/libKPim5MessageCore.so.*
-%{_kf5_libdir}/libKPim5MessageList.so.*
-%{_kf5_libdir}/libKPim5MessageViewer.so.*
-%{_kf5_libdir}/libKPim5MimeTreeParser.so.*
-%{_kf5_libdir}/libKPim5TemplateParser.so.*
-%{_kf5_libdir}/libKPim5WebEngineViewer.so.*
-%{_kf5_notifydir}/messageviewer.notifyrc
-%dir %{_kf5_plugindir}/pim5
-%dir %{_kf5_plugindir}/pim5/messageviewer
-%dir %{_kf5_plugindir}/pim5/messageviewer/grantlee
-%dir %{_kf5_plugindir}/pim5/messageviewer/grantlee/5.0
-%dir %{_kf5_plugindir}/pim5/messageviewer/headerstyle
-%{_kf5_plugindir}/pim5/messageviewer/headerstyle/messageviewer_defaultgrantleeheaderstyleplugin.so
-%{_kf5_plugindir}/pim5/messageviewer/grantlee/5.0/messageviewer_grantlee_extension.so
-%{_kf5_sharedir}/libmessageviewer/
-%{_kf5_sharedir}/messagelist/
-%{_kf5_sharedir}/messageviewer/
+%{_kf6_debugdir}/messagelib.categories
+%{_kf6_debugdir}/messagelib.renamecategories
+%{_kf6_knsrcfilesdir}/messageviewer_header_themes.knsrc
+%dir %{_kf6_sharedir}/org.kde.syntax-highlighting
+%dir %{_kf6_sharedir}/org.kde.syntax-highlighting/syntax
+%{_kf6_sharedir}/org.kde.syntax-highlighting/syntax/kmail-template.xml
+%{_kf6_configkcfgdir}/customtemplates_kfg.kcfg
+%{_kf6_configkcfgdir}/templatesconfiguration_kfg.kcfg
+%{_kf6_libdir}/libKPim6MessageComposer.so.*
+%{_kf6_libdir}/libKPim6MessageCore.so.*
+%{_kf6_libdir}/libKPim6MessageList.so.*
+%{_kf6_libdir}/libKPim6MessageViewer.so.*
+%{_kf6_libdir}/libKPim6MimeTreeParser.so.*
+%{_kf6_libdir}/libKPim6TemplateParser.so.*
+%{_kf6_libdir}/libKPim6WebEngineViewer.so.*
+%{_kf6_notificationsdir}/messageviewer.notifyrc
+%dir %{_kf6_plugindir}/pim6
+%{_kf6_plugindir}/pim6/messageviewer/
+%{_kf6_sharedir}/libmessageviewer/
+%{_kf6_sharedir}/messagelist/
+%{_kf6_sharedir}/messageviewer/
 
 %files devel
-%dir %{_includedir}/KPim5
-%{_includedir}/KPim5/MessageComposer/
-%{_includedir}/KPim5/MessageCore/
-%{_includedir}/KPim5/MessageList/
-%{_includedir}/KPim5/MessageViewer/
-%{_includedir}/KPim5/MimeTreeParser/
-%{_includedir}/KPim5/TemplateParser/
-%{_includedir}/KPim5/WebEngineViewer/
-%{_kf5_cmakedir}/KPim5MessageComposer/
-%{_kf5_cmakedir}/KPim5MessageCore/
-%{_kf5_cmakedir}/KPim5MessageList/
-%{_kf5_cmakedir}/KPim5MessageViewer/
-%{_kf5_cmakedir}/KPim5MimeTreeParser/
-%{_kf5_cmakedir}/KPim5TemplateParser/
-%{_kf5_cmakedir}/KPim5WebEngineViewer/
-%{_kf5_libdir}/libKPim5MessageComposer.so
-%{_kf5_libdir}/libKPim5MessageCore.so
-%{_kf5_libdir}/libKPim5MessageList.so
-%{_kf5_libdir}/libKPim5MessageViewer.so
-%{_kf5_libdir}/libKPim5MimeTreeParser.so
-%{_kf5_libdir}/libKPim5TemplateParser.so
-%{_kf5_libdir}/libKPim5WebEngineViewer.so
-%{_kf5_mkspecsdir}/qt_*.pri
+%doc %{_kf6_qchdir}/*
+%{_includedir}/KPim6/MessageComposer/
+%{_includedir}/KPim6/MessageCore/
+%{_includedir}/KPim6/MessageList/
+%{_includedir}/KPim6/MessageViewer/
+%{_includedir}/KPim6/MimeTreeParser/
+%{_includedir}/KPim6/TemplateParser/
+%{_includedir}/KPim6/WebEngineViewer/
+%{_kf6_cmakedir}/KPim6MessageComposer/
+%{_kf6_cmakedir}/KPim6MessageCore/
+%{_kf6_cmakedir}/KPim6MessageList/
+%{_kf6_cmakedir}/KPim6MessageViewer/
+%{_kf6_cmakedir}/KPim6MimeTreeParser/
+%{_kf6_cmakedir}/KPim6TemplateParser/
+%{_kf6_cmakedir}/KPim6WebEngineViewer/
+%{_kf6_libdir}/libKPim6MessageComposer.so
+%{_kf6_libdir}/libKPim6MessageCore.so
+%{_kf6_libdir}/libKPim6MessageList.so
+%{_kf6_libdir}/libKPim6MessageViewer.so
+%{_kf6_libdir}/libKPim6MimeTreeParser.so
+%{_kf6_libdir}/libKPim6TemplateParser.so
+%{_kf6_libdir}/libKPim6WebEngineViewer.so
 
 %files lang -f %{name}.lang
 
