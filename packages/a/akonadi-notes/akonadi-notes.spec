@@ -1,7 +1,7 @@
 #
 # spec file for package akonadi-notes
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,28 @@
 #
 
 
-%define kf5_version 5.105.0
-%define libname libKPim5AkonadiNotes5
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define kpim6_version 6.0.0
+
 %bcond_without released
 Name:           akonadi-notes
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Library to implement management of notes in Akonadi
 License:        LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= %{kf5_version}
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
-BuildRequires:  cmake(KPim5Mime)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  doxygen
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
+BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
 
 %description
 Akonadi Notes is a library that bridges the type-agnostic API of
@@ -43,13 +45,13 @@ the Akonadi client libraries and the domain-specific KMime library. It provides
 a helper class for note attachments and for wrapping notes into KMime::Message
 objects.
 
-%package -n %{libname}
+%package -n libKPim6AkonadiNotes6
 Summary:        Library to implement management of notes in Akonadi
-Provides:       %{name} = %{version}
-# Renamed
+Provides:       akonadi-notes >= %{version}
 Obsoletes:      akonadi-notes-lang <= 23.04.0
+Obsoletes:      libKPim5AkonadiNotes5-lang < %{version}
 
-%description  -n %{libname}
+%description  -n libKPim6AkonadiNotes6
 Akonadi Notes is a library that bridges the type-agnostic API of
 the Akonadi client libraries and the domain-specific KMime library. It provides
 a helper class for note attachments and for wrapping notes into KMime::Message
@@ -57,42 +59,40 @@ objects.
 
 %package devel
 Summary:        Build environment for akonadi-notes
-Requires:       %{libname} = %{version}
-Requires:       cmake(KPim5Mime)
+Requires:       libKPim6AkonadiNotes6 = %{version}
+Requires:       cmake(KPim6Mime) >= %{kpim6_version}
 
 %description devel
 This package contains the development files needed to use the akonadi-notes
 library in other applications.
 
-%lang_package -n %{libname}
+%lang_package -n libKPim6AkonadiNotes6
 
 %prep
 %autosetup -p1 -n akonadi-notes-%{version}
 
 %build
-%cmake_kf5 -d build
+%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
 
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{libname} --with-man --all-name
+%find_lang %{name} --all-name
 
-%ldconfig_scriptlets -n %{libname}
+%ldconfig_scriptlets -n libKPim6AkonadiNotes6
 
-%files -n %{libname}
+%files -n libKPim6AkonadiNotes6
 %license LICENSES/*
-%{_kf5_libdir}/libKPim5AkonadiNotes.so.*
+%{_kf6_libdir}/libKPim6AkonadiNotes.so.*
 
 %files devel
-%dir %{_includedir}/KPim5
-%{_kf5_cmakedir}/KF5AkonadiNotes/
-%{_kf5_cmakedir}/KPim5AkonadiNotes/
-%{_includedir}/KPim5/AkonadiNotes/
-%{_kf5_libdir}/libKPim5AkonadiNotes.so
-%{_kf5_mkspecsdir}/qt_AkonadiNotes.pri
+%doc %{_kf6_qchdir}/KPim6AkonadiNotes.*
+%{_kf6_cmakedir}/KPim6AkonadiNotes/
+%{_includedir}/KPim6/AkonadiNotes/
+%{_kf6_libdir}/libKPim6AkonadiNotes.so
 
-%files -n %{libname}-lang -f %{libname}.lang
+%files -n libKPim6AkonadiNotes6-lang -f %{name}.lang
 
 %changelog
