@@ -1,0 +1,8 @@
+<package name="kdiagram6" project="openSUSE:Factory">
+  <title>Libraries (KChart, KGantt) for creating diagrams</title>
+  <description>Libraries (KChart, KGantt) for creating diagrams
+
+</description>
+  <devel project="KDE:Applications" package="kdiagram6"/>
+  <url>https://www.kde.org/</url>
+</package>
