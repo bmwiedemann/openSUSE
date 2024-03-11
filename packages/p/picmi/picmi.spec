@@ -1,7 +1,7 @@
 #
 # spec file for package picmi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,33 +16,34 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           picmi
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Nonogram Logic game
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/picmi
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Declarative)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KDEGames)
-BuildRequires:  cmake(KF5KDELibs4Support)
-BuildRequires:  cmake(KF5NewStuff)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5QuickWidgets)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KDEGames6) 
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Obsoletes:      picmi5 < %{version}
 Provides:       picmi5 = %{version}
 
@@ -55,29 +56,26 @@ A nonogram logic game by KDE
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
-
-%suse_update_desktop_file -r org.kde.picmi Game LogicGame
+%find_lang %{name} --with-html --all-name
 
 %files
 %license LICENSES/*
-%doc %lang(en) %{_kf5_htmldir}/en/picmi/
-%dir %{_kf5_iconsdir}/hicolor/256x256
-%dir %{_kf5_iconsdir}/hicolor/256x256/apps
-%{_kf5_applicationsdir}/org.kde.picmi.desktop
-%{_kf5_appsdir}/picmi/
-%{_kf5_appstreamdir}/
-%{_kf5_bindir}/picmi
-%{_kf5_debugdir}/picmi.categories
-%{_kf5_iconsdir}/hicolor/*/apps/picmi.*
+%doc %lang(en) %{_kf6_htmldir}/en/picmi/
+%{_kf6_applicationsdir}/org.kde.picmi.desktop
+%{_kf6_appstreamdir}/org.kde.picmi.appdata.xml
+%{_kf6_bindir}/picmi
+%{_kf6_debugdir}/picmi.categories
+%{_kf6_iconsdir}/hicolor/*/apps/picmi.*
+%{_kf6_sharedir}/picmi/
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/picmi/
 
 %changelog
