@@ -1,0 +1,8 @@
+<package name="kf6-baloo" project="openSUSE:Factory">
+  <title>Framework for searching and managing metadata</title>
+  <description>Baloo is a framework for searching and managing metadata.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-baloo"/>
+  <url>https://www.kde.org</url>
+</package>

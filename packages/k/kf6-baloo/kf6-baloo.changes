@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Tue Feb 27 17:52:32 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Don't rely on %systemd_user_* beginning with a newline
+
+-------------------------------------------------------------------
+Tue Feb 27 10:38:00 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0:
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.249.0:
+  * update version for new release
+
+-------------------------------------------------------------------
+Wed Jan 31 17:49:39 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.249.0 (6.0 RC 2):
+  * New bugfix release
+  * For more details see https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
+Mon Jan 15 19:57:03 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.248.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Sat May 27 11:18:09 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init kf6-baloo
