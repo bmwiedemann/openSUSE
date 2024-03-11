@@ -1,7 +1,7 @@
 #
 # spec file for package krfb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,44 +16,45 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           krfb
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Screen sharing using the VNC/RFB protocol
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/krfb
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  LibVNCServer-devel
-BuildRequires:  extra-cmake-modules
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5DNSSD)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5Wallet)
-BuildRequires:  cmake(KF5Wayland)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(KPipeWire)
-BuildRequires:  cmake(PlasmaWaylandProtocols)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5WaylandClient)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5X11Extras)
-BuildRequires:  cmake(Qt5XkbCommonSupport)
-BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DNSSD) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
+BuildRequires:  cmake(KF6Wallet) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(KPipeWire) >= 5.93
+BuildRequires:  cmake(KWayland) >= 5.93
+BuildRequires:  cmake(PlasmaWaylandProtocols) >= 1.5.0
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
@@ -64,8 +65,6 @@ BuildRequires:  pkgconfig(xcb-shape)
 BuildRequires:  pkgconfig(xcb-shm)
 BuildRequires:  pkgconfig(xcb-xfixes)
 BuildRequires:  pkgconfig(xdamage)
-BuildRequires:  pkgconfig(xt)
-BuildRequires:  pkgconfig(xtst)
 
 %description
 VNC-compatible server to share KDE desktops.
@@ -80,34 +79,33 @@ VNC-compatible server to share KDE desktops.
 export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %endif
 
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
-
-%suse_update_desktop_file -r org.kde.krfb System RemoteAccess
+%find_lang %{name} --with-html --all-name
 
 %ldconfig_scriptlets
 
 %files
 %license COPYING*
 %doc README
-%doc %lang(en) %{_kf5_htmldir}/en/krfb/
-%{_kf5_applicationsdir}/org.kde.krfb.desktop
-%{_kf5_applicationsdir}/org.kde.krfb.virtualmonitor.desktop
-%{_kf5_appstreamdir}/org.kde.krfb.appdata.xml
-%{_kf5_bindir}/krfb
-%{_kf5_bindir}/krfb-virtualmonitor
-%{_kf5_debugdir}/krfb.categories
-%{_kf5_iconsdir}/hicolor/*/apps/krfb.*
-%{_kf5_libdir}/libkrfbprivate.so*
-%{_kf5_plugindir}/krfb/
-%{_kf5_sharedir}/krfb/
+%doc %lang(en) %{_kf6_htmldir}/en/krfb/
+%{_kf6_applicationsdir}/org.kde.krfb.desktop
+%{_kf6_applicationsdir}/org.kde.krfb.virtualmonitor.desktop
+%{_kf6_appstreamdir}/org.kde.krfb.appdata.xml
+%{_kf6_bindir}/krfb
+%{_kf6_bindir}/krfb-virtualmonitor
+%{_kf6_debugdir}/krfb.categories
+%{_kf6_iconsdir}/hicolor/*/apps/krfb.*
+%{_kf6_libdir}/libkrfbprivate.so.*
+%{_kf6_plugindir}/krfb/
+%{_kf6_sharedir}/krfb/
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/krfb/
 
 %changelog
