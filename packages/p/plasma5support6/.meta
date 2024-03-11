@@ -1,0 +1,8 @@
+<package name="plasma5support6" project="openSUSE:Factory">
+  <title>KF6 Porting aid</title>
+  <description>Support components for porting from KF5/Qt5 to KF6/Qt6.
+
+</description>
+  <devel project="KDE:Frameworks" package="plasma5support6"/>
+  <url>https://www.kde.org</url>
+</package>
