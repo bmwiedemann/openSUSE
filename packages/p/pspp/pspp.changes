@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon Mar 11 12:39:12 UTC 2024 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to 2.0.0:
+
+ * The CTABLES command is now implemented.
+
+ * FREQUENCIES now honors the LAYERED setting on SPLIT FILE.
+
+ * AGGREGATE:
+
+   - New aggregation functions CGT, CLT, CIN, and COUT.
+
+   - Break variables are now optional.
+
+ * ADD FILES, MATCH FILES, and UPDATE now allow string variables with
+   the same name to have different widths.
+
+ * CROSSTABS now calculates significance of Pearson and Spearman
+   correlations in symmetric measures.
+
+ * DISPLAY MACROS is now implemented.
+
+ * SET SUMMARY is now implemented.
+
+ * SHOW ENVIRONMENT is now implemented.
+
+ * Removed the MODIFY VARS command, which is not in SPSS.
+
+ * Building from a Git repository, which previously required GIMP, now
+   requires rsvg-convert from librsvg2 instead.
+
+ * The pspp-dump-sav program is no longer installed by default.
+
+ * Improved the search options in the syntax editor.
+
+ * Localisations for the ar (Arabic) and ta (Tamil) locales have been
+   added.  Other translations have been updated.
+
+ * Journaling is now enabled by default when PSPP or PSPPIRE is
+   started interactively.  In PSPPIRE, use Edit|Options to override
+   the default.
+
+-------------------------------------------------------------------
+Mon Mar 11 11:55:24 UTC 2024 - opensuse.lietuviu.kalba@gmail.com
+
+- Move screenshots and pspp-figures directories with images from
+   /usr/share/info/ into /usr/share/doc/pspp/pspp.html/ because
+   here HTML pages look for them.
+   
+-------------------------------------------------------------------
 Sat Jul 22 08:41:49 UTC 2023 - Klaus Kämpf <kkaempf@suse.com>
 
 - Update to 1.6.2

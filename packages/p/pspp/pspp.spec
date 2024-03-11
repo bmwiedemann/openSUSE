@@ -5,7 +5,7 @@
 # Copyright (c) 2008 Matj Cepl <mcepl@redhat.com>
 # Copyright (c) 2008 D. Steuer <steuer@hsuhh.de>
 # Copyright (c) 2018 <astieger@suse.com>
-# Copyright (c) 2010-2020 <opensuse.lietuviu.kalba@gmail.com>
+# Copyright (c) 2010-2024 <opensuse.lietuviu.kalba@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %define _disable_ld_as_needed 1
 %endif
 Name:           pspp
-Version:        1.6.2
+Version:        2.0.0
 Release:        0
 Summary:        A program for statistical analysis of sampled data
 License:        GPL-3.0-or-later
@@ -164,7 +164,18 @@ make html
 %if 0%{?suse_version}
 %suse_update_desktop_file -r org.gnu.%{name} Education Math
 %endif
-cp -r ./doc/pspp.html/ ./doc/pspp-dev.html/ %{buildroot}%{_datadir}/doc/pspp/
+mv ./doc/pspp.html/ ./doc/pspp-dev.html/ %{buildroot}%{_datadir}/doc/pspp/
+mv ./doc/pspp-figures/ ./doc/screenshots/ %{buildroot}%{_datadir}/doc/pspp/pspp.html/
+
+# don't own /usr/share/info/dir if it exist
+[ -f %{buildroot}/%{_infodir}/dir ] && rm %{buildroot}/%{_infodir}/dir
+
+# pspp-figures/*.png and screenshots/*.png most not be in /usr/share/info
+[ -d %{buildroot}/%{_infodir}/pspp-figures ] && rm -fr %{buildroot}/%{_infodir}/pspp-figures
+[ -d %{buildroot}/%{_infodir}/screenshots  ] && rm -fr %{buildroot}/%{_infodir}/screenshots
+
+# PSPP 2.0 no longer installs /usr/bin/pspp-dump-sav by default, thus its man is not needed
+[ -f %{buildroot}/%{_mandir}/man1/pspp-dump-sav.1 ] && rm -f %{buildroot}/%{_mandir}/man1/pspp-dump-sav.1
 
 # don't own /usr/share/info/dir if it exist
 [ -f %{buildroot}/%{_infodir}/dir ] && rm %{buildroot}/%{_infodir}/dir
@@ -226,20 +237,22 @@ fi
 %else
 %doc %{_datadir}/doc/pspp/pspp.xml
 %endif
+%exclude %dir %{_datadir}/doc/pspp/
 %exclude %dir %{_datadir}/doc/pspp/pspp.html/
 %exclude %{_datadir}/doc/pspp/pspp.html/*.html
+%exclude %dir %{_datadir}/doc/pspp/pspp.html/screenshots/
+%exclude %{_datadir}/doc/pspp/pspp.html/screenshots/*.png
+%exclude %dir %{_datadir}/doc/pspp/pspp.html/pspp-figures/
+%exclude %{_datadir}/doc/pspp/pspp.html/pspp-figures/*.png
 %exclude %dir %{_datadir}/doc/pspp/pspp-dev.html/
 %exclude %{_datadir}/doc/pspp/pspp-dev.html/*.html
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/pspp.conf
 %{_bindir}/pspp
 %{_bindir}/psppire
-%{_bindir}/pspp-dump-sav
 %{_bindir}/pspp-convert
 %{_bindir}/pspp-output
 %defattr(644,root,root,755)
-%{_infodir}/pspp*
-%dir %{_infodir}/screenshots
-%{_infodir}/screenshots/*.png
+%{_infodir}/pspp*info*
 %dir %{_libdir}/pspp/
 %{_libdir}/pspp/*.so
 %{_datadir}/pspp
@@ -280,13 +293,11 @@ fi
 %if 0%{?mandriva_version} 
 %doc %{_mandir}/man1/pspp.1.xz
 %doc %{_mandir}/man1/psppire.1.xz
-%doc %{_mandir}/man1/pspp-dump-sav.1.xz
 %doc %{_mandir}/man1/pspp-convert.1.xz
 %doc %{_mandir}/man1/pspp-output.1.xz
 %else
 %doc %{_mandir}/man1/pspp.1.gz
 %doc %{_mandir}/man1/psppire.1.gz
-%doc %{_mandir}/man1/pspp-dump-sav.1.gz
 %doc %{_mandir}/man1/pspp-convert.1.gz
 %doc %{_mandir}/man1/pspp-output.1.gz
 %endif
@@ -302,8 +313,13 @@ fi
 
 %files doc
 %defattr(-, root, root)
+%dir %{_datadir}/doc/pspp/
 %dir %{_datadir}/doc/pspp/pspp.html/
 %doc %{_datadir}/doc/pspp/pspp.html/*.html
+%dir %{_datadir}/doc/pspp/pspp.html/screenshots/
+%{_datadir}/doc/pspp/pspp.html/screenshots/*.png
+%dir %{_datadir}/doc/pspp/pspp.html/pspp-figures/
+%{_datadir}/doc/pspp/pspp.html/pspp-figures/*.png
 
 %files devel-doc
 %defattr(-, root, root)
