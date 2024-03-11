@@ -1235,4 +1235,12 @@ If possible, please copy to 13.2 - many thanks!
     <comment>Plasma 5.27.10 (forwarded request 1131390 from Vogtinator)</comment>
     <requestid>1131413</requestid>
   </revision>
+  <revision rev="155" vrev="2">
+    <srcmd5>e190efa76ca3f596bf859092d9328f9b</srcmd5>
+    <version>5.27.10</version>
+    <time>1710167262</time>
+    <user>anag+factory</user>
+    <comment>- Build with layer-shell-qt from Plasma5</comment>
+    <requestid>1153015</requestid>
+  </revision>
 </revisionlist>

@@ -51,7 +51,7 @@ BuildRequires:  cmake(KF5Plasma)
 BuildRequires:  cmake(KF5Screen) >= %{_plasma5_version}
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(LayerShellQt)
+BuildRequires:  cmake(LayerShellQt) < 6.0.0
 BuildRequires:  cmake(Qt5QuickWidgets) >= 5.15.0
 BuildRequires:  cmake(Qt5Sensors)
 BuildRequires:  cmake(Qt5Test)
