@@ -1,7 +1,7 @@
 #
 # spec file for package telly-skout
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,32 +17,39 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           telly-skout
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Kirigami TV guide
 License:        LGPL-2.1-or-later
 URL:            https://apps.kde.org/telly-skout/
-Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5QuickControls2)
-BuildRequires:  cmake(Qt5Sql)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
-Requires:       kirigami2
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons)
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
+Requires:       kf6-kirigami-imports >= %{kf6_version}
+Requires:       kirigami-addons6
+Requires:       qt6-declarative-imports >= %{qt6_version}
+Requires:       qt6-sql-sqlite >= %{qt6_version}
 
 %description
 Telly Skout is a convergent Kirigami TV guide. It shows the TV program for your
@@ -54,22 +61,22 @@ favorite channels from TV Spielfilm or an XMLTV file.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
+%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
 
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
 %find_lang %{name} --all-name
 
 %files
 %license LICENSES/*
 %doc README.md
-%{_kf5_applicationsdir}/org.kde.telly-skout.desktop
-%{_kf5_appstreamdir}/org.kde.telly-skout.appdata.xml
-%{_kf5_bindir}/telly-skout
-%{_kf5_iconsdir}/hicolor/scalable/apps/org.kde.telly-skout.svg
+%{_kf6_applicationsdir}/org.kde.telly-skout.desktop
+%{_kf6_appstreamdir}/org.kde.telly-skout.appdata.xml
+%{_kf6_bindir}/telly-skout
+%{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.telly-skout.svg
 
 %files lang -f %{name}.lang
 
