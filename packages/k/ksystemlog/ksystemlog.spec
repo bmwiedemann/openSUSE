@@ -1,7 +1,7 @@
 #
 # spec file for package ksystemlog
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,42 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           ksystemlog
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        System Log Viewer Tool
 License:        GPL-2.0-only
 URL:            https://apps.kde.org/ksystemlog
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  oxygen5-icon-theme-large
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  kf6-breeze-icons
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  xz
-BuildRequires:  cmake(KF5KDELibs4Support)
-BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
+BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6ItemViews) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(libsystemd)
 Obsoletes:      ksystemlog5 < %{version}
 Provides:       ksystemlog5 = %{version}
@@ -54,31 +68,28 @@ want to quickly see problems occurring on their server.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
+%find_lang %{name} --with-html --all-name
 
-%suse_update_desktop_file org.kde.ksystemlog System Monitor
-for i in {16,22,32,48,64,128}; do
-    mkdir -p %{buildroot}%{_datadir}/icons/hicolor/"$i"x"$i"/apps
-    cp %{_datadir}/icons/oxygen/base/"$i"x"$i"/apps/utilities-log-viewer.png %{buildroot}%{_datadir}/icons/hicolor/"$i"x"$i"/apps/;
-done
+mkdir -p %{buildroot}%{_kf6_iconsdir}/hicolor/scalable/apps
+cp %{_kf6_iconsdir}/breeze/apps/48/utilities-log-viewer.svg %{buildroot}%{_kf6_iconsdir}/hicolor/scalable/apps/
 
 %files
 %license LICENSES/*
-%doc %lang(en) %{_kf5_htmldir}/en/*/
-%{_kf5_applicationsdir}/*.desktop
-%{_kf5_appstreamdir}/org.kde.ksystemlog.appdata.xml
-%{_kf5_bindir}/ksystemlog
-%{_kf5_debugdir}/ksystemlog.categories
-%{_kf5_iconsdir}/hicolor/*/*/*.png
-%{_kf5_sharedir}/kxmlgui5/
+%doc %lang(en) %{_kf6_htmldir}/en/*/
+%{_kf6_applicationsdir}/org.kde.ksystemlog.desktop
+%{_kf6_appstreamdir}/org.kde.ksystemlog.appdata.xml
+%{_kf6_bindir}/ksystemlog
+%{_kf6_debugdir}/ksystemlog.categories
+%{_kf6_iconsdir}/hicolor/scalable/apps/utilities-log-viewer.svg
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/*/
 
 %changelog
