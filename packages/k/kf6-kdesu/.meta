@@ -1,0 +1,10 @@
+<package name="kf6-kdesu" project="openSUSE:Factory">
+  <title>User interface for running shell commands with root privileges</title>
+  <description>libkdesu provides functionality for building GUI front ends for
+(password asking) console mode programs. For example, kdesu and
+kdessh use it to interface with su and ssh respectively.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kdesu"/>
+  <url>https://www.kde.org</url>
+</package>
