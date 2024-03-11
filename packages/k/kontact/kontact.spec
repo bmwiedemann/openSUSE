@@ -1,7 +1,7 @@
 #
 # spec file for package kontact
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,38 +16,37 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+%define kpim6_version 6.0.0
+
 %bcond_without released
 Name:           kontact
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Personal Information Manager
 License:        GPL-2.0-or-later
 URL:            https://kontact.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  update-desktop-files
-BuildRequires:  xz
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5GuiAddons)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(KPim5GrantleeTheme)
-BuildRequires:  cmake(KPim5KontactInterface)
-BuildRequires:  cmake(KPim5Libkdepim)
-BuildRequires:  cmake(KPim5PimCommonAkonadi)
-BuildRequires:  cmake(KPim5TextEdit)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5WebEngine)
-BuildRequires:  cmake(Qt5WebEngineWidgets)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
+BuildRequires:  cmake(KPim6GrantleeTheme) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6KontactInterface) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6Libkdepim) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6PimCommon) >= %{kpim6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Recommends:     kmail
 Suggests:       akregator
 Suggests:       kaddressbook
@@ -56,7 +55,7 @@ Suggests:       korganizer
 Provides:       kontact5 = %{version}
 Obsoletes:      kontact5 < %{version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 Kontact combines the individual applications KMail, KAddressBook and
@@ -68,39 +67,37 @@ KOrganizer as views in one window.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
-
-%suse_update_desktop_file org.kde.kontact Office Core-Office
+%find_lang %{name} --with-html --all-name
 
 %ldconfig_scriptlets
 
 %files
 %license LICENSES/*
-%doc %lang(en) %{_kf5_htmldir}/en/kontact/
-%{_datadir}/messageviewer/
-%{_kf5_applicationsdir}/org.kde.kontact.desktop
-%{_kf5_appstreamdir}/org.kde.kontact.appdata.xml
-%{_kf5_bindir}/kontact
-%{_kf5_configkcfgdir}/kontact.kcfg
-%{_kf5_debugdir}/kontact.categories
-%{_kf5_debugdir}/kontact.renamecategories
-%{_kf5_iconsdir}/hicolor/*/apps/kontact.png
-%{_kf5_iconsdir}/hicolor/scalable/apps/kontact.svg
-%dir %{_kf5_plugindir}/pim5
-%dir %{_kf5_plugindir}/pim5/kcms
-%dir %{_kf5_plugindir}/pim5/kcms/kontact
-%{_kf5_plugindir}/pim5/kcms/kontact/kcm_kontact.so
-%dir %{_kf5_sharedir}/dbus-1/services/
-%{_kf5_sharedir}/dbus-1/services/org.kde.kontact.service
+# %%doc %%lang(en) %%{_kf6_htmldir}/en/kontact/
+%{_kf6_applicationsdir}/org.kde.kontact.desktop
+%{_kf6_appstreamdir}/org.kde.kontact.appdata.xml
+%{_kf6_bindir}/kontact
+%{_kf6_configkcfgdir}/kontact.kcfg
+%{_kf6_debugdir}/kontact.categories
+%{_kf6_debugdir}/kontact.renamecategories
+%{_kf6_iconsdir}/hicolor/*/apps/kontact.png
+%{_kf6_iconsdir}/hicolor/scalable/apps/kontact.svg
+%dir %{_kf6_plugindir}/pim6
+%dir %{_kf6_plugindir}/pim6/kcms
+%dir %{_kf6_plugindir}/pim6/kcms/kontact
+%{_kf6_plugindir}/pim6/kcms/kontact/kcm_kontact.so
+%{_kf6_sharedir}/dbus-1/services/org.kde.kontact.service
+%{_kf6_sharedir}/messageviewer/
 %{_libdir}/libkontactprivate.so.*
 
 %files lang -f %{name}.lang
+# %%exclude %%{_kf6_htmldir}/en/kontact/
 
 %changelog
