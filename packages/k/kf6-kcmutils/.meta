@@ -1,0 +1,9 @@
+<package name="kf6-kcmutils" project="openSUSE:Factory">
+  <title>Classes to work with KCModules</title>
+  <description>KCMUtils provides various classes to work with KCModules. KCModules can be
+created with the KConfigWidgets framework.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kcmutils"/>
+  <url>https://www.kde.org</url>
+</package>
