@@ -1,0 +1,8 @@
+<package name="kf6-kstatusnotifieritem" project="openSUSE:Factory">
+  <title>Implementation of Status Notifier Items</title>
+  <description>Implementation of Status Notifier Items.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kstatusnotifieritem"/>
+  <url>https://www.kde.org</url>
+</package>
