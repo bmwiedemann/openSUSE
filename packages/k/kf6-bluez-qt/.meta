@@ -1,0 +1,8 @@
+<package name="kf6-bluez-qt" project="openSUSE:Factory">
+  <title>Async Bluez wrapper library</title>
+  <description>Async Bluez wrapper library.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-bluez-qt"/>
+  <url>https://www.kde.org</url>
+</package>
