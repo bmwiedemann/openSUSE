@@ -16,46 +16,50 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           juk
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Jukebox
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/juk
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-build-with-taglib-2.patch
-BuildRequires:  extra-cmake-modules
-BuildRequires:  libtag-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Completion)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5GlobalAccel)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5JobWidgets)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5TextWidgets)
-BuildRequires:  cmake(KF5Wallet)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6GlobalAccel) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6JobWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6Wallet) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Phonon4Qt6)
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  pkgconfig(taglib)
 
 %description
 Jukebox and music manager by KDE
@@ -66,32 +70,30 @@ Jukebox and music manager by KDE
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
-
-%suse_update_desktop_file org.kde.juk AudioVideo Player
+%find_lang %{name} --with-html --all-name
 
 %files
 %license COPYING
-%doc %lang(en) %{_kf5_htmldir}/en/juk/
-%dir %{_kf5_sharedir}/kio
-%dir %{_kf5_sharedir}/kio/servicemenus
-%{_kf5_applicationsdir}/org.kde.juk.desktop
-%{_kf5_appsdir}/juk/
-%{_kf5_appstreamdir}/org.kde.juk.appdata.xml
-%{_kf5_bindir}/juk
-%{_kf5_dbusinterfacesdir}/org.kde.juk.*
-%{_kf5_iconsdir}/hicolor/*/apps/juk.*
-%{_kf5_kxmlguidir}/juk
-%{_kf5_notifydir}/juk.notifyrc
-%{_kf5_sharedir}/kio/servicemenus/jukservicemenu.desktop
+%doc %lang(en) %{_kf6_htmldir}/en/juk/
+%{_kf6_applicationsdir}/org.kde.juk.desktop
+%{_kf6_appstreamdir}/org.kde.juk.appdata.xml
+%{_kf6_bindir}/juk
+%{_kf6_dbusinterfacesdir}/org.kde.juk.*
+%{_kf6_iconsdir}/hicolor/*/apps/juk.*
+%{_kf6_notificationsdir}/juk.notifyrc
+%{_kf6_sharedir}/juk/
+%dir %{_kf6_sharedir}/kio
+%dir %{_kf6_sharedir}/kio/servicemenus
+%{_kf6_sharedir}/kio/servicemenus/jukservicemenu.desktop
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/juk/
 
 %changelog

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 23 13:58:30 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.0
+  * New feature release
+- No code change since 24.01.95
+
+-------------------------------------------------------------------
+Wed Feb 21 09:51:52 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.01.95
+  * https://kde.org/announcements/megarelease/6/rc2/
+- Drop patch, merged upstream:
+  * 0001-Fix-build-with-taglib-2.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 16:00:54 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add patch to fix build with taglib 2:

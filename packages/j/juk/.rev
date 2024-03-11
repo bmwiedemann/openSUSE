@@ -1149,4 +1149,12 @@
   * 0001-Fix-build-with-taglib-2.patch</comment>
     <requestid>1148280</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>32fc6a3ecab16d59f288d7d5f42adfb0</srcmd5>
+    <version>24.02.0</version>
+    <time>1710167509</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 24.02.0</comment>
+    <requestid>1151128</requestid>
+  </revision>
 </revisionlist>
