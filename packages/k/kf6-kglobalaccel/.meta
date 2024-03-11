@@ -1,0 +1,10 @@
+<package name="kf6-kglobalaccel" project="openSUSE:Factory">
+  <title>Global desktop keyboard shortcuts</title>
+  <description>KGlobalAccel allows you to have global accelerators that are independent of
+the focused window.  Unlike regular shortcuts, the application's window does not
+need focus for them to be activated.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kglobalaccel"/>
+  <url>https://www.kde.org</url>
+</package>
