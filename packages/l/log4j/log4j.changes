@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 10 22:19:36 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * log4j-jackson-databind.patch
+    + do not use previously deprecated methods, removed in
+      jackson-databind 2.16.x
+
+-------------------------------------------------------------------
 Wed Jun 15 06:11:51 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build also taglib, jmx-gui, bom, nosql and web modules, on

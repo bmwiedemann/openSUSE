@@ -1,0 +1,37 @@
+--- apache-log4j-2.17.2-src/log4j-core/src/main/java/org/apache/logging/log4j/core/jackson/Log4jStackTraceElementDeserializer.java	2024-03-09 21:13:03.876020411 +0100
++++ apache-log4j-2.17.2-src/log4j-core/src/main/java/org/apache/logging/log4j/core/jackson/Log4jStackTraceElementDeserializer.java	2024-03-09 21:34:48.633999170 +0100
+@@ -21,11 +21,11 @@
+ import org.apache.logging.log4j.core.util.Integers;
+ 
+ import com.fasterxml.jackson.core.JsonParser;
+-import com.fasterxml.jackson.core.JsonProcessingException;
+ import com.fasterxml.jackson.core.JsonToken;
+ import com.fasterxml.jackson.databind.DeserializationContext;
+ import com.fasterxml.jackson.databind.JsonMappingException;
+ import com.fasterxml.jackson.databind.deser.std.StdScalarDeserializer;
++import com.fasterxml.jackson.databind.util.ClassUtil;
+ 
+ /**
+  * Copy and edit the Jackson (Apache License 2.0) class to use Log4j attribute names. Does not work as of Jackson 2.3.2.
+@@ -44,8 +44,7 @@
+     }
+ 
+     @Override
+-    public StackTraceElement deserialize(final JsonParser jp, final DeserializationContext ctxt) throws IOException,
+-            JsonProcessingException {
++    public StackTraceElement deserialize(final JsonParser jp, final DeserializationContext ctxt) throws IOException {
+         JsonToken t = jp.getCurrentToken();
+         // Must get an Object
+         if (t == JsonToken.START_OBJECT) {
+@@ -79,6 +78,9 @@
+             }
+             return new StackTraceElement(className, methodName, fileName, lineNumber);
+         }
+-        throw ctxt.mappingException(this._valueClass, t);
++        throw JsonMappingException.from(
++                jp,
++                String.format(
++                        "Cannot deserialize instance of %s out of %s token", ClassUtil.nameOf(this._valueClass), t));
+     }
+ }
+\ No newline at end of file

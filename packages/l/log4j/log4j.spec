@@ -1,7 +1,7 @@
 #
 # spec file for package log4j
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ Source1:        http://archive.apache.org/dist/logging/%{name}/%{version}/apache
 Source2:        https://www.apache.org/dist/logging/KEYS#/%{name}.keyring
 Patch0:         log4j-java8compat.patch
 Patch1:         logging-log4j-Remove-unsupported-EventDataConverter.patch
+Patch2:         log4j-jackson-databind.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 9
 BuildRequires:  maven-local
