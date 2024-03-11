@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 11 06:52:00 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch fix-assertion-method.patch:
+  * Fix assertion methods.
+- Switch to pyproject and autosetup macros.
+- Less globs in %files.
+
+-------------------------------------------------------------------
 Tue Aug 18 22:32:35 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - We can finally use %pyunittest macro

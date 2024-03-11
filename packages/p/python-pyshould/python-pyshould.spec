@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyshould
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,17 @@
 
 
 %define modname pyshould
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-%{modname}
 Version:        0.7.1
 Release:        0
 Summary:        Should style asserts
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/drslump/%{modname}
 Source:         https://files.pythonhosted.org/packages/source/p/pyshould/%{modname}-%{version}.tar.gz
+Patch0:         fix-assertion-method.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-hamcrest
@@ -51,14 +52,14 @@ to the unit testing runner used, since mismatches are reported using
 the standard AssertionError.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%autosetup -p1 -n %{modname}-%{version}
 sed -i '/nose/d' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 # We shouldn't install tests
 %{python_expand rm -rvf %{buildroot}%{$python_sitelib}/tests
 %fdupes %{buildroot}%{$python_sitelib}
@@ -70,6 +71,7 @@ sed -i '/nose/d' setup.py
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/%{modname}*
+%{python_sitelib}/%{modname}
+%{python_sitelib}/%{modname}-%{version}.dist-info
 
 %changelog

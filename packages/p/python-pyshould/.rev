@@ -49,4 +49,15 @@
 </comment>
     <requestid>827693</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>a3a6ea0dde63e4416d38ba9f5af87086</srcmd5>
+    <version>0.7.1</version>
+    <time>1710167676</time>
+    <user>anag+factory</user>
+    <comment>- Add patch fix-assertion-method.patch:
+  * Fix assertion methods.
+- Switch to pyproject and autosetup macros.
+- Less globs in %files.</comment>
+    <requestid>1156835</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,20 @@
+Index: pyshould-0.7.1/tests/dsl.py
+===================================================================
+--- pyshould-0.7.1.orig/tests/dsl.py
++++ pyshould-0.7.1/tests/dsl.py
+@@ -94,13 +94,13 @@ class DslTestCase(unittest.TestCase):
+         def nested_expression_ok():
+             with should.throw(TypeError):
+                 1 | should.equal(1)
+-        self.assertRaisesRegexp(AssertionError,
++        self.assertRaisesRegex(AssertionError,
+                                 'TypeError', nested_expression_ok)
+ 
+         def nested_expression_fail():
+             with should.throw(TypeError):
+                 1 | should.equal(2)
+-        self.assertRaisesRegexp(AssertionError,
++        self.assertRaisesRegex(AssertionError,
+                                 '<2>', nested_expression_fail)
+ 
+         with should.throw(TypeError):
