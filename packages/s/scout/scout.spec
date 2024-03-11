@@ -1,7 +1,7 @@
 #
 # spec file for package scout
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,7 @@ interesting if the system could tell that the command is currently not
 available, but installing a package would provide it.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 # compile scripts
@@ -105,6 +105,7 @@ for po in i18n/command-not-found/*.po; do
     install -D -m 0644 i18n/command-not-found/$lang.mo %{buildroot}%{_datadir}/locale/$lang/LC_MESSAGES/command-not-found.mo
 done
 %find_lang command-not-found
+%python3_fix_shebang
 
 %files -f scout.lang
 %defattr(-,root,root)
