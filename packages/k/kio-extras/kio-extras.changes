@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Wed Mar  6 09:55:04 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Rename libkioarchive-devel to libkioarchive6-devel to not conflict
+  with kio-extras5
+
+-------------------------------------------------------------------
+Fri Feb 23 13:59:25 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.0
+  * New feature release
+- Changes since 24.01.95:
+  * afc: Adjust Solid action to new URL format
+  * afc: Drop pretty name handling (kde#462381)
+  * sftp: unbreak gcc compat
+
+-------------------------------------------------------------------
+Fri Feb  9 16:08:31 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.01.95
+  * https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
+Wed Jan 17 15:45:37 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Enable Samba
+
+-------------------------------------------------------------------
+Tue Nov 28 14:14:57 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Mention plugins in %files explicitly
+
+-------------------------------------------------------------------
+Tue Nov 14 18:17:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init kio-extras
