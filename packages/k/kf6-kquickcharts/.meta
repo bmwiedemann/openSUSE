@@ -1,0 +1,13 @@
+<package name="kf6-kquickcharts" project="openSUSE:Factory">
+  <title>Set of charts for QtQuick applications</title>
+  <description>The Quick Charts module provides a set of charts that can be used from QtQuick
+applications. They are intended to be used for both simple display of data as
+well as continuous display of high-volume data (often referred to as plotters).
+The charts use a system called distance fields for their accelerated rendering,
+which provides ways of using the GPU for rendering 2D shapes without loss of
+quality.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kquickcharts"/>
+  <url>https://www.kde.org</url>
+</package>
