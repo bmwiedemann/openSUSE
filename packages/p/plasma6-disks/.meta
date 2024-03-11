@@ -1,0 +1,8 @@
+<package name="plasma6-disks" project="openSUSE:Factory">
+  <title>Plasma service for monitoring disk health</title>
+  <description>Monitors S.M.A.R.T. capable devices for imminent failure and informs the user.
+
+</description>
+  <devel project="KDE:Frameworks" package="plasma6-disks"/>
+  <url>https://www.kde.org</url>
+</package>
