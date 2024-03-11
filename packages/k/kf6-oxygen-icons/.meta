@@ -1,0 +1,8 @@
+<package name="kf6-oxygen-icons" project="openSUSE:Factory">
+  <title>Oxygen Icon Theme</title>
+  <description>This package contains the non-scalable icons of the Oxygen icon theme.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-oxygen-icons"/>
+  <url>https://www.kde.org</url>
+</package>
