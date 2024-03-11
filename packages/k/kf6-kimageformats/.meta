@@ -1,0 +1,11 @@
+<package name="kf6-kimageformats" project="openSUSE:Factory">
+  <title>Image format plugins for Qt</title>
+  <description>This framework provides additional image format plugins for QtGui.  As
+such it is not required for the compilation of any other software, but
+may be a runtime requirement for Qt-based software to support certain
+image formats.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kimageformats"/>
+  <url>https://www.kde.org</url>
+</package>
