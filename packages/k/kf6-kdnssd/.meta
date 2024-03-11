@@ -1,0 +1,11 @@
+<package name="kf6-kdnssd" project="openSUSE:Factory">
+  <title>Network service discovery using Zeroconf</title>
+  <description>KDNSSD is a library for handling the DNS-based Service Discovery Protocol
+(DNS-SD), the layer of Zeroconf that allows network
+services, such as printers, to be discovered without any user intervention or
+centralized infrastructure.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kdnssd"/>
+  <url>https://www.kde.org</url>
+</package>
