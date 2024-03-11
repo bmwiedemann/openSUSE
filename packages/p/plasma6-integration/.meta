@@ -1,0 +1,11 @@
+<package name="plasma6-integration" project="openSUSE:Factory">
+  <title>Plugins responsible for better integration of Qt applications in KDE Workspace</title>
+  <description>Plasma Integration is a set of plugins responsible for better integration of Qt
+applications when running on a KDE Plasma workspace.
+
+Applications do not need to link to this directly.
+
+</description>
+  <devel project="KDE:Frameworks" package="plasma6-integration"/>
+  <url>https://www.kde.org</url>
+</package>
