@@ -1,0 +1,8 @@
+<package name="milou6" project="openSUSE:Factory">
+  <title>Dedicated search application built on top of Baloo</title>
+  <description>A dedicated search application built on top of Baloo
+
+</description>
+  <devel project="KDE:Frameworks" package="milou6"/>
+  <url>https://projects.kde.org/milou</url>
+</package>
