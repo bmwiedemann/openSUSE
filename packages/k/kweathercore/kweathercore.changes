@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 10 15:51:17 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.8.0
+  * The library now needs Qt6 to build
+
+-------------------------------------------------------------------
 Mon Mar 20 10:37:02 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.7. No changelog.

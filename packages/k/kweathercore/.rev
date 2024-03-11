@@ -7,4 +7,13 @@
     <comment>New applications released with KDE gear</comment>
     <requestid>1081080</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>54bb6f7afb6652ef10368c459f9e42f5</srcmd5>
+    <version>0.8.0</version>
+    <time>1710167511</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.8.0
+  * The library now needs Qt6 to build</comment>
+    <requestid>1151225</requestid>
+  </revision>
 </revisionlist>

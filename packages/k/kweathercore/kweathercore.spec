@@ -1,7 +1,7 @@
 #
 # spec file for package kweathercore
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,12 @@
 #
 
 
-%define soversion 5
-%bcond_without  released
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
+%bcond_without released
 Name:           kweathercore
-Version:        0.7
+Version:        0.8.0
 Release:        0
 Summary:        Library to facilitate retrieval of weather information
 License:        LGPL-2.0-or-later
@@ -27,16 +29,16 @@ URL:            https://invent.kde.org/libraries/kweathercore
 Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
 %if %{with released}
 Source1:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
-Source2:        %{name}.keyring
+Source2:        kweathercore.keyring
 %endif
-BuildRequires:  extra-cmake-modules
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  doxygen
-BuildRequires:  libqt5-qttools-qhelpgenerator
-BuildRequires:  cmake(KF5Holidays)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(Qt5Core) >= 5.12.0
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Positioning)
+BuildRequires:  cmake(KF6Holidays) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Positioning) >= %{qt6_version}
+BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 
 %description
 Get weather forecast and alerts anywhere on the earth easy. KWeatherCore
@@ -44,10 +46,10 @@ provides you a highly abstracted library for things related to weather:
 Get local weather forecast, get weather of a location by name or coordinate,
 get sunrise/set moonrise/set and many more informations about a location.
 
-%package -n libKF5KWeatherCore%{soversion}
+%package -n libKWeatherCore6
 Summary:        Library to facilitate retrieval of weather information
 
-%description -n libKF5KWeatherCore%{soversion}
+%description -n libKWeatherCore6
 Shared objects for kweathercore.
 Get weather forecast and alerts anywhere on the earth easy. KWeatherCore
 provides you a highly abstracted library for things related to weather:
@@ -56,34 +58,40 @@ get sunrise/set moonrise/set and many more informations about a location.
 
 %package devel
 Summary:        Development headers for kweathercore
-Requires:       libKF5KWeatherCore%{soversion} = %{version}
+Requires:       libKWeatherCore6 = %{version}
 
 %description devel
 Required headers to build components based on kweathercore.
+
+%lang_package -n libKWeatherCore6
 
 %prep
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build -- -DBUILD_QCH=ON
+%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
 
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%ldconfig_scriptlets -n libKF5KWeatherCore%{soversion}
+%find_lang %{name} --all-name
 
-%files -n libKF5KWeatherCore%{soversion}
+%ldconfig_scriptlets -n libKWeatherCore6
+
+%files -n libKWeatherCore6
 %license LICENSES/*
-%{_kf5_libdir}/libKF5KWeatherCore.so.*
+%{_kf6_libdir}/libKWeatherCore.so.*
 
 %files devel
-%{_kf5_cmakedir}/KF5KWeatherCore/
-%{_kf5_includedir}/KWeatherCore/
-%{_kf5_includedir}/kweathercore_version.h
-%{_kf5_libdir}/libKF5KWeatherCore.so
-%{_kf5_mkspecsdir}/qt_KWeatherCore.pri
-%{_kf5_sharedir}/doc/qch/
+%doc %{_kf6_qchdir}/KWeatherCore.*
+%{_includedir}/KWeatherCore/
+%{_includedir}/kweathercore_version.h
+%{_kf6_cmakedir}/KWeatherCore/
+%{_kf6_libdir}/libKWeatherCore.so
+%{_kf6_mkspecsdir}/qt_KWeatherCore.pri
+
+%files -n libKWeatherCore6-lang -f %{name}.lang
 
 %changelog
