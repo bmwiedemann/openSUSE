@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Feb 29 14:07:34 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.3.0
+  * Don't preprocess QML files
+  * Show header in qtc6
+  * We need to use Qt5Compat.GraphicalEffects in qt6
+  * Add CMakePresets.json
+  * Ignore build dir
+  * Remove smooth property
+  * Don't include GNUInstallDirs
+  * Fix Qt version in CMake Config
+  * Enable building against Qt6
+  * Port to ecm_add_qml_module
+  * Update example
+- Add kquickimageeditor6, required by neochat
+
+-------------------------------------------------------------------
 Wed Oct  6 19:50:10 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Simplify %files section

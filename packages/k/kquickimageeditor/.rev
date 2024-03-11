@@ -23,4 +23,24 @@
     <comment>- Simplify %files section (forwarded request 923580 from Vogtinator)</comment>
     <requestid>923584</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f910e83e7e17b94224adcfc6aa947afe</srcmd5>
+    <version>0.3.0</version>
+    <time>1710167516</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.3.0
+  * Don't preprocess QML files
+  * Show header in qtc6
+  * We need to use Qt5Compat.GraphicalEffects in qt6
+  * Add CMakePresets.json
+  * Ignore build dir
+  * Remove smooth property
+  * Don't include GNUInstallDirs
+  * Fix Qt version in CMake Config
+  * Enable building against Qt6
+  * Port to ecm_add_qml_module
+  * Update example
+- Add kquickimageeditor6, required by neochat</comment>
+    <requestid>1153262</requestid>
+  </revision>
 </revisionlist>
