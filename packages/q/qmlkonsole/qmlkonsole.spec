@@ -1,7 +1,7 @@
 #
 # spec file for package qmlkonsole
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,35 +16,40 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           qmlkonsole
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Terminal application
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/qmlkonsole/
-Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KirigamiAddons)
-BuildRequires:  cmake(KF5Kirigami2)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5QuickControls2)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
-Requires:       kirigami-addons
-Requires:       kirigami2
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons)
+BuildRequires:  cmake(KF6Pty) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+Requires:       kirigami-addons6
+Requires:       kf6-kirigami-imports >= %{kf6_version}
+Requires:       qt6-declarative-imports >= %{qt6_version}
 Requires:       qmltermwidget
 
 %description
@@ -57,22 +62,22 @@ devices.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
+%cmake_kf6
 
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
 %find_lang %{name} --all-name
 
 %files
 %license LICENSES/*
-%{_kf5_applicationsdir}/org.kde.qmlkonsole.desktop
-%{_kf5_appstreamdir}/org.kde.qmlkonsole.appdata.xml
-%{_kf5_bindir}/qmlkonsole
-%{_kf5_configkcfgdir}/terminalsettings.kcfg
-%{_kf5_iconsdir}/hicolor/scalable/apps/org.kde.qmlkonsole.svg
+%{_kf6_applicationsdir}/org.kde.qmlkonsole.desktop
+%{_kf6_appstreamdir}/org.kde.qmlkonsole.appdata.xml
+%{_kf6_bindir}/qmlkonsole
+%{_kf6_configkcfgdir}/terminalsettings.kcfg
+%{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.qmlkonsole.svg
 
 %files lang -f %{name}.lang
 
