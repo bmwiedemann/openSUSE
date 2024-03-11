@@ -1,0 +1,8 @@
+<package name="kf6-kfilemetadata" project="openSUSE:Factory">
+  <title>Library for extracting Metadata</title>
+  <description>KFileMetaData provides plugins for extracting file metadata.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kfilemetadata"/>
+  <url>https://www.kde.org</url>
+</package>
