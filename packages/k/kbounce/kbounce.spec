@@ -1,7 +1,7 @@
 #
 # spec file for package kbounce
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,58 +16,38 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           kbounce
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Bounce ball game
 License:        LGPL-2.0-or-later
 URL:            https://apps.kde.org/kbounce
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5Bookmarks)
-BuildRequires:  cmake(KF5Codecs)
-BuildRequires:  cmake(KF5Completion)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5DNSSD)
-BuildRequires:  cmake(KF5Declarative)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5GlobalAccel)
-BuildRequires:  cmake(KF5GuiAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5ItemModels)
-BuildRequires:  cmake(KF5ItemViews)
-BuildRequires:  cmake(KF5JobWidgets)
-BuildRequires:  cmake(KF5KDEGames)
-BuildRequires:  cmake(KF5KDELibs4Support)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5NewStuff)
-BuildRequires:  cmake(KF5NotifyConfig)
-BuildRequires:  cmake(KF5Service)
-BuildRequires:  cmake(KF5TextWidgets)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5QuickWidgets)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
-Obsoletes:      %{name}5 < %{version}
-Provides:       %{name}5 = %{version}
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KDEGames6) 
+BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+Obsoletes:      kbounce5 < %{version}
+Provides:       kbounce5 = %{version}
 
 %description
 Your task in KBounce (Jezz Ball) is to catch several moving balls in a
@@ -77,30 +57,29 @@ finding new and advanced strategies to catch as many balls as possible.
 %lang_package
 
 %prep
-%autosetup -p1 -n kbounce-%{version}
+%autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
-
-%suse_update_desktop_file -r org.kde.kbounce Game LogicGame
+%find_lang %{name} --with-man --with-html --all-name
 
 %files
 %license LICENSES/*
-%doc %lang(en) %{_kf5_htmldir}/en/kbounce/
-%{_kf5_applicationsdir}/org.kde.kbounce.desktop
-%{_kf5_appstreamdir}/org.kde.kbounce.appdata.xml
-%{_kf5_bindir}/kbounce
-%{_kf5_debugdir}/kbounce.categories
-%{_kf5_iconsdir}/hicolor/*/apps/kbounce.*
-%{_kf5_sharedir}/kbounce/
+%doc %lang(en) %{_kf6_htmldir}/en/kbounce/
+%{_kf6_applicationsdir}/org.kde.kbounce.desktop
+%{_kf6_appstreamdir}/org.kde.kbounce.appdata.xml
+%{_kf6_bindir}/kbounce
+%{_kf6_debugdir}/kbounce.categories
+%{_kf6_iconsdir}/hicolor/*/apps/kbounce.*
+%{_kf6_sharedir}/kbounce/
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/kbounce/
 
 %changelog
