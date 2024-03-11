@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Wed Mar  6 08:40:30 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.1
+- Changes since 6.0.0:
+  * update version for new release
+
+-------------------------------------------------------------------
+Mon Mar  4 18:52:16 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add Provides/Obsoletes to replace Plasma 5
+
+-------------------------------------------------------------------
+Wed Feb 21 18:36:33 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0:
+  * New bugfix release
+  * Release announcement not available yet
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Wed Jan 31 17:41:40 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.93.0 (6.0 RC 2):
+  * New bugfix release
+  * See https://kde.org/announcements/megarelease/6/rc2/ for details
+- No code changes since 5.92.0
+
+-------------------------------------------------------------------
+Wed Jan 17 18:38:55 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.92.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Wed Nov 29 11:16:20 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Rename kactivities6 to plasma6-activities
+
+-------------------------------------------------------------------
+Mon Nov  6 13:42:55 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init kactivities6
