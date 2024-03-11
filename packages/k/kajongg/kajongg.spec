@@ -1,7 +1,7 @@
 #
 # spec file for package kajongg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,35 +16,42 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
+%{?sle15_python_module_pythons}
+%if 0%{?suse_version} > 1500
+%define pyver python3
+%else
+%define pyver python311
+%endif
+
 %bcond_without released
 Name:           kajongg
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        4 Player Mahjongg game
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/kajongg
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  python3-Twisted >= 16.6.0
-BuildRequires:  python3-base >= 3.5.0
-BuildRequires:  python3-qt5-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  xz
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KMahjongglib)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Widgets)
-Requires:       python3-Twisted
-Requires:       python3-qt5
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  %{pyver}-Twisted >= 16.6.0
+BuildRequires:  %{pyver}-base >= 3.8.0
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KMahjongglib6)
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6SvgWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+Requires:       %{pyver}-Twisted
+Requires:       %{pyver}-PyQt6
 BuildArch:      noarch
 
 %description
@@ -56,32 +63,28 @@ Kajongg is a version of the four player Mahjongg tile game.
 %autosetup -p1 -n kajongg-%{version}
 
 %build
-# Workaround for kde#376303
-export PYTHONDONTWRITEBYTECODE=1
-export DESTDIR=%{buildroot}
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
-
-%suse_update_desktop_file -r org.kde.kajongg Game BoardGame
+%find_lang %{name} --with-html --all-name
 
 %files
 %license COPYING*
 %doc README
-%doc %lang(en) %{_kf5_htmldir}/en/kajongg/
-%{_kf5_applicationsdir}/org.kde.kajongg.desktop
-%{_kf5_appsdir}/kajongg/
-%{_kf5_appstreamdir}/org.kde.kajongg.appdata.xml
-%{_kf5_bindir}/kajongg
-%{_kf5_bindir}/kajonggserver
-%{_kf5_iconsdir}/hicolor/*/actions/games-kajongg-law.*
-%{_kf5_iconsdir}/hicolor/*/apps/kajongg.*
+%doc %lang(en) %{_kf6_htmldir}/en/kajongg/
+%{_kf6_applicationsdir}/org.kde.kajongg.desktop
+%{_kf6_sharedir}/kajongg/
+%{_kf6_appstreamdir}/org.kde.kajongg.appdata.xml
+%{_kf6_bindir}/kajongg
+%{_kf6_bindir}/kajonggserver
+%{_kf6_iconsdir}/hicolor/*/actions/games-kajongg-law.*
+%{_kf6_iconsdir}/hicolor/*/apps/kajongg.*
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/kajongg/
 
 %changelog
