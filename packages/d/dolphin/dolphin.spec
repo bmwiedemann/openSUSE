@@ -1,7 +1,7 @@
 #
 # spec file for package dolphin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,56 +16,63 @@
 #
 
 
+%define kf6_version 5.246.0
+%define plasma6_version 5.27.80
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           dolphin
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        KDE File Manager
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/dolphin
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 Source3:        dolphinsu.desktop
 Patch0:         dolphin-go_up.diff
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch
-BuildRequires:  extra-cmake-modules
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Activities)
-BuildRequires:  cmake(KF5Baloo)
-BuildRequires:  cmake(KF5BalooWidgets)
-BuildRequires:  cmake(KF5Bookmarks)
-BuildRequires:  cmake(KF5Completion)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5FileMetaData)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5NewStuff)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5Parts)
-BuildRequires:  cmake(KF5Solid)
-BuildRequires:  cmake(KF5TextEditor)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5X11Extras)
-Requires:       baloo5-kioslaves
+BuildRequires:  cmake(KF6Baloo) >= %{kf6_version}
+BuildRequires:  cmake(KF6BalooWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6Bookmarks) >= %{kf6_version}
+BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
+BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6FileMetaData) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6NewStuff) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
+BuildRequires:  cmake(KF6Solid) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6UserFeedback) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(Phonon4Qt6)
+BuildRequires:  cmake(PlasmaActivities) >= %{plasma6_version}
+BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(packagekitqt6)
 Requires:       dolphin-part = %{version}-%{release}
-Recommends:     kio-extras5
+Requires:       kf6-baloo-kioslaves >= %{kf6_version}
+Recommends:     kio-extras6
 Recommends:     konsole-part
 Obsoletes:      dolphin5
 
@@ -74,23 +81,23 @@ This package contains the default file manager of KDE Workspaces.
 
 %package part
 Summary:        KDE File Manager
-%if %{with released}
-%requires_ge    kio
-%endif
 Obsoletes:      dolphin5-part
+%if %{with released}
+%requires_ge    kf6-kio
+%endif
 
 %description part
 This package contains the libraries used by Dolphin and Konqueror.
 
-%package -n libdolphinvcs5
+%package -n libdolphinvcs6
 Summary:        KDE File Manager
 
-%description -n libdolphinvcs5
+%description -n libdolphinvcs6
 This package contains the libraries used by Dolphin and Konqueror.
 
 %package devel
 Summary:        KDE File Manager
-Requires:       libdolphinvcs5 = %{version}
+Requires:       libdolphinvcs6 = %{version}
 Obsoletes:      dolphin5-devel < %{version}
 Provides:       dolphin5-devel = %{version}
 
@@ -98,79 +105,76 @@ Provides:       dolphin5-devel = %{version}
 This package contains the libraries used by Dolphin and Konqueror.
 
 %package zsh-completion
-Summary:        ZSH completion for %{name}
-Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:zsh)
+Summary:        ZSH completion for dolphin
+Requires:       dolphin = %{version}
+Supplements:    (dolphin and zsh)
 BuildArch:      noarch
 
 %description zsh-completion
-ZSH command line completion support for %{name}.
+ZSH command line completion support for dolphin.
 
-%package -n %{name}-part-lang
-Summary:        Translations for package %{name}
-Requires:       %{name}-part = %{version}
-Supplements:    (bundle-lang-other and %{name}-part)
-Provides:       %{name}-lang = %{version}
-Obsoletes:      %{name}-lang < %{version}
-Provides:       %{name}-part-lang-all = %{version}
+%package -n dolphin-part-lang
+Summary:        Translations for package dolphin
+Requires:       dolphin-part = %{version}
+Supplements:    (bundle-lang-other and dolphin-part)
+Provides:       dolphin-lang = %{version}
+Obsoletes:      dolphin-lang < %{version}
+Provides:       dolphin-part-lang-all = %{version}
 BuildArch:      noarch
 
-%description -n %{name}-part-lang
-Provides translations for the "%{name}" package.
+%description -n dolphin-part-lang
+Provides translations for the dolphin package.
 
 %prep
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
+%find_lang %{name} --all-name --with-man --with-html
 
-install -D -m 0644 %{SOURCE3} %{buildroot}%{_kf5_applicationsdir}/org.kde.dolphinsu.desktop
-%suse_update_desktop_file org.kde.dolphin System FileManager
+install -D -m 0644 %{SOURCE3} %{buildroot}%{_kf6_applicationsdir}/org.kde.dolphinsu.desktop
 
-%ldconfig_scriptlets -n libdolphinvcs5
 %ldconfig_scriptlets
+%ldconfig_scriptlets -n libdolphinvcs6
 %ldconfig_scriptlets part
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc README.md
-%doc %lang(en) %{_kf5_htmldir}/en/dolphin/
-%dir %{_kf5_sharedir}/kglobalaccel/
-%{_kf5_applicationsdir}/org.kde.dolphin.desktop
-%{_kf5_applicationsdir}/org.kde.dolphinsu.desktop
-%{_kf5_appstreamdir}/org.kde.dolphin.appdata.xml
-%{_kf5_bindir}/dolphin
-%{_kf5_bindir}/servicemenuinstaller
-%{_kf5_dbusinterfacesdir}/org.freedesktop.FileManager1.xml
-%{_kf5_sharedir}/dbus-1/services/org.kde.dolphin.FileManager1.service
-%{_kf5_sharedir}/kglobalaccel/org.kde.dolphin.desktop
-%dir %{_kf5_sharedir}/kconf_update
-%{_kf5_sharedir}/kconf_update/dolphin_detailsmodesettings.upd
+%doc %lang(en) %{_kf6_htmldir}/en/dolphin/
+%{_kf6_applicationsdir}/org.kde.dolphin.desktop
+%{_kf6_applicationsdir}/org.kde.dolphinsu.desktop
+%{_kf6_appstreamdir}/org.kde.dolphin.appdata.xml
+%{_kf6_bindir}/dolphin
+%{_kf6_bindir}/servicemenuinstaller
+%{_kf6_configkcfgdir}/dolphin_*.kcfg
+%{_kf6_dbusinterfacesdir}/org.freedesktop.FileManager1.xml
+%{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.dolphin.svg
+%{_kf6_sharedir}/dbus-1/services/org.kde.dolphin.FileManager1.service
+%{_kf6_sharedir}/kconf_update/dolphin_detailsmodesettings.upd
+%dir %{_kf6_sharedir}/kglobalaccel
+%{_kf6_sharedir}/kglobalaccel/org.kde.dolphin.desktop
 %{_userunitdir}/plasma-dolphin.service
 
 %files part
-%{_kf5_configkcfgdir}/dolphin_*.kcfg
-%{_kf5_debugdir}/dolphin.categories
-%{_kf5_knsrcfilesdir}/servicemenu.knsrc
-%{_kf5_libdir}/libdolphinprivate.so.*
-%dir %{_kf5_plugindir}/dolphin
-%dir %{_kf5_plugindir}/dolphin/kcms
-%{_kf5_plugindir}/dolphin/kcms/kcm_dolphin*.so
-%dir %{_kf5_plugindir}/kf5
-%dir %{_kf5_plugindir}/kf5/parts
-%{_kf5_plugindir}/kf5/parts/dolphinpart.so
-%dir %{_kf5_sharedir}/dolphin
-%{_kf5_sharedir}/dolphin/dolphinpartactions.desktop
+%{_kf6_debugdir}/dolphin.categories
+%{_kf6_knsrcfilesdir}/servicemenu.knsrc
+%{_kf6_libdir}/libdolphinprivate.so.*
+%dir %{_kf6_plugindir}/dolphin
+%dir %{_kf6_plugindir}/dolphin/kcms
+%{_kf6_plugindir}/dolphin/kcms/kcm_dolphin*.so
+%{_kf6_plugindir}/kf6/parts/dolphinpart.so
+%dir %{_kf6_sharedir}/dolphin
+%{_kf6_sharedir}/dolphin/dolphinpartactions.desktop
 
-%files -n libdolphinvcs5
-%{_kf5_libdir}/libdolphinvcs.so.*
+%files -n libdolphinvcs6
+%{_kf6_libdir}/libdolphinvcs.so.*
 
 %files zsh-completion
 %dir %{_datadir}/zsh
@@ -178,15 +182,13 @@ install -D -m 0644 %{SOURCE3} %{buildroot}%{_kf5_applicationsdir}/org.kde.dolphi
 %{_datadir}/zsh/site-functions/_dolphin
 
 %files devel
+%{_includedir}/Dolphin/
+%{_includedir}/dolphin_export.h
 %{_includedir}/dolphinvcs_export.h
-%{_kf5_cmakedir}/DolphinVcs/
-%{_kf5_libdir}/libdolphinvcs.so
-%{_kf5_prefix}/include/Dolphin/
-%{_kf5_prefix}/include/dolphin_export.h
+%{_kf6_cmakedir}/DolphinVcs/
+%{_kf6_libdir}/libdolphinvcs.so
 
 %files part-lang -f %{name}.lang
-# Not detected by find-lang.sh
-%dir %{_kf5_sharedir}/locale/fi/LC_SCRIPTS/
-%lang(fi) %{_kf5_sharedir}/locale/fi/LC_SCRIPTS/dolphin/
+%exclude %{_kf6_htmldir}/en/dolphin/
 
 %changelog
