@@ -1,7 +1,7 @@
 #
 # spec file for package rocs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,40 +18,35 @@
 
 %bcond_without released
 Name:           rocs
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Graph Theory IDE
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/rocs
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  libboost_headers-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  xz
 BuildRequires:  cmake(Grantlee5)
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5TextEditor)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5QuickWidgets)
 BuildRequires:  cmake(Qt5Script)
 BuildRequires:  cmake(Qt5ScriptTools)
 BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5XmlPatterns)
 Obsoletes:      %{name}5 < %{version}
@@ -102,7 +97,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %find_lang %{name} --with-man --all-name
 %{kf5_find_htmldocs}
 
-%suse_update_desktop_file org.kde.%{name} Math
 %fdupes -s %{buildroot}
 
 %ldconfig_scriptlets -n librocsgraphtheory0
@@ -114,19 +108,18 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_applicationsdir}/org.kde.rocs.desktop
 %{_kf5_appstreamdir}/org.kde.rocs.appdata.xml
 %{_kf5_bindir}/rocs
-%{_kf5_configkcfgdir}/
+%{_kf5_configkcfgdir}/rocs.kcfg
 %{_kf5_iconsdir}/hicolor/*/*/*
-%{_kf5_kxmlguidir}/
-%{_kf5_plugindir}/
+%{_kf5_plugindir}/rocs/
 %{_kf5_sharedir}/rocs/
+
+%files -n librocsgraphtheory0
+%{_kf5_libdir}/librocsgraphtheory.so.*
 
 %files devel
 %doc TESTING.md
 %{_kf5_prefix}/include/rocs/
 %{_kf5_libdir}/librocsgraphtheory.so
-
-%files -n librocsgraphtheory0
-%{_kf5_libdir}/librocsgraphtheory.so.*
 
 %files lang -f %{name}.lang
 
