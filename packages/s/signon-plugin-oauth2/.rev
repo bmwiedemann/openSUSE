@@ -55,4 +55,12 @@
     <comment>- Switch to %autosetup</comment>
     <requestid>1148075</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fe8c9c0729f22def294483c3b0f23d5d</srcmd5>
+    <version>0.25git.20231124T142245~fab6988</version>
+    <time>1710167250</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 24.02.0</comment>
+    <requestid>1152059</requestid>
+  </revision>
 </revisionlist>

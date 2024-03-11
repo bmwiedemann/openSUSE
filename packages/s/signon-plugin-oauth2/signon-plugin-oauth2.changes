@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 21 19:44:51 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Switch to a git snapshot to support building with Qt6
+- Update to 0.25git.20231124T142245~fab6988
+- Drop patch, change is now handled in the %prep section
+  * 0001_Multilib.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 13:55:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Switch to %autosetup
