@@ -1,7 +1,7 @@
 #
 # spec file for package skanpage
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,46 +16,48 @@
 #
 
 
-%define qt5_version 5.15.2
-%define kf5_version 5.105.0
+%define kf6_version 5.240.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           skanpage
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Multi-Page Scanning Application
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/skanpage/
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5Config) >= %{kf5_version}
-BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
-BuildRequires:  cmake(KF5Crash) >= %{kf5_version}
-BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
-BuildRequires:  cmake(KF5Kirigami2) >= %{kf5_version}
-BuildRequires:  cmake(KF5Purpose) >= %{kf5_version}
-BuildRequires:  cmake(KF5XmlGui) >= %{kf5_version}
-BuildRequires:  cmake(KQuickImageEditor)
-BuildRequires:  cmake(KSaneCore)
-BuildRequires:  cmake(Qt5Concurrent) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
-BuildRequires:  cmake(Qt5PrintSupport) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Qml) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Quick) >= %{qt5_version}
-BuildRequires:  cmake(Qt5QuickControls2) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+# Both kquickimageeditor flavors provide the same CMake target name, use the devel package name instead
+# BuildRequires:  cmake(KQuickImageEditor)
+BuildRequires:  kquickimageeditor6-devel
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6Kirigami2) >= %{kf6_version}
+BuildRequires:  cmake(KF6Purpose) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(KSaneCore6)
+BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 # For OCR
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 BuildRequires:  pkgconfig(tesseract) >= 4
 BuildRequires:  pkgconfig(lept)
 %endif
-Requires:       kirigami2 >= %{kf5_version}
-Requires:       kquickimageeditor-imports >= 0.2
-Requires:       libqt5-qtquickcontrols >= %{qt5_version}
+Requires:       kf6-kirigami-imports >= %{kf6_version}
+Requires:       kquickimageeditor6-imports >= 0.2
+Requires:       qt6-declarative-imports >= %{qt6_version}
 
 %description
 Skanpage is a simple scanning application designed for
@@ -73,22 +75,23 @@ Features:
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
 %find_lang %{name}
 
 %files
 %license LICENSES/*
 %doc README.md
-%{_kf5_applicationsdir}/org.kde.skanpage.desktop
-%{_kf5_appstreamdir}/org.kde.skanpage.appdata.xml
-%{_kf5_bindir}/skanpage
-%{_kf5_debugdir}/skanpage.categories
-%{_kf5_iconsdir}/hicolor/*/apps/skanpage.*
+%{_kf6_applicationsdir}/org.kde.skanpage.desktop
+%{_kf6_appstreamdir}/org.kde.skanpage.appdata.xml
+%{_kf6_bindir}/skanpage
+%{_kf6_debugdir}/skanpage.categories
+%{_kf6_iconsdir}/hicolor/*/apps/skanpage.*
 
 %files lang -f %{name}.lang
 
