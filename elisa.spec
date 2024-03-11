@@ -1,7 +1,7 @@
 #
 # spec file for package elisa
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,55 +16,57 @@
 #
 
 
-%define qt5_version 5.15.2
-%define kf5_version 5.105.0
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           elisa
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        Music player and collection organizer
 License:        LGPL-3.0-or-later
 URL:            https://apps.kde.org/elisa
-Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Baloo) >= %{kf5_version}
-BuildRequires:  cmake(KF5Config) >= %{kf5_version}
-BuildRequires:  cmake(KF5ConfigWidgets) >= %{kf5_version}
-BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
-BuildRequires:  cmake(KF5Crash) >= %{kf5_version}
-BuildRequires:  cmake(KF5DBusAddons) >= %{kf5_version}
-BuildRequires:  cmake(KF5Declarative) >= %{kf5_version}
-BuildRequires:  cmake(KF5DocTools) >= %{kf5_version}
-BuildRequires:  cmake(KF5FileMetaData) >= %{kf5_version}
-BuildRequires:  cmake(KF5QQC2DesktopStyle)
-BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
-BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
-BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
-BuildRequires:  cmake(KF5Kirigami2) >= %{kf5_version}
-BuildRequires:  cmake(KF5Package) >= %{kf5_version}
-BuildRequires:  cmake(KF5XmlGui) >= %{kf5_version}
-BuildRequires:  cmake(Qt5Concurrent) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
-BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Gui) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Multimedia) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Network) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Qml) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Quick) >= %{qt5_version}
-BuildRequires:  cmake(Qt5QuickControls2) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Sql) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Svg) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Test) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
-Requires:       kdeclarative-components >= %{kf5_version}
-Requires:       kirigami2 >= %{kf5_version}
-Requires:       libqt5-qtquickcontrols >= %{qt5_version}
-Requires:       libqt5-qtquickcontrols2 >= %{qt5_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  qt6-core-private-devel >= %{qt6_version}
+BuildRequires:  cmake(KF6Baloo) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6FileMetaData) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons)
+BuildRequires:  cmake(KF6QQC2DesktopStyle) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickTest) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+Requires:       kf6-kdeclarative-imports >= %{kf6_version}
+Requires:       kf6-kirigami >= %{kf6_version}
+Requires:       qt6-declarative-imports >= %{qt6_version}
+Requires:       qt6-sql-sqlite >= %{qt6_version}
 
 %description
 Elisa is a music player with a library where music can be browsed by
@@ -80,30 +82,30 @@ built and played.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
+%find_lang %{name} --with-man --with-html --all-name
 
-%suse_update_desktop_file -r org.kde.elisa Qt KDE AudioVideo Audio Player
 
 %files
-%license COPYING*
-%doc README*
-%doc %lang(en) %{_kf5_htmldir}/en/elisa/
-%{_kf5_applicationsdir}/org.kde.elisa.desktop
-%{_kf5_appstreamdir}/org.kde.elisa.appdata.xml
-%{_kf5_bindir}/elisa
-%{_kf5_debugdir}/elisa.categories
-%{_kf5_iconsdir}/hicolor/*/apps/elisa.*
-%{_kf5_libdir}/elisa/
-%{_kf5_qmldir}/org/kde/elisa/
-%{_kf5_sharedir}/dbus-1/services/org.kde.elisa.service
+%license LICENSES/*
+%doc README.md
+%doc %lang(en) %{_kf6_htmldir}/en/elisa/
+%{_kf6_applicationsdir}/org.kde.elisa.desktop
+%{_kf6_appstreamdir}/org.kde.elisa.appdata.xml
+%{_kf6_bindir}/elisa
+%{_kf6_debugdir}/elisa.categories
+%{_kf6_iconsdir}/hicolor/*/apps/elisa.*
+%{_kf6_libdir}/elisa/
+%{_kf6_qmldir}/org/kde/elisa/
+%{_kf6_sharedir}/dbus-1/services/org.kde.elisa.service
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/elisa/
 
 %changelog
