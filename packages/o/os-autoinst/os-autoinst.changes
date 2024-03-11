@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 11 05:16:55 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1709820923.be01b33:
+  * sshXtermIPMI: Reconnect SOL on error
+  * localXvnc::callxterm: Return xterm PID
+  * localXvnc: Open hardware console log in append mode
+  * Add tidyall to README
+  * Symlink xt/00-tidy.t from common repo
+  * video_stream: Fix uninitialized cmd_prefix
+
+-------------------------------------------------------------------
 Tue Mar 05 22:11:29 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1709676681.c0c1cf8:
