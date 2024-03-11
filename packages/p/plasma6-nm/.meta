@@ -1,0 +1,9 @@
+<package name="plasma6-nm" project="openSUSE:Factory">
+  <title>Plasma applet written in QML for managing network connections</title>
+  <description>Plasma applet for controlling network connections on systems
+that use the NetworkManager service.
+
+</description>
+  <devel project="KDE:Frameworks" package="plasma6-nm"/>
+  <url>https://www.kde.org</url>
+</package>

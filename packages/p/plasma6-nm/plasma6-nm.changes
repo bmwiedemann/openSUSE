@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Wed Mar  6 08:40:32 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.1
+- Changes since 6.0.0:
+  * update version for new release
+
+-------------------------------------------------------------------
+Mon Mar  4 20:35:45 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add Provides/Obsoletes to replace Plasma 5
+
+-------------------------------------------------------------------
+Tue Feb 27 19:04:25 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Respun tar, new changes:
+  * KCM: Work around MessageDialog not emitting accepted signal (kde#481840)
+
+-------------------------------------------------------------------
+Wed Feb 21 18:36:37 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0:
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.93.0:
+  * Replace KF6ConfigWidgets dependency with KF6ColorScheme
+  * update version for new release
+
+-------------------------------------------------------------------
+Wed Jan 31 17:37:47 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.93.0 (6.0 RC 2):
+  * New bugfix release
+  * See https://kde.org/announcements/megarelease/6/rc2/ for details
+- No code changes since 5.92.0
+
+-------------------------------------------------------------------
+Wed Jan 17 18:39:47 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.92.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Mon Jul 10 15:01:16 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init plasma6-nm
