@@ -1,7 +1,7 @@
 #
 # spec file for package kdenetwork-filesharing
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,38 +16,37 @@
 #
 
 
+%define kf6_version 5.246.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           kdenetwork-filesharing
-Version:        23.08.4
+Version:        24.02.0
 Release:        0
 Summary:        KDE Network Libraries
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-Patch0:         0001-Remove-wrong-group-check-from-group-manager.patch
-BuildRequires:  PackageKit-Qt5-devel
-BuildRequires:  extra-cmake-modules
-%if 0%{?suse_version} < 1550
-# c++-20 required
-BuildRequires:  gcc10-PIE
-BuildRequires:  gcc10-c++
-%endif
-BuildRequires:  cmake(KF5Completion)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Declarative)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(QCoro5)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6Auth) >= %{kf6_version}
+BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(QCoro6Core)
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(packagekitqt6)
+Recommends:     samba-client
 Enhances:       dolphin
-# The package was named kdenetwork4-filesharing, although being a KF5 plugin
+# The package used to named kdenetwork4-filesharing
 Provides:       kdenetwork4-filesharing = %{version}
 Obsoletes:      kdenetwork4-filesharing < %{version}
 Obsoletes:      kdenetwork4-filesharing-lang < %{version}
@@ -62,34 +61,30 @@ Used for configuring Samba shares.
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} < 1550
-  export CXX=g++-10
-%endif
 %ifarch ppc ppc64
 export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %endif
+%cmake_kf6
 
-%cmake_kf5 -d build
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
+%find_lang %{name} --all-name
 
 %ldconfig_scriptlets
 
 %files
 %license LICENSES/*
-%{_kf5_appstreamdir}/org.kde.kdenetwork-filesharing.metainfo.xml
-%dir %{_kf5_plugindir}/kf5
-%dir %{_kf5_plugindir}/kf5/propertiesdialog
-%{_kf5_plugindir}/kf5/propertiesdialog/sambausershareplugin.so
-%{_kf5_plugindir}/kf5/propertiesdialog/SambaAcl.so
-%{_kf5_dbuspolicydir}/org.kde.filesharing.samba.conf
-%{_kf5_sharedir}/dbus-1/system-services/org.kde.filesharing.samba.service
-%{_kf5_sharedir}/polkit-1/actions/org.kde.filesharing.samba.policy
-%{_libexecdir}/kauth/authhelper
+%{_kf6_appstreamdir}/org.kde.kdenetwork-filesharing.metainfo.xml
+%{_kf6_dbuspolicydir}/org.kde.filesharing.samba.conf
+%{_kf6_libexecdir}/kauth/authhelper
+%dir %{_kf6_plugindir}/kf6/propertiesdialog
+%{_kf6_plugindir}/kf6/propertiesdialog/SambaAcl.so
+%{_kf6_plugindir}/kf6/propertiesdialog/sambausershareplugin.so
+%{_kf6_sharedir}/dbus-1/system-services/org.kde.filesharing.samba.service
+%{_kf6_sharedir}/polkit-1/actions/org.kde.filesharing.samba.policy
 
 %files lang -f %{name}.lang
 
