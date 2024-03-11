@@ -1,0 +1,8 @@
+<package name="ksshaskpass6" project="openSUSE:Factory">
+  <title>Plasma 6 version of ssh-askpass</title>
+  <description>A Plasma 6 version of ssh-askpass with KWallet support.
+
+</description>
+  <devel project="KDE:Frameworks" package="ksshaskpass6"/>
+  <url>https://www.kde.org/</url>
+</package>
