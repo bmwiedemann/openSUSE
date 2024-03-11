@@ -1,0 +1,10 @@
+<package name="kf6-kio" project="openSUSE:Factory">
+  <title>Network transparent access to files and data</title>
+  <description>This framework implements almost all the file management functions you
+will ever need. In fact, the KDE file manager (Dolphin) and the KDE
+file dialog also uses this to provide its network-enabled file management.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-kio"/>
+  <url>https://www.kde.org</url>
+</package>

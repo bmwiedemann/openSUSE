@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Wed Feb 21 19:27:57 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.249.0:
+  * update version for new release
+  * KFilePlacesItem: Strip UDI prefix for player URLs
+  * KCoreDirLister: reduce string allocations in `setNameFilter`
+  * Strip trailing slash in iconForStandardPath
+  * Allow to specify http1 only
+  * CommandLauncherJob: clarify scope of responsibilities in documentation
+  * kfileplacesmodeltest: fix `KFilePlacesModelTest::testReparse`
+  * KFileItem: Use stat data for isDir if we already performed a stat
+  * http: don't emit data({}) early
+  * Worker template: bump min Qt/KF deps to match first official KF6 release
+  * Worker template: add missing include
+  * Don't leak existing file handles to newly spanwed KIO workers
+  * update version for new release
+
+-------------------------------------------------------------------
+Wed Jan 31 17:49:05 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.249.0 (6.0 RC 2):
+  * New bugfix release
+  * For more details see https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
+Mon Jan 15 20:01:13 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.248.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Sat May 27 11:18:22 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init kf6-kio
