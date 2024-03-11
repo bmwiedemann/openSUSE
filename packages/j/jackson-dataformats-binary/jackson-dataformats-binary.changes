@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar  8 08:33:47 UTC 2024 - Gus Kenion <gkenion@suse.com>
+
+- Update to 2.16.1
+  * 2.16.1 (24-Dec-2023)
+    + #303: (ion) NullPointerException in IonParser.nextToken()
+  * 2.16.0 (15-Nov-2023)
+    + #403: (smile) Remove Smile-specific buffer-recycling
+
+-------------------------------------------------------------------
 Sat Sep  9 13:40:21 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
