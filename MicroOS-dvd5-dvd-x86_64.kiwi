@@ -694,8 +694,6 @@
       <repopackage name="kbd-legacy"/>
       <repopackage name="kcm_sddm"/>
       <repopackage name="kcm_sddm-lang"/>
-      <repopackage name="kcm_tablet"/>
-      <repopackage name="kcm_tablet-lang"/>
       <repopackage name="kcmutils-imports"/>
       <repopackage name="kconf_update5"/>
       <repopackage name="kconf_update6"/>
@@ -925,8 +923,6 @@
       <repopackage name="kscreenlocker6-lang"/>
       <repopackage name="kservice"/>
       <repopackage name="kservice-lang"/>
-      <repopackage name="ksshaskpass5"/>
-      <repopackage name="ksshaskpass5-lang"/>
       <repopackage name="ksshaskpass6"/>
       <repopackage name="ksshaskpass6-lang"/>
       <repopackage name="ksysguardsystemstats6-data"/>

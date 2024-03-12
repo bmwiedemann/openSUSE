@@ -455,8 +455,6 @@
     <package name="kbd-legacy" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="kcm_sddm" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kcm_sddm-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="kcm_tablet" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="kcm_tablet-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="kcmutils-imports" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="kconf_update5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kconf_update6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -677,8 +675,6 @@
     <package name="kscreenlocker6-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kservice" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kservice-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="ksshaskpass5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="ksshaskpass5-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ksshaskpass6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="ksshaskpass6-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="ksysguardsystemstats6-data" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->

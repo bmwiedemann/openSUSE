@@ -684,8 +684,6 @@
     <package name="kbd-legacy" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="kcm_sddm" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="kcm_sddm-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="kcm_tablet" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:expansion -->
-    <package name="kcm_tablet-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:expansion -->
     <package name="kcmutils-imports" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:expansion -->
     <package name="kconf_update5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="kconf_update6" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
@@ -915,8 +913,6 @@
     <package name="kscreenlocker6-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="kservice" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="kservice-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="ksshaskpass5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:expansion -->
-    <package name="ksshaskpass5-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:expansion -->
     <package name="ksshaskpass6" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="ksshaskpass6-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="ksysguardsystemstats6-data" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
