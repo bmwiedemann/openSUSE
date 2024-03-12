@@ -349,6 +349,7 @@ dvd:
   - Mesa-demo-x
   # requires by zypper_in test suite in openQA
   - xdelta3
+  - yast2-firstboot
   - inkscape
   - autoyast2
   # impitool can be handy when machines are configured using autoyast
