@@ -447,6 +447,13 @@
     <package name="patterns-kde-kde"/>
     <namedCollection name="kde"/>
     <package name="plasma5-workspace-branding-openSUSE"/>
+    <package name="phonon4qt5-backend-vlc"/>
+    <!-- OBS-IgnorePackage: vlc -->
+    <ignore name="vlc"/>
+    <!-- OBS-IgnorePackage: vlc-qt -->
+    <ignore name="vlc-qt"/>
+    <package name="plasma-nm5"/>
+    <package name="opensuse-welcome"/>
     <package name="baloo5-tools"/>
     <package name="NetworkManager"/>
     <!-- OBS-IgnorePackage: libreoffice -->
@@ -504,8 +511,6 @@
     <ignore name="oxygen5-icon-theme-large"/>
     <!-- OBS-IgnorePackage: plasma5-desktop-emojier -->
     <ignore name="plasma5-desktop-emojier"/>
-    <package name="plasma-nm5"/>
-    <package name="phonon4qt5-backend-vlc"/>
     <!-- OBS-IgnorePackage: ispell -->
     <ignore name="ispell"/>
     <!-- OBS-IgnorePackage: patterns-kde-kde_games -->
@@ -530,29 +535,32 @@
     <ignore name="hugin"/>
     <!-- OBS-IgnorePackage: icewm -->
     <ignore name="icewm"/>
-    <!-- OBS-IgnorePackage: kmahjongg-lang -->
-    <ignore name="kmahjongg-lang"/>
+    <!-- OBS-IgnorePackage: ksudoku -->
+    <ignore name="ksudoku"/>
+    <!-- OBS-IgnorePackage: kpat -->
+    <ignore name="kpat"/>
+    <!-- OBS-IgnorePackage: kmahjongg -->
+    <ignore name="kmahjongg"/>
     <!-- OBS-IgnorePackage: konversation-lang -->
     <ignore name="konversation-lang"/>
+    <!-- OBS-IgnorePackage: libKF5Auth5-lang -->
+    <ignore name="libKF5Auth5-lang"/>
     <!-- OBS-IgnorePackage: libproxy1-pacrunner-webkit -->
     <ignore name="libproxy1-pacrunner-webkit"/>
-    <!-- OBS-IgnorePackage: vlc -->
-    <ignore name="vlc"/>
-    <!-- OBS-IgnorePackage: vlc-qt -->
-    <ignore name="vlc-qt"/>
     <!-- OBS-IgnorePackage: vlc-lang -->
     <ignore name="vlc-lang"/>
     <!-- OBS-IgnorePackage: kipi-plugins -->
     <ignore name="kipi-plugins"/>
     <!-- OBS-IgnorePackage: breeze5-wallpapers -->
     <ignore name="breeze5-wallpapers"/>
+    <!-- OBS-IgnorePackage: breeze6-wallpapers -->
+    <ignore name="breeze6-wallpapers"/>
     <package name="partitionmanager"/>
     <!-- OBS-IgnorePackage: cyrus-sasl -->
     <ignore name="cyrus-sasl"/>
     <!-- OBS-IgnorePackage: xorg-x11-fonts -->
     <ignore name="xorg-x11-fonts"/>
     <package name="alsa-firmware"/>
-    <package name="opensuse-welcome"/>
     <!-- OBS-IgnorePackage: bluedevil5 -->
     <ignore name="bluedevil5"/>
   </packages>

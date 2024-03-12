@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar 12 19:57:57 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- list-kde: Ignore some Qt/Plasma 5 packages and qt6-webengine users
+- common.sh: Force delete qt6-webengine for now
+
+-------------------------------------------------------------------
+Tue Mar 12 12:43:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix tumbleweed live image, following the move to Plasma 6:
+  + Limit installation of  plasma5-workspace-branding-openSUSE,
+    phonon4qt5-backend-vlc, plasma-nm5, speech-dispatcher, and
+    opensuse-welcome to distro == leap.
+  + Explicitly add phonon-vlc-qt6 on tumbleweed; allow vlc and
+    vlc-qt on Tumbleweed for Plasma6.
+- config.sh: fdupes /usr/share/licenses
+
+-------------------------------------------------------------------
 Mon Feb 12 09:50:25 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Switch to kiwi schema v7.4:

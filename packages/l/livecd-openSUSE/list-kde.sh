@@ -12,8 +12,31 @@ buildignore akregator
 buildignore ImageMagick
 install patterns-kde-kde
 installPattern kde
-install plasma5-workspace-branding-openSUSE
-install baloo5-tools
+if [ "$distro" = "leap" ]; then
+  install plasma5-workspace-branding-openSUSE
+  install phonon4qt5-backend-vlc
+  buildignore vlc
+  buildignore vlc-qt
+  install plasma-nm5
+  # From x11_enhanced, but that pattern can't be installed
+  install opensuse-welcome
+  install baloo5-tools
+else
+  install phonon-vlc-qt6
+  buildignore gtk3-metatheme-breeze
+  install kf6-baloo-tools
+  buildignore libqt5-qttranslations
+  buildignore speech-dispatcher
+
+  # Until deleted or replaced by kcm_sddm6
+  buildignore kcm_sddm
+  # Until built against Qt 6
+  buildignore xwaylandvideobridge
+  # Needs WebEngine and we don't install docs on the .iso
+  buildignore khelpcenter
+  # Needs WebEngine and not useful ATM
+  buildignore kaccounts-providers
+fi
 install NetworkManager
 # Don't add libreoffice for now, too large
 buildignore libreoffice
@@ -34,8 +57,6 @@ buildignore oxygen5-icon-theme-large
 buildignore plasma5-desktop-emojier
 
 # Resolve have-choice
-install plasma-nm5
-install phonon4qt5-backend-vlc
 buildignore ispell
 
 # No fun allowed
@@ -60,16 +81,18 @@ buildignore digikam
 buildignore gdb
 buildignore hugin
 buildignore icewm
-buildignore kmahjongg-lang
+buildignore ksudoku
+buildignore kpat
+buildignore kmahjongg
 buildignore konversation-lang
+buildignore libKF5Auth5-lang
 buildignore libproxy1-pacrunner-webkit
-buildignore vlc
-buildignore vlc-qt
 buildignore vlc-lang
 buildignore kipi-plugins
 
 # Upstream branding, not used by default and HUGE
 buildignore breeze5-wallpapers
+buildignore breeze6-wallpapers
 
 install partitionmanager
 
@@ -81,7 +104,5 @@ buildignore xorg-x11-fonts
 # From rest_cd_core
 install alsa-firmware
 
-# From x11_enhanced, but that pattern can't be installed
-install opensuse-welcome
 
 buildignore bluedevil5

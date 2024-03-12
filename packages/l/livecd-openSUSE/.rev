@@ -1793,4 +1793,21 @@
     <comment></comment>
     <requestid>1146375</requestid>
   </revision>
+  <revision rev="225" vrev="225">
+    <srcmd5>33878f4cf4a5067c3a0c53afb27b1daa</srcmd5>
+    <version>unknown</version>
+    <time>1710273792</time>
+    <user>dimstar_suse</user>
+    <comment>- list-kde: Ignore some Qt/Plasma 5 packages and qt6-webengine users
+- common.sh: Force delete qt6-webengine for now
+
+- Fix tumbleweed live image, following the move to Plasma 6:
+  + Limit installation of  plasma5-workspace-branding-openSUSE,
+    phonon4qt5-backend-vlc, plasma-nm5, speech-dispatcher, and
+    opensuse-welcome to distro == leap.
+  + Explicitly add phonon-vlc-qt6 on tumbleweed; allow vlc and
+    vlc-qt on Tumbleweed for Plasma6.
+- config.sh: fdupes /usr/share/licenses (forwarded request 1157326 from Vogtinator)</comment>
+    <requestid>1157327</requestid>
+  </revision>
 </revisionlist>

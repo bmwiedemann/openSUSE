@@ -42,6 +42,13 @@ if [ "$desktop" = "x11" -o "$desktop" = "xfce" ]; then
 	rpm -e --nodeps noto-coloremoji-fonts || rpm -e --nodeps google-noto-coloremoji-fonts
 fi
 
+# Make the image smaller, work around a hard dep by plasma6-desktop -> signon-ui and kdeplasma6-addons
+if rpm -q libQt6WebEngineCore6; then
+	rpm -e --nodeps libQt6WebEngineCore6
+fi
+
+/usr/lib/rpm/fdupes_wrapper /usr/share/licenses
+
 #--------------------------------------
 # enable and disable services
 
@@ -57,7 +64,7 @@ echo '# multipath needs to be excluded from dracut as it breaks os-prober' > /et
 echo 'omit_dracutmodules+=" multipath "' >> /etc/dracut.conf.d/no-multipath.conf
 
 # Stronger compression for the initrd
-echo 'compress="xz -4 --check=crc32 --memlimit-compress=50%"' >> /etc/dracut.conf.d/less-storage.conf
+echo 'compress="xz -9 --check=crc32 --memlimit-compress=50%"' >> /etc/dracut.conf.d/less-storage.conf
 
 # Smaller initrd where necessary
 if [ "$desktop" = "x11" ] || [ "$desktop" = "xfce" ]; then

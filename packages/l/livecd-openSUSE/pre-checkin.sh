@@ -14,8 +14,8 @@ buildignore() {
         # but https://github.com/openSUSE/obs-build/issues/420 requires a workaround
         ## Due to "--ignoreignore--" this has no effect either, so workaround the workaround
         ## by using <ignore/>, which gets ignored by OBS completely...
-	PACKAGES="$PACKAGES\n    <!-- OBS-IgnorePackage: $1 -->"
-	PACKAGES="$PACKAGES\n    <ignore name=\"$1\"/>"
+        PACKAGES="$PACKAGES\n    <!-- OBS-IgnorePackage: $1 -->"
+        PACKAGES="$PACKAGES\n    <ignore name=\"$1\"/>"
 }
 
 installPattern() {
