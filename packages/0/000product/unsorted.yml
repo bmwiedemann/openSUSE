@@ -104,7 +104,6 @@ unsorted:
   - Mesa-demo-x-32bit 
   - Mesa-devel 
   - Mesa-dri-32bit 
-  - Mesa-dri-devel 
   - Mesa-dri-nouveau 
   - Mesa-dri-nouveau-32bit 
   - Mesa-gallium-32bit 
@@ -332,7 +331,6 @@ unsorted:
   - WSL-DistroLauncher 
   - WSL-DistroLauncher-debug 
   - WindowMaker-devel 
-  - WindowMaker-themes 
   - WoeUSB 
   - XSStrike 
   - XyGrib 
@@ -371,7 +369,6 @@ unsorted:
   - accerciser 
   - accerciser-lang 
   - accerciser-plugin-IPython 
-  - accounts-qml-module 
   - accounts-qml-module-doc 
   - accountsservice-devel 
   - accountsservice-vala 
@@ -472,16 +469,14 @@ unsorted:
   - aisleriot-themes 
   - akka 
   - akka-javadoc 
-  - akonadi-calendar 
+  - akonadi-apparmor 
   - akonadi-calendar-devel 
-  - akonadi-contact-devel 
+  - akonadi-contacts-devel 
+  - akonadi-devel 
   - akonadi-import-wizard-devel 
-  - akonadi-mime 
   - akonadi-mime-devel 
   - akonadi-notes-devel 
   - akonadi-search-devel 
-  - akonadi-server-apparmor 
-  - akonadi-server-devel 
   - akonadiconsole 
   - akonadiconsole-lang 
   - alac 
@@ -1056,7 +1051,6 @@ unsorted:
   - auto-value-parent 
   - autobench 
   - autobuild 
-  - autoconf 
   - autoconf-archive 
   - autoconf-el 
   - autoconf213 
@@ -1064,7 +1058,6 @@ unsorted:
   - autofdo 
   - autogen 
   - autojump 
-  - automake 
   - autonym-fonts 
   - autoopts 
   - autossh 
@@ -1233,8 +1226,16 @@ unsorted:
   - baekmuk-ttf-fonts 
   - baka-mplayer 
   - ballerburg 
+  - baloo-widgets-devel 
   - baloo5-devel 
+  - baloo5-imports 
+  - baloo5-kioslaves 
+  - baloo5-kioslaves-lang 
+  - baloo5-tools 
+  - baloo5-tools-lang 
+  - baloo5-widgets 
   - baloo5-widgets-devel 
+  - baloo5-widgets-lang 
   - balsa 
   - balsa-lang 
   - bam 
@@ -1357,16 +1358,13 @@ unsorted:
   - bind-modules-sqlite3 
   - bindfs 
   - bing 
-  - binutils 
   - binutils-devel 
   - binutils-devel-32bit 
   - binutils-gold 
   - binwalk 
   - bird 
   - bird-doc 
-  - bison 
   - bison-32bit 
-  - bison-lang 
   - bitcoin-qt5 
   - bitcoin-test 
   - bitcoin-utils 
@@ -1378,7 +1376,6 @@ unsorted:
   - bitlbee-facebook 
   - bitlbee-steam 
   - bitmap 
-  - bitstream-vera-fonts 
   - bittwist 
   - bitwarden 
   - bitwise 
@@ -1532,7 +1529,10 @@ unsorted:
   - brasero 
   - brasero-devel 
   - brasero-lang 
-  - breeze5-icons-rcc 
+  - breeze 
+  - breeze5-cursors 
+  - breeze5-wallpapers 
+  - breeze6-devel 
   - breezy 
   - brial-devel 
   - brickd 
@@ -2973,7 +2973,6 @@ unsorted:
   - dd_rhelp 
   - ddclient 
   - ddcutil 
-  - ddcutil-i2c-udev-rules 
   - ddcutil-service 
   - ddgr 
   - ddnet 
@@ -3971,7 +3970,6 @@ unsorted:
   - fence-agents-amt_ws 
   - fence-agents-devel 
   - fence-sanlock 
-  - festival 
   - festival-devel 
   - fetchmail 
   - fetchmailconf 
@@ -4046,6 +4044,8 @@ unsorted:
   - file-unpack2 
   - fileb0x 
   - filebench 
+  - filelight 
+  - filelight-lang 
   - filezilla 
   - filezilla-devel 
   - filezilla-lang 
@@ -4187,7 +4187,6 @@ unsorted:
   - fontawesome-fonts-web 
   - fontcacheproto-devel 
   - fontconfig-32bit 
-  - fontconfig-devel 
   - fontconfig-devel-32bit 
   - fontconfig-devel-doc 
   - fontconfig-doc 
@@ -4235,6 +4234,7 @@ unsorted:
   - framel 
   - framel-devel 
   - frameworkintegration-devel 
+  - frameworkintegration-plugin 
   - francis 
   - francis-lang 
   - fred 
@@ -4284,7 +4284,6 @@ unsorted:
   - freetds-devel 
   - freetds-doc 
   - freetds-tools 
-  - freetype2-devel 
   - freetype2-devel-32bit 
   - freetype2-profile-tti35 
   - freexl-devel 
@@ -4583,7 +4582,6 @@ unsorted:
   - gcal 
   - gcal-lang 
   - gcalcli 
-  - gcc 
   - gcc-32bit 
   - gcc-PIE 
   - gcc-ada 
@@ -4623,7 +4621,6 @@ unsorted:
   - gcc12-objc 
   - gcc12-objc-32bit 
   - gcc12-testresults 
-  - gcc13 
   - gcc13-32bit 
   - gcc13-PIE 
   - gcc13-ada 
@@ -4638,7 +4635,6 @@ unsorted:
   - gcc13-go 
   - gcc13-go-32bit 
   - gcc13-info 
-  - gcc13-locale 
   - gcc13-m2 
   - gcc13-m2-32bit 
   - gcc13-obj-c++ 
@@ -4839,7 +4835,6 @@ unsorted:
   - gettext-runtime-mini 
   - gettext-runtime-mini-tools-doc 
   - gettext-runtime-tools-doc 
-  - gettext-tools 
   - gettext-tools-mini 
   - gexif 
   - gexif-lang 
@@ -6946,7 +6941,6 @@ unsorted:
   - glib2-doc 
   - glib2-tests-devel 
   - glib2-tools-32bit 
-  - glibc-devel 
   - glibc-devel-32bit 
   - glibc-devel-static 
   - glibc-devel-static-32bit 
@@ -8070,7 +8064,6 @@ unsorted:
   - guvcview-qt5-lang 
   - gv 
   - gvfs-devel 
-  - gvim 
   - gwenhywfar 
   - gwenhywfar-devel 
   - gwenhywfar-gwenbuild 
@@ -8233,9 +8226,7 @@ unsorted:
   - hevea 
   - hex 
   - hex2bin 
-  - hexchat 
   - hexchat-devel 
-  - hexchat-lang 
   - hexchat-plugins-lua 
   - hexchat-plugins-perl 
   - hexchat-plugins-python3 
@@ -9364,8 +9355,11 @@ unsorted:
   - kImageAnnotator-Qt5-devel 
   - kImageAnnotator-Qt6-devel 
   - kaccounts-integration-devel 
+  - kaccounts-integration-kf5 
+  - kaccounts-integration-kf5-devel 
   - kactivities-stats-devel 
   - kactivities5-devel 
+  - kactivities5-imports 
   - kactivities5-tools 
   - kaffeine 
   - kaffeine-lang 
@@ -9386,6 +9380,7 @@ unsorted:
   - kalarm 
   - kalarm-lang 
   - kalgebra-mobile 
+  - kalgebra-mobile-lang 
   - kalk 
   - kalk-lang 
   - kalzium 
@@ -9459,12 +9454,15 @@ unsorted:
   - kconfig-devel 
   - kconfigwidgets-devel 
   - kcontacts-devel 
+  - kcontacts-lang 
   - kcoreaddons-devel 
   - kcov 
   - kcrash-devel 
   - kcron 
   - kcron-lang 
+  - kdav 
   - kdav-devel 
+  - kdav-lang 
   - kdb-devel 
   - kdb-lang 
   - kdb-mysql-driver 
@@ -9474,6 +9472,7 @@ unsorted:
   - kddockwidgets-devel 
   - kddockwidgets-qt6-devel 
   - kde-fcstd-thumbnailer 
+  - kde-gtk-config5-gtk3 
   - kde-l10n-devel 
   - kde-oxygen-fonts 
   - kde-theme-dracula 
@@ -9482,14 +9481,19 @@ unsorted:
   - kdeclarative-devel 
   - kdeclarative-tools 
   - kdeconnect-kde-zsh-completion 
+  - kdecoration6-devel 
   - kded-devel 
   - kded-lang 
   - kdegames-carddecks-other 
+  - kdegraphics-mobipocket-devel 
+  - kdelibs4support 
   - kdelibs4support-devel 
+  - kdelibs4support-lang 
   - kdenlive 
   - kdenlive-lang 
+  - kdeplasma6-addons-devel 
   - kdesdk-scripts 
-  - kdesdk-scripts-kf5-porting 
+  - kdesdk-scripts-kf6-porting 
   - kdesdk-scripts-lang 
   - kdesdk-thumbnailers 
   - kdesdk-thumbnailers-lang 
@@ -9512,6 +9516,7 @@ unsorted:
   - kdf 
   - kdf-lang 
   - kdiagram-devel 
+  - kdiagram6-devel 
   - kdiamond 
   - kdiamond-lang 
   - kdiff3 
@@ -9523,6 +9528,7 @@ unsorted:
   - kdsingleapplication-qt6-devel 
   - kdsoap-devel 
   - kdsoap-qt6-devel 
+  - kdsoap-ws-discovery-client-devel 
   - kdstatemachineeditor-devel 
   - kdumpid 
   - kea 
@@ -9585,7 +9591,99 @@ unsorted:
   - keyutils-devel 
   - keyutils-devel-32bit 
   - kf5-filesystem 
+  - kf5-kcm-fcitx-icons 
   - kf5-mediainfo 
+  - kf6-attica-devel 
+  - kf6-baloo-devel 
+  - kf6-bluez-qt-devel 
+  - kf6-breeze-icons-devel 
+  - kf6-breeze-icons-rcc 
+  - kf6-extra-cmake-modules 
+  - kf6-extra-cmake-modules-doc 
+  - kf6-filesystem 
+  - kf6-frameworkintegration-devel 
+  - kf6-kapidox 
+  - kf6-karchive-devel 
+  - kf6-kauth-devel 
+  - kf6-kbookmarks-devel 
+  - kf6-kcalendarcore-devel 
+  - kf6-kcmutils-devel 
+  - kf6-kcodecs-devel 
+  - kf6-kcolorscheme-devel 
+  - kf6-kcompletion-devel 
+  - kf6-kconfig-devel 
+  - kf6-kconfigwidgets-devel 
+  - kf6-kcontacts-devel 
+  - kf6-kcoreaddons-devel 
+  - kf6-kcrash-devel 
+  - kf6-kdav-devel 
+  - kf6-kdbusaddons-devel 
+  - kf6-kdeclarative-devel 
+  - kf6-kded-devel 
+  - kf6-kded-lang 
+  - kf6-kdesu-devel 
+  - kf6-kdnssd-devel 
+  - kf6-kdoctools-devel 
+  - kf6-kdoctools-doc 
+  - kf6-kfilemetadata-devel 
+  - kf6-kglobalaccel-devel 
+  - kf6-kguiaddons-devel 
+  - kf6-kholidays-devel 
+  - kf6-ki18n-devel 
+  - kf6-ki18n-imports 
+  - kf6-kiconthemes-devel 
+  - kf6-kidletime-devel 
+  - kf6-kimageformats-eps 
+  - kf6-kio-devel 
+  - kf6-kio-doc 
+  - kf6-kirigami 
+  - kf6-kirigami-devel 
+  - kf6-kirigami-lang 
+  - kf6-kitemmodels 
+  - kf6-kitemmodels-devel 
+  - kf6-kitemviews-devel 
+  - kf6-kjobwidgets-devel 
+  - kf6-knewstuff-core-devel 
+  - kf6-knewstuff-devel 
+  - kf6-knotifications-devel 
+  - kf6-knotifyconfig-devel 
+  - kf6-kpackage-devel 
+  - kf6-kparts-devel 
+  - kf6-kpeople-devel 
+  - kf6-kpeople-imports 
+  - kf6-kplotting-devel 
+  - kf6-kpty-devel 
+  - kf6-kquickcharts-devel 
+  - kf6-krunner-devel 
+  - kf6-kservice-devel 
+  - kf6-kstatusnotifieritem-devel 
+  - kf6-ksvg-devel 
+  - kf6-ktexteditor-devel 
+  - kf6-ktexttemplate-devel 
+  - kf6-ktextwidgets-devel 
+  - kf6-kunitconversion-devel 
+  - kf6-kuserfeedback-devel 
+  - kf6-kuserfeedback-server 
+  - kf6-kuserfeedback-tools 
+  - kf6-kwallet-devel 
+  - kf6-kwidgetsaddons-devel 
+  - kf6-kwindowsystem-devel 
+  - kf6-kxmlgui-devel 
+  - kf6-modemmanager-qt-devel 
+  - kf6-networkmanager-qt-devel 
+  - kf6-oxygen-icons 
+  - kf6-oxygen-icons-large 
+  - kf6-oxygen-icons-scalable 
+  - kf6-prison-devel 
+  - kf6-purpose-devel 
+  - kf6-qqc2-desktop-style-devel 
+  - kf6-solid-devel 
+  - kf6-sonnet-devel 
+  - kf6-sonnet-voikko 
+  - kf6-syndication-devel 
+  - kf6-syntax-highlighting-devel 
+  - kf6-syntax-highlighting-imports 
+  - kf6-threadweaver-devel 
   - kfilemetadata5-devel 
   - kfind 
   - kfind-lang 
@@ -9598,14 +9696,18 @@ unsorted:
   - kget 
   - kget-lang 
   - kglobalaccel-devel 
+  - kglobalacceld6-devel 
   - kgoldrunner 
   - kgoldrunner-lang 
   - kgpg 
   - kgpg-lang 
+  - kguiaddons 
   - kguiaddons-devel 
+  - khealthcertificate 
+  - khealthcertificate-devel 
+  - khealthcertificate-imports 
   - kholidays 
   - kholidays-devel 
-  - khotkeys5-devel 
   - khtml-devel 
   - khunphan 
   - ki18n-devel 
@@ -9637,6 +9739,7 @@ unsorted:
   - kid3-qt 
   - kid3-qt-doc 
   - kidentitymanagement-devel 
+  - kidentitymanagement-imports 
   - kidletime-devel 
   - kigo 
   - kigo-lang 
@@ -9649,9 +9752,9 @@ unsorted:
   - kim-api 
   - kim-api-devel 
   - kim-api-examples 
+  - kimageformats-eps 
   - kimagemapeditor 
   - kimagemapeditor-lang 
-  - kimap 
   - kimap-devel 
   - kinit-devel 
   - kio-devel 
@@ -9661,7 +9764,10 @@ unsorted:
   - kio_iso 
   - kio_perldoc 
   - kio_perldoc-lang 
+  - kirigami-addons 
   - kirigami-addons-devel 
+  - kirigami-addons-lang 
+  - kirigami-addons6-devel 
   - kirigami-gallery 
   - kirigami-gallery-lang 
   - kirigami2-devel 
@@ -9690,7 +9796,6 @@ unsorted:
   - kitemmodels-devel 
   - kitemviews-devel 
   - kiten-devel 
-  - kitinerary 
   - kitinerary-devel 
   - kitty 
   - kitty-shell-integration 
@@ -9737,10 +9842,8 @@ unsorted:
   - kmailtransport-devel 
   - kmarkdownwebview 
   - kmarkdownwebview-lang 
-  - kmbox 
   - kmbox-devel 
   - kmediaplayer-devel 
-  - kmime 
   - kmime-devel 
   - kmix 
   - kmix-lang 
@@ -9802,6 +9905,7 @@ unsorted:
   - kontrast-lang 
   - kopeninghours 
   - kopeninghours-devel 
+  - kopeninghours-imports 
   - kopeninghours-lang 
   - kor 
   - kor-bash-completion 
@@ -9810,18 +9914,23 @@ unsorted:
   - kora-icon-theme 
   - kosmindoormap 
   - kosmindoormap-devel 
+  - kosmindoormap-imports 
   - kosmindoormap-lang 
   - kpackage-devel 
   - kpartloader 
   - kpartloader-lang 
   - kparts-devel 
+  - kpeople5 
   - kpeople5-devel 
+  - kpeople5-lang 
+  - kpeoplevcard 
   - kpeoplevcard-devel 
   - kphotoalbum 
   - kphotoalbum-lang 
   - kpimtextedit-devel 
   - kpipewire-devel 
-  - kpkpass 
+  - kpipewire-imports 
+  - kpipewire6-devel 
   - kpkpass-devel 
   - kplotting-devel 
   - kpmcore-devel 
@@ -9831,9 +9940,12 @@ unsorted:
   - kpty-devel 
   - kpublictransport 
   - kpublictransport-devel 
+  - kpublictransport-imports 
   - kquickcharts-devel 
   - kquickimageeditor-devel 
   - kquickimageeditor-imports 
+  - kquickimageeditor6-devel 
+  - kquickimageeditor6-imports 
   - kraft 
   - krb5-appl-clients 
   - krb5-appl-servers 
@@ -9866,7 +9978,9 @@ unsorted:
   - krita-plugin-gmic 
   - krius 
   - kronometer 
+  - kross 
   - kross-devel 
+  - kross-lang 
   - kross-ruby 
   - kruler 
   - kruler-lang 
@@ -9878,7 +9992,9 @@ unsorted:
   - kryo 
   - kryo-javadoc 
   - ksanecore-devel 
+  - ksanecore-kf5-devel 
   - kscreenlocker-devel 
+  - kscreenlocker6-devel 
   - kseexpr-devel 
   - kseexpr-lang 
   - kservice-devel 
@@ -9890,7 +10006,6 @@ unsorted:
   - ksirk 
   - ksirk-lang 
   - ksmbd-tools 
-  - ksmtp 
   - ksmtp-devel 
   - ksnakeduel 
   - ksnakeduel-lang 
@@ -9907,6 +10022,7 @@ unsorted:
   - kstars-lang 
   - ksysguard5 
   - ksysguard5-lang 
+  - ksysguardsystemstats-data 
   - ksystemlog 
   - ksystemlog-lang 
   - kteatime 
@@ -9920,7 +10036,6 @@ unsorted:
   - ktimetracker 
   - ktimetracker-lang 
   - ktls-utils 
-  - ktnef-common 
   - ktnef-devel 
   - ktoblzcheck 
   - ktoblzcheck-devel 
@@ -10164,12 +10279,15 @@ unsorted:
   - kwave 
   - kwave-lang 
   - kwayland-devel 
+  - kwayland-integration 
+  - kwayland6-devel 
   - kweather 
   - kweather-lang 
   - kweathercore-devel 
   - kwidgetsaddons-devel 
   - kwikdisk 
   - kwin5-devel 
+  - kwin6-devel 
   - kwindowsystem-devel 
   - kwrite 
   - kxml 
@@ -10269,6 +10387,8 @@ unsorted:
   - lato-fonts 
   - latrace 
   - layer-shell-qt5-devel 
+  - layer-shell-qt6-devel 
+  - layer-shell-qt6-imports 
   - lazarus 
   - lazarus-doc 
   - lazarus-ide 
@@ -10486,7 +10606,7 @@ unsorted:
   - libADLMIDI1 
   - libAPFEL0_0_0 
   - libAlembic1_8 
-  - libAppStreamQt3 
+  - libAppStreamQt5-3 
   - libArcus-devel 
   - libArcus3 
   - libAvogadro1 
@@ -10570,7 +10690,6 @@ unsorted:
   - libHepMC3-3 
   - libHepMC3search5 
   - libHepMC4 
-  - libICE-devel 
   - libICE-devel-32bit 
   - libICE6-32bit 
   - libIDL-2-0 
@@ -10586,32 +10705,67 @@ unsorted:
   - libImath-3_1-29-32bit 
   - libIrrlicht1_8 
   - libKChart2 
+  - libKChart6-3 
+  - libKChart6-3-lang 
   - libKDb3-4 
+  - libKF5CalendarCore5 
+  - libKF5Cddb5 
+  - libKF5CompactDisc5 
+  - libKF5Contacts5 
+  - libKF5DAV5 
   - libKF5Emoticons5 
+  - libKF5Holidays5 
+  - libKF5Holidays5-lang 
   - libKF5JSApi5 
   - libKF5JsEmbed5 
   - libKF5JsEmbed5-lang 
-  - libKF5KWeatherCore5 
+  - libKF5KDELibs4Support5 
   - libKF5MediaPlayer5 
   - libKF5ModemManagerQt-devel 
   - libKF5NetworkManagerQt-devel 
-  - libKF5TextUtils1 
-  - libKF5Torrent6 
+  - libKF5NotifyConfig5 
+  - libKF5NotifyConfig5-lang 
+  - libKF5Plotting5 
+  - libKF5PulseAudioQt4 
+  - libKF5Sane6 
+  - libKF5Su5 
+  - libKF5Su5-lang 
+  - libKF5UnitConversion5 
+  - libKF5UnitConversion5-lang 
   - libKF5XmlRpcClient5 
   - libKF5XmlRpcClient5-lang 
+  - libKGantt2 
+  - libKHealthCertificate1 
   - libKOSM1 
   - libKOSMIndoorMap1 
   - libKOpeningHours1 
-  - libKPim5AddressbookImportExport5-devel 
   - libKPim5GAPIBlogger5 
+  - libKPim5GAPICalendar5 
+  - libKPim5GAPICore5 
+  - libKPim5GAPIDrive5 
   - libKPim5GAPILatitude5 
   - libKPim5GAPIMaps5 
+  - libKPim5GAPIPeople5 
+  - libKPim5GAPITasks5 
+  - libKPim6AddressbookImportExport6-devel 
+  - libKPim6GAPIBlogger6 
+  - libKPim6GAPILatitude6 
+  - libKPim6GAPIMaps6 
+  - libKPim6IdentityManagementQuick6 
+  - libKPipeWireDmaBuf5 
+  - libKPipeWireRecord5 
   - libKPropertyCore3-4 
   - libKPropertyWidgets3-4 
   - libKPublicTransport1 
   - libKPublicTransportOnboard1 
   - libKReport3-4 
+  - libKSaneCore1 
+  - libKSaneCore1-lang 
   - libKSeExpr4 
+  - libKTorrent6 
+  - libKTorrent6-lang 
+  - libKWeatherCore6 
+  - libKWeatherCore6-lang 
   - libKasten4 
   - libLASi-devel 
   - libLASi2 
@@ -10639,6 +10793,7 @@ unsorted:
   - libMagickCore-7_Q16HDRI10-32bit 
   - libMagickWand-7_Q16HDRI10-32bit 
   - libMathMLSolver0_3 
+  - libMpvQt1 
   - libMrm4 
   - libMyGUICommon3_4_3 
   - libMyGUIEngine3_4_3 
@@ -10721,7 +10876,6 @@ unsorted:
   - libQCoro5Quick0 
   - libQCoro5WebSockets0 
   - libQCoro6Core0 
-  - libQCoro6DBus0 
   - libQCoro6Network0 
   - libQCoro6Qml0 
   - libQCoro6Quick0 
@@ -10767,6 +10921,7 @@ unsorted:
   - libQt5Charts5-devel 
   - libQt5Concurrent-devel 
   - libQt5Concurrent-devel-32bit 
+  - libQt5Concurrent5 
   - libQt5Concurrent5-32bit 
   - libQt5Core-devel 
   - libQt5Core-devel-32bit 
@@ -10788,6 +10943,7 @@ unsorted:
   - libQt5Gui5-32bit 
   - libQt5Help5-32bit 
   - libQt5HunspellInputMethod-private-headers-devel 
+  - libQt5HunspellInputMethod5 
   - libQt5KmsSupport-devel-static 
   - libQt5KmsSupport-private-headers-devel 
   - libQt5Location5-32bit 
@@ -10796,6 +10952,7 @@ unsorted:
   - libQt5Network-devel-32bit 
   - libQt5Network-private-headers-devel 
   - libQt5Network5-32bit 
+  - libQt5NetworkAuth5 
   - libQt5Nfc5-32bit 
   - libQt5OpenGL-devel 
   - libQt5OpenGL-devel-32bit 
@@ -10822,6 +10979,7 @@ unsorted:
   - libQt5QuickControls2-devel 
   - libQt5QuickTemplates2-devel 
   - libQt5RemoteObjects5 
+  - libQt5Script5 
   - libQt5Scxml5 
   - libQt5Scxml5-imports 
   - libQt5SerialBus5 
@@ -10830,6 +10988,7 @@ unsorted:
   - libQt5Sql-devel-32bit 
   - libQt5Sql-private-headers-devel 
   - libQt5Sql5-32bit 
+  - libQt5Sql5-mysql 
   - libQt5Sql5-mysql-32bit 
   - libQt5Sql5-postgresql 
   - libQt5Sql5-postgresql-32bit 
@@ -10842,10 +11001,14 @@ unsorted:
   - libQt5Test-private-headers-devel 
   - libQt5Test5-32bit 
   - libQt5TextToSpeech5-32bit 
+  - libQt5VirtualKeyboard5 
   - libQt5WaylandClient5-32bit 
+  - libQt5WaylandCompositor5 
   - libQt5WaylandCompositor5-32bit 
   - libQt5WebChannel5-32bit 
   - libQt5WebSockets5-32bit 
+  - libQt5WebView5 
+  - libQt5WebView5-imports 
   - libQt5Widgets-devel 
   - libQt5Widgets-devel-32bit 
   - libQt5Widgets-private-headers-devel 
@@ -10870,13 +11033,10 @@ unsorted:
   - libQt63DQuickRender6 
   - libQt63DQuickScene2D6 
   - libQt63DRender6 
-  - libQt6Bluetooth6 
   - libQt6Bodymovin6 
   - libQt6Charts6 
   - libQt6ChartsQml6 
   - libQt6Coap6 
-  - libQt6Concurrent6 
-  - libQt6Core5Compat6 
   - libQt6DataVisualization6 
   - libQt6DataVisualizationQml6 
   - libQt6DeclarativeOpcua6 
@@ -10886,69 +11046,36 @@ unsorted:
   - libQt6Grpc6 
   - libQt6Help6 
   - libQt6HttpServer6 
-  - libQt6HunspellInputMethod6 
   - libQt6JsonRpc6 
   - libQt6LanguageServer6 
   - libQt6Location6 
   - libQt6Mqtt6 
-  - libQt6Multimedia6 
-  - libQt6MultimediaQuick6 
   - libQt6MultimediaWidgets6 
-  - libQt6NetworkAuth6 
   - libQt6Nfc6 
   - libQt6OpcUa6 
-  - libQt6OpenGLWidgets6 
   - libQt6Pas-devel 
   - libQt6Pas6 
   - libQt6Pdf6 
   - libQt6PdfQuick6 
   - libQt6PdfWidgets6 
-  - libQt6Positioning6 
   - libQt6PositioningQuick6 
   - libQt6Protobuf6 
   - libQt6QmlCompiler6 
-  - libQt6Quick3D6 
-  - libQt6Quick3DAssetImport6 
-  - libQt6Quick3DAssetUtils6 
-  - libQt6Quick3DEffects6 
   - libQt6Quick3DGlslParser6 
-  - libQt6Quick3DHelpers6 
-  - libQt6Quick3DHelpersImpl6 
   - libQt6Quick3DIblBaker6 
-  - libQt6Quick3DParticleEffects6 
-  - libQt6Quick3DParticles6 
   - libQt6Quick3DPhysics6 
   - libQt6Quick3DPhysicsHelpers6 
-  - libQt6Quick3DRuntimeRender6 
-  - libQt6Quick3DSpatialAudio6 
-  - libQt6Quick3DUtils6 
-  - libQt6QuickTimeline6 
-  - libQt6QuickWidgets6 
   - libQt6RemoteObjects6 
   - libQt6RemoteObjectsQml6 
   - libQt6Scxml6 
   - libQt6ScxmlQml6 
-  - libQt6Sensors6 
   - libQt6SensorsQuick6 
   - libQt6SerialBus6 
   - libQt6SerialPort6 
-  - libQt6ShaderTools6 
-  - libQt6SpatialAudio6 
   - libQt6StateMachine6 
   - libQt6StateMachineQml6 
-  - libQt6SvgWidgets6 
-  - libQt6TextToSpeech6 
-  - libQt6UiTools6 
-  - libQt6VirtualKeyboard6 
-  - libQt6WebChannel6 
-  - libQt6WebChannelQuick6 
-  - libQt6WebEngineCore6 
-  - libQt6WebEngineQuick6 
-  - libQt6WebEngineWidgets6 
   - libQt6WebSockets6 
-  - libQt6WebView6 
   - libQt6WebViewQuick6 
-  - libQt6Xml6 
   - libQtAV1 
   - libQtAVWidgets1 
   - libQtOlm3_0 
@@ -10989,7 +11116,6 @@ unsorted:
   - libSHERPA-MC0-config 
   - libSILLY-devel 
   - libSILLY1 
-  - libSM-devel 
   - libSM-devel-32bit 
   - libSM6-32bit 
   - libSPIRV-Tools-2023_6_rc1-32bit 
@@ -11027,7 +11153,6 @@ unsorted:
   - libWPEWebKit-2_0-1 
   - libWildMidi2 
   - libX11-6-32bit 
-  - libX11-devel 
   - libX11-devel-32bit 
   - libX11-devel-doc 
   - libX11-xcb1-32bit 
@@ -11036,7 +11161,6 @@ unsorted:
   - libXNVCtrl-devel 
   - libXNVCtrl0 
   - libXRes1-32bit 
-  - libXau-devel 
   - libXau-devel-32bit 
   - libXau6-32bit 
   - libXaw-devel 
@@ -11071,15 +11195,12 @@ unsorted:
   - libXdamage1-32bit 
   - libXdgUtilsBaseDir1_0_1 
   - libXdgUtilsDesktopEntry1_0_1 
-  - libXdmcp-devel 
   - libXdmcp-devel-32bit 
   - libXdmcp6-32bit 
   - libXevie-devel 
   - libXevie1 
-  - libXext-devel 
   - libXext-devel-32bit 
   - libXext6-32bit 
-  - libXfixes-devel 
   - libXfixes-devel-32bit 
   - libXfixes3-32bit 
   - libXfont-devel 
@@ -11100,7 +11221,6 @@ unsorted:
   - libXiterm-devel 
   - libXiterm1 
   - libXm4 
-  - libXmu-devel 
   - libXmu-devel-32bit 
   - libXmu6-32bit 
   - libXmuu1-32bit 
@@ -11108,7 +11228,6 @@ unsorted:
   - libXp-devel-32bit 
   - libXp6 
   - libXp6-32bit 
-  - libXpm-devel 
   - libXpm-devel-32bit 
   - libXpm-tools 
   - libXpm4-32bit 
@@ -11122,7 +11241,6 @@ unsorted:
   - libXrandr-devel 
   - libXrandr-devel-32bit 
   - libXrandr2-32bit 
-  - libXrender-devel 
   - libXrender-devel-32bit 
   - libXrender1-32bit 
   - libXres-devel 
@@ -11130,13 +11248,11 @@ unsorted:
   - libXss-devel 
   - libXss-devel-32bit 
   - libXss1-32bit 
-  - libXt-devel 
   - libXt-devel-32bit 
   - libXt6-32bit 
   - libXtst-devel 
   - libXtst-devel-32bit 
   - libXtst6-32bit 
-  - libXv-devel 
   - libXv-devel-32bit 
   - libXv1-32bit 
   - libXvMC-devel 
@@ -11173,7 +11289,8 @@ unsorted:
   - libaccounts-glib-docs 
   - libaccounts-glib-tools 
   - libaccounts-qt5-devel 
-  - libaccounts-qt5-doc 
+  - libaccounts-qt6-devel 
+  - libaccounts-qt6-doc 
   - libacl-devel 
   - libacl-devel-32bit 
   - libacr38ucontrol0 
@@ -11315,7 +11432,6 @@ unsorted:
   - libart_lgpl_2-2 
   - libasan4 
   - libasan4-32bit 
-  - libasan8 
   - libasan8-32bit 
   - libasan8-gcc12 
   - libasan8-gcc12-32bit 
@@ -11695,7 +11811,6 @@ unsorted:
   - libbrasero-media3-1 
   - libbrasero-utils3-1 
   - libbrial3 
-  - libbrotli-devel 
   - libbrotli-devel-32bit 
   - libbrotlicommon1-32bit 
   - libbrotlidec1-32bit 
@@ -11718,7 +11833,6 @@ unsorted:
   - libburn-devel 
   - libbytesize-devel 
   - libbz2-1-32bit 
-  - libbz2-devel 
   - libbz2-devel-32bit 
   - libbzip3-0 
   - libbzip3-0-x86-64-v3 
@@ -11849,6 +11963,7 @@ unsorted:
   - libchipcard 
   - libchipcard-devel 
   - libchipcard6 
+  - libchm0 
   - libchromaprint-devel 
   - libchromaprint1-32bit 
   - libcilkrts5 
@@ -12026,8 +12141,6 @@ unsorted:
   - libct4 
   - libctemplate-devel 
   - libctemplate3 
-  - libctf-nobfd0 
-  - libctf0 
   - libcthreads-devel 
   - libcthreads1 
   - libctl-devel 
@@ -12122,7 +12235,6 @@ unsorted:
   - libdca0-32bit 
   - libdcmtk18 
   - libddcutil-devel 
-  - libddcutil4 
   - libdde-file-manager5 
   - libdde-network-utils1 
   - libdde-wayland-client0 
@@ -12197,7 +12309,6 @@ unsorted:
   - libdpdk-23 
   - libdqlite0 
   - libdraco8 
-  - libdrm-devel 
   - libdrm-devel-32bit 
   - libdrm-tools 
   - libdrm2-32bit 
@@ -12314,6 +12425,7 @@ unsorted:
   - libesmtp-devel 
   - libestr-devel 
   - libetebase-devel 
+  - libetebase0 
   - libetonyek-devel 
   - libetonyek-devel-doc 
   - libetonyek-tools 
@@ -12322,7 +12434,6 @@ unsorted:
   - libetrophy0 
   - libev-devel 
   - libev4-32bit 
-  - libevdev-devel 
   - libevdev2-32bit 
   - libevdi1 
   - libevemu3 
@@ -12356,7 +12467,6 @@ unsorted:
   - libexiv2-devel 
   - libexmdbpp-devel 
   - libexmdbpp0 
-  - libexpat-devel 
   - libexpat-devel-32bit 
   - libexpat1-32bit 
   - libext2fs-devel 
@@ -12525,7 +12635,6 @@ unsorted:
   - libfoma0 
   - libfont-specimen0 
   - libfontconfig1-32bit 
-  - libfontenc-devel 
   - libfontenc-devel-32bit 
   - libfontenc1-32bit 
   - libfonts-javadoc 
@@ -12601,7 +12710,6 @@ unsorted:
   - libftdi0-devel 
   - libftdi1 
   - libftdi1-devel 
-  - libftgl2 
   - libftgl2-32bit 
   - libftoa0_3 
   - libftxf-devel 
@@ -13197,7 +13305,6 @@ unsorted:
   - libhugetlbfs-devel 
   - libhugetlbfs-tests 
   - libhunspell-1_7-0-32bit 
-  - libhwasan0 
   - libhwasan0-gcc13 
   - libhwloc15 
   - libhwy1-32bit 
@@ -13351,7 +13458,6 @@ unsorted:
   - libite-devel 
   - libite5 
   - libiterm-devel 
-  - libitm1 
   - libitm1-32bit 
   - libitm1-gcc12 
   - libitm1-gcc12-32bit 
@@ -13413,8 +13519,6 @@ unsorted:
   - libjxl-tools 
   - libjxl0_10-32bit 
   - libjxrglue0 
-  - libkColorPicker-Qt6-0 
-  - libkImageAnnotator-Qt6-0 
   - libkadm5clnt7 
   - libkadm5srv8 
   - libkafs0 
@@ -13424,20 +13528,24 @@ unsorted:
   - libkcapi-devel 
   - libkcapi-tools 
   - libkcapi1 
+  - libkcddb 
   - libkcddb-devel 
+  - libkcddb-lang 
+  - libkcddb-qt6-devel 
   - libkchart-lang 
   - libkcompactdisc-devel 
+  - libkcompactdisc-qt6-devel 
   - libkdc2 
   - libkdcraw-devel 
+  - libkdcraw-qt6-devel 
   - libkddockwidgets-qt6-1_7 
   - libkddockwidgets1_7 
   - libkdecoration2-devel 
   - libkdegames-devel 
   - libkdepim-devel 
-  - libkdevplatform512 
+  - libkdevplatform513 
   - libkdsingleapplication-qt6-1_1 
   - libkdsingleapplication1_1 
-  - libkdsoap-qt6-2 
   - libkdsoap-server-qt6-2 
   - libkdsoap-server2 
   - libkdstatemachineeditor_core1 
@@ -13474,10 +13582,16 @@ unsorted:
   - libkeccak1 
   - libkeduvocdocument-devel 
   - libkexiv2-devel 
+  - libkexiv2-qt6-devel 
   - libkeybinder0 
+  - libkgantt-lang 
+  - libkgapi 
   - libkgapi-devel 
+  - libkgapi-lang 
+  - libkgapi6-devel 
   - libkim-api2 
   - libkioarchive-devel 
+  - libkioarchive6-devel 
   - libkipi-devel 
   - libkissfft-float131 
   - libkkc-devel 
@@ -13509,7 +13623,11 @@ unsorted:
   - libknot14 
   - libkokkos-4_2 
   - libkolabxml-devel 
+  - libkomparediff2-5 
+  - libkomparediff2-5-lang 
   - libkomparediff2-devel 
+  - libkomparediff2-kf5 
+  - libkomparediff2-kf5-devel 
   - libkonkretcmpi0 
   - libkrb5-26 
   - libkrun-devel 
@@ -13519,15 +13637,19 @@ unsorted:
   - libkrunfw-sev-devel 
   - libkrunfw-sev3 
   - libksane-devel 
+  - libksane-kf5-devel 
   - libksba-devel 
   - libkscreen2-devel 
+  - libkscreen2-plugin 
+  - libkscreen6-devel 
   - libksi-devel 
   - libksi1 
   - libksieve-devel 
   - libksysguard5-devel 
+  - libksysguard5-plugins 
+  - libksysguard6-devel 
   - libktoblzcheck1 
   - libktorrent-devel 
-  - libktorrent-lang 
   - libkwnn0 
   - libkyotocabinet-devel 
   - liblab_gamut1 
@@ -13665,7 +13787,6 @@ unsorted:
   - liblrdf-devel 
   - liblrdf2-32bit 
   - liblrs1 
-  - liblsan0 
   - liblsan0-gcc12 
   - liblsan0-gcc13 
   - liblsan0-gcc7 
@@ -14459,7 +14580,7 @@ unsorted:
   - libp256m-x86-64-v3 
   - libp8-platform2 
   - libpackagekit-glib2-devel 
-  - libpackagekitqt6-1 
+  - libpackagekitqt5-1 
   - libpagemaker-devel 
   - libpagemaker-devel-doc 
   - libpagemaker-tools 
@@ -14502,7 +14623,6 @@ unsorted:
   - libpcd-devel 
   - libpcd2 
   - libpci3-32bit 
-  - libpciaccess-devel 
   - libpciaccess0-32bit 
   - libpcp-devel 
   - libpcp3 
@@ -14569,7 +14689,6 @@ unsorted:
   - libpipeline-devel 
   - libpipewire-0_3-0-32bit 
   - libpixman-1-0-32bit 
-  - libpixman-1-0-devel 
   - libpkcs11-helper1-32bit 
   - libpkgconf-devel 
   - libplacebo-devel 
@@ -14577,6 +14696,7 @@ unsorted:
   - libplacebo5-devel 
   - libplanarity0 
   - libplank1 
+  - libplasma6-devel 
   - libplayerctl2 
   - libplib0 
   - libplist++-2_0-4 
@@ -14642,6 +14762,7 @@ unsorted:
   - libpolkit-agent-1-0-32bit 
   - libpolkit-gobject-1-0-32bit 
   - libpolkit-qt5-1-devel 
+  - libpolkit-qt6-1-devel 
   - libpolyclipping-devel 
   - libpolyclipping22 
   - libpolylibgmp8 
@@ -14652,7 +14773,6 @@ unsorted:
   - libpoppler-glib-devel 
   - libpoppler-glib8-32bit 
   - libpoppler-qt5-devel 
-  - libpoppler-qt6-3 
   - libpoppler-qt6-devel 
   - libpoppler135-32bit 
   - libportal-devel 
@@ -14794,7 +14914,6 @@ unsorted:
   - libpython3_9-1_0 
   - libpython3_9-1_0-32bit 
   - libqaccessibilityclient-qt5-devel 
-  - libqaccessibilityclient-qt6-0 
   - libqaccessibilityclient-qt6-devel 
   - libqalculate-devel 
   - libqat4 
@@ -14804,7 +14923,6 @@ unsorted:
   - libqb-tests 
   - libqb-tools 
   - libqb100-32bit 
-  - libqca-qt6-2 
   - libqcdloop2 
   - libqcow-devel 
   - libqcow-tools 
@@ -14812,8 +14930,8 @@ unsorted:
   - libqcustomplot2 
   - libqd0 
   - libqgpgme-devel 
+  - libqgpgme15 
   - libqgpgme15-32bit 
-  - libqgpgmeqt6-15 
   - libqgpgmeqt6-devel 
   - libqhexedit4 
   - libqhull_r8_0 
@@ -14848,6 +14966,7 @@ unsorted:
   - libqt5-kwayland-shellplugin 
   - libqt5-linguist 
   - libqt5-linguist-devel 
+  - libqt5-qdbus 
   - libqt5-qt3d-devel 
   - libqt5-qt3d-examples 
   - libqt5-qt3d-imports 
@@ -14893,6 +15012,7 @@ unsorted:
   - libqt5-qtnetworkauth-devel 
   - libqt5-qtnetworkauth-examples 
   - libqt5-qtnetworkauth-private-headers-devel 
+  - libqt5-qtpaths 
   - libqt5-qtpbfimageformat 
   - libqt5-qtpdf-devel 
   - libqt5-qtpdf-examples 
@@ -14948,9 +15068,12 @@ unsorted:
   - libqt5-qttools-examples 
   - libqt5-qttools-private-headers-devel 
   - libqt5-qttools-qhelpgenerator 
+  - libqt5-qtvirtualkeyboard 
   - libqt5-qtvirtualkeyboard-devel 
   - libqt5-qtvirtualkeyboard-examples 
+  - libqt5-qtvirtualkeyboard-hunspell 
   - libqt5-qtvirtualkeyboard-private-headers-devel 
+  - libqt5-qtwayland 
   - libqt5-qtwayland-32bit 
   - libqt5-qtwayland-devel 
   - libqt5-qtwayland-devel-32bit 
@@ -14977,8 +15100,9 @@ unsorted:
   - libqt5-qtxmlpatterns-examples 
   - libqt5-qtxmlpatterns-imports-32bit 
   - libqt5-qtxmlpatterns-private-headers-devel 
+  - libqt5keychain1 
+  - libqt5keychain1-lang 
   - libqt5xdg-devel 
-  - libqt6keychain1 
   - libqtcurve-cairo1 
   - libqtcurve-utils2 
   - libqtermwidget5-1 
@@ -15053,7 +15177,6 @@ unsorted:
   - librdkafka-devel 
   - librdmacm-utils 
   - librdmacm1-32bit 
-  - libre2-11 
   - libre20 
   - libreadline-java 
   - libreadline-java-javadoc 
@@ -15396,8 +15519,9 @@ unsorted:
   - libsigc-2_0-0-32bit 
   - libsignal-protocol-c-devel 
   - libsignal-protocol-c2 
+  - libsignon-qt-docs 
   - libsignon-qt5-devel 
-  - libsignon-qt5-docs 
+  - libsignon-qt6-devel 
   - libsigrok-data 
   - libsigrok-devel 
   - libsigrok4 
@@ -15804,7 +15928,6 @@ unsorted:
   - libtommath-devel 
   - libtommath-examples 
   - libtomoe-gtk0 
-  - libtool 
   - libtool-32bit 
   - libtorrent-devel 
   - libtorrent-rasterbar-devel 
@@ -15840,7 +15963,6 @@ unsorted:
   - libtrng4-25 
   - libts0-32bit 
   - libtsan0 
-  - libtsan2 
   - libtsan2-gcc12 
   - libtsan2-gcc13 
   - libtsk19 
@@ -15989,7 +16111,6 @@ unsorted:
   - libut1 
   - libutempter0-32bit 
   - libutf8proc3 
-  - libuuid-devel 
   - libuuid-devel-32bit 
   - libuuid-devel-static 
   - libuuid1-32bit 
@@ -16387,8 +16508,6 @@ unsorted:
   - libxcam1 
   - libxcb-composite0-32bit 
   - libxcb-damage0-32bit 
-  - libxcb-dbe0 
-  - libxcb-devel 
   - libxcb-devel-32bit 
   - libxcb-devel-doc 
   - libxcb-dpms0-32bit 
@@ -16408,32 +16527,26 @@ unsorted:
   - libxcb-render-util0-32bit 
   - libxcb-render0-32bit 
   - libxcb-res0-32bit 
-  - libxcb-screensaver0 
   - libxcb-screensaver0-32bit 
   - libxcb-shape0-32bit 
   - libxcb-shm0-32bit 
   - libxcb-sync1-32bit 
   - libxcb-util1-32bit 
-  - libxcb-xf86dri0 
   - libxcb-xf86dri0-32bit 
   - libxcb-xfixes0-32bit 
   - libxcb-xinerama0-32bit 
   - libxcb-xinput0-32bit 
   - libxcb-xkb1-32bit 
   - libxcb-xrm0 
-  - libxcb-xtest0 
   - libxcb-xtest0-32bit 
   - libxcb-xv0-32bit 
-  - libxcb-xvmc0 
   - libxcb-xvmc0-32bit 
   - libxcb1-32bit 
   - libxcfun2 
   - libxclass-0_9_2 
-  - libxcrypt-devel 
   - libxcrypt-devel-32bit 
   - libxcrypt-devel-static 
   - libxcvt 
-  - libxcvt-devel 
   - libxdg-basedir-devel 
   - libxdg-basedir1 
   - libxdot4 
@@ -16464,7 +16577,6 @@ unsorted:
   - libxkbcommon-x11-devel 
   - libxkbcommon-x11-devel-32bit 
   - libxkbcommon0-32bit 
-  - libxkbfile-devel 
   - libxkbfile-devel-32bit 
   - libxkbfile1-32bit 
   - libxkbregistry-devel 
@@ -16712,7 +16824,6 @@ unsorted:
   - linux-atm 
   - linux-atm-devel 
   - linux-ftools 
-  - linux-glibc-devel 
   - linux-libertine-fonts 
   - linux32 
   - linux_logo 
@@ -16911,7 +17022,6 @@ unsorted:
   - lpsolve-devel 
   - lrslib 
   - lrslib-devel 
-  - lrzip 
   - lsb 
   - lscsoft-glue-data 
   - lsd 
@@ -17003,6 +17113,7 @@ unsorted:
   - lua51-luaunbound 
   - lua51-luautf8 
   - lua51-luv 
+  - lua51-lyaml 
   - lua51-markdown 
   - lua51-mediator_lua 
   - lua51-messagepack 
@@ -17069,6 +17180,7 @@ unsorted:
   - lua53-luaunbound 
   - lua53-luautf8 
   - lua53-luv 
+  - lua53-lyaml 
   - lua53-markdown 
   - lua53-mediator_lua 
   - lua53-messagepack 
@@ -17136,6 +17248,7 @@ unsorted:
   - lua54-luaunbound 
   - lua54-luautf8 
   - lua54-luv 
+  - lua54-lyaml 
   - lua54-markdown 
   - lua54-mediator_lua 
   - lua54-messagepack 
@@ -17835,6 +17948,8 @@ unsorted:
   - miller 
   - miltertest 
   - mimalloc-devel 
+  - mimetreeparser-devel 
+  - mimetreeparser-imports 
   - mimic 
   - mimic-devel 
   - minder 
@@ -18322,6 +18437,7 @@ unsorted:
   - mpv-mpris 
   - mpv-zsh-completion 
   - mpvpaper 
+  - mpvqt-devel 
   - mr 
   - mraa 
   - mraa-devel 
@@ -18363,7 +18479,6 @@ unsorted:
   - mtail 
   - mtd-utils 
   - mtdev 
-  - mtdev-devel 
   - mtools-doc 
   - mtp-tools 
   - mtpaint 
@@ -19900,6 +20015,11 @@ unsorted:
   - oxygen5-icon-theme-scalable 
   - oxygen5-lang 
   - oxygen5-style 
+  - oxygen6 
+  - oxygen6-cursors 
+  - oxygen6-decoration 
+  - oxygen6-style 
+  - oxygen6-style-lang 
   - p0f 
   - p11-kit-32bit 
   - p11-kit-devel 
@@ -19974,6 +20094,9 @@ unsorted:
   - pam_cifscreds 
   - pam_csync 
   - pam_krb5 
+  - pam_kwallet 
+  - pam_kwallet-32bit 
+  - pam_kwallet-common 
   - pam_mktemp 
   - pam_oath 
   - pam_p11 
@@ -21747,7 +21870,10 @@ unsorted:
   - phobos-devel 
   - phobos-devel-static 
   - phodav-devel 
-  - phonon4qt5-devel 
+  - phonon-qt5-devel 
+  - phonon-qt6-devel 
+  - phonon-vlc-lang 
+  - phonon-vlc-qt6 
   - phoronix-test-suite 
   - photoqt 
   - photorec 
@@ -21882,9 +22008,7 @@ unsorted:
   - piglit 
   - pijul 
   - pilot 
-  - pimcommon 
   - pimcommon-devel 
-  - pimcommon-lang 
   - pin 
   - pinentry-efl 
   - pinentry-emacs 
@@ -21935,6 +22059,7 @@ unsorted:
   - plasma-applet-weather-widget 
   - plasma-applet-weather-widget-lang 
   - plasma-branding-MicroOS 
+  - plasma-framework-desktoptheme 
   - plasma-framework-devel 
   - plasma-nm5-fortisslvpn 
   - plasma-nm5-iodine 
@@ -21952,23 +22077,47 @@ unsorted:
   - plasma-vault-backend-gocryptfs 
   - plasma-vault-lang 
   - plasma-wayland-protocols 
-  - plasma5-addons-devel 
   - plasma5-applet-suse-prime 
-  - plasma5-bigscreen 
-  - plasma5-bigscreen-lang 
   - plasma5-firewall 
   - plasma5-firewall-lang 
   - plasma5-integration-devel 
-  - plasma5-mobile 
-  - plasma5-mobile-lang 
-  - plasma5-nano 
-  - plasma5-nano-lang 
+  - plasma5-integration-plugin 
+  - plasma5-pk-updates 
+  - plasma5-pk-updates-lang 
   - plasma5-sdk 
   - plasma5-sdk-lang 
   - plasma5-welcome 
   - plasma5-welcome-lang 
-  - plasma5-workspace-devel 
   - plasma5-workspace-wallpapers 
+  - plasma5support6-devel 
+  - plasma6-activities-devel 
+  - plasma6-activities-stats-devel 
+  - plasma6-activities-tools 
+  - plasma6-firewall 
+  - plasma6-firewall-lang 
+  - plasma6-kimpanel-scim 
+  - plasma6-mobile 
+  - plasma6-mobile-lang 
+  - plasma6-nano 
+  - plasma6-nano-lang 
+  - plasma6-nm-fortisslvpn 
+  - plasma6-nm-iodine 
+  - plasma6-nm-l2tp 
+  - plasma6-nm-libreswan 
+  - plasma6-nm-ssh 
+  - plasma6-nm-sstp 
+  - plasma6-nm-strongswan 
+  - plasma6-sdk 
+  - plasma6-sdk-lang 
+  - plasma6-vault 
+  - plasma6-vault-backend-cryfs 
+  - plasma6-vault-backend-encfs 
+  - plasma6-vault-backend-gocryptfs 
+  - plasma6-vault-lang 
+  - plasma6-welcome 
+  - plasma6-welcome-lang 
+  - plasma6-workspace-devel 
+  - plasma6-workspace-wallpapers 
   - plasmaengineexplorer5 
   - plasmatube 
   - plasmatube-lang 
@@ -22067,6 +22216,7 @@ unsorted:
   - pluto-zsh-completion 
   - plymouth-branding-upstream 
   - plymouth-devel 
+  - plymouth-plugin-breeze 
   - plymouth-plugin-fade-throbber 
   - plymouth-plugin-label-ft 
   - plymouth-plugin-script 
@@ -22074,6 +22224,7 @@ unsorted:
   - plymouth-plugin-tribar 
   - plymouth-theme-breeze 
   - plymouth-theme-breeze-plugin-breeze 
+  - plymouth-theme-breeze6 
   - plymouth-theme-fade-in 
   - plymouth-theme-opensuse-beat 
   - plymouth-theme-script 
@@ -22604,6 +22755,7 @@ unsorted:
   - pulseaudio-module-x11 
   - pulseaudio-module-zeroconf 
   - pulseaudio-qt-devel 
+  - pulseaudio-qt6-devel 
   - pulseaudio-system-wide 
   - pulseaudio-utils-32bit 
   - pulseaudio-zsh-completion 
@@ -22613,6 +22765,7 @@ unsorted:
   - pumpa 
   - pure-ftpd 
   - purpose-devel 
+  - purpose-services 
   - putty 
   - pv 
   - pw3270 
@@ -23862,7 +24015,6 @@ unsorted:
   - python310-azure-servicebus 
   - python310-azure-servicefabric 
   - python310-azure-servicemanagement-legacy 
-  - python310-azure-storage 
   - python310-azure-storage-blob 
   - python310-azure-storage-common 
   - python310-azure-storage-file 
@@ -25282,7 +25434,6 @@ unsorted:
   - python310-openwrt-luci-rpc 
   - python310-opt-einsum 
   - python310-orange-canvas-core 
-  - python310-orange-widget-base 
   - python310-ordered-namespace 
   - python310-ordered-set 
   - python310-orderedmultidict 
@@ -27411,7 +27562,6 @@ unsorted:
   - python311-azure-servicebus 
   - python311-azure-servicefabric 
   - python311-azure-servicemanagement-legacy 
-  - python311-azure-storage 
   - python311-azure-storage-blob 
   - python311-azure-storage-common 
   - python311-azure-storage-file 
@@ -28765,7 +28915,6 @@ unsorted:
   - python311-openwrt-luci-rpc 
   - python311-opt-einsum 
   - python311-orange-canvas-core 
-  - python311-orange-widget-base 
   - python311-ordered-namespace 
   - python311-ordered-set 
   - python311-orderedmultidict 
@@ -29405,7 +29554,6 @@ unsorted:
   - python311-pywinrm 
   - python311-pywlroots 
   - python311-pyxattr 
-  - python311-pyxdg 
   - python311-pyyaml_env_tag 
   - python311-pyzmq-devel 
   - python311-pyzo 
@@ -30860,7 +31008,6 @@ unsorted:
   - python312-azure-servicebus 
   - python312-azure-servicefabric 
   - python312-azure-servicemanagement-legacy 
-  - python312-azure-storage 
   - python312-azure-storage-blob 
   - python312-azure-storage-common 
   - python312-azure-storage-file 
@@ -32668,6 +32815,7 @@ unsorted:
   - python312-pysendfile 
   - python312-pyserial 
   - python312-pyshark 
+  - python312-pyshould 
   - python312-pyshp 
   - python312-pysmb 
   - python312-pysmbc 
@@ -34369,7 +34517,6 @@ unsorted:
   - python39-azure-servicebus 
   - python39-azure-servicefabric 
   - python39-azure-servicemanagement-legacy 
-  - python39-azure-storage 
   - python39-azure-storage-blob 
   - python39-azure-storage-common 
   - python39-azure-storage-file 
@@ -35742,7 +35889,6 @@ unsorted:
   - python39-openwrt-luci-rpc 
   - python39-opt-einsum 
   - python39-orange-canvas-core 
-  - python39-orange-widget-base 
   - python39-ordered-namespace 
   - python39-ordered-set 
   - python39-orderedmultidict 
@@ -37150,9 +37296,7 @@ unsorted:
   - qbs-devel 
   - qbs-examples 
   - qca-qt5-devel 
-  - qca-qt6 
   - qca-qt6-devel 
-  - qca-qt6-plugins 
   - qcdloop-devel 
   - qcoro-qt5-devel 
   - qcoro-qt6-devel 
@@ -37280,6 +37424,7 @@ unsorted:
   - qpwgraph 
   - qqc2-breeze-style 
   - qqc2-breeze-style-devel 
+  - qqc2-breeze-style6-devel 
   - qqc2-desktop-style-devel 
   - qqwing 
   - qqwing-devel 
@@ -37445,7 +37590,6 @@ unsorted:
   - qt6-multimedia-docs-html 
   - qt6-multimedia-docs-qch 
   - qt6-multimedia-examples 
-  - qt6-multimedia-imports 
   - qt6-multimedia-private-devel 
   - qt6-multimediaquick-private-devel 
   - qt6-multimediawidgets-devel 
@@ -37513,7 +37657,6 @@ unsorted:
   - qt6-qt5compat-devel 
   - qt6-qt5compat-docs-html 
   - qt6-qt5compat-docs-qch 
-  - qt6-qt5compat-imports 
   - qt6-qt5compat-private-devel 
   - qt6-quick-devel 
   - qt6-quick-private-devel 
@@ -37522,7 +37665,6 @@ unsorted:
   - qt6-quick3d-docs-html 
   - qt6-quick3d-docs-qch 
   - qt6-quick3d-examples 
-  - qt6-quick3d-imports 
   - qt6-quick3d-private-devel 
   - qt6-quick3dassetimport-devel 
   - qt6-quick3dassetimport-private-devel 
@@ -37633,10 +37775,8 @@ unsorted:
   - qt6-speech-docs-qch 
   - qt6-speech-examples 
   - qt6-sql-devel 
-  - qt6-sql-mysql 
   - qt6-sql-postgresql 
   - qt6-sql-private-devel 
-  - qt6-sql-sqlite 
   - qt6-sql-unixODBC 
   - qt6-statemachine-devel 
   - qt6-statemachine-private-devel 
@@ -37648,7 +37788,6 @@ unsorted:
   - qt6-svg-private-devel 
   - qt6-test-devel 
   - qt6-test-private-devel 
-  - qt6-texttospeech 
   - qt6-texttospeech-devel 
   - qt6-texttospeech-private-devel 
   - qt6-tools 
@@ -37661,7 +37800,6 @@ unsorted:
   - qt6-tools-helpgenerators 
   - qt6-tools-linguist 
   - qt6-tools-private-devel 
-  - qt6-tools-qdbus 
   - qt6-tools-qdoc 
   - qt6-uitools-devel 
   - qt6-uitools-private-devel 
@@ -37670,7 +37808,6 @@ unsorted:
   - qt6-virtualkeyboard-docs-html 
   - qt6-virtualkeyboard-docs-qch 
   - qt6-virtualkeyboard-examples 
-  - qt6-virtualkeyboard-imports 
   - qt6-virtualkeyboard-private-devel 
   - qt6-wayland-devel 
   - qt6-wayland-docs-html 
@@ -37689,15 +37826,12 @@ unsorted:
   - qt6-webchannel-docs-html 
   - qt6-webchannel-docs-qch 
   - qt6-webchannel-examples 
-  - qt6-webchannel-imports 
   - qt6-webchannel-private-devel 
   - qt6-webchannelquick-devel 
   - qt6-webchannelquick-private-devel 
-  - qt6-webengine 
   - qt6-webengine-docs-html 
   - qt6-webengine-docs-qch 
   - qt6-webengine-examples 
-  - qt6-webengine-imports 
   - qt6-webenginecore-devel 
   - qt6-webenginecore-private-devel 
   - qt6-webenginequick-devel 
@@ -37728,7 +37862,6 @@ unsorted:
   - qtcurve-gtk2 
   - qtcurve-qt5 
   - qtdbusextended-devel 
-  - qtdeclarative-imports-provides-qt6 
   - qtel 
   - qterm 
   - qterminal 
@@ -37740,7 +37873,6 @@ unsorted:
   - qtilitools 
   - qtkeychain-qt5-devel 
   - qtkeychain-qt6-devel 
-  - qtkeychain-qt6-lang 
   - qtmpris 
   - qtmpris-devel 
   - qtodotxt 
@@ -38063,7 +38195,6 @@ unsorted:
   - rke2-selinux 
   - rkhunter 
   - rkward 
-  - rlwrap 
   - rmail 
   - rmedigicontrol 
   - rmit-sansforgetica-fonts 
@@ -38315,6 +38446,7 @@ unsorted:
   - sar2 
   - sar2-data 
   - sarg 
+  - sasl2-kdexoauth2 
   - sassc 
   - sassist 
   - sasutils 
@@ -38500,9 +38632,6 @@ unsorted:
   - sddm-branding-upstream 
   - sddm-conf 
   - sddm-conf-lang 
-  - sddm-greeter-qt6 
-  - sddm-qt6 
-  - sddm-qt6-branding-upstream 
   - sdl-asylum 
   - sdl-ball 
   - sdl12_compat-devel 
@@ -38884,10 +39013,10 @@ unsorted:
   - spec-version-maven-plugin 
   - spec-version-maven-plugin-javadoc 
   - spectacle-doc 
+  - spectacle-doc-lang 
   - spectator 
   - spectcl 
   - spectre-meltdown-checker 
-  - speech-dispatcher-configure 
   - speedcrunch 
   - speedtest-cli 
   - speex 
@@ -38936,7 +39065,6 @@ unsorted:
   - sqlcipher-devel 
   - sqlite-jdbc 
   - sqlite-jdbc-javadoc 
-  - sqlite3 
   - sqlite3-devel 
   - sqlite3-doc 
   - sqlitebrowser 
@@ -39278,7 +39406,6 @@ unsorted:
   - system-user-velociraptor 
   - systemd-default-settings-branding-SLE-Micro 
   - systemd-default-settings-branding-upstream 
-  - systemd-devel 
   - systemd-experimental 
   - systemd-generator-cron2timer 
   - systemd-homed 
@@ -48524,7 +48651,6 @@ unsorted:
   - trang 
   - transconnect 
   - transifex-client 
-  - translate-shell 
   - translate-toolkit-devel-doc 
   - translate-toolkit-doc 
   - translation-update-az 
@@ -48566,6 +48692,7 @@ unsorted:
   - transmission-qt 
   - transmission-qt-lang 
   - transset 
+  - trash_kcm 
   - tre 
   - tre-devel 
   - tre-lang 
@@ -49028,7 +49155,6 @@ unsorted:
   - umockdev-devel 
   - unbound-devel 
   - unbound-munin 
-  - unclutter 
   - unclutter-xfixes 
   - uncommons-maths 
   - uncommons-maths-javadoc 
@@ -49152,7 +49278,6 @@ unsorted:
   - utfcpp-devel 
   - uthash-devel 
   - util-linux-tty-tools 
-  - util-macros-devel 
   - utils-libnfs 
   - utmp-cli 
   - utox 
@@ -49682,7 +49807,6 @@ unsorted:
   - workrave 
   - workrave-devel 
   - wp-cli 
-  - wpa_supplicant-gui 
   - wpan-tools 
   - wpebackend-fdo-devel 
   - wpewebkit-2_0-injected-bundles 
@@ -49769,7 +49893,6 @@ unsorted:
   - xbench 
   - xbiff 
   - xbindkeys 
-  - xbitmaps-devel 
   - xbomb 
   - xbrz-devel 
   - xbsql 
@@ -49934,7 +50057,6 @@ unsorted:
   - xlatencytop 
   - xless 
   - xload 
-  - xlockmore 
   - xlogin 
   - xlogo 
   - xls2csv 
@@ -50039,11 +50161,9 @@ unsorted:
   - xorg-x11-Xvnc-novnc 
   - xorg-x11-driver-input 
   - xorg-x11-server-Xspice 
-  - xorg-x11-server-sdk 
   - xorg-x11-server-source 
   - xorg-x11-server-wrapper 
   - xorg-x11-util-devel 
-  - xorgproto-devel 
   - xorgproto-doc 
   - xorgxrdp 
   - xorriso-tcltk 
@@ -50140,7 +50260,6 @@ unsorted:
   - xtexit 
   - xtl-devel 
   - xtl-doc 
-  - xtrans 
   - xtrx-tools 
   - xtrx-usb-udev 
   - xtrx_lms7002m-devel 
@@ -50169,7 +50288,6 @@ unsorted:
   - xwallpaper-zsh-completion 
   - xwayland-devel 
   - xwayland-run 
-  - xwaylandvideobridge 
   - xwd 
   - xwininfo 
   - xwmfs 
@@ -50379,7 +50497,6 @@ unsorted:
   - zix-devel 
   - zk 
   - zk-spaced 
-  - zlib-devel 
   - zlib-devel-32bit 
   - zlib-devel-static 
   - zlib-devel-static-32bit 
