@@ -594,6 +594,7 @@ Prefer: -python39-FontTools -python310-FontTools -python311-FontTools
 Prefer: -python311-pyside6
 Prefer: -python312-pyside6
 
+# All this is for KF6 + plasma 6
 # have choice for (plasma-framework-desktoptheme or plasma6-framework-desktoptheme) needed by plasma-framework: libplasma6-desktoptheme plasma-framework-desktoptheme
 Prefer: -plasma-framework-desktoptheme
 
@@ -602,6 +603,18 @@ Prefer: -sasl2-kdexoauth2
 
 # have choice for cmake(Breeze) >= MACRO: breeze5-style breeze6-devel
 Prefer: -breeze5-style
+
+# have choice for cmake(KQuickImageEditor): kquickimageeditor-devel kquickimageeditor6-devel
+Prefer: -kquickimageeditor-devel
+
+# have choice for ksysguardsystemstats-data >= 5.27.10 needed by libKSysGuardSystemStats1: ksysguardsystemstats-data ksysguardsystemstats6-data
+Prefer: -ksysguardsystemstats-data
+
+# have choice for cmake(KDecoration2) >= MACRO: kdecoration6-devel libkdecoration2-devel
+Prefer: -libkdecoration2-devel
+
+
+#---
 
 Preinstall: aaa_base filesystem attr bash bash-sh coreutils diffutils
 Preinstall: fillup glibc grep pam permissions rpm rpm-config-SUSE sed tar
@@ -1076,6 +1089,12 @@ Prefer: -libomp13-devel -libomp14-devel
 
 # have choice for pkgconfig(libindi): indi-devel libindi-devel
 Prefer: -indi-devel
+
+# have choice for purpose-services >= 5.115.0 needed by purpose: kf6-purpose-services purpose-services
+Prefer: -purpose-services
+
+# have choice for cmake(KPipeWire): kpipewire-devel kpipewire6-devel
+Prefer: -kpipewire-devel
 
 # have choice for mbedtls-devel needed by bctoolbox-devel: mbedtls-2-devel mbedtls-devel
 Prefer: -mbedtls-2-devel
