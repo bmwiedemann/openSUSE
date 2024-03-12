@@ -19614,7 +19614,6 @@ unsorted:
   - openSUSE-e-X-Neon-Icons 
   - openSUSE-e-X-Oliveleaf-Icons 
   - openSUSE-release-appliance 
-  - openSUSE-release-appliance-custom 
   - openSUSE-release-appliance-docker 
   - openSUSE-release-appliance-hyperv 
   - openSUSE-release-appliance-kvm 
@@ -19622,6 +19621,7 @@ unsorted:
   - openSUSE-release-appliance-vagrant 
   - openSUSE-release-appliance-vmware 
   - openSUSE-release-appliance-wsl 
+  - openSUSE-release-ftp 
   - openSUSE-release-livecd-gnome 
   - openSUSE-release-livecd-kde 
   - openSUSE-release-livecd-x11 

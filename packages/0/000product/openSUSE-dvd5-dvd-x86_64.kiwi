@@ -213,7 +213,6 @@
       <repopackage name="breeze6-decoration"/>
       <repopackage name="breeze6-style"/>
       <repopackage name="breeze6-style-lang"/>
-      <repopackage name="breeze6-wallpapers"/>
       <repopackage name="brltty"/>
       <repopackage name="brltty-driver-at-spi2"/>
       <repopackage name="brltty-driver-brlapi"/>
@@ -961,8 +960,6 @@
       <repopackage name="kcharselect-lang"/>
       <repopackage name="kcm_sddm"/>
       <repopackage name="kcm_sddm-lang"/>
-      <repopackage name="kcm_tablet"/>
-      <repopackage name="kcm_tablet-lang"/>
       <repopackage name="kcmutils-imports"/>
       <repopackage name="kcolorchooser"/>
       <repopackage name="kcolorchooser-lang"/>
@@ -1255,8 +1252,6 @@
       <repopackage name="kservice"/>
       <repopackage name="kservice-lang"/>
       <repopackage name="ksmtp"/>
-      <repopackage name="ksshaskpass5"/>
-      <repopackage name="ksshaskpass5-lang"/>
       <repopackage name="ksshaskpass6"/>
       <repopackage name="ksshaskpass6-lang"/>
       <repopackage name="ksudoku"/>
@@ -3467,8 +3462,8 @@
       <repopackage name="openssl-3"/>
       <repopackage name="openSUSE-build-key"/>
       <repopackage name="openSUSE-release"/>
+      <repopackage name="openSUSE-release-appliance-custom"/>
       <repopackage name="openSUSE-release-dvd"/>
-      <repopackage name="openSUSE-release-ftp"/>
       <repopackage name="openSUSE-repos-Tumbleweed"/>
       <repopackage name="opensuse-welcome"/>
       <repopackage name="openvpn"/>

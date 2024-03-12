@@ -217,7 +217,6 @@
     <package name="breeze6-decoration" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="breeze6-style" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="breeze6-style-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="breeze6-wallpapers" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="brltty" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="brltty-driver-at-spi2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="brltty-driver-brlapi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -964,8 +963,6 @@
     <package name="kcharselect-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kcm_sddm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kcm_sddm-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="kcm_tablet" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="kcm_tablet-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="kcmutils-imports" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="kcolorchooser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_imaging -->
     <package name="kcolorchooser-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_imaging -->
@@ -1257,8 +1254,6 @@
     <package name="kservice" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kservice-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ksmtp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="ksshaskpass5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="ksshaskpass5-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ksshaskpass6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ksshaskpass6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ksudoku" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3406,8 +3401,8 @@
     <package name="open-vm-tools-desktop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="openSUSE-build-key" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="openSUSE-release" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="openSUSE-release-appliance-custom" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="openSUSE-release-dvd" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release-dvd -->
-    <package name="openSUSE-release-ftp" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="openSUSE-repos-Tumbleweed" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="openal-soft-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="opencc-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
