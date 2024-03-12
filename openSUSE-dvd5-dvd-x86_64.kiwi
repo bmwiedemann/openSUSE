@@ -4513,12 +4513,14 @@
       <repopackage name="yast2-auth-client"/>
       <repopackage name="yast2-auth-server"/>
       <repopackage name="yast2-bootloader"/>
+      <repopackage name="yast2-configuration-management"/>
       <repopackage name="yast2-control-center"/>
       <repopackage name="yast2-control-center-qt"/>
       <repopackage name="yast2-core"/>
       <repopackage name="yast2-country"/>
       <repopackage name="yast2-country-data"/>
       <repopackage name="yast2-firewall"/>
+      <repopackage name="yast2-firstboot"/>
       <repopackage name="yast2-ftp-server"/>
       <repopackage name="yast2-hardware-detection"/>
       <repopackage name="yast2-installation"/>

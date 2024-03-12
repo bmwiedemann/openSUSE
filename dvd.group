@@ -4461,12 +4461,14 @@
     <package name="yast2-auth-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
     <package name="yast2-auth-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
     <package name="yast2-bootloader" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="yast2-configuration-management" supportstatus="unsupported"/> <!-- reason: dvd:yast2-firstboot -->
     <package name="yast2-control-center" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-control-center-qt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-core" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-country" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="yast2-country-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="yast2-firewall" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="yast2-firstboot" supportstatus="unsupported"/> <!-- reason: dvd:yast2-firstboot -->
     <package name="yast2-ftp-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="yast2-hardware-detection" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-installation" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
