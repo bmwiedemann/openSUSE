@@ -1914,4 +1914,16 @@ Main motivation is to have the license files in MicroOS also in /usr/, not in /e
     <user>dimstar_suse</user>
     <comment>Shrink DVD: drop all suggested stuff (not auto-installed)</comment>
   </revision>
+  <revision rev="269" vrev="267">
+    <srcmd5>cc8434bf06ddc07d4327d6ad51455e56</srcmd5>
+    <version>unknown</version>
+    <time>1710265369</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="270" vrev="268">
+    <srcmd5>e596029dd1d9d43bfa68e4319f80121f</srcmd5>
+    <version>unknown</version>
+    <time>1710265407</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>

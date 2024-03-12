@@ -347,6 +347,8 @@ dvd:
   - xen-tools-domU
   - bind
   - Mesa-demo-x
+  # requires by zypper_in test suite in openQA
+  - xdelta3
   - inkscape
   - autoyast2
   # impitool can be handy when machines are configured using autoyast
