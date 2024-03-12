@@ -1,8 +1,0 @@
-<package name="kcm_tablet" project="openSUSE:Factory">
-  <title>Wacom tablets KCM</title>
-  <description>This module implements a GUI for the Wacom Linux Drivers and extends it
-with profile support to handle different button / pen layouts per profile.
-
-For hardware support have a look at http://www.linuxwacom.sourceforge.net</description>
-  <devel project="KDE:Extra" package="kcm_tablet"/>
-</package>
