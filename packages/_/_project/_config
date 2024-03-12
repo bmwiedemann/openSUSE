@@ -2776,6 +2776,7 @@ BuildFlags: onlybuild:policycoreutils
 BuildFlags: onlybuild:polkit
 BuildFlags: onlybuild:polkit-default-privs
 BuildFlags: onlybuild:polkit-qt5-1
+BuildFlags: onlybuild:polkit-qt-1:qt5
 BuildFlags: onlybuild:poppler
 BuildFlags: onlybuild:poppler-data
 BuildFlags: onlybuild:popt
