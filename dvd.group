@@ -4261,6 +4261,7 @@
     <package name="xclip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="xclock" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="xconsole" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="xdelta3" supportstatus="unsupported"/> <!-- reason: dvd:xdelta3 -->
     <package name="xdg-dbus-proxy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xdg-desktop-portal" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xdg-desktop-portal-gnome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
