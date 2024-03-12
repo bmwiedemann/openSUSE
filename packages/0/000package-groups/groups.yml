@@ -48,6 +48,8 @@ common_locks:
   - gcc12: [locked]
   - gcc14: [locked]
   - postgresql16-llvmjit: [locked]
+  # The DVDs should never identify as -ftp source
+  - openSUSE-release-ftp: [locked]
 
 dvd:
   # We add the kernel-firmware-* packages
@@ -152,6 +154,7 @@ dvd:
   - texlive: [locked]
   - gnuchess: [locked]
   - breeze5-wallpapers: [locked]
+  - breeze6-wallpapers: [locked]
   - myspell-german-old: [locked]
   - apache2-worker: [locked]
   - gnu-free-fonts: [locked]
