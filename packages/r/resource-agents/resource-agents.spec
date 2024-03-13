@@ -124,15 +124,15 @@ pages of individual nagios plugins.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch6 -p1
-%patch7 -p0
-%patch8 -p0
-%patch9 -p0
-%patch10 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 6 -p1
+%patch -P 7 -p0
+%patch -P 8 -p0
+%patch -P 9 -p0
+%patch -P 10 -p1
 
 %build
 autoreconf -fvi
@@ -182,6 +182,10 @@ mkdir -p %{buildroot}%{_prefix}/lib/ocf/resource.d/suse
 cd %{buildroot}%{_prefix}/lib/ocf/resource.d/suse
 ln -s %{_prefix}/lib/ocf/resource.d/heartbeat/aws-vpc-move-ip aws-vpc-move-ip
 )
+
+%if %{suse_version} >= 1600
+%python3_fix_shebang_path %{buildroot}%{_prefix}/lib/ocf/resource.d/heartbeat/*
+%endif
 
 %post
 %service_add_post resource-agents-deps.target
