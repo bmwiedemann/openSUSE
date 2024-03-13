@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 11 14:20:12 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Run modern tests for >=1500
+- Use pkg-config instead of pkgconf
+- Provide nvim
+
+-------------------------------------------------------------------
 Tue Feb 27 16:02:45 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Update license field based on legaldb review 
