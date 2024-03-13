@@ -36,4 +36,15 @@
     * Fix private lastError name (forwarded request 1128974 from adkorte)</comment>
     <requestid>1130168</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b8f264d47adff979c6c8c3838719e434</srcmd5>
+    <version>1.10.23</version>
+    <time>1710364631</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.10.23
+  - PEAR 1.10.15
+    * Cleanup uneeded test
+    * Fix PHP Deprecated: Calling get_class() without arguments (forwarded request 1156654 from adkorte)</comment>
+    <requestid>1157606</requestid>
+  </revision>
 </revisionlist>

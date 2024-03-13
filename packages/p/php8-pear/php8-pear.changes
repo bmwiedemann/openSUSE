@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar  9 19:59:45 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 1.10.23
+  - PEAR 1.10.15
+    * Cleanup uneeded test
+    * Fix PHP Deprecated: Calling get_class() without arguments
+
+-------------------------------------------------------------------
 Sun Nov 26 17:26:02 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 1.10.22
