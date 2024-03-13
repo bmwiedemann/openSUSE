@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  5 10:16:31 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.85.0
+  * fix: Throw appropriate error message when providing non map 
+    route settings by @GavinZZ in #3507
+  * chore(schema): update by @github-actions in #3508
+
+-------------------------------------------------------------------
 Thu Feb  8 02:07:55 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.84.0:
