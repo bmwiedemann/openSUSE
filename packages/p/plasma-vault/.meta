@@ -1,5 +1,0 @@
-<package name="plasma-vault" project="openSUSE:Factory">
-  <title>Plasma Vault</title>
-  <description>Plasma applet and services for creating encrypted vaults</description>
-  <devel project="KDE:Frameworks5" package="plasma-vault"/>
-</package>
