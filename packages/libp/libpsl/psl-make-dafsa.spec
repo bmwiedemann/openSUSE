@@ -1,7 +1,7 @@
 #
 # spec file for package psl-make-dafsa
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2015 rpm@cicku.me
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,6 +25,7 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://rockdaboot.github.io/libpsl
 Source:         https://github.com/rockdaboot/libpsl/releases/download/%{version}/libpsl-%{version}.tar.gz
+BuildRequires:  python-rpm-macros
 Requires:       python3-base
 BuildArch:      noarch
 
@@ -49,6 +50,7 @@ mkdir -p %{buildroot}%{_bindir}
 install src/psl-make-dafsa %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_mandir}/man1
 install -m 644 src/psl-make-dafsa.1 %{buildroot}%{_mandir}/man1
+%python3_fix_shebang
 
 %files
 %license src/LICENSE.chromium

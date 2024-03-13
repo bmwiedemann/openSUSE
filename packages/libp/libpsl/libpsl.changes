@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 13 07:35:48 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Tue Dec 27 21:16:58 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.21.2:

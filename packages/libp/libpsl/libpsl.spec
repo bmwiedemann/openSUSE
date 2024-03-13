@@ -1,7 +1,7 @@
 #
 # spec file for package libpsl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2015 rpm@cicku.me
 #
 # All modifications and additions to the file contributed by third parties
