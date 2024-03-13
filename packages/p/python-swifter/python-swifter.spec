@@ -1,7 +1,7 @@
 #
 # spec file for package python-swifter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@ Suggests:       python-ray >= 1.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module dask-dataframe >= 2.10.0}
-BuildRequires:  %{python_module ipywidgets >= 7.0.0}
+BuildRequires:  %{python_module ipywidgets >= 7.0.0 if %python-base >= 3.10}
 BuildRequires:  %{python_module pandas >= 1.0}
 BuildRequires:  %{python_module psutil >= 5.6.6}
 BuildRequires:  %{python_module pytest-xdist}
@@ -73,6 +73,6 @@ donttest="$donttest or test_nonvectorized_math_apply_on_small_dataframe"
 %doc README.md
 %license LICENSE
 %{python_sitelib}/swifter
-%{python_sitelib}/swifter-%{version}*-info
+%{python_sitelib}/swifter-%{version}.dist-info
 
 %changelog

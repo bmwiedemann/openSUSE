@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 10 12:16:27 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip testing with ipywiodgets on python39: no longer supported
+  since ipython 8.19
+
+-------------------------------------------------------------------
 Tue Aug  1 08:59:00 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.4.0

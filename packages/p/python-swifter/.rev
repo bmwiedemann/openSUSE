@@ -88,4 +88,15 @@
     <comment></comment>
     <requestid>1101765</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>51a9372c5cc38e2861227eed5de73bb0</srcmd5>
+    <version>1.4.0</version>
+    <time>1710364672</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1156710 from bnavigator
+
+- Skip testing with ipywiodgets on python39: no longer supported
+    since ipython 8.19</comment>
+    <requestid>1157050</requestid>
+  </revision>
 </revisionlist>
