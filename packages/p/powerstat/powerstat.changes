@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 11 08:45:29 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.04.03:
+  * Re-use last ujoules setting if current value is invalid
+  * Ignore power readings that are zero
+  * Minor copyright updates and optimization flag setting changes
+
+-------------------------------------------------------------------
 Thu Jun  8 11:08:33 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.03.03:
