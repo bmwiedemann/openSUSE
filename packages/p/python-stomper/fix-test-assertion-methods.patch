@@ -1,0 +1,685 @@
+Index: stomper-0.4.3/lib/stomper/tests/teststomper_10.py
+===================================================================
+--- stomper-0.4.3.orig/lib/stomper/tests/teststomper_10.py
++++ stomper-0.4.3/lib/stomper/tests/teststomper_10.py
+@@ -64,8 +64,8 @@ class Stomper10Test(unittest.TestCase):
+         msg.body = "hello queue a"
+ 
+         rc = e.react(msg.pack())
+-        self.assertEquals(rc, 'ack')
+-        self.assertEquals(e.ackCalled, True)
++        self.assertEqual(rc, 'ack')
++        self.assertEqual(e.ackCalled, True)
+ 
+         # React to an error:
+         error = stomper.Frame()
+@@ -83,8 +83,8 @@ Did not contain a destination header, wh
+         """
+ 
+         rc = e.react(error.pack())
+-        self.assertEquals(rc, 'error')
+-        self.assertEquals(e.errorCalled, True)
++        self.assertEqual(rc, 'error')
++        self.assertEqual(e.errorCalled, True)
+ 
+         # React to an receipt:
+         receipt = stomper.Frame()
+@@ -92,8 +92,8 @@ Did not contain a destination header, wh
+         receipt.headers = {'receipt-id:': 'message-12345'}
+ 
+         rc = e.react(receipt.pack())
+-        self.assertEquals(rc, 'receipt')
+-        self.assertEquals(e.receiptCalled, True)
++        self.assertEqual(rc, 'receipt')
++        self.assertEqual(e.receiptCalled, True)
+ 
+     def testEngine(self):
+         """Test the basic state machine.
+@@ -109,7 +109,7 @@ session:ID:snorky.local-49191-1185461799
+         result = stomper.unpack_frame(msg)
+         correct = ''
+         returned = e.react(result)
+-        self.assertEquals(returned, correct)
++        self.assertEqual(returned, correct)
+ 
+         # test message:
+         msg = """MESSAGE
+@@ -122,7 +122,7 @@ hello queue a
+ """
+         returned = e.react(msg)
+         correct = 'ACK\nmessage-id: some-message-id\n\n\x00\n'
+-        self.assertEquals(returned, correct)
++        self.assertEqual(returned, correct)
+ 
+         # test error:
+         msg = """ERROR
+@@ -134,7 +134,7 @@ There was a problem with your last messa
+ """
+         returned = e.react(msg)
+         correct = 'error'
+-        self.assertEquals(returned, correct)
++        self.assertEqual(returned, correct)
+ 
+         # test receipt:
+         msg = """RECEIPT
+@@ -144,7 +144,7 @@ message-id: some-message-id
+ """
+         returned = e.react(msg)
+         correct = 'receipt'
+-        self.assertEquals(returned, correct)
++        self.assertEqual(returned, correct)
+ 
+     def testFramepack1(self):
+         """Testing pack, unpacking and the Frame class.
+@@ -180,10 +180,10 @@ message-id: some-message-id
+         frame2 = stomper.Frame()
+         frame2.unpack(result)
+ 
+-        self.assertEquals(frame2.cmd, 'MESSAGE')
+-        self.assertEquals(frame2.headers['destination'], '/queue/a')
+-        self.assertEquals(frame2.headers['message-id'], 'card_data')
+-        self.assertEquals(frame2.body, 'hello queue a')
++        self.assertEqual(frame2.cmd, 'MESSAGE')
++        self.assertEqual(frame2.headers['destination'], '/queue/a')
++        self.assertEqual(frame2.headers['message-id'], 'card_data')
++        self.assertEqual(frame2.body, 'hello queue a')
+         result = frame2.pack()
+ 
+         correct = "MESSAGE\ndestination:/queue/a\nmessage-id:card_data\n\nhello queue a\x00\n"
+@@ -195,14 +195,14 @@ message-id: some-message-id
+ #        pprint.pprint(correct)
+ #        print
+ #
+-        self.assertEquals(result, correct)
++        self.assertEqual(result, correct)
+ 
+         result = stomper.unpack_frame(result)
+ 
+-        self.assertEquals(result['cmd'], 'MESSAGE')
+-        self.assertEquals(result['headers']['destination'], '/queue/a')
+-        self.assertEquals(result['headers']['message-id'], 'card_data')
+-        self.assertEquals(result['body'], 'hello queue a')
++        self.assertEqual(result['cmd'], 'MESSAGE')
++        self.assertEqual(result['headers']['destination'], '/queue/a')
++        self.assertEqual(result['headers']['message-id'], 'card_data')
++        self.assertEqual(result['body'], 'hello queue a')
+ 
+     def testFramepack2(self):
+         """Testing pack, unpacking and the Frame class.
+@@ -212,7 +212,7 @@ message-id: some-message-id
+         frame.cmd = 'DISCONNECT'
+         result = frame.pack()
+         correct = 'DISCONNECT\n\n\x00\n'
+-        self.assertEquals(result, correct)
++        self.assertEqual(result, correct)
+ 
+     def testFrameUnpack2(self):
+         """Testing unpack frame function against MESSAGE
+@@ -225,10 +225,10 @@ hello queue a"""
+ 
+         result = stomper.unpack_frame(msg)
+ 
+-        self.assertEquals(result['cmd'], 'MESSAGE')
+-        self.assertEquals(result['headers']['destination'], '/queue/a')
+-        self.assertEquals(result['headers']['message-id'], 'card_data')
+-        self.assertEquals(result['body'], 'hello queue a')
++        self.assertEqual(result['cmd'], 'MESSAGE')
++        self.assertEqual(result['headers']['destination'], '/queue/a')
++        self.assertEqual(result['headers']['message-id'], 'card_data')
++        self.assertEqual(result['body'], 'hello queue a')
+ 
+     def testFrameUnpack3(self):
+         """Testing unpack frame function against CONNECTED
+@@ -238,9 +238,9 @@ session:ID:snorky.local-49191-1185461799
+ """
+         result = stomper.unpack_frame(msg)
+ 
+-        self.assertEquals(result['cmd'], 'CONNECTED')
+-        self.assertEquals(result['headers']['session'], 'ID:snorky.local-49191-1185461799654-3:18')
+-        self.assertEquals(result['body'], '')
++        self.assertEqual(result['cmd'], 'CONNECTED')
++        self.assertEqual(result['headers']['session'], 'ID:snorky.local-49191-1185461799654-3:18')
++        self.assertEqual(result['body'], '')
+ 
+     def testBugInFrameUnpack1(self):
+         msg = """MESSAGE
+@@ -253,62 +253,62 @@ hello queue a
+ """
+         result = stomper.unpack_frame(msg)
+ 
+-        self.assertEquals(result['cmd'], 'MESSAGE')
+-        self.assertEquals(result['headers']['destination'], '/queue/a')
+-        self.assertEquals(result['headers']['message-id'], 'card_data')
+-        self.assertEquals(result['body'], 'hello queue a')
++        self.assertEqual(result['cmd'], 'MESSAGE')
++        self.assertEqual(result['headers']['destination'], '/queue/a')
++        self.assertEqual(result['headers']['message-id'], 'card_data')
++        self.assertEqual(result['body'], 'hello queue a')
+ 
+     def testCommit(self):
+         transactionid = '1234'
+         correct = "COMMIT\ntransaction: %s\n\n\x00\n" % transactionid
+-        self.assertEquals(stomper.commit(transactionid), correct)
++        self.assertEqual(stomper.commit(transactionid), correct)
+ 
+     def testAbort(self):
+         transactionid = '1234'
+         correct = "ABORT\ntransaction: %s\n\n\x00\n" % transactionid
+-        self.assertEquals(stomper.abort(transactionid), correct)
++        self.assertEqual(stomper.abort(transactionid), correct)
+ 
+     def testBegin(self):
+         transactionid = '1234'
+         correct = "BEGIN\ntransaction: %s\n\n\x00\n" % transactionid
+-        self.assertEquals(stomper.begin(transactionid), correct)
++        self.assertEqual(stomper.begin(transactionid), correct)
+ 
+     def testAck(self):
+         messageid = '1234'
+         transactionid = '9876'
+         header = 'message-id: %s\ntransaction: %s' % (messageid, transactionid)
+         correct = "ACK\n%s\n\n\x00\n" % header
+-        self.assertEquals(stomper.ack(messageid, transactionid), correct)
++        self.assertEqual(stomper.ack(messageid, transactionid), correct)
+ 
+         messageid = '1234'
+         correct = "ACK\nmessage-id: %s\n\n\x00\n" % messageid
+-        self.assertEquals(stomper.ack(messageid), correct)
++        self.assertEqual(stomper.ack(messageid), correct)
+ 
+     def testUnsubscribe(self):
+         dest = '/queue/all'
+         correct = "UNSUBSCRIBE\ndestination:%s\n\n\x00\n" % dest
+-        self.assertEquals(stomper.unsubscribe(dest), correct)
++        self.assertEqual(stomper.unsubscribe(dest), correct)
+ 
+     def testSubscribe(self):
+         dest, ack = '/queue/all', 'client'
+         correct = "SUBSCRIBE\ndestination: %s\nack: %s\n\n\x00\n" % (dest, ack)
+-        self.assertEquals(stomper.subscribe(dest, ack), correct)
++        self.assertEqual(stomper.subscribe(dest, ack), correct)
+ 
+         dest, ack = '/queue/all', 'auto'
+         correct = "SUBSCRIBE\ndestination: %s\nack: %s\n\n\x00\n" % (dest, ack)
+-        self.assertEquals(stomper.subscribe(dest, ack), correct)
++        self.assertEqual(stomper.subscribe(dest, ack), correct)
+ 
+         correct = "SUBSCRIBE\ndestination: %s\nack: %s\n\n\x00\n" % (dest, ack)
+-        self.assertEquals(stomper.subscribe(dest), correct)
++        self.assertEqual(stomper.subscribe(dest), correct)
+ 
+     def testConnect(self):
+         username, password = 'bob', '123'
+         correct = "CONNECT\nlogin:%s\npasscode:%s\n\n\x00\n" % (username, password)
+-        self.assertEquals(stomper.connect(username, password), correct)
++        self.assertEqual(stomper.connect(username, password), correct)
+ 
+     def testDisconnect(self):
+         correct = "DISCONNECT\n\n\x00\n"
+-        self.assertEquals(stomper.disconnect(), correct)
++        self.assertEqual(stomper.disconnect(), correct)
+ 
+     def testSend(self):
+         dest, transactionid, msg = '/queue/myplace', '', '123 456 789'
+@@ -322,11 +322,11 @@ hello queue a
+ #        pprint.pprint(correct)
+ #        print
+ 
+-        self.assertEquals(result, correct)
++        self.assertEqual(result, correct)
+ 
+         dest, transactionid, msg = '/queue/myplace', '987', '123 456 789'
+         correct = "SEND\ndestination: %s\ntransaction: %s\n\n%s\x00\n" % (dest, transactionid, msg)
+-        self.assertEquals(stomper.send(dest, msg, transactionid), correct)
++        self.assertEqual(stomper.send(dest, msg, transactionid), correct)
+ 
+ if __name__ == "__main__":
+     unittest.main()
+Index: stomper-0.4.3/lib/stomper/tests/teststomper_11.py
+===================================================================
+--- stomper-0.4.3.orig/lib/stomper/tests/teststomper_11.py
++++ stomper-0.4.3/lib/stomper/tests/teststomper_11.py
+@@ -67,8 +67,8 @@ class Stomper11Test(unittest.TestCase):
+         msg.body = "hello queue a"
+ 
+         rc = e.react(msg.pack())
+-        self.assertEquals(rc, 'ack')
+-        self.assertEquals(e.ackCalled, True)
++        self.assertEqual(rc, 'ack')
++        self.assertEqual(e.ackCalled, True)
+ 
+         # React to an error:
+         error = stomper.Frame()
+@@ -86,8 +86,8 @@ Did not contain a destination header, wh
+         """
+ 
+         rc = e.react(error.pack())
+-        self.assertEquals(rc, 'error')
+-        self.assertEquals(e.errorCalled, True)
++        self.assertEqual(rc, 'error')
++        self.assertEqual(e.errorCalled, True)
+ 
+         # React to an receipt:
+         receipt = stomper.Frame()
+@@ -95,8 +95,8 @@ Did not contain a destination header, wh
+         receipt.headers = {'receipt-id:': 'message-12345'}
+ 
+         rc = e.react(receipt.pack())
+-        self.assertEquals(rc, 'receipt')
+-        self.assertEquals(e.receiptCalled, True)
++        self.assertEqual(rc, 'receipt')
++        self.assertEqual(e.receiptCalled, True)
+ 
+     def testEngine(self):
+         """Test the basic state machine.
+@@ -113,7 +113,7 @@ session:ID:snorky.local-49191-1185461799
+         result = stomper.unpack_frame(msg)
+         correct = ''
+         returned = e.react(result)
+-        self.assertEquals(returned, correct)
++        self.assertEqual(returned, correct)
+ 
+         # test message:
+         msg = """MESSAGE
+@@ -128,7 +128,7 @@ hello queue a
+ """
+         returned = e.react(msg)
+         correct = 'ACK\nsubscription:1\nmessage-id:some-message-id\n\n\x00\n'
+-        self.assertEquals(returned, correct)
++        self.assertEqual(returned, correct)
+ 
+         # test error:
+         msg = """ERROR
+@@ -140,7 +140,7 @@ There was a problem with your last messa
+ """
+         returned = e.react(msg)
+         correct = 'error'
+-        self.assertEquals(returned, correct)
++        self.assertEqual(returned, correct)
+ 
+         # test receipt:
+         msg = """RECEIPT
+@@ -150,7 +150,7 @@ message-id:some-message-id
+ """
+         returned = e.react(msg)
+         correct = 'receipt'
+-        self.assertEquals(returned, correct)
++        self.assertEqual(returned, correct)
+ 
+     def testFramepack1(self):
+         """Testing pack, unpacking and the Frame class.
+@@ -186,22 +186,22 @@ message-id:some-message-id
+         frame2 = stomper.Frame()
+         frame2.unpack(result)
+ 
+-        self.assertEquals(frame2.cmd, 'MESSAGE')
+-        self.assertEquals(frame2.headers['destination'], '/queue/a')
+-        self.assertEquals(frame2.headers['message-id'], 'card_data')
+-        self.assertEquals(frame2.body, 'hello queue a')
++        self.assertEqual(frame2.cmd, 'MESSAGE')
++        self.assertEqual(frame2.headers['destination'], '/queue/a')
++        self.assertEqual(frame2.headers['message-id'], 'card_data')
++        self.assertEqual(frame2.body, 'hello queue a')
+         result = frame2.pack()
+ 
+         correct = "MESSAGE\ndestination:/queue/a\nmessage-id:card_data\n\nhello queue a\x00\n"
+ 
+-        self.assertEquals(result, correct)
++        self.assertEqual(result, correct)
+ 
+         result = stomper.unpack_frame(result)
+ 
+-        self.assertEquals(result['cmd'], 'MESSAGE')
+-        self.assertEquals(result['headers']['destination'], '/queue/a')
+-        self.assertEquals(result['headers']['message-id'], 'card_data')
+-        self.assertEquals(result['body'], 'hello queue a')
++        self.assertEqual(result['cmd'], 'MESSAGE')
++        self.assertEqual(result['headers']['destination'], '/queue/a')
++        self.assertEqual(result['headers']['message-id'], 'card_data')
++        self.assertEqual(result['body'], 'hello queue a')
+ 
+     def testFramepack2(self):
+         """Testing pack, unpacking and the Frame class.
+@@ -211,7 +211,7 @@ message-id:some-message-id
+         frame.cmd = 'DISCONNECT'
+         result = frame.pack()
+         correct = 'DISCONNECT\n\n\x00\n'
+-        self.assertEquals(result, correct)
++        self.assertEqual(result, correct)
+ 
+     def testFrameUnpack2(self):
+         """Testing unpack frame function against MESSAGE
+@@ -224,10 +224,10 @@ hello queue a"""
+ 
+         result = stomper.unpack_frame(msg)
+ 
+-        self.assertEquals(result['cmd'], 'MESSAGE')
+-        self.assertEquals(result['headers']['destination'], '/queue/a')
+-        self.assertEquals(result['headers']['message-id'], 'card_data')
+-        self.assertEquals(result['body'], 'hello queue a')
++        self.assertEqual(result['cmd'], 'MESSAGE')
++        self.assertEqual(result['headers']['destination'], '/queue/a')
++        self.assertEqual(result['headers']['message-id'], 'card_data')
++        self.assertEqual(result['body'], 'hello queue a')
+ 
+     def testFrameUnpack3(self):
+         """Testing unpack frame function against CONNECTED
+@@ -238,9 +238,9 @@ session:ID:snorky.local-49191-1185461799
+ """
+         result = stomper.unpack_frame(msg)
+ 
+-        self.assertEquals(result['cmd'], 'CONNECTED')
+-        self.assertEquals(result['headers']['session'], 'ID:snorky.local-49191-1185461799654-3:18')
+-        self.assertEquals(result['body'], '')
++        self.assertEqual(result['cmd'], 'CONNECTED')
++        self.assertEqual(result['headers']['session'], 'ID:snorky.local-49191-1185461799654-3:18')
++        self.assertEqual(result['body'], '')
+ 
+     def testBugInFrameUnpack1(self):
+         msg = """MESSAGE
+@@ -253,25 +253,25 @@ hello queue a
+ """
+         result = stomper.unpack_frame(msg)
+ 
+-        self.assertEquals(result['cmd'], 'MESSAGE')
+-        self.assertEquals(result['headers']['destination'], '/queue/a')
+-        self.assertEquals(result['headers']['message-id'], 'card_data')
+-        self.assertEquals(result['body'], 'hello queue a')
++        self.assertEqual(result['cmd'], 'MESSAGE')
++        self.assertEqual(result['headers']['destination'], '/queue/a')
++        self.assertEqual(result['headers']['message-id'], 'card_data')
++        self.assertEqual(result['body'], 'hello queue a')
+ 
+     def testCommit(self):
+         transactionid = '1234'
+         correct = "COMMIT\ntransaction:%s\n\n\x00\n" % transactionid
+-        self.assertEquals(stomper.commit(transactionid), correct)
++        self.assertEqual(stomper.commit(transactionid), correct)
+ 
+     def testAbort(self):
+         transactionid = '1234'
+         correct = "ABORT\ntransaction:%s\n\n\x00\n" % transactionid
+-        self.assertEquals(stomper.abort(transactionid), correct)
++        self.assertEqual(stomper.abort(transactionid), correct)
+ 
+     def testBegin(self):
+         transactionid = '1234'
+         correct = "BEGIN\ntransaction:%s\n\n\x00\n" % transactionid
+-        self.assertEquals(stomper.begin(transactionid), correct)
++        self.assertEqual(stomper.begin(transactionid), correct)
+ 
+     def testAck(self):
+         subscription = '1'
+@@ -281,13 +281,13 @@ hello queue a
+             subscription, messageid, transactionid)
+         correct = "ACK\n%s\n\n\x00\n" % header
+         actual = stomper.ack(messageid, subscription, transactionid)
+-        self.assertEquals(actual, correct)
++        self.assertEqual(actual, correct)
+ 
+         subscription = '1'
+         messageid = '1234'
+         correct = "ACK\nsubscription:%s\nmessage-id:%s\n\n\x00\n" % (
+             subscription, messageid)
+-        self.assertEquals(stomper.ack(messageid, subscription), correct)
++        self.assertEqual(stomper.ack(messageid, subscription), correct)
+ 
+     def testNack(self):
+         subscription = '1'
+@@ -297,56 +297,56 @@ hello queue a
+             subscription, messageid, transactionid)
+         correct = "NACK\n%s\n\n\x00\n" % header
+         actual = stomper.nack(messageid, subscription, transactionid)
+-        self.assertEquals(actual, correct)
++        self.assertEqual(actual, correct)
+ 
+         subscription = '1'
+         messageid = '1234'
+         correct = "NACK\nsubscription:%s\nmessage-id:%s\n\n\x00\n" % (
+             subscription, messageid)
+-        self.assertEquals(stomper.nack(messageid, subscription), correct)
++        self.assertEqual(stomper.nack(messageid, subscription), correct)
+ 
+     def testUnsubscribe(self):
+         subscription = '1'
+         correct = "UNSUBSCRIBE\nid:%s\n\n\x00\n" % subscription
+-        self.assertEquals(stomper.unsubscribe(subscription), correct)
++        self.assertEqual(stomper.unsubscribe(subscription), correct)
+ 
+     def testSubscribe(self):
+         dest, ack = '/queue/all', 'client'
+         correct = "SUBSCRIBE\nid:0\ndestination:%s\nack:%s\n\n\x00\n" % (dest, ack)
+-        self.assertEquals(stomper.subscribe(dest, 0, ack), correct)
++        self.assertEqual(stomper.subscribe(dest, 0, ack), correct)
+ 
+         dest, ack = '/queue/all', 'auto'
+         correct = "SUBSCRIBE\nid:0\ndestination:%s\nack:%s\n\n\x00\n" % (dest, ack)
+-        self.assertEquals(stomper.subscribe(dest, 0, ack), correct)
++        self.assertEqual(stomper.subscribe(dest, 0, ack), correct)
+ 
+         correct = "SUBSCRIBE\nid:0\ndestination:%s\nack:%s\n\n\x00\n" % (dest, ack)
+-        self.assertEquals(stomper.subscribe(dest, 0), correct)
++        self.assertEqual(stomper.subscribe(dest, 0), correct)
+ 
+     def testConnect(self):
+         username, password = 'bob', '123'
+         correct = "CONNECT\naccept-version:1.1\nhost:localhost\nheart-beat:0,0\nlogin:%s\npasscode:%s\n\n\x00\n" % (username, password)
+-        self.assertEquals(stomper.connect(username, password, 'localhost'), correct)
++        self.assertEqual(stomper.connect(username, password, 'localhost'), correct)
+ 
+     def testConnectWithHeartbeats(self):
+         username, password = 'bob', '123'
+         heartbeats = (1000, 1000)
+         correct = "CONNECT\naccept-version:1.1\nhost:localhost\nheart-beat:1000,1000\nlogin:%s\npasscode:%s\n\n\x00\n" % (username, password)
+-        self.assertEquals(stomper.connect(username, password, 'localhost', heartbeats=heartbeats), correct)
++        self.assertEqual(stomper.connect(username, password, 'localhost', heartbeats=heartbeats), correct)
+ 
+     def testDisconnect(self):
+         correct = "DISCONNECT\nreceipt:77\n\x00\n"
+-        self.assertEquals(stomper.disconnect(77), correct)
++        self.assertEqual(stomper.disconnect(77), correct)
+ 
+     def testSend(self):
+         dest, transactionid, msg = '/queue/myplace', '', '123 456 789'
+         correct = "SEND\ndestination:%s\ncontent-type:text/plain\n\n%s\x00\n" % (dest, msg)
+         result = stomper.send(dest, msg, transactionid)
+ 
+-        self.assertEquals(result, correct)
++        self.assertEqual(result, correct)
+ 
+         dest, transactionid, msg = '/queue/myplace', '987', '123 456 789'
+         correct = "SEND\ndestination:%s\ncontent-type:text/plain\ntransaction:%s\n\n%s\x00\n" % (dest, transactionid, msg)
+-        self.assertEquals(stomper.send(dest, msg, transactionid), correct)
++        self.assertEqual(stomper.send(dest, msg, transactionid), correct)
+ 
+ if __name__ == "__main__":
+     unittest.main()
+Index: stomper-0.4.3/lib/stomper/tests/teststompbuffer.py
+===================================================================
+--- stomper-0.4.3.orig/lib/stomper/tests/teststompbuffer.py
++++ stomper-0.4.3/lib/stomper/tests/teststompbuffer.py
+@@ -76,7 +76,7 @@ class StompBufferTestCase ( unittest.Tes
+         self.sb.appendData ( msg2 )
+         self.sb.appendData ( msg3 )
+         expect = len ( msg1 ) + len ( msg2 ) + len ( msg3 )
+-        self.failUnless ( self.sb.bufferLen() == expect )
++        self.assertEqual( self.sb.bufferLen(), expect )
+ 
+ 
+     def test002_testBufferAccretionBinary ( self ):
+@@ -91,7 +91,7 @@ class StompBufferTestCase ( unittest.Tes
+         self.sb.appendData ( msg2 )
+         self.sb.appendData ( msg3 )
+         expect = len ( msg1 ) + len ( msg2 ) + len ( msg3 )
+-        self.failUnless ( self.sb.bufferLen() == expect )
++        self.assertEqual(self.sb.bufferLen(),  expect )
+ 
+ 
+     def test003_oneCompleteTextMessage ( self ):
+@@ -104,7 +104,7 @@ class StompBufferTestCase ( unittest.Tes
+         '\n\n' bytes.
+         """
+         msg = self.putAndGetText()
+-        self.failUnless ( messageIsGood )
++        self.assertTrue ( messageIsGood )
+ 
+ 
+     def test004_oneCompleteBinaryMessage ( self ):
+@@ -116,7 +116,7 @@ class StompBufferTestCase ( unittest.Tes
+         '\n\n' bytes.
+         """
+         msg = self.putAndGetBinary()
+-        self.failUnless ( messageIsGood ( msg, BINBODY ) )
++        self.assertTrue ( messageIsGood ( msg, BINBODY ) )
+ 
+ 
+     def test005_emptyBufferText ( self ):
+@@ -127,9 +127,9 @@ class StompBufferTestCase ( unittest.Tes
+         # Verify that there are no more messages in the buffer.
+         msg1 = self.putAndGetText()
+         msg2 = self.sb.getOneMessage()
+-        self.failUnless ( msg2 is None )
++        self.assertIsNone(msg2)
+         # Verify that in fact the buffer is empty.
+-        self.failUnless ( self.sb.bufferIsEmpty() )
++        self.assertTrue ( self.sb.bufferIsEmpty() )
+ 
+ 
+     def test006_emptyBufferBinary ( self ):
+@@ -140,9 +140,9 @@ class StompBufferTestCase ( unittest.Tes
+         # Verify that there are no more messages in the buffer.
+         msg1 = self.putAndGetBinary()
+         msg2 = self.sb.getOneMessage()
+-        self.failUnless ( msg2 is None )
++        self.assertIsNone(msg2)
+         # Verify that in fact the buffer is empty.
+-        self.failUnless ( self.sb.bufferIsEmpty() )
++        self.assertTrue ( self.sb.bufferIsEmpty() )
+ 
+ 
+     def test007_messageFragmentsText ( self ):
+@@ -155,11 +155,11 @@ class StompBufferTestCase ( unittest.Tes
+         fragment2 = msg [20:]
+         self.sb.appendData ( fragment1 )
+         m = self.sb.getOneMessage()
+-        self.failUnless ( m is None )
++        self.assertIsNone(m)
+         self.sb.appendData ( fragment2 )
+         m = self.sb.getOneMessage()
+-        self.failIf ( m is None )
+-        self.failUnless ( self.sb.bufferIsEmpty() )
++        self.assertIsNotNone(m)
++        self.assertTrue ( self.sb.bufferIsEmpty() )
+ 
+ 
+     def test008_messageFragmentsBinary ( self ):
+@@ -172,11 +172,11 @@ class StompBufferTestCase ( unittest.Tes
+         fragment2 = msg [20:]
+         self.sb.appendData ( fragment1 )
+         m = self.sb.getOneMessage()
+-        self.failUnless ( m is None )
++        self.assertIsNone(m)
+         self.sb.appendData ( fragment2 )
+         m = self.sb.getOneMessage()
+-        self.failIf ( m is None )
+-        self.failUnless ( self.sb.bufferIsEmpty() )
++        self.assertIsNotNone(m)
++        self.assertTrue ( self.sb.bufferIsEmpty() )
+ 
+ 
+     def test009_confusingMessage ( self ):
+@@ -190,15 +190,15 @@ class StompBufferTestCase ( unittest.Tes
+         self.sb.appendData ( msg )
+         m = self.sb.getOneMessage()
+         # Ensure the headers weren't mangled
+-        self.failUnless ( m [ 'cmd' ] == CMD )
+-        self.failUnless ( m [ 'headers' ] [ 'destination' ] == DEST )
++        self.assertEqual(m [ 'cmd' ],  CMD )
++        self.assertEqual(m [ 'headers' ] [ 'destination' ],  DEST )
+         # Ensure the body wasn't mangled.
+-        self.failUnless ( m [ 'body' ] == body )
++        self.assertEqual(m [ 'body' ],  body )
+         # But ensure that there isn't object identity going on behind the
+         # scenes.
+-        self.failIf ( m [ 'body' ] is body )
++        self.assertIsNot( m [ 'body' ], body )
+         # Ensure the message was consumed in its entirety.
+-        self.failUnless ( self.sb.bufferIsEmpty() )
++        self.assertTrue ( self.sb.bufferIsEmpty() )
+ 
+ 
+     def test010_syncBufferNoClobber ( self ):
+@@ -208,7 +208,7 @@ class StompBufferTestCase ( unittest.Tes
+         """
+         self.sb.buffer = 'BLAHBLAH'
+         self.sb.syncBuffer()
+-        self.failUnless ( self.sb.buffer == "BLAHBLAH" )
++        self.assertEqual(self.sb.buffer,  "BLAHBLAH" )
+ 
+         
+     def test011_syncBufferClobberEverything ( self ):
+@@ -218,7 +218,7 @@ class StompBufferTestCase ( unittest.Tes
+         """
+         self.sb.buffer = 'rubbish\nmorerubbish'
+         self.sb.syncBuffer()
+-        self.failUnless ( self.sb.bufferIsEmpty() )
++        self.assertTrue ( self.sb.bufferIsEmpty() )
+ 
+         
+     def test012_syncBufferClobberRubbish ( self ):
+@@ -229,7 +229,7 @@ class StompBufferTestCase ( unittest.Tes
+         """
+         self.sb.buffer = 'rubbish\x00\nREMAINDER'
+         self.sb.syncBuffer()
+-        self.failUnless ( self.sb.buffer == "REMAINDER" )
++        self.assertEqual(self.sb.buffer,  "REMAINDER" )
+ 
+         
+     def test013_syncBufferClobberEverythingTwice ( self ):
+@@ -241,7 +241,7 @@ class StompBufferTestCase ( unittest.Tes
+         """
+         self.sb.buffer = 'rubbish\x00\nNOTACOMMAND\n'
+         self.sb.syncBuffer()
+-        self.failUnless ( self.sb.bufferIsEmpty() )
++        self.assertTrue ( self.sb.bufferIsEmpty() )
+ 
+         
+     def test014_syncBufferGetGoodMessage ( self ):
+@@ -253,7 +253,7 @@ class StompBufferTestCase ( unittest.Tes
+         self.sb.buffer = 'rubbish\x00\n%s' % ( msg, )
+         self.sb.syncBuffer()
+         m = self.sb.getOneMessage()
+-        self.failUnless ( messageIsGood ( m ) )
++        self.assertTrue ( messageIsGood ( m ) )
+ 
+ 
+     def test015_syncBufferClobberGoodMessage ( self ):
+@@ -265,7 +265,7 @@ class StompBufferTestCase ( unittest.Tes
+         msg = makeTextMessage()
+         self.sb.buffer = 'rubbish\n%s' % ( msg, )
+         self.sb.syncBuffer()
+-        self.failUnless ( self.sb.bufferIsEmpty() )
++        self.assertTrue ( self.sb.bufferIsEmpty() )
+ 
+ 
+     def test016_syncBufferHandleEmbeddedNulls ( self ):
+@@ -281,7 +281,7 @@ class StompBufferTestCase ( unittest.Tes
+         self.sb.buffer = 'rubbish\x00\nmorerubbish\x00\n%s' % ( msg, )
+         self.sb.syncBuffer()
+         m = self.sb.getOneMessage()
+-        self.failUnless ( messageIsGood ( m ) )
++        self.assertTrue ( messageIsGood ( m ) )
+ 
+     def test017_testAllCommands ( self ):
+         # Intentionally NOT using stomper.VALID_COMMANDS
+@@ -291,8 +291,8 @@ class StompBufferTestCase ( unittest.Tes
+             msg = makeTextMessage ( body = BODY, cmd = cmd )
+             self.sb.appendData ( msg )
+             m = self.sb.getOneMessage()
+-            self.failUnless ( messageIsGood ( m, BODY, cmd ) )
+-            self.failUnless ( self.sb.bufferIsEmpty() )
++            self.assertTrue ( messageIsGood ( m, BODY, cmd ) )
++            self.assertTrue ( self.sb.bufferIsEmpty() )
+ 
+         
+ if __name__ == "__main__":

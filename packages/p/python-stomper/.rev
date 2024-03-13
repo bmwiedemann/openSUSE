@@ -101,4 +101,13 @@
 - Add patch remove-future-requirement.patch, remove future requirement.</comment>
     <requestid>1109682</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>aec2a910e74449f065ba571a16fd39b6</srcmd5>
+    <version>0.4.3</version>
+    <time>1710364755</time>
+    <user>anag+factory</user>
+    <comment>- Add patch fix-test-assertion-methods.patch, use non-removed assertion
+  methods.</comment>
+    <requestid>1157394</requestid>
+  </revision>
 </revisionlist>

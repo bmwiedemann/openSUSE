@@ -1,7 +1,7 @@
 #
 # spec file for package python-stomper
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        Apache-2.0
 URL:            https://code.google.com/p/stomper
 Source0:        https://files.pythonhosted.org/packages/source/s/stomper/stomper-%{version}.tar.gz
 Patch0:         remove-future-requirement.patch
+Patch1:         fix-test-assertion-methods.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
