@@ -1,7 +1,7 @@
 #
 # spec file for package rr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,7 +51,6 @@ data watchpoints and quickly reverse-execute to where they were hit.
 %build
 # Fix incorrect path to bash
 sed -i "s|%{_bindir}/bash|/bin/bash|g" ./scripts/signal-rr-recording.sh
-sed -i "s|#!.*%{_bindir}/env.*|#!%{_bindir}/python3|" scripts/rr-collect-symbols.py
 %cmake \
   -DBUILD_TESTS=OFF \
 %ifarch aarch64
@@ -63,6 +62,7 @@ sed -i "s|#!.*%{_bindir}/env.*|#!%{_bindir}/python3|" scripts/rr-collect-symbols
 
 %install
 %cmake_install
+%python3_fix_shebang
 
 %files
 %license LICENSE

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 12 10:42:41 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Wed Oct  4 07:14:20 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 5.7.0:
