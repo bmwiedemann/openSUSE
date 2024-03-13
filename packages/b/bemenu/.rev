@@ -358,4 +358,13 @@
   * wayland: bind to zwlr_layer_shell_v1 version 3 #390</comment>
     <requestid>1155982</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9c9ab99c1c17b38c3bba3b686811b77c</srcmd5>
+    <version>0.6.21</version>
+    <time>1710364763</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.6.21:
+  * Move SIGCHLD handler #391</comment>
+    <requestid>1157426</requestid>
+  </revision>
 </revisionlist>
