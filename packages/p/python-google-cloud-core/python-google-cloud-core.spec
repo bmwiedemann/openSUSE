@@ -37,6 +37,9 @@ Requires:       python-google-api-core >= 1.31.6
 Requires:       python-google-auth >= 1.25.0
 Recommends:     python-grpcio >= 1.38.0
 BuildArch:      noarch
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-google-cloud-core < %{version}
+%endif
 %python_subpackages
 
 %description
