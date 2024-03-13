@@ -1,7 +1,7 @@
 #
 # spec file for package swig
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,24 +30,25 @@ BuildRequires:  ruby
 BuildRequires:  ruby-devel
 %endif
 Name:           swig
-Version:        4.1.1
+Version:        4.2.1
 Release:        0
 Summary:        Simplified Wrapper and Interface Generator
 License:        BSD-3-Clause AND GPL-3.0-or-later
 Group:          Development/Languages/C and C++
-URL:            http://www.swig.org/
-Source:         https://github.com/swig/swig/archive/v%{version}/%{name}-v%{version}.tar.gz
+URL:            https://www.swig.org/
+Source:         https://sourceforge.net/projects/swig/files/swig/swig-%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}.rpmlintrc
-
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  bison
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
-BuildRequires:  libtool
 BuildRequires:  pcre2-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} <= 1600
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
+%else
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
+%endif
 %if 0%{?centos_version} >= 800
 BuildRequires:  boost-devel
 BuildRequires:  python3-devel
@@ -103,6 +104,7 @@ Summary:        SWIG example files
 License:        BSD-3-Clause
 Group:          Documentation/Howto
 Requires:       swig
+BuildArch:      noarch
 
 %description examples
 SWIG is a compiler that attempts to make it easy to integrate C, C++,
@@ -118,31 +120,34 @@ This package contains SWIG examples, useful both for testing and
 understandig SWIG usage.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+%if 0%{?suse_version} <= 1600
+export CC=gcc-12
+export CXX=g++-12
+%endif
 %ifarch s390 s390x
 export CCSHARED="-fPIC"
 %endif
-./autogen.sh
 %configure \
 %if %{without swig_ocaml}
 	--without-ocaml \
 %endif
 	--disable-ccache
-make %{?_smp_mflags}
+%make_build
 
 %check
 %if 0%{?suse_version} >= 1500 || 0%{?centos_version} >= 800
 export PY3=true
 %endif
-make %{?_smp_mflags} check EXTRA_CXXFLAGS="-fexcess-precision=fast"
+%make_build check EXTRA_CXXFLAGS="-fexcess-precision=fast"
 
 %install
 %make_install
 
 install -d %{buildroot}%{docpath}
-cp -a TODO ANNOUNCE CHANGES* LICENSE README Doc/{Devel,Manual} \
+cp -a TODO ANNOUNCE CHANGES* README Doc/{Devel,Manual} \
 	%{buildroot}%{docpath}
 install -d %{buildroot}%{_datadir}/swig
 cp -a Examples %{buildroot}%{_datadir}/swig/examples
@@ -162,7 +167,7 @@ ln -s %{_datadir}/swig/examples %{buildroot}%{docpath}/Examples
 %fdupes %{buildroot}
 
 %files
-%defattr(644,root,root,755)
+%license LICENSE
 %dir %{docpath}
 %{docpath}/[A-Z][A-Z]*
 %{_datadir}/swig
@@ -170,10 +175,12 @@ ln -s %{_datadir}/swig/examples %{buildroot}%{docpath}/Examples
 %attr(755,root,root) %{_bindir}/swig
 
 %files doc
+%license LICENSE
 %{docpath}/Devel
 %{docpath}/Manual
 
 %files examples
+%license LICENSE
 %{docpath}/Examples
 %{_datadir}/swig/examples
 

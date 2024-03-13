@@ -1,4 +1,741 @@
 -------------------------------------------------------------------
+Sun Feb 25 09:25:59 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.2.1:
+  * Tcl 9.0 support
+  * Octave 9.0 support
+  * Improvements wrapping friend functions
+  * Variadic templated functions within a template support
+  * Type deduction enhancements
+  * Stability and regression fixes
+- package examples as noarch
+
+-------------------------------------------------------------------
+Thu Jan 25 11:22:31 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Fix build error on Leap.
+
+-------------------------------------------------------------------
+Tue Jan 02 08:33:49 UTC 2024 - kkaempf@suse.com
+
+- Update to version 4.2.0:
+  * Drop version number from index.html
+  * Visual C++ warning suppression
+  * Fix some warnings for Py_LIMITED_API
+  * Ruby 3.3 released and works now in GHA
+  * Visual C++ warning fixes
+  * Add 4.2.0 release date
+  * Revert mistaken commit
+  * Document -std= options
+  * [Tcl] Prepare `load` command usage for TIP 595 (#2737)
+  * Python castmode minor tweaks
+  * CHANGES file correction
+  * Remove removed -stable-abi option from --help output
+  * [PHP] Fix %feature(php:allowdynamicproperties, 0)
+  * Add Node-API to release notes
+  * Create tarball in one step
+  * Fix maybe uninitialized warnings
+  * Document directorout std::string_view limitations
+  * python/cast_mode: Add tests for min/max of double -> int convertions.
+  * python/cast_mode: Fix integer overflow of LONG_MAX+1.
+
+-------------------------------------------------------------------
+Thu Dec 21 12:30:52 UTC 2023 - kkaempf@suse.com
+
+- Update to version 4.2.0-beta1:
+  * HTML fixes
+  * Update release notes summary
+  * Expand director_string_runme.*
+  * Sort out directorout typemaps for std::string_view
+  * Fix testcase comment typo
+  * Make csharp_argument_defaults_feature testcase c++98 compatible
+  * Changes file update for Ruby negative number checks
+  * Minor tweaks and docs for the cs:defaultargs feature
+  * Reworked python limited api when checking type of a PyObject
+  * Python stable ABI notes
+  * Avoid testing python_runtime_data.multicpptest for builtin and stable abi
+  * Stable abi and std::string_view
+  * docstring example for stable abi
+  * Corrections for using EXTRA_CXXFLAGS in GHA
+  * Fix for python-3.11+ and stable abi
+  * Fix seg fault using stable abi for Python < 3.10 for invalid unicode
+  * Document Python stable ABI support
+  * SWIG_AsCharPtrAndSize simplification and performance improvement
+  * Revert mistaken directorout std::string_view typemap change
+  * Fix std::string_view typemaps for Py_LIMITED_API
+  * -Werror=declaration-after-statement fix for Python 2
+  * Rename SWIG’s Tcl_GetBoolFromObj()
+  * Replace SWIG_Python_str_AsChar with SWIG_PyUnicode_AsUTF8AndSize
+  * Simpler SWIG_AsCharPtrAndSize implementation - remove usage of SWIG_Python_str_AsChar
+  * CHANGES.current: Add entry for previous commit
+  * Use Tcl_GetString() instead of Tcl_GetStringFromObj(…, NULL)
+  * [perl] Fix compiler warnings
+  * Expand cpp_decltype_unsupported error testcase
+  * Update references to libv8-dev
+  * Remove incorrect ticket reference
+  * Fix typo
+  * Rename -py3-stable-abi option to -stable-abi
+  * Expand cpp_decltype_unsupported error testcase
+  * feature("cs:defaultargs") interface test
+  * [Tcl] Add missing casts to NULL sentinel
+  * Python stable abi memory leak fix
+  * Python stable abi for std::filesystem
+  * Merge conflict fixes and consistent error reporting in stable abi checks
+  * Workaround SWIG/Go bug triggered by extended testcase
+  * Add testcase for decltype cases we don't yet deduce
+  * Extend type deduction
+  * Fix deduced type of unary *
+  * [Ocaml] Remove deprecated -suffix command line option
+  * Fix minor doc typos
+  * Remove deprecated shared_ptr and intrusive_ptr macros
+  * Remove specialize_std_map_on_* for guile and mzscheme
+  * Remove deprecated map and vector specialisation macros
+  * Remove long-deprecated %attribute_ref
+  * feature("cs:defaultargs") review changes
+  * Add changes entry for python potential multi-thread crash
+  * Update comment referencing removed GH API
+  * [guile] Remove unnecessary (char*) casts
+  * Eliminate lingering use of removed GH API
+  * Fix out-dated developer docs
+  * Removed unused T_ENUM code
+  * Support type deduction of enums
+  * Address decltype(foo(0)) segfault better
+  * feature("cs:defaultargs")
+  * Fix segfault on decltype(foo(0))
+  * Update type inference documentation
+  * Fix typos in comments and docs
+  * Add missing cpp20_constexpr_destructor testcase
+  * Add support for C++20 constexpr destructors
+  * Only suppress -Wbool-compare for GCC >= 5
+  * Avoid warning in cpp11_decltype
+  * Deduce type of TYPE(EXPRESSION)
+  * Fix director_classes testcase failures on x86
+  * Suppress -Wbool-comapre warnings in constant_expr_c testcase
+  * Fix testcase addition in previous commit
+  * Fix dropping of parentheses around < and > expressions
+  * Fix deduced result type of bitwise not
+  * Add <type_traits> fragment for traits usage in std::filesystem
+  * Correct const std::filesystem & typemaps
+  * Improve type deduction
+  * Fix memory leak wrapping const std::filesystem&
+  * std::filesystem pointer handling correction
+  * Python std::filesystem cleanup
+  * Cosmetic whitespace corrections
+  * GHA allow fail for ruby-3.3
+  * Fix for closing off C# property declaration
+  * Fix random doubled spaces in code
+  * Add CHANGES entries for previous two commits
+  * [Tcl] Avoid `-Wmissing-braces` warning
+  * [Tcl] Migrate `CONST` to `const`
+  * Enhance the C# std::unordered_set testcase
+  * CMake: Bump required version (#2696)
+  * Replace empty() method with IsEmpty C# property in STL containers
+  * Add C# std_unordered_set.i for wrapping std::std_unordered_set
+  * [Tcl] Remove docs for CONSTANT typemaps
+  * Fix text formatting
+  * Support -std= command line option
+  * Add runtime tests for C# std::unordered_map
+  * Add csbegin, dbegin, javabegin for %module
+  * Modify testcase to be c++98 compliant
+  * $typemap() fix for handling variable overrides
+  * Improvements to $typemap() special variable replacement overrides
+  * [ci] Fix Ruby 3.3 job
+  * Remove reintroduced reference to BOTH
+  * Correct the implementation of Python PEP 207.
+  * csharp: Added std_unordered_map.i
+  * Correct initialization order in Language
+  * Correct github issue link
+  * C++11 enum base type is now used for D enum base type
+  * C++11 enum base type is now used for C# underlying enum type
+  * Use single characters instead of strings where possible
+  * Call swig_msg.c_str() directly rather than virtual method
+  * Remove redundant initialization code
+  * Further using declarations fix for inheritance hierarchies
+  * Swig_symbol_clookup_check bug fix
+  * Fix minor typos in manual
+  * [ci] Add Ruby 3.3 build
+  * [doc] Update "known to work" for Ruby
+  * Fix redundant cast warning in Java std::map wrapper put method
+  * carrays.i library modified to use size_t instead of int
+  * D size_t typecheck
+  * [ci] Add job for PHP 8.3
+  * [PHP] Fix testcase director_finalizer with PHP 8.3
+  * Fix misindented line
+  * Fix comment typos
+  * Give https: URL for PCRE download
+  * Fix suggested replacement for -feature
+  * Java STL changes to use Java int, support 64-bit size_t
+  * Improved C long handling for C#
+  * simplify swigarch
+  * Slim down swigarch.i
+  * Java - SWIGWORDSIZE64 for long type
+  * Simplify inttypes.i
+  * Enhanced std::map for non-default constructible types changes entry
+  * Add missing exception.i for std::map wrappers for MzScheme and Guile
+  * std::map wrappers and non-default constructible
+  * Changes file update for array variable initialisation
+  * Upgrade boost version to fix appveyor testing
+  * to run the CI
+  * Add test for C++ boolean types in preprocessor
+  * Source/Preprocessor/expr.c: Support boolean values in preprocessor expressions
+  * Rtest3 (#2448)
+  * Complete transition to rtypecheck typemaps from hard coded logic
+  * Redundant code removal in nested.cxx
+  * Ruby constants and uppercasing regression fix
+  * Fix incorrect variable setters being generated when wrapping arrays
+  * Non-assignable detection fixes when wrapping const 2D arrays
+  * Non-assignable detection fixes when wrapping const member variables
+  * Restore missing variable setters for types containing non-assignable static members
+  * Correct instantiate of std::basic_istream and std::basic_ostream
+  * Non-assignable detection fixes when wrapping rvalue reference variables
+  * Non-assignable detection fixes when wrapping reference variables
+  * Assignment operator detection fixes when wrapping static member variables
+  * Replace Language::is_assignable with Language::is_immutable
+  * Implicit assignment operator detection fixes.
+  * template_private_assign
+  * Add tests for C++11 deleted assignment operators and member variables
+  * Private assignment for templates testcase
+  * Variable setters for non-assignable types
+  * Guile, Ocaml, Perl - add missing use of is_assignment() for variable wrappers
+  * Fix testcase for C++20
+  * C++11 deleted destructors fixes
+  * Tidy up internal "has_copy_constructor" attribute
+  * Tidy up internal "has_destructor" attributes
+  * Remove unused "has_constructor" internal attribute
+  * Fix %copyctor feature and C++11 deleted copy constructors
+  * C++11 single default deleted constructor fix
+  * C++11 default deleted constructors fix
+  * Fixed make file ordering
+  * Language module sections clarification
+  * Fixed line endings
+  * Remove debug output from Octave test
+  * Fix for gcc-13 warning in SWIGTYPE[ANY][ANY] typemaps
+  * Remove incorrect fragment dependency
+  * Fix testcase warning with gcc-13
+  * Fix gcc-13 warning in scilab example
+  * CCache mdfour refactor to fix gcc-13 warning
+  * GHA: Add node 20, add gcc-13, test with clang-14
+  * Fix python 3.12 tests
+  * Add in missing feature:python:tp_watched for python-3.12
+  * Test python-3.12 on GHA, fix missing field initialization for builtin
+  * Fix testcase for python-3.12
+  * Testcase fix for python-3.12
+  * Fix missing-field-initializers warning with Py3.12
+  * Correct attempts to not run tests in Javascript and Octave
+  * Add some missing tests not being run
+  * Suppress clang warnings in test-suite
+  * Add reference to fixed SF bug
+  * Remove lingering bit of except typemap support
+  * [Ruby] Remove -feature command line option
+  * handle `"tmap:in" == NULL`
+  * Work around Visual Studio 2017 bug in testcase
+  * Add support for using declarations to introduce templated members
+  * Fix using declarations for deep inheritance hierarchies
+  * Missing scope restore in Allocate::classDeclaration
+  * Fix missing constructor generation due to abstract class test failure
+  * Comment correction since recent code refactor
+  * Corrected type returned from calling nodeType
+  * Fail at compile time for multiple typemap substitution
+  * [PHP] Add missing overloading functionality
+  * [php] Fix new template_construct testcase warning
+  * Fix comments to match actual function return value
+  * Documentation clarification about $action in Python "shadow" feature
+  * Fix %copyctor used on class hierarchies with non-const copy constructor
+  * Fix duplicate sym:overname values using %copyctor
+  * Fix duplicate sym:overname values using %copyctor
+  * Warning 302 rewording update for %extend
+  * Warnings 302 and 322 code refactor
+  * Reword and simplify warnings 302 and 322
+  * Correct display of redundant typedefs in Warnings 302 and 322
+  * Correct display of class names in Warnings 302 and 322
+  * More redefinition/redeclaration warning message improvements
+  * Redefinition/redeclaration warning message improvements
+  * Consistency in warnings for ambiguous/redefined templated constructors
+  * Fix display of template names in error messages in parser
+  * Expand constructor runtime tests to Ruby
+  * Javascript - ignore constructor renaming
+  * More refactoring for internal destructor and constructor names
+  * C++11 using declarations for inheriting implicit base templated constructors
+  * Default constructor detection fix for templated constructors
+  * Constructors and destructors declared with template parameters
+  * More director protected constructor tests
+  * C++11 using declarations for inheriting constructors
+  * Document change in Allocate module
+  * Add warning for incorrect using declarations for inheriting constructors
+  * Fix C++11 using declarations for inheriting implicit base constructors
+  * Move adding members due to using declaration from Allocate to TypePass
+  * Move addCopyConstructor, addDefaultConstructor, addDestructor from Language to Allocate
+  * Replace Language::directorsEnabled() with Swig_directors_enabled()
+  * Fix using declarations and templates with explicitly declared constructors
+  * Add testcase for using declarations and templates
+  * C++11 using declarations for inheriting constructors - template classes with template base classes
+  * Internal destructor name no longer contains template parameters
+  * Internal constructor name no longer contains template parameters
+  * Visual C++ warning fixes in testcases
+  * Appveyor - upgrade boost
+  * settle for an abort
+  * Clean up and comment template parameter patching code
+  * use SWIG_Exception_fail
+  * guard against applying in typemaps twice
+  * Temporarily disable access_change test for D
+  * C++11 using declarations for template classes with non-template base classes
+  * [ocaml] Rename value in cpp11_function_objects.i to avoid clash
+  * [ocaml] Rename value in bools.i to avoid clash
+  * Add missing testcase
+  * C++11 using declarations for inheriting overloaded constructors
+  * Refactor accessDeclaration methods
+  * Add support for C++11 using declarations for inheriting constructors
+  * Added unit test
+  * Using #ifdef instead of #if to prevent warnings
+  * Fix for #2625 Using c++17 insert_or_assign for std::map when available.
+  * Try to use wstring/wchar_t on windows
+  * Reformat
+  * Rename the helpers within the fragment to be more uniquely named
+  * Make CI rerun (and output all failed cases for the specialPath)
+  * Address review comments
+  * Need to see which assert is failing on mingw
+  * Verbose assert to try and see the failure on mingw
+  * path::string() returns a copy not a const ref.
+  * Remove cpp17_std_filesystem from common.mk, only defined for Python for now
+  * Extend roundtrip test
+  * Address review comment by @degasus on #1999 originally
+  * Had trouble getting the test to be properly ignored. If I wrap the inline line 35 in #if __cplusplus the wrapper code isn't generated
+  * Tweak tests setup
+  * Cherry pick from yasamoka/master
+  * Fix syntax error parsing an expression
+  * Syntax error parsing expression calling function using ()
+  * HTML fixes
+  * Rework napi.h header file detection
+  * Update COPYRIGHT file
+  * Minor Javascript doc typo fixes
+  * Remove trace output from Javascript testcase
+  * .gitignore javascript cleanup
+  * Cosmetic formatting after using make beautify
+  * Javascript Node-API support added
+  * Remove -dump_xml command line option
+  * Fix function definition to match declaration
+  * Remove more long-deprecated command line options
+  * Eliminate duplicate scanner codes
+  * Document missing tokens to Doc/Devel/scanner.html
+  * Remove override of CXXLINK
+  * [Java] Completely remove ancient pragmas
+  * Eliminate T_ERROR
+  * Fix directors and allprotected mode and using declarations.
+  * Remove unused T_NUMERIC and T_SYMBOL
+  * Fix incorrect indentation
+  * Distinguish return value of <=> from int
+  * Remove redundant break after return
+  * Adjust parser to always treat $N as const
+  * Remove some unreachable code in parser
+  * Fix `make partialcheck-go-test-suite`
+  * Fix typo and trailing whitespace
+  * Add test that `<(`...`)>` in expression is handled
+  * Fix handling of template in array size
+  * [Java] Remove deprecated command line options
+  * [Guile] Drop support for -Linkage ltdlmod
+  * Remove superfluous casts
+  * Make result variable for parser void*
+  * Fix copy-and-pasted debug messages
+  * Remove set but not used variable
+  * Remove unused TYPE_TYPEDEF
+  * Fix bogus code in C++14 auto return type handling
+  * Clean up after removal of ignore typemaps
+  * [Guile] Remove -gh and -scm command line options
+  * Remove pointer.i from the SWIG library
+  * Lib/python/embed.i: Note doesn't work with Python 3
+  * Fix mislocated text in Lua docs
+  * Remove deprecated BOTH typemap rule
+  * Remove deprecated fallback to using include path
+  * Remove deprecated -make_default, -no_default, etc
+  * Remove support for -xml out.xml
+  * Add CHANGES.current entry
+  * Eliminate reference to old SWIG doc system
+  * Add test coverage for #error and #warning
+  * Remove long deprecated features
+  * Use non-Doh-prefixed symbols outside of DOH itself
+  * [Guile] Fix freearg typemaps for INOUT typemaps
+  * char_binary_runme.m, char_binary_runme.rb
+  * char_binary_runme.php: Fill in missing parts
+  * Add 'char_binary' test to Ruby, PHP, Octave
+  * Drop now unnecessary removal of autom4te.cache
+  * Make a release distribution by running configure
+  * Fix clean-d-examples for in-source-tree build
+  * Fix PHP test suite error reporting
+  * Make use of bison typed midrule actions
+  * Mark parser rules that conflict with %expect
+  * Enable bison api.token.raw option
+  * Require Bison 3.5
+  * [ci] Use newer bison for appveyor builds with old version
+  * Remove unnecessary casting away of const
+  * Fix type of c_enum_key
+  * Stop defining yylex to itself
+  * Stop redefining alloca
+  * Remove pointless zero-ing of $$ before Exit()
+  * Remove redundant explicit $$ = 0 actions
+  * Make use of Bison's default action being $$ = $1;
+  * Eliminate pointless zeroings of $$
+  * Remove commented out testcase line
+  * Fix type of parser symbol cpp_alternate_rettype
+  * auto type warning improvements
+  * auto without return type warning suppression
+  * auto without return type cleanup
+  * Fix comment typo
+  * Remove INIT token which is entirely unused
+  * Run bison with -Werror
+  * Fix bison -Wmidrule-values warning
+  * Fix bison -Wprecedence warnings
+  * Run bison with -Wall
+  * Use Bison %empty to mark empty rules
+  * [doc] Add note that Mingw instructions are outdated
+  * Remove erroneous reference to lex
+  * Require Bison 3.5
+  * Fix bug in previous commit
+  * Fix preprocessor scanning bug
+  * Fix parsing of <= and >= in templated lambda
+  * Remove commented out reference to old doc system
+  * Perl.html: Remove memberout from list of typemaps
+  * Revert attempt to improve parsing of &&
+  * Fix regression from previous change
+  * Handle && in template parameter expressions
+  * Fix bogus code in C++11 trailing return type handling
+  * Add CHANGES.current entry for #2626
+  * fix the JSC incompatibilities
+  * add the last bulk batch of Python tests to JS
+  * [Perl] Fix some warnings in generated wrappers
+  * batch of JS run tests
+  * add overload + extend + default args run test
+  * bring in the `size_t` `cmalloc` in JS
+  * remove hacks and implement default arguments
+  * Avoid setting python error for bytes input
+  * Remove commented out code left over from development
+  * [python] Support bytes in std::string_view typemaps
+  * use NULL instead of nullptr
+  * add more JS run tests
+  * Fix passing a Lua number for C++ std::string
+  * Add CHANGES.current entry
+  * remove the check from free
+  * reset the persistent in the weak callback
+  * fix JSC too
+  * remove debugging leftovers
+  * fix member pointers
+  * another batch of run tests
+  * add two Python tests
+  * first batch of tests
+  * [mzscheme] Document lack of support for Racket 8
+  * Add missing newlines at end on new files
+  * Remove lingering uses of ancient documentation system
+  * Update lingering uses of %addmethods
+  * add a missing rename
+  * try using finally as JS keyword
+  * add two Python unit tests to JS
+  * add more JS run tests
+  * Hook up cpp17_director_string_view testcase
+  * Remove obsolete Python version checks
+  * [Python] Add string_view support
+  * Lib/php/std_string_view.i: Tweak order of typemaps
+  * Expand std::string_view test coverage
+  * [tcl] Expand li_std_string_runme.tcl
+  * Fix std::string mentions in string_view testcases
+  * Allow `using typename Foo;`
+  * Update preproc_constants_c_runme.php
+  * Update preproc_constants* testcases
+  * Support deducing type of some expressions
+  * Support parsing C++11 auto variables
+  * [R] argcargv.i: Remove noblock=1 to support C90
+  * fix a copy & paste blunder
+  * [Ruby] Fix deprecation warnings with Ruby 3.x
+  * Suppress syntax error after skip_balanced() fails
+  * unit test for resolving abstract types inside a namespace (#2554)
+  * [R] argcargv.i: Simplify in typemap
+  * Fix indentation
+  * argcargv.i: NULL terminate argv with empty input
+  * Comment fixes
+  * Add argc and argv multi-argument typemap.
+  * [R] Fix use of %typemap(rtypecheck).
+  * Tweak comment formatting
+  * [D] Rename internal c_dstring* to SWIG_c_dstring*
+  * [D] argcagv.i: Allow empty D array as input
+  * Test empty array and empty string with argcargv.i
+  * [scilab] Allow empty matrix as input
+  * [mzscheme] argcargv.i: Allow empty array
+  * [js] argcargv.i: Allow empty array or empty string
+  * [Java] Handle empty Java array
+  * [guile] argcargv.i: Allow empty array or empty string
+  * [go] argcargv.i: Allow empty array or empty string
+  * [c#] argcargv.i: Allow empty array or empty string
+  * [octave] Fix argcargv.i bug
+  * [MzScheme] Add throw capture for std::out_of_range.
+  * [MzScheme] Add argc and argv multi-argument typemap.
+  * [MzScheme] Resolve compiler warning:  control reaches end of non-void function [-Werror=return-type]
+  * Clean up naming of csharp array helpers
+  * Put csharp string array helpers in a fragment
+  * Tweak comment formatting
+  * [C#] Update argv argc typemap to generic format.
+  * Drop extra tokens after #endif
+  * [js] Add _runme.js files for ynit tests that pass
+  * Remove another redundant NULL check before free()
+  * Eliminate docs implying free() doesn't accept NULL
+  * Remove more redundant NULL checks before free()
+  * Add missing CHANGES entry for additional argcargv support
+  * Correct to standard approach to mentioning SWIG version info in docs
+  * Keep tests in alphabetical order
+  * Remove redundant NULL checks before free()
+  * Add D language typemaps  - "char *STRING, size_t LENGTH"  - argc and argv multi-argument
+  * Fix comment typo
+  * Add argc and argv multi-argument typemap to Java, Guile, JavaScript, Scilab and C#
+  * Add li_constraints test for D Language.
+  * Add D language to 'can throw' exceptions flag.
+  * [D] Fix D examples to work when srcdir != builddir
+  * Fix typo ('not' -> 'now')
+  * [D] Note fixes in CHANGES.current and RELEASENOTES
+  * [D] Require gdmd to be used to run tests with gdc
+  * [D] Drop explicit -fversion=/-version=
+  * [D] Fix to support recent D releases
+  * Remove marker comment left over from debugging
+  * CHANGES.current: Restore accidentally deleted lines
+  * Relocate a comment to where it makes sense
+  * Support deducing decltype for false and true
+  * Improve #2446 fix
+  * Add CHANGES.current entry for #2446
+  * Stop defining SWIGOPT_* preprocessor symbols
+  * [Perl] Add string_view support
+  * Implement cpp11_decltype_runme.php
+  * Add missing new file for Ruby string_view support
+  * [Ruby] Add string_view support
+  * Add comment explaining new parser rule
+  * Partial support for auto without trailing return type
+  * Add test that __cplusplus isn't defined in C mode
+  * Define __STDC__ to 1 rather than an empty value
+  * Allow defining __cplusplus on the command line
+  * Define all predefined symbols after option parsing
+  * Relocate comment to where it makes sense
+  * Add new -U command line option
+  * Clean up handling of -D a little
+  * Improve --help output for -D
+  * Remove duplicate defining of __cplusplus
+  * Add CHANGES.current entry
+  * More maintainable warning message
+  * Update comment wrt #1589
+  * Simplify grammar rules for alternative start symbols
+  * Support parsing arbitrary expression in decltype
+  * Remove obsolete debug line from callback_runme.py
+  * [tcl] Add string_view support
+  * Use Putc instead of Append on a temp 1 or 2 char string
+  * Document what c_spaceship.i is testing
+  * Improve docs for Scanner_skip_balanced() return value
+  * Clean up double spaces between words in comments
+  * Emit extra message for missing typecheck typemap
+  * Use strchr/Strchr for single character searches
+  * Add %rename to %pythoncode example
+  * Add CHANGES.current entry
+  * Expand li_std_string_runme.*
+  * Add li_constraints test, testing 'constraints.i'. For: JavaScript, C#, go, Java, Lua, Perl, PHP, python, Ruby, TCL and Octave.
+  * support check typemaps in JS
+  * [java] Suppress removal warnings for finalize()
+  * Fix SWIG warning from testcase cpp11_constexpr
+  * Parse storage class more flexibly
+  * [doc] Fix SWIG_AsCharPtrAndSize arg types
+  * Initial support for std::string_view
+  * Removed unused default parameter value
+  * [PHP] Wrap method with both static and non-static overloads
+  * Tweak to struct name in testcase for R
+  * Partial revert of previous commit for typedefs
+  * add an unit test
+  * tentative fix for typedef/using declaration to struct typedef
+  * Add #366 reference to fix for #1037
+  * Fix testcase comment typo
+  * [D] Stop generating Examples/d/example.mk
+  * [D] Fix typo in -d2 option description
+  * [D] Update docs for D1 removal
+  * Drop D version 1
+  * Fix CHANGES.current factual error
+  * Fix typo: "temporal" which should be "temporary"
+  * Allow using snprintf() instead of sprintf() in wrappers
+  * [Lua] Alternative SWIG_LUA_CONSTTAB_INT fix
+  * Revert "Lua variadic templates sizeof... constants fix"
+  * Finish removal of SwigPySequence_Cont
+  * Remove undocumented and non-existent STL std::carray
+  * Remove assign method uses by the removed Python Sequence Protocol
+  * Remove now redundant use of Python Sequence protocol in STL wrappers
+  * Add support for all STL containers to be constructible from a Python set
+  * Iterator Protocol support for std::array wrappers
+  * try to ninja fix jsc
+  * take into account numinputs when counting arguments
+  * catches_strings_runme.php: Check exact exception message
+  * [php] Add throws typemaps for string* + const string*
+  * Make typemaps consistently use string::data() vs c_str()
+  * [doc] Update sample swig -debug-tags output
+  * Update CHANGES.current for Javascript changes
+  * [js] Stop using swig -c++ for C examples
+  * [js] Improve default for JSENGINE
+  * [js] Turn on C++ output for node too
+  * Add CHANGES.current entry
+  * use the renamed name when creating a constant
+  * [perl,ruby] Test OUTPUT string& typemap
+  * [lua] Test INPUT,INOUT,OUTPUT for std::string&
+  * [php] Support INPUT,INOUT,OUTPUT for std::string&
+  * Warnings.html: Add missing warning numbers 472,473
+  * Fix CanCastAsInteger if errno is set.
+  * Add CHANGES.current entry for Ocaml std::string changes
+  * [ci] Update to latest actions/checkout
+  * Python: Suggest argcargv.i to handle char**
+  * C#: Add missing explicit `global::System` in manual
+  * [OCaml] Fix reference typemaps for std::string
+  * [ocaml] Use CXXFLAGS when compiling C++ testcases
+  * Fix #ifdef and #ifndef to work inside a %define
+  * Add regression test for << in array size bug
+  * Restore handling for '<<' in array size
+  * Add missing newline on new error message
+  * Improve error for array size with a '<' character
+  * Remove remaining traces of PHP7 support
+  * [php] Remove unused exception.i include
+  * Make string& consistent in PHP's std_string.i
+  * Clarify comment in _runme.go
+  * Drop __cplusplus conditionals from testcase
+  * [ci] Fix scilab 2023.0.0 download URL
+  * Note that #1882 is fixed by recent change
+  * scilab: add a gateway xml v6 with full function names
+  * scilab: detect version 2023 correctly
+  * [ci] Add scilab 6.1 build
+  * Add argc and argv multi-argument to go. Make argc and argv test works in C.
+  * Make y const in new testcase
+  * Add CHANGES.current entry
+  * Adjust new tests
+  * Copy over missing parts of macro expansion code
+  * Add CHANGES.current entry
+  * Really fix "mixed declarations and code" warning
+  * [ci] Resurrect Ruby 2.0-2.3 jobs and add 3.2 job
+  * [scilab] Extract values with ":"
+  * [ci] Resurrect scilab 6.0 build
+  * [ci] Disable ubuntu-18.04 jobs
+  * inline the header into the interface file
+  * [ci] Update to latest actions/checkout
+  * actually test the value
+  * suppress a warning
+  * save missing files from previous commit
+  * move the unit tests
+  * fix code readability issues
+  * Remove support for PHP7
+  * Fix "ISO C90 forbids mixed declarations and code" warning
+  * Fix "undefining the allocator of T_DATA" error seen in Ruby 3.2
+  * restore the unit test
+  * alternative, much cleaner, approach
+  * STL support for copying Python objects supporting Iterator protocol
+  * Octave 8.1 support
+  * Use $self instead of self
+  * document C# std_array.i enhancements
+  * std_array.i std_vector.i tweaks
+  * Update octruntime.swg
+  * Update octrun.swg to work with Octave v8.1.0
+  * Update octruntime.swg to work with Octave v8.1.0
+  * Improved error checking when defining classes and using %template.
+  * Redefined identifer testcase now correctly errors
+  * Update errors tests to use new template error
+  * Fix duplicate const in generated code wrapping templates
+  * Cosmetic change in template terminology
+  * Update partial specialization test
+  * Partial template specialization fixes to support default arguments
+  * Revert "Allow Scilab 5.5 failure since downloads have moved"
+  * Duplicate parameter name handling improvements
+  * Improved variadic parameter names expansion
+  * Make new testcase c++98 compliant
+  * Template partial specialization improvements
+  * Fix deduction of partially specialized template parameters
+  * Rewrite does_parm_match used in template partial specialization
+  * Add missing template_function_parm testcase
+  * Added usage of nullptr instead of NULL
+  * Drop configure probe for popen()
+  * Fix a couple of typos in CHANGES
+  * Add CHANGES.current entry for previous commit
+  * Avoid unused parameter self warning
+  * configure: Check for php8.2 too
+  * CCache: Do not rely on C89-only features in configure.ac
+  * Lib/csharp: Resolve a few warnings about unused parameters
+  * Lib/csharp: Better standardized std_vector.i and std_array.i
+  * Fix seg fault using %template
+  * Instantiation of C++11 variadic function templates
+  * Move variadic function template tests to separate testcase
+  * Complete copy of testcase from Python
+  * Allow Scilab 5.5 failure since downloads have moved
+  * More variadic template testing
+  * Slight simplification parsing variadic template parameters
+  * Syntax error fixes parsing more elaborate parameter pack arguments
+  * Fix instantiation of variadic class templates
+  * Fix syntax error parsing variadic template parameter pack arguments
+  * Lua variadic templates sizeof... constants fix
+  * Parser code refactor around variadic types
+  * Document improved variadic template support
+  * Extend variadic template support to various type combinations
+  * Support multiple arguments in variadic templates.
+  * Refactor Swig_cparse_template_parms_expand()
+  * Refactor %template parameters handling
+  * Eliminate sprintf in generated python code
+  * Fix syntax error for misplaced Doxygen comment after struct/class member. Fix syntax error using Doxygen member groups syntax, "///*}", when used after final struct/class member.
+  * Improved handling of Doxygen comments in parameter lists
+  * [OCaml] Runtime tests for rename_rstrip_encoder and using2
+  * Fix syntax error parsing of Doxygen comments after last enum item
+  * Fix parsing of unconventional Doxygen post comments for enum items.
+  * Testcase fix for -Wdelete-non-virtual-dtor
+  * swig-4.1.1 changes
+  * Template parameters handling tidy up
+  * Improved template template parameters support.
+  * Add ccache-swig hash fix to RELEASENOTES
+  * Ocaml name mangling fix
+  * Fix push/pop mismatch
+  * Add SWIG-4.1.1 RELEASENOTES summary
+  * Fix UBSAN errors in ccache-swig
+  * Test case fix for std::complex and non-floating types deprecation
+  * Test cases fix
+  * Add missing testcase cpp11_template_parameters_decltype
+  * Slightly better decltype() support for expressions
+  * Fix syntax error parsing unnamed template parameters with a default.
+  * Follow-on fix for previous change
+  * Fix undefined behaviour in parser
+  * Variadic template docs correction
+  * Optimise SwigType_base implementation
+  * Restore testing template_expr testcase
+  * Fix seg fault handling template parameter expressions containing '>='
+  * Fix seg fault handling template parameter expressions containing '<='
+  * more r tests
+  * SwigType * handling corrections - Python builtin mangling
+  * Duplicate class template instantiations via %template changes
+  * more r tests
+  * added testcase pointer_reference
+  * [PHP] Update docs for removal of -noproxy in SWIG 4.1.0
+  * Minor refactor of D, C#, Java director code
+  * Simpler names when using SwigType_manglestr for templates
+  * Consolidate name mangling functions
+  * Remove unused code in mzscheme.cxx
+  * SwigType * handling corrections - mangling
+  * SwigType * handling corrections
+  * SwigValueWrapper and SwigType * correction
+  * Workaround for incomplete or/and keyword support in VC++
+  * more tests for R
+  * rename cpp14_enable_if_t to cpp17_enable_if_t
+  * Add changes entry for -swiglib CMake fix
+  * Correct ordering in CHANGES.current file
+  * Fix infinite loop handling non-type template parameters
+  * R rtypecheck typemaps
+  * Overloading fixes for R and rtypecheck typemap
+  * Improve R wrapper error message calling overloaded methods
+  * Fix memory leak in R shared_ptr wrappers
+  * li_boost_shared_ptr testcase for R
+  * cpp11_attribute_specifiers testcase warning suppression
+  * Bump version to 4.2.0 and migrate CHANGES to CHANGES.current
+  * Use more portable PyUnicode_AsUTF8* methods.
+  * Document that -php7 is for PHP 7 *or later*
+  * build: harden nuget.yml permissions
+  * CMake: Fix -swiglib on win32
+  * [python] Prevent a potential multithreading crash
+  * Add CI build using -py3-stable-abi option
+  * Make Python buffer typemaps compatible with limited API
+  * Don't use PyUnicode_AsUTF8() when python limited API is used
+  * Make directors implementation for Python work with limited API
+  * Support using stable Python ABI
+  * Ruby: Add check for lower bounds of unsigned long (long) parameters
+  * Ruby: Add test case for checking bounds of integral function parameters
+
+-------------------------------------------------------------------
 Thu Mar  2 12:42:07 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Use -fexcess-precision=fast as GCC 13 changes the default
