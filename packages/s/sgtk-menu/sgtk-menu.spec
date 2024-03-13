@@ -1,7 +1,7 @@
 #
 # spec file for package sgtk-menu
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,13 +37,12 @@ searchable gtk3-based system menu w/ some optional features.
 %prep
 %setup -q
 
-find . -type f -exec sed -i "s/#!\/usr\/bin\/env python3/#!\/usr\/bin\/python3/" {} +
-
 %build
 %python3_build
 
 %install
 %python3_install
+%python3_fix_shebang
 
 %files
 %license LICENSE

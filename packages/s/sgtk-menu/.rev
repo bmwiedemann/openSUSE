@@ -44,4 +44,13 @@
 - Changes from 1.1.3:</comment>
     <requestid>889581</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>fd48a7c54a42ed7d552e5b182865f54d</srcmd5>
+    <version>1.4.1</version>
+    <time>1710364713</time>
+    <user>anag+factory</user>
+    <comment>- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]</comment>
+    <requestid>1157173</requestid>
+  </revision>
 </revisionlist>
