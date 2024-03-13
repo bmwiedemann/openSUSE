@@ -84,4 +84,14 @@
   * Add media:thumbnail tests.</comment>
     <requestid>1132680</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>5694898542798b49d9cafae67268e66a</srcmd5>
+    <version>0.6.10</version>
+    <time>1710364668</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1156610 from ecsos
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1157045</requestid>
+  </revision>
 </revisionlist>
