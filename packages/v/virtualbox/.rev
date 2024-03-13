@@ -2565,4 +2565,12 @@ Linux hosts and guests: fix for building kernel modules against Linux 5.0. Thank
     <comment>Remove conflict markers (forwarded request 1156296 from favogt)</comment>
     <requestid>1156427</requestid>
   </revision>
+  <revision rev="272" vrev="5">
+    <srcmd5>813a99a480f08dbced4207c91d581829</srcmd5>
+    <version>7.0.14</version>
+    <time>1710364616</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1157287</requestid>
+  </revision>
 </revisionlist>

@@ -161,6 +161,7 @@ Patch39:        fix_sdl_build.patch
 Patch40:        fixes_for_leap.patch
 # Fix for set_pte() warning
 #Patch41:        fix_pte_warning.patch
+Patch42:        kernel-6.8.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
@@ -474,6 +475,7 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch -P 39 -p1
 %patch -P 40 -p1
 #%patch -P 41 -p1
+%patch -P 42 -p1
 
 ### Documents for virtualbox main package ###
 %if %{main_package}
