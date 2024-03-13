@@ -1,7 +1,7 @@
 #
 # spec file for package sfml2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -96,6 +96,7 @@ This subpackage contains the developer documentation.
 %build
 %cmake -DSFML_BUILD_DOC=TRUE \
        -DSFML_INSTALL_PKGCONFIG_FILES=TRUE \
+       -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/SFML \
        -DCMAKE_BUILD_TYPE=RelWithDebInfo
 %cmake_build
 
@@ -104,9 +105,6 @@ cd doc/html
 
 %install
 %cmake_install
-
-mkdir -p %{buildroot}%{_docdir}/SFML
-mv %{buildroot}%{_datadir}/doc/SFML %{buildroot}%{_docdir}/SFML
 
 %post -n lib%{name}%{so_ver} -p /sbin/ldconfig
 %postun -n lib%{name}%{so_ver} -p /sbin/ldconfig
