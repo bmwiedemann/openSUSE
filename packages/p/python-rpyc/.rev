@@ -173,4 +173,18 @@
   * service can now easily override protocol handlers, by updating</comment>
     <requestid>1135621</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>50b73d0d44dc379d662f3038c66213ba</srcmd5>
+    <version>6.0.0</version>
+    <time>1710364854</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.0.0 (bsc#1221331, CVE-2024-27758):
+  * #551 Resolves security issue that results in RCE. The fix breaks
+    backwards compatibility for those that rely on the __array__
+    attribute used by numpy. This RCE is only exploitable when the
+    server-side gets the attribute __array__ and calls it (e.g.,
+    np.array(x)). This issues effects all versions since major release
+    4.</comment>
+    <requestid>1157613</requestid>
+  </revision>
 </revisionlist>

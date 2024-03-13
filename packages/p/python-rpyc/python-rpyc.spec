@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-rpyc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-rpyc%{psuffix}
-Version:        5.3.1
+Version:        6.0.0
 Release:        0
 Summary:        Remote Python Call (RPyC), a RPC library
 License:        MIT
@@ -40,7 +40,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-plumbum >= 1.2
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module gevent}
@@ -81,10 +81,13 @@ mv %{buildroot}%{_bindir}/rpyc_registry.py %{buildroot}%{_bindir}/rpyc_registry
 
 %if %{with test}
 %check
-donttest="TestDeploy or Test_Ssh or TestUdpRegistry or win32pipes or test_server_stops or test_immutable_object_return or test_return_of_modified_parameter or test_return_of_unmodified_parameter or test_dataframe_pickling or test_ssl_conenction or test_connection"
+export PYTEST_ADDOPTS="--import-mode=importlib" PYTHONPATH="."
+pushd tests
+donttest="TestDeploy or TestUdpRegistry"
 # Fails with python 3.11
 donttest+=" or test_gdb"
 %pytest -k "not ($donttest)"
+popd
 %endif
 
 %if !%{with test}
