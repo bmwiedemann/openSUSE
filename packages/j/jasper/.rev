@@ -354,4 +354,13 @@
   * Fix a build problem for the DJGPP/MS-DOS environment (#372).</comment>
     <requestid>1147689</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c117ff8dd1bbd31c7bbef09ff5638909</srcmd5>
+    <version>4.2.2</version>
+    <time>1710364597</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.2.2:
+  * Fix minor build issue (#374).</comment>
+    <requestid>1157079</requestid>
+  </revision>
 </revisionlist>
