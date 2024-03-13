@@ -45,6 +45,8 @@ Patch7:         0005-Actually-fail-when-error-occurs-in-parseFormat.patch
 Patch8:         0006-Check-for-division-by-zero-in-BlockCodec-runPull.patch
 # PATCH-FIX-UPSTREAM 0007-set-the-output-chunk-to-the-amount-of-frames.patch boo#11115865 qzheng@suse.com -- Set output chunk framecount after pull https://github.com/mpruett/audiofile/pull/52
 Patch9:         0007-set-the-output-chunk-to-the-amount-of-frames.patch
+# PATCH-FIX-OPENSUSE bsc#1221308 -- correction to audiofile-CVE-2015-7747.patch
+Patch10:        createTemporaryFile-argument-fix.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -109,16 +111,7 @@ files of many common formats (currently AIFF, AIFC, WAVE, and
 NeXT/Sun).
 
 %prep
-%setup -q
-%patch -P 0 -p1
-%patch -P 2
-%patch -P 3 -p1
-%patch -P 4 -p1
-%patch -P 5 -p1
-%patch -P 6 -p1
-%patch -P 7 -p1
-%patch -P 8 -p1
-%patch -P 9 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
@@ -142,7 +135,8 @@ make check %{?_smp_mflags}
 
 %files
 %defattr(-, root, root)
-%doc README TODO COPYING* ACKNOWLEDGEMENTS AUTHORS NEWS NOTES
+%doc README TODO ACKNOWLEDGEMENTS AUTHORS NEWS NOTES
+%license COPYING*
 %{_bindir}/sfconvert
 %{_bindir}/sfinfo
 %{_mandir}/man1/sfconvert.1*

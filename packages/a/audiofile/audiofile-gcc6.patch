@@ -1,6 +1,11 @@
---- libaudiofile/modules/SimpleModule.h.orig	2016-01-29 12:17:56.906436741 +0000
-+++ libaudiofile/modules/SimpleModule.h	2016-01-29 12:18:31.610839734 +0000
-@@ -123,7 +123,7 @@
+---
+ libaudiofile/modules/SimpleModule.h |    2 +-
+ test/NeXT.cpp                       |    6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+--- a/libaudiofile/modules/SimpleModule.h
++++ b/libaudiofile/modules/SimpleModule.h
+@@ -123,7 +123,7 @@ struct signConverter
  	typedef typename IntTypes<Format>::UnsignedType UnsignedType;
  
  	static const int kScaleBits = (Format + 1) * CHAR_BIT - 1;
@@ -9,8 +14,8 @@
  
  	struct signedToUnsigned : public std::unary_function<SignedType, UnsignedType>
  	{
---- test/NeXT.cpp.orig	2016-01-29 12:24:59.471342657 +0000
-+++ test/NeXT.cpp	2016-01-29 12:26:49.788623085 +0000
+--- a/test/NeXT.cpp
++++ b/test/NeXT.cpp
 @@ -37,7 +37,7 @@
  
  #include "TestUtilities.h"
@@ -20,7 +25,7 @@
  {
  	'.', 's', 'n', 'd',
  	0, 0, 0, 24, // offset of 24 bytes
-@@ -57,7 +57,7 @@
+@@ -57,7 +57,7 @@ const char kDataUnspecifiedLength[] =
  	0, 55
  };
  
@@ -29,7 +34,7 @@
  {
  	'.', 's', 'n', 'd',
  	0, 0, 0, 24, // offset of 24 bytes
-@@ -152,7 +152,7 @@
+@@ -152,7 +152,7 @@ TEST(NeXT, Truncated)
  	ASSERT_EQ(::unlink(testFileName.c_str()), 0);
  }
  

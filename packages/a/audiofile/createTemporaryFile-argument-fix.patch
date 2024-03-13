@@ -1,0 +1,15 @@
+---
+ test/sixteen-stereo-to-eight-mono.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/test/sixteen-stereo-to-eight-mono.c
++++ b/test/sixteen-stereo-to-eight-mono.c
+@@ -58,7 +58,7 @@ int main (int argc, char **argv)
+ 	afInitChannels(setup, AF_DEFAULT_TRACK, 2);
+ 
+ 	char testFileName[PATH_MAX];
+-	if (!createTemporaryFile("sixteen-to-eight", &testFileName))
++	if (!createTemporaryFile("sixteen-to-eight", testFileName))
+ 	{
+ 		fprintf(stderr, "Could not create temporary file.\n");
+ 		exit(EXIT_FAILURE);

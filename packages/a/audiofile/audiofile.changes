@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 12 16:27:36 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Fix the incorrect argument passed to createTemporaryFile() (bsc#1221308):
+  createTemporaryFile-argument-fix.patch
+- Refresh patch to be applied with -p1, use autosetup macro for cleanup
+- Put COPYING* to licenses
+
+-------------------------------------------------------------------
 Tue Feb 20 10:21:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
