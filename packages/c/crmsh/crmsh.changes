@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Mar 13 14:26:02 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240313.8278d949:
+  * Fix: utils: set env `CIB_shadow` using `os.environ` (bsc#1205925)
+  * Fix: pass env to child process explicitly (bsc#1205925)
+  * Fix: term: unset env `COLUMNS` and `ROWS` (bsc#1205925)
+  * Dev: unittest: update unit tests for previous changes
+  * Fix: sh: pass env to child process explicitly (bsc#1205925)
+
+-------------------------------------------------------------------
+Wed Mar 13 10:43:31 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240313.0c382be4:
+  * Dev: sh: Fix typo in docstring
+
+-------------------------------------------------------------------
+Tue Mar 12 07:04:54 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240312.24df92aa:
+  * Dev: unittest: Adjust unit test for previous change
+  * Fix: bootstrap: Remove unused -i option when calling csync2_remote and ssh_remote stage (bsc#1212080)
+  * Dev: unitest: Adjust unit test for previous change
+  * Fix: report: Show different perspectives of cluster
+
+-------------------------------------------------------------------
 Tue Feb 27 15:11:03 UTC 2024 - XLiang@suse.com
 
 - Update to version 4.6.0+20240227.21cbb9ee:
