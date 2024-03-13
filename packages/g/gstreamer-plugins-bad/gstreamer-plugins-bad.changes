@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 12 09:36:29 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch that fixes a crash when initializing gstva, submitted
+  to upstream at https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/6319
+  (boo#1221150):
+  * 0001-Move-PROP_RATE_CONTROL-to-the-end-of-the-array.patch
+
+-------------------------------------------------------------------
 Wed Mar  6 07:44:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - baselibs.conf: Produce -32bit biarch packages of
