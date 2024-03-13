@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 12 09:30:22 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Move install commands into %install section
+
+-------------------------------------------------------------------
 Sun Dec 17 10:14:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 12.1.1:

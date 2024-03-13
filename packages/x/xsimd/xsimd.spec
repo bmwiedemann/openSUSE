@@ -61,12 +61,12 @@ popd
 %install
 %cmake_install
 
-%check
-%ctest
-
 #install documentation
 mkdir -p %{buildroot}%{_docdir}/%{name}
 cp -r %{_builddir}/%{name}-%{version}/docs/build/html/* %{buildroot}%{_docdir}/%{name}
+
+%check
+%ctest
 
 %package devel
 Summary:        Development files for xsimd

@@ -53,4 +53,12 @@
   * Use intrinsic instead of generic implementation of ldexp on avx512f</comment>
     <requestid>1133732</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e473a51166a0730a2fce5af323bc2a03</srcmd5>
+    <version>12.1.1</version>
+    <time>1710364601</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1157142</requestid>
+  </revision>
 </revisionlist>
