@@ -1,7 +1,7 @@
 #
 # spec file for package jsch-agent-proxy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,21 @@
 
 
 Name:           jsch-agent-proxy
-Version:        0.0.7
+Version:        0.0.9
 Release:        0
 Summary:        Proxy to ssh-agent and Pageant in Java
 License:        BSD-3-Clause
 Group:          Development/Libraries/Java
 URL:            http://www.jcraft.com/jsch-agent-proxy/
-Source0:        https://github.com/ymnk/jsch-agent-proxy/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}-build.tar.xz
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  jna
 BuildRequires:  jna-contrib
 BuildRequires:  jsch
-BuildRequires:  trilead-ssh2
 BuildArch:      noarch
 
 %description
@@ -45,11 +44,6 @@ to other SSH2 implementations in Java.
 %package connector-factory
 Summary:        Connector factory for jsch-agent-proxy
 Group:          Development/Libraries/Java
-Requires:       mvn(com.jcraft:jsch.agentproxy.core) = %{version}
-Requires:       mvn(com.jcraft:jsch.agentproxy.pageant) = %{version}
-Requires:       mvn(com.jcraft:jsch.agentproxy.sshagent) = %{version}
-Requires:       mvn(com.jcraft:jsch.agentproxy.usocket-jna) = %{version}
-Requires:       mvn(com.jcraft:jsch.agentproxy.usocket-nc) = %{version}
 
 %description connector-factory
 %{summary}.
@@ -64,8 +58,6 @@ Group:          Development/Libraries/Java
 %package jsch
 Summary:        JSch connector for jsch-agent-proxy
 Group:          Development/Libraries/Java
-Requires:       mvn(com.jcraft:jsch)
-Requires:       mvn(com.jcraft:jsch.agentproxy.core) = %{version}
 
 %description jsch
 %{summary}.
@@ -73,9 +65,6 @@ Requires:       mvn(com.jcraft:jsch.agentproxy.core) = %{version}
 %package pageant
 Summary:        Pageant connector for jsch-agent-proxy
 Group:          Development/Libraries/Java
-Requires:       mvn(com.jcraft:jsch.agentproxy.core) = %{version}
-Requires:       mvn(net.java.dev.jna:jna)
-Requires:       mvn(net.java.dev.jna:platform)
 
 %description pageant
 %{summary}.
@@ -83,26 +72,13 @@ Requires:       mvn(net.java.dev.jna:platform)
 %package sshagent
 Summary:        ssh-agent connector for jsch-agent-proxy
 Group:          Development/Libraries/Java
-Requires:       mvn(com.jcraft:jsch.agentproxy.core) = %{version}
 
 %description sshagent
-%{summary}.
-
-%package svnkit-trilead-ssh2
-Summary:        trilead-ssh2 connector for jsch-agent-proxy
-Group:          Development/Libraries/Java
-Requires:       mvn(com.jcraft:jsch.agentproxy.core) = %{version}
-Requires:       mvn(com.trilead:trilead-ssh2)
-
-%description svnkit-trilead-ssh2
 %{summary}.
 
 %package usocket-jna
 Summary:        USocketFactory implementation using JNA
 Group:          Development/Libraries/Java
-Requires:       mvn(com.jcraft:jsch.agentproxy.core) = %{version}
-Requires:       mvn(net.java.dev.jna:jna)
-Requires:       mvn(net.java.dev.jna:platform)
 
 %description usocket-jna
 %{summary}.
@@ -117,7 +93,6 @@ Group:          Development/Libraries/Java
 %package        javadoc
 Summary:        API documentation for %{name}
 Group:          Documentation/HTML
-Requires:       mvn(com.jcraft:jsch.agentproxy.core) = %{version}
 
 %description    javadoc
 This package provides %{summary}.
@@ -131,30 +106,22 @@ This package provides %{summary}.
 %pom_xpath_remove pom:build/pom:extensions
 %pom_disable_module jsch-agent-proxy-sshj
 
-for package in connector-factory core jsch pageant sshagent \
-               svnkit-trilead-ssh2 usocket-jna usocket-nc; do
-    %pom_remove_parent %{name}-${package}
-    %pom_xpath_inject pom:project "
-                                <groupId>com.jcraft</groupId>
-                                <version>%{version}</version>" %{name}-${package}
-done
-
 %build
 mkdir lib
-build-jar-repository -s lib jna jna-platform jsch trilead-ssh2
+build-jar-repository -s lib jna jna-platform jsch
 
 %{ant} \
     -Dtest.skip=true \
     package javadoc
 
 %install
-install -dm 0755 %{buildroot}/usr/share/java
+install -dm 0755 %{buildroot}%{_javadir}
 install -dm 0755 %{buildroot}%{_mavenpomdir}
 
 for package in connector-factory core jsch pageant sshagent \
-               svnkit-trilead-ssh2 usocket-jna usocket-nc; do
-    install -pm 0644 %{name}-${package}/target/jsch.agentproxy.${package}-%{version}.jar %{buildroot}/usr/share/java/jsch.agentproxy.${package}.jar
-    install -pm 0644 %{name}-${package}/pom.xml %{buildroot}%{_mavenpomdir}/jsch.agentproxy.${package}.pom
+               usocket-jna usocket-nc; do
+    install -pm 0644 %{name}-${package}/target/jsch.agentproxy.${package}-%{version}.jar %{buildroot}%{_javadir}/jsch.agentproxy.${package}.jar
+    %{mvn_install_pom} %{name}-${package}/pom.xml %{buildroot}%{_mavenpomdir}/jsch.agentproxy.${package}.pom
     %add_maven_depmap jsch.agentproxy.${package}.pom jsch.agentproxy.${package}.jar -f ${package}
 
     # javadoc
@@ -175,8 +142,6 @@ done
 %files pageant -f .mfiles-pageant
 
 %files sshagent -f .mfiles-sshagent
-
-%files svnkit-trilead-ssh2 -f .mfiles-svnkit-trilead-ssh2
 
 %files usocket-jna -f .mfiles-usocket-jna
 

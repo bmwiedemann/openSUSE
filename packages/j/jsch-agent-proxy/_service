@@ -1,0 +1,13 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/ymnk/jsch-agent-proxy.git</param>
+		<param name="revision">12c3d64fc2b0a4fd37659369edfdee26e48954e2</param>
+		<param name="versionformat">0.0.9</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

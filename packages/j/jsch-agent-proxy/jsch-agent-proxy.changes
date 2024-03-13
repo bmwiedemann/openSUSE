@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar 13 07:30:27 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 0.0.9
+  * Fixes:
+    + using JNA 4.1.0
+    + The usocket path for ssh-agent should be configurable
+- Fetch sources using source service, since the tag for this
+  version is missing in the git repository.
+
+-------------------------------------------------------------------
+Wed Mar 13 06:16:21 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build the module svnkit-trilead-ssh2 that depends on
+  trilead-ssh2, since it is not strictly needed by anything in
+  our stack. This mitigates bsc#1218198, CVE-2023-48795.
+
+-------------------------------------------------------------------
 Sun Mar 20 15:18:34 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source and target levels 1.8

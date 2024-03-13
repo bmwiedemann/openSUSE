@@ -31,4 +31,12 @@
     <comment>Build with source/target levels 8</comment>
     <requestid>963286</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c2292706e9eea6876d4e80a52fd43c53</srcmd5>
+    <version>0.0.9</version>
+    <time>1710364567</time>
+    <user>anag+factory</user>
+    <comment>0.0.9 + mitigate bsc#1218198, CVE-2023-48795</comment>
+    <requestid>1157430</requestid>
+  </revision>
 </revisionlist>
