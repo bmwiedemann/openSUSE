@@ -39,6 +39,9 @@ Requires:       python-google-crc32c
 Recommends:     python-aiohttp
 Recommends:     python-requests >= 2.18.0
 BuildArch:      noarch
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-google-resumable-media < %{version}
+%endif
 %python_subpackages
 
 %description
