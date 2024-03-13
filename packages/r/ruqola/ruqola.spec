@@ -16,58 +16,72 @@
 #
 
 
+%define kf6_version 6.0.0
+%define qt6_version 6.6.0
+
+%bcond_without released
 Name:           ruqola
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Rocket.chat Client
 License:        GPL-2.0-or-later
-Group:          Productivity/Networking/Instant Messenger
-URL:            https://invent.kde.org/network/ruqola
+URL:            https://apps.kde.org/ruqola
 Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
+%if %{with released}
 Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
-Source2:        %{name}.keyring
-BuildRequires:  extra-cmake-modules
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DBusAddons) >= 5.91.0
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5IdleTime)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5NetworkManagerQt)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5NotifyConfig)
-BuildRequires:  cmake(KF5Prison)
-BuildRequires:  cmake(KF5Purpose)
-BuildRequires:  cmake(KF5Sonnet)
-BuildRequires:  cmake(KF5SyntaxHighlighting)
-BuildRequires:  cmake(KF5TextWidgets)
-BuildRequires:  cmake(KF5TextTranslator)
-BuildRequires:  cmake(KF5TextAutoCorrectionWidgets)
-BuildRequires:  cmake(KF5TextEditTextToSpeech)
-BuildRequires:  cmake(KF5TextEmoticonsWidgets)
-BuildRequires:  cmake(KF5TextUtils)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(KUserFeedback)
-BuildRequires:  cmake(Qt5Keychain)
-BuildRequires:  cmake(Qt5Multimedia) >= 5.15.2
-BuildRequires:  cmake(Qt5NetworkAuth)
-BuildRequires:  cmake(Qt5Sql)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5TextToSpeech)
-BuildRequires:  cmake(Qt5WebSockets)
+Source2:        ruqola.keyring
+%endif
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
+BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6IdleTime) >= %{kf6_version}
+BuildRequires:  cmake(KF6ItemViews) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6NetworkManagerQt) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6NotifyConfig) >= %{kf6_version}
+BuildRequires:  cmake(KF6Prison) >= %{kf6_version}
+BuildRequires:  cmake(KF6Purpose) >= %{kf6_version}
+BuildRequires:  cmake(KF6Sonnet) >= %{kf6_version}
+BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
+BuildRequires:  cmake(KF6SyntaxHighlighting) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextAutoCorrectionWidgets) >= 1.5.3
+BuildRequires:  cmake(KF6TextCustomEditor) >= 1.5.3
+BuildRequires:  cmake(KF6TextEditTextToSpeech) >= 1.5.3
+BuildRequires:  cmake(KF6TextEmoticonsWidgets) >= 1.5.3
+BuildRequires:  cmake(KF6TextTranslator) >= 1.5.3
+BuildRequires:  cmake(KF6TextUtils) >= 1.5.3
+BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6UserFeedback) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Keychain) >= 0.14.1
+BuildRequires:  cmake(Qt6MultimediaWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6NetworkAuth) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WebSockets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+Requires:       qt6-sql-sqlite >= %{qt6_version}
 
 %description
 Ruqola is a Rocket.Chat client for the KDE desktop.
 
-It supports multi-account, search in room, open close rooms, direct message, thread, discussions.
+It supports multi-account, search in room, open close rooms, direct message,
+thread, discussions.
 RC settings can be changed directly.
 
-It's a native alternative to the official embedded browser type of desktop app available from Rocket.Chat project.
+It's a native alternative to the official embedded browser type of desktop app
+available from Rocket.Chat project.
 
 %lang_package
 
@@ -75,38 +89,42 @@ It's a native alternative to the official embedded browser type of desktop app a
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name}
+%find_lang %{name} --with-html
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
-%license COPYING*
-%doc README*
-%{_kf5_bindir}/ruqola
-%{_kf5_libdir}/libruqolacore.so.*
-%{_kf5_libdir}/libruqolawidgets.so.*
-%{_kf5_libdir}/librocketchatrestapi-qt5*
-%dir %{_kf5_plugindir}/ruqolaplugins
-%dir %{_kf5_plugindir}/ruqolaplugins/authentication
-%{_kf5_plugindir}/ruqolaplugins/authentication/ruqola_passwordauthenticationplugin.so
-%dir %{_kf5_plugindir}/ruqolaplugins/textplugins
-%{_kf5_plugindir}/ruqolaplugins/textplugins/ruqola_*.so
-# upstream installs with execute bit, gives a linter warning
-%attr(0644,-,-) %{_kf5_applicationsdir}/org.kde.ruqola.desktop
-%{_kf5_iconsdir}/hicolor/*/*/*.*
-%doc %{_kf5_htmldir}/en/ruqola/
-%{_kf5_notifydir}/ruqola.notifyrc
-%{_kf5_appstreamdir}/org.kde.ruqola.appdata.xml
-%{_kf5_debugdir}/ruqola.categories
-%{_kf5_debugdir}/ruqola.renamecategories
+%license LICENSES/*
+%doc README.md
+%doc %lang(en) %{_kf6_htmldir}/en/ruqola/
+# # upstream installs with execute bit, gives a linter warning
+%attr(0644,-,-) %{_kf6_applicationsdir}/org.kde.ruqola.desktop
+%{_kf6_appstreamdir}/org.kde.ruqola.appdata.xml
+%{_kf6_bindir}/ruqola
+%{_kf6_debugdir}/ruqola.categories
+%{_kf6_debugdir}/ruqola.renamecategories
+%{_kf6_iconsdir}/hicolor/*/*/ruqola.png
+%{_kf6_libdir}/librocketchatrestapi-qt.so.*
+%{_kf6_libdir}/libruqolacore.so.*
+%{_kf6_libdir}/libruqolawidgets.so.*
+%{_kf6_notificationsdir}/ruqola.notifyrc
+%dir %{_kf6_plugindir}/ruqolaplugins
+%dir %{_kf6_plugindir}/ruqolaplugins/authentication
+%{_kf6_plugindir}/ruqolaplugins/authentication/ruqola_githubauthenticationplugin.so
+%{_kf6_plugindir}/ruqolaplugins/authentication/ruqola_gitlabauthenticationplugin.so
+%{_kf6_plugindir}/ruqolaplugins/authentication/ruqola_passwordauthenticationplugin.so
+%dir %{_kf6_plugindir}/ruqolaplugins/textplugins
+%{_kf6_plugindir}/ruqolaplugins/textplugins/ruqola_sharetextplugin.so
+%{_kf6_plugindir}/ruqolaplugins/textplugins/ruqola_webshortcuttextplugin.so
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/ruqola/
 
 %changelog
