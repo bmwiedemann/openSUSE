@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 12 13:57:30 UTC 2024 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Fix unlimited-sized fake device graphs (bsc#1221222)
+- 5.0.9
+
+-------------------------------------------------------------------
 Thu Mar  7 16:26:04 UTC 2024 - José Iván López González <jlopez@suse.com>
 
 - Share the logic for generating the description of a device and
