@@ -44,6 +44,9 @@ BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests >= 2.18.0}
 BuildRequires:  %{python_module setuptools >= 40.3.0}
 BuildRequires:  %{python_module wheel}
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-google-api-core < %{version}
+%endif
 # START TESTING SECTION
 %if %{with test}
 BuildRequires:  %{python_module google-api-core >= %{version}}
