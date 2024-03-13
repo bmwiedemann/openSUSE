@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Wed Mar 13 09:36:08 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.11.60
+  ## ✨ Features
+
+  * Refine styles of controls to match Compound (https://github.com/matrix-org/matrix-react-sdk/pull/12299). Contributed by @robintown.
+  * Hide the archived section (https://github.com/matrix-org/matrix-react-sdk/pull/12286). Contributed by @dbkr.
+  * Add theme data to EC widget Url (https://github.com/matrix-org/matrix-react-sdk/pull/12279). Contributed by @toger5.
+  * Update MSC2965 OIDC Discovery implementation (https://github.com/matrix-org/matrix-react-sdk/pull/12245). Contributed by @t3chguy.
+  * Use green dot for activity notification in `LegacyRoomHeader` (https://github.com/matrix-org/matrix-react-sdk/pull/12270). Contributed by @florianduros.
+
+  ## 🐛 Bug Fixes
+
+  * Fix requests for senders to submit auto-rageshakes (https://github.com/matrix-org/matrix-react-sdk/pull/12304). Contributed by @richvdh.
+  * fix automatic DM avatar with functional members (https://github.com/matrix-org/matrix-react-sdk/pull/12157). Contributed by @HarHarLinks.
+  * Feeds event with relation to unknown to the widget (https://github.com/matrix-org/matrix-react-sdk/pull/12283). Contributed by @maheichyk.
+  * Fix TAC opening with keyboard (https://github.com/matrix-org/matrix-react-sdk/pull/12285). Contributed by @florianduros.
+  * Allow screenshot update docker to run multiple test files (https://github.com/matrix-org/matrix-react-sdk/pull/12291). Contributed by @dbkr.
+  * Fix alignment of user menu avatar (https://github.com/matrix-org/matrix-react-sdk/pull/12289). Contributed by @dbkr.
+  * Fix buttons of widget in a room (https://github.com/matrix-org/matrix-react-sdk/pull/12288). Contributed by @florianduros.
+  * ModuleAPI: `overwrite_login` action was not stopping the existing client resulting in the action failing with rust-sdk (https://github.com/matrix-org/matrix-react-sdk/pull/12272). Contributed by @BillCarsonFr.
+
+
+
+- Version 1.11.59
+  ## 🦖 Deprecations
+
+  * Enable custom themes to theme Compound (https://github.com/matrix-org/matrix-react-sdk/pull/12240). Contributed by @robintown.
+  * Remove welcome bot `welcome_user_id` support (https://github.com/matrix-org/matrix-react-sdk/pull/12153). Contributed by @t3chguy.
+
+  ## ✨ Features
+
+  * Ignore activity in TAC (https://github.com/matrix-org/matrix-react-sdk/pull/12269). Contributed by @florianduros.
+  * Use browser's font size instead of hardcoded `16px` as root font size (https://github.com/matrix-org/matrix-react-sdk/pull/12246). Contributed by @florianduros.
+  * Revert "Use Compound primary colors for most actions" (https://github.com/matrix-org/matrix-react-sdk/pull/12264). Contributed by @florianduros.
+  * Revert "Refine menu, toast, and popover colors" (https://github.com/matrix-org/matrix-react-sdk/pull/12263). Contributed by @florianduros.
+  * Fix Native OIDC for Element Desktop (https://github.com/matrix-org/matrix-react-sdk/pull/12253). Contributed by @t3chguy.
+  * Improve client metadata used for OIDC dynamic registration (https://github.com/matrix-org/matrix-react-sdk/pull/12257). Contributed by @t3chguy.
+  * Refine menu, toast, and popover colors (https://github.com/matrix-org/matrix-react-sdk/pull/12247). Contributed by @robintown.
+  * Call the AsJson forms of import and exportRoomKeys (https://github.com/matrix-org/matrix-react-sdk/pull/12233). Contributed by @andybalaam.
+  * Use Compound primary colors for most actions (https://github.com/matrix-org/matrix-react-sdk/pull/12241). Contributed by @robintown.
+  * Enable redirected media by default (https://github.com/matrix-org/matrix-react-sdk/pull/12142). Contributed by @turt2live.
+  * Reduce TAC width by `16px` (https://github.com/matrix-org/matrix-react-sdk/pull/12239). Contributed by @florianduros.
+  * Pop out of Threads Activity Centre (https://github.com/matrix-org/matrix-react-sdk/pull/12136). Contributed by @florianduros.
+  * Use new semantic tokens for username colors (https://github.com/matrix-org/matrix-react-sdk/pull/12209). Contributed by @robintown.
+
+  ## 🐛 Bug Fixes
+
+  * https://github.com/matrix-org/matrix-react-sdk/pull/12287). Contributed by @RiotRobot.
+  * Fix the space panel getting bigger when gaining a scroll bar (https://github.com/matrix-org/matrix-react-sdk/pull/12267). Contributed by @dbkr.
+  * Fix gradients spacings on the space panel (https://github.com/matrix-org/matrix-react-sdk/pull/12262). Contributed by @dbkr.
+  * Remove hardcoded `Element` in tac labs description (https://github.com/matrix-org/matrix-react-sdk/pull/12266). Contributed by @florianduros.
+  * Fix branding in "migrating crypto" message (https://github.com/matrix-org/matrix-react-sdk/pull/12265). Contributed by @richvdh.
+  * Use h1 as first heading in dialogs (https://github.com/matrix-org/matrix-react-sdk/pull/12250). Contributed by @dbkr.
+  * Fix forced lowercase username in login/registration flows (https://github.com/matrix-org/matrix-react-sdk/pull/9329). Contributed by @vrifox.
+  * Update the TAC indicator on event decryption (https://github.com/matrix-org/matrix-react-sdk/pull/12243). Contributed by @dbkr.
+  * Fix OIDC delegated auth account url check (https://github.com/matrix-org/matrix-react-sdk/pull/12242). Contributed by @t3chguy.
+  * New Header edgecase fixes: Close lobby button not shown, disable join button in various places, more... (https://github.com/matrix-org/matrix-react-sdk/pull/12235). Contributed by @toger5.
+  * Fix TAC button alignment when expanded (https://github.com/matrix-org/matrix-react-sdk/pull/12238). Contributed by @florianduros.
+  * Fix tooltip behaviour in TAC (https://github.com/matrix-org/matrix-react-sdk/pull/12236). Contributed by @florianduros.
+
+-------------------------------------------------------------------
 Wed Feb 14 09:59:24 UTC 2024 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.11.58
