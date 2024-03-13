@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 11 02:04:51 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update gsettings-desktop-schemas-fate324570-Add-key-for-GDM-background-configuration.patch:
+  Add key picture-uri-dark (bsc#1221205).
+
+-------------------------------------------------------------------
 Tue Nov 28 11:23:19 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup instead of %setup/%patch.
