@@ -915,4 +915,12 @@
   https://github.com/mesonbuild/meson/compare/1.3.1...1.3.2</comment>
     <requestid>1146731</requestid>
   </revision>
+  <revision rev="107" vrev="2">
+    <srcmd5>bf517518ac4960efb50e69c92b3b392c</srcmd5>
+    <version>1.3.2</version>
+    <time>1710364562</time>
+    <user>anag+factory</user>
+    <comment>Not yet jumping to 1.4 - need GNOME 46 for that</comment>
+    <requestid>1157507</requestid>
+  </revision>
 </revisionlist>
