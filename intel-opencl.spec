@@ -26,7 +26,9 @@ URL:            https://github.com/intel/compute-runtime
 Source0:        https://github.com/intel/compute-runtime/archive/%{version}/compute-runtime-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+%if 0%{?suse_version} > 1506
 BuildRequires:  level-zero-devel
+%endif
 BuildRequires:  libigc-devel
 BuildRequires:  libigdgmm-devel >= 22.3.0
 BuildRequires:  ninja
@@ -79,8 +81,10 @@ rm -Rf %{buildroot}%{_prefix}/lib/debug
 %files
 %{_libdir}/intel-opencl/libigdrcl.so
 %{_libdir}/libocloc.so
+%if 0%{?suse_version} > 1506
 %{_libdir}/libze_intel_gpu.so.1
 %{_libdir}/libze_intel_gpu.so.1.3.*
+%endif
 %{_bindir}/ocloc
 %{_libdir}/intel-opencl
 %if 0%{?suse_version} > 1600
@@ -95,6 +99,8 @@ rm -Rf %{buildroot}%{_prefix}/lib/debug
 
 %files devel
 %{_includedir}/ocloc_api.h
+%if 0%{?suse_version} > 1506
 %{_includedir}/level_zero/zet_intel_gpu_debug.h
+%endif
 
 %changelog

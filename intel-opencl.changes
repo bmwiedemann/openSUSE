@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 11 12:11:56 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Only build with level-zero support if suse_version > 1506 
+
+-------------------------------------------------------------------
 Fri Mar  8 13:31:24 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - fixed typo in Requires ... 
