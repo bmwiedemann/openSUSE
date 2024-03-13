@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar 11 16:39:08 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- fix source download URL
+
+-------------------------------------------------------------------
+Wed Feb 21 06:12:10 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+ - Use %patch -P N instead of deprecated %patchN.
+   Prepare for RPM 4.20 
+
+-------------------------------------------------------------------
+Sun Feb 18 07:51:15 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- apply pink-pony-1.4.1-protobuf.diff and 
+  0001-Fix-compile-issues-caused-by-Imath-being-moved-out-o.patch
+  only for openSUSE Tumbleweed, fixes building on openSUSE Leap
+- run spec-cleaner
+- update URL and source URL
+
+-------------------------------------------------------------------
 Mon Jul 17 08:07:31 UTC 2023 - Ludwig Nussel <lnussel@suse.de>
 
 - fix build failure by using pkg-config to get protobuf settings

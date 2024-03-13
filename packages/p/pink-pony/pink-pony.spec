@@ -1,7 +1,7 @@
 #
 # spec file for package pink-pony
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,8 @@ Release:        0
 Summary:        3D racing game with ponies
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Action/Arcade
-URL:            http://code.google.com/p/pink-pony/
-Source0:        http://pink-pony.googlecode.com/files/pink-pony-%{version}.tar.gz
+URL:            https://ginkgo.github.io/pink-pony/
+Source0:        https://github.com/ginkgo/pink-pony/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         datadir.patch
 Patch1:         script.patch
 Patch2:         pink-pony-1.4.1.diff
@@ -36,18 +36,18 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  ftgl-devel
 BuildRequires:  ilmbase-devel
 BuildRequires:  libsigc++2-devel
+BuildRequires:  pkgconfig
 BuildRequires:  scons
 BuildRequires:  pkgconfig(libglfw)
 BuildRequires:  pkgconfig(protobuf)
-
-Requires:       pink-pony-data = %version
+Requires:       pink-pony-data = %{version}
 
 %package data
 Summary:        3D racing game with ponies - data files
 License:        CC-BY-3.0 AND CC-BY-SA-3.0 AND GPL-3.0-or-later AND OFL-1.1 AND CC0-1.0
 Group:          Amusements/Games/Action/Arcade
+Requires:       pink-pony = %{version}
 BuildArch:      noarch
-Requires:       pink-pony = %version
 
 %description
 Pink Pony is a Tron­-like multiplayer racing­ game. You control
@@ -64,40 +64,46 @@ The last pony standing wins the game.
  This package contains architecture-independent game data
 
 %prep
-%autosetup -p1
+%setup -q
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+# apply patch3 and patch4 only on openSUSE Tumbleweed
+%if 0%{?suse_version} >= 1550
+%patch -P 3 -p1
+%patch -P 4 -p1
+%endif
 
 %build
-export CCFLAGS="%optflags"
+export CCFLAGS="%{optflags}"
 scons -f SConstruct %{?_smp_mflags} \
-	prefix=/usr \
-	resources_dir=/usr/share/pink-pony \
+	prefix=%{_prefix} \
+	resources_dir=%{_datadir}/pink-pony \
 	lib_dir="${PWD}"
 
 %install
-install -d -m 755 %buildroot/usr/bin
-install -d -m 755 %buildroot/usr/lib/pink-pony
-install -d -m 755 %buildroot/usr/share/pixmaps
-install -d -m 755 %buildroot/usr/share/pink-pony
-install -m 755 Pony %buildroot/usr/lib/pink-pony/pink-pony.bin
-install -m 755 install/pink-pony %buildroot/usr/bin/
-install -m 644 install/pink-pony.png %buildroot/usr/share/pixmaps
-install -m 644 pony.options %buildroot/usr/share/pink-pony
-cp -r resources/* %buildroot/usr/share/pink-pony
+install -d -m 755 %{buildroot}%{_bindir}
+install -d -m 755 %{buildroot}%{_prefix}/lib/pink-pony
+install -d -m 755 %{buildroot}%{_datadir}/pixmaps
+install -d -m 755 %{buildroot}%{_datadir}/pink-pony
+install -m 755 Pony %{buildroot}%{_prefix}/lib/pink-pony/pink-pony.bin
+install -m 755 install/pink-pony %{buildroot}%{_bindir}/
+install -m 644 install/pink-pony.png %{buildroot}%{_datadir}/pixmaps
+install -m 644 pony.options %{buildroot}%{_datadir}/pink-pony
+cp -r resources/* %{buildroot}%{_datadir}/pink-pony
 
 desktop-file-install \
   --dir %{buildroot}%{_datadir}/applications           \
   install/pink-pony.desktop
 
 %files
-%defattr(-,root,root,-)
 %doc README
 %{_bindir}/*
 %{_datadir}/applications/*%{name}.desktop
 %{_datadir}/pixmaps/*
-/usr/lib/pink-pony
+%{_prefix}/lib/pink-pony
 
 %files data
-%defattr(-,root,root,-)
 %{_datadir}/pink-pony
 
 %changelog

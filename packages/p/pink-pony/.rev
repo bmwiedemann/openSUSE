@@ -55,4 +55,20 @@
   (pink-pony-1.4.1-protobuf.diff)</comment>
     <requestid>1099046</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>56174c11f739b537666c8e5dc50ae1b4</srcmd5>
+    <version>1.4.1</version>
+    <time>1710364650</time>
+    <user>anag+factory</user>
+    <comment>- fix source download URL
+ - Use %patch -P N instead of deprecated %patchN.
+   Prepare for RPM 4.20 
+- apply pink-pony-1.4.1-protobuf.diff and 
+  0001-Fix-compile-issues-caused-by-Imath-being-moved-out-o.patch
+  only for openSUSE Tumbleweed, fixes building on openSUSE Leap
+- run spec-cleaner
+- update URL and source URL
+</comment>
+    <requestid>1157011</requestid>
+  </revision>
 </revisionlist>
