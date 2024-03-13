@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Mar 11 21:21:09 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.13.3
+  ## Features
+  * api: add wav and pcm to response_format (#1189) (dbd20fc)
+  ## Chores
+  * client: use anyio.sleep instead of asyncio.sleep (#1198)
+    (b6d025b)
+  * internal: bump pyright (#1193) (9202e04)
+  * types: extract run status to a named type (#1178) (249ecbd)
+- Release 1.13.2
+  ## Bug Fixes
+  * ci: revert "move github release logic to github app" (#1170)
+    (f1adc2e)
+- Release 1.13.1
+  ## Chores
+  * internal: bump rye to v0.24.0 (#1168) (84c4256)
+- Release 1.13.0
+  ## Features
+  * api: updates (#1146) (79b7675)
+  ## Bug Fixes
+  * api: remove non-GA instance_id param (#1164) (1abe139)
+  ## Chores
+  * client: use correct accept headers for binary data (#1161)
+    (e536437)
+- Release 1.12.0
+  ## Features
+  * api: add timestamp_granularities, add gpt-3.5-turbo-0125 model
+    (#1125) (1ecf8f6)
+  * cli/images: add support for --model arg (#1132) (0d53866)
+  ## Bug Fixes
+  * remove double brackets from timestamp_granularities param
+    (#1140) (3db0222)
+  * types: loosen most List params types to Iterable (#1129)
+    (bdb31a3)
+  ## Chores
+  * internal: add lint command (#1128) (4c021c0)
+  * internal: support serialising iterable types (#1127) (98d4e59)
+- Restrict to pytest-asyncio < 0.23
+- Fix License tag: They changed it for release 1.0.0 gh#openai/openai-python#677
+
+-------------------------------------------------------------------
 Fri Jan 26 12:54:53 UTC 2024 - Markéta Machová <mmachova@suse.com>, Module Updater <pgajdos@suse.com>
 
 - Update to 1.10.0

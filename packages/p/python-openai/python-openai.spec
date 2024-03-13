@@ -16,32 +16,16 @@
 #
 
 
-%define         skip_python2 1
-%define         skip_python36 1
 Name:           python-openai
-Version:        1.10.0
+Version:        1.13.3
 Release:        0
 Summary:        OpenAI bindings for python
-License:        MIT
+License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/openai/openai-python
 Source:         https://github.com/openai/openai-python/archive/refs/tags/v%{version}.tar.gz#/openai-%{version}.tar.gz
-BuildRequires:  %{python_module anyio}
-BuildRequires:  %{python_module dirty-equals}
-BuildRequires:  %{python_module distro}
 BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
-BuildRequires:  %{python_module pydantic}
-BuildRequires:  %{python_module pytest >= 3.5}
-BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module respx}
-BuildRequires:  %{python_module sniffio}
-BuildRequires:  %{python_module tqdm}
-BuildRequires:  %{python_module typing_extensions}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-anyio >= 3.5.0
@@ -52,7 +36,20 @@ Requires:       python-sniffio
 Requires:       python-tqdm > 4
 Requires:       python-typing_extensions
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
+# SECTION test-requirements
+BuildRequires:  %{python_module anyio}
+BuildRequires:  %{python_module dirty-equals}
+BuildRequires:  %{python_module distro}
+BuildRequires:  %{python_module httpx}
+BuildRequires:  %{python_module pydantic}
+BuildRequires:  %{python_module pytest >= 3.5}
+BuildRequires:  %{python_module pytest-asyncio < 0.23}
+BuildRequires:  %{python_module respx}
+BuildRequires:  %{python_module sniffio}
+BuildRequires:  %{python_module tqdm}
+BuildRequires:  %{python_module typing_extensions}
+# /SECTION
 BuildArch:      noarch
 %python_subpackages
 
@@ -93,6 +90,6 @@ You can find usage examples for the OpenAI Python library in
 %files %{python_files}
 %python_alternative %{_bindir}/openai
 %{python_sitelib}/openai
-%{python_sitelib}/openai-%{version}*-info
+%{python_sitelib}/openai-%{version}.dist-info
 
 %changelog
