@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-benchmark
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,18 +34,20 @@ Patch2:         ignore-deprecationwarning.patch
 BuildRequires:  %{python_module aspectlib}
 BuildRequires:  %{python_module elasticsearch}
 BuildRequires:  %{python_module freezegun}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module py-cpuinfo}
 BuildRequires:  %{python_module pygaljs}
 BuildRequires:  %{python_module pygal}
 BuildRequires:  %{python_module pytest >= 3.8}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 Requires:       python-py-cpuinfo
 Requires:       python-pytest >= 3.8
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-aspectlib
 Recommends:     python-elasticsearch
 Recommends:     python-pygal
@@ -65,10 +67,10 @@ rm -f tests/test_cli.py
 sed -i -e '/test_fast PASSED/d' -e '/test_fast SKIPPED/d' tests/test_benchmark.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/pytest-benchmark
