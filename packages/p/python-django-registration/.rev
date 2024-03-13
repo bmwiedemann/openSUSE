@@ -173,4 +173,14 @@
     Django 3.2 and 4.0, on Python 3.7 (Django 3.2 only), 3.8, 3.9, and 3.10.</comment>
     <requestid>1055857</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>0bca364043a0e7a86a342082643e0c83</srcmd5>
+    <version>3.3</version>
+    <time>1710364865</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1157627</requestid>
+  </revision>
 </revisionlist>

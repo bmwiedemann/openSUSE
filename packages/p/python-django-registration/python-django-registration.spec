@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-registration
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-django-registration
 Version:        3.3
 Release:        0
@@ -26,7 +27,9 @@ URL:            https://github.com/ubernostrum/django-registration/
 Source:         https://files.pythonhosted.org/packages/source/d/django-registration/django-registration-%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module confusable-homoglyphs >= 3.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 2.2
@@ -40,14 +43,15 @@ functional installation of Django, but has no other
 dependencies.
 
 %prep
-%setup -q -n django-registration-%{version}
+%autosetup -p1 -n django-registration-%{version}
+
 sed -i -e 's:~=:>=:g' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/
 
 %check
@@ -56,6 +60,7 @@ sed -i -e 's:~=:>=:g' setup.py
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS README.rst
-%{python_sitelib}/*
+%{python_sitelib}/django_registration
+%{python_sitelib}/django_registration-%{version}*-info
 
 %changelog
