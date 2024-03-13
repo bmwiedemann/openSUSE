@@ -17,12 +17,12 @@
 
 
 Name:           pass-import
-Version:        3.4
+Version:        3.5
 Release:        0
 Summary:        A pass extension for importing data from most of the existing password manager
 License:        GPL-3.0-only
 URL:            https://github.com/roddhjav/pass-import
-Source:         https://github.com/roddhjav/pass-import/releases/download/v3.4/pass-import-3.4.tar.gz
+Source:         https://github.com/roddhjav/pass-import/releases/download/v%{version}/pass-import-%{version}.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  password-store

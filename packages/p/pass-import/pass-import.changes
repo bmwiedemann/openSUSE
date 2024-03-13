@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb 26 16:44:32 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.5:
+  - Readme change: fix macos py3 pip install command
+  - Update Python code for new clean signature
+  - Fix: Support 1PIF file format for 1Password v7.9.11 (macOS)
+  - feat: Filter would be exported entries based on JSONPath
+    filter expression
+  - fix: improperly quoted tags values in 1password.1pif test
+    asset
+  - Add a unified way to generate otpauth url.
+  - Set a timeout to the audit api.
+
+-------------------------------------------------------------------
 Tue Jan  9 14:21:56 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.4:
