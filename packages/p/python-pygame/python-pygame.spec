@@ -24,6 +24,8 @@ Summary:        A Python Module for Interfacing with the SDL Multimedia Library
 License:        Apache-2.0 AND LGPL-2.1-or-later AND BSD-2-Clause AND BSD-3-Clause AND libpng-2.0
 URL:            https://github.com/pygame/pygame
 Source0:        https://files.pythonhosted.org/packages/source/p/pygame/pygame-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM pygame-pr4169-videodummytests.patch gh#pygame/pygame#4169
+Patch0:         pygame-pr4169-videodummytests.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
