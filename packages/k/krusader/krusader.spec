@@ -16,15 +16,21 @@
 #
 
 
+%bcond_without released
 Name:           krusader
-Version:        2.8.0
+Version:        2.8.1
 Release:        0
 Summary:        Twin panel file manager for KDE Plasma and other desktops
 License:        GPL-2.0-or-later
 URL:            https://krusader.org/
 Source:         https://download.kde.org/stable/krusader/%{version}/%{name}-%{version}.tar.xz
-Source1:        krusader_browse_iso.desktop
-Source2:        org.kde.krusader.root-mode.desktop
+%if %{with released}
+Source1:        https://download.kde.org/stable/krusader/%{version}/%{name}-%{version}.tar.xz.sig
+# https://invent.kde.org/sysadmin/release-keyring/-/raw/master/keys/melnichenko@key1.asc
+Source2:        krusader.keyring
+%endif
+Source3:        krusader_browse_iso.desktop
+Source4:        org.kde.krusader.root-mode.desktop
 BuildRequires:  extra-cmake-modules >= 5.68.0
 BuildRequires:  fdupes
 BuildRequires:  libacl-devel
@@ -97,8 +103,8 @@ This package contains the krusader documentation.
 %find_lang %{name}
 
 mkdir -p %{buildroot}%{_kf5_servicesdir}/ServiceMenus/
-cp %{SOURCE1} %{buildroot}%{_kf5_servicesdir}/ServiceMenus/
-cp %{SOURCE2} %{buildroot}%{_kf5_applicationsdir}/
+cp %{SOURCE3} %{buildroot}%{_kf5_servicesdir}/ServiceMenus/
+cp %{SOURCE4} %{buildroot}%{_kf5_applicationsdir}/
 
 %suse_update_desktop_file org.kde.krusader.root-mode FileManager Utility
 

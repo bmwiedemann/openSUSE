@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 13 08:21:56 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.8.1
+  * FIXED: Flickering during folder space calculation
+  * FIXED: (kde#462086) Segmentation fault when using
+    CTRL+Left/Right on a panel with invalid path
+  * FIXED: (kde#462307) File icons are drawn at wrong position
+    if desktop scaling is active
+
+-------------------------------------------------------------------
 Tue Dec 20 08:23:21 UTC 2022 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.8.0.
