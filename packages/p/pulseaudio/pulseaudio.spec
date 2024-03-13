@@ -407,6 +407,7 @@ install -m 0644 %{SOURCE6} %{buildroot}%{_sysconfdir}/pulse/daemon.conf.d/60-dis
 install -Dm0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/system-user-pulse.conf
 
 %find_lang %{name}
+%python3_fix_shebang
 
 %pre -n system-user-pulse -f pulseaudio.pre
 

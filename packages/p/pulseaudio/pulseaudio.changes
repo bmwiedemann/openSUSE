@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 12 14:02:10 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Tue Feb 27 21:49:56 UTC 2024 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
 
 - Do not BuildRequire pkgconfig(webrtc-audio-processing-1) on big
