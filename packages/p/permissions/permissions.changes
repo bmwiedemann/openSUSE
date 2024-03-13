@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 11 12:14:10 UTC 2024 - matthias.gerstner@suse.com
+
+- Update to version 1699_20240307:
+  * build system: migrate from Makefile to Meson
+- adjust spec file to meson build
+
+-------------------------------------------------------------------
 Tue Mar 05 14:37:57 UTC 2024 - filippo.bonazzi@suse.com
 
 - Update to version 1699_20240305:

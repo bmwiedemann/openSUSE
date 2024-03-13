@@ -17,7 +17,7 @@
 
 
 Name:           permissions
-Version:        1699_20240305
+Version:        1699_20240307
 Release:        0
 Summary:        SUSE Linux Default Permissions
 # Maintained in github by the security team.
@@ -29,6 +29,7 @@ Source2:        permissions.rpmlintrc
 BuildRequires:  gcc-c++
 BuildRequires:  libcap-devel
 BuildRequires:  libcap-progs
+BuildRequires:  meson
 BuildRequires:  python-rpm-macros
 BuildRequires:  tclap
 # test suite
@@ -41,10 +42,11 @@ Provides:       aaa_base:%{_datadir}/permissions
 %autosetup
 
 %build
-make %{?_smp_mflags} CXXFLAGS="%{optflags}"
+%meson
+%meson_build
 
 %install
-%make_install fillupdir=%{_fillupdir}
+%meson_install
 # Fix shebang in scripts: Remove dependency on /usr/bin/python3,
 # making scripts to depends on the real python3 binary, not the link.
 # (bsc#1212476)
@@ -56,7 +58,7 @@ done
 %check
 # will fail on qemu with  unshare: unshare failed: Invalid argument
 %if !0%{?qemu_user_space_build}
-tests/regtest.py --skip-make > /dev/null
+tests/regtest.py --skip-build %_vpath_builddir >/dev/null
 %endif
 
 %description
