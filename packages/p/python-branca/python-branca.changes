@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 13 10:12:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- skip build on python 3.9 due to missing ipython
+
+-------------------------------------------------------------------
 Thu Dec 14 09:16:56 UTC 2023 - Petr Gajdos <pgajdos@suse.com>
 
 - update to 0.7.0:

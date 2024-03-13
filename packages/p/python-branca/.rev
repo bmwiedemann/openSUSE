@@ -81,4 +81,12 @@ Required by python-ipyleaflet and python-folium</comment>
   * Fix special char encoding in notebooks, store as percent-encoded (@conengmo #76)</comment>
     <requestid>1133414</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7a0a00586ad1bc24c6109301a65cfd87</srcmd5>
+    <version>0.7.0</version>
+    <time>1710364848</time>
+    <user>anag+factory</user>
+    <comment>- skip build on python 3.9 due to missing ipython</comment>
+    <requestid>1157515</requestid>
+  </revision>
 </revisionlist>
