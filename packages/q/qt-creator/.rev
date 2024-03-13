@@ -267,4 +267,12 @@ The package is now offering Qt5 and Qt6 flavors and shall replace libqt5-creator
     <comment>Update to 12.0.2 (forwarded request 1145029 from krop)</comment>
     <requestid>1145057</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>08a9878674b30f99255dae4871894146</srcmd5>
+    <version>12.0.2</version>
+    <time>1710364638</time>
+    <user>anag+factory</user>
+    <comment>- Make qt6-creator provide 'qt-creator' for the KDE patterns (forwarded request 1156602 from krop)</comment>
+    <requestid>1156959</requestid>
+  </revision>
 </revisionlist>

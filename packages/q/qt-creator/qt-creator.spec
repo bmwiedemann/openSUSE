@@ -127,9 +127,11 @@ Recommends:     qt6-base-docs-qch
 Recommends:     qt6-declarative-devel
 Recommends:     qt6-declarative-docs-qch
 Recommends:     qt6-translations
+# Generic name recommended by the KDE pattern
+Provides:       qt-creator = %{version}
 Provides:       libqt5-creator = %{version}
-Provides:       qt5-creator = %{version}
 Obsoletes:      libqt5-creator < %{version}
+Provides:       qt5-creator = %{version}
 Obsoletes:      qt5-creator < %{version}
 %endif
 Requires:       hicolor-icon-theme
