@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Mon Feb 26 17:29:54 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim unnecessary main package
+
+-------------------------------------------------------------------
+Mon Feb 26 15:19:39 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 0.8.0-rc1+git20240222.c200c16:
+  * arm/neon abs: negating INT_MIN is undefined behavior
+  * docs: explain how to target a single test
+  * build(deps): bump actions/checkout from 3 to 4
+  * gh-actions: add new repo for clang-16
+  * gh-actions emscripten: use older release
+  * docker: ignore common build paths
+  * build(deps): bump github/codeql-action from 2 to 3 (#1138)
+  * build(deps): bump actions/setup-python from 4 to 5 (#1137)
+  * build(deps): bump actions/setup-dotnet from 3 to 4 (#1135)
+  * build(deps): bump ad-m/github-push-action from 0.6.0 to 0.8.0 (#1134)
+
+-------------------------------------------------------------------
+Mon Feb 26 15:19:21 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Initial version from upstream.
