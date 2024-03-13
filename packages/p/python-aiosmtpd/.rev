@@ -104,4 +104,14 @@
     <comment></comment>
     <requestid>1093361</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ea37fae34266d906ca9fa7691e8f596d</srcmd5>
+    <version>1.4.5</version>
+    <time>1710364886</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.5 (bsc#1221328, CVE-2024-27305):
+  * Fixed incorrect handling of newlines.
+- remove not needed python-aiosmtpd.rpmlintrc</comment>
+    <requestid>1157672</requestid>
+  </revision>
 </revisionlist>

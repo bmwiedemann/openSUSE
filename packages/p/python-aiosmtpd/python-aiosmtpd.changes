@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 13 16:32:38 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 1.4.5 (bsc#1221328, CVE-2024-27305):
+  * Fixed incorrect handling of newlines.
+- remove not needed python-aiosmtpd.rpmlintrc
+
+-------------------------------------------------------------------
 Thu Jun 15 12:01:59 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Use sle15_python_module_pythons

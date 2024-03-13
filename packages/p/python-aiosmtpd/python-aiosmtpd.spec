@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiosmtpd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aiosmtpd
-Version:        1.4.4.post2
+Version:        1.4.5
 Release:        0
 Summary:        SMTP server based on asyncio
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://aiosmtpd.readthedocs.io/
-Source:         https://github.com/aio-libs/aiosmtpd/archive/%{version}.tar.gz#/aiosmtpd-%{version}.tar.gz
+Source:         https://github.com/aio-libs/aiosmtpd/archive/v%{version}.tar.gz#/aiosmtpd-%{version}.tar.gz
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
-Source99:       python-aiosmtpd.rpmlintrc
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  git-core
@@ -38,7 +37,7 @@ Requires:       python-typing_extensions
 %endif
 Requires:       user(nobody)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module atpublic}
