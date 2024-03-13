@@ -1,7 +1,7 @@
 #
 # spec file for package python-visvis
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,10 @@ Summary:        An object oriented approach to visualization of 1D to 4D data
 License:        BSD-3-Clause
 URL:            https://github.com/almarklein/visvis
 Source:         https://files.pythonhosted.org/packages/source/v/visvis/visvis-%{version}.tar.gz
+Patch0:         use-importlib.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
@@ -54,14 +57,14 @@ form of a set of functions allows creation of objects (e.g. plot(),
 imshow(), volshow(), surf()).
 
 %prep
-%setup -q -n visvis-%{version}
+%autosetup -p1 -n visvis-%{version}
 find * -name '*.py' -exec sed -i -e '/^#!\//, 1d' {} \;
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -70,6 +73,6 @@ find * -name '*.py' -exec sed -i -e '/^#!\//, 1d' {} \;
 %files %{python_files}
 %license license.txt
 %{python_sitelib}/visvis
-%{python_sitelib}/visvis-%{version}*-info
+%{python_sitelib}/visvis-%{version}.dist-info
 
 %changelog

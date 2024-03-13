@@ -1,0 +1,28 @@
+Index: visvis-1.14.0/backends/__init__.py
+===================================================================
+--- visvis-1.14.0.orig/backends/__init__.py
++++ visvis-1.14.0/backends/__init__.py
+@@ -50,7 +50,8 @@ The backend is chosen/selected as follow
+ 
+ import os
+ import sys
+-import imp
++import importlib.util
++import importlib.machinery
+ import visvis
+ from visvis.core.misc import isFrozen, getExceptionInstance
+ 
+@@ -161,7 +162,12 @@ def _loadBackend(name):
+         if modFileName.endswith('.pyc'):
+             module = __import__(modNameFull, fromlist=[modName])
+         else:
+-            module = imp.load_source(modNameFull, modFileName)
++            loader = importlib.machinery.SourceFileLoader(
++                modNameFull, modFileName)
++            spec = importlib.util.spec_from_file_location(
++                modNameFull, modFileName, loader=loader)
++            module = importlib.util.module_from_spec(spec)
++            loader.exec_module(module)
+         globals()[modName] = module
+     except Exception:
+         if not isFrozen():

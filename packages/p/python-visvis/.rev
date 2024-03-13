@@ -44,4 +44,14 @@
 - update to 1.12.4</comment>
     <requestid>1132081</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ebf7473e8cdbfe24407609dbf6bbf26b</srcmd5>
+    <version>1.14.0</version>
+    <time>1710364759</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup and pyproject macros. 
+- Add patch use-importlib.patch: Use importlib machinery, not the imp
+  module.</comment>
+    <requestid>1157396</requestid>
+  </revision>
 </revisionlist>
