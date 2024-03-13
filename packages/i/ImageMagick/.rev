@@ -3823,4 +3823,12 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   Restore Requires(pre) on update-alternatives for the mean time. (forwarded request 1154340 from darix)</comment>
     <requestid>1154575</requestid>
   </revision>
+  <revision rev="291" vrev="3">
+    <srcmd5>9c25af1e67cefef6ab8584b6c9f20ee5</srcmd5>
+    <version>7.1.1.29</version>
+    <time>1710364591</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1156917</requestid>
+  </revision>
 </revisionlist>
