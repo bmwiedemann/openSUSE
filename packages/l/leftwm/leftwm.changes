@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Mar 11 11:33:40 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.5.1:
+  * The layouts and workspace.layouts in config.ron must be declared as
+  Strings because they are no longer backed by an enum. (ie. use layouts:
+  ["CenterMain"] instead of layouts: [CenterMain])
+  * The max_window_width config was removed without direct replacement. The
+  "always fill entire screen" behavior can now be addressed by creating a
+  custom layout with an appropriate Reserve property.
+  * LeftWM now depends on lefthk ^0.2.0, which has been refactored
+  * Dialog windows correctly obey their spawned sized
+  * Fixes to location of spawned windows
+  * Fixes to full-screened windows
+  * Maximized windows no longer hide the dock
+  * Fixes to ordering of windows after exiting from full screen mode
+  * Basic theme and documentation fixes
+  * Improved performance for set_layout , event_loop, and Xscreens
+  * Improved error messages for leftwm-state and leftwm-check
+  * Cursors now snap to the bottom right of a window when resizing
+  * The new ignore_empty and ignore_used options in FocusNext/Previous Tag
+  * Command SwapWindowToTop introduced
+
+-------------------------------------------------------------------
 Sun Sep 10 14:09:10 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Use upstream tarball

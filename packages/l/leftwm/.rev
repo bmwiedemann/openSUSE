@@ -31,4 +31,31 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1111785</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d66a86bc3ea9bea75e89bb2a3764ddf4</srcmd5>
+    <version>0.5.1</version>
+    <time>1710364680</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.5.1:
+  * The layouts and workspace.layouts in config.ron must be declared as
+  Strings because they are no longer backed by an enum. (ie. use layouts:
+  [&quot;CenterMain&quot;] instead of layouts: [CenterMain])
+  * The max_window_width config was removed without direct replacement. The
+  &quot;always fill entire screen&quot; behavior can now be addressed by creating a
+  custom layout with an appropriate Reserve property.
+  * LeftWM now depends on lefthk ^0.2.0, which has been refactored
+  * Dialog windows correctly obey their spawned sized
+  * Fixes to location of spawned windows
+  * Fixes to full-screened windows
+  * Maximized windows no longer hide the dock
+  * Fixes to ordering of windows after exiting from full screen mode
+  * Basic theme and documentation fixes
+  * Improved performance for set_layout , event_loop, and Xscreens
+  * Improved error messages for leftwm-state and leftwm-check
+  * Cursors now snap to the bottom right of a window when resizing
+  * The new ignore_empty and ignore_used options in FocusNext/Previous Tag
+  * Command SwapWindowToTop introduced
+</comment>
+    <requestid>1157063</requestid>
+  </revision>
 </revisionlist>
