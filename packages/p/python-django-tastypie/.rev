@@ -191,4 +191,12 @@
 - Stop using globbing in %files.</comment>
     <requestid>1142889</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>b1422cf4c1b4407c86c1480e6566c69c</srcmd5>
+    <version>0.14.6</version>
+    <time>1710364865</time>
+    <user>anag+factory</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1157628</requestid>
+  </revision>
 </revisionlist>

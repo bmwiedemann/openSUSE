@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 12 11:35:57 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed Jan 31 03:36:25 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch correct-assertion-methods.patch:
