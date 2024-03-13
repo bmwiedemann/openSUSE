@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 11 15:56:24 UTC 2024 - opensuse.lietuviu.kalba@gmail.com
+
+- Improve documentation packaging.
+- Add more suggested dependencies to -devel package.
+
+-------------------------------------------------------------------
 Mon Mar 11 12:39:12 UTC 2024 - opensuse.lietuviu.kalba@gmail.com
 
 - Update to 2.0.0:
@@ -47,7 +53,7 @@ Mon Mar 11 11:55:24 UTC 2024 - opensuse.lietuviu.kalba@gmail.com
 - Move screenshots and pspp-figures directories with images from
    /usr/share/info/ into /usr/share/doc/pspp/pspp.html/ because
    here HTML pages look for them.
-   
+
 -------------------------------------------------------------------
 Sat Jul 22 08:41:49 UTC 2023 - Klaus Kämpf <kkaempf@suse.com>
 

@@ -170,4 +170,12 @@
     <comment></comment>
     <requestid>1156933</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>e072a5505fe867a5979a4bca3c7a8c3c</srcmd5>
+    <version>2.0.0</version>
+    <time>1710364649</time>
+    <user>anag+factory</user>
+    <comment>mention additional -devel package dependencies added in changelog</comment>
+    <requestid>1157097</requestid>
+  </revision>
 </revisionlist>

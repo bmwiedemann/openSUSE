@@ -102,9 +102,13 @@ This subpackage provides translations for PSPP.
 Summary:        Development files for pspp, a statistical analysis program
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
+Requires:       cairo-devel
+Requires:       glib2-devel
 Requires:       glibc-devel
 Requires:       gsl-devel
+Requires:       harfbuzz-devel
 Requires:       libxml2-devel
+Requires:       pango-devel
 Requires:       postgresql-devel
 Requires:       zlib-devel
 %if 0%{?suse_version} 
@@ -123,6 +127,7 @@ applications that want to build pspp plugins.
 %package doc
 Summary:        Manual for PSPP
 License:        GPL-3.0-or-later
+Requires:       %{name} = %{version}
 
 %description doc
 PSPP is a program for statistical analysis of sampled data. It
@@ -164,19 +169,25 @@ make html
 %if 0%{?suse_version}
 %suse_update_desktop_file -r org.gnu.%{name} Education Math
 %endif
-mv ./doc/pspp.html/ ./doc/pspp-dev.html/ %{buildroot}%{_datadir}/doc/pspp/
-mv ./doc/pspp-figures/ ./doc/screenshots/ %{buildroot}%{_datadir}/doc/pspp/pspp.html/
 
+# Use help in HTML
+mv ./doc/pspp.html/ ./doc/pspp-dev.html/ %{buildroot}%{_datadir}/doc/pspp/
+# don't need xml since we have html
+rm -f %{buildroot}/%{_datadir}/doc/pspp/pspp.xml
+# screenshots directory contains *.png, *.eps and *.grab, but only *.png is sufficient
+rm -f %{buildroot}/%{_datadir}/doc/pspp/pspp.html/pspp-figures/*.{eps,grab}
+# don't need pspp-figures directory because 
+# * sps, html tables are already incorporated in html documentation
+# * texi, txt, spv tables are redundant
+# * png has very bad quality
+[ -d %{buildroot}/%{_infodir}/pspp-figures ] && rm -fr %{buildroot}/%{_infodir}/pspp-figures
+[ -d %{buildroot}%{_datadir}/doc/pspp/pspp.html/pspp-figures ] && rm -fr %{buildroot}%{_datadir}/doc/pspp/pspp.html/pspp-figures
+# screenshots must not be in /usr/share/info, but in /usr/share/doc/pspp/pspp.html/
+[ -d %{buildroot}/%{_infodir}/screenshots ] && mv %{buildroot}/%{_infodir}/screenshots/  %{buildroot}%{_datadir}/doc/pspp/pspp.html/
 # don't own /usr/share/info/dir if it exist
 [ -f %{buildroot}/%{_infodir}/dir ] && rm %{buildroot}/%{_infodir}/dir
-
-# pspp-figures/*.png and screenshots/*.png most not be in /usr/share/info
-[ -d %{buildroot}/%{_infodir}/pspp-figures ] && rm -fr %{buildroot}/%{_infodir}/pspp-figures
-[ -d %{buildroot}/%{_infodir}/screenshots  ] && rm -fr %{buildroot}/%{_infodir}/screenshots
-
 # PSPP 2.0 no longer installs /usr/bin/pspp-dump-sav by default, thus its man is not needed
 [ -f %{buildroot}/%{_mandir}/man1/pspp-dump-sav.1 ] && rm -f %{buildroot}/%{_mandir}/man1/pspp-dump-sav.1
-
 # don't own /usr/share/info/dir if it exist
 [ -f %{buildroot}/%{_infodir}/dir ] && rm %{buildroot}/%{_infodir}/dir
 
@@ -231,21 +242,7 @@ fi
 %files
 %license COPYING
 %doc README THANKS AUTHORS
-%doc %{_datadir}/doc/pspp
-%if 0%{?suse_version}
-%doc %{_datadir}/doc/pspp/
-%else
-%doc %{_datadir}/doc/pspp/pspp.xml
-%endif
 %exclude %dir %{_datadir}/doc/pspp/
-%exclude %dir %{_datadir}/doc/pspp/pspp.html/
-%exclude %{_datadir}/doc/pspp/pspp.html/*.html
-%exclude %dir %{_datadir}/doc/pspp/pspp.html/screenshots/
-%exclude %{_datadir}/doc/pspp/pspp.html/screenshots/*.png
-%exclude %dir %{_datadir}/doc/pspp/pspp.html/pspp-figures/
-%exclude %{_datadir}/doc/pspp/pspp.html/pspp-figures/*.png
-%exclude %dir %{_datadir}/doc/pspp/pspp-dev.html/
-%exclude %{_datadir}/doc/pspp/pspp-dev.html/*.html
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/pspp.conf
 %{_bindir}/pspp
 %{_bindir}/psppire
@@ -260,33 +257,15 @@ fi
 %exclude %{_datadir}/pspp/tests/testsuite.log
 %{_datadir}/icons/hicolor/scalable/apps/org.gnu.pspp.svg
 %{_datadir}/icons/hicolor/16x16/apps/org.gnu.pspp.png
-%{_datadir}/icons/hicolor/16x16/mimetypes/application-x-spss-por.png
-%{_datadir}/icons/hicolor/16x16/mimetypes/application-x-spss-sav.png
-%{_datadir}/icons/hicolor/16x16/mimetypes/application-x-spss-sps.png
-%{_datadir}/icons/hicolor/16x16/mimetypes/application-x-spss-zsav.png
-%{_datadir}/icons/hicolor/22x22/mimetypes/application-x-spss-por.png
-%{_datadir}/icons/hicolor/22x22/mimetypes/application-x-spss-sav.png
-%{_datadir}/icons/hicolor/22x22/mimetypes/application-x-spss-sps.png
-%{_datadir}/icons/hicolor/22x22/mimetypes/application-x-spss-zsav.png
-%{_datadir}/icons/hicolor/24x24/mimetypes/application-x-spss-por.png
-%{_datadir}/icons/hicolor/24x24/mimetypes/application-x-spss-sav.png
-%{_datadir}/icons/hicolor/24x24/mimetypes/application-x-spss-sps.png
-%{_datadir}/icons/hicolor/24x24/mimetypes/application-x-spss-zsav.png
+%{_datadir}/icons/hicolor/16x16/mimetypes/application-x-spss-*.png
+%{_datadir}/icons/hicolor/22x22/mimetypes/application-x-spss-*.png
+%{_datadir}/icons/hicolor/24x24/mimetypes/application-x-spss-*.png
 %{_datadir}/icons/hicolor/256x256/apps/org.gnu.pspp.png
-%{_datadir}/icons/hicolor/256x256/mimetypes/application-x-spss-por.png
-%{_datadir}/icons/hicolor/256x256/mimetypes/application-x-spss-sav.png
-%{_datadir}/icons/hicolor/256x256/mimetypes/application-x-spss-sps.png
-%{_datadir}/icons/hicolor/256x256/mimetypes/application-x-spss-zsav.png
+%{_datadir}/icons/hicolor/256x256/mimetypes/application-x-spss-*.png
 %{_datadir}/icons/hicolor/32x32/apps/org.gnu.pspp.png
-%{_datadir}/icons/hicolor/32x32/mimetypes/application-x-spss-por.png
-%{_datadir}/icons/hicolor/32x32/mimetypes/application-x-spss-sav.png
-%{_datadir}/icons/hicolor/32x32/mimetypes/application-x-spss-sps.png
-%{_datadir}/icons/hicolor/32x32/mimetypes/application-x-spss-zsav.png
+%{_datadir}/icons/hicolor/32x32/mimetypes/application-x-spss-*.png
 %{_datadir}/icons/hicolor/48x48/apps/org.gnu.pspp.png
-%{_datadir}/icons/hicolor/48x48/mimetypes/application-x-spss-por.png
-%{_datadir}/icons/hicolor/48x48/mimetypes/application-x-spss-sav.png
-%{_datadir}/icons/hicolor/48x48/mimetypes/application-x-spss-sps.png
-%{_datadir}/icons/hicolor/48x48/mimetypes/application-x-spss-zsav.png
+%{_datadir}/icons/hicolor/48x48/mimetypes/application-x-spss-*.png
 %{_datadir}/mime/packages/org.gnu.pspp.xml
 %{_datadir}/applications/org.gnu.pspp.desktop
 %{_datadir}/appdata/org.gnu.pspp.metainfo.xml
@@ -318,8 +297,7 @@ fi
 %doc %{_datadir}/doc/pspp/pspp.html/*.html
 %dir %{_datadir}/doc/pspp/pspp.html/screenshots/
 %{_datadir}/doc/pspp/pspp.html/screenshots/*.png
-%dir %{_datadir}/doc/pspp/pspp.html/pspp-figures/
-%{_datadir}/doc/pspp/pspp.html/pspp-figures/*.png
+%exclude %dir %{_datadir}/doc/pspp/pspp-dev.html/
 
 %files devel-doc
 %defattr(-, root, root)
@@ -328,3 +306,4 @@ fi
 
 
 %changelog
+
