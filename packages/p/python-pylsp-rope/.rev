@@ -83,4 +83,37 @@
 </comment>
     <requestid>1058819</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>99e9be447a6c1b774e4335f504a912a4</srcmd5>
+    <version>0.1.15</version>
+    <time>1710364661</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.1.15 (we can do released tarballs again):
+  - Change WorkspaceEdit to use documentChanges
+  - Add files missing from the source packages needed for running
+    tests
+- Because of gh#python-rope/pylsp-rope#25 we have to switch to
+  git checkout again.
+- Update to version 0.1.13+git.1710166725.0bcf4d3:
+  * Add fallback import for TypeGuard
+  * Hardcode executeCommand to use WorkspaceEditWithChanges
+  * Blacken
+  * Implement rope_changeset_to_workspace_edit(workspace_edit_format) argument
+  * Add TypeGuard for distinguishing between WorkspaceEditWithChanges and WorkspaceEditWithDocumentChanges
+  * Fix type hints to use List instead of list
+  * Remove SimpleWorkspaceEdit, replaced with WorkspaceEditWithChanges
+  * Implement convert_workspace_edit_document_changes_to_changes()
+  * Refine the type annotation for rope_changeset_to_workspace_edit()
+- Update to 0.1.13:
+  - Revert &quot;remove non-standard title in executeCommand&quot;
+  - Remove pkg_resources, replace with importlib.resources
+  - Drop Python 3.7, add Python 3.12
+- Update to 0.1.12:
+  - remove non-standard title in executeCommand
+  - Use List, not list, this syntax isn't supported yet in our oldest supported version
+  - fix type hint issue in CommandRefactorUseFunction
+  - Update python-lsp/cookiecutter-pylsp-plugin link
+</comment>
+    <requestid>1157102</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Mar 12 07:46:28 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.1.15 (we can do released tarballs again):
+  - Change WorkspaceEdit to use documentChanges
+  - Add files missing from the source packages needed for running
+    tests
+
+-------------------------------------------------------------------
+Mon Mar 11 18:10:25 UTC 2024 - mcepl@cepl.eu
+
+- Because of gh#python-rope/pylsp-rope#25 we have to switch to
+  git checkout again.
+- Update to version 0.1.13+git.1710166725.0bcf4d3:
+  * Add fallback import for TypeGuard
+  * Hardcode executeCommand to use WorkspaceEditWithChanges
+  * Blacken
+  * Implement rope_changeset_to_workspace_edit(workspace_edit_format) argument
+  * Add TypeGuard for distinguishing between WorkspaceEditWithChanges and WorkspaceEditWithDocumentChanges
+  * Fix type hints to use List instead of list
+  * Remove SimpleWorkspaceEdit, replaced with WorkspaceEditWithChanges
+  * Implement convert_workspace_edit_document_changes_to_changes()
+  * Refine the type annotation for rope_changeset_to_workspace_edit()
+
+-------------------------------------------------------------------
+Mon Mar 11 17:51:52 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.1.13:
+  - Revert "remove non-standard title in executeCommand"
+  - Remove pkg_resources, replace with importlib.resources
+  - Drop Python 3.7, add Python 3.12
+- Update to 0.1.12:
+  - remove non-standard title in executeCommand
+  - Use List, not list, this syntax isn't supported yet in our oldest supported version
+  - fix type hint issue in CommandRefactorUseFunction
+  - Update python-lsp/cookiecutter-pylsp-plugin link
+
+-------------------------------------------------------------------
 Tue Jan 17 08:12:33 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.1.11:

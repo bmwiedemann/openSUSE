@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylsp-rope
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,31 @@
 #
 
 
-%define skip_python2 1
 Name:           python-pylsp-rope
-Version:        0.1.11
+Version:        0.1.15
 Release:        0
 Summary:        Extended refactoring capabilities for Python LSP Server using Rope
 License:        MIT
 URL:            https://github.com/python-rope/pylsp-rope
+# Cannot use released tarball until gh#python-rope/pylsp-rope#25 is fixed
 Source:         https://files.pythonhosted.org/packages/source/p/pylsp-rope/pylsp-rope-%{version}.tar.gz
 # Source:         pylsp-rope-%%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  (python3-typing_extensions if python3-base <= 3.6)
-# SECTION test requirements
-BuildRequires:  %{python_module python-lsp-server}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module rope}
-# /SECTION
-BuildRequires:  fdupes
 Requires:       python-python-lsp-server
 Requires:       python-rope
 Suggests:       python-twine
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-lsp-server}
+BuildRequires:  %{python_module rope}
+BuildRequires:  %{python_module typing_extensions}
+# /SECTION
 %python_subpackages
 
 %description
