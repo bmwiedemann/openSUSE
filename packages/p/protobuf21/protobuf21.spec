@@ -1,7 +1,7 @@
 #
-# spec file for package protobuf
+# spec file for package protobuf21
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,6 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define sover 3_21_12
 %define tarname protobuf
-%define src_install_dir %{_prefix}/src/%{name}
 %define extra_java_flags -source 7 -target 7
 # requires gmock, which is not yet in the distribution
 %bcond_with    check
@@ -118,18 +117,6 @@ Obsoletes:      protobuf-devel <= 21.12
 Protocol Buffers are a way of encoding structured data in an efficient yet
 extensible format. Google uses Protocol Buffers for almost all of its internal
 RPC protocols and file formats.
-
-%package source
-Summary:        Source code of protobuf
-Group:          Development/Sources
-BuildArch:      noarch
-
-%description source
-Protocol Buffers are a way of encoding structured data in an efficient yet
-extensible format. Google uses Protocol Buffers for almost all of its internal
-RPC protocols and file formats.
-
-This package contains source code for Protocol Buffers.
 
 %package -n %{name}-java
 Summary:        Java Bindings for Google Protocol Buffers
@@ -229,23 +216,6 @@ popd
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
-mkdir -p %{buildroot}%{src_install_dir}
-tar -xzf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
-%fdupes %{buildroot}%{src_install_dir}
-# Fix env-script-interpreter rpmlint error
-find %{buildroot}%{src_install_dir} -type f -name "*.js" -exec sed -i 's|#!.*%{_bindir}/env node|#!%{_bindir}/node|' "{}" +
-find %{buildroot}%{src_install_dir} -type f -name "*.py" -exec sed -i 's|#!.*%{_bindir}/env python2.7|#!%{_bindir}/python2.7|' "{}" +
-find %{buildroot}%{src_install_dir} -type f -name "*.py" -exec sed -i 's|#!.*%{_bindir}/env python|#!%{_bindir}/python|' "{}" +
-find %{buildroot}%{src_install_dir} -type f -name "*.rb" -exec sed -i 's|#!.*%{_bindir}/env ruby|#!%{_bindir}/ruby|' "{}" +
-find %{buildroot}%{src_install_dir} -type f -name "*.sh" -exec sed -i 's|#!.*%{_bindir}/env bash|#!/bin/bash|' "{}" +
-# And stop requiring ridiculously old Python version
-find %{buildroot}%{src_install_dir} -type f -name "*.py" -exec sed -i 's|#!%{_bindir}/python2.4|#!%{_bindir}/python2.7|' "{}" +
-# Fix spurious-executable-perm rpmlint error
-chmod -x %{buildroot}%{src_install_dir}/src/google/protobuf/arenastring.h
-chmod -x %{buildroot}%{src_install_dir}/src/google/protobuf/reflection.h
-# Fix version-control-internal-file rpmlint warning
-find %{buildroot}%{src_install_dir} -type f -name ".gitignore" -exec rm -f "{}" +
-
 %fdupes %{buildroot}%{_prefix}
 
 %post -n libprotobuf%{sover} -p /sbin/ldconfig
@@ -274,9 +244,6 @@ find %{buildroot}%{src_install_dir} -type f -name ".gitignore" -exec rm -f "{}" 
 %{_libdir}/libprotobuf.so
 %{_libdir}/libprotoc.so
 %{_datadir}/vim
-
-%files source
-%{src_install_dir}
 
 %if %{with java}
 %files -n %{name}-java -f java/.mfiles

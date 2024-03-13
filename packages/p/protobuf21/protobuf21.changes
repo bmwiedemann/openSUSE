@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 15 12:11:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer ship protobuf21-source package: there is no consumer of
+  it and for regular use, we still have the .src.rpm available.
+  This happens to fix boo#1219564.
+
+-------------------------------------------------------------------
 Mon Jun 12 19:48:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - rename to protobuf21 and provide cpp bindings only for now
