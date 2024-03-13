@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar 11 10:48:03 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 2.0.2:
+  * v2.0.2
+  * Build(deps): Bump golang.org/x/sys from 0.17.0 to 0.18.0
+  * update Go to 1.22
+  * Print hints if `kernel.apparmor_restrict_unprivileged_userns` is set
+  * Build(deps): Bump golang.org/x/sys from 0.16.0 to 0.17.0
+  * v2.0.1+dev
+  * v2.0.1
+  * CI: update Docker to v25.0.2
+  * lxc-user-nic: fix `/etc/resolv.conf` missing IP
+  * Build(deps): Bump github.com/google/uuid from 1.5.0 to 1.6.0
+  * v2.0.0+dev
+
+-------------------------------------------------------------------
 Tue Jan 23 07:03:49 UTC 2024 - danish.prakash@suse.com
 
 - Update to version 2.0.0:
