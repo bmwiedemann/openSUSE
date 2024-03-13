@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 10 12:22:51 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 32
+  Changed
+  * Allow overriding the INSTALL Make variable to set the program
+    used instead of install.
+  * Updated sources from upstream OpenBSD and libbsd 0.12.1
+  Fixed
+  * Fixed the build with VERIFY_ONLY=1.
+
+-------------------------------------------------------------------
 Thu Mar  2 20:36:24 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 31:
