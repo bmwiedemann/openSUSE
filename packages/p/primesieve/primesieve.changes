@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 12 09:50:00 UTC 2024 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primesieve-12.1
+- CMakeLists.txt: Fix undefined reference to pthread_create
+- Fix -ffast-math failure of --test option
+- Fix musl libc issue in unit tests
+- Improve status output
+
+-------------------------------------------------------------------
 Mon Feb 19 15:05:00 UTC 2024 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primesieve-12.0
