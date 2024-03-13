@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 12 04:30:03 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Less globs in %files.
+- Clean up Python 2 leftovers.
+- Edit python-pytest-profiling-no-six.patch to also drop the
+  install_requires.
+- Add patch fix-mock-call.patch:
+  * Correct mocking call to be assert_called_with().
+
+-------------------------------------------------------------------
 Thu Dec  8 11:56:08 UTC 2022 - pgajdos@suse.com
 
 - do not require mock

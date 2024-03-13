@@ -36,3 +36,17 @@ Index: pytest-profiling-1.7.0/tests/unit/test_profile.py
  
  from pytest_profiling import Profiling, pytest_addoption, pytest_configure
  
+Index: pytest-profiling-1.7.0/setup.py
+===================================================================
+--- pytest-profiling-1.7.0.orig/setup.py
++++ pytest-profiling-1.7.0/setup.py
+@@ -22,8 +22,7 @@ classifiers = [
+     'Programming Language :: Python :: 3.7',
+ ]
+ 
+-install_requires = ['six',
+-                    'pytest',
++install_requires = ['pytest',
+                     'gprof2dot',
+                     ]
+ 
