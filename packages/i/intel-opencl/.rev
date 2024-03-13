@@ -109,4 +109,12 @@
   sense without any libOpenCL installed (bsc#1219781)</comment>
     <requestid>1156365</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>8a5a313cbdf2f40d21f4a4033dfd4924</srcmd5>
+    <version>23.48.27912.11</version>
+    <time>1710364635</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1156929</requestid>
+  </revision>
 </revisionlist>
