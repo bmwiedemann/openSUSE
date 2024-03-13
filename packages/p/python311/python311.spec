@@ -134,43 +134,46 @@ Source100:      PACKAGING-NOTES
 Patch02:        F00251-change-user-install-location.patch
 # PATCH-FEATURE-UPSTREAM distutils-reproducible-compile.patch gh#python/cpython#8057 mcepl@suse.com
 # Improve reproduceability
-Patch06:        distutils-reproducible-compile.patch
+Patch03:        distutils-reproducible-compile.patch
 # support finding packages in /usr/local, install to /usr/local by default
-Patch07:        python-3.3.0b1-localpath.patch
+Patch04:        python-3.3.0b1-localpath.patch
 # replace DATE, TIME and COMPILER by fixed definitions to aid reproducible builds
-Patch08:        python-3.3.0b1-fix_date_time_compiler.patch
+Patch05:        python-3.3.0b1-fix_date_time_compiler.patch
 # POSIX_FADV_WILLNEED throws EINVAL. Use a different constant in test
-Patch09:        python-3.3.0b1-test-posix_fadvise.patch
+Patch06:        python-3.3.0b1-test-posix_fadvise.patch
 # Raise timeout value for test_subprocess
-Patch15:        subprocess-raise-timeout.patch
+Patch07:        subprocess-raise-timeout.patch
 # PATCH-FEATURE-UPSTREAM bpo-31046_ensurepip_honours_prefix.patch bpo#31046 mcepl@suse.com
 # ensurepip should honour the value of $(prefix)
-Patch29:        bpo-31046_ensurepip_honours_prefix.patch
+Patch08:        bpo-31046_ensurepip_honours_prefix.patch
 # PATCH-FIX-SLE no-skipif-doctests.patch jsc#SLE-13738 mcepl@suse.com
 # SLE-15 version of Sphinx doesn't know about skipif directive in doctests.
-Patch33:        no-skipif-doctests.patch
+Patch09:        no-skipif-doctests.patch
 # PATCH-FIX-SLE skip-test_pyobject_freed_is_freed.patch mcepl@suse.com
 # skip a test failing on SLE-15
-Patch34:        skip-test_pyobject_freed_is_freed.patch
+Patch10:        skip-test_pyobject_freed_is_freed.patch
 # PATCH-FIX-SLE fix_configure_rst.patch bpo#43774 mcepl@suse.com
 # remove duplicate link targets and make documentation with old Sphinx in SLE
-Patch35:        fix_configure_rst.patch
+Patch11:        fix_configure_rst.patch
 # PATCH-FIX-UPSTREAM support-expat-CVE-2022-25236-patched.patch jsc#SLE-21253 mcepl@suse.com
 # Makes Python resilient to changes of API of libexpat
-Patch36:        support-expat-CVE-2022-25236-patched.patch
+Patch12:        support-expat-CVE-2022-25236-patched.patch
 # PATCH-FIX-UPSTREAM skip_if_buildbot-extend.patch gh#python/cpython#103053 mcepl@suse.com
 # Skip test_freeze_simple_script
-Patch39:        skip_if_buildbot-extend.patch
+Patch13:        skip_if_buildbot-extend.patch
 # PATCH-FIX-UPSTREAM CVE-2023-27043-email-parsing-errors.patch bsc#1210638 mcepl@suse.com
 # Detect email address parsing errors and return empty tuple to
 # indicate the parsing error (old API)
-Patch40:        CVE-2023-27043-email-parsing-errors.patch
+Patch14:        CVE-2023-27043-email-parsing-errors.patch
 # PATCH-FIX-UPSTREAM libexpat260.patch gh#python/cpython#115289
 # Fix tests for XMLPullParser with Expat 2.6.0
-Patch41:        libexpat260.patch
+Patch15:        libexpat260.patch
 # PATCH-FIX-UPSTREAM CVE-2023-6597-TempDir-cleaning-symlink.patch bsc#1219666 mcepl@suse.com
 # tempfile.TemporaryDirectory: fix symlink bug in cleanup (from gh#python/cpython!99930)
-Patch42:        CVE-2023-6597-TempDir-cleaning-symlink.patch
+Patch16:        CVE-2023-6597-TempDir-cleaning-symlink.patch
+# PATCH-FIX-UPSTREAM bsc1221260-test_asyncio-ResourceWarning.patch bsc#1221260 mcepl@suse.com
+# prevent ResourceWarning in test_asyncio tests
+Patch17:        bsc1221260-test_asyncio-ResourceWarning.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -412,27 +415,13 @@ This package contains libpython3.2 shared library for embedding in
 other applications.
 
 %prep
-%setup -q -n %{tarname}
-%patch -P 02 -p1
+%autosetup -p1 -N -n %{tarname}
+%autopatch -p1 -M 08
 
-%patch -P 06 -p1
-%patch -P 07 -p1
-%patch -P 08 -p1
-%patch -P 09 -p1
-%patch -P 15 -p1
-%patch -P 29 -p1
 %if 0%{?suse_version} <= 1500
-%patch -P 33 -p1
+%patch -P 09 -p1
 %endif
-%if 0%{?sle_version} && 0%{?sle_version} <= 150300
-%patch -P 34 -p1
-%endif
-%patch -P 35 -p1
-%patch -P 36 -p1
-%patch -P 39 -p1
-%patch -P 40 -p1
-%patch -P 41 -p1
-%patch -P 42 -p1
+%autopatch -p1 -m 10
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
@@ -506,6 +495,9 @@ export CFLAGS="%{optflags} -IVendor/"
     --with-system-ffi \
     --with-system-expat \
     --with-lto \
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+    --with-ssl-default-suites=openssl \
+%endif
 %if %{with profileopt}
     --enable-optimizations \
 %endif
@@ -537,6 +529,8 @@ LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH \
 %endif
 
 %check
+export SUSE_VERSION="0%{?suse_version}"
+export SLE_VERSION="0%{?sle_version}"
 %if %{with general}
 # exclude test_gdb -- it doesn't run in buildservice anyway, and fails on missing debuginfos
 # when you install gdb into your test env
@@ -750,7 +744,7 @@ find "$PDOCS" -name "*.bat" -delete
 install -m 755 -D Tools/gdb/libpython.py %{buildroot}%{_datadir}/gdb/auto-load/%{_libdir}/libpython%{python_abi}.so.%{so_major}.%{so_minor}-gdb.py
 
 # install devel files to /config
-#cp Makefile Makefile.pre.in Makefile.pre $RPM_BUILD_ROOT%{sitedir}/config-%{python_abi}/
+#cp Makefile Makefile.pre.in Makefile.pre $RPM_BUILD_ROOT%%{sitedir}/config-%%{python_abi}/
 
 # RPM macros
 %if %{primary_interpreter}
@@ -910,7 +904,7 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %{_mandir}/man1/python3.1%{?ext_man}
 %endif
 %{_mandir}/man1/python%{python_version}.1%{?ext_man}
-%if %{suse_version} > 1550
+%if 0%{?suse_version} > 1550
 # PEP-0668
 %{sitedir}/EXTERNALLY-MANAGED
 %endif

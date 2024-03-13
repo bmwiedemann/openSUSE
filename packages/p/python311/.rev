@@ -1235,4 +1235,21 @@ C API
 </comment>
     <requestid>1153186</requestid>
   </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>3c94c6e041c7f48ff51c71d6f1144fe4</srcmd5>
+    <version>3.11.8</version>
+    <time>1710364560</time>
+    <user>anag+factory</user>
+    <comment>- Rewrite %prep to use %autosetup et al. for compatibility with
+  rpm 4.20.
+
+- bsc#1221260 add bsc1221260-test_asyncio-ResourceWarning.patch
+  to eliminate ResourceWarning which broke the test suite in
+  test_asyncio.
+
+- Use the system-wide crypto-policies [bsc#1211301]
+  * Use the system default cipher list instead of hardcoded values
+  * Add the --with-ssl-default-suites=openssl configure option</comment>
+    <requestid>1157149</requestid>
+  </revision>
 </revisionlist>

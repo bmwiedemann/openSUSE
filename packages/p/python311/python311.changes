@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar 12 08:44:47 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Rewrite %prep to use %autosetup et al. for compatibility with
+  rpm 4.20.
+
+-------------------------------------------------------------------
+Tue Mar 12 08:13:34 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- bsc#1221260 add bsc1221260-test_asyncio-ResourceWarning.patch
+  to eliminate ResourceWarning which broke the test suite in
+  test_asyncio.
+
+-------------------------------------------------------------------
+Wed Mar  6 14:13:58 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Use the system-wide crypto-policies [bsc#1211301]
+  * Use the system default cipher list instead of hardcoded values
+  * Add the --with-ssl-default-suites=openssl configure option
+
+-------------------------------------------------------------------
 Fri Feb 23 01:06:42 UTC 2024 - Matej Cepl <mcepl@suse.com>
 
 - (bsc#1219666, CVE-2023-6597) Add

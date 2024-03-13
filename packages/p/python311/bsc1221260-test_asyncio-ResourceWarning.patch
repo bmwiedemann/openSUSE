@@ -1,0 +1,21 @@
+From a3052035485bd2836e40f5284657ca105382cbfd Mon Sep 17 00:00:00 2001
+From: sobolevn <mail@sobolevn.me>
+Date: Tue, 5 Mar 2024 20:24:16 +0300
+Subject: [PATCH] gh-116112: Fix `ResourceWarning` in
+ `test_asyncio.test_stream`
+
+Co-authored-by: @CendioOssman
+---
+ Lib/test/test_asyncio/test_streams.py |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/Lib/test/test_asyncio/test_streams.py
++++ b/Lib/test/test_asyncio/test_streams.py
+@@ -1156,6 +1156,7 @@ os.close(fd)
+ 
+     def test_unhandled_cancel(self):
+         async def handle_echo(reader, writer):
++            writer.close()
+             asyncio.current_task().cancel()
+         messages = self._basetest_unhandled_exceptions(handle_echo)
+         self.assertEqual(messages, [])

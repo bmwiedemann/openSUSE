@@ -1,14 +1,23 @@
 ---
- Lib/test/test_capi/test_misc.py |    1 +
- 1 file changed, 1 insertion(+)
+ Lib/test/test_capi/test_misc.py |    3 +++
+ 1 file changed, 3 insertions(+)
 
 --- a/Lib/test/test_capi/test_misc.py
 +++ b/Lib/test/test_capi/test_misc.py
-@@ -1236,6 +1236,7 @@ class PyMemDebugTests(unittest.TestCase)
+@@ -40,6 +40,8 @@ import _testinternalcapi
+ # Were we compiled --with-pydebug or with #define Py_DEBUG?
+ Py_DEBUG = hasattr(sys, 'gettotalrefcount')
+ 
++# Which version of the SLE distro we build on?
++SLE_VERSION = int(os.environ.get('SLE_VERSION', '0'), 10)
+ 
+ NULL = None
+ 
+@@ -1281,6 +1283,7 @@ class PyMemDebugTests(unittest.TestCase)
      def test_pyobject_forbidden_bytes_is_freed(self):
          self.check_pyobject_is_freed('check_pyobject_forbidden_bytes_is_freed')
  
-+    @unittest.skip('Failing on Leap 15.*')
++    @unittest.skipIf(0 < SLE_VERSION < 150300, 'Failing on Leap 15.*')
      def test_pyobject_freed_is_freed(self):
          self.check_pyobject_is_freed('check_pyobject_freed_is_freed')
  
