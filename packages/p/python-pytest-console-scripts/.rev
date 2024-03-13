@@ -117,4 +117,16 @@
 </comment>
     <requestid>1099550</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>7cdc2095dd14b112bc3d6b9c976bb61f</srcmd5>
+    <version>1.4.1</version>
+    <time>1710364676</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1156454 from bnavigator
+
+- Fix requirements for python39 (yes really)
+  - Make brittle test &quot;fix&quot; depending on the undocumented value of
+    unexpanded %python_bin_suffix more robust</comment>
+    <requestid>1157044</requestid>
+  </revision>
 </revisionlist>

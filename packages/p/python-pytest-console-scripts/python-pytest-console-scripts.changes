@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  8 20:17:05 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Fix requirements for python39 (yes really)
+- Make brittle test "fix" depending on the undocumented value of
+  unexpanded %python_bin_suffix more robust
+
+-------------------------------------------------------------------
 Wed Jul 19 13:34:19 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Fix build error for Leap.
