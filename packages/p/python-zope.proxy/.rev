@@ -141,4 +141,13 @@
 - Provides/Obsoletes should be on the -devel package since</comment>
     <requestid>1133582</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>72cd13579c268332c08b91892d16336a</srcmd5>
+    <version>5.2</version>
+    <time>1710364625</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.2:
+  * Add preliminary support for Python 3.13 as of 3.13a3.</comment>
+    <requestid>1157516</requestid>
+  </revision>
 </revisionlist>
