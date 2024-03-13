@@ -230,26 +230,26 @@ Authors:
 %prep
 %setup -q -a 2 -a 4
 ln -s %{SOURCE1} .
-%patch1 -p1
-%patch2 -p1
-%patch4 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch13 -p1
-%patch18 -p1
-%patch21 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 4 -p1
+%patch -P 9 -p1
+%patch -P 10 -p1
+%patch -P 11 -p1
+%patch -P 13 -p1
+%patch -P 18 -p1
+%patch -P 21 -p1
 # Patches for SLE 15 SP1 potentially break support for SLE15 and SLE 12 SP4
 # Don't apply on these (and earlier) versions - see bsc#1148197
 %if 0%{?sle_version} > 120400 && 0%{?sle_version} != 150000
-%patch23 -p1
-%patch24 -p1
+%patch -P 23 -p1
+%patch -P 24 -p1
 %endif
 %if %{have_snappy}
-%patch15 -p1
+%patch -P 15 -p1
 %endif
 %if %{have_zstd}
-%patch30 -p1
+%patch -P 30 -p1
 %endif
 ## GDB patches
 for f in %{S:100} %{S:101}; do
@@ -257,11 +257,11 @@ for f in %{S:100} %{S:101}; do
     cp "$f" "${base#%{name}-}"
 done
 
-%patch32 -p1
+%patch -P 32 -p1
 
 ## SIAL patches
 cd sial-scripts-%{scripts_version}
-%patch90 -p1
+%patch -P 90 -p1
 cd -
 cd extensions
 ## gcore extension
@@ -271,7 +271,7 @@ cp %{S:3} .
 mkdir kbuild
 cp %{S:6} memory_driver
 %if 0%{?suse_version} > 1550
-%patch99 -p1
+%patch -P 99 -p1
 %endif
 
 %build
