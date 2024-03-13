@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 12 18:14:42 UTC 2024 - Petr Tesařík <petr@tesarici.cz>
+
+- Update to drgn-0.0.26:
+  * Linux 6.8 Support
+  * Python 3.13 Support
+  * new tool: fsrefs.py
+  * new Linux helpers: print_dmesg(), idr_for_each_entry(),
+    stack_depot_fetch(), priority-sorted lists
+  * support split DWARF package (.dwp) files
+
+-------------------------------------------------------------------
 Mon Dec  4 14:46:37 UTC 2023 - Michal Koutný <mkoutny@suse.com>
 
 - Cleanup .gitignore'd files from tarball

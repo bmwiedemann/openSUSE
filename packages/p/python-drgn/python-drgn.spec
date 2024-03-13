@@ -1,7 +1,7 @@
 #
 # spec file for package python-drgn
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 
 Name:           python-drgn
-Version:        0.0.25
+Version:        0.0.26
 Release:        0
 Summary:        Scriptable debugger library
 License:        LGPL-2.1-or-later
