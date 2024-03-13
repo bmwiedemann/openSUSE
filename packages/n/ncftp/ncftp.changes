@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 11 07:41:15 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 3.2.7
+   * Portability fixes
+   * Fix parsing MLSD listings with absolute pathnames for files
+   * Default to automatic resumption of downloads
+
+-------------------------------------------------------------------
 Thu Feb 22 13:55:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

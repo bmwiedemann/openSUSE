@@ -1,7 +1,7 @@
 #
 # spec file for package ncftp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           ncftp
-Version:        3.2.6
+Version:        3.2.7
 Release:        0
 Summary:        A Comfortable FTP Program
 License:        ClArtistic
 Group:          Productivity/Networking/Ftp/Clients
 URL:            https://www.ncftp.com/
-Source:         ftp://ftp.ncftp.com/ncftp/%{name}-%{version}-src.tar.xz
+Source:         https://www.ncftp.com/public_ftp/%{name}/%{name}-%{version}-src.tar.xz
 Patch0:         ncftp-3.1.8-locale.diff
 Patch2:         ncftp-3.1.8-implicit_decl.diff
 Patch3:         ncftp-3.2.5-no-date.patch
