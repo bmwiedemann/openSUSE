@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar  8 14:47:36 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.7
+  * Add functionality for copying from standard input (#99)
+  * Switch from gpg to gpgme module (#103)
+- New upstream maintainer: yoctoproject
+- Drop bmap-tools-pr103-replace-python-gpgme.patch
+- Drop bmap-tools-3.6-suse-fix-tests.patch
+- Work around reproducible build failure by extending the testing
+  gnupg key
+  * boo#1221108 gh#intel/bmap-tools#116 gh#yoctoproject/bmaptool#1
+
+-------------------------------------------------------------------
 Fri Nov 18 22:51:34 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add bmap-tools-pr103-replace-python-gpgme.patch

@@ -1,7 +1,7 @@
 #
 # spec file for package bmap-tools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,31 +16,24 @@
 #
 
 
-%define skip_python2 1
+%define distversion 3.7.0
 Name:           bmap-tools
-Version:        3.6
+Version:        3.7
 Release:        0
 Summary:        Tools to generate block map (AKA bmap) and flash images using bmap
 License:        GPL-2.0-only
 Group:          Development/Tools/Other
-URL:            https://github.com/intel/bmap-tools
-Source0:        https://github.com/intel/bmap-tools/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# For Patch0
-Source11:       https://github.com/intel/bmap-tools/raw/ffdcbc752cb086d33f083100b4c2498914a7b8eb/tests/test-data/gnupg/pubring.kbx
-Source12:       https://github.com/intel/bmap-tools/raw/ffdcbc752cb086d33f083100b4c2498914a7b8eb/tests/test-data/gnupg/random_seed
-Source13:       https://github.com/intel/bmap-tools/raw/ffdcbc752cb086d33f083100b4c2498914a7b8eb/tests/test-data/gnupg/trustdb.gpg
-Source14:       https://github.com/intel/bmap-tools/raw/ffdcbc752cb086d33f083100b4c2498914a7b8eb/tests/test-data/test.image.bmap.v2.0.sig-by-wrong-key
-Source15:       https://github.com/intel/bmap-tools/raw/ffdcbc752cb086d33f083100b4c2498914a7b8eb/tests/test-data/test.image.bmap.v2.0.valid-sig
-# PATCH-FEATURE-UPSTREAM  bmap-tools-pr103-replace-python-gpgme.patch gh#intel/bmap-tools#103 + gh#intel/bmap-tools#112
-Patch0:         bmap-tools-pr103-replace-python-gpgme.patch
-# PATCH-FIX-OPENSUSE remove-backports.tempfile.patch code@bnavigator.de -- no need to support Python < 3.2
-Patch1:         bmap-tools-3.6-suse-fix-tests.patch
-BuildRequires:  %{python_module setuptools}
+URL:            https://github.com/yoctoproject/bmaptool
+Source0:        https://github.com/yoctoproject/bmaptool/archive/refs/tags/v%{version}.tar.gz#/bmaptool-%{version}-gh.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-gpg
+Requires:       python-gpg >= 1.10
+Requires:       python-six >= 1.15
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
+Provides:       python-bmaptools = %{version}-%{release}
 # SECTION test
 BuildRequires:  %{python_module gpg}
 BuildRequires:  %{python_module pytest}
@@ -66,37 +59,33 @@ raw system image files, can be copied or flashed a lot faster with bmaptool
 than with traditional tools like "dd" or "cp".
 
 %prep
-%autosetup -p1
-# remove shebang
-tail -n +2 bmaptools/CLI.py > bmaptools/CLI.py_new
-mv bmaptools/CLI.py{_new,}
-%if 0%{?suse_version} < 1550
-# no python_flavored_alternatives in old python-rpm-macros
-mkdir testbin
-sed '1{s/env python/python3/}' bmaptool > testbin/bmaptool
-chmod +x testbin/bmaptool
-%endif
-rm __main__.py bmaptool
-cp %{SOURCE11} %{SOURCE12} %{SOURCE13} tests/test-data/gnupg/
-cp %{SOURCE14} %{SOURCE15} tests/test-data/signatures/
+%autosetup -p1 -n bmaptool-%{version}
+sed -i '1{/^#!/d}' bmaptools/CLI.py bmaptools/__main__.py
+chmod -x bmaptools/__main__.py
+sed -i '/nose/d' pyproject.toml
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/bmaptool
 
 mkdir -p %{buildroot}/%{_mandir}/man1
 install -m644 docs/man1/bmaptool.1 %{buildroot}/%{_mandir}/man1
 %python_clone -a %{buildroot}%{_mandir}/man1/bmaptool.1
 
-%python_expand %fdupes %{buildroot}%{$python_sitelib}/bmaptools
+%python_expand %fdupes %{buildroot}%{$python_sitelib}/
 
 %check
-%if 0%{?suse_version} < 1550
-export PATH=$PWD/testbin:$PATH
-%endif
+# extend signing key expiration for reproducible builds
+export GNUPGHOME=$PWD/tests/test-data/gnupg
+echo 'expire
+50y
+key 1
+expire
+50y
+save' | gpg --command-fd=0 --batch --edit-key 927FF9746434704C5774BE648D49DFB1163BDFB4
 # no /sys/module/zfs/ in obs test environment: returns false instead of IOError
 %pytest -k "not test_is_zfs_configuration_compatible_unreadable_file"
 
@@ -107,11 +96,11 @@ export PATH=$PWD/testbin:$PATH
 %python_uninstall_alternative bmaptool
 
 %files %{python_files}
-%license COPYING
-%doc docs/README docs/RELEASE_NOTES
+%license LICENSE
+%doc README.md CHANGELOG.md
 %python_alternative %{_bindir}/bmaptool
 %python_alternative %{_mandir}/man1/bmaptool.1%{?ext_man}
 %{python_sitelib}/bmaptools
-%{python_sitelib}/bmap_tools-%{version}*-info
+%{python_sitelib}/bmaptools-%{distversion}.dist-info
 
 %changelog
