@@ -318,4 +318,13 @@
 - Switch to psycopg (so version 3).</comment>
     <requestid>1142708</requestid>
   </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>5d3b6e5dad5e6f04e20a4c198fdb57eb</srcmd5>
+    <version>3.14.0</version>
+    <time>1710364866</time>
+    <user>anag+factory</user>
+    <comment>- Do not use python-Markdown in Leap 15
+  * Leap 15 does not have python 3.11 build of python-Markdown</comment>
+    <requestid>1157631</requestid>
+  </revision>
 </revisionlist>

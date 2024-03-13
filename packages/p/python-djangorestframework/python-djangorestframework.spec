@@ -38,7 +38,9 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 3.0
+%if 0%{?suse_version} > 1500
 Recommends:     python-Markdown
+%endif
 Recommends:     python-Pygments
 Recommends:     python-requests
 Suggests:       python-psycopg2
@@ -47,7 +49,9 @@ Obsoletes:      python-django-rest-framework < %{version}
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Django >= 3.0}
+%if 0%{?suse_version} > 1500
 BuildRequires:  %{python_module Markdown >= 3.3}
+%endif
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module django-guardian >= 2.4.0}

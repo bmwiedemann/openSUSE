@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 12 11:15:28 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Do not use python-Markdown in Leap 15
+  * Leap 15 does not have python 3.11 build of python-Markdown
+
+-------------------------------------------------------------------
 Tue Jan 30 04:54:00 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
