@@ -2,7 +2,7 @@
 # spec file for package spread-sheet-widget
 #
 # Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2017,2020 <opensuse.lietuviu.kalba@gmail.com>
+# Copyright (c) 2017,2020,2024 <opensuse.lietuviu.kalba@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %define         libname libspread-sheet-widget0
 Name:           spread-sheet-widget
-Version:        0.8
+Version:        0.10
 Release:        0
 Summary:        GNU Spread Sheet Widget library for Gtk+
 License:        GPL-3.0-or-later
@@ -34,8 +34,8 @@ BuildRequires:  gtk3-devel >= 3.18.0
 
 %description
 GNU Spread Sheet Widget is a library for Gtk+ which provides a widget for
-viewing and manipulating 2-dimensional tabular data in a manner similar to many
-popular spread sheet programs.
+viewing and manipulating 2-dimensional tabular data in a manner similar
+to many popular spread sheet programs.
 
 The design follows the model-view-controller paradigm and is of complexity O(1)
 in both time and space. This means that it is efficient and fast even for very

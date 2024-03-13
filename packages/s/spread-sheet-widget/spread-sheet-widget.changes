@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 12 11:40:34 UTC 2024 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to version 0.10.
+- Changes between version 0.9 and 0.10:
+  * Update obsolete macro in configure.ac
+  * Correctly draw selection when in RTL locales
+  * Arrange for make dist to be reproducible
+- Changes between version 0.8 and 0.9:
+  * Use a fallback algorithm if scrolling to a row/column fails
+
+-------------------------------------------------------------------
 Tue May 11 23:43:51 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.8:
