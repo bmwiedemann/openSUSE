@@ -1,0 +1,25 @@
+Index: b/ajam-2.5.2-1.3.3/mkjambase.c
+===================================================================
+--- a/ajam-2.5.2-1.3.3/mkjambase.c
++++ b/ajam-2.5.2-1.3.3/mkjambase.c
+@@ -24,6 +24,7 @@
+ # include <stdio.h>
+ # include <string.h>
+ 
++int
+ main( int argc, char **argv, char **envp )
+ {
+ 	char buf[ 1024 ];
+Index: b/ajam-2.5.2-1.3.3/execunix.c
+===================================================================
+--- a/ajam-2.5.2-1.3.3/execunix.c
++++ b/ajam-2.5.2-1.3.3/execunix.c
+@@ -106,7 +106,7 @@ execcmd(
+ {
+ 	int pid;
+ 	int slot;
+-	const char *argv[ MAXARGC + 1 ];	/* +1 for NULL */
++	char * argv[ MAXARGC + 1 ];	/* +1 for NULL */
+ 
+ # ifdef USE_EXECNT
+ 	char *p;

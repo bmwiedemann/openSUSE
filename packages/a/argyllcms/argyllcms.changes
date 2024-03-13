@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 12 20:30:35 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Fix build with gcc14 (bsc#1221304)
+  * Add ajam-gcc14.patch
+- Reformat ajam-include.patch with a/b prefixes
+- Use %autosetup
+
+-------------------------------------------------------------------
 Tue Feb 20 10:51:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -1,7 +1,7 @@
 #
 # spec file for package argyllcms
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Source1:        19-color.fdi
 Source2:        color-device-file.policy
 Source3:        ajam-2.5.2-1.3.3.tgz
 Patch1:         ajam-include.patch
+# PATCH-FIX-OPENSUSE bsc#1221304 -- Fix ajam build with gcc14
+Patch2:         ajam-gcc14.patch
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libtool
@@ -84,10 +86,7 @@ displays.
 This package contains the Argyll color management system documentation.
 
 %prep
-%setup -q -n %{tarname}_V%{version} -a3
-cd ajam-2.5.2-1.3.3
-%patch -P 1 -p1 -b .include
-cd ..
+%autosetup -n %{tarname}_V%{version} -a3 -p1
 
 # remove unused source code
 rm -fr usb/{*.inf,*.rtf,*.inf,*.cat,*.vcproj,*.sys,*.dsw,*.sln,*.dsp,*template*,WinCo*,winsub*,*kext*,KDRIVER_LICENSE,README_MSVC.txt,msvc,*.cmd,bin,driver,binfiles.*}
