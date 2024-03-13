@@ -32,4 +32,14 @@
     <comment></comment>
     <requestid>944657</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>d36b7ae63f17cd6afe891f0476d9cd62</srcmd5>
+    <version>3.1.0</version>
+    <time>1710364864</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1157626</requestid>
+  </revision>
 </revisionlist>
