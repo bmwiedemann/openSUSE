@@ -1,0 +1,9 @@
+<package name="flocc" project="openSUSE:Factory">
+  <title>The Fast Lines Of Code Counter</title>
+  <description>Count the lines of code, comments and blank lines in a source tree and
+print detailed statistics.
+
+</description>
+  <devel project="devel:tools" package="flocc"/>
+  <url>https://github.com/joergroedel/flocc</url>
+</package>
