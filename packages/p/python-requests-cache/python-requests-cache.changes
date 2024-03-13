@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Mar 13 10:16:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Drop support for python 3.7
+  * Remove methods deprecated in 1.0 from `CachedSession` and
+    `BaseCache`
+  * Add support for `X-HTTP-Method-Override` and other headers
+    that can override request method
+  * Add `CachedSession.wrap()` classmethod to add caching to an
+    existing `requests.Session` object
+  * Add `vacuum` parameter to `SQLiteCache.delete()` to
+    optionally skip vacuuming after deletion (enabled by default
+    to free up disk space)
+  * Optimize `SQLiteCache.delete()` when deleting a single key
+  * Add support for RFC 7159 JSON body with `decode_content=True`
+    (root element with any type)
+  * Use timezone-aware UTC datetimes for all internal expiration
+    values
+  * Add support for python 3.12
+  * Note: There is a known bug with multiprocess/multithreaded
+    usage of the SQLite backend on python 3.12.
+  * Add support for cattrs 23.2
+  * Fix `IncompleteRead` error that could sometimes occur with
+    streaming requests due to mismatch with `Content-Length`
+    header
+  * Handle a corner case with streaming requests, conditional
+    requests, and redirects
+  * When redacting ignored parameters from a cached response,
+    keep the rest of the original URL and headers without
+    normalizing
+  * Add `CachedHTTPResponse._request_url` property for
+    compatibility with urllib3
+  * Fix form boundary used for cached multipart requests to
+    comply with RFC 2046
+  * If an explicit CA bundle path is passed via `verify` param,
+    cache the response under the same key as `verify=True`
+  * Handle JSON Content-Type charsets and MIME type variations
+    (such as `application/vnd.api+json`) during request
+    normalization and serialization
+
+-------------------------------------------------------------------
 Tue Nov 21 06:22:09 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 1.1.1:
@@ -115,5 +156,5 @@ Tue Dec  4 12:53:42 UTC 2018 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Tue Mar 28 17:27:40 UTC 2017 - alarrosa@suse.com
 
-- Initial release 
+- Initial release
 

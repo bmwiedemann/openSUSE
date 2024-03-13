@@ -65,4 +65,41 @@
     <comment></comment>
     <requestid>1128169</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>01665bf3d6ce82e65f74e27975cfec54</srcmd5>
+    <version>1.2.0</version>
+    <time>1710364849</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.0:
+  * Drop support for python 3.7
+  * Remove methods deprecated in 1.0 from `CachedSession` and
+    `BaseCache`
+  * Add support for `X-HTTP-Method-Override` and other headers
+    that can override request method
+  * Add `CachedSession.wrap()` classmethod to add caching to an
+    existing `requests.Session` object
+  * Add `vacuum` parameter to `SQLiteCache.delete()` to
+    optionally skip vacuuming after deletion (enabled by default
+    to free up disk space)
+  * Optimize `SQLiteCache.delete()` when deleting a single key
+  * Add support for RFC 7159 JSON body with `decode_content=True`
+    (root element with any type)
+  * Use timezone-aware UTC datetimes for all internal expiration
+    values
+  * Add support for python 3.12
+  * Note: There is a known bug with multiprocess/multithreaded
+    usage of the SQLite backend on python 3.12.
+  * Add support for cattrs 23.2
+  * Fix `IncompleteRead` error that could sometimes occur with
+    streaming requests due to mismatch with `Content-Length`
+    header
+  * Handle a corner case with streaming requests, conditional
+    requests, and redirects
+  * When redacting ignored parameters from a cached response,
+    keep the rest of the original URL and headers without
+    normalizing
+  * Add `CachedHTTPResponse._request_url` property for
+    compatibility with urllib3</comment>
+    <requestid>1157517</requestid>
+  </revision>
 </revisionlist>
