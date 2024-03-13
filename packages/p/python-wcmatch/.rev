@@ -36,4 +36,13 @@
     non-magic patterns are mixed in `glob` pattern list.</comment>
     <requestid>1136300</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c323b057a534d8065e64be3eb050df22</srcmd5>
+    <version>8.5.1</version>
+    <time>1710364899</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.5.1:
+  * Fix issue with type check failure in `wcmatch.glob`.</comment>
+    <requestid>1157753</requestid>
+  </revision>
 </revisionlist>
