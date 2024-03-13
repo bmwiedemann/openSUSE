@@ -45,8 +45,7 @@ to the top utility, but most of the information displayed comes from
 hardware counters.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 cp %{SOURCE1} %{SOURCE2} .
 
 %build
