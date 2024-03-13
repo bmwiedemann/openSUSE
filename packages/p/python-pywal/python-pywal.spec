@@ -1,7 +1,7 @@
 #
 # spec file for package python-pywal
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pywal
 Version:        3.3.0
 Release:        0
@@ -24,11 +23,17 @@ Summary:        Generate and change color-schemes on the fly
 License:        MIT
 URL:            https://github.com/dylanaraps/pywal
 Source:         https://files.pythonhosted.org/packages/source/p/pywal/pywal-%{version}.tar.gz
+Source1:        python-pywal.rpmlintrc
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     ImageMagick
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -36,18 +41,19 @@ BuildArch:      noarch
 Generate and change color-schemes on the fly
 
 %prep
-%setup -q -n pywal-%{version}
+%autosetup -p1 -n pywal-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/wal
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest
+# Forbidden by imagemagick's security policy
+%pytest -k 'not test_gen_colors'
 
 %post
 %python_install_alternative wal
@@ -59,6 +65,7 @@ Generate and change color-schemes on the fly
 %doc README.md
 %license LICENSE.md
 %python_alternative %{_bindir}/wal
-%{python_sitelib}/*
+%{python_sitelib}/pywal
+%{python_sitelib}/pywal-%{version}.dist-info
 
 %changelog
