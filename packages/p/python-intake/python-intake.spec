@@ -16,116 +16,95 @@
 #
 
 
-Name:           python-intake
-Version:        0.7.0
+%define skip_python39 1
+
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%define skip_python39 1
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
+Name:           python-intake%{psuffix}
+Version:        2.0.3
 Release:        0
 Summary:        Data loading and cataloging system
 License:        BSD-2-Clause
 URL:            https://github.com/intake/intake
 Source:         https://github.com/intake/intake/archive/refs/tags/%{version}.tar.gz#/intake-%{version}-gh.tar.gz
-# PATCH-FIX-OPENSUSE fix-tests.patch
-Patch1:         fix-tests.patch
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 64}
+BuildRequires:  %{python_module setuptools_scm >= 8}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Jinja2
 Requires:       python-PyYAML
 Requires:       python-appdirs
-Requires:       python-dask
-Requires:       python-entrypoints
-Requires:       python-fsspec >= 2021.7.0
-Requires:       python-msgpack
-Requires:       python-requests
-Recommends:     python-bokeh
-Recommends:     python-dask-dataframe
-Recommends:     python-hvplot
-Recommends:     python-msgpack-numpy
-Recommends:     python-panel >= 0.8.0
-Recommends:     python-pyarrow
-Recommends:     python-python-snappy
-Recommends:     python-tornado
-Suggests:       python-intake-parquet
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires:       python-fsspec >= 2023
 BuildArch:      noarch
-# SECTION test requirements
+%if %{with test}
+BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module aiohttp}
-BuildRequires:  %{python_module appdirs}
-BuildRequires:  %{python_module bokeh}
-BuildRequires:  %{python_module dask-dataframe}
-BuildRequires:  %{python_module dask}
-BuildRequires:  %{python_module entrypoints}
-BuildRequires:  %{python_module fsspec >= 2021.7.0}
-BuildRequires:  %{python_module hvplot >= 0.5.2}
-BuildRequires:  %{python_module msgpack}
+BuildRequires:  %{python_module dask-all}
+BuildRequires:  %{python_module hvplot}
+BuildRequires:  %{python_module intake = %{version}}
 # strictly a test req, but not a runtime requirement, not available in openSUSE
 #BuildRequires:  %%{python_module intake-parquet}
 BuildRequires:  %{python_module msgpack-numpy}
 BuildRequires:  %{python_module notebook}
-BuildRequires:  %{python_module panel >= 0.8.0}
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module panel}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-snappy}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module tornado}
+BuildRequires:  %{python_module xarray}
 BuildRequires:  %{python_module zarr}
-# /SECTION
+%endif
 %python_subpackages
 
 %description
-A plugin system for loading your data and making data catalogs.
+A python package for describing, loading and processing data
+
+Intake is an open-source package to:
+ * describe your data declaratively
+ * gather data sets into catalogs
+ * search catalogs and services to find the right data you need
+ * load, transform and output data in many formats
+ * work with third party remote storage and compute platforms
 
 %prep
 %autosetup -p1 -n intake-%{version}
-find intake -path '*/tests/*.py' -exec sed -i '1{/env python/d}' {} ';'
 
 %build
-%python_build
+%if !%{with test}
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
+%pyproject_wheel
+%endif
 
 %install
-%python_install
-%python_clone -a %{buildroot}%{_bindir}/intake
-%python_clone -a %{buildroot}%{_bindir}/intake-server
+%if !%{with test}
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_expand chmod a-x %{buildroot}%{$python_sitelib}/intake-%{version}*-info/*
+%endif
 
+%if %{with test}
 %check
-# Looks for `which python`, which we don't have in TW
-donttest+=" or test_which"
-# test_discover_cli overrides the PYTHONPATH and thus doesn't find the package in buildroot
-# test_discover does not find its own config because the registration does not work in our test env
-donttest+=" or test_discover"
-if [ $(getconf LONG_BIT) -eq 32 ]; then
-  # the test looks for the wrong dtype on 32-bit (int64 vs int)
-  donttest+=" or test_zarr_minimal"
-fi
-# skip tests expecting the unavailable intake-parquet driver (configured in intake/tests/catalog_inherit_params.yml)
-donttest+=" or test_inherit_params"
-donttest+=" or test_runtime_overwrite_params"
-donttest+=" or test_local_param_overwrites"
-donttest+=" or test_local_and_global_params"
-donttest+=" or test_search_inherit_params"
-donttest+=" or test_multiple_cats_params"
-# wrong exception class
-donttest+=" or test_mlist_parameter"
-%pytest -x -ra -k "not (${donttest:4})"
+# upstream currently only tests the readers subdir. The rest seems to still expect v1
+# See .github/workflows/main.yaml
+%pytest -rsfE intake/readers
+%endif
 
-%post
-%python_install_alternative intake
-%python_install_alternative intake-server
-
-%postun
-%python_uninstall_alternative intake
-%python_uninstall_alternative intake-server
-
+%if !%{with test}
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python_alternative %{_bindir}/intake-server
-%python_alternative %{_bindir}/intake
 %{python_sitelib}/intake
-%{python_sitelib}/intake-%{version}*-info
+%{python_sitelib}/intake-%{version}.dist-info
+%endif
 
 %changelog
