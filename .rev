@@ -1716,4 +1716,12 @@
   * aws-vpc-move-ip/aws-vpc-route53/awseip/awsvip: add auth_type parameter and AWS Policy based authentication type</comment>
     <requestid>1147065</requestid>
   </revision>
+  <revision rev="128" vrev="2">
+    <srcmd5>888a3a8d782f7957beff5d58c4a0f79d</srcmd5>
+    <version>4.13.0+git23.fa8a56f6</version>
+    <time>1710364624</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1157508</requestid>
+  </revision>
 </revisionlist>
