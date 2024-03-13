@@ -19,7 +19,7 @@
 %define _libexecdir %_prefix/libexec
 
 Name:           gromox
-Version:        2.25
+Version:        2.26
 Release:        0
 Summary:        Groupware server backend with RPC, IMAP,POP3, PHP-MAPI support
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later
@@ -77,13 +77,6 @@ Requires:       php8-fpm
 Requires:       php8-mysql
 Requires:       php8-posix
 Requires:       php8-soap
-%endif
-%if 0%{?sle_version} && 0%{?sle_version} < 150400
-Requires:       php-cli
-Requires:       php7-fpm
-Requires:       php7-mysql
-Requires:       php7-posix
-Requires:       php7-soap
 %endif
 %if 0%{?rhel} || 0%{?fedora_version}
 Requires:       php-cli
