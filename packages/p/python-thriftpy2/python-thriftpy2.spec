@@ -1,7 +1,7 @@
 #
 # spec file for package python-thriftpy2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,24 @@
 
 
 Name:           python-thriftpy2
-Version:        0.4.16
+Version:        0.4.20
 Release:        0
 Summary:        Pure python implementation of Apache Thrift
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/Thriftpy/thriftpy2
 Source0:        https://github.com/Thriftpy/thriftpy2/archive/v%{version}.tar.gz
 Source1:        new_certs.tar.xz
-BuildRequires:  %{python_module Cython >= 0.28.4 with %python-Cython < 3}
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module ply >= 3.4}
 BuildRequires:  %{python_module pytest >= 2.8}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module tornado >= 5.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-pytest-asyncio
@@ -54,10 +55,10 @@ tar xv -C tests/ssl -f %{SOURCE1}
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %{python_expand # remove devel files
 find %{buildroot}%{$python_sitearch} -name '*.h' -exec rm {} \;
@@ -74,6 +75,6 @@ cd tests
 %license LICENSE
 %doc CHANGES.rst README.rst
 %{python_sitearch}/thriftpy2
-%{python_sitearch}/thriftpy2-%{version}*-info
+%{python_sitearch}/thriftpy2-%{version}.dist-info
 
 %changelog

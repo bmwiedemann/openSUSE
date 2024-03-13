@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 12 01:03:03 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.4.20:
+  * Fix another compatibility issue with legacy Python.
+  * Fix a compatibility issue with legacy Python.
+  * Make the import hook compatible with Python3.12.
+  * Added a ``strict_decode`` option to all protocols to force all
+    strings in the response to be decoded to ``str``.
+  * Allow annotations in the ``Union`` type.
+  * Fixed the ``message_type`` in oneway request.
+  * Fix Cython build error in latest Python3 version
+- Drop restriction on Cython.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Sun Aug 13 19:26:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - restrict to older cython 

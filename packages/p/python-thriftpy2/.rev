@@ -83,4 +83,22 @@
     <comment>- restrict to older cython</comment>
     <requestid>1103716</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7fd04a48e9ff74ee3385daf743069250</srcmd5>
+    <version>0.4.20</version>
+    <time>1710364682</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.4.20:
+  * Fix another compatibility issue with legacy Python.
+  * Fix a compatibility issue with legacy Python.
+  * Make the import hook compatible with Python3.12.
+  * Added a ``strict_decode`` option to all protocols to force all
+    strings in the response to be decoded to ``str``.
+  * Allow annotations in the ``Union`` type.
+  * Fixed the ``message_type`` in oneway request.
+  * Fix Cython build error in latest Python3 version
+- Drop restriction on Cython.
+- Switch to pyproject macros.</comment>
+    <requestid>1157069</requestid>
+  </revision>
 </revisionlist>
