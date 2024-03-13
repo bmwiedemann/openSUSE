@@ -367,4 +367,13 @@
     Issue #167</comment>
     <requestid>1032379</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>02706fe5529ba2c993d69fbd13442414</srcmd5>
+    <version>4.4.1</version>
+    <time>1710364713</time>
+    <user>anag+factory</user>
+    <comment>- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]</comment>
+    <requestid>1157172</requestid>
+  </revision>
 </revisionlist>

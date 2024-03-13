@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 12 12:13:05 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Mon Oct 31 07:45:23 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.4.1:

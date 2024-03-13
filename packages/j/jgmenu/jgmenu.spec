@@ -1,7 +1,7 @@
 #
 # spec file for package jgmenu
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,8 +45,6 @@ jgmenu is a simple X11 menu intended to be used with tint2 and openbox.
 
 %prep
 %setup -q
-# E: env-script-interpreter
-grep -rl '^#!' | xargs sed -i '/^#!/s/env.*py.*/python3/'
 
 %build
 %configure
@@ -55,6 +53,7 @@ make %{?_smp_mflags} prefix=%{_prefix}
 %install
 make %{?_smp_mflags} prefix=%{_prefix} DESTDIR=%{buildroot} install
 %suse_update_desktop_file -r %{name} Utility DesktopUtility
+%python3_fix_shebang
 
 %if 0%{?suse_version} < 1500
 %post
