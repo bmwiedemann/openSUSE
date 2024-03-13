@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  5 20:27:04 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Obsolete Python 3.6 build for SLE 15 SP4 and openSUSE Leap 15.4 and later
+
+-------------------------------------------------------------------
 Mon Feb 26 23:54:23 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Version update in SLE 15 SP4 and later (jsc#PED-6697)
@@ -352,6 +357,30 @@ Fri Jun  4 07:09:47 UTC 2021 - Matej Cepl <mcepl@suse.com>
 Tue Apr 13 19:30:16 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
 
 - Skip Python 2 build as dependencies are no longer built for Python 2 either
+
+-------------------------------------------------------------------
+Mon Jun 29 19:15:38 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to 1.23.0:
+  * Move create_bucket implementation from Bucket to Client.
+  * Add opt-in raw download support.
+  * Fix query-string order dependent assert.
+  * Normalize VPCSC configuration in system tests.
+- Update to 1.22.0:
+  * Add UBLA attrs to IAMConfiguration.
+- Update to 1.21.0:
+  * Add gcloud-python header to user agent.
+  * Don't report a gapic version for storage.
+  * Update storage endpoint from www.googleapis.com to
+    storage.googleapis.com.
+  * Call anonymous client method to remove dependency of google
+    application credentials.
+  * Enable CSEK w/ V4 signed URLs.
+  * Support predefined ACLs in Bucket.create.
+- Update to 1.20.0:
+  * Add user_project param to HMAC-related methods.
+  * Add Blob.from_string and Bucket.from_string factories.
+  * Add support for STORAGE_EMULATOR_HOST; add benchwrapper script.
 
 -------------------------------------------------------------------
 Mon Jun 29 15:55:00 UTC 2020 - Sean Marlow <sean.marlow@suse.com>

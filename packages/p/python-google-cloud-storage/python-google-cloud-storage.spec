@@ -50,6 +50,9 @@ Requires:       python-google-resumable-media >= 2.6.0
 Requires:       python-googleapis-common-protos
 Requires:       python-requests >= 2.18.0
 BuildArch:      noarch
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-google-cloud-storage < %{version}
+%endif
 # SECTION test requirements
 %if %{with test}
 BuildRequires:  %{python_module google-api-core >= 1.31.5}
