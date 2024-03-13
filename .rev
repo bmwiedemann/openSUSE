@@ -71,4 +71,15 @@
 - Slightly less mess in %files.</comment>
     <requestid>1155785</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cd441d5dae3214591a4a0e2b3147e6b8</srcmd5>
+    <version>0.29</version>
+    <time>1710364872</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.29:
+  * fix deprecation warning during batch processing
+  * fix markdown-ness in README
+  * pass max width to latex adjustbox</comment>
+    <requestid>1157653</requestid>
+  </revision>
 </revisionlist>
