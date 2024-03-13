@@ -1,0 +1,21 @@
+<package name="openpace" project="openSUSE:Factory">
+  <title>Cryptographic library for EAC version 2</title>
+  <description>OpenPACE implements Extended Access Control (EAC) version 2 as specified
+in BSI TR-03110. OpenPACE comprises support for the following protocols:
+
+ * Password Authenticated Connection Establishment (PACE)
+ * Terminal Authentication (TA)
+ * Chip Authentication (CA)
+
+OpenPACE also supports Card Verifiable Certificates (CV Certificates)
+and signing requests as well as easy to use wrappers for using the
+established secure channels.
+
+OpenPACE supports all variants of PACE (DH/ECDH, GM/IM), TA
+(RSASSA-PKCS1-v1_5/RSASSA-PSS/ECDSA), CA (DH/ECDH) and all
+standardised domain parameters (GFP/ECP).
+
+</description>
+  <devel project="security:chipcard" package="openpace"/>
+  <url>https://frankmorgner.github.io/openpace/</url>
+</package>
