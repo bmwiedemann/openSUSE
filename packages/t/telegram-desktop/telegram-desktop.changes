@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 13 07:51:48 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.15.2
+  * Telegram Business: Greeting Message.
+  * Telegram Business: Away Message.
+  * Telegram Business: Quick Replies.
+  * Telegram Business: Working Hours.
+  * Close the ongoing call window without hanging up the call.
+  * Fast scroll through chats list with Ctrl or Shift pressed.
+  * Several bugfixes.
+
+-------------------------------------------------------------------
 Sat Mar  9 09:20:14 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Updated to version 4.15.1
