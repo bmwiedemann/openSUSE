@@ -1,7 +1,7 @@
 #
 # spec file for package lilv
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,7 +45,7 @@ BuildRequires:  pkgconfig(lv2) >= 1.8.0
 BuildRequires:  pkgconfig(serd-0) >= 0.30.0
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(sord-0) >= 0.13
-BuildRequires:  pkgconfig(sratom-0) >= 0.4.0
+BuildRequires:  pkgconfig(sratom-0) >= 0.6.10
 # lilv 0.22 require new API of sord 0.13
 # Since sord sover unchanged from 0.12, explicitly require here.
 Requires(pre):  liblilv-0-%{sover} = %{version}
@@ -127,7 +127,7 @@ rmdir %{buildroot}%{_sysconfdir}/bash_completion.d
 %endif
 
 %files -n python3-lilv
-%{python_sitelib}/*.py
-%pycache_only %{python_sitelib}/__pycache__
+%{python_sitelib}/lilv.py
+%pycache_only %{python_sitelib}/__pycache__/lilv.*.pyc
 
 %changelog
