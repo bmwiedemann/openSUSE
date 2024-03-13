@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 12 08:43:30 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Remove the nghttp2 version requirement as a version guard around
+  the nghttp2_option_set_no_rfc9113_leading_and_trailing_ws_validation
+  function was added in curl 8.0.1.
+  * Upstream commit: https://github.com/curl/curl/commit/744dcf22
+
+-------------------------------------------------------------------
 Thu Feb  8 13:58:23 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix various TLS related issues including FTP over SSL
