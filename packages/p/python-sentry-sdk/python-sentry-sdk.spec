@@ -18,6 +18,8 @@
 
 # nothing provides python2-venusian >= 1.0 needed by python2-pyramid
 %{?sle15_python_module_pythons}
+# ipdb no longer available for python 3.9
+%global skip_python39 1
 Name:           python-sentry-sdk
 Version:        1.40.4
 Release:        0
