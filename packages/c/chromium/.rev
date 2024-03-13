@@ -4897,4 +4897,13 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 </comment>
     <requestid>1156639</requestid>
   </revision>
+  <revision rev="415" vrev="1">
+    <srcmd5>7142c536bd82a52a614fe5a118598ad7</srcmd5>
+    <version>122.0.6261.128</version>
+    <time>1710364771</time>
+    <user>anag+factory</user>
+    <comment>- Chromium 122.0.6261.128 (boo#1221335)
+  *  CVE-2024-2400: Use after free in Performance Manager</comment>
+    <requestid>1157503</requestid>
+  </revision>
 </revisionlist>
