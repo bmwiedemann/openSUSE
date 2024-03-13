@@ -1,0 +1,13 @@
+Source: system-user-gromox
+Priority: optional
+Section: mail
+Maintainer: Gromox <null@gromox.com>
+Standards-Version: 4.5.0
+
+Package: system-user-gromox
+Architecture: all
+Pre-Depends: ${misc:Pre-Depends}
+Depends: adduser, ${misc:Depends}
+Description: System user and group gromox
+ .
+ This package provides the gromox account.

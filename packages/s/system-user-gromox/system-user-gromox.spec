@@ -1,7 +1,7 @@
 #
 # spec file for package system-user-gromox
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,19 @@
 
 
 Name:           system-user-gromox
-Version:        2
+Version:        5
 Release:        0
 Summary:        System user and group gromox
 License:        MIT
 Group:          System/Fhs
+#Source:        https://download.grommunio.com/community/openSUSE_Tumbleweed/system-user-gromox-*.src.rpm
 URL:            https://grommunio.com/
 BuildArch:      noarch
 BuildRequires:  systemd-rpm-macros
+%if 0%{?suse_version}
+# SUSE doing SUSE things again
 BuildRequires:  sysuser-tools
-%sysusers_requires
+%endif
 
 %description
 This package provides the gromox account.
@@ -34,13 +37,22 @@ This package provides the gromox account.
 %prep
 
 %build
-echo 'u gromox - "Gromox services"' >u.conf
-%sysusers_generate_pre u.conf user
+# The conf file is provided by system-user-gromox rather than
+# gromox.spec so that e.g. grommunio-admin-api does not grow a
+# BuildRequire on gromox (wait times).
+#
+cat >u.conf <<-EOF
+	g gromox -
+	g gromoxcf -
+	u gromox - "Gromox services"
+	m gromox gromoxcf
+EOF
 
 %install
 install -Dpm0644 u.conf "%buildroot/%_sysusersdir/system-user-gromox.conf"
 
-%pre -f user.pre
+%post
+%sysusers_create system-user-gromox.conf
 
 %files
 %_sysusersdir/*.conf
