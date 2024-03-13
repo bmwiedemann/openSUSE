@@ -1,7 +1,7 @@
 #
 # spec file for package rubber
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,7 @@ graphics/graphicx (with automatic conversion between various formats and
 Metapost compilation).
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 python3 setup.py build
@@ -53,6 +53,7 @@ python3 setup.py build
 python3 setup.py install --root=%{buildroot} --mandir=%{_mandir} --infodir=%{_infodir} --docdir=%{_docdir}/%{name}
 
 %fdupes %{buildroot}%{python3_sitelib}/rubber/
+%python3_fix_shebang
 
 %post
 install-info %{_infodir}/rubber.info.gz %{_infodir}/dir
