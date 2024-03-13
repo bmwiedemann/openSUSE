@@ -173,7 +173,11 @@ cp -a %{_datadir}/icons/%{_iconlocation}/scalable/devices/printer.svg %{buildroo
 %suse_update_desktop_file -r system-config-printer GTK System HardwareSettings
 %fdupes %{buildroot}/%{py_sitedir}
 %find_lang %{name} %{?no_lang_C}
+%if 0%{?suse_version} >= 1600
 %python3_fix_shebang_path %{buildroot}%{_prefix}/lib/udev/udev-add-printer
+%python3_fix_shebang_path %{buildroot}%{_datadir}/system-config-printer/*
+%python3_fix_shebang_path %{buildroot}%{_datadir}/system-config-printer/troubleshoot/*
+%endif
 
 %files
 %license COPYING
