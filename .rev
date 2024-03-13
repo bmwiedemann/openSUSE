@@ -85,4 +85,12 @@ Fixed problems found by factory-repo-checker (see superseded request)</comment>
     <comment></comment>
     <requestid>1126999</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>94d1404e2025f6d7be20378716b5ae75</srcmd5>
+    <version>2.6.1</version>
+    <time>1710364653</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1157015</requestid>
+  </revision>
 </revisionlist>
