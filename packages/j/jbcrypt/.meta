@@ -1,0 +1,5 @@
+<package name="jbcrypt" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="jbcrypt"/>
+</package>
