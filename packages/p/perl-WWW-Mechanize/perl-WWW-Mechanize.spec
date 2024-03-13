@@ -65,7 +65,7 @@ Requires:       perl(URI::file)
 Provides:       perl(WWW::Mechanize) = %{version}
 Provides:       perl(WWW::Mechanize::Image) = %{version}
 Provides:       perl(WWW::Mechanize::Link) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 Recommends:     perl(Compress::Zlib)
 %{perl_requires}
 
