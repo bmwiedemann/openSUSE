@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar 10 20:45:15 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU wget 1.24.5:
+  * Fix how subdomain matches are checked for HSTS.
+  * Wget will now also parse the srcset attribute in <source> HTML
+    tags
+  * Support reading fetchmail style "user" and "passwd" fields from
+    netrc
+  * In some cases, prevent the confusing "Cannot write to...
+    (success)" error messages
+  * Support extremely fast download speeds (TB/s)
+  * Ensure that CSS URLs are corectly quoted
+  * libproxy support is now upstream- drop wget-libproxy.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 15:19:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
