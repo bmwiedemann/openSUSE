@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 12 10:35:11 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- restore correct reproducible.patch
+
+-------------------------------------------------------------------
 Tue Jan 16 22:10:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - restore reproducible.patch to not add a random tmp path
