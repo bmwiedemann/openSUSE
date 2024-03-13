@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 11 21:21:41 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 32.0.0
+  * YAML support.
+  * Expand with 1-9 keys.
+  * Keybindings help.
+  * Preview mode.
+  * Print to stdout.
+
+-------------------------------------------------------------------
 Fri Nov 24 12:52:36 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 31.0.0
