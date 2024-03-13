@@ -43,7 +43,7 @@ Provides:       perl(Pod::ParseUtils) = %{version}
 Provides:       perl(Pod::Parser) = %{version}
 Provides:       perl(Pod::PlainText) = 2.07
 Provides:       perl(Pod::Select) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
