@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 12 08:46:19 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Amended the .spec file for x86_64 (jsc#PED-7135, jsc#IBM-1309) 
+
+-------------------------------------------------------------------
 Wed Feb 21 17:02:55 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied a patch for kdump initrd (bsc#1219471) 

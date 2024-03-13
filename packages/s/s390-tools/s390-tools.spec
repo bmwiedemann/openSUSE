@@ -35,7 +35,7 @@
 Name:           s390-tools
 Version:        2.31.0
 Release:        0
-Summary:        S/390 tools like zipl and dasdfmt
+Summary:        S/390 tools like zipl and dasdfmt for s390x (plus selected tools for x86_64)
 License:        MIT
 Group:          System/Kernel
 URL:            https://github.com/ibm-s390-tools/s390-tools
@@ -205,13 +205,17 @@ Provides:       group(zkeyadm)
 ExclusiveArch:  s390x x86_64
 
 %description
-This package contains the tools needed to use Linux on IBM z Systems
+This package contains the tools (s390x, x86_64) needed to use Linux on IBM z Systems
 and exploit many of the various capabilities of the hardware or z/VM.
 For example:
+ - s390x
 dasdfmt  - low-level format tool for ECKD DASD
 fdasd	 - partitions ECKD DASDs with z/OS compatible disk layout
 zipl     - boot loader and dump DASD initializer
 zgetdump - tool to get linux system dumps from DASD
+ - x86_64
+genprotimg - create a protected virtualization image
+pvattest   - create, perform, and verify protected virtualization attestation measurements
 
 %package -n osasnmpd
 Summary:        OSA-Express SNMP subagent
@@ -342,7 +346,7 @@ tar -xzf %{SOURCE201}
 export OPT_FLAGS="%{optflags}"
 export KERNELIMAGE_MAKEFLAGS="%%{?_smp_mflags}"
 
-%make_build -v \
+%make_build \
      ZFCPDUMP_DIR=%{_prefix}/lib/s390-tools/zfcpdump \
      DISTRELEASE=%{release} \
      UDEVRUNDIR=/run/udev \
@@ -351,7 +355,7 @@ export KERNELIMAGE_MAKEFLAGS="%%{?_smp_mflags}"
      CC=gcc-13 \
      CXX=g++-13
 ###     all
-gcc-13 -v -static -o read_values ${OPT_FLAGS} %{SOURCE86} -lqc
+gcc-13 -static -o read_values ${OPT_FLAGS} %{SOURCE86} -lqc
 
 %install
 mkdir -p %{buildroot}/boot/zipl
@@ -784,13 +788,10 @@ export KERNELIMAGE_MAKEFLAGS="%%{?_smp_mflags}"
 
 %files
 %{_prefix}/bin/*
-%{_prefix}/share/s390-tools/*
-%dir /usr/share/s390-tools
+%dir %{_datadir}/s390-tools
+%dir %{_datadir}/s390-tools/genprotimg
+%{_datadir}/s390-tools/genprotimg/check_hostkeydoc
 %{_mandir}/man1/*
-
-%files debuginfo
-%dir %{_prefix}/lib/debug
-%dir %{_prefix}/lib/debug/usr/bin
 
 %endif
 
