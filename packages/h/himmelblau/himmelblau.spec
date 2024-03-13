@@ -34,6 +34,8 @@ BuildRequires:  tpm2-0-tss-devel
 ExclusiveArch:  %{rust_tier1_arches}
 Recommends:     nss-himmelblau
 Recommends:     pam-himmelblau
+Provides:       aad-cli
+Provides:       aad-common
 
 %description
 Himmelblau is an interoperability suite for Microsoft Azure AD and
@@ -43,6 +45,8 @@ Authentication Library to communicate with the Microsoft service.
 
 %package -n pam-himmelblau
 Summary:        Azure AD authentication PAM module
+Requires:       %{name} = %{version}
+Provides:       libpam-aad
 
 %description -n pam-himmelblau
 Himmelblau is an interoperability suite for Microsoft Azure AD and
@@ -54,6 +58,8 @@ Authentication Library to communicate with the Microsoft service.
 Summary:        Azure AD authentication NSS module
 Requires(post): /sbin/ldconfig
 Requires(postun):/sbin/ldconfig
+Requires:       %{name} = %{version}
+Provides:       libnss-aad
 
 %description -n nss-himmelblau
 Himmelblau is an interoperability suite for Microsoft Azure AD and
