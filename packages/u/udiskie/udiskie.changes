@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Mar 11 18:15:48 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- added fix-keyutils-module-conflict.patch to fix failure for udiskie
+  to start due to conflict with package python311-keyring-keyutils
+  providing module 'keyutils' while udiskie expects a module with that
+  name from (optionally installed) package 'python3-keyutils'
+  (which does not exist in the repo)
+- Update to 2.5.2:
+  * drop external dependency on distutils
+  * rename --notify-command to --event-hook to prevent misunderstandings
+- Update to 2.5.1:
+  * fix default install location for bash completion scripts
+  * fix zsh completion for device names with spaces
+- Update to 2.5.0:
+  * add bash completions for CLI options (thanks @oersen)
+  * updates for translations
+  * added German translation
+  * add bright outlines for wayland icons in dark themes
+  * ignore snap loop devices by default
+  * maintenance on CI workflows
+  * fix KeyError when properties are invalidated multiple times
+
+-------------------------------------------------------------------
 Wed Mar  2 09:39:53 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.4.2:

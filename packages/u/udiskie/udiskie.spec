@@ -1,7 +1,7 @@
 #
 # spec file for package udiskie
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           udiskie
-Version:        2.4.2
+Version:        2.5.2
 Release:        0
 Summary:        Removable disk automounter for udisks
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/coldfix/udiskie
 Source:         https://files.pythonhosted.org/packages/source/u/%{name}/%{name}-%{version}.tar.gz
+Patch:          fix-keyutils-module-conflict.patch
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 # Needed for typelib() - Requires.
@@ -45,6 +46,7 @@ Requires:       python3-xml
 Requires:       udisks2
 Requires:       typelib(Gtk) = 3.0
 Recommends:     %{name}-lang
+# this package does not exist on Tumbleweed and conflicts with python311-keyring-keyutils whose module is also named 'keyutils'
 Recommends:     python3-keyutils
 BuildArch:      noarch
 
@@ -65,7 +67,7 @@ or flash drives from userspace. Its features include:
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %python3_build
@@ -93,6 +95,7 @@ done
 %{python3_sitelib}/%{name}-*-py%{py3_ver}.egg-info
 %{_mandir}/man?/%{name}*.?%{ext_man}
 %{_datadir}/zsh/site-functions/_udiskie*
+%{_datadir}/bash-completion/completions/*
 
 %files lang -f %{name}.lang
 
