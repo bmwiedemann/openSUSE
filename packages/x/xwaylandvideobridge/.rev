@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>1143303</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>47eda6ba79d045782a93d29afccb9d45</srcmd5>
+    <version>0.4.0+git12</version>
+    <time>1710364646</time>
+    <user>anag+factory</user>
+    <comment>- Build with KF 6/Plasma 6 when possible</comment>
+    <requestid>1157012</requestid>
+  </revision>
 </revisionlist>
