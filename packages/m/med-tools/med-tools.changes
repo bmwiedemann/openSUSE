@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 11 09:50:57 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- run fdupes during %install
+
+-------------------------------------------------------------------
 Wed Aug 17 08:00:39 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 4.1.1

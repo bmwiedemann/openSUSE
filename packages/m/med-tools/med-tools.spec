@@ -170,18 +170,18 @@ mv %{buildroot}/%{_datadir}/doc/med* %{buildroot}/%{_docdir}/med-tools
 ln -sf mdump3 %{buildroot}/usr/bin/mdump
 ln -sf xmdump3 %{buildroot}/usr/bin/xmdump
 
+%fdupes %{buildroot}%{_datadir}
+%fdupes %{buildroot}%{_includedir}
+%if %{with python_bindings}
+%fdupes %{buildroot}%{python_sitearch}
+%endif
+
 %check
 cd build
 export LC_ALL=C.utf8
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
 export PYTHONPATH=$PYTHONPATH:%{buildroot}%{python3_sitearch}
 make test ARGS="--output-on-failure"
-
-%fdupes %{buildroot}%{_datadir}
-%fdupes %{buildroot}%{_includedir}
-%if %{with python_bindings}
-%fdupes %{buildroot}%{python_sitearch}
-%endif
 
 %post -n libmed%{sover} -p /sbin/ldconfig
 
