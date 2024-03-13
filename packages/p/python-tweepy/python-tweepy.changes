@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Mar 13 06:06:29 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.14.0:
+  * Add constants for potential model object fields
+  * Add verified_type field for User
+  * Add 1 second buffer to API v2 streaming timeout
+  * Default AsyncBaseStream to abort closed SSL transports
+  * Warn when Tweet data is missing default edit_history_tweet_ids field
+  * Change initial network_error_wait to 0 for streaming
+  * Add support for include_ext_edit_control parameter for API methods
+  * Add support for edit_history_tweet_ids and edit_controls Tweet fields
+  * Add asynchronous.AsyncPaginator for pagination for AsyncClient
+  * Add support for exclude parameter for get_quote_tweets
+  * Add support for edit_history_tweet_ids and edit_controls Tweet fields
+  * Add asynchronous.AsyncPaginator for pagination for AsyncClient
+  * Add support for exclude parameter for get_quote_tweets 
+  * Fix AsyncBaseClient rate limit handling
+  * Fix handling of StreamRule when passed in list to
+    StreamingClient.delete_rules or AsyncStreamingClient.delete_rules
+  * Add support for media_fields, place_fields, and poll_fields parameters
+    for Client.get_list_tweets and AsyncClient.get_list_tweets
+  * Ignore AsyncClient method parameters explicitly passed as None
+  * Add asynchronous interfaces for Twitter API v2
+  * Add async_lru as requirement for async extra
+  * Add asynchronous.AsyncStreamingClient
+  * Add support for reverse chronological home timeline with Twitter API v2
+  * Add Client.get_home_timeline and AsyncClient.get_home_timeline
+  * Update the User-Agent header based on AsyncStream.user_agent even if
+    AsyncStream.session is already initialized/set
+- Switch to pyproject macros.
+- Less globbing in %files.
+- Restrict to urllib3 to < 2, due to vcrpy changes.
+
+-------------------------------------------------------------------
 Fri Jun 17 16:29:47 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - update to version 4.9.0: 

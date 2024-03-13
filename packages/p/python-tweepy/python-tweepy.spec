@@ -1,7 +1,7 @@
 #
 # spec file for package python-tweepy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tweepy
-Version:        4.9.0
+Version:        4.14.0
 Release:        0
 Summary:        Twitter library for python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/tweepy/tweepy
 Source:         https://github.com/tweepy/tweepy/archive/v%{version}.tar.gz
+BuildRequires:  %{python_module aiohttp}
+BuildRequires:  %{python_module async-lru}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.27.0}
 BuildRequires:  %{python_module requests-oauthlib >= 1.0.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module urllib3 < 2}
 BuildRequires:  %{python_module vcrpy >= 1.10.3}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-generators
 BuildRequires:  python-rpm-macros
@@ -45,10 +48,10 @@ API, and streaming API.
 %setup -q -n tweepy-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,6 +62,7 @@ export USE_REPLAY=1
 %files %{python_files}
 %doc README.md docs/*.rst docs/*.md
 %license LICENSE
-%{python_sitelib}/tweepy*
+%{python_sitelib}/tweepy
+%{python_sitelib}/tweepy-%{version}.dist-info
 
 %changelog
