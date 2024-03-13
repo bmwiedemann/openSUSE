@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Mar  9 13:40:04 UTC 2024 - Shani Hadiyanto <shanipribadi@gmail.com>
+
+- Update to version 1.0.2
+  * Fix compilation error for c++14 and c++17 and add tests (#1898)
+  * Fix stat overflow on x86_32bit (#1830)
+- Update to version 1.0.1.1
+  * Fix inconsistent decision about whether a WebSocket message
+    is compressed
+- Update to version 1.0.1
+  * blob.h: Fix invalid operands to binary expression
+- Update to version 1.0.0
+  * A number of optimizations were made to improve performance
+    of Cap’n Proto RPC
+  * Breaking change: opting into cancellation is accomplished
+    using an annotation on the schema
+  * KJ’s HTTP client and server implementations now support
+    the CONNECT method.
+  * capnp::RevocableServer was introduced to assist in exporting
+    RPC wrappers around objects whose lifetimes are not controlled
+    by the wrapper
+
+-------------------------------------------------------------------
 Thu Apr 13 15:05:38 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.10.4

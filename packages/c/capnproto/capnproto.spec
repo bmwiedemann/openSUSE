@@ -1,7 +1,7 @@
 #
 # spec file for package capnproto
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define _libver 0_10_4
+%define _libver 1_0_2
 Name:           capnproto
-Version:        0.10.4
+Version:        1.0.2
 Release:        0
 Summary:        A Data Serialization Format
 License:        MIT
@@ -39,7 +39,7 @@ RPC system.
 
 %package     -n libcapnp-%{_libver}
 Summary:        The Cap'n Proto data serialization library
-Conflicts:      libcapnp-0_9 = 0.9.1
+Conflicts:      libcapnp-0_10 = 0.10.4
 
 %description -n libcapnp-%{_libver}
 Cap'n Proto is a binary data interchange format and capability-based
