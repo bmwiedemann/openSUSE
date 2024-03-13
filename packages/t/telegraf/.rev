@@ -298,4 +298,12 @@ devel:languages:go/telegraf r7 (forwarded request 758639 from jfkw)</comment>
     <comment>- Use %patch -P N instead of deprecated %patchN. (forwarded request 1151367 from pgajdos)</comment>
     <requestid>1151867</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>61a80a7ee4c30572404beaf4b217b398</srcmd5>
+    <version>1.30.0</version>
+    <time>1710364647</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.30.0: (forwarded request 1156966 from jfkw)</comment>
+    <requestid>1156969</requestid>
+  </revision>
 </revisionlist>
