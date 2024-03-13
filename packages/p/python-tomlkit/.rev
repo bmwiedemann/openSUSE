@@ -200,4 +200,15 @@
   * Correct the return type of integer division. (#312)</comment>
     <requestid>1129195</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2b5bcecfdb89b6123511f8d321509ad3</srcmd5>
+    <version>0.12.4</version>
+    <time>1710364850</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.12.4:
+  * Support `|` and `|=` operator for tables, and support `+` and
+    `+=` operator for arrays.
+  * Fix an index error when setting dotted keys in a table.</comment>
+    <requestid>1157519</requestid>
+  </revision>
 </revisionlist>

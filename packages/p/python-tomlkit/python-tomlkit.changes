@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 13 10:17:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.4:
+  * Support `|` and `|=` operator for tables, and support `+` and
+    `+=` operator for arrays.
+  * Fix an index error when setting dotted keys in a table.
+
+-------------------------------------------------------------------
 Mon Nov 27 16:10:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.12.3:
