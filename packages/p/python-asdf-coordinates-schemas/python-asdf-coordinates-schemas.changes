@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 10 11:51:31 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.3.0
+  * Add asdf-astropy as a test dependency. [#34]
+  * Drop official support for Python 3.8 [#42]
+  * Update schemas for ASDF standard 1.6.0 [#55]
+- Release 0.2.0
+  * Add documentation to package. [#8]
+  * Update asdf version and require python 3.8. [#14]
+  * Switch to pyproject.toml. [#15]
+- Make multibuild
+
+-------------------------------------------------------------------
 Tue Dec 28 15:15:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v0.1.0

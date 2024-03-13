@@ -8,4 +8,22 @@
 - Required by asdf-astropy, which is required by gwcs 0.18</comment>
     <requestid>943221</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5c3fb17477235ea2927dc86eb669a2e8</srcmd5>
+    <version>0.3.0</version>
+    <time>1710364674</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1156731 from bnavigator
+
+- Update to 0.3.0
+    * Add asdf-astropy as a test dependency. [#34]
+    * Drop official support for Python 3.8 [#42]
+    * Update schemas for ASDF standard 1.6.0 [#55]
+  - Release 0.2.0
+    * Add documentation to package. [#8]
+    * Update asdf version and require python 3.8. [#14]
+    * Switch to pyproject.toml. [#15]
+  - Make multibuild</comment>
+    <requestid>1157052</requestid>
+  </revision>
 </revisionlist>

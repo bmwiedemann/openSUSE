@@ -1,7 +1,7 @@
 #
-# spec file for package python-asdf_coordinates_schemas
+# spec file for package python-asdf-coordinates-schemas
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,37 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
-Name:           python-asdf-coordinates-schemas
-Version:        0.1.0
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
+Name:           python-asdf-coordinates-schemas%{psuffix}
+Version:        0.3.0
 Release:        0
 Summary:        ASDF coordinates schemas
 License:        BSD-3-Clause
 URL:            https://github.com/asdf-format/asdf-coordinates-schemas
-Source:         https://files.pythonhosted.org/packages/source/a/asdf-coordinates-schemas/asdf_coordinates_schemas-0.1.0.tar.gz
-BuildRequires:  python-rpm-macros
+Source:         https://files.pythonhosted.org/packages/source/a/asdf-coordinates-schemas/asdf_coordinates_schemas-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module asdf >= 2.8.0}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 60}
+BuildRequires:  %{python_module setuptools_scm >= 3.4}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-Requires:       python-asdf >= 2.8.0
+BuildRequires:  python-rpm-macros
+Requires:       python-asdf >= 2.12.1
+Requires:       python-asdf-standard >= 1.1.0
+Provides:       python-asdf_coordinates_schemas = %{version}-%{release}
+%if %{with test}
+BuildRequires:  %{python_module asdf-astropy >= 0.2.0}
+BuildRequires:  %{python_module asdf-coordinates-schemas = %{version}}
+BuildRequires:  %{python_module pytest}
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -42,18 +55,30 @@ ASDF coordinates schemas
 
 %prep
 %setup -q -n asdf_coordinates_schemas-%{version}
+sed -i "/addopts = '--color=yes'/d" pyproject.toml
 
 %build
-%python_build
+%if !%{with test}
+%pyproject_wheel
+%endif
 
 %install
-%python_install
+%if !%{with test}
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
-%pytest
+# gh#asdf-format/asdf-coordinates-schemas#59
+donttest="(galactocentric and test_example_0)"
+%pytest -k "not ($donttest)"
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %{python_sitelib}/asdf_coordinates_schemas
-%{python_sitelib}/asdf_coordinates_schemas-%{version}*-info
+%{python_sitelib}/asdf_coordinates_schemas-%{version}.dist-info
+%endif
+
 %changelog
