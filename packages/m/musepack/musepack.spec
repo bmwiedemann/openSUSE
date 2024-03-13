@@ -33,6 +33,7 @@ Patch0:         libmpcdec.patch
 # PATCh-FIX-UPSTREAM libmpcdec-extern.patch boo#1160284 mgorse@suse.com -- add extern declarations.
 Patch1:         libmpcdec-extern.patch
 Patch2:         libmpcdec-fastmath-no-const.patch
+Patch3:         libmpcdec-gcc14.patch
 BuildRequires:  cmake
 BuildRequires:  libcuefile-devel
 BuildRequires:  libreplaygain-devel
@@ -71,10 +72,7 @@ It is based on the MPEG-1 Layer-2 / MP2 algorithms, but has further
 been developed.
 
 %prep
-%setup -q -n %{name}_src_%{version}
-%patch -P 0
-%patch -P 1
-%patch -P 2 -p1
+%autosetup -p1 -n %{name}_src_%{version}
 
 %build
 # Fix rpmlint warning "version-control-internal-file"

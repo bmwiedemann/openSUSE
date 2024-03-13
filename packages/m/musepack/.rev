@@ -40,4 +40,17 @@
     <comment></comment>
     <requestid>1149349</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>7e9457f283927db2d84438385aad615b</srcmd5>
+    <version>r475</version>
+    <time>1710364606</time>
+    <user>anag+factory</user>
+    <comment>- Rework libmpcdec.patch and libmpcdec-extern.patch so that they
+  apply with -p1, and use autosetup.
+- Add libmpcdec-gcc14.patch: fix the build with gcc 14
+  (boo#1221008).
+
+Superseding last request; not entirely sure that the patch was correct.</comment>
+    <requestid>1157171</requestid>
+  </revision>
 </revisionlist>

@@ -1,8 +1,7 @@
-Index: libmpcdec/requant.h
-===================================================================
---- libmpcdec/requant.h	(revision 478)
-+++ libmpcdec/requant.h	(revision 479)
-@@ -47,9 +47,9 @@
+diff -urp musepack_src_r475.orig/libmpcdec/requant.h musepack_src_r475/libmpcdec/requant.h
+--- musepack_src_r475.orig/libmpcdec/requant.h	2009-02-23 12:44:04.000000000 -0600
++++ musepack_src_r475/libmpcdec/requant.h	2024-03-10 13:23:35.095195384 -0500
+@@ -47,9 +47,9 @@ extern "C" {
  
  
  /* C O N S T A N T S */

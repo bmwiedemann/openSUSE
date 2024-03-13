@@ -1,0 +1,32 @@
+diff -urp musepack_src_r475.orig/libmpcpsy/ans.c musepack_src_r475/libmpcpsy/ans.c
+--- musepack_src_r475.orig/libmpcpsy/ans.c	2009-07-31 07:37:44.000000000 -0500
++++ musepack_src_r475/libmpcpsy/ans.c	2024-03-12 07:08:19.562206587 -0500
+@@ -288,12 +288,12 @@ NS_Analyse ( PsyModel* m,
+     // for L or M, respectively
+     memset ( m->FIR_L,      0, sizeof m->FIR_L      );         // reset FIR
+     memset ( m->NS_Order_L, 0, sizeof m->NS_Order_L );         // reset Flags
+-	FindOptimalANS ( MaxBand, MSflag, ANSspec_L, ANSspec_M, m->NS_Order_L, m->SNR_comp_L, m->FIR_L, smr.L, smr.M, m->SCF_Index_L, Transient );
++	FindOptimalANS ( MaxBand, MSflag, ANSspec_L, ANSspec_M, m->NS_Order_L, m->SNR_comp_L, m->FIR_L, smr.L, smr.M, (int (*)[3])m->SCF_Index_L, Transient );
+ 
+     // for R or S, respectively
+ 	memset ( m->FIR_R,      0, sizeof m->FIR_R      );         // reset FIR
+ 	memset ( m->NS_Order_R, 0, sizeof m->NS_Order_R );         // reset Flags
+-	FindOptimalANS ( MaxBand, MSflag, ANSspec_R, ANSspec_S, m->NS_Order_R, m->SNR_comp_R, m->FIR_R, smr.R, smr.S, m->SCF_Index_R, Transient );
++	FindOptimalANS ( MaxBand, MSflag, ANSspec_R, ANSspec_S, m->NS_Order_R, m->SNR_comp_R, m->FIR_R, smr.R, smr.S, (int (*)[3])m->SCF_Index_R, Transient );
+ 
+     return;
+ }
+diff -urp musepack_src_r475.orig/mpcenc/mpcenc.h musepack_src_r475/mpcenc/mpcenc.h
+--- musepack_src_r475.orig/mpcenc/mpcenc.h	2009-02-23 12:15:46.000000000 -0600
++++ musepack_src_r475/mpcenc/mpcenc.h	2024-03-12 07:07:38.048701994 -0500
+@@ -254,8 +254,8 @@ extern float __invSCF [128 + 6];
+ 
+ float  ISNR_Schaetzer                  ( const float* samples, const float comp, const int res);
+ float  ISNR_Schaetzer_Trans            ( const float* samples, const float comp, const int res);
+-void   QuantizeSubband                 ( unsigned int* qu_output, const float* input, const int res, float* errors, const int maxNsOrder );
+-void   QuantizeSubbandWithNoiseShaping ( unsigned int* qu_output, const float* input, const int res, float* errors, const float* FIR );
++void   QuantizeSubband                 ( mpc_int16_t* qu_output, const float* input, const int res, float* errors, const int maxNsOrder );
++void   QuantizeSubbandWithNoiseShaping ( mpc_int16_t* qu_output, const float* input, const int res, float* errors, const float* FIR );
+ 
+ void   NoiseInjectionComp ( void );
+ 

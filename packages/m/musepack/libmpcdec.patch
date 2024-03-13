@@ -1,5 +1,6 @@
---- libmpcdec/CMakeLists.txt.orig	2010-08-21 18:55:01.000000000 +0300
-+++ libmpcdec/CMakeLists.txt	2013-03-11 22:28:18.414009124 +0200
+diff -urp musepack_src_r475.orig/libmpcdec/CMakeLists.txt musepack_src_r475/libmpcdec/CMakeLists.txt
+--- musepack_src_r475.orig/libmpcdec/CMakeLists.txt	2010-08-21 10:55:01.000000000 -0500
++++ musepack_src_r475/libmpcdec/CMakeLists.txt	2024-03-10 13:21:31.111523099 -0500
 @@ -1,7 +1,11 @@
  include_directories(${libmpc_SOURCE_DIR}/include)
  if(SHARED)

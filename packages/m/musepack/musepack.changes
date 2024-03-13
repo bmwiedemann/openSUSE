@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 12 12:09:36 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Rework libmpcdec.patch and libmpcdec-extern.patch so that they
+  apply with -p1, and use autosetup.
+- Add libmpcdec-gcc14.patch: fix the build with gcc 14
+  (boo#1221008).
+
+-------------------------------------------------------------------
 Thu Feb 22 11:51:15 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.
