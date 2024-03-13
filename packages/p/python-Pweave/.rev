@@ -73,4 +73,15 @@
 </comment>
     <requestid>1011214</requestid>
   </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>03fb7b4be62fd2a4653ef5dac0c5a689</srcmd5>
+    <version>0.30.3</version>
+    <time>1710364847</time>
+    <user>anag+factory</user>
+    <comment>- skip python39 due to missing ipython
+
+- skip python 36 build (scipy)
+- update-alternatives for multi-python3 builds</comment>
+    <requestid>1157513</requestid>
+  </revision>
 </revisionlist>

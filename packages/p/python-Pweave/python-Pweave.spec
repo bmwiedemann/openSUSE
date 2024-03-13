@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pweave
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-%define         skip_python36 1
+%{?sle15_python_module_pythons}
+# missing jupyter_ikernel
+%global skip_python39 1
 Name:           python-Pweave
 Version:        0.30.3
 Release:        0

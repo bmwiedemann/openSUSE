@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 13 10:09:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- skip python39 due to missing ipython
+
+-------------------------------------------------------------------
 Sat Oct 15 23:41:37 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Skip failing test testFIR_FilterExampleTex (gh#mpastell/Pweave#168)
@@ -11,12 +16,12 @@ Thu Oct  6 14:02:25 UTC 2022 - Markéta Machová <mmachova@suse.com>
 -------------------------------------------------------------------
 Fri Feb 12 15:04:56 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- skip python 36 build (scipy) 
+- skip python 36 build (scipy)
 
 -------------------------------------------------------------------
 Tue Feb  2 13:42:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- update-alternatives for multi-python3 builds 
+- update-alternatives for multi-python3 builds
 
 -------------------------------------------------------------------
 Mon Jun  8 07:55:03 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
