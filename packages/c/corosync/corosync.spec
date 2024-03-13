@@ -121,16 +121,8 @@ BuildRequires:  sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
+%autosetup -p1 -n %{name}-%{version}
+
 rm -f .git*
 echo %{version} > .tarball-version
 echo %{version} > .version
