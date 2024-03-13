@@ -19,7 +19,7 @@
 %define oldpython python
 %define skip_python2 1
 %define modname minimock
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-MiniMock
 Version:        1.3.0
 Release:        0
@@ -32,7 +32,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-tools
+BuildRequires:  %{python_module tools}
 BuildArch:      noarch
 %ifpython2
 Provides:       %{oldpython}-minimock = %{version}

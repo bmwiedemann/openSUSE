@@ -175,4 +175,14 @@
 </comment>
     <requestid>955504</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>04aaacfcf0915478d8bd7856a354ef0f</srcmd5>
+    <version>1.3.0</version>
+    <time>1710364669</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1156611 from ecsos
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1157046</requestid>
+  </revision>
 </revisionlist>
