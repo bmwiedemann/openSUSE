@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 12 07:53:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.9.15:
+  + This release adds the following features:
+    - Allow loading in parameters for the test device from
+      fwupd.conf.
+    - Ensure LVFS remotes are changed from .gz to .xz.
+    - Store the install duration in the history database.
+  + This release fixes the following bugs:
+    - Drop OverrideESPMountPoint references in uefi-capsule.
+    - Fix a potential double-free when writing AVer firmware.
+    - Only request the BOS descriptor when bcdUSB > 0x0200.
+    - Use the root device order when sorting device children.
+
+-------------------------------------------------------------------
 Tue Feb 27 06:35:56 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 1.9.14:
