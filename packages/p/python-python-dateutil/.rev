@@ -169,4 +169,33 @@
 - Stop using greedy globs in %files.</comment>
     <requestid>1111822</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8b4d6cfb3ee617908b8e86aba1d5f353</srcmd5>
+    <version>2.9.0.post0</version>
+    <time>1710364595</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1156451 from bnavigator
+
+- Update to 2.9.0.post0
+    * Pinned setuptools_scm to &lt;8, which should make the generated
+      _version.py file compatible with all supported versions of
+      Python. (We don't do this at openSUSE, we don't need Python 2
+      installs from a setuptools_scm v8 build)
+  - Version 2.9.0
+    * Updated tzdata version to 2024a. (gh pr #1342)
+    * Made all dateutil submodules lazily imported using PEP 562. On
+      Python 3.7+, things like import dateutil;
+      dateutil.tz.gettz(&quot;America/New_York&quot;) will now work without
+      explicitly importing dateutil.tz, with the import occurring
+      behind the scenes on first use. The old behavior remains on
+      Python 3.6 and earlier. Fixed by Orson Adams. (gh issue #771,
+      gh pr #1007)
+    * Removed a call to datetime.utcfromtimestamp, which is
+      deprecated as of Python 3.12. Reported by Hugo van Kemenade (gh
+      pr #1284), fixed by Thomas Grainger (gh pr #1285).
+  - Provide underscore name: some consuming packages go with that,
+    don't fail unnecessarily
+  - Drop no-utcfromtimestamp.patch</comment>
+    <requestid>1157042</requestid>
+  </revision>
 </revisionlist>
