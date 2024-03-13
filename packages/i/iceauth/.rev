@@ -80,4 +80,13 @@
   * bugfix release</comment>
     <requestid>966684</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8234b1121e423e0677d639c061d3c9dc</srcmd5>
+    <version>1.0.10</version>
+    <time>1710364582</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.10
+  * minor bugfix release, including fixes for compiler warnings</comment>
+    <requestid>1156809</requestid>
+  </revision>
 </revisionlist>

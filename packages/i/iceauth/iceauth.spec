@@ -1,7 +1,7 @@
 #
 # spec file for package iceauth
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           iceauth
-Version:        1.0.9
+Version:        1.0.10
 Release:        0
 Summary:        Utility to edit and display the ICE authorization information
 License:        MIT
