@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar 13 17:37:01 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.48.0:
+  * Shell integration scripts are now embedded in the fzf binary.
+    This simplifies the distribution, and the users are less likely
+    to have problems caused by using incompatible scripts and
+    binaries.
+  * Added options for customizing the behavior of the built-in
+    walker
+  * Shell integration scripts have been updated to use the built-in
+    walker with these new options and they are now much faster out
+    of the box.
+
+-------------------------------------------------------------------
 Sun Mar 10 19:38:03 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Update to version 0.47.0:
