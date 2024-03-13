@@ -604,6 +604,18 @@ Prefer: -sasl2-kdexoauth2
 # have choice for cmake(Breeze) >= MACRO: breeze5-style breeze6-devel
 Prefer: -breeze5-style
 
+# have choice for gwenview5 needed by patterns-kde-kde: gwenview gwenview5
+Prefer: -gwenview5
+
+# have choice for plasma-nm5-pptp needed by patterns-kde-kde_internet: plasma-nm5-pptp plasma6-nm-pptp
+Prefer: -plasma-nm5-pptp
+ 
+# have choice for kwalletmanager needed by patterns-kde-kde_plasma: kwalletmanager kwalletmanager5
+Prefer: -kwalletmanager5
+
+# have choice for kaccounts-integration needed by libkaccounts6-2: kaccounts-integration kaccounts-integration-kf5
+Prefer: -kaccounts-integration-kf5
+
 # have choice for cmake(KQuickImageEditor): kquickimageeditor-devel kquickimageeditor6-devel
 Prefer: -kquickimageeditor-devel
 
