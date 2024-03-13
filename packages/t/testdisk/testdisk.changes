@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Mar 12 00:13:41 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 7.2:
+  General Improvements
+  * Display disk serial number when selecting source disk
+  * Add support for BeFS for EFI GPT and Mac partition table
+  TestDisk
+  * Improvements
+  * When searching for partition, press '+' key to skip 5% of the
+    disk.
+  * exfat: Better utf-8 support when iconv is missing
+  * APFS: Detect APFS partition
+  PhotoRec & QPhotoRec
+  * Improvements
+  * Updated translation are available
+  * Huge work to formally verify (Frama-C WP) most parsers code
+  * New translations for QPhotoRec: Finnish, Polish, Greek (el),
+    sv_SE and zh_CN
+  New file formats recovered by PhotoRec:
+  * .bbdoc
+  * .clip Clip Studio Paint
+  * .drw micrografx designer format
+  * .exr OpenEXR v2
+  * .fbx Kaydara 3D file
+  * .FCStd
+  * .hdf Hierarchical Data Format 5
+  * .lz lzip compressed file
+  * .mtcx Mathcad
+  * .rvt Revit
+  * .shp/shx Shaefile support
+  * .wad Doom
+  * Microsoft Jet DB / Sage Simply Accounting database
+
+
+-------------------------------------------------------------------
 Mon Mar 22 14:28:28 UTC 2021 - jeffm@suse.com
 
 - Removed dependency on unmaintained libreiserfs library.

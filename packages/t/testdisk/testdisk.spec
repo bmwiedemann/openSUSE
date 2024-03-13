@@ -1,7 +1,7 @@
 #
 # spec file for package testdisk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           testdisk
-Version:        7.1
+Version:        7.2
 Release:        0
 Summary:        Tool to Recover and Fix Partitions
 License:        GPL-2.0-only
@@ -25,21 +25,15 @@ Group:          System/Filesystems
 URL:            https://www.cgsecurity.org/wiki/TestDisk
 Source0:        https://www.cgsecurity.org/%{name}-%{version}.tar.bz2
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libewf-devel
 BuildRequires:  libext2fs-devel
 BuildRequires:  libjpeg-devel
+BuildRequires:  libntfs-3g-devel
 BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
-%if 0%{?suse_version} >= 1210
-BuildRequires:  libntfs-3g-devel
-%else
-BuildRequires:  ntfsprogs-devel
-%endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 TestDisk is a data recovery software primarily designed to help recover lost
@@ -65,16 +59,15 @@ QPhotoRec is a Graphical User Interface (Qt based GUI) version of PhotoRec.
 More user friendly, it recognizes the same file formats.
 
 %prep
-%define TAR_TOP_FOLDER %{name}-%{version}
-%setup -q -n %{TAR_TOP_FOLDER}
+%autosetup
 cp README.md README
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install
+%make_install
 # move back the documentation
 mv %{buildroot}%{_datadir}/doc/%{name}/* .
 
