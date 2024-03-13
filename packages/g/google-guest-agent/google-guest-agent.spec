@@ -24,7 +24,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           google-guest-agent
-Version:        20231214.00
+Version:        20240213.00
 Release:        0
 Summary:        Google Cloud Guest Agent
 License:        Apache-2.0
@@ -38,6 +38,7 @@ Patch1:         dont_overwrite_ifcfg.patch
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) = 1.21
 Requires:       google-guest-configs
+Requires:       google-guest-oslogin >= 20231003
 Provides:       google-compute-engine-init = %{version}
 Obsoletes:      google-compute-engine-init < %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

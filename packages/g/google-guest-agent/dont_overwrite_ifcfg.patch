@@ -1,7 +1,7 @@
-diff -Nru guest-agent-20211019.00.orig/google_guest_agent/addresses.go guest-agent-20211019.00/google_guest_agent/addresses.go
---- guest-agent-20211019.00.orig/google_guest_agent/addresses.go	2021-10-20 00:09:13.000000000 +0200
-+++ guest-agent-20211019.00/google_guest_agent/addresses.go	2021-10-22 11:32:04.447560133 +0200
-@@ -558,7 +558,12 @@
+diff -Nru guest-agent-20240213.00.orig/google_guest_agent/network/manager/manager.go guest-agent-20240213.00/google_guest_agent/network/manager/manager.go
+--- guest-agent-20240213.00.orig/google_guest_agent/network/manager/manager.go	2024-02-12 22:00:04.000000000 +0100
++++ guest-agent-20240213.00/google_guest_agent/network/manager/manager.go	2024-02-26 14:05:33.128727886 +0100
+@@ -300,7 +300,12 @@
  		logger.Debugf("write enabling ifcfg-%s config", iface)
  
  		var ifcfg *os.File

@@ -9,6 +9,34 @@ Tue Feb 27 11:13:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 - Use %patch -P N instead of deprecated %patchN.
 
 -------------------------------------------------------------------
+Mon Feb 26 13:06:16 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20240213.00
+  * Create systemd-networkd unit tests (#354)
+- from version 20240209.00
+  * Update network manager unit tests (#351)
+- from version 20240207.02
+  * Implement retry util (#350)
+- from version 20240207.01
+  * Refactor utils package to not dump everything unrelated into one file (#352)
+- from version 20240207.00
+  * Set version on metadata script runner (#353)
+  * Implement cleanup of deprecated configuration directives (#348)
+  * Ignore DHCP offered routes only for secondary nics (#347)
+  * Deprecate DHClient in favor of systemd-networkd (#342)
+  * Generate windows and linux licenses (#346)
+- from version 20240122.00
+  * Remove quintonamore from OWNERS (#345)
+- from version 20240111.00
+  * Delete integration tests (#343)
+- from version 20240109.00
+  * Update licenses with dependencies of go-winio (#339)
+  * Add github.com/Microsoft/go-winio to third party licensing (#337)
+- Add explicit versioned dependency on google-guest-oslogin (bsc#1219642)
+- Refresh patches for new version
+  * dont_overwrite_ifcfg.patch
+
+-------------------------------------------------------------------
 Thu Jan  4 11:32:21 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20231214.00
