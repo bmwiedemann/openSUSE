@@ -60,8 +60,7 @@ Requires:       %{name}%{_underver}-%{_sover} = %{version}
 A GLib library for Vulkan abstraction. It provides classes for handling Vulkan instances, devices, shaders and initialize textures GDK Pixbufs, Cairo surfaces and DMA buffers.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="-Wno-error"

@@ -7,4 +7,12 @@
     <comment>GLib library for vulkan abstraction that is required by some virtual-reality-related packages</comment>
     <requestid>991832</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5364befa437d1f110999007e344e74af</srcmd5>
+    <version>0.15.2</version>
+    <time>1710364686</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1157086</requestid>
+  </revision>
 </revisionlist>
