@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 12 01:32:27 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Correct one test unit assertion method.
+
+-------------------------------------------------------------------
 Mon May  8 12:13:51 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 1.2.1: Add support for ext external data string

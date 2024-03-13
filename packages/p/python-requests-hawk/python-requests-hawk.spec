@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests-hawk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,10 @@ License:        Apache-2.0
 URL:            https://github.com/mozilla-services/requests-hawk
 Source:         https://files.pythonhosted.org/packages/source/r/requests-hawk/requests-hawk-%{version}.tar.gz
 BuildRequires:  %{python_module mohawk}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-mohawk
@@ -43,12 +45,13 @@ across mozilla services projects.
 
 %prep
 %setup -q -n requests-hawk-%{version}
+sed -ie 's/\(assertEqual\)s/\1/' requests_hawk/tests/test_hawkauth.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +61,6 @@ across mozilla services projects.
 %license LICENSE.txt
 %doc CHANGES.txt README.rst
 %{python_sitelib}/requests_hawk
-%{python_sitelib}/requests_hawk-%{version}*-info
+%{python_sitelib}/requests_hawk-%{version}.dist-info
 
 %changelog
