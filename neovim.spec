@@ -108,7 +108,7 @@ Requires(post): gtk3-tools
 Requires(postun): gtk3-tools
 %endif
 %endif
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} >= 1500
 # Modern *SUSE … tests are enabled
 # For tests
 BuildRequires:  lua51-busted
@@ -132,6 +132,7 @@ BuildRequires:  luajit-devel
 Requires:       lua-bit32
 Requires:       python34-neovim
 %endif
+Provides:       nvim
 
 %description
 Neovim is a refactor - and sometimes redactor - in the tradition of
@@ -171,7 +172,7 @@ export CXXFLAGS="%{optflags} -fcommon"
        -DLUA_PRG=%{_bindir}/%{?with_luajit:luajit}%{!?with_luajit:lua} \
 %if %{with luajit}
        -DBUSTED_PRG="$(readlink -f ../lj-busted.sh)" \
-       -DLUAJIT_INCLUDE_DIR:PATH=%(pkgconf --cflags-only-I luajit|cut -c 3-) \
+       -DLUAJIT_INCLUDE_DIR:PATH=%(pkg-config --cflags-only-I luajit|cut -c 3-) \
 %endif
        -DUSE_BUNDLED=OFF -DLUAJIT_USE_BUNDLED=ON  \
        -DCMAKE_SKIP_RPATH=ON -DCMAKE_VERBOSE_MAKEFILE=ON \
