@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Mar 13 06:50:20 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version v0.7.1:
+  * dep: Go Bump github.com/open-policy-agent/opa from 0.62.0 to
+    0.62.1
+  * dep: Go Bump github.com/rs/zerolog from 1.30.0 to 1.32.0
+  * dep: Go Bump k8s.io/klog/v2 from 2.120.0 to 2.120.1
+  * dep: Go Bump github.com/open-policy-agent/opa from 0.60.0 to
+    0.62.0
+  * dep: Docker Bump golang from 1.21-alpine3.19 to 1.22-alpine3.19
+  * dep: Go Bump k8s.io/klog/v2 from 2.110.1 to 2.120.0
+  * feat(default): Default to kubeconfig when blank, mirrors
+    kubectl behavoir
+  * feat(commitizen): Use commitizen instead of custom script and
+    add git cliff
+  * dep: Go Bump github.com/open-policy-agent/opa from 0.59.0 to
+    0.60.0
+  * dep: Go Bump github.com/open-policy-agent/opa from 0.56.0 to
+    0.59.0
+  * dep: Go Bump helm.sh/helm/v3 from 3.13.1 to 3.13.3
+  * dep: Go Bump k8s.io/klog/v2 from 2.100.1 to 2.110.1
+
+-------------------------------------------------------------------
 Wed Dec 20 13:10:27 UTC 2023 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.7.1:
