@@ -34,8 +34,10 @@ Source99:       baselibs.conf
 Patch1:         gstreamer-rpm-prov.patch
 # PATCH-FIX-OPENSUSE gstreamer-pie.patch mgorse@suse.com -- create position-independent executables.
 Patch2:         gstreamer-pie.patch
-# PATCH-FIX-OPENSUSE force-find-gst-plugin-scanner.patch alarrosa@suse.com -- Part of the fix for boo#1221150
-Patch3:         force-find-gst-plugin-scanner.patch
+# PATCH-FIX-UPSTREAM 0001-Canonicalize-the-library-path-returned-by-dladdr.patch alarrosa@suse.com -- (boo#1221150) https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/6322
+Patch3:         0001-Canonicalize-the-library-path-returned-by-dladdr.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         0001-ptp-Dont-install-test-executable.patch
 
 
 BuildRequires:  bison >= 2.4
@@ -142,8 +144,11 @@ sed -i -e '1{s,^#!/usr/bin/env python3,#!%{_bindir}/python3,}' docs/gst-plugins-
 %build
 export PYTHON=%{_bindir}/python3
 sed -i "s/'gst-plugin-scanner': /'gst-plugin-scanner-%{_target_cpu}': /" libs/gst/helpers/meson.build
+grep "'gst-plugin-scanner-%{_target_cpu}': " libs/gst/helpers/meson.build || (echo "Couldn't set executable suffix in libs/gst/helpers/meson.build" ; exit 1)
 sed -i "s/'gst-plugin-scanner'/'gst-plugin-scanner-%{_target_cpu}'/" meson.build
-sed -i 's/^#define EXESUFFIX$/#define EXESUFFIX "-%{_target_cpu}"/' gst/gstpluginloader.c
+grep "'gst-plugin-scanner-%{_target_cpu}'" meson.build || (echo "Couldn't set executable suffix in meson.build" ; exit 1)
+sed -i 's/"gst-plugin-scanner"/"gst-plugin-scanner-%{_target_cpu}"/' gst/gstpluginloader.c
+grep '"gst-plugin-scanner-%{_target_cpu}"' gst/gstpluginloader.c || (echo "Couldn't set executable suffix in gst/gstpluginloader.c" ; exit 1)
 # TODO: enable dbghelp
 %meson \
 	-Dptp-helper-permissions=capabilities \
@@ -232,7 +237,6 @@ install -m755 -D %{SOURCE2} %{buildroot}%{_rpmconfigdir}/gstreamer-provides
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_libexecdir}/gstreamer-%{gst_branch}/gst-plugins-doc-cache-generator
-%{_libexecdir}/gstreamer-%{gst_branch}/gst-ptp-helper-test
 %{_rpmconfigdir}/gstreamer-provides
 %{_fileattrsdir}/gstreamer.attr
 %{_datadir}/gir-1.0/*.gir

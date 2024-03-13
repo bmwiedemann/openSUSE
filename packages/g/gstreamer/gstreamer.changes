@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar 12 09:16:23 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Replace the quick fix for boo#1221150 with the version submitted
+  to upstream at
+  https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/6322:
+  * 0001-Canonicalize-the-library-path-returned-by-dladdr.patch
+- Remove previous version of the fix for boo#1221150:
+  * force-find-gst-plugin-scanner.patch
+- Fix sed command to set the gst-plugin-scanner suffix correctly
+- Add preventive checks for the sed commands that set the binary
+  suffix so that they don't silently fail anymore.
+
+-------------------------------------------------------------------
+Mon Mar 11 13:55:53 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to not install ptp-helper test executable
+  * 0001-ptp-Dont-install-test-executable.patch 
+
+-------------------------------------------------------------------
 Mon Mar 11 07:55:04 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to remove the (wrong) check for relocated library which
