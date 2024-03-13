@@ -256,4 +256,14 @@
   * Improved CSS (removed compass).</comment>
     <requestid>1124870</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>b7f8039a3eabab580a021f4c6ed43de5</srcmd5>
+    <version>3.0.8</version>
+    <time>1710364863</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1157625</requestid>
+  </revision>
 </revisionlist>

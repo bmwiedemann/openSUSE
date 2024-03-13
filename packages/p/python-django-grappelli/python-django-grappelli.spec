@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-grappelli
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-django-grappelli
 Version:        3.0.8
 Release:        0
@@ -26,10 +25,12 @@ License:        BSD-2-Clause AND LGPL-2.1-or-later
 URL:            https://github.com/sehmaschine/django-grappelli
 Source:         https://github.com/sehmaschine/django-grappelli/archive/%{version}.tar.gz#/django-grappelli-%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 2.2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module py >= 1.8}
 BuildRequires:  %{python_module pytest >= 5.0}
 BuildRequires:  %{python_module pytest-django >= 3.6}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 2.2
@@ -40,15 +41,16 @@ BuildArch:      noarch
 A jazzy skin for the Django Admin-Interface.
 
 %prep
-%setup -q -n django-grappelli-%{version}
+%autosetup -p1 -n django-grappelli-%{version}
+
 find grappelli/templates/ -type f | xargs chmod -R a-x
 find grappelli/static/grappelli/stylesheets/ -type f | xargs chmod -R a-x
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand rm -r %{buildroot}%{$python_sitelib}/grappelli/tests/
 %fdupes %{buildroot}%{$python_sitelib}
 }
@@ -62,6 +64,7 @@ export DJANGO_SETTINGS_MODULE=test_project.settings
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS README.rst
-%{python_sitelib}/*grappelli*/
+%{python_sitelib}/grappelli
+%{python_sitelib}/django_grappelli-%{version}*-info
 
 %changelog
