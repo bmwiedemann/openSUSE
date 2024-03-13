@@ -37,6 +37,9 @@ BuildRequires:  python-rpm-macros
 Requires:       python-protobuf >= 3.19.5
 Recommends:     python-grpcio >= 1.0.0
 BuildArch:      noarch
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-googleapis-common-protos < %{version}
+%endif
 %python_subpackages
 
 %description
