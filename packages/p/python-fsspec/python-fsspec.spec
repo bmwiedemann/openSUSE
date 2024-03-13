@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-fsspec
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -20,6 +20,7 @@
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
+%define skip_python39 1
 %else
 %define psuffix %{nil}
 %bcond_with test
@@ -28,7 +29,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fsspec%{psuffix}
-Version:        2023.12.2
+Version:        2024.2.0
 Release:        0
 Summary:        Filesystem specification package
 License:        BSD-3-Clause

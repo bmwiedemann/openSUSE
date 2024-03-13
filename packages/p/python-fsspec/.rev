@@ -402,4 +402,43 @@ Required by the latest version of python-gcsfs</comment>
     <comment></comment>
     <requestid>1138849</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>b18894f23643a1f41c5dd71a7f441041</srcmd5>
+    <version>2024.2.0</version>
+    <time>1710364666</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1156422 from bnavigator
+
+- Update to 2024.2.0
+    ## Enhancements
+    * add 9P known implementation (#1513)
+    * allow TqdmCallback subclassing (#1497, 1480)
+    * callbacks/branching kwargs handling and scopes (#1496, 1495,
+      1460)
+    * add aluuxioFS to known implementations (#1469)
+    * implement pipe_file for dirFS (#1465)
+    ## Fixes
+    * infer compression for .lzma files (#1514)
+    * fix append to categorical/parquet references (#1510)
+    * allow for FTP servers that list with leading &quot;total&quot; line
+      (#1503)
+    * convert FTP failure to FileNotFound (#1494)
+    * out of order reference fix (#1492)
+    * retry &quot;backoff&quot; response for DBFS (#1491)
+    * referenceFS case for scalar arrays (#1487)
+    * fix create_parents for SFTP (#1484)
+    * fix local .ls() on files (#1479)
+    * allow Path and similar in _expand_path (#1475)
+    * make lazy references editable (#1468)
+    * fix eq for abstract buffered files (#1466)
+    * fit tqdm cleanup (#1463)
+    * fix passing kwargs from cached file to underlying FS (#1462)
+    ## Other
+    * fix tests for supports_empty_directories=False (#1512)
+    * don't read references in init for referenceFS (#1521)
+    * code cleaning (#1518, 1502, 1499, 1493, 1481)
+    * pass through &quot;replication&quot; for HDFS (#1486)
+    * record more info for HTTP info() (#1483)</comment>
+    <requestid>1157039</requestid>
+  </revision>
 </revisionlist>
