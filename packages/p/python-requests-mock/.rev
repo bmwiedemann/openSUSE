@@ -313,4 +313,13 @@
 - drop remove-mock.patch (upstream)</comment>
     <requestid>1129211</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>f2d7e0d74500208a125f3af468f71457</srcmd5>
+    <version>1.11.0</version>
+    <time>1710364565</time>
+    <user>anag+factory</user>
+    <comment>- Drop unneeded Requires, and also no longer restrict urllib3.
+- Switch to pyproject macros.</comment>
+    <requestid>1157421</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests-mock
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,11 +26,13 @@ URL:            https://github.com/jamielennox/requests-mock
 Source:         https://files.pythonhosted.org/packages/source/r/requests-mock/requests-mock-%{version}.tar.gz
 BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module purl}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.3}
 BuildRequires:  %{python_module requests-futures}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 %if 0%{suse_version} >= 1550 || (0%{?suse_version} == 1500 && 0%{?sle_version} >= 154000)
 BuildRequires:  %{python_module dbm}
@@ -40,9 +42,7 @@ BuildRequires:  python3-dbm
 BuildRequires:  fdupes
 Requires:       python-requests >= 2.3
 Requires:       python-six
-Requires:       python-urllib3 < 2
 BuildArch:      noarch
-Requires:       python-dbm
 %python_subpackages
 
 %description
@@ -53,10 +53,10 @@ You should checkout the docs for more information.
 %autosetup -p1 -n requests-mock-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -65,6 +65,7 @@ You should checkout the docs for more information.
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS README.rst ChangeLog
-%{python_sitelib}/requests_mock*
+%{python_sitelib}/requests_mock
+%{python_sitelib}/requests_mock-%{version}.dist-info
 
 %changelog
