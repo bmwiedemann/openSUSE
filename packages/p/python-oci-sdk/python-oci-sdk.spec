@@ -17,6 +17,7 @@
 
 
 %bcond_without python2
+%{?sle15_python_module_pythons}
 Name:           python-oci-sdk
 Version:        2.121.1
 Release:        0

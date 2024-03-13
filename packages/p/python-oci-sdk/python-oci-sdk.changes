@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  6 14:47:20 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Fri Feb 16 13:00:31 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.121.1
