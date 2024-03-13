@@ -1,7 +1,7 @@
 #
 # spec file for package thunar-plugin-vcs
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define plugin_name thunar-vcs-plugin
 
 Name:           thunar-plugin-vcs
-Url:            http://goodies.xfce.org/projects/thunar-plugins/thunar-vcs-plugin
+URL:            http://goodies.xfce.org/projects/thunar-plugins/thunar-vcs-plugin
 Version:        0.2.0
 Release:        0
 Source0:        http://archive.xfce.org/src/thunar-plugins/thunar-vcs-plugin/0.2/%{plugin_name}-%{version}.tar.bz2
@@ -29,14 +29,17 @@ License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 BuildRequires:  intltool
 BuildRequires:  subversion-devel
-BuildRequires:  pkgconfig(apr-1)
+BuildRequires:  pkgconfig(apr-1) >= 0.9.7
 BuildRequires:  pkgconfig(exo-2) >= 0.11.4
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
-BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gthread-2.0)
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.18.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.18.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12.0
-BuildRequires:  pkgconfig(thunarx-3)
+BuildRequires:  pkgconfig(thunarx-3) >= 1.2.0
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150600
+BuildRequires:  pkgconfig(libopenssl) < 3
+%endif
 Requires:       thunar >= 1.7.0
 Recommends:     %{name}-lang = %{version}
 Provides:       %{plugin_name} = %{version}

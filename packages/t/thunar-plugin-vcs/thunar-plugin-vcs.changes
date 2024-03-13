@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 10 14:19:06 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update build requirements; i.e. require openssl < 3 for Leap 15.6
+  (see boo#1221211).
+
+-------------------------------------------------------------------
 Mon Aug  6 06:27:32 UTC 2018 - seife+obs@b1-systems.com
 
 - update to 0.2.0
