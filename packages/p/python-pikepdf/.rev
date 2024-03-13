@@ -240,4 +240,12 @@
   * Fixed build process to use new artifacts v4 actions on GitHub.</comment>
     <requestid>1141499</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>8d1f0e6d01e9336e4b397823b920a81f</srcmd5>
+    <version>8.11.2</version>
+    <time>1710364851</time>
+    <user>anag+factory</user>
+    <comment>- remove unneeded ipython buildrequires</comment>
+    <requestid>1157520</requestid>
+  </revision>
 </revisionlist>

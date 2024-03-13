@@ -33,7 +33,6 @@ BuildRequires:  %{python_module attrs >= 20.2.0}
 BuildRequires:  %{python_module deprecated}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module hypothesis >= 6.36}
-BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module lxml >= 4.8}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module psutil >= 5.9}
