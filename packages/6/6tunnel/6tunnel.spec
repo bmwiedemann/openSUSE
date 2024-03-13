@@ -1,7 +1,7 @@
 #
 # spec file for package 6tunnel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -39,8 +39,7 @@ or IPv6 addresses and forward all data to IPv4 or IPv6 hosts.
 It can be used, for example, as an IPv6-capable IRC proxy.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
