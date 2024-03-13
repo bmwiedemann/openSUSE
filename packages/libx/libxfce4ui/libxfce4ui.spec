@@ -19,7 +19,7 @@
 %bcond_with git
 
 Name:           libxfce4ui
-Version:        4.18.5
+Version:        4.18.6
 Release:        0
 Summary:        Widgets Library for the Xfce Desktop Environment
 License:        LGPL-2.1-or-later
