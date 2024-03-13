@@ -644,4 +644,12 @@
 - BUG FIX: tkremind: Fix typo found by Lorenzo Bazzanini.</comment>
     <requestid>1144662</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d3494f0e6c509c987d71a5840b685df7</srcmd5>
+    <version>4.3.2</version>
+    <time>1710364879</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1157650</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Mar  6 14:08:39 UTC 2024 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- 
+VERSION 4.3 Patch 2 - 2024-03-01
+
+- BUG FIX: remind: Fix a logic error when implementing the RUN command in
+  server mode.  As it turns out, the error is harmless, but it's best to do
+  things correctly.
+
+- BUG FIX: The Makefile would install the tkremind.png and tkremind.desktop
+  files in the wrong location.  This has been fixed.
+
+* VERSION 4.3 Patch 1 - 2024-02-29
+
+- BUG FIX: tests:  "make test" could fail because of a bad test.  This
+  has been fixed.  There are no actual code changes to any of the programs
+  in Remind compared to 04.03.00.
+
+* VERSION 4.3 Patch 0 - 2024-02-29
+
+- IMPROVEMENT: remind: If Remind is compiled on a system that supports
+  inotify, then in server mode (-z0 or -zj) it monitors the reminders file
+  and restarts itself if it detects a change, and also notifies the client.
+  Moving inotify support directly into Remind means that tkremind no longer
+  has to invoke a separate inotifywait process.
+
+- IMPROVEMENT: remind: Set the CLOEXEC flag on files we open so we
+  don't leak file descriptors to programs that we run.  While I don't
+  think there's a security issue here (any program you run can do
+  anything as your userid anyway) it's best to be clean and tidy.
+
+- IMPROVEMENT: remind: Add localization for the Catalan language, courtesy
+  of Eloi Torrents.
+
+- IMPROVEMENT: tkremind: Add a .desktop file and icon so TkRemind can be
+  integrated into the desktop menu system, courtesy of Eloi Torrents.
+
+- CHANGE: Add a new server mode with the "-zj" flag.  This is just
+  like "-z0" except it uses JSON messages to communicate with the
+  client rather than an ad-hoc protocol.  The "-z0" mode is still
+  supported, but is deprecated.
+
+- CHANGE: In server mode (-z0 or -zj) any RUN-type reminders, or message
+  commands of the "-kcommand" type are run with standard input and standard
+  output connected to /dev/null.  NOTE INCOMPATIBILITY: If you previously
+  relied on RUN-type reminders to pop up reminders in TkRemind, they no
+  longer do.  If you want this, you'll have to get the command that you
+  run to pop up its own window with "xmessage" or something similar.
+
+- IMPROVEMENT: tkremind: Make the "Go to date..." dialog non-modal.
+
+- CHANGE: remind: Allow the argument to easterdate() and
+  orthodoxeaster() to be omitted, in which case it defaults to
+  today().
+
+- BUG FIX: Miscellaneous man page fixes.
+
+- BUG FIX: Fix a leap-year edge-case.  The reminder: REM 29 MSG whatever
+  was not triggered on Feb 29 of leap years.
+
+- BUG FIX: rem2html: Make the version of rem2html track the version of
+  Remind.  Noted by Ian! D. Allen.
+
+-------------------------------------------------------------------
 Tue Feb  6 15:51:27 UTC 2024 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 4.2 Patch 9 - 2024-02-04
