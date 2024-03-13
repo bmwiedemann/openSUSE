@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Mar  8 09:35:49 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 0.11.2
+  * Update copyright year
+  * Astro data downloads adapted
+  * Do not translate warning messages
+  * Fix leaks around remove_timezone_offset()
+  * build: Bump glib version
+  * Migration to Sunrise API 3.0
+  * Silence one more warning
+  * Be less verbose about network requests
+  * Do not warn about missing -night icon variants (Fixes #60)
+  * Use link color with better constrat for dark themes
+  * Remove dead code
+  * Fix remove_timezone_offset()
+  * Add some const qualifiers
+  * Fix moon_phases array
+  * Do not translate warning messages
+  * Fix a typo, everytime → every time.
+  * Translation Updates
+- Add 0001-relax-json-c-version.patch to meet what Leap 15.5
+  provides.
+
+-------------------------------------------------------------------
 Sat Apr 22 07:08:05 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to 0.11.1

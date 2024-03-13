@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-weather-plugin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,29 +17,32 @@
 
 
 %bcond_with git
-%define panel_version 4.12.0
+%define panel_version 4.14.0
 %define plugin weather
 Name:           xfce4-weather-plugin
-Version:        0.11.1
+Version:        0.11.2
 Release:        0
 Summary:        Weather Condition Monitoring Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-weather-plugin
 Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/0.11/%{name}-%{version}.tar.bz2
+# PATCH-FIX-OPENSUSE 0001-relax-json-c-version.patch lower required json-c version to allow building for Leap which only has 0.13, which is enough, though.
+Patch1:         0001-relax-json-c-version.patch
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
-BuildRequires:  pkgconfig(gthread-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.64.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.64.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(json-c) >= 0.13
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.42.0
-BuildRequires:  pkgconfig(libxfce4panel-2.0) >= 4.12.0
+BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12.0
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.12.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.0
-BuildRequires:  pkgconfig(upower-glib)
+BuildRequires:  pkgconfig(upower-glib) >= 0.9.0
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif
@@ -70,7 +73,7 @@ BuildArch:      noarch
 Provides translations for the "%{name}" package.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %if %{with git}

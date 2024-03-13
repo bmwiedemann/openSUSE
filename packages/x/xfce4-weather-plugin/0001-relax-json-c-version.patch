@@ -1,0 +1,55 @@
+diff -rup a/configure.ac b/configure.ac
+--- a/configure.ac	2024-03-08 10:15:34.000000000 +0100
++++ b/configure.ac	2024-03-08 10:48:22.176013554 +0100
+@@ -77,7 +77,7 @@ XDT_CHECK_PACKAGE([LIBXFCE4PANEL], [libx
+ XDT_CHECK_PACKAGE([XFCONF], [libxfconf-0], [4.12.0])
+ XDT_CHECK_PACKAGE([LIBXML], [libxml-2.0], [2.4.0])
+ XDT_CHECK_PACKAGE([SOUP], [libsoup-2.4], [2.42.0])
+-XDT_CHECK_PACKAGE([JSON], [json-c], [0.13.1])
++XDT_CHECK_PACKAGE([JSON], [json-c], [0.13])
+ XDT_CHECK_OPTIONAL_PACKAGE([UPOWER_GLIB], [upower-glib], [0.9.0], [upower],
+                            [upower for adapting update interval to power state])
+ 
+diff -rup a/configure b/configure
+--- a/configure	2024-03-08 10:16:22.000000000 +0100
++++ b/configure	2024-03-08 10:48:10.762685202 +0100
+@@ -16038,9 +16038,9 @@ fi
+ 
+ 
+ 
+-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for json-c >= 0.13.1" >&5
+-printf %s "checking for json-c >= 0.13.1... " >&6; }
+-  if $PKG_CONFIG "--atleast-version=0.13.1" "json-c" >/dev/null 2>&1; then
++  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for json-c >= 0.13" >&5
++printf %s "checking for json-c >= 0.13... " >&6; }
++  if $PKG_CONFIG "--atleast-version=0.13" "json-c" >/dev/null 2>&1; then
+     JSON_VERSION=`$PKG_CONFIG --modversion "json-c"`
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $JSON_VERSION" >&5
+ printf "%s\n" "$JSON_VERSION" >&6; }
+@@ -16057,7 +16057,7 @@ printf %s "checking JSON_LIBS... " >&6;
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $JSON_LIBS" >&5
+ printf "%s\n" "$JSON_LIBS" >&6; }
+ 
+-    JSON_REQUIRED_VERSION=0.13.1
++    JSON_REQUIRED_VERSION=0.13
+ 
+ 
+ 
+@@ -16081,7 +16081,7 @@ printf "%s\n" "found, but $xdt_cv_versio
+ 
+       echo "*** The required package json-c was found on your system,"
+       echo "*** but the installed version ($xdt_cv_version) is too old."
+-      echo "*** Please upgrade json-c to atleast version 0.13.1, or adjust"
++      echo "*** Please upgrade json-c to atleast version 0.13, or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you installed"
+       echo "*** the new version of the package in a nonstandard prefix so"
+       echo "*** pkg-config is able to find it."
+@@ -16093,7 +16093,7 @@ printf "%s\n" "not found" >&6; }
+ 
+ 
+       echo "*** The required package json-c was not found on your system."
+-      echo "*** Please install json-c (atleast version 0.13.1) or adjust"
++      echo "*** Please install json-c (atleast version 0.13) or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you"
+       echo "*** installed the package in a nonstandard prefix so that"
+       echo "*** pkg-config is able to find it."
