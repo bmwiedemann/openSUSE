@@ -1,7 +1,7 @@
 #
-# spec file for package python-asdf_wcs_schemas
+# spec file for package python-asdf-wcs-schemas
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,39 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
-Name:           python-asdf-wcs-schemas
-Version:        0.1.1
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
+Name:           python-asdf-wcs-schemas%{psuffix}
+Version:        0.4.0
 Release:        0
 Summary:        ASDF WCS Schemas
 License:        BSD-3-Clause
-URL:            https://github.com/spacetelescope/asdf-wcs-schemas
+URL:            https://github.com/asdf-format/asdf-wcs-schemas
 Source:         https://files.pythonhosted.org/packages/source/a/asdf-wcs-schemas/asdf_wcs_schemas-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module asdf >= 2.8.0}
-BuildRequires:  %{python_module importlib_resources >= 3 if %python-base < 3.9}
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 60}
+BuildRequires:  %{python_module setuptools_scm >= 3.4}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-Requires:       python-asdf >= 2.8.0
-%if %python_version_nodots < 39
-Requires:       python-importlib_resources >= 3
-%endif
-# SECTION test requirements
+BuildRequires:  python-rpm-macros
+Requires:       python-asdf-coordinates-schemas >= 0.3.0
+Requires:       python-asdf-standard >= 1.1.0
+Requires:       python-asdf-transform-schemas >= 0.5.0
+%if %{with test}
+BuildRequires:  %{python_module asdf >= 2.8.0}
+BuildRequires:  %{python_module asdf-astropy}
+BuildRequires:  %{python_module asdf-wcs-schemas = %{version}}
 BuildRequires:  %{python_module pytest >= 4.6.0}
-BuildRequires:  %{python_module pytest-openfiles >= 0.5.0}
-# /SECTION
+%endif
 BuildArch:      noarch
 Provides:       python-asdf_wcs_schemas = %{version}-%{release}
 %python_subpackages
@@ -55,17 +64,25 @@ dependency.
 %setup -q -n asdf_wcs_schemas-%{version}
 
 %build
-%python_build
+%if !%{with test}
+%pyproject_wheel
+%endif
 
 %install
-%python_install
+%if !%{with test}
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
 %pytest
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %{python_sitelib}/asdf_wcs_schemas
-%{python_sitelib}/asdf_wcs_schemas-%{version}*-info
+%{python_sitelib}/asdf_wcs_schemas-%{version}.dist-info
+%endif
 
 %changelog

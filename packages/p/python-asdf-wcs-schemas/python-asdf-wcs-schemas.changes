@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar 10 12:06:11 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.4.0
+  * Update schemas for ASDF standard 1.6.0. [#59]
+- Release 0.3.0
+  * Add gwcs-1.2.0 manifest with new wcs-1.2.0 schema. [#56]
+- Release 0.2.0
+  * Update documentation to be consistent with rest of ASDF. [#12]
+  * Switch over to pyproject.toml for build configuration. [#20]
+  * Remove duplicate tag versions in gwcs manifest 1.0.0 (adding
+    1.0.1) and add 1.1.0 with only the newest tags [#46]
+- Make multibuild
+
+-------------------------------------------------------------------
 Tue Dec 28 15:03:19 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v0.1.1

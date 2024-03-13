@@ -8,4 +8,23 @@
 - Required by gwcs 0.18</comment>
     <requestid>943215</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>40baf821c821da1299e14997927374bd</srcmd5>
+    <version>0.4.0</version>
+    <time>1710364673</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1156717 from bnavigator
+
+- Update to 0.4.0
+    * Update schemas for ASDF standard 1.6.0. [#59]
+  - Release 0.3.0
+    * Add gwcs-1.2.0 manifest with new wcs-1.2.0 schema. [#56]
+  - Release 0.2.0
+    * Update documentation to be consistent with rest of ASDF. [#12]
+    * Switch over to pyproject.toml for build configuration. [#20]
+    * Remove duplicate tag versions in gwcs manifest 1.0.0 (adding
+      1.0.1) and add 1.1.0 with only the newest tags [#46]
+  - Make multibuild</comment>
+    <requestid>1157051</requestid>
+  </revision>
 </revisionlist>
