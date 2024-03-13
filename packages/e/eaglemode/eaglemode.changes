@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 12 07:40:17 UTC 2024 - ming li <mli@suse.com>
+
+- update to 0.96.1:
+  * Added select and copy functions to the plain text viewer.
+  * Added select and copy functions to the PDF viewer.
+
+-------------------------------------------------------------------
 Wed Apr 26 19:23:15 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Replace BuildRequire on xorg-x11-devel by pkgconfig(...)
