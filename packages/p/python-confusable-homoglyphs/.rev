@@ -49,4 +49,14 @@
   * Update unicode data</comment>
     <requestid>1143978</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9711e00ac380a338b0476cf90f7c13f9</srcmd5>
+    <version>3.3.1</version>
+    <time>1710364861</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1157622</requestid>
+  </revision>
 </revisionlist>

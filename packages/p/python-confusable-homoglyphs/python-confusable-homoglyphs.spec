@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-confusable-homoglyphs
 Version:        3.3.1
 Release:        0
@@ -26,7 +26,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/vhf/confusable_homoglyphs
 Source:         https://files.pythonhosted.org/packages/source/c/confusable_homoglyphs/confusable_homoglyphs-%{version}.tar.gz
 BuildRequires:  %{python_module click}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
@@ -42,13 +44,13 @@ codepoints, meaning or representation, for example U+0041 LATIN
 CAPITAL LETTER A ('A') vs. U+0391 GREEK CAPITAL LETTER ALPHA, 'Α'.
 
 %prep
-%setup -q -n confusable_homoglyphs-%{version}
+%autosetup -p1 -n confusable_homoglyphs-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/confusable_homoglyphs
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -64,7 +66,8 @@ CAPITAL LETTER A ('A') vs. U+0391 GREEK CAPITAL LETTER ALPHA, 'Α'.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/confusable_homoglyphs
+%{python_sitelib}/confusable_homoglyphs-%{version}*-info
 %python_alternative %{_bindir}/confusable_homoglyphs
 
 %changelog
