@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 12 10:40:54 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2.4.3
+  * Fixed covers not being perfectly square on some terminals.
+  * Fixed playlist selector could get 'stuck'.
+  * Code refactoring and minor improvements to playlist view.
+  * Moved the files kewrc and kewlibrary config files from
+    XDG_CONFIG_HOME into XDG_CONFIG_HOME/kew/ or ~/.config/kew.
+
+-------------------------------------------------------------------
 Thu Feb 29 11:01:30 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2.4.2
