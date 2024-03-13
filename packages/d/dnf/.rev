@@ -666,4 +666,12 @@
     <comment>- Add Requires(post) dependency for dnf-data</comment>
     <requestid>1133852</requestid>
   </revision>
+  <revision rev="39" vrev="5">
+    <srcmd5>a71e12334744387faf0b6a94b7585f03</srcmd5>
+    <version>4.18.0</version>
+    <time>1710364629</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1157598</requestid>
+  </revision>
 </revisionlist>

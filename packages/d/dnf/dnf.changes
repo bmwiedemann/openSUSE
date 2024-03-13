@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 13 10:30:39 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Mon Dec 18 13:06:38 UTC 2023 - Neal Gompa <ngompa@opensuse.org>
 
 - Add Requires(post) dependency for dnf-data

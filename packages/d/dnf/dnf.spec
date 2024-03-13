@@ -1,7 +1,7 @@
 #
 # spec file for package dnf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021-2023 Neal Gompa <ngompa@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -258,6 +258,8 @@ rm -f %{buildroot}%{confdir}/dnf-strict.conf
 
 # We don't have ABRT/libreport in openSUSE
 rm -rf %{buildroot}%{_sysconfdir}/libreport
+
+%python3_fix_shebang
 
 %if %{with tests}
 %check
