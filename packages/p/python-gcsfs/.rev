@@ -178,4 +178,14 @@
 - Do not build for Python 3.6, due to no NumPy.</comment>
     <requestid>1133594</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>04e70db6214bf9643e0d3ff1d35e36b7</srcmd5>
+    <version>2024.2.0</version>
+    <time>1710364666</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1156423 from bnavigator
+
+- Update to 2024.2.0 * doc for passing tokens (#603)</comment>
+    <requestid>1157040</requestid>
+  </revision>
 </revisionlist>
