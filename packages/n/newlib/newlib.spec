@@ -69,8 +69,7 @@ conglomeration of several library parts, all under free software licenses
 that make them easily usable on embedded products.
 
 %prep
-%setup -q -n newlib-%{version}
-%patch1 -p1
+%autosetup -p1 -n newlib-%{version}
 
 %build
 %if "%{flavor}" != ""
