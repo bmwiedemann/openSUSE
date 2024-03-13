@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar  5 20:58:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- remove unnecessary packaging buildrequires
+
+-------------------------------------------------------------------
+Wed Feb 28 08:57:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.0:
+  * Upgrade to go 1.21
+  * Allow setting of SCC credentials via environment variables
+  * Bump github.com/urfave/cli/v2 from 2.25.7 to 2.27.1
+  * Use switch instead of else if construction
+  * Add system token header to query SCC subscriptions
+    (bsc#1219855)
+- run tests
+
+-------------------------------------------------------------------
 Thu Oct  5 12:52:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - spec file cleanups

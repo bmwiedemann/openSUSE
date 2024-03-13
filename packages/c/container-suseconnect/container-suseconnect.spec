@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package container-suseconnect
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %global zypp_services %{zypp_path}/services
 %global zypp_urlresolver %{zypp_path}/urlresolver
 Name:           %{project}
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        Provides access to repositories inside containers
 License:        Apache-2.0
@@ -31,10 +31,13 @@ URL:            https://%{import_path}
 Source0:        %{project}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        container-suseconnect-rpmlintrc
-BuildRequires:  golang-packaging
 BuildRequires:  libzypp > 9.34
 BuildRequires:  zstd
+%if 0%{?suse_version} == 1500
+BuildRequires:  go1.21-openssl
+%else
 BuildRequires:  golang(API) = 1.21
+%endif
 Requires:       libzypp > 9.34
 
 %description
@@ -42,10 +45,16 @@ container-suseconnect gives access to package repositories inside containers
 using the host machine entitlements.
 
 %prep
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
+export TAR_OPTIONS="-I zstd"
+%endif
 %setup -q -n %{project}-%{version} -a1
 
 %build
-go build -o %{project} -mod=vendor -buildmode=pie -trimpath -ldflags="-s -w" ./cmd/container-suseconnect
+go build -tags enablecgo -o %{project} -mod=vendor -buildmode=pie -trimpath -ldflags="-s -w" ./cmd/container-suseconnect
+
+%check
+go test ./...
 
 %install
 install -D -m 755 %{project} %{buildroot}/%{_bindir}/%{project}
