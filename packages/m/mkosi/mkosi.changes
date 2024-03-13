@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Mon Mar 11 14:34:03 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to 21:
+  * We now handle unmerged-usr systems correctly
+  * Builtin configs (mkosi-initrd, mkosi-tools) can now be included
+    using Include= (e.g. Include=mkosi-initrd)
+  * The kernel-install plugin now uses the builtin mkosi-initrd
+    config so there's no need anymore to copy the full mkosi-initrd
+    config into /usr/lib/mkosi-initrd.
+  * We don't require a build anymore for the journalctl and
+    coredumpctl verbs.
+  * mkosi ssh works again when used with ToolsTree=default
+  * We now use .zst instead of .zstd for compressed split artifacts
+    produced by systemd-repart.
+  * systemd-repart uses a persistent temporary directory again for
+    assembling images instead of a tmpfs.
+  * Added MicrocodeHost= setting to only include the CPU specific
+    microcode for the current host system.
+  * The kernel-install plugin now only includes the CPU specific
+    microcode
+  * Introduced PackageCacheDirectory= to set the directory for
+    package manager caches. This setting defaults to a suitable
+    location in the system or user directory depending on how mkosi
+    is invoked.
+  * CacheDirectory= is only used for incremental cached images now.
+  * Repository metadata is now synced once at the start of each
+    image build and never during an image build. Each image
+    includes a snapshot of the repository metadata in the canonical
+    locations in /var so that incremental images and extension
+    images can reuse the same snapshot. When building an image
+    intended to be used with
+  * BaseTrees=, disable CleanPackageMetadata= to make sure the
+    repository metadata in /var is not cleaned up, otherwise any
+    extension images using this image as their base tree will not
+    be able to install additional packages.
+  * Implemented CacheOnly=metadata. Note that in the JSON output,
+    the value of CacheOnly= will now be a string instead of a
+    boolean.
+  * Added CompressLevel= to set the compression level to use.
+  * Dropped experimental Gentoo support.
+  * Added TriggerMatch= to specify multiple match sections of which
+    only one should be satisfied.
+  * Added jq, attr, acl, git, sed, grep and findutils to the
+    default tools tree.
+  * Added mkosi-install, mkosi-upgrade, mkosi-remove and
+    mkosi-reinstall scripts which allow writing scripts that are
+    independent of the package manager being used to build the
+    image.
+  * We now expand specifiers in Match section values
+  * Made GPG key handling for Fedora rawhide more robust
+  * If systemd-repart 256 or newer is available, mkosi will
+    instruct it to generate /etc/fstab and /etc/crypttab for the
+    image if any partition definitions contain the corresponding
+    settings (MountPoint= and EncryptedVolume=).
+  * bash is now started in the debug shell instead of sh.
+  * The default release for Ubuntu is now noble.
+  * Ubuntu is now used as the default tools tree distribution for
+    Ubuntu instead of Debian.
+  * Added mkosi vmspawn which boots the image with systemd-vmspawn.
+  * Note that systemd-vmspawn is experimental and its interface
+    may still change. As such mkosi vmspawn is also considered
+    experimental.
+  * Note that systemd-vmspawn version 256 or newer is required.
+  * Added SyncScripts= which can be used to update various build
+    sources before starting the image build.
+  * The DISTRIBUTION= and RELEASE= environment variables are now
+    set when running scripts.
+  * Added ToolsTreeRepositories= and ToolsTreePackageManagerTrees=.
+  * Added RuntimeNetwork= to configure the networking used when
+    booting the image.
+  * Added SecureBootKeySource= and VerityKeySource= to support
+    signing images with OpenSSL engines. Note that these settings
+    require various systemd tools to be version 256 or newer.
+  * We don't clean up package manager metadata anymore unless
+    explicitly requested with CleanPackageManagerMetadata=yes when
+    building directory and tar images.
+
+-------------------------------------------------------------------
 Mon Jan 22 14:07:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 20.2:
