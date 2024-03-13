@@ -5,10 +5,12 @@ Thu Feb 29 11:25:49 UTC 2024 - daniel@molkentin.de
 
   Bugfixes:
 
+  * Security CVE-2023-6152: Add email verification when updating
+    user email (bsc#1219912)
   * Elasticsearch: Fix creating of legend so it is
-     backward compatible with frontend produced frames
+    backward compatible with frontend produced frames
   * ShareModal: Fixes url sync issue that caused issue
-     with save drawer
+    with save drawer
 
 - Update to version 10.3.2:
   * (unreleased)
