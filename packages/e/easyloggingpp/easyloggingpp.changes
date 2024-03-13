@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 12 08:24:45 UTC 2024 - ming li <mli@suse.com>
+
+- Update to version 0.97.1:
+  * Ensuring the build on ARM64 works
+  * Update gtest and cmake now requires C++14 because of that
+
+-------------------------------------------------------------------
 Tue Apr 13 04:16:33 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.97.0
