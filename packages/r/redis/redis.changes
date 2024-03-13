@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar  1 10:12:43 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
+
+- The following issue has been fixed in TW but has not been
+  mentioned before:
+  * bsc#1208235
+  * bsc#1207448
+- The following patch was removed from SLE:
+  * bsc1198952.patch
+  * redis-CVE-2022-24834.patch
+  * redis-CVE-2022-36021.patch
+  * redis-CVE-2023-25155.patch
+  * redis-CVE-2023-45145.patch
+  * redis-CVE-2023-45145.patch
+
+-------------------------------------------------------------------
 Tue Jan  9 13:02:41 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - redis 7.2.4: (boo#1218646)

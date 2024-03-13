@@ -814,4 +814,12 @@ the python-redis for this is on the way as well 1119606</comment>
     <comment></comment>
     <requestid>1137732</requestid>
   </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>fb0ac37c3ef55027c328280bae348197</srcmd5>
+    <version>7.2.4</version>
+    <time>1710364667</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1157013</requestid>
+  </revision>
 </revisionlist>
