@@ -16,6 +16,8 @@
 #
 
 
+# missing ipython
+%global skip_python39 1
 Name:           python-line_profiler
 Version:        4.1.2
 Release:        0
