@@ -44,7 +44,7 @@ Provides:       perl(Perl::Tidy::Tokenizer) = %{version}
 Provides:       perl(Perl::Tidy::VerticalAligner) = %{version}
 Provides:       perl(Perl::Tidy::VerticalAligner::Alignment) = %{version}
 Provides:       perl(Perl::Tidy::VerticalAligner::Line) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
