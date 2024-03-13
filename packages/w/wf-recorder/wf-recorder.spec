@@ -1,7 +1,7 @@
 #
 # spec file for package wf-recorder
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2018 Michael Aquilina
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           wf-recorder
-Version:        0.4.0+git0
+Version:        0.4.1+git0
 Release:        0%{?dist}
 Summary:        Utility program for screen recording of wlroots-based compositors
 License:        MIT
