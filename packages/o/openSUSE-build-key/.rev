@@ -342,4 +342,14 @@ However, it would be good to have these out before we do switch. (forwarded requ
   - gpg-pubkey-3dbdc284-53674dd4.asc (forwarded request 1079730 from msmeissn)</comment>
     <requestid>1079731</requestid>
   </revision>
+  <revision rev="40" vrev="49">
+    <srcmd5>f6576d81564d0ff0c9faafbc9d21078e</srcmd5>
+    <version>1.0</version>
+    <time>1710364576</time>
+    <user>anag+factory</user>
+    <comment>- add unexpired openSUSE zSystems key (bsc#1220993)
+  - replace gpg-pubkey-f6ab3975-5edd7d4f.asc
+  - by gpg-pubkey-f6ab3975-62e9e6fb.asc (forwarded request 1155497 from msmeissn)</comment>
+    <requestid>1155499</requestid>
+  </revision>
 </revisionlist>

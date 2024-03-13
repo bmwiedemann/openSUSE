@@ -1,0 +1,8 @@
+[Unit]
+Description=Timer that starts importing new GPG keys into RPM Database.
+
+[Timer]
+OnUnitActiveSec=5min
+
+[Install]
+WantedBy=timers.target

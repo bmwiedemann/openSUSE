@@ -1,0 +1,10 @@
+[Unit]
+Description=Service to import new GPG Keys into RPM database
+After=local-fs.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/import-openSUSE-build-key
+
+[Install]
+WantedBy=multi-user.target

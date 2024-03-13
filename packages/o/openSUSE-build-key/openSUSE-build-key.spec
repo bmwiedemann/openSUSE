@@ -1,7 +1,7 @@
 #
 # spec file for package openSUSE-build-key
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,7 @@ Source2:        gpg-pubkey-39db7c82-5f68629b.asc
 Source3:        gpg-pubkey-697ba1e5-5c755904.asc
 
 # zSystems
-Source5:        gpg-pubkey-f6ab3975-5edd7d4f.asc
+Source5:        gpg-pubkey-f6ab3975-62e9e6fb.asc
 
 # PowerPC
 Source6:        gpg-pubkey-8ede3e07-5c755f3a.asc
@@ -63,10 +63,23 @@ Source11:       build-container-d4ade9c3-5a2e9669.pem
 Source12:       build-container-202304-d684afec-64390cff.pem
 Source13:       build-container-202304-d684afec-64390cff.asc
 
+# 2023 Container key SUSE in PEM and GPG formats
+Source14:       build-container-8fd6c337-63c94b45.pem
+Source15:       build-container-8fd6c337-63c94b45.asc
+
+
 Source98:       security_at_suse_de.asc
+
+# Auto Import handling via systemd timer + service.
+# Needed in Leap currently, but also have it here.
+Source101:      import-openSUSE-build-key
+Source102:      %name-import.service
+Source103:      %name-import.timer
+
 BuildRequires:  gpg
 Conflicts:      suse-build-key
 Provides:       build-key = %{version}
+BuildRequires:  systemd-rpm-macros
 
 # Old 1024 bit RSA key for SLE11.
 Obsoletes:      gpg-pubkey = 307e3d54-5aaa90a5
@@ -115,10 +128,12 @@ for i in %{SOURCE10} %{SOURCE2} \
 done
 mkdir -p %{buildroot}%{containerkeydir}/
 install -c -m 644 %{SOURCE7} %{buildroot}%{containerkeydir}/opensuse-container-key.asc
-install -c -m 644 %{SOURCE8} %{buildroot}%{containerkeydir}/suse-container-key.asc
+install -c -m 644 %{SOURCE8} %{buildroot}%{containerkeydir}/suse-container-key-old.asc
+install -c -m 644 %{SOURCE15} %{buildroot}%{containerkeydir}/suse-container-key.asc
 install -c -m 644 %{SOURCE13} %{buildroot}%{containerkeydir}/opensuse-container-key-2023.asc
 mkdir -p %{buildroot}%{pemcontainerkeydir}/
-install -c -m 644 %{SOURCE11} %{buildroot}%{pemcontainerkeydir}/suse-container-key.pem
+install -c -m 644 %{SOURCE14} %{buildroot}%{pemcontainerkeydir}/suse-container-key.pem
+install -c -m 644 %{SOURCE11} %{buildroot}%{pemcontainerkeydir}/suse-container-key-old.pem
 install -c -m 644 %{SOURCE12} %{buildroot}%{pemcontainerkeydir}/opensuse-container-key-2023.pem
 if [ -e "%_sourcedir/_pubkey" ]; then
     name="$(sh %{SOURCE0} %_sourcedir/_pubkey).asc"
@@ -126,6 +141,27 @@ if [ -e "%_sourcedir/_pubkey" ]; then
 	install -D -m 644 %_sourcedir/_pubkey %{buildroot}%keydir/"$name"
     fi
 fi
+
+mkdir -p $RPM_BUILD_ROOT/usr/bin/
+mkdir -p $RPM_BUILD_ROOT/var/lib/%name
+install -m 755 %{SOURCE101} $RPM_BUILD_ROOT/usr/bin/import-%name
+mkdir -p $RPM_BUILD_ROOT/%_unitdir
+install -m 644 %{SOURCE102} $RPM_BUILD_ROOT/%_unitdir/
+install -m 644 %{SOURCE103} $RPM_BUILD_ROOT/%_unitdir/
+
+%post
+touch /var/lib/%{name}/imported
+%service_add_post openSUSE-build-key-import.service openSUSE-build-key-import.timer
+test -x /usr/bin/systemctl && systemctl enable openSUSE-build-key-import.timer && systemctl start openSUSE-build-key-import.timer || true
+
+%pre
+%service_add_pre openSUSE-build-key-import.service openSUSE-build-key-import.timer
+
+%preun
+%service_del_preun openSUSE-build-key-import.service openSUSE-build-key-import.timer
+
+%postun
+%service_del_postun openSUSE-build-key-import.service openSUSE-build-key-import.timer
 
 %files
 %defattr(644,root,root)
@@ -138,8 +174,15 @@ fi
 %{keydir}/gpg-pubkey-*.asc
 %{containerkeydir}/opensuse-container-key.asc
 %{containerkeydir}/suse-container-key.asc
+%{containerkeydir}/suse-container-key-old.asc
 %{containerkeydir}/opensuse-container-key-2023.asc
 %{pemcontainerkeydir}/suse-container-key.pem
+%{pemcontainerkeydir}/suse-container-key-old.pem
+%attr(755,root,root) %_bindir/import-%name
 %{pemcontainerkeydir}/opensuse-container-key-2023.pem
+%dir /var/lib/%{name}
+%ghost /var/lib/%{name}/imported
+%_unitdir/%name-import.service
+%_unitdir/%name-import.timer
 
 %changelog

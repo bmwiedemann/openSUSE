@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Mar  6 09:34:52 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- add unexpired openSUSE zSystems key (bsc#1220993)
+  - replace gpg-pubkey-f6ab3975-5edd7d4f.asc
+  - by gpg-pubkey-f6ab3975-62e9e6fb.asc
+
+-------------------------------------------------------------------
+Mon Feb 19 12:30:15 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- added new suse container key, moved the old one to -old
+
+-------------------------------------------------------------------
+Tue Jun  6 14:59:18 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- openSUSE-build-key-import.service,openSUSE-build-key-import.service.timer,
+  import-openSUSE-build-key:
+  Add systemd timer and service framework that imports new keys.
+
+-------------------------------------------------------------------
 Fri Apr 14 14:01:43 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - Added a new 4096 openSUSE container key
