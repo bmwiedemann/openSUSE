@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Mar 12 16:41:25 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.107.1
+  * DMD Compiler regression fixes
+    - Bugzilla 20802: [REG2.088.0] Link failure with writefln
+    - Bugzilla 24371: [REG 2.104] String array concatenation does not respect operator precedence
+  * DMD Compiler bug fixes
+    - Bugzilla 20297: ld: warning: no platform load command found for macOS
+    - Bugzilla 21047: Linker error: GOT load reloc does not point to a movq instruction
+    - Bugzilla 22556: Invalid GOT load reloc with -O on MacOS
+    - Bugzilla 23517: dmd with -g flag fails to link on macOS with unaligned pointer
+    - Bugzilla 24137: Link failure on macOS with symbol count from symbol table and dynamic symbol table differ
+    - Bugzilla 24365: ICE when printing 'showCtfeContext' error
+    - Bugzilla 24370: static array values in static AA initialise to dynamic arrays
+    - Bugzilla 24399: Link failure on MacOS with address=0x0 points to section(2) with no content in config_a68_4c3.o
+    - Bugzilla 24409: DMD crash for CTFE in stompOverlappedFields
+    - Bugzilla 24422: ImportC: ICE: Segfault in cparseFunctionDefinition
+
+- Update to version 2.107.0
+  * Compiler changes
+    - A string literal as an assert condition is deprecated
+    - Unrecognized pragmas are no longer an error, but instead simply ignored
+    - Added @standalone for module constructors
+    - _d_newarray{mTX,miTX,OpT} are converted to a single template: _d_newarraymTX
+  * Runtime changes
+    - Using an invalid MemoryOrder for core.atomic operations are now rejected at compile time
+  * Library changes
+    - isForwardRange now takes an optional element type.
+
+- Update to version 2.106.1
+  * DMD Compiler regression fixes
+    - Bugzilla 22212: dmd version has -dirty suffix on windows
+  * DMD Compiler bug fixes
+    - Bugzilla 22483: DMD generates invalid string sections that work by coincidence
+    - Bugzilla 24281: Segfault with missing field after named argument
+    - Bugzilla 24283: [SIMD][CODEGEN] Bad codegen with and not + AVX2 registers
+
+- Update to version 2.106.0
+  * 2.106.0 comes with 17 major changes and 65 fixed Bugzilla issues. For
+    full changelog see https://dlang.org/changelog/2.106.0.html
+
+-------------------------------------------------------------------
 Fri Nov  3 07:20:28 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to versione 2.105.3
