@@ -132,6 +132,7 @@ export LDFLAGS="-Wl,-z,relro,-z,now -fPIE -pie"
 %make_build
 
 %check
+chmod +x support/*
 %make_build check
 chmod -x support/*
 
@@ -160,6 +161,7 @@ install -D -m 0644 %{SOURCE9} %{buildroot}%{_unitdir}/rsyncd@.service
 install -D -m 0644 %{SOURCE8} %{buildroot}%{_unitdir}/rsyncd.service
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_unitdir}/rsyncd.socket
 ln -sf service %{buildroot}%{_sbindir}/rcrsyncd
+chmod -x support/*
 
 %pre
 %service_add_pre rsyncd.service

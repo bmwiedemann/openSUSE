@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 12 08:13:24 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Avoid package changes in %check
+
+-------------------------------------------------------------------
 Wed Nov 29 12:34:30 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
 - Moved rsyncd.conf and rsyncd.secrets to /usr/etc.
