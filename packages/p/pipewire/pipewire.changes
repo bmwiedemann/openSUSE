@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Wed Mar 13 10:12:26 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.0.4:
+  * Highlights
+    - Track memfd better to avoid inconsistent memory. Also make
+      sure the mixer info is removed correctly in all cases on
+      destroyed ports.
+    - Correctly handle removed objects in the metadata.
+    - Add an option to set the server and client priorities instead
+      of using a hardcoded value of 88.
+    - The FFADO module has been fixed. Audio and MIDI now works
+      with the same latency as the JACK driver. This has now also
+      been tested with a Focusrite Saffire Pro 14.
+    - The JACK library has seen some important fixes. Some ardour
+      crackling has been fixed when looping and multiple MIDI ports
+      on a client should now work.
+    - Small bugfixes and improvements.
+  * PipeWire
+    - Track memfd better to avoid inconsistent memory. Also make
+      sure the mixer info is removed correctly in all cases on
+      destroyed ports.
+    - Fix Props param emission again in pw_stream. (#3833)
+    - Add MAPPABLE flag to buffer data to indicate that the fd can
+      be mmapped directly. Use this on DMABUF from v4l2. (#3840)
+    - Correctly handle removed object in the metadata.
+    - FreeBSD build and compatibility fixes.
+    - Add an option to set the server and client priorities instead
+      of using a hardcoded value of 88.
+    - Read config overrides in the right order.
+    - Fix PIPEWIRE_QUANTUM rate handling in pw_stream and
+      pw_filter.
+    - Fix pw_context_parse_conf_section(), actually use the conf
+      argument.
+    - A new pw_stream_get_nsec() and pw_filter_get_nsec() function
+      was added to get the current time of the stream/filter
+      without having to assume a particular clock.
+    - A new default.clock.quantum-floor property was added to
+      configure the absolute lowest buffer-size. (#3908)
+  * docs
+    - Many doc updates.
+  * tools
+    - Make sure we always quit pw-cli when the server stops.(#3837)
+    - pw-top now prints all drivers in batch mode. (#3899)
+  * modules
+    - Don't destroy the client in protocol-simple on EAGAIN.
+    - Handle IPv6 better in the RTP modules. Fix IPv6 SAP header
+      parsing. (#3851)
+    - The FFADO module has been fixed. Audio and MIDI now works
+      with the same latency as the JACK driver. This has now also
+      been tested with a Focusrite Saffire Pro 14. (#3558)
+  * pulse-server
+    - Make sure the peer_name is filled to avoid protocol errors.
+  * SPA
+    - Small resampler tweaks to improve stability of adaptive
+      resampler.
+    - Add ALSA option to control htimestamp autodisable.
+    - Avoid some potential crashes in audioconvert when ports are
+      removed.
+    - Improve HDMI jack detection on some SOCs.
+    - The audioconvert now has a monitor.passthrough option to pass
+      the latency information on the monitor ports. (#3888)
+  * GStreamer
+    - Don't use timeouts when autoconnect=false in pipewiresrc.
+      (#3884)
+    - pipewiresrc and pipewiresink can now be automatically
+      selected as audio source and sink.
+    - An invalid memory access was fixed when destroying the device
+      provider.
+  * JACK
+    - Remove properties correctly with the object id, not serial.
+    - Improve sync with the data thread by pausing the core. Also
+      improve handling of port io to avoid invalid buffer access.
+    - Fix PIPEWIRE_QUANTUM rate handling.
+    - Support multiple MIDI input ports per client. (#3901)
+    - The output buffer size is now always correctly set. (#3892)
+  * ALSA
+    - Handle errors from eventfd_create correctly.
+
+-------------------------------------------------------------------
+Tue Mar 12 11:10:03 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.0.3+git51.89d8e8b:
+  * module-ffado: make the event buffer per port
+  * module-ffado: handle MIDI correctly
+  * module-ffado: implement MIDI send and receive
+  * module-ffado: various fixes to make things work
+  * stream: add pw_stream_get_nsec() to get current time
+  * jack: fix multiple midi input ports
+  * pw-top: only check terminal size in non-batch mode
+  * Specify "Audio" in gstreamer sink/src metadata to fix autodetect 
+  * Add SOC-style jack names to HDMI audio paths
+  * gst: remove timeouts when autoconnect=false
+  * audioconvert: handle invalid ports better
+  * audioconvert: handle port remove
+  * pw_context_parse_conf_section: use the conf argument instead of the context's conf
+  * stream: FORCE_RATE should just contain the rate
+  * jack: FORCE_RATE should just contain the rate
+  * jack: set global_mix safely
+  * jack: sync threads by pausing the core
+  * alsa: Added handle for controlling htimestamp autodisable
+  * And more
+- Remove patch already merged upstream:
+  * fix-gst-sink.patch
+
+-------------------------------------------------------------------
+Tue Mar 12 11:01:21 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Require pipewire-pulseaudio from pipewire-alsa so when
+  pipewire-alsa is installed, pipewire has audio support (or put
+  in other words, so pipewire-alsa isn't installed with the real
+  pulseaudio). Fixes boo#1221235.
+
+-------------------------------------------------------------------
+Wed Mar 06 17:01:46 UTC 2024 - alarrosa@suse.com
+
+- Add patch from upstream submitted at glfo#pipewire/pipewire#1932
+  that fixes selecting the pipewire gstreamer plugins by the
+  autoaudiosink/autoaudiosrc plugins:
+  * fix-gst-sink.patch
+
+-------------------------------------------------------------------
 Thu Feb 29 14:58:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

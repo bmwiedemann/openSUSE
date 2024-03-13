@@ -62,7 +62,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -194,7 +194,7 @@ This package provides the PipeWire shared library.
 Summary:        PipeWire libjack replacement libraries
 Group:          Development/Libraries/C and C++
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 
 %description libjack-%{apiver_str}
 PipeWire is a server and user space API to deal with multimedia pipelines.
@@ -338,6 +338,8 @@ Requires:       %{libpipewire} >= %{version}-%{release}
 Recommends:     %{name} >= %{version}-%{release}
 # Both providing /etc/alsa/conf.d/99-*-default.conf can cause issues
 Conflicts:      alsa-plugins-pulse
+# This is needed so that pipewire-alsa is not installed with the real pulseaudio (boo#1221235)
+Requires:       pipewire-pulseaudio
 
 %description alsa
 This package contains an ALSA plugin for the PipeWire media server.
@@ -606,7 +608,19 @@ fi
 %{_userunitdir}/pipewire.socket
 %{_userunitdir}/filter-chain.service
 %{_mandir}/man1/pipewire.1%{?ext_man}
+%{_mandir}/man1/pw-reserve.1%{?ext_man}
+%{_mandir}/man1/pw-v4l2.1%{?ext_man}
+%{_mandir}/man1/spa-acp-tool.1%{?ext_man}
+%{_mandir}/man1/spa-inspect.1%{?ext_man}
+%{_mandir}/man1/spa-json-dump.1%{?ext_man}
+%{_mandir}/man1/spa-monitor.1%{?ext_man}
+%{_mandir}/man1/spa-resample.1%{?ext_man}
+%{_mandir}/man5/pipewire-client.conf.5%{?ext_man}
+%{_mandir}/man5/pipewire-filter-chain.conf.5%{?ext_man}
 %{_mandir}/man5/pipewire.conf.5%{?ext_man}
+%{_mandir}/man5/pipewire-jack.conf.5%{?ext_man}
+%{_mandir}/man7/pipewire-devices.7%{?ext_man}
+
 %dir %{_datadir}/pipewire/
 %{_datadir}/pipewire/pipewire.conf
 %{_datadir}/pipewire/pipewire.conf.avail/
