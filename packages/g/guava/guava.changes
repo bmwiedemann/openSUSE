@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 12 18:57:05 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Fix version mismatch in the ant build files.
+
+-------------------------------------------------------------------
 Wed Feb 21 22:05:15 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Clean the spec file and simplify it a bit

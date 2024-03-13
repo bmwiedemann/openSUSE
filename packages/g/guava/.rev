@@ -79,4 +79,12 @@
     <comment>cleanup</comment>
     <requestid>1148908</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>674d3847fe0414cd95e64a9923a16220</srcmd5>
+    <version>32.0.1</version>
+    <time>1710364761</time>
+    <user>anag+factory</user>
+    <comment>fix versions in jar manifest</comment>
+    <requestid>1157419</requestid>
+  </revision>
 </revisionlist>
