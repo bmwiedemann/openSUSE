@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 11 11:08:55 UTC 2024 - Marguerite Su <i@marguerite.su>
+
+- Switch to VF variant. Reduce size to about 16%
+- Merged sub-packages google-noto-sans-hk-xxxx-fonts into google-noto-sans-hk-fonts
+- Merged sub-packages google-noto-sans-jp-xxxx-fonts into google-noto-sans-jp-fonts
+- Merged sub-packages google-noto-sans-kr-xxxx-fonts into google-noto-sans-kr-fonts
+- Merged sub-packages google-noto-sans-sc-xxxx-fonts into google-noto-sans-sc-fonts
+- Merged sub-packages google-noto-sans-tc-xxxx-fonts into google-noto-sans-tc-fonts
+
+-------------------------------------------------------------------
 Mon Jan  8 09:16:50 UTC 2024 - Frederic Crozat <fcrozat@suse.com>
 
 - Redownload zip fonts file from upstream, they were changed

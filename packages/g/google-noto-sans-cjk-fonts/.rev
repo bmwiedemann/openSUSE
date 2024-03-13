@@ -73,4 +73,18 @@ The fonts are split into per-language subpackages for the size reduction.</comme
     <comment></comment>
     <requestid>1137546</requestid>
   </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>7d8241a248fe1765006da69fdb00a109</srcmd5>
+    <version>2.004</version>
+    <time>1710364610</time>
+    <user>anag+factory</user>
+    <comment>- Switch to VF variant. Reduce size to about 16%
+- Merged sub-packages google-noto-sans-hk-xxxx-fonts into google-noto-sans-hk-fonts
+- Merged sub-packages google-noto-sans-jp-xxxx-fonts into google-noto-sans-jp-fonts
+- Merged sub-packages google-noto-sans-kr-xxxx-fonts into google-noto-sans-kr-fonts
+- Merged sub-packages google-noto-sans-sc-xxxx-fonts into google-noto-sans-sc-fonts
+- Merged sub-packages google-noto-sans-tc-xxxx-fonts into google-noto-sans-tc-fonts
+</comment>
+    <requestid>1157217</requestid>
+  </revision>
 </revisionlist>
