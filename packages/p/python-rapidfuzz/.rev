@@ -105,4 +105,15 @@
     instead of ``int32`` by default</comment>
     <requestid>1140264</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ab82f56969326206465de4133168b1a6</srcmd5>
+    <version>3.6.2</version>
+    <time>1710364898</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.6.2:
+  * upgrade rapidfuzz-cpp which includes a fix for build issues
+    on some compilers
+  * fix some issues with the sphinx config</comment>
+    <requestid>1157752</requestid>
+  </revision>
 </revisionlist>

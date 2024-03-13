@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 13 19:02:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.2:
+  * upgrade rapidfuzz-cpp which includes a fix for build issues
+    on some compilers
+  * fix some issues with the sphinx config
+
+-------------------------------------------------------------------
 Sun Jan 21 10:46:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.6.1:
