@@ -1,7 +1,7 @@
 #
 # spec file for package python-influxdb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ Source:         https://files.pythonhosted.org/packages/source/i/influxdb/influx
 # https://github.com/influxdata/influxdb-python/pull/835
 Patch0:         python-influxdb-remove-nose.patch
 # PATCH-FIX-UPSTREAM influxdb-pr845-pandas-future.patch -- gh#influxdb/influxdb-python#845
-Patch1:         https://github.com/influxdata/influxdb-python/pull/845.patch#/influxdb-pr845-pandas-future.patch
+Patch1:         influxdb-pr845-pandas-future.patch
 # do not require six (repo archived in favour of influxdb2, not reporting)
 Patch2:         python-influxdb-no-six.patch
 # fix tests with newer pandas

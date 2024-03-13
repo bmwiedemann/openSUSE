@@ -155,4 +155,14 @@
     <comment></comment>
     <requestid>1147526</requestid>
   </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>0dd586fd8750f176b0a1b89b23f4f5fc</srcmd5>
+    <version>5.3.1</version>
+    <time>1710364664</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1156405 from bnavigator
+
+- Update python-influxdb-new-pandas.patch once more</comment>
+    <requestid>1157038</requestid>
+  </revision>
 </revisionlist>

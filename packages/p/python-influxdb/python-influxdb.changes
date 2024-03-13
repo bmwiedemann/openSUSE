@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  8 15:47:41 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update python-influxdb-new-pandas.patch once more
+
+-------------------------------------------------------------------
 Sun Feb 18 12:38:12 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip python312 flavor. This legacy package is not compatible with

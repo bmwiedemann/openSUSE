@@ -7,11 +7,11 @@ Subject: [PATCH] Fix FutureWarning from pandas
  influxdb/_dataframe_client.py | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/influxdb/_dataframe_client.py b/influxdb/_dataframe_client.py
-index e7ae9c17..1363cbf0 100644
---- a/influxdb/_dataframe_client.py
-+++ b/influxdb/_dataframe_client.py
-@@ -305,7 +305,7 @@ def _convert_dataframe_to_json(dataframe,
+Index: influxdb-5.3.1/influxdb/_dataframe_client.py
+===================================================================
+--- influxdb-5.3.1.orig/influxdb/_dataframe_client.py
++++ influxdb-5.3.1/influxdb/_dataframe_client.py
+@@ -305,7 +305,7 @@ class DataFrameClient(InfluxDBClient):
               'time': np.int64(ts.value / precision_factor)}
              for ts, tag, (_, rec) in zip(
                  dataframe.index,
@@ -20,3 +20,16 @@ index e7ae9c17..1363cbf0 100644
                  dataframe[field_columns].iterrows()
              )
          ]
+Index: influxdb-5.3.1/influxdb/tests/dataframe_client_test.py
+===================================================================
+--- influxdb-5.3.1.orig/influxdb/tests/dataframe_client_test.py
++++ influxdb-5.3.1/influxdb/tests/dataframe_client_test.py
+@@ -334,7 +334,7 @@ class TestDataFrameClient(unittest.TestC
+                 ['some', "2", 2, None],               # skip None
+                 ['', "2", 2, None],                   # all tags empty
+             ],
+-            index=pd.period_range(now, freq='H', periods=5),
++            index=pd.period_range(now, freq='h', periods=5),
+             columns=["tag_one", "column_one", "column_two", "tag_three"]
+         )
+ 
