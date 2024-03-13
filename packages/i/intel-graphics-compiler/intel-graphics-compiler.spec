@@ -19,9 +19,9 @@
 %global llvm_commit llvmorg-14.0.5
 %global opencl_clang_commit cf95b338d14685e4f3402ab1828bef31d48f1fd6
 %global spirv_llvm_translator_commit 493353d7fdc655f9f31abc874dd0adef7dd241c1
-%global vc_intrinsics_commit v0.14.0
+%global vc_intrinsics_commit v0.16.0
 Name:           intel-graphics-compiler
-Version:        1.0.15610.11
+Version:        1.0.15985.7
 Release:        1%{?dist}
 Summary:        Intel Graphics Compiler for OpenCL
 License:        MIT
