@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Mar  9 20:36:14 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 25.3:
+  * Possibly breaking changes to: C++, Java, PHP, Python, Ruby
+  * message.UnknownFields() is deprecated in pure Python and C++
+    extensions, it will be removed in v26. Use the new
+    UnknownFieldSet(message) support in unknown_fields.py as a
+    replacement
+- make python and java packages noarch
+- drop add-missing-stdint-header.patch no longer required
+
+-------------------------------------------------------------------
 Fri Mar  8 16:25:26 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 25.2:

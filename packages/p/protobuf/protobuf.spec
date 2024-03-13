@@ -24,17 +24,16 @@
 %bcond_without python3
 %{?sle15_python_module_pythons}
 Name:           protobuf
-Version:        25.2
-%global         sover 25_2_0
+Version:        25.3
+%global         sover 25_3_0
 Release:        0
 Summary:        Protocol Buffers - Google's data interchange format
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/protocolbuffers/protobuf
-Source0:        https://github.com/protocolbuffers/protobuf/archive/v%{version}.tar.gz#/%{tarname}-%{version}.tar.gz
+Source0:        https://github.com/protocolbuffers/protobuf/releases/download/v%{version}/%{tarname}-%{version}.tar.gz
 Source1:        manifest.txt.in
 Source2:        baselibs.conf
-Patch0:         add-missing-stdint-header.patch
 BuildRequires:  %{python_module abseil}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module python-dateutil}
@@ -118,6 +117,7 @@ RPC protocols and file formats.
 Version:        4.%{VERSION}
 Summary:        Python Bindings for Google Protocol Buffers
 Group:          Development/Libraries/Python
+BuildArch:      noarch
 
 %description -n python-%{name}
 This package contains the Python bindings for Google Protocol Buffers.
@@ -128,6 +128,7 @@ This package contains the Python bindings for Google Protocol Buffers.
 Version:        4.%{VERSION}
 Summary:        Python3 Bindings for Google Protocol Buffers
 Group:          Development/Libraries/Python
+BuildArch:      noarch
 
 %description -n python3-%{name}
 This package contains the Python bindings for Google Protocol Buffers.
@@ -137,6 +138,7 @@ This package contains the Python bindings for Google Protocol Buffers.
 Summary:        Java Bindings for Google Protocol Buffers
 Group:          Development/Libraries/Java
 Requires:       java >= 1.6.0
+BuildArch:      noarch
 
 %description -n %{name}-java
 This package contains the Java bindings for Google Protocol Buffers.
