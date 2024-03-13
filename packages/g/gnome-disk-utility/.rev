@@ -676,4 +676,12 @@
     <comment>Update to 45.1 (forwarded request 1130200 from dimstar)</comment>
     <requestid>1130315</requestid>
   </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>6d97f4004cc5952f8db0b988554454d5</srcmd5>
+    <version>45.1</version>
+    <time>1710364600</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1157138</requestid>
+  </revision>
 </revisionlist>

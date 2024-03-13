@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 12 08:58:30 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Move install commands into %install section
+
+-------------------------------------------------------------------
 Fri Dec  1 10:43:17 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 45.1:

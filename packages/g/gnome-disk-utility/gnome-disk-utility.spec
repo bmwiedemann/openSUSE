@@ -68,11 +68,11 @@ dealing with storage devices.
 %install
 %meson_install
 
+%find_lang %{name} %{?no_lang_C}
+
 %check
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.gnome.DiskUtility.appdata.xml
 desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
-
-%find_lang %{name} %{?no_lang_C}
 
 %files
 %license COPYING
