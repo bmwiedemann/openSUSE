@@ -57,4 +57,14 @@
   * Confirmed support for Django 4.0.</comment>
     <requestid>1055867</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>cdf8a2c118cec21f559d194eedd4c2b0</srcmd5>
+    <version>2.2.0</version>
+    <time>1710364862</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1157623</requestid>
+  </revision>
 </revisionlist>
