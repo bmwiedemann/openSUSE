@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 11 20:19:37 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.77
+  * The 32-point sinc resampling interpolator was reduced to
+    16-point again because of the trade-off not being big enough,
+    and it was slightly wrongly implemented and would alias a
+    little bit in some cases. I'll implement a better sinc
+    interpolator in the future, if I ever stumble across a nice
+    and simple implementation.
+
+-------------------------------------------------------------------
 Fri Feb 23 21:04:00 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.76
