@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 12 03:36:09 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update LLVM version macro to support SLE (bsc#1220746)
+
+-------------------------------------------------------------------
 Tue Feb 27 14:50:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Have the -devel package require llvm%{llvm_major_version}-devel:

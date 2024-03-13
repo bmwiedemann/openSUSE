@@ -26,12 +26,26 @@
 %{!?with_lua: %global with_lua 0}
 %endif
 
-# Use the latest default LLVM version available, unless it is not yet
-# supported by bcc.
-%if 0%{?product_libs_llvm_ver} > 17
-%define llvm_major_version 17
-%else
+# Use default LLVM on openSUSE unless it is not yet supported
+%if 0%{?suse_version} >= 1600 || 0%{?is_opensuse}
+ %if 0%{?product_libs_llvm_ver} > 17
+ %define llvm_major_version 17
+ %else
  %define llvm_major_version %{nil}
+ %endif
+%else
+ # Hard-code latest LLVM for SLES, the default version is too old
+ %if 0%{?sle_version} == 150600
+  %define llvm_major_version 17
+ %else
+ %if 0%{?sle_version} == 150500
+  %define llvm_major_version 15
+ %else
+ %if 0%{?sle_version} == 150400
+  %define llvm_major_version 11
+ %endif
+ %endif
+ %endif
 %endif
 
 Name:           bcc
