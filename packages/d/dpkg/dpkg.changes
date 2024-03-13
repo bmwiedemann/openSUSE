@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 11 03:51:46 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to version 1.22.5.
+  The full changelog is very large. Please check it here:
+  https://git.dpkg.org/cgit/dpkg/dpkg.git/tree/debian/changelog?h=1.22.5
+  Version 1.22.5 includes all the changes from 1.22.4 and 1.22.3.
+  These may be found here:
+  https://git.dpkg.org/cgit/dpkg/dpkg.git/tree/debian/changelog?h=1.22.4
+  https://git.dpkg.org/cgit/dpkg/dpkg.git/tree/debian/changelog?h=1.22.3
+- Refresh openssl.patch so it would apply cleanly.
+
+-------------------------------------------------------------------
 Tue Feb 27 18:43:19 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Prepare for RPM 4.20. 
