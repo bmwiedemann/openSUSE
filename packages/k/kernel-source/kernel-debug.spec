@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.7
-%define patchversion 6.7.7
-%define git_commit 1ff84c539098385746e3fa3aaf975296fb8e6791
+%define patchversion 6.7.9
+%define git_commit 6049de6df9e2c9bf3b5a2534fd3cdc21c68a7421
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -55,7 +55,7 @@
 %global cpu_arch %(%_sourcedir/arch-symbols %_target_cpu)
 %define cpu_arch_flavor %cpu_arch/%build_flavor
 
-%global certs %( for f in %_sourcedir/*.crt; do                                                         \
+%global certs %( space="" ; for f in %_sourcedir/*.crt; do                                              \
     if ! test -e "$f"; then                                                                             \
         continue                                                                                        \
     fi                                                                                                  \
@@ -69,7 +69,7 @@
     cat "$f" >>%_sourcedir/.kernel_signing_key.pem                                                      \
     mkdir -p %_sourcedir/.kernel_signing_certs                                                          \
     openssl x509 -inform PEM -in "$f" -outform DER -out %_sourcedir/.kernel_signing_certs/"$cert".crt   \
-    echo -n "$cert" ""                                                                                  \
+    echo -n "$space$cert" ; space=" "                                                                   \
 done )
 
 %ifarch %ix86 x86_64
@@ -113,9 +113,9 @@ Name:           kernel-debug
 Summary:        A Debug Version of the Kernel
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.7.7
+Version:        6.7.9
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g1ff84c5
+Release:        <RELEASE>.g6049de6
 %else
 Release:        0
 %endif

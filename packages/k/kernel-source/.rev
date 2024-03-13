@@ -6546,4 +6546,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.7.7 &amp; other fixes</comment>
     <requestid>1154143</requestid>
   </revision>
+  <revision rev="724" vrev="1">
+    <srcmd5>f8e6f8f46dcdbf66bb83581ecbe08640</srcmd5>
+    <version>6.7.9</version>
+    <time>1710364573</time>
+    <user>anag+factory</user>
+    <comment>6.7.9 &amp; other fixes</comment>
+    <requestid>1157154</requestid>
+  </revision>
 </revisionlist>
