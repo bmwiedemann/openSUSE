@@ -1109,4 +1109,41 @@
   | RPL-S/HX       | C0       | 06-bf-02/07 | 0000002e | 00000032 | Core Gen12 (forwarded request 1126539 from msmeissn)</comment>
     <requestid>1126540</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>846ddb41809afb017ef41849d0b52115</srcmd5>
+    <version>20240312</version>
+    <time>1710364628</time>
+    <user>anag+factory</user>
+    <comment>- Updated to Intel CPU Microcode 20240312 release. (bsc#1221323)
+  - Security updates for INTEL-SA-INTEL-SA-00972 https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00972.html
+    - CVE-2023-39368: Protection mechanism failure of bus lock regulator
+      for some Intel Processors may allow an unauthenticated user to
+      potentially enable denial of service via network access
+  - Security updates for INTEL-SA-INTEL-SA-00982 https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00982.html
+    - CVE-2023-38575: Non-transparent sharing of return predictor targets
+      between contexts in some Intel Processors may allow an authorized
+      user to potentially enable information disclosure via local access.
+  - Security updates for INTEL-SA-INTEL-SA-00898 https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00898.html
+    - CVE-2023-28746: Information exposure through microarchitectural
+      state after transient execution from some register files for some
+      Intel Atom Processors may allow an authenticated user to potentially
+      enable information disclosure via local access.
+  - Security updates for INTEL-SA-INTEL-SA-00960 https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00960.html
+    - CVE-2023-22655 Protection mechanism failure in some 3rd and 4th
+      Generation Intel Xeon Processors when using Intel SGX or Intel TDX
+      may allow a privileged user to potentially enable escalation of
+      privilege via local access.
+  - Security updates for INTEL-SA-INTEL-SA-01045 https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01045.html
+    - CVE-2023-43490: Incorrect calculation in microcode keying mechanism
+      for some Intel Xeon D Processors with Intel® SGX may allow a
+      privileged user to potentially enable information disclosure via
+      local access.
+  - Update for functional issues. Refer to Intel Core Ultra Processor https://cdrdv2.intel.com/v1/dl/getContent/792254 for details.
+  - Update for functional issues. Refer to 13th Generation Intel Core Processor Specification Update https://cdrdv2.intel.com/v1/dl/getContent/740518 for details.
+  - Update for functional issues. Refer to 12th Generation Intel Core Processor Family https://cdrdv2.intel.com/v1/dl/getContent/682436 for details.
+  - Update for functional issues. Refer to 11th Gen Intel Core Processor Specification Update https://cdrdv2.intel.com/v1/dl/getContent/631123 for details.
+  - Update for functional issues. Refer to 10th Gen Intel Core Processor Families Specification Update https://cdrdv2.intel.com/v1/dl/getContent/341079 for details.
+  - Update for functional issues. Refer to 10th Generation Intel Core Processor Specification Update https://cdrdv2.intel.com/v1/dl/getContent/615213 for details. (forwarded request 1157540 from msmeissn)</comment>
+    <requestid>1157541</requestid>
+  </revision>
 </revisionlist>
