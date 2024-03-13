@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Mar 11 07:44:23 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 2.24.7:
+  * chore(deps): upgrade go to 1.21.8 (#11578)
+  * ci(deps): bump moby/moby & docker/cli to v25.0.4 (#11566)
+  * Add test summary for test jobs in ci
+  * make code simpler
+  * avoid duplicated "xx exited with code 0" message
+  * introduce --watch
+  * move code into small functions for better readability
+  * restore support for `config --no-interpolate`
+  * remove docker cli step in ci.yml
+  * get log to manage `attach`
+  * bump compose-go to version v2.0.0-rc.8
+  * use an dedicated compose file --quiet-pull e2e test
+  * Add a fallback check of Watch pid on Windows False positives were detected when checking the previous watch process state
+  * add support of QuietOption to create command
+  * pass QuietOption when starting dependencies from run command
+  * when ran with ANSI disabled, force progress=plain
+  * Issue-11374: Modified compose up command to respect COMPOSE_REMOVE_ORPHANS environment variable
+  * ci: bump engine version to `25.0.3`
+  * sort containers to optimize scale down
+  * discard stdout for laaarge log test
+
+-------------------------------------------------------------------
 Sun Feb 18 17:47:17 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.24.6:
