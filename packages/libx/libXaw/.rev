@@ -133,4 +133,13 @@
   * issue #6: fix typo in XawMax parameter in GetBlockBoundaries</comment>
     <requestid>1072299</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7412123a080dff54d3f466ee93ef3e2d</srcmd5>
+    <version>1.0.16</version>
+    <time>1710364587</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.16
+  * Code-cleanup and build-fixes ...</comment>
+    <requestid>1156887</requestid>
+  </revision>
 </revisionlist>
