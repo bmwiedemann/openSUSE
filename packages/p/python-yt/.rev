@@ -178,4 +178,14 @@ https://github.com/yt-project/yt/releases.
     <comment></comment>
     <requestid>1147119</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>5ab84e652f9be457c80c088f1197494b</srcmd5>
+    <version>4.3.0</version>
+    <time>1710364670</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1156425 from bnavigator
+
+- Skip python39: no longer supported since ipython 8.19</comment>
+    <requestid>1157041</requestid>
+  </revision>
 </revisionlist>

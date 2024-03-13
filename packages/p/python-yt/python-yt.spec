@@ -24,6 +24,7 @@
 %bcond_with test
 %define psuffix %{nil}
 %endif
+%define skip_python39 1
 
 # avoid "lto1: internal compiler error" during build
 %global _lto_cflags %{nil}
