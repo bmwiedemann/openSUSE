@@ -1,7 +1,7 @@
 #
 # spec file for package python-template-remover
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-template-remover
 Version:        0.1.9
 Release:        0
 Summary:        Remove the template markup from html files
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/deezer/template-remover
 Source:         https://files.pythonhosted.org/packages/source/t/template-remover/template-remover-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/deezer/template-remover/master/LICENSE
+Patch0:         fix-test-assertion-methods.patch
 BuildRequires:  %{python_module docopt >= 0.6.1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-docopt >= 0.6.1
@@ -45,14 +46,14 @@ however they do not play well when there is language markup. This projects aims
 to be a simple way of getting rid of those markups.
 
 %prep
-%setup -q -n template-remover-%{version}
+%autosetup -p1 -n template-remover-%{version}
 cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 mv %{buildroot}%{_bindir}/remove_template.py %{buildroot}%{_bindir}/remove_template
 %python_clone -a %{buildroot}%{_bindir}/remove_template
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -70,6 +71,8 @@ mv %{buildroot}%{_bindir}/remove_template.py %{buildroot}%{_bindir}/remove_templ
 %license LICENSE
 %doc README.rst
 %python_alternative %{_bindir}/remove_template
-%{python_sitelib}/*
+%{python_sitelib}/template_remover.py
+%pycache_only %{python_sitelib}/__pycache__/template_remover.*.py*
+%{python_sitelib}/template_remover-%{version}.dist-info
 
 %changelog

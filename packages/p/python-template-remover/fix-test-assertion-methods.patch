@@ -1,0 +1,125 @@
+Index: template-remover-0.1.9/test/test_template_remover.py
+===================================================================
+--- template-remover-0.1.9.orig/test/test_template_remover.py
++++ template-remover-0.1.9/test/test_template_remover.py
+@@ -37,7 +37,7 @@ class TestTemplateRemover(unittest.TestC
+             template_remover.clean_php('<?php')
+ 
+     def test_clean_php_inline_echo(self):
+-        self.assertEquals(
++        self.assertEqual(
+             '<a href="00000000000">Link</a>',
+             template_remover.clean_php('<a href="<?= $foo ?>">Link</a>')
+         )
+@@ -47,46 +47,46 @@ class TestTemplateRemover(unittest.TestC
+             template_remover.clean_php('<a href="<?= $foo \n')
+ 
+     def test_clean_php_echo(self):
+-        self.assertEquals(
++        self.assertEqual(
+             '<a href="0000000000000000000">Link</a>',
+             template_remover.clean_php('<a href="<?php echo $foo; ?>">Link</a>')
+         )
+ 
+     def test_clean_php_short_echo(self):
+-        self.assertEquals(
++        self.assertEqual(
+             '<a href="0000000000000000">Link</a>',
+             template_remover.clean_php('<a href="<? echo $foo; ?>">Link</a>')
+         )
+ 
+     def test_clean_php_inline_echo_mixed(self):
+-        self.assertEquals(
++        self.assertEqual(
+             '         <a href="00000000000">Link</a>',
+             template_remover.clean_php(
+                 ' <?php ?><a href="<?= $foo ?>">Link</a>')
+         )
+ 
+     def test_clean_php_control(self):
+-        self.assertEquals(
++        self.assertEqual(
+             '                      <a href="#next">Next</a>',
+             template_remover.clean_php(
+                 '<?php if ($a > 1) { ?><a href="#next">Next</a><?php } ?>')
+         )
+ 
+     def test_clean_php_short_tags(self):
+-        self.assertEquals(
++        self.assertEqual(
+             'a       b',
+             template_remover.clean_php('a <? ?> b')
+         )
+ 
+     def test_clean_php_control_multiline(self):
+-        self.assertEquals(
++        self.assertEqual(
+             '\n\n',
+             template_remover.clean_php(
+                 '  <?php if ($a > 1) {    \n echo "foo"\n  } ?>')
+         )
+ 
+     def test_clean_php_multiline(self):
+-        self.assertEquals(
++        self.assertEqual(
+             '                      <a href="#next">Next</a>\n' +
+             '<a href="00000000000">Link</a>',
+             template_remover.clean_php(
+@@ -95,23 +95,23 @@ class TestTemplateRemover(unittest.TestC
+         )
+ 
+     def test_spaces_are_preserved(self):
+-        self.assertEquals(
++        self.assertEqual(
+             '  \t\n    ',
+             template_remover.clean_php('  \t\n    ')
+         )
+ 
+     def test_php_control_at_end(self):
+-        self.assertEquals(
++        self.assertEqual(
+             '            placeholder  ',
+             template_remover.clean_php('  <?php ?>  placeholder  ')
+         )
+ 
+     def test_unicode(self):
+-        self.assertEquals(
++        self.assertEqual(
+             'ni\xf1o',
+             template_remover.clean_php('ni\xf1o')
+         )
+-        self.assertEquals(
++        self.assertEqual(
+             '\xe9',
+             template_remover.clean_php('\xe9')
+         )
+@@ -135,7 +135,7 @@ class TestTemplateRemover(unittest.TestC
+ 
+           
+         '''
+-        self.assertEquals(expected, template_remover.clean_php(template))
++        self.assertEqual(expected, template_remover.clean_php(template))
+ 
+     def test_jinja_comprehensive(self):
+         template = '''<html>
+@@ -156,12 +156,12 @@ class TestTemplateRemover(unittest.TestC
+ 
+           
+         '''
+-        self.assertEquals(expected, template_remover.clean_jinja(template))
++        self.assertEqual(expected, template_remover.clean_jinja(template))
+ 
+     def test_jinja_does_not_complain_with_double_braces(self):
+         template = '<script>var dict={foo:{}}</script>'
+         expected = '<script>var dict={foo:{}}</script>'
+-        self.assertEquals(expected, template_remover.clean_jinja(template))
++        self.assertEqual(expected, template_remover.clean_jinja(template))
+ 
+     def test_mako_comprehensive(self):
+         template = '''<html>
+@@ -200,4 +200,4 @@ class TestTemplateRemover(unittest.TestC
+ 
+           
+         '''
+-        self.assertEquals(expected, template_remover.clean_mako(template))
++        self.assertEqual(expected, template_remover.clean_mako(template))

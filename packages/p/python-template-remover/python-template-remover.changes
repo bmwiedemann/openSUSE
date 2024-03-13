@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 13 02:58:02 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+- Add patch fix-test-assertion-methods.patch, don't use removed assertion
+  methods.
+
+-------------------------------------------------------------------
 Wed Jun  3 09:12:40 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - replace nose with pytest

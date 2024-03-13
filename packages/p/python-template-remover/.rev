@@ -27,4 +27,15 @@
     <comment></comment>
     <requestid>811090</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7a565714b5fce4becc2aa2a27e3ec20a</srcmd5>
+    <version>0.1.9</version>
+    <time>1710364758</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+- Add patch fix-test-assertion-methods.patch, don't use removed assertion
+  methods.</comment>
+    <requestid>1157395</requestid>
+  </revision>
 </revisionlist>
