@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Mar 12 16:25:39 UTC 2024 - alarrosa@suse.com
+
+- Update to version 0.4.90+git25.95cfa9e:
+  * wpctl: fix settings --help listing
+  * docs: conf_file: small updates
+  * docs: installing: update dependency versions
+  * si-linkables: do not fully reset when the underlying proxy is
+    destroyed
+  * registry: move to a separate file and decouple it from the
+    object manager
+  * log: docs: document the log topic definition macros
+  * monitors/bluez: add 'internal' prefix to internal bluez node
+    names.
+  * monitor/bluez: set node.name property when creating combine
+    stream
+  * meson: bump min pipewire version to 1.0.2
+  * scripts: fix regression in state-routes.lua when marking routes
+    as 'active'
+  * scripts: improve linking logs
+  * monitors: use parseBool for boolean properties in rules 
+  * config: add {device|node}.disable
+  * object-interest: make WP_INTEREST_MATCH_ALL part of the enum 
+  * proxy: make the FEATURES_MINIMAL and FEATURES_ALL constants
+    part of the enum 
+  * log: fix WP_LOG_LEVEL_TRACE value in the g-i bindings 
+  * base-dirs: wrap flag groups in parenthesis 
+  * log.h: define G_LOG_DOMAIN only if
+    WP_USE_LOCAL_LOG_TOPIC_IN_G_LOG is defined 
+  * meson: make sure the boolean options have boolean values 
+  * meson: move the common CFLAGS to project-wide scope
+  * scripts: make sure target is not nil when iterating filters
+    with matching targets
+  * docs: update the documentation around file search locations
+  * scripts: rescan linkables when device EnumRoute param changes 
+  * scripts: fix available routes check when selecting the default
+    node 
+  * scripts: fix typo in rescan-virtual-links.lua
+- Remove patch already included in the upstream version
+  * 0001-scripts-fix-typo-in-rescan-virtual-links.lua.patch
+- Set minimum pipewire version to 1.0.2
+
+-------------------------------------------------------------------
 Wed Mar  6 15:43:02 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Revert that last change. Obsoletes shouldn't be used for that.

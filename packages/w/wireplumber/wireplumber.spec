@@ -16,13 +16,13 @@
 #
 
 
-%define pipewire_minimum_version 0.3.75
+%define pipewire_minimum_version 1.0.2
 %define apiver 0.5
 %define apiver_str 0_5
 %define sover 0
 %define libwireplumber libwireplumber-%{apiver_str}-%{sover}
 Name:           wireplumber
-Version:        0.4.90
+Version:        0.4.90+git25.95cfa9e
 Release:        0
 Summary:        Session / policy manager implementation for PipeWire
 License:        MIT
@@ -30,8 +30,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/pipewire/wireplumber
 Source0:        wireplumber-%{version}.tar.xz
 Source1:        split-config-file.py
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-scripts-fix-typo-in-rescan-virtual-links.lua.patch
 # docs
 BuildRequires:  doxygen
 BuildRequires:  graphviz
