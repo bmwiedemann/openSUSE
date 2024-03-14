@@ -1,7 +1,7 @@
 #
 # spec file for package plasma6-nm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %bcond_without openconnect
 %endif
 Name:           plasma6-nm
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        Plasma applet written in QML for managing network connections
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
@@ -44,8 +44,8 @@ BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
 BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
+BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Declarative) >= %{kf6_version}
@@ -102,8 +102,8 @@ that use the NetworkManager service.
 
 %package openvpn
 Summary:        OpenVPN support for plasma6-nm
-Requires:       plasma6-nm = %{version}
 Requires:       NetworkManager-openvpn
+Requires:       plasma6-nm = %{version}
 Supplements:    (plasma6-nm and NetworkManager-openvpn)
 Provides:       NetworkManager-openvpn-frontend
 Provides:       plasma-nm5-openvpn = %{version}
@@ -117,8 +117,8 @@ OpenVPN plugin for plasma-nm components.
 
 %package vpnc
 Summary:        vpnc support for plasma6-nm
-Requires:       plasma6-nm = %{version}
 Requires:       NetworkManager-vpnc
+Requires:       plasma6-nm = %{version}
 Supplements:    (plasma6-nm and NetworkManager-vpnc)
 Provides:       NetworkManager-vpnc-frontend
 Provides:       plasma-nm5-vpnc = %{version}
@@ -133,9 +133,9 @@ vpnc plugin for plasma-nm components.
 %if %{with openconnect}
 %package openconnect
 Summary:        OpenConnect support for plasma6-nm
-Requires:       plasma6-nm = %{version}
 Requires:       NetworkManager-openconnect
 Requires:       openconnect
+Requires:       plasma6-nm = %{version}
 Supplements:    (plasma6-nm and NetworkManager-openconnect)
 Provides:       NetworkManager-openconnect-frontend
 Provides:       plasma-nm5-openconnect = %{version}
@@ -150,8 +150,8 @@ OpenConnect plugin for plasma-nm components.
 
 %package libreswan
 Summary:        Libreswan support for plasma6-nm
-Requires:       plasma6-nm = %{version}
 Requires:       NetworkManager-libreswan
+Requires:       plasma6-nm = %{version}
 Supplements:    (plasma6-nm and NetworkManager-libreswan)
 Provides:       NetworkManager-libreswan-frontend
 Provides:       plasma-nm5-openswan = %{version}
@@ -165,8 +165,8 @@ Libreswan plugin for plasma-nm components.
 
 %package strongswan
 Summary:        strongSwan support for plasma6-nm
-Requires:       plasma6-nm = %{version}
 Requires:       NetworkManager-strongswan
+Requires:       plasma6-nm = %{version}
 Supplements:    (plasma6-nm and NetworkManager-strongswan)
 Provides:       NetworkManager-strongswan-frontend
 Provides:       plasma-nm5-strongswan = %{version}
@@ -180,8 +180,8 @@ strongSwan plugin for plasma-nm components.
 
 %package l2tp
 Summary:        L2TP support for plasma6-nm
-Requires:       plasma6-nm = %{version}
 Requires:       NetworkManager-l2tp
+Requires:       plasma6-nm = %{version}
 Supplements:    (plasma6-nm and NetworkManager-l2tp)
 Provides:       NetworkManager-l2tp-frontend
 Provides:       plasma-nm5-l2tp = %{version}
@@ -195,8 +195,8 @@ Layer Two Tunneling Protocol (L2TP) plugin for plasma-nm components.
 
 %package pptp
 Summary:        PPTP support for plasma6-nm
-Requires:       plasma6-nm = %{version}
 Requires:       NetworkManager-pptp
+Requires:       plasma6-nm = %{version}
 Supplements:    (plasma6-nm and NetworkManager-pptp)
 Provides:       NetworkManager-pptp-frontend
 Provides:       plasma-nm5-pptp = %{version}
@@ -235,8 +235,8 @@ Secure Sockets Tunneling Protocol (SSTP) plugin for plasma-nm components.
 
 %package iodine
 Summary:        VPN support for plasma6-nm
-Requires:       plasma6-nm = %{version}
 Requires:       NetworkManager-iodine
+Requires:       plasma6-nm = %{version}
 Supplements:    (plasma6-nm and NetworkManager-iodine)
 Provides:       NetworkManager-iodine-frontend
 Obsoletes:      plasma-nm5-iodine < %{version}
