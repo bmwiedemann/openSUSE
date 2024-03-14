@@ -1,11 +1,11 @@
---- src/lpm.c.smb	2023-09-22 17:12:47.369977465 -0400
-+++ src/lpm.c	2023-09-22 17:13:52.603411987 -0400
-@@ -1132,7 +1132,7 @@
+--- src/lpm.c.smb	2024-03-04 11:20:50.790600687 -0500
++++ src/lpm.c	2024-03-04 11:21:18.417544084 -0500
+@@ -1331,7 +1331,7 @@
  
  
  #ifndef LPM_VERSION
 -  #define LPM_VERSION "unknown"
-+  #define LPM_VERSION "1.2.0+git20240225.45d1d50"
++  #define LPM_VERSION "1.2.4+git20240312.f677376"
  #endif
- #ifndef LPM_DEFAULT_REPO
+ #ifndef LPM_DEFAULT_REPOSITORY
    #define LPM_DEFAULT_REPOSITORY "https://github.com/lite-xl/lite-xl-plugin-manager.git:latest"

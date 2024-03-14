@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Wed Mar 13 13:42:08 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.2.4+git20240312.f677376:
+  * Fixed minor issue.
+  * Changed strnstr to strnstr_local because mac apparently has this function defined by default.
+  * Fixed some stuff with chunked encoding.
+  * Fixed the issue with --.
+  * Added in chunked transfer encoding.
+  * Added in json prety-printing.
+  * Added in ability to grab remote plugins.
+  * Refactored argument processing.
+  * Changed to PATHSEP, from comma.
+  * Added in env variable.
+  * Made environment more modular, so lpm plugins can use it correctly.
+  * Updated platform list.
+  * Remove files that don't match checksums.
+  * Removed files that fail checks.
+  * Remove unceessary checks which are part of the common.get function.
+
+-------------------------------------------------------------------
+Fri Mar 08 18:07:45 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.2.4+git20240308.78184f8:
+  * YOLO CI.
+  * Updated CHANGELOG.md.
+  * Restricted check of arched files to only non-optional files.
+  * Fixed issue with rawget, and removed unecessary checksum.
+  * Added in aarch64 support.
+
+-------------------------------------------------------------------
+Thu Mar 07 01:53:20 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.2.3+git20240306.04dcf8e:
+  * Set explicit environment.
+  * Updated CHANGELOG.md.
+  * Messed up pathing.
+  * Fixed a minor bug with downloading when downloads get aborted, and also ensured that download messages on small terminals don't go nuts.
+  * Flush input buffer before prompt.
+  * Should fix bug where we're expecting a string back.
+
+-------------------------------------------------------------------
+Mon Mar 04 16:15:53 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.2.2+git20240303.4ef4e13:
+  * Flushed stdin before reading from prompt.
+  * Updated workflow to strip title line.
+  * Removed File::Slurp.
+  * Check to see if new github action works.
+  * Updated CHANGELOG.md.
+  * Added in ability to explicitly chmod files.
+  * Allowed for disabling of self-upgrade.
+  * Updated CHANGELOG.md.
+  * Fixed things up.
+  * Jesus christ, widnows.
+  * Wrong function.
+  * Simplified ls for windows.
+  * Fixed error with allocating buffer.
+  * Fixed typo.
+  * Added better windows error handling.
+  * Fixed things up a bit.
+  * Updated to tables for common.get.
+  * Added in ability to self-upgrade.
+
+-------------------------------------------------------------------
+Fri Mar 01 19:21:01 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.2.0+git20240301.134c144:
+  * Fixed tests.
+  * Forgot to switch the rest to array.
+  * Possibly addressed issue.
+  * Added in --raw, fixed some table stuff, fixed filtering things, and cleaned up documentation.
+
+-------------------------------------------------------------------
 Mon Feb 26 00:30:37 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 1.2.0+git20240225.45d1d50:

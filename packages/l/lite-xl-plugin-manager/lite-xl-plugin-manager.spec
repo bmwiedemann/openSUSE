@@ -17,7 +17,7 @@
 
 %define baseprogramname lite-xl
 Name:           lite-xl-plugin-manager
-Version:        1.2.0+git20240225.45d1d50
+Version:        1.2.4+git20240312.f677376
 Release:        0
 Summary:        A %{baseprogramname} plugin manager
 %if 0%{?suse_version} > 1500
@@ -59,7 +59,7 @@ Requires:       %{baseprogramname}
 %patch -P 0
 
 %build
-%meson -Dstatic=true 
+%meson -Dstatic=true
 %meson_build
 
 %install

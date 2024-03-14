@@ -85,4 +85,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1154469</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>849325537a571a84351b2567e2077198</srcmd5>
+    <version>1.2.4+git20240312.f677376</version>
+    <time>1710434669</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.4+git20240312.f677376:
+  * Fixed minor issue.
+  * Changed strnstr to strnstr_local because mac apparently has this function defined by default.
+  * Fixed some stuff with chunked encoding.
+  * Fixed the issue with --.
+  * Added in chunked transfer encoding.
+  * Added in json prety-printing.
+  * Added in ability to grab remote plugins.
+  * Refactored argument processing.
+  * Changed to PATHSEP, from comma.
+  * Added in env variable.
+  * Made environment more modular, so lpm plugins can use it correctly.
+  * Updated platform list.
+  * Remove files that don't match checksums.
+  * Removed files that fail checks.
+  * Remove unceessary checks which are part of the common.get function.
+
+- Update to version 1.2.4+git20240308.78184f8:
+  * YOLO CI.
+  * Updated CHANGELOG.md.
+  * Restricted check of arched files to only non-optional files.
+  * Fixed issue with rawget, and removed unecessary checksum.
+  * Added in aarch64 support.
+
+- Update to version 1.2.3+git20240306.04dcf8e:
+  * Set explicit environment.
+  * Updated CHANGELOG.md.
+  * Messed up pathing.
+  * Fixed a minor bug with downloading when downloads get aborted, and also ensured that download messages on small terminals don't go nuts.
+  * Flush input buffer before prompt.</comment>
+    <requestid>1157790</requestid>
+  </revision>
 </revisionlist>
