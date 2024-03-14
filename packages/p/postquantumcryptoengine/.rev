@@ -7,4 +7,12 @@
     <comment>dep needed to enable post quantum crypto on linphone</comment>
     <requestid>1132422</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>067c3df3cd5352bad7a8040c5526a805</srcmd5>
+    <version>5.4.0~git.20240108</version>
+    <time>1710434685</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1156867</requestid>
+  </revision>
 </revisionlist>

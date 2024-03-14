@@ -1,7 +1,7 @@
 #
 # spec file for package postquantumcryptoengine
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,21 +15,21 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define sover   1
 
 Name:           postquantumcryptoengine
-Version:        5.2.94
+Version:        5.4.0~git.20240108
 Release:        0
 Summary:        Post-quantum cryptopgraphy extension for bctoolbox
 License:        GPL-3.0-or-later
 URL:            https://gitlab.linphone.org/BC/public/postquantumcryptoengine
-Source:         https://gitlab.linphone.org/BC/public/postquantumcryptoengine/-/archive/%{version}/%{name}-%{version}.tar.bz2
-Patch0:         set_curret_version.patch
-BuildRequires:  cmake
+Source:         %{name}-%{version}.tar.xz
+BuildRequires:  bctoolbox-devel >= 5.3.7
+BuildRequires:  cmake >= 3.22
 BuildRequires:  gcc-c++
-BuildRequires:  liboqs-devel >= 0.8
 BuildRequires:  libopenssl-devel
-BuildRequires:  bctoolbox-devel >= 5.2.90
+BuildRequires:  liboqs-devel >= 0.8
 
 %description
 An extension to the bctoolbox library providing post-quantum
@@ -62,7 +62,7 @@ This package contains development files for %{name}.
 %build
 %cmake \
   -DCMAKE_SKIP_INSTALL_RPATH=ON \
-  -DENABLE_UNIT_TESTS=NO
+  -DENABLE_UNIT_TESTS=OFF
 %cmake_build
 
 %install
@@ -82,8 +82,8 @@ This package contains development files for %{name}.
 %dir %{_includedir}/%{name}/
 %{_libdir}/lib%{name}.so
 %{_includedir}/%{name}/*
-%dir %{_datadir}/%{name}
-%dir %{_datadir}/%{name}/cmake
-%{_datadir}/%{name}/cmake/*
+%dir %{_datadir}/PostQuantumCryptoEngine
+%dir %{_datadir}/PostQuantumCryptoEngine/cmake
+%{_datadir}/PostQuantumCryptoEngine/cmake/*
 
 %changelog

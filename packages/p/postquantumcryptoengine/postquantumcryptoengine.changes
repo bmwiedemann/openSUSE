@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan 15 08:47:08 UTC 2024 - info@paolostivanin.com
+
+- Update to version 5.4.0~git.20240108:
+  * Update PQC version to 5.4.0
+  * Tester : adapt declarations of suites.
+  * Install PQCrypto tester in bin dir
+  * Improve CMake package config and find_package scripts.
+  * Use VS_WINRT_COMPONENT property instead of deprecated VS_WINRT_EXTENSIONS.
+  * Do not build tester on Android and iOS.
+  * Update CMakeLists.txt so that the project can be added as a subdirectory of linphone-sdk.
+  * Enable compiler option '-Wunused-parameter'
+  * Add license
+- Drop set_curret_version.patch
+
+-------------------------------------------------------------------
 
 Thu Nov  9 06:28:07 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
