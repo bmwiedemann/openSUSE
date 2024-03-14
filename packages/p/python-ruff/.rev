@@ -676,4 +676,41 @@
    * Remove build from the default exclusion list</comment>
     <requestid>1155592</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5a7c34226b242c8ccd179f60f8628a56</srcmd5>
+    <version>0.3.2</version>
+    <time>1710434540</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.3.2
+ * Preview features
+   * Improve single-with item formatting for Python 3.8 or older 
+ * Rule changes
+   * [pyupgrade] Allow fixes for f-string rule regardless of line length (UP032) 
+   * [pycodestyle] Include actual conditions in E712 diagnostics 
+ * Bug fixes
+   * Fix trailing kwargs end of line comment after slash 
+   * Fix unstable with items formatting 
+   * Avoid repeating function calls in f-string conversions 
+   * Fix E203 false positive for slices in format strings 
+   * Fix incorrect Parameter range for *args and **kwargs 
+   * Treat typing.Annotated subscripts as type definitions 
+ * 0.3.1
+ * Preview features
+   * [pycodestyle] Fix E301 not triggering on decorated methods. 
+   * [pycodestyle] Respect isort settings in blank line rules (E3*) 
+   * [pycodestyle] Make blank lines in typing stub files optional (E3*) 
+   * [pylint] Implement singledispatch-method (E1519) 
+   * [pylint] Implement useless-exception-statement (W0133) 
+ * Rule changes
+   * [flake8-debugger] Check for use of debugpy and ptvsd debug modules  
+   * [pyupgrade] Generate diagnostic for all valid f-string conversions regardless of line length (UP032) 
+   * [pep8_naming] Add fixes for N804 and N805 
+ * CLI
+   * Colorize the output of ruff format --diff 
+   * Make --config and --isolated global flags 
+   * Correctly expand tildes and environment variables in paths passed to --config 
+ * Configuration
+   * Accept a PEP 440 version specifier for required-version</comment>
+    <requestid>1156882</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Mar 11 08:52:49 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.3.2
+ * Preview features
+   * Improve single-with item formatting for Python 3.8 or older 
+ * Rule changes
+   * [pyupgrade] Allow fixes for f-string rule regardless of line length (UP032) 
+   * [pycodestyle] Include actual conditions in E712 diagnostics 
+ * Bug fixes
+   * Fix trailing kwargs end of line comment after slash 
+   * Fix unstable with items formatting 
+   * Avoid repeating function calls in f-string conversions 
+   * Fix E203 false positive for slices in format strings 
+   * Fix incorrect Parameter range for *args and **kwargs 
+   * Treat typing.Annotated subscripts as type definitions 
+ * 0.3.1
+ * Preview features
+   * [pycodestyle] Fix E301 not triggering on decorated methods. 
+   * [pycodestyle] Respect isort settings in blank line rules (E3*) 
+   * [pycodestyle] Make blank lines in typing stub files optional (E3*) 
+   * [pylint] Implement singledispatch-method (E1519) 
+   * [pylint] Implement useless-exception-statement (W0133) 
+ * Rule changes
+   * [flake8-debugger] Check for use of debugpy and ptvsd debug modules  
+   * [pyupgrade] Generate diagnostic for all valid f-string conversions regardless of line length (UP032) 
+   * [pep8_naming] Add fixes for N804 and N805 
+ * CLI
+   * Colorize the output of ruff format --diff 
+   * Make --config and --isolated global flags 
+   * Correctly expand tildes and environment variables in paths passed to --config 
+ * Configuration
+   * Accept a PEP 440 version specifier for required-version 
+   * Implement isort's default-section setting 
+ * Bug fixes
+   * Remove trailing space from CapWords message 
+   * Respect external codes in file-level exemptions 
+   * [flake8-raise] Avoid false-positives for parens-on-raise with future.exception() (RSE102) 
+   * [pylint] Add fix for unary expressions in PLC2801 
+   * [ruff] Fix RUF028 not allowing # fmt: skip on match cases 
+
+-------------------------------------------------------------------
+Fri Mar  8 16:57:10 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove limitations on building (do not exclude any arch beforehand).
+
+-------------------------------------------------------------------
 Wed Mar  6 14:20:44 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.3.0
