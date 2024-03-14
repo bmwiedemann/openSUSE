@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 14 09:15:13 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- tc-no-TCA_CBQ.patch: Disable TCA_CBQ code if kernel headers don't 
+  support them.
+
+-------------------------------------------------------------------
 Fri Dec  8 10:47:35 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Install udhcpc and udhcpc6 into the same directory

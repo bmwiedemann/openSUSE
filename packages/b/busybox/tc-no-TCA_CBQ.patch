@@ -1,0 +1,18 @@
+--- busybox-1.36.1/networking/tc.c.old	2023-01-03 15:14:43.000000000 +0100
++++ busybox-1.36.1/networking/tc.c	2024-03-14 10:04:19.733155657 +0100
+@@ -233,6 +233,7 @@
+ #endif
+ static int cbq_print_opt(struct rtattr *opt)
+ {
++#ifdef TCA_CBQ_MAX
+ 	struct rtattr *tb[TCA_CBQ_MAX+1];
+ 	struct tc_ratespec *r = NULL;
+ 	struct tc_cbq_lssopt *lss = NULL;
+@@ -320,6 +321,7 @@
+ 		}
+ 	}
+  done:
++#endif
+ 	return 0;
+ }
+ 

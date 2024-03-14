@@ -1,7 +1,7 @@
 #
 # spec file for package busybox
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +45,7 @@ Patch2:         testsuite-gnu-echo.patch
 # PATCH-FIX-UPSTREAM shell: avoid segfault on ${0::0/0~09J} (CVE-2022-48174) https://git.busybox.net/busybox/commit/?id=d417193cf
 Patch3:         ash-fix-segfault-d417193cf.patch
 Patch4:         udhcp6-install-path.patch
+Patch5:         tc-no-TCA_CBQ.patch
 # other patches
 Patch100:       busybox.install.patch
 Provides:       useradd_or_adduser_dep

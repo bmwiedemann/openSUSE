@@ -844,4 +844,13 @@
     <comment></comment>
     <requestid>1132110</requestid>
   </revision>
+  <revision rev="86" vrev="4">
+    <srcmd5>3a7f0662bdb5780d4aa79319903de7b1</srcmd5>
+    <version>1.36.1</version>
+    <time>1710434636</time>
+    <user>anag+factory</user>
+    <comment>- tc-no-TCA_CBQ.patch: Disable TCA_CBQ code if kernel headers don't 
+  support them.</comment>
+    <requestid>1157908</requestid>
+  </revision>
 </revisionlist>
