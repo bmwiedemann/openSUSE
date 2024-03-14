@@ -740,4 +740,12 @@
     <comment>- Update to kernel headers 6.7 (forwarded request 1138172 from Andreas_Schwab)</comment>
     <requestid>1138173</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>1d974f6ce4a27d9987b33864719e165a</srcmd5>
+    <version>6.8</version>
+    <time>1710434635</time>
+    <user>anag+factory</user>
+    <comment>- Update to kernel headers 6.8 (forwarded request 1157025 from Andreas_Schwab)</comment>
+    <requestid>1157026</requestid>
+  </revision>
 </revisionlist>
