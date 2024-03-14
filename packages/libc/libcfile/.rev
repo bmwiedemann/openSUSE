@@ -135,4 +135,13 @@ part of summer 2013 libyal refresh for opensuse 13.1</comment>
     <comment>- Update to release 20240106</comment>
     <requestid>1137224</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>197f1dce3ad6771895fcf69a80fcd873</srcmd5>
+    <version>20240106</version>
+    <time>1710434724</time>
+    <user>anag+factory</user>
+    <comment>- Fix buildrequirement on libcfile
+- Modernize %post(un) section</comment>
+    <requestid>1157906</requestid>
+  </revision>
 </revisionlist>

@@ -29,7 +29,7 @@ Source2:        https://github.com/libyal/libcfile/releases/download/%version/%n
 Source3:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20220101
+BuildRequires:  pkgconfig(libcerror) >= 20240101
 BuildRequires:  pkgconfig(libclocale) >= 20210526
 BuildRequires:  pkgconfig(libcnotify) >= 20210411
 BuildRequires:  pkgconfig(libuna) >= 20210801
@@ -48,7 +48,7 @@ A library for C file functions. Part of the libyal library collection.
 %package devel
 Summary:        Development files for libcfile, a C file library
 Group:          Development/Libraries/C and C++
-Requires:       %lname = %{version}
+Requires:       %lname = %version
 
 %description devel
 A library for C file functions.
@@ -67,19 +67,18 @@ grep '  local' config.log && exit 1
 
 %install
 %make_install
-rm -f "%{buildroot}/%{_libdir}"/*.la
+rm -f "%buildroot/%_libdir"/*.la
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING.LESSER
-%{_libdir}/libcfile.so.1*
+%_libdir/libcfile.so.1*
 
 %files devel
-%{_includedir}/libcfile*
-%{_libdir}/libcfile.so
-%{_libdir}/pkgconfig/libcfile.pc
-%{_mandir}/man3/libcfile.3*
+%_includedir/libcfile*
+%_libdir/libcfile.so
+%_libdir/pkgconfig/libcfile.pc
+%_mandir/man3/libcfile.3*
 
 %changelog
