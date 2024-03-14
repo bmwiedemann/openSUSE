@@ -134,7 +134,7 @@ sed -i '/rspec/ s/~>/>=/' %{vagrant_plugin_name}.gemspec
 export GEM_PATH=%{vagrant_plugin_dir}:`ruby.%{vagrant_rb_ruby_suffix} -e "print Gem.path.join(':')"`
 bundle exec rspec spec
 
-rm %{vagrant_plugin_name}.gemspec
+rm %{vagrant_plugin_name}.gemspec Gemfile.lock
 popd
 
 %files

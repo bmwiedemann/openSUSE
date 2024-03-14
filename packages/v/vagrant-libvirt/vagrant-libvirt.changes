@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 14 09:14:21 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Avoid influences from %check on the package
+
+-------------------------------------------------------------------
 Wed Feb 22 16:50:22 UTC 2023 - Dan Čermák <dcermak@suse.com>
 
 - Add patch to fix test failures with Ruby 3.2
