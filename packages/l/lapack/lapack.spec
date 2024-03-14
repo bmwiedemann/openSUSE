@@ -1,7 +1,7 @@
 #
 # spec file for package lapack
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,6 +43,8 @@ Patch4:         Avoid-out-of-bounds-accesses-in-complex-EIG-tests.patch
 Patch5:         Fix-out-of-bounds-read.patch
 # PATCH-FIX-UPSTREAM
 Patch6:         https://github.com/Reference-LAPACK/lapack/commit/87536aa3c8bb.patch#/Restore_missing_deprecated_prototypes.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/Reference-LAPACK/lapack/commit/64e8a7500d817869e5fcde35afd39af8bc7a8086
+Patch7:         Fix-testing-input.patch
 
 BuildRequires:  gcc-fortran
 BuildRequires:  python3-base

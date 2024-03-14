@@ -12,7 +12,7 @@ Closes #365
  1 file changed, 100 insertions(+)
 
 diff --git a/LAPACKE/include/lapack.h b/LAPACKE/include/lapack.h
-index 3f425325f..5c131d844 100644
+index 3f425325f4..5c131d8444 100644
 --- a/LAPACKE/include/lapack.h
 +++ b/LAPACKE/include/lapack.h
 @@ -1842,6 +1842,28 @@ void LAPACK_zgeqlf(

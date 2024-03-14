@@ -500,4 +500,12 @@ An alternative would be to use the older manpages or to pre-generate them.
     <comment></comment>
     <requestid>1085186</requestid>
   </revision>
+  <revision rev="57" vrev="10">
+    <srcmd5>b11c575ff8c5b196fd017352c6f273f3</srcmd5>
+    <version>3.9.0</version>
+    <time>1710434575</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1157203</requestid>
+  </revision>
 </revisionlist>
