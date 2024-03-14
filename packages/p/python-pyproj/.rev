@@ -234,4 +234,12 @@ My fault that the package failed Factory acceptance tests. I originally download
     <comment></comment>
     <requestid>1154335</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>f4f3b2395c95bcd85fb79ca3076fd9e8</srcmd5>
+    <version>3.6.1</version>
+    <time>1710434702</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1157876</requestid>
+  </revision>
 </revisionlist>

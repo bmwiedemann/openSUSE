@@ -25,7 +25,7 @@ License:        SUSE-Public-Domain AND X11
 Group:          Development/Languages/Python
 URL:            https://github.com/pyproj4/pyproj
 Source:         https://files.pythonhosted.org/packages/source/p/pyproj/pyproj-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 0.28.4 with %python-Cython < 3}
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -69,8 +69,7 @@ This project has a git repository https://github.com/pyproj4/pyproj
 where you may access the most up-to-date source.
 
 %prep
-%setup -q -n pyproj-%{version}
-%autopatch -p1
+%autosetup -p1 -n pyproj-%{version}
 
 %build
 %pyproject_wheel

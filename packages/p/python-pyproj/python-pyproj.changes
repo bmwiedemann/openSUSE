@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 14 04:59:19 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Unrestrict Cython BuildRequires, Cython 3 is supported upstream.
+- Switch to autosetup macro.
+
+-------------------------------------------------------------------
 Sat Mar  2 10:10:48 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip testing xarray with python39: python39-xarray got removed
