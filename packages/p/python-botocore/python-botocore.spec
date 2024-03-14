@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-botocore
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,28 +25,33 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
+
+%{?sle15_python_module_pythons}
 Name:           python-botocore%{?psuffix}
-Version:        1.33.11
+Version:        1.34.55
 Release:        0
 Summary:        Python interface for AWS
 License:        Apache-2.0
 URL:            https://github.com/boto/botocore
 Source:         https://files.pythonhosted.org/packages/source/b/botocore/botocore-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests
 Requires:       (python-jmespath >= 0.7.1 with python-jmespath < 2.0.0)
 Requires:       (python-python-dateutil >= 2.1 with python-python-dateutil < 3.0.0)
 BuildArch:      noarch
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-botocore < %{version}
+%endif
 %if %{with test}
 BuildRequires:  %{python_module botocore = %{version}}
 BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module pytest >= 6.2.5}
 BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module urllib3 < 2}
+BuildRequires:  %{python_module urllib3 < 2.1}
 BuildRequires:  procps
 %endif
 %python_subpackages
@@ -62,10 +67,10 @@ rm botocore/cacert.pem
 
 %if !%{with test}
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -81,7 +86,7 @@ rm botocore/cacert.pem
 %doc README.rst
 %license LICENSE.txt
 %{python_sitelib}/botocore/
-%{python_sitelib}/botocore-%{version}-py*.egg-info
+%{python_sitelib}/botocore-%{version}.dist-info
 %endif
 
 %changelog
