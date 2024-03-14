@@ -1,7 +1,7 @@
 #
 # spec file for package impression
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,30 @@
 #
 
 
+%define         appname io.gitlab.adhami3310.Impression
 Name:           impression
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        A straight-forward and modern application to create bootable drives
 License:        GPL-3.0-only
 URL:            https://gitlab.com/adhami3310/Impression
-Source0:        %{name}-%{version}.tar
+Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+BuildRequires:  appstream-glib
+BuildRequires:  cargo-packaging
+BuildRequires:  desktop-file-utils
+BuildRequires:  gdk-pixbuf-devel
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
+BuildRequires:  python3-gobject
+BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(blueprint-compiler)
+BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(openssl)
-BuildRequires:  pkgconfig(blueprint-compiler)
-BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(pango)
-BuildRequires:  gdk-pixbuf-devel
-BuildRequires:  desktop-file-utils
-BuildRequires:  cargo-packaging
-BuildRequires:  appstream-glib
-BuildRequires:  python3-gobject
 
 %description
 Write disk images onto your drives with ease. Select an image, insert your drive, and you're good to go! Impression is a useful tool for both avid distro-hoppers and casual computer users. See Press for content mentioning Impression from various writers, content creators, etc.
@@ -52,6 +55,7 @@ Write disk images onto your drives with ease. Select an image, insert your drive
 
 %install
 %meson_install
+%suse_update_desktop_file %{appname} GNOME Utility
 
 %find_lang impression
 
@@ -59,12 +63,11 @@ Write disk images onto your drives with ease. Select an image, insert your drive
 %license COPYING
 %doc README.md
 %{_bindir}/impression
-%{_datadir}/applications/io.gitlab.adhami3310.Impression.desktop
-%{_datadir}/glib-2.0/schemas/io.gitlab.adhami3310.Impression.gschema.xml
-%{_datadir}/icons/*
-%dir %{_datadir}/impression
-%{_datadir}/impression/resources.gresource
-%{_datadir}/metainfo/io.gitlab.adhami3310.Impression.metainfo.xml
+%{_datadir}/applications/%{appname}.desktop
+%{_datadir}/glib-2.0/schemas/%{appname}.gschema.xml
+%{_datadir}/impression
+%{_iconsdir}/hicolor/scalable/apps/%{appname}.svg
+%{_datadir}/metainfo/%{appname}.metainfo.xml
 
 %files lang -f impression.lang
 

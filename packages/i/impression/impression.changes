@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 14 01:47:36 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- fix spec file - actually using the macro
+- add recompress service for smaller tarballs
+- update to 3.1.0:
+  * Support for .xz files
+  * Faster downloading of images
+
+-------------------------------------------------------------------
 Fri Dec  8 18:03:40 UTC 2023 - Richard Rahl <rrahl0@proton.me>
 
 - initial packaging of version 3.0.1 for openSUSE Tumbleweed
