@@ -1,7 +1,7 @@
 #
 # spec file for package python-yapf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,19 +22,22 @@ Version:        0.40.2
 Release:        0
 Summary:        A formatter for Python code
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/google/yapf
 Source:         https://files.pythonhosted.org/packages/source/y/yapf/yapf-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module platformdirs}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module tomli}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-importlib-metadata
 Requires:       python-platformdirs
+Requires:       python-tomli
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %ifpython2
 Recommends:     python-futures

@@ -174,4 +174,12 @@
   * Fix trailing backslash-newline on Windows when using stdin.</comment>
     <requestid>1129242</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>f27ef2ffa9ad71a03d1fe4eeb97229a6</srcmd5>
+    <version>0.40.2</version>
+    <time>1710434536</time>
+    <user>anag+factory</user>
+    <comment>- Add missing {Build,}Requires on tomli and importlib-metadata.</comment>
+    <requestid>1156824</requestid>
+  </revision>
 </revisionlist>
