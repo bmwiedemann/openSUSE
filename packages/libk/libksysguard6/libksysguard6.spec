@@ -1,7 +1,7 @@
 #
 # spec file for package libksysguard6
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 # Latest ABI-stable Plasma (e.g. 5.8 in KF6, but 5.8.95 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 Name:           libksysguard6
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        Task management and system monitoring library
 License:        GPL-2.0-or-later
@@ -110,6 +110,8 @@ Conflicts:      kdebase4-workspace < 5.3.0
 Conflicts:      ksysguard5 < 5.21.80
 Provides:       libksysguard5-plugins = %{version}
 Obsoletes:      libksysguard5-plugins < %{version}
+Provides:       libksysguard5-helper = %{version}
+Obsoletes:      libksysguard5-helper < %{version}
 
 %description plugins
 Task management and system monitoring library. This package contains plugins.
@@ -125,8 +127,8 @@ QML applications.
 
 %package devel
 Summary:        Task management and system monitoring library -- devel files
-Requires:       libksysguard6 >= %{version}
 Requires:       libKSysGuardSystemStats2 >= %{version}
+Requires:       libksysguard6 >= %{version}
 Requires:       cmake(KF6Config) >= %{kf6_version}
 Requires:       cmake(KF6I18n) >= %{kf6_version}
 Requires:       cmake(KF6IconThemes) >= %{kf6_version}
