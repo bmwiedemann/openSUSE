@@ -3,11 +3,7 @@
 #
 %dir %{_systemd_util_dir}/boot
 %dir %{_systemd_util_dir}/boot/efi
-%{_bindir}/bootctl
 %if %{without bootstrap}
-%{_datadir}/bash-completion/completions/bootctl
-%{_datadir}/zsh/site-functions/_bootctl
-%{_mandir}/man1/bootctl.1.gz
 %{_mandir}/man5/loader.conf.5.gz
 %{_mandir}/man7/linuxaa64.efi.stub.7.gz
 %{_mandir}/man7/linuxia32.efi.stub.7.gz

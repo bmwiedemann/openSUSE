@@ -1,7 +1,7 @@
-From 9c86b2c20823dce7f8303648f7e8a8d76342d1d0 Mon Sep 17 00:00:00 2001
+From 840527985f03a4327fc0fe78e45d889742601698 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Michal=20Koutn=C3=BD?= <mkoutny@suse.com>
-Date: Tue, 23 Jan 2024 11:30:17 +0100
-Subject: [PATCH 5006/5011] cgroup: Add EffectiveMemoryMax=,
+Date: Fri, 11 Aug 2023 13:51:20 +0200
+Subject: [PATCH 5006/5010] cgroup: Add EffectiveMemoryMax=,
  EffectiveMemoryHigh= and EffectiveTasksMax= properties
 
 Users become perplexed when they run their workload in a unit with no
@@ -28,22 +28,21 @@ reason about outer setup. Complete solution would need kernel support.
 
 (cherry picked from commit 4fb0d2dc140c9a2c01c236d2a8dc09a44157e896)
 
-[mkoutny: adjust context, drop unapplicable XML]
 [mkoutny: fixes jsc#PED-5659]
 ---
- man/org.freedesktop.systemd1.xml  | 108 ++++++++++++++++++++++++++++++
+ man/org.freedesktop.systemd1.xml  | 126 ++++++++++++++++++++++++++++++
  man/systemd.resource-control.xml  |  11 ++-
- src/core/cgroup.c                 |  48 +++++++++++++
- src/core/cgroup.h                 |  13 ++++
- src/core/dbus-unit.c              |  25 +++++++
+ src/core/cgroup.c                 |  48 ++++++++++++
+ src/core/cgroup.h                 |  13 +++
+ src/core/dbus-unit.c              |  25 ++++++
  src/shared/bus-print-properties.c |   6 +-
- 6 files changed, 206 insertions(+), 5 deletions(-)
+ 6 files changed, 224 insertions(+), 5 deletions(-)
 
 diff --git a/man/org.freedesktop.systemd1.xml b/man/org.freedesktop.systemd1.xml
-index 2e357539fb..02db33626d 100644
+index a1bcbba02f..59733c0039 100644
 --- a/man/org.freedesktop.systemd1.xml
 +++ b/man/org.freedesktop.systemd1.xml
-@@ -2716,6 +2716,10 @@ node /org/freedesktop/systemd1/unit/avahi_2ddaemon_2eservice {
+@@ -2786,6 +2786,10 @@ node /org/freedesktop/systemd1/unit/avahi_2ddaemon_2eservice {
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
        readonly t MemoryAvailable = ...;
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
@@ -54,7 +53,7 @@ index 2e357539fb..02db33626d 100644
        readonly t CPUUsageNSec = ...;
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
        readonly ay EffectiveCPUs = [...];
-@@ -2724,6 +2728,8 @@ node /org/freedesktop/systemd1/unit/avahi_2ddaemon_2eservice {
+@@ -2794,6 +2798,8 @@ node /org/freedesktop/systemd1/unit/avahi_2ddaemon_2eservice {
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
        readonly t TasksCurrent = ...;
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
@@ -63,9 +62,9 @@ index 2e357539fb..02db33626d 100644
        readonly t IPIngressBytes = ...;
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
        readonly t IPIngressPackets = ...;
-@@ -3335,6 +3341,10 @@ node /org/freedesktop/systemd1/unit/avahi_2ddaemon_2eservice {
+@@ -3419,6 +3425,10 @@ node /org/freedesktop/systemd1/unit/avahi_2ddaemon_2eservice {
  
-     <!--property MemoryCurrent is not documented!-->
+     <!--property MemoryZSwapCurrent is not documented!-->
  
 +    <!--property EffectiveMemoryMax is not documented!-->
 +
@@ -74,7 +73,7 @@ index 2e357539fb..02db33626d 100644
      <!--property CPUUsageNSec is not documented!-->
  
      <!--property EffectiveCPUs is not documented!-->
-@@ -3343,6 +3353,8 @@ node /org/freedesktop/systemd1/unit/avahi_2ddaemon_2eservice {
+@@ -3427,6 +3437,8 @@ node /org/freedesktop/systemd1/unit/avahi_2ddaemon_2eservice {
  
      <!--property TasksCurrent is not documented!-->
  
@@ -83,7 +82,7 @@ index 2e357539fb..02db33626d 100644
      <!--property IPIngressBytes is not documented!-->
  
      <!--property IPIngressPackets is not documented!-->
-@@ -3963,6 +3975,10 @@ node /org/freedesktop/systemd1/unit/avahi_2ddaemon_2eservice {
+@@ -4061,6 +4073,10 @@ node /org/freedesktop/systemd1/unit/avahi_2ddaemon_2eservice {
  
      <variablelist class="dbus-property" generated="True" extra-ref="MemoryAvailable"/>
  
@@ -94,7 +93,7 @@ index 2e357539fb..02db33626d 100644
      <variablelist class="dbus-property" generated="True" extra-ref="CPUUsageNSec"/>
  
      <variablelist class="dbus-property" generated="True" extra-ref="EffectiveCPUs"/>
-@@ -3971,6 +3987,8 @@ node /org/freedesktop/systemd1/unit/avahi_2ddaemon_2eservice {
+@@ -4069,6 +4085,8 @@ node /org/freedesktop/systemd1/unit/avahi_2ddaemon_2eservice {
  
      <variablelist class="dbus-property" generated="True" extra-ref="TasksCurrent"/>
  
@@ -103,7 +102,7 @@ index 2e357539fb..02db33626d 100644
      <variablelist class="dbus-property" generated="True" extra-ref="IPIngressBytes"/>
  
      <variablelist class="dbus-property" generated="True" extra-ref="IPIngressPackets"/>
-@@ -4748,6 +4766,10 @@ node /org/freedesktop/systemd1/unit/avahi_2ddaemon_2esocket {
+@@ -4865,6 +4883,10 @@ node /org/freedesktop/systemd1/unit/avahi_2ddaemon_2esocket {
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
        readonly t MemoryAvailable = ...;
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
@@ -114,7 +113,7 @@ index 2e357539fb..02db33626d 100644
        readonly t CPUUsageNSec = ...;
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
        readonly ay EffectiveCPUs = [...];
-@@ -4756,6 +4778,8 @@ node /org/freedesktop/systemd1/unit/avahi_2ddaemon_2esocket {
+@@ -4873,6 +4895,8 @@ node /org/freedesktop/systemd1/unit/avahi_2ddaemon_2esocket {
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
        readonly t TasksCurrent = ...;
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
@@ -123,9 +122,9 @@ index 2e357539fb..02db33626d 100644
        readonly t IPIngressBytes = ...;
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
        readonly t IPIngressPackets = ...;
-@@ -5377,6 +5401,10 @@ node /org/freedesktop/systemd1/unit/avahi_2ddaemon_2esocket {
+@@ -5508,6 +5532,10 @@ node /org/freedesktop/systemd1/unit/avahi_2ddaemon_2esocket {
  
-     <!--property MemoryCurrent is not documented!-->
+     <!--property MemoryZSwapCurrent is not documented!-->
  
 +    <!--property EffectiveMemoryMax is not documented!-->
 +
@@ -134,7 +133,7 @@ index 2e357539fb..02db33626d 100644
      <!--property CPUUsageNSec is not documented!-->
  
      <!--property EffectiveCPUs is not documented!-->
-@@ -5385,6 +5413,8 @@ node /org/freedesktop/systemd1/unit/avahi_2ddaemon_2esocket {
+@@ -5516,6 +5544,8 @@ node /org/freedesktop/systemd1/unit/avahi_2ddaemon_2esocket {
  
      <!--property TasksCurrent is not documented!-->
  
@@ -143,7 +142,7 @@ index 2e357539fb..02db33626d 100644
      <!--property IPIngressBytes is not documented!-->
  
      <!--property IPIngressPackets is not documented!-->
-@@ -5983,6 +6013,10 @@ node /org/freedesktop/systemd1/unit/avahi_2ddaemon_2esocket {
+@@ -6132,6 +6162,10 @@ node /org/freedesktop/systemd1/unit/avahi_2ddaemon_2esocket {
  
      <variablelist class="dbus-property" generated="True" extra-ref="MemoryAvailable"/>
  
@@ -154,7 +153,7 @@ index 2e357539fb..02db33626d 100644
      <variablelist class="dbus-property" generated="True" extra-ref="CPUUsageNSec"/>
  
      <variablelist class="dbus-property" generated="True" extra-ref="EffectiveCPUs"/>
-@@ -5991,6 +6025,8 @@ node /org/freedesktop/systemd1/unit/avahi_2ddaemon_2esocket {
+@@ -6140,6 +6174,8 @@ node /org/freedesktop/systemd1/unit/avahi_2ddaemon_2esocket {
  
      <variablelist class="dbus-property" generated="True" extra-ref="TasksCurrent"/>
  
@@ -163,7 +162,7 @@ index 2e357539fb..02db33626d 100644
      <variablelist class="dbus-property" generated="True" extra-ref="IPIngressBytes"/>
  
      <variablelist class="dbus-property" generated="True" extra-ref="IPIngressPackets"/>
-@@ -6643,6 +6679,10 @@ node /org/freedesktop/systemd1/unit/home_2emount {
+@@ -6810,6 +6846,10 @@ node /org/freedesktop/systemd1/unit/home_2emount {
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
        readonly t MemoryAvailable = ...;
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
@@ -174,7 +173,7 @@ index 2e357539fb..02db33626d 100644
        readonly t CPUUsageNSec = ...;
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
        readonly ay EffectiveCPUs = [...];
-@@ -6651,6 +6691,8 @@ node /org/freedesktop/systemd1/unit/home_2emount {
+@@ -6818,6 +6858,8 @@ node /org/freedesktop/systemd1/unit/home_2emount {
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
        readonly t TasksCurrent = ...;
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
@@ -183,9 +182,9 @@ index 2e357539fb..02db33626d 100644
        readonly t IPIngressBytes = ...;
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
        readonly t IPIngressPackets = ...;
-@@ -7200,6 +7242,10 @@ node /org/freedesktop/systemd1/unit/home_2emount {
+@@ -7381,6 +7423,10 @@ node /org/freedesktop/systemd1/unit/home_2emount {
  
-     <!--property MemoryCurrent is not documented!-->
+     <!--property MemoryZSwapCurrent is not documented!-->
  
 +    <!--property EffectiveMemoryMax is not documented!-->
 +
@@ -194,7 +193,7 @@ index 2e357539fb..02db33626d 100644
      <!--property CPUUsageNSec is not documented!-->
  
      <!--property EffectiveCPUs is not documented!-->
-@@ -7208,6 +7254,8 @@ node /org/freedesktop/systemd1/unit/home_2emount {
+@@ -7389,6 +7435,8 @@ node /org/freedesktop/systemd1/unit/home_2emount {
  
      <!--property TasksCurrent is not documented!-->
  
@@ -203,7 +202,7 @@ index 2e357539fb..02db33626d 100644
      <!--property IPIngressBytes is not documented!-->
  
      <!--property IPIngressPackets is not documented!-->
-@@ -7724,6 +7772,10 @@ node /org/freedesktop/systemd1/unit/home_2emount {
+@@ -7919,6 +7967,10 @@ node /org/freedesktop/systemd1/unit/home_2emount {
  
      <variablelist class="dbus-property" generated="True" extra-ref="MemoryAvailable"/>
  
@@ -214,7 +213,7 @@ index 2e357539fb..02db33626d 100644
      <variablelist class="dbus-property" generated="True" extra-ref="CPUUsageNSec"/>
  
      <variablelist class="dbus-property" generated="True" extra-ref="EffectiveCPUs"/>
-@@ -7732,6 +7784,8 @@ node /org/freedesktop/systemd1/unit/home_2emount {
+@@ -7927,6 +7979,8 @@ node /org/freedesktop/systemd1/unit/home_2emount {
  
      <variablelist class="dbus-property" generated="True" extra-ref="TasksCurrent"/>
  
@@ -223,7 +222,7 @@ index 2e357539fb..02db33626d 100644
      <variablelist class="dbus-property" generated="True" extra-ref="IPIngressBytes"/>
  
      <variablelist class="dbus-property" generated="True" extra-ref="IPIngressPackets"/>
-@@ -8511,6 +8565,10 @@ node /org/freedesktop/systemd1/unit/dev_2dsda3_2eswap {
+@@ -8720,6 +8774,10 @@ node /org/freedesktop/systemd1/unit/dev_2dsda3_2eswap {
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
        readonly t MemoryAvailable = ...;
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
@@ -234,7 +233,7 @@ index 2e357539fb..02db33626d 100644
        readonly t CPUUsageNSec = ...;
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
        readonly ay EffectiveCPUs = [...];
-@@ -8519,6 +8577,8 @@ node /org/freedesktop/systemd1/unit/dev_2dsda3_2eswap {
+@@ -8728,6 +8786,8 @@ node /org/freedesktop/systemd1/unit/dev_2dsda3_2eswap {
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
        readonly t TasksCurrent = ...;
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
@@ -243,9 +242,9 @@ index 2e357539fb..02db33626d 100644
        readonly t IPIngressBytes = ...;
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
        readonly t IPIngressPackets = ...;
-@@ -9054,6 +9114,10 @@ node /org/freedesktop/systemd1/unit/dev_2dsda3_2eswap {
+@@ -9277,6 +9337,10 @@ node /org/freedesktop/systemd1/unit/dev_2dsda3_2eswap {
  
-     <!--property MemoryCurrent is not documented!-->
+     <!--property MemoryZSwapCurrent is not documented!-->
  
 +    <!--property EffectiveMemoryMax is not documented!-->
 +
@@ -254,7 +253,7 @@ index 2e357539fb..02db33626d 100644
      <!--property CPUUsageNSec is not documented!-->
  
      <!--property EffectiveCPUs is not documented!-->
-@@ -9062,6 +9126,8 @@ node /org/freedesktop/systemd1/unit/dev_2dsda3_2eswap {
+@@ -9285,6 +9349,8 @@ node /org/freedesktop/systemd1/unit/dev_2dsda3_2eswap {
  
      <!--property TasksCurrent is not documented!-->
  
@@ -263,7 +262,7 @@ index 2e357539fb..02db33626d 100644
      <!--property IPIngressBytes is not documented!-->
  
      <!--property IPIngressPackets is not documented!-->
-@@ -9564,6 +9630,10 @@ node /org/freedesktop/systemd1/unit/dev_2dsda3_2eswap {
+@@ -9801,6 +9867,10 @@ node /org/freedesktop/systemd1/unit/dev_2dsda3_2eswap {
  
      <variablelist class="dbus-property" generated="True" extra-ref="MemoryAvailable"/>
  
@@ -274,7 +273,7 @@ index 2e357539fb..02db33626d 100644
      <variablelist class="dbus-property" generated="True" extra-ref="CPUUsageNSec"/>
  
      <variablelist class="dbus-property" generated="True" extra-ref="EffectiveCPUs"/>
-@@ -9572,6 +9642,8 @@ node /org/freedesktop/systemd1/unit/dev_2dsda3_2eswap {
+@@ -9809,6 +9879,8 @@ node /org/freedesktop/systemd1/unit/dev_2dsda3_2eswap {
  
      <variablelist class="dbus-property" generated="True" extra-ref="TasksCurrent"/>
  
@@ -283,7 +282,7 @@ index 2e357539fb..02db33626d 100644
      <variablelist class="dbus-property" generated="True" extra-ref="IPIngressBytes"/>
  
      <variablelist class="dbus-property" generated="True" extra-ref="IPIngressPackets"/>
-@@ -10210,6 +10282,10 @@ node /org/freedesktop/systemd1/unit/system_2eslice {
+@@ -10461,6 +10533,10 @@ node /org/freedesktop/systemd1/unit/system_2eslice {
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
        readonly t MemoryAvailable = ...;
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
@@ -294,7 +293,7 @@ index 2e357539fb..02db33626d 100644
        readonly t CPUUsageNSec = ...;
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
        readonly ay EffectiveCPUs = [...];
-@@ -10218,6 +10294,8 @@ node /org/freedesktop/systemd1/unit/system_2eslice {
+@@ -10469,6 +10545,8 @@ node /org/freedesktop/systemd1/unit/system_2eslice {
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
        readonly t TasksCurrent = ...;
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
@@ -303,9 +302,9 @@ index 2e357539fb..02db33626d 100644
        readonly t IPIngressBytes = ...;
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
        readonly t IPIngressPackets = ...;
-@@ -10381,6 +10459,10 @@ node /org/freedesktop/systemd1/unit/system_2eslice {
+@@ -10644,6 +10722,10 @@ node /org/freedesktop/systemd1/unit/system_2eslice {
  
-     <!--property MemoryCurrent is not documented!-->
+     <!--property MemoryZSwapCurrent is not documented!-->
  
 +    <!--property EffectiveMemoryMax is not documented!-->
 +
@@ -314,7 +313,7 @@ index 2e357539fb..02db33626d 100644
      <!--property CPUUsageNSec is not documented!-->
  
      <!--property EffectiveCPUs is not documented!-->
-@@ -10389,6 +10471,8 @@ node /org/freedesktop/systemd1/unit/system_2eslice {
+@@ -10652,6 +10734,8 @@ node /org/freedesktop/systemd1/unit/system_2eslice {
  
      <!--property TasksCurrent is not documented!-->
  
@@ -323,7 +322,7 @@ index 2e357539fb..02db33626d 100644
      <!--property IPIngressBytes is not documented!-->
  
      <!--property IPIngressPackets is not documented!-->
-@@ -10557,6 +10641,10 @@ node /org/freedesktop/systemd1/unit/system_2eslice {
+@@ -10832,6 +10916,10 @@ node /org/freedesktop/systemd1/unit/system_2eslice {
  
      <variablelist class="dbus-property" generated="True" extra-ref="MemoryAvailable"/>
  
@@ -334,7 +333,7 @@ index 2e357539fb..02db33626d 100644
      <variablelist class="dbus-property" generated="True" extra-ref="CPUUsageNSec"/>
  
      <variablelist class="dbus-property" generated="True" extra-ref="EffectiveCPUs"/>
-@@ -10565,6 +10653,8 @@ node /org/freedesktop/systemd1/unit/system_2eslice {
+@@ -10840,6 +10928,8 @@ node /org/freedesktop/systemd1/unit/system_2eslice {
  
      <variablelist class="dbus-property" generated="True" extra-ref="TasksCurrent"/>
  
@@ -343,7 +342,7 @@ index 2e357539fb..02db33626d 100644
      <variablelist class="dbus-property" generated="True" extra-ref="IPIngressBytes"/>
  
      <variablelist class="dbus-property" generated="True" extra-ref="IPIngressPackets"/>
-@@ -10759,6 +10849,10 @@ node /org/freedesktop/systemd1/unit/session_2d1_2escope {
+@@ -11046,6 +11136,10 @@ node /org/freedesktop/systemd1/unit/session_2d1_2escope {
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
        readonly t MemoryAvailable = ...;
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
@@ -354,7 +353,7 @@ index 2e357539fb..02db33626d 100644
        readonly t CPUUsageNSec = ...;
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
        readonly ay EffectiveCPUs = [...];
-@@ -10767,6 +10861,8 @@ node /org/freedesktop/systemd1/unit/session_2d1_2escope {
+@@ -11054,6 +11148,8 @@ node /org/freedesktop/systemd1/unit/session_2d1_2escope {
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
        readonly t TasksCurrent = ...;
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
@@ -363,9 +362,9 @@ index 2e357539fb..02db33626d 100644
        readonly t IPIngressBytes = ...;
        @org.freedesktop.DBus.Property.EmitsChangedSignal("false")
        readonly t IPIngressPackets = ...;
-@@ -10950,6 +11046,10 @@ node /org/freedesktop/systemd1/unit/session_2d1_2escope {
+@@ -11249,6 +11345,10 @@ node /org/freedesktop/systemd1/unit/session_2d1_2escope {
  
-     <!--property MemoryCurrent is not documented!-->
+     <!--property MemoryZSwapCurrent is not documented!-->
  
 +    <!--property EffectiveMemoryMax is not documented!-->
 +
@@ -374,7 +373,7 @@ index 2e357539fb..02db33626d 100644
      <!--property CPUUsageNSec is not documented!-->
  
      <!--property EffectiveCPUs is not documented!-->
-@@ -10958,6 +11058,8 @@ node /org/freedesktop/systemd1/unit/session_2d1_2escope {
+@@ -11257,6 +11357,8 @@ node /org/freedesktop/systemd1/unit/session_2d1_2escope {
  
      <!--property TasksCurrent is not documented!-->
  
@@ -383,7 +382,7 @@ index 2e357539fb..02db33626d 100644
      <!--property IPIngressBytes is not documented!-->
  
      <!--property IPIngressPackets is not documented!-->
-@@ -11156,6 +11258,10 @@ node /org/freedesktop/systemd1/unit/session_2d1_2escope {
+@@ -11467,6 +11569,10 @@ node /org/freedesktop/systemd1/unit/session_2d1_2escope {
  
      <variablelist class="dbus-property" generated="True" extra-ref="MemoryAvailable"/>
  
@@ -394,7 +393,7 @@ index 2e357539fb..02db33626d 100644
      <variablelist class="dbus-property" generated="True" extra-ref="CPUUsageNSec"/>
  
      <variablelist class="dbus-property" generated="True" extra-ref="EffectiveCPUs"/>
-@@ -11164,6 +11270,8 @@ node /org/freedesktop/systemd1/unit/session_2d1_2escope {
+@@ -11475,6 +11581,8 @@ node /org/freedesktop/systemd1/unit/session_2d1_2escope {
  
      <variablelist class="dbus-property" generated="True" extra-ref="TasksCurrent"/>
  
@@ -403,11 +402,71 @@ index 2e357539fb..02db33626d 100644
      <variablelist class="dbus-property" generated="True" extra-ref="IPIngressBytes"/>
  
      <variablelist class="dbus-property" generated="True" extra-ref="IPIngressPackets"/>
+@@ -11866,6 +11974,9 @@ $ gdbus introspect --system --dest org.freedesktop.systemd1 \
+       <varname>MemorySwapCurrent</varname>,
+       <varname>MemorySwapPeak</varname>, and
+       <varname>MemoryZSwapCurrent</varname> were added in version 255.</para>
++      <para><varname>EffectiveMemoryHigh</varname>,
++      <varname>EffectiveMemoryMax</varname>,
++      <varname>EffectiveTasksMax</varname> were added in version 256.</para>
+     </refsect2>
+     <refsect2>
+       <title>Socket Unit Objects</title>
+@@ -11897,6 +12008,9 @@ $ gdbus introspect --system --dest org.freedesktop.systemd1 \
+       <varname>MemorySwapCurrent</varname>,
+       <varname>MemorySwapPeak</varname>, and
+       <varname>MemoryZSwapCurrent</varname> were added in version 255.</para>
++      <para><varname>EffectiveMemoryHigh</varname>,
++      <varname>EffectiveMemoryMax</varname>,
++      <varname>EffectiveTasksMax</varname> were added in version 256.</para>
+     </refsect2>
+     <refsect2>
+       <title>Mount Unit Objects</title>
+@@ -11926,6 +12040,9 @@ $ gdbus introspect --system --dest org.freedesktop.systemd1 \
+       <varname>MemorySwapCurrent</varname>,
+       <varname>MemorySwapPeak</varname>, and
+       <varname>MemoryZSwapCurrent</varname> were added in version 255.</para>
++      <para><varname>EffectiveMemoryHigh</varname>,
++      <varname>EffectiveMemoryMax</varname>,
++      <varname>EffectiveTasksMax</varname> were added in version 256.</para>
+     </refsect2>
+     <refsect2>
+       <title>Swap Unit Objects</title>
+@@ -11955,6 +12072,9 @@ $ gdbus introspect --system --dest org.freedesktop.systemd1 \
+       <varname>MemorySwapCurrent</varname>,
+       <varname>MemorySwapPeak</varname>, and
+       <varname>MemoryZSwapCurrent</varname> were added in version 255.</para>
++      <para><varname>EffectiveMemoryHigh</varname>,
++      <varname>EffectiveMemoryMax</varname>,
++      <varname>EffectiveTasksMax</varname> were added in version 256.</para>
+     </refsect2>
+     <refsect2>
+       <title>Slice Unit Objects</title>
+@@ -11975,6 +12095,9 @@ $ gdbus introspect --system --dest org.freedesktop.systemd1 \
+       <varname>MemorySwapCurrent</varname>,
+       <varname>MemorySwapPeak</varname>, and
+       <varname>MemoryZSwapCurrent</varname> were added in version 255.</para>
++      <para><varname>EffectiveMemoryHigh</varname>,
++      <varname>EffectiveMemoryMax</varname>,
++      <varname>EffectiveTasksMax</varname> were added in version 256.</para>
+     </refsect2>
+     <refsect2>
+       <title>Scope Unit Objects</title>
+@@ -11996,6 +12119,9 @@ $ gdbus introspect --system --dest org.freedesktop.systemd1 \
+       <varname>MemorySwapCurrent</varname>,
+       <varname>MemorySwapPeak</varname>, and
+       <varname>MemoryZSwapCurrent</varname> were added in version 255.</para>
++      <para><varname>EffectiveMemoryHigh</varname>,
++      <varname>EffectiveMemoryMax</varname>,
++      <varname>EffectiveTasksMax</varname> were added in version 256.</para>
+     </refsect2>
+     <refsect2>
+       <title>Job Objects</title>
 diff --git a/man/systemd.resource-control.xml b/man/systemd.resource-control.xml
-index 3c17efbe16..5b7900af87 100644
+index 42f265c950..bd8b6a5719 100644
 --- a/man/systemd.resource-control.xml
 +++ b/man/systemd.resource-control.xml
-@@ -392,7 +392,9 @@ CPUWeight=20   DisableControllers=cpu              /          \
+@@ -406,7 +406,9 @@ CPUWeight=20   DisableControllers=cpu              /          \
            system. If assigned the
            special value <literal>infinity</literal>, no memory throttling is applied. This controls the
            <literal>memory.high</literal> control group attribute. For details about this control group attribute, see
@@ -418,7 +477,7 @@ index 3c17efbe16..5b7900af87 100644
  
            <para>While <varname>StartupMemoryHigh=</varname> applies to the startup and shutdown phases of the system,
            <varname>MemoryHigh=</varname> applies to normal runtime of the system, and if the former is not set also to
-@@ -418,7 +420,9 @@ CPUWeight=20   DisableControllers=cpu              /          \
+@@ -434,7 +436,9 @@ CPUWeight=20   DisableControllers=cpu              /          \
            percentage value may be specified, which is taken relative to the installed physical memory on the system. If
            assigned the special value <literal>infinity</literal>, no memory limit is applied. This controls the
            <literal>memory.max</literal> control group attribute. For details about this control group attribute, see
@@ -429,7 +488,7 @@ index 3c17efbe16..5b7900af87 100644
  
            <para>While <varname>StartupMemoryMax=</varname> applies to the startup and shutdown phases of the system,
            <varname>MemoryMax=</varname> applies to normal runtime of the system, and if the former is not set also to
-@@ -534,7 +538,8 @@ CPUWeight=20   DisableControllers=cpu              /          \
+@@ -560,7 +564,8 @@ CPUWeight=20   DisableControllers=cpu              /          \
            limit is applied. This controls the <literal>pids.max</literal> control group attribute. For
            details about this control group attribute, the
            <ulink url="https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v2.html#pid">pids controller
@@ -440,10 +499,10 @@ index 3c17efbe16..5b7900af87 100644
            <para>The system default for this setting may be controlled with
            <varname>DefaultTasksMax=</varname> in
 diff --git a/src/core/cgroup.c b/src/core/cgroup.c
-index 5b7205a92e..0842036559 100644
+index 61ac4df1a6..78ca67216a 100644
 --- a/src/core/cgroup.c
 +++ b/src/core/cgroup.c
-@@ -4000,6 +4000,46 @@ int unit_get_ip_accounting(
+@@ -4243,6 +4243,46 @@ int unit_get_ip_accounting(
          return r;
  }
  
@@ -490,10 +549,10 @@ index 5b7205a92e..0842036559 100644
  static int unit_get_io_accounting_raw(Unit *u, uint64_t ret[static _CGROUP_IO_ACCOUNTING_METRIC_MAX]) {
          static const char *const field_names[_CGROUP_IO_ACCOUNTING_METRIC_MAX] = {
                  [CGROUP_IO_READ_BYTES]       = "rbytes=",
-@@ -4418,3 +4458,11 @@ static const char* const cgroup_pressure_watch_table[_CGROUP_PRESSURE_WATCH_MAX]
+@@ -4663,3 +4703,11 @@ static const char* const cgroup_memory_accounting_metric_table[_CGROUP_MEMORY_AC
  };
  
- DEFINE_STRING_TABLE_LOOKUP_WITH_BOOLEAN(cgroup_pressure_watch, CGroupPressureWatch, CGROUP_PRESSURE_WATCH_ON);
+ DEFINE_STRING_TABLE_LOOKUP(cgroup_memory_accounting_metric, CGroupMemoryAccountingMetric);
 +
 +static const char *const cgroup_limit_type_table[_CGROUP_LIMIT_TYPE_MAX] = {
 +        [CGROUP_LIMIT_MEMORY_MAX]  = "EffectiveMemoryMax",
@@ -503,12 +562,12 @@ index 5b7205a92e..0842036559 100644
 +
 +DEFINE_STRING_TABLE_LOOKUP(cgroup_limit_type, CGroupLimitType);
 diff --git a/src/core/cgroup.h b/src/core/cgroup.h
-index 486957b545..a19a2fffa3 100644
+index f1b674b4b7..54bce91ea1 100644
 --- a/src/core/cgroup.h
 +++ b/src/core/cgroup.h
-@@ -245,6 +245,15 @@ typedef enum CGroupIOAccountingMetric {
-         _CGROUP_IO_ACCOUNTING_METRIC_INVALID = -EINVAL,
- } CGroupIOAccountingMetric;
+@@ -276,6 +276,15 @@ typedef enum CGroupMemoryAccountingMetric {
+         _CGROUP_MEMORY_ACCOUNTING_METRIC_INVALID = -EINVAL,
+ } CGroupMemoryAccountingMetric;
  
 +/* Used for limits whose value sets have infimum */
 +typedef enum CGroupLimitType {
@@ -521,27 +580,29 @@ index 486957b545..a19a2fffa3 100644
 +
  typedef struct Unit Unit;
  typedef struct Manager Manager;
- 
-@@ -337,6 +346,7 @@ int unit_get_tasks_current(Unit *u, uint64_t *ret);
+ typedef enum ManagerState ManagerState;
+@@ -374,6 +383,7 @@ int unit_get_tasks_current(Unit *u, uint64_t *ret);
  int unit_get_cpu_usage(Unit *u, nsec_t *ret);
  int unit_get_io_accounting(Unit *u, CGroupIOAccountingMetric metric, bool allow_cache, uint64_t *ret);
  int unit_get_ip_accounting(Unit *u, CGroupIPAccountingMetric metric, uint64_t *ret);
 +int unit_get_effective_limit(Unit *u, CGroupLimitType type, uint64_t *ret);
  
  int unit_reset_cpu_accounting(Unit *u);
- int unit_reset_ip_accounting(Unit *u);
-@@ -378,3 +388,6 @@ FreezerAction freezer_action_from_string(const char *s) _pure_;
+ void unit_reset_memory_accounting_last(Unit *u);
+@@ -425,5 +435,8 @@ CGroupIPAccountingMetric cgroup_ip_accounting_metric_from_string(const char *s)
+ const char* cgroup_io_accounting_metric_to_string(CGroupIOAccountingMetric m) _const_;
+ CGroupIOAccountingMetric cgroup_io_accounting_metric_from_string(const char *s) _pure_;
  
- const char* cgroup_pressure_watch_to_string(CGroupPressureWatch a) _const_;
- CGroupPressureWatch cgroup_pressure_watch_from_string(const char *s) _pure_;
-+
 +const char* cgroup_limit_type_to_string(CGroupLimitType m) _const_;
 +CGroupLimitType cgroup_limit_type_from_string(const char *s) _pure_;
++
+ const char* cgroup_memory_accounting_metric_to_string(CGroupMemoryAccountingMetric m) _const_;
+ CGroupMemoryAccountingMetric cgroup_memory_accounting_metric_from_string(const char *s) _pure_;
 diff --git a/src/core/dbus-unit.c b/src/core/dbus-unit.c
-index ed376cec87..b4509a990e 100644
+index 1a037b7035..ac6add4700 100644
 --- a/src/core/dbus-unit.c
 +++ b/src/core/dbus-unit.c
-@@ -1438,6 +1438,28 @@ static int property_get_io_counter(
+@@ -1441,6 +1441,28 @@ static int property_get_io_counter(
          return sd_bus_message_append(reply, "t", value);
  }
  
@@ -568,11 +629,11 @@ index ed376cec87..b4509a990e 100644
 +}
 +
  int bus_unit_method_attach_processes(sd_bus_message *message, void *userdata, sd_bus_error *error) {
- 
          _cleanup_(sd_bus_creds_unrefp) sd_bus_creds *creds = NULL;
-@@ -1557,10 +1579,13 @@ const sd_bus_vtable bus_unit_cgroup_vtable[] = {
-         SD_BUS_PROPERTY("ControlGroupId", "t", NULL, offsetof(Unit, cgroup_id), 0),
-         SD_BUS_PROPERTY("MemoryCurrent", "t", property_get_current_memory, 0, 0),
+         _cleanup_set_free_ Set *pids = NULL;
+@@ -1562,10 +1584,13 @@ const sd_bus_vtable bus_unit_cgroup_vtable[] = {
+         SD_BUS_PROPERTY("MemorySwapPeak", "t", property_get_memory_accounting, 0, 0),
+         SD_BUS_PROPERTY("MemoryZSwapCurrent", "t", property_get_memory_accounting, 0, 0),
          SD_BUS_PROPERTY("MemoryAvailable", "t", property_get_available_memory, 0, 0),
 +        SD_BUS_PROPERTY("EffectiveMemoryMax", "t", property_get_effective_limit, 0, 0),
 +        SD_BUS_PROPERTY("EffectiveMemoryHigh", "t", property_get_effective_limit, 0, 0),
@@ -585,7 +646,7 @@ index ed376cec87..b4509a990e 100644
          SD_BUS_PROPERTY("IPIngressPackets", "t", property_get_ip_counter, 0, 0),
          SD_BUS_PROPERTY("IPEgressBytes", "t", property_get_ip_counter, 0, 0),
 diff --git a/src/shared/bus-print-properties.c b/src/shared/bus-print-properties.c
-index f74d8994ad..62bbc598bb 100644
+index 6704e1ef3d..99b1cc7c70 100644
 --- a/src/shared/bus-print-properties.c
 +++ b/src/shared/bus-print-properties.c
 @@ -164,9 +164,11 @@ static int bus_print_property(const char *name, const char *expected_value, sd_b

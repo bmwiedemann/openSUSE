@@ -33,13 +33,16 @@
 %ghost %attr(644, root, root) %{_prefix}/lib/udev/compat-symlink-generation
 %ghost %config(noreplace) %{_sysconfdir}/vconsole.conf
 %ghost %{_localstatedir}/lib/systemd/backlight
+%{_bindir}/bootctl
 %if %{without bootstrap}
 %{_bindir}/kernel-install
 %{_bindir}/systemd-cryptenroll
+%{_bindir}/systemd-cryptsetup
 %endif
 %{_bindir}/systemd-hwdb
 %{_bindir}/udevadm
 %if %{without bootstrap}
+%{_datadir}/bash-completion/completions/bootctl
 %{_datadir}/bash-completion/completions/kernel-install
 %{_datadir}/bash-completion/completions/systemd-cryptenroll
 %{_datadir}/bash-completion/completions/udevadm
@@ -49,11 +52,13 @@
 %{_datadir}/pkgconfig/udev.pc
 %{_datadir}/polkit-1/actions/org.freedesktop.timesync1.policy
 %if %{without bootstrap}
+%{_datadir}/zsh/site-functions/_bootctl
 %{_datadir}/zsh/site-functions/_kernel-install
 %{_datadir}/zsh/site-functions/_udevadm
 %{_libdir}/cryptsetup/libcryptsetup-token-systemd-fido2.so
 %{_libdir}/cryptsetup/libcryptsetup-token-systemd-pkcs11.so
 %{_libdir}/cryptsetup/libcryptsetup-token-systemd-tpm2.so
+%{_mandir}/man1/bootctl.1.gz
 %{_mandir}/man1/systemd-cryptenroll.1.gz
 %{_mandir}/man5/crypttab.5.gz
 %{_mandir}/man5/integritytab.5.gz
@@ -241,6 +246,7 @@
 %{_udevrulesdir}/60-input-id.rules
 %{_udevrulesdir}/60-persistent-alsa.rules
 %{_udevrulesdir}/60-persistent-input.rules
+%{_udevrulesdir}/60-persistent-storage-mtd.rules
 %{_udevrulesdir}/60-persistent-storage-tape.rules
 %{_udevrulesdir}/60-persistent-storage.rules
 %{_udevrulesdir}/60-persistent-v4l.rules
@@ -315,6 +321,7 @@
 %{_unitdir}/systemd-fsck@.service
 %{_unitdir}/systemd-growfs-root.service
 %{_unitdir}/systemd-growfs@.service
+%{_unitdir}/systemd-hibernate-resume.service
 %{_unitdir}/systemd-hibernate.service
 %{_unitdir}/systemd-hwdb-update.service
 %{_unitdir}/systemd-hybrid-sleep.service

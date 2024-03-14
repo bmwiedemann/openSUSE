@@ -1,7 +1,7 @@
-From 0c3448f0e341e3e1f23722e4275c4fdd4062d280 Mon Sep 17 00:00:00 2001
+From ae7d09f074e554a241ba66a2dee2a0cb4b3a0162 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Michal=20Koutn=C3=BD?= <mkoutny@suse.com>
-Date: Tue, 23 Jan 2024 11:30:21 +0100
-Subject: [PATCH 5010/5011] cgroup: Rename effective limits internal table
+Date: Mon, 22 Jan 2024 16:58:18 +0100
+Subject: [PATCH 5010/5010] cgroup: Rename effective limits internal table
 
 Post-merge fixup of commit 4fb0d2dc14 ("cgroup: Add EffectiveMemoryMax=,
 EffectiveMemoryHigh= and EffectiveTasksMax= properties"), no functional
@@ -9,7 +9,6 @@ change intended.
 
 (cherry picked from commit 8ad614890bba66b5f6b590d6a3e1b8b04a920126)
 
-[mkoutny: adjust context]
 [mkoutny: fixes jsc#PED-5659]
 ---
  src/core/cgroup.c    | 4 ++--
@@ -18,12 +17,12 @@ change intended.
  3 files changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/src/core/cgroup.c b/src/core/cgroup.c
-index a53d90486c..2d8d61a26d 100644
+index 285fa200d6..0c30aefe80 100644
 --- a/src/core/cgroup.c
 +++ b/src/core/cgroup.c
-@@ -4470,10 +4470,10 @@ static const char* const cgroup_pressure_watch_table[_CGROUP_PRESSURE_WATCH_MAX]
+@@ -4715,10 +4715,10 @@ static const char* const cgroup_memory_accounting_metric_table[_CGROUP_MEMORY_AC
  
- DEFINE_STRING_TABLE_LOOKUP_WITH_BOOLEAN(cgroup_pressure_watch, CGroupPressureWatch, CGROUP_PRESSURE_WATCH_ON);
+ DEFINE_STRING_TABLE_LOOKUP(cgroup_memory_accounting_metric, CGroupMemoryAccountingMetric);
  
 -static const char *const cgroup_limit_type_table[_CGROUP_LIMIT_TYPE_MAX] = {
 +static const char *const cgroup_effective_limit_type_table[_CGROUP_LIMIT_TYPE_MAX] = {
@@ -35,22 +34,25 @@ index a53d90486c..2d8d61a26d 100644
 -DEFINE_STRING_TABLE_LOOKUP(cgroup_limit_type, CGroupLimitType);
 +DEFINE_STRING_TABLE_LOOKUP(cgroup_effective_limit_type, CGroupLimitType);
 diff --git a/src/core/cgroup.h b/src/core/cgroup.h
-index a19a2fffa3..9ff650abcf 100644
+index 54bce91ea1..6e3d05b7d2 100644
 --- a/src/core/cgroup.h
 +++ b/src/core/cgroup.h
-@@ -389,5 +389,5 @@ FreezerAction freezer_action_from_string(const char *s) _pure_;
- const char* cgroup_pressure_watch_to_string(CGroupPressureWatch a) _const_;
- CGroupPressureWatch cgroup_pressure_watch_from_string(const char *s) _pure_;
+@@ -435,8 +435,8 @@ CGroupIPAccountingMetric cgroup_ip_accounting_metric_from_string(const char *s)
+ const char* cgroup_io_accounting_metric_to_string(CGroupIOAccountingMetric m) _const_;
+ CGroupIOAccountingMetric cgroup_io_accounting_metric_from_string(const char *s) _pure_;
  
 -const char* cgroup_limit_type_to_string(CGroupLimitType m) _const_;
 -CGroupLimitType cgroup_limit_type_from_string(const char *s) _pure_;
 +const char* cgroup_effective_limit_type_to_string(CGroupLimitType m) _const_;
 +CGroupLimitType cgroup_effective_limit_type_from_string(const char *s) _pure_;
+ 
+ const char* cgroup_memory_accounting_metric_to_string(CGroupMemoryAccountingMetric m) _const_;
+ CGroupMemoryAccountingMetric cgroup_memory_accounting_metric_from_string(const char *s) _pure_;
 diff --git a/src/core/dbus-unit.c b/src/core/dbus-unit.c
-index b4509a990e..da22e8f524 100644
+index ac6add4700..bb19831814 100644
 --- a/src/core/dbus-unit.c
 +++ b/src/core/dbus-unit.c
-@@ -1455,7 +1455,7 @@ static int property_get_effective_limit(
+@@ -1458,7 +1458,7 @@ static int property_get_effective_limit(
          assert(reply);
          assert(property);
  

@@ -558,6 +558,7 @@
 %{_mandir}/man3/sd_hwdb_unref.3.gz
 %{_mandir}/man3/sd_id128_equal.3.gz
 %{_mandir}/man3/sd_id128_from_string.3.gz
+%{_mandir}/man3/sd_id128_get_app_specific.3.gz
 %{_mandir}/man3/sd_id128_get_boot.3.gz
 %{_mandir}/man3/sd_id128_get_boot_app_specific.3.gz
 %{_mandir}/man3/sd_id128_get_invocation.3.gz

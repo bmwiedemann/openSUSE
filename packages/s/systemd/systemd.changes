@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Mon Feb 26 09:18:00 UTC 2024 - Antonio Feijoo <antonio.feijoo@suse.com>
+
+- Fix syntax required for OBS source validator
+
+-------------------------------------------------------------------
+Fri Feb 23 09:09:57 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Upgrade to v255.3 (commit 96edf7ad1866172b994cafb4df49e27d68ce8e87)
+
+  See https://github.com/openSUSE/systemd/blob/SUSE/v255/NEWS for details.
+
+  - This includes the following bug fixes:
+
+    - commit 6e10405aa25fe5e76b740d9ec59730e3f4470c7a (bsc#1219766)
+
+  - The following patches have been rebased:
+
+    - 0002-rc-local-fix-ordering-startup-for-etc-init.d-boot.lo.patch
+    - 0008-sysv-generator-translate-Required-Start-into-a-Wants.patch
+    - 0009-pid1-handle-console-specificities-weirdness-for-s390.patch
+    - 5001-Revert-udev-update-devlink-with-the-newer-device-nod.patch
+    - 5002-Revert-udev-revert-workarounds-for-issues-caused-by-.patch
+
+  - The following patches have been removed since they're part of v255:
+
+    - 5003-cgroup-rename-TasksMax-structure-to-CGroupTasksMax.patch
+    - 5004-bus-print-properties-ignore-CGROUP_LIMIT_MAX-for-Mem.patch
+    - 5005-bus-print-properties-prettify-more-unset-properties.patch
+
+  - systemd-boot has been added to the list of the dependencies of the
+    systemd-testsuite package as the installation of the bootloader is now
+    tested.
+
+  - the following patches have been backported on top of v255.3:
+
+    96edf7ad18 service: Demote log level of NotifyAccess= messages to debug (bsc#1210113 jsc#PED-6214)
+    fdde7f26d6 vconsole-setup: don't fail if the only found vc is already used by plymouth (bsc#1218618)
+    f96c587d41 rules: set up tty permissions and group for /dev/hvc* nodes (bsc#1218137)
+    63a41b8899 vconsole-setup: remember the correct error value when open_terminal() fails
+    f51a2e038c vconsole-setup: handle the case where the vc is in KD_GRAPHICS mode more gracefully (bsc#1215282)
+    15025a04c4 test: make sure to install the filesystem package in the test image on SUSE
+    06fecfb635 test: make sure that sd-boot is installed before testing bootctl
+    1e8788ea68 test: install systemd-boot in openSUSE test images
+    6e2875ad43 test/test-shutdown.py: optionally display the test I/Os in a dedicated log file
+    4be1a801b4 test-69: send SIGTERM to ask systemd-nspawn to properly stop the container
+    7bdab7b7c7 man: Document ranges for distributions config files and local config files
+    3f12a6c22f test: systemd-update-utmp is optional
+    1911c7fd95 man: conditionalize sd-pcrlock and sd-measure on the same variable as their binaries
+    352f76f734 man: always install bootctl
+    b48a18c464 meson: fix installation of html doc aliases
+
+- bootctl has been moved to the udev package since some of its commands work on
+  non UEFI systems too.
+
+-------------------------------------------------------------------
+Fri Feb 23 07:51:50 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- When building systemd rpms in place (i.e. rpmbuild --build-in-place), the
+  version of systemd is now retrieved from the file "meson.version" by
+  default. This file is supposed to contain a string that described the full
+  version of the systemd project.
+
+- Overriding of %systemd_version/%systemd_release is now limited to builds of
+  rpms in place cases.
+
+-------------------------------------------------------------------
 Thu Feb 22 09:47:41 UTC 2024 - Franck Bui <fbui@suse.com>
 
 - Import commit 31f1148f75a1155d3eb37fd1a450096d669ec65b
@@ -16,6 +82,7 @@ Tue Feb 20 12:22:42 UTC 2024 - Daan De Meyer <daan.j.demeyer@gmail.com>
   as well. By building the rpms using the opensuse packaging specs, the idea is
   to catch more issues ahead of time as the mkosi environment will behave more
   like a regular opensuse system.
+
 - Add new %version_override and %version_release macros to allow overriding the
   version and release of the rpm respectively.
 

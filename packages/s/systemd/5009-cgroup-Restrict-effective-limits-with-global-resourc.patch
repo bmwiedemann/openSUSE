@@ -1,7 +1,7 @@
-From edfd70ab2c5490131fcf5a4348e31c19251d3479 Mon Sep 17 00:00:00 2001
+From 355275a7708d09f7be27ea239478cb3c6defbb9a Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Michal=20Koutn=C3=BD?= <mkoutny@suse.com>
-Date: Tue, 23 Jan 2024 11:30:20 +0100
-Subject: [PATCH 5009/5011] cgroup: Restrict effective limits with global
+Date: Mon, 14 Aug 2023 19:59:57 +0200
+Subject: [PATCH 5009/5010] cgroup: Restrict effective limits with global
  resource provision
 
 Global resource (whole system or root cg's (e.g. in a container)) is
@@ -17,10 +17,10 @@ when calculating effective limits.
  2 files changed, 12 insertions(+), 1 deletion(-)
 
 diff --git a/man/systemd.resource-control.xml b/man/systemd.resource-control.xml
-index 5b7900af87..ded4722e7a 100644
+index bd8b6a5719..c2aa5b57e8 100644
 --- a/man/systemd.resource-control.xml
 +++ b/man/systemd.resource-control.xml
-@@ -422,7 +422,7 @@ CPUWeight=20   DisableControllers=cpu              /          \
+@@ -438,7 +438,7 @@ CPUWeight=20   DisableControllers=cpu              /          \
            <literal>memory.max</literal> control group attribute. For details about this control group attribute, see
            <ulink url="https://docs.kernel.org/admin-guide/cgroup-v2.html#memory-interface-files">Memory Interface Files</ulink>.
            The effective configuration is reported as <varname>EffectiveMemoryMax=</varname> (the value is
@@ -30,10 +30,10 @@ index 5b7900af87..ded4722e7a 100644
            <para>While <varname>StartupMemoryMax=</varname> applies to the startup and shutdown phases of the system,
            <varname>MemoryMax=</varname> applies to normal runtime of the system, and if the former is not set also to
 diff --git a/src/core/cgroup.c b/src/core/cgroup.c
-index 0842036559..a53d90486c 100644
+index 78ca67216a..285fa200d6 100644
 --- a/src/core/cgroup.c
 +++ b/src/core/cgroup.c
-@@ -4006,6 +4006,17 @@ static uint64_t unit_get_effective_limit_one(Unit *u, CGroupLimitType type) {
+@@ -4249,6 +4249,17 @@ static uint64_t unit_get_effective_limit_one(Unit *u, CGroupLimitType type) {
          assert(u);
          assert(UNIT_HAS_CGROUP_CONTEXT(u));
  

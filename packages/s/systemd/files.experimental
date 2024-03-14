@@ -15,8 +15,8 @@
 %{_datadir}/dbus-1/system.d/org.freedesktop.oom1.conf
 %{_datadir}/zsh/site-functions/_oomctl
 %{_mandir}/man1/oomctl.1.gz
-%if %{with sd_boot}
 %{_mandir}/man1/systemd-measure.1.gz
+%if %{with sd_boot}
 %{_mandir}/man1/ukify.1.gz
 %endif
 %{_mandir}/man5/oomd.conf.5.gz
@@ -27,16 +27,12 @@
 %{_mandir}/man8/systemd-oomd.8.gz
 %{_mandir}/man8/systemd-oomd.service.8.gz
 %if %{with sd_boot}
+%{_mandir}/man8/systemd-pcrextend.8.gz
 %{_mandir}/man8/systemd-pcrfs-root.service.8.gz
 %{_mandir}/man8/systemd-pcrfs@.service.8.gz
 %{_mandir}/man8/systemd-pcrmachine.service.8.gz
 %{_mandir}/man8/systemd-pcrphase-initrd.service.8.gz
 %{_mandir}/man8/systemd-pcrphase-sysinit.service.8.gz
-%if %{with upstream}
-%{_mandir}/man8/systemd-pcrextend.8.gz
-%else
-%{_mandir}/man8/systemd-pcrphase.8.gz
-%endif
 %{_mandir}/man8/systemd-pcrphase.service.8.gz
 %endif
 %{_mandir}/man8/systemd-repart.8.gz
@@ -52,21 +48,16 @@
 %{_systemd_util_dir}/oomd.conf
 %{_systemd_util_dir}/system/initrd-root-fs.target.wants/systemd-repart.service
 %{_systemd_util_dir}/system/sysinit.target.wants/systemd-repart.service
-%if %{with sd_boot}
 %{_systemd_util_dir}/systemd-measure
-%endif
 %{_systemd_util_dir}/systemd-oomd
 %if %{with sd_boot}
-%if %{with upstream}
 %{_systemd_util_dir}/systemd-pcrextend
-%else
-%{_systemd_util_dir}/systemd-pcrphase
-%endif
 %endif
 %{_systemd_util_dir}/systemd-sysupdate
 %{_systemd_util_dir}/systemd-userwork
 %if %{with sd_boot}
 %{_systemd_util_dir}/ukify
+%{_bindir}/ukify
 %endif
 %{_sysusersdir}/systemd-oom.conf
 %if %{with sd_boot}
@@ -90,3 +81,89 @@
 %{_unitdir}/systemd-sysupdate-reboot.timer
 %{_unitdir}/systemd-sysupdate.service
 %{_unitdir}/systemd-sysupdate.timer
+
+%{_prefix}/lib/pcrlock.d/350-action-efi-application.pcrlock
+%{_prefix}/lib/pcrlock.d/400-secureboot-separator.pcrlock.d/300-0x00000000.pcrlock
+%{_prefix}/lib/pcrlock.d/400-secureboot-separator.pcrlock.d/600-0xffffffff.pcrlock
+%{_prefix}/lib/pcrlock.d/500-separator.pcrlock.d/300-0x00000000.pcrlock
+%{_prefix}/lib/pcrlock.d/500-separator.pcrlock.d/600-0xffffffff.pcrlock
+%{_prefix}/lib/pcrlock.d/700-action-efi-exit-boot-services.pcrlock.d/300-present.pcrlock
+%{_prefix}/lib/pcrlock.d/700-action-efi-exit-boot-services.pcrlock.d/600-absent.pcrlock
+%{_prefix}/lib/pcrlock.d/750-enter-initrd.pcrlock
+%{_prefix}/lib/pcrlock.d/800-leave-initrd.pcrlock
+%{_prefix}/lib/pcrlock.d/850-sysinit.pcrlock
+%{_prefix}/lib/pcrlock.d/900-ready.pcrlock
+%{_prefix}/lib/pcrlock.d/950-shutdown.pcrlock
+%{_prefix}/lib/pcrlock.d/990-final.pcrlock
+%{_mandir}/man5/systemd.pcrlock.5.gz
+%{_mandir}/man5/systemd.pcrlock.d.5.gz
+%{_mandir}/man8/systemd-pcrlock-file-system.service.8.gz
+%{_mandir}/man8/systemd-pcrlock-firmware-code.service.8.gz
+%{_mandir}/man8/systemd-pcrlock-firmware-config.service.8.gz
+%{_mandir}/man8/systemd-pcrlock-machine-id.service.8.gz
+%{_mandir}/man8/systemd-pcrlock-make-policy.service.8.gz
+%{_mandir}/man8/systemd-pcrlock-secureboot-authority.service.8.gz
+%{_mandir}/man8/systemd-pcrlock-secureboot-policy.service.8.gz
+%{_mandir}/man8/systemd-pcrlock.8.gz
+%if %{with sd_boot}
+%{_unitdir}/systemd-pcrextend.socket
+%{_unitdir}/systemd-pcrextend@.service
+%{_unitdir}/sockets.target.wants/systemd-pcrextend.socket
+%{_unitdir}/systemd-pcrlock-file-system.service
+%{_unitdir}/systemd-pcrlock-firmware-code.service
+%{_unitdir}/systemd-pcrlock-firmware-config.service
+%{_unitdir}/systemd-pcrlock-machine-id.service
+%{_unitdir}/systemd-pcrlock-make-policy.service
+%{_unitdir}/systemd-pcrlock-secureboot-authority.service
+%{_unitdir}/systemd-pcrlock-secureboot-policy.service
+%endif
+%{_systemd_util_dir}/systemd-pcrlock
+
+%{_systemd_util_dir}/repart/definitions/confext.repart.d/10-root.conf
+%{_systemd_util_dir}/repart/definitions/confext.repart.d/20-root-verity.conf
+%{_systemd_util_dir}/repart/definitions/confext.repart.d/30-root-verity-sig.conf
+%{_systemd_util_dir}/repart/definitions/portable.repart.d/10-root.conf
+%{_systemd_util_dir}/repart/definitions/portable.repart.d/20-root-verity.conf
+%{_systemd_util_dir}/repart/definitions/portable.repart.d/30-root-verity-sig.conf
+%{_systemd_util_dir}/repart/definitions/sysext.repart.d/10-root.conf
+%{_systemd_util_dir}/repart/definitions/sysext.repart.d/20-root-verity.conf
+%{_systemd_util_dir}/repart/definitions/sysext.repart.d/30-root-verity-sig.conf
+
+%{_mandir}/man8/systemd-storagetm.8.gz
+%{_mandir}/man8/systemd-storagetm.service.8.gz
+%{_unitdir}/systemd-storagetm.service
+%{_unitdir}/storage-target-mode.target
+%{_systemd_util_dir}/systemd-storagetm
+
+%{_unitdir}/initrd.target.wants/systemd-bsod.service
+%{_systemd_util_dir}/systemd-bsod
+%{_unitdir}/systemd-bsod.service
+%{_mandir}/man8/systemd-bsod.8.gz
+%{_mandir}/man8/systemd-bsod.service.8.gz
+
+%{_bindir}/varlinkctl
+%{_mandir}/man1/varlinkctl.1.gz
+
+%{_bindir}/systemd-vmspawn
+%{_mandir}/man1/systemd-vmspawn.1.gz
+
+%dir %{_prefix}/lib/pcrlock.d
+%dir %{_prefix}/lib/pcrlock.d/400-secureboot-separator.pcrlock.d
+%dir %{_prefix}/lib/pcrlock.d/500-separator.pcrlock.d
+%dir %{_prefix}/lib/pcrlock.d/700-action-efi-exit-boot-services.pcrlock.d
+%dir %{_systemd_util_dir}/repart
+%dir %{_systemd_util_dir}/repart/definitions
+%dir %{_systemd_util_dir}/repart/definitions/confext.repart.d
+%dir %{_systemd_util_dir}/repart/definitions/portable.repart.d
+%dir %{_systemd_util_dir}/repart/definitions/sysext.repart.d
+
+%if %{with sd_boot}
+%{_unitdir}/sysinit.target.wants/systemd-tpm2-setup-early.service
+%{_unitdir}/sysinit.target.wants/systemd-tpm2-setup.service
+%{_unitdir}/systemd-tpm2-setup-early.service
+%{_unitdir}/systemd-tpm2-setup.service
+%{_systemd_util_dir}/systemd-tpm2-setup
+%{_mandir}/man8/systemd-tpm2-setup-early.service.8.gz
+%{_mandir}/man8/systemd-tpm2-setup.8.gz
+%{_mandir}/man8/systemd-tpm2-setup.service.8.gz
+%endif

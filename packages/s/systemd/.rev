@@ -7070,4 +7070,41 @@ handle manual pages that consist only of a .so directive such as
   version and release of the rpm respectively.</comment>
     <requestid>1149219</requestid>
   </revision>
+  <revision rev="417" vrev="1">
+    <srcmd5>77fa2af993a177764a0c18ad0fbcba40</srcmd5>
+    <version>255.3</version>
+    <time>1710434566</time>
+    <user>anag+factory</user>
+    <comment>- Fix syntax required for OBS source validator
+
+- Upgrade to v255.3 (commit 96edf7ad1866172b994cafb4df49e27d68ce8e87)
+  See https://github.com/openSUSE/systemd/blob/SUSE/v255/NEWS for details.
+  - This includes the following bug fixes:
+    - commit 6e10405aa25fe5e76b740d9ec59730e3f4470c7a (bsc#1219766)
+  - The following patches have been rebased:
+    - 0002-rc-local-fix-ordering-startup-for-etc-init.d-boot.lo.patch
+    - 0008-sysv-generator-translate-Required-Start-into-a-Wants.patch
+    - 0009-pid1-handle-console-specificities-weirdness-for-s390.patch
+    - 5001-Revert-udev-update-devlink-with-the-newer-device-nod.patch
+    - 5002-Revert-udev-revert-workarounds-for-issues-caused-by-.patch
+  - The following patches have been removed since they're part of v255:
+    - 5003-cgroup-rename-TasksMax-structure-to-CGroupTasksMax.patch
+    - 5004-bus-print-properties-ignore-CGROUP_LIMIT_MAX-for-Mem.patch
+    - 5005-bus-print-properties-prettify-more-unset-properties.patch
+  - systemd-boot has been added to the list of the dependencies of the
+    systemd-testsuite package as the installation of the bootloader is now
+    tested.
+  - the following patches have been backported on top of v255.3:
+    96edf7ad18 service: Demote log level of NotifyAccess= messages to debug (bsc#1210113 jsc#PED-6214)
+    fdde7f26d6 vconsole-setup: don't fail if the only found vc is already used by plymouth (bsc#1218618)
+    f96c587d41 rules: set up tty permissions and group for /dev/hvc* nodes (bsc#1218137)
+    63a41b8899 vconsole-setup: remember the correct error value when open_terminal() fails
+    f51a2e038c vconsole-setup: handle the case where the vc is in KD_GRAPHICS mode more gracefully (bsc#1215282)
+    15025a04c4 test: make sure to install the filesystem package in the test image on SUSE
+    06fecfb635 test: make sure that sd-boot is installed before testing bootctl
+    1e8788ea68 test: install systemd-boot in openSUSE test images
+    6e2875ad43 test/test-shutdown.py: optionally display the test I/Os in a dedicated log file
+    4be1a801b4 test-69: send SIGTERM to ask systemd-nspawn to properly stop the container</comment>
+    <requestid>1152118</requestid>
+  </revision>
 </revisionlist>

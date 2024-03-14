@@ -1,7 +1,7 @@
-From d0c92dae23e409f6a29f70f039455c08610c943f Mon Sep 17 00:00:00 2001
+From 10d8f042c0bf685d41b95d7151214999a8ff68c2 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Michal=20Koutn=C3=BD?= <mkoutny@suse.com>
-Date: Tue, 23 Jan 2024 11:30:19 +0100
-Subject: [PATCH 5008/5011] test: Add effective cgroup limits testing
+Date: Wed, 9 Aug 2023 22:43:31 +0200
+Subject: [PATCH 5008/5010] test: Add effective cgroup limits testing
 
 (cherry picked from commit ce35bb95c7b6fe9a48d2b8628bd690279b17fffa)
 
@@ -87,10 +87,10 @@ index 0000000000..3ff8e83140
 +
 +rm -f /run/systemd/system/"$pre"* || :
 diff --git a/test/units/util.sh b/test/units/util.sh
-index 932fe1e603..7af98bb45e 100755
+index b5ed73237c..567cda2845 100755
 --- a/test/units/util.sh
 +++ b/test/units/util.sh
-@@ -26,6 +26,15 @@ assert_eq() {(
+@@ -28,6 +28,15 @@ assert_eq() {(
      fi
  )}
  

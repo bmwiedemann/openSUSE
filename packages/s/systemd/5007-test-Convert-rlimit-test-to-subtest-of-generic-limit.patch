@@ -1,7 +1,7 @@
-From 46451a18828473edaf7e9873a084f26f0c827a3d Mon Sep 17 00:00:00 2001
+From 207784eeaab0c274dc087056f20523d7c10939fe Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Michal=20Koutn=C3=BD?= <mkoutny@suse.com>
-Date: Tue, 23 Jan 2024 11:30:18 +0100
-Subject: [PATCH 5007/5011] test: Convert rlimit test to subtest of generic
+Date: Wed, 9 Aug 2023 22:42:36 +0200
+Subject: [PATCH 5007/5010] test: Convert rlimit test to subtest of generic
  limit testing
 
 No functional change intended. Preparation for new tests.

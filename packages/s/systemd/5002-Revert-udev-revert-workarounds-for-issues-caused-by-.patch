@@ -1,4 +1,4 @@
-From 65b0ae29194a335dc2cc1410d57acf7307251791 Mon Sep 17 00:00:00 2001
+From 1861e68a986c39cfec3c7fe8a348d331d93800d7 Mon Sep 17 00:00:00 2001
 From: Franck Bui <fbui@suse.com>
 Date: Fri, 12 Jan 2024 10:55:17 +0100
 Subject: [PATCH 5002/5002] Revert "udev: revert workarounds for issues caused
@@ -10,7 +10,7 @@ This reverts commit b8fa62589271a0a7552c6eb02e6beac3ca759ba7.
  1 file changed, 11 insertions(+)
 
 diff --git a/rules.d/60-persistent-storage.rules.in b/rules.d/60-persistent-storage.rules.in
-index 835263f3cb..d5e0f5f705 100644
+index 6787430208..39a6555045 100644
 --- a/rules.d/60-persistent-storage.rules.in
 +++ b/rules.d/60-persistent-storage.rules.in
 @@ -134,6 +134,17 @@ KERNEL!="sr*|mmcblk[0-9]boot[0-9]", IMPORT{builtin}="blkid"
