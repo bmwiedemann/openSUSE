@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 14 10:06:06 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- skip build for python 3.12
+
+-------------------------------------------------------------------
 Fri Oct  7 15:21:21 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 0.3.0 
+- Update to version 0.3.0
   * Updated to work with STAC API v0.9.0 and v1.0.0-beta.2
   * SATUTILS_API_URL envvar changed to STAC_API_URL and default value removed. Specify with envvar or pass into Search when using library
   * When downloading, specify filename_template for location instead of both datadir and filename.

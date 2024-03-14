@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1008864</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d65cb8bf4c446b1934a3554d3ed2f790</srcmd5>
+    <version>0.3.0</version>
+    <time>1710434735</time>
+    <user>anag+factory</user>
+    <comment>- skip build for python 3.12
+
+- Update to version 0.3.0</comment>
+    <requestid>1157927</requestid>
+  </revision>
 </revisionlist>
