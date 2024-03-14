@@ -114,4 +114,27 @@
   * Remove Travis build status badge</comment>
     <requestid>1132857</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b1cb82e770e1088d7a41898937a62d25</srcmd5>
+    <version>0.14.2</version>
+    <time>1710434715</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.14.2:
+  * #507: docs: document description field of Marker
+  * #506: fix: allow unsortable containers in In and NotIn
+    validators (fixes #451)
+  * #488: fix(typing): fix type hint for Coerce type param
+  * #497: fix(typing): allow path to be a list of strings,
+    integers or any other hashables
+  * #499: support: drop support for python 3.7
+  * #501: support: run tests on python 3.11
+  * #502: support: run tests on python 3.12
+  * #495: refactor: drop duplicated type checks in
+    Schema._compile
+  * #500: refactor: fix few tests, use pytest.raises, extend
+    raises helper
+  * #503: refactor: Add linters configuration, reformat whole
+    code</comment>
+    <requestid>1157891</requestid>
+  </revision>
 </revisionlist>
