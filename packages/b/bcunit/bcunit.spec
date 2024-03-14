@@ -1,7 +1,7 @@
 #
 # spec file for package bcunit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soname  libbcunit
 %define sover   1
 Name:           bcunit
-Version:        5.2.62
+Version:        5.3.26
 Release:        0
 Summary:        Provide C programmers basic testing functionality
 License:        LGPL-2.0-or-later
@@ -34,9 +34,8 @@ Patch1:         bcunit-ncurses6.patch
 Patch2:         bcunit-sover.patch
 # PATCH-FIX-UPSTREAM
 Patch3:         set_current_version.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.22
 BuildRequires:  git-core >= 1.7.10
-BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 
 %description
@@ -76,9 +75,7 @@ This package installs the BCUnit shared library.
 
 %build
 %cmake \
-  -DENABLE_STATIC=OFF \
-  -DENABLE_CURSES=ON \
-  -DENABLE_DOC=ON
+  -DENABLE_BCUNIT_DOC=ON
 %cmake_build
 
 %install
@@ -96,17 +93,17 @@ mkdir -p %{buildroot}%{_libdir}/BCUnit/
 
 %files doc
 %dir %{_datadir}/BCUnit/
-%dir %{_datadir}/doc/BCUnit/
-%doc %{_datadir}/doc/BCUnit/*
-%doc %{_datadir}/BCUnit/*
-%{_mandir}/man3/BCUnit.3%{?ext_man}
+%{_datadir}/BCUnit/*dtd
+%{_datadir}/BCUnit/*xsl
+%{_datadir}/man/man3/BCUnit.3.gz
 
 %files devel
+%dir %{_datadir}/BCUnit/
+%dir %{_datadir}/BCUnit/cmake
 %{_includedir}/BCUnit/
-%dir %{_datadir}/BCunit/
 %{_libdir}/BCUnit/
 %{_libdir}/%{soname}.so
 %{_libdir}/pkgconfig/bcunit.pc
-%{_datadir}/BCunit/cmake/
+%{_datadir}/BCUnit/cmake/*
 
 %changelog

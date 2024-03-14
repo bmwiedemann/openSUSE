@@ -47,4 +47,12 @@
     <comment>- Update to version 5.2.62.</comment>
     <requestid>1118751</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>664d4ad2d8d5ad4df847f3396715420c</srcmd5>
+    <version>5.3.26</version>
+    <time>1710434687</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1157858</requestid>
+  </revision>
 </revisionlist>

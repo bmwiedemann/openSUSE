@@ -1,15 +1,13 @@
---- bcunit-5.2.62/CMakeLists.txt.orig	2023-10-06 07:48:53.136339960 +0200
-+++ bcunit-5.2.62/CMakeLists.txt	2023-10-06 07:49:02.626391603 +0200
-@@ -32,9 +32,9 @@
+Index: bcunit-5.3.7/CMakeLists.txt
+===================================================================
+--- bcunit-5.3.7.orig/CMakeLists.txt
++++ bcunit-5.3.7/CMakeLists.txt
+@@ -22,7 +22,7 @@
  
- set(PACKAGE "BCUnit")
- set(PACKAGE_NAME "${PACKAGE}")
--set(PROJECT_VERSION_MAJOR 3)
--set(PROJECT_VERSION_MINOR 0)
--set(PROJECT_VERSION_PATCH 2)
-+set(PROJECT_VERSION_MAJOR 5)
-+set(PROJECT_VERSION_MINOR 2)
-+set(PROJECT_VERSION_PATCH 62)
- set(PROJECT_VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}")
+ cmake_minimum_required(VERSION 3.22)
+ 
+-project(BCUnit VERSION "3.0.2" LANGUAGES C)
++project(BCUnit VERSION "5.3.26" LANGUAGES C)
+ 
  set(VERSION "${PROJECT_VERSION}")
  set(RELEASE "${PROJECT_VERSION_PATCH}")
