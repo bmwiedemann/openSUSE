@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>662b3e70e00df4ce868643a6c9c9c1ca</srcmd5>
+    <version>3.0.0</version>
+    <time>1710434755</time>
+    <user>anag+factory</user>
+    <comment>New package that will be needed by plexus-utils 4.0.0 when we are upgrading</comment>
+    <requestid>1157993</requestid>
+  </revision>
+</revisionlist>

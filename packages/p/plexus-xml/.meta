@@ -1,0 +1,11 @@
+<package name="plexus-xml" project="openSUSE:Factory">
+  <title>Plexus XML Utilities</title>
+  <description>A collection of various utility classes to ease working with XML in Maven 3.
+This library consists of XML classes (org.codehaus.plexus.util.xml) that
+have been extracted from plexus-utils 3:
+  * plexus-utils 3 = plexus-utils 4 + plexus-xml 3.
+
+</description>
+  <devel project="Java:packages" package="plexus-xml"/>
+  <url>https://github.com/codehaus-plexus/%{name}</url>
+</package>
