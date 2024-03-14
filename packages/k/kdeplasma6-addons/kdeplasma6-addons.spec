@@ -1,7 +1,7 @@
 #
 # spec file for package kdeplasma6-addons
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdeplasma6-addons
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        Additional Plasma6 Widgets
 License:        GPL-2.0-or-later AND LGPL-2.1-only AND GPL-3.0-only
@@ -55,8 +55,8 @@ BuildRequires:  cmake(KF6Sonnet) >= %{kf6_version}
 BuildRequires:  cmake(KF6UnitConversion) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(Plasma) >= %{_plasma6_bugfix}
-BuildRequires:  cmake(PlasmaQuick) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(Plasma5Support) >= %{_plasma6_bugfix}
+BuildRequires:  cmake(PlasmaQuick) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
