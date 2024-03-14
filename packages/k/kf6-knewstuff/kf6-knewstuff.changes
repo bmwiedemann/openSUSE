@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 13 08:33:07 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream fix (kde#482349):
+  * 0001-Fix-link-list-dialog-for-installation-button.patch
+
+-------------------------------------------------------------------
 Wed Feb 21 19:28:02 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.0
