@@ -1,7 +1,7 @@
 #
 # spec file for package bzrtp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover   0
 Name:           bzrtp
-Version:        5.2.98
+Version:        5.3.26
 Release:        0
 Summary:        ZRTP keys exchange protocol implementation
 License:        GPL-3.0-or-later
@@ -28,13 +28,14 @@ Source:         https://gitlab.linphone.org/BC/public/bzrtp/-/archive/%{version}
 Source1:        baselibs.conf
 # PATCH-FIX-OPENSUSE bzrtp-fix-pkgconfig.patch sor.alexei@meowr.ru -- Install libbzrtp.pc.
 Patch0:         bzrtp-fix-pkgconfig.patch
+# PATCH-FIX-UPSTREAM
 Patch1:         set_current_version.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.22
 BuildRequires:  gcc-c++
 %if 0%{?suse_version} >= 1600
 BuildRequires:  liboqs-devel
 # At the time of writing (13/Dec/2023), PQCE is only available on Tumbleweed.
-BuildRequires:  postquantumcryptoengine-devel
+BuildRequires:  postquantumcryptoengine-devel >= 5.3.0~git.20230802
 %endif
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bctoolbox) >= %{version}
@@ -88,7 +89,9 @@ application which will use libbzrtp.
 %doc README.md
 %{_includedir}/%{name}/
 %{_libdir}/lib%{name}.so
-%{_datadir}/%{name}/
 %{_libdir}/pkgconfig/lib%{name}.pc
+%dir %{_datadir}/BZRTP
+%dir %{_datadir}/BZRTP/cmake
+%{_datadir}/BZRTP/cmake/*.cmake
 
 %changelog
