@@ -41,6 +41,7 @@ Source4:        SLE-15SP6.def
 Source5:        Leap.def
 Source20:       %{name}-rpmlintrc
 Source21:       vendor.tar.gz
+Patch1:         Remove-signatures-from-Docker-images.patch
 BuildRequires:  cryptsetup
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -102,6 +103,7 @@ based on the latest openSUSE Leap release.
 
 %prep
 %setup -q -n %{name}-%{version}%{?vers_suffix}
+%autopatch -p1
 cp %{S:1} .
 
 %build

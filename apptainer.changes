@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 13 19:28:40 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Fix 'apptainer build' using signed packages from the SUSE
+  Registry (bsc#1221364).
+  * Remove-signatures-from-Docker-images.patch
+
+-------------------------------------------------------------------
 Wed Jan 31 14:14:20 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - Updated apptainer to version 1.2.5
