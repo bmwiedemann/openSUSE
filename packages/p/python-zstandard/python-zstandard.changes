@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  5 13:37:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows us to eliminate usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Thu Dec 28 15:34:05 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

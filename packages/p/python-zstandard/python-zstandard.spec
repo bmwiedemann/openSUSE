@@ -1,7 +1,7 @@
 #
 # spec file for package python-zstandard
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,8 +48,7 @@ BuildRequires:  %{python_module pytest}
 Zstandard bindings for Python
 
 %prep
-%setup -q -n zstandard-%{version}
-%patch0 -p1
+%autosetup -p1 -n zstandard-%{version}
 
 %build
 export CFLAGS="%{optflags}"
