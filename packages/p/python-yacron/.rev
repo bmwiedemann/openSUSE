@@ -75,4 +75,12 @@
     provided or exists (#72)</comment>
     <requestid>1135636</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>e88b57c8af485f6e5b074494fc1281eb</srcmd5>
+    <version>0.19.0</version>
+    <time>1710434729</time>
+    <user>anag+factory</user>
+    <comment>- skip python 3.9 due to missing dependencies</comment>
+    <requestid>1157919</requestid>
+  </revision>
 </revisionlist>

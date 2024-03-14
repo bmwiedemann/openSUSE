@@ -1,7 +1,7 @@
 #
 # spec file for package python-yacron
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
+%{?sle15_python_module_pythons}
+# missing sentry-sdk due to missing ipdb for 39
+%global skip_python39 1
 Name:           python-yacron
 Version:        0.19.0
 Release:        0
@@ -40,7 +40,7 @@ Requires:       python-ruamel.yaml
 Requires:       python-sentry-sdk
 Requires:       python-strictyaml >= 0.7.2
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2}
