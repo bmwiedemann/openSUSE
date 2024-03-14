@@ -596,4 +596,25 @@
 </comment>
     <requestid>1145097</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>d3ce678683565a2dfa64611a679b32ab</srcmd5>
+    <version>20240313</version>
+    <time>1710434562</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240313:
+  * Assign alts_exec_t to files_type
+- Update to version 20240308:
+  * Support /bin/alts in the policy (bsc#1217530)
+  * Revert &quot;Allow virtnetworkd_t to execute bin_t (bsc#1216903)&quot;
+- Update to version 20240306:
+  * Replace init domtrans rule for confined users to allow exec init
+  * Update dbus_role_template() to allow user service status
+  * Allow polkit status all systemd services
+  * Allow setroubleshootd create and use inherited io_uring
+  * Allow load_policy read and write generic ptys
+- Update to version 20240304:
+  * Allow ssh-keygen to use the libica crypto module (bsc#1220373)
+</comment>
+    <requestid>1157662</requestid>
+  </revision>
 </revisionlist>
