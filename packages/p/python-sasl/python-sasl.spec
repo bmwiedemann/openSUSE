@@ -1,7 +1,7 @@
 #
 # spec file for package python-sasl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,16 @@ Version:        0.3.1
 Release:        0
 Summary:        SASL for Python
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/cloudera/python-sasl
 Source:         https://files.pythonhosted.org/packages/source/s/sasl/sasl-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM python-311.patch gh#cloudera/python-sasl#31
-Patch0:         python-311.patch
+# PATCH-FIX-UPSTREAM Based on gh#cloudera/python-sasl#32
+Patch0:         cythonize-during-build.patch
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -46,16 +48,18 @@ Cyrus-SASL bindings for Python.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+# Don't ship generated sources
+%python_expand rm %{buildroot}%{$python_sitearch}/sasl/saslwrapper.{cpp,h}
 
 %files %{python_files}
 %doc PKG-INFO
 %license LICENSE.txt
 %{python_sitearch}/sasl
-%{python_sitearch}/sasl-%{version}*-info
+%{python_sitearch}/sasl-%{version}.dist-info
 
 %changelog

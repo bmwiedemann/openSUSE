@@ -27,4 +27,14 @@
 </comment>
     <requestid>1066949</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1e367990687ac86854ed5595f51de71c</srcmd5>
+    <version>0.3.1</version>
+    <time>1710434672</time>
+    <user>anag+factory</user>
+    <comment>- Drop patch python-311.patch, does not work with Python 3.12.
+- Add patch cythonize-during-build.patch, to Cythonize during build.
+- Switch to pyproject macros.</comment>
+    <requestid>1157784</requestid>
+  </revision>
 </revisionlist>
