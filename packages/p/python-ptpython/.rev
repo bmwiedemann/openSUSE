@@ -119,4 +119,15 @@
   * Handle `GeneratorExit` exception when leaving the paginator.</comment>
     <requestid>1145531</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>c064a1a589dd09c4691d567a47eb332d</srcmd5>
+    <version>3.0.26</version>
+    <time>1710434713</time>
+    <user>anag+factory</user>
+    <comment>- Don't try to build on Python 3.9, we don't have IPython there anymore.
+- remove optional ipython dependency - does no longer exist
+  on python39
+</comment>
+    <requestid>1157870</requestid>
+  </revision>
 </revisionlist>

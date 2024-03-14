@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 14 07:37:22 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Don't try to build on Python 3.9, we don't have IPython there anymore.
+
+-------------------------------------------------------------------
+Wed Mar 13 10:19:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- remove optional ipython dependency - does no longer exist
+  on python39
+
+-------------------------------------------------------------------
 Fri Feb  9 21:58:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.26:

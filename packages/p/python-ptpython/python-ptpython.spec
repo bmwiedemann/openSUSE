@@ -17,6 +17,7 @@
 
 
 %{?sle15_python_module_pythons}
+%define skip_python39 1
 Name:           python-ptpython
 Version:        3.0.26
 Release:        0
@@ -39,7 +40,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module docopt}
-BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module jedi >= 0.9.0}
 BuildRequires:  %{python_module prompt_toolkit >= 3.0.0}
 # /SECTION
