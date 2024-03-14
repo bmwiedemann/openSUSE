@@ -145,4 +145,14 @@
   * Preserve scroll position when reloading file.</comment>
     <requestid>1146850</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>05435ab7baeec7bf169f91c9862b5a1e</srcmd5>
+    <version>0.61.1</version>
+    <time>1710434684</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.61.0:
+  * Fix data being displayed from the wrong point in the file when
+    &quot;Collapse matches&quot; is enabled in the file comparison window.</comment>
+    <requestid>1157813</requestid>
+  </revision>
 </revisionlist>
