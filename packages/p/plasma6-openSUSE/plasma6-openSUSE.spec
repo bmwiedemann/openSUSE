@@ -1,7 +1,7 @@
 #
 # spec file for package plasma6-openSUSE
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 # Plasma 6 pulls in Qt 5 as well, tell qml-autoreqprov what to use
 %global __qml_requires_opts --qtver 6
-%global plasma_version 6.0.1
+%global plasma_version 6.0.2
 Name:           plasma6-openSUSE
-Version:        84.87~git20231124T150427~8b6e0ec
+Version:        84.87~git20240313T170730~9c664b7
 Release:        0
 Summary:        openSUSE Plasma 6 Branding Packages
 License:        CC-BY-SA-4.0 AND GPL-2.0-or-later
@@ -39,9 +39,9 @@ Source4:        panel.diff
 # Diff between /usr/share/plasma/shells/org.kde.plasma.desktop/contents/layout.js
 # and /usr/share/plasma/look-and-feel/org.openSUSE.desktop/contents/layouts/org.kde.plasma.desktop-layout.js
 Source5:        layout.diff
+BuildRequires:  fdupes
 BuildRequires:  kf6-breeze-icons
 BuildRequires:  kf6-filesystem
-BuildRequires:  fdupes
 BuildRequires:  plasma6-desktop >= %{plasma_version}
 #!BuildIgnore: kio-extras
 #!BuildIgnore: kwin6
@@ -69,9 +69,9 @@ This package changes the default settings of Plasma 6.
 %package -n plasma6-theme-openSUSE
 Summary:        Plasma 6 theme for openSUSE
 Group:          System/GUI/KDE
-Requires:       wallpaper-branding-openSUSE
 Requires:       plasma6-desktop >= %{plasma_version}
 Requires:       plasma6-workspace >= %{plasma_version}
+Requires:       wallpaper-branding-openSUSE
 Obsoletes:      plasma5-theme-openSUSE < %{version}
 
 %description -n plasma6-theme-openSUSE
