@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-desktop-portal-kde6
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,7 +14,6 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
 
 
 # Internal QML import
@@ -31,7 +30,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           xdg-desktop-portal-kde6
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        QT/KF6 backend for xdg-desktop-portal
 License:        LGPL-2.1-or-later
