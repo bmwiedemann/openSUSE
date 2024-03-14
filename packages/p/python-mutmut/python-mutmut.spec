@@ -1,7 +1,7 @@
 #
 # spec file for package python-mutmut
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,6 +21,8 @@
 %define skip_python2 1
 # hammett requires python 3.7 or later
 %define skip_python36 1
+# pony not available for 3.12
+%global skip_python312 1
 Name:           python-mutmut
 Version:        2.0.0
 Release:        0
@@ -41,7 +43,7 @@ Requires:       python-pony
 Requires:       python-setuptools
 Requires:       python-tri.declarative >= 3.0.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-coverage
 Recommends:     python-pytest
 Suggests:       python-pytest-cov
