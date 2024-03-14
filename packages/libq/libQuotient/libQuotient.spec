@@ -152,12 +152,12 @@ developing applications that use libQuotient.
 %cmake_install
 %endif
 
+# Not useful
+rm -r %{buildroot}%{_datadir}/ndk-modules/
+
 %check
 # testolmaccount needs a local server
 %ctest --exclude-regex 'testolmaccount'
-
-# Not useful
-rm -r %{buildroot}%{_datadir}/ndk-modules/
 
 %ldconfig_scriptlets -n libQuotient%{?qt6:%{lib_suffix}-}%{soversion}
 
