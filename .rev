@@ -1171,4 +1171,15 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
   - Code cleanup</comment>
     <requestid>1154848</requestid>
   </revision>
+  <revision rev="105" vrev="2">
+    <srcmd5>8f4ab9b0968ebb89a71465b2adad7a1b</srcmd5>
+    <version>4.6.0</version>
+    <time>1710434573</time>
+    <user>anag+factory</user>
+    <comment>Intermediate package to not block systemd 255 release
+
+- Disable soft-reboot support for now as long as it isn't working reliably
+- Move tukit.conf to correct package</comment>
+    <requestid>1157610</requestid>
+  </revision>
 </revisionlist>
