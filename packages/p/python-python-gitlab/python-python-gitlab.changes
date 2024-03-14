@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Mar 14 04:30:21 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.4.0:
+  * feat(api): add support for the Draft notes API
+  * fix(client): handle empty 204 reponses in PUT requests
+  * fix(cli): add ability to disable SSL verification
+  * feat: add pipeline status as Enum
+  * feat(api): add support for wiki attachments
+  * feat: add Merge Request merge_status and detailed_merge_status values as
+    constants
+  * fix: remove deprecated MergeStatus
+  * BREAKING CHANGE: python-gitlab now stores metadata in pyproject.toml
+  * refactor(artifacts): remove deprecated `artifact()`in favor of
+    `artifacts.raw()`
+  * refactor(artifacts): remove deprecated `artifacts()`in favor of
+    `artifacts.download()`
+  * refactor(groups): remove deprecated LDAP group link add/delete methods
+  * refactor(projects): remove deprecated `project.transfer_project()` in
+    favor of `project.transfer()`
+  * fix(cli): remove deprecated `--all` option in favor of `--get-all`
+  * feat: remove support for Python 3.7, require 3.8 or higher
+  * chore: update PyYAML to 6.0.1
+  * feat(client): mask tokens by default when logging
+  * feat(api): add ProjectPackagePipeline
+  * feat: officially support Python 3.12
+  * feat(packages): Allow uploading bytes and files
+  * feat: Use requests AuthBase classes
+  * feat(api): add support for job token scope settings
+  * feat(api): support project remote mirror deletion
+  * feat(api): add optional GET attrs for /projects/:id/ci/lint
+  * feat(api): add support for new runner creation API
+  * feat(releases): Add support for direct_asset_path
+  * feat: Added iteration to issue and group filters
+  * test: fix failing tests that use 204 (No Content) plus content
+  * update dependency `responses==0.23.3` as it provides support for
+    `urllib3>=2`
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Thu Oct 12 19:28:30 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up the SPEC file

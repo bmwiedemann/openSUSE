@@ -223,4 +223,41 @@
 </comment>
     <requestid>1117526</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a2d164882449a8390b802f9994783d28</srcmd5>
+    <version>4.4.0</version>
+    <time>1710434677</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.4.0:
+  * feat(api): add support for the Draft notes API
+  * fix(client): handle empty 204 reponses in PUT requests
+  * fix(cli): add ability to disable SSL verification
+  * feat: add pipeline status as Enum
+  * feat(api): add support for wiki attachments
+  * feat: add Merge Request merge_status and detailed_merge_status values as
+    constants
+  * fix: remove deprecated MergeStatus
+  * BREAKING CHANGE: python-gitlab now stores metadata in pyproject.toml
+  * refactor(artifacts): remove deprecated `artifact()`in favor of
+    `artifacts.raw()`
+  * refactor(artifacts): remove deprecated `artifacts()`in favor of
+    `artifacts.download()`
+  * refactor(groups): remove deprecated LDAP group link add/delete methods
+  * refactor(projects): remove deprecated `project.transfer_project()` in
+    favor of `project.transfer()`
+  * fix(cli): remove deprecated `--all` option in favor of `--get-all`
+  * feat: remove support for Python 3.7, require 3.8 or higher
+  * chore: update PyYAML to 6.0.1
+  * feat(client): mask tokens by default when logging
+  * feat(api): add ProjectPackagePipeline
+  * feat: officially support Python 3.12
+  * feat(packages): Allow uploading bytes and files
+  * feat: Use requests AuthBase classes
+  * feat(api): add support for job token scope settings
+  * feat(api): support project remote mirror deletion
+  * feat(api): add optional GET attrs for /projects/:id/ci/lint
+  * feat(api): add support for new runner creation API
+  * feat(releases): Add support for direct_asset_path</comment>
+    <requestid>1157785</requestid>
+  </revision>
 </revisionlist>

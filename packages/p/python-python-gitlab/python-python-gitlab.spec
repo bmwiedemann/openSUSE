@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-gitlab
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,24 @@
 
 
 Name:           python-python-gitlab
-Version:        3.15.0
+Version:        4.4.0
 Release:        0
 Summary:        Python module for interacting with the GitLab API
 License:        LGPL-3.0-only
 URL:            https://github.com/python-gitlab/python-gitlab
 Source:         https://files.pythonhosted.org/packages/source/p/python-gitlab/python-gitlab-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyYAML >= 5.2
+Requires:       python-PyYAML >= 6.0.1
 Requires:       python-argcomplete >= 1.10.0
 Requires:       python-requests >= 2.22.0
 Requires:       python-requests-toolbelt >= 0.9.1
-Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module httmock}
@@ -40,8 +42,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.22.0}
 BuildRequires:  %{python_module requests-toolbelt >= 0.9.1}
 BuildRequires:  %{python_module responses}
-# force urllib3 < 2, for tests to passs
-BuildRequires:  %{python_module urllib3 < 2}
 # /SECTION
 %python_subpackages
 
@@ -52,22 +52,18 @@ It supports the v4 API of GitLab, and provides a CLI tool (gitlab).
 
 %prep
 %autosetup -p1 -n python-gitlab-%{version}
-# rpmlint non-executable-script
-sed -i -e '/^#!\//, 1d' gitlab/cli.py
-sed -i -e '/^#!\//, 1d' gitlab/v4/cli.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/gitlab
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 touch $HOME/.python-gitlab.cfg
-# test_merge_auth:  E               gitlab.config.GitlabIDError: Impossible to get the gitlab id (not specified in config file)
-%pytest tests/unit -k 'not test_merge_auth'
+%pytest tests/unit
 
 %post
 %python_install_alternative gitlab
@@ -80,6 +76,6 @@ touch $HOME/.python-gitlab.cfg
 %license COPYING
 %python_alternative %{_bindir}/gitlab
 %{python_sitelib}/gitlab
-%{python_sitelib}/python_gitlab-%{version}*-info
+%{python_sitelib}/python_gitlab-%{version}.dist-info
 
 %changelog
