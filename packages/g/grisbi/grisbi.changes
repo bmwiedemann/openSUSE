@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 13 19:40:32 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Move install commands into %install section
+
+-------------------------------------------------------------------
 Fri Nov 10 18:47:20 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add ix86 ExcludeArch: goffice is no longer built for that target.

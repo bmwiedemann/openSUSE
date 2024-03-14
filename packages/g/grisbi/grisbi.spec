@@ -64,11 +64,11 @@ One notable feature is that it respects French accounting rules.
 # Those files are deprecated and not needed anymore
 rm %{buildroot}%{_datadir}/mime-info/grisbi.{keys,mime}
 
-%check
-%make_build check
-
 %find_lang %{name} %{?no_lang_C}
 %fdupes -s %{buildroot}%{_datadir}
+
+%check
+%make_build check
 
 %files
 %license COPYING
