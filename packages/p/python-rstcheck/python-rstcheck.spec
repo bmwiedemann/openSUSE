@@ -1,7 +1,7 @@
 #
 # spec file for package python-rstcheck
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,28 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rstcheck
-Version:        3.3.1
+Version:        6.2.0
 Release:        0
 Summary:        Python module to check syntax of reStructuredText
 License:        MIT
 URL:            https://github.com/myint/rstcheck
 Source:         https://files.pythonhosted.org/packages/source/r/rstcheck/rstcheck-%{version}.tar.gz
-Source1:        https://github.com/myint/rstcheck/archive/v%{version}.tar.gz
-Patch0:         test-path.patch
 BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module docutils >= 0.7}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module rstcheck-core >= 1.2}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module typer >= 0.4.1}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  bash
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-Requires:       python-docutils >= 0.7
+Requires:       python-rstcheck-core >= 1.2
+Requires:       python-typer >= 0.4.1
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     bash
@@ -51,27 +54,19 @@ A Python module to check the syntax of reStructuredText and code
 blocks nested within it.
 
 %prep
-%setup -q -n rstcheck-%{version}
-tar --wildcards --strip-components=1 -xzf %{SOURCE1} rstcheck-%{version}/test* rstcheck-%{version}/examples
-sed -i -e '/^#!\//, 1d' rstcheck.py
-%patch0 -p1
+%autosetup -p1 -n rstcheck-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/rstcheck
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# LANG needed for Leap
 export LANG=en_US.UTF-8
-# This is testing the source copy of rstcheck.py, not the installed version,
-# but at least that sanity checks the build dependencies.
-#%%{python_expand # complements test-path.patch
-#PYTHON=$python ./test.bash
-#}
+%pytest
 
 %post
 %python_install_alternative rstcheck
@@ -83,6 +78,7 @@ export LANG=en_US.UTF-8
 %license LICENSE
 %doc AUTHORS.rst README.rst
 %python_alternative %{_bindir}/rstcheck
-%{python_sitelib}/*
+%{python_sitelib}/rstcheck
+%{python_sitelib}/rstcheck-%{version}.dist-info
 
 %changelog
