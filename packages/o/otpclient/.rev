@@ -420,4 +420,19 @@
 </comment>
     <requestid>1156324</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>e5389b12b68e65fb5bf0b9aea99bcc4f</srcmd5>
+    <version>3.6.0</version>
+    <time>1710434725</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.6.0:
+  * NEW: add possibility to import plain/encrypted backups
+    using the CLI.
+  * FIX: make GUI and CLI independent, so that CLI only can be built
+    and installed without GTK being present.
+  * FIX: check file size against memlock before importing a backup.
+  * FIX: code cleanup and internal refactoring.
+</comment>
+    <requestid>1157916</requestid>
+  </revision>
 </revisionlist>

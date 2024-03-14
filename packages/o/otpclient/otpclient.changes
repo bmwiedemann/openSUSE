@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 14 09:39:55 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.6.0:
+  * NEW: add possibility to import plain/encrypted backups
+    using the CLI.
+  * FIX: make GUI and CLI independent, so that CLI only can be built
+    and installed without GTK being present.
+  * FIX: check file size against memlock before importing a backup.
+  * FIX: code cleanup and internal refactoring.
+
+-------------------------------------------------------------------
 Fri Mar  8 10:32:23 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.5.2:
