@@ -1,7 +1,7 @@
 #
 # spec file for package plasma6-mobile
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,7 +14,6 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
 
 
 # org.kde.phone.homescreen, org.kde.plasma.phone.taskpanel and org.kde.private.mobile.homescreen.folio are internal,
@@ -31,7 +30,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-mobile
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 # Full Plasma 6 version (e.g. 5.9.3)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -45,8 +44,8 @@ Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{ver
 Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-BuildRequires:  kf6-extra-cmake-modules
 BuildRequires:  fdupes
+BuildRequires:  kf6-extra-cmake-modules
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6GlobalAccel) >= %{kf6_version}
@@ -91,14 +90,14 @@ Requires:       kf6-bluez-qt-imports >= %{kf6_version}
 Requires:       kf6-kdeclarative-imports >= %{kf6_version}
 Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kwin6 >= %{_plasma6_bugfix}
-Requires:       qt6-qt5compat-imports >= %{qt6_version}
-Requires:       qt6-declarative-imports >= %{qt6_version}
-Requires:       qt6-wayland >= %{qt6_version}
 Requires:       milou6 >= %{_plasma6_bugfix}
-Requires:       plasma6-nm >= %{_plasma6_bugfix}
 Requires:       plasma6-nano >= %{_plasma6_bugfix}
+Requires:       plasma6-nm >= %{_plasma6_bugfix}
 Requires:       plasma6-pa >= %{_plasma6_bugfix}
 Requires:       plasma6-workspace >= %{_plasma6_bugfix}
+Requires:       qt6-declarative-imports >= %{qt6_version}
+Requires:       qt6-qt5compat-imports >= %{qt6_version}
+Requires:       qt6-wayland >= %{qt6_version}
 # For KCM .desktop files
 Requires:       systemsettings6 >= %{_plasma6_bugfix}
 

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Mar 13 09:10:13 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.2
+- Changes since 6.0.1:
+  * update version for new release
+  * widgets/mediacontrols: Fix base model reference
+  * widgets/mediacontrols: Fix uncentered icon in buttons Use QQC2 components instead of PC3 components, now that theming works properly
+  * lookandfeel: Sync with breeze, fix default cursor theme BUG: 482863 Not having a cursor theme set seems to cause the cursor to not show up at all (kde#482863)
+  * widgets/mediacontrols: Ensure multiplexer does not show Fixes https://invent.kde.org/plasma/plasma-mobile/-/issues/261
+  * envmanager: Set Placement mode for KWin to skip window maximize animation when not in docked mode We can use the placement mode setting in KWin to bypass the need to "maximize" after the window opens, KWin does this for us.
+  * taskswitcher: Fix navigation panel position when in landscape mode It used to get confused when in landscape mode, but the navigation panel is on the bottom of the screen.
+  * initialstart/time: Fix search box getting unfocused on every key press Fixes https://invent.kde.org/plasma/plasma-mobile/-/issues/288
+  * homescreens/folio: Fix start button behaviour, ensure windows are minimized and it's not triggered in docked mode BUG: 482870 (kde#482870)
+  * taskswitcher: Do not show apps marked as "skipSwitcher"
+  * kwin/convergentwindows: Don't maximize xwaylandvideobridge ghost window
+  * homescreens/folio: Improve performance of wallpaper blur, and enable by default Fixes https://invent.kde.org/plasma/plasma-mobile/-/issues/306
+  * homescreens/folio: Prevent items from being added to favourites area if it's full Fixes https://invent.kde.org/plasma/plasma-mobile/-/issues/323
+  * systemdialog: Update to match plasma-workspace implementation, and simplify UI SystemDialog was added in 2021 and did not receive any testing while the API was in flux when portals started using it.
+  * homescreens/folio: Fix deleting delegates from folder not working
+  * Fix low inertia scrolling with shell flickables See https://invent.kde.org/teams/plasma-mobile/issues/-/issues/273
+  * homescreens/folio: Fix widget full representation being shown when starting drag and drop It's unnecessary to set the anchors on the full representation; it causes it to also show when the minimized representation is presented.
+  * homescreens/folio: Delete empty page at end if last delegate is deleted
+  * update version for new release
+
+-------------------------------------------------------------------
 Wed Mar  6 08:40:31 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.1:
