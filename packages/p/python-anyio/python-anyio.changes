@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 11 23:36:15 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.3.0:
+  * Added support for the Python 3.12 ``walk_up`` keyword argument in
+    ``anyio.Path.relative_to()``
+  * Fixed passing ``total_tokens`` to ``anyio.CapacityLimiter()`` as a
+    keyword argument not working on the ``trio`` backend
+  * Fixed ``Process.aclose()`` not performing the minimum level of
+    necessary cleanup when cancelled
+  * Fixed ``Process.stdin.aclose()``, ``Process.stdout.aclose()``, and
+    ``Process.stderr.aclose()``
+- Add exceptiongroup to {Build,}Requires.
+
+-------------------------------------------------------------------
 Tue Jan  2 20:50:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.2.0:

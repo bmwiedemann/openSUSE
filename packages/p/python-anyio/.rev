@@ -265,4 +265,21 @@ SR for python stack proposal</comment>
   * Fixed cancellation propagating on asyncio from a task group</comment>
     <requestid>1136274</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4d2a3599bb72fe430144bfb88da8ec30</srcmd5>
+    <version>4.3.0</version>
+    <time>1710434547</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.3.0:
+  * Added support for the Python 3.12 ``walk_up`` keyword argument in
+    ``anyio.Path.relative_to()``
+  * Fixed passing ``total_tokens`` to ``anyio.CapacityLimiter()`` as a
+    keyword argument not working on the ``trio`` backend
+  * Fixed ``Process.aclose()`` not performing the minimum level of
+    necessary cleanup when cancelled
+  * Fixed ``Process.stdin.aclose()``, ``Process.stdout.aclose()``, and
+    ``Process.stderr.aclose()``
+- Add exceptiongroup to {Build,}Requires.</comment>
+    <requestid>1157062</requestid>
+  </revision>
 </revisionlist>

@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-anyio
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
 Summary:        High level compatibility layer for asynchronous event loop implementations
 License:        MIT
 URL:            https://github.com/agronholm/anyio
 Source:         https://files.pythonhosted.org/packages/source/a/anyio/anyio-%{version}.tar.gz
-BuildRequires:  %{python_module contextlib2 if %python-base < 3.7}
-BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module exceptiongroup}
 BuildRequires:  %{python_module idna >= 2.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil >= 5.9}
@@ -37,7 +37,6 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros >= 20210127.3a18043
 # SECTION test requirements
 BuildRequires:  %{python_module hypothesis >= 4.0}
-BuildRequires:  %{python_module mock >= 4.0 if %python-base < 3.8}
 BuildRequires:  %{python_module pytest >= 7.0}
 BuildRequires:  %{python_module pytest-mock >= 3.6.1}
 BuildRequires:  %{python_module trio >= 0.23}
@@ -46,10 +45,9 @@ BuildRequires:  %{python_module trustme}
 BuildRequires:  fdupes
 Requires:       python-idna >= 2.8
 Requires:       python-sniffio >= 1.1
-Requires:       (python-typing_extensions if python-base < 3.11)
-%if 0%{?python_version_nodots} < 37
-Requires:       python-contextvars
-Requires:       python-dataclasses
+%if 0%{?python_version_nodots} < 311
+Requires:       python-exceptiongroup
+Requires:       python-typing_extensions
 %endif
 Suggests:       python-trio >= 0.23
 BuildArch:      noarch
@@ -95,6 +93,6 @@ donttest+=" or (test_properties and asyncio)"
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/anyio
-%{python_sitelib}/anyio-%{version}*-info
+%{python_sitelib}/anyio-%{version}.dist-info
 
 %changelog
