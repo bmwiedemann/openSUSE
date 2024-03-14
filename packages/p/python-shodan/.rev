@@ -266,4 +266,15 @@
     <comment></comment>
     <requestid>1008838</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>9addca2718aab3ba1ecb4150297d8f23</srcmd5>
+    <version>1.31.0</version>
+    <time>1710434715</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.31.0:
+  * no upstream changelog available
+
+- Update to version 1.28.0</comment>
+    <requestid>1157890</requestid>
+  </revision>
 </revisionlist>
