@@ -19,7 +19,7 @@
 %bcond_without released
 %define rname kwayland-integration
 Name:           kwayland-integration6
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        Plugin to integrate KF5 KWayland into Plasma 6
 License:        LGPL-2.1-or-later
@@ -38,12 +38,12 @@ BuildRequires:  libqt5-qtwayland-private-headers-devel
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Wayland)
 BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(PlasmaWaylandProtocols)
 BuildRequires:  cmake(Qt5Core) >= 5.15.2
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5WaylandClient)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5XkbCommonSupport)
-BuildRequires:  cmake(PlasmaWaylandProtocols)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(xkbcommon)
 # Newer compiler needed for C++20 on Leap 15
