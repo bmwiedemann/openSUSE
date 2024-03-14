@@ -240,4 +240,31 @@
   * Enhancement to do_status_get() function for detailed Response info</comment>
     <requestid>1074096</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>cf936e13956ede7f43d9d3d14e5fbd0b</srcmd5>
+    <version>0.1+git.20240307</version>
+    <time>1710434762</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.1+git.20240307:
+  * mmc-utils: mmc_cmds: fix type-punned warning on &amp;ext_csd[] casting
+  * mmc-utils: lsmmc: Fix emmc capacity calculation
+  * mmc-utils: lsmmc: Disintegrade print_mmc_csd
+  * mmc-utils: lsmmc: Simplify interface processing functions
+  * mmc-utils: lsmmc: Simplify prinitng manufacturer name
+  * mmc-utils: lsmmc: Reuse do_read_reg
+  * mmc-utils: fix potential overflow
+  * mmc-utils: ffu: Add optional chunk-size argument
+  * mmc-utils: ffu: Allow ffu of large images
+  * mmc-utils: ffu: Add ffu multi-command set handler
+  * mmc-utils: ffu: Simplify ext_csd bytes parsing
+  * mmc-utils: Add arg argument to set_single_cmd
+  * mmc-utils: Add fill_switch_cmd handler
+  * mmc-utils: Assert MMC_IOC_MULTI_CMD in compile time
+  * mmc-utils: support overriding CFLAGS without setting -DVERSION
+  * mmc-utils: do not hide CID manufacturer information
+  * mmc-utils: fix printing OID for mmc in non-verbose mode
+  * mmc-utils: add SanDisk to manufacturer database
+  * mmc-utils: Change version string to git hash</comment>
+    <requestid>1158012</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package mmc-utils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           mmc-utils
-Version:        0.1+git.20230209
+Version:        0.1+git.20240307
 Release:        0
 Summary:        Tools for MMC/SD devices
 License:        GPL-2.0-only
-Group:          Hardware/Other
 URL:            https://git.kernel.org/cgit/linux/kernel/git/cjb/mmc-utils.git/
 Source0:        %{name}-%{version}.tar.gz
 Source1:        https://www.gnu.org/licenses/gpl-2.0.txt
