@@ -1,7 +1,7 @@
 #
 # spec file for package guitarix
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,21 +20,23 @@
 %bcond_with ladspa
 
 Name:           guitarix
-Version:        0.44.1
+Version:        0.46.0
 Release:        0
 Summary:        Simple Linux amplifier for jack
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            http://guitarix.sourceforge.net/
-Source:         http://downloads.sourceforge.net/project/guitarix/guitarix/guitarix2-%{version}.tar.xz
-
+Source:         https://github.com/brummer10/guitarix/releases/download/V%{version}/guitarix2-%{version}.tar.xz
 # Patches from Fedora
-Patch0:         guitarix-cstdint-include.patch
-Patch1:         guitarix-mismatched-delete.patch
-Patch2:         guitarix-python-3.11-ftbfs.patch
-
+# Patch0:         guitarix-cstdint-include.patch
+# Patch1:         guitarix-mismatched-delete.patch
+# Patch2:         guitarix-python-3.11-ftbfs.patch
 BuildRequires:  fdupes
+%if 0%{?suse_version} <= 1600
+BuildRequires:  gcc12-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  gperf
 BuildRequires:  intltool
 BuildRequires:  libboost_context-devel
@@ -151,15 +153,13 @@ Group:          Productivity/Multimedia/Sound/Utilities
 Bestplugins Mega Pack 1+3 contains dozens of guitar sounds from famous bands.
 
 %prep
-%setup -q -n guitarix-%{version}
-%autopatch -p 1
+%autosetup -n guitarix-%{version} -p1
 
 %build
-#todo: add faust package to openSUSE
-# TODO: Convert to python3, only builds with python2 so far.
-#find . -name "*.py" -print -exec 2to3 -wn {} \;
-#find . -name "*.py" -print -exec 2to3 -wn {} \;
-#for i in `grep -rl "/usr/bin/env python"`;do 2to3 -wn ${i} ;done
+%if 0%{?suse_version} <= 1600
+export CC=gcc-12
+export CXX=g++-12
+%endif
 for i in `grep -rl "/usr/bin/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
 export LDFLAGS="-ldl"
 ./waf configure -v --faust \

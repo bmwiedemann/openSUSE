@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Mar 11 21:31:30 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- update to version 0.46.0
+- use gcc12 for Leap
+- drop patches, now fixed in upstream:
+  guitarix-cstdint-include.patch
+  guitarix-mismatched-delete.patch
+  guitarix-python-3.11-ftbfs.patch.
+
+- 0.46.0 changes:
+  * Add support for RTNeural network engine
+  * Allow to load two instances of the neural modules
+  * Add NAM and RTNeural Multi module (Load two models and blend 
+    between them)
+  * Implement links in the about menu to download sites for neural
+    models (*.nam or *.aidax)
+  * Fix resampling issues within the neural modules
+  * Fix for distributors: reimplement root directory for release tarball
+
+- 0.45.0 changes:
+  * fix various bugs since the last release from May 2, 2022
+  * introduce support for the outstanding Neural Amp Moduler
+  
+-------------------------------------------------------------------
 Fri Mar 31 11:51:22 UTC 2023 - Dave Plater <davejplater@gmail.com>
 
 - Added patches from fedora one of which fixes Factory build
