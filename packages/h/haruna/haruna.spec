@@ -1,7 +1,7 @@
 #
 # spec file for package haruna
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           haruna
-Version:        0.12.3
+Version:        1.0.1
 Release:        0
 Summary:        Video player built with Qt/QML on top of libmpv
 License:        CC-BY-4.0 AND GPL-3.0-or-later AND WTFPL
@@ -26,29 +26,27 @@ Source0:        https://download.kde.org/stable/haruna/%{name}-%{version}.tar.xz
 Source1:        https://download.kde.org/stable/haruna/%{name}-%{version}.tar.xz.sig
 Source2:        haruna.keyring
 BuildRequires:  cmake >= 3.15
-BuildRequires:  extra-cmake-modules >= 5.66
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libQt5Gui-private-headers-devel
+BuildRequires:  kf6-extra-cmake-modules >= 6.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Breeze)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5CoreAddons)
-# not actually optional
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5FileMetaData)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Kirigami2)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Core) >= 5.15.2
-BuildRequires:  cmake(Qt5DBus) >= 5.15.2
-BuildRequires:  cmake(Qt5Gui) >= 5.15.2
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5QuickControls2)
-BuildRequires:  cmake(Qt5X11Extras)
+BuildRequires:  cmake(KF6ColorScheme) >= 6.0.0
+BuildRequires:  cmake(KF6Config)
+BuildRequires:  cmake(KF6CoreAddons)
+BuildRequires:  cmake(KF6DocTools)
+BuildRequires:  cmake(KF6FileMetaData)
+BuildRequires:  cmake(KF6I18n)
+BuildRequires:  cmake(KF6IconThemes)
+BuildRequires:  cmake(KF6KIO)
+BuildRequires:  cmake(KF6Kirigami)
+BuildRequires:  cmake(KF6WindowSystem)
+BuildRequires:  cmake(MpvQt)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt6Core) >= 6.6.0
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Qml)
+BuildRequires:  cmake(Qt6Quick)
+BuildRequires:  cmake(Qt6QuickControls2)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavfilter)
@@ -57,7 +55,7 @@ BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libpostproc)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(mpv)
-Requires:       breeze5-icons
+Requires:       kf6-breeze-icons
 Requires:       yt-dlp
 
 %description
