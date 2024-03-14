@@ -27,6 +27,8 @@ unsorted:
   - AusweisApp2 
   - Bear 
   - Botan-doc 
+  - Bottles 
+  - Bottles-lang 
   - CSXCAD-devel 
   - CSXCAD-matlab 
   - Cadence 
@@ -1864,21 +1866,8 @@ unsorted:
   - callaudiod 
   - callaudiod-devel 
   - callaudiod-doc 
-  - calligra 
-  - calligra-devel 
-  - calligra-doc 
-  - calligra-extras-converter 
-  - calligra-extras-dolphin 
-  - calligra-extras-okular 
-  - calligra-gemini 
-  - calligra-karbon 
-  - calligra-lang 
   - calligra-plan 
   - calligra-plan-lang 
-  - calligra-sheets 
-  - calligra-stage 
-  - calligra-tools 
-  - calligra-words 
   - calls 
   - calls-lang 
   - calls-ofono 
@@ -3446,6 +3435,7 @@ unsorted:
   - e2fsprogs-devel 
   - e2fsprogs-scrub 
   - e3 
+  - eac-devel 
   - eaglemode 
   - earlyoom 
   - eartag 
@@ -4161,6 +4151,7 @@ unsorted:
   - flite 
   - flite-devel 
   - flnews 
+  - flocc 
   - flocq 
   - flocq-devel 
   - flocq-doc 
@@ -7427,28 +7418,14 @@ unsorted:
   - google-noto-sans-hanunoo-fonts 
   - google-noto-sans-hatran-fonts 
   - google-noto-sans-hebrew-fonts 
-  - google-noto-sans-hk-black-fonts 
-  - google-noto-sans-hk-bold-fonts 
-  - google-noto-sans-hk-demilight-fonts 
   - google-noto-sans-hk-fonts 
-  - google-noto-sans-hk-fonts-full 
-  - google-noto-sans-hk-light-fonts 
-  - google-noto-sans-hk-medium-fonts 
   - google-noto-sans-hk-mono-fonts 
-  - google-noto-sans-hk-regular-fonts 
-  - google-noto-sans-hk-thin-fonts 
   - google-noto-sans-imperialaramaic-fonts 
   - google-noto-sans-indicsiyaqnumbers-fonts 
   - google-noto-sans-inscriptionalpahlavi-fonts 
   - google-noto-sans-inscriptionalparthian-fonts 
   - google-noto-sans-javanese-fonts 
-  - google-noto-sans-jp-black-fonts 
-  - google-noto-sans-jp-demilight-fonts 
-  - google-noto-sans-jp-fonts-full 
-  - google-noto-sans-jp-light-fonts 
-  - google-noto-sans-jp-medium-fonts 
   - google-noto-sans-jp-mono-fonts 
-  - google-noto-sans-jp-thin-fonts 
   - google-noto-sans-kaithi-fonts 
   - google-noto-sans-kannada-fonts 
   - google-noto-sans-kawi-fonts 
@@ -7457,13 +7434,7 @@ unsorted:
   - google-noto-sans-khmer-fonts 
   - google-noto-sans-khojki-fonts 
   - google-noto-sans-khudawadi-fonts 
-  - google-noto-sans-kr-black-fonts 
-  - google-noto-sans-kr-demilight-fonts 
-  - google-noto-sans-kr-fonts-full 
-  - google-noto-sans-kr-light-fonts 
-  - google-noto-sans-kr-medium-fonts 
   - google-noto-sans-kr-mono-fonts 
-  - google-noto-sans-kr-thin-fonts 
   - google-noto-sans-lao-fonts 
   - google-noto-sans-laolooped-fonts 
   - google-noto-sans-lepcha-fonts 
@@ -7522,13 +7493,7 @@ unsorted:
   - google-noto-sans-runic-fonts 
   - google-noto-sans-samaritan-fonts 
   - google-noto-sans-saurashtra-fonts 
-  - google-noto-sans-sc-black-fonts 
-  - google-noto-sans-sc-demilight-fonts 
-  - google-noto-sans-sc-fonts-full 
-  - google-noto-sans-sc-light-fonts 
-  - google-noto-sans-sc-medium-fonts 
   - google-noto-sans-sc-mono-fonts 
-  - google-noto-sans-sc-thin-fonts 
   - google-noto-sans-sharada-fonts 
   - google-noto-sans-shavian-fonts 
   - google-noto-sans-siddham-fonts 
@@ -7553,13 +7518,7 @@ unsorted:
   - google-noto-sans-tamil-fonts 
   - google-noto-sans-tamilsupplement-fonts 
   - google-noto-sans-tangsa-fonts 
-  - google-noto-sans-tc-black-fonts 
-  - google-noto-sans-tc-demilight-fonts 
-  - google-noto-sans-tc-fonts-full 
-  - google-noto-sans-tc-light-fonts 
-  - google-noto-sans-tc-medium-fonts 
   - google-noto-sans-tc-mono-fonts 
-  - google-noto-sans-tc-thin-fonts 
   - google-noto-sans-telugu-fonts 
   - google-noto-sans-thaana-fonts 
   - google-noto-sans-thai-fonts 
@@ -7588,34 +7547,12 @@ unsorted:
   - google-noto-serif-gujarati-fonts 
   - google-noto-serif-gurmukhi-fonts 
   - google-noto-serif-hebrew-fonts 
-  - google-noto-serif-hk-black-fonts 
-  - google-noto-serif-hk-bold-fonts 
-  - google-noto-serif-hk-extralight-fonts 
   - google-noto-serif-hk-fonts 
-  - google-noto-serif-hk-fonts-full 
-  - google-noto-serif-hk-light-fonts 
-  - google-noto-serif-hk-medium-fonts 
-  - google-noto-serif-hk-regular-fonts 
-  - google-noto-serif-hk-semibold-fonts 
-  - google-noto-serif-jp-black-fonts 
-  - google-noto-serif-jp-extralight-fonts 
-  - google-noto-serif-jp-fonts-full 
-  - google-noto-serif-jp-light-fonts 
-  - google-noto-serif-jp-medium-fonts 
-  - google-noto-serif-jp-semibold-fonts 
   - google-noto-serif-kannada-fonts 
   - google-noto-serif-khitansmallscript-fonts 
   - google-noto-serif-khmer-fonts 
   - google-noto-serif-khojki-fonts 
-  - google-noto-serif-kr-black-fonts 
-  - google-noto-serif-kr-bold-fonts 
-  - google-noto-serif-kr-extralight-fonts 
   - google-noto-serif-kr-fonts 
-  - google-noto-serif-kr-fonts-full 
-  - google-noto-serif-kr-light-fonts 
-  - google-noto-serif-kr-medium-fonts 
-  - google-noto-serif-kr-regular-fonts 
-  - google-noto-serif-kr-semibold-fonts 
   - google-noto-serif-lao-fonts 
   - google-noto-serif-makasar-fonts 
   - google-noto-serif-malayalam-fonts 
@@ -7624,21 +7561,9 @@ unsorted:
   - google-noto-serif-olduyghur-fonts 
   - google-noto-serif-oriya-fonts 
   - google-noto-serif-ottomansiyaq-fonts 
-  - google-noto-serif-sc-black-fonts 
-  - google-noto-serif-sc-extralight-fonts 
-  - google-noto-serif-sc-fonts-full 
-  - google-noto-serif-sc-light-fonts 
-  - google-noto-serif-sc-medium-fonts 
-  - google-noto-serif-sc-semibold-fonts 
   - google-noto-serif-sinhala-fonts 
   - google-noto-serif-tamil-fonts 
   - google-noto-serif-tangut-fonts 
-  - google-noto-serif-tc-black-fonts 
-  - google-noto-serif-tc-extralight-fonts 
-  - google-noto-serif-tc-fonts-full 
-  - google-noto-serif-tc-light-fonts 
-  - google-noto-serif-tc-medium-fonts 
-  - google-noto-serif-tc-semibold-fonts 
   - google-noto-serif-telugu-fonts 
   - google-noto-serif-thai-fonts 
   - google-noto-serif-tibetan-fonts 
@@ -9046,6 +8971,8 @@ unsorted:
   - jaxodraw 
   - jaxodraw-javadoc 
   - jaxodraw-latex 
+  - jbcrypt 
+  - jbcrypt-javadoc 
   - jbig2dec 
   - jbig2dec-devel 
   - jbigkit 
@@ -9298,7 +9225,6 @@ unsorted:
   - jsch-agent-proxy-jsch 
   - jsch-agent-proxy-pageant 
   - jsch-agent-proxy-sshagent 
-  - jsch-agent-proxy-svnkit-trilead-ssh2 
   - jsch-agent-proxy-usocket-jna 
   - jsch-agent-proxy-usocket-nc 
   - jsch-demo 
@@ -9891,8 +9817,6 @@ unsorted:
   - kiwi-templates-Minimal 
   - kiwi-tools 
   - kjobwidgets-devel 
-  - kjots 
-  - kjots-lang 
   - kjournald 
   - kjournald-lang 
   - kjs-devel 
@@ -10799,6 +10723,7 @@ unsorted:
   - libKF5JsEmbed5 
   - libKF5JsEmbed5-lang 
   - libKF5KDELibs4Support5 
+  - libKF5KDcraw5 
   - libKF5MediaPlayer5 
   - libKF5ModemManagerQt-devel 
   - libKF5NetworkManagerQt-devel 
@@ -10831,6 +10756,8 @@ unsorted:
   - libKPim6GAPILatitude6 
   - libKPim6GAPIMaps6 
   - libKPim6IdentityManagementQuick6 
+  - libKPipeWire5 
+  - libKPipeWire5-lang 
   - libKPipeWireDmaBuf5 
   - libKPipeWireRecord5 
   - libKPropertyCore3-4 
@@ -11998,7 +11925,7 @@ unsorted:
   - libcapi20-devel 
   - libcapi20-devel-32bit 
   - libcapi20-mod_misdn 
-  - libcapnp-0_10_4 
+  - libcapnp-1_0_2 
   - libcapnp-devel 
   - libcapstone-devel 
   - libcapstone-devel-static 
@@ -12491,6 +12418,7 @@ unsorted:
   - libeXosip2 
   - libeXosip2-15 
   - libeXosip2-devel 
+  - libeac3 
   - libeantic3 
   - libeb16 
   - libebml-devel 
@@ -13655,6 +13583,8 @@ unsorted:
   - libjxl-tools 
   - libjxl0_10-32bit 
   - libjxrglue0 
+  - libkColorPicker-Qt5-0 
+  - libkImageAnnotator-Qt5-0 
   - libkadm5clnt7 
   - libkadm5srv8 
   - libkafs0 
@@ -13672,6 +13602,7 @@ unsorted:
   - libkcompactdisc-devel 
   - libkcompactdisc-qt6-devel 
   - libkdc2 
+  - libkdcraw 
   - libkdcraw-devel 
   - libkdcraw-qt6-devel 
   - libkddockwidgets-qt6-1_7 
@@ -14819,7 +14750,7 @@ unsorted:
   - libphdi-devel 
   - libphdi-tools 
   - libphdi1 
-  - libphobos2-0_105 
+  - libphobos2-0_107 
   - libphobos2-ldc102 
   - libphonenumber-devel 
   - libphysfs-devel 
@@ -14961,13 +14892,13 @@ unsorted:
   - libprofiler0 
   - libproj25 
   - libprotobuf-c-devel 
-  - libprotobuf-lite25_2_0-32bit 
+  - libprotobuf-lite25_3_0-32bit 
   - libprotobuf-lite3_21_12 
   - libprotobuf-nanopb0 
-  - libprotobuf25_2_0-32bit 
+  - libprotobuf25_3_0-32bit 
   - libprotobuf3_21_12 
-  - libprotoc25_2_0 
-  - libprotoc25_2_0-32bit 
+  - libprotoc25_3_0 
+  - libprotoc25_3_0-32bit 
   - libprotoc3_21_12 
   - libproxy-devel 
   - libproxy-devel-doc 
@@ -16297,7 +16228,7 @@ unsorted:
   - libvamp-hostsdk3-32bit 
   - libvamp-sdk2 
   - libvamp-sdk2-32bit 
-  - libvapoursynth-65 
+  - libvapoursynth-66 
   - libvapoursynth-script0 
   - libvarnishapi3 
   - libvbr2 
@@ -19959,6 +19890,8 @@ unsorted:
   - openocd 
   - openocd-data 
   - openomf 
+  - openpace 
+  - openpace-doc 
   - openpgl-devel 
   - openpgl-doc 
   - openpgm-devel 
@@ -20178,14 +20111,9 @@ unsorted:
   - owncloud-dolphin 
   - owncloud-icons 
   - owntone 
-  - oxygen5 
-  - oxygen5-cursors 
-  - oxygen5-decoration 
   - oxygen5-icon-theme 
   - oxygen5-icon-theme-large 
   - oxygen5-icon-theme-scalable 
-  - oxygen5-lang 
-  - oxygen5-style 
   - oxygen6 
   - oxygen6-cursors 
   - oxygen6-decoration 
@@ -22245,24 +22173,12 @@ unsorted:
   - plasma-nm5-strongswan 
   - plasma-pass 
   - plasma-pass-lang 
-  - plasma-vault 
-  - plasma-vault-backend-cryfs 
-  - plasma-vault-backend-encfs 
-  - plasma-vault-backend-gocryptfs 
-  - plasma-vault-lang 
   - plasma-wayland-protocols 
   - plasma5-applet-suse-prime 
-  - plasma5-firewall 
-  - plasma5-firewall-lang 
   - plasma5-integration-devel 
   - plasma5-integration-plugin 
   - plasma5-pk-updates 
   - plasma5-pk-updates-lang 
-  - plasma5-sdk 
-  - plasma5-sdk-lang 
-  - plasma5-welcome 
-  - plasma5-welcome-lang 
-  - plasma5-workspace-wallpapers 
   - plasma5support6-devel 
   - plasma6-activities-devel 
   - plasma6-activities-stats-devel 
@@ -22292,7 +22208,6 @@ unsorted:
   - plasma6-welcome-lang 
   - plasma6-workspace-devel 
   - plasma6-workspace-wallpapers 
-  - plasmaengineexplorer5 
   - plasmatube 
   - plasmatube-lang 
   - plater 
@@ -22396,8 +22311,6 @@ unsorted:
   - plymouth-plugin-script 
   - plymouth-plugin-space-flares 
   - plymouth-plugin-tribar 
-  - plymouth-theme-breeze 
-  - plymouth-theme-breeze-plugin-breeze 
   - plymouth-theme-breeze6 
   - plymouth-theme-fade-in 
   - plymouth-theme-opensuse-beat 
@@ -22830,7 +22743,6 @@ unsorted:
   - protobuf-devel 
   - protobuf-java 
   - protobuf21-devel 
-  - protobuf21-source 
   - protontricks 
   - protonvpn-cli 
   - protonvpn-gui 
@@ -24448,7 +24360,6 @@ unsorted:
   - python310-csvkit 
   - python310-ctypesgen 
   - python310-cu2qu 
-  - python310-cufflinks 
   - python310-curlylint 
   - python310-curses 
   - python310-curtsies 
@@ -24523,7 +24434,6 @@ unsorted:
   - python310-diskcache 
   - python310-dist 
   - python310-distlib 
-  - python310-distob 
   - python310-distorm3 
   - python310-distributed 
   - python310-distro 
@@ -24675,6 +24585,7 @@ unsorted:
   - python310-easypysmb 
   - python310-easywatch 
   - python310-ebcdic 
+  - python310-ec2imgutils 
   - python310-ecdsa 
   - python310-ed25519 
   - python310-edgegrid-python 
@@ -25563,7 +25474,6 @@ unsorted:
   - python310-oauthlib 
   - python310-objgraph 
   - python310-oci-sdk 
-  - python310-oct2py 
   - python310-octave-kernel 
   - python310-odfpy 
   - python310-odorik 
@@ -27981,7 +27891,6 @@ unsorted:
   - python311-csvkit 
   - python311-ctypesgen 
   - python311-cu2qu 
-  - python311-cufflinks 
   - python311-curlylint 
   - python311-curtsies 
   - python311-cwcwidth 
@@ -28052,7 +27961,6 @@ unsorted:
   - python311-diskcache 
   - python311-dist 
   - python311-distlib 
-  - python311-distob 
   - python311-distorm3 
   - python311-distributed 
   - python311-distroinfo 
@@ -28202,6 +28110,7 @@ unsorted:
   - python311-easypysmb 
   - python311-easywatch 
   - python311-ebcdic 
+  - python311-ec2imgutils 
   - python311-ecdsa 
   - python311-ed25519 
   - python311-edgegrid-python 
@@ -29045,7 +28954,6 @@ unsorted:
   - python311-o2sclpy 
   - python311-objgraph 
   - python311-oci-sdk 
-  - python311-oct2py 
   - python311-octave-kernel 
   - python311-odfpy 
   - python311-odorik 
@@ -30611,6 +30519,7 @@ unsorted:
   - python312-PyQt6-sip 
   - python312-PyRIC 
   - python312-PyRSS2Gen 
+  - python312-PyRect 
   - python312-PySDL2 
   - python312-PyScreeze 
   - python312-PySocks 
@@ -31439,7 +31348,6 @@ unsorted:
   - python312-csvkit 
   - python312-ctypesgen 
   - python312-cu2qu 
-  - python312-cufflinks 
   - python312-curlylint 
   - python312-curses 
   - python312-curtsies 
@@ -31513,7 +31421,6 @@ unsorted:
   - python312-diskcache 
   - python312-dist 
   - python312-distlib 
-  - python312-distob 
   - python312-distorm3 
   - python312-distributed 
   - python312-distro 
@@ -31665,6 +31572,7 @@ unsorted:
   - python312-easypysmb 
   - python312-easywatch 
   - python312-ebcdic 
+  - python312-ec2imgutils 
   - python312-ecdsa 
   - python312-ed25519 
   - python312-edgegrid-python 
@@ -31937,6 +31845,7 @@ unsorted:
   - python312-hammett 
   - python312-hankel 
   - python312-hanzidentifier 
+  - python312-happybase 
   - python312-haproxyctl 
   - python312-hardware 
   - python312-hashids 
@@ -32537,7 +32446,6 @@ unsorted:
   - python312-oauthlib 
   - python312-objgraph 
   - python312-oci-sdk 
-  - python312-oct2py 
   - python312-octave-kernel 
   - python312-odfpy 
   - python312-ogr 
@@ -32891,6 +32799,8 @@ unsorted:
   - python312-pyfuse3 
   - python312-pygal 
   - python312-pygaljs 
+  - python312-pygame 
+  - python312-pygame-devel 
   - python312-pygdbmi 
   - python312-pygerrit2 
   - python312-pygit2 
@@ -33075,6 +32985,7 @@ unsorted:
   - python312-pytest-percent 
   - python312-pytest-plus 
   - python312-pytest-pretty 
+  - python312-pytest-profiling 
   - python312-pytest-pycodestyle 
   - python312-pytest-pyramid-server 
   - python312-pytest-qt 
@@ -33300,11 +33211,13 @@ unsorted:
   - python312-requestbuilder 
   - python312-requests 
   - python312-requests-aws 
+  - python312-requests-cache 
   - python312-requests-download 
   - python312-requests-file 
   - python312-requests-ftp 
   - python312-requests-futures 
   - python312-requests-gssapi 
+  - python312-requests-hawk 
   - python312-requests-kerberos 
   - python312-requests-mock 
   - python312-requests-oauthlib 
@@ -33388,6 +33301,7 @@ unsorted:
   - python312-scikit-hep-testdata 
   - python312-scikit-image 
   - python312-scikit-learn 
+  - python312-scikit-sound 
   - python312-scikit-sparse 
   - python312-scikit-umfpack 
   - python312-scipy 
@@ -33561,6 +33475,7 @@ unsorted:
   - python312-stestr 
   - python312-stevedore 
   - python312-stomp.py 
+  - python312-stomper 
   - python312-straight-plugin 
   - python312-streamdeck 
   - python312-streamz 
@@ -33606,6 +33521,7 @@ unsorted:
   - python312-technicolor 
   - python312-telepot 
   - python312-telethon-session-sqlalchemy 
+  - python312-template-remover 
   - python312-tempora 
   - python312-tenacity 
   - python312-tensorpac 
@@ -33636,6 +33552,7 @@ unsorted:
   - python312-three-merge 
   - python312-threevis 
   - python312-thrift 
+  - python312-thriftpy2 
   - python312-tifffile 
   - python312-time-machine 
   - python312-time-travel 
@@ -33786,6 +33703,7 @@ unsorted:
   - python312-visitor 
   - python312-vispy 
   - python312-vistir 
+  - python312-visvis 
   - python312-vncdotool 
   - python312-vobject 
   - python312-volatile 
@@ -34069,7 +33987,6 @@ unsorted:
   - python39-Protego 
   - python39-PsyLab 
   - python39-PubChemPy 
-  - python39-Pweave 
   - python39-PyAudio 
   - python39-PyAutoGUI 
   - python39-PyBindGen 
@@ -34771,7 +34688,6 @@ unsorted:
   - python39-bowler 
   - python39-bpython 
   - python39-bracex 
-  - python39-branca 
   - python39-breathe 
   - python39-brewer2mpl 
   - python39-bsddb3 
@@ -34953,7 +34869,6 @@ unsorted:
   - python39-csvkit 
   - python39-ctypesgen 
   - python39-cu2qu 
-  - python39-cufflinks 
   - python39-curlylint 
   - python39-curses 
   - python39-curtsies 
@@ -35025,7 +34940,6 @@ unsorted:
   - python39-diskcache 
   - python39-dist 
   - python39-distlib 
-  - python39-distob 
   - python39-distorm3 
   - python39-distributed 
   - python39-distro 
@@ -35176,6 +35090,7 @@ unsorted:
   - python39-easypysmb 
   - python39-easywatch 
   - python39-ebcdic 
+  - python39-ec2imgutils 
   - python39-ecdsa 
   - python39-ed25519 
   - python39-edgegrid-python 
@@ -35549,7 +35464,6 @@ unsorted:
   - python39-iniparse 
   - python39-injector 
   - python39-installer 
-  - python39-intake 
   - python39-interrogate 
   - python39-intervals 
   - python39-intervaltree 
@@ -35784,7 +35698,6 @@ unsorted:
   - python39-ligo-segments 
   - python39-ligotimegps 
   - python39-limnoria 
-  - python39-line_profiler 
   - python39-linecache2 
   - python39-linetable 
   - python39-link-traits 
@@ -36024,7 +35937,6 @@ unsorted:
   - python39-oauthlib 
   - python39-objgraph 
   - python39-oci-sdk 
-  - python39-oct2py 
   - python39-odfpy 
   - python39-odorik 
   - python39-ogr 
@@ -36920,7 +36832,6 @@ unsorted:
   - python39-semanage 
   - python39-semantic_version 
   - python39-semver 
-  - python39-sentry-sdk 
   - python39-seqdiag 
   - python39-serpent 
   - python39-serverfiles 
@@ -37409,7 +37320,6 @@ unsorted:
   - python39-yg.lockfile 
   - python39-youtube-dl 
   - python39-yq 
-  - python39-yt 
   - python39-yt-dlp 
   - python39-zarr 
   - python39-zc.buildout 
@@ -39316,6 +39226,7 @@ unsorted:
   - sil-padauk-fonts 
   - silan 
   - sile 
+  - simde-devel 
   - simh 
   - simple-ccsm 
   - simple-ccsm-lang 
