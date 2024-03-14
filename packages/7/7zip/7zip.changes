@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  6 12:46:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use autosetup -c instead of manually extracting the tarball and
+  applying patches: allows us to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Tue Jan 23 11:32:54 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Fix build on SLE-15-SP6

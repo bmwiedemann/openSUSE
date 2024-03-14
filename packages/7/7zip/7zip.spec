@@ -53,9 +53,8 @@ This package contains the 7z command line utility for archiving and
 extracting various formats.
 
 %prep
-tar xaf %{SOURCE0}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -c
+
 dos2unix DOC/*.txt
 # Remove executable perms from docs
 chmod -x DOC/*.txt
