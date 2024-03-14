@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Mar 11 12:15:52 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Also fix the runtime requirement syntax
+
+-------------------------------------------------------------------
+Sun Mar 10 12:48:45 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Fix tomli requirement: It was never pulled in by obs explicitly
+  but declared required in rpmbuild. Pytest removed the requirement
+  that masked this issue.We actually don't need it with
+  python >= 3.11
+
+-------------------------------------------------------------------
+Fri Mar 08 12:28:46 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 2.5.0+git20240308.ec22ec6:
+  * dbus-services: Still provide old GDM whitelisting (bsc#1218922)
+
+-------------------------------------------------------------------
+Wed Mar 06 11:28:13 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 2.5.0+git20240306.d765521:
+  * dbus-services: whitelist sddm-kcm6 (bsc#1217188)
+
+-------------------------------------------------------------------
+Tue Mar 05 14:48:17 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 2.5.0+git20240305.3e99616:
+  * whitelistings: merge redundant systemd vs. systemd-mini entries
+  * pam-modules: also whitelisted pam_system_loadkey for systemd-mini (bsc#1220249)
+  * dbus-services: adjust gdm whitelisting (bsc#1218922)
+
+-------------------------------------------------------------------
+Fri Mar 01 14:03:27 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 2.5.0+git20240229.92123b5:
+  * dbus-services: whitelist drkonqi KDE6 update (bsc#1220190)
+  * pam-modules: whitelist pam_systemd_loadkey.so (bsc#1220249)
+
+-------------------------------------------------------------------
 Mon Feb 26 16:42:21 UTC 2024 - filippo.bonazzi@suse.com
 
 - Update to version 2.5.0+git20240226.8b18627:

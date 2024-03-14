@@ -23,7 +23,7 @@
 %define name_suffix -%{flavor}
 %endif
 Name:           rpmlint%{name_suffix}
-Version:        2.5.0+git20240226.8b18627
+Version:        2.5.0+git20240308.ec22ec6
 Release:        0
 Summary:        RPM file correctness checker
 License:        GPL-2.0-or-later
@@ -51,9 +51,7 @@ BuildRequires:  python3-pytest-xdist
 BuildRequires:  python3-python-magic
 BuildRequires:  python3-pyxdg
 BuildRequires:  python3-rpm
-%if 0%{?python3_version_nodots < 311}
-BuildRequires:  python3-tomli
-%endif
+BuildRequires:  (python3-tomli if python3-base < 3.11)
 BuildRequires:  python3-tomli-w
 BuildRequires:  python3-zstandard
 BuildRequires:  xz
@@ -77,7 +75,7 @@ Requires:       python3-pyenchant
 Requires:       python3-python-magic
 Requires:       python3-pyxdg
 Requires:       python3-rpm
-%if 0%{?python3_version_nodots < 311}
+%if 0%{?python3_version_nodots} < 311
 Requires:       python3-tomli
 %endif
 Requires:       python3-tomli-w
