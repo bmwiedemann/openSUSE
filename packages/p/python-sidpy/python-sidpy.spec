@@ -16,7 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %define packagename sidpy
+%global skip_python39 1
 Name:           python-sidpy
 Version:        0.12.3
 Release:        0

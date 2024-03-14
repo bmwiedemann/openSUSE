@@ -146,4 +146,12 @@
   * Ported additional hdf_utils functions for copying datasets</comment>
     <requestid>1140251</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>20e0f73c9483a5eb066912dd34f3b537</srcmd5>
+    <version>0.12.3</version>
+    <time>1710434743</time>
+    <user>anag+factory</user>
+    <comment>- skip python 3.9 due to missing ipython</comment>
+    <requestid>1157931</requestid>
+  </revision>
 </revisionlist>
