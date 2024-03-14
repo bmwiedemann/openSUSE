@@ -805,4 +805,16 @@
     <comment></comment>
     <requestid>1146154</requestid>
   </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>2496e1709d228ef665a0e0597294754d</srcmd5>
+    <version>1.32.31</version>
+    <time>1710434638</time>
+    <user>anag+factory</user>
+    <comment>- Reconfigure the spec file support builds better in Factory and SLE
+  supporting different Python interpreter versions
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1157634</requestid>
+  </revision>
 </revisionlist>

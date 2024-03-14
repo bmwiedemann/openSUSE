@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 13 14:29:03 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Reconfigure the spec file support builds better in Factory and SLE
+  supporting different Python interpreter versions
+
+-------------------------------------------------------------------
+Tue Feb 20 11:14:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Wed Jan 31 23:52:12 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Switch to Python 3.11 build in SLE 15 SP4 and openSUSE Leap 15.4 and

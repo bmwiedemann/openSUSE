@@ -16,6 +16,13 @@
 #
 
 
+%if 0%{?suse_version} >= 1600
+%define pythons %{primary_python}
+%else
+%define pythons python311
+%endif
+%global _sitelibdir %{%{pythons}_sitelib}
+
 Name:           aws-cli
 Version:        1.32.31
 Release:        0
@@ -30,18 +37,18 @@ BuildRequires:  python-rpm-macros
 Requires:       groff
 Provides:       awscli = %{version}
 BuildArch:      noarch
-BuildRequires:  python311-devel
-BuildRequires:  python311-pip
-BuildRequires:  python311-setuptools
-BuildRequires:  python311-wheel
-Requires:       python311
-Requires:       python311-botocore >= 1.34.31
-Requires:       python311-six
-Requires:       (python311-PyYAML >= 3.10 with python311-PyYAML <= 6.1)
-Requires:       (python311-colorama >= 0.2.5 with python311-colorama <= 0.5.0)
-Requires:       (python311-docutils >= 0.10 with python311-docutils < 0.21)
-Requires:       (python311-rsa >= 3.1.2 with python311-rsa < 5.0.0)
-Requires:       (python311-s3transfer >= 0.10.0 with python311-s3transfer < 0.11.0)
+BuildRequires:  %{pythons}-devel
+BuildRequires:  %{pythons}-pip
+BuildRequires:  %{pythons}-setuptools
+BuildRequires:  %{pythons}-wheel
+Requires:       %{pythons}
+Requires:       %{pythons}-botocore >= 1.34.31
+Requires:       %{pythons}-six
+Requires:       (%{pythons}-PyYAML >= 3.10 with %{pythons}-PyYAML <= 6.1)
+Requires:       (%{pythons}-colorama >= 0.2.5 with %{pythons}-colorama <= 0.5.0)
+Requires:       (%{pythons}-docutils >= 0.10 with %{pythons}-docutils < 0.21)
+Requires:       (%{pythons}-rsa >= 3.1.2 with %{pythons}-rsa < 5.0.0)
+Requires:       (%{pythons}-s3transfer >= 0.10.0 with %{pythons}-s3transfer < 0.11.0)
 
 %description
 The AWS Command Line Interface (CLI) is a unified tool to manage AWS
@@ -49,21 +56,17 @@ services. With this tool, multiple AWS services can be controlled
 from the command line and automated through scripts.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 sed -i 's/from botocore\.vendored //' awscli/customizations/awslambda.py
 sed -i 's/botocore\.vendored\.//' awscli/customizations/configure/__init__.py
-find . -type f | xargs grep -l '/usr/bin/env' | xargs sed -i 's/env python/python3.11/'
 
 %build
-#python3.11 setup.py build
-%python311_pyproject_wheel
+%pyproject_wheel
 
 %install
-#python3.11 setup.py install --prefix=%{_prefix} --root=%{buildroot} --install-scripts=%{_bindir}
-%python311_pyproject_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-find %{buildroot}%{python311_sitelib}/awscli/examples -type f -exec chmod 644 {} \;
+find %{buildroot}%{_sitelibdir}/awscli/examples -type f -exec chmod 644 {} \;
 # No DOS crap
 rm %{buildroot}/%{_bindir}/aws.cmd
 # Shell completion
@@ -74,10 +77,10 @@ install -DTm644 %{buildroot}%{_bindir}/aws_zsh_completer.sh %{buildroot}%{_sysco
 %defattr(-, root, root)
 %doc CHANGELOG.rst README.rst
 %license LICENSE.txt
-%dir %{python311_sitelib}/awscli
-%dir %{python311_sitelib}/awscli-%{version}*-info
-%{python311_sitelib}/awscli/*
-%{python311_sitelib}/awscli-%{version}*-info/*
+%dir %{_sitelibdir}/awscli
+%dir %{_sitelibdir}/awscli-%{version}*-info
+%{_sitelibdir}/awscli/*
+%{_sitelibdir}/awscli-%{version}*-info/*
 %{_bindir}/aws
 %{_bindir}/aws_completer
 %exclude %{_bindir}/aws_bash_completer
