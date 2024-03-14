@@ -27,8 +27,16 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+
+%if 0%{?suse_version} >= 1600
+%define pythons %{primary_python}
+%else
+%define pythons python311
+%endif
+%global _sitelibdir %{%{pythons}_sitelib}
+
 Name:           oci-cli%{psuffix}
-Version:        3.37.9
+Version:        3.37.13
 Release:        0
 Summary:        Oracle Cloud Infrastructure CLI
 License:        Apache-2.0
@@ -36,62 +44,64 @@ Group:          Development/Languages/Python
 URL:            https://docs.us-phoenix-1.oraclecloud.com/Content/API/SDKDocs/cli.htm
 Source:         https://github.com/oracle/oci-cli/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         oc_relax-python-depends.patch
+BuildRequires:  %{pythons}-PyJWT
+BuildRequires:  %{pythons}-PyYAML >= 5.4.1
+BuildRequires:  %{pythons}-arrow >= 1.0.0
+BuildRequires:  %{pythons}-certifi
+BuildRequires:  %{pythons}-click >= 8.0.4
+BuildRequires:  %{pythons}-cryptography >= 3.2.1
+BuildRequires:  %{pythons}-devel
+BuildRequires:  %{pythons}-jmespath >= 0.10.0
+BuildRequires:  %{pythons}-oci-sdk >= 2.121.1
+BuildRequires:  %{pythons}-pip
+BuildRequires:  %{pythons}-pyOpenSSL >= 22.1.0
+BuildRequires:  %{pythons}-python-dateutil >= 2.5.3
+BuildRequires:  %{pythons}-pytz >= 2016.10
+BuildRequires:  %{pythons}-setuptools
+BuildRequires:  %{pythons}-six >= 1.15.0
+BuildRequires:  %{pythons}-terminaltables >= 3.1.10
+BuildRequires:  %{pythons}-wheel
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-PyJWT
-BuildRequires:  python3-PyYAML >= 5.4.1
-BuildRequires:  python3-arrow >= 1.0.0
-BuildRequires:  python3-certifi
-BuildRequires:  python3-click >= 8.0.4
-BuildRequires:  python3-cryptography >= 3.2.1
-BuildRequires:  python3-devel
-BuildRequires:  python3-jmespath >= 0.10.0
-BuildRequires:  python3-oci-sdk >= 2.121.1
-BuildRequires:  python3-pyOpenSSL >= 22.1.0
-BuildRequires:  python3-python-dateutil >= 2.5.3
-BuildRequires:  python3-pytz >= 2016.10
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-six >= 1.15.0
-BuildRequires:  python3-terminaltables >= 3.1.10
 %if %{with test}
-BuildRequires:  python3-Jinja2 >= 2.11.3
-BuildRequires:  python3-Sphinx >= 1.6.4
-BuildRequires:  python3-appdirs >= 1.4.3
-BuildRequires:  python3-cffi >= 1.9.1
-BuildRequires:  python3-coverage >= 4.5.2
-BuildRequires:  python3-ndg-httpsclient >= 0.4.2
-BuildRequires:  python3-packaging >= 20.2
-BuildRequires:  python3-pluggy >= 0.13.0
-BuildRequires:  python3-py >= 1.11.0
-BuildRequires:  python3-pyasn1 >= 0.2.3
-BuildRequires:  python3-pycparser >= 2.20
-BuildRequires:  python3-pyparsing >= 2.2.0
-BuildRequires:  python3-pytest-cov >= 2.5.1
-BuildRequires:  python3-pytest-forked >= 1.0.2
-BuildRequires:  python3-pytest-xdist >= 1.22.2
-BuildRequires:  python3-requests >= 2.21.0
-BuildRequires:  python3-sphinx_rtd_theme >= 0.4.3
-BuildRequires:  python3-tox >= 3.23.0
-BuildRequires:  python3-vcrpy >= 4.2.1
-BuildRequires:  python3-virtualenv >= 16.7.10
-BuildRequires:  (python3-vcrpy >= 1.13.0 if python-base <= 3.9)
-BuildRequires:  (python3-vcrpy >= 4.2.1 if python-base >= 3.10)
-BuildRequires:  (python3-vcrpy >= 4.6.10 if python-base <= 3.9)
-BuildRequires:  (python3-vcrpy >= 7.1.2 if python-base >= 3.10)
+BuildRequires:  %{pythons}-Jinja2 >= 2.11.3
+BuildRequires:  %{pythons}-Sphinx >= 1.6.4
+BuildRequires:  %{pythons}-appdirs >= 1.4.3
+BuildRequires:  %{pythons}-cffi >= 1.9.1
+BuildRequires:  %{pythons}-coverage >= 4.5.2
+BuildRequires:  %{pythons}-ndg-httpsclient >= 0.4.2
+BuildRequires:  %{pythons}-packaging >= 20.2
+BuildRequires:  %{pythons}-pluggy >= 0.13.0
+BuildRequires:  %{pythons}-py >= 1.11.0
+BuildRequires:  %{pythons}-pyasn1 >= 0.2.3
+BuildRequires:  %{pythons}-pycparser >= 2.20
+BuildRequires:  %{pythons}-pyparsing >= 2.2.0
+BuildRequires:  %{pythons}-pytest-cov >= 2.5.1
+BuildRequires:  %{pythons}-pytest-forked >= 1.0.2
+BuildRequires:  %{pythons}-pytest-xdist >= 1.22.2
+BuildRequires:  %{pythons}-requests >= 2.21.0
+BuildRequires:  %{pythons}-sphinx_rtd_theme >= 0.4.3
+BuildRequires:  %{pythons}-tox >= 3.23.0
+BuildRequires:  %{pythons}-vcrpy >= 4.2.1
+BuildRequires:  %{pythons}-virtualenv >= 16.7.10
+BuildRequires:  (%{pythons}-vcrpy >= 1.13.0 if python-base <= 3.9)
+BuildRequires:  (%{pythons}-vcrpy >= 4.2.1 if python-base >= 3.10)
+BuildRequires:  (%{pythons}-vcrpy >= 4.6.10 if python-base <= 3.9)
+BuildRequires:  (%{pythons}-vcrpy >= 7.1.2 if python-base >= 3.10)
 %endif
-Requires:       python3-PyYAML >= 5.4.1
-Requires:       python3-arrow >= 1.0.0
-Requires:       python3-certifi
-Requires:       python3-click >= 8.0.4
-Requires:       python3-cryptography >= 3.2.1
-Requires:       python3-jmespath >= 0.10.0
-Requires:       python3-oci-sdk >= 2.121.1
-Requires:       python3-prompt_toolkit >= 3.0.29
-Requires:       python3-pyOpenSSL >= 22.1.0
-Requires:       python3-python-dateutil >= 2.5.3
-Requires:       python3-pytz >= 2016.10
-Requires:       python3-six >= 1.15.0
-Requires:       python3-terminaltables >= 3.1.10
+Requires:       %{pythons}-PyYAML >= 5.4.1
+Requires:       %{pythons}-arrow >= 1.0.0
+Requires:       %{pythons}-certifi
+Requires:       %{pythons}-click >= 8.0.4
+Requires:       %{pythons}-cryptography >= 3.2.1
+Requires:       %{pythons}-jmespath >= 0.10.0
+Requires:       %{pythons}-oci-sdk >= 2.121.1
+Requires:       %{pythons}-prompt_toolkit >= 3.0.29
+Requires:       %{pythons}-pyOpenSSL >= 22.1.0
+Requires:       %{pythons}-python-dateutil >= 2.5.3
+Requires:       %{pythons}-pytz >= 2016.10
+Requires:       %{pythons}-six >= 1.15.0
+Requires:       %{pythons}-terminaltables >= 3.1.10
 
 BuildArch:      noarch
 
@@ -110,24 +120,24 @@ find . -name "*.py" -exec sed -i 's/from oci\._vendor //' \{\} +
 find . -name "*.py" -exec sed -i 's/oci\._vendor\.//' \{\} +
 
 %build
-%python3_build
+%pyproject_wheel
 
 %if %{with test}
 %check
 export PYTHONDONTWRITEBYTECODE=1
-export PYTHONPATH=%{buildroot}%{python3_sitelib}
+export PYTHONPATH=%{buildroot}%{_sitelibdir}
 py.test -s tests/unit
 %endif
 
 %install
-%python3_install
-%fdupes %{buildroot}%{python3_sitelib}
+%pyproject_install
+%fdupes %{buildroot}%{_sitelibdir}
 
 %files
 %doc CHANGELOG.rst README.rst
 %license LICENSE.txt
 %{_bindir}/oci
 %{_bindir}/create_backup_from_onprem
-%{python3_sitelib}/*
+%{_sitelibdir}/*
 
 %changelog
