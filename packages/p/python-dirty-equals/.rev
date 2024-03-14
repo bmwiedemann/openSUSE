@@ -42,4 +42,21 @@
 - Correct a Requires into a BuildRequires, as was meant.</comment>
     <requestid>1123994</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a060668173a162a0d2e5c8ef201aaa34</srcmd5>
+    <version>0.7.1</version>
+    <time>1710434531</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.7.1:
+  * Feature: IsEnum by @FBruzzesi in #75
+  * fix pydantic version checking by @mishaga in #80
+  * change license to exact by @evstratbg in #85
+  * fix DeprecationWarning with datetime.utcnow() by @MeggyCal in #86
+  * Make datetime tests pass without requiring UTC system timezone
+  * uprev dependencies and use pydantic v2 by @samuelcolvin in #88
+  * support python 3.12 by @samuelcolvin in #89
+  * better dep constraints by @samuelcolvin in #90
+- Drop patch datetime.patch, now included.</comment>
+    <requestid>1155774</requestid>
+  </revision>
 </revisionlist>
