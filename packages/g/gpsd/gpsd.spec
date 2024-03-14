@@ -1,7 +1,7 @@
 #
 # spec file for package gpsd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -276,6 +276,10 @@ ln -s  	%{_sbindir}/service %{buildroot}%{_sbindir}/rcgpsd
 sed -i -e 's#Icon=.*/\([^/]\+\)\(\..\+\)#Icon=\1#' %{buildroot}%{_datadir}/applications/xgps{,speed}.desktop
 %suse_update_desktop_file -r xgpsspeed System Monitor
 %suse_update_desktop_file -r xgps System Monitor
+
+%if %{suse_version} >= 1600
+%python_expand %python3_fix_shebang_path %{buildroot}%{$python_sitearch}/gps/*
+%endif
 
 %pre
 %service_add_pre gpsd.service gpsdctl@.service gpsd.socket
