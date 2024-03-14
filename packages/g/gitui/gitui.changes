@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Mar 14 00:50:22 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.25.1:
+  Added:
+  * support for new-line in text-input (e.g. commit message editor)
+  * add syntax highlighting for blame view
+  * allow aborting pending commit log search
+  * theme.ron now supports customizing line break symbol
+  * add confirmation for dialog for undo commit
+  * support prepare-commit-msg hook
+  * new style block_title_focused to allow customizing title text
+    of focused frame/block
+  * allow fetch command in both tabs of branchlist popup
+  * check branch name validity while typing
+  Changed:
+  * do not allow tagging when tag.gpgsign enabled until gpg-signing
+    is supported
+  Fixes:
+  * bump yanked dependency bumpalo to fix build from source
+  * pin ratatui version to fix building without locked cargo
+    install gitui
+  * stash window empty after file history popup closes
+  * allow push to empty remote
+  * better diagnostics for theme file loading
+  * fix ordering of commits in diff view
+
+-------------------------------------------------------------------
 Tue Sep 19 20:47:18 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Update license based on legaldb review 
