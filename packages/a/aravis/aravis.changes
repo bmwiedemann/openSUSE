@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 13 17:19:16 UTC 2024 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Update to 0.8.31:
+  * viewer: better handling of exposure and gain setting
+  * genicam: genicam URL stored as DomDocument URL property
+  * genicam: fix arv_device_get_feature_access_mode return value
+  * camera: set/dup_register helper
+  * camera: frame_rate setting improvements
+  * usb3vision: handle GenDC payload
+  * gigevision: set a lower boundary to minimum socket size in auto mode
+  * build: fix a libxml2 API breakage
+
+-------------------------------------------------------------------
 Tue Dec 26 12:28:40 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Update to 0.8.30:
