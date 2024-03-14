@@ -1,7 +1,7 @@
 #
 # spec file for package libsrtp2-linphone
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define so_ver	1
 Name:           libsrtp2-linphone
-Version:        2.2.0~git.20210916
+Version:        2.4.2~git.20230516
 Release:        0
 Summary:        BC's fork of the Secure Real-Time Transport Protocol (SRTP) library
 License:        BSD-3-Clause
@@ -27,7 +27,11 @@ URL:            https://gitlab.linphone.org/BC/public/external/srtp
 Source:         %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 Patch0:         change-name.patch
+BuildRequires:  cmake
 BuildRequires:  gcc
+BuildRequires:  libopenssl-devel
+BuildRequires:  libpcap-devel
+BuildRequires:  meson >= 0.52.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(openssl)
 
@@ -35,7 +39,7 @@ BuildRequires:  pkgconfig(openssl)
 libsrtp is an implementation of the Secure Real-time Transport
 Protocol (SRTP) originally authored by Cisco Systems, Inc.
 
-%package -n %{name}%{so_ver}
+%package -n     %{name}%{so_ver}
 Summary:        Secure Real-Time Transport Protocol (SRTP) library
 Group:          System/Libraries
 
@@ -63,17 +67,14 @@ This subpackage contains the development headers.
 %autosetup -p1
 
 %build
-%configure \
-  --enable-generic-aesicm \
-  --enable-syslog \
-  --enable-openssl \
-  --enable-gdoi \
-  --enable-kernel-linux
-
-%make_build shared_library
+%meson \
+  -Dcrypto-library=openssl \
+  -Dcrypto-library-kdf=disabled \
+  -Ddoc=disabled
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %post -n %{name}%{so_ver} -p /sbin/ldconfig
 %postun -n %{name}%{so_ver} -p /sbin/ldconfig
