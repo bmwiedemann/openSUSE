@@ -21,8 +21,15 @@
 %else
 %bcond_with    cmake_macros
 %endif
+
+%if 0%{?suse_version}
+%bcond_without keepassxc_cr_recovery
+%else
+%bcond_with    keepassxc_cr_recovery
+%endif
+
 Name:           keepassxc
-Version:        2.7.6
+Version:        2.7.7
 Release:        0
 Summary:        Qt5-based Password Manager
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -31,7 +38,9 @@ URL:            https://www.keepassxc.org/
 Source0:        https://github.com/keepassxreboot/keepassxc/releases/download/%{version}/keepassxc-%{version}-src.tar.xz
 Source1:        https://github.com/keepassxreboot/keepassxc/releases/download/%{version}/keepassxc-%{version}-src.tar.xz.sig
 Source2:        https://keepassxc.org/keepassxc_master_signing_key.asc#/%{name}.keyring
-Source97:       _constraints
+Source3:        vendor.tar.zst
+#Source96:       _service
+#Source97:       _constraints
 Source98:       debian.tar.xz
 Source99:       keepassxc.dsc
 BuildRequires:  cmake >= 3.1.0
@@ -67,6 +76,13 @@ BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(zlib) >= 1.2.0
 BuildRequires:  readline-devel
+
+%if %{with keepassxc_cr_recovery}
+BuildRequires:  golang(API)
+BuildRequires:  golang-packaging
+BuildRequires:  zstd
+%endif
+
 %if 0%{?suse_version}
 BuildRequires:  update-desktop-files
 Requires(post): update-desktop-files
@@ -95,6 +111,12 @@ are encrypted using AES and Twofish.
 %prep
 %autosetup -p1
 
+%if %{with keepassxc_cr_recovery}
+pushd utils/keepassxc-cr-recovery
+tar xf %{SOURCE3}
+popd
+%endif
+
 %build
 %cmake \
   -DKEEPASSXC_BUILD_TYPE="Release" \
@@ -107,12 +129,23 @@ are encrypted using AES and Twofish.
 %make_build
 %endif
 
+%if %{with keepassxc_cr_recovery}
+pushd ../utils/keepassxc-cr-recovery
+go build -buildmode=pie -mod=vendor
+popd
+%endif
+
 %install
 %if %{with cmake_macros}
 %cmake_install
 %else
 %make_install
 %endif
+
+%if %{with keepassxc_cr_recovery}
+install -D -m 0755 utils/keepassxc-cr-recovery/keepassxc-cr-recovery %{buildroot}%{_bindir}/keepassxc-cr-recovery
+%endif
+
 for i in $(find %{buildroot} -type f -name \*.svgz) ; do
   j="${i%z}"
   gunzip < $i > $j
@@ -156,6 +189,9 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor >/dev/null 2>/dev/null || :
 %license COPYING LICENSE*
 %doc CHANGELOG.md README.md
 %doc docs/*
+%if %{with keepassxc_cr_recovery}
+%{_bindir}/keepassxc-cr-recovery
+%endif
 %{_bindir}/%{name}
 %{_bindir}/%{name}-cli
 %{_bindir}/%{name}-proxy
