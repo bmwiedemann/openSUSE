@@ -1,7 +1,7 @@
 #
 # spec file for package plasma6-activities-stats
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define rname   plasma-activities-stats
 %bcond_without released
 Name:           plasma6-activities-stats
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        KDE Plasma Activities support
 License:        LGPL-2.0-or-later
@@ -39,8 +39,8 @@ BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(PlasmaActivities) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(PlasmaActivities) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
