@@ -1,7 +1,7 @@
 #
 # spec file for package belle-sip
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2014 Mariusz Fik <fisiu@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%define soname  libbellesip
+%define soname  libbelle-sip
 %define sover   1
 Name:           belle-sip
-Version:        5.2.98
+Version:        5.3.26
 Release:        0
 Summary:        C object-oriented SIP Stack
 License:        GPL-3.0-or-later
@@ -29,9 +29,9 @@ URL:            https://linphone.org/technical-corner/belle-sip/
 Source:         https://gitlab.linphone.org/BC/public/belle-sip/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source2:        baselibs.conf
 Patch0:         set_current_version.patch
-BuildRequires:  belr-devel
+BuildRequires:  belr-devel >= 5.3.0
 BuildRequires:  chrpath
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.22
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bctoolbox) >= %{version}
@@ -88,7 +88,7 @@ to develop applications using the belle-sip library.
 %install
 %cmake_install
 
-chrpath -d %{buildroot}%{_bindir}/belle_sip_tester %{buildroot}%{_libdir}/%{soname}.so.%{sover}*
+chrpath -d %{buildroot}%{_bindir}/belle-sip-tester %{buildroot}%{_libdir}/%{soname}.so.%{sover}*
 
 %post -n %{soname}%{sover} -p /sbin/ldconfig
 %postun -n %{soname}%{sover} -p /sbin/ldconfig
@@ -104,11 +104,11 @@ chrpath -d %{buildroot}%{_bindir}/belle_sip_tester %{buildroot}%{_libdir}/%{sona
 %files devel
 %license LICENSE.txt
 %doc AUTHORS.md CHANGELOG.md README.md
-%{_bindir}/belle_sip_tester
+%{_bindir}/belle-sip-tester
 %{_includedir}/%{name}/
 %{_libdir}/%{soname}.so
 %{_libdir}/cmake/BelleSIP/
-%{_datadir}/belle_sip_tester/
+%{_datadir}/belle-sip-tester/
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog
