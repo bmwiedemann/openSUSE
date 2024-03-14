@@ -1,4 +1,136 @@
 -------------------------------------------------------------------
+Thu Mar  7 03:28:00 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.6.3:
+  * Fix inheriting `Field` annotations in dataclasses
+  * Fix warning for tuple of wrong size in `Union`
+  * Fix `computed_field` JSON serializer `exclude_none` behavior
+  * Check for `email-validator` version >= 2.0
+  * Add `NatsDsn`
+  * Add `ConfigDict.ser_json_inf_nan`
+  * Support `AliasGenerator` usage
+  * Support `yyyy-MM-DD` datetime parsing
+  * Added bits conversions to the `ByteSize` class
+  * Add `eval_type_backport` to handle union operator
+  * Add support for `dataclass` fields `init`
+  * Implement pickling for `ValidationError`
+  * Add unified tuple validator that can handle "variadic" tuples via PEP-646
+  * Drop Python3.7 support
+  * Make `@validate_call` return a function instead of a custom descriptor
+  * Introducing `classproperty` decorator for `model_computed_fields`
+  * Move `getattr` warning in deprecated `BaseConfig`
+  * Only hash `model_fields`, not whole `__dict__`
+  * Fix overload position of `computed_field`
+  * Fix issue `unittest.mock` deprecation warnings 
+  * Fix `to_snake` conversion
+  * Add support for field `alias` in `dataclass` signature
+  * Fix ordering of keys in `__dict__` with `model_construct` call
+  * Fix usage of `@deprecated`
+  * Add more support for private attributes in `model_construct` call
+  * Support `pydantic.Field(repr=False)` in dataclasses
+  * Override `dataclass_transform` behavior for `RootModel`
+  * Refactor signature generation for simplicity
+  * Fix ordering bug of PlainValidator annotation
+  * Fix `exclude_none` for json serialization of `computed_field`s
+  * Support yyyy-MM-DD string for datetimes
+  * Fix memory leak with recursive definitions creating reference cycles
+  * Add `ConfigDict.ser_json_inf_nan`
+  * Fix validation of `Literal` from JSON keys when used as `dict` key
+  * Fix bug re `custom_init` on members of `Union`
+  * Fix `JsonValue` `bool` serialization
+  * Fix handling of unhashable inputs with `Literal` in `Union`s
+   Fix package description limit
+  * Allow plugins to catch non `ValidationError` errors
+  * Added `validation_error_cause` to config
+  * Allow `str` as argument to `Discriminator`
+  * Add `SchemaSerializer.__reduce__` method to enable pickle serialization
+  * Properly rebuild the `FieldInfo` when a forward ref gets evaluated
+  * Fix failure to load `SecretStr` from JSON (regression in v2.4)
+  * Fix `defer_build` behavior with `TypeAdapter`
+  * Fix: update `TypeVar` handling when default is not set
+  * Raise an error when deleting frozen (model) fields
+  * Use generated alias for aliases that are not specified otherwise
+  * Fix: support `pydantic.Field(kw_only=True)` with inherited dataclasses
+  * Support `validate_call` decorator for methods in classes with `__slots__`
+  * Fix pydantic dataclass problem with `dataclasses.field` default
+  * Support `|` operator (Union) in PydanticRecursiveRef
+  * Add support for `NotRequired` generics in `TypedDict`
+  * Added fix for signature of inherited dataclass
+  * `PrivateAttr` is passed from `Annotated` default position
+  * Don't decode bytes (which may not be UTF8) when displaying SecretBytes
+  * Use `classmethod` instead of `classmethod[Any, Any, Any]`
+  * Clearer error on invalid Plugin
+  * Correct pydantic dataclasses import
+  * Fix `definition-ref` bug with `Dict` keys
+  * Don't accept `NaN` in float and decimal constraints
+  * Add `lax_str` and `lax_int` support for enum values not inherited
+    from str/int
+  * Fix: proper pluralization in `ValidationError` messages
+  * Disallow the string `'-'` as `datetime` input
+  * Fix: NaN and Inf float serialization
+  * Implement optional `number` to `str` coercion
+  * Add `BaseModel.model_validate_strings` and `TypeAdapter.validate_strings`
+  * Add Pydantic `plugins` experimental implementation
+  * Do not override `model_post_init` in subclass with private attrs
+  * Fix config detection for `TypedDict` from grandparent classes
+  * Fix hash function generation for frozen models with unusual MRO
+  * Make `strict` config overridable in field for Path
+  * Use `ser_json_<timedelta|bytes>` on default in `GenerateJsonSchema`
+  * Adding a check that alias is validated as an identifier for Python
+  * Raise an error when computed field overrides field
+  * Enforce behavior of private attributes having double leading underscore
+  * Fix generic dataclass fields mutation bug (when using `TypeAdapter`)
+  * Fix `TypeError` on `model_validator` in `wrap` mode
+  * Fixed a regular expression denial of service issue by limiting whitespaces
+  * Fix handling of `UUID` values having `UUID.version=None`
+  * Fix `__iter__` returning private `cached_property` info
+  * Make ModelWrapValidator protocols generic
+  * Make shadowing attributes a warning instead of an error
+  * Document `Base64Str` and `Base64Bytes`
+  * Fix `config.defer_build` for serialization first cases
+  * Support `__get_validators__`
+  * Replace MiMalloc w/ default allocator
+  * Cleaner error for invalid input to `Path` fields
+  * Add section about Constrained classes to the Migration Guide
+  * Fix issue where generic models couldn't be parametrized with BaseModel
+  * add field_serializer to computed_field
+  * fix dataclass annotated before validator called twice
+  * Add benchmark representing FastAPI startup time
+  * Fix json_encoders for Enum subclasses
+  * Revert "Fix default port for mongosrv DSNs (#6827)"
+  * Do not require `validate_assignment` to use `Field.frozen`
+  * Fix generic computed fields
+  * Handle non-json native enum values
+  * Include Field extra keys name in warning
+  * Skip FieldInfo merging when unnecessary
+  * Add `StringConstraints` for use as Annotated metadata
+  * Fix incorrect subclass check for secretstr
+  * Mypy plugin for settings
+  * fast-path checking finite decimals
+  * Fix pydantic dataclasses that use slots with default values
+  * Fix inheritance of hash function for frozen models
+  * Error if an invalid field name is used with Field
+  * Add `GenericModel` to `MOVED_IN_V2`
+  * remove email validation from the north star benchmark
+  * Fix default port for mongosrv DSNs
+  * Fix serialization issue with `InstanceOf`
+  * Add back support for `json_encoders`
+  * Use `WeakValueDictionary` to fix generic memory leak
+  * Add `config.defer_build` to optionally make model building lazy
+  * Revise the section on required / optional / nullable fields.
+  * Replace TransformSchema with GetPydanticSchema
+  * Fix serialization for IPvAny
+  * Touch up Decimal validator
+  * Handle function validators in a discriminated union
+  * Fix pydantic dataclass problem with dataclasses.field default_factory
+  * Produce more accurate signatures for pydantic dataclasses
+  * Ignore unrecognized fields from dataclasses metadata
+- Drop patches Fix-Python-3.12-test-failures.patch and
+  ignore-urllib3-pyopenssl-warning.patch
+- Switch to pyproject macros.
+- Inject mulitbuild.
+
+-------------------------------------------------------------------
 Mon Jan 22 09:12:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.10.14:

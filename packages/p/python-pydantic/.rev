@@ -292,4 +292,41 @@
   * Fix cached_property handling in dataclasses when copied</comment>
     <requestid>1140422</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3193f457c131751c298618de21185994</srcmd5>
+    <version>2.6.3</version>
+    <time>1710434530</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.6.3:
+  * Fix inheriting `Field` annotations in dataclasses
+  * Fix warning for tuple of wrong size in `Union`
+  * Fix `computed_field` JSON serializer `exclude_none` behavior
+  * Check for `email-validator` version &gt;= 2.0
+  * Add `NatsDsn`
+  * Add `ConfigDict.ser_json_inf_nan`
+  * Support `AliasGenerator` usage
+  * Support `yyyy-MM-DD` datetime parsing
+  * Added bits conversions to the `ByteSize` class
+  * Add `eval_type_backport` to handle union operator
+  * Add support for `dataclass` fields `init`
+  * Implement pickling for `ValidationError`
+  * Add unified tuple validator that can handle &quot;variadic&quot; tuples via PEP-646
+  * Drop Python3.7 support
+  * Make `@validate_call` return a function instead of a custom descriptor
+  * Introducing `classproperty` decorator for `model_computed_fields`
+  * Move `getattr` warning in deprecated `BaseConfig`
+  * Only hash `model_fields`, not whole `__dict__`
+  * Fix overload position of `computed_field`
+  * Fix issue `unittest.mock` deprecation warnings 
+  * Fix `to_snake` conversion
+  * Add support for field `alias` in `dataclass` signature
+  * Fix ordering of keys in `__dict__` with `model_construct` call
+  * Fix usage of `@deprecated`
+  * Add more support for private attributes in `model_construct` call
+  * Support `pydantic.Field(repr=False)` in dataclasses
+  * Override `dataclass_transform` behavior for `RootModel`
+  * Refactor signature generation for simplicity
+  * Fix ordering bug of PlainValidator annotation</comment>
+    <requestid>1155773</requestid>
+  </revision>
 </revisionlist>
