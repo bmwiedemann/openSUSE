@@ -1,5 +1,0 @@
-<package name="python-matrix-client" project="openSUSE:Factory">
-  <title></title>
-  <description>Client-Server SDK for Matrix</description>
-  <devel project="devel:languages:python" package="python-matrix-client"/>
-</package>
