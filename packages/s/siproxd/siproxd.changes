@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  7 11:43:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Provide user()/group() symbol as required by RPM 4.19. User is
+  genereted in the pre script.
+
+-------------------------------------------------------------------
 Sun Sep  3 10:57:56 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to override build date (boo#1047218)

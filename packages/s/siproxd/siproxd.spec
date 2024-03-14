@@ -1,7 +1,7 @@
 #
 # spec file for package siproxd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,6 +67,8 @@ BuildRequires:  texlive-wasy
 Requires:       logrotate
 Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
+Provides:       group(%{siproxdgroup})
+Provides:       user(%{siproxduser})
 %if %suse_version <= 1500
 Suggests:       SuSEfirewall2
 %endif
