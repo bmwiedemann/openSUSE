@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-annotated-types
 Version:        0.6.0
 Release:        0

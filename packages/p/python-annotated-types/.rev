@@ -7,4 +7,14 @@
     <comment>- Initial release of 0.6.0</comment>
     <requestid>1155763</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3f4ed5fd30bc3a9e2a949002f04f46a9</srcmd5>
+    <version>0.6.0</version>
+    <time>1710434544</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1156622 from ecsos
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1157047</requestid>
+  </revision>
 </revisionlist>
