@@ -1,7 +1,7 @@
 #
 # spec file for package belr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soname  libbelr
 %define sover   1
 Name:           belr
-Version:        5.2.98
+Version:        5.3.26
 Release:        0
 Summary:        Language recognition library
 License:        GPL-3.0-or-later
@@ -30,7 +30,7 @@ Source1:        baselibs.conf
 # PATCH-FIX-OPENSUSE belr-fix-pkgconfig.patch sor.alexei@meowr.ru -- Install belr.pc.
 Patch0:         belr-fix-pkgconfig.patch
 Patch1:         set_current_version.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.22
 BuildRequires:  gcc-c++
 BuildRequires:  libudev-devel
 BuildRequires:  pkgconfig
@@ -82,10 +82,12 @@ to develop applications using the belr library.
 %files devel
 %license LICENSE.txt
 %doc CHANGELOG.md README.md
+%dir %{_libdir}/cmake
+%dir %{_libdir}/cmake/Belr/
 %{_bindir}/%{name}*
 %{_includedir}/%{name}/
 %{_libdir}/%{soname}.so
-%{_libdir}/cmake/%{name}/
+%{_libdir}/cmake/Belr/
 %{_datadir}/%{name}/
 %{_datadir}/%{name}-tester/
 %{_libdir}/pkgconfig/%{name}.pc

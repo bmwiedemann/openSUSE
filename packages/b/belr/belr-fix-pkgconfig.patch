@@ -1,5 +1,7 @@
---- a/belr.pc.in
-+++ b/belr.pc.in
+Index: belr-5.3.7/belr.pc.in
+===================================================================
+--- belr-5.3.7.orig/belr.pc.in
++++ belr-5.3.7/belr.pc.in
 @@ -4,6 +4,7 @@ prefix=@CMAKE_INSTALL_PREFIX@
  Name:  @PROJECT_NAME@
  Description: Belr is Belledonne Communications' language recognition library
@@ -8,11 +10,13 @@
  Libs: -L@CMAKE_INSTALL_FULL_LIBDIR@ -lbelr
  Libs.private: @LIBS_PRIVATE@
  Cflags: -I@CMAKE_INSTALL_FULL_INCLUDEDIR@
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -83,6 +83,11 @@ if(MSVC)
- 	include_directories(${MSVC_INCLUDE_DIR})
- endif()
+Index: belr-5.3.7/CMakeLists.txt
+===================================================================
+--- belr-5.3.7.orig/CMakeLists.txt
++++ belr-5.3.7/CMakeLists.txt
+@@ -66,6 +66,11 @@ include_directories(
+ 	${CMAKE_CURRENT_BINARY_DIR}
+ )
  
 +
 +configure_file(${CMAKE_CURRENT_SOURCE_DIR}/belr.pc.in ${CMAKE_CURRENT_BINARY_DIR}/belr.pc)
