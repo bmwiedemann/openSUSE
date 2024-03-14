@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Wed Mar 13 19:02:19 UTC 2024 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- Update to 2.7.2
+  ## Improvements with respect to 2.7.1
+  * Multi-material segmentation improvements
+  * Color change (M600) improvements
+  * Ramping travel improvements
+  * SLA overrides
+  * Windows specific: The cut tool sometimes produces non-manifold
+    meshes. This situation is now detected and the user is advised
+    to use Windows repair algorithm on the resulting objects.
+  ## Bugs fixes with respect to 2.7.1
+  * Fixed incorrect partial arrange in certain cases.
+  * Fixing arrange issues with aligning to unprintable objects when
+    doing Shift+A.
+  * Fixed arrange which sometimes put the wipe tower slightly out of
+    bed
+  * Fixed UI glitch when setting object dimensions to extremely high
+    values.
+  * Fixed a bug in generation of brim and skirt preview in the
+    preliminary G-code preview (#11821, thanks to @supermerill)
+  * Fixed an issue Ctrl+Shift+Tab shortcut, which incorrectly
+    collapsed sidebar.
+  * Fixed wiggling of Rotate gizmo when moving an object in certain
+    cases.
+  * Fixed missing updated when moving through dropdown items using
+    keyboard arrows.
+  * Improve filtering of special characters on Klipper
+    EXCLUDE_OBJECT labels (#11802, PR#11813 by @jschuh - thank
+    you).
+  * Fixed layer change color dialog opening off screen.
+  * Fixed occasional crash during thumbnail generation for SLA
+    printers.
+  * Fixed slicing issues such as missing infills and similar on
+    multi part models when sliced with object-specific settings.
+  * In SLA mode, it was not possible to use custom file extension
+    (configured in Output Settings).
+  * Fixed incorrect calculation of wipe length in certain cases,
+    leading to shorter wipes than configured.
+  * Fixed various issues and UI glitches in text/SVG embossing.
+  * Fixed missing update when a new printer was added while a
+    physical printer preset was selected.
+  * Scrolling of the window was incorrectly performed when using
+    mouse wheel over a dropdown.
+  * Windows specific: Drop down menus appeared outside of
+    PrusaSlicer and could not be opened again.
+  * When loading an object from a 3MF, the suggestion to rescale
+    the model is not shown, because 3MFs store the information
+    about the correct unit (unlike STL files).
+  * Fixed an incorrect check of supported OpenGL version, which led
+    to a hard crash when OpenGL 3.2 was not available.
+  * When loading a 3MF for MM printer, PrusaSlicer offers to load
+    individual models as parts of a single object. This dialog did
+    not show up for specific geometries.
+  * PrusaSlicer did not start on some Windows Server installations
+    due to a missing DLL (wlanapi.dll). The library is now loaded
+    in runtime and the respective features.
+  * Travels with standard lifts (non-ramping) were incorrectly
+    generated.
+  * With option "Retract on layer change" disabled, there was a
+    retraction missing before the first travel on each layer.
+  * Variable layer height limits were not applied correctly when
+    using multi-extruder printer with different values of min and
+    max layer height.
+  * When z travel speed was set to zero, it was incorrectly
+    exported into the G-code, effectively stopping the print.
+    Instead, regular travel speed should have been used for the z
+    travel.
+  * When Print / Filament / Printer profiles contained different
+    values for the same key (which should normally not happen,
+    providing the profiles are correct), the misplaced keys could
+    have been used instead of the correct ones.
+  * Fixed incorrectly applied retraction in vase mode when ramping
+    travels were enabled.
+  * When using the "No sparse layers" wipe tower, the print head
+    sometimes lowered before travelling to the wipe tower, digging
+    into an object and destroying the print.
+  * Fixed a crash when loading certain AMF files.
+  * When specific extruder was set for the wipe tower and z
+    position has changed in custom toolchange G-code, the z
+    position was not correctly accounted for.
+
+-------------------------------------------------------------------
 Fri Dec 29 09:47:16 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Add PrusaSlicer-2.7.1-slic3r-wxWidgets-3.2.4.patch
