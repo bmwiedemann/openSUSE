@@ -1,9 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 14 10:15:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- skip build for 3.9 as plotly is gone
+
+-------------------------------------------------------------------
 Mon Apr  3 05:59:40 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Stop skipping Python 3.6.
 - Add patch support-numpy-124.patch:
-  * Support numpy >= 1.24 
+  * Support numpy >= 1.24
 
 -------------------------------------------------------------------
 Sun Feb 21 18:19:09 UTC 2021 - andy great <andythe_great@pm.me>
@@ -11,7 +16,7 @@ Sun Feb 21 18:19:09 UTC 2021 - andy great <andythe_great@pm.me>
 - Skip python36.
 - Update to version 5.3.1.
   * Fix Evaluate Curves and Surfaces outside domain limits
-  * Jupyter and Plotly renderer support 
+  * Jupyter and Plotly renderer support
 
 -------------------------------------------------------------------
 Thu Nov 12 12:46:49 UTC 2020 - Marketa Machova <mmachova@suse.com>
@@ -24,7 +29,7 @@ Thu Nov 12 12:46:49 UTC 2020 - Marketa Machova <mmachova@suse.com>
 -------------------------------------------------------------------
 Thu Aug 27 16:55:19 UTC 2020 - andy great <andythe_great@pm.me>
 
-- Add license and documentation file. 
+- Add license and documentation file.
 
 -------------------------------------------------------------------
 Thu Aug 27 07:17:21 UTC 2020 - andy great <andythe_great@pm.me>

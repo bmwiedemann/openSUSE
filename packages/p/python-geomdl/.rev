@@ -33,4 +33,16 @@
   * Support numpy &gt;= 1.24</comment>
     <requestid>1076823</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>1ec908787d1a7459da70a42bacb3f7f0</srcmd5>
+    <version>5.3.1</version>
+    <time>1710434745</time>
+    <user>anag+factory</user>
+    <comment>- skip build for 3.9 as plotly is gone
+
+  * Support numpy &gt;= 1.24
+  * Jupyter and Plotly renderer support
+- Add license and documentation file.</comment>
+    <requestid>1157932</requestid>
+  </revision>
 </revisionlist>

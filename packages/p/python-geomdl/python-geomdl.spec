@@ -1,7 +1,7 @@
 #
 # spec file for package python-geomdl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,8 @@
 
 %define archivename NURBS-Python
 %define packagename geomdl
+%{?sle15_python_module_pythons}
+%global skip_python39 1
 Name:           python-geomdl
 Version:        5.3.1
 Release:        0
