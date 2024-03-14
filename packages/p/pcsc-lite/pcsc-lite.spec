@@ -1,7 +1,7 @@
 #
 # spec file for package pcsc-lite
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -140,6 +140,7 @@ cp -a AUTHORS ChangeLog COPYING HELP NEWS README README.SUSE SECURITY TODO %{bui
 # Remove useless la files
 find %{buildroot} -type f -name "*.la" -delete -print
 install -Dm0644 %{SOURCE9} %{buildroot}%{_sysusersdir}/%{PKG_USER}.conf
+%python3_fix_shebang
 
 %pre -f %{PKG_USER}.pre
 %service_add_pre pcscd.service pcscd.socket

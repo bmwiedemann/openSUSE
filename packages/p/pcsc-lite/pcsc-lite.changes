@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 13 14:52:38 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using                            
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Thu Feb 29 15:01:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
