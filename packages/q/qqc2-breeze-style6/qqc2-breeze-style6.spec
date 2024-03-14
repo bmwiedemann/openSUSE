@@ -1,7 +1,7 @@
 #
 # spec file for package qqc2-breeze-style6
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 
 %bcond_without released
 Name:           qqc2-breeze-style6
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        Breeze Style for Qt Quick
 License:        LGPL-2.1-or-later
