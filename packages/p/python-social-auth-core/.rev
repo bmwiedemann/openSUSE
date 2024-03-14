@@ -438,4 +438,14 @@
   - Updated `user_data` method in `StripeOAuth2` to return `email`</comment>
     <requestid>1141940</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3b3ed92774e9d07fdd171c9ba4ed2de9</srcmd5>
+    <version>4.5.3</version>
+    <time>1710434761</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.5.3:
+  * OpenStreetMap OAuth2
+  * Etsy backend fixes</comment>
+    <requestid>1158011</requestid>
+  </revision>
 </revisionlist>
