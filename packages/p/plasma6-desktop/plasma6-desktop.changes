@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Mar 13 09:10:08 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.2
+- Changes since 6.0.1:
+  * appiumtests: match screenshot to test wallpaper DBus API
+  * update version for new release
+  * kcm/keys: fix custom shortcut alignment (kde#483169)
+  * Panel: Don't take keyboard focus when one of its widgets is activated (kde#479084,kde#482653)
+  * appiumtests: add test to make sure ShellCorona gives ready signal to KSplash
+  * Folder Model: Handle invalid URL in desktop file (kde#482889)
+  * kcms/landingpage: load theme preview image asynchronously
+  * Rework logic to know who is the first visible results view (kde#482736)
+  * Do not let ConfigOverlay cover the toolbox (kde#482218)
+  * kcms/mouse: Don't crash when no supported backend is found (kde#482048)
+  * Don't overwrite files in the model positions on drop (kde#482302)
+  * update version for new release
+
+-------------------------------------------------------------------
 Wed Mar  6 08:40:30 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.1:

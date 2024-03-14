@@ -1,7 +1,7 @@
 #
 # spec file for package plasma6-desktop
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-desktop
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-only
@@ -43,8 +43,8 @@ Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch100:       0001-Apply-branding-to-default-favorites.patch
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 # Due to KWinDBusInterface not having a cmake version config file, we need to BR kwin6-devel instead
 # BuildRequires:  cmake(KWinDBusInterface) >= %%{_plasma6_bugfix}
 # Also applies to ScreenSaverDBusInterface
@@ -109,7 +109,6 @@ BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(packagekitqt6)
 BuildRequires:  cmake(sdl2)
-BuildRequires:  pkgconfig(signon-oauth2plugin)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(ibus-1.0)
@@ -118,6 +117,7 @@ BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(scim)
+BuildRequires:  pkgconfig(signon-oauth2plugin)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(x11)
@@ -147,8 +147,8 @@ Requires:       qt6-sql-sqlite >= %{qt6_version}
 %requires_ge    plasma6-framework-components
 # Various KCMs use it
 Requires:       kinfocenter6
-Requires:       kirigami-addons6 >= 0.10.0
 Requires:       kf6-kirigami-imports >= %{kf6_version}
+Requires:       kirigami-addons6 >= 0.10.0
 Requires:       kmenuedit6
 # Needed for sensors
 Requires:       libksysguard6-imports  >= %{_plasma6_bugfix}
@@ -166,8 +166,8 @@ Requires:       plasma6-activities-imports >= %{_plasma6_bugfix}
 Requires:       signon-plugin-oauth2
 %endif
 Conflicts:      kactivities5 < 5.20.0
-Recommends:     plasma6-desktop-emojier
 Recommends:     plasma6-addons
+Recommends:     plasma6-desktop-emojier
 Recommends:     xdg-user-dirs
 Provides:       kdebase4-workspace = 5.3.0
 Obsoletes:      kdebase4-workspace < 5.3.0
@@ -180,8 +180,8 @@ Obsoletes:      kdebase4-workspace-plasma-engine-akonadi < %{version}
 Conflicts:      kio-extras5 <= 5.3.2
 Provides:       kcm-touchpad5 = %{version}
 Obsoletes:      kcm-touchpad5 < %{version}
-Provides:       plasma6-desktop-branding = %{version}
 Provides:       plasma5-desktop-branding-upstream = %{version}
+Provides:       plasma6-desktop-branding = %{version}
 Obsoletes:      plasma5-desktop-branding-upstream < %{version}
 Provides:       plasma5-desktop = %{version}
 Obsoletes:      plasma5-desktop < %{version}
@@ -250,7 +250,7 @@ rm -rv %{buildroot}%{_kf6_sharedir}/dbus-1/interfaces/
 
 %fdupes %{buildroot}%{_prefix}
 
-%ldconfig_scriptlets 
+%ldconfig_scriptlets
 
 %files
 %license COPYING*
