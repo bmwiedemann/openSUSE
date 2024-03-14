@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 19 09:15:31 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- Add python version constraints to Requires & BuildRequires
+
+-------------------------------------------------------------------
 Tue Jan  2 08:23:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.4.4:

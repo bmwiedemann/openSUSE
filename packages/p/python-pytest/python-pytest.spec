@@ -42,17 +42,18 @@ Source:         https://files.pythonhosted.org/packages/source/p/pytest/pytest-%
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools_scm >= 6}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tomli >= 1}
+BuildRequires:  %{python_module tomli >= 1 if %python-base < 3.11}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-attrs >= 19.2.0
-Requires:       python-exceptiongroup
-Requires:       python-importlib-metadata >= 0.12
+%if 0%{?python_version_nodots} < 311
+Requires:       python-exceptiongroup >= 1.0.0
+Requires:       python-tomli >= 1
+%endif
 Requires:       python-iniconfig
 Requires:       python-packaging
 Requires:       python-pluggy >= 0.12
 Requires:       python-setuptools
-Requires:       python-tomli >= 1
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts

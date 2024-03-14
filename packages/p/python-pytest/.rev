@@ -1305,4 +1305,14 @@
     Now they are treated un-iterable instead.</comment>
     <requestid>1136073</requestid>
   </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>496db6dbad972051c8e3be29853aba3d</srcmd5>
+    <version>7.4.4</version>
+    <time>1710434529</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1147534 from dancermak
+
+Add python version constraints to Requires &amp; BuildRequires</comment>
+    <requestid>1147604</requestid>
+  </revision>
 </revisionlist>
