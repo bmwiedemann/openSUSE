@@ -1,7 +1,7 @@
 #
 # spec file for package layer-shell-qt6
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021 Fabian Vogt
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,7 @@
 %define rname layer-shell-qt
 %bcond_without released
 Name:           layer-shell-qt6
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        wlr-layer-shell integration for Qt
 License:        LGPL-3.0-or-later
@@ -63,9 +63,9 @@ Summary:        wlr-layer-shell integration for Qt 6 - QtQuick support
 Requires:       layer-shell-qt6 = %{version}
 Requires:       libLayerShellQtInterface6 = %{version}
 
-%description imports 
-This package provides a QML plugin and QtQuick components for 
-layer-shell-qt6, a library for integration of Qt applications with 
+%description imports
+This package provides a QML plugin and QtQuick components for
+layer-shell-qt6, a library for integration of Qt applications with
 wlr-layer-shell.
 
 %package -n layer-shell-qt6-devel
