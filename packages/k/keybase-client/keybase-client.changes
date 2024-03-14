@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 14 11:18:06 UTC 2024 - Matthias Bach <marix@marix.org> - 6.2.8
+
+- Update to version 6.2.8
+  * Bug fixes
+- Refreshed update-image-tiff.patch as it no longer applied cleanly.
+
+-------------------------------------------------------------------
 Wed Jan  3 21:46:07 UTC 2024 - Matthias Bach <marix@marix.org> - 6.2.4
 
 - Update to version 6.2.4

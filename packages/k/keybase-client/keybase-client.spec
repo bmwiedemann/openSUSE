@@ -18,7 +18,7 @@
 
 
 Name:           keybase-client
-Version:        6.2.4
+Version:        6.2.8
 Release:        0
 Summary:        Keybase command line client
 License:        BSD-3-Clause
