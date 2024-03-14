@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Mar 13 09:10:27 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.2
+- Changes since 6.0.1:
+  * update version for new release
+  * kcms/wallpaper: check if config ui has saveConfig
+  * kcms/wallpaper: format main.qml
+  * shell: properly demarshall DBus argument for color
+  * libkmpris: always update active player index on rows inserted (kde#483027)
+  * libkmpris: work around nonstandard players (kde#482603)
+  * [applets/systemtray] Load icons with Plasma palette (kde#482645)
+  * applets/battery: hide battery percentage option when no batteries available (kde#482089)
+  * wallpapers/image: save the last position for slideshow on exit (kde#482543)
+  * PanelView: Remove redundant reading of the same config key
+  * Fix panels being set to floating by upgrades
+  * libkmpris: assert active player always matches active index
+  * libkmpris: set active player index to -1 when no player matches active player (kde#482756)
+  * libkmpris: fix container not being deleted when its identity is empty
+  * runners/services: Increase category relevance when service name starts with query
+  * libkmpris: prevent an empty icon from being used (kde#482908)
+  * appiumtests: move kcm tests to their own folder
+  * shell: read wallpaper config from plugin instead of local file (kde#481741)
+  * wallpapers/image: remove unused connection
+  * shell: Avoid reserving a screen edge if no surface role has been created yet (kde#482399)
+  * kcm/regionandlang: fix Setting LANG to C mangles preview strings (kde#482234)
+  * update version for new release
+- Redirect stdout in waitforkded.conf
+- Drop patches, now upstream:
+  * 0001-Fix-panels-being-set-to-floating-by-upgrades.patch
+
+-------------------------------------------------------------------
 Sun Mar 10 19:08:46 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to reinstate krunner shortcut migration from < 5.22:

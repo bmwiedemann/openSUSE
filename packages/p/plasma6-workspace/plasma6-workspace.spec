@@ -1,7 +1,7 @@
 #
 # spec file for package plasma6-workspace
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-workspace
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
@@ -43,8 +43,6 @@ Source2:        plasma.keyring
 Source3:        sddm.conf
 Source4:        waitforkded.conf
 # PATCH-FIX-UPSTREAM
-# https://invent.kde.org/plasma/plasma-workspace/-/merge_requests/4030
-Patch1:         0001-Fix-panels-being-set-to-floating-by-upgrades.patch
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
 Patch501:       0001-Use-qdbus6.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch
@@ -175,8 +173,8 @@ Requires:       kactivitymanagerd6
 Requires:       kde-cli-tools6 >= %{_plasma6_bugfix}
 Requires:       kf6-kded
 Requires:       kf6-kquickcharts
-Requires:       kirigami-addons6 >= 0.10.0
 Requires:       kglobalacceld6 >= %{_plasma6_bugfix}
+Requires:       kirigami-addons6 >= 0.10.0
 Requires:       kscreen6 >= %{_plasma6_bugfix}
 Requires:       kscreenlocker6 >= %{_plasma6_bugfix}
 Requires:       kwin6 >= %{_plasma6_bugfix}
@@ -282,12 +280,12 @@ Development files.
 Summary:        KDE Plasma 6 Session
 Requires:       breeze6 >= %{_plasma6_bugfix}
 Requires:       breeze6-decoration >= %{_plasma6_bugfix}
+Requires:       kf6-kwindowsystem >= %{kf6_version}
 Requires:       plasma6-desktop >= %{_plasma6_bugfix}
 Requires:       plasma6-workspace >= %{_plasma6_bugfix}
 Requires:       polkit-kde-agent-6 >= %{_plasma6_bugfix}
 Requires:       powerdevil6 >= %{_plasma6_bugfix}
 Requires:       systemsettings6 >= %{_plasma6_bugfix}
-Requires:       kf6-kwindowsystem >= %{kf6_version}
 # For KF5 kwayland (!)
 Requires:       (kwayland-integration6 if kwayland)
 Requires:       qt6-wayland
@@ -311,10 +309,10 @@ Plasma 6 session.
 
 %package -n plasma6-session-x11
 Summary:        KDE Plasma 6 Session on X11
-Requires:       xf86-input-libinput
-Requires:       xorg-x11-server
 Requires:       kwin6-x11 >= %{_plasma6_bugfix}
 Requires:       plasma6-session = %{version}
+Requires:       xf86-input-libinput
+Requires:       xorg-x11-server
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 
