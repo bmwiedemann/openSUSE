@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar  4 14:00:49 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Drop Provides for SLE 15 SP4 and openSUSE Leap 15.4 and later
+
+-------------------------------------------------------------------
+Wed Jan 31 22:45:39 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Switch to Python 3.11 build in SLE 15 SP4 and openSUSE Leap 15.4 and
+  later (jsc#PCT-371).
+- Switch to wheel build
+- Update to 0.10.0
+  * feature:``s3``: Added CRT support for S3 Express One Zone
+- From 0.9.0
+  * feature:Python: End of support for Python 3.7
+
+-------------------------------------------------------------------
 Mon Dec 11 14:57:05 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update 0.8.2

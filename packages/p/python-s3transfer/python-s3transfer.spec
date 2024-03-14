@@ -1,7 +1,7 @@
 #
 # spec file for package python-s3transfer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-s3transfer
-Version:        0.8.2
+Version:        0.10.0
 Release:        0
 Summary:        Python S3 transfer manager
 License:        Apache-2.0
@@ -27,15 +26,18 @@ Group:          Development/Languages/Python
 URL:            https://github.com/boto/s3transfer
 Source0:        https://files.pythonhosted.org/packages/source/s/s3transfer/s3transfer-%{version}.tar.gz
 BuildRequires:  %{python_module botocore >= 1.33.2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-botocore <= 2.0.0
-Requires:       python-botocore >= 1.33.2
 Requires:       python-requests
+Requires:       (python-botocore >= 1.33.2 with python-botocore <= 2.0.0)
 BuildArch:      noarch
-
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-s3transfer < %{version}
+%endif
 %python_subpackages
 
 %description
@@ -47,10 +49,10 @@ A transfer manager for Amazon Web Services S3
 rm -rf tests/integration
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,6 +63,6 @@ rm -rf tests/integration
 %license LICENSE.txt
 %doc README.rst
 %{python_sitelib}/s3transfer/
-%{python_sitelib}/s3transfer-%{version}-py*.egg-info
+%{python_sitelib}/s3transfer-%{version}*-info
 
 %changelog
