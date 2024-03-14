@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 11 03:55:41 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing importlib-metadata BuildRequires.
+
+-------------------------------------------------------------------
 Sat Dec 30 17:34:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.12.11:

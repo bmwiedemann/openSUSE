@@ -123,4 +123,12 @@
   encoding when opening description files in setup.py</comment>
     <requestid>1135777</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>7044b5c54ec620d398f6e406d1a10154</srcmd5>
+    <version>23.12.11</version>
+    <time>1710434535</time>
+    <user>anag+factory</user>
+    <comment>- Add missing importlib-metadata BuildRequires.</comment>
+    <requestid>1156814</requestid>
+  </revision>
 </revisionlist>

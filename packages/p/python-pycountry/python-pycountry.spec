@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycountry
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        23.12.11
 Release:        0
 Summary:        Databases for ISO standards 639 3166 3166-2 4217 15924
 License:        LGPL-2.1-only
-Group:          Development/Libraries/Python
 URL:            https://pypi.python.org/pypi/pycountry/
 Source:         https://pypi.io/packages/source/p/pycountry/pycountry-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
@@ -34,6 +33,7 @@ Requires:       python-lxml
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module importlib-metadata}
 # /SECTION
 %python_subpackages
 
