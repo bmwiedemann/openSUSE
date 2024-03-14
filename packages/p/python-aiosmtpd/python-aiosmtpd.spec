@@ -25,16 +25,13 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://aiosmtpd.readthedocs.io/
 Source:         https://github.com/aio-libs/aiosmtpd/archive/v%{version}.tar.gz#/aiosmtpd-%{version}.tar.gz
-Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 Requires:       python-atpublic
 Requires:       python-attrs
-%if 0%{python_version_nodots} < 38
-Requires:       python-typing_extensions
-%endif
+Requires:       (python-typing_extensions if python-base < 3.8)
 Requires:       user(nobody)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -44,10 +41,7 @@ BuildRequires:  %{python_module atpublic}
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
-# this package is used in projects which do not support boolean python_module BuildRequires yet :(
-%if 0%{?python3_version_nodots} < 37
-BuildRequires:  python3-typing_extensions
-%endif
+BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
 BuildRequires:  user(nobody)
 # /SECTION
 %python_subpackages
@@ -67,8 +61,10 @@ this reimplementation.
 This package provides such an implementation of both the SMTP and LMTP protocols.
 
 %prep
-%setup -q -n aiosmtpd-%{version}
-cp %{SOURCE1} .
+%autosetup -p1 -n aiosmtpd-%{version}
+
+# Don't bother with the code coverage while packaging
+sed -i '/--cov=/d' pytest.ini
 
 %build
 %python_build
@@ -91,7 +87,7 @@ cp %{SOURCE1} .
 
 %files %{python_files}
 %doc README.rst
-%license LICENSE-2.0.txt
+%license LICENSE
 %python_alternative %{_bindir}/aiosmtpd
 %{python_sitelib}/aiosmtpd
 %{python_sitelib}/aiosmtpd-%{version}*-info

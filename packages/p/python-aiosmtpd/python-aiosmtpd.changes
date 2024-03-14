@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 14 07:06:26 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up the SPEC file.
+- Remove LICENSE-2.0.txt, it is now included in the tarball.
+
+-------------------------------------------------------------------
 Wed Mar 13 16:32:38 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 1.4.5 (bsc#1221328, CVE-2024-27305):

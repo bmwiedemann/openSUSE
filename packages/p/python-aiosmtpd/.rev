@@ -114,4 +114,14 @@
 - remove not needed python-aiosmtpd.rpmlintrc</comment>
     <requestid>1157672</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>cf68dccc019cefcb89863fd806fe4f15</srcmd5>
+    <version>1.4.5</version>
+    <time>1710434703</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file.
+- Remove LICENSE-2.0.txt, it is now included in the tarball.
+</comment>
+    <requestid>1157868</requestid>
+  </revision>
 </revisionlist>
