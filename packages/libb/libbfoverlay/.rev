@@ -23,4 +23,12 @@
     <comment>- Add missing Require on libbfio-devel.</comment>
     <requestid>1046587</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>18f44c0718b0504658b6c489fc2f18fb</srcmd5>
+    <version>20240314</version>
+    <time>1710434721</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20240314</comment>
+    <requestid>1157895</requestid>
+  </revision>
 </revisionlist>
