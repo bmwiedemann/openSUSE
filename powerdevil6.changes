@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar 13 09:10:38 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.2
+- Changes since 6.0.1:
+  * update version for new release
+  * actions/dpms: Ignore turn-off triggers when action is disabled (kde#481308,kde#482077)
+  * actions/powerprofile: guard against empty profiles list in readProperties (kde#483216)
+  * Check if idle inhibitor is active before blanking the screen (kde#482141)
+  * Make OSD labels translatable
+  * update version for new release
+
+-------------------------------------------------------------------
 Wed Mar  6 08:40:34 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.1:
