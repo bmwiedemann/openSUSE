@@ -544,4 +544,41 @@
     <comment></comment>
     <requestid>1156455</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>a96d201b1bb924bf4ada6c95888d127a</srcmd5>
+    <version>3.37.13</version>
+    <time>1710434757</time>
+    <user>anag+factory</user>
+    <comment>- Switch build setup to agreed upon format to better accomodate SLE and
+  Factory and make it easier in the future to deal with Python interpreter
+  changes (bsc#1221103)
+- Switch to wheel build
+- Update to version 3.37.13
+  * Support for New Dev License Type in Oracle Autonomous Database
+    (on Dedicated Infrastructure)
+  * Support for new optional parameters to create Autonomous Container Database
+  * Support for Autoscaling in the Data Science Model Deployment service
+- From 3.37.12
+  * Support for server streaming events in the Generative AI Inference
+    Service when `inference-request-is-stream` is set to true
+  * Support for Whisper Models in creation of transcription job
+  * Support for Delete Job API in transcription job
+  * Support for updating host-insights
+  * Support to receive insights from resources in child compartments for
+    news reports
+  * Support to update more parameters for news reports
+  * Support to choose the day of the week the report is received for news
+    reports
+- From 3.37.11
+  * Support for retrieving logs in Container Instance Service.
+  * Support for queue source feature in Connector Hub Service.
+  * Support for asynchronous data asset export in Data Catalog Service.
+  * Support for the secret auto-generation in Vault Secret Management Service.
+  * Support for new optional parameters in key commands to enable or modify
+    automatic key rotation settings in Key Management Service.
+  * Support for tagging for following commands in Database Management Service.
+  * Support for multiple approvals (two approvals).
+  * Support for forwarding Hypervisor logs.</comment>
+    <requestid>1158003</requestid>
+  </revision>
 </revisionlist>
