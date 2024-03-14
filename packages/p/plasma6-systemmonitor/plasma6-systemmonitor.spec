@@ -1,7 +1,7 @@
 #
 # spec file for package plasma6-systemmonitor
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 Name:           plasma6-systemmonitor
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        An application for monitoring system resources
 License:        GPL-3.0-only
