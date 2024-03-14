@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 14 13:47:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add fix for org.kde.xwaylandvideobridge.desktop:
+  * 0001-Remove-duplicate-StartupNotify-entry.patch
+
+-------------------------------------------------------------------
 Mon Mar 11 16:36:56 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Build with KF 6/Plasma 6 when possible

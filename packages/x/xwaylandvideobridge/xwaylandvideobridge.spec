@@ -38,6 +38,8 @@ License:        GPL-2.0-only OR GPL-3.0-or-later
 URL:            https://www.kde.org
 # No release yet, missing kdereview
 Source:         %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM:
+Patch0:         0001-Remove-duplicate-StartupNotify-entry.patch
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF%{_version}CoreAddons) >= %{kf_version}
 BuildRequires:  cmake(KF%{_version}I18n) >= %{kf_version}
