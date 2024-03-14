@@ -543,6 +543,9 @@ export CFLAGS="%{optflags} -IVendor/"
     --with-system-ffi \
     --with-system-expat \
     --with-lto \
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+    --with-ssl-default-suites=openssl \
+%endif
 %if %{with profileopt}
     --enable-optimizations \
 %endif
