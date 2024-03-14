@@ -39,4 +39,13 @@
 - drop no-colored.patch: obsolete</comment>
     <requestid>1124101</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>60e1ead84c4529f893fe89fd99d4e300</srcmd5>
+    <version>4.6.1</version>
+    <time>1710434561</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.6.1:
+  * support pytest 8</comment>
+    <requestid>1157658</requestid>
+  </revision>
 </revisionlist>
