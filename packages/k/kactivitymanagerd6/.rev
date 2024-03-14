@@ -7,4 +7,12 @@
     <comment>Plasma 6.0.1</comment>
     <requestid>1155654</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5ecf779a11c6210915c0d70fd4241bfa</srcmd5>
+    <version>6.0.2</version>
+    <time>1710434587</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.0.2 + libksysguard5-helper upgrade fix + icon upgrade fix + gtk theme fix (forwarded request 1157674 from Vogtinator)</comment>
+    <requestid>1157686</requestid>
+  </revision>
 </revisionlist>
