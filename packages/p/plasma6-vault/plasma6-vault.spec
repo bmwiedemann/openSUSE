@@ -1,7 +1,7 @@
 #
 # spec file for package plasma6-vault
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 Name:           plasma6-vault
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        Plasma applet and services for creating encrypted vaults
 License:        GPL-2.0-or-later
@@ -68,8 +68,8 @@ Plasma Vault is a plasmoid for creating and managing encrypted vaults
 
 %package backend-encfs
 Summary:        Necessary packages for plasma6-vault to support encfs vaults
-Requires:       plasma6-vault = %{version}
 Requires:       encfs >= 1.9.1
+Requires:       plasma6-vault = %{version}
 Provides:       plasma6-vault-backend = %{version}
 Obsoletes:      plasma-vault-backend-encfs < %{version}
 BuildArch:      noarch
@@ -91,8 +91,8 @@ This package pulls in dependencies for the plasma6-vault cryfs backend.
 
 %package backend-gocryptfs
 Summary:        Necessary packages for plasma6-vault to support gocryptfs vaults
-Requires:       plasma6-vault = %{version}
 Requires:       gocryptfs >= 1.8
+Requires:       plasma6-vault = %{version}
 Provides:       plasma6-vault-backend = %{version}
 Obsoletes:      plasma-vault-backend-gocryptfs < %{version}
 BuildArch:      noarch
