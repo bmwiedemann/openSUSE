@@ -36,7 +36,7 @@ BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libcerror) >= 20240101
 BuildRequires:  pkgconfig(openssl) >= 1.0
-%{python_subpackages}
+%python_subpackages
 # Various notes: https://en.opensuse.org/libyal
 
 %description
@@ -67,7 +67,7 @@ applications that want to make use of libcaes.
 %{python_expand #
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static --enable-python PYTHON_VERSION="%{$python_bin_suffix}" LDFLAGS="-Wl,--version-script=$PWD/v.sym"
-grep '  local' config.log || exit 1
+grep ' '' local' config.log && exit 1
 %make_build
 %make_install DESTDIR="%_builddir/rt"
 %make_build clean
@@ -77,8 +77,7 @@ grep '  local' config.log || exit 1
 mv %_builddir/rt/* %buildroot/
 find "%buildroot" -name "*.la" -print -delete
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING*
