@@ -60,24 +60,6 @@ BuildArch:      i686
 
 
 
-%bcond_with clang
-
-
-
-%if %{with clang}
-%global toolchain clang
-%else
-
-# Linker selection. GCC only. Default is BFD.
-# You can try different ones if it has problems.
-
-%bcond_with gold
-
-
-%endif #with clang
-
-#Mold succeeds on ix86 but seems to produce corrupt binaries (no build-id)
-%bcond_with mold
 
 %ifnarch %ix86 %arm
 
@@ -100,10 +82,8 @@ BuildArch:      i686
 
 %if 0%{?suse_version} || 0%{?fedora} < 40
 %bcond_without system_minizip
-%define AndZlib %{nil}
 %else
 %bcond_with system_minizip
-%define AndZlib %{quote: AND Zlib}
 %endif
 
 %if 0%{?suse_version} || 0%{?fedora} >= 39
@@ -221,10 +201,10 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        28.2.6
+Version:        28.2.7
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
-License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11%{AndZlib}
+License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11%{!?with_system_minizip: AND Zlib}
 Group:          Development/Languages/NodeJS
 URL:            https://github.com/electron/electron
 Source0:        %{mod_name}-%{version}.tar.zst
@@ -372,18 +352,6 @@ Patch3230:      web_local_frame_client-incomplete-WebBackgroundResourceFetchAsse
 Patch3231:      local_frame-local_frame_client-incomplete-WebBackgroundResourceFetchAssets.patch
 Patch3232:      v8-instance-type-inl-constexpr-used-before-its-definition.patch
 
-%if %{with clang}
-BuildRequires:  clang
-BuildRequires:  lld
-BuildRequires:  llvm
-%if 0%{?suse_version} && 0%{?suse_version} < 1550
-BuildRequires:  gcc11
-BuildRequires:  libstdc++6-devel-gcc11
-%endif
-%endif
-%if %{with gold}
-BuildRequires:  binutils-gold
-%endif
 BuildRequires:  brotli
 %if %{with system_cares}
 BuildRequires:  c-ares-devel
@@ -424,16 +392,10 @@ BuildRequires:  llhttp-devel >= 8
 BuildRequires:  llhttp-devel < 8
 %endif
 %endif
-%if %{with lld}
-BuildRequires:  lld
-%endif
 %if %{with swiftshader} && %{without subzero}
 BuildRequires:  llvm-devel >= 16
 %endif
 BuildRequires:  memory-constraints
-%if %{with mold}
-BuildRequires:  mold
-%endif
 %ifarch %ix86 x86_64 %x86_64
 %if %{without system_aom} || %{without system_vpx}
 BuildRequires:  nasm
@@ -579,10 +541,6 @@ BuildRequires:  pkgconfig(libevent)
 %if %{with system_highway}
 BuildRequires:  pkgconfig(libhwy) >= 1
 %endif
-%if 0%{?fedora} >= 38
-#Work around https://bugzilla.redhat.com/show_bug.cgi?id=2148612
-BuildRequires:  pkgconfig(libmd)
-%endif
 %if %{with system_nghttp2}
 BuildRequires:  pkgconfig(libnghttp2)
 %endif
@@ -649,14 +607,12 @@ BuildRequires:  libjpeg-turbo-devel
 # requires VP9E_SET_QUANTIZER_ONE_PASS
 BuildRequires:  pkgconfig(vpx) >= 1.13~
 %endif
-%if %{without clang}
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora}
 BuildRequires:  gcc >= 13
 BuildRequires:  gcc-c++ >= 13
 %else
 BuildRequires:  gcc13-PIE
 BuildRequires:  gcc13-c++
-%endif
 %endif
 %if %{with pipewire}
 BuildRequires:  pkgconfig(libpipewire-0.3)
@@ -705,10 +661,6 @@ BuildArch:      noarch
 Development documentation for the Electron runtime.
 
 %prep
-%if %{with clang}
-clang -v
-%endif
-
 # Use stable path to source to make use of ccache
 %autosetup -n src -p1
 
@@ -825,11 +777,6 @@ ARCH_FLAGS="$ARCH_FLAGS -DIS_SERIAL_ENABLED_PLATFORM"
 ARCH_FLAGS="$(echo $ARCH_FLAGS | sed -e 's/ -fexceptions / /g')"
 %endif
 
-%if %{with clang}
-#RPM debugedit cannot handle clang's default dwarf-5
-ARCH_FLAGS="$ARCH_FLAGS -fdebug-default-version=4"
-%endif
-
 
 # for wayland
 export CXXFLAGS="${ARCH_FLAGS} -I/usr/include/wayland -I/usr/include/libxkbcommon"
@@ -861,30 +808,11 @@ export CFLAGS="$(echo ${CFLAGS} | sed -e 's/-g /-g1 /g' -e 's/-g$/-g1/g')"
 export LDFLAGS="%{?build_ldflags} -Wl,-O2 -Wl,--gc-sections "
 
 
-%if %{with clang}
-
-
-export CC=clang
-export CXX=clang++
-export AR=llvm-ar
-export NM=llvm-nm
-export RANLIB=llvm-ranlib
-
-# else with clang
-%else
-
 
 %ifarch %ix86 %arm
 #try to reduce memory
-%if %{without lld} && %{without mold}
 
-%if %{with gold}
-export LDFLAGS="${LDFLAGS} -Wl,--no-map-whole-files -Wl,--no-keep-memory -Wl,--no-keep-files-mapped"
-%else
 export LDFLAGS="${LDFLAGS} -Wl,--no-keep-memory"
-%endif
-
-%endif #without lld
 %endif #ifarch ix86 arm
 
 
@@ -902,16 +830,7 @@ export NM=gcc-nm-13
 export RANLIB=gcc-ranlib-13
 %endif
 
-# endif with clang
-%endif
 
-
-%if %{with lld}
-export LDFLAGS="${LDFLAGS} -Wl,--as-needed -fuse-ld=lld"
-%endif
-%if %{with mold}
-export LDFLAGS="${LDFLAGS} -Wl,--as-needed -fuse-ld=mold"
-%endif
 
 # do not eat all memory
 %ifarch %ix86 %arm
@@ -926,7 +845,7 @@ unset MALLOC_CHECK_
 unset MALLOC_PERTURB_
 %endif
 
-%if %{with lto} && %{without clang}
+%if %{with lto}
 %ifarch aarch64
 export LDFLAGS="$LDFLAGS -flto=auto --param ggc-min-expand=20 --param ggc-min-heapsize=32768 --param lto-max-streaming-parallelism=1 -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
 %else
@@ -1333,29 +1252,11 @@ myconf_gn+=" use_system_histogram=true"
 %if %{with system_simdutf}
 myconf_gn+=' use_system_simdutf=true'
 %endif
-%if %{with clang}
-myconf_gn+=" is_clang=true clang_base_path=\"/usr\" clang_use_chrome_plugins=false"
-myconf_gn+=" use_lld=true"
-# PGO is broken rn
-myconf_gn+=" chrome_pgo_phase=0"
-%else
 myconf_gn+=" is_clang=false"
-%if %{with gold}
-myconf_gn+=" use_gold=true"
-%else
 myconf_gn+=" use_gold=false"
-%endif
-%endif
 
 %if %{with lto}
-
-
-%if %{without clang}
 myconf_gn+=" gcc_lto=true"
-%else
-myconf_gn+=" use_thin_lto=true"
-%endif
-
 # endif with lto
 %endif
 

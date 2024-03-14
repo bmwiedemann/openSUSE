@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 13 17:00:44 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 28.2.7
+  * Fix out of memory access in V8 (CVE-2024-2173 bsc#1221105)
+  * Fixed chrome://process-internals failing to load
+
+-------------------------------------------------------------------
+Tue Mar 12 20:06:22 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Correct bogus ASCII unit separator in licence field (bsc#1221251 gh#rpm-software-management/rpm#1644)
+
+-------------------------------------------------------------------
 Fri Mar  8 05:33:05 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 28.2.6
