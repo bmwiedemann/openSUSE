@@ -1,7 +1,7 @@
 #
 # spec file for package belcard
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soname  libbelcard
 %define sover   1
 Name:           belcard
-Version:        5.2.98
+Version:        5.3.26
 Release:        0
 Summary:        C++ library to manipulate vCard standard format files
 License:        GPL-3.0-or-later
@@ -30,7 +30,7 @@ Source1:        baselibs.conf
 # PATCH-FIX-OPENSUSE belcard-fix-pkgconfig.patch sor.alexei@meowr.ru -- Install belcard.pc.
 Patch0:         belcard-fix-pkgconfig.patch
 Patch1:         set_current_version.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.22
 BuildRequires:  gcc-c++
 BuildRequires:  libudev-devel
 BuildRequires:  pkgconfig
@@ -75,8 +75,7 @@ to develop applications using the belcard library.
 
 %build
 %cmake \
-  -DENABLE_STRICT=OFF \
-  -DENABLE_STATIC=OFF
+  -DENABLE_STRICT=OFF
 %cmake_build
 
 %install
@@ -96,11 +95,13 @@ to develop applications using the belcard library.
 %files devel
 %license LICENSE.txt
 %doc CHANGELOG.md README.md
+%dir %{_datadir}/BelCard
+%dir %{_datadir}/BelCard/cmake
 %{_bindir}/%{name}*
 %{_includedir}/%{name}/
 %{_libdir}/%{soname}.so
-%{_datadir}/%{name}/
-%{_datadir}/%{name}_tester/
 %{_libdir}/pkgconfig/%{name}.pc
+%{_datadir}/%{name}-tester/
+%{_datadir}/BelCard/cmake/*cmake
 
 %changelog
