@@ -1,7 +1,7 @@
 #
 # spec file for package plymouth-theme-breeze6
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2016 Markus S., kamikazow@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -40,7 +40,7 @@ BuildRequires:  fix-version-checks-in-here
 
 %bcond_without released
 Name:           plymouth-theme-breeze6
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        Plymouth "Breeze" theme
 License:        GPL-2.0-or-later
@@ -50,8 +50,6 @@ Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{ver
 Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-fix-ecm-dep-version.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  plymouth-devel
