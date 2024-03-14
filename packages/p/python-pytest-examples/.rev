@@ -36,4 +36,14 @@
   Python 3.12.</comment>
     <requestid>1155765</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>4da23584b7b7f2da3725c5d120479d18</srcmd5>
+    <version>0.0.10</version>
+    <time>1710434545</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1156623 from ecsos
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1157048</requestid>
+  </revision>
 </revisionlist>

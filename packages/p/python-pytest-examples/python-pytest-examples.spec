@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-pytest-examples
 Version:        0.0.10
 Release:        0
