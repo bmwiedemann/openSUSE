@@ -1,7 +1,7 @@
 #
 # spec file for package ksystemstats6
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021 Fabian Vogt <fabian@ritter-vogt.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@
 %define rname ksystemstats
 %bcond_without released
 Name:           ksystemstats6
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
