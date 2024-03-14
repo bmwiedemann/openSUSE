@@ -1,7 +1,7 @@
-Index: liblinphone-5.2.88/share/CMakeLists.txt
+Index: liblinphone-5.3.4/share/CMakeLists.txt
 ===================================================================
---- liblinphone-5.2.88.orig/share/CMakeLists.txt
-+++ liblinphone-5.2.88/share/CMakeLists.txt
+--- liblinphone-5.3.4.orig/share/CMakeLists.txt
++++ liblinphone-5.3.4/share/CMakeLists.txt
 @@ -30,6 +30,15 @@ set(GRAMMAR_FILES
  	PARENT_SCOPE
  )
@@ -18,10 +18,10 @@ Index: liblinphone-5.2.88/share/CMakeLists.txt
  if(ENABLE_ASSETS)
  	set(SOUND_FILES
  		"${CMAKE_CURRENT_SOURCE_DIR}/hello16000.wav"
-Index: liblinphone-5.2.88/share/linphone.pc.in
+Index: liblinphone-5.3.4/share/linphone.pc.in
 ===================================================================
---- liblinphone-5.2.88.orig/share/linphone.pc.in
-+++ liblinphone-5.2.88/share/linphone.pc.in
+--- liblinphone-5.3.4.orig/share/linphone.pc.in
++++ liblinphone-5.3.4/share/linphone.pc.in
 @@ -3,7 +3,7 @@ exec_prefix=@exec_prefix@
  libdir=@libdir@
  includedir=@includedir@

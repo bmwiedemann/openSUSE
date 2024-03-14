@@ -1,7 +1,7 @@
-Index: liblinphone-5.2.88/cmake/FindReadline.cmake
+Index: liblinphone-5.3.4/cmake/FindReadline.cmake
 ===================================================================
 --- /dev/null
-+++ liblinphone-5.2.88/cmake/FindReadline.cmake
++++ liblinphone-5.3.4/cmake/FindReadline.cmake
 @@ -0,0 +1,58 @@
 +############################################################################
 +# FindReadline.cmake
@@ -61,35 +61,36 @@ Index: liblinphone-5.2.88/cmake/FindReadline.cmake
 +)
 +
 +mark_as_advanced(READLINE_INCLUDE_DIRS READLINE_LIBRARIES HAVE_READLINE_H HAVE_HISTORY_H)
-Index: liblinphone-5.2.88/CMakeLists.txt
+Index: liblinphone-5.3.4/CMakeLists.txt
 ===================================================================
---- liblinphone-5.2.88.orig/CMakeLists.txt
-+++ liblinphone-5.2.88/CMakeLists.txt
-@@ -81,6 +81,7 @@ option(ENABLE_ASSETS "Package sound asse
- option(ENABLE_PACKAGE_SOURCE "Create 'package_source' target for source archive making (CMake >= 3.11)" OFF)
- 
- cmake_dependent_option(ENABLE_NOTIFY "Enable libnotify support." YES "ENABLE_GTK_UI;NOT APPLE" NO)
+--- liblinphone-5.3.4.orig/CMakeLists.txt
++++ liblinphone-5.3.4/CMakeLists.txt
+@@ -77,6 +77,7 @@ option(ENABLE_SRTP "Build with the SRTP
+ cmake_dependent_option(ENABLE_ZRTP "Build with ZRTP support." YES "ENABLE_SRTP" NO)
+ cmake_dependent_option(ENABLE_GOCLEAR "Build with ZRTP GoClear message support (RFC 6189 - section 5.11)." YES "ENABLE_ZRTP" NO)
+ cmake_dependent_option(ENABLE_QRCODE "Enable QRCode support" YES "ENABLE_VIDEO" NO)
 +cmake_dependent_option(ENABLE_READLINE "Enable readline support." YES "ENABLE_CONSOLE_UI" NO)
- cmake_dependent_option(ENABLE_ASSISTANT "Turn on assistant compiling." YES "ENABLE_GTK_UI" NO)
  
- option(ENABLE_SRTP "Build with the SRTP transport support." YES)
-@@ -202,6 +203,15 @@ if(ENABLE_TUNNEL)
- 		set(ENABLE_TUNNEL OFF CACHE BOOL "Enable tunnel support." FORCE)
- 	endif()
+ 
+ set(CMAKE_CXX_STANDARD 17)
+@@ -163,6 +164,16 @@ if(ZLIB_FOUND)
+ 	set(HAVE_ZLIB 1)
  endif()
+ 
 +if(ENABLE_READLINE)
-+	find_package(Readline)
-+	if(READLINE_FOUND)
-+		set(HAVE_READLINE 1)
-+	else()
-+		message(WARNING "Could not find the readline library!")
-+		set(ENABLE_READLINE OFF CACHE BOOL "Enable readline support." FORCE)
-+	endif()
++ find_package(Readline)
++ if(READLINE_FOUND)
++   set(HAVE_READLINE 1)
++ else()
++   message(WARNING "Could not find the readline library!")
++   set(ENABLE_READLINE OFF CACHE BOOL "Enable readline support." FORCE)
++ endif()
 +endif()
- if(ENABLE_NOTIFY)
- 	find_package(Notify)
- 	if(NOTIFY_FOUND)
-@@ -369,7 +379,7 @@ else()
++
+ if(ENABLE_TUNNEL)
+ 	find_package(Tunnel 0.7.0)
+ 	if(NOT Tunnel_FOUND)
+@@ -288,7 +299,7 @@ else()
  	if (SUGGEST_OVERRIDE)
  		list(APPEND STRICT_OPTIONS_CXX "-Wsuggest-override" "-Wno-error=suggest-override" )
  	endif ()
@@ -98,13 +99,13 @@ Index: liblinphone-5.2.88/CMakeLists.txt
  	if(CMAKE_C_COMPILER_ID STREQUAL "GNU")
  		list(APPEND STRICT_OPTIONS_C "-fno-inline-small-functions")
  	endif()
-Index: liblinphone-5.2.88/config.h.cmake
+Index: liblinphone-5.3.4/config.h.cmake
 ===================================================================
---- liblinphone-5.2.88.orig/config.h.cmake
-+++ liblinphone-5.2.88/config.h.cmake
-@@ -42,6 +42,9 @@
- #cmakedefine BUILD_WIZARD
- #cmakedefine HAVE_NOTIFY4
+--- liblinphone-5.3.4.orig/config.h.cmake
++++ liblinphone-5.3.4/config.h.cmake
+@@ -54,6 +54,9 @@
+ #define SOCI_LOCAL_PLUGINS_LOCATION "${CMAKE_BINARY_DIR}/lib"
+ 
  #cmakedefine HAVE_ZLIB 1
 +#cmakedefine HAVE_READLINE
 +#cmakedefine HAVE_READLINE_H
@@ -112,12 +113,12 @@ Index: liblinphone-5.2.88/config.h.cmake
  #cmakedefine HAVE_CU_GET_SUITE 1
  #cmakedefine HAVE_CU_CURSES 1
  #cmakedefine HAVE_LIBUDEV_H 0
-Index: liblinphone-5.2.88/console/CMakeLists.txt
+Index: liblinphone-5.3.4/console/CMakeLists.txt
 ===================================================================
---- liblinphone-5.2.88.orig/console/CMakeLists.txt
-+++ liblinphone-5.2.88/console/CMakeLists.txt
-@@ -42,6 +42,10 @@ target_link_libraries(linphonec ${LINPHO
- set_target_properties(linphonec PROPERTIES LINK_FLAGS "${LINPHONE_LDFLAGS}")
+--- liblinphone-5.3.4.orig/console/CMakeLists.txt
++++ liblinphone-5.3.4/console/CMakeLists.txt
+@@ -41,6 +41,10 @@ add_executable(linphonec ${LINPHONEC_SOU
+ target_link_libraries(linphonec PRIVATE ${LINPHONE_LIBS_FOR_TOOLS} ${Mediastreamer2_TARGET} ${Ortp_TARGET} ${BCToolbox_TARGET} ${XSD_LIBRARIES})
  set_target_properties(linphonec PROPERTIES LINKER_LANGUAGE CXX)
  
 +if(READLINE_FOUND)
@@ -127,19 +128,19 @@ Index: liblinphone-5.2.88/console/CMakeLists.txt
  if(INTL_FOUND)
  	target_link_libraries(linphonec ${INTL_LIBRARIES})
  endif()
-@@ -49,6 +53,10 @@ endif()
+@@ -48,6 +52,10 @@ endif()
  if(WIN32)
  	add_executable(linphoned WIN32 ${LINPHONEC_SOURCE_FILES})
- 	target_link_libraries(linphoned ${LINPHONE_LIBS_FOR_TOOLS} bctoolbox ortp mediastreamer ${XSD_LIBRARIES})
-+	if(READLINE_FOUND)
-+		target_include_directories(linphoned PUBLIC ${READLINE_INCLUDE_DIRS})
-+		target_link_libraries(linphoned ${READLINE_LIBRARIES})
-+	endif()
+ 	target_link_libraries(linphoned PRIVATE ${LINPHONE_LIBS_FOR_TOOLS} ${Mediastreamer2_TARGET} ${Ortp_TARGET} ${BCToolbox_TARGET} ${XSD_LIBRARIES})
++ if(READLINE_FOUND)
++   target_include_directories(linphoned PUBLIC ${READLINE_INCLUDE_DIRS})
++   target_link_libraries(linphoned ${READLINE_LIBRARIES})
++ endif()
  	if(INTL_FOUND)
- 		target_link_libraries(linphoned ${INTL_LIBRARIES})
+ 		target_link_libraries(linphoned PRIVATE ${INTL_LIBRARIES})
  	endif()
-@@ -59,6 +67,11 @@ target_link_libraries(linphonecsh ${LINP
- set_target_properties(linphonecsh PROPERTIES LINK_FLAGS "${LINPHONE_LDFLAGS}")
+@@ -57,6 +65,11 @@ add_executable(linphonecsh ${LINPHONECSH
+ target_link_libraries(linphonecsh PRIVATE ${LINPHONE_LIBS_FOR_TOOLS} ${Ortp_TARGET} ${BCToolbox_TARGET})
  set_target_properties(linphonecsh PROPERTIES LINKER_LANGUAGE CXX)
  
 +if(READLINE_FOUND)
@@ -150,13 +151,13 @@ Index: liblinphone-5.2.88/console/CMakeLists.txt
  set(INSTALL_TARGETS linphonec linphonecsh)
  if(WIN32)
  	list(APPEND INSTALL_TARGETS linphoned)
-Index: liblinphone-5.2.88/daemon/CMakeLists.txt
+Index: liblinphone-5.3.4/daemon/CMakeLists.txt
 ===================================================================
---- liblinphone-5.2.88.orig/daemon/CMakeLists.txt
-+++ liblinphone-5.2.88/daemon/CMakeLists.txt
-@@ -130,6 +130,11 @@ target_link_libraries(linphone-daemon ${
- set_target_properties(linphone-daemon PROPERTIES LINK_FLAGS "${LINPHONE_LDFLAGS}")
- set_target_properties(linphone-daemon PROPERTIES LINKER_LANGUAGE CXX)
+--- liblinphone-5.3.4.orig/daemon/CMakeLists.txt
++++ liblinphone-5.3.4/daemon/CMakeLists.txt
+@@ -132,6 +132,11 @@ if(APPLE)
+ 	target_link_libraries(linphone-daemon PRIVATE "-framework AppKit")
+ endif()
  
 +if(READLINE_FOUND)
 +	target_include_directories(linphone-daemon PUBLIC ${READLINE_INCLUDE_DIRS})
@@ -164,19 +165,19 @@ Index: liblinphone-5.2.88/daemon/CMakeLists.txt
 +endif()
 +
  add_executable(linphone-daemon-pipetest ${DAEMON_PIPETEST_SOURCE_FILES})
- target_link_libraries(linphone-daemon-pipetest ${LINPHONE_LIBS_FOR_TOOLS} ortp mediastreamer)
- set_target_properties(linphone-daemon-pipetest PROPERTIES LINK_FLAGS "${LINPHONE_LDFLAGS}")
-Index: liblinphone-5.2.88/daemon/daemon.cc
+ target_link_libraries(linphone-daemon-pipetest PRIVATE ${LINPHONE_LIBS_FOR_TOOLS} ${Mediastreamer2_TARGET} ${Ortp_TARGET})
+ set_target_properties(linphone-daemon-pipetest PROPERTIES LINKER_LANGUAGE CXX)
+Index: liblinphone-5.3.4/daemon/daemon.cc
 ===================================================================
---- liblinphone-5.2.88.orig/daemon/daemon.cc
-+++ liblinphone-5.2.88/daemon/daemon.cc
+--- liblinphone-5.3.4.orig/daemon/daemon.cc
++++ liblinphone-5.3.4/daemon/daemon.cc
 @@ -32,11 +32,6 @@
- #include <functional>
  #include <limits>
+ #include <sstream>
  
 -#ifdef HAVE_READLINE
--#include <readline/readline.h>
 -#include <readline/history.h>
+-#include <readline/readline.h>
 -#endif
 -
  #ifndef _WIN32

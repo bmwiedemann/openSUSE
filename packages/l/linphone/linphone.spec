@@ -1,7 +1,7 @@
 #
 # spec file for package linphone
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %bcond_without slp
 %endif
 Name:           linphone
-Version:        5.2.98
+Version:        5.3.26
 Release:        0
 Summary:        Web Phone
 License:        AGPL-3.0-or-later
@@ -50,43 +50,34 @@ Patch3:         linphone-link-soci-sqlite3.patch
 # PATCH-FIX-OPENSUSE linphone-build-jsoncpp.patch -- use pkgconfig to find jsoncpp and link against jsoncpp, not jsoncpp_object
 Patch4:         linphone-build-jsoncpp.patch
 Patch5:         set_current_version.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.22
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libeXosip2-devel
-%if 0%{?suse_version}
 BuildRequires:  libgsm-devel
-%else
-BuildRequires:  gsm-devel
-%endif
 BuildRequires:  lime-devel >= %{version}
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  python3-pystache
 BuildRequires:  python3-six
-%if 0%{?suse_version}
 BuildRequires:  python3-xml
-%endif
 BuildRequires:  readline-devel
-%if 0%{?suse_version}
 BuildRequires:  sgmltool
-%else
-BuildRequires:  linuxdoc-tools
-%endif
 %if 0%{?suse_version} >= 1600
 BuildRequires:  liboqs-devel
 # At the time of writing (22/Dec/2023), PQCE is only available on Tumbleweed.
-BuildRequires:  postquantumcryptoengine-devel
+BuildRequires:  postquantumcryptoengine-devel >= 5.3.0~git.20230802
 %endif
+BuildRequires:  db-devel
 BuildRequires:  soci-devel
 BuildRequires:  soci-sqlite3-devel
 BuildRequires:  xsd
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(bctoolbox) >=  %{version}
-BuildRequires:  pkgconfig(belcard) >= 4.5.0
+BuildRequires:  pkgconfig(belcard) >= %{version}
 BuildRequires:  pkgconfig(belle-sip) >= %{version}
 BuildRequires:  pkgconfig(libavcodec) >= 51.0.0
 BuildRequires:  pkgconfig(libbzrtp) >= %{version}
@@ -105,24 +96,8 @@ BuildRequires:  pkgconfig(speex) >= 1.1.6
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(xerces-c)
 BuildRequires:  pkgconfig(zxing)
-%if 0%{?use_system_ldap}
-%if 0%{?suse_version}
-BuildRequires:  openldap2-devel
-%else
-BuildRequires:  openldap-devel
-%endif
-%else
-%if 0%{?suse_version}
-BuildRequires:  db-devel
-%else
-BuildRequires:  libdb-devel
-%endif
 %if %{with slp}
 BuildRequires:  openslp-devel
-%endif
-%endif
-%if 0%{?fedora}
-BuildRequires:  pkgconfig(openssl)
 %endif
 BuildRequires:  chrpath
 
@@ -223,29 +198,16 @@ with high speed connections as well as 28k modems.
 
 %prep
 %autosetup -n liblinphone-%{version} -p1
-%if 0%{?fedora}
-# patch deprecated python open mode
-sed -i "s|mode='rU'|mode='r'|" wrappers/cpp/genwrapper.py
-# patch ssl sasl - extends linphone-build-jsoncpp.patch
-sed -i "s|jsoncpp)|jsoncpp ssl sasl2)|g" src/CMakeLists.txt
-sed -i "s|bctoolbox|bctoolbox ssl sasl2|g" src/CMakeLists.txt
-sed -i "s|jsoncpp)|jsoncpp ssl sasl2)|g" tester/CMakeLists.txt
-%endif
 
 %build
-%if !0%{?use_system_ldap}
 #START build belledonne's libldap
 mkdir aux
 tar fx %{SOURCE3} -C aux
 cd aux/openldap-bc
 LDFLAGS="-Wl,-rpath,%ldaplibdir" ./configure \
-%if 0%{?static_ldap}
   --enable-static=yes \
   --enable-shared=no \
   --with-pic         \
-%else
-  --enable-static=no \
-%endif
   --enable-slapd=no  \
   --enable-wrappers=no \
   --enable-spasswd   \
@@ -269,24 +231,13 @@ cd ../..
 #END build belledonne's libldap
 #find and use belledonne's libldap
 sed -i "/OPENLDAP_INCLUDE_DIRS/,/LDAP_LIB/s@\${CMAKE_INSTALL_PREFIX}@$PWD/aux@;s@\${CMAKE_INSTALL_PREFIX}@%{ldaplibdir}@;s@include/openldap@include@" cmake/FindOpenLDAP.cmake
-%endif
+
 %cmake \
   -DPYTHON_EXECUTABLE="%{_bindir}/python3" \
   -DENABLE_CXX_WRAPPER=ON      \
-%if !0%{?use_system_ldap}
-%if 0%{?suse_version}
-  -DOPENLDAP_INCLUDE_DIRS=$PWD/../aux/include \
-%else
-  -DOPENLDAP_INCLUDE_DIRS=$PWD/aux/include \
-  -DCMAKE_INSTALL_LIBDIR=lib64 \
-%endif
-%if 0%{?static_ldap}
-  -DLDAP_LIB=%{ldaplibdir}/libldap.a \
-%else
-  -DLDAP_LIB=%{ldaplibdir}/libldap.so \
-%endif
+  -D_OpenLDAP_INCLUDE_DIRS=$PWD/../aux/include \
+  -D_OpenLDAP_LIBRARY=%{ldaplibdir}/libldap.a \
   -DCMAKE_SHARED_LINKER_FLAGS="-Wl,-rpath,%{ldaplibdir}" \
-%endif
   -DENABLE_DOC=ON              \
   -DCMAKE_BUILD_TYPE=Release   \
   -DENABLE_ROOTCA_DOWNLOAD=OFF \
@@ -304,36 +255,22 @@ sed -i "/OPENLDAP_INCLUDE_DIRS/,/LDAP_LIB/s@\${CMAKE_INSTALL_PREFIX}@$PWD/aux@;s
 %cmake_build
 
 %install
-%if !0%{?use_system_ldap}
 #START reinstall belledonne's libldap
 cd aux/openldap-bc
 make install
 cd ../..
 cp aux/openldap-bc/LICENSE LICENSE.openldap
 #END reinstall belledonne's libldap
-%endif
 %cmake_install
-%if !0%{?use_system_ldap}
-%if !0%{?static_ldap}
-#remove unnecessary files
-rm %{ldaplibdir}/*.{la,so}
-#fix rpath in openldap libs and make them executable
-find %{ldaplibdir} -type f -exec chrpath -r %{_libexecdir}/%{name} {} \; -exec chmod a+x {} \;
-#fix rpath in liblinphone
-find %{buildroot}%{_libdir} -type f -name "liblinphone*" -exec chrpath -r %{_libexecdir}/%{name} {} \;
-# Remove openldap pkgconfig files.
-rm -r %{ldaplibdir}/pkgconfig
-%else
 rm -r %{ldaplibdir}
-%endif
-%endif
+rm %{buildroot}/%{_datadir}/LibLinphone/cmake/FindOpenLDAP.cmake
+sed -i '59 a find_package(libxml2 REQUIRED)' %{buildroot}%{_datadir}/LibLinphone/cmake/LibLinphoneTargets.cmake
+sed -i '60 a find_package(SQLite3 REQUIRED)' %{buildroot}%{_datadir}/LibLinphone/cmake/LibLinphoneTargets.cmake
+
+mkdir -p %{buildroot}/%{_libdir}/liblinphone/plugins
 
 chrpath -d %{buildroot}%{_libdir}/lib%{name}.so.%{sover}* %{buildroot}%{_libdir}/lib%{name}++.so.%{sover}*
-chrpath -d %{buildroot}%{_bindir}/{linphone-daemon-pipetest,linphone-daemon,groupchat_benchmark,linphonec,linphonecsh,liblinphone_tester}
-%if !0%{?use_system_ldap} && 0%{?fedora}
-# ldaplibdir will remain in lib, disable check-buildroot for Fedora
-export QA_SKIP_BUILD_ROOT=0
-%endif
+chrpath -d %{buildroot}%{_bindir}/{linphone-daemon-pipetest,linphone-daemon,liblinphone-groupchat-benchmark,liblinphone-tester}
 
 %fdupes %{buildroot}%{_datadir}/
 
@@ -343,17 +280,12 @@ export QA_SKIP_BUILD_ROOT=0
 %postun -n lib%{name}++%{sover} -p /sbin/ldconfig
 
 %files cli
-%{_bindir}/%{name}c*
 %{_bindir}/%{name}-daemon*
 
 %files -n lib%{name}%{sover}
+%dir %{_libdir}/lib%{name}
+%dir %{_libdir}/lib%{name}/plugins
 %{_libdir}/lib%{name}.so.%{sover}*
-%if !0%{?use_system_ldap}
-%if !0%{?static_ldap}
-%dir %{_libexecdir}/%{name}
-%{_libexecdir}/%{name}/
-%endif
-%endif
 
 %files -n lib%{name}++%{sover}
 %{_libdir}/lib%{name}++.so.%{sover}*
@@ -370,14 +302,18 @@ export QA_SKIP_BUILD_ROOT=0
 
 %files -n lib%{name}-devel
 %{_includedir}/%{name}*/
-%{_bindir}/lib%{name}_tester
-%{_bindir}/groupchat_benchmark
+%{_bindir}/lib%{name}-tester
+%{_bindir}/liblinphone-groupchat-benchmark
 %{_libdir}/lib%{name}.so
 %{_libdir}/lib%{name}++.so
-%{_datadir}/liblinphone_tester/
+%{_datadir}/liblinphone-tester/
 %{_libdir}/pkgconfig/%{name}.pc
-%{_datadir}/Linphone/
-%{_datadir}/LinphoneCxx/
+%dir %{_datadir}/LibLinphone/
+%dir %{_datadir}/LibLinphone/cmake
+%{_datadir}/LibLinphone/cmake/*
+%dir %{_datadir}/LinphoneCxx/
+%dir %{_datadir}/LinphoneCxx/cmake
+%{_datadir}/LinphoneCxx/cmake/*
 %{_datadir}/doc/lib%{name}-%{version}/
 
 %changelog

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Mar  7 07:39:27 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.3.26 (no changelog).
+
+-------------------------------------------------------------------
+Mon Jan 15 09:31:29 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.3.7:
+  ADDED:
+    * Added notion of roles for conferences, so that there can be speakers and listeners.
+    * Reactions with IM conversations
+    * New video codec policy, so that hardware-accelerated codecs are prioritized in offer/answer.
+    * AV-1 codec
+    * New LinphoneAlert object used to report various QoS alerts during calls.
+    * SRTP AES GCM mode
+  CHANGED:
+    * TLS Client certificate request authentication callback removed (due to mbedtls update).
+      Application using TLS client certificate must provide it before any TLS connexion needing it.
+    * Refactoring of LinphoneAddress object implementation, leading to greater internal simplicity and performance.
+- Clean up spec file 
+
+-------------------------------------------------------------------
 Fri Dec 22 07:13:48 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add missing deps on TW.

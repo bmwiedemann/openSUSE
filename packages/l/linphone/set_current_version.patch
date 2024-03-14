@@ -1,11 +1,13 @@
---- liblinphone-5.2.75/CMakeLists.txt.orig	2023-07-12 08:53:53.544794515 +0200
-+++ liblinphone-5.2.75/CMakeLists.txt	2023-07-12 08:54:00.012832825 +0200
-@@ -30,7 +30,7 @@
-     cmake_policy(SET CMP0077 NEW)
- endif()
+Index: liblinphone-5.3.7/CMakeLists.txt
+===================================================================
+--- liblinphone-5.3.7.orig/CMakeLists.txt
++++ liblinphone-5.3.7/CMakeLists.txt
+@@ -23,7 +23,7 @@
  
--project(linphone VERSION 5.2.0 LANGUAGES C CXX)
-+project(linphone VERSION 5.2.98 LANGUAGES C CXX)
+ cmake_minimum_required(VERSION 3.22)
+ 
+-project(LibLinphone VERSION 5.3.0 LANGUAGES C CXX)
++project(LibLinphone VERSION 5.3.26 LANGUAGES C CXX)
  
  
  set(LINPHONE_MAJOR_VERSION ${PROJECT_VERSION_MAJOR})
