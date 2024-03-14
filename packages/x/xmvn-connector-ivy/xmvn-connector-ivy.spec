@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package xmvn-connector-ivy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global parent xmvn
 %global subname connector-ivy
 Name:           %{parent}-%{subname}
-Version:        4.0.0~20220623.8da91ea
+Version:        4.0.0
 Release:        0
 Summary:        XMvn Connector for Apache Ivy
 License:        Apache-2.0
