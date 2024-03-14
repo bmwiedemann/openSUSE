@@ -1925,6 +1925,7 @@ BuildFlags: onlybuild:espeak-ng
 BuildFlags: onlybuild:expat
 BuildFlags: onlybuild:expect
 BuildFlags: onlybuild:extra-cmake-modules
+BuildFlags: onlybuild:kf6-extra-cmake-modules
 BuildFlags: onlybuild:fcitx
 BuildFlags: onlybuild:fdk-aac-free
 BuildFlags: onlybuild:fdupes
@@ -2099,6 +2100,7 @@ BuildFlags: onlybuild:kdoctools
 BuildFlags: onlybuild:keyutils
 BuildFlags: onlybuild:kernel-source
 BuildFlags: onlybuild:kf5-filesystem
+BuildFlags: onlybuild:kf6-filesystem
 BuildFlags: onlybuild:kguiaddons
 BuildFlags: onlybuild:ki18n
 BuildFlags: onlybuild:kiconthemes
