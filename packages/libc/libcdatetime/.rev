@@ -82,4 +82,12 @@
     <comment>- Update to release 20240104</comment>
     <requestid>1136949</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>f9cb47c672ac0f9a36316ee0c66de4f0</srcmd5>
+    <version>20240104</version>
+    <time>1710434723</time>
+    <user>anag+factory</user>
+    <comment>- Specfile modernization</comment>
+    <requestid>1157903</requestid>
+  </revision>
 </revisionlist>

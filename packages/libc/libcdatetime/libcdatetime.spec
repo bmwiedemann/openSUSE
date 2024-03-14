@@ -30,6 +30,7 @@ Source9:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcerror) >= 20240101
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 Library for C date and time functions.
@@ -69,8 +70,7 @@ grep '  local' config.log && exit 1
 %make_install
 find %buildroot -type f -name "*.la" -delete -print
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING*
