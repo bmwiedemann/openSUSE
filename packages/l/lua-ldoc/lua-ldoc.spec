@@ -1,7 +1,7 @@
 #
 # spec file for package lua-ldoc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %define flavor @BUILD_FLAVOR@
 %define mod_name ldoc
-%define rname LDoc
 Version:        1.4.6
 Release:        0
 Summary:        LuaDoc-compatible documentation generation system
 License:        MIT
 Group:          Development/Libraries/Other
 URL:            https://github.com/stevedonovan/LDoc
-Source:         https://github.com/stevedonovan/LDoc/archive/%{version}.tar.gz#/%{rname}-%{version}.tar.gz
+Source:         https://github.com/stevedonovan/LDoc/archive/%{version}.tar.gz#/%{mod_name}-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
 BuildRequires:  lua-macros
 Requires:       %{flavor}
@@ -45,7 +44,7 @@ to render comments, as well as integrated readme documentation
 and pretty-printed example files.
 
 %prep
-%setup -q -n %{rname}-%{version}
+%setup -q -n %{mod_name}-%{version}
 
 %build
 /bin/true

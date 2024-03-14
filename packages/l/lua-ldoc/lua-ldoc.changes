@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 14 10:17:56 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Resync sources as upstream regenerated tarball
+  * osc service runall download_files
+
+-------------------------------------------------------------------
 Wed Nov 23 10:18:51 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix missing dependency on lua-macros (boo#1205612)
