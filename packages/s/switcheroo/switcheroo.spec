@@ -1,7 +1,7 @@
 #
 # spec file for package switcheroo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %define appid   io.gitlab.adhami3310.Converter
-%define rurl    57b00375abd58ce5c8dc8de4bad48924
+%define rurl    af839f154a1ddec33034274c6cb4b19d
 Name:           switcheroo
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        Convert and manipulate images
 License:        GPL-3.0-only
@@ -56,11 +56,9 @@ built on top of the most advanced image editing libraries, ImageMagick.
 %license COPYING
 %doc README*
 %{_bindir}/%{name}
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}/resources.gresource
+%{_datadir}/%{name}
 %{_datadir}/applications/%{appid}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{appid}*svg
-%{_datadir}/icons/hicolor/scalable/actions/*svg
 %{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
 %{_datadir}/metainfo/%{appid}.metainfo.xml
 
