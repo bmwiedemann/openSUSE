@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 14 08:58:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.0:
+  * Update python classifier in setup.cfg
+  * Update master for stable/2023.2
+
+-------------------------------------------------------------------
 Thu Jan  4 22:44:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - switch to singlespec to get multipe flavors
