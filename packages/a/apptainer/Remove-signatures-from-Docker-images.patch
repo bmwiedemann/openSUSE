@@ -1,0 +1,58 @@
+From: Egbert Eich <eich@suse.com>
+Date: Wed Mar 13 17:41:43 2024 +0100
+Subject: Remove signatures from Docker images
+Patch-mainline: Not yet
+Git-repo: https://github.com/apptainer/apptainer
+Git-commit: eb17f79efd7c2fc1a5bacbca3743b71f0a659355
+References: bsc#1221364
+
+OCI image layouts do not support the storing of signatures.
+Therefore, singed containers will cause apptainer to error
+on ``apptainer build ..``
+with the message:
+ "Pushing signatures for OCI images is not supported" when
+attempting to pull signed containers from a Docker registry.
+To fix this, set an option to remove signatures.
+
+This fixes issue #2094.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ internal/pkg/build/oci/oci.go                    | 5 +++--
+ internal/pkg/build/sources/conveyorPacker_oci.go | 5 +++--
+ 3 files changed, 7 insertions(+), 4 deletions(-)
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index edcddd3a3..d0c609053 100644
+diff --git a/internal/pkg/build/oci/oci.go b/internal/pkg/build/oci/oci.go
+index 68e6f5989..46665917a 100644
+--- a/internal/pkg/build/oci/oci.go
++++ b/internal/pkg/build/oci/oci.go
+@@ -125,8 +125,9 @@ func (t *ImageReference) newImageSource(ctx context.Context, sys *types.SystemCo
+ 
+ 	// First we are fetching into the cache
+ 	_, err = copy.Image(ctx, policyCtx, t.ImageReference, t.source, &copy.Options{
+-		ReportWriter: w,
+-		SourceCtx:    sys,
++		ReportWriter:     w,
++		SourceCtx:        sys,
++		RemoveSignatures: true,
+ 	})
+ 	if err != nil {
+ 		return nil, err
+diff --git a/internal/pkg/build/sources/conveyorPacker_oci.go b/internal/pkg/build/sources/conveyorPacker_oci.go
+index f4107da63..14a545a53 100644
+--- a/internal/pkg/build/sources/conveyorPacker_oci.go
++++ b/internal/pkg/build/sources/conveyorPacker_oci.go
+@@ -301,8 +301,9 @@ func (cp *OCIConveyorPacker) Pack(ctx context.Context) (*sytypes.Bundle, error)
+ func (cp *OCIConveyorPacker) fetch(ctx context.Context) error {
+ 	// cp.srcRef contains the cache source reference
+ 	_, err := copy.Image(ctx, cp.policyCtx, cp.tmpfsRef, cp.srcRef, &copy.Options{
+-		ReportWriter: io.Discard,
+-		SourceCtx:    cp.sysCtx,
++		ReportWriter:     io.Discard,
++		SourceCtx:        cp.sysCtx,
++		RemoveSignatures: true,
+ 	})
+ 	return err
+ }

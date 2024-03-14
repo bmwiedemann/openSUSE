@@ -293,4 +293,12 @@
     <comment>- Package .def templates separately for different SPs. (forwarded request 1143317 from eeich)</comment>
     <requestid>1143604</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>9c2262a53120da5a87a4358599f34d05</srcmd5>
+    <version>1.2.5</version>
+    <time>1710434704</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1157874</requestid>
+  </revision>
 </revisionlist>
