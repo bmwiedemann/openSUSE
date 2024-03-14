@@ -454,6 +454,14 @@
     <ignore name="libqt5-qttranslations"/>
     <!-- OBS-IgnorePackage: speech-dispatcher -->
     <ignore name="speech-dispatcher"/>
+    <!-- OBS-IgnorePackage: kcm_sddm -->
+    <ignore name="kcm_sddm"/>
+    <!-- OBS-IgnorePackage: xwaylandvideobridge -->
+    <ignore name="xwaylandvideobridge"/>
+    <!-- OBS-IgnorePackage: khelpcenter -->
+    <ignore name="khelpcenter"/>
+    <!-- OBS-IgnorePackage: kaccounts-providers -->
+    <ignore name="kaccounts-providers"/>
     <package name="NetworkManager"/>
     <!-- OBS-IgnorePackage: libreoffice -->
     <ignore name="libreoffice"/>
