@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Mar 13 09:09:27 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.2
+- Changes since 6.0.1:
+  * fix ecm dep version
+  * update version for new release
+  * bump version ahead of next release
+  * respin 6.0.1 tar
+  * Don't require a non-existent ECM version
+  * update version for new release
+- Drop patches, now upstream:
+  * 0001-Don-t-require-a-non-existent-ECM-version.patch
+
+-------------------------------------------------------------------
 Wed Mar  6 08:40:25 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.1:

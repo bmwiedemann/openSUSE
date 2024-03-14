@@ -1,7 +1,7 @@
 #
 # spec file for package breeze6-gtk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 
 %bcond_without released
 Name:           breeze6-gtk
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        GTK+ theme matching KDE's Breeze
 License:        LGPL-2.1-only
@@ -41,12 +41,10 @@ Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{ver
 Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Don-t-require-a-non-existent-ECM-version.patch
-BuildRequires:  breeze6-style >= %{_plasma6_bugfix}
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  fdupes
 BuildRequires:  %{python_module pycairo}
+BuildRequires:  breeze6-style >= %{_plasma6_bugfix}
+BuildRequires:  fdupes
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  sassc
 BuildRequires:  cmake(Breeze) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(Qt6CoreTools)
