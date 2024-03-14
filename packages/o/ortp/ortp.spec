@@ -1,7 +1,7 @@
 #
 # spec file for package ortp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2014 Mariusz Fik <fisiu@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %define sover   15
 
 Name:           ortp
-Version:        5.2.98
+Version:        5.3.26
 Release:        0
 Summary:        Real-time Transport Protocol Stack
 License:        AGPL-3.0-or-later
@@ -33,7 +33,7 @@ Source99:       baselibs.conf
 Patch0:         deps.diff
 Patch1:         set_current_version.patch
 BuildRequires:  chrpath
-BuildRequires:  cmake >= 3.0
+BuildRequires:  cmake >= 3.22
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  pkgconfig
@@ -82,23 +82,27 @@ mv -T %{buildroot}%{_datadir}/doc/%{name}-%{version} %{buildroot}%{_docdir}/%{na
 # for some reason, pkgconfig file contains wrong libdir
 sed -i "s,-L/usr/lib,-L%{_libdir}," %{buildroot}/%{_libdir}/pkgconfig/%{name}.pc
 
-chrpath -d %{buildroot}%{_libdir}/%{soname}.so.%{sover}* %{buildroot}%{_bindir}/ortp_tester
+chrpath -d %{buildroot}%{_libdir}/%{soname}.so.%{sover}* %{buildroot}%{_bindir}/ortp-tester
 
 %post -n %{soname}%{sover} -p /sbin/ldconfig
 %postun -n %{soname}%{sover} -p /sbin/ldconfig
 
 %files
 %doc %{_docdir}/%{name}/
-%{_bindir}/ortp_tester
+%{_bindir}/ortp-tester
 
 %files -n %{soname}%{sover}
 %{_libdir}/%{soname}.so.%{sover}*
 
 %files devel
-%dir %{_libdir}/cmake/ortp
 %{_includedir}/%{name}/
 %{_libdir}/%{soname}.so
 %{_libdir}/pkgconfig/%{name}.pc
-%{_libdir}/cmake/ortp/*
+%dir %{_datadir}/Ortp
+%dir %{_datadir}/Ortp/cmake
+%{_datadir}/Ortp/cmake/*.cmake
+%dir %{_datadir}/ortp-tester
+%dir %{_datadir}/ortp-tester/raw
+%{_datadir}/ortp-tester/raw/h265-iframe
 
 %changelog
