@@ -1,7 +1,7 @@
 #
-# spec file for package plasma6-framework
+# spec file for package libplasma6
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libplasma6
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        Plasma library and runtime components based upon KF6 and Qt6
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -99,11 +99,11 @@ This package contains the core libraries needed by the Plasma framework.
 
 %package components
 Summary:        Plasma QML components
+Requires:       %{name}-desktoptheme
 Requires:       kf6-kdeclarative-imports >= %{kf6_version}
 Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       plasma6-framework = %{version}
 Requires:       qt6-declarative-imports >= %{qt6_version}
-Requires:       %{name}-desktoptheme
 Provides:       plasma6-framework = %{version}
 Obsoletes:      plasma6-framework < %{version}
 # Only in KUF before 6.0
@@ -128,9 +128,9 @@ Desktop themes usable by both plasma 5 and plasma 6.
 
 %package devel
 Summary:        Plasma library and runtime components
+Requires:       libPlasma6 = %{version}
 Requires:       plasma6-framework >= %{version}
 Requires:       plasma6-framework-components = %{version}
-Requires:       libPlasma6 = %{version}
 Requires:       cmake(KF6Package) >= %{kf6_version}
 Requires:       cmake(KF6WindowSystem) >= %{kf6_version}
 Requires:       cmake(Qt6Gui) >= %{qt6_version}
@@ -144,15 +144,15 @@ Obsoletes:      plasma6-framework-devel < %{version}
 Plasma library and runtime components based upon KF6 and Qt6
 
 %package -n libPlasma6-lang
-Summary:		Translations for package libPlasma6
-Requires:		libPlasma6 = %{version}
-Provides:		libPlasma6-lang-all = %{version} 
-BuildArch:		noarch 
+Summary:        Translations for package libPlasma6
+Requires:       libPlasma6 = %{version}
+Provides:       libPlasma6-lang-all = %{version}
+BuildArch:      noarch
 # Only in KUF before 6.0
 Provides:       plasma6-framework-lang = %{version}
 Obsoletes:      plasma6-framework-lang < %{version}
 
-%description -n libPlasma6-lang 
+%description -n libPlasma6-lang
 Provides translations for the "libPlasma6" package.
 
 %prep
