@@ -1,8 +1,10 @@
---- mediastreamer2-5.2.6/CMakeLists.txt.orig	2023-01-04 13:43:30.797983393 +0100
-+++ mediastreamer2-5.2.6/CMakeLists.txt	2023-01-04 13:44:42.302354270 +0100
-@@ -136,6 +136,8 @@
- # * DISABLE_BC_PACKAGE_SEARCH: skip find_package() for every BC package (bctoolbox, ortp, etc.)
- # * DISABLE_SRTP_SEARCH: skip find_package() for SRTP.
+Index: mediastreamer2-5.3.7/CMakeLists.txt
+===================================================================
+--- mediastreamer2-5.3.7.orig/CMakeLists.txt
++++ mediastreamer2-5.3.7/CMakeLists.txt
+@@ -125,6 +125,8 @@ option(ENABLE_JPEG "Enable JPEG support"
+ cmake_dependent_option(ENABLE_QRCODE "Enable QRCode support" YES "ENABLE_VIDEO" NO)
+ cmake_dependent_option(ENABLE_AV1 "Build mediastreamer2 with AV1 support." YES "ENABLE_VIDEO" NO)
  
 +configure_file(${CMAKE_CURRENT_SOURCE_DIR}/mediastreamer.pc.in ${CMAKE_CURRENT_BINARY_DIR}/mediastreamer.pc)
 +install(FILES ${CMAKE_CURRENT_BINARY_DIR}/mediastreamer.pc DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")

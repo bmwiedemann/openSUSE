@@ -1,7 +1,7 @@
 #
 # spec file for package mediastreamer2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,8 @@
 #
 
 
-%define sobase  libmediastreamer
-%define sover   11
-
 Name:           mediastreamer2
-Version:        5.2.98
+Version:        5.3.26
 Release:        0
 Summary:        Audio/Video real-time streaming
 License:        AGPL-3.0-or-later
@@ -34,12 +31,12 @@ Patch3:         set_current_version.patch
 %if 0%{?suse_version} >= 1600
 BuildRequires:  liboqs-devel
 # At the time of writing (22/Dec/2023), PQCE is only available on Tumbleweed.
-BuildRequires:  postquantumcryptoengine-devel
+BuildRequires:  postquantumcryptoengine-devel >= 5.3.0~git.20230802
 %endif
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  bcmatroska2-devel >= 0.23
 BuildRequires:  broadvoice16-devel
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.22
 BuildRequires:  doxygen
 BuildRequires:  gawk
 BuildRequires:  gcc-c++
@@ -88,15 +85,6 @@ Mediastreamer2 is a library to make audio and video real-time
 streaming and processing. It is written in pure C and based upon the
 oRTP library.
 
-%package -n %{sobase}%{sover}
-Summary:        Audio/video real-time streaming library, base part
-Group:          System/Libraries
-
-%description -n %{sobase}%{sover}
-Mediastreamer2 is a library to make audio and video real-time
-streaming and processing. It is written in pure C and based upon the
-oRTP library.
-
 %package doc
 Summary:        Documentation for the mediastreamer2 library
 Group:          Documentation/HTML
@@ -113,7 +101,6 @@ This package contains documentation files
 Summary:        Headers and libraries for the mediastreamer2 library
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
-Requires:       %{sobase}%{sover} = %{version}
 Requires:       bcmatroska2-devel
 
 %description devel
@@ -143,34 +130,29 @@ export CXXFLAGS="$CFLAGS"
     -DENABLE_QT_GL=ON \
 %endif
 %endif
-    -DENABLE_STATIC=NO \
+    -DBUILD_SHARED_LIBS=ON \
     -DENABLE_STRICT=NO
 %cmake_build
 
 %install
 %cmake_install
 
+mkdir -p %{buildroot}/%{_libdir}/mediastreamer/plugins
 mkdir -p %{buildroot}%{_docdir}/%{name}/
 mv -T %{buildroot}%{_datadir}/doc/%{name}-%{version}/ \
   %{buildroot}%{_docdir}/%{name}/
 
-%post -n %{sobase}%{sover} -p /sbin/ldconfig
-%postun -n %{sobase}%{sover} -p /sbin/ldconfig
-
 %files
 %license LICENSE.txt
-%{_bindir}/mediastream
-%{_bindir}/mkvstream
-%if 0%{?suse_version} >= 1600
-%ifarch x86_64
+%{_bindir}/mediastreamer2-mediastream
+%{_bindir}/mediastreamer2-mkvstream
 %dir %{_libdir}/mediastreamer
 %dir %{_libdir}/mediastreamer/plugins
+%if 0%{?suse_version} >= 1600
+%ifarch x86_64
 %{_libdir}/mediastreamer/plugins/libmsqogl.so
 %endif
 %endif
-
-%files -n %{sobase}%{sover}
-%{_libdir}/%{sobase}.so.%{sover}*
 
 %files doc
 %doc README.md
@@ -200,9 +182,9 @@ mv -T %{buildroot}%{_datadir}/doc/%{name}-%{version}/ \
 %{_includedir}/OpenGL/LICENSE
 %{_includedir}/OpenGL/README.md
 %{_includedir}/OpenGL/angle_windowsstore.h
-%{_bindir}/mediastreamer2_tester
-%{_libdir}/libmediastreamer.so
-%{_datadir}/mediastreamer2_tester/
+%{_bindir}/mediastreamer2-tester
+%{_libdir}/libmediastreamer2.so
+%{_datadir}/mediastreamer2-tester/
 %{_datadir}/Mediastreamer2/
 %{_libdir}/pkgconfig/mediastreamer.pc
 
