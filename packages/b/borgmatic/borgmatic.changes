@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Mar 13 13:27:02 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.8.9:
+  * Add custom dump/restore command options for MySQL and MariaDB.
+  * Add an "access_token" option to the ntfy monitoring hook for
+    authenticating without username/password.
+  * When the "--json" flag is given, suppress console escape codes
+    so as not to interfere with JSON output.
+  * Fix "--override" values containing deprecated section headers not
+    actually overriding configuration options under deprecated section headers.
+  * Add support for the NO_COLOR environment variable.
+    See the documentation for more information:
+    https://torsion.org/borgmatic/docs/how-to/set-up-backups/#colored-output
+  * Add log sending for the Apprise logging hook, enabled by default.
+    See the documentation for more information:
+    https://torsion.org/borgmatic/docs/how-to/monitor-your-backups/#apprise-hook
+  * Document a potentially breaking shell quoting edge case within error hooks:
+    https://torsion.org/borgmatic/docs/how-to/monitor-your-backups/#error-hooks
+  * When running the "rcreate" action and the repository already exists
+    but with a different encryption mode than requested, error.
+  * Switch from Drone to Gitea Actions for continuous integration.
+  * Rename scripts/run-end-to-end-dev-tests to scripts/run-end-to-end-tests
+    and use it in both dev and CI for better dev-CI parity.
+  * Clarify documentation about restoring a database:
+    borgmatic does not create the database upon restore. 
+
+-------------------------------------------------------------------
 Wed Feb 14 07:20:22 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Add borgmatic.rpmlintrc
