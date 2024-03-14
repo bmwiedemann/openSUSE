@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 11 17:11:43 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip problematic multprocessing test for ALP, bsc#1221034
+
+-------------------------------------------------------------------
 Sat Sep 30 09:49:17 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Move to PEP517

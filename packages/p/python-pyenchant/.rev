@@ -181,4 +181,13 @@
     <comment></comment>
     <requestid>1114536</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>b539418e829bcf981cd4754178315ea4</srcmd5>
+    <version>3.2.2</version>
+    <time>1710434543</time>
+    <user>anag+factory</user>
+    <comment>- Skip problematic multprocessing test for ALP, bsc#1221034
+</comment>
+    <requestid>1157016</requestid>
+  </revision>
 </revisionlist>
