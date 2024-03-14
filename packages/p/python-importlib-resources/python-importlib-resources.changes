@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 12 06:05:56 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Explicitly BuildRequires zipp, it is now used by the testsuite, and
+  was pulled in anyway.
+
+-------------------------------------------------------------------
 Mon Nov 27 19:08:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.1:

@@ -156,4 +156,13 @@ It does NOT conflict with python38 standard library.</comment>
     (implicitly or explicitly) the TraversableResources.files</comment>
     <requestid>1129224</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>2b79d76bacb8c387a349189586bfb1fe</srcmd5>
+    <version>6.1.1</version>
+    <time>1710434549</time>
+    <user>anag+factory</user>
+    <comment>- Explicitly BuildRequires zipp, it is now used by the testsuite, and
+  was pulled in anyway.</comment>
+    <requestid>1157096</requestid>
+  </revision>
 </revisionlist>

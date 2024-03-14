@@ -1,7 +1,7 @@
 #
 # spec file for package python-importlib-resources
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,8 +31,7 @@ BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module wheel}
-# Breaking the depcycle; not absolutely needed as ZipReader is not executed in tests.
-# BuildRequires:  %%{python_module zipp >= 3.1.0 if %%python-base < 3.10}
+BuildRequires:  %{python_module zipp >= 3.1.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Provides:       python-importlib_resources = %{version}
