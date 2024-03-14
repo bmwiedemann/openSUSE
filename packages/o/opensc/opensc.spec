@@ -16,6 +16,7 @@
 #
 
 
+%define sover 11
 %define completionsdir %(pkg-config --variable completionsdir bash-completion)
 Name:           opensc
 Version:        0.25.0
@@ -39,6 +40,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(bash-completion)
+BuildRequires:  pkgconfig(libeac)  >= 0.9
 BuildRequires:  pkgconfig(libpcsclite) >= 1.8.22
 BuildRequires:  pkgconfig(openssl) >= 1.0.1
 Requires:       pcsc-lite
@@ -89,8 +91,7 @@ Bash completion script for %{name}.
 rm %{buildroot}%{_libdir}/libopensc.so
 install -D -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/pkcs11/modules/opensc.module
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license COPYING
@@ -98,12 +99,23 @@ install -D -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/pkcs11/modules/opensc.mo
 %doc %{_docdir}/%{name}/tools.html
 %doc %{_docdir}/%{name}/files.html
 %doc %{_docdir}/%{name}/opensc.conf
+#
+%config(noreplace) %{_sysconfdir}/eac/cvc/DESCHSMCVCA00001
+%config(noreplace) %{_sysconfdir}/eac/cvc/DESRCACC100001
+#
 %{_bindir}/*
 %{_datadir}/applications/*.desktop
 %{_datadir}/opensc
 # Note: .la and .so must be in the main package, required by ltdl:
 %{_libdir}/*.la
-%{_libdir}/*.so*
+%{_libdir}/libsmm-local.so
+%{_libdir}/onepin-opensc-pkcs11.so
+%{_libdir}/opensc-pkcs11.so
+%{_libdir}/pkcs11-spy.so
+# This is a private library. There is no reason to split it to libopensc* package.
+%{_libdir}/libsmm-local.so.%{sover}*
+%{_libdir}/libopensc.so.%{sover}*
+#
 %dir %{_libdir}/pkcs11
 %{_libdir}/pkcs11/*.so
 %{_libdir}/pkgconfig/opensc-pkcs11.pc
@@ -111,8 +123,6 @@ install -D -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/pkcs11/modules/opensc.mo
 %config %{_sysconfdir}/opensc.conf
 %dir %{_sysconfdir}/pkcs11
 %config %{_sysconfdir}/pkcs11/modules/
-# This is a private library. There is no reason to split it to libopensc* package.
-%{_libdir}/libopensc.so.*
 
 %files bash-completion
 %{completionsdir}/*
