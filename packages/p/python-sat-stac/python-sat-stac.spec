@@ -1,7 +1,7 @@
 #
 # spec file for package python-sat-stac
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,10 @@
 #
 
 
+%{?sle15_python_module_pythons}
+# from imp import load_source
+%global skip_python312 1
 %define packagename sat-stac
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sat-stac
 Version:        0.4.1
 Release:        0
@@ -34,7 +35,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil >= 2.7.5
 Requires:       python-requests >= 2.19.1
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

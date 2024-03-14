@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>1008863</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a7e2b971a0c587ab40960e037e42c4ff</srcmd5>
+    <version>0.4.1</version>
+    <time>1710434734</time>
+    <user>anag+factory</user>
+    <comment>- skip building for python312
+
+  * Saved ItemCollections now adhere to STAC single-file-stac spec
+- Initial package release.</comment>
+    <requestid>1157925</requestid>
+  </revision>
 </revisionlist>
