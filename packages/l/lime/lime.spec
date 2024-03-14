@@ -1,7 +1,7 @@
 #
 # spec file for package lime
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soname  liblime
 %define sover   0
 Name:           lime
-Version:        5.2.98
+Version:        5.3.26
 Release:        0
 Summary:        Instant Message End-to-End Encryption Library
 License:        GPL-3.0-or-later
@@ -28,17 +28,15 @@ URL:            https://linphone.org/technical-corner/lime/
 Source:         https://gitlab.linphone.org/BC/public/lime/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Patch0:         add-cstdint.patch
 Patch1:         set_current_version.patch
-BuildRequires:  cmake
+BuildRequires:  chrpath
+BuildRequires:  cmake >= 3.22
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  soci-devel
 BuildRequires:  soci-sqlite3-devel
-%if 0%{?fedora}
-BuildRequires:  boost-devel
-%endif
-BuildRequires:  chrpath
 BuildRequires:  pkgconfig(bctoolbox) >= %{version}
 BuildRequires:  pkgconfig(belle-sip) >= %{version}
+BuildRequires:  pkgconfig(belr) >= %{version}
 
 %description
 LIME is an encryption library for one-to-one and group instant
@@ -95,10 +93,6 @@ which will use lime.
 %build
 %cmake \
   -DENABLE_STRICT=OFF     \
-  -DENABLE_STATIC=OFF     \
-%if 0%{?fedora}
-   -DCMAKE_INSTALL_LIBDIR=lib64 \
-%endif
   -DENABLE_C_INTERFACE=ON
 %cmake_build
 
@@ -121,7 +115,9 @@ chrpath -d %{buildroot}%{_bindir}/%{name}* %{buildroot}%{_libdir}/%{soname}.so.%
 %{_bindir}/%{name}*
 %{_includedir}/%{name}/
 %{_libdir}/%{soname}.so
-%{_datadir}/%{name}/
+%dir %{_datadir}/Lime/
+%dir %{_datadir}/Lime/cmake/
+%{_datadir}/Lime/cmake/*
 %{_datadir}/%{name}_tester/
 
 %changelog
