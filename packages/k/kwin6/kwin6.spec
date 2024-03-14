@@ -1,7 +1,7 @@
 #
 # spec file for package kwin6
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kwin6
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -135,7 +135,7 @@ Requires:       qt6-multimedia-imports >= %{qt6_version}
 # /SECTION
 # For post and verifyscript
 Requires(post): permissions
-Requires(verify): permissions
+Requires(verify):permissions
 # For displaying full monitor vendor names
 Recommends:     hwdata
 # xorg-x11-server-wayland is required by plasma6-session-wayland, but not kwin6 itself
@@ -149,17 +149,17 @@ Conflicts:      plasma5-addons < 6.0
 Conflicts:      plasma5-addons-lang < 6.0
 # Needed to show dialogs
 Requires:       kdialog
+Provides:       windowmanager
 Provides:       qt6qmlimport(org.kde.kwin)
 Provides:       qt6qmlimport(org.kde.kwin.3) = 0
-Provides:       windowmanager
 
 %description
 KWin is Plasma window manager.
 
 %package x11
 Summary:        KDE Window Manager for X11
-Requires:       xorg-x11-server
 Requires:       kwin6 = %{version}
+Requires:       xorg-x11-server
 
 %description x11
 KWin is Plasma window manager.
@@ -174,8 +174,8 @@ This package provides the kwin library.
 
 %package devel
 Summary:        KDE Window Manager - development files
-Requires:       libkwin6 = %{version}
 Requires:       kdecoration6-devel >= %{_plasma6_bugfix}
+Requires:       libkwin6 = %{version}
 Requires:       pkgconfig(epoxy)
 Provides:       kwin5-devel = %{version}
 Obsoletes:      kwin5-devel < %{version}

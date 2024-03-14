@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Mar 13 09:09:50 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.2
+- Changes since 6.0.1:
+  * plugins/screencast: fix the cursor being offset after changing the scale
+  * xkb: fix testing if on keypad
+  * wayland: Only send artificial mouse up events for xwayland drags
+  * wayland: Only partially revert send pointer leave on drag
+  * Properly intersect the shape with clipRect
+  * core/colorspace: fix ColorDescription comparisons (kde#482809)
+  * utils/xcbutils: Don't call toXNative with unsigned integer (kde#482687)
+  * backends/drm: handle dumb buffer target correctly (kde#482859)
+  * Port IdleDetector to QBasicTimer
+  * Add timeout assert in IdleDetector
+  * xdgshellwindow: Always update window position and size along all axes when fully miximizing window (kde#482086)
+  * Fix sending window to all desktops (kde#482670)
+  * backends/drm: also set legacy gamma after VT switches
+  * backends/drm: don't set gamma with legacy unless really necessary
+  * backends/drm: ignore ctm support on legacy (kde#482143)
+  * Rename Workspace::updateClientArea as Workspace::rearrange
+  * wayland: Fix windows shrinking when output layout changes
+  * x11window: Skip strict geometry checks in isFullScreenable()
+  * xwayland: Use correct key for key release events
+  * xwayland: Send to xwayland even when no window is focussed (kde#478705)
+  * update version for new release
+
+-------------------------------------------------------------------
 Wed Mar  6 08:40:28 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.1:
