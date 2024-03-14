@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Mar 14 03:13:54 UTC 2024 - rrahl0@proton.me
+
+- update to 1.62.0:
+  * IPv6 support detection in a container environment is improved
+  * New: Web interface now uses ACL grants to manage access on tagged devices
+  * Tailscale SSH connections now disable unnecessary hostname canonicalization
+  * tailscale bugreport command for generating diagnostic logs now contain ethtool information
+  * Mullvad's family-friendly server is added to the list of well known DNS over HTTPS (DoH) servers
+  * DNS over HTTP requests now contain a timeout
+  * TCP forwarding attempts in userspace mode now have a per-client limit
+  * Endpoints with link-local IPv6 addresses is preferred over private addresses
+  * WireGuard logs are less verbose
+  * Go min. version 1.22.1
+  * DERP server region no longer changes if connectivity to the new DERP region is degraded
+
+- update to 1.60.1:
+  * Exposing port 8080 to other devices on your tailnet works as expected
+
+-------------------------------------------------------------------
 Tue Feb 20 22:10:41 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Add disable-auto-update.patch to prevent auto updates and instead

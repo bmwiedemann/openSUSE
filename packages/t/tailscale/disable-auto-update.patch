@@ -1,8 +1,7 @@
 diff --git a/clientupdate/clientupdate.go b/clientupdate/clientupdate.go
-index 1c01fc68..8d456f3b 100644
---- a/clientupdate/clientupdate.go
-+++ b/clientupdate/clientupdate.go
-@@ -201,6 +201,10 @@ func (up *Updater) getUpdateFunction() (fn updateFunction, canAutoUpdate bool) {
+--- tailscale/clientupdate/clientupdate.go	2024-03-14 04:13:53.421047482 +0100
++++ tailscale-patched/clientupdate/clientupdate.go	2024-03-14 04:28:58.518529194 +0100
+@@ -205,6 +205,10 @@
  			// The distro.Debian switch case above should catch most apt-based
  			// systems, but add this fallback just in case.
  			return up.updateDebLike, true
@@ -13,7 +12,7 @@ index 1c01fc68..8d456f3b 100644
  		case haveExecutable("dnf"):
  			return up.updateFedoraLike("dnf"), true
  		case haveExecutable("yum"):
-@@ -522,6 +526,12 @@ func (up *Updater) updateArchLike() error {
+@@ -526,6 +530,12 @@
  you can use "pacman --sync --refresh --sysupgrade" or "pacman -Syu" to upgrade the system, including Tailscale.`)
  }
  
@@ -23,6 +22,6 @@ index 1c01fc68..8d456f3b 100644
 +	return errors.New(`Use Zypper or transactional-update (on applicable systems) to update Tailscale on openSUSE or SUSE Linux Enterprise installations.`)
 +}
 +
- const yumRepoConfigFile = "/etc/yum.repos.d/tailscale.repo"
- 
- // updateFedoraLike updates tailscale on any distros in the Fedora family,
+ func (up *Updater) updateNixos() error {
+ 	// NixOS package updates are managed on a system level and not individually.
+ 	// Direct users to update their nix channel or nixpkgs flake input to
