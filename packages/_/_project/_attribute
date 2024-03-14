@@ -4,29 +4,29 @@
   <attribute namespace="OBS" name="ApprovedRequestSource"/>
   <attribute namespace="OSRT" name="IgnoredIssues">
     <value>last_seen:
-  boo#0: '20240311'
+  boo#0: '20240313'
   boo#1172073: '20240205'
-  boo#1207390: '20240311'
-  boo#1207940: '20240311'
+  boo#1207390: '20240313'
+  boo#1207940: '20240313'
   boo#1209053: '20240129'
   boo#1209728: '20240115'
-  boo#1216660: '20240311'
-  boo#1217029: '20240311'
+  boo#1216660: '20240313'
+  boo#1217029: '20240313'
   boo#1217683: '20240309'
-  boo#1218131: '20240310'
+  boo#1218131: '20240313'
   boo#1218492: '20240124'
   boo#1218565: '20240107'
   boo#1218847: '20240126'
   boo#1218954: '20240119'
-  boo#1219132: '20240311'
+  boo#1219132: '20240313'
   boo#1219135: '20240124'
   boo#1219139: '20240129'
   boo#1219188: '20240128'
   boo#1219242: '20240205'
   boo#1219284: '20240222'
-  boo#1219384: '20240311'
+  boo#1219384: '20240313'
   boo#1219401: '20240216'
-  boo#1219481: '20240311'
+  boo#1219481: '20240313'
   boo#1219529: '20240204'
   boo#1219530: '20240205'
   boo#1219531: '20240205'
@@ -36,11 +36,13 @@
   boo#1219602: '20240205'
   boo#1219904: '20240213'
   boo#1220000: '20240301'
-  boo#1221110: '20240311'
-  boo#1221206: '20240311'
-  boo#1221350: '20240311'
+  boo#1221110: '20240313'
+  boo#1221206: '20240313'
+  boo#1221350: '20240313'
   boo#1221353: '20240311'
-  boo#1221354: '20240311'
+  boo#1221354: '20240313'
+  boo#1221367: '20240313'
+  boo#1221427: '20240313'
   gh#os-autoinst/os-autoinst-distri-opensuse#18471: '20240116'
   gh#os-autoinst/os-autoinst-distri-opensuse#18688: '20240218'
   poo#105271: '20240306'
@@ -48,18 +50,18 @@
   poo#132191: '20240116'
   poo#133691: '20240111'
   poo#134078: '20240128'
-  poo#137423: '20240310'
-  poo#138743: '20240311'
+  poo#137423: '20240313'
+  poo#138743: '20240313'
   poo#152320: '20240226'
   poo#152551: '20240116'
   poo#152793: '20240109'
   poo#152829: '20240112'
-  poo#153105: '20240221'
+  poo#153105: '20240313'
   poo#153502: '20240116'
   poo#153526: '20240116'
   poo#153895: '20240118'
   poo#154153: '20240128'
-  poo#154465: '20240311'
+  poo#154465: '20240313'
   poo#154471: '20240130'
   poo#154693: '20240211'
   poo#154714: '20240214'
@@ -71,8 +73,8 @@
   poo#156127: '20240226'
   poo#156223: '20240311'
   poo#156295: '20240311'
-  poo#156955: '20240311'
-  poo#157174: '20240311'
+  poo#156955: '20240313'
+  poo#157174: '20240313'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -123,7 +125,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20240313</value>
+    <value>20240314</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -530,10 +532,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20240313'
 published: '20240311'
 publishing: '20240311'
-testing: '20240311'
+testing: '20240313'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
