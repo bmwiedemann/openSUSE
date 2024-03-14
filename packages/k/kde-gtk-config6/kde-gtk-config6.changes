@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 13 09:09:35 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.2
+- Changes since 6.0.1:
+  * update version for new release
+- Add patch to fix initial gtk theme settings (boo#1221354, kde#482763):
+  * 0001-gtkconfig.upd-Set-Version-6.patch
+
+-------------------------------------------------------------------
 Sat Mar  9 17:55:43 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Also obsolete kde-gtk-config5-lang
