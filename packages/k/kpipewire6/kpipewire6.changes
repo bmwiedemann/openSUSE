@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar 13 09:09:42 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.2
+- Changes since 6.0.1:
+  * fix version
+  * update version for new release
+  * bump version ahead of new release
+  * cmake: Add missing " to unbreak the build
+- Drop patches, now upstream:
+  * 0001-cmake-Add-missing-to-unbreak-the-build.patch
+
+-------------------------------------------------------------------
 Wed Mar  6 08:40:27 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.1:
