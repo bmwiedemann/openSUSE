@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 14 08:09:32 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Remove the optional ksysguard dependency. It's incompatible
+  with Plasma 6
+
+-------------------------------------------------------------------
 Fri Feb 23 13:59:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.0

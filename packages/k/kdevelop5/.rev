@@ -564,4 +564,12 @@
     <comment>KDE release gear 24.02.0</comment>
     <requestid>1150916</requestid>
   </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>4adb86a947076cc2da91018d9e5e46bc</srcmd5>
+    <version>24.02.0</version>
+    <time>1710434711</time>
+    <user>anag+factory</user>
+    <comment>Remove the ksysguard integration</comment>
+    <requestid>1157882</requestid>
+  </revision>
 </revisionlist>
