@@ -206,7 +206,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        14.0.1+git8957
+Version:        14.0.1+git9355
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -1890,6 +1890,10 @@ Provides:       libgccjit%{libgccjit_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
 Conflicts:      %selfconflict libgccjit%{libgccjit_sover}
+# At runtime the JIT needs to be able to invoke the assembler and
+# linker and find startfiles and libgcc.  The built-in driver knows
+# the compilers version install directory only so we require the
+# respective compiler libgccjit was built from.
 Requires:       gcc14
 
 %description -n libgccjit%{libgccjit_sover}%{libgccjit_suffix}
@@ -1907,7 +1911,7 @@ Provides:       libgccjit%{libgccjit_sover}-devel = %{version}-%{release}
 # Only one gccjit package can be installed at the same time since
 # header files conflict
 Conflicts:      %selfconflict libgccjit%{libgccjit_sover}-devel
-Requires:       libgccjit%{libgccjit_sover}%{libgccjit_suffix}
+Requires:       libgccjit%{libgccjit_sover} >= %{version}-%{release}
 
 %description -n libgccjit%{libgccjit_sover}-devel%{libdevel_suffix}
 Package contains header files and documentation for GCC JIT front-end.

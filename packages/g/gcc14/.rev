@@ -13,4 +13,17 @@
 %product_libs_gcc_ver_libgdruntime4 13</comment>
     <requestid>1146399</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fe391a0ba091b8a761ba25c1d4b5a88d</srcmd5>
+    <version>14.0.1+git9355</version>
+    <time>1710434576</time>
+    <user>anag+factory</user>
+    <comment>- Revert libgccjit dependency change.  [boo#1220724]
+
+- Update to trunk head, b209d905f5ce1fa9d76ce634fd54245ff3, git9355 
+
+- Fix libgccjit-devel dependency, a newer shared library is OK.
+- Fix libgccjit dependency, the corresponding compiler isn't required.</comment>
+    <requestid>1157436</requestid>
+  </revision>
 </revisionlist>

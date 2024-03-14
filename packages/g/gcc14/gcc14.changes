@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Mar 13 08:17:35 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Revert libgccjit dependency change.  [boo#1220724]
+
+-------------------------------------------------------------------
+Thu Mar  7 10:08:08 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Update to trunk head, b209d905f5ce1fa9d76ce634fd54245ff3, git9355 
+
+-------------------------------------------------------------------
+Tue Mar  5 14:35:38 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Fix libgccjit-devel dependency, a newer shared library is OK.
+- Fix libgccjit dependency, the corresponding compiler isn't required.
+
+-------------------------------------------------------------------
 Tue Feb 13 08:04:07 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Update to trunk head, 4a1cd5560b9b545eb848eb1d1e06d345fb, git8957 
