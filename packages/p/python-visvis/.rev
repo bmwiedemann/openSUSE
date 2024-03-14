@@ -54,4 +54,12 @@
   module.</comment>
     <requestid>1157396</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>3828ba07dcc39156f275a2714c7628ab</srcmd5>
+    <version>1.14.0</version>
+    <time>1710434667</time>
+    <user>anag+factory</user>
+    <comment>- Replace use-importlib.patch with one that has been submitted upstream.</comment>
+    <requestid>1157771</requestid>
+  </revision>
 </revisionlist>

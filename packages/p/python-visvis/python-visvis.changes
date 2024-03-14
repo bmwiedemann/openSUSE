@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 13 23:37:50 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Replace use-importlib.patch with one that has been submitted upstream. 
+
+-------------------------------------------------------------------
 Wed Mar 13 03:29:06 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to autosetup and pyproject macros. 

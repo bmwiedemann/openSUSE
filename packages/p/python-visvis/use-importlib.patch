@@ -1,28 +1,50 @@
-Index: visvis-1.14.0/backends/__init__.py
-===================================================================
---- visvis-1.14.0.orig/backends/__init__.py
-+++ visvis-1.14.0/backends/__init__.py
-@@ -50,7 +50,8 @@ The backend is chosen/selected as follow
+commit 75a2ccb272c654493db7551ac1e16db484e4ce70
+Author: Steve Kowalik <steven@wedontsleep.org>
+Date:   Thu Mar 14 10:28:18 2024 +1100
+
+    Limit use of imp module, prefer importlib
+    
+    Python 3.12 removes the imp module entirely, which causes most backend
+    imports to fail. Switch to using importlib machinery to load modules,
+    and retain Python 2.7 compatibility, since the importlib implementation
+    should work for Pyton 3.5+.
+
+diff --git a/backends/__init__.py b/backends/__init__.py
+index 5911b2a..bcbf04c 100644
+--- a/backends/__init__.py
++++ b/backends/__init__.py
+@@ -50,10 +50,24 @@ The backend is chosen/selected as follows:
  
  import os
  import sys
 -import imp
-+import importlib.util
-+import importlib.machinery
  import visvis
  from visvis.core.misc import isFrozen, getExceptionInstance
  
-@@ -161,7 +162,12 @@ def _loadBackend(name):
++
++try:
++    import importlib.util
++    import importlib.machinery
++    def load_source(modname, filename):
++        loader = importlib.machinery.SourceFileLoader(modname, filename)
++        spec = importlib.util.spec_from_file_location(
++            modname, filename, loader=loader)
++        module = importlib.util.module_from_spec(spec)
++        loader.exec_module(module)
++        return module
++except ImportError:
++    from imp import load_source
++
++
+ # The order in which to try loading a backend (foo is a dummy backend)
+ backendOrder = ['glfw', 'pyside6', 'pyqt5', 'pyside2', 'pyside', 'pyqt4', 'wx', 'gtk', 'fltk']
+ backendMap = {'glfw': 'glfw',
+@@ -161,7 +175,7 @@ def _loadBackend(name):
          if modFileName.endswith('.pyc'):
              module = __import__(modNameFull, fromlist=[modName])
          else:
 -            module = imp.load_source(modNameFull, modFileName)
-+            loader = importlib.machinery.SourceFileLoader(
-+                modNameFull, modFileName)
-+            spec = importlib.util.spec_from_file_location(
-+                modNameFull, modFileName, loader=loader)
-+            module = importlib.util.module_from_spec(spec)
-+            loader.exec_module(module)
++            module = load_source(modNameFull, modFileName)
          globals()[modName] = module
      except Exception:
          if not isFrozen():

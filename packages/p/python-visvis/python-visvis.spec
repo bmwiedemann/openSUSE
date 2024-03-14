@@ -24,6 +24,7 @@ Summary:        An object oriented approach to visualization of 1D to 4D data
 License:        BSD-3-Clause
 URL:            https://github.com/almarklein/visvis
 Source:         https://files.pythonhosted.org/packages/source/v/visvis/visvis-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#almarklein/visvis#128
 Patch0:         use-importlib.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
