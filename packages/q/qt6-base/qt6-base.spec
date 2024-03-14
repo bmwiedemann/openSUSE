@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package qt6-base
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -581,6 +581,7 @@ This package contains common files used for building Qt documentation.
 
 
 ### Static libraries ###
+
 %package -n qt6-exampleicons-devel-static
 Summary:        Qt ExampleIcons module
 # TODO
@@ -639,6 +640,7 @@ any ABI or API guarantees.
 
 
 ### Plugins ###
+
 %package -n qt6-networkinformation-glib
 Summary:        Network information for QNetworkInformation using GNetworkMonitor
 

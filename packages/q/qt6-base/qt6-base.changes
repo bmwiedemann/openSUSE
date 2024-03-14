@@ -3,6 +3,8 @@ Wed Feb 14 16:53:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.6.2
   * https://www.qt.io/blog/qt-6.6.2-released
+  * Fix for potential buffer overflow when reading KTX
+    images (boo#1219996, CVE-2024-25580)
 - Drop patches, merged upstream:
   * 0001-QMimeDatabase-handle-buggy-type-definitions.patch
   * 0001-QMimeDatabase-collect-glob-patterns-from.patch
