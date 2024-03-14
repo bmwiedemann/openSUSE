@@ -130,4 +130,18 @@
     startup. Useful for dynamic DNS situations.</comment>
     <requestid>1138229</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f7d8f30aca3773a4b48a1cbc0f64fe58</srcmd5>
+    <version>2.1.0</version>
+    <time>1710434700</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.1.0:
+  * Support for the Landlock LSM. After initial setup,
+    sslh gives up all local file access rights.
+  * Reintroduced --ssl as an alias to --tls.
+  * Introduce autoconf to adapt to landlock presence.
+  * Close connexion without error message if remote
+    client forcefully closes connexion, for Windows.</comment>
+    <requestid>1157812</requestid>
+  </revision>
 </revisionlist>

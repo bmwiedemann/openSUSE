@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 14 06:07:14 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.1.0:
+  * Support for the Landlock LSM. After initial setup,
+    sslh gives up all local file access rights.
+  * Reintroduced --ssl as an alias to --tls.
+  * Introduce autoconf to adapt to landlock presence.
+  * Close connexion without error message if remote
+    client forcefully closes connexion, for Windows.
+
+-------------------------------------------------------------------
 Fri Jan 12 07:58:09 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.0.1:

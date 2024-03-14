@@ -18,7 +18,7 @@
 
 
 Name:           sslh
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        SSL/SSH multiplexer
 License:        GPL-2.0-or-later
@@ -28,6 +28,7 @@ Source:         https://github.com/yrutschle/sslh/archive/refs/tags/v%{version}.
 Source1:        %{name}.init
 Source2:        %{name}.sysconfig
 Source3:        %{name}.conf.d
+BuildRequires:  autoconf
 BuildRequires:  libcap-devel
 BuildRequires:  libconfig-devel
 BuildRequires:  libev-devel
@@ -48,8 +49,9 @@ corporate firewall) while still serving HTTPS on that port.
 %autosetup -n %{name}-%{version} -p1
 
 %build
+%configure
 export CFLAGS="%{optflags}"
-%make_build PREFIX=%{_prefix} DESTDIR=%{buildroot}
+%make_build PREFIX=%{_prefix}
 
 %install
 make PREFIX=%{_prefix} DESTDIR=%{buildroot} install
