@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 14 10:08:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- skip python39 (nothing provides python39-branca)
+
+-------------------------------------------------------------------
 Wed Mar  6 12:42:38 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Also skip testing ipympl and holoviews on python 3.9

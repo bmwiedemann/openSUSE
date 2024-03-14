@@ -24,6 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%global skip_python39 1
 Name:           python-panel%{psuffix}
 Version:        1.3.8
 Release:        0

@@ -244,4 +244,12 @@
     <comment></comment>
     <requestid>1155566</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>1578d8dea34afcde7a07e676156f6de0</srcmd5>
+    <version>1.3.8</version>
+    <time>1710434739</time>
+    <user>anag+factory</user>
+    <comment>- skip python39 (nothing provides python39-branca)</comment>
+    <requestid>1157928</requestid>
+  </revision>
 </revisionlist>
