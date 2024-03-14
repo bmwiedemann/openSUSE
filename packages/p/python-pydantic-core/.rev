@@ -7,4 +7,14 @@
     <comment>- Initial release of 2.16.3</comment>
     <requestid>1155419</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4f3ec5c3a38d2502840071a0d8447ce2</srcmd5>
+    <version>2.16.3</version>
+    <time>1710434548</time>
+    <user>anag+factory</user>
+    <comment>- Sprinkle in multibuild to avoid build cycles. 
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1157065</requestid>
+  </revision>
 </revisionlist>
