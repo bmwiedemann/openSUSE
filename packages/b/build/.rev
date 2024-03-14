@@ -1741,4 +1741,21 @@ Changes:
 - documentation updates</comment>
     <requestid>1148764</requestid>
   </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>5b41efb69dcef15862245b51bc307769</srcmd5>
+    <version>20240313</version>
+    <time>1710434569</time>
+    <user>anag+factory</user>
+    <comment>- Add a hack for systemd 255.3, creating an empty /etc/os-release
+  if missing after preinstall.
+- docker: Fix HEAD request in dummyhttpserver
+- pbuild: Make docker-nobasepackages expand flag the default
+- rpm: Support a couple of builtin rpm macros
+- rpm: Implement argument expansion for define/with/bcond...
+- Fix multiline macro handling
+- Accept -N parameter of %autosetup
+- documentation updates
+- various code cleanup and speedup work.</comment>
+    <requestid>1157511</requestid>
+  </revision>
 </revisionlist>
