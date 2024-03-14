@@ -334,4 +334,23 @@
     <comment>certbot version bump</comment>
     <requestid>1133012</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>d6998e5c108958fcc8694952a3faaaee</srcmd5>
+    <version>2.9.0</version>
+    <time>1710434731</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.9.0:
+  * sync with the main certbot package
+
+- Add %{?sle15_python_module_pythons}
+
+  * The nginx authenticator now configures all matching HTTP and HTTPS vhosts for the HTTP-01
+  * The docs extras for the certbot-apache and certbot-nginx
+  * Follow updated Mozilla recommendations for Nginx ssl_protocols,
+  * Stop disabling TLS session tickets in Nginx as it caused TLS
+  * Match Nginx parser update in allowing variable names to start
+  * Fix ranking of vhosts in Nginx so that all port-matching
+- Split the module from the main certboot package</comment>
+    <requestid>1157920</requestid>
+  </revision>
 </revisionlist>

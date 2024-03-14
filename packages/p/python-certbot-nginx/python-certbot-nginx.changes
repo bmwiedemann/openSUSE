@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 14 09:55:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.0:
+  * sync with the main certbot package
+
+-------------------------------------------------------------------
+Wed Feb  7 12:43:04 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Dec  7 10:47:14 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - update to version 2.8.0
@@ -124,7 +135,7 @@ Mon Mar  8 08:42:04 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - update to version 1.13.0
   * Support for Python 2 has been removed.
-  * The nginx authenticator now configures all matching HTTP and HTTPS vhosts for the HTTP-01 
+  * The nginx authenticator now configures all matching HTTP and HTTPS vhosts for the HTTP-01
     challenge. It is now compatible with external HTTPS redirection by a CDN or load balancer.
 
 -------------------------------------------------------------------
@@ -197,7 +208,7 @@ Tue Jan 21 09:43:23 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 Fri Jan  3 13:25:59 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 1.0.0 (boo#1160066)
-  * The docs extras for the certbot-apache and certbot-nginx 
+  * The docs extras for the certbot-apache and certbot-nginx
     packages have been removed.
 
 -------------------------------------------------------------------
@@ -227,9 +238,9 @@ Wed Sep 11 12:31:27 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 Mon Aug 26 10:43:03 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 0.37.2
-  * Follow updated Mozilla recommendations for Nginx ssl_protocols, 
+  * Follow updated Mozilla recommendations for Nginx ssl_protocols,
     ssl_ciphers, and ssl_prefer_server_ciphers
-  * Stop disabling TLS session tickets in Nginx as it caused TLS 
+  * Stop disabling TLS session tickets in Nginx as it caused TLS
     failures on some systems.
 
 -------------------------------------------------------------------
@@ -273,9 +284,9 @@ Fri Nov 16 17:53:06 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 0.28.0
   * Stop preferring TLS-SNI.
-  * Match Nginx parser update in allowing variable names to start 
+  * Match Nginx parser update in allowing variable names to start
     with ${.
-  * Fix ranking of vhosts in Nginx so that all port-matching 
+  * Fix ranking of vhosts in Nginx so that all port-matching
     vhosts come first.
 
 -------------------------------------------------------------------
@@ -292,4 +303,4 @@ Mon Sep  3 12:35:14 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
 -------------------------------------------------------------------
 Wed Aug 29 10:47:07 UTC 2018 - mcalabkova@suse.com
 
-- Split the module from the main certboot package 
+- Split the module from the main certboot package
