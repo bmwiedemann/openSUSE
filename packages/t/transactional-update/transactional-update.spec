@@ -170,6 +170,9 @@ autoreconf -fiv
 sed -i 's/^UPDATE_METHOD=.*/UPDATE_METHOD=up/' etc/transactional-update.conf
 %endif
 
+# Temporarily disable soft-reboot until it's working reliably
+sed -i 's/^REBOOT_ALLOW_SOFT_REBOOT=.*/REBOOT_ALLOW_SOFT_REBOOT=false/' etc/tukit.conf
+
 %install
 %make_install
 
@@ -276,7 +279,6 @@ done
 %dir %{_distconfdir}
 %endif
 %{_distconfdir}/transactional-update.conf
-%{_distconfdir}/tukit.conf
 %{_mandir}/man5/transactional-update.conf.5*
 %{_mandir}/man8/transactional-update.8*
 %{_mandir}/man8/transactional-update.timer.8*
@@ -289,6 +291,7 @@ done
 %{_sbindir}/tukit
 %{_sbindir}/create_dirs_from_rpmdb
 %{_unitdir}/create-dirs-from-rpmdb.service
+%{_distconfdir}/tukit.conf
 %{_mandir}/man5/tukit.conf.5.gz
 
 %files -n dracut-%{name}
