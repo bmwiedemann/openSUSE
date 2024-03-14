@@ -132,4 +132,16 @@
 - Switch to pyproject macros.</comment>
     <requestid>1141089</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>82d19d9c4fa5eaa6f84f4afa4ff5fedb</srcmd5>
+    <version>2.3.1</version>
+    <time>1710434729</time>
+    <user>anag+factory</user>
+    <comment>- skip python39 due to ipdb removal on 3.9
+
+- Refresh remove-mock.patch from upstream to also support Python 3.12.
+  * Reformats repository using 'black'
+- Use python_alternative for the jirafs script.</comment>
+    <requestid>1157918</requestid>
+  </revision>
 </revisionlist>

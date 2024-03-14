@@ -16,7 +16,9 @@
 #
 
 
-%define         skip_python2 1
+%{?sle15_python_module_pythons}
+# missing ipdb
+%global skip_python39 1
 Name:           python-jirafs
 Version:        2.3.1
 Release:        0
