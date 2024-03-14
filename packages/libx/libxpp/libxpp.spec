@@ -16,7 +16,7 @@
 #
 
 
-%define commit 4881bea
+%define commit 84fb050
 
 Name:           libxpp
 Version:        0.2

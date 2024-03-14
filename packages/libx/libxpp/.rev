@@ -41,4 +41,13 @@
 - rollback the &quot;-debugsource&quot; fix that didn't work as expected</comment>
     <requestid>1155513</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>273dca7d846757f64776e90f62d611a4</srcmd5>
+    <version>0.2</version>
+    <time>1710434727</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.2.0+git84fb050:
+  * keyboard: add helper function to turn strings into KeySymID and InputModifier</comment>
+    <requestid>1157907</requestid>
+  </revision>
 </revisionlist>

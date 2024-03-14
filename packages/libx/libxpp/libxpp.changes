@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 14 08:57:13 UTC 2024 - matthias.gerstner@suse.com
+
+- Update to version 0.2.0+git84fb050:
+  * keyboard: add helper function to turn strings into KeySymID and InputModifier
+
+-------------------------------------------------------------------
 Wed Mar 06 09:40:15 UTC 2024 - matthias.gerstner@suse.com
 
 - Update to version 0.2.0+git4881bea:
