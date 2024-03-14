@@ -17,7 +17,7 @@
 
 
 Name:           python-suntime
-Version:        1.3.0
+Version:        1.3.2
 Release:        0
 Summary:        Python sunset and sunrise time calculation
 License:        LGPL-3.0-only
