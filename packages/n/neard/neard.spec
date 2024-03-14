@@ -1,7 +1,7 @@
 #
 # spec file for package neard
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2010-2012 B1 Systems GmbH, Vohburg, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -41,7 +41,9 @@ BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(libnl-genl-3.0)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(systemd)
-%{?systemd_requires}
+# -test subpackage was dropped (boo#1219314)
+Obsoletes:      neard-test <= %{version}
+%{?systemd_ordering}
 
 %description
 NFC support for Linux.
@@ -68,7 +70,7 @@ Files needed to test applications for the NFC stack.
 autoreconf -fiv
 %configure \
 		--enable-tools \
-		--enable-test
+		--disable-test
 
 %make_build all
 
@@ -112,9 +114,5 @@ perl -i -lpe 's{^}{#!/usr/bin/python\n} if $.==1' \
 %{_includedir}/near/
 %{_includedir}/version.h
 %{_libdir}/pkgconfig/neard.pc
-
-%files test
-%dir %{_libdir}/neard/
-%{_libdir}/neard/test/
 
 %changelog

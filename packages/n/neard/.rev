@@ -105,4 +105,15 @@
     <comment></comment>
     <requestid>1058865</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>1581da9a293bce0c04377df37dfd6e83</srcmd5>
+    <version>0.18</version>
+    <time>1710434765</time>
+    <user>anag+factory</user>
+    <comment>- Drop python2-based test/example script (neard-test package):
+  + Pass --disable test to configure
+  + Drop neard-test subpackage (obsoleted by main package)
+  + Addresses boo#1219314. (forwarded request 1146778 from dimstar)</comment>
+    <requestid>1158024</requestid>
+  </revision>
 </revisionlist>
