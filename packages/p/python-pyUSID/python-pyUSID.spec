@@ -16,6 +16,8 @@
 #
 
 
+%{?sle15_python_module_pythons}
+%global skip_python39 1
 Name:           python-pyUSID
 Version:        0.0.12
 Release:        0

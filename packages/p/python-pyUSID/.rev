@@ -100,4 +100,18 @@
     <comment></comment>
     <requestid>1141846</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>732719a7f9c91d6312a3a70ab9e99c1c</srcmd5>
+    <version>0.0.12</version>
+    <time>1710434741</time>
+    <user>anag+factory</user>
+    <comment>- skip python3.9 (numeric stack dependencies are gone)
+
+  * Moved USID agnostic functions in pyUSID.io.reg_ref.py,
+    pyUSID.viz.plot_utils.py, pyUSID.viz.jupyter_utils.py,
+  * Enabling multiple instances of Process class to be executed in
+    parallel via each MPI rank - ensemble / embarrassingly parallel
+- Remove fix_tests_dir_in_site_package.patch</comment>
+    <requestid>1157930</requestid>
+  </revision>
 </revisionlist>
