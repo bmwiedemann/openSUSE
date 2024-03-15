@@ -1,7 +1,7 @@
 #
-# spec file for package gtk4-branding%{?dash}%{branding_name}
+# spec file for package gtk4-branding
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define flavor @BUILD_FLAVOR@
+%define flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == ""
 %define branding_name %{nil}
-ExclusiveArch:  %{nil}
+ExclusiveArch:  do-not-build
 %else
 %define branding_name %{flavor}
 %define dash -
@@ -30,7 +30,7 @@ ExclusiveArch:  %{nil}
 %endif
 %if (0%{?build_SLE} && 0%{?is_opensuse}) || (0%{?build_openSUSE} && ! 0%{?is_opensuse})
 # Don't build SLE branding on openSUSE and vice-versa
-ExclusiveArch:  %{nil}
+ExclusiveArch:  do-not-build
 %endif
 %endif
 %define gtk4_real_package %(rpm -q --qf '%%{name}' --whatprovides gtk4)

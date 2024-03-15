@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 14 11:23:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Ensure flavor has a value, at least %nil.
+- ExclusiveArch: %nil is invalid: give it a value (do-not-build).
+
+-------------------------------------------------------------------
 Tue May 18 18:20:59 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Remove gtk-fallback-icon-theme from gtk4-branding-settings.ini:
