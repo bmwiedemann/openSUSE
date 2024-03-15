@@ -265,6 +265,7 @@ sed -i -e '1 s#/usr/bin/env.*python#/usr/bin/python3#' %{buildroot}%{_bindir}/pr
 %suse_update_desktop_file pyprompter Utility DesktopUtility
 
 %fdupes %{buildroot}/%{_prefix}
+%python3_fix_shebang
 
 %else
 
