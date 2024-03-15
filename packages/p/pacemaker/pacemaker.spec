@@ -1,7 +1,7 @@
 #
 # spec file for package pacemaker
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -129,7 +129,7 @@
 %define with_regression_tests   0
 
 Name:           pacemaker
-Version:        2.1.7+20231219.0f7f88312
+Version:        2.1.7+20240304.d18a497eb
 Release:        0
 Summary:        Scalable High-Availability cluster resource manager
 # AGPL-3.0 licensed extra/clustermon.sh is not present in the binary
@@ -484,6 +484,11 @@ ln -s ../heartbeat/NodeUtilization %{buildroot}%{ocf_root}/resource.d/pacemaker/
 %endif
 
 %fdupes -s %{buildroot}
+%if %{suse_version} >= 1600
+%python3_fix_shebang_path %{buildroot}%{_libexecdir}/pacemaker/*
+%python3_fix_shebang_path %{buildroot}%{_datadir}/pacemaker/tests/*
+%python3_fix_shebang_path %{buildroot}%{_datadir}/pacemaker/tests/cts/*
+%endif
 
 %check
 make %{_smp_mflags} check
@@ -591,6 +596,7 @@ fi
 %endif
 %{_sbindir}/fence_watchdog
 
+%{_mandir}/man7/pacemaker-based.7%{ext_man}
 %{_mandir}/man7/pacemaker-controld.7%{ext_man}
 %{_mandir}/man7/pacemaker-schedulerd.7%{ext_man}
 %{_mandir}/man7/pacemaker-fenced.7%{ext_man}
@@ -661,6 +667,7 @@ fi
 %config(noreplace) %{_fillupdir}/sysconfig.pacemaker
 %config(noreplace) %{_fillupdir}/sysconfig.crm_mon
 %{_mandir}/man7/*pacemaker*
+%exclude %{_mandir}/man7/pacemaker-based.*
 %exclude %{_mandir}/man7/pacemaker-controld.*
 %exclude %{_mandir}/man7/pacemaker-schedulerd.*
 %exclude %{_mandir}/man7/pacemaker-fenced.*

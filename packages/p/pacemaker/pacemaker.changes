@@ -1,4 +1,144 @@
 -------------------------------------------------------------------
+Thu Mar 14 11:15:30 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240304.d18a497eb:
+- libcrmcommon: use uint32_t for 32-bit magic numbers (gh#ClusterLabs/pacemaker#3381)
+
+-------------------------------------------------------------------
+Thu Mar 14 10:35:21 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240304.d7bf4680c:
+- libcrmcommon: Use free_xml in html_free_priv.
+- libcrmcommon:  Free error strings in html/xml outputters.
+- libcrmcommon: Free text/curses private list data.
+- tools: Fix argument validation for crm_attribute update.
+- pacemaker-fenced: improve pcmk_host_list help
+- libcrmcommon, fencer: Fix some option defaults
+- tools: crm_attribute --list-options --all
+- scheduler: Deprecate metadata CLI option
+- controller: Deprecate metadata CLI option
+- based: Deprecate metadata CLI option
+- libcrmcommon: Bump CRM_FEATURE_SET for cluster option listing
+- tools: New crm_attribute --list-options=TYPE option
+- schemas: Update for crm_attribute --list-options
+- schemas: New options API schema
+- schemas: New OCF RA version 1.1 schema
+- tools: deprecate --text-fancy command-line option
+
+-------------------------------------------------------------------
+Thu Mar 14 09:41:58 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang_path macro, [bsc#1212476]
+
+-------------------------------------------------------------------
+Fri Mar 01 10:18:23 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240226.bff14cd3f:
+- libcrmservice: avoid async zombie children by resending ignored SIGCHLD (bsc#1216972, gh#ClusterLabs/pacemaker#3374)
+- fencer: fix pcmk_delay_max description (gh#ClusterLabs/pacemaker#3373)
+
+-------------------------------------------------------------------
+Tue Feb 20 19:51:03 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240220.d4f389e48:
+- libcrmcommon: avoid file descriptor leak in IPC client with async connection (bsc#1219323, gh#ClusterLabs/pacemaker#3351)
+
+-------------------------------------------------------------------
+Tue Feb 20 07:21:52 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240219.a586196f1:
+- libcrmservice: Revert single quotes to double quotes in metadata
+- libcrmcommon: Always output request= in XML output. (gh#ClusterLabs/pacemaker#3362)
+- scheduler: improve date specification argument validation
+- libcrmcommon: Properly handle UTF-8 characters when escaping XML
+- libcrmcommon: Don't include "<null>" as an attribute value
+- tools: Drop newline from crm_rule errors
+- libcrmcommon: Escape XML text content when adding it
+- libcrmcommon: Escape XML text content when dumping XML as string
+- libcrmcommon: crm_xml_escape() shouldn't stop on Unicode characters (gh#ClusterLabs/pacemaker#3323)
+- libcrmcommon: Always use XML substitutions
+- tools: crm_simulate output should match its schema
+
+- Rebase:
+  * bug-728579_pacemaker-stonith-dev-id.patch
+
+-------------------------------------------------------------------
+Tue Feb 06 11:07:06 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240130.4f595be2b:
+- tools: crm_attribute emits garbage for --node localhost or auto (gh#ClusterLabs/pacemaker#3339)
+- scheduler: drop support for rules based on #role attribute
+- CIB: deprecate support for rkt in bundles
+- daemons: use ENOMEM for pcmk__new_client() failure
+- daemons: return ECONNREFUSED to new clients at shutdown
+- libpacemaker: Fix a parameter to the cluster-status message.
+- tools: Fix memory leak in crm_mon with HTML output (gh#ClusterLabs/pacemaker#3332)
+
+-------------------------------------------------------------------
+Tue Feb 06 08:26:12 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240122.d342672cb:
+- pacemaker-attrd: improve some messages for debugging
+- pacemaker-attrd: sync utilization attributes to peers correctly (gh#ClusterLabs/pacemaker#3333)
+- pacemaker-attrd: properly validate attribute set type (gh#ClusterLabs/pacemaker#3333)
+- cib_file: improve error message when schema file is missing
+- libcrmcommon, Pacemaker Explained: improve descriptions of cluster options
+
+-------------------------------------------------------------------
+Mon Jan 29 09:16:24 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240118.9ae4bea49:
+- tools: crm_mon segfaults when fencer connection is lost (bsc#1219220, gh#ClusterLabs/pacemaker#3331)
+
+-------------------------------------------------------------------
+Mon Jan 29 08:21:43 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240117.570909537:
+- pacemaker-attrd: make sure we don't try to log NULL
+- libpe_rules: Warn on invalid value-source in expressions
+- libpe_rules, libpacemaker: Warn on invalid boolean-op
+- CIB: Deprecate resource-discovery-enabled node attribute
+- NLS: update translations for current code base
+- libcib: Do not check CIB feature set for files in cib_perform_op.
+- scheduler: Check the CIB feature set in cluster_status.
+- based: Fix CIB version values
+- attrd: write Pacemaker Remote node attributes even if not in cache (gh#ClusterLabs/pacemaker#3304)
+- based: Add man page for pacemaker-based
+- agents: Use attrd_updater dampen delay in SysInfo (gh#ClusterLabs/pacemaker#3286)
+- libcrmcommon: Check correct env vars in pcmk__node_attr_target() (gh#ClusterLabs/pacemaker#3286)
+
+- Rebase:
+  * bug-806256_pacemaker-log-level-notice.patch
+  * pacemaker-cts-StartCmd.patch
+
+-------------------------------------------------------------------
+Mon Jan 29 08:09:16 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240101.3f4ff3e98:
+- libcrmcommon: use log-friendly name in pacemakerd IPC logs
+- controld,libcrmcommon: improve attrd IPC API messages
+- libcrmcommon: handle NULL attribute manager IPC API connections consistently
+- libcrmcommon: handle disconnected attrd API connections consistently
+- scheduler: restore nvpair behavior without id-ref (gh#ClusterLabs/pacemaker#3292)
+- scheduler: use correct variable in log message
+- scheduler: reject expression without op sooner (gh#ClusterLabs/pacemaker#3292)
+- libcrmcommon: fix NULL dereference in expand_idref() (gh#ClusterLabs/pacemaker#3292)
+- pacemaker-attrd,libcrmcluster: avoid use-after-free when remote node in cluster node cache (gh#ClusterLabs/pacemaker#3293)
+- libcrmcluster: avoid use-after-free in trace log (gh#ClusterLabs/pacemaker#3293)
+- attrd: improve logging of CIB write result
+- attrd: improve messages for CIB wipe
+- scheduler: improve logs for invalid id-ref's (gh#ClusterLabs/pacemaker#3292)
+- scheduler: improve logging of invalid roles
+- scheduler: improve messages when unpacking location constraints
+- scheduler: treat config errors as processing errors
+- HealthSmart: Check the parameter values of check_temperature to avoid error output (gh#ClusterLabs/pacemaker#3289)
+- Modify the HealthCPU, HealthSMART, HealthIOWait scripts about the function of reload and setting the dampen
+- daemons: Only ask for schemas if supported by the server
+- daemons: Download newer schema files to a remote executor.
+- libcrmcommon: Write crm_verify detailed messages to XML
+
+-------------------------------------------------------------------
 Wed Dec 20 13:44:11 UTC 2023 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.1.7+20231219.0f7f88312 (Pacemaker-2.1.7):

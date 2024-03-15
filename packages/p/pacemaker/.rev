@@ -2217,4 +2217,34 @@
     <comment>- libcrmcommon: wait for reply from appropriate controller commands (bsc#1218312, rh#2225631, rh#2221084) (forwarded request 1137030 from yan_gao)</comment>
     <requestid>1137032</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>c8425ea7140c895e74d8cd11bc8d3197</srcmd5>
+    <version>2.1.7+20240304.d18a497eb</version>
+    <time>1710530883</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.1.7+20240304.d18a497eb:
+- libcrmcommon: use uint32_t for 32-bit magic numbers (gh#ClusterLabs/pacemaker#3381)
+
+- Update to version 2.1.7+20240304.d7bf4680c:
+- libcrmcommon: Use free_xml in html_free_priv.
+- libcrmcommon:  Free error strings in html/xml outputters.
+- libcrmcommon: Free text/curses private list data.
+- tools: Fix argument validation for crm_attribute update.
+- pacemaker-fenced: improve pcmk_host_list help
+- libcrmcommon, fencer: Fix some option defaults
+- tools: crm_attribute --list-options --all
+- scheduler: Deprecate metadata CLI option
+- controller: Deprecate metadata CLI option
+- based: Deprecate metadata CLI option
+- libcrmcommon: Bump CRM_FEATURE_SET for cluster option listing
+- tools: New crm_attribute --list-options=TYPE option
+- schemas: Update for crm_attribute --list-options
+- schemas: New options API schema
+- schemas: New OCF RA version 1.1 schema
+- tools: deprecate --text-fancy command-line option
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang_path macro, [bsc#1212476] (forwarded request 1158030 from yan_gao)</comment>
+    <requestid>1158031</requestid>
+  </revision>
 </revisionlist>
