@@ -1178,4 +1178,12 @@
     <comment>- Build with layer-shell-qt from Plasma5</comment>
     <requestid>1153014</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>c9dab6bfb2304933524dfbbc0c4f93e6</srcmd5>
+    <version>5.27.11</version>
+    <time>1710530928</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.11</comment>
+    <requestid>1157378</requestid>
+  </revision>
 </revisionlist>

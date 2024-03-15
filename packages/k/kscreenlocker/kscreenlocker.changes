@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar  6 12:41:56 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.11:
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.11
+- Changes since 5.27.10:
+  * Port to new Gitlab template include format
+
+-------------------------------------------------------------------
 Wed Feb 28 19:10:47 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Build with layer-shell-qt from Plasma5
