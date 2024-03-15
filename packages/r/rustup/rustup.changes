@@ -1,4 +1,265 @@
 -------------------------------------------------------------------
+Fri Mar 15 00:44:20 UTC 2024 - william.brown@suse.com
+
+- Update to version 1.27.0~0:
+  * chore(dist): update commit shasum in `rustup-init.sh`
+  * docs: update `CHANGELOG` for v1.27.0
+  * hack(deps): pin `openssl-sys` to 0.9.92
+  * chore(deps): lock file maintenance
+  * fix #3663. Feedback in terminal when opening browser for docs
+  * Fix copy icon position in Safari
+  * Upgrade to opentelemetry 0.22
+  * fix ambiguous prompt after setting up custom installation
+  * docs: rephrase and split sentence about Visual Studio license
+  * Add comment on why we prefer symlinks to junctions
+  * Windows: Try using symlinks if they're allowed
+  * chore(ci): unify the matrix format to (mode, target)
+  * ci: update runners for macOS-related workflows
+  * docs: mention `apt` in installation methods
+  * docs: fix missing links in `CHANGELOG.md`
+  * chore(deps): update rust crate trycmd to 0.15.0
+  * fix(deps): downgrade `openssl-sys` to 0.9.92
+  * ci: remove the now-tier3 `mips*-unknown-linux-gnu*` targets from the build
+  * chore(deps): lock file maintenance
+  * Update mdbook and fix some source issues.
+  * Rename `.cargo/config` to `.cargo/config.toml`
+  * chore: update `CHANGELOG.md`
+  * dist: bump `rustup-init.sh` version to `1.27.0`
+  * dist: bump `rustup` version to `1.27.0`
+  * feat: introduce `changelog_helper` script
+  * Upgrade to pulldown-cmark 0.10
+  * Fix some typos
+  * fix(deps): update rust crate libc to 0.2.153
+  * Download rust CI Docker images from a registry
+  * Component is now named 'llvm-tools'
+  * chore: add docstring to `is_32bit_userspace()`
+  * chore: disable some unix-only helper functions on Windows
+  * chore(deps): lock file maintenance
+  * chore(deps): update actions/cache action to v4
+  * refactor(cli): simplify case splitting on `clap::error::ErrorKind`
+  * refactor(names): replace `maybe_official_toolchainame_parser` with `impl FromStr`
+  * refactor: simplify `is_proxyable_tools`
+  * refactor(distributable): import `ComponentStatus`
+  * refactor(cli): avoid nested combinators in `has_at_most_one_target`
+  * feat(cli): warn when removing the last/host target for a toolchain
+  * refactor(toolchain): extract `DistributableToolchain::components()`
+  * www: detect RISC-V 64 platform
+  * fix(deps): update rust crate strsim to 0.11
+  * chore(deps): update `renovate.json` to remove version bumps covered by lockfile maintenance PRs, take 3
+  * feat(ci): configure `merge_queue` to be a PR-like event
+  * feat(ci): enable the `merge_group` trigger
+  * fix(ci): use `github.event_name == 'schedule'` instead of `github.event.schedule`
+  * chore(deps): update `renovate.json` to remove version bumps covered by lockfile maintenance PRs, take 2
+  * fix(deps): update rust crate clap to v4.4.13
+  * fix(deps): update rust crate syn to v2.0.48
+  * chore(deps): update rust crate opentelemetry_sdk to v0.21.2
+  * fix(ci): use `github.event_name == 'push'` instead of `github.event.push`
+  * feat(ci): add CI workflow generation checks
+  * refactor(ci): disassemble and reorganize `ci/cirrus-templates`
+  * feat(ci): add `conclusion` job
+  * refactor(ci): move `freebsd-builds` to GitHub Actions
+  * refactor(ci): merge all current GitHub Actions workflows into `ci.yaml`
+  * chore(ci): clean up current CI files
+  * chore(deps): update `renovate.json` to remove version bumps covered by lockfile maintenance PRs
+  * fix(deps): update rust crate syn to v2.0.47
+  * fix(deps): update rust crate proc-macro2 to v1.0.75
+  * fix(deps): update rust crate clap_complete to v4.4.6
+  * fix(deps): update rust crate serde to v1.0.194
+  * fix(deps): update rust crate semver to v1.0.21
+  * chore(deps): update rust crate thiserror to v1.0.56
+  * chore(deps): update rust crate anyhow to v1.0.79
+  * fix(deps): update rust crate syn to v2.0.45
+  * fix(deps): update rust crate proc-macro2 to v1.0.73
+  * fix(deps): update rust crate syn to v2.0.44
+  * fix(deps): update rust crate quote to v1.0.34
+  * fix(deps): update rust crate proc-macro2 to v1.0.72
+  * chore(deps): update rust crate anyhow to v1.0.78
+  * chore(deps): update rust crate thiserror to v1.0.53
+  * fix(deps): update rust crate clap to v4.4.12
+  * chore(deps): update rust crate tempfile to v3.9.0
+  * fix(deps): update rust crate clap_complete to v4.4.5
+  * chore(deps): update rust crate anyhow to v1.0.77
+  * chore(deps): update rust crate thiserror to v1.0.52
+  * fix(deps): update rust crate syn to v2.0.43
+  * fix(deps): update rust crate openssl to v0.10.62
+  * fix(deps): update rust crate proc-macro2 to v1.0.71
+  * fix(deps): update rust crate syn to v2.0.42
+  * chore(deps): update rust crate anyhow to v1.0.76
+  * chore(deps): update rust crate hyper-util to v0.1.2
+  * chore(deps): update rust crate tokio to v1.35.1
+  * fix(deps): update rust crate reqwest to v0.11.23
+  * chore(deps): update rust crate hyper to v1.1.0
+  * docs: move "rls" and "rust-analysis" to separate section "previous…" (#3591)
+  * chore(deps): update actions/upload-artifact action to v4
+  * Fix rustup-init failure to read ZDOTDIR from zsh when SHELL is not zsh (#3584)
+  * chore(deps): lock file maintenance
+  * CI: Enable rustls on loongarch64
+  * CI: Revert "Disable openssl for loongarch64-unknown-linux-gnu"
+  * fix(deps): update rust crate openssl-src to v300.2.1+3.2.0
+  * fix(deps): update rust crate syn to v2.0.41
+  * chore(deps): lock file maintenance
+  * fix(deps): update rust crate syn to v2.0.40
+  * fix(deps): update rust crate libc to v0.2.151
+  * chore(deps): update rust crate once_cell to v1.19.0
+  * fix(deps): update rust crate clap to v4.4.11
+  * fix(deps): update rust crate openssl to v0.10.61
+  * Fix test permanently adding to PATH
+  * chore(deps): revert `Cargo.toml` bump in #3540
+  * chore(deps): revert `Cargo.toml` bump in #3532
+  * chore(renovate): prevent unnecessary `Cargo.toml` bumps
+  * Lock file maintenance
+  * Fix panic in `component list --toolchain stable`
+  * Lock file maintenance
+  * Upgrade hyper to 1.0 (#3543)
+  * Clarify several docs and help messages
+  * Remove rel paths from rust-toolchain.toml docs
+  * CI: Disable openssl for loongarch64-unknown-linux-gnu
+  * Update Rust crate url to 2.5
+  * Update Rust crate winreg to 0.52
+  * Lock file maintenance
+  * Update Rust crate windows-sys to 0.52.0
+  * Update Rust crate termcolor to 1.4
+  * Streamline dependencies in `Cargo.toml`
+  * Update opentelemetry
+  * [doc] windows.md: fix link
+  * Inline channel pattern list
+  * Remove unused import
+  * Explicitly import symbols
+  * Remove unused dependencies from macros crate
+  * Replace usage of lazy_static with once_cell
+  * Use more conventional field order in package table
+  * Remove authors from Cargo manifest (per RFC 3052)
+  * Update semver-compatible dependencies
+  * Use uniform dependency specification style
+  * Inline `semver::Version` in `toolchain_sort`
+  * Add docs specifying `toolchain_sort`'s expected behavior
+  * Change key used in `toolchain_sort`
+  * Inline `special_version` in `toolchain_sort`
+  * Inline `toolchain_sort_key` in `toolchain_sort`
+  * Replace `sort_by` with `sort_by_key` in `toolchain_sort`
+  * Refine `test_toolchain_sort`
+  * Suggest installing MSYS2 for `windows-gnu`
+  * Fix the test toolchain_broken_symlink on Windows
+  * Move `TOOLSTATE_MSG` to `dist` to serve toolchain-wide operations
+  * Add test to ensure resolution of #3418
+  * Add `Panics` sections to docstrings
+  * Refactor `components_*_msg`
+  * Delete suggestions of removing the relevant component from `component_unavailable_msg`
+  * Clean up some `manifestation` logic
+  * Warn when running under Rosetta emulation
+  * Lock file maintenance
+  * Lock file maintenance
+  * Typo fixed in tips-and-tricks.md file
+  * Adjust suggestions about sourcing `env` files
+  * Restrict zsh `shwordsplit` to `downloader()`
+  * Update Rust crate zstd to 0.13
+  * Apply `clippy` suggestions
+  * Extract `post_install_msg_unix_source_env!()`
+  * Add suggestions to mention sourcing `env.fish`
+  * Fix zsh word splitting for curl "--retry 3"
+  * Add ksh compatibility for latest illumos and others
+  * Remove redundant message if an error occurs during package extraction
+  * Update Rust crate regex to 1.10.0
+  * Write a custom env script for fish
+  * Fix fish config dir paths
+  * Update all rc fish scripts
+  * Try to add support for fish shell
+  * Clarify the origin of `rust-$TARGET` CI Docker images
+  * Lock file maintenance
+  * Apply more `clippy` suggestions
+  * Capturing IO error in download_file_with_resume (#3421)
+  * Adjust instructions for manual installation (#3502)
+  * Windows: Load DLLs from system32
+  * When running a 32-bit rustup on an aarch64 CPU, select a 32-bit toolchain
+  * Do not fallback to "arm" in rustup-init.sh on aarch64 with 32-bit userland
+  * Update Rust crate toml to 0.8
+  * Mention `brew install rustup-init` in the user guide
+  * Adjust section titles in the user guide
+  * Update actions/checkout action to v4
+  * Avoid warning for unused variant
+  * fix invalid link for 1.25.2
+  * 1.26.0 should not be unreleased in the changelog
+  * Refactor test case `install_uninstall_affect_path`
+  * Update Rust crate winreg to 0.51
+  * Apply clippy suggestions from Rust 1.74 (#3497)
+  * Fix some typos
+  * Lock file maintenance
+  * Fix rustup_only_options_stdout
+  * Bring additional help section style in line with clap 4
+  * Upgrade to clap 4
+  * Avoid deprecated clap API
+  * Isolate trycmd tests from environment
+  * Update Rust crate tracing-opentelemetry to 0.21.0
+  * buf writes to components
+  * Lock file maintenance
+  * Update Rust crate tempfile to 3.8
+  * Return the right lifetime from DistributableToolchain::install
+  * Fix handling of async tests
+  * Improve CI debugability
+  * Refactor: Use download_cfg.notify_handler in update()
+  * Authenticate when installing protoc
+  * Avoid installing protoc for most CI workflows
+  * Refine suggestions of sourcing `$HOME/.cargo/env`
+  * Avoid `sysctl: unknown oid` stderr output and/or non-zero exit code
+  * Configure automerge in Renovate
+  * Update opentelemetry
+  * Fix renovate.json
+  * Make `RUSTUP_TERM_COLOR`'s value case insensitive
+  * Add unit tests for `RUSTUP_TERM_COLOR`
+  * Support `RUSTUP_TERM_COLOR` as an override environment variable
+  * macOS `uname -m` can lie due to Rosetta shenanigans
+  * Migrate CONTRIBUTING.md to an mdbook
+  * Build docs during CI
+  * Move the user guide from doc to doc/user-guide
+  * Update Rust crate tempfile to 3.7
+  * Use available_parallelism replace the `num_cpus`crate
+  * rustup-init.sh: Check for kernel UAPI compatibility on LoongArch
+  * Enable loongarch64-linux-gnu builds on stable
+  * allow `clippy::arc_with_non_send_sync`
+  * Address `#[warn(clippy::useless_vec)]`
+  * Address `#[warn(clippy::needless_borrow)]`
+  * Address `#[warn(clippy::useless_conversion)]`
+  * Address `#[warn(clippy::redundant_pattern_matching)]`
+  * Address `#[warn(clippy::redundant_field_names)]`
+  * Bump proc-macro2 v1.0.51 -> v1.0.63
+  * Bump the openssl v0.10.52 -> v0.10.55
+  * Fix typo: prerequistes -> prerequisites
+  * update installation methods to use TLS v1.2
+  * Disable the "oldtime" feature of chrono
+  * Update Rust crate tempfile to 3.6
+  * Update Rust crate url to 2.4
+  * Update Rust crate once_cell to 1.18.0
+  * Make download_tracker thread safe.
+  * Enable broken color in MSYS2 shells
+  * Add suggest_message helper for errors
+  * replace term with termcolor
+  * Tweak docs
+  * Improve error message for removing uninstalled target
+  * Improve error message for adding unknown target
+  * CI support for loongarch64-unknown-linux-gnu
+  * Fix compile on rust nightly
+  * Group updates to opentelemetry together
+  * Improve CurrentProcess
+  * Update dependencies
+  * TestProcess and friends should be test only
+  * Update Rust crate windows-sys to 0.48.0
+  * Rework Toolchain model and drop relative file path overrides
+  * Add in opentelemetry tracing as a feature
+  * Remove repeated definite article
+  * Make clippy happy
+  * Update Rust crate toml to 0.7.3
+  * Suggest right toolchain when running clippy
+  * Fix small typo
+  * Update Rust crate winreg to 0.50
+  * Update Rust crate tempfile to 3.5
+  * Compile static Mutex where possible
+  * Upgrade CI image to FreeBSD 13.2
+  * Lock file maintenance
+  * Update Rust crate opener to 0.6.0
+  * Update Rust crate enum-map to 2.5.0
+  * Bumped retry
+
+-------------------------------------------------------------------
 Fri Dec 15 05:22:51 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Remove Obsoletes/Provides: rust-analyzer.
