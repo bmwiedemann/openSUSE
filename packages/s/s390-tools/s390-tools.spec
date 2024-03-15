@@ -153,6 +153,7 @@ Patch910:       s390-tools-sles15sp1-11-zdev-Do-not-call-zipl-on-initrd-update.p
 Patch911:       s390-tools-sles15sp5-remove-no-pie-link-arguments.patch
 Patch912:       s390-tools-ALP-zdev-live.patch
 Patch913:       s390-tools-sles15sp6-kdump-initrd-59-zfcp-compat-rules.patch
+Patch914:       s390-tools-sles15sp6-genprotimg-makefile.patch
 ###
 
 BuildRequires:  curl-devel
