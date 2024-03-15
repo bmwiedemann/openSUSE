@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 14 12:57:02 UTC 2024 - Ladislav Slezák <lslezak@suse.com>
+
+- Use the new product mapping API (related to bsc#1220567)
+- 5.0.1
+
+-------------------------------------------------------------------
 Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
 
 - 5.0.0 (bsc#1185510)
