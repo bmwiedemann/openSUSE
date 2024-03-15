@@ -1,7 +1,7 @@
 #
 # spec file for package termotp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           termotp
-Version:        0.0.7
+Version:        0.0.8
 Release:        0
 Summary:        A TOTP code generator for your terminal
 License:        Apache-2.0

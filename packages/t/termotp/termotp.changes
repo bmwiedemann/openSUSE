@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 15 05:45:05 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.0.8:
+  * b082c57: Also accept passwords from stdin.
+
+-------------------------------------------------------------------
 Thu Mar  7 06:50:33 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.0.7:
