@@ -300,6 +300,11 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/
 %fdupes -s %{buildroot}%{python_sitelib}
 %fdupes -s %{buildroot}%{python_sitearch}
 
+%python3_fix_shebang
+%if 0%{?suse_version} >= 1600
+%python3_fix_shebang_path %{buildroot}%{_libexecdir}/lsm.d/*
+%endif
+
 %if %{with test}
 %check
 if ! make check
