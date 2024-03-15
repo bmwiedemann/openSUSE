@@ -142,9 +142,9 @@ if [ -e "%_sourcedir/_pubkey" ]; then
     fi
 fi
 
-mkdir -p $RPM_BUILD_ROOT/usr/bin/
+mkdir -p $RPM_BUILD_ROOT/usr/sbin/
 mkdir -p $RPM_BUILD_ROOT/var/lib/%name
-install -m 755 %{SOURCE101} $RPM_BUILD_ROOT/usr/bin/import-%name
+install -m 755 %{SOURCE101} $RPM_BUILD_ROOT/usr/sbin/import-%name
 mkdir -p $RPM_BUILD_ROOT/%_unitdir
 install -m 644 %{SOURCE102} $RPM_BUILD_ROOT/%_unitdir/
 install -m 644 %{SOURCE103} $RPM_BUILD_ROOT/%_unitdir/
@@ -178,7 +178,7 @@ test -x /usr/bin/systemctl && systemctl enable openSUSE-build-key-import.timer &
 %{containerkeydir}/opensuse-container-key-2023.asc
 %{pemcontainerkeydir}/suse-container-key.pem
 %{pemcontainerkeydir}/suse-container-key-old.pem
-%attr(755,root,root) %_bindir/import-%name
+%attr(755,root,root) %_sbindir/import-%name
 %{pemcontainerkeydir}/opensuse-container-key-2023.pem
 %dir /var/lib/%{name}
 %ghost /var/lib/%{name}/imported

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 14 16:06:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Install import-openSUSE-build-key to %{_sbindir}: align to where
+  the .service file is launching the script from (boo#1221427).
+
+-------------------------------------------------------------------
 Wed Mar  6 09:34:52 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - add unexpired openSUSE zSystems key (bsc#1220993)

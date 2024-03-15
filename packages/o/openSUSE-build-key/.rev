@@ -352,4 +352,13 @@ However, it would be good to have these out before we do switch. (forwarded requ
   - by gpg-pubkey-f6ab3975-62e9e6fb.asc (forwarded request 1155497 from msmeissn)</comment>
     <requestid>1155499</requestid>
   </revision>
+  <revision rev="41" vrev="50">
+    <srcmd5>59eab7cc7055d70cdc0c4e3c5d2ebe9e</srcmd5>
+    <version>1.0</version>
+    <time>1710530927</time>
+    <user>anag+factory</user>
+    <comment>- Install import-openSUSE-build-key to %{_sbindir}: align to where
+  the .service file is launching the script from (boo#1221427). (forwarded request 1158051 from dimstar)</comment>
+    <requestid>1158163</requestid>
+  </revision>
 </revisionlist>
