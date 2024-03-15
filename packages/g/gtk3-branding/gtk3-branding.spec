@@ -1,7 +1,7 @@
 #
 # spec file for package gtk3-branding
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define flavor @BUILD_FLAVOR@
+%define flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == ""
 %define branding_name %{nil}
-ExclusiveArch:  %{nil}
+ExclusiveArch:  do-not-build
 %else
 %define branding_name %{flavor}
 %define dash -
@@ -30,7 +30,7 @@ ExclusiveArch:  %{nil}
 %endif
 %if (0%{?build_SLE} && 0%{?is_opensuse}) || (0%{?build_openSUSE} && ! 0%{?is_opensuse})
 # Don't build SLE branding on openSUSE and vice-versa
-ExclusiveArch:  %{nil}
+ExclusiveArch:  do-not-build
 %endif
 %endif
 %define gtk3_real_package %(rpm -q --qf '%%{name}' --whatprovides gtk3)

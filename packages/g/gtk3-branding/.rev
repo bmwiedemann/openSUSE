@@ -7,4 +7,12 @@
     <comment>replace gtk3-branding-openSUSE by multibuild variant</comment>
     <requestid>598593</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bf4afb001cee51dcc6af64267d7c4e94</srcmd5>
+    <version>15.0</version>
+    <time>1710530939</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1157941</requestid>
+  </revision>
 </revisionlist>
