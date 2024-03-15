@@ -18,7 +18,7 @@
 
 %define sover 1
 Name:           qtkeychain-qt5
-Version:        0.14.1
+Version:        0.14.2
 Release:        0
 Summary:        A password store library
 License:        BSD-2-Clause
