@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 12 13:43:26 UTC 2024 - Ladislav Slezák <lslezak@suse.com>
+
+- Change the product mapping API to be the same as in SP5 and older
+  (related to bsc#1220567)
+- 5.0.5
+
+-------------------------------------------------------------------
+Thu Feb 22 09:34:54 UTC 2024 - Ladislav Slezák <lslezak@suse.com>
+
+- Display a better product summary for the SLE_HPC => SLES upgrade
+  (jsc#PED-7841)
+
+-------------------------------------------------------------------
 Tue Feb 13 16:40:17 UTC 2024 - Ladislav Slezák <lslezak@suse.com>
 
 - SLE HPC is not a base product anymore, it is replaced by

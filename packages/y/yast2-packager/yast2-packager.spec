@@ -17,7 +17,7 @@
 
 
 Name:           yast2-packager
-Version:        5.0.4
+Version:        5.0.5
 Release:        0
 Summary:        YaST2 - Package Library
 License:        GPL-2.0-or-later
@@ -77,6 +77,8 @@ Requires:       yast2-ruby-bindings >= 1.0.0
 Conflicts:      yast2-core < 2.15.10
 # NotEnoughMemory-related functions moved to misc.ycp import-file
 Conflicts:      yast2-add-on < 2.15.15
+# changed API in Y2Packager::ProductUpgrade and Yast::AddOnProduct
+Conflicts:      yast2-registration < 5.0.1
 
 # ensure that 'checkmedia' is on the medium
 Recommends:     checkmedia
