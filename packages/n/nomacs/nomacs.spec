@@ -1,7 +1,7 @@
 #
 # spec file for package nomacs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
+%define pver 3.17.2285
 Name:           nomacs
-Version:        3.16.224
+Version:        3.17.2295
 Release:        0
 Summary:        Lightweight image viewer
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://nomacs.org/
-Source:         https://github.com/nomacs/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         quazip1_cmake_remove_after_new_version.diff
-Patch1:         nomacs-fix-exiv2-0.28.patch
+Source0:        https://github.com/nomacs/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        https://github.com/novomesk/nomacs-plugins/archive/%{pver}/nomacs-plugins-%{pver}.tar.gz 
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -46,6 +46,7 @@ BuildRequires:  pkgconfig(libraw) >= 0.17
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(zlib)
 Recommends:     %{name}-lang
+Recommends:     %{name}-plugins
 
 %description
 nomacs is a free image viewer, which is small, fast and able to handle the
@@ -54,10 +55,23 @@ multiple viewers. A synchronisation of viewers running on the same
 computer or via LAN is possible. It allows to compare images and spot the
 differences (e.g. schemes of architects to show the progress).
 
+%package plugins	
+Summary:        Plugins for nomacs image viewer
+Requires:       %{name} = %{version}
+
+%description plugins	
+Some usefull plugins for nomacs:
+- Affine transformations
+- RGB image from greyscales
+- Fake miniature filter
+- Page extractions
+- Painting
+
 %lang_package
 
 %prep
 %autosetup -p1
+tar xf %{SOURCE1} --strip-components 1 -C ImageLounge/plugins/
 
 %build
 pushd ImageLounge/
@@ -84,11 +98,16 @@ rm %{buildroot}%{_libdir}/lib%{name}*.so
 sed -i -E 's|(%{_datadir}.*)$|"\1"|' %{name}.lang
 %fdupes %{buildroot}%{_datadir}/
 
+# fix zero-length
+rm %{buildroot}%{_datadir}/nomacs/Image\ Lounge/themes/System.css
+
 %post -p /sbin/ldconfig
 
 %postun -p /sbin/ldconfig
 
 %files
+%doc README.md
+%license LICENSE
 %{_bindir}/%{name}
 %{_libdir}/lib%{name}*.so.*
 %{_datadir}/%{name}/
@@ -100,6 +119,13 @@ sed -i -E 's|(%{_datadir}.*)$|"\1"|' %{name}.lang
 %dir %{_datadir}/metainfo/
 %{_datadir}/metainfo/org.%{name}.ImageLounge.appdata.xml
 %{_mandir}/man?/%{name}.?%{?ext_man}
+
+%files plugins
+%doc ImageLounge/plugins/README.md
+%dir %{_libdir}/nomacs-plugins
+%{_libdir}/nomacs-plugins/*.so.*
+# should be in devel but unneeded to include in or make new the package
+%exclude %{_libdir}/nomacs-plugins/*.so
 
 %files lang -f %{name}.lang
 %dir "%{_datadir}/nomacs/Image Lounge/translations/"

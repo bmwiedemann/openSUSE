@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Mar 14 09:22:59 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 3.17.2295
+  * Option to close nomacs with middle mouse button if enabled in
+    settings
+  * QOI (Quite OK Image Format) support (needs kimageformats 5.110)
+  * Possibility to build nomacs with Exiv2 0.28.0
+  * Remove implicit auto-save.
+  * Revert crop functionality.
+  * extends the new crop tool
+  * fixes crash when anti-aliasing is enabled
+  * improves translations
+- Remove unneeded patch:
+  * quazip1_cmake_remove_after_new_version.diff
+  * nomacs-fix-exiv2-0.28.patch
+- Add source and subpackage nomacs-plugins
+
+-------------------------------------------------------------------
 Wed Aug  2 12:04:42 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Add nomacs-fix-exiv2-0.28.patch to fix libexiv2 build errors
