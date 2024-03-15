@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 14 22:28:42 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Also attempt pam-config enablement in %posttrans (boo#1221371)
+
+-------------------------------------------------------------------
+Thu Mar 14 18:59:17 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patches to avoid depending on Qt:
+  * 0001-Allow-specifing-KWALLETD_BIN_PATH-manually.patch
+  * 0002-Use-GNUInstallDirs-instead-of-KDEInstallDirs.patch
+
+-------------------------------------------------------------------
 Wed Mar 13 09:10:02 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.2:

@@ -34,11 +34,13 @@ Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{ver
 Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
+# PATCH-FEATURE-OPENSUSE
+Patch1:         0001-Allow-specifing-KWALLETD_BIN_PATH-manually.patch
+Patch2:         0002-Use-GNUInstallDirs-instead-of-KDEInstallDirs.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  socat
-BuildRequires:  cmake(KF6Wallet) >= %{kf6_version}
 BuildRequires:  pkgconfig(libgcrypt) >= 1.5.0
 # PAM modules need to be available for all archs of PAM on the system, otherwise pam-config
 # will not enable it.
@@ -49,9 +51,9 @@ Requires:       pam_kwallet6-common = %{version}
 Requires(post): coreutils
 Requires(post): pam
 Requires(post): pam-config
-Requires(postun):coreutils
-Requires(postun):pam
-Requires(postun):pam-config
+Requires(postun): coreutils
+Requires(postun): pam
+Requires(postun): pam-config
 Provides:       pam_kwallet = %{version}
 Obsoletes:      pam_kwallet < %{version}
 
@@ -76,9 +78,10 @@ module.
 
 %build
 # Before usrmerge, the PAM module goes into /lib*/security/
-%cmake_kf6 \
+%cmake_kf6 -DKWALLETD_BIN_PATH=%{_kf6_bindir}/kwalletd6 \
+    -DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir} \
 %if 0%{?suse_version} < 1550
-    -DKDE_INSTALL_LIBDIR=/%{_lib}
+    -DCMAKE_INSTALL_LIBDIR=/%{_lib}
 %endif
 
 %kf6_build
@@ -86,8 +89,9 @@ module.
 %install
 %kf6_install
 
-# Due to boo#728586 it is necessary to duplicate this in the 32bit variant.
-# So you need to edit baselibs.conf if you change this.
+# Try to enable it in %post already, but it might not work at this time.
+# Due to boo#728586 it is necessary to duplicate this in the 32bit variant,
+# so you need to edit baselibs.conf if you change this.
 %post
 %{_sbindir}/pam-config -a --kwallet5 || :
 
@@ -95,6 +99,11 @@ module.
 if [ "$1" = "0" ]; then
   %{_sbindir}/pam-config -d --kwallet5 || :
 fi
+
+# Enable this in posttrans to win over the old package's %postun
+# and to run once the modules are installed for all archs (boo#728586).
+%posttrans
+%{_sbindir}/pam-config -a --kwallet5 || :
 
 %post common
 %{systemd_user_post plasma-kwallet-pam.service}

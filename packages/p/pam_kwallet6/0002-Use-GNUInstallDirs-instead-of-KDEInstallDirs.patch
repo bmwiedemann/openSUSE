@@ -1,0 +1,44 @@
+From ca7f4d4ee95f37d9de9d80b5bba7407e0d11c59a Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Thu, 14 Mar 2024 19:37:30 +0100
+Subject: [PATCH 2/2] Use GNUInstallDirs instead of KDEInstallDirs
+
+This installs rather generic files so it's not necessary to query Qt here.
+---
+ CMakeLists.txt | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 643270e..e94130b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -12,7 +12,7 @@ find_package (ECM ${KF6_MIN_VERSION} REQUIRED NO_MODULE)
+ set (CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules" )
+ 
+ include(CheckFunctionExists)
+-include(KDEInstallDirs)
++include(GNUInstallDirs)
+ include(KDEClangFormat)
+ include(ECMConfiguredInstall)
+ 
+@@ -90,13 +90,11 @@ target_link_libraries (${library_name}
+ file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
+ kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
+ 
+-install(TARGETS ${library_name} DESTINATION ${KDE_INSTALL_LIBDIR}/security)
++install(TARGETS ${library_name} DESTINATION ${CMAKE_INSTALL_LIBDIR}/security)
+ 
+ configure_file(pam_kwallet_init.desktop.cmake ${CMAKE_BINARY_DIR}/pam_kwallet_init.desktop)
+-
+-install(PROGRAMS pam_kwallet_init DESTINATION ${KDE_INSTALL_LIBEXECDIR})
+-
+-install(FILES ${CMAKE_BINARY_DIR}/pam_kwallet_init.desktop DESTINATION ${KDE_INSTALL_AUTOSTARTDIR})
++install(PROGRAMS pam_kwallet_init DESTINATION ${CMAKE_INSTALL_LIBEXECDIR})
++install(FILES ${CMAKE_BINARY_DIR}/pam_kwallet_init.desktop DESTINATION /etc/xdg/autostart/)
+ 
+ ecm_install_configured_files(INPUT plasma-kwallet-pam.service.in @ONLY DESTINATION
+-        ${KDE_INSTALL_SYSTEMDUSERUNITDIR})
++        ${CMAKE_INSTALL_PREFIX}/lib/systemd/user/)
+-- 
+2.43.0
+
