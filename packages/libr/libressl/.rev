@@ -535,4 +535,12 @@
     <comment>- Update to release 3.7.0</comment>
     <requestid>1042566</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>fe1a04fbb47e0139dc548245f3c3bc10</srcmd5>
+    <version>3.8.3</version>
+    <time>1710531139</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.8.3:</comment>
+    <requestid>1158270</requestid>
+  </revision>
 </revisionlist>

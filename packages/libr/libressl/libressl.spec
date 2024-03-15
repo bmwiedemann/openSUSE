@@ -1,7 +1,7 @@
 #
 # spec file for package libressl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,14 @@
 #
 
 Name:           libressl
-Version:        3.7.0
+Version:        3.8.3
 Release:        0
 Summary:        An SSL/TLS protocol implementation
 License:        OpenSSL
 Group:          Development/Libraries/C and C++
 URL:            https://www.libressl.org/
-
-#Freshcode-URL: https://freshcode.club/projects/libressl
-#Git-Clone:	https://github.com/libressl-portable/portable
-#See-Also:	https://github.com/libressl-portable/openbsd
+#Git-Clone:	https://github.com/libressl/portable
+#See-Also:	https://github.com/libressl/openbsd
 Source:         https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/%name-%version.tar.gz
 Source2:        https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/%name-%version.tar.gz.asc
 Source3:        %name.keyring
@@ -36,9 +34,10 @@ BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  fdupes
 BuildRequires:  pkg-config
-Obsoletes:      ssl
 Provides:       ssl
 Provides:       openssl(cli)
+Conflicts:      openssl-1_1
+Conflicts:      openssl-3
 
 %description
 LibreSSL is an open-source implementation of the Secure Sockets Layer
@@ -46,31 +45,31 @@ LibreSSL is an open-source implementation of the Secure Sockets Layer
 OpenSSL, with the aim of refactoring the OpenSSL code so as to
 provide a more secure implementation.
 
-%package -n libcrypto50
+%package -n libcrypto52
 Summary:        An SSL/TLS protocol implementation
 Group:          System/Libraries
 
-%description -n libcrypto50
+%description -n libcrypto52
 The "crypto" library implements a wide range of cryptographic
 algorithms used in various Internet standards. The services provided
 by this library are used by the LibreSSL implementations of SSL, TLS
 and S/MIME, and they have also been used to implement SSH, OpenPGP,
 and other cryptographic standards.
 
-%package -n libssl53
+%package -n libssl55
 Summary:        An SSL/TLS protocol implementation
 Group:          System/Libraries
 
-%description -n libssl53
+%description -n libssl55
 LibreSSL is an open-source implementation of the Secure Sockets Layer
 (SSL) and Transport Layer Security (TLS) protocols. It derives from
 OpenSSL and intends to provide a more secure implementation.
 
-%package -n libtls26
+%package -n libtls28
 Summary:        A simplified interface for the OpenSSL/LibreSSL TLS protocol implementation
 Group:          System/Libraries
 
-%description -n libtls26
+%description -n libtls28
 LibreSSL is an open-source implementation of the Secure Sockets Layer
 (SSL) and Transport Layer Security (TLS) protocols. It derives from
 OpenSSL and intends to provide a more secure implementation.
@@ -81,11 +80,11 @@ libssl) for secure client and server communications.
 %package devel
 Summary:        Development files for LibreSSL, an SSL/TLS protocol implementation
 Group:          Development/Libraries/C and C++
-Requires:       libcrypto50 = %version
-Requires:       libssl53 = %version
-Requires:       libtls26 = %version
-Conflicts:      libopenssl-devel
+Requires:       libcrypto52 = %version
+Requires:       libssl55 = %version
+Requires:       libtls28 = %version
 Conflicts:      ssl-devel
+Provides:       ssl-devel
 
 %description devel
 LibreSSL is an open-source implementation of the Secure Sockets Layer
@@ -101,6 +100,7 @@ Summary:        Documentation for the LibreSSL API
 Group:          Documentation/Man
 BuildArch:      noarch
 Conflicts:      openssl-doc
+Provides:       openssl-doc
 
 %description devel-doc
 LibreSSL is an open-source implementation of the Secure Sockets Layer
@@ -142,12 +142,12 @@ if ! %make_build check; then
 	exit 1
 fi
 
-%post   -n libcrypto50 -p /sbin/ldconfig
-%postun -n libcrypto50 -p /sbin/ldconfig
-%post   -n libssl53 -p /sbin/ldconfig
-%postun -n libssl53 -p /sbin/ldconfig
-%post   -n libtls26 -p /sbin/ldconfig
-%postun -n libtls26 -p /sbin/ldconfig
+%post   -n libcrypto52 -p /sbin/ldconfig
+%postun -n libcrypto52 -p /sbin/ldconfig
+%post   -n libssl55 -p /sbin/ldconfig
+%postun -n libssl55 -p /sbin/ldconfig
+%post   -n libtls28 -p /sbin/ldconfig
+%postun -n libtls28 -p /sbin/ldconfig
 
 %files
 %dir %_sysconfdir/ssl/
@@ -160,13 +160,13 @@ fi
 %_mandir/man8/*.8*
 %doc COPYING
 
-%files -n libcrypto50
+%files -n libcrypto52
 %_libdir/libcrypto.so.*
 
-%files -n libssl53
+%files -n libssl55
 %_libdir/libssl.so.*
 
-%files -n libtls26
+%files -n libtls28
 %_libdir/libtls.so.*
 
 %files devel

@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Fri Mar 15 09:14:16 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.8.3:
+  * Improved control-flow enforcement (CET) support.
+
+-------------------------------------------------------------------
+Tue Nov 14 23:54:12 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Rework conflicts again
+
+-------------------------------------------------------------------
+Fri Nov  3 11:47:54 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.8.2
+  * Added support for truncated SHA-2 and for SHA-3.
+  * The BPSW primality test performs additional Miller-Rabin rounds
+    with random bases to reduce the likelihood of composites passing.
+  * Allow testing of ciphers and digests using badly aligned buffers
+    in openssl speed.
+  * Added a workaround for a poorly thought-out change in OpenSSL 3
+    that broke privilege separation support in libtls.
+  * Compatibility changes:
+  * Removed most public symbols that were deprecated in OpenSSL
+    0.9.8.
+  * Security fixes:
+  * Disabled TLSv1.0 and TLSv1.1 in libssl so that they may no
+    longer be selected for use.
+
+-------------------------------------------------------------------
+Tue Jun 20 15:18:56 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Improve cross-package provides/conflicts [boo#1210313]
+  * Remove explicit conflicts with other devel-libraries
+  * Remove Obsoletes: ssl
+
+-------------------------------------------------------------------
+Mon May 29 08:14:43 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.7.3:
+  * Bug fix: Hostflags in the verify parameters would not
+    propagate from an SSL_CTX to newly created SSL.
+  * Reliability fix: A double free or use after free could occur
+    after SSL_clear(3).
+
+-------------------------------------------------------------------
+Sat Apr  8 16:54:24 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.7.2
+  * Updates to the build system
+
+-------------------------------------------------------------------
+Sat Mar 18 10:56:23 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add more conflicts between openssl<>libressl
+
+-------------------------------------------------------------------
+Thu Mar 16 20:36:21 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.7.1
+  * Added UI_null()
+  * Added X509_STORE_*check_issued()
+  * Added X509_CRL_get0_sigalg() and X509_get0_uids() accessors
+  * Added EVP_CIPHER_meth_*() setter API
+
+-------------------------------------------------------------------
 Mon Dec 12 17:27:31 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.7.0
@@ -251,7 +316,7 @@ Tue Apr 23 11:24:55 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 Sun Mar 31 20:55:03 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Add openssl(cli) provides. Replace otherproviders conflict
-  by normal Conflict+Provides.
+  by normal Conflict+Provides. [boo#1210313]
 
 -------------------------------------------------------------------
 Thu Mar 14 21:30:46 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
