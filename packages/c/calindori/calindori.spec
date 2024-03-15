@@ -49,6 +49,9 @@ BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 Requires:       kf6-kirigami-imports >= %{kf6_version}
+Requires:       kf6-kpeople-imports >= %{kf6_version}
+Requires:       kirigami-addons6
+Requires:       qt6-declarative-imports >= %{qt6_version}
 
 %description
 Calindori is a touch friendly calendar application.

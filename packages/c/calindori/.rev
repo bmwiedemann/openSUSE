@@ -79,4 +79,12 @@
     <comment>KDE release gear 24.02.0</comment>
     <requestid>1150846</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>a4907aa6df7a1895e2da6b19308af56a</srcmd5>
+    <version>24.02.0</version>
+    <time>1710531092</time>
+    <user>anag+factory</user>
+    <comment>- Update runtime requirements</comment>
+    <requestid>1158181</requestid>
+  </revision>
 </revisionlist>
