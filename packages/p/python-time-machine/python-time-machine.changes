@@ -1,11 +1,25 @@
 -------------------------------------------------------------------
+Thu Mar 14 08:17:15 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.14.0:
+  * Fix utcfromtimestamp() warning on Python 3.12+.
+  * Fix utcfromtimestamp() warning on Python 3.12+.
+  * Fix class decorator for classmethod overrides.
+  * Avoid calling deprecated uuid._load_system_functions() on
+    Python 3.9+.
+  * Avoid calling deprecated uuid._load_system_functions() on
+    Python 3.9+.
+  * Thanks to Nikita Sobolev for the ping in CPython Issue
+  * Support Python 3.13 alpha 4.
+
+-------------------------------------------------------------------
 Thu Nov  9 09:05:38 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.13.0
   - Add support for datetime.timedelta to time_machine.travel().
   - Fix documentation about using local time for naive date(time) strings.
   - Add shift() method to the time_machine pytest fixture.
-  - Mock time.monotonic() and time.monotonic_ns(). 
+  - Mock time.monotonic() and time.monotonic_ns().
     They return the values of time.time() and time.time_ns()
     respectively, rather than real monotonic clocks.
 - Changes from 2.12.0

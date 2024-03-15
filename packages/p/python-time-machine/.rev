@@ -135,4 +135,23 @@
     - Support Python 3.12.</comment>
     <requestid>1124381</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7f5258a1d28829e905b54b559e974bbd</srcmd5>
+    <version>2.14.0</version>
+    <time>1710530849</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.14.0:
+  * Fix utcfromtimestamp() warning on Python 3.12+.
+  * Fix utcfromtimestamp() warning on Python 3.12+.
+  * Fix class decorator for classmethod overrides.
+  * Avoid calling deprecated uuid._load_system_functions() on
+    Python 3.9+.
+  * Avoid calling deprecated uuid._load_system_functions() on
+    Python 3.9+.
+  * Thanks to Nikita Sobolev for the ping in CPython Issue
+  * Support Python 3.13 alpha 4.
+
+  - Mock time.monotonic() and time.monotonic_ns().</comment>
+    <requestid>1157878</requestid>
+  </revision>
 </revisionlist>
