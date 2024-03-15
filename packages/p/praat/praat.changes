@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 12 01:16:24 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.06:
+  * FormantPathEditor without Sound: corrected several bugs that
+    caused Praat to crash (such as Formant listing, using the
+    Pitch menu...).
+  * Spectrogram painting: improved painting of very quiet
+    spectrograms at extreme dynamic ranges.
+  * Scripting: folderExists.
+  * Scripting: home-relative paths (such as ~/sounds/*.wav) in
+    more locations, such as fileNames$#, Create Strings as file
+    list..., and createFolder.
+
+-------------------------------------------------------------------
 Fri Feb  2 13:13:26 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.4.05:
