@@ -1,0 +1,15 @@
+Index: cfe-6.0.0rc1.src/lib/Driver/ToolChains/Arch/X86.cpp
+===================================================================
+--- cfe-6.0.0rc1.src.orig/lib/Driver/ToolChains/Arch/X86.cpp
++++ cfe-6.0.0rc1.src/lib/Driver/ToolChains/Arch/X86.cpp
+@@ -102,8 +102,8 @@ const char *x86::getX86TargetCPU(const A
+   case llvm::Triple::FreeBSD:
+     return "i686";
+   default:
+-    // Fallback to p4.
+-    return "pentium4";
++    // Fallback to i586.
++    return "i586";
+   }
+ }
+ 

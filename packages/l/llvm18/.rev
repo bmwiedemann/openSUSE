@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>decc0b53456b1e6617e72fbd993e36cc</srcmd5>
+    <version>18.1.1</version>
+    <time>1710530893</time>
+    <user>anag+factory</user>
+    <comment>- New package based on version 18.1.1.
+  * For details, see the release notes:
+    - https://releases.llvm.org/18.1.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/18.1.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/18.1.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/18.1.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/18.1.0/tools/lld/docs/ReleaseNotes.html
+  * New LLVM tool: llvm-readtapi, LLVM TAPI file reader and
+    transformer.
+  * Removed LLVM tools: llvm-tapi-diff, llvm-remark-size-diff.
+  * New LLDB tool: lldb-dap debug adapter.
+  * Removed LLDB tool: lldb-vscode.
+- Rename libomp-devel symbolic name to libomp-devel-provider.
+  We want to introduce a metapackage named libomp-devel.
+- Rebase patches:
+  * assume-opensuse.patch
+  * link-clang-tools-extra-shared.patch
+  * llvm_build_tablegen_component_as_shared_library.patch
+  * llvm-do-not-install-static-libraries.patch
+  * llvm-fix-find-gcc5-install.patch
+  * llvm-normally-versioned-libllvm.patch
+  * llvm-suse-implicit-gnu.patch
+- Add patches to fix tests:
+  * clang-fix-modules-test-riscv.patch
+  * clang-fix-openmp-test-non-x86.patch
+  * clang-fix-openmp-test.patch
+  * llvm-fix-cov-test-i586.patch
+- Restructure version macros in specfile for new versioning scheme.
+- Fix packaging of ld.lld as ld alternative.
+- Disable LLDB Python bindings on SLE/Leap. They now require Swig 4
+  which isn't available there.</comment>
+    <requestid>1156747</requestid>
+  </revision>
+</revisionlist>
