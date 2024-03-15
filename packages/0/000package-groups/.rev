@@ -1932,4 +1932,16 @@ Main motivation is to have the license files in MicroOS also in /usr/, not in /e
     <time>1710279477</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="272" vrev="270">
+    <srcmd5>3889ff9d49d971d24a8585b384425e80</srcmd5>
+    <version>unknown</version>
+    <time>1710530872</time>
+    <user>anag+factory</user>
+    <comment>Drop i586 FTP tree
+
+This was an attempt to help Slowroll with the -32bit stuff, but the dependency
+chain to get this tree going was too excessive to accept. Slowroll now builds
+those sources for i586 on its own.</comment>
+    <requestid>1157979</requestid>
+  </revision>
 </revisionlist>
