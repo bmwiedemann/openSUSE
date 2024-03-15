@@ -313,4 +313,13 @@
     <comment>- Update to release SDK-1.3.275.0</comment>
     <requestid>1139936</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>221375b6163ebf9c00094912e6040d01</srcmd5>
+    <version>1.6.1+sdk275+git19</version>
+    <time>1710530896</time>
+    <user>anag+factory</user>
+    <comment>- Add v275-to-8b246ff.patch
+- Update to snapshot vulkan-sdk-1.3.275.0-19-g8b246ff</comment>
+    <requestid>1156750</requestid>
+  </revision>
 </revisionlist>
