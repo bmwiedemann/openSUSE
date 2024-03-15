@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Mar 10 09:15:59 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 14.1
+  * Add a new ``--absolute-path`` command-line option to output
+    absolute paths in error messages
+  * Support GL_EXT_control_flow_attributes2,
+    GL_ARB_shading_language_include, NV_shader_atomic_fp16_vector,
+    GL_EXT_expect_assume_support, GL_KHR_shader_subgroup_rotate,
+    EXT_shader_quad_control, GL_EXT_maximal_reconvergence,
+    GL_ARB_texture_multisample_extension
+  * Emit debug info for accelerationStructure and rayQuery variables
+  * Improve debug source and line info
+  * Add OpAssumeTrueKHR and OpExpectKHR
+  * Remove generation of deprecated Target.cmake files
+
+-------------------------------------------------------------------
 Fri Dec 22 19:11:49 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 14
