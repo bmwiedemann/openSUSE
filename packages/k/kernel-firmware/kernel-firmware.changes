@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 13 07:43:43 UTC 2024 - tiwai@suse.com
+
+- Update to version 20240312 (git commit 4a404b5bfdb9):
+  * linux-firmware: update firmware for mediatek bluetooth chip (MT7921)
+  * iwlwifi: update 9000-family firmwares to core85-89
+  * rtl_bt: Update RTL8852A BT USB firmware to 0xD9D6_17DA
+  * linux-firmware: update firmware for MT7921 WiFi device
+  * linux-firmware: update firmware for mediatek bluetooth chip (MT7922)
+  * linux-firmware: update firmware for MT7922 WiFi device
+  * linux-firmware: Add CS35L41 HDA Firmware for Lenovo Thinkbook 16P Laptops
+
+-------------------------------------------------------------------
 Fri Mar 01 15:09:13 UTC 2024 - tiwai@suse.com
 
 - Update to version 20240229 (git commit 977332782302):
