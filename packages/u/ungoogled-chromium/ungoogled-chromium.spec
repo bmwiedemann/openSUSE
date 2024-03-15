@@ -84,7 +84,7 @@
 %endif
 # Package names
 Name:           ungoogled-chromium
-Version:        122.0.6261.111
+Version:        122.0.6261.128
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -203,6 +203,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-six
+BuildRequires:  rust
 BuildRequires:  snappy-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  util-linux

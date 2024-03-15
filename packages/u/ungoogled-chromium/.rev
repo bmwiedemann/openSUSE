@@ -364,4 +364,14 @@
 </comment>
     <requestid>1156764</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d5975addda3ae9dd53cb1539ab45fe47</srcmd5>
+    <version>122.0.6261.128</version>
+    <time>1710530954</time>
+    <user>anag+factory</user>
+    <comment>- Chromium 122.0.6261.128 (boo#1221335)
+  *  CVE-2024-2400: Use after free in Performance Manager
+</comment>
+    <requestid>1158019</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 13 05:35:05 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 122.0.6261.128 (boo#1221335)
+  *  CVE-2024-2400: Use after free in Performance Manager
+
+-------------------------------------------------------------------
 Fri Mar  8 16:14:39 CET 2024 - ro@suse.de
 
 - Chromium 122.0.6261.111 (boo#1220131,boo#1220604,boo#1221105)
