@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 12 16:47:37 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add conflict in appstream-qt6-devel with
+  libAppStreamQt-devel < 1.0. This is required to fix a file
+  conflict in SLE with the old libAppStreamQt-devel package.
+
+-------------------------------------------------------------------
 Fri Mar  1 09:46:46 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.0.2

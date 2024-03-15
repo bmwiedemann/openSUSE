@@ -1,7 +1,7 @@
 #
 # spec file for package AppStream
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%flavor" == "qt6"
@@ -98,12 +99,14 @@ Summary:        Header files for AppStream's Qt 6 bindings
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Requires:       libAppStreamQt%{libAppStreamQt_sover} = %{version}
 Requires:       libappstream%{libappstream_sover} = %{version}
+Conflicts:      libAppStreamQt-devel < 1.0
 
 %description -n appstream-qt6-devel
 This package contains all necessary include files, libraries,
 configuration files and development tools (with manual pages) needed to
 compile and link applications using the Qt bindings for AppStream.
 %else
+
 %package -n libappstream%{libappstream_sover}
 Summary:        The main library for AppStream
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -267,6 +270,7 @@ rm -r %{buildroot}%{_libdir}/pkgconfig
 %{_libdir}/libAppStreamQt.so
 
 %else
+
 %files lang -f %{name}.lang
 
 %files

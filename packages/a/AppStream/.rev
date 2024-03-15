@@ -490,4 +490,14 @@ Features:
     <comment></comment>
     <requestid>1154154</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>f7deb74bb0ab11a801744be241214d50</srcmd5>
+    <version>1.0.2</version>
+    <time>1710530933</time>
+    <user>anag+factory</user>
+    <comment>- Add conflict in appstream-qt6-devel with
+  libAppStreamQt-devel &lt; 1.0. This is required to fix a file
+  conflict in SLE with the old libAppStreamQt-devel package.</comment>
+    <requestid>1157387</requestid>
+  </revision>
 </revisionlist>
