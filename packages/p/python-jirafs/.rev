@@ -144,4 +144,13 @@
 - Use python_alternative for the jirafs script.</comment>
     <requestid>1157918</requestid>
   </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>b0d2609329688df60b16f6773df41811</srcmd5>
+    <version>2.3.1</version>
+    <time>1710531029</time>
+    <user>anag+factory</user>
+    <comment>- Add missing Requires python-Pillow (bsc#1221433).
+</comment>
+    <requestid>1158063</requestid>
+  </revision>
 </revisionlist>

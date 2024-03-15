@@ -16,9 +16,9 @@
 #
 
 
-%{?sle15_python_module_pythons}
 # missing ipdb
 %global skip_python39 1
+%{?sle15_python_module_pythons}
 Name:           python-jirafs
 Version:        2.3.1
 Release:        0
@@ -35,6 +35,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       git-core
 Requires:       python-Jinja2 >= 2.10.3
+Requires:       python-Pillow
 Requires:       python-PrettyTable >= 0.7.2
 Requires:       python-blessings >= 1.5.1
 Requires:       python-environmental-override >= 0.1.2
@@ -42,6 +43,8 @@ Requires:       python-jira >= 3.1.1
 Requires:       python-prettytable >= 0.7.2
 Requires:       python-python-dateutil >= 2.8.1
 Requires:       python-watchdog >= 0.9.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Suggests:       python-ipdb
 BuildArch:      noarch
 # SECTION test requirements
@@ -59,8 +62,6 @@ BuildRequires:  %{python_module python-dateutil >= 2.8.1}
 BuildRequires:  %{python_module watchdog >= 0.9.0}
 BuildRequires:  git-core
 # /SECTION
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -70,6 +71,7 @@ issues as a collection of text files using an interface inspired by
 
 %prep
 %autosetup -p1 -n jirafs-%{version}
+
 # Remove upper pins
 sed -i 's/,<[0-9.][0-9.]*//' requirements.txt
 rm jirafs/.pre-commit-config.yaml

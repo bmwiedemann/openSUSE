@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 14 16:49:51 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add missing Requires python-Pillow (bsc#1221433).
+
+-------------------------------------------------------------------
 Thu Mar 14 09:49:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - skip python39 due to ipdb removal on 3.9
