@@ -142,12 +142,14 @@ Patch11:        u_0001-intel-genxml-Drop-from-__future__-import-annotations.patc
 Patch12:        u_0002-intel-genxml-Add-a-untyped-OrderedDict-fallback-for-.patch
 Patch13:        python36-buildfix1.patch
 Patch14:        python36-buildfix2.patch
+Patch15:        U_fix-ac-llvm-LLVM-18-remove-useless-passes.patch
 # never to be upstreamed
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch58:        u_dep_xcb.patch
 Patch100:       U_fix-mpeg1_2-decode-mesa-20.2.patch
 Patch200:       u_fix-build-on-ppc64le.patch
 Patch400:       n_stop-iris-flicker.patch
+Patch500:       u_zink-dont-print-error-messages-when-failing-an-implicit.patch
 %ifarch %{ix86} x86_64
 BuildRequires:  DirectX-Headers
 %endif
@@ -246,7 +248,7 @@ BuildRequires:  pkgconfig(wayland-server) >= 1.11
 BuildRequires:  llvm-devel
 %else
 %if 0%{?sle_version} >= 150500
-BuildRequires:  llvm17-devel
+BuildRequires:  llvm18-devel
 %endif
 %endif
 %endif
@@ -256,7 +258,7 @@ BuildRequires:  llvm17-devel
 BuildRequires:  clang-devel
 %else
 %if 0%{?sle_version} >= 150500
-BuildRequires:  clang17-devel
+BuildRequires:  clang18-devel
 %endif
 %endif
 BuildRequires:  libclc
@@ -762,6 +764,7 @@ rm -rf docs/README.{VMS,WIN32,OS2}
 %if 0%{?suse_version} < 1550
 %patch -P 14 -p1
 %endif
+%patch -P 15 -p1
 # no longer needed since gstreamer-plugins-vaapi 1.18.4
 %if 0%{?suse_version} < 1550
 %patch -P 54 -p1
@@ -770,6 +773,7 @@ rm -rf docs/README.{VMS,WIN32,OS2}
 %patch -P 100 -p1
 #%patch -P 200 -p1
 %patch -P 400 -p1
+#%patch -P 500 -p1
 
 # Remove requires to vulkan libs from baselibs.conf on platforms
 # where vulkan build is disabled; ugly ...

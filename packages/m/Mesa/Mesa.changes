@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Mar 14 04:48:32 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- buildrequires llvm18-devel/clang18-devel on Leap 15.5/15.6 
+
+-------------------------------------------------------------------
+Thu Mar 14 04:40:06 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- disabled u_zink-dont-print-error-messages-when-failing-an-implicit.patch
+  for now, since it breaks driver build; this patch needs other patches
+  below to build ... 
+
+-------------------------------------------------------------------
+Tue Mar 12 20:13:17 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_zink-dont-print-error-messages-when-failing-an-implicit.patch
+  * zink: don't print error messages when failing an implicit
+    driver load (Mesa gitlab issue #10802)
+
+-------------------------------------------------------------------
+Sat Mar  9 22:17:33 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add U_fix-ac-llvm-LLVM-18-remove-useless-passes.patch to fix
+  build with LLVM 18.
+
+-------------------------------------------------------------------
 Tue Mar  5 04:33:37 UTC 2024 - Jianhua Lu <lujianhua000@gmail.com>
 
 - Enable zink driver build on aarch64, this is needed for Qualcomm Adreno a7xx

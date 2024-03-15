@@ -5535,4 +5535,23 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment></comment>
     <requestid>1155195</requestid>
   </revision>
+  <revision rev="497" vrev="369">
+    <srcmd5>3ae775481debf130fe22301463d66379</srcmd5>
+    <version>unknown</version>
+    <time>1710530899</time>
+    <user>anag+factory</user>
+    <comment>- buildrequires llvm18-devel/clang18-devel on Leap 15.5/15.6 
+
+- disabled u_zink-dont-print-error-messages-when-failing-an-implicit.patch
+  for now, since it breaks driver build; this patch needs other patches
+  below to build ... 
+
+- u_zink-dont-print-error-messages-when-failing-an-implicit.patch
+  * zink: don't print error messages when failing an implicit
+    driver load (Mesa gitlab issue #10802)
+
+- Add U_fix-ac-llvm-LLVM-18-remove-useless-passes.patch to fix
+  build with LLVM 18.</comment>
+    <requestid>1157793</requestid>
+  </revision>
 </revisionlist>
