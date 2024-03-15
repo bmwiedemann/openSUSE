@@ -1,7 +1,7 @@
 #
 # spec file for package dictd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           dictd
 Version:        1.13.1
 Release:        0
 Summary:        DICT protocol (RFC 2229) server and command-line client
-License:        GPL-1.0-or-later AND Zlib AND MIT
+License:        BSD-3-Clause AND GPL-1.0-or-later AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-or-later AND MIT AND SUSE-Public-Domain
 Group:          Productivity/Office/Dictionary
 URL:            https://github.com/cheusov/dictd
 Source0:        https://github.com/cheusov/dictd/archive/%{version}.tar.gz#/dictd-%{version}.tar.gz
@@ -36,6 +36,7 @@ BuildRequires:  gcc
 BuildRequires:  libdbi-devel
 BuildRequires:  libmaa-devel
 BuildRequires:  libtool
+BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(systemd)
 # libtool-ltdl-devel  byacc
@@ -61,6 +62,7 @@ autoreconf -fv
 Summary:        Development files for dictd
 Group:          Development/Languages/C and C++
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description devel
 This package contains two programs. dict gives access to
@@ -75,7 +77,7 @@ This package contains development files for the dictd package.
 export LDFLAGS="%{?__global_ldflags}" CPPFLAGS="%{optflags} -fPIC"
 %configure --enable-dictorg --with-plugin-dbi
 # --disable-plugin
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -102,7 +104,9 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcdictd
 # Makefile doesn't work correctly with libdir
 if [ "x%{_libdir}" != "x%{_libexecdir}" ] ; then
     mkdir -p %{buildroot}%{_libdir}/
-    mv -v %{buildroot}%{_libexecdir}/dictdplugin* %{buildroot}%{_libdir}/
+    install -p -v -m 0755 %{buildroot}%{_libexecdir}/dictdplugin* \
+        %{buildroot}%{_libdir}/
+    rm -rv %{buildroot}%{_libexecdir}
 fi
 rm -fv %{buildroot}%{_libdir}/*.{la,a}
 

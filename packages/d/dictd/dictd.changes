@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  7 18:18:01 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix License: tag (thank you, Fedora
+  developers, for the research,
+  https://src.fedoraproject.org/rpms/dictd/pull-request/5).
+- Clean up the SPEC file
+
+-------------------------------------------------------------------
 Sun Feb 20 23:12:10 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add dictd-rpmlintrc ... potential bashismus is completely
