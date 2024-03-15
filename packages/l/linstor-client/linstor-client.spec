@@ -45,8 +45,7 @@ Group:          Productivity/Clustering/HA
 Binaries of linstor client
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 sed -i '/^#!/d' linstor_client_main.py \
                 linstor_client/consts.py \
