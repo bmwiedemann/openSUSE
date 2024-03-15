@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 14 16:48:21 UTC 2024 - opensuse.lietuviu.kalba@gmail.com
+
+- Do not ship testsuite.log with pspp-devel package (boo#1221321)
+
+-------------------------------------------------------------------
 Mon Mar 11 15:56:24 UTC 2024 - opensuse.lietuviu.kalba@gmail.com
 
 - Improve documentation packaging.

@@ -178,4 +178,12 @@
     <comment>mention additional -devel package dependencies added in changelog</comment>
     <requestid>1157097</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>a4900bc3e8456b074e387b8a5dd9a632</srcmd5>
+    <version>2.0.0</version>
+    <time>1710531028</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1158060</requestid>
+  </revision>
 </revisionlist>

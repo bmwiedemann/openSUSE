@@ -71,7 +71,7 @@ BuildRequires:  spread-sheet-widget-devel >= 0.6
 BuildRequires:  texinfo
 BuildRequires:  zlib-devel
 AutoReqProv:    Yes
-Recommends:     %{name}-doc
+Recommends:     %{name}-doc = %{version}
 
 %description
 PSPP is a program for statistical analysis of sampled data. It
@@ -99,7 +99,7 @@ This subpackage provides translations for PSPP.
 
 
 %package devel
-Summary:        Development files for pspp, a statistical analysis program
+Summary:        Development files for PSPP, a statistical analysis program
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Requires:       cairo-devel
@@ -114,7 +114,7 @@ Requires:       zlib-devel
 %if 0%{?suse_version} 
 Requires:       xz-devel
 %endif
-Recommends:     %{name}-devel-doc
+Recommends:     %{name}-devel-doc = %{version}
 
 %description devel
 PSPP is a program for statistical analysis of sampled data. It
@@ -128,6 +128,7 @@ applications that want to build pspp plugins.
 Summary:        Manual for PSPP
 License:        GPL-3.0-or-later
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description doc
 PSPP is a program for statistical analysis of sampled data. It
@@ -139,6 +140,7 @@ This subpackage contains documentation for PSPP.
 %package devel-doc
 Summary:        PSPP Developers Guide
 License:        GPL-3.0-or-later
+BuildArch:      noarch
 
 %description devel-doc
 PSPP is a program for statistical analysis of sampled data. It
@@ -210,20 +212,8 @@ mv $RPM_BUILD_ROOT/%{_datadir}/metainfo $RPM_BUILD_ROOT/%{_datadir}/appdata
 %check
 export TESTSUITEFLAGS='-v -j128'
 %make_build check || /bin/true
-[ -f ./tests/testsuite.log ] || echo "check did not run" > ./tests/testsuite.log
-mkdir $RPM_BUILD_ROOT/%{_datadir}/pspp/tests
-# remove nondeterministic bits to make package build reproducible:
-perl -i -pe '
-  s/ (starting|ending) at:.*/ $1 at: [scrubbed]/;
-  s/(test suite duration:).*/$1 [scrubbed]/;
-  s/(hostname =) .*/$1 [hostscrubbed]/;
-  s/^(\| on) [a-zA-Z0-9._-]+/$1 [hostscrubbed]/;
-  s/ \(\d+m.*\ds\)/([durationscrubbed])/;
-  s/20\d\d-\d\d-\d\d \d\d:\d\d:\d\d\.\d+ [+-]\d\d00/[datescrubbed]/;
-  s!(bin/ld: /tmp/conftest\.)\w+!$1[randomnessscrubbed]!;
-  s!^(\| \./configure: line \d+: *)\d+ (Aborted)!$1 [PIDscrubbed] $2!;
-' ./tests/testsuite.log
-cp ./tests/testsuite.log $RPM_BUILD_ROOT/%{_datadir}/pspp/tests/
+# just look into test results, don't need to package them
+[ -f ./tests/testsuite.log ] && cat ./tests/testsuite.log
 
 %post
 /sbin/ldconfig
@@ -287,8 +277,6 @@ fi
 %dir %{_libdir}/pspp/
 %{_libdir}/pspp/libpspp-core.la
 %{_libdir}/pspp/libpspp.la
-%dir %{_datadir}/pspp/tests
-%{_datadir}/pspp/tests/testsuite.log
 
 %files doc
 %defattr(-, root, root)
