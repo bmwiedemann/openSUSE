@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Mar 08 11:49:12 UTC 2024 - iforster@suse.com
+
+- Update to version 2.18.0:
+  * NEWS: update 2.18.0
+  * azure: retry HTTP requests on codes 404, 410, and 429
+  * docs: add missing scaleway link
+  * providers: add scaleway
+  * resource/url: customize local address (port)
+  * stages/files: filter out non-existent paths before relabeling
+  * docs/release-notes: tweak dracut module change
+  * Bump minimum Go version to 1.20
+  * dracut: Don't include the ignition module by default
+  * ci: cancel previous build on PR update
+  * Sync repo templates ⚙
+  * Update build(deps)
+- Remove because included in upstream now:
+  0005-dracut-Don-t-include-the-ignition-module-by-default.patch
+- Increased required Go version
+
+-------------------------------------------------------------------
 Fri Mar  1 12:53:50 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - module-setup.sh: Use $dracutsysrootdir

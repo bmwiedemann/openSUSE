@@ -741,4 +741,27 @@ This makes it possible to use Ignition also on bare metal (e.g. when dumping ima
     <comment></comment>
     <requestid>1153998</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>3c879ec276855463c906654626bce203</srcmd5>
+    <version>2.18.0</version>
+    <time>1710530884</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.18.0:
+  * NEWS: update 2.18.0
+  * azure: retry HTTP requests on codes 404, 410, and 429
+  * docs: add missing scaleway link
+  * providers: add scaleway
+  * resource/url: customize local address (port)
+  * stages/files: filter out non-existent paths before relabeling
+  * docs/release-notes: tweak dracut module change
+  * Bump minimum Go version to 1.20
+  * dracut: Don't include the ignition module by default
+  * ci: cancel previous build on PR update
+  * Sync repo templates ⚙
+  * Update build(deps)
+- Remove because included in upstream now:
+  0005-dracut-Don-t-include-the-ignition-module-by-default.patch
+- Increased required Go version</comment>
+    <requestid>1158044</requestid>
+  </revision>
 </revisionlist>
