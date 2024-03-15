@@ -17,18 +17,21 @@
 
 
 Name:           system-user-gromox
-Version:        5
+Version:        6
 Release:        0
 Summary:        System user and group gromox
 License:        MIT
 Group:          System/Fhs
-#Source:        https://download.grommunio.com/community/openSUSE_Tumbleweed/system-user-gromox-*.src.rpm
 URL:            https://grommunio.com/
+Source:         system-user-gromox.conf
 BuildArch:      noarch
 BuildRequires:  systemd-rpm-macros
 %if 0%{?suse_version}
-# SUSE doing SUSE things again
 BuildRequires:  sysuser-tools
+%sysusers_requires
+%endif
+%if 0%{?rhel} || 0%{?fedora_version}
+%{?sysusers_requires_compat}
 %endif
 
 %description
@@ -41,18 +44,18 @@ This package provides the gromox account.
 # gromox.spec so that e.g. grommunio-admin-api does not grow a
 # BuildRequire on gromox (wait times).
 #
-cat >u.conf <<-EOF
-	g gromox -
-	g gromoxcf -
-	u gromox - "Gromox services"
-	m gromox gromoxcf
-EOF
+>user.pre
+%if 0%{?suse_version}
+%sysusers_generate_pre %_sourcedir/system-user-gromox.conf user
+%endif
 
 %install
-install -Dpm0644 u.conf "%buildroot/%_sysusersdir/system-user-gromox.conf"
+install -Dpm0644 %_sourcedir/system-user-gromox.conf "%buildroot/%_sysusersdir/system-user-gromox.conf"
 
-%post
-%sysusers_create system-user-gromox.conf
+%pre -f user.pre
+%if 0%{?rhel} || 0%{?fedora_version}
+%sysusers_create_compat %_sourcedir/system-user-gromox.conf
+%endif
 
 %files
 %_sysusersdir/*.conf
