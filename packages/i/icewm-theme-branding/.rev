@@ -139,4 +139,15 @@ icewm-theme-branding icewm-config-upstream</comment>
     <comment></comment>
     <requestid>1152082</requestid>
   </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>6b60df4ee52848c9f17a1f15a890e9bc</srcmd5>
+    <version>1.2.5</version>
+    <time>1710530942</time>
+    <user>anag+factory</user>
+    <comment>- Make sure flavor is never defined without content, but at least
+  has %nil.
+- Use an invalid arch for &quot;&quot; flavor (do-not-build): %nil is not
+  actually supported and worked by accident. (forwarded request 1157913 from dimstar)</comment>
+    <requestid>1157964</requestid>
+  </revision>
 </revisionlist>

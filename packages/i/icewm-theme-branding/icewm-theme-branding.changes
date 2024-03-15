@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 14 09:27:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Make sure flavor is never defined without content, but at least
+  has %nil.
+- Use an invalid arch for "" flavor (do-not-build): %nil is not
+  actually supported and worked by accident.
+
+-------------------------------------------------------------------
 Thu Feb 22 13:39:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -23,9 +23,9 @@
 %define icewm_version 1.6.5
 %endif
 
-%define flavor @BUILD_FLAVOR@
+%define flavor @BUILD_FLAVOR@%nil
 %if "%{flavor}" == ""
-ExclusiveArch:  %{nil}
+ExclusiveArch:  do-not-build
 %else
 %define branding_name %{flavor}
 %if "%{flavor}" == "SLE"
@@ -37,7 +37,7 @@ ExclusiveArch:  %{nil}
 
 %if (0%{?build_SLE} && 0%{?is_opensuse}) || (0%{?build_openSUSE} && ! 0%{?is_opensuse})
 # Don't build SLE branding on openSUSE and vice-versa
-ExclusiveArch:  %{nil}
+ExclusiveArch:  do-not-build
 %endif
 
 Name:           icewm-theme-branding
