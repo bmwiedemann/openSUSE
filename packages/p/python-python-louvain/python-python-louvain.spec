@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-louvain
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 %define         skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-python-louvain
 Version:        0.16
 Release:        0
@@ -27,16 +27,21 @@ License:        BSD-3-Clause
 URL:            https://github.com/taynaud/python-louvain
 Source0:        https://files.pythonhosted.org/packages/source/p/python-louvain/python-louvain-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix-test-karate.patch gh#taynaud/python-louvain#95
-Patch:          fix-test-karate.patch
+Patch0:         fix-test-karate.patch
+# PATCH-FIX-UPSTREAM tests-int-division.patch gh#taynaud/python-louvain#104
+Patch1:         tests-int-division.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-networkx
 Requires:       python-numpy
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
+Provides:       python-community = %{version}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module networkx}
@@ -53,18 +58,19 @@ Statistical Mechanics: Theory and Experiment 2008(10), P10008 (12pp)
 
 %prep
 %autosetup -p1 -n python-louvain-%{version}
+
 sed -i -e '/^#!\//, 1d' community/__init__.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/community
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec test_community.py
+%pyunittest -v test_*.py
 
 %post
 %python_install_alternative community
@@ -76,6 +82,7 @@ sed -i -e '/^#!\//, 1d' community/__init__.py
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/community
-%{python_sitelib}/*
+%{python_sitelib}/community
+%{python_sitelib}/python_louvain-%{version}*-info
 
 %changelog

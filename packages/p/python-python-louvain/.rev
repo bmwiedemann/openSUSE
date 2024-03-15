@@ -71,4 +71,14 @@
 </comment>
     <requestid>1010639</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b3765186872ec28d7bb360c8cd5b634b</srcmd5>
+    <version>0.16</version>
+    <time>1710531143</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file
+- Fix tests on Python 3.12 with tests-int-division.patch
+</comment>
+    <requestid>1158283</requestid>
+  </revision>
 </revisionlist>
