@@ -644,4 +644,15 @@ please use same ADI as https://build.opensuse.org/request/show/902766</comment>
   * Use Compound primary colors for most actions (https://github.com/matrix-org/matrix-react-sdk/pull/12241). Contributed by @robintown.</comment>
     <requestid>1157523</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>72d01d7e3d2a7ff6864ba371dd1759e0</srcmd5>
+    <version>1.11.61</version>
+    <time>1710531054</time>
+    <user>anag+factory</user>
+    <comment>- Version 1.11.61
+  * No changes
+  ## 🐛 Bug Fixes
+  * Update `@vector-im/compound-design-tokens` in package.json (https://github.com/matrix-org/matrix-react-sdk/pull/12340).</comment>
+    <requestid>1158107</requestid>
+  </revision>
 </revisionlist>
