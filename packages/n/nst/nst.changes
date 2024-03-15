@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Mar 14 09:21:28 UTC 2024 - matthias.gerstner@suse.com
+
+- Update to version 1.0+git3df8353:
+  * README.md: document configuration file support
+  * nst: make external command to receive terminal buffer configurable
+  * doc: update and complement man pages
+  * nst: support extra configuration file specified in environment variable
+  * Cmdline: support additional config file specification
+  * SConstruct files: fix flake8 findings
+  * XEventHandler: support ConfigFile override of KbdShortcuts
+  * themes: gruvbox: fix invalid reverse cursor color index
+  * nst: support color configuration via ConfigFile
+  * Screen: asText(): don't add newlines for wrapped lines
+  * themes: make theme configurable via ConfigFile
+  * global: use runtime defined Theme structure
+  * Theme: use std::vector for extended colors
+  * Selection: make SEL_URI_SCHEMES configurable via ConfigFile
+  * Term: make HISTORY_LEN configurable via ConfigFile
+  * WindowSystem: make HIDE_MOUSE_CURSOR configurable via ConfigFile
+  * Term: make KEEP_SCROLL_POSITION configurable via ConfigFile
+  * WindowSystem: support configuration of COLS and ROWS via ConfigFile
+  * WindowSystem: support configuration of CURSORSHAPE via ConfigFile
+  * WindowSystem: make CURSOR_THICKNESS configurable via ConfigFile
+  * nst: make BLINK_TIMEOUT configurable via ConfigFile
+  * Selection: make SEL_LINE_SNAP_KEEP_NEWLINE configurable via ConfigFile
+  * XEventHandler: support configuring SEL_CLEAR via ConfigFile
+  * ConfigFile: support obtaining boolean config values
+  * WindowSystem: support configuration of BORDER_PX via ConfigFile
+  * TTY: bad SIGCHILD handling logic
+  * Selection: support configuring WORD_DELIMITERS via configuration file
+  * ConfigFile: support getting wstring config values
+  * ConfigFile: support unicode strings and proper string quoting style
+  * feature: add support for a simple configuration file
+  * README.md: reflect latest development efforts
+  * README.md: fix some typos
+  * CSIEscape: fix error message in parseColor()
+  * nst-msg: support operating on specific instance by passing PID
+- add usr_etc_lookup.patch: lookup config in /usr/etc as well.
+
+-------------------------------------------------------------------
 Wed Feb 20 11:01:34 UTC 2024 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - initial version of the package

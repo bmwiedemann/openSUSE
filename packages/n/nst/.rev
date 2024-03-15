@@ -7,4 +7,41 @@
     <comment>I would like to add this new package to Factory.</comment>
     <requestid>1154054</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c0fdd8f492c1d36fde039c92c73898a0</srcmd5>
+    <version>0.2</version>
+    <time>1710531087</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0+git3df8353:
+  * README.md: document configuration file support
+  * nst: make external command to receive terminal buffer configurable
+  * doc: update and complement man pages
+  * nst: support extra configuration file specified in environment variable
+  * Cmdline: support additional config file specification
+  * SConstruct files: fix flake8 findings
+  * XEventHandler: support ConfigFile override of KbdShortcuts
+  * themes: gruvbox: fix invalid reverse cursor color index
+  * nst: support color configuration via ConfigFile
+  * Screen: asText(): don't add newlines for wrapped lines
+  * themes: make theme configurable via ConfigFile
+  * global: use runtime defined Theme structure
+  * Theme: use std::vector for extended colors
+  * Selection: make SEL_URI_SCHEMES configurable via ConfigFile
+  * Term: make HISTORY_LEN configurable via ConfigFile
+  * WindowSystem: make HIDE_MOUSE_CURSOR configurable via ConfigFile
+  * Term: make KEEP_SCROLL_POSITION configurable via ConfigFile
+  * WindowSystem: support configuration of COLS and ROWS via ConfigFile
+  * WindowSystem: support configuration of CURSORSHAPE via ConfigFile
+  * WindowSystem: make CURSOR_THICKNESS configurable via ConfigFile
+  * nst: make BLINK_TIMEOUT configurable via ConfigFile
+  * Selection: make SEL_LINE_SNAP_KEEP_NEWLINE configurable via ConfigFile
+  * XEventHandler: support configuring SEL_CLEAR via ConfigFile
+  * ConfigFile: support obtaining boolean config values
+  * WindowSystem: support configuration of BORDER_PX via ConfigFile
+  * TTY: bad SIGCHILD handling logic
+  * Selection: support configuring WORD_DELIMITERS via configuration file
+  * ConfigFile: support getting wstring config values
+  * ConfigFile: support unicode strings and proper string quoting style</comment>
+    <requestid>1158176</requestid>
+  </revision>
 </revisionlist>

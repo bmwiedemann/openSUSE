@@ -16,7 +16,7 @@
 #
 
 
-%define commit 77df4fd
+%define commit 3df8353
 
 Name:           nst
 Version:        0.2
@@ -28,11 +28,12 @@ URL:            https://github.com/gerstner-hub/nst
 Source0:        nst-1.0+git%{commit}.tar.xz
 Source1:        nst_config.cxx
 Source2:        nst_config.hxx
+Patch0:         usr_etc_lookup.patch
 
 BuildRequires:  asciidoc
 BuildRequires:  gcc-c++
-BuildRequires:  libcosmos-devel
 BuildRequires:  libXft-devel
+BuildRequires:  libcosmos-devel
 BuildRequires:  libxpp-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
@@ -48,6 +49,7 @@ external tools for searching.
 
 %prep
 %setup -q -n nst-1.0+git%{commit}
+%autopatch -p1
 # copy compile time configuration from package sources into source tree
 cp %{SOURCE1} src
 cp %{SOURCE2} src
@@ -62,8 +64,10 @@ scons install instroot=%{buildroot}/usr use-system-pkgs=1
 %license LICENSE
 %doc README.md
 %{_bindir}/nst*
+%{_distconfdir}/nst.conf
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/terminfo/n/nst*
 %{_mandir}/man1/nst*
+%{_mandir}/man5/nst*
 
 %changelog

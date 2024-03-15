@@ -1,0 +1,12 @@
+Index: nst/src/nst.cxx
+===================================================================
+--- nst.orig/src/nst.cxx
++++ nst/src/nst.cxx
+@@ -86,6 +86,7 @@ namespace {
+ }
+ 
+ void Nst::loadConfig() {
++	m_config_file.parse("/usr/etc/nst.conf");
+ 	m_config_file.parse("/etc/nst.conf");
+ 	if (auto home = cosmos::proc::get_env_var("HOME"); home != std::nullopt) {
+ 		m_config_file.parse(home->str() + "/.config/nst.conf");

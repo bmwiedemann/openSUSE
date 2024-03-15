@@ -38,6 +38,9 @@ constexpr std::array<std::string_view, 8> STTY_ARGS{{
 	"stty", "raw", "pass8", "nl", "-echo", "-iexten", "-cstopb", "38400"
 }};
 
+/// The default command to invoke for when the "open_buffer_in_editor" keyboard shortcut is executed.
+const std::vector<std::string> EXTERNAL_PIPE_CMDLINE{"gvim", "--not-a-term", "-"};
+
 /*
  * What program is executeed by nst depends on these precedence rules:
  * 1: program passed with -e
@@ -133,7 +136,7 @@ constexpr std::chrono::milliseconds MAX_LATENCY{33};
  **/
 constexpr std::chrono::milliseconds BLINK_TIMEOUT{800};
 
-/// Thickness of underline attribute and bar cursors.
+/// Thickness of bar style cursors.
 constexpr int CURSOR_THICKNESS = 2;
 
 /// Terminal bell volume.
@@ -143,7 +146,7 @@ constexpr int CURSOR_THICKNESS = 2;
 constexpr xpp::BellVolume BELL_VOLUME{0};
 
 /// Default colors to use, see themes.hxx for available themes.
-constexpr auto THEME = DEFAULT_THEME;
+const auto THEME = DEFAULT_THEME;
 
 /// Default shape of cursor
 constexpr CursorStyle CURSORSHAPE = CursorStyle::STEADY_BLOCK;
