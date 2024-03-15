@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 15 11:10:26 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 8.0.1:
+  See https://www.kicad.org/blog/2024/03/KiCad-8.0.1-Release/ for details
+- Fix some race condition, causing e.g. fails in qa_pcbnew:
+  * fix_zone_fill_race.patch
+  * 0001-Fix-triangulationValid-check-race-for-zone-fill.patch
+
+-------------------------------------------------------------------
 Sun Feb 25 07:41:33 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 8.0.0:

@@ -20,14 +20,18 @@
 # symbol libraries from version 8.0.0
 %define compatversion 8.0.0
 Name:           kicad
-Version:        8.0.0
-%define file_version 8.0.0
+Version:        8.0.1
+%define file_version 8.0.1
 Release:        0
 Summary:        EDA software suite for the creation of schematics and PCB
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
 URL:            https://www.kicad.org
 Source:         https://gitlab.com/kicad/code/kicad/-/archive/%{file_version}/kicad-%{file_version}.tar.bz2
+# PATCH-FIX-UPSTREAM
+Patch1:         https://gitlab.com/kicad/code/kicad/-/commit/81cb6d0c3fb92dd15f0a0e0d2d32337be1617399.patch#/fix_zone_fill_race.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         https://gitlab.com/kicad/code/kicad/-/commit/1c459e9a67151a6f028ac3a108b338e850126bfb.patch#/0001-Fix-triangulationValid-check-race-for-zone-fill.patch
 
 BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
@@ -185,17 +189,13 @@ chmod -x %{buildroot}%{_datadir}/kicad/scripting/*/*.py
 %find_lang %{name}
 
 %check
-./build/kicad/kicad-cli version
+./build/kicad/kicad-cli version --format about
 %ctest --exclude-regex 'qa_spice|qa_cli|qa_common|qa_pcbnew'
 
-%ifnarch %{ix86} aarch64
-%ctest --tests-regex 'qa_spice|qa_cli|qa_common|qa_pcbnew'
-%endif
-
-%ifarch aarch64
-%ctest --tests-regex 'qa_cli|qa_common|qa_pcbnew'
-# aarch64: https://sourceforge.net/p/ngspice/bugs/622/
-%ctest --tests-regex 'qa_spice' || true
+%ifnarch %{ix86}
+%ctest --tests-regex 'qa_spice|qa_cli|qa_common'
+# Occasionally fails
+%ctest --repeat until-fail:5 --tests-regex 'qa_pcbnew'
 %endif
 
 %ifarch %{ix86}
