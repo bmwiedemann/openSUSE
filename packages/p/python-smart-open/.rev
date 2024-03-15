@@ -25,4 +25,30 @@ optional dep of https://build.opensuse.org/package/show/devel:languages:python/p
     <comment></comment>
     <requestid>1117462</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>39d28a8af67874a0fdc41af72aa084e7</srcmd5>
+    <version>7.0.1</version>
+    <time>1710531078</time>
+    <user>anag+factory</user>
+    <comment>- Update to 7.0.1:
+  * Do not touch botocore unless it is installed
+  * Upgrade dev status classifier to stable
+  * Add zstandard compression support
+  * Support moto 4 &amp; 5
+  * Add logic for handling large files in MultipartWriter uploads to S3
+  * Add support for SSH connection via aliases from ~/.ssh/config
+  * Secure the connection using SSL when connecting to the FTPS server
+  * Make GCS I/O 1000x faster by avoiding unnecessary API call
+  * Retry finalizing multipart S3 upload
+  * Handle exceptions during writes to Azure
+  * Fix str method in SinglepartWriter
+  * Fix KeyError: 'ContentRange' when received full content from S3
+  * Propagate exit call to the underlying filestream
+- Switch to autosetup and pyproject macros.
+- Less globs in %files.
+- Update all URLs, the github repository owner has changed.
+- Add patch skip-gzip-tests-python312.patch, skip broken tests under
+  Python 3.12.</comment>
+    <requestid>1158157</requestid>
+  </revision>
 </revisionlist>
