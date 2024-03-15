@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 10 10:38:33 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2024.1~rc1
+  * Add tooling support for SPV_KHR_maximal_reconvergence,
+    SPV_KHR_float_controls2, SPV_KHR_quad_control,
+    SPV_NV_shader_atomic_fp16_vector, SPV_QCOM_image_processing2
+  * Fold 64-bit int operations
+  * Support operand kind for SPV_INTEL_maximum_registers
+
+-------------------------------------------------------------------
 Fri Dec 22 20:14:02 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2023.6~rc1
