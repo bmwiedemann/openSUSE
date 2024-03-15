@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 14 20:47:36 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Add an explanation to the use of static_node
+
+-------------------------------------------------------------------
 Mon Mar 11 12:17:01 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
-- Revert Feb 27 addition of static_node; this does not do anything.
+- Revert Feb 27 addition of static_node; this does not seemingly
+  do anything.
 
 -------------------------------------------------------------------
 Tue Feb 27 09:48:05 UTC 2024 - Matthias Bach <marix@marix.org>

@@ -1,2 +1,7 @@
 #KERNEL=="vhba_ctl", NAME="%k", MODE="0660", OWNER="root", GROUP="cdrom"
-KERNEL=="vhba_ctl", SUBSYSTEM=="misc", TAG+="uaccess"
+#
+# ACL-granting via uaccess only works when the module has actually been loaded
+# (more specifically, that there was a device-create event from the kernel? or
+# that it just shows up in /proc/devices?).
+#
+KERNEL=="vhba_ctl", SUBSYSTEM=="misc", TAG+="uaccess", OPTIONS+="static_node=vhba_ctl"
