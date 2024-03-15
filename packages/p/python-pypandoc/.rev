@@ -63,4 +63,15 @@
 </comment>
     <requestid>1088924</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1199281a2437dfea9f6db94199eba987</srcmd5>
+    <version>1.13</version>
+    <time>1710531050</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.13:
+  * Change when we do source file verification
+- Drop tests.py file, it is shipped in the source tarball.
+- Switch to pyproject macros.</comment>
+    <requestid>1158104</requestid>
+  </revision>
 </revisionlist>

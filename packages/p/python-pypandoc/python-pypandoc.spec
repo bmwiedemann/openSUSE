@@ -1,7 +1,7 @@
 #
 # spec file for package python-pypandoc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,27 +18,24 @@
 
 %define base_name pypandoc
 Name:           python-pypandoc
-Version:        1.11
+Version:        1.13
 Release:        0
 Summary:        Thin wrapper for pandoc
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/bebraw/pypandoc
 Source:         https://github.com/NicklasTegner/pypandoc/archive/refs/tags/v%{version}.tar.gz#/pypandoc-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/NicklasTegner/pypandoc/master/tests.py
 BuildRequires:  %{python_module pandocfilters}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pandoc
 BuildRequires:  python-rpm-macros
 BuildRequires:  texlive-latex-bin
 BuildRequires:  texlive-xcolor
+BuildRequires:  tex(bookmark.sty)
 Requires:       pandoc
-Requires:       python-pip
-Requires:       python-wheel
 Suggests:       ghc-citeproc
 ExcludeArch:    %{ix86}
 BuildArch:      noarch
@@ -50,13 +47,11 @@ pypandoc provides a thin wrapper for pandoc, a universal document converter.
 %prep
 %setup -q -n pypandoc-%{version}
 
-cp %{SOURCE1} tests.py
-
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -68,6 +63,6 @@ cp %{SOURCE1} tests.py
 %license LICENSE
 %doc README.md
 %{python_sitelib}/pypandoc
-%{python_sitelib}/pypandoc-%{version}*-info
+%{python_sitelib}/pypandoc-%{version}.dist-info
 
 %changelog

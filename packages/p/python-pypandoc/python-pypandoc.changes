@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 14 23:54:12 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.13:
+  * Change when we do source file verification
+- Drop tests.py file, it is shipped in the source tarball.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Wed May 24 17:47:42 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Updating to upstream version 1.11 (as previous 1.6.4 fails)
