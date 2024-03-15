@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 14 20:02:03 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.2.4:
+  * Defer checks for JACK libraries until opening audio interface 
+
+-------------------------------------------------------------------
 Wed Mar  6 08:11:51 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.2.3:
