@@ -18,7 +18,7 @@
 
 %define sover 1
 Name:           qtkeychain-qt6
-Version:        0.14.1
+Version:        0.14.2
 Release:        0
 Summary:        Platform-independent Qt API for storing passwords securely
 License:        BSD-2-Clause
