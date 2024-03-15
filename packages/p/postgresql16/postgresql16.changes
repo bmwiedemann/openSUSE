@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 12 22:48:41 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Require LLVM <= 17 for now, because LLVM 18 doesn't seem to work.
+
+-------------------------------------------------------------------
+Thu Mar  7 15:04:40 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Remove constraints file because improved memory usage for s390x
+
+-------------------------------------------------------------------
 Thu Feb 29 14:36:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -20,7 +20,7 @@
 %define pgmajor 16
 %define buildlibs 1
 %define tarversion %{pgversion}
-%define latest_supported_llvm_ver 18
+%define latest_supported_llvm_ver 17
 
 ### CUT HERE ###
 %define pgname postgresql%pgmajor
