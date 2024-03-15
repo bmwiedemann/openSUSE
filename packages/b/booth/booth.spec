@@ -76,8 +76,7 @@ This package contains automated tests for Booth,
 the Cluster Ticket Manager for Pacemaker.
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch1 -p1
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 autoreconf -fvi

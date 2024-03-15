@@ -489,4 +489,12 @@
   * harden_booth-arbitrator.service.patch</comment>
     <requestid>1126570</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>f8315d19ef27a435e4808313051ec849</srcmd5>
+    <version>1.1+git0.09b0074</version>
+    <time>1710531084</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1158168</requestid>
+  </revision>
 </revisionlist>
