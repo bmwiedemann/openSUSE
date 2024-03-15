@@ -1,6 +1,6 @@
 --- a/desktop/build-scripts/common-resources/common-linux/tuxguitar.sh
 +++ b/desktop/build-scripts/common-resources/common-linux/tuxguitar.sh
-@@ -1,20 +1,155 @@
+@@ -1,20 +1,157 @@
  #!/bin/sh
 -##SCRIPT DIR
 -TG_DIR=`dirname $(realpath "$0")`
@@ -150,6 +150,8 @@
 +t=$(swt_guess_)
 +[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
 +t="/usr/share/java/commons-compress.jar"
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t="/usr/share/java/commons-io.jar"
 +[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
  ##MAINCLASS
  MAINCLASS=org.herac.tuxguitar.app.TGMainSingleton
