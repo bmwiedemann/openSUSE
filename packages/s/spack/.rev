@@ -468,4 +468,12 @@
 - Filter out more rpmlint errors. (forwarded request 1146128 from eeich)</comment>
     <requestid>1146129</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>0f944523e33adebb1fdb1aa57ea2168e</srcmd5>
+    <version>0.21.2</version>
+    <time>1710531147</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1158279</requestid>
+  </revision>
 </revisionlist>

@@ -53,7 +53,7 @@ ExclusiveArch:  do_not_build
 %define mypython python%{?mypyver}
 
 Name:           spack
-Version:        0.21.1
+Version:        0.21.2
 Release:        0
 Summary:        Package manager for HPC systems
 License:        Apache-2.0 AND MIT AND Python-2.0 AND BSD-3-Clause
@@ -324,6 +324,7 @@ chmod 0755 %{buildroot}%{_bindir}/%{basename:%{S:6}}
 cp etc/spack/defaults/config.yaml %{buildroot}%{_sysconfdir}/skel/.spack/
 install -m 755 %{S:3} %{buildroot}/%{spack_dir}/run-find-external.sh
 sed -i -e 's#@@_sysconfdir@@#%{_sysconfdir}#' %{buildroot}/%{spack_dir}/run-find-external.sh
+sed -i -e '/. \/opt/s#/opt/spack/#/usr/share/#' %{buildroot}/%{_datarootdir}/spack/templates/container/singularity.def
 
 # Make spack only to write to home dir of user, if run as user
 sed -i 's@\(\sroot:\) /opt/spack@\1 ~/spack/packages@' %{buildroot}%{_sysconfdir}/skel/.spack/config.yaml

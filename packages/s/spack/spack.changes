@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Mar 15 13:35:51 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Update Spack to version 0.21.2
+  * Bugfixes
+    + Containerize: accommodate nested or pre-existing `spack-env`
+      paths.
+    + Fix `setup-env` script, when going back and forth between
+      instances.
+    + Fix using fully-qualified namespaces from root specs.
+    + Fix a bug when a required provider is requested for multiple
+      virtuals.
+    + OCI buildcaches:
+      * only push in parallel when forking.
+      * use pickleable errors (#42160)
+    + Fix using sticky variants in externals.
+    + Fix a rare issue with conditional requirements and
+      multi-valued variants.
+  * Package updates
+    + `rust`: add v1.75, rework a few variants.
+    + `py-transformers`: add v4.35.2.
+- Fix path to setup-env.sh in the Apptainer template (bsc#1221471).
+
+-------------------------------------------------------------------
 Fri Feb  2 14:41:14 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - Make python version used configurable.
