@@ -1,0 +1,8 @@
+<package name="sddm-kcm6" project="openSUSE:Factory">
+  <title>A sddm control module for KDE</title>
+  <description>SDDM control module for Plasma. It provides a graphical frontend for the SDDM.
+
+</description>
+  <devel project="KDE:Frameworks" package="sddm-kcm6"/>
+  <url>https://projects.kde.org/projects/kdereview/sddm-kcm/repository</url>
+</package>

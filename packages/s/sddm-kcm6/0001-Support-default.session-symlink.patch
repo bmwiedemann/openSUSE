@@ -1,0 +1,45 @@
+From 015348caa1e8dd7f9c3b1490c6457017ec1b134e Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Tue, 11 Jul 2017 13:13:13 +0200
+Subject: [PATCH] Support default.session symlink
+
+Display it under a different name, otherwise it is indistinguishable from
+a normal session. Use it as default when the combobox is disabled.
+---
+ src/sessionmodel.cpp | 6 ++++++
+ src/ui/Advanced.qml  | 2 +-
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/src/sessionmodel.cpp b/src/sessionmodel.cpp
+index ebcdb7e..9b00fa6 100644
+--- a/src/sessionmodel.cpp
++++ b/src/sessionmodel.cpp
+@@ -95,6 +95,12 @@ void SessionModel::loadDir(const QString &path, SessionType type)
+                 isHidden = line.mid(7).toLower() == QLatin1String("true");
+             }
+         }
++
++        if (session == QLatin1String( "default.desktop" )) {
++            si->name = tr("(System Default)");
++            isHidden = false;
++        }
++
+         if (!isHidden) {
+             // add to sessions list
+             d->sessions.push_back(si);
+diff --git a/src/ui/Advanced.qml b/src/ui/Advanced.qml
+index 12bf59f..67ea310 100644
+--- a/src/ui/Advanced.qml
++++ b/src/ui/Advanced.qml
+@@ -79,7 +79,7 @@ Kirigami.Page {
+                 textRole: "name"
+                 valueRole: "file"
+                 onActivated: kcm.sddmSettings.session = currentValue
+-                onEnabledChanged: enabled ? kcm.sddmSettings.session = currentValue : kcm.sddmSettings.session = ""
++                onEnabledChanged: enabled ? kcm.sddmSettings.session = currentValue : kcm.sddmSettings.session = "default.desktop"
+                 KCM.SettingStateBinding {
+                     visible: autologinBox.checked
+                     configObject: kcm.sddmSettings
+-- 
+2.41.0
+

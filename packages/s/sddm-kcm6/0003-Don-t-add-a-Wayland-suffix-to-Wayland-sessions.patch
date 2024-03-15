@@ -1,0 +1,39 @@
+From 5ac4a6e63e3dfb143f24f4ae9ca50b3295f4c0fa Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sat, 7 Jul 2018 20:34:44 +0200
+Subject: [PATCH] Don't add a (Wayland) suffix to Wayland sessions
+
+It got removed from sddm as well.
+---
+ src/sessionmodel.cpp | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/src/sessionmodel.cpp b/src/sessionmodel.cpp
+index 9b00fa6..a4dfee1 100644
+--- a/src/sessionmodel.cpp
++++ b/src/sessionmodel.cpp
+@@ -47,6 +47,7 @@ SessionModel::~SessionModel()
+ 
+ void SessionModel::loadDir(const QString &path, SessionType type)
+ {
++    Q_UNUSED(type);
+     QDir dir(path);
+     dir.setNameFilters(QStringList() << QStringLiteral("*.desktop"));
+     dir.setFilter(QDir::Files);
+@@ -77,13 +78,6 @@ void SessionModel::loadDir(const QString &path, SessionType type)
+ 
+             if (line.startsWith(QLatin1String("Name="))) {
+                 si->name = line.mid(5);
+-                if (type == SessionTypeWayland) {
+-                    // we want to exactly match the SDDM prompt which is formatted in this way
+-                    // with the exact same check
+-                    if (!si->name.endsWith(QLatin1String(" (Wayland)"))) {
+-                        si->name = i18nc("%1 is the name of a session", "%1 (Wayland)", si->name);
+-                    }
+-                }
+             }
+             if (line.startsWith(QLatin1String("Exec="))) {
+                 si->exec = line.mid(5);
+-- 
+2.41.0
+
