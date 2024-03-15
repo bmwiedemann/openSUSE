@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Mar 15 09:35:47 UTC 2024 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to current git version in order to include the code that
+  fixes the problem of ImageMagick not being able to resize the
+  icons dynamically. This means including the following commits:
+  * install: fix linting
+  * assemble: fix regression in file reading
+  * chore: fix typo (#1283)
+  * install: fix installation script (#1282)
+  * install: add fixed resolution png icons for use on desktops (#1280)
+  * Update install (#1278)
+
+-------------------------------------------------------------------
+Thu Mar 14 20:44:46 UTC 2024 - Michal Vyskocil <michal.vyskocil@gmail.com>
+
+- Update to 1.7.0.1
+ * install: fix version
+ * distrobox-generate-entry: respect DBX_CONTAINER_MANAGER variable
+ * distrobox-init: do not fail if locale cannot be set by
+ * Don't create empty XAUTH* variables.
+ * Add DISTROBOX_EXPORT_PATH env var for distrobox-export.
+ * distrobox-init: use "zypper se --match-exact" (instead of "zypper se -x")
+ * init: better detection of file watching trigger
+ * enter: fix shell when entering initful container after
+ * export: fix quotes arount exported binary path
+ * upgrade: fix execution with new enter behavior
+ * enter: do not use a shell when executing a custom command
+ * export: fix execution of binaries with spaces in the name
+ * rm: do not fail if no exports are found
+
+-------------------------------------------------------------------
 Wed Feb 28 21:55:18 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Removed:

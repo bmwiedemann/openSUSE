@@ -17,7 +17,7 @@
 
 
 Name:           distrobox
-Version:        1.7.0
+Version:        1.7.0.1_g7a56b6e
 Release:        0
 Summary:        Use any linux distribution inside your terminal
 License:        GPL-3.0-only
@@ -73,18 +73,6 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_distconfdir}/distrobox/distrobox.conf
 mkdir -p %{buildroot}%{_sysconfdir}/distrobox
 install -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/distrobox/distrobox.conf
 %endif
-
-# Move the icon
-mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/apps
-mv %{buildroot}%{_datadir}/icons/terminal-distrobox-icon.svg \
-   %{buildroot}%{_datadir}/icons/hicolor/scalable/apps
-
-# Generate all the other icon sizes
-for sz in 16 22 24 32 36 48 64 72 96 128 256; do
-    mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${sz}x${sz}/apps
-    convert terminal-distrobox-icon.svg -resize ${sz}x${sz} \
-        %{buildroot}%{_datadir}/icons/hicolor/${sz}x${sz}/apps/terminal-distrobox-icon.png
-done
 
 %files
 %license COPYING.md
