@@ -19,7 +19,7 @@
 %define pythons python3
 
 Name:           mkosi
-Version:        21
+Version:        22
 Release:        0
 Summary:        Build Legacy-Free OS Images
 License:        LGPL-2.1-or-later
