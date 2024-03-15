@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 07 15:21:08 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.073:
+  * Track mirror propagation using time of job
+  * Add project propagation details /app/server_rollout/:version
+  * Do not show projects with negative priority
+  * Show only relevant mirrors in /report/mirrors/:proj
+  * fix .mirrorlist doesnt always work for repomd.xml
+  * ui: add prio column to /app/project
+
+-------------------------------------------------------------------
 Thu Feb 29 11:32:53 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.072:
