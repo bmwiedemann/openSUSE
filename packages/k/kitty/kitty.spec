@@ -19,7 +19,7 @@
 # sphinx_copybutton not in Factory
 %bcond_with docs
 Name:           kitty
-Version:        0.32.2
+Version:        0.33.0
 Release:        0
 Summary:        A GPU-based terminal emulator
 License:        GPL-3.0-only
@@ -34,7 +34,7 @@ BuildRequires:  Mesa-libGL-devel
 BuildRequires:  fdupes
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype2-devel
-BuildRequires:  go >= 1.20
+BuildRequires:  go >= 1.22
 BuildRequires:  harfbuzz-devel >= 1.5.0
 BuildRequires:  libXcursor-devel
 BuildRequires:  libXi-devel
@@ -55,6 +55,7 @@ BuildRequires:  wayland-protocols-devel
 BuildRequires:  xxhash-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(simde)
 # Python requirements for Factory and Leap
 %if 0%{?suse_version} > 1500
 BuildRequires:  python3-devel >= 3.7

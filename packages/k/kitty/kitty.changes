@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Mar 15 13:45:03 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- 'pkgconfig(simde)' is now available in TW; adding updated go vendor tarball
+- Setting 'BuildRequires: go >= 1.22'
+
+-------------------------------------------------------------------
+Tue Mar 12 16:47:31 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding 'BuildRequires: pkgconfig(simde)'
+- Update to 0.33.0:
+  * Cheetah speed with a redesigned render loop and a 2x faster escape code
+    parser that uses SIMD CPU vector instruction to parse data in
+    parallel (#7005)
+  * A new benchmark kitten (kitten __benchmark__) to measure terminal
+    throughput performance
+  * Graphics protocol: Add a new delete mode for deleting images whose ids
+    fall within a range. Useful for bulk deletion (#7080)
+  * Keyboard protocol: Fix the Enter, Tab and Backspace keys generating
+    spurious release events even when report all keys as escape codes is
+    not set (#7136)
+  * macOS: The command line args from macos-launch-services-cmdline are now
+    prefixed to any args from open --args rather than overwriting them (#7135)
+  * Allow specifying where the new tab is created for detach_window (#7134)
+  * hints kitten: The option to set the text color for hints now allows
+    arbitrary colors (#7150)
+  * icat kitten: Add a command line argument to override terminal window size
+    detection (#7165)
+  * A new action toggle_tab to easily switch to and back from a tab with a
+    single shortcut (#7203)
+  * When clearing terminal add a new type to_cursor_scroll which can be used
+    to clear to prompt while moving cleared lines into the scrollback
+  * Fix a performance bottleneck when dealing with thousands of small
+    images (#7080)
+  * kitten @ ls: Return the timestamp at which the window was created (#7178)
+  * hints kitten: Use default editor rather than hardcoding vim to open file
+    at specific line (#7186)
+  * Remote control: Fix --match argument not working for @ls, @send-key,
+    @set-background-image (#7192)
+  * Keyboard protocol: Do not deliver a fake key release events on OS window
+    focus out for engaged modifiers (#7196)
+  * Ignore startup_session when kitty is invoked with command line options
+    specifying a command to run (#7198)
+  * Box drawing: Specialize rendering for the Fira Code progress
+    bar/spinner glyphs
+
+-------------------------------------------------------------------
 Mon Feb 26 10:18:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
