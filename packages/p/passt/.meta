@@ -1,0 +1,11 @@
+<package name="passt" project="openSUSE:Factory">
+  <title>Plug A Simple Socket Transport</title>
+  <description>passt implements a translation layer between a Layer-2 network interface and
+native Layer-4 sockets (TCP, UDP, ICMP/ICMPv6 echo) on a host. It doesn't
+require any capabilities or privileges, and it can be used as a simple
+replacement for Slirp.
+
+</description>
+  <devel project="Virtualization:containers" package="passt"/>
+  <url>https://passt.top/passt/about/</url>
+</package>

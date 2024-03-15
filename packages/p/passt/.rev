@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fd522bc037638c492b6d64ee66c88006</srcmd5>
+    <version>20240220.1e6f92b</version>
+    <time>1710530952</time>
+    <user>anag+factory</user>
+    <comment>New package required for buildah (and podman in the future)</comment>
+    <requestid>1158057</requestid>
+  </revision>
+</revisionlist>

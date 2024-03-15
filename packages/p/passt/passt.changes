@@ -1,0 +1,1040 @@
+-------------------------------------------------------------------
+Thu Mar 14 09:40:51 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- Switch macros to bcond_with/without for apparmor & selinux
+- install passt.if in SELinux subpackage
+- minor cleanups in the spec
+
+-------------------------------------------------------------------
+Thu Mar 14 05:24:20 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 20240220.1e6f92b:
+  * udp: Fix 16-bit overflow in udp_invert_portmap()
+  * udp: Assertion in udp_invert_portmap() can be calculated at compile time
+  * pasta: Don't try to watch namespaces in procfs with inotify, use timer instead
+  * selinux: Allow pasta to remount procfs
+  * conf: No routable interface for IPv4 or IPv6 is informational, not a warning
+  * pasta: Add fallback timer mechanism to check if namespace is gone
+  * conf, passt.1: Exit if we can't bind a forwarded port, except for -[tu] all
+  * udp: udp_sock_init_ns() partially duplicats udp_port_rebind_outbound()
+  * udp: Don't prematurely (and incorrectly) set up automatic inbound forwards
+  * netlink: Use const rtnh pointer
+  * log: setlogmask(0) can actually result in a system call, don't use it
+  * tcp: Fix subtle bug in fast re-transmit path
+  * netlink: Add support to fetch default gateway from multipath routes
+  * icmp: Dedicated functions for starting and closing ping sequences
+  * icmp: Validate packets received on ping sockets
+  * icmp: Warn on receive errors from ping sockets
+  * icmp: Consolidate icmp_sock_handler() with icmpv6_sock_handler()
+  * icmp: Share more between IPv4 and IPv6 paths in icmp_tap_handler()
+  * icmp: Simplify socket expiry scanning
+  * icmp: Use -1 to represent "missing" sockets
+  * icmp: Don't attempt to match host IDs to guest IDs
+  * icmp: Don't attempt to handle "wrong direction" ping socket traffic
+  * icmp: Remove redundant initialisation of sendto() address
+  * icmp: Don't set "port" on destination sockaddr for ping sockets
+  * flow: Avoid moving flow entries to compact table
+  * flow: Enforce that freeing of closed flows must happen in deferred handlers
+  * flow: Abstract allocation of new flows with helper function
+  * flow: Move flow_count from context structure to a global
+  * flow: Move flow_log_() to near top of flow.c
+  * tcp, tcp_splice: Avoid double layered dispatch for connected TCP sockets
+  * epoll: Better handling of number of epoll types
+  * flow, tcp: Add handling for per-flow timers
+  * flow, tcp: Add flow-centric dispatch for deferred flow handling
+  * tcp, tcp_splice: Move per-type cleanup logic into per-type helpers
+  * tcp, tcp_splice: Remove redundant handling from tcp_timer()
+  * treewide: Standardise on 'now' for current timestamp variables
+  * flow: Make flow_table.h #include the protocol specific headers it needs
+  * pif: Remove unused pif_name() function
+  * treewide: Make a bunch of pointer variables pointers to const
+  * test: Fix passt.mbuto for cases where /usr/sbin doesn't exist
+  * netlink: Fetch most specific (longest prefix) address in nl_addr_get()
+  * README: Default SLAAC prefix comes from address (not prefix) on host
+  * README: Fix broken link to CentOS Stream package
+  * test: make passt.mbuto script more robust
+  * tcp: make tcp_sock_set_bufsize() static (again)
+  * util: Make sock_l4() treat empty string ifname like NULL
+  * treewide: Avoid in_addr_t
+  * icmp: Avoid unnecessary handling of unspecified bind address
+  * util: Drop explicit setting to INADDR_ANY/in6addr_any in sock_l4()
+  * util: Use htonl_constant() in more places
+  * treewide: Add IN4ADDR_ANY_INIT macro
+  * treewide: Use IN4ADDR_LOOPBACK_INIT more widely
+  * tcp: Fix address type for tcp_sock_init_af()
+  * checksum: Don't use linux/icmp.h when netinet/ip_icmp.h will do
+  * tcp: Don't account for hash table size in tcp_hash()
+  * tcp: Implement hash table with indices rather than pointers
+  * tcp: Switch hash table to linear probing instead of chaining
+  * tcp: Fix conceptually incorrect byte-order switch in tcp_tap_handler()
+  * README: Update "Availability" section
+  * tcp: Cast timeval fields to unsigned long long for printing
+  * flow: Add missing include, stdio.h
+  * test: Select first reported IPv6 address for guest/host comparison
+  * ndp: Extend lifetime of prefix, router, RDNSS and search list
+  * test: Make handling of shell prompts with escapes a little more reliable
+  * tcp: Don't defer hash table removal
+  * tcp: "TCP" hash secret doesn't need to be TCP specific
+  * pif: Add helpers to get the name of a pif
+  * test: Avoid hitting guestfish command length limits
+  * flow,tcp: Use epoll_ref type including flow and side
+  * tcp_splice: Use unsigned to represent side
+  * flow,tcp: Generalise TCP epoll_ref to generic flows
+  * tcp: Remove unneccessary bounds check in tcp_timer_handler()
+  * flow: Introduce 'sidx' type to represent one side of one flow
+  * flow, tcp: Add logging helpers for connection related messages
+  * flow: Make unified version of flow table compaction
+  * util: MAX_FROM_BITS() should be unsigned
+  * flow, tcp: Consolidate flow pointer<->index helpers
+  * flow, tcp: Move TCP connection table to unified flow table
+  * flow, tcp: Generalise connection types
+  * treewide: Add messages to static_assert() calls
+  * tcp: remove useless assignment
+  * port_fwd, util: Include additional headers to fix build with musl
+  * packet: Offset plus length is not always uint32_t, but it's always size_t
+  * treewide: Use 'z' length modifier for size_t/ssize_t conversions
+  * port_fwd, util: Don't bind UDP ports with opposite-side bound TCP ports
+  * valgrind: Don't disable optimizations for valgrind builds
+  * valgrind: Adjust suppression for MSG_TRUNC with NULL buffer
+  * udp,pasta: Periodically scan for ports to automatically forward
+  * tcp: Simplify away tcp_port_rebind()
+  * tcp: Use common helper for rebinding inbound and outbound ports
+  * clang-tidy: Suppress silly misc-include-cleaner warnings
+  * tap, pasta: Handle short writes to /dev/tap
+  * tap, pasta: Handle incomplete tap sends for pasta too
+  * tcp: Don't use TCP_WINDOW_CLAMP
+  * tcp: Rename and small cleanup to tcp_clamp_window()
+  * test/lib/perf_report: Fix up table highlight for pasta's local flows
+  * Revert "selinux: Drop user_namespace class rules for Fedora 37"
+  * selinux: Allow passt to talk over unconfined_t UNIX domain socket for --fd
+  * log: Match implicit va_start() with va_end() in vlogmsg()
+  * port_fwd: Don't try to read bound ports from invalid file handles
+  * netlink: Sequence numbers are actually 32 bits wide
+  * test/perf: Simplify calculation of "omit" time for TCP throughput
+  * test/perf: Remove unnecessary --pacing-timer options
+  * test/perf: "MTU" changes in passt_tcp host to guest aren't useful
+  * test/perf: Explicitly control UDP packet length, instead of MTU
+  * test/perf: Small MTUs for spliced TCP aren't interesting
+  * test/perf: Start iperf3 server less often
+  * test/perf: Get iperf3 stats from client side
+  * test/perf: Remove stale iperf3c/iperf3s directives
+  * udp: Remove socket from udp_{tap,splice}_map when timed out
+  * udp: Consistently use -1 to indicate un-opened sockets in maps
+  * log: Add vlogmsg()
+  * log: Enable format warnings
+  * log: Don't define logging function 4 times
+  * tcp: Remove remaining declaration of tcp_l2_mh
+  * tcp_splice: Simplify selection of socket and pipe sides in socket handler
+  * tcp_splice: Exploit side symmetry in tcp_splice_destroy()
+  * tcp_splice: Exploit side symmetry in tcp_splice_connect_finish()
+  * tcp_splice: Exploit side symmetry in tcp_splice_timer()
+  * tcp_splice: Rename sides of connection from a/b to 0/1
+  * tcp_splice: Don't pool pipes in pairs
+  * tcp_splice: Avoid awkward temporaries in tcp_splice_epoll_ctl()
+  * tcp_splice: Remove unnecessary forward declaration
+  * tcp_splice: Don't handle EPOLL_CTL_DEL as part of tcp_splice_epoll_ctl()
+  * tcp_splice: Correct error handling in tcp_splice_epoll_ctl()
+  * tcp_splice: Remove redundant tcp_splice_epoll_ctl()
+  * pif: Pass originating pif to tap handler functions
+  * pif: Record originating pif in listening socket refs
+  * pif: Introduce notion of passt/pasta interface
+  * udp: Clean up ref initialisation in udp_sock_init()
+  * port_fwd: Simplify get_bound_ports_*() to port_fwd_scan_*()
+  * port_fwd: Move port scanning /proc fds into struct port_fwd
+  * port_fwd: Split TCP and UDP cases for get_bound_ports()
+  * port_fwd: Don't NS_CALL get_bound_ports()
+  * port_fwd: Pre-open /proc/net/* files rather than on-demand
+  * util: Add open_in_ns() helper
+  * port_fwd: Better parameterise procfs_scan_listen()
+  * port_fwd: Move automatic port forwarding code to port_fwd.[ch]
+  * conf: Cleaner initialisation of default forwarding modes
+  * selinux: Drop user_namespace class rules for Fedora 37
+  * dhcp: put option 53 at the beginning
+  * tcp, tap: Don't increase tap-side sequence counter for dropped frames
+  * tcp: Force TCP_WINDOW_CLAMP before resetting STALLED flag
+  * tcp: Fix comment to tcp_sock_consume()
+  * cppcheck: Work around bug in cppcheck 2.12.0
+  * cppcheck: Use "exhaustive" level checking when available
+  * conf: Remove overly cryptic selection of forward table
+  * cppcheck: Make many pointers const
+  * siphash: Use incremental rather than all-at-once siphash functions
+  * siphash, checksum: Move TBAA explanation to checksum.c
+  * siphash: Make internal helpers public
+  * siphash: Use specific structure for internal state
+  * siphash: Use more hygienic state initialiser
+  * siphash: Fix bug in state initialisation
+  * siphash: Clean up hash finalisation with posthash_final() function
+  * siphash: Add siphash_feed() helper
+  * siphash: Make sip round calculations an inline function rather than macro
+  * siphash: Make siphash functions consistently return 64-bit results
+  * util: Consolidate and improve workarounds for clang-tidy issue 58992
+  * Avoid shadowing index(3)
+  * tcp: Always send an ACK segment once the handshake is completed
+  * dhcp: Actually note down the length of options received by the client
+  * dhcpv6: Properly separate domain names in search list
+  * util: Fix licensing information display in --version
+  * tcp: Correct handling of FIN,ACK followed by SYN
+  * tcp: Consolidate paths where we initiate reset on tap interface
+  * tcp: Correctly handle RST followed rapidly by SYN
+  * tcp: Return consumed packet count from tcp_data_from_tap()
+  * tcp: Never hash match closed connections
+  * tcp: Remove some redundant packet_get() operations
+  * udp, tap: Correctly advance through packets in udp_tap_handler()
+  * tcp, tap: Correctly advance through packets in tcp_tap_handler()
+  * test: Add Podman system test with bats for pasta
+  * dhcp: support BOOTP clients
+  * tap: fix uses of l3_len in tap4_handler()
+  * fedora: Replace pasta hard links by separate builds
+  * apparmor: Add pasta's own profile
+  * apparmor: Allow pasta to remount /proc, access entries under its own copy
+  * apparmor: Allow read-only access to uid_map
+  * apparmor: Explicitly pass options we use while remounting root filesystem
+  * apparmor: Use abstractions/nameservice to deal with symlinked resolv.conf
+
+-------------------------------------------------------------------
+Mon Aug 28 14:08:43 UTC 2023 - fcrozat@suse.com
+
+- Update to version 0~git20230823:
+  * pasta: Strip RTA_PREFSRC when copying routes to the namespace
+  * netlink: Set IFA_ADDRESS, not just IFA_LOCAL, while adding IPv4 addresses
+  * tcp: Remove broken pressure calculations for tcp_defer_handler()
+  * inany: Add missing double include guard to inany.h
+  * tcp: Move in_epoll flag out of common connection structure
+  * tcp, udp: Don't pre-fill IPv4 destination address in headers
+  * tcp, udp: Don't include destination address in partially precomputed csums
+  * tcp: Consistent usage of ports in tcp_seq_init()
+  * tcp: More precise terms for addresses and ports
+  * tap: Pass source address to protocol handler functions
+  * tap: Don't clobber source address in tap6_handler()
+  * selinux: Fix domain transitions for typical commands pasta might run
+  * selinux: Allow pasta_t to read nsfs entries
+  * selinux: Add rules for sysctl and /proc/net accesses
+  * selinux: Update policy to fix user/group settings
+  * selinux: Fix user namespace creation after breaking kernel change
+  * selinux: Use explicit paths for binaries in file context
+  * fedora: Install pasta as hard link to ensure SELinux file context match
+  * tap: Fix format specifier in tap4_is_fragment() warning
+  * netlink: Don't propagate host address expiry to the container
+  * netlink: Correctly calculate attribute length for address messages
+  * netlink: Remove redundant check on nlmsg_type
+  * conf: Demote overlapping port ranges error to a warning
+  * epoll: Use different epoll types for passt and pasta tap fds
+  * epoll: Split listening Unix domain socket into its own type
+  * epoll: Split handling of listening TCP sockets into their own handler
+  * epoll: Split handling of TCP timerfds into its own handler function
+  * epoll: Tiny cleanup to udp_sock_handler()
+  * epoll: Split handling of ICMP and ICMPv6 sockets
+  * epoll: Fold sock_handler into general switch on epoll event fd
+  * epoll: Always use epoll_ref for the epoll data variable
+  * epoll: Generalize epoll_ref to cover things other than sockets
+  * tap: Fold reset handling into tap_handler_passt()
+  * tap: Fold reset handling into tap_handler_pasta()
+  * tap: Clean up behaviour for errors on listening Unix socket
+  * tap: Clean up tap reset path
+  * tap: fix seq->p.count limit
+  * netlink: Propagate errors for "dup" operations
+  * netlink: Propagate errors for "dump" operations
+  * netlink: Always process all responses to a netlink request
+  * netlink: Propagate errors for "set" operations
+  * netlink: Add nl_foreach_oftype to filter response message types
+  * netlink: Split nl_req() to allow processing multiple response datagrams
+  * netlink: Clearer reasoning about the netlink response buffer size
+  * netlink: Add nl_do() helper for simple operations with error checking
+  * netlink: Fill in netlink header fields from nl_req()
+  * netlink: Treat send() or recv() errors as fatal
+  * netlink: Start sequence number from 1 instead of 0
+  * netlink: Make nl_*_dup() use a separate datagram for each request
+  * netlink: Explicitly pass netlink sockets to operations
+  * netlink: Use struct in_addr for IPv4 addresses, not bare uint32_t
+  * netlink: Split nl_route() into separate operation functions
+  * netlink: Split nl_addr() into separate operation functions
+  * netlink: Split up functionality of nl_link()
+  * tap: Remove unnecessary global tun_ns_fd
+  * tap: More detailed error reporting in tap_ns_tun()
+  * util: Make ns_enter() a void function and report setns() errors
+  * Use static assertion to verify that union epoll_ref is the right size
+  * Use C11 anonymous members to make poll refs less verbose to use
+  * Allow C11 code, not just C99 code
+  * Revert "MAKE: Fix parallel builds; .o files; .gitignore; new makedocs"
+  * MAKE: Fix parallel builds; .o files; .gitignore; new makedocs
+  * tap: Explicitly drop IPv4 fragments, and give a warning
+  * conf: Correct length checking of interface names in conf_ports()
+  * conf: Fix size checking of -I interface name
+  * netlink: Use correct interface index in NL_SET mode
+  * pasta: include errno in error message
+  * isolation: keep CAP_SYS_PTRACE when required
+  * conf: Accept -a and -g without --config-net in pasta mode
+  * conf: Make -a/--address really imply --no-copy-addrs
+  * seccomp: Make seccomp.sh re-entrancy safe
+  * conf, log: On -h / --help, print usage to stdout, not stderr
+  * tap: With pasta, don't reset on tap errors, handle write failures
+  * conf: Fix erroneous check of ip6->gw
+  * test/nstool: Fix fd leak in accept() loop
+  * test/nstool: Provide useful error if given a path that's too long
+  * passt.h: Fix description of pasta_ifi in struct ctx
+  * conf, pasta: With --config-net, copy all addresses by default
+  * netlink: Add functionality to copy addresses from outer namespace
+  * conf: Don't exit if sourced default route has no gateway
+  * Revert "conf: Adjust netmask on mismatch between IPv4 address/netmask and gateway"
+  * conf, pasta: With --config-net, copy all routes by default
+  * conf: --config-net option is for pasta mode only
+  * netlink: Add functionality to copy routes from outer namespace
+  * pasta: Improve error handling on failure to join network namespace
+  * netlink: Fix comment about response buffer size for nl_req()
+  * isolation: Initially Keep CAP_SETFCAP if running as UID 0 in non-init
+  * pasta: Detach mount namespace, (re)mount procfs before spawning command
+  * util, conf: Add and use ns_is_init() helper
+  * tap: Don't update ip6.addr_seen to ::
+  * correct -6 option in manpage
+  * passt: Fix error check for signal(), improve error messages
+  * nstool: Enter holder's cwd when changing mount ns with nstool exec
+  * nstool: Advertise the holder's cwd (in its mountns) across the socket
+  * test: Use "nstool exec" to slightly simplify tests
+  * test: Initialise ${TRACE} properly
+  * nstool: Add --keep-caps option to nstool exec
+  * nstool: Add nstool exec command to execute commands in an nstool namespace
+  * nstool: Helpers to iterate through namespace types
+  * nstool: Add magic number to advertized information
+  * nstool: Detect what namespaces target is in
+  * nstool: Replace "pid" subcommand with "info" subcommand
+  * nstool: Split some command line parsing and socket setup to subcommands
+  * nstool: Move description of its operation modes from comment to usage
+  * nstool: Reverse parameters to nstool
+  * nstool: Rename nsholder to nstool
+  * test: Remove race between commands run in the same context
+  * passt: Relicense to GPL 2.0, or any later version
+  * fedora: Adjust path for SELinux policy and interface file to latest guidelines
+  * fedora: Don't install useless SELinux interface file for pasta
+  * selinux: Drop useless interface file for pasta
+  * conf: Allow binding to ports on an interface without a specific address
+  * tcp: Clear ACK_FROM_TAP_DUE also on unchanged ACK sequence from peer
+  * tcp: Don't special case the handling of the ack of a syn
+  * tcp: Clarify allowed state for tcp_data_from_tap()
+  * tcp: Don't reset ACK_TO_TAP_DUE on any ACK, reschedule timer as needed
+  * tcp: When a connection flag it set, don't negate it for debug print
+  * Fix false positive if cppcheck doesn't give a false positive
+  * Work around weird false positives with cppcheck-2.9.1
+  * udp: Actually bind detected namespace ports in init namespace
+  * pasta: fix tcp port forwarding in auto mode
+  * fedora: Refresh SELinux labels in scriptlets, require -selinux package
+  * Makefile: Enable external override for TARGET
+  * passt.1: Fix description of --mtu option
+  * log: Avoid time_t/__syscall_slong_t format mismatch with long int on X32 ABI
+  * fedora: Install SELinux interface files to shared include directory
+  * contrib/selinux: Split interfaces into smaller bits
+  * contrib/selinux: Drop unused passt_read_data() interface
+  * contrib/selinux: Drop "example" from headers: this is the actual policy
+  * README: Update Features section, plus minor improvements
+  * contrib: Drop libvirt out-of-tree patch, integration mostly works in 9.1.0
+  * contrib: Drop QEMU out-of-tree patches
+  * contrib: Drop Podman out-of-tree patch, integration is upstream now
+  * tcp: Clamp MSS value when queueing data to tap, also for pasta
+  * conf: Terminate on EMFILE or ENFILE on sockets for port mapping
+  * tcp, udp: Fix partial success return codes in {tcp,udp}_sock_init()
+  * tcp, udp, util: Pass socket creation errors all the way up
+  * util: Carry own definition of __bswap_constant{16,32}
+  * treewide: Fix header includes to build with musl
+  * conf, passt: Rename stderr to force_stderr
+  * netlink: Use 8 KiB * netlink message header size as response buffer
+  * conf, icmp, tcp, udp: Add options to bind to outbound address and interface
+  * conf, passt.h: Rename "outbound" interface to "template" interface
+  * contrib/selinux: Let interface users set paths for log, PID, socket files
+  * contrib/selinux: Allow binding and connecting to all UDP and TCP ports
+  * contrib/selinux: Let passt write to stdout and stderr when it starts
+  * contrib/selinux: Drop duplicate init_daemon_domain() rule
+  * udp: Fix signedness warning on 32-bits architectures
+  * Makefile: Fix SuperH 4 builds: it's AUDIT_ARCH_SH, not AUDIT_ARCH_SH4
+  * Makefile, seccomp.sh: Fix cross-builds, adjust syscalls list to compiler
+  * util: Add own prototype for __clone2() on ia64
+  * contrib/apparmor: Split profile into abstractions, use them
+  * qrap: Generate -netdev as JSON
+  * qrap: Introduce machine-specific PCI address base
+  * qrap: Drop args in JSON format
+  * qrap: Fix support for pc machines
+  * qrap: Fix limits for PCI addresses
+  * log, conf, tap: Define die() as err() plus exit(), drop cppcheck workarounds
+  * doc/demo: Fix and suppress ShellCheck warnings
+  * Fix definitions of SOCKET_MAX, TCP_MAX_CONNS
+  * tcp: Avoid (theoretical) resource leak (CWE-772) Coverity warning
+  * tcp: Avoid false (but convoluted) positive Coverity CWE-476 warning
+  * tcp, tcp_splice: Get rid of false positive CWE-394 Coverity warning from fls()
+  * treewide: Disable gcc strict aliasing rules as needed, drop workarounds
+  * tcp: Suppress knownConditionTrueFalse cppcheck false positive
+  * log: Send identifier string in log messages, openlog() won't work for us
+  * conf, udp: Allow any loopback address to be used as resolver
+  * conf: Split add_dns{4,6}() out of get_dns()
+  * udp: Actually use host resolver to forward DNS queries
+  * tcp: Disable optimisations for tcp_hash()
+  * selinux/passt.te: Allow setting socket option on routing netlink socket
+  * selinux/passt.te: Allow /etc/resolv.conf symlinks to be followed
+  * selinux/passt.te: Allow setcap on the process itself
+  * selinux: Switch to a more reasonable model for PID and socket files
+  * selinux: Define interfaces for libvirt and similar frameworks
+  * selinux/passt.if: Fix typo in passt_read_data interface definition
+  * conf: Fix typo and logic in conf_ports() check for port binding
+  * conf, tap: Silence two false positive invalidFunctionArg from cppcheck
+  * tcp: Remove 'zero_len' goto from tcp_data_from_sock
+  * tcp: Remove 'recvmsg' goto from tcp_data_from_sock
+  * tap: Eliminate goto from tap_handler()
+  * tap: Don't pcap frames that didn't get sent
+  * passt.1: Fix typo, improve wording in examples of port forwarding specifiers
+  * dhcp: Fix netmask calculation for option 1 from prefix length
+  * tap: Use single counter for iov elements in tap_send_frames_pasta()
+  * conf, tcp, udp: Exit if we fail to bind sockets for all given ports
+  * log: Don't duplicate messages on stderr before daemonising
+  * convert all remaining err() followed by exit() to die()
+  * log a detailed error (not usage()) when there are extra non-option arguments
+  * make conf_netns_opt() exit immediately after logging error
+  * make conf_ugid() exit immediately after logging error
+  * make conf_pasta_ns() exit immediately after logging error
+  * make conf_ports() exit immediately after logging error
+  * eliminate most calls to usage() in conf()
+  * add die() to log an error message and exit with a single call
+  * log to stderr until process is daemonized, even if a log file is set
+  * test: Fedora 32-35 have moved to the archives
+  * test: Update location for Debian ppc64 images
+  * tcp: Improve handling of fallback if socket pool is empty on new splice
+  * tcp: Split pool lookup from creating new sockets in tcp_conn_new_sock()
+  * tcp: Move socket pool declarations around
+  * tcp: Split init and ns cases for tcp_sock_refill()
+  * tcp: Make a helper to refill each socket pool
+  * Makefile: Explict int type in FALLOC_FL_COLLAPSE_RANGE probe
+  * test/pasta_options: Ignore failures on shell 'exit'
+  * pasta: propagate exit code from child command
+  * pasta: correctly exit when execvp() fails
+  * pasta: do not leak netlink sock into child
+  * Make assertions actually useful
+  * tcp: Reset ACK_FROM_TAP_DUE flag only as needed, update timer
+  * tap: Send frames after the first one in tap_send_frames_pasta()
+  * pasta: Wait for tap to be set up before spawning command
+  * udp: Use tap_send_frames()
+  * tap: Improve handling of partial frame sends
+  * udp: Use abstracted tap header
+  * tap: Use different io vector bases depending on tap type
+  * tcp: Use abstracted tap header
+  * tap: Add "tap headers" abstraction
+  * tcp: Consolidate calculation of total frame size
+  * tcp: Remove redundant and incorrect initialization from *_iov_init()
+  * util: Parameterize ethernet header initializer macro
+  * tcp, udp: Use named field initializers in iov_init functions
+  * util: Introduce hton*_constant() in place of #ifdefs
+  * tap, tcp: Move tap send path to tap.c
+  * tcp: Combine two parts of pasta tap send path together
+  * tcp: Improve interface to tcp_l2_buf_flush()
+  * tcp: Don't compute total bytes in a message until we need it
+  * tcp: Combine two parts of passt tap send path together
+  * pcap: Replace pcapm() with pcap_multiple()
+  * pcap: Introduce pcap_frame() helper
+  * udp: Don't use separate sockets to listen for spliced packets
+  * udp: Decide whether to "splice" per datagram rather than per socket
+  * udp: Unify udp_sock_handler_splice() with udp_sock_handler()
+  * udp: Pre-populate msg_names with local address
+  * udp: Don't handle tap receive batch size calculation within a #define
+  * udp: Split receive from preparation and send in udp_sock_handler()
+  * udp: Split sending to passt tap interface into separate function
+  * udp: Move sending pasta tap frames to the end of udp_sock_handler()
+  * test/perf/pasta_tcp: Add host to namespace cases for traffic via tap
+  * tcp: Explicitly check option length field values in tcp_opt_get()
+  * test/perf/pasta_udp: Add host to namespace cases for traffic via tap
+  * udp: Factor out control structure management from udp_sock_fill_data_v[46]
+  * udp: Preadjust udp[46]_l2_iov_tap[].iov_base for pasta mode
+  * udp: Better factor IPv4 and IPv6 paths in udp_sock_handler()
+  * udp: Fix incorrect use of IPv6 mh buffers in IPv4 path
+  * udp: Correct splice forwarding when receiving from multiple sources
+  * udp: Split send half of udp_sock_handler_splice() from the receive half
+  * udp: Unify buffers for tap and splice paths
+  * udp: Add helper to extract port from a sockaddr_in or sockaddr_in6
+  * udp: Make UDP_SPLICE_FRAMES and UDP_TAP_FRAMES_MEM the same thing
+  * udp: Simplify udp_sock_handler_splice
+  * udp: Update UDP "connection" timestamps in both directions
+  * udp: Don't explicitly track originating socket for spliced "connections"
+  * udp: Re-use fixed bound sockets for packet forwarding when possible
+  * udp: Don't create double sockets for -U port
+  * udp: Split splice field in udp_epoll_ref into (mostly) independent bits
+  * udp: Remove the @bound field from union udp_epoll_ref
+  * udp: Don't connect "forward" sockets for spliced flows
+  * udp: Always use sendto() rather than send() for forwarding spliced packets
+  * udp: Separate tracking of inbound and outbound packet flows
+  * udp: Also bind() connected ports for "splice" forwarding
+  * passt, tap: Process data on the socket before HUP/ERR events
+  * passt, tap: Add --fd option
+  * build: Remove *~ files with make clean
+  * build: Force-create pasta symlink
+  * tcp: Pass union tcp_conn pointer to destroy and splice timer functions
+  * tcp: Use dual stack sockets for port forwarding when possible
+  * util: Always return -1 on error in sock_l4()
+  * util: Allow sock_l4() to open dual stack sockets
+  * tcp: Consolidate tcp_sock_init[46]
+  * tcp_splice: Allow splicing of connections from IPv4-mapped loopback
+  * tcp: NAT IPv4-mapped IPv6 addresses like IPv4 addresses
+  * tcp: Remove v6 flag from tcp_epoll_ref
+  * tcp: Fix small errors in tcp_seq_init() time handling
+  * tcp: Have tcp_seq_init() take its parameters from struct tcp_conn
+  * tcp: Unify initial sequence number calculation for IPv4 and IPv6
+  * tcp: Simplify tcp_hash_match() to take an inany_addr
+  * tcp: Take tcp_hash_insert() address from struct tcp_conn
+  * tcp: Hash IPv4 and IPv4-mapped-IPv6 addresses the same
+  * inany: Helper functions for handling addresses which could be IPv4 or IPv6
+  * tcp: Don't store hash bucket in connection structures
+  * tcp: Remove splice from tcp_epoll_ref
+  * tcp: Use the same sockets to listen for spliced and non-spliced connections
+  * tcp: Unify part of spliced and non-spliced conn_from_sock path
+  * tcp: Separate helpers to create ns listening sockets
+  * tcp: Unify the IN_EPOLL flag
+  * tcp: Partially unify tcp_timer() and tcp_splice_timer()
+  * tcp: Unify tcp_defer_handler and tcp_splice_defer_handler()
+  * tcp: Unify spliced and non-spliced connection tables
+  * tcp: Improved helpers to update connections after moving
+  * tcp: Add connection union type
+  * tcp: Move connection state structures into a shared header
+  * tcp_splice: Helpers for converting from index to/from tcp_splice_conn
+  * tcp: Better helpers for converting between connection pointer and index
+  * tcp: Remove unused TCP_MAX_SOCKS constant
+  * tcp_splice: #include tcp_splice.h in tcp_splice.c
+  * style: Minor corrections to function comments
+  * clang-tidy: Suppress warning about assignments in if statements
+  * README: Add link to weekly development meeting
+  * README: Fix left-over and indentation for Podman example command
+  * README: The upcoming version of Podman adds support for pasta
+  * util, pasta: Add do_clone() wrapper around __clone2() and clone()
+  * test/lib/test: Clean up iperf3 JSON files before starting the server
+  * tap: Revert recently added checks in tap_handler_passt()
+  * arp, tap, util: Don't use perror() after seccomp filter is installed
+  * Remove contrib/debian, Debian package development now happens on Salsa
+  * contrib/apparmor: Merge pasta and passt profiles, update rules
+  * README: Add links to Debian package tracker
+  * Makefile: Change HPPA into PARISC while building PASST_AUDIT_ARCH
+  * Makefile: It's AUDIT_ARCH_MIPSEL64, not AUDIT_ARCH_MIPS64EL
+  * Makefile: Don't filter out -O2 from supplied flags for AVX2 builds
+  * Makefile: Honour passed CPPFLAGS, not just CFLAGS
+  * conf, udp: Drop mostly duplicated dns_send arrays, rename related fields
+  * conf: Fix mask calculation from prefix_len in conf_print()
+  * tcp, udp: Don't initialise IPv6/IPv4 sockets if IPv4/IPv6 are not enabled
+  * passt: Move __setlogmask() calls before output unrelated to configuration
+  * tap: Return -EIO from tap_handler_passt() on inconsistent packet stream
+  * tap: Keep stream consistent if qemu length descriptor spans two recv() calls
+  * test/memory/passt: Change passt.avx2 path to /bin in test itself
+  * passt, qrap, README: Update notes and documentation for AF_UNIX support in qemu
+  * test/perf: Finally drop workaround for virtio_net TX stall
+  * test: Switch to qemu -netdev stream option instead of using qrap
+  * test: Wait for network before starting passt in two_guests setup
+  * udp: Check for answers to forwarded DNS queries before handling local redirects
+  * conf: Split the notions of read DNS addresses and offered ones
+  * conf: Adjust netmask on mismatch between IPv4 address/netmask and gateway
+  * tcp: Correct function comments for address types
+  * Use endian-safer typing in struct tap4_l4_t
+  * Use typing to reduce chances of IPv4 endianness errors
+  * Use IPV4_IS_LOOPBACK more widely
+  * Minor improvements to IPv4 netmask handling
+  * Correct some missing endian conversions of IPv4 addresses
+  * test: Add memory/passt test cases
+  * test/lib: Add "td" directive, handled by table_value()
+  * test/lib/perf_report: Use own flag to track initialisation
+  * tap: Support for detection of existing sockets on ramfs
+  * test/lib: Move screen-scraping setup and layout functions to _ugly files
+  * README: Add Podman, vhost-user links, and links to Bugzilla queries
+  * passt.1: Fix typo: "addressses", reported by Lintian
+  * icmp: Don't discard first reply sequence for a given echo ID
+  * icmp: Add debugging messages for handled replies and requests
+  * tap: Trace received (outbound) ICMP packets in debug mode, too
+  * conf, passt.1: Don't imply --foreground with --debug
+  * test/run: Temporarily disable distribution tests
+  * hooks: Temporarily disable demo generation in pre-push
+  * test: Add log file tests for pasta plus corresponding layout and setup
+  * checksum: Fix calculation for ICMP checksum on IPv4
+  * conf: Don't pass leading ~ to parse_port_range() on exclusions
+  * util: Set NS_FN_STACK_SIZE to one eighth of ulimit-reported maximum stack size
+  * Add git-publish configuration file
+  * qrap: Support JSON syntax for -device
+  * dhcp: Use tap_udp4_send() helper in dhcp()
+  * tap: Split tap_ip4_send() into UDP and ICMP variants
+  * ndp: Use tap_icmp6_send() helper
+  * ndp: Remove unneeded eh_source parameter
+  * tap: Split tap_ip6_send() into UDP and ICMP variants
+  * Split tap_ip_send() into IPv4 and IPv6 specific functions
+  * tap: Remove unhelpeful vnet_pre optimization from tap_send()
+  * Remove support for TCP packets from tap_ip_send()
+  * Add helpers for normal inbound packet destination addresses
+  * Add csum_ip4_header() helper to calculate IPv4 header checksums
+  * Add csum_udp4() helper for calculating UDP over IPv4 checksums
+  * Add csum_udp6() helper for calculating UDP over IPv6 checksums
+  * Add csum_icmp4() helper for calculating ICMP checksums
+  * Add csum_icmp6() helper for calculating ICMPv6 checksums
+  * passt.1: Add David to AUTHORS
+  * conf: Bind inbound ports with CAP_NET_BIND_SERVICE before isolate_user()
+  * Rename pasta_setup_ns() to pasta_spawn_cmd()
+  * isolation: Only configure UID/GID mappings in userns when spawning shell
+  * isolation: Prevent any child processes gaining capabilities
+  * isolation: Replace drop_caps() with a version that actually does something
+  * isolation: Refactor isolate_user() to allow for a common exit path
+  * Replace FWRITE with a function
+  * isolation: Clarify various self-isolation steps
+  * Remove unhelpful drop_caps() call in pasta_start_ns()
+  * pasta_start_ns() always ends in parent context
+  * pasta: More general way of starting spawned shell as a login shell
+  * test: Move slower tests to end of test run
+  * log.h: Avoid unnecessary GNU extension for token pasting
+  * util.h: Add missing gcc pragma push before pragma pop
+  * icmp: Set sin6_scope_id for outbound ICMPv6 echo requests
+  * conf: Drop excess colons in usage for DHCP and DNS options
+  * netlink: Disable duplicate address detection for configured IPv6 address
+  * Don't create 'tap' socket for ports that are bound to loopback only
+  * tcp, tcp_splice: Fix port remapping for inbound, spliced connections
+  * tcp, tcp_splice: Adjust comments to current meaning of inbound and outbound
+  * udp: Fix port and address checks for DNS forwarder
+  * tap: Don't check sequence counts when adding packets to pool
+  * packet: Fix off-by-one in packet_get_do() sanity checks
+  * conf: Report usage for --no-netns-quit
+  * conf, tcp, udp: Allow specification of interface to bind to
+  * conf, tap: Add option to quit once the client closes the connection
+  * util: Check return value of lseek() while reading bound ports from procfs
+  * conf, log, Makefile: Add versioning information
+  * log: Add missing function comment for trace_init()
+  * log, conf: Add support for logging to file
+  * passt.h: Include netinet/if_ether.h before struct ctx declaration
+  * conf: Drop duplicate, diverging optstring assignments
+  * Move logging functions to a new file, log.c
+  * test: Add rudimentary support to run selected tests only
+  * Makefile: Hack for optimised-away store in ndp() before checksum calculation
+  * udp: Replace pragma to ignore bogus stringop-overread warning with workaround
+  * Makefile: Extend noinline workarounds for LTO and -O2 to gcc 12
+  * cppcheck: Remove unused unmatchedSuppression suppressions
+  * Mark unused functions for cppcheck
+  * cppcheck: Remove unused va_list_usedBeforeStarted suppression
+  * cppcheck: Remove unused objectIndex suppressions
+  * cppcheck: Remove unused knownConditionTrueFalse suppression
+  * cppcheck: Avoid errors due to zeroes in bitwise ORs
+  * Regenerate seccomp.h if seccomp.sh changes
+  * cppcheck: Suppress NULL pointer warning in tcp_sock_consume()
+  * cppcheck: Suppress same-value-in-ternary branches warning
+  * qrap: Handle case of PATH environment variable being unset
+  * cppcheck: Remove localtime suppression for pcap.c
+  * cppcheck: Broaden suppression for unused struct members
+  * Avoid ugly 'end' members in netlink structures
+  * cppcheck: Use inline suppression for strtok() in conf.c
+  * cppcheck: Use inline suppressions for qrap.c
+  * cppcheck: Use inline suppression for ffsl()
+  * cppcheck: Work around false positive NULL pointer dereference error
+  * Stricter checking for nsholder.c
+  * Don't shadow global function names
+  * Don't shadow 'i' in conf_ports()
+  * cppcheck: Reduce scope of some variables
+  * Clean up parsing in conf_runas()
+  * Pack DHCPv6 "on wire" structures
+  * Catch failures when installing signal handlers
+  * clang-tidy: Remove duplicate #include from icmp.c
+  * clang-tidy: Fix spurious null pointer warning in pasta_start_ns()
+  * clang-tidy: Suppress warning about unchecked error in logfn macro
+  * Clean up parsing of port ranges
+  * cppcheck: Add target specific headers
+  * Makefile: Simplify getting target triple for compiler
+  * cppcheck: Run quietly
+  * cppcheck: Avoid excessive scanning due to system headers
+  * clang-tidy: Disable 'readability-identifier-length'
+  * test: Remove unneccessary pane naming from layout_two_guests
+  * test: Simplify data handling for transfer tests
+  * test: Use --config-net for namespace setup
+  * test: More robust wait for pasta/passt to be ready
+  * test: Remove unnecessary sleeps from shutdown tests
+  * test: Add wait_for() shell helper
+  * icmp: Correct off by one errors dealing with number of echo request ids
+  * Fix widespread off-by-one error dealing with port numbers
+  * Treat port numbers as unsigned
+  * Pass entire port forwarding configuration substructure to conf_ports()
+  * Don't use indirect remap functions for conf_ports()
+  * udp: Delay initialization of UDP reversed port mapping table
+  * Consolidate port forwarding configuration into a common structure
+  * Improve types and names for port forwarding configuration
+  * Fix the name of the qemu-system-* executable
+  * README: Add missing parenthesis in Try It section
+  * README: Drop excess whitespace in Try It section
+  * README: Add legend for Features section
+  * README: Fix paragraph in Try It section of passt
+  * README: Fix indentation in "Try It" section
+  * README: Point openSUSE links to Dario's OBS repository
+  * README: Fix misspellings of openSUSE
+  * test/lib: Don't try to write to perf.js when running demos
+  * test/lib: Drop perf_report_append() from perf_report
+  * test/demo: Avoid using port 5201 on the host
+  * test/demo: Use relative paths to change directories when possible
+  * hooks/pre_push: Fix upload of CI's logs and terminal capture file
+  * contrib/podman: Rebase to latest upstream
+  * test/passt.mbuto: Don't fail on missing guest public key
+- Patch dropped:
+  Fix-the-name-of-the-qemu-system-executable.patch
+- Update license tag, passt is relicensed to GPLv2+ now.
+
+-------------------------------------------------------------------
+Fri Sep 23 09:33:13 UTC 2022 - dfaggioli@suse.com
+
+- Patches dropped:
+  0001-Makefile-Allow-define-overrides-by-prepending-not-ap.patch (now upstream)
+  0002-Fix-the-name-of-the-qemu-system-executable.patch (renamed)
+- Patches added:
+  Fix-the-name-of-the-qemu-system-executable.patch (renamed)
+- Update to version 0~git20220923:
+  * test/distro: Update workarounds for Ubuntu 22.04 on s390x
+  * test/lib: Wait for DHCPv4 before starting DHCPv6 client in two_guests test
+  * test/perf: Wait for neper servers in guest to be ready before starting client
+  * test/lib: Wait for kernel to free up ports used by iperf3 before reusing them
+  * test/lib: Run also iperf3 clients in background, revert to time-based wait
+  * test/perf: Disable periodic throughput reports to avoid vhost hang
+  * test/lib: Wait on iperf3 clients to be done, then send SIGINT to servers
+  * test/lib: Restore IFS while executing directives in def blocks
+  * conf, tcp, udp: Arrays for ports need 2^16 values, not 2^16-8
+  * tap: Check return value of accept4() before calling getsockopt()
+  * test/perf: Switch performance test duration to 10 seconds instead of 30
+  * test/perf: Always use /sbin/sysctl in tcp test
+  * README: Update Availability and Try It sections with new packages
+  * test/passt_in_ns: Consistent sleep commands before starting socat client
+  * test/perf: Check for /sbin/sysctl with which(1), not simply sysctl
+  * doc/demo: Clone and use mbuto in init namespace
+  * doc/demo: Drop /sbin from dhclient command, pass script file explicitly
+  * Makefile: Include seccomp.h in HEADERS and require it for static checkers
+  * Makefile: Allow define overrides by prepending, not appending, CFLAGS
+  * test: term: When checking if status line is a number, hide errors
+  * test: Simpler termination handling for UDP tests
+  * udp: Don't drop zero-length outbound UDP packets
+  * udp: Don't pre-initialize msghdr array
+  * test: Move perf.js report file to $LOGDIR/web
+  * test: Move video processing files to $STATEBASE
+  * demo: Move pidfiles to state directory
+  * test: Move pidfiles and nsholder sockets into state directory
+  * test: Store pcap files in $LOGDIR instead of /tmp
+  * test: Move pause temporary file to state directory
+  * test: Use paths in __STATEDIR__ instead of 'temp' and 'tempdir' directives
+  * test: Don't redundantly regenerate small test file in pasta/tcp
+  * test: Move context temporary files to state dir
+  * test: Move passt_test_log_pipe to state directory
+  * test: Create common state directories for temporary files
+  * test: Actually run cleanup function
+  * test: Remove unused variable FFMPEG_PID_FILE
+  * test: Group tests by mode then protocol, rather than the reverse
+  * test: Use new-style command issue for passt_in_ns tests
+  * test: Use context system for two_guests tests
+  * test: Use context system for guest commands
+  * test: Extend context system to run commands in namespace for pasta tests
+  * test: Add nsholder utility
+  * test: Use new-style contexts for passt pane in the pasta and passt tests
+  * test: Issue host commands via context for most tests
+  * test: Integration of old-style pane execution and new context execution
+  * test: Allow a tmux pane to watch commands executed in contexts
+  * test: Context execution helpers
+  * test: Correctly match "background" with "wait" commands
+  * Allow --userns when pasta spawns a command
+  * Handle userns isolation and dropping root at the same time
+  * Correctly handle --netns-only in pasta_start_ns()
+  * Clean up and rename conf_ns_open()
+  * Consolidate validation of pasta namespace options
+  * Move self-isolation code into a separate file
+  * Safer handling if we can't open /proc/self/uid_map
+  * Consolidate determination of UID/GID to run as
+  * Split checking for root from dropping root privilege
+  * Don't store UID & GID persistently in the context structure
+
+-------------------------------------------------------------------
+Thu Sep 22 08:56:39 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Add patch to fix lookup for the qemu-system-* binary:
+  0002-Fix-the-name-of-the-qemu-system-executable.patch
+
+-------------------------------------------------------------------
+Tue Sep 20 16:16:13 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Include AppArmor profiles in the package.
+
+-------------------------------------------------------------------
+Tue Sep 20 13:18:53 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Make SELinux policies (and packages) conditional, and enable them only
+  on Tumbleweed.
+
+-------------------------------------------------------------------
+Tue Sep 20 13:04:49 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Take the spec file from the upstream template (targeted at
+  Fedora, but in use for making openSUSE builds already), with
+  just a couple modifications.
+- Make sure that the CFLAGS coming from the OBS build project are
+  not overridden.
+- Patches added:
+  * 0001-Makefile-Allow-define-overrides-by-prepending-not-ap.patch
+
+-------------------------------------------------------------------
+Tue Sep 13 09:10:35 UTC 2022 - dfaggioli@suse.com
+
+- Updated to latest git commit:
+- New in git20220907:
+  * fedora: Escape % characters in spec file's changelog
+  * test: Rewrite test_iperf3
+  * test: Parameterize run time for throughput performance tests
+  * test: Combine iperf3c and iperf3s into a single DSL command
+  * gitignore pidfiles other than passt.pid
+  * Makefile: Honour LDFLAGS for binary targets
+  * test: Wait for systemd-resolved to be ready on Ubuntu 22.04 for s390x
+  * fedora: Add selinux-policy Requires: tag
+  * fedora: Add %dir entries for own SELinux policy directory and documentation
+  * conf: Fix getopt_long() optstring for current semantics of -D, -S, -p
+  * test/README: Requirements for socket buffer sizes and hardware performance events
+  * podman, slirp4netns.sh: Use --netns option on pasta's command line
+  * contrib: Rebase Podman patch to latest upstream
+  * Allow pasta to take a command to execute
+  * Use explicit --netns option rather than multiplexing with PID
+  * More deterministic detection of whether argument is a PID, PATH or NAME
+  * Move ENOENT error message into conf_ns_opt()
+  * Remove --nsrun-dir option
+  * Correct manpage for --userns
+  * conf: Use "-D none" and "-S none" instead of missing empty option arguments
+  * conf: Make the argument to --pcap option mandatory
+  * fedora: Pass explicit bindir, mandir, docdir, and drop OpenSUSE override
+  * fedora: Use full versioning for SELinux subpackage Requires: tag
+  * fedora: Define git_hash in spec file and reuse it
+  * fedora: Drop comment stating the spec file is an example file
+  * fedora: Drop SPDX identifier from spec file
+  * fedora: Adopt versioning guideline for snapshots
+  * util: Drop any supplementary group before dropping privileges
+  * Don't unnecessarily avoid CLOEXEC flags
+  * gitignore README.plain.md
+  * conf: Fix incorrect bounds checking for sock_path parameter
+  * Makefile: Use more GNU-style directory variables, explicit docdir for OpenSUSE
+  * test: debian: Export DEBIAN_FRONTEND=noninteractive for sid
+  * test: Kill qemu by pidfile rather than ^C
+  * test: Log debugging output from test script
+  * test: Use shutdown test for pasta
+  * test: Rename slightly misleading "valgrind" tests
+  * test: Only select a single interface or gateway in tests
+  * test: Split setup/teardown functions for build and distro tests
+  * test: Ignore video processing temporary files
+  * test: Remove unused *_XTERM variables
+  * test: Split cppcheck and clang-tidy tests into different files
+  * test: Convert distro tests to use socat instead of nc/ncat
+  * fedora: Fix man pages wildcards in spec file
+  * fedora: Don't hardcode CFLAGS setting, use %set_build_flags macro instead
+  * fedora: Build SELinux subpackage as noarch
+  * fedora: Change source URL to HEAD link with explicit commit SHA
+  * fedora: Drop VCS tag from spec file
+  * fedora: Start Release tag from 1, not 0
+  * fedora: Introduce own rpkg macro for changelog
+  * fedora: Install "plain" README, instead of web version, and demo script
+  * Makefile: Install demo.sh too, uninstall stuff under /usr/share
+  * Makefile: Ugly hack to get a "plain" Markdown version of README
+  * README: Add link to Copr repositories
+  * doc: Rewrite demo script
+  * contrib, test: Rebase Podman patch, enable three-way merge on git am in demo
+  * passt.1: Default host interfaces are now selected based on IP version
+  * Make substructures for IPv4 and IPv6 specific context information
+  * Separate IPv4 and IPv6 configuration
+  * Clarify semantics of c->v4 and c->v6 variables
+  * Move passt mac_guest init to be more symmetric with pasta
+  * Initialize host side MAC when in IPv6 only mode
+  * Separately locate external interfaces for IPv4 and IPv6
+  * tests: Correct determination of host interface name in tests
+  * Allow different external interfaces for IPv4 and IPv6 connectivity
+  * test: Expand root partition of Debian sid amd64 and aarch64 images
+  * passt: Truncate PID file on open()
+  * demo: Use git protocol downloads
+  * tests: No need to retrieve host ifname in ndp/pasta
+  * tests: Clean up better after iperf tests
+  * tests: Use dhclient --no-pid for namespaces in two_guests tests
+  * tests: Remove unnecessary truncation of temporary files in udp tests
+  * tests: Remove unnecessary ^D in passt_in_ns teardown
+  * tests: Use socat instead of netcat
+  * valgrind needs futex
+  * tests: Fix creation of test file in udp passt tests
+  * tests: Fix detection of empty 'hout' responses in passt{,_in_ns} tests
+  * tests: Correctly handle domain search list in dhclient-script
+  * tests: Handle the case of a nameserver on host localhost
+  * tests: More robust parsing of resolv.conf for DHCP tests
+  * tests: Add some extra dhclient support directories to mbuto.img
+  * tests: Add rudimentary debugging to dhclient-script
+  * tests: Let Fedora find dhclient-script in /usr/sbin
+  * tests: Remove no longer needed /usr/bin/bash link
+  * test: Drop further ^D in passt demo teardown
+  * test: Actually use pasta in Podman demo step with HTTP service
+  * test: Fix Podman build in Podman demo
+  * test: In pasta demo, issue /sbin/dhclient instead of dhclient
+  * test: In demos, use pgrep instead of pstree to find namespace PID
+  * test: In passt demo, bring up eth0 in guest, not in namespace pane
+  * contrib: Rebase Podman patch to latest upstream
+  * qrap: Add a neighbour solicitation to probe frames, instead of just ARP
+  * conf: Reset range endpoints after parsing one excluded port specifier
+  * demo/passt: Bring interface up before starting dhclient in guest
+  * conf: Allow to specify ranges and ports excluded from given ranges
+  * conf: Fix initialisation of IPv6 unicast and link-local addresses
+  * util: Fix debug print on failed SO_REUSEADDR setting in sock_l4()
+  * passt: Allow exit_group() system call in seccomp profiles
+  * arch, passt: Use executable link to form AVX2 binary path
+  * tests: Remove unused DNS6 calculation from fedora tests
+  * tests: Prepare distro images during asset build phase
+  * tests: Move distro image download to asset build makefile
+  * tests: Explicitly list test files in test/run, remove "onlyfor" support
+  * tests: Don't automatically traverse directories of test files
+  * tests: Remove not-very-useful "req" directive
+  * tests: Remove unused set_mode() function
+  * Clean up passt.pid file
+  * tests: Search multiple places for aarch64 EDK2 bios image
+  * tests: Move mbuto download and execution to asset build
+  * tests: Introduce makefile for building test assets
+  * Invoke specific qemu-system-* binaries
+  * tests: qemu-system-ppc64le isn't a thing
+  * Handle the case of a DNS server on localhost
+  * test: Embed script for dhclient(8) in mbuto(1) profile
+  * qrap: Don't rely on errno after perror(), and reset it before usage
+  * Remove unused line_read()
+  * Use new lineread implementation for procfs_scan_listen()
+  * Parse resolv.conf with new lineread implementation
+  * Add cleaner line-by-line reading primitives
+  * test: Add external mbuto profile, drop udhcpc, and switch to it
+  * qrap: Increase number of retries on connection reset even further
+  * qrap: Change number of retries and delay on connection reset
+  * Makefile: Don't create extraneous -.s file
+  * Makefile: Tweak $(RM) usage
+  * Makefile: Simplify pasta* targets with a pattern rule
+  * Makefile: Use $(BIN) and $(MANPAGES) variable to simplify several targets
+  * Makefile: Avoid using wildcard sources
+  * conf: In conf_runas(), on static builds, group information is also unused
+  * tap: Add informational messages for UNIX domain socket connections
+  * qrap: Add probe retry on connection reset from passt for KubeVirt integration
+  * Makefile: Suppress unusedStructMember Cppcheck warning in dhcp.c
+  * tests: Use nmap-ncat instead of openbsd netcat for pasta tests
+  * Use dhclient instead of udhcpc
+  * Tweak dhclient arguments for readability
+  * Don't abbreviate ip(8) arguments in examples and tests
+  * tests: Use more explicit netcat options for distro/fedora tests
+  * README: Fix links to static builds
+  * tcp: Silence warning from gcc 11.3 with -Ofast
+  * contrib/fedora: Use pre-processing macros in spec file
+  * contrib/fedora: Drop dashes from version
+  * conf: Fix one Coverity CID 258163 warning, work around another one
+  * tcp: Work around gcc 12 bogus warning in tcp_rtt_dst_check()
+  * conf: Add --runas option, changing to given UID and GID if started as root
+  * udp: Ignore bogus -Wstringop-overread for write() from gcc 12.1
+  * tests: Don't check exit code for every command in demo mode
+  * tests: Don't count number of test units for demos
+  * demo/pasta: Fix bad sleep directive
+  * test/run: Return 0 from run(), exit value already reflects failures
+  * test/perf/pasta_udp: Drop redundant assignment of ::1 to loopback interface
+  * tests: Simplify explicit checks for command success
+  * tests: Simplify *tools commands using pane_status
+  * tests: Add pane_status command to check for success of issued commands
+  * tests: Don't ignore errors during script
+  * tests: Improve control character filtering in pane_parse
+  * tests: Don't globally set tmux default-shell
+  * tests: Don't use tmux update-environment
+  * tests: Add some debugging output for the test scripts themselves
+  * tests: Remove unused XVFB variable
+  * tests: Update mbuto git URLs
+  * Add basic .gitignore files
+  * qrap.1: Clarify it takes a qemu command, not a path
+  * demo: podman: New port forwarding behaviour for pasta, minor fixes
+  * contrib: podman: Add bound address configuration, update port specifications
+  * netlink: In nl_addr() and nl_route(), don't return before set request
+  * conf, tcp, udp: Allow address specification for forwarded ports
+  * tcp_splice: Allow up to 8 MiB as pipe size
+  * test/lib: Add small delay before trying to parse output
+  * test/distro: Set unprivileged_userns_clone on Debian Buster and earlier
+  * test/lib: Consistent cols, rows, poster attributes for asciinema player
+  * arch: Pointer to local outside scope, CWE-562
+  * udp: Out-of-bounds read, CWE-125 in udp_timer()
+  * tcp: False "Out-of-bounds read" positive, CWE-125
+  * tcp, tcp_splice: False "Negative array index read" positives, CWE-129
+  * tcp_splice: Logically dead code, CWE-561
+  * tcp: Dereference null return value, CWE-476
+  * conf, tap: False "Buffer not null terminated" positives, CWE-170
+  * conf: False "Assign instead of compare" positive, CWE-481
+  * treewide: Argument cannot be negative, CWE-687
+  * passt: Improper use of negative value (CWE-394)
+  * conf, packet: Operands don't affect result, CWE-569
+  * tap: Resource leak, CWE-404
+  * treewide: Unchecked return value from library, CWE-252
+  * tcp: False "Untrusted loop bound" positive, CWE-606
+  * passt: Ignoring number of bytes read, CWE-252
+  * treewide: Invalid type in argument to printf format specifier, CWE-686
+  * passt.1, qrap.1: Update links to qemu out-of-tree patch
+  * README: Fix link to contrib/debian
+  * hooks: Copy .webp diagram versions too
+  * README: Drop red notice about early development phase
+  * contrib: Add example of Debian package files
+  * contrib: Add example spec file for Fedora
+  * tap: Re-read from tap in tap_handler_pasta() on buffer full
+  * tap: Allow ioctl() and openat() for tap_ns_tun() re-initialisation
+  * tap, tcp, udp, icmp: Cut down on some oversized buffers
+  * passt, pasta: Add examples of SELinux policy modules
+  * passt, pasta: Add examples of AppArmor policies
+  * tcp: Fix warning by gcc 5.4 on ppc64le about comparison in CONN_OR_NULL()
+  * passt: Accurate error reporting for sandbox()
+  * Makefile: Allow implicit test for bugprone-suspicious-string-compare checker
+  * treewide: Fix android-cloexec-* clang-tidy warnings, re-enable checks
+  * udp: Move flags before ts in struct udp_tap_port, avoid end padding
+  * treewide: Mark constant references as const
+  * treewide: Add include guards
+  * treewide: Packet abstraction with mandatory boundary checks
+  * util: Fix function declaration style of write_pidfile()
+  * tcp, tcp_splice: Use less awkward syntax to swap in/out sockets from pools
+  * dhcp: Minimum option length implied by RFC 951 is 60 bytes, not 62
+  * tcp: Fit struct tcp_conn into a single 64-byte cacheline
+  * README: Update Interfaces and Availability sections
+  * README: Avoid "here" links
+  * test/perf: Work-around for virtio_net hang before long streams from guest
+  * tcp_splice: Close sockets right away on high number of open files
+  * tcp: Rework timers to use timerfd instead of periodic bitmap scan
+  * tcp, udp, util: Enforce 24-bit limit on socket numbers
+  * test, seccomp, Makefile: Switch to valgrind runs for passt functional tests
+  * test: Add asciinema(1) as requirement for CI in README
+  * Makefile: Enable a few hardening flags
+  * udp: Use flags for local, loopback, and configured unicast binds
+  * dhcpv6, tap, tcp: Use IN6_ARE_ADDR_EQUAL instead of open-coded memcmp()
+  * udp: Split buffer queueing/writing parts of udp_sock_handler()
+  * udp: Drop _splice from recv, send, sendto static buffer names
+  * test/lib/video: Fill in href attributes of video shortcuts
+  * tcp: Refactor to use events instead of states, split out spliced implementation
+  * util: Use standard int types
+  * util: Drop CHECK_SET_MIN_MAX{,_PROTO_FD} macros
+  * pcap: Fix mistake in printed string
+  * conf, util, tap: Implement --trace option for extra verbose logging
+  * README: Make it somewhat readable on mobile devices
+  * hooks, README: gzipped js snippets, webp alternatives for png
+  * test/lib/setup: Unshare PID namespace in pasta_setup()
+  * README: Don't preload CI recording, show poster from end of run
+  * README: s/guest/namespace/ in pasta "Try it" section
+  * Makefile, hooks: Static target precondition for pkgs, copy .avx2 builds
+  * demo/pasta: Clean up before rebuilding with -g
+  * arp, dhcp: Fix strict aliasing warnings reported by gcc 4.9 with -Ofast
+  * passt, pasta: Run-time selection of AVX2 build
+  * test/distro/opensuse: Add Tumbleweed armv7l test
+  * test/lib/term: Don't run demo when started as ./run
+  * seccomp, tcp: Add fcntl64 to pasta syscalls for armv6l, armv7l
+  * hooks/pre-push: Keep original cast on gzip, fix uploading with dash
+  * demo/pasta: Exit namespace in 'ns' pane before restarting pasta
+  * seccomp: Adjust list of allowed syscalls for armv6l, armv7l
+  * passt: Don't warn on failed madvise()
+  * Makefile: Fix up AUDIT_ARCH for armv6l, armv7l
+  * tap: Cast ETH_MAX_MTU to signed in comparisons
+  * seccomp.sh: Handle syscall number defines in the (x + y) form
+  * udp: Explicitly initialise sin6_scope_id and sin_zero in sockaddr_in{,6}
+  * passt: Explicitly check return value of chdir()
+  * hooks: Uploaded compressed .cast files too
+  * passt.1: Drop duplicate --dns section
+  * conf, ndp: Disable router advertisements on --config-net
+  * netlink: Avoid left-over bytes in request on MTU configuration
+  * test: Fix name of CI asciinema player in perf links handler
+
+-------------------------------------------------------------------
+Wed Feb 23 19:41:59 UTC 2022 - mardnh@gmx.de
+
+- Update to version 0~git20220223
+
+-------------------------------------------------------------------
+Sat Oct 23 13:38:46 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0~git20211023
+
+-------------------------------------------------------------------
+Wed Oct 20 11:16:49 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0~git20211020
+
+-------------------------------------------------------------------
+Sun Oct 17 11:01:27 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0~git20211016
