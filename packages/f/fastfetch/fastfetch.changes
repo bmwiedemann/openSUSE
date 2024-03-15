@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 15 16:47:04 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- update to version 2.8.9:
+  Bugfixes:
+    * Don't detect SessionLeader as terminal, actually (Terminal, Linux)
+    * Fix blurry chafa result when specifying both width and height (Logo)
+  Features:
+    * Distinguish min frequency and base frequency (CPU)
+
+
+-------------------------------------------------------------------
 Fri Mar  8 06:26:35 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - update to version 2.8.8:
