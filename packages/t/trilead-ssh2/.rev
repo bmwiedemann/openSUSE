@@ -15,4 +15,12 @@
     <comment>Build with source/target levels 8</comment>
     <requestid>963169</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>07d49969361c494db789821c791ad5c4</srcmd5>
+    <version>217.293.v56de4d4d3515</version>
+    <time>1710531086</time>
+    <user>anag+factory</user>
+    <comment>CVE-2023-48795, bsc#1218198</comment>
+    <requestid>1157966</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Mar 14 09:09:47 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Upgrade to version build-217-jenkins-293.v56de4d4d3515
+  * Trilead ssh2 fix big integer removes leading zero
+    Addresses CVE-2023-48795, bsc#1218198
+  * JENKINS-72466 - : Upgrades jbcrypt dependency
+- Includes changes from previous version updates:
+  * JENKINS-71798 - : TimeoutService threads are left after closing
+    connection
+  * Giving threads names for easier troubleshooting
+  * Update parent POM
+  * There is no guarantee that the plugin works with Java 8 anymore,
+    and it is not tested. If you still run Jenkins  on Java 8 do not
+    update. JENKINS-69229
+  * Removal of unnecessary protobuf-java
+  * fix: bump protobuff due to CVE 2021 22569
+  * JENKINS-69018 - use constant MAX_PACKET_SIZE
+  * add support for hmac-sha2-512-etm@openssh.com
+    hmac-sha2-256-etm@opensh.com in trilead-ssh2
+  * feat: enable continuous delivery workflow
+  * additional kex algorithms
+  * [Revert]JENKINS-62552 - Use standard crypto APIs
+  * feat: enable incrementals
+  * Retry userauth when multiple algs
+  * Known Issue: JENKINS-63790 causes SSH agent connections to fail
+    in some configurations
+  * fix: allow to use password encrypted keys
+  * Known Issue: trilead api 1.0.9 fails clone from ssh repository
+    using 3DES/MD5-encrypted private key JENKINS-63601
+  * JENKINS-62552 - Use standard crypto APIs
+  * Resolve several possible infinite hangings because of wait()
+  * Revert "JENKINS-62311 - Add support for RFC 8332"
+  * [SECURITY] Use HTTPS to resolve dependencies in Maven Build
+  * JENKINS-62311 - Add support for RFC 8332
+  * Support for port=0 which means automatically allocated port.
+  * JENKINS-59857 - Kerberos support updated
+- Added patch:
+  * 0001-Remove-the-dependency-on-google-tink.patch
+    + remove new code dependent on google tink since we don't have
+      the dependency
+
+-------------------------------------------------------------------
 Fri Mar 18 16:41:59 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source/target levels 8
