@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 14 07:30:23 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update to tcsh 6.24.11 - 2024-03-14
+  * Make nice priority incremental even with setpriority(2) to
+    match how it worked with nice(3) (Kimmo Suominen)
+- Port patch tcsh-6.22.02-local-dotlock.dif
+
+-------------------------------------------------------------------
 Mon Dec  4 12:19:00 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch tcsh-skip-utmp-service.dif

@@ -1082,4 +1082,15 @@
     based builtins watch and who of tcsh</comment>
     <requestid>1130750</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>56a7124a3eb470caf0e1c2ddfc6b956d</srcmd5>
+    <version>6.24.11</version>
+    <time>1710530848</time>
+    <user>anag+factory</user>
+    <comment>- Update to tcsh 6.24.11 - 2024-03-14
+  * Make nice priority incremental even with setpriority(2) to
+    match how it worked with nice(3) (Kimmo Suominen)
+- Port patch tcsh-6.22.02-local-dotlock.dif</comment>
+    <requestid>1157873</requestid>
+  </revision>
 </revisionlist>
