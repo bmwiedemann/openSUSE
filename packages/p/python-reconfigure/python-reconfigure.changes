@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 14 17:15:37 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.1.83:
+  - updated makefile
+  - setup.py: Fix url
+  - fixed crontab tests - fixes #26 
+  - cleaned up test warnings
+  - added missing BIND9 keywords - fixes #21 
+
+-------------------------------------------------------------------
 Wed Nov 25 15:03:47 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update URL to https://github.com/Eugeny/reconfigure

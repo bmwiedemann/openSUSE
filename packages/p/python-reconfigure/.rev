@@ -7,4 +7,12 @@
     <comment>Missing component of https://build.opensuse.org/package/show/devel:languages:python/python-cfgdiff</comment>
     <requestid>850767</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5706a8089d5c3aa6a30398a1b8f86be0</srcmd5>
+    <version>0.1.83</version>
+    <time>1710531141</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1158273</requestid>
+  </revision>
 </revisionlist>
