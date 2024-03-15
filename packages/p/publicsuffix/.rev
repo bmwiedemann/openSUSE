@@ -1448,4 +1448,13 @@ Now with build cycle removed.</comment>
   * add myradweb.net and servername.us to Rad Web Hosting (#1760)</comment>
     <requestid>1154614</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>b327f057d8fd984170663e5160d58501</srcmd5>
+    <version>20240306</version>
+    <time>1710530880</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240306:
+  * util: gTLD data autopull updates for 2024-03-06T15:14:58 UTC (#1943)</comment>
+    <requestid>1158013</requestid>
+  </revision>
 </revisionlist>
