@@ -106,3 +106,4 @@ install alsa-firmware
 
 
 buildignore bluedevil5
+buildignore konsole-part-lang

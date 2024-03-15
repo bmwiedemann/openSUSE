@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 15 10:24:24 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- list-kde: Drop konsole-part-lang to save some space
+
+-------------------------------------------------------------------
 Tue Mar 12 19:57:57 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - list-kde: Ignore some Qt/Plasma 5 packages and qt6-webengine users

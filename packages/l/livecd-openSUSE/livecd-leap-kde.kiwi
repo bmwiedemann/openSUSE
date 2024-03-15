@@ -563,6 +563,8 @@
     <package name="alsa-firmware"/>
     <!-- OBS-IgnorePackage: bluedevil5 -->
     <ignore name="bluedevil5"/>
+    <!-- OBS-IgnorePackage: konsole-part-lang -->
+    <ignore name="konsole-part-lang"/>
   </packages>
   <packages type="bootstrap">
     <package name="filesystem"/>
