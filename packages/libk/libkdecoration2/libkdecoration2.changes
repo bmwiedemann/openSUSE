@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar  6 12:41:59 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.11:
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.11
+- Changes since 5.27.10:
+  * Port to new CI syntax
+
+-------------------------------------------------------------------
 Wed Dec  6 11:46:39 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.10
