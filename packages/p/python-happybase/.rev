@@ -161,4 +161,12 @@
     <comment>- add missing six buildrequires</comment>
     <requestid>930184</requestid>
   </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>ab348c022223233494dc031f11ec85c7</srcmd5>
+    <version>1.2.0</version>
+    <time>1710531026</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1158054</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-happybase
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,8 +53,7 @@ HappyBase is a Python library to interact with Apache HBase.
 This package contains the documentation.
 
 %prep
-%setup -q -n happybase-%{version}
-%patch0 -p1
+%autosetup -p1 -n happybase-%{version}
 
 %build
 %python_build
