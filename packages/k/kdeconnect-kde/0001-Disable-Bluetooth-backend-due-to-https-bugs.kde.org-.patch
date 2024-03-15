@@ -1,0 +1,27 @@
+From 5a42e863728731f406bd3478bec330de16a739d6 Mon Sep 17 00:00:00 2001
+From: Simon Redman <simon@ergotech.com>
+Date: Sat, 2 Mar 2024 14:46:29 +0000
+Subject: [PATCH] Disable Bluetooth backend due to
+ https://bugs.kde.org/show_bug.cgi?id=482192
+
+(cherry picked from commit 7f3287a71b7d1acd30724d05a0719312a5b8ae94)
+---
+ core/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/core/CMakeLists.txt b/core/CMakeLists.txt
+index 613c738d..3e23b0bd 100644
+--- a/core/CMakeLists.txt
++++ b/core/CMakeLists.txt
+@@ -12,7 +12,7 @@ option(MDNS_ENABLED "Use MDNS for device discovery" ON)
+ add_subdirectory(backends/lan)
+ add_subdirectory(backends/loopback)
+ 
+-option(BLUETOOTH_ENABLED "Bluetooth support for kdeconnect" ON)
++option(BLUETOOTH_ENABLED "Bluetooth support for kdeconnect" OFF)
+ if(BLUETOOTH_ENABLED)
+     find_package(Qt6 ${QT_MIN_VERSION} REQUIRED COMPONENTS Bluetooth)
+     add_subdirectory(backends/bluetooth)
+-- 
+2.44.0
+

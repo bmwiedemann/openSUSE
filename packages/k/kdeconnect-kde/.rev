@@ -619,4 +619,13 @@
     <comment>KDE release gear 24.02.0</comment>
     <requestid>1150901</requestid>
   </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>6d16d4a0aa1e8c0e00e0096b74377e26</srcmd5>
+    <version>24.02.0</version>
+    <time>1710530934</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream change to work around kde#482192:
+  * 0001-Disable-Bluetooth-backend-due-to-https-bugs.kde.org-.patch</comment>
+    <requestid>1157612</requestid>
+  </revision>
 </revisionlist>

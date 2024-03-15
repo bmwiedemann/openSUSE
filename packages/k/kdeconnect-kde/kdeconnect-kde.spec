@@ -32,6 +32,8 @@ Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 Source100:      kdeconnect-kde.SuSEfirewall
+# PATCH-FIX-UPSTREAM -- temporary workaround for DBus timeouts
+Patch0:         0001-Disable-Bluetooth-backend-due-to-https-bugs.kde.org-.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}

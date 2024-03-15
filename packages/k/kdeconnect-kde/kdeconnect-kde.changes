@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 13 12:57:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change to work around kde#482192:
+  * 0001-Disable-Bluetooth-backend-due-to-https-bugs.kde.org-.patch
+
+-------------------------------------------------------------------
 Fri Feb 23 13:58:56 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.0
