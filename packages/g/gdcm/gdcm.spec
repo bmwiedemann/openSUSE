@@ -1,8 +1,8 @@
 #
 # spec file for package gdcm
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2019-2022 Dr. Axel Braun
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2019-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,15 +20,14 @@
 %define         soname  3_0
 %define         libsocksoname  libsocketxx1_2
 Name:           gdcm
-Version:        3.0.21
+Version:        3.0.23
 Release:        0
 Summary:        C++ library to parse DICOM medical files
 License:        BSD-3-Clause
 Group:          Productivity/Graphics/Other
 URL:            https://gdcm.sourceforge.net/wiki/index.php/Main_Page
 Source0:        https://sourceforge.net/projects/gdcm/files/gdcm%{203}.x/GDCM%{20}%{version}/%{name}-%{version}.tar.bz2
-Patch1:         0001-Fix-build-with-CharLS-2.1.0.patch
-Patch2:         gdcm-2.4.0-usecopyright.patch
+Patch1:         gdcm-2.4.0-usecopyright.patch
 BuildRequires:  CharLS-devel >= 2.0
 BuildRequires:  cmake
 BuildRequires:  docbook5-xsl-stylesheets
@@ -48,8 +47,13 @@ BuildRequires:  swig
 BuildRequires:  cmake(DCMTK)
 BuildRequires:  pkgconfig(libopenjp2)
 #check for Leap version = 15.4
-%if 0%{?sle_version} >= 150400 && 0%{?is_opensuse}
-BuildRequires:  gcc11-c++
+## %if 0%{?sle_version} >= 150400 && 0%{?is_opensuse}
+## BuildRequires:  gcc11-c++
+## %else
+## BuildRequires:  gcc-c++
+## %endif
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++
 %endif
@@ -136,8 +140,12 @@ rm -rf Utilities/rle
 rm -rf Utilities/wxWidgets
 
 %build
-%if 0%{?sle_version} >= 150400 && 0%{?is_opensuse}
-export CXX=g++-11
+##%if 0%{?sle_version} >= 150400 && 0%{?is_opensuse}
+##export CXX=g++-11
+## %endif
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+export CC=gcc-13
+export CXX=g++-13
 %endif
 %cmake	.. \
     -DCMAKE_CXX_FLAGS="%{optflags} -fpermissive " \
