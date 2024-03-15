@@ -91,4 +91,14 @@
 - Initial release for build.opensuse.org</comment>
     <requestid>1132836</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>dc60dbd1ebabc2322a3c2500ac2a5f1e</srcmd5>
+    <version>1.19.8</version>
+    <time>1710531051</time>
+    <user>anag+factory</user>
+    <comment>- Add patch fix-test-assertion-methods.patch, use correct assertion
+  methods.
+- Switch to autosetup and pyproject macros.</comment>
+    <requestid>1158105</requestid>
+  </revision>
 </revisionlist>

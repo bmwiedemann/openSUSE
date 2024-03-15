@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 15 00:00:07 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch fix-test-assertion-methods.patch, use correct assertion
+  methods.
+- Switch to autosetup and pyproject macros.
+
+-------------------------------------------------------------------
 Wed Dec 13 10:11:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.19.8:
