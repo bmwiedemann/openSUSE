@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 14 08:57:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.4:
+  * Add PEP 440 support (implicit namespaces).
+  * Fix XML tests when running in distribution resp. separately.
+  * Exit cleanly when using the test runner --version argument.
+  * Add new --xml <path> option to write JUnit-like XML reports.
+    Code comes from collective.xmltestreport, but be aware that
+    here --xml is not a boolean, but expects a path! (#148).
+  * Add support for Python 3.13a3.
+
+-------------------------------------------------------------------
 Sat Jan 13 22:52:05 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Run the test suite with itself like it is meant to be

@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-zope.testrunner
-Version:        6.2.1
+Version:        6.4
 Release:        0
 Summary:        Zope testrunner script
 License:        ZPL-2.1
@@ -43,7 +43,7 @@ Requires:       python-setuptools
 Requires:       python-zope.exceptions
 Requires:       python-zope.interface
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module zope.testing}
