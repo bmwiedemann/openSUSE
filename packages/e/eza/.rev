@@ -446,4 +446,14 @@
   * This security release fixes GHSA-3qx3-6hxr-j2ch (bsc#1221053)</comment>
     <requestid>1155551</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f46a11dd08b36a031a41b688a0cf277b</srcmd5>
+    <version>0.18.7+0</version>
+    <time>1710531034</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.18.7:
+  * Bugfix to resolve absolute paths that are not symlinks
+  * Add filetype and icon for .hh extension</comment>
+    <requestid>1158071</requestid>
+  </revision>
 </revisionlist>

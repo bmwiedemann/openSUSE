@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 14 17:59:03 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.7:
+  * Bugfix to resolve absolute paths that are not symlinks
+  * Add filetype and icon for .hh extension
+
+-------------------------------------------------------------------
 Wed Mar  6 07:26:51 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.18.6:
