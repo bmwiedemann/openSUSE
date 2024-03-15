@@ -119,15 +119,21 @@ install -Dm644 man/man1/fzf.1 %{buildroot}%{_mandir}/man1/fzf.1
 install -Dm644 man/man1/fzf-tmux.1 %{buildroot}%{_mandir}/man1/fzf-tmux.1
 
 # shell completions
-install -Dm0644 shell/completion.bash \
-    %{buildroot}%{_datadir}/bash-completion/completions/fzf
-install -Dm0644 shell/key-bindings.bash \
+# csplit splits on end tags inside of the completions to allow for easy
+# splitting of the files for installation.
+./fzf --bash | csplit - '/.*end\:.*/' -f bash
+./fzf --zsh | csplit - '/.*end\:.*/' -f zsh
+./fzf --fish > fish00
+
+install -Dm0644 bash00 \
     %{buildroot}%{_datadir}/bash-completion/completions/fzf-key-bindings
-install -Dm0644 shell/completion.zsh \
-    %{buildroot}%{_datadir}/zsh/site-functions/_fzf
-install -Dm0644 shell/key-bindings.zsh \
+install -Dm0644 bash01 \
+    %{buildroot}%{_datadir}/bash-completion/completions/fzf
+install -Dm0644 zsh00 \
     %{buildroot}%{_sysconfdir}/zsh_completion.d/fzf-key-bindings
-install -Dm0644 shell/key-bindings.fish \
+install -Dm0644 zsh01 \
+    %{buildroot}%{_datadir}/zsh/site-functions/_fzf
+install -Dm0644 fish00 \
     %{buildroot}%{_datadir}/fish/vendor_functions.d/fzf_key_bindings.fish
 
 # vim plugin
