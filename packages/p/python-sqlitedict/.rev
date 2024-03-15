@@ -47,4 +47,28 @@
     <comment></comment>
     <requestid>811144</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>02bfe326269ee64b04bf0a2376d305f9</srcmd5>
+    <version>2.1.0</version>
+    <time>1710531069</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.1.0:
+  * Fix setDaemon deprecated warning
+  * adding optional ability to encode keys
+  * Change logging from info to debug
+  * Properly handle the race condition
+  * Correct spelling mistakes
+  * Introduce weak references
+  * This release supports Python 3.7 and above
+  * Do not create tables when in read-only mode
+  * Use tempfile.mkstemp for safer temp file creation
+  * Fix deadlock where opening database fails
+  * Make outer_stack a parameter
+  * Add a blocking commit after each modification if autocommit is enabled
+  * Clean up license file names
+  * support double quotes in table names
+- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1158120</requestid>
+  </revision>
 </revisionlist>
