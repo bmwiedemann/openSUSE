@@ -671,4 +671,12 @@
   supported since ipython 8.19 (through ipykernel)</comment>
     <requestid>1155890</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>fec6decb0fad67c28ececce1ad328046</srcmd5>
+    <version>2.13.0</version>
+    <time>1710531101</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1158241</requestid>
+  </revision>
 </revisionlist>

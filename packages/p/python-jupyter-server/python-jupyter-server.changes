@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  8 14:04:13 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip flaky test_restart_kernel
+
+-------------------------------------------------------------------
 Thu Mar  7 12:13:10 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.13.0

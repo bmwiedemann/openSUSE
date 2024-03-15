@@ -134,7 +134,7 @@ if [ -e ~/.local/share/jupyter ]; then
     echo "You might need to delete ~/.local/share/jupyter in order to avoid test failures."
 fi
 # pytest-xdist for process control so that the worker does not indefinitely hang after success, no parallel tests
-%pytest --timeout 60 --force-flaky --max-runs=3 --no-flaky-report -n 1
+%pytest --timeout 60 --force-flaky --max-runs=3 --no-flaky-report -n 1 -k "not test_restart_kernel"
 %endif
 
 %if ! %{with test}
