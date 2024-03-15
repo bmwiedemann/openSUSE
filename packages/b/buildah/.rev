@@ -666,4 +666,12 @@
     <comment></comment>
     <requestid>1156214</requestid>
   </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>488a04830d9288bd94fb3d5d9b4c1175</srcmd5>
+    <version>1.35.0</version>
+    <time>1710530950</time>
+    <user>anag+factory</user>
+    <comment>Require passt for rootless networking &amp; cleanup requires</comment>
+    <requestid>1157883</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 14 08:30:53 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- Remove obsolete requires libcontainers-image & libcontainers-storage
+
+-------------------------------------------------------------------
+Thu Mar 14 05:32:57 UTC 2024 - Danish Prakash <danish.prakash@suse.com>
+
+- Require passt for rootless networking (poo#156955)
+  Buildah moved to passt/pasta for rootless networking from slirp4netns
+  (https://github.com/containers/common/pull/1846)
+
+-------------------------------------------------------------------
 Thu Mar 07 15:46:25 UTC 2024 - dcermak@suse.com
 
 - Update to version 1.35.0:
