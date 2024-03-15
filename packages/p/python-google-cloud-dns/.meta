@@ -1,0 +1,5 @@
+<package name="python-google-cloud-dns" project="openSUSE:Factory">
+  <title>Access the GCP DNS API</title>
+  <description>Cloud DNS API: provides methods that you can use to manage DNS for your applications.</description>
+  <devel project="devel:languages:python:google" package="python-google-cloud-dns"/>
+</package>
