@@ -11634,7 +11634,7 @@ unsorted:
   - libbeecrypt-devel 
   - libbeecrypt6 
   - libbelcard1 
-  - libbellesip1 
+  - libbelle-sip1 
   - libbelr1 
   - libbemenu0 
   - libbenchmark1 
@@ -12418,7 +12418,6 @@ unsorted:
   - libeXosip2 
   - libeXosip2-15 
   - libeXosip2-devel 
-  - libeac3 
   - libeantic3 
   - libeb16 
   - libebml-devel 
@@ -14002,7 +14001,6 @@ unsorted:
   - libmediacheck-devel 
   - libmediainfo-devel 
   - libmediainfo0 
-  - libmediastreamer11 
   - libmediawiki-devel 
   - libmedimport0 
   - libmeep31 
@@ -18960,7 +18958,6 @@ unsorted:
   - ndppd 
   - neard 
   - neard-devel 
-  - neard-test 
   - neatvnc-devel 
   - nedit 
   - neix 
@@ -20138,8 +20135,6 @@ unsorted:
   - packETH 
   - packETH-cli 
   - package-translations 
-  - package-update-indicator 
-  - package-update-indicator-lang 
   - packagekitqt5-devel 
   - packagekitqt6-devel 
   - packetdrill 
@@ -22268,6 +22263,8 @@ unsorted:
   - plexus-utils-javadoc 
   - plexus-velocity 
   - plexus-velocity-javadoc 
+  - plexus-xml 
+  - plexus-xml-javadoc 
   - plib-devel 
   - plistutil 
   - plotutils 
@@ -25113,7 +25110,6 @@ unsorted:
   - python310-kiwi-keg 
   - python310-kiwisolver 
   - python310-kmatch 
-  - python310-kmod 
   - python310-kmodpy 
   - python310-knack 
   - python310-kombu 
@@ -25292,7 +25288,6 @@ unsorted:
   - python310-matplotlib-tk 
   - python310-matplotlib-web 
   - python310-matplotlib-wx 
-  - python310-matrix-client 
   - python310-matrix-nio 
   - python310-matrix_common 
   - python310-maturin 
@@ -25812,6 +25807,7 @@ unsorted:
   - python310-pycxx-devel 
   - python310-pydantic 
   - python310-pydantic-core 
+  - python310-pydantic-settings 
   - python310-pydash 
   - python310-pydata-google-auth 
   - python310-pydata-sphinx-theme 
@@ -26322,6 +26318,7 @@ unsorted:
   - python310-rss2email 
   - python310-rst.linker 
   - python310-rstcheck 
+  - python310-rstcheck-core 
   - python310-rt 
   - python310-rtslib-fb 
   - python310-ruamel.base 
@@ -28611,7 +28608,6 @@ unsorted:
   - python311-kiwi-keg 
   - python311-kiwisolver 
   - python311-kmatch 
-  - python311-kmod 
   - python311-kmodpy 
   - python311-knack 
   - python311-kombu 
@@ -28782,7 +28778,6 @@ unsorted:
   - python311-matplotlib-tk 
   - python311-matplotlib-web 
   - python311-matplotlib-wx 
-  - python311-matrix-client 
   - python311-matrix-nio 
   - python311-matrix_common 
   - python311-maturin 
@@ -29273,6 +29268,7 @@ unsorted:
   - python311-pycxx-devel 
   - python311-pydantic 
   - python311-pydantic-core 
+  - python311-pydantic-settings 
   - python311-pydash 
   - python311-pydata-google-auth 
   - python311-pydata-sphinx-theme 
@@ -29766,6 +29762,7 @@ unsorted:
   - python311-rss2email 
   - python311-rst.linker 
   - python311-rstcheck 
+  - python311-rstcheck-core 
   - python311-rt 
   - python311-rtslib-fb 
   - python311-ruamel.base 
@@ -32095,7 +32092,6 @@ unsorted:
   - python312-kiwi-keg 
   - python312-kiwisolver 
   - python312-kmatch 
-  - python312-kmod 
   - python312-kmodpy 
   - python312-knack 
   - python312-kombu 
@@ -32271,7 +32267,6 @@ unsorted:
   - python312-matplotlib-tk 
   - python312-matplotlib-web 
   - python312-matplotlib-wx 
-  - python312-matrix-client 
   - python312-matrix-nio 
   - python312-matrix_common 
   - python312-maturin 
@@ -32772,6 +32767,7 @@ unsorted:
   - python312-pycxx-devel 
   - python312-pydantic 
   - python312-pydantic-core 
+  - python312-pydantic-settings 
   - python312-pydash 
   - python312-pydata-sphinx-theme 
   - python312-pydbus 
@@ -33271,6 +33267,7 @@ unsorted:
   - python312-rss2email 
   - python312-rst.linker 
   - python312-rstcheck 
+  - python312-rstcheck-core 
   - python312-rt 
   - python312-rtslib-fb 
   - python312-ruamel.base 
@@ -33291,6 +33288,7 @@ unsorted:
   - python312-sarge 
   - python312-sarif-om 
   - python312-sas7bdat 
+  - python312-sasl 
   - python312-scandir 
   - python312-schedule 
   - python312-schema 
@@ -34751,7 +34749,6 @@ unsorted:
   - python39-cftime 
   - python39-chardet 
   - python39-charset-normalizer 
-  - python39-chart-studio 
   - python39-check-manifest 
   - python39-checkdmarc 
   - python39-cheroot 
@@ -35262,7 +35259,6 @@ unsorted:
   - python39-geojson 
   - python39-geolib 
   - python39-geolinks 
-  - python39-geomdl 
   - python39-geomet 
   - python39-geopandas 
   - python39-geopy 
@@ -35517,7 +35513,6 @@ unsorted:
   - python39-jinja2-pluralize 
   - python39-jinja2-time 
   - python39-jira 
-  - python39-jirafs 
   - python39-jmespath 
   - python39-joblib 
   - python39-josepy 
@@ -35589,7 +35584,6 @@ unsorted:
   - python39-kiwi-keg 
   - python39-kiwisolver 
   - python39-kmatch 
-  - python39-kmod 
   - python39-kmodpy 
   - python39-knack 
   - python39-kombu 
@@ -35764,7 +35758,6 @@ unsorted:
   - python39-matplotlib-tk 
   - python39-matplotlib-web 
   - python39-matplotlib-wx 
-  - python39-matrix-client 
   - python39-matrix-nio 
   - python39-maturin 
   - python39-mautrix 
@@ -36025,7 +36018,6 @@ unsorted:
   - python39-pandas-test 
   - python39-pandas-xml 
   - python39-pandocfilters 
-  - python39-panel 
   - python39-panflute 
   - python39-papermill 
   - python39-parallax 
@@ -36185,8 +36177,6 @@ unsorted:
   - python39-psycopg2 
   - python39-psycopg2cffi 
   - python39-psygnal 
-  - python39-ptpython 
-  - python39-ptpython-ptipython 
   - python39-ptr 
   - python39-ptyprocess 
   - python39-publicsuffix2 
@@ -36224,7 +36214,6 @@ unsorted:
   - python39-pyRFC3339 
   - python39-pyRXP 
   - python39-pyScss 
-  - python39-pyUSID 
   - python39-pyVows 
   - python39-pyacoustid 
   - python39-pyaes 
@@ -36271,6 +36260,7 @@ unsorted:
   - python39-pycxx-devel 
   - python39-pydantic 
   - python39-pydantic-core 
+  - python39-pydantic-settings 
   - python39-pydash 
   - python39-pydata-google-auth 
   - python39-pydata-sphinx-theme 
@@ -36776,6 +36766,7 @@ unsorted:
   - python39-rss2email 
   - python39-rst.linker 
   - python39-rstcheck 
+  - python39-rstcheck-core 
   - python39-rt 
   - python39-rtslib-fb 
   - python39-ruamel.base 
@@ -36860,7 +36851,6 @@ unsorted:
   - python39-shodan 
   - python39-shortuuid 
   - python39-show-in-file-manager 
-  - python39-sidpy 
   - python39-sievelib 
   - python39-signedjson 
   - python39-simpleaudio 
@@ -37303,7 +37293,6 @@ unsorted:
   - python39-xxhash 
   - python39-xyzservices 
   - python39-y-py 
-  - python39-yacron 
   - python39-yafe 
   - python39-yamale 
   - python39-yamldoc 

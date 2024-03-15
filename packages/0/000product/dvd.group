@@ -1916,6 +1916,7 @@
     <package name="libdvdread8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdw1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libe-book-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libeac3" supportstatus="unsupported"/> <!-- reason: dvd:rng-tools -->
     <package name="libebackend-1_2-11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libebml5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libebook-1_2-21" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2225,7 +2226,7 @@
     <package name="libinotifytools0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="libinput-udev" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libinput10" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libip4tc2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libip4tc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libip6tc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libiptcdata" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libiptcdata-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
