@@ -1,7 +1,7 @@
 #
 # spec file for package python-xsge_lighting
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,13 +26,12 @@ URL:            https://python-sge.github.io/
 #Git-Clone:     https://github.com/python-sge/xsge
 Source:         https://files.pythonhosted.org/packages/source/x/xsge_lighting/xsge_lighting-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 Requires:       python-sge-pygame >= 1.0
-Requires:       python-six >= 1.4.0
 BuildRequires:  fdupes
 BuildArch:      noarch
-
 %python_subpackages
 
 %description

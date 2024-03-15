@@ -34,4 +34,13 @@
   * Relicensed to LGPL</comment>
     <requestid>1135653</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d79a35e7e1a8d23a3a94fdad88946c50</srcmd5>
+    <version>1.0.3</version>
+    <time>1710531060</time>
+    <user>anag+factory</user>
+    <comment>- Add missing BuildRequires on setuptools.
+- Drop unneeded Requires on six.</comment>
+    <requestid>1158110</requestid>
+  </revision>
 </revisionlist>

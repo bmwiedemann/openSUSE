@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 15 02:08:31 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires on setuptools.
+- Drop unneeded Requires on six.
+
+-------------------------------------------------------------------
 Fri Dec 29 12:28:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.3:
