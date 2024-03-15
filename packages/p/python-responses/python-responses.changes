@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 14 08:19:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.25.0:
+  * Added support for Python 3.12
+  * Fixed `matchers.header_matcher` not failing when a matched
+    header is missing from the request. See #702
+
+-------------------------------------------------------------------
 Mon Nov 27 18:39:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.24.1:

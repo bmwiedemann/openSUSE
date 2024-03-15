@@ -383,4 +383,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1130836</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>40b95b86d183491f12e9c42ef96e22c0</srcmd5>
+    <version>0.25.0</version>
+    <time>1710530851</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.25.0:
+  * Added support for Python 3.12
+  * Fixed `matchers.header_matcher` not failing when a matched
+    header is missing from the request. See #702</comment>
+    <requestid>1157880</requestid>
+  </revision>
 </revisionlist>
