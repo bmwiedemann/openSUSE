@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 11 11:21:49 UTC 2024 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20240311.559e6ac:
+  * whitelist gnome-control-center remote-session-helper (bsc#1220862)
+
+-------------------------------------------------------------------
 Thu Mar 07 15:33:36 UTC 2024 - filippo.bonazzi@suse.com
 
 - Update to version 1550+20240307.987ebab:
