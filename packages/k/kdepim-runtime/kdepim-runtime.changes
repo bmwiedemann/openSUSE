@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 13 19:28:04 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change to fix the etesync resource build (kde#482600):
+  * 0001-Bring-back-etesync-support.patch
+
+-------------------------------------------------------------------
 Fri Feb 23 13:59:04 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.0

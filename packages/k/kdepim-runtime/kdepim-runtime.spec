@@ -21,7 +21,7 @@
 %define kpim6_version 6.0.0
 
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150500
-# %%bcond_without etebase
+%bcond_without etebase
 %endif
 
 %bcond_without released
@@ -36,6 +36,8 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Bring-back-etesync-support.patch
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libboost_atomic-devel
@@ -76,6 +78,7 @@ BuildRequires:  cmake(KPim6MailTransport) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Mbox) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
 BuildRequires:  cmake(Qca-qt6)
+BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Keychain)
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}

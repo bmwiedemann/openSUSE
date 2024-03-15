@@ -951,4 +951,13 @@
     <comment>KDE release gear 24.02.0</comment>
     <requestid>1150911</requestid>
   </revision>
+  <revision rev="117" vrev="2">
+    <srcmd5>68ea8b23ccdd4b5463c8dceadb482d3e</srcmd5>
+    <version>24.02.0</version>
+    <time>1710530936</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream change to fix the etesync resource build (kde#482600):
+  * 0001-Bring-back-etesync-support.patch</comment>
+    <requestid>1157755</requestid>
+  </revision>
 </revisionlist>
