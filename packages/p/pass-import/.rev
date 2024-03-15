@@ -84,4 +84,13 @@
 </comment>
     <requestid>1157652</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>826eecc6e9ac2a95c87380f225256b87</srcmd5>
+    <version>3.5</version>
+    <time>1710531094</time>
+    <user>anag+factory</user>
+    <comment>- Current code requires Python &gt;= 3.7.
+</comment>
+    <requestid>1158200</requestid>
+  </revision>
 </revisionlist>

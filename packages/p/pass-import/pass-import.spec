@@ -28,6 +28,7 @@ BuildRequires:  fdupes
 BuildRequires:  password-store
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-PyYAML
+BuildRequires:  python3-base >= 3.7
 BuildRequires:  python3-pip
 BuildRequires:  python3-requests
 BuildRequires:  python3-setuptools
