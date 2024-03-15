@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Mar 15 07:48:15 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.0.1:
+  * Do not touch botocore unless it is installed
+  * Upgrade dev status classifier to stable
+  * Add zstandard compression support
+  * Support moto 4 & 5
+  * Add logic for handling large files in MultipartWriter uploads to S3
+  * Add support for SSH connection via aliases from ~/.ssh/config
+  * Secure the connection using SSL when connecting to the FTPS server
+  * Make GCS I/O 1000x faster by avoiding unnecessary API call
+  * Retry finalizing multipart S3 upload
+  * Handle exceptions during writes to Azure
+  * Fix str method in SinglepartWriter
+  * Fix KeyError: 'ContentRange' when received full content from S3
+  * Propagate exit call to the underlying filestream
+- Switch to autosetup and pyproject macros.
+- Less globs in %files.
+- Update all URLs, the github repository owner has changed.
+- Add patch skip-gzip-tests-python312.patch, skip broken tests under
+  Python 3.12.
+
+-------------------------------------------------------------------
 Thu Oct 12 13:26:22 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 6.4.0

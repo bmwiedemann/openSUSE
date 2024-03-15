@@ -1,7 +1,7 @@
 #
 # spec file for package python-smart-open
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,16 @@
 
 
 Name:           python-smart-open
-Version:        6.4.0
+Version:        7.0.1
 Release:        0
 Summary:        Python utils for streaming large files
 License:        MIT
-URL:            https://github.com/RaRe-Technologies/smart_open
-Source:         https://github.com/RaRe-Technologies/smart_open/archive/refs/tags/v%{version}.tar.gz#/smart_open-%{version}.tar.gz
+URL:            https://github.com/piskvorky/smart_open
+Source:         https://github.com/piskvorky/smart_open/archive/refs/tags/v%{version}.tar.gz#/smart_open-%{version}.tar.gz
+Patch0:         skip-gzip-tests-python312.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-azure-common
@@ -32,9 +35,11 @@ Requires:       python-azure-storage-blob
 Requires:       python-boto3
 Requires:       python-google-cloud-storage
 Requires:       python-requests
+Requires:       python-wrapt
+Requires:       python-zstandard
 Suggests:       python-paramiko
 BuildArch:      noarch
-# see https://github.com/RaRe-Technologies/smart_open/issues/784
+# see https://github.com/piskvorky/smart_open/issues/784
 BuildRequires:  %{python_module urllib3 < 2}
 Requires:       python-urllib3 < 2
 # SECTION test requirements
@@ -50,6 +55,7 @@ BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module responses}
+BuildRequires:  %{python_module zstandard}
 # /SECTION
 %python_subpackages
 
@@ -58,23 +64,25 @@ Python utils for streaming large files.
 Includes support for S3, HDFS, gzip, bz2, etc.
 
 %prep
-%setup -q -n smart_open-%{version}
+%autosetup -p1 -n smart_open-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 moto_server -p5000 2>/dev/null &
 export SO_ENABLE_MOTO_SERVER=1
-%pytest -rs smart_open/
+# Requires network
+%pytest -rs -k 'not (test_http_gz or test_s3_gzip_compress_sanity)' smart_open/
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/smart[-_]open*/
+%{python_sitelib}/smart_open
+%{python_sitelib}/smart_open-%{version}.dist-info
 
 %changelog
