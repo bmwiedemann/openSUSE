@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 14 14:14:14 UTC 2024 - olaf@aepfle.de
+
+- version 1.7
+- screen uses select(2), which is limited to FD_SETSIZE open file descriptors
+
+-------------------------------------------------------------------
 Fri Mar  8 16:00:49 UTC 2024 - olaf@aepfle.de
 
 - version 1.6

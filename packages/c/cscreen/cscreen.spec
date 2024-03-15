@@ -19,7 +19,7 @@
 %define USERNAME _cscreen
 %define HOMEDIR %_localstatedir/lib/cscreen
 Name:           cscreen
-Version:        1.6
+Version:        1.7
 Release:        0
 Summary:        Console screen
 License:        BSD-4-Clause

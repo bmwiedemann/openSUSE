@@ -79,4 +79,13 @@ for broader feedback and usage.</comment>
 - Remove pre-systemd support</comment>
     <requestid>1156411</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c09a0bd23376ac57eb95769729547dd2</srcmd5>
+    <version>1.7</version>
+    <time>1710531038</time>
+    <user>anag+factory</user>
+    <comment>- version 1.7
+- screen uses select(2), which is limited to FD_SETSIZE open file descriptors</comment>
+    <requestid>1158076</requestid>
+  </revision>
 </revisionlist>
