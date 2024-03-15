@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 14 10:38:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Ensure flavor has a value, at least %nil.
+- ExclusiveArch: %nil is invalid: give it a value (do-not-build).
+
+-------------------------------------------------------------------
 Wed Apr 19 12:52:08 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - prefer org.gnome.TextEditor.desktop instead of gedit.
