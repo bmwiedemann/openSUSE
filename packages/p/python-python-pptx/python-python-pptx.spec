@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-pptx
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-pptx
 Version:        0.6.23
 Release:        0
@@ -25,6 +24,8 @@ Summary:        Generate and manipulate Open XML PowerPoint (pptx) files
 License:        MIT
 URL:            http://github.com/scanny/python-pptx
 Source:         https://files.pythonhosted.org/packages/source/p/python-pptx/python-pptx-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/scanny/python-pptx/pull/957 Use UTC-aware datetime objects
+Patch:          utc.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -46,7 +47,7 @@ BuildArch:      noarch
 Generate and manipulate Open XML PowerPoint (.pptx) files.
 
 %prep
-%setup -q -n python-pptx-%{version}
+%autosetup -p1 -n python-pptx-%{version}
 
 %build
 %python_build

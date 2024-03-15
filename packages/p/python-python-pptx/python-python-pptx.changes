@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 15 09:18:12 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add patch utc.patch to fix the behavior on Python 3.12
+
+-------------------------------------------------------------------
 Tue Dec 26 20:29:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.23:
