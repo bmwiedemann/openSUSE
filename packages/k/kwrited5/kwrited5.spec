@@ -1,7 +1,7 @@
 #
 # spec file for package kwrited5
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kwrited5
-Version:        5.27.10
+Version:        5.27.11
 Release:        0
 Summary:        Daemon listening for wall and write messages
 License:        GPL-2.0-or-later

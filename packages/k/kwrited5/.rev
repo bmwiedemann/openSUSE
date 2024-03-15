@@ -1222,4 +1222,12 @@
     <comment>Plasma 5.27.10 (forwarded request 1131390 from Vogtinator)</comment>
     <requestid>1131419</requestid>
   </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>ec5c3d29eafa1bd9df4651e5c9e31362</srcmd5>
+    <version>5.27.11</version>
+    <time>1710530926</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.11</comment>
+    <requestid>1157375</requestid>
+  </revision>
 </revisionlist>
