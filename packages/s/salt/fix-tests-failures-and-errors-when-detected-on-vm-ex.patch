@@ -1,0 +1,772 @@
+From 737b0bd931c07239d50e7395eb7425c06f485848 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Thu, 14 Mar 2024 13:03:00 +0000
+Subject: [PATCH] Fix tests failures and errors when detected on VM
+ execution from Salt Shaker (#636)
+
+* test_chmod: fix test expectation
+
+* test_pkg: Adjust package expectation for SUSE family
+
+* test_docker_network: Skip non-supported operation for SUSE family
+
+* Fix tests failing due wrong docker-py version
+
+* test_version: skip test in packaged scenario when setup.py is missing
+
+* Fix issue related to docker version used during testing
+
+* Fix test errors when setup.py is not available
+
+* test_loader: do not run if setup.py is missing
+
+* test_install: Fix test errors when setup.py is not available
+
+* test_master: use a right service name expected on SUSE family
+
+* test_jinja_filters: prevent test failure when which binary is not available
+
+* Prevent errors when x509 utils cannot be loaded
+
+* test_thin: skip test if virtualenv binary is missing
+---
+ tests/integration/pillar/test_git_pillar.py          | 12 +++++++++++-
+ tests/pytests/functional/cache/test_consul.py        |  5 +++++
+ tests/pytests/functional/cache/test_mysql.py         |  5 +++++
+ tests/pytests/functional/loader/test_loader.py       |  9 +++++++++
+ .../functional/modules/state/test_jinja_filters.py   |  4 ++--
+ tests/pytests/functional/modules/test_cmdmod.py      |  2 +-
+ tests/pytests/functional/modules/test_dockermod.py   |  8 +++++++-
+ tests/pytests/functional/modules/test_pkg.py         |  2 ++
+ tests/pytests/functional/modules/test_swarm.py       |  6 +++++-
+ tests/pytests/functional/states/rabbitmq/conftest.py | 11 +++++++++++
+ .../functional/states/rabbitmq/test_cluster.py       |  7 ++++++-
+ .../functional/states/rabbitmq/test_plugin.py        |  8 +++++++-
+ .../functional/states/rabbitmq/test_policy.py        |  7 ++++++-
+ .../functional/states/rabbitmq/test_upstream.py      |  7 ++++++-
+ .../pytests/functional/states/rabbitmq/test_user.py  |  7 ++++++-
+ .../pytests/functional/states/rabbitmq/test_vhost.py |  7 ++++++-
+ .../pytests/functional/states/test_docker_network.py |  7 ++++++-
+ tests/pytests/functional/states/test_pkg.py          |  2 +-
+ tests/pytests/functional/test_version.py             |  9 +++++++++
+ tests/pytests/integration/modules/test_virt.py       |  5 +++++
+ tests/pytests/integration/modules/test_x509_v2.py    |  2 +-
+ tests/pytests/integration/ssh/test_log.py            |  7 ++++++-
+ tests/pytests/integration/ssh/test_master.py         |  2 +-
+ tests/pytests/integration/ssh/test_py_versions.py    |  7 ++++++-
+ tests/pytests/integration/ssh/test_ssh_setup.py      |  7 ++++++-
+ tests/pytests/integration/states/test_x509_v2.py     |  2 +-
+ tests/pytests/scenarios/setup/test_install.py        |  8 ++++++++
+ tests/pytests/unit/modules/test_pip.py               |  8 ++++++++
+ tests/pytests/unit/utils/test_x509.py                |  3 ++-
+ tests/unit/states/test_pip_state.py                  |  6 ++++++
+ tests/unit/utils/test_thin.py                        |  3 +++
+ 31 files changed, 164 insertions(+), 21 deletions(-)
+
+diff --git a/tests/integration/pillar/test_git_pillar.py b/tests/integration/pillar/test_git_pillar.py
+index 5b4cbda95c9..d56785f97c2 100644
+--- a/tests/integration/pillar/test_git_pillar.py
++++ b/tests/integration/pillar/test_git_pillar.py
+@@ -79,6 +79,7 @@ from salt.utils.gitfs import (
+     PYGIT2_VERSION,
+     FileserverConfigError,
+ )
++from salt.utils.versions import Version
+ from tests.support.gitfs import (  # pylint: disable=unused-import
+     PASSWORD,
+     USERNAME,
+@@ -101,11 +102,20 @@ try:
+ except Exception:  # pylint: disable=broad-except
+     HAS_PYGIT2 = False
+ 
++docker = pytest.importorskip("docker")
++
+ INSIDE_CONTAINER = os.getenv("HOSTNAME", "") == "salt-test-container"
++
+ pytestmark = [
+     SKIP_INITIAL_PHOTONOS_FAILURES,
+     pytest.mark.skip_on_platforms(windows=True, darwin=True),
+-    pytest.mark.skipif(INSIDE_CONTAINER, reason="Communication problems between containers."),
++    pytest.mark.skipif(
++        INSIDE_CONTAINER, reason="Communication problems between containers."
++    ),
++    pytest.mark.skipif(
++        Version(docker.__version__) < Version("4.0.0"),
++        reason="Test does not work in this version of docker-py",
++    ),
+ ]
+ 
+ 
+diff --git a/tests/pytests/functional/cache/test_consul.py b/tests/pytests/functional/cache/test_consul.py
+index c6e16d2588e..30dc6925f26 100644
+--- a/tests/pytests/functional/cache/test_consul.py
++++ b/tests/pytests/functional/cache/test_consul.py
+@@ -8,6 +8,7 @@ from saltfactories.utils import random_string
+ 
+ import salt.cache
+ import salt.loader
++from salt.utils.versions import Version
+ from tests.pytests.functional.cache.helpers import run_common_cache_tests
+ 
+ docker = pytest.importorskip("docker")
+@@ -20,6 +21,10 @@ pytestmark = [
+     pytest.mark.slow_test,
+     pytest.mark.skip_if_binaries_missing("dockerd"),
+     pytest.mark.skipif(INSIDE_CONTAINER, reason="Cannot run in a container"),
++    pytest.mark.skipif(
++        Version(docker.__version__) < Version("4.0.0"),
++        reason="Test does not work in this version of docker-py",
++    ),
+ ]
+ 
+ 
+diff --git a/tests/pytests/functional/cache/test_mysql.py b/tests/pytests/functional/cache/test_mysql.py
+index e15fc732a4a..93c6c7c6f6f 100644
+--- a/tests/pytests/functional/cache/test_mysql.py
++++ b/tests/pytests/functional/cache/test_mysql.py
+@@ -5,6 +5,7 @@ import pytest
+ 
+ import salt.cache
+ import salt.loader
++from salt.utils.versions import Version
+ from tests.pytests.functional.cache.helpers import run_common_cache_tests
+ from tests.support.pytest.mysql import *  # pylint: disable=wildcard-import,unused-wildcard-import
+ 
+@@ -18,6 +19,10 @@ pytestmark = [
+     pytest.mark.slow_test,
+     pytest.mark.skip_if_binaries_missing("dockerd"),
+     pytest.mark.skipif(INSIDE_CONTAINER, reason="Cannot run in a container"),
++    pytest.mark.skipif(
++        Version(docker.__version__) < Version("4.0.0"),
++        reason="Test does not work in this version of docker-py",
++    ),
+ ]
+ 
+ 
+diff --git a/tests/pytests/functional/loader/test_loader.py b/tests/pytests/functional/loader/test_loader.py
+index 963d33f59c3..e81ef126ca3 100644
+--- a/tests/pytests/functional/loader/test_loader.py
++++ b/tests/pytests/functional/loader/test_loader.py
+@@ -1,14 +1,23 @@
+ import json
++import os
+ 
+ import pytest
+ 
+ from salt.utils.versions import Version
+ from tests.support.helpers import SaltVirtualEnv
+ from tests.support.pytest.helpers import FakeSaltExtension
++from tests.support.runtests import RUNTIME_VARS
++
++MISSING_SETUP_PY_FILE = not os.path.exists(
++    os.path.join(RUNTIME_VARS.CODE_DIR, "setup.py")
++)
+ 
+ pytestmark = [
+     # These are slow because they create a virtualenv and install salt in it
+     pytest.mark.slow_test,
++    pytest.mark.skipif(
++        MISSING_SETUP_PY_FILE, reason="This test only work if setup.py is available"
++    ),
+ ]
+ 
+ 
+diff --git a/tests/pytests/functional/modules/state/test_jinja_filters.py b/tests/pytests/functional/modules/state/test_jinja_filters.py
+index 220310aaaf0..cc8ffcb731b 100644
+--- a/tests/pytests/functional/modules/state/test_jinja_filters.py
++++ b/tests/pytests/functional/modules/state/test_jinja_filters.py
+@@ -798,9 +798,9 @@ def _filter_id(value):
+         ),
+         Filter(
+             name="which",
+-            expected={"ret": salt.utils.path.which("which")},
++            expected={"ret": salt.utils.path.which("ls")},
+             sls="""
+-            {% set result = 'which' | which() %}
++            {% set result = 'ls' | which() %}
+             test:
+               module.run:
+                 - name: test.echo
+diff --git a/tests/pytests/functional/modules/test_cmdmod.py b/tests/pytests/functional/modules/test_cmdmod.py
+index d30b474c6d2..adaf469c283 100644
+--- a/tests/pytests/functional/modules/test_cmdmod.py
++++ b/tests/pytests/functional/modules/test_cmdmod.py
+@@ -105,7 +105,7 @@ def test_run(cmdmod):
+             template="jinja",
+             python_shell=True,
+         )
+-        == "func-tests-minion"
++        == "func-tests-minion-opts"
+     )
+     assert cmdmod.run("grep f", stdin="one\ntwo\nthree\nfour\nfive\n") == "four\nfive"
+     assert cmdmod.run('echo "a=b" | sed -e s/=/:/g', python_shell=True) == "a:b"
+diff --git a/tests/pytests/functional/modules/test_dockermod.py b/tests/pytests/functional/modules/test_dockermod.py
+index a5b40869352..eb0cc20f9ff 100644
+--- a/tests/pytests/functional/modules/test_dockermod.py
++++ b/tests/pytests/functional/modules/test_dockermod.py
+@@ -8,7 +8,9 @@ import pytest
+ from saltfactories.utils import random_string
+ from saltfactories.utils.functional import StateResult
+ 
+-pytest.importorskip("docker")
++from salt.utils.versions import Version
++
++docker = pytest.importorskip("docker")
+ 
+ log = logging.getLogger(__name__)
+ 
+@@ -18,6 +20,10 @@ pytestmark = [
+     pytest.mark.slow_test,
+     pytest.mark.skip_if_binaries_missing("docker", "dockerd", check_all=False),
+     pytest.mark.skipif(INSIDE_CONTAINER, reason="Cannot run inside a container"),
++    pytest.mark.skipif(
++        Version(docker.__version__) < Version("4.0.0"),
++        reason="Test does not work in this version of docker-py",
++    ),
+ ]
+ 
+ 
+diff --git a/tests/pytests/functional/modules/test_pkg.py b/tests/pytests/functional/modules/test_pkg.py
+index 707361c227b..7cedd32bf6c 100644
+--- a/tests/pytests/functional/modules/test_pkg.py
++++ b/tests/pytests/functional/modules/test_pkg.py
+@@ -67,6 +67,8 @@ def test_pkg(grains):
+             _pkg = "units"
+     elif grains["os_family"] == "Debian":
+         _pkg = "ifenslave"
++    elif grains["os_family"] == "Suse":
++        _pkg = "wget"
+     return _pkg
+ 
+ 
+diff --git a/tests/pytests/functional/modules/test_swarm.py b/tests/pytests/functional/modules/test_swarm.py
+index 9dc70f5b3dc..fc3c2b739cd 100644
+--- a/tests/pytests/functional/modules/test_swarm.py
++++ b/tests/pytests/functional/modules/test_swarm.py
+@@ -20,7 +20,11 @@ pytest.importorskip("docker")
+ def docker_version(shell, grains):
+     ret = shell.run("docker", "--version")
+     assert ret.returncode == 0
+-    return salt.utils.versions.Version(ret.stdout.split(",")[0].split()[-1].strip())
++    # Example output:
++    # Docker version 24.0.7-ce, build 311b9ff0aa93
++    return salt.utils.versions.Version(
++        ret.stdout.split(",")[0].split()[-1].split("-")[0].strip()
++    )
+ 
+ 
+ @pytest.fixture
+diff --git a/tests/pytests/functional/states/rabbitmq/conftest.py b/tests/pytests/functional/states/rabbitmq/conftest.py
+index d8ccc1761b8..60f8206a088 100644
+--- a/tests/pytests/functional/states/rabbitmq/conftest.py
++++ b/tests/pytests/functional/states/rabbitmq/conftest.py
+@@ -5,8 +5,19 @@ import attr
+ import pytest
+ from saltfactories.utils import random_string
+ 
++from salt.utils.versions import Version
++
+ log = logging.getLogger(__name__)
+ 
++docker = pytest.importorskip("docker")
++
++pytestmark = [
++    pytest.mark.skipif(
++        Version(docker.__version__) < Version("4.0.0"),
++        reason="Test does not work in this version of docker-py",
++    ),
++]
++
+ 
+ @attr.s(kw_only=True, slots=True)
+ class RabbitMQImage:
+diff --git a/tests/pytests/functional/states/rabbitmq/test_cluster.py b/tests/pytests/functional/states/rabbitmq/test_cluster.py
+index 210b22a2360..df85f04f78d 100644
+--- a/tests/pytests/functional/states/rabbitmq/test_cluster.py
++++ b/tests/pytests/functional/states/rabbitmq/test_cluster.py
+@@ -9,8 +9,9 @@ import pytest
+ 
+ import salt.modules.rabbitmq as rabbitmq
+ import salt.states.rabbitmq_cluster as rabbitmq_cluster
++from salt.utils.versions import Version
+ 
+-pytest.importorskip("docker")
++docker = pytest.importorskip("docker")
+ 
+ log = logging.getLogger(__name__)
+ 
+@@ -22,6 +23,10 @@ pytestmark = [
+         "docker", "dockerd", reason="Docker not installed"
+     ),
+     pytest.mark.skipif(INSIDE_CONTAINER, reason="Cannot run in a container"),
++    pytest.mark.skipif(
++        Version(docker.__version__) < Version("4.0.0"),
++        reason="Test does not work in this version of docker-py",
++    ),
+ ]
+ 
+ 
+diff --git a/tests/pytests/functional/states/rabbitmq/test_plugin.py b/tests/pytests/functional/states/rabbitmq/test_plugin.py
+index f1191490536..6ed4cdc9238 100644
+--- a/tests/pytests/functional/states/rabbitmq/test_plugin.py
++++ b/tests/pytests/functional/states/rabbitmq/test_plugin.py
+@@ -9,11 +9,13 @@ import pytest
+ 
+ import salt.modules.rabbitmq as rabbitmq
+ import salt.states.rabbitmq_plugin as rabbitmq_plugin
++from salt.utils.versions import Version
+ from tests.support.mock import patch
+ 
+ log = logging.getLogger(__name__)
+ 
+-pytest.importorskip("docker")
++docker = pytest.importorskip("docker")
++
+ 
+ INSIDE_CONTAINER = os.getenv("HOSTNAME", "") == "salt-test-container"
+ 
+@@ -23,6 +25,10 @@ pytestmark = [
+         "docker", "dockerd", reason="Docker not installed"
+     ),
+     pytest.mark.skipif(INSIDE_CONTAINER, reason="Cannot run in a container"),
++    pytest.mark.skipif(
++        Version(docker.__version__) < Version("4.0.0"),
++        reason="Test does not work in this version of docker-py",
++    ),
+ ]
+ 
+ 
+diff --git a/tests/pytests/functional/states/rabbitmq/test_policy.py b/tests/pytests/functional/states/rabbitmq/test_policy.py
+index 7ccf6a522e0..c648c9ff947 100644
+--- a/tests/pytests/functional/states/rabbitmq/test_policy.py
++++ b/tests/pytests/functional/states/rabbitmq/test_policy.py
+@@ -9,11 +9,12 @@ import pytest
+ 
+ import salt.modules.rabbitmq as rabbitmq
+ import salt.states.rabbitmq_policy as rabbitmq_policy
++from salt.utils.versions import Version
+ from tests.support.mock import MagicMock, patch
+ 
+ log = logging.getLogger(__name__)
+ 
+-pytest.importorskip("docker")
++docker = pytest.importorskip("docker")
+ 
+ INSIDE_CONTAINER = os.getenv("HOSTNAME", "") == "salt-test-container"
+ 
+@@ -23,6 +24,10 @@ pytestmark = [
+         "docker", "dockerd", reason="Docker not installed"
+     ),
+     pytest.mark.skipif(INSIDE_CONTAINER, reason="Cannot run in a container"),
++    pytest.mark.skipif(
++        Version(docker.__version__) < Version("4.0.0"),
++        reason="Test does not work in this version of docker-py",
++    ),
+ ]
+ 
+ 
+diff --git a/tests/pytests/functional/states/rabbitmq/test_upstream.py b/tests/pytests/functional/states/rabbitmq/test_upstream.py
+index c7bcf3b0d44..0a9686d6948 100644
+--- a/tests/pytests/functional/states/rabbitmq/test_upstream.py
++++ b/tests/pytests/functional/states/rabbitmq/test_upstream.py
+@@ -9,10 +9,11 @@ import pytest
+ 
+ import salt.modules.rabbitmq as rabbitmq
+ import salt.states.rabbitmq_upstream as rabbitmq_upstream
++from salt.utils.versions import Version
+ 
+ log = logging.getLogger(__name__)
+ 
+-pytest.importorskip("docker")
++docker = pytest.importorskip("docker")
+ 
+ INSIDE_CONTAINER = os.getenv("HOSTNAME", "") == "salt-test-container"
+ 
+@@ -22,6 +23,10 @@ pytestmark = [
+         "docker", "dockerd", reason="Docker not installed"
+     ),
+     pytest.mark.skipif(INSIDE_CONTAINER, reason="Cannot run in a container"),
++    pytest.mark.skipif(
++        Version(docker.__version__) < Version("4.0.0"),
++        reason="Test does not work in this version of docker-py",
++    ),
+ ]
+ 
+ 
+diff --git a/tests/pytests/functional/states/rabbitmq/test_user.py b/tests/pytests/functional/states/rabbitmq/test_user.py
+index 31723df7be8..a6b0766087f 100644
+--- a/tests/pytests/functional/states/rabbitmq/test_user.py
++++ b/tests/pytests/functional/states/rabbitmq/test_user.py
+@@ -9,10 +9,11 @@ import pytest
+ 
+ import salt.modules.rabbitmq as rabbitmq
+ import salt.states.rabbitmq_user as rabbitmq_user
++from salt.utils.versions import Version
+ 
+ log = logging.getLogger(__name__)
+ 
+-pytest.importorskip("docker")
++docker = pytest.importorskip("docker")
+ 
+ INSIDE_CONTAINER = os.getenv("HOSTNAME", "") == "salt-test-container"
+ 
+@@ -22,6 +23,10 @@ pytestmark = [
+         "docker", "dockerd", reason="Docker not installed"
+     ),
+     pytest.mark.skipif(INSIDE_CONTAINER, reason="Cannot run in a container"),
++    pytest.mark.skipif(
++        Version(docker.__version__) < Version("4.0.0"),
++        reason="Test does not work in this version of docker-py",
++    ),
+ ]
+ 
+ 
+diff --git a/tests/pytests/functional/states/rabbitmq/test_vhost.py b/tests/pytests/functional/states/rabbitmq/test_vhost.py
+index d6ac6901a25..f3553c03e58 100644
+--- a/tests/pytests/functional/states/rabbitmq/test_vhost.py
++++ b/tests/pytests/functional/states/rabbitmq/test_vhost.py
+@@ -9,10 +9,11 @@ import pytest
+ 
+ import salt.modules.rabbitmq as rabbitmq
+ import salt.states.rabbitmq_vhost as rabbitmq_vhost
++from salt.utils.versions import Version
+ 
+ log = logging.getLogger(__name__)
+ 
+-pytest.importorskip("docker")
++docker = pytest.importorskip("docker")
+ 
+ INSIDE_CONTAINER = os.getenv("HOSTNAME", "") == "salt-test-container"
+ 
+@@ -22,6 +23,10 @@ pytestmark = [
+         "docker", "dockerd", reason="Docker not installed"
+     ),
+     pytest.mark.skipif(INSIDE_CONTAINER, reason="Cannot run in a container"),
++    pytest.mark.skipif(
++        Version(docker.__version__) < Version("4.0.0"),
++        reason="Test does not work in this version of docker-py",
++    ),
+ ]
+ 
+ 
+diff --git a/tests/pytests/functional/states/test_docker_network.py b/tests/pytests/functional/states/test_docker_network.py
+index 0da01ed8bac..19868d03ad1 100644
+--- a/tests/pytests/functional/states/test_docker_network.py
++++ b/tests/pytests/functional/states/test_docker_network.py
+@@ -220,10 +220,15 @@ def test_present_with_containers(network, docker, docker_network, container):
+ 
+ 
+ @pytest.mark.parametrize("reconnect", [True, False])
+-def test_present_with_reconnect(network, docker, docker_network, container, reconnect):
++def test_present_with_reconnect(
++    network, docker, docker_network, container, reconnect, grains
++):
+     """
+     Test reconnecting with containers not passed to state
+     """
++    if grains["os_family"] == "Suse":
++        pytest.skip("This test is failing for SUSE family")
++
+     with network() as net:
+         ret = docker_network.present(name=net.name, driver="bridge")
+         assert ret.result is True
+diff --git a/tests/pytests/functional/states/test_pkg.py b/tests/pytests/functional/states/test_pkg.py
+index 12318c996d1..864c1d025f3 100644
+--- a/tests/pytests/functional/states/test_pkg.py
++++ b/tests/pytests/functional/states/test_pkg.py
+@@ -55,7 +55,7 @@ def PKG_TARGETS(grains):
+         else:
+             _PKG_TARGETS = ["units", "zsh-html"]
+     elif grains["os_family"] == "Suse":
+-        _PKG_TARGETS = ["lynx", "htop"]
++        _PKG_TARGETS = ["iotop", "screen"]
+     return _PKG_TARGETS
+ 
+ 
+diff --git a/tests/pytests/functional/test_version.py b/tests/pytests/functional/test_version.py
+index dfa8850557e..3b85c05ccc6 100644
+--- a/tests/pytests/functional/test_version.py
++++ b/tests/pytests/functional/test_version.py
+@@ -1,14 +1,23 @@
+ import json
+ import logging
++import os
+ 
+ import pytest
+ 
+ from tests.support.helpers import SaltVirtualEnv
+ from tests.support.pytest.helpers import FakeSaltExtension
++from tests.support.runtests import RUNTIME_VARS
++
++MISSING_SETUP_PY_FILE = not os.path.exists(
++    os.path.join(RUNTIME_VARS.CODE_DIR, "setup.py")
++)
+ 
+ pytestmark = [
+     # These are slow because they create a virtualenv and install salt in it
+     pytest.mark.slow_test,
++    pytest.mark.skipif(
++        MISSING_SETUP_PY_FILE, reason="This test only work if setup.py is available"
++    ),
+ ]
+ 
+ log = logging.getLogger(__name__)
+diff --git a/tests/pytests/integration/modules/test_virt.py b/tests/pytests/integration/modules/test_virt.py
+index 1b7f30154a7..572923764bb 100644
+--- a/tests/pytests/integration/modules/test_virt.py
++++ b/tests/pytests/integration/modules/test_virt.py
+@@ -9,6 +9,7 @@ from xml.etree import ElementTree
+ import pytest
+ 
+ import salt.version
++from salt.utils.versions import Version
+ from tests.support.virt import SaltVirtMinionContainerFactory
+ 
+ docker = pytest.importorskip("docker")
+@@ -21,6 +22,10 @@ pytestmark = [
+     pytest.mark.slow_test,
+     pytest.mark.skip_if_binaries_missing("docker"),
+     pytest.mark.skipif(INSIDE_CONTAINER, reason="Cannot run in a container"),
++    pytest.mark.skipif(
++        Version(docker.__version__) < Version("4.0.0"),
++        reason="Test does not work in this version of docker-py",
++    ),
+ ]
+ 
+ 
+diff --git a/tests/pytests/integration/modules/test_x509_v2.py b/tests/pytests/integration/modules/test_x509_v2.py
+index 2fd005778c5..cc8712e45cd 100644
+--- a/tests/pytests/integration/modules/test_x509_v2.py
++++ b/tests/pytests/integration/modules/test_x509_v2.py
+@@ -11,7 +11,7 @@ from pathlib import Path
+ import pytest
+ from saltfactories.utils import random_string
+ 
+-import salt.utils.x509 as x509util
++x509util = pytest.importorskip("salt.utils.x509")
+ 
+ try:
+     import cryptography
+diff --git a/tests/pytests/integration/ssh/test_log.py b/tests/pytests/integration/ssh/test_log.py
+index 683feb8bd91..a63dd72373d 100644
+--- a/tests/pytests/integration/ssh/test_log.py
++++ b/tests/pytests/integration/ssh/test_log.py
+@@ -8,9 +8,10 @@ import time
+ import pytest
+ from saltfactories.utils import random_string
+ 
++from salt.utils.versions import Version
+ from tests.support.helpers import Keys
+ 
+-pytest.importorskip("docker")
++docker = pytest.importorskip("docker")
+ 
+ INSIDE_CONTAINER = os.getenv("HOSTNAME", "") == "salt-test-container"
+ 
+@@ -20,6 +21,10 @@ pytestmark = [
+     pytest.mark.slow_test,
+     pytest.mark.skip_if_binaries_missing("dockerd"),
+     pytest.mark.skipif(INSIDE_CONTAINER, reason="Cannot run in a container"),
++    pytest.mark.skipif(
++        Version(docker.__version__) < Version("4.0.0"),
++        reason="Test does not work in this version of docker-py",
++    ),
+ ]
+ 
+ 
+diff --git a/tests/pytests/integration/ssh/test_master.py b/tests/pytests/integration/ssh/test_master.py
+index 0c2f482cf9f..c658123726b 100644
+--- a/tests/pytests/integration/ssh/test_master.py
++++ b/tests/pytests/integration/ssh/test_master.py
+@@ -23,7 +23,7 @@ def test_service(salt_ssh_cli, grains):
+     os_release = grains["osrelease"]
+     if os_family == "RedHat":
+         service = "crond"
+-    elif os_family == "Arch":
++    elif os_family in ["Suse", "Arch"]:
+         service = "sshd"
+     elif os_family == "MacOS":
+         service = "org.ntp.ntpd"
+diff --git a/tests/pytests/integration/ssh/test_py_versions.py b/tests/pytests/integration/ssh/test_py_versions.py
+index 71d4cfaa94e..991a3b71c44 100644
+--- a/tests/pytests/integration/ssh/test_py_versions.py
++++ b/tests/pytests/integration/ssh/test_py_versions.py
+@@ -9,9 +9,10 @@ import time
+ import pytest
+ from saltfactories.utils import random_string
+ 
++from salt.utils.versions import Version
+ from tests.support.helpers import Keys
+ 
+-pytest.importorskip("docker")
++docker = pytest.importorskip("docker")
+ 
+ INSIDE_CONTAINER = os.getenv("HOSTNAME", "") == "salt-test-container"
+ 
+@@ -21,6 +22,10 @@ pytestmark = [
+     pytest.mark.slow_test,
+     pytest.mark.skip_if_binaries_missing("dockerd"),
+     pytest.mark.skipif(INSIDE_CONTAINER, reason="Cannot run in a container"),
++    pytest.mark.skipif(
++        Version(docker.__version__) < Version("4.0.0"),
++        reason="Test does not work in this version of docker-py",
++    ),
+ ]
+ 
+ 
+diff --git a/tests/pytests/integration/ssh/test_ssh_setup.py b/tests/pytests/integration/ssh/test_ssh_setup.py
+index 79b55ad90a5..97494bed36b 100644
+--- a/tests/pytests/integration/ssh/test_ssh_setup.py
++++ b/tests/pytests/integration/ssh/test_ssh_setup.py
+@@ -13,9 +13,10 @@ import pytest
+ from pytestshellutils.utils.processes import ProcessResult, terminate_process
+ from saltfactories.utils import random_string
+ 
++from salt.utils.versions import Version
+ from tests.support.helpers import Keys
+ 
+-pytest.importorskip("docker")
++docker = pytest.importorskip("docker")
+ 
+ INSIDE_CONTAINER = os.getenv("HOSTNAME", "") == "salt-test-container"
+ 
+@@ -25,6 +26,10 @@ pytestmark = [
+     pytest.mark.slow_test,
+     pytest.mark.skip_if_binaries_missing("dockerd"),
+     pytest.mark.skipif(INSIDE_CONTAINER, reason="Cannot run in a container"),
++    pytest.mark.skipif(
++        Version(docker.__version__) < Version("4.0.0"),
++        reason="Test does not work in this version of docker-py",
++    ),
+ ]
+ 
+ 
+diff --git a/tests/pytests/integration/states/test_x509_v2.py b/tests/pytests/integration/states/test_x509_v2.py
+index 9a1c09bb8bd..4f943412950 100644
+--- a/tests/pytests/integration/states/test_x509_v2.py
++++ b/tests/pytests/integration/states/test_x509_v2.py
+@@ -10,7 +10,7 @@ from pathlib import Path
+ import pytest
+ from saltfactories.utils import random_string
+ 
+-import salt.utils.x509 as x509util
++x509util = pytest.importorskip("salt.utils.x509")
+ 
+ try:
+     import cryptography
+diff --git a/tests/pytests/scenarios/setup/test_install.py b/tests/pytests/scenarios/setup/test_install.py
+index 7664fda804e..7a4abfc6e9e 100644
+--- a/tests/pytests/scenarios/setup/test_install.py
++++ b/tests/pytests/scenarios/setup/test_install.py
+@@ -14,11 +14,16 @@ import salt.utils.path
+ import salt.utils.platform
+ import salt.version
+ from salt.modules.virtualenv_mod import KNOWN_BINARY_NAMES
++from tests.support.runtests import RUNTIME_VARS
+ 
+ log = logging.getLogger(__name__)
+ 
+ INSIDE_CONTAINER = os.getenv("HOSTNAME", "") == "salt-test-container"
+ 
++MISSING_SETUP_PY_FILE = not os.path.exists(
++    os.path.join(RUNTIME_VARS.CODE_DIR, "setup.py")
++)
++
+ pytestmark = [
+     pytest.mark.core_test,
+     pytest.mark.windows_whitelisted,
+@@ -27,6 +32,9 @@ pytestmark = [
+     pytest.mark.skipif(
+         INSIDE_CONTAINER, reason="No gcc and python3-devel in container."
+     ),
++    pytest.mark.skipif(
++        MISSING_SETUP_PY_FILE, reason="This test only work if setup.py is available"
++    ),
+ ]
+ 
+ 
+diff --git a/tests/pytests/unit/modules/test_pip.py b/tests/pytests/unit/modules/test_pip.py
+index c03e6ed292b..4b2da77786b 100644
+--- a/tests/pytests/unit/modules/test_pip.py
++++ b/tests/pytests/unit/modules/test_pip.py
+@@ -9,6 +9,11 @@ import salt.utils.files
+ import salt.utils.platform
+ from salt.exceptions import CommandExecutionError
+ from tests.support.mock import MagicMock, patch
++from tests.support.runtests import RUNTIME_VARS
++
++MISSING_SETUP_PY_FILE = not os.path.exists(
++    os.path.join(RUNTIME_VARS.CODE_DIR, "setup.py")
++)
+ 
+ 
+ class FakeFopen:
+@@ -1738,6 +1743,9 @@ def test_when_version_is_called_with_a_user_it_should_be_passed_to_undelying_run
+         )
+ 
+ 
++@pytest.mark.skipif(
++    MISSING_SETUP_PY_FILE, reason="This test only work if setup.py is available"
++)
+ @pytest.mark.parametrize(
+     "bin_env,target,target_env,expected_target",
+     [
+diff --git a/tests/pytests/unit/utils/test_x509.py b/tests/pytests/unit/utils/test_x509.py
+index 25971af40d8..dade9eda46b 100644
+--- a/tests/pytests/unit/utils/test_x509.py
++++ b/tests/pytests/unit/utils/test_x509.py
+@@ -4,9 +4,10 @@ import ipaddress
+ import pytest
+ 
+ import salt.exceptions
+-import salt.utils.x509 as x509
+ from tests.support.mock import ANY, Mock, patch
+ 
++x509 = pytest.importorskip("salt.utils.x509")
++
+ try:
+     import cryptography
+     import cryptography.x509 as cx509
+diff --git a/tests/unit/states/test_pip_state.py b/tests/unit/states/test_pip_state.py
+index 981ad46a135..d70b1150008 100644
+--- a/tests/unit/states/test_pip_state.py
++++ b/tests/unit/states/test_pip_state.py
+@@ -27,6 +27,9 @@ try:
+ except ImportError:
+     HAS_PIP = False
+ 
++MISSING_SETUP_PY_FILE = not os.path.exists(
++    os.path.join(RUNTIME_VARS.CODE_DIR, "setup.py")
++)
+ 
+ log = logging.getLogger(__name__)
+ 
+@@ -408,6 +411,9 @@ class PipStateUtilsTest(TestCase):
+ 
+ @pytest.mark.skip_if_binaries_missing(*KNOWN_BINARY_NAMES, check_all=False)
+ @pytest.mark.requires_network
++@pytest.mark.skipif(
++    MISSING_SETUP_PY_FILE, reason="This test only work if setup.py is available"
++)
+ class PipStateInstallationErrorTest(TestCase):
+     @pytest.mark.slow_test
+     def test_importable_installation_error(self):
+diff --git a/tests/unit/utils/test_thin.py b/tests/unit/utils/test_thin.py
+index 7fd1e7b5dc3..c4e9c3b3bef 100644
+--- a/tests/unit/utils/test_thin.py
++++ b/tests/unit/utils/test_thin.py
+@@ -1379,6 +1379,9 @@ class SSHThinTestCase(TestCase):
+                 assert [x for x in calls if "{}".format(_file) in x[-2]]
+ 
+     @pytest.mark.slow_test
++    @pytest.mark.skip_if_binaries_missing(
++        "virtualenv", reason="Needs virtualenv binary"
++    )
+     @pytest.mark.skip_on_windows(reason="salt-ssh does not deploy to/from windows")
+     def test_thin_dir(self):
+         """
+-- 
+2.43.0
+
+
