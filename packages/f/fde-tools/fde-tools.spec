@@ -34,6 +34,7 @@ Patch1:         fde-tools-bsc1213945-set-rsa-key-size.patch
 Patch2:         fde-tools-change-rpm-macro-dir.patch
 Patch3:         fde-tools-bsc1220160-conditional-requires.patch
 BuildRequires:  help2man
+BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libcryptsetup)
 BuildRequires:  pkgconfig(libfido2)
 Requires:       cryptsetup
