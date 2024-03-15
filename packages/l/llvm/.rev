@@ -2313,4 +2313,21 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
 </comment>
     <requestid>1119379</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>21be80931b265edcb1d2ca4e48f13167</srcmd5>
+    <version>18</version>
+    <time>1710530894</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 18.
+  * For details, see the release notes:
+    - https://releases.llvm.org/18.1.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/18.1.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/18.1.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/18.1.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/18.1.0/tools/lld/docs/ReleaseNotes.html
+- Add metapackage for libomp-devel.
+- Update packaging guidelines for new versioning scheme.
+</comment>
+    <requestid>1156748</requestid>
+  </revision>
 </revisionlist>

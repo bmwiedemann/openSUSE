@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar  9 20:32:49 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 18.
+  * For details, see the release notes:
+    - https://releases.llvm.org/18.1.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/18.1.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/18.1.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/18.1.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/18.1.0/tools/lld/docs/ReleaseNotes.html
+- Add metapackage for libomp-devel.
+- Update packaging guidelines for new versioning scheme.
+
+-------------------------------------------------------------------
 Sat Oct 21 21:44:49 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Strip minor version and patch-level, so that we don't need to

@@ -12,7 +12,7 @@ patch-level updates to older LLVM versions, and major/minor
 version updates.
 
 LLVM version numbers come in three levels.  For version
-X.0.Z, changes to the X level are major updates, changes to
+X.1.Z, changes to the X level are major updates, changes to
 the Y level are minor updates, and changes to the Z level
 are patch-level updates. Since LLVM 4, the minor version
 is always expected to be 0. [1]  Library .so numbers are
@@ -40,10 +40,10 @@ to be updated.
 
 1. llvmX package:
    1. Add the new sources to the package and delete the old
-      ones.  This will not include clang-docs-X.0.Z.src.tar.xz
-      or llvm-docs-X.0.Z.src.tar.xz (see next item).
-   2. Build clang-docs-X.0.Z.src.tar.xz and
-      llvm-docs-X.0.Z.src.tar.xz.  The instructions are in
+      ones.  This will not include clang-docs-X.1.Z.src.tar.xz
+      or llvm-docs-X.1.Z.src.tar.xz (see next item).
+   2. Build clang-docs-X.1.Z.src.tar.xz and
+      llvm-docs-X.1.Z.src.tar.xz.  The instructions are in
       the %install section of llvmX.spec.  The instructions
       need RPM substitutions, for example via rpmspec -P.
       Add those sources as well and delete the old ones.
@@ -69,10 +69,10 @@ needs to be created.
    1. Copy (do not link) the old llvmX to the new
       major/minor version number.
    2. Add the new sources to the package and delete the old
-      ones.  This will not include clang-docs-X.0.Z.src.tar.xz
-      or llvm-docs-X.0.Z.src.tar.xz (see next item).
-   3. Build clang-docs-X.0.Z.src.tar.xz and
-      llvm-docs-X.0.Z.src.tar.xz.  The instructions are in
+      ones.  This will not include clang-docs-X.1.Z.src.tar.xz
+      or llvm-docs-X.1.Z.src.tar.xz (see next item).
+   3. Build clang-docs-X.1.Z.src.tar.xz and
+      llvm-docs-X.1.Z.src.tar.xz.  The instructions are in
       the %install section of llvmX.spec.  The instructions
       need RPM substitutions, for example via rpmspec -P.
       Add those sources as well and delete the old ones.

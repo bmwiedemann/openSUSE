@@ -1,7 +1,7 @@
 #
 # spec file for package llvm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define _sonum 17
+%define _sonum 18
 %ifarch aarch64 x86_64
 %define has_lldb 1
 %define has_lldb_python 1
@@ -32,6 +32,7 @@ Obsoletes:      %{1}13%{?2:-%{2}} \
 Obsoletes:      %{1}14%{?2:-%{2}} \
 Obsoletes:      %{1}15%{?2:-%{2}} \
 Obsoletes:      %{1}16%{?2:-%{2}} \
+Obsoletes:      %{1}17%{?2:-%{2}} \
 Obsoletes:      %{1}7%{?2:-%{2}} \
 Obsoletes:      %{1}8%{?2:-%{2}} \
 Obsoletes:      %{1}9%{?2:-%{2}}
@@ -66,7 +67,9 @@ Group:          Development/Libraries/C and C++
 Requires:       llvm%{_sonum}-devel
 Provides:       llvm-LTO-devel = %{version}
 Obsoletes:      llvm-LTO-devel < %{version}
+Requires:       libomp-devel
 Requires:       llvm-gold
+Requires:       llvm-polly-devel
 %obsolete_llvm_versioned llvm devel
 %obsolete_llvm_versioned llvm LTO-devel
 
@@ -250,6 +253,19 @@ LLD is a linker from the LLVM project. That is a drop-in replacement for
 system linkers and runs much faster than them. It also provides features that
 are useful for toolchain developers.
 
+%package -n libomp-devel
+Summary:        MPI plugin for LLVM
+Group:          Development/Libraries/C and C++
+Requires:       libomp%{_sonum}-devel
+%obsolete_llvm_versioned libomp devel
+
+%description -n libomp-devel
+This package contains the OpenMP MPI plugin for LLVM.
+
+This package is a dummy package that depends on the version of
+libomp-devel that openSUSE currently supports.  Packages that
+don't require a specific LLVM version should depend on this.
+
 %package polly
 Summary:        LLVM Framework for High-Level Loop and Data-Locality Optimizations
 Group:          Development/Languages/Other
@@ -336,6 +352,9 @@ echo "This is a dummy package to provide a dependency on the system compiler." >
 %endif
 
 %files -n lld
+%doc README
+
+%files -n libomp-devel
 %doc README
 
 %files polly
