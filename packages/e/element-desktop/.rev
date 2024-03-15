@@ -685,4 +685,15 @@ Please use same ADI as https://build.opensuse.org/request/show/918731
   * Improve client metadata used for OIDC dynamic registration (https://github.com/matrix-org/matrix-react-sdk/pull/12257). Contributed by @t3chguy.</comment>
     <requestid>1157524</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>06805e57baaf5d2c23aefc399249fdb8</srcmd5>
+    <version>1.11.61</version>
+    <time>1710531055</time>
+    <user>anag+factory</user>
+    <comment>- Version 1.11.61
+  * No changes
+  ## 🐛 Bug Fixes
+  * Update `@vector-im/compound-design-tokens` in package.json (https://github.com/matrix-org/matrix-react-sdk/pull/12340).</comment>
+    <requestid>1158108</requestid>
+  </revision>
 </revisionlist>
