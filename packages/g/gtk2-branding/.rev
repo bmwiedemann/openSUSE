@@ -7,4 +7,12 @@
     <comment>Replaces gtk2-branding-{openSUSE,SLED}</comment>
     <requestid>594006</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c581f191e5554d8c4780eac1aad7f627</srcmd5>
+    <version>15.0</version>
+    <time>1710530940</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1157942</requestid>
+  </revision>
 </revisionlist>

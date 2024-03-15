@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 14 10:19:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Ensure flavor has a value, at least %nil.
+- ExclusiveArch: %nil is invalid: give it a value (do-not-build).
+
+-------------------------------------------------------------------
 Fri Apr  6 13:32:12 UTC 2018 - fcrozat@suse.com
 
 - Build package for SLE and openSUSE using multibuild.
