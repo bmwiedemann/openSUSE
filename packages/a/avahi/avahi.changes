@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 12 14:42:24 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Thu Nov 30 05:23:33 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add avahi-CVE-2023-38472.patch: Fix reachable assertion in

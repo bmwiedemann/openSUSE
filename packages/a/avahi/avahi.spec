@@ -1,7 +1,7 @@
 #
 # spec file for package avahi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -418,6 +418,7 @@ DNS specifications for Zeroconf Computing.
 
 
 
+
 # This is the avahi-discover command, only provided for the primary python3 flavor
 %package -n python3-avahi-gtk
 Summary:        A set of Avahi utilities written in Python Using python-gtk
@@ -599,6 +600,8 @@ rm -rf %{buildroot}%{_sysconfdir}/init.d/
 # Do not install ssh and sftp services
 rm -rf %{buildroot}%{_sysconfdir}/avahi/services/ssh.service
 rm -rf %{buildroot}%{_sysconfdir}/avahi/services/sftp-ssh.service
+
+%python3_fix_shebang
 
 %if !%{build_core}
 cd ..
