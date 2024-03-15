@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar  7 21:38:30 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 18.1.0.
+  * Compatibility with LLVM 18.
+- Add rpmlintrc: following the LLVM's new versioning scheme, this
+  package not only has versions X.1.Y now, but the SO name is X.1.
+  However, the minor version is always going to be 1, and there is
+  no need to distinguish between minor versions, so we don't add it
+  to the package name.
+- Drop ca3ae0cc.patch that landed upstream.
+- Add Support-SPV_INTEL_maximum_registers-extension.patch to revert
+  change temporarily because the corresponding change in spirv-
+  headers is not released yet.
+
+-------------------------------------------------------------------
 Tue Jan 23 15:11:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add ca3ae0cc.patch: Update LongConstantCompositeINTEL to

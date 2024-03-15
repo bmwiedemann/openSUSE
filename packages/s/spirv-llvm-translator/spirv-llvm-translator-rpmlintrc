@@ -1,0 +1,5 @@
+# LLVM has decided to always X.1 as version and unfortunately also for the
+# SO name, but there is no reason to include the spurious 1 in the package
+# name as all releases are going to have a minor version 1, and there will
+# never be different ABIs for the same major version.
+addFilter("shlib-policy-name-error .* libLLVMSPIRVLib.so.18.1")

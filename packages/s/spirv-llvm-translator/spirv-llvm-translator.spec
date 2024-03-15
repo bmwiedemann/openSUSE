@@ -17,16 +17,19 @@
 #
 
 
-%define sover   17
+%define sover   18
 Name:           spirv-llvm-translator
-Version:        17.0.0
+Version:        18.1.0
 Release:        0
 Summary:        LLVM/SPIR-V Bi-Directional Translator library
 License:        BSD-3-Clause
 Group:          System/Libraries
 URL:            https://github.com/KhronosGroup/SPIRV-LLVM-Translator
 Source:         https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/refs/tags/v%{version}.tar.gz#/SPIRV-LLVM-Translator-%{version}.tar.gz
-Patch0:         https://github.com/KhronosGroup/SPIRV-LLVM-Translator/commit/ca3ae0cc.patch
+Source100:      %{name}-rpmlintrc
+# Temporarily revert upstream commit because the counterpart in spirv-headers
+# (https://github.com/KhronosGroup/SPIRV-Headers/pull/416) is not released yet.
+Patch0:         https://github.com/KhronosGroup/SPIRV-LLVM-Translator/commit/d970c9126c033ebcbb7187bc705eae2e54726b74.patch#/Support-SPV_INTEL_maximum_registers-extension.patch
 BuildRequires:  cmake >= 3.3
 BuildRequires:  gcc-c++
 BuildRequires:  llvm%{sover}-devel
@@ -61,9 +64,7 @@ the LLVM/SPIR-V Bi-Directional Translator library.
 
 %prep
 %setup -q -n SPIRV-LLVM-Translator-%{version}
-%if %{pkg_vcmp spirv-headers >= 1.6.1+sdk275}
-%patch -P 0 -p 1
-%endif
+%patch -P 0 -p 1 -R
 
 %build
 %cmake \
