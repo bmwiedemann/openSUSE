@@ -1269,4 +1269,12 @@ https://git.reviewboard.kde.org/r/104878/ (forwarded request 116659 from StefanB
   * 0001-Use-non-deprecated-TagLib-functions-fix-build-with-T.patch</comment>
     <requestid>1148291</requestid>
   </revision>
+  <revision rev="138" vrev="3">
+    <srcmd5>182d3f7abbbd65b4696b75eb6f429015</srcmd5>
+    <version>2.9.75git.20230408T114133~7098c192a6</version>
+    <time>1710530944</time>
+    <user>anag+factory</user>
+    <comment>- Require a phonon-vlc backend that was built with Qt5</comment>
+    <requestid>1158067</requestid>
+  </revision>
 </revisionlist>

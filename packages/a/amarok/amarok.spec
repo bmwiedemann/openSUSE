@@ -101,6 +101,8 @@ BuildRequires:  pkgconfig(zlib)
 # needed by the context view
 Requires:       kirigami2
 Requires:       libqt5-qtquickcontrols2
+# phonon4qt5-backend-vlc is the backend name in Leap
+Requires:       (phonon-vlc-qt5 or phonon4qt5-backend-vlc)
 Recommends:     moodbar
 Recommends:     (gstreamer-plugins-ugly if phonon4qt5-backend-gstreamer)
 

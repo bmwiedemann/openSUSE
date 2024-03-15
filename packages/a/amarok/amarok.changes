@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 14 17:26:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Require a phonon-vlc backend that was built with Qt5
+
+-------------------------------------------------------------------
 Tue Feb 20 15:51:16 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Remove the taglib-extras dependency, it fails to build with
