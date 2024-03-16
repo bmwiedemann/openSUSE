@@ -1019,7 +1019,7 @@ Prefer: apache2-mod_%{php_pref}
 Prefer: php8:php8-cli
 
 # have choice for libomp.so()(64bit) needed by libispcrt1: libomp15-devel libomp16-devel
-Prefer: -libomp15-devel -libomp16-devel
+Prefer: -libomp15-devel -libomp16-devel -libomp17-devel
 
 # have choice for python3dist(jupyterlab) = 3.6.2 needed by jupyter-jupyterlab: python310-jupyterlab python311-jupyterlab python38-jupyterlab python39-jupyterlab
 Prefer: -python310-jupyterlab -python39-jupyterlab
