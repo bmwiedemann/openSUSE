@@ -7,7 +7,7 @@ BuildFlags: genmetaalgo:1
 # The prjconf macros have a serial to help work around issues like https://github.com/openSUSE/open-build-service/issues/4088
 # On macros having impact on dep chains, update the serial (mainly ruby, python)
 # Using a date to indicate when we set the serial
-ExpandFlags: macroserial:20240223
+ExpandFlags: macroserial:20240315
 
 ExpandFlags: kiwi-nobasepackages
 ExpandFlags: docker-nobasepackages
@@ -259,7 +259,7 @@ FileProvides: /usr/bin/chmod busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/chown busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/chsh shadow
 FileProvides: /usr/bin/cksum busybox-coreutils coreutils coreutils-single
-FileProvides: /usr/bin/clang clang11 clang12 clang13 clang14 clang15 clang16 clang17
+FileProvides: /usr/bin/clang clang11 clang12 clang13 clang14 clang15 clang16 clang17 clang18
 FileProvides: /usr/bin/clear busybox-ncurses-utils ncurses-utils
 FileProvides: /usr/bin/clisp clisp
 FileProvides: /usr/bin/cmp busybox-diffutils diffutils
@@ -2385,6 +2385,7 @@ BuildFlags: onlybuild:llvm
 BuildFlags: onlybuild:llvm15
 BuildFlags: onlybuild:llvm16
 BuildFlags: onlybuild:llvm17
+BuildFlags: onlybuild:llvm18
 BuildFlags: onlybuild:lmdb
 BuildFlags: onlybuild:lockdev
 BuildFlags: onlybuild:logrotate
@@ -2497,6 +2498,7 @@ BuildFlags: onlybuild:p11-kit
 BuildFlags: onlybuild:pam
 BuildFlags: onlybuild:pam-config
 BuildFlags: onlybuild:pam_kwallet
+BuildFlags: onlybuild:pam_kwallet6
 BuildFlags: onlybuild:pango
 BuildFlags: onlybuild:patch
 BuildFlags: onlybuild:patchelf
@@ -3625,7 +3627,7 @@ Macros:
 %postgresql_default_ver 16
 
 # define which llvm package builds the system libraries
-%product_libs_llvm_ver 17
+%product_libs_llvm_ver 18
 
 # define which gcc package builds the system libraries
 %product_libs_gcc_ver 14
