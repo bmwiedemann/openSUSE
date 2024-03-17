@@ -53,7 +53,9 @@ BuildRequires:  phonon-qt5-devel >= 4.11.60
 BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
 BuildRequires:  cmake(Qt5LinguistTools) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
+# The phonon4qt5-backend provides is still needed
 Provides:       phonon4qt5-backend = %{version}
+Provides:       phonon-qt5-backend = %{version}
 Provides:       phonon4qt5-backend-vlc = %{version}
 Obsoletes:      phonon4qt5-backend-vlc < %{version}
 %endif
@@ -64,9 +66,9 @@ BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6LinguistTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Provides:       phonon-qt6-backend = %{version}
-# AFAIK locale(pkg:xx) might not work with provides, do it explicitly
-Recommends:     phonon-vlc-qt5-lang
 %endif
+# AFAIK locale(pkg:xx) might not work with provides, do it explicitly
+Recommends:     phonon-vlc-lang
 # The plugins are split between non-X11 (vlc-noX) and the others, the vlc backend needs both (boo#1219416)
 %requires_eq    vlc
 %requires_eq    vlc-noX
@@ -82,11 +84,12 @@ This is the VLC backend for Phonon
 # It's phonon_vlc_qt.qm for both. To avoid conflicts, use the Qt 5 translations
 # for both.
 %package -n phonon-vlc-lang
-Summary:        Translations for package %{name} 
+Summary:        Translations for phonon-vlc plugin
 Requires:       (phonon-vlc-qt5 or phonon-vlc-qt6)
 Provides:       phonon4qt5-backend-vlc-lang = %{version}
 Obsoletes:      phonon4qt5-backend-vlc-lang < %{version}
-Provides:       %{name}-lang-all = %{version} 
+Provides:       phonon-vlc-qt5-lang-all = %{version}
+Provides:       phonon-vlc-qt6-lang-all = %{version}
 BuildArch:      noarch
 
 %description -n phonon-vlc-lang

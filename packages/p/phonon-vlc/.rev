@@ -7,4 +7,15 @@
     <comment>Add phonon-vlc to factory, replaces phonon4qt5-backend-vlc</comment>
     <requestid>1153537</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2ffbb8198ed31b83fbdcb6c2828e08e0</srcmd5>
+    <version>0.12.0</version>
+    <time>1710709975</time>
+    <user>anag+factory</user>
+    <comment>- Make sure installing phonon-vlc-qt6 also recommends installing
+  the translations package
+
+- Update phonon-qt5-vlc 'Provides' (related: boo#1221459)</comment>
+    <requestid>1158764</requestid>
+  </revision>
 </revisionlist>
