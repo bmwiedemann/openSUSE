@@ -17,7 +17,7 @@
 
 
 Name:           rpcs3
-Version:        0.0.30~git20240301
+Version:        0.0.31~git20240314
 Release:        0
 Summary:        PS3 emulator/debugger
 License:        GPL-2.0-only
@@ -85,11 +85,15 @@ BuildRequires:  pkgconfig(Qt6Qml)
 BuildRequires:  pkgconfig(Qt6Svg)
 BuildRequires:  pkgconfig(Qt6Widgets)
 
+ExclusiveArch:  x86_64
+
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
 Requires(postun): hicolor-icon-theme
 Requires(postun): update-desktop-files
-ExclusiveArch:  x86_64
+
+# Xbox One/Series controller wireless driver
+Recommends:     xpadneo
 
 %description
 An open-source PlayStation 3 emulator/debugger written in C++.

@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sat Mar 16 04:30:19 UTC 2024 - i@guoyunhe.me
+
+- Added xpadneo recommends to support Xbox One/Series wireless controllers
+- Update to version 0.0.31~git20240314:
+  * HLE: clear lower bits of Free Disk Space value
+  * Qt: add search bar to save manager
+  * Qt: replace refresh progress slot with timer
+  * Fix sceNpScoreGetRankingByNpId
+  * Qt: only connect refresh watcher signals once
+  * Qt: remove redundant progress dialog code. This already happens in Refresh
+  * appimage: Do not bundle libvulkan.so
+  * VS: move libpng, libusb and hidapi lib output to proper build configiguration dir
+  * VS: Fix libpng build configuration names
+  * VS: fix linking XAudio in debug builds
+  * VS: use MultiThreadedDebugDLL in debug builds
+  * VS: use common RuntimeLibrary settings in 3rdparty
+  * Cleanup and set -Werror=delete-non-virtual-dtor
+  * rsx: Fix invalid iterator comparison (asserts on debug builds)
+  * GL: fix debug build: creation of QOffscreenSurface sends signals from wrong thread
+  * LV2: Longer thread creation delay for low prio threads
+  * Qt: accept downloader progress dialog instead of closing it
+  * Qt: make sure to actually delete the progress dialog when it is closed
+  * Qt: make sure the gamelist refresh progress dialog runs on the main thread
+  * Qt: replace sstr with regular toStdString
+  * Qt: fix weird return value warning on VS
+  * Qt: don't close the progress dialog if it is already being closed anyway
+  * Qt: check for updates if the update message is empty
+  * Qt: don't deleteLater the progress_dialog
+  * SPU LLVM: More compilation threads
+  * SPU LLVM: Notify workers prematurely if there is considerable excess
+  * SPU LLVM: Postpone cache writes until compiled
+  * SPU analyzer: Detect 'argument passing' block before the function
+  * SPU: Include BRSL following code in is_exec_code()
+  * SPU Analyzer: Detect more tail calls by examining called code
+  * SPU: Detect invalid STOP codes (code mining)
+  * SPU: Improve compilation message
+  * SPU Analyser: Detect invalid relative branches
+  * sys_tty: Try to avoid logging single newlines to log
+  * rsx/cpu_thread: Fix cpu_thread::get_name() for RSX
+  * report_fatal_error: Minor cleanup and improvement
+  * init_mutex.hpp: More fixes
+  * Update submodules
+  * Increase vblank rate
+  * macOS CI: Don't upgrade installed dependents
+  * init_mutex.hpp: Fixup
+  * cellGame: Fix PPU deadlocks  on concurrent execution
+  * rpcs3_version: Bump to 0.0.31
+  * Improve macOS < 14.3 Rosetta blocker message (#15258)
+  * add Wii Harmonix instruments to whitelist
+
+-------------------------------------------------------------------
 Fri Mar 01 14:20:25 UTC 2024 - i@guoyunhe.me
 
 - Update to version 0.0.30~git20240301:
