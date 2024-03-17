@@ -44,4 +44,16 @@
   * Parse unsupported-attributes group</comment>
     <requestid>1136462</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d849ee71591babaa90d82e71e1ee7582</srcmd5>
+    <version>0.15.0</version>
+    <time>1710710088</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.15.0:
+  * Add ability to retrieve Printer model as dictionary
+- update to 0.14.5:
+  * Make sure uri_supported is always a list @joostlek
+  * Ensure uri supported fallback is string @ctalkington</comment>
+    <requestid>1158436</requestid>
+  </revision>
 </revisionlist>
