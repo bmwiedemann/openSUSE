@@ -15,20 +15,21 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define pythons python312
 Name:           python-pyasyncore
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Summary:        Make asyncore available for Python 312 onwards
 License:        PSF-2.0
 URL:            https://github.com/simonrob/pyasyncore
 Source:         https://files.pythonhosted.org/packages/source/p/pyasyncore/pyasyncore-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module base >= 3.12}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-base >= 3.12
 BuildArch:      noarch
 %python_subpackages

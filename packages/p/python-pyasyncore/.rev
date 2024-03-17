@@ -7,4 +7,15 @@
     <comment>needed by cassandra-driver, possibly by others</comment>
     <requestid>1145154</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ffe23a484feb59d2863dbe01f897dc76</srcmd5>
+    <version>1.0.4</version>
+    <time>1710710084</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.4:
+  * Remove Python version check at build time
+  * Rename `asyncore.py` to `__init__.py`
+  * Add previous standard library tests</comment>
+    <requestid>1158412</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 16 09:31:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.4:
+  * Remove Python version check at build time
+  * Rename `asyncore.py` to `__init__.py`
+  * Add previous standard library tests
+
+-------------------------------------------------------------------
 Thu Feb  8 09:31:11 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Initial packaging (v1.0.3)
