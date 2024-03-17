@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 16 08:54:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.0:
+  * **assistants:** add support for streaming
+  * **streaming:** improve error messages
+
+-------------------------------------------------------------------
 Mon Mar 11 21:21:09 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.13.3
@@ -44,9 +51,9 @@ Mon Mar 11 21:21:09 UTC 2024 - Ben Greiner <code@bnavigator.de>
 Fri Jan 26 12:54:53 UTC 2024 - Markéta Machová <mmachova@suse.com>, Module Updater <pgajdos@suse.com>
 
 - Update to 1.10.0
-  * Auto-retry with backoff if there's an error 
+  * Auto-retry with backoff if there's an error
   * Proper types (for mypy/pyright/editors)
-  * You can now instantiate a client, instead of using a global default. 
+  * You can now instantiate a client, instead of using a global default.
   * Switch to explicit client instantiation
   * Weights and Biases CLI will now be included in their own package
   * many more smaller changes, see https://github.com/openai/openai-python/blob/main/CHANGELOG.md

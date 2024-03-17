@@ -49,4 +49,17 @@
     <comment></comment>
     <requestid>1157103</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b27d1089e7314c01d65a7bd408dc7df5</srcmd5>
+    <version>1.14.0</version>
+    <time>1710710072</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.14.0:
+  * **assistants:** add support for streaming
+  * **streaming:** improve error messages
+
+  * Auto-retry with backoff if there's an error
+  * You can now instantiate a client, instead of using a global default.</comment>
+    <requestid>1158394</requestid>
+  </revision>
 </revisionlist>
