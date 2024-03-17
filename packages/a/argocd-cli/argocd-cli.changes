@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sat Mar 16 14:20:28 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.3:
+  * Bump version to 2.10.3 (#17513)
+  * Merge pull request from GHSA-g623-jcgg-mhmm
+  * Merge pull request from GHSA-jwv5-8mqv-g387
+  * fix: multi-source app breaks application parameters UI (#16910)
+    (#17033) (#17332)
+  * fix!: disable rate limiting completely by default (#17355)
+    (#17393)
+
+-------------------------------------------------------------------
+Sat Mar 16 14:13:56 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.2:
+  * chore(ci): free up disk space for goreleaser (#17373) (#17374)
+  * Bump version to 2.10.2 (#17370)
+  * fix(ui): The tiles in Applications List are too wide #17220
+    (#17340) (#17351)
+  * fix: The argocd server api-content-type flag does not allow
+    empty content-type header (#17331) (#17346)
+  * chore(deps): upgrade helm to 3.14.2 (#17330) (#17333)
+  * Corrected certificate managment for OCI helm charts (#16656)
+    (#17320)
+  * chore(deps): upgrade helm to 3.14.1 (#17213) (#17216)
+  * chore(deps): Upgrade aws-sdk-go to support eks pod identity
+    (#17063) (#17225)
+
+-------------------------------------------------------------------
+Sat Mar 16 14:05:56 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.1:
+  * Bump version to 2.10.1 (#17211)
+  * fix(controller): add missing workqueue metrics (#16315)
+    (#17013) (#17209)
+  * fix: infer correct shard in statefulset setup (#17124, #17016)
+    (#17167) (#17204)
+  * fix: stop initializing deployment informer if dynamic sharding
+    is disabled (#17097) (#17202)
+  * fix(kustomize): set build dir (#15057) #16229 #16652 (#16653)
+    (#17129)
+  * fix(manifests): applicationset-controller dir is not added to
+    cluster-rbac/kustomization.yaml. (#16810) (#17120)
+  * chore(manifests): add ClsuterRole/ClusterRoleBinding for
+    applicationset controller. (#16699) (#17119)
+
+-------------------------------------------------------------------
 Wed Feb 14 20:09:38 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.10.0:
