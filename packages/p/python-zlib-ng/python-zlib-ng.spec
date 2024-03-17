@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-zlib-ng%{psuffix}
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 License:        Python-2.0
 Summary:        Faster zlib and gzip compatible compression and decompression
