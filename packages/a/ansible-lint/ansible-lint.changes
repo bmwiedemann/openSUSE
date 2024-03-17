@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Mar 16 14:20:20 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.2.1:
+  * Bugfixes
+    - Fix error suppression when syntax is incorrect (#4026)
+      @audgirka
+    - Set global cache_dir_lock (#4055) @guppy0130
+    - [role-name] Handle string role dependencies (#4054) @corubba
+    - Support for upcoming Ubuntu 24.04 and Fedora 40 (#4051)
+      @mafalb
+    - Update documentation for syntax-check[unknown-module] (#4049)
+      @ssbarnea
+    - Add OpenWRT 23.05 to valid versions (#4041) @jonkerj
+    - Update task name in notify for a task against name[casing]
+      error (#4038) @audgirka
+    - accept yum history and info as valid commands (#4025)
+      @konstruktoid
+    - Add attributes for role argument specs (#4018) @felixfontein
+
+-------------------------------------------------------------------
 Thu Feb  8 06:44:11 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new naming scheme upstream

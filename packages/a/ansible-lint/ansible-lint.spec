@@ -40,7 +40,7 @@
 %global lib_name ansiblelint
 %{?python_enable_dependency_generator}
 Name:           ansible-lint
-Version:        24.2.0
+Version:        24.2.1
 Release:        0%{?dist}
 Summary:        Best practices checker for Ansible
 License:        MIT
@@ -59,7 +59,7 @@ BuildRequires:  %{ansible_python}-pytest >= 7.2.2
 BuildRequires:  %{ansible_python}-pytest-cov
 BuildRequires:  %{ansible_python}-pytest-xdist >= 2.1.0
 BuildRequires:  %{ansible_python}-psutil
-BuildRequires:  %{ansible_python}-black >= 22.8.0
+BuildRequires:  %{ansible_python}-black >= 23.10.1
 BuildRequires:  %{ansible_python}-mypy
 BuildRequires:  %{ansible_python}-pylint
 BuildRequires:  %{ansible_python}-flake8
@@ -69,7 +69,7 @@ BuildRequires:  %{ansible_python}-flake8
 # to make sure this only builds if they are present
 # https://github.com/ansible/ansible-lint/blob/main/.config/requirements.in
 BuildRequires:  ansible-core >= 2.15.5
-BuildRequires:  %{ansible_python}-ansible-compat >= 4.1.10
+BuildRequires:  %{ansible_python}-ansible-compat >= 4.1.11
 BuildRequires:  %{ansible_python}-black >= 23.10.1
 BuildRequires:  %{ansible_python}-enrich >= 1.2.7
 BuildRequires:  %{ansible_python}-filelock >= 3.3.0
