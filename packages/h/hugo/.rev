@@ -1038,4 +1038,36 @@
   * tpl/tplimpl: Honor markdown attributes in embedded image render hook (forwarded request 1156218 from jfkw)</comment>
     <requestid>1156219</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>b1b798b22538210a50a0a172e908f539</srcmd5>
+    <version>0.124.0</version>
+    <time>1710710180</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.124.0:
+  * Add segments config + --renderSegments flag
+  * Fix .Parent when there are overlapping regular pages inbetween
+  * hugolib: Remove Site.HomeAbsURL
+  * deps: Upgrade github.com/gohugoio/hugo-goldmark-extensions/passthrough v0.1.0 =&gt; v0.2.0
+  * hugolib: Fix sitemap index with monolingual site
+  * hugolib: Deprecate site methods Author, Authors, and Social
+  * all: Typo fixes
+  * Fix translationKey handling for term pages
+  * Fix intersect and similar for term entry page collections
+  * Upgrade to Go 1.22.1
+  * build(deps): bump github.com/evanw/esbuild from 0.20.1 to 0.20.2
+  * Fix server rebuilds when adding sub sections especially on Windows
+  * tpl/tplimpl: Remove deprecated method from sitemapindex.xml
+  * build(deps): bump golang.org/x/tools from 0.18.0 to 0.19.0
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.20.17 to 2.20.19
+  * deps: Upgrade github.com/alecthomas/chroma/v2 to v2.13.0
+  * tpl/tplimpl: Modify figure shortcode to look for page resource
+  * Fix panic when changing archetype files when servere is running
+  * build(deps): bump golang.org/x/mod from 0.15.0 to 0.16.0
+  * Fix front matter date location when value gets inherited from other dates
+  * Fix Name for nested resourced fetched in resources.ByName and similar
+  * common/hugo: Rename IsMultiHost and IsMultiLingual
+  * hugolib: Deprecate .Site.MultiLingual in favor of hugo.IsMultiLingual
+  * snap: Transition to from core20 to core22 (forwarded request 1158572 from jfkw)</comment>
+    <requestid>1158573</requestid>
+  </revision>
 </revisionlist>
