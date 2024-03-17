@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 16 14:01:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.74.7:
+  * chore(deps): update Syft to v0.105.1 (#1728)
+  * fix(install): return appropriate exit codes (#1725)
+  * chore(test): update quality test grype db (#1726)
+  * fix: improve sarif descriptive text and fingerprint (#1720)
+  * chore: remove unused file internal/file/tar.go and its test
+    (#1724)
+  * Added instruction to install with choco (#1716)
+  * chore(deps): update bootstrap tools to latest versions (#1719)
+  * chore: remove unused file internal/logger/logrus.go (#1721)
+
+-------------------------------------------------------------------
 Thu Feb 15 05:57:08 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.74.6:
