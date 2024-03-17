@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 12 19:03:54 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Move the %find_lang call into %install section
+
+-------------------------------------------------------------------
 Fri Feb 23 13:58:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.0

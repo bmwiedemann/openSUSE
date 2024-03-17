@@ -320,4 +320,12 @@
     <comment>KDE release gear 24.02.0</comment>
     <requestid>1156450</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>7d3eca75068aeb6f68b292aaec1cf832</srcmd5>
+    <version>24.02.0</version>
+    <time>1710710187</time>
+    <user>anag+factory</user>
+    <comment>- Move the %find_lang call into %install section</comment>
+    <requestid>1158620</requestid>
+  </revision>
 </revisionlist>

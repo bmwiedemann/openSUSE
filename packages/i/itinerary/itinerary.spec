@@ -106,13 +106,13 @@ Itinerary and boarding pass management application.
 # Should be Utility Maps, but the checker does not like it
 %suse_update_desktop_file org.kde.itinerary Education Geography
 
+%find_lang %{name} --all-name
+
 %check
 # one test fails on ppc64 (be)
 %ifnarch ppc64
 %ctest --exclude-regex "(itinerary-self-test)"
 %endif
-
-%find_lang %{name} --all-name
 
 %files
 %license LICENSES/*
