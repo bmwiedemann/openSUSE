@@ -479,4 +479,12 @@
     <comment>KDE release gear 24.02.0</comment>
     <requestid>1150854</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>0d6e5fd9dacdfac3c8c1c52b830878fc</srcmd5>
+    <version>24.02.0</version>
+    <time>1710710081</time>
+    <user>anag+factory</user>
+    <comment>- Update elisa runtime requirements (boo#1218742)</comment>
+    <requestid>1158446</requestid>
+  </revision>
 </revisionlist>

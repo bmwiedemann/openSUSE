@@ -65,7 +65,9 @@ BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Requires:       kf6-kdeclarative-imports >= %{kf6_version}
 Requires:       kf6-kirigami >= %{kf6_version}
+Requires:       kirigami-addons6
 Requires:       qt6-declarative-imports >= %{qt6_version}
+Requires:       qt6-multimedia >= %{qt6_version}
 Requires:       qt6-sql-sqlite >= %{qt6_version}
 
 %description
