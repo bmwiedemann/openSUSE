@@ -1,7 +1,7 @@
 #
 # spec file for package cargo-auditable
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define __cargo_common_opts %{?_smp_mflags}
 
 Name:           cargo-auditable
-Version:        0.6.0~0
+Version:        0.6.2~0
 Release:        0
 Summary:        A tool to embed auditing information in ELF sections of rust binaries
 #               If you know the license, put it's SPDX string here.
@@ -33,7 +33,6 @@ Group:          Development/Languages/Rust
 URL:            https://github.com/rust-secure-code/cargo-auditable
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 # We can't dep on cargo-packaging because we would create a dependency loop.
 # BuildRequires:  cargo-packaging
 BuildRequires:  cargo
@@ -48,8 +47,6 @@ executable.
 
 %prep
 %autosetup -a1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 unset LIBSSH2_SYS_USE_PKG_CONFIG

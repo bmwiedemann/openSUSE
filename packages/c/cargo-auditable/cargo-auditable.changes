@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Tue Mar  5 01:17:29 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update specfile:
+  * remove cargo_config file
+- Update service file:
+  * replace obsoleted "disabled" mode with "manual"
+- Update to version 0.6.2~0:
+  * Update the lockfile
+  * New releases of cargo-auditable and auditable-serde
+  * Use a separate project for the custom rustc path tests. Fixes intermittent test failures due to race conditions
+  * Revert "add commit hashes to git sources"
+  * Fix cyclic dependency graph being encoded
+  * Revert "An unsuccessful attempt to fix cycles caused by dev-dependencies"
+  * An unsuccessful attempt to fix cycles caused by dev-dependencies
+  * Fix typo
+  * Add comment
+  * Add a test for an issue with cyclic dependencies reported at https://github.com/rustsec/rustsec/issues/1043
+  * Fix auditable-serde example not building
+  * upgrade dependency miniz_oxide to 0.6.0
+  * fix formatting errors
+  * apply clippy lints for --all-features
+  * improve the internal docs and comments
+  * apply clippy lints
+  * add missing sources for one of test fixtures
+  * add commit hashes to git sources
+  * Run all tests on CI
+  * cargo fmt
+  * Run `cargo clean` in tests to get rid of stale binaries
+  * Fix date in changelog
+  * Populate changelog
+  * Bump auditable-info version in rust-audit-info
+  * Add auditable-info changelog
+  * Bump versions following cargo-lock bump
+  * auditable-serde: bump `cargo-lock` to v9
+  * switch to UNRELEASED
+  * Update CHANGELOG.md
+  * Print a better error if calling rustc fails
+  * Drop unused import
+  * placate Clippy
+  * Don't inject audit info if --print argument is passed to rustc
+  * Reflect the version change in Cargo.lock
+  * Remove space from keywords
+  * bump version to 0.6.1
+  * Fix date in changelog
+  * Update CHANGELOG.md
+  * Add publish=false
+  * Commit the generated manpage
+  * Add the code for generating a manpage; rather rudimentary so far, but it's a starting point
+  * Explain relation to supply chain attacks
+  * Add keywords to the Cargo manifest
+  * Revert "generate a man page for cargo auditable"
+  * fix formatting
+  * fix review feedback, relocate file to under OUT_DIR, don't use anyhow and also commit the lock file
+  * generate a man page for cargo auditable
+  * Add Clippy suppression
+  * placate clippy
+  * commit Cargo.lock
+  * Sync to latest object file writing code from rustc
+  * Fix examples in docs
+  * Allow redundant field names
+  * Apply clippy suggestion: match -> if let
+  * Check for clippy and format in CI
+  * Apply clippy suggestions
+  * Run CI with --locked
+
+-------------------------------------------------------------------
 Thu Feb 23 14:27:09 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.6.0~0:
