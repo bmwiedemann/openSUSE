@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 16 12:58:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.1.0:
+  * [NEW] Add Interface.link property
+  * [FIX] Make file properties follow symlinks
+  * [FIX] Require pytest>=6 and use future annotations for
+    pytest<7 compatibility
+
+-------------------------------------------------------------------
 Mon Jan 15 14:11:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.0.0:

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-testinfra
-Version:        10.0.0
+Version:        10.1.0
 Release:        0
 Summary:        Python module to test infrastructures
 License:        Apache-2.0
@@ -37,7 +37,7 @@ BuildRequires:  ansible
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-salt
-Requires:       python-pytest
+Requires:       python-pytest >= 6.0
 Provides:       python-testinfra = %{version}-%{release}
 Obsoletes:      python-testinfra < %{version}-%{release}
 BuildArch:      noarch

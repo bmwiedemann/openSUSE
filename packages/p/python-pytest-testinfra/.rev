@@ -92,4 +92,16 @@
     for connections which doesn’t have a testinfra equivalent connection</comment>
     <requestid>1138881</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4d9f49bb1d623aa2695ba1a3547d9b11</srcmd5>
+    <version>10.1.0</version>
+    <time>1710710106</time>
+    <user>anag+factory</user>
+    <comment>- update to 10.1.0:
+  * [NEW] Add Interface.link property
+  * [FIX] Make file properties follow symlinks
+  * [FIX] Require pytest&gt;=6 and use future annotations for
+    pytest&lt;7 compatibility</comment>
+    <requestid>1158471</requestid>
+  </revision>
 </revisionlist>
