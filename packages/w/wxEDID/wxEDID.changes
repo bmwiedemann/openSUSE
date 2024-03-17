@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 17 17:49:08 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to v0.0.31
+Fixed:
+  * (BUG) wxEDID_Frame::evt_ntbook_page() was invoked during frame
+    construction with uninitialized wxEDID_Frame::flags &
+    wxEDID_Frame::edigrp_sel, what could lead to a segfault.
+
+-------------------------------------------------------------------
 Tue Jan  9 23:47:09 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to v0.0.30

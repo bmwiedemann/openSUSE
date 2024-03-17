@@ -370,4 +370,16 @@ Changed:
     RCD_UNIT_MAX=65535, RCD_LINE_MAX=16383</comment>
     <requestid>1137848</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7eb24e859928eb9e56c9797e2989397e</srcmd5>
+    <version>0.0.31</version>
+    <time>1710710253</time>
+    <user>anag+factory</user>
+    <comment>- Update to v0.0.31
+Fixed:
+  * (BUG) wxEDID_Frame::evt_ntbook_page() was invoked during frame
+    construction with uninitialized wxEDID_Frame::flags &amp;
+    wxEDID_Frame::edigrp_sel, what could lead to a segfault.</comment>
+    <requestid>1158798</requestid>
+  </revision>
 </revisionlist>
