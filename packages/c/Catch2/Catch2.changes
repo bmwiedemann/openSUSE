@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Mar 12 00:46:11 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.5.3:
+  * Fixed OOB access when computing filename tag (from the -#
+    flag) for file without extension (gh#catchorg/Catch2#2798).
+  * Fixed the linking against log on Android to be PRIVATE
+    (gh#catchorg/Catch2#2815).
+  * Fixed Wuseless-cast in benchmarking internals
+    (gh#catchorg/Catch2#2823).
+  * Restored compatibility with VS2017 (gh#catchorg/Catch2#2792,
+    gh#catchorg/Catch2#2822).
+  * Suppressed clang-tidy's bugprone-chained-comparison in
+    assertions (gh#catchorg/Catch2#2801).
+  * Improved the static analysis mode to evaluate arguments to
+    TEST_CASE and SECTION (gh#catchorg/Catch2#2817).
+  * Added support for literal-zero detectors based on consteval
+    constructors.
+  * Disabled tests for FP random generator reproducibility on
+    non-SSE2 x86 targets (gh#catchorg/Catch2#2796).
+  * Modified the in-tree Conan recipe to support Conan 2
+    (gh#catchorg/Catch2#2805).
+
+-------------------------------------------------------------------
 Fri Jan 19 18:58:25 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.5.2:
