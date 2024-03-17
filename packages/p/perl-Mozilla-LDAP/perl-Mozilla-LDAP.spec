@@ -45,8 +45,7 @@ A perl LDAP module that wraps the OpenLDAP C SDK.
 
 
 %prep
-%setup -q -n perl-mozldap-%{version}
-%patch0
+%autosetup -p0 -n perl-mozldap-%{version}
 
 # Filter unwanted Provides:
 cat << \EOF > %{name}-prov
