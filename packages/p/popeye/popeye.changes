@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sat Mar 16 18:35:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.21.1:
+  * [Rel] release v0.21.1
+  * [Maint] add ns info to cid
+  * [Bug] Fix #296
+  * Rel v0.21.0
+
+-------------------------------------------------------------------
+Fri Mar 15 22:07:04 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.21.0:
+  * Rel v0.21.0
+  * [Maint] cleanup
+  * init cilium res
+  * [Maint] bump k8s rev
+  * Need the indent command
+  * Didn't match currently available releases
+  * release v0.20.5
+  * [Bug] Fix #290, #289
+  * [Maint] semver pkg change
+  * rel v0.20.4
+  * [Bug] Fix #286
+  * [Maint] Release notes
+  * [Bug] Fix #284
+  * rel notes
+  * [Bug] Fix #280
+  * release v0.20.1
+  * log server info err
+
+-------------------------------------------------------------------
+Fri Mar 15 22:01:52 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.20.5:
+  * release v0.20.5
+  * [Bug] Fix #290, #289
+  * [Maint] semver pkg change
+  * [Maint] semver pkg change
+  * rel v0.20.4
+  * [Bug] Fix #286
+
+-------------------------------------------------------------------
+Fri Mar 15 21:58:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.20.4:
+  * rel v0.20.4
+  * [Bug] Fix #286
+
+-------------------------------------------------------------------
 Sat Feb 24 08:57:13 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.20.3:
