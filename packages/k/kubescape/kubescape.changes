@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Fri Mar 15 21:44:52 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.0.6:
+  * remove scan_with_exception_to_backend from CI
+  * httphandler go mod tidy
+  * bump go-git-url to fix private gitlab scans
+  * add riscv64 files to release step
+
+-------------------------------------------------------------------
+Fri Mar 15 21:41:06 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.0.5:
+  * get KubernetesClient only if k8s is not nil
+  * speedup golangci-lint-action by skipping caches
+  * set BuildNumber and Client from env
+  * add risc v build target
+  * remove repeating fixes
+  * Fix bug for no matches of yalib in one file mapping
+  * move versioncheck to kubescape/backend
+  * bump go-git-url for self-hosted gitlab
+  * Fixed link (#1624)
+  * fix(cmd/scan/framework.go): remove redundant code
+
+-------------------------------------------------------------------
+Fri Mar 15 21:33:24 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.0.4:
+  * go sum
+  * fixed release artifacts
+  * Add Vulnerability scanning report to the summaryDetails section
+    (#1615)
+  * feat: Add the debugging ability for scanning Helm chart (#1215)
+  * add github action actor check for pr-scanner
+  * fix goreleaser
+  * Fixing exceptions for regovector objects
+  * image scan add schema v1 support
+  * Fix/backlog (#1613)
+  * Revert "add PR template for adopters"
+  * add PR template for adopters
+  * Bump helm.sh/helm/v3 from 3.12.1 to 3.14.2 in /httphandler
+  * Bump helm.sh/helm/v3 from 3.12.1 to 3.14.2
+  * Bump k8s-interface version
+  * Handle unknown fw
+  * Remove "%" from the print
+  * Bump github.com/moby/buildkit from 0.12.1 to 0.12.5
+  * Bump github.com/moby/buildkit from 0.12.1 to 0.12.5 in
+    /httphandler
+  * correct kubescape path in run-tests
+  * remove libgit files and dependencies
+  * Bump github.com/cloudflare/circl from 1.3.3 to 1.3.7
+  * fix backslashes
+  * fetch Rekor before cosign validation
+  * Bump github.com/cloudflare/circl from 1.3.3 to 1.3.7 in
+    /httphandler
+  * Fix markdown syntax
+  * checking for compatible policy rules before pulling k8s
+    resources; failing to pull some k8s resource should not fail
+    the entire scan (#1578)
+  * use goreleaser for builds
+
+-------------------------------------------------------------------
 Mon Jan 08 18:58:13 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.0.3:
