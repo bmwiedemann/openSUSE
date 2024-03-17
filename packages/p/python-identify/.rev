@@ -108,4 +108,13 @@
   * Identify .salt-lint as YAML</comment>
     <requestid>1131748</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2aca7c69d13a4f6b66a4bdca9ec25c4d</srcmd5>
+    <version>2.5.35</version>
+    <time>1710710073</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.5.35:
+  * add .metal detection</comment>
+    <requestid>1158395</requestid>
+  </revision>
 </revisionlist>

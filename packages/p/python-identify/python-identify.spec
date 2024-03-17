@@ -1,7 +1,7 @@
 #
 # spec file for package python-identify
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-identify
-Version:        2.5.33
+Version:        2.5.35
 Release:        0
 Summary:        File identification library for Python
 License:        MIT
@@ -33,7 +33,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-editdistance
 BuildArch:      noarch
 %python_subpackages
