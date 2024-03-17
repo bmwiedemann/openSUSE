@@ -34,6 +34,8 @@ Source2:        %{name}.keyring
 Source99:       %{name}.rpmlintrc
 # https://gitlab.freedesktop.org/spice/spice-common/-/commit/29dacb5f53f5183fb089a3fb02d081dd08bde8a1
 Patch0:         spice-no-six.patch
+# PATCH-FIX-UPSTREAM fix-build-with-gstreamer-1.24.patch alarrosa@suse.com
+Patch1:         fix-build-with-gstreamer-1.24.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel

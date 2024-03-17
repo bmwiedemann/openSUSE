@@ -1,0 +1,15 @@
+Index: spice-0.15.2/server/tests/test-gst.cpp
+===================================================================
+--- spice-0.15.2.orig/server/tests/test-gst.cpp
++++ spice-0.15.2/server/tests/test-gst.cpp
+@@ -614,7 +614,9 @@ create_pipeline(const char *desc, Sample
+     }
+ 
+     static const GstAppSinkCallbacks appsink_cbs_template =
+-#if GST_CHECK_VERSION(1, 20, 0)
++#if GST_CHECK_VERSION(1, 24, 0)
++        { NULL, NULL, new_sample, NULL, NULL, ._gst_reserved={NULL} };
++#elif GST_CHECK_VERSION(1, 20, 0)
+         { NULL, NULL, new_sample, NULL, ._gst_reserved={NULL} };
+ #else
+         { NULL, NULL, new_sample, ._gst_reserved={NULL} };
