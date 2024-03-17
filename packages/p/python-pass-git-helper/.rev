@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1108642</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>3b41d2b6f52ded153621fde57da7b3f4</srcmd5>
+    <version>1.4.0</version>
+    <time>1710710035</time>
+    <user>anag+factory</user>
+    <comment>- Testing on SLE-15 is just too much.
+</comment>
+    <requestid>1158316</requestid>
+  </revision>
 </revisionlist>

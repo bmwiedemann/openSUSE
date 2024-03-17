@@ -1,7 +1,7 @@
 #
 # spec file for package python-pass-git-helper
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,11 @@
 
 
 %define modname pass-git-helper
+%if 0%{?suse_version} < 1600
+%bcond_with test
+%else
+%bcond_without test
+%endif
 Name:           python-pass-git-helper
 Version:        1.4.0
 Release:        0
@@ -29,16 +34,18 @@ BuildRequires:  %{python_module dataclasses >= 0.7 if %python-base < 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
+%if %{with test}
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pyxdg}
 # /SECTION
+%endif
 BuildRequires:  fdupes
 Requires:       python-pyxdg
 BuildArch:      noarch
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -59,7 +66,9 @@ sed -i -e '1{\@^#!%{_bindir}/env python@d}' passgithelper.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+%if %{with test}
 %pytest
+%endif
 
 %post
 %python_install_alternative pass-git-helper
