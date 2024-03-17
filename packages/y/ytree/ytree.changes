@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 17 11:56:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.07:
+  * Removed -O compiler switch due to problems with UTF_8
+    code
+  * Added workaround when resizing ytree window during string
+    input
+
+-------------------------------------------------------------------
 Sun Dec 17 10:06:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.06:
