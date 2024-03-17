@@ -19,14 +19,14 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           timoni
-Version:        0.19.0
+Version:        0.20.0
 Release:        0
 Summary:        Package manager for Kubernetes, powered by CUE and inspired by Helm
 License:        Apache-2.0
 URL:            https://github.com/stefanprodan/timoni
 Source:         timoni-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.20
+BuildRequires:  go >= 1.22
 
 %description
 Timoni is a package manager for Kubernetes, powered by CUE and inspired by Helm.

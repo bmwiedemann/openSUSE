@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sun Mar 17 12:49:42 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.20.0:
+  * Update website copyright year
+  * Adjust copyright year
+  * Add docs for referencing local modules in bundles
+  * Update Redis module to v7.2.4
+  * Document the flux-oci-sync usage
+  * Allow runtime definition to be coupled with a bundle
+  * Add tests for bundles with local modules
+  * Add scoop.sh instructions to install.md
+  * build(deps): bump the ci group with 1 update
+  * chore: cleanup unused function
+  * chore: restore example
+  * docs: add bundle file module url
+  * feat: add generic new fetcher
+  * Correct reference to "timoni.sh/core/v1alpha1".#ObjectReference
+  * test: add oci fetcher test
+  * test: add local fetcher test
+  * chore: switch redis module to relative
+  * feat: add support for file module in bundle
+  * refactor: move fetcher to its own dedicated package
+  * feat: add file protocol support in cue constraint
+  * Document the Flux AIO upgrade procedure
+  * Run e2e tests for Kubernetes v1.29.2
+  * Update `fluxcd/pkg/ssa` to v0.36.0
+  * Update `cuelang.org/go` to v0.7.1
+  * Update controller-gen to v0.14.0
+  * Build with Go 1.22
+  * Update core CUE schemas
+  * Refactor `ImagePullSecret` generator
+  * build(deps): bump the ci group with 3 updates
+  * docs: add proto documentation
+  * chore: add proto plugin
+  * Use shorter syntax for string keys
+  * test(engine): add module builder case around invalid value
+    merging
+  * fix(engine): return values merge error if non nil
+  * fix(doc): Fix typo on "Push to GitHub Container Registry"
+  * doc/fix cue command parameter order
+  * Set correct make target name
+  * Use `t.TmpDir()` instead of working dir
+  * Update copyright year
+  * Updated to make use of the convention +nodoc
+  * Add test and setup command show and attach config command Test
+    reading and writing to the output file
+  * Add output flag
+  * Initial run at generating a markdown table for the module
+    configuration
+- BuildRequire go1.22 to follow upstream
+
+-------------------------------------------------------------------
 Sun Jan 21 10:55:08 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.19.0:
