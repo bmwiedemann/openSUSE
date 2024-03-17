@@ -86,7 +86,7 @@ URL:            http://www.rsyslog.com/
 Obsoletes:      %{name}-module-guardtime <= 8.38.0
 Provides:       syslog
 Provides:       sysvinit(syslog)
-Conflicts:      otherproviders(syslog)
+Conflicts:      syslog
 Requires(pre):  %fillup_prereq
 Requires(pre):  syslog-service >= 2.0
 %{?systemd_ordering}
@@ -94,10 +94,6 @@ BuildRequires:  pkgconfig(systemd) >= 209
 %if %{with journal}
 BuildRequires:  pkgconfig(libsystemd) >= 234
 %endif
-# for patch1
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
 #
 BuildRequires:  bison
 BuildRequires:  curl-devel
@@ -139,7 +135,6 @@ BuildRequires:  czmq-devel >= 3.0.2
 %endif
 %if %{with kafka}
 BuildRequires:  librdkafka-devel
-Requires:       librdkafka1
 %endif
 %if %{with gssapi}
 BuildRequires:  krb5-devel
@@ -245,6 +240,7 @@ setup for the novice user.
 %package doc
 Summary:        Additional documentation for rsyslog
 Group:          System/Daemons
+BuildArch:      noarch
 
 %description doc
 Rsyslog is an enhanced multi-threaded syslog daemon. See rsyslog
@@ -571,7 +567,7 @@ This module provides an output module for TCL.
 %endif
 
 %prep
-%setup -q -a 14
+%autosetup -p1 -a 14
 #
 for file in rsyslog-service-prepare; do
 	sed \
@@ -584,10 +580,6 @@ done
 export CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -W -Wall -I../grammar -I../../grammar"
 # needs java
 #        --enable-gui            \
-
-# for patch1
-autoreconf -fiv
-%autopatch -p1
 
 %configure			\
 	--with-moddirs=%{rsyslog_module_dir_withdeps} \
@@ -843,11 +835,6 @@ install -m0600 %{SOURCE19} %{buildroot}%{_sysconfdir}/rsyslog.d/
 %if %{with udpspoof}
   install -m0640 %{SOURCE9} %{buildroot}%{APPARMOR_PROFILE_PATH}/rsyslog.d/
 %endif
-
-%clean
-if [ -n "%{buildroot}" ] && [ "%{buildroot}" != "/" ] ; then
-	rm -rf "%{buildroot}"
-fi
 
 %pre
 %{service_add_pre rsyslog.service}
@@ -1128,7 +1115,7 @@ fi # first install
 %{_unitdir}/rsyslog.service
 %{_sbindir}/rc%{name}
 %{APPARMOR_PROFILE_PATH_DIR_COMMANDS}
-%config %{APPARMOR_PROFILE_PATH}/usr.sbin.rsyslogd
+%{APPARMOR_PROFILE_PATH}/usr.sbin.rsyslogd
 
 %files doc
 %defattr(-,root,root)
@@ -1159,7 +1146,7 @@ fi # first install
 %defattr(-,root,root)
 %doc %{rsyslogdocdir}/mysql-createDB.sql
 %{rsyslog_module_dir_withdeps}/ommysql.so
-%config %{APPARMOR_PROFILE_PATH}/rsyslog.d/module-mysql
+%{APPARMOR_PROFILE_PATH}/rsyslog.d/module-mysql
 %endif
 
 %if %{with pgsql}
@@ -1183,7 +1170,7 @@ fi # first install
 %defattr(-,root,root)
 %{rsyslog_module_dir_withdeps}/omsnmp.so
 %{rsyslog_module_dir_nodeps}/mmsnmptrapd.so
-%config %{APPARMOR_PROFILE_PATH}/rsyslog.d/module-snmp
+%{APPARMOR_PROFILE_PATH}/rsyslog.d/module-snmp
 %endif
 
 %if %{with gnutls}

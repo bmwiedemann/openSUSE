@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Mar 14 13:15:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix rpmlint warnings and errors:
+  + rsyslog.spec:590: W: %autopatch-not-in-prep:
+    - applying patches should be done in prep section and in this
+      case, there is no reason not to do it. Use the opportunity to
+      switch to %autosetup.
+    - Do not BuildRequire libtool, autoconf, automake and don't run
+      autoreconf: the comment indicates this would be needed for
+      patch1, but likely for an 'older patch1': what we have now
+      does not touch the build system.
+  + E: superfluous-%clean-section: Drop long deprecated %clean
+    section.
+  + E: suse-zypp-otherproviders otherproviders(syslog): simply
+    provide syslog.
+  + W: non-etc-or-var-file-marked-as-conffile: do not mark files in
+    /usr/share as config; admins are not supposed to change them.
+  + rsyslog-doc.x86_64: E: no-binary: build rsyslog-doc as noarch.
+  + E: explicit-lib-dependency librdkafka1: the dependency for one
+    should be in module-kafka, but then is also auto-detected by
+    RPM.
+
+-------------------------------------------------------------------
 Thu Jan 18 14:04:41 UTC 2024 - Thomas Blume <thomas.blume@suse.com>
 
 - suppress installation errors when systemd is not running
