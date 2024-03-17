@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar 15 21:08:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.03.02:
+  * Add `uv` backend
+  * Add venv backend fallback
+  * Add option `--reuse-venv {yes,no,never,always}`
+  * Add environment variable `NOX_DEFAULT_VENV_BACKEND` for
+    default backend
+  * Rename `session.run_always` to `session.run_install`
+  * Add more option argument completions
+  * Implement `tox-to-nox` for tox 4
+  * Allow `--force-python` on unparametrized sessions
+  * Add `include_outer_env` parameter to `session.run` and
+    friends
+  * GitHub Action: Add support for the `~` version specifier
+
+-------------------------------------------------------------------
 Fri Jun 23 02:42:02 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-tox-4.patch:

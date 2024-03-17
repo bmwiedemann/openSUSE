@@ -1,7 +1,7 @@
 #
 # spec file for package python-nox
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %define padded_version 2023.04.22
 Name:           python-nox
-Version:        2023.4.22
+Version:        2024.3.2
 Release:        0
 Summary:        Flexible test automation
 License:        Apache-2.0
@@ -39,7 +39,7 @@ Requires:       python-colorlog >= 2.6.1
 Requires:       python-setuptools
 Requires:       python-virtualenv >= 14.0.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Suggests:       python-Jinja2
 Suggests:       python-tox
 BuildArch:      noarch

@@ -73,4 +73,24 @@
 - Refresh upstream tarball due to repo move.</comment>
     <requestid>1094736</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>73caa070b3742d2fd3fa6bb2d49b6e31</srcmd5>
+    <version>2024.3.2</version>
+    <time>1710710025</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.03.02:
+  * Add `uv` backend
+  * Add venv backend fallback
+  * Add option `--reuse-venv {yes,no,never,always}`
+  * Add environment variable `NOX_DEFAULT_VENV_BACKEND` for
+    default backend
+  * Rename `session.run_always` to `session.run_install`
+  * Add more option argument completions
+  * Implement `tox-to-nox` for tox 4
+  * Allow `--force-python` on unparametrized sessions
+  * Add `include_outer_env` parameter to `session.run` and
+    friends
+  * GitHub Action: Add support for the `~` version specifier</comment>
+    <requestid>1158307</requestid>
+  </revision>
 </revisionlist>
