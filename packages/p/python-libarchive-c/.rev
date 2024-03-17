@@ -70,4 +70,14 @@
     BREAKING &amp; SECURITY: The archive extraction functions now pass 3 security flags (SECURE_NODOTDOT, SECURE_NOABSOLUTEPATHS</comment>
     <requestid>1131722</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>39877c864f53ac564cffc02c0408597f</srcmd5>
+    <version>5.1</version>
+    <time>1710710029</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.1:
+  * Fix the `format_name` property and move it from the
+    `ArchiveEntry` class to the `ArchiveRead` class (#127).</comment>
+    <requestid>1158308</requestid>
+  </revision>
 </revisionlist>
