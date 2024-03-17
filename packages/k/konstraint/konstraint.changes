@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Mar 17 07:29:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.35.0:
+  * Bump minimum Go version to 1.21 (#484)
+  * build(deps): bump google.golang.org/protobuf from 1.32.0 to
+    1.33.0 (#486)
+  * build(deps): bump golang from 1.22.0-alpine to 1.22.1-alpine
+    (#485)
+  * build(deps): bump github.com/open-policy-agent/opa from 0.61.0
+    to 0.62.1 (#483)
+  * build(deps): bump k8s.io/apiextensions-apiserver from 0.29.1 to
+    0.29.2 (#480)
+  * build(deps): bump golang from 1.21.6-alpine to 1.22.0-alpine
+    (#477)
+  * build(deps): bump styrainc/setup-regal from 0.2.0 to 1.0.0
+    (#478)
+  * build(deps): bump golangci/golangci-lint-action from 3 to 4
+    (#479)
+  * build(deps): bump github.com/open-policy-agent/opa from 0.60.0
+    to 0.61.0 (#475)
+  * build(deps): bump k8s.io/apiextensions-apiserver from 0.29.0 to
+    0.29.1 (#474)
+  * build(deps): bump golang from 1.21.5-alpine to 1.21.6-alpine
+    (#472)
+  * build(deps): bump alpine from 3.19.0 to 3.19.1 (#476)
+
+-------------------------------------------------------------------
 Sun Jan 07 13:19:15 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.34.0:
