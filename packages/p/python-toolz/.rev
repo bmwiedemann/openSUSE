@@ -117,4 +117,19 @@
     <comment></comment>
     <requestid>1009874</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>26ca94b8c31439339085b3b04b890c6b</srcmd5>
+    <version>0.12.1</version>
+    <time>1710710109</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.12.1:
+  * Add support for Python 3.12 and PyPy 3.10
+  * Drop support for Python 3.5 and 3.6
+  * Fix typos
+  * Use codecov for coverage instead of coveralls
+
+- update to version 0.12.0
+  * drop python 2.x</comment>
+    <requestid>1158484</requestid>
+  </revision>
 </revisionlist>

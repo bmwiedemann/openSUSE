@@ -1,7 +1,7 @@
 #
 # spec file for package python-toolz
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %global skip_python2 1
 Name:           python-toolz
-Version:        0.12.0
+Version:        0.12.1
 Release:        0
 Summary:        List processing tools and functional utilities for python
 License:        BSD-3-Clause

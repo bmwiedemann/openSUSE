@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Sat Mar 16 13:43:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.1:
+  * Add support for Python 3.12 and PyPy 3.10
+  * Drop support for Python 3.5 and 3.6
+  * Fix typos
+  * Use codecov for coverage instead of coveralls
+
+-------------------------------------------------------------------
 Tue Oct 11 16:02:42 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- update to version 0.12.0 
+- update to version 0.12.0
   * Add apply (#411)
   * Support newer Python versions--up to Python 3.11-alpha (#525, #527, #533)
   * Improve warning when using toolz.compatibility (#485)
@@ -20,7 +29,7 @@ Thu Jan  6 15:06:13 UTC 2022 - Ben Greiner <code@bnavigator.de>
 Mon Mar  8 22:48:28 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.11.1:
-  * drop python 2.x 
+  * drop python 2.x
 
 -------------------------------------------------------------------
 Mon Jul 22 12:35:27 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
