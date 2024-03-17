@@ -29,6 +29,16 @@ ExclusiveArch:  do_not_build
 
 %define spack_dir  %_prefix/lib/spack/
 %define spack_group spack
+# These packages are missing from a BCI-style base container but may
+# be used by Spack for building. To avoid unresolved libraries, make
+# sure these are installed in the runtime container.
+%if 0%{suse_version} == 1500
+%define spack_container_packages libgfortran4 libfl2 libzip5
+%else
+%if 0%{suse_version} >  1600
+%define spack_container_packages libgfortran5 libfl2 libzip5
+%endif
+%endif
 
 # These packages are found and can be used by spack, %{_sysconfdir}/spack/packages-yaml
 # needs to be updated when one of these packages is updated or uninstalled.
@@ -324,8 +334,10 @@ chmod 0755 %{buildroot}%{_bindir}/%{basename:%{S:6}}
 cp etc/spack/defaults/config.yaml %{buildroot}%{_sysconfdir}/skel/.spack/
 install -m 755 %{S:3} %{buildroot}/%{spack_dir}/run-find-external.sh
 sed -i -e 's#@@_sysconfdir@@#%{_sysconfdir}#' %{buildroot}/%{spack_dir}/run-find-external.sh
-sed -i -e '/. \/opt/s#/opt/spack/#/usr/share/#' %{buildroot}/%{_datarootdir}/spack/templates/container/singularity.def
-
+sed -i -e '/. \/opt/s#/opt/spack/#/usr/#' %{buildroot}/%{_datarootdir}/spack/templates/container/singularity.def
+%{?spack_container_packages:
+sed -i -e 's/\(zypper update -y\)/\1 \&\& zypper -n in -y %{spack_container_packages}/' \
+					     %{buildroot}%{spack_dir}/spack/container/images.json}
 # Make spack only to write to home dir of user, if run as user
 sed -i 's@\(\sroot:\) /opt/spack@\1 ~/spack/packages@' %{buildroot}%{_sysconfdir}/skel/.spack/config.yaml
 sed -i 's@\(\ssource_cache:\).*@\1 /var/tmp/$user/spack-cache@' %{buildroot}%{_sysconfdir}/skel/.spack/config.yaml

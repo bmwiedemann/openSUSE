@@ -20,6 +20,10 @@ Fri Mar 15 13:35:51 UTC 2024 - Egbert Eich <eich@suse.com>
     + `rust`: add v1.75, rework a few variants.
     + `py-transformers`: add v4.35.2.
 - Fix path to setup-env.sh in the Apptainer template (bsc#1221471).
+- Add libgfortran, libfl2 and libzip5 to the Spack runtime
+  container as the Spack build container has the corresponding
+  devel packages but these libraries are not installed in a
+  BCI-style base container by default (bsc#1221503).
 
 -------------------------------------------------------------------
 Fri Feb  2 14:41:14 UTC 2024 - Egbert Eich <eich@suse.com>

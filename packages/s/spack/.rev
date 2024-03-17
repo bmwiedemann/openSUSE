@@ -476,4 +476,15 @@
     <comment></comment>
     <requestid>1158279</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>55d99c3be910825846a1fd0354bba446</srcmd5>
+    <version>0.21.2</version>
+    <time>1710710169</time>
+    <user>anag+factory</user>
+    <comment>- Add libgfortran, libfl2 and libzip5 to the Spack runtime
+  container as the Spack build container has the corresponding
+  devel packages but these libraries are not installed in a
+  BCI-style base container by default (bsc#1221503). (forwarded request 1158547 from eeich)</comment>
+    <requestid>1158555</requestid>
+  </revision>
 </revisionlist>
