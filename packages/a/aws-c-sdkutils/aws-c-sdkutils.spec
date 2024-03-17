@@ -1,7 +1,7 @@
 #
 # spec file for package aws-c-sdkutils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define library_pkg 1_0_0
 %define library_soversion 1
 Name:           aws-c-sdkutils
-Version:        0.1.14
+Version:        0.1.15
 Release:        0
 Summary:        AWS C SDK Utils
 License:        Apache-2.0
@@ -28,10 +28,10 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/awslabs/aws-c-sdkutils
 Source0:        https://github.com/awslabs/%{name}/archive/v%{version}.tar.gz
 Patch0:         acs_fix-cmake-modules-path.patch
-BuildRequires:  cmake(aws-c-common)
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  ninja
+BuildRequires:  cmake(aws-c-common)
 
 %description
 AWS C SDK Utils

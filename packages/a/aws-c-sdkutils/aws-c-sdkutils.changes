@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 17 19:17:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.1.15:
+  * Fix a bunch of places we forget to aws_raise_error()
+
+-------------------------------------------------------------------
 Tue Feb 20 11:15:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
