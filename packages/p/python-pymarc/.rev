@@ -85,4 +85,13 @@
   * py.typed marker</comment>
     <requestid>1137138</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>462f5a910c3d8642009c5d4d2f708605</srcmd5>
+    <version>5.1.2</version>
+    <time>1710710105</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.1.2:
+  * minor changes</comment>
+    <requestid>1158469</requestid>
+  </revision>
 </revisionlist>
