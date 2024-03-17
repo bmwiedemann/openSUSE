@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 14 21:46:12 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- new upstream release 1.10.12
+  * Prevent from "PHP Deprecated: file_exists(): Passing null to
+    parameter #1 ($filename) of type string"
+  * PHPDoc improvements
+
+-------------------------------------------------------------------
 Fri Dec 10 10:46:16 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - new upstream release 1.10.11
