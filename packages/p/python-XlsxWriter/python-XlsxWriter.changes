@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 16 16:20:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.0:
+  * This is the 10th anniversary release of XlsxWriter.
+  * Add :func:`embed_image()` worksheet method to embed images in
+    cells. This is equivalent to Excel's menu item to insert an
+    image using the option to "Place in Cell". It scales images
+    automatically to the dimensions of the cell.
+  * This has been a frequently requested feature for people
+    creating spreadsheets with images for product items. See also
+    :ref:`ex_embedded_images`.
+  * Fix issue where a horizontal alignment format was ignored if
+    indentation was also set.
+
+-------------------------------------------------------------------
 Wed Dec 13 10:28:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.9:

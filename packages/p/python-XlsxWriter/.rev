@@ -154,4 +154,22 @@ Updated to version 0.8.7.</comment>
   * Minor fix for cell color issue.</comment>
     <requestid>1132846</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>87c294fab9828623b6e648af81d42ba2</srcmd5>
+    <version>3.2.0</version>
+    <time>1710710146</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2.0:
+  * This is the 10th anniversary release of XlsxWriter.
+  * Add :func:`embed_image()` worksheet method to embed images in
+    cells. This is equivalent to Excel's menu item to insert an
+    image using the option to &quot;Place in Cell&quot;. It scales images
+    automatically to the dimensions of the cell.
+  * This has been a frequently requested feature for people
+    creating spreadsheets with images for product items. See also
+    :ref:`ex_embedded_images`.
+  * Fix issue where a horizontal alignment format was ignored if
+    indentation was also set.</comment>
+    <requestid>1158525</requestid>
+  </revision>
 </revisionlist>
