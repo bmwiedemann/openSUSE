@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Mar 16 19:59:28 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240313T235157Z:
+  * Bump google.golang.org/protobuf from 1.31.0 to 1.33.0 (#4872)
+  * support node being part of multiple pools pick the actual
+    number (#4870)
+
+-------------------------------------------------------------------
+Sat Mar 16 19:56:22 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240309T064306Z:
+  * avoid stat and listing with --purge (#4869)
+  * Bump github.com/lestrrat-go/jwx from 1.2.28 to 1.2.29 (#4868)
+
+-------------------------------------------------------------------
+Sat Mar 16 19:12:24 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240307T003149Z:
+  * update go to v1.21.8 for vulncheck
+  * Add command for uploading file to SUBNET issue (#4854)
+
+-------------------------------------------------------------------
+Sat Mar 16 19:08:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240303T001308Z:
+  * bring back the original progress bar (#4866)
+  * mc support commands: allow --json in online mode (#4859)
+  * mirror: add bucket exclusions (#4861)
+  * replicate: support alias (#4864)
+
+-------------------------------------------------------------------
 Sun Feb 25 10:55:01 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240224T013320Z:
