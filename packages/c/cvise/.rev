@@ -1135,4 +1135,13 @@
   * cvise.py: call shell vial `/usr/bin/env` indirection instead of `/bin`</comment>
     <requestid>1155556</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>bbd24901111ccdc684c1807ebdf46ea0</srcmd5>
+    <version>2.10.0+git.20240313.c860649</version>
+    <time>1710710194</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.10.0+git.20240313.c860649:
+  * Bump to 2.10.0</comment>
+    <requestid>1158644</requestid>
+  </revision>
 </revisionlist>
