@@ -18,7 +18,7 @@
 
 %define so_ver 12
 Name:           cryptsetup
-Version:        2.7.0
+Version:        2.7.1
 Release:        0
 Summary:        Setup program for dm-crypt Based Encrypted Block Devices
 License:        LGPL-2.0-or-later AND SUSE-GPL-2.0-with-openssl-exception
@@ -45,7 +45,7 @@ BuildRequires:  pkgconfig(libssh)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  rubygem(asciidoctor)
 Requires(post): coreutils
-Requires(postun):coreutils
+Requires(postun): coreutils
 Provides:       integritysetup = %{version}-%{release}
 Provides:       veritysetup = %{version}-%{release}
 %if %{?suse_version} >= 1550
