@@ -1,7 +1,7 @@
 #
 # spec file for package python-reno
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # uses openstack packages: build and depend on default python3 provider only
 %define pythons python3
 Name:           python-reno
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 Summary:        RElease NOtes manager
 License:        Apache-2.0
@@ -49,7 +49,7 @@ Requires:       python-dulwich >= 0.15.0
 Requires:       python-pbr
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

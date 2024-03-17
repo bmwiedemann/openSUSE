@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 16 16:21:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.0:
+  * Respect EOM tag for branches in unmaintained status
+  * Update supported python versions
+
+-------------------------------------------------------------------
 Wed Dec 27 16:05:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.0:

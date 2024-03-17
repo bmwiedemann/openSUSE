@@ -232,4 +232,14 @@
   * Update CI to use unversioned jobs template</comment>
     <requestid>1135344</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9f7864bf12946a4e7e254ff3758ef078</srcmd5>
+    <version>4.1.0</version>
+    <time>1710710144</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.1.0:
+  * Respect EOM tag for branches in unmaintained status
+  * Update supported python versions</comment>
+    <requestid>1158528</requestid>
+  </revision>
 </revisionlist>
