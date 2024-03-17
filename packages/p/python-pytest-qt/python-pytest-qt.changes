@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 16 09:34:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.0:
+  * Fixed exception handling so they are properly cleared in
+    Python 3.12, due to the new sys.last_exc attribute (#532).
+
+-------------------------------------------------------------------
 Sun Jan 28 17:40:13 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Don't require any backend. The testing application should

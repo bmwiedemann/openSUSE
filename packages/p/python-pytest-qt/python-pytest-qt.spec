@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-pytest-qt
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -19,7 +19,6 @@
 %{?sle15_python_module_pythons}
 # pyside is for one flavor only
 %define pyside_python %{?sle15_python_module_pythons:%pythons}%{!?sle15_python_module_pythons:python3}
-
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == ""
 %define psuffix %{nil}
@@ -65,9 +64,8 @@ BuildConflicts: %{python_module PyQt6}
 BuildConflicts: %{python_module pyside2}
 BuildConflicts: %{python_module qt5}
 %endif
-
 Name:           python-pytest-qt%{psuffix}
-Version:        4.3.1
+Version:        4.4.0
 Release:        0
 Summary:        Pytest support for PyQt and PySide applications
 License:        MIT

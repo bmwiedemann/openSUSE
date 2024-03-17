@@ -183,4 +183,14 @@
     <comment></comment>
     <requestid>1142160</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>18396a4a69554025acc8564ea439b4c2</srcmd5>
+    <version>4.4.0</version>
+    <time>1710710090</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.4.0:
+  * Fixed exception handling so they are properly cleared in
+    Python 3.12, due to the new sys.last_exc attribute (#532).</comment>
+    <requestid>1158422</requestid>
+  </revision>
 </revisionlist>
