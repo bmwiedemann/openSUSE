@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 15 09:11:41 UTC 2024 - aplanas@suse.com
+
+- Update to version v7.10.0:
+  * Monthly Release (7.10.0)
+  * mba: Add a separate table for measured boot policies. In the next PR, similar to named runtime policies, this table will be used to provide support for named measured boot policies and thier management.
+  * user_guide: Add section about 'Key Learning to Verify Files'
+  * docs: fix rendering in PCR example
+  * docs: update PCR monitoring example
+  * templates: Fix typo on default measured boot log location
+  * packit: re-enable tests against Rawhide
+  * elparser: add different escaping required for tpm2-tools >= 5.6
+  * requirements: bump pyasn1-modules to 0.2.5
+
+-------------------------------------------------------------------
 Wed Jan 31 07:25:12 UTC 2024 - aplanas@suse.com
 
 - Update to version v7.9.0:
