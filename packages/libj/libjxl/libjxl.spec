@@ -24,7 +24,7 @@ Name:           libjxl-gtk
 Name:           libjxl
 %bcond_with gtk
 %endif
-Version:        0.10.1
+Version:        0.10.2
 Release:        0
 Summary:        JPEG XL reference implementation
 License:        BSD-3-Clause
@@ -159,6 +159,7 @@ rm -Rf "$b/%_libdir"/libjxl* "$b/%_bindir" "$b/%_includedir" "$b/%_libdir/pkgcon
 %else
 
 %files -n gdk-pixbuf-loader-jxl
+%_datadir/mime/packages/*
 %_libdir/gdk-pixbuf-2.0/*/loaders/libpixbufloader-jxl.so
 
 %files -n gimp-plugin-jxl
