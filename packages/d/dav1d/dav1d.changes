@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 15 07:49:30 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.4.1
+  * Optimizations for 6tap filters for NEON (ARM)
+  * More RISC-V optimizations for itx (4x8, 8x4, 4x16, 16x4,
+    8x16, 16x8)
+  * Reduction of binary size on ARM64, ARM32 and RISC-V
+  * Fix out-of-bounds read in 8bpc SSE2/SSSE3 wiener_filter
+  * Msac optimizations
+
+-------------------------------------------------------------------
 Wed Feb 14 20:10:15 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.4.0
