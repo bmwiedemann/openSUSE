@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 16 12:59:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.1:
+  * Compatibility with pytest 8.1.1
+  * Compatibility with pytest 8.1.
+
+-------------------------------------------------------------------
 Sun Dec 31 13:32:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.0:

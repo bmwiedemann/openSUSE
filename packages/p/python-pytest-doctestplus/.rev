@@ -179,4 +179,14 @@
   * Respect pytest --import-mode.</comment>
     <requestid>1135878</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>481ffaf07184bd92252dc83a20a80b53</srcmd5>
+    <version>1.2.1</version>
+    <time>1710710107</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.1:
+  * Compatibility with pytest 8.1.1
+  * Compatibility with pytest 8.1.</comment>
+    <requestid>1158472</requestid>
+  </revision>
 </revisionlist>
