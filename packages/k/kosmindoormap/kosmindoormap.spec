@@ -89,14 +89,14 @@ Development files for the KOSM and KOSMIndoorMap libraries.
 %install
 %kf6_install
 
+%find_lang %{name}
+
 %check
 # Two tests fail on i586 (one minor floating point issue and a color one).
 # Upstream is investigating
 %ifnarch i586
 %ctest
 %endif
-
-%find_lang %{name}
 
 %ldconfig_scriptlets -n libKOSM1
 %ldconfig_scriptlets -n libKOSMIndoorMap1
