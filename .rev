@@ -1352,4 +1352,15 @@
 </comment>
     <requestid>1154140</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>4c56f41c69c082c6de7456670de9dabc</srcmd5>
+    <version>4.32.3</version>
+    <time>1710710215</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.32.3:
+  * Fix setting book['tags'] for bgmeta for update AND overwrite.
+  * Report errors during library update loop better.
+  * SV site change, paginated threadmarks list</comment>
+    <requestid>1158747</requestid>
+  </revision>
 </revisionlist>

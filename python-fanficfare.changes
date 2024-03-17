@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 17 12:32:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.32.3:
+  * Fix setting book['tags'] for bgmeta for update AND overwrite.
+  * Report errors during library update loop better.
+  * SV site change, paginated threadmarks list
+
+-------------------------------------------------------------------
 Fri Mar  1 17:34:47 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 4.32.0:
