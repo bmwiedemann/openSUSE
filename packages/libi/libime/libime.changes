@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 17 09:16:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.6:
+  * Fix TscanCode detections
+  * clang tidy and coverity clean ups
+  * Handle customized single char final mapping
+
+-------------------------------------------------------------------
 Sun Feb  4 14:57:26 UTC 2024 - Marguerite Su <i@marguerite.su>
 
 - update to 1.1.5
@@ -24,7 +32,7 @@ Tue Oct  3 07:45:51 UTC 2023 - Marguerite Su <i@marguerite.su>
   * Allow value to be quoted
   * Apply ZSTD compression the pinyin/table dict and user history.
   * fix some performance issue for certain pinyin input
-  * Allow table rule to specify character from backwards. 
+  * Allow table rule to specify character from backwards.
 
 -------------------------------------------------------------------
 Sun Aug 27 05:40:04 UTC 2023 - Marguerite Su <i@marguerite.su>
@@ -40,7 +48,7 @@ Sun Aug 20 05:47:37 UTC 2023 - Marguerite Su <i@marguerite.su>
   * fix full pinyin shuangpin preedit to use the pinyin of first candidate
   * fuzzy pinyin now allows jqxy with van
   * libime_pinyindict now skips invalid lines when building dictionary file
-  * improve partial match flag for chaizi  
+  * improve partial match flag for chaizi
 
 -------------------------------------------------------------------
 Thu Apr 27 22:18:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -126,7 +134,7 @@ Wed May  5 07:18:44 UTC 2021 - Marguerite Su <i@marguerite.su>
     "better" suggestions are filtered due to size limit and performance.
 - changes in version 1.0.6
   * minor fix in pinyin pronunciation weight. When adding new missing
-    pronunciation in the last release, the weight was not assigned 
+    pronunciation in the last release, the weight was not assigned
     to some common characters, thus it causes confusion in the order.
     This release update with weight for common characters and should
     restore the ordering for those characters (e.g. 她 射)
