@@ -67,4 +67,22 @@
     <comment></comment>
     <requestid>1125829</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3e0db45520b039bcc4b36a8563284b5e</srcmd5>
+    <version>2.21.1</version>
+    <time>1710710246</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.21.1:
+  * Fix numerical precision issues for small-gradient L-BFGS
+    scaling factor computations (#392).
+  * Ensure the tests are built with optimisation enabled
+  * Clarify return values for different callback types
+  * Fix return types of callbacks
+  * Minor cleanup for printing optimization reports via
+    `Report()`
+
+  * Avoid deprecation warnings in Armadillo 11.2+
+- Update to version 2.12.1</comment>
+    <requestid>1158790</requestid>
+  </revision>
 </revisionlist>
