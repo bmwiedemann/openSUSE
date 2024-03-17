@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Mar 17 17:00:00 UTC 2024 - Roman Dementiev <roman.dementiev@intel.com>
+
+- Update to version 202403:
+  * pcm: implement alternative metrics option -m (UTIL=C0 residency for cores, CFREQ=core frequency in GHz) and make it default
+  * hardened binaries with "-Wl,-z,now" option on Linux
+  * pcm-raw: fall-back to older stepping PMURegisterDeclarations if available
+  * Detect UPI LL PMUs on SPR/EMR through uncore PMU discovery and detect IMC PMUs on SPR/EMR through uncore PMU discovery
+  * Fixed parameter parsing in pcm-sensor-server
+  * Added Emerald Rapids processor support
+  * Added support for TMA Level 2 metrics on SPR+
+  * Added support of PP0 and PP1 energy metrics
+  * Added -c option (corelist) to pcm-numa and pcm-msr utilites
+  * pcm-msr new options added: iterate with seconds between each iteration and write results of each iteration to file
+  * Removed hardcoded value for max supported sockets in pcm-iio tool
+  * Rely on CPUID leaf 0x1F topology info when available
+
+-------------------------------------------------------------------
 Sun Mar 10 10:10:10 UTC 2024 - Roman Dementiev <roman.dementiev@intel.com>
 
 - Fixed Tumbleweed builds
