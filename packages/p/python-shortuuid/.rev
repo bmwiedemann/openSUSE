@@ -61,4 +61,14 @@
 - Use sle15_python_module_pythons</comment>
     <requestid>1095247</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7830096a9a937b731cb13310dc0ce3e3</srcmd5>
+    <version>1.0.13</version>
+    <time>1710710108</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.13:
+  * require python 3.6+
+  * switch to poetry</comment>
+    <requestid>1158480</requestid>
+  </revision>
 </revisionlist>
