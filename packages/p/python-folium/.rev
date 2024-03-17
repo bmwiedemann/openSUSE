@@ -77,4 +77,13 @@
   * New Requires: python-xyzservices.</comment>
     <requestid>1131369</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>16f6c5bc4932e19398b715c776b49889</srcmd5>
+    <version>0.15.1</version>
+    <time>1710710254</time>
+    <user>anag+factory</user>
+    <comment>Disable for python3.9, python39-branca is not available.
+</comment>
+    <requestid>1158802</requestid>
+  </revision>
 </revisionlist>

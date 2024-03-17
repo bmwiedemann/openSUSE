@@ -16,6 +16,8 @@
 #
 
 
+# No branca
+%define skip_python39 1
 %define modname folium
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
