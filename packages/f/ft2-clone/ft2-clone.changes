@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 17 12:19:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.77.1:
+  * The 32-point sinc resampling interpolator was reduced to
+    16-point again because of the trade-off not being big enough,
+    and it was slightly wrongly implemented and would alias a
+    little bit in some cases. I'll implement a better sinc
+    interpolator in the future, if I ever stumble across a nice
+    and simple implementation. Please let me know if you have
+    one!
+
+-------------------------------------------------------------------
 Mon Mar 11 20:19:37 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.77
@@ -29,10 +41,10 @@ Fri Feb 23 21:04:00 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 Sat Feb 17 16:10:20 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.75
-  * Note transpose (block), instrument remapping (block), Cut Block (ALT+F3) 
-    and Copy Block (ALT+F4) had issues if you had made a block selection in 
-    the last channel/track in a pattern. 
-    Thanks to Roz for finding this and reporting it, and sorry to all the people 
+  * Note transpose (block), instrument remapping (block), Cut Block (ALT+F3)
+    and Copy Block (ALT+F4) had issues if you had made a block selection in
+    the last channel/track in a pattern.
+    Thanks to Roz for finding this and reporting it, and sorry to all the people
     who may have had this bug without knowing what was going on!
 
 -------------------------------------------------------------------
