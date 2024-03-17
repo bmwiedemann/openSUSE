@@ -19,14 +19,14 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           osv-scanner
-Version:        1.6.2
+Version:        1.7.0
 Release:        0
 Summary:        Vulnerability scanner written in Go
 License:        Apache-2.0
 URL:            https://github.com/google/osv-scanner
 Source:         osv-scanner-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.19
+BuildRequires:  go1.21 >= 1.21.8
 
 %description
 Use OSV-Scanner to find existing vulnerabilities affecting your project's dependencies.

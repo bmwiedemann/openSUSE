@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Fri Mar 15 21:49:28 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- BuildRequire go 1.21.8 to follow upstream
+- Update to version 1.7.0:
+  * Update changelog for v1.7.0 (#843)
+  * Merge docs to main (#842)
+  * Replace stereoscope with using go-containerregistry directly
+    (#836)
+  * Rename relaxer and suggester (#839)
+  * Update deps (#841)
+  * Downgrade go.mod (#833)
+  * chore(deps): update workflows (#835)
+  * Add more guided remediation known issues re: vulnerabilitiy
+    counting (#840)
+  * Guided Remediation Docs (#827)
+  * test: automatically cleanup test zip server (#834)
+  * chore(deps): lock file maintenance (#822)
+  * fix(deps): update osv-scanner minor (#807)
+  * ci: remove unneeded `setup-go` step and pin
+    `actions/download-artifact` (#786)
+  * Dont traverse gitignored dirs for gitignore files (#797)
+  * test: make `createTestDir` a general test utility (#832)
+  * Maximum severity rating for each Group object in JSON output
+    (#805)
+  * Automated Updates: add a simple Maven registry API client
+    (#837)
+  * Automated Updates: only append dependencies with property to
+    original requirements (#823)
+  * chore(deps): update dependency github-pages to v231 (#821)
+  * chore(deps): update workflows to v4 (major) (#784)
+  * chore(deps): update workflows (#806)
+  * Added a switch for using cached local db in test to improve
+    speed (#826)
+  * Remove version from the binary name. (#831)
+  * Automated Updates: suggest property patches to update for Maven
+    (#824)
+  * refactor: replace usage of deprecated function (#829)
+  * chore: don't ignore `fixtures` directory (#825)
+  * Align GoVulncheck Go version with go.mod (#818)
+  * Guided Remediation: Compute Dev dependencies in in-place
+    parsing (#816)
+  * Automated Updates: add ManifestIO for Maven (#813)
+  * Update suggester package name (#817)
+  * Automated Updates: add version suggester for Maven (#815)
+  * Guided remediation: Interactive mode TUI (#811)
+  * Proof of Concept of container scanning (#808)
+  * Guided Remediation: non-interactive mode (#798)
+  * Update main with the new docs updates.  (#810)
+  * Add user agent to deps.dev requests (#804)
+  * chore(deps): update golang:alpine docker digest to 8e96e6c
+    (#793)
+  * fix(deps): update osv-scanner minor (#794)
+  * chore(deps): update dependency github-pages to v230 (#796)
+  * chore(deps): update workflows (#795)
+  * Start setting up guided remediation subcommand (#792)
+  * Guided Remediation: Compute in-place updates (#789)
+  * Guided Remediation: Add `package-lock.json` LockfileIO (#785)
+  * add new spdx identifiers (#788)
+  * chore(deps-dev): Bump nokogiri from 1.15.5 to 1.16.2 in /docs
+    (#787)
+  * chore(deps): update workflows (#783)
+  * fix(deps): update osv-scanner minor (#782)
+  * Guided Remediation: add npm registry clients & `.npmrc` parsing
+    (#778)
+  * Fix tests (#780)
+
+-------------------------------------------------------------------
 Wed Jan 31 14:00:36 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.6.2:
