@@ -1,7 +1,7 @@
 #
 # spec file for package sqlite3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %define oname sqlite
-%define tarversion 3440200
-%define docversion 3440200
+%define tarversion 3450200
+%define docversion 3450200
 %bcond_with icu
 %bcond_without check
 Name:           sqlite3
-Version:        3.44.2
+Version:        3.45.2
 Release:        0
 Summary:        Embeddable SQL Database Engine
 License:        SUSE-Public-Domain
@@ -31,7 +31,7 @@ URL:            https://www.sqlite.org/
 Source0:        https://www.sqlite.org/2023/sqlite-src-%{tarversion}.zip
 Source1:        baselibs.conf
 Source2:        https://www.sqlite.org/2023/sqlite-doc-%{docversion}.zip
-Patch0:         sqlite3-rtree-i686.patch
+Patch0:         sqlite3-float-i586.patch
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -129,7 +129,15 @@ other documentation found on sqlite.org. The files can be found in
 %{_docdir}/%{name}-doc.
 
 %prep
-%autosetup -p1 -n sqlite-src-%{tarversion} -a2
+# Version and %tarversion need to match, but %docversion might be different,
+IFS=. read a b c d <<< "%version"
+if [ "%tarversion" != $(printf "%1d%02d%02d%02d" $a $b $c $d) ]
+then
+	echo "Version %version does not match tarversion %tarversion."
+	exit 1
+fi
+
+%autosetup -p0 -n sqlite-src-%{tarversion} -a2
 
 rm -v sqlite-doc-%{docversion}/releaselog/current.html
 ln -sv `echo %{docversion} | sed "s/\./_/g"`.html sqlite-doc-%{docversion}/releaselog/current.html

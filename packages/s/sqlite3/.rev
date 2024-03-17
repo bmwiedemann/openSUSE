@@ -1621,4 +1621,41 @@ CVE-2020-13871 boo#1172646</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1133118</requestid>
   </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>8aeae63efc0fb406d4905131591948b5</srcmd5>
+    <version>3.45.2</version>
+    <time>1710710009</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.45.2:
+  * Added the SQLITE_RESULT_SUBTYPE property for application-
+    defined SQL functions.
+  * Enhancements to the JSON SQL functions
+  * Add the FTS5 tokendata option to the FTS5 virtual table.
+  * The SQLITE_DIRECT_OVERFLOW_READ optimization is now enabled by
+    default.
+  * Query planner improvements
+  * Increase the default value for SQLITE_MAX_PAGE_COUNT from
+    1073741824 to 4294967294.
+  * Enhancements to the CLI
+  * Restore the JSON BLOB input bug, and promise to support the
+    anomaly in subsequent releases, for backward compatibility.
+  * Fix the PRAGMA integrity_check command so that it works on
+    read-only databases that contain FTS3 and FTS5 tables.
+  * Fix issues associated with processing corrupt JSONB inputs.
+  * Fix a long-standing bug in which a read of a few bytes past the
+    end of a memory-mapped segment might occur when accessing a
+    craftily corrupted database using memory-mapped database.
+  * Fix a long-standing bug in which a NULL pointer dereference
+    might occur in the bytecode engine due to incorrect bytecode
+    being generated for a class of SQL statements that are
+    deliberately designed to stress the query planner but which
+    are otherwise pointless.
+  * Fix an error in UPSERT, introduced in version 3.35.0.
+  * Reduce the scope of the NOT NULL strength reduction
+    optimization that was added in version 3.35.0.
+- Add sqlite3-float-i586.patch to fix build on i586.
+- sqlite3-rtree-i686.patch is not needed anymore.
+- Abort build when %version and %tarversion don't match.</comment>
+    <requestid>1158281</requestid>
+  </revision>
 </revisionlist>
