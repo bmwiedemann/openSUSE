@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Mar 17 05:42:45 UTC 2024 - Martin Liška <martin.liska@hey.com>
+
+- Update to version 2.30.0
+  * We have increased the version number from 2.4.1 to 2.30.0, even though this
+    release contains only minor bug fixes. This change was made to prevent GNU
+    libtool from mistaking mold 2.4.1 for GNU ld 2.4.1, which led it to incorrectly
+    conclude that our linker was an outdated version of the GNU linker. Bumping up
+    the version number to align with GNU ld may not be the most elegant solution,
+    but it is a practical approach to resolve the compatibility issue with GNU
+    libtool. (c7f6a91)
+  * Previously, mold may have inserted an unnecessary gap before the .bss section in
+    an output file, thereby creating an extra segment for it. While not technically
+    incorrect, it was certainly unnecessary. mold 2.30.0 eliminates this unnecessary
+    on-disk gap for .bss. (c395da1)
+  * Previously, under rare circumstances, mold might fail with the "ConcurrentMap is
+    full" error message if --gdb-index was used. This bug has been resolved.
+    (c60d1d0)
+  * Previously, mold might generate an excessive number of "ignoring .llvm_addrsig
+    section without sh_link" warnings. These warnings are now suppressed. (51f871f)
+  * Sections with unknown section types are now reported as errors. (d21207c)
+  * [PPC32] A crash bug related to --gc-sections has been fixed. (8eae0a3)
+
+-------------------------------------------------------------------
 Fri Mar  1 16:17:35 UTC 2024 - Martin Liška <martin.liska@hey.com>
 
 - Align path for document installation between openSUSE versions.
