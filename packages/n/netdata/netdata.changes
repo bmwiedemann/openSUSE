@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Sun Mar 17 18:16:15 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.44.3 (go.d.plugin 0.58.1)
+  See https://github.com/netdata/go.d.plugin/tree/v0.58.1
+  and https://github.com/netdata/go.d.plugin/tree/v0.58.0
+  * Improved handling of slow queries and CPU usage of the ACLKSYNC
+    thread.
+    gh#netdata/netdata#16838
+  * Improved error handling for listen bind failures. Instead of
+    terminating fatally, Netdata now exits gracefully.
+    gh#netdata/netdata#16937
+  * Fixed invalid alert durations in health log entries.
+    gh#netdata/netdata#16931
+  * Fixed a race condition during analytics data setup, preventing
+    potential Netdata crashes.
+    gh#netdata/netdata#16929
+  * - Changes in 1.44.2
+  * Fixed an inconsistency where the NETDATA_LOG_LEVEL environment
+    variable did not affect log level in Docker containers.
+    gh#netdata/netdata#16943
+  * Fixed inconsistent log severity across sources: log severity
+    level setting now work for all Netdata log sources (daemon,
+    collector, health, access, aclk).
+    gh#netdata/netdata#16922
+  * Fixed a bug in chartd.d.plugin that prevented loading of its
+    modules configuration files.
+    gh#netdata/netdata#16939
+  * Fixed inaccurate server type identification in Netdata Cloud
+    for FreeBSD jails. Jails are now recognized correctly.
+    gh#netdata/netdata#16858
+  * Fixed a bug that prevented the edit-config script from running
+    correctly in Podman containers. The script now accurately
+    identifies container environments.
+    gh#netdata/netdata#16825
+  * Fixed a bug that caused excessive logging of "Using host prefix
+    directory" messages.
+    gh#netdata/netdata#16814
+  * Fixed incorrect label source for apps.plugin charts, ensuring
+    they are now accessible when querying Prometheus metrics.
+    gh#netdata/netdata#16810
+  * Fixed a bug in the cgroups.plugin that could lead to crashes.
+    Additionally, addressed incorrect thread name during fatal
+    Agent exits.
+    gh#netdata/netdata#16771
+  * Fixed a race condition related to pthread_detach() calls,
+    preventing potential Netdata crashes during thread creation.
+    gh#netdata/netdata#16760
+  * Fixed a bug that caused "maximum number of cgroups reached"
+    messages to spam logs.
+    gh#netdata/netdata#16730
+  * Fixed missing host label streaming from child nodes: host
+    labels are now transmitted reliably to parent nodes.
+    gh#netdata/netdata#16821
+  * Fixes a bug in clock resolution calculation that prevented some
+    data collection plugins from working correctly.
+    gh#netdata/netdata#16720
+  * Fixed a bug that caused Netdata to crash when calculating
+    database size due to missing or single datafiles.
+    gh#netdata/netdata#16699
+  * Fixed a bug that caused the cups.plugin to not terminate upon
+    receiving a SIGPIPE (Broken Pipe) signal.
+    gh#netdata/netdata#16691
+  * Fixed a reference counting issue that could lead to Netdata
+    crashes.
+    gh#netdata/netdata#16687
+  * Fixed charts context and family definitions of exporting
+    engine.
+    gh#netdata/netdata#16683
+  * Fixed a bug that could cause crashes when processing web
+    requests.
+    gh#netdata/netdata#16664
+  * Fixed improper handling of the dbengine event loop during
+    shutdown.
+    gh#netdata/netdata#16658
+  * Fixed a potential memory corruption issue in database code.
+    gh#netdata/netdata#16654
+  * Fixed "response too big" error for Systemd-journal: addressed
+    limitations by raising the maximum web response size.
+    gh#netdata/netdata#16649
+  * Fixed compilation issues with --disable-dbengine: addressed
+    errors that prevented successful builds when this flag was
+    used.
+    gh#netdata/netdata#16611
+  * Fixed labels corruption due to duplicate key/value pairs.
+    Additionally, addressed logging errors that occurred during
+    fatal Agent exits. (commit, @ktsaou)
+  * Update go.d.plugin to v0.58.0.
+    gh#netdata/netdata#16725.
+
+-------------------------------------------------------------------
 Wed Feb  7 11:52:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Provide user/group symbol for the user generated during pre.

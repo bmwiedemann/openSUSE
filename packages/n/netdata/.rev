@@ -4371,4 +4371,41 @@ Other Notable Changes
     <comment></comment>
     <requestid>1146158</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>30faa76698e9b2d1a04ac6d9da0f9493</srcmd5>
+    <version>1.44.3</version>
+    <time>1710710256</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.44.3 (go.d.plugin 0.58.1)
+  See https://github.com/netdata/go.d.plugin/tree/v0.58.1
+  and https://github.com/netdata/go.d.plugin/tree/v0.58.0
+  * Improved handling of slow queries and CPU usage of the ACLKSYNC
+    thread.
+    gh#netdata/netdata#16838
+  * Improved error handling for listen bind failures. Instead of
+    terminating fatally, Netdata now exits gracefully.
+    gh#netdata/netdata#16937
+  * Fixed invalid alert durations in health log entries.
+    gh#netdata/netdata#16931
+  * Fixed a race condition during analytics data setup, preventing
+    potential Netdata crashes.
+    gh#netdata/netdata#16929
+  * - Changes in 1.44.2
+  * Fixed an inconsistency where the NETDATA_LOG_LEVEL environment
+    variable did not affect log level in Docker containers.
+    gh#netdata/netdata#16943
+  * Fixed inconsistent log severity across sources: log severity
+    level setting now work for all Netdata log sources (daemon,
+    collector, health, access, aclk).
+    gh#netdata/netdata#16922
+  * Fixed a bug in chartd.d.plugin that prevented loading of its
+    modules configuration files.
+    gh#netdata/netdata#16939
+  * Fixed inaccurate server type identification in Netdata Cloud
+    for FreeBSD jails. Jails are now recognized correctly.
+    gh#netdata/netdata#16858
+  * Fixed a bug that prevented the edit-config script from running
+    correctly in Podman containers. The script now accurately</comment>
+    <requestid>1158803</requestid>
+  </revision>
 </revisionlist>
