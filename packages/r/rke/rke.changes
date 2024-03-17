@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar 16 18:38:54 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.5.6:
+  * What's Changed
+    - Add ACI CNI 6033, 6041 variables #3514
+  * Kubernetes version
+    - v1.27.11-rancher1-1 (default)
+    - v1.26.14-rancher1-1
+    - v1.25.16-rancher2-3
+
+-------------------------------------------------------------------
 Wed Feb 14 19:59:04 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.5.5:
