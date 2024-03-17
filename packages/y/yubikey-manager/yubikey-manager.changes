@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Mar 17 11:54:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.0:
+  * FIDO: Add new CLI commands for PIN management and
+    authenticator config
+    (force-change, set-min-length, toggle-always-uv, enable-
+    ep-attestation).
+  * PIV: Support new key types on supported devices (RSA
+    3072/4096, Curve25519).
+  * PIV: Support for moving and deleting keys on supported
+    devices.
+  * PIV: Improve handling of legacy "PUK blocked" flag.
+  * PIV: Improve handling of malformed certificates.
+  * PIV: Display key information in "piv info" output on
+    supported devices.
+  * OTP: Fix some commands incorrectly showing errors when
+    used over NFC/CCID.
+  * Add tab-completion YubiKey serial numbers and NRC
+    readers.
+
+-------------------------------------------------------------------
 Fri Dec  1 09:48:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.2.1:
