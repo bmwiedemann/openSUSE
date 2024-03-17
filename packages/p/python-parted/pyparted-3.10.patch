@@ -1,7 +1,10 @@
-diff -wruN -x '*~' -x '*.o' -x '*.a' -x '*.so' -x '*.so.[0-9]' -x autom4te.cache -x .deps -x .libs ../orig-pyparted-3.10/src/parted/disk.py ./src/parted/disk.py
---- ../orig-pyparted-3.10/src/parted/disk.py	2013-04-09 17:31:40.000000000 +0200
-+++ ./src/parted/disk.py	2014-02-09 09:49:31.693576602 +0100
-@@ -486,4 +486,7 @@
+---
+ src/parted/disk.py |    5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+--- a/src/parted/disk.py
++++ b/src/parted/disk.py
+@@ -474,4 +474,7 @@ while __readFlags:
      if not __flag:
          __readFlags = False
      else:

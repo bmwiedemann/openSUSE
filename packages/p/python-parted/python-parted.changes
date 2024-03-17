@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Mar 16 17:37:54 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.13.0:
+  - Help the _ped module garbage collection in the test suite
+  - Use 'return NULL' rather than 'return (PyObject *) NULL' in
+    pydisk.c
+  - Use Py_VISIT() in *_traverse() functions
+  - Free allocated memory for temporary string buffers
+  - Use Py_RETURN_NONE through the _ped module code
+  - Coding style updates for the C code.
+  - Some minor cleanups for the test case code
+  - Remove DeprecationWarning in py_ped_constraint_duplicate()
+  - Drop remaining Python 2.x handling from the Makefile drop six
+  - Reformat all Python source code using Python black
+  - Replace outdated Red Hat sample GPLv2+ boilerplates
+  - Add support for loongarch
+  - Add support for no_automount partition flag
+  - Add new disk types - disk uuid and partition uuid
+  - Fix start sector for test partition
+  - Add example for viewing and changing GPT partition type UUID
+  - Accept device path via argv for partition dump example
+  - Add type ID / UUID to partition dump example
+  - Map partition type ID / UUID accessors to Partition class
+  - Bind low level APIs for type ID and UUID accessors
+  - Add support for new libparted disk type features in
+    parted-3.5
+- Remove unnecessary patches:
+  - more-features-exposed.patch
+  - python-parted-featurestest.patch
+  - python-parted-no-six.patch
+
+-------------------------------------------------------------------
 Tue Apr 25 07:49:04 UTC 2023 - pgajdos@suse.com
 
 - do not require six

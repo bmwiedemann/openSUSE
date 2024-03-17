@@ -1,7 +1,7 @@
 #
 # spec file for package python-parted
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define srcname pyparted
 Name:           python-parted
-Version:        3.12.0
+Version:        3.13.0
 Release:        0
 Summary:        Python module for GNU parted
 License:        GPL-2.0-or-later
@@ -26,11 +26,7 @@ URL:            https://github.com/dcantrell/pyparted/
 Source0:        https://github.com/dcantrell/pyparted/archive/v%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
 # catch exception for unknown 'disk flag', kkaempf@suse.de
 Patch0:         pyparted-3.10.patch
-Patch3:         python-parted-parted-binary.patch
-Patch4:         python-parted-featurestest.patch
-Patch5:         more-features-exposed.patch
-# https://github.com/dcantrell/pyparted/pull/101
-Patch6:         python-parted-no-six.patch
+Patch1:         python-parted-parted-binary.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -62,10 +58,10 @@ partition tables.
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m unittest discover -v
 
 %files %{python_files}
-%license COPYING
-%doc AUTHORS NEWS README TODO
+%license LICENSE
+%doc AUTHORS NEWS README.md TODO
 %{python_sitearch}/_ped*.so
 %{python_sitearch}/parted
-%{python_sitearch}/%{srcname}-%{version}-*.egg-info
+%{python_sitearch}/%{srcname}-%{version}*-info
 
 %changelog
