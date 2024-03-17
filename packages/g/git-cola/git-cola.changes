@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Mar 17 17:33:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.6.1:
+  * launchable tags were added to the flatpak app metainfo files.
+  * The Rebase editor (git-cola-sequence-editor) can now add
+    "remarks" to commits. Remarks are simple numbered flags (0-9)
+    that allow you to mark commits. This lets you visually
+    highlight commits to aid you when rebasing and grouping
+    related commits across a large patch series. Remarks can be
+    added to a single commit or to all commits that touch a file.
+    (#1375)
+  * Invalid commit.template configuration is now reported in the
+    Console tool instead of presenting an error traceback dialog
+    via a UsageError exception.
+  * The file system monitor was corrected to catch
+    PermissionError exceptions. (bz #2260155)
+  * If the polib module (e.g. sudo apt install python3-polib) is
+    installed then it will be used instead of the vendored
+    cola.polib module. This makes it easier for distributions to
+    remove the vendored module from the cola namespace. polib is
+    now listed as an install requirement in pyproject.toml. (bz
+    #2264526)
+  * The flatpak metainfo now contains the required developer name
+    field.
+  * The "actions/cache" and "styfle/cancel-workflow-action"
+    github actions were upgraded.
+  * The test suite now uses ruff to validate python code. pylint
+    is no longer used. (#1353)
+
+-------------------------------------------------------------------
 Sat Jan 27 17:39:36 UTC 2024 - Marcin Bajor <marcin.bajor@gmail.com>
 
 - Update to 4.5.0

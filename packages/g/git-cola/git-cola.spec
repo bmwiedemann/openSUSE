@@ -18,7 +18,7 @@
 
 
 Name:           git-cola
-Version:        4.5.0
+Version:        4.6.1
 Release:        0
 Summary:        A GUI for Git
 License:        GPL-2.0-or-later
@@ -57,13 +57,13 @@ interact with Git repositories.
 
 python3 -m build --wheel --no-isolation
 
-%make_build man prefix=%{_prefix} DESTDIR=%{buildroot}  PYLINT=pylint3 PYTHON=python3 PIP=pip
+%make_build man prefix=%{_prefix} DESTDIR=%{buildroot} PYTHON=python3 PIP=pip
 
 %install
 
 pip install --no-deps --force-reinstall  --root=%{buildroot} --prefix="%{_prefix}" dist/*.whl
 
-make install-man prefix=%{_prefix} DESTDIR=%{buildroot}  PYLINT=pylint3 PYTHON=python3 PIP=pip
+make install-man prefix=%{_prefix} DESTDIR=%{buildroot} PYTHON=python3 PIP=pip
 
 %suse_update_desktop_file %{buildroot}%{_datadir}/applications/git-cola.desktop
 %suse_update_desktop_file %{buildroot}%{_datadir}/applications/git-dag.desktop
