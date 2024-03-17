@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 16 16:09:28 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.16.4:
+  https://github.com/ansible/ansible/blob/v2.16.4/changelogs/CHANGELOG-v2.16.rst
+  * Bugfixes
+    - Fix loading vars_plugins in roles (#82239).
+    - expect - fix argument spec error using timeout=null (#80982).
+    - include_vars - fix calculating depth relative to the root and
+      ensure all files are included (#80987).
+    - templating - ensure syntax errors originating from a template
+      being compiled into Python code object result in a failure
+      (#82606)
+
+-------------------------------------------------------------------
 Tue Jan 30 14:18:05 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.16.3:
