@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 16 08:57:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.0:
+  * @Oracking fixed `expect` to support a string as its first
+    argument.  All other functions supported that already.
+
+-------------------------------------------------------------------
 Thu Sep 29 16:37:08 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Release 1.4.0 (August 25, 2022)
@@ -28,14 +35,14 @@ Thu Sep 29 16:37:08 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
     mock.do_something(123)
     mock.do_something(456)
     verify(mock).do_something(arg)
-    assert arg.all_values == [123, 456] 
+    assert arg.all_values == [123, 456]
 
 -------------------------------------------------------------------
 Thu Apr 22 06:00:46 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.2.2:
   * Fix typo in ``spy2`` doc
-- Do not build for Python 3.6, due to no NumPy. 
+- Do not build for Python 3.6, due to no NumPy.
 
 -------------------------------------------------------------------
 Wed Apr  1 07:13:22 UTC 2020 - pgajdos@suse.com
@@ -43,7 +50,7 @@ Wed Apr  1 07:13:22 UTC 2020 - pgajdos@suse.com
 - version update to 1.2.1
   - @nielsvaneck fixed how we can lookup inherited classmethods.
   - Code base now is python 3 compatible. No 2to3 anymore.
-  - Fine tune error messages on unexpected calls or verifications. 
+  - Fine tune error messages on unexpected calls or verifications.
   - @felixonmars fixed a small compatibility issue with python 3.8
   - Mocking properties has become a bit easier. (#26)
 
@@ -103,7 +110,7 @@ Sun Dec  8 16:15:34 UTC 2013 - p.drouand@gmail.com
 - Remove redundant %clean section
 - Adapt setup.py.patch to upstream changes
 - Rename it to respect standard naming conventions
-- Remove python-mockito.rpmlintrc; problem of execution bits have 
+- Remove python-mockito.rpmlintrc; problem of execution bits have
   been fixed by upstream
 
 -------------------------------------------------------------------
