@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2010 Andrew Psaltis <ampsaltis at gmail dot com>
 # Copyright (c) 2011 Andrew Psaltis <ampsaltis at gmail dot com>
 #
@@ -42,7 +42,7 @@
 %bcond_without suse_ocaml_use_rpm_license_macro
 
 Name:           ocaml
-Version:        4.14.1
+Version:        4.14.2
 Release:        0
 Summary:        OCaml Compiler and Programming Environment
 %if %{with suse_ocaml_use_rpm_license_macro}
@@ -59,7 +59,7 @@ Patch0:         ocaml-configure-Allow-user-defined-C-compiler-flags.patch
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
-BuildRequires:  ocaml-rpm-macros >= 20230101
+BuildRequires:  ocaml-rpm-macros >= 20231101
 BuildRequires:  pkgconfig
 Requires:       ncurses-devel
 Requires:       ocaml(runtime) = %version-%release

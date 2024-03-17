@@ -821,4 +821,13 @@ Use SPDX format (http://www.spdx.org/licenses). Where there is no suitable short
     <comment>Prepare for RPM 4.20 (forwarded request 1151366 from dimstar)</comment>
     <requestid>1152158</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>032f91f17631a893ed140a58e4390296</srcmd5>
+    <version>4.14.2</version>
+    <time>1710709836</time>
+    <user>anag+factory</user>
+    <comment>- update to version 4.14.2
+  See included Changes for benefits and breaking changes</comment>
+    <requestid>1158074</requestid>
+  </revision>
 </revisionlist>
