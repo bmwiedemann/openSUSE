@@ -144,4 +144,15 @@
 - Updates for 1.0.1</comment>
     <requestid>1137826</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>87e994540401d85b487b278aa810ac25</srcmd5>
+    <version>1.2.7</version>
+    <time>1710710098</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.7:
+  * Fixing warnings in new pandas version 2.2.1
+  * Remove string encoding for read_por
+  * Fix read in chunks when output is dict</comment>
+    <requestid>1158458</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 16 11:53:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.7:
+  * Fixing warnings in new pandas version 2.2.1
+  * Remove string encoding for read_por
+  * Fix read in chunks when output is dict
+
+-------------------------------------------------------------------
 Tue Jan  9 22:05:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.6:
