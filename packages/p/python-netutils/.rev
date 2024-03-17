@@ -50,4 +50,17 @@
   #122 Fixed encrypt type7</comment>
     <requestid>1134333</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9a0db3877ca76603c20cc493f03b2086</srcmd5>
+    <version>1.7.0</version>
+    <time>1710710019</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.7.0:
+  * Added the ability to hash a value via `hash_data` function.
+  * Added the ability to sort IPs a value via `get_ips_sorted`
+    function.
+  * Added lib_mapper entries for `ruckus_smartzone`, `cisco_xe`,
+    `huawei` and `cisco_xr`.</comment>
+    <requestid>1158305</requestid>
+  </revision>
 </revisionlist>

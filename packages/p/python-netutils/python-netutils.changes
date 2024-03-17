@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 15 21:07:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.0:
+  * Added the ability to hash a value via `hash_data` function.
+  * Added the ability to sort IPs a value via `get_ips_sorted`
+    function.
+  * Added lib_mapper entries for `ruckus_smartzone`, `cisco_xe`,
+    `huawei` and `cisco_xr`.
+
+-------------------------------------------------------------------
 Wed Dec 20 21:45:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.0:
