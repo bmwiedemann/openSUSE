@@ -37,6 +37,7 @@ Group:          Development/Languages/Other
 URL:            https://dlang.org/
 Source:         https://github.com/D-Programming-Language/dmd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source2:        https://github.com/D-Programming-Language/phobos/archive/v%{version}.tar.gz#/phobos-%{version}.tar.gz
+Source3:        https://raw.githubusercontent.com/dlang/tools/master/rdmd.d
 Source9:        dmd.conf
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -149,11 +150,15 @@ pushd dmd/compiler/src
 popd
 %endif
 
+# build extra tool rdmd
+$HOST_DMD -O -release %{_sourcedir}/rdmd.d
+
 %install
 # install files manually since the install script distributed put files all over the place
 # dmd
 install -dm755 %{buildroot}%{_bindir}
 install -Dm755 %{_builddir}/dmd/generated/linux/release/*/dmd %{buildroot}%{_bindir}/dmd
+install -Dm755 %{_builddir}/rdmd %{buildroot}%{_bindir}/rdmd
 
 install -dm755 %{buildroot}%{_sysconfdir}
 install -Dm644 %{_sourcedir}/dmd.conf %{buildroot}%{_sysconfdir}/dmd.conf
@@ -187,6 +192,7 @@ cp -r %{_builddir}/dmd/druntime/import/* %{buildroot}%{_includedir}/dlang/dmd/
 %license LICENSE.txt
 %config(noreplace) %{_sysconfdir}/dmd.conf
 %{_bindir}/dmd
+%{_bindir}/rdmd
 %{_datadir}/dmd
 %{_mandir}/man*/*
 
