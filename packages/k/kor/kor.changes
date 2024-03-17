@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 16 14:00:04 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.3.6:
+  * feat: krew plugin workflow (#214)
+  * fix: when using -n option dont get all namespaces (#215)
+  * feat: add mark as unused label (#212)
+  * Feat: Added version subcommand (#210)
+
+-------------------------------------------------------------------
 Tue Feb 20 20:51:10 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.3.5:
