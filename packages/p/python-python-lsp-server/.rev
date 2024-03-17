@@ -305,4 +305,17 @@
     <comment></comment>
     <requestid>1154296</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>f9470cfec97960801e06b4cb78b8c7ed</srcmd5>
+    <version>1.10.1</version>
+    <time>1710710103</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.10.1:
+  * Issue 529 - Autoimports: sqlite3.OperationalError: database
+    is locked (PR 530 by @last-partizan)
+
+- Update to 1.4.0
+  * Community maintained replacement for</comment>
+    <requestid>1158465</requestid>
+  </revision>
 </revisionlist>

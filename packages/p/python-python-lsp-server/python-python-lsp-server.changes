@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 16 12:52:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10.1:
+  * Issue 529 - Autoimports: sqlite3.OperationalError: database
+    is locked (PR 530 by @last-partizan)
+
+-------------------------------------------------------------------
 Sat Mar  2 10:33:14 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.10.0
@@ -184,7 +191,7 @@ Sat Apr  9 20:44:49 UTC 2022 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Fri Mar 25 12:44:22 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
-- Update to 1.4.0 
+- Update to 1.4.0
   * Support pycodestyle indent-size option
   * Add DiagnosticTag constants from LSP 3.15
   * Drop support for Python 3.6
@@ -271,6 +278,6 @@ Thu Aug  5 20:18:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
 Tue Jul 13 12:36:35 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for version 1.1.0
-  * Community maintained replacement for 
+  * Community maintained replacement for
     python-python-language-server (abandoned by upstream).
   * Required by spyder
