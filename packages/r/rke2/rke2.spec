@@ -20,7 +20,7 @@
 %define binary_name rke2
 
 Name:           rke2
-Version:        1.29.1+rke2r1
+Version:        1.29.2+rke2r1
 Release:        0
 Summary:        Rancher Kubernetes Engine
 License:        Apache-2.0
