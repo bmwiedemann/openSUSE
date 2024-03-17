@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sat Mar 16 16:22:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 61.2:
+  * Security:
+    * Always use URL fetcher for attachments
+  * #2075: Use default value when variable is not defined
+  * #2070: Don’t crash when rendering SVGs with non-text a
+    children
+  * Don’t crash when SVG file can’t be rendered
+  * Documentation:
+  * #2067: Suggest "dnf" instead of "yum" to install Fedora
+    packages
+  * Improve documentation for Windows
+  * Fix required version of TinyCSS2
+  * #1219, #2017: Support var() in shorthand and multiple-value
+    functions
+  * #1986: Support percentages for opacity
+  * #2050: Build executable file for Windows
+  * #2000: Support select fields
+  * #1993: Handle background-attachment: fixed to cover the whole
+    page
+  * #2023, #2022: Allow text-based file objects for HTML and CSS
+    classes
+  * #2014: Remove warnings for PDF/A and PDF/UA compatibility
+  * Bug fixes:
+  * #2052, #1869: Handle attachments for PDF/A documents
+  * #2013, #2051: Apply margin to running tables
+  * #1278, #1884: Draw collapsed borders of running tables
+  * #2029: Fix page counter in non-root absolute boxes
+  * #2043: Fix text-anchor on SVG tspan elements
+  * #1968, #2039: Use cell's border-height to calculate table row
+    height
+  * #2030: Ensure that bounding box is set to invisible text tags
+  * #2040, #2041: Don’t crash on malformed URLs
+  * #2026: Don’t break pages when fixed-height elements don’t
+    overflow page
+  * #2038: Don’t mix original streams when drawing transparent
+    text
+  * #2016: Avoid duplication when breaking out-of-flow boxes
+  * #2012: Don’t crash when CSS properties have no value
+  * #2010, #1287: Fix many corner cases with CSS variables
+  * #1996: Don’t crash when drawing groove/ridge collapsed
+    borders
+  * #1982: Fix SVG markers size, position and drawing
+  * Documentation:
+  * #2021, #2048: Replace non-virtualenv installation
+    instructions with distribution packages
+
+-------------------------------------------------------------------
 Thu Jan 11 11:03:22 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add %{?sle15_python_module_pythons}

@@ -22,28 +22,28 @@
 %global fonttools_min_version  4.0.0
 %global html5lib_min_version   1.1
 %global Pillow_min_version     9.1.0
-%global pypdf_min_version      0.6.0
+%global pypdf_min_version      0.8.0
 %global Pyphen_min_version     0.9.1
 %global tinycss2_min_version   1.1.0
 %global zopfli_min_version     0.1.4
 
 %{?sle15_python_module_pythons}
 Name:           python-weasyprint
-Version:        60.2
+Version:        61.2
 Release:        0
 Summary:        Python module to convert web documents to PDF
 License:        BSD-3-Clause
 URL:            https://github.com/Kozea/WeasyPrint
 Source:         https://files.pythonhosted.org/packages/source/w/weasyprint/weasyprint-%{version}.tar.gz
 Source100:      python-weasyprint-rpmlintrc
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 39.2.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Requires:       libgobject-2_0-0
 Requires:       pango
 Requires:       python-Pillow >= %{Pillow_min_version}
