@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Mar 16 16:29:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.2:
+  * BUG: explicitly forbid destructive edits to the default unit
+    registry
+  * BLD: fix minimal requirement on setuptools_scm
+  * TST: cleanup an unused skip condition
+  * TST: fix usage of legacy numpy.random API in tests
+  * BUG: fix an issue where array functions would raise
+    UnitInconsistencyError when operands' units differ by some
+    dimensionless factor
+  * (NEP 18) Implement and test array functions new in numpy 2.0
+  * BUG: fix compat with numpy dev for np.trapezoid (previously
+    named np.trapz)
+  * BUG: implement missing support for `np.cbrt`
+  * BUG: fix compatibility with numpy 2.0 copy semantics
+  * REL: prepare release 3.0.2
+
+-------------------------------------------------------------------
 Wed Feb 14 21:33:26 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.0.1
@@ -151,7 +170,7 @@ Tue Apr 27 05:38:31 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
   * Add delta_degC and delta_degF units to support temperature difference arithmetic. See PR #152. Thank you to Lee Johnston (@l-johnston on GitHub) for the contribution.
   * Fix an issue where a subsequent load of the unit registry with units that are equal but not identical leads to a crash. See PR #158. Thank you to Matthew Turk (@matthewturk on GitHub) for the initial bug report and fix.
   * Add force unit kip and pressure unit psi. Thank you to P. Talley (@otaithleigh on GitHub) for the contribution. See PR #162.
-  * Fix an issue where arithmetic operations on units defined in different registries and having the conversion defined in one direction would lead to a crash. See PR #164. Thank you to Clément Robert (@neutrinoceros on GitHub) for the initial bug report and fix. 
+  * Fix an issue where arithmetic operations on units defined in different registries and having the conversion defined in one direction would lead to a crash. See PR #164. Thank you to Clément Robert (@neutrinoceros on GitHub) for the initial bug report and fix.
 - Do not build for Python 2, since no longer supported by upstream, and also
   do not build for Python 3.6, due to no NumPy.
 

@@ -122,4 +122,28 @@
     <comment></comment>
     <requestid>1146748</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7cfda18d5d28e41ddded37caa6377b38</srcmd5>
+    <version>3.0.2</version>
+    <time>1710710148</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.2:
+  * BUG: explicitly forbid destructive edits to the default unit
+    registry
+  * BLD: fix minimal requirement on setuptools_scm
+  * TST: cleanup an unused skip condition
+  * TST: fix usage of legacy numpy.random API in tests
+  * BUG: fix an issue where array functions would raise
+    UnitInconsistencyError when operands' units differ by some
+    dimensionless factor
+  * (NEP 18) Implement and test array functions new in numpy 2.0
+  * BUG: fix compat with numpy dev for np.trapezoid (previously
+    named np.trapz)
+  * BUG: implement missing support for `np.cbrt`
+  * BUG: fix compatibility with numpy 2.0 copy semantics
+  * REL: prepare release 3.0.2
+
+  * Fix an issue where arithmetic operations on units defined in different registries and having the conversion defined in one direction would lead to a crash. See PR #164. Thank you to Clément Robert (@neutrinoceros on GitHub) for the initial bug report and fix.</comment>
+    <requestid>1158535</requestid>
+  </revision>
 </revisionlist>

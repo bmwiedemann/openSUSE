@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-unyt
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        A package for handling numpy arrays with units
 License:        BSD-3-Clause
