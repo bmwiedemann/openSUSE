@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 12 11:10:22 UTC 2024 - christophe@krop.fr
+
+- Switch to a GIT snapshot
+- Update to version 2.9.93git.20240312T011912~078a771:
+  * Update README regarding Qt 6 and KF 6
+  * Update changelog to reflect Qt 6 / KF 6 port
+  * Require at least ecm >= 6.0.0
+  * Fix some more compilation errors relating to ECM 5.240
+  * emit -> Q_EMIT
+  * Fix some compilation errors relating to ECM 5.240
+  * Ensure that the Kile icon is shown correctly in Help / About Kile
+  * Fix signal connection problems: QProcess::error -> QProcess::errorOccurred
+
+-------------------------------------------------------------------
 Mon Feb 26 21:53:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Replace okular-devel BuildRequires with 'cmake(Okular5)'

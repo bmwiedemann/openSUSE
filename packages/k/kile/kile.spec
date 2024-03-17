@@ -1,7 +1,7 @@
 #
 # spec file for package kile
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2009 Johannes Engel <jcnengel@googlemail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,48 +17,49 @@
 #
 
 
-%bcond_without lang
+%define kf6_version 6.0.0
+%define qt6_version 6.6.0
+
+%bcond_without released
 Name:           kile
-Version:        2.9.93
+Version:        2.9.94git.20240312T011912~078a771
 Release:        0
 Summary:        A LaTeX Source Editor and TeX Shell
 License:        GPL-2.0-or-later
-Group:          Productivity/Publishing/TeX/Frontends
-URL:            http://kile.sourceforge.net/
-Source:         https://downloads.sourceforge.net/project/kile/unstable/kile-3.0b3/kile-%{version}.tar.bz2
-BuildRequires:  extra-cmake-modules
+URL:            https://apps.kde.org/kile
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  fdupes
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5GuiAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5Init)
-BuildRequires:  cmake(KF5KHtml)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Parts)
-BuildRequires:  cmake(KF5TextEditor)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Okular5)
-BuildRequires:  cmake(Qt5Core) >= 5.7
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Script)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  pkgconfig(poppler-qt5)
+BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextEditor) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Okular6)
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  pkgconfig(poppler-qt6)
 Requires:       konsole-part
 Requires:       okular
 Requires:       texlive-context
 Requires:       texlive-latex
+Requires:       texlive-tex-bin
 Requires:       texlive-xetex
-Requires(post): shared-mime-info
-Requires(postun): shared-mime-info
 Recommends:     ImageMagick
 Recommends:     dblatex
 Recommends:     ghostscript-library
@@ -68,19 +69,17 @@ Recommends:     lilypond
 Recommends:     psutils
 Recommends:     texlive-dvipdfmx
 Recommends:     texlive-dvips
+Recommends:     texlive-ling-macros
 Recommends:     texlive-metapost
 Recommends:     texlive-pdfsync
 Recommends:     texlive-tex4ht
+Recommends:     texlive-tree-dvips
 Recommends:     zip
-Suggests:       aspell
 Suggests:       texlive-doc
 Suggests:       texlive-latex-doc
-# was in Factory for a short while, in version 2.9.92
-Provides:       kile5 = %{version}
-Obsoletes:      kile5 < %{version}
 
 %description
-Kile is a user-friendly TeX/LaTeX editor by KDE.
+Kile is a TeX/LaTeX editor by KDE.
 
 The main features are:
 
@@ -105,48 +104,49 @@ The main features are:
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%if %{with lang}
-  %find_lang %{name} --all-name
-  %{kf5_find_htmldocs}
-%endif
+# Packaged with %%doc
+rm -r %{buildroot}%{_kf6_sharedir}/doc/kile
 
-%suse_update_desktop_file -r org.kde.kile Qt KDE Office WordProcessor
+# Wrong place
+mkdir -p %{buildroot}%{_kf6_debugdir}
+mv %{buildroot}%{_kf6_sysconfdir}/xdg/kile.categories %{buildroot}%{_kf6_debugdir}/
+
+%find_lang %{name} --with-html --all-name
+
 %fdupes %{buildroot}
 
 %files
 %license COPYING*
-%doc README
-%dir %{_kf5_iconsdir}/hicolor/150x150
-%dir %{_kf5_iconsdir}/hicolor/150x150/apps
-%dir %{_kf5_iconsdir}/hicolor/310x310
-%dir %{_kf5_iconsdir}/hicolor/310x310/apps
-%dir %{_kf5_iconsdir}/hicolor/44x44
-%dir %{_kf5_iconsdir}/hicolor/44x44/apps
-%{_kf5_applicationsdir}/org.kde.kile.desktop
-%{_kf5_appstreamdir}/org.kde.kile.appdata.xml
-%{_kf5_bindir}/kile
-%{_kf5_configkcfgdir}/
-%{_kf5_dbusinterfacesdir}/net.sourceforge.kile.main.xml
-%{_kf5_debugdir}/kile.categories
-%{_kf5_htmldir}/en/kile/
-%{_kf5_iconsdir}/hicolor/*/*/*
-%{_kf5_sharedir}/doc/kile/
-%{_kf5_sharedir}/kconf_update/
-%{_kf5_sharedir}/kile/
-%{_kf5_sharedir}/mime/packages/kile.xml
-%{_libdir}/libkdeinit5_kile.so
+%doc README README.cwl kile-remote-control.txt
+%doc %{_kf6_htmldir}/en/kile/
+%{_kf6_applicationsdir}/org.kde.kile.desktop
+%{_kf6_appstreamdir}/org.kde.kile.appdata.xml
+%{_kf6_bindir}/kile
+%{_kf6_configkcfgdir}/kile.kcfg
+%{_kf6_dbusinterfacesdir}/org.kde.kile.main.xml
+%{_kf6_debugdir}/kile.categories
+%dir %{_kf6_iconsdir}/hicolor/150x150
+%dir %{_kf6_iconsdir}/hicolor/150x150/apps
+%dir %{_kf6_iconsdir}/hicolor/310x310
+%dir %{_kf6_iconsdir}/hicolor/310x310/apps
+%dir %{_kf6_iconsdir}/hicolor/44x44
+%dir %{_kf6_iconsdir}/hicolor/44x44/apps
+%{_kf6_iconsdir}/hicolor/*/apps/kile.*
+%{_kf6_sharedir}/kconf_update/*
+%{_kf6_sharedir}/kile/
+%{_kf6_sharedir}/mime/packages/kile.xml
 
-%if %{with lang}
 %files lang -f %{name}.lang
-%endif
+%exclude %{_kf6_htmldir}/en/kile/
 
 %changelog

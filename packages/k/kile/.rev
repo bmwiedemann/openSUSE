@@ -507,4 +507,12 @@ Thi should also go to 12.2 IMHO. Please tell me if you will forward this or if I
 - Replace %make_jobs with %cmake_build.</comment>
     <requestid>1151966</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>62990de397def77d0373abc32365e3c1</srcmd5>
+    <version>2.9.94git.20240312T011912~078a771</version>
+    <time>1710710190</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1158614</requestid>
+  </revision>
 </revisionlist>
