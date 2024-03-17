@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Mar 16 14:51:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.6:
+  * Add OpenTofu
+  * Bump github.com/google/go-containerregistry from 0.19.0 to
+    0.19.1
+
+-------------------------------------------------------------------
+Sat Mar 16 14:49:03 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.5:
+  * update versions of tf / packer / waypoint
+  * Bump alexellis/upload-assets from 0.4.0 to 0.4.1
+
+-------------------------------------------------------------------
+Sat Mar 16 14:30:22 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.4:
+  * PR #1036 Add terraform-docs by @cyberox
+  * PR #1038 Bump golang.org/x/mod from 0.15.0 to 0.16.0 by
+    @dependabot[bot]
+  * PR #1037 Bump golang.org/x/crypto from 0.19.0 to 0.21.0 by
+    @dependabot[bot]
+
+-------------------------------------------------------------------
+Sat Mar 16 14:26:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.3:
+  * PR #1027 Bump golang.org/x/mod from 0.14.0 to 0.15.0 by
+    @dependabot[bot]
+  * PR #992 feat: allow to set default ingressclass by @Jasstkn
+  * PR #1025 Bump github.com/cheggaaa/pb/v3 from 3.1.4 to 3.1.5 by
+    @dependabot[bot]
+  * PR #1028 Bump golang.org/x/crypto from 0.18.0 to 0.19.0 by
+    @dependabot[bot]
+  * PR #1007 change kubectl download site by @YoninL
+  * PR #1022 chore: no need to use fmt.Sprintf by @testwill
+  * PR #1019 Add tflint by @cyberox
+  * PR #1033 feat: add gptscript as cli by @dirien
+
+-------------------------------------------------------------------
 Sat Feb 24 12:57:55 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.11.2:
