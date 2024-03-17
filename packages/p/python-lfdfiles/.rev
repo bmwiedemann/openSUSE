@@ -87,4 +87,14 @@
   * Fix writing contiguous series to TIFF files with</comment>
     <requestid>1134139</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a2037feea06ff9dfb3312abb3cbed63d</srcmd5>
+    <version>2024.3.4</version>
+    <time>1710710078</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.3.4:
+  * Fix decoding 32-bit, 16 windows, 4 channels Spartan6 FBD
+    files (#1).</comment>
+    <requestid>1158393</requestid>
+  </revision>
 </revisionlist>

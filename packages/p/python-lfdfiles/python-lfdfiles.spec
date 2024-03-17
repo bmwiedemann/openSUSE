@@ -1,7 +1,7 @@
 #
 # spec file for package python-lfdfiles
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lfdfiles
-Version:        2023.9.26
+Version:        2024.3.4
 Release:        0
 Summary:        Laboratory for Fluorescence Dynamics (LFD) file formats
 License:        BSD-3-Clause
@@ -43,7 +43,7 @@ Requires:       python-numpy >= 1.15
 Requires:       python-oiffile >= 2020.9.18
 Requires:       python-tifffile >= 2020.9.3
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
