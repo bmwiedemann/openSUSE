@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 16 09:43:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.18:
+  * Fix possible deadlock on pipeline exit (ticket #685).
+  * Fix overflow loading large intervals in C module (ticket #719).
+  * Fix compatibility with musl libc distributions affected
+    by CPython issue #65821 (ticket #725).
+
+-------------------------------------------------------------------
 Mon Jan 15 13:03:50 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use %sle15_python_module_pythons
