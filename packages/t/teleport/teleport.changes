@@ -1,4 +1,274 @@
 -------------------------------------------------------------------
+Sun Mar 17 13:44:52 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 15.1.6:
+  * Added remote port forwarding for Teleport nodes. #39440
+  * Added remote port forwarding for OpenSSH nodes. #39438
+
+-------------------------------------------------------------------
+Sun Mar 17 13:32:06 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 15.1.5:
+  * Improve error messaging when creating resources fails because
+    they already exist or updating resources fails because they
+    were removed. #39395
+  * The audit entry for access_request.search will now truncate the
+    list of roles in the audit UI if it exceeds 80 characters.
+    #39372
+  * Re-enable AWS IMDSv1 fallback due to some EKS clusters having
+    their IMDSv2 hop limit set to 1, leading to IMDSv2 requests
+    failing. Users who wish to keep IMDSv1 fallback disabled can
+    set the AWS_EC2_METADATA_V1_DISABLED environmental variable.
+    #39366
+  * Only allow necessary operations during moderated file transfers
+    and limit in-flight file transfer requests to one per session.
+    #39351
+  * Make the Jira access plugin log Jira errors properly. #39346
+  * Fixed allowing invalid access request start time date to be
+    set. #39322
+  * Teleport Enterprise now attempts to load the license file from
+    the configured data directory if not otherwise specified.
+    #39314
+  * Improve the security for MFA for Admin Actions when used
+    alongside Hardware Key support. #39306
+  * The saml_idp_service_provider spec adds a new preset field that
+    can be used to specify predefined SAML service provider
+    profile. #39277
+  * Fixed a bug that caused some MFA for Admin Action flows to fail
+    instead of retrying: ex: tctl bots add --token=<token>. #39269
+
+-------------------------------------------------------------------
+Sun Mar 17 13:20:04 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 15.1.4:
+  * Raised concurrent connection limits between Teleport Cloud
+    regions and in clusters that use proxy peering. #39233
+  * Improved clean up of system resources during a fast shutdown of
+    Teleport. #39211
+  * Resolved sporadic errors caused by requests fail to comply with
+    Kubernetes API spec by not specifying resource identifiers.
+    #39168
+  * Added a new password change wizard. #39124
+  * Fixed the NumLock and Pause keys for Desktop Access sessions
+    not working. #39095
+
+-------------------------------------------------------------------
+Sun Mar 17 12:52:27 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 15.1.3:
+  * Fix a bug when using automatic updates and the discovery
+    service. The default install script now installs the correct
+    teleport version by querying the version server. #39099
+  * Fix a regression where tsh kube credentials fails to re-login
+    when credentials expire. #39075
+  * TBot now supports --proxy-server for explicitly configuring the
+    Proxy address. We recommend switching to this if you currently
+    specify the address of your Teleport proxy to --auth-server.
+    #39055
+  * Expand the EC2 joining process to include newly created AWS
+    regions. #39051
+  * Added GCP MySQL access IAM Authentication support. #39040
+  * Fixed compatibility of the Teleport service file with older
+    versions of systemd. #39032
+  * Update WebUI database connection instructions. #39027
+  * Teleport Proxy Service now runs a version server by default
+    serving its own version. #39017
+  * Significantly reduced latency of network calls in Teleport
+    Connect. #39012
+  * SPIFFE SVID generation introduced to tbot (experimental).
+    #39011
+  * Adds tsh workload issue command for issuing SVIDs using tsh.
+    #39115
+  * Fixed an issue in SAML IdP entity descriptor generator process,
+    which would fail to generate entity descriptor if the
+    configured Entity ID endpoint would return HTTP status code
+    above 200 and below 400 . #38987
+  * Updated Go to 1.21.8. #38983
+  * Updated electron-builder dependency to address possible
+    arbitrary code execution in the Windows installer of Teleport
+    Connect (CVE-2024-27303). #38964
+  * Fixed an issue where it was possible to skip providing old
+    password when setting a new one. #38962
+  * Added database permission management support for Postgres.
+    #38945
+  * Improved reliability and performance of tbot. #38928
+  * Filter terminated sessions from the tsh sessions ls output.
+    #38887
+  * Make it easier to identify Teleport browser tabs by placing the
+    session information before the cluster name. #38737
+  * The teleport-ent-upgrader package now gracefully restarts the
+    Teleport binary if possible, to avoid cutting off ongoing
+    connections. #3578
+  * Trusted device authentication failures may now include a brief
+    explanation message in the corresponding audit event. #3572
+  * Okta access lists sync will now sync groups without members.
+    #3636
+
+-------------------------------------------------------------------
+Sun Mar 17 12:38:22 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 15.1.2:
+  * Fix a bug when using automatic updates and the discovery
+    service. The default install script now installs the correct
+    teleport version by querying the version server. #39099
+  * Fix a regression where tsh kube credentials fails to re-login
+    when credentials expire. #39075
+  * TBot now supports --proxy-server for explicitly configuring the
+    Proxy address. We recommend switching to this if you currently
+    specify the address of your Teleport proxy to --auth-server.
+    #39055
+  * Expand the EC2 joining process to include newly created AWS
+    regions. #39051
+  * Added GCP MySQL access IAM Authentication support. #39040
+  * Fixed compatibility of the Teleport service file with older
+    versions of systemd. #39032
+  * Update WebUI database connection instructions. #39027
+  * Teleport Proxy Service now runs a version server by default
+    serving its own version. #39017
+  * Significantly reduced latency of network calls in Teleport
+    Connect. #39012
+  * SPIFFE SVID generation introduced to tbot (experimental).
+    #39011
+  * Adds tsh workload issue command for issuing SVIDs using tsh.
+    #39115
+  * Fixed an issue in SAML IdP entity descriptor generator process,
+    which would fail to generate entity descriptor if the
+    configured Entity ID endpoint would return HTTP status code
+    above 200 and below 400 . #38987
+  * Updated Go to 1.21.8. #38983
+  * Updated electron-builder dependency to address possible
+    arbitrary code execution in the Windows installer of Teleport
+    Connect (CVE-2024-27303). #38964
+  * Fixed an issue where it was possible to skip providing old
+    password when setting a new one. #38962
+  * Added database permission management support for Postgres.
+    #38945
+  * Improved reliability and performance of tbot. #38928
+  * Filter terminated sessions from the tsh sessions ls output.
+    #38887
+  * Make it easier to identify Teleport browser tabs by placing the
+    session information before the cluster name. #38737
+  * The teleport-ent-upgrader package now gracefully restarts the
+    Teleport binary if possible, to avoid cutting off ongoing
+    connections. #3578
+  * Trusted device authentication failures may now include a brief
+    explanation message in the corresponding audit event. #3572
+  * Okta access lists sync will now sync groups without members.
+    #3636
+
+-------------------------------------------------------------------
+Sun Mar 17 11:29:44 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 15.1.1:
+  * Fixed panic when an older tsh or proxy changes an access list.
+    #38861
+  * SSH connection resumption now works during graceful upgrades of
+    the Teleport agent. #38842
+  * Fixed an issue with over counting of reported Teleport updater
+    metrics. #38831
+  * Fixed tsh returning "private key policy not met" errors instead
+    of automatically initiating re-login to satisfy the private key
+    policy. #38819
+  * Made graceful shutdown and graceful restart terminate active
+    sessions after 30 hours. #38803
+
+-------------------------------------------------------------------
+Sun Mar 17 09:41:08 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 15.1.0:
+  * New Features
+    - Standalone tbot Docker image
+      We now ship a new container image that contains tbot but
+      omits other Teleport binaries, providing a light-weight
+      option for Machine ID users.
+    - Custom mouse pointers for remote desktop sessions
+      Teleport remote desktop sessions now automatically change the
+      mouse cursor depending on context (when hovering over a link,
+      resizing a window, or editing text, for example).
+    - Synchronization of Okta groups and apps
+      Okta integration now support automatic synchronization of
+      Okta groups and app assignments to Teleport as access lists
+      giving users ability to request access to Okta apps without
+      extra configuration.
+    - EKS auto-discovery in Access Management UI
+      Users going through EKS enrollment flow in Access Management
+      web UI now have an option to enable auto-discovery for EKS
+      clusters.
+  * Other changes
+    - Fixed application access events being overwritten when using
+      DynamoDB as event storage. #38815
+    - Fixed a regression that had reintroduced long freezes for
+      certain actions like "Run as different user". #38805
+    - When teleport is configured to require MFA for admin actions,
+      MFA is required to get certificate authority secrets. Ex:
+      tctl auth export --keys or tctl get
+      cert_authority/host/root.example.com --with-secrets. #38777
+    - Added auto-enrolling capabilities to EKS discover flow in the
+      web UI. #38773
+    - Heavily optimized the Access List page in the UI, speeding
+      things up considerably. #38764
+    - Align DynamoDB BatchWriteItem max items limit. #38763
+    - tbot-distroless image is now published. This contains just
+      the tbot binary and therefore has a smaller image size.
+      #38718
+    - Fixed a regression with Teleport Connect not showing the
+      re-login reason and connection errors when accessing
+      databases, Kube clusters, and apps with an expired cert.
+      #38716
+    - Re-enabled the Windows key and prevents it from sticking or
+      otherwise causing problems when cmd+tab-ing or alt+tab-ing
+      away from the browser during desktop sessions. #38699
+    - Resource limits are now correctly applied to the
+      wait-auth-update initContainer in the teleport-cluster Helm
+      chart. #38692
+    - When teleport is configured to require MFA for admin actions,
+      MFA is required to create, update, or delete trusted
+      clusters. #38690
+    - Fixed error in tctl get users --with-secrets when using SSO.
+      #38663
+    - When device trust is required and MFA is optional, users will
+      need to add their first MFA device from a trusted device.
+      #38657
+    - Temporary files are no longer created during Discover UI EKS
+      cluster enrollment. #38649
+    - When teleport is configured to require MFA for admin actions,
+      MFA is required to get or list tokens with tctl. Ex: tctl
+      tokens ls or tctl get tokens/foo. #38645
+    - Implemented dynamic mouse pointer updates to reflect
+      context-specific actions, e.g. window resizing. #38614
+    - MFA approval is no longer required in the beginning of EKS
+      Discover flow. #38580
+    - Fixed Postgres v16.x compatibility issue preventing multiple
+      connections for auto-provisioned users. #38543
+    - Fixed incorrect color of resource cards after changing the
+      theme in Web UI and Connect. #38537
+    - Updated the dialog for adding new authentication methods in
+      the account settings screen. #38535
+    - Displays review dates for access lists in dates, not
+      remaining hours in tsh. #38525
+    - Ensure that tsh continues to function if one of its profiles
+      is invalid. #38514
+    - Fixed logging output for teleport configure ... commands.
+      #38508
+    - Fixed tsh/WebAuthn.dll panic on Windows Server 2019. #38490
+    - Fixes an issue that prevented the Web UI from properly
+      displaying the hostname of servers in leaf clusters. #38469
+    - Added ssh_service.enhanced_recording.root_path configuration
+      option to change the cgroup slice path used by the agent.
+      #38394
+    - Fixed a bug that could cause expired SSH servers from
+      appearing in the Web UI until the Proxy is restarted. #38310
+    - Desktops can now be configured to use the same screen
+      resolution for all sessions. #38307
+    - The maximum duration for an access request is now 14 days,
+      the okta-requester role has been added which takes advantage
+      of this. #38224
+    - Added TLS routing native WebSocket connection upgrade
+      support. #38108
+    - Fixed a bug allowing the operator to delete resource it does
+      not own. #37750
+
+-------------------------------------------------------------------
 Sun Feb 25 17:46:00 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 15.0.2:
