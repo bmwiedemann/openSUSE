@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Sat Mar 16 16:23:02 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.9.0:
+  * Add config options for Autoclose and AutocloseTimeout (#466)
+  * Bump actions/cache from 4.0.0 to 4.0.1 (#456)
+  * Bump github.com/go-openapi/strfmt from 0.22.0 to 0.22.2 (#464)
+  * Update to use go1.22 and ci udpates (#465)
+  * Enable autoclose for sigstore confirmation page. (#455)
+  * CI updates and fix lints (#461)
+  * Remove GITSIGN_LOG env variable. (#463)
+  * Run e2e Go tests first. (#462)
+  * Add go-git based signer implementation. (#454)
+  * Bump github.com/sigstore/protobuf-specs from 0.2.1 to 0.3.0
+    (#453)
+  * Bump golangci/golangci-lint-action from 3.7.0 to 4.0.0 (#450)
+  * Bump golang.org/x/oauth2 from 0.16.0 to 0.17.0 (#449)
+  * Add GITSIGN_TOKEN_PROVIDER docs (#447)
+  * Add tokenProvider configuration for forcing OIDC providers.
+    (#446)
+- BuildRequire go1.22
+
+-------------------------------------------------------------------
+Thu Feb 08 17:57:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.8.1:
+  * Bump github.com/sigstore/rekor from 1.3.4 to 1.3.5 (#443)
+  * Bump sigstore/cosign-installer from 3.3.0 to 3.4.0 (#444)
+  * Bump github.com/sigstore/cosign/v2 from 2.2.2 to 2.2.3 (#442)
+  * Bump anchore/sbom-action from 0.15.5 to 0.15.8 (#445)
+  * Bump anchore/sbom-action from 0.15.4 to 0.15.5 (#441)
+  * Bump github.com/go-openapi/swag from 0.22.7 to 0.22.9 (#440)
+  * Bump github.com/go-openapi/runtime from 0.26.2 to 0.27.1 (#439)
+  * Bump github.com/sigstore/sigstore from 1.8.0 to 1.8.1 (#438)
+  * Bump anchore/sbom-action from 0.15.3 to 0.15.4 (#437)
+  * Bump actions/cache from 3.3.3 to 4.0.0 (#436)
+  * Bump anchore/sbom-action from 0.15.2 to 0.15.3 (#435)
+  * Bump actions/cache from 3.3.2 to 3.3.3 (#434)
+  * Bump golang.org/x/oauth2 from 0.15.0 to 0.16.0 (#433)
+  * Bump github.com/cloudflare/circl from 1.3.5 to 1.3.7 (#431)
+  * Bump anchore/sbom-action from 0.15.1 to 0.15.2 (#430)
+  * Bump github.com/go-openapi/strfmt from 0.21.10 to 0.22.0 (#428)
+  * Bump github.com/go-openapi/swag from 0.22.6 to 0.22.7 (#429)
+  * Bump github.com/sigstore/sigstore from 1.7.6 to 1.8.0 (#424)
+  * Bump github.com/go-openapi/swag from 0.22.5 to 0.22.6 (#425)
+  * Bump google.golang.org/protobuf from 1.31.0 to 1.32.0 (#427)
+  * Bump golang.org/x/crypto from 0.16.0 to 0.17.0 (#423)
+  * Bump github.com/go-openapi/strfmt from 0.21.9 to 0.21.10 (#422)
+  * Bump github.com/go-openapi/swag from 0.22.4 to 0.22.5 (#421)
+  * Bump sigstore/cosign-installer from 3.2.0 to 3.3.0 (#420)
+  * Bump github.com/go-openapi/runtime from 0.26.0 to 0.26.2 (#414)
+  * Bump github.com/sigstore/cosign/v2 from 2.2.1 to 2.2.2 (#416)
+  * Bump actions/setup-go from 4.1.0 to 5.0.0 (#412)
+  * Bump anchore/sbom-action from 0.15.0 to 0.15.1 (#413)
+  * Bump github.com/sigstore/sigstore from 1.7.5 to 1.7.6 (#417)
+  * Bump github.com/go-git/go-git/v5 from 5.10.1 to 5.11.0 (#418)
+  * Bump github.com/go-openapi/strfmt from 0.21.8 to 0.21.9 (#419)
+  * Bump github.com/coreos/go-oidc/v3 from 3.8.0 to 3.9.0 (#415)
+  * Bump github.com/go-openapi/strfmt from 0.21.7 to 0.21.8 (#410)
+  * Bump github.com/sigstore/rekor from 1.3.3 to 1.3.4 (#409)
+  * Bump github.com/coreos/go-oidc/v3 from 3.7.0 to 3.8.0 (#408)
+  * Bump golang.org/x/oauth2 from 0.14.0 to 0.15.0 (#406)
+  * Bump github.com/go-git/go-git/v5 from 5.10.0 to 5.10.1 (#407)
+  * Bump anchore/sbom-action from 0.14.3 to 0.15.0 (#405)
+  * Bump github.com/go-jose/go-jose/v3 from 3.0.0 to 3.0.1 (#404)
+  * Bump sigstore/cosign-installer from 3.1.2 to 3.2.0 (#401)
+  * Bump golang.org/x/oauth2 from 0.13.0 to 0.14.0 (#403)
+
+-------------------------------------------------------------------
 Fri Nov 10 06:01:34 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.8.0:

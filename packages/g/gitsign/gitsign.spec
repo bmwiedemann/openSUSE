@@ -1,7 +1,7 @@
 #
 # spec file for package gitsign
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,14 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           gitsign
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        Keyless Git signing using Sigstore
 License:        Apache-2.0
 URL:            https://github.com/sigstore/gitsign
 Source:         gitsign-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.20
+BuildRequires:  go >= 1.22
 
 %description
 Keyless Git signing with Sigstore!
