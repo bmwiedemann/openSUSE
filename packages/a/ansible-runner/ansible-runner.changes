@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 16 14:25:23 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.3.6:
+  * Untag instead of force remove image for podman. This makes the
+    |worker cleanup| subcommand behave similarly with either docker
+    or podman.
+    (#1342 <https://github.com/ansible/ansible-runner/pull/1342>)
+
+-------------------------------------------------------------------
 Fri Mar  8 17:20:13 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - ignore two more flaky tests
