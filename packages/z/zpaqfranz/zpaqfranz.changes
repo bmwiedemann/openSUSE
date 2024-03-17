@@ -1,11 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 17 09:45:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 59.2:
+  * Some minor "things"
+
+-------------------------------------------------------------------
 Sun Feb 18 10:31:56 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 59.1:
   This new build is of a new branch, includes several new features to be tested, and may therefore contain bugs.
   * -chunk option to create multipart fixed-size archives
   * -fast: store inside zpaq archive a "kind of" file list (to be developed)
-  * ADS filelists (NTFS alternate data stream) 
+  * ADS filelists (NTFS alternate data stream)
   * Getting password from console is changed, now should be run... everywhere
   * Colors on Windows
   * Smarter debug

@@ -17,7 +17,7 @@
 
 
 Name:           zpaqfranz
-Version:        59.1
+Version:        59.2
 Release:        0
 Summary:        A journaling, incremental, deduplicating archiver
 License:        MIT AND SUSE-Public-Domain
