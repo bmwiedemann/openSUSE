@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Mar 16 14:13:14 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.174.0:
+  * Fix typo in publish-release.yaml
+  * Add release notes for v0.174.0
+  * Rename release workflows
+  * Inline script files in publish release workflows
+  * Replace make build-all with goreleaser action
+  * Remove goreleaser from build deps
+  * Fix EFA network interface device index assignment
+  * Update dependabot version updates frequency
+  * Bump peter-evans/create-pull-request to fix error in GH API
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
+Sat Mar 16 14:02:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.173.0:
+  * Add release notes for v0.173.0
+  * Use eksctl-bot token for release draft PR (#7629)
+  * Remove dependabot from contributors
+  * Fix caching credentials with assummed role MFA session
+  * Add profile flag support for get and delete access entry
+  * Bump github.com/cloudflare/circl from 1.3.3 to 1.3.7 (#7591)
+  * Update docs with Ubuntu 20.04 supported in EKS <= 1.29 (#7618)
+  * Remove inline ELB and CloudWatch policies from Cluster Role
+    (#7603)
+  * Automate PR with release notes draft
+  * Make EKS 1.29 default
+  * Update dependencies
+  * Fix generate-internal-groups.sh permission
+  * Bump dependencies for Dependabot alerts
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Sat Feb 24 09:19:56 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.172.0:
