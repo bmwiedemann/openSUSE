@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytoolconfig
-Version:        1.2.6
+Version:        1.3.1
 Release:        0
 Summary:        Python tool configuration
 License:        LGPL-3.0-or-later
 URL:            https://github.com/bagel897/pytoolconfig
 Source:         https://files.pythonhosted.org/packages/source/p/pytoolconfig/pytoolconfig-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module packaging >= 22}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module packaging >= 23.2}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module tomli >= 2.0.1 if %python-base < 3.11}
@@ -41,11 +41,11 @@ Requires:       python-tomli >= 2.0.1
 Requires:       python-typing-extensions >= 4.4.0
 %endif
 # SECTION test
-BuildRequires:  %{python_module Sphinx >= 4.5.0}
-BuildRequires:  %{python_module platformdirs > 1.4.4}
-BuildRequires:  %{python_module pydantic >= 1.7.4}
+BuildRequires:  %{python_module Sphinx >= 7.1.2}
+BuildRequires:  %{python_module platformdirs >= 3.11.0 }
+BuildRequires:  %{python_module pydantic >= 2.5.3}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module tabulate >= 0.8.9}
+BuildRequires:  %{python_module tabulate >= 0.9.0}
 # /SECTION
 %python_subpackages
 
@@ -57,7 +57,7 @@ such as black and rope and add support for a pyproject.toml configuration file.
 
 %package global
 Summary:        [global] extra for %{python_flavor}-pytoolconfig
-Requires:       python-platformdirs >= 1.4.4
+Requires:       python-platformdirs >= 3.11.0
 Requires:       python-pytoolconfig = %{version}
 
 %description global
@@ -65,7 +65,7 @@ Python Tool Configuration - [global] extra
 
 %package validation
 Summary:        [validation] extra for %{python_flavor}-pytoolconfig
-Requires:       python-pydantic >= 1.7.4
+Requires:       python-pydantic >= 2.5.3
 Requires:       python-pytoolconfig = %{version}
 
 %description validation
