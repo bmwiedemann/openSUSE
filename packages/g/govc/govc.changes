@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Mar 16 16:47:13 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.36.1:
+  * chore: Update version.go for v0.36.1
+  * Add support for SHA256 thumbprint based vCenter authentication
+  * fix: lookup client to use envoy sidecar url if enabled
+
+-------------------------------------------------------------------
+Sat Mar 16 16:44:25 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.36.0:
+  * chore: Update version.go for v0.36.0
+  * Updating CONTRIBUTORS
+  * fix: vcsim Fetch method causes runtime panic when property is
+    not set
+  * Add APIs for vLCM enablement on a cluster and base ESXi image
+    selection
+  * chore: bump Go versions
+  * build(deps): bump github.com/stretchr/testify from 1.8.4 to
+    1.9.0
+  * Add API for vLCM - offline depots and cluster baseline images
+  * chore: Better support for ESXi & HW versions
+  * vcsim: Enhanced sim support for upgrade VM
+  * fix: Update summary.config.hwVersion in simulator
+  * test fixes
+  * fix: govc: use session KeepAlive in library.export command
+  * Add service locator to CNS RelocateVolume spec
+  * Add  "AggregatedSnapshotCapacityInMb" to
+    CnsSnapshotCreateResult and CnsSnapshotDeleteResult.
+
+-------------------------------------------------------------------
 Mon Feb 12 19:54:57 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.35.0:
