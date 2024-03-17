@@ -1379,4 +1379,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1145981</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>87ea54f801a4f46b9103ec58ec8ce0b4</srcmd5>
+    <version>1.17.0</version>
+    <time>1710710043</time>
+    <user>anag+factory</user>
+    <comment>- Add xpadneo recommends to support Xbox One/Series wireless controllers
+</comment>
+    <requestid>1158335</requestid>
+  </revision>
 </revisionlist>

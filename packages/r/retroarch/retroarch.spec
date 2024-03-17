@@ -74,6 +74,9 @@ BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libswscale)
 %endif
 
+# Xbox One/Series controller wireless driver
+Recommends:     xpadneo
+
 %description
 RetroArch is a modular multi-system emulator system that is designed to be
 fast, lightweight, and portable. It has features few other emulators frontends
