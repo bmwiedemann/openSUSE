@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Fri Mar 15 14:29:16 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 6.7
+
+  + New Features
+
+    * JSON templates can now use structured diffstat data
+    * Support rhg status --rev --rev
+    * The index for REVLOGv1 now has a Rust implementation
+    * Improved `hg censor`'s output
+    * censor: add a command flag to skip the head checks
+    * censor: accept multiple revision in a single call
+    * usage: add a `usage.repository-role` config
+    * branchmap: use mmap for faster revbranchcache loading
+    * crecord: enable search hotkeys (issue6834)
+    * hg-core: separate timestamp and extra methods
+    * annotate: limit output to range of lines
+    * unbundle: faster computation of changed heads
+    * Large improvements of some of the phases code (23950e39281f)
+    * rust-filepatterns: export glob_to_re function
+
+  + New Experimental Features 
+
+    * Introduce `hg admin::chainsaw-update` for automation and *advanced* users
+
+  + Bug Fixes 
+
+    * templatekw: fix inconsistency of diffstat with diff.merge
+    * The endless stream of Python 3 cleanups continues
+    * Improved setup.py robustness
+    * Improved test suite robustness
+    * add: don't attempt to add back removed files unless explicitly listed
+    * statprof: handle `lineno == None` in more cases
+    * rust: fix cargo doc for hg-cpython
+    * rust-python-index: don't panic on a corrupted index when calling 
+      from Python
+    * debugindexstats: handle the lack of Rust support better
+    * matchers: use correct method for finding index in vector
+    * narrow: strip trailing `/` from manifest dir before matching it
+    * cext: fix potential memory leaks of list items appended 
+      with `PyList_Append`
+    * doc: document that labels must have a dot in them to have an effect
+    * debugformat: fix formatting for compression level
+    * obsutil: sort metadata before comparing in geteffectflag()
+    * crecord: drop calls to `curses.endwin()`
+    * rust-index: don't use mutable borrow for head-diff computation
+    * rust-index: don't use mutable borrow to computed filtered heads
+
+  + Backwards Compatibility Changes
+
+    Users of the Rust extensions and/or `rhg` should be aware that the new Rust
+    index can result in a performance degradation for push/pull on repositories
+    *not* using `persistent-nodemap` 
+    (see `hg help config.format.use-persistent-nodemap`).
+
+    If this is something that matters to you, please reach out to us as this 
+    is not an insurmountable obstacle. This is a choice base on the assumption 
+    that there are few people in this situation and our time should be spent 
+    on more pressing matters.
+
+  + Internal API Changes
+
+    * 62913:498017baa34b "cleanup: remove some code scheduled to be removed 
+      after 5.9"
+    * 62914:88ef80210d67 "cleanup: drop `dirstate.is_changing_parent` 
+      deprecated since 6.5"
+    * 62915:591845f89ada "cleanup: drop `path.pushloc` deprecated since 6.5"
+    * 62916:d8f65fc72e7b "cleanup: drop deprecated config attribute 
+      on the revlog class"
+    * 62917:5c9c41273367 "cleanup: turn `pathsuboption` deprecation warning 
+      into an error"
+    * 62918:7b837fabc990 "cleanup: turn `wrappedfunction` deprecation warning 
+      into an error"
+    * 62919:eda075d7b2ac "cleanup: turn `wrapfunction` deprecation warning 
+      into an error"
+    * 62920:c845479fc64d "cleanup: drop the `bytes` compatibility 
+      for attribute related function"
+    * 63464:dcaa2df1f688 "changelog: never inline changelog"
+    * 63465:a93e52f0b6ff "changelog: disallow delayed write on inline 
+      changesets"
+    * 63825:79cd29d598af "dirstate: make the `transaction` argument 
+      of `setbranch` mandatory"
+
+  + Miscellaneous 
+
+    * perf: support --template on perf::phases
+    * perf: add a --as-push option to perf::unbundle
+    * debug: add a debug::unbundle command that simulate the unbundle 
+      from a push
+    * Lots of refactorings to prepare for performance improvements and remove 
+      tech debt
+
+-------------------------------------------------------------------
 Fri Feb 23 10:18:41 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.
