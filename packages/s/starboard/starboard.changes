@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Mar 17 13:39:43 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.20:
+  * fix: failure in goreleaser (#1390)
+  * fix: goreleaser pipeline failure (#1389)
+  * chore: remove cleanup action (#1388)
+  * chore: remove release pipeline cache (#1387)
+  * chore: remove release pipeline cache (#1386)
+  * chore: remove release pipeline cache (#1385)
+  * fix: release pipeline failure (#1384)
+  * release: prepare v0.15.20 (#1383)
+  * chore: add alpine based fips image (#1381)
+  * chore: update go version to 1.21 (#1380)
+  * chore: Add ubi9 images for starboard-operator (#1379)
+
+-------------------------------------------------------------------
+Sun Mar 17 13:37:21 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.19:
+  * release: prepare v0.15.19 (#1377)
+  * fix: Mark old revision configaudit report for deletion (#1376)
+
+-------------------------------------------------------------------
 Thu Dec 07 09:33:31 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.15.18:
