@@ -21,9 +21,11 @@ Version:        0.2.3
 Release:        0
 Summary:        A NapiProjekt client
 # libmaia and qt-maybe are BSD-2-Clause and BSD-3-Clause respectively
-License:        GPL-2.0-or-later AND BSD-2-Clause AND BSD-3-Clause
+License:        BSD-2-Clause AND GPL-2.0-or-later AND BSD-3-Clause
 URL:            https://qnapi.github.io/
 Source0:        https://github.com/QNapi/qnapi/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source1:        qnapi-download.desktop
+Source2:        qnapi-scan.desktop
 Patch0:         qnapi-libmaia.patch
 # PATCH-FIX-UPSTREAM qnapi-Qt511.patch
 Patch1:         qnapi-Qt511.patch
@@ -75,12 +77,12 @@ sed -i 's|doc.path = $${INSTALL_PREFIX}/share/doc/qnapi|doc.path = $${INSTALL_PR
 
 %install
 make INSTALL_ROOT=%{buildroot} install %{?_smp_mflags}
-# Add KDE4 service menu
-install -m 644 -D doc/qnapi-download.desktop %{buildroot}%{_datadir}/kde4/services/ServiceMenus/qnapi-download.desktop
-install -m 644 -D doc/qnapi-scan.desktop %{buildroot}%{_datadir}/kde4/services/ServiceMenus/qnapi-scan.desktop
 # Add Plasma 5 service menu
 install -m 644 -D doc/qnapi-download.desktop %{buildroot}%{_datadir}/kservices5/ServiceMenus/qnapi-download.desktop
 install -m 644 -D doc/qnapi-scan.desktop %{buildroot}%{_datadir}/kservices5/ServiceMenus/qnapi-scan.desktop
+# Add Plasma 6 dolphin service menu
+install -m 644 -D %{SOURCE1} %{buildroot}%{_datadir}/kio/servicemenus/qnapi-download.desktop
+install -m 644 -D %{SOURCE2} %{buildroot}%{_datadir}/kio/servicemenus/qnapi-scan.desktop
 
 # Fix for "wrong-file-end-of-line-encoding" doc/ChangeLog file
 sed -i 's/\r//' doc/ChangeLog
@@ -100,14 +102,13 @@ rm %{buildroot}%{_defaultdocdir}/%{name}/LICENSE*
 %attr(644,root,root) %{_mandir}/man1/*
 %{_mandir}/it/man1/qnapi.1%{?ext_man}
 %{_mandir}/pl/man1/qnapi.1%{?ext_man}
-%dir %{_datadir}/kde4
-%dir %{_datadir}/kde4/services
-%dir %{_datadir}/kde4/services/ServiceMenus
-%{_datadir}/kde4/services/ServiceMenus/qnapi-download.desktop
-%{_datadir}/kde4/services/ServiceMenus/qnapi-scan.desktop
 %dir %{_datadir}/kservices5
 %dir %{_datadir}/kservices5/ServiceMenus
 %{_datadir}/kservices5/ServiceMenus/qnapi-download.desktop
 %{_datadir}/kservices5/ServiceMenus/qnapi-scan.desktop
+%dir %{_datadir}/kio
+%dir %{_datadir}/kio/servicemenus
+%{_datadir}/kio/servicemenus/qnapi-scan.desktop
+%{_datadir}/kio/servicemenus/qnapi-download.desktop
 
 %changelog

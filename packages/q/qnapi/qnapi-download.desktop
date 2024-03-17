@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Service
+Actions=QNapiDownload;
+Icon=qnapi-48
+MimeType=video/x-msvideo;video/x-ms-asf;video/mpeg;video/x-ms-wmv;video/mp4;video/quicktime;video/x-theora;video/x-matroska;video/3gpp;application/vnd.rn-realmedia;application/vnd.rn-realmedia-vbr
+#X-KDE-ServiceTypes=KonqPopupMenu/Plugin
+
+[Desktop Action QNapiDownload]
+Name=Download subtitles with QNapi
+Name[it_IT]=Scarica sottotitoli con QNapi
+Name[pl_PL]=Pobierz napisy do filmu z QNapi
+Exec=qnapi %F
+Icon=qnapi-48

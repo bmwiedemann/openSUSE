@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Service
+Actions=QNapiScan
+MimeType=inode/directory;
+
+[Desktop Action QNapiScan]
+Name=Scan directory and download subtitles
+Name[it_IT]=Scansiona cartella e scarica sottotitoli
+Name[pl_PL]=Przeskanuj katalog i pobierz napisy
+Exec=qnapi %U
+Icon=qnapi-48
