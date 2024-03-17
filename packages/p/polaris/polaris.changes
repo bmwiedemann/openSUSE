@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Mar 15 21:54:48 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 9.0.1:
+  * Fix comments handling in addOrReplaceValue function (#1039)
+
+-------------------------------------------------------------------
+Fri Mar 15 21:52:40 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 9.0.0:
+  * FWI-5820 - remove packr in favor of go:embed (#1035)
+  * FWI-5804 - expose issue fixer and mutations in the library
+    (#1032)
+
+-------------------------------------------------------------------
+Fri Mar 15 21:48:15 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 8.5.6:
+  * Fix trying to list cluster-level resources (#1004)
+  * Bump github.com/spf13/cobra from 1.7.0 to 1.8.0 (#1024)
+  * Bump k8s.io/client-go from 0.27.3 to 0.29.0 (#1021)
+
+-------------------------------------------------------------------
 Wed Feb 14 19:59:13 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 8.5.5:
@@ -354,7 +376,7 @@ Wed Jan 05 18:27:12 UTC 2022 - kastl@b1-systems.de
 Wed Jan  5 18:26:31 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - Update to version 4.0.9:
-  * 195619f empty commit 
+  * 195619f empty commit
 
 -------------------------------------------------------------------
 Wed Jan 05 17:48:29 UTC 2022 - kastl@b1-systems.de
