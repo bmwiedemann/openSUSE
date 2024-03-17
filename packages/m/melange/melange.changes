@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sun Mar 17 08:04:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.9:
+  * build(deps): bump google.golang.org/api from 0.166.0 to 0.168.0
+  * build(deps): bump golang.org/x/sys from 0.17.0 to 0.18.0
+  * build(deps): bump dagger.io/dagger from 0.9.10 to 0.10.1
+  * Fix the bug in dropping the suffix.
+  * Drop WaitDelay from bubblewrap
+  * build(deps): bump actions/download-artifact from 4.1.2 to 4.1.4
+  * build(deps): bump github.com/stretchr/testify from 1.8.4 to
+    1.9.0
+  * build(deps): bump cloud.google.com/go/storage from 1.38.0 to
+    1.39.0
+
+-------------------------------------------------------------------
+Sun Mar 17 08:00:25 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.8:
+  * Update pombump.yaml
+
+-------------------------------------------------------------------
+Sun Mar 17 07:51:04 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.7:
+  * Rename the default bump file name.
+
+-------------------------------------------------------------------
+Sun Mar 17 07:45:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.6:
+  * Add ${{cross.triplet.rust.[glibc,musl]}}
+  * Add pombump pipeline.
+
+-------------------------------------------------------------------
+Sun Mar 17 07:35:28 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.5:
+  * Fix resource usage in melange
+  * Fix job control with interactive bubblewrap
+  * build(deps): bump github.com/chainguard-dev/yam from 0.0.1 to
+    0.0.2
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/stdout/stdouttrace
+  * build(deps): bump go.opentelemetry.io/otel/sdk from 1.23.1 to
+    1.24.0
+  * build(deps): bump cloud.google.com/go/storage from 1.37.0 to
+    1.38.0
+  * Bump apko
+  * Fix typo in error message
+  * build(deps): bump actions/upload-artifact from 4.3.0 to 4.3.1
+  * build(deps): bump actions/download-artifact from 4.1.1 to 4.1.2
+  * build(deps): bump golangci/golangci-lint-action from 3.7.0 to
+    4.0.0
+
+-------------------------------------------------------------------
 Sat Feb 24 09:01:37 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.6.4:
