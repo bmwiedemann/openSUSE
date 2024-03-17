@@ -1,4 +1,122 @@
 -------------------------------------------------------------------
+Sat Mar 16 17:26:03 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- major update to 1.21.0:
+  https://istio.io/latest/news/releases/1.21.x/announcing-1.21/
+  https://istio.io/latest/news/releases/1.21.x/announcing-1.21/change-notes/
+  istioctl-related changes:
+  * Improved injector list to exclude ambient namespaces.
+  * Improved bug-report performance by reducing the amount of calls
+    to the k8s API. The pod/node details included in the report
+    will look different, but contain the same information.
+  * Improved istioctl bug-report to sort gathered events by
+    creation date.
+  * Updated verify-install to not require a IstioOperator file,
+    since it is now removed from the installation process.
+  * Added support for deleting multiple waypoints at once via
+    istioctl experimental waypoint delete <waypoint1> <waypoint2>
+    ....
+  * Added the --all flag to istioctl experimental waypoint delete
+    to delete all waypoint resources in a given namespace.
+  * Added an analyzer to warn users if they set the selector field
+    instead of the targetRef field for specific Istio resources,
+    which will cause the resource to be ineffective. (Issue #48273)
+  * Added message IST0167 to warn users that policies, such as
+    Sidecar, will have no impact when applied to ambient
+    namespaces. (Issue #48105)
+  * Added bootstrap summary to all config dumps’ summary.
+  * Added completion for Kubernetes pods for some commands that can
+    select pods, such as istioctl proxy-status <pod>.
+  * Added --wait option to the istioctl experimental waypoint apply
+    command. (Issue #46297)
+  * Added path_separated_prefix to the MATCH column in the output
+    of proxy-config routes command.
+  * Fixed an issue where sometimes control plane revisions and
+    proxy versions were not obtained in the bug report.
+  * Fixed an issue where istioctl tag list command didn’t accept
+    --output flag. (Issue #47696)
+  * Fixed an issue where the default namespace of Envoy and proxy
+    dashboard command was not set to the actual default namespace.
+  * Fixed an issue where the IST0158 message was incorrectly
+    reported when the imageType field was set to distroless in mesh
+    config. (Issue #47964)
+  * Fixed an issue where istioctl experimental version has no proxy
+    info shown.
+  * Fixed an issue where the IST0158 message was incorrectly
+    reported when the imageType field was set by the ProxyConfig
+    resource, or the resource annotation proxy.istio.io/config.
+  * Fixed an issue where proxy-config ecds didn’t show all of
+    EcdsConfigDump.
+  * Fixed injector list having duplicated namespaces shown for the
+    same injector hook.
+  * Fixed analyze not working correctly when analyzing files
+    containing resources that already exist in the cluster. (Issue
+    #44844)
+  * Fixed analyze where it was reporting errors for empty files.
+    (Issue #45653)
+  * Fixed an issue where the External Control Plane Analyzer was
+    not working in some remote control plane setups.
+  * Fixed an issue where istioctl precheck inaccurately reports the
+    IST0141 message related to resource permissions. (Issue #49379)
+  * Removed the --rps-limit flag for istioctl bug-report and added
+    the --rq-concurrency flag. The bug reporter will now limit
+    request concurrency instead of limiting request rate to the
+    Kube API.
+
+-------------------------------------------------------------------
+Sat Mar 16 17:07:28 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.20.4:
+  https://istio.io/latest/news/releases/1.20.x/announcing-1.20.4/
+  * Added an environment variable COMPLIANCE_POLICY to Istio
+    components for enforcing TLS restriction for compliance with
+    FIPS. When set to fips-140-2 on the Istiod container, the Istio
+    Proxy container, and all other Istio components, the TLS
+    version is restricted to v1.2. The cipher suites are limited to
+    a subset of ECDHE-ECDSA-AES128-GCM-SHA256,
+    ECDHE-RSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384,
+    ECDHE-RSA-AES256-GCM-SHA384, and ECDH curves to P-256.
+    These restrictions apply on the following data paths:
+      - mTLS communication between Envoy proxies;
+      - regular TLS on the downstream and the upstream of Envoy
+        proxies (e.g. gateway);
+      - Google gRPC side requests from Envoy proxies (e.g.
+        Stackdriver extensions);
+      - Istiod xDS server;
+      - Istiod injection and validation webhook servers.
+    The restrictions are not applied on the following data paths:
+      - Istiod to Kubernetes API server;
+      - JWK fetch from Istiod;
+      - Wasm image and URL fetch from Istio Proxy containers;
+      - ztunnel.
+    Note that Istio injector will propagate the value of
+    COMPLIANCE_POLICY to the injected proxy container, when set.
+    (Issue #49081)
+  * Fixed an issue where the local client contained incorrect
+    entries in the local DNS name table. (Issue #47340)
+  * Fixed a bug that made PeerAuthentication too restrictive in
+    ambient mode.
+  * Fixed a bug where VirtualService containing wildcard hosts that
+    aren’t present in the service registry are ignored. (Issue
+    #49364)
+  * Fixed an issue where istioctl precheck inaccurately reports the
+    IST0141 message related to resource permissions. (Issue #49379)
+  * Fixed a bug for IPv6 only clusters that prevented
+    ServiceEntry-based listeners from having correct SNI matches.
+    (Issue #49476)
+  * Fixed a bug when there is more than one service with the same
+    host name within the same namespace, a STRICT_DNS cluster
+    without endpoints error could occur. (Issue #49489)
+  * Fixed an issue that when using a delegate in a VirtualService,
+    the effective VirtualService may not be consistent with
+    expectations due to a sorting error. (Issue #49539)
+  * Fixed a bug where specifying a URI regex .* match within a
+    VirtualService HTTP route did not short-circuit the subsequent
+    HTTP routes.
+  * Fixed an issue where Endpoint and Service in the istiod-remote
+    chart did not respect the revision value. (Issue #47552)
+
+-------------------------------------------------------------------
 Fri Feb  9 19:19:21 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.20.3:
