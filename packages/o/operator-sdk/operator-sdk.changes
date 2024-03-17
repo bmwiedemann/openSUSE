@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Mar 15 21:59:22 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.34.1:
+  * (helm/v1) Fix an issue that multi-arch images cannot be built
+    from the project Makefile. (#6661
+    <https://github.com/operator-framework/operator-sdk/pull/6661>)
+
+-------------------------------------------------------------------
+Fri Mar 15 21:52:37 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.34.0:
+  * Bump ansible operator plugin version to 1.34.1 (#6685)
+  * docs: add note about chainsaw (#6675)
+  * rapid reset remediation (#6664)
+  * Bump go-git (#6663)
+  * fix: fix an issue that multi-arch images cannot be built from
+    the project makefile (#6661)
+  * refactor: change './bin' to 'LOCALBIN' (#6655)
+  * fix: migrate apis directory to api per standard (#6646)
+
+-------------------------------------------------------------------
 -------------------------------------------------------------------
 Tue Jan 30 16:54:14 UTC 2024 - andrea.manzini@suse.com
 
