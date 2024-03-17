@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 16 10:00:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.13.0:
+  * Enabled PyPy 3.10 support.
+  * Rebuilt wheels with QPDF 11.8.0.
+  * Improved test coverage slightly.
+  * Minor performance improvement when using file streams.
+  * Minor update to metadata documentation.
+
+-------------------------------------------------------------------
 Wed Mar 13 10:17:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - remove unneeded ipython buildrequires

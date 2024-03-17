@@ -248,4 +248,17 @@
     <comment>- remove unneeded ipython buildrequires</comment>
     <requestid>1157520</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4b308eefe0903853aa089d6f996b7d27</srcmd5>
+    <version>8.13.0</version>
+    <time>1710710089</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.13.0:
+  * Enabled PyPy 3.10 support.
+  * Rebuilt wheels with QPDF 11.8.0.
+  * Improved test coverage slightly.
+  * Minor performance improvement when using file streams.
+  * Minor update to metadata documentation.</comment>
+    <requestid>1158438</requestid>
+  </revision>
 </revisionlist>
