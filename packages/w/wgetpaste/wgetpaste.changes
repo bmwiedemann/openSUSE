@@ -1,10 +1,23 @@
 -------------------------------------------------------------------
+Sun Mar 17 11:53:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.34:
+  * Respect TMPDIR
+  * Update actions rules
+  * Disable sprunge
+  * Add paste.gentoo.zip
+  * Arg parse priority + -A/--ansi arg
+  * Added --quiet flag
+  * fix gists raw url
+  * fix typo and formatting
+
+-------------------------------------------------------------------
 Fri Dec  2 22:05:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.33:
   * -N/--no-ansi was added to strip ANSI codes using ansifilter (fixes #34)
   * bpaste is now the default to avoid issues with dpaste and DNSSEC and less
-    JavaScript (fixes #36) 
+    JavaScript (fixes #36)
 
 -------------------------------------------------------------------
 Sat Oct 16 12:06:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -17,7 +30,7 @@ Sat Oct 16 12:06:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Add ix.io pastebin
   * Do not interpret content when posting to dpaste
   * Add missing dpaste escape functions
-  * wgetpaste now comes with a test script 
+  * wgetpaste now comes with a test script
 
 -------------------------------------------------------------------
 Thu Sep 10 06:25:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
@@ -28,7 +41,7 @@ Thu Sep 10 06:25:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
   * Fix handling of bpaste urls.
   * Fallback location regex confusion fix
   * dd support for gitlab snippets
-  * Hardcode 'v4' on the help message's gitlab URL 
+  * Hardcode 'v4' on the help message's gitlab URL
 
 -------------------------------------------------------------------
 Sat Feb 17 12:37:02 UTC 2018 - aloisio@gmx.com

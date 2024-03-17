@@ -1,7 +1,7 @@
 #
 # spec file for package wgetpaste
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wgetpaste
-Version:        2.33
+Version:        2.34
 Release:        0
 Summary:        Command-line interface to various pastebins
 License:        MIT

@@ -92,4 +92,24 @@
     <comment></comment>
     <requestid>1039749</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ff025fde35403ca7bee482065e9062d2</srcmd5>
+    <version>2.34</version>
+    <time>1710710209</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.34:
+  * Respect TMPDIR
+  * Update actions rules
+  * Disable sprunge
+  * Add paste.gentoo.zip
+  * Arg parse priority + -A/--ansi arg
+  * Added --quiet flag
+  * fix gists raw url
+  * fix typo and formatting
+
+    JavaScript (fixes #36)
+  * wgetpaste now comes with a test script
+  * Hardcode 'v4' on the help message's gitlab URL</comment>
+    <requestid>1158736</requestid>
+  </revision>
 </revisionlist>
