@@ -1,7 +1,7 @@
 #
 # spec file for package qjackctl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,7 @@
 %define with_qt6 0
 %endif
 Name:           qjackctl
-Version:        0.9.12
+Version:        0.9.13
 Release:        0
 Summary:        Graphical User Interface to Control JACK Servers
 License:        GPL-2.0-or-later

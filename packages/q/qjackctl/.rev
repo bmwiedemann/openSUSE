@@ -365,4 +365,41 @@
     <comment></comment>
     <requestid>1124807</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>c83bc6e876b7c488e0aafc3a7bd6afb9</srcmd5>
+    <version>0.9.13</version>
+    <time>1710710136</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.13:
+  * Graph: Make the main canvas background to mid-gray, when on
+    non-dark color themes.
+  * Turkish (tr) translation added.
+  * Updated copyright headers into the New Year (2024).
+
+  * CMake is now the official build system.
+- Update to 0.9.2
+  - Graph Disconnect now applies to all selected ports and
+    frames/period (aka. buffer-size), periods/buffer,
+  * Graph node and port title renaming and nodes position move
+  * Graph client and port title in-place renaming is now integrated
+  * Refactored all singleton/unique application instance setup
+  * At last, JACK freewheel mode is now being detected as to
+  * Graph port temporary highlighting while hovering, if and only
+  * System tray options now subject to current desktop environment
+  * Also disable Setup / Misc / Other / Save JACK server
+    configuration to (.jackdrc) when JACK D-Bus interface is
+    Setup / Settings / Parameters (only applied when JACK D-BUS
+    as visible and active for due top level display, especially
+  - The Messages and Status widgets were merged into one,
+    giving space to the new Session wigdet
+- deprecated translation-folder.diff
+  * Allow only one single patchbay connection to or from an
+  * Automatic crash-dump reports, debugger stack-traces (gdb),
+    option (--enable-stacktrace) and default enabled on debug build
+  * Portaudio device selector is now available (after a patch
+    giving the option to start/stop the jackd server from the system
+  * New patchbay snapshot now raises the dirty flag and allows for
+    compliant with the audio mode criteria</comment>
+    <requestid>1158513</requestid>
+  </revision>
 </revisionlist>
