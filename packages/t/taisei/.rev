@@ -108,4 +108,22 @@ bosses, new story, new backgrounds, and heavy internal rewrites.
 See the announcement at https://taisei-project.org/news/0016_v1.4</comment>
     <requestid>1109742</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d8b76a2105a19aefb4cb6f4f0d32d98c</srcmd5>
+    <version>1.4.1</version>
+    <time>1710710248</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.4.1
+This is a stable maintenance release. It features some bugfixes
+and optimizations backported from the v1.5 development tree.
+  * Fixed a crash that happened after a few minutes would pass
+    without any input if the intro cutscene had previously played
+    gh#taisei-project/taisei##371
+  * Optimized a few hot paths in the game update loop.
+  * Optimized the tree branch mesh in the Stage 2 background to
+    avoid rendering a lot of tiny triangles.
+  * Added a gamemode build option to control whether to enable
+    GameMode integration on Linux.</comment>
+    <requestid>1158800</requestid>
+  </revision>
 </revisionlist>

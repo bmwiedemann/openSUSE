@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Mar 17 17:52:12 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to version 1.4.1
+This is a stable maintenance release. It features some bugfixes
+and optimizations backported from the v1.5 development tree.
+
+  * Fixed a crash that happened after a few minutes would pass
+    without any input if the intro cutscene had previously played
+    gh#taisei-project/taisei##371
+  * Optimized a few hot paths in the game update loop.
+  * Optimized the tree branch mesh in the Stage 2 background to
+    avoid rendering a lot of tiny triangles.
+  * Added a gamemode build option to control whether to enable
+    GameMode integration on Linux.
+
+-------------------------------------------------------------------
 Fri Sep  8 09:32:50 UTC 2023 - Mia Herkt <mia@0x0.st>
 
 - Update to version 1.4

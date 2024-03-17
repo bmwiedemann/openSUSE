@@ -1,7 +1,7 @@
 #
 # spec file for package taisei
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           taisei
-Version:        1.4
+Version:        1.4.1
 Release:        0
 Summary:        Clone of the Touhou Project series of shoot ’em up games
 License:        MIT
