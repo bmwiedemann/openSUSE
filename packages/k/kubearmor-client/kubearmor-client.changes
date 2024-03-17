@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Mar 16 17:48:15 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- BuildRequire go1.22 following upstream
+- Update to version 1.2.0:
+  * add mtls support
+  * chore: use go toolchain 1.22.1
+  * chore(ci): upgrade codeqql to v3
+  * Added operator CR updation functionality
+  * linted readme
+  * Enabled operator installation for karmor
+  * Fixed the probe panic issue
+
+-------------------------------------------------------------------
+Sat Mar 16 17:41:25 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.1.1:
+  * fix bug & add flags
+  * feat(deps):Updated codeQL to v2
+  * update kubearmor protobuf
+  * updated karmor install with relay's sa and rbac policies
+
+-------------------------------------------------------------------
 Thu Feb 08 11:58:46 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.1.0:
