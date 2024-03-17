@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 17 13:26:10 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.48.1:
+  * CTRL-T and ALT-C bindings can be disabled by setting
+    FZF_CTRL_T_COMMAND and FZF_ALT_C_COMMAND to empty strings
+    respectively when sourcing the script
+  * Bug fixes
+
+-------------------------------------------------------------------
 Thu Mar 14 16:47:09 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Switch to generated shell integration scripts

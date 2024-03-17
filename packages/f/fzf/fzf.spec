@@ -18,7 +18,7 @@
 
 %global _lto_cflags %{nil}
 Name:           fzf
-Version:        0.48.0
+Version:        0.48.1
 Release:        0
 Summary:        A command-line fuzzy finder
 License:        MIT
@@ -121,8 +121,8 @@ install -Dm644 man/man1/fzf-tmux.1 %{buildroot}%{_mandir}/man1/fzf-tmux.1
 # shell completions
 # csplit splits on end tags inside of the completions to allow for easy
 # splitting of the files for installation.
-./fzf --bash | csplit - '/.*end\:.*/' -f bash
-./fzf --zsh | csplit - '/.*end\:.*/' -f zsh
+./fzf --bash | csplit - '/.*end\:.*/+1' -f bash
+./fzf --zsh  | csplit - '/.*end\:.*/+1' -f zsh
 ./fzf --fish > fish00
 
 install -Dm0644 bash00 \
