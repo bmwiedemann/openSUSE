@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-isort
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           python-pytest-isort
-Version:        3.1.0
+Version:        4.0.0
 Release:        0
 Summary:        Pytest plugin to check import ordering using isort
 License:        MIT
 URL:            https://github.com/stephrdev/pytest-isort/
 Source:         https://github.com/stephrdev/pytest-isort/archive/refs/tags/%{version}.tar.gz#/pytest-isort-%{version}-gh.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module isort >= 4.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1}
@@ -33,9 +32,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-isort >= 4.0
 Requires:       python-pytest >= 5.0
-%if 0%{python_version_nodots} < 38
-Requires:       python-importlib-metadata
-%endif
 BuildArch:      noarch
 %python_subpackages
 

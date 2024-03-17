@@ -72,4 +72,15 @@
     <comment></comment>
     <requestid>1058776</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b54434395da3a3e0c9bc9602dcc927d2</srcmd5>
+    <version>4.0.0</version>
+    <time>1710710113</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0.0:
+  * Drop support for Python 3.7
+  * Add support for Python 3.10 and 3.11
+  * Add support for pytest 8</comment>
+    <requestid>1158476</requestid>
+  </revision>
 </revisionlist>
