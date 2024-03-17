@@ -20,4 +20,17 @@
 - initial package</comment>
     <requestid>1136317</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4366d7c63fed4a526fde2672c7a66dda</srcmd5>
+    <version>2.9.0.20240316</version>
+    <time>1710710133</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.9.0.20240316:
+  * python-dateutil: respect inheritance on
+    relativedelta.__rsub__ (#11462)
+  * [stubsabot] Bump python-dateutil to 2.9.*
+  * Use PEP 570 syntax in third party stubs
+  * Update typing_extensions imports in third-party stubs</comment>
+    <requestid>1158506</requestid>
+  </revision>
 </revisionlist>
