@@ -26,6 +26,8 @@ Group:          System/Management
 URL:            https://github.com/openSUSE/wicked
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        wicked-rpmlintrc
+Patch1:         0001-addrconf-fix-fallback-lease-drop-bsc-1220996.patch
+Patch2:         0002-extensions-nbft-replace-nvme-show-nbft-with-nvme-nbf.patch
 #
 # Upstream First - openSUSE Build Service Policy:
 #
@@ -121,8 +123,9 @@ interface to network configuration.
 Summary:        Network configuration infrastructure - nbft support
 Group:          System/Management
 Requires:       %name = %{version}
+# Support for the "nvme nbft show" command
+Requires:       nvme-cli >= 2.4+17.gf4cfca93998a
 Requires:       jq >= 1.6
-Requires:       nvme-cli >= 2.2.1
 
 %description nbft
 This package provides an extension to retrieve the NBFT firmware

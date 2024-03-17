@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 14 11:37:01 UTC 2024 - Marius Tomaschewski <mt@suse.com>
+
+- addrconf: fix fallback-lease drop (bsc#1220996)
+  [+ 0001-addrconf-fix-fallback-lease-drop-bsc-1220996.patch]
+- extensions/nbft: use upstream `nvme nbft show` (bsc#1221358)
+  [+ 0002-extensions-nbft-replace-nvme-show-nbft-with-nvme-nbf.patch]
+
+-------------------------------------------------------------------
 Fri Feb 23 16:06:09 UTC 2024 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - update to version 0.6.74 

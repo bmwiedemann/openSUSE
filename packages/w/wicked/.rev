@@ -1816,4 +1816,15 @@
   [- 0001-fix_arp_notify_loop_and_burst_sending.patch]</comment>
     <requestid>1149994</requestid>
   </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>ba9e0fa5112fbb30dcbbd214079ad719</srcmd5>
+    <version>0.6.74</version>
+    <time>1710709834</time>
+    <user>anag+factory</user>
+    <comment>- addrconf: fix fallback-lease drop (bsc#1220996)
+  [+ 0001-addrconf-fix-fallback-lease-drop-bsc-1220996.patch]
+- extensions/nbft: use upstream `nvme nbft show` (bsc#1221358)
+  [+ 0002-extensions-nbft-replace-nvme-show-nbft-with-nvme-nbf.patch]</comment>
+    <requestid>1158066</requestid>
+  </revision>
 </revisionlist>
