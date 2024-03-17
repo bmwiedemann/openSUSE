@@ -58,4 +58,13 @@
     platforms and symlinks.</comment>
     <requestid>1132842</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e99ca051ac05fff9f94e58d7f4dafef4</srcmd5>
+    <version>1.9.2</version>
+    <time>1710710132</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.9.2:
+  * Fix import error on Windows</comment>
+    <requestid>1158496</requestid>
+  </revision>
 </revisionlist>
