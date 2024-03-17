@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 16 08:33:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.0:
+  * Add `discard` method which return a new immutabledict without
+    the item at the given key, if present
+
+-------------------------------------------------------------------
 Mon Feb 12 05:59:02 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Use pytest to run the testsuite. 
+- Use pytest to run the testsuite.
 
 -------------------------------------------------------------------
 Sat Dec 16 21:09:56 UTC 2023 - Dirk Müller <dmueller@suse.com>

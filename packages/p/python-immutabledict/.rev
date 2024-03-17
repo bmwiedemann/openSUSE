@@ -63,4 +63,16 @@
     <comment>- Use pytest to run the testsuite.</comment>
     <requestid>1146083</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>af943220609ce7a2c1c3b1f6a3f6153b</srcmd5>
+    <version>4.2.0</version>
+    <time>1710710071</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.2.0:
+  * Add `discard` method which return a new immutabledict without
+    the item at the given key, if present
+
+- Use pytest to run the testsuite.</comment>
+    <requestid>1158388</requestid>
+  </revision>
 </revisionlist>
