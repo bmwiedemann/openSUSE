@@ -23,4 +23,23 @@
     <comment></comment>
     <requestid>975251</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>74d8419388e75fa964b31edf40391279</srcmd5>
+    <version>0.5.2</version>
+    <time>1710710206</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5.2:
+  * map: don't penalize failed insert/erase/find operations
+  * str: add string comparison functions `cdada_str_ncmp` and
+    `cdada_str_ncmp_c`
+  * map: add `cdada_map_get_pos()`
+  * map: allow NULL ptr for val in `cdada_map_find()` to only
+    check for presence
+  * set: add `cdada_set_get_pos()`
+  * list: minor change in `cdada_list_get()` to use
+    `std::advance`
+  * set: fix some error path return values for first()/last()
+  * set: minor fix in header variable name</comment>
+    <requestid>1158681</requestid>
+  </revision>
 </revisionlist>
