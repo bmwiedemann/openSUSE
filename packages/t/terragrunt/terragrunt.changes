@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sun Mar 17 09:58:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.55.16:
+  * Terragrunt performance improvements (#2983)
+
+-------------------------------------------------------------------
+Sun Mar 17 09:52:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.55.15:
+  * Catalog TUI Improvements (#2993)
+
+-------------------------------------------------------------------
+Sun Mar 17 09:49:28 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.55.14:
+  * Upgrade sops to v3.8.1 (#2991)
+  * Include "modules" path in the module url used in docs for
+    scaffold command (#2985)
+
+-------------------------------------------------------------------
+Sun Mar 17 09:47:25 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.55.13:
+  * MacOS catalog terminal reset (#2984)
+
+-------------------------------------------------------------------
+Sun Mar 17 09:41:07 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.55.12:
+  * Scaffold execution in Windows (#2982)
+
+-------------------------------------------------------------------
+Sun Mar 17 09:37:54 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.55.11:
+  * Catalog screen freeze on MacOS (#2978)
+
+-------------------------------------------------------------------
+Sun Mar 17 09:30:24 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.55.10:
+  * Catalog terminal freeze (#2962)
+
+-------------------------------------------------------------------
 Sat Feb 24 09:09:56 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.55.9:
