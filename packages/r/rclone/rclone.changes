@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sat Mar 16 03:52:58 UTC 2024 - John Kizer john.kizer@proton.me
+
+- Update to version 1.66.0:
+  * Directory modification times and metadata synced for supported backends
+  * Many updates to bisync command options, operation and presentation
+  * Description field added for all backends
+  * amazonclouddrive: remove backend
+  * build: Update to go1.22, go1.20 is minimum required
+  * build: CVE-2024-24786 addressed via protobuf upgrade
+  * check: Respect --no-unicode-normalization and --ignore-case-sync for --checkfile
+  * cmd: Improved shell auto completion reduces size of the completion file and works faster
+  * fs: Add more detailed logging for file includes/excludes
+  * lsf: Add --time-format flag, make metadata appear for directories
+  * lsjson: Make metadata appear for directories (Nick Craig-Wood)
+  * rc: Add srcFs and dstFs to core/stats and core/transferred stats,
+  * rc: Add operations/hashsum to the rc as rclone hashsum equivalent,
+  * rc: Add config/paths to the rc as rclone config paths equivalent
+  * sync: Optionally report list of synced paths to file
+  * sync: Implement directory sync for mod times and metadata
+  * sync: Don't set directory modtimes if already set
+  * sync: Don't sync directory modtimes from backends which don't have directories
+  * backend: Make backends which use oauth implement the Shutdown and shutdown the oauth properly
+  * bisync: Handle unicode and case normalization consistently
+  * bisync: Partial uploads known issue on local/ftp/sftp has been resolved (unless using --inplace)
+  * bisync: Fixed handling of unicode normalization and case insensitivity, support for relevant flags
+  * bisync: No longer fails to find the correct listing file when configs are overridden with backend-specific flags
+  * nfsmount: Fix exit after external unmount, fix --volname being ignored
+  * operations: Fix case-insensitive moves in operations.Move
+  * operations: Fix TestCaseInsensitiveMoveFileDryRun on chunker integration tests
+  * operations: Fix TestMkdirModTime test
+  * operations: Fix TestSetDirModTime for backends with SetDirModTime but not Metadata
+  * operations: Fix typo in log messages
+  * serve restic: Fix error handling
+  * serve webdav: Fix --baseurl without leading /
+  * stats: Fix race between ResetCounters and stopAverageLoop called from time.AfterFunc
+  * sync: --fix-case flag to rename case insensitive dest
+  * sync: Use operations.DirMove instead of sync.MoveDir for --fix-case
+  * systemd: Fix detection and switch to the coreos package everywhere rather than having 2 separate libraries
+  * mount: Notice daemon dying much quicker
+  * Numerous backend-specific updates detailed at https://rclone.org/changelog/#v1-66-0-2024-03-10 
+
+-------------------------------------------------------------------
 Thu Jan 25 01:42:58 UTC 2024 - mrueckert@suse.de
 
 - Update to version 1.65.2:
