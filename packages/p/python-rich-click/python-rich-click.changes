@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 16 14:41:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.4:
+  * Set `legacy_windows` by default to `None`.
+
+-------------------------------------------------------------------
 Tue Jan  9 21:55:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.3:

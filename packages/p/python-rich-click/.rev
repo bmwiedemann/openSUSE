@@ -75,4 +75,13 @@
   * Fix false deprecation warning.</comment>
     <requestid>1137823</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b4ae366301f72685e731c00d292d992c</srcmd5>
+    <version>1.7.4</version>
+    <time>1710710134</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.7.4:
+  * Set `legacy_windows` by default to `None`.</comment>
+    <requestid>1158508</requestid>
+  </revision>
 </revisionlist>
