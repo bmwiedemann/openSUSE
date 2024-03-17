@@ -102,7 +102,7 @@ used.
 %package -n libphonon4%{phonon_flavor}
 Summary:        Phonon Multimedia Platform Abstraction
 Recommends:     phonon4qt5-lang
-Recommends:     phonon-backend%{pkg_suffix}
+Recommends:     phonon%{pkg_suffix}-backend
 Recommends:     phononsettings%{pkg_suffix}
 %if 0%{?qt5}
 # Was present in phonon4qt5.spec

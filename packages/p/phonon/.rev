@@ -7,4 +7,12 @@
     <comment>Add phonon to factory</comment>
     <requestid>1155120</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5cb7c59bde7a4bae1a65cc78b811f8f9</srcmd5>
+    <version>4.12.0</version>
+    <time>1710709969</time>
+    <user>anag+factory</user>
+    <comment>- Update the recommended backend package name (boo#1221459)</comment>
+    <requestid>1158212</requestid>
+  </revision>
 </revisionlist>
