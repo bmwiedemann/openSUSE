@@ -304,4 +304,54 @@
 </comment>
     <requestid>1154070</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>eca6df6433f609175f9d6a75fb9af114</srcmd5>
+    <version>1.7.5617~git20240315</version>
+    <time>1710710045</time>
+    <user>anag+factory</user>
+    <comment>- Added xpadneo recommends to support Xbox One/Series wireless controllers
+- Update to version 1.7.5617~git20240315:
+  * Qt: Disable Texture barriers option on Metal.
+  * GS/Metal: Fix some Wformat warnings.
+  * GS/HW: Adjust blend mix for impossible blend.
+  * Debugger: Fixes crash selecting a filter search with new search button
+  * Debugger: Reduces RAM useage for searches (Act 1)
+  * OSD: Add Memcard Icon in more places
+  * BPM: Implement &quot;Open in File Browser&quot; Function
+  * Path: Add CreateFileURL()
+  * GS/HW: Instead of adjusting blend min/max, adjust GetAlphaMinMax.
+  * GS/HW: Remove blend_ad_improved case.
+  * GS/HW: Calculate blend/rt alpha min/max based on alpha test.
+  * GS/HW: Adjust blend_alpha_min/max based on DATE.
+  * GS/HW: Don't allow conversion to indexed is read is outside the target
+  * PAD: Update to latest controller database.
+  * GS/HW: Adjust dither on Blend Mix when Cs-Cd * Af blend.
+  * GS/HW: Adjust dither on Blend Mix when Cs-Cd * As blend.
+  * GS/HW: Don't include TBW in hash cache key
+  * GS/HW: Reduce duplicates in hash cache
+  * GS/Vulkan: Work around NVIDIA attachment clear bug
+  * GS/HW: Handle redundant FRAME+Z buffer clears
+  * CI: Update to SDL2 2.30.1 and Qt 6.6.2
+  * Qt: Fix log window disabling itself on close
+  * VulkanDevice: Add additional semaphore on swap chain
+  * Qt: Toggle for DualSense Player LED
+  * vmmanager:revert gpu logging
+  * VMManager: Log power profile and GPUs on startup
+  * GS/HW: Pre check DATE requirement before updating rt alphas
+  * GameDB: God of War 2 Fixes
+  * OSD: Fix Recording Icon
+  * UI: Fix broken setup guide links
+  * PAD: Update to latest controller database.
+  * Qt: Update Base Translation
+  * GS/HW: Require alpha for 8H, 4HH, 4HL on source lookup
+  * GS/HW: Improvements to rt alpha accuracy
+  * Qt: Fix InterfaceSettingsWidget layout
+  * FSUI: Icon treatments
+  * Debugger: Memory search expansions + results count
+  * GS/Vulkan: Don't ever fully clear stencil on DATE draws
+  * GS/Vulkan: Use attachment clear for ONE stencil
+  * GameDB: Arc the Lad TOTS Fixes
+</comment>
+    <requestid>1158336</requestid>
+  </revision>
 </revisionlist>
