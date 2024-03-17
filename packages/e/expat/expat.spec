@@ -2,6 +2,7 @@
 # spec file for package expat
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +17,10 @@
 #
 
 
-%global unversion 2_6_1
+%global unversion 2_6_2
+%define sover 1
 Name:           expat
-Version:        2.6.1
+Version:        2.6.2
 Release:        0
 Summary:        XML Parser Toolkit
 License:        MIT
@@ -39,11 +41,11 @@ Expat is an XML parser library written in C. It is a stream-oriented
 parser in which an application registers handlers for things the
 parser might find in the XML document (like start tags).
 
-%package -n libexpat1
+%package -n libexpat%{sover}
 Summary:        XML Parser Toolkit
 Group:          System/Libraries
 
-%description -n libexpat1
+%description -n libexpat%{sover}
 Expat is an XML parser library written in C. It is a stream-oriented
 parser in which an application registers handlers for things the
 parser might find in the XML document (like start tags).
@@ -52,7 +54,7 @@ parser might find in the XML document (like start tags).
 Summary:        Development files for expat, an XML parser toolkit
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
-Requires:       libexpat1 = %{version}
+Requires:       libexpat%{sover} = %{version}
 
 %description -n libexpat-devel
 Expat is an XML parser library written in C. It is a stream-oriented
@@ -89,8 +91,7 @@ cp %{SOURCE3} .
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libexpat1 -p /sbin/ldconfig
-%postun -n libexpat1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libexpat%{sover}
 
 %files
 %license COPYING
@@ -102,9 +103,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/xmlwf.1%{?ext_man}
 
 %files -n libexpat1
-%{_libdir}/libexpat.so.*
+%license COPYING
+%{_libdir}/libexpat.so.%{sover}
+%{_libdir}/libexpat.so.%{sover}.*
 
 %files -n libexpat-devel
+%license COPYING
 %{_includedir}/*
 %{_libdir}/libexpat.so
 %{_libdir}/pkgconfig/expat.pc
