@@ -1,4 +1,162 @@
 -------------------------------------------------------------------
+Sat Mar 16 08:13:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.2:
+  * Prepare for v0.16.2 release
+  * chore(deps): update all github action dependencies
+  * fix(deps): update github.com/cilium/charts digest to a5bec49
+  * fix(deps): update module helm.sh/helm/v3 to v3.14.3
+  * Revert "ingress: Update backend service for Ingress"
+  * gha: increase Multicluster timeout
+  * renovate: Don't pick up new Go patch versions in go.mod
+  * Revert "chore(deps): update dependency go to v1.22.1"
+
+-------------------------------------------------------------------
+Sat Mar 16 08:00:29 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.1:
+  * Prepare for v0.16.1 release
+  * fix(deps): update github.com/cilium/charts digest to 724231f
+  * chore(deps): update dependency cilium/cilium to v1.15.2
+  * fix(deps): update module github.com/cilium/hubble to v0.13.2
+  * chore(deps): update docker/login-action action to v3.1.0
+  * chore(deps): update dependency go to v1.22.1
+  * refactor: Move Hooks to the api package
+  * refactor: Move sniff under connectivity
+  * Store namespace and k8sClient in the command context
+  * Add InitializeCommand hook
+  * chore(deps): update softprops/action-gh-release action to
+    v2.0.4
+  * connectivity: collect sysdump from all clusters on failure
+  * gha: replace remaining references to deprecated KPR settings
+  * connectivity: fix KPR feature probing
+  * helm: improve KPR autodetection logic
+  * helm: uniform retrieval of nested helm value
+  * helm: remove bpf.masquerade autodetection logic
+  * helm: do not care for unsupported Cilium versions in values
+    generation
+  * helm: remove unused fields/parameters from getHelmValues logic
+  * chore(deps): update go to v1.22.1
+  * chore(deps): update softprops/action-gh-release action to v2
+  * fix(deps): update all go dependencies main
+  * fix(deps): update all go dependencies main
+  * Don't depend on github.com/mholt/archiver
+  * chore(deps): update azure/login action to v2
+  * ingress: Update backend service for Ingress
+  * tetragon: remove tetragon CR code
+  * tetragon: use ListUnstructured for tetragon CRs
+  * sysdump: gather tetragon pod logs and configmap
+  * chore(deps): update docker/build-push-action action to v5.2.0
+  * chore(deps): update docker.io/library/busybox:stable-glibc
+    docker digest to 8425131
+  * Update stable release to v0.16.0
+  * chore(deps): update golang docker tag to v1.22.1
+  * chore(deps): update golang-images
+  * fix: update ldflags for local-release
+  * refactor: Move internal/cli to cli/
+
+-------------------------------------------------------------------
+Fri Mar 15 22:15:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.0:
+  * fix(deps): update module helm.sh/helm/v3 to v3.14.1 [security]
+    by @renovate in #2308
+  * GCP OIDC instead of SA creds. by @viktor-kurchenko in #2313
+  * fix(deps): update all go dependencies main (patch) by @renovate
+    in #2312
+  * Hide key-per-node flag. by @viktor-kurchenko in #2316
+  * Update stable release to v0.15.23 by @michi-covalent in #2310
+  * Use encryption models from Cilium dependency. by
+    @viktor-kurchenko in #2318
+  * renovate: additionally manage updates for action.yaml by
+    @giorio94 in #2299
+  * fix(deps): update all go dependencies main by @renovate in
+    #2311
+  * chore(deps): update dependency cilium/cilium to v1.15.1 -
+    autoclosed by @renovate in #2305
+  * chore(deps): update actions/setup-go action to v5 by @renovate
+    in #2323
+  * chore(deps): update golangci/golangci-lint docker tag to
+    v1.56.2 by @renovate in #2309
+  * chore(deps): update dependency kubernetes-sigs/kind to v0.22.0
+    by @renovate in #2304
+  * connectivity: add forbidden ICMPv6 message as expected drop
+    reason by @giorio94 in #2317
+  * Introduce host firewall connectivity tests by @giorio94 in
+    #2306
+  * fix(deps): update all go dependencies main (minor) by @renovate
+    in #2325
+  * fix(deps): update module helm.sh/helm/v3 to v3.14.2 [security]
+    by @renovate in #2324
+  * Add sig/encryption as owner of /encrypt/ in CODEOWNERS by
+    @margamanterola in #2300
+  * connectivity: improve reporting for no-unexpected-packet-drops
+    check by @giorio94 in #2315
+  * cilium status: additionally check for endpoints readiness by
+    @giorio94 in #2298
+  * Refactor: Move junit package under connectivity package by
+    @michi-covalent in #2331
+  * Status check error message improved. by @viktor-kurchenko in
+    #2319
+  * sniffer: improve handling of tcpdump termination by @giorio94
+    in #2321
+  * Ignore Cilium endpoints not found error for the status command.
+    by @viktor-kurchenko in #2320
+  * Delete classic mode install/uninstall/upgrade commands by
+    @michi-covalent in #2328
+  * Delete classic mode hubble commands by @michi-covalent in #2335
+  * k8s: don't drop stdout of kubectl exec by @bimmlerd in #2332
+  * connectivity: fix encryption validation with wireguard encap +
+    host fw by @giorio94 in #2333
+  * chore(deps): update docker/setup-buildx-action action to v3.1.0
+    by @renovate in #2338
+  * Delete classic mode clustermesh commands to get ready for v0.16
+    release by @michi-covalent in #2340
+  * connectivity: Remove --delete-cilium-pod-on-nodes flag by
+    @michi-covalent in #2336
+  * Display formatted status during status wait by @raphink in
+    #2261
+  * docs: Update version matrix by @sayboras in #2337
+  * Remove unused things by @michi-covalent in #2345
+  * uninstall: when --wait is specified, use foreground deletion.
+    by @tommyp1ckles in #2344
+  * helm: Remove Get and GetParameter by @michi-covalent in #2349
+  * Remove golang.org/x/mod/semver dependency by @michi-covalent in
+    #2347
+  * chore(deps): update all github action dependencies (patch) by
+    @renovate in #2330
+  * refactor: Remove internal/utils/utils.go by @michi-covalent in
+    #2348
+  * Remove --cluster-name flag by @michi-covalent in #2351
+  * fix(deps): update module github.com/prometheus/common to
+    v0.49.0 by @renovate in #2354
+  * fix(deps): update module github.com/go-openapi/strfmt to
+    v0.22.1 by @renovate in #2353
+  * refactor: Move ctrlcreader.go under /k8s/internal/ by
+    @michi-covalent in #2346
+  * fix(deps): update module github.com/stretchr/testify to v1.9.0
+    by @renovate in #2358
+  * action: Add go-mod-directory parameter by @michi-covalent in
+    #2359
+  * vendor: Pick up cilium/cilium v1.16.0-pre.0 by @michi-covalent
+    in #2360
+  * sniffer: always dump captured packets in assert mode by
+    @giorio94 in #2350
+  * sysdump: Export Hooks and InitSysdumpFlags by @michi-covalent
+    in #2361
+  * chore(deps): update actions/download-artifact action to v4.1.4
+    by @renovate in #2357
+  * Move the CLI version string to the default package by
+    @michi-covalent in #2362
+  * Connectivity test factory component. by @viktor-kurchenko in
+    #2322
+  * Remove duplicate imports and enable stylecheck linter to
+    prevent them by @tklauser in #2364
+  * Add error log check exception for leader election errors. by
+    @tommyp1ckles in #2363
+  * Prepare for v0.16.0 release by @michi-covalent in #2366
+
+-------------------------------------------------------------------
 Mon Feb 19 09:12:22 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.15.23:
