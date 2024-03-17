@@ -1,7 +1,7 @@
 #
 # spec file for package python-parsel
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,39 +16,35 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%{?sle15_python_module_pythons}
 Name:           python-parsel
-Version:        1.8.1
+Version:        1.9.0
 Release:        0
 Summary:        Library to extract data from HTML and XML using XPath and CSS selectors
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/scrapy/parsel
 Source:         https://files.pythonhosted.org/packages/source/p/parsel/parsel-%{version}.tar.gz
-BuildRequires:  %{python_module cssselect >= 0.9}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module cssselect >= 1.2.0}
 BuildRequires:  %{python_module jmespath}
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing-extensions}
 BuildRequires:  %{python_module w3lib >= 1.19.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-cssselect >= 0.9
+Requires:       python-cssselect >= 1.2.0
 Requires:       python-jmespath
 Requires:       python-lxml
 Requires:       python-typing-extensions
 Requires:       python-w3lib >= 1.19.0
 BuildArch:      noarch
-%ifpython2
-Requires:       python-functools32
-%endif
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-%if %{with python2}
-BuildRequires:  python-functools32
-%endif
 # /SECTION
 %python_subpackages
 
@@ -61,10 +57,10 @@ selectors.
 sed -i -e '/pytest-runner/d' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -73,6 +69,7 @@ sed -i -e '/pytest-runner/d' setup.py
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/parsel
+%{python_sitelib}/parsel-%{version}.dist-info
 
 %changelog

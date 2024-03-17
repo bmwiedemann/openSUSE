@@ -126,4 +126,20 @@
 - Initial package build.</comment>
     <requestid>1134335</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0d8470bedd258a80512c8f03c94d07c1</srcmd5>
+    <version>1.9.0</version>
+    <time>1710710083</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.9.0:
+  * Now requires ``cssselect &gt;= 1.2.0`` (this minimum version was
+    required since 1.8.0 but that wasn't properly recorded)
+  * Removed support for Python 3.7
+  * Added support for Python 3.12 and PyPy 3.10
+  * Fixed an exception when calling ``__str__`` or `__repr__`` on
+    some JSON selectors
+  * Code formatted with ``black``
+  * CI fixes and improvements</comment>
+    <requestid>1158405</requestid>
+  </revision>
 </revisionlist>
