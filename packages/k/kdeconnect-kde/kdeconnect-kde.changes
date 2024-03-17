@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 16 22:16:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add missing runtime requirements (boo#1221440)
+
+-------------------------------------------------------------------
 Wed Mar 13 12:57:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change to work around kde#482192:

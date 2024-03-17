@@ -628,4 +628,12 @@
   * 0001-Disable-Bluetooth-backend-due-to-https-bugs.kde.org-.patch</comment>
     <requestid>1157612</requestid>
   </revision>
+  <revision rev="75" vrev="3">
+    <srcmd5>f9657deeaa50544e4fee27fe338df1d1</srcmd5>
+    <version>24.02.0</version>
+    <time>1710710192</time>
+    <user>anag+factory</user>
+    <comment>- Add missing runtime requirements (boo#1221440)</comment>
+    <requestid>1158626</requestid>
+  </revision>
 </revisionlist>

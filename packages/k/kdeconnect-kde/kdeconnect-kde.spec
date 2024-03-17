@@ -75,9 +75,12 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xtst)
 Requires:       kf6-kirigami-imports >= %{kf6_version}
+Requires:       kf6-kpeople-imports >= %{kf6_version}
 Requires:       kf6-qqc2-desktop-style >= %{kf6_version}
 Requires:       kirigami-addons6
 Requires:       qt6-declarative-imports >= %{qt6_version}
+Requires:       qt6-multimedia-imports >= %{qt6_version}
+Requires:       qt6-qt5compat-imports >= %{qt6_version}
 Requires:       sshfs >= 3.7.2
 # TODO Not packaged yet
 # Recommends:     kpeoplevcard
