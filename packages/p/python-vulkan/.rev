@@ -35,4 +35,17 @@
   * no upstream changelog</comment>
     <requestid>717557</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6cbfa12bae8ae4fe303f94b456a93da2</srcmd5>
+    <version>1.3.275.1</version>
+    <time>1710710111</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.275.1:
+  * no upstream changelog
+- use LICENSE file from package
+- use PEP517 build
+
+- initial commit</comment>
+    <requestid>1158487</requestid>
+  </revision>
 </revisionlist>

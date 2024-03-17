@@ -1,7 +1,7 @@
 #
 # spec file for package python-vulkan
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,17 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-vulkan
-Version:        1.1.99.1
+Version:        1.3.275.1
 Release:        0
 Summary:        Python bindings for the Vulkan API
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/realitix/vulkan
+URL:            https://github.com/realitix/vulkan
 Source:         https://files.pythonhosted.org/packages/source/v/vulkan/vulkan-%{version}.tar.gz
-Source1:        LICENSE
 BuildRequires:  %{python_module cffi >= 1.10}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 BuildRequires:  vulkan-devel
 Requires:       python-cffi >= 1.10
@@ -43,13 +44,12 @@ the differences induced by the Python language.
 
 %prep
 %setup -q -n vulkan-%{version}
-cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +58,7 @@ cp %{SOURCE1} .
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/vulkan
+%{python_sitelib}/vulkan-%{version}.dist-info
 
 %changelog
