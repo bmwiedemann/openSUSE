@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  7 15:50:51 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use built QEMU_VARS.fd as base for AARCH64/AARCH32 vars file
+- Ensure riscv64 code/vars is 32M otherwise it won't load
+- Use truncate instead of 2 dd commands
+
+-------------------------------------------------------------------
 Thu Mar  7 04:36:51 UTC 2024 - Joey Lee <jlee@suse.com>
 
 - Updated descriptors.tar.xz tarball, adding secure-boot feature tag

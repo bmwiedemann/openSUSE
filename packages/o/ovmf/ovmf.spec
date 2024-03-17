@@ -421,9 +421,10 @@ export ${TOOL_CHAIN}_AARCH64_PREFIX="aarch64-suse-linux-"
 build $BUILD_OPTIONS_AA64
 
 cp Build/ArmVirtQemu-AARCH64/DEBUG_GCC*/FV/QEMU_EFI.fd qemu-uefi-aarch64.bin
-dd of="aavmf-aarch64-code.bin" if="/dev/zero" bs=1M count=64
-dd of="aavmf-aarch64-code.bin" if="qemu-uefi-aarch64.bin" conv=notrunc
-dd of="aavmf-aarch64-vars.bin" if="/dev/zero" bs=1M count=64
+cp Build/ArmVirtQemu-AARCH64/DEBUG_GCC*/FV/QEMU_EFI.fd aavmf-aarch64-code.bin
+truncate -s 64M aavmf-aarch64-code.bin
+cp Build/ArmVirtQemu-AARCH64/DEBUG_GCC*/FV/QEMU_VARS.fd aavmf-aarch64-vars.bin
+truncate -s 64M aavmf-aarch64-vars.bin
 
 # Copy Shell.efi and EnrollDefaultKeys.efi
 mkdir AARCH64
@@ -444,9 +445,10 @@ export ${TOOL_CHAIN}_ARM_PREFIX="arm-suse-linux-gnueabi-"
 build $BUILD_OPTIONS_AA32
 
 cp Build/ArmVirtQemu-ARM/DEBUG_GCC*/FV/QEMU_EFI.fd qemu-uefi-aarch32.bin
-dd of="aavmf-aarch32-code.bin" if="/dev/zero" bs=1M count=64
-dd of="aavmf-aarch32-code.bin" if="qemu-uefi-aarch32.bin" conv=notrunc
-dd of="aavmf-aarch32-vars.bin" if="/dev/zero" bs=1M count=64
+cp Build/ArmVirtQemu-ARM/DEBUG_GCC*/FV/QEMU_EFI.fd aavmf-aarch32-code.bin
+truncate -s 64M aavmf-aarch32-code.bin
+cp Build/ArmVirtQemu-ARM/DEBUG_GCC*/FV/QEMU_VARS.fd aavmf-aarch32-vars.bin
+truncate -s 64M aavmf-aarch32-vars.bin
 
 # Remove the temporary build files to reduce the disk usage (bsc#1178244)
 rm -rf Build/ArmVirtQemu-ARM/
@@ -461,7 +463,9 @@ export ${TOOL_CHAIN}_RISCV64_PREFIX="riscv64-suse-linux-"
 build $BUILD_OPTIONS_RV64
 
 cp Build/RiscVVirtQemu/DEBUG_GCC*/FV/RISCV_VIRT_CODE.fd ovmf-riscv64-code.bin
+truncate -s 32M ovmf-riscv64-code.bin
 cp Build/RiscVVirtQemu/DEBUG_GCC*/FV/RISCV_VIRT_VARS.fd ovmf-riscv64-vars.bin
+truncate -s 32M ovmf-riscv64-vars.bin
 
 # Remove the temporary build files to reduce the disk usage (bsc#1178244)
 rm -rf Build/RiscVVirtQemu/
