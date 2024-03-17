@@ -154,6 +154,8 @@ Requires:       NetworkManager-libreswan
 Requires:       plasma6-nm = %{version}
 Supplements:    (plasma6-nm and NetworkManager-libreswan)
 Provides:       NetworkManager-libreswan-frontend
+Provides:       plasma-nm5-libreswan = %{version}
+Obsoletes:      plasma-nm5-libreswan < %{version}
 Provides:       plasma-nm5-openswan = %{version}
 Obsoletes:      plasma-nm5-openswan < %{version}
 # Old names provided / Obsoleted by plasma-nm5
