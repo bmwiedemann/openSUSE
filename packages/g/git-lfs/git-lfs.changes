@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Mar 16 08:00:16 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.5.1:
+  * Build release assets with Go 1.21 #5668 (@bk2204)
+  * script/packagecloud: instantiate distro map properly #5662
+    (@bk2204)
+  * Install msgfmt on Windows in CI and release workflows
+    #5666 (@chrisd8088)
+
+-------------------------------------------------------------------
+Sat Mar 16 07:54:33 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.5.0:
+  no changelog available
+- rework package to use obscpio
+
+-------------------------------------------------------------------
 Thu Dec 14 00:12:22 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to version 3.4.1:
@@ -207,15 +224,15 @@ Mon Feb 24 19:59:09 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
   This release fixes a few regressions, such as the ability to use HTTP/1.1 when
   required, addresses a race condition, and switches the cookie jar parser to
   something that's easier for distributions to package.
-  
+
   Features
       Allow specifying HTTP version to use #3887 (@bk2204)
-  
+
   Bugs
       synchronize access to netrcCredentialHelper.skip #3896 (@nataliechen1)
       Fix several causes of CI problems #3878 (@bk2204)
       Miscellaneous release fixes #3866 (@bk2204)
-  
+
   Misc
       Build artifacts during CI for easier testing #3892 (@bk2204)
       Use different parser for cookiejar files #3886 (@ssgelm)
@@ -229,7 +246,7 @@ Mon Feb 24 19:54:41 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
   improves the performance when walking the repository, contains improvements
   to use HTTP/2 when available and cookies when required, and numerous other bug
   fixes, features, and modifications.
-  
+
   Features
       Support fetching entire history of specific refs #3849 (@pluehne)
       Add support for CentOS 8 #3854 (@bk2204)
@@ -245,7 +262,7 @@ Mon Feb 24 19:54:41 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
       Optimize traversal of Git objects with URL remotes #3755 (@bk2204)
       Support for file URLs #3748 (@bk2204)
       Add clone file on MacOS X (darwin). #3745 (@kazuki-ma)
-  
+
   Bugs
       Fix JSON comma problems in docs #3851 (@dyrone)
       Remove redundant comma in batch.md #3841 (@dyrone)
@@ -268,7 +285,7 @@ Mon Feb 24 19:54:41 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
       Do not log skipped checkouts to file #3736 (@jw3)
       Fix typos across git-lfs repository #3728 (@kittenking)
       Accept legacy Git SSH URLs #3713 (@bk2204)
-  
+
   Misc
       ls-files --all man patch #3859 (@yamiacat)
       Reworked to use git ls-files in some circumstances instead of FastWalkGitRepo #3823 (@SeamusConnor)
@@ -284,7 +301,7 @@ Mon Feb 24 19:37:19 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
   packages for Debian 10 and similar distributions, reduces the number of
   situations in which running git lfs fetch --all is required, improves
   compatibility with Cygwin, and numerous other bug fixes and modifications.
-  
+
   Features
       Don't fail if we lack objects the server has #3634 (@bk2204)
       Add support for Debian 10 #3697 (@bk2204)
@@ -296,7 +313,7 @@ Mon Feb 24 19:37:19 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
       tq/adapterbase: support rewriting href #3590 (@h-hirokawa)
       Handle Windows junctions properly #3560 (@bk2204)
       Allow specifying multiple insteadOf aliases #3550 (@bk2204)
-  
+
   Bugs
       Make API documentation lock creation example less confusing #3648 (@bk2204)
       Use a download token when searching locks #3715 (@bk2204)
@@ -314,7 +331,7 @@ Mon Feb 24 19:37:19 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
       Install worktree hooks in the proper directory #3547 (@bk2204)
       Avoid nil pointer dereference on download failure #3537 (@bk2204)
       Avoid nil pointer dereference on unexpected failure #3534 (@bk2204)
-  
+
   Misc
       Update gitobj to v1.3.1 #3716 (@bk2204)
       Use default line endings for core.autocrlf=input #3712 (@bk2204)
@@ -340,11 +357,11 @@ Mon Feb 24 19:29:46 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
 - Update to 2.7.2:
   This release is a bugfix release to address some build problems and a regression
   in handling URLs with uppercase letters.
-  
+
   Bugs
       Switch from manually running go generate to using dh-golang to run it #3549 (@ssgelm)
       Properly handle config options for URLs with upper case letters #3584 (@bk2204)
-  
+
   Misc
       Update packagecloud.rb #3546 (@andyneff)
 
@@ -358,7 +375,7 @@ Mon Feb 24 19:24:45 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
   Bugs
       Avoid nil pointer dereference on download failure #3537 (@bk2204)
       Avoid nil pointer dereference on unexpected failure #3534 (@bk2204)
-  
+
   Misc
       Fix asset uploading during releases #3538 (@bk2204)
 
@@ -371,7 +388,7 @@ Mon Feb 24 19:17:12 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
   attribute macros, fixes several file descriptor leaks, improves compatibility
   with Git's configuration parsing, and includes numerous other bug fixes and
   modifications.
-  
+
   Features
       Add sles 15 support #1055 #3515 (@andyneff)
       docs/man/git-lfs-config.5.ronn: document GIT_LFS_SKIP_SMUDGE #3509 (@ttaylorr)
@@ -386,7 +403,7 @@ Mon Feb 24 19:17:12 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
       tasklog: don't log progress status when stdout is not a tty #3349 (@steffengodskesen)
       locking: cache JSON response from server #3253 (@mstrap)
       tq: enable transfer debugging when GIT_CURL_VERBOSE is set #3341 (@bk2204)
-  
+
   Bugs
       .circleci: don't use 'brew prune' #3514 (@ttaylorr)
       t/t-smudge.sh: remove unnecessary test #3513 (@ttaylorr)
@@ -410,7 +427,7 @@ Mon Feb 24 19:17:12 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
       Support pushInsteadOf aliases when determining endpoints #3353 (@bk2204)
       Close attributes file #3347 (@mbsulliv)
       Fix humanize's FormatByteRate() to work with 0s duration #3340 (@saracen)
-  
+
   Misc
       Release automation #3510 (@bk2204)
       docs/man: update git-lfs-fetch(1) manpage #3488 (@ttaylorr)
@@ -440,7 +457,7 @@ Mon Feb 24 15:52:29 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
   This release adds better support for redirecting network calls from a Git LFS
   API server to one that requires a different authentication mode, builds Git LFS
   on Go 1.11, and numerous other bug fixes and modifications.
-  
+
   Features
       commands: list explicitly excluded patterns separately #3320 (@bk2204)
       Uninstall improvements #3326 (@bk2204)
@@ -464,7 +481,7 @@ Mon Feb 24 15:52:29 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
       all: use Go modules instead of Glide #3208 (@ttaylorr)
       all: use Go 1.11 in CI #3203 (@ttaylorr)
   Bugs
-  
+
       Fix formatting of INCLUDE AND EXCLUDE (REFS) #3330 (@jsantell)
       go.sum: add missing entries #3319 (@bk2204)
       Ensure correct syntax for commit headers in lfs migrate import #3313 (@bk2204)
@@ -485,7 +502,7 @@ Mon Feb 24 15:52:29 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
       Tidy misformatted files #3202 (@bk2204)
       config: expand core.hooksPath #3212 (@ttaylorr)
       locks: manage write permissions of ignored files #3190 (@ttaylorr)
-  
+
   Misc
       CONTRIBUTING.md: nail_care #3325 (@ttaylorr)
       Update CONTRIBUTING #3317 (@bk2204)
@@ -507,7 +524,7 @@ Mon Feb 24 15:16:02 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
 
 - converted to current golang packaging guidelines, fix errors, etc.
 - hardcoded buildrequires for go1.10, as later versions break git-lfs in this version
-- updates to new releases are being prepared in a later SR... 
+- updates to new releases are being prepared in a later SR...
 
 -------------------------------------------------------------------
 Thu Jul 11 11:17:29 UTC 2019 - Johannes Kastl <kastl@b1-systems.de>
@@ -561,7 +578,7 @@ Fri Oct 12 08:26:37 UTC 2018 - Robert Frohl <rfrohl@suse.com>
 
   * Misc
     + Set original file content type on basic upload.
-    + change lfs.allowincompletepush default from true to false 
+    + change lfs.allowincompletepush default from true to false
     + replace git/odb with vendored copy
     + lfsapi/ssh.go: use zero-value sentinels
     + commands/checkout: mark 'git lfs checkout' as deprecated
@@ -582,7 +599,7 @@ Fri Oct 12 08:26:37 UTC 2018 - Robert Frohl <rfrohl@suse.com>
     + commands/uninstall: do not log about global hooks with --local
     + commands/run.go: exit 127 on unknown sub-command
     + commands/{un,}track: perform "prefix-agnostic" comparisons
-    + commands/migrate: escape paths before .gitattributes 
+    + commands/migrate: escape paths before .gitattributes
     + commands/ls-files: do not accept '--all' after '--'
     + tq: prevent uint64 underflow with invalid API response
 
@@ -714,7 +731,7 @@ Fri Jan 26 12:19:48 UTC 2018 - 9+suse@cirno.systems
     + git/githistory: only update local refs after migrations
     + locking: fix unlocking files not removing write flag
     + locks: fix unlocking files in a symlinked directory
-    + commands: teach git lfs unlock to ignore status errs in 
+    + commands: teach git lfs unlock to ignore status errs in
       appropriate conditions
     + git: expand GetAttributePaths check to include non-LFS
       lockables

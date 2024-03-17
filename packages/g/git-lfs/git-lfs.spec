@@ -1,7 +1,7 @@
 #
 # spec file for package git-lfs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,13 @@
 %bcond_without    build_docs
 
 Name:           git-lfs
-Version:        3.4.1
+Version:        3.5.1
 Release:        0
 Summary:        Git extension for versioning large files
 License:        MIT
 Group:          Development/Tools/Version Control
 URL:            https://github.com/git-lfs/git-lfs
-Source0:        https://github.com/git-lfs/git-lfs/releases/download/v%{version}/git-lfs-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 BuildRequires:  curl
 BuildRequires:  fdupes
@@ -38,7 +38,7 @@ BuildRequires:  which
 BuildRequires:  golang(API) >= 1.18
 Requires:       git-core >= 1.8.2
 Requires(post): git-core >= 1.8.2
-Requires(preun):git-core >= 1.8.2
+Requires(preun): git-core >= 1.8.2
 %{go_nostrip}
 %if %{with build_docs}
 BuildRequires:  %{rubygem asciidoctor}
