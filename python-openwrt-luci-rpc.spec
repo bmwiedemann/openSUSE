@@ -1,7 +1,7 @@
 #
 # spec file for package python-openwrt-luci-rpc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-openwrt-luci-rpc
-Version:        1.1.16
+Version:        1.1.17
 Release:        0
 Summary:        Module for interacting with OpenWrt Luci RPC interface
 License:        Apache-2.0

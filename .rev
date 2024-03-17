@@ -50,4 +50,17 @@
     <comment></comment>
     <requestid>1099788</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>061026c986977ab7cc8b488dc53dccd6</srcmd5>
+    <version>1.1.17</version>
+    <time>1710710075</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.17:
+  * add lower bound to version check
+  * Fix issue #60
+  * Fix tests
+
+  * Add rst-linter pre-commit hook to prevent committing errors to HISTORY.rst #50</comment>
+    <requestid>1158397</requestid>
+  </revision>
 </revisionlist>
