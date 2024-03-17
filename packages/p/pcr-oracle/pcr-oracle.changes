@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 14 10:33:23 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add fix_grub_bls_entry.patch to measure boot entries in GRUB BLS
+
+-------------------------------------------------------------------
 Mon Feb 26 15:14:37 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Remove fix_efi_measure.patch
