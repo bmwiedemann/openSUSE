@@ -107,4 +107,16 @@
   * Ignore __main__ for coverage #116 (@blink1073)</comment>
     <requestid>1149145</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6429429c2b9eb853f4a2c7a0aefd1c51</srcmd5>
+    <version>0.9.3</version>
+    <time>1710710114</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.3:
+  * Pin pytest 7
+  * Fix html5lib typing
+  * Bump the actions group with 1 update #129 (@dependabot)
+  * Enforce pytest 7</comment>
+    <requestid>1158478</requestid>
+  </revision>
 </revisionlist>

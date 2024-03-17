@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 16 13:08:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.3:
+  * Pin pytest 7
+  * Fix html5lib typing
+  * Bump the actions group with 1 update #129 (@dependabot)
+  * Enforce pytest 7
+
+-------------------------------------------------------------------
 Thu Feb 22 09:59:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.1:
