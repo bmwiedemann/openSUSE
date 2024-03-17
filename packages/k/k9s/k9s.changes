@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sat Mar 16 17:47:52 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.32.3:
+  * #2584 Transfer of file doesn't detect corruption (with
+    feelings!)
+
+-------------------------------------------------------------------
+Sat Mar 16 17:40:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.32.2:
+  * #2582 Slowness due to client-side throttling in v0.32.0
+    (Maybe??)
+  * #2593 Popeye not working in 0.32.X
+
+-------------------------------------------------------------------
+Sat Mar 16 17:38:56 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.32.1:
+  * #2584 Transfer of file doesn't detect corruption
+  * #2579 Default sorting behavior changed to descending sort
+    bug
+  * #2586 Properly initialize key actions in picker
+
+-------------------------------------------------------------------
+Sat Mar 16 17:36:06 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.32.0:
+  * #2569 k9s panics on start if the main config file (config.yml)
+    is owned by root
+  * #2568 kube context in running k9s is no longer sticky, during
+    kubectx context switch
+  * #2560 Namespace/Settings keeps resetting
+  * #2557 [Feature]: Sort CRDs by their group
+  * #1462 k9s running very slowly when opening namespace with 13k
+    pods (maybe??)
+  * #2564 Add everforest skins
+  * #2558 feat: sort by role in node list view
+  * #2554 Added context to the debug command for debug-container
+    plugin
+  * #2554 Correctly respect the KUBECACHEDIR env var
+  * #2546 Use configured log fgColor to print log markers
+
+-------------------------------------------------------------------
 Mon Feb 19 09:11:00 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.31.9:
