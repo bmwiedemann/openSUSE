@@ -1,5 +1,3 @@
-# Ping is useful on compute nodes (bsc#1169484)
-Requires:       iputils
 # Recommend libraries which are in hpc
 Recommends:     libhdf5-gnu-hpc
 Recommends:     libhdf5_cpp-gnu-hpc
@@ -23,12 +21,14 @@ Recommends:     mvapich2-psm2-gnu-hpc
 Recommends:     libhdf5-gnu-mpich-hpc
 Recommends:     libhdf5-gnu-mvapich2-hpc
 Recommends:     libhdf5-gnu-openmpi4-hpc
+Recommends:     libhdf5-gnu-openmpi5-hpc
 Recommends:     libhdf5_fortran-gnu-mpich-hpc
 Recommends:     libhdf5_fortran-gnu-mvapich2-hpc
 Recommends:     libhdf5_fortran-gnu-openmpi4-hpc
 Recommends:     libhdf5_hl-gnu-mpich-hpc
 Recommends:     libhdf5_hl-gnu-mvapich2-hpc
 Recommends:     libhdf5_hl-gnu-openmpi4-hpc
+Recommends:     libhdf5_hl-gnu-openmpi5-hpc
 Recommends:     libhdf5_hl_fortran-gnu-hpc
 Recommends:     libhdf5_hl_fortran-gnu-mpich-hpc
 Recommends:     libhdf5_hl_fortran-gnu-mvapich2-hpc
@@ -40,4 +40,3 @@ Recommends:     papi-hpc
 Recommends:     imb-gnu-mpich-hpc
 Recommends:     imb-gnu-mvapich2-hpc
 Recommends:     imb-gnu-openmpi4-hpc
-

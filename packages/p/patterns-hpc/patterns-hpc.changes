@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 15 11:11:28 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- removed following node based patterns which were used in the
+  system roles of the now removed SUSE HPC product (bsc#1221478).
+  * compute_node as these nodes are now image based
+  * development_node as this was just a nice name for the 
+    devel_libraries
+  * workload_server as slurm the workload manager pulls the
+    recommended packages
+
+-------------------------------------------------------------------
 Wed Jan 25 09:18:02 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Don't recommend ypbind, it's deprecated and will be removed
