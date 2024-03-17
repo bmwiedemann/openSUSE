@@ -64,7 +64,7 @@ BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sqlite3)
 %{?systemd_ordering}
 %if 0%{?suse_version} < 1550
-BuildRequires:  gcc12-c++
+BuildRequires:  gcc13-c++
 %endif
 
 %description
@@ -177,7 +177,8 @@ This package provides automated tests for %{name}-qt5 and %{name}d.
 %build
 autoreconf -fiv
 %if 0%{?suse_version} < 1550
-export CXX=g++-12
+export CC=gcc-13
+export CXX=g++-13
 %endif
 %configure \
   --with-asm=auto \

@@ -463,4 +463,12 @@
 - Enable asm optimizations unconditionally</comment>
     <requestid>1146595</requestid>
   </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>add4084a524595c09dcf1498e0377773</srcmd5>
+    <version>26.0</version>
+    <time>1710710093</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1158453</requestid>
+  </revision>
 </revisionlist>

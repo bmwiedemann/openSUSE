@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar  9 08:54:52 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Use gcc13 on Leap 
+
+-------------------------------------------------------------------
 Wed Feb 14 14:16:11 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Enable LTO and test package for Leap
