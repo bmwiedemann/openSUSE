@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Mar 16 16:09:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.16.4:
+  * ci: refresh dev dependencies (#1162)
+  * Fix problems with example inventory in the intro_patterns doc
+    (#1138) (#1158)
+  * Update playbooks_templating_now.rst (#1099) (#1156)
+  * Merge pull request #1114 from akira6592/fix-ellipsis
+  * Merge pull request #1115 from h3xx/fix-syntax-error
+  * Merge pull request #1119 from tomkivlin/tomkivlin-patch-1
+  * Remove/update incorrect docs building documentation (#1128)
+  * steering committee: update members / past members lists (#1143)
+    (#1144)
+  * Fix core deprecation cycle example to match reality (#1113)
+  * Add example around ansible-galaxy command (#1053)
+  * ci: refresh dev dependencies (#1131)
+  * Improve role argspec documentation (#1126)
+  * Update Ansible 9 porting guide. (#1124) (#1125)
+  * Merge pull request #1111 from bcoca/fix_typo
+  * ci: refresh dev dependencies (#1091)
+  * fix version switcher problem` (#1112)
+  * Fix doc prompts (#1074) (#1107)
+  * nox: run clone-core session in a venv as well (#1055) (#1060)
+  * [network] update note about `gather_network_resources` (#1096)
+    (#1104)
+  * Add network differences explanation (#1051) (#1072)
+  * remove outdated ansible/community links (#913)
+  * Collection requirements: undocumented-parameter must only be
+    used for deprecated parameters or internal parameters (#989)
+    (#1100)
+  * Extend Ansible 9 lifecycle to November 2024 (#1023) (#1098)
+  * Ansible 10 roadmap (#994) (#1097)
+  * Add Ansible community 9.2.0 porting guide (#1087)
+  * Bump antsibull-docs to 2.7.0. (#1090)
+  * community_steering_committee.rst: update with respect to forum
+    and collection requirements (#997)
+  * ci: refresh dev dependencies (#1049) (#1061)
+  * ci: refresh dev dependencies (#1065) (#1077)
+  * Remove 2.10 from build (#1046)
+
+-------------------------------------------------------------------
 Tue Jan 30 14:18:08 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.16.3:
