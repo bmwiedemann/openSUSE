@@ -101,4 +101,19 @@
     <comment>- Switch to autosetup and pyproject macros.</comment>
     <requestid>1154475</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0603353ee12498000f85ed448f3d769d</srcmd5>
+    <version>1.16</version>
+    <time>1710710083</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.16 (bsc#1220489, CVE-2024-27454):
+  * Produce Python 3.8 wheels again, I deactivated it too
+    eagerly, it's in security fixes only mode, not yet reached
+    its end-of-life state
+  * Honor the recursion limit also at parse time, to avoid
+    attacks as described by CVE-2024-27454
+
+- Switch to autosetup and pyproject macros.</comment>
+    <requestid>1158410</requestid>
+  </revision>
 </revisionlist>

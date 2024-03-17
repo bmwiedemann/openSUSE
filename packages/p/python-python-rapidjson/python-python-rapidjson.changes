@@ -1,7 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 16 09:29:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.16 (bsc#1220489, CVE-2024-27454):
+  * Produce Python 3.8 wheels again, I deactivated it too
+    eagerly, it's in security fixes only mode, not yet reached
+    its end-of-life state
+  * Honor the recursion limit also at parse time, to avoid
+    attacks as described by CVE-2024-27454
+
+-------------------------------------------------------------------
 Mon Mar  4 01:47:13 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Switch to autosetup and pyproject macros. 
+- Switch to autosetup and pyproject macros.
 
 -------------------------------------------------------------------
 Fri Jan  5 17:39:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
