@@ -98,4 +98,12 @@ This is just to get rid of the build failure in d:l:p. It is not suitable for an
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1130469</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>493a6f51d3dbcad958ab8e93096ee2c0</srcmd5>
+    <version>0.6.0</version>
+    <time>1710710016</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1158294</requestid>
+  </revision>
 </revisionlist>

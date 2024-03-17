@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-asdf-astropy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-asdf-astropy%{psuffix}
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        ASDF serialization support for astropy
 License:        BSD-3-Clause
@@ -42,14 +42,12 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-asdf >= 2.13
-Requires:       python-asdf-coordinates-schemas >= 0.1
-Requires:       python-asdf-transform-schemas >= 0.2.2
+Requires:       python-asdf-coordinates-schemas >= 0.3
+Requires:       python-asdf-standard >= 1.1.0
+Requires:       python-asdf-transform-schemas >= 0.5
 Requires:       python-astropy >= 5.0.4
 Requires:       python-numpy >= 1.20
 Requires:       python-packaging >= 19
-%if 0%{?python_version_nodots} < 39
-Requires:       python-importlib_resources >= 3
-%endif
 %if %{with test}
 BuildRequires:  %{python_module asdf-astropy = %{version}}
 BuildRequires:  %{python_module pytest-astropy}
@@ -66,6 +64,10 @@ ASDF serialization support for astropy
 %prep
 %autosetup -p1 -n asdf-astropy-%{version}
 sed -i 's/--color=yes//' pyproject.toml
+for c in asdf_astropy/conftest.py; do
+  [ -f $c ] || exit 1 # does not exist anymore
+  [ ! -s $c ] && echo '# empty module' > $c
+done
 
 %if !%{with test}
 %build
