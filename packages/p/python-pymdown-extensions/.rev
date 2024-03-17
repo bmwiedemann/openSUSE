@@ -54,4 +54,14 @@
     repository providers based off the existing providers.</comment>
     <requestid>1135879</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>606d1a8502573894acaf99484540d977</srcmd5>
+    <version>10.7.1</version>
+    <time>1710710104</time>
+    <user>anag+factory</user>
+    <comment>- update to 10.7.1:
+  * SmartSymbols: Ensure symbols are properly translated in table
+    of content tokens.</comment>
+    <requestid>1158466</requestid>
+  </revision>
 </revisionlist>

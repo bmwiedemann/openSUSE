@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 16 12:52:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.7.1:
+  * SmartSymbols: Ensure symbols are properly translated in table
+    of content tokens.
+
+-------------------------------------------------------------------
 Sun Dec 31 13:42:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.7:
