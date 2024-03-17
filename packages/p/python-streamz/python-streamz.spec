@@ -1,7 +1,7 @@
 #
 # spec file for package python-streamz
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,9 @@ Patch0:         streamz-pr455-ci-fixes.patch
 # PATCH-FIX-OPENSUSE streamz-opensuse-python-exec.patch -- call tests with correct flavor
 Patch1:         streamz-opensuse-python-exec.patch
 BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Setuptools is a runtime requirement because of pkg_resources usage
@@ -55,7 +57,7 @@ BuildRequires:  %{python_module dask-distributed}
 BuildRequires:  %{python_module distributed}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module graphviz}
-BuildRequires:  %{python_module ipywidgets}
+BuildRequires:  %{python_module ipywidgets if %python-base >= 3.10}
 BuildRequires:  %{python_module networkx}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest-asyncio}
@@ -77,10 +79,10 @@ Streamz helps you build pipelines to manage continuous streams of data.
 %autosetup -p1 -n streamz-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -98,6 +100,6 @@ donttest+=" or test_tcp"
 %doc README.rst
 %license LICENSE.txt
 %{python_sitelib}/streamz
-%{python_sitelib}/streamz-%{version}*-info
+%{python_sitelib}/streamz-%{version}.dist-info
 
 %changelog
