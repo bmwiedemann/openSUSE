@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar 16 16:48:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.6.1:
+  * Update iss file version
+  * Fix the -C option definition
+  * Fix the -C description in the help code
+  * Fix problem with rfc2217 flush handling
+  * Add support for the updated gensio modemstate/linestate
+  * handling
+
+-------------------------------------------------------------------
 Fri Nov 24 13:50:14 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.6.0
@@ -136,7 +147,7 @@ Wed Jul  8 18:53:31 UTC 2020 - Martin Hauke <mardnh@gmx.de>
     done to handle IPv4 mapped addresses in IPv6 by reworking
     address comparison to handle that.
   general:
-    convert gensio_raddr_to_str(), gensio_get_raddr(), and 
+    convert gensio_raddr_to_str(), gensio_get_raddr(), and
     gensio_remote_id() to use gensio_control(). Having separate
     functions for those added to the API and added a lot of code
     to all the intermediate layer. The function are there but
@@ -285,7 +296,7 @@ Fri Dec 21 20:21:12 UTC 2012 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Thu Dec 20 22:11:44 UTC 2012 - crrodriguez@opensuse.org
 
-- Initial version for factory, 2.8.rc3 
+- Initial version for factory, 2.8.rc3
 
 -------------------------------------------------------------------
 Mon Feb 26 11:03:05 AEST 2008 - developer@jefferyfernandez.id.au

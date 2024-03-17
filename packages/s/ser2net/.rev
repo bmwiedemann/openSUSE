@@ -186,4 +186,21 @@
     <comment></comment>
     <requestid>1128603</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4ffbb70422982868f9d620a6784f527a</srcmd5>
+    <version>4.6.1</version>
+    <time>1710710151</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.6.1:
+  * Update iss file version
+  * Fix the -C option definition
+  * Fix the -C description in the help code
+  * Fix problem with rfc2217 flush handling
+  * Add support for the updated gensio modemstate/linestate
+  * handling
+
+    convert gensio_raddr_to_str(), gensio_get_raddr(), and
+- Initial version for factory, 2.8.rc3</comment>
+    <requestid>1158542</requestid>
+  </revision>
 </revisionlist>
