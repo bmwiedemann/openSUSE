@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Mar 15 12:51:27 UTC 2024 - dfaggioli@suse.com
+
+- Update to version 8.2.2. Full changelog here:
+  https://lore.kernel.org/qemu-devel/1709577077.783602.1474596.nullmailer@tls.msk.ru/
+  Some upstream backports:
+  * chardev/char-socket: Fix TLS io channels sending too much data to the backend
+  * tests/unit/test-util-sockets: Remove temporary file after test
+  * hw/usb/bus.c: PCAP adding 0xA in Windows version
+  * hw/intc/Kconfig: Fix GIC settings when using "--without-default-devices"
+  * gitlab: force allow use of pip in Cirrus jobs
+  * tests/vm: avoid re-building the VM images all the time
+  * tests/vm: update openbsd image to 7.4
+  * target/i386: leave the A20 bit set in the final NPT walk
+  * target/i386: remove unnecessary/wrong application of the A20 mask
+  * target/i386: Fix physical address truncation
+  * target/i386: check validity of VMCB addresses
+  * target/i386: mask high bits of CR3 in 32-bit mode
+  * pl031: Update last RTCLR value on write in case it's read back
+  * hw/nvme: fix invalid endian conversion
+  * update edk2 binaries to edk2-stable202402
+  * update edk2 submodule to edk2-stable202402
+  * target/ppc: Fix crash on machine check caused by ifetch
+  * target/ppc: Fix lxv/stxv MSR facility check
+  * .gitlab-ci.d/windows.yml: Drop msys2-32bit job
+  * system/vl: Update description for input grab key
+  * docs/system: Update description for input grab key
+  * hw/hppa/Kconfig: Fix building with "configure --without-default-devices"
+  * tests/qtest: Depend on dbus_display1_dep
+  * meson: Explicitly specify dbus-display1.h dependency
+  * audio: Depend on dbus_display1_dep
+  * ui/console: Fix console resize with placeholder surface
+  * ui/clipboard: add asserts for update and request
+  * ui/clipboard: mark type as not available when there is no data
+  * ui: reject extended clipboard message if not activated
+  * target/i386: Generate an illegal opcode exception on cmp instructions with lock prefix
+  * i386/cpuid: Move leaf 7 to correct group
+  * i386/cpuid: Decrease cpuid_i when skipping CPUID leaf 1F
+  * i386/cpu: Mask with XCR0/XSS mask for FEAT_XSAVE_XCR0_HI and FEAT_XSAVE_XSS_HI leafs
+  * i386/cpu: Clear FEAT_XSAVE_XSS_LO/HI leafs when CPUID_EXT_XSAVE is not available
+  * .gitlab-ci/windows.yml: Don't install libusb or spice packages on 32-bit
+  * iotests: Make 144 deterministic again
+  * target/arm: Don't get MDCR_EL2 in pmu_counter_enabled() before checking ARM_FEATURE_PMU
+  * target/arm: Fix SVE/SME gross MTE suppression checks
+  * target/arm: Handle mte in do_ldrq, do_ldro
+- Address bsc#1220310. Backported upstream commits:
+  * ppc/spapr: Initialize max_cpus limit to SPAPR_IRQ_NR_IPIS
+  * ppc/spapr: Introduce SPAPR_IRQ_NR_IPIS to refer IRQ range for CPU IPIs.
+
+-------------------------------------------------------------------
 Mon Mar 04 14:10:36 UTC 2024 - dfaggioli@suse.com
 
 - Fix bsc#1220799. Amended commit:
