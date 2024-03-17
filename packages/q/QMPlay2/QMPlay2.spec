@@ -17,10 +17,10 @@
 
 
 %define __builder Ninja
-%bcond_with qt6
+%bcond_without qt6
 
 Name:           QMPlay2
-Version:        23.10.22
+Version:        24.03.16
 Release:        0
 Summary:        A Qt based media player, streamer and downloader
 License:        LGPL-3.0-or-later
@@ -29,8 +29,6 @@ URL:            https://github.com/zaps166/QMPlay2
 Source:         https://github.com/zaps166/QMPlay2/releases/download/%{version}/QMPlay2-src-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE 0001-add-opensuse-customizations.patch -- Fix python executable detection and add branding
 Patch1:         0001-add-opensuse-customizations.patch
-# PATCH-FIX-UPSTREAM 0001-fix-taglib2-build.patch -- Fix build with taglib 2.0+
-Patch2:         0001-fix-taglib2-build.patch
 BuildRequires:  clang
 BuildRequires:  cmake >= 3.16
 BuildRequires:  llvm-gold

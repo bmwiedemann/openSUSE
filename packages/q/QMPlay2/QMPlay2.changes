@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Mar 16 17:25:23 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 24.03.16
+   * set dark title bar on Windows if QMPlay2 theme is dark,
+   * support reading lyrics meta-data from ID3v2 tags,
+   * add new Vulkan Video decoder (experimental),
+   * don't use Qt for loading Vulkan library,
+   * improve Vulkan device lost recovery,
+   * better support for FFmpeg 6.1,
+   * various Vulkan improvements,
+   * add support for TagLib 2.0,
+   * make Qt6 build default,
+   * Qt6 build for Android,
+   * other minor fixes.
+- Drop 0001-fix-taglib2-build.patch as it is merged upstream
+- QMPlay2 is now built againt Qt6 instead of Qt5 to follow
+  upstream more closely
+
+-------------------------------------------------------------------
 Wed Jan 31 17:05:29 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
 
 - Add 0001-fix-taglib2-build.patch to fix build with taglib >= 2.0
