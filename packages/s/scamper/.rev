@@ -357,4 +357,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1146332</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>e25041d3f82b1d169f84519a273a1b8c</srcmd5>
+    <version>20240229</version>
+    <time>1710710184</time>
+    <user>anag+factory</user>
+    <comment>- update to 20240229:
+  * bugfix: correct SCAMPER_DL_IS_ICMP_TIME_REPLY macro so that scamper
+    does not ignore ICMP replies quoting TCP/UDP packets for 1/256
+    source port values.
+  * bugfixes for -O icmp-rxerr: handle EPOLLERR on linux, try using
+    IPV6_RECVHOPLIMIT before IPV6_HOPLIMIT for IPv6 udp probing.
+  * bugfix: fix possible assertions in dealias, trace, and tracelb code.
+  * ping: count UDP replies as from the target
+  * trace: correct datalink timestamp adjustments
+  * add more specific error messages when a scamper command is not
+    accepted, return them over control socket or terminal, as appropriate.
+  * scamper_fd_t: refactor fd_addr, fd_sport, fd_dl, fd_ifindex
+  * scamper_fd_t: decouple udp4raw/udp4dg from each other.  use udp4dg
+    and udp6 sockets in udpprobe primitive, rather than have each
+    udpprobe task create its own socket.
+  * scamper_fd_t: add methods that return an available open socket for
+    probing a given destination without blocking if another task is
+    probing the same destination.  use this with ping -F 0 and trace -s 0,
+    instead of generating random port values, so that scamper opens
+    the minimum number of file descriptors.
+  * ping and trace: have -O dl mean to capture transmit and receive
+    timestamps from a datalink interface.  add -O raw option so that
+    IPv4 TCP probes can be transmitted over a raw socket, to allow transmitted
+    TCP packets to be observed on the datalink interface.
+  * add memory-mapped ring buffer support (PACKET_RX_RING) for receiving
+    packets on datalink sockets on Linux.  enable at scamper runtime
+    with -O ring.  contributed by Alistair King.
+  ## python module:
+  * generate module .c with Cython 0.29.37, to enable module to compile
+    with Python 3.11.</comment>
+    <requestid>1158597</requestid>
+  </revision>
 </revisionlist>
