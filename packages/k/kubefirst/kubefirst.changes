@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Mar 16 17:45:47 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.4.1:
+  * preparing cli for 2.4.1 (#2121)
+  * fix: version check (#2120)
+
+-------------------------------------------------------------------
+Sat Mar 16 17:42:55 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.4.0:
+  * release v2.4.0 (#2118)
+  * fix: k3d and ci flag (#2116)
+  * use local and missing types (#2107)
+  * changing to rc27 for launch up (#2115)
+  * fix: config version (#2113)
+  * chore: bump launch (#2111)
+  * feat: cluster role binding (#2110)
+  * fix: env var (#2109)
+  * update kubefirst-api package (#2108)
+  * adds catalogApps to function call (#2106)
+  * update runtime package (#2105)
+  * add akamai cloud support (#2104)
+  * feat: add k3s cmd (#1875)
+
+-------------------------------------------------------------------
 Sat Feb 24 09:11:34 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.3.8:
