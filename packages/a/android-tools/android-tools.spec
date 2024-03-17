@@ -1,7 +1,7 @@
 #
 # spec file for package android-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,12 @@
 #
 
 
-%define _pyn 3
-%define _pyd 3
+%define _pyver 3
 %if 0%{?sle_version} == 150500 || 0%{?sle_version} == 150600
-%define _pyn 311
-%define _pyd 3.11
+%define _pyver 311
 %endif
 %if 0%{?sle_version} == 150400
-%define _pyn 310
-%define _pyd 3.10
+%define _pyver 310
 %endif
 
 Name:           android-tools
@@ -37,15 +34,17 @@ Source0:        https://github.com/nmeum/android-tools/releases/download/%{versi
 Source2:        man-pages.tar.gz
 # PATCH-FIX-OPENSUSE fix-install-completion.patch boo#1185883 munix9@googlemail.com -- Simplify completion
 Patch0:         fix-install-completion.patch
-# PATCH-FIX-UPSTREAM fix-add-make_f2fs-tool-for-fastboot.patch -- based on PR 125 (gh#nmeum/android-tools#109)
+# PATCH-FEATURE-UPSTREAM fix-add-make_f2fs-tool-for-fastboot.patch -- based on PR 125 (gh#nmeum/android-tools#109)
 Patch1:         fix-add-make_f2fs-tool-for-fastboot.patch
+# PATCH-FEATURE-UPSTREAM fix-add-sload_f2fs-tool.patch -- based on PR 128 (gh#nmeum/android-tools#127)
+Patch2:         fix-add-sload_f2fs-tool.patch
 BuildRequires:  clang
 BuildRequires:  cmake >= 3.12
 BuildRequires:  go
 BuildRequires:  llvm-gold
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  python%{_pyn}
+BuildRequires:  python%{_pyver}
 BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(libbrotlicommon)
 BuildRequires:  pkgconfig(liblz4)
@@ -96,12 +95,6 @@ Bash command line completion support for android-tools.
 %prep
 %autosetup -a2 -p1
 
-# fix env-script-interpreter
-sed -e '1s|^#!.*|#!/usr/bin/python%{_pyd}|' -i vendor/avb/avbtool.py \
-	vendor/mkbootimg/{mk,repack_,unpack_}bootimg.py \
-	vendor/mkbootimg/gki/generate_gki_certificate.py \
-	vendor/libufdt/utils/src/mkdtboimg.py
-
 %build
 %define __builder ninja
 export GOFLAGS="-buildmode=pie -trimpath -ldflags=-buildid="
@@ -114,6 +107,18 @@ export GOFLAGS="-buildmode=pie -trimpath -ldflags=-buildid="
 
 %install
 %cmake_install
+
+# fix env-script-interpreter (Leap requires special handling)
+%if 0%{?suse_version} <= 1500
+%define python3_fix_shebang_path(+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-=) \
+myargs="%{**}" \
+for f in ${myargs}; do \
+  [ -f $f ] && sed -i "1s@#\\!.*python.*@#\\!$(realpath %{expand:%{__python%{_pyver}}})@" $f \
+done
+%endif
+%python3_fix_shebang_path %{buildroot}%{_bindir}/*
+%python3_fix_shebang_path %{buildroot}%{_datadir}/%{name}/mkbootimg/*
+%python3_fix_shebang_path %{buildroot}%{_datadir}/%{name}/mkbootimg/gki/*
 
 # fix non-executable-script
 chmod 0755 %{buildroot}%{_datadir}/%{name}/mkbootimg/gki/generate_gki_certificate.py
@@ -142,6 +147,7 @@ mkbootimg --help
 %{_bindir}/make_f2fs
 %{_bindir}/mke2fs.android
 %{_bindir}/simg2img
+%{_bindir}/sload_f2fs
 %{_mandir}/man1/adb.1%{?ext_man}
 %{_mandir}/man1/avbtool.1%{?ext_man}
 %{_mandir}/man1/fastboot.1%{?ext_man}

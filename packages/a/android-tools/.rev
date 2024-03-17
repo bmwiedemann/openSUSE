@@ -111,4 +111,17 @@
     <comment></comment>
     <requestid>1114525</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>c189bd83082799d7697bd9e8c4346f80</srcmd5>
+    <version>34.0.4</version>
+    <time>1710710092</time>
+    <user>anag+factory</user>
+    <comment>- Use custom %python3_fix_shebang_path macro for Leap
+- Add upstream patch fix-add-sload_f2fs-tool.patch
+  (gh#nmeum/android-tools#127) for the missing tool sload_f2fs
+- Rework python3 dependencies (use %python3_fix_shebang for
+  Factory)
+</comment>
+    <requestid>1158477</requestid>
+  </revision>
 </revisionlist>

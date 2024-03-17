@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 16 12:56:32 UTC 2024 - munix9@googlemail.com
+
+- Use custom %python3_fix_shebang_path macro for Leap
+
+-------------------------------------------------------------------
+Fri Mar 15 18:24:27 UTC 2024 - munix9@googlemail.com
+
+- Add upstream patch fix-add-sload_f2fs-tool.patch
+  (gh#nmeum/android-tools#127) for the missing tool sload_f2fs
+- Rework python3 dependencies (use %python3_fix_shebang for
+  Factory)
+
+-------------------------------------------------------------------
 Sat Sep 30 06:30:41 UTC 2023 - munix9@googlemail.com
 
 - Add upstream patch fix-add-make_f2fs-tool-for-fastboot.patch
