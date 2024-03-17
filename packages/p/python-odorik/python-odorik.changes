@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 15 17:26:55 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add assertEquals.patch replacing assertEquals with assertEqual
+  (incompatible with Python 3.12).
+
+-------------------------------------------------------------------
 Tue Oct 11 02:16:31 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded BuildRequires on python 

@@ -72,4 +72,14 @@
     <comment>- Remove unneeded BuildRequires on python</comment>
     <requestid>1009643</requestid>
   </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>da4928f58d00bf11f63c00b92c51d2df</srcmd5>
+    <version>0.5</version>
+    <time>1710710222</time>
+    <user>anag+factory</user>
+    <comment>- Add assertEquals.patch replacing assertEquals with assertEqual
+  (incompatible with Python 3.12).
+</comment>
+    <requestid>1158766</requestid>
+  </revision>
 </revisionlist>

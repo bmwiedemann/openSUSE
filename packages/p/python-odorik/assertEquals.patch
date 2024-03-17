@@ -1,0 +1,99 @@
+From d90f3a6cd76972a4a059ba33141ba94c61fec5f7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michal=20=C4=8Ciha=C5=99?= <michal@cihar.com>
+Date: Fri, 4 Jan 2019 13:31:32 +0100
+Subject: [PATCH] Avoid using deprecated assertEquals
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Michal Čihař <michal@cihar.com>
+---
+ odorik/test_main.py   |    4 ++--
+ odorik/test_odorik.py |   14 +++++++-------
+ 2 files changed, 9 insertions(+), 9 deletions(-)
+
+--- a/odorik/test_main.py
++++ b/odorik/test_main.py
+@@ -392,7 +392,7 @@ class TestCommands(TestCase):
+             '00420789123456',
+             'text'
+         ])
+-        self.assertEquals('', output)
++        self.assertEqual('', output)
+ 
+     @httpretty.activate
+     def test_send_sms_invalid(self):
+@@ -411,7 +411,7 @@ class TestCommands(TestCase):
+         output = execute([
+             'callback', '00420789123456', '800123456'
+         ])
+-        self.assertEquals('', output)
++        self.assertEqual('', output)
+ 
+     @httpretty.activate
+     def test_summary(self):
+--- a/odorik/test_odorik.py
++++ b/odorik/test_odorik.py
+@@ -206,7 +206,7 @@ class OdorikTest(TestCase):
+     def test_sms_send(self):
+         """Test sending SMS."""
+         register_uris()
+-        self.assertEquals(
++        self.assertEqual(
+             Odorik().send_sms(
+                 '00420789123456',
+                 'text'
+@@ -230,7 +230,7 @@ class OdorikTest(TestCase):
+     def test_callback(self):
+         """Test callback."""
+         register_uris()
+-        self.assertEquals(
++        self.assertEqual(
+             Odorik().callback(
+                 '00420789123456',
+                 '800123456'
+@@ -242,7 +242,7 @@ class OdorikTest(TestCase):
+     def test_callback_line(self):
+         """Test callback."""
+         register_uris()
+-        self.assertEquals(
++        self.assertEqual(
+             Odorik().callback(
+                 '00420789123456',
+                 '800123456',
+@@ -255,7 +255,7 @@ class OdorikTest(TestCase):
+     def test_calls(self):
+         """Test calls."""
+         register_uris()
+-        self.assertEquals(
++        self.assertEqual(
+             len(Odorik().calls(
+                 datetime.datetime.now(),
+                 datetime.datetime.now(),
+@@ -267,7 +267,7 @@ class OdorikTest(TestCase):
+     def test_calls_line(self):
+         """Test calls."""
+         register_uris()
+-        self.assertEquals(
++        self.assertEqual(
+             len(Odorik().calls(
+                 datetime.datetime.now(),
+                 datetime.datetime.now(),
+@@ -280,7 +280,7 @@ class OdorikTest(TestCase):
+     def test_sms(self):
+         """Test sms."""
+         register_uris()
+-        self.assertEquals(
++        self.assertEqual(
+             len(Odorik().sms(
+                 datetime.datetime.now(),
+                 datetime.datetime.now(),
+@@ -292,7 +292,7 @@ class OdorikTest(TestCase):
+     def test_sms_line(self):
+         """Test sms."""
+         register_uris()
+-        self.assertEquals(
++        self.assertEqual(
+             len(Odorik().sms(
+                 datetime.datetime.now(),
+                 datetime.datetime.now(),
