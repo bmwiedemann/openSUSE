@@ -177,4 +177,18 @@ of Markdown.</comment>
     brackets (#552)</comment>
     <requestid>1134336</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ee81f1533ca33686fb4674006532cf2a</srcmd5>
+    <version>2.4.13</version>
+    <time>1710710076</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.4.13:
+  * [pull #559] Allow cuddled tables
+  * [pull #560] Fix `markdown-in-html` not always splitting HTML
+    tags into separate lines
+  * [pull #564] Fix incomplete comments in safe mode not being
+    escaped
+  * [pull #566] Fix crash in `markdown-in-html` extra</comment>
+    <requestid>1158398</requestid>
+  </revision>
 </revisionlist>
