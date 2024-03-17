@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Mar 16 08:40:46 UTC 2024 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Update to version 3.70.1
+  * pull out verification logic from github detectors (#2554)
+  * Fix --results not behaving as expected (#2582)
+  * Fix GitHub detector npe (#2583)
+
+-------------------------------------------------------------------
+Sat Mar 16 08:34:52 UTC 2024 - felix.niederwanger@suse.com
+
+- Update to version 3.70.0:
+  * fix(github): response can be nil (#2583)
+  * fix(cli): properly parse --results (#2582)
+  * pull out verification logic from github detectors (#2554)
+  * Add `--results` flag (#2372)
+  * fix(deps): update golang.org/x/exp digest to c7f7c64 (#2575)
+  * fix(deps): update module github.com/couchbase/gocb/v2 to v2.8.0 (#2573)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.50.38 (#2572)
+  * fix(deps): update module github.com/xanzy/go-gitlab to v0.100.0 (#2567)
+  * fix(deps): update module github.com/launchdarkly/go-server-sdk/v6 to v7 (#2568)
+  * [chore] -  Record metrics before reset (#2556)
+  * Fix flaky test. (#2564)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.50.36 (#2566)
+  * fix(deps): update module cloud.google.com/go/storage to v1.39.1 (#2565)
+
+-------------------------------------------------------------------
 Sun Mar 10 08:53:55 UTC 2024 - felix.niederwanger@suse.com
 
 - Update to version 3.69.0:
