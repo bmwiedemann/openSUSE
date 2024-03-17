@@ -64,4 +64,15 @@
     <comment>- reenable build for python311 (numba available)</comment>
     <requestid>1089580</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ad8d5daa264dad7d2185d90010cfdb77</srcmd5>
+    <version>0.4.3</version>
+    <time>1710710099</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.3:
+  * Update to remove deprecated usage of pkg_resources
+
+- reenable build for python311 (numba available)</comment>
+    <requestid>1158459</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 16 11:55:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.3:
+  * Update to remove deprecated usage of pkg_resources
+
+-------------------------------------------------------------------
 Mon May 29 13:53:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- reenable build for python311 (numba available) 
+- reenable build for python311 (numba available)
 
 -------------------------------------------------------------------
 Sat Apr  1 18:22:14 UTC 2023 - Ben Greiner <code@bnavigator.de>
