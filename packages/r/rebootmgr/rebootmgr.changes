@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 15 12:34:51 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.4
+  - Make sure systemctl reboot will not switch to soft-reboot
+    automatically
+
+-------------------------------------------------------------------
 Fri Mar  8 09:51:29 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.3

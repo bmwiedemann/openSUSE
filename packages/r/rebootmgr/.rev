@@ -240,4 +240,14 @@
   - Enable verbose mode in rebootmgr.service by default</comment>
     <requestid>1156310</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ff74fe3c6222f76c5fa6d73812c5fc21</srcmd5>
+    <version>2.4</version>
+    <time>1710709850</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.4
+  - Make sure systemctl reboot will not switch to soft-reboot
+    automatically</comment>
+    <requestid>1158226</requestid>
+  </revision>
 </revisionlist>
