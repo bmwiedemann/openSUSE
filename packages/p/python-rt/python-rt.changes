@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 14 08:56:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.4:
+  * Add a workaround for a breaking change introduced in RT5.0.5
+    which returns undefined pages variable for non-superusers
+
+-------------------------------------------------------------------
 Fri Dec  8 16:08:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.3:

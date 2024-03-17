@@ -176,4 +176,14 @@
 -  Update to version 3.0.4:</comment>
     <requestid>1132843</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3537716d4e4490ffd27ec9e1844fa97e</srcmd5>
+    <version>3.1.4</version>
+    <time>1710710087</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1.4:
+  * Add a workaround for a breaking change introduced in RT5.0.5
+    which returns undefined pages variable for non-superusers</comment>
+    <requestid>1158433</requestid>
+  </revision>
 </revisionlist>
