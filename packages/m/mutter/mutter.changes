@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 15 07:09:11 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add 0001-Revert-clutter-actor-Cache-stage-relative-instead-of.patch:
+  This leads into partial update while switching VT (from TTY to
+  GNOME) on X11 session with fbdev driver used (
+  glgo#GNOME/mutter#3302, bsc#1219546).
+
+-------------------------------------------------------------------
 Thu Feb  1 09:28:37 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Drop mutter-SLE-bsc984738-grab-display.patch: It blocks non-CSD
