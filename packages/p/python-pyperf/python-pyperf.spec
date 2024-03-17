@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyperf
-Version:        2.6.2
+Version:        2.6.3
 Release:        0
 Summary:        Python module to run and analyze benchmarks
 License:        MIT
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-psutil
 BuildArch:      noarch
 # SECTION test requirements

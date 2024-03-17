@@ -72,4 +72,15 @@
 - version update to 2.4.1</comment>
     <requestid>1137437</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>508e4b785038c59f792d3c70d6ad4d8a</srcmd5>
+    <version>2.6.3</version>
+    <time>1710710086</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.6.3:
+  * Support Free-threading CPython (PEP-703) by disabling psutil
+    related features.
+  * Fix mem_max_rss measurement on macOS.</comment>
+    <requestid>1158428</requestid>
+  </revision>
 </revisionlist>
