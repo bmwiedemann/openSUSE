@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Mar 17 19:02:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.2:
+  * Improved speed of project resolving by employing multiple CPU
+    cores, if available.
+  * Object and array (var and varList) properties are now
+    immutable in Probe items.
+  * Modules can now contain `Parameters` items.
+  * ModuleProviders can now contain `PropertyOptions` items.
+  * Allow `"mold"` as value for `cpp.linkerVariant`.
+  * The systemIncludePaths property is now handled correctly for
+    clang-cl.
+  * Only create qbs modules for those Qt modules that products
+    actually need.
+  * Users can now opt out of using RPATH when linking on Linux.
+  * Protobuf module now requires pkg-config or built-in runtime.
+  * Protobuf module now requires C++17 on all platforms.
+  * Capnproto module: the outputDir property is now mutable.
+  * Added support for Groups to the VisualStudio generator.
+  * pkgconfig module provider: mergeDependencies property is
+    deprecated.
+  * Worked around crash in cl.exe when retrieving built-in
+    defines (QBS-1743).
+  * Fixed name collision check for multi-part modules (QBS-1772).
+  * Fixed potential assertion when attaching properties on
+    non-present modules (QBS-1776).
+  * Fixed the qbspkgconfig Qt provider for the case when there
+    is no Qt (QBS-1777).
+  * Make protobuf usable without qbspkgconfig again (QBS-1663).
+  * Add support for the definePrefix option to qbspkgconfig.
+
+-------------------------------------------------------------------
 Thu Nov  2 11:15:21 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.1.2
@@ -287,7 +319,7 @@ Language Additions
 
 Command Line
   * qbs-config --system to write system wide settings
- 
+
 -------------------------------------------------------------------
 Wed Apr  4 08:47:13 UTC 2018 - kai.koehne@qt.io
 
