@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Mar 15 22:20:27 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.50.0:
+  * build(deps): bump github.com/moby/buildkit from 0.12.5 to
+    0.13.0 (#926)
+  * build(deps): bump github.com/open-policy-agent/opa from 0.62.0
+    to 0.62.1 (#927)
+  * build(deps): bump github.com/open-policy-agent/opa from 0.61.0
+    to 0.62.0 (#925)
+  * cmd(verify): Enable show-builtin-errors by default (#922)
+  * fix: Catch Google Artifact Registry URL during OCI detection
+    (#921)
+  * docs: Use the right command to pull policies from OCI registry
+    (#920)
+  * feat: Use ORAS credentials (#917)
+  * chore: Update setup-regal and golangci-lint actions to latest
+    (#918)
+  * build(deps): bump cuelang.org/go from 0.7.0 to 0.7.1 (#916)
+  * build: Bump Go to 1.22.x (#915)
+  * Update workflow action versions (#914)
+  * build(deps): bump golang from 1.21.6-alpine to 1.22.0-alpine
+    (#913)
+
+-------------------------------------------------------------------
 Thu Feb 08 11:53:19 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.49.1:
