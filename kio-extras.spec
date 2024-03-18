@@ -1,7 +1,7 @@
 #
 # spec file for package kio-extras
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,7 @@ BuildRequires:  libssh-devel
 BuildRequires:  pkgconfig
 BuildRequires:  shared-mime-info
 BuildRequires:  cmake(KDSoap-qt6)
+BuildRequires:  cmake(KDSoapWSDiscoveryClient)
 BuildRequires:  cmake(KExiv2Qt6)
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
@@ -73,12 +74,13 @@ BuildRequires:  pkgconfig(libimobiledevice-1.0)
 BuildRequires:  pkgconfig(libplist-2.0)
 BuildRequires:  pkgconfig(libtirpc)
 BuildRequires:  pkgconfig(smbclient)
-BuildRequires:  cmake(KDSoapWSDiscoveryClient)
 BuildRequires:  pkgconfig(taglib)
-Requires:       qt6-sql-sqlite >= %{qt6_version}
 Requires:       (trash_kcm or kio-core)
+Requires:       qt6-sql-sqlite >= %{qt6_version}
 Recommends:     kf6-kimageformats >= %{kf6_version}
 Recommends:     qt6-imageformats >= %{qt6_version}
+# Packages are only coinstallable since 24.02.0
+Conflicts:      kio-extras5 < 24.02.0
 Provides:       kfileaudiopreview = 4.100.0
 Obsoletes:      kfileaudiopreview < 4.100.0
 Provides:       kde-odf-thumbnail = %{version}

@@ -8,4 +8,14 @@
   with kio-extras5</comment>
     <requestid>1155572</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ec34f81155f152eaad25c881eed68daf</srcmd5>
+    <version>24.02.0</version>
+    <time>1710776675</time>
+    <user>anag+factory</user>
+    <comment>- Make kio-extras conflict with kio-extras5 versions older
+  than 24.02.0
+- Recommend ffmpegthumbs</comment>
+    <requestid>1158612</requestid>
+  </revision>
 </revisionlist>

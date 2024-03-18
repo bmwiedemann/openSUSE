@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 16 21:05:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Make kio-extras conflict with kio-extras5 versions older
+  than 24.02.0
+- Recommend ffmpegthumbs
+
+-------------------------------------------------------------------
 Wed Mar  6 09:55:04 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Rename libkioarchive-devel to libkioarchive6-devel to not conflict
