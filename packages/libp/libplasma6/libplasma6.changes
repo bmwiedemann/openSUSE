@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 16 21:40:52 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Work around %preun in installed packages killing the session
+  during upgrade (boo#1221405)
+
+-------------------------------------------------------------------
 Wed Mar 13 09:09:57 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.2:

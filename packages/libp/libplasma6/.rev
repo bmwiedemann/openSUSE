@@ -15,4 +15,12 @@
     <comment>Plasma 6.0.2 + libksysguard5-helper upgrade fix + icon upgrade fix + gtk theme fix (forwarded request 1157674 from Vogtinator)</comment>
     <requestid>1157708</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f59789aa589636a18c0247480fd3980b</srcmd5>
+    <version>6.0.2</version>
+    <time>1710776599</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1158726</requestid>
+  </revision>
 </revisionlist>

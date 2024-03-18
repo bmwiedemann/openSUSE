@@ -170,7 +170,35 @@ Provides translations for the "libPlasma6" package.
 
 %find_lang libplasma6
 
+%pre -n libPlasma6
+# boo#1221405: When upgrading from plasma5-workspace to plasma6-workspace,
+# preun of the previous package does not know it's actually an upgrade
+# (because the package name differs) and it does systemctl --disable --now
+# on all units, which immediately kills the session :-( The old preun can't be
+# disabled so a hack is needed: Set RefuseManualStop=true on all plasma-* user
+# units for the entirety of the transaction. This package should be early
+# enough during the transaction as various plasma6 packages require it.
+# Only perform the workaround if systemd is running and plasma5-workspace
+# is currently still installed.
+if [ -x /usr/lib/systemd/systemd-update-helper ] && [ -d /run/systemd/system ] \
+   && [ -e /usr/share/qlogging-categories5/plasma-workspace.categories ]; then
+  for unit in $(ls /usr/lib/systemd/user/ | grep '^plasma-.*\.service$'); do
+    mkdir -p "/run/systemd/user/${unit}.d"
+    echo -e '[Unit]\nRefuseManualStop=true' > "/run/systemd/user/${unit}.d/boo1221405.conf"
+  done
+  touch /run/plasma-boo1221405-workaround
+  /usr/lib/systemd/systemd-update-helper user-reload
+fi
+
 %ldconfig_scriptlets -n libPlasma6
+
+%posttrans -n libPlasma6
+# Remove the temporary dropin files from pre again.
+if [ -e /run/plasma-boo1221405-workaround ]; then
+  rm /run/systemd/user/plasma-*.service.d/boo1221405.conf
+  /usr/lib/systemd/systemd-update-helper user-reload
+  rm /run/plasma-boo1221405-workaround
+fi
 
 %files components
 %{_kf6_debugdir}/plasma-framework.categories
