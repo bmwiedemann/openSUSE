@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 18 07:14:13 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.4.0+g0:
+  * refactor and add scoop support
+  * Update main.rs
+  * updated readme
+  * removed all unwraps
+  * Error Handling added for file and dir
+  * fixed panic on no args
+
+-------------------------------------------------------------------
 Tue Oct 31 12:11:28 UTC 2023 - Soc Virnyl Estela <contact@uncomfyhalomacro.pl>
 
 - Update to version 0.3.2+g4:

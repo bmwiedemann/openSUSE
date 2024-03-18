@@ -1,7 +1,7 @@
 #
 # spec file for package bonk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,21 @@
 
 
 Name:           bonk
-Version:        0.3.2+g4
+Version:        0.4.0+g0
 Release:        0
 Summary:        Touch with mkdir tool
 License:        MIT
 Group:          System/Console
 URL:            https://github.com/elliot40404/bonk
 Source0:        %{name}-%{version}.tar.gz
-# Project uses no deps
-# Source1:        vendor.tar.gz
-# Source2:        cargo_config
 BuildRequires:  cargo-packaging
-BuildRequires:  rust+cargo
 
 %description
 Bonk is a touch alternative with an added feature to
 create directories.
 
 %prep
-%setup -q
-# mkdir .cargo
-# cp %%{SOURCE2} .cargo/config
+%autosetup
 
 %build
 %{cargo_build}
