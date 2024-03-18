@@ -123,6 +123,8 @@ Patch31:        aarch64.patch
 #
 Patch32:        stringop-overflow.patch
 #
+Patch33:        reproducible-version.patch
+#
 # OpenJDK specific patches
 #
 Patch302:       disable-doclint-by-default.patch
@@ -375,6 +377,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 
 %patch -P 31 -p1
 %patch -P 32 -p1
+%patch -P 33 -p1
 
 %patch -P 302 -p1
 

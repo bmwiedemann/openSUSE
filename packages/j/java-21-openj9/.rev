@@ -23,4 +23,12 @@
     <comment>Erase the existence of tzdata-java8 from the memory of mankind</comment>
     <requestid>1155907</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c5cfa54e4b68e2a306804fa61fa0a708</srcmd5>
+    <version>21.0.2.0</version>
+    <time>1710776835</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1158966</requestid>
+  </revision>
 </revisionlist>

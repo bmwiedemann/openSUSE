@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 11 10:35:38 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * reproducible-version.patch
+    + make the time in generated header reproducible
+
+-------------------------------------------------------------------
 Thu Mar  7 12:44:28 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Removed patch:
