@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Mar 17 17:39:54 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.7.5:
+  * [Sec] Null-pointer write (32bit platforms) or excessive memory
+    allocation (64bit platforms) when reading close to 4GiB of data
+    from unseekable files..
+  * [Sec] Write buffer overflow when reading unseekable files close
+    to 4GiB in size.
+  * [Sec] Possible out-of-memory (32bit platforms) or excessive
+    memory allocation (64bit platforms) when reading malformed data
+    from unseekable files.
+  * [Sec] DMF: Possible null-pointer write or excessive memory
+    allocation when reading DMF files.
+  * IT: In the previous version, Zxx macros in IT files made with
+    older MPT versions were no longer working.
+  * There was a periodic click when playing a module using the
+    Chorus or Flanger DMO plugin at a mix rate exceeding
+    ~136.5 kHz.
+  * An older bugfix for undefined behaviour in the Distortion DMO
+    plugin was incorrect, causing the distorted sound to be
+    different in some situations.
+  * xmp-openmpt: Metadata retrievel for playlist items was broken.
+- Changes in 0.7.4:
+  * [Bug] Makefile: libopenmpt 0.7.3 broke running the test suite
+    for Emscripten builds.
+  * openmpt123: openmpt123 now uses a narrower layout on terminal
+    windows with a width of less than 72 characters.
+  * Setting all possible load_skip flags resulted in nothing being
+    loaded at all, instead of just not loading the selected module
+    parts.
+  * When playing all subsongs, set_position_seconds didn’t always
+    calculate the correct subsong to jump to.
+  * IT: A few more compatibility flags are now disabled for modules
+    saved with earlier Schism Tracker versions.
+  * IT: MIDI macros were reset in IT 2.14 / 2.15 files that
+    declared to be compatible with older IT versions
+    (fixes spx-visionsofthepast.it).
+  * OKT: Work around missing negative arpeggio implementation by
+    transposing the notes up an octave.
+  * OKT: Channel volume commands were sometimes lost over less
+    important effects.
+  * IMF: Ignore magic bytes in sample header. “Leaving All Behind”
+    by Karsten Koch uses unexpected magic bytes, Orpheus ignores
+    them just like the instrument header magic bytes.
+
+-------------------------------------------------------------------
 Tue Nov  7 00:48:48 UTC 2023 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.7.3:
