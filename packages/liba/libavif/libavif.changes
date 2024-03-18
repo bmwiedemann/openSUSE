@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 17 09:23:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.4:
+  * AVIF_ENABLE_WERROR is set to OFF by default.
+  * Fix wrong alpha plane deallocation when decoded tile pixel
+    format does not match reconstructed output image pixel format
+  * Fix identical chunk skipping optimization when writing
+    animation data
+  * Fix ID selection for artificial grid alpha item when decoding
+    a grid of tiles which each have an associated auxiliary alpha
+    image item (https://crbug.com/oss-fuzz/65657).
+
+-------------------------------------------------------------------
 Thu Dec 21 09:27:03 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.0.3:
@@ -91,10 +104,10 @@ Mon Nov 14 11:41:20 UTC 2022 - ecsos <ecsos@opensuse.org>
 -------------------------------------------------------------------
 Thu Oct 27 19:02:16 UTC 2022 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
-- Remove unused BuildRequires on nasm 
+- Remove unused BuildRequires on nasm
 - Remove indirect/incorrect Buildrequires on zlib
 - add direct glib Buildrequires
- 
+
 -------------------------------------------------------------------
 Sat Oct 15 12:28:59 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
@@ -190,7 +203,7 @@ Sat Oct 15 12:28:59 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
     - The avifCodecConfigurationBox struct becomes a private type
       for libavif internal use
 - Bump lib_soversion global (also in baselibs.conf) to 15 following
-  upstream change. 
+  upstream change.
 - Use ldconfig_scriptlets for post(un) handling.
 
 -------------------------------------------------------------------
