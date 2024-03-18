@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Mar 16 19:09:00 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.5.0:
+  + Fixes:
+    - Fixed easy ABI breaks with new struct members in options
+
+- Changes from version 0.4.2:
+  + Legal:
+    - License changed to LGPL-3.0-Only
+  + API:
+    - added pathIsStream to SConfigOptions
+  + Other:
+    - Fixed value name in configSetValueSafe
+
+-------------------------------------------------------------------
+Fri Mar  1 01:11:19 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.4.1:
+  + A minor update with just a few internal QoL fixes.
+    (This update is ABI-compatible with 0.4.0.)
+  + Fixes:
+    - Fixed dynamic variable updates within special categories
+    - Custom value errors will now be properly thrown
+
+-------------------------------------------------------------------
 Sat Feb 24 00:50:39 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Initial specfile for hyprlang 0.4.0

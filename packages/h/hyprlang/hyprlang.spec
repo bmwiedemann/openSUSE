@@ -16,9 +16,11 @@
 #
 
 
+%define sover 2
+
 Name:           hyprlang
-Version:        0.4.0
-License:        GPL-3.0-only
+Version:        0.5.0
+License:        LGPL-3.0-only
 Release:        0
 Summary:        A configuration language for Linux applications
 URL:            https://github.com/hyprwm/hyprlang
@@ -30,18 +32,18 @@ BuildRequires:  gcc-c++
 The hypr configuration language is a configuration language for Linux
 applications.
 
-%package -n     lib%{name}1
+%package -n     lib%{name}%{sover}
 Summary:        Library for Hypr, a config language
 Group:          System/Libraries
 
-%description -n lib%{name}1
+%description -n lib%{name}%{sover}
 The hypr configuration language is a configuration language for Linux
 applications.
 
 %package devel
 Summary:        Development files for Hyprlang
 Group:          Development/Libraries/Other
-Requires:       lib%{name}1 = %{version}
+Requires:       lib%{name}%{sover} = %{version}
 
 %description devel
 The hypr configuration language is a configuration language for Linux
@@ -62,8 +64,8 @@ This subpackeg contains headers for hyprlang.
 %check
 %ctest
 
-%post   -n lib%{name}1 -p /sbin/ldconfig
-%postun -n lib%{name}1 -p /sbin/ldconfig
+%post   -n lib%{name}%{sover} -p /sbin/ldconfig
+%postun -n lib%{name}%{sover} -p /sbin/ldconfig
 
 %files devel
 %doc README.md
@@ -71,8 +73,8 @@ This subpackeg contains headers for hyprlang.
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 
-%files -n lib%{name}1
-%{_libdir}/lib%{name}.so.1
+%files -n lib%{name}%{sover}
+%{_libdir}/lib%{name}.so.%{sover}
 %{_libdir}/lib%{name}.so.%{version}
 
 %changelog
