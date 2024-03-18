@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Mar 17 10:11:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.28.0:
+  * Raise `ClientDisconnected` on `send()` when client
+    disconnected (#2220) 12/02/24
+  * Except `AttributeError` on `sys.stdin.fileno()` for Windows
+    IIS10 (#1947) 29/02/24
+  * Use `X-Forwarded-Proto` for WebSockets scheme when the proxy
+    provides it (#2258) 01/03/24
+  * Fix spurious LocalProtocolError errors when processing
+    pipelined requests (#2243) 10/02/24
+  * Fix nav overrides for newer version of Mkdocs Material
+    (#2233) 26/01/24
+  * Raise `ClientDisconnect(IOError)` on `send()` when client
+    disconnected (#2218) 19/01/24
+  * Bump ASGI WebSocket spec version to 2.4 (#2221) 20/01/24
+  * Update `--root-path` to include the root path prefix in the
+    full ASGI `path` as per the ASGI spec (#2213) 16/01/24
+  * Use `__future__.annotations` on some internal modules (#2199)
+    16/01/24
+
+-------------------------------------------------------------------
 Tue Jan 30 12:43:20 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable flacky test in s390x with current python-websockets,

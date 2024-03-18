@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-uvicorn
-Version:        0.25.0
+Version:        0.28.0
 Release:        0
 Summary:        An Asynchronous Server Gateway Interface server
 License:        BSD-3-Clause
