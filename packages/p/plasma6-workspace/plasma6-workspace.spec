@@ -293,10 +293,6 @@ Requires:       qt6-wayland
 Requires:       pipewire
 Requires:       xdg-user-dirs
 Requires:       xorg-x11-server-wayland
-Provides:       kdebase4-session = %{version}
-Obsoletes:      kdebase4-session < %{version}
-Provides:       plasma5-session = %{version}
-Obsoletes:      plasma5-session < %{version}
 Provides:       plasma5-session-wayland = %{version}
 Obsoletes:      plasma5-session-wayland < %{version}
 # People may want the X11 session
@@ -315,6 +311,10 @@ Requires:       xf86-input-libinput
 Requires:       xorg-x11-server
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Provides:       kdebase4-session = %{version}
+Obsoletes:      kdebase4-session < %{version}
+Provides:       plasma5-session = %{version}
+Obsoletes:      plasma5-session < %{version}
 
 %description -n plasma6-session-x11
 This package contains the startup scripts and programs necessary to
