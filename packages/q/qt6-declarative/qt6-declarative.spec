@@ -39,6 +39,8 @@ Patch0:         0001-qmlimportscanner-Include-module-versions-again.patch
 # PATCH-FIX-UPSTREAM -- make build reproducible
 Patch1:         0001-QuickControls-Link-the-impl-libraries-into-the-base-.patch
 Patch2:         0001-Dialogs-Depend-on-controls-styles-in-QuickDialogs2Qu.patch
+# PATCH-FIX-UPSTREAM kde#482580
+Patch3:         0001-Fix-PointHandler-rejecting-click-events-near-window-.patch
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  qt6-core-private-devel
