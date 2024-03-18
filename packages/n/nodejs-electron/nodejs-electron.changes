@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 17 16:49:00 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- aarch64, riscv64: fix build with LLVM 18
+  * swiftshader-llvm18-LLVMReactor-getInt8PtrTy.patch gh#llvm/llvm-project#71029
+  * swiftshader-llvm18-LLVMJIT-Host.patch             gh#llvm/llvm-project#74261
+  * swiftshader-llvm18-LLVMJIT-CodeGenOptLevel.patch  gh#llvm/llvm-project#66295
+
+-------------------------------------------------------------------
 Wed Mar 13 17:00:44 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 28.2.7

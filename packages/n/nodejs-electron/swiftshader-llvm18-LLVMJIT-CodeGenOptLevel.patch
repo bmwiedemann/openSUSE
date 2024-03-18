@@ -1,0 +1,63 @@
+https://github.com/llvm/llvm-project/pull/66295
+
+--- src/third_party/swiftshader/src/Reactor/LLVMJIT.cpp.orig	2024-03-13 16:28:56.716633400 +0000
++++ src/third_party/swiftshader/src/Reactor/LLVMJIT.cpp	2024-03-17 08:37:13.580773900 +0000
+@@ -190,7 +190,13 @@ public:
+ private:
+ 	JITGlobals(llvm::orc::JITTargetMachineBuilder &&jitTargetMachineBuilder, llvm::DataLayout &&dataLayout);
+ 
+-	static llvm::CodeGenOpt::Level toLLVM(int level);
++	static
++#if LLVM_VERSION_MAJOR < 18
++		llvm::CodeGenOpt::Level
++#else
++		llvm::CodeGenOptLevel
++#endif
++		toLLVM(int level);
+ 
+ 	const llvm::orc::JITTargetMachineBuilder jitTargetMachineBuilder;
+ 	const llvm::DataLayout dataLayout;
+@@ -298,26 +304,36 @@ JITGlobals::JITGlobals(llvm::orc::JITTar
+ {
+ }
+ 
+-llvm::CodeGenOpt::Level JITGlobals::toLLVM(int level)
++#if LLVM_VERSION_MAJOR < 18
++llvm::CodeGenOpt::Level
++#else
++llvm::CodeGenOptLevel
++#endif
++	JITGlobals::toLLVM(int level)
+ {
++#if LLVM_VERSION_MAJOR < 18
++#define CodeGenOptLevel CodeGenOpt
++#endif
++
+ 	// TODO(b/173257647): MemorySanitizer instrumentation produces IR which takes
+ 	// a lot longer to process by the machine code optimization passes. Disabling
+ 	// them has a negligible effect on code quality but compiles much faster.
+ 	if(__has_feature(memory_sanitizer))
+ 	{
+-		return llvm::CodeGenOpt::None;
++		return llvm::CodeGenOptLevel::None;
+ 	}
+ 
+ 	switch(level)
+ 	{
+-	case 0: return llvm::CodeGenOpt::None;
+-	case 1: return llvm::CodeGenOpt::Less;
+-	case 2: return llvm::CodeGenOpt::Default;
+-	case 3: return llvm::CodeGenOpt::Aggressive;
++	case 0: return llvm::CodeGenOptLevel::None;
++	case 1: return llvm::CodeGenOptLevel::Less;
++	case 2: return llvm::CodeGenOptLevel::Default;
++	case 3: return llvm::CodeGenOptLevel::Aggressive;
+ 	default: UNREACHABLE("Unknown Optimization Level %d", int(level));
+ 	}
+ 
+-	return llvm::CodeGenOpt::Default;
++	return llvm::CodeGenOptLevel::Default;
++#undef CodeGenOptLevel
+ }
+ 
+ class MemoryMapper final : public llvm::SectionMemoryManager::MemoryMapper

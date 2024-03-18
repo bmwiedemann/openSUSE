@@ -351,6 +351,9 @@ Patch3229:      text_break_iterator-icu74-breakAllLineBreakClassTable-should-be-
 Patch3230:      web_local_frame_client-incomplete-WebBackgroundResourceFetchAssets.patch
 Patch3231:      local_frame-local_frame_client-incomplete-WebBackgroundResourceFetchAssets.patch
 Patch3232:      v8-instance-type-inl-constexpr-used-before-its-definition.patch
+Patch3233:      swiftshader-llvm18-LLVMReactor-getInt8PtrTy.patch
+Patch3234:      swiftshader-llvm18-LLVMJIT-Host.patch
+Patch3225:      swiftshader-llvm18-LLVMJIT-CodeGenOptLevel.patch
 
 BuildRequires:  brotli
 %if %{with system_cares}

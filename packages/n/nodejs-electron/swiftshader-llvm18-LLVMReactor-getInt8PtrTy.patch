@@ -1,0 +1,31 @@
+https://github.com/llvm/llvm-project/pull/71029
+
+--- src/third_party/swiftshader/src/Reactor/LLVMReactor.cpp.orig	2024-03-13 17:28:56.716633400 +0100
++++ src/third_party/swiftshader/src/Reactor/LLVMReactor.cpp	2024-03-16 23:34:48.527927000 +0100
+@@ -3797,7 +3797,7 @@ RValue<Int> pmovmskb(RValue<Byte8> x)
+ void VPrintf(const std::vector<Value *> &vals)
+ {
+ 	auto i32Ty = llvm::Type::getInt32Ty(*jit->context);
+-	auto i8PtrTy = llvm::Type::getInt8PtrTy(*jit->context);
++	auto i8PtrTy = llvm::PointerType::getUnqual(*jit->context);
+ 	auto funcTy = llvm::FunctionType::get(i32Ty, { i8PtrTy }, true);
+ 	auto func = jit->module->getOrInsertFunction("rr::DebugPrintf", funcTy);
+ 	jit->builder->CreateCall(func, V(vals));
+@@ -3866,7 +3866,7 @@ void promoteFunctionToCoroutine()
+ 	auto i1Ty = llvm::Type::getInt1Ty(*jit->context);
+ 	auto i8Ty = llvm::Type::getInt8Ty(*jit->context);
+ 	auto i32Ty = llvm::Type::getInt32Ty(*jit->context);
+-	auto i8PtrTy = llvm::Type::getInt8PtrTy(*jit->context);
++	auto i8PtrTy = llvm::PointerType::getUnqual(*jit->context);
+ 	auto promiseTy = jit->coroutine.yieldType;
+ 	auto promisePtrTy = promiseTy->getPointerTo();
+ 
+@@ -4031,7 +4031,7 @@ void Nucleus::createCoroutine(Type *Yiel
+ 	// coroutine.
+ 	auto voidTy = llvm::Type::getVoidTy(*jit->context);
+ 	auto i1Ty = llvm::Type::getInt1Ty(*jit->context);
+-	auto i8PtrTy = llvm::Type::getInt8PtrTy(*jit->context);
++	auto i8PtrTy = llvm::PointerType::getUnqual(*jit->context);
+ 	auto handleTy = i8PtrTy;
+ 	auto boolTy = i1Ty;
+ 	auto promiseTy = T(YieldType);
