@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 17 09:44:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.4:
+  * Fixed potential crash when writing WIM XML data, introduced
+    in v1.14.0.
+  * Improved some documentation.
+
+-------------------------------------------------------------------
 Sun Nov 26 13:52:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.14.3:

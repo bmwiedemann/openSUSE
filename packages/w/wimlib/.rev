@@ -98,4 +98,12 @@
 - Initial packaging for openSUSE</comment>
     <requestid>1128936</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a039b52cbb36c21891841be8b2879768</srcmd5>
+    <version>1.14.4</version>
+    <time>1710776854</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1158989</requestid>
+  </revision>
 </revisionlist>

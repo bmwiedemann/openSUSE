@@ -1,7 +1,7 @@
 #
 # spec file for package wimlib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define so_version 15
 Name:           wimlib
-Version:        1.14.3
+Version:        1.14.4
 Release:        0
 Summary:        Library to extract, create, modify, and mount WIM files
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT
