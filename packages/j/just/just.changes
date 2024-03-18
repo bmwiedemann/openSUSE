@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Mar 18 07:07:59 UTC 2024 - rrahl0@proton.me
+
+- Update to version 1.25.2:
+  * Unpin ctrlc
+
+- Update to version 1.25.1:
+  * Pin ctrlc to version 3.1.1
+  * Fix AArch64 release build error
+
+- Update to version 1.25.0:
+  * Add `blake3` and `blake3_file` functions
+  * Fix readme typo
+  * Use unwrap_or_default
+  * Set codegen-units to 1 reduce release binary size
+  * Fix install.sh shellcheck warnings
+  * Document openSUSE package
+
+- Update to version 1.24.0:
+  * Support recipe paths containing `::` in Bash completion script
+  * Add function to canonicalize paths
+  * Use unlikely-to-be-set variable name in env tests
+  * Skip write_error test if running as root
+  * Convert run_shebang into integration test
+  * Fix typos found by codespell
+  * Fix install script
+
+- simplify spec and _service file
+- use more macros
+
+-------------------------------------------------------------------
 Thu Jan 18 01:01:52 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 1.23.0:
