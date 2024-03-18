@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-hypothesis
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -16,8 +16,13 @@
 #
 
 
-%bcond_with ringdisabled
 %global flavor @BUILD_FLAVOR@%{nil}
+%if 0%{?suse_version} <= 1550
+%bcond_with complete_tests
+%else
+%bcond_without complete_tests
+%endif
+%bcond_with ringdisabled
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
@@ -29,11 +34,6 @@ ExclusiveArch:  do_not_build
 %else
 %define psuffix %{nil}
 %bcond_with test
-%endif
-%if 0%{?suse_version} <= 1550
-%bcond_with complete_tests
-%else
-%bcond_without complete_tests
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-hypothesis%{psuffix}
@@ -57,8 +57,10 @@ Requires:       python-attrs >= 19.2.0
 Requires:       (python-exceptiongroup >= 1.0.0 if python-base < 3.11)
 Requires:       (python-sortedcontainers >= 2.1.0 with python-sortedcontainers < 3.0)
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
+BuildArch:      noarch
 # SECTION requires_extra
+Recommends:     (python-importlib_metadata >= 3.6 if python-base < 3.8)
 # consuming packages need to declare these optional dependencies explicitly
 Recommends:     python-Django >= 3.2
 Recommends:     python-black >= 19.10
@@ -73,17 +75,10 @@ Recommends:     python-python-dateutil >= 1.4
 Recommends:     python-pytz >= 2014.1
 Recommends:     python-redis >= 3.0.0
 Recommends:     python-rich >= 9.0
-Recommends:     (python-importlib_metadata >= 3.6 if python-base < 3.8)
 # /SECTION
-BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module hypothesis = %{version}}
 # SECTION test requirements
-%if %{with complete_tests}
-BuildRequires:  %{python_module Django >= 3.2}
-BuildRequires:  %{python_module fakeredis}
-BuildRequires:  %{python_module pandas >= 1.1}
-%endif
 BuildRequires:  %{python_module backports.zoneinfo >= 0.2.1 if %python-base < 3.9}
 BuildRequires:  %{python_module black >= 19.10}
 BuildRequires:  %{python_module click}
@@ -97,6 +92,11 @@ BuildRequires:  %{python_module pytest >= 4.6}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module python-dateutil >= 1.4}
 BuildRequires:  %{python_module typing_extensions}
+%if %{with complete_tests}
+BuildRequires:  %{python_module Django >= 3.2}
+BuildRequires:  %{python_module fakeredis}
+BuildRequires:  %{python_module pandas >= 1.1}
+%endif
 # /SECTION
 %endif
 %python_subpackages

@@ -801,4 +801,13 @@ This version fixes the license naming issue.</comment>
     <comment></comment>
     <requestid>1152107</requestid>
   </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>5ba270f23f62d0152370c0628c053dfe</srcmd5>
+    <version>6.98.9</version>
+    <time>1710776636</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file
+</comment>
+    <requestid>1158311</requestid>
+  </revision>
 </revisionlist>
