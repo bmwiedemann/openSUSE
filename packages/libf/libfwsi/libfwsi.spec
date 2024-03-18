@@ -18,7 +18,7 @@
 
 %define lname	libfwsi1
 Name:           libfwsi
-Version:        20240301
+Version:        20240315
 Release:        0
 Summary:        Library to access the Windows Shell Item format
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -41,7 +41,7 @@ BuildRequires:  pkgconfig(libcthreads) >= 20240102
 BuildRequires:  pkgconfig(libfdatetime) >= 20240115
 BuildRequires:  pkgconfig(libfguid) >= 20240116
 BuildRequires:  pkgconfig(libfole) >= 20240119
-BuildRequires:  pkgconfig(libfwps) >= 20240301
+BuildRequires:  pkgconfig(libfwps) >= 20240310
 BuildRequires:  pkgconfig(libuna) >= 20240130
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
@@ -50,12 +50,12 @@ BuildRequires:  pkgconfig(libuna) >= 20240130
 Library to access the Windows Shell Item format for the libyal family of libraries.
 libyal is typically used in digital forensic tools.
 
-%package -n %{lname}
+%package -n %lname
 Summary:        Library to access the Windows Shell Item format
 License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
-%description -n %{lname}
+%description -n %lname
 Library to access the Windows Shell Item format for the libyal family of libraries.
 libyal is typically used in digital forensic tools.
 
@@ -63,7 +63,7 @@ libyal is typically used in digital forensic tools.
 Summary:        Development files for libfwsi
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       %{lname} = %{version}
+Requires:       %lname = %version
 
 %description devel
 Library to access the Windows Shell Item format for the libyal family of libraries.  libyal is typically used in digital forensic tools.
@@ -89,23 +89,22 @@ grep ' '' ''local' config.log && exit 1
 
 %install
 mv "%_builddir/rt"/* %buildroot/
-find %{buildroot} -type f -name "*.la" -delete -print
+find %buildroot -type f -name "*.la" -delete -print
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
-%files -n %{lname}
+%files -n %lname
 %license COPYING*
-%{_libdir}/libfwsi.so.*
+%_libdir/libfwsi.so.*
 
 %files -n %name-devel
 %license COPYING*
 %doc Windows_Shell_Item_format.pdf
-%{_includedir}/libfwsi.h
-%{_includedir}/libfwsi/
-%{_libdir}/libfwsi.so
-%{_libdir}/pkgconfig/libfwsi.pc
-%{_mandir}/man3/libfwsi.3*
+%_includedir/libfwsi.h
+%_includedir/libfwsi/
+%_libdir/libfwsi.so
+%_libdir/pkgconfig/libfwsi.pc
+%_mandir/man3/libfwsi.3*
 
 %files %python_files
 %license COPYING*
