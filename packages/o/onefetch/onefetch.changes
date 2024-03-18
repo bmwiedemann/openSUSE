@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 18 07:59:33 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.20.0:
+  * This version marks the completion of the transition from git2 to gitoxide
+  * Add svg language support #1266
+  * lang: Adding Oz programming language #1280
+
+-------------------------------------------------------------------
 Fri Dec  1 07:23:15 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.19.0:

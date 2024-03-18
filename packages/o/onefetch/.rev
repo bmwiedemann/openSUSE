@@ -397,4 +397,15 @@
   * add a test for negative dates and see how onefetch handles it #1100</comment>
     <requestid>1130164</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a561a02669dc0e4f0266726040a5cbcd</srcmd5>
+    <version>2.20.0+0</version>
+    <time>1710776802</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.20.0:
+  * This version marks the completion of the transition from git2 to gitoxide
+  * Add svg language support #1266
+  * lang: Adding Oz programming language #1280</comment>
+    <requestid>1158901</requestid>
+  </revision>
 </revisionlist>
