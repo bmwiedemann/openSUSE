@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 18 08:09:52 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.8.1:
+  * Upgrade dependencies
+  * Added copy::Options::omit_additional_text_mime_types to
+    disable wl-clipboard-rs offering several known text MIME types
+    when a text MIME type is copied.
+  * Updated wayland-rs to 0.31. This changed the error types
+    slightly. However, most uses of wl-clipboard-rs should be
+    completely unaffected.
+
+-------------------------------------------------------------------
 Sun Aug 13 13:26:50 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Replace obsoleted `disabled` option with `manual`
