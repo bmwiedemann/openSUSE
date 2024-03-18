@@ -246,4 +246,19 @@
     <comment></comment>
     <requestid>1155015</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e4f1965397ad1d79d0d8ffb5dfc6024d</srcmd5>
+    <version>6.0.3</version>
+    <time>1710776780</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.0.3:
+  * Use a shell script to launch, where the environment can be
+    checked before x11 resources are loaded in python.
+  * binfile.in: Enclose arguments in quotes.
+  * Revert &quot;backup locker: Restore stack management when not
+    activated.&quot;
+  * backup locker: Restore stack management when not activated.
+  * cinnamon-screensaver-main.py: Fix application theme provider.</comment>
+    <requestid>1158904</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 18 08:20:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.3:
+  * Use a shell script to launch, where the environment can be
+    checked before x11 resources are loaded in python.
+  * binfile.in: Enclose arguments in quotes.
+  * Revert "backup locker: Restore stack management when not
+    activated."
+  * backup locker: Restore stack management when not activated.
+  * cinnamon-screensaver-main.py: Fix application theme provider.
+
+-------------------------------------------------------------------
 Mon Feb 26 10:55:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
