@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 16 14:23:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.43.0:
+  * Dropped support for Python 3.7
+  * Updated vendored packaging to 24.0
+
+-------------------------------------------------------------------
 Fri Dec 22 15:31:14 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.42.0

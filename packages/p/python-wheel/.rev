@@ -359,4 +359,14 @@
     <comment></comment>
     <requestid>1135267</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>018fac77a1d6a22285114ebbed87b424</srcmd5>
+    <version>0.43.0</version>
+    <time>1710776670</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.43.0:
+  * Dropped support for Python 3.7
+  * Updated vendored packaging to 24.0</comment>
+    <requestid>1158497</requestid>
+  </revision>
 </revisionlist>

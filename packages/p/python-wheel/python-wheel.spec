@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-wheel
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-wheel%{psuffix}
-Version:        0.42.0
+Version:        0.43.0
 Release:        0
 Summary:        A built-package format for Python
 License:        MIT
@@ -40,7 +40,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pypa/wheel
 Source:         https://github.com/pypa/wheel/archive/%{version}.tar.gz#/wheel-%{version}.tar.gz
 # Bootstrap: Don't BuildRequire setuptools or pip here!
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
@@ -49,7 +49,7 @@ Requires:       alts
 BuildRequires:  alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 BuildArch:      noarch
 %if %{with test}
