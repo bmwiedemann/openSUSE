@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 18 12:54:29 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.47.2:
+  - Fixes
+    * fix: pass the --needed flag to pacman
+    * fix: Remove fig support
+    * fix: Explicitly tell user when then should use a config file template
+    * fix: Handle copies in automatic commit messages
+    * fix: Add missing newlines in error messages
+  - Documentation updates
+    * docs: Fix incomplete sentence in usage docs
+
+-------------------------------------------------------------------
 Mon Mar  4 16:33:25 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.47.1:
