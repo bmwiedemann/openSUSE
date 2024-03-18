@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 18 07:57:13 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 12.79:
+  * Improvements to new Geolocation feature:
+    + Added ability to obtain GPS coordinates from city name
+    + Added -listgeo option to list the Geolocation database
+    + Added the ability to include user-defined cities in the Geolocation database
+    + Added the ability to write XMP-iptcExt LocationShown tags using Geolocate feature
+    + Added the ability to specify which tags to read from file for the API Geolocation option
+    + Added language translations for Geolocation names
+    + Increased resolution of Geolocation GPS positions and stored populations
+
+-------------------------------------------------------------------
 Wed Mar  6 07:42:40 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 12.78:
