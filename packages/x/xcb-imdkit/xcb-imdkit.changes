@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 17 09:49:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.7:
+  * Change member order to decrease padding
+  * Remove unnecessary do while(0)
+
+-------------------------------------------------------------------
 Sat Jan 27 17:25:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.6:
