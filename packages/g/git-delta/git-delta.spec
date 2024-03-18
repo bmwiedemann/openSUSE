@@ -1,7 +1,7 @@
 #
 # spec file for package git-delta
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           git-delta
-Version:        0.16.5
+Version:        0.17.0
 Release:        0
 Summary:        A syntax-highlighter for git and diff output
 License:        MIT

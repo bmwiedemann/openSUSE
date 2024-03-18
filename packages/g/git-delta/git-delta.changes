@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Mar 18 08:08:23 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.0:
+  * Detect Dark/Light Mode from Terminal #1615
+  * Parse filename unambiguously using color escape sequences #1634
+  * Honor default-language option #1655
+  * Preserve "Binary files" line in color_only mode #1649
+  * Fix headers of modified binary files #1629
+  * Add mellow-barbet theme #1452
+  * Fix alignment in blame mode when author name contains unicode accent modifiers #1456
+  * Replace usage of the atty crate with std::io::IsTerminal trait #1465
+  * Refactor subcommand handling #1467
+  * Bump clap to v4.3.14 and regenerate Cargo.lock #1472
+  * Fix issue where pager would be set to more or most #1494
+  * Improve binary file added output #1502
+  * Remove the navigation setting from themes. #1503
+  * Add assertion failure message #1508
+  * Fix handling of tabs in grep output #1507
+  * Support users other than git in github SSH URLs #1509
+  * Update installation instructions for openSUSE #1550
+  * feat: generate completion subcommand #1561
+  * Make hunk header code fragment display optional #1568
+  * Adding new theme in themes.gitconfig #1544
+  * feat(theme): add arctic-fox custom theme #1539
+  * --show-themes exit with error when no themes #1611
+  * Bug fix: reset syntax highlighter across grep sections #1613
+  * Switch from vte to anstyle-parse (already used in dependencies) #1638
+  * Parse filename unambiguously using color escape sequences #1634
+  * Fix headers of modified binary files #1629
+  * Upgrade #1597
+  * Add Catppuccin latte to light syntax themes #1573
+  * Update Arch Linux package URL in installation.md #1569
+  * Change Winget Releaser job to ubuntu-latest #1512
+  * use wildcard in suggested true color fix for tmux #1560
+  * Update git2 #1647
+  * Add corvus theme #1652
+  * Preserve "Binary files" line in color_only mode #1649
+  * Detect Dark/Light Mode from Terminal #1615
+  * Honor default-language option #1655
+
+-------------------------------------------------------------------
 Tue Jun  6 06:45:45 UTC 2023 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Update to 0.16.5
