@@ -1,4 +1,134 @@
 -------------------------------------------------------------------
+Sat Mar 16 19:50:56 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.37.1:
+  + A massive (not) update to fix rendering of half of your apps, oops.
+  + New features:
+    - renderer: add better multi monitor animations (#5126)
+  + Fixes:
+    - renderer: fix non-reported sizes window box calculations
+
+- Changes from version 0.37.0:
+  + Happy 2 years of Hyprland!! Thanks to everyone who has supported
+    Hyprland in any way shape or form, couldn't have done it without
+    yall. <3
+  + New features:
+    - config: Add input:scroll_factor configuration (#4980)
+    - cursormgr: add fallbacks for unknown cursors
+    - hyprpm: Add support for specifying exact git revisions for plugin
+      repo (#4983)
+    - input: add general:resize_corner for manual resizing (#5090)
+    - input: fix window move stutter by introducing additional checks
+      for low-hz monitors (#4553)
+    - keybinds: Add the 'catchall' keyword that matches all keys (#4930)
+    - layers: add fully featured animations
+    - notify: Add custom fontsize support for notifications (#4981)
+    - socket2: Add 5 IPC event with support for workspace ID (#5022)
+    - subsurface/popup: expand on map/unmap to add buffering
+  + Fixes:
+    - CrashReporter: Fix compilation with musl libc (#4805)
+    - animations: fix m_Goal not being set after #4911 (#4992)
+    - configmgr: fix compile on 32-bit archs
+    - core: add additional headers for Popup.cpp and
+      InputMethodRelay.hpp (#4909)
+    - core: Fix typo and check grandchild PID in spawn() (#5070)
+    - core: fix crashes on access of deleted wlr_ surface
+    - cursormgr: fix invalid access to hyprcursor in xwayland init
+    - cursormgr: fix memory leak with cursor buffers
+    - hyprctl: Fix incorrect invalid fontsize kwarg response (#5013)
+    - input: fix minor default cursor reset conditions
+    - input: fix window move stutter by introducing additional checks
+      for low-hz monitors (#4553)
+    - internal: minor fixups for fading out xwayland windows
+    - keybinds: Fix typo (#5081)
+    - layers: minor fixes for new animations
+    - layout: Fix toggling fullscreen special workspace on different
+      monitor (#5000)
+    - lock: fix red screen issues with multiple monitors (#5100)
+    - master: Fix animate resize (#4942)
+    - master: Fix master layout window focus and scroll (#5074)
+    - master: fix invalid config usage
+    - opengl: fix compilation on legacy renderer (#4928)
+    - popup: minor fixes to xdg geometries
+    - renderer: fix invalid access on non-assigned surfaces
+    - renderer: minor fixes to transformations
+    - subsurface: fix visibility check
+    - surface: fix damage tearing feedback
+    - windowrules: fix center
+    - xwayland: fix no_xwayland compiles
+  + Other:
+    - animations: Refactor AnimatedVariable (#4911)
+    - compositor: ignore grab extend behind special workspaces (#4944)
+    - compositor: reject focus to noFocus OR xwayland windows
+    - compositor: update state after moving to workspace
+    - config: improve config value infrastructure
+    - config: more safety around monitor keyword
+    - config: report errors from sourced files
+    - config: update per device input configs link (#4951)
+    - constraints: only warp cursor on deactivate if constraint is
+      locked. (#5056)
+    - cursormgr: use XCURSOR_THEME for x themes
+    - drag: check min size for reisze drags
+    - dwindle: preserve fs state on switchWindows
+    - events: apply monitor state on sessionActive
+    - events: don't switch to active workspace on workspace rule
+    - events: ignore setTitle when title didn't change
+    - events: update render data after workspace window rule (#4931)
+    - hyprctl: hide unmapped windows without -a
+    - hyprctl: parse custom types in getoption
+    - hyprctl: print format and modes
+    - hyprpm: don't copy .so if file doesn't exist
+    - input: Rewritten pointer constraints (#4889)
+    - input: only override dragging corner on floating (#5092)
+    - input: scale local coords in constraints
+    - input: send motion to confined cursors
+    - internal: Support libhyprcursor (#5009)
+    - internal: Removed Herobrine
+    - keybinds: Allow fullscreen/maximize in special workspace (#4921)
+    - keybinds: Better handling of workspace_back_and_forth (#4952)
+    - keybinds: better follow xkb translation state
+    - keybinds: track submap at press for keypresses
+    - keybinds: unconstrain mouse on focusmonitor and cyclenext (#4863)
+    - layer-shell: allow for popup creation before map
+    - layout: unfullscreen on toggle into tiled fullscreen
+    - layout: warp the cursor when focusing windows (#4982)
+    - master: change active monitor when moving windows around (#5001)
+    - monitor: remove commas from short description (#4970)
+    - notifs: Implement notification dimissing (#4790)
+    - popup: send scale on map
+    - refactor: move a few things to desktop/
+    - renderer: Allow headless mode in hyprland (#4794)
+    - renderer: adjust surface dimensions for oversized not-yet ackd
+      surface sizes
+    - renderer: force a few render frames on init anim end
+    - renderer: respect forceNoBlur when rendering small surface windows
+      (#4932)
+    - sessionlock: refocus after destroy focused surface (#5117)
+    - splashes: add 2ya splash
+    - subsurface: Rewrite the subsurface tree (#4877)
+    - subsurface: don't update transform on unmap
+    - subsurfaceTree: assign surfaces to a CWLSurface
+    - surface: unify owners
+    - surfacetree: Revert "subsurfaceTree: assign surfaces to a CWLSurface"
+    - window: ignore surface updates in unsafe / on invalid monitors
+    - window: prevent vector modification segfault while iterating
+    - window: remove unused list
+    - windowrules: Make min/maxsize rules dynamic (#4775)
+    - windowrules: check if floating when resizing from maxsize (#5019)
+    - windowrules: minor improvements to min/max size
+    - xdg: check for floating conditions before sending tiled size hint
+    - xdg: minor improvements to initial size reporting
+    - xdg: rewrite entire popup implementation
+    - xkb: handle invalid keymaps in updateXKBTranslationState
+    - xwayland: Set xwayland's name prop (#4924)
+    - xwayland: disable initial focus for xwayland dialogs (#4936)
+    - xwayland: set scaledBy for unmanaged windows in map
+    - xwaylandmgr: don't read xwayland surface from unmapped xwayland
+
+- Added "fixed-missing-return-statement.patch" which is necessary to
+  build hyprlang on non x86_64 architectures and some compile flags
+
+-------------------------------------------------------------------
 Fri Mar  1 00:16:18 UTC 2024 - Florian "sp1rit" <packaging@sp1rit.anonaddy.me>
 
 - Update to version 0.36.0:

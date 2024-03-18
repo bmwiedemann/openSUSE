@@ -120,4 +120,14 @@
     <comment></comment>
     <requestid>1153709</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>303aacf1f9b6c3da7d6a316cb8238fd1</srcmd5>
+    <version>0.37.1</version>
+    <time>1710776714</time>
+    <user>anag+factory</user>
+    <comment>Update to version 0.37.1
+
+depends on 1159012</comment>
+    <requestid>1159014</requestid>
+  </revision>
 </revisionlist>

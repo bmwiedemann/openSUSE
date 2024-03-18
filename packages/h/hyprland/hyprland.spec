@@ -20,12 +20,13 @@
 %bcond_without devel
 
 Name:           hyprland
-Version:        0.36.0
+Version:        0.37.1
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
 URL:            https://hyprland.org/
 Source0:        %{name}-%{version}.tar.xz
+Patch1:         fixed-missing-return-statement.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++ >= 11
 BuildRequires:  git
@@ -39,6 +40,7 @@ BuildRequires:  pkgconfig(gbm) >= 17.1.0
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(hwdata)
+BuildRequires:  pkgconfig(hyprcursor)
 BuildRequires:  pkgconfig(hyprlang)
 BuildRequires:  pkgconfig(libdisplay-info)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.118
