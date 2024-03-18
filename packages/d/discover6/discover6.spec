@@ -85,10 +85,9 @@ Requires:       kf6-kuserfeedback-imports >= %{kf6_version}
 Requires:       kirigami-addons6
 Requires:       qt6-declarative-imports >= %{qt6_version}
 Recommends:     discover-backend-flatpak
-# Conflicts with plasma5-pk-updates
-# Recommends:     discover-notifier
-Recommends:     discover-backend-fwupd
-Recommends:     discover-backend-packagekit
+Recommends:     discover6-notifier
+Recommends:     discover6-backend-fwupd
+Recommends:     discover6-backend-packagekit
 Provides:       discover = %{version}
 Obsoletes:      discover < %{version}
 Obsoletes:      discover-lang < %{version}
@@ -140,6 +139,7 @@ Summary:        Update notifier for KDE Software Manager
 Requires:       discover6 = %{version}
 Obsoletes:      discover-plasmoid < %{version}
 Obsoletes:      plasma5-pk-updates < 0.3.3
+Obsoletes:      plasma5-pk-updates-lang < 0.3.3
 Provides:       discover-notifier = %{version}
 Obsoletes:      discover-notifier < %{version}
 
