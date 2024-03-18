@@ -994,4 +994,41 @@
     gh#PyO3/maturin#1874</comment>
     <requestid>1132505</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>cd8e3bd0fd42ae76a9603bea03a1b4d6</srcmd5>
+    <version>1.5.0</version>
+    <time>1710776617</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.5.0
+  * tutorial: fix abi to match comment
+    gh#PyO3/maturin#1876
+  * Allow identical VIRTUAL_ENV and CONDA_PREFIX env vars
+    gh#PyO3/maturin#1879
+  * Upgrade pyo3 to 0.20
+    gh#PyO3/maturin#1881
+  * Skip directory when adding license files to wheel
+    gh#PyO3/maturin#1890
+  * Reject -i python when cross compiling
+    gh#PyO3/maturin#1891
+  * simplified clear-cache github action
+    gh#PyO3/maturin#1897
+  * Support uniffi-bindgen in cargo workspaces
+    gh#PyO3/maturin#1909
+  * Upgrade globlin to 0.8.0
+    gh#PyO3/maturin#1912
+  * Update **Note** to [!NOTE] in README
+    gh#PyO3/maturin#1917
+  * Match dependency readmes
+    gh#PyO3/maturin#1915
+  * Update some actions version in generate ci cli
+    gh#PyO3/maturin#1916
+  * Use extension name as library name, instead of hardcoded 'native.so'
+    gh#PyO3/maturin#1918
+  * Bump MSRV to 1.70
+    gh#PyO3/maturin#1923
+  * Remove setuptools-rust and milksnake mentions from readme
+    gh#PyO3/maturin#1926
+  * Upgrade uniffi to 0.26.0</comment>
+    <requestid>1158801</requestid>
+  </revision>
 </revisionlist>

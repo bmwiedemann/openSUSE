@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Sun Mar 17 18:07:58 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.5.0
+  * tutorial: fix abi to match comment
+    gh#PyO3/maturin#1876
+  * Allow identical VIRTUAL_ENV and CONDA_PREFIX env vars
+    gh#PyO3/maturin#1879
+  * Upgrade pyo3 to 0.20
+    gh#PyO3/maturin#1881
+  * Skip directory when adding license files to wheel
+    gh#PyO3/maturin#1890
+  * Reject -i python when cross compiling
+    gh#PyO3/maturin#1891
+  * simplified clear-cache github action
+    gh#PyO3/maturin#1897
+  * Support uniffi-bindgen in cargo workspaces
+    gh#PyO3/maturin#1909
+  * Upgrade globlin to 0.8.0
+    gh#PyO3/maturin#1912
+  * Update **Note** to [!NOTE] in README
+    gh#PyO3/maturin#1917
+  * Match dependency readmes
+    gh#PyO3/maturin#1915
+  * Update some actions version in generate ci cli
+    gh#PyO3/maturin#1916
+  * Use extension name as library name, instead of hardcoded 'native.so'
+    gh#PyO3/maturin#1918
+  * Bump MSRV to 1.70
+    gh#PyO3/maturin#1923
+  * Remove setuptools-rust and milksnake mentions from readme
+    gh#PyO3/maturin#1926
+  * Upgrade uniffi to 0.26.0
+    gh#PyO3/maturin#1927
+  * Use M1 runner on GitHub Actions
+    gh#PyO3/maturin#1928
+  * Upgrade rustls to 0.22
+    gh#PyO3/maturin#1929
+  * Add extra note to "Using PyPI's trusted publishing" section.
+    gh#PyO3/maturin#1939
+  * Update pep440_rs, pep508_rs and pyproject-toml
+    gh#PyO3/maturin#1945
+  * Add support for configuring xwin using env vars
+    gh#PyO3/maturin#1961
+  * Put dynamic field under project instead of project.optional-dependencies
+    gh#PyO3/maturin#1963
+  * Revert "Auto detect Python 3.13"
+    gh#PyO3/maturin#1964
+  * Add validation for crate/package name in new/init
+    gh#PyO3/maturin#1943
+  * Update upload-artifact and download-artifact actions to v4
+    gh#PyO3/maturin#1967
+  * Add 32-bit RISC-V support
+    gh#PyO3/maturin#1969
+  * Isolated import hook changes
+    gh#PyO3/maturin#1958
+  * Fix feature = "cargo-clippy" deprecation
+    gh#PyO3/maturin#1970
+  * Adjust cbindgen Overrides for CFFI
+    gh#PyO3/maturin#1957
+  * Update to Metadata 2.3 to create reliable source dist metadata
+    gh#PyO3/maturin#1965
+  * Only set rustflags when necessary
+    gh#PyO3/maturin#1978
+
+-------------------------------------------------------------------
 Mon Dec 11 13:45:20 UTC 2023 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.4.0
