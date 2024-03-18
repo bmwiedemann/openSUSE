@@ -1,7 +1,7 @@
 #
 # spec file for package wl-clipboard
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wl-clipboard
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 License:        GPL-3.0-only
 Summary:        Wayland Clipboard Utilities
