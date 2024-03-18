@@ -72,4 +72,13 @@
   * Drop support for Python 2.7 and 3.6.</comment>
     <requestid>1132638</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e9aec98f40a4995ea4e438b5d5ed854f</srcmd5>
+    <version>3.6.1</version>
+    <time>1710776641</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.6.1:
+  * Add support for Python 3.12.</comment>
+    <requestid>1158383</requestid>
+  </revision>
 </revisionlist>
