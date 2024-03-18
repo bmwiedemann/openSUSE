@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.classes
-Version:        3.3.0
+Version:        3.3.1
 Release:        0
 Summary:        Tools to work with classes
 License:        MIT
