@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Mar 16 16:38:45 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 5.7.0:
+  * added: multithreaded encoding and decoding to libwavpack (optional)
+  * added: option to specify multithreading in CLI programs (--threads)
+  * added: multithreading support to Cool Edit filter (always enabled)
+  * added: support for ID3v2.4 when importing tags (--import-id3)
+  * added: optional bitrate specification to wavpack -c option
+  * added: recognize WAV files with new fourcc of 'BW64'
+  * fixed: decode non-compliant FFmpeg files over 8 channels
+  * fixed: accept some common but non-compliant AIFF files
+  * fixed: automatically delete newly obsolete correction files
+  * fixed: don't delete source files if data loss warnings occur
+  * improved: ID3v2 tag support (more items, multiple values, pics, etc)
+  * improved: compression of 32-bit integer files (--optimize-int32)
+  * improved: convert the man pages to mdoc(7)
+  * improved: cmake & autoconf support
+
+- Build AVX2 enabled hwcaps library for x86_64-v3 
+
+-------------------------------------------------------------------
 Sat Dec  3 16:41:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.6.0:

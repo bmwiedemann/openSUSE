@@ -1,7 +1,7 @@
 #
 # spec file for package wavpack
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define soname  1
 Name:           wavpack
-Version:        5.6.0
+Version:        5.7.0
 Release:        0
 Summary:        Hybrid Lossless Audio Compression Format
 License:        BSD-3-Clause
@@ -27,6 +27,7 @@ URL:            https://www.wavpack.com/
 Source0:        https://www.wavpack.com/%{name}-%{version}.tar.bz2
 Source99:       baselibs.conf
 BuildRequires:  pkgconfig
+%{?suse_build_hwcaps_libs}
 
 %description
 WavPack is an open audio compression format providing lossless, high-quality
