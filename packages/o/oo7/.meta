@@ -1,0 +1,6 @@
+<package name="oo7" project="openSUSE:Factory">
+  <title></title>
+  <description>A CLI application to interact with the system keyring. Replacement of the secret-tool utility.</description>
+  <devel project="utilities" package="oo7"/>
+  <url>https://github.com/bilelmoussaoui/oo7</url>
+</package>
