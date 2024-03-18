@@ -224,4 +224,14 @@
     <comment></comment>
     <requestid>1137203</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>972322c02de076ff0724c945809fb5ed</srcmd5>
+    <version>1.84.1</version>
+    <time>1710776856</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.84.1:
+  * This is a configure-ready release, derived from the master on
+    3 Jan 2024</comment>
+    <requestid>1158990</requestid>
+  </revision>
 </revisionlist>
