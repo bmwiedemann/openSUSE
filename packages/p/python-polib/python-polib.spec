@@ -23,12 +23,12 @@ Version:        1.2.0
 Release:        0
 Summary:        A library to manipulate gettext files
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/izimobil/polib/
 Source0:        https://files.pythonhosted.org/packages/source/p/polib/polib-%{version}.tar.gz
 Patch0:         polib-1.1.0-fix-tests-big-endian.patch
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -65,8 +65,7 @@ POEntry and MOEntry for creating new files/entries.
 This package contains documentation in HTML format.
 
 %prep
-%setup -q -n polib-%{version}
-%autopatch -p1
+%autosetup -p1 -n polib-%{version}
 
 %build
 %pyproject_wheel
@@ -81,7 +80,8 @@ popd
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest -v tests.tests
+# https://github.com/izimobil/polib/issues/150
+%pytest tests/tests.py -k 'not (test_save_as_mofile or test_is_file)'
 
 %files %{python_files}
 %license LICENSE
