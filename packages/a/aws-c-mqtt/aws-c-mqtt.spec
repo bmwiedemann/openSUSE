@@ -18,7 +18,7 @@
 
 %global library_version 1_0_0
 Name:           aws-c-mqtt
-Version:        0.10.2
+Version:        0.10.3
 Release:        0
 Summary:        AWS C99 implementation of the MQTT 3.1.1 specification
 License:        Apache-2.0
@@ -28,16 +28,16 @@ Source0:        https://github.com/awslabs/%{name}/archive/v%{version}.tar.gz
 Patch0:         acm_fix-cmake-modules-path.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  cmake(aws-c-common)
-BuildRequires:  cmake(aws-checksums)
+BuildRequires:  ninja
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(aws-c-cal)
+BuildRequires:  cmake(aws-c-common)
 BuildRequires:  cmake(aws-c-compression)
 BuildRequires:  cmake(aws-c-http)
 BuildRequires:  cmake(aws-c-io)
+BuildRequires:  cmake(aws-checksums)
 BuildRequires:  cmake(s2n)
 BuildRequires:  pkgconfig(libssl)
-BuildRequires:  ninja
-BuildRequires:  pkgconfig
 
 %description
 AWS C99 implementation of the MQTT 3.1.1 specification.

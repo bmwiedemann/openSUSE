@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 18 08:24:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.3:
+  * return an error code when an mqtt5 puback has a failing reason code
+
+-------------------------------------------------------------------
 Mon Feb 26 12:55:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - use shared library naming policy
