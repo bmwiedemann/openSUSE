@@ -139,4 +139,17 @@
     (PR from @gnikonorov)</comment>
     <requestid>1133200</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1abaed8553d78c80a65793280a4ec9d6</srcmd5>
+    <version>14.0</version>
+    <time>1710776649</time>
+    <user>anag+factory</user>
+    <comment>- update to 14.0:
+  * Fix missing teardown for non-function scoped fixtures when
+    using only_rerun or rerun_except queries. (#234) and
+  * Drop support for Python 3.7.
+  * Drop support for pytest &lt; 7.2.
+  * Add support for pytest 8.0, 8.1.</comment>
+    <requestid>1158431</requestid>
+  </revision>
 </revisionlist>

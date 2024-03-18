@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-rerunfailures
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-rerunfailures
-Version:        13.0
+Version:        14.0
 Release:        0
 Summary:        A pytest plugin to re-run tests
 License:        MPL-2.0
@@ -28,11 +28,11 @@ BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools >= 40.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytest >= 6.2
+Requires:       python-pytest >= 7.2
 Requires:       python-setuptools >= 40.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest >= 6.0}
+BuildRequires:  %{python_module pytest >= 7.2}
 BuildRequires:  %{python_module pytest-xdist}
 # /SECTION
 %python_subpackages

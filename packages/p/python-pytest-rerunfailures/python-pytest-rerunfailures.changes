@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 16 09:48:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 14.0:
+  * Fix missing teardown for non-function scoped fixtures when
+    using only_rerun or rerun_except queries. (#234) and
+  * Drop support for Python 3.7.
+  * Drop support for pytest < 7.2.
+  * Add support for pytest 8.0, 8.1.
+
+-------------------------------------------------------------------
 Thu Dec 14 21:18:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 13.0:
