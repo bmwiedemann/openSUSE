@@ -319,4 +319,13 @@ It does NOT conflict with python38 standard library (see upstream description)</
   * Fixed type annotations to allow strings.</comment>
     <requestid>1135283</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>31f5785263170b6e608c1b910218e927</srcmd5>
+    <version>7.0.2</version>
+    <time>1710776642</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.0.2:
+  * No significant changes.</comment>
+    <requestid>1158384</requestid>
+  </revision>
 </revisionlist>
