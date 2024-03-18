@@ -1,7 +1,7 @@
 #
 # spec file for package xiphos
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,14 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 Name:           xiphos
 Version:        4.2.1.7
 Release:        0
 Summary:        GNOME-based Bible research tool
 License:        GPL-2.0-only
 Group:          Productivity/Scientific/Other
-URL:            http://xiphos.org/
+URL:            https://xiphos.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}.desktop
 # PATCH-FIX-OPENSUSE find_biblesync.patch mcepl@suse.com
@@ -75,16 +76,16 @@ by Crosswire Bible Society through the SWORD Project.
 %setup -q
 echo %{version} >cmake/source_version.txt
 %if 0%{?suse_version} < 1550
-%patch1 -p1
+%patch -P 1 -p1
 %endif
-%patch2 -p1
+%patch -P 2 -p1
 
 %build
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
 export PYTHON="%{_bindir}/python3"
-%cmake -DGTKHTML=ON
-make %{?_smp_mflags}
+%cmake -DGTKHTML=ON -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name}
+%make_build
 
 %install
 %cmake_install
@@ -110,10 +111,11 @@ install -D -m644 -t %{buildroot}%{_mandir}/man1/ build/desktop/xiphos*.1
 
 %files
 %license COPYING
-%doc README.md RELEASE-NOTES doc/Xiphos.ogg AUTHORS ChangeLog
+%dir %{_docdir}/%{name}
 %dir %{_datadir}/%{name}
-%{_bindir}/xiphos*
-%{_datadir}/xiphos/*
+%{_bindir}/%{name}*
+%{_datadir}/%{name}/*
+%{_docdir}/%{name}/*
 %{_datadir}/icons/hicolor/scalable/apps/*
 %{_datadir}/applications/%{name}.desktop
 %dir %{_datadir}/appdata
