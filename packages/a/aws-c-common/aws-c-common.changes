@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 18 08:27:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.14:
+  * Accept all RFC3339-compliant timestamps
+
+-------------------------------------------------------------------
 Mon Feb 19 14:54:52 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.13
