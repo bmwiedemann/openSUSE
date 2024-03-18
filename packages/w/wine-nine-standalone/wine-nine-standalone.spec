@@ -1,7 +1,7 @@
 #
 # spec file for package wine-nine-standalone
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wine-nine-standalone
-Version:        0.8
+Version:        0.9
 Release:        0
 Summary:        Wine Gallium Nine Standalone version
 License:        LGPL-2.1-or-later
@@ -71,7 +71,7 @@ sed "s/@PKG_CONFIG@/pkg-config/" \
 CROSS=tools/cross-wine64
 [ %{_lib} = "lib" ] && CROSS=tools/cross-wine32
 
-%meson --cross-file $CROSS --bindir=%{_libdir}/wine --libdir=%{_libdir}/wine || cat /home/abuild/rpmbuild/BUILD/wine-nine-standalone-0.4/build/meson-logs/meson-log.txt
+%meson --cross-file $CROSS --bindir=%{_libdir}/wine --libdir=%{_libdir}/wine || cat /home/abuild/rpmbuild/BUILD/wine-nine-standalone-0.4/*/meson-logs/meson-log.txt
 %meson_build
 
 %install

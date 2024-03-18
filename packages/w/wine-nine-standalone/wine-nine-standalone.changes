@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 16 21:43:34 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 0.9.
+  * The original d3d9.dll is restored when disabling Gallium Nine.
+  * New Portuguese translation.
+
+-------------------------------------------------------------------
 Sat Sep 24 12:42:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - avoid bashism 
