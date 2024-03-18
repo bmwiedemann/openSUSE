@@ -133,4 +133,28 @@
     <comment></comment>
     <requestid>947298</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7993cedf13690a575d3b2eda06b6fe82</srcmd5>
+    <version>2.17.13</version>
+    <time>1710776800</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.17.13:
+  * abuf: Fix realloc usage
+  * configure: Fix handling of --with-ssl
+  * random: Initialize fd at startup
+  * Fixed a wrong translation for Turkish
+  * Implemented early redirect loop detection
+  * Added LGTM.com support
+  * Buildsystem improvements
+  * Added wolfSSL support
+  * Fixed potential int overflow
+  * Simplified configuration support code
+  * Early redirect loop detection improvements
+  * Fixed speed-limiting sleep delay overflow
+  * Removed HTTP encoding of URLs on the CLI, should be pre-
+    encoded
+
+- update to 2.17.9:</comment>
+    <requestid>1158903</requestid>
+  </revision>
 </revisionlist>

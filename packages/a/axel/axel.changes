@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar 18 08:19:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.17.13:
+  * abuf: Fix realloc usage
+  * configure: Fix handling of --with-ssl
+  * random: Initialize fd at startup
+  * Fixed a wrong translation for Turkish
+  * Implemented early redirect loop detection
+  * Added LGTM.com support
+  * Buildsystem improvements
+  * Added wolfSSL support
+  * Fixed potential int overflow
+  * Simplified configuration support code
+  * Early redirect loop detection improvements
+  * Fixed speed-limiting sleep delay overflow
+  * Removed HTTP encoding of URLs on the CLI, should be pre-
+    encoded
+
+-------------------------------------------------------------------
 Tue Jan 18 20:23:24 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 2.17.11:
@@ -41,7 +60,7 @@ Sun Nov 22 21:03:33 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
 -------------------------------------------------------------------
 Fri Aug 21 21:11:44 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
-- update to 2.17.9: 
+- update to 2.17.9:
   * Fixed insecure mode certificate checking error.
   * Fixed progress bar for large number of connections.
   * Fixed some race conditions with conn_t.
