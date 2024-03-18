@@ -426,4 +426,23 @@
     <comment></comment>
     <requestid>1144833</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>74cab02a68a53156ad5eeae1eb7d8771</srcmd5>
+    <version>2.6.2</version>
+    <time>1710776719</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.6.2:
+  * New features
+    + feat: add CUDA kernels that calculate length/sum
+    + feat: add variable length loop kernels
+    + feat: make ak.mean and ak.count differentiable
+  * Bug-fixes and performance
+    + fix: remove redundant(?) Jax.is_tracer_type check in _layout
+    + fix: throw more meaningful error message for non-NumPy buffers
+    + fix: proper typetracer array slicing in BitMaskedArray
+    + fix: ak.flatten on BitMaskedArray
+    + fix: performance of ufunc resolution for non-nominal signatures
+- Add rpmlintrc to silence some rpmlint warnings</comment>
+    <requestid>1158839</requestid>
+  </revision>
 </revisionlist>

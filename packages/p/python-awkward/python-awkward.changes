@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar 18 01:01:44 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.6.2:
+  * New features
+    + feat: add CUDA kernels that calculate length/sum
+    + feat: add variable length loop kernels
+    + feat: make ak.mean and ak.count differentiable
+  * Bug-fixes and performance
+    + fix: remove redundant(?) Jax.is_tracer_type check in _layout
+    + fix: throw more meaningful error message for non-NumPy buffers
+    + fix: proper typetracer array slicing in BitMaskedArray
+    + fix: ak.flatten on BitMaskedArray
+    + fix: performance of ufunc resolution for non-nominal signatures
+- Add rpmlintrc to silence some rpmlint warnings
+
+-------------------------------------------------------------------
 Tue Feb  6 18:35:44 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to version 2.6.1:

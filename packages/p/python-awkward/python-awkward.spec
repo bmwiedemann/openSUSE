@@ -16,16 +16,17 @@
 #
 
 
-%define awkward_cpp_version 28
+%define awkward_cpp_version 30
 %{?sle15_python_module_pythons}
 Name:           python-awkward
-Version:        2.6.1
+Version:        2.6.2
 Release:        0
 Summary:        Manipulate arrays of complex data structures as easily as Numpy
 License:        BSD-3-Clause
 URL:            https://awkward-array.org/
 # SourceRepository: https://github.com/scikit-hep/awkward
 Source0:        https://files.pythonhosted.org/packages/source/a/awkward/awkward-%{version}.tar.gz
+Source1:        python-awkward.rpmlintrc
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling >= 1.10.0}
@@ -36,6 +37,7 @@ Requires:       python-awkward-cpp = %{awkward_cpp_version}
 Requires:       python-fsspec
 Requires:       python-numpy >= 1.17.0
 Requires:       python-packaging
+Requires:       (python-importlib-metadata if python-base < 3.12)
 Requires:       (python-importlib-resources if python-base < 3.9)
 Requires:       (python-typing-extensions >= 4.1.0 if python-base < 3.11)
 Recommends:     python-cupy
@@ -45,6 +47,7 @@ Recommends:     python-pandas
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module awkward-cpp = %{awkward_cpp_version}}
 BuildRequires:  %{python_module fsspec}
+BuildRequires:  %{python_module importlib-metadata if %python-base < 3.12}
 BuildRequires:  %{python_module importlib-resources if %python-base < 3.9}
 BuildRequires:  %{python_module numba >= 0.50 if %python-base < 3.11}
 BuildRequires:  %{python_module numexpr}
