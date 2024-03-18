@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 18 14:39:40 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update BuildRequires: use plasma6-theme-openSUSE instead of 
+  plasma5-theme-openSUSE for Tumbleweed
+
+-------------------------------------------------------------------
 Wed Jun 29 09:03:08 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.5.48

@@ -50,4 +50,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>999755</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>fae213aa7324c3d990458484c5fe1cab</srcmd5>
+    <version>5.5.48</version>
+    <time>1710776874</time>
+    <user>anag+factory</user>
+    <comment>plasma5-theme-openSUSE for Tumbleweed (forwarded request 1159034 from hillwood)</comment>
+    <requestid>1159035</requestid>
+  </revision>
 </revisionlist>

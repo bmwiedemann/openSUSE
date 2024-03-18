@@ -1,8 +1,8 @@
 #
 # spec file for package deepin-session-shell
 #
-# Copyright (c) 2022 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2022 Hillwood Yang <hillwood@opensuse.org>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,8 +13,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define _name dde-session-shell
 
@@ -22,7 +23,7 @@ Name:           deepin-session-shell
 Version:        5.5.48
 Release:        0
 Summary:        Deepin desktop-environment - Session UI Shell
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 URL:            https://github.com/linuxdeepin/dde-session-shell
 Source0:        https://github.com/linuxdeepin/dde-session-shell/archive/%{version}/%{_name}-%{version}.tar.gz
 Source1:        https://github.com/linuxdeepin/startdde/raw/master/misc/lightdm.conf
@@ -30,40 +31,44 @@ Source1:        https://github.com/linuxdeepin/startdde/raw/master/misc/lightdm.
 # https://github.com/linuxdeepin/developer-center/issues/3266
 Patch0:         remove-invalid-dependence.patch
 Group:          System/GUI/Other
-BuildRequires:  gtest
-BuildRequires:  update-desktop-files
 BuildRequires:  deepin-gettext-tools
 BuildRequires:  dtkcore
+BuildRequires:  gtest
 BuildRequires:  libqt5-linguist
-BuildRequires:  pam-devel
 BuildRequires:  lightdm
+BuildRequires:  pam-devel
+BuildRequires:  update-desktop-files
 %if 0%{?suse_version} <= 1500
-BuildRequires:  lightdm-gtk-greeter 
+BuildRequires:  lightdm-gtk-greeter
 %endif
-BuildRequires:  pkgconfig(dtkwidget) >= 5.5.0
 BuildRequires:  libdframeworkdbus-devel >= 5.4.20
+%if 0%{suse_version} > 1500
+BuildRequires:  plasma6-theme-openSUSE
+%else
+BuildRequires:  plasma5-theme-openSUSE
+%endif
 BuildRequires:  cmake(KF5Wayland)
+BuildRequires:  pkgconfig(Qt5Concurrent)
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:  pkgconfig(Qt5Multimedia)
+BuildRequires:  pkgconfig(Qt5PrintSupport)
+BuildRequires:  pkgconfig(Qt5Sql)
+BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(dde-dock)
+BuildRequires:  pkgconfig(dtkwidget) >= 5.5.0
+BuildRequires:  pkgconfig(gio-qt)
 BuildRequires:  pkgconfig(gsettings-qt)
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(liblightdm-qt5-3)
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Xml)
-BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(Qt5Multimedia)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(gio-qt)
-BuildRequires:  pkgconfig(xcursor)
-BuildRequires:  pkgconfig(xtst)
-BuildRequires:  pkgconfig(xcb-ewmh)
-BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(openssl)
-BuildRequires:  plasma5-theme-openSUSE
+BuildRequires:  pkgconfig(xcb-ewmh)
+BuildRequires:  pkgconfig(xcursor)
+BuildRequires:  pkgconfig(xrandr)
+BuildRequires:  pkgconfig(xtst)
 Requires:       deepin-wallpapers
 Recommends:     %{name}-lang = %{version}-%{release}
 
@@ -82,13 +87,13 @@ This project include those sub-project:
 %package -n lightdm-deepin-greeter
 Summary:        Simple display manager (Deepin Desktop)
 Group:          System/X11/Displaymanagers
-Requires:       lightdm
 Requires:       deepin-start
 Requires:       libgnome-keyring0
+Requires:       lightdm
 Recommends:     %{name}-lang = %{version}-%{release}
 
 %description -n lightdm-deepin-greeter
-A LightDM greeter that uses the Deepin Desktop. This is the reference implementation 
+A LightDM greeter that uses the Deepin Desktop. This is the reference implementation
 of a LightDM greeter based on the Deepin Desktop.
 
 %package devel
@@ -122,6 +127,9 @@ sed -i "s|KF5/KWayland/Client|KF5/KWayland/KWayland/Client|g" src/global_util/ke
 %cmake_install
 install -Dm644 %{SOURCE1} %{buildroot}%{_datadir}/lightdm/lightdm.conf.d/60-deepin.conf
 chmod +x %{buildroot}%{_bindir}/*
+
+%find_lang %{_name} --with-qt
+rm %{buildroot}%{_datadir}/dde-session-shell/dde-session-shell.conf
 
 %files
 # %doc README.md CONTRIBUTING.md CHANGELOG.md
@@ -159,8 +167,9 @@ chmod +x %{buildroot}%{_bindir}/*
 %{_includedir}/%{_name}
 %{_libdir}/cmake/DdeSessionShell
 
-%files lang
-%{_datadir}/%{_name}
+%files lang -f %{_name}.lang
+%dir %{_datadir}/%{_name}
+%dir %{_datadir}/%{_name}/translations
+%{_datadir}/%{_name}/translations/%{_name}.qm
 
 %changelog
-
