@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 16 11:56:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.4:
+  * Fix usage of `AliasGenerator` with `computed_field` decorator
+  * Fix nested discriminated union schema gen, pt 2
+  * Fix bug with no_strict_optional=True caused by API deferral
+
+-------------------------------------------------------------------
 Thu Mar  7 03:28:00 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.6.3:
@@ -21,7 +29,7 @@ Thu Mar  7 03:28:00 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
   * Move `getattr` warning in deprecated `BaseConfig`
   * Only hash `model_fields`, not whole `__dict__`
   * Fix overload position of `computed_field`
-  * Fix issue `unittest.mock` deprecation warnings 
+  * Fix issue `unittest.mock` deprecation warnings
   * Fix `to_snake` conversion
   * Add support for field `alias` in `dataclass` signature
   * Fix ordering of keys in `__dict__` with `model_construct` call

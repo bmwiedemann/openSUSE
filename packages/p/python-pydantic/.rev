@@ -329,4 +329,17 @@
   * Fix ordering bug of PlainValidator annotation</comment>
     <requestid>1155773</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9648bb2623ddd8786b5baa3761b30dab</srcmd5>
+    <version>2.6.4</version>
+    <time>1710776655</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.6.4:
+  * Fix usage of `AliasGenerator` with `computed_field` decorator
+  * Fix nested discriminated union schema gen, pt 2
+  * Fix bug with no_strict_optional=True caused by API deferral
+
+  * Fix issue `unittest.mock` deprecation warnings</comment>
+    <requestid>1158460</requestid>
+  </revision>
 </revisionlist>
