@@ -1445,4 +1445,26 @@ self, run_tests_report, expected_parse_results=None, msg=None)
     <comment></comment>
     <requestid>1149912</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>be4716c8b796d2afe4616bf69cfd310e</srcmd5>
+    <version>3.1.2</version>
+    <time>1710776651</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1.2:
+  * Added `ieee_float` expression to `pyparsing.common`, which
+    parses float values, plus &quot;NaN&quot;, &quot;Inf&quot;, &quot;Infinity&quot;.
+  * Updated pep8 synonym wrappers for better type checking
+    compatibility.
+  * Fixed empty error message bug, PR submitted by InSync (#534).
+    This _should_ return
+    pyparsing's exception messages to a former, more helpful
+    form. If you have code that
+    parses the exception messages returned by pyparsing, this
+    may require some code changes.
+  * Some code refactoring to reduce code nesting, PRs submitted
+    by InSync.
+  * All internal string expressions using '%' string
+    interpolation and `str.format()` converted to f-strings.</comment>
+    <requestid>1158443</requestid>
+  </revision>
 </revisionlist>

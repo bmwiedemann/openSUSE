@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Mar 16 10:01:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.2:
+  * Added `ieee_float` expression to `pyparsing.common`, which
+    parses float values, plus "NaN", "Inf", "Infinity".
+  * Updated pep8 synonym wrappers for better type checking
+    compatibility.
+  * Fixed empty error message bug, PR submitted by InSync (#534).
+    This _should_ return
+    pyparsing's exception messages to a former, more helpful
+    form. If you have code that
+    parses the exception messages returned by pyparsing, this
+    may require some code changes.
+  * Some code refactoring to reduce code nesting, PRs submitted
+    by InSync.
+  * All internal string expressions using '%' string
+    interpolation and `str.format()` converted to f-strings.
+
+-------------------------------------------------------------------
 Fri Feb 23 12:23:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use newly supported shrink{} on OBS to exclude python flavors
