@@ -132,4 +132,12 @@
 - Minimum required PHP version is 8.0.0</comment>
     <requestid>1146488</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6840a51a89ad7caa5917efb174b184bc</srcmd5>
+    <version>5.6.2</version>
+    <time>1710776872</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1159025</requestid>
+  </revision>
 </revisionlist>

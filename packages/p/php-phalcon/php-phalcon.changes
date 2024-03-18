@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 14 20:47:31 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 5.6.2
+  * Changed `Phalcon\Mvc\View\Engine\Volt\Compiler::filter` to use the
+    helper with `upper` and `lower` for UTF-8 characters [#16543]
+  * Changed `Phalcon\Di\AbstractInjectionAware` to extend `stdClass` for
+    PHP 8.2 deprecation warnings [#16543]
+
+-------------------------------------------------------------------
 Tue Feb 13 21:38:26 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 5.6.1
