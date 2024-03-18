@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar 14 12:32:28 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Drop the timezone-java (bsc#1213470).
+  After thorough consideration of possible problems that arise from
+  having a timezone package specifically for the Java ecosystem,
+  Fridrich Strba and I have decided to drop the package altogether.
+  Doing so means the JDK will use its built-in timezone data that is
+  updated quarterly, when refreshed JDK versions are released.
+  While this does mean there could be situations where there is a bit
+  of a mismatch between the 'timezone' package's data, and the data
+  that is used by JDK, in practice the difference will be minimal and
+  short-lived.
+  So we've established this to be the best course of action.
+- Remove _multibuild, not longer required.
+
+-------------------------------------------------------------------
 Thu Feb  1 20:17:40 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2024a:
