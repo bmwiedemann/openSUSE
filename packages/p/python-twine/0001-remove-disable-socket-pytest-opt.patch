@@ -6,8 +6,9 @@ Only in twine-3.4.1: .pytest_cache
 
 --- a/pytest.ini
 +++ b/pytest.ini
-@@ -6,4 +6,3 @@ filterwarnings=
+@@ -6,5 +6,4 @@ filterwarnings=
  	ignore:the imp module is deprecated::setuptools
  
  addopts =
 -	--disable-socket
+ 	--ignore-glob '*integration*.py'

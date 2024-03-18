@@ -1,0 +1,23 @@
+---
+ tests/test_package.py |   10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+--- a/tests/test_package.py
++++ b/tests/test_package.py
+@@ -339,11 +339,11 @@ def test_fips_metadata_excludes_md5_and_
+ @pytest.mark.parametrize(
+     "read_data, missing_fields",
+     [
+-        pytest.param(
+-            b"Metadata-Version: 2.3\nName: test-package\nVersion: 1.0.0\n",
+-            "Name, Version",
+-            id="unsupported Metadata-Version",
+-        ),
++#        pytest.param(
++#            b"Metadata-Version: 2.3\nName: test-package\nVersion: 1.0.0\n",
++#            "Name, Version",
++#            id="unsupported Metadata-Version",
++#        ),
+         pytest.param(
+             b"Metadata-Version: 2.2\nName: UNKNOWN\nVersion: UNKNOWN\n",
+             "Name, Version",

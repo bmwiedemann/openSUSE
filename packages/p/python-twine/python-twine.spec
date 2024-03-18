@@ -1,7 +1,7 @@
 #
 # spec file for package python-twine
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,45 +19,46 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-twine
-Version:        4.0.2
+Version:        5.0.0
 Release:        0
 Summary:        Collection of utilities for interacting with PyPI
 License:        Apache-2.0
 URL:            https://github.com/pypa/twine
 Source:         https://files.pythonhosted.org/packages/source/t/twine/twine-%{version}.tar.gz
 Patch0:         0001-remove-disable-socket-pytest-opt.patch
-# PATCH-FIX-UPSTREAM license_files.patch gh#pypa/twine!992 mcepl@suse.com
-# license_file -> license_files
-Patch1:         license_files.patch
-BuildRequires:  %{python_module importlib-metadata}
+# PATCH-FIX-UPSTREAM skip-unsupported-Metadata-Version-test.patch gh#pypa/twine#1071 mcepl@suse.com
+# Skip failing test case
+Patch1:         skip-unsupported-Metadata-Version-test.patch
+BuildRequires:  %{python_module importlib-metadata >= 3.6}
 BuildRequires:  %{python_module jaraco.envs}
 BuildRequires:  %{python_module keyring >= 15.1}
 BuildRequires:  %{python_module munch}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pkginfo >= 1.4.2}
+BuildRequires:  %{python_module pkginfo >= 1.8.1}
 BuildRequires:  %{python_module portend}
 BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module readme_renderer >= 21.0}
+BuildRequires:  %{python_module readme_renderer >= 35.0}
 BuildRequires:  %{python_module requests >= 2.20}
 BuildRequires:  %{python_module requests-toolbelt >= 0.8.0}
 BuildRequires:  %{python_module rfc3986 >= 1.4.0}
-BuildRequires:  %{python_module rich}
-BuildRequires:  %{python_module setuptools >= 0.7.0}
-BuildRequires:  %{python_module setuptools_scm >= 1.15}
+BuildRequires:  %{python_module rich >= 12.0.0}
+BuildRequires:  %{python_module setuptools >= 45}
+BuildRequires:  %{python_module setuptools_scm >= 6.0}
+BuildRequires:  %{python_module urllib3 >= 1.26.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-importlib-metadata
+Requires:       python-importlib-metadata >= 3.6
 Requires:       python-keyring >= 15.1
-Requires:       python-pkginfo >= 1.4.2
-Requires:       python-readme_renderer >= 21.0
+Requires:       python-pkginfo >= 1.8.1
+Requires:       python-readme_renderer >= 35.0
 Requires:       python-requests >= 2.20
 Requires:       python-requests-toolbelt >= 0.8.0
 Requires:       python-rfc3986 >= 1.4.0
-Requires:       python-rich
+Requires:       python-rich >= 12.0.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 18 08:14:45 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 5.0.0:
+  - Use email.message instead of cgi as cgi has been deprecated
+- Remove upstreamed patch license_files.patch
+- Add skip-unsupported-Metadata-Version-test.patch
+  (gh#pypa/twine#1071) to skip failing test case.
+
+-------------------------------------------------------------------
 Fri May  5 13:44:23 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 4.0.2:
