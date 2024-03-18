@@ -322,6 +322,7 @@
     <package name="fcoe-utils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-hardware -->
     <package name="fdupes" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="ffmpegthumbs" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="ffmpegthumbs-kf5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="file" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="file-magic" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="file-roller" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
