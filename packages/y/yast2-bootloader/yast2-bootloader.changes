@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 15 10:11:13 UTC 2024 - Josef Reidinger <jreidinger@suse.com>
+
+- Improve warnings and help text for secure boot on s390 to reflect
+  state with new hardware. (bsc#1219989)
+- 5.0.7
+
+-------------------------------------------------------------------
 Mon Feb 26 13:30:54 UTC 2024 - Stefan Schubert <schubi@suse.com>
 
 - Feature: Do not timeout boot menue in systemd-boot. (bsc#1216366)
