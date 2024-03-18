@@ -1,5 +1,5 @@
 #
-# spec file for package glibc
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -306,6 +306,12 @@ Patch306:       glibc-fix-double-loopback.diff
 Patch1000:      arm-dl-start-user.patch
 # PATCH-FIX-UPSTREAM S390: Do not clobber r7 in clone (BZ #31402)
 Patch1001:      s390-clone-error-clobber-r7.patch
+# PATCH-FIX-UPSTREAM duplocale: protect use of global locale (BZ #23970)
+Patch1002:      duplocale-global-locale.patch
+# PATCH-FIX-UPSTREAM linux/sigsetops: fix type confusion (BZ #31468)
+Patch1003:      sigisemptyset.patch
+# PATCH-FIX-UPSTREAM Use gcc __builtin_stdc_* builtins in stdbit.h if possible
+Patch1004:      stdbit-builtins.patch
 %endif
 
 ###
@@ -351,7 +357,7 @@ Summary:        Info Files for the GNU C Library
 License:        GFDL-1.1-only
 Group:          Documentation/Other
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 BuildArch:      noarch
 
 %description info

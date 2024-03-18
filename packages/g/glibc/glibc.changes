@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar 13 08:31:20 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- stdbit-builtins.patch: Use gcc __builtin_stdc_* builtins in stdbit.h if
+  possible
+
+-------------------------------------------------------------------
+Tue Mar 12 09:13:02 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- sigisemptyset.patch: linux/sigsetops: fix type confusion (BZ #31468)
+
+-------------------------------------------------------------------
+Mon Mar 11 10:06:42 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- duplocale-global-locale.patch: duplocale: protect use of global locale
+  (bsc#1220441, BZ #23970)
+
+-------------------------------------------------------------------
 Tue Feb 27 08:14:31 UTC 2024 - Ludwig Nussel <lnussel@suse.com>
 
 - nsswitch.conf: Add systemd also for shadow lookups, use merge

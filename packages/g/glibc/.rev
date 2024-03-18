@@ -2994,4 +2994,18 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   strategy for group lookups (forwarded request 1152035 from lnussel)</comment>
     <requestid>1153158</requestid>
   </revision>
+  <revision rev="288" vrev="4">
+    <srcmd5>395390c1919e92ee14adc9f62df90900</srcmd5>
+    <version>2.39</version>
+    <time>1710776589</time>
+    <user>anag+factory</user>
+    <comment>- stdbit-builtins.patch: Use gcc __builtin_stdc_* builtins in stdbit.h if
+  possible
+
+- sigisemptyset.patch: linux/sigsetops: fix type confusion (BZ #31468)
+
+- duplocale-global-locale.patch: duplocale: protect use of global locale
+  (bsc#1220441, BZ #23970) (forwarded request 1157904 from Andreas_Schwab)</comment>
+    <requestid>1157905</requestid>
+  </revision>
 </revisionlist>
