@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 18 09:46:03 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.4:
+  * Bump version to 2.10.4 (#17557)
+  * Merge pull request from GHSA-6v85-wr92-q4p7
+  * Merge pull request from GHSA-2vgg-9h6w-m454
+  * fix(notifications): Helm.GetParameterValueByName should take
+    helm.parametes first (#17472) (#17512)
+  * fix: registry argument to be only the host instead full URL
+    (#17381) (#17534)
+  * fix(ui): add confirmation box in resource summary delete action
+    (#17485) (#17545)
+  * chore(deps): upgrade helm to 3.14.3 (#17531) (#17533)
+
+-------------------------------------------------------------------
 Sat Mar 16 14:20:28 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.10.3:
