@@ -1,0 +1,49 @@
+<services>
+  <!--
+    obs_scm and tar_scm are broken and fail to do what one would expect if
+    given "filename" parameters.
+
+    For obs_scm, if the provided filename does not match the URL's last
+    component (minus potentially a suffix such as .git), then it:
+      - clones the URL verbatim
+      - does NOT change the name
+      - generates filename.obsinfo and filename-$version.obscpio (this is the
+        only correct thing it does)
+      - then goes ahead to rename filename to filename-$version, which
+        obviously won't work, because a directory called filename will not
+        exist, unless the basename of the URL matches filename (which defeats
+        the purpose of using the filename parameter)
+      - fails to run at all.
+
+    A workaround has been documented in
+    https://github.com/openSUSE/obs-service-tar_scm/issues/384, which
+    essentially is to provide a symlink from basename(URL) to filename via
+    `ln -sfvn basename(URL) filename`, but this is so hacky that I won't
+    employ it.
+
+    Not passing the filename param to obs_scm but to tar instead *almost*
+    works, but ultimately creates a file named filename.tar - contrary to its
+    documentation, which states the resulting file name will be made up of the
+    given filename parameter and its version - which, again, turns out to be
+    useless.
+
+    Hence, until this is fixed, these source services will stay broken.
+
+    Manually fetch the distfile via the URL provided in Source0 and rename it,
+    please.
+  -->
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://github.com/maliit/framework.git</param>
+    <param name="revision">@PARENT_TAG@</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="scm">git</param>
+    <param name="filename">maliit-framework</param>
+  </service>
+  <service mode="disabled" name="tar">
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+</services>

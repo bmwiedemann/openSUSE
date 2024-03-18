@@ -1,0 +1,25 @@
+# We split the libraries up and neither of them are direct
+# replacements of libmaliit0, so the decision to not add
+# Provides: tags is very much deliberate. RPM will automatically
+# create Provides: tags for the actual libraries, which should be
+# sufficient.
+addFilter('libmaliit-.+\d\..+: W: obsolete-not-provided libmaliit0')
+
+# Doc packages are usually architecture-depend, since the
+# generated information can change based on the architecture.
+# While rpmlint is correct in noticing that the package does not
+# contain binaries, its content is still very much
+# architecture-dependent.
+addFilter('maliit-framework-doc\..+: E: no-binary')
+
+# Devel packages are usually architecture-depend, since they ship
+# architecture-dependent files. While rpmlint is correct in
+# noticing that the package does not contain binaries, its
+# content is still very much architecture-dependent, mostly
+# because the provided symlink uses %{_libdir}.
+addFilter('libmaliit-devel\..+: E: no-binary')
+
+# This is very likely a false positive. The check has been
+# removed/modified in Tumbleweed's rpmlint version and doesn't
+# trigger there.
+addFilter('libmaliit-devel\..+: W: no-dependency-on libmaliit\*/libmaliit-libs/liblibmaliit\*')

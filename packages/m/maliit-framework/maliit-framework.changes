@@ -1,0 +1,111 @@
+-------------------------------------------------------------------
+Tue Jul 19 17:09:17 UTC 2022 - Mihai Moldovan <ionic@ionic.de>
+
+- Update to upstream version 2.3.0:
+  * Re-show the keyboard on Wayland surrounding text changes
+  * Use compose input plugin fallback only if key redirection is
+    disabled
+  * Remove leftover code from Qt 4 times
+  * Enable installing unit tests again
+  * Remove legacy unused Maemo-specific code
+  * Use QLoggingCategory for logging
+  * Fix application orientation angle back to clockwise
+  * Add the Mir input panel window type flag
+  * Use CMAKE_INSTALL_FULL_* paths in pkgconfig files
+  * Remove the unused and unnecessary gtk3 wayland input context
+    plugin
+  * Remove unused and useless install target
+- Misc. whitespace- or comment-only changes.
+- Modernize spec file by leaving out definition of the BuildRoot:
+  tag or usage of the %defattr macro.
+- Add maliit-framework-tests subpackage for packaging the
+  provided unit tests.
+- Remove deleted wayland-gtk wrapper.
+- Add patch to fix building the test cases with GCC 12+.
+- Rename libmaliit0 to libmaliit2 and, at the same time, split it
+  up into libmaliit-plugins2 and libmaliit-glib2, since both
+  libraries are independent from another.
+- Rename maliit-framework-devel to libmaliit-devel.
+- Add rpmlintrc to ignore warnings and errors we are aware of,
+  but want to do on purpose (which is fine).
+- Add Group: tags to packages.
+- Rename dist file to %{name}-%{version}.tar.gz and add the usual
+  GitHub fetching URL.
+- Modify _service file to recompress to gz instead and set the
+  correct file name. However, it turns out that this is really
+  broken. Add a comment and fall back to manual fetching for the
+  time being.
+
+-------------------------------------------------------------------
+Tue Feb 15 22:12:25 UTC 2022 - Andrés B.S. <andresbs@opensuse.org>
+
+- Changes for the version 2.2.0:
+  * Fix sending of modifiers and keysyms on Wayland by @dobey in
+    #74.
+  * Fix deprecation warnings by @dobey in #75.
+  * Use text-input-unstable-v2 protocol for QtWayland clients by
+    @dobey in #63.
+  * Add CI with GH Actions and fix tests by @dobey in #80.
+  * CI: Run apt-get update and dist-upgrade before installing
+    things by @dobey in #81.
+  * Run the CI on Debian Testing with wayland enabled by @dobey
+    in #82.
+  * Correctly handle building with XCB disabled by @dobey in #83.
+  * cmake: Lower requirement to 3.5 to allow building on Ubuntu
+    16.04 by @dobey in #84.
+  * NEWS: Update for 2.2.0 release by @dobey in #87.
+
+-------------------------------------------------------------------
+Mon Dec 27 02:20:38 UTC 2021 - Andrés B.S. <andresbs@opensuse.org>
+
+- Add a missing build requirement, pkgconfig(wayland-protocols).
+
+-------------------------------------------------------------------
+Tue Nov  2 04:27:33 UTC 2021 - Andrés B.S. <andresbs@opensuse.org>
+
+- Changes for the version 2.1.1:
+  * Fix a (README) build error. No actual code has been changed.
+
+-------------------------------------------------------------------
+Wed Sep 22 03:26:48 UTC 2021 - Andrés B.S. <andresbs@opensuse.org>
+
+- Changes for the version 2.1.0:
+  * Add cmake option to build examples and do not build them by 
+  default
+  * Fix search for qtwaylandscanner on 32-bit architectures
+  * Show the panel as the keyboard interface is reset
+  * Ensure orientation updates are always sent when valid
+  * Only allow focus removal from input items
+  * Clean up FindGIO.cmake to allow working with older cmake
+  * Stop client crashing when QGuiApplication::focusObject is null
+  * Load compose inputcontext plugin for physical keyboard
+    handling
+  * Update input method area when activation is lost
+  * input_method_v1: Treat content_purpose_digits just like
+    content_purpose_number
+  * Update or remove outdated and broken links
+
+- Removed patch 0000-examples-optional.patch
+- Backport 0000-Fix_installing_README.patch to fix build errors.
+
+-------------------------------------------------------------------
+Wed Apr 21 03:19:21 UTC 2021 - Andrés B.S. <andresbs@opensuse.org>
+
+- Do not build tests/examples, through the patch
+  0000-examples-optional.
+
+-------------------------------------------------------------------
+Fri Apr  2 16:58:11 UTC 2021 - Andrés B.S. <andresbs@opensuse.org>
+
+- A patch to build with GTK integration (X11) has been added.
+
+-------------------------------------------------------------------
+Fri Apr  2 10:38:11 UTC 2021 - Markus S <kamikazow@opensuse.org>
+
+- Version 2.0 has been released, no changelog is provided. This
+  solves bsc#1184014.
+
+-------------------------------------------------------------------
+Thu Feb 11 16:38:49 UTC 2021 - Andrés B.S. <andresbs@opensuse.org>
+
+- Builds without GTK components

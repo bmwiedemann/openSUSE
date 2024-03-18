@@ -1,0 +1,5 @@
+<package name="maliit-framework" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="M17N:Maliit" package="maliit-framework"/>
+</package>

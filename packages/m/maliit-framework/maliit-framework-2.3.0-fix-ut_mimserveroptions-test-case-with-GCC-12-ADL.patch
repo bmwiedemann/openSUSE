@@ -1,0 +1,38 @@
+diff -pNur framework-2.3.0-orig/tests/ut_mimserveroptions/ut_mimserveroptions.cpp framework-2.3.0/tests/ut_mimserveroptions/ut_mimserveroptions.cpp
+--- framework-2.3.0-orig/tests/ut_mimserveroptions/ut_mimserveroptions.cpp	2022-07-06 17:32:19.000000000 +0200
++++ framework-2.3.0/tests/ut_mimserveroptions/ut_mimserveroptions.cpp	2022-07-22 20:47:01.365573129 +0200
+@@ -29,7 +29,9 @@ struct Args
+ Q_DECLARE_METATYPE(Args);
+ Q_DECLARE_METATYPE(MImServerCommonOptions);
+ 
+-namespace {
++namespace tests_ut_mimserveroptions { };
++using namespace tests_ut_mimserveroptions;
++namespace tests_ut_mimserveroptions {
+     Args Help              = { 2, { "", "-help" } };
+     Args HelpPlusInvalid   = { 3, { "", "-help", "-invalid-parameter" } };
+     Args Invalid           = { 2, { "", "-invalid-parameter" } };
+@@ -50,6 +52,22 @@ namespace {
+     }
+ }
+ 
++/*
++ * ADL doesn't seem to pick up the (previously) anonymous-namespace-operator==
++ * version above with GCC 12, while it used to work with GCC 11.
++ * Since this file is merely a test case implementation translation unit,
++ * just go ahead and reimplement the offending function directly, calling the
++ * now-non-anonymous equality comparator function (since we can't access
++ * functions in an anonymous namespace outside of the namespace).
++ */
++namespace QTest {
++    inline bool qCompare(const MImServerCommonOptions &x, const MImServerCommonOptions &y, const char *actual, const char *expected,
++                         const char *file, int line)
++    {
++        return compare_helper(tests_ut_mimserveroptions::operator==(x, y), "Compared values are not the same",
++                              toString(x), toString(y), actual, expected, file, line);
++    }
++}
+ 
+ void Ut_MImServerOptions::initTestCase()
+ {
+Binary files framework-2.3.0-orig/tests/ut_mimserveroptions/.ut_mimserveroptions.cpp.swp and framework-2.3.0/tests/ut_mimserveroptions/.ut_mimserveroptions.cpp.swp differ
