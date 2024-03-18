@@ -1,4 +1,264 @@
 -------------------------------------------------------------------
+Mon Mar 18 05:44:10 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.33:
+  * General
+    - feat: relationship between Limit-range and other components
+      @RipulHandoo (#10070)
+    - Bump follow-redirects from 1.15.4 to 1.15.6 in
+      /install/docker-extension/ui @dependabot (#10571)
+    - [Add]: Relationship between KubeArmorHostPolicy and k8s
+      components @pandeyshubham03 (#10553)
+  * Features
+    - Move all components to sistent single package @sudhanshutech
+      (#10548)
+  * Meshery CLI
+    - Fix exp components cmd bugs @alphaX86 (#10337)
+  * Meshery UI
+    - Move all components to sistent single package @sudhanshutech
+      (#10548)
+    - Bump follow-redirects from 1.15.4 to 1.15.6 in /ui
+      @dependabot (#10572)
+    - Bump follow-redirects from 1.15.4 to 1.15.6 in /provider-ui
+      @dependabot (#10570)
+    - Simplify the Environment assign in connections table
+      @sudhanshutech (#10552)
+  * Maintenance
+    - Bump github.com/99designs/gqlgen from 0.17.42 to 0.17.45
+      @dependabot (#10573)
+    - Bump follow-redirects from 1.15.4 to 1.15.6 in /ui
+      @dependabot (#10572)
+    - Bump follow-redirects from 1.15.4 to 1.15.6 in /provider-ui
+      @dependabot (#10570)
+    - [chore] fix integrations updater workflow @MUzairS15 (#10547)
+    - Bump google.golang.org/protobuf from 1.31.0 to 1.33.0
+      @dependabot (#10561)
+    - Bump github.com/jackc/pgx/v5 from 5.4.3 to 5.5.4 @dependabot
+      (#10568)
+  * Documentation
+    - solves hover effect issue in dark mode @ayush844 (#10402)
+    - Update jekyll docker image to 4.0 in Makefile @sangramrath
+      (#10545)
+
+-------------------------------------------------------------------
+Sun Mar 17 20:27:45 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.32:
+  * General
+    - fix parent child relation with section @codeKraken19 (#10566)
+    - delete core comps generated due to incorrect source url
+      @MUzairS15 (#10550)
+    - skip schema validation if schema is empty and comp is an
+      annotation @MUzairS15 (#10549)
+  * Meshery UI
+    - [Fix]: Connections page env assignment bugs @codeKraken19
+      (#10551)
+  * Documentation
+    - Rearrange Logging Section @yash37158 (#10554)
+    - [Docs] Relationships page update @ritiksaxena124 (#10524)
+    - Add kubernetes pods tutorial using playground @sangramrath
+      (#10456)
+
+-------------------------------------------------------------------
+Sun Mar 17 20:12:21 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.31:
+  * General
+    - bump meshkit to v0.7.18 @MUzairS15 (#10532)
+  * Meshery UI
+    - bump sistent @captain-Akshay (#10529)
+    - Bump eslint-config-next from 14.1.0 to 14.1.3 in /provider-ui
+      @dependabot (#10527)
+  * Maintenance
+    - Bump eslint-config-next from 14.1.0 to 14.1.3 in /provider-ui
+      @dependabot (#10527)
+
+-------------------------------------------------------------------
+Sun Mar 17 19:41:55 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.30:
+  * General
+    - feat: Relationship between Volume attachment and
+      PersistentVolume @RipulHandoo (#10481)
+    - Delete unused file: custom.hbs @leecalcote (#10475)
+    - Delete unused redocly.yaml file from repo root @leecalcote
+      (#10476)
+    - Update README.md @leecalcote (#10519)
+    - add make target for using remote provider in staging
+      environment @MUzairS15 (#10521)
+    - [Server] Regenerate error codes for meshery server @MUzairS15
+      (#10520)
+  * Meshery CLI
+    - [mesheryctl] Fix Registry usage error message link @tico88612
+      (#10522)
+    - Fixing the test failure @Althaf66 (#10484)
+  * Meshery UI
+    - Bump eslint-plugin-prettier from 5.0.0 to 5.1.3 in /ui
+      @dependabot (#10467)
+    - Bump @cypress/code-coverage from 3.12.19 to 3.12.26 in
+      /provider-ui @dependabot (#10462)
+    - Bump @mui/icons-material from 5.11.16 to 5.15.11 in /ui
+      @dependabot (#10468)
+    - Bump @mui/material from 5.15.7 to 5.15.11 in /provider-ui
+      @dependabot (#10459)
+    - [chore] Flatten the metadata and update UI. @MUzairS15
+      (#10525)
+  * Maintenance
+    - Bump eslint-plugin-prettier from 5.0.0 to 5.1.3 in /ui
+      @dependabot (#10467)
+    - Bump @cypress/code-coverage from 3.12.19 to 3.12.26 in
+      /provider-ui @dependabot (#10462)
+    - Bump @mui/icons-material from 5.11.16 to 5.15.11 in /ui
+      @dependabot (#10468)
+    - Bump @mui/material from 5.15.7 to 5.15.11 in /provider-ui
+      @dependabot (#10459)
+    - [Models]: Updating Issue Template @pandeyshubham03 (#10523)
+  * Documentation
+    - [Docs] Meshery Docs Contributing summarization @leecalcote
+      (#10500)
+    - add id for error codes @vishalvivekm (#10526)
+
+-------------------------------------------------------------------
+Sun Mar 17 19:24:57 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.29:
+  * General
+    - [Add]: Relationship between Kubernetes Components
+      @pandeyshubham03 (#10482)
+    - [Server] Fix intermodel relationship registration and eval.
+      @MUzairS15 (#10517)
+    - Update Makefile @MUzairS15 (#10511)
+  * Meshery CLI
+    - Update reference table in docs @alphaX86 (#10518)
+    - [Docs] Mesheryctl Docs Update fixes #10503 @westcalcote
+      (#10505)
+  * Meshery UI
+    - Fix layout and theme in layout @sudhanshutech (#10515)
+  * Documentation
+    - Update reference table in docs @alphaX86 (#10518)
+    - Update index.md @vishalvivekm (#10508)
+    - [Docs] Mesheryctl Docs Update fixes #10503 @westcalcote
+      (#10505)
+
+-------------------------------------------------------------------
+Sun Mar 17 15:35:07 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.28 (0.7.27 does not exist):
+  * General
+    - [Server] Fix manifests separated using yaml-separator being
+      not parsed correctly @MUzairS15 (#10497)
+  * Meshery CLI
+    - [mesheryctl] Fix redirection to error page when performing
+      auth @MUzairS15 (#10499)
+    - assign model shape to generated comps @MUzairS15 (#10496)
+    - [mesheryctl] Update model generator. @MUzairS15 (#10487)
+  * Meshery UI
+    - Show relationship description in models tab @Yashsharma1911
+      (#10491)
+    - [chore] fix UI lint issues. @MUzairS15 (#10492)
+    - [chore] Bump meshkit to v0.7.16 @MUzairS15 (#10489)
+    - Inject Sistent Into remote components @codeKraken19 (#10480)
+    - Bump eslint from 8.55.0 to 8.57.0 in /provider-ui @dependabot
+      (#10463)
+  * Maintenance
+    - Bump github.com/fatih/color from 1.15.0 to 1.16.0 @dependabot
+      (#10473)
+    - Create Bill of Materials and Licenses @jameshorton2337
+      (#10477)
+    - Bump eslint from 8.55.0 to 8.57.0 in /provider-ui @dependabot
+      (#10463)
+
+-------------------------------------------------------------------
+Sun Mar 17 15:07:10 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.26:
+  * General
+    - [GraphQL Plugin] Extract plugin related logic @MUzairS15
+      (#10441)
+    - Revert "store token and session on domain instead of
+      subdomain" @MUzairS15 (#10448)
+    - Docs :- information regarding a new command. @surajvast1
+      (#10407)
+    - [Add]: Relationship between PriorityClass and other k8s
+      components @pandeyshubham03 (#10376)
+    - fix incorrect design save events @MUzairS15 (#10424)
+  * Meshery CLI
+    - [Chore] Code base cleanup of "service mesh" @leecalcote
+      (#10429)
+    - append comps at end to ensure core model sourceuri stays the
+      same @MUzairS15 (#10447)
+  * Meshery UI
+    - [Server] Eliminate dead code and Improvements for
+      controllers/dataHandlers. @MUzairS15 (#10389)
+    - Migrate registration stepper api to rtk @sudhanshutech
+      (#10451)
+    - Add empty state for no result found in Registry
+      @Yashsharma1911 (#10443)
+    - Inject structured data formatter in Remote Extension
+      @codeKraken19 (#10439)
+    - Support ignoring models in Registry @Yashsharma1911 (#10171)
+  * Documentation
+    - [Chore] Code base cleanup of "service mesh" @leecalcote
+      (#10429)
+    - Bump rails from 7.0.5 to 7.0.8.1 in /docs @dependabot
+      (#10428)
+    - Vishalvivekm patch 1 @vishalvivekm (#10425)
+    - Tutorials layout @vishalvivekm (#9868)
+
+-------------------------------------------------------------------
+Sun Mar 17 14:34:52 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.25:
+  * No changes
+
+-------------------------------------------------------------------
+Sun Mar 17 14:18:35 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.24:
+  * General
+    - store token and session on domain instead of subdomain
+      @MUzairS15 (#10419)
+    - [Add]: Relationship between StorageClass and other k8s
+      components @pandeyshubham03 (#10357)
+    - [Add]: Relationship between Job and other k8s resources
+      @pandeyshubham03 (#10380)
+    - [Docker] Fix failing docker build @MUzairS15 (#10397)
+    - Ripul handoo/relationship/pod distribution budget
+      @RipulHandoo (#10273)
+    - add: Relationship for IngressClass and other k8s resources
+      @RipulHandoo (#10355)
+    - add: Relationship between Controller revision and other k8s
+      resources @RipulHandoo (#10299)
+    - Updated the version in meshery-nsm-deployment.yaml
+      @anirudh-hegde (#10388)
+  * Meshery CLI
+    - regenerate error codes for mesheryctl @MUzairS15 (#10405)
+    - fix: failing golint-ci test for mesheryctl @RipulHandoo
+      (#10384)
+  * Meshery UI
+    - [bug] Fix patterns filtering @sudhanshutech (#10363)
+    - Update theme @aabidsofi19 (#10409)
+    - Complete Rtk migration for Connections @sudhanshutech
+      (#10362)
+    - [Adapter] Add support for Nighthawk @leecalcote (#10361)
+    - [UI] Enhance title and description of Environments #10364
+      @izuca (#10395)
+  * Bug Fixes
+    - [bug] Fix patterns filtering @sudhanshutech (#10363)
+  * Maintenance
+    - add: defined relationship link @RipulHandoo (#10401)
+    - [chore] update golangci-lint action to v4 @MUzairS15 (#10400)
+    - [Adapter] Add support for Nighthawk @leecalcote (#10361)
+  * Documentation
+    - Bugs Fix @iArchitSharma (#10411)
+    - chore: remove anchor tags from frontmatter variable abstract
+      @dextrot (#10403)
+    - [Adapter] Add support for Nighthawk @leecalcote (#10361)
+    - [Docs] Enhance Build and Release page with link to test plan
+      @leecalcote (#10383)
+    - Update Dockerfile @MUzairS15 (#10390)
+
+-------------------------------------------------------------------
 Sat Feb 24 09:18:06 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.23:
