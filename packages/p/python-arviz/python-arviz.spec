@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define skip_python39 1
 Name:           python-arviz
-Version:        0.17.0
+Version:        0.17.1
 Release:        0
 Summary:        Exploratory analysis of Bayesian models
 License:        Apache-2.0

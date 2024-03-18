@@ -125,4 +125,16 @@
     <comment></comment>
     <requestid>1155005</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>340f55c45301a9586b021ddee783d005</srcmd5>
+    <version>0.17.1</version>
+    <time>1710776827</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.17.1:
+  * Fix deprecations introduced in latest pandas and xarray
+    versions, and prepare for numpy 2.0 ones (2315))
+  * Refactor ECDF code
+  * Fix `plot_forest` when Numba is installed</comment>
+    <requestid>1158956</requestid>
+  </revision>
 </revisionlist>
