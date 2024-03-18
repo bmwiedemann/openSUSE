@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Mar 18 05:30:09 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Switch to generic make macros and filled out version information
+- Update to 1.10.0
+  Added:
+  * Syntax highlighting for preformatted text blocks with alt text
+  * Client certificates can be restricted to certain paths of a
+    host
+  * header config option in [subscriptions] to allow disabling the
+    header text on the subscriptions page
+  * Selected link and scroll position stays for non-cached pages
+  * Keybinding to open URL with URL handler instead of configured
+    proxy
+  * include theme key to import themes from an external file
+  * Support SOCKS5 proxying by setting AMFORA_SOCKS5 environment
+    variable
+  * When bookmarking a page, the first level one heading is
+    suggested as the name
+  * Confirmation prompts for URL schemes in new [url-prompts]
+    config section
+  Changed:
+  * Center text automatically, removing left_margin from the config
+  * max_width defaults to 80 columns instead of 100
+  * Tabs have the domain of the current page instead of numbers
+  * Closing Amfora with q was removed in favor of Shift-q
+  * Paging up or down scrolls by 50% instead of 75%, to match less
+  * Update deps, require Go 1.17
+  * Show local directory index file if available
+  * Updated Project Gemini URLs
+  Fixed:
+  * Modal can't be closed when opening non-gemini text URLs from
+    the commandline
+  * External programs started by Amfora remain as zombie processes
+  * Prevent link lines
+  * new:7 on new tab page fails to open link
+  * Slashes aren't decoded in redirect URLs
+  * Typing localhost in the bottom bar actually loads localhost
+    instead of searching
+
+-------------------------------------------------------------------
 Fri Feb 17 08:13:54 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
 
 - Kickoff with v1.9.2

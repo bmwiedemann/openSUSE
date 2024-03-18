@@ -1,7 +1,7 @@
 #
 # spec file for package amfora
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,19 @@
 #
 
 
+%global revision  2534983
+
 Name:           amfora
-Version:        1.9.2
+Version:        1.10.0
 Release:        0
 Summary:        CLI/Terminal based gemini browser
 License:        GPL-3.0-only
 URL:            https://github.com/makeworld-the-better-one/amfora
 Source:         amfora-%{version}.tar.xz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) = 1.17
+BuildRequires:  desktop-file-utils
 BuildRequires:  golang-packaging
+BuildRequires:  golang(API) = 1.18
 
 %description
 A fancy terminal browser for the Gemini protocol.
@@ -34,18 +37,20 @@ A fancy terminal browser for the Gemini protocol.
 %autosetup -D -a 1
 
 %build
-GOFLAGS="-buildmode=pie" GIT_TAG="v%{version}" make amfora
+%make_build GOFLAGS="-buildmode=pie" \
+  VERSION="%{version}" COMMIT="%{revision}" BUILDER="openSUSE"
 
 %check
 # check if binary is working
 ./amfora --version
 
 %install
-install -Dm 755 amfora %{buildroot}/%{_bindir}/amfora
+%make_install PREFIX="%{_prefix}"
 
 %files
 %license LICENSE
-%doc README.md
+%doc README.md default-config.toml
 %{_bindir}/amfora
+%{_datadir}/applications/amfora.desktop
 
 %changelog
