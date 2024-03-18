@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 18 12:12:22 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1710762624.7d0dd225:
+  * Only allow security PRs from dependabot
+  * Bump flatted from 3.2.9 to 3.3.1
+  * Enable dependabot updates
+  * Return 404 if module not found
+  * Fix race conditions when handling barriers
+  * Fix typos in comment about locks
+  * Use signatures in UI tests of tests overview page
+  * Fix showing current result/state filters on overview page
+
+-------------------------------------------------------------------
 Wed Mar 13 13:02:52 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1710322691.40a3af54:
