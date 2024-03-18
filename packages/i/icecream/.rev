@@ -548,4 +548,12 @@ now with fixed sed line</comment>
     <comment></comment>
     <requestid>979847</requestid>
   </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>0cf98ca0d58888680f867372d9af5e89</srcmd5>
+    <version>1.4.0</version>
+    <time>1710776798</time>
+    <user>anag+factory</user>
+    <comment>Add provides for user+group (boo#1221417)</comment>
+    <requestid>1158924</requestid>
+  </revision>
 </revisionlist>

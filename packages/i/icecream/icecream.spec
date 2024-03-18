@@ -55,6 +55,8 @@ Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
 %{?systemd_requires}
 Recommends:     gcc-c++
+Provides:       group(icecream)
+Provides:       user(icecream)
 
 %description
 Distributed compiler with a central scheduler to share build load.

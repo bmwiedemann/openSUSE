@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 18 08:59:30 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add provides for user+group (boo#1221417)
+
+-------------------------------------------------------------------
 Mon May 30 06:50:15 UTC 2022 - Lubos Lunak <l.lunak@centrum.cz>
 
 - Do not start iceccd with verbose options.
