@@ -147,4 +147,16 @@
   + disable enabled devices before unloading iaa_crypto.</comment>
     <requestid>1146848</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7fb0cd12970d4195f7bc2c4223572bd7</srcmd5>
+    <version>4.1.6</version>
+    <time>1710776777</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.1.6:
+  * Free driver_name when freeing wq
+  * Disable all WQs and rmmod iaa_crypto
+  * Remove the script about vfio passthrough device
+  * Use madvise(MADV_DONTNEED) to ummap address</comment>
+    <requestid>1158910</requestid>
+  </revision>
 </revisionlist>
