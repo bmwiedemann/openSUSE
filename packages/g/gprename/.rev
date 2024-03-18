@@ -49,4 +49,12 @@ PS Factory provides x64 build. Others are disabled in order to save atm work. (f
   %patchN.</comment>
     <requestid>1148785</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1d7229d483349bb1f7b00310d11ce3ba</srcmd5>
+    <version>5.0.20230429</version>
+    <time>1710776842</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1158976</requestid>
+  </revision>
 </revisionlist>

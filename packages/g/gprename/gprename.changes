@@ -5,6 +5,15 @@ Wed Feb 21 15:45:24 UTC 2024 - Michael Vetter <mvetter@suse.com>
   %patchN.
 
 -------------------------------------------------------------------
+Tue Jan 16 10:32:35 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Updated to upstream 20230429:
+  * CamelCase - remove space and set Capital Letter
+- Fix source URL
+- Added fix_system_dirs.patch:
+  * This fixes directories missed by desktop_icon.patch
+
+-------------------------------------------------------------------
 Mon Sep 26 05:26:20 UTC 2022 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - Updated to upstream 20220807: no upstream changelog available.

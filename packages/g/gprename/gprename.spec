@@ -16,7 +16,7 @@
 #
 
 
-%define upstr_ver 20220807
+%define upstr_ver 20230429
 
 Name:           gprename
 Version:        5.0.%{upstr_ver}
@@ -26,7 +26,7 @@ License:        GPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://gprename.sourceforge.net
 
-Source0:        http://kent.dl.sourceforge.net/project/gprename/gprename/%{upstr_ver}/gprename-%{upstr_ver}.tar.bz2
+Source0:        https://downloads.sourceforge.net/gprename/gprename-%{upstr_ver}.zip
 # PATCH-FIX-OPENSUSE to prevent
 # 1) "The databases in [/usr/share/applications]
 # could not be updated";
@@ -38,13 +38,16 @@ Source0:        http://kent.dl.sourceforge.net/project/gprename/gprename/%{upstr
 # 4) "Failed to open file '/usr/share/icons/gprename.png':
 # No such file or directory at /usr/bin/gprename line 131."
 Patch1:         desktop_icon.patch
-
+# PATCH-FIX-OPENSUSE fix_system_dirs.patch -- Use correct system directories
+Patch2:         fix_system_dirs.patch
 BuildRequires:  desktop-file-utils
+BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 Requires:       perl-Gtk3
 Requires:       perl-Pango
 Requires:       perl-gettext
 Requires:       perl-libintl-perl
+Requires:       pkgconfig(gdk-pixbuf-2.0)
 Recommends:     %{name}-lang
 BuildArch:      noarch
 
