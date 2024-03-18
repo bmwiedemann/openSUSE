@@ -24,4 +24,14 @@
   * Update development tools</comment>
     <requestid>1109691</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3cbd67c9cb029fc59b5aa4d04987af1e</srcmd5>
+    <version>1.0.3</version>
+    <time>1710776667</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.3:
+  * Fix trashed build #17
+  * Update CI</comment>
+    <requestid>1158483</requestid>
+  </revision>
 </revisionlist>
