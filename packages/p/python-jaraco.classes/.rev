@@ -75,4 +75,13 @@
   * Features - Require Python 3.8 or later.</comment>
     <requestid>1137297</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>332bc5d512f39dc9aff2a151c40d437d</srcmd5>
+    <version>3.3.1</version>
+    <time>1710776644</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.3.1:
+  * No significant changes.</comment>
+    <requestid>1158386</requestid>
+  </revision>
 </revisionlist>
