@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 18 03:28:54 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires on importlib-metadata for the testsuite. 
+
+-------------------------------------------------------------------
 Thu Jan 25 07:14:05 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.12.1:

@@ -59,4 +59,12 @@
   * Included upstream.</comment>
     <requestid>1141437</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>316a11a899859b508bcd5a3fdc9fea56</srcmd5>
+    <version>0.12.1</version>
+    <time>1710776728</time>
+    <user>anag+factory</user>
+    <comment>- Add missing BuildRequires on importlib-metadata for the testsuite.</comment>
+    <requestid>1158848</requestid>
+  </revision>
 </revisionlist>

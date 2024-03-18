@@ -46,6 +46,7 @@ Suggests:       python-msgpack
 Suggests:       python-zfpy >= 1
 # SECTION test requirements
 BuildRequires:  %{python_module numpy >= 1.7}
+BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module pytest}
 # /SECTION
