@@ -1119,6 +1119,7 @@ unsorted:
   - aws-c-cal-devel 
   - aws-c-common-devel 
   - aws-c-compression-devel 
+  - aws-c-event-stream-devel 
   - aws-c-http 
   - aws-c-http-devel 
   - aws-c-io-devel 
@@ -1128,6 +1129,8 @@ unsorted:
   - aws-c-s3-devel 
   - aws-c-sdkutils-devel 
   - aws-cli 
+  - aws-crt-cpp-bin 
+  - aws-crt-cpp-devel 
   - aws-efs-utils 
   - aws-nitro-enclaves-binaryblobs-upstream 
   - aws-nitro-enclaves-cli 
@@ -7568,6 +7571,11 @@ unsorted:
   - google-worksans-fonts-doc 
   - googleapis-source 
   - googler 
+  - gopass 
+  - gopass-bash-completion 
+  - gopass-fish-completion 
+  - gopass-impersonate-pass 
+  - gopass-zsh-completion 
   - gopls 
   - gops 
   - gos-wallpapers 
@@ -8353,6 +8361,8 @@ unsorted:
   - hyperscan-devel 
   - hyphen 
   - hyphen-devel 
+  - hyprcursor 
+  - hyprcursor-devel 
   - hypre-devel 
   - hypre-gnu-mpich-hpc-devel 
   - hypre-gnu-mvapich2-hpc-devel 
@@ -10717,14 +10727,6 @@ unsorted:
   - libKOSM1 
   - libKOSMIndoorMap1 
   - libKOpeningHours1 
-  - libKPim5GAPIBlogger5 
-  - libKPim5GAPICalendar5 
-  - libKPim5GAPICore5 
-  - libKPim5GAPIDrive5 
-  - libKPim5GAPILatitude5 
-  - libKPim5GAPIMaps5 
-  - libKPim5GAPIPeople5 
-  - libKPim5GAPITasks5 
   - libKPim6AddressbookImportExport6-devel 
   - libKPim6GAPIBlogger6 
   - libKPim6GAPILatitude6 
@@ -11548,6 +11550,7 @@ unsorted:
   - libaws-c-cal0unstable 
   - libaws-c-common1 
   - libaws-c-compression1_0_0 
+  - libaws-c-event-stream1 
   - libaws-c-http1_0_0 
   - libaws-c-io0unstable 
   - libaws-c-mqtt1_0_0 
@@ -11555,6 +11558,7 @@ unsorted:
   - libaws-c-sdkutils1_0_0 
   - libaws-checksums-devel 
   - libaws-checksums1 
+  - libaws-crt-cpp1 
   - libax25-0 
   - libax25-common 
   - libax25-devel 
@@ -13338,7 +13342,8 @@ unsorted:
   - libhydrogen-core-1_2_3 
   - libhydrogen-core-devel 
   - libhyphen0-32bit 
-  - libhyprlang1 
+  - libhyprcursor0 
+  - libhyprlang2 
   - libi2c0 
   - libi2c0-devel 
   - libibdm1 
@@ -13621,9 +13626,6 @@ unsorted:
   - libkexiv2-qt6-devel 
   - libkeybinder0 
   - libkgantt-lang 
-  - libkgapi 
-  - libkgapi-devel 
-  - libkgapi-lang 
   - libkgapi6-devel 
   - libkim-api2 
   - libkioarchive-devel 
@@ -13891,6 +13893,9 @@ unsorted:
   - libmagic1-32bit 
   - libmaia-devel 
   - libmaia1 
+  - libmaliit-devel 
+  - libmaliit-glib2 
+  - libmaliit-plugins2 
   - libmanette-0_2-0-32bit 
   - libmanette-devel 
   - libmapidb-devel 
@@ -15781,39 +15786,39 @@ unsorted:
   - libsuil-0-0 
   - libsuitesparse_mongoose-doc 
   - libsuitesparse_mongoose3 
-  - libsundials_arkode5 
-  - libsundials_arkode5-mvapich2 
-  - libsundials_arkode5-openmpi4 
-  - libsundials_cvode6 
-  - libsundials_cvode6-mvapich2 
-  - libsundials_cvode6-openmpi4 
-  - libsundials_cvodes6 
-  - libsundials_cvodes6-mvapich2 
-  - libsundials_cvodes6-openmpi4 
-  - libsundials_generic6 
-  - libsundials_generic6-mvapich2 
-  - libsundials_generic6-openmpi4 
-  - libsundials_ida6 
-  - libsundials_ida6-mvapich2 
-  - libsundials_ida6-openmpi4 
-  - libsundials_idas5 
-  - libsundials_idas5-mvapich2 
-  - libsundials_idas5-openmpi4 
-  - libsundials_kinsol6 
-  - libsundials_kinsol6-mvapich2 
-  - libsundials_kinsol6-openmpi4 
-  - libsundials_nvec6 
-  - libsundials_nvec6-mvapich2 
-  - libsundials_nvec6-openmpi4 
-  - libsundials_sunlinsol4 
-  - libsundials_sunlinsol4-mvapich2 
-  - libsundials_sunlinsol4-openmpi4 
-  - libsundials_sunmatrix4 
-  - libsundials_sunmatrix4-mvapich2 
-  - libsundials_sunmatrix4-openmpi4 
-  - libsundials_sunnonlin3 
-  - libsundials_sunnonlin3-mvapich2 
-  - libsundials_sunnonlin3-openmpi4 
+  - libsundials_arkode6 
+  - libsundials_arkode6-mvapich2 
+  - libsundials_arkode6-openmpi4 
+  - libsundials_core7 
+  - libsundials_core7-mvapich2 
+  - libsundials_core7-openmpi4 
+  - libsundials_cvode7 
+  - libsundials_cvode7-mvapich2 
+  - libsundials_cvode7-openmpi4 
+  - libsundials_cvodes7 
+  - libsundials_cvodes7-mvapich2 
+  - libsundials_cvodes7-openmpi4 
+  - libsundials_ida7 
+  - libsundials_ida7-mvapich2 
+  - libsundials_ida7-openmpi4 
+  - libsundials_idas6 
+  - libsundials_idas6-mvapich2 
+  - libsundials_idas6-openmpi4 
+  - libsundials_kinsol7 
+  - libsundials_kinsol7-mvapich2 
+  - libsundials_kinsol7-openmpi4 
+  - libsundials_nvec7 
+  - libsundials_nvec7-mvapich2 
+  - libsundials_nvec7-openmpi4 
+  - libsundials_sunlinsol5 
+  - libsundials_sunlinsol5-mvapich2 
+  - libsundials_sunlinsol5-openmpi4 
+  - libsundials_sunmatrix5 
+  - libsundials_sunmatrix5-mvapich2 
+  - libsundials_sunmatrix5-openmpi4 
+  - libsundials_sunnonlin4 
+  - libsundials_sunnonlin4-mvapich2 
+  - libsundials_sunnonlin4-openmpi4 
   - libsuperlu-gnu-hpc 
   - libsuperlu6 
   - libsuperlu6-32bit 
@@ -17503,6 +17508,12 @@ unsorted:
   - mako 
   - malaga-suomi 
   - malcontent-devel 
+  - maliit-framework 
+  - maliit-framework-doc 
+  - maliit-framework-tests 
+  - maliit-keyboard 
+  - maliit-keyboard-lang 
+  - maliit-keyboard-layouts 
   - mame 
   - mame-data 
   - mame-tools 
@@ -19627,6 +19638,7 @@ unsorted:
   - onioncat 
   - onnx-backend-test 
   - onnx-devel 
+  - oo7 
   - ooRexx 
   - ooRexx-devel 
   - opa-address-resolution 
@@ -33618,6 +33630,7 @@ unsorted:
   - python312-unidiff 
   - python312-uniseg 
   - python312-unittest-mixins 
+  - python312-unittest-xml-reporting 
   - python312-unittest2pytest 
   - python312-unpaddedbase64 
   - python312-unsync 
@@ -33633,6 +33646,7 @@ unsorted:
   - python312-urllib3 
   - python312-urllib3_1 
   - python312-urwid 
+  - python312-urwid-readline 
   - python312-usbsdmux 
   - python312-user-agents 
   - python312-user_agent 
@@ -38859,7 +38873,6 @@ unsorted:
   - sar2 
   - sar2-data 
   - sarg 
-  - sasl2-kdexoauth2 
   - sassc 
   - sassist 
   - sasutils 
@@ -48925,7 +48938,6 @@ unsorted:
   - timeshift 
   - timeshift-lang 
   - timewarrior 
-  - timezone-java 
   - timezonemap-devel 
   - timg 
   - timidity 
