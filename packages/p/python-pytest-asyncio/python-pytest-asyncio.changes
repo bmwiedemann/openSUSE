@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 16 09:46:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.23.5.post1:
+  * Declare compatibility with pytest 8
+  * Fix typing errors with recent versions of mypy #769
+  * Prevent DeprecationWarning about internal use of
+    `asyncio.get_event_loop()` from affecting test cases #757
+
+-------------------------------------------------------------------
 Sat Mar  2 11:29:53 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.23.5

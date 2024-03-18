@@ -201,4 +201,16 @@ required by mycroft-core</comment>
     <comment></comment>
     <requestid>1154886</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>bb19700389abcbec6590b218a34fba25</srcmd5>
+    <version>0.23.5.post1</version>
+    <time>1710776647</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.23.5.post1:
+  * Declare compatibility with pytest 8
+  * Fix typing errors with recent versions of mypy #769
+  * Prevent DeprecationWarning about internal use of
+    `asyncio.get_event_loop()` from affecting test cases #757</comment>
+    <requestid>1158427</requestid>
+  </revision>
 </revisionlist>
