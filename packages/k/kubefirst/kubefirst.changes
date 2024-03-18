@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 18 07:29:16 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.4.2:
+  * 2.4.2 chart adoption in cli (#2131)
+  * setting helm chart to 242rc1 (#2130)
+  * adding known host check for gitlab / github (#2129)
+
+-------------------------------------------------------------------
 Sat Mar 16 17:45:47 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.4.1:
