@@ -1,7 +1,7 @@
 #
 # spec file for package waypipe
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           waypipe
-Version:        0.8.6
+Version:        0.9.0
 Release:        0
 Summary:        Proxy for Wayland clients
 License:        MIT
@@ -34,15 +34,15 @@ BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libzstd) >= 0.4.6
 BuildRequires:  pkgconfig(scdoc) >= 1.9.4
-BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wayland-server)
 
 %description
 waypipe is a proxy for Wayland clients. It forwards Wayland messages
 and serializes changes to shared memory buffers over a single socket.
 This makes application forwarding similar to `ssh -X` feasible.
- 
+
 Waypipe needs to be run on both ends of a socket connection. It
 emulates shared files between the different systems on each end of
 the connection, using twin file copies to quickly identify file
