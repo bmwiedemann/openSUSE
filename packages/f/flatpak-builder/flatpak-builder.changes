@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 15 19:33:19 UTC 2024 - andy great <andythe_great@pm.me>
+
+- Temporary use fixed-libglnx archive provided from upsteam to fix
+  https://github.com/flatpak/flatpak-builder/issues/590
+- Update to version 1.4.2.
+  + Fix missing test files in the generated tarballs
+  + Fix possible empty id in provides when renaming
+  + Fix minor memory leaks
+- Update to version 1.4.1.
+  + Add support for autoprune-unless in extensions
+  + Add disable-http-decompression option to archive/file sources
+  + Change rename-desktop-file and rename-appdata-file to also set
+    the launchable or provide the old id if needed
+
+-------------------------------------------------------------------
 Fri Dec 29 01:27:57 UTC 2023 - Luna D Dragon <luna.dragon@suse.com>
 
 - Update to version 1.4.0

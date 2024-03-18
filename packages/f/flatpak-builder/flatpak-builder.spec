@@ -1,7 +1,7 @@
 #
 # spec file for package flatpak-builder
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,19 @@
 #
 
 
-%define flatpak_version 1.12.4
+%define flatpak_version 1.15.6
 %bcond_with system_debugedit
 %if 0%{?suse_version} >= 1550
 %bcond_without system_debugedit
 %endif
 Name:           flatpak-builder
-Version:        1.4.0
+Version:        1.4.2
 Release:        0
 Summary:        Tool to build flatpaks from source
 License:        LGPL-2.1-or-later
 Group:          Development/Tools/Building
 URL:            http://flatpak.org/
-Source0:        https://github.com/flatpak/flatpak-builder/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source0:        https://github.com/flatpak/flatpak-builder/releases/download/%{version}/%{name}-%{version}-fixed-libglnx.tar.xz
 Patch0:         fusermount3.diff
 BuildRequires:  AppStream
 BuildRequires:  AppStream-compose
