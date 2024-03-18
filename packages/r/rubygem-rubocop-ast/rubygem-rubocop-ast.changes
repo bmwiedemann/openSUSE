@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Mar 16 11:31:11 UTC 2024 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- Updated to 1.31.2
+
+  ## 1.31.2 (2024-03-08)
+
+  ### Bug fixes
+
+  * [#286](https://github.com/rubocop/rubocop-ast/pull/286): Improve error message for invalid `parser_engine` value. ([@Earlopain][])
+
+  ## 1.31.1 (2024-03-01)
+
+  ### Changes
+
+  * [#282](https://github.com/rubocop/rubocop-ast/issues/282): Remove Prism from runtime dependency. ([@koic][])
+
+  ## 1.31.0 (2024-02-29)
+
+  ### New features
+
+  * [#277](https://github.com/rubocop/rubocop-ast/pull/277): Support Prism as a Ruby parser (experimental). ([@koic][])
+  * [#276](https://github.com/rubocop-hq/rubocop-ast/pull/276): Support `Parser::Ruby34` for Ruby 3.4 parser (experimental). ([@koic][])
+
+  ### Changes
+
+  * [#279](https://github.com/rubocop/rubocop-ast/pull/279): **(Compatibility)** Drop Ruby 2.6 runtime support. ([@koic][])
+  * [#272](https://github.com/rubocop/rubocop-ast/pull/272): Make `Node#left_curly_brace?` aware of lambda brace. ([@koic][])
+
+-------------------------------------------------------------------
 Tue Nov 14 15:34:07 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - New upstream release 1.30.0, no changelog found
