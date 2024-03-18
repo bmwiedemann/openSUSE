@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 16 13:04:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.1.0:
+  * Removed the deprecated OpenSSL.crypto.PKCS12 and
+    OpenSSL.crypto.NetscapeSPKI. OpenSSL.crypto.PKCS12 may be
+    replaced by the PKCS#12 APIs in the cryptography package.
+
+-------------------------------------------------------------------
 Mon Jan 29 21:16:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.0.0:

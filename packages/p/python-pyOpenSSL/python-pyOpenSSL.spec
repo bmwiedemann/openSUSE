@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pyOpenSSL%{psuffix}
-Version:        24.0.0
+Version:        24.1.0
 Release:        0
 Summary:        Python wrapper module around the OpenSSL library
 License:        Apache-2.0
@@ -45,10 +45,10 @@ Provides:       pyOpenSSL = %{version}
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module cryptography >= 41.0.5 with %python-cryptography < 43}
-BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pyOpenSSL >= %version}
 BuildRequires:  %{python_module pytest >= 3.0.1}
+BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  ca-certificates-mozilla
 BuildRequires:  openssl
 %endif
