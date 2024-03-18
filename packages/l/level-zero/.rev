@@ -227,4 +227,18 @@
     * level-zero Windows SDK -&gt; Windows Software Development Kit for oneAPI Level-Zero</comment>
     <requestid>1135797</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>841a8e5b2f7c0c84286c3a51137ed0f1</srcmd5>
+    <version>1.16.1</version>
+    <time>1710776870</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.16.1:
+  * Fix to spec generated api version defines
+  * Update to spec 1.9.1
+  * Enable for zesInit to run with zeInit without duplicate init
+  * Addressed OpenSSF Token Permissions
+  * Fix for missing extension types in the validation layer
+  * Added structure for Loader validation testing</comment>
+    <requestid>1159015</requestid>
+  </revision>
 </revisionlist>

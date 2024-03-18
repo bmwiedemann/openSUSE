@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 18 13:30:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.16.1:
+  * Fix to spec generated api version defines
+  * Update to spec 1.9.1
+  * Enable for zesInit to run with zeInit without duplicate init
+  * Addressed OpenSSF Token Permissions
+  * Fix for missing extension types in the validation layer
+  * Added structure for Loader validation testing
+
+-------------------------------------------------------------------
 Wed Dec 27 05:08:00 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Created package level-zero version 1.15.8
