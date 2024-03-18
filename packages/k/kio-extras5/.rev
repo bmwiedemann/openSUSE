@@ -1090,4 +1090,12 @@
     <comment>KDE release gear 24.02.0</comment>
     <requestid>1155250</requestid>
   </revision>
+  <revision rev="135" vrev="2">
+    <srcmd5>56754d368cb31ce5d2151cb8cd9e965a</srcmd5>
+    <version>24.02.0</version>
+    <time>1710776678</time>
+    <user>anag+factory</user>
+    <comment>- Recommend installing ffmpegthumbs-kf5 for video previews</comment>
+    <requestid>1158616</requestid>
+  </revision>
 </revisionlist>

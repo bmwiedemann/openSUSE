@@ -41,13 +41,11 @@ BuildRequires:  gcc13-PIE
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gperf
 BuildRequires:  kdsoap-devel
-BuildRequires:  kf5-filesystem
 BuildRequires:  libjpeg-devel
 BuildRequires:  libmtp-devel
 BuildRequires:  libssh-devel
 BuildRequires:  libtag-devel
 BuildRequires:  pkgconfig
-BuildRequires:  xz
 BuildRequires:  cmake(KF5Activities)
 BuildRequires:  cmake(KF5ActivitiesStats)
 BuildRequires:  cmake(KF5Archive)
@@ -76,6 +74,8 @@ BuildRequires:  pkgconfig(libimobiledevice-1.0)
 BuildRequires:  pkgconfig(libplist-2.0)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(smbclient)
+# Provides previews for video files
+Recommends:     ffmpegthumbs-kf5
 Recommends:     kimageformats
 # we want some imageformats in
 Recommends:     libqt5-qtimageformats
