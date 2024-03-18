@@ -353,4 +353,16 @@
   * Correctly handle NULL/None VFS filenames (:issue:`506`)</comment>
     <requestid>1140101</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8aad6f0cfa64d925eab190190ed1ba44</srcmd5>
+    <version>3.45.2.0</version>
+    <time>1710776821</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.45.2.0:
+  * Minor doc and tests change due to changed behaviour of
+    sqlite3_serialize on an empty database, used by
+    :meth:`Connection.serialize`.
+  * No APSW changes.</comment>
+    <requestid>1158947</requestid>
+  </revision>
 </revisionlist>

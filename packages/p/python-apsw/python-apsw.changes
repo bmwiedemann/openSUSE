@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 18 10:27:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.45.2.0:
+  * Minor doc and tests change due to changed behaviour of
+    sqlite3_serialize on an empty database, used by
+    :meth:`Connection.serialize`.
+  * No APSW changes.
+
+-------------------------------------------------------------------
 Sat Jan 20 12:28:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.45.0.0:
