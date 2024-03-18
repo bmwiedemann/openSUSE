@@ -424,4 +424,12 @@
     functionally identical to 23.11. (forwarded request 1130290 from dirkmueller)</comment>
     <requestid>1130445</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>61754bf4866ee2818aff02c46760d212</srcmd5>
+    <version>24.03</version>
+    <time>1710776815</time>
+    <user>anag+factory</user>
+    <comment>Update to version 24.03 (forwarded request 1158928 from simonlm)</comment>
+    <requestid>1158943</requestid>
+  </revision>
 </revisionlist>

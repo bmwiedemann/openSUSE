@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Mar 18 08:41:39 UTC 2024 - ming li <mli@suse.com>
+
+- Update to 24.03:
+  * New Features:
+    Update to FNA3D 24.03
+    Update to FAudio 24.03
+  * Fixes:
+    DDSFromStreamEXT: Fixed some logic errors in the DDS header parser
+    NativeAOT: Improve failure message when missing types in rd.xml
+    Separated obj folder paths for NetFramework/NetStandard projects,
+    fixes weird compiler conflicts
+    
+update to 24.02:
+  * New Features:
+    Update to FNA3D 24.02
+    Update to FAudio 24.02
+  * Modified Features:
+    DDSFromStreamEXT now supports RGBA DDS textures, in addition to BGRA
+  * Fixes:
+    SDL2_FNAPlatform:
+    Display orientation events are now ignored on non-mobile platforms
+    Worked around a display hotplugging timing issue in SDL
+    Improved error reporting when FNA3D fails to decode images
+
+update to 24.01:
+  * New Features:
+    Update to FNA3D 24.01
+    Update to FAudio 24.01
+    Added support for detecting PlayStation gamepads hidden behind
+    Steam Virtual Gamepads
+        This feature requires SDL 2.30 or newer
+  * Removed Features:
+    UWP support has been removed, Xbox developers should migrate to GDK
+  * Fixes:
+    Removed the x64 Platform from modern C# project files, this attribute
+    is now inherited from the Solution instead
+    GraphicsDeviceManager now warns when calling ApplyChanges too early in
+    the Game lifecycle
+    Fixed FNADllMap support on iOS/tvOS
+
+update to 23.12.07:
+  * Fixes:
+    Update to FNA3D 23.12.07
+    Fixed GraphicsResource finalization to use atomics, rather than managed
+    queues
+
+-------------------------------------------------------------------
 Fri Dec  1 15:56:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.12:

@@ -1,7 +1,7 @@
 #
 # spec file for package FAudio
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           FAudio
-Version:        23.12
+Version:        24.03
 Release:        0
 Summary:        A reimplementation of the XNA Game Studio libraries
 License:        Zlib
@@ -53,7 +53,7 @@ FNA is a reimplementation of the Microsoft XNA Game Studio 4.0 Refresh libraries
 %prep
 %setup -q
 %if 0%{?suse_version} < 1550
-%patch0 -p1
+%autopatch -p1
 %endif
 
 %build
