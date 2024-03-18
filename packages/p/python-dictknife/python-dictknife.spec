@@ -1,7 +1,7 @@
 #
 # spec file for package python-dictknife
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-dictknife
-Version:        0.14.0
+Version:        0.14.1
 Release:        0
 Summary:        Army knife of handling data
 License:        MIT
@@ -36,7 +36,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Suggests:       python-ruamel.yaml
 Suggests:       python-google-api-python-client
 Suggests:       python-google-auth-oauthlib

@@ -46,4 +46,14 @@
   * add `dictknife diff -o pair`</comment>
     <requestid>1130485</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b488ac1f888ef754817cdda4f7b66fc6</srcmd5>
+    <version>0.14.1</version>
+    <time>1710776832</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.14.1:
+  * fix bug `unexpected keyword argument loader` is occured when
+    yaml library is not installed</comment>
+    <requestid>1158959</requestid>
+  </revision>
 </revisionlist>
