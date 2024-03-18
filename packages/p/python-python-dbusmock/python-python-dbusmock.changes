@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 16 12:57:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.31.1:
+  * power_profiles_daemon: Move back to original D-Bus name to
+    avoid breaking compatibility
+  * Add upower_power_profiles_daemon template for version 0.20
+    API with new D-Bus name
+- update to 0.31.0:
+  * power-profiles-daemon: Move to
+    org.freedesktop.UPower.PowerProfiles as in release 0.20.0
+  * NetworkManager: Add stub ipv4/6 properties in
+    AddWiFiConnection
+
+-------------------------------------------------------------------
 Sun Jan 21 17:35:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.30.2:
