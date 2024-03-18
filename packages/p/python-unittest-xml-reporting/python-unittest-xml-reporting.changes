@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 18 05:33:49 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch python-312.patch:
+  * Fiddle with the refcounting for Python 3.12.
+
+-------------------------------------------------------------------
 Tue Jan 30 05:50:30 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.2.0:

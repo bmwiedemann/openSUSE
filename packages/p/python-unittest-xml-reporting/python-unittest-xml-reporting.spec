@@ -25,6 +25,8 @@ URL:            https://github.com/xmlrunner/unittest-xml-reporting
 Source:         https://github.com/xmlrunner/unittest-xml-reporting/archive/%{version}.tar.gz
 # PATCH-FIX-UPSTREAM python-311.patch gh#xmlrunner/unittest-xml-reporting#274
 Patch0:         python-311.patch
+# PATCH-FIX-OPENSUSE Add one to the refcount for Python 3.12
+Patch1:         python-312.patch
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}

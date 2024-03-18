@@ -187,4 +187,13 @@
 - Refresh python-311.patch.</comment>
     <requestid>1142716</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>1887330cc227afedf87a1f4b4eda78ea</srcmd5>
+    <version>3.2.0</version>
+    <time>1710776731</time>
+    <user>anag+factory</user>
+    <comment>- Add patch python-312.patch:
+  * Fiddle with the refcounting for Python 3.12.</comment>
+    <requestid>1158853</requestid>
+  </revision>
 </revisionlist>

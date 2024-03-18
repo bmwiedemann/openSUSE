@@ -1,0 +1,13 @@
+Index: unittest-xml-reporting-3.2.0/tests/testsuite.py
+===================================================================
+--- unittest-xml-reporting-3.2.0.orig/tests/testsuite.py
++++ unittest-xml-reporting-3.2.0/tests/testsuite.py
+@@ -807,6 +807,8 @@ class XMLTestRunnerTestCase(unittest.Tes
+         countBeforeTest = sys.getrefcount(self.DummyRefCountTest.dummy)
+         runner = self._test_xmlrunner(suite)
+         countAfterTest = sys.getrefcount(self.DummyRefCountTest.dummy)
++        if sys.version_info >= (3, 12):
++            countBeforeTest += 1
+         self.assertEqual(countBeforeTest, countAfterTest)
+ 
+     class StderrXMLTestRunner(xmlrunner.XMLTestRunner):
