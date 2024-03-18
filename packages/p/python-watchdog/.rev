@@ -223,4 +223,41 @@
     <comment></comment>
     <requestid>1092189</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f940692c13402f99f86a97a09b00e48a</srcmd5>
+    <version>4.0.0</version>
+    <time>1710776673</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0.0:
+  * Drop support for Python 3.7.
+  * Add support for Python 3.12.
+  * [snapshot] Add typing to dirsnapshot
+  * [snapshot] Added DirectorySnapshotDiff.ContextManager
+  * [events] FileSystemEvent, and subclasses, are now
+    dataclass``es, and their ``repr() has changed
+  * [windows] WinAPINativeEvent is now a dataclass, and its
+    repr() has changed
+  * [events] Log FileOpenedEvent, and FileClosedEvent, events in
+    LoggingEventHandler
+  * [tests] Improve FileSystemEvent coverage
+  * [watchmedo] Log all events in LoggerTrick
+  * [windows] The observers.read_directory_changes.WATCHDOG_TRAVE
+    RSE_MOVED_DIR_DELAY hack was removed. The constant will be
+    kept to prevent breaking other softwares.
+  * Thanks to our beloved contributors: @BoboTiG, @msabramo
+
+  Generate doc only for Leap because it rise up an syntax error in
+    in the future.
+- Update to version 2.2.0
+  * [inotify] Suppress occasional ``OSError: [Errno 9] Bad file descriptor`` at shutdown.
+  * [watchmedo] Make ``auto-restart`` restart the sub-process if it terminates.
+  * [watchmedo] Avoid zombie sub-processes when running ``shell-command`` without ``--wait``.
+  * Fix adding failed emitters on observer schedule.
+  * [inotify] Fix hang when unscheduling watch on a path in an unmounted filesystem.
+  * [watchmedo] Fix broken parsing of ``--kill-after`` argument for the ``auto-restart`` command.
+  * [watchmedo] Fix broken parsing of boolean arguments.
+  * [watchmedo] Fix broken parsing of commands from ``auto-restart``, and ``shell-command``.
+  * [watchmedo] Support setting verbosity level via ``-q/--quiet`` and ``-v/--verbose`` arguments.</comment>
+    <requestid>1158534</requestid>
+  </revision>
 </revisionlist>

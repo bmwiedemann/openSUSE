@@ -1,7 +1,7 @@
 #
 # spec file for package python-watchdog
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-watchdog
-Version:        3.0.0
+Version:        4.0.0
 Release:        0
 Summary:        Filesystem events monitoring
 License:        Apache-2.0
@@ -33,7 +33,7 @@ BuildRequires:  python3-Sphinx
 Requires:       python-PyYAML >= 3.10
 Requires:       python-pathtools >= 0.1.1
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pathtools >= 0.1.1}
