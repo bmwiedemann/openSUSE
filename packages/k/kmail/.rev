@@ -735,4 +735,13 @@
     <comment>KDE release gear 24.02.0</comment>
     <requestid>1150967</requestid>
   </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>314ddb1c03eab73a3205eaa182e17cf3</srcmd5>
+    <version>24.02.0</version>
+    <time>1710776633</time>
+    <user>anag+factory</user>
+    <comment>- Add fix for a potential kontact crash (kde#483844):
+  * 0001-Fix-483844-kontact-segfaults-on-startup.patch</comment>
+    <requestid>1158971</requestid>
+  </revision>
 </revisionlist>

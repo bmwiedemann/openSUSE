@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 18 11:33:21 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add fix for a potential kontact crash (kde#483844):
+  * 0001-Fix-483844-kontact-segfaults-on-startup.patch
+
+-------------------------------------------------------------------
 Fri Feb 23 13:59:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.0

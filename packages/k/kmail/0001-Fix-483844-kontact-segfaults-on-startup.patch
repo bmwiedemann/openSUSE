@@ -1,0 +1,31 @@
+From 6f61ea119e882b1221bd9ec7dcd0c88f77e3ac45 Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Mon, 18 Mar 2024 07:00:04 +0100
+Subject: [PATCH] Fix 483844: kontact segfaults on startup
+
+I can't reproduce it but I can avoid it.
+I prefere fix real bug but without reproducing it...
+
+BUG: 483844
+FIXED-IN: 24.02.1
+---
+ src/kmmainwidget.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/kmmainwidget.cpp b/src/kmmainwidget.cpp
+index 7f9b4a1ea..d82cd888d 100644
+--- a/src/kmmainwidget.cpp
++++ b/src/kmmainwidget.cpp
+@@ -4060,6 +4060,9 @@ void KMMainWidget::updateHtmlMenuEntry()
+ //-----------------------------------------------------------------------------
+ void KMMainWidget::updateFolderMenu()
+ {
++    if (!mFolderMailingListPropertiesAction) {
++        return;
++    }
+     if (!CommonKernel->outboxCollectionFolder().isValid()) {
+         QTimer::singleShot(1s, this, &KMMainWidget::updateFolderMenu);
+         return;
+-- 
+2.44.0
+
