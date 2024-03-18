@@ -31,4 +31,16 @@
     <comment></comment>
     <requestid>847491</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>638d570871fd23baea0a25d3cb13bc1c</srcmd5>
+    <version>0.2.3</version>
+    <time>1710776824</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.2.3:
+  * Add Python 3.8, 3.9, 3.10, 3.11, 3.12 support.
+  * Drop support for Python 2.7 (EOL 2020-01-01), 3.4
+    (2019-03-18), 3.5 (2020-09-13), 3.6 (2021-12-23), 3.7
+    (2023-06-27).</comment>
+    <requestid>1158952</requestid>
+  </revision>
 </revisionlist>
