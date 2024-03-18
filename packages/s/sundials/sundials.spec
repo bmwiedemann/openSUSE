@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package sundials
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -79,20 +79,20 @@ ExclusiveArch:  do_not_build
 
 # /SECTION
 
-%define shlib_arkode    libsundials_arkode5%{?my_suffix}
-%define shlib_cvode     libsundials_cvode6%{?my_suffix}
-%define shlib_cvodes    libsundials_cvodes6%{?my_suffix}
-%define shlib_generic   libsundials_generic6%{?my_suffix}
-%define shlib_ida       libsundials_ida6%{?my_suffix}
-%define shlib_idas      libsundials_idas5%{?my_suffix}
-%define shlib_kinsol    libsundials_kinsol6%{?my_suffix}
-%define shlib_nvec      libsundials_nvec6%{?my_suffix}
-%define shlib_sunlinsol libsundials_sunlinsol4%{?my_suffix}
-%define shlib_sunmatrix libsundials_sunmatrix4%{?my_suffix}
-%define shlib_sunnonlin libsundials_sunnonlin3%{?my_suffix}
+%define shlib_arkode    libsundials_arkode6%{?my_suffix}
+%define shlib_cvode     libsundials_cvode7%{?my_suffix}
+%define shlib_cvodes    libsundials_cvodes7%{?my_suffix}
+%define shlib_core      libsundials_core7%{?my_suffix}
+%define shlib_ida       libsundials_ida7%{?my_suffix}
+%define shlib_idas      libsundials_idas6%{?my_suffix}
+%define shlib_kinsol    libsundials_kinsol7%{?my_suffix}
+%define shlib_nvec      libsundials_nvec7%{?my_suffix}
+%define shlib_sunlinsol libsundials_sunlinsol5%{?my_suffix}
+%define shlib_sunmatrix libsundials_sunmatrix5%{?my_suffix}
+%define shlib_sunnonlin libsundials_sunnonlin4%{?my_suffix}
 
 Name:           %{package_name}
-Version:        6.7.0
+Version:        7.0.0
 Release:        0
 Summary:        Suite of nonlinear solvers
 # SUNDIALS is licensed under BSD with some additional (but unrestrictive) clauses.
@@ -129,9 +129,9 @@ preconditioners.
 %package devel
 Summary:        Suite of nonlinear solvers (developer files)
 Requires:       %{shlib_arkode} = %{version}
+Requires:       %{shlib_core} = %{version}
 Requires:       %{shlib_cvodes} = %{version}
 Requires:       %{shlib_cvode} = %{version}
-Requires:       %{shlib_generic} = %{version}
 Requires:       %{shlib_idas} = %{version}
 Requires:       %{shlib_ida} = %{version}
 Requires:       %{shlib_kinsol} = %{version}
@@ -183,10 +183,10 @@ for use in writing mathematical software.
 
 This package provides the shared libraries for SUNDIALS' cvodes solver.
 
-%package -n %{shlib_generic}
+%package -n %{shlib_core}
 Summary:        Suite of nonlinear solvers - generic shared libraries
 
-%description -n %{shlib_generic}
+%description -n %{shlib_core}
 SUNDIALS is a SUite of Non-linear DIfferential/ALgebraic equation Solvers
 for use in writing mathematical software.
 
@@ -334,8 +334,8 @@ fi
 %post -n %{shlib_cvodes} -p /sbin/ldconfig
 %postun -n %{shlib_cvodes} -p /sbin/ldconfig
 
-%post -n %{shlib_generic} -p /sbin/ldconfig
-%postun -n %{shlib_generic} -p /sbin/ldconfig
+%post -n %{shlib_core} -p /sbin/ldconfig
+%postun -n %{shlib_core} -p /sbin/ldconfig
 
 %post -n %{shlib_ida} -p /sbin/ldconfig
 %postun -n %{shlib_ida} -p /sbin/ldconfig
@@ -390,8 +390,8 @@ fi
 %files -n %{shlib_cvodes}
 %{my_libdir}/libsundials_cvodes.so.*
 
-%files -n %{shlib_generic}
-%{my_libdir}/libsundials_generic.so.*
+%files -n %{shlib_core}
+%{my_libdir}/libsundials_core.so.*
 
 %files -n %{shlib_ida}
 %{my_libdir}/libsundials_ida.so.*

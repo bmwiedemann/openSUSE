@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 12 01:04:46 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 7.0.0:
+  * Many changes, see
+    https://github.com/LLNL/sundials/releases/tag/v7.0.0.
+- Update shared library package names in keeping with upstream
+  so version bumps.
+- Adapt to name change of shared library: libsundials_generic ->
+  libsundials_core.
+
+-------------------------------------------------------------------
 Tue Feb 20 11:35:35 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Load the full mpivars instead of manually setting LD_LIBRARY_PATH
