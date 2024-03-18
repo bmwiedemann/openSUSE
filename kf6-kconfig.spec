@@ -1,7 +1,7 @@
 #
 # spec file for package kf6-kconfig
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Name:           kf6-kconfig
 Version:        6.0.0
 Release:        0
 Summary:        Advanced configuration system
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://www.kde.org
 Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
@@ -36,6 +36,8 @@ Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
 Source99:       kf6-kconfig-rpmlintrc
+# https://invent.kde.org/frameworks/kconfig/-/merge_requests/283
+Patch1:         0001-kconf_update-Also-run-.upd-files-if-times-match-but-.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
