@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 10 18:39:27 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 8.311:
+  * Too many changes to list, see https://pythia.org/history/.
+- Minor rebasing of patches to apply cleanly against update:
+  * pythia-examples-link-gmp.patch
+  * pythia-honour-env-cxxflags.patch
+  * pythia-remove-rpaths.patch
+  * reproducible.patch
+- Make doc package noarch.
+
+-------------------------------------------------------------------
 Wed Jul 26 22:12:11 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 8.310:

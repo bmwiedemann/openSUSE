@@ -1,7 +1,7 @@
 #
 # spec file for package pythia
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define ver 8310
+%define ver 8311
 %define soname lib%{name}8
 Name:           pythia
-Version:        8.310
+Version:        8.311
 Release:        0
 Summary:        A simulation program for particle collisions at very high energies
 License:        GPL-2.0-or-later
@@ -107,6 +107,7 @@ This package provides the header and source files for development with
 %package doc
 Summary:        Documentation for Pythia - a simulation program for particle collisions
 Group:          Documentation/HTML
+BuildArch:      noarch
 
 %description doc
 Pythia can be used to generate high-energy-physics events, i.e. sets
