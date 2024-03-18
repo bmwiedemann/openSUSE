@@ -17,7 +17,7 @@
 
 
 Name:           astyle
-Version:        3.4.11
+Version:        3.4.13
 Release:        0
 Summary:        Source Code Indenter, Formatter, and Beautifier for C, C++, C# and Java
 License:        MIT
@@ -70,6 +70,6 @@ install -D -m 0644 man/%{name}.1 -t %{buildroot}%{_mandir}/man1/
 %{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files -n lib%{name}j3
-%{_libdir}/*.so*
+%{_libdir}/libastylej.so*
 
 %changelog

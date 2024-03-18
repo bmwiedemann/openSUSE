@@ -160,4 +160,25 @@
     <comment></comment>
     <requestid>1142984</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8f293c7d69d5a460dde7627afec4b6e9</srcmd5>
+    <version>3.4.13</version>
+    <time>1710776796</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.4.13:
+  * fix comment indent after string macro with R suffix
+  * do not break single line block after enum in mozilla mode
+  * adjust cmake policy for new versions only
+  * update man page path
+  * add support for scikit-build-core
+  * added &quot;--pad-brackets-in&quot; and &quot;--pad-brackets-out&quot; options
+  * fixed indentation of initializer lists
+  * fixed crash with &quot;--add-braces=nested&quot; applied to if-else blocks
+
+- enable Java bindings
+  +Fix _asm blocks not being identified as a block opener and the
+  (LGPL-3.0)
+- Initial packaging of astyle 1.23</comment>
+    <requestid>1158916</requestid>
+  </revision>
 </revisionlist>

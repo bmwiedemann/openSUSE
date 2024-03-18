@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 18 08:31:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.13:
+  * fix comment indent after string macro with R suffix
+  * do not break single line block after enum in mozilla mode
+  * adjust cmake policy for new versions only
+  * update man page path
+  * add support for scikit-build-core
+  * added "--pad-brackets-in" and "--pad-brackets-out" options
+  * fixed indentation of initializer lists
+  * fixed crash with "--add-braces=nested" applied to if-else blocks
+
+-------------------------------------------------------------------
 Tue Jan 30 05:19:54 UTC 2024 - ming li <mli@suse.com>
 
 - Update to 3.4.11:
@@ -176,7 +189,7 @@ Tue May 10 11:39:56 UTC 2016 - alarrosa@suse.com
 -------------------------------------------------------------------
 Thu Mar 17 13:58:23 UTC 2016 - kkaempf@suse.com
 
-- enable Java bindings 
+- enable Java bindings
   new subpackage libastylej1
 - create libastylej.so symlink for Arduino
 
@@ -237,7 +250,7 @@ Wed Dec 17 09:58:02 UTC 2014 - p.drouand@gmail.com
   +Fix concatenating multiplication with a pointer dereference (#291).
   +Fix recognition of a pointer dereference following a question mark (#213).
   +Fix extra space after a trailing reference type (#300).
-  +Fix _asm blocks not being identified as a block opener and the 
+  +Fix _asm blocks not being identified as a block opener and the
    variable not cleared on exit (#163).
   +Fix indentation of line comments before a "class" opening bracket.
   +Fix indentation of line comments before a "namespace" opening bracket.
@@ -388,7 +401,7 @@ Sun Oct 28 09:13:16 UTC 2012 - gber@opensuse.org
 Thu Feb  9 10:08:40 UTC 2012 - puzel@suse.com
 
 - convert license string to spdx format, use correct license
-  (LGPL-3.0) 
+  (LGPL-3.0)
 
 -------------------------------------------------------------------
 Sat Sep 17 13:25:34 UTC 2011 - jengelh@medozas.de
@@ -410,5 +423,5 @@ Thu Oct 15 09:14:40 CEST 2009 - wr@rosenauer.org
 -------------------------------------------------------------------
 Thu May  7 16:00:09 CEST 2009 - mvyskocil@suse.cz
 
-- Initial packaging of astyle 1.23 
+- Initial packaging of astyle 1.23
 
