@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Mar 17 09:10:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.13.1:
+  * Generate the changelog for release 1.13.1
+  * Modify the label used by the restore CLI to filter the PVR.
+  * Adjust the logic for the backup_last_status metrics to stop
+    incorrectly incrementing over time
+  * bump up upgrade path to 1.13
+  * issue 7308: change the data path requeue time to 5 second
+  * Don't return error when no credential file found
+  * Fix the `velero repo get` nil pointer issue.
+  * BackupRepositories associated with a BSL are invalidated when
+    BSL is (re-)created. (#7380)
+  * Add `ParallelFilesUpload` for schedule creation.
+  * Fix server start failure when no default BSL
+
+-------------------------------------------------------------------
 Mon Jan 29 17:38:32 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - BuildRequire go1.21
