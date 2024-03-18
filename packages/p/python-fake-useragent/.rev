@@ -103,4 +103,18 @@
   * security update</comment>
     <requestid>1130471</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6ea983bde3cd6eb421908feb4297a5ec</srcmd5>
+    <version>1.5.1</version>
+    <time>1710776825</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.5.1:
+  * Remove trailing spaces in user agent strings
+- update to 1.5.0:
+  * Most important change: The user-agent database has been
+    updated with a more recent list of user agents. It also now
+    comes with mobile UA's, meaning a new parameter: `platforms`
+    has been introduced (see README.md).</comment>
+    <requestid>1158955</requestid>
+  </revision>
 </revisionlist>

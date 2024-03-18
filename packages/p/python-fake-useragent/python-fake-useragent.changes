@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 18 10:39:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.1:
+  * Remove trailing spaces in user agent strings
+- update to 1.5.0:
+  * Most important change: The user-agent database has been
+    updated with a more recent list of user agents. It also now
+    comes with mobile UA's, meaning a new parameter: `platforms`
+    has been introduced (see README.md).
+
+-------------------------------------------------------------------
 Sat Dec  2 14:16:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.0:
