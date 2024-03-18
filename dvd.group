@@ -2635,7 +2635,6 @@
     <package name="libraw23" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="librbd1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="librdf0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="librdkafka1" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
     <package name="librdmacm1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libre2-10" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libre2-11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3434,7 +3433,8 @@
     <package name="permissions" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="permissions-config" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="phalanx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="phonon-vlc-qt5" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
+    <package name="phonon-vlc-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="phonon-vlc-qt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="phonon-vlc-qt6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="phonon4qt5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="phononsettings-qt5" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
