@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Mar 06 12:28:38 UTC 2024 - dcermak@suse.com
+
+- Update to version 1.4.0:
+  * build(deps): bump the golang group with 2 updates
+  * Bump to golang:1.21-alpine in release.sh
+  * Add CNI_NETNS_OVERRIDE for upcoming CNI change
+  * build(deps): bump the golang group with 3 updates
+  * revert some code in pr 962
+  * bridge: fix spelling
+  * bridge: remove useless firstV4Addr
+  * bridge: remove useless check
+  * Add ndisc_notify in ipvlan for ipv6 ndp
+  * macvlan: enable ipv6 ndisc_notify
+  * build(deps): bump google.golang.org/grpc from 1.50.1 to 1.56.3
+  * build(deps): bump the golang group with 3 updates
+  * dependabot: batch updates
+  * fix workflow warnings
+  * fix lint errors
+  * macvlan cmdDel: replace the loadConf function with json.unmarshal
+  * build(deps): bump github.com/onsi/gomega from 1.27.8 to 1.28.0
+  * build(deps): bump golang.org/x/net from 0.10.0 to 0.17.0
+  * build(deps): bump github.com/Microsoft/hcsshim from 0.9.9 to 0.11.1
+  * build(deps): bump golang.org/x/sys from 0.10.0 to 0.13.0
+  * Create IPAM files with 0600 permissions
+  * build: Use POSIX sh for shell scripts
+  * build(deps): bump actions/checkout from 3 to 4
+  * ci(lint) extend timeout to 5 min
+  * build(deps): bump github.com/coreos/go-iptables from 0.6.0 to 0.7.0
+  * vrf: fix route filter to use output iface
+  * test_linux.sh: Do not fail if called twice
+  * meta: firewall: Fix firewalld test with non-abstract sockets
+  * plugins: meta: portmap: Implement a teardown() fast path
+  * utils: iptables: Use go-iptables' ChainExists()
+  * spoofcheck: Make use of go-nft's ApplyConfigEcho()
+  * test: install binaries using `go install`
+  * build(deps): bump golang.org/x/sys from 0.9.0 to 0.10.0
+  * [tuning]add ability to set tx queue len
+  * build(deps): bump github.com/onsi/ginkgo/v2 from 2.9.2 to 2.11.0
+  * build(deps): bump golang.org/x/sys from 0.7.0 to 0.9.0
+  * Fix race conditions in DHCP test
+  * Add routes propagation for VRF plugin
+  * github: remove stale issue cleanup
+  * tap: allow for a tap device to be created as a bridge port
+  * build(deps): bump alpine in /.github/actions/retest-action
+
+-------------------------------------------------------------------
 Mon Oct  9 09:40:50 UTC 2023 - Dan Čermák <dcermak@suse.com>
 
 - Bump BuildRequired golang version to >= 1.21, fixes bsc#1216006
