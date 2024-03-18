@@ -1,9 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 18 10:46:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.1:
+  * Don't escape newlines in `ascii` tables, and add
+    `ascii_escaped` table format.
+  * Updated tabulate version to latest, to fix ImportError in
+    pgcli.
+
+-------------------------------------------------------------------
 Wed Jan  4 20:18:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.0:
-  * don't escape newlines, etc. in ascii tables, and add ascii_escaped table
-    format
+  * don't escape newlines, etc. in ascii tables, and add
+    ascii_escaped table format
 
 -------------------------------------------------------------------
 Tue Mar  8 08:01:06 UTC 2022 - pgajdos@suse.com
@@ -27,7 +36,7 @@ Wed Jun 24 02:11:31 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
   * Fix newline escaping in plain-text formatters (ascii, double, github)
   * Use built-in unittest.mock instead of mock.
   * Remove Python 2.7 and 3.5.
-  * Style config for missing value. 
+  * Style config for missing value.
 
 -------------------------------------------------------------------
 Thu Apr 23 11:20:58 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>

@@ -72,4 +72,20 @@
     format</comment>
     <requestid>1056001</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a0550f8c3ee89d7558ee7353cab49767</srcmd5>
+    <version>2.3.1</version>
+    <time>1710776831</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.3.1:
+  * Don't escape newlines in `ascii` tables, and add
+    `ascii_escaped` table format.
+  * Updated tabulate version to latest, to fix ImportError in
+    pgcli.
+
+  * don't escape newlines, etc. in ascii tables, and add
+    ascii_escaped table format
+  * Style config for missing value.</comment>
+    <requestid>1158958</requestid>
+  </revision>
 </revisionlist>
