@@ -403,4 +403,29 @@
     * More changes, see upstream CHANGES.md</comment>
     <requestid>1153125</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d9c40dea4fb4edeb37a5051396cb41b4</srcmd5>
+    <version>24.3.0</version>
+    <time>1710776624</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.3.0:
+  * Don't move comments along with delimiters, which could cause
+    crashes
+  * Strengthen AST safety check to catch more unsafe changes to
+    strings. Previous versions of Black would incorrectly format
+    the contents of certain unusual f-strings containing
+    nested strings with the same quote type. Now, Black will
+    crash on such strings until support for the new f-string syntax
+    is implemented.
+  * Fix a bug where line-ranges exceeding the last code line
+    would not work as expected
+  * Fix catastrophic performance on docstrings that contain large
+    numbers of leading tab characters. This fixes CVE-2024-21503.
+  * Note what happens when `--check` is used with `--quiet`
+
+  * Fixed a bug where comments where mistakenly removed along with
+  * Move the hug_parens_with_braces_and_square_brackets feature to
+    the unstable style due to an outstanding crash and proposed</comment>
+    <requestid>1158808</requestid>
+  </revision>
 </revisionlist>

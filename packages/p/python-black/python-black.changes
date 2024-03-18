@@ -1,12 +1,30 @@
 -------------------------------------------------------------------
+Sun Mar 17 19:11:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.3.0:
+  * Don't move comments along with delimiters, which could cause
+    crashes
+  * Strengthen AST safety check to catch more unsafe changes to
+    strings. Previous versions of Black would incorrectly format
+    the contents of certain unusual f-strings containing
+    nested strings with the same quote type. Now, Black will
+    crash on such strings until support for the new f-string syntax
+    is implemented.
+  * Fix a bug where line-ranges exceeding the last code line
+    would not work as expected
+  * Fix catastrophic performance on docstrings that contain large
+    numbers of leading tab characters. This fixes CVE-2024-21503.
+  * Note what happens when `--check` is used with `--quiet`
+
+-------------------------------------------------------------------
 Thu Feb 22 13:28:34 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 24.2.0
   * Consistently add trailing comma on typed parameters (#4164)
-  * Fixed a bug where comments where mistakenly removed along with 
+  * Fixed a bug where comments where mistakenly removed along with
     redundant parentheses (#4218)
-  * Move the hug_parens_with_braces_and_square_brackets feature to 
-    the unstable style due to an outstanding crash and proposed 
+  * Move the hug_parens_with_braces_and_square_brackets feature to
+    the unstable style due to an outstanding crash and proposed
     formatting tweaks (#4198)
   * Black now ignores pyproject.toml that is missing a [tool.black]
     section when discovering project root and configuration.
