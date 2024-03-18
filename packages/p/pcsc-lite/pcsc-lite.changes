@@ -5,6 +5,18 @@ Wed Mar 13 14:52:38 UTC 2024 - pgajdos@suse.com
   %python3_fix_shebang macro, [bsc#1212476]
 
 -------------------------------------------------------------------
+Mon Mar  4 08:56:11 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- version 2.0.3
+  * add SCARD_E_UNKNOWN_RES_MNG back
+  * SCardConnect() & SCardReconnect(): restrict the protocol used
+  * negotiate PTS also for the backup protocol
+  * pcscd.8:
+   . document --disable-polkit
+   . add "CONFIGURATION FILE" section
+  * Some other minor improvements
+
+-------------------------------------------------------------------
 Thu Feb 29 15:01:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
