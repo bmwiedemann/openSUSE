@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 18 07:50:02 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.12.2:
+  * fix guile loading path
+  * respect message-cite-reply-position
+  * bring back mu4e-message-goto-(top|bottom)
+  * bring back mu4e-compose-context-switch
+  * bring back mu4e-compose-attach-captured-message
+  * improve manpages layout
+  * flag messages with "list-unsubscribe" as MailingList messages
+  * fix some build warnings
+
+-------------------------------------------------------------------
 Mon Mar  4 06:26:24 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.12.1:

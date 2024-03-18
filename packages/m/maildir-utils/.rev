@@ -724,4 +724,20 @@
   * fix typos, update mu4e documentation</comment>
     <requestid>1154557</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>459ae015f526629b84f204ea2040713e</srcmd5>
+    <version>1.12.2</version>
+    <time>1710776775</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.12.2:
+  * fix guile loading path
+  * respect message-cite-reply-position
+  * bring back mu4e-message-goto-(top|bottom)
+  * bring back mu4e-compose-context-switch
+  * bring back mu4e-compose-attach-captured-message
+  * improve manpages layout
+  * flag messages with &quot;list-unsubscribe&quot; as MailingList messages
+  * fix some build warnings</comment>
+    <requestid>1158893</requestid>
+  </revision>
 </revisionlist>
