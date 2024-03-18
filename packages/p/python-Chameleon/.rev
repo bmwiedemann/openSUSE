@@ -222,4 +222,14 @@ New dependency of python-Pyramid</comment>
     the set</comment>
     <requestid>1142764</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>4617d62ab7c4fadab7c7ca2f2743cd82</srcmd5>
+    <version>4.5.2</version>
+    <time>1710776766</time>
+    <user>anag+factory</user>
+    <comment>- Add missing {Build,}Requires on importlib-metadata.
+- Drop unneeded Requires on setuptools.
+- No more greedy globs in %files.</comment>
+    <requestid>1158870</requestid>
+  </revision>
 </revisionlist>

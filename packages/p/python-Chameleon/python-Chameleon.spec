@@ -22,16 +22,15 @@ Version:        4.5.2
 Release:        0
 Summary:        Fast HTML/XML Template Compiler
 License:        BSD-3-Clause AND BSD-4-Clause AND Python-2.0 AND ZPL-2.1
-Group:          Development/Languages/Python
 URL:            https://github.com/malthe/chameleon
 Source:         https://github.com/malthe/chameleon/archive/%{version}.tar.gz#/Chameleon-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-setuptools
 %if %{python_version_nodots} < 310
 Requires:       python-importlib-metadata
 %endif
@@ -65,6 +64,7 @@ version of Python (2.5 and up, including 3.x and pypy).
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/chameleon
+%{python_sitelib}/Chameleon-%{version}.dist-info
 
 %changelog
