@@ -66,11 +66,11 @@ Monitors S.M.A.R.T. capable devices for imminent failure and informs the user.
 %install
 %kf6_install
 
+%find_lang %{name} --all-name
+
 %check
 export QT_QPA_PLATFORM=offscreen
 %ctest
-
-%find_lang %{name} --all-name
 
 %files
 %license LICENSES/*

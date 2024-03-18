@@ -8,6 +8,11 @@ Wed Mar 13 09:10:09 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
   * update version for new release
 
 -------------------------------------------------------------------
+Tue Mar 12 19:15:30 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Move the %find_lang call into %install section
+
+-------------------------------------------------------------------
 Wed Mar  6 08:40:31 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.1:

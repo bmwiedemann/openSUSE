@@ -15,4 +15,12 @@
     <comment>Plasma 6.0.2 + libksysguard5-helper upgrade fix + icon upgrade fix + gtk theme fix (forwarded request 1157674 from Vogtinator)</comment>
     <requestid>1157718</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>7323826f3e34f038460e990b78dbd641</srcmd5>
+    <version>6.0.2</version>
+    <time>1710776681</time>
+    <user>anag+factory</user>
+    <comment>- Move the %find_lang call into %install section</comment>
+    <requestid>1158621</requestid>
+  </revision>
 </revisionlist>
