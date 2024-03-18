@@ -9632,7 +9632,6 @@ unsorted:
   - kf6-kpackage-devel 
   - kf6-kparts-devel 
   - kf6-kpeople-devel 
-  - kf6-kpeople-imports 
   - kf6-kplotting-devel 
   - kf6-kpty-devel 
   - kf6-kquickcharts-devel 
@@ -15217,6 +15216,7 @@ unsorted:
   - librcd-devel 
   - librcd0 
   - librdkafka-devel 
+  - librdkafka1 
   - librdmacm-utils 
   - librdmacm1-32bit 
   - libre20 
@@ -20305,10 +20305,7 @@ unsorted:
   - patterns-enlightenment-enlightenment 
   - patterns-gnome-devel_gnome 
   - patterns-gnome-gnome_ide 
-  - patterns-hpc-compute_node 
-  - patterns-hpc-development_node 
   - patterns-hpc-libraries 
-  - patterns-hpc-workload_server 
   - patterns-kde-devel_kde_frameworks 
   - patterns-kde-devel_kde_frameworks6 
   - patterns-kde-devel_qt5 
@@ -21939,7 +21936,6 @@ unsorted:
   - phodav-devel 
   - phonon-qt5-devel 
   - phonon-qt6-devel 
-  - phonon-vlc-lang 
   - phoronix-test-suite 
   - photoqt 
   - photorec 
@@ -26097,7 +26093,6 @@ unsorted:
   - python310-python-snappy 
   - python310-python-socketio 
   - python310-python-socks 
-  - python310-python-sofa 
   - python310-python-stdnum 
   - python310-python-subunit 
   - python310-python-ternary 
@@ -29552,7 +29547,6 @@ unsorted:
   - python311-python-snappy 
   - python311-python-socketio 
   - python311-python-socks 
-  - python311-python-sofa 
   - python311-python-stdnum 
   - python311-python-subunit 
   - python311-python-ternary 
@@ -32410,6 +32404,7 @@ unsorted:
   - python312-oci-sdk 
   - python312-octave-kernel 
   - python312-odfpy 
+  - python312-odorik 
   - python312-ogr 
   - python312-oic 
   - python312-oiffile 
@@ -32511,6 +32506,7 @@ unsorted:
   - python312-parso 
   - python312-parsy 
   - python312-partd 
+  - python312-parted 
   - python312-particle 
   - python312-parver 
   - python312-pass-git-helper 
@@ -33055,7 +33051,6 @@ unsorted:
   - python312-python-snappy 
   - python312-python-socketio 
   - python312-python-socks 
-  - python312-python-sofa 
   - python312-python-stdnum 
   - python312-python-subunit 
   - python312-python-ternary 
@@ -35195,7 +35190,6 @@ unsorted:
   - python39-flufl.testing 
   - python39-fluidity-sm 
   - python39-flynt 
-  - python39-folium 
   - python39-fontMath 
   - python39-fontParts 
   - python39-fontPens 
@@ -36562,7 +36556,6 @@ unsorted:
   - python39-python-snappy 
   - python39-python-socketio 
   - python39-python-socks 
-  - python39-python-sofa 
   - python39-python-stdnum 
   - python39-python-subunit 
   - python39-python-ternary 
