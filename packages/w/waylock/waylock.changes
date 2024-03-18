@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 17 09:51:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.5:
+  * Lock: zero password buffer memory on backspace
+  * Lock: delete last UTF-8 codepoint on backspace
+
+-------------------------------------------------------------------
 Sat Jan 13 16:01:33 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Add zig-xkbcommon.tar.gz

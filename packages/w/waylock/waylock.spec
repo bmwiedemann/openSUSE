@@ -19,7 +19,7 @@
 %global _zig_wayland_ver   65475badb37fdfa06ac091554fdc81689a37a72a
 %global _zig_xkbcommon_ver 7b188de0ba794b52eb70340abf2469b858630816
 Name:           waylock
-Version:        0.6.4
+Version:        0.6.5
 Release:        0
 Summary:        Small screenlocker for Wayland compositors
 License:        ISC
