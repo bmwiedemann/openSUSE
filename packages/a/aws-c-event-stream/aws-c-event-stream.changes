@@ -1,0 +1,224 @@
+-------------------------------------------------------------------
+Mon Feb 19 15:45:39 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.4.2
+  * Fix a bunch of places we forget to aws_raise_error() by @graebm in (#111)
+- from version 0.4.1
+  * Fix Variable Len Headers with Empty Value by @waahm7 in (#108)
+- from version 0.4.0
+  * Added workflow for handling answerable discussions by @yasminetalby in (#105)
+  * Change port from uint16_t to uint32_t to support VSOCK by @graebm in (#109)
+
+-------------------------------------------------------------------
+Fri Aug 25 12:20:29 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.2
+  * Explicit Private for target_link_libraries by @waahm7 in (#107)
+
+-------------------------------------------------------------------
+Wed Jul  5 09:20:07 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.1
+  * Add Github templates and bots by @jmklix in (#100)
+  * Double Terminate Crash by @bretambrose in (#101)
+
+-------------------------------------------------------------------
+Wed Jun 14 12:01:22 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.0
+  * Update builder version to fix aws-lc build on manylinux1 by @TingDaoK in (#98)
+  * Fix warnings in public headers by @waahm7 in (#99)
+
+-------------------------------------------------------------------
+Wed Mar  1 10:24:12 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.20
+  * Change #if _MSC_VER to #ifdef _MSC_VER by @jmklix in (#97)
+
+-------------------------------------------------------------------
+Tue Feb 28 11:28:21 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.19
+  * Delete .DS_Store by @graebm in (#95)
+  * Cursor header APIs by @bretambrose in (#96)
+
+-------------------------------------------------------------------
+Wed Jan 18 13:08:01 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.18
+  * Fix macro usage by @DmitriyMusatkin in (#94)
+- from version 0.2.17
+  * Add onComplete callback for streaming decoder by @waahm7 in (#93)
+- from version 0.2.16
+  * sprintf() -> snprintf() by @graebm in (#91)
+  * Update CI to fix downstream build by @waahm7 in (#90)
+  * Fix decoding of headers with static value by @waahm7 in (#92)
+
+-------------------------------------------------------------------
+Wed Oct  5 13:14:53 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.15
+  * Add AppVerifier to CI by @TwistedTwigleg in (#87)
+  * Fix continuation race condition and windows test
+    failures by @bretambrose in (#89)
+
+-------------------------------------------------------------------
+Fri Sep  2 07:02:57 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.14
+  * Allow mix of static and shared libs
+    + Fallback for target load by @TingDaoK in (#86)
+
+-------------------------------------------------------------------
+Mon Aug  8 08:49:55 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.13
+  * Partially-constructed server connection crash fixes
+    + Fixes several possible crashes related to partial-construction of
+      server connections when the connection notification callback fails
+
+-------------------------------------------------------------------
+Thu Jul 14 12:54:41 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.12
+  * Relax client stream id constraints
+    + Convert to-client messages on closed streams to non-fatal to the
+      overall connection. There is a time gap between the continuation
+      removal on the client and the end-of-stream notice to the server
+- from version 0.2.11
+  * Crash fix and stream-id order fix
+    + Fixes an issue where a failed invocation of the on_incoming_stream
+      callback in the server implementation would lead to a crash
+    + Fixes an issue where event stream ids could be submitted
+      out-of-increasing-order to the server depending on what threads
+      the continuation activation was invoked from.
+- from version 0.2.10
+  * Add function to to query port of server listener
+    + New: aws_event_stream_rpc_server_listener_get_bound_port()
+
+-------------------------------------------------------------------
+Thu May 19 11:23:50 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.9
+  * Fix deprecated header encode API
+    + Fixes an issue (only present in v0.2.8) where the deprecated
+      header write API (aws_event_stream_write_headers_to_buffer)
+      would always fail
+- from version 0.2.8
+  * Security hardening and protocol error JSON fixes
+    + Adds a significant amount of error-checking and safety-hardening
+    + Fixes the JSON bodies of several protocol error messages
+
+-------------------------------------------------------------------
+Sat Oct 16 12:40:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Use cmake()/pkgconfig() as buildrequires. Update descriptions.
+- Replace lib%-devel subpackage by just %-devel.
+
+-------------------------------------------------------------------
+Tue Mar 16 11:28:49 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.7
+  + CONNECT_ACK bugfix
+    * Fix bug where client "forgets" it received CONNECT_ACK (#60)
+
+-------------------------------------------------------------------
+Wed Dec 16 11:51:20 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.6
+  + Fix possible deadlock from on_closed callback
+    * Release lock before invoking callbacks (#55)
+- Add libaws-c-cal-devel to BuildRequires
+- Add libopenssl-devel to BuildRequires
+- Add patch to re-add SOVERSION to library
+  + aces_re-add-so-version.patch
+- Bump library_soversion to 1
+- Disable testsuite as it requires an internet connection now
+
+-------------------------------------------------------------------
+Thu Nov 26 16:12:56 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.5
+  + Fixed gcc newline warning
+    * Added newline (#53)
+- from version 0.2.4
+  + Fixed shared lib build configuration
+    * Fixed shared-lib builds (#51)
+- from version 0.2.3
+  + Fixed shared lib test configuration
+    * Added test helper to ensure symbol is exported (#50)
+- from version 0.2.2
+  + Tagged network tests as net tests
+    * Marked RPC tests as net tests (#49)
+- from version 0.2.1
+  + Event-stream rpc server and client. Event-stream channel
+    handler. Added aws-c-io dependency and logging.
+    * Event stream rpc full stack (#48)
+    * event-stream-rpc implementation and tests.
+      Added aws-c-io dependency.
+- Add libaws-c-io-devel to BuildRequires
+- Add libs2n-devel to BuildRequires
+
+-------------------------------------------------------------------
+Tue Aug 25 11:17:51 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.1.6
+  + Update CMakeLists.txt to use aws-c-event-stream as
+    a submodule of aws-crt-cpp (#38)
+- Refresh patches for new version
+  + aces_fix-cmake-modules-path.patch
+
+-------------------------------------------------------------------
+Tue Jun 16 09:22:13 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.1.5
+  + Add build instructions to readme (#35)
+  + Use Github Actions (#36)
+  + Added clang-format linter
+  + Use github actions for OSX
+  + Remove .travis.yml
+  + Use legacy common-posix script
+
+-------------------------------------------------------------------
+Thu Nov  7 00:48:48 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.1.4
+  + Only call on_prelude() when prelude passed crc check
+
+-------------------------------------------------------------------
+Mon Oct 28 13:03:31 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Fix installation path for aws-c-event-stream-targets.cmake
+  in patch to fix cmake modules path in CMakeLists.txt
+  + aces_fix-cmake-modules-path.patch
+
+-------------------------------------------------------------------
+Thu Oct  3 10:28:51 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.1.3
+  + Added support for shared/static lib builds in the same build closure
+- from version 0.1.2
+  + Quote TO_CMAKE_PATH args
+- Refresh patches for new version
+  + aces_fix-cmake-modules-path.patch
+
+-------------------------------------------------------------------
+Mon Apr 22 21:15:01 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Fix name of runtime package in Requires of devel package
+
+-------------------------------------------------------------------
+Wed Apr 10 11:53:57 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.1.1
+- Append library ABI version to runtime package name
+- Update patch to fix cmake modules path in CMakeLists.txt
+  + aces_fix-cmake-modules-path.patch
+
+-------------------------------------------------------------------
+Tue Feb 12 16:16:28 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 0.1.0
+- Add patch to fix cmake modules path in CMakeLists.txt
+  + aces_fix-cmake-modules-path.patch

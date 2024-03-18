@@ -1,0 +1,11 @@
+diff -Nru aws-c-event-stream-0.2.5.orig/CMakeLists.txt aws-c-event-stream-0.2.5/CMakeLists.txt
+--- aws-c-event-stream-0.2.5.orig/CMakeLists.txt	2020-11-13 21:29:52.000000000 +0100
++++ aws-c-event-stream-0.2.5/CMakeLists.txt	2020-11-26 17:32:23.861160125 +0100
+@@ -71,6 +71,7 @@
+ 
+ 
+ set_target_properties(${PROJECT_NAME} PROPERTIES VERSION 1.0.0)
++set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES SOVERSION 1)
+ 
+ aws_use_package(aws-c-io)
+ aws_use_package(aws-c-common)
