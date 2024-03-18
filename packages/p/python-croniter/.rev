@@ -281,4 +281,13 @@
     now raises a CroniterBadDateError.</comment>
     <requestid>1128731</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d2839a71ffea09bbc674594803fe70a6</srcmd5>
+    <version>2.0.2</version>
+    <time>1710776829</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.2:
+  * fix leap year (29 days in February) [zed2015]</comment>
+    <requestid>1158957</requestid>
+  </revision>
 </revisionlist>

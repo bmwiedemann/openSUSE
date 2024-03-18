@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 18 10:44:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.2:
+  * fix leap year (29 days in February) [zed2015]
+
+-------------------------------------------------------------------
 Sat Nov 25 13:08:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.1:
