@@ -1,0 +1,344 @@
+-------------------------------------------------------------------
+Mon Feb 19 14:51:54 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.26.2
+  * Temporary disable windows cert store test by @xiazhvera in (#595)
+  * Update builder to fix CI (v0.9.56) by @xiazhvera in (#596)
+  * Update version of s2n and c-cal by @sbiscigl in (#597)
+
+-------------------------------------------------------------------
+Tue Jan 16 09:09:23 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.26.1
+  * Update aws-c-io to pull in channel setup callback
+    safety update by @bretambrose in (#591)
+
+-------------------------------------------------------------------
+Wed Jan  3 15:18:13 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.26.0
+  * Change `port` from uint16_t to uint32_t to support VSOCK by @graebm in (#583)
+- from version 0.25.1
+  * Custom auth polish by @bretambrose in (#584)
+  * Test Shared Subscription by @alfred2g in (#587)
+  * Fix overridden timeout values for mqtt5 operations by @sfod in (#588)
+- from version 0.25.0
+  * MQTT5 General Avalibility by @xiazhvera in (#585)
+
+-------------------------------------------------------------------
+Wed Dec 13 08:51:56 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.24.11
+  * Version bump to pickup endpoint resolution partition
+    changes by @DmitriyMusatkin in (#581)
+- from version 0.24.10
+  * MQTT5 canary fix by @xiazhvera in (#572)
+  * MQTT5 GA API review by @xiazhvera in (#575)
+  * Fix host resolve on a non-existent host by @SergeyRyabinin in (#578)
+  * Add a method to report library version from ApiHandle by @SergeyRyabinin in (#579)
+
+-------------------------------------------------------------------
+Thu Nov 30 12:28:06 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.24.9
+  * Pick up fix for s3express create session hang by @TingDaoK in (#576)
+- from version 0.24.8
+  * MQTT5 Topic aliasing support by @bretambrose in (#567)
+  * Bind missing negotiated setting fields by @bretambrose in (#569)
+  * Fix MQTT5 canary memory leak by @sfod in (#570)
+  * MQTT5 Canary Improvment by @xiazhvera in (#571)
+  * Pick up submodules update for performance optimization
+    updates by @TingDaoK in (#573)
+
+-------------------------------------------------------------------
+Tue Nov 21 11:51:31 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.24.7
+  * Latest Submodules by @waahm7 in (#565)
+- from version 0.24.6
+  * Fix WSL by @waahm7 in (#563)
+- from version 0.24.5
+  * Unit test for removing callback severance on 5-to-3
+    adapter by @xiazhvera in (#553)
+  * Generate files in build directory by @sfod in (#559)
+  * Update submodules to pull aws-lc build fix by @sfod in (#560)
+- Refresh patches for new version
+  * acc_fix-cmake-modules-path.patch
+
+-------------------------------------------------------------------
+Tue Oct 17 09:45:37 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.24.4
+  * Update submodules to pick up fix for Sigv4A on MacOS 14+ by @TingDaoK in (#554)
+
+-------------------------------------------------------------------
+Fri Oct  6 06:53:24 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.24.2
+  * Fix CMake error when BUILD_DEPS=OFF by @graebm in (#551)
+- from version 0.24.1
+  * Disable doxygen for private header API by @xiazhvera in (#549)
+- from version 0.24.0
+  * MQTT3 clean shutdown by @sfod in (#535)
+  * Add CI job with sanitizers enabled by @sfod in (#522)
+  * Enable PKCS11 tests by @sfod in (#544)
+  * Add Mqtt5ClientBuilder method to set bootstrap by @gqmelo in (#542)
+  * Fix typo on NegotiatedSettings (Avaliable->Available) by @gqmelo in (#543)
+  * Adapter API Update by @xiazhvera in (#545)
+  * AutoTag PR for v0.24 by @bretambrose in (#546)
+
+-------------------------------------------------------------------
+Tue Sep 12 09:44:31 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.23.1
+  * Added workflow for handling answerable discussions
+    by @yasminetalby in (#533)
+  * Update mqtt submodule to provide on_connection_termination
+    callback by @sfod in (#534)
+  * Fix failing CI tests by @sfod in (#536)
+  * Fix CMake option for choosing MSVC runtime
+    library by @graebm in (#537)
+
+-------------------------------------------------------------------
+Tue Aug 22 09:55:08 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.23.0
+  * Fix permissions for stale issue bot by @jmklix (#530)
+  * MQTT3 and MQTT5 fixes and updates by @bretambrose (#531)
+
+-------------------------------------------------------------------
+Tue Aug 15 11:58:29 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.22.0
+  * Bind out the MQTT5 to MQTT3 adapter by @xiazhvera in (#528)
+
+-------------------------------------------------------------------
+Tue Aug  1 02:28:57 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.21.0
+  * Update MQTT submodule to fix decoding/framing issue by @bretambrose in (#525)
+- from version 0.20.6
+  * Fix format specifier in canary by @xiazhvera in (#521)
+  * Treat empty AWS environment variables as unset by @graebm in (#523)
+
+-------------------------------------------------------------------
+Tue Jul 18 07:21:27 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.20.6
+  * Use ubuntu-22.04 in CI by @graebm in (#519)
+- from version 0.20.5
+  * Use Github actions/checkout@v3 by @graebm in (#516)
+- from version 0.20.4
+  * Use on_connection_* callbacks from aws-c-mqtt by @sfod in (#511)
+  * Change S2N security policy for 0-RTT in TLS 1.3. by @graebm in (#514)
+  * Fix warnings in headers by @waahm7 in (#500)
+
+-------------------------------------------------------------------
+Thu Jul  6 09:43:21 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.20.3
+  * Fix JsonObject rvalue bug by @graebm in (#506)
+  * MQTT311 extra connection callbacks by @TwistedTwigleg in (#469)
+  * Submodules update by @TingDaoK in (#509)
+
+-------------------------------------------------------------------
+Tue May 30 11:01:02 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.20.2
+  * Wrong optional was queried. by @beat-schaer in (#498)
+  * Update time to ancient by @jmklix in (#501)
+  * Additional unit-tests and unit-test adjustment by @TwistedTwigleg in (#499)
+  * Bump the MQTT5 canary builder version by @TwistedTwigleg in (#502)
+  * Update submodules by @sbSteveK in (#503)
+
+-------------------------------------------------------------------
+Thu May  4 12:53:19 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.20.1
+  * Add token key name and value parameters. Add more
+    logging by @TwistedTwigleg in (#492)
+  * Full backwards compat with custom auth in MQTT311
+    by @TwistedTwigleg in (#494)
+  * PKCS12 builder support by @TwistedTwigleg in (#493)
+  * Update Submodules by @sbSteveK in (#496)
+- from version 0.20.0
+  * Add GitHub templates and bots by @jmklix in (#488)
+  * Mqtt5Client Clean Shutdown Refactor by @xiazhvera in (#485)
+  * Capitalize MQTT5 function name by @xiazhvera in (#486)
+  * MQTT5 Canary by @xiazhvera in (#443)
+  * Enable MQTT5 client unit tests in CI and improve MQTT5
+    client error handling by @xiazhvera in (#489)
+
+-------------------------------------------------------------------
+Tue Apr 18 11:11:18 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.19.9
+  * Add sigv4a tests by @sbSteveK in (#472)
+  * Add the main page to the documentation by @TwistedTwigleg in (#477)
+  * Fix compiler warnings in tests by @graebm in (#476)
+  * Remove CJSON and use aws-c-common JSON instead
+    by @TwistedTwigleg in (#460)
+  * Submodule update to pull in DNS resolution frequency update
+    by @bretambrose in (#483)
+
+-------------------------------------------------------------------
+Mon Mar  6 09:43:37 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.19.8
+  * [Aws::Crt::Optional] avoid std::aligned_storage by @kedartal in (#462)
+  * Fix ambiguity around InputStream::ReadImpl() errors by @graebm in (#468)
+  * Alpine/Musl CI by @bretambrose in (#416)
+  * Change #if _MSC_VER to #ifdef _MSC_VER by @graebm in (#473)
+
+-------------------------------------------------------------------
+Mon Feb  6 13:59:44 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.19.7
+  * Update aws-c-auth by @waahm7 in (#465)
+- from version 0.19.6
+  * Fixing a low severity issue with parsing certificate
+    Common Name (CN) by @waahm7 in (#463)
+- from version 0.19.5
+  * MQTT311 operation statistics support by @TwistedTwigleg in (#455)
+
+-------------------------------------------------------------------
+Thu Jan 26 13:17:25 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.19.4
+  * Fix compiler warnings by @waahm7 in (#458)
+
+-------------------------------------------------------------------
+Wed Jan 25 09:22:01 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.19.3
+  * Submodules update by @TingDaoK in (#456)
+
+-------------------------------------------------------------------
+Mon Jan 16 14:13:14 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.19.2
+  * Fix GCC/Clang ASM error by @graebm in (#444)
+  * Bound strlen call by maximum topic length by @bretambrose in (#446)
+  * Custom auth websocket fix by @TwistedTwigleg in (#418)
+  * Rejoin always by @bretambrose in (#447)
+  * Mqtt5 Interruption tests by @xiazhvera in (#448)
+  * Update submodules by @TwistedTwigleg in (#449)
+  * Fix flaky tests by @graebm in (#451)
+  * How to use system installation of libcrypto by @graebm in (#450)
+
+-------------------------------------------------------------------
+Tue Dec  6 11:05:30 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.19.1
+  * Fixes double free bug in destruct http message
+- from version 0.19.0
+  * Bump sdkutils version by @DmitriyMusatkin in (#436)
+  * Mqtt5 Support by @xiazhvera in (#437)
+
+-------------------------------------------------------------------
+Fri Nov 18 20:22:05 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.18.16
+  * Change sprintf to snprintf by @jmklix in (#431)
+  * Add Support for choosing PQ TLS Cipher Preferences by @alexw91 in (#434)
+
+-------------------------------------------------------------------
+Tue Nov 15 09:39:21 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.18.15
+  * Remove another unused varaible by @DmitriyMusatkin in (#432)
+- from version 0.18.14
+  * Fix build warning on Windows by @DmitriyMusatkin in (#429)
+
+-------------------------------------------------------------------
+Mon Nov 14 13:04:22 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add missing dependency on runtime library package for devel package
+
+-------------------------------------------------------------------
+Fri Nov 11 12:55:40 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.18.13
+  * Fix C++ One Definition Rule (ODR) Violations by @graebm in (#426)
+- from version 0.18.12
+  * Fixed missing new header in the installation destination
+- from version 0.18.11
+  * Update aws-c-sdkutils to v0.1.6
+- from version 0.18.10
+  * Added Raspberry support for Github Action by @xiazhvera in (#415)
+  * Endpoint resolution engine bindings by @DmitriyMusatkin in (#419)
+  * Remove unused variable by @DmitriyMusatkin in (#420)
+- from version 0.18.9
+  * Version fix by @TingDaoK in (#412)
+
+-------------------------------------------------------------------
+Wed Oct  5 13:50:26 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.18.8
+  * Cognito provider by @bretambrose in (#409)
+  * Submodule update to pull in event stream
+    rpc race fix by @bretambrose in (#413)
+- from version 0.18.7
+  * S2N v1.3.22 by @graebm in (#410)
+- from version 0.18.6
+  * Update aws-c-s3 for endpoints race-condition fix by @graebm in (#405)
+  * Allow static and shared libs to be mixed by @TingDaoK in (#396)
+- from version 0.18.5
+  * Updates AWS-C-IO & AWS-C-S3 by @waahm7 in (#403)
+- from version 0.18.4
+  * Fix typo by @SergeyRyabinin in (#401)
+  * Update aws-c-io for Windows heap access violation
+    fix by @TwistedTwigleg in (#400)
+
+-------------------------------------------------------------------
+Tue Sep  6 07:14:17 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.18.3
+  * Use latest versions of S2N-TLS and AWS-LC by @graebm in (#397)
+  * Adds support for Anonymous credentials by @waahm7 in (#398)
+- from version 0.18.2
+  * Fix script that keeps AWS_CRT_CPP_VERSION up
+    to date by @graebm in (#394)
+- from version 0.18.1
+  * Fix to cmake detection of CRT version by
+    consumers by @sdavtaker in (#393)
+- from version 0.18.0
+  * Latest submodules by @TingDaoK in (#392)
+- Refresh patches for new version
+  * acc_fix-cmake-modules-path.patch
+
+-------------------------------------------------------------------
+Mon Aug  8 10:18:15 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.17.34
+  * Support/DELAYLOAD DLLs by @graebm in (#387)
+- from version 0.17.33
+  * Fixes an mqtt client issue where calling disconnect
+    did not properly clean up some session state
+- from version 0.17.32
+  * Fixes an issue where the eventstream client would close the
+    connection if it received data from an old stream. There is
+    no mechanism to ensure there is no inbound data in transit
+    at the time it closes its end of a stream, so the client
+    instead ignores stale messages.
+- from version 0.17.31
+  * Update io and eventstream submodules to pull in crash
+    and stream id ordering fixes
+- from version 0.17.30
+  * Document building for Apple silicon (M1). by @graebm in (#375)
+  * MQTT builder custom authorizer support by @TwistedTwigleg in (#374)
+
+-------------------------------------------------------------------
+Thu May 19 11:42:09 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.17.29
+  * Adapt new input stream api by @TingDaoK in (#341)
+  * Update aws-c-common to latest release by @TwistedTwigleg in (#372)
+- Drop patches for issue fixed upstream
+  * acc_adapt-new-input-stream-api.patch
+
+-------------------------------------------------------------------
+Fri Apr 29 09:37:43 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 0.17.28
