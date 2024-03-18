@@ -303,4 +303,26 @@
     <comment></comment>
     <requestid>1127363</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>b7b307821417af90983605118ddc8dad</srcmd5>
+    <version>13.7.1</version>
+    <time>1710776648</time>
+    <user>anag+factory</user>
+    <comment>- update to 13.7.1:
+  * Fixes some character widths
+
+- Ignore python3.6.2 for test since it doesn't support it.
+  * Added post_style argument to Segment.apply_style
+  * Changed display of progress bars in no_color mode for
+  * Console property size will fall back to getting the
+    terminal size of stdout it stdin fails, this allows size
+  * Allow passing markdown over STDIN when using python -m
+  * Double tag escape, i.e. &quot;\\[foo]&quot; results in a
+  * Fixed header_style not applying to headers in
+  * Fixed encoding error on Windows when loading code for
+  * MarkupError exception raise from None to omit internal
+  * Factored out RichHandler.render and
+- Kill dephell dependency</comment>
+    <requestid>1158430</requestid>
+  </revision>
 </revisionlist>

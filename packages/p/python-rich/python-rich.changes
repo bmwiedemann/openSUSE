@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 16 09:47:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 13.7.1:
+  * Fixes some character widths
+
+-------------------------------------------------------------------
 Thu Nov 16 21:27:11 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 13.7.0:
@@ -286,7 +292,7 @@ Thu Jul  7 10:34:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Thu Apr 14 07:17:44 UTC 2022 - Hui-Zhi Zhao <hui.zhi.zhao@suse.com>
 
-- Ignore python3.6.2 for test since it doesn't support it. 
+- Ignore python3.6.2 for test since it doesn't support it.
 
 -------------------------------------------------------------------
 Fri Jan 14 20:08:47 UTC 2022 - Ben Greiner <code@bnavigator.de>
@@ -548,7 +554,7 @@ Mon Jan 25 10:30:46 UTC 2021 - Ben Greiner <code@bnavigator.de>
   * Fixed Tracebacks ignoring initial blank lines
   * Partial fix for tracebacks not finding source after chdir
   Added
-  * Added post_style argument to Segment.apply_style 
+  * Added post_style argument to Segment.apply_style
 - Changelog for 9.8.2
   * Fixed deadlock in live #927
 - Changelog for 9.8.1
@@ -560,14 +566,14 @@ Mon Jan 25 10:30:46 UTC 2021 - Ben Greiner <code@bnavigator.de>
   * Added rich.align.VerticalCenter
   Changed
   * The style argument on Align now applies to background only
-  * Changed display of progress bars in no_color mode for 
+  * Changed display of progress bars in no_color mode for
      clarity
-  * Console property size will fall back to getting the 
-    terminal size of stdout it stdin fails, this allows size 
+  * Console property size will fall back to getting the
+    terminal size of stdout it stdin fails, this allows size
     to be correctly determined when piping
   Fixed
   * Fixed panel cropping when shrunk too bar
-  * Allow passing markdown over STDIN when using python -m 
+  * Allow passing markdown over STDIN when using python -m
     rich.markdown
   * Fix printing MagicMock.mock_calls #903
 - Changelog for 9.7.0
@@ -575,18 +581,18 @@ Mon Jan 25 10:30:46 UTC 2021 - Ben Greiner <code@bnavigator.de>
   * Added no_color argument to Console
 - Changelog for 9.6.2
   * Fixed markup escaping edge case #878
-  * Double tag escape, i.e. "\\[foo]" results in a 
+  * Double tag escape, i.e. "\\[foo]" results in a
     backslash plus [foo] tag
-  * Fixed header_style not applying to headers in 
+  * Fixed header_style not applying to headers in
     positional args #953
 - Changelog for 9.6.1
-  * Fixed encoding error on Windows when loading code for 
+  * Fixed encoding error on Windows when loading code for
     Tracebacks
 - Changelog for 9.6.0
   Changed
-  * MarkupError exception raise from None to omit internal 
+  * MarkupError exception raise from None to omit internal
     exception
-  * Factored out RichHandler.render and 
+  * Factored out RichHandler.render and
     RichHandler.render_message for easier extending
   * Display pretty printed value in rich.inspect
   Added
@@ -675,7 +681,7 @@ Fri Dec 18 19:46:52 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 -------------------------------------------------------------------
 Tue Oct 27 00:12:00 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
-- Kill dephell dependency 
+- Kill dephell dependency
 
 -------------------------------------------------------------------
 Sun Oct 25 15:36:02 UTC 2020 - Martin Hauke <mardnh@gmx.de>
