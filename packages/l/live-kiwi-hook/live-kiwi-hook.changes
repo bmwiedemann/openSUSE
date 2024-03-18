@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 18 10:56:17 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Increase size limit for GNOME|KDE|XFCE live images from 1G to 1.2G
+
+-------------------------------------------------------------------
 Wed Nov 29 15:48:06 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Allow 1G for rescue image on aarch64 only (USB sticks are

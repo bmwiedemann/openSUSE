@@ -46,7 +46,7 @@ arch="$(uname -m)"
 
 case "${flavor}" in
 	GNOME|KDE|XFCE)
-		msize=1000000000
+		msize=1200000000
 		;;
 	Rescue)
 		case "${arch}" in
