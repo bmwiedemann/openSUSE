@@ -1,7 +1,7 @@
 #
 # spec file for package wl-screenrec
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wl-screenrec
-Version:        0.1.2
+Version:        0.1.3
 License:        Apache-2.0
 Release:        0
 Summary:        High performance hardware accelerated wlroots screen recorder
@@ -40,7 +40,9 @@ BuildRequires:  wlroots-devel
 %description
 High performance screen recorder for wlroots Wayland.
 
-Uses dma-buf transfers to get surface, and uses the GPU to do both the pixel format conversion and the encoding, meaning the raw video data never touches the CPU, leaving it free to run your applications.
+Uses dma-buf transfers to get surface, and uses the GPU to do both the pixel
+format conversion and the encoding, meaning the raw video data never touches the
+CPU, leaving it free to run your applications.
 
 %prep
 %autosetup -a1
