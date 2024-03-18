@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 16 12:54:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 43.0:
+  * Allow HTML5 picture tag through cleaner
+  * Test against Python 3.12
+
+-------------------------------------------------------------------
 Wed Dec 27 16:45:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 42.0:

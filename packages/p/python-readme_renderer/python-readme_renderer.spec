@@ -1,7 +1,7 @@
 #
 # spec file for package python-readme_renderer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-readme_renderer
-Version:        42.0
+Version:        43.0
 Release:        0
 Summary:        A library for rendering "readme" descriptions
 License:        Apache-2.0

@@ -149,4 +149,14 @@
   * Migrate from ``setup.py`` to ``pyproject.toml``</comment>
     <requestid>1135356</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3e96f8bb3f0f47f7fce4bd387c83d758</srcmd5>
+    <version>43.0</version>
+    <time>1710776658</time>
+    <user>anag+factory</user>
+    <comment>- update to 43.0:
+  * Allow HTML5 picture tag through cleaner
+  * Test against Python 3.12</comment>
+    <requestid>1158468</requestid>
+  </revision>
 </revisionlist>
