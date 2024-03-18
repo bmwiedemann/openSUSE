@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 17 11:48:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.1:
+  * Fix 17 bugs, most of them securety related
+  * Fix a number of issues uncovered by Coverity
+  * Add meson option to enable unstable APIs and add the info
+    to pkg-config
+  * vtest: Stabilize protocol version 3
+
+-------------------------------------------------------------------
 Wed Nov 15 08:26:31 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Add pkgconfig(libva) BuildRequires: Enable support for hardware
@@ -128,9 +138,9 @@ Tue Nov 26 21:42:29 UTC 2019 - Bruce Rogers <brogers@suse.com>
   Note: not switching to meson build system yet since it would
   exclude distos with older meson (seems meson v0.49+ is required)
   Highlights include:
-  + guest support for GL 4.3 on hosts with GLES 3.2 + certain 
+  + guest support for GL 4.3 on hosts with GLES 3.2 + certain
     extensions,
-  + major performance improvements, and 
+  + major performance improvements, and
   + lots of bug fixes.
 - The shared object (SO) version changes from 0 to 1 with this
   package update
@@ -141,7 +151,7 @@ Wed Sep 19 11:52:37 UTC 2018 - minava@t-online.de
 - Update package to 0.7.0
 - Brings the renderer up to GL4.3/GLES3.1 capability and most of GLES3.2
 - Make EGL optional at configure time
-- The following patches will be removed: 
+- The following patches will be removed:
   0001-737c3350-renderer-fix-memory-leak-in-vertex-elements-state-cr.patch
   0002-1fdafd62-vrend-Increase-VREND_MAX_CTX-to-64.patch
   They are included in 0.7.0

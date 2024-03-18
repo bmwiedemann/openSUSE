@@ -1,7 +1,7 @@
 #
 # spec file for package virglrenderer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,12 +23,12 @@
 %endif
 %define         libname lib%{name}1
 Name:           virglrenderer
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Virgl Rendering library
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            https://virgil3d.github.io/
+URL:            https://docs.mesa3d.org/drivers/virgl/
 Source0:        https://gitlab.freedesktop.org/virgl/%{name}/-/archive/%{name}-%{version}/%{name}-%{name}-%{version}.tar.gz
 BuildRequires:  Mesa-devel
 BuildRequires:  meson >= 0.46
@@ -86,7 +86,7 @@ without GL.
     -Dvenus=true \
     -Dvenus-validate=true \
 %endif
-    -Dvideo=true 
+    -Dvideo=true
 %meson_build
 
 %install

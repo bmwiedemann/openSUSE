@@ -160,4 +160,21 @@
     <comment></comment>
     <requestid>1127272</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4dfbaaacfc963fda3d8c3c4c2d18f1ca</srcmd5>
+    <version>1.0.1</version>
+    <time>1710776601</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.1:
+  * Fix 17 bugs, most of them securety related
+  * Fix a number of issues uncovered by Coverity
+  * Add meson option to enable unstable APIs and add the info
+    to pkg-config
+  * vtest: Stabilize protocol version 3
+
+  + guest support for GL 4.3 on hosts with GLES 3.2 + certain
+  + major performance improvements, and
+- The following patches will be removed:</comment>
+    <requestid>1158734</requestid>
+  </revision>
 </revisionlist>
