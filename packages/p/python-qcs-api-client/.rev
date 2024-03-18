@@ -31,4 +31,13 @@
   * Update: regenerate client</comment>
     <requestid>1132835</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>983457ab0f124dc0bffa5cb7a2add4dd</srcmd5>
+    <version>0.23.1</version>
+    <time>1710776727</time>
+    <user>anag+factory</user>
+    <comment>- Add patch continue-to-use-pydantic-1.patch, use pydantic.v1 to fall
+  back to the old version of Pydantic.</comment>
+    <requestid>1158847</requestid>
+  </revision>
 </revisionlist>

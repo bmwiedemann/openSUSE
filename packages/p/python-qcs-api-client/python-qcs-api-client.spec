@@ -1,7 +1,7 @@
 #
 # spec file for package python-qcs-api-client
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ URL:            https://github.com/rigetti/qcs-api-client-python
 Source:         https://github.com/rigetti/qcs-api-client-python/archive/refs/tags/v%{version}.tar.gz#/qcs-api-client-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Use pyRFC3339 rather than rfc3339 which is not packaged
 Patch0:         switch-to-pyrfc3339.patch
+# PATCH-FIX-OPENSUSE Import from pydantic.v1 rather than pydantic
+Patch1:         continue-to-use-pydantic-1.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
@@ -77,7 +79,7 @@ Allows access to the Rigetti Quantum Computing System API
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/qcs_api_client-%{version}*.dist-info
+%{python_sitelib}/qcs_api_client-%{version}.dist-info
 %{python_sitelib}/qcs_api_client
 
 %changelog
