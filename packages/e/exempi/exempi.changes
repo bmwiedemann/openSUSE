@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Mar 17 12:29:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.5:
+  * Update XMPCore to Adobe XMP SDK v2023.12
+    - Bug fixes
+    - C++17 compliance changes
+    - Changes to remove deprecated APIs
+    - Removing unimplemented APIs in XMPUtils header
+  * Fix a potential nullptr dereference.
+  * Update XMPCore to Adobe XMP SDK v2023.07
+    - Security Fixes.
+    - Fix Exif Date missing seconds values.
+      https://github.com/adobe/XMP-Toolkit-SDK/issues/50
+  * Fix some portability build issues with dlopen on BSD:
+  * Added missing file type constants from the XMP_SDK.
+
+-------------------------------------------------------------------
 Tue Feb 21 10:10:08 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 2.6.3:
@@ -61,24 +78,24 @@ Thu Jan 14 16:53:59 UTC 2021 - andy great <andythe_great@pm.me>
   * Support for iOS in XMPFiles
   * New DOM based API’s are added in XMP Core to access metadata tree
     hierarchy. (not exposed yet in Exempi)
-  * Added support XMP/metadata in utf-8 encoded uncompressed SVG 
+  * Added support XMP/metadata in utf-8 encoded uncompressed SVG
     files in XMPFiles.
   * Added support of GIF handler in XMPFiles.
-  * Added support for reconciliation of iXML’s TRACK_LIST and its 
+  * Added support for reconciliation of iXML’s TRACK_LIST and its
     components to get microphone data.
   * Added support for IFDs of type 13 in TIFF.
   * Added support for MPEG4 videos shot from Google Nexus 5 camera.
-  * Restructured the implementation of XDCAM Handler to support 
+  * Restructured the implementation of XDCAM Handler to support
     File Access Mode (FAM) and Simple Access Mode (SAM)
   * Added built-in support for iXML namespace in XMPCore.
-  * Modified the alias tiff:ImageDescription for dc:description as 
+  * Modified the alias tiff:ImageDescription for dc:description as
     language alternative array instead of simple property.
   * Lot of bug fixes in XMPFiles and XMPCore.
-  * Removed Exempi provided support for GIF in favour of Adobe's. 
+  * Removed Exempi provided support for GIF in favour of Adobe's.
     Only GIF89a is supported.
   * New: API NS_XML constant
-  * Bug #5: Restrict the exported symbols. Only the symbols marked 
-    with API_EXPORT are exported by the shared library as to not 
+  * Bug #5: Restrict the exported symbols. Only the symbols marked
+    with API_EXPORT are exported by the shared library as to not
     allow another library to import the XMP SDK symbols.
     https://gitlab.freedesktop.org/libopenraw/exempi/issues/5
   * Bug #105580: Access memory aligned on ARM.
@@ -164,7 +181,7 @@ Sun Jun 30 15:22:26 UTC 2013 - zaitor@opensuse.org
 -------------------------------------------------------------------
 Sun Feb 26 14:53:26 CET 2012 - dmueller@suse.de
 
-- fix build under qemu 
+- fix build under qemu
 
 -------------------------------------------------------------------
 Thu Feb 23 17:09:03 UTC 2012 - vuntz@opensuse.org
@@ -209,13 +226,13 @@ Fri Sep 30 20:08:00 UTC 2011 - coolo@suse.com
 
 -------------------------------------------------------------------
 Sun Apr 24 12:59:34 UTC 2011 - toddrme2178@gmail.com
-  
+
 - Add 32bit compatibility libraries
-  
+
 -------------------------------------------------------------------
 Thu Dec  9 01:04:53 UTC 2010 - cristian.rodriguez@opensuse.org
 
-- run make check	
+- run make check
 - Disable usage of "shave-libtool" that messes up post build checks
   provide --disable-silent-rules
 
@@ -254,11 +271,11 @@ Tue Apr 28 12:58:10 CEST 2009 - vuntz@novell.com
 Fri Jan  9 22:23:55 CET 2009 - crrodriguez@suse.de
 
 - remove static libraries and "la" files
-- correct -devel package deps 
+- correct -devel package deps
 
 -------------------------------------------------------------------
 Wed Dec 24 13:31:11 EST 2008 - hfiguiere@suse.de
- 
+
 - New upstream version 2.1.0
   + Upgrade XMPCore to Adobe XMP 4.4.2
   + New: NS_PDF namespace for PDF.
@@ -299,12 +316,12 @@ Wed Aug  6 17:20:33 EDT 2008 - mauro@suse.de
 -------------------------------------------------------------------
 Fri Aug  1 17:22:25 CEST 2008 - ro@suse.de
 
-- fix requires for debuginfo package 
+- fix requires for debuginfo package
 
 -------------------------------------------------------------------
 Wed Apr  2 13:11:50 CEST 2008 - vuntz@suse.de
 
-- New upstream version 2.0.0: 
+- New upstream version 2.0.0:
   + Bug fdo#14614, Bug fdo#15263: endian detection in configure.
   + Bug fdo#14615: missing includes for Solaris.
 
@@ -312,7 +329,7 @@ Wed Apr  2 13:11:50 CEST 2008 - vuntz@suse.de
 Fri Mar 14 10:21:22 EDT 2008 - hfiguiere@suse.de
 
 - New upstream version 1.99.9
-  + Typo fix in API 
+  + Typo fix in API
   + Buffer overflow fix in GIF handler (bgo #484105)
 
 -------------------------------------------------------------------

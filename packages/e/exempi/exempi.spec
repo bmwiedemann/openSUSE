@@ -1,7 +1,7 @@
 #
 # spec file for package exempi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %define sonum 8
 Name:           exempi
-Version:        2.6.3
+Version:        2.6.5
 Release:        0
 Summary:        XMP support library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://libopenraw.freedesktop.org/exempi/
-Source0:        https://libopenraw.freedesktop.org/download/%{name}-%{version}.tar.bz2
-Source1:        https://libopenraw.freedesktop.org/download/%{name}-%{version}.tar.bz2.asc
+Source0:        https://libopenraw.freedesktop.org/download/%{name}-%{version}.tar.xz
+Source1:        https://libopenraw.freedesktop.org/download/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 BuildRequires:  gcc-c++
