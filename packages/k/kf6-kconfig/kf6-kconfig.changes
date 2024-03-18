@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 16 22:38:58 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix missing config migration (kde#483795):
+  * 0001-kconf_update-Also-run-.upd-files-if-times-match-but-.patch
+
+-------------------------------------------------------------------
 Wed Feb 21 19:27:50 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.0
