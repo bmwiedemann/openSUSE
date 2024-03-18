@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 16 20:44:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add a kf5 flavor for applications not ported yet to
+  Qt6 (boo#1221502, kde#483741)
+
+-------------------------------------------------------------------
 Fri Feb 23 13:58:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.0
