@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-zope.configuration
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-zope.configuration%{psuffix}
-Version:        5.0
+Version:        5.0.1
 Release:        0
 Summary:        Zope Configuration Markup Language (ZCML)
 License:        ZPL-2.1

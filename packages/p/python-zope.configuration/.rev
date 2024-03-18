@@ -79,4 +79,13 @@ New dependency of python-pyramid</comment>
   * Add support for Python 3.11.</comment>
     <requestid>1136280</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>015873f789f7800ebcd71922c57def27</srcmd5>
+    <version>5.0.1</version>
+    <time>1710776666</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.0.1:
+  * Fix tests when running from a distribution.</comment>
+    <requestid>1158479</requestid>
+  </revision>
 </revisionlist>
