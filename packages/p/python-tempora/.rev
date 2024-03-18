@@ -188,4 +188,13 @@
     <comment></comment>
     <requestid>1099482</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b5fe39a2a2108c6069986861f579e576</srcmd5>
+    <version>5.5.1</version>
+    <time>1710776672</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.5.1:
+  * Remove test dependency on backports.unittest_mock.</comment>
+    <requestid>1158505</requestid>
+  </revision>
 </revisionlist>

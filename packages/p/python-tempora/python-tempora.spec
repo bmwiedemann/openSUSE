@@ -1,7 +1,7 @@
 #
 # spec file for package python-tempora
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
@@ -24,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-tempora
-Version:        5.5.0
+Version:        5.5.1
 Release:        0
 Summary:        Objects and routines pertaining to date and time (tempora)
 License:        MIT
@@ -52,7 +51,7 @@ BuildRequires:  alts
 Requires:       alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 %python_subpackages
 
