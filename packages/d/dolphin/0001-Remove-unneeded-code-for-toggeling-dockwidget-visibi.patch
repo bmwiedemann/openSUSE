@@ -1,0 +1,36 @@
+From abe3e7d60b3541685f9456542755b881cc9d1cbb Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Fri, 8 Mar 2024 18:46:32 +0100
+Subject: [PATCH] Remove unneeded code for toggeling dockwidget visibility
+
+QDockWidget::toggleViewAction::toggled is emitted when minimizing
+the application window on X11 (https://bugreports.qt.io/browse/QTBUG-48161
+potentially related). This will cause the dockwidget to be hidden when
+minimizing the window.
+
+We don't actually seem to need that connection, triggering the action
+(via shortcut or menu) seems to correctly show/hide the dockwidget
+without it
+
+BUG: 481952
+(cherry picked from commit 95551f44922670be5c4d670833c2d4e398657495)
+---
+ src/dolphinmainwindow.cpp | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/dolphinmainwindow.cpp b/src/dolphinmainwindow.cpp
+index 67a62ea..99e514d 100644
+--- a/src/dolphinmainwindow.cpp
++++ b/src/dolphinmainwindow.cpp
+@@ -2499,8 +2499,6 @@ void DolphinMainWindow::createPanelAction(const QIcon &icon, const QKeySequence
+ 
+     QAction *panelAction = actionCollection()->addAction(actionName, dockAction);
+     actionCollection()->setDefaultShortcut(panelAction, shortcut);
+-
+-    connect(panelAction, &QAction::toggled, dockWidget, &QWidget::setVisible);
+ }
+ // clang-format off
+ void DolphinMainWindow::setupWhatsThis()
+-- 
+2.44.0
+

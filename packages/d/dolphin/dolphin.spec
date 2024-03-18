@@ -36,6 +36,8 @@ Source3:        dolphinsu.desktop
 Patch0:         dolphin-go_up.diff
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Remove-unneeded-code-for-toggeling-dockwidget-visibi.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  systemd-rpm-macros
