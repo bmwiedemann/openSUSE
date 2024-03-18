@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 15 10:56:43 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1710500193.0c8ac9b:
+  * Skip upload assets when value of PUBLISH_* is none
+  * Update tidy to 20240202
+  * Fix formatting of architecture documentation
+  * sshXtermIPMI: Reconnect SOL on error
+  * localXvnc::callxterm: Return xterm PID
+  * localXvnc: Open hardware console log in append mode
+
+-------------------------------------------------------------------
 Mon Mar 11 05:16:55 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1709820923.be01b33:
