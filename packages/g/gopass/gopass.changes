@@ -1,0 +1,102 @@
+-------------------------------------------------------------------
+Sun Mar 17 12:44:30 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Fixed completions to be compliant with naming standards.
+- Added _service file for maintainers
+- Modified the URL as the previous one was resulting in vendoring
+  failure
+- Update to 1.15.12:
+  * bugfix: Use 'en' as default language for the xkcd generator
+  * documentation: Fix typo: initilize -> initialize
+  * bugfix: Bring back audit summary
+  * bugfix: Do not abort saving if the OTP counter is aborted
+  * bugfix: Fix NPE when using recipients completion
+  * bugfix: Warn if trying to use fscopy inside the store
+  * chore: Upgrade to Go 1.22
+  * cleanup: Add better logging in case no owner key is found
+  * feat: Add .gopass-audit-ignore support to ignore secrets from
+    audits
+  * feat: Allow supression of password generation in create
+    templates
+  * ux: Add hint that computing recipients takes some time
+  * ux: Do not show create type chooser if only one exists
+
+-------------------------------------------------------------------
+Fri Dec  1 19:52:12 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.15.11
+  https://github.com/gopasspw/gopass/releases/tag/v1.15.11
+
+-------------------------------------------------------------------
+Sun Nov 26 10:56:11 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.15.10
+  https://github.com/gopasspw/gopass/releases/tag/v1.15.10
+
+-------------------------------------------------------------------
+Sat Nov 18 19:46:49 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.15.9
+  https://github.com/gopasspw/gopass/releases/tag/v1.15.9
+
+-------------------------------------------------------------------
+Tue Sep 12 00:20:07 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.15.8
+  https://github.com/gopasspw/gopass/releases/tag/v1.15.8
+
+-------------------------------------------------------------------
+Sat Aug  5 12:36:20 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- restore the series file. it was in the package to allow easily
+  setup a working copy for patching.
+
+-------------------------------------------------------------------
+Sat Aug  5 12:30:58 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.15.7
+  https://github.com/gopasspw/gopass/releases/tag/v1.15.7
+
+-------------------------------------------------------------------
+Fri Aug  4 17:24:29 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- spec tweaks
+
+-------------------------------------------------------------------
+Sun Jul 30 21:16:50 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.15.6
+  https://github.com/gopasspw/gopass/releases/tag/v1.15.6
+
+-------------------------------------------------------------------
+Sat Apr  8 21:39:27 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.15.5
+  https://github.com/gopasspw/gopass/releases/tag/v1.15.5
+
+-------------------------------------------------------------------
+Wed Feb 22 15:38:43 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Added gopass-impersonate-pass for all the people with "pass" in
+  their muscle memory.
+
+-------------------------------------------------------------------
+Wed Feb 22 15:30:20 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Require go 1.18 as some modules depend on it
+
+-------------------------------------------------------------------
+Wed Feb 22 15:23:10 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add /etc/gopass/config to disable the update checker
+
+-------------------------------------------------------------------
+Wed Feb 22 13:44:02 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.15.4
+  https://github.com/gopasspw/gopass/releases/tag/v1.15.4
+
+-------------------------------------------------------------------
+Mon Jan 23 00:51:47 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package

@@ -1,0 +1,12 @@
+<package name="gopass" project="openSUSE:Factory">
+  <title>The slightly more awesome standard unix password manager for teams</title>
+  <description>Manage your credentials with ease. In a globally distributed team, on multiple devices or fully offline on an air gapped machine.
+
+Works everywhere - The same user experience on Linux, MacOS, *BSD or Windows
+Built for teams - Built from our experience working in distributed development teams
+Full autonomy - No network connectivity required, unless you want it
+
+</description>
+  <devel project="security:privacy" package="gopass"/>
+  <url>https://www.gopass.pw/</url>
+</package>
