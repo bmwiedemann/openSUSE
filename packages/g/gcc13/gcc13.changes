@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 13 08:04:27 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Revert libgccjit dependency change.  [boo#1220724]
+
+-------------------------------------------------------------------
 Tue Mar  5 14:35:38 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Fix libgccjit-devel dependency, a newer shared library is OK.

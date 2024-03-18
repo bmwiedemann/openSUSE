@@ -298,4 +298,12 @@
 - Use %patch -P N instead of %patchN.</comment>
     <requestid>1155262</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>491c4ad93de5a76c4c0f85526ab6f544</srcmd5>
+    <version>13.2.1+git8285</version>
+    <time>1710776586</time>
+    <user>anag+factory</user>
+    <comment>- Revert libgccjit dependency change.  [boo#1220724]</comment>
+    <requestid>1157437</requestid>
+  </revision>
 </revisionlist>

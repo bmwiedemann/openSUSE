@@ -1063,6 +1063,11 @@ Provides:	libgccjit%{libgccjit_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
 Conflicts:	%selfconflict libgccjit%{libgccjit_sover}
+# At runtime the JIT needs to be able to invoke the assembler and
+# linker and find startfiles and libgcc.  The built-in driver knows
+# the compilers version install directory only so we require the
+# respective compiler libgccjit was built from.
+Requires:	gcc@base_ver@
 
 %description -n libgccjit%{libgccjit_sover}%{libgccjit_suffix}
 Support for embedding GCC inside programs and libraries
