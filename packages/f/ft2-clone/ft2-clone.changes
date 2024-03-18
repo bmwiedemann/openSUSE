@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 17 23:15:33 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.78
+  * Fixed: It was possible to deadlock the tracker by attempting
+    to load samples that had a filesize of zero bytes, or if the
+    sample was in use by another program.
+  * Fullscreen mode has received more bugfixes.
+
+-------------------------------------------------------------------
 Sun Mar 17 12:19:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.77.1:
