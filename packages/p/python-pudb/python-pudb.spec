@@ -1,7 +1,7 @@
 #
 # spec file for package python-pudb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,9 @@
 %define upstream_name pudb
 %define module_name pudb
 %define py_maj_ver %(c=%{python})
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pudb
-Version:        2022.1.3
+Version:        2024.1
 Release:        0
 Summary:        A full-screen, console-based Python debugger
 License:        MIT
@@ -30,17 +30,17 @@ URL:            https://mathema.tician.de/software/pudb
 Source0:        https://files.pythonhosted.org/packages/source/p/%{upstream_name}/%{upstream_name}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module urwid}
+BuildRequires:  %{python_module urwid >= 2.4}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Pygments
-Requires:       python-jedi
-Requires:       python-packaging
-Requires:       python-urwid
+Requires:       python-Pygments >= 2.7.4
+Requires:       python-jedi >= 0.18
+Requires:       python-packaging >= 20.0
+Requires:       python-urwid >= 2.4
 Requires:       python-urwid-readline
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

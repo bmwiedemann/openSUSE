@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 16 09:56:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.1:
+  * Show shell error messages in fallback shell
+  * Improve zsh completion
+  * Fix intersphinx mapping format
+  * Use deque with maxsize for command line history
+  * Restore cmdline text input when browsing history
+  * Give each theme its own file
+  * Revise UI elements for legibility
+  * Remove dependence on telnetlib which was removed in python 3.13
+
+-------------------------------------------------------------------
 Wed Aug 30 08:57:06 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Clean up the SPEC file
@@ -6,7 +19,7 @@ Wed Aug 30 08:57:06 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Wed Nov  9 17:18:38 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 2022.1.3 
+- Update to version 2022.1.3
   * Improve sidebar help
   * Bump version to 2022.1.3
   * Remove reference to py.test in favor of pytest
@@ -31,7 +44,7 @@ Wed Nov  9 17:18:38 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Wed Oct 12 14:04:37 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 2022.1.2 
+- Update to version 2022.1.2
   * Syntax-highlighted source, the stack, breakpoints and variables are all visible at once and continuously updated.
     This helps you be more aware of what’s going on in your program. Variable displays can be expanded, collapsed and have various customization options.
   * Pre-bundled themes, including dark themes via “Ctrl-P”. Could set a custom theme also.
@@ -44,7 +57,7 @@ Wed Oct 12 14:04:37 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   * PuDB places special emphasis on exception handling. A post-mortem mode makes it easy to retrace a crashing program’s last steps.
   * Ability to control the debugger from a separate terminal.
   * IPython integration (see wiki)
-  * Should work with Python 3.6 and newer. (Versions 2019.2 and older continue to support Python 2.7.) 
+  * Should work with Python 3.6 and newer. (Versions 2019.2 and older continue to support Python 2.7.)
 
 -------------------------------------------------------------------
 Wed Dec  8 10:11:58 UTC 2021 - pgajdos@suse.com
@@ -111,7 +124,7 @@ Mon Jul  2 22:40:15 UTC 2018 - mcepl@suse.com
     * update Go-to-Line UI with File/Current Line/Go to Line
     * Placate new Flake8; add some license headers
     * check 'safely_stringify_for_pudb' on the type #276
-    * Use urwid.util.calc_text_pos() in make_canvas() 
+    * Use urwid.util.calc_text_pos() in make_canvas()
     * Use text_width() in var_view
     * Create text_width() help function for getting the (terminal) width of…
     * Don't return early when "returning" from a module
