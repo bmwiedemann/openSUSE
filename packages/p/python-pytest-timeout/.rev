@@ -133,4 +133,22 @@
  * Fix deprecation warning on Python 3.6.</comment>
     <requestid>1124096</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>68288bbd4aedac5c9ba8dcf03f09d885</srcmd5>
+    <version>2.3.1</version>
+    <time>1710776662</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.3.1:
+  * Fixup some build errors, mostly README syntax which stopped
+    twine from uploading.
+  * Fix debugger detection for recent VSCode, this compiles pydevd
+    using cython which is now correctly detected.
+  * Switched to using Pytest's ``TerminalReporter`` instead
+    of writing directly to ``sys.{stdout,stderr}``.
+  * This change also switches all output from ``sys.stderr`` to
+    ``sys.stdout``.
+  * Pytest 7.0.0 is now the minimum supported version.
+  * Add ``--session-timeout`` option and ``session_timeout`` setting.</comment>
+    <requestid>1158473</requestid>
+  </revision>
 </revisionlist>

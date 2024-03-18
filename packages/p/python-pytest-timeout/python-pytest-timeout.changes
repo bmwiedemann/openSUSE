@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 16 13:01:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.1:
+  * Fixup some build errors, mostly README syntax which stopped
+    twine from uploading.
+  * Fix debugger detection for recent VSCode, this compiles pydevd
+    using cython which is now correctly detected.
+  * Switched to using Pytest's ``TerminalReporter`` instead
+    of writing directly to ``sys.{stdout,stderr}``.
+  * This change also switches all output from ``sys.stderr`` to
+    ``sys.stdout``.
+  * Pytest 7.0.0 is now the minimum supported version.
+  * Add ``--session-timeout`` option and ``session_timeout`` setting.
+
+-------------------------------------------------------------------
 Tue Nov  7 20:11:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.0:

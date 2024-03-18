@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-timeout
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,17 @@
 %bcond_with ringdisabled
 %{?sle15_python_module_pythons}
 Name:           python-pytest-timeout
-Version:        2.2.0
+Version:        2.3.1
 Release:        0
 Summary:        Pytest plugin to abort hanging tests
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-timeout/
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-timeout/pytest-timeout-%{version}.tar.gz
-BuildRequires:  %{python_module pytest >= 5.0.0}
+BuildRequires:  %{python_module pytest >= 7.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytest >= 5.0.0
+Requires:       python-pytest >= 7.0.0
 # SECTION test
 %if !%{with ringdisabled}
 BuildRequires:  %{python_module pytest-cov}
