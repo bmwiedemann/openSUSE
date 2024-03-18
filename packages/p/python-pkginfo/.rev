@@ -63,4 +63,16 @@
     <comment></comment>
     <requestid>1081838</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>11584f604e5b28c699838d5833036f4f</srcmd5>
+    <version>1.10.0</version>
+    <time>1710776645</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.10.0:
+  * Add support for Python 3.11 and 3.12.
+  * Drop support for Python 3.6.
+  * Declare explicit testing dependency on 'wheel'.
+  * Add support for Metadata 2.3.</comment>
+    <requestid>1158408</requestid>
+  </revision>
 </revisionlist>
