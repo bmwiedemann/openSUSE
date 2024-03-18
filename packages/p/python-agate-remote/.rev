@@ -24,4 +24,14 @@
   * Add ``requests_encoding`` keyword argument to ``from_url``.</comment>
     <requestid>1040419</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3884dbbf423a3eb99d90c697c4f516c2</srcmd5>
+    <version>0.2.2</version>
+    <time>1710776848</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.2.2:
+  * Add Python 3.12 support.
+  * Drop Python 3.7 support (end-of-life was June 27, 2023).</comment>
+    <requestid>1158980</requestid>
+  </revision>
 </revisionlist>

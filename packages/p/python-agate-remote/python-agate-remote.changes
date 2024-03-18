@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 18 12:11:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.2:
+  * Add Python 3.12 support.
+  * Drop Python 3.7 support (end-of-life was June 27, 2023).
+
+-------------------------------------------------------------------
 Mon Dec  5 20:05:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.2.1:
