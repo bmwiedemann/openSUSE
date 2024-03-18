@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 18 01:44:44 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pytest macros.
+- Skip two broken tests.
+
+-------------------------------------------------------------------
 Thu Feb  1 19:00:07 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Fix multibuild

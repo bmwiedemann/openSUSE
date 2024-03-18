@@ -236,4 +236,13 @@ Please link to python3-polib.
     <comment></comment>
     <requestid>1143628</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>92a8b5e9b9a44bc631f0d1d001e10b66</srcmd5>
+    <version>1.2.0</version>
+    <time>1710776717</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup and pytest macros.
+- Skip two broken tests.</comment>
+    <requestid>1158841</requestid>
+  </revision>
 </revisionlist>
