@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 18 04:38:41 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing importlib_metadata to {Build,}Requires.
+- Less globs in %files.
+
+-------------------------------------------------------------------
 Mon Jun  5 10:29:18 UTC 2023 - pgajdos@suse.com
 
 - version update to 1.0.0

@@ -1,7 +1,7 @@
 #
 # spec file for package python-rnginline
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        1.0.0
 Release:        0
 Summary:        Python libary to flatten multi-file RELAX NG schemas
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/h4l/rnginline
 Source:         https://files.pythonhosted.org/packages/source/r/rnginline/rnginline-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
@@ -31,17 +30,18 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-docopt
-Requires:       python-importlib_resources >= 5.12.0
+Requires:       python-importlib_metadata >= 6.6.0
 Requires:       python-lxml
 Requires:       python-typing_extensions >= 4.5.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Suggests:       python-coverage
 Suggests:       python-mock
 Suggests:       python-pytest >= 2.6.4
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module docopt}
+BuildRequires:  %{python_module importlib_metadata >= 6.6.0}
 BuildRequires:  %{python_module importlib_resources >= 5.12.0}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pytest}
@@ -81,6 +81,7 @@ pushd rnginline
 %license LICENSE.txt
 %doc README.md
 %python_alternative %{_bindir}/rnginline
-%{python_sitelib}/rnginline*
+%{python_sitelib}/rnginline
+%{python_sitelib}/rnginline-%{version}.dist-info
 
 %changelog

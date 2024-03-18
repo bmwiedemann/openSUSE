@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>1091056</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>def97051610e3c7f3baf08e10b194ace</srcmd5>
+    <version>1.0.0</version>
+    <time>1710776730</time>
+    <user>anag+factory</user>
+    <comment>- Add missing importlib_metadata to {Build,}Requires.
+- Less globs in %files.</comment>
+    <requestid>1158850</requestid>
+  </revision>
 </revisionlist>
