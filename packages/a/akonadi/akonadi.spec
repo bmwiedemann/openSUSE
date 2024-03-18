@@ -81,6 +81,7 @@ Recommends:     kaccounts-providers
 # Package was renamed before the 6.0 release
 Provides:       akonadi-server = %{version}
 Obsoletes:      akonadi-server < %{version}
+Obsoletes:      akonadi-server-lang < %{version}
 # Sqlite driver was removed, now uses Qt driver
 Obsoletes:      akonadi-server-sqlite < %{version}
 

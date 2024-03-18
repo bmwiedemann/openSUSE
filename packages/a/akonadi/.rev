@@ -7,4 +7,12 @@
     <comment>KDE release gear 24.02.0</comment>
     <requestid>1156406</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3191839db96ae0439b993c34f09aa20e</srcmd5>
+    <version>24.02.0</version>
+    <time>1710776605</time>
+    <user>anag+factory</user>
+    <comment>- Make sure the old translation package gets uninstalled (boo#1221515)</comment>
+    <requestid>1158775</requestid>
+  </revision>
 </revisionlist>
