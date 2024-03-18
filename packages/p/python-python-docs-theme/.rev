@@ -91,4 +91,15 @@
   * Dark mode: fix contrast of footer highlight</comment>
     <requestid>1143508</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>da5878d19c92ad3968fb8c13d0090cd7</srcmd5>
+    <version>2024.2</version>
+    <time>1710776656</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.2:
+  * Do not underline navigation links
+  * Only apply underline offset to code formatting for underline
+    visibility</comment>
+    <requestid>1158467</requestid>
+  </revision>
 </revisionlist>

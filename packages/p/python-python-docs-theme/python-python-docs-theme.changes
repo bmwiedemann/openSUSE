@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 16 12:53:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.2:
+  * Do not underline navigation links
+  * Only apply underline offset to code formatting for underline
+    visibility
+
+-------------------------------------------------------------------
 Thu Feb  1 21:20:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.1:
