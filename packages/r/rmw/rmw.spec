@@ -2,6 +2,7 @@
 # spec file for package rmw
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           rmw
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        Safe-remove utility for the command line
 License:        GPL-3.0-or-later
@@ -55,9 +56,6 @@ after x number of days.
 
 rm %{buildroot}%{_docdir}/%{name}/COPYING
 %find_lang %{name}
-
-%check
-#%%meson_test
 
 %files
 %license COPYING
