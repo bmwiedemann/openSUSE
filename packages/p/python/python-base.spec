@@ -17,6 +17,9 @@
 
 
 %define so_version 2_7-1_0
+# We really don't care about quality of this package anymore, it
+# will be soon gone (bsc#1219306).
+%bcond_with tests
 
 Name:           python-base
 Version:        2.7.18
@@ -376,6 +379,7 @@ LD_LIBRARY_PATH=$PWD:$LD_LIBRARY_PATH \
     make %{?_smp_mflags} $target
 
 %check
+%if %{with test}
 # on hppa, the threading of glibc is quite broken. The tests just stop
 # at some point, and the machine does not build anything more until a
 # timeout several hours later.
@@ -426,6 +430,8 @@ fi
 make test TESTOPTS="-l -w -x $EXCLUDE" TESTPYTHONOPTS="-R"
 # use network, be verbose:
 #make test TESTOPTS="-l -u network -v"
+%endif
+# END OF CHECK SECTION
 %endif
 
 %install

@@ -4069,4 +4069,13 @@ However, upstream development now focuses on 3.x series.
     <comment></comment>
     <requestid>1155422</requestid>
   </revision>
+  <revision rev="193" vrev="44">
+    <srcmd5>6a0e3499b6384cfbaba86d9162f9ae18</srcmd5>
+    <version>2.7.18</version>
+    <time>1710865765</time>
+    <user>anag+factory</user>
+    <comment>- Switch off tests. ONLY FOR FACTORY!!! (bsc#1219306)
+</comment>
+    <requestid>1158938</requestid>
+  </revision>
 </revisionlist>

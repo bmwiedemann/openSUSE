@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 18 09:54:20 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off tests. ONLY FOR FACTORY!!! (bsc#1219306)
+
+-------------------------------------------------------------------
 Tue Mar  5 17:43:19 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Build with -std=gnu89 to build correctly with gcc14, bsc#1220970
