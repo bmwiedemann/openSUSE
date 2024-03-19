@@ -242,4 +242,12 @@
 - added freeglut* packages to fix dependencies (#80605), plus</comment>
     <requestid>1135312</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>8e559c55168e35f8c1d9e436d3d1e6c6</srcmd5>
+    <version>3.1.7</version>
+    <time>1710865960</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1159358</requestid>
+  </revision>
 </revisionlist>

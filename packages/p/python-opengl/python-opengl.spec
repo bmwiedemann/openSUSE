@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-opengl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -25,6 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+
 %define tarname PyOpenGL
 %{?sle15_python_module_pythons}
 Name:           python-opengl%{psuffix}
@@ -33,9 +33,13 @@ Release:        0
 Summary:        OpenGL bindings for Python
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
-URL:            https://pyopengl.sourceforge.net
+URL:            https://github.com/mcfletch/pyopengl
 Source0:        https://files.pythonhosted.org/packages/source/P/%{tarname}/%{tarname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM PyOpenGL-pr100-py312.patch gh#mcfletch/pyopengl#100
+Patch0:         PyOpenGL-pr100-py312.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       Mesa-dri
@@ -44,21 +48,22 @@ Recommends:     python-opengl-accelerate
 Recommends:     python-tk
 Recommends:     tk >= 8.1
 Provides:       python-PyOpenGL = %{version}-%{release}
+Provides:       python-pyopengl = %{version}-%{release}
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module opengl-accelerate}
 BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pygame}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  Mesa-dri
 BuildRequires:  freeglut-devel
 BuildRequires:  libdrm-devel
 BuildRequires:  libgle-devel
-BuildRequires:  python3-numpy
 BuildRequires:  swig
 BuildRequires:  tk-devel
-BuildRequires:  %{python_module pygame if (%python-base without python36-base)}
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(x11)
@@ -71,34 +76,31 @@ OpenGL bindings for Python including support for GL extensions, GLU,
 WGL, GLUT, GLE, and Tk.
 
 %prep
-%setup -q -n %{tarname}-%{version}
+%autosetup -p1 -n %{tarname}-%{version}
 # remove shebang
-sed -e '1d' -i OpenGL/arrays/_buffers.py OpenGL/arrays/buffers.py
-# avoid "python-bytecode-inconsistent-mtime" warning
-FAKE_TIMESTAMP=$(LC_ALL=C date -u -r OpenGL/__init__.py +%%y%%m%%d%%H%%M)
-find . -name '*.py' -exec touch -mat $FAKE_TIMESTAMP {} \;
+sed -e '1{/^#/d}' -i OpenGL/arrays/_buffers.py OpenGL/arrays/buffers.py
 
 %build
-%python_build
+%if !%{with test}
+%pyproject_wheel
+%endif
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
 %if %{with test}
 %check
-# don't test anything on python36: all tests need pygame, which is not available
-python36_flags="--version"
-%pytest ${$python_flags} tests
+%pytest tests
 %endif
 
 %if !%{with test}
 %files %{python_files}
 %license license.txt
 %{python_sitelib}/OpenGL/
-%{python_sitelib}/PyOpenGL-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/PyOpenGL-%{version}.dist-info
 %endif
 
 %changelog

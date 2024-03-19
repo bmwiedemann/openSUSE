@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 19 08:55:23 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add PyOpenGL-pr100-py312.patch gh#mcfletch/pyopengl#100
+- Build PEP517 wheel
+- Clean old python36 flavor specfile commands
+
+-------------------------------------------------------------------
 Wed Dec 27 13:49:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.7:
