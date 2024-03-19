@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 18 07:18:27 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Add 0001-Remove-the-use-of-the-deprecated-assertEquals-functi.patch
+
+-------------------------------------------------------------------
 Thu May 27 08:31:12 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro

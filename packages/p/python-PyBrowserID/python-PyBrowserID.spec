@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyBrowserID
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2017-2018 The openSUSE Project.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,6 +27,8 @@ URL:            https://github.com/mozilla/PyBrowserID
 Source:         https://files.pythonhosted.org/packages/source/P/PyBrowserID/PyBrowserID-%{version}.tar.gz
 # https://github.com/mozilla/PyBrowserID/issues/42
 Patch0:         python-PyBrowserID-unittest-mock.patch
+# PATCH-FIX-UPSTREAM (not submitted because the project is archive and doesn't accept pull requests)
+Patch1:         0001-Remove-the-use-of-the-deprecated-assertEquals-functi.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -45,8 +47,7 @@ This is a python client library for the BrowserID protocol that underlies
 Mozilla Persona.
 
 %prep
-%setup -q -n PyBrowserID-%{version}
-%patch0 -p1
+%autosetup -p1 -n PyBrowserID-%{version}
 
 %build
 %python_build

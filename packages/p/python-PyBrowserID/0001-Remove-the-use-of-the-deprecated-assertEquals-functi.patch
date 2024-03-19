@@ -1,0 +1,132 @@
+From 0f3eeadac8ae0cf698bbcec2ce11198e7a7ab13a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jaime=20Marqui=CC=81nez=20Ferra=CC=81ndiz?=
+ <jaime.marquinez.ferrandiz@fastmail.net>
+Date: Mon, 18 Mar 2024 08:12:11 +0100
+Subject: [PATCH] Remove the use of the deprecated assertEquals function
+
+It is no longer available on python 3.12.
+---
+ browserid/tests/test_m2_monkeypatch.py |  6 +++---
+ browserid/tests/test_supportdoc.py     |  2 +-
+ browserid/tests/test_utils.py          | 10 +++++-----
+ browserid/tests/test_verifiers.py      | 12 ++++++------
+ 4 files changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/browserid/tests/test_m2_monkeypatch.py b/browserid/tests/test_m2_monkeypatch.py
+index 0deb783..209fb53 100644
+--- a/browserid/tests/test_m2_monkeypatch.py
++++ b/browserid/tests/test_m2_monkeypatch.py
+@@ -62,9 +62,9 @@ class TestM2MonkeyPatch(unittest.TestCase):
+                                      d_orig.pub, d_orig.priv)
+         # Check that the attributes are copied across effectively.
+         for nm in ("p", "q", "g", "pub"):
+-            self.assertEquals(getattr(d_orig, nm), getattr(d_pub, nm))
+-            self.assertEquals(getattr(d_orig, nm), getattr(d_priv, nm))
+-        self.assertEquals(d_orig.priv, d_priv.priv)
++            self.assertEqual(getattr(d_orig, nm), getattr(d_pub, nm))
++            self.assertEqual(getattr(d_orig, nm), getattr(d_priv, nm))
++        self.assertEqual(d_orig.priv, d_priv.priv)
+         # Check that they can all validate signatures from original key.
+         r, s = d_orig.sign("helloworld")
+         self.assertTrue(d_orig.verify("helloworld", r, s))
+diff --git a/browserid/tests/test_supportdoc.py b/browserid/tests/test_supportdoc.py
+index 73a619a..138097f 100644
+--- a/browserid/tests/test_supportdoc.py
++++ b/browserid/tests/test_supportdoc.py
+@@ -92,7 +92,7 @@ class TestFetchPublicKey(unittest.TestCase):
+ 
+     def test_successful_fetch(self):
+         key = self._fetch('test.com', response_text=BROWSERID_PK)
+-        self.assertEquals(key, BROWSERID_PK_PY['public-key'])
++        self.assertEqual(key, BROWSERID_PK_PY['public-key'])
+ 
+ 
+ class TestTrustedIssuers(unittest.TestCase):
+diff --git a/browserid/tests/test_utils.py b/browserid/tests/test_utils.py
+index 0723237..cb57178 100644
+--- a/browserid/tests/test_utils.py
++++ b/browserid/tests/test_utils.py
+@@ -11,14 +11,14 @@ from browserid.tests.support import unittest
+ class TestUtils(unittest.TestCase):
+ 
+     def test_encode_decode_bytes(self):
+-        self.assertEquals(b"HELLO", decode_bytes(encode_bytes(b"HELLO")))
+-        self.assertEquals(b"HELLO", decode_bytes(encode_bytes(u("HELLO"))))
++        self.assertEqual(b"HELLO", decode_bytes(encode_bytes(b"HELLO")))
++        self.assertEqual(b"HELLO", decode_bytes(encode_bytes(u("HELLO"))))
+         self.assertRaises(ValueError, decode_bytes, u("\N{SNOWMAN}"))
+         self.assertRaises(ValueError, decode_bytes, "A===")
+ 
+     def test_encode_decode_json_bytes(self):
+         obj = {"hello": "world"}
+-        self.assertEquals(obj, decode_json_bytes(encode_json_bytes(obj)))
++        self.assertEqual(obj, decode_json_bytes(encode_json_bytes(obj)))
+         self.assertRaises(ValueError,
+                           decode_json_bytes, encode_bytes("NOJSON4U"))
+         self.assertRaises(ValueError,
+@@ -48,8 +48,8 @@ class TestUtils(unittest.TestCase):
+         6cDRGRjlUclBjNjBTRXcifQ
+         """.replace(" ", "").replace("\n", "").strip()
+         data = get_assertion_info(assertion)
+-        self.assertEquals(data["principal"]["email"], "ryan@rfk.id.au")
+-        self.assertEquals(data["audience"], "http://myfavoritebeer.org")
++        self.assertEqual(data["principal"]["email"], "ryan@rfk.id.au")
++        self.assertEqual(data["audience"], "http://myfavoritebeer.org")
+         self.assertRaises(ValueError, get_assertion_info, "JUNK")
+         self.assertRaises(ValueError, get_assertion_info, "X")
+         self.assertRaises(ValueError, get_assertion_info, "\x00\x01\x02")
+diff --git a/browserid/tests/test_verifiers.py b/browserid/tests/test_verifiers.py
+index e9c3ec9..d95ff8f 100644
+--- a/browserid/tests/test_verifiers.py
++++ b/browserid/tests/test_verifiers.py
+@@ -124,7 +124,7 @@ class TestLocalVerifier(unittest.TestCase, VerifierTestCases):
+             warnings.simplefilter("always")
+             self.verifier = LocalVerifier(["*"])
+         # There should be no warning about using this verifier.
+-        self.assertEquals(len(w), 0)
++        self.assertEqual(len(w), 0)
+ 
+     @callwith(patched_supportdoc_fetching())
+     def test_error_handling_in_verify_certificate_chain(self):
+@@ -285,7 +285,7 @@ class TestRemoteVerifier(unittest.TestCase, VerifierTestCases):
+         response_text = ('{"email": "t@m.com", "status": "okay", '
+                          '"audience": "http://myfavoritebeer.org"}')
+         data = self._verify(response_text=response_text)
+-        self.assertEquals(data["email"], "t@m.com")
++        self.assertEqual(data["email"], "t@m.com")
+ 
+     def test_handling_of_invalid_json_from_server(self):
+         with self.assertRaises(ConnectionError):
+@@ -393,11 +393,11 @@ class TestDummyVerifier(unittest.TestCase, VerifierTestCases):
+         self.assertTrue(verifier.verify(assertion1))
+         assertion2 = make_assertion("test@2.com", "", "2.com")
+         self.assertTrue(verifier.verify(assertion2))
+-        self.assertEquals(len(supportdocs.cache), 2)
++        self.assertEqual(len(supportdocs.cache), 2)
+         # Hitting a third host should evict the first public key.
+         assertion3 = make_assertion("test@3.com", "", "3.com")
+         self.assertTrue(verifier.verify(assertion3))
+-        self.assertEquals(len(supportdocs.cache), 2)
++        self.assertEqual(len(supportdocs.cache), 2)
+         # Make it error out if re-fetching any keys
+ 
+         exc = RuntimeError("key fetch disabled")
+@@ -412,13 +412,13 @@ class TestDummyVerifier(unittest.TestCase, VerifierTestCases):
+         # Prime the cache by verifying an assertion.
+         assertion1 = make_assertion("test@1.com", "", "1.com")
+         self.assertTrue(verifier.verify(assertion1))
+-        self.assertEquals(len(supportdocs.cache), 1)
++        self.assertEqual(len(supportdocs.cache), 1)
+         # Let that cached key expire
+         time.sleep(0.1)
+         # Now grab a different key; caching it should purge the expired key.
+         assertion2 = make_assertion("test@2.com", "", "2.com")
+         self.assertTrue(verifier.verify(assertion2))
+-        self.assertEquals(len(supportdocs.cache), 1)
++        self.assertEqual(len(supportdocs.cache), 1)
+         # Check that only the second entry is in cache.
+ 
+         exc = RuntimeError("key fetch disabled")
+-- 
+2.44.0
+
