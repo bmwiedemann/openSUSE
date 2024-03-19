@@ -205,4 +205,27 @@
   - Pre-commit v.2.0.3 (dr-p)</comment>
     <requestid>1145004</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>13a5894b98040e89ff57db337610a700</srcmd5>
+    <version>0.45</version>
+    <time>1710865921</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.45:
+  * Add Python 3.12 support
+  * Add Kuwait holidays
+  * Add Seychelles holidays
+  * Fix SonarCloud security hotspots
+  * Update Mexico holidays
+  * Update Ethiopia holidays
+  * Update Ukrainian translations (proper apostrophe)
+  * Update snapshots: Portugal holidays
+  * Add `UNOFFICIAL` category for the United States
+  * Introduce subdivisions aliases
+  * Update Ireland holidays
+  * Update Portugal holidays: fix Carnival date
+  * Update Taiwan holidays
+  * Update Thailand holidays: add Bridge Public Holiday on Apr 12, 2024
+- Add missing BuildRequires on importlib-metadata.</comment>
+    <requestid>1159181</requestid>
+  </revision>
 </revisionlist>

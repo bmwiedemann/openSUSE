@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar 19 05:57:14 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.45:
+  * Add Python 3.12 support
+  * Add Kuwait holidays
+  * Add Seychelles holidays
+  * Fix SonarCloud security hotspots
+  * Update Mexico holidays
+  * Update Ethiopia holidays
+  * Update Ukrainian translations (proper apostrophe)
+  * Update snapshots: Portugal holidays
+  * Add `UNOFFICIAL` category for the United States
+  * Introduce subdivisions aliases
+  * Update Ireland holidays
+  * Update Portugal holidays: fix Carnival date
+  * Update Taiwan holidays
+  * Update Thailand holidays: add Bridge Public Holiday on Apr 12, 2024
+- Add missing BuildRequires on importlib-metadata.
+
+-------------------------------------------------------------------
 Wed Feb  7 20:13:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.42:
