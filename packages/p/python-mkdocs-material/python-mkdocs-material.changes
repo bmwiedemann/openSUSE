@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Mar 18 07:29:42 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.14:
+  * Added support for hiding versions from selector when using mike
+  * Added init system to improve signal handling in Docker image
+  * Fixed edge cases in exclusion logic of info plugin
+  * Fixed inability to reset pipeline in search plugin
+  * Fixed syntax error in Finnish translations
+  * Fixed #6917
+    <https://github.com/squidfunk/mkdocs-material/issues/6917>:
+    UTF-8 encoding problems in blog plugin on Windows
+  * Fixed #6889
+    <https://github.com/squidfunk/mkdocs-material/issues/6889>:
+    Transparent iframes get background color
+
+-------------------------------------------------------------------
+Sat Mar 16 18:16:06 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.13:
+  * Updated Slovak translations
+  * Improved info plugin interop with projects plugin
+  * Improved info plugin inclusion/exclusion logic
+  * Fixed info plugin not gathering files recursively
+  * Fixed #6750
+    <https://github.com/squidfunk/mkdocs-material/issues/6750>:
+    Ensure info plugin packs up all necessary files
+
+-------------------------------------------------------------------
+Sat Mar 16 18:11:45 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.12:
+  * Fixed #6846
+    <https://github.com/squidfunk/mkdocs-material/issues/6846>:
+    Some meta tags removed on instant navigation (9.4.2 regression)
+  * Fixed #6823
+    <https://github.com/squidfunk/mkdocs-material/pull/6823>: KaTex
+    not rendering on instant navigation (9.5.5 regression)
+  * Fixed #6821
+    <https://github.com/squidfunk/mkdocs-material/issues/6821>:
+    Privacy plugin doesn't handle URLs with encoded characters
+
+-------------------------------------------------------------------
 Sat Feb 24 08:54:06 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.5.11:
