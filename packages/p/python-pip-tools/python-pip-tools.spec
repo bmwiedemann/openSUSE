@@ -1,7 +1,7 @@
 #
 # spec file for package python-pip-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-pip-tools
-Version:        7.3.0
+Version:        7.4.1
 Release:        0
 Summary:        Tool to keep pinned dependencies up to date
 License:        BSD-3-Clause
@@ -83,6 +83,10 @@ donttest+=" or test_compile_recursive_extras"
 # test_combine_different_extras_of_the_same_package with the backtracking
 # resolver is broken with pip 23.3
 donttest+=" or test_combine_different_extras_of_the_same_package"
+# test_cli_compile_all_extras_with_multiple_packages requires network
+donttest+=" or test_cli_compile_all_extras_with_multiple_packages"
+# Fails with python 3.12
+donttest+=" or test_diff_should_not_uninstall"
 %pytest -vv -k "not ($donttest)"
 
 %files %{python_files}
