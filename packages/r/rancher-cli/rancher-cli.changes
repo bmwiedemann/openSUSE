@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 18 15:12:46 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.8.3 (2.8.1 and 2.8.2 do not exist):
+  * fix panics (#350)
+
+-------------------------------------------------------------------
 Tue Oct 24 09:37:47 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.8.0:
