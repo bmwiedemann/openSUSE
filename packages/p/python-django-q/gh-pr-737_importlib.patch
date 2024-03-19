@@ -20,7 +20,7 @@ index 3a8f3982..d64caa01 100644
  from warnings import warn
  
 -import pkg_resources
-+from importlib_metadata import entry_points
++from importlib.metadata import entry_points
  from django.conf import settings
  from django.utils.translation import gettext_lazy as _
  
