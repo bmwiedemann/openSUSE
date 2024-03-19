@@ -183,4 +183,13 @@
 - No more greedy globs in %files.</comment>
     <requestid>1153731</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8d6cd33116d1eb4cda029564fec1dbb2</srcmd5>
+    <version>0.10.0.20240312</version>
+    <time>1710865930</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.10.0.20240312:
+  * various toplevel domain updates</comment>
+    <requestid>1159229</requestid>
+  </revision>
 </revisionlist>
