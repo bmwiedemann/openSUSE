@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar 19 10:49:21 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1710845353.23e79984:
+  * Bump @floating-ui/dom from 1.6.1 to 1.6.3
+  * Handle special releases in openqa-boostrap (like "Leap 15.6 Beta")
+  * Bump eslint-plugin-prettier from 3.4.1 to 4.2.1
+  * Update location of d3.min.js
+  * Bump d3 from 4.13.0 to 7.9.0
+  * Bump eslint-config-prettier from 8.10.0 to 9.1.0
+  * Remove obsolete checklist item about asset cache
+  * Bump eslint from 7.32.0 to 8.57.0
+  * Allow undoing batch-commenting from the audit log table
+  * Add route to delete many comments at once
+  * Allow batch-commenting on test results overview
+  * Add dependabot rules to mergify config
+
+-------------------------------------------------------------------
 Mon Mar 18 12:12:22 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1710762624.7d0dd225:
