@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 19 06:55:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.3:
+  * Prepare for v0.16.3 release
+  * chore(deps): update golang:1.22.1-alpine3.19 docker digest to
+    0466223
+  * install: convert --nodes-without-cilium flag to boolean
+  * helm: configure nodes without cilium affinity on install and
+    upgrade
+  * chore(deps): update golang:1.22.1-alpine3.19 docker digest to
+    fa4add5
+  * refactor: Move logging outside internal
+
+-------------------------------------------------------------------
 Sat Mar 16 08:13:11 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.16.2:
