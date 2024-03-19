@@ -16,8 +16,14 @@
 #
 
 
+%if 0%{?suse_version} >= 1600 || 0%{?sle_version} > 150600
+%bcond_without level_zero
+%else
+%bcond_with level_zero
+%endif
+
 Name:           intel-opencl
-Version:        23.48.27912.11
+Version:        24.05.28454.6
 Release:        1%{?dist}
 Summary:        Intel Graphics Compute Runtime for OpenCL
 License:        MIT
@@ -26,7 +32,7 @@ URL:            https://github.com/intel/compute-runtime
 Source0:        https://github.com/intel/compute-runtime/archive/%{version}/compute-runtime-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-%if 0%{?suse_version} > 1506
+%if %{with level_zero}
 BuildRequires:  level-zero-devel
 %endif
 BuildRequires:  libigc-devel
@@ -81,7 +87,7 @@ rm -Rf %{buildroot}%{_prefix}/lib/debug
 %files
 %{_libdir}/intel-opencl/libigdrcl.so
 %{_libdir}/libocloc.so
-%if 0%{?suse_version} > 1506
+%if %{with level_zero}
 %{_libdir}/libze_intel_gpu.so.1
 %{_libdir}/libze_intel_gpu.so.1.3.*
 %endif
@@ -99,7 +105,7 @@ rm -Rf %{buildroot}%{_prefix}/lib/debug
 
 %files devel
 %{_includedir}/ocloc_api.h
-%if 0%{?suse_version} > 1506
+%if %{with level_zero}
 %{_includedir}/level_zero/zet_intel_gpu_debug.h
 %endif
 
