@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 18 21:32:23 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.67
+  * Fullscreen mode code has been refactored, as I apparently had
+    coded it the wrong way. "Stretched" mode always fills the whole
+    screen now too, and other issues may have been fixed as well.
+  * The "INTEGERSCALING" option in protracker.ini has been removed
+    as it wouldn't work with the new code anyway.
+- Update to version 1.66
+  * Fixed major sample trigger bugs with PAT2SMP.
+
+-------------------------------------------------------------------
 Mon Oct 30 18:51:32 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.65
