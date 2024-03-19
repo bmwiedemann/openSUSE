@@ -1,7 +1,7 @@
 #
 # spec file for package drbd-utils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,6 +54,8 @@ Patch1003:      fence-after-pacemaker-down.patch
 Patch1004:      bsc-1032142_Disable-quorum-in-default-configuration.patch
 Patch1005:      move_fencing_from_disk_to_net_in_example.patch
 Patch1006:      pie-fix.patch
+Patch1007:      bsc-1219263_crm-fence-peer.9.sh-fix-parsing-in_ccm-crmd-fields-o.patch
+Patch1008:      bsc-1219263_crm-fence-peer.9.sh-use-join-of-node_state-to-judge-.patch
 Patch1099:      rpmlint-build-error.patch
 #############################################
 

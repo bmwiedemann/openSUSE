@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 18 11:21:52 UTC 2024 - Glass Su <glass.su@suse.com>
+
+- drbd failover timeout because of "fence-peer helper broken" (bsc#1219263)
+  * bsc-1219263_crm-fence-peer.9.sh-fix-parsing-in_ccm-crmd-fields-o.patch
+  * bsc-1219263_crm-fence-peer.9.sh-use-join-of-node_state-to-judge-.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 07:51:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
