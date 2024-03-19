@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 14 05:58:13 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update shim-install to set the SRK algorithm for grub2 TPM2
+  key protector (bsc#1213945)
+  + 92d0f4305df73 Set the SRK algorithm for the TPM2 protector
+- Build with update-bootloader-rpm-macros and
+  fde-tpm-helper-rpm-macros and update the %post and %posttrans
+  macros correctly
+
+-------------------------------------------------------------------
 Wed Jun  7 02:29:44 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update shim-install to support FDE

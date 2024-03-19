@@ -390,8 +390,14 @@ prepare_cryptodisk () {
     fi
   fi
 
+  tpm_srk_alg="${GRUB_TPM2_SRK_ALG}"
+
+  if [ -z "$tpm_srk_alg" ]; then
+    tpm_srk_alg="RSA"
+  fi
+
   cat <<EOF
-tpm2_key_protector_init -T \$prefix/$tpm_sealed_key
+tpm2_key_protector_init -a $tpm_srk_alg -T \$prefix/$tpm_sealed_key
 if ! cryptomount -u $uuid --protector tpm2; then
     cryptomount -u $uuid
 fi

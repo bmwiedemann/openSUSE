@@ -1,7 +1,7 @@
 #
 # spec file for package shim-leap
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ Group:          System/Boot
 Source:         shim-15.4-lp152.4.17.1.x86_64.rpm
 Source1:        README
 Source2:        shim-install
+BuildRequires:  fde-tpm-helper-rpm-macros
+BuildRequires:  update-bootloader-rpm-macros
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  x86_64
 
@@ -43,6 +45,9 @@ does not exist
 Summary:        UEFI shim loader
 Group:          System/Boot
 Requires:       perl-Bootloader
+%if 0%{?fde_tpm_update_requires:1}
+%fde_tpm_update_requires
+%endif
 
 %description -n shim
 shim is a trivial EFI application that, when run, attempts to open and
@@ -67,7 +72,19 @@ rm -rf %{buildroot}/usr/lib64/efi
 %endif
 
 %post -n shim
+%if 0%{?fde_tpm_update_post:1}
+%fde_tpm_update_post shim
+%endif
+
+%if 0%{?update_bootloader_check_type_reinit_post:1}
+%update_bootloader_check_type_reinit_post grub2-efi
+%else
 /sbin/update-bootloader --reinit || true
+%endif
+
+%posttrans -n shim
+%{?update_bootloader_posttrans}
+%{?fde_tpm_update_posttrans}
 
 %files -n shim
 %doc README
