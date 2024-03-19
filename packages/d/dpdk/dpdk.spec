@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package dpdk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,6 +59,7 @@ Patch0:         0001-fix-cpu-compatibility.patch
 Patch1:         0002-SLE15-SP3-compatibility-patch-for-kni.patch
 Patch2:         0001-kni-fix-build-with-Linux-6.3.patch
 Patch3:         0001-kni-fix-build-with-Linux-6.5.patch
+Patch4:         kni-fix-build-with-Linux-6.8.patch
 BuildRequires:  binutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes

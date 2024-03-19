@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 12 08:50:25 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- add kni-fix-build-with-Linux-6.8.patch to fix build against
+  kernel 6.8.
+
+-------------------------------------------------------------------
 Mon Sep 11 05:40:37 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
 
 - add 0001-kni-fix-build-with-Linux-6.5.patch to fix build against

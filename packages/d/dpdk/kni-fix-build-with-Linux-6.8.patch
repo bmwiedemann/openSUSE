@@ -1,0 +1,30 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Subject: kni: fix build with Linux 6.8
+Patch-mainline: submitted to dev@dpdk.org, <20240312084914.92056-1-jslaby@suse.cz>
+References: kernel 6.8
+
+strlcpy() was removed in commit d26270061ae6 (string: Remove strlcpy()), use
+strscpy() instead.
+
+The patches fixes this:
+kernel/linux/kni/kni_net.c: In function ‘kni_get_drvinfo’:
+kernel/linux/kni/kni_net.c:835:9: error: implicit declaration of function ‘strlcpy’; did you mean ‘strscpy’?
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ kernel/linux/kni/kni_net.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/kernel/linux/kni/kni_net.c
++++ b/kernel/linux/kni/kni_net.c
+@@ -832,8 +832,8 @@ static const struct net_device_ops kni_n
+ static void kni_get_drvinfo(struct net_device *dev,
+ 			    struct ethtool_drvinfo *info)
+ {
+-	strlcpy(info->version, KNI_VERSION, sizeof(info->version));
+-	strlcpy(info->driver, "kni", sizeof(info->driver));
++	strscpy(info->version, KNI_VERSION, sizeof(info->version));
++	strscpy(info->driver, "kni", sizeof(info->driver));
+ }
+ 
+ static const struct ethtool_ops kni_net_ethtool_ops = {
