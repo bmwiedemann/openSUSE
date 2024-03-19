@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Mar 14 16:13:05 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.6.9:
+  * [Python] Check list of files in prepare to ensure they are
+    strings.
+  * [Python] Fix iteration over a file with Python3.
+  * [Python] Use int for 'force' in File::Stat
+    (gh#xrootd/xrootd#2208).
+  * [Utils] Correct comparison that wrongly missed reaping certain
+    directives.
+  * [XrdCl] Fix logic error when upgrading connections to TLS.
+  * [XrdCl] Stop Poller before TaskManager (fixes rare crashes at
+    shutdown).
+  * [XrdHttpTPC] Fix 500 server response code if
+    X-Number-Of-Streams > 100 (gh#xrootd/xrootd#2186).
+  * [XrdSciTokens] Add stat permissions to create, modify and
+    write operations (gh#xrootd/xrootd#2185).
+  * [XrdSciTokens] Allow creation of parent directories if
+    necessary (gh#xrootd/xrootd#2184).
+  * [XrdSciTokens] Fix bug when scope includes basepath or /
+    (gh#xrootd/xrootd#2132).
+
+-------------------------------------------------------------------
 Sat Feb 24 13:45:16 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.6.8:
