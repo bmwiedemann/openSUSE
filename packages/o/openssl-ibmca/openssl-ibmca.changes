@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 18 19:18:47 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Updated the .spec file (bsc#1218933, bsc#1221627)
+  * Amended the .spec file to use modulesdir variable 
+- Implemented _multibuild environment (openssl1, engine, provider)
+- Added a flag and logic for provider in the .spec file
+  * When provider is set to 1, it 'configures' the provider
+  * When provider is set to 0, it 'configures' the engine
+
+-------------------------------------------------------------------
 Fri Oct 13 10:39:42 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Removed an obsolete patch (implemented in the version 2.4.1)

@@ -1,7 +1,7 @@
 #
 # spec file for package openssl-ibmca
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,30 @@
 #
 
 
+%define         flavor  @BUILD_FLAVOR@%{nil}
+
+%if "%{flavor}" == ""
 %define openssl3 1
+%define provider 0
+%endif
+
+%if "%{flavor}" == "openssl1"
+%define openssl3 0
+%define provider 0
+%endif
+
+%if "%{flavor}" == "engine"
+%define openssl3 1
+%define provider 0
+%endif
+
+%if "%{flavor}" == "provider"
+%define openssl3 1
+%define provider 1
+%endif
 
 %global enginesdir %(pkg-config --variable=enginesdir libcrypto)
+%global modulesdir %(pkg-config --variable=modulesdir libcrypto)
 
 Name:           openssl-ibmca
 Version:        2.4.1
@@ -29,6 +50,7 @@ Group:          Hardware/Other
 URL:            https://github.com/opencryptoki/openssl-ibmca
 Source:         https://github.com/opencryptoki/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        engine_section.txt
+Source2:        _multibuild
 ###
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -56,17 +78,36 @@ to libica, a library enabling the IBM s390/x CPACF crypto instructions.
 %build
 export CFLAGS="%{optflags}"
 export CPPFLAGS="%{optflags}"
-%configure \
+
+%if %{provider}
+  %configure \
+  --disable-engine \
+  --libdir=%{modulesdir}
+%else
+  %configure \
+  --disable-provider \
   --libdir=%{enginesdir}
+%endif
+
 %make_build
 
 %install
+%if %{provider}
+#
+###
+#
+%else
 # Update the sample config file so that the dynamic path points
 # to the correct version of the engines directory.
 sed -i -e "/^dynamic_path/s, = .*/, = %{enginesdir}/," src/engine/openssl.cnf.sample
+%endif
 
 %make_install
-rm %{buildroot}/%{enginesdir}/ibmca.la
+%if %{provider}
+rm -f %{buildroot}/%{modulesdir}/ibmca-provider.la
+%else
+rm -f %{buildroot}/%{enginesdir}/ibmca.la
+%endif
 
 # This file contains the declaration of the ibmca engine section. It
 # needs to be on the "real" file system when the postinstall scriptlet
@@ -110,15 +151,21 @@ fi
 %doc ChangeLog
 %doc README.md
 %doc src/engine/openssl.cnf.sample
-%doc src/engine/ibmca-engine-opensslconfig
+%doc src/engine/ibmca-engine-opensslconfig.in
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/openssl-ibmca.sectiondef.txt
 %{_datadir}/%{name}/openssl-ibmca.enginedef.cnf
-%{enginesdir}/ibmca.*
-%{_mandir}/man5/ibmca.5%{?ext_man}
 %if %{openssl3}
-  %{_mandir}/man5/ibmca-provider.5%{?ext_man}
-  %{enginesdir}/ibmca-provider.*
+  %if %{provider}
+    %{modulesdir}/ibmca-provider.*
+    %{_mandir}/man5/ibmca-provider.5%{?ext_man}
+  %else
+    %{enginesdir}/ibmca.*
+    %{_mandir}/man5/ibmca.5%{?ext_man}
+  %endif
+%else
+  %{enginesdir}/ibmca.*
+  %{_mandir}/man5/ibmca.5%{?ext_man}
 %endif
 
 %changelog
