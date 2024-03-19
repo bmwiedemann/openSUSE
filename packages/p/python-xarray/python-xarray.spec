@@ -37,6 +37,8 @@ Source:         https://files.pythonhosted.org/packages/source/x/xarray/xarray-%
 # PATCH-FEATURE-UPSTREAM local_dataset.patch gh#pydata/xarray#5377 mcepl@suse.com
 # fix xr.tutorial.open_dataset to work with the preloaded cache.
 Patch0:         local_dataset.patch
+# PATCH-FIX-UPSTREAM xarray-pr8797-tokenize.patch gh#pydata/xarray#8797 fixes gh#pydata/xarray#8788
+Patch1:         https://github.com/pydata/xarray/pull/8797.patch#/xarray-pr8797-tokenize.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}

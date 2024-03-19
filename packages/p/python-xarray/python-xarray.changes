@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 18 19:47:16 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add xarray-pr8797-tokenize.patch
+  * gh#pydata/xarray#8797 fixes gh#pydata/xarray#8788
+
+-------------------------------------------------------------------
 Fri Mar  1 21:04:08 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Skip Python 3.9. It requires pydap, which is not available any
