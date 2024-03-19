@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 18 19:28:44 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 5.0.0:
+  * fix 3.12 deprecations by @sigma67 in #237
+  * Prep for 5.0.0; Run tests on 3.8, 3.12 by @cblakkan in #240
+
+-------------------------------------------------------------------
 Fri May  5 11:46:03 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons
