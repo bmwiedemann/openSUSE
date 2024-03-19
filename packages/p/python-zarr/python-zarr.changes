@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Mar 16 19:53:17 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.17.1
+  * Change occurrences of % and format() to f-strings. By Dimitri
+    Papadopoulos Orfanos #1423.
+  * Proper argument for numpy.reshape. By Dimitri Papadopoulos
+    Orfanos #1425.
+  * Add typing to dimension separator arguments. By David Stansby
+    #1620.
+- Release 2.17.0
+  * Added type hints to zarr.creation.create(). By David Stansby
+    #1536.
+  * Pyodide support: Don’t require fasteners on Emscripten. By Hood
+    Chatham #1663.
+
+-------------------------------------------------------------------
 Fri Jan 19 14:52:05 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - skip broken tests in s390x, gh#zarr-developers/zarr-python#1375
