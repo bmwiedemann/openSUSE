@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 18 21:43:59 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 1.94.7+tod1
+ * synaptics: fix enroll identify problem after user reset database.
+ * synaptics: New PIDs 0x0173, 0x0106, 0x0124.
+ * goodixmoc: New PID 0x6582.
+ * build: Do not require bash to build, only posix sh.
+ * fp-image: Simplify minutiae detection tasks.
+ * GLib 2.68 is now required to build libfprint.
+ * realtek (PID 0x5813).
+ * focaltech_moc (PIDs 0x9E48, 0xD979, 0xA959).
+ * egismoc (PIDs 0x0582, 0x05a1).
+
+-------------------------------------------------------------------
 Sun Aug 20 01:34:08 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 
 - update to 1.94.6+tod1:

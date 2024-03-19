@@ -31,7 +31,7 @@
 %endif
 
 Name:           libfprint
-Version:        1.94.6+%{todapiver}
+Version:        1.94.7+%{todapiver}
 Release:        0
 Summary:        Library for fingerprint reader support
 License:        LGPL-2.1-or-later
