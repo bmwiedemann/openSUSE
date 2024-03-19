@@ -141,4 +141,21 @@
   * Add BCn and DDS decoder via bcdec library.</comment>
     <requestid>1136655</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>71e899e9762fb233c62de2ba260cbd52</srcmd5>
+    <version>2024.1.1</version>
+    <time>1710865774</time>
+    <user>anag+factory</user>
+    <comment>- replace imagecodecs_distributor_setup.py with
+  skip-rare-codecs.patch: this setuptools hook does not get
+  called anymore with PEP517 builds
+
+- drop brunsli-devel as dependency until it actually ends up
+  in factory
+
+- remove 32bit builds
+
+- Add brunsli-devel as new dependency (fixes aarch64 build)</comment>
+    <requestid>1159128</requestid>
+  </revision>
 </revisionlist>

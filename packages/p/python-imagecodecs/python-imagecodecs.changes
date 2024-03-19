@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Mar 18 19:45:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- replace imagecodecs_distributor_setup.py with
+  skip-rare-codecs.patch: this setuptools hook does not get
+  called anymore with PEP517 builds
+
+-------------------------------------------------------------------
+Mon Mar 18 12:27:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- drop brunsli-devel as dependency until it actually ends up
+  in factory
+
+-------------------------------------------------------------------
+Thu Jan 25 12:33:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- remove 32bit builds
+
+-------------------------------------------------------------------
+Mon Jan 22 10:05:23 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add brunsli-devel as new dependency (fixes aarch64 build)
+
+-------------------------------------------------------------------
 Wed Jan  3 18:33:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.1.1:

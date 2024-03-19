@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-imagecodecs
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -32,7 +32,8 @@ Summary:        Image transformation, compression, and decompression codecs
 License:        BSD-3-Clause
 URL:            https://github.com/cgohlke/imagecodecs/
 Source:         https://files.pythonhosted.org/packages/source/i/imagecodecs/imagecodecs-%{version}.tar.gz
-Source1:        imagecodecs_distributor_setup.py
+Patch1:         skip-rare-codecs.patch
+ExcludeArch:    %ix86 %arm32 ppc s390
 BuildRequires:  %{python_module Cython >= 3}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module numpy-devel}
@@ -44,7 +45,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-Pillow
 Recommends:     python-blosc
 Recommends:     python-lz4
@@ -94,6 +95,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  rav1e-devel
 BuildRequires:  snappy-devel
 BuildRequires:  sz2-devel
+BuildRequires:  xz-devel
 BuildRequires:  pkgconfig(blosc)
 BuildRequires:  pkgconfig(blosc2) >= 2.7.1
 BuildRequires:  pkgconfig(bzip2)
@@ -137,15 +139,7 @@ Integers, Delta, XOR Delta, Floating Point Predictor, Bitorder reversal,
 Bitshuffle, and Float24 (24-bit floating point).
 
 %prep
-%setup -q -n imagecodecs-%{version}
-# the patch from github requires unix line endings to apply
-dos2unix tests/test_imagecodecs.py
-dos2unix imagecodecs/libavif.pxd
-dos2unix imagecodecs/_avif.pyx
-dos2unix imagecodecs/imagecodecs.py
-%autopatch -p1
-
-cp %SOURCE1 ./
+%autosetup -p1 -n imagecodecs-%{version}
 dos2unix README.rst
 # These libraries are not linked to, (check SOURCE1)
 rm imagecodecs/licenses/LICENSE-brunsli
@@ -179,7 +173,7 @@ donttest+=" or test_cms"
 %ifarch %ix86 %arm32
 donttest="$donttest or spng"
 %endif
-%pytest_arch -n auto tests -rsXfE --doctest-modules %{$python_sitearch}/imagecodecs/imagecodecs.py -k "not ($donttest ${$python_donttest})"
+%pytest_arch -n auto tests -rsXfE -k "not ($donttest ${$python_donttest})"
 %endif
 
 %if !%{with test}
