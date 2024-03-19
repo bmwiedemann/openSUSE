@@ -16,8 +16,8 @@
 #
 
 
-%define srcversion 6.7
-%define patchversion 6.7.9
+%define srcversion 6.8
+%define patchversion 6.8.1
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -25,9 +25,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-riscv64
-Version:        6.7.9
+Version:        6.8.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g6049de6
+Release:        <RELEASE>.gd922afa
 %else
 Release:        0
 %endif
@@ -35,15 +35,17 @@ Summary:        Device Tree files for $MACHINES
 License:        GPL-2.0-only
 Group:          System/Boot
 URL:            https://www.kernel.org/
+BuildRequires:  cpp
+BuildRequires:  dtc >= 1.4.3
+BuildRequires:  xz
 %if ! 0%{?is_kotd} || ! %{?is_kotd_qa}%{!?is_kotd_qa:0}
 ExclusiveArch:  riscv64
 %else
 ExclusiveArch:  do_not_build
 %endif
-BuildRequires:  cpp
-BuildRequires:  dtc >= 1.4.3
-BuildRequires:  xz
-Requires:       kernel = %version
+
+%define dtbdir /boot/dtb-%kernelrelease
+
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
 Source14:       series.conf
@@ -183,6 +185,7 @@ NoSource:       113
 NoSource:       114
 NoSource:       120
 NoSource:       121
+Requires:       kernel = %version
 
 %description
 Device Tree files for $MACHINES.
@@ -196,6 +199,24 @@ Requires(post): coreutils
 %description -n dtb-allwinner
 Device Tree files for Allwinner based riscv64 systems.
 
+%post -n dtb-allwinner
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-allwinner -f dtb-allwinner.list
+%else
+%files -n dtb-allwinner
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/allwinner
+%{dtbdir}/allwinner/*.dtb
+
 %package -n dtb-microchip
 Summary:        Microchip based riscv64 systems
 Group:          System/Boot
@@ -204,6 +225,24 @@ Requires(post): coreutils
 
 %description -n dtb-microchip
 Device Tree files for Microchip based riscv64 systems.
+
+%post -n dtb-microchip
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-microchip -f dtb-microchip.list
+%else
+%files -n dtb-microchip
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/microchip
+%{dtbdir}/microchip/*.dtb
 
 %package -n dtb-renesas
 Summary:        Renesas based riscv64 systems
@@ -214,6 +253,24 @@ Requires(post): coreutils
 %description -n dtb-renesas
 Device Tree files for Renesas based riscv64 systems.
 
+%post -n dtb-renesas
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-renesas -f dtb-renesas.list
+%else
+%files -n dtb-renesas
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/renesas
+%{dtbdir}/renesas/*.dtb
+
 %package -n dtb-sifive
 Summary:        SiFive based riscv64 systems
 Group:          System/Boot
@@ -222,6 +279,24 @@ Requires(post): coreutils
 
 %description -n dtb-sifive
 Device Tree files for SiFive based riscv64 systems.
+
+%post -n dtb-sifive
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-sifive -f dtb-sifive.list
+%else
+%files -n dtb-sifive
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/sifive
+%{dtbdir}/sifive/*.dtb
 
 %package -n dtb-sophgo
 Summary:        Sophgo based riscv64 systems
@@ -232,6 +307,24 @@ Requires(post): coreutils
 %description -n dtb-sophgo
 Device Tree files for Sophgo based riscv64 systems.
 
+%post -n dtb-sophgo
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-sophgo -f dtb-sophgo.list
+%else
+%files -n dtb-sophgo
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/sophgo
+%{dtbdir}/sophgo/*.dtb
+
 %package -n dtb-starfive
 Summary:        StarFive based riscv64 systems
 Group:          System/Boot
@@ -240,6 +333,24 @@ Requires(post): coreutils
 
 %description -n dtb-starfive
 Device Tree files for StarFive based riscv64 systems.
+
+%post -n dtb-starfive
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-starfive -f dtb-starfive.list
+%else
+%files -n dtb-starfive
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/starfive
+%{dtbdir}/starfive/*.dtb
 
 %package -n dtb-thead
 Summary:        T-HEAD based riscv64 systems
@@ -250,6 +361,24 @@ Requires(post): coreutils
 %description -n dtb-thead
 Device Tree files for T-HEAD based riscv64 systems.
 
+%post -n dtb-thead
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-thead -f dtb-thead.list
+%else
+%files -n dtb-thead
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/thead
+%{dtbdir}/thead/*.dtb
+
 
 
 %prep
@@ -257,7 +386,6 @@ Device Tree files for T-HEAD based riscv64 systems.
 %setup -q -c -T -a 0 -a 100 -a 101 -a 102 -a 103 -a 104 -a 105 -a 106 -a 108 -a 109 -a 110 -a 111 -a 113 -a 114 -a 120 -a 121
 cd linux-%srcversion
 %_sourcedir/apply-patches %_sourcedir/series.conf ..
-
 
 %build
 source=linux-%srcversion
@@ -276,10 +404,7 @@ for dts in allwinner/*.dts microchip/*.dts renesas/*.dts sifive/*.dts sophgo/*.d
     dtc $DTC_FLAGS -I dts -O dtb -i ./$(dirname $target) -o $PPDIR/$target.dtb $PPDIR/$target.dts
 done
 
-%define dtbdir /boot/dtb-%kernelrelease
-
 %install
-
 cd pp
 for dts in allwinner/*.dts microchip/*.dts renesas/*.dts sifive/*.dts sophgo/*.dts starfive/*.dts thead/*.dts ; do
     target=${dts%*.dts}
@@ -301,131 +426,5 @@ for dts in allwinner/*.dts microchip/*.dts renesas/*.dts sifive/*.dts sophgo/*.d
 %endif
 done
 cd -
-
-%post -n dtb-allwinner
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-microchip
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-renesas
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-sifive
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-sophgo
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-starfive
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-thead
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-allwinner -f dtb-allwinner.list
-%else
-%files -n dtb-allwinner
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/allwinner
-%{dtbdir}/allwinner/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-microchip -f dtb-microchip.list
-%else
-%files -n dtb-microchip
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/microchip
-%{dtbdir}/microchip/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-renesas -f dtb-renesas.list
-%else
-%files -n dtb-renesas
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/renesas
-%{dtbdir}/renesas/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-sifive -f dtb-sifive.list
-%else
-%files -n dtb-sifive
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/sifive
-%{dtbdir}/sifive/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-sophgo -f dtb-sophgo.list
-%else
-%files -n dtb-sophgo
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/sophgo
-%{dtbdir}/sophgo/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-starfive -f dtb-starfive.list
-%else
-%files -n dtb-starfive
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/starfive
-%{dtbdir}/starfive/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-thead -f dtb-thead.list
-%else
-%files -n dtb-thead
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/thead
-%{dtbdir}/thead/*.dtb
 
 %changelog

@@ -16,8 +16,8 @@
 #
 
 
-%define srcversion 6.7
-%define patchversion 6.7.9
+%define srcversion 6.8
+%define patchversion 6.8.1
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -25,9 +25,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-aarch64
-Version:        6.7.9
+Version:        6.8.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g6049de6
+Release:        <RELEASE>.gd922afa
 %else
 Release:        0
 %endif
@@ -35,15 +35,17 @@ Summary:        Device Tree files for $MACHINES
 License:        GPL-2.0-only
 Group:          System/Boot
 URL:            https://www.kernel.org/
+BuildRequires:  cpp
+BuildRequires:  dtc >= 1.4.3
+BuildRequires:  xz
 %if ! 0%{?is_kotd} || ! %{?is_kotd_qa}%{!?is_kotd_qa:0}
 ExclusiveArch:  aarch64
 %else
 ExclusiveArch:  do_not_build
 %endif
-BuildRequires:  cpp
-BuildRequires:  dtc >= 1.4.3
-BuildRequires:  xz
-Requires:       kernel = %version
+
+%define dtbdir /boot/dtb-%kernelrelease
+
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
 Source14:       series.conf
@@ -183,6 +185,7 @@ NoSource:       113
 NoSource:       114
 NoSource:       120
 NoSource:       121
+Requires:       kernel = %version
 
 %description
 Device Tree files for $MACHINES.
@@ -196,6 +199,24 @@ Requires(post): coreutils
 %description -n dtb-allwinner
 Device Tree files for Allwinner based arm64 systems.
 
+%post -n dtb-allwinner
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-allwinner -f dtb-allwinner.list
+%else
+%files -n dtb-allwinner
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/allwinner
+%{dtbdir}/allwinner/*.dtb
+
 %package -n dtb-altera
 Summary:        Altera based arm64 systems
 Group:          System/Boot
@@ -204,6 +225,24 @@ Requires(post): coreutils
 
 %description -n dtb-altera
 Device Tree files for Altera based arm64 systems.
+
+%post -n dtb-altera
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-altera -f dtb-altera.list
+%else
+%files -n dtb-altera
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/altera
+%{dtbdir}/altera/*.dtb
 
 %package -n dtb-amazon
 Summary:        Amazon based arm64 systems
@@ -215,6 +254,24 @@ Requires(post): coreutils
 %description -n dtb-amazon
 Device Tree files for Amazon based arm64 systems.
 
+%post -n dtb-amazon
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-amazon -f dtb-amazon.list
+%else
+%files -n dtb-amazon
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/amazon
+%{dtbdir}/amazon/*.dtb
+
 %package -n dtb-amd
 Summary:        AMD based arm64 systems
 Group:          System/Boot
@@ -224,6 +281,24 @@ Requires(post): coreutils
 %description -n dtb-amd
 Device Tree files for AMD based arm64 systems.
 
+%post -n dtb-amd
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-amd -f dtb-amd.list
+%else
+%files -n dtb-amd
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/amd
+%{dtbdir}/amd/*.dtb
+
 %package -n dtb-amlogic
 Summary:        Amlogic based arm64 systems
 Group:          System/Boot
@@ -232,6 +307,24 @@ Requires(post): coreutils
 
 %description -n dtb-amlogic
 Device Tree files for Amlogic based arm64 systems.
+
+%post -n dtb-amlogic
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-amlogic -f dtb-amlogic.list
+%else
+%files -n dtb-amlogic
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/amlogic
+%{dtbdir}/amlogic/*.dtb
 
 %package -n dtb-apm
 Summary:        AppliedMicro based arm64 systems
@@ -243,6 +336,24 @@ Requires(post): coreutils
 %description -n dtb-apm
 Device Tree files for AppliedMicro based arm64 systems.
 
+%post -n dtb-apm
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-apm -f dtb-apm.list
+%else
+%files -n dtb-apm
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/apm
+%{dtbdir}/apm/*.dtb
+
 %package -n dtb-apple
 Summary:        Apple SOC based arm64 systems
 Group:          System/Boot
@@ -251,6 +362,24 @@ Requires(post): coreutils
 
 %description -n dtb-apple
 Device Tree files for Apple SOC based arm64 systems.
+
+%post -n dtb-apple
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-apple -f dtb-apple.list
+%else
+%files -n dtb-apple
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/apple
+%{dtbdir}/apple/*.dtb
 
 %package -n dtb-arm
 Summary:        ARM Ltd. based arm64 systems
@@ -263,6 +392,24 @@ Requires(post): coreutils
 %description -n dtb-arm
 Device Tree files for ARM Ltd. based arm64 systems.
 
+%post -n dtb-arm
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-arm -f dtb-arm.list
+%else
+%files -n dtb-arm
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/arm
+%{dtbdir}/arm/*.dtb
+
 %package -n dtb-broadcom
 Summary:        Broadcom based arm64 systems
 Group:          System/Boot
@@ -271,6 +418,24 @@ Requires(post): coreutils
 
 %description -n dtb-broadcom
 Device Tree files for Broadcom based arm64 systems.
+
+%post -n dtb-broadcom
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-broadcom -f dtb-broadcom.list
+%else
+%files -n dtb-broadcom
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/broadcom
+%{dtbdir}/broadcom/*.dtb
 
 %package -n dtb-cavium
 Summary:        Cavium based arm64 systems
@@ -282,6 +447,24 @@ Requires(post): coreutils
 %description -n dtb-cavium
 Device Tree files for Cavium based arm64 systems.
 
+%post -n dtb-cavium
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-cavium -f dtb-cavium.list
+%else
+%files -n dtb-cavium
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/cavium
+%{dtbdir}/cavium/*.dtb
+
 %package -n dtb-exynos
 Summary:        Samsung Exynos based arm64 systems
 Group:          System/Boot
@@ -291,6 +474,24 @@ Requires(post): coreutils
 %description -n dtb-exynos
 Device Tree files for Samsung Exynos based arm64 systems.
 
+%post -n dtb-exynos
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-exynos -f dtb-exynos.list
+%else
+%files -n dtb-exynos
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/exynos
+%{dtbdir}/exynos/*.dtb
+
 %package -n dtb-freescale
 Summary:        NXP (Freescale) based arm64 systems
 Group:          System/Boot
@@ -299,6 +500,24 @@ Requires(post): coreutils
 
 %description -n dtb-freescale
 Device Tree files for NXP (Freescale) based arm64 systems.
+
+%post -n dtb-freescale
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-freescale -f dtb-freescale.list
+%else
+%files -n dtb-freescale
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/freescale
+%{dtbdir}/freescale/*.dtb
 
 %package -n dtb-hisilicon
 Summary:        HiSilicon based arm64 systems
@@ -310,6 +529,24 @@ Requires(post): coreutils
 %description -n dtb-hisilicon
 Device Tree files for HiSilicon based arm64 systems.
 
+%post -n dtb-hisilicon
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-hisilicon -f dtb-hisilicon.list
+%else
+%files -n dtb-hisilicon
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/hisilicon
+%{dtbdir}/hisilicon/*.dtb
+
 %package -n dtb-lg
 Summary:        LG based arm64 systems
 Group:          System/Boot
@@ -318,6 +555,24 @@ Requires(post): coreutils
 
 %description -n dtb-lg
 Device Tree files for LG based arm64 systems.
+
+%post -n dtb-lg
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-lg -f dtb-lg.list
+%else
+%files -n dtb-lg
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/lg
+%{dtbdir}/lg/*.dtb
 
 %package -n dtb-marvell
 Summary:        Marvell based arm64 systems
@@ -328,6 +583,24 @@ Requires(post): coreutils
 %description -n dtb-marvell
 Device Tree files for Marvell based arm64 systems.
 
+%post -n dtb-marvell
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-marvell -f dtb-marvell.list
+%else
+%files -n dtb-marvell
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/marvell
+%{dtbdir}/marvell/*.dtb
+
 %package -n dtb-mediatek
 Summary:        MediaTek based arm64 systems
 Group:          System/Boot
@@ -336,6 +609,24 @@ Requires(post): coreutils
 
 %description -n dtb-mediatek
 Device Tree files for MediaTek based arm64 systems.
+
+%post -n dtb-mediatek
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-mediatek -f dtb-mediatek.list
+%else
+%files -n dtb-mediatek
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/mediatek
+%{dtbdir}/mediatek/*.dtb
 
 %package -n dtb-nvidia
 Summary:        Nvidia based arm64 systems
@@ -346,6 +637,24 @@ Requires(post): coreutils
 %description -n dtb-nvidia
 Device Tree files for Nvidia based arm64 systems.
 
+%post -n dtb-nvidia
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-nvidia -f dtb-nvidia.list
+%else
+%files -n dtb-nvidia
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/nvidia
+%{dtbdir}/nvidia/*.dtb
+
 %package -n dtb-qcom
 Summary:        Qualcomm based arm64 systems
 Group:          System/Boot
@@ -354,6 +663,24 @@ Requires(post): coreutils
 
 %description -n dtb-qcom
 Device Tree files for Qualcomm based arm64 systems.
+
+%post -n dtb-qcom
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-qcom -f dtb-qcom.list
+%else
+%files -n dtb-qcom
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/qcom
+%{dtbdir}/qcom/*.dtb
 
 %package -n dtb-renesas
 Summary:        Renesas based arm64 systems
@@ -364,6 +691,24 @@ Requires(post): coreutils
 %description -n dtb-renesas
 Device Tree files for Renesas based arm64 systems.
 
+%post -n dtb-renesas
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-renesas -f dtb-renesas.list
+%else
+%files -n dtb-renesas
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/renesas
+%{dtbdir}/renesas/*.dtb
+
 %package -n dtb-rockchip
 Summary:        Rockchip based arm64 systems
 Group:          System/Boot
@@ -372,6 +717,24 @@ Requires(post): coreutils
 
 %description -n dtb-rockchip
 Device Tree files for Rockchip based arm64 systems.
+
+%post -n dtb-rockchip
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-rockchip -f dtb-rockchip.list
+%else
+%files -n dtb-rockchip
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/rockchip
+%{dtbdir}/rockchip/*.dtb
 
 %package -n dtb-socionext
 Summary:        Socionext based arm64 systems
@@ -382,6 +745,24 @@ Requires(post): coreutils
 %description -n dtb-socionext
 Device Tree files for Socionext based arm64 systems.
 
+%post -n dtb-socionext
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-socionext -f dtb-socionext.list
+%else
+%files -n dtb-socionext
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/socionext
+%{dtbdir}/socionext/*.dtb
+
 %package -n dtb-sprd
 Summary:        Spreadtrum based arm64 systems
 Group:          System/Boot
@@ -390,6 +771,24 @@ Requires(post): coreutils
 
 %description -n dtb-sprd
 Device Tree files for Spreadtrum based arm64 systems.
+
+%post -n dtb-sprd
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-sprd -f dtb-sprd.list
+%else
+%files -n dtb-sprd
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/sprd
+%{dtbdir}/sprd/*.dtb
 
 %package -n dtb-xilinx
 Summary:        Xilinx based arm64 systems
@@ -400,6 +799,24 @@ Requires(post): coreutils
 %description -n dtb-xilinx
 Device Tree files for Xilinx based arm64 systems.
 
+%post -n dtb-xilinx
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-xilinx -f dtb-xilinx.list
+%else
+%files -n dtb-xilinx
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/xilinx
+%{dtbdir}/xilinx/*.dtb
+
 
 
 %prep
@@ -407,7 +824,6 @@ Device Tree files for Xilinx based arm64 systems.
 %setup -q -c -T -a 0 -a 100 -a 101 -a 102 -a 103 -a 104 -a 105 -a 106 -a 108 -a 109 -a 110 -a 111 -a 113 -a 114 -a 120 -a 121
 cd linux-%srcversion
 %_sourcedir/apply-patches %_sourcedir/series.conf ..
-
 
 %build
 source=linux-%srcversion
@@ -426,10 +842,7 @@ for dts in allwinner/*.dts altera/*.dts amazon/*.dts amd/*.dts amlogic/*.dts apm
     dtc $DTC_FLAGS -I dts -O dtb -i ./$(dirname $target) -o $PPDIR/$target.dtb $PPDIR/$target.dts
 done
 
-%define dtbdir /boot/dtb-%kernelrelease
-
 %install
-
 cd pp
 for dts in allwinner/*.dts altera/*.dts amazon/*.dts amd/*.dts amlogic/*.dts apm/*.dts apple/*.dts arm/*.dts broadcom/*.dts cavium/*.dts exynos/*.dts freescale/*.dts hisilicon/*.dts lg/*.dts marvell/*.dts mediatek/*.dts nvidia/*.dts qcom/*.dts renesas/*.dts rockchip/*.dts socionext/*.dts sprd/*.dts xilinx/*.dts ; do
     target=${dts%*.dts}
@@ -451,419 +864,5 @@ for dts in allwinner/*.dts altera/*.dts amazon/*.dts amd/*.dts amlogic/*.dts apm
 %endif
 done
 cd -
-
-%post -n dtb-allwinner
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-altera
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-amazon
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-amd
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-amlogic
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-apm
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-apple
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-arm
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-broadcom
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-cavium
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-exynos
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-freescale
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-hisilicon
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-lg
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-marvell
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-mediatek
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-nvidia
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-qcom
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-renesas
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-rockchip
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-socionext
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-sprd
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-xilinx
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-allwinner -f dtb-allwinner.list
-%else
-%files -n dtb-allwinner
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/allwinner
-%{dtbdir}/allwinner/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-altera -f dtb-altera.list
-%else
-%files -n dtb-altera
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/altera
-%{dtbdir}/altera/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-amazon -f dtb-amazon.list
-%else
-%files -n dtb-amazon
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/amazon
-%{dtbdir}/amazon/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-amd -f dtb-amd.list
-%else
-%files -n dtb-amd
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/amd
-%{dtbdir}/amd/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-amlogic -f dtb-amlogic.list
-%else
-%files -n dtb-amlogic
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/amlogic
-%{dtbdir}/amlogic/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-apm -f dtb-apm.list
-%else
-%files -n dtb-apm
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/apm
-%{dtbdir}/apm/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-apple -f dtb-apple.list
-%else
-%files -n dtb-apple
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/apple
-%{dtbdir}/apple/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-arm -f dtb-arm.list
-%else
-%files -n dtb-arm
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/arm
-%{dtbdir}/arm/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-broadcom -f dtb-broadcom.list
-%else
-%files -n dtb-broadcom
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/broadcom
-%{dtbdir}/broadcom/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-cavium -f dtb-cavium.list
-%else
-%files -n dtb-cavium
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/cavium
-%{dtbdir}/cavium/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-exynos -f dtb-exynos.list
-%else
-%files -n dtb-exynos
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/exynos
-%{dtbdir}/exynos/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-freescale -f dtb-freescale.list
-%else
-%files -n dtb-freescale
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/freescale
-%{dtbdir}/freescale/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-hisilicon -f dtb-hisilicon.list
-%else
-%files -n dtb-hisilicon
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/hisilicon
-%{dtbdir}/hisilicon/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-lg -f dtb-lg.list
-%else
-%files -n dtb-lg
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/lg
-%{dtbdir}/lg/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-marvell -f dtb-marvell.list
-%else
-%files -n dtb-marvell
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/marvell
-%{dtbdir}/marvell/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-mediatek -f dtb-mediatek.list
-%else
-%files -n dtb-mediatek
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/mediatek
-%{dtbdir}/mediatek/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-nvidia -f dtb-nvidia.list
-%else
-%files -n dtb-nvidia
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/nvidia
-%{dtbdir}/nvidia/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-qcom -f dtb-qcom.list
-%else
-%files -n dtb-qcom
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/qcom
-%{dtbdir}/qcom/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-renesas -f dtb-renesas.list
-%else
-%files -n dtb-renesas
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/renesas
-%{dtbdir}/renesas/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-rockchip -f dtb-rockchip.list
-%else
-%files -n dtb-rockchip
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/rockchip
-%{dtbdir}/rockchip/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-socionext -f dtb-socionext.list
-%else
-%files -n dtb-socionext
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/socionext
-%{dtbdir}/socionext/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-sprd -f dtb-sprd.list
-%else
-%files -n dtb-sprd
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/sprd
-%{dtbdir}/sprd/*.dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-xilinx -f dtb-xilinx.list
-%else
-%files -n dtb-xilinx
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/xilinx
-%{dtbdir}/xilinx/*.dtb
 
 %changelog

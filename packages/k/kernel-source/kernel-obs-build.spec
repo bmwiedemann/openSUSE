@@ -19,55 +19,53 @@
 
 #!BuildIgnore: post-build-checks
 
-%define patchversion 6.7.9
+%define patchversion 6.8.1
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
 
-Name:           kernel-obs-build
-BuildRequires:  coreutils
-BuildRequires:  device-mapper
-BuildRequires:  util-linux
-
 %if 0%{?suse_version}
 %if "%{nil}"
-%define kernel_flavor %{nil}
+%global kernel_flavor %{nil}
 %else
 %ifarch %ix86
-%define kernel_flavor -pae
+%global kernel_flavor -pae
 %else
 %ifarch armv7l armv7hl
-%define kernel_flavor -lpae
+%global kernel_flavor -lpae
 %else
-%define kernel_flavor -default
+%global kernel_flavor -default
 %endif
 %endif
 %endif
+%global kernel_package kernel%kernel_flavor-srchash-d922afa2ed7e029a09447a9cdd3a52de7fa2fef8
 %endif
-BuildRequires:  kernel%kernel_flavor-srchash-6049de6df9e2c9bf3b5a2534fd3cdc21c68a7421
-
 %if 0%{?rhel_version}
-BuildRequires:  kernel
-%define kernel_flavor ""
+%global kernel_package kernel
 %endif
 
+Name:           kernel-obs-build
+Version:        6.8.1
+%if 0%{?is_kotd}
+Release:        <RELEASE>.gd922afa
+%else
+Release:        0
+%endif
+Summary:        package kernel and initrd for OBS VM builds
+License:        GPL-2.0-only
+Group:          SLES
+BuildRequires:  coreutils
+BuildRequires:  device-mapper
+BuildRequires:  dracut
+BuildRequires:  %kernel_package
+BuildRequires:  util-linux
+%if 0%{?suse_version} > 1550 || 0%{?sle_version} > 150200
+BuildRequires:  zstd
+%endif
 %if ! 0%{?is_kotd} || %{?is_kotd_qa}%{!?is_kotd_qa:0}
 ExclusiveArch:  aarch64 armv6hl armv7hl ppc64le riscv64 s390x x86_64
 %else
 ExclusiveArch:  do_not_build
-%endif
-BuildRequires:  dracut
-Summary:        package kernel and initrd for OBS VM builds
-License:        GPL-2.0-only
-Group:          SLES
-Version:        6.7.9
-%if 0%{?is_kotd}
-Release:        <RELEASE>.g6049de6
-%else
-Release:        0
-%endif
-%if 0%{?suse_version} > 1550 || 0%{?sle_version} > 150200
-BuildRequires:  zstd
 %endif
 
 %description
@@ -75,6 +73,13 @@ This package is repackaging already compiled kernels to make them usable
 inside of Open Build Service (OBS) VM builds. An initrd with some basic
 kernel modules is generated as well, but further kernel modules can be
 loaded during build when installing the kernel package.
+
+%files
+/.build.cmdline.*
+/.build.console.*
+/.build.hostarch.*
+/.build.initrd.*
+/.build.kernel.*
 
 %prep
 
@@ -172,12 +177,5 @@ fi
 #inform worker about arch
 #see obs-build commit e47399d738e51
 uname -m > %{buildroot}/.build.hostarch.kvm
-
-%files
-/.build.cmdline.*
-/.build.console.*
-/.build.hostarch.*
-/.build.initrd.*
-/.build.kernel.*
 
 %changelog

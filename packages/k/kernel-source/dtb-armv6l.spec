@@ -16,8 +16,8 @@
 #
 
 
-%define srcversion 6.7
-%define patchversion 6.7.9
+%define srcversion 6.8
+%define patchversion 6.8.1
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -25,9 +25,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-armv6l
-Version:        6.7.9
+Version:        6.8.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g6049de6
+Release:        <RELEASE>.gd922afa
 %else
 Release:        0
 %endif
@@ -35,15 +35,17 @@ Summary:        Device Tree files for $MACHINES
 License:        GPL-2.0-only
 Group:          System/Boot
 URL:            https://www.kernel.org/
+BuildRequires:  cpp
+BuildRequires:  dtc >= 1.4.3
+BuildRequires:  xz
 %if ! 0%{?is_kotd} || ! %{?is_kotd_qa}%{!?is_kotd_qa:0}
 ExclusiveArch:  armv6l armv6hl
 %else
 ExclusiveArch:  do_not_build
 %endif
-BuildRequires:  cpp
-BuildRequires:  dtc >= 1.4.3
-BuildRequires:  xz
-Requires:       kernel = %version
+
+%define dtbdir /boot/dtb-%kernelrelease
+
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
 Source14:       series.conf
@@ -183,6 +185,7 @@ NoSource:       113
 NoSource:       114
 NoSource:       120
 NoSource:       121
+Requires:       kernel = %version
 
 %description
 Device Tree files for $MACHINES.
@@ -196,6 +199,24 @@ Requires(post): coreutils
 %description -n dtb-bcm2835
 Device Tree files for Raspberry Pi 1 (A+, B, B+).
 
+%post -n dtb-bcm2835
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-bcm2835 -f dtb-bcm2835.list
+%else
+%files -n dtb-bcm2835
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/broadcom
+%{dtbdir}/broadcom/bcm2835*.dtb
+
 
 
 %prep
@@ -203,7 +224,6 @@ Device Tree files for Raspberry Pi 1 (A+, B, B+).
 %setup -q -c -T -a 0 -a 100 -a 101 -a 102 -a 103 -a 104 -a 105 -a 106 -a 108 -a 109 -a 110 -a 111 -a 113 -a 114 -a 120 -a 121
 cd linux-%srcversion
 %_sourcedir/apply-patches %_sourcedir/series.conf ..
-
 
 %build
 source=linux-%srcversion
@@ -222,10 +242,7 @@ for dts in broadcom/bcm2835*.dts ; do
     dtc $DTC_FLAGS -I dts -O dtb -i ./$(dirname $target) -o $PPDIR/$target.dtb $PPDIR/$target.dts
 done
 
-%define dtbdir /boot/dtb-%kernelrelease
-
 %install
-
 cd pp
 for dts in broadcom/bcm2835*.dts ; do
     target=${dts%*.dts}
@@ -248,23 +265,5 @@ for dts in broadcom/bcm2835*.dts ; do
 %endif
 done
 cd -
-
-%post -n dtb-bcm2835
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-bcm2835 -f dtb-bcm2835.list
-%else
-%files -n dtb-bcm2835
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/broadcom
-%{dtbdir}/broadcom/bcm2835*.dtb
 
 %changelog

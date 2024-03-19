@@ -16,9 +16,9 @@
 #
 
 
-%define srcversion 6.7
-%define patchversion 6.7.9
-%define git_commit 6049de6df9e2c9bf3b5a2534fd3cdc21c68a7421
+%define srcversion 6.8
+%define patchversion 6.8.1
+%define git_commit d922afa2ed7e029a09447a9cdd3a52de7fa2fef8
 %define variant %{nil}
 %define build_html 1
 %define build_pdf 0
@@ -28,15 +28,16 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-docs
-Summary:        Kernel Documentation
-License:        GPL-2.0-only
-Group:          Documentation/Man
-Version:        6.7.9
+Version:        6.8.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g6049de6
+Release:        <RELEASE>.gd922afa
 %else
 Release:        0
 %endif
+Summary:        Kernel Documentation
+License:        GPL-2.0-only
+Group:          Documentation/Man
+URL:            https://www.kernel.org/
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
 BuildRequires:  bash-sh
 %endif
@@ -83,9 +84,6 @@ BuildRequires:  texlive-xetex
 BuildRequires:  texlive-zapfding
 %endif
 %endif
-URL:            https://www.kernel.org/
-Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-%git_commit
 %if ! 0%{?is_kotd} || ! %{?is_kotd_qa}%{!?is_kotd_qa:0}
 BuildArch:      noarch
 %else
@@ -230,11 +228,22 @@ NoSource:       113
 NoSource:       114
 NoSource:       120
 NoSource:       121
+Provides:       %name = %version-%source_rel
+Provides:       %name-srchash-%git_commit
 
 %description
 A few basic documents from the current kernel sources.
 
 %source_timestamp
+
+%files
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
+%doc COPYING
+%else
+%license COPYING
+%endif
+%doc CREDITS MAINTAINERS README
+%doc old_changelog.txt
 
 %if %build_pdf
 %package pdf
@@ -245,6 +254,11 @@ Group:          Documentation/Other
 These are PDF documents built from the current kernel sources.
 
 %source_timestamp
+
+%files pdf
+%dir %{_datadir}/doc/kernel
+%docdir %{_datadir}/doc/kernel/pdf
+%{_datadir}/doc/kernel/pdf
 %endif
 
 %if %build_html
@@ -256,6 +270,11 @@ Group:          Documentation/HTML
 These are HTML documents built from the current kernel sources.
 
 %source_timestamp
+
+%files html
+%dir %{_datadir}/doc/kernel
+%docdir %{_datadir}/doc/kernel/html
+%{_datadir}/doc/kernel/html
 %endif
 
 %prep
@@ -297,29 +316,6 @@ install -d %{buildroot}%{_datadir}/doc/kernel/pdf
 for i in pdf/Documentation/output/latex/*.pdf; do
     cp -a $i %{buildroot}%{_datadir}/doc/kernel/pdf
 done
-%endif
-
-%files
-%if 0%{?suse_version} && 0%{?suse_version} < 1500
-%doc COPYING
-%else
-%license COPYING
-%endif
-%doc CREDITS MAINTAINERS README
-%doc old_changelog.txt
-
-%if %build_pdf
-%files pdf
-%dir %{_datadir}/doc/kernel
-%docdir %{_datadir}/doc/kernel/pdf
-%{_datadir}/doc/kernel/pdf
-%endif
-
-%if %build_html
-%files html
-%dir %{_datadir}/doc/kernel
-%docdir %{_datadir}/doc/kernel/html
-%{_datadir}/doc/kernel/html
 %endif
 
 %changelog

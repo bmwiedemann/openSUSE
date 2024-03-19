@@ -16,19 +16,16 @@
 #
 
 
-%define git_commit 6049de6df9e2c9bf3b5a2534fd3cdc21c68a7421
+%define git_commit d922afa2ed7e029a09447a9cdd3a52de7fa2fef8
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
 
 Name:           kernel-syms
-Summary:        Kernel Symbol Versions (modversions)
-License:        GPL-2.0-only
-Group:          Development/Sources
-Version:        6.7.9
+Version:        6.8.1
 %if %using_buildservice
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g6049de6
+Release:        <RELEASE>.gd922afa
 %else
 Release:        0
 %endif
@@ -36,9 +33,19 @@ Release:        0
 %define kernel_source_release %(LC_ALL=C rpm -q kernel-devel%variant-%version --qf "%{RELEASE}" | grep -v 'not installed' || echo 0)
 Release:        %kernel_source_release
 %endif
+Summary:        Kernel Symbol Versions (modversions)
+License:        GPL-2.0-only
+Group:          Development/Sources
 URL:            https://www.kernel.org/
-AutoReqProv:    off
 BuildRequires:  coreutils
+%if ! 0%{?is_kotd} || ! %{?is_kotd_qa}%{!?is_kotd_qa:0}
+ExclusiveArch:  %ix86 aarch64 armv6hl armv7hl ppc64le riscv64 s390x x86_64
+%else
+ExclusiveArch:  do_not_build
+%endif
+Prefix:         /usr/src
+AutoReqProv:    off
+Source:         README.KSYMS
 %ifarch aarch64
 Requires:       kernel-64kb-devel = %version-%source_rel
 %endif
@@ -52,17 +59,10 @@ Requires:       kernel-lpae-devel = %version-%source_rel
 Requires:       kernel-pae-devel = %version-%source_rel
 %endif
 Requires:       pesign-obs-integration
+Requires:       kernel-devel%variant = %version-%source_rel
 Provides:       %name = %version-%source_rel
 Provides:       %name-srchash-%git_commit
 Provides:       multiversion(kernel)
-Source:         README.KSYMS
-Requires:       kernel-devel%variant = %version-%source_rel
-%if ! 0%{?is_kotd} || ! %{?is_kotd_qa}%{!?is_kotd_qa:0}
-ExclusiveArch:  %ix86 aarch64 armv6hl armv7hl ppc64le riscv64 s390x x86_64
-%else
-ExclusiveArch:  do_not_build
-%endif
-Prefix:         /usr/src
 
 # Force bzip2 instead of lzma compression to
 # 1) allow install on older dist versions, and
@@ -79,13 +79,14 @@ package dependencies.
 
 
 %source_timestamp
-%prep
-
-%install
-install -m 644 -D %{SOURCE0} %buildroot/%_docdir/%name/README.SUSE
 
 %files
 %dir %_docdir/%name
 %_docdir/%name/README.SUSE
+
+%prep
+
+%install
+install -m 644 -D %{SOURCE0} %buildroot/%_docdir/%name/README.SUSE
 
 %changelog

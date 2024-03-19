@@ -17,12 +17,21 @@
 # needsrootforbuild
 
 
-%define patchversion 6.7.9
+%define patchversion 6.8.1
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
 
 Name:           kernel-obs-qa
+Version:        6.8.1
+%if 0%{?is_kotd}
+Release:        <RELEASE>.gd922afa
+%else
+Release:        0
+%endif
+Summary:        Basic QA tests for the kernel
+License:        GPL-2.0-only
+Group:          SLES
 BuildRequires:  kernel-default
 # kernel-obs-build must be also configured as VMinstall, but is required
 # here as well to avoid that qa and build package build parallel
@@ -33,19 +42,13 @@ ExclusiveArch:  aarch64 armv6hl armv7hl ppc64le riscv64 s390x x86_64
 %else
 ExclusiveArch:  do_not_build
 %endif
-Summary:        Basic QA tests for the kernel
-License:        GPL-2.0-only
-Group:          SLES
-Version:        6.7.9
-%if 0%{?is_kotd}
-Release:        <RELEASE>.g6049de6
-%else
-Release:        0
-%endif
 
 %description
 This package is using the kernel compiled within Open Build Service(OBS)
 projects and runs basic tests.
+
+%files
+/usr/share/%name
 
 %prep
 
@@ -69,8 +72,5 @@ fi
 %install
 mkdir -p %{buildroot}/usr/share/%name
 touch %{buildroot}/usr/share/%name/logfile
-
-%files
-/usr/share/%name
 
 %changelog
