@@ -111,4 +111,17 @@
     #!usr/bin/python in bridge/graphite.py. #928</comment>
     <requestid>1137137</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>86addb945b24485e9a682cfb51ef47a2</srcmd5>
+    <version>0.20.0</version>
+    <time>1710865928</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.20.0:
+  * Update OpenMetrics Content Type to 1.0.0.
+  * Enable graceful shutdown for
+    start_{http,wsgi}_server by returning the server and thread.
+  * Allow resetting counter metrics. #1005
+  * wsgi server: address family discovery is not quite right</comment>
+    <requestid>1159228</requestid>
+  </revision>
 </revisionlist>
