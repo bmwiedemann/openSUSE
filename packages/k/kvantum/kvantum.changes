@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Mar 17 20:01:55 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Version 1.1.0
+- update spec for default Qt6
+- use kwindowsystem only for TW for now
+  * The default compilation is against Qt6 now (For Qt5, ENABLE_QT5
+    should be set to ON), and the support for qmake has been removed
+    (because KF6 doesn't support it). The blur effect of KWin 6.0 is supported.
+  * It is possible to reduce only the opacity of inactive windows
+    with negative values of the relevant setting (in Kvantum Manager).
+  * Added a workaround for a bug in Qt 6.6, because of which, 
+    translucent menus might be drawn with wrong sizes after being moved.
+  * Added a workaround for tiny overlaps between tree branch lines
+    with translucent light/dark colors.
+  * Added a workaround for a crashing bug in KDE's plasma-settings.
+  * Added a toolbar, containing a date-time editor with popup and a
+    progress-bar, to kvantumpreview.
+  * Minor fixes.
+
+-------------------------------------------------------------------
 Tue Apr 25 13:40:36 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Remove kvantum-openbox-themes package
