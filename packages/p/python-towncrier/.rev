@@ -15,4 +15,41 @@
     <comment></comment>
     <requestid>806966</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1b150d3bad95690eca5e27b7e051f2c8</srcmd5>
+    <version>23.11.0</version>
+    <time>1710865948</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.11.0:
+  * Fragments with filenames like fix-1.2.3.feature are now
+    associated with the ticket fix-1.2.3. In previous versions
+    they were incorrectly associated to ticket 3.
+  * Orphan newsfragments containing numeric values are no longer
+    accidentally associated to tickets. In previous versions the
+    orphan marker was ignored and the newsfragment was associated
+    to a ticket having the last numerical value from the
+    filename.
+  * No significant changes since the previous release candidate.
+  * Python 3.12 is now officially supported. (#541)
+  * Python 3.12 is now officially supported.
+  * Initial support was added for monorepo-style setup. One
+    project with multiple independent news files stored in
+    separate sub-directories, that share the same towncrier
+    config. (#548)
+  * Initial support was added for monorepo-style setup. One
+    project with multiple independent news files stored in
+    separate sub-directories, that share the same towncrier
+    config.
+  * Two newlines are no longer always added between the current
+    release notes and the previous content. The newlines are now
+    defined only inside the template. Important! If you're using
+    a custom template and want to keep the same whitespace
+    between releases, you may have to modify your template.
+    (#552)
+  * Two newlines are no longer always added between the current
+    release notes and the previous content. The newlines are now
+    defined only inside the template.
+  * The support for Python 3.7 has been dropped.</comment>
+    <requestid>1159265</requestid>
+  </revision>
 </revisionlist>
