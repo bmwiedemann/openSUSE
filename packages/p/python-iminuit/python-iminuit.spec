@@ -16,26 +16,22 @@
 #
 
 
-%define modname iminuit
 %{?sle15_python_module_pythons}
-Name:           python-%{modname}
+Name:           python-iminuit
 Version:        2.25.2
 Release:        0
 Summary:        Python bindings for MINUIT2
 License:        MIT
 URL:            https://github.com/scikit-hep/iminuit
-Source0:        https://files.pythonhosted.org/packages/source/i/iminuit/%{modname}-%{version}.tar.gz
-Source1:        python-iminuit.rpmlintrc
+Source0:        https://files.pythonhosted.org/packages/source/i/iminuit/iminuit-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module numpy >= 1.21.0}
 BuildRequires:  %{python_module numpy-devel}
-BuildRequires:  %{python_module pathspec}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pybind11 >= 2.9.0}
 BuildRequires:  %{python_module pybind11-devel}
-BuildRequires:  %{python_module pyproject-metadata}
-BuildRequires:  %{python_module scikit-build-core >= 0.3.0}
+BuildRequires:  %{python_module scikit-build-core-pyproject >= 0.3.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  cmake >= 3.13
@@ -46,14 +42,12 @@ Requires:       python-numpy >= 1.21.0
 Recommends:     python-matplotlib
 Recommends:     python-scipy
 # SECTION test requirements
-BuildRequires:  %{python_module ipywidgets}
+BuildRequires:  %{python_module ipywidgets if %python-base >= 3.10}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numba}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module tabulate}
-# Fix unresolved status for Leap 15.x on account of multiple choices for python3-importlib-metadata (python3-importlib-metadata and python3-importlib_metadata)
-BuildRequires:  %{python_module importlib-metadata}
 # /SECTION
 %python_subpackages
 
@@ -65,7 +59,7 @@ but is most commonly used for likelihood fits of models to data,
 and to get model parameter error estimates from likelihood profile analysis.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%setup -q -n iminuit-%{version}
 # We use external pybind11, just to be sure remove bundled pybind11 entirely
 rm -fr extern/pybind11
 
@@ -76,7 +70,11 @@ export CMAKE_ARGS="-DIMINUIT_EXTERNAL_PYBIND11=ON -DCMAKE_VERBOSE_MAKEFILE=ON"
 
 %install
 %pyproject_install
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%{python_expand # remove empty file and dedup
+f=%{buildroot}%{$python_sitearch}/iminuit-%{version}.dist-info/entry_points.txt
+[ -f $f -a ! -s $f  ] && rm $f
+%fdupes %{buildroot}%{$python_sitearch}
+}
 
 %check
 %pytest_arch
@@ -84,7 +82,7 @@ export CMAKE_ARGS="-DIMINUIT_EXTERNAL_PYBIND11=ON -DCMAKE_VERBOSE_MAKEFILE=ON"
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitearch}/%{modname}/
-%{python_sitearch}/%{modname}-%{version}*.*-info/
+%{python_sitearch}/iminuit/
+%{python_sitearch}/iminuit-%{version}.dist-info/
 
 %changelog

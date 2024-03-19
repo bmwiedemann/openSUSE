@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 15 19:54:51 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip testing with ipywidgets on python39: no longer supported
+  since ipython 8.19
+- Clean dependencies
+- Drop rpmlintrc
+
+-------------------------------------------------------------------
 Tue Feb 20 10:43:12 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.25.2:
