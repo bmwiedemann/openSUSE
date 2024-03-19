@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-html2text
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-%{upname}
-Version:        2020.1.16
+Version:        2024.2.26
 Release:        0
 Summary:        Python script for turning HTML into Markdown text
 License:        GPL-3.0-only
@@ -32,7 +32,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 Provides:       html2text = %{version}-%{release}
 Obsoletes:      html2text < %{version}-%{release}
 BuildArch:      noarch
