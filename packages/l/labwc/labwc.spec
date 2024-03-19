@@ -17,7 +17,7 @@
 
 
 %bcond_with     warp
-%bcond_with     xwayland
+%bcond_without  xwayland
 %define sname   wlroots
 %define sver    0.17.0
 Name:           labwc

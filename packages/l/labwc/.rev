@@ -16,4 +16,13 @@
     <comment></comment>
     <requestid>1154209</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>4523793eec149841ec885953ce6578f1</srcmd5>
+    <version>0.7.1</version>
+    <time>1710865770</time>
+    <user>anag+factory</user>
+    <comment>- Enable xwayland feature
+</comment>
+    <requestid>1159133</requestid>
+  </revision>
 </revisionlist>
