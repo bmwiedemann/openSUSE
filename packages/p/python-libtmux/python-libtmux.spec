@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-libtmux
-Version:        0.31.0
+Version:        0.35.0
 Release:        0
 Summary:        Python API / wrapper for tmux
 License:        MIT
@@ -29,9 +29,8 @@ BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test
-BuildRequires:  %{python_module docutils}
+# https://github.com/tmux-python/libtmux/blob/master/pyproject.toml#L68
 BuildRequires:  %{python_module gp-libs >= 0.0.4}
-BuildRequires:  %{python_module myst-parser >= 0.18.1}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest}

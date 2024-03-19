@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Tue Mar 19 06:49:58 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.35.0:
+  Breaking changes
+  * refactor: Eliminate redundant targets / window_index's across
+    codebase by @tony in #536
+
+-------------------------------------------------------------------
+Sun Mar 17 19:34:56 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.34.0:
+  Breaking changes!
+  * Command target change (#535)#
+    Commands: All cmd() methods using custom or overridden targets
+    must use the keyword argument target. This avoids entanglement
+    with inner shell values that include -t for other purposes.
+    These methods include:
+    - Server.cmd()
+    - Session.cmd()
+    - Window.cmd()
+    - Pane.cmd()
+
+-------------------------------------------------------------------
+Sun Mar 17 19:26:06 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.33.0:
+  Breaking changes!
+  * Improved new sessions (#532)
+    - Session.new_window():
+      - Learned direction, via WindowDirection).
+      - PEP 3102 keyword-only arguments after window name (#534).
+    - Added {meth}Window.new_window() shorthand to create window
+      based on that window's position.
+  * Improved window splitting (#532)
+    - Window.split_window() to Window.split()
+      - Deprecate Window.split_window()
+    - Pane.split_window() to Pane.split()
+      - Deprecate Pane.split_window()
+      - Learned direction, via PaneDirection).
+        - Deprecate vertical and horizontal in favor of direction.
+      - Learned zoom
+  * Tweak: Pane position (#532)
+    It's now possible to retrieve the position of a pane in a
+    window via a bool helper::
+    - Pane.at_left
+    - Pane.at_right
+    - Pane.at_bottom
+    - Pane.at_right
+
+-------------------------------------------------------------------
+Sat Mar 16 19:07:17 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.32.0:
+  * Fix docstring ordering in pane.split_window by @Ngalstyan4
+    in #528
+  * Add implicit exports into init.py by @ssbarnea in #531
+
+-------------------------------------------------------------------
 Sun Feb 18 17:38:34 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.31.0:
