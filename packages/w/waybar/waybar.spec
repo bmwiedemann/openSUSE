@@ -1,7 +1,7 @@
 #
 # spec file for package waybar
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           waybar
-Version:        0.9.24
+Version:        0.10.0
 Release:        0
 Summary:        Customizable Wayland bar for Sway and Wlroots based compositors
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/Alexays/Waybar
 Source0:        https://github.com/Alexays/Waybar/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        waybar.rpmlintrc
 BuildRequires:  cmake
 %if 0%{?sle_version} >= 150400
 BuildRequires:  gcc13-c++
@@ -37,8 +38,6 @@ BuildRequires:  pkgconfig
 # test dependency
 BuildRequires:  pkgconfig(catch2) >= 3.0
 BuildRequires:  sndio-devel >= 1.7.0
-# clock module
-BuildRequires:  hhdate-devel
 # optional: mpris module
 BuildRequires:  pkgconfig(playerctl)
 # optional: man pages
@@ -67,7 +66,7 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-protocols)
-BuildRequires:  pkgconfig(wireplumber-0.4)
+BuildRequires:  pkgconfig(wireplumber-0.5)
 BuildRequires:  pkgconfig(xkbregistry)
 # requires branding
 # NOTE: unversioned branding is required to avoid issues like bsc#1205950
@@ -103,7 +102,7 @@ This package provides the upstream look and feel for sway.
 %if 0%{?sle_version} >= 150400
 export CXX=g++-13
 %endif
-%meson -Dcava=disabled
+%meson -Dcava=disabled -Dwireplumber=disabled
 %meson_build
 
 %install
@@ -116,7 +115,7 @@ export CXX=g++-13
 
 %files branding-upstream
 %dir %{_sysconfdir}/xdg/waybar
-%config(noreplace) %{_sysconfdir}/xdg/waybar/config
+%config(noreplace) %{_sysconfdir}/xdg/waybar/config.jsonc
 %config(noreplace) %{_sysconfdir}/xdg/waybar/style.css
 
 %changelog

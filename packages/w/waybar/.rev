@@ -878,4 +878,107 @@
     <comment></comment>
     <requestid>1123246</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>9c597549be4efc8e96bf6607d26742cd</srcmd5>
+    <version>0.10.0</version>
+    <time>1710865772</time>
+    <user>anag+factory</user>
+    <comment>- Add waybar.rpmlintrc to Sources
+- Remove hhdate build requirement as now provided by C++20
+- Disable wireplumber feature: fixes build and bugs boo#1221110
+  boo#1221317 boo#1221247
+- Add rpmlintrc to remove a false error
+- Update to 0.10.0
+  * avoid converting to local_time when converting to zoned_time
+    afterwards
+  * Add Privacy Module
+  * Fix segmentation fault in WirePlumber module
+  * c++20. clock chrono API. STL + format
+  * Happy clang. fmt9-10
+  * cpu_usage/linux: count iowait toward idle time
+  * hyprland module: added sort_workspaces after rename occured
+  * Using 'image-missing' fallback if no taskbar icon is found
+  * privacy: fix visibility when a module is disabled
+  * Add button click check to hyprland workspaces module
+  * Disconnect from PipeWire when destroying the WirePlumber module
+  * Added initial .clang-tidy file
+  * upower: show-icon config option
+  * Applied clang-tidy suggestions for hyprland workspaces
+  * Sway/workspaces: fix persistent icon
+  * Specify config is JSONC
+  * C ABI plugin system
+  * Pass WAYBAR_OUTPUT_NAME environment variable to custom exec
+    scripts
+  * Fix wireplumber reverse-scroll option
+  * fix restart-interval being ignored while signal is defined
+  * hyprland/workspaces: allow using the original window
+    class/title
+  * Catch2 bump
+  * Improvements for Hyprland worskspaces &amp; backend
+  * Fix/Hyprland/Workspaces: Window Rewrite on multiple
+    non-overlapping bars
+  * Add module systemd-failed-units to monitor failed systemd units
+  * fix(tray): completely hide tray when it is empty
+  * clock: handle timezone changes (again again)
+  * clock: fix construction with calendar.format.today
+  * Fix use after free on task close
+  * Fix module UPower display device poniter
+  * Add &quot;empty&quot; class for Image module when path/exec is returning
+    an empty value.
+  * feat(battery): added support for battery state-based classes on
+    the entire waybar
+  * Using steps() in animation to reduce cpu usage.
+  * Move .empty CSS class from Img to Box in the Image module
+  * pulseaudio: reconnect context when pulseaudio server restarts
+  * Fix JSON parsing with hexadecimal characters
+  * Adding css reloader
+  * fix: reload style
+  * Fix: drawer not appearing on configured side
+  * Make battery estimate inaccessible in the &quot;Full&quot; state on
+    default config
+  * Fix build warnings
+  * Add style classes for hyprland/submap
+  * Add module class to the root elements of the modules
+  * fix build warning in bar.cpp
+  * libcava bump 0.10.1
+  * Add check for tooltip-format for custom modules
+  * Search for the first hwmon* directory
+  * Hyprland/workspaces: use Hyprland's workspace rules for
+    persistency
+  * Require gtk-layer-shell
+  * Add style class for CPU state
+  * Add css classes to hyprland special workspaces
+  * Add ordinal date toolbar format specifier to clock module
+  * Implement windows formating in sway/workspaces
+  * Revert &quot;Add style class for CPU state&quot;
+  * Revert &quot;Implement windows formating in sway/workspaces&quot;
+  * build: refactorings and deprecation fixes
+  * refactor: move all module includes to factory.cpp
+  * fix(clock): crash on scrolling with local timezone (&quot;&quot;) in the
+    list
+  * Fix hyprland special workspace button click
+  * Fixed window#waybar.swallowing for module hyprland/window
+  * nix: update libcava version and removal of gtk-layer-shell
+    meson option
+  * Implement windows formating in sway/workspaces
+  * feat: implement cpufreq for bsd by sysctl
+  * mediaplayer: add exclude player option
+  * Config tweaks
+  * feat(sway/language): option to hide module with single layout
+  * fix clang-tidy errors in hyprland module
+  * RFC: Rename config to config.jsonc
+  * hyprland/workspaces: Improve the workspaces persistency logic
+  * Improved hyprland/window by fixing icon search and implementing
+    configurable spacing
+  * Filter out special output __i3 which contains scratchpad
+  * ci: move FreeBSD to ubuntu runners
+  * Sway-Workspaces: Fixed scrolling not working
+  * mpd: less aggressive logging and reconnections
+  * Introduce a power-profiles-daemon module
+  * Add justify config option for Labels
+  * Fix peristant workspaces for sway
+  * feat: allow horizontal scroll
+</comment>
+    <requestid>1158996</requestid>
+  </revision>
 </revisionlist>
