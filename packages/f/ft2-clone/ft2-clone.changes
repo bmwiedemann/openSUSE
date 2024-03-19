@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 18 17:09:25 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.79
+  * Fullscreen mode code has been refactored, as I apparently had
+    coded it the wrong way. "Stretched" mode always fills the
+    whole screen now too, and other issues may have been fixed as
+    well.
+
+-------------------------------------------------------------------
 Sun Mar 17 23:15:33 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.78
