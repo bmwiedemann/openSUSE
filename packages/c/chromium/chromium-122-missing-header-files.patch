@@ -31,17 +31,6 @@ diff -up chromium-122.0.6261.29/chrome/browser/webauthn/authenticator_request_di
  
  #include "base/containers/span.h"
  #include "base/functional/callback_forward.h"
-diff -up chromium-122.0.6261.29/chrome/test/chromedriver/chrome/web_view_impl.cc.missing-header-files chromium-122.0.6261.29/chrome/test/chromedriver/chrome/web_view_impl.cc
---- chromium-122.0.6261.29/chrome/test/chromedriver/chrome/web_view_impl.cc.missing-header-files	2024-02-07 19:49:27.000000000 +0100
-+++ chromium-122.0.6261.29/chrome/test/chromedriver/chrome/web_view_impl.cc	2024-02-12 14:59:48.137415079 +0100
-@@ -11,6 +11,7 @@
- #include <queue>
- #include <utility>
- #include <vector>
-+#include <cstring>
- 
- #include "base/check.h"
- #include "base/files/file_path.h"
 diff -up chromium-122.0.6261.29/components/feature_engagement/internal/never_event_storage_validator.h.missing-header-files chromium-122.0.6261.29/components/feature_engagement/internal/never_event_storage_validator.h
 --- chromium-122.0.6261.29/components/feature_engagement/internal/never_event_storage_validator.h.missing-header-files	2024-02-07 19:49:30.000000000 +0100
 +++ chromium-122.0.6261.29/components/feature_engagement/internal/never_event_storage_validator.h	2024-02-12 14:59:48.138415097 +0100
@@ -53,18 +42,18 @@ diff -up chromium-122.0.6261.29/components/feature_engagement/internal/never_eve
  #include <string>
  
  #include "components/feature_engagement/internal/event_storage_validator.h"
-diff -up chromium-122.0.6261.29/gin/time_clamper.h.missing-header-files chromium-122.0.6261.29/gin/time_clamper.h
---- chromium-122.0.6261.29/gin/time_clamper.h.missing-header-files	2024-02-07 19:49:35.000000000 +0100
-+++ chromium-122.0.6261.29/gin/time_clamper.h	2024-02-12 14:59:48.138415097 +0100
-@@ -48,7 +48,7 @@ class GIN_EXPORT TimeClamper {
-     const int64_t micros = now_micros % 1000;
-     // abs() is necessary for devices with times before unix-epoch (most likely
-     // configured incorrectly).
--    if (abs(micros) + kResolutionMicros < 1000) {
-+    if (std::abs(micros) + kResolutionMicros < 1000) {
-       return now_micros / 1000;
-     }
-     return ClampTimeResolution(now_micros) / 1000;
+diff --git a/gin/time_clamper.h b/gin/time_clamper.h.new
+index 46dcc0a..9e3261f 100644
+--- a/gin/time_clamper.h
++++ b/gin/time_clamper.h
+@@ -6,6 +6,7 @@
+ #define GIN_TIME_CLAMPER_H_
+ 
+ #include <algorithm>
++#include <cstdlib>
+ 
+ #include "base/rand_util.h"
+ #include "base/time/time.h"
 diff -up chromium-122.0.6261.29/net/base/net_export.h.missing-header-files chromium-122.0.6261.29/net/base/net_export.h
 --- chromium-122.0.6261.29/net/base/net_export.h.missing-header-files	2024-02-07 19:49:38.000000000 +0100
 +++ chromium-122.0.6261.29/net/base/net_export.h	2024-02-12 14:59:48.139415116 +0100
@@ -189,3 +178,83 @@ diff -up chromium-122.0.6261.29/ui/gfx/linux/drm_util_linux.h.missing-header-fil
  namespace ui {
  
  int GetFourCCFormatFromBufferFormat(gfx::BufferFormat format);
+diff --git a/components/data_sharing/public/data_sharing_network_loader.h b/components/data_sharing/public/data_sharing_network_loader.h
+index 374ce896bdf68..833dd12dbfed9 100644
+--- a/components/data_sharing/public/data_sharing_network_loader.h
++++ b/components/data_sharing/public/data_sharing_network_loader.h
+@@ -5,6 +5,7 @@
+ #ifndef COMPONENTS_DATA_SHARING_PUBLIC_DATA_SHARING_NETWORK_LOADER_H_
+ #define COMPONENTS_DATA_SHARING_PUBLIC_DATA_SHARING_NETWORK_LOADER_H_
+ 
++#include <memory>
+ #include <string>
+ #include <vector>
+
+diff --git a/components/plus_addresses/plus_address_types.h b/components/plus_addresses/plus_address_types.h
+index 7a7eaa2a818a9..77569d345011a 100644
+--- a/components/plus_addresses/plus_address_types.h
++++ b/components/plus_addresses/plus_address_types.h
+@@ -5,6 +5,7 @@
+ #ifndef COMPONENTS_PLUS_ADDRESSES_PLUS_ADDRESS_TYPES_H_
+ #define COMPONENTS_PLUS_ADDRESSES_PLUS_ADDRESS_TYPES_H_
+ 
++#include <optional>
+ #include <string>
+ #include <unordered_map>
+
+diff --git a/third_party/blink/renderer/platform/peerconnection/resolution_monitor.cc b/third_party/blink/renderer/platform/peerconnection/resolution_monitor.cc
+index 5d6a6495045c4..33135a1b22473 100644
+--- a/third_party/blink/renderer/platform/peerconnection/resolution_monitor.cc
++++ b/third_party/blink/renderer/platform/peerconnection/resolution_monitor.cc
+@@ -4,6 +4,8 @@
+ 
+ #include "third_party/blink/renderer/platform/peerconnection/resolution_monitor.h"
+ 
++#include <bitset>
++
+ #include "base/containers/span.h"
+ #include "base/logging.h"
+ #include "base/memory/ptr_util.h"
+--- a/components/search_engines/util.h
++++ b/components/search_engines/util.h
+@@ -8,6 +8,7 @@
+ // This file contains utility functions for search engine functionality.
+ 
+ #include <memory>
++#include <optional>
+ #include <set>
+ #include <string>
+ #include <vector>
+--- a/components/search_engines/search_engine_choice/search_engine_choice_service.h
++++ b/components/search_engines/search_engine_choice/search_engine_choice_service.h
+@@ -5,6 +5,8 @@
+ #ifndef COMPONENTS_SEARCH_ENGINES_SEARCH_ENGINE_CHOICE_SEARCH_ENGINE_CHOICE_SERVICE_H_
+ #define COMPONENTS_SEARCH_ENGINES_SEARCH_ENGINE_CHOICE_SEARCH_ENGINE_CHOICE_SERVICE_H_
+ 
++#include <optional>
++
+ #include "base/memory/raw_ref.h"
+ #include "base/memory/weak_ptr.h"
+ #include "components/country_codes/country_codes.h"
+--- a/content/common/service_worker/race_network_request_write_buffer_manager.h
++++ b/content/common/service_worker/race_network_request_write_buffer_manager.h
+@@ -5,6 +5,8 @@
+ #ifndef CONTENT_COMMON_SERVICE_WORKER_RACE_NETWORK_REQUEST_WRITE_BUFFER_MANAGER_H_
+ #define CONTENT_COMMON_SERVICE_WORKER_RACE_NETWORK_REQUEST_WRITE_BUFFER_MANAGER_H_
+ 
++#include <optional>
++
+ #include "base/containers/span.h"
+ #include "content/common/content_export.h"
+ #include "mojo/public/cpp/system/data_pipe.h"
+--- a/third_party/blink/renderer/core/layout/hit_test_request.h
++++ b/third_party/blink/renderer/core/layout/hit_test_request.h
+@@ -23,6 +23,8 @@
+ #ifndef THIRD_PARTY_BLINK_RENDERER_CORE_LAYOUT_HIT_TEST_REQUEST_H_
+ #define THIRD_PARTY_BLINK_RENDERER_CORE_LAYOUT_HIT_TEST_REQUEST_H_
+ 
++#include <optional>
++
+ #include "base/functional/callback.h"
+ #include "third_party/blink/renderer/platform/heap/garbage_collected.h"
+ #include "third_party/blink/renderer/platform/heap/member.h"

@@ -132,9 +132,7 @@ Patch98:        chromium-102-regex_pattern-array.patch
 Patch202:       chromium-prop-codecs.patch
 Patch203:       chromium-106-ffmpeg-duration.patch
 Patch205:       chromium-disable-GlobalMediaControlsCastStartStop.patch
-Patch208:       chromium-icu72-2.patch
 Patch224:       chromium-115-compiler-SkColor4f.patch
-Patch229:       chromium-116-lp155-url_load_stats-size-t.patch
 Patch238:       chromium-117-blink-BUILD-mnemonic.patch
 Patch240:       chromium-117-string-convert.patch
 Patch244:       chromium-117-system-zstd.patch
@@ -145,42 +143,15 @@ Patch256:       chromium-120-make_unique-struct.patch
 Patch258:       chromium-121-nullptr_t-without-namespace-std.patch
 Patch261:       chromium-121-rust-clang_lib.patch
 Patch265:       chromium-121-blink-libxml-const.patch
-# from fedora package
-Patch300:       chromium-121-el7-clang-version-warning.patch
-Patch306:       chromium-122-arm64-memory_tagging.patch
-Patch307:       chromium-122-clang16-buildflags.patch
-Patch308:       chromium-122-clang16-disable-auto-upgrade-debug-info.patch
-Patch309:       chromium-122-clang-build-flags.patch
-Patch310:       chromium-122-constexpr.patch
-Patch311:       chromium-122-disable-FFmpegAllowLists.patch
-Patch312:       chromium-122-el7-default-constructor-involving-anonymous-union.patch
-Patch313:       chromium-122-el7-extra-operator.patch
-Patch314:       chromium-122-el7-inline-function.patch
-Patch315:       chromium-122-el8-support-64kpage.patch
+Patch311:       chromium-disable-FFmpegAllowLists.patch
 Patch316:       chromium-122-missing-header-files.patch
 Patch317:       chromium-122-no_matching_constructor.patch
 Patch318:       chromium-122-avoid-SFINAE-TypeConverter.patch
-# Do not use unrar code, it is non-free
-Patch319:       chromium-122-norar.patch
-Patch320:       chromium-122-python3-assignment-expressions.patch
-Patch321:       chromium-122-static-assert.patch
-Patch322:       chromium-122-typename.patch
-Patch323:       chromium-122-unique_ptr.patch
+Patch322:       chromium-122-lp155-typename.patch
 Patch324:       chromium-122-workaround_clang_bug-structured_binding.patch
-# from debian
-Patch325:       chromium-122-undo-internal-alloc.patch
-Patch326:       chromium-122-debian-upstream-bitset.patch
-Patch328:       chromium-122-debian-upstream-mojo.patch
-Patch329:       chromium-122-debian-upstream-optional.patch
-Patch330:       chromium-122-debian-upstream-uniqptr.patch
-Patch332:       chromium-122-debian-fixes-optional.patch
-# local fix, needed on code15
-Patch333:       chromium-122-skip_bubble_contents_wrapper_static_assert.patch
-# only applied on 15.4
-Source401:      chromium-122-revert-av1enc-el9.patch
-# reverse applied
-Source402:      chromium-121-v8-c++20-p1.patch
-Source403:      chromium-121-v8-c++20.patch
+Patch325:       chromium-122-PA-undo-internal-alloc.patch
+Patch326:       chromium-122-BookmarkNode-missing-operator.patch
+Patch327:       chromium-122-WebUI-static_assert.patch
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -192,8 +163,6 @@ BuildRequires:  git
 BuildRequires:  gn >= 0.1807
 BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  (python3 >= 3.7 or python3-dataclasses)
-BuildRequires:  (python3-importlib-metadata if python3-base < 3.8)
 BuildRequires:  golang(API)
 # Java used during build
 BuildRequires:  java-openjdk-headless
@@ -208,9 +177,15 @@ BuildRequires:  ninja >= 1.7.2
 BuildRequires:  nodejs >= 8.0
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} >= 1599
 BuildRequires:  python3
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-six
+%else
+BuildRequires:  python311
+BuildRequires:  python311-setuptools
+BuildRequires:  python311-six
+%endif
 BuildRequires:  rust
 BuildRequires:  snappy-devel
 BuildRequires:  update-desktop-files
@@ -268,7 +243,6 @@ BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(opus) >= 1.3.1
 BuildRequires:  pkgconfig(panel)
 BuildRequires:  pkgconfig(panelw)
-BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(schroedinger-1.0)
 BuildRequires:  pkgconfig(slang)
 BuildRequires:  pkgconfig(sqlite3)
@@ -426,14 +400,6 @@ patch -R -p1 < %{PATCH68}
 patch -R -p1 < %{SOURCE5}
 patch -R -p1 < %{SOURCE4}
 %endif
-%if 0%{?sle_version} == 150400
-patch -p1 < %{SOURCE401}
-%endif
-patch -R -p1 < %{SOURCE402}
-patch -R -p1 < %{SOURCE403}
-%if 0%{?suse_version} < 1600
-patch -R -p1 < %{PATCH309}
-%endif
 %if %{with libxml2_2_12}
 patch -R -p1 < %{PATCH265}
 %endif
@@ -460,9 +426,14 @@ ln -s %{_bindir}/eu-strip buildtools/third_party/eu-strip/bin/eu-strip
 
 # python3
 mkdir -p $HOME/bin
+%if 0%{?suse_version} >= 1599
 export PYTHON=python3
+%else
+export PYTHON=python3.11
+%endif
 ln -sfn %{_bindir}/$PYTHON $HOME/bin/python
-export PATH="$HOME/bin/:$PATH"
+ln -sfn %{_bindir}/$PYTHON $HOME/bin/python3
+export PATH="$HOME/bin:$PATH"
 
 # use our wrapper
 rm chrome/installer/linux/common/wrapper
