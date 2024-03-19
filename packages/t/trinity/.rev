@@ -760,4 +760,12 @@
 - Drop upstreamed 0001-kvm-drop-KVM_SET_MEMORY_REGION.patch</comment>
     <requestid>1137684</requestid>
   </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>6829941369383aa88e0639a406a0cd90</srcmd5>
+    <version>1.9+git.20230710</version>
+    <time>1710865955</time>
+    <user>anag+factory</user>
+    <comment>- add 0001-kvm-drop-deprecated-and-dropped-KVM-ioctls.patch (kernel 6.8)</comment>
+    <requestid>1159305</requestid>
+  </revision>
 </revisionlist>
