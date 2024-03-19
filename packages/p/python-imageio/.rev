@@ -160,4 +160,13 @@
     plugins</comment>
     <requestid>1133613</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f33e048af3676e3ecef527dfe678e8a5</srcmd5>
+    <version>2.34.0</version>
+    <time>1710865915</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.34.0:
+  * Forward constructor kwargs to PyAV</comment>
+    <requestid>1159132</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-imageio
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_with test_extras
 %{?sle15_python_module_pythons}
 Name:           python-imageio
-Version:        2.33.1
+Version:        2.34.0
 Release:        0
 Summary:        Python library for reading and writing image, video, and related formats
 License:        BSD-2-Clause
@@ -35,7 +35,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Pillow >= 8.3.2
 Requires:       python-numpy >= 1.20.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     libfreeimageplus3
 Recommends:     python-imageio-ffmpeg
 Recommends:     python-psutil
