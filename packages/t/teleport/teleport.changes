@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar 18 15:38:52 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 15.1.8:
+  * Fixed an issue with AWS IAM permissions that may prevent AWS
+    database access when discovery_service is enabled in the same
+    Teleport config as the db_service, namely AWS RDS, Redshift,
+    Elasticache, and MemoryDB. #39488
+
+-------------------------------------------------------------------
+Mon Mar 18 15:17:25 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 15.1.7:
+  * Fixed issue with Teleport auth server panicking when Access
+    Graph is enabled in discovery service. [#39456]
+  * Added remote port forwarding for Teleport nodes. #39440
+  * Added remote port forwarding for OpenSSH nodes. #39438
+
+-------------------------------------------------------------------
 Sun Mar 17 13:44:52 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 15.1.6:
