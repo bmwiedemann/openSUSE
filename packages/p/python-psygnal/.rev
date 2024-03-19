@@ -21,4 +21,23 @@
     emission of dependent fields</comment>
     <requestid>1133196</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>13081bc7552d41ff90a6f9cd9a88ce05</srcmd5>
+    <version>0.10.2</version>
+    <time>1710865925</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.10.2:
+  * fix: fix hard reference to objects in emitted arguments \#301
+  * feat: Add recursion\_mode \('immediate' or 'deferred'\) to
+    Signal and SignalInstance \#293 (tlambert03)
+  * feat: add collect\_fields option to SignalGroupDescriptor,
+    and accept a SignalGroup subclass \#291 (getzze)
+  * feat: support for evented containers as pydantic v2 fields
+  * perf: Fixing performance of evented set \#275 (Czaki)
+  * refactor!: New SignalGroup that does not subclass
+    SignalInstance \#269 (tlambert03)
+  * feat: emit the old value as second argument in Signals from
+    SignalGroupDescriptor \(evented dataclass\) \#257 (getzze)</comment>
+    <requestid>1159227</requestid>
+  </revision>
 </revisionlist>

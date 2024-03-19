@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Mar 16 09:32:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.2:
+  * fix: fix hard reference to objects in emitted arguments \#301
+  * feat: Add recursion\_mode \('immediate' or 'deferred'\) to
+    Signal and SignalInstance \#293 (tlambert03)
+  * feat: add collect\_fields option to SignalGroupDescriptor,
+    and accept a SignalGroup subclass \#291 (getzze)
+  * feat: support for evented containers as pydantic v2 fields
+  * perf: Fixing performance of evented set \#275 (Czaki)
+  * refactor!: New SignalGroup that does not subclass
+    SignalInstance \#269 (tlambert03)
+  * feat: emit the old value as second argument in Signals from
+    SignalGroupDescriptor \(evented dataclass\) \#257 (getzze)
+
+-------------------------------------------------------------------
 Thu Dec 14 21:12:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.5:
