@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Mar 19 06:54:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.55.18:
+  * build(deps-dev): bump nokogiri and mini_portile2 in /docs
+    (#3009)
+  * build(deps): bump google.golang.org/protobuf from 1.32.0 to
+    1.33.0 (#3000)
+  * build(deps-dev): bump nokogiri from 1.10.4 to 1.10.10 in /docs
+    (#2929)
+  * build(deps): bump github.com/go-jose/go-jose/v3 from 3.0.0 to
+    3.0.3 (#2996)
+  * build(deps): bump github.com/cloudflare/circl from 1.3.3 to
+    1.3.7 (#2995)
+
+-------------------------------------------------------------------
+Tue Mar 19 06:48:38 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.55.17:
+  * Add support for opentofu registry (#2961)
+
+-------------------------------------------------------------------
 Sun Mar 17 09:58:18 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.55.16:
