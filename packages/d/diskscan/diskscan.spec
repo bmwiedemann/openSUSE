@@ -1,7 +1,7 @@
 #
 # spec file for package diskscan
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           diskscan
-Version:        0.20
+Version:        0.21
 Release:        0
 Summary:        Scan disk for bad or near failure sectors
 License:        GPL-3.0-or-later
-Group:          Hardware/Other
 URL:            https://github.com/baruch/diskscan
 Source0:        https://github.com/baruch/diskscan/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.0.2
@@ -44,7 +43,7 @@ self test may or may not pick up on such clues depending on
 the disk vendor decision making logic.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %cmake
@@ -57,6 +56,6 @@ the disk vendor decision making logic.
 %license COPYING
 %doc README*
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog

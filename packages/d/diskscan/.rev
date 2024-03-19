@@ -75,4 +75,16 @@
     <comment></comment>
     <requestid>886574</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>95d6b2cdf4746a9ea052c54b38a1fe84</srcmd5>
+    <version>0.21</version>
+    <time>1710865904</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.21:
+  * Fix Gitter badge URL by @jwilk in #69
+  * Remove spurious backslash from manpage by @jwilk in #68
+  * Fix JSON output validity
+  * Add supported devices info to README</comment>
+    <requestid>1159088</requestid>
+  </revision>
 </revisionlist>

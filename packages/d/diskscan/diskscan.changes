@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 18 16:05:07 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.21:
+  * Fix Gitter badge URL by @jwilk in #69
+  * Remove spurious backslash from manpage by @jwilk in #68
+  * Fix JSON output validity
+  * Add supported devices info to README
+
+-------------------------------------------------------------------
 Sun Apr 18 14:22:12 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Fixed SPEC file: Replaced broken URL with current upstream
