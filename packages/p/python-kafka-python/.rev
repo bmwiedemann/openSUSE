@@ -98,4 +98,16 @@
 </comment>
     <requestid>1078253</requestid>
   </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>317453a30639f688786b8d34c9ce44a3</srcmd5>
+    <version>2.0.2</version>
+    <time>1710865919</time>
+    <user>anag+factory</user>
+    <comment>- Add patch slightly-patch-out-six.patch:
+  * Remove some uses of six, to avoid circular imports.
+- Also edit fixutres.py directly for the same reason.
+- Switch to pyproject macros.
+- Less globs in %files.</comment>
+    <requestid>1159168</requestid>
+  </revision>
 </revisionlist>

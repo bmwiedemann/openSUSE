@@ -7,11 +7,10 @@ import os.path
 import socket
 import subprocess
 import time
+import urllib
 import uuid
 
 import py
-from kafka.vendor.six.moves import urllib, range
-from kafka.vendor.six.moves.urllib.parse import urlparse  # pylint: disable=E0611,F0401
 
 from kafka import errors, KafkaAdminClient, KafkaClient, KafkaConsumer, KafkaProducer
 from kafka.errors import InvalidReplicationFactorError
@@ -160,7 +159,7 @@ class ZookeeperFixture(Fixture):
     @classmethod
     def instance(cls):
         if "ZOOKEEPER_URI" in os.environ:
-            parse = urlparse(os.environ["ZOOKEEPER_URI"])
+            parse = urllib.parse.urlparse(os.environ["ZOOKEEPER_URI"])
             (host, port) = (parse.hostname, parse.port)
             fixture = ExternalService(host, port)
         else:
@@ -256,7 +255,7 @@ class KafkaFixture(Fixture):
         if zk_chroot is None:
             zk_chroot = "kafka-python_" + str(uuid.uuid4()).replace("-", "_")
         if "KAFKA_URI" in os.environ:
-            parse = urlparse(os.environ["KAFKA_URI"])
+            parse = urllib.parse.urlparse(os.environ["KAFKA_URI"])
             (host, port) = (parse.hostname, parse.port)
             fixture = ExternalService(host, port)
         else:

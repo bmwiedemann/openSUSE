@@ -1,0 +1,49 @@
+Index: kafka-python-2.0.2/kafka/codec.py
+===================================================================
+--- kafka-python-2.0.2.orig/kafka/codec.py
++++ kafka-python-2.0.2/kafka/codec.py
+@@ -5,9 +5,6 @@ import io
+ import platform
+ import struct
+ 
+-from kafka.vendor import six
+-from kafka.vendor.six.moves import range
+-
+ _XERIAL_V1_HEADER = (-126, b'S', b'N', b'A', b'P', b'P', b'Y', 0, 1, 1)
+ _XERIAL_V1_FORMAT = 'bccccccBii'
+ ZSTD_MAX_OUTPUT_SIZE = 1024 * 1024
+@@ -149,10 +146,6 @@ def snappy_encode(payload, xerial_compat
+         # buffer... likely a python-snappy bug, so just use a slice copy
+         chunker = lambda payload, i, size: payload[i:size+i]
+ 
+-    elif six.PY2:
+-        # Sliced buffer avoids additional copies
+-        # pylint: disable-msg=undefined-variable
+-        chunker = lambda payload, i, size: buffer(payload, i, size)
+     else:
+         # snappy.compress does not like raw memoryviews, so we have to convert
+         # tobytes, which is a copy... oh well. it's the thought that counts.
+Index: kafka-python-2.0.2/test/test_codec.py
+===================================================================
+--- kafka-python-2.0.2.orig/test/test_codec.py
++++ kafka-python-2.0.2/test/test_codec.py
+@@ -4,7 +4,6 @@ import platform
+ import struct
+ 
+ import pytest
+-from kafka.vendor.six.moves import range
+ 
+ from kafka.codec import (
+     has_snappy, has_lz4, has_zstd,
+Index: kafka-python-2.0.2/test/test_consumer_integration.py
+===================================================================
+--- kafka-python-2.0.2.orig/test/test_consumer_integration.py
++++ kafka-python-2.0.2/test/test_consumer_integration.py
+@@ -6,7 +6,6 @@ try:
+ except ImportError:
+     from mock import patch
+ import pytest
+-from kafka.vendor.six.moves import range
+ 
+ import kafka.codec
+ from kafka.errors import UnsupportedCodecError, UnsupportedVersionError
