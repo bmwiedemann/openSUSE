@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Mar 15 21:05:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  4 07:38:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.rc:
+  + Add mnemonic to Start button.
+  + Disable alarm after ringing when not set to repeat.
+  + Fix countdown timer progress during suspend.
+  + Fix resume bug on clear button pressed.
+  + Fix sorting of locations.
+  + Improve app metainfo for AppStream 1.0.
+  + Show a toast when a new alarm is set.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Sep 17 12:13:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.0:
