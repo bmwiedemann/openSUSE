@@ -133,4 +133,29 @@
     * Fix numpy futurewarning in dtype creation</comment>
     <requestid>1135346</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b19c84b33fe4631c8847030f36429d87</srcmd5>
+    <version>0.14.2</version>
+    <time>1710965783</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1158521 from bnavigator
+
+- Update to 0.14.2
+    ## Enhancements:
+    * Radius of ellipse can now be specified as numpy.array #2561
+      (ullmannJan)
+    * Add ivec2, ivec3, ivec4 to ATYPEINFO in glir.py #2545
+      (hmaarrfk)
+    * Improve Markers symbols validation performance #2533 (Czaki)
+    ## Fixed bugs:
+    * Correction to Vispy.Visuals.Markers.set_data #2565
+      (c40zAtGitHub)
+    * Fix SurfacePlotVisual not allowing 2D x and y inputs #2554
+      (ullmannJan)
+    * Change devicePixelRatio calls to devicePixelRatioF to get a
+      floating point number instead of an integer #2540 (dalthviz)
+  - Fix test suite setup
+  - Clean requirements and obsolete jupyter package description</comment>
+    <requestid>1159611</requestid>
+  </revision>
 </revisionlist>

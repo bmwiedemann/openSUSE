@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Mar 15 20:59:46 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.14.2
+  ## Enhancements:
+  * Radius of ellipse can now be specified as numpy.array #2561
+    (ullmannJan)
+  * Add ivec2, ivec3, ivec4 to ATYPEINFO in glir.py #2545
+    (hmaarrfk)
+  * Improve Markers symbols validation performance #2533 (Czaki)
+  ## Fixed bugs:
+  * Correction to Vispy.Visuals.Markers.set_data #2565
+    (c40zAtGitHub)
+  * Fix SurfacePlotVisual not allowing 2D x and y inputs #2554
+    (ullmannJan)
+  * Change devicePixelRatio calls to devicePixelRatioF to get a
+    floating point number instead of an integer #2540 (dalthviz)
+- Fix test suite setup
+- Clean requirements and obsolete jupyter package description
+
+-------------------------------------------------------------------
 Wed Dec 27 16:08:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.14.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-vispy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,86 +16,67 @@
 #
 
 
-%bcond_without  ext_deps
+%define demodatacommit 5a3db84
+%define test_data_tag test-data-10
 Name:           python-vispy
-Version:        0.14.1
+Version:        0.14.2
 Release:        0
 Summary:        Interactive visualization in Python
 License:        BSD-3-Clause
 URL:            https://github.com/vispy/vispy
-Source:         https://files.pythonhosted.org/packages/source/v/vispy/vispy-%{version}.tar.gz
-BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module devel}
+Source0:        https://files.pythonhosted.org/packages/source/v/vispy/vispy-%{version}.tar.gz
+Source1:        https://github.com/vispy/demo-data/archive/%{demodatacommit}.tar.gz#/vispy-demo-data-%{demodatacommit}.tar.gz
+# `git clone https://github.com/vispy/test-data test-data; pushd test-data; git bundle create ../vispy-test-data-10.bundle test-data-10; popd`
+Source2:        vispy-%{test_data_tag}.bundle
+BuildRequires:  %{python_module Cython >= 3}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools >= 42}
+BuildRequires:  %{python_module setuptools_scm >= 7.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  python-rpm-macros
 Requires:       fontconfig
+Requires:       python-freetype-py
+Requires:       python-hsluv
+Requires:       python-kiwisolver
 Requires:       python-numpy
-Requires:       python-qt5
+Requires:       python-packaging
+Recommends:     python-Pillow
 Recommends:     python-PySDL2
-Recommends:     python-imageio
-Recommends:     python-jupyter_ipython
-Recommends:     python-networkx
-Recommends:     python-opengl
-Recommends:     python-opengl-accelerate
+Recommends:     python-ipython
+Recommends:     python-meshio
 Recommends:     python-pyglet
-Recommends:     python-pypng
-Recommends:     python-scipy
+Suggests:       python-qt5
+Suggests:       python-PyQt6
+Suggests:       python-wxPython
 # SECTION test requirements
-BuildRequires:  %{python_module PySDL2}
-BuildRequires:  %{python_module glfw}
 BuildRequires:  %{python_module hsluv}
-BuildRequires:  %{python_module imageio}
-BuildRequires:  %{python_module jupyter_ipython}
-BuildRequires:  %{python_module networkx}
+BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module PyQt6}
+BuildRequires:  %{python_module PySDL2}
+BuildRequires:  %{python_module freetype-py}
+BuildRequires:  %{python_module ipython if %python-base >= 3.10}
+BuildRequires:  %{python_module kiwisolver}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module opengl}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pyglet}
+BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  fontconfig
-%if %{with ext_deps}
-BuildRequires:  %{python_module cassowary}
-BuildRequires:  %{python_module decorator}
-BuildRequires:  %{python_module freetype-py}
-BuildRequires:  %{python_module husl}
-BuildRequires:  %{python_module pypng}
-%endif
+BuildRequires:  git-core
 # /SECTION
-%if %{with ext_deps}
-Requires:       python-cassowary
-Requires:       python-decorator
-Requires:       python-freetype-py
-Requires:       python-husl
-Requires:       python-pypng
-%endif
 %python_subpackages
 
 %description
 Vispy is an interactive 2D/3D data visualization library. It leverages Graphics
 Processing Units through the OpenGL library to display large datasets.
 
-%package     -n jupyter-vispy
-Summary:        Interactive visualization in the Jupyter notebook
-Requires:       jupyter-notebook
-Requires:       python3-vispy = %{version}
-
-%description -n jupyter-vispy
-Vispy is an interactive 2D/3D data visualization library. It leverages Graphics
-Processing Units through the OpenGL library to display large datasets.
-
-This package provides the jupyter notebook extension.
-
 %prep
-%setup -q -n vispy-%{version}
-%if %{with ext_deps}
-rm -rf vispy/ext/_bundled
-%endif
-
+%autosetup -p1 -n vispy-%{version}
 sed -i '1{/^#!\/usr\/bin\/env /d;}' \
     vispy/glsl/build_spatial_filters.py \
     vispy/util/transforms.py \
@@ -110,9 +91,24 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# cd because of gh#vispy/vispy#1506 (they are not src-based)
-cd vispy/testing
-%pytest_arch
+export HOME=$PWD/vispytesthome
+mkdir $HOME
+pushd $HOME
+# The demo data for tests
+mkdir -p .vispy/data
+tar -x --strip-components=1 -f %{SOURCE1} -C .vispy/data
+git clone %{SOURCE2} .vispy/test_data
+pushd .vispy/test_data
+git checkout -b main %{test_data_tag}
+popd
+# we can't test file downloading from online resources
+donttest="test_config"
+# avoid vtk: not multiflavor
+donttest="$donttest or (test_io and test_meshio)"
+# segfault in xvfb test environment
+donttest="$donttest or test_run"
+%pytest_arch -rsfE --pyargs vispy -k "not ($donttest)"
+popd
 
 %files %{python_files}
 %doc *.rst *.md
