@@ -257,4 +257,12 @@
     <comment>version update</comment>
     <requestid>1128109</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>c2924b64f84b761beba38b49ebc2b7d1</srcmd5>
+    <version>2.3.8.3</version>
+    <time>1710965650</time>
+    <user>dimstar_suse</user>
+    <comment>Update Haskell ecosystem to GHC version 9.8.2.</comment>
+    <requestid>1157251</requestid>
+  </revision>
 </revisionlist>

@@ -26,10 +26,11 @@ Summary:        HTTP client package with conduit interface and HTTPS support
 License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Patch1:         drop-dependency-on-empty-attoparsec-aeson-library.patch
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-aeson-prof
+BuildRequires:  ghc-attoparsec-aeson-devel
+BuildRequires:  ghc-attoparsec-aeson-prof
 BuildRequires:  ghc-attoparsec-devel
 BuildRequires:  ghc-attoparsec-prof
 BuildRequires:  ghc-base-devel
