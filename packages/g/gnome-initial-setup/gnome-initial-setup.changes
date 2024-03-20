@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sun Mar 17 09:33:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  6 13:12:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.rc:
+  + Bugs fixed:
+    - The text direction is now correctly updated when switching
+      between left-to-right and right-to-left locales.
+  + Updated translations.
+- Drop pkgconfig(gtk+-3.0) BuildRequires: no longer needed since
+  version 43.beta.
+- Add explciit pkgconfig(gtk4) BuildRequires: indirectly pulled in
+  via libnma-gtk4, but we want it explicit.
+
+-------------------------------------------------------------------
+Mon Feb 12 17:09:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.beta:
+  + Avatars are now generated using HdyAvatar.
+  + The Welcome page image is now more appropriately sized and not
+    cropped.
+  + The Welcome page now uses PRETTY_NAME from os-release rather
+    than combining the NAME + VERSION_ID fields.
+  + The summary page no longer expresses our collective hope that
+    users love GNOME, reducing the overall exuberance of the page.
+
+-------------------------------------------------------------------
+Thu Jan 18 17:03:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.alpha:
+  + GNOME Online Accounts integration has been removed.
+  + The WebKitGTK dependency is now optional.
+  + Bugs fixed:
+    - The Initial Setup window can no longer be closed with Alt+F4,
+      leaving the user with no way to recover.
+    - The avatar picker no longer logs a vast number of criticals,
+       which were triggered by a GLib change.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Nov  6 06:43:02 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
 
 - Support build environments like SLE 15 SP5 and Leap 15.5 which
@@ -164,6 +208,7 @@ Thu Aug 11 13:38:57 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
     - pkgconfig(libhandy-1) -> pkgconfig(libadaita-1)
     - pkgconfig(libnma) -> pkgconfig(libnma-gtk4)    
     - pkgconfig(webkit2gtk-4.1) -> pkgconfig(webkit2gtk-5.0)
+
 -------------------------------------------------------------------
 Fri Jul 29 20:43:23 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 

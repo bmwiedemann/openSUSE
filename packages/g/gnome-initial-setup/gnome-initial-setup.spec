@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-initial-setup
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-initial-setup
-Version:        45.0
+Version:        46.0
 Release:        0
 Summary:        GNOME Initial Setup Assistant
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/OS/InitialSetup
-Source0:        https://download.gnome.org/sources/gnome-initial-setup/45/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  krb5-devel
 BuildRequires:  meson >= 0.53.0
@@ -34,7 +34,7 @@ BuildRequires:  (pkgconfig(webkit2gtk-5.0) or pkgconfig(webkitgtk-6.0))
 BuildRequires:  pkgconfig(accountsservice)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gdm) >= 3.8.3
-BuildRequires:  pkgconfig(geocode-glib-2.0)
+BuildRequires:  pkgconfig(geocode-glib-2.0) >= 2.6.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.53.0
 BuildRequires:  pkgconfig(gnome-desktop-4)
 BuildRequires:  pkgconfig(goa-1.0)
@@ -42,7 +42,7 @@ BuildRequires:  pkgconfig(goa-backend-1.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.37.1
 BuildRequires:  pkgconfig(gstreamer-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.11.3
+BuildRequires:  pkgconfig(gtk4) >= 4.10
 BuildRequires:  pkgconfig(gweather4)
 BuildRequires:  pkgconfig(ibus-1.0) >= 1.4.99
 BuildRequires:  pkgconfig(iso-codes)
@@ -107,7 +107,7 @@ Initial assistant, helping you to get the system up and running.
 %{_datadir}/polkit-1/rules.d/20-gnome-initial-setup.rules
 %{_libexecdir}/gnome-initial-setup
 %{_libexecdir}/gnome-initial-setup-copy-worker
-%{_libexecdir}/gnome-initial-setup-goa-helper
+
 %dir %{_datadir}/dconf
 %dir %{_datadir}/dconf/profile
 %{_datadir}/dconf/profile/gnome-initial-setup
