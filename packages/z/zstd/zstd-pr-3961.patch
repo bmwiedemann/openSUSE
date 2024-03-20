@@ -1,0 +1,67 @@
+From a88781954a875c4f00883eba6a8c5d172c4f5c17 Mon Sep 17 00:00:00 2001
+From: Nick Terrell <terrelln@fb.com>
+Date: Wed, 13 Mar 2024 09:58:34 -0700
+Subject: [PATCH] [asm][aarch64] Mark that BTI and PAC are supported
+
+Mark that `huf_decompress_amd64.S` supports BTI and PAC, which it trivially does because it is empty for aarch64.
+
+The issue only requested BTI markings, but it also makes sense to mark PAC, which is the only other feature.
+
+Also run add a test for this mode to the ARM64 QEMU test. Before this PR it warns on `huf_decompress_amd64.S`, after it doesn't.
+
+Fixes Issue #3841.
+---
+ .github/workflows/dev-short-tests.yml |  1 +
+ lib/decompress/huf_decompress_amd64.S | 23 ++++++++++++++++++++++-
+ 2 files changed, 23 insertions(+), 1 deletion(-)
+
+diff --git a/.github/workflows/dev-short-tests.yml b/.github/workflows/dev-short-tests.yml
+index b2aaff89cf..5324b38d9a 100644
+--- a/.github/workflows/dev-short-tests.yml
++++ b/.github/workflows/dev-short-tests.yml
+@@ -409,6 +409,7 @@ jobs:
+     - name: ARM64
+       if: ${{ matrix.name == 'ARM64' }}
+       run: |
++        LDFLAGS="-static -z force-bti" MOREFLAGS="-mbranch-protection=standard" CC=$XCC QEMU_SYS=$XEMU make clean check
+         LDFLAGS="-static" CC=$XCC QEMU_SYS=$XEMU make clean check
+     - name: PPC
+       if: ${{ matrix.name == 'PPC' }}
+diff --git a/lib/decompress/huf_decompress_amd64.S b/lib/decompress/huf_decompress_amd64.S
+index 3b96b44612..78da291ee3 100644
+--- a/lib/decompress/huf_decompress_amd64.S
++++ b/lib/decompress/huf_decompress_amd64.S
+@@ -10,11 +10,32 @@
+ 
+ #include "../common/portability_macros.h"
+ 
++#if defined(__ELF__) && defined(__GNUC__)
+ /* Stack marking
+  * ref: https://wiki.gentoo.org/wiki/Hardened/GNU_stack_quickstart
+  */
+-#if defined(__ELF__) && defined(__GNUC__)
+ .section .note.GNU-stack,"",%progbits
++
++#if defined(__aarch64__)
++/* Mark that this assembly supports BTI & PAC, because it is empty for aarch64.
++ * See: https://github.com/facebook/zstd/issues/3841
++ * See: https://gcc.godbolt.org/z/sqr5T4ffK
++ * See: https://lore.kernel.org/linux-arm-kernel/20200429211641.9279-8-broonie@kernel.org/
++ * See: https://reviews.llvm.org/D62609
++ */
++.pushsection .note.gnu.property, "a"
++.p2align 3
++.long 4                 /* size of the name - "GNU\0" */
++.long 0x10              /* size of descriptor */
++.long 0x5               /* NT_GNU_PROPERTY_TYPE_0 */
++.asciz "GNU"
++.long 0xc0000000        /* pr_type - GNU_PROPERTY_AARCH64_FEATURE_1_AND */
++.long 4                 /* pr_datasz - 4 bytes */
++.long 3                 /* pr_data - GNU_PROPERTY_AARCH64_FEATURE_1_BTI | GNU_PROPERTY_AARCH64_FEATURE_1_PAC */
++.p2align 3              /* pr_padding - bring everything to 8 byte alignment */
++.popsection
++#endif
++
+ #endif
+ 
+ #if ZSTD_ENABLE_ASM_X86_64_BMI2

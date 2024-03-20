@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 14 07:13:30 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Backport PAC/BTI fix for aarch64 
+  https://github.com/facebook/zstd/pull/3961 :
+  * zstd-pr-3961.patch
+
+-------------------------------------------------------------------
 Fri Dec 29 13:21:02 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Disable build of gzip for Leap 15.x to fix build error.

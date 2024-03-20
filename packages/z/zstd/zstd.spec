@@ -1,7 +1,7 @@
 #
 # spec file for package zstd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ Source1:        https://github.com/facebook/zstd/releases/download/v%{version}/%
 Source2:        zstd.keyring
 Source99:       baselibs.conf
 Patch1:         pzstd.1.patch
+# PATCH-FIX-UPSTREAM - https://github.com/facebook/zstd/pull/3961
+Patch2:         zstd-pr-3961.patch
 BuildRequires:  gcc
 # C++ is needed for pzstd only
 BuildRequires:  gcc-c++
