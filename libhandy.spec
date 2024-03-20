@@ -1,7 +1,7 @@
 #
 # spec file for package libhandy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,13 @@
 %define with_glade 1
 
 Name:           libhandy
-Version:        1.8.2
+Version:        1.8.3
 Release:        0
 Summary:        A GTK+ library to develop UI for mobile devices
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://gitlab.gnome.org/GNOME/libhandy
-Source0:        https://download.gnome.org/sources/libhandy/1.8/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig

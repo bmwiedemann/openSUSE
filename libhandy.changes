@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 12 15:20:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.8.3:
+  + HdyStyleManager:
+    - Support contrast setting in the settings portal.
+    - Remove an extra unref.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Mar  5 13:20:50 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.8.2:
