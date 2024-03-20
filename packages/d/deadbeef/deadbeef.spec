@@ -121,6 +121,9 @@ This package provides headers for DeaDBeeF plugins development.
 
 cp %{SOURCE1} %{name}.appdata.xml
 
+# Drop hardcoded -msse3
+sed -i "s/-msse3//" ./external/ddb_dsp_libretro/Makefile.*
+
 %build
 export CC=clang
 export CXX=clang++

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 19 07:54:26 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Drop hardcoded '-msse3' in ddb_dsp_libretro (fix non-x86 builds)
+
+-------------------------------------------------------------------
 Fri Mar  1 15:19:18 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - removed deadbeef-fix-includes.patch. Modify CFLAGS instead
