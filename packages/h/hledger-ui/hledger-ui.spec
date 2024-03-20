@@ -25,6 +25,7 @@ Summary:        Terminal interface for the hledger accounting system
 License:        GPL-3.0-or-later
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
+Patch1:         https://github.com/simonmichael/hledger/commit/de3209a2fbe50093236b95ec525eaea654e9dcb3.patch#/fix-build-with-ghc-9.8.x.patch
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-ansi-terminal-devel
@@ -132,7 +133,8 @@ Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
 This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
-%autosetup
+%autosetup -p2
+cabal-tweak-dep-ver base "<4.19" "< 5"
 
 %build
 %ghc_lib_build

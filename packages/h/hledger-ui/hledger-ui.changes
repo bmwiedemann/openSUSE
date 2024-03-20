@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 28 16:04:39 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Apply "fix-build-with-ghc-9.8.x.patch" to fix the build with
+  base library version 4.19.x.
+
+-------------------------------------------------------------------
 Sun Jan 28 12:19:56 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update hledger-ui to version 1.32.3.
