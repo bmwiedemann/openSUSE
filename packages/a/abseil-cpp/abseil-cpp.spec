@@ -17,24 +17,22 @@
 
 
 %define lname	libabsl2401_0_0
+%if 0%{?gcc_version} < 7
+%global with_gcc 7
+%endif
 Name:           abseil-cpp
 Version:        20240116.1
 Release:        0
 Summary:        C++11 libraries which augment the C++ stdlib
 License:        Apache-2.0
 URL:            https://abseil.io/
-Source0:        https://github.com/abseil/abseil-cpp/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/abseil/%{name}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  gcc%{?with_gcc}
+BuildRequires:  gcc%{?with_gcc}-c++
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} && 0%{?suse_version} < 1500
-BuildRequires:  gcc7
-BuildRequires:  gcc7-c++
-%else
-BuildRequires:  gcc >= 7
-BuildRequires:  gcc-c++ >= 7
-%endif
 # PATCH-FIX-OPENSUSE options-{old,cxx17}.patch Ensure ABI stability regardless of compiler options
 %if 0%{?suse_version} && 0%{?suse_version} < 1550
 Patch0:         options-old.patch
@@ -71,9 +69,9 @@ This package contains headers and build system files for it.
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} && 0%{?suse_version} < 1500
-export CC="gcc-7"
-export CXX="g++-7"
+%if 0%{?with_gcc}
+export CC="gcc-%{with_gcc}"
+export CXX="g++-%{with_gcc}"
 %endif
 %cmake
 %cmake_build
@@ -82,7 +80,13 @@ export CXX="g++-7"
 %cmake_install
 %fdupes %{buildroot}/%{_prefix}
 
+# SLE12 doed not define this macro
+%if %{undefined ldconfig_scriptlets}
+%post -n %{lname} -p /sbin/ldconfig
+%postun  -n %{lname} -p /sbin/ldconfig
+%else
 %ldconfig_scriptlets -n %{lname}
+%endif
 
 %files -n %{lname}
 %license LICENSE

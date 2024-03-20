@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  4 10:30:53 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Fix broken link to sources
+- Fix build for distributions that lack the ldconfig_scriptlets
+  macro
+- Make the gcc version condition a bit more generic
+
+-------------------------------------------------------------------
 Sun Mar  3 06:35:57 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 20240116.1:

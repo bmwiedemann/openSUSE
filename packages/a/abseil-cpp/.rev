@@ -305,4 +305,12 @@
     <comment></comment>
     <requestid>1154589</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>661bc7477dedbae7b38046c5a85f5ead</srcmd5>
+    <version>20240116.1</version>
+    <time>1710965431</time>
+    <user>dimstar_suse</user>
+    <comment>fixup to make the with_gcc more elegant</comment>
+    <requestid>1159027</requestid>
+  </revision>
 </revisionlist>
