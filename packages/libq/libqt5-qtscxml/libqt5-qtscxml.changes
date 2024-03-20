@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 19 09:59:34 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.13+kde0, rebased upstream:
+  * Partially update moc copy from qtbase
+  * Bump version to 5.15.13
+
+-------------------------------------------------------------------
 Fri Dec 29 13:31:08 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.12+kde0, rebased upstream:

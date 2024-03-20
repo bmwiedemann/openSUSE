@@ -221,4 +221,12 @@
     <comment>Qt 5.15.12 (+ some .16), untested (forwarded request 1135706 from favogt)</comment>
     <requestid>1136118</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8271119a567d553eb85a850361273ee4</srcmd5>
+    <version>5.15.13+kde0</version>
+    <time>1710965772</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.13, untested as usual (forwarded request 1159361 from favogt)</comment>
+    <requestid>1159440</requestid>
+  </revision>
 </revisionlist>
