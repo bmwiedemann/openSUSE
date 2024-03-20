@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Mar 16 09:22:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.6.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  4 08:48:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.5.1:
+  + Fix CSS clipping with frame switcher buttons.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 19 17:41:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.5.0:
+  + Improvements to PanelDockChild which allow attaching edge
+    widgets. This can be used to create more natural sidebar
+    styling as is used by GNOME Builder for GNOME 46.
+  + Initial state fixes for various panels.
+  + PanelThemeSelector focus fixes.
+  + AdwTabBar usage will only create start area when necessary
+    fixing some initial styling issues.
+
+-------------------------------------------------------------------
 Mon Feb  5 08:44:07 UTC 2024 - Yifan Jiang <yfjiang@suse.com>
 
 - Choose higher gcc version to build on SLE and Leap 15.
