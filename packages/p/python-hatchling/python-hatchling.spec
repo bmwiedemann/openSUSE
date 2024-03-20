@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-hatchling
-Version:        1.21.1
+Version:        1.22.3
 Release:        0
 Summary:        Build backend used by Hatch
 License:        MIT
 URL:            https://hatch.pypa.io/latest/
 Source0:        https://files.pythonhosted.org/packages/source/h/hatchling/hatchling-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module editables >= 0.3}
 BuildRequires:  %{python_module packaging >= 21.3}
 BuildRequires:  %{python_module pathspec >= 0.10.1}
 BuildRequires:  %{python_module pip}
@@ -34,17 +33,14 @@ BuildRequires:  %{python_module tomli >= 1.2.2 if %python-base < 3.11}
 BuildRequires:  %{python_module trove-classifiers}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-editables >= 0.3
 Requires:       python-packaging >= 21.3
 Requires:       python-pathspec >= 0.10.1
 Requires:       python-pluggy >= 1.0.0
 Requires:       python-trove-classifiers
+Requires:       (python-tomli >= 1.2.2 if python-base < 3.11)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
-%if 0%{?python_version_nodots} < 311
-Requires:       python-tomli >= 1.2.2
-%endif
 %python_subpackages
 
 %description

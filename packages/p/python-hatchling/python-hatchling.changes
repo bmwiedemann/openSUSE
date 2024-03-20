@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Mar 20 03:43:33 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up the SPEC file
+
+-------------------------------------------------------------------
+Tue Mar 19 20:32:47 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.22.3:
+  * Fix the custom build hook when using dynamic dependencies
+
+-------------------------------------------------------------------
+Sun Mar 17 21:05:34 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to 1.22.2:
+  * Fixed:
+    + Fix regression when loading metadata from source
+      distributions
+    + Fix metadata hooks when building wheels from source
+      distributions
+- additional changes from version 1.22.1:
+  * Fixed:
+    + Update the default version of core metadata to 2.3
+
+- additional changes from version 1.22.0:
+  * Deprecated:
+    + The app build target has been renamed to binary to reduce
+      ambiguity with the name of an upcoming feature. The former
+      name will still be usable for several minor releases.
+  * Added:
+    + Metadata for the wheel target now defaults to the PKG-INFO
+      metadata within source distributions
+    + Add dependencies method to the build hook interface so that
+      hooks can themselves dynamically define dependencies
+    + Update the default version of core metadata to 2.2
+    + Update SPDX license information to version 3.23
+    + Improve error message for when the default heuristics for
+      wheel file inclusion fail
+  * Fixed:
+    + Properly support core metadata version 2.2
+    + Remove editables as a direct dependency
+    + Fix default wheel tag when the supported Python version
+      declaration is strict
+    + Load VCS ignore patterns first so that whitelisted patterns
+      can be excluded by project configuration
+    + Don't consider VCS ignore files that are outside of the VCS
+      boundary
+    + The sdist build target now gracefully ignores UNIX socket
+      files
+    + Begin ignoring certain files ubiquitously, like .DS_Store on
+      macOS
+- remove editables from the required packages
+
+-------------------------------------------------------------------
 Thu Jan 25 21:07:23 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to 1.21.1:

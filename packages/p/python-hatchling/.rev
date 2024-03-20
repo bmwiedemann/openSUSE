@@ -193,4 +193,43 @@
     <comment></comment>
     <requestid>1141699</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c15d1b34f56bdadab869df31b8f84b70</srcmd5>
+    <version>1.22.3</version>
+    <time>1710965440</time>
+    <user>dimstar_suse</user>
+    <comment>COULD YOU PLEASE MAKE D:L:P DEVEL PROJECT FOR THIS FACTORY PACKAGE?
+
+- Clean up the SPEC file
+
+- update to version 1.22.3:
+  * Fix the custom build hook when using dynamic dependencies
+
+- update to 1.22.2:
+  * Fixed:
+    + Fix regression when loading metadata from source
+      distributions
+    + Fix metadata hooks when building wheels from source
+      distributions
+- additional changes from version 1.22.1:
+  * Fixed:
+    + Update the default version of core metadata to 2.3
+- additional changes from version 1.22.0:
+  * Deprecated:
+    + The app build target has been renamed to binary to reduce
+      ambiguity with the name of an upcoming feature. The former
+      name will still be usable for several minor releases.
+  * Added:
+    + Metadata for the wheel target now defaults to the PKG-INFO
+      metadata within source distributions
+    + Add dependencies method to the build hook interface so that
+      hooks can themselves dynamically define dependencies
+    + Update the default version of core metadata to 2.2
+    + Update SPDX license information to version 3.23
+    + Improve error message for when the default heuristics for
+      wheel file inclusion fail
+  * Fixed:
+    + Properly support core metadata version 2.2</comment>
+    <requestid>1159684</requestid>
+  </revision>
 </revisionlist>
