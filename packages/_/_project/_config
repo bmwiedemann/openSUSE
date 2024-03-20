@@ -594,6 +594,9 @@ Prefer: -python39-FontTools -python310-FontTools -python311-FontTools
 Prefer: -python311-pyside6
 Prefer: -python312-pyside6
 
+# have choice for libsundials_core.so.7()(64bit) needed by libsundials_ida7: libsundials_core7 libsundials_core7-mvapich2 libsundials_core7-openmpi4,
+Prefer: -libsundials_core7-mvapich2 -libsundials_core7-openmpi4
+
 # All this is for KF6 + plasma 6
 # have choice for (plasma-framework-desktoptheme or plasma6-framework-desktoptheme) needed by plasma-framework: libplasma6-desktoptheme plasma-framework-desktoptheme
 Prefer: -plasma-framework-desktoptheme
