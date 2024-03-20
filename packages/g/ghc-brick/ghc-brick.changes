@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Dec 21 17:33:30 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update brick to version 2.3.1.
+  2.3.1
+  -----
+
+  Bug fixes:
+  * Form field rendering now correctly checks for form field focus when
+    its visibility mode is `ShowAugmentedField`.
+
+  2.3
+  ---
+
+  API changes:
+  * `FormFieldVisibilityMode`'s `ShowAugmentedField` was renamed to
+    `ShowCompositeField` to be clearer about what it does, and a new
+    `ShowAugmentedField` constructor was added to support a mode where
+    field augmentations applied with `@@=` are made visible as well.
+
+-------------------------------------------------------------------
 Mon Dec 18 00:44:39 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update brick to version 2.2.
