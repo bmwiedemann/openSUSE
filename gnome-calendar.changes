@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Mar 18 15:25:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 12:30:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.rc:
+  + Improve AppData information some more.
+  + Various code cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb 25 15:29:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.beta1:
+  + Improve AppData information.
+  + Use the Settings portal for the show-week-dates setting.
+  + Fix daylight saving time events in the Week view.
+  + Add accessible labels to a few UI elements.
+  + Use the new AdwDialog API for responsive dialogs.
+  + Tweak the visuals of the Month view.
+  + Properly make Calendar stop the weather service in Flatpak.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Oct 23 13:59:16 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.1:
