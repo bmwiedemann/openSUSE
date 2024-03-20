@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Tue Mar 19 09:55:28 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.13+kde138, rebased upstream:
+  * QVarLengthArray: fix UBs in emplace()/insert() ([basic.life], broken class invariant)
+  * Android: use test QFileInfo fileName() instead of completeBaseName()
+  * Fix few QFileInfo and QDir calls
+  * savegame ex.: fix include order [2/2]: game.h
+  * savegame ex.: use NSDMI, =default the default ctor
+  * savegame ex.: fix include order
+  * savegame ex.: fix extra ';' after Q_GADGET
+  * tst_qvarlengtharray: fix MyBase trackers for swap()
+  * Apple: Add CFBundleAllowMixedLocalizations=YES to Info.plist files
+  * qmake: Add CFBundleDevelopmentRegion to iOS Info.plist
+  * Update bundled libjpeg-turbo to version 2.1.5
+  * Revert "Copy only files that belongs to QML module"
+  * savegame ex.: make Level ctor explicit
+  * macOS: Skip deployment target runtime check when detecting compat version
+  * Apple: Use 'en' instead of 'English' as development region
+  * qmake: Add CFBundleDevelopmentRegion to the macOS Info.plist
+  * Update comments in QQuaternion::getEulerAngles
+  * QtGui/math3d: Fix QQuaternion::getEulerAngles for GimbalLock cases
+  * Pass short time format to GetTimeFormat from GetLocaleInfo
+  * Android: fix height calculation
+  * SQL/ODBC: fix some users of toSQLTCHAR() to not assume identical UTF-8/16/32 string lengths
+  * ODBC SQL driver: fix conversion of QByteArray to QVLA<SQLTCHAR>
+  * Docs:Android: Add docs notes about support for content Uris
+  * QODBC: correctly fill cache when index() is called
+  * Fix ignored name filter in QFileDialog::getOpenFileContent()
+  * GTK3 theme: simplify code
+  * Fix ContextInfo example crashing on Android
+  * ibus: check object validity before honoring `inputMethodAccepted()`
+  * ODBC SQL driver: deal with different sizes of SQLTCHAR correctly
+  * Doc: Update copyright year
+  * Android: pass EXTRA_INITIAL_URI to native FileDialog
+  * Doc: Only list qt core classes in qt core io group
+  * QFileSystemEngine: URL encode path in trash info, use relative path
+  * [doc] Warn users about data races regarding qt_ntfs_permission_lookup
+  * [doc] QSharedPointer: add some missing docs
+  * Disable feature vkgen if vulkan was explicitly disabled
+  * Android: handle move operation with content uris
+  * Android: handle rename() operation with content uris
+  * Android: Add facilities to handle more content URIs operations
+  * Fix infinite loop when iterating content uri sub-files/dirs
+  * Return the QFileInfo::baseName/QDir::dirName() from fileEngine impl
+  * SQLite: Update SQLite to v3.40.1
+  * Fix cache maybe invalid while the signal is actived from queue
+  * Android A11Y: Only access the main thread when it is not blocked
+  * ibus: support high dpi for cursor rectangle
+  * QString: use inheritance, not template aliases, for arg() constraints
+  * Fix the ref-counting for the std::function version of tryStart()
+  * Android: Fix UI is scaled smaller than before
+  * Android: fix Android assets handler not listing dirs with only sub dirs
+  * Android: fix deprecations for getDrawable() on QtMessageDialogHelper
+  * Android: Fix deprecations AlertDialog.setButton()
+  * Bump version to 5.15.13
+  * Doc: Increase Test Function Timeout
+  * QtMiscUtils: add missing toAsciiUpper(), use it in moc
+  * QLatin1/String/View: don't decay the arg() arguments
+  * QBuffer: test and document open() behavior
+  * SQLite: Update SQLite to v3.40.0
+  * tst_qmlstream: re-use QBuffer instance in readBack()
+  * iOS a11y: Ensure parent elements are stacked below their children
+  * qmake: Document that QMAKE_PRE_LINK does not work with Xcode
+  * Blacklist: test cases blacklisted in tst_Gestures:
+  * Android: Fix incorrect dimensions - part 2
+  * PCRE2: upgrade to 10.42
+  * QNetworkRequest: don't assume QByteArray::constData() is NUL-terminated
+  * QNetworkRequest: Make header parsing locale-independent
+  * Doc: Change links from froglogic to qt domain
+  * Backport QtMiscUtils::toAsciiLower() from dev
+- Commits dropped by the rebase:
+  * Apply CVE-2023-24607-qtbase-5.15.diff
+  * correctly set up ref counting in QThreadPool::tryStart(std::function)
+
+-------------------------------------------------------------------
 Fri Feb 16 07:44:56 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 5.15.12+kde151:
