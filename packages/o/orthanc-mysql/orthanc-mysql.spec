@@ -1,8 +1,8 @@
 #
 # spec file for package orthanc-mysql
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2020-2023 Dr. Axel Braun
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2020-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,16 @@ Group:          Productivity/Databases/Tools
 Version:        5.1
 Release:        0
 URL:            http://orthanc-server.com
-Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-mysql/OrthancMySQL-%{version}.tar.gz
+Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancMySQL-%{version}.tar.gz
 Source1:        orthanc-mysql-readme.openSUSE
 Source2:        mysql.json
 BuildRequires:  cmake
 BuildRequires:  e2fsprogs-devel
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  googletest-devel
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_date_time-devel >= 1.66
@@ -56,10 +60,13 @@ Requires:       orthanc
 MySQL/mariadb Database plugin for Orthanc, replaces SQLite database
 
 %prep
-%setup -q -n OrthancMySQL-%{version}
+%autosetup -n OrthancMySQL-%{version}
 
 %build
-
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+export CC=gcc-13
+export CXX=g++-13
+%endif
 %cmake ../MySQL \
        -DALLOW_DOWNLOADS=ON \
        -DUSE_SYSTEM_GOOGLE_TEST=ON \

@@ -55,4 +55,12 @@
     <comment></comment>
     <requestid>1098221</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>773f0251e2bd35193341ebd4cc19f867</srcmd5>
+    <version>5.1</version>
+    <time>1710965699</time>
+    <user>dimstar_suse</user>
+    <comment>updated build info (forwarded request 1158440 from DocB)</comment>
+    <requestid>1159338</requestid>
+  </revision>
 </revisionlist>
