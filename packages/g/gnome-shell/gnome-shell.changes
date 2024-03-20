@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Sun Mar 17 09:27:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Fix model selection in on-screen keyboard.
+  + Fix key getting stuck when raising screen shield.
+  + Fix notifications sometimes being empty.
+  + Fix cursor visibilty when magnified.
+  + Fixed crashes.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  8 08:31:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.rc:
+  + Fix repainting drawing area.
+  + Support locking down extension installation.
+  + Fix auto-closing FDO notifications.
+  + Ensure remote actions are activated with correct platform data.
+  + FDO notifications: Support ActivationToken signal.
+  + Delete selected text on backspace from on-screen keyboard.
+  + Various on-screen keyboard improvements.
+  + Inform users of conflicting local/remote sessions on login.
+  + screencasts: Use h264 encoding if available.
+  + Work around issue in NetworkManager's wireguard support.
+  + Allow expanding notifications in message list.
+  + Fixed crash.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  8 00:47:00 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.beta:
+  + Improve High Contrast styling.
+  + Improve default styling.
+  + Close mount notification when drive gets disconnected.
+  + extensions-app: Remember window state.
+  + Fix feedback look in keyboard backlight slider.
+  + Follow "switch-shapes" accessibility setting.
+  + Fix effects of transient wayland windows.
+  + Add keyboard model configuration support.
+  + Add Text Editor to the dash by default.
+  + Fix icon size regression in dash.
+  + Improve project and development documentation.
+  + overview: Keep dimming effect for modal dialogs.
+  + Do not use markup in button labels.
+  + Fix menu alignment in RTL locales.
+  + Overhaul assets in monitor layout switcher.
+  + Fix overview transition from search results to session.
+  + Add header to notifications.
+  + extensions-app: Use adaptive dialogs.
+  + Register custom D-Bus errors.
+  + Improve appearance of symbolic icons in notifications.
+  + Improve minimize animation.
+  + Use a single source for all system notifications.
+  + Add missing shift level to Georgian OSK layout.
+  + Tweak switch appearance.
+  + Improve handling of screencast failures.
+  + Fixed crash.
+  + Misc. bug fixes and cleanups.
+
+-------------------------------------------------------------------
+Fri Mar  8 00:46:00 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.alpha:
+  + Fix scroll handling on sliders.
+  + overview: Handle unredirection as part of the state transition.
+  + Handle DESKTOP windows during workspace animations.
+  + Improve wording in welcome dialog.
+  + Improve recording indicator in light style.
+  + Fix calendar popup shrinking on date changes.
+  + app: Make all windows on target workspace recent when
+    activated.
+  + Fix performance degradation due to repeated signal leak.
+  + Optimize application search.
+  + Fix on-screen keyboard backspace getting stuck.
+  + Adapt to ClutterContainer removal.
+  + Fix arrow navigation in search results.
+  + Improve monitor OSD labels.
+  + Use dedicated assets in ctrl-alt-tab popup.
+  + Updated translations.
+- Replace gtk-doc BuildRequires with pkgconfig(gi-docgen): follow
+  upstreams port to gi-docgen.
+
+-------------------------------------------------------------------
 Thu Mar  7 07:47:00 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Update gnome-shell-gdm-login-applet.patch: Clean up JS errors
@@ -13,7 +99,7 @@ Tue Feb 20 10:03:05 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
 -------------------------------------------------------------------
 Mon Jan 22 02:31:04 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
-- Adapt to version 45.3(bsc#1216072):
+- Adapt to version 45.3 (bsc#1216072):
   + Rebase gnome-shell-domain.patch
   + Rebase gnome-shell-fate324570-Make-GDM-background-image-configurable.patch
 

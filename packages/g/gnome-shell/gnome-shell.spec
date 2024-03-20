@@ -17,11 +17,11 @@
 
 
 %global __requires_exclude typelib\\(Meta|MetaTest|Soup|St|Cogl|Clutter|TelepathyGlib\\)
-%define mutter_api 13
-%define mutter_req 45.beta
+%define mutter_api 14
+%define mutter_req 46.0
 
 Name:           gnome-shell
-Version:        45.3
+Version:        46.0
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
@@ -72,7 +72,6 @@ BuildRequires:  dbus-1
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.58.0
 BuildRequires:  pkgconfig
 BuildRequires:  sassc
@@ -82,6 +81,7 @@ BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(gcr-4) >= 3.90.0
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gdk-x11-3.0)
+BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(gjs-1.0) >= 1.71.1
@@ -91,7 +91,7 @@ BuildRequires:  pkgconfig(gnome-desktop-4)
 BuildRequires:  pkgconfig(gnome-keybindings)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.49.1
-BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 41.alpha
+BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 46.beta
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 0.11.92
 BuildRequires:  pkgconfig(gstreamer-base-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.15.0
@@ -183,7 +183,7 @@ This package contains an optional extensions app for managing GNOME Shell extens
 %lang_package
 
 %prep
-%setup -q
+%autosetup -N
 %patch -P 1 -p1
 %patch -P 7 -p1
 %patch -P 8 -p1
@@ -261,6 +261,7 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_datadir}/dbus-1/interfaces/org.gnome.ShellSearchProvider2.xml
 %{_datadir}/dbus-1/services/org.gnome.Shell.HotplugSniffer.service
 %{_datadir}/dbus-1/services/org.gnome.Shell.PortalHelper.service
+%{_datadir}/glib-2.0/schemas/org.gnome.Extensions.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.shell.gschema.xml
 %{_datadir}/gnome-control-center/keybindings/50-gnome-shell-launchers.xml
 %{_datadir}/gnome-control-center/keybindings/50-gnome-shell-system.xml
@@ -275,9 +276,6 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_datadir}/gnome-shell/perf-background.xml
 %{_datadir}/gnome-shell/gnome-shell-icons.gresource
 %{_mandir}/man?/gnome-shell.?%{ext_man}
-%dir %{_datadir}/xdg-desktop-portal
-%dir %{_datadir}/xdg-desktop-portal/portals
-%{_datadir}/xdg-desktop-portal/portals/gnome-shell.portal
 %{_userunitdir}/org.gnome.Shell.target
 %{_userunitdir}/org.gnome.Shell@wayland.service
 %{_userunitdir}/org.gnome.Shell@x11.service
@@ -312,8 +310,8 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_datadir}/gnome-shell/org.gnome.Shell.Extensions.src.gresource
 
 %files devel
-%doc HACKING.md
-%doc %{_datadir}/gtk-doc/html
+%doc %{_datadir}/doc/shell/
+%doc %{_datadir}/doc/st/
 %{_datadir}/gnome-shell/*.gir
 %dir %{_datadir}/gnome-shell/gir-1.0
 %{_datadir}/gnome-shell/gir-1.0/Shew-0.gir
