@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar 15 19:46:03 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 3.6:
+  * Changed
+    + Refactor TOC Sanitation
+  * Fixed
+    + Include scripts/*.py in the generated source tarballs (#1430)
+    + Ensure lines after heading in loose list are properly
+      detabbed (#1443).
+    + Give smarty tree processor higher priority than toc (#1440).
+    + Permit carets (^) and square brackets (]) but explicitly
+      exclude backslashes (\) from abbreviations (#1444).
+    + In attribute lists (attr_list, fenced_code), quoted attribute
+      values are now allowed to contain curly braces (}) (#1414).
+
+-------------------------------------------------------------------
 Thu Jan 11 21:37:02 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 3.5.2:

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Markdown
-Version:        3.5.2
+Version:        3.6
 Release:        0
 Summary:        Python implementation of Markdown
 License:        BSD-3-Clause
@@ -38,7 +38,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-importlib-metadata >= 4.4
 %endif
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
