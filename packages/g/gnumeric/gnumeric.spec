@@ -1,7 +1,7 @@
 #
 # spec file for package gnumeric
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,25 @@
 
 
 Name:           gnumeric
-Version:        1.12.56
+Version:        1.12.57
 Release:        0
 Summary:        Spreadsheet Application
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Productivity/Office/Spreadsheets
 URL:            http://www.gnumeric.org/
-Source0:        https://download.gnome.org/sources/gnumeric/1.12/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 Source1:        gnumeric-rpmlintrc
 
 BuildRequires:  bison
 BuildRequires:  docbook-dtds
 BuildRequires:  fdupes
+BuildRequires:  gtk-doc
 BuildRequires:  intltool
 BuildRequires:  itstool
 BuildRequires:  libgsf-devel
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  yelp-tools
 # Disable python3-devel BR for now, not supported yet.
 #BuildRequires:  python3-devel
 BuildRequires:  pkgconfig(gio-2.0) >= 2.38.0
@@ -133,6 +136,7 @@ Gnumeric is part of the GNOME project.
 %autosetup -p1
 
 %build
+NOCONFIGURE=1 ./autogen.sh
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %configure \
 	--disable-static \

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Feb 12 16:47:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.12.57:
+  + Fix touchpad scrolling on Wayland.
+  + Fix ods auto-filter import problem.
+  + Fix xml import and export of auto-filters.
+  + Fix problem with percent-of-range auto-filters with blanks.
+  + New UNIQUE function.
+  + New FLT.RADIX, FLT.MIN, FLT.MAX, FLT.NEXTAFTER functions.
+  + New experimental --with-decimal64 for base-10 math.
+  + Fix sheet resize problem.
+  + Fix UI problem with redo of expression entry.
+  + Accept ad-hoc clipboard format "text/plain;charset=utf-8".
+- Switch to _service checkout: prepare for easier updates.
+- Add libtool, gtk-doc, and yelp-tools BuildRequires and call
+  autogen.sh in build phase: needed, as the git checkout needs to
+  be bootstrapped.
+
+-------------------------------------------------------------------
 Fri Nov 10 18:45:30 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add ix86 ExcludeArch: goffice is no longer built for that target.
