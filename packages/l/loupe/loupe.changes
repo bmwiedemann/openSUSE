@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Fri Mar 15 07:08:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Change to stable dependencies
+
+-------------------------------------------------------------------
+Mon Mar  4 08:00:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.rc:
+  + Fix background color detection ignoring small lines in large
+    images.
+  + Change to "gl" as GSK default renderer instead of "ngl" due to
+    performance reasons.
+  + Change to sticking to the first error delivered during image
+    loading.
+
+-------------------------------------------------------------------
+Sun Feb 25 15:25:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.beta.2:
+  + Change metainfo to include GNOME group.
+  + Change metainfo to use reversed name for the developer id.
+  + Change to use latest glycin beta for better metadata
+    performance.
+
+-------------------------------------------------------------------
+Mon Feb 19 17:55:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.beta.1:
+  + Change .desktop file to not include "Slideshow" as keyword.
+  + Change help by regenerating pages.
+  + Change help to correctly represent zoom.
+  + Change to use zbus 4.0.
+
+-------------------------------------------------------------------
+Mon Feb 12 16:14:00 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.beta:
+  + Fix not reliably returning to restored image when undoing trash
+    operation.
+  + Added Shift+Delete as shortcut for permanent image deletion.
+  + Added build option that makes X11 an optional dependency.
+  + Added button to copy coordinates for location in properties.
+  + Change to not using animation when changing images via keyboard
+    shortcuts.
+  + Change to opening image in new window, occupy 40% of the screen
+    instead of 30%.
+  + Change to using "stacked cards" animation when changing images
+    via buttons.
+  + Changed to show city if it's less than 15km away instead of
+    100km before.
+- Add pkgconfig(libseccomp) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Tue Jan 16 11:23:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.alpha:
+  + Fix "Ctrl + C" copies image instead of metadata if text is
+    selected.
+  + Fix "g_object_weak_unref" warnings.
+  + Fix changing image resets timeout for hiding controls if still
+    visible.
+  + Fix long file names can newly opened window larger than
+    required for image.
+  + Fix not always zooming into center when using overlay buttons
+    on touchscreen.
+  + Fix opening image in different folder ends fullscreen mode.
+  + Fix scrollbars disappearing under certain conditions.
+  + Add zooming via touchpad scrolling while Ctrl button is
+    pressed.
+  + Follow G_MESSAGES_DEBUG variable for logging.
+  + In print preview, base 100% image scale on physical dimensions
+    of SVGs if specified.
+  + In print preview, fix wrong upper input limit in height.
+  + In print preview, scale SVGs correctly.
+  + More reliably zoom into image position below cursor.
+  + Pre-select current image's folder in file-chooser dialog.
+  + Remember image properties visibility state.
+  + Use GdkSurface:scale instead of scale factor, in theory
+    supporting fractional scaling.
+  + Use glycin 1.0.
+
+-------------------------------------------------------------------
 Thu Nov 30 09:47:03 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.2:

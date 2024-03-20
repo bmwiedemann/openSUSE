@@ -1,7 +1,7 @@
 #
 # spec file for package loupe
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           loupe
-Version:        45.2
+Version:        46.0
 Release:        0
 Summary:        A simple image viewer application
 License:        GPL-3.0-or-later
@@ -31,11 +31,12 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gtk4) >= 4.10
+BuildRequires:  pkgconfig(gtk4) >= 4.13.6
 BuildRequires:  pkgconfig(gweather4) >= 4.0.0
 BuildRequires:  pkgconfig(lcms2)
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.3.99
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.4.0
 BuildRequires:  pkgconfig(libheif) >= 1.14.2
+BuildRequires:  pkgconfig(libseccomp) >= 2.5.0
 Requires:       glycin-loaders
 
 %description
@@ -70,11 +71,12 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Loupe.deskt
 %{_bindir}/%{name}
 %{_datadir}/applications/org.gnome.Loupe.desktop
 %{_datadir}/dbus-1/services/org.gnome.Loupe.service
+%{_datadir}/glib-2.0/schemas/org.gnome.Loupe.gschema.xml
+%{_datadir}/help/C/%{name}/
 %{_datadir}/icons/hicolor/scalable/apps/org.gnome.Loupe.Devel.svg
 %{_datadir}/icons/hicolor/scalable/apps/org.gnome.Loupe.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Loupe-symbolic.svg
 %{_datadir}/metainfo/org.gnome.Loupe.metainfo.xml
-%{_datadir}/help/C/%{name}/
 
 %files lang -f %{name}.lang
 
