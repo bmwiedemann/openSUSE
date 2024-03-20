@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri Mar 15 15:49:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.5.0:
+  + AdwDialog
+    - Fix widget selection in inspector when presented as a bottom
+      sheet.
+    - Fix clicks on the dimming still working with can-closed=true.
+  + Demo: Fix <developer> in metainfo.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  4 07:54:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.5.rc:
+  + Depend on GTK 4.13.4.
+  + Fix layout with GtkSettings:gtk-xft-dpi == 0.
+  + AdwAboutDialog:
+    - Support zero-clause bsd license.
+    - Fix example.
+  + AdwAboutWindow: Support zero-clause bsd license.
+  + AdwDialog:
+    - Allow bottom sheets to shrink beyond 360px width.
+    - Fix a crash when swiping on the dimming.
+    - Adjust dimming intensity.
+  + AdwNavigationView:
+    - Fix signal mentions in push() docs.
+    - Disable missing title warning when containing a split view.
+  + AdwStatusPage: Fix property notification in set_child().
+  + AdwSwipeTracker: Use a smaller threshold for window handles.
+  + AdwToolbarView: Fix a typo in docs.
+  + Demo: Fix window.devel demo.
+  + Stylesheet:
+    - Adjust shade colors in dark.
+    - Make .devel not propagate to dialogs.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 12 15:24:17 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.5.beta:
+  + Demo: Port everything to AdwDialog.
+  + Docs:
+    - Add a migration guide for adaptive dialogs.
+    - Add a favicon.
+    - Use the new asides.
+  + Stylesheet:
+    - Increase GtkSwitch padding.
+    - Align property row title and other row subtitle sizes.
+    - Align expander row and combo row arrows.
+    - Stop hiding switch shapes.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Feb 12 15:22:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.4.3:
