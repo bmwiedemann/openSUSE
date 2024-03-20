@@ -288,4 +288,12 @@
     <comment></comment>
     <requestid>1144857</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>c214bcae75633018b8c9ab9e5ce1ea25</srcmd5>
+    <version>46.0</version>
+    <time>1710965733</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1158403 from dimstar)</comment>
+    <requestid>1159476</requestid>
+  </revision>
 </revisionlist>

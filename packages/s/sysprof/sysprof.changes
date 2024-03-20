@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Mar 16 09:24:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Flamegraph and callgraph colorization improvements.
+  + Fix graphics page for GTK counters.
+  + Fix missing summary icon.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  4 08:38:17 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.rc:
+  + Avoid C99 restrict keyword when using C++.
+  + Add --monitor-bus option to sysprof-cli to record bus address.
+  + Fix compiler warning on integer comparison.
+
+-------------------------------------------------------------------
+Mon Feb 19 17:39:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.beta:
+  + Rust and C++ demangler improvements.
+  + Protection against extremely large mark collections.
+  + Various fixes for parsing certain load bearing /proc files.
+  + Improved stack trace categorization.
+  + Fix use of pointer cursor.
+
+-------------------------------------------------------------------
 Wed Feb  7 09:46:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 45.2:
