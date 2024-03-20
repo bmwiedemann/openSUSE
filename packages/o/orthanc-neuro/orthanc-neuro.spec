@@ -1,7 +1,7 @@
 #
-# spec file for package orthanc-tcia
+# spec file for package orthanc-neuro
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2022-2024 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,15 +24,19 @@ Group:          Productivity/Graphics/Viewers
 Version:        1.0
 Release:        0
 URL:            http://orthanc-server.com
-Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-neuro/OrthancNeuro-%{version}.tar.gz
-Source10:       https://third-party.orthanc-labs.com/nifti_clib-3.0.0.tar.gz
+Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancNeuro-%{version}.tar.gz
+Source10:       https://orthanc.uclouvain.be/downloads/third-party-downloads/nifti_clib-3.0.0.tar.gz
 
 Source20:       orthanc-neuro-readme.openSUSE
 
 Patch0:         cassert.diff
 
 BuildRequires:  cmake
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  googletest-devel
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_date_time-devel >= 1.66
@@ -56,17 +60,18 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Plugin to import data from The Cancer Image Archive
 
 %prep
-%setup -q -n OrthancNeuro-%{version}
-%autopatch -p2
+%autosetup -p2 -n OrthancNeuro-%{version}
 
 #OrthancPlugins may ask for additional files to be loaded
 #Putting them into this folder prevents download of sources from the web
 mkdir ThirdPartyDownloads
 cp %{S:10} ThirdPartyDownloads/.
 
-
 %build
-
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+export CC=gcc-13
+export CXX=g++-13
+%endif
 %cmake .. \
        -DALLOW_DOWNLOADS=OFF \
        -DUSE_SYSTEM_GOOGLE_TEST=ON \
