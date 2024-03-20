@@ -1,7 +1,7 @@
 #
 # spec file for package swell-foop
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,27 @@
 
 
 Name:           swell-foop
-Version:        41.1
+Version:        46.0
 Release:        0
 Summary:        Same Game for GNOME
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://wiki.gnome.org/Apps/Swell_Foop
-Source0:        https://download.gnome.org/sources/swell-foop/41/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  meson >= 0.50
+BuildRequires:  meson >= 0.60
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.22.0
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(clutter-1.0) >= 1.14.0
-BuildRequires:  pkgconfig(clutter-gtk-1.0) >= 1.5.0
 BuildRequires:  pkgconfig(gee-0.8) >= 0.14.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.36
+BuildRequires:  pkgconfig(glib-2.0) >= 2.74
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.36.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
-BuildRequires:  pkgconfig(libgnome-games-support-1) >= 1.7.1
+BuildRequires:  pkgconfig(gtk4) >= 4.10
+BuildRequires:  pkgconfig(libgnome-games-support-2) >= 2.0.0
+BuildRequires:  pkgconfig(librsvg-2.0)
+BuildRequires:  pkgconfig(pangocairo)
 
 %description
 Swell Foop is a puzzle game, of which the objective is to clear the
@@ -51,6 +51,7 @@ until there are none left or no more color groups.
 %autosetup -p1
 
 %build
+export CFLAGS="%{optflags} -Wno-error=return-type"
 %meson
 %meson_build
 
@@ -64,7 +65,6 @@ until there are none left or no more color groups.
 %doc NEWS
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/%{name}
-%{_datadir}/%{name}/
 %{_datadir}/applications/org.gnome.SwellFoop.desktop
 %{_datadir}/dbus-1/services/org.gnome.SwellFoop.service
 %{_datadir}/glib-2.0/schemas/org.gnome.SwellFoop.gschema.xml
