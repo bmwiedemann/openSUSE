@@ -23,7 +23,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           openscap
-Version:        1.3.9
+Version:        1.3.10
 Release:        0
 Summary:        A Set of Libraries for Integration with SCAP
 License:        LGPL-2.1-or-later
@@ -44,7 +44,6 @@ Patch3:         0003-Use-openSUSE-SUSE-cpe-links.patch
 %if 0%{?suse_version} != 1599
 Patch4:         0004-oscap-remediate-is-located-in-bindir.patch
 %endif
-Patch5:         0005-rename-requires-reqs-for-C-20-compatibility.patch
 
 BuildRequires:  asciidoc
 # Use package name cause of "have choice for perl(XML::Parser): brp-check-suse perl-XML-Parser"
