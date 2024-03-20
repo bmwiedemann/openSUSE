@@ -2,6 +2,7 @@
 # spec file for package scons
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 %define pythons python3
 Name:           scons
-Version:        4.5.2
+Version:        4.7.0
 Release:        0
 Summary:        Replacement for Make
 License:        MIT

@@ -367,4 +367,14 @@
     <comment></comment>
     <requestid>1075070</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>8760f71a8f5472ba94bf921847a6ab8c</srcmd5>
+    <version>4.7.0</version>
+    <time>1710965405</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1159232 from AndreasStieger
+
+SCons 4.7.0</comment>
+    <requestid>1159612</requestid>
+  </revision>
 </revisionlist>

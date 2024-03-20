@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 19 07:07:00 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- SCons 4.7.0
+  * Add Method unlink_files to TestCmd for cleaning up
+  * Support LIBLITERALPREFIX
+  * Update support for D compilers, Java
+  * Bug fixes and internal improvements
+
+-------------------------------------------------------------------
 Tue Mar 28 17:02:58 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - SCons 4.5.2
