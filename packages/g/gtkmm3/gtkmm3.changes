@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 18 07:52:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.24.9:
+  + Documentation:
+    - Gtk::Clipboard: Update documentation.
+    - Gtk::ScrolledWindow: Update the class description.
+  + Tests: Gdk::RGBA test: Avoid some comparisons for exact
+    equality.
+  + Meson build: Donʼt fail if warning_level=everything.
+
+-------------------------------------------------------------------
 Wed Sep 13 16:17:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.24.8:
