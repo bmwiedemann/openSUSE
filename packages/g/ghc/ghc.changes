@@ -1,35 +1,55 @@
 -------------------------------------------------------------------
+Tue Mar 19 10:44:15 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+-  fix iserv and hpc deps
+
+-------------------------------------------------------------------
+Tue Mar 12 14:44:58 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update to version 9.8.2. The change log for this release is at:
+  https://downloads.haskell.org/~ghc/9.8.2/docs/users_guide/9.8.2-notes.html.
+
+- Update to version 9.8.1. The change log for this release is at:
+  https://downloads.haskell.org/~ghc/9.8.2/docs/users_guide/9.8.1-notes.html.
+
+-------------------------------------------------------------------
 Sat Feb 24 23:50:25 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 9.6.4
- * Fix a code generator bug on AArch64 platforms resulting in invalid conditional jumps .
- * Fix a simplifier bug that may cause segfaults and core lint failures due to incorrect handling of join points .
- * Ensure unconstrained instance dictionaries get IPE info .
+ * Fix a code generator bug on AArch64 platforms resulting in invalid conditional jumps.
+ * Fix a simplifier bug that may cause segfaults and core lint failures due to incorrect handling of join points.
+ * Ensure unconstrained instance dictionaries get IPE info.
  * Fix a bug where we could silently truncate 64 bit values to 32 bit on 32 bit architectures.
- * Fix a GHCi bug where a failure in the :add command would cause the process to exit .
- * Fix a bug causing suboptimal error messages for certain invalid cyclic module graphs with hs-boot files .
+ * Fix a GHCi bug where a failure in the :add command would cause the process to exit.
+ * Fix a bug causing suboptimal error messages for certain invalid cyclic module graphs with hs-boot files.
  * Fix a bug causing compiler panics with certain package databases involving unusable units and module reexports
  * Fix some memory leaks in GHCi that manifest on reloads
- * Fix a bug leading to some template haskell splices failing on being reloaded into GHCi due to not clearing the interactive context properly .
- * Fix a type checker crash on certain programs involving implicitly scoped type variables .
- * Fix a bug where certain warning flags were not recognised .
- * Fix an incorrect assertion in the simplifier .
- * Align objects in the data section properly when using the LLVM backend .
- * Ensure concurrent thunk update is sound .
- * Ensure the listAllBlocks function takes the non-moving heap into account .
- * Ensure the non-moving GC is not running when pausing
- * Fix some non-moving loops and bugs on Windows and LLP64 platforms
- * Fix a bug where certain programs could have incorrect async exception masking .
- * Ensure we respect maximum event length and don’t overflow into program memory .
- * Ensure we use the right linker flags on AArch64 darwin
- * Fix a bug where -DNOSMP wasn’t being passed to the C compiler even if the target doesn’t support SMP .
- * Ensure we use the right otool and install_name_tool on Darwin .
- * Fix a bug in ghc-bignum where usage of bigNatIsPowerOf2 might result in out of bounds access . 
+ * Fix a bug leading to some template haskell splices failing on being reloaded into GHCi due to not clearing the interactive context properly.
+ * Fix a type checker crash on certain programs involving implicitly scoped type variables.
+ * Fix a bug where certain warning flags were not recognised.
+ * Fix an incorrect assertion in the simplifier.
+ * Align objects in the data section properly when using the LLVM backend.
+ * Ensure concurrent thunk update is sound.
+ * Ensure the listAllBlocks function takes the non-moving heap into account.
+ * Ensure the non-moving GC is not running when pausing.
+ * Fix some non-moving loops and bugs on Windows and LLP64 platforms.
+ * Fix a bug where certain programs could have incorrect async exception masking.
+ * Ensure we respect maximum event length and don’t overflow into program memory.
+ * Ensure we use the right linker flags on AArch64 darwin.
+ * Fix a bug where -DNOSMP wasn’t being passed to the C compiler even if the target doesn’t support SMP.
+ * Ensure we use the right otool and install_name_tool on Darwin.
+ * Fix a bug in ghc-bignum where usage of bigNatIsPowerOf2 might result in out of bounds access.
 
 -------------------------------------------------------------------
 Wed Nov 15 15:23:59 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- drop ghc-9.6.3-src.tar.xz.sig 
+- drop ghc-9.6.3-src.tar.xz.sig
+
+-------------------------------------------------------------------
+Tue Nov 14 11:29:34 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- ghc-8.0.2-Cabal-dynlibdir.patch, 9604.patch, ghc-pie.patch,
+  sphinx7.patch: Remove unused patches
 
 -------------------------------------------------------------------
 Tue Nov 14 10:29:34 UTC 2023 - Andreas Schwab <schwab@suse.de>
@@ -89,7 +109,7 @@ Fri Aug 11 09:33:00 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Sun Aug  6 16:34:18 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- remove post/postun base as is now handled in macros.ghc-extra 
+- remove post/postun base as is now handled in macros.ghc-extra
 
 -------------------------------------------------------------------
 Wed May 24 14:10:46 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -116,7 +136,7 @@ Wed Apr 19 08:44:04 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 - drop unused patches:
     ghc-8.0.2-Cabal-dynlibdir.patch
     riscv-tntc.patch
- * Fixes for a number of bug fixes in the simplifier 
+ * Fixes for a number of bug fixes in the simplifier
  * Many bug fixes to the non-moving and parallel GCs
  * A number of improvements to recompilation avoidance with multiple
    home units
@@ -127,8 +147,7 @@ Wed Apr 19 08:44:04 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Fri Apr  7 13:08:27 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- add provides hsc2hs into ghc-compiler 
-
+- add provides hsc2hs into ghc-compiler
 
 -------------------------------------------------------------------
 Fri Mar 17 11:09:29 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -148,11 +167,11 @@ Fri Mar 17 11:09:29 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 - added patches:
     * ghc-gen_contents_index-haddock-path.patch
     * ghc-Cabal-install-PATH-warning.patch
-    * execstack.patch 
+    * execstack.patch
     * libatomic.patch
-    * riscv-tntc.patch   
+    * riscv-tntc.patch
     * ghc-hadrian-s390x-rts--qg.patch
-    
+
 -------------------------------------------------------------------
 Tue Jan 31 09:37:15 UTC 2023 - Peter Simons <psimons@suse.com>
 

@@ -1,8 +1,8 @@
-Index: ghc-9.6.2/hadrian/src/Oracles/Setting.hs
+Index: ghc-9.4.5/hadrian/src/Oracles/Setting.hs
 ===================================================================
---- ghc-9.6.2.orig/hadrian/src/Oracles/Setting.hs
-+++ ghc-9.6.2/hadrian/src/Oracles/Setting.hs
-@@ -295,7 +295,8 @@ ghcWithInterpreter = do
+--- ghc-9.4.5.orig/hadrian/src/Oracles/Setting.hs
++++ ghc-9.4.5/hadrian/src/Oracles/Setting.hs
+@@ -292,7 +292,8 @@ ghcWithInterpreter = do
                            , "darwin", "kfreebsdgnu" ]
      goodArch <- anyTargetArch [ "i386", "x86_64", "powerpc"
                                , "arm", "aarch64", "s390x"

@@ -23,11 +23,8 @@
       <arch>riscv64</arch>
     </conditions>
     <hardware>
-      <memory>
-        <size unit="G">8</size>
-      </memory>
       <disk>
-	<size unit="G">28</size>
+	<size unit="G">30</size>
       </disk> 
     </hardware>
   </overwrite>
