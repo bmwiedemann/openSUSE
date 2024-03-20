@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Sun Mar 17 09:22:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.52.0:
+  + tests: Fix missing declaration for getpid().
+
+-------------------------------------------------------------------
+Sun Mar 10 16:25:21 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Remove unused dependencies on libei and libxkbcommon-x11.
+
+-------------------------------------------------------------------
+Mon Mar  4 07:46:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.51.91:
+  + Back out code to generate mouse events on mutter. It had a
+    couple of unwanted side effects. Also remove dependencies on
+    libei and xkbcommon.
+  + atk-adaptor: Fix collection role matching.
+  + Have atspi_text_get_string_at_offset fall back to calling
+    GetTextAtOffset if GetStringAtOffset is unimplemented.
+  + Don't use g_assert in the unit tests.
+
+-------------------------------------------------------------------
+Mon Feb 12 15:39:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.51.90:
+  + Add an attribute-changed signal in atk, and update libatspi
+    attribute cache.
+  + Add GetTextSelection and SetTextSelection to Document
+    interface.
+  + Add atspi_device_generate_mouse_event, and implement for
+    mutter.
+  + Have atspi_device_add_key_grab return 0 if XIGrabKeycode fails.
+  + xml: Add Embedded to the Socket interface.
+  + Don't return uninitialized values if
+    atspi_component_get_size/position fail.
+- Add pkgconfig(libei-1.0) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Tue Jan 16 07:32:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.51.0:
+  + atk-adaptor: Fix critical when no table cell array is returned.
+  + accessible: Do not rename deprecated methods to the new names.
+  + Add HelpText property and corresponding functions in atk and
+    libatspi.
+
+-------------------------------------------------------------------
 Sun Jan 14 08:48:57 UTC 2024 - Yifan Jiang <yfjiang@suse.com>
 
 - Provide and obsolete more packages from old atk and at-spi2-atk:

@@ -23,13 +23,13 @@
 %define atspiconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}
 
 Name:           at-spi2-core
-Version:        2.50.0
+Version:        2.52.0
 Release:        0
 Summary:        Assistive Technology Service Provider Interface - D-Bus based implementation
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org/
-Source0:        https://download.gnome.org/sources/at-spi2-core/2.50/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/at-spi2-core/2.52/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  fdupes
@@ -46,7 +46,6 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xi)
-BuildRequires:  pkgconfig(xkbcommon-x11)
 BuildRequires:  pkgconfig(xtst)
 # dbus-daemon is needed to have this work fine
 Requires:       (dbus-1 or dbus-broker)
