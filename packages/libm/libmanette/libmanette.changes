@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 12 15:16:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.2.7:
+  + Allow building as a static library.
+  + ManetteMappingManager: Strip leading and trailing spaces from
+    mappings.
+  + ManetteMonitor:
+    - Always use file backend in Flatpak.
+    - Skip non-evdev devices.
+    - Fix object construction.
+  + Various cleanups.
+
+-------------------------------------------------------------------
 Sun Mar 28 07:50:57 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add baselibs.conf: build libmanette-0_2-0. New dependency to

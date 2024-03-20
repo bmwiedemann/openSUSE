@@ -95,4 +95,12 @@
 </comment>
     <requestid>881715</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4f350e1cabac2a3af311bc6f05d8f5ff</srcmd5>
+    <version>0.2.7</version>
+    <time>1710965553</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1159276 from dimstar)</comment>
+    <requestid>1159536</requestid>
+  </revision>
 </revisionlist>
