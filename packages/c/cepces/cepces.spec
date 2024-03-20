@@ -21,7 +21,7 @@
 %global logdir %{_localstatedir}/log/%{app_name}
 
 Name:           %{app_name}
-Version:        0.3.8
+Version:        0.3.9
 Release:        0%{?dist}
 Summary:        Certificate Enrollment through CEP/CES
 
@@ -32,7 +32,7 @@ BuildArch:      noarch
 
 Requires:       %{app_name}-certmonger == %{version}
 Requires:       python3-%{app_name} == %{version}
-%if 0%{?sle_version} > 150400 || 0%{?suse_version} > 1500
+%if 0%{?sle_version} > 150600 || 0%{?suse_version} > 1500
 Requires:       (%{app_name}-selinux == %{version} if selinux-policy)
 %endif
 BuildRequires:  fdupes
@@ -68,7 +68,7 @@ Requires:       certmonger
 %{app_name} is an application for enrolling certificates through CEP and CES.
 This package provides the certmonger integration.
 
-%if 0%{?sle_version} > 150400 || 0%{?suse_version} > 1500
+%if 0%{?sle_version} > 150600 || 0%{?suse_version} > 1500
 %package selinux
 Summary:        SELinux support for %{app_name}
 
@@ -87,7 +87,7 @@ SELinux support for %{app_name}
 %build
 %py3_build
 
-%if 0%{?sle_version} > 150400 || 0%{?suse_version} > 1500
+%if 0%{?sle_version} > 150600 || 0%{?suse_version} > 1500
 # Build the SELinux module(s).
 for SELINUXVARIANT in %{selinux_variants}; do
   make -C selinux clean all
@@ -100,7 +100,7 @@ done
 
 install -d -m 0700 %{buildroot}%{logdir}
 
-%if 0%{?sle_version} > 150400 || 0%{?suse_version} > 1500
+%if 0%{?sle_version} > 150600 || 0%{?suse_version} > 1500
 # Install the SELinux module(s).
 rm -fv selinux-files.txt
 
@@ -133,7 +133,7 @@ sed -i 's/\/usr\/bin\/env python3/\/usr\/bin\/python3/g' %{buildroot}%{_libexecd
 
 %fdupes %{buildroot}/%{python3_sitelib}/%{app_name}
 
-%if 0%{?sle_version} > 150400 || 0%{?suse_version} > 1500
+%if 0%{?sle_version} > 150600 || 0%{?suse_version} > 1500
 %post selinux
 for SELINUXVARIANT in %{selinux_variants}; do
   %{_sbindir}/semodule -n -s ${SELINUXVARIANT} \
@@ -191,7 +191,7 @@ popd
 %dir %{_libexecdir}/certmonger
 %{_libexecdir}/certmonger/%{app_name}-submit
 
-%if 0%{?sle_version} > 150400 || 0%{?suse_version} > 1500
+%if 0%{?sle_version} > 150600 || 0%{?suse_version} > 1500
 %files selinux -f selinux-files.txt
 %defattr(0644,root,root,0755)
 %endif

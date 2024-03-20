@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 18 19:06:40 UTC 2024 - dmulder@suse.com
+
+- Update to version 0.3.9:
+  * Fix failure to parse DER encoded cert; (bsc#1196658).
+- Also disable selinux in 15.6, since it is still not supported.
+
+-------------------------------------------------------------------
 Mon Jan 22 15:17:33 UTC 2024 - dmulder@suse.com
 
 - Update to version 0.3.8:
