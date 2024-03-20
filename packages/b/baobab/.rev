@@ -427,4 +427,12 @@
     <comment>- Convert to source service for easier updating. (forwarded request 1139267 from dimstar)</comment>
     <requestid>1139284</requestid>
   </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>75b39836f72e8ff2570f8a58d4e24cab</srcmd5>
+    <version>45.0</version>
+    <time>1710965483</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1158420 from dimstar)</comment>
+    <requestid>1159482</requestid>
+  </revision>
 </revisionlist>

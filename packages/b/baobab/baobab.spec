@@ -38,7 +38,7 @@ BuildRequires:  pkgconfig(gio-2.0) >= %{glib2_version}
 BuildRequires:  pkgconfig(glib-2.0) >= %{glib2_version}
 BuildRequires:  pkgconfig(gobject-2.0) >= %{glib2_version}
 BuildRequires:  pkgconfig(gtk4) >= 4.4.0
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.0.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.4.alpha
 
 %description
 Disk Usage Analyzer is a graphical, menu-driven application to analyse

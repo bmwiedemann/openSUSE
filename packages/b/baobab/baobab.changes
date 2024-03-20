@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 17 11:23:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix versioned BuildRequires for libadwaita; according to
+  meson.build it must be >= 1.4.alpha.
+
+-------------------------------------------------------------------
 Tue Jan 16 17:31:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Convert to source service for easier updating.
