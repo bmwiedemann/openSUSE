@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 20 08:16:15 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.3.5:
+  * Add missing <string.h> include (#4)
+  * Fix usage of non-standard LDFLAGS (#5)
+  * configure.ac: properly test $with_inn_{lib,include} (#5)
+
+-------------------------------------------------------------------
 Wed Aug  1 13:57:43 UTC 2018 - mvetter@suse.com
 
 - Update to 4.3.4:

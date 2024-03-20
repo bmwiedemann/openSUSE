@@ -161,4 +161,15 @@
   * Fix manpage formatting (Debian bug #858262)</comment>
     <requestid>626913</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ac6c57da1092c405c1c01e530ea02214</srcmd5>
+    <version>4.3.5</version>
+    <time>1710965902</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.3.5:
+  * Add missing &lt;string.h&gt; include (#4)
+  * Fix usage of non-standard LDFLAGS (#5)
+  * configure.ac: properly test $with_inn_{lib,include} (#5)</comment>
+    <requestid>1159782</requestid>
+  </revision>
 </revisionlist>

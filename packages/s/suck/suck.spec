@@ -1,7 +1,7 @@
 #
 # spec file for package suck
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  inn-devel
 BuildRequires:  openssl-devel
-Version:        4.3.4
+Version:        4.3.5
 Release:        0
-Url:            https://github.com/lazarus-pkgs/suck
+URL:            https://github.com/lazarus-pkgs/suck
 Summary:        Reading News Offline
 License:        SUSE-Public-Domain
 Group:          Productivity/Networking/News/Utilities
