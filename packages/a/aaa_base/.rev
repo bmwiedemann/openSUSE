@@ -4107,4 +4107,15 @@
   * patch alljava.sh and alljava.csh, use the links from update alternatives</comment>
     <requestid>1143637</requestid>
   </revision>
+  <revision rev="496" vrev="1">
+    <srcmd5>1498d4e06cac9fe69c4411b41d571b9c</srcmd5>
+    <version>84.87+git20240318.3e4640d</version>
+    <time>1710965619</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20240318.3e4640d:
+  * Add mc helpers for both tcsh and bash resources
+  * Do not overwrite escape sequences for xterm like (bsc#1221407)
+  * Check for valid TERM</comment>
+    <requestid>1158972</requestid>
+  </revision>
 </revisionlist>
