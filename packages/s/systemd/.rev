@@ -7107,4 +7107,26 @@ handle manual pages that consist only of a .so directive such as
     4be1a801b4 test-69: send SIGTERM to ask systemd-nspawn to properly stop the container</comment>
     <requestid>1152118</requestid>
   </revision>
+  <revision rev="418" vrev="1">
+    <srcmd5>aa6e9afcf4105d37ed3ea9ccbd79e640</srcmd5>
+    <version>255.4</version>
+    <time>1710965620</time>
+    <user>dimstar_suse</user>
+    <comment>- Import commit be772961ada05afab21a72e225d28c26ef9fb1ea (merge of v255.4)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/3986ed5117e1563adfce3f5a8e088a77016c0aee...be772961ada05afab21a72e225d28c26ef9fb1ea
+
+- Import commit 3986ed5117e1563adfce3f5a8e088a77016c0aee
+  3986ed5117 test: drop route from test-functions
+
+- Account for upstream changes to the quotaon and quotacheck services
+
+- Create /etc/sysusers.d as expected by sysusers.d(5)
+
+- Move C API manual pages to systemd-doc, this saves buildroots
+  770+ files and time (mandb is run in %posttrans).
+- Delete supplements on base-documentation from that.
+- Courtesy of spec formatters, remove redundant %defattr.</comment>
+    <requestid>1159582</requestid>
+  </revision>
 </revisionlist>

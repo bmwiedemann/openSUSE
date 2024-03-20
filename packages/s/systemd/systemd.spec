@@ -26,10 +26,9 @@
 %define systemd_release    %{?release_override}%{!?release_override:0}
 %define archive_version    %{nil}
 %else
-# Fallback required for OBS source validator
-%define systemd_version    255.3
+%define systemd_version    255.4
 %define systemd_release    0
-%define archive_version    +suse.15.g96edf7ad18
+%define archive_version    +suse.17.gbe772961ad
 %endif
 
 %define systemd_major      %{sub %systemd_version 1 3}
@@ -215,6 +214,7 @@ Source209:      files.homed
 Source210:      files.lang
 Source211:      files.journal-remote
 Source212:      files.portable
+Source213:      files.devel-doc
 
 #
 # All changes backported from upstream are tracked by the git repository, which
@@ -638,6 +638,7 @@ Requires:       busybox-static
 Requires:       cryptsetup
 Requires:       dhcp-client
 Requires:       dosfstools
+Requires:       iproute2
 Requires:       jq
 Requires:       libcap-progs
 Requires:       libfido2
@@ -647,7 +648,6 @@ Requires:       libtss2-rc0
 Requires:       lz4
 Requires:       make
 Requires:       mtools
-Requires:       net-tools-deprecated
 Requires:       netcat
 Requires:       python3-pexpect
 Requires:       qemu
@@ -734,12 +734,12 @@ Have fun (at your own risk).
 %lang_package
 
 %package doc
-Summary:        HTML documentation for systemd
+Summary:        Additional documentation or doc formats for systemd
 License:        LGPL-2.1-or-later
-Supplements:    (systemd and patterns-base-documentation)
 
 %description doc
-The HTML documentation for systemd.
+A HTML version of the systemd documentation, plus the manual pages
+for the C APIs.
 %endif
 
 %prep
@@ -997,6 +997,8 @@ mkdir -p %{buildroot}%{_sysconfdir}/udev/iocost.conf.d
 
 mkdir -p %{buildroot}%{_sysconfdir}/systemd/network
 mkdir -p %{buildroot}%{_sysconfdir}/systemd/nspawn
+
+mkdir -p %{buildroot}%{_sysconfdir}/sysusers.d/
 
 # This dir must be owned (and thus created) by systemd otherwise the build
 # system will complain. This is odd since we simply own a ghost file in it...
@@ -1411,55 +1413,45 @@ fi
 %endif
 
 %files
-%defattr(-,root,root)
 %include %{SOURCE200}
 
 %files -n udev%{?mini}
-%defattr(-,root,root)
 %include %{SOURCE201}
 
 %if %{with sd_boot}
 %files boot
-%defattr(-,root,root)
 %include %{SOURCE206}
 %endif
 
 %files container
-%defattr(-,root,root)
 %include %{SOURCE202}
 
 %if %{with networkd} || %{with resolved}
 %files network
-%defattr(-,root,root)
 %include %{SOURCE203}
 %endif
 
 %files devel
-%defattr(-,root,root,-)
 %license LICENSE.LGPL2.1
 %include %{SOURCE204}
 
 %if %{with sysvcompat}
 %files sysvcompat
-%defattr(-,root,root,-)
 %include %{SOURCE205}
 %endif
 
 %files -n libsystemd0%{?mini}
-%defattr(-,root,root)
 %license LICENSE.LGPL2.1
 %{_libdir}/libsystemd.so.0
 %{_libdir}/libsystemd.so.0.*.0
 
 %files -n libudev%{?mini}1
-%defattr(-,root,root)
 %license LICENSE.LGPL2.1
 %{_libdir}/libudev.so.1
 %{_libdir}/libudev.so.1.7.*
 
 %if %{with coredump}
 %files coredump
-%defattr(-,root,root)
 %include %{SOURCE208}
 %endif
 
@@ -1468,38 +1460,33 @@ fi
 %include %{SOURCE210}
 
 %files doc
-%defattr(-,root,root,-)
 %{_docdir}/systemd/
+%include %{SOURCE213}
 %endif
 
 %if %{with journal_remote}
 %files journal-remote
-%defattr(-, root, root)
 %include %{SOURCE211}
 %endif
 
 %if %{with homed}
 %files homed
-%defattr(-,root,root)
 %include %{SOURCE209}
 %endif
 
 %if %{with portabled}
 %files portable
-%defattr(-,root,root)
 %include %{SOURCE212}
 %endif
 
 %if %{with testsuite}
 %files testsuite
-%defattr(-,root,root)
 %doc %{_testsuitedir}/integration-tests/README.testsuite
 %{_testsuitedir}
 %endif
 
 %if %{with experimental}
 %files experimental
-%defattr(-,root,root)
 %include %{SOURCE207}
 %endif
 

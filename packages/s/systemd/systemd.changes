@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Mar 18 20:14:57 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Import commit be772961ada05afab21a72e225d28c26ef9fb1ea (merge of v255.4)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/3986ed5117e1563adfce3f5a8e088a77016c0aee...be772961ada05afab21a72e225d28c26ef9fb1ea
+
+-------------------------------------------------------------------
+Mon Mar 18 19:18:33 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Import commit 3986ed5117e1563adfce3f5a8e088a77016c0aee
+
+  3986ed5117 test: drop route from test-functions
+
+-------------------------------------------------------------------
+Mon Mar 18 15:30:26 UTC 2024 - Daan De Meyer <daan.j.demeyer@gmail.com>
+
+- Account for upstream changes to the quotaon and quotacheck services
+
+-------------------------------------------------------------------
+Mon Mar 18 11:32:09 UTC 2024 - Michal Vyskocil <mvyskocil@opensuse.org>
+
+- Create /etc/sysusers.d as expected by sysusers.d(5)
+
+-------------------------------------------------------------------
+Fri Mar  1 18:13:35 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Move C API manual pages to systemd-doc, this saves buildroots
+  770+ files and time (mandb is run in %posttrans).
+- Delete supplements on base-documentation from that.
+- Courtesy of spec formatters, remove redundant %defattr.
+
+-------------------------------------------------------------------
 Mon Feb 26 09:18:00 UTC 2024 - Antonio Feijoo <antonio.feijoo@suse.com>
 
 - Fix syntax required for OBS source validator

@@ -330,7 +330,15 @@
 %endif
 %{_unitdir}/systemd-network-generator.service
 %{_unitdir}/systemd-pstore.service
+%if %{with upstream}
+%{_unitdir}/systemd-quotacheck-root.service
+%endif
+%if %{without upstream}
 %{_unitdir}/systemd-quotacheck.service
+%endif
+%if %{with upstream}
+%{_unitdir}/systemd-quotacheck@.service
+%endif
 %{_unitdir}/systemd-random-seed.service
 %{_unitdir}/systemd-remount-fs.service
 %{_unitdir}/systemd-rfkill.service

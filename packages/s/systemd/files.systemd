@@ -37,6 +37,7 @@
 %dir %{_sysconfdir}/systemd/system.conf.d
 %dir %{_sysconfdir}/systemd/user
 %dir %{_sysconfdir}/systemd/user.conf.d
+%dir %{_sysconfdir}/sysusers.d
 %dir %{_sysconfdir}/tmpfiles.d
 %dir %{_sysconfdir}/xdg/systemd
 %dir %{_sysctldir}
@@ -535,7 +536,15 @@
 %{_unitdir}/printer.target
 %{_unitdir}/proc-sys-fs-binfmt_misc.automount
 %{_unitdir}/proc-sys-fs-binfmt_misc.mount
+%if %{with upstream}
+%{_unitdir}/quotaon-root.service
+%endif
+%if %{without upstream}
 %{_unitdir}/quotaon.service
+%endif
+%if %{with upstream}
+%{_unitdir}/quotaon@.service
+%endif
 %{_unitdir}/reboot.target
 %{_unitdir}/remote-fs-pre.target
 %{_unitdir}/remote-fs.target
