@@ -1,7 +1,7 @@
 #
 # spec file for package typst
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,23 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           typst
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        A new markup-based typesetting system that is powerful and easy to learn
 License:        Apache-2.0
 URL:            https://github.com/typst/typst
 Source0:        https://github.com/typst/typst/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
-Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
+%if 0%{?suse_version} < 1600
+# We have to use the same gcc-version that Rust was being built with
+BuildRequires:  gcc12-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 BuildRequires:  git
+BuildRequires:  openssl-devel
 
 %description
 Typst is a new markup-based typesetting system that is designed to be as powerful as LaTeX while being much easier to learn and use.
@@ -54,18 +60,22 @@ Fish command-line completion support for %{name}.
 
 %prep
 %autosetup -p1 -a1 -n typst-%{version}
-mkdir -p .cargo
-cp %{SOURCE2} .cargo/config
-# This dependency is wrongly specified and tries to download the crate in our offline-environment.
-sed -i s/"iai = { workspace = true }"/"#iai = { workspace = true }"/ tests/Cargo.toml
 
 %build
+%if 0%{?suse_version} < 1600
+export CC=gcc-12
+export CXX=g++-12
+%endif
 export TYPST_VERSION=%{version}
 export GEN_ARTIFACTS=%{_builddir}/%{name}-%{version}/artifacts
 mkdir -p $GEN_ARTIFACTS
 RUSTFLAGS=%{rustflags} %{cargo_build} --workspace
 
 %check
+%if 0%{?suse_version} < 1600
+export CC=gcc-12
+export CXX=g++-12
+%endif
 %{cargo_test} --workspace
 
 %install
