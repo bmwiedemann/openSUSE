@@ -26,7 +26,7 @@
 %endif
 
 Name:           gnome-control-center
-Version:        45.3
+Version:        46.0
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later
@@ -37,8 +37,6 @@ Source99:       %{name}-rpmlintrc
 
 # PATCH-FIX-OPENSUSE gnome-control-center-disable-error-message-for-NM.patch bsc#989801 sckang@suse.com -- network: Improve the check for whether NM or wicked is running
 Patch1:         gnome-control-center-disable-error-message-for-NM.patch
-# PATCH-FIX-UPSTREAM gnome-control-center-add-user-button.patch bsc#1215556 glgo#GNOME/Settings!1927 xwang@suse.com -- Show add user button
-Patch2:         gnome-control-center-add-user-button.patch
 
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
 # PATCH-FEATURE-SLE gnome-control-center-info-never-use-gnome-software.patch bsc#999336 fezhang@suse.com -- info: Never search for gnome-software as an option when checking for updates on SLE and Leap 42.2, because we use gpk-update-viewer.
@@ -56,7 +54,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  krb5-devel
-BuildRequires:  meson >= 0.57.0
+BuildRequires:  meson >= 0.58.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-dbusmock
 BuildRequires:  xsltproc
@@ -65,22 +63,22 @@ BuildRequires:  pkgconfig(cairo-gobject)
 BuildRequires:  pkgconfig(colord) >= 0.1.34
 BuildRequires:  pkgconfig(colord-gtk4)
 BuildRequires:  pkgconfig(fontconfig)
-BuildRequires:  pkgconfig(gcr-base-3)
+BuildRequires:  pkgconfig(gcr-4) >= 4.1.0
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.23.0
 BuildRequires:  pkgconfig(gdk-wayland-3.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.68.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.76.6
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gnome-bluetooth-3.0)
 BuildRequires:  pkgconfig(gnome-desktop-4)
 BuildRequires:  pkgconfig(gnome-settings-daemon) >= 41
 BuildRequires:  pkgconfig(gnutls)
-BuildRequires:  pkgconfig(goa-1.0) >= 3.25.3
+BuildRequires:  pkgconfig(goa-1.0) >= 3.49.1
 BuildRequires:  pkgconfig(goa-backend-1.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 40.alpha
+BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 46.beta
 BuildRequires:  pkgconfig(gsound)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.8
@@ -107,7 +105,7 @@ BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xi) >= 1.2
 ## CONDITIONAL BUILD REQUIREMENTS
 %if %{with wacom}
-BuildRequires:  pkgconfig(libwacom) >= 0.7
+BuildRequires:  pkgconfig(libwacom) >= 1.4
 %endif
 %if %{with ibus}
 BuildRequires:  pkgconfig(ibus-1.0) >= 1.5.2
@@ -181,12 +179,22 @@ BuildArch:      noarch
 This package provides the online accounts onfiguration panel for
 GNOME control center.
 
+%package users
+Summary:        Configuration panel for User accounts
+Group:          System/GUI/GNOME
+Requires:       %{name} = %{version}
+Supplements:    %{name}
+BuildArch:      noarch
+
+%description users
+This package provides the online accounts onfiguration panel for
+GNOME control center.
+
 %lang_package
 
 %prep
 %setup -q
 %patch -P 1 -p1
-%patch -P 2 -p1
 
 # patches for Leap >= 15 plus SLE >= 15, but not TW
 %if 0%{?sle_version} >= 150000
@@ -203,11 +211,9 @@ GNOME control center.
 	%{!?with_ibus: -Dibus=false} \
 	-Dmalcontent=true \
 	-Dtests=false \
+	-Dsnap=false \
 	%{nil}
 %meson_build
-
-#%%check
-#%%meson_test
 
 %install
 %meson_install
@@ -218,6 +224,9 @@ GNOME control center.
 # We do not package gnome-control-center.rules (bnc#804966)
 rm %{buildroot}%{_datadir}/polkit-1/rules.d/gnome-control-center.rules
 
+%check
+%meson_test
+
 %files
 %license COPYING
 %doc NEWS README.md
@@ -225,6 +234,7 @@ rm %{buildroot}%{_datadir}/polkit-1/rules.d/gnome-control-center.rules
 %{_datadir}/metainfo/org.gnome.Settings.appdata.xml
 %exclude %{_datadir}/applications/gnome-color-panel.desktop
 %exclude %{_datadir}/applications/gnome-online-accounts-panel.desktop
+%exclude %{_datadir}/applications/gnome-users-panel.desktop
 %{_datadir}/applications/*.desktop
 %{_datadir}/bash-completion/completions/gnome-control-center
 %{_datadir}/dbus-1/services/org.gnome.Settings.service
@@ -238,8 +248,9 @@ rm %{buildroot}%{_datadir}/polkit-1/rules.d/gnome-control-center.rules
 %{_datadir}/icons/gnome-logo-text-dark.svg
 %{_datadir}/icons/gnome-logo-text.svg
 %{_datadir}/locale/en/
-%{_datadir}/polkit-1/actions/org.gnome.controlcenter.datetime.policy
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.remote-login-helper.policy
+%{_datadir}/polkit-1/actions/org.gnome.controlcenter.remote-session-helper.policy
+%{_datadir}/polkit-1/actions/org.gnome.controlcenter.system.policy
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.user-accounts.policy
 # We do not package gnome-control-center.rules
 #{_datadir}/polkit-1/rules.d/gnome-control-center.rules
@@ -247,8 +258,6 @@ rm %{buildroot}%{_datadir}/polkit-1/rules.d/gnome-control-center.rules
 %dir %{_datadir}/sounds/gnome/default
 %dir %{_datadir}/sounds/gnome/default/alerts
 %{_datadir}/sounds/gnome/default/alerts/*.ogg
-%{_libexecdir}/cc-remote-login-helper
-%{_libexecdir}/gnome-control-center-goa-helper
 %{_libexecdir}/gnome-control-center-print-renderer
 %{_libexecdir}/gnome-control-center-search-provider
 %{_mandir}/man1/gnome-control-center.1%{?ext_man}
@@ -261,6 +270,9 @@ rm %{buildroot}%{_datadir}/polkit-1/rules.d/gnome-control-center.rules
 
 %files goa
 %{_datadir}/applications/gnome-online-accounts-panel.desktop
+
+%files users
+%{_datadir}/applications/gnome-users-panel.desktop
 
 %files devel
 %doc gnome-control-center.doap

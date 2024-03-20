@@ -2059,4 +2059,12 @@ New stable rel</comment>
   upstream.</comment>
     <requestid>1146350</requestid>
   </revision>
+  <revision rev="242" vrev="1">
+    <srcmd5>aba07f14b0f3a153c4a9596e0e4ae028</srcmd5>
+    <version>46.0</version>
+    <time>1710965577</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1159567 from dimstar)</comment>
+    <requestid>1159568</requestid>
+  </revision>
 </revisionlist>

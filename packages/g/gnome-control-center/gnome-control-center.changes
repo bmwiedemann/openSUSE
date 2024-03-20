@@ -1,4 +1,136 @@
 -------------------------------------------------------------------
+Tue Mar 19 08:48:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Split out users panel: it shall not be installed by default on
+  Aeon.
+
+-------------------------------------------------------------------
+Mon Mar 18 12:28:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Update links in appdata file
+  + Improve sidebar search results
+  + Appearance: Add a transition to the selected background check.
+  + Color: Fix visibility of calibration button.
+  + Online Accounts: Reorder online account providers list.
+  + Privacy & Security: Allow launching subpages of the privacy
+    panel directly.
+  + Wacom:
+    - Bump libwacom dependency requirement to >= 1.4.
+    - Add AES styli as separate stylus SVG.
+    - Accept eraser types of button when matching stylus IDs.
+
+-------------------------------------------------------------------
+Fri Mar 15 11:52:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.rc+75:
+  + Allow launching some subpages from the command line.
+  + Various ports of custom widgets to libadwaita widgets.
+  + Appearance: Track current active background better.
+  + Display:
+    - Add support for Variable Refresh Rate (VRR) modes.
+    - Show the full VRR range for a monitor when possible.
+  + System:
+    - Introduce the "Remote Login" settings.
+    - Rename the old "Remote Desktop" settings to "Desktop
+      Sharing".
+    - Reintroduce some of "System" pages as search results.
+  + Users:
+    - Fix issue with newly created user page showing other user's
+      info.
+    - Introduce a new "Add Enterprise User" dialog.
+
+-------------------------------------------------------------------
+Tue Feb 13 15:47:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.beta.2:
+  + Exceptional release to fix translations.
+
+-------------------------------------------------------------------
+Tue Feb 13 11:48:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.beta.1:
+  + Exceptional release to include gnome-online-accounts changes.
+
+-------------------------------------------------------------------
+Mon Feb 12 16:58:00 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.beta:
+  + Drop pkexec dependency.
+  + Bump gcr dependency to gcr4.
+  + Reorder sidebar/panel list.
+  + Use g_clear_handle_id with g_source_remove to remove GSources.
+  + Add CcHostname as a wrapper to interact with system-hostnamed.
+  + Remove periods in subtitles/descriptions/labels according to
+    the HIG.
+  + Various string/sentence rewording (for clarity).
+  + Various style changes in symbolic icons.
+  + Various ports of custom widgets to modern libadwaita
+    alternatives.
+  + Various new mnemonics added.
+  + Accessibility:
+    - Expose new "show-status-shapes" setting.
+    - Rephrase overamplification string in the "Hearing" settings.
+    - Stop tracking old GTK theme.
+    - Stop forcing HighContrast icon theme (The theme is considered
+      deprecated).
+  + Apps:
+    - Tweak headings & descriptions from Default Apps sections.
+    - Tweak the autorun-never option design (inverting the
+      autorun-never option logic).
+    - Use modern libadwaita widgets in the Removable Media
+      settings.
+  + Keyboard: Use AdwActionRow to show the key modifier options.
+  + Network: Fix missing VPN entries.
+  + Mouse:
+    - Add "Test Settings" button to the body of the panel.
+    - Modernize mouse test dialog (adds secondary-click test).
+  + Printers:
+    - Add padding to the sidebar items from "Printer Options".
+    - Add .suggested-action style class to "Test Page" button.
+  + Privacy:
+    - Hide non-functional microphone panel.
+  + Search:
+    - Add commandline parameter for opening the Search Locations
+      dialog directly.
+    - Stop removing non-existent folders from tracker.
+    - Expose single directory setting.
+    - Add placeholder for custom locations.
+    - Set title for non-existent bookmarks.
+    - Always show switch for default/bookmarks.
+    - Handle unset XDG dirs.
+    - Tweak search locations labels.
+  + Sharing:
+    - Fix alignment of networks section in the File/Media sharing
+      dialogs.
+    - Use edit-delete-symbolic in networks list rather than
+       window-close-symbolic.
+    - Move main switches from dialog headerbars into the dialog's
+      content area.
+  + Sound:
+    - Show radio buttons as prefix for the Alert Sound rows.
+    - Add tooltips to all speaker test buttons.
+  + System:
+    - Move "Remote Login" from sharing panel to System (now named
+      "Secure Shell").
+    - Use polkit to request permissions to enable/disable sshd.
+    - Create CcSystemDetailsWindow upon opening (speed up System
+      panel startup time).
+    - Fix crash in About page after dark mode switch.
+    - Don't show Remote Desktop settings when backend is not
+      available.
+    - Show gnome-control-center version on the "GNOME Version" row
+      in the About page.
+    - Fix language chooser dialog not closing in Users page.
+   + Wi-Fi:
+    - Show password when sharing QR Code.
+    - Fix crash with toast notifications in the Saved Networks
+      dialog.
+  + Updated translations.
+- Drop gnome-control-center-add-user-button.patch: no longer
+  applicable.
+
+-------------------------------------------------------------------
 Mon Feb 12 16:56:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 45.3:
