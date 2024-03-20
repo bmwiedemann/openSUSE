@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 15 18:04:48 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.3.1:
+  * Fix tests
+- Add patch to make both flavors coinstallable again:
+  * 0001-Make-Qt5-and-Qt6-libraries-coinstallable-again.patch
+
+-------------------------------------------------------------------
 Sun Feb 11 00:45:49 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Fix build on Leap. The Qt6 packaging macros set the minimum

@@ -1,0 +1,26 @@
+From 958d47e7e776be69e77c16b4eae3509b95028878 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Fri, 15 Mar 2024 19:49:13 +0100
+Subject: [PATCH] Make Qt5 and Qt6 libraries coinstallable again
+
+Version 0.3.1 renamed the library again which made them not coinstallable
+anymore.
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1d15048..cd61fd8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -65,6 +65,7 @@ set_target_properties(kColorPicker
+ 					  RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin
+ 		 			  VERSION ${PROJECT_VERSION}
+ 					  SOVERSION 0
++					  OUTPUT_NAME kColorPicker-Qt${QT_MAJOR_VERSION}
+ 					  )
+ 
+ install(TARGETS kColorPicker
+-- 
+2.44.0
+
