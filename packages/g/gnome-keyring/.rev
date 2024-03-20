@@ -1097,4 +1097,12 @@ New upstream release. (forwarded request 341747 from Zaitor)</comment>
     <comment></comment>
     <requestid>1129572</requestid>
   </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>b13698eca64952b00d026e0edb04bea6</srcmd5>
+    <version>46.1</version>
+    <time>1710965550</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1159273 from dimstar)</comment>
+    <requestid>1159534</requestid>
+  </revision>
 </revisionlist>

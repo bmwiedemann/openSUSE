@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-keyring
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,20 @@
 
 
 Name:           gnome-keyring
-Version:        42.1
+Version:        46.1
 Release:        0
 Summary:        GNOME Keyring
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeKeyring
-Source0:        https://download.gnome.org/sources/gnome-keyring/42/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 Source99:       baselibs.conf
 
 # PATCH-FIX-OPENSUSE gnome-keyring-pam-auth-prompt-password.patch bnc#466732 bgo#560488 vuntz@novell.com -- Make the pam module prompt the password in auth, so we can use pam-config. This is a workaround until bnc#477488 is implemented.
 Patch0:         gnome-keyring-pam-auth-prompt-password.patch
 # PATCH-FEATURE-UPSTREAM gnome-keyring-bsc1039461-pam-man-page.patch bsc#1039461 bgo#784051 hpj@suse.com -- Add a man page for the PAM module
 Patch1:         gnome-keyring-bsc1039461-pam-man-page.patch
+
 ## NOTE: Keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FIX-SLE gnome-keyring-bsc932232-use-libgcrypt-allocators.patch bsc#932232 hpj@suse.com
 Patch1000:      gnome-keyring-bsc932232-use-libgcrypt-allocators.patch
@@ -43,6 +44,7 @@ BuildRequires:  fdupes
 BuildRequires:  gtk-doc
 BuildRequires:  libgcrypt-devel >= 1.2.2
 BuildRequires:  libselinux-devel
+BuildRequires:  libtool
 BuildRequires:  openssh
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
@@ -123,9 +125,10 @@ The PAM module can be used to unlock the keyring on login.
 %endif
 
 %build
-autoreconf -f
+autoreconf -fi
 %configure\
         --enable-pam \
+        --enable-ssh-agent \
         --without-libcap-ng \
         --with-pam-dir=%{_pam_moduledir}
 %make_build

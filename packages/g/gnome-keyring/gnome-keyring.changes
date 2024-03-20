@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Feb 15 08:14:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Pass --enable-ssh-agent to configure: the switch to gcr-ssh-agent
+  is not yet complete (glgo#GNOME/gnome-keyring#140).
+
+-------------------------------------------------------------------
+Tue Feb 13 16:06:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.1:
+  + ssh-agent: avoid deadlock when agent process dies before we
+    connect to it.
+  + gkm: fix test-sexp with GCC 14.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 12 15:40:48 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + build: Remove build with ssh component from default build
+    instructions.
+  + main: Reduce scope of ssh_started variable.
+  + desktop: Expand variables.
+  + desktop: Remove obsolete Bugzilla entries.
+  + configure.ac: Stop using deprecated pkgconfig variable in
+    p11-kit.
+  + pkcs11: Don't use strncpy when copying paths.
+  + daemon: Add socket files to EXTRA_DIST.
+  + Updated translations.
+- Switch to _service for easier upgrades.
+- Add libtool BuildRequires: git checkout needs a proper bootstrao.
+
+-------------------------------------------------------------------
 Tue Nov 28 12:08:36 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -p N instead of deprecated %patchN.
