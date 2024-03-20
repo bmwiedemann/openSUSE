@@ -1,7 +1,7 @@
 #
 # spec file for package uhttpmock
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           uhttpmock
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        HTTP web service mocking library
 License:        LGPL-2.1-or-later
