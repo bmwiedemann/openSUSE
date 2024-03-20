@@ -456,4 +456,12 @@
   * Add filetype and icon for .hh extension</comment>
     <requestid>1158071</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>7161ae09f790dd51bea260071a81b398</srcmd5>
+    <version>0.18.7+0</version>
+    <time>1710965936</time>
+    <user>dimstar_suse</user>
+    <comment>- Filter dependencies for vendor tarball</comment>
+    <requestid>1159892</requestid>
+  </revision>
 </revisionlist>
