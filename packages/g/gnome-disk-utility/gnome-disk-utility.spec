@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-disk-utility
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-disk-utility
-Version:        45.1
+Version:        46.0
 Release:        0
 Summary:        Disks application for dealing with storage devices
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
 URL:            https://wiki.gnome.org/Apps/Disks
-Source0:        https://download.gnome.org/sources/gnome-disk-utility/45/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils

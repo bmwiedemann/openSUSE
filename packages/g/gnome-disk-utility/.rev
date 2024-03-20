@@ -684,4 +684,12 @@
     <comment></comment>
     <requestid>1157138</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>ce5bc870e8b1c547cd2643a74ed2f17d</srcmd5>
+    <version>46.0</version>
+    <time>1710965449</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 - rebased (forwarded request 1158023 from dimstar)</comment>
+    <requestid>1159437</requestid>
+  </revision>
 </revisionlist>

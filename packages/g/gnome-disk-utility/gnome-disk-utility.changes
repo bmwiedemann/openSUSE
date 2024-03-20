@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 13 07:59:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + metainfo: Fix wrong developer id
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 13 07:29:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.alpha:
+  + appdata: Improve appdata for AppStream 1.0.
+
+-------------------------------------------------------------------
 Tue Mar 12 08:58:30 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Move install commands into %install section
