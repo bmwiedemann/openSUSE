@@ -78,4 +78,12 @@ Pushing GNOME 45.rc packages</comment>
     <comment>- Convert to source service for easier updating. (forwarded request 1139270 from dimstar)</comment>
     <requestid>1139286</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>698186ab4b11e9a00ea471563a20d16e</srcmd5>
+    <version>46.0</version>
+    <time>1710965724</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1158199 from dimstar)</comment>
+    <requestid>1159461</requestid>
+  </revision>
 </revisionlist>

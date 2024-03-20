@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 15 10:33:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Metainfo improvements.
+  + Add available emergency numbers by location (country code).
+  + Fix call back button being insensitive.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Jan 16 17:32:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Convert to source service for easier updating.
