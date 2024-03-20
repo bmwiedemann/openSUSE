@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-tweaks
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2011 Luis Medinas, Lisbon, Portugal.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           gnome-tweaks
-Version:        45.0
+Version:        46.0
 Release:        0
 Summary:        A tool to customize advanced GNOME 3 options
 License:        CC0-1.0 AND GPL-3.0-or-later
@@ -31,14 +31,22 @@ BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 # Hicolor is Needed for directory ownership
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  meson
+BuildRequires:  desktop-file-utils
+BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libhandy-1)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.78.0
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.78.0
+BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 46.0
+BuildRequires:  pkgconfig(gtk4) >= 4.10.0
+BuildRequires:  pkgconfig(gudev-1.0) >= 238
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.4.0
+BuildRequires:  pkgconfig(pygobject-3.0) >= 3.46.0
 Requires:       gnome-settings-daemon
 # Gsettings Schemas are needed from: gnome-shell, g-d-s and mutter
 Requires:       gnome-shell >= 3.24
 Requires:       gsettings-desktop-schemas >= 3.27.90
 Requires:       mutter
+Requires:       python3-base >= 3.10
 Requires:       python3-gobject >= 3.10
 Requires:       python3-gobject-Gdk
 Requires:       python3-xml
