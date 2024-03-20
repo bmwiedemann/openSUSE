@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Mon Mar 18 14:22:19 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Bugfixes: Remove char limit on size label in properties dialog.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  4 08:49:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.rc:
+  + Enhancements:
+    - Adjust empty status page and progress tooltip strings.
+    - Add input hints and purpose properties to entries.
+    - Refine operations hover background.
+  + Bugfixes:
+    - Position loop mounts correctly in the sidebar.
+    - Fix internationalization issues.
+    - Revert crashes-causing multi-file properties performance
+      optimization.
+    - Reestablish location signals if location change failed.
+    - Fix regression which disallowed dropping files on empty
+      folders.
+  + Cleanups:
+    - Remove architecture-sensitive duplicate filename unit test.
+    - Refine Appstream metainfo.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 12 16:28:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.beta:
+  + Postponed: The network view from 46.alpha.1 was deemed to
+    require more work
+  + Enhancements:
+    - Added a global search mode.
+    - Use 'text entry' cursor on pathbar hover.
+    - Add drop shadow to file property dialog icons.
+    - Improve progress info icons and tooltips.
+
+-------------------------------------------------------------------
+Mon Jan 29 13:33:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.alpha.1:
+  + Enhancements:
+    - Views can be switched without a folder reload.
+    - Operations are listed in the bottom of the sidebar.
+    - Network view replaces Other Locations.
+    - Mounted drives are shown in the sidebar.
+    - Selected files are recorded in back and forward history.
+    - Subfolder loading indication.
+    - Various view performance improvements.
+    - Improved performance of multi-file properties dialog.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 16 17:14:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.alpha.0+39:
+  + Revert "files-view: Set selected files even more efficiently".
+  + Revert "view-model: Use binary search to find index".
+
+-------------------------------------------------------------------
+Tue Jan 16 11:39:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.alpha:
+  + Confirm password when creating protected ZIP archives.
+  + Make custom folder icon feature discoverable.
+  + Make URI entry discoverable.
+  + Allow changing owner/group and any permissions under admin:///.
+  + Add detailed date and time format option.
+  + Detect copy/move over 4GiB file limit on FAT.
+  + Give feedback on completion of quick operations.
+  + New-style banners, unstar animation, and other visual
+    refinements.
+  + Allow Alt+Down to revert more than one Alt+Up.
+  + Close overlaid sidebar on location change.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Dec  6 12:45:36 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.2.1:

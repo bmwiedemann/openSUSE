@@ -1612,4 +1612,12 @@ Hence, recommended to be added to 12.3</comment>
     <comment>sync changelog with SLE/Leap. (forwarded request 1132208 from yfjiang)</comment>
     <requestid>1132442</requestid>
   </revision>
+  <revision rev="213" vrev="1">
+    <srcmd5>f847a5819a2cced18631965cb788f99c</srcmd5>
+    <version>46.0</version>
+    <time>1710965528</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1159028 from dimstar)</comment>
+    <requestid>1159514</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package nautilus
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nautilus
-Version:        45.2.1
+Version:        46.0
 Release:        0
 Summary:        File Manager for the GNOME Desktop
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -40,16 +40,16 @@ BuildRequires:  pkgconfig(cloudproviders)
 BuildRequires:  pkgconfig(gail-3.0)
 BuildRequires:  pkgconfig(gexiv2) >= 0.14.0
 BuildRequires:  pkgconfig(gi-docgen)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.67.1
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.67.1
-BuildRequires:  pkgconfig(glib-2.0) >= 2.67.1
-BuildRequires:  pkgconfig(gmodule-no-export-2.0) >= 2.67.1
+BuildRequires:  pkgconfig(gio-2.0) >= 2.79.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.79.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.79.0
+BuildRequires:  pkgconfig(gmodule-no-export-2.0) >= 2.79.0
 BuildRequires:  pkgconfig(gnome-autoar-0) >= 0.3.0
 BuildRequires:  pkgconfig(gnome-desktop-4) >= 1.0.0
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 42
 BuildRequires:  pkgconfig(gstreamer-tag-1.0)
-BuildRequires:  pkgconfig(gtk4) >= 4.11.2
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.2.beta
+BuildRequires:  pkgconfig(gtk4) >= 4.13.6
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.4.0
 BuildRequires:  pkgconfig(libportal)
 BuildRequires:  pkgconfig(libportal-gtk4)
 BuildRequires:  pkgconfig(libseccomp)
@@ -154,7 +154,7 @@ install -m0755 -D %{SOURCE2} %{buildroot}%{_bindir}/set_trusted.sh
 %{_datadir}/dbus-1/services/org.gnome.Nautilus.service
 %{_datadir}/glib-2.0/schemas/org.gnome.nautilus.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Nautilus*
-%{_datadir}/metainfo/org.gnome.Nautilus.appdata.xml
+%{_datadir}/metainfo/org.gnome.Nautilus.metainfo.xml
 %{_datadir}/%{name}/
 %{_datadir}/tracker3/domain-ontologies/org.gnome.Nautilus.domain.rule
 %{_mandir}/man1/nautilus*.1%{?ext_man}
