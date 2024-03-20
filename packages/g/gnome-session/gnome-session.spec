@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-session
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define basever 45
+%define basever 46
 
 Name:           gnome-session
-Version:        45.0
+Version:        46.0
 Release:        0
 Summary:        Session Tools for the GNOME Desktop
 License:        GPL-2.0-or-later
@@ -112,8 +112,6 @@ functional GNOME desktop.
 %build
 %meson \
 	-D docbook=false \
-	-D systemd=true \
-	-D systemd_journal=true \
 	-D systemduserunitdir=%{_userunitdir} \
 	%{nil}
 %meson_build
@@ -185,7 +183,6 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %{_bindir}/gnome-session
 %{_bindir}/gnome-session-inhibit
 %{_bindir}/gnome-session-quit
-%{_datadir}/GConf/gsettings/gnome-session.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.SessionManager.gschema.xml
 %dir %{_datadir}/gnome-session
 %dir %{_datadir}/gnome-session/sessions

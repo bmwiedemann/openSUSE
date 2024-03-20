@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Mar 19 07:47:48 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  4 08:23:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.rc:
+  + Fix for race a shutdown with loginctl terminate-user
+  + Updates for Access portal changes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 16 12:06:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.alpha:
+  + Make ctrl-c behave better in gnome-session-inhibit.
+  + Advertise support for headless session.
+  + Build goo cleanups.
+  + Copyright header cleanups.
+  + README cleanups.
+  + Updated translations.
+- Drop -D systemd=true -D systemd_journal=true meson parameters: no
+  longer supported to be switched off.
+
+-------------------------------------------------------------------
 Tue Nov 28 12:01:16 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -p N instead of deprecated %patchN.

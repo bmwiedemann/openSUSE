@@ -1565,4 +1565,12 @@ Index: gnome-session.changes
  Wed Mar 23 09:56:57 UTC 2022 - Bjørn Lie &lt;bjorn.lie@gmail.com&gt; (forwarded request 1131264 from xiaoguang_wang)</comment>
     <requestid>1131266</requestid>
   </revision>
+  <revision rev="208" vrev="1">
+    <srcmd5>5b8ea1c2973373ec85e5720b53ee05e1</srcmd5>
+    <version>46.0</version>
+    <time>1710965538</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1159249 from dimstar)</comment>
+    <requestid>1159521</requestid>
+  </revision>
 </revisionlist>
