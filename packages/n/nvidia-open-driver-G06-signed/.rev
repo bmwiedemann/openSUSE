@@ -346,4 +346,13 @@
   conflicts to nvidia-open-driver-G06-kmp ...</comment>
     <requestid>1152990</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>b6322c55fcfce17023af178f5b5f7609</srcmd5>
+    <version>550.67</version>
+    <time>1710965805</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 550.67
+- rename pci_ids-unsupported* to pci_ids-supported* files</comment>
+    <requestid>1159672</requestid>
+  </revision>
 </revisionlist>
