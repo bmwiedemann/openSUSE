@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests-gssapi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-requests-gssapi
-Version:        1.2.3
+Version:        1.3.0
 Release:        0
 Summary:        A GSSAPI authentication handler for python-requests
 License:        ISC
 Group:          Development/Languages/Python
 URL:            https://github.com/pythongssapi/requests-gssapi
 Source:         https://files.pythonhosted.org/packages/source/r/requests-gssapi/requests-gssapi-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-gssapi
@@ -45,10 +47,10 @@ A GSSAPI authentication handler for python-requests
 %setup -q -n requests-gssapi-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,6 +59,7 @@ A GSSAPI authentication handler for python-requests
 %files %{python_files}
 %doc AUTHORS README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/requests_gssapi
+%{python_sitelib}/requests_gssapi-%{version}.dist-info
 
 %changelog
