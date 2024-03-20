@@ -1,7 +1,7 @@
 #
 # spec file for package usbredir
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           usbredir
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        A protocol for redirecting USB traffic
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
