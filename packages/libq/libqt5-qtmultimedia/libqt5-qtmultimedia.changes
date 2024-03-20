@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 19 09:58:23 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.13+kde2, rebased upstream:
+  * Add Info.plist with NSCameraUsageDescription to qmlvideo example
+  * Android: Handle Pause() by QAudioRecorder
+  * Use the right enum for the loops property
+  * Bump version to 5.15.13
+  * Fix access to multi front/back cameras on Android devices
+
+-------------------------------------------------------------------
 Fri Dec 29 13:29:31 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.12+kde2, rebased upstream:
