@@ -111,4 +111,12 @@
     <comment>fix build on sle12</comment>
     <requestid>908786</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>8b1b151d5658103c379063879ea00a0d</srcmd5>
+    <version>1.15</version>
+    <time>1710965439</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with gcc 14 (bsc#1221696)</comment>
+    <requestid>1159649</requestid>
+  </revision>
 </revisionlist>

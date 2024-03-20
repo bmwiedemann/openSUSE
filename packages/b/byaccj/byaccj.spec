@@ -1,7 +1,7 @@
 #
 # spec file for package byaccj
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
-%define jpp_release 3
 Name:           byaccj
 Version:        1.15
 Release:        0
 Summary:        Parser Generator with Java Extension
 License:        SUSE-Public-Domain
 Group:          Development/Libraries/Java
-URL:            http://byaccj.sourceforge.net/
+URL:            https://byaccj.sourceforge.net/
 Source0:        https://downloads.sourceforge.net/%{name}/%{name}%{version}_src.tar.gz
+Patch0:         byaccj-gcc14.patch
 Requires:       man-pages
 
 %description
@@ -41,6 +41,7 @@ finally is a YACC for Java now!
 
 %prep
 %setup -q -n %{name}%{version}
+%patch -P 0 -p1
 
 chmod -c -x src/* docs/*
 sed -i -e 's|-arch i386 -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mmacosx-version-min=10.4|$(LDFLAGS)|g' src/Makefile
