@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Mar 13 13:14:32 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- enable gcc13 for Leap 15, %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Wed Sep 20 09:43:23 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- Version 4.1 
+  * New function from the SDK wrapped in Python:
+    - orthanc.RegisterStorageCommitmentScpCallback()
+  * New configuration section "Python" to group settings related to the plugin:
+    - "Python.Path" is an alias for global option "PythonScript"
+    - "Python.Verbose" is an alias for global option "PythonVerbose"
+  * New configuration option "Python.DisplayMemoryUsage" to periodically
+    display memory allocations that stem from Python plugins
+  * Fix memory leaks when a python script calls orthanc.RestApiPost() and sibling
+    methods, in IncomingHttpRequestFilter and in the CMove callback.
+  * New builders for Windows: Supporting 32 / 64bit with Python 3.9 / 3.10 / 3.11
+
+-------------------------------------------------------------------
 Mon Dec  5 07:24:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package orthanc-python
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,17 +17,22 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           orthanc-python
-Version:        4.0
+Version:        4.1
 Release:        0
 Summary:        Python plugin for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://orthanc-server.com
-Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-python/OrthancPython-%{version}.tar.gz
+Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancPython-%{version}.tar.gz
 Source11:       orthanc-python-readme.openSUSE
 BuildRequires:  cmake
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_atomic-devel >= 1.66
 BuildRequires:  libboost_date_time-devel >= 1.66
@@ -51,12 +56,15 @@ This plugin can be used to write Orthanc plugins in Python instead of C++
 See %{_docdir}/orthanc/orthanc-python-readme.openSUSE
 
 %prep
-%setup -q -n OrthancPython-%{version}
+%autosetup -n OrthancPython-%{version}
 
 echo %{python3_version}
 
 %build
-
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+export CC=gcc-13
+export CXX=g++-13
+%endif
 %cmake .. \
        -DALLOW_DOWNLOADS=OFF \
        -DUSE_SYSTEM_GOOGLE_TEST=ON \
