@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Sat Mar 16 17:29:53 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.15.1:
+  * No code changes (fixing Rust Cargo.toml stuff).
+- BuildRequire gnupg to fix failing tests
+
+-------------------------------------------------------------------
+Sat Mar 16 17:09:19 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.15.0:
+  * Breaking changes
+    - The minimum supported Rust version (MSRV) is now 1.76.0.
+    - The on-disk index format changed. New index files will be
+      created automatically, but it can fail if the repository is
+      co-located and predates Git GC issues #815. If reindexing
+      failed, you'll need to clean up corrupted operation history
+      by jj op abandon ..<bad operation ID>.
+    - Dropped support for the "legacy" graph-drawing style. Use
+      "ascii" for a very similar result.
+    - The default log output no longer lists all tagged heads. Set
+      revsets.log = "@ | ancestors(immutable_heads().., 2) |
+      heads(immutable_heads())" to restore the old behavior.
+    - Dropped support for the deprecated : revset operator. Use ::
+      instead.
+    - jj rebase --skip-empty no longer abandons commits that were
+      already empty before the rebase.
+  * New features
+    - Partial support for commit signing. Currently you can
+      configure jj to "keep" commit signatures by making new ones
+      for rewritten commits, and to sign new commits when they are
+      created.
+      This comes with out-of-the-box support for the following
+      backends:
+        — GnuPG
+        - SSH
+    - Signature verification and an explicit sign command will
+      hopefully come soon.
+    - Templates now support logical operators: ||, &&, !
+    - Templates now support the self keyword, which is the current
+      commit in jj log/obslog templates.
+    - jj show now accepts -T/--template option to render its output
+      using template
+    - jj config list now accepts -T/--template option.
+    - jj git fetch now accepts -b as a shorthand for --branch,
+      making it more consistent with other commands that accept a
+      branch
+    - In the templating language, Timestamps now have a .local()
+      method for converting to the local timezone.
+    - jj next/prev now infer --edit when you're already editing a
+      non-head commit (a commit with children).
+    - A new built-in pager named :builtin is available on all
+      platforms, implemented with minus
+    - Set config ui.log-synthetic-elided-nodes = true to make jj
+      log include synthetic nodes in the graph where some revisions
+      were elided (#1252, #2971). This may become the default
+      depending on feedback.
+    - When creating a new workspace, the sparse patterns are now
+      copied over from the current workspace.
+    - jj git init --colocate can now import an existing Git
+      repository. This is equivalent to jj git init --git-repo=..
+    - jj git fetch now automatically prints new remote branches and
+      tags by default.
+    - --verbose/-v is now --debug (no short option since it's not
+      intended to be used often)
+    - jj move --from/--to can now be abbreviated to jj move -f/-t
+    - jj commit/diffedit/move/resolve/split/squash/unsquash now
+      accept --tool=<NAME> option to override the default.  #2575
+    - Added completions for Nushell to jj util completion
+    - jj branch list now supports a --tracked/-t option which can
+      be used to show tracked branches only. Omits local
+      Git-tracking branches by default.
+    - Commands producing diffs now accept a --context flag for the
+      number of lines of context to show.
+    - jj commands with the -T/--template option now provide a hint
+      containing defined template names when no argument is given,
+      assisting the user in making a selection.
+  * Fixed bugs
+    - On Windows, symlinks in the repo are now supported when
+      Developer Mode is enabled.  When symlink support is
+      unavailable, they will be materialized as regular files in
+      the working copy (instead of resulting in a crash).  #2
+    - On Windows, the :builtin pager is now used by default, rather
+      than being disabled entirely.
+    - Auto-rebase now preserves the shape of history even for merge
+      commits where one parent is an ancestor of another.  #2600
+
+-------------------------------------------------------------------
 Thu Feb  8 06:50:56 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.14.0:
