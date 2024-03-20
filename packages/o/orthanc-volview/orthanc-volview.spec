@@ -1,8 +1,8 @@
 #
-# spec file for package orthanc-ohif
+# spec file for package orthanc-volview
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2023 Dr. Axel Braun <DocB@opensuse.org>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2023-2024 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           orthanc-volview
 Summary:        VolView plugin for Orthanc
 License:        AGPL-3.0-or-later
@@ -23,12 +24,16 @@ Group:          Productivity/Graphics/Viewers
 Version:        1.1
 Release:        0
 URL:            https://orthanc-server.com
-Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-volview/OrthancVolView-%{version}.tar.gz
+Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancVolView-%{version}.tar.gz
 Source1:        https://lsb.orthanc-server.com/plugin-volview/%{version}/dist.zip
 
 BuildRequires:  cmake
 BuildRequires:  e2fsprogs-devel
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  googletest-devel
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_date_time-devel >= 1.66
@@ -56,7 +61,7 @@ The source code of VolView is available at:
 https://github.com/Kitware/VolView
 
 %prep
-%setup -q -n OrthancVolView-%{version}
+%autosetup -n OrthancVolView-%{version}
 
 #OrthanPlugins may ask for additional files to be loaded
 #Putting them into this folder prevents download of sources from the web
@@ -64,7 +69,10 @@ https://github.com/Kitware/VolView
 unzip %{S:1} -d VolView
 
 %build
-
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+export CC=gcc-13
+export CXX=g++-13
+%endif
 %cmake ../ \
        -DALLOW_DOWNLOADS=OFF \
        -DUSE_SYSTEM_GOOGLE_TEST=ON \
