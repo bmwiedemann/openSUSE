@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar 19 22:53:05 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.17.2:
+  * render/vulkan: correct sRBG gamma expansion in shader
+  * tinywl: depend on the server xdg-shell header
+  * layer-shell: forbid set_size with values ≥INT32_MAX
+  * xwayland/xwm: associate even on xcb_get_property() failure
+  * backend/drm: use wlr_drm_backend.name for fd cloning
+  * cursor: fix and simplify region mapping
+  * pointer-constraints: handle inert pointer resources correctly
+  * fix outdated comment in wlr_output.h
+  * Fix disappearing menus in QT apps
+  * backend: fix build against upcoming `gcc-14` (`-Werror=calloc-transposed-args`)
+  * backend/drm: save current refresh rate
+  * backend/drm: fix fb_damage_clips_arr memory leak
+  * backend/drm: fix queued cursor FB overwritten with NULL
+  * cursor-shape-v1: handle inert tablet tool client
+
+-------------------------------------------------------------------
 Mon Jan  1 00:51:49 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 0.17.1:
