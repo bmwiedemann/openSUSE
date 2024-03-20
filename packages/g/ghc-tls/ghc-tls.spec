@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-tls
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,13 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.9.0
+Version:        2.0.1
 Release:        0
-Summary:        TLS/SSL protocol native implementation (Server and Client)
+Summary:        TLS protocol native implementation
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-asn1-encoding-devel
 BuildRequires:  ghc-asn1-encoding-prof
@@ -35,6 +36,8 @@ BuildRequires:  ghc-async-devel
 BuildRequires:  ghc-async-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-base16-bytestring-devel
+BuildRequires:  ghc-base16-bytestring-prof
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-cereal-devel
@@ -56,6 +59,8 @@ BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-network-prof
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-serialise-devel
+BuildRequires:  ghc-serialise-prof
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-transformers-prof
 BuildRequires:  ghc-unix-time-devel
@@ -66,25 +71,12 @@ BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-QuickCheck-prof
 BuildRequires:  ghc-hourglass-devel
 BuildRequires:  ghc-hourglass-prof
-BuildRequires:  ghc-tasty-devel
-BuildRequires:  ghc-tasty-prof
-BuildRequires:  ghc-tasty-quickcheck-devel
-BuildRequires:  ghc-tasty-quickcheck-prof
+BuildRequires:  ghc-hspec-devel
+BuildRequires:  ghc-hspec-prof
 %endif
 
 %description
-Native Haskell TLS and SSL protocol implementation for server and client.
-
-This provides a high-level implementation of a sensitive security protocol,
-eliminating a common set of security issues through the use of the advanced
-type system, high level constructions and common Haskell features.
-
-Currently implement the TLS1.0, TLS1.1, TLS1.2 and TLS 1.3 protocol, and
-support RSA and Ephemeral (Elliptic curve and regular) Diffie Hellman key
-exchanges, and many extensions.
-
-Some debug tools linked with tls, are available through the
-<http://hackage.haskell.org/package/tls-debug/>.
+Native Haskell TLS 1.2/1.3 protocol implementation for servers and clients.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -114,6 +106,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
