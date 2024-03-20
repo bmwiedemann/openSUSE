@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb 28 03:10:22 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update ghc-lib-parser-ex to version 9.8.0.2.
+  ## 9.8.0.2 released
+  - Fix broken cpp in `isStrictMatch`
+
+-------------------------------------------------------------------
+Mon Feb 26 02:34:56 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update ghc-lib-parser-ex to version 9.8.0.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/ghc-lib-parser-ex-9.8.0.1/src/ChangeLog.md
+
+-------------------------------------------------------------------
 Sun Aug 27 17:51:42 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update ghc-lib-parser-ex to version 9.6.0.2.
