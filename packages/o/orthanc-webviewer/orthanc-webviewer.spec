@@ -1,8 +1,8 @@
 #
 # spec file for package orthanc-webviewer
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2019-2022 Dr. Axel Braun
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2019-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,17 +24,22 @@ Group:          Productivity/Graphics/Viewers
 Version:        2.8
 Release:        0
 URL:            https://orthanc-server.com
-Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-webviewer/OrthancWebViewer-%{version}.tar.gz
-Source1:        cornerstone-0.11.0.zip
-Source2:        jquery-ui-1.11.3.zip
-Source3:        jsPanel-2.3.3-fixed.zip
-Source4:        pako-0.2.5.zip
-Source5:        js-url-1.8.6.zip
+Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancWebViewer-%{version}.tar.gz
+Source1:        https://orthanc.uclouvain.be/downloads/third-party-downloads/web-viewer/cornerstone-0.11.0.zip
+Source2:        https://orthanc.uclouvain.be/downloads/third-party-downloads/web-viewer/jquery-ui-1.11.3.zip
+Source3:        https://orthanc.uclouvain.be/downloads/third-party-downloads/web-viewer/jsPanel-2.3.3-fixed.zip
+Source4:        https://orthanc.uclouvain.be/downloads/third-party-downloads/web-viewer/pako-0.2.5.zip
+Source5:        https://orthanc.uclouvain.be/downloads/third-party-downloads/web-viewer/js-url-1.8.6.zip
+Source6:        https://orthanc.uclouvain.be/downloads/third-party-downloads/web-viewer/pdfjs-2.5.207-dist.zip
 Source11:       orthanc-webviewer-readme.SUSE
 Source12:       webviewer.json
 
 BuildRequires:  cmake
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  googletest-devel
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_date_time-devel >= 1.66
@@ -59,16 +64,19 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Webviewer plugin for Orthanc
 
 %prep
-%setup -q -n OrthancWebViewer-%{version}
+%autosetup -n OrthancWebViewer-%{version}
 
 #OrthanPlugin may ask for additional files to be loaded
 #Putting them into this folder prevents download of sources from the web
 mkdir ThirdPartyDownloads
 cd ThirdPartyDownloads
-cp %{S:1} %{S:2} %{S:3} %{S:4} %{S:5} .
+cp %{S:1} %{S:2} %{S:3} %{S:4} %{S:5} %{S:6}  .
 
 %build
-
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+export CC=gcc-13
+export CXX=g++-13
+%endif
 %cmake .. \
        -DALLOW_DOWNLOADS=OFF \
        -DUSE_SYSTEM_GOOGLE_TEST=ON \
