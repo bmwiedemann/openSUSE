@@ -24,7 +24,7 @@
 %endif
 
 Name:           ruby-build
-Version:        20240318
+Version:        20240319
 Release:        0
 BuildArch:      noarch
 License:        MIT
