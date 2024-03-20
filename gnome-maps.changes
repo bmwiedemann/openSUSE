@@ -1,7 +1,63 @@
 -------------------------------------------------------------------
+Sat Mar 16 09:32:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Fix routes covering user location marker.
+  + Update project link in DOAP file.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar 16 09:32:32 UTC 2024 - dimstar@opensuse.org
+
+- Update to version 46.0:
+  * Release 46.9
+  * Fix link
+  * Update Korean translation
+  * Add Kabyle translation
+  * Update Polish translation
+  * Update Occitan translation
+  * Update POTFILES.in
+  * Update Latvian translation
+  * Update Italian translation
+  * mapView: Put route layer below position marker layer
+  * Update Danish translation
+  * Update Russian translation
+  * doap: Change wiki link to apps.gnome.org
+  * appdata: Add contribute URL
+  * Update Swedish translation
+  * Update Russian translation
+  * Update Hungarian translation
+  * appdata: Add 45.5 release
+  * Post-release version bump
+
+-------------------------------------------------------------------
+Mon Mar  4 07:31:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.rc:
+  + Lots of updates to the map style.
+  + Fix parsing OSM object URLs with trailing slashes.
+  + Updated translations.
+- Add pkgconfig(librsvg-2.0) and pkgconfig(json-glib-1.0)
+  BuildRequires: new dependencies.
+
+-------------------------------------------------------------------
+Mon Feb 19 16:11:17 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.alpha:
+  + Redesigned zoom controls inspired by the Loupe image viewer.
+  + Support for OpenTripPlanner v2 GraphQL for public transit
+    routing.
+  + Redeigned OSM account dialog, using Adwaita widgets.
+  + Simplified/refactored more flexible storage format for the
+    place store cache.
+  + Fixed a bug preventing the POI browser showing in some cases.
+  + Updated translations.
+- Convert to source service for easier updating.
+
+-------------------------------------------------------------------
 Fri Feb 16 10:38:31 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
 
-- Update license based on legaldb review 
+- Update license based on legaldb review
 
 -------------------------------------------------------------------
 Mon Dec  4 09:13:03 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
