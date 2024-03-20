@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-skylighting-format-blaze-html
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name skylighting-format-blaze-html
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.1.1.1
+Version:        0.1.1.2
 Release:        0
 Summary:        HTML formatter for skylighting syntax highlighting library
 License:        BSD-3-Clause
