@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar 16 20:10:32 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.22.0:
+  * Long list of changes, see
+    https://scikit-image.org/docs/stable/release_notes/release_0.22.html
+- Drop upstreamed patches
+  * np-warn.patch
+  * skimage-numpy125.patch
+- Enable no longer failing tests.
+
+-------------------------------------------------------------------
 Tue Aug 22 19:18:49 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream patches np-warn.patch and skimage-numpy125.patch

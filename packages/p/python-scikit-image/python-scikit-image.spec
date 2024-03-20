@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-scikit-image
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,16 +26,12 @@
 %bcond_with test
 %endif
 Name:           python-scikit-image%{psuffix}
-Version:        0.21.0
+Version:        0.22.0
 Release:        0
 Summary:        Collection of algorithms for image processing in Python
 License:        BSD-3-Clause
 URL:            https://scikit-image.org/
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-image/%{srcname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM np-warn.patch gh#scikit-image/scikit-image#7052
-Patch:          np-warn.patch
-# PATCH-FIX-UPSTREAM skimage-numpy125.patch gh#scikit-image/scikit-image#6970
-Patch:          skimage-numpy125.patch
 BuildRequires:  %{python_module Cython >= 0.29.21}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module meson-python}
@@ -59,7 +55,7 @@ Requires:       python-packaging >= 21.0
 Requires:       python-scipy >= 1.8
 Requires:       python-tifffile >= 2022.8.12
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-QtPy
 Recommends:     python-SimpleITK
 Recommends:     python-astropy >= 3.1.2
@@ -72,6 +68,7 @@ Recommends:     python-pyamg
 %if %{with test}
 BuildRequires:  %{python_module dask-array >= 1.0.0}
 BuildRequires:  %{python_module matplotlib >= 3.0.3}
+BuildRequires:  %{python_module numpydoc}
 BuildRequires:  %{python_module pytest >= 4.0}
 BuildRequires:  %{python_module pytest-localserver}
 BuildRequires:  %{python_module pytest-xdist}
@@ -111,12 +108,10 @@ chmod -x %{buildroot}%{$python_sitearch}/skimage/measure/{__init__,_find_contour
 donttest+="test_wrap_around"
 # fails randomly on all platforms
 donttest+=" or test_structural_similarity_dtype"
-# https://github.com/scikit-image/scikit-image/issues/7036
-donttest+=" or test_analytical_moments_calculation"
 # https://github.com/scikit-image/scikit-image/issues/7051
 donttest+=" or test_ellipse_parameter_stability"
-# Another floating point flaky test
-donttest+=" or test_clear_border_non_binary_out"
+# Another floating point flaky test (works for now, but let's keep it commented just in case)
+#donttest+=" or test_clear_border_non_binary_out"
 export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
 %pytest_arch -v --pyargs skimage -n auto -k "not ($donttest)"
 %endif
