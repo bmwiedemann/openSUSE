@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-base
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -555,9 +555,9 @@ Requires:       (libfreebl3-hmac if libfreebl3)
 Requires:       (libfreebl3-hmac-32bit if libfreebl3-32bit)
 Requires:       (libgcrypt20-hmac if libgcrypt20)
 Requires:       (libgnutls30-hmac if libgnutls30)
-Requires:       (libopenssl-fips-provider if libopenssl)
-Requires:       (libopenssl-3-fips-provider if libopenssl3)
 Requires:       (libgnutls30-hmac-32bit if libgnutls30-32bit)
+Requires:       (libopenssl-3-fips-provider if libopenssl3)
+Requires:       (libopenssl-fips-provider if libopenssl)
 Requires:       (libopenssl1_0_0-hmac if libopenssl1_0_0)
 Requires:       (libopenssl1_0_0-hmac-32bit if libopenssl1_0_0-32bit)
 Requires:       (libopenssl1_1-hmac if libopenssl1_1)
@@ -930,7 +930,6 @@ Provides:       pattern-visible()
 Requires:       pattern() = base
 Requires:       pattern() = x11
 # Other X11 packages
-Requires:       gconf2
 Requires:       gtk2-metatheme-adwaita
 Requires:       gtk3-metatheme-adwaita
 # X11/IceWM-specific packages

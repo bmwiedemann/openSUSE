@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 19 08:29:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop dependency on gconf2 from patterns-base-x11_raspberrypi:
+  gconf2 has been removed from Factory like 2 years ago by now
+  (boo#1221660).
+
+-------------------------------------------------------------------
 Wed Jan 31 08:23:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - patterns-base-fips: Require openssl-fips-provider when libopenssl

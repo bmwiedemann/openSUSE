@@ -884,4 +884,14 @@
     <comment></comment>
     <requestid>1142924</requestid>
   </revision>
+  <revision rev="102" vrev="48">
+    <srcmd5>21cca3ef5eaf7fbe73d753e524e63e96</srcmd5>
+    <version>20200505</version>
+    <time>1710965392</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop dependency on gconf2 from patterns-base-x11_raspberrypi:
+  gconf2 has been removed from Factory like 2 years ago by now
+  (boo#1221660).</comment>
+    <requestid>1159295</requestid>
+  </revision>
 </revisionlist>
