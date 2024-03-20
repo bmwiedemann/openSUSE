@@ -20,23 +20,19 @@
 %bcond_with profiling
 
 Name:           gnome-software
-Version:        45.2
+Version:        46.0
 Release:        0
 Summary:        GNOME Software Store
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Software
-Source0:        https://download.gnome.org/sources/gnome-software/45/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 %if 0%{?sle_version}
 # PATCH-FIX-OPENSUSE gnome-software-launch-gpk-update-viewer-for-updates.patch bsc#1077332 boo#1090042 sckang@suse.com -- Don't launch gnome-software when clicking the updates notification. Launch gpk-update-viewer instead.
 Patch0:         gnome-software-launch-gpk-update-viewer-for-updates.patch
 # PATCH-FIX-OPENSUSE gnome-software-disable-offline-update.patch bsc#944832 sckang@suse.com -- Disable offline update in SLE and openSUSE Leap
 Patch1:         gnome-software-disable-offline-update.patch
 %endif
-# PATCH-FIX-UPSTREAM gnome-software-plugin-opensuse-distro-upgrade.patch glgo#GNOME/gnome-software!1557 sckang@suse.com -- plugins: add opensuse-distro-upgrade plugin
-Patch2:         gnome-software-plugin-opensuse-distro-upgrade.patch
-# PATCH-FIX-UPSTREAM gnome-software-support-appstream-1_0.patch boo#1217047 -- Apply upstream changes to support appstream 1.0
-Patch3:         gnome-software-support-appstream-1_0.patch
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.58.0
 BuildRequires:  pkgconfig
@@ -57,7 +53,7 @@ BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libhandy-1) >= 1.2.0
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-3.0)
-BuildRequires:  pkgconfig(malcontent-0) >= 0.3.0
+BuildRequires:  pkgconfig(malcontent-0) >= 0.5.0
 BuildRequires:  pkgconfig(ostree-1)
 BuildRequires:  pkgconfig(packagekit-glib2) >= 1.1.0
 BuildRequires:  pkgconfig(polkit-gobject-1)
@@ -110,6 +106,7 @@ the GNOME software store.
 	-D malcontent=true \
 	-D soup2=false \
 	-D sysprof=%{?with_profiling:enabled}%{!?with_profiling:disabled} \
+	-D opensuse-distro-upgrade=true \
 	%{nil}
 %meson_build
 
@@ -142,6 +139,7 @@ FOE
 %{_datadir}/applications/gnome-software-local-file-fwupd.desktop
 %{_datadir}/applications/gnome-software-local-file-packagekit.desktop
 %{_datadir}/applications/org.gnome.Software.desktop
+%{_datadir}/bash-completion/completions/gnome-software
 %{_datadir}/dbus-1/services/org.gnome.Software.service
 %{_datadir}/dbus-1/services/org.freedesktop.PackageKit.service
 %{_datadir}/glib-2.0/schemas/org.gnome.software.gschema.xml
