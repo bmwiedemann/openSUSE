@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-keyring
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-keyring%{psuffix}
-Version:        24.3.0
+Version:        24.3.1
 Release:        0
 Summary:        System keyring service access from Python
 License:        MIT
@@ -43,7 +43,7 @@ Requires:       python-SecretStorage >= 3.2
 Requires:       python-jaraco.classes
 Requires:       python-jeepney >= 0.4.2
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 
 %if 0%{python_version_nodots} < 310
