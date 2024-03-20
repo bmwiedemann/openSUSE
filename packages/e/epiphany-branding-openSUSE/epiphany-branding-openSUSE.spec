@@ -1,7 +1,7 @@
 #
 # spec file for package epiphany-branding-openSUSE
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define epiphany_version %(rpm -q --qf '%%{version}' epiphany)
 Name:           epiphany-branding-openSUSE
-Version:        42.1
+Version:        %{epiphany_version}
 Release:        0
 Summary:        GNOME Web Browser -- openSUSE default bookmarks and user agent string
 License:        GPL-2.0-or-later
@@ -34,7 +34,7 @@ BuildRequires:  epiphany >= 3.23.2
 #          reuse build root. You have to build in a clean build root every time!
 BuildRequires:  epiphany-branding-upstream >= 3.11.2
 Requires:       epiphany = %{epiphany_version}
-Supplements:    packageand(epiphany:branding-openSUSE)
+Supplements:    (epiphany and branding-openSUSE)
 Conflicts:      epiphany-branding
 Provides:       epiphany-branding = %{epiphany_version}
 BuildArch:      noarch

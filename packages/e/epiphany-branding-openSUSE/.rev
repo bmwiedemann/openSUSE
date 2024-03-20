@@ -298,4 +298,12 @@
     <comment></comment>
     <requestid>1129598</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>2e3832a101f4181ab66a395f4187185e</srcmd5>
+    <version>MACRO</version>
+    <time>1710965738</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1158421 from dimstar)</comment>
+    <requestid>1159483</requestid>
+  </revision>
 </revisionlist>
