@@ -2,6 +2,7 @@
 # spec file for package libpsl
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 # Copyright (c) 2015 rpm@cicku.me
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,13 +20,17 @@
 
 %define somajor 5
 Name:           libpsl
-Version:        0.21.2
+Version:        0.21.5
 Release:        0
 Summary:        C library for the Publix Suffix List
 License:        BSD-3-Clause AND MIT AND MPL-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://rockdaboot.github.io/libpsl
 Source:         https://github.com/rockdaboot/libpsl/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source2:        https://github.com/rockdaboot/libpsl/releases/download/%{version}/%{name}-%{version}.tar.gz.sig
+# https://savannah.nongnu.org/users/rockdaboot
+# https://savannah.nongnu.org/people/viewgpg.php?user_id=87218
+Source3:        %{name}.keyring
 Source1000:     baselibs.conf
 BuildRequires:  libidn2-devel >= 0.14
 BuildRequires:  libunistring-devel
@@ -88,7 +93,7 @@ domain" certificates. It is also use do highlight domain parts in a user interfa
 and sorting domain lists by site.
 
 %prep
-%setup -q
+%autosetup -p1
 # fix env shebang to call py3 directly
 sed -i -e "1s|#!.*|#!%{_bindir}/python3|" src/psl-make-dafsa
 
@@ -107,14 +112,13 @@ sed -i -e "1s|#!.*|#!%{_bindir}/python3|" src/psl-make-dafsa
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 # in psl-make-dafsa package to break build cycle
-make DESTDIR=%{buildroot} install-man
 rm %{buildroot}%{_mandir}/man1/psl-make-dafsa.1
+rm %{buildroot}%{_bindir}/psl-make-dafsa
 
 %check
-%make_build check || (cat tests/test-suite.log; exit 42)
+%make_build check
 
-%post -n %{name}%{somajor} -p /sbin/ldconfig
-%postun -n %{name}%{somajor} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{name}%{somajor}
 
 %files -n %{name}%{somajor}
 %license COPYING

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 17 23:19:50 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.21.5:
+  * fixes for other platforms and build system updates
+- add upstream signing key and verify source signature
+
+-------------------------------------------------------------------
 Wed Mar 13 07:35:48 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 17 23:23:03 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.21.5:
+  * no changes for psl-make-dafsa
+- add upstream signing key and verify source signature
+
+-------------------------------------------------------------------
 Tue Dec 27 21:16:58 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.21.2:
