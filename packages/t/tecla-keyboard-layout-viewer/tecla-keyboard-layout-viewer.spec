@@ -1,7 +1,7 @@
 #
 # spec file for package tecla-keyboard-layout-viewer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 Name:           tecla-keyboard-layout-viewer
-Version:        45.0
+Version:        46.0
 Release:        0
 Summary:        A keyboard layout viewer
 License:        GPL-2.0-only
 URL:            https://gitlab.gnome.org/GNOME/tecla
-Source:         https://download.gnome.org/sources/tecla/45/tecla-%{version}.tar.xz
+Source:         tecla-%{version}.tar.zst
 
 BuildRequires:  c_compiler
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(gtk4-wayland)
-BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.4
+BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(xkbcommon)
 
 %description
@@ -61,4 +61,3 @@ BuildRequires:  pkgconfig(xkbcommon)
 %files lang -f tecla.lang
 
 %changelog
-

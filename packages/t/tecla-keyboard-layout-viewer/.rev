@@ -19,4 +19,12 @@
   + Updated translations.</comment>
     <requestid>1146609</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f53324ece8c0c3a0aaf053736781588c</srcmd5>
+    <version>46.0</version>
+    <time>1710965506</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1158703 from dimstar)</comment>
+    <requestid>1159499</requestid>
+  </revision>
 </revisionlist>

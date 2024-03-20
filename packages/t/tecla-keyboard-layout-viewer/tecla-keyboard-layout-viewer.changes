@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Mar 17 09:38:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 08:05:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.rc:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 13 09:42:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.beta:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 16 13:23:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.alpha:
+  + Add --version command line option.
+  + Fix blurry keys.
+  + Fix crash on unknown keymap.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Sep 16 15:34:13 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.0:
