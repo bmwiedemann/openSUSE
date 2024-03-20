@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Mar 20 06:27:00 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.35:
+  * General
+    - Remove 0.7.1 directory for core models @Yashsharma1911
+      (#10589)
+
+-------------------------------------------------------------------
+Tue Mar 19 20:17:58 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.34:
+  * General
+    - fix model registration getting blocked due to error
+      @MUzairS15 (#10584)
+  * Meshery CLI
+    - Feat: Update model generator @Yashsharma1911 (#10576)
+
+-------------------------------------------------------------------
 Mon Mar 18 05:44:10 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.33:
