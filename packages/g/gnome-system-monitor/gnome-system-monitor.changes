@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Mar 17 09:24:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + style: Blend header bar with window contents.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  4 07:45:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.rc:
+  + interface: Readd Delete key as shortcut to end process.
+  + Fixed memory leak in affinity change.
+  + Updated app links.
+  + Metainformation improvements: correct developer and platform
+    added.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 12 15:53:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.beta:
+  + Fixed several memory leaks.
+  + Fixed several plotting issues.
+  + Partial rework of graph class hierarchy>
+  + Remember window state.
+  + Renamed appdata to match desktop file.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 16 11:07:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.alpha:
+  + Application ported to GTK4.
+  + Fixed shortcuts.
+  + Fixed highcontrast graph labels.
+  + Fixed argument type mismatch.
+  + Updated UI to match Human Interface Guidelines.
+  + Ported various application components to adwaita.
+  + Added flatpak build manifest.
+  + Various code improvements.
+  + Appdata updates.
+  + Updated translations.
+- Convert to source service for easier updating.
+- Add pkgconfig(libadwaita-1) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
 Sat Sep 16 16:22:19 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.0.2:
