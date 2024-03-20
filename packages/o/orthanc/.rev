@@ -544,4 +544,14 @@
     <comment></comment>
     <requestid>1156336</requestid>
   </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>9e48e3e85eb18243eda6c758c9a09acc</srcmd5>
+    <version>1.12.3</version>
+    <time>1710965706</time>
+    <user>dimstar_suse</user>
+    <comment>- apply dcmtk patch to install section: we need this patch in the source
+  RPM as well for the plugins, otherwise TW and Leap 15.6 fail to build plugins
+</comment>
+    <requestid>1159614</requestid>
+  </revision>
 </revisionlist>

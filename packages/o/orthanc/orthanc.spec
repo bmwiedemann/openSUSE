@@ -45,7 +45,7 @@ BuildRequires:  curl-devel
 BuildRequires:  dcmtk
 BuildRequires:  dcmtk-devel
 BuildRequires:  doxygen
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150500
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
 BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++
@@ -144,7 +144,7 @@ mkdir -p OrthancServer/ThirdPartyDownloads
 cp %{S:10} %{S:11} %{S:12} %{S:13} OrthancServer/ThirdPartyDownloads/.
 
 %build
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150500
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
 export CC=gcc-13
 export CXX=g++-13
 %endif
@@ -187,6 +187,9 @@ mkdir -p -m 755 %{buildroot}%{_docdir}/%{name}
 mkdir -p -m 755 %{buildroot}/usr/src/%{name}
 # Copy sources
 tar --strip-components 1 -xzf %{S:0} -C %{buildroot}/usr/src/%{name}/
+#Apply dcmtk patch
+patch %{buildroot}/usr/src/%{name}/OrthancFramework/Resources/CMake/DcmtkConfiguration.cmake < %{P:0}
+
 # Do not mark Python scripts as executable
 find %{buildroot}/usr/src/%{name} -name '*.py' -exec chmod a-x "{}" +
 #...and delete dot files
