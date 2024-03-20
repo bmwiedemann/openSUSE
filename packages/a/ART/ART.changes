@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Mar 20 18:30:05 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 1.21.2:
+  * added DCP profiles for some Nikon Z cameras
+  * camconst: added raw crop for the Sony A9mkIII
+  * lens corrections from metadata for Olympus cameras ported from
+    darktable
+  * added DCP profile for FUJI GFX 100
+  * camconst: added PDAF pattern for the Fuji GFX 100 cameras
+  * CTL luts: use the current working space by default if none is
+    specified
+  * tweaked verbosity messages of PDAF lines filter
+  * updated camconst with more pdaf patterns for sony cameras
+    (backported from RT)
+  * added higher resolution image of the logo
+  * filebrowser: fixed segfault when exiting the search box when
+    all thumbnails are filtered out
+  * fixed lensfun version detection for deprecated API removal
+  * fixed compilation errors with lensfun master
+  * stdimagesource: detect special ART ICC profiles for unbounded
+    conversion
+  * fixed detection of embedded profiles for non-raw thumbnails
+  * masks: added global opacity slider
+  * denoise: do not apply extra gamma for non-raw images
+  * tone curve: avoid artifacts in highlights when using negative
+    contrast with "Neutral" mode
+  * cmakelists: sanitize PROC_LABEL to avoid shell syntax errors
+
+-------------------------------------------------------------------
 Wed Jan 24 18:48:42 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Update to 1.21.1:
