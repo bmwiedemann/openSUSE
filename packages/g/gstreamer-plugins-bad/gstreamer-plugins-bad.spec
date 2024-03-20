@@ -205,8 +205,6 @@ BuildRequires:  pkgconfig(wayland-scanner) >= 1.4.0
 %if %{with webrtc_audio_processing_1}
 BuildRequires:  pkgconfig(webrtc-audio-coding-1) >= 1.0
 BuildRequires:  pkgconfig(webrtc-audio-processing-1) >= 1.0
-%else
-BuildRequires:  pkgconfig(webrtc-audio-processing) >= 0.2
 %endif
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb) >= 1.10
@@ -919,6 +917,9 @@ export PYTHON=%{_bindir}/python3
 	-D directshow=disabled \
 	-D d3d11=disabled \
 	-D qt6d3d11=disabled \
+%if %{without webrtc_audio_processing_1}
+	-D webrtcdsp=disabled \
+%endif
 	%{nil}
 %meson_build
 
@@ -1117,7 +1118,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %if %{with zxing}
 %{_libdir}/gstreamer-%{gst_branch}/libgstzxing.so
 %endif
+%if %{with webrtc_audio_processing_1}
 %{_libdir}/gstreamer-%{gst_branch}/libgstwebrtcdsp.so
+%endif
 %{_libdir}/gstreamer-%{gst_branch}/libgsty4mdec.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstuvch264.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstwebp.so

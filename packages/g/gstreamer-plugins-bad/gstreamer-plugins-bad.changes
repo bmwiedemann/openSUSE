@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 18 06:05:18 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Disable the webrtcdsp plugin if webrtc-audio-processing-1 is not
+  available (as in s390x).
+
+-------------------------------------------------------------------
 Tue Mar 12 09:36:29 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch that fixes a crash when initializing gstva, submitted
