@@ -1,0 +1,46 @@
+From 29c339a31b1c753dcdef041e5c2e0e600e48b59d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Fri, 26 Jan 2024 17:09:11 +0100
+Subject: [PATCH] doc: Adapt GLib documentation path to GLib 2.79.0
+
+GLib 2.79.0 switched from gtk-doc to gi-docgen, whose format and
+installation location are both not compatible. The libmodulemd build
+script reported an error because of the new location.
+
+This patch fixes the build failure by using the new location if GLib
+is 2.79.0 or greater.
+
+Although the libmodulemd documentation references to GLib remain
+unresolved now (i.e. names of the functions and the types are not
+hyperlinks), we keep using the new location because the new GLib
+*.devhelp2 indices remain there and they can only improve over the
+time.
+
+If this expection does not fulfill, libmodulemd will either migrate to
+gi-docgen, or drop the hard build-time dependency on GLib
+documentation.
+
+Reimplements: #611
+---
+ meson.build | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 0b32f4d0..61086491 100644
+--- a/meson.build
++++ b/meson.build
+@@ -70,7 +70,13 @@ with_docs = get_option('with_docs')
+ gtk_doc_referred_paths = []
+ if with_docs
+   gtkdoc = dependency('gtk-doc')
+-  glib_docpath = join_paths(glib_prefix, 'share', 'gtk-doc', 'html')
++
++  if glib.version().version_compare('<2.79.0')
++    glib_docpath = join_paths(glib_prefix, 'share', 'gtk-doc', 'html')
++  else
++    glib_docpath = join_paths(glib_prefix, 'share', 'doc', 'glib-2.0')
++    warning('glib >= 2.79.0 documention might not be properly referred from libmodulemd documentation.')
++  endif
+ 
+   foreach referred_module : [ 'glib', 'gobject' ]
+     doc_module_path = join_paths(glib_docpath, referred_module)
