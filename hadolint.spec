@@ -139,6 +139,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup
+cabal-tweak-dep-ver deepseq '<1.5' '< 2'
 
 %build
 %define cabal_configure_options -f-static
