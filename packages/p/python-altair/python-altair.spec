@@ -24,29 +24,30 @@ License:        BSD-3-Clause
 URL:            https://github.com/altair-viz/altair
 Source:         https://github.com/altair-viz/altair/archive/refs/tags/v%{version}.tar.gz#/altair-%{version}.tar.gz
 BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module anywidget}
+BuildRequires:  %{python_module anywidget if %python-base >= 3.10}
 BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module black}
 BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module jsonschema}
-BuildRequires:  %{python_module jupyter_ipython}
+BuildRequires:  %{python_module jsonschema >= 3}
+BuildRequires:  %{python_module jupyter_ipython if %python-base >= 3.10}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pip}
 ##BuildRequires:  %%{python_module vl-convert-python}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module toolz}
-BuildRequires:  %{python_module typing-extensions}
+BuildRequires:  %{python_module typing-extensions if %python-base < 3.11}
 BuildRequires:  %{python_module vega_datasets}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
-Requires:       python-jsonschema
+Requires:       python-jsonschema >= 3
 Requires:       python-numpy
 Requires:       python-packaging
-Requires:       python-pandas
+Requires:       python-pandas >= 0.25
 Requires:       python-toolz
+%if 0%{?python_version_nodots} < 311
 Requires:       python-typing-extensions
+%endif
 Recommends:     python-jupyter_ipython
 Recommends:     python-pyarrow
 Recommends:     python-vega_datasets
@@ -73,8 +74,13 @@ seamlessly display client-side renderings in the Jupyter notebook.
 
 %check
 # disable tests that require network
+donttest="test_examples or test_to_url"
 # vega requires vl-convert-python, not packaged
-%pytest -k 'not (test_examples or test_vegalite_compiler or with_format_vega or test_to_url)'
+donttest="$donttest or test_vegalite_compiler or with_format_vega"
+# anywidget and jupyter_ipython not available anymore in python39
+python39_ignore="--ignore tests/test_jupyter_chart.py"
+python39_donttest=" or test_check_renderer_options or test_display_options"
+%pytest -k "not ($donttest ${$python_donttest})" ${$python_ignore}
 
 %files %{python_files}
 %doc README.md

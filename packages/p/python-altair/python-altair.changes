@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 15 19:47:34 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Disable jupyter testing for python39: dropped support in
+  ipython 8.19
+- Update requirements
+
+-------------------------------------------------------------------
 Thu Feb 29 13:10:56 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 5.2.0:
