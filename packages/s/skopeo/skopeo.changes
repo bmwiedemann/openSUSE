@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Mar 15 11:22:37 UTC 2024 - dcermak@suse.com
+
+- Update to version 1.15.0:
+  * Bump to v1.15.0
+  * chore(deps): update module google.golang.org/protobuf to v1.33.0 [security]
+  * fix(deps): update module github.com/containers/ocicrypt to v1.1.10
+  * chore(deps): update module gopkg.in/go-jose/go-jose.v2 to v2.6.3 [security]
+  * chore(deps): update module github.com/go-jose/go-jose/v3 to v3.0.3 [security]
+  * [CI:DOCS] Migrate skopeo container image
+  * fix(deps): update module github.com/containers/common to v0.58.0
+  * fix(deps): update module github.com/containers/image/v5 to v5.30.0
+  * fix(deps): update module github.com/containers/storage to v1.53.0
+  * fix(deps): update module golang.org/x/term to v0.18.0
+  * fix(deps): update github.com/containers/image/v5 digest to faa4f4f
+  * Move a go.mod dependency entry to the right section
+  * Avoid a warning by gopls / VSCode
+  * fix typo
+  * update docs based on review
+  * docs: make sure that CGO_ENABLED='1'
+  * [CI:DOCS] Update dependency golangci/golangci-lint to v1.56.2
+  * fix(deps): update module github.com/opencontainers/image-spec to v1.1.0
+  * [CI:DOCS] Update dependency golangci/golangci-lint to v1.56.1
+  * Update c/image after https://github.com/containers/image/pull/2273
+  * Also change the MIME type in manifest when decompressing a layer
+  * Replace decompress-dirs.sh with Go code
+  * Split decompressDir from runDecompressDirs
+  * [CI:DOCS] Update dependency golangci/golangci-lint to v1.56.0
+  * fix(deps): update module github.com/containers/common to v0.57.4
+  * fix(deps): update golang.org/x/exp digest to 1b97071
+  * fix(deps): update module github.com/containers/common to v0.57.3
+  * Update github.com/containers/image/v5 to post-v5.29.2 main
+  * Run codespell on code
+  * fix(deps): update module github.com/containers/storage to v1.52.0
+  * add kubasobon:semver changes
+  * fix(deps): update module github.com/opencontainers/image-spec to v1.1.0-rc6
+  * Bump to v1.15.0-dev
+
+-------------------------------------------------------------------
 Mon Feb 05 07:23:08 UTC 2024 - dcermak@suse.com
 
 - Update to version 1.14.2:
