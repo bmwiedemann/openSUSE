@@ -17,14 +17,15 @@
 
 
 %bcond_without  cdda
+%bcond_without  onedrive
 Name:           gvfs
-Version:        1.52.2
+Version:        1.54.0
 Release:        0
 Summary:        Virtual File System functionality for GLib
 License:        GPL-3.0-only AND LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/gvfs
-Source0:        https://download.gnome.org/sources/gvfs/1.52/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 Source99:       baselibs.conf
 
 ### NOTE: Please, keep SLE-only patches at bottom (starting on 1000).
@@ -64,6 +65,9 @@ BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.21
 BuildRequires:  pkgconfig(libxml-2.0)
+%if %{with onedrive}
+BuildRequires:  pkgconfig(msgraph-0.1)
+%endif
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.114
 BuildRequires:  pkgconfig(smbclient)
 BuildRequires:  pkgconfig(systemd)
@@ -181,11 +185,12 @@ gvfs plugins.
 
 %build
 %meson \
-	--libexecdir=%{_libexecdir}/%{name} \
-	-Dudisks2=true \
-	%{!?with_cdda: -Dcdda=false} \
-	-Dman=true \
-	-Dsystemduserunitdir=%{_userunitdir} \
+        --libexecdir=%{_libexecdir}/%{name} \
+        -Dudisks2=true \
+        %{!?with_cdda: -Dcdda=false} \
+        -Dman=true \
+        -Dsystemduserunitdir=%{_userunitdir} \
+        -Donedrive=%[%{with onedrive} ? "true" : "false" ] \
 	%{nil}
 %meson_build
 
@@ -323,6 +328,10 @@ mv daemon/trashlib/COPYING daemon/trashlib/COPYING.trashlib
 %endif
 %{_libexecdir}/%{name}/gvfsd-network
 %{_datadir}/%{name}/mounts/network.mount
+%if %{with onedrive}
+%{_libexecdir}/gvfs/gvfsd-onedrive
+%{_datadir}/gvfs/mounts/onedrive.mount
+%endif
 # allow priv ports for mounting nfs. Otherwise the nfs-service requires insecure (boo#1065864)
 %verify(not mode caps) %caps(cap_net_bind_service=+ep) %{_libexecdir}/%{name}/gvfsd-nfs
 %{_libexecdir}/%{name}/gvfsd-nfs
@@ -341,6 +350,9 @@ mv daemon/trashlib/COPYING daemon/trashlib/COPYING.trashlib
 %dir %{_datadir}/GConf
 %dir %{_datadir}/GConf/gsettings
 %{_datadir}/GConf/gsettings/gvfs-dns-sd.convert
+%{_libexecdir}/gvfs/gvfsd-wsdd
+%{_datadir}/glib-2.0/schemas/org.gnome.system.wsdd.gschema.xml
+%{_datadir}/gvfs/mounts/wsdd.mount
 
 %files devel
 %doc CONTRIBUTING.md NEWS.pre-1-2
