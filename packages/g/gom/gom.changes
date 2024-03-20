@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar  4 08:44:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.5.0:
+  + Add missing cleanup attribute for GomSorting.
+  + Fix sorting example.
+  + Add g_critical() on invalid API use.
+  + Async fixes to support concurrent fetch and get_idnex().
+  + Fix leak of table name.
+  + Generate documentation using gi-docgen.
+  + Fix improper usage of GHfunc.
+  + Various code structure cleanups.
+
+-------------------------------------------------------------------
 Mon Feb 17 20:54:39 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 0.4:

@@ -1,7 +1,7 @@
 #
 # spec file for package gom
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gom
-Version:        0.4
+Version:        0.5.0
 Release:        0
 Summary:        GObject Data Mapper
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://git.gnome.org/browse/gom/
-Source:         https://download.gnome.org/sources/gom/0.4/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gom/0.5/%{name}-%{version}.tar.xz
 BuildRequires:  meson >= 0.38.1
 BuildRequires:  pkgconfig
 BuildRequires:  python3-gobject
