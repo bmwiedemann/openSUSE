@@ -3,25 +3,27 @@ Subject: Disable DMABuf renderer for NVIDIA proprietary drivers
 Bug: https://bugs.webkit.org/show_bug.cgi?id=262607
 Bug-Debian: https://bugs.debian.org/1039720
 Origin: https://github.com/WebKit/WebKit/pull/18614
-Index: webkitgtk/Source/WebKit/UIProcess/gtk/AcceleratedBackingStoreDMABuf.cpp
+Index: webkitgtk-2.44.0/Source/WebKit/UIProcess/gtk/AcceleratedBackingStoreDMABuf.cpp
 ===================================================================
---- webkitgtk.orig/Source/WebKit/UIProcess/gtk/AcceleratedBackingStoreDMABuf.cpp
-+++ webkitgtk/Source/WebKit/UIProcess/gtk/AcceleratedBackingStoreDMABuf.cpp
-@@ -36,11 +36,13 @@
+--- webkitgtk-2.44.0.orig/Source/WebKit/UIProcess/gtk/AcceleratedBackingStoreDMABuf.cpp
++++ webkitgtk-2.44.0/Source/WebKit/UIProcess/gtk/AcceleratedBackingStoreDMABuf.cpp
+@@ -37,6 +37,7 @@
  #include <WebCore/GLContext.h>
  #include <WebCore/IntRect.h>
  #include <WebCore/PlatformDisplay.h>
 +#include <WebCore/PlatformDisplaySurfaceless.h>
+ #include <WebCore/ShareableBitmap.h>
+ #include <WebCore/SharedMemory.h>
  #include <epoxy/egl.h>
- #include <wtf/glib/GUniquePtr.h>
+@@ -45,6 +46,7 @@
  
  #if USE(GBM)
- #include <WebCore/DMABufFormat.h>
+ #include <drm_fourcc.h>
 +#include <WebCore/PlatformDisplayGBM.h>
  #include <gbm.h>
- static constexpr uint64_t s_dmabufInvalidModifier = uint64_t(WebCore::DMABufFormat::Modifier::Invalid);
- #else
-@@ -53,6 +55,29 @@ static constexpr uint64_t s_dmabufInvali
+ 
+ static constexpr uint64_t s_dmabufInvalidModifier = DRM_FORMAT_MOD_INVALID;
+@@ -58,6 +60,29 @@ static constexpr uint64_t s_dmabufInvali
  
  namespace WebKit {
  
@@ -51,7 +53,7 @@ Index: webkitgtk/Source/WebKit/UIProcess/gtk/AcceleratedBackingStoreDMABuf.cpp
  OptionSet<DMABufRendererBufferMode> AcceleratedBackingStoreDMABuf::rendererBufferMode()
  {
      static OptionSet<DMABufRendererBufferMode> mode;
-@@ -68,6 +93,9 @@ OptionSet<DMABufRendererBufferMode> Acce
+@@ -73,6 +98,9 @@ OptionSet<DMABufRendererBufferMode> Acce
              return;
          }
  
@@ -60,4 +62,4 @@ Index: webkitgtk/Source/WebKit/UIProcess/gtk/AcceleratedBackingStoreDMABuf.cpp
 +
          mode.add(DMABufRendererBufferMode::SharedMemory);
  
-         const auto& eglExtensions = WebCore::PlatformDisplay::sharedDisplay().eglExtensions();
+         const char* forceSHM = getenv("WEBKIT_DMABUF_RENDERER_FORCE_SHM");

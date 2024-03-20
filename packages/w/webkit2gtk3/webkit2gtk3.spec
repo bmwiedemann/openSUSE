@@ -70,12 +70,13 @@ ExclusiveArch:  do-not-build
 %define _usesoup2 0
 %define _wk2sover6api -6_0-4
 %define _soverlj6api -6_0-1
+%define _with_backtrace 1
 %endif
 
 Name:           webkit2%{_gtknamesuffix}
 ### FIXME ### Drop the disabling of LTO on next release/versionbump
 %define _lto_cflags %{nil}
-Version:        2.42.5
+Version:        2.44.0
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -88,8 +89,8 @@ Source99:       webkit2gtk3.keyring
 
 # PATCH-FEATURE-OPENSUSE reproducibility.patch -- Make build reproducible
 Patch0:         reproducibility.patch
-# PATCH-FIX-UPSTREAM webkit2gtk3-create-destroy-egl-image.patch boo#1216483 mgorse@suse.com -- fix "No provider of EglDestroyImage found".
-Patch1:         webkit2gtk3-create-destroy-egl-image.patch
+# PATCH-FIX-UPSTREAM webkit2gtk3-271108.patch
+Patch1:         webkit2gtk3-271108.patch
 # PATCH-FIX-UPSTREAM webkit2gtk3-disable-dmabuf-nvidia.patch boo#1216778 mgorse@suse.com -- disable the DMABuf renderer for NVIDIA proprietary drivers.
 Patch2:         webkit2gtk3-disable-dmabuf-nvidia.patch
 # PATCH-FIX-UPSTREAM webkit2gtk3-llint-build-fix.patch mgorse@suse.com -- fix the build for non-x86 architectures.
@@ -105,6 +106,9 @@ BuildRequires:  bubblewrap
 BuildRequires:  cmake
 BuildRequires:  enchant-devel
 BuildRequires:  flex
+%if 0%{?_with_backtrace}
+BuildRequires:  libbacktrace-devel
+%endif
 %if %usegcc11
 BuildRequires:  gcc11-c++
 %else
@@ -151,7 +155,7 @@ BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 %endif
 %if "%{flavor}" == "gtk4"
-BuildRequires:  pkgconfig(gtk4) >= 3.98.50
+BuildRequires:  pkgconfig(gtk4) >= 4.6.0
 BuildRequires:  pkgconfig(xcomposite)
 %endif
 BuildRequires:  pkgconfig(gudev-1.0)
@@ -438,9 +442,8 @@ Group:          Development/Tools/Other
 A small test browswer from webkit, useful for testing features.
 
 
-
-
 # Expand %%lang_package to Obsoletes its older-name counterpart
+
 %package -n WebKitGTK-%{_apiver}-lang
 Summary:        Translations for package %{name}
 Group:          System/Localization
@@ -481,6 +484,7 @@ export PYTHON=%{_bindir}/python3
   -GNinja \
   -DCMAKE_BUILD_TYPE=Release \
   -DENABLE_DOCUMENTATION=OFF \
+  -DUSE_LIBBACKTRACE=%[ %{defined _with_backtrace} ? "ON" : "OFF" ] \
 %if %usegcc11
   -DCMAKE_C_COMPILER=gcc-11 \
   -DCMAKE_CXX_COMPILER=g++-11 \
@@ -492,6 +496,7 @@ export PYTHON=%{_bindir}/python3
   -DENABLE_WEBDRIVER=ON \
 %else
   -DLIBEXEC_INSTALL_DIR=%{_libexecdir}/libwebkit2gtk%{_wk2sover} \
+  -DUSE_GTK4=OFF \
   -DENABLE_WEBDRIVER=OFF \
 %endif
   -DUSE_AVIF=ON \
@@ -506,6 +511,7 @@ export PYTHON=%{_bindir}/python3
 %ifarch aarch64
   -DENABLE_JIT=OFF \
   -DENABLE_C_LOOP=ON \
+  -DENABLE_WEBASSEMBLY=OFF \
   -DENABLE_SAMPLING_PROFILER=OFF \
   -DUSE_SYSTEM_MALLOC=ON \
 %else

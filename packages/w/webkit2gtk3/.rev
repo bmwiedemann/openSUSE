@@ -1639,4 +1639,41 @@
     <comment>Typo fix only</comment>
     <requestid>1148645</requestid>
   </revision>
+  <revision rev="190" vrev="1">
+    <srcmd5>be2dbe1a2ee5380e74d0ff115dee24c3</srcmd5>
+    <version>2.44.0</version>
+    <time>1710965586</time>
+    <user>dimstar_suse</user>
+    <comment>- Add webkit2gtk3-271108.patch: Fix build on 32bit archs
+  (https://bugs.webkit.org/show_bug.cgi?id=271108).
+
+- Update to version 2.44.0:
+  + Make the DOM accessibility tree reachable from UI process with
+    GTK4.
+  + Removed the X11 and WPE renderers in favor of DMA-BUF.
+  + Improved vblank synchronization when rendering.
+  + Removed key event reinjection in GTK4 to make keyboard
+    shortcuts work in web sites.
+  + Fix gamepads detection by correctly handling focused window in
+    GTK4.
+- Rebase webkit2gtk3-disable-dmabuf-nvidia.patch.
+
+- baselibs.conf: Do not build libjavascriptcoregtk-4_1-0-32bit and
+  libwebkit2gtk-4_1-0-32bit: they are not used, and in fact not
+  built in Factory (build excluded).
+
+- Update to version 2.43.4:
+  + Remove key event reinjection in GTK4 to make keyboard shortcuts
+    work in web sites.
+  + Use the new GTK API to create a GdkTexture from a DMA-BUF
+    buffer when available.
+  + Fix rendering when GTK is using the vulkan renderer.
+  + Fix gamepads detection by correctly handling focused window in
+    GTK4.
+  + Fix rendering after history navigation.
+  + Write bwrapinfo.json to disk for xdg-desktop-portal.
+  + Fixed several memory leaks in media backend.
+  + Fix several crashes and rendering issues.</comment>
+    <requestid>1159578</requestid>
+  </revision>
 </revisionlist>

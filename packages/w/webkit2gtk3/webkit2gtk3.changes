@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Mon Mar 18 12:15:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add webkit2gtk3-271108.patch: Fix build on 32bit archs
+  (https://bugs.webkit.org/show_bug.cgi?id=271108).
+
+-------------------------------------------------------------------
+Sat Mar 16 09:36:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.44.0:
+  + Make the DOM accessibility tree reachable from UI process with
+    GTK4.
+  + Removed the X11 and WPE renderers in favor of DMA-BUF.
+  + Improved vblank synchronization when rendering.
+  + Removed key event reinjection in GTK4 to make keyboard
+    shortcuts work in web sites.
+  + Fix gamepads detection by correctly handling focused window in
+    GTK4.
+- Rebase webkit2gtk3-disable-dmabuf-nvidia.patch.
+
+-------------------------------------------------------------------
+Tue Mar  5 16:20:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- baselibs.conf: Do not build libjavascriptcoregtk-4_1-0-32bit and
+  libwebkit2gtk-4_1-0-32bit: they are not used, and in fact not
+  built in Factory (build excluded).
+
+-------------------------------------------------------------------
+Thu Feb 29 13:15:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.43.4:
+  + Remove key event reinjection in GTK4 to make keyboard shortcuts
+    work in web sites.
+  + Use the new GTK API to create a GdkTexture from a DMA-BUF
+    buffer when available.
+  + Fix rendering when GTK is using the vulkan renderer.
+  + Fix gamepads detection by correctly handling focused window in
+    GTK4.
+  + Fix rendering after history navigation.
+  + Write bwrapinfo.json to disk for xdg-desktop-portal.
+  + Fixed several memory leaks in media backend.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.43.3:
+  + Show vblank monitor information in webkit://gpu.
+  + Fallback to timer based vblank monitor if drmWaitVBlank fails.
+  + Fix several memory leaks in media backend.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.43.2?
+  + Remove the X11 and WPE renderers.
+  + Release unused buffers when the view is hidden.
+  + Fix flickering while playing videos with DMA-BUF sink.
+  + Do not special case the "sans" font family name.
+  + Fix webkit_web_context_allow_tls_certificate_for_host() for
+    IPv6 URIs produced by SoupURI.
+  + Fix several crashes and rendering issues.
+- Changes from version WebKitGTK 2.43.1?
+  + Improve vblank synchronization when rendering.
+  + Improve DMA-BUF buffers handling for video frames.
+  + Use the buffer format preferred by the driver in DMA-BUF
+    renderer.
+  + Do not block the compositing thread waiting for rendering
+    threads.
+  + Improve performance when scaling images in a canvas.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+- Drop webkit2gtk3-create-destroy-egl-image.patch: fixed upstream.
+- Add libbacktrace-devel BuildRequires (for gtk4 flavor).
+
+-------------------------------------------------------------------
 Fri Feb 16 15:33:11 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Increase mem_per_process again to match what is in SLE. The build
