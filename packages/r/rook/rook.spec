@@ -149,7 +149,7 @@ argument to [-test.run]. All Ceph test suites can be run with the argument
 %setup -q -n %{name}
 tar zxf %{SOURCE1}
 
-%patch0 -p1
+%patch -P 0 -p1
 
 # Determine registry to use in manifests depending on the base os type
 %if 0%{?is_opensuse}
