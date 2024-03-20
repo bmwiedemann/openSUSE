@@ -1,7 +1,7 @@
 #
 # spec file for package python-gobject
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,18 +34,19 @@
 %define libffi_version 3.0
 %{?sle15_python_module_pythons}
 Name:           python-gobject
-Version:        3.46.0
+Version:        3.48.1
 Release:        0
 Summary:        Python bindings for GObject
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Python
 URL:            https://wiki.gnome.org/Projects/PyGObject/
-Source0:        https://download.gnome.org/sources/pygobject/3.46/%{_name}-%{version}.tar.xz
+Source0:        %{_name}-%{version}.tar.zst
 
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module meson-python}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycairo >= %{pycairo_version}}
 BuildRequires:  %{python_module pycairo-devel}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -128,10 +129,13 @@ find examples -name '*.py' -exec chmod -R -x {} +
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%meson
+%meson_build
+%pyproject_wheel
 
 %install
-%python_install
+%meson_install
+%pyproject_install
 # Incorrectly installed by a python38-setuptools vendored distutils
 # which does not play well with the distro patched python38.
 # Later flavors installed the correct files into lib64 as well
@@ -153,6 +157,7 @@ find %{buildroot}%{$python_sitearch} -name GIMarshallingTests* -delete -print
 }
 
 find %{buildroot} "(" -name '*.la' -or -name '*.a' ")" -delete
+rm %{buildroot}%{_libdir}/*/site-packages/*.egg-info
 
 %{?python_compileall}
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
@@ -162,9 +167,9 @@ find %{buildroot} "(" -name '*.la' -or -name '*.a' ")" -delete
 %doc NEWS
 %doc examples/
 %{python_sitearch}/gi/
-%{python_sitearch}/PyGObject-%{version}*-py*.egg-info
 # Lives in cairo subpackage
 %exclude %{python_sitearch}/gi/_gi_cairo*.so
+%{python_sitearch}/pygobject-%{version}.dist-info/
 # Lives in Gdk subpackage
 %exclude %{python_sitearch}/gi/_gtktemplate.py
 %exclude %{python_sitearch}/gi/overrides/Gdk.*
@@ -198,6 +203,7 @@ find %{buildroot} "(" -name '*.la' -or -name '*.a' ")" -delete
 
 %files %{python_files devel}
 %doc README.rst
+%{_includedir}/python%{python_version}/pygobject/
 
 %files -n %{name}-common-devel
 %{_includedir}/pygobject-3.0/

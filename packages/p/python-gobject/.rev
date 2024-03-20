@@ -797,4 +797,12 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
   else. (forwarded request 1110326 from iznogood)</comment>
     <requestid>1110890</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>a2898f677f7cec5c7d38c04eb2a24e3f</srcmd5>
+    <version>3.48.1</version>
+    <time>1710965447</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1156863 from dimstar)</comment>
+    <requestid>1159428</requestid>
+  </revision>
 </revisionlist>
