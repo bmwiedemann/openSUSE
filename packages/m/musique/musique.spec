@@ -1,7 +1,7 @@
 #
 # spec file for package musique
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        GPL-3.0-only AND LGPL-2.1-only
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://flavio.tordini.org/musique
 Source:         %{name}-%{version}.tar.xz
+Patch0:         fix-taglib2-compatibility.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist
@@ -52,7 +53,7 @@ It's about listening to beautiful music.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %if 0%{?suse_version} < 1500
 SOURCE_DATE="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"

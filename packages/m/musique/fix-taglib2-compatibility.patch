@@ -1,0 +1,63 @@
+From dc111dcc6ba4eadc4f04c4bf0ad8340589b058fd Mon Sep 17 00:00:00 2001
+From: letsfindaway <me@letsfindaway.de>
+Date: Wed, 20 Mar 2024 07:19:11 +0100
+Subject: [PATCH] fix: compatibility with TagLib 2.0
+
+- replace MP4::ItemListMap by TagLib::MP4::ItemMap
+- replace MP4::Tag::itemListMap() by MP4::Tag::itemMap()
+- add version requirement for TagLib >= 1.10 in README.md
+---
+ src/coverutils.cpp  | 2 +-
+ src/mainwindow.cpp  | 3 +++
+ src/tags/mp4utils.h | 4 ++--
+ 3 files changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/src/coverutils.cpp b/src/coverutils.cpp
+index 9ea7728..9b99f0b 100644
+--- a/src/coverutils.cpp
++++ b/src/coverutils.cpp
+@@ -159,7 +159,7 @@ bool CoverUtils::coverFromMP4(const QString &filename, Album *album) {
+     TagLib::MP4::Tag *tag = static_cast<TagLib::MP4::Tag *>(f.tag());
+     if (!tag) return false;
+
+-    TagLib::MP4::ItemListMap itemsListMap = tag->itemListMap();
++    TagLib::MP4::ItemMap itemsListMap = tag->itemMap();
+     TagLib::MP4::Item coverItem = itemsListMap["covr"];
+     TagLib::MP4::CoverArtList coverArtList = coverItem.toCoverArtList();
+     TagLib::MP4::CoverArt coverArt = coverArtList.front();
+diff --git a/src/mainwindow.cpp b/src/mainwindow.cpp
+index 4e4ed27..d1e861e 100644
+--- a/src/mainwindow.cpp
++++ b/src/mainwindow.cpp
+@@ -24,6 +24,9 @@ along with Musique.  If not, see <http://www.gnu.org/licenses/>.
+ #include "database.h"
+ #include "iconutils.h"
+ #include "spacer.h"
++#include <iostream>
++
++
+ #if defined(APP_MAC_SEARCHFIELD) && !defined(APP_MAC_QMACTOOLBAR)
+ #include "searchlineedit_mac.h"
+ #else
+diff --git a/src/tags/mp4utils.h b/src/tags/mp4utils.h
+index 138c5b5..6b4bcef 100644
+--- a/src/tags/mp4utils.h
++++ b/src/tags/mp4utils.h
+@@ -9,7 +9,7 @@
+ namespace Mp4Utils {
+
+ void load(TagLib::MP4::Tag *tag, Tags *tags) {
+-    const TagLib::MP4::ItemListMap &map = tag->itemListMap();
++    const TagLib::MP4::ItemMap &map = tag->itemMap();
+
+     if (map.contains("trkn")) {
+         TagLib::MP4::Item::IntPair intPair = map["trkn"].toIntPair();
+@@ -31,7 +31,7 @@ void load(TagLib::MP4::Tag *tag, Tags *tags) {
+         tags->setComposerSort(v);
+     }
+
+-    TagLib::MP4::ItemListMap::ConstIterator it = map.find("aART");
++    TagLib::MP4::ItemMap::ConstIterator it = map.find("aART");
+     if (it != map.end()) {
+         TagLib::StringList sl = it->second.toStringList();
+         if (!sl.isEmpty())
