@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtquick3d
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,11 +26,11 @@
 
 %define qt5_snapshot 1
 %define base_name libqt5
-%define real_version 5.15.12
-%define so_version 5.15.12
+%define real_version 5.15.13
+%define so_version 5.15.13
 %define tar_version qtquick3d-everywhere-src-%{version}
 Name:           libqt5-qtquick3d
-Version:        5.15.12+kde1
+Version:        5.15.13+kde1
 Release:        0
 Summary:        Qt 5 Quick 3D Module
 License:        GPL-3.0-or-later
