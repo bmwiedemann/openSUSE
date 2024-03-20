@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 17 19:15:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 20240109:
+  * maintenance updates
+
+-------------------------------------------------------------------
 Fri Jun  2 20:59:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 20230521:
@@ -33,7 +39,7 @@ Fri Feb 17 12:43:24 UTC 2023 - Avinesh Kumar <avinesh.kumar@suse.com>
 
 - update to 20230201:
   * configure.in: initialize $ac_includes_default
-  * aclocal.m4: resync with my-autoconf 
+  * aclocal.m4: resync with my-autoconf
 
 -------------------------------------------------------------------
 Mon Jan  2 10:24:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -282,15 +288,15 @@ Thu Sep 26 11:06:49 UTC 2013 - gber@opensuse.org
 -------------------------------------------------------------------
 Sat Aug  3 03:46:44 UTC 2013 - crrodriguez@opensuse.org
 
-- run test suite 
-- use --program-prefix instead of moving/renaming executables 
+- run test suite
+- use --program-prefix instead of moving/renaming executables
   around.
 
 -------------------------------------------------------------------
 Sat Aug  3 03:28:21 UTC 2013 - crrodriguez@opensuse.org
 
 - byacc 20130304
-* too many since 2010 to list here.. see 
+* too many since 2010 to list here.. see
 http://invisible-island.net/byacc/CHANGES
 
 -------------------------------------------------------------------
