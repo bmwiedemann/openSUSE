@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Mar  2 06:37:40 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update foldl to version 1.4.16.
+  1.4.16
+
+  - Add [`Control.Foldl.postmapM`]
+
+  1.4.15
+
+  - Add `Cosieve` and `Costrong` instances
+
+-------------------------------------------------------------------
 Wed Nov  1 14:05:14 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update foldl to version 1.4.15 revision 1.
