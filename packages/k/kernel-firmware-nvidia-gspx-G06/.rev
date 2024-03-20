@@ -58,4 +58,12 @@ https://nvidia.custhelp.com/app/answers/detail/a_id/5491/~/security-bulletin%3A-
     <comment>- update firmware to version 550.54.14</comment>
     <requestid>1150147</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>07980c042c4cf526134ad654bb035965</srcmd5>
+    <version>550.67</version>
+    <time>1710965806</time>
+    <user>dimstar_suse</user>
+    <comment>- update firmware to version 550.67</comment>
+    <requestid>1159673</requestid>
+  </revision>
 </revisionlist>
