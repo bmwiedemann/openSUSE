@@ -1255,4 +1255,12 @@ Fixed macro (as commented) (forwarded request 885296 from susnux)</comment>
     <comment>New stable release (forwarded request 1130562 from iznogood)</comment>
     <requestid>1130743</requestid>
   </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>13c24bbd54f3e1aeae663055be598e15</srcmd5>
+    <version>44.beta</version>
+    <time>1710965566</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1159290 from dimstar)</comment>
+    <requestid>1159546</requestid>
+  </revision>
 </revisionlist>

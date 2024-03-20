@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar 11 08:01:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 44.beta:
+  + window: Fix incompatible pointer types,
+  + appdata: Fix reverse DNS developer id,
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb 18 10:43:47 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 44.alpha:
+  + Ported to GTK4
+- Change BuildRequires ported from gtk3 to gtk4:
+  + pkgconfig(gtk+-3.0) to pkgconfig(gtk4)
+  + pkgconfig(libhandy-1) to pkgconfig(libadwaita-1)
+  + pkgconfig(libportal-gtk3) to pkgconfig(libportal-gtk4)
+  
+-------------------------------------------------------------------
 Sun Dec  3 12:01:40 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.1:

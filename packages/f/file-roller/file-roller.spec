@@ -1,7 +1,7 @@
 #
 # spec file for package file-roller
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           file-roller
-Version:        43.1
+Version:        44.beta
 Release:        0
 Summary:        An Archive Manager for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Archiving/Compression
 URL:            https://wiki.gnome.org/Apps/FileRoller
-Source0:        https://download.gnome.org/sources/file-roller/43/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 # PATCH-FIX-OPENSUSE file-roller-3.4-change-archiver-priority.patch bnc#767386 gankov@opensuse.org -- Give unzip a higher priority than 7z when unpackging zip files. Gives better results for non-latin charsets.
 Patch0:         file-roller-3.4-change-archiver-priority.patch
@@ -42,13 +42,13 @@ BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 0.14.0
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libarchive) >= 3.0.0
-BuildRequires:  pkgconfig(libhandy-1) >= 1.5
 BuildRequires:  pkgconfig(libnautilus-extension-4)
 BuildRequires:  pkgconfig(libportal)
-BuildRequires:  pkgconfig(libportal-gtk3)
+BuildRequires:  pkgconfig(libportal-gtk4)
 # Formats that we likely want to support by default
 Recommends:     bzip2
 Recommends:     7zip
