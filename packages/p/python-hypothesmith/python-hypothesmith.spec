@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-hypothesmith
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -17,7 +17,6 @@
 
 
 %{?sle15_python_module_pythons}
-%define skip_python2 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -27,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-hypothesmith%{psuffix}
-Version:        0.3.2
+Version:        0.3.3
 Release:        0
 Summary:        Hypothesis strategies for generating Python programs, something like CSmith
 License:        MPL-2.0

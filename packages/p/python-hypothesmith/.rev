@@ -90,4 +90,14 @@
   * Performance improvements based on Hypothesis 6.93.0</comment>
     <requestid>1141815</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f9bc4db37cfb1f6f904bd48203ea32c0</srcmd5>
+    <version>0.3.3</version>
+    <time>1710965387</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.3:
+  * Add Python 3.12 and 3.13 to CI
+  * Can now be imported on Python 3.13</comment>
+    <requestid>1159225</requestid>
+  </revision>
 </revisionlist>
