@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 16 07:57:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0+9:
+  + bookmarks: adapt to latest GtkSourceStyle API.
+  + sessionsaver: explicit Tepl version req.
+
+-------------------------------------------------------------------
 Mon Aug 14 12:20:00 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 46.0:
