@@ -1,7 +1,7 @@
 #
 # spec file for package solaar
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           solaar
-Version:        1.1.10
+Version:        1.1.11
 Release:        0
 Summary:        Linux devices manager for the Logitech Unifying Receiver
 License:        GPL-2.0-or-later
@@ -65,7 +65,8 @@ Requires:       python3-pyudev
 Requires:       python3-typing_extensions
 #
 Requires:       solaar-udev >= %{version}
-Requires:       typelib-1_0-Gtk-3_0
+Requires:       typelib(AyatanaAppIndicator3)
+Requires:       typelib(Gtk) >= 3.0
 #
 Obsoletes:      solaar-cli < %{version}
 Provides:       solaar-cli = %{version}
@@ -132,9 +133,9 @@ ln -s solaar %{buildroot}%{_bindir}/solaar-cli
 %license COPYING
 %{_bindir}/%{name}
 %{_bindir}/%{name}-cli
-%{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/scalable/apps/solaar.svg
+%{_datadir}/icons/hicolor/32x32/apps/solaar-*.png
+%{_datadir}/icons/hicolor/scalable/apps/solaar*.svg
 %{_datadir}/metainfo/io.github.pwr_solaar.solaar.metainfo.xml
 %{python_sitelib}/hidapi
 %{python_sitelib}/logitech_receiver

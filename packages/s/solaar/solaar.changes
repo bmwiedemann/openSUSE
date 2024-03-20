@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Wed Mar 20 06:04:20 UTC 2024 - asn@cryptomilk.org
+
+- Update to version 1.1.11:
+  * release 1.1.11
+  * dist: Add the <developer/> tag in the metainfo
+  * dist: correctly find light icons
+  * release 1.1.11rc4
+  * dist: rename light icons and install them in correct place
+  * macos: Remove dbus from macos dependencies
+  * Setup macOS tests using GitHub action (#2284)
+  * release 1.1.11rc3
+  * ui: better checking for setting in record_setting
+  * po: Update Polish translation (#2275)
+  * Fix invalid func name set logo name
+  * release 1.1.11rc2
+  * udev: Simplify installation of udev rules
+  * doc: add document on implementation
+  * ui: tidy up scrolling appearance in configuration panel
+  * device: correctly handle profile button with no action
+  * ui: don't unlock setting when changed by external means
+  * ui: refactor code to record change to setting
+  * tests: Add GitHub action for tests
+  * tests: Introduce tests with pytest
+  * logging: Simplify logger instantiation
+  * ui: update label and tooltip for divert-gkeys setting
+  * ui: update label and tooltip for divert-gkeys setting
+  * ui: don't lock setting when an error occurs
+  * cli: catch assertion errors when reading setting values from devices
+  * po: Update Polish translation (#2252)
+  * release 1.1.11rc1
+  * release 1.1.11rc1
+  * device: remove dependency on webcolors
+  * device: clean up data for LED effects
+  * ui: better startup behavior for LED effect settings
+  * ui: add UI for LED Zone control
+  * device: add settings for LED Zone control
+  * device: add structures for LED control
+  * ui: add setting to change LED control between firmware and software
+  * docs: document profiles
+  * device: handle v4 of profiles data
+  * device: better handing of unknown values in profiles
+  * device: add version and device name to profiles
+  * device: read profiles from ROM if none in Flash
+  * device: decipher LED control info in profiles
+  * cli: report more information on exception when loading profiles
+  * ui: handle onboard profiles notifications
+  * ui: upgrade onboard profiles setting to allow profile selection
+  * device: support onboard profiles
+  * device: remove extra debugging for backlight
+  * ui: handle backlight notification
+  * device: support backlight levels and duration
+  * device: support bug in backlight on MX Keys S
+  * cli: no numbers for USB and Bluetooth devices
+  * devices: override name of Candy Companion Chip
+  * po: Update RU language translation (#2242)
+  * po: Mention language pack for Gnome in i18n.md (#2241)
+  * ui: use Report Rate instead of Polling for movement report rate
+  * device: add extended report rate setting
+  * release: Add stable branch to release.sh (#2236)
+  * release: fix changelog parsing in release.sh after d57af51316799252fdc67f575dc72d2568b3e48c (#2235)
+  * docs: Update installation.md with new udev rules location (#2234)
+  * ui: downgrade assertion on missing notification flag to warning
+  * docs: add descriptions of G305 and MX Keys S
+  * rules: write empty file if there are no rules to save
+  * cli: be defensive in device error message
+  * docs: add descriptions of M650 and PRO X 2
+  * udev: report hidraw node in debugging messages
+  * device: add names for new Logitech features
+  * po: Spanish translation reviewed (#2209)
+  * docs: add file for G915
+  * gui: defend against lightspeed receivers that contact devices for basic information
+  * docs: add files for MX Anywhere 2S and G915
+  * device: remove incorrect feature for M325 mice
+  * device: add K845 keyboard
+  * rules: style fix
+  * Partial support for macOS and Windows (#1971)
+  * device: correctly enumerate devices on receiver
+  * docs: add wording about Logitech reusing model numbers
+  * ui: better handling and installation of icons
+  * device: catch errors when pinging to try to put device online
+  * ui: be more cautious when creating log messages to avoid exceptions
+  * cli: handle NoSuchDevice exception when pinging device
+  * rules: fix test for device equality
+  * docs: add note about other GTK system packages
+  * docs: add instructions for pipx
+  * NamedInt: return False on comparison with None
+  * device: add support for MK550
+  * dist: install .rules to correct place by default
+  * device: add connection request failed error to expected ping responses
+  * ui: update codename when device status changes
+  * doc: fix typos (#2152)
+  * Update French translation (for release 1.1.10)
+- Add missing dependency to typelib-AyatanaAppIndicator3
+
+-------------------------------------------------------------------
 Wed Oct 18 13:44:59 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Add missing Require for dbus
