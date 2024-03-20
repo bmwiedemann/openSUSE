@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar 17 09:25:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  4 08:53:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.rc:
+  + Appdata fixes.
+  + Exclude source SVG icons.
+  + Help fix describing menu button location.
+
+-------------------------------------------------------------------
 Fri Feb 17 14:36:47 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop unused nor needed pkgconfig(clutter-1.0) and
