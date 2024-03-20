@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-salt-factories
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ Source0:        https://files.pythonhosted.org/packages/source/p/pytest-salt-fac
 Patch1:         fix_unit_tests.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module docker}
+BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 6.0.0}
 BuildRequires:  %{python_module pytest-shell-utilities}
@@ -44,9 +45,9 @@ BuildRequires:  %{python_module setuptools-declarative-requirements}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-salt
 BuildRequires:  salt-master
-BuildRequires:  python-rpm-macros
 Requires:       python-attrs >= 19.2.0
 Requires:       python-msgpack
 Requires:       python-psutil
@@ -88,7 +89,7 @@ export PYTHONPATH=%{buildroot}%{python_sitelib}
 
 # Run test and exclude some that doesn't work fine in OBS.
 pytest-%{python_bin_suffix} -vvv -k 'not ssh and not echoext'
- 
+
 %post
 %python_install_alternative salt-factories
 

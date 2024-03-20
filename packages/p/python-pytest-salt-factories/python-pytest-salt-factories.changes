@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 20 05:29:34 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires on importlib-metadata. 
+
+-------------------------------------------------------------------
 Wed Dec 20 11:20:42 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Do not write non-deterministic .pyc files in tests
