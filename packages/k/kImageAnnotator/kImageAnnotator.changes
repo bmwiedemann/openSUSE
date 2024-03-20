@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 15 19:12:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.7.1:
+  * Change kColorPicker version
+- Add patch to make both flavors coinstallable again:
+  * 0001-Make-Qt5-and-Qt6-libraries-coinstallable-again.patch
+
+-------------------------------------------------------------------
 Sun Feb 11 00:59:56 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Fix build on Leap. The Qt6 packaging macros set the minimum

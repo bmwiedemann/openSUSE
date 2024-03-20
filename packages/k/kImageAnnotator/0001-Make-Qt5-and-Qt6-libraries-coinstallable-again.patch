@@ -1,0 +1,25 @@
+From 747896bcc6aca6b71c2b3527d16d6075c343a9ef Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Fri, 15 Mar 2024 20:10:03 +0100
+Subject: [PATCH] Make Qt5 and Qt6 libraries coinstallable again
+
+Version 0.7.1 renamed the library again, which made them not coinstallable
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8f3516e..6a12399 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -97,6 +97,7 @@ set_target_properties(kImageAnnotator
+ 					  RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin
+ 					  VERSION ${PROJECT_VERSION}
+ 					  SOVERSION 0
++					  OUTPUT_NAME kImageAnnotator-Qt${QT_MAJOR_VERSION}
+ 					  )
+ 
+ install(TARGETS kImageAnnotator
+-- 
+2.44.0
+

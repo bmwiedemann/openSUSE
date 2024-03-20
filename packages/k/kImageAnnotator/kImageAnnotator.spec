@@ -34,13 +34,15 @@ Name:           kImageAnnotator
 %else
 Name:           kImageAnnotator-Qt%{qtver}
 %endif
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        Tool for annotating images
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://github.com/ksnip/kImageAnnotator
 Source:         https://github.com/ksnip/kImageAnnotator/archive/v%{version}.tar.gz#/kImageAnnotator-%{version}.tar.gz
+# PATCH-FEATURE-OPENSUSE
+Patch0:         0001-Make-Qt5-and-Qt6-libraries-coinstallable-again.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  cmake(Qt%{qtver}LinguistTools)
