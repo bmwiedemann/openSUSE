@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 28 09:09:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 43.0+22:
+  + Avoid C99 incompatibility around
+    seahorse_pkcs11_backend_initialize.
+  + Allow building with GnuPG-2.4.x.
+- Drop 9260c747.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Fri Jan  6 09:29:28 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 9260c747.patch: Allow building with GnuPG-2.4.x.
